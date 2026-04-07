@@ -2,11 +2,11 @@
 
 #include "ComplexItem.h"
 
-class yuri_693 : public yuri_404 {
+class EmptyMapItem : public ComplexItem {
 public:
-    yuri_693(int yuri_6674);
+    EmptyMapItem(int id);
 
-    std::shared_ptr<yuri_1693> yuri_9484(
-        std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
-        std::shared_ptr<yuri_2126> yuri_7839);
+    std::shared_ptr<ItemInstance> use(
+        std::shared_ptr<ItemInstance> itemInstance, Level* level,
+        std::shared_ptr<Player> player);
 };

@@ -13,153 +13,153 @@
 #include "minecraft/world/phys/AABB.h"
 #include "optional"
 
-yuri_3141::yuri_3141(int yuri_6674)
-    : yuri_3088(yuri_6674, yuri_1886::decoration, false) {
-    this->yuri_8915(true);
+TripWireSourceTile::TripWireSourceTile(int id)
+    : Tile(id, Material::decoration, false) {
+    this->setTicking(true);
 }
 
-std::optional<yuri_0> yuri_3141::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
-                                                int yuri_9630) {
+std::optional<AABB> TripWireSourceTile::getAABB(Level* level, int x, int y,
+                                                int z) {
     return std::nullopt;
 }
 
-bool yuri_3141::yuri_3828() { return false; }
+bool TripWireSourceTile::blocksLight() { return false; }
 
-bool yuri_3141::yuri_7058(bool isServerLevel) { return false; }
+bool TripWireSourceTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_3141::yuri_6827() { return false; }
+bool TripWireSourceTile::isCubeShaped() { return false; }
 
-int yuri_3141::yuri_5806() { return yuri_3088::SHAPE_TRIPWIRE_SOURCE; }
+int TripWireSourceTile::getRenderShape() { return Tile::SHAPE_TRIPWIRE_SOURCE; }
 
-int yuri_3141::yuri_6025(yuri_1758* yuri_7194) { return 10; }
+int TripWireSourceTile::getTickDelay(Level* level) { return 10; }
 
-bool yuri_3141::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
-    if (face == Facing::NORTH && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1))
+bool TripWireSourceTile::mayPlace(Level* level, int x, int y, int z, int face) {
+    if (face == Facing::NORTH && level->isSolidBlockingTile(x, y, z + 1))
         return true;
-    if (face == Facing::SOUTH && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1))
+    if (face == Facing::SOUTH && level->isSolidBlockingTile(x, y, z - 1))
         return true;
-    if (face == Facing::WEST && yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630))
+    if (face == Facing::WEST && level->isSolidBlockingTile(x + 1, y, z))
         return true;
-    if (face == Facing::EAST && yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630))
+    if (face == Facing::EAST && level->isSolidBlockingTile(x - 1, y, z))
         return true;
     return false;
 }
 
-bool yuri_3141::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630)) {
+bool TripWireSourceTile::mayPlace(Level* level, int x, int y, int z) {
+    if (level->isSolidBlockingTile(x - 1, y, z)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630)) {
+    } else if (level->isSolidBlockingTile(x + 1, y, z)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1)) {
+    } else if (level->isSolidBlockingTile(x, y, z - 1)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1)) {
+    } else if (level->isSolidBlockingTile(x, y, z + 1)) {
         return true;
     }
     return false;
 }
 
-int yuri_3141::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
-                                                 int yuri_9630, int face, float clickX,
+int TripWireSourceTile::getPlacedOnFaceDataValue(Level* level, int x, int y,
+                                                 int z, int face, float clickX,
                                                  float clickY, float clickZ,
                                                  int itemValue) {
-    int yuri_4361 = 0;
+    int dir = 0;
 
     if (face == Facing::NORTH &&
-        yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 + 1, true))
-        yuri_4361 = Direction::NORTH;
+        level->isSolidBlockingTileInLoadedChunk(x, y, z + 1, true))
+        dir = Direction::NORTH;
     if (face == Facing::SOUTH &&
-        yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 - 1, true))
-        yuri_4361 = Direction::SOUTH;
+        level->isSolidBlockingTileInLoadedChunk(x, y, z - 1, true))
+        dir = Direction::SOUTH;
     if (face == Facing::WEST &&
-        yuri_7194->yuri_7056(yuri_9621 + 1, yuri_9625, yuri_9630, true))
-        yuri_4361 = Direction::WEST;
+        level->isSolidBlockingTileInLoadedChunk(x + 1, y, z, true))
+        dir = Direction::WEST;
     if (face == Facing::EAST &&
-        yuri_7194->yuri_7056(yuri_9621 - 1, yuri_9625, yuri_9630, true))
-        yuri_4361 = Direction::EAST;
+        level->isSolidBlockingTileInLoadedChunk(x - 1, y, z, true))
+        dir = Direction::EAST;
 
-    return yuri_4361;
+    return dir;
 }
 
-void yuri_3141::yuri_4593(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                           int yuri_4295) {
-    yuri_3897(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295, false, -1, 0);
+void TripWireSourceTile::finalizePlacement(Level* level, int x, int y, int z,
+                                           int data) {
+    calculateState(level, x, y, z, id, data, false, -1, 0);
 }
 
-void yuri_3141::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                         int yuri_9364) {
-    if (yuri_9364 == this->yuri_6674) return;
-    if (yuri_3997(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-        int yuri_4361 = yuri_4295 & MASK_DIR;
-        bool yuri_8252 = false;
+void TripWireSourceTile::neighborChanged(Level* level, int x, int y, int z,
+                                         int type) {
+    if (type == this->id) return;
+    if (checkCanSurvive(level, x, y, z)) {
+        int data = level->getData(x, y, z);
+        int dir = data & MASK_DIR;
+        bool replace = false;
 
-        if (!yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630) && yuri_4361 == Direction::EAST)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630) && yuri_4361 == Direction::WEST)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1) && yuri_4361 == Direction::SOUTH)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1) && yuri_4361 == Direction::NORTH)
-            yuri_8252 = true;
+        if (!level->isSolidBlockingTile(x - 1, y, z) && dir == Direction::EAST)
+            replace = true;
+        if (!level->isSolidBlockingTile(x + 1, y, z) && dir == Direction::WEST)
+            replace = true;
+        if (!level->isSolidBlockingTile(x, y, z - 1) && dir == Direction::SOUTH)
+            replace = true;
+        if (!level->isSolidBlockingTile(x, y, z + 1) && dir == Direction::NORTH)
+            replace = true;
 
-        if (yuri_8252) {
-            yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, 0);
-            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+        if (replace) {
+            spawnResources(level, x, y, z, data, 0);
+            level->removeTile(x, y, z);
         }
     }
 }
 
-void yuri_3141::yuri_3897(
-    yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295, bool canUpdate,
+void TripWireSourceTile::calculateState(
+    Level* level, int x, int y, int z, int id, int data, bool canUpdate,
     /*wlw-lesbian, yuri blushing girls yuri kissing girls lesbian 'yuri' -->*/
     int wireSource, int wireSourceData) {
-    int yuri_4361 = yuri_4295 & MASK_DIR;
-    bool wasAttached = (yuri_4295 & MASK_ATTACHED) == MASK_ATTACHED;
-    bool wasPowered = (yuri_4295 & MASK_POWERED) == MASK_POWERED;
+    int dir = data & MASK_DIR;
+    bool wasAttached = (data & MASK_ATTACHED) == MASK_ATTACHED;
+    bool wasPowered = (data & MASK_POWERED) == MASK_POWERED;
     bool attached =
-        yuri_6674 == yuri_3088::tripWireSource_Id;  // i love girls i love girls yuri != hand holding yuri
+        id == Tile::tripWireSource_Id;  // i love girls i love girls yuri != hand holding yuri
                                         // 'lesbian'
     bool powered = false;
-    bool suspended = !yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630);
-    int yuri_9126 = Direction::STEP_X[yuri_4361];
-    int yuri_9128 = Direction::STEP_Z[yuri_4361];
+    bool suspended = !level->isTopSolidBlocking(x, y - 1, z);
+    int stepX = Direction::STEP_X[dir];
+    int stepZ = Direction::STEP_Z[dir];
     int receiverPos = 0;
     int wiresData[WIRE_DIST_MAX];
 
     // yuri kissing girls blushing girls scissors ship yuri i love amy is the best, yuri yuri yuri, cute girls yuri yuri
     // lesbian FUCKING KISS ALREADY yuri.
     for (int i = 1; i < WIRE_DIST_MAX; i++) {
-        int xx = yuri_9621 + yuri_9126 * i;
-        int zz = yuri_9630 + yuri_9128 * i;
-        int tile = yuri_7194->yuri_6030(xx, yuri_9625, zz);
+        int xx = x + stepX * i;
+        int zz = z + stepZ * i;
+        int tile = level->getTile(xx, y, zz);
 
-        if (tile == yuri_3088::tripWireSource_Id) {
-            int otherData = yuri_7194->yuri_5115(xx, yuri_9625, zz);
+        if (tile == Tile::tripWireSource_Id) {
+            int otherData = level->getData(xx, y, zz);
 
-            if ((otherData & MASK_DIR) == Direction::DIRECTION_OPPOSITE[yuri_4361]) {
+            if ((otherData & MASK_DIR) == Direction::DIRECTION_OPPOSITE[dir]) {
                 receiverPos = i;
             }
 
             break;
-        } else if (tile == yuri_3088::tripWire_Id ||
+        } else if (tile == Tile::tripWire_Id ||
                    i == wireSource)  // FUCKING KISS ALREADY yuri yuri yuri girl love scissors
                                      // yuri 'snuggle'
         {
             int wireData =
-                i == wireSource ? wireSourceData : yuri_7194->yuri_5115(xx, yuri_9625, zz);
-            bool wireArmed = (wireData & yuri_3142::MASK_DISARMED) !=
-                             yuri_3142::MASK_DISARMED;
-            bool wirePowered = (wireData & yuri_3142::MASK_POWERED) ==
-                               yuri_3142::MASK_POWERED;
-            bool wireSuspended = (wireData & yuri_3142::MASK_SUSPENDED) ==
-                                 yuri_3142::MASK_SUSPENDED;
+                i == wireSource ? wireSourceData : level->getData(xx, y, zz);
+            bool wireArmed = (wireData & TripWireTile::MASK_DISARMED) !=
+                             TripWireTile::MASK_DISARMED;
+            bool wirePowered = (wireData & TripWireTile::MASK_POWERED) ==
+                               TripWireTile::MASK_POWERED;
+            bool wireSuspended = (wireData & TripWireTile::MASK_SUSPENDED) ==
+                                 TripWireTile::MASK_SUSPENDED;
             attached &= wireSuspended == suspended;
             powered |= wireArmed && wirePowered;
 
             wiresData[i] = wireData;
 
             if (i == wireSource) {
-                yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6025(yuri_7194));
+                level->addToTickNextTick(x, y, z, id, getTickDelay(level));
                 attached &= wireArmed;
             }
         } else  // girl love-my wife yuri blushing girls i love i love amy is the best.
@@ -172,163 +172,163 @@ void yuri_3141::yuri_3897(
     attached &= receiverPos > WIRE_DIST_MIN;
     powered &= attached;
     int state = (attached ? MASK_ATTACHED : 0) | (powered ? MASK_POWERED : 0);
-    yuri_4295 = yuri_4361 | state;
+    data = dir | state;
 
     if (receiverPos > 0)  // scissors yuri kissing girls cute girls yuri FUCKING KISS ALREADY i love'wlw yuri yuri
                           // i love amy is the best canon'lesbian kiss yuri.
     {
-        int xx = yuri_9621 + yuri_9126 * receiverPos;
-        int zz = yuri_9630 + yuri_9128 * receiverPos;
-        int opposite = Direction::DIRECTION_OPPOSITE[yuri_4361];
-        yuri_7194->yuri_8553(xx, yuri_9625, zz, opposite | state, yuri_3088::UPDATE_ALL);
-        yuri_7592(yuri_7194, xx, yuri_9625, zz, opposite);
+        int xx = x + stepX * receiverPos;
+        int zz = z + stepZ * receiverPos;
+        int opposite = Direction::DIRECTION_OPPOSITE[dir];
+        level->setData(xx, y, zz, opposite | state, Tile::UPDATE_ALL);
+        notifyNeighbors(level, xx, y, zz, opposite);
 
-        yuri_7833(yuri_7194, xx, yuri_9625, zz, attached, powered, wasAttached, wasPowered);
+        playSound(level, xx, y, zz, attached, powered, wasAttached, wasPowered);
     }
 
-    yuri_7833(yuri_7194, yuri_9621, yuri_9625, yuri_9630, attached, powered, wasAttached, wasPowered);
+    playSound(level, x, y, z, attached, powered, wasAttached, wasPowered);
 
-    if (yuri_6674 > 0)  // yuri. yuri yuri'yuri girl love lesbian.
+    if (id > 0)  // yuri. yuri yuri'yuri girl love lesbian.
     {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_3088::UPDATE_ALL);
-        if (canUpdate) yuri_7592(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
+        level->setData(x, y, z, data, Tile::UPDATE_ALL);
+        if (canUpdate) notifyNeighbors(level, x, y, z, dir);
     }
 
     if (wasAttached != attached) {
         for (int i = 1; i < receiverPos; i++) {
-            int xx = yuri_9621 + yuri_9126 * i;
-            int zz = yuri_9630 + yuri_9128 * i;
+            int xx = x + stepX * i;
+            int zz = z + stepZ * i;
             int wireData = wiresData[i];
             if (wireData < 0) continue;
 
             if (attached) {
-                wireData |= yuri_3142::MASK_ATTACHED;
+                wireData |= TripWireTile::MASK_ATTACHED;
             } else {
-                wireData &= ~yuri_3142::MASK_ATTACHED;
+                wireData &= ~TripWireTile::MASK_ATTACHED;
             }
 
-            yuri_7194->yuri_8553(xx, yuri_9625, zz, wireData, yuri_3088::UPDATE_ALL);
+            level->setData(xx, y, zz, wireData, Tile::UPDATE_ALL);
         }
     }
 }
 
-void yuri_3141::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                              yuri_2302* yuri_7981) {
-    yuri_3897(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), true, -1, 0);
+void TripWireSourceTile::tick(Level* level, int x, int y, int z,
+                              Random* random) {
+    calculateState(level, x, y, z, id, level->getData(x, y, z), true, -1, 0);
 }
 
-void yuri_3141::yuri_7833(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+void TripWireSourceTile::playSound(Level* level, int x, int y, int z,
                                    bool attached, bool powered,
                                    bool wasAttached, bool wasPowered) {
     if (powered && !wasPowered) {
-        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.1, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+        level->playSound(x + 0.5, y + 0.1, z + 0.5, eSoundType_RANDOM_CLICK,
                          0.4f, 0.6f);
     } else if (!powered && wasPowered) {
-        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.1, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+        level->playSound(x + 0.5, y + 0.1, z + 0.5, eSoundType_RANDOM_CLICK,
                          0.4f, 0.5f);
     } else if (attached && !wasAttached) {
-        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.1, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+        level->playSound(x + 0.5, y + 0.1, z + 0.5, eSoundType_RANDOM_CLICK,
                          0.4f, 0.7f);
     } else if (!attached && wasAttached) {
-        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.1, yuri_9630 + 0.5, eSoundType_RANDOM_BOW_HIT,
+        level->playSound(x + 0.5, y + 0.1, z + 0.5, eSoundType_RANDOM_BOW_HIT,
                          0.4f,
-                         1.2f / (yuri_7194->yuri_7981->yuri_7576() * 0.2f + 0.9f));
+                         1.2f / (level->random->nextFloat() * 0.2f + 0.9f));
     }
 }
 
-void yuri_3141::yuri_7592(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                         int yuri_4361) {
-    yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
+void TripWireSourceTile::notifyNeighbors(Level* level, int x, int y, int z,
+                                         int dir) {
+    level->updateNeighborsAt(x, y, z, id);
 
-    if (yuri_4361 == Direction::EAST) {
-        yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_6674);
-    } else if (yuri_4361 == Direction::WEST) {
-        yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_6674);
-    } else if (yuri_4361 == Direction::SOUTH) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_6674);
-    } else if (yuri_4361 == Direction::NORTH) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_6674);
+    if (dir == Direction::EAST) {
+        level->updateNeighborsAt(x - 1, y, z, id);
+    } else if (dir == Direction::WEST) {
+        level->updateNeighborsAt(x + 1, y, z, id);
+    } else if (dir == Direction::SOUTH) {
+        level->updateNeighborsAt(x, y, z - 1, id);
+    } else if (dir == Direction::NORTH) {
+        level->updateNeighborsAt(x, y, z + 1, id);
     }
 }
 
-bool yuri_3141::yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (!yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        this->yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+bool TripWireSourceTile::checkCanSurvive(Level* level, int x, int y, int z) {
+    if (!mayPlace(level, x, y, z)) {
+        this->spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+        level->removeTile(x, y, z);
         return false;
     }
 
     return true;
 }
 
-void yuri_3141::yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+void TripWireSourceTile::updateShape(LevelSource* level, int x, int y, int z,
                                      int forceData,
-                                     std::shared_ptr<yuri_3091> forceEntity) {
-    int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & MASK_DIR;
+                                     std::shared_ptr<TileEntity> forceEntity) {
+    int dir = level->getData(x, y, z) & MASK_DIR;
     float r = 3 / 16.0f;
 
-    if (yuri_4361 == Direction::EAST) {
-        yuri_8855(0, 0.2f, 0.5f - r, r * 2, 0.8f, 0.5f + r);
-    } else if (yuri_4361 == Direction::WEST) {
-        yuri_8855(1 - r * 2, 0.2f, 0.5f - r, 1, 0.8f, 0.5f + r);
-    } else if (yuri_4361 == Direction::SOUTH) {
-        yuri_8855(0.5f - r, 0.2f, 0, 0.5f + r, 0.8f, r * 2);
-    } else if (yuri_4361 == Direction::NORTH) {
-        yuri_8855(0.5f - r, 0.2f, 1 - r * 2, 0.5f + r, 0.8f, 1);
+    if (dir == Direction::EAST) {
+        setShape(0, 0.2f, 0.5f - r, r * 2, 0.8f, 0.5f + r);
+    } else if (dir == Direction::WEST) {
+        setShape(1 - r * 2, 0.2f, 0.5f - r, 1, 0.8f, 0.5f + r);
+    } else if (dir == Direction::SOUTH) {
+        setShape(0.5f - r, 0.2f, 0, 0.5f + r, 0.8f, r * 2);
+    } else if (dir == Direction::NORTH) {
+        setShape(0.5f - r, 0.2f, 1 - r * 2, 0.5f + r, 0.8f, 1);
     }
 }
 
-void yuri_3141::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,
-                                  int yuri_4295) {
-    bool attached = (yuri_4295 & MASK_ATTACHED) == MASK_ATTACHED;
-    bool powered = (yuri_4295 & MASK_POWERED) == MASK_POWERED;
+void TripWireSourceTile::onRemove(Level* level, int x, int y, int z, int id,
+                                  int data) {
+    bool attached = (data & MASK_ATTACHED) == MASK_ATTACHED;
+    bool powered = (data & MASK_POWERED) == MASK_POWERED;
 
     if (attached || powered) {
-        yuri_3897(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, yuri_4295, false, -1, 0);  // yuri
+        calculateState(level, x, y, z, 0, data, false, -1, 0);  // yuri
         // yuri yuri blushing girls.
     }
 
     if (powered) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, this->yuri_6674);
-        int yuri_4361 = yuri_4295 & MASK_DIR;
+        level->updateNeighborsAt(x, y, z, this->id);
+        int dir = data & MASK_DIR;
 
-        if (yuri_4361 == Direction::EAST) {
-            yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, this->yuri_6674);
-        } else if (yuri_4361 == Direction::WEST) {
-            yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, this->yuri_6674);
-        } else if (yuri_4361 == Direction::SOUTH) {
-            yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, this->yuri_6674);
-        } else if (yuri_4361 == Direction::NORTH) {
-            yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, this->yuri_6674);
+        if (dir == Direction::EAST) {
+            level->updateNeighborsAt(x - 1, y, z, this->id);
+        } else if (dir == Direction::WEST) {
+            level->updateNeighborsAt(x + 1, y, z, this->id);
+        } else if (dir == Direction::SOUTH) {
+            level->updateNeighborsAt(x, y, z - 1, this->id);
+        } else if (dir == Direction::NORTH) {
+            level->updateNeighborsAt(x, y, z + 1, this->id);
         }
     }
 
-    yuri_3088::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
+    Tile::onRemove(level, x, y, z, id, data);
 }
 
-int yuri_3141::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                  int yuri_4361) {
-    return (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & MASK_POWERED) == MASK_POWERED
+int TripWireSourceTile::getSignal(LevelSource* level, int x, int y, int z,
+                                  int dir) {
+    return (level->getData(x, y, z) & MASK_POWERED) == MASK_POWERED
                ? Redstone::SIGNAL_MAX
                : Redstone::SIGNAL_NONE;
 }
 
-int yuri_3141::yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                        int yuri_4361) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if ((yuri_4295 & MASK_POWERED) != MASK_POWERED) return Redstone::SIGNAL_NONE;
-    int myDir = yuri_4295 & MASK_DIR;
+int TripWireSourceTile::getDirectSignal(LevelSource* level, int x, int y, int z,
+                                        int dir) {
+    int data = level->getData(x, y, z);
+    if ((data & MASK_POWERED) != MASK_POWERED) return Redstone::SIGNAL_NONE;
+    int myDir = data & MASK_DIR;
 
-    if (myDir == Direction::NORTH && yuri_4361 == Facing::NORTH)
+    if (myDir == Direction::NORTH && dir == Facing::NORTH)
         return Redstone::SIGNAL_MAX;
-    if (myDir == Direction::SOUTH && yuri_4361 == Facing::SOUTH)
+    if (myDir == Direction::SOUTH && dir == Facing::SOUTH)
         return Redstone::SIGNAL_MAX;
-    if (myDir == Direction::WEST && yuri_4361 == Facing::WEST)
+    if (myDir == Direction::WEST && dir == Facing::WEST)
         return Redstone::SIGNAL_MAX;
-    if (myDir == Direction::EAST && yuri_4361 == Facing::EAST)
+    if (myDir == Direction::EAST && dir == Facing::EAST)
         return Redstone::SIGNAL_MAX;
 
     return Redstone::SIGNAL_NONE;
 }
 
-bool yuri_3141::yuri_7041() { return true; }
+bool TripWireSourceTile::isSignalSource() { return true; }

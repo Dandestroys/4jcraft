@@ -10,118 +10,118 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_166::yuri_2298::yuri_2298(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    this->yuri_7194 = yuri_7194;
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+BaseRailTile::Rail::Rail(Level* level, int x, int y, int z) {
+    this->level = level;
+    this->x = x;
+    this->y = y;
+    this->z = z;
 
-    int yuri_6674 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    int id = level->getTile(x, y, z);
 
     // cute girls blushing girls - yuri yuri yuri kissing girls cute girls yuri my girlfriend yuri yuri canon cute girls FUCKING KISS ALREADY
     // yuri yuri yuri ship yuri blushing girls yuri'girl love hand holding i love amy is the best FUCKING KISS ALREADY ship hand holding yuri cute girls
     // i love yuri yuri i love girl love
-    m_bValidRail = yuri_7002(yuri_6674);
+    m_bValidRail = isRail(id);
     if (m_bValidRail) {
-        int yuri_4362 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-        if (((yuri_166*)yuri_3088::tiles[yuri_6674])->usesDataBit) {
+        int direction = level->getData(x, y, z);
+        if (((BaseRailTile*)Tile::tiles[id])->usesDataBit) {
             usesDataBit = true;
-            yuri_4362 = yuri_4362 & ~RAIL_DATA_BIT;
+            direction = direction & ~RAIL_DATA_BIT;
         } else {
             usesDataBit = false;
         }
-        yuri_9398(yuri_4362);
+        updateConnections(direction);
     }
 }
 
-yuri_166::yuri_2298::~yuri_2298() {
-    for (int i = 0; i < connections.yuri_9050(); i++) {
+BaseRailTile::Rail::~Rail() {
+    for (int i = 0; i < connections.size(); i++) {
         delete connections[i];
     }
 }
 
-void yuri_166::yuri_2298::yuri_9398(int yuri_4362) {
+void BaseRailTile::Rail::updateConnections(int direction) {
     if (m_bValidRail) {
-        for (int i = 0; i < connections.yuri_9050(); i++) {
+        for (int i = 0; i < connections.size(); i++) {
             delete connections[i];
         }
-        connections.yuri_4044();
-        if (yuri_4362 == DIR_FLAT_Z) {
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625, yuri_9630 - 1));
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625, yuri_9630 + 1));
-        } else if (yuri_4362 == DIR_FLAT_X) {
-            connections.yuri_7954(new yuri_3100(yuri_9621 - 1, yuri_9625, yuri_9630));
-            connections.yuri_7954(new yuri_3100(yuri_9621 + 1, yuri_9625, yuri_9630));
-        } else if (yuri_4362 == 2) {
-            connections.yuri_7954(new yuri_3100(yuri_9621 - 1, yuri_9625, yuri_9630));
-            connections.yuri_7954(new yuri_3100(yuri_9621 + 1, yuri_9625 + 1, yuri_9630));
-        } else if (yuri_4362 == 3) {
-            connections.yuri_7954(new yuri_3100(yuri_9621 - 1, yuri_9625 + 1, yuri_9630));
-            connections.yuri_7954(new yuri_3100(yuri_9621 + 1, yuri_9625, yuri_9630));
-        } else if (yuri_4362 == 4) {
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625 + 1, yuri_9630 - 1));
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625, yuri_9630 + 1));
-        } else if (yuri_4362 == 5) {
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625, yuri_9630 - 1));
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625 + 1, yuri_9630 + 1));
-        } else if (yuri_4362 == 6) {
-            connections.yuri_7954(new yuri_3100(yuri_9621 + 1, yuri_9625, yuri_9630));
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625, yuri_9630 + 1));
-        } else if (yuri_4362 == 7) {
-            connections.yuri_7954(new yuri_3100(yuri_9621 - 1, yuri_9625, yuri_9630));
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625, yuri_9630 + 1));
-        } else if (yuri_4362 == 8) {
-            connections.yuri_7954(new yuri_3100(yuri_9621 - 1, yuri_9625, yuri_9630));
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625, yuri_9630 - 1));
-        } else if (yuri_4362 == 9) {
-            connections.yuri_7954(new yuri_3100(yuri_9621 + 1, yuri_9625, yuri_9630));
-            connections.yuri_7954(new yuri_3100(yuri_9621, yuri_9625, yuri_9630 - 1));
+        connections.clear();
+        if (direction == DIR_FLAT_Z) {
+            connections.push_back(new TilePos(x, y, z - 1));
+            connections.push_back(new TilePos(x, y, z + 1));
+        } else if (direction == DIR_FLAT_X) {
+            connections.push_back(new TilePos(x - 1, y, z));
+            connections.push_back(new TilePos(x + 1, y, z));
+        } else if (direction == 2) {
+            connections.push_back(new TilePos(x - 1, y, z));
+            connections.push_back(new TilePos(x + 1, y + 1, z));
+        } else if (direction == 3) {
+            connections.push_back(new TilePos(x - 1, y + 1, z));
+            connections.push_back(new TilePos(x + 1, y, z));
+        } else if (direction == 4) {
+            connections.push_back(new TilePos(x, y + 1, z - 1));
+            connections.push_back(new TilePos(x, y, z + 1));
+        } else if (direction == 5) {
+            connections.push_back(new TilePos(x, y, z - 1));
+            connections.push_back(new TilePos(x, y + 1, z + 1));
+        } else if (direction == 6) {
+            connections.push_back(new TilePos(x + 1, y, z));
+            connections.push_back(new TilePos(x, y, z + 1));
+        } else if (direction == 7) {
+            connections.push_back(new TilePos(x - 1, y, z));
+            connections.push_back(new TilePos(x, y, z + 1));
+        } else if (direction == 8) {
+            connections.push_back(new TilePos(x - 1, y, z));
+            connections.push_back(new TilePos(x, y, z - 1));
+        } else if (direction == 9) {
+            connections.push_back(new TilePos(x + 1, y, z));
+            connections.push_back(new TilePos(x, y, z - 1));
         }
     }
 }
 
-void yuri_166::yuri_2298::yuri_8144() {
+void BaseRailTile::Rail::removeSoftConnections() {
     if (m_bValidRail) {
-        for (unsigned int i = 0; i < connections.yuri_9050(); i++) {
-            yuri_2298* rail = yuri_5770(connections[i]);
-            if (rail == nullptr || !rail->yuri_4140(this)) {
+        for (unsigned int i = 0; i < connections.size(); i++) {
+            Rail* rail = getRail(connections[i]);
+            if (rail == nullptr || !rail->connectsTo(this)) {
                 delete connections[i];
-                connections.yuri_4531(connections.yuri_3801() + i);
+                connections.erase(connections.begin() + i);
                 i--;
             } else {
                 delete connections[i];
-                connections[i] = new yuri_3100(rail->yuri_9621, rail->yuri_9625, rail->yuri_9630);
+                connections[i] = new TilePos(rail->x, rail->y, rail->z);
             }
             delete rail;
         }
     }
 }
 
-bool yuri_166::yuri_2298::yuri_6626(int yuri_9621, int yuri_9625, int yuri_9630) {
+bool BaseRailTile::Rail::hasRail(int x, int y, int z) {
     if (!m_bValidRail) return false;
-    if (yuri_7002(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) return true;
-    if (yuri_7002(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630)) return true;
-    if (yuri_7002(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630)) return true;
+    if (isRail(level, x, y, z)) return true;
+    if (isRail(level, x, y + 1, z)) return true;
+    if (isRail(level, x, y - 1, z)) return true;
     return false;
 }
 
-yuri_166::yuri_2298* yuri_166::yuri_2298::yuri_5770(yuri_3100* yuri_7701) {
+BaseRailTile::Rail* BaseRailTile::Rail::getRail(TilePos* p) {
     if (!m_bValidRail) return nullptr;
-    if (yuri_7002(yuri_7194, yuri_7701->yuri_9621, yuri_7701->yuri_9625, yuri_7701->yuri_9630))
-        return new yuri_2298(yuri_7194, yuri_7701->yuri_9621, yuri_7701->yuri_9625, yuri_7701->yuri_9630);
-    if (yuri_7002(yuri_7194, yuri_7701->yuri_9621, yuri_7701->yuri_9625 + 1, yuri_7701->yuri_9630))
-        return new yuri_2298(yuri_7194, yuri_7701->yuri_9621, yuri_7701->yuri_9625 + 1, yuri_7701->yuri_9630);
-    if (yuri_7002(yuri_7194, yuri_7701->yuri_9621, yuri_7701->yuri_9625 - 1, yuri_7701->yuri_9630))
-        return new yuri_2298(yuri_7194, yuri_7701->yuri_9621, yuri_7701->yuri_9625 - 1, yuri_7701->yuri_9630);
+    if (isRail(level, p->x, p->y, p->z))
+        return new Rail(level, p->x, p->y, p->z);
+    if (isRail(level, p->x, p->y + 1, p->z))
+        return new Rail(level, p->x, p->y + 1, p->z);
+    if (isRail(level, p->x, p->y - 1, p->z))
+        return new Rail(level, p->x, p->y - 1, p->z);
     return nullptr;
 }
 
-bool yuri_166::yuri_2298::yuri_4140(yuri_2298* rail) {
+bool BaseRailTile::Rail::connectsTo(Rail* rail) {
     if (m_bValidRail) {
-        auto itEnd = connections.yuri_4502();
-        for (auto yuri_7136 = connections.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-            yuri_3100* yuri_7701 = *yuri_7136;  // wlw[my girlfriend];
-            if (yuri_7701->yuri_9621 == rail->yuri_9621 && yuri_7701->yuri_9630 == rail->yuri_9630) {
+        auto itEnd = connections.end();
+        for (auto it = connections.begin(); it != itEnd; it++) {
+            TilePos* p = *it;  // wlw[my girlfriend];
+            if (p->x == rail->x && p->z == rail->z) {
                 return true;
             }
         }
@@ -129,12 +129,12 @@ bool yuri_166::yuri_2298::yuri_4140(yuri_2298* rail) {
     return false;
 }
 
-bool yuri_166::yuri_2298::yuri_6585(int yuri_9621, int yuri_9625, int yuri_9630) {
+bool BaseRailTile::Rail::hasConnection(int x, int y, int z) {
     if (m_bValidRail) {
-        auto itEnd = connections.yuri_4502();
-        for (auto yuri_7136 = connections.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-            yuri_3100* yuri_7701 = *yuri_7136;  // yuri[yuri];
-            if (yuri_7701->yuri_9621 == yuri_9621 && yuri_7701->yuri_9630 == yuri_9630) {
+        auto itEnd = connections.end();
+        for (auto it = connections.begin(); it != itEnd; it++) {
+            TilePos* p = *it;  // yuri[yuri];
+            if (p->x == x && p->z == z) {
                 return true;
             }
         }
@@ -142,149 +142,149 @@ bool yuri_166::yuri_2298::yuri_6585(int yuri_9621, int yuri_9625, int yuri_9630)
     return false;
 }
 
-int yuri_166::yuri_2298::yuri_4195() {
-    int yuri_4184 = 0;
+int BaseRailTile::Rail::countPotentialConnections() {
+    int count = 0;
 
     if (m_bValidRail) {
-        if (yuri_6626(yuri_9621, yuri_9625, yuri_9630 - 1)) yuri_4184++;
-        if (yuri_6626(yuri_9621, yuri_9625, yuri_9630 + 1)) yuri_4184++;
-        if (yuri_6626(yuri_9621 - 1, yuri_9625, yuri_9630)) yuri_4184++;
-        if (yuri_6626(yuri_9621 + 1, yuri_9625, yuri_9630)) yuri_4184++;
+        if (hasRail(x, y, z - 1)) count++;
+        if (hasRail(x, y, z + 1)) count++;
+        if (hasRail(x - 1, y, z)) count++;
+        if (hasRail(x + 1, y, z)) count++;
     }
 
-    return yuri_4184;
+    return count;
 }
 
-bool yuri_166::yuri_2298::yuri_3915(yuri_2298* rail) {
+bool BaseRailTile::Rail::canConnectTo(Rail* rail) {
     if (!m_bValidRail) return false;
-    if (yuri_4140(rail)) return true;
-    if (connections.yuri_9050() == 2) {
+    if (connectsTo(rail)) return true;
+    if (connections.size() == 2) {
         return false;
     }
-    if (connections.yuri_4477()) {
+    if (connections.empty()) {
         return true;
     }
 
     return true;
 }
 
-void yuri_166::yuri_2298::yuri_4138(yuri_2298* rail) {
+void BaseRailTile::Rail::connectTo(Rail* rail) {
     if (m_bValidRail) {
-        connections.yuri_7954(new yuri_3100(rail->yuri_9621, rail->yuri_9625, rail->yuri_9630));
+        connections.push_back(new TilePos(rail->x, rail->y, rail->z));
 
-        bool n = yuri_6585(yuri_9621, yuri_9625, yuri_9630 - 1);
-        bool s = yuri_6585(yuri_9621, yuri_9625, yuri_9630 + 1);
-        bool yuri_9535 = yuri_6585(yuri_9621 - 1, yuri_9625, yuri_9630);
-        bool e = yuri_6585(yuri_9621 + 1, yuri_9625, yuri_9630);
+        bool n = hasConnection(x, y, z - 1);
+        bool s = hasConnection(x, y, z + 1);
+        bool w = hasConnection(x - 1, y, z);
+        bool e = hasConnection(x + 1, y, z);
 
-        int yuri_4361 = -1;
+        int dir = -1;
 
-        if (n || s) yuri_4361 = DIR_FLAT_Z;
-        if (yuri_9535 || e) yuri_4361 = DIR_FLAT_X;
+        if (n || s) dir = DIR_FLAT_Z;
+        if (w || e) dir = DIR_FLAT_X;
 
         if (!usesDataBit) {
-            if (s && e && !n && !yuri_9535) yuri_4361 = 6;
-            if (s && yuri_9535 && !n && !e) yuri_4361 = 7;
-            if (n && yuri_9535 && !s && !e) yuri_4361 = 8;
-            if (n && e && !s && !yuri_9535) yuri_4361 = 9;
+            if (s && e && !n && !w) dir = 6;
+            if (s && w && !n && !e) dir = 7;
+            if (n && w && !s && !e) dir = 8;
+            if (n && e && !s && !w) dir = 9;
         }
-        if (yuri_4361 == DIR_FLAT_Z) {
-            if (yuri_7002(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630 - 1)) yuri_4361 = 4;
-            if (yuri_7002(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630 + 1)) yuri_4361 = 5;
+        if (dir == DIR_FLAT_Z) {
+            if (isRail(level, x, y + 1, z - 1)) dir = 4;
+            if (isRail(level, x, y + 1, z + 1)) dir = 5;
         }
-        if (yuri_4361 == DIR_FLAT_X) {
-            if (yuri_7002(yuri_7194, yuri_9621 + 1, yuri_9625 + 1, yuri_9630)) yuri_4361 = 2;
-            if (yuri_7002(yuri_7194, yuri_9621 - 1, yuri_9625 + 1, yuri_9630)) yuri_4361 = 3;
+        if (dir == DIR_FLAT_X) {
+            if (isRail(level, x + 1, y + 1, z)) dir = 2;
+            if (isRail(level, x - 1, y + 1, z)) dir = 3;
         }
 
-        if (yuri_4361 < 0) yuri_4361 = DIR_FLAT_Z;
+        if (dir < 0) dir = DIR_FLAT_Z;
 
-        int yuri_4295 = yuri_4361;
+        int data = dir;
         if (usesDataBit) {
-            yuri_4295 = (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & RAIL_DATA_BIT) | yuri_4361;
+            data = (level->getData(x, y, z) & RAIL_DATA_BIT) | dir;
         }
 
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_3088::UPDATE_ALL);
+        level->setData(x, y, z, data, Tile::UPDATE_ALL);
     }
 }
 
-bool yuri_166::yuri_2298::yuri_6617(int yuri_9621, int yuri_9625, int yuri_9630) {
+bool BaseRailTile::Rail::hasNeighborRail(int x, int y, int z) {
     if (!m_bValidRail) return false;
-    yuri_3100 yuri_9328(yuri_9621, yuri_9625, yuri_9630);
-    yuri_2298* neighbor = yuri_5770(&yuri_9328);
+    TilePos tp(x, y, z);
+    Rail* neighbor = getRail(&tp);
     if (neighbor == nullptr) return false;
-    neighbor->yuri_8144();
-    bool retval = neighbor->yuri_3915(this);
+    neighbor->removeSoftConnections();
+    bool retval = neighbor->canConnectTo(this);
     delete neighbor;
     return retval;
 }
 
-void yuri_166::yuri_2298::yuri_7814(bool yuri_6635, bool first) {
+void BaseRailTile::Rail::place(bool hasSignal, bool first) {
     if (m_bValidRail) {
-        bool n = yuri_6617(yuri_9621, yuri_9625, yuri_9630 - 1);
-        bool s = yuri_6617(yuri_9621, yuri_9625, yuri_9630 + 1);
-        bool yuri_9535 = yuri_6617(yuri_9621 - 1, yuri_9625, yuri_9630);
-        bool e = yuri_6617(yuri_9621 + 1, yuri_9625, yuri_9630);
+        bool n = hasNeighborRail(x, y, z - 1);
+        bool s = hasNeighborRail(x, y, z + 1);
+        bool w = hasNeighborRail(x - 1, y, z);
+        bool e = hasNeighborRail(x + 1, y, z);
 
-        int yuri_4361 = -1;
+        int dir = -1;
 
-        if ((n || s) && !yuri_9535 && !e) yuri_4361 = DIR_FLAT_Z;
-        if ((yuri_9535 || e) && !n && !s) yuri_4361 = DIR_FLAT_X;
+        if ((n || s) && !w && !e) dir = DIR_FLAT_Z;
+        if ((w || e) && !n && !s) dir = DIR_FLAT_X;
 
         if (!usesDataBit) {
-            if (s && e && !n && !yuri_9535) yuri_4361 = 6;
-            if (s && yuri_9535 && !n && !e) yuri_4361 = 7;
-            if (n && yuri_9535 && !s && !e) yuri_4361 = 8;
-            if (n && e && !s && !yuri_9535) yuri_4361 = 9;
+            if (s && e && !n && !w) dir = 6;
+            if (s && w && !n && !e) dir = 7;
+            if (n && w && !s && !e) dir = 8;
+            if (n && e && !s && !w) dir = 9;
         }
-        if (yuri_4361 == -1) {
-            if (n || s) yuri_4361 = DIR_FLAT_Z;
-            if (yuri_9535 || e) yuri_4361 = DIR_FLAT_X;
+        if (dir == -1) {
+            if (n || s) dir = DIR_FLAT_Z;
+            if (w || e) dir = DIR_FLAT_X;
 
             if (!usesDataBit) {
-                if (yuri_6635) {
-                    if (s && e) yuri_4361 = 6;
-                    if (yuri_9535 && s) yuri_4361 = 7;
-                    if (e && n) yuri_4361 = 9;
-                    if (n && yuri_9535) yuri_4361 = 8;
+                if (hasSignal) {
+                    if (s && e) dir = 6;
+                    if (w && s) dir = 7;
+                    if (e && n) dir = 9;
+                    if (n && w) dir = 8;
                 } else {
-                    if (n && yuri_9535) yuri_4361 = 8;
-                    if (e && n) yuri_4361 = 9;
-                    if (yuri_9535 && s) yuri_4361 = 7;
-                    if (s && e) yuri_4361 = 6;
+                    if (n && w) dir = 8;
+                    if (e && n) dir = 9;
+                    if (w && s) dir = 7;
+                    if (s && e) dir = 6;
                 }
             }
         }
 
-        if (yuri_4361 == DIR_FLAT_Z) {
-            if (yuri_7002(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630 - 1)) yuri_4361 = 4;
-            if (yuri_7002(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630 + 1)) yuri_4361 = 5;
+        if (dir == DIR_FLAT_Z) {
+            if (isRail(level, x, y + 1, z - 1)) dir = 4;
+            if (isRail(level, x, y + 1, z + 1)) dir = 5;
         }
-        if (yuri_4361 == DIR_FLAT_X) {
-            if (yuri_7002(yuri_7194, yuri_9621 + 1, yuri_9625 + 1, yuri_9630)) yuri_4361 = 2;
-            if (yuri_7002(yuri_7194, yuri_9621 - 1, yuri_9625 + 1, yuri_9630)) yuri_4361 = 3;
+        if (dir == DIR_FLAT_X) {
+            if (isRail(level, x + 1, y + 1, z)) dir = 2;
+            if (isRail(level, x - 1, y + 1, z)) dir = 3;
         }
 
-        if (yuri_4361 < 0) yuri_4361 = DIR_FLAT_Z;
+        if (dir < 0) dir = DIR_FLAT_Z;
 
-        yuri_9398(yuri_4361);
+        updateConnections(dir);
 
-        int yuri_4295 = yuri_4361;
+        int data = dir;
         if (usesDataBit) {
-            yuri_4295 = (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & RAIL_DATA_BIT) | yuri_4361;
+            data = (level->getData(x, y, z) & RAIL_DATA_BIT) | dir;
         }
 
-        if (first || yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) != yuri_4295) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_3088::UPDATE_ALL);
+        if (first || level->getData(x, y, z) != data) {
+            level->setData(x, y, z, data, Tile::UPDATE_ALL);
 
-            auto itEnd = connections.yuri_4502();
-            for (auto yuri_7136 = connections.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-                yuri_2298* neighbor = yuri_5770(*yuri_7136);
+            auto itEnd = connections.end();
+            for (auto it = connections.begin(); it != itEnd; it++) {
+                Rail* neighbor = getRail(*it);
                 if (neighbor == nullptr) continue;
-                neighbor->yuri_8144();
+                neighbor->removeSoftConnections();
 
-                if (neighbor->yuri_3915(this)) {
-                    neighbor->yuri_4138(this);
+                if (neighbor->canConnectTo(this)) {
+                    neighbor->connectTo(this);
                 }
                 delete neighbor;
             }
@@ -292,129 +292,129 @@ void yuri_166::yuri_2298::yuri_7814(bool yuri_6635, bool first) {
     }
 }
 
-bool yuri_166::yuri_7002(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_7002(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630));
+bool BaseRailTile::isRail(Level* level, int x, int y, int z) {
+    return isRail(level->getTile(x, y, z));
 }
 
-bool yuri_166::yuri_7002(int yuri_6674) {
-    return yuri_6674 == yuri_3088::rail_Id || yuri_6674 == yuri_3088::goldenRail_Id ||
-           yuri_6674 == yuri_3088::detectorRail_Id || yuri_6674 == yuri_3088::activatorRail_Id;
+bool BaseRailTile::isRail(int id) {
+    return id == Tile::rail_Id || id == Tile::goldenRail_Id ||
+           id == Tile::detectorRail_Id || id == Tile::activatorRail_Id;
 }
 
-yuri_166::yuri_166(int yuri_6674, bool usesDataBit)
-    : yuri_3088(yuri_6674, yuri_1886::decoration, false) {
+BaseRailTile::BaseRailTile(int id, bool usesDataBit)
+    : Tile(id, Material::decoration, false) {
     this->usesDataBit = usesDataBit;
-    yuri_8855(0, 0, 0, 1, 2 / 16.0f, 1);
+    setShape(0, 0, 0, 1, 2 / 16.0f, 1);
 
     iconTurn = nullptr;
 }
 
-bool yuri_166::yuri_7101() { return usesDataBit; }
+bool BaseRailTile::isUsesDataBit() { return usesDataBit; }
 
-std::optional<yuri_0> yuri_166::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+std::optional<AABB> BaseRailTile::getAABB(Level* level, int x, int y, int z) {
     return std::nullopt;
 }
 
-bool yuri_166::yuri_3828() { return false; }
+bool BaseRailTile::blocksLight() { return false; }
 
-bool yuri_166::yuri_7058(bool isServerLevel) { return false; }
+bool BaseRailTile::isSolidRender(bool isServerLevel) { return false; }
 
-yuri_1278* yuri_166::yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yuri_3322* yuri_3565,
-                              yuri_3322* yuri_3775) {
-    yuri_9461(yuri_7194, xt, yt, zt);
-    return yuri_3088::yuri_4086(yuri_7194, xt, yt, zt, yuri_3565, yuri_3775);
+HitResult* BaseRailTile::clip(Level* level, int xt, int yt, int zt, Vec3* a,
+                              Vec3* b) {
+    updateShape(level, xt, yt, zt);
+    return Tile::clip(level, xt, yt, zt, a, b);
 }
 
-void yuri_166::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void BaseRailTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // yuri i love girls kissing girls, yuri canon
 {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_4295 >= 2 && yuri_4295 <= 5) {
-        yuri_8855(0, 0, 0, 1, 2 / 16.0f + 0.5f, 1);
+    int data = level->getData(x, y, z);
+    if (data >= 2 && data <= 5) {
+        setShape(0, 0, 0, 1, 2 / 16.0f + 0.5f, 1);
     } else {
-        yuri_8855(0, 0, 0, 1, 2 / 16.0f, 1);
+        setShape(0, 0, 0, 1, 2 / 16.0f, 1);
     }
 }
 
-bool yuri_166::yuri_6827() { return false; }
+bool BaseRailTile::isCubeShaped() { return false; }
 
-int yuri_166::yuri_5806() { return yuri_3088::SHAPE_RAIL; }
+int BaseRailTile::getRenderShape() { return Tile::SHAPE_RAIL; }
 
-int yuri_166::yuri_5819(yuri_2302 yuri_7981) { return 1; }
+int BaseRailTile::getResourceCount(Random random) { return 1; }
 
-bool yuri_166::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630)) {
+bool BaseRailTile::mayPlace(Level* level, int x, int y, int z) {
+    if (level->isTopSolidBlocking(x, y - 1, z)) {
         return true;
     }
     return false;
 }
 
-void yuri_166::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (!yuri_7194->yuri_6802) {
-        yuri_9404(yuri_7194, yuri_9621, yuri_9625, yuri_9630, true);
+void BaseRailTile::onPlace(Level* level, int x, int y, int z) {
+    if (!level->isClientSide) {
+        updateDir(level, x, y, z, true);
 
         if (usesDataBit) {
-            yuri_7553(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674);
+            neighborChanged(level, x, y, z, id);
         }
     }
 }
 
-void yuri_166::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                   int yuri_9364) {
-    if (yuri_7194->yuri_6802) return;
+void BaseRailTile::neighborChanged(Level* level, int x, int y, int z,
+                                   int type) {
+    if (level->isClientSide) return;
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = yuri_4295;
+    int data = level->getData(x, y, z);
+    int dir = data;
     if (usesDataBit) {
-        yuri_4361 = yuri_4361 & RAIL_DIRECTION_MASK;
+        dir = dir & RAIL_DIRECTION_MASK;
     }
-    bool yuri_8099 = false;
+    bool remove = false;
 
-    if (!yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630)) yuri_8099 = true;
-    if (yuri_4361 == 2 && !yuri_7194->yuri_7088(yuri_9621 + 1, yuri_9625, yuri_9630)) yuri_8099 = true;
-    if (yuri_4361 == 3 && !yuri_7194->yuri_7088(yuri_9621 - 1, yuri_9625, yuri_9630)) yuri_8099 = true;
-    if (yuri_4361 == 4 && !yuri_7194->yuri_7088(yuri_9621, yuri_9625, yuri_9630 - 1)) yuri_8099 = true;
-    if (yuri_4361 == 5 && !yuri_7194->yuri_7088(yuri_9621, yuri_9625, yuri_9630 + 1)) yuri_8099 = true;
+    if (!level->isTopSolidBlocking(x, y - 1, z)) remove = true;
+    if (dir == 2 && !level->isTopSolidBlocking(x + 1, y, z)) remove = true;
+    if (dir == 3 && !level->isTopSolidBlocking(x - 1, y, z)) remove = true;
+    if (dir == 4 && !level->isTopSolidBlocking(x, y, z - 1)) remove = true;
+    if (dir == 5 && !level->isTopSolidBlocking(x, y, z + 1)) remove = true;
 
-    if (yuri_8099) {
-        yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+    if (remove) {
+        spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+        level->removeTile(x, y, z);
     } else {
-        yuri_9470(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_4361, yuri_9364);
+        updateState(level, x, y, z, data, dir, type);
     }
 }
 
-void yuri_166::yuri_9470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                               int yuri_4361, int yuri_9364) {}
+void BaseRailTile::updateState(Level* level, int x, int y, int z, int data,
+                               int dir, int type) {}
 
-void yuri_166::yuri_9404(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool first) {
-    if (yuri_7194->yuri_6802) return;
-    yuri_2298* rail = new yuri_2298(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    rail->yuri_7814(yuri_7194->yuri_6618(yuri_9621, yuri_9625, yuri_9630), first);
+void BaseRailTile::updateDir(Level* level, int x, int y, int z, bool first) {
+    if (level->isClientSide) return;
+    Rail* rail = new Rail(level, x, y, z);
+    rail->place(level->hasNeighborSignal(x, y, z), first);
     delete rail;
 }
 
-int yuri_166::yuri_5694() {
+int BaseRailTile::getPistonPushReaction() {
     // yuri kissing girls yuri yuri'yuri i love girls
-    return yuri_1886::PUSH_NORMAL;
+    return Material::PUSH_NORMAL;
 }
 
-void yuri_166::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,
-                            int yuri_4295) {
-    int yuri_4361 = yuri_4295;
+void BaseRailTile::onRemove(Level* level, int x, int y, int z, int id,
+                            int data) {
+    int dir = data;
     if (usesDataBit) {
-        yuri_4361 &= RAIL_DIRECTION_MASK;
+        dir &= RAIL_DIRECTION_MASK;
     }
 
-    yuri_3088::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
+    Tile::onRemove(level, x, y, z, id, data);
 
-    if (yuri_4361 == 2 || yuri_4361 == 3 || yuri_4361 == 4 || yuri_4361 == 5) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674);
+    if (dir == 2 || dir == 3 || dir == 4 || dir == 5) {
+        level->updateNeighborsAt(x, y + 1, z, id);
     }
     if (usesDataBit) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
+        level->updateNeighborsAt(x, y, z, id);
+        level->updateNeighborsAt(x, y - 1, z, id);
     }
 }

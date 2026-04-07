@@ -1,14 +1,14 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 
 #include "Layer.h"
 
-class yuri_2853 : public yuri_1742 {
+class SmoothLayer : public Layer {
 public:
-    yuri_2853(yuri_6733 seedMixup, std::shared_ptr<yuri_1742> yuri_7791);
+    SmoothLayer(int64_t seedMixup, std::shared_ptr<Layer> parent);
 
-    virtual std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
+    virtual std::vector<int> getArea(int xo, int yo, int w, int h);
 };

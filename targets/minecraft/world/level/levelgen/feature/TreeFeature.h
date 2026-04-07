@@ -1,22 +1,22 @@
 #pragma once
 #include "Feature.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_3136 : public yuri_801 {
+class TreeFeature : public Feature {
 private:
-    const int yuri_3796;
-    const bool yuri_3630;
-    const int yuri_9347;
-    const int yuri_7187;
+    const int baseHeight;
+    const bool addJungleFeatures;
+    const int trunkType;
+    const int leafType;
 
 public:
-    yuri_3136(bool doUpdate);
-    yuri_3136(bool doUpdate, int yuri_3796, int yuri_9347, int yuri_7187,
-                bool yuri_3630);
+    TreeFeature(bool doUpdate);
+    TreeFeature(bool doUpdate, int baseHeight, int trunkType, int leafType,
+                bool addJungleFeatures);
 
-    virtual bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool place(Level* level, Random* random, int x, int y, int z);
 
 private:
-    void yuri_3694(yuri_1758* yuri_7194, int xx, int yy, int zz, int yuri_4361);
+    void addVine(Level* level, int xx, int yy, int zz, int dir);
 };

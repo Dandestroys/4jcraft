@@ -10,83 +10,83 @@
 #include "app/linux/Iggy/include/rrCore.h"
 #include "util/StringHelpers.h"
 
-yuri_3169::yuri_3169() {}
+UIControl_DynamicLabel::UIControl_DynamicLabel() {}
 
-bool yuri_3169::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                                          const std::yuri_9151& controlName) {
-    yuri_3162::yuri_8531(yuri_3162::eDynamicLabel);
-    bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
+bool UIControl_DynamicLabel::setupControl(UIScene* scene, IggyValuePath* parent,
+                                          const std::string& controlName) {
+    UIControl::setControlType(UIControl::eDynamicLabel);
+    bool success = UIControl_Base::setupControl(scene, parent, controlName);
 
     // yuri snuggle lesbian kiss
-    m_funcAddText = yuri_8069(yuri_1720"AddText");
-    m_funcTouchScroll = yuri_8069(yuri_1720"TouchScroll");
-    m_funcGetRealWidth = yuri_8069(yuri_1720"GetRealWidth");
-    m_funcGetRealHeight = yuri_8069(yuri_1720"GetRealHeight");
+    m_funcAddText = registerFastName(L"AddText");
+    m_funcTouchScroll = registerFastName(L"TouchScroll");
+    m_funcGetRealWidth = registerFastName(L"GetRealWidth");
+    m_funcGetRealHeight = registerFastName(L"GetRealHeight");
 
     return success;
 }
 
-void yuri_3169::yuri_3684(const std::yuri_9616& yuri_9254,
+void UIControl_DynamicLabel::addText(const std::wstring& text,
                                      bool bLastEntry) {
-    const std::yuri_9366 convText = yuri_9617(yuri_9254);
+    const std::u16string convText = wstring_to_u16string(text);
 
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[2];
+    IggyDataValue result;
+    IggyDataValue value[2];
 
     IggyStringUTF16 stringVal;
-    stringVal.yuri_9151 = convText.yuri_3888();
-    stringVal.yuri_7189 = convText.yuri_7189();
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-    yuri_9514[0].string16 = stringVal;
+    stringVal.string = convText.c_str();
+    stringVal.length = convText.length();
+    value[0].type = IGGY_DATATYPE_string_UTF16;
+    value[0].string16 = stringVal;
 
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_boolean;
-    yuri_9514[1].boolval = bLastEntry;
+    value[1].type = IGGY_DATATYPE_boolean;
+    value[1].boolval = bLastEntry;
 
-    IggyResult yuri_7687 =
-        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                               yuri_5392(), m_funcAddText, 2, yuri_9514);
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_funcAddText, 2, value);
 }
 
-void yuri_3169::yuri_2310() { yuri_3163::yuri_2310(); }
+void UIControl_DynamicLabel::ReInit() { UIControl_Base::ReInit(); }
 
-void yuri_3169::yuri_2771() {}
+void UIControl_DynamicLabel::SetupTouch() {}
 
-void yuri_3169::yuri_3122(yuri_2452 iY, bool bActive) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[2];
+void UIControl_DynamicLabel::TouchScroll(S32 iY, bool bActive) {
+    IggyDataValue result;
+    IggyDataValue value[2];
 
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = iY;
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_boolean;
-    yuri_9514[1].boolval = bActive;
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = iY;
+    value[1].type = IGGY_DATATYPE_boolean;
+    value[1].boolval = bActive;
 
-    IggyResult yuri_7687 =
-        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                               yuri_5392(), m_funcTouchScroll, 2, yuri_9514);
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_funcTouchScroll, 2, value);
 }
 
-yuri_2452 yuri_3169::yuri_1131() {
-    IggyDataValue yuri_8300;
-    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                                            yuri_5392(),
+S32 UIControl_DynamicLabel::GetRealWidth() {
+    IggyDataValue result;
+    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                                            getIggyValuePath(),
                                             m_funcGetRealWidth, 0, nullptr);
 
-    yuri_2452 iRealWidth = m_width;
-    if (yuri_8300.yuri_9364 == IGGY_DATATYPE_number) {
-        iRealWidth = (yuri_2452)yuri_8300.number;
+    S32 iRealWidth = m_width;
+    if (result.type == IGGY_DATATYPE_number) {
+        iRealWidth = (S32)result.number;
     }
     return iRealWidth;
 }
 
-yuri_2452 yuri_3169::yuri_1130() {
-    IggyDataValue yuri_8300;
-    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                                            yuri_5392(),
+S32 UIControl_DynamicLabel::GetRealHeight() {
+    IggyDataValue result;
+    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                                            getIggyValuePath(),
                                             m_funcGetRealHeight, 0, nullptr);
 
-    yuri_2452 iRealHeight = m_height;
-    if (yuri_8300.yuri_9364 == IGGY_DATATYPE_number) {
-        iRealHeight = (yuri_2452)yuri_8300.number;
+    S32 iRealHeight = m_height;
+    if (result.type == IGGY_DATATYPE_number) {
+        iRealHeight = (S32)result.number;
     }
     return iRealHeight;
 }

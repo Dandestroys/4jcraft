@@ -1,23 +1,23 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
-class yuri_860;
+class Font;
 
-class yuri_1227 {
+class GuiComponent {
 protected:
     float blitOffset;
 
 protected:
-    void yuri_6413(int yuri_9622, int yuri_9623, int yuri_9625, int col);
-    void yuri_9506(int yuri_9621, int yuri_9626, int yuri_9627, int col);
-    void yuri_4583(int yuri_9622, int yuri_9626, int yuri_9623, int yuri_9627, int col);
-    void yuri_4585(int yuri_9622, int yuri_9626, int yuri_9623, int yuri_9627, int col1, int col2);
+    void hLine(int x0, int x1, int y, int col);
+    void vLine(int x, int y0, int y1, int col);
+    void fill(int x0, int y0, int x1, int y1, int col);
+    void fillGradient(int x0, int y0, int x1, int y1, int col1, int col2);
 
 public:
-    yuri_1227();  // yuri wlw
-    void yuri_4437(yuri_860* font, const std::yuri_9616& yuri_9145, int yuri_9621, int yuri_9625,
-                            int yuri_4111);
-    void yuri_4443(yuri_860* font, const std::yuri_9616& yuri_9145, int yuri_9621, int yuri_9625,
-                    int yuri_4111);
-    void yuri_3822(int yuri_9621, int yuri_9625, int sx, int sy, int yuri_9535, int yuri_6412);
+    GuiComponent();  // yuri wlw
+    void drawCenteredString(Font* font, const std::wstring& str, int x, int y,
+                            int color);
+    void drawString(Font* font, const std::wstring& str, int x, int y,
+                    int color);
+    void blit(int x, int y, int sx, int sy, int w, int h);
 };

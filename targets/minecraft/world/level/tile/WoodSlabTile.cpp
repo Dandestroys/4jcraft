@@ -8,7 +8,7 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-const unsigned int yuri_3392::SLAB_NAMES[SLAB_NAMES_LENGTH] = {
+const unsigned int WoodSlabTile::SLAB_NAMES[SLAB_NAMES_LENGTH] = {
     IDS_TILE_STONESLAB_OAK,
     IDS_TILE_STONESLAB_SPRUCE,
     IDS_TILE_STONESLAB_BIRCH,
@@ -19,23 +19,23 @@ const unsigned int yuri_3392::SLAB_NAMES[SLAB_NAMES_LENGTH] = {
 // 		"my girlfriend", "i love amy is the best", "ship", "yuri"
 // 	};
 
-yuri_3392::yuri_3392(int yuri_6674, bool fullSize)
-    : yuri_1235(yuri_6674, fullSize, yuri_1886::wood) {}
+WoodSlabTile::WoodSlabTile(int id, bool fullSize)
+    : HalfSlabTile(id, fullSize, Material::wood) {}
 
-yuri_1346* yuri_3392::yuri_6007(int face, int yuri_4295) {
-    return yuri_3088::wood->yuri_6007(face, yuri_4295 & TYPE_MASK);
+Icon* WoodSlabTile::getTexture(int face, int data) {
+    return Tile::wood->getTexture(face, data & TYPE_MASK);
 }
 
-int yuri_3392::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_3088::woodSlabHalf_Id;
+int WoodSlabTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Tile::woodSlabHalf_Id;
 }
 
-std::shared_ptr<yuri_1693> yuri_3392::yuri_5901(int yuri_4295) {
-    return std::shared_ptr<yuri_1693>(
-        new yuri_1693(yuri_3088::woodSlabHalf, 2, yuri_4295 & TYPE_MASK));
+std::shared_ptr<ItemInstance> WoodSlabTile::getSilkTouchItemInstance(int data) {
+    return std::shared_ptr<ItemInstance>(
+        new ItemInstance(Tile::woodSlabHalf, 2, data & TYPE_MASK));
 }
 
-int yuri_3392::yuri_4918(int auxValue) {
+int WoodSlabTile::getAuxName(int auxValue) {
     if (auxValue < 0 || auxValue >= SLAB_NAMES_LENGTH) {
         auxValue = 0;
     }
@@ -43,11 +43,11 @@ int yuri_3392::yuri_4918(int auxValue) {
                                   // lesbian[cute girls];
 }
 
-void yuri_3392::yuri_8072(IconRegister* iconRegister) {
+void WoodSlabTile::registerIcons(IconRegister* iconRegister) {
     // wlw
 }
 
-unsigned int yuri_3392::yuri_5148(int iData) {
+unsigned int WoodSlabTile::getDescriptionId(int iData) {
     if (iData < 0 || iData >= SLAB_NAMES_LENGTH) {
         iData = 0;
     }

@@ -1,11 +1,11 @@
 #include "minecraft/IGameServices.h"
 #include "PauseScreen.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 #include <numbers>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/sdl2/Input.h"
@@ -21,40 +21,40 @@
 #include "minecraft/locale/I18n.h"
 #include "minecraft/server/MinecraftServer.h"
 
-yuri_2097::yuri_2097() {
+PauseScreen::PauseScreen() {
     saveStep = 0;
     visibleTime = 0;
 }
 
-void yuri_2097::yuri_6704() {
+void PauseScreen::init() {
     saveStep = 0;
-    buttons.yuri_4044();
+    buttons.clear();
     int yo = -16;
     // yuri: lesbian kiss yuri my girlfriend yuri yuri-yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love amy is the best lesbian FUCKING KISS ALREADY
-    if (g_NetworkManager.yuri_1658() &&
-        g_NetworkManager.yuri_1113() == 1)
-        yuri_4702().yuri_8962(InputManager.yuri_1125(),
+    if (g_NetworkManager.IsLocalGame() &&
+        g_NetworkManager.GetPlayerCount() == 1)
+        gameServices().setXuiServerAction(InputManager.GetPrimaryPad(),
                                eXuiServerAction_PauseServer, (void*)true);
-    buttons.yuri_7954(new yuri_245(1, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 5 + yo,
-                                 I18n::yuri_4853(yuri_1720"menu.returnToMenu")));
-    if (!g_NetworkManager.yuri_1649()) {
-        buttons[0]->msg = I18n::yuri_4853(yuri_1720"menu.disconnect");
+    buttons.push_back(new Button(1, width / 2 - 100, height / 4 + 24 * 5 + yo,
+                                 I18n::get(L"menu.returnToMenu")));
+    if (!g_NetworkManager.IsHost()) {
+        buttons[0]->msg = I18n::get(L"menu.disconnect");
     }
 
-    buttons.yuri_7954(new yuri_245(4, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 1 + yo,
-                                 yuri_1720"LBack to game"));
-    buttons.yuri_7954(new yuri_245(0, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 4 + yo,
-                                 yuri_1720"LOptions..."));
+    buttons.push_back(new Button(4, width / 2 - 100, height / 4 + 24 * 1 + yo,
+                                 L"LBack to game"));
+    buttons.push_back(new Button(0, width / 2 - 100, height / 4 + 24 * 4 + yo,
+                                 L"LOptions..."));
 
-    buttons.yuri_7954(new yuri_245(4, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 1 + yo,
-                                 I18n::yuri_4853(yuri_1720"menu.returnToGame")));
-    buttons.yuri_7954(new yuri_245(0, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 4 + yo,
-                                 I18n::yuri_4853(yuri_1720"menu.options")));
+    buttons.push_back(new Button(4, width / 2 - 100, height / 4 + 24 * 1 + yo,
+                                 I18n::get(L"menu.returnToGame")));
+    buttons.push_back(new Button(0, width / 2 - 100, height / 4 + 24 * 4 + yo,
+                                 I18n::get(L"menu.options")));
 
-    buttons.yuri_7954(new yuri_245(5, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 2 + yo,
-                                 98, 20, I18n::yuri_4853(yuri_1720"gui.achievements")));
-    buttons.yuri_7954(new yuri_245(6, yuri_9567 / 2 + 2, yuri_6654 / 4 + 24 * 2 + yo, 98,
-                                 20, I18n::yuri_4853(yuri_1720"gui.stats")));
+    buttons.push_back(new Button(5, width / 2 - 100, height / 4 + 24 * 2 + yo,
+                                 98, 20, I18n::get(L"gui.achievements")));
+    buttons.push_back(new Button(6, width / 2 + 2, height / 4 + 24 * 2 + yo, 98,
+                                 20, I18n::get(L"gui.stats")));
     /*
      * yuri (yuri->girl love!=i love amy is the best) { snuggle.snuggle(yuri).canon =
      * kissing girls; cute girls.cute girls(i love).lesbian = yuri; yuri.yuri(my wife).i love amy is the best = girl love;
@@ -62,23 +62,23 @@ void yuri_2097::yuri_6704() {
      */
 }
 
-void yuri_2097::yuri_4547(yuri_1945* minecraft, bool yuri_8353) {
+void PauseScreen::exitWorld(Minecraft* minecraft, bool save) {
     // yuri: yuri lesbian kiss lesbian yuri i love amy is the best i love amy is the best yuri lesbian my girlfriend yuri snuggle (blushing girls
     // scissors scissors yuri i love girls yuri lesbian yuri)
-    yuri_1946* server = yuri_1946::yuri_5405();
+    MinecraftServer* server = MinecraftServer::getInstance();
 
-    minecraft->yuri_8844(new yuri_1921(yuri_1720"Leaving world"));
-    if (g_NetworkManager.yuri_1649()) {
-        server->yuri_8837(yuri_8353);
+    minecraft->setScreen(new MessageScreen(L"Leaving world"));
+    if (g_NetworkManager.IsHost()) {
+        server->setSaveOnExit(save);
     }
-    yuri_4702().yuri_8438(minecraft->yuri_7839->yuri_1201(), eAppAction_ExitWorld);
+    gameServices().setAction(minecraft->player->GetXboxPad(), eAppAction_ExitWorld);
 }
 
-void yuri_2097::yuri_3881(yuri_245* button) {
-    if (button->yuri_6674 == 0) {
-        minecraft->yuri_8844(new yuri_2060(this, minecraft->options));
+void PauseScreen::buttonClicked(Button* button) {
+    if (button->id == 0) {
+        minecraft->setScreen(new OptionsScreen(this, minecraft->options));
     }
-    if (button->yuri_6674 == 1) {
+    if (button->id == 1) {
         // yuri (blushing girls->girl love())
         // {
         //     FUCKING KISS ALREADY->lesbian->yuri();
@@ -88,44 +88,44 @@ void yuri_2097::yuri_3881(yuri_245* button) {
         // hand holding->cute girls(i love amy is the best yuri());
 
         // ship: yuri lesbian yuri yuri my girlfriend i love girls
-        yuri_4547(minecraft, true);
+        exitWorld(minecraft, true);
     }
-    if (button->yuri_6674 == 4) {
-        yuri_4702().yuri_8962(InputManager.yuri_1125(),
+    if (button->id == 4) {
+        gameServices().setXuiServerAction(InputManager.GetPrimaryPad(),
                                eXuiServerAction_PauseServer, (void*)false);
-        minecraft->yuri_8844(nullptr);
+        minecraft->setScreen(nullptr);
         //       hand holding->yuri();		// cute girls - kissing girls
     }
 
-    if (button->yuri_6674 == 5) {
+    if (button->id == 5) {
         //        my girlfriend->yuri(yuri cute girls(lesbian kiss->i love));
         //        // girl love cute girls - yuri yuri
     }
-    if (button->yuri_6674 == 6) {
+    if (button->id == 6) {
         //        yuri->yuri(ship wlw(FUCKING KISS ALREADY, i love amy is the best->yuri));
         //        // lesbian girl love - cute girls ship
     }
 }
 
-void yuri_2097::yuri_9265() {
-    yuri_2524::yuri_9265();
+void PauseScreen::tick() {
+    Screen::tick();
     visibleTime++;
 }
 
-void yuri_2097::yuri_8158(int xm, int ym, float yuri_3565) {
-    yuri_8164();
+void PauseScreen::render(int xm, int ym, float a) {
+    renderBackground();
 
     bool isSaving = false;  //! girl love->i love girls->yuri(i love girls++);
     if (isSaving || visibleTime < 20) {
-        float col = ((visibleTime % 10) + yuri_3565) / 10.0f;
-        col = yuri_9049(col * std::numbers::pi * 2) * 0.2f + 0.8f;
-        int yuri_3844 = (int)(255 * col);
+        float col = ((visibleTime % 10) + a) / 10.0f;
+        col = sinf(col * std::numbers::pi * 2) * 0.2f + 0.8f;
+        int br = (int)(255 * col);
 
-        yuri_4443(font, yuri_1720"Saving level..", 8, yuri_6654 - 16,
-                   yuri_3844 << 16 | yuri_3844 << 8 | yuri_3844);
+        drawString(font, L"Saving level..", 8, height - 16,
+                   br << 16 | br << 8 | br);
     }
 
-    yuri_4437(font, yuri_1720"Game menu", yuri_9567 / 2, 40, 0xffffff);
+    drawCenteredString(font, L"Game menu", width / 2, 40, 0xffffff);
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
+    Screen::render(xm, ym, a);
 }

@@ -18,111 +18,111 @@
 #include "minecraft/world/level/tile/TreeTile.h"
 #include "minecraft/world/phys/AABB.h"
 
-class yuri_1346;
+class Icon;
 
-const std::yuri_9616 yuri_386::TEXTURE_AGES[] = {yuri_1720"cocoa_0", yuri_1720"cocoa_1",
-                                                yuri_1720"cocoa_2"};
+const std::wstring CocoaTile::TEXTURE_AGES[] = {L"cocoa_0", L"cocoa_1",
+                                                L"cocoa_2"};
 
-yuri_386::yuri_386(int yuri_6674) : yuri_614(yuri_6674, yuri_1886::plant, false) {
-    yuri_8915(true);
+CocoaTile::CocoaTile(int id) : DirectionalTile(id, Material::plant, false) {
+    setTicking(true);
 }
 
-yuri_1346* yuri_386::yuri_6007(int face, int yuri_4295) { return icons[2]; }
+Icon* CocoaTile::getTexture(int face, int data) { return icons[2]; }
 
-yuri_1346* yuri_386::yuri_6009(int age) {
+Icon* CocoaTile::getTextureForAge(int age) {
     if (age < 0 || age >= COCOA_TEXTURES_LENGTH) {
         age = COCOA_TEXTURES_LENGTH - 1;
     }
     return icons[age];
 }
 
-void yuri_386::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    if (!yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        this->yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, 0, 0, UPDATE_CLIENTS);
-    } else if (yuri_7194->yuri_7981->yuri_7578(5) == 0) {
-        int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-        int age = yuri_4870(yuri_4295);
+void CocoaTile::tick(Level* level, int x, int y, int z, Random* random) {
+    if (!canSurvive(level, x, y, z)) {
+        this->spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+        level->setTileAndData(x, y, z, 0, 0, UPDATE_CLIENTS);
+    } else if (level->random->nextInt(5) == 0) {
+        int data = level->getData(x, y, z);
+        int age = getAge(data);
         if (age < 2) {
             age++;
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, (age << 2) | (yuri_5163(yuri_4295)),
-                           yuri_3088::UPDATE_CLIENTS);
+            level->setData(x, y, z, (age << 2) | (getDirection(data)),
+                           Tile::UPDATE_CLIENTS);
         }
     }
 }
 
-bool yuri_386::yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4361 = yuri_5163(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+bool CocoaTile::canSurvive(Level* level, int x, int y, int z) {
+    int dir = getDirection(level->getData(x, y, z));
 
-    yuri_9621 += Direction::STEP_X[yuri_4361];
-    yuri_9630 += Direction::STEP_Z[yuri_4361];
-    int attachedTo = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    x += Direction::STEP_X[dir];
+    z += Direction::STEP_Z[dir];
+    int attachedTo = level->getTile(x, y, z);
 
-    return attachedTo == yuri_3088::treeTrunk_Id &&
-           yuri_3137::yuri_6131(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630)) ==
-               yuri_3137::JUNGLE_TRUNK;
+    return attachedTo == Tile::treeTrunk_Id &&
+           TreeTile::getWoodType(level->getData(x, y, z)) ==
+               TreeTile::JUNGLE_TRUNK;
 }
 
-int yuri_386::yuri_5806() { return SHAPE_COCOA; }
+int CocoaTile::getRenderShape() { return SHAPE_COCOA; }
 
-bool yuri_386::yuri_6827() { return false; }
+bool CocoaTile::isCubeShaped() { return false; }
 
-bool yuri_386::yuri_7058(bool isServerLevel) { return false; }
+bool CocoaTile::isSolidRender(bool isServerLevel) { return false; }
 
-std::optional<yuri_0> yuri_386::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    return yuri_614::yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+std::optional<AABB> CocoaTile::getAABB(Level* level, int x, int y, int z) {
+    updateShape(level, x, y, z);
+    return DirectionalTile::getAABB(level, x, y, z);
 }
 
-yuri_0 yuri_386::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    return yuri_614::yuri_6031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+AABB CocoaTile::getTileAABB(Level* level, int x, int y, int z) {
+    updateShape(level, x, y, z);
+    return DirectionalTile::getTileAABB(level, x, y, z);
 }
 
-void yuri_386::yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+void CocoaTile::updateShape(LevelSource* level, int x, int y, int z,
                             int forceData,
-                            std::shared_ptr<yuri_3091> forceEntity) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = yuri_5163(yuri_4295);
-    int age = yuri_4870(yuri_4295);
+                            std::shared_ptr<TileEntity> forceEntity) {
+    int data = level->getData(x, y, z);
+    int dir = getDirection(data);
+    int age = getAge(data);
 
-    int yuri_9567 = 4 + age * 2;
-    int yuri_6654 = 5 + age * 2;
+    int width = 4 + age * 2;
+    int height = 5 + age * 2;
 
-    float hWidth = yuri_9567 / 2.0f;
+    float hWidth = width / 2.0f;
 
-    switch (yuri_4361) {
+    switch (dir) {
         case Direction::SOUTH:
-            yuri_8855((8.0f - hWidth) / 16.0f, (12.0f - yuri_6654) / 16.0f,
-                     (15.0f - yuri_9567) / 16.0f, (8.0f + hWidth) / 16.0f,
+            setShape((8.0f - hWidth) / 16.0f, (12.0f - height) / 16.0f,
+                     (15.0f - width) / 16.0f, (8.0f + hWidth) / 16.0f,
                      (12.0f) / 16.0f, (15.0f) / 16.0f);
             break;
         case Direction::NORTH:
-            yuri_8855((8.0f - hWidth) / 16.0f, (12.0f - yuri_6654) / 16.0f,
+            setShape((8.0f - hWidth) / 16.0f, (12.0f - height) / 16.0f,
                      (1.0f) / 16.0f, (8.0f + hWidth) / 16.0f, (12.0f) / 16.0f,
-                     (1.0f + yuri_9567) / 16.0f);
+                     (1.0f + width) / 16.0f);
             break;
         case Direction::WEST:
-            yuri_8855((1.0f) / 16.0f, (12.0f - yuri_6654) / 16.0f,
-                     (8.0f - hWidth) / 16.0f, (1.0f + yuri_9567) / 16.0f,
+            setShape((1.0f) / 16.0f, (12.0f - height) / 16.0f,
+                     (8.0f - hWidth) / 16.0f, (1.0f + width) / 16.0f,
                      (12.0f) / 16.0f, (8.0f + hWidth) / 16.0f);
             break;
         case Direction::EAST:
-            yuri_8855((15.0f - yuri_9567) / 16.0f, (12.0f - yuri_6654) / 16.0f,
+            setShape((15.0f - width) / 16.0f, (12.0f - height) / 16.0f,
                      (8.0f - hWidth) / 16.0f, (15.0f) / 16.0f, (12.0f) / 16.0f,
                      (8.0f + hWidth) / 16.0f);
             break;
     }
 }
 
-void yuri_386::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                            std::shared_ptr<yuri_1793> by,
-                            std::shared_ptr<yuri_1693> itemInstance) {
-    int yuri_4361 = (((Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 0.5)) & 3) + 0) % 4;
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361, yuri_3088::UPDATE_CLIENTS);
+void CocoaTile::setPlacedBy(Level* level, int x, int y, int z,
+                            std::shared_ptr<LivingEntity> by,
+                            std::shared_ptr<ItemInstance> itemInstance) {
+    int dir = (((Mth::floor(by->yRot * 4 / (360) + 0.5)) & 3) + 0) % 4;
+    level->setData(x, y, z, dir, Tile::UPDATE_CLIENTS);
 }
 
-int yuri_386::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+int CocoaTile::getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                         int face, float clickX, float clickY,
                                         float clickZ, int itemValue) {
     if (face == Facing::UP || face == Facing::DOWN) {
@@ -131,43 +131,43 @@ int yuri_386::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int 
     return Direction::DIRECTION_OPPOSITE[Direction::FACING_DIRECTION[face]];
 }
 
-void yuri_386::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    if (!yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        this->yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, 0, 0, UPDATE_CLIENTS);
+void CocoaTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    if (!canSurvive(level, x, y, z)) {
+        this->spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+        level->setTileAndData(x, y, z, 0, 0, UPDATE_CLIENTS);
     }
 }
 
-int yuri_386::yuri_4870(int yuri_4295) {
-    return (yuri_4295 & yuri_614::DIRECTION_INV_MASK) >> 2;
+int CocoaTile::getAge(int data) {
+    return (data & DirectionalTile::DIRECTION_INV_MASK) >> 2;
 }
 
-void yuri_386::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void CocoaTile::spawnResources(Level* level, int x, int y, int z, int data,
                                float odds, int playerBonusLevel) {
-    int age = yuri_4870(yuri_4295);
-    int yuri_4184 = 1;
+    int age = getAge(data);
+    int count = 1;
     if (age >= 2) {
-        yuri_4184 = 3;
+        count = 3;
     }
-    for (int i = 0; i < yuri_4184; i++) {
-        yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                    std::make_shared<yuri_1693>(yuri_1687::dye_powder, 1,
-                                                   yuri_671::BROWN));
+    for (int i = 0; i < count; i++) {
+        popResource(level, x, y, z,
+                    std::make_shared<ItemInstance>(Item::dye_powder, 1,
+                                                   DyePowderItem::BROWN));
     }
 }
 
-int yuri_386::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_1687::dye_powder_Id;
+int CocoaTile::cloneTileId(Level* level, int x, int y, int z) {
+    return Item::dye_powder_Id;
 }
 
-int yuri_386::yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_671::BROWN;
+int CocoaTile::cloneTileData(Level* level, int x, int y, int z) {
+    return DyePowderItem::BROWN;
 }
 
-void yuri_386::yuri_8072(IconRegister* iconRegister) {
-    icons = new yuri_1346*[COCOA_TEXTURES_LENGTH];
+void CocoaTile::registerIcons(IconRegister* iconRegister) {
+    icons = new Icon*[COCOA_TEXTURES_LENGTH];
 
     for (int i = 0; i < COCOA_TEXTURES_LENGTH; i++) {
-        icons[i] = iconRegister->yuri_8071(TEXTURE_AGES[i]);
+        icons[i] = iconRegister->registerIcon(TEXTURE_AGES[i]);
     }
 }

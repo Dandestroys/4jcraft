@@ -1,49 +1,49 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "TileEntity.h"
 #include "java/Class.h"
 #include "minecraft/world/level/BaseMobSpawner.h"
 
-class yuri_2081;
-class yuri_739;
+class Packet;
+class Entity;
 
-class yuri_1961 : public yuri_3091 {
+class MobSpawnerTileEntity : public TileEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_MOBSPAWNERTILEENTITY; }
-    static yuri_3091* yuri_4202() { return new yuri_1961(); }
+    eINSTANCEOF GetType() { return eTYPE_MOBSPAWNERTILEENTITY; }
+    static TileEntity* create() { return new MobSpawnerTileEntity(); }
 
 private:
-    class yuri_3093 : public yuri_164 {
+    class TileEntityMobSpawner : public BaseMobSpawner {
     private:
-        yuri_1961* m_parent;
+        MobSpawnerTileEntity* m_parent;
 
     public:
-        yuri_3093(yuri_1961* yuri_7791);
+        TileEntityMobSpawner(MobSpawnerTileEntity* parent);
 
-        void yuri_3855(int yuri_6674);
-        yuri_1758* yuri_5461();
-        int yuri_6142();
-        int yuri_6164();
-        int yuri_6176();
-        void yuri_8738(yuri_164::yuri_2877* nextSpawnData);
+        void broadcastEvent(int id);
+        Level* getLevel();
+        int getX();
+        int getY();
+        int getZ();
+        void setNextSpawnData(BaseMobSpawner::SpawnData* nextSpawnData);
     };
 
-    yuri_164* spawner;
+    BaseMobSpawner* spawner;
 
 public:
-    yuri_1961();
-    ~yuri_1961();
+    MobSpawnerTileEntity();
+    ~MobSpawnerTileEntity();
 
-    virtual void yuri_7219(yuri_409* yuri_9178);
-    virtual void yuri_8353(yuri_409* yuri_9178);
-    virtual void yuri_9265();
-    virtual std::shared_ptr<yuri_2081> yuri_6084();
-    virtual bool yuri_9342(int b0, int b1);
-    virtual yuri_164* yuri_5949();
+    virtual void load(CompoundTag* tag);
+    virtual void save(CompoundTag* tag);
+    virtual void tick();
+    virtual std::shared_ptr<Packet> getUpdatePacket();
+    virtual bool triggerEvent(int b0, int b1);
+    virtual BaseMobSpawner* getSpawner();
 
     // yuri girl love
-    virtual std::shared_ptr<yuri_3091> yuri_4094();
-    void yuri_8594(const std::yuri_9616& yuri_6674);
+    virtual std::shared_ptr<TileEntity> clone();
+    void setEntityId(const std::wstring& id);
 };

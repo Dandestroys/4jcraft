@@ -4,42 +4,42 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/PathfinderMob.h"
 
-class yuri_1758;
-class yuri_409;
-class yuri_548;
-class yuri_739;
+class Level;
+class CompoundTag;
+class DamageSource;
+class Entity;
 
-class yuri_1966 : public yuri_2096, public Enemy {
+class Monster : public PathfinderMob, public Enemy {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_MONSTER; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return nullptr; }
+    eINSTANCEOF GetType() { return eTYPE_MONSTER; }
+    static Entity* create(Level* level) { return nullptr; }
 
 public:
-    yuri_1966(yuri_1758* yuri_7194);
+    Monster(Level* level);
 
-    virtual void yuri_3704();
-    virtual void yuri_9265();
+    virtual void aiStep();
+    virtual void tick();
 
 protected:
-    virtual std::shared_ptr<yuri_739> yuri_4601();
+    virtual std::shared_ptr<Entity> findAttackTarget();
 
 public:
-    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
-    virtual bool yuri_4408(std::shared_ptr<yuri_739> target);
+    virtual bool hurt(DamageSource* source, float dmg);
+    virtual bool doHurtTarget(std::shared_ptr<Entity> target);
 
 protected:
-    virtual void yuri_4009(std::shared_ptr<yuri_739> target,
+    virtual void checkHurtTarget(std::shared_ptr<Entity> target,
                                  float distance);
 
 public:
-    virtual float yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual float getWalkTargetValue(int x, int y, int z);
 
 protected:
-    virtual bool yuri_6833();
+    virtual bool isDarkEnoughToSpawn();
 
 public:
-    virtual bool yuri_3958();
+    virtual bool canSpawn();
 
 protected:
-    void yuri_8067();
+    void registerAttributes();
 };

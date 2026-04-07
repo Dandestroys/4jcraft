@@ -1,27 +1,27 @@
 #pragma once
 #include "minecraft/client/gui/Screen.h"
-class yuri_374;
+class ClientConnection;
 
-class yuri_2332 : public yuri_2524 {
+class ReceivingLevelScreen : public Screen {
 private:
-    yuri_374* connection;
+    ClientConnection* connection;
     int tickCount;
 
 public:
-    yuri_2332(yuri_374* connection);
+    ReceivingLevelScreen(ClientConnection* connection);
 
 protected:
-    using yuri_2524::yuri_7155;
+    using Screen::keyPressed;
 
-    virtual void yuri_7155(char eventCharacter, int eventKey);
+    virtual void keyPressed(char eventCharacter, int eventKey);
 
 public:
-    virtual void yuri_6704() override;
-    virtual void yuri_9265() override;
+    virtual void init() override;
+    virtual void tick() override;
 
 protected:
-    virtual void yuri_3881(yuri_245* button) override;
+    virtual void buttonClicked(Button* button) override;
 
 public:
-    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
+    virtual void render(int xm, int ym, float a) override;
 };

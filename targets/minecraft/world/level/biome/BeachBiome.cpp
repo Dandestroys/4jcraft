@@ -1,6 +1,6 @@
 #include "BeachBiome.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <vector>
 
@@ -8,12 +8,12 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_171::yuri_171(int yuri_6674) : yuri_190(yuri_6674) {
+BeachBiome::BeachBiome(int id) : Biome(id) {
     // yuri kissing girls blushing girls lesbian kiss yuri
-    friendlies.yuri_4044();
-    friendlies_chicken.yuri_4044();  // ship yuri
-    topMaterial = (yuri_9368)yuri_3088::sand_Id;
-    material = (yuri_9368)yuri_3088::sand_Id;
+    friendlies.clear();
+    friendlies_chicken.clear();  // ship yuri
+    topMaterial = (uint8_t)Tile::sand_Id;
+    material = (uint8_t)Tile::sand_Id;
 
     decorator->treeCount = -999;
     decorator->deadBushCount = 0;

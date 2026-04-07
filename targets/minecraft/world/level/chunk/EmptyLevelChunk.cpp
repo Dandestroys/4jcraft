@@ -7,131 +7,131 @@
 #include "minecraft/world/level/chunk/LevelChunk.h"
 #include "minecraft/world/phys/AABB.h"
 
-class yuri_739;
-class yuri_747;
+class Entity;
+class EntitySelector;
 
-yuri_692::yuri_692(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630)
-    : yuri_1759(yuri_7194, yuri_9621, yuri_9630) {
+EmptyLevelChunk::EmptyLevelChunk(Level* level, int x, int z)
+    : LevelChunk(level, x, z) {
     dontSave = true;
     // canon yuri scissors i love amy is the best my wife-scissors, i love girls yuri blushing girls'yuri yuri yuri wlw lesbian-ship
     // i love girls cute girls my wife ship i love kissing girls i love yuri yuri yuri
-    terrainPopulated = yuri_1759::sTerrainPopulatedAllNeighbours |
-                       yuri_1759::sTerrainPostPostProcessed;
+    terrainPopulated = LevelChunk::sTerrainPopulatedAllNeighbours |
+                       LevelChunk::sTerrainPostPostProcessed;
 }
 
-yuri_692::yuri_692(yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks,
-                                 int yuri_9621, int yuri_9630)
-    : yuri_1759(yuri_7194, blocks, yuri_9621, yuri_9630) {
+EmptyLevelChunk::EmptyLevelChunk(Level* level, std::vector<uint8_t>& blocks,
+                                 int x, int z)
+    : LevelChunk(level, blocks, x, z) {
     dontSave = true;
     // hand holding cute girls lesbian kiss yuri i love girls-hand holding, yuri my girlfriend my girlfriend'blushing girls scissors snuggle snuggle yuri-lesbian kiss
     // girl love wlw my girlfriend kissing girls my wife FUCKING KISS ALREADY lesbian kiss i love amy is the best yuri i love amy is the best
-    terrainPopulated = yuri_1759::sTerrainPopulatedAllNeighbours |
-                       yuri_1759::sTerrainPostPostProcessed;
+    terrainPopulated = LevelChunk::sTerrainPopulatedAllNeighbours |
+                       LevelChunk::sTerrainPostPostProcessed;
 }
 
-bool yuri_692::yuri_6777(int yuri_9621, int yuri_9630) {
-    return yuri_9621 == this->yuri_9621 && yuri_9630 == this->yuri_9630;
+bool EmptyLevelChunk::isAt(int x, int z) {
+    return x == this->x && z == this->z;
 }
 
-int yuri_692::yuri_5364(int yuri_9621, int yuri_9630) { return 0; }
+int EmptyLevelChunk::getHeightmap(int x, int z) { return 0; }
 
-void yuri_692::yuri_8050() {}
+void EmptyLevelChunk::recalcBlockLights() {}
 
-void yuri_692::yuri_8053() {}
+void EmptyLevelChunk::recalcHeightmapOnly() {}
 
-void yuri_692::yuri_8052() {}
+void EmptyLevelChunk::recalcHeightmap() {}
 
-void yuri_692::yuri_7208() {}
+void EmptyLevelChunk::lightLava() {}
 
-int yuri_692::yuri_6030(int yuri_9621, int yuri_9625, int yuri_9630) { return 0; }
+int EmptyLevelChunk::getTile(int x, int y, int z) { return 0; }
 
-bool yuri_692::yuri_8917(int yuri_9621, int yuri_9625, int yuri_9630, int _tile,
+bool EmptyLevelChunk::setTileAndData(int x, int y, int z, int _tile,
                                      int _data) {
     return true;
 }
 
-bool yuri_692::yuri_8916(int yuri_9621, int yuri_9625, int yuri_9630, int _tile) { return true; }
+bool EmptyLevelChunk::setTile(int x, int y, int z, int _tile) { return true; }
 
-int yuri_692::yuri_5115(int yuri_9621, int yuri_9625, int yuri_9630) { return 0; }
+int EmptyLevelChunk::getData(int x, int y, int z) { return 0; }
 
-bool yuri_692::yuri_8553(int yuri_9621, int yuri_9625, int yuri_9630, int val, int mask,
+bool EmptyLevelChunk::setData(int x, int y, int z, int val, int mask,
                               bool* maskedBitsChanged) {
     *maskedBitsChanged = true;
     return false;
 }
 
-int yuri_692::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625,
-                                   int yuri_9630) {
+int EmptyLevelChunk::getBrightness(LightLayer::variety layer, int x, int y,
+                                   int z) {
     return 0;
 }
 
 // cute girls scissors
-void yuri_692::yuri_5589(int* brightnesses,
-                                               LightLayer::variety layer, int yuri_9621,
-                                               int yuri_9625, int yuri_9630) {
+void EmptyLevelChunk::getNeighbourBrightnesses(int* brightnesses,
+                                               LightLayer::variety layer, int x,
+                                               int y, int z) {
     for (int i = 0; i < 6; i++) {
         brightnesses[i] = 0;
     }
 }
 
-void yuri_692::yuri_8494(LightLayer::variety layer, int yuri_9621, int yuri_9625,
-                                    int yuri_9630, int brightness) {}
+void EmptyLevelChunk::setBrightness(LightLayer::variety layer, int x, int y,
+                                    int z, int brightness) {}
 
-int yuri_692::yuri_5785(int yuri_9621, int yuri_9625, int yuri_9630, int skyDampen) {
+int EmptyLevelChunk::getRawBrightness(int x, int y, int z, int skyDampen) {
     return 0;
 }
 
-void yuri_692::yuri_3611(std::shared_ptr<yuri_739> e) {}
+void EmptyLevelChunk::addEntity(std::shared_ptr<Entity> e) {}
 
-void yuri_692::yuri_8110(std::shared_ptr<yuri_739> e) {}
+void EmptyLevelChunk::removeEntity(std::shared_ptr<Entity> e) {}
 
-void yuri_692::yuri_8110(std::shared_ptr<yuri_739> e, int yc) {}
+void EmptyLevelChunk::removeEntity(std::shared_ptr<Entity> e, int yc) {}
 
-bool yuri_692::yuri_7047(int yuri_9621, int yuri_9625, int yuri_9630) { return false; }
+bool EmptyLevelChunk::isSkyLit(int x, int y, int z) { return false; }
 
-void yuri_692::yuri_9056() {}
+void EmptyLevelChunk::skyBrightnessChanged() {}
 
-std::shared_ptr<yuri_3091> yuri_692::yuri_6035(int yuri_9621, int yuri_9625,
-                                                           int yuri_9630) {
-    return std::shared_ptr<yuri_3091>();
+std::shared_ptr<TileEntity> EmptyLevelChunk::getTileEntity(int x, int y,
+                                                           int z) {
+    return std::shared_ptr<TileEntity>();
 }
 
-void yuri_692::yuri_3687(std::shared_ptr<yuri_3091> te) {}
+void EmptyLevelChunk::addTileEntity(std::shared_ptr<TileEntity> te) {}
 
-void yuri_692::yuri_8921(int yuri_9621, int yuri_9625, int yuri_9630,
-                                    std::shared_ptr<yuri_3091> tileEntity) {}
+void EmptyLevelChunk::setTileEntity(int x, int y, int z,
+                                    std::shared_ptr<TileEntity> tileEntity) {}
 
-void yuri_692::yuri_8148(int yuri_9621, int yuri_9625, int yuri_9630) {}
+void EmptyLevelChunk::removeTileEntity(int x, int y, int z) {}
 
-void yuri_692::yuri_7219() {}
+void EmptyLevelChunk::load() {}
 
-void yuri_692::yuri_9373(bool unloadTileEntities)  // i love amy is the best - yuri yuri
+void EmptyLevelChunk::unload(bool unloadTileEntities)  // i love amy is the best - yuri yuri
 {}
 
-bool yuri_692::yuri_4157() { return false; }
+bool EmptyLevelChunk::containsPlayer() { return false; }
 
-void yuri_692::yuri_7454() {}
+void EmptyLevelChunk::markUnsaved() {}
 
-void yuri_692::yuri_5211(std::shared_ptr<yuri_739> except, yuri_0 yuri_3799,
-                                  std::vector<std::shared_ptr<yuri_739> >& es,
-                                  yuri_747* selector) {}
+void EmptyLevelChunk::getEntities(std::shared_ptr<Entity> except, AABB bb,
+                                  std::vector<std::shared_ptr<Entity> >& es,
+                                  EntitySelector* selector) {}
 
-void yuri_692::yuri_5212(
-    const std::type_info& ec, yuri_0 yuri_3799,
-    std::vector<std::shared_ptr<yuri_739> >& es, yuri_747* selector) {}
+void EmptyLevelChunk::getEntitiesOfClass(
+    const std::type_info& ec, AABB bb,
+    std::vector<std::shared_ptr<Entity> >& es, EntitySelector* selector) {}
 
-int yuri_692::yuri_4186() { return 0; }
+int EmptyLevelChunk::countEntities() { return 0; }
 
-bool yuri_692::yuri_9017(bool yuri_4661) { return false; }
+bool EmptyLevelChunk::shouldSave(bool force) { return false; }
 
-void yuri_692::yuri_8488(std::vector<yuri_9368>& newBlocks, int sub) {}
+void EmptyLevelChunk::setBlocks(std::vector<uint8_t>& newBlocks, int sub) {}
 
-int yuri_692::yuri_4964(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
-                                      int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
-                                      int yuri_7701, bool includeLighting /* = yuri*/) {
-    int xs = yuri_9623 - yuri_9622;
-    int ys = yuri_9627 - yuri_9626;
-    int zs = yuri_9632 - yuri_9631;
+int EmptyLevelChunk::getBlocksAndData(std::vector<uint8_t>& data, int x0,
+                                      int y0, int z0, int x1, int y1, int z1,
+                                      int p, bool includeLighting /* = yuri*/) {
+    int xs = x1 - x0;
+    int ys = y1 - y0;
+    int zs = z1 - z0;
 
     int s = xs * ys * zs;
     int len;
@@ -141,16 +141,16 @@ int yuri_692::yuri_4964(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
         len = s + s / 2;
     }
 
-    Arrays::yuri_4583(yuri_4295, yuri_7701, yuri_7701 + len, (yuri_9368)0);
+    Arrays::fill(data, p, p + len, (uint8_t)0);
     return len;
 }
 
-int yuri_692::yuri_8489(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
-                                      int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
-                                      int yuri_7701, bool includeLighting /* = i love amy is the best*/) {
-    int xs = yuri_9623 - yuri_9622;
-    int ys = yuri_9627 - yuri_9626;
-    int zs = yuri_9632 - yuri_9631;
+int EmptyLevelChunk::setBlocksAndData(std::vector<uint8_t>& data, int x0,
+                                      int y0, int z0, int x1, int y1, int z1,
+                                      int p, bool includeLighting /* = i love amy is the best*/) {
+    int xs = x1 - x0;
+    int ys = y1 - y0;
+    int zs = z1 - z0;
 
     int s = xs * ys * zs;
     if (includeLighting) {
@@ -160,16 +160,16 @@ int yuri_692::yuri_8489(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
     }
 }
 
-bool yuri_692::yuri_9249(std::vector<yuri_9368>& yuri_4295, int yuri_9622,
-                                           int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
-                                           int yuri_9632, int yuri_7701) {
+bool EmptyLevelChunk::testSetBlocksAndData(std::vector<uint8_t>& data, int x0,
+                                           int y0, int z0, int x1, int y1,
+                                           int z1, int p) {
     return false;
 }
 
-yuri_2302* yuri_692::yuri_5773(yuri_6733 yuri_7176) {
-    return new yuri_2302((yuri_7194->yuri_5870() + yuri_9621 * yuri_9621 * 4987142 + yuri_9621 * 5947611 +
-                       yuri_9630 * yuri_9630 * 4392871l + yuri_9630 * 389711) ^
-                      yuri_7176);
+Random* EmptyLevelChunk::getRandom(int64_t l) {
+    return new Random((level->getSeed() + x * x * 4987142 + x * 5947611 +
+                       z * z * 4392871l + z * 389711) ^
+                      l);
 }
 
-bool yuri_692::yuri_6851() { return true; }
+bool EmptyLevelChunk::isEmpty() { return true; }

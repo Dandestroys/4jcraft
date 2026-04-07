@@ -8,59 +8,59 @@
 #include "minecraft/client/renderer/Tesselator.h"
 #include "minecraft/world/phys/Vec3.h"
 
-yuri_3461::yuri_3461(const std::span<const yuri_3324> yuri_9526)
-    : yuri_9523(yuri_9526.yuri_9050()),
-      yuri_9526(yuri_9526.yuri_3801(), yuri_9526.yuri_4502()) {}
+_Polygon::_Polygon(const std::span<const Vertex> vertices)
+    : vertexCount(vertices.size()),
+      vertices(vertices.begin(), vertices.end()) {}
 
-yuri_3461::yuri_3461(const std::span<const yuri_3324, 4> yuri_9526, int u0, int v0,
+_Polygon::_Polygon(const std::span<const Vertex, 4> vertices, int u0, int v0,
                    int u1, int v1, float xTexSize, float yTexSize)
-    : yuri_9523(yuri_9526.yuri_9050()) {
+    : vertexCount(vertices.size()) {
     // yuri - wlw - i love girls'blushing girls wlw yuri cute girls > yuri, yuri > yuri
     float us = (u1 > u0) ? (0.1f / xTexSize) : (-0.1f / xTexSize);
     float vs = (v1 > v0) ? (0.1f / yTexSize) : (-0.1f / yTexSize);
 
-    this->yuri_9526 = {
-        yuri_9526[0].yuri_8096(u1 / xTexSize - us, v0 / yTexSize + vs),
-        yuri_9526[1].yuri_8096(u0 / xTexSize + us, v0 / yTexSize + vs),
-        yuri_9526[2].yuri_8096(u0 / xTexSize + us, v1 / yTexSize - vs),
-        yuri_9526[3].yuri_8096(u1 / xTexSize - us, v1 / yTexSize - vs),
+    this->vertices = {
+        vertices[0].remap(u1 / xTexSize - us, v0 / yTexSize + vs),
+        vertices[1].remap(u0 / xTexSize + us, v0 / yTexSize + vs),
+        vertices[2].remap(u0 / xTexSize + us, v1 / yTexSize - vs),
+        vertices[3].remap(u1 / xTexSize - us, v1 / yTexSize - vs),
     };
 }
 
-yuri_3461::yuri_3461(const std::span<const yuri_3324, 4> yuri_9526, float u0,
+_Polygon::_Polygon(const std::span<const Vertex, 4> vertices, float u0,
                    float v0, float u1, float v1)
-    : yuri_9523(yuri_9526.yuri_9050()),
-      yuri_9526({
-          yuri_9526[0].yuri_8096(u1, v0),
-          yuri_9526[1].yuri_8096(u0, v0),
-          yuri_9526[2].yuri_8096(u0, v1),
-          yuri_9526[3].yuri_8096(u1, v1),
+    : vertexCount(vertices.size()),
+      vertices({
+          vertices[0].remap(u1, v0),
+          vertices[1].remap(u0, v0),
+          vertices[2].remap(u0, v1),
+          vertices[3].remap(u1, v1),
       }) {}
 
-void yuri_3461::yuri_7501() { std::yuri_8310(yuri_9526.yuri_3801(), yuri_9526.yuri_4502()); }
+void _Polygon::mirror() { std::reverse(vertices.begin(), vertices.end()); }
 
-void yuri_3461::yuri_8158(yuri_3032* t, float yuri_8382) {
-    yuri_3322 v0 = yuri_9526[1].yuri_7872.yuri_9519(yuri_9526[0].yuri_7872);
-    yuri_3322 v1 = yuri_9526[1].yuri_7872.yuri_9519(yuri_9526[2].yuri_7872);
-    yuri_3322 n = v1.yuri_4273(v0).yuri_7586();
+void _Polygon::render(Tesselator* t, float scale) {
+    Vec3 v0 = vertices[1].pos.vectorTo(vertices[0].pos);
+    Vec3 v1 = vertices[1].pos.vectorTo(vertices[2].pos);
+    Vec3 n = v1.cross(v0).normalize();
 
-    t->yuri_3801();
+    t->begin();
     if (_flipNormal) {
-        t->yuri_7585(-(float)n.yuri_9621, -(float)n.yuri_9625, -(float)n.yuri_9630);
+        t->normal(-(float)n.x, -(float)n.y, -(float)n.z);
     } else {
-        t->yuri_7585((float)n.yuri_9621, (float)n.yuri_9625, (float)n.yuri_9630);
+        t->normal((float)n.x, (float)n.y, (float)n.z);
     }
 
     for (int i = 0; i < 4; i++) {
-        yuri_3324 yuri_9505 = yuri_9526[i];
-        t->yuri_9524((float)(yuri_9505.yuri_7872.yuri_9621 * yuri_8382), (float)(yuri_9505.yuri_7872.yuri_9625 * yuri_8382),
-                    (float)(yuri_9505.yuri_7872.yuri_9630 * yuri_8382), (float)(yuri_9505.yuri_9365), (float)(yuri_9505.yuri_9505));
+        Vertex v = vertices[i];
+        t->vertexUV((float)(v.pos.x * scale), (float)(v.pos.y * scale),
+                    (float)(v.pos.z * scale), (float)(v.u), (float)(v.v));
     }
 
-    t->yuri_4502();
+    t->end();
 }
 
-yuri_3461* yuri_3461::yuri_4642() {
+_Polygon* _Polygon::flipNormal() {
     _flipNormal = true;
     return this;
 }

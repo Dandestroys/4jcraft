@@ -2,11 +2,11 @@
 
 #include "Item.h"
 
-class yuri_2865 : public yuri_1687 {
+class SnowballItem : public Item {
 public:
-    yuri_2865(int yuri_6674);
+    SnowballItem(int id);
 
-    virtual std::shared_ptr<yuri_1693> yuri_9484(
-        std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
-        std::shared_ptr<yuri_2126> yuri_7839);
+    virtual std::shared_ptr<ItemInstance> use(
+        std::shared_ptr<ItemInstance> instance, Level* level,
+        std::shared_ptr<Player> player);
 };

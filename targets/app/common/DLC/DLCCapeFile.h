@@ -1,12 +1,12 @@
 #pragma once
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "DLCFile.h"
 
-class yuri_520 : public yuri_524 {
+class DLCCapeFile : public DLCFile {
 public:
-    yuri_520(const std::yuri_9616& yuri_7800);
+    DLCCapeFile(const std::wstring& path);
 
-    virtual void yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes);
+    virtual void addData(std::uint8_t* pbData, std::uint32_t dataBytes);
 };

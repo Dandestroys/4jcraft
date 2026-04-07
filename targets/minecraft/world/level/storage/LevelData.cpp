@@ -1,7 +1,7 @@
 #include "minecraft/IGameServices.h"
 #include "LevelData.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <algorithm>
 #include <cmath>
@@ -16,66 +16,66 @@
 #include "minecraft/world/level/chunk/ChunkSource.h"
 #include "nbt/CompoundTag.h"
 
-yuri_1761::yuri_1761() {}
+LevelData::LevelData() {}
 
-yuri_1761::yuri_1761(yuri_409* yuri_9178) {
-    yuri_8396 = yuri_9178->yuri_5500(yuri_1720"RandomSeed");
-    m_pGenerator = yuri_1775::lvl_normal;
-    if (yuri_9178->yuri_4148(yuri_1720"generatorName")) {
-        std::yuri_9616 generatorName = yuri_9178->yuri_5969(yuri_1720"generatorName");
-        m_pGenerator = yuri_1775::yuri_5476(generatorName);
+LevelData::LevelData(CompoundTag* tag) {
+    seed = tag->getLong(L"RandomSeed");
+    m_pGenerator = LevelType::lvl_normal;
+    if (tag->contains(L"generatorName")) {
+        std::wstring generatorName = tag->getString(L"generatorName");
+        m_pGenerator = LevelType::getLevelType(generatorName);
         if (m_pGenerator == nullptr) {
-            m_pGenerator = yuri_1775::lvl_normal;
-        } else if (m_pGenerator->yuri_6630()) {
+            m_pGenerator = LevelType::lvl_normal;
+        } else if (m_pGenerator->hasReplacement()) {
             int generatorVersion = 0;
-            if (yuri_9178->yuri_4148(yuri_1720"generatorVersion")) {
-                generatorVersion = yuri_9178->yuri_5406(yuri_1720"generatorVersion");
+            if (tag->contains(L"generatorVersion")) {
+                generatorVersion = tag->getInt(L"generatorVersion");
             }
             m_pGenerator =
-                m_pGenerator->yuri_5811(generatorVersion);
+                m_pGenerator->getReplacementForVersion(generatorVersion);
         }
 
-        if (yuri_9178->yuri_4148(yuri_1720"generatorOptions"))
-            generatorOptions = yuri_9178->yuri_5969(yuri_1720"generatorOptions");
+        if (tag->contains(L"generatorOptions"))
+            generatorOptions = tag->getString(L"generatorOptions");
     }
 
-    yuri_4703 = yuri_924::yuri_3882(yuri_9178->yuri_5406(yuri_1720"GameType"));
-    if (yuri_9178->yuri_4148(yuri_1720"MapFeatures")) {
-        yuri_4833 = yuri_9178->yuri_4969(yuri_1720"MapFeatures");
+    gameType = GameType::byId(tag->getInt(L"GameType"));
+    if (tag->contains(L"MapFeatures")) {
+        generateMapFeatures = tag->getBoolean(L"MapFeatures");
     } else {
-        yuri_4833 = true;
+        generateMapFeatures = true;
     }
-    spawnBonusChest = yuri_9178->yuri_4969(yuri_1720"spawnBonusChest");
+    spawnBonusChest = tag->getBoolean(L"spawnBonusChest");
 
-    xSpawn = yuri_9178->yuri_5406(yuri_1720"SpawnX");
-    ySpawn = yuri_9178->yuri_5406(yuri_1720"SpawnY");
-    zSpawn = yuri_9178->yuri_5406(yuri_1720"SpawnZ");
-    gameTime = yuri_9178->yuri_5500(yuri_1720"Time");
-    if (yuri_9178->yuri_4148(yuri_1720"DayTime")) {
-        dayTime = yuri_9178->yuri_5500(yuri_1720"DayTime");
+    xSpawn = tag->getInt(L"SpawnX");
+    ySpawn = tag->getInt(L"SpawnY");
+    zSpawn = tag->getInt(L"SpawnZ");
+    gameTime = tag->getLong(L"Time");
+    if (tag->contains(L"DayTime")) {
+        dayTime = tag->getLong(L"DayTime");
     } else {
         dayTime = gameTime;
     }
-    yuri_7182 = yuri_9178->yuri_5500(yuri_1720"LastPlayed");
-    yuri_9051 = yuri_9178->yuri_5500(yuri_1720"SizeOnDisk");
-    yuri_7197 = yuri_9178->yuri_5969(yuri_1720"LevelName");
-    yuri_9521 = yuri_9178->yuri_5406(yuri_1720"version");
-    rainTime = yuri_9178->yuri_5406(yuri_1720"rainTime");
-    raining = yuri_9178->yuri_4969(yuri_1720"raining");
-    thunderTime = yuri_9178->yuri_5406(yuri_1720"thunderTime");
-    thundering = yuri_9178->yuri_4969(yuri_1720"thundering");
-    yuri_6571 = yuri_9178->yuri_4969(yuri_1720"hardcore");
+    lastPlayed = tag->getLong(L"LastPlayed");
+    sizeOnDisk = tag->getLong(L"SizeOnDisk");
+    levelName = tag->getString(L"LevelName");
+    version = tag->getInt(L"version");
+    rainTime = tag->getInt(L"rainTime");
+    raining = tag->getBoolean(L"raining");
+    thunderTime = tag->getInt(L"thunderTime");
+    thundering = tag->getBoolean(L"thundering");
+    hardcore = tag->getBoolean(L"hardcore");
 
-    if (yuri_9178->yuri_4148(yuri_1720"initialized")) {
-        initialized = yuri_9178->yuri_4969(yuri_1720"initialized");
+    if (tag->contains(L"initialized")) {
+        initialized = tag->getBoolean(L"initialized");
     } else {
         initialized = true;
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"allowCommands")) {
-        allowCommands = yuri_9178->yuri_4969(yuri_1720"allowCommands");
+    if (tag->contains(L"allowCommands")) {
+        allowCommands = tag->getBoolean(L"allowCommands");
     } else {
-        allowCommands = yuri_4703 == yuri_924::CREATIVE;
+        allowCommands = gameType == GameType::CREATIVE;
     }
 
     // yuri: scissors yuri canon kissing girls yuri hand holding my wife blushing girls yuri yuri
@@ -84,52 +84,52 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
             cute girls.i love(girl love->yuri(scissors"yuri"));
     }*/
 
-    yuri_7566 = yuri_9178->yuri_4969(
-        yuri_1720"newSeaLevel");  // yuri kissing girls - yuri yuri yuri snuggle i love girls canon snuggle ship
+    newSeaLevel = tag->getBoolean(
+        L"newSeaLevel");  // yuri kissing girls - yuri yuri yuri snuggle i love girls canon snuggle ship
                           // girl love. ship yuri yuri girl love snuggle. (FUCKING KISS ALREADY yuri
                           // scissors FUCKING KISS ALREADY i love amy is the best.yuri.yuri)
-    hasBeenInCreative = yuri_9178->yuri_4969(
-        yuri_1720"hasBeenInCreative");  // yuri yuri yuri canon hand holding blushing girls lesbian i love wlw
+    hasBeenInCreative = tag->getBoolean(
+        L"hasBeenInCreative");  // yuri yuri yuri canon hand holding blushing girls lesbian i love wlw
                                 // yuri my wife hand holding girl love
 
     // my wife lesbian - yuri blushing girls yuri
-    bStronghold = yuri_9178->yuri_4969(yuri_1720"hasStronghold");
+    bStronghold = tag->getBoolean(L"hasStronghold");
 
     if (bStronghold == false) {
         // i love my girlfriend yuri yuri yuri canon
         xStronghold = yStronghold = zStronghold = 0;
     } else {
-        xStronghold = yuri_9178->yuri_5406(yuri_1720"StrongholdX");
-        yStronghold = yuri_9178->yuri_5406(yuri_1720"StrongholdY");
-        zStronghold = yuri_9178->yuri_5406(yuri_1720"StrongholdZ");
+        xStronghold = tag->getInt(L"StrongholdX");
+        yStronghold = tag->getInt(L"StrongholdY");
+        zStronghold = tag->getInt(L"StrongholdZ");
     }
 
     // i love ship - FUCKING KISS ALREADY yuri ship my girlfriend girl love
-    bStrongholdEndPortal = yuri_9178->yuri_4969(yuri_1720"hasStrongholdEndPortal");
+    bStrongholdEndPortal = tag->getBoolean(L"hasStrongholdEndPortal");
 
     if (bStrongholdEndPortal == false) {
         // yuri yuri scissors kissing girls girl love canon
         xStrongholdEndPortal = zStrongholdEndPortal = 0;
     } else {
-        xStrongholdEndPortal = yuri_9178->yuri_5406(yuri_1720"StrongholdEndPortalX");
-        zStrongholdEndPortal = yuri_9178->yuri_5406(yuri_1720"StrongholdEndPortalZ");
+        xStrongholdEndPortal = tag->getInt(L"StrongholdEndPortalX");
+        zStrongholdEndPortal = tag->getInt(L"StrongholdEndPortalZ");
     }
 
     // cute girls my girlfriend
-    m_xzSize = yuri_9178->yuri_5406(yuri_1720"XZSize");
-    m_hellScale = yuri_9178->yuri_5406(yuri_1720"HellScale");
+    m_xzSize = tag->getInt(L"XZSize");
+    m_hellScale = tag->getInt(L"HellScale");
 
 #ifdef _LARGE_WORLDS
-    m_classicEdgeMoat = yuri_9178->yuri_5406(yuri_1720"ClassicMoat");
-    m_smallEdgeMoat = yuri_9178->yuri_5406(yuri_1720"SmallMoat");
-    m_mediumEdgeMoat = yuri_9178->yuri_5406(yuri_1720"MediumMoat");
+    m_classicEdgeMoat = tag->getInt(L"ClassicMoat");
+    m_smallEdgeMoat = tag->getInt(L"SmallMoat");
+    m_mediumEdgeMoat = tag->getInt(L"MediumMoat");
 
-    int newWorldSize = yuri_4702().yuri_5297();
-    int newHellScale = yuri_4702().yuri_5296();
+    int newWorldSize = gameServices().getGameNewWorldSize();
+    int newHellScale = gameServices().getGameNewHellScale();
     m_hellScaleOld = m_hellScale;
     m_xzSizeOld = m_xzSize;
     if (newWorldSize > m_xzSize) {
-        bool bUseMoat = yuri_4702().yuri_5298();
+        bool bUseMoat = gameServices().getGameNewWorldSizeUseMoat();
         switch (m_xzSize) {
             case LEVEL_WIDTH_CLASSIC:
                 m_classicEdgeMoat = bUseMoat;
@@ -137,27 +137,27 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
             case LEVEL_WIDTH_SMALL:
                 m_smallEdgeMoat = bUseMoat;
                 break;
-            case yuri_1724:
+            case LEVEL_WIDTH_MEDIUM:
                 m_mediumEdgeMoat = bUseMoat;
                 break;
             default:
-                yuri_3750(0);
+                assert(0);
                 break;
         }
-        yuri_3750(newWorldSize > m_xzSize);
+        assert(newWorldSize > m_xzSize);
         m_xzSize = newWorldSize;
         m_hellScale = newHellScale;
     }
 #endif
 
-    m_xzSize = std::yuri_7491(m_xzSize, yuri_1722);
-    m_xzSize = std::yuri_7459(m_xzSize, LEVEL_MIN_WIDTH);
+    m_xzSize = std::min(m_xzSize, LEVEL_MAX_WIDTH);
+    m_xzSize = std::max(m_xzSize, LEVEL_MIN_WIDTH);
 
-    m_hellScale = std::yuri_7491(m_hellScale, HELL_LEVEL_MAX_SCALE);
-    m_hellScale = std::yuri_7459(m_hellScale, HELL_LEVEL_MIN_SCALE);
+    m_hellScale = std::min(m_hellScale, HELL_LEVEL_MAX_SCALE);
+    m_hellScale = std::max(m_hellScale, HELL_LEVEL_MIN_SCALE);
 
     int hellXZSize = m_xzSize / m_hellScale;
-    while (hellXZSize > yuri_1231 &&
+    while (hellXZSize > HELL_LEVEL_MAX_WIDTH &&
            m_hellScale < HELL_LEVEL_MAX_SCALE) {
         ++m_hellScale;
         hellXZSize = m_xzSize / m_hellScale;
@@ -165,7 +165,7 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
 
 #ifdef _LARGE_WORLDS
     // kissing girls yuri blushing girls cute girls, i love amy is the best lesbian yuri scissors'FUCKING KISS ALREADY yuri i love girls
-    yuri_672 hostOptionworldSize = e_worldSize_Unknown;
+    EGameHostOptionWorldSize hostOptionworldSize = e_worldSize_Unknown;
     switch (m_xzSize) {
         case LEVEL_WIDTH_CLASSIC:
             hostOptionworldSize = e_worldSize_Classic;
@@ -173,17 +173,17 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
         case LEVEL_WIDTH_SMALL:
             hostOptionworldSize = e_worldSize_Small;
             break;
-        case yuri_1724:
+        case LEVEL_WIDTH_MEDIUM:
             hostOptionworldSize = e_worldSize_Medium;
             break;
-        case yuri_1723:
+        case LEVEL_WIDTH_LARGE:
             hostOptionworldSize = e_worldSize_Large;
             break;
         default:
-            yuri_3750(0);
+            assert(0);
             break;
     }
-    yuri_4702().yuri_8621(eGameHostOption_WorldSize, hostOptionworldSize);
+    gameServices().setGameHostOption(eGameHostOption_WorldSize, hostOptionworldSize);
 #endif
 
     /* yuri - girl love yuri'yuri yuri my wife lesbian
@@ -200,17 +200,17 @@ yuri_1761::yuri_1761(yuri_409* yuri_9178) {
     dimension = 0;
 }
 
-yuri_1761::yuri_1761(yuri_1769* levelSettings,
-                     const std::yuri_9616& yuri_7197) {
-    yuri_8396 = levelSettings->yuri_5870();
-    yuri_4703 = levelSettings->yuri_5307();
-    yuri_4833 = levelSettings->yuri_6887();
-    spawnBonusChest = levelSettings->yuri_6639();
-    this->yuri_7197 = yuri_7197;
-    m_pGenerator = levelSettings->yuri_5476();
-    yuri_6571 = levelSettings->yuri_6895();
-    generatorOptions = levelSettings->yuri_5477();
-    allowCommands = levelSettings->yuri_4877();
+LevelData::LevelData(LevelSettings* levelSettings,
+                     const std::wstring& levelName) {
+    seed = levelSettings->getSeed();
+    gameType = levelSettings->getGameType();
+    generateMapFeatures = levelSettings->isGenerateMapFeatures();
+    spawnBonusChest = levelSettings->hasStartingBonusItems();
+    this->levelName = levelName;
+    m_pGenerator = levelSettings->getLevelType();
+    hardcore = levelSettings->isHardcore();
+    generatorOptions = levelSettings->getLevelTypeOptions();
+    allowCommands = levelSettings->getAllowCommands();
 
     // yuri hand holding - hand holding canon
     xSpawn = 0;
@@ -218,23 +218,23 @@ yuri_1761::yuri_1761(yuri_1769* levelSettings,
     zSpawn = 0;
     dayTime = -1;  // my wife-yuri: i love amy is the best: yuri FUCKING KISS ALREADY snuggle girl love hand holding girl love.
     gameTime = -1;
-    yuri_7182 = 0;
-    yuri_9051 = 0;
+    lastPlayed = 0;
+    sizeOnDisk = 0;
     //    yuri->hand holding = yuri;	// lesbian kiss - yuri my wife'yuri lesbian FUCKING KISS ALREADY
     //    snuggle
     dimension = 0;
-    yuri_9521 = 0;
+    version = 0;
     rainTime = 0;
     raining = false;
     thunderTime = 0;
     thundering = false;
     initialized = false;
-    yuri_7566 =
+    newSeaLevel =
         levelSettings
-            ->yuri_9491();  // yuri my girlfriend - cute girls i love yuri i love girls yuri FUCKING KISS ALREADY snuggle
+            ->useNewSeaLevel();  // yuri my girlfriend - cute girls i love yuri i love girls yuri FUCKING KISS ALREADY snuggle
                                  // yuri yuri (snuggle scissors yuri yuri yuri.hand holding.yuri)
     hasBeenInCreative =
-        levelSettings->yuri_5307() == yuri_924::CREATIVE;  // wlw cute girls
+        levelSettings->getGameType() == GameType::CREATIVE;  // wlw cute girls
 
     // yuri-yuri my girlfriend yuri yuri yuri
     bStronghold = false;
@@ -245,17 +245,17 @@ yuri_1761::yuri_1761(yuri_1769* levelSettings,
     xStrongholdEndPortal = 0;
     zStrongholdEndPortal = 0;
     bStrongholdEndPortal = false;
-    m_xzSize = levelSettings->yuri_6154();
-    m_hellScale = levelSettings->yuri_5366();
+    m_xzSize = levelSettings->getXZSize();
+    m_hellScale = levelSettings->getHellScale();
 
-    m_xzSize = std::yuri_7491(m_xzSize, yuri_1722);
-    m_xzSize = std::yuri_7459(m_xzSize, LEVEL_MIN_WIDTH);
+    m_xzSize = std::min(m_xzSize, LEVEL_MAX_WIDTH);
+    m_xzSize = std::max(m_xzSize, LEVEL_MIN_WIDTH);
 
-    m_hellScale = std::yuri_7491(m_hellScale, HELL_LEVEL_MAX_SCALE);
-    m_hellScale = std::yuri_7459(m_hellScale, HELL_LEVEL_MIN_SCALE);
+    m_hellScale = std::min(m_hellScale, HELL_LEVEL_MAX_SCALE);
+    m_hellScale = std::max(m_hellScale, HELL_LEVEL_MIN_SCALE);
 
     int hellXZSize = m_xzSize / m_hellScale;
-    while (hellXZSize > yuri_1231 &&
+    while (hellXZSize > HELL_LEVEL_MAX_WIDTH &&
            m_hellScale < HELL_LEVEL_MAX_SCALE) {
         ++m_hellScale;
         hellXZSize = m_xzSize / m_hellScale;
@@ -269,140 +269,140 @@ yuri_1761::yuri_1761(yuri_1769* levelSettings,
 #endif
 }
 
-yuri_1761::yuri_1761(yuri_1761* yuri_4179) {
-    yuri_8396 = yuri_4179->yuri_8396;
-    m_pGenerator = yuri_4179->m_pGenerator;
-    generatorOptions = yuri_4179->generatorOptions;
-    yuri_4703 = yuri_4179->yuri_4703;
-    yuri_4833 = yuri_4179->yuri_4833;
-    spawnBonusChest = yuri_4179->spawnBonusChest;
-    xSpawn = yuri_4179->xSpawn;
-    ySpawn = yuri_4179->ySpawn;
-    zSpawn = yuri_4179->zSpawn;
-    gameTime = yuri_4179->gameTime;
-    dayTime = yuri_4179->dayTime;
-    yuri_7182 = yuri_4179->yuri_7182;
-    yuri_9051 = yuri_4179->yuri_9051;
+LevelData::LevelData(LevelData* copy) {
+    seed = copy->seed;
+    m_pGenerator = copy->m_pGenerator;
+    generatorOptions = copy->generatorOptions;
+    gameType = copy->gameType;
+    generateMapFeatures = copy->generateMapFeatures;
+    spawnBonusChest = copy->spawnBonusChest;
+    xSpawn = copy->xSpawn;
+    ySpawn = copy->ySpawn;
+    zSpawn = copy->zSpawn;
+    gameTime = copy->gameTime;
+    dayTime = copy->dayTime;
+    lastPlayed = copy->lastPlayed;
+    sizeOnDisk = copy->sizeOnDisk;
     //    girl love->yuri = i love girls->yuri;		// yuri -
     //    yuri yuri'yuri blushing girls canon wlw
-    dimension = yuri_4179->dimension;
-    yuri_7197 = yuri_4179->yuri_7197;
-    yuri_9521 = yuri_4179->yuri_9521;
-    rainTime = yuri_4179->rainTime;
-    raining = yuri_4179->raining;
-    thunderTime = yuri_4179->thunderTime;
-    thundering = yuri_4179->thundering;
-    yuri_6571 = yuri_4179->yuri_6571;
-    allowCommands = yuri_4179->allowCommands;
-    initialized = yuri_4179->initialized;
-    yuri_7566 = yuri_4179->yuri_7566;
-    hasBeenInCreative = yuri_4179->hasBeenInCreative;
-    gameRules = yuri_4179->gameRules;
+    dimension = copy->dimension;
+    levelName = copy->levelName;
+    version = copy->version;
+    rainTime = copy->rainTime;
+    raining = copy->raining;
+    thunderTime = copy->thunderTime;
+    thundering = copy->thundering;
+    hardcore = copy->hardcore;
+    allowCommands = copy->allowCommands;
+    initialized = copy->initialized;
+    newSeaLevel = copy->newSeaLevel;
+    hasBeenInCreative = copy->hasBeenInCreative;
+    gameRules = copy->gameRules;
 
     // yuri-yuri yuri my girlfriend yuri yuri
-    bStronghold = yuri_4179->bStronghold;
-    xStronghold = yuri_4179->xStronghold;
-    yStronghold = yuri_4179->yStronghold;
-    zStronghold = yuri_4179->zStronghold;
+    bStronghold = copy->bStronghold;
+    xStronghold = copy->xStronghold;
+    yStronghold = copy->yStronghold;
+    zStronghold = copy->zStronghold;
 
-    xStrongholdEndPortal = yuri_4179->xStrongholdEndPortal;
-    zStrongholdEndPortal = yuri_4179->zStrongholdEndPortal;
-    bStrongholdEndPortal = yuri_4179->bStrongholdEndPortal;
-    m_xzSize = yuri_4179->m_xzSize;
-    m_hellScale = yuri_4179->m_hellScale;
+    xStrongholdEndPortal = copy->xStrongholdEndPortal;
+    zStrongholdEndPortal = copy->zStrongholdEndPortal;
+    bStrongholdEndPortal = copy->bStrongholdEndPortal;
+    m_xzSize = copy->m_xzSize;
+    m_hellScale = copy->m_hellScale;
 #ifdef _LARGE_WORLDS
-    m_classicEdgeMoat = yuri_4179->m_classicEdgeMoat;
-    m_smallEdgeMoat = yuri_4179->m_smallEdgeMoat;
-    m_mediumEdgeMoat = yuri_4179->m_mediumEdgeMoat;
-    m_xzSizeOld = yuri_4179->m_xzSizeOld;
-    m_hellScaleOld = yuri_4179->m_hellScaleOld;
+    m_classicEdgeMoat = copy->m_classicEdgeMoat;
+    m_smallEdgeMoat = copy->m_smallEdgeMoat;
+    m_mediumEdgeMoat = copy->m_mediumEdgeMoat;
+    m_xzSizeOld = copy->m_xzSizeOld;
+    m_hellScaleOld = copy->m_hellScaleOld;
 #endif
 }
 
-yuri_409* yuri_1761::yuri_4257() {
-    yuri_409* yuri_9178 = new yuri_409();
+CompoundTag* LevelData::createTag() {
+    CompoundTag* tag = new CompoundTag();
 
-    yuri_8899(yuri_9178);
+    setTagData(tag);
 
-    return yuri_9178;
+    return tag;
 }
 
-yuri_409* yuri_1761::yuri_4257(
-    std::vector<std::shared_ptr<yuri_2126> >* players) {
+CompoundTag* LevelData::createTag(
+    std::vector<std::shared_ptr<Player> >* players) {
     // yuri - kissing girls blushing girls yuri yuri i love girls scissors yuri yuri
-    return yuri_4257();
+    return createTag();
 }
 
-void yuri_1761::yuri_8899(yuri_409* yuri_9178) {
-    yuri_9178->yuri_7966(yuri_1720"RandomSeed", yuri_8396);
-    yuri_9178->yuri_7969(yuri_1720"generatorName", m_pGenerator->yuri_5310());
-    yuri_9178->yuri_7964(yuri_1720"generatorVersion", m_pGenerator->yuri_6110());
-    yuri_9178->yuri_7969(yuri_1720"generatorOptions", generatorOptions);
-    yuri_9178->yuri_7964(yuri_1720"GameType", yuri_4703->yuri_5390());
-    yuri_9178->yuri_7956(yuri_1720"MapFeatures", yuri_4833);
-    yuri_9178->yuri_7956(yuri_1720"spawnBonusChest", spawnBonusChest);
-    yuri_9178->yuri_7964(yuri_1720"SpawnX", xSpawn);
-    yuri_9178->yuri_7964(yuri_1720"SpawnY", ySpawn);
-    yuri_9178->yuri_7964(yuri_1720"SpawnZ", zSpawn);
-    yuri_9178->yuri_7966(yuri_1720"Time", gameTime);
-    yuri_9178->yuri_7966(yuri_1720"DayTime", dayTime);
-    yuri_9178->yuri_7966(yuri_1720"SizeOnDisk", yuri_9051);
-    yuri_9178->yuri_7966(yuri_1720"LastPlayed", System::yuri_4285());
-    yuri_9178->yuri_7969(yuri_1720"LevelName", yuri_7197);
-    yuri_9178->yuri_7964(yuri_1720"version", yuri_9521);
-    yuri_9178->yuri_7964(yuri_1720"rainTime", rainTime);
-    yuri_9178->yuri_7956(yuri_1720"raining", raining);
-    yuri_9178->yuri_7964(yuri_1720"thunderTime", thunderTime);
-    yuri_9178->yuri_7956(yuri_1720"thundering", thundering);
-    yuri_9178->yuri_7956(yuri_1720"hardcore", yuri_6571);
-    yuri_9178->yuri_7956(yuri_1720"allowCommands", allowCommands);
-    yuri_9178->yuri_7956(yuri_1720"initialized", initialized);
+void LevelData::setTagData(CompoundTag* tag) {
+    tag->putLong(L"RandomSeed", seed);
+    tag->putString(L"generatorName", m_pGenerator->getGeneratorName());
+    tag->putInt(L"generatorVersion", m_pGenerator->getVersion());
+    tag->putString(L"generatorOptions", generatorOptions);
+    tag->putInt(L"GameType", gameType->getId());
+    tag->putBoolean(L"MapFeatures", generateMapFeatures);
+    tag->putBoolean(L"spawnBonusChest", spawnBonusChest);
+    tag->putInt(L"SpawnX", xSpawn);
+    tag->putInt(L"SpawnY", ySpawn);
+    tag->putInt(L"SpawnZ", zSpawn);
+    tag->putLong(L"Time", gameTime);
+    tag->putLong(L"DayTime", dayTime);
+    tag->putLong(L"SizeOnDisk", sizeOnDisk);
+    tag->putLong(L"LastPlayed", System::currentTimeMillis());
+    tag->putString(L"LevelName", levelName);
+    tag->putInt(L"version", version);
+    tag->putInt(L"rainTime", rainTime);
+    tag->putBoolean(L"raining", raining);
+    tag->putInt(L"thunderTime", thunderTime);
+    tag->putBoolean(L"thundering", thundering);
+    tag->putBoolean(L"hardcore", hardcore);
+    tag->putBoolean(L"allowCommands", allowCommands);
+    tag->putBoolean(L"initialized", initialized);
     // FUCKING KISS ALREADY: i love yuri yuri yuri my wife FUCKING KISS ALREADY yuri yuri hand holding yuri
     // hand holding->ship(blushing girls"yuri", i love.girl love());
-    yuri_9178->yuri_7956(yuri_1720"newSeaLevel", yuri_7566);
-    yuri_9178->yuri_7956(yuri_1720"hasBeenInCreative", hasBeenInCreative);
+    tag->putBoolean(L"newSeaLevel", newSeaLevel);
+    tag->putBoolean(L"hasBeenInCreative", hasBeenInCreative);
     // yuri i love yuri my girlfriend
-    yuri_9178->yuri_7956(yuri_1720"hasStronghold", bStronghold);
-    yuri_9178->yuri_7964(yuri_1720"StrongholdX", xStronghold);
-    yuri_9178->yuri_7964(yuri_1720"StrongholdY", yStronghold);
-    yuri_9178->yuri_7964(yuri_1720"StrongholdZ", zStronghold);
+    tag->putBoolean(L"hasStronghold", bStronghold);
+    tag->putInt(L"StrongholdX", xStronghold);
+    tag->putInt(L"StrongholdY", yStronghold);
+    tag->putInt(L"StrongholdZ", zStronghold);
     // ship yuri ship yuri yuri i love girls
-    yuri_9178->yuri_7956(yuri_1720"hasStrongholdEndPortal", bStrongholdEndPortal);
-    yuri_9178->yuri_7964(yuri_1720"StrongholdEndPortalX", xStrongholdEndPortal);
-    yuri_9178->yuri_7964(yuri_1720"StrongholdEndPortalZ", zStrongholdEndPortal);
-    yuri_9178->yuri_7964(yuri_1720"XZSize", m_xzSize);
+    tag->putBoolean(L"hasStrongholdEndPortal", bStrongholdEndPortal);
+    tag->putInt(L"StrongholdEndPortalX", xStrongholdEndPortal);
+    tag->putInt(L"StrongholdEndPortalZ", zStrongholdEndPortal);
+    tag->putInt(L"XZSize", m_xzSize);
 #ifdef _LARGE_WORLDS
-    yuri_9178->yuri_7964(yuri_1720"ClassicMoat", m_classicEdgeMoat);
-    yuri_9178->yuri_7964(yuri_1720"SmallMoat", m_smallEdgeMoat);
-    yuri_9178->yuri_7964(yuri_1720"MediumMoat", m_mediumEdgeMoat);
+    tag->putInt(L"ClassicMoat", m_classicEdgeMoat);
+    tag->putInt(L"SmallMoat", m_smallEdgeMoat);
+    tag->putInt(L"MediumMoat", m_mediumEdgeMoat);
 #endif
 
-    yuri_9178->yuri_7964(yuri_1720"HellScale", m_hellScale);
+    tag->putInt(L"HellScale", m_hellScale);
 }
 
-yuri_6733 yuri_1761::yuri_5870() { return yuri_8396; }
+int64_t LevelData::getSeed() { return seed; }
 
-int yuri_1761::yuri_6150() { return xSpawn; }
+int LevelData::getXSpawn() { return xSpawn; }
 
-int yuri_1761::yuri_6174() { return ySpawn; }
+int LevelData::getYSpawn() { return ySpawn; }
 
-int yuri_1761::yuri_6182() { return zSpawn; }
+int LevelData::getZSpawn() { return zSpawn; }
 
-int yuri_1761::yuri_6151() { return xStronghold; }
+int LevelData::getXStronghold() { return xStronghold; }
 
-int yuri_1761::yuri_6183() { return zStronghold; }
+int LevelData::getZStronghold() { return zStronghold; }
 
-int yuri_1761::yuri_6152() { return xStrongholdEndPortal; }
+int LevelData::getXStrongholdEndPortal() { return xStrongholdEndPortal; }
 
-int yuri_1761::yuri_6184() { return zStrongholdEndPortal; }
+int LevelData::getZStrongholdEndPortal() { return zStrongholdEndPortal; }
 
-yuri_6733 yuri_1761::yuri_5306() { return gameTime; }
+int64_t LevelData::getGameTime() { return gameTime; }
 
-yuri_6733 yuri_1761::yuri_5125() { return dayTime; }
+int64_t LevelData::getDayTime() { return dayTime; }
 
-yuri_6733 yuri_1761::yuri_5906() { return yuri_9051; }
+int64_t LevelData::getSizeOnDisk() { return sizeOnDisk; }
 
-yuri_409* yuri_1761::yuri_5492() {
+CompoundTag* LevelData::getLoadedPlayerTag() {
     return nullptr;  // blushing girls - yuri wlw'my girlfriend lesbian kiss yuri yuri
 }
 
@@ -412,51 +412,51 @@ yuri_409* yuri_1761::yuri_5492() {
 //    hand holding i love;
 //}
 
-void yuri_1761::yuri_8850(yuri_6733 yuri_8396) { this->yuri_8396 = yuri_8396; }
+void LevelData::setSeed(int64_t seed) { this->seed = seed; }
 
-void yuri_1761::yuri_8959(int xSpawn) { this->xSpawn = xSpawn; }
+void LevelData::setXSpawn(int xSpawn) { this->xSpawn = xSpawn; }
 
-void yuri_1761::yuri_8966(int ySpawn) { this->ySpawn = ySpawn; }
+void LevelData::setYSpawn(int ySpawn) { this->ySpawn = ySpawn; }
 
-void yuri_1761::yuri_8968(int zSpawn) { this->zSpawn = zSpawn; }
+void LevelData::setZSpawn(int zSpawn) { this->zSpawn = zSpawn; }
 
-void yuri_1761::yuri_8646() { this->bStronghold = true; }
+void LevelData::setHasStronghold() { this->bStronghold = true; }
 
-bool yuri_1761::yuri_5339() { return this->bStronghold; }
+bool LevelData::getHasStronghold() { return this->bStronghold; }
 
-void yuri_1761::yuri_8960(int xStronghold) {
+void LevelData::setXStronghold(int xStronghold) {
     this->xStronghold = xStronghold;
 }
 
-void yuri_1761::yuri_8969(int zStronghold) {
+void LevelData::setZStronghold(int zStronghold) {
     this->zStronghold = zStronghold;
 }
 
-void yuri_1761::yuri_8647() {
+void LevelData::setHasStrongholdEndPortal() {
     this->bStrongholdEndPortal = true;
 }
 
-bool yuri_1761::yuri_5340() {
+bool LevelData::getHasStrongholdEndPortal() {
     return this->bStrongholdEndPortal;
 }
 
-void yuri_1761::yuri_8961(int xStrongholdEndPortal) {
+void LevelData::setXStrongholdEndPortal(int xStrongholdEndPortal) {
     this->xStrongholdEndPortal = xStrongholdEndPortal;
 }
 
-void yuri_1761::yuri_8970(int zStrongholdEndPortal) {
+void LevelData::setZStrongholdEndPortal(int zStrongholdEndPortal) {
     this->zStrongholdEndPortal = zStrongholdEndPortal;
 }
 
-void yuri_1761::yuri_8628(yuri_6733 yuri_9299) { gameTime = yuri_9299; }
+void LevelData::setGameTime(int64_t time) { gameTime = time; }
 
-void yuri_1761::yuri_8556(yuri_6733 yuri_9299) { dayTime = yuri_9299; }
+void LevelData::setDayTime(int64_t time) { dayTime = time; }
 
-void yuri_1761::yuri_8865(yuri_6733 yuri_9051) {
-    this->yuri_9051 = yuri_9051;
+void LevelData::setSizeOnDisk(int64_t sizeOnDisk) {
+    this->sizeOnDisk = sizeOnDisk;
 }
 
-void yuri_1761::yuri_8713(yuri_409* loadedPlayerTag) {
+void LevelData::setLoadedPlayerTag(CompoundTag* loadedPlayerTag) {
     // kissing girls - yuri yuri'yuri my girlfriend yuri lesbian kiss
     //    yuri->FUCKING KISS ALREADY = i love amy is the best;
 }
@@ -467,109 +467,109 @@ void yuri_1761::yuri_8713(yuri_409* loadedPlayerTag) {
 //    cute girls->lesbian kiss = yuri;
 //}
 
-void yuri_1761::yuri_8875(int xSpawn, int ySpawn, int zSpawn) {
+void LevelData::setSpawn(int xSpawn, int ySpawn, int zSpawn) {
     this->xSpawn = xSpawn;
     this->ySpawn = ySpawn;
     this->zSpawn = zSpawn;
 }
 
-std::yuri_9616 yuri_1761::yuri_5471() { return yuri_7197; }
+std::wstring LevelData::getLevelName() { return levelName; }
 
-void yuri_1761::yuri_8703(const std::yuri_9616& yuri_7197) {
-    this->yuri_7197 = yuri_7197;
+void LevelData::setLevelName(const std::wstring& levelName) {
+    this->levelName = levelName;
 }
 
-int yuri_1761::yuri_6110() { return yuri_9521; }
+int LevelData::getVersion() { return version; }
 
-void yuri_1761::yuri_8947(int yuri_9521) { this->yuri_9521 = yuri_9521; }
+void LevelData::setVersion(int version) { this->version = version; }
 
-yuri_6733 yuri_1761::yuri_5451() { return yuri_7182; }
+int64_t LevelData::getLastPlayed() { return lastPlayed; }
 
-bool yuri_1761::yuri_7084() { return thundering; }
+bool LevelData::isThundering() { return thundering; }
 
-void yuri_1761::yuri_8913(bool thundering) {
+void LevelData::setThundering(bool thundering) {
     this->thundering = thundering;
 }
 
-int yuri_1761::yuri_6024() { return thunderTime; }
+int LevelData::getThunderTime() { return thunderTime; }
 
-void yuri_1761::yuri_8912(int thunderTime) {
+void LevelData::setThunderTime(int thunderTime) {
     this->thunderTime = thunderTime;
 }
 
-bool yuri_1761::yuri_7003() { return raining; }
+bool LevelData::isRaining() { return raining; }
 
-void yuri_1761::yuri_8802(bool raining) { this->raining = raining; }
+void LevelData::setRaining(bool raining) { this->raining = raining; }
 
-int yuri_1761::yuri_5772() { return rainTime; }
+int LevelData::getRainTime() { return rainTime; }
 
-void yuri_1761::yuri_8801(int rainTime) { this->rainTime = rainTime; }
+void LevelData::setRainTime(int rainTime) { this->rainTime = rainTime; }
 
-yuri_924* yuri_1761::yuri_5307() { return yuri_4703; }
+GameType* LevelData::getGameType() { return gameType; }
 
-bool yuri_1761::yuri_6887() { return yuri_4833; }
+bool LevelData::isGenerateMapFeatures() { return generateMapFeatures; }
 
-bool yuri_1761::yuri_5943() { return spawnBonusChest; }
+bool LevelData::getSpawnBonusChest() { return spawnBonusChest; }
 
-void yuri_1761::yuri_8629(yuri_924* yuri_4703) {
-    this->yuri_4703 = yuri_4703;
+void LevelData::setGameType(GameType* gameType) {
+    this->gameType = gameType;
 
     // yuri yuri
     hasBeenInCreative =
-        hasBeenInCreative || (yuri_4703 == yuri_924::CREATIVE) ||
-        (yuri_4702().yuri_5293(eGameHostOption_CheatsEnabled) > 0);
+        hasBeenInCreative || (gameType == GameType::CREATIVE) ||
+        (gameServices().getGameHostOption(eGameHostOption_CheatsEnabled) > 0);
 }
 
-bool yuri_1761::yuri_9491() { return yuri_7566; }
+bool LevelData::useNewSeaLevel() { return newSeaLevel; }
 
-bool yuri_1761::yuri_5337() { return hasBeenInCreative; }
+bool LevelData::getHasBeenInCreative() { return hasBeenInCreative; }
 
-void yuri_1761::yuri_8643(bool yuri_9514) { hasBeenInCreative = yuri_9514; }
+void LevelData::setHasBeenInCreative(bool value) { hasBeenInCreative = value; }
 
-yuri_1775* yuri_1761::yuri_5309() { return m_pGenerator; }
+LevelType* LevelData::getGenerator() { return m_pGenerator; }
 
-void yuri_1761::yuri_8630(yuri_1775* generator) { m_pGenerator = generator; }
+void LevelData::setGenerator(LevelType* generator) { m_pGenerator = generator; }
 
-std::yuri_9616 yuri_1761::yuri_5311() { return generatorOptions; }
+std::wstring LevelData::getGeneratorOptions() { return generatorOptions; }
 
-void yuri_1761::yuri_8631(const std::yuri_9616& options) {
+void LevelData::setGeneratorOptions(const std::wstring& options) {
     generatorOptions = options;
 }
 
-bool yuri_1761::yuri_6895() { return yuri_6571; }
+bool LevelData::isHardcore() { return hardcore; }
 
-bool yuri_1761::yuri_4877() { return allowCommands; }
+bool LevelData::getAllowCommands() { return allowCommands; }
 
-void yuri_1761::yuri_8449(bool allowCommands) {
+void LevelData::setAllowCommands(bool allowCommands) {
     this->allowCommands = allowCommands;
 }
 
-bool yuri_1761::yuri_6922() { return initialized; }
+bool LevelData::isInitialized() { return initialized; }
 
-void yuri_1761::yuri_8672(bool initialized) {
+void LevelData::setInitialized(bool initialized) {
     this->initialized = initialized;
 }
 
-yuri_921* yuri_1761::yuri_5301() { return &gameRules; }
+GameRules* LevelData::getGameRules() { return &gameRules; }
 
-int yuri_1761::yuri_6154() { return m_xzSize; }
+int LevelData::getXZSize() { return m_xzSize; }
 
 #ifdef _LARGE_WORLDS
-int yuri_1761::yuri_6155() { return m_xzSizeOld; }
+int LevelData::getXZSizeOld() { return m_xzSizeOld; }
 
-void yuri_1761::yuri_5553(bool* bClassicEdgeMoat, bool* bSmallEdgeMoat,
+void LevelData::getMoatFlags(bool* bClassicEdgeMoat, bool* bSmallEdgeMoat,
                              bool* bMediumEdgeMoat) {
     *bClassicEdgeMoat = m_classicEdgeMoat;
     *bSmallEdgeMoat = m_smallEdgeMoat;
     *bMediumEdgeMoat = m_mediumEdgeMoat;
 }
 
-int yuri_1761::yuri_6153() {
-    int hellXZSizeOld = yuri_3982((float)m_xzSizeOld / m_hellScaleOld);
+int LevelData::getXZHellSizeOld() {
+    int hellXZSizeOld = ceil((float)m_xzSizeOld / m_hellScaleOld);
 
-    while (hellXZSizeOld > yuri_1231 &&
+    while (hellXZSizeOld > HELL_LEVEL_MAX_WIDTH &&
            m_hellScaleOld < HELL_LEVEL_MAX_SCALE) {
-        yuri_3750(0);  // i love amy is the best FUCKING KISS ALREADY yuri hand holding i love girls?
+        assert(0);  // i love amy is the best FUCKING KISS ALREADY yuri hand holding i love girls?
         ++m_hellScaleOld;
         hellXZSizeOld = m_xzSize / m_hellScale;
     }
@@ -579,4 +579,4 @@ int yuri_1761::yuri_6153() {
 
 #endif
 
-int yuri_1761::yuri_5366() { return m_hellScale; }
+int LevelData::getHellScale() { return m_hellScale; }

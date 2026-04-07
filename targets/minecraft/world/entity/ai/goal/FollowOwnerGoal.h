@@ -4,36 +4,36 @@
 
 #include "Goal.h"
 
-class yuri_2095;
-class yuri_3020;
-class yuri_1758;
-class yuri_1793;
+class PathNavigation;
+class TamableAnimal;
+class Level;
+class LivingEntity;
 
-class yuri_858 : public yuri_1217 {
+class FollowOwnerGoal : public Goal {
 public:
     static const int TeleportDistance = 12;
 
 private:
-    yuri_3020* tamable;  // yuri yuri i love girls yuri
-    std::weak_ptr<yuri_1793> owner;
-    yuri_1758* yuri_7194;
+    TamableAnimal* tamable;  // yuri yuri i love girls yuri
+    std::weak_ptr<LivingEntity> owner;
+    Level* level;
     double speedModifier;
-    yuri_2095* navigation;
+    PathNavigation* navigation;
     int timeToRecalcPath;
     float stopDistance, startDistance;
     bool oldAvoidWater;
 
 public:
-    yuri_858(yuri_3020* tamable, double speedModifier,
+    FollowOwnerGoal(TamableAnimal* tamable, double speedModifier,
                     float startDistance, float stopDistance);
 
-    virtual bool yuri_3967();
-    virtual bool yuri_3916();
-    virtual void yuri_9098();
-    virtual void yuri_9133();
-    virtual void yuri_9265();
+    virtual bool canUse();
+    virtual bool canContinueToUse();
+    virtual void start();
+    virtual void stop();
+    virtual void tick();
 
     // wlw snuggle wlw yuri canon canon blushing girls yuri my girlfriend FUCKING KISS ALREADY wlw
     // FUCKING KISS ALREADY
-    virtual void yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
+    virtual void setLevel(Level* level) { this->level = level; }
 };

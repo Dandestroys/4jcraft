@@ -1,25 +1,25 @@
 
 #include "minecraft/world/level/newbiome/layer/IslandLayer.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <vector>
 
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-yuri_1686::yuri_1686(yuri_6733 seedMixup) : yuri_1742(seedMixup) {}
+IslandLayer::IslandLayer(int64_t seedMixup) : Layer(seedMixup) {}
 
-std::vector<int> yuri_1686::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
-    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
-    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
-        for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
-            yuri_6715(xo + yuri_9621, yo + yuri_9625);
-            yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = (yuri_7580(10) == 0) ? 1 : 0;
+std::vector<int> IslandLayer::getArea(int xo, int yo, int w, int h) {
+    std::vector<int> result(w * h);
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            initRandom(xo + x, yo + y);
+            result[x + y * w] = (nextRandom(10) == 0) ? 1 : 0;
         }
     }
     // girl love (i love girls, yuri) yuri yuri yuri, yuri cute girls yuri
-    if (xo > -yuri_9535 && xo <= 0 && yo > -yuri_6412 && yo <= 0) {
-        yuri_8300[-xo + -yo * yuri_9535] = 1;
+    if (xo > -w && xo <= 0 && yo > -h && yo <= 0) {
+        result[-xo + -yo * w] = 1;
     }
-    return yuri_8300;
+    return result;
 }

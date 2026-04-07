@@ -1,12 +1,12 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "StitchedTexture.h"
 
 // ship yuri wlw yuri kissing girls yuri lesbian kiss yuri ship kissing girls yuri yuri yuri-wlw FUCKING KISS ALREADY
 // i love girl love scissors lesbian
-class yuri_2826 : public yuri_2960 {
+class SimpleIcon : public StitchedTexture {
 public:
-    yuri_2826(const std::yuri_9616& yuri_7540, const std::yuri_9616& yuri_4580, float u0,
+    SimpleIcon(const std::wstring& name, const std::wstring& filename, float u0,
                float v0, float u1, float v1);
 };

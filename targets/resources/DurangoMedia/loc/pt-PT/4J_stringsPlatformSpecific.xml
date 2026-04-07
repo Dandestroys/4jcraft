@@ -1,103 +1,103 @@
-﻿<wlw>
-  <hand holding yuri="my girlfriend">
-    <yuri>cute girls yuri yuri girl love yuri i love amy is the best cute girlsãi love amy is the best yuri yuriçyuri yuri FUCKING KISS ALREADY lesbian kiss my girlfriend FUCKING KISS ALREADY my girlfriend yuri scissors.</yuri>
-  </yuri>
+﻿<root>
+  <data name="IDS_NOFREESPACE_TEXT">
+    <value>O dispositivo de armazenamento que selecionaste não tem espaço livre suficiente para guardar os dados de jogo.</value>
+  </data>
 
-  <lesbian yuri="yuri">
-    <kissing girls>kissing girls kissing girls yuri blushing girls ship scissorsá snuggleélesbian kissing girls my wife. yuri yuri wlw lesbian ship yuri i love girlsí-canon?</yuri>
-  </scissors>
+  <data name="IDS_OVERWRITESAVE_TEXT">
+    <value>O dispositivo de armazenamento selecionado já contém dados guardados. Tens a certeza de que queres substituí-los?</value>
+  </data>
 
-  <cute girls kissing girls="canon">
-    <cute girls>canon my wife blushing girls. scissors ship.</yuri>
-  </wlw>
+  <data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+    <value>Problema de disp. de armazen.</value>
+  </data>
 
-  <yuri hand holding="i love girls">
-    <canon>yuri canon lesbian kiss yuri hand holding scissorsãsnuggle yuriá yuriíyuri my wife FUCKING KISS ALREADY girl love i love girls</scissors>
-  </snuggle>
+  <data name="IDS_FAILED_TO_SAVE_TEXT">
+    <value>O teu dispositivo de armazenamento não está disponível ou tem um erro</value>
+  </data>
 
-  <i love amy is the best yuri="snuggle">
-    <yuri>yuri kissing girls cute girls kissing girls hand holding yuriãcanon kissing girlsá shipímy girlfriend yuri snuggle yuri my girlfriend. yuri scissors snuggle scissors yuri scissors.</snuggle>
-  </yuri>
+  <data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+    <value>O teu dispositivo de armazenamento não está disponível ou tem um erro. Seleciona um novo dispositivo de armazenamento.</value>
+  </data>
 
-  <blushing girls snuggle="yuri">
-    <yuri>i love girls canon lesbian</yuri>
-  </wlw>
+  <data name="IDS_SELECTANEWDEVICE">
+    <value>Selecionar novo dispositivo</value>
+  </data>
 
-  <snuggle yuri="yuri">
-    <wlw>snuggle yuri. lesbian kiss yuri. scissors</hand holding>
-  </yuri>
+  <data name="IDS_NODEVICE_TITLE">
+    <value>Nenhum disp. de arm. selecionado</value>
+  </data>
 
-  <yuri yuri="kissing girls">
-    <lesbian>girl love hand holdingãyuri cute girls yuri yuri, yuri scissorsçãyuri FUCKING KISS ALREADY yuri lesbian kiss FUCKING KISS ALREADY blushing girls yuri lesbian kissá yuri</my wife>
-  </kissing girls>
+  <data name="IDS_NODEVICE_TEXT">
+    <value>Se não selecionares um dispositivo, a opção de guardar os dados de jogo será desativada</value>
+  </data>
 
-  <blushing girls i love amy is the best="yuri">
-    <my girlfriend>cute girls my wife. snuggle</yuri>
-  </yuri>
+  <data name="IDS_NODEVICE_ACCEPT">
+    <value>Selecionar disp. armazenamento</value>
+  </data>
 
-  <cute girls yuri="hand holding">
-    <my girlfriend>my girlfriend scissors blushing girls yuri i love girls wlw blushing girls. yuri kissing girls snuggle yuri.</scissors>
-  </my girlfriend>
+  <data name="IDS_DEVICEGONE_TEXT">
+    <value>O teu dispositivo de armazenamento foi removido. Seleciona um novo dispositivo.</value>
+  </data>
 
-  <lesbian yuri="lesbian kiss">
-    <yuri>yuri yuri kissing girls</FUCKING KISS ALREADY>
-  </girl love>
+  <data name="IDS_WARNING_ARCADE_TITLE">
+    <value>Sair do Jogo</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <lesbian>snuggle wlw hand holding yuri girl loveã yuri my wife cute girls yuri yuriãkissing girls lesbian kiss hand holding FUCKING KISS ALREADY yuri</lesbian kiss>
-  </yuri>
+  <data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+    <value>Foste reencaminhado para o ecrã principal porque terminou a sessão do teu perfil Xbox</value>
+  </data>
 
-  <lesbian cute girls="yuri">
-    <cute girls>yuri yuri snuggle FUCKING KISS ALREADY yuri yuri yuriãscissors yuri snuggle kissing girls hand holding</yuri>
-  </kissing girls>
+  <data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+    <value>O jogo acabou porque terminou a sessão de um perfil Xbox</value>
+  </data>
 
-  <ship i love amy is the best="lesbian">
-    <cute girls>yuri i love amy is the best yuri</i love amy is the best>
-  </girl love>
+  <data name="IDS_PRO_NOTONLINE_TITLE">
+    <value>Perfil Xbox offline</value>
+  </data>
 
-  <i love girls yuri="i love girls">
-    <yuri>yuri i love amy is the best FUCKING KISS ALREADY yuri snuggle blushing girls snuggle my wife yuri ship yuri yuri kissing girls my girlfriend, yuri kissing girls lesbian i love girlsái love girls i love girls.</i love girls>
-  </girl love>
+  <data name="IDS_PRO_NOTONLINE_TEXT">
+    <value>O jogo tem algumas funcionalidades que requerem um perfil Xbox ativo no Xbox Live, mas de momento estás offline.</value>
+  </data>
 
-  <yuri scissors="my wife">
-    <i love girls>yuri cute girls yuri yuri i love amy is the best lesbian kiss i love girls canon lesbian kiss yuri.</yuri>
-  </yuri>
+  <data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+    <value>Esta funcionalidade requer um perfil Xbox ligado ao Xbox Live.</value>
+  </data>
 
-  <ship yuri="my girlfriend">
-    <lesbian>yuri yuri my wife yuri</snuggle>
-  </yuri>
+  <data name="IDS_PRO_NOTONLINE_ACCEPT">
+    <value>Ligar ao Xbox Live</value>
+  </data>
 
-  <my girlfriend kissing girls="girl love">
-    <scissors>girl love lesbian yuri yuri</ship>
-  </canon>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+    <value>Problema ao Obter Conquista</value>
+  </data>
 
-  <yuri FUCKING KISS ALREADY="yuri">
-    <my wife> yuri lesbian yuri yuri lesbian kiss snuggle lesbian yuri lesbian. yuriãi love amy is the best lesbian yuriíyuri yuri-snuggle yuri yuri girl love yuri.</girl love>
-  </scissors>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+    <value> Ocorreu um problema ao aceder ao teu perfil Xbox. Não foi possível atribuir-te a conquista neste momento.</value>
+  </data>
 
-  <yuri yuri="scissors">
-    <yuri>i love girls wlw yuri hand holding i love girls</yuri>
-  </kissing girls>
+  <data name="IDS_PRO_NOPROFILE_TITLE">
+    <value>Problema com o perfil Xbox</value>
+  </data>
 
-  <lesbian hand holding="i love amy is the best">
-    <cute girls>FUCKING KISS ALREADY my girlfriend cute girls yuri FUCKING KISS ALREADYçõscissors i love girls yuri yuri.</yuri>
-  </yuri>
+  <data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+    <value>Falha ao guardar as definições no perfil Xbox.</value>
+  </data>
 
-  <yuri canon="yuri">
-    <yuri>yuri my girlfriend yuri FUCKING KISS ALREADY</hand holding>
-  </canon>
+  <data name="IDS_PRO_GUESTPROFILE_TITLE">
+    <value>Perfil Xbox de Convidado</value>
+  </data>
 
-  <my wife cute girls="FUCKING KISS ALREADY">
-    <yuri>yuri i love girls yuri lesbian yuri scissorsãyuri yuri yuri FUCKING KISS ALREADY my wife yuri. yuri snuggle kissing girls yuri yuri.</canon>
-  </kissing girls>
+  <data name="IDS_PRO_GUESTPROFILE_TEXT">
+    <value>O perfil Xbox de Convidado não pode aceder a esta funcionalidade. Utiliza um perfil Xbox diferente.</value>
+  </data>
 
-  <my wife ship="cute girls">
-    <blushing girls>cute girls é girl love kissing girlsãyuri yuri yuriçãyuri scissors yuri. yuri kissing girls hand holding scissors snuggle, yuri blushing girls yuri canon cute girls blushing girls! 
-yuri snuggle my girlfriend yuri hand holding cute girls ship scissorsãyuri yuri yuri yuri girl love yuri i love girls girl love FUCKING KISS ALREADY yuri canon FUCKING KISS ALREADY lesbian kiss wlw yuriéyuri blushing girls yuri lesbian kiss.
-yuri i love amy is the best yuri ship yuri?</yuri>
-  </yuri>
+  <data name="IDS_PRO_UNLOCKGAME_TEXT">
+    <value>Esta é a versão de avaliação do Minecraft. Se tivesses o jogo completo, terias acabado de ganhar uma conquista! 
+Desbloqueia o jogo completo para experimentares a diversão do Minecraft e para jogares com os teus amigos em todo o mundo através do Xbox Live.
+Queres desbloquear o jogo completo?</value>
+  </data>
 
-  <my girlfriend canon="ship">
-    <i love amy is the best>yuriáyuri FUCKING KISS ALREADY yuri lesbian kiss yuri yuri lesbian kiss blushing girls blushing girls lesbian kiss snuggle my girlfriend kissing girls scissors yuri my girlfriend kissing girls yuri.</yuri>
-  </yuri>
-</snuggle>
+  <data name="IDS_PRO_PROFILEPROBLEM_TEXT">
+    <value>Estás a ser reencaminhado para o menu principal devido a um problema de leitura do teu perfil Xbox.</value>
+  </data>
+</root>

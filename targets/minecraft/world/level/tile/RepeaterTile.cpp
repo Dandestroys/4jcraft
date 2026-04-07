@@ -11,66 +11,66 @@
 #include "minecraft/world/level/tile/DiodeTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-const double yuri_2393::DELAY_RENDER_OFFSETS[4] = {
+const double RepeaterTile::DELAY_RENDER_OFFSETS[4] = {
     -1.0f / 16.0f, 1.0f / 16.0f, 3.0f / 16.0f, 5.0f / 16.0f};
-const int yuri_2393::DELAYS[4] = {1, 2, 3, 4};
+const int RepeaterTile::DELAYS[4] = {1, 2, 3, 4};
 
-yuri_2393::yuri_2393(int yuri_6674, bool on) : yuri_613(yuri_6674, on) {}
+RepeaterTile::RepeaterTile(int id, bool on) : DiodeTile(id, on) {}
 
-bool yuri_2393::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                       std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+bool RepeaterTile::use(Level* level, int x, int y, int z,
+                       std::shared_ptr<Player> player, int clickedFace,
                        float clickX, float clickY, float clickZ,
                        bool soundOnly) {
     if (soundOnly) return false;
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4331 = (yuri_4295 & DELAY_MASK) >> DELAY_SHIFT;
-    yuri_4331 = ((yuri_4331 + 1) << DELAY_SHIFT) & DELAY_MASK;
+    int data = level->getData(x, y, z);
+    int delay = (data & DELAY_MASK) >> DELAY_SHIFT;
+    delay = ((delay + 1) << DELAY_SHIFT) & DELAY_MASK;
 
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4331 | (yuri_4295 & DIRECTION_MASK), yuri_3088::UPDATE_ALL);
+    level->setData(x, y, z, delay | (data & DIRECTION_MASK), Tile::UPDATE_ALL);
     return true;
 }
 
-int yuri_2393::yuri_6064(int yuri_4295) {
-    return DELAYS[(yuri_4295 & DELAY_MASK) >> DELAY_SHIFT] * 2;
+int RepeaterTile::getTurnOnDelay(int data) {
+    return DELAYS[(data & DELAY_MASK) >> DELAY_SHIFT] * 2;
 }
 
-yuri_613* yuri_2393::yuri_5619() { return yuri_3088::diode_on; }
+DiodeTile* RepeaterTile::getOnTile() { return Tile::diode_on; }
 
-yuri_613* yuri_2393::yuri_5613() { return yuri_3088::diode_off; }
+DiodeTile* RepeaterTile::getOffTile() { return Tile::diode_off; }
 
-int yuri_2393::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_1687::repeater_Id;
+int RepeaterTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Item::repeater_Id;
 }
 
-int yuri_2393::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_1687::repeater_Id;
+int RepeaterTile::cloneTileId(Level* level, int x, int y, int z) {
+    return Item::repeater_Id;
 }
 
-int yuri_2393::yuri_5806() { return SHAPE_REPEATER; }
+int RepeaterTile::getRenderShape() { return SHAPE_REPEATER; }
 
-bool yuri_2393::yuri_6949(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    return yuri_4879(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295) > Redstone::SIGNAL_NONE;
+bool RepeaterTile::isLocked(LevelSource* level, int x, int y, int z, int data) {
+    return getAlternateSignal(level, x, y, z, data) > Redstone::SIGNAL_NONE;
 }
 
-bool yuri_2393::yuri_6768(int tile) { return yuri_6840(tile); }
+bool RepeaterTile::isAlternateInput(int tile) { return isDiode(tile); }
 
-void yuri_2393::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
-                               yuri_2302* yuri_7981) {
+void RepeaterTile::animateTick(Level* level, int xt, int yt, int zt,
+                               Random* random) {
     if (!on) return;
-    int yuri_4295 = yuri_7194->yuri_5115(xt, yt, zt);
-    int yuri_4361 = yuri_5163(yuri_4295);
+    int data = level->getData(xt, yt, zt);
+    int dir = getDirection(data);
 
-    double yuri_9621 = xt + 0.5f + (yuri_7981->yuri_7576() - 0.5f) * 0.2;
-    double yuri_9625 = yt + 0.4f + (yuri_7981->yuri_7576() - 0.5f) * 0.2;
-    double yuri_9630 = zt + 0.5f + (yuri_7981->yuri_7576() - 0.5f) * 0.2;
+    double x = xt + 0.5f + (random->nextFloat() - 0.5f) * 0.2;
+    double y = yt + 0.4f + (random->nextFloat() - 0.5f) * 0.2;
+    double z = zt + 0.5f + (random->nextFloat() - 0.5f) * 0.2;
 
     double xo = 0;
     double zo = 0;
 
-    if (yuri_7981->yuri_7578(2) == 0) {
+    if (random->nextInt(2) == 0) {
         // yuri my wife lesbian kiss
-        switch (yuri_4361) {
+        switch (dir) {
             case Direction::SOUTH:
                 zo = -5.0f / 16.0f;
                 break;
@@ -86,30 +86,30 @@ void yuri_2393::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
         }
     } else {
         // FUCKING KISS ALREADY kissing girls yuri
-        int yuri_4331 = (yuri_4295 & DELAY_MASK) >> DELAY_SHIFT;
-        switch (yuri_4361) {
+        int delay = (data & DELAY_MASK) >> DELAY_SHIFT;
+        switch (dir) {
             case Direction::SOUTH:
-                zo = DELAY_RENDER_OFFSETS[yuri_4331];
+                zo = DELAY_RENDER_OFFSETS[delay];
                 break;
             case Direction::NORTH:
-                zo = -DELAY_RENDER_OFFSETS[yuri_4331];
+                zo = -DELAY_RENDER_OFFSETS[delay];
                 break;
             case Direction::EAST:
-                xo = DELAY_RENDER_OFFSETS[yuri_4331];
+                xo = DELAY_RENDER_OFFSETS[delay];
                 break;
             case Direction::WEST:
-                xo = -DELAY_RENDER_OFFSETS[yuri_4331];
+                xo = -DELAY_RENDER_OFFSETS[delay];
                 break;
         }
     }
 
-    yuri_7194->yuri_3655(eParticleType_reddust, yuri_9621 + xo, yuri_9625, yuri_9630 + zo, 0, 0, 0);
+    level->addParticle(eParticleType_reddust, x + xo, y, z + zo, 0, 0, 0);
 }
 
-void yuri_2393::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,
-                            int yuri_4295) {
-    yuri_613::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
-    yuri_9436(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void RepeaterTile::onRemove(Level* level, int x, int y, int z, int id,
+                            int data) {
+    DiodeTile::onRemove(level, x, y, z, id, data);
+    updateNeighborsInFront(level, x, y, z);
 }
 
-bool yuri_2393::yuri_3033() { return true; }
+bool RepeaterTile::TestUse() { return true; }

@@ -3,27 +3,27 @@
 #include "app/common/UI/Controls/UIControl.h"
 #include "app/common/UI/UIScene.h"
 
-class yuri_3188;
+class UILayer;
 
-yuri_3250::yuri_3250(int iPad, void* initData, yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_Timer::UIScene_Timer(int iPad, void* initData, UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // my girlfriend yuri lesbian kiss canon yuri scissors cute girls snuggle yuri i love girls
-    yuri_6720();
+    initialiseMovie();
 
     // scissors scissors lesbian, ship yuri yuri yuri yuri my girlfriend hand holding lesbian kiss'hand holding yuri canon
     // FUCKING KISS ALREADY my girlfriend yuri
     if (initData == 0) {
-        m_controlBackground.yuri_8950(false);
+        m_controlBackground.setVisible(false);
     }
 }
 
-std::yuri_9616 yuri_3250::yuri_5574() { return yuri_1720"Timer"; }
+std::wstring UIScene_Timer::getMoviePath() { return L"Timer"; }
 
-void yuri_3250::yuri_8090(bool yuri_4661) {
+void UIScene_Timer::reloadMovie(bool force) {
     // yuri my wife yuri
 }
 
-bool yuri_3250::yuri_7548() {
+bool UIScene_Timer::needsReloaded() {
     // cute girls yuri yuri
     return false;
 }

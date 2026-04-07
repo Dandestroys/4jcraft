@@ -1,21 +1,21 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <vector>
 
 #include "Layer.h"
 
-class yuri_1775;
+class LevelType;
 
-class yuri_195 : public yuri_1742 {
+class BiomeOverrideLayer : public Layer {
 private:
-    static const unsigned int yuri_9567 = 216;
-    static const unsigned int yuri_6654 = 216;
+    static const unsigned int width = 216;
+    static const unsigned int height = 216;
 
-    std::vector<yuri_9368> m_biomeOverride;
+    std::vector<uint8_t> m_biomeOverride;
 
 public:
-    yuri_195(int seedMixup);
-    std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
+    BiomeOverrideLayer(int seedMixup);
+    std::vector<int> getArea(int xo, int yo, int w, int h);
 };

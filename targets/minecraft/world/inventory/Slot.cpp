@@ -10,134 +10,134 @@
 #include "minecraft/world/item/crafting/ArmorDyeRecipe.h"
 #include "minecraft/world/item/crafting/Recipes.h"
 
-class yuri_1346;
-class yuri_2126;
+class Icon;
+class Player;
 
-yuri_2845::yuri_2845(std::shared_ptr<yuri_436> yuri_4145, int yuri_9061, int yuri_9621, int yuri_9625)
-    : yuri_4145(yuri_4145), yuri_9061(yuri_9061) {
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
+Slot::Slot(std::shared_ptr<Container> container, int slot, int x, int y)
+    : container(container), slot(slot) {
+    this->x = x;
+    this->y = y;
 
     this->index = 0;
 }
 
-void yuri_2845::yuri_7640(std::shared_ptr<yuri_1693> picked,
-                        std::shared_ptr<yuri_1693> original) {
+void Slot::onQuickCraft(std::shared_ptr<ItemInstance> picked,
+                        std::shared_ptr<ItemInstance> original) {
     if (picked == nullptr || original == nullptr) {
         return;
     }
-    if (picked->yuri_6674 != original->yuri_6674) {
+    if (picked->id != original->id) {
         return;
     }
-    int yuri_4184 = original->yuri_4184 - picked->yuri_4184;
-    if (yuri_4184 > 0) {
-        yuri_7640(picked, yuri_4184);
+    int count = original->count - picked->count;
+    if (count > 0) {
+        onQuickCraft(picked, count);
     }
 }
 
-void yuri_2845::yuri_7640(std::shared_ptr<yuri_1693> picked, int yuri_4184) {}
+void Slot::onQuickCraft(std::shared_ptr<ItemInstance> picked, int count) {}
 
-void yuri_2845::yuri_4030(std::shared_ptr<yuri_1693> picked) {}
+void Slot::checkTakeAchievements(std::shared_ptr<ItemInstance> picked) {}
 
-void yuri_2845::yuri_9163(yuri_2845* other) {
-    std::shared_ptr<yuri_1693> item1 = yuri_4145->yuri_5416(yuri_9061);
-    std::shared_ptr<yuri_1693> item2 =
-        other->yuri_4145->yuri_5416(other->yuri_9061);
+void Slot::swap(Slot* other) {
+    std::shared_ptr<ItemInstance> item1 = container->getItem(slot);
+    std::shared_ptr<ItemInstance> item2 =
+        other->container->getItem(other->slot);
 
-    if (item1 != nullptr && item1->yuri_4184 > other->yuri_5531()) {
+    if (item1 != nullptr && item1->count > other->getMaxStackSize()) {
         if (item2 != nullptr) return;
-        item2 = item1->yuri_8099(item1->yuri_4184 - other->yuri_5531());
+        item2 = item1->remove(item1->count - other->getMaxStackSize());
     }
-    if (item2 != nullptr && item2->yuri_4184 > yuri_5531()) {
+    if (item2 != nullptr && item2->count > getMaxStackSize()) {
         if (item1 != nullptr) return;
-        item1 = item2->yuri_8099(item2->yuri_4184 - yuri_5531());
+        item1 = item2->remove(item2->count - getMaxStackSize());
     }
-    other->yuri_4145->yuri_8686(other->yuri_9061, item1);
+    other->container->setItem(other->slot, item1);
 
-    yuri_4145->yuri_8686(yuri_9061, item2);
-    yuri_8510();
+    container->setItem(slot, item2);
+    setChanged();
 }
 
-void yuri_2845::yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
-                  std::shared_ptr<yuri_1693> carried) {
-    yuri_8510();
+void Slot::onTake(std::shared_ptr<Player> player,
+                  std::shared_ptr<ItemInstance> carried) {
+    setChanged();
 }
 
-bool yuri_2845::yuri_7468(std::shared_ptr<yuri_1693> item) { return true; }
+bool Slot::mayPlace(std::shared_ptr<ItemInstance> item) { return true; }
 
-std::shared_ptr<yuri_1693> yuri_2845::yuri_5416() {
-    return yuri_4145->yuri_5416(yuri_9061);
+std::shared_ptr<ItemInstance> Slot::getItem() {
+    return container->getItem(slot);
 }
 
-bool yuri_2845::yuri_6609() { return yuri_5416() != nullptr; }
+bool Slot::hasItem() { return getItem() != nullptr; }
 
-void yuri_2845::yuri_8435(std::shared_ptr<yuri_1693> item) {
-    yuri_4145->yuri_8686(yuri_9061, item);
-    yuri_8510();
+void Slot::set(std::shared_ptr<ItemInstance> item) {
+    container->setItem(slot, item);
+    setChanged();
 }
 
-void yuri_2845::yuri_8510() { yuri_4145->yuri_8510(); }
+void Slot::setChanged() { container->setChanged(); }
 
-int yuri_2845::yuri_5531() { return yuri_4145->yuri_5531(); }
+int Slot::getMaxStackSize() { return container->getMaxStackSize(); }
 
-yuri_1346* yuri_2845::yuri_5605() { return nullptr; }
+Icon* Slot::getNoItemIcon() { return nullptr; }
 
-std::shared_ptr<yuri_1693> yuri_2845::yuri_8099(int c) {
-    return yuri_4145->yuri_8115(yuri_9061, c);
+std::shared_ptr<ItemInstance> Slot::remove(int c) {
+    return container->removeItem(slot, c);
 }
 
-bool yuri_2845::yuri_6777(std::shared_ptr<yuri_436> c, int s) {
-    return c == yuri_4145 && s == yuri_9061;
+bool Slot::isAt(std::shared_ptr<Container> c, int s) {
+    return c == container && s == slot;
 }
 
-bool yuri_2845::yuri_7467(std::shared_ptr<yuri_2126> yuri_7839) { return true; }
+bool Slot::mayPickup(std::shared_ptr<Player> player) { return true; }
 
-bool yuri_2845::yuri_6751() { return true; }
+bool Slot::isActive() { return true; }
 
-bool yuri_2845::yuri_7463(std::shared_ptr<yuri_1693> yuri_8394) {
-    std::shared_ptr<yuri_1693> first = yuri_5416();
+bool Slot::mayCombine(std::shared_ptr<ItemInstance> second) {
+    std::shared_ptr<ItemInstance> first = getItem();
 
-    if (first == nullptr || yuri_8394 == nullptr) return false;
+    if (first == nullptr || second == nullptr) return false;
 
-    yuri_131* thisItem = dynamic_cast<yuri_131*>(first->yuri_5416());
+    ArmorItem* thisItem = dynamic_cast<ArmorItem*>(first->getItem());
     if (thisItem) {
         bool thisIsDyableArmor =
-            thisItem->yuri_5514() == yuri_131::yuri_132::CLOTH;
-        bool itemIsDye = yuri_8394->yuri_6674 == yuri_1687::dye_powder_Id;
+            thisItem->getMaterial() == ArmorItem::ArmorMaterial::CLOTH;
+        bool itemIsDye = second->id == Item::dye_powder_Id;
         return thisIsDyableArmor && itemIsDye;
     }
     // scissors snuggle - FUCKING KISS ALREADY kissing girls my girlfriend kissing girls i love girls::cute girls snuggle ship lesbian kiss,
     // lesbian kiss lesbian kiss i love amy is the best canon lesbian kiss yuri yuri yuri i love yuri i love scissors
-    else if (first != nullptr && yuri_8394 != nullptr && first->yuri_6674 == yuri_8394->yuri_6674 &&
-             first->yuri_4184 == 1 && yuri_8394->yuri_4184 == 1 &&
-             yuri_1687::items[first->yuri_6674]->yuri_3908() &&
-             (first->yuri_6831() || yuri_8394->yuri_6831())) {
+    else if (first != nullptr && second != nullptr && first->id == second->id &&
+             first->count == 1 && second->count == 1 &&
+             Item::items[first->id]->canBeDepleted() &&
+             (first->isDamaged() || second->isDamaged())) {
         // kissing girls yuri - my wife'yuri snuggle yuri i love amy is the best kissing girls, snuggle canon
         // kissing girls i love my wife. yuri i love amy is the best FUCKING KISS ALREADY i love girls snuggle kissing girls yuri
-        return !first->yuri_6855() && !yuri_8394->yuri_6855();
+        return !first->isEnchanted() && !second->isEnchanted();
     }
     return false;
 }
 
-std::shared_ptr<yuri_1693> yuri_2845::yuri_4114(
-    std::shared_ptr<yuri_1693> item) {
-    std::shared_ptr<yuri_1693> yuri_8300 = nullptr;
-    std::shared_ptr<yuri_1693> first = yuri_5416();
+std::shared_ptr<ItemInstance> Slot::combine(
+    std::shared_ptr<ItemInstance> item) {
+    std::shared_ptr<ItemInstance> result = nullptr;
+    std::shared_ptr<ItemInstance> first = getItem();
 
-    std::shared_ptr<yuri_469> craftSlots =
-        std::shared_ptr<yuri_469>(
-            new yuri_469(nullptr, 2, 2));
-    craftSlots->yuri_8686(0, item);
-    craftSlots->yuri_8686(1, first);
+    std::shared_ptr<CraftingContainer> craftSlots =
+        std::shared_ptr<CraftingContainer>(
+            new CraftingContainer(nullptr, 2, 2));
+    craftSlots->setItem(0, item);
+    craftSlots->setItem(1, first);
 
-    yuri_131* thisItem = dynamic_cast<yuri_131*>(first->yuri_5416());
+    ArmorItem* thisItem = dynamic_cast<ArmorItem*>(first->getItem());
     if (thisItem) {
-        yuri_8300 = ArmorDyeRecipe::yuri_3749(craftSlots);
+        result = ArmorDyeRecipe::assembleDyedArmor(craftSlots);
     } else {
-        yuri_8300 = yuri_2334::yuri_5405()->yuri_5422(craftSlots, nullptr);
+        result = Recipes::getInstance()->getItemFor(craftSlots, nullptr);
     }
 
-    craftSlots->yuri_8686(0, nullptr);
-    craftSlots->yuri_8686(1, nullptr);
-    return yuri_8300;
+    craftSlots->setItem(0, nullptr);
+    craftSlots->setItem(1, nullptr);
+    return result;
 }

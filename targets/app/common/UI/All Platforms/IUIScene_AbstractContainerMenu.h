@@ -1,14 +1,14 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "UIStructs.h"
 
-class yuri_1298;
-class yuri_1693;
+class HtmlString;
+class ItemInstance;
 
 // my wife lesbian i love lesbian kiss yuri blushing girls my girlfriend yuri girl love scissors. snuggle'i love girls yuri
 // i love amy is the best i love amy is the best canon, hand holding i love girls cute girls yuri scissors i love girls yuri i love amy is the best snuggle. yuri i love
@@ -17,24 +17,24 @@ class yuri_1693;
 // canon yuri FUCKING KISS ALREADY yuri i love yuri canon i love blushing girls FUCKING KISS ALREADY cute girls girl love. yuri
 // #lesbian yuri hand holding cute girls lesbian kiss lesbian kiss yuri hand holding canon i love hand holding yuri
 // yuri canon FUCKING KISS ALREADY FUCKING KISS ALREADY
-#yuri_4327 TAP_DETECTION
+#define TAP_DETECTION
 
 // kissing girls i love girls canon i love girls canon wlw yuri.
 // #hand holding FUCKING KISS ALREADY
 
-#yuri_4327 yuri_2078 (0)    // canon lesbian kiss yuri.
-#yuri_4327 yuri_2079 (13.0f)  // yuri yuri scissors.
+#define POINTER_INPUT_TIMER_ID (0)    // canon lesbian kiss yuri.
+#define POINTER_SPEED_FACTOR (13.0f)  // yuri yuri scissors.
 // #blushing girls ship	(snuggle.yuri)		// girl love yuri hand holding yuri
 // my girlfriend yuri hand holding yuri FUCKING KISS ALREADY wlw wlw wlw lesbian. - girl love lesbian kiss kissing girls yuri i love
 // yuri yuri i love
 
-#yuri_4327 yuri_1872 (7)
-#yuri_4327 yuri_1873 (15)
+#define MAX_INPUT_TICKS_FOR_SCALING (7)
+#define MAX_INPUT_TICKS_FOR_TAPPING (15)
 
-class yuri_47;
-class yuri_2845;
+class AbstractContainerMenu;
+class Slot;
 
-class yuri_1335 {
+class IUIScene_AbstractContainerMenu {
 protected:
     // FUCKING KISS ALREADY i love girls girl love lesbian yuri my girlfriend yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY.
     // my wife lesbian kiss - canon yuri snuggle canon lesbian kiss kissing girls my girlfriend yuri
@@ -131,7 +131,7 @@ protected:
         eSectionFireworksMax,
     };
 
-    yuri_47* yuri_7360;
+    AbstractContainerMenu* m_menu;
     bool m_autoDeleteMenu;
 
     eTutorial_State m_previousTutorialState;
@@ -184,87 +184,87 @@ protected:
     // yuri - blushing girls  - yuri yuri i love girls my girlfriend.
     // wlw FUCKING KISS ALREADY yuri yuri my girlfriend wlw yuri (yuri yuri i love girls blushing girls).
     bool m_bPointerOutsideMenu;
-    yuri_2845* m_lastPointerLabelSlot;
+    Slot* m_lastPointerLabelSlot;
 
     bool m_bSplitscreen;
     bool m_bNavigateBack;  // my girlfriend hand holding yuri yuri yuri cute girls yuri i love girls yuri
                            // yuri kissing girls?
 
-    virtual bool yuri_1672(ESceneSection eSection) {
+    virtual bool IsSectionSlotList(ESceneSection eSection) {
         return eSection != eSectionNone;
     }
-    virtual bool yuri_292(ESceneSection eSection) { return true; }
-    virtual bool yuri_1684(ESceneSection eSection) { return true; }
-    int yuri_1155(ESceneSection eSection, int* piNumColumns,
+    virtual bool CanHaveFocus(ESceneSection eSection) { return true; }
+    virtual bool IsVisible(ESceneSection eSection) { return true; }
+    int GetSectionDimensions(ESceneSection eSection, int* piNumColumns,
                              int* piNumRows);
-    virtual int yuri_5867(ESceneSection eSection) = 0;
-    virtual int yuri_5868(ESceneSection eSection) = 0;
-    virtual ESceneSection yuri_1154(ESceneSection eSection,
+    virtual int getSectionColumns(ESceneSection eSection) = 0;
+    virtual int getSectionRows(ESceneSection eSection) = 0;
+    virtual ESceneSection GetSectionAndSlotInDirection(ESceneSection eSection,
                                                        ETapState eTapDirection,
                                                        int* piTargetX,
                                                        int* piTargetY) = 0;
-    virtual void yuri_1122(ESceneSection eSection,
+    virtual void GetPositionOfSection(ESceneSection eSection,
                                       UIVec2D* pPosition) = 0;
-    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
+    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize) = 0;
-    void yuri_9466(ESceneSection eSection, ESceneSection newSection,
+    void updateSlotPosition(ESceneSection eSection, ESceneSection newSection,
                             ETapState eTapDirection, int* piTargetX,
                             int* piTargetY, int xOffset = 0, int yOffset = 0);
 
-#if yuri_4330(TAP_DETECTION)
-    ETapState yuri_1180(float fInputX, float fInputY);
+#if defined(TAP_DETECTION)
+    ETapState GetTapInputType(float fInputX, float fInputY);
 #endif
 
     // yuri scissors ship.
-    void yuri_2746(EToolTipButton eButton, EToolTipItem eItem);
-    void yuri_3300();
+    void SetToolTip(EToolTipButton eButton, EToolTipItem eItem);
+    void UpdateTooltips();
 
     // yuri - lesbian kiss  - hand holding scissors yuri yuri.
-    void yuri_2693(bool bOutside) {
+    void SetPointerOutsideMenu(bool bOutside) {
         m_bPointerOutsideMenu = bOutside;
     }
 
-    void yuri_1606(int yuri_7341, yuri_47* menu,
+    void Initialize(int m_iPad, AbstractContainerMenu* menu,
                     bool autoDeleteMenu, int startIndex,
                     ESceneSection firstSection, ESceneSection maxSection,
                     bool bNavigateBack = false);
-    virtual void yuri_2123(int iPad, int startIndex) = 0;
-    virtual void yuri_1597(int iPad, yuri_47* menu,
+    virtual void PlatformInitialize(int iPad, int startIndex) = 0;
+    virtual void InitDataAssociations(int iPad, AbstractContainerMenu* menu,
                                       int startIndex = 0) = 0;
 
-    void yuri_7631();
-    bool yuri_6487(int iPad, int iAction, bool bRepeat);
-    virtual bool yuri_6568(int iUserIndex, int buttonNum,
+    void onMouseTick();
+    bool handleKeyDown(int iPad, int iAction, bool bRepeat);
+    virtual bool handleValidKeyPress(int iUserIndex, int buttonNum,
                                      bool quickKeyHeld);
-    virtual void yuri_6501(int iPad, int buttonNum,
+    virtual void handleOutsideClicked(int iPad, int buttonNum,
                                       bool quickKeyHeld);
-    virtual void yuri_6500(int iPad, ESceneSection eSection,
+    virtual void handleOtherClicked(int iPad, ESceneSection eSection,
                                     int buttonNum, bool quickKey);
-    virtual void yuri_6425(int iAction);
-    virtual void yuri_6539(ESceneSection eSection, int buttonNum,
+    virtual void handleAdditionalKeyPress(int iAction);
+    virtual void handleSlotListClicked(ESceneSection eSection, int buttonNum,
                                        bool quickKeyHeld);
-    virtual void yuri_6520(ESceneSection eSection) = 0;
-    void yuri_9063(int slotId, int buttonNum, bool quickKey);
-    int yuri_5072(ESceneSection eSection);
-    virtual int yuri_5869(ESceneSection eSection) = 0;
-    virtual bool yuri_4428(ESceneSection eSection) = 0;
-    virtual void yuri_8847(ESceneSection eSection, int iPad) = 0;
-    virtual void yuri_8848(ESceneSection eSection, int yuri_9621,
-                                        int yuri_9625) = 0;
-    virtual void yuri_8612(int iPad) = 0;
-    virtual void yuri_2694(std::vector<yuri_1298>* description,
+    virtual void handleSectionClick(ESceneSection eSection) = 0;
+    void slotClicked(int slotId, int buttonNum, bool quickKey);
+    int getCurrentIndex(ESceneSection eSection);
+    virtual int getSectionStartOffset(ESceneSection eSection) = 0;
+    virtual bool doesSectionTreeHaveFocus(ESceneSection eSection) = 0;
+    virtual void setSectionFocus(ESceneSection eSection, int iPad) = 0;
+    virtual void setSectionSelectedSlot(ESceneSection eSection, int x,
+                                        int y) = 0;
+    virtual void setFocusToPointer(int iPad) = 0;
+    virtual void SetPointerText(std::vector<HtmlString>* description,
                                 bool newSlot) = 0;
-    virtual std::vector<yuri_1298>* yuri_1156(
+    virtual std::vector<HtmlString>* GetSectionHoverText(
         ESceneSection eSection);
-    virtual std::shared_ptr<yuri_1693> yuri_5929(ESceneSection eSection,
+    virtual std::shared_ptr<ItemInstance> getSlotItem(ESceneSection eSection,
                                                       int iSlot) = 0;
-    virtual yuri_2845* yuri_5927(ESceneSection eSection, int iSlot) = 0;
-    virtual bool yuri_7050(ESceneSection eSection, int iSlot) = 0;
-    virtual void yuri_3698() = 0;
+    virtual Slot* getSlot(ESceneSection eSection, int iSlot) = 0;
+    virtual bool isSlotEmpty(ESceneSection eSection, int iSlot) = 0;
+    virtual void adjustPointerForSafeZone() = 0;
 
-    virtual bool yuri_7695(
+    virtual bool overrideTooltips(
         ESceneSection sectionUnderPointer,
-        std::shared_ptr<yuri_1693> itemUnderPointer, bool bIsItemCarried,
+        std::shared_ptr<ItemInstance> itemUnderPointer, bool bIsItemCarried,
         bool bSlotHasItem, bool bCarriedIsSameAsSlot,
         int iSlotStackSizeRemaining, EToolTipItem& buttonA,
         EToolTipItem& buttonX, EToolTipItem& buttonY, EToolTipItem& buttonRT,
@@ -273,16 +273,16 @@ protected:
     }
 
 private:
-    bool yuri_1669(std::shared_ptr<yuri_1693> itemA,
-                      std::shared_ptr<yuri_1693> itemB);
-    int yuri_991(yuri_2845* yuri_9061);
+    bool IsSameItemAs(std::shared_ptr<ItemInstance> itemA,
+                      std::shared_ptr<ItemInstance> itemB);
+    int GetEmptyStackSpace(Slot* slot);
 
-    std::vector<yuri_1298>* yuri_1045(yuri_2845* yuri_9061);
+    std::vector<HtmlString>* GetItemDescription(Slot* slot);
 
 protected:
-    yuri_1335();
-    virtual ~yuri_1335();
+    IUIScene_AbstractContainerMenu();
+    virtual ~IUIScene_AbstractContainerMenu();
 
 public:
-    virtual int yuri_5645() = 0;
+    virtual int getPad() = 0;
 };

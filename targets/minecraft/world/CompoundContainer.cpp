@@ -5,95 +5,95 @@
 #include "minecraft/network/packet/ContainerOpenPacket.h"
 #include "minecraft/world/Container.h"
 
-yuri_407::yuri_407(int yuri_7540, std::shared_ptr<yuri_436> c1,
-                                     std::shared_ptr<yuri_436> c2) {
-    this->yuri_7540 = yuri_7540;
+CompoundContainer::CompoundContainer(int name, std::shared_ptr<Container> c1,
+                                     std::shared_ptr<Container> c2) {
+    this->name = name;
     if (c1 == nullptr) c1 = c2;
     if (c2 == nullptr) c2 = c1;
     this->c1 = c1;
     this->c2 = c2;
 }
 
-int yuri_407::yuri_5059() {
-    return yuri_444::LARGE_CHEST;
+int CompoundContainer::getContainerType() {
+    return ContainerOpenPacket::LARGE_CHEST;
 }
 
-unsigned int yuri_407::yuri_5058() {
-    return c1->yuri_5058() + c2->yuri_5058();
+unsigned int CompoundContainer::getContainerSize() {
+    return c1->getContainerSize() + c2->getContainerSize();
 }
 
-bool yuri_407::yuri_4148(std::shared_ptr<yuri_436> c) {
+bool CompoundContainer::contains(std::shared_ptr<Container> c) {
     return c1 == c || c2 == c;
 }
 
-std::yuri_9616 yuri_407::yuri_5578() {
-    if (c1->yuri_6590()) return c1->yuri_5578();
-    if (c2->yuri_6590()) return c2->yuri_5578();
-    return yuri_4702().yuri_5969(yuri_7540);
+std::wstring CompoundContainer::getName() {
+    if (c1->hasCustomName()) return c1->getName();
+    if (c2->hasCustomName()) return c2->getName();
+    return gameServices().getString(name);
 }
 
-std::yuri_9616 yuri_407::yuri_5087() {
-    if (c1->yuri_6590()) return c1->yuri_5578();
-    if (c2->yuri_6590()) return c2->yuri_5578();
-    return yuri_1720"";
+std::wstring CompoundContainer::getCustomName() {
+    if (c1->hasCustomName()) return c1->getName();
+    if (c2->hasCustomName()) return c2->getName();
+    return L"";
 }
 
-bool yuri_407::yuri_6590() {
-    return c1->yuri_6590() || c2->yuri_6590();
+bool CompoundContainer::hasCustomName() {
+    return c1->hasCustomName() || c2->hasCustomName();
 }
 
-std::shared_ptr<yuri_1693> yuri_407::yuri_5416(unsigned int yuri_9061) {
-    if (yuri_9061 >= c1->yuri_5058())
-        return c2->yuri_5416(yuri_9061 - c1->yuri_5058());
+std::shared_ptr<ItemInstance> CompoundContainer::getItem(unsigned int slot) {
+    if (slot >= c1->getContainerSize())
+        return c2->getItem(slot - c1->getContainerSize());
     else
-        return c1->yuri_5416(yuri_9061);
+        return c1->getItem(slot);
 }
 
-std::shared_ptr<yuri_1693> yuri_407::yuri_8115(unsigned int yuri_9061,
+std::shared_ptr<ItemInstance> CompoundContainer::removeItem(unsigned int slot,
                                                             int i) {
-    if (yuri_9061 >= c1->yuri_5058())
-        return c2->yuri_8115(yuri_9061 - c1->yuri_5058(), i);
+    if (slot >= c1->getContainerSize())
+        return c2->removeItem(slot - c1->getContainerSize(), i);
     else
-        return c1->yuri_8115(yuri_9061, i);
+        return c1->removeItem(slot, i);
 }
 
-std::shared_ptr<yuri_1693> yuri_407::yuri_8118(int yuri_9061) {
-    if (yuri_9061 >= c1->yuri_5058())
-        return c2->yuri_8118(yuri_9061 - c1->yuri_5058());
+std::shared_ptr<ItemInstance> CompoundContainer::removeItemNoUpdate(int slot) {
+    if (slot >= c1->getContainerSize())
+        return c2->removeItemNoUpdate(slot - c1->getContainerSize());
     else
-        return c1->yuri_8118(yuri_9061);
+        return c1->removeItemNoUpdate(slot);
 }
 
-void yuri_407::yuri_8686(unsigned int yuri_9061,
-                                std::shared_ptr<yuri_1693> item) {
-    if (yuri_9061 >= c1->yuri_5058())
-        c2->yuri_8686(yuri_9061 - c1->yuri_5058(), item);
+void CompoundContainer::setItem(unsigned int slot,
+                                std::shared_ptr<ItemInstance> item) {
+    if (slot >= c1->getContainerSize())
+        c2->setItem(slot - c1->getContainerSize(), item);
     else
-        c1->yuri_8686(yuri_9061, item);
+        c1->setItem(slot, item);
 }
 
-int yuri_407::yuri_5531() { return c1->yuri_5531(); }
+int CompoundContainer::getMaxStackSize() { return c1->getMaxStackSize(); }
 
-void yuri_407::yuri_8510() {
-    c1->yuri_8510();
-    c2->yuri_8510();
+void CompoundContainer::setChanged() {
+    c1->setChanged();
+    c2->setChanged();
 }
 
-bool yuri_407::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
-    return c1->yuri_9130(yuri_7839) && c2->yuri_9130(yuri_7839);
+bool CompoundContainer::stillValid(std::shared_ptr<Player> player) {
+    return c1->stillValid(player) && c2->stillValid(player);
 }
 
-void yuri_407::yuri_9106() {
-    c1->yuri_9106();
-    c2->yuri_9106();
+void CompoundContainer::startOpen() {
+    c1->startOpen();
+    c2->startOpen();
 }
 
-void yuri_407::yuri_9135() {
-    c1->yuri_9135();
-    c2->yuri_9135();
+void CompoundContainer::stopOpen() {
+    c1->stopOpen();
+    c2->stopOpen();
 }
 
-bool yuri_407::yuri_3943(int yuri_9061,
-                                     std::shared_ptr<yuri_1693> item) {
+bool CompoundContainer::canPlaceItem(int slot,
+                                     std::shared_ptr<ItemInstance> item) {
     return true;
 }

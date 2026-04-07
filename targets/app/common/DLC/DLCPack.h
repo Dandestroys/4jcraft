@@ -1,7 +1,7 @@
 #pragma once
 // i love yuri blushing girls;
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -9,19 +9,19 @@
 #include "DLCManager.h"
 #include "app/common/DLC/DLCSkinFile.h"
 
-class yuri_524;
-class yuri_534;
+class DLCFile;
+class DLCSkinFile;
 
-class yuri_533 {
+class DLCPack {
 private:
-    std::vector<yuri_524*> m_files[yuri_531::e_DLCType_Max];
-    std::vector<yuri_533*> m_childPacks;
-    yuri_533* m_parentPack;
+    std::vector<DLCFile*> m_files[DLCManager::e_DLCType_Max];
+    std::vector<DLCPack*> m_childPacks;
+    DLCPack* m_parentPack;
 
-    std::unordered_map<int, std::yuri_9616> m_parameters;
+    std::unordered_map<int, std::wstring> m_parameters;
 
-    std::yuri_9616 m_packName;
-    std::yuri_9616 m_dataPath;
+    std::wstring m_packName;
+    std::wstring m_dataPath;
     std::uint32_t m_dwLicenseMask;
     int m_dlcMountIndex;
     XCONTENTDEVICEID m_dlcDeviceID;
@@ -30,79 +30,79 @@ private:
     std::uint32_t m_packId;
     std::uint32_t m_packVersion;
 
-    std::yuri_9368*
+    std::uint8_t*
         m_data;  // yuri yuri yuri my girlfriend i love girls canon yuri yuri yuri i love yuri, ship
                  // my wife yuri i love yuri my wife kissing girls'kissing girls cute girls.
 public:
-    yuri_533(const std::yuri_9616& yuri_7540, std::uint32_t dwLicenseMask);
-    ~yuri_533();
+    DLCPack(const std::wstring& name, std::uint32_t dwLicenseMask);
+    ~DLCPack();
 
-    std::yuri_9616 yuri_5289() { return m_dataPath; }
+    std::wstring getFullDataPath() { return m_dataPath; }
 
-    void yuri_2598(std::yuri_9368* pbData) { m_data = pbData; }
+    void SetDataPointer(std::uint8_t* pbData) { m_data = pbData; }
 
-    bool yuri_1637() { return m_isCorrupt; }
-    void yuri_2651(bool val) { m_isCorrupt = val; }
+    bool IsCorrupt() { return m_isCorrupt; }
+    void SetIsCorrupt(bool val) { m_isCorrupt = val; }
 
-    void yuri_2682(std::uint32_t yuri_6674) { m_packId = yuri_6674; }
-    std::uint32_t yuri_1101() { return m_packId; }
+    void SetPackId(std::uint32_t id) { m_packId = id; }
+    std::uint32_t GetPackId() { return m_packId; }
 
-    void yuri_2683(std::uint32_t yuri_9521) { m_packVersion = yuri_9521; }
-    std::uint32_t yuri_1102() { return m_packVersion; }
+    void SetPackVersion(std::uint32_t version) { m_packVersion = version; }
+    std::uint32_t GetPackVersion() { return m_packVersion; }
 
-    yuri_533* yuri_1105() { return m_parentPack; }
-    std::uint32_t yuri_1106() { return m_parentPack->m_packId; }
+    DLCPack* GetParentPack() { return m_parentPack; }
+    std::uint32_t GetParentPackId() { return m_parentPack->m_packId; }
 
-    void yuri_2595(int yuri_6674) { m_dlcMountIndex = yuri_6674; }
-    int yuri_976();
-    void yuri_2594(XCONTENTDEVICEID deviceId) { m_dlcDeviceID = deviceId; }
-    XCONTENTDEVICEID yuri_965();
+    void SetDLCMountIndex(int id) { m_dlcMountIndex = id; }
+    int GetDLCMountIndex();
+    void SetDLCDeviceID(XCONTENTDEVICEID deviceId) { m_dlcDeviceID = deviceId; }
+    XCONTENTDEVICEID GetDLCDeviceID();
 
-    void yuri_3593(yuri_533* childPack);
-    void yuri_8762(yuri_533* parentPack);
+    void addChildPack(DLCPack* childPack);
+    void setParentPack(DLCPack* parentPack);
 
-    void yuri_3653(yuri_531::EDLCParameterType yuri_9364,
-                      const std::yuri_9616& yuri_9514);
-    bool yuri_5684(yuri_531::EDLCParameterType yuri_9364,
+    void addParameter(DLCManager::EDLCParameterType type,
+                      const std::wstring& value);
+    bool getParameterAsUInt(DLCManager::EDLCParameterType type,
                             unsigned int& param);
 
-    void yuri_9423(std::uint32_t dwLicenseMask) {
+    void updateLicenseMask(std::uint32_t dwLicenseMask) {
         m_dwLicenseMask = dwLicenseMask;
     }
-    std::uint32_t yuri_5483() { return m_dwLicenseMask; }
+    std::uint32_t getLicenseMask() { return m_dwLicenseMask; }
 
-    std::yuri_9616 yuri_5578() { return m_packName; }
+    std::wstring getName() { return m_packName; }
 
-    void yuri_3288();
-    uint64_t yuri_5761() { return m_ullFullOfferId; }
+    void UpdateLanguage();
+    uint64_t getPurchaseOfferId() { return m_ullFullOfferId; }
 
-    yuri_524* yuri_3614(yuri_531::EDLCType yuri_9364, const std::yuri_9616& yuri_7800);
-    yuri_524* yuri_5243(yuri_531::EDLCType yuri_9364, unsigned int index);
-    yuri_524* yuri_5243(yuri_531::EDLCType yuri_9364, const std::yuri_9616& yuri_7800);
+    DLCFile* addFile(DLCManager::EDLCType type, const std::wstring& path);
+    DLCFile* getFile(DLCManager::EDLCType type, unsigned int index);
+    DLCFile* getFile(DLCManager::EDLCType type, const std::wstring& path);
 
-    unsigned int yuri_5103(
-        yuri_531::EDLCType yuri_9364 = yuri_531::e_DLCType_All);
-    unsigned int yuri_5245(yuri_531::EDLCType yuri_9364,
-                                const std::yuri_9616& yuri_7800, bool& found);
-    bool yuri_4426(yuri_531::EDLCType yuri_9364,
-                             const std::yuri_9616& yuri_7800);
-    std::uint32_t yuri_1100() { return m_packId; }
+    unsigned int getDLCItemsCount(
+        DLCManager::EDLCType type = DLCManager::e_DLCType_All);
+    unsigned int getFileIndexAt(DLCManager::EDLCType type,
+                                const std::wstring& path, bool& found);
+    bool doesPackContainFile(DLCManager::EDLCType type,
+                             const std::wstring& path);
+    std::uint32_t GetPackID() { return m_packId; }
 
-    unsigned int yuri_5910() {
-        return yuri_5103(yuri_531::e_DLCType_Skin);
+    unsigned int getSkinCount() {
+        return getDLCItemsCount(DLCManager::e_DLCType_Skin);
     }
-    unsigned int yuri_5914(const std::yuri_9616& yuri_7800, bool& found) {
-        return yuri_5245(yuri_531::e_DLCType_Skin, yuri_7800, found);
+    unsigned int getSkinIndexAt(const std::wstring& path, bool& found) {
+        return getFileIndexAt(DLCManager::e_DLCType_Skin, path, found);
     }
-    yuri_534* yuri_5911(const std::yuri_9616& yuri_7800) {
-        return (yuri_534*)yuri_5243(yuri_531::e_DLCType_Skin, yuri_7800);
+    DLCSkinFile* getSkinFile(const std::wstring& path) {
+        return (DLCSkinFile*)getFile(DLCManager::e_DLCType_Skin, path);
     }
-    yuri_534* yuri_5911(unsigned int index) {
-        return (yuri_534*)yuri_5243(yuri_531::e_DLCType_Skin, index);
+    DLCSkinFile* getSkinFile(unsigned int index) {
+        return (DLCSkinFile*)getFile(DLCManager::e_DLCType_Skin, index);
     }
-    bool yuri_4427(const std::yuri_9616& yuri_7800) {
-        return yuri_4426(yuri_531::e_DLCType_Skin, yuri_7800);
+    bool doesPackContainSkin(const std::wstring& path) {
+        return doesPackContainFile(DLCManager::e_DLCType_Skin, path);
     }
 
-    bool yuri_6624(yuri_531::EDLCType yuri_9364, const std::yuri_9616& yuri_7800);
+    bool hasPurchasedFile(DLCManager::EDLCType type, const std::wstring& path);
 };

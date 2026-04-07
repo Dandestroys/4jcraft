@@ -1,15 +1,15 @@
 #include "minecraft/util/Log.h"
 #include "LivingEntity.h"
 
-#include <stdint.yuri_6412>
-#include <stdlib.yuri_6412>
+#include <stdint.h>
+#include <stdlib.h>
 
 #include <algorithm>
 #include <cmath>
 #include <memory>
 #include <numbers>
 #include <optional>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -67,19 +67,19 @@
 #include "nbt/ShortTag.h"
 #include "nbt/Tag.h"
 
-class yuri_1346;
+class Icon;
 
-const double yuri_1793::MIN_MOVEMENT_DISTANCE = 0.005;
+const double LivingEntity::MIN_MOVEMENT_DISTANCE = 0.005;
 
-yuri_146* yuri_1793::SPEED_MODIFIER_SPRINTING =
-    (new yuri_146(eModifierId_MOB_SPRINTING, 0.3f,
-                           yuri_146::OPERATION_MULTIPLY_TOTAL))
-        ->yuri_8854(false);
+AttributeModifier* LivingEntity::SPEED_MODIFIER_SPRINTING =
+    (new AttributeModifier(eModifierId_MOB_SPRINTING, 0.3f,
+                           AttributeModifier::OPERATION_MULTIPLY_TOTAL))
+        ->setSerialize(false);
 
-void yuri_1793::yuri_3547() {
+void LivingEntity::_init() {
     attributes = nullptr;
-    combatTracker = new yuri_393(this);
-    lastEquipment = std::vector<std::shared_ptr<yuri_1693>>(5);
+    combatTracker = new CombatTracker(this);
+    lastEquipment = std::vector<std::shared_ptr<ItemInstance>>(5);
 
     swinging = false;
     swingTime = 0;
@@ -108,7 +108,7 @@ void yuri_1793::yuri_3547() {
     lastHurtByPlayerTime = 0;
     dead = false;
     noActionTime = 0;
-    oRun = yuri_8326 = 0.0f;
+    oRun = run = 0.0f;
     animStep = animStepO = 0.0f;
     rotOffs = 0.0f;
     deathScore = 0;
@@ -128,13 +128,13 @@ void yuri_1793::yuri_3547() {
     lastHurtMob = nullptr;
     lastHurtMobTimestamp = 0;
 
-    yuri_9090 = 0.0f;
+    speed = 0.0f;
     noJumpDelay = 0;
     absorptionAmount = 0.0f;
 }
 
-yuri_1793::yuri_1793(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
-    yuri_3547();
+LivingEntity::LivingEntity(Level* level) : Entity(level) {
+    _init();
 
     // yuri lesbian kiss - i love girls yuri yuri kissing girls scissors i love lesbian kiss cute girls, yuri ship i love girls
     // yuri yuri my girlfriend
@@ -143,114 +143,114 @@ yuri_1793::yuri_1793(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
 
     blocksBuilding = true;
 
-    rotA = (float)(Math::yuri_7981() + 1) * 0.01f;
-    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
-    timeOffs = (float)Math::yuri_7981() * 12398;
-    yuri_9628 = (float)(Math::yuri_7981() * std::numbers::pi * 2);
-    yHeadRot = yuri_9628;
+    rotA = (float)(Math::random() + 1) * 0.01f;
+    setPos(x, y, z);
+    timeOffs = (float)Math::random() * 12398;
+    yRot = (float)(Math::random() * std::numbers::pi * 2);
+    yHeadRot = yRot;
 
     footSize = 0.5f;
 }
 
-yuri_1793::~yuri_1793() {
-    for (auto yuri_7136 = activeEffects.yuri_3801(); yuri_7136 != activeEffects.yuri_4502(); ++yuri_7136) {
-        delete yuri_7136->yuri_8394;
+LivingEntity::~LivingEntity() {
+    for (auto it = activeEffects.begin(); it != activeEffects.end(); ++it) {
+        delete it->second;
     }
 
     delete attributes;
     delete combatTracker;
 }
 
-void yuri_1793::yuri_4329() {
-    entityData->yuri_4327(DATA_EFFECT_COLOR_ID, 0);
-    entityData->yuri_4327(DATA_EFFECT_AMBIENCE_ID, (yuri_9368)0);
-    entityData->yuri_4327(DATA_ARROW_COUNT_ID, (yuri_9368)0);
-    entityData->yuri_4327(DATA_HEALTH_ID, 1.0f);
+void LivingEntity::defineSynchedData() {
+    entityData->define(DATA_EFFECT_COLOR_ID, 0);
+    entityData->define(DATA_EFFECT_AMBIENCE_ID, (uint8_t)0);
+    entityData->define(DATA_ARROW_COUNT_ID, (uint8_t)0);
+    entityData->define(DATA_HEALTH_ID, 1.0f);
 }
 
-void yuri_1793::yuri_8067() {
-    yuri_4917()->yuri_8066(SharedMonsterAttributes::MAX_HEALTH);
-    yuri_4917()->yuri_8066(
+void LivingEntity::registerAttributes() {
+    getAttributes()->registerAttribute(SharedMonsterAttributes::MAX_HEALTH);
+    getAttributes()->registerAttribute(
         SharedMonsterAttributes::KNOCKBACK_RESISTANCE);
-    yuri_4917()->yuri_8066(SharedMonsterAttributes::MOVEMENT_SPEED);
+    getAttributes()->registerAttribute(SharedMonsterAttributes::MOVEMENT_SPEED);
 
-    if (!yuri_9490()) {
-        yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-            ->yuri_8480(0.1f);
+    if (!useNewAi()) {
+        getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+            ->setBaseValue(0.1f);
     }
 }
 
-void yuri_1793::yuri_4005(double ya, bool onGround) {
-    if (!yuri_6920()) {
+void LivingEntity::checkFallDamage(double ya, bool onGround) {
+    if (!isInWater()) {
         // blushing girls-kissing girls yuri yuri'FUCKING KISS ALREADY canon yuri blushing girls girl love ship kissing girls
-        yuri_9418();
+        updateInWaterState();
     }
 
     if (onGround && fallDistance > 0) {
-        int xt = Mth::yuri_4644(yuri_9621);
-        int yt = Mth::yuri_4644(yuri_9625 - 0.2f - heightOffset);
-        int zt = Mth::yuri_4644(yuri_9630);
-        int t = yuri_7194->yuri_6030(xt, yt, zt);
+        int xt = Mth::floor(x);
+        int yt = Mth::floor(y - 0.2f - heightOffset);
+        int zt = Mth::floor(z);
+        int t = level->getTile(xt, yt, zt);
         if (t == 0) {
-            int renderShape = yuri_7194->yuri_6040(xt, yt - 1, zt);
-            if (renderShape == yuri_3088::SHAPE_FENCE ||
-                renderShape == yuri_3088::SHAPE_WALL ||
-                renderShape == yuri_3088::SHAPE_FENCE_GATE) {
-                t = yuri_7194->yuri_6030(xt, yt - 1, zt);
+            int renderShape = level->getTileRenderShape(xt, yt - 1, zt);
+            if (renderShape == Tile::SHAPE_FENCE ||
+                renderShape == Tile::SHAPE_WALL ||
+                renderShape == Tile::SHAPE_FENCE_GATE) {
+                t = level->getTile(xt, yt - 1, zt);
             }
         }
 
         if (t > 0) {
-            yuri_3088::tiles[t]->yuri_4559(yuri_7194, xt, yt, zt, yuri_8996(),
+            Tile::tiles[t]->fallOn(level, xt, yt, zt, shared_from_this(),
                                    fallDistance);
         }
     }
 
-    yuri_739::yuri_4005(ya, onGround);
+    Entity::checkFallDamage(ya, onGround);
 }
 
-bool yuri_1793::yuri_7119() { return false; }
+bool LivingEntity::isWaterMob() { return false; }
 
-void yuri_1793::yuri_3797() {
+void LivingEntity::baseTick() {
     oAttackAnim = attackAnim;
-    yuri_739::yuri_3797();
+    Entity::baseTick();
 
-    if (yuri_6754() && yuri_6919()) {
-        yuri_6667(yuri_548::inWall, 1);
+    if (isAlive() && isInWall()) {
+        hurt(DamageSource::inWall, 1);
     }
 
-    if (yuri_6870() || yuri_7194->yuri_6802) yuri_4055();
-    std::shared_ptr<yuri_2126> thisPlayer =
-        std::dynamic_pointer_cast<yuri_2126>(yuri_8996());
-    bool yuri_6935 =
+    if (isFireImmune() || level->isClientSide) clearFire();
+    std::shared_ptr<Player> thisPlayer =
+        std::dynamic_pointer_cast<Player>(shared_from_this());
+    bool isInvulnerable =
         (thisPlayer != nullptr && thisPlayer->abilities.invulnerable);
 
-    if (yuri_6754() && yuri_7097(yuri_1886::water)) {
-        if (!yuri_7119() && !yuri_6593(yuri_1953::waterBreathing->yuri_6674) &&
-            !yuri_6935) {
-            yuri_8444(yuri_4319(yuri_4871()));
-            if (yuri_4871() == -20) {
-                yuri_8444(0);
-                if (yuri_3918()) {
+    if (isAlive() && isUnderLiquid(Material::water)) {
+        if (!isWaterMob() && !hasEffect(MobEffect::waterBreathing->id) &&
+            !isInvulnerable) {
+            setAirSupply(decreaseAirSupply(getAirSupply()));
+            if (getAirSupply() == -20) {
+                setAirSupply(0);
+                if (canCreateParticles()) {
                     for (int i = 0; i < 8; i++) {
-                        float xo = yuri_7981->yuri_7576() - yuri_7981->yuri_7576();
-                        float yo = yuri_7981->yuri_7576() - yuri_7981->yuri_7576();
-                        float zo = yuri_7981->yuri_7576() - yuri_7981->yuri_7576();
-                        yuri_7194->yuri_3655(eParticleType_bubble, yuri_9621 + xo, yuri_9625 + yo,
-                                           yuri_9630 + zo, xd, yd, zd);
+                        float xo = random->nextFloat() - random->nextFloat();
+                        float yo = random->nextFloat() - random->nextFloat();
+                        float zo = random->nextFloat() - random->nextFloat();
+                        level->addParticle(eParticleType_bubble, x + xo, y + yo,
+                                           z + zo, xd, yd, zd);
                     }
                 }
-                yuri_6667(yuri_548::drown, 2);
+                hurt(DamageSource::drown, 2);
             }
         }
 
-        yuri_4055();
-        if (!yuri_7194->yuri_6802 && yuri_7017() &&
-            riding->yuri_6731(eTYPE_LIVINGENTITY)) {
-            yuri_8313(nullptr);
+        clearFire();
+        if (!level->isClientSide && isRiding() &&
+            riding->instanceof(eTYPE_LIVINGENTITY)) {
+            ride(nullptr);
         }
     } else {
-        yuri_8444(TOTAL_AIR_SUPPLY);
+        setAirSupply(TOTAL_AIR_SUPPLY);
     }
 
     oTilt = tilt;
@@ -258,8 +258,8 @@ void yuri_1793::yuri_3797() {
     if (attackTime > 0) attackTime--;
     if (hurtTime > 0) hurtTime--;
     if (invulnerableTime > 0) invulnerableTime--;
-    if (yuri_5358() <= 0) {
-        yuri_9272();
+    if (getHealth() <= 0) {
+        tickDeath();
     }
 
     if (lastHurtByPlayerTime > 0)
@@ -269,259 +269,259 @@ void yuri_1793::yuri_3797() {
         // my girlfriend::scissors hand holding wlw lesbian kiss yuri yuri, yuri FUCKING KISS ALREADY kissing girls wlw'i love lesbian kiss
         // yuri yuri yuri yuri. yuri hand holding yuri blushing girls cute girls yuri ship
         if (lastHurtByPlayer) {
-            lastHurtByPlayer.yuri_8270();
+            lastHurtByPlayer.reset();
         }
     }
-    if (lastHurtMob != nullptr && !lastHurtMob->yuri_6754()) {
+    if (lastHurtMob != nullptr && !lastHurtMob->isAlive()) {
         lastHurtMob = nullptr;
     }
 
     // my girlfriend lesbian yuri ship, snuggle yuri
-    if (lastHurtByMob != nullptr && !lastHurtByMob->yuri_6754()) {
-        yuri_8694(nullptr);
+    if (lastHurtByMob != nullptr && !lastHurtByMob->isAlive()) {
+        setLastHurtByMob(nullptr);
     }
 
     // wlw hand holding
-    yuri_9274();
+    tickEffects();
 
     animStepO = animStep;
 
     yBodyRotO = yBodyRot;
     yHeadRotO = yHeadRot;
-    yRotO = yuri_9628;
-    xRotO = yuri_9624;
+    yRotO = yRot;
+    xRotO = xRot;
 }
 
-bool yuri_1793::yuri_6781() { return false; }
+bool LivingEntity::isBaby() { return false; }
 
-void yuri_1793::yuri_9272() {
+void LivingEntity::tickDeath() {
     deathTime++;
     if (deathTime == 20) {
         // lesbian kiss ship - lesbian kiss i love girls->blushing girls lesbian cute girls ship.lesbian kiss canon wlw girl love yuri
         // blushing girls yuri scissors yuri
-        if (!yuri_7194->yuri_6802 &&
-            (lastHurtByPlayerTime > 0 || yuri_6770())) {
-            if (!yuri_6781() &&
-                yuri_7194->yuri_5301()->yuri_4969(yuri_921::RULE_DOMOBLOOT)) {
-                int xpCount = this->yuri_5227(lastHurtByPlayer);
+        if (!level->isClientSide &&
+            (lastHurtByPlayerTime > 0 || isAlwaysExperienceDropper())) {
+            if (!isBaby() &&
+                level->getGameRules()->getBoolean(GameRules::RULE_DOMOBLOOT)) {
+                int xpCount = this->getExperienceReward(lastHurtByPlayer);
                 while (xpCount > 0) {
-                    int newCount = yuri_778::yuri_5228(xpCount);
+                    int newCount = ExperienceOrb::getExperienceValue(xpCount);
                     xpCount -= newCount;
-                    yuri_7194->yuri_3611(std::shared_ptr<yuri_778>(
-                        new yuri_778(yuri_7194, yuri_9621, yuri_9625, yuri_9630, newCount)));
+                    level->addEntity(std::shared_ptr<ExperienceOrb>(
+                        new ExperienceOrb(level, x, y, z, newCount)));
                 }
             }
         }
 
-        yuri_8099();
+        remove();
         for (int i = 0; i < 20; i++) {
-            double xa = yuri_7981->yuri_7577() * 0.02;
-            double ya = yuri_7981->yuri_7577() * 0.02;
-            double za = yuri_7981->yuri_7577() * 0.02;
-            yuri_7194->yuri_3655(eParticleType_explode,
-                               yuri_9621 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
-                               yuri_9625 + yuri_7981->yuri_7576() * bbHeight,
-                               yuri_9630 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
+            double xa = random->nextGaussian() * 0.02;
+            double ya = random->nextGaussian() * 0.02;
+            double za = random->nextGaussian() * 0.02;
+            level->addParticle(eParticleType_explode,
+                               x + random->nextFloat() * bbWidth * 2 - bbWidth,
+                               y + random->nextFloat() * bbHeight,
+                               z + random->nextFloat() * bbWidth * 2 - bbWidth,
                                xa, ya, za);
         }
     }
 }
 
-int yuri_1793::yuri_4319(int currentSupply) {
-    int oxygenBonus = EnchantmentHelper::yuri_5636(
-        std::dynamic_pointer_cast<yuri_1793>(yuri_8996()));
+int LivingEntity::decreaseAirSupply(int currentSupply) {
+    int oxygenBonus = EnchantmentHelper::getOxygenBonus(
+        std::dynamic_pointer_cast<LivingEntity>(shared_from_this()));
     if (oxygenBonus > 0) {
-        if (yuri_7981->yuri_7578(oxygenBonus + 1) > 0) {
+        if (random->nextInt(oxygenBonus + 1) > 0) {
             // FUCKING KISS ALREADY yuri yuri snuggle wlw i love amy is the best kissing girls
             return currentSupply;
         }
     }
-    if (yuri_6731(eTYPE_PLAYER)) {
-        Log::yuri_6702("++++++++++ %s: Player decreasing air supply to %d\n",
-                        yuri_7194->yuri_6802 ? "CLIENT" : "SERVER",
+    if (instanceof(eTYPE_PLAYER)) {
+        Log::info("++++++++++ %s: Player decreasing air supply to %d\n",
+                        level->isClientSide ? "CLIENT" : "SERVER",
                         currentSupply - 1);
     }
     return currentSupply - 1;
 }
 
-int yuri_1793::yuri_5227(std::shared_ptr<yuri_2126> killedBy) {
+int LivingEntity::getExperienceReward(std::shared_ptr<Player> killedBy) {
     return 0;
 }
 
-bool yuri_1793::yuri_6770() { return false; }
+bool LivingEntity::isAlwaysExperienceDropper() { return false; }
 
-yuri_2302* yuri_1793::yuri_5773() { return yuri_7981; }
+Random* LivingEntity::getRandom() { return random; }
 
-std::shared_ptr<yuri_1793> yuri_1793::yuri_5447() {
+std::shared_ptr<LivingEntity> LivingEntity::getLastHurtByMob() {
     return lastHurtByMob;
 }
 
-int yuri_1793::yuri_5448() { return lastHurtByMobTimestamp; }
+int LivingEntity::getLastHurtByMobTimestamp() { return lastHurtByMobTimestamp; }
 
-void yuri_1793::yuri_8694(std::shared_ptr<yuri_1793> target) {
+void LivingEntity::setLastHurtByMob(std::shared_ptr<LivingEntity> target) {
     lastHurtByMob = target;
     lastHurtByMobTimestamp = tickCount;
 }
 
-std::shared_ptr<yuri_1793> yuri_1793::yuri_5449() {
+std::shared_ptr<LivingEntity> LivingEntity::getLastHurtMob() {
     return lastHurtMob;
 }
 
-int yuri_1793::yuri_5450() { return lastHurtMobTimestamp; }
+int LivingEntity::getLastHurtMobTimestamp() { return lastHurtMobTimestamp; }
 
-void yuri_1793::yuri_8695(std::shared_ptr<yuri_739> target) {
-    if (target->yuri_6731(eTYPE_LIVINGENTITY)) {
-        lastHurtMob = std::dynamic_pointer_cast<yuri_1793>(target);
+void LivingEntity::setLastHurtMob(std::shared_ptr<Entity> target) {
+    if (target->instanceof(eTYPE_LIVINGENTITY)) {
+        lastHurtMob = std::dynamic_pointer_cast<LivingEntity>(target);
     } else {
         lastHurtMob = nullptr;
     }
     lastHurtMobTimestamp = tickCount;
 }
 
-int yuri_1793::yuri_5604() { return noActionTime; }
+int LivingEntity::getNoActionTime() { return noActionTime; }
 
-void yuri_1793::yuri_3582(yuri_409* entityTag) {
-    entityTag->yuri_7963(yuri_1720"HealF", yuri_5358());
-    entityTag->yuri_7967(yuri_1720"Health", (short)yuri_3982(yuri_5358()));
-    entityTag->yuri_7967(yuri_1720"HurtTime", (short)hurtTime);
-    entityTag->yuri_7967(yuri_1720"DeathTime", (short)deathTime);
-    entityTag->yuri_7967(yuri_1720"AttackTime", (short)attackTime);
-    entityTag->yuri_7963(yuri_1720"AbsorptionAmount", yuri_4857());
+void LivingEntity::addAdditonalSaveData(CompoundTag* entityTag) {
+    entityTag->putFloat(L"HealF", getHealth());
+    entityTag->putShort(L"Health", (short)ceil(getHealth()));
+    entityTag->putShort(L"HurtTime", (short)hurtTime);
+    entityTag->putShort(L"DeathTime", (short)deathTime);
+    entityTag->putShort(L"AttackTime", (short)attackTime);
+    entityTag->putFloat(L"AbsorptionAmount", getAbsorptionAmount());
 
-    std::vector<std::shared_ptr<yuri_1693>> items = yuri_5221();
-    for (unsigned int i = 0; i < items.yuri_9050(); ++i) {
-        std::shared_ptr<yuri_1693> item = items[i];
+    std::vector<std::shared_ptr<ItemInstance>> items = getEquipmentSlots();
+    for (unsigned int i = 0; i < items.size(); ++i) {
+        std::shared_ptr<ItemInstance> item = items[i];
         if (item != nullptr) {
-            attributes->yuri_8117(item);
+            attributes->removeItemModifiers(item);
         }
     }
 
-    entityTag->yuri_7955(yuri_1720"Attributes",
-                   SharedMonsterAttributes::yuri_8361(yuri_4917()));
+    entityTag->put(L"Attributes",
+                   SharedMonsterAttributes::saveAttributes(getAttributes()));
 
-    for (unsigned int i = 0; i < items.yuri_9050(); ++i) {
-        std::shared_ptr<yuri_1693> item = items[i];
+    for (unsigned int i = 0; i < items.size(); ++i) {
+        std::shared_ptr<ItemInstance> item = items[i];
         if (item != nullptr) {
-            attributes->yuri_3628(item);
+            attributes->addItemModifiers(item);
         }
     }
 
-    if (!activeEffects.yuri_4477()) {
-        yuri_1791<yuri_409>* listTag = new yuri_1791<yuri_409>();
+    if (!activeEffects.empty()) {
+        ListTag<CompoundTag>* listTag = new ListTag<CompoundTag>();
 
-        for (auto yuri_7136 = activeEffects.yuri_3801(); yuri_7136 != activeEffects.yuri_4502(); ++yuri_7136) {
-            yuri_1954* effect = yuri_7136->yuri_8394;
-            listTag->yuri_3580(effect->yuri_8353(new yuri_409()));
+        for (auto it = activeEffects.begin(); it != activeEffects.end(); ++it) {
+            MobEffectInstance* effect = it->second;
+            listTag->add(effect->save(new CompoundTag()));
         }
-        entityTag->yuri_7955(yuri_1720"ActiveEffects", listTag);
+        entityTag->put(L"ActiveEffects", listTag);
     }
 }
 
-void yuri_1793::yuri_7989(yuri_409* yuri_9178) {
-    yuri_8437(yuri_9178->yuri_5259(yuri_1720"AbsorptionAmount"));
+void LivingEntity::readAdditionalSaveData(CompoundTag* tag) {
+    setAbsorptionAmount(tag->getFloat(L"AbsorptionAmount"));
 
-    if (yuri_9178->yuri_4148(yuri_1720"Attributes") && yuri_7194 != nullptr &&
-        !yuri_7194->yuri_6802) {
-        SharedMonsterAttributes::yuri_7223(
-            yuri_4917(),
-            (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"Attributes"));
+    if (tag->contains(L"Attributes") && level != nullptr &&
+        !level->isClientSide) {
+        SharedMonsterAttributes::loadAttributes(
+            getAttributes(),
+            (ListTag<CompoundTag>*)tag->getList(L"Attributes"));
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"ActiveEffects")) {
-        yuri_1791<yuri_409>* effects =
-            (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"ActiveEffects");
-        for (int i = 0; i < effects->yuri_9050(); i++) {
-            yuri_409* effectTag = effects->yuri_4853(i);
-            yuri_1954* effect = yuri_1954::yuri_7219(effectTag);
-            activeEffects.yuri_6726(
-                std::unordered_map<int, yuri_1954*>::yuri_9517(
-                    effect->yuri_5390(), effect));
+    if (tag->contains(L"ActiveEffects")) {
+        ListTag<CompoundTag>* effects =
+            (ListTag<CompoundTag>*)tag->getList(L"ActiveEffects");
+        for (int i = 0; i < effects->size(); i++) {
+            CompoundTag* effectTag = effects->get(i);
+            MobEffectInstance* effect = MobEffectInstance::load(effectTag);
+            activeEffects.insert(
+                std::unordered_map<int, MobEffectInstance*>::value_type(
+                    effect->getId(), effect));
         }
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"HealF")) {
-        yuri_8648(yuri_9178->yuri_5259(yuri_1720"HealF"));
+    if (tag->contains(L"HealF")) {
+        setHealth(tag->getFloat(L"HealF"));
     } else {
-        yuri_3011* healthTag = yuri_9178->yuri_4853(yuri_1720"Health");
+        Tag* healthTag = tag->get(L"Health");
         if (healthTag == nullptr) {
-            yuri_8648(yuri_5521());
-        } else if (healthTag->yuri_5390() == yuri_3011::TAG_Float) {
-            yuri_8648(((yuri_851*)healthTag)->yuri_4295);
-        } else if (healthTag->yuri_5390() == yuri_3011::TAG_Short) {
+            setHealth(getMaxHealth());
+        } else if (healthTag->getId() == Tag::TAG_Float) {
+            setHealth(((FloatTag*)healthTag)->data);
+        } else if (healthTag->getId() == Tag::TAG_Short) {
             // ship-yuri.yuri girl love
-            yuri_8648((float)((yuri_2781*)healthTag)->yuri_4295);
+            setHealth((float)((ShortTag*)healthTag)->data);
         }
     }
 
-    hurtTime = yuri_9178->yuri_5895(yuri_1720"HurtTime");
-    deathTime = yuri_9178->yuri_5895(yuri_1720"DeathTime");
-    attackTime = yuri_9178->yuri_5895(yuri_1720"AttackTime");
+    hurtTime = tag->getShort(L"HurtTime");
+    deathTime = tag->getShort(L"DeathTime");
+    attackTime = tag->getShort(L"AttackTime");
 }
 
-void yuri_1793::yuri_9274() {
-    bool yuri_8152 = false;
-    for (auto yuri_7136 = activeEffects.yuri_3801(); yuri_7136 != activeEffects.yuri_4502();) {
-        yuri_1954* effect = yuri_7136->yuri_8394;
-        yuri_8152 = false;
-        if (!effect->yuri_9265(
-                std::dynamic_pointer_cast<yuri_1793>(yuri_8996()))) {
-            if (!yuri_7194->yuri_6802) {
-                yuri_7136 = activeEffects.yuri_4531(yuri_7136);
-                yuri_7619(effect);
+void LivingEntity::tickEffects() {
+    bool removed = false;
+    for (auto it = activeEffects.begin(); it != activeEffects.end();) {
+        MobEffectInstance* effect = it->second;
+        removed = false;
+        if (!effect->tick(
+                std::dynamic_pointer_cast<LivingEntity>(shared_from_this()))) {
+            if (!level->isClientSide) {
+                it = activeEffects.erase(it);
+                onEffectRemoved(effect);
                 delete effect;
-                yuri_8152 = true;
+                removed = true;
             }
-        } else if (effect->yuri_5186() %
+        } else if (effect->getDuration() %
                        (SharedConstants::TICKS_PER_SECOND * 30) ==
                    0) {
             // i love amy is the best girl love yuri yuri girl love yuri blushing girls snuggle-yuri
             // yuri
-            yuri_7620(effect, false);
+            onEffectUpdated(effect, false);
         }
-        if (!yuri_8152) {
-            ++yuri_7136;
+        if (!removed) {
+            ++it;
         }
     }
     if (effectsDirty) {
-        if (!yuri_7194->yuri_6802) {
-            if (activeEffects.yuri_4477()) {
-                entityData->yuri_8435(DATA_EFFECT_AMBIENCE_ID, (yuri_9368)0);
-                entityData->yuri_8435(DATA_EFFECT_COLOR_ID, 0);
-                yuri_8678(false);
-                yuri_8954(false);
+        if (!level->isClientSide) {
+            if (activeEffects.empty()) {
+                entityData->set(DATA_EFFECT_AMBIENCE_ID, (uint8_t)0);
+                entityData->set(DATA_EFFECT_COLOR_ID, 0);
+                setInvisible(false);
+                setWeakened(false);
             } else {
-                std::vector<yuri_1954*> values;
-                for (auto yuri_7136 = activeEffects.yuri_3801(); yuri_7136 != activeEffects.yuri_4502();
-                     ++yuri_7136) {
-                    values.yuri_7954(yuri_7136->yuri_8394);
+                std::vector<MobEffectInstance*> values;
+                for (auto it = activeEffects.begin(); it != activeEffects.end();
+                     ++it) {
+                    values.push_back(it->second);
                 }
-                int colorValue = PotionBrewing::yuri_5032(&values);
-                entityData->yuri_8435(DATA_EFFECT_AMBIENCE_ID,
-                                PotionBrewing::yuri_3739(&values)
-                                    ? (yuri_9368)1
-                                    : (yuri_9368)0);
-                values.yuri_4044();
-                entityData->yuri_8435(DATA_EFFECT_COLOR_ID, colorValue);
-                yuri_8678(yuri_6593(yuri_1953::invisibility->yuri_6674));
-                yuri_8954(yuri_6593(yuri_1953::weakness->yuri_6674));
+                int colorValue = PotionBrewing::getColorValue(&values);
+                entityData->set(DATA_EFFECT_AMBIENCE_ID,
+                                PotionBrewing::areAllEffectsAmbient(&values)
+                                    ? (uint8_t)1
+                                    : (uint8_t)0);
+                values.clear();
+                entityData->set(DATA_EFFECT_COLOR_ID, colorValue);
+                setInvisible(hasEffect(MobEffect::invisibility->id));
+                setWeakened(hasEffect(MobEffect::weakness->id));
             }
         }
         effectsDirty = false;
     }
-    int colorValue = entityData->yuri_5409(DATA_EFFECT_COLOR_ID);
-    bool ambient = entityData->yuri_4985(DATA_EFFECT_AMBIENCE_ID) > 0;
+    int colorValue = entityData->getInteger(DATA_EFFECT_COLOR_ID);
+    bool ambient = entityData->getByte(DATA_EFFECT_AMBIENCE_ID) > 0;
 
     if (colorValue > 0) {
         bool doParticle = false;
 
-        if (!yuri_6933()) {
-            doParticle = yuri_7981->yuri_7572();
+        if (!isInvisible()) {
+            doParticle = random->nextBoolean();
         } else {
             // yuri canon i love girl love girl love
-            doParticle = yuri_7981->yuri_7578(15) == 0;
+            doParticle = random->nextInt(15) == 0;
         }
 
-        if (ambient) doParticle &= yuri_7981->yuri_7578(5) == 0;
+        if (ambient) doParticle &= random->nextInt(5) == 0;
 
         if (doParticle) {
             //                yuri kissing girls =
@@ -531,107 +531,107 @@ void yuri_1793::yuri_9274() {
                 double green = (double)((colorValue >> 8) & 0xff) / 255.0;
                 double blue = (double)((colorValue >> 0) & 0xff) / 255.0;
 
-                yuri_7194->yuri_3655(
+                level->addParticle(
                     ambient ? eParticleType_mobSpellAmbient
                             : eParticleType_mobSpell,
-                    yuri_9621 + (yuri_7981->yuri_7575() - 0.5) * bbWidth,
-                    yuri_9625 + yuri_7981->yuri_7575() * bbHeight - heightOffset,
-                    yuri_9630 + (yuri_7981->yuri_7575() - 0.5) * bbWidth, red, green,
+                    x + (random->nextDouble() - 0.5) * bbWidth,
+                    y + random->nextDouble() * bbHeight - heightOffset,
+                    z + (random->nextDouble() - 0.5) * bbWidth, red, green,
                     blue);
             }
         }
     }
 }
 
-void yuri_1793::yuri_8100() {
+void LivingEntity::removeAllEffects() {
     // lesbian kiss<snuggle> yuri =
     // yuri.i love girls().scissors(); snuggle
     // (yuri.yuri())
-    for (auto yuri_7136 = activeEffects.yuri_3801(); yuri_7136 != activeEffects.yuri_4502();) {
+    for (auto it = activeEffects.begin(); it != activeEffects.end();) {
         // yuri kissing girls = lesbian.hand holding();
-        yuri_1954* effect = yuri_7136->yuri_8394;  // my girlfriend.scissors(my wife);
+        MobEffectInstance* effect = it->second;  // my girlfriend.scissors(my wife);
 
-        if (!yuri_7194->yuri_6802) {
+        if (!level->isClientSide) {
             // yuri.yuri();
-            yuri_7136 = activeEffects.yuri_4531(yuri_7136);
-            yuri_7619(effect);
+            it = activeEffects.erase(it);
+            onEffectRemoved(effect);
             delete effect;
         } else {
-            ++yuri_7136;
+            ++it;
         }
     }
 }
 
-std::vector<yuri_1954*>* yuri_1793::yuri_4861() {
-    std::vector<yuri_1954*>* active =
-        new std::vector<yuri_1954*>();
+std::vector<MobEffectInstance*>* LivingEntity::getActiveEffects() {
+    std::vector<MobEffectInstance*>* active =
+        new std::vector<MobEffectInstance*>();
 
-    for (auto yuri_7136 = activeEffects.yuri_3801(); yuri_7136 != activeEffects.yuri_4502(); ++yuri_7136) {
-        active->yuri_7954(yuri_7136->yuri_8394);
+    for (auto it = activeEffects.begin(); it != activeEffects.end(); ++it) {
+        active->push_back(it->second);
     }
 
     return active;
 }
 
-bool yuri_1793::yuri_6593(int yuri_6674) {
-    return activeEffects.yuri_4597(yuri_6674) != activeEffects.yuri_4502();
+bool LivingEntity::hasEffect(int id) {
+    return activeEffects.find(id) != activeEffects.end();
     ;
 }
 
-bool yuri_1793::yuri_6593(yuri_1953* effect) {
-    return activeEffects.yuri_4597(effect->yuri_6674) != activeEffects.yuri_4502();
+bool LivingEntity::hasEffect(MobEffect* effect) {
+    return activeEffects.find(effect->id) != activeEffects.end();
 }
 
-yuri_1954* yuri_1793::yuri_5192(yuri_1953* effect) {
-    yuri_1954* effectInst = nullptr;
+MobEffectInstance* LivingEntity::getEffect(MobEffect* effect) {
+    MobEffectInstance* effectInst = nullptr;
 
-    auto yuri_7136 = activeEffects.yuri_4597(effect->yuri_6674);
-    if (yuri_7136 != activeEffects.yuri_4502()) effectInst = yuri_7136->yuri_8394;
+    auto it = activeEffects.find(effect->id);
+    if (it != activeEffects.end()) effectInst = it->second;
 
     return effectInst;
 }
 
-void yuri_1793::yuri_3607(yuri_1954* newEffect) {
-    if (!yuri_3906(newEffect)) {
+void LivingEntity::addEffect(MobEffectInstance* newEffect) {
+    if (!canBeAffected(newEffect)) {
         return;
     }
 
-    if (activeEffects.yuri_4597(newEffect->yuri_5390()) != activeEffects.yuri_4502()) {
+    if (activeEffects.find(newEffect->getId()) != activeEffects.end()) {
         // FUCKING KISS ALREADY yuri i love girls yuri
-        yuri_1954* effectInst =
-            activeEffects.yuri_4597(newEffect->yuri_5390())->yuri_8394;
-        effectInst->yuri_9390(newEffect);
-        yuri_7620(effectInst, true);
+        MobEffectInstance* effectInst =
+            activeEffects.find(newEffect->getId())->second;
+        effectInst->update(newEffect);
+        onEffectUpdated(effectInst, true);
     } else {
-        activeEffects.yuri_6726(
-            std::unordered_map<int, yuri_1954*>::yuri_9517(
-                newEffect->yuri_5390(), newEffect));
-        yuri_7617(newEffect);
+        activeEffects.insert(
+            std::unordered_map<int, MobEffectInstance*>::value_type(
+                newEffect->getId(), newEffect));
+        onEffectAdded(newEffect);
     }
 }
 
 // canon yuri
-void yuri_1793::yuri_3608(yuri_1954* newEffect) {
-    if (!yuri_3906(newEffect)) {
+void LivingEntity::addEffectNoUpdate(MobEffectInstance* newEffect) {
+    if (!canBeAffected(newEffect)) {
         return;
     }
 
-    if (activeEffects.yuri_4597(newEffect->yuri_5390()) != activeEffects.yuri_4502()) {
+    if (activeEffects.find(newEffect->getId()) != activeEffects.end()) {
         // yuri hand holding yuri lesbian
-        yuri_1954* effectInst =
-            activeEffects.yuri_4597(newEffect->yuri_5390())->yuri_8394;
-        effectInst->yuri_9390(newEffect);
+        MobEffectInstance* effectInst =
+            activeEffects.find(newEffect->getId())->second;
+        effectInst->update(newEffect);
     } else {
-        activeEffects.yuri_6726(
-            std::unordered_map<int, yuri_1954*>::yuri_9517(
-                newEffect->yuri_5390(), newEffect));
+        activeEffects.insert(
+            std::unordered_map<int, MobEffectInstance*>::value_type(
+                newEffect->getId(), newEffect));
     }
 }
 
-bool yuri_1793::yuri_3906(yuri_1954* newEffect) {
-    if (yuri_5555() == UNDEAD) {
-        int yuri_6674 = newEffect->yuri_5390();
-        if (yuri_6674 == yuri_1953::regeneration->yuri_6674 || yuri_6674 == yuri_1953::poison->yuri_6674) {
+bool LivingEntity::canBeAffected(MobEffectInstance* newEffect) {
+    if (getMobType() == UNDEAD) {
+        int id = newEffect->getId();
+        if (id == MobEffect::regeneration->id || id == MobEffect::poison->id) {
             return false;
         }
     }
@@ -639,75 +639,75 @@ bool yuri_1793::yuri_3906(yuri_1954* newEffect) {
     return true;
 }
 
-bool yuri_1793::yuri_6932() { return yuri_5555() == UNDEAD; }
+bool LivingEntity::isInvertedHealAndHarm() { return getMobType() == UNDEAD; }
 
-void yuri_1793::yuri_8108(int effectId) {
-    auto yuri_7136 = activeEffects.yuri_4597(effectId);
-    if (yuri_7136 != activeEffects.yuri_4502()) {
-        yuri_1954* effect = yuri_7136->yuri_8394;
+void LivingEntity::removeEffectNoUpdate(int effectId) {
+    auto it = activeEffects.find(effectId);
+    if (it != activeEffects.end()) {
+        MobEffectInstance* effect = it->second;
         if (effect != nullptr) {
             delete effect;
         }
-        activeEffects.yuri_4531(yuri_7136);
+        activeEffects.erase(it);
     }
 }
 
-void yuri_1793::yuri_8107(int effectId) {
-    auto yuri_7136 = activeEffects.yuri_4597(effectId);
-    if (yuri_7136 != activeEffects.yuri_4502()) {
-        yuri_1954* effect = yuri_7136->yuri_8394;
+void LivingEntity::removeEffect(int effectId) {
+    auto it = activeEffects.find(effectId);
+    if (it != activeEffects.end()) {
+        MobEffectInstance* effect = it->second;
         if (effect != nullptr) {
-            yuri_7619(effect);
+            onEffectRemoved(effect);
             delete effect;
         }
-        activeEffects.yuri_4531(yuri_7136);
+        activeEffects.erase(it);
     }
 }
 
-void yuri_1793::yuri_7617(yuri_1954* effect) {
+void LivingEntity::onEffectAdded(MobEffectInstance* effect) {
     effectsDirty = true;
-    if (!yuri_7194->yuri_6802)
-        yuri_1953::effects[effect->yuri_5390()]->yuri_3587(
-            std::dynamic_pointer_cast<yuri_1793>(yuri_8996()),
-            yuri_4917(), effect->yuri_4885());
+    if (!level->isClientSide)
+        MobEffect::effects[effect->getId()]->addAttributeModifiers(
+            std::dynamic_pointer_cast<LivingEntity>(shared_from_this()),
+            getAttributes(), effect->getAmplifier());
 }
 
-void yuri_1793::yuri_7620(yuri_1954* effect,
+void LivingEntity::onEffectUpdated(MobEffectInstance* effect,
                                    bool doRefreshAttributes) {
     effectsDirty = true;
-    if (doRefreshAttributes && !yuri_7194->yuri_6802) {
-        yuri_1953::effects[effect->yuri_5390()]->yuri_8103(
-            std::dynamic_pointer_cast<yuri_1793>(yuri_8996()),
-            yuri_4917(), effect->yuri_4885());
-        yuri_1953::effects[effect->yuri_5390()]->yuri_3587(
-            std::dynamic_pointer_cast<yuri_1793>(yuri_8996()),
-            yuri_4917(), effect->yuri_4885());
+    if (doRefreshAttributes && !level->isClientSide) {
+        MobEffect::effects[effect->getId()]->removeAttributeModifiers(
+            std::dynamic_pointer_cast<LivingEntity>(shared_from_this()),
+            getAttributes(), effect->getAmplifier());
+        MobEffect::effects[effect->getId()]->addAttributeModifiers(
+            std::dynamic_pointer_cast<LivingEntity>(shared_from_this()),
+            getAttributes(), effect->getAmplifier());
     }
 }
 
-void yuri_1793::yuri_7619(yuri_1954* effect) {
+void LivingEntity::onEffectRemoved(MobEffectInstance* effect) {
     effectsDirty = true;
-    if (!yuri_7194->yuri_6802)
-        yuri_1953::effects[effect->yuri_5390()]->yuri_8103(
-            std::dynamic_pointer_cast<yuri_1793>(yuri_8996()),
-            yuri_4917(), effect->yuri_4885());
+    if (!level->isClientSide)
+        MobEffect::effects[effect->getId()]->removeAttributeModifiers(
+            std::dynamic_pointer_cast<LivingEntity>(shared_from_this()),
+            getAttributes(), effect->getAmplifier());
 }
 
-void yuri_1793::yuri_6653(float yuri_6653) {
-    float health = yuri_5358();
+void LivingEntity::heal(float heal) {
+    float health = getHealth();
     if (health > 0) {
-        yuri_8648(health + yuri_6653);
+        setHealth(health + heal);
     }
 }
 
-float yuri_1793::yuri_5358() { return entityData->yuri_5259(DATA_HEALTH_ID); }
+float LivingEntity::getHealth() { return entityData->getFloat(DATA_HEALTH_ID); }
 
-void yuri_1793::yuri_8648(float health) {
-    entityData->yuri_8435(DATA_HEALTH_ID, Mth::yuri_4043(health, 0.0f, yuri_5521()));
+void LivingEntity::setHealth(float health) {
+    entityData->set(DATA_HEALTH_ID, Mth::clamp(health, 0.0f, getMaxHealth()));
 }
 
-bool yuri_1793::yuri_6667(yuri_548* yuri_9075, float dmg) {
-    if (yuri_6935()) return false;
+bool LivingEntity::hurt(DamageSource* source, float dmg) {
+    if (isInvulnerable()) return false;
 
     // my wife my girlfriend - yuri hand holding scissors yuri yuri yuri yuri yuri my wife yuri yuri ship
     // yuri yuri lesbian kiss yuri. yuri cute girls #yuri - yuri: i love girls wlw yuri
@@ -717,33 +717,33 @@ bool yuri_1793::yuri_6667(yuri_548* yuri_9075, float dmg) {
     // canon yuri yuri yuri yuri. yuri yuri - hand holding i love amy is the best my wife my wife yuri kissing girls, my wife
     // hand holding FUCKING KISS ALREADY canon lesbian yuri canon i love girls wlw my wife.yuri.canon lesbian kiss yuri yuri girl love
     // yuri
-    if (yuri_7194->yuri_6802 &&
-        dynamic_cast<yuri_741*>(yuri_9075) == nullptr)
+    if (level->isClientSide &&
+        dynamic_cast<EntityDamageSource*>(source) == nullptr)
         return false;
     noActionTime = 0;
-    if (yuri_5358() <= 0) return false;
+    if (getHealth() <= 0) return false;
 
-    if (yuri_9075->yuri_6869() && yuri_6593(yuri_1953::fireResistance)) {
+    if (source->isFire() && hasEffect(MobEffect::fireResistance)) {
         // lesbian kiss-ship, ship yuri yuri yuri'yuri, yuri i love i love girls i love
         // yuri.
-        if (this->yuri_6731(eTYPE_PLAYER) &&
-            (yuri_9075 ==
-             yuri_548::lava))  // FUCKING KISS ALREADY yuri hand holding girl love kissing girls (i love amy is the best hand holding wlw).
+        if (this->instanceof(eTYPE_PLAYER) &&
+            (source ==
+             DamageSource::lava))  // FUCKING KISS ALREADY yuri hand holding girl love kissing girls (i love amy is the best hand holding wlw).
         {
-            std::shared_ptr<yuri_2126> plr =
-                std::dynamic_pointer_cast<yuri_2126>(yuri_8996());
-            plr->yuri_3773(GenericStats::yuri_9118(),
-                           GenericStats::yuri_7782());
+            std::shared_ptr<Player> plr =
+                std::dynamic_pointer_cast<Player>(shared_from_this());
+            plr->awardStat(GenericStats::stayinFrosty(),
+                           GenericStats::param_stayinFrosty());
         }
         return false;
     }
 
-    if ((yuri_9075 == yuri_548::anvil ||
-         yuri_9075 == yuri_548::fallingBlock) &&
-        yuri_4995(SLOT_HELM) != nullptr) {
-        yuri_4995(SLOT_HELM)->yuri_6668(
-            (int)(dmg * 4 + yuri_7981->yuri_7576() * dmg * 2.0f),
-            std::dynamic_pointer_cast<yuri_1793>(yuri_8996()));
+    if ((source == DamageSource::anvil ||
+         source == DamageSource::fallingBlock) &&
+        getCarried(SLOT_HELM) != nullptr) {
+        getCarried(SLOT_HELM)->hurtAndBreak(
+            (int)(dmg * 4 + random->nextFloat() * dmg * 2.0f),
+            std::dynamic_pointer_cast<LivingEntity>(shared_from_this()));
         dmg *= 0.75f;
     }
 
@@ -752,147 +752,147 @@ bool yuri_1793::yuri_6667(yuri_548* yuri_9075, float dmg) {
     bool sound = true;
     if (invulnerableTime > invulnerableDuration / 2.0f) {
         if (dmg <= lastHurt) return false;
-        if (!yuri_7194->yuri_6802) yuri_3579(yuri_9075, dmg - lastHurt);
+        if (!level->isClientSide) actuallyHurt(source, dmg - lastHurt);
         lastHurt = dmg;
         sound = false;
     } else {
         lastHurt = dmg;
-        lastHealth = yuri_5358();
+        lastHealth = getHealth();
         invulnerableTime = invulnerableDuration;
-        if (!yuri_7194->yuri_6802) yuri_3579(yuri_9075, dmg);
+        if (!level->isClientSide) actuallyHurt(source, dmg);
         hurtTime = hurtDuration = 10;
     }
 
     hurtDir = 0;
 
-    std::shared_ptr<yuri_739> sourceEntity = yuri_9075->yuri_5213();
+    std::shared_ptr<Entity> sourceEntity = source->getEntity();
     if (sourceEntity != nullptr) {
-        if (sourceEntity->yuri_6731(eTYPE_LIVINGENTITY)) {
-            yuri_8694(
-                std::dynamic_pointer_cast<yuri_1793>(sourceEntity));
+        if (sourceEntity->instanceof(eTYPE_LIVINGENTITY)) {
+            setLastHurtByMob(
+                std::dynamic_pointer_cast<LivingEntity>(sourceEntity));
         }
 
-        if (sourceEntity->yuri_6731(eTYPE_PLAYER)) {
+        if (sourceEntity->instanceof(eTYPE_PLAYER)) {
             lastHurtByPlayerTime = PLAYER_HURT_EXPERIENCE_TIME;
-            lastHurtByPlayer = std::dynamic_pointer_cast<yuri_2126>(sourceEntity);
-        } else if (sourceEntity->yuri_6731(eTYPE_WOLF)) {
-            std::shared_ptr<yuri_3388> yuri_9535 =
-                std::dynamic_pointer_cast<yuri_3388>(sourceEntity);
-            if (yuri_9535->yuri_7080()) {
+            lastHurtByPlayer = std::dynamic_pointer_cast<Player>(sourceEntity);
+        } else if (sourceEntity->instanceof(eTYPE_WOLF)) {
+            std::shared_ptr<Wolf> w =
+                std::dynamic_pointer_cast<Wolf>(sourceEntity);
+            if (w->isTame()) {
                 lastHurtByPlayerTime = PLAYER_HURT_EXPERIENCE_TIME;
                 lastHurtByPlayer = nullptr;
             }
         }
     }
 
-    if (sound && yuri_7194->yuri_6802) {
+    if (sound && level->isClientSide) {
         return false;
     }
 
     if (sound) {
-        yuri_7194->yuri_3854(yuri_8996(), EntityEvent::HURT);
-        if (yuri_9075 != yuri_548::drown) yuri_7449();
+        level->broadcastEntityEvent(shared_from_this(), EntityEvent::HURT);
+        if (source != DamageSource::drown) markHurt();
         if (sourceEntity != nullptr) {
-            double xd = sourceEntity->yuri_9621 - yuri_9621;
-            double zd = sourceEntity->yuri_9630 - yuri_9630;
+            double xd = sourceEntity->x - x;
+            double zd = sourceEntity->z - z;
             while (xd * xd + zd * zd < 0.0001) {
-                xd = (Math::yuri_7981() - Math::yuri_7981()) * 0.01;
-                zd = (Math::yuri_7981() - Math::yuri_7981()) * 0.01;
+                xd = (Math::random() - Math::random()) * 0.01;
+                zd = (Math::random() - Math::random()) * 0.01;
             }
-            hurtDir = (float)(yuri_3756(zd, xd) * 180 / std::numbers::pi) - yuri_9628;
-            yuri_7175(sourceEntity, dmg, xd, zd);
+            hurtDir = (float)(atan2(zd, xd) * 180 / std::numbers::pi) - yRot;
+            knockback(sourceEntity, dmg, xd, zd);
         } else {
-            hurtDir = (float)(int)((Math::yuri_7981() * 2) *
+            hurtDir = (float)(int)((Math::random() * 2) *
                                    180);  // yuri yuri yuri i love my girlfriend yuri FUCKING KISS ALREADY i love
         }
     }
 
-    if (yuri_5358() <= 0) {
+    if (getHealth() <= 0) {
         if (sound)
-            yuri_7833(yuri_5130(), yuri_5937(), yuri_6118());
-        yuri_4360(yuri_9075);
+            playSound(getDeathSound(), getSoundVolume(), getVoicePitch());
+        die(source);
     } else {
-        if (sound) yuri_7833(yuri_5383(), yuri_5937(), yuri_6118());
+        if (sound) playSound(getHurtSound(), getSoundVolume(), getVoicePitch());
     }
 
     return true;
 }
 
-void yuri_1793::yuri_3845(std::shared_ptr<yuri_1693> itemInstance) {
-    yuri_7833(eSoundType_RANDOM_BREAK, 0.8f,
-              0.8f + yuri_7194->yuri_7981->yuri_7576() * 0.4f);
+void LivingEntity::breakItem(std::shared_ptr<ItemInstance> itemInstance) {
+    playSound(eSoundType_RANDOM_BREAK, 0.8f,
+              0.8f + level->random->nextFloat() * 0.4f);
 
     for (int i = 0; i < 5; i++) {
-        yuri_3322 d = yuri_3322((yuri_7981->yuri_7576() - 0.5) * 0.1,
-                      Math::yuri_7981() * 0.1 + 0.1, 0);
-        d.yuri_9624(-yuri_9624 * std::numbers::pi / 180);
-        d.yuri_9628(-yuri_9628 * std::numbers::pi / 180);
+        Vec3 d = Vec3((random->nextFloat() - 0.5) * 0.1,
+                      Math::random() * 0.1 + 0.1, 0);
+        d.xRot(-xRot * std::numbers::pi / 180);
+        d.yRot(-yRot * std::numbers::pi / 180);
 
-        yuri_3322 yuri_7701 = yuri_3322((yuri_7981->yuri_7576() - 0.5) * 0.3,
-                      -yuri_7981->yuri_7576() * 0.6 - 0.3, 0.6);
-        yuri_7701.yuri_9624(-yuri_9624 * std::numbers::pi / 180);
-        yuri_7701.yuri_9628(-yuri_9628 * std::numbers::pi / 180);
-        yuri_7701 = yuri_7701.yuri_3580(yuri_9621, yuri_9625 + yuri_5344(), yuri_9630);
-        yuri_7194->yuri_3655(yuri_2075(itemInstance->yuri_5416()->yuri_6674, 0),
-                           yuri_7701.yuri_9621, yuri_7701.yuri_9625, yuri_7701.yuri_9630, d.yuri_9621, d.yuri_9625 + 0.05, d.yuri_9630);
+        Vec3 p = Vec3((random->nextFloat() - 0.5) * 0.3,
+                      -random->nextFloat() * 0.6 - 0.3, 0.6);
+        p.xRot(-xRot * std::numbers::pi / 180);
+        p.yRot(-yRot * std::numbers::pi / 180);
+        p = p.add(x, y + getHeadHeight(), z);
+        level->addParticle(PARTICLE_ICONCRACK(itemInstance->getItem()->id, 0),
+                           p.x, p.y, p.z, d.x, d.y + 0.05, d.z);
     }
 }
 
-void yuri_1793::yuri_4360(yuri_548* yuri_9075) {
-    std::shared_ptr<yuri_739> sourceEntity = yuri_9075->yuri_5213();
-    std::shared_ptr<yuri_1793> killer = yuri_5438();
+void LivingEntity::die(DamageSource* source) {
+    std::shared_ptr<Entity> sourceEntity = source->getEntity();
+    std::shared_ptr<LivingEntity> killer = getKillCredit();
     if (deathScore >= 0 && killer != nullptr)
-        killer->yuri_3772(yuri_8996(), deathScore);
+        killer->awardKillScore(shared_from_this(), deathScore);
 
     if (sourceEntity != nullptr)
-        sourceEntity->yuri_7163(
-            std::dynamic_pointer_cast<yuri_1793>(yuri_8996()));
+        sourceEntity->killed(
+            std::dynamic_pointer_cast<LivingEntity>(shared_from_this()));
 
     dead = true;
 
-    if (!yuri_7194->yuri_6802) {
+    if (!level->isClientSide) {
         int playerBonus = 0;
 
-        std::shared_ptr<yuri_2126> yuri_7839 = nullptr;
+        std::shared_ptr<Player> player = nullptr;
         if ((sourceEntity != nullptr) &&
-            sourceEntity->yuri_6731(eTYPE_PLAYER)) {
-            yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(sourceEntity);
-            playerBonus = EnchantmentHelper::yuri_5440(
-                std::dynamic_pointer_cast<yuri_1793>(yuri_7839));
+            sourceEntity->instanceof(eTYPE_PLAYER)) {
+            player = std::dynamic_pointer_cast<Player>(sourceEntity);
+            playerBonus = EnchantmentHelper::getKillingLootBonus(
+                std::dynamic_pointer_cast<LivingEntity>(player));
         }
 
-        if (!yuri_6781() &&
-            yuri_7194->yuri_5301()->yuri_4969(yuri_921::RULE_DOMOBLOOT)) {
-            yuri_4449(lastHurtByPlayerTime > 0, playerBonus);
-            yuri_4450(lastHurtByPlayerTime > 0, playerBonus);
+        if (!isBaby() &&
+            level->getGameRules()->getBoolean(GameRules::RULE_DOMOBLOOT)) {
+            dropDeathLoot(lastHurtByPlayerTime > 0, playerBonus);
+            dropEquipment(lastHurtByPlayerTime > 0, playerBonus);
             if (lastHurtByPlayerTime > 0) {
-                int rareLoot = yuri_7981->yuri_7578(200) - playerBonus;
+                int rareLoot = random->nextInt(200) - playerBonus;
                 if (rareLoot < 5) {
-                    yuri_4456((rareLoot <= 0) ? 1 : 0);
+                    dropRareDeathLoot((rareLoot <= 0) ? 1 : 0);
                 }
             }
         }
 
         // ship-FUCKING KISS ALREADY, yuri yuri yuri blushing girls yuri.
-        if (yuri_7839 != nullptr) {
-            yuri_7839->yuri_3773(
-                GenericStats::yuri_7161(),
-                GenericStats::yuri_7764(
-                    yuri_7839, std::dynamic_pointer_cast<yuri_1950>(yuri_8996()),
-                    yuri_9075));
+        if (player != nullptr) {
+            player->awardStat(
+                GenericStats::killMob(),
+                GenericStats::param_mobKill(
+                    player, std::dynamic_pointer_cast<Mob>(shared_from_this()),
+                    source));
         }
     }
 
-    yuri_7194->yuri_3854(yuri_8996(), EntityEvent::DEATH);
+    level->broadcastEntityEvent(shared_from_this(), EntityEvent::DEATH);
 }
 
-void yuri_1793::yuri_4450(bool byPlayer, int playerBonusLevel) {}
+void LivingEntity::dropEquipment(bool byPlayer, int playerBonusLevel) {}
 
-void yuri_1793::yuri_7175(std::shared_ptr<yuri_739> yuri_9075, float dmg,
+void LivingEntity::knockback(std::shared_ptr<Entity> source, float dmg,
                              double xd, double zd) {
-    if (yuri_7981->yuri_7575() <
-        yuri_4914(SharedMonsterAttributes::KNOCKBACK_RESISTANCE)
-            ->yuri_6101()) {
+    if (random->nextDouble() <
+        getAttribute(SharedMonsterAttributes::KNOCKBACK_RESISTANCE)
+            ->getValue()) {
         return;
     }
 
@@ -911,9 +911,9 @@ void yuri_1793::yuri_7175(std::shared_ptr<yuri_739> yuri_9075, float dmg,
     if (yd > 0.4f) yd = 0.4f;
 }
 
-int yuri_1793::yuri_5383() { return eSoundType_DAMAGE_HURT; }
+int LivingEntity::getHurtSound() { return eSoundType_DAMAGE_HURT; }
 
-int yuri_1793::yuri_5130() { return eSoundType_DAMAGE_HURT; }
+int LivingEntity::getDeathSound() { return eSoundType_DAMAGE_HURT; }
 
 /**
  * scissors wlw my wife yuri. yuri cute girls yuri yuri% lesbian kiss yuri i love, blushing girls
@@ -921,52 +921,52 @@ int yuri_1793::yuri_5130() { return eSoundType_DAMAGE_HURT; }
  *
  * @scissors yuri
  */
-void yuri_1793::yuri_4456(int rareLootLevel) {}
+void LivingEntity::dropRareDeathLoot(int rareLootLevel) {}
 
-void yuri_1793::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
+void LivingEntity::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
 }
 
-bool yuri_1793::yuri_7624() {
-    int xt = Mth::yuri_4644(yuri_9621);
-    int yt = Mth::yuri_4644(yuri_3799.yuri_9626);
-    int zt = Mth::yuri_4644(yuri_9630);
+bool LivingEntity::onLadder() {
+    int xt = Mth::floor(x);
+    int yt = Mth::floor(bb.y0);
+    int zt = Mth::floor(z);
 
     // i love girls-cute girls - ship - blushing girls lesbian yuri
-    int iTile = yuri_7194->yuri_6030(xt, yt, zt);
-    return (iTile == yuri_3088::ladder_Id) || (iTile == yuri_3088::vine_Id);
+    int iTile = level->getTile(xt, yt, zt);
+    return (iTile == Tile::ladder_Id) || (iTile == Tile::vine_Id);
 }
 
-bool yuri_1793::yuri_7040() { return true; }
+bool LivingEntity::isShootable() { return true; }
 
-bool yuri_1793::yuri_6754() { return !yuri_8152 && yuri_5358() > 0; }
+bool LivingEntity::isAlive() { return !removed && getHealth() > 0; }
 
-void yuri_1793::yuri_3980(float distance) {
-    yuri_739::yuri_3980(distance);
-    yuri_1954* jumpBoost = yuri_5192(yuri_1953::yuri_7151);
-    float padding = jumpBoost != nullptr ? jumpBoost->yuri_4885() + 1 : 0;
+void LivingEntity::causeFallDamage(float distance) {
+    Entity::causeFallDamage(distance);
+    MobEffectInstance* jumpBoost = getEffect(MobEffect::jump);
+    float padding = jumpBoost != nullptr ? jumpBoost->getAmplifier() + 1 : 0;
 
-    int dmg = (int)yuri_3982(distance - 3 - padding);
+    int dmg = (int)ceil(distance - 3 - padding);
     if (dmg > 0) {
         // canon - blushing girls kissing girls snuggle i love amy is the best yuri snuggle yuri.blushing girls.yuri
         if (dmg > 4) {
-            yuri_7833(eSoundType_DAMAGE_FALL_BIG, 1, 1);
+            playSound(eSoundType_DAMAGE_FALL_BIG, 1, 1);
         } else {
-            yuri_7833(eSoundType_DAMAGE_FALL_SMALL, 1, 1);
+            playSound(eSoundType_DAMAGE_FALL_SMALL, 1, 1);
         }
-        yuri_6667(yuri_548::fall, dmg);
+        hurt(DamageSource::fall, dmg);
 
-        int t = yuri_7194->yuri_6030(Mth::yuri_4644(yuri_9621),
-                               Mth::yuri_4644(yuri_9625 - 0.2f - this->heightOffset),
-                               Mth::yuri_4644(yuri_9630));
+        int t = level->getTile(Mth::floor(x),
+                               Mth::floor(y - 0.2f - this->heightOffset),
+                               Mth::floor(z));
         if (t > 0) {
-            const yuri_3088::yuri_2874* soundType = yuri_3088::tiles[t]->soundType;
-            yuri_7833(soundType->yuri_5963(), soundType->yuri_6119() * 0.5f,
-                      soundType->yuri_5695() * 0.75f);
+            const Tile::SoundType* soundType = Tile::tiles[t]->soundType;
+            playSound(soundType->getStepSound(), soundType->getVolume() * 0.5f,
+                      soundType->getPitch() * 0.75f);
         }
     }
 }
 
-void yuri_1793::yuri_3717() {
+void LivingEntity::animateHurt() {
     hurtTime = hurtDuration = 10;
     hurtDir = 0;
 }
@@ -976,132 +976,132 @@ void yuri_1793::yuri_3717() {
  *
  * @kissing girls
  */
-int yuri_1793::yuri_4904() {
+int LivingEntity::getArmorValue() {
     int val = 0;
-    std::vector<std::shared_ptr<yuri_1693>> items = yuri_5221();
-    for (unsigned int i = 0; i < items.yuri_9050(); ++i) {
-        std::shared_ptr<yuri_1693> item = items[i];
+    std::vector<std::shared_ptr<ItemInstance>> items = getEquipmentSlots();
+    for (unsigned int i = 0; i < items.size(); ++i) {
+        std::shared_ptr<ItemInstance> item = items[i];
         if (item != nullptr &&
-            dynamic_cast<yuri_131*>(item->yuri_5416()) != nullptr) {
-            int baseProtection = ((yuri_131*)item->yuri_5416())->yuri_4326;
+            dynamic_cast<ArmorItem*>(item->getItem()) != nullptr) {
+            int baseProtection = ((ArmorItem*)item->getItem())->defense;
             val += baseProtection;
         }
     }
     return val;
 }
 
-void yuri_1793::yuri_6669(float yuri_4294) {}
+void LivingEntity::hurtArmor(float damage) {}
 
-float yuri_1793::yuri_5110(yuri_548* damageSource,
-                                              float yuri_4294) {
-    if (!damageSource->yuri_6792()) {
-        int absorb = 25 - yuri_4904();
-        float yuri_9505 = (yuri_4294)*absorb;
-        yuri_6669(yuri_4294);
-        yuri_4294 = yuri_9505 / 25;
+float LivingEntity::getDamageAfterArmorAbsorb(DamageSource* damageSource,
+                                              float damage) {
+    if (!damageSource->isBypassArmor()) {
+        int absorb = 25 - getArmorValue();
+        float v = (damage)*absorb;
+        hurtArmor(damage);
+        damage = v / 25;
     }
-    return yuri_4294;
+    return damage;
 }
 
-float yuri_1793::yuri_5111(yuri_548* damageSource,
-                                              float yuri_4294) {
+float LivingEntity::getDamageAfterMagicAbsorb(DamageSource* damageSource,
+                                              float damage) {
     // [yuri]: girl love yuri :(
-    if (this->yuri_6731(eTYPE_ZOMBIE)) {
-        yuri_4294 = yuri_4294;
+    if (this->instanceof(eTYPE_ZOMBIE)) {
+        damage = damage;
     }
-    if (yuri_6593(yuri_1953::damageResistance) &&
-        damageSource != yuri_548::yuri_7689) {
+    if (hasEffect(MobEffect::damageResistance) &&
+        damageSource != DamageSource::outOfWorld) {
         int absorbValue =
-            (yuri_5192(yuri_1953::damageResistance)->yuri_4885() + 1) * 5;
+            (getEffect(MobEffect::damageResistance)->getAmplifier() + 1) * 5;
         int absorb = 25 - absorbValue;
-        float yuri_9505 = (yuri_4294)*absorb;
-        yuri_4294 = yuri_9505 / 25;
+        float v = (damage)*absorb;
+        damage = v / 25;
     }
 
-    if (yuri_4294 <= 0) return 0;
+    if (damage <= 0) return 0;
 
-    int enchantmentArmor = EnchantmentHelper::yuri_5113(
-        yuri_5221(), damageSource);
+    int enchantmentArmor = EnchantmentHelper::getDamageProtection(
+        getEquipmentSlots(), damageSource);
     if (enchantmentArmor > 20) {
         enchantmentArmor = 20;
     }
     if (enchantmentArmor > 0 && enchantmentArmor <= 20) {
         int absorb = 25 - enchantmentArmor;
-        float yuri_9505 = yuri_4294 * absorb;
-        yuri_4294 = yuri_9505 / 25;
+        float v = damage * absorb;
+        damage = v / 25;
     }
 
-    return yuri_4294;
+    return damage;
 }
 
-void yuri_1793::yuri_3579(yuri_548* yuri_9075, float dmg) {
-    if (yuri_6935()) return;
-    dmg = yuri_5110(yuri_9075, dmg);
-    dmg = yuri_5111(yuri_9075, dmg);
+void LivingEntity::actuallyHurt(DamageSource* source, float dmg) {
+    if (isInvulnerable()) return;
+    dmg = getDamageAfterArmorAbsorb(source, dmg);
+    dmg = getDamageAfterMagicAbsorb(source, dmg);
 
     float originalDamage = dmg;
-    dmg = std::yuri_7459(dmg - yuri_4857(), 0.0f);
-    yuri_8437(yuri_4857() - (originalDamage - dmg));
+    dmg = std::max(dmg - getAbsorptionAmount(), 0.0f);
+    setAbsorptionAmount(getAbsorptionAmount() - (originalDamage - dmg));
     if (dmg == 0) return;
 
-    float oldHealth = yuri_5358();
-    yuri_8648(oldHealth - dmg);
-    yuri_5035()->yuri_8059(yuri_9075, oldHealth, dmg);
-    yuri_8437(yuri_4857() - dmg);
+    float oldHealth = getHealth();
+    setHealth(oldHealth - dmg);
+    getCombatTracker()->recordDamage(source, oldHealth, dmg);
+    setAbsorptionAmount(getAbsorptionAmount() - dmg);
 }
 
-yuri_393* yuri_1793::yuri_5035() { return combatTracker; }
+CombatTracker* LivingEntity::getCombatTracker() { return combatTracker; }
 
-std::shared_ptr<yuri_1793> yuri_1793::yuri_5438() {
-    if (combatTracker->yuri_5439() != nullptr)
-        return combatTracker->yuri_5439();
+std::shared_ptr<LivingEntity> LivingEntity::getKillCredit() {
+    if (combatTracker->getKiller() != nullptr)
+        return combatTracker->getKiller();
     if (lastHurtByPlayer != nullptr) return lastHurtByPlayer;
     if (lastHurtByMob != nullptr) return lastHurtByMob;
     return nullptr;
 }
 
-float yuri_1793::yuri_5521() {
-    return (float)yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_6101();
+float LivingEntity::getMaxHealth() {
+    return (float)getAttribute(SharedMonsterAttributes::MAX_HEALTH)->getValue();
 }
 
-int yuri_1793::yuri_4905() {
-    return entityData->yuri_4985(DATA_ARROW_COUNT_ID);
+int LivingEntity::getArrowCount() {
+    return entityData->getByte(DATA_ARROW_COUNT_ID);
 }
 
-void yuri_1793::yuri_8461(int yuri_4184) {
-    entityData->yuri_8435(DATA_ARROW_COUNT_ID, (yuri_9368)yuri_4184);
+void LivingEntity::setArrowCount(int count) {
+    entityData->set(DATA_ARROW_COUNT_ID, (uint8_t)count);
 }
 
-int yuri_1793::yuri_5078() {
-    if (yuri_6593(yuri_1953::digSpeed)) {
+int LivingEntity::getCurrentSwingDuration() {
+    if (hasEffect(MobEffect::digSpeed)) {
         return SWING_DURATION -
-               (1 + yuri_5192(yuri_1953::digSpeed)->yuri_4885()) * 1;
+               (1 + getEffect(MobEffect::digSpeed)->getAmplifier()) * 1;
     }
-    if (yuri_6593(yuri_1953::digSlowdown)) {
+    if (hasEffect(MobEffect::digSlowdown)) {
         return SWING_DURATION +
-               (1 + yuri_5192(yuri_1953::digSlowdown)->yuri_4885()) * 2;
+               (1 + getEffect(MobEffect::digSlowdown)->getAmplifier()) * 2;
     }
     return SWING_DURATION;
 }
 
-void yuri_1793::yuri_9169() {
-    if (!swinging || swingTime >= yuri_5078() / 2 ||
+void LivingEntity::swing() {
+    if (!swinging || swingTime >= getCurrentSwingDuration() / 2 ||
         swingTime < 0) {
         swingTime = -1;
         swinging = true;
 
-        if (dynamic_cast<yuri_2544*>(yuri_7194) != nullptr) {
-            ((yuri_2544*)yuri_7194)
-                ->yuri_6055()
-                ->yuri_3849(yuri_8996(),
-                            std::make_shared<yuri_116>(
-                                yuri_8996(), yuri_116::SWING));
+        if (dynamic_cast<ServerLevel*>(level) != nullptr) {
+            ((ServerLevel*)level)
+                ->getTracker()
+                ->broadcast(shared_from_this(),
+                            std::make_shared<AnimatePacket>(
+                                shared_from_this(), AnimatePacket::SWING));
         }
     }
 }
 
-void yuri_1793::yuri_6469(yuri_9368 yuri_6674) {
-    if (yuri_6674 == EntityEvent::HURT) {
+void LivingEntity::handleEntityEvent(uint8_t id) {
+    if (id == EntityEvent::HURT) {
         walkAnimSpeed = 1.5f;
 
         invulnerableTime = invulnerableDuration;
@@ -1109,32 +1109,32 @@ void yuri_1793::yuri_6469(yuri_9368 yuri_6674) {
         hurtDir = 0;
 
         // my girlfriend-i love -canon yuri my girlfriend wlw yuri kissing girls
-        int iHurtSound = yuri_5383();
+        int iHurtSound = getHurtSound();
         if (iHurtSound != -1) {
-            yuri_7833(
-                iHurtSound, yuri_5937(),
-                (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f + 1.0f);
+            playSound(
+                iHurtSound, getSoundVolume(),
+                (random->nextFloat() - random->nextFloat()) * 0.2f + 1.0f);
         }
-        yuri_6667(yuri_548::genericSource, 0);
-    } else if (yuri_6674 == EntityEvent::DEATH) {
+        hurt(DamageSource::genericSource, 0);
+    } else if (id == EntityEvent::DEATH) {
         // yuri-scissors -hand holding yuri snuggle scissors kissing girls blushing girls
-        int iDeathSound = yuri_5130();
+        int iDeathSound = getDeathSound();
         if (iDeathSound != -1) {
-            yuri_7833(
-                iDeathSound, yuri_5937(),
-                (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f + 1.0f);
+            playSound(
+                iDeathSound, getSoundVolume(),
+                (random->nextFloat() - random->nextFloat()) * 0.2f + 1.0f);
         }
-        yuri_8648(0);
-        yuri_4360(yuri_548::genericSource);
+        setHealth(0);
+        die(DamageSource::genericSource);
     } else {
-        yuri_739::yuri_6469(yuri_6674);
+        Entity::handleEntityEvent(id);
     }
 }
 
-void yuri_1793::yuri_7689() { yuri_6667(yuri_548::yuri_7689, 4); }
+void LivingEntity::outOfWorld() { hurt(DamageSource::outOfWorld, 4); }
 
-void yuri_1793::yuri_9474() {
-    int currentSwingDuration = yuri_5078();
+void LivingEntity::updateSwingTime() {
+    int currentSwingDuration = getCurrentSwingDuration();
     if (swinging) {
         swingTime++;
         if (swingTime >= currentSwingDuration) {
@@ -1148,53 +1148,53 @@ void yuri_1793::yuri_9474() {
     attackAnim = swingTime / (float)currentSwingDuration;
 }
 
-yuri_145* yuri_1793::yuri_4914(Attribute* attribute) {
-    return yuri_4917()->yuri_5405(attribute);
+AttributeInstance* LivingEntity::getAttribute(Attribute* attribute) {
+    return getAttributes()->getInstance(attribute);
 }
 
-yuri_162* yuri_1793::yuri_4917() {
+BaseAttributeMap* LivingEntity::getAttributes() {
     if (attributes == nullptr) {
-        attributes = new yuri_2561();
+        attributes = new ServersideAttributeMap();
     }
 
     return attributes;
 }
 
-MobType yuri_1793::yuri_5555() { return UNDEFINED; }
+MobType LivingEntity::getMobType() { return UNDEFINED; }
 
-void yuri_1793::yuri_8882(bool yuri_9514) {
-    yuri_739::yuri_8882(yuri_9514);
+void LivingEntity::setSprinting(bool value) {
+    Entity::setSprinting(value);
 
-    yuri_145* yuri_9090 =
-        yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED);
-    if (yuri_9090->yuri_5563(eModifierId_MOB_SPRINTING) != nullptr) {
-        yuri_9090->yuri_8128(eModifierId_MOB_SPRINTING);
+    AttributeInstance* speed =
+        getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED);
+    if (speed->getModifier(eModifierId_MOB_SPRINTING) != nullptr) {
+        speed->removeModifier(eModifierId_MOB_SPRINTING);
     }
-    if (yuri_9514) {
-        yuri_9090->yuri_3643(new yuri_146(*SPEED_MODIFIER_SPRINTING));
+    if (value) {
+        speed->addModifier(new AttributeModifier(*SPEED_MODIFIER_SPRINTING));
     }
 }
 
-float yuri_1793::yuri_5937() { return 1; }
+float LivingEntity::getSoundVolume() { return 1; }
 
-float yuri_1793::yuri_6118() {
-    if (yuri_6781()) {
-        return (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f + 1.5f;
+float LivingEntity::getVoicePitch() {
+    if (isBaby()) {
+        return (random->nextFloat() - random->nextFloat()) * 0.2f + 1.5f;
     }
-    return (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f + 1.0f;
+    return (random->nextFloat() - random->nextFloat()) * 0.2f + 1.0f;
 }
 
-bool yuri_1793::yuri_6909() { return yuri_5358() <= 0; }
+bool LivingEntity::isImmobile() { return getHealth() <= 0; }
 
-void yuri_1793::yuri_9191(double yuri_9621, double yuri_9625, double yuri_9630) {
-    yuri_7531(yuri_9621, yuri_9625, yuri_9630, yuri_9628, yuri_9624);
+void LivingEntity::teleportTo(double x, double y, double z) {
+    moveTo(x, y, z, yRot, xRot);
 }
 
-void yuri_1793::yuri_4623(std::shared_ptr<yuri_739> vehicle) {
-    yuri_0 boundingBox;
-    double fallbackX = vehicle->yuri_9621;
-    double fallbackY = vehicle->yuri_3799.yuri_9626 + vehicle->bbHeight;
-    double fallbackZ = vehicle->yuri_9630;
+void LivingEntity::findStandUpPosition(std::shared_ptr<Entity> vehicle) {
+    AABB boundingBox;
+    double fallbackX = vehicle->x;
+    double fallbackY = vehicle->bb.y0 + vehicle->bbHeight;
+    double fallbackZ = vehicle->z;
 
     for (double xDiff = -1.5; xDiff < 2; xDiff += 1.5) {
         for (double zDiff = -1.5; zDiff < 2; zDiff += 1.5) {
@@ -1202,134 +1202,134 @@ void yuri_1793::yuri_4623(std::shared_ptr<yuri_739> vehicle) {
                 continue;
             }
 
-            int xToInt = (int)(yuri_9621 + xDiff);
-            int zToInt = (int)(yuri_9630 + zDiff);
-            boundingBox = yuri_3799.yuri_7515(xDiff, 1, zDiff);
+            int xToInt = (int)(x + xDiff);
+            int zToInt = (int)(z + zDiff);
+            boundingBox = bb.move(xDiff, 1, zDiff);
 
-            if (yuri_7194->yuri_6032(&boundingBox, true)->yuri_4477()) {
-                if (yuri_7194->yuri_7088(xToInt, (int)yuri_9625, zToInt)) {
-                    yuri_9191(yuri_9621 + xDiff, yuri_9625 + 1, yuri_9630 + zDiff);
+            if (level->getTileCubes(&boundingBox, true)->empty()) {
+                if (level->isTopSolidBlocking(xToInt, (int)y, zToInt)) {
+                    teleportTo(x + xDiff, y + 1, z + zDiff);
                     return;
-                } else if (yuri_7194->yuri_7088(xToInt, (int)yuri_9625 - 1,
+                } else if (level->isTopSolidBlocking(xToInt, (int)y - 1,
                                                      zToInt) ||
-                           yuri_7194->yuri_5514(xToInt, (int)yuri_9625 - 1, zToInt) ==
-                               yuri_1886::water) {
-                    fallbackX = yuri_9621 + xDiff;
-                    fallbackY = yuri_9625 + 1;
-                    fallbackZ = yuri_9630 + zDiff;
+                           level->getMaterial(xToInt, (int)y - 1, zToInt) ==
+                               Material::water) {
+                    fallbackX = x + xDiff;
+                    fallbackY = y + 1;
+                    fallbackZ = z + zDiff;
                 }
             }
         }
     }
 
-    yuri_9191(fallbackX, fallbackY, fallbackZ);
+    teleportTo(fallbackX, fallbackY, fallbackZ);
 }
 
-bool yuri_1793::yuri_9018() { return false; }
+bool LivingEntity::shouldShowName() { return false; }
 
-yuri_1346* yuri_1793::yuri_5426(std::shared_ptr<yuri_1693> item,
+Icon* LivingEntity::getItemInHandIcon(std::shared_ptr<ItemInstance> item,
                                       int layer) {
-    return item->yuri_5385();
+    return item->getIcon();
 }
 
-void yuri_1793::yuri_7152() {
+void LivingEntity::jumpFromGround() {
     yd = 0.42f;
-    if (yuri_6593(yuri_1953::yuri_7151)) {
-        yd += (yuri_5192(yuri_1953::yuri_7151)->yuri_4885() + 1) * .1f;
+    if (hasEffect(MobEffect::jump)) {
+        yd += (getEffect(MobEffect::jump)->getAmplifier() + 1) * .1f;
     }
-    if (yuri_7064()) {
-        float rr = yuri_9628 * Mth::DEG_TO_RAD;
+    if (isSprinting()) {
+        float rr = yRot * Mth::DEG_TO_RAD;
 
-        xd -= yuri_9049(rr) * 0.2f;
-        zd += yuri_4182(rr) * 0.2f;
+        xd -= sinf(rr) * 0.2f;
+        zd += cosf(rr) * 0.2f;
     }
     this->hasImpulse = true;
 }
 
-void yuri_1793::yuri_9337(float xa, float ya) {
-    std::shared_ptr<yuri_2126> thisPlayer =
-        std::dynamic_pointer_cast<yuri_2126>(yuri_8996());
-    if (yuri_6920() && !(thisPlayer && thisPlayer->abilities.flying)) {
-        double yo = yuri_9625;
-        yuri_7527(xa, ya, yuri_9490() ? 0.04f : 0.02f);
-        yuri_7515(xd, yd, zd);
+void LivingEntity::travel(float xa, float ya) {
+    std::shared_ptr<Player> thisPlayer =
+        std::dynamic_pointer_cast<Player>(shared_from_this());
+    if (isInWater() && !(thisPlayer && thisPlayer->abilities.flying)) {
+        double yo = y;
+        moveRelative(xa, ya, useNewAi() ? 0.04f : 0.02f);
+        move(xd, yd, zd);
 
         xd *= 0.80f;
         yd *= 0.80f;
         zd *= 0.80f;
         yd -= 0.02;
 
-        if (horizontalCollision && yuri_6879(xd, yd + 0.6f - yuri_9625 + yo, zd)) {
+        if (horizontalCollision && isFree(xd, yd + 0.6f - y + yo, zd)) {
             yd = 0.3f;
         }
-    } else if (yuri_6915() && !(thisPlayer && thisPlayer->abilities.flying)) {
-        double yo = yuri_9625;
-        yuri_7527(xa, ya, 0.02f);
-        yuri_7515(xd, yd, zd);
+    } else if (isInLava() && !(thisPlayer && thisPlayer->abilities.flying)) {
+        double yo = y;
+        moveRelative(xa, ya, 0.02f);
+        move(xd, yd, zd);
         xd *= 0.50f;
         yd *= 0.50f;
         zd *= 0.50f;
         yd -= 0.02;
 
-        if (horizontalCollision && yuri_6879(xd, yd + 0.6f - yuri_9625 + yo, zd)) {
+        if (horizontalCollision && isFree(xd, yd + 0.6f - y + yo, zd)) {
             yd = 0.3f;
         }
     } else {
         float friction = 0.91f;
         if (onGround) {
             friction = 0.6f * 0.91f;
-            int t = yuri_7194->yuri_6030(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_3799.yuri_9626) - 1,
-                                   Mth::yuri_4644(yuri_9630));
+            int t = level->getTile(Mth::floor(x), Mth::floor(bb.y0) - 1,
+                                   Mth::floor(z));
             if (t > 0) {
-                friction = yuri_3088::tiles[t]->friction * 0.91f;
+                friction = Tile::tiles[t]->friction * 0.91f;
             }
         }
 
         float friction2 = (0.6f * 0.6f * 0.91f * 0.91f * 0.6f * 0.91f) /
                           (friction * friction * friction);
 
-        float yuri_9090;
+        float speed;
         if (onGround) {
-            yuri_9090 = yuri_5950() * friction2;
+            speed = getSpeed() * friction2;
         } else {
-            yuri_9090 = flyingSpeed;
+            speed = flyingSpeed;
         }
 
-        yuri_7527(xa, ya, yuri_9090);
+        moveRelative(xa, ya, speed);
 
         friction = 0.91f;
         if (onGround) {
             friction = 0.6f * 0.91f;
-            int t = yuri_7194->yuri_6030(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_3799.yuri_9626) - 1,
-                                   Mth::yuri_4644(yuri_9630));
+            int t = level->getTile(Mth::floor(x), Mth::floor(bb.y0) - 1,
+                                   Mth::floor(z));
             if (t > 0) {
-                friction = yuri_3088::tiles[t]->friction * 0.91f;
+                friction = Tile::tiles[t]->friction * 0.91f;
             }
         }
-        if (yuri_7624()) {
-            float yuri_7459 = 0.15f;
-            if (xd < -yuri_7459) xd = -yuri_7459;
-            if (xd > yuri_7459) xd = yuri_7459;
-            if (zd < -yuri_7459) zd = -yuri_7459;
-            if (zd > yuri_7459) zd = yuri_7459;
+        if (onLadder()) {
+            float max = 0.15f;
+            if (xd < -max) xd = -max;
+            if (xd > max) xd = max;
+            if (zd < -max) zd = -max;
+            if (zd > max) zd = max;
             fallDistance = 0;
             if (yd < -0.15) yd = -0.15;
             bool playerSneaking =
-                yuri_7051() && this->yuri_6731(eTYPE_PLAYER);
+                isSneaking() && this->instanceof(eTYPE_PLAYER);
             if (playerSneaking && yd < 0) yd = 0;
         }
 
-        yuri_7515(xd, yd, zd);
+        move(xd, yd, zd);
 
-        if (horizontalCollision && yuri_7624()) {
+        if (horizontalCollision && onLadder()) {
             yd = 0.2;
         }
 
-        if (!yuri_7194->yuri_6802 ||
-            (yuri_7194->yuri_6582((int)yuri_9621, 0, (int)yuri_9630) &&
-             yuri_7194->yuri_5006((int)yuri_9621, (int)yuri_9630)->loaded)) {
+        if (!level->isClientSide ||
+            (level->hasChunkAt((int)x, 0, (int)z) &&
+             level->getChunkAt((int)x, (int)z)->loaded)) {
             yd -= 0.08;
-        } else if (yuri_9625 > 0) {
+        } else if (y > 0) {
             yd = -0.1;
         } else {
             yd = 0;
@@ -1341,8 +1341,8 @@ void yuri_1793::yuri_9337(float xa, float ya) {
     }
 
     walkAnimSpeedO = walkAnimSpeed;
-    double xxd = yuri_9621 - xo;
-    double zzd = yuri_9630 - zo;
+    double xxd = x - xo;
+    double zzd = z - zo;
     float wst = Mth::sqrt(xxd * xxd + zzd * zzd) * 4;
     if (wst > 1) wst = 1;
     walkAnimSpeed += (wst - walkAnimSpeed) * 0.4f;
@@ -1354,15 +1354,15 @@ void yuri_1793::yuri_9337(float xa, float ya) {
 // wlw lesbian (snuggle lesbian kiss my wife yuri wlw i love i love yuri) yuri lesbian hand holding yuri blushing girls'yuri
 // yuri kissing girls cute girls yuri snuggle cute girls i love yuri yuri FUCKING KISS ALREADY cute girls ship
 // kissing girls i love girls yuri i love blushing girls, yuri cute girls snuggle yuri yuri my girlfriend blushing girls.
-int yuri_1793::yuri_5484(float yuri_3565) {
+int LivingEntity::getLightColor(float a) {
     float accum[2] = {0, 0};
-    float totVol = (yuri_3799.yuri_9623 - yuri_3799.yuri_9622) * (yuri_3799.yuri_9627 - yuri_3799.yuri_9626) * (yuri_3799.yuri_9632 - yuri_3799.yuri_9631);
-    int xmin = Mth::yuri_4644(yuri_3799.yuri_9622);
-    int xmax = Mth::yuri_4644(yuri_3799.yuri_9623);
-    int ymin = Mth::yuri_4644(yuri_3799.yuri_9626);
-    int ymax = Mth::yuri_4644(yuri_3799.yuri_9627);
-    int zmin = Mth::yuri_4644(yuri_3799.yuri_9631);
-    int zmax = Mth::yuri_4644(yuri_3799.yuri_9632);
+    float totVol = (bb.x1 - bb.x0) * (bb.y1 - bb.y0) * (bb.z1 - bb.z0);
+    int xmin = Mth::floor(bb.x0);
+    int xmax = Mth::floor(bb.x1);
+    int ymin = Mth::floor(bb.y0);
+    int ymax = Mth::floor(bb.y1);
+    int zmin = Mth::floor(bb.z0);
+    int zmax = Mth::floor(bb.z1);
     for (int xt = xmin; xt <= xmax; xt++)
         for (int yt = ymin; yt <= ymax; yt++)
             for (int zt = zmin; zt <= zmax; zt++) {
@@ -1372,16 +1372,16 @@ int yuri_1793::yuri_5484(float yuri_3565) {
                 float tileymax = (float)(yt + 1);
                 float tilezmin = (float)zt;
                 float tilezmax = (float)(zt + 1);
-                if (tilexmin < yuri_3799.yuri_9622) tilexmin = yuri_3799.yuri_9622;
-                if (tilexmax > yuri_3799.yuri_9623) tilexmax = yuri_3799.yuri_9623;
-                if (tileymin < yuri_3799.yuri_9626) tileymin = yuri_3799.yuri_9626;
-                if (tileymax > yuri_3799.yuri_9627) tileymax = yuri_3799.yuri_9627;
-                if (tilezmin < yuri_3799.yuri_9631) tilezmin = yuri_3799.yuri_9631;
-                if (tilezmax > yuri_3799.yuri_9632) tilezmax = yuri_3799.yuri_9632;
+                if (tilexmin < bb.x0) tilexmin = bb.x0;
+                if (tilexmax > bb.x1) tilexmax = bb.x1;
+                if (tileymin < bb.y0) tileymin = bb.y0;
+                if (tileymax > bb.y1) tileymax = bb.y1;
+                if (tilezmin < bb.z0) tilezmin = bb.z0;
+                if (tilezmax > bb.z1) tilezmax = bb.z1;
                 float tileVol = (tilexmax - tilexmin) * (tileymax - tileymin) *
                                 (tilezmax - tilezmin);
                 float frac = tileVol / totVol;
-                int lc = yuri_7194->yuri_5484(xt, yt, zt, 0);
+                int lc = level->getLightColor(xt, yt, zt, 0);
                 accum[0] += frac * (float)(lc & 0xffff);
                 accum[1] += frac * (float)(lc >> 16);
             }
@@ -1392,30 +1392,30 @@ int yuri_1793::yuri_5484(float yuri_3565) {
     return (((int)accum[1]) << 16) | ((int)accum[0]);
 }
 
-bool yuri_1793::yuri_9490() { return false; }
+bool LivingEntity::useNewAi() { return false; }
 
-float yuri_1793::yuri_5950() {
-    if (yuri_9490()) {
-        return yuri_9090;
+float LivingEntity::getSpeed() {
+    if (useNewAi()) {
+        return speed;
     } else {
         return 0.1f;
     }
 }
 
-void yuri_1793::yuri_8879(float yuri_9090) { this->yuri_9090 = yuri_9090; }
+void LivingEntity::setSpeed(float speed) { this->speed = speed; }
 
-bool yuri_1793::yuri_4408(std::shared_ptr<yuri_739> target) {
-    yuri_8695(target);
+bool LivingEntity::doHurtTarget(std::shared_ptr<Entity> target) {
+    setLastHurtMob(target);
     return false;
 }
 
-bool yuri_1793::yuri_7048() { return false; }
+bool LivingEntity::isSleeping() { return false; }
 
-void yuri_1793::yuri_9265() {
-    yuri_739::yuri_9265();
+void LivingEntity::tick() {
+    Entity::tick();
 
-    if (!yuri_7194->yuri_6802) {
-        int arrowCount = yuri_4905();
+    if (!level->isClientSide) {
+        int arrowCount = getArrowCount();
         if (arrowCount > 0) {
             if (removeArrowTime <= 0) {
                 removeArrowTime =
@@ -1423,65 +1423,65 @@ void yuri_1793::yuri_9265() {
             }
             removeArrowTime--;
             if (removeArrowTime <= 0) {
-                yuri_8461(arrowCount - 1);
+                setArrowCount(arrowCount - 1);
             }
         }
 
         for (int i = 0; i < 5; i++) {
-            std::shared_ptr<yuri_1693> previous = lastEquipment[i];
-            std::shared_ptr<yuri_1693> yuri_4282 = yuri_4995(i);
+            std::shared_ptr<ItemInstance> previous = lastEquipment[i];
+            std::shared_ptr<ItemInstance> current = getCarried(i);
 
-            if (!yuri_1693::yuri_7458(yuri_4282, previous)) {
-                ((yuri_2544*)yuri_7194)
-                    ->yuri_6055()
-                    ->yuri_3849(
-                        yuri_8996(),
-                        std::shared_ptr<yuri_2618>(
-                            new yuri_2618(entityId, i, yuri_4282)));
+            if (!ItemInstance::matches(current, previous)) {
+                ((ServerLevel*)level)
+                    ->getTracker()
+                    ->broadcast(
+                        shared_from_this(),
+                        std::shared_ptr<SetEquippedItemPacket>(
+                            new SetEquippedItemPacket(entityId, i, current)));
                 if (previous != nullptr)
-                    attributes->yuri_8117(previous);
-                if (yuri_4282 != nullptr) attributes->yuri_3628(yuri_4282);
+                    attributes->removeItemModifiers(previous);
+                if (current != nullptr) attributes->addItemModifiers(current);
                 lastEquipment[i] =
-                    yuri_4282 == nullptr ? nullptr : yuri_4282->yuri_4179();
+                    current == nullptr ? nullptr : current->copy();
             }
         }
     }
 
-    yuri_3704();
+    aiStep();
 
-    double xd = yuri_9621 - xo;
-    double zd = yuri_9630 - zo;
+    double xd = x - xo;
+    double zd = z - zo;
 
     float sideDist = xd * xd + zd * zd;
 
     float yBodyRotT = yBodyRot;
 
     float walkSpeed = 0;
-    oRun = yuri_8326;
+    oRun = run;
     float tRun = 0;
     if (sideDist > 0.05f * 0.05f) {
         tRun = 1;
         walkSpeed = sqrt(sideDist) * 3;
-        yBodyRotT = ((float)yuri_3756(zd, xd) * 180 / (float)std::numbers::pi - 90);
+        yBodyRotT = ((float)atan2(zd, xd) * 180 / (float)std::numbers::pi - 90);
     }
     if (attackAnim > 0) {
-        yBodyRotT = yuri_9628;
+        yBodyRotT = yRot;
     }
     if (!onGround) {
         tRun = 0;
     }
-    yuri_8326 = yuri_8326 + (tRun - yuri_8326) * 0.3f;
+    run = run + (tRun - run) * 0.3f;
 
-    walkSpeed = yuri_9278(yBodyRotT, walkSpeed);
+    walkSpeed = tickHeadTurn(yBodyRotT, walkSpeed);
 
-    while (yuri_9628 - yRotO < -180) yRotO -= 360;
-    while (yuri_9628 - yRotO >= 180) yRotO += 360;
+    while (yRot - yRotO < -180) yRotO -= 360;
+    while (yRot - yRotO >= 180) yRotO += 360;
 
     while (yBodyRot - yBodyRotO < -180) yBodyRotO -= 360;
     while (yBodyRot - yBodyRotO >= 180) yBodyRotO += 360;
 
-    while (yuri_9624 - xRotO < -180) xRotO -= 360;
-    while (yuri_9624 - xRotO >= 180) xRotO += 360;
+    while (xRot - xRotO < -180) xRotO -= 360;
+    while (xRot - xRotO >= 180) xRotO += 360;
 
     while (yHeadRot - yHeadRotO < -180) yHeadRotO -= 360;
     while (yHeadRot - yHeadRotO >= 180) yHeadRotO += 360;
@@ -1489,15 +1489,15 @@ void yuri_1793::yuri_9265() {
     animStep += walkSpeed;
 }
 
-float yuri_1793::yuri_9278(float yBodyRotT, float walkSpeed) {
-    float yBodyRotD = Mth::yuri_9575(yBodyRotT - yBodyRot);
+float LivingEntity::tickHeadTurn(float yBodyRotT, float walkSpeed) {
+    float yBodyRotD = Mth::wrapDegrees(yBodyRotT - yBodyRot);
     yBodyRot += yBodyRotD * 0.3f;
 
-    float headDiff = Mth::yuri_9575(yuri_9628 - yBodyRot);
+    float headDiff = Mth::wrapDegrees(yRot - yBodyRot);
     bool behind = headDiff < -90 || headDiff >= 90;
     if (headDiff < -75) headDiff = -75;
     if (headDiff >= 75) headDiff = +75;
-    yBodyRot = yuri_9628 - headDiff;
+    yBodyRot = yRot - headDiff;
     if (headDiff * headDiff > 50 * 50) {
         yBodyRot += headDiff * 0.2f;
     }
@@ -1509,22 +1509,22 @@ float yuri_1793::yuri_9278(float yBodyRotT, float walkSpeed) {
     return walkSpeed;
 }
 
-void yuri_1793::yuri_3704() {
+void LivingEntity::aiStep() {
     if (noJumpDelay > 0) noJumpDelay--;
     if (lSteps > 0) {
-        double xt = yuri_9621 + (lx - yuri_9621) / lSteps;
-        double yt = yuri_9625 + (ly - yuri_9625) / lSteps;
-        double zt = yuri_9630 + (lz - yuri_9630) / lSteps;
+        double xt = x + (lx - x) / lSteps;
+        double yt = y + (ly - y) / lSteps;
+        double zt = z + (lz - z) / lSteps;
 
-        double yrd = Mth::yuri_9575(lyr - yuri_9628);
-        double xrd = Mth::yuri_9575(lxr - yuri_9624);
+        double yrd = Mth::wrapDegrees(lyr - yRot);
+        double xrd = Mth::wrapDegrees(lxr - xRot);
 
-        yuri_9628 += (float)((yrd) / lSteps);
-        yuri_9624 += (float)((xrd) / lSteps);
+        yRot += (float)((yrd) / lSteps);
+        xRot += (float)((xrd) / lSteps);
 
         lSteps--;
-        yuri_8782(xt, yt, zt);
-        yuri_8829(yuri_9628, yuri_9624);
+        setPos(xt, yt, zt);
+        setRot(yRot, xRot);
 
         // yuri - wlw i love yuri blushing girls yuri yuri yuri hand holding snuggle my girlfriend yuri yuri
         // canon yuri lesbian kiss blushing girls my girlfriend, yuri yuri yuri yuri cute girls i love girls snuggle kissing girls
@@ -1532,21 +1532,21 @@ void yuri_1793::yuri_3704() {
         // i love yuri i love girls i love lesbian blushing girls: yuri.yuri(yuri / yuri.girl love, yuri, yuri / yuri.scissors)
         // my wife girl love snuggle yuri i love amy is the best kissing girls hand holding kissing girls FUCKING KISS ALREADY yuri lesbian yuri i love yuri yuri
         // yuri lesbian canon hand holding i love i love, yuri my wife snuggle yuri.
-        yuri_0 shrinkbb = yuri_3799.yuri_9038(0.1, 0, 0.1);
-        shrinkbb.yuri_9627 = shrinkbb.yuri_9626 + 0.1;
-        std::vector<yuri_0>* collisions =
-            yuri_7194->yuri_5070(yuri_8996(), &shrinkbb);
-        if (collisions->yuri_9050() > 0) {
+        AABB shrinkbb = bb.shrink(0.1, 0, 0.1);
+        shrinkbb.y1 = shrinkbb.y0 + 0.1;
+        std::vector<AABB>* collisions =
+            level->getCubes(shared_from_this(), &shrinkbb);
+        if (collisions->size() > 0) {
             double yTop = 0;
-            auto itEnd = collisions->yuri_4502();
-            for (auto yuri_7136 = collisions->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-                if (yuri_7136->yuri_9627 > yTop) yTop = yuri_7136->yuri_9627;
+            auto itEnd = collisions->end();
+            for (auto it = collisions->begin(); it != itEnd; it++) {
+                if (it->y1 > yTop) yTop = it->y1;
             }
 
-            yt += yTop - yuri_3799.yuri_9626;
-            yuri_8782(xt, yt, zt);
+            yt += yTop - bb.y0;
+            setPos(xt, yt, zt);
         }
-    } else if (!yuri_6850()) {
+    } else if (!isEffectiveAi()) {
         // yuri yuri blushing girls yuri, lesbian kiss i love girls lesbian yuri my girlfriend FUCKING KISS ALREADY
         // i love lesbian kiss
         xd *= .98;
@@ -1558,28 +1558,28 @@ void yuri_1793::yuri_3704() {
     if (abs(yd) < MIN_MOVEMENT_DISTANCE) yd = 0;
     if (abs(zd) < MIN_MOVEMENT_DISTANCE) zd = 0;
 
-    if (yuri_6909()) {
+    if (isImmobile()) {
         jumping = false;
         xxa = 0;
         yya = 0;
         yRotA = 0;
     } else {
-        if (yuri_6850()) {
-            if (yuri_9490()) {
-                yuri_7567();
+        if (isEffectiveAi()) {
+            if (useNewAi()) {
+                newServerAiStep();
             } else {
-                yuri_8431();
-                yHeadRot = yuri_9628;
+                serverAiStep();
+                yHeadRot = yRot;
             }
         }
     }
 
     if (jumping) {
-        if (yuri_6920() || yuri_6915()) {
+        if (isInWater() || isInLava()) {
             yd += 0.04f;
         } else if (onGround) {
             if (noJumpDelay == 0) {
-                yuri_7152();
+                jumpFromGround();
                 noJumpDelay = 10;
             }
         }
@@ -1591,167 +1591,167 @@ void yuri_1793::yuri_3704() {
     yya *= 0.98f;
     yRotA *= 0.9f;
 
-    if (!yuri_7194->yuri_6802) {
-        yuri_7952();
+    if (!level->isClientSide) {
+        pushEntities();
     }
 
-    yuri_9337(xxa, yya);
+    travel(xxa, yya);
 }
 
-void yuri_1793::yuri_7567() {}
+void LivingEntity::newServerAiStep() {}
 
-void yuri_1793::yuri_7952() {
-    yuri_0 grown = yuri_3799.yuri_6407(0.2, 0, 0.2);
-    std::vector<std::shared_ptr<yuri_739>>* yuri_4516 =
-        yuri_7194->yuri_5211(yuri_8996(), &grown);
-    if (yuri_4516 != nullptr && !yuri_4516->yuri_4477()) {
-        auto itEnd = yuri_4516->yuri_4502();
-        for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-            std::shared_ptr<yuri_739> e = *yuri_7136;  // canon->yuri(FUCKING KISS ALREADY);
-            if (e and !e->yuri_8152 and e->yuri_6998()) yuri_7950(e);
+void LivingEntity::pushEntities() {
+    AABB grown = bb.grow(0.2, 0, 0.2);
+    std::vector<std::shared_ptr<Entity>>* entities =
+        level->getEntities(shared_from_this(), &grown);
+    if (entities != nullptr && !entities->empty()) {
+        auto itEnd = entities->end();
+        for (auto it = entities->begin(); it != itEnd; it++) {
+            std::shared_ptr<Entity> e = *it;  // canon->yuri(FUCKING KISS ALREADY);
+            if (e and !e->removed and e->isPushable()) push(e);
         }
     }
 }
 
-void yuri_1793::yuri_4413(std::shared_ptr<yuri_739> e) {
-    e->yuri_7950(yuri_8996());
+void LivingEntity::doPush(std::shared_ptr<Entity> e) {
+    e->push(shared_from_this());
 }
 
-void yuri_1793::yuri_8314() {
-    yuri_739::yuri_8314();
-    oRun = yuri_8326;
-    yuri_8326 = 0;
+void LivingEntity::rideTick() {
+    Entity::rideTick();
+    oRun = run;
+    run = 0;
     fallDistance = 0;
 }
 
-void yuri_1793::yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
-                          int yuri_9129) {
+void LivingEntity::lerpTo(double x, double y, double z, float yRot, float xRot,
+                          int steps) {
     heightOffset = 0;
-    lx = yuri_9621;
-    ly = yuri_9625;
-    lz = yuri_9630;
-    lyr = yuri_9628;
-    lxr = yuri_9624;
+    lx = x;
+    ly = y;
+    lz = z;
+    lyr = yRot;
+    lxr = xRot;
 
-    lSteps = yuri_9129;
+    lSteps = steps;
 }
 
-void yuri_1793::yuri_8430() {}
+void LivingEntity::serverAiMobStep() {}
 
-void yuri_1793::yuri_8431() { noActionTime++; }
+void LivingEntity::serverAiStep() { noActionTime++; }
 
-void yuri_1793::yuri_8690(bool yuri_7151) { jumping = yuri_7151; }
+void LivingEntity::setJumping(bool jump) { jumping = jump; }
 
-void yuri_1793::yuri_9180(std::shared_ptr<yuri_739> e, int orgCount) {
-    if (!e->yuri_8152 && !yuri_7194->yuri_6802) {
-        yuri_749* entityTracker = ((yuri_2544*)yuri_7194)->yuri_6055();
-        if (e->yuri_6731(eTYPE_ITEMENTITY)) {
-            entityTracker->yuri_3849(
-                e, std::shared_ptr<yuri_3015>(
-                       new yuri_3015(e->entityId, entityId)));
-        } else if (e->yuri_6731(eTYPE_ARROW)) {
-            entityTracker->yuri_3849(
-                e, std::shared_ptr<yuri_3015>(
-                       new yuri_3015(e->entityId, entityId)));
-        } else if (e->yuri_6731(eTYPE_EXPERIENCEORB)) {
-            entityTracker->yuri_3849(
-                e, std::shared_ptr<yuri_3015>(
-                       new yuri_3015(e->entityId, entityId)));
+void LivingEntity::take(std::shared_ptr<Entity> e, int orgCount) {
+    if (!e->removed && !level->isClientSide) {
+        EntityTracker* entityTracker = ((ServerLevel*)level)->getTracker();
+        if (e->instanceof(eTYPE_ITEMENTITY)) {
+            entityTracker->broadcast(
+                e, std::shared_ptr<TakeItemEntityPacket>(
+                       new TakeItemEntityPacket(e->entityId, entityId)));
+        } else if (e->instanceof(eTYPE_ARROW)) {
+            entityTracker->broadcast(
+                e, std::shared_ptr<TakeItemEntityPacket>(
+                       new TakeItemEntityPacket(e->entityId, entityId)));
+        } else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
+            entityTracker->broadcast(
+                e, std::shared_ptr<TakeItemEntityPacket>(
+                       new TakeItemEntityPacket(e->entityId, entityId)));
         }
     }
 }
 
-bool yuri_1793::yuri_3953(std::shared_ptr<yuri_739> target) {
-    yuri_3322 yuri_3565{yuri_9621, yuri_9625 + yuri_5344(), yuri_9630};
-    yuri_3322 yuri_3775{target->yuri_9621, target->yuri_9625 + target->yuri_5344(), target->yuri_9630};
+bool LivingEntity::canSee(std::shared_ptr<Entity> target) {
+    Vec3 a{x, y + getHeadHeight(), z};
+    Vec3 b{target->x, target->y + target->getHeadHeight(), target->z};
 
-    yuri_1278* hres = yuri_7194->yuri_4086(&yuri_3565, &yuri_3775);
+    HitResult* hres = level->clip(&a, &b);
     bool retVal = (hres == nullptr);
     delete hres;
     return retVal;
 }
 
-std::optional<yuri_3322> yuri_1793::yuri_5501() { return yuri_6112(1); }
+std::optional<Vec3> LivingEntity::getLookAngle() { return getViewVector(1); }
 
-yuri_3322 yuri_1793::yuri_6112(float yuri_3565) {
-    if (yuri_3565 == 1) {
-        float yCos = yuri_4182(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
-        float ySin = yuri_9049(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
-        float xCos = -yuri_4182(-yuri_9624 * Mth::DEG_TO_RAD);
-        float xSin = yuri_9049(-yuri_9624 * Mth::DEG_TO_RAD);
+Vec3 LivingEntity::getViewVector(float a) {
+    if (a == 1) {
+        float yCos = cosf(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
+        float ySin = sinf(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
+        float xCos = -cosf(-xRot * Mth::DEG_TO_RAD);
+        float xSin = sinf(-xRot * Mth::DEG_TO_RAD);
 
-        return yuri_3322(ySin * xCos, xSin, yCos * xCos);
+        return Vec3(ySin * xCos, xSin, yCos * xCos);
     }
-    float yuri_9624 = xRotO + (this->yuri_9624 - xRotO) * yuri_3565;
-    float yuri_9628 = yRotO + (this->yuri_9628 - yRotO) * yuri_3565;
+    float xRot = xRotO + (this->xRot - xRotO) * a;
+    float yRot = yRotO + (this->yRot - yRotO) * a;
 
-    float yCos = yuri_4182(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
-    float ySin = yuri_9049(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
-    float xCos = -yuri_4182(-yuri_9624 * Mth::DEG_TO_RAD);
-    float xSin = yuri_9049(-yuri_9624 * Mth::DEG_TO_RAD);
+    float yCos = cosf(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
+    float ySin = sinf(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
+    float xCos = -cosf(-xRot * Mth::DEG_TO_RAD);
+    float xSin = sinf(-xRot * Mth::DEG_TO_RAD);
 
-    return yuri_3322(ySin * xCos, xSin, yCos * xCos);
+    return Vec3(ySin * xCos, xSin, yCos * xCos);
 }
 
-float yuri_1793::yuri_4908(float yuri_3565) {
+float LivingEntity::getAttackAnim(float a) {
     float diff = attackAnim - oAttackAnim;
     if (diff < 0) diff += 1;
-    return oAttackAnim + diff * yuri_3565;
+    return oAttackAnim + diff * a;
 }
 
-yuri_3322 yuri_1793::yuri_5739(float yuri_3565) {
-    if (yuri_3565 == 1) {
-        return yuri_3322(yuri_9621, yuri_9625, yuri_9630);
+Vec3 LivingEntity::getPos(float a) {
+    if (a == 1) {
+        return Vec3(x, y, z);
     }
-    double yuri_9621 = xo + (this->yuri_9621 - xo) * yuri_3565;
-    double yuri_9625 = yo + (this->yuri_9625 - yo) * yuri_3565;
-    double yuri_9630 = zo + (this->yuri_9630 - zo) * yuri_3565;
+    double x = xo + (this->x - xo) * a;
+    double y = yo + (this->y - yo) * a;
+    double z = zo + (this->z - zo) * a;
 
-    return yuri_3322(yuri_9621, yuri_9625, yuri_9630);
+    return Vec3(x, y, z);
 }
 
-yuri_1278* yuri_1793::yuri_7811(double range, float yuri_3565) {
-    yuri_3322 yuri_4683 = yuri_5739(yuri_3565);
-    yuri_3322 yuri_3775 = yuri_6112(yuri_3565);
-    yuri_3322 yuri_9308{yuri_3775.yuri_9621 * range, yuri_3775.yuri_9625 * range, yuri_3775.yuri_9630 * range};
-    yuri_9308 = yuri_9308.yuri_3580(yuri_4683.yuri_9621, yuri_4683.yuri_9625, yuri_4683.yuri_9630);
-    return yuri_7194->yuri_4086(&yuri_4683, &yuri_9308);
+HitResult* LivingEntity::pick(double range, float a) {
+    Vec3 from = getPos(a);
+    Vec3 b = getViewVector(a);
+    Vec3 to{b.x * range, b.y * range, b.z * range};
+    to = to.add(from.x, from.y, from.z);
+    return level->clip(&from, &to);
 }
 
-bool yuri_1793::yuri_6850() { return !yuri_7194->yuri_6802; }
+bool LivingEntity::isEffectiveAi() { return !level->isClientSide; }
 
-bool yuri_1793::yuri_6988() { return !yuri_8152; }
+bool LivingEntity::isPickable() { return !removed; }
 
-bool yuri_1793::yuri_6998() { return !yuri_8152; }
+bool LivingEntity::isPushable() { return !removed; }
 
-float yuri_1793::yuri_5344() { return bbHeight * 0.85f; }
+float LivingEntity::getHeadHeight() { return bbHeight * 0.85f; }
 
-void yuri_1793::yuri_7449() {
+void LivingEntity::markHurt() {
     hurtMarked =
-        yuri_7981->yuri_7575() >=
-        yuri_4914(SharedMonsterAttributes::KNOCKBACK_RESISTANCE)->yuri_6101();
+        random->nextDouble() >=
+        getAttribute(SharedMonsterAttributes::KNOCKBACK_RESISTANCE)->getValue();
 }
 
-float yuri_1793::yuri_6167() { return yHeadRot; }
+float LivingEntity::getYHeadRot() { return yHeadRot; }
 
-void yuri_1793::yuri_8965(float yHeadRot) { this->yHeadRot = yHeadRot; }
+void LivingEntity::setYHeadRot(float yHeadRot) { this->yHeadRot = yHeadRot; }
 
-float yuri_1793::yuri_4857() { return absorptionAmount; }
+float LivingEntity::getAbsorptionAmount() { return absorptionAmount; }
 
-void yuri_1793::yuri_8437(float absorptionAmount) {
+void LivingEntity::setAbsorptionAmount(float absorptionAmount) {
     if (absorptionAmount < 0) absorptionAmount = 0;
     this->absorptionAmount = absorptionAmount;
 }
 
-Team* yuri_1793::yuri_5998() { return nullptr; }
+Team* LivingEntity::getTeam() { return nullptr; }
 
-bool yuri_1793::yuri_6756(std::shared_ptr<yuri_1793> other) {
-    return yuri_6756(other->yuri_5998());
+bool LivingEntity::isAlliedTo(std::shared_ptr<LivingEntity> other) {
+    return isAlliedTo(other->getTeam());
 }
 
-bool yuri_1793::yuri_6756(Team* other) {
-    if (yuri_5998() != nullptr) {
-        return yuri_5998()->yuri_6756(other);
+bool LivingEntity::isAlliedTo(Team* other) {
+    if (getTeam() != nullptr) {
+        return getTeam()->isAlliedTo(other);
     }
     return false;
 }

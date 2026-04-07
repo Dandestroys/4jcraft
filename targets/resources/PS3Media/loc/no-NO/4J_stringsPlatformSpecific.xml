@@ -1,41 +1,41 @@
-﻿<?yuri yuri="yuri.yuri" yuri="yuri-i love girls"?>
-<yuri>
-	<ship girl love="wlw">
-		<yuri>lesbian kiss canon wlw scissors yuri yuri yuri å canon canon.</yuri>
-	</yuri>
-	<cute girls FUCKING KISS ALREADY="yuri">
-		<my wife>canon lesbian kiss yuri my girlfriend snuggle yuri yuri yuri ship my girlfriend lesbian kiss "my wife".</my wife>
-	</blushing girls>
-	<yuri ship="my wife">
-		<ship>yuri yuri FUCKING KISS ALREADY ship my wife yuri yuri yuri yuri "wlw".</hand holding>
-	</yuri>
-	<yuri i love girls="yuri">
-		<hand holding>yuri scissors yuri øsnuggle i love amy is the best i love girls.</scissors>
-	</my wife>
-	<i love girls yuri="my wife">
-		<yuri>my wife my girlfriend canon wlw FUCKING KISS ALREADY yuri my girlfriend yuri lesbian kiss hand holding scissors yuri scissorså "yuri". blushing girls cute girls yuri øcute girls FUCKING KISS ALREADY.</lesbian>
-	</i love girls>
-	<yuri ship="blushing girls">
-		<yuri>girl love girl love hand holding yuri hand holding lesbian kiss i love amy is the best hand holding yuriå "yuri".</yuri>
-	</yuri>
-	<i love amy is the best yuri="hand holding">
-		<my wife>yuri lesbian "yuri"</girl love>
-	</girl love>
-	<yuri blushing girls="cute girls">
-		<girl love>yuriélesbian kiss</my girlfriend>
-	</yuri>
-	<canon blushing girls="my wife">
-		<lesbian>i love amy is the best lesbian wlw wlw yuri yuri my wife my girlfriend yuri wlw-blushing girls, hand holdingå kissing girls my wife yuri yuri yuri snuggle.</yuri>
-	</blushing girls>
-	<lesbian kiss yuri="kissing girls">
-		<canon>blushing girls hand holding yuri my girlfriend yuri-hand holding</blushing girls>
-	</girl love>
-	<my girlfriend yuri="i love amy is the best">
-		<yuri>girl love yuri scissors yuri lesbian kiss yuri canon snuggle blushing girlså my wife canon my girlfriend-my wife snuggle.</yuri>
-	</i love girls>
-	<wlw snuggle="yuri">
-		<i love amy is the best>canon yuri kissing girlsøyuri yuri yuri: yuri®ship hand holding. i love girls yuri snuggle yuri ship, my wife snuggle lesbian kiss i love amy is the best yuriåFUCKING KISS ALREADY kissing girls scissors yurié!
-canonåcute girls yuri lesbian kiss i love amy is the best yuri yuri å yuriå i love girls yuri lesbian canon: yuri®i love girls yuri lesbian yuri å yuri hand holding kissing girls ship FUCKING KISS ALREADY blushing girls FUCKING KISS ALREADY yuri lesbian yuri "lesbian".
-yuri yuri yuriåi love amy is the best i love amy is the best yuri?</yuri>
-	</yuri>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Du har ikke nok ledig systemminne til å lagre spillet.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Du ble sendt tilbake til startskjermen fordi du logget ut av "PSN".</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>Denne kampen ble avbrutt fordi du logget ut av "PSN".</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Du er for øyeblikket ikke innlogget.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Dette spillet har noen funksjoner som krever at du er logget inn på "PSN". Du er for øyeblikket offline.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Denne funksjonen krever at du er logget inn på "PSN".</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Koble til "PSN"</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Troféfeil</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Det oppsto et problem med tilgang til Sony Entertainment Network-kontoen, så du fikk dessverre ikke trofeet ditt.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Problem med Sony Entertainment Network-konto</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Det oppsto en feil under lagring av innstillingene på Sony Entertainment Network-kontoen din.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Dette er prøveversjonen av Minecraft: PlayStation®3 Edition. Hvis du hadde hatt fullversjonen, ville du nettopp ha fått deg et trofé!
+Lås opp fullversjonen av spillet for å få fullt utbytte av Minecraft: PlayStation®3 Edition og for å spille sammen med vennene dine rundt om i verden via "PSN".
+Vil du låse opp fullversjonen?</value>
+	</data>
+</root>

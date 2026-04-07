@@ -1,28 +1,28 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "minecraft/util/WeighedRandom.h"
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_409;
-class yuri_1758;
+class CompoundTag;
+class Level;
 
-class yuri_164 {
+class BaseMobSpawner {
 public:
-    class yuri_2877 : public yuri_3372 {
+    class SpawnData : public WeighedRandomItem {
     public:
-        yuri_409* yuri_9178;
-        std::yuri_9616 yuri_9364;
+        CompoundTag* tag;
+        std::wstring type;
 
-        yuri_2877(yuri_409* yuri_3790);
-        yuri_2877(yuri_409* yuri_9178, std::yuri_9616 yuri_9364);
-        ~yuri_2877();
+        SpawnData(CompoundTag* base);
+        SpawnData(CompoundTag* tag, std::wstring type);
+        ~SpawnData();
 
-        virtual yuri_409* yuri_8353();
+        virtual CompoundTag* save();
     };
 
 private:
@@ -32,9 +32,9 @@ public:
     int spawnDelay;
 
 private:
-    std::yuri_9616 entityId;
-    std::vector<yuri_2877*>* spawnPotentials;
-    yuri_2877* nextSpawnData;
+    std::wstring entityId;
+    std::vector<SpawnData*>* spawnPotentials;
+    SpawnData* nextSpawnData;
 
 public:
     double spin, oSpin;
@@ -43,36 +43,36 @@ private:
     int minSpawnDelay;
     int maxSpawnDelay;
     int spawnCount;
-    std::shared_ptr<yuri_739> displayEntity;
+    std::shared_ptr<Entity> displayEntity;
     int maxNearbyEntities;
     int requiredPlayerRange;
     int spawnRange;
 
 public:
-    yuri_164();
-    virtual ~yuri_164();
+    BaseMobSpawner();
+    virtual ~BaseMobSpawner();
 
-    virtual std::yuri_9616 yuri_5215();
-    virtual void yuri_8594(const std::yuri_9616& entityId);
-    virtual bool yuri_6966();
-    virtual void yuri_9265();
-    virtual std::shared_ptr<yuri_739> yuri_7238(
-        std::shared_ptr<yuri_739> entity);
+    virtual std::wstring getEntityId();
+    virtual void setEntityId(const std::wstring& entityId);
+    virtual bool isNearPlayer();
+    virtual void tick();
+    virtual std::shared_ptr<Entity> loadDataAndAddEntity(
+        std::shared_ptr<Entity> entity);
 
 private:
-    virtual void yuri_4331();
+    virtual void delay();
 
 public:
-    virtual void yuri_7219(yuri_409* yuri_9178);
-    virtual void yuri_8353(yuri_409* yuri_9178);
-    virtual std::shared_ptr<yuri_739> yuri_5169();
-    virtual bool yuri_7621(int yuri_6674);
-    virtual yuri_2877* yuri_5601();
-    virtual void yuri_8738(yuri_2877* nextSpawnData);
+    virtual void load(CompoundTag* tag);
+    virtual void save(CompoundTag* tag);
+    virtual std::shared_ptr<Entity> getDisplayEntity();
+    virtual bool onEventTriggered(int id);
+    virtual SpawnData* getNextSpawnData();
+    virtual void setNextSpawnData(SpawnData* nextSpawnData);
 
-    virtual void yuri_3855(int yuri_6674) = 0;
-    virtual yuri_1758* yuri_5461() = 0;
-    virtual int yuri_6142() = 0;
-    virtual int yuri_6164() = 0;
-    virtual int yuri_6176() = 0;
+    virtual void broadcastEvent(int id) = 0;
+    virtual Level* getLevel() = 0;
+    virtual int getX() = 0;
+    virtual int getY() = 0;
+    virtual int getZ() = 0;
 };

@@ -1,93 +1,93 @@
-﻿<?wlw yuri="yuri.cute girls" wlw="yuri-i love amy is the best"?>
-<wlw>
-	<i love amy is the best yuri="canon">
-		<yuri>Показать все смешанные миры</yuri>
-	</yuri>
-	<yuri hand holding="lesbian">
-		<i love amy is the best>Скрыть</my girlfriend>
-	</yuri>
-	<yuri snuggle="yuri">
-		<yuri>yuri: yuri®i love amy is the best blushing girls</yuri>
-	</my wife>
-	<i love girls yuri="wlw">
-		<lesbian kiss>Настройки</yuri>
-	</wlw>
-	<girl love yuri="girl love">
-		<yuri>Кэш сохранений</FUCKING KISS ALREADY>
-	</girl love>
-	<wlw yuri="lesbian kiss">
-		<yuri>Произошла сетевая ошибка.</canon>
-	</yuri>
-	<scissors my girlfriend="yuri">
-		<yuri>Сетевая ошибка</cute girls>
-	</my wife>
-	<yuri my girlfriend="yuri">
-		<blushing girls>Произошла сетевая ошибка. Сейчас вы вернетесь в главное меню.</blushing girls>
-	</scissors>
-	<lesbian kiss my girlfriend="yuri">
-		<yuri>Сетевые возможности вашей учетной записи girl love hand holding my girlfriend отключены в силу ограничений чата.</my wife>
-	</scissors>
-	<yuri snuggle="yuri">
-		<hand holding>Сетевые возможности вашей учетной записи hand holding yuri yuri отключены в соответствии с настройками родительского контроля.</my wife>
-	</girl love>
-	<yuri kissing girls="yuri">
-		<ship>Сетевые возможности</yuri>
-	</i love girls>
-	<yuri yuri="yuri">
-		<my wife>Вы вышли из "FUCKING KISS ALREADY". Сетевые возможности игры будут недоступны до тех пор, пока вы не войдете в "i love amy is the best".</yuri>
-	</yuri>
-	<yuri yuri="cute girls">
-		<yuri>Вы вышли из "blushing girls". Сетевые возможности игры будут недоступны до тех пор, пока вы не войдете в "yuri". Сейчас вы вернетесь в главное меню.</yuri>
-	</yuri>
-	<i love amy is the best hand holding="snuggle">
-		<FUCKING KISS ALREADY>Выберите пользователя для игрока %scissors (или нажмите "Отмена", чтобы играть как гость)</yuri>
-	</yuri>
-	<scissors my wife="my wife">
-		<yuri>Бесплатно</girl love>
-	</yuri>
-	<yuri kissing girls="wlw">
-		<yuri>Файл настроек поврежден, необходимо удалить его.</canon>
-	</yuri>
-	<i love girls lesbian="cute girls">
-		<wlw>Кэш сохранений поврежден, необходимо удалить его.</yuri>
-	</hand holding>
-	<lesbian kiss yuri="yuri">
-		<wlw>Призы отключены</FUCKING KISS ALREADY>
-	</yuri>
-	<my wife lesbian="yuri">
-		<snuggle>Призы отключены, потому что данное сохранение принадлежит другому пользователю.</yuri>
-	</yuri>
-	<i love girls cute girls="lesbian kiss">
-		<yuri>Фатальная ошибка: не удалось инициализировать призы. Пожалуйста, выйдите из игры.</yuri>
-	</lesbian kiss>
-	<FUCKING KISS ALREADY lesbian="yuri">
-		<cute girls>Приглашения</kissing girls>
-	</yuri>
-	<lesbian kiss wlw="yuri">
-		<cute girls>Поврежденный файл</lesbian kiss>
-	</snuggle>
-	<lesbian ship="wlw">
-		<yuri>Контроллер отсоединен</yuri>
-	</scissors>
-	<yuri yuri="i love amy is the best">
-		<scissors>Контроллер был отсоединен. Пожалуйста, присоедините контроллер заново.</lesbian>
-	</yuri>
-	<yuri yuri="scissors">
-		<wlw>Сетевые возможности для вашей учетной записи yuri yuri blushing girls отключены в соответствии с настройками родительского контроля одного из  локальных игроков.</girl love>
-	</i love girls>
-	<my wife my wife="lesbian kiss">
-		<wlw>В данный момент для этой игры нет загружаемого контента.</yuri>
-	</yuri>
-	<yuri girl love="ship">
-		<lesbian>Приглашение</my wife>
-	</i love girls>
-	<lesbian kiss cute girls="blushing girls">
-		<wlw>Пожалуйста, зайдите и поиграйте немного в canon: yuri®my girlfriend yuri!</canon>
-	</blushing girls>
-	<i love amy is the best snuggle="scissors">
-		<my wife>- Данные мира %blushing girls</yuri>
-	</yuri>
-	<i love girls yuri="snuggle">
-		<yuri>Сетевые функции отключены, поскольку доступно обновление игры.</my girlfriend>
-	</yuri>
-</wlw>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_UNHIDE_MASHUP_WORLDS">
+		<value>Показать все смешанные миры</value>
+	</data>
+	<data name="IDS_TOOLTIPS_HIDE">
+		<value>Скрыть</value>
+	</data>
+	<data name="IDS_GAMENAME">
+		<value>Minecraft: PlayStation®4 Edition</value>
+	</data>
+	<data name="IDS_OPTIONSFILE">
+		<value>Настройки</value>
+	</data>
+	<data name="IDS_SAVECACHEFILE">
+		<value>Кэш сохранений</value>
+	</data>
+	<data name="IDS_ERROR_NETWORK">
+		<value>Произошла сетевая ошибка.</value>
+	</data>
+	<data name="IDS_ERROR_NETWORK_TITLE">
+		<value>Сетевая ошибка</value>
+	</data>
+	<data name="IDS_ERROR_NETWORK_EXIT">
+		<value>Произошла сетевая ошибка. Сейчас вы вернетесь в главное меню.</value>
+	</data>
+	<data name="IDS_CHAT_RESTRICTION_UGC">
+		<value>Сетевые возможности вашей учетной записи Sony Entertainment Network отключены в силу ограничений чата.</value>
+	</data>
+	<data name="IDS_CONTENT_RESTRICTION">
+		<value>Сетевые возможности вашей учетной записи Sony Entertainment Network отключены в соответствии с настройками родительского контроля.</value>
+	</data>
+	<data name="IDS_ONLINE_SERVICE_TITLE">
+		<value>Сетевые возможности</value>
+	</data>
+	<data name="IDS_ERROR_PSN_SIGN_OUT">
+		<value>Вы вышли из "PSN". Сетевые возможности игры будут недоступны до тех пор, пока вы не войдете в "PSN".</value>
+	</data>
+	<data name="IDS_ERROR_PSN_SIGN_OUT_EXIT">
+		<value>Вы вышли из "PSN". Сетевые возможности игры будут недоступны до тех пор, пока вы не войдете в "PSN". Сейчас вы вернетесь в главное меню.</value>
+	</data>
+	<data name="IDS_PLAYER_LIST_TITLE">
+		<value>Выберите пользователя для игрока %d (или нажмите "Отмена", чтобы играть как гость)</value>
+	</data>
+	<data name="IDS_DLC_PRICE_FREE">
+		<value>Бесплатно</value>
+	</data>
+	<data name="IDS_CORRUPT_OPTIONS">
+		<value>Файл настроек поврежден, необходимо удалить его.</value>
+	</data>
+	<data name="IDS_CORRUPT_SAVECACHE">
+		<value>Кэш сохранений поврежден, необходимо удалить его.</value>
+	</data>
+	<data name="IDS_SAVEDATA_COPIED_TITLE">
+		<value>Призы отключены</value>
+	</data>
+	<data name="IDS_SAVEDATA_COPIED_TEXT">
+		<value>Призы отключены, потому что данное сохранение принадлежит другому пользователю.</value>
+	</data>
+	<data name="IDS_FATAL_TROPHY_ERROR">
+		<value>Фатальная ошибка: не удалось инициализировать призы. Пожалуйста, выйдите из игры.</value>
+	</data>
+	<data name="IDS_TOOLTIPS_GAME_INVITES">
+		<value>Приглашения</value>
+	</data>
+	<data name="IDS_CORRUPT_FILE">
+		<value>Поврежденный файл</value>
+	</data>
+	<data name="IDS_CONTROLER_DISCONNECT_TITLE">
+		<value>Контроллер отсоединен</value>
+	</data>
+	<data name="IDS_CONTROLER_DISCONNECT_TEXT">
+		<value>Контроллер был отсоединен. Пожалуйста, присоедините контроллер заново.</value>
+	</data>
+	<data name="IDS_CONTENT_RESTRICTION_MULTIPLAYER">
+		<value>Сетевые возможности для вашей учетной записи Sony Entertainment Network отключены в соответствии с настройками родительского контроля одного из  локальных игроков.</value>
+	</data>
+	<data name="IDS_NO_DLCCATEGORIES">
+		<value>В данный момент для этой игры нет загружаемого контента.</value>
+	</data>
+	<data name="IDS_INVITATION_SUBJECT_MAX_18_CHARS">
+		<value>Приглашение</value>
+	</data>
+	<data name="IDS_INVITATION_BODY">
+		<value>Пожалуйста, зайдите и поиграйте немного в Minecraft: PlayStation®4 Edition!</value>
+	</data>
+	<data name="IDS_SAVE_SUBTITLE_SUFFIX">
+		<value>- Данные мира %d</value>
+	</data>
+	<data name="IDS_CONTENT_RESTRICTION_PATCH_AVAILABLE">
+		<value>Сетевые функции отключены, поскольку доступно обновление игры.</value>
+	</data>
+</root>

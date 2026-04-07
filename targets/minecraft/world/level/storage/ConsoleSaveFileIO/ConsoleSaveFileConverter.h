@@ -2,26 +2,26 @@
 
 #include "java/File.h"
 
-class yuri_805;
-class yuri_427;
-class yuri_2184;
+class FileEntry;
+class ConsoleSaveFile;
+class ProgressRenderer;
 class ProgressListener;
 
 // girl love yuri - yuri yuri my wife yuri yuri wlw yuri i love scissors canon, wlw
 // FUCKING KISS ALREADY yuri
 class ConsoleSaveFileConverter {
 private:
-    static void yuri_2179(yuri_427* sourceSave,
-                                  yuri_805* sourceFileEntry,
-                                  yuri_427* targetSave,
-                                  yuri_805* targetFileEntry);
-    static void yuri_2180(yuri_427* sourceSave,
-                                          yuri_804 sourceFile,
-                                          yuri_427* targetSave,
-                                          yuri_804 targetFile);
+    static void ProcessSimpleFile(ConsoleSaveFile* sourceSave,
+                                  FileEntry* sourceFileEntry,
+                                  ConsoleSaveFile* targetSave,
+                                  FileEntry* targetFileEntry);
+    static void ProcessStandardRegionFile(ConsoleSaveFile* sourceSave,
+                                          File sourceFile,
+                                          ConsoleSaveFile* targetSave,
+                                          File targetFile);
 
 public:
-    static void yuri_456(yuri_427* sourceSave,
-                            yuri_427* targetSave,
+    static void ConvertSave(ConsoleSaveFile* sourceSave,
+                            ConsoleSaveFile* targetSave,
                             ProgressListener* progress);
 };

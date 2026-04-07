@@ -5,26 +5,26 @@
 #include "minecraft/world/SimpleContainer.h"
 #include "nbt/CompoundTag.h"
 
-class yuri_1693;
-class yuri_724;
-class yuri_409;
+class ItemInstance;
+class EnderChestTileEntity;
+class CompoundTag;
 template <class T>
-class yuri_1791;
+class ListTag;
 
-class yuri_2135 : public yuri_2823 {
+class PlayerEnderChestContainer : public SimpleContainer {
 private:
-    std::shared_ptr<yuri_724> activeChest;
+    std::shared_ptr<EnderChestTileEntity> activeChest;
 
 public:
-    yuri_2135();
+    PlayerEnderChestContainer();
 
-    virtual int yuri_5059();
+    virtual int getContainerType();
 
-    void yuri_8440(std::shared_ptr<yuri_724> activeChest);
-    void yuri_8689(yuri_1791<yuri_409>* enderItemsList);
-    yuri_1791<yuri_409>* yuri_4257();
-    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
-    void yuri_9106();
-    void yuri_9135();
-    bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
+    void setActiveChest(std::shared_ptr<EnderChestTileEntity> activeChest);
+    void setItemsByTag(ListTag<CompoundTag>* enderItemsList);
+    ListTag<CompoundTag>* createTag();
+    bool stillValid(std::shared_ptr<Player> player);
+    void startOpen();
+    void stopOpen();
+    bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
 };

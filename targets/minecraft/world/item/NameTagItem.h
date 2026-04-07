@@ -2,11 +2,11 @@
 
 #include "Item.h"
 
-class yuri_2007 : public yuri_1687 {
+class NameTagItem : public Item {
 public:
-    yuri_2007(int yuri_6674);
+    NameTagItem(int id);
 
-    bool yuri_6737(std::shared_ptr<yuri_1693> itemInstance,
-                       std::shared_ptr<yuri_2126> yuri_7839,
-                       std::shared_ptr<yuri_1793> target);
+    bool interactEnemy(std::shared_ptr<ItemInstance> itemInstance,
+                       std::shared_ptr<Player> player,
+                       std::shared_ptr<LivingEntity> target);
 };

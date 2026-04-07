@@ -9,81 +9,81 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-void yuri_1730::yuri_3670(yuri_6733 yuri_8396, int xOffs, int zOffs,
-                               std::vector<yuri_9368>& blocks, double xRoom,
+void LargeCaveFeature::addRoom(int64_t seed, int xOffs, int zOffs,
+                               std::vector<uint8_t>& blocks, double xRoom,
                                double yRoom, double zRoom) {
-    yuri_3692(yuri_8396, xOffs, zOffs, blocks, xRoom, yRoom, zRoom,
-              1 + yuri_7981->yuri_7576() * 6, 0, 0, -1, -1, 0.5);
+    addTunnel(seed, xOffs, zOffs, blocks, xRoom, yRoom, zRoom,
+              1 + random->nextFloat() * 6, 0, 0, -1, -1, 0.5);
 }
 
-void yuri_1730::yuri_3692(yuri_6733 yuri_8396, int xOffs, int zOffs,
-                                 std::vector<yuri_9368>& blocks, double xCave,
+void LargeCaveFeature::addTunnel(int64_t seed, int xOffs, int zOffs,
+                                 std::vector<uint8_t>& blocks, double xCave,
                                  double yCave, double zCave, float thickness,
-                                 float yuri_9628, float yuri_9624, int step, int yuri_4382,
+                                 float yRot, float xRot, int step, int dist,
                                  double yScale) {
     double xMid = xOffs * 16 + 8;
     double zMid = zOffs * 16 + 8;
 
     float yRota = 0;
     float xRota = 0;
-    yuri_2302 yuri_7981 = yuri_2302(yuri_8396);
+    Random random = Random(seed);
 
-    if (yuri_4382 <= 0) {
-        int yuri_7459 = radius * 16 - 16;
-        yuri_4382 = yuri_7459 - yuri_7981.yuri_7578(yuri_7459 / 4);
+    if (dist <= 0) {
+        int max = radius * 16 - 16;
+        dist = max - random.nextInt(max / 4);
     }
     bool singleStep = false;
 
     if (step == -1) {
-        step = yuri_4382 / 2;
+        step = dist / 2;
         singleStep = true;
     }
 
-    int splitPoint = yuri_7981.yuri_7578(yuri_4382 / 2) + yuri_4382 / 4;
-    bool steep = yuri_7981.yuri_7578(6) == 0;
+    int splitPoint = random.nextInt(dist / 2) + dist / 4;
+    bool steep = random.nextInt(6) == 0;
 
-    for (; step < yuri_4382; step++) {
+    for (; step < dist; step++) {
         double rad =
-            1.5 + (Mth::sin(step * std::numbers::pi / yuri_4382) * thickness) * 1;
+            1.5 + (Mth::sin(step * std::numbers::pi / dist) * thickness) * 1;
         double yRad = rad * yScale;
 
-        float xc = Mth::cos(yuri_9624);
-        float xs = Mth::sin(yuri_9624);
-        xCave += Mth::cos(yuri_9628) * xc;
+        float xc = Mth::cos(xRot);
+        float xs = Mth::sin(xRot);
+        xCave += Mth::cos(yRot) * xc;
         yCave += xs;
-        zCave += Mth::sin(yuri_9628) * xc;
+        zCave += Mth::sin(yRot) * xc;
 
         if (steep) {
-            yuri_9624 *= 0.92f;
+            xRot *= 0.92f;
         } else {
-            yuri_9624 *= 0.7f;
+            xRot *= 0.7f;
         }
-        yuri_9624 += xRota * 0.1f;
-        yuri_9628 += yRota * 0.1f;
+        xRot += xRota * 0.1f;
+        yRot += yRota * 0.1f;
 
         xRota *= 0.90f;
         yRota *= 0.75f;
         xRota +=
-            (yuri_7981.yuri_7576() - yuri_7981.yuri_7576()) * yuri_7981.yuri_7576() * 2;
+            (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 2;
         yRota +=
-            (yuri_7981.yuri_7576() - yuri_7981.yuri_7576()) * yuri_7981.yuri_7576() * 4;
+            (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 4;
 
-        if (!singleStep && step == splitPoint && thickness > 1 && yuri_4382 > 0) {
-            yuri_3692(yuri_7981.yuri_7579(), xOffs, zOffs, blocks, xCave, yCave,
-                      zCave, yuri_7981.yuri_7576() * 0.5f + 0.5f,
-                      yuri_9628 - std::numbers::pi / 2, yuri_9624 / 3, step, yuri_4382, 1.0);
-            yuri_3692(yuri_7981.yuri_7579(), xOffs, zOffs, blocks, xCave, yCave,
-                      zCave, yuri_7981.yuri_7576() * 0.5f + 0.5f,
-                      yuri_9628 + std::numbers::pi / 2, yuri_9624 / 3, step, yuri_4382, 1.0);
+        if (!singleStep && step == splitPoint && thickness > 1 && dist > 0) {
+            addTunnel(random.nextLong(), xOffs, zOffs, blocks, xCave, yCave,
+                      zCave, random.nextFloat() * 0.5f + 0.5f,
+                      yRot - std::numbers::pi / 2, xRot / 3, step, dist, 1.0);
+            addTunnel(random.nextLong(), xOffs, zOffs, blocks, xCave, yCave,
+                      zCave, random.nextFloat() * 0.5f + 0.5f,
+                      yRot + std::numbers::pi / 2, xRot / 3, step, dist, 1.0);
             return;
         }
-        if (!singleStep && yuri_7981.yuri_7578(4) == 0) continue;
+        if (!singleStep && random.nextInt(4) == 0) continue;
         {
             double xd = xCave - xMid;
             double zd = zCave - zMid;
-            double yuri_8095 = yuri_4382 - step;
+            double remaining = dist - step;
             double rr = (thickness + 2) + 16;
-            if (xd * xd + zd * zd - (yuri_8095 * yuri_8095) > rr * rr) {
+            if (xd * xd + zd * zd - (remaining * remaining) > rr * rr) {
                 return;
             }
         }
@@ -92,73 +92,73 @@ void yuri_1730::yuri_3692(yuri_6733 yuri_8396, int xOffs, int zOffs,
             xCave > xMid + 16 + rad * 2 || zCave > zMid + 16 + rad * 2)
             continue;
 
-        int yuri_9622 = Mth::yuri_4644(xCave - rad) - xOffs * 16 - 1;
-        int yuri_9623 = Mth::yuri_4644(xCave + rad) - xOffs * 16 + 1;
+        int x0 = Mth::floor(xCave - rad) - xOffs * 16 - 1;
+        int x1 = Mth::floor(xCave + rad) - xOffs * 16 + 1;
 
-        int yuri_9626 = Mth::yuri_4644(yCave - yRad) - 1;
-        int yuri_9627 = Mth::yuri_4644(yCave + yRad) + 1;
+        int y0 = Mth::floor(yCave - yRad) - 1;
+        int y1 = Mth::floor(yCave + yRad) + 1;
 
-        int yuri_9631 = Mth::yuri_4644(zCave - rad) - zOffs * 16 - 1;
-        int yuri_9632 = Mth::yuri_4644(zCave + rad) - zOffs * 16 + 1;
+        int z0 = Mth::floor(zCave - rad) - zOffs * 16 - 1;
+        int z1 = Mth::floor(zCave + rad) - zOffs * 16 + 1;
 
-        if (yuri_9622 < 0) yuri_9622 = 0;
-        if (yuri_9623 > 16) yuri_9623 = 16;
+        if (x0 < 0) x0 = 0;
+        if (x1 > 16) x1 = 16;
 
-        if (yuri_9626 < 1) yuri_9626 = 1;
-        if (yuri_9627 > yuri_1758::genDepth - 8) yuri_9627 = yuri_1758::genDepth - 8;
+        if (y0 < 1) y0 = 1;
+        if (y1 > Level::genDepth - 8) y1 = Level::genDepth - 8;
 
-        if (yuri_9631 < 0) yuri_9631 = 0;
-        if (yuri_9632 > 16) yuri_9632 = 16;
+        if (z0 < 0) z0 = 0;
+        if (z1 > 16) z1 = 16;
 
         bool detectedWater = false;
-        for (int xx = yuri_9622; !detectedWater && xx < yuri_9623; xx++) {
-            for (int zz = yuri_9631; !detectedWater && zz < yuri_9632; zz++) {
-                for (int yy = yuri_9627 + 1; !detectedWater && yy >= yuri_9626 - 1; yy--) {
-                    int yuri_7701 = (xx * 16 + zz) * yuri_1758::genDepth + yy;
-                    if (yy < 0 || yy >= yuri_1758::genDepth) continue;
-                    if (blocks[yuri_7701] == yuri_3088::water_Id ||
-                        blocks[yuri_7701] == yuri_3088::calmWater_Id) {
+        for (int xx = x0; !detectedWater && xx < x1; xx++) {
+            for (int zz = z0; !detectedWater && zz < z1; zz++) {
+                for (int yy = y1 + 1; !detectedWater && yy >= y0 - 1; yy--) {
+                    int p = (xx * 16 + zz) * Level::genDepth + yy;
+                    if (yy < 0 || yy >= Level::genDepth) continue;
+                    if (blocks[p] == Tile::water_Id ||
+                        blocks[p] == Tile::calmWater_Id) {
                         detectedWater = true;
                     }
-                    if (yy != yuri_9626 - 1 && xx != yuri_9622 && xx != yuri_9623 - 1 && zz != yuri_9631 &&
-                        zz != yuri_9632 - 1) {
-                        yy = yuri_9626;
+                    if (yy != y0 - 1 && xx != x0 && xx != x1 - 1 && zz != z0 &&
+                        zz != z1 - 1) {
+                        yy = y0;
                     }
                 }
             }
         }
         if (detectedWater) continue;
 
-        for (int xx = yuri_9622; xx < yuri_9623; xx++) {
+        for (int xx = x0; xx < x1; xx++) {
             double xd = ((xx + xOffs * 16 + 0.5) - xCave) / rad;
-            for (int zz = yuri_9631; zz < yuri_9632; zz++) {
+            for (int zz = z0; zz < z1; zz++) {
                 double zd = ((zz + zOffs * 16 + 0.5) - zCave) / rad;
-                int yuri_7701 = (xx * 16 + zz) * yuri_1758::genDepth + yuri_9627;
+                int p = (xx * 16 + zz) * Level::genDepth + y1;
                 bool hasGrass = false;
                 if (xd * xd + zd * zd < 1) {
-                    for (int yy = yuri_9627 - 1; yy >= yuri_9626; yy--) {
+                    for (int yy = y1 - 1; yy >= y0; yy--) {
                         double yd = (yy + 0.5 - yCave) / yRad;
                         if (yd > -0.7 && xd * xd + yd * yd + zd * zd < 1) {
-                            int block = blocks[yuri_7701];
-                            if (block == yuri_3088::grass_Id) hasGrass = true;
-                            if (block == yuri_3088::stone_Id ||
-                                block == yuri_3088::dirt_Id ||
-                                block == yuri_3088::grass_Id) {
+                            int block = blocks[p];
+                            if (block == Tile::grass_Id) hasGrass = true;
+                            if (block == Tile::stone_Id ||
+                                block == Tile::dirt_Id ||
+                                block == Tile::grass_Id) {
                                 if (yy < 10) {
-                                    blocks[yuri_7701] = (yuri_9368)yuri_3088::lava_Id;
+                                    blocks[p] = (uint8_t)Tile::lava_Id;
                                 } else {
-                                    blocks[yuri_7701] = (yuri_9368)0;
+                                    blocks[p] = (uint8_t)0;
                                     if (hasGrass &&
-                                        blocks[yuri_7701 - 1] == yuri_3088::dirt_Id)
-                                        blocks[yuri_7701 - 1] =
-                                            (yuri_9368)yuri_7194
-                                                ->yuri_4943(xx + xOffs * 16,
+                                        blocks[p - 1] == Tile::dirt_Id)
+                                        blocks[p - 1] =
+                                            (uint8_t)level
+                                                ->getBiome(xx + xOffs * 16,
                                                            zz + zOffs * 16)
                                                 ->topMaterial;
                                 }
                             }
                         }
-                        yuri_7701--;
+                        p--;
                     }
                 }
             }
@@ -167,33 +167,33 @@ void yuri_1730::yuri_3692(yuri_6733 yuri_8396, int xOffs, int zOffs,
     }
 }
 
-void yuri_1730::yuri_3613(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int xOffs,
-                                  int zOffs, std::vector<yuri_9368>& blocks) {
-    int caves = yuri_7981->yuri_7578(yuri_7981->yuri_7578(yuri_7981->yuri_7578(40) + 1) + 1);
-    if (yuri_7981->yuri_7578(15) != 0) caves = 0;
+void LargeCaveFeature::addFeature(Level* level, int x, int z, int xOffs,
+                                  int zOffs, std::vector<uint8_t>& blocks) {
+    int caves = random->nextInt(random->nextInt(random->nextInt(40) + 1) + 1);
+    if (random->nextInt(15) != 0) caves = 0;
 
     for (int cave = 0; cave < caves; cave++) {
-        double xCave = yuri_9621 * 16 + yuri_7981->yuri_7578(16);
+        double xCave = x * 16 + random->nextInt(16);
         double yCave =
-            yuri_7981->yuri_7578(yuri_7981->yuri_7578(yuri_1758::genDepth - 8) + 8);
-        double zCave = yuri_9630 * 16 + yuri_7981->yuri_7578(16);
+            random->nextInt(random->nextInt(Level::genDepth - 8) + 8);
+        double zCave = z * 16 + random->nextInt(16);
 
         int tunnels = 1;
-        if (yuri_7981->yuri_7578(4) == 0) {
-            yuri_3670(yuri_7981->yuri_7579(), xOffs, zOffs, blocks, xCave, yCave,
+        if (random->nextInt(4) == 0) {
+            addRoom(random->nextLong(), xOffs, zOffs, blocks, xCave, yCave,
                     zCave);
-            tunnels += yuri_7981->yuri_7578(4);
+            tunnels += random->nextInt(4);
         }
 
         for (int i = 0; i < tunnels; i++) {
-            float yuri_9628 = yuri_7981->yuri_7576() * std::numbers::pi * 2;
-            float yuri_9624 = ((yuri_7981->yuri_7576() - 0.5f) * 2) / 8;
-            float thickness = yuri_7981->yuri_7576() * 2 + yuri_7981->yuri_7576();
-            if (yuri_7981->yuri_7578(10) == 0)
-                thickness *= yuri_7981->yuri_7576() * yuri_7981->yuri_7576() * 3 + 1;
+            float yRot = random->nextFloat() * std::numbers::pi * 2;
+            float xRot = ((random->nextFloat() - 0.5f) * 2) / 8;
+            float thickness = random->nextFloat() * 2 + random->nextFloat();
+            if (random->nextInt(10) == 0)
+                thickness *= random->nextFloat() * random->nextFloat() * 3 + 1;
 
-            yuri_3692(yuri_7981->yuri_7579(), xOffs, zOffs, blocks, xCave, yCave,
-                      zCave, thickness, yuri_9628, yuri_9624, 0, 0, 1.0);
+            addTunnel(random->nextLong(), xOffs, zOffs, blocks, xCave, yCave,
+                      zCave, thickness, yRot, xRot, 0, 0, 1.0);
         }
     }
 }

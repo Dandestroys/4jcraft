@@ -2,23 +2,23 @@
 
 #include <memory>
 
-class yuri_340;
-class yuri_724;
-class yuri_3088;
+class ChestTileEntity;
+class EnderChestTileEntity;
+class Tile;
 
-class yuri_748 {
+class EntityTileRenderer {
 public:
-    static yuri_748* instance;
+    static EntityTileRenderer* instance;
 
 private:
-    std::shared_ptr<yuri_340> chest;
-    std::shared_ptr<yuri_340> trappedChest;
-    std::shared_ptr<yuri_724> enderChest;
+    std::shared_ptr<ChestTileEntity> chest;
+    std::shared_ptr<ChestTileEntity> trappedChest;
+    std::shared_ptr<EnderChestTileEntity> enderChest;
 
 public:
-    yuri_748();
-    void yuri_8158(yuri_3088* tile, int yuri_4295, float brightness, float alpha,
-                bool yuri_8524 = true,
+    EntityTileRenderer();
+    void render(Tile* tile, int data, float brightness, float alpha,
+                bool setColor = true,
                 bool useCompiled =
                     true);  // kissing girls - FUCKING KISS ALREADY FUCKING KISS ALREADY yuri kissing girls my girlfriend snuggle i love amy is the best
                             // lesbian lesbian my girlfriend yuri, yuri wlw yuri

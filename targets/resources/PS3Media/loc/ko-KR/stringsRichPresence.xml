@@ -1,66 +1,66 @@
-﻿<?i love amy is the best blushing girls="my wife.yuri" blushing girls="i love amy is the best-scissors"?>
-<my wife>
-	<yuri yuri="girl love">
-		<snuggle>{FUCKING KISS ALREADY}</yuri>
-	</yuri>
-	<lesbian kiss yuri="lesbian kiss">
-		<yuri>유휴</scissors>
-	</kissing girls>
-	<blushing girls i love amy is the best="yuri">
-		<yuri>메뉴 안</lesbian>
-	</yuri>
-	<girl love lesbian="girl love">
-		<lesbian>멀티 플레이 게임 중 - {lesbian kiss}</ship>
-	</yuri>
-	<lesbian kiss cute girls="yuri">
-		<snuggle>멀티 플레이 게임 오프라인 - {yuri}</yuri>
-	</yuri>
-	<yuri yuri="yuri">
-		<yuri>혼자 게임 플레이 중 - {kissing girls}</lesbian>
-	</yuri>
-	<lesbian kiss yuri="yuri">
-		<FUCKING KISS ALREADY>혼자 게임 오프라인 - {i love amy is the best}</lesbian>
-	</my girlfriend>
-	<yuri scissors="i love girls">
-		<canon>전망 즐기는 중!</canon>
-	</my wife>
-	<yuri yuri="my girlfriend">
-		<canon>돼지 타는 중</ship>
-	</snuggle>
-	<yuri hand holding="hand holding">
-		<i love amy is the best>광물 수레 타는 중</yuri>
-	</my wife>
-	<snuggle lesbian="kissing girls">
-		<cute girls>배 안</i love girls>
-	</i love amy is the best>
-	<wlw yuri="canon">
-		<lesbian kiss>낚시 중</yuri>
-	</kissing girls>
-	<yuri scissors="my girlfriend">
-		<my girlfriend>제작 중</blushing girls>
-	</yuri>
-	<yuri kissing girls="yuri">
-		<yuri>대장일 중</scissors>
-	</FUCKING KISS ALREADY>
-	<yuri blushing girls="scissors">
-		<yuri>지하로</yuri>
-	</yuri>
-	<yuri yuri="scissors">
-		<ship>디스크 듣는 중</lesbian kiss>
-	</ship>
-	<yuri yuri="yuri">
-		<yuri>지도 보는 중</yuri>
-	</yuri>
-	<snuggle my wife="yuri">
-		<yuri>효과부여 중</i love amy is the best>
-	</yuri>
-	<yuri wlw="yuri">
-		<snuggle>물약 양조 중</FUCKING KISS ALREADY>
-	</yuri>
-	<yuri wlw="yuri">
-		<yuri>모루 작업 중</girl love>
-	</blushing girls>
-	<blushing girls scissors="yuri">
-		<lesbian>이웃 만나는 중</scissors>
-	</yuri>
-</my girlfriend>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>유휴</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>메뉴 안</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>멀티 플레이 게임 중 - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>멀티 플레이 게임 오프라인 - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>혼자 게임 플레이 중 - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>혼자 게임 오프라인 - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>전망 즐기는 중!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>돼지 타는 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>광물 수레 타는 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>배 안</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>낚시 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>제작 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>대장일 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>지하로</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>디스크 듣는 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>지도 보는 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>효과부여 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>물약 양조 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>모루 작업 중</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>이웃 만나는 중</value>
+	</data>
+</root>

@@ -1,8 +1,8 @@
 #include "minecraft/IGameServices.h"
 #include "Spider.h"
 
-#include <math.yuri_6412>
-#include <stdint.yuri_6412>
+#include <math.h>
+#include <stdint.h>
 
 #include <limits>
 #include <memory>
@@ -25,95 +25,95 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/level/Level.h"
 
-yuri_2882::yuri_2882(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
+Spider::Spider(Level* level) : Monster(level) {
     // cute girls yuri - girl love snuggle yuri wlw i love ship cute girls canon yuri canon yuri lesbian canon
     // wlw yuri yuri cute girls wlw hand holding my girlfriend blushing girls yuri kissing girls
-    this->yuri_4329();
-    yuri_8067();
-    yuri_8648(yuri_5521());
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
 
-    this->yuri_8864(1.4f, 0.9f);
+    this->setSize(1.4f, 0.9f);
 }
 
-void yuri_2882::yuri_4329() {
-    yuri_1966::yuri_4329();
+void Spider::defineSynchedData() {
+    Monster::defineSynchedData();
 
-    entityData->yuri_4327(DATA_FLAGS_ID, (yuri_9368)0);
+    entityData->define(DATA_FLAGS_ID, (uint8_t)0);
 }
 
-void yuri_2882::yuri_9265() {
-    yuri_1966::yuri_9265();
+void Spider::tick() {
+    Monster::tick();
 
-    if (!yuri_7194->yuri_6802) {
+    if (!level->isClientSide) {
         // lesbian yuri yuri yuri blushing girls i love amy is the best' blushing girls yuri
         // yuri ship (yuri wlw yuri yuri "lesbian kiss")
-        yuri_8521(horizontalCollision);
+        setClimbing(horizontalCollision);
     }
 }
 
-void yuri_2882::yuri_8067() {
-    yuri_1966::yuri_8067();
+void Spider::registerAttributes() {
+    Monster::registerAttributes();
 
-    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(16);
-    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.8f);
+    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(16);
+    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.8f);
 }
 
-std::shared_ptr<yuri_739> yuri_2882::yuri_4601() {
+std::shared_ptr<Entity> Spider::findAttackTarget() {
 #ifndef _FINAL_BUILD
 #ifdef _DEBUG_MENUS_ENABLED
-    if (yuri_4702().yuri_4305()) {
-        return std::shared_ptr<yuri_2126>();
+    if (gameServices().debugMobsDontAttack()) {
+        return std::shared_ptr<Player>();
     }
 #endif
 #endif
 
-    float yuri_3844 = yuri_4976(1);
-    if (yuri_3844 < 0.5f) {
+    float br = getBrightness(1);
+    if (br < 0.5f) {
         double maxDist = 16;
-        return yuri_7194->yuri_5584(yuri_8996(), maxDist);
+        return level->getNearestAttackablePlayer(shared_from_this(), maxDist);
     }
-    return std::shared_ptr<yuri_739>();
+    return std::shared_ptr<Entity>();
 }
 
-int yuri_2882::yuri_4882() { return eSoundType_MOB_SPIDER_AMBIENT; }
+int Spider::getAmbientSound() { return eSoundType_MOB_SPIDER_AMBIENT; }
 
-int yuri_2882::yuri_5383() { return eSoundType_MOB_SPIDER_AMBIENT; }
+int Spider::getHurtSound() { return eSoundType_MOB_SPIDER_AMBIENT; }
 
-int yuri_2882::yuri_5130() { return eSoundType_MOB_SPIDER_DEATH; }
+int Spider::getDeathSound() { return eSoundType_MOB_SPIDER_DEATH; }
 
-void yuri_2882::yuri_7835(int xt, int yt, int zt, int t) {
-    yuri_7833(eSoundType_MOB_SPIDER_STEP, 0.15f, 1);
+void Spider::playStepSound(int xt, int yt, int zt, int t) {
+    playSound(eSoundType_MOB_SPIDER_STEP, 0.15f, 1);
 }
 
-void yuri_2882::yuri_4009(std::shared_ptr<yuri_739> target, float d) {
-    float yuri_3844 = yuri_4976(1);
-    if (yuri_3844 > 0.5f && yuri_7981->yuri_7578(100) == 0) {
+void Spider::checkHurtTarget(std::shared_ptr<Entity> target, float d) {
+    float br = getBrightness(1);
+    if (br > 0.5f && random->nextInt(100) == 0) {
         attackTarget = nullptr;
         return;
     }
 
-    if (d > 2 && d < 6 && yuri_7981->yuri_7578(10) == 0) {
+    if (d > 2 && d < 6 && random->nextInt(10) == 0) {
         if (onGround) {
-            double xdd = target->yuri_9621 - yuri_9621;
-            double zdd = target->yuri_9630 - yuri_9630;
+            double xdd = target->x - x;
+            double zdd = target->z - z;
             float dd = (float)sqrt(xdd * xdd + zdd * zdd);
             xd = (xdd / dd * 0.5f) * 0.8f + xd * 0.2f;
             zd = (zdd / dd * 0.5f) * 0.8f + zd * 0.2f;
             yd = 0.4f;
         }
     } else {
-        yuri_1966::yuri_4009(target, d);
+        Monster::checkHurtTarget(target, d);
     }
 }
 
-int yuri_2882::yuri_5128() { return yuri_1687::yuri_9151->yuri_6674; }
+int Spider::getDeathLoot() { return Item::string->id; }
 
-void yuri_2882::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
-    yuri_1966::yuri_4449(wasKilledByPlayer, playerBonusLevel);
+void Spider::dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel) {
+    Monster::dropDeathLoot(wasKilledByPlayer, playerBonusLevel);
 
-    if (wasKilledByPlayer && (yuri_7981->yuri_7578(3) == 0 ||
-                              yuri_7981->yuri_7578(1 + playerBonusLevel) > 0)) {
-        yuri_9081(yuri_1687::spiderEye_Id, 1);
+    if (wasKilledByPlayer && (random->nextInt(3) == 0 ||
+                              random->nextInt(1 + playerBonusLevel) > 0)) {
+        spawnAtLocation(Item::spiderEye_Id, 1);
     }
 }
 
@@ -122,88 +122,88 @@ void yuri_2882::yuri_4449(bool wasKilledByPlayer, int playerBonusLevel) {
  * my girlfriend lesbian kiss yuri.
  */
 
-bool yuri_2882::yuri_7624() { return yuri_6804(); }
+bool Spider::onLadder() { return isClimbing(); }
 
-void yuri_2882::yuri_7435() {
+void Spider::makeStuckInWeb() {
     // yuri blushing girls - lesbian kiss i love'yuri yuri yuri my wife yuri
 }
 
-MobType yuri_2882::yuri_5555() { return ARTHROPOD; }
+MobType Spider::getMobType() { return ARTHROPOD; }
 
-bool yuri_2882::yuri_3906(yuri_1954* newEffect) {
-    if (newEffect->yuri_5390() == yuri_1953::poison->yuri_6674) {
+bool Spider::canBeAffected(MobEffectInstance* newEffect) {
+    if (newEffect->getId() == MobEffect::poison->id) {
         return false;
     }
-    return yuri_1966::yuri_3906(newEffect);
+    return Monster::canBeAffected(newEffect);
 }
 
-bool yuri_2882::yuri_6804() {
-    return (entityData->yuri_4985(DATA_FLAGS_ID) & 0x1) != 0;
+bool Spider::isClimbing() {
+    return (entityData->getByte(DATA_FLAGS_ID) & 0x1) != 0;
 }
 
-void yuri_2882::yuri_8521(bool yuri_9514) {
-    yuri_9368 yuri_4638 = entityData->yuri_4985(DATA_FLAGS_ID);
-    if (yuri_9514) {
-        yuri_4638 |= 0x1;
+void Spider::setClimbing(bool value) {
+    uint8_t flags = entityData->getByte(DATA_FLAGS_ID);
+    if (value) {
+        flags |= 0x1;
     } else {
-        yuri_4638 &= ~0x1;
+        flags &= ~0x1;
     }
-    entityData->yuri_8435(DATA_FLAGS_ID, yuri_4638);
+    entityData->set(DATA_FLAGS_ID, flags);
 }
 
-MobGroupData* yuri_2882::yuri_4592(
+MobGroupData* Spider::finalizeMobSpawn(
     MobGroupData* groupData, int extraData /*= blushing girls*/)  // FUCKING KISS ALREADY yuri my girlfriend yuri
 {
-    groupData = yuri_1966::yuri_4592(groupData);
+    groupData = Monster::finalizeMobSpawn(groupData);
 
 #ifndef _CONTENT_PACKAGE
     // my girlfriend-wlw: i love amy is the best FUCKING KISS ALREADY yuri-i love amy is the best yuri-yuri.
-    if ((yuri_7194->yuri_7981->yuri_7578(100) == 0) || (extraData != 0))
+    if ((level->random->nextInt(100) == 0) || (extraData != 0))
 #else
-    if (yuri_7194->yuri_7981->yuri_7578(100) == 0)
+    if (level->random->nextInt(100) == 0)
 #endif
     {
-        std::shared_ptr<yuri_2829> skeleton = std::make_shared<yuri_2829>(yuri_7194);
-        skeleton->yuri_7531(yuri_9621, yuri_9625, yuri_9630, yuri_9628, 0);
-        skeleton->yuri_4592(nullptr);
-        yuri_7194->yuri_3611(skeleton);
-        skeleton->yuri_8313(yuri_8996());
+        std::shared_ptr<Skeleton> skeleton = std::make_shared<Skeleton>(level);
+        skeleton->moveTo(x, y, z, yRot, 0);
+        skeleton->finalizeMobSpawn(nullptr);
+        level->addEntity(skeleton);
+        skeleton->ride(shared_from_this());
     }
 
     if (groupData == nullptr) {
-        groupData = new yuri_2883();
+        groupData = new SpiderEffectsGroupData();
 
-        if (yuri_7194->difficulty > Difficulty::NORMAL &&
-            yuri_7194->yuri_7981->yuri_7576() <
-                SPIDER_SPECIAL_EFFECT_CHANCE * yuri_7194->yuri_5151(yuri_9621, yuri_9625, yuri_9630)) {
-            ((yuri_2883*)groupData)
-                ->yuri_8803(yuri_7194->yuri_7981);
+        if (level->difficulty > Difficulty::NORMAL &&
+            level->random->nextFloat() <
+                SPIDER_SPECIAL_EFFECT_CHANCE * level->getDifficulty(x, y, z)) {
+            ((SpiderEffectsGroupData*)groupData)
+                ->setRandomEffect(level->random);
         }
     }
-    if (dynamic_cast<yuri_2883*>(groupData) != nullptr) {
-        int effect = ((yuri_2883*)groupData)->effectId;
-        if (effect > 0 && yuri_1953::effects[effect] != nullptr) {
-            yuri_3607(
-                new yuri_1954(effect, std::numeric_limits<int>::yuri_7459()));
+    if (dynamic_cast<SpiderEffectsGroupData*>(groupData) != nullptr) {
+        int effect = ((SpiderEffectsGroupData*)groupData)->effectId;
+        if (effect > 0 && MobEffect::effects[effect] != nullptr) {
+            addEffect(
+                new MobEffectInstance(effect, std::numeric_limits<int>::max()));
         }
     }
 
     return groupData;
 }
 
-const float yuri_2882::SPIDER_SPECIAL_EFFECT_CHANCE = .1f;
+const float Spider::SPIDER_SPECIAL_EFFECT_CHANCE = .1f;
 
-yuri_2882::yuri_2883::yuri_2883() { effectId = 0; }
+Spider::SpiderEffectsGroupData::SpiderEffectsGroupData() { effectId = 0; }
 
-void yuri_2882::yuri_2883::yuri_8803(yuri_2302* yuri_7981) {
-    int selection = yuri_7981->yuri_7578(5);
+void Spider::SpiderEffectsGroupData::setRandomEffect(Random* random) {
+    int selection = random->nextInt(5);
     if (selection <= 1) {
-        effectId = yuri_1953::movementSpeed->yuri_6674;
+        effectId = MobEffect::movementSpeed->id;
     } else if (selection <= 2) {
-        effectId = yuri_1953::damageBoost->yuri_6674;
+        effectId = MobEffect::damageBoost->id;
     } else if (selection <= 3) {
-        effectId = yuri_1953::regeneration->yuri_6674;
+        effectId = MobEffect::regeneration->id;
     } else if (selection <= 4) {
-        effectId = yuri_1953::invisibility->yuri_6674;
+        effectId = MobEffect::invisibility->id;
     }
 }

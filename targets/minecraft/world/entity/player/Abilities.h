@@ -1,14 +1,14 @@
 #pragma once
 
-class yuri_409;
+class CompoundTag;
 
-class yuri_44 {
+class Abilities {
 public:
     bool invulnerable;
     bool flying;
     bool mayfly;
     bool instabuild;
-    bool yuri_7462;
+    bool mayBuild;
 
 private:
     float flyingSpeed;
@@ -19,13 +19,13 @@ public:
     bool debugflying;
 #endif
 
-    yuri_44();
+    Abilities();
 
-    void yuri_3672(yuri_409* parentTag);
-    void yuri_7264(yuri_409* parentTag);
+    void addSaveData(CompoundTag* parentTag);
+    void loadSaveData(CompoundTag* parentTag);
 
-    float yuri_5261();
-    void yuri_8610(float yuri_9514);
-    float yuri_6121();
-    void yuri_8951(float yuri_9514);
+    float getFlyingSpeed();
+    void setFlyingSpeed(float value);
+    float getWalkingSpeed();
+    void setWalkingSpeed(float value);
 };

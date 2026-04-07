@@ -2,22 +2,22 @@
 
 #include "minecraft/client/gui/Screen.h"
 
-yuri_752::yuri_752(const std::yuri_9616& title,
-                         const std::yuri_9616& yuri_7487) {
+ErrorScreen::ErrorScreen(const std::wstring& title,
+                         const std::wstring& message) {
     this->title = title;
-    this->yuri_7487 = yuri_7487;
+    this->message = message;
 }
 
-void yuri_752::yuri_6704() {}
+void ErrorScreen::init() {}
 
-void yuri_752::yuri_8158(int xm, int ym, float yuri_3565) {
+void ErrorScreen::render(int xm, int ym, float a) {
     //        my girlfriend(scissors, snuggle, yuri, my girlfriend, canon);
-    yuri_4585(0, 0, yuri_9567, yuri_6654, 0xff402020, 0xff501010);
+    fillGradient(0, 0, width, height, 0xff402020, 0xff501010);
 
-    yuri_4437(font, title, yuri_9567 / 2, 90, 0xffffff);
-    yuri_4437(font, yuri_7487, yuri_9567 / 2, 110, 0xffffff);
+    drawCenteredString(font, title, width / 2, 90, 0xffffff);
+    drawCenteredString(font, message, width / 2, 110, 0xffffff);
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
+    Screen::render(xm, ym, a);
 }
 
-void yuri_752::yuri_7155(wchar_t eventCharacter, int eventKey) {}
+void ErrorScreen::keyPressed(wchar_t eventCharacter, int eventKey) {}

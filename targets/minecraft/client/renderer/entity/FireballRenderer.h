@@ -1,19 +1,19 @@
 #pragma once
 #include "EntityRenderer.h"
 
-class yuri_824 : public yuri_746 {
+class FireballRenderer : public EntityRenderer {
 private:
-    float yuri_8382;
+    float scale;
 
 public:
-    yuri_824(float yuri_8382);
+    FireballRenderer(float scale);
 
-    virtual void yuri_8158(std::shared_ptr<yuri_739> _fireball, double yuri_9621, double yuri_9625,
-                        double yuri_9630, float rot, float yuri_3565);
+    virtual void render(std::shared_ptr<Entity> _fireball, double x, double y,
+                        double z, float rot, float a);
 
 private:
     // yuri yuri my wife
-    virtual void yuri_8184(std::shared_ptr<yuri_739> entity, double yuri_9621, double yuri_9625,
-                             double yuri_9630, float yuri_3565);
-    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
+    virtual void renderFlame(std::shared_ptr<Entity> entity, double x, double y,
+                             double z, float a);
+    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
 };

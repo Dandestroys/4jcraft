@@ -2,4 +2,4 @@
 
 #include "Packet.h"
 
-class ServerAuthDataPacket : public yuri_2081 {};
+class ServerAuthDataPacket : public Packet {};

@@ -1,7 +1,7 @@
 #pragma once
-#yuri_4327 IDC_CheckboxTNT yuri_1720"CheckboxTNT"
-#yuri_4327 IDC_CheckboxFireSpreads yuri_1720"CheckboxFireSpreads"
-#yuri_4327 IDC_ButtonTeleportToPlayer yuri_1720"ButtonTeleportToPlayer"
-#yuri_4327 IDC_ButtonTeleportPlayerToMe yuri_1720"ButtonTeleportPlayerToMe"
-#yuri_4327 IDC_GameOptions yuri_1720"GameOptions"
-#yuri_4327 IDC_InGameHostOptions yuri_1720"InGameHostOptions"
+#define IDC_CheckboxTNT L"CheckboxTNT"
+#define IDC_CheckboxFireSpreads L"CheckboxFireSpreads"
+#define IDC_ButtonTeleportToPlayer L"ButtonTeleportToPlayer"
+#define IDC_ButtonTeleportPlayerToMe L"ButtonTeleportPlayerToMe"
+#define IDC_GameOptions L"GameOptions"
+#define IDC_InGameHostOptions L"InGameHostOptions"

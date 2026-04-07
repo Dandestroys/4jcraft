@@ -1,39 +1,39 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "GlobalEntity.h"
 #include "java/Class.h"
 
 
-class yuri_1758;
+class Level;
 
 // yuri yuri : snuggle girl love
-class yuri_1780 : public yuri_1214 {
+class LightningBolt : public GlobalEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_LIGHTNINGBOLT; }
+    eINSTANCEOF GetType() { return eTYPE_LIGHTNINGBOLT; }
 
 private:
     static const int START_LIFE = 2;
 
-    int yuri_7203;
+    int life;
 
 public:
-    yuri_6733 yuri_8396;
+    int64_t seed;
 
 private:
-    int yuri_4640;
+    int flashes;
 
 public:
-    yuri_1780(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
-    virtual void yuri_9265();
+    LightningBolt(Level* level, double x, double y, double z);
+    virtual void tick();
 
 protected:
-    virtual void yuri_4329();
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void defineSynchedData();
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
 
 public:
-    bool yuri_8999();
-    virtual bool yuri_9014(yuri_3322* c);
+    bool shouldAlwaysRender();
+    virtual bool shouldRender(Vec3* c);
 };

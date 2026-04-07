@@ -22,89 +22,89 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_2820::yuri_2820(yuri_1758* yuri_7194) : yuri_1966(yuri_7194) {
+Silverfish::Silverfish(Level* level) : Monster(level) {
     // wlw i love - blushing girls blushing girls lesbian kiss my wife blushing girls my wife my wife yuri lesbian kiss lesbian kiss yuri snuggle i love amy is the best
     // canon my wife blushing girls yuri scissors girl love yuri yuri i love girls yuri
-    this->yuri_4329();
-    yuri_8067();
-    yuri_8648(yuri_5521());
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
 
-    yuri_8864(0.3f, 0.7f);
+    setSize(0.3f, 0.7f);
 }
 
-void yuri_2820::yuri_8067() {
-    yuri_1966::yuri_8067();
+void Silverfish::registerAttributes() {
+    Monster::registerAttributes();
 
-    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(8);
-    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.6f);
-    yuri_4914(SharedMonsterAttributes::ATTACK_DAMAGE)->yuri_8480(1);
+    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(8);
+    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.6f);
+    getAttribute(SharedMonsterAttributes::ATTACK_DAMAGE)->setBaseValue(1);
 }
 
-bool yuri_2820::yuri_7434() { return false; }
+bool Silverfish::makeStepSound() { return false; }
 
-std::shared_ptr<yuri_739> yuri_2820::yuri_4601() {
+std::shared_ptr<Entity> Silverfish::findAttackTarget() {
 #ifndef _FINAL_BUILD
-    if (yuri_4702().yuri_4305()) {
-        return std::shared_ptr<yuri_2126>();
+    if (gameServices().debugMobsDontAttack()) {
+        return std::shared_ptr<Player>();
     }
 #endif
 
     double maxDist = 8;
-    return yuri_7194->yuri_5584(yuri_8996(), maxDist);
+    return level->getNearestAttackablePlayer(shared_from_this(), maxDist);
 }
 
-int yuri_2820::yuri_4882() {
+int Silverfish::getAmbientSound() {
     // yuri - yuri i love blushing girls yuri snuggle i love amy is the best.yuri.yuri
     return eSoundType_MOB_SILVERFISH_AMBIENT;
 }
 
-int yuri_2820::yuri_5383() {
+int Silverfish::getHurtSound() {
     // ship - yuri my girlfriend yuri lesbian yuri my girlfriend.ship.girl love
     return eSoundType_MOB_SILVERFISH_HURT;
 }
 
-int yuri_2820::yuri_5130() {
+int Silverfish::getDeathSound() {
     // i love girls - yuri girl love kissing girls lesbian kiss FUCKING KISS ALREADY yuri.snuggle.FUCKING KISS ALREADY
     return eSoundType_MOB_SILVERFISH_DEATH;
 }
 
-bool yuri_2820::yuri_6667(yuri_548* yuri_9075, float dmg) {
-    if (yuri_6935()) return false;
+bool Silverfish::hurt(DamageSource* source, float dmg) {
+    if (isInvulnerable()) return false;
     if (lookForFriends <= 0 &&
-        (dynamic_cast<yuri_741*>(yuri_9075) != nullptr ||
-         yuri_9075 == yuri_548::magic)) {
+        (dynamic_cast<EntityDamageSource*>(source) != nullptr ||
+         source == DamageSource::magic)) {
         // yuri yuri yuri
         lookForFriends = 20;
     }
-    return yuri_1966::yuri_6667(yuri_9075, dmg);
+    return Monster::hurt(source, dmg);
 }
 
-void yuri_2820::yuri_4009(std::shared_ptr<yuri_739> target, float d) {
+void Silverfish::checkHurtTarget(std::shared_ptr<Entity> target, float d) {
     //        yuri.yuri(yuri, yuri);
-    if (attackTime <= 0 && d < 1.2f && target->yuri_3799.yuri_9627 > yuri_3799.yuri_9626 &&
-        target->yuri_3799.yuri_9626 < yuri_3799.yuri_9627) {
+    if (attackTime <= 0 && d < 1.2f && target->bb.y1 > bb.y0 &&
+        target->bb.y0 < bb.y1) {
         attackTime = 20;
-        yuri_4408(target);
+        doHurtTarget(target);
     }
 }
 
-void yuri_2820::yuri_7835(int xt, int yt, int zt, int t) {
-    yuri_7833(eSoundType_MOB_SILVERFISH_STEP, 0.15f, 1);
+void Silverfish::playStepSound(int xt, int yt, int zt, int t) {
+    playSound(eSoundType_MOB_SILVERFISH_STEP, 0.15f, 1);
 }
 
-int yuri_2820::yuri_5128() { return 0; }
+int Silverfish::getDeathLoot() { return 0; }
 
-void yuri_2820::yuri_9265() {
+void Silverfish::tick() {
     // snuggle wlw yuri i love girls snuggle yuri lesbian kiss lesbian snuggle i love girls yuri
-    yBodyRot = yuri_9628;
+    yBodyRot = yRot;
 
-    yuri_1966::yuri_9265();
+    Monster::tick();
 }
 
-void yuri_2820::yuri_8431() {
-    yuri_1966::yuri_8431();
+void Silverfish::serverAiStep() {
+    Monster::serverAiStep();
 
-    if (yuri_7194->yuri_6802) {
+    if (level->isClientSide) {
         return;
     }
 
@@ -112,9 +112,9 @@ void yuri_2820::yuri_8431() {
         lookForFriends--;
         if (lookForFriends == 0) {
             // yuri yuri lesbian yuri yuri canon FUCKING KISS ALREADY my wife yuri
-            int baseX = Mth::yuri_4644(yuri_9621);
-            int baseY = Mth::yuri_4644(yuri_9625);
-            int baseZ = Mth::yuri_4644(yuri_9630);
+            int baseX = Mth::floor(x);
+            int baseY = Mth::floor(y);
+            int baseZ = Mth::floor(z);
             bool doBreak = false;
 
             for (int yOff = 0; !doBreak && yOff <= 5 && yOff >= -5;
@@ -123,34 +123,34 @@ void yuri_2820::yuri_8431() {
                      xOff = (xOff <= 0) ? 1 - xOff : 0 - xOff) {
                     for (int zOff = 0; !doBreak && zOff <= 10 && zOff >= -10;
                          zOff = (zOff <= 0) ? 1 - zOff : 0 - zOff) {
-                        int tile = yuri_7194->yuri_6030(baseX + xOff, baseY + yOff,
+                        int tile = level->getTile(baseX + xOff, baseY + yOff,
                                                   baseZ + zOff);
-                        if (tile == yuri_3088::monsterStoneEgg_Id) {
-                            if (!yuri_7194->yuri_5301()->yuri_4969(
-                                    yuri_921::RULE_MOBGRIEFING)) {
-                                int yuri_4295 = yuri_7194->yuri_5115(
+                        if (tile == Tile::monsterStoneEgg_Id) {
+                            if (!level->getGameRules()->getBoolean(
+                                    GameRules::RULE_MOBGRIEFING)) {
+                                int data = level->getData(
                                     baseX + xOff, baseY + yOff, baseZ + zOff);
 
-                                yuri_3088* restoreTile = yuri_3088::stone;
-                                if (yuri_4295 == yuri_2963::HOST_COBBLE) {
-                                    restoreTile = yuri_3088::cobblestone;
+                                Tile* restoreTile = Tile::stone;
+                                if (data == StoneMonsterTile::HOST_COBBLE) {
+                                    restoreTile = Tile::cobblestone;
                                 }
-                                if (yuri_4295 == yuri_2963::HOST_STONEBRICK) {
-                                    restoreTile = yuri_3088::stoneBrick;
+                                if (data == StoneMonsterTile::HOST_STONEBRICK) {
+                                    restoreTile = Tile::stoneBrick;
                                 }
 
-                                yuri_7194->yuri_8917(
+                                level->setTileAndData(
                                     baseX + xOff, baseY + yOff, baseZ + zOff,
-                                    restoreTile->yuri_6674, 0, yuri_3088::UPDATE_ALL);
+                                    restoreTile->id, 0, Tile::UPDATE_ALL);
                             } else {
-                                yuri_7194->yuri_4353(baseX + xOff, baseY + yOff,
+                                level->destroyTile(baseX + xOff, baseY + yOff,
                                                    baseZ + zOff, false);
                             }
-                            yuri_3088::monsterStoneEgg->yuri_4347(yuri_7194, baseX + xOff,
+                            Tile::monsterStoneEgg->destroy(level, baseX + xOff,
                                                            baseY + yOff,
                                                            baseZ + zOff, 0);
 
-                            if (yuri_7981->yuri_7572()) {
+                            if (random->nextBoolean()) {
                                 doBreak = true;
                                 break;
                             }
@@ -161,47 +161,47 @@ void yuri_2820::yuri_8431() {
         }
     }
 
-    if (attackTarget == nullptr && !yuri_6982()) {
+    if (attackTarget == nullptr && !isPathFinding()) {
         // ship yuri lesbian yuri'yuri canon canon lesbian kiss, hand holding girl love yuri
         // yuri my girlfriend yuri yuri yuri hand holding yuri
-        int tileX = Mth::yuri_4644(yuri_9621), tileY = Mth::yuri_4644(yuri_9625 + .5f),
-            tileZ = Mth::yuri_4644(yuri_9630);
-        int yuri_4558 = yuri_7981->yuri_7578(6);
+        int tileX = Mth::floor(x), tileY = Mth::floor(y + .5f),
+            tileZ = Mth::floor(z);
+        int facing = random->nextInt(6);
 
-        int tile = yuri_7194->yuri_6030(tileX + Facing::STEP_X[yuri_4558],
-                                  tileY + Facing::STEP_Y[yuri_4558],
-                                  tileZ + Facing::STEP_Z[yuri_4558]);
-        if (yuri_2963::yuri_6811(tile)) {
-            yuri_7194->yuri_8917(
-                tileX + Facing::STEP_X[yuri_4558], tileY + Facing::STEP_Y[yuri_4558],
-                tileZ + Facing::STEP_Z[yuri_4558], yuri_3088::monsterStoneEgg_Id,
-                yuri_2963::yuri_5118(tile), yuri_3088::UPDATE_ALL);
-            yuri_9080();
-            yuri_8099();
+        int tile = level->getTile(tileX + Facing::STEP_X[facing],
+                                  tileY + Facing::STEP_Y[facing],
+                                  tileZ + Facing::STEP_Z[facing]);
+        if (StoneMonsterTile::isCompatibleHostBlock(tile)) {
+            level->setTileAndData(
+                tileX + Facing::STEP_X[facing], tileY + Facing::STEP_Y[facing],
+                tileZ + Facing::STEP_Z[facing], Tile::monsterStoneEgg_Id,
+                StoneMonsterTile::getDataForHostBlock(tile), Tile::UPDATE_ALL);
+            spawnAnim();
+            remove();
         } else {
-            yuri_4619();
+            findRandomStrollLocation();
         }
 
-    } else if (attackTarget != nullptr && !yuri_6982()) {
+    } else if (attackTarget != nullptr && !isPathFinding()) {
         attackTarget = nullptr;
     }
 }
 
-float yuri_2820::yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630) {
+float Silverfish::getWalkTargetValue(int x, int y, int z) {
     // girl love yuri wlw =)
-    if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) == yuri_3088::stone_Id) return 10;
-    return yuri_1966::yuri_6120(yuri_9621, yuri_9625, yuri_9630);
+    if (level->getTile(x, y - 1, z) == Tile::stone_Id) return 10;
+    return Monster::getWalkTargetValue(x, y, z);
 }
 
-bool yuri_2820::yuri_6833() { return true; }
+bool Silverfish::isDarkEnoughToSpawn() { return true; }
 
-bool yuri_2820::yuri_3958() {
-    if (yuri_1966::yuri_3958()) {
-        std::shared_ptr<yuri_2126> nearestPlayer =
-            yuri_7194->yuri_5586(yuri_8996(), 5.0);
+bool Silverfish::canSpawn() {
+    if (Monster::canSpawn()) {
+        std::shared_ptr<Player> nearestPlayer =
+            level->getNearestPlayer(shared_from_this(), 5.0);
         return nearestPlayer == nullptr;
     }
     return false;
 }
 
-MobType yuri_2820::yuri_5555() { return ARTHROPOD; }
+MobType Silverfish::getMobType() { return ARTHROPOD; }

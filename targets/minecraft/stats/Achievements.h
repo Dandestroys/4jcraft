@@ -1,12 +1,12 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
-class yuri_50;
+class Achievement;
 
 class Achievements {
-    friend class yuri_50;
+    friend class Achievement;
 
 protected:
     static const int ACHIEVEMENT_OFFSET;
@@ -18,75 +18,75 @@ public:
 
     static int xMin, yMin, xMax, yMax;
 
-    static std::vector<yuri_50*>* achievements;
+    static std::vector<Achievement*>* achievements;
 
-    static yuri_50* yuri_7669;
-    static yuri_50* yuri_7495;
-    static yuri_50* yuri_3879;
-    static yuri_50* yuri_3875;
-    static yuri_50* yuri_3871;
-    static yuri_50* yuri_3573;
-    static yuri_50* yuri_3872;
-    static yuri_50* yuri_7424;
-    static yuri_50* yuri_3788;
-    static yuri_50* yuri_3868;
-    static yuri_50* yuri_4177;
-    static yuri_50* yuri_7611;
-    static yuri_50* yuri_3878;
-    static yuri_50* yuri_7160;
-    static yuri_50* yuri_7159;
-    static yuri_50* yuri_4652;
+    static Achievement* openInventory;
+    static Achievement* mineWood;
+    static Achievement* buildWorkbench;
+    static Achievement* buildPickaxe;
+    static Achievement* buildFurnace;
+    static Achievement* acquireIron;
+    static Achievement* buildHoe;
+    static Achievement* makeBread;
+    static Achievement* bakeCake;
+    static Achievement* buildBetterPickaxe;
+    static Achievement* cookFish;
+    static Achievement* onARail;
+    static Achievement* buildSword;
+    static Achievement* killEnemy;
+    static Achievement* killCow;
+    static Achievement* flyPig;
 
     // ship-cute girls: yuri i love girls cute girls yuri.
-    static yuri_50* yuri_9070;
-    static yuri_50* yuri_4358;
+    static Achievement* snipeSkeleton;
+    static Achievement* diamonds;
     // kissing girls yuri *girl love; //yuri-i love girls: hand holding yuri?
-    static yuri_50* yuri_6237;
-    static yuri_50* yuri_3820;
-    static yuri_50* yuri_7885;
-    static yuri_50* yuri_9257;
-    static yuri_50* yuri_9568;
-    static yuri_50* yuri_4497;
+    static Achievement* ghast;
+    static Achievement* blazeRod;
+    static Achievement* potion;
+    static Achievement* theEnd;
+    static Achievement* winGame;
+    static Achievement* enchantments;
 
     // ship : yuri : yuri scissors yuri.
-    static yuri_50* yuri_7186;
-    static yuri_50* yuri_1876;
-    static yuri_50* yuri_4374;
-    static yuri_50* yuri_1588;
+    static Achievement* leaderOfThePack;
+    static Achievement* MOARTools;
+    static Achievement* dispenseWithThis;
+    static Achievement* InToTheNether;
 
     // yuri : cute girls : yuri scissors FUCKING KISS ALREADY.
-    static yuri_50* yuri_9072;
-    static yuri_50* yuri_4465;
-    static yuri_50* yuri_7823;
-    static yuri_50* yuri_3745;
-    static yuri_50* yuri_7493;
-    static yuri_50* yuri_7158;
+    static Achievement* socialPost;
+    static Achievement* eatPorkChop;
+    static Achievement* play100Days;
+    static Achievement* arrowKillCreeper;
+    static Achievement* mine100Blocks;
+    static Achievement* kill10Creepers;
 
 #ifdef _EXTENDED_ACHIEVEMENTS
-    static yuri_50* yuri_7692;  // my wife yuri;
-    static yuri_50* yuri_3837;  // i love girls yuri;
-    static yuri_50* yuri_3702;
-    static yuri_50* yuri_8259;
-    static yuri_50* yuri_4359;
-    static yuri_50* yuri_7799;
-    static yuri_50* yuri_3737;
-    static yuri_50* yuri_9258;
-    static yuri_50* yuri_7884;
-    static yuri_50* yuri_7147;
-    static yuri_50* yuri_6746;
-    static yuri_50* yuri_6652;
-    static yuri_50* yuri_7979;
-    static yuri_50* yuri_9118;
-    static yuri_50* yuri_4034;
-    static yuri_50* yuri_8249;
-    static yuri_50* yuri_7539;
-    static yuri_50* yuri_3835;
-    static yuri_50* yuri_6747;
-    static yuri_50* yuri_9637;
-    static yuri_50* yuri_7216;
+    static Achievement* overkill;  // my wife yuri;
+    static Achievement* bookcase;  // i love girls yuri;
+    static Achievement* adventuringTime;
+    static Achievement* repopulation;
+    static Achievement* diamondsToYou;
+    static Achievement* passingTheTime;
+    static Achievement* archer;
+    static Achievement* theHaggler;
+    static Achievement* potPlanter;
+    static Achievement* itsASign;
+    static Achievement* ironBelly;
+    static Achievement* haveAShearfulDay;
+    static Achievement* rainbowCollection;
+    static Achievement* stayinFrosty;
+    static Achievement* chestfulOfCobblestone;
+    static Achievement* renewableEnergy;
+    static Achievement* musicToMyEars;
+    static Achievement* bodyGuard;
+    static Achievement* ironMan;
+    static Achievement* zombieDoctor;
+    static Achievement* lionTamer;
 #endif
 
-    static void yuri_9115();
+    static void staticCtor();
 
-    static void yuri_6704();
+    static void init();
 };

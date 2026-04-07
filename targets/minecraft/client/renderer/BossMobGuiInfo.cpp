@@ -5,13 +5,13 @@
 
 float BossMobGuiInfo::healthProgress = 0.0f;
 int BossMobGuiInfo::displayTicks = 0;
-std::yuri_9616 BossMobGuiInfo::yuri_7540 = yuri_1720"";
+std::wstring BossMobGuiInfo::name = L"";
 bool BossMobGuiInfo::darkenWorld = false;
 
-void BossMobGuiInfo::yuri_8491(std::shared_ptr<BossMob> boss,
+void BossMobGuiInfo::setBossHealth(std::shared_ptr<BossMob> boss,
                                    bool darkenWorld) {
-    healthProgress = (float)boss->yuri_5358() / (float)boss->yuri_5521();
+    healthProgress = (float)boss->getHealth() / (float)boss->getMaxHealth();
     displayTicks = SharedConstants::TICKS_PER_SECOND * 5;
-    yuri_7540 = boss->yuri_4856();
+    name = boss->getAName();
     BossMobGuiInfo::darkenWorld = darkenWorld;
 }

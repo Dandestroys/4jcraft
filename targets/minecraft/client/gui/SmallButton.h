@@ -1,18 +1,18 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "Button.h"
 #include "minecraft/client/Options.h"
 
-class yuri_2846 : public yuri_245 {
+class SmallButton : public Button {
 private:
-    const yuri_2059::yuri_2058* option;
+    const Options::Option* option;
 
 public:
-    yuri_2846(int yuri_6674, int yuri_9621, int yuri_9625, const std::yuri_9616& msg);
-    yuri_2846(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9567, int yuri_6654,
-                const std::yuri_9616& msg);
-    yuri_2846(int yuri_6674, int yuri_9621, int yuri_9625, const yuri_2059::yuri_2058* item,
-                const std::yuri_9616& msg);
-    const yuri_2059::yuri_2058* yuri_5626();
+    SmallButton(int id, int x, int y, const std::wstring& msg);
+    SmallButton(int id, int x, int y, int width, int height,
+                const std::wstring& msg);
+    SmallButton(int id, int x, int y, const Options::Option* item,
+                const std::wstring& msg);
+    const Options::Option* getOption();
 };

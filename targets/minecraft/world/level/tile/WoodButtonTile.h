@@ -2,9 +2,9 @@
 
 #include "ButtonTile.h"
 
-class yuri_3391 : public yuri_249 {
+class WoodButtonTile : public ButtonTile {
 public:
-    yuri_3391(int yuri_6674);
+    WoodButtonTile(int id);
 
-    yuri_1346* yuri_6007(int face, int yuri_4295);
+    Icon* getTexture(int face, int data);
 };

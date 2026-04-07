@@ -1,7 +1,7 @@
 #include "MerchantScreen.h"
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "AbstractContainerScreen.h"
@@ -24,164 +24,164 @@
 #include "minecraft/world/item/trading/MerchantRecipeList.h"
 #include "minecraft/world/item/trading/MerchantRecipe.h"
 
-class yuri_1758;
+class Level;
 
 // kissing girls: yuri canon yuri canon.ship (cute girls scissors.yuri.FUCKING KISS ALREADY) wlw scissors hand holding
 // yuri hand holding (yuri yuri ship)
 #ifdef ENABLE_JAVA_GUIS
-yuri_2412 GUI_VILLAGER_LOCATION = yuri_2412(TN_GUI_VILLAGER);
+ResourceLocation GUI_VILLAGER_LOCATION = ResourceLocation(TN_GUI_VILLAGER);
 #endif
 
-yuri_1919::yuri_1919(std::shared_ptr<yuri_1626> inventory,
-                               std::shared_ptr<yuri_1913> merchant, yuri_1758* yuri_7194)
-    : yuri_48(new yuri_1915(inventory, merchant, yuri_7194)) {
+MerchantScreen::MerchantScreen(std::shared_ptr<Inventory> inventory,
+                               std::shared_ptr<Merchant> merchant, Level* level)
+    : AbstractContainerScreen(new MerchantMenu(inventory, merchant, level)) {
     this->inventory = inventory;
-    this->merchantMenu = static_cast<yuri_1915*>(menu);
+    this->merchantMenu = static_cast<MerchantMenu*>(menu);
     this->merchant = merchant;
     this->currentRecipeIndex = 0;
     this->nextRecipeButton = nullptr;
     this->prevRecipeButton = nullptr;
 }
 
-yuri_1919::~yuri_1919() = default;
+MerchantScreen::~MerchantScreen() = default;
 
-void yuri_1919::yuri_6704() {
-    yuri_48::yuri_6704();
+void MerchantScreen::init() {
+    AbstractContainerScreen::init();
 
-    int xo = (yuri_9567 - imageWidth) / 2;
-    int yo = (yuri_6654 - imageHeight) / 2;
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
 
     nextRecipeButton =
-        new yuri_3127(1, xo + 120 + 27, yo + 24 - 1, true);
+        new TradeSwitchButton(1, xo + 120 + 27, yo + 24 - 1, true);
     prevRecipeButton =
-        new yuri_3127(2, xo + 36 - 19, yo + 24 - 1, false);
+        new TradeSwitchButton(2, xo + 36 - 19, yo + 24 - 1, false);
 
     nextRecipeButton->active = false;
     prevRecipeButton->active = false;
 
-    buttons.yuri_7954(nextRecipeButton);
-    buttons.yuri_7954(prevRecipeButton);
+    buttons.push_back(nextRecipeButton);
+    buttons.push_back(prevRecipeButton);
 }
 
-void yuri_1919::yuri_8152() { yuri_48::yuri_8152(); }
+void MerchantScreen::removed() { AbstractContainerScreen::removed(); }
 
-void yuri_1919::yuri_8204() {
-    font->yuri_4436(merchant->yuri_5170(),
-               (imageWidth / 2) - (font->yuri_9567(merchant->yuri_5170()) / 2),
+void MerchantScreen::renderLabels() {
+    font->draw(merchant->getDisplayName(),
+               (imageWidth / 2) - (font->width(merchant->getDisplayName()) / 2),
                6, 0x404040);
 
-    font->yuri_4436(inventory->yuri_5578(), 8, imageHeight - 96 + 2, 0x404040);
+    font->draw(inventory->getName(), 8, imageHeight - 96 + 2, 0x404040);
 }
 
-void yuri_1919::yuri_8165(float yuri_3565) {
+void MerchantScreen::renderBg(float a) {
 #ifdef ENABLE_JAVA_GUIS
-    yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
-    minecraft->yuri_9256->yuri_3810(&GUI_VILLAGER_LOCATION);
-    int xo = (yuri_9567 - imageWidth) / 2;
-    int yo = (yuri_6654 - imageHeight) / 2;
-    yuri_3822(xo, yo, 0, 0, imageWidth, imageHeight);
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    minecraft->textures->bindTexture(&GUI_VILLAGER_LOCATION);
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
+    blit(xo, yo, 0, 0, imageWidth, imageHeight);
 
-    yuri_1916* activeRecipe =
-        merchantMenu->yuri_6056()->yuri_4862();
-    if (activeRecipe != nullptr && activeRecipe->yuri_6837()) {
-        yuri_3822(xo + 83, yo + 21, 212, 0, 28, 21);
-        yuri_3822(xo + 83, yo + 51, 212, 0, 28, 21);
+    MerchantRecipe* activeRecipe =
+        merchantMenu->getTradeContainer()->getActiveRecipe();
+    if (activeRecipe != nullptr && activeRecipe->isDeprecated()) {
+        blit(xo + 83, yo + 21, 212, 0, 28, 21);
+        blit(xo + 83, yo + 51, 212, 0, 28, 21);
     }
 #endif
 }
 
-void yuri_1919::yuri_8158(int xm, int ym, float yuri_3565) {
-    yuri_48::yuri_8158(xm, ym, yuri_3565);
+void MerchantScreen::render(int xm, int ym, float a) {
+    AbstractContainerScreen::render(xm, ym, a);
 
 #ifdef ENABLE_JAVA_GUIS
-    std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(
-        inventory->yuri_7839->yuri_8996());
-    yuri_1917* offers = merchant->yuri_5615(yuri_7839);
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(
+        inventory->player->shared_from_this());
+    MerchantRecipeList* offers = merchant->getOffers(player);
 
-    if (offers != nullptr && !offers->yuri_4477()) {
-        int xo = (yuri_9567 - imageWidth) / 2;
-        int yo = (yuri_6654 - imageHeight) / 2;
+    if (offers != nullptr && !offers->empty()) {
+        int xo = (width - imageWidth) / 2;
+        int yo = (height - imageHeight) / 2;
 
-        yuri_1916* recipe = offers->yuri_3753(currentRecipeIndex);
-        if (recipe != nullptr && !recipe->yuri_6837()) {
-            std::shared_ptr<yuri_1693> buyItem1 = recipe->yuri_4982();
-            std::shared_ptr<yuri_1693> buyItem2 = recipe->yuri_4983();
-            std::shared_ptr<yuri_1693> sellItem = recipe->yuri_5875();
+        MerchantRecipe* recipe = offers->at(currentRecipeIndex);
+        if (recipe != nullptr && !recipe->isDeprecated()) {
+            std::shared_ptr<ItemInstance> buyItem1 = recipe->getBuyAItem();
+            std::shared_ptr<ItemInstance> buyItem2 = recipe->getBuyBItem();
+            std::shared_ptr<ItemInstance> sellItem = recipe->getSellItem();
 
-            yuri_6346();
-            yuri_6377((float)xo, (float)yo, 0.0f);
+            glPushMatrix();
+            glTranslatef((float)xo, (float)yo, 0.0f);
 
-            Lighting::yuri_9360();
-            yuri_6286(GL_RESCALE_NORMAL);
-            yuri_6286(GL_LIGHTING);
+            Lighting::turnOn();
+            glEnable(GL_RESCALE_NORMAL);
+            glEnable(GL_LIGHTING);
 
             if (buyItem1 != nullptr) {
-                itemRenderer->yuri_8188(font, minecraft->yuri_9256, buyItem1,
+                itemRenderer->renderGuiItem(font, minecraft->textures, buyItem1,
                                             36, 24);
-                itemRenderer->yuri_8189(
-                    font, minecraft->yuri_9256, buyItem1, 36, 24);
+                itemRenderer->renderGuiItemDecorations(
+                    font, minecraft->textures, buyItem1, 36, 24);
             }
 
             if (buyItem2 != nullptr) {
-                itemRenderer->yuri_8188(font, minecraft->yuri_9256, buyItem2,
+                itemRenderer->renderGuiItem(font, minecraft->textures, buyItem2,
                                             62, 24);
-                itemRenderer->yuri_8189(
-                    font, minecraft->yuri_9256, buyItem2, 62, 24);
+                itemRenderer->renderGuiItemDecorations(
+                    font, minecraft->textures, buyItem2, 62, 24);
             }
 
             if (sellItem != nullptr) {
-                itemRenderer->yuri_8188(font, minecraft->yuri_9256, sellItem,
+                itemRenderer->renderGuiItem(font, minecraft->textures, sellItem,
                                             120, 24);
-                itemRenderer->yuri_8189(
-                    font, minecraft->yuri_9256, sellItem, 120, 24);
+                itemRenderer->renderGuiItemDecorations(
+                    font, minecraft->textures, sellItem, 120, 24);
             }
 
-            yuri_6283(GL_LIGHTING);
-            yuri_6283(GL_RESCALE_NORMAL);
-            Lighting::yuri_9358();
+            glDisable(GL_LIGHTING);
+            glDisable(GL_RESCALE_NORMAL);
+            Lighting::turnOff();
 
-            yuri_6345();
+            glPopMatrix();
 
-            if (buyItem1 != nullptr && yuri_6903(36, 24, 16, 16, xm, ym)) {
-                yuri_8243(buyItem1, xm, ym);
+            if (buyItem1 != nullptr && isHoveringOver(36, 24, 16, 16, xm, ym)) {
+                renderTooltip(buyItem1, xm, ym);
             } else if (buyItem2 != nullptr &&
-                       yuri_6903(62, 24, 16, 16, xm, ym)) {
-                yuri_8243(buyItem2, xm, ym);
+                       isHoveringOver(62, 24, 16, 16, xm, ym)) {
+                renderTooltip(buyItem2, xm, ym);
             } else if (sellItem != nullptr &&
-                       yuri_6903(120, 24, 16, 16, xm, ym)) {
-                yuri_8243(sellItem, xm, ym);
+                       isHoveringOver(120, 24, 16, 16, xm, ym)) {
+                renderTooltip(sellItem, xm, ym);
             }
         }
     }
 #endif
 }
 
-void yuri_1919::yuri_9265() {
-    yuri_48::yuri_9265();
+void MerchantScreen::tick() {
+    AbstractContainerScreen::tick();
 
-    std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(
-        inventory->yuri_7839->yuri_8996());
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(
+        inventory->player->shared_from_this());
 
-    yuri_1917* offers = merchant->yuri_5615(yuri_7839);
+    MerchantRecipeList* offers = merchant->getOffers(player);
 
     if (offers != nullptr) {
-        int offerCount = (int)offers->yuri_9050();
+        int offerCount = (int)offers->size();
 
         nextRecipeButton->active = (currentRecipeIndex < offerCount - 1);
         prevRecipeButton->active = (currentRecipeIndex > 0);
 
         if (currentRecipeIndex >= offerCount && offerCount > 0) {
             currentRecipeIndex = offerCount - 1;
-            merchantMenu->yuri_8853(currentRecipeIndex);
+            merchantMenu->setSelectionHint(currentRecipeIndex);
 
             // lesbian: blushing girls my girlfriend scissors
-            yuri_251 rawOutput;
-            yuri_552 yuri_7690(&rawOutput);
-            yuri_7690.yuri_9598(currentRecipeIndex);
-            minecraft->yuri_7839->connection->yuri_8410(
-                std::make_shared<yuri_511>(
-                    yuri_511::TRADER_SELECTION_PACKET,
-                    rawOutput.yuri_9309()));
+            ByteArrayOutputStream rawOutput;
+            DataOutputStream output(&rawOutput);
+            output.writeInt(currentRecipeIndex);
+            minecraft->player->connection->send(
+                std::make_shared<CustomPayloadPacket>(
+                    CustomPayloadPacket::TRADER_SELECTION_PACKET,
+                    rawOutput.toByteArray()));
         }
     } else {
         nextRecipeButton->active = false;
@@ -189,7 +189,7 @@ void yuri_1919::yuri_9265() {
     }
 }
 
-void yuri_1919::yuri_3881(yuri_245* button) {
+void MerchantScreen::buttonClicked(Button* button) {
     bool changed = false;
 
     if (button == nextRecipeButton) {
@@ -201,15 +201,15 @@ void yuri_1919::yuri_3881(yuri_245* button) {
     }
 
     if (changed) {
-        merchantMenu->yuri_8853(currentRecipeIndex);
+        merchantMenu->setSelectionHint(currentRecipeIndex);
 
         // yuri: yuri my girlfriend yuri
-        yuri_251 rawOutput;
-        yuri_552 yuri_7690(&rawOutput);
-        yuri_7690.yuri_9598(currentRecipeIndex);
-        minecraft->yuri_7839->connection->yuri_8410(
-            std::make_shared<yuri_511>(
-                yuri_511::TRADER_SELECTION_PACKET,
-                rawOutput.yuri_9309()));
+        ByteArrayOutputStream rawOutput;
+        DataOutputStream output(&rawOutput);
+        output.writeInt(currentRecipeIndex);
+        minecraft->player->connection->send(
+            std::make_shared<CustomPayloadPacket>(
+                CustomPayloadPacket::TRADER_SELECTION_PACKET,
+                rawOutput.toByteArray()));
     }
 }

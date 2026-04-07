@@ -3,10 +3,10 @@
 #include "java/JavaMath.h"
 #include "minecraft/client/particle/Particle.h"
 
-class yuri_1758;
+class Level;
 
-void yuri_2339::yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
-                           float yuri_8382, float rCol, float gCol, float bCol) {
+void RedDustParticle::init(Level* level, double x, double y, double z,
+                           float scale, float rCol, float gCol, float bCol) {
     xd *= 0.1f;
     yd *= 0.1f;
     zd *= 0.1f;
@@ -17,53 +17,53 @@ void yuri_2339::yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_96
     if (rCol == 0 && gCol == 0 && bCol == 0) {
         rCol = 1;
     }
-    float brr = (float)Math::yuri_7981() * 0.4f + 0.6f;
-    this->rCol = ((float)(Math::yuri_7981() * 0.2f) + 0.8f) * rCol * brr;
-    this->gCol = ((float)(Math::yuri_7981() * 0.2f) + 0.8f) * gCol * brr;
-    this->bCol = ((float)(Math::yuri_7981() * 0.2f) + 0.8f) * bCol * brr;
-    yuri_9050 *= 0.75f;
-    yuri_9050 *= yuri_8382;
-    oSize = yuri_9050;
+    float brr = (float)Math::random() * 0.4f + 0.6f;
+    this->rCol = ((float)(Math::random() * 0.2f) + 0.8f) * rCol * brr;
+    this->gCol = ((float)(Math::random() * 0.2f) + 0.8f) * gCol * brr;
+    this->bCol = ((float)(Math::random() * 0.2f) + 0.8f) * bCol * brr;
+    size *= 0.75f;
+    size *= scale;
+    oSize = size;
 
-    lifetime = (int)(8 / (Math::yuri_7981() * 0.8 + 0.2));
-    lifetime = (int)(lifetime * yuri_8382);
+    lifetime = (int)(8 / (Math::random() * 0.8 + 0.2));
+    lifetime = (int)(lifetime * scale);
     noPhysics = false;
 }
 
-yuri_2339::yuri_2339(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
+RedDustParticle::RedDustParticle(Level* level, double x, double y, double z,
                                  float rCol, float gCol, float bCol)
-    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
-    yuri_6704(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 1, rCol, gCol, bCol);
+    : Particle(level, x, y, z, 0, 0, 0) {
+    init(level, x, y, z, 1, rCol, gCol, bCol);
 }
 
-yuri_2339::yuri_2339(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
-                                 float yuri_8382, float rCol, float gCol,
+RedDustParticle::RedDustParticle(Level* level, double x, double y, double z,
+                                 float scale, float rCol, float gCol,
                                  float bCol)
-    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
-    yuri_6704(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_8382, rCol, gCol, bCol);
+    : Particle(level, x, y, z, 0, 0, 0) {
+    init(level, x, y, z, scale, rCol, gCol, bCol);
 }
 
-void yuri_2339::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya,
+void RedDustParticle::render(Tesselator* t, float a, float xa, float ya,
                              float za, float xa2, float za2) {
-    float yuri_7176 = ((age + yuri_3565) / lifetime) * 32;
-    if (yuri_7176 < 0) yuri_7176 = 0;
-    if (yuri_7176 > 1) yuri_7176 = 1;
+    float l = ((age + a) / lifetime) * 32;
+    if (l < 0) l = 0;
+    if (l > 1) l = 1;
 
-    yuri_9050 = oSize * yuri_7176;
-    yuri_2090::yuri_8158(t, yuri_3565, xa, ya, za, xa2, za2);
+    size = oSize * l;
+    Particle::render(t, a, xa, ya, za, xa2, za2);
 }
 
-void yuri_2339::yuri_9265() {
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
+void RedDustParticle::tick() {
+    xo = x;
+    yo = y;
+    zo = z;
 
-    if (age++ >= lifetime) yuri_8099();
+    if (age++ >= lifetime) remove();
 
-    yuri_8730(7 - age * 8 / lifetime);
+    setMiscTex(7 - age * 8 / lifetime);
 
-    yuri_7515(xd, yd, zd);
-    if (yuri_9625 == yo) {
+    move(xd, yd, zd);
+    if (y == yo) {
         xd *= 1.1;
         zd *= 1.1;
     }

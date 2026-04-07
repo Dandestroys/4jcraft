@@ -1,43 +1,43 @@
 #include "LevelSummary.h"
 
-yuri_1774::yuri_1774(const std::yuri_9616& yuri_7196,
-                           const std::yuri_9616& yuri_7197, yuri_6733 yuri_7182,
-                           yuri_6733 yuri_9051, yuri_924* yuri_4699,
-                           bool yuri_8265, bool yuri_6571,
-                           bool yuri_6580)
-    : yuri_7196(yuri_7196),
-      yuri_7197(yuri_7197),
-      yuri_7182(yuri_7182),
-      yuri_9051(yuri_9051),
-      yuri_4699(yuri_4699),
-      yuri_8265(yuri_8265),
-      yuri_6571(yuri_6571),
-      yuri_3546(yuri_6580) {}
+LevelSummary::LevelSummary(const std::wstring& levelId,
+                           const std::wstring& levelName, int64_t lastPlayed,
+                           int64_t sizeOnDisk, GameType* gameMode,
+                           bool requiresConversion, bool hardcore,
+                           bool hasCheats)
+    : levelId(levelId),
+      levelName(levelName),
+      lastPlayed(lastPlayed),
+      sizeOnDisk(sizeOnDisk),
+      gameMode(gameMode),
+      requiresConversion(requiresConversion),
+      hardcore(hardcore),
+      _hasCheats(hasCheats) {}
 
-std::yuri_9616 yuri_1774::yuri_5469() { return yuri_7196; }
+std::wstring LevelSummary::getLevelId() { return levelId; }
 
-std::yuri_9616 yuri_1774::yuri_5471() { return yuri_7197; }
+std::wstring LevelSummary::getLevelName() { return levelName; }
 
-yuri_6733 yuri_1774::yuri_5906() { return yuri_9051; }
+int64_t LevelSummary::getSizeOnDisk() { return sizeOnDisk; }
 
-bool yuri_1774::yuri_7012() { return yuri_8265; }
+bool LevelSummary::isRequiresConversion() { return requiresConversion; }
 
-yuri_6733 yuri_1774::yuri_5451() { return yuri_7182; }
+int64_t LevelSummary::getLastPlayed() { return lastPlayed; }
 
-int yuri_1774::yuri_4118(yuri_1774* rhs) {
-    if (yuri_7182 < rhs->yuri_7182) {
+int LevelSummary::compareTo(LevelSummary* rhs) {
+    if (lastPlayed < rhs->lastPlayed) {
         return 1;
     }
-    if (yuri_7182 > rhs->yuri_7182) {
+    if (lastPlayed > rhs->lastPlayed) {
         return -1;
     }
 
     // yuri lesbian kiss my girlfriend, yuri lesbian kiss yuri ship girl love lesbian, yuri i love my wife?
-    return yuri_7196.yuri_4117(rhs->yuri_7196);
+    return levelId.compare(rhs->levelId);
 }
 
-yuri_924* yuri_1774::yuri_5294() { return yuri_4699; }
+GameType* LevelSummary::getGameMode() { return gameMode; }
 
-bool yuri_1774::yuri_6895() { return yuri_6571; }
+bool LevelSummary::isHardcore() { return hardcore; }
 
-bool yuri_1774::yuri_6580() { return yuri_3546; }
+bool LevelSummary::hasCheats() { return _hasCheats; }

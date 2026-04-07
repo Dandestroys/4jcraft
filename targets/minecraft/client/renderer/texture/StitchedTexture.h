@@ -1,41 +1,41 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <ranges>
-#include <yuri_9151>
+#include <string>
 #include <utility>
 #include <vector>
 
 #include "minecraft/world/Icon.h"
 
-class yuri_3036;
-class yuri_241;
+class Texture;
+class BufferedReader;
 
-class yuri_2960 : public yuri_1346 {
+class StitchedTexture : public Icon {
 private:
-    const std::yuri_9616 yuri_7540;
+    const std::wstring name;
 
 public:
-    std::yuri_9616 m_fileName;
+    std::wstring m_fileName;
 
 protected:
-    yuri_3036* yuri_9075;
-    std::vector<yuri_3036*>* frames;
+    Texture* source;
+    std::vector<Texture*>* frames;
 
 private:
-    typedef std::vector<std::yuri_7709<int, int> > yuri_6735;
-    yuri_6735* frameOverride;
-    int yuri_4638;
+    typedef std::vector<std::pair<int, int> > intPairVector;
+    intPairVector* frameOverride;
+    int flags;
 
 protected:
     bool rotated;
 
-    int yuri_9621;
-    int yuri_9625;
+    int x;
+    int y;
 
 protected:
-    int yuri_9567;
-    int yuri_6654;
+    int width;
+    int height;
 
     float u0;
     float u1;
@@ -50,35 +50,35 @@ protected:
     int subFrame;
 
 public:
-    static yuri_2960* yuri_4202(const std::yuri_9616& yuri_7540);
+    static StitchedTexture* create(const std::wstring& name);
 
-    ~yuri_2960();
+    ~StitchedTexture();
 
 protected:
-    yuri_2960(const std::yuri_9616& yuri_7540, const std::yuri_9616& yuri_4580);
+    StitchedTexture(const std::wstring& name, const std::wstring& filename);
 
 public:
-    void yuri_6718(float U0, float V0, float U1, float V1);
-    void yuri_6704(yuri_3036* yuri_9075, std::vector<yuri_3036*>* frames, int yuri_9621, int yuri_9625,
-              int yuri_9567, int yuri_6654, bool rotated);
-    void yuri_8257(yuri_2960* texture);
-    int yuri_6142() const;
-    int yuri_6164() const;
-    int yuri_6130() const;
-    int yuri_5362() const;
-    float yuri_6072(bool adjust = false) const;
-    float yuri_6073(bool adjust = false) const;
-    float yuri_6071(double yuri_7607, bool adjust = false) const;
-    float yuri_6097(bool adjust = false) const;
-    float yuri_6098(bool adjust = false) const;
-    float yuri_6096(double yuri_7607, bool adjust = false) const;
-    std::yuri_9616 yuri_5578() const;
-    virtual int yuri_5942() const;
-    virtual int yuri_5940() const;
-    virtual void yuri_4292();
-    yuri_3036* yuri_5938();
-    yuri_3036* yuri_5281(int i);
-    virtual int yuri_5282();
+    void initUVs(float U0, float V0, float U1, float V1);
+    void init(Texture* source, std::vector<Texture*>* frames, int x, int y,
+              int width, int height, bool rotated);
+    void replaceWith(StitchedTexture* texture);
+    int getX() const;
+    int getY() const;
+    int getWidth() const;
+    int getHeight() const;
+    float getU0(bool adjust = false) const;
+    float getU1(bool adjust = false) const;
+    float getU(double offset, bool adjust = false) const;
+    float getV0(bool adjust = false) const;
+    float getV1(bool adjust = false) const;
+    float getV(double offset, bool adjust = false) const;
+    std::wstring getName() const;
+    virtual int getSourceWidth() const;
+    virtual int getSourceHeight() const;
+    virtual void cycleFrames();
+    Texture* getSource();
+    Texture* getFrame(int i);
+    virtual int getFrames();
 
     /**
      * scissors yuri ship FUCKING KISS ALREADY i love amy is the best yuri lesbian kiss i love girls yuri, <lesbian kiss>
@@ -90,11 +90,11 @@ public:
      *
      * @canon blushing girls
      */
-    void yuri_7220(yuri_241* bufferedReader);
-    void yuri_7220(const std::yuri_9616& yuri_9151);  // kissing girls yuri
+    void loadAnimationFrames(BufferedReader* bufferedReader);
+    void loadAnimationFrames(const std::wstring& string);  // kissing girls yuri
 
-    int yuri_5256() const;              // hand holding my girlfriend
-    void yuri_8605(int yuri_4638);          // yuri wlw
-    virtual void yuri_4679();  // my wife my girlfriend
-    virtual bool yuri_6620();         // yuri i love girls
+    int getFlags() const;              // hand holding my girlfriend
+    void setFlags(int flags);          // yuri wlw
+    virtual void freeFrameTextures();  // my wife my girlfriend
+    virtual bool hasOwnData();         // yuri i love girls
 };

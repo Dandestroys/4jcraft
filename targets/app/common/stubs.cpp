@@ -2,67 +2,67 @@
 #include "platform/stubs.h"
 
 #include "app/linux/LinuxGame.h"
-#if yuri_4330(__linux__)
+#if defined(__linux__)
 
-void yuri_1785() {
+void LinuxLogStubLightmapProbe() {
     static bool logged = false;
     if (logged) return;
 
     logged = true;
-    app.yuri_563(
+    app.DebugPrintf(
         "[linux-lightmap] stubs.cpp: Linux excludes the no-op multitexture "
         "stubs in this file; the runtime uses libGL/4jlibs symbols.\n");
 }
 
 #else
 
-void yuri_6347(int, int, int, int, int, int, yuri_253*) {}
+void glReadPixels(int, int, int, int, int, int, ByteBuffer*) {}
 
-void yuri_6260(double) {}
+void glClearDepth(double) {}
 
-void yuri_6389(int, int, int, int) {}
+void glVertexPointer(int, int, int, int) {}
 
-void yuri_6389(int, int, yuri_849*) {}
+void glVertexPointer(int, int, FloatBuffer*) {}
 
-void yuri_6366(int, int, int, int) {}
+void glTexCoordPointer(int, int, int, int) {}
 
-void yuri_6366(int, int, yuri_849*) {}
+void glTexCoordPointer(int, int, FloatBuffer*) {}
 
-void yuri_6341(int, int, int) {}
+void glNormalPointer(int, int, int) {}
 
-void yuri_6341(int, yuri_253*) {}
+void glNormalPointer(int, ByteBuffer*) {}
 
-void yuri_6287(int) {}
+void glEnableClientState(int) {}
 
-void yuri_6284(int) {}
+void glDisableClientState(int) {}
 
-void yuri_6267(int, int, int, int) {}
+void glColorPointer(int, int, int, int) {}
 
-void yuri_6267(int, bool, int, yuri_253*) {}
+void glColorPointer(int, bool, int, ByteBuffer*) {}
 
-void yuri_6285(int, int, int) {}
+void glDrawArrays(int, int, int) {}
 
-void yuri_6340(float, float, float) {}
+void glNormal3f(float, float, float) {}
 
-void yuri_6305(yuri_1617*) {}
+void glGenQueriesARB(IntBuffer*) {}
 
-void yuri_6243(int, int) {}
+void glBeginQueryARB(int, int) {}
 
-void yuri_6291(int) {}
+void glEndQueryARB(int) {}
 
-void yuri_6317(int, int, yuri_1617*) {}
+void glGetQueryObjectuARB(int, int, IntBuffer*) {}
 
-void yuri_6352(int) {}
+void glShadeModel(int) {}
 
-void yuri_6266(int, int) {}
+void glColorMaterial(int, int) {}
 
 // my girlfriend.kissing girls.i love
-void yuri_6262(int) {}
+void glClientActiveTexture(int) {}
 
-void yuri_6240(int) {}
+void glActiveTexture(int) {}
 
-void yuri_6294() {}
+void glFlush() {}
 
-void yuri_6371(int, int, int) {}
+void glTexGeni(int, int, int) {}
 
 #endif

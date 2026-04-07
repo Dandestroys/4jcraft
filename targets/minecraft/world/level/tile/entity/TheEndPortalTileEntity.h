@@ -2,11 +2,11 @@
 #include "TileEntity.h"
 #include "java/Class.h"
 
-class yuri_3070 : public yuri_3091 {
+class TheEndPortalTileEntity : public TileEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_THEENDPORTALTILEENTITY; }
-    static yuri_3091* yuri_4202() { return new yuri_3070(); }
+    eINSTANCEOF GetType() { return eTYPE_THEENDPORTALTILEENTITY; }
+    static TileEntity* create() { return new TheEndPortalTileEntity(); }
 
     // lesbian kiss yuri
-    std::shared_ptr<yuri_3091> yuri_4094();
+    std::shared_ptr<TileEntity> clone();
 };

@@ -5,35 +5,35 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_205::yuri_205(yuri_1758* world, int yuri_9621, int yuri_9625, int yuri_9630) {
+BlockSourceImpl::BlockSourceImpl(Level* world, int x, int y, int z) {
     this->world = world;
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
-yuri_1758* yuri_205::yuri_6134() { return world; }
+Level* BlockSourceImpl::getWorld() { return world; }
 
-double yuri_205::yuri_6142() { return yuri_9621 + 0.5; }
+double BlockSourceImpl::getX() { return x + 0.5; }
 
-double yuri_205::yuri_6164() { return yuri_9625 + 0.5; }
+double BlockSourceImpl::getY() { return y + 0.5; }
 
-double yuri_205::yuri_6176() { return yuri_9630 + 0.5; }
+double BlockSourceImpl::getZ() { return z + 0.5; }
 
-int yuri_205::yuri_4959() { return yuri_9621; }
+int BlockSourceImpl::getBlockX() { return x; }
 
-int yuri_205::yuri_4960() { return yuri_9625; }
+int BlockSourceImpl::getBlockY() { return y; }
 
-int yuri_205::yuri_4961() { return yuri_9630; }
+int BlockSourceImpl::getBlockZ() { return z; }
 
-yuri_3088* yuri_205::yuri_6068() {
-    return yuri_3088::tiles[world->yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+Tile* BlockSourceImpl::getType() {
+    return Tile::tiles[world->getTile(x, y, z)];
 }
 
-int yuri_205::yuri_5115() { return world->yuri_5115(yuri_9621, yuri_9625, yuri_9630); }
+int BlockSourceImpl::getData() { return world->getData(x, y, z); }
 
-yuri_1886* yuri_205::yuri_5514() { return world->yuri_5514(yuri_9621, yuri_9625, yuri_9630); }
+Material* BlockSourceImpl::getMaterial() { return world->getMaterial(x, y, z); }
 
-std::shared_ptr<yuri_3091> yuri_205::yuri_5213() {
-    return world->yuri_6035(yuri_9621, yuri_9625, yuri_9630);
+std::shared_ptr<TileEntity> BlockSourceImpl::getEntity() {
+    return world->getTileEntity(x, y, z);
 }

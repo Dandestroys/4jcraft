@@ -1,22 +1,22 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
 #include "LargeFeature.h"
 #include "minecraft/world/level/levelgen/LargeFeature.h"
 
-class yuri_1730 : public yuri_1732 {
+class LargeCaveFeature : public LargeFeature {
 protected:
-    void yuri_3670(yuri_6733 yuri_8396, int xOffs, int zOffs,
-                 std::vector<yuri_9368>& blocks, double xRoom, double yRoom,
+    void addRoom(int64_t seed, int xOffs, int zOffs,
+                 std::vector<uint8_t>& blocks, double xRoom, double yRoom,
                  double zRoom);
-    void yuri_3692(yuri_6733 yuri_8396, int xOffs, int zOffs,
-                   std::vector<yuri_9368>& blocks, double xCave, double yCave,
-                   double zCave, float thickness, float yuri_9628, float yuri_9624,
-                   int step, int yuri_4382, double yScale);
-    virtual void yuri_3613(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int xOffs, int zOffs,
-                            std::vector<yuri_9368>& blocks);
+    void addTunnel(int64_t seed, int xOffs, int zOffs,
+                   std::vector<uint8_t>& blocks, double xCave, double yCave,
+                   double zCave, float thickness, float yRot, float xRot,
+                   int step, int dist, double yScale);
+    virtual void addFeature(Level* level, int x, int z, int xOffs, int zOffs,
+                            std::vector<uint8_t>& blocks);
 };

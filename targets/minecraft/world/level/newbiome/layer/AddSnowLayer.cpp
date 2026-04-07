@@ -1,7 +1,7 @@
 
 #include "minecraft/world/level/newbiome/layer/AddSnowLayer.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 #include <vector>
@@ -9,34 +9,34 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-yuri_85::yuri_85(yuri_6733 seedMixup, std::shared_ptr<yuri_1742> yuri_7791)
-    : yuri_1742(seedMixup) {
-    this->yuri_7791 = yuri_7791;
+AddSnowLayer::AddSnowLayer(int64_t seedMixup, std::shared_ptr<Layer> parent)
+    : Layer(seedMixup) {
+    this->parent = parent;
 }
 
-std::vector<int> yuri_85::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
+std::vector<int> AddSnowLayer::getArea(int xo, int yo, int w, int h) {
     int px = xo - 1;
     int py = yo - 1;
-    int pw = yuri_9535 + 2;
-    int ph = yuri_6412 + 2;
-    std::vector<int> yuri_7701 = yuri_7791->yuri_4897(px, py, pw, ph);
+    int pw = w + 2;
+    int ph = h + 2;
+    std::vector<int> p = parent->getArea(px, py, pw, ph);
 
-    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
-    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
-        for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
-            int c = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 1) * pw];
-            yuri_6715(yuri_9621 + xo, yuri_9625 + yo);
+    std::vector<int> result(w * h);
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            int c = p[(x + 1) + (y + 1) * pw];
+            initRandom(x + xo, y + yo);
             if (c == 0) {
-                yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = 0;
+                result[x + y * w] = 0;
             } else {
-                int r = yuri_7580(5);
+                int r = nextRandom(5);
                 if (r == 0)
-                    r = yuri_190::iceFlats->yuri_6674;
+                    r = Biome::iceFlats->id;
                 else
                     r = 1;
-                yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = r;
+                result[x + y * w] = r;
             }
         }
     }
-    return yuri_8300;
+    return result;
 }

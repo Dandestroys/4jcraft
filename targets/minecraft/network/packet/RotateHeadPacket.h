@@ -7,26 +7,26 @@
 #include "java/InputOutputStream/InputOutputStream.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_2440 : public yuri_2081,
-                         public std::enable_shared_from_this<yuri_2440> {
+class RotateHeadPacket : public Packet,
+                         public std::enable_shared_from_this<RotateHeadPacket> {
 public:
-    int yuri_6674;
+    int id;
     char yHeadRot;
 
-    yuri_2440();
-    yuri_2440(int yuri_6674, char yHeadRot);
+    RotateHeadPacket();
+    RotateHeadPacket(int id, char yHeadRot);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual void yuri_6416(PacketListener* listener);
-    virtual int yuri_5222();
-    virtual bool yuri_3909();
-    virtual bool yuri_6931(std::shared_ptr<yuri_2081> packet);
-    virtual bool yuri_6780();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual void handle(PacketListener* listener);
+    virtual int getEstimatedSize();
+    virtual bool canBeInvalidated();
+    virtual bool isInvalidatedBy(std::shared_ptr<Packet> packet);
+    virtual bool isAync();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_2440>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<RotateHeadPacket>();
     }
-    virtual int yuri_5390() { return 35; }
+    virtual int getId() { return 35; }
 };

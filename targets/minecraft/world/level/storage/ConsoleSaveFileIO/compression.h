@@ -4,7 +4,7 @@
 
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/FileHeader.h"
 
-class yuri_415 {
+class Compression {
 public:
     enum ECompressionTypes {
         eCompressionType_None = 0,
@@ -14,42 +14,42 @@ public:
     };
 
 private:
-    class yuri_3074 {
+    class ThreadStorage {
     public:
-        yuri_415* compression;
-        yuri_3074();
-        ~yuri_3074();
+        Compression* compression;
+        ThreadStorage();
+        ~ThreadStorage();
     };
-    static thread_local yuri_3074* m_tlsCompression;
-    static yuri_3074* m_tlsCompressionDefault;
+    static thread_local ThreadStorage* m_tlsCompression;
+    static ThreadStorage* m_tlsCompressionDefault;
 
 public:
-    static void yuri_484();
-    static void yuri_3308();
-    static void yuri_2369();
-    static yuri_415* yuri_5048();
+    static void CreateNewThreadStorage();
+    static void UseDefaultThreadStorage();
+    static void ReleaseThreadStorage();
+    static Compression* getCompression();
 
-    yuri_6732 yuri_410(void* pDestination, unsigned int* pDestSize, void* pSource,
+    int32_t Compress(void* pDestination, unsigned int* pDestSize, void* pSource,
                      unsigned int SrcSize);
-    yuri_6732 yuri_570(void* pDestination, unsigned int* pDestSize,
+    int32_t Decompress(void* pDestination, unsigned int* pDestSize,
                        void* pSource, unsigned int SrcSize);
-    yuri_6732 yuri_411(void* pDestination, unsigned int* pDestSize,
+    int32_t CompressLZXRLE(void* pDestination, unsigned int* pDestSize,
                            void* pSource, unsigned int SrcSize);
-    yuri_6732 yuri_571(void* pDestination, unsigned int* pDestSize,
+    int32_t DecompressLZXRLE(void* pDestination, unsigned int* pDestSize,
                              void* pSource, unsigned int SrcSize);
-    yuri_6732 yuri_412(void* pDestination, unsigned int* pDestSize,
+    int32_t CompressRLE(void* pDestination, unsigned int* pDestSize,
                         void* pSource, unsigned int SrcSize);
-    yuri_6732 yuri_572(void* pDestination, unsigned int* pDestSize,
+    int32_t DecompressRLE(void* pDestination, unsigned int* pDestSize,
                           void* pSource, unsigned int SrcSize);
 
-    void yuri_2603(ECompressionTypes yuri_9364) {
-        m_decompressType = yuri_9364;
+    void SetDecompressionType(ECompressionTypes type) {
+        m_decompressType = type;
     }
-    ECompressionTypes yuri_983() { return m_decompressType; }
-    void yuri_2603(ESavePlatform platform);
+    ECompressionTypes GetDecompressionType() { return m_decompressType; }
+    void SetDecompressionType(ESavePlatform platform);
 
-    yuri_415();
-    ~yuri_415();
+    Compression();
+    ~Compression();
 
 private:
     std::mutex rleCompressLock;
@@ -61,4 +61,4 @@ private:
     ECompressionTypes m_localDecompressType;
 };
 
-#yuri_4327 APPROPRIATE_COMPRESSION_TYPE yuri_415::eCompressionType_ZLIBRLE
+#define APPROPRIATE_COMPRESSION_TYPE Compression::eCompressionType_ZLIBRLE

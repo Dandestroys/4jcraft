@@ -24,11 +24,11 @@
 #include <cstring>
 #include <sstream>
 #include <chrono>
-#include <yuri_9260>
+#include <thread>
 
-unsigned char yuri_1912::m_szPNG[8] = {137, 80, 78, 71, 13, 10, 26, 10};
+unsigned char MenuController::m_szPNG[8] = {137, 80, 78, 71, 13, 10, 26, 10};
 
-yuri_1912::yuri_1912() {
+MenuController::MenuController() {
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         m_eTMSAction[i] = eTMSAction_Idle;
         m_eXuiAction[i] = eAppAction_Idle;
@@ -39,524 +39,524 @@ yuri_1912::yuri_1912() {
     m_eGlobalXuiServerAction = eXuiServerAction_Idle;
 }
 
-void yuri_1912::yuri_8438(int iPad, eXuiAction action, void* param) {
+void MenuController::setAction(int iPad, eXuiAction action, void* param) {
     if ((m_eXuiAction[iPad] == eAppAction_ReloadTexturePack) &&
         (action == eAppAction_EthernetDisconnected)) {
-        app.yuri_563(
+        app.DebugPrintf(
             "Invalid change of App action for pad %d from %d to %d, ignoring\n",
             iPad, m_eXuiAction[iPad], action);
     } else if ((m_eXuiAction[iPad] == eAppAction_ReloadTexturePack) &&
                (action == eAppAction_ExitWorld)) {
-        app.yuri_563(
+        app.DebugPrintf(
             "Invalid change of App action for pad %d from %d to %d, ignoring\n",
             iPad, m_eXuiAction[iPad], action);
     } else if (m_eXuiAction[iPad] == eAppAction_ExitWorldCapturedThumbnail &&
                action != eAppAction_Idle) {
-        app.yuri_563(
+        app.DebugPrintf(
             "Invalid change of App action for pad %d from %d to %d, ignoring\n",
             iPad, m_eXuiAction[iPad], action);
     } else {
-        app.yuri_563("Changing App action for pad %d from %d to %d\n", iPad,
+        app.DebugPrintf("Changing App action for pad %d from %d to %d\n", iPad,
                         m_eXuiAction[iPad], action);
         m_eXuiAction[iPad] = action;
         m_eXuiActionParam[iPad] = param;
     }
 }
 
-bool yuri_1912::yuri_7255(int iPad,
-                                       std::shared_ptr<yuri_1829> yuri_7839,
+bool MenuController::loadInventoryMenu(int iPad,
+                                       std::shared_ptr<LocalPlayer> player,
                                        bool bNavigateBack) {
     bool success = true;
 
-    yuri_1629* initData = new yuri_1629();
-    initData->yuri_7839 = yuri_7839;
+    InventoryScreenInput* initData = new InventoryScreenInput();
+    initData->player = player;
     initData->bNavigateBack = bNavigateBack;
     initData->iPad = iPad;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_InventoryMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_InventoryMenu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_InventoryMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_InventoryMenu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7235(int iPad,
-                                      std::shared_ptr<yuri_1829> yuri_7839,
+bool MenuController::loadCreativeMenu(int iPad,
+                                      std::shared_ptr<LocalPlayer> player,
                                       bool bNavigateBack) {
     bool success = true;
 
-    yuri_1629* initData = new yuri_1629();
-    initData->yuri_7839 = yuri_7839;
+    InventoryScreenInput* initData = new InventoryScreenInput();
+    initData->player = player;
     initData->bNavigateBack = bNavigateBack;
     initData->iPad = iPad;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_CreativeMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_CreativeMenu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_CreativeMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_CreativeMenu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7233(int iPad,
-                                         std::shared_ptr<yuri_1829> yuri_7839) {
+bool MenuController::loadCrafting2x2Menu(int iPad,
+                                         std::shared_ptr<LocalPlayer> player) {
     bool success = true;
 
-    yuri_471* initData = new yuri_471();
-    initData->yuri_7839 = yuri_7839;
+    CraftingPanelScreenInput* initData = new CraftingPanelScreenInput();
+    initData->player = player;
     initData->iContainerType = RECIPE_TYPE_2x2;
     initData->iPad = iPad;
-    initData->yuri_9621 = 0;
-    initData->yuri_9625 = 0;
-    initData->yuri_9630 = 0;
+    initData->x = 0;
+    initData->y = 0;
+    initData->z = 0;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_Crafting2x2Menu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_Crafting2x2Menu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_Crafting2x2Menu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_Crafting2x2Menu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7234(int iPad,
-                                         std::shared_ptr<yuri_1829> yuri_7839,
-                                         int yuri_9621, int yuri_9625, int yuri_9630) {
+bool MenuController::loadCrafting3x3Menu(int iPad,
+                                         std::shared_ptr<LocalPlayer> player,
+                                         int x, int y, int z) {
     bool success = true;
 
-    yuri_471* initData = new yuri_471();
-    initData->yuri_7839 = yuri_7839;
+    CraftingPanelScreenInput* initData = new CraftingPanelScreenInput();
+    initData->player = player;
     initData->iContainerType = RECIPE_TYPE_3x3;
     initData->iPad = iPad;
-    initData->yuri_9621 = yuri_9621;
-    initData->yuri_9625 = yuri_9625;
-    initData->yuri_9630 = yuri_9630;
+    initData->x = x;
+    initData->y = y;
+    initData->z = z;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_Crafting3x3Menu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_Crafting3x3Menu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_Crafting3x3Menu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_Crafting3x3Menu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7246(int iPad,
-                                       std::shared_ptr<yuri_1829> yuri_7839,
-                                       int yuri_9621, int yuri_9625, int yuri_9630) {
+bool MenuController::loadFireworksMenu(int iPad,
+                                       std::shared_ptr<LocalPlayer> player,
+                                       int x, int y, int z) {
     bool success = true;
 
-    yuri_832* initData = new yuri_832();
-    initData->yuri_7839 = yuri_7839;
+    FireworksScreenInput* initData = new FireworksScreenInput();
+    initData->player = player;
     initData->iPad = iPad;
-    initData->yuri_9621 = yuri_9621;
-    initData->yuri_9625 = yuri_9625;
-    initData->yuri_9630 = yuri_9630;
+    initData->x = x;
+    initData->y = y;
+    initData->z = z;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_FireworksMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_FireworksMenu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_FireworksMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_FireworksMenu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7244(int iPad,
-                                        std::shared_ptr<yuri_1626> inventory,
-                                        int yuri_9621, int yuri_9625, int yuri_9630, yuri_1758* yuri_7194,
-                                        const std::yuri_9616& yuri_7540) {
+bool MenuController::loadEnchantingMenu(int iPad,
+                                        std::shared_ptr<Inventory> inventory,
+                                        int x, int y, int z, Level* level,
+                                        const std::wstring& name) {
     bool success = true;
 
-    yuri_701* initData = new yuri_701();
+    EnchantingScreenInput* initData = new EnchantingScreenInput();
     initData->inventory = inventory;
-    initData->yuri_7194 = yuri_7194;
-    initData->yuri_9621 = yuri_9621;
-    initData->yuri_9625 = yuri_9625;
-    initData->yuri_9630 = yuri_9630;
+    initData->level = level;
+    initData->x = x;
+    initData->y = y;
+    initData->z = z;
     initData->iPad = iPad;
-    initData->yuri_7540 = yuri_7540;
+    initData->name = name;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_EnchantingMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_EnchantingMenu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_EnchantingMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_EnchantingMenu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7247(
-    int iPad, std::shared_ptr<yuri_1626> inventory,
-    std::shared_ptr<yuri_888> furnace) {
+bool MenuController::loadFurnaceMenu(
+    int iPad, std::shared_ptr<Inventory> inventory,
+    std::shared_ptr<FurnaceTileEntity> furnace) {
     bool success = true;
 
-    yuri_886* initData = new yuri_886();
+    FurnaceScreenInput* initData = new FurnaceScreenInput();
     initData->furnace = furnace;
     initData->inventory = inventory;
     initData->iPad = iPad;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_FurnaceMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_FurnaceMenu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_FurnaceMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_FurnaceMenu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7227(
-    int iPad, std::shared_ptr<yuri_1626> inventory,
-    std::shared_ptr<yuri_230> brewingStand) {
+bool MenuController::loadBrewingStandMenu(
+    int iPad, std::shared_ptr<Inventory> inventory,
+    std::shared_ptr<BrewingStandTileEntity> brewingStand) {
     bool success = true;
 
-    yuri_226* initData = new yuri_226();
+    BrewingScreenInput* initData = new BrewingScreenInput();
     initData->brewingStand = brewingStand;
     initData->inventory = inventory;
     initData->iPad = iPad;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_BrewingStandMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_BrewingStandMenu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_BrewingStandMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_BrewingStandMenu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7231(int iPad,
-                                       std::shared_ptr<yuri_436> inventory,
-                                       std::shared_ptr<yuri_436> yuri_4145) {
+bool MenuController::loadContainerMenu(int iPad,
+                                       std::shared_ptr<Container> inventory,
+                                       std::shared_ptr<Container> container) {
     bool success = true;
 
-    yuri_446* initData = new yuri_446();
+    ContainerScreenInput* initData = new ContainerScreenInput();
     initData->inventory = inventory;
-    initData->yuri_4145 = yuri_4145;
+    initData->container = container;
     initData->iPad = iPad;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
 
         bool bLargeChest =
-            (initData->yuri_4145->yuri_5058() > 3 * 9) ? true : false;
+            (initData->container->getContainerSize() > 3 * 9) ? true : false;
         if (bLargeChest) {
             success =
-                ui.yuri_2011(iPad, eUIScene_LargeContainerMenu, initData);
+                ui.NavigateToScene(iPad, eUIScene_LargeContainerMenu, initData);
         } else {
             success =
-                ui.yuri_2011(iPad, eUIScene_ContainerMenu, initData);
+                ui.NavigateToScene(iPad, eUIScene_ContainerMenu, initData);
         }
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_ContainerMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_ContainerMenu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7280(
-    int iPad, std::shared_ptr<yuri_436> inventory,
-    std::shared_ptr<yuri_626> trap) {
+bool MenuController::loadTrapMenu(
+    int iPad, std::shared_ptr<Container> inventory,
+    std::shared_ptr<DispenserTileEntity> trap) {
     bool success = true;
 
-    yuri_3135* initData = new yuri_3135();
+    TrapScreenInput* initData = new TrapScreenInput();
     initData->inventory = inventory;
     initData->trap = trap;
     initData->iPad = iPad;
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
         initData->bSplitscreen = true;
-        success = ui.yuri_2011(iPad, eUIScene_DispenserMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_DispenserMenu, initData);
     } else {
         initData->bSplitscreen = false;
-        success = ui.yuri_2011(iPad, eUIScene_DispenserMenu, initData);
+        success = ui.NavigateToScene(iPad, eUIScene_DispenserMenu, initData);
     }
 
     return success;
 }
 
-bool yuri_1912::yuri_7268(
-    int iPad, std::shared_ptr<yuri_2817> sign) {
+bool MenuController::loadSignEntryMenu(
+    int iPad, std::shared_ptr<SignTileEntity> sign) {
     bool success = true;
 
-    yuri_2810* initData = new yuri_2810();
+    SignEntryScreenInput* initData = new SignEntryScreenInput();
     initData->sign = sign;
     initData->iPad = iPad;
 
-    success = ui.yuri_2011(iPad, eUIScene_SignEntryMenu, initData);
+    success = ui.NavigateToScene(iPad, eUIScene_SignEntryMenu, initData);
 
     delete initData;
 
     return success;
 }
 
-bool yuri_1912::yuri_7263(int iPad,
-                                       std::shared_ptr<yuri_1626> inventory,
-                                       yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool MenuController::loadRepairingMenu(int iPad,
+                                       std::shared_ptr<Inventory> inventory,
+                                       Level* level, int x, int y, int z) {
     bool success = true;
 
-    yuri_118* initData = new yuri_118();
+    AnvilScreenInput* initData = new AnvilScreenInput();
     initData->inventory = inventory;
-    initData->yuri_7194 = yuri_7194;
-    initData->yuri_9621 = yuri_9621;
-    initData->yuri_9625 = yuri_9625;
-    initData->yuri_9630 = yuri_9630;
+    initData->level = level;
+    initData->x = x;
+    initData->y = y;
+    initData->z = z;
     initData->iPad = iPad;
-    if (app.yuri_1065() > 1)
+    if (app.GetLocalPlayerCount() > 1)
         initData->bSplitscreen = true;
     else
         initData->bSplitscreen = false;
 
-    success = ui.yuri_2011(iPad, eUIScene_AnvilMenu, initData);
+    success = ui.NavigateToScene(iPad, eUIScene_AnvilMenu, initData);
 
     return success;
 }
 
-bool yuri_1912::yuri_7279(int iPad,
-                                     std::shared_ptr<yuri_1626> inventory,
-                                     std::shared_ptr<yuri_1913> trader,
-                                     yuri_1758* yuri_7194, const std::yuri_9616& yuri_7540) {
+bool MenuController::loadTradingMenu(int iPad,
+                                     std::shared_ptr<Inventory> inventory,
+                                     std::shared_ptr<Merchant> trader,
+                                     Level* level, const std::wstring& name) {
     bool success = true;
 
-    yuri_3129* initData = new yuri_3129();
+    TradingScreenInput* initData = new TradingScreenInput();
     initData->inventory = inventory;
     initData->trader = trader;
-    initData->yuri_7194 = yuri_7194;
+    initData->level = level;
     initData->iPad = iPad;
-    if (app.yuri_1065() > 1)
+    if (app.GetLocalPlayerCount() > 1)
         initData->bSplitscreen = true;
     else
         initData->bSplitscreen = false;
 
-    success = ui.yuri_2011(iPad, eUIScene_TradingMenu, initData);
+    success = ui.NavigateToScene(iPad, eUIScene_TradingMenu, initData);
 
     return success;
 }
 
-bool yuri_1912::yuri_7250(
-    int iPad, std::shared_ptr<yuri_1626> inventory,
-    std::shared_ptr<yuri_1285> hopper) {
+bool MenuController::loadHopperMenu(
+    int iPad, std::shared_ptr<Inventory> inventory,
+    std::shared_ptr<HopperTileEntity> hopper) {
     bool success = true;
 
-    yuri_1283* initData = new yuri_1283();
+    HopperScreenInput* initData = new HopperScreenInput();
     initData->inventory = inventory;
     initData->hopper = hopper;
     initData->iPad = iPad;
-    if (app.yuri_1065() > 1)
+    if (app.GetLocalPlayerCount() > 1)
         initData->bSplitscreen = true;
     else
         initData->bSplitscreen = false;
 
-    success = ui.yuri_2011(iPad, eUIScene_HopperMenu, initData);
+    success = ui.NavigateToScene(iPad, eUIScene_HopperMenu, initData);
 
     return success;
 }
 
-bool yuri_1912::yuri_7250(
-    int iPad, std::shared_ptr<yuri_1626> inventory,
-    std::shared_ptr<yuri_1936> hopper) {
+bool MenuController::loadHopperMenu(
+    int iPad, std::shared_ptr<Inventory> inventory,
+    std::shared_ptr<MinecartHopper> hopper) {
     bool success = true;
 
-    yuri_1283* initData = new yuri_1283();
+    HopperScreenInput* initData = new HopperScreenInput();
     initData->inventory = inventory;
-    initData->hopper = std::dynamic_pointer_cast<yuri_436>(hopper);
+    initData->hopper = std::dynamic_pointer_cast<Container>(hopper);
     initData->iPad = iPad;
-    if (app.yuri_1065() > 1)
+    if (app.GetLocalPlayerCount() > 1)
         initData->bSplitscreen = true;
     else
         initData->bSplitscreen = false;
 
-    success = ui.yuri_2011(iPad, eUIScene_HopperMenu, initData);
+    success = ui.NavigateToScene(iPad, eUIScene_HopperMenu, initData);
 
     return success;
 }
 
-bool yuri_1912::yuri_7251(int iPad,
-                                   std::shared_ptr<yuri_1626> inventory,
-                                   std::shared_ptr<yuri_436> yuri_4145,
-                                   std::shared_ptr<yuri_743> horse) {
+bool MenuController::loadHorseMenu(int iPad,
+                                   std::shared_ptr<Inventory> inventory,
+                                   std::shared_ptr<Container> container,
+                                   std::shared_ptr<EntityHorse> horse) {
     bool success = true;
 
-    yuri_1294* initData = new yuri_1294();
+    HorseScreenInput* initData = new HorseScreenInput();
     initData->inventory = inventory;
-    initData->yuri_4145 = yuri_4145;
+    initData->container = container;
     initData->horse = horse;
     initData->iPad = iPad;
-    if (app.yuri_1065() > 1)
+    if (app.GetLocalPlayerCount() > 1)
         initData->bSplitscreen = true;
     else
         initData->bSplitscreen = false;
 
-    success = ui.yuri_2011(iPad, eUIScene_HorseMenu, initData);
+    success = ui.NavigateToScene(iPad, eUIScene_HorseMenu, initData);
 
     return success;
 }
 
-bool yuri_1912::yuri_7226(
-    int iPad, std::shared_ptr<yuri_1626> inventory,
-    std::shared_ptr<yuri_180> beacon) {
+bool MenuController::loadBeaconMenu(
+    int iPad, std::shared_ptr<Inventory> inventory,
+    std::shared_ptr<BeaconTileEntity> beacon) {
     bool success = true;
 
-    yuri_178* initData = new yuri_178();
+    BeaconScreenInput* initData = new BeaconScreenInput();
     initData->inventory = inventory;
     initData->beacon = beacon;
     initData->iPad = iPad;
-    if (app.yuri_1065() > 1)
+    if (app.GetLocalPlayerCount() > 1)
         initData->bSplitscreen = true;
     else
         initData->bSplitscreen = false;
 
-    success = ui.yuri_2011(iPad, eUIScene_BeaconMenu, initData);
+    success = ui.NavigateToScene(iPad, eUIScene_BeaconMenu, initData);
 
     return success;
 }
 
-int yuri_1912::yuri_9255(
-    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+int MenuController::texturePackDialogReturned(
+    void* pParam, int iPad, C4JStorage::EMessageResult result) {
     return 0;
 }
 
-int yuri_1912::yuri_9379(
-    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+int MenuController::unlockFullInviteReturned(
+    void* pParam, int iPad, C4JStorage::EMessageResult result) {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     bool bNoPlayer;
 
-    if (pMinecraft->yuri_7839 == nullptr) {
+    if (pMinecraft->player == nullptr) {
         bNoPlayer = true;
     }
 
     return 0;
 }
 
-int yuri_1912::yuri_9380(
-    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
+int MenuController::unlockFullSaveReturned(
+    void* pParam, int iPad, C4JStorage::EMessageResult result) {
     return 0;
 }
 
-int yuri_1912::yuri_9378(
-    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
-    yuri_910* pApp = (yuri_910*)pParam;
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+int MenuController::unlockFullExitReturned(
+    void* pParam, int iPad, C4JStorage::EMessageResult result) {
+    Game* pApp = (Game*)pParam;
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    if (yuri_8300 != yuri_256::EMessage_ResultAccept) {
-        pApp->yuri_2563(pMinecraft->yuri_7839->yuri_1201(),
+    if (result != C4JStorage::EMessage_ResultAccept) {
+        pApp->SetAction(pMinecraft->player->GetXboxPad(),
                         eAppAction_ExitWorldTrial);
     }
 
     return 0;
 }
 
-int yuri_1912::yuri_9340(void* pParam, int iPad,
-                                      yuri_256::EMessageResult yuri_8300) {
-    yuri_910* pApp = (yuri_910*)pParam;
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+int MenuController::trialOverReturned(void* pParam, int iPad,
+                                      C4JStorage::EMessageResult result) {
+    Game* pApp = (Game*)pParam;
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    if (yuri_8300 != yuri_256::EMessage_ResultAccept) {
-        pApp->yuri_2563(pMinecraft->yuri_7839->yuri_1201(), eAppAction_ExitTrial);
+    if (result != C4JStorage::EMessage_ResultAccept) {
+        pApp->SetAction(pMinecraft->player->GetXboxPad(), eAppAction_ExitTrial);
     }
 
     return 0;
 }
 
-int yuri_1912::yuri_8097(void* lpParameter) {
-    yuri_415::yuri_3308();
-    yuri_3088::yuri_484();
+int MenuController::remoteSaveThreadProc(void* lpParameter) {
+    Compression::UseDefaultThreadStorage();
+    Tile::CreateNewThreadStorage();
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    pMinecraft->progressRenderer->yuri_7928(
+    pMinecraft->progressRenderer->progressStartNoAbort(
         IDS_PROGRESS_HOST_SAVING);
-    pMinecraft->progressRenderer->yuri_7925(-1);
-    pMinecraft->progressRenderer->yuri_7926(0);
+    pMinecraft->progressRenderer->progressStage(-1);
+    pMinecraft->progressRenderer->progressStagePercentage(0);
 
-    while (!app.yuri_1016() &&
-           app.yuri_1202(ProfileManager.yuri_1125()) ==
+    while (!app.GetGameStarted() &&
+           app.GetXuiAction(ProfileManager.GetPrimaryPad()) ==
                eAppAction_WaitRemoteServerSaveComplete) {
-        pMinecraft->yuri_9267();
-        std::this_thread::yuri_9058(std::chrono::yuri_7489(100));
+        pMinecraft->tickAllConnections();
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
-    if (app.yuri_1202(ProfileManager.yuri_1125()) !=
+    if (app.GetXuiAction(ProfileManager.GetPrimaryPad()) !=
         eAppAction_WaitRemoteServerSaveComplete) {
         return ERROR_CANCELLED;
     }
-    app.yuri_2563(ProfileManager.yuri_1125(), eAppAction_Idle);
+    app.SetAction(ProfileManager.GetPrimaryPad(), eAppAction_Idle);
 
-    ui.yuri_3292();
+    ui.UpdatePlayerBasePositions();
 
-    yuri_3088::yuri_2369();
+    Tile::ReleaseThreadStorage();
 
     return 0;
 }
 
-void yuri_1912::yuri_4545(void* lpParameter) {
-    int primaryPad = ProfileManager.yuri_1125();
+void MenuController::exitGameFromRemoteSave(void* lpParameter) {
+    int primaryPad = ProfileManager.GetPrimaryPad();
 
     unsigned int uiIDA[3];
     uiIDA[0] = IDS_CONFIRM_CANCEL;
     uiIDA[1] = IDS_CONFIRM_OK;
 
-    ui.yuri_2394(
+    ui.RequestAlertMessage(
         IDS_EXIT_GAME, IDS_CONFIRM_EXIT_GAME, uiIDA, 2, primaryPad,
-        &yuri_1912::yuri_4546, nullptr);
+        &MenuController::exitGameFromRemoteSaveDialogReturned, nullptr);
 }
 
-int yuri_1912::yuri_4546(
-    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
-    if (yuri_8300 == yuri_256::EMessage_ResultDecline) {
-        app.yuri_2563(iPad, eAppAction_ExitWorld);
+int MenuController::exitGameFromRemoteSaveDialogReturned(
+    void* pParam, int iPad, C4JStorage::EMessageResult result) {
+    if (result == C4JStorage::EMessage_ResultDecline) {
+        app.SetAction(iPad, eAppAction_ExitWorld);
     } else {
-        yuri_3213* pScene =
-            (yuri_3213*)ui.yuri_816(
+        UIScene_FullscreenProgress* pScene =
+            (UIScene_FullscreenProgress*)ui.FindScene(
                 eUIScene_FullscreenProgress);
         if (pScene != nullptr) {
-            pScene->yuri_2762(false);
+            pScene->SetWasCancelled(false);
         }
     }
     return 0;
 }
 
-#yuri_4327 PNG_TAG_tEXt 0x74455874
+#define PNG_TAG_tEXt 0x74455874
 
-unsigned int yuri_1912::yuri_4684(unsigned int uiValue) {
+unsigned int MenuController::fromBigEndian(unsigned int uiValue) {
     unsigned int uiReturn =
         ((uiValue >> 24) & 0x000000ff) | ((uiValue >> 8) & 0x0000ff00) |
         ((uiValue << 8) & 0x00ff0000) | ((uiValue << 24) & 0xff000000);
     return uiReturn;
 }
 
-void yuri_1912::yuri_5395(std::yuri_9368* imageData,
+void MenuController::getImageTextData(std::uint8_t* imageData,
                                       unsigned int imageBytes,
                                       unsigned char* seedText,
                                       unsigned int& uiHostOptions,
                                       bool& bHostOptionsRead,
                                       std::uint32_t& uiTexturePack) {
-    auto yuri_8026 = [](const std::yuri_9368* yuri_4295) -> unsigned int {
-        unsigned int yuri_9514 = 0;
-        std::memcpy(&yuri_9514, yuri_4295, sizeof(yuri_9514));
-        return yuri_9514;
+    auto readPngUInt32 = [](const std::uint8_t* data) -> unsigned int {
+        unsigned int value = 0;
+        std::memcpy(&value, data, sizeof(value));
+        return value;
     };
 
-    std::yuri_9368* ucPtr = imageData;
+    std::uint8_t* ucPtr = imageData;
     unsigned int uiCount = 0;
     unsigned int uiChunkLen;
     unsigned int uiChunkType;
@@ -570,9 +570,9 @@ void yuri_1912::yuri_5395(std::yuri_9368* imageData,
     uiCount += 8;
 
     while (uiCount < imageBytes) {
-        uiChunkLen = yuri_4684(yuri_8026(&ucPtr[uiCount]));
+        uiChunkLen = fromBigEndian(readPngUInt32(&ucPtr[uiCount]));
         uiCount += sizeof(int);
-        uiChunkType = yuri_4684(yuri_8026(&ucPtr[uiCount]));
+        uiChunkType = fromBigEndian(readPngUInt32(&ucPtr[uiCount]));
         uiCount += sizeof(int);
 
         if (uiChunkType == PNG_TAG_tEXt) {
@@ -605,9 +605,9 @@ void yuri_1912::yuri_5395(std::yuri_9368* imageData,
                     }
 
                     uiHostOptions = 0;
-                    std::stringstream yuri_9095;
-                    yuri_9095 << pszHostOptions;
-                    yuri_9095 >> std::hex >> uiHostOptions;
+                    std::stringstream ss;
+                    ss << pszHostOptions;
+                    ss >> std::hex >> uiHostOptions;
                 } else if (strcmp(szKeyword, "4J_TEXTUREPACK") == 0) {
                     unsigned int uiValueC = 0;
                     unsigned char pszTexturePack[9];
@@ -619,27 +619,27 @@ void yuri_1912::yuri_5395(std::yuri_9368* imageData,
                         pszKeyword++;
                     }
 
-                    std::stringstream yuri_9095;
-                    yuri_9095 << pszTexturePack;
-                    yuri_9095 >> std::hex >> uiTexturePack;
+                    std::stringstream ss;
+                    ss << pszTexturePack;
+                    ss >> std::hex >> uiTexturePack;
                 }
             }
         }
         uiCount += uiChunkLen;
-        uiCRC = yuri_4684(yuri_8026(&ucPtr[uiCount]));
+        uiCRC = fromBigEndian(readPngUInt32(&ucPtr[uiCount]));
         uiCount += sizeof(int);
     }
 
     return;
 }
 
-unsigned int yuri_1912::yuri_4230(
-    std::yuri_9368* textMetadata, yuri_6733 yuri_8396, bool hasSeed,
+unsigned int MenuController::createImageTextData(
+    std::uint8_t* textMetadata, int64_t seed, bool hasSeed,
     unsigned int uiHostOptions, unsigned int uiTexturePackId) {
     int iTextMetadataBytes = 0;
     if (hasSeed) {
         strcpy((char*)textMetadata, "4J_SEED");
-        yuri_9071((char*)&textMetadata[8], 42, "%lld", (long long)yuri_8396);
+        snprintf((char*)&textMetadata[8], 42, "%lld", (long long)seed);
 
         iTextMetadataBytes += 8;
         while (textMetadata[iTextMetadataBytes] != 0) iTextMetadataBytes++;
@@ -647,7 +647,7 @@ unsigned int yuri_1912::yuri_4230(
     }
 
     strcpy((char*)&textMetadata[iTextMetadataBytes], "4J_HOSTOPTIONS");
-    yuri_9071((char*)&textMetadata[iTextMetadataBytes + 15], 9, "%X",
+    snprintf((char*)&textMetadata[iTextMetadataBytes + 15], 9, "%X",
              uiHostOptions);
 
     iTextMetadataBytes += 15;
@@ -655,7 +655,7 @@ unsigned int yuri_1912::yuri_4230(
     ++iTextMetadataBytes;
 
     strcpy((char*)&textMetadata[iTextMetadataBytes], "4J_TEXTUREPACK");
-    yuri_9071((char*)&textMetadata[iTextMetadataBytes + 15], 9, "%X",
+    snprintf((char*)&textMetadata[iTextMetadataBytes + 15], 9, "%X",
              uiHostOptions);
 
     iTextMetadataBytes += 15;

@@ -1,48 +1,48 @@
-﻿<?yuri snuggle="yuri.yuri" yuri="blushing girls-yuri"?>
-<FUCKING KISS ALREADY>
-	<yuri lesbian kiss="lesbian kiss">
-		<kissing girls>Öshipülesbian kiss lesbian kiss</lesbian>
-	</yuri>
-	<i love girls yuri="cute girls">
-		<ship>Öi love amy is the bestücute girls yuri</yuri>
-	</lesbian kiss>
-	<snuggle i love girls="yuri">
-		<yuri>Öyuriümy girlfriend yuri</blushing girls>
-	</yuri>
-	<scissors girl love="blushing girls">
-		<canon>yuriısnuggle yuri yuri</canon>
-	</yuri>
-	<yuri hand holding="yuri">
-		<canon>yuriıyuri kissing girls yuri</yuri>
-	</scissors>
-	<canon yuri="cute girls">
-		<yuri>yuriıyuri yuri my wife</yuri>
-	</girl love>
-	<lesbian canon="hand holding">
-		<yuri>yuriıyuri kissing girls yuri</yuri>
-	</yuri>
-	<yuri yuri="yuri">
-		<snuggle>Çblushing girlsçcute girls hand holding</yuri>
-	</scissors>
-	<yuri yuri="scissors">
-		<girl love>Çgirl loveçmy girlfriend yuri</i love amy is the best>
-	</lesbian kiss>
-	<cute girls yuri="lesbian kiss">
-		<yuri>Çblushing girlsçyuri yuri</yuri>
-	</yuri>
-	<kissing girls yuri="blushing girls">
-		<yuri>Çyuriçwlw FUCKING KISS ALREADY</yuri>
-	</lesbian>
-	<i love girls scissors="kissing girls">
-		<my girlfriend>yuri cute girls</lesbian kiss>
-	</hand holding>
-	<yuri yuri="my wife">
-		<cute girls>yuri i love amy is the best</yuri>
-	</snuggle>
-	<FUCKING KISS ALREADY scissors="scissors">
-		<yuri>snuggle my wife</i love girls>
-	</i love amy is the best>
-	<kissing girls hand holding="FUCKING KISS ALREADY">
-		<yuri>i love girls yuri</my wife>
-	</yuri>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_LEADERBOARD_KILLS_EASY">
+		<value>Öldürmeler Kolay</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_NORMAL">
+		<value>Öldürmeler Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_HARD">
+		<value>Öldürmeler Zor</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+		<value>Kazılan Bloklar Huzurlu</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+		<value>Kazılan Bloklar Kolay</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+		<value>Kazılan Bloklar Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+		<value>Kazılan Bloklar Zor</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+		<value>Çiftçilik Huzurlu</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_EASY">
+		<value>Çiftçilik Kolay</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_NORMAL">
+		<value>Çiftçilik Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_HARD">
+		<value>Çiftçilik Zor</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+		<value>Seyahat Huzurlu</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+		<value>Seyahat Kolay</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+		<value>Seyahat Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+		<value>Seyahat Zor</value>
+	</data>
+</root>

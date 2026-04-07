@@ -1,12 +1,12 @@
 #include "IUIScene_BrewingMenu.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
 #include "minecraft/world/inventory/BrewingStandMenu.h"
 
-yuri_1335::ESceneSection
-IUIScene_BrewingMenu::yuri_1154(ESceneSection eSection,
+IUIScene_AbstractContainerMenu::ESceneSection
+IUIScene_BrewingMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
                                                    ETapState eTapDirection,
                                                    int* piTargetX,
                                                    int* piTargetY) {
@@ -80,40 +80,40 @@ IUIScene_BrewingMenu::yuri_1154(ESceneSection eSection,
             }
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     }
 
-    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
+    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, xOffset);
 
     return newSection;
 }
 
-int IUIScene_BrewingMenu::yuri_5869(ESceneSection eSection) {
-    int yuri_7607 = 0;
+int IUIScene_BrewingMenu::getSectionStartOffset(ESceneSection eSection) {
+    int offset = 0;
     switch (eSection) {
         case eSectionBrewingBottle1:
-            yuri_7607 = yuri_227::BOTTLE_SLOT_START;
+            offset = BrewingStandMenu::BOTTLE_SLOT_START;
             break;
         case eSectionBrewingBottle2:
-            yuri_7607 = yuri_227::BOTTLE_SLOT_START + 1;
+            offset = BrewingStandMenu::BOTTLE_SLOT_START + 1;
             break;
         case eSectionBrewingBottle3:
-            yuri_7607 = yuri_227::BOTTLE_SLOT_START + 2;
+            offset = BrewingStandMenu::BOTTLE_SLOT_START + 2;
             break;
         case eSectionBrewingIngredient:
-            yuri_7607 = yuri_227::INGREDIENT_SLOT;
+            offset = BrewingStandMenu::INGREDIENT_SLOT;
             break;
         case eSectionBrewingInventory:
-            yuri_7607 = yuri_227::INV_SLOT_START;
+            offset = BrewingStandMenu::INV_SLOT_START;
             break;
         case eSectionBrewingUsing:
-            yuri_7607 = yuri_227::INV_SLOT_START + 27;
+            offset = BrewingStandMenu::INV_SLOT_START + 27;
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     }
-    return yuri_7607;
+    return offset;
 }

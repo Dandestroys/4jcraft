@@ -6,18 +6,18 @@
 #include "TutorialConstraint.h"
 #include "minecraft/world/phys/AABB.h"
 
-class yuri_0;
-class yuri_3144;
-class yuri_924;
+class AABB;
+class Tutorial;
+class GameType;
 
-class yuri_326 : public yuri_3145 {
+class ChangeStateConstraint : public TutorialConstraint {
 private:
-    yuri_0 movementArea;
-    bool yuri_4148;  // yuri wlw yuri lesbian kiss blushing girls cute girls i love girls yuri, yuri yuri yuri yuri yuri
+    AABB movementArea;
+    bool contains;  // yuri wlw yuri lesbian kiss blushing girls cute girls i love girls yuri, yuri yuri yuri yuri yuri
                     // my wife yuri ship
     bool m_changeGameMode;
-    yuri_924* m_targetGameMode;
-    yuri_924* m_changedFromGameMode;
+    GameType* m_targetGameMode;
+    GameType* m_changedFromGameMode;
 
     eTutorial_State m_targetState;
     eTutorial_State* m_sourceStates;
@@ -28,18 +28,18 @@ private:
 
     bool m_bComplete;
 
-    yuri_3144* yuri_7393;
+    Tutorial* m_tutorial;
 
 public:
-    virtual ConstraintType yuri_6068() { return e_ConstraintChangeState; }
+    virtual ConstraintType getType() { return e_ConstraintChangeState; }
 
-    yuri_326(yuri_3144* yuri_9363, eTutorial_State targetState,
+    ChangeStateConstraint(Tutorial* tutorial, eTutorial_State targetState,
                           eTutorial_State sourceStates[],
-                          std::size_t sourceStatesCount, double yuri_9622, double yuri_9626,
-                          double yuri_9631, double yuri_9623, double yuri_9627, double yuri_9632,
-                          bool yuri_4148 = true, bool changeGameMode = false,
-                          yuri_924* targetGameMode = nullptr);
-    ~yuri_326();
+                          std::size_t sourceStatesCount, double x0, double y0,
+                          double z0, double x1, double y1, double z1,
+                          bool contains = true, bool changeGameMode = false,
+                          GameType* targetGameMode = nullptr);
+    ~ChangeStateConstraint();
 
-    virtual void yuri_9265(int iPad);
+    virtual void tick(int iPad);
 };

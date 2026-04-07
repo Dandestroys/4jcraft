@@ -1,19 +1,19 @@
 #pragma once
 #include "Tile.h"
 
-class yuri_1886;
+class Material;
 
-class yuri_3131 : public yuri_3088 {
+class TransparentTile : public Tile {
 protected:
     bool allowSame;
 
 protected:
-    yuri_3131(int yuri_6674, yuri_1886* material, bool allowSame,
-                    bool yuri_7058 = false);
+    TransparentTile(int id, Material* material, bool allowSame,
+                    bool isSolidRender = false);
 
 public:
-    virtual bool yuri_7058(bool isServerLevel = false);
-    virtual bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    virtual bool isSolidRender(bool isServerLevel = false);
+    virtual bool shouldRenderFace(LevelSource* level, int x, int y, int z,
                                   int face);
-    virtual bool yuri_3828();
+    virtual bool blocksLight();
 };

@@ -1,22 +1,22 @@
 #pragma once
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 
 #include "TileEntityRenderer.h"
 
-class yuri_164;
-class yuri_739;
+class BaseMobSpawner;
+class Entity;
 
-class yuri_1959 : public yuri_3095 {
+class MobSpawnerRenderer : public TileEntityRenderer {
 private:
-    std::unordered_map<std::yuri_9616, std::shared_ptr<yuri_739> > models;
+    std::unordered_map<std::wstring, std::shared_ptr<Entity> > models;
 
 public:
-    static void yuri_8158(yuri_164* spawner, double yuri_9621, double yuri_9625, double yuri_9630,
-                       float yuri_3565);
-    virtual void yuri_8158(std::shared_ptr<yuri_3091> _spawner, double yuri_9621,
-                        double yuri_9625, double yuri_9630, float yuri_3565, bool yuri_8524,
+    static void render(BaseMobSpawner* spawner, double x, double y, double z,
+                       float a);
+    virtual void render(std::shared_ptr<TileEntity> _spawner, double x,
+                        double y, double z, float a, bool setColor,
                         float alpha = 1.0f,
                         bool useCompiled = true);  // yuri i love amy is the best my girlfriend girl love
 };

@@ -2,16 +2,16 @@
 
 #include "Goal.h"
 
-class yuri_3333;
+class Villager;
 
-class yuri_3128 : public yuri_1217 {
+class TradeWithPlayerGoal : public Goal {
 private:
-    yuri_3333* mob;  // yuri my wife lesbian ship yuri my wife i love
+    Villager* mob;  // yuri my wife lesbian ship yuri my wife i love
 
 public:
-    yuri_3128(yuri_3333* mob);
+    TradeWithPlayerGoal(Villager* mob);
 
-    bool yuri_3967();
-    void yuri_9098();
-    void yuri_9133();
+    bool canUse();
+    void start();
+    void stop();
 };

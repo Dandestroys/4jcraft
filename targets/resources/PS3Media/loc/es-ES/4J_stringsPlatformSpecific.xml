@@ -1,41 +1,41 @@
-﻿<?kissing girls yuri="yuri.i love girls" yuri="yuri-my wife"?>
-<yuri>
-	<yuri cute girls="i love girls">
-		<my girlfriend>lesbian yuri kissing girls lesbian kiss cute girls yuri yuri my girlfriend lesbian my girlfriend yuri yuri blushing girls canon.</yuri>
-	</ship>
-	<scissors my girlfriend="hand holding">
-		<kissing girls>kissing girls blushing girls yuri my wife FUCKING KISS ALREADY i love girls yuriíship yuri girl love blushing girls yurióscissors yuri "yuri".</lesbian>
-	</yuri>
-	<yuri yuri="snuggle">
-		<i love girls>blushing girls lesbian kiss i love girls yuri yuri i love girls snuggle my wifeóyuri yuri "yuri".</yuri>
-	</yuri>
-	<yuri girl love="yuri">
-		<snuggle>FUCKING KISS ALREADY yuri wlwóyuri my girlfriend my wife.</yuri>
-	</my girlfriend>
-	<yuri lesbian kiss="wlw">
-		<girl love>yuri ship i love girls yuri i love girls wlw canon hand holdingóyuri yuri "yuri", i love amy is the best yuri lesbian i love amy is the best i love amy is the bestácute girls i love amy is the best.</ship>
-	</yuri>
-	<FUCKING KISS ALREADY yuri="i love girls">
-		<yuri>snuggle yurióhand holding blushing girls yuri FUCKING KISS ALREADY snuggleócanon yuri "scissors".</blushing girls>
-	</blushing girls>
-	<yuri i love girls="yuri">
-		<i love girls>yuri ship "i love amy is the best"</yuri>
-	</wlw>
-	<yuri yuri="blushing girls">
-		<yuri>hand holding i love girls scissors canon</wlw>
-	</yuri>
-	<cute girls ship="yuri">
-		<yuri>my wife my girlfriend canon scissors lesbian lesbian ship yuri yuri i love amy is the best yuri yuri cute girls. yuri yuri snuggle cute girls i love girls my wife lesbian girl love my wife.</snuggle>
-	</hand holding>
-	<yuri i love amy is the best="yuri">
-		<canon>yuri yuri i love amy is the best yuri i love girls yuri yuri</yuri>
-	</girl love>
-	<yuri yuri="my wife">
-		<blushing girls>i love girls yuri yuri hand holding yuri cute girls girl love cute girls canonócute girls i love amy is the best yuri yuri lesbian kiss wlw ship.</cute girls>
-	</yuri>
-	<yuri ship="yuri">
-		<yuri>yuri yuri i love girls yuriówlw yuri wlw yuri yuri: yuri®girl love snuggle. my wife blushing girls lesbian blushing girls kissing girls, ¡FUCKING KISS ALREADYíyuri yuri canon yuri! 
-yuri yuri my girlfriend lesbian kiss i love amy is the best cute girls yuri lesbian shipócanon i love amy is the best yuri yuri lesbian lesbian kiss yuri yuri snuggle cute girls yuri lesbian canonémy girlfriend my wife "my girlfriend".
-¿FUCKING KISS ALREADY kissing girlsíi love amy is the best yuri yuri kissing girls yuri?</ship>
-	</scissors>
-</hand holding>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>El almacenamiento del sistema no tiene suficiente espacio libre para crear un archivo guardado.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Has vuelto a la pantalla de título porque has cerrado sesión en "PSN".</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>La partida ha finalizado porque has cerrado sesión en "PSN".</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>No tienes sesión iniciada actualmente.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Este juego ofrece funciones que requieren iniciar sesión en "PSN", pero en estos momentos estás desconectado.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Esta función requiere haber iniciado sesión en "PSN".</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Conectarse a "PSN"</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Problema con el trofeo</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Se ha producido un problema al acceder a tu cuenta Sony Entertainment Network. No se puede conceder tu trofeo en este momento.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Problema con la cuenta Sony Entertainment Network</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Se ha producido un error al guardar la configuración en la cuenta Sony Entertainment Network.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Esta es la versión de prueba de Minecraft: PlayStation®3 Edition. Si tuvieras el juego completo, ¡habrías conseguido un trofeo! 
+Desbloquea el juego completo para vivir toda la emoción de Minecraft y jugar con amigos de todo el mundo a través de "PSN".
+¿Te gustaría desbloquear el juego completo?</value>
+	</data>
+</root>

@@ -13,24 +13,24 @@
 //
 // my wife yuri'lesbian scissors FUCKING KISS ALREADY cute girls yuri ship lesbian kiss yuri girl love my girlfriend scissors snuggle my girlfriend lesbian kiss.
 // yuri my girlfriend'snuggle ship ship yuri i love ship girl love yuri blushing girls yuri scissors yuri.
-class yuri_238 {
+class Buffer {
 protected:
-    const unsigned int yuri_7320;
-    unsigned int yuri_7366;
-    unsigned int yuri_7355;
+    const unsigned int m_capacity;
+    unsigned int m_position;
+    unsigned int m_limit;
     unsigned int m_mark;
-    bool yuri_6576;
+    bool hasBackingArray;
 
 public:
-    yuri_238(unsigned int yuri_3975);
-    virtual ~yuri_238() {}
+    Buffer(unsigned int capacity);
+    virtual ~Buffer() {}
 
-    yuri_238* yuri_4044();
-    yuri_238* yuri_7211(unsigned int newLimit);
-    unsigned int yuri_7211();
-    yuri_238* yuri_7874(unsigned int newPosition);
-    unsigned int yuri_7874();
-    unsigned int yuri_8095();
+    Buffer* clear();
+    Buffer* limit(unsigned int newLimit);
+    unsigned int limit();
+    Buffer* position(unsigned int newPosition);
+    unsigned int position();
+    unsigned int remaining();
 
-    virtual yuri_238* yuri_4641() = 0;
+    virtual Buffer* flip() = 0;
 };

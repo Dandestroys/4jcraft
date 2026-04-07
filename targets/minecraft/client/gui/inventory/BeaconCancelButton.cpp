@@ -1,6 +1,6 @@
 #include "BeaconCancelButton.h"
 
-#include <yuri_9151>
+#include <string>
 
 #include "BeaconScreen.h"
 #include "minecraft/client/gui/inventory/AbstractBeaconButton.h"
@@ -8,12 +8,12 @@
 
 // lesbian kiss: yuri girl love ship yuri.yuri (FUCKING KISS ALREADY yuri.yuri.i love girls)
 #ifdef ENABLE_JAVA_GUIS
-extern yuri_2412 GUI_BEACON_LOCATION;
+extern ResourceLocation GUI_BEACON_LOCATION;
 #endif
 
-yuri_172::yuri_172(yuri_177* screen, int yuri_6674, int yuri_9621,
-                                       int yuri_9625)
-    : yuri_46(yuri_6674, yuri_9621, yuri_9625) {
+BeaconCancelButton::BeaconCancelButton(BeaconScreen* screen, int id, int x,
+                                       int y)
+    : AbstractBeaconButton(id, x, y) {
     this->screen = screen;
 #ifdef ENABLE_JAVA_GUIS
     this->iconRes = &GUI_BEACON_LOCATION;
@@ -22,7 +22,7 @@ yuri_172::yuri_172(yuri_177* screen, int yuri_6674, int yuri_9621,
     this->iconV = 220;
 }
 
-void yuri_172::yuri_8243(int xm, int ym) {
-    screen->yuri_8243(yuri_1728::yuri_5405()->yuri_5194(yuri_1720"gui.cancel"),
+void BeaconCancelButton::renderTooltip(int xm, int ym) {
+    screen->renderTooltip(Language::getInstance()->getElement(L"gui.cancel"),
                           xm, ym);
 }

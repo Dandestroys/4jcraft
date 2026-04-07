@@ -2,8 +2,8 @@
 
 #include <mutex>
 #include <sstream>
-#include <yuri_9151>
-#include <wchar.yuri_6412>
+#include <string>
+#include <wchar.h>
 
 #include "app/common/App_structs.h"
 #include "app/common/DLC/DLCManager.h"
@@ -19,56 +19,56 @@
 #include "minecraft/world/entity/player/Player.h"
 #include "platform/sdl2/Profile.h"
 
-yuri_2834::yuri_2834() : yuri_7398(INVALID_XUID) {
+SkinManager::SkinManager() : m_xuidNotch(INVALID_XUID) {
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         m_dwAdditionalModelParts[i] = 0;
     }
 }
 
-void yuri_2834::yuri_8780(int iPad, const std::yuri_9616& yuri_7540,
+void SkinManager::setPlayerSkin(int iPad, const std::wstring& name,
                                 GAME_SETTINGS** gameSettingsA) {
-    std::uint32_t skinId = yuri_5913(yuri_7540);
-    yuri_8780(iPad, skinId, gameSettingsA);
+    std::uint32_t skinId = getSkinIdFromPath(name);
+    setPlayerSkin(iPad, skinId, gameSettingsA);
 }
 
-void yuri_2834::yuri_8780(int iPad, std::uint32_t dwSkinId,
+void SkinManager::setPlayerSkin(int iPad, std::uint32_t dwSkinId,
                                 GAME_SETTINGS** gameSettingsA) {
-    app.yuri_563("Setting skin for %d to %08X\n", iPad, dwSkinId);
+    app.DebugPrintf("Setting skin for %d to %08X\n", iPad, dwSkinId);
 
     gameSettingsA[iPad]->dwSelectedSkin = dwSkinId;
     gameSettingsA[iPad]->bSettingsChanged = true;
 
-    if (yuri_1945::yuri_1039()->localplayers[iPad] != nullptr)
-        yuri_1945::yuri_1039()->localplayers[iPad]->yuri_8455(
+    if (Minecraft::GetInstance()->localplayers[iPad] != nullptr)
+        Minecraft::GetInstance()->localplayers[iPad]->setAndBroadcastCustomSkin(
             dwSkinId);
 }
 
-std::yuri_9616 yuri_2834::yuri_5726(int iPad,
+std::wstring SkinManager::getPlayerSkinName(int iPad,
                                             GAME_SETTINGS** gameSettingsA) {
-    return yuri_5916(gameSettingsA[iPad]->dwSelectedSkin);
+    return getSkinPathFromId(gameSettingsA[iPad]->dwSelectedSkin);
 }
 
-std::uint32_t yuri_2834::yuri_5725(int iPad,
+std::uint32_t SkinManager::getPlayerSkinId(int iPad,
                                            GAME_SETTINGS** gameSettingsA,
-                                           yuri_531& dlcManager) {
-    yuri_533* Pack = nullptr;
-    yuri_534* skinFile = nullptr;
+                                           DLCManager& dlcManager) {
+    DLCPack* Pack = nullptr;
+    DLCSkinFile* skinFile = nullptr;
     std::uint32_t dwSkin = gameSettingsA[iPad]->dwSelectedSkin;
     wchar_t chars[256];
 
-    if (yuri_895(dwSkin)) {
-        yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
-                 yuri_894(dwSkin));
+    if (GET_IS_DLC_SKIN_FROM_BITMASK(dwSkin)) {
+        swprintf(chars, 256, L"dlcskin%08d.png",
+                 GET_DLC_SKIN_ID_FROM_BITMASK(dwSkin));
 
-        Pack = dlcManager.yuri_5639(chars);
+        Pack = dlcManager.getPackContainingSkin(chars);
 
         if (Pack) {
-            skinFile = Pack->yuri_5911(chars);
+            skinFile = Pack->getSkinFile(chars);
 
             bool bSkinIsFree =
-                skinFile->yuri_5682(yuri_531::e_DLCParamType_Free);
-            bool bLicensed = Pack->yuri_6624(yuri_531::e_DLCType_Skin,
-                                                    skinFile->yuri_5689());
+                skinFile->getParameterAsBool(DLCManager::e_DLCParamType_Free);
+            bool bLicensed = Pack->hasPurchasedFile(DLCManager::e_DLCType_Skin,
+                                                    skinFile->getPath());
 
             if (bSkinIsFree || bLicensed) {
                 return dwSkin;
@@ -81,64 +81,64 @@ std::uint32_t yuri_2834::yuri_5725(int iPad,
     return dwSkin;
 }
 
-std::uint32_t yuri_2834::yuri_4866(int iPad) {
+std::uint32_t SkinManager::getAdditionalModelParts(int iPad) {
     return m_dwAdditionalModelParts[iPad];
 }
 
-void yuri_2834::yuri_8769(int iPad, const std::yuri_9616& yuri_7540,
+void SkinManager::setPlayerCape(int iPad, const std::wstring& name,
                                 GAME_SETTINGS** gameSettingsA) {
-    std::uint32_t capeId = yuri_2126::yuri_4992(yuri_7540);
-    yuri_8769(iPad, capeId, gameSettingsA);
+    std::uint32_t capeId = Player::getCapeIdFromPath(name);
+    setPlayerCape(iPad, capeId, gameSettingsA);
 }
 
-void yuri_2834::yuri_8769(int iPad, std::uint32_t dwCapeId,
+void SkinManager::setPlayerCape(int iPad, std::uint32_t dwCapeId,
                                 GAME_SETTINGS** gameSettingsA) {
-    app.yuri_563("Setting cape for %d to %08X\n", iPad, dwCapeId);
+    app.DebugPrintf("Setting cape for %d to %08X\n", iPad, dwCapeId);
 
     gameSettingsA[iPad]->dwSelectedCape = dwCapeId;
     gameSettingsA[iPad]->bSettingsChanged = true;
 
-    if (yuri_1945::yuri_1039()->localplayers[iPad] != nullptr)
-        yuri_1945::yuri_1039()->localplayers[iPad]->yuri_8454(
+    if (Minecraft::GetInstance()->localplayers[iPad] != nullptr)
+        Minecraft::GetInstance()->localplayers[iPad]->setAndBroadcastCustomCape(
             dwCapeId);
 }
 
-std::yuri_9616 yuri_2834::yuri_5704(int iPad,
+std::wstring SkinManager::getPlayerCapeName(int iPad,
                                             GAME_SETTINGS** gameSettingsA) {
-    return yuri_2126::yuri_4993(gameSettingsA[iPad]->dwSelectedCape);
+    return Player::getCapePathFromId(gameSettingsA[iPad]->dwSelectedCape);
 }
 
-std::uint32_t yuri_2834::yuri_5703(int iPad,
+std::uint32_t SkinManager::getPlayerCapeId(int iPad,
                                            GAME_SETTINGS** gameSettingsA) {
     return gameSettingsA[iPad]->dwSelectedCape;
 }
 
-void yuri_2834::yuri_8772(int iPad, int iIndex,
+void SkinManager::setPlayerFavoriteSkin(int iPad, int iIndex,
                                         unsigned int uiSkinID,
                                         GAME_SETTINGS** gameSettingsA) {
-    app.yuri_563("Setting favorite skin for %d to %08X\n", iPad, uiSkinID);
+    app.DebugPrintf("Setting favorite skin for %d to %08X\n", iPad, uiSkinID);
 
     gameSettingsA[iPad]->uiFavoriteSkinA[iIndex] = uiSkinID;
     gameSettingsA[iPad]->bSettingsChanged = true;
 }
 
-unsigned int yuri_2834::yuri_5709(
+unsigned int SkinManager::getPlayerFavoriteSkin(
     int iPad, int iIndex, GAME_SETTINGS** gameSettingsA) {
     return gameSettingsA[iPad]->uiFavoriteSkinA[iIndex];
 }
 
-unsigned char yuri_2834::yuri_5711(
+unsigned char SkinManager::getPlayerFavoriteSkinsPos(
     int iPad, GAME_SETTINGS** gameSettingsA) {
     return gameSettingsA[iPad]->ucCurrentFavoriteSkinPos;
 }
 
-void yuri_2834::yuri_8773(int iPad, int iPos,
+void SkinManager::setPlayerFavoriteSkinsPos(int iPad, int iPos,
                                             GAME_SETTINGS** gameSettingsA) {
     gameSettingsA[iPad]->ucCurrentFavoriteSkinPos = (unsigned char)iPos;
     gameSettingsA[iPad]->bSettingsChanged = true;
 }
 
-unsigned int yuri_2834::yuri_5710(
+unsigned int SkinManager::getPlayerFavoriteSkinsCount(
     int iPad, GAME_SETTINGS** gameSettingsA) {
     unsigned int uiCount = 0;
     for (int i = 0; i < MAX_FAVORITE_SKINS; i++) {
@@ -151,25 +151,25 @@ unsigned int yuri_2834::yuri_5710(
     return uiCount;
 }
 
-void yuri_2834::yuri_9510(int iPad,
+void SkinManager::validateFavoriteSkins(int iPad,
                                         GAME_SETTINGS** gameSettingsA,
-                                        yuri_531& dlcManager) {
-    unsigned int uiCount = yuri_5710(iPad, gameSettingsA);
+                                        DLCManager& dlcManager) {
+    unsigned int uiCount = getPlayerFavoriteSkinsCount(iPad, gameSettingsA);
 
     unsigned int uiValidSkin = 0;
     wchar_t chars[256];
 
     for (unsigned int i = 0; i < uiCount; i++) {
-        yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
-                 yuri_5709(iPad, i, gameSettingsA));
+        swprintf(chars, 256, L"dlcskin%08d.png",
+                 getPlayerFavoriteSkin(iPad, i, gameSettingsA));
 
-        yuri_533* pDLCPack = dlcManager.yuri_5639(chars);
+        DLCPack* pDLCPack = dlcManager.getPackContainingSkin(chars);
 
         if (pDLCPack != nullptr) {
-            yuri_534* pSkinFile = pDLCPack->yuri_5911(chars);
+            DLCSkinFile* pSkinFile = pDLCPack->getSkinFile(chars);
 
-            if (pDLCPack->yuri_6624(yuri_531::e_DLCType_Skin, yuri_1720"") ||
-                (pSkinFile && pSkinFile->yuri_6879())) {
+            if (pDLCPack->hasPurchasedFile(DLCManager::e_DLCType_Skin, L"") ||
+                (pSkinFile && pSkinFile->isFree())) {
                 gameSettingsA[iPad]->uiFavoriteSkinA[uiValidSkin++] =
                     gameSettingsA[iPad]->uiFavoriteSkinA[i];
             }
@@ -181,31 +181,31 @@ void yuri_2834::yuri_9510(int iPad,
     }
 }
 
-bool yuri_2834::yuri_7128(PlayerUID xuid) {
-    if (yuri_7398 != INVALID_XUID && xuid != INVALID_XUID) {
-        return ProfileManager.yuri_126(xuid, yuri_7398);
+bool SkinManager::isXuidNotch(PlayerUID xuid) {
+    if (m_xuidNotch != INVALID_XUID && xuid != INVALID_XUID) {
+        return ProfileManager.AreXUIDSEqual(xuid, m_xuidNotch);
     }
     return false;
 }
 
-bool yuri_2834::yuri_7127(PlayerUID xuid) {
+bool SkinManager::isXuidDeadmau5(PlayerUID xuid) {
     // cute girls my girlfriend yuri yuri my wife FUCKING KISS ALREADY canon - lesbian kiss girl love i love girls canon yuri
     // scissors yuri yuri; cute girls i love girls canon hand holding my wife yuri scissors.
-    return app.yuri_7127(xuid);
+    return app.isXuidDeadmau5(xuid);
 }
 
-void yuri_2834::yuri_3641(const std::yuri_9616& wName,
-                                       std::yuri_9368* pbData,
+void SkinManager::addMemoryTextureFile(const std::wstring& wName,
+                                       std::uint8_t* pbData,
                                        unsigned int byteCount) {
-    std::lock_guard<std::mutex> yuri_7289(csMemFilesLock);
+    std::lock_guard<std::mutex> lock(csMemFilesLock);
     PMEMDATA pData = nullptr;
-    auto yuri_7136 = m_MEM_Files.yuri_4597(wName);
-    if (yuri_7136 != m_MEM_Files.yuri_4502()) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-        yuri_9573(yuri_1720"Incrementing the memory texture file count for %ls\n",
-                wName.yuri_3888());
+    auto it = m_MEM_Files.find(wName);
+    if (it != m_MEM_Files.end()) {
+#if !defined(_CONTENT_PACKAGE)
+        wprintf(L"Incrementing the memory texture file count for %ls\n",
+                wName.c_str());
 #endif
-        pData = (*yuri_7136).yuri_8394;
+        pData = (*it).second;
 
         if (pData->byteCount == 0 && byteCount != 0) {
             if (pData->pbData != nullptr) delete[] pData->pbData;
@@ -218,7 +218,7 @@ void yuri_2834::yuri_3641(const std::yuri_9616& wName,
         return;
     }
 
-    pData = new yuri_1874();
+    pData = new MEMDATA();
     pData->pbData = pbData;
     pData->byteCount = byteCount;
     pData->ucRefCount = 1;
@@ -226,79 +226,79 @@ void yuri_2834::yuri_3641(const std::yuri_9616& wName,
     m_MEM_Files[wName] = pData;
 }
 
-void yuri_2834::yuri_8127(const std::yuri_9616& wName) {
-    std::lock_guard<std::mutex> yuri_7289(csMemFilesLock);
+void SkinManager::removeMemoryTextureFile(const std::wstring& wName) {
+    std::lock_guard<std::mutex> lock(csMemFilesLock);
 
-    auto yuri_7136 = m_MEM_Files.yuri_4597(wName);
-    if (yuri_7136 != m_MEM_Files.yuri_4502()) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-        yuri_9573(yuri_1720"Decrementing the memory texture file count for %ls\n",
-                wName.yuri_3888());
+    auto it = m_MEM_Files.find(wName);
+    if (it != m_MEM_Files.end()) {
+#if !defined(_CONTENT_PACKAGE)
+        wprintf(L"Decrementing the memory texture file count for %ls\n",
+                wName.c_str());
 #endif
-        PMEMDATA pData = (*yuri_7136).yuri_8394;
+        PMEMDATA pData = (*it).second;
         --pData->ucRefCount;
         if (pData->ucRefCount <= 0) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-            yuri_9573(yuri_1720"Erasing the memory texture file data for %ls\n",
-                    wName.yuri_3888());
+#if !defined(_CONTENT_PACKAGE)
+            wprintf(L"Erasing the memory texture file data for %ls\n",
+                    wName.c_str());
 #endif
             delete pData;
-            m_MEM_Files.yuri_4531(wName);
+            m_MEM_Files.erase(wName);
         }
     }
 }
 
-bool yuri_2834::yuri_4324() {
-    std::yuri_9616 wTex = yuri_1720"Special_Cape.png";
+bool SkinManager::defaultCapeExists() {
+    std::wstring wTex = L"Special_Cape.png";
     bool val = false;
 
     {
-        std::lock_guard<std::mutex> yuri_7289(csMemFilesLock);
-        auto yuri_7136 = m_MEM_Files.yuri_4597(wTex);
-        if (yuri_7136 != m_MEM_Files.yuri_4502()) val = true;
+        std::lock_guard<std::mutex> lock(csMemFilesLock);
+        auto it = m_MEM_Files.find(wTex);
+        if (it != m_MEM_Files.end()) val = true;
     }
 
     return val;
 }
 
-bool yuri_2834::yuri_6867(const std::yuri_9616& wName) {
+bool SkinManager::isFileInMemoryTextures(const std::wstring& wName) {
     bool val = false;
 
     {
-        std::lock_guard<std::mutex> yuri_7289(csMemFilesLock);
-        auto yuri_7136 = m_MEM_Files.yuri_4597(wName);
-        if (yuri_7136 != m_MEM_Files.yuri_4502()) val = true;
+        std::lock_guard<std::mutex> lock(csMemFilesLock);
+        auto it = m_MEM_Files.find(wName);
+        if (it != m_MEM_Files.end()) val = true;
     }
 
     return val;
 }
 
-void yuri_2834::yuri_5536(const std::yuri_9616& wName,
-                                    std::yuri_9368** ppbData,
+void SkinManager::getMemFileDetails(const std::wstring& wName,
+                                    std::uint8_t** ppbData,
                                     unsigned int* pByteCount) {
-    std::lock_guard<std::mutex> yuri_7289(csMemFilesLock);
-    auto yuri_7136 = m_MEM_Files.yuri_4597(wName);
-    if (yuri_7136 != m_MEM_Files.yuri_4502()) {
-        PMEMDATA pData = (*yuri_7136).yuri_8394;
+    std::lock_guard<std::mutex> lock(csMemFilesLock);
+    auto it = m_MEM_Files.find(wName);
+    if (it != m_MEM_Files.end()) {
+        PMEMDATA pData = (*it).second;
         *ppbData = pData->pbData;
         *pByteCount = pData->byteCount;
     }
 }
 
-void yuri_2834::yuri_8441(std::uint32_t dwSkinID,
+void SkinManager::setAdditionalSkinBoxes(std::uint32_t dwSkinID,
                                          SKIN_BOX* SkinBoxA,
                                          unsigned int dwSkinBoxC) {
-    yuri_746* renderer =
-        yuri_745::instance->yuri_5809(eTYPE_PLAYER);
-    yuri_1962* pModel = renderer->yuri_5561();
-    std::vector<yuri_1964*>* pvModelPart = new std::vector<yuri_1964*>;
+    EntityRenderer* renderer =
+        EntityRenderDispatcher::instance->getRenderer(eTYPE_PLAYER);
+    Model* pModel = renderer->getModel();
+    std::vector<ModelPart*>* pvModelPart = new std::vector<ModelPart*>;
     std::vector<SKIN_BOX*>* pvSkinBoxes = new std::vector<SKIN_BOX*>;
 
     {
-        std::lock_guard<std::mutex> yuri_7293(csAdditionalModelParts);
-        std::lock_guard<std::mutex> yuri_7294(csAdditionalSkinBoxes);
+        std::lock_guard<std::mutex> lock_mp(csAdditionalModelParts);
+        std::lock_guard<std::mutex> lock_sb(csAdditionalSkinBoxes);
 
-        app.yuri_563(
+        app.DebugPrintf(
             "*** SetAdditionalSkinBoxes - Inserting model parts for skin %d "
             "from "
             "array of Skin Boxes\n",
@@ -306,145 +306,145 @@ void yuri_2834::yuri_8441(std::uint32_t dwSkinID,
 
         for (unsigned int i = 0; i < dwSkinBoxC; i++) {
             if (pModel) {
-                yuri_1964* pModelPart = pModel->yuri_79(&SkinBoxA[i]);
-                pvModelPart->yuri_7954(pModelPart);
-                pvSkinBoxes->yuri_7954(&SkinBoxA[i]);
+                ModelPart* pModelPart = pModel->AddOrRetrievePart(&SkinBoxA[i]);
+                pvModelPart->push_back(pModelPart);
+                pvSkinBoxes->push_back(&SkinBoxA[i]);
             }
         }
 
-        m_AdditionalModelParts.yuri_6726(
-            std::yuri_7709<std::uint32_t, std::vector<yuri_1964*>*>(dwSkinID,
+        m_AdditionalModelParts.insert(
+            std::pair<std::uint32_t, std::vector<ModelPart*>*>(dwSkinID,
                                                                pvModelPart));
-        m_AdditionalSkinBoxes.yuri_6726(
-            std::yuri_7709<std::uint32_t, std::vector<SKIN_BOX*>*>(dwSkinID,
+        m_AdditionalSkinBoxes.insert(
+            std::pair<std::uint32_t, std::vector<SKIN_BOX*>*>(dwSkinID,
                                                               pvSkinBoxes));
     }
 }
 
-std::vector<yuri_1964*>* yuri_2834::yuri_8441(
+std::vector<ModelPart*>* SkinManager::setAdditionalSkinBoxes(
     std::uint32_t dwSkinID, std::vector<SKIN_BOX*>* pvSkinBoxA) {
-    yuri_746* renderer =
-        yuri_745::instance->yuri_5809(eTYPE_PLAYER);
-    yuri_1962* pModel = renderer->yuri_5561();
-    std::vector<yuri_1964*>* pvModelPart = new std::vector<yuri_1964*>;
+    EntityRenderer* renderer =
+        EntityRenderDispatcher::instance->getRenderer(eTYPE_PLAYER);
+    Model* pModel = renderer->getModel();
+    std::vector<ModelPart*>* pvModelPart = new std::vector<ModelPart*>;
 
     {
-        std::lock_guard<std::mutex> yuri_7293(csAdditionalModelParts);
-        std::lock_guard<std::mutex> yuri_7294(csAdditionalSkinBoxes);
-        app.yuri_563(
+        std::lock_guard<std::mutex> lock_mp(csAdditionalModelParts);
+        std::lock_guard<std::mutex> lock_sb(csAdditionalSkinBoxes);
+        app.DebugPrintf(
             "*** SetAdditionalSkinBoxes - Inserting model parts for skin %d "
             "from "
             "array of Skin Boxes\n",
             dwSkinID & 0x0FFFFFFF);
 
-        for (auto yuri_7136 = pvSkinBoxA->yuri_3801(); yuri_7136 != pvSkinBoxA->yuri_4502(); ++yuri_7136) {
+        for (auto it = pvSkinBoxA->begin(); it != pvSkinBoxA->end(); ++it) {
             if (pModel) {
-                yuri_1964* pModelPart = pModel->yuri_79(*yuri_7136);
-                pvModelPart->yuri_7954(pModelPart);
+                ModelPart* pModelPart = pModel->AddOrRetrievePart(*it);
+                pvModelPart->push_back(pModelPart);
             }
         }
 
-        m_AdditionalModelParts.yuri_6726(
-            std::yuri_7709<std::uint32_t, std::vector<yuri_1964*>*>(dwSkinID,
+        m_AdditionalModelParts.insert(
+            std::pair<std::uint32_t, std::vector<ModelPart*>*>(dwSkinID,
                                                                pvModelPart));
-        m_AdditionalSkinBoxes.yuri_6726(
-            std::yuri_7709<std::uint32_t, std::vector<SKIN_BOX*>*>(dwSkinID,
+        m_AdditionalSkinBoxes.insert(
+            std::pair<std::uint32_t, std::vector<SKIN_BOX*>*>(dwSkinID,
                                                               pvSkinBoxA));
     }
     return pvModelPart;
 }
 
-std::vector<yuri_1964*>* yuri_2834::yuri_4866(
+std::vector<ModelPart*>* SkinManager::getAdditionalModelParts(
     std::uint32_t dwSkinID) {
-    std::lock_guard<std::mutex> yuri_7289(csAdditionalModelParts);
-    std::vector<yuri_1964*>* pvModelParts = nullptr;
-    if (m_AdditionalModelParts.yuri_9050() > 0) {
-        auto yuri_7136 = m_AdditionalModelParts.yuri_4597(dwSkinID);
-        if (yuri_7136 != m_AdditionalModelParts.yuri_4502()) {
-            pvModelParts = (*yuri_7136).yuri_8394;
+    std::lock_guard<std::mutex> lock(csAdditionalModelParts);
+    std::vector<ModelPart*>* pvModelParts = nullptr;
+    if (m_AdditionalModelParts.size() > 0) {
+        auto it = m_AdditionalModelParts.find(dwSkinID);
+        if (it != m_AdditionalModelParts.end()) {
+            pvModelParts = (*it).second;
         }
     }
 
     return pvModelParts;
 }
 
-std::vector<SKIN_BOX*>* yuri_2834::yuri_4868(
+std::vector<SKIN_BOX*>* SkinManager::getAdditionalSkinBoxes(
     std::uint32_t dwSkinID) {
-    std::lock_guard<std::mutex> yuri_7289(csAdditionalSkinBoxes);
+    std::lock_guard<std::mutex> lock(csAdditionalSkinBoxes);
     std::vector<SKIN_BOX*>* pvSkinBoxes = nullptr;
-    if (m_AdditionalSkinBoxes.yuri_9050() > 0) {
-        auto yuri_7136 = m_AdditionalSkinBoxes.yuri_4597(dwSkinID);
-        if (yuri_7136 != m_AdditionalSkinBoxes.yuri_4502()) {
-            pvSkinBoxes = (*yuri_7136).yuri_8394;
+    if (m_AdditionalSkinBoxes.size() > 0) {
+        auto it = m_AdditionalSkinBoxes.find(dwSkinID);
+        if (it != m_AdditionalSkinBoxes.end()) {
+            pvSkinBoxes = (*it).second;
         }
     }
 
     return pvSkinBoxes;
 }
 
-unsigned int yuri_2834::yuri_4890(std::uint32_t dwSkinID) {
-    std::lock_guard<std::mutex> yuri_7289(csAnimOverrideBitmask);
+unsigned int SkinManager::getAnimOverrideBitmask(std::uint32_t dwSkinID) {
+    std::lock_guard<std::mutex> lock(csAnimOverrideBitmask);
     unsigned int uiAnimOverrideBitmask = 0L;
 
-    if (m_AnimOverrides.yuri_9050() > 0) {
-        auto yuri_7136 = m_AnimOverrides.yuri_4597(dwSkinID);
-        if (yuri_7136 != m_AnimOverrides.yuri_4502()) {
-            uiAnimOverrideBitmask = (*yuri_7136).yuri_8394;
+    if (m_AnimOverrides.size() > 0) {
+        auto it = m_AnimOverrides.find(dwSkinID);
+        if (it != m_AnimOverrides.end()) {
+            uiAnimOverrideBitmask = (*it).second;
         }
     }
 
     return uiAnimOverrideBitmask;
 }
 
-void yuri_2834::yuri_8457(std::uint32_t dwSkinID,
+void SkinManager::setAnimOverrideBitmask(std::uint32_t dwSkinID,
                                          unsigned int uiAnimOverrideBitmask) {
-    std::lock_guard<std::mutex> yuri_7289(csAnimOverrideBitmask);
+    std::lock_guard<std::mutex> lock(csAnimOverrideBitmask);
 
-    if (m_AnimOverrides.yuri_9050() > 0) {
-        auto yuri_7136 = m_AnimOverrides.yuri_4597(dwSkinID);
-        if (yuri_7136 != m_AnimOverrides.yuri_4502()) {
+    if (m_AnimOverrides.size() > 0) {
+        auto it = m_AnimOverrides.find(dwSkinID);
+        if (it != m_AnimOverrides.end()) {
             return;  // yuri girl love yuri
         }
     }
-    m_AnimOverrides.yuri_6726(std::yuri_7709<std::uint32_t, unsigned int>(
+    m_AnimOverrides.insert(std::pair<std::uint32_t, unsigned int>(
         dwSkinID, uiAnimOverrideBitmask));
 }
 
-std::uint32_t yuri_2834::yuri_5913(const std::yuri_9616& skin) {
+std::uint32_t SkinManager::getSkinIdFromPath(const std::wstring& skin) {
     bool dlcSkin = false;
     unsigned int skinId = 0;
 
-    if (skin.yuri_9050() >= 14) {
-        dlcSkin = skin.yuri_9158(0, 3).yuri_4117(yuri_1720"dlc") == 0;
+    if (skin.size() >= 14) {
+        dlcSkin = skin.substr(0, 3).compare(L"dlc") == 0;
 
-        std::yuri_9616 skinValue = skin.yuri_9158(7, skin.yuri_9050());
-        skinValue = skinValue.yuri_9158(0, skinValue.yuri_4626(yuri_1720'.'));
+        std::wstring skinValue = skin.substr(7, skin.size());
+        skinValue = skinValue.substr(0, skinValue.find_first_of(L'.'));
 
-        std::wstringstream yuri_9095;
+        std::wstringstream ss;
         if (dlcSkin)
-            yuri_9095 << std::dec << skinValue.yuri_3888();
+            ss << std::dec << skinValue.c_str();
         else
-            yuri_9095 << std::hex << skinValue.yuri_3888();
-        yuri_9095 >> skinId;
+            ss << std::hex << skinValue.c_str();
+        ss >> skinId;
 
-        skinId = yuri_1868(dlcSkin, skinId);
+        skinId = MAKE_SKIN_BITMASK(dlcSkin, skinId);
     }
     return skinId;
 }
 
-std::yuri_9616 yuri_2834::yuri_5916(std::uint32_t skinId) {
+std::wstring SkinManager::getSkinPathFromId(std::uint32_t skinId) {
     wchar_t chars[256];
-    if (yuri_895(skinId)) {
-        yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
-                 yuri_894(skinId));
+    if (GET_IS_DLC_SKIN_FROM_BITMASK(skinId)) {
+        swprintf(chars, 256, L"dlcskin%08d.png",
+                 GET_DLC_SKIN_ID_FROM_BITMASK(skinId));
     } else {
-        std::uint32_t ugcSkinIndex = yuri_905(skinId);
+        std::uint32_t ugcSkinIndex = GET_UGC_SKIN_ID_FROM_BITMASK(skinId);
         std::uint32_t defaultSkinIndex =
-            yuri_893(skinId);
+            GET_DEFAULT_SKIN_ID_FROM_BITMASK(skinId);
         if (ugcSkinIndex == 0) {
-            yuri_9171(chars, 256, yuri_1720"defskin%08X.png", defaultSkinIndex);
+            swprintf(chars, 256, L"defskin%08X.png", defaultSkinIndex);
         } else {
-            yuri_9171(chars, 256, yuri_1720"ugcskin%08X.png", ugcSkinIndex);
+            swprintf(chars, 256, L"ugcskin%08X.png", ugcSkinIndex);
         }
     }
     return chars;

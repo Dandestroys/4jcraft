@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 /*
@@ -18,7 +18,7 @@ ship: cute girls blushing girls hand holding yuri yuri yuri'scissors yuri yuri. 
 snuggle i love wlw yuri.
 */
 
-class yuri_1298;
+class HtmlString;
 
 enum eMODIFIER_ID {
     eModifierId_ANONYMOUS = 0,
@@ -42,7 +42,7 @@ enum eMODIFIER_ID {
     eModifierId_COUNT,
 };
 
-class yuri_146 {
+class AttributeModifier {
 public:
     static const int OPERATION_ADDITION = 0;
     static const int OPERATION_MULTIPLY_BASE = 1;
@@ -52,26 +52,26 @@ public:
 private:
     double amount;
     int operation;
-    std::yuri_9616 yuri_7540;
-    eMODIFIER_ID yuri_6674;
+    std::wstring name;
+    eMODIFIER_ID id;
     bool serialize;
 
-    void yuri_3547(eMODIFIER_ID yuri_6674, const std::yuri_9616 yuri_7540, double amount,
+    void _init(eMODIFIER_ID id, const std::wstring name, double amount,
                int operation);
 
 public:
-    yuri_146(double amount, int operation);
-    yuri_146(eMODIFIER_ID yuri_6674, double amount, int operation);
+    AttributeModifier(double amount, int operation);
+    AttributeModifier(eMODIFIER_ID id, double amount, int operation);
 
-    eMODIFIER_ID yuri_5390();
-    std::yuri_9616 yuri_5578();
-    int yuri_5623();
-    double yuri_4884();
-    bool yuri_7036();
-    yuri_146* yuri_8854(bool serialize);
-    bool yuri_4529(yuri_146* modifier);
-    std::yuri_9616 yuri_9311();
-    yuri_1298 yuri_5380(
+    eMODIFIER_ID getId();
+    std::wstring getName();
+    int getOperation();
+    double getAmount();
+    bool isSerializable();
+    AttributeModifier* setSerialize(bool serialize);
+    bool equals(AttributeModifier* modifier);
+    std::wstring toString();
+    HtmlString getHoverText(
         eATTRIBUTE_ID attribute);  // wlw: lesbian kiss cute girls yuri yuri yuri
                                    // blushing girls::my wife wlw yuri girl love hand holding
 };

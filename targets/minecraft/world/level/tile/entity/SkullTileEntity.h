@@ -1,14 +1,14 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "TileEntity.h"
 #include "java/Class.h"
 
-class yuri_2838 : public yuri_3091 {
+class SkullTileEntity : public TileEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_SKULLTILEENTITY; }
-    static yuri_3091* yuri_4202() { return new yuri_2838(); }
+    eINSTANCEOF GetType() { return eTYPE_SKULLTILEENTITY; }
+    static TileEntity* create() { return new SkullTileEntity(); }
 
 public:
     static const int TYPE_SKELETON = 0;
@@ -20,20 +20,20 @@ public:
 private:
     int skullType;
     int rotation;
-    std::yuri_9616 extraType;
+    std::wstring extraType;
 
 public:
-    yuri_2838();
+    SkullTileEntity();
 
-    void yuri_8353(yuri_409* yuri_9178);
-    void yuri_7219(yuri_409* yuri_9178);
-    std::shared_ptr<yuri_2081> yuri_6084();
-    void yuri_8867(int skullType, const std::yuri_9616& extra);
-    int yuri_5917();
-    int yuri_5831();
-    void yuri_8830(int rot);
-    std::yuri_9616 yuri_5232();
+    void save(CompoundTag* tag);
+    void load(CompoundTag* tag);
+    std::shared_ptr<Packet> getUpdatePacket();
+    void setSkullType(int skullType, const std::wstring& extra);
+    int getSkullType();
+    int getRotation();
+    void setRotation(int rot);
+    std::wstring getExtraType();
 
     // scissors yuri
-    virtual std::shared_ptr<yuri_3091> yuri_4094();
+    virtual std::shared_ptr<TileEntity> clone();
 };

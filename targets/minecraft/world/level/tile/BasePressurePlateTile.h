@@ -1,66 +1,66 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-class yuri_1758;
-class yuri_1886;
+class Level;
+class Material;
 
-class yuri_165 : public yuri_3088 {
+class BasePressurePlateTile : public Tile {
 private:
-    std::yuri_9616 texture;
+    std::wstring texture;
 
 protected:
-    yuri_165(int yuri_6674, const std::yuri_9616& yuri_9251, yuri_1886* material);
+    BasePressurePlateTile(int id, const std::wstring& tex, Material* material);
 
 public:
-    virtual void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    virtual void updateShape(LevelSource* level, int x, int y, int z,
                              int forceData = -1,
-                             std::shared_ptr<yuri_3091> forceEntity =
-                                 std::shared_ptr<yuri_3091>());
+                             std::shared_ptr<TileEntity> forceEntity =
+                                 std::shared_ptr<TileEntity>());
 
 protected:
-    virtual void yuri_9461(int yuri_4295);
+    virtual void updateShape(int data);
 
 public:
-    virtual int yuri_6025(yuri_1758* yuri_7194);
-    virtual std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual bool yuri_7058(bool isServerLevel = false);
-    virtual bool yuri_3828();
-    virtual bool yuri_6827();
-    virtual bool yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
-    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
-    virtual void yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                              std::shared_ptr<yuri_739> entity);
+    virtual int getTickDelay(Level* level);
+    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    virtual bool isSolidRender(bool isServerLevel = false);
+    virtual bool blocksLight();
+    virtual bool isCubeShaped();
+    virtual bool isPathfindable(LevelSource* level, int x, int y, int z);
+    virtual bool mayPlace(Level* level, int x, int y, int z);
+    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
+    virtual void tick(Level* level, int x, int y, int z, Random* random);
+    virtual void entityInside(Level* level, int x, int y, int z,
+                              std::shared_ptr<Entity> entity);
 
 protected:
-    virtual void yuri_4023(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int oldSignal);
-    virtual yuri_0 yuri_5877(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void checkPressed(Level* level, int x, int y, int z, int oldSignal);
+    virtual AABB getSensitiveAABB(int x, int y, int z);
 
 public:
-    virtual void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
+    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
 
 protected:
-    virtual void yuri_9438(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void updateNeighbours(Level* level, int x, int y, int z);
 
 public:
-    virtual int yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361);
-    virtual int yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                int yuri_4361);
-    virtual bool yuri_7041();
-    virtual void yuri_9402();
-    virtual int yuri_5694();
+    virtual int getSignal(LevelSource* level, int x, int y, int z, int dir);
+    virtual int getDirectSignal(LevelSource* level, int x, int y, int z,
+                                int dir);
+    virtual bool isSignalSource();
+    virtual void updateDefaultShape();
+    virtual int getPistonPushReaction();
 
 protected:
-    virtual int yuri_5900(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) = 0;
-    virtual int yuri_5899(int yuri_4295) = 0;
-    virtual int yuri_5119(int signal) = 0;
+    virtual int getSignalStrength(Level* level, int x, int y, int z) = 0;
+    virtual int getSignalForData(int data) = 0;
+    virtual int getDataForSignal(int signal) = 0;
 
 public:
-    virtual void yuri_8072(IconRegister* iconRegister);
+    virtual void registerIcons(IconRegister* iconRegister);
 };

@@ -1,47 +1,47 @@
 
 #include "minecraft/world/level/newbiome/layer/SmoothLayer.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 #include <vector>
 
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-yuri_2853::yuri_2853(yuri_6733 seedMixup, std::shared_ptr<yuri_1742> yuri_7791)
-    : yuri_1742(seedMixup) {
-    this->yuri_7791 = yuri_7791;
+SmoothLayer::SmoothLayer(int64_t seedMixup, std::shared_ptr<Layer> parent)
+    : Layer(seedMixup) {
+    this->parent = parent;
 }
 
-std::vector<int> yuri_2853::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
+std::vector<int> SmoothLayer::getArea(int xo, int yo, int w, int h) {
     int px = xo - 1;
     int py = yo - 1;
-    int pw = yuri_9535 + 2;
-    int ph = yuri_6412 + 2;
-    std::vector<int> yuri_7701 = yuri_7791->yuri_4897(px, py, pw, ph);
+    int pw = w + 2;
+    int ph = h + 2;
+    std::vector<int> p = parent->getArea(px, py, pw, ph);
 
-    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
-    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
-        for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
-            int yuri_7176 = yuri_7701[(yuri_9621 + 0) + (yuri_9625 + 1) * pw];
-            int r = yuri_7701[(yuri_9621 + 2) + (yuri_9625 + 1) * pw];
-            int yuri_9365 = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 0) * pw];
-            int d = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 2) * pw];
-            int c = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 1) * pw];
-            if (yuri_7176 == r && yuri_9365 == d) {
-                yuri_6715((yuri_9621 + xo), (yuri_9625 + yo));
-                if (yuri_7580(2) == 0)
-                    c = yuri_7176;
+    std::vector<int> result(w * h);
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            int l = p[(x + 0) + (y + 1) * pw];
+            int r = p[(x + 2) + (y + 1) * pw];
+            int u = p[(x + 1) + (y + 0) * pw];
+            int d = p[(x + 1) + (y + 2) * pw];
+            int c = p[(x + 1) + (y + 1) * pw];
+            if (l == r && u == d) {
+                initRandom((x + xo), (y + yo));
+                if (nextRandom(2) == 0)
+                    c = l;
                 else
-                    c = yuri_9365;
+                    c = u;
 
             } else {
-                if (yuri_7176 == r) c = yuri_7176;
-                if (yuri_9365 == d) c = yuri_9365;
+                if (l == r) c = l;
+                if (u == d) c = u;
             }
-            yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = c;
+            result[x + y * w] = c;
         }
     }
 
-    return yuri_8300;
+    return result;
 }

@@ -1,17 +1,17 @@
 #pragma once
 #include "HalfTransparentTile.h"
 
-class yuri_2302;
-class yuri_1886;
+class Random;
+class Material;
 
-class yuri_1213 : public yuri_1236 {
+class GlassTile : public HalfTransparentTile {
 public:
-    using yuri_1236::yuri_7058;
+    using HalfTransparentTile::isSolidRender;
 
-    yuri_1213(int yuri_6674, yuri_1886* material, bool allowSame);
-    virtual int yuri_5819(yuri_2302* yuri_7981);
-    virtual int yuri_5805();
-    virtual bool yuri_7058();
-    virtual bool yuri_6827();
-    virtual bool yuri_7042();
+    GlassTile(int id, Material* material, bool allowSame);
+    virtual int getResourceCount(Random* random);
+    virtual int getRenderLayer();
+    virtual bool isSolidRender();
+    virtual bool isCubeShaped();
+    virtual bool isSilkTouchable();
 };

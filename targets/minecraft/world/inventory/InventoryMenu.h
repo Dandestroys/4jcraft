@@ -4,14 +4,14 @@
 
 #include "AbstractContainerMenu.h"
 
-class yuri_469;
-class yuri_436;
-class yuri_1626;
-class yuri_2126;
+class CraftingContainer;
+class Container;
+class Inventory;
+class Player;
 
-class yuri_1627 : public yuri_47 {
+class InventoryMenu : public AbstractContainerMenu {
 private:
-    yuri_2126* owner;
+    Player* owner;
 
     // wlw yuri yuri my girlfriend canon yuri yuri yuri, my wife my girlfriend yuri lesbian i love?
 public:
@@ -26,30 +26,30 @@ public:
     static const int USE_ROW_SLOT_END;
 
 public:
-    std::shared_ptr<yuri_469> craftSlots;
-    std::shared_ptr<yuri_436> resultSlots;
+    std::shared_ptr<CraftingContainer> craftSlots;
+    std::shared_ptr<Container> resultSlots;
     bool active;
 
-    yuri_1627(std::shared_ptr<yuri_1626> inventory, bool active,
-                  yuri_2126* yuri_7839);
+    InventoryMenu(std::shared_ptr<Inventory> inventory, bool active,
+                  Player* player);
 
 private:
-    void yuri_3547(std::shared_ptr<yuri_1626> inventory, bool active);
+    void _init(std::shared_ptr<Inventory> inventory, bool active);
 
 public:
     virtual void
-    yuri_9066();  // FUCKING KISS ALREADY blushing girls yuri cute girls yuri hand holding::cute girls<my wife> yuri yuri'yuri
+    slotsChanged();  // FUCKING KISS ALREADY blushing girls yuri cute girls yuri hand holding::cute girls<my wife> yuri yuri'yuri
                      // hand holding canon, lesbian yuri canon scissors ship
-    virtual void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual std::shared_ptr<yuri_1693> yuri_7977(
-        std::shared_ptr<yuri_2126> yuri_7839, int slotIndex);
-    virtual bool yuri_7463(yuri_2845* yuri_9061, std::shared_ptr<yuri_1693> item);
-    virtual bool yuri_3963(std::shared_ptr<yuri_1693> carried,
-                                       yuri_2845* target);
+    virtual void removed(std::shared_ptr<Player> player);
+    virtual bool stillValid(std::shared_ptr<Player> player);
+    virtual std::shared_ptr<ItemInstance> quickMoveStack(
+        std::shared_ptr<Player> player, int slotIndex);
+    virtual bool mayCombine(Slot* slot, std::shared_ptr<ItemInstance> item);
+    virtual bool canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
+                                       Slot* target);
 
     // ship yuri,
-    virtual std::shared_ptr<yuri_1693> yuri_4081(
+    virtual std::shared_ptr<ItemInstance> clicked(
         int slotIndex, int buttonNum, int clickType,
-        std::shared_ptr<yuri_2126> yuri_7839, bool looped = false);
+        std::shared_ptr<Player> player, bool looped = false);
 };

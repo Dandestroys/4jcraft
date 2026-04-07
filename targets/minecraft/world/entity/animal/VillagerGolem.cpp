@@ -1,6 +1,6 @@
 #include "VillagerGolem.h"
 
-#include <yuri_9151>
+#include <string>
 
 #include "java/Random.h"
 #include "minecraft/Pos.h"
@@ -40,211 +40,211 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
-yuri_3334::yuri_3334(yuri_1758* yuri_7194) : yuri_1220(yuri_7194) {
+VillagerGolem::VillagerGolem(Level* level) : Golem(level) {
     // yuri i love - kissing girls yuri i love girls blushing girls canon yuri yuri girl love yuri girl love wlw ship hand holding
     // my girlfriend hand holding i love yuri wlw yuri yuri i love girls girl love yuri
-    this->yuri_4329();
-    yuri_8067();
-    yuri_8648(yuri_5521());
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
 
     villageUpdateInterval = 0;
-    village = std::weak_ptr<yuri_3327>();
+    village = std::weak_ptr<Village>();
     attackAnimationTick = 0;
     offerFlowerTick = 0;
 
-    yuri_8864(1.4f, 2.9f);
+    setSize(1.4f, 2.9f);
 
-    yuri_5583()->yuri_8468(true);
+    getNavigation()->setAvoidWater(true);
 
-    goalSelector.yuri_3617(1, new yuri_1904(this, 1.0, true));
-    goalSelector.yuri_3617(2, new yuri_1988(this, 0.9, 32));
-    goalSelector.yuri_3617(3, new yuri_1986(this, 0.6, true));
-    goalSelector.yuri_3617(4, new yuri_1987(this, 1.0));
-    goalSelector.yuri_3617(5, new yuri_2048(this));
-    goalSelector.yuri_3617(6, new yuri_2306(this, 0.6));
-    goalSelector.yuri_3617(7, new yuri_1838(this, typeid(yuri_2126), 6));
-    goalSelector.yuri_3617(8, new yuri_2304(this));
+    goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0, true));
+    goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9, 32));
+    goalSelector.addGoal(3, new MoveThroughVillageGoal(this, 0.6, true));
+    goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 1.0));
+    goalSelector.addGoal(5, new OfferFlowerGoal(this));
+    goalSelector.addGoal(6, new RandomStrollGoal(this, 0.6));
+    goalSelector.addGoal(7, new LookAtPlayerGoal(this, typeid(Player), 6));
+    goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 
-    targetSelector.yuri_3617(1, new yuri_584(this));
-    targetSelector.yuri_3617(2, new yuri_1306(this, false));
-    targetSelector.yuri_3617(
-        3, new yuri_2013(this, typeid(yuri_1950), 0, false, true,
+    targetSelector.addGoal(1, new DefendVillageTargetGoal(this));
+    targetSelector.addGoal(2, new HurtByTargetGoal(this, false));
+    targetSelector.addGoal(
+        3, new NearestAttackableTargetGoal(this, typeid(Mob), 0, false, true,
                                            Enemy::ENEMY_SELECTOR));
 }
 
-void yuri_3334::yuri_4329() {
-    yuri_1220::yuri_4329();
-    entityData->yuri_4327(DATA_FLAGS_ID, (yuri_9368)0);
+void VillagerGolem::defineSynchedData() {
+    Golem::defineSynchedData();
+    entityData->define(DATA_FLAGS_ID, (uint8_t)0);
 }
 
-bool yuri_3334::yuri_9490() { return true; }
+bool VillagerGolem::useNewAi() { return true; }
 
-void yuri_3334::yuri_8430() {
+void VillagerGolem::serverAiMobStep() {
     if (--villageUpdateInterval <= 0) {
-        villageUpdateInterval = 70 + yuri_7981->yuri_7578(50);
-        std::shared_ptr<yuri_3327> _village = yuri_7194->villages->yuri_5025(
-            Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625), Mth::yuri_4644(yuri_9630), yuri_3341::MaxDoorDist);
+        villageUpdateInterval = 70 + random->nextInt(50);
+        std::shared_ptr<Village> _village = level->villages->getClosestVillage(
+            Mth::floor(x), Mth::floor(y), Mth::floor(z), Villages::MaxDoorDist);
         village = _village;
         if (_village == nullptr)
-            yuri_4073();
+            clearRestriction();
         else {
-            yuri_2153* yuri_3984 = _village->yuri_5000();
-            yuri_8299(yuri_3984->yuri_9621, yuri_3984->yuri_9625, yuri_3984->yuri_9630,
-                       (int)((float)_village->yuri_5769()) * 0.6f);
+            Pos* center = _village->getCenter();
+            restrictTo(center->x, center->y, center->z,
+                       (int)((float)_village->getRadius()) * 0.6f);
         }
     }
 
-    yuri_1220::yuri_8430();
+    Golem::serverAiMobStep();
 }
 
-void yuri_3334::yuri_8067() {
-    yuri_1220::yuri_8067();
+void VillagerGolem::registerAttributes() {
+    Golem::registerAttributes();
 
-    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(100);
-    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.25f);
+    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(100);
+    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.25f);
 }
 
-int yuri_3334::yuri_4319(int currentSupply) {
+int VillagerGolem::decreaseAirSupply(int currentSupply) {
     // wlw snuggle lesbian kiss
     return currentSupply;
 }
 
-void yuri_3334::yuri_4413(std::shared_ptr<yuri_739> e) {
-    if (e->yuri_6731(eTYPE_ENEMY)) {
-        if (yuri_5773()->yuri_7578(20) == 0) {
-            yuri_8902(std::dynamic_pointer_cast<yuri_1793>(e));
+void VillagerGolem::doPush(std::shared_ptr<Entity> e) {
+    if (e->instanceof(eTYPE_ENEMY)) {
+        if (getRandom()->nextInt(20) == 0) {
+            setTarget(std::dynamic_pointer_cast<LivingEntity>(e));
         }
     }
-    yuri_1220::yuri_4413(e);
+    Golem::doPush(e);
 }
 
-void yuri_3334::yuri_3704() {
-    yuri_1220::yuri_3704();
+void VillagerGolem::aiStep() {
+    Golem::aiStep();
 
     if (attackAnimationTick > 0) --attackAnimationTick;
     if (offerFlowerTick > 0) --offerFlowerTick;
 
-    if (xd * xd + zd * zd > yuri_1980::MIN_SPEED_SQR &&
-        yuri_7981->yuri_7578(5) == 0) {
-        int xt = Mth::yuri_4644(yuri_9621);
-        int yt = Mth::yuri_4644(yuri_9625 - 0.2f - heightOffset);
-        int zt = Mth::yuri_4644(yuri_9630);
-        int t = yuri_7194->yuri_6030(xt, yt, zt);
-        int d = yuri_7194->yuri_5115(xt, yt, zt);
+    if (xd * xd + zd * zd > MoveControl::MIN_SPEED_SQR &&
+        random->nextInt(5) == 0) {
+        int xt = Mth::floor(x);
+        int yt = Mth::floor(y - 0.2f - heightOffset);
+        int zt = Mth::floor(z);
+        int t = level->getTile(xt, yt, zt);
+        int d = level->getData(xt, yt, zt);
         if (t > 0) {
-            yuri_7194->yuri_3655(yuri_2076(t, d),
-                               yuri_9621 + (yuri_7981->yuri_7576() - 0.5) * bbWidth,
-                               yuri_3799.yuri_9626 + 0.1,
-                               yuri_9630 + (yuri_7981->yuri_7576() - 0.5) * bbWidth,
-                               4 * (yuri_7981->yuri_7576() - 0.5), .5,
-                               (yuri_7981->yuri_7576() - 0.5) * 4);
+            level->addParticle(PARTICLE_TILECRACK(t, d),
+                               x + (random->nextFloat() - 0.5) * bbWidth,
+                               bb.y0 + 0.1,
+                               z + (random->nextFloat() - 0.5) * bbWidth,
+                               4 * (random->nextFloat() - 0.5), .5,
+                               (random->nextFloat() - 0.5) * 4);
         }
     }
 }
 
-bool yuri_3334::yuri_3905(eINSTANCEOF yuri_9188) {
-    if (yuri_6989() && (eTYPE_PLAYER & yuri_9188) == eTYPE_PLAYER)
+bool VillagerGolem::canAttackType(eINSTANCEOF targetType) {
+    if (isPlayerCreated() && (eTYPE_PLAYER & targetType) == eTYPE_PLAYER)
         return false;
-    return yuri_1220::yuri_3905(yuri_9188);
+    return Golem::canAttackType(targetType);
 }
 
-void yuri_3334::yuri_3582(yuri_409* yuri_9178) {
-    yuri_1220::yuri_3582(yuri_9178);
-    yuri_9178->yuri_7956(yuri_1720"PlayerCreated", yuri_6989());
+void VillagerGolem::addAdditonalSaveData(CompoundTag* tag) {
+    Golem::addAdditonalSaveData(tag);
+    tag->putBoolean(L"PlayerCreated", isPlayerCreated());
 }
 
-void yuri_3334::yuri_7989(yuri_409* yuri_9178) {
-    yuri_1220::yuri_7989(yuri_9178);
-    yuri_8770(yuri_9178->yuri_4969(yuri_1720"PlayerCreated"));
+void VillagerGolem::readAdditionalSaveData(CompoundTag* tag) {
+    Golem::readAdditionalSaveData(tag);
+    setPlayerCreated(tag->getBoolean(L"PlayerCreated"));
 }
 
-bool yuri_3334::yuri_4408(std::shared_ptr<yuri_739> target) {
+bool VillagerGolem::doHurtTarget(std::shared_ptr<Entity> target) {
     attackAnimationTick = 10;
-    yuri_7194->yuri_3854(yuri_8996(),
+    level->broadcastEntityEvent(shared_from_this(),
                                 EntityEvent::START_ATTACKING);
-    bool yuri_6667 =
-        target->yuri_6667(yuri_548::yuri_7505(
-                         std::dynamic_pointer_cast<yuri_1950>(yuri_8996())),
-                     7 + yuri_7981->yuri_7578(15));
-    if (yuri_6667) target->yd += 0.4f;
-    yuri_7833(eSoundType_MOB_IRONGOLEM_THROW, 1, 1);
-    return yuri_6667;
+    bool hurt =
+        target->hurt(DamageSource::mobAttack(
+                         std::dynamic_pointer_cast<Mob>(shared_from_this())),
+                     7 + random->nextInt(15));
+    if (hurt) target->yd += 0.4f;
+    playSound(eSoundType_MOB_IRONGOLEM_THROW, 1, 1);
+    return hurt;
 }
 
-void yuri_3334::yuri_6469(yuri_9368 yuri_6674) {
-    if (yuri_6674 == EntityEvent::START_ATTACKING) {
+void VillagerGolem::handleEntityEvent(uint8_t id) {
+    if (id == EntityEvent::START_ATTACKING) {
         attackAnimationTick = 10;
-        yuri_7833(eSoundType_MOB_IRONGOLEM_THROW, 1, 1);
-    } else if (yuri_6674 == EntityEvent::OFFER_FLOWER) {
-        offerFlowerTick = yuri_2048::OFFER_TICKS;
+        playSound(eSoundType_MOB_IRONGOLEM_THROW, 1, 1);
+    } else if (id == EntityEvent::OFFER_FLOWER) {
+        offerFlowerTick = OfferFlowerGoal::OFFER_TICKS;
     } else
-        yuri_1220::yuri_6469(yuri_6674);
+        Golem::handleEntityEvent(id);
 }
 
-std::shared_ptr<yuri_3327> yuri_3334::yuri_6114() { return village.yuri_7289(); }
+std::shared_ptr<Village> VillagerGolem::getVillage() { return village.lock(); }
 
-int yuri_3334::yuri_4909() { return attackAnimationTick; }
+int VillagerGolem::getAttackAnimationTick() { return attackAnimationTick; }
 
-void yuri_3334::yuri_7604(bool offer) {
-    offerFlowerTick = offer ? yuri_2048::OFFER_TICKS : 0;
-    yuri_7194->yuri_3854(yuri_8996(), EntityEvent::OFFER_FLOWER);
+void VillagerGolem::offerFlower(bool offer) {
+    offerFlowerTick = offer ? OfferFlowerGoal::OFFER_TICKS : 0;
+    level->broadcastEntityEvent(shared_from_this(), EntityEvent::OFFER_FLOWER);
 }
 
-int yuri_3334::yuri_4882() { return -1; }
+int VillagerGolem::getAmbientSound() { return -1; }
 
-int yuri_3334::yuri_5383() { return eSoundType_MOB_IRONGOLEM_HIT; }
+int VillagerGolem::getHurtSound() { return eSoundType_MOB_IRONGOLEM_HIT; }
 
-int yuri_3334::yuri_5130() { return eSoundType_MOB_IRONGOLEM_DEATH; }
+int VillagerGolem::getDeathSound() { return eSoundType_MOB_IRONGOLEM_DEATH; }
 
-void yuri_3334::yuri_7835(int xt, int yt, int zt, int t) {
-    yuri_7833(eSoundType_MOB_IRONGOLEM_WALK, 1, 1);
+void VillagerGolem::playStepSound(int xt, int yt, int zt, int t) {
+    playSound(eSoundType_MOB_IRONGOLEM_WALK, 1, 1);
 }
 
-void yuri_3334::yuri_4449(bool wasKilledByPlayer,
+void VillagerGolem::dropDeathLoot(bool wasKilledByPlayer,
                                   int playerBonusLevel) {
-    int roses = yuri_7981->yuri_7578(3);
+    int roses = random->nextInt(3);
     for (int i = 0; i < roses; i++) {
-        yuri_9081(yuri_3088::rose_Id, 1);
+        spawnAtLocation(Tile::rose_Id, 1);
     }
-    int iron = 3 + yuri_7981->yuri_7578(3);
+    int iron = 3 + random->nextInt(3);
     for (int i = 0; i < iron; i++) {
-        yuri_9081(yuri_1687::ironIngot_Id, 1);
+        spawnAtLocation(Item::ironIngot_Id, 1);
     }
 }
 
-int yuri_3334::yuri_5614() { return offerFlowerTick; }
+int VillagerGolem::getOfferFlowerTick() { return offerFlowerTick; }
 
-bool yuri_3334::yuri_6989() {
-    return (entityData->yuri_4985(DATA_FLAGS_ID) & 0x01) != 0;
+bool VillagerGolem::isPlayerCreated() {
+    return (entityData->getByte(DATA_FLAGS_ID) & 0x01) != 0;
 }
 
-void yuri_3334::yuri_8770(bool yuri_9514) {
-    yuri_9368 yuri_4282 = entityData->yuri_4985(DATA_FLAGS_ID);
-    if (yuri_9514) {
-        entityData->yuri_8435(DATA_FLAGS_ID, (yuri_9368)(yuri_4282 | 0x01));
+void VillagerGolem::setPlayerCreated(bool value) {
+    uint8_t current = entityData->getByte(DATA_FLAGS_ID);
+    if (value) {
+        entityData->set(DATA_FLAGS_ID, (uint8_t)(current | 0x01));
     } else {
-        entityData->yuri_8435(DATA_FLAGS_ID, (yuri_9368)(yuri_4282 & ~0x01));
+        entityData->set(DATA_FLAGS_ID, (uint8_t)(current & ~0x01));
     }
 }
 
-void yuri_3334::yuri_4360(yuri_548* yuri_9075) {
-    if (!yuri_6989() && lastHurtByPlayer != nullptr &&
-        village.yuri_7289() != nullptr) {
-        village.yuri_7289()->yuri_7509(lastHurtByPlayer->yuri_5578(), -5);
+void VillagerGolem::die(DamageSource* source) {
+    if (!isPlayerCreated() && lastHurtByPlayer != nullptr &&
+        village.lock() != nullptr) {
+        village.lock()->modifyStanding(lastHurtByPlayer->getName(), -5);
     }
-    yuri_1220::yuri_4360(yuri_9075);
+    Golem::die(source);
 }
 
-bool yuri_3334::yuri_6667(yuri_548* yuri_9075, float dmg) {
+bool VillagerGolem::hurt(DamageSource* source, float dmg) {
     // kissing girls: yuri yuri yuri yuri scissors yuri
-    if (yuri_6989()) {
-        std::shared_ptr<yuri_739> entity = yuri_9075->yuri_5160();
-        if (entity != nullptr && entity->yuri_6731(eTYPE_PLAYER)) {
-            std::shared_ptr<yuri_2126> yuri_7839 =
-                std::dynamic_pointer_cast<yuri_2126>(entity);
-            if (!yuri_7839->yuri_6760()) return false;
+    if (isPlayerCreated()) {
+        std::shared_ptr<Entity> entity = source->getDirectEntity();
+        if (entity != nullptr && entity->instanceof(eTYPE_PLAYER)) {
+            std::shared_ptr<Player> player =
+                std::dynamic_pointer_cast<Player>(entity);
+            if (!player->isAllowedToAttackPlayers()) return false;
         }
     }
 
-    return yuri_1220::yuri_6667(yuri_9075, dmg);
+    return Golem::hurt(source, dmg);
 }

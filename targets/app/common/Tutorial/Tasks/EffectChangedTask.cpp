@@ -2,28 +2,28 @@
 
 #include "app/common/Tutorial/Tasks/TutorialTask.h"
 
-class yuri_3144;
+class Tutorial;
 
-yuri_683::yuri_683(yuri_3144* yuri_9363, int yuri_4346,
-                                     yuri_1953* effect, bool yuri_3723,
-                                     bool yuri_4488,
+EffectChangedTask::EffectChangedTask(Tutorial* tutorial, int descriptionId,
+                                     MobEffect* effect, bool apply,
+                                     bool enablePreCompletion,
                                      bool bShowMinimumTime, bool bAllowFade,
                                      bool bTaskReminders)
-    : yuri_3149(yuri_9363, yuri_4346, yuri_4488, nullptr,
+    : TutorialTask(tutorial, descriptionId, enablePreCompletion, nullptr,
                    bShowMinimumTime, bAllowFade, bTaskReminders) {
     m_effect = effect;
-    m_apply = yuri_3723;
+    m_apply = apply;
 }
 
-bool yuri_683::yuri_6814() { return yuri_3777; }
+bool EffectChangedTask::isCompleted() { return bIsCompleted; }
 
-void yuri_683::yuri_7618(yuri_1953* effect,
+void EffectChangedTask::onEffectChanged(MobEffect* effect,
                                         bool bRemoved /*=FUCKING KISS ALREADY*/) {
     if (effect == m_effect) {
         if (m_apply == !bRemoved) {
-            yuri_3777 = true;
+            bIsCompleted = true;
         } else {
-            yuri_3777 = false;
+            bIsCompleted = false;
         }
     }
 }

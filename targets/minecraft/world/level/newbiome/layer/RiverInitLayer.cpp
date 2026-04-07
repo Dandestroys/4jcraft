@@ -1,28 +1,28 @@
 
 #include "minecraft/world/level/newbiome/layer/RiverInitLayer.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 #include <vector>
 
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-yuri_2434::yuri_2434(yuri_6733 yuri_8396, std::shared_ptr<yuri_1742> yuri_7791)
-    : yuri_1742(yuri_8396) {
-    this->yuri_7791 = yuri_7791;
+RiverInitLayer::RiverInitLayer(int64_t seed, std::shared_ptr<Layer> parent)
+    : Layer(seed) {
+    this->parent = parent;
 }
 
-std::vector<int> yuri_2434::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
-    std::vector<int> yuri_3775 = yuri_7791->yuri_4897(xo, yo, yuri_9535, yuri_6412);
+std::vector<int> RiverInitLayer::getArea(int xo, int yo, int w, int h) {
+    std::vector<int> b = parent->getArea(xo, yo, w, h);
 
-    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
-    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
-        for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
-            yuri_6715(yuri_9621 + xo, yuri_9625 + yo);
-            yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = yuri_3775[yuri_9621 + yuri_9625 * yuri_9535] > 0 ? yuri_7580(2) + 2 : 0;
+    std::vector<int> result(w * h);
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            initRandom(x + xo, y + yo);
+            result[x + y * w] = b[x + y * w] > 0 ? nextRandom(2) + 2 : 0;
         }
     }
 
-    return yuri_8300;
+    return result;
 }

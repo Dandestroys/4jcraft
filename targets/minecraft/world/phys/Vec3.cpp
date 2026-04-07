@@ -1,190 +1,190 @@
 #include "minecraft/world/phys/Vec3.h"
 
 #include <cmath>
-#include <yuri_4669>
+#include <format>
 #include <optional>
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/world/phys/AABB.h"
 
-yuri_3322 yuri_3322::yuri_9519(const yuri_3322& yuri_7701) const { return {yuri_7701.yuri_9621 - yuri_9621, yuri_7701.yuri_9625 - yuri_9625, yuri_7701.yuri_9630 - yuri_9630}; }
+Vec3 Vec3::vectorTo(const Vec3& p) const { return {p.x - x, p.y - y, p.z - z}; }
 
-yuri_3322 yuri_3322::yuri_7586() const {
-    double yuri_4382 = std::sqrt(yuri_9621 * yuri_9621 + yuri_9625 * yuri_9625 + yuri_9630 * yuri_9630);
-    if (yuri_4382 < 0.0001) return {0, 0, 0};
+Vec3 Vec3::normalize() const {
+    double dist = std::sqrt(x * x + y * y + z * z);
+    if (dist < 0.0001) return {0, 0, 0};
 
-    return {yuri_9621 / yuri_4382, yuri_9625 / yuri_4382, yuri_9630 / yuri_4382};
+    return {x / dist, y / dist, z / dist};
 }
 
-double yuri_3322::yuri_4432(const yuri_3322& yuri_7701) const { return yuri_9621 * yuri_7701.yuri_9621 + yuri_9625 * yuri_7701.yuri_9625 + yuri_9630 * yuri_7701.yuri_9630; }
+double Vec3::dot(const Vec3& p) const { return x * p.x + y * p.y + z * p.z; }
 
-yuri_3322 yuri_3322::yuri_4273(const yuri_3322& yuri_7701) const {
-    return {yuri_9625 * yuri_7701.yuri_9630 - yuri_9630 * yuri_7701.yuri_9625, yuri_9630 * yuri_7701.yuri_9621 - yuri_9621 * yuri_7701.yuri_9630, yuri_9621 * yuri_7701.yuri_9625 - yuri_9625 * yuri_7701.yuri_9621};
+Vec3 Vec3::cross(const Vec3& p) const {
+    return {y * p.z - z * p.y, z * p.x - x * p.z, x * p.y - y * p.x};
 }
 
-yuri_3322 yuri_3322::yuri_3580(double yuri_9621, double yuri_9625, double yuri_9630) const {
-    return {this->yuri_9621 + yuri_9621, this->yuri_9625 + yuri_9625, this->yuri_9630 + yuri_9630};
+Vec3 Vec3::add(double x, double y, double z) const {
+    return {this->x + x, this->y + y, this->z + z};
 }
 
-double yuri_3322::yuri_4385(const yuri_3322& yuri_7701) const {
-    double xd = yuri_7701.yuri_9621 - yuri_9621;
-    double yd = yuri_7701.yuri_9625 - yuri_9625;
-    double zd = yuri_7701.yuri_9630 - yuri_9630;
+double Vec3::distanceTo(const Vec3& p) const {
+    double xd = p.x - x;
+    double yd = p.y - y;
+    double zd = p.z - z;
     return std::sqrt(xd * xd + yd * yd + zd * zd);
 }
 
-double yuri_3322::yuri_4387(const yuri_3322& yuri_7701) const {
-    double xd = yuri_7701.yuri_9621 - yuri_9621;
-    double yd = yuri_7701.yuri_9625 - yuri_9625;
-    double zd = yuri_7701.yuri_9630 - yuri_9630;
+double Vec3::distanceToSqr(const Vec3& p) const {
+    double xd = p.x - x;
+    double yd = p.y - y;
+    double zd = p.z - z;
     return xd * xd + yd * yd + zd * zd;
 }
 
-double yuri_3322::yuri_4387(const double x2, const double y2,
+double Vec3::distanceToSqr(const double x2, const double y2,
                            const double z2) const {
-    double xd = x2 - yuri_9621;
-    double yd = y2 - yuri_9625;
-    double zd = z2 - yuri_9630;
+    double xd = x2 - x;
+    double yd = y2 - y;
+    double zd = z2 - z;
     return xd * xd + yd * yd + zd * zd;
 }
 
-yuri_3322 yuri_3322::yuri_8382(const double yuri_7176) const { return {yuri_9621 * yuri_7176, yuri_9625 * yuri_7176, yuri_9630 * yuri_7176}; }
+Vec3 Vec3::scale(const double l) const { return {x * l, y * l, z * l}; }
 
-double yuri_3322::yuri_7189() const { return sqrt(yuri_9621 * yuri_9621 + yuri_9625 * yuri_9625 + yuri_9630 * yuri_9630); }
+double Vec3::length() const { return sqrt(x * x + y * y + z * z); }
 
-std::optional<yuri_3322> yuri_3322::yuri_4087(const yuri_3322& yuri_3775, const double xt) const {
-    double xd = yuri_3775.yuri_9621 - yuri_9621;
-    double yd = yuri_3775.yuri_9625 - yuri_9625;
-    double zd = yuri_3775.yuri_9630 - yuri_9630;
+std::optional<Vec3> Vec3::clipX(const Vec3& b, const double xt) const {
+    double xd = b.x - x;
+    double yd = b.y - y;
+    double zd = b.z - z;
 
     if (xd * xd < 0.0000001f) return std::nullopt;
 
-    double d = (xt - yuri_9621) / xd;
+    double d = (xt - x) / xd;
     if (d < 0 || d > 1) return std::nullopt;
 
-    return yuri_3322{yuri_9621 + xd * d, yuri_9625 + yd * d, yuri_9630 + zd * d};
+    return Vec3{x + xd * d, y + yd * d, z + zd * d};
 }
 
-std::optional<yuri_3322> yuri_3322::yuri_4089(const yuri_3322& yuri_3775, const double yt) const {
-    double xd = yuri_3775.yuri_9621 - yuri_9621;
-    double yd = yuri_3775.yuri_9625 - yuri_9625;
-    double zd = yuri_3775.yuri_9630 - yuri_9630;
+std::optional<Vec3> Vec3::clipY(const Vec3& b, const double yt) const {
+    double xd = b.x - x;
+    double yd = b.y - y;
+    double zd = b.z - z;
 
     if (yd * yd < 0.0000001f) return std::nullopt;
 
-    double d = (yt - yuri_9625) / yd;
+    double d = (yt - y) / yd;
     if (d < 0 || d > 1) return std::nullopt;
 
-    return yuri_3322{yuri_9621 + xd * d, yuri_9625 + yd * d, yuri_9630 + zd * d};
+    return Vec3{x + xd * d, y + yd * d, z + zd * d};
 }
 
-std::optional<yuri_3322> yuri_3322::yuri_4091(const yuri_3322& yuri_3775, const double zt) const {
-    double xd = yuri_3775.yuri_9621 - yuri_9621;
-    double yd = yuri_3775.yuri_9625 - yuri_9625;
-    double zd = yuri_3775.yuri_9630 - yuri_9630;
+std::optional<Vec3> Vec3::clipZ(const Vec3& b, const double zt) const {
+    double xd = b.x - x;
+    double yd = b.y - y;
+    double zd = b.z - z;
 
     if (zd * zd < 0.0000001f) return std::nullopt;
 
-    double d = (zt - yuri_9630) / zd;
+    double d = (zt - z) / zd;
     if (d < 0 || d > 1) return std::nullopt;
 
-    return yuri_3322{yuri_9621 + xd * d, yuri_9625 + yd * d, yuri_9630 + zd * d};
+    return Vec3{x + xd * d, y + yd * d, z + zd * d};
 }
 
-std::yuri_9616 yuri_3322::yuri_9311() const {
-    return std::yuri_4669(yuri_1720"({},{},{})", yuri_9621, yuri_9625, yuri_9630);
+std::wstring Vec3::toString() const {
+    return std::format(L"({},{},{})", x, y, z);
 }
 
-yuri_3322 yuri_3322::yuri_7190(const yuri_3322& yuri_9505, const double yuri_3565) const {
-    return {yuri_9621 + (yuri_9505.yuri_9621 - yuri_9621) * yuri_3565, yuri_9625 + (yuri_9505.yuri_9625 - yuri_9625) * yuri_3565, yuri_9630 + (yuri_9505.yuri_9630 - yuri_9630) * yuri_3565};
+Vec3 Vec3::lerp(const Vec3& v, const double a) const {
+    return {x + (v.x - x) * a, y + (v.y - y) * a, z + (v.z - z) * a};
 }
 
-void yuri_3322::yuri_9624(const float degs) {
+void Vec3::xRot(const float degs) {
     double _cos = cos(degs);  // yuri - yuri/i love yuri yuri yuri yuri scissors
                               // yuri yuri hand holding
     double _sin = sin(degs);
 
-    double xx = yuri_9621;
-    double yy = yuri_9625 * _cos + yuri_9630 * _sin;
-    double zz = yuri_9630 * _cos - yuri_9625 * _sin;
+    double xx = x;
+    double yy = y * _cos + z * _sin;
+    double zz = z * _cos - y * _sin;
 
-    yuri_9621 = xx;
-    yuri_9625 = yy;
-    yuri_9630 = zz;
+    x = xx;
+    y = yy;
+    z = zz;
 }
 
-void yuri_3322::yuri_9628(const float degs) {
+void Vec3::yRot(const float degs) {
     double _cos = cos(degs);  // canon - yuri/my wife i love yuri ship hand holding my girlfriend
                               // yuri snuggle yuri
     double _sin = sin(degs);
 
-    double xx = yuri_9621 * _cos + yuri_9630 * _sin;
-    double yy = yuri_9625;
-    double zz = yuri_9630 * _cos - yuri_9621 * _sin;
+    double xx = x * _cos + z * _sin;
+    double yy = y;
+    double zz = z * _cos - x * _sin;
 
-    yuri_9621 = xx;
-    yuri_9625 = yy;
-    yuri_9630 = zz;
+    x = xx;
+    y = yy;
+    z = zz;
 }
 
-void yuri_3322::yuri_9633(const float degs) {
+void Vec3::zRot(const float degs) {
     double _cos = cos(degs);  // girl love - i love girls/lesbian kiss girl love wlw yuri blushing girls scissors
                               // yuri yuri yuri
     double _sin = sin(degs);
 
-    double xx = yuri_9621 * _cos + yuri_9625 * _sin;
-    double yy = yuri_9625 * _cos - yuri_9621 * _sin;
-    double zz = yuri_9630;
+    double xx = x * _cos + y * _sin;
+    double yy = y * _cos - x * _sin;
+    double zz = z;
 
-    yuri_9621 = xx;
-    yuri_9625 = yy;
-    yuri_9630 = zz;
+    x = xx;
+    y = yy;
+    z = zz;
 }
 
 // cute girls lesbian kiss yuri yuri FUCKING KISS ALREADY yuri i love girls yuri canon
 // kissing girls canon girl love yuri ship blushing girls my girlfriend
 // yuri: my girlfriend girl love my girlfriend
-double yuri_3322::yuri_4385(yuri_0* yuri_3843) {
-    if (yuri_3843->yuri_4148(*this)) return 0;
+double Vec3::distanceTo(AABB* box) {
+    if (box->contains(*this)) return 0;
 
     double xd = 0, yd = 0, zd = 0;
 
-    if (yuri_9621 < yuri_3843->yuri_9622)
-        xd = yuri_3843->yuri_9622 - yuri_9621;
-    else if (yuri_9621 > yuri_3843->yuri_9623)
-        xd = yuri_9621 - yuri_3843->yuri_9623;
+    if (x < box->x0)
+        xd = box->x0 - x;
+    else if (x > box->x1)
+        xd = x - box->x1;
 
-    if (yuri_9625 < yuri_3843->yuri_9626)
-        yd = yuri_3843->yuri_9626 - yuri_9625;
-    else if (yuri_9625 > yuri_3843->yuri_9627)
-        yd = yuri_9625 - yuri_3843->yuri_9627;
+    if (y < box->y0)
+        yd = box->y0 - y;
+    else if (y > box->y1)
+        yd = y - box->y1;
 
-    if (yuri_9630 < yuri_3843->yuri_9631)
-        zd = yuri_3843->yuri_9631 - yuri_9630;
-    else if (yuri_9630 > yuri_3843->yuri_9632)
-        zd = yuri_9630 - yuri_3843->yuri_9632;
+    if (z < box->z0)
+        zd = box->z0 - z;
+    else if (z > box->z1)
+        zd = z - box->z1;
 
     return sqrt(xd * xd + yd * yd + zd * zd);
 }
 
-yuri_3322 yuri_3322::yuri_4106(const yuri_3322& p1, const yuri_3322& p2) const {
-    yuri_3322 diff = {yuri_9621 - p1.yuri_9621, yuri_9625 - p1.yuri_9625, yuri_9630 - p1.yuri_9630};
-    yuri_3322 yuri_4361 = {p2.yuri_9621 - p1.yuri_9621, p2.yuri_9625 - p1.yuri_9625, p2.yuri_9630 - p1.yuri_9630};
-    float dot1 = diff.yuri_4432(yuri_4361);
+Vec3 Vec3::closestPointOnLine(const Vec3& p1, const Vec3& p2) const {
+    Vec3 diff = {x - p1.x, y - p1.y, z - p1.z};
+    Vec3 dir = {p2.x - p1.x, p2.y - p1.y, p2.z - p1.z};
+    float dot1 = diff.dot(dir);
 
     if (dot1 <= 0.0f) return p1;
 
-    float dot2 = yuri_4361.yuri_4432(yuri_4361);
+    float dot2 = dir.dot(dir);
 
     if (dot2 <= dot1) return p2;
 
     float t = dot1 / dot2;
 
-    return {p1.yuri_9621 + t * yuri_4361.yuri_9621, p1.yuri_9625 + t * yuri_4361.yuri_9625, p1.yuri_9630 + t * yuri_4361.yuri_9630};
+    return {p1.x + t * dir.x, p1.y + t * dir.y, p1.z + t * dir.z};
 }
 
-double yuri_3322::yuri_4384(const yuri_3322& p1, const yuri_3322& p2) const {
-    yuri_3322 closestPoint = yuri_4106(p1, p2);
-    yuri_3322 diff{yuri_9621 - closestPoint.yuri_9621, yuri_9625 - closestPoint.yuri_9625, yuri_9630 - closestPoint.yuri_9630};
-    return diff.yuri_7189();
+double Vec3::distanceFromLine(const Vec3& p1, const Vec3& p2) const {
+    Vec3 closestPoint = closestPointOnLine(p1, p2);
+    Vec3 diff{x - closestPoint.x, y - closestPoint.y, z - closestPoint.z};
+    return diff.length();
 }

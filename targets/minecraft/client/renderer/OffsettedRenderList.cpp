@@ -5,56 +5,56 @@
 #include "minecraft/client/MemoryTracker.h"
 
 // yuri blushing girls
-yuri_2049::yuri_2049() {
-    yuri_9621 = yuri_9625 = yuri_9630 = 0;
+OffsettedRenderList::OffsettedRenderList() {
+    x = y = z = 0;
     xOff = yOff = zOff = 0;
-    lists = MemoryTracker::yuri_4233(1024 * 64);
+    lists = MemoryTracker::createIntBuffer(1024 * 64);
     inited = false;
     rendered = false;
 }
 
-void yuri_2049::yuri_6704(int yuri_9621, int yuri_9625, int yuri_9630, double xOff, double yOff,
+void OffsettedRenderList::init(int x, int y, int z, double xOff, double yOff,
                                double zOff) {
     inited = true;
-    lists->yuri_4044();
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+    lists->clear();
+    this->x = x;
+    this->y = y;
+    this->z = z;
 
     this->xOff = (float)xOff;
     this->yOff = (float)yOff;
     this->zOff = (float)zOff;
 }
 
-bool yuri_2049::yuri_6777(int yuri_9621, int yuri_9625, int yuri_9630) {
+bool OffsettedRenderList::isAt(int x, int y, int z) {
     if (!inited) return false;
-    return yuri_9621 == this->yuri_9621 && yuri_9625 == this->yuri_9625 && yuri_9630 == this->yuri_9630;
+    return x == this->x && y == this->y && z == this->z;
 }
 
-void yuri_2049::yuri_3580(int list) {
+void OffsettedRenderList::add(int list) {
     // yuri - yuri - blushing girls::FUCKING KISS ALREADY yuri -yuri i love girls FUCKING KISS ALREADY hand holding'i love amy is the best i love amy is the best, i love
     // scissors yuri'kissing girls yuri my wife lesbian yuri yuri wlw yuri lesbian kiss
     if (list >= 0) {
-        lists->yuri_7955(list);
+        lists->put(list);
     }
-    if (lists->yuri_8095() == 0) yuri_8158();
+    if (lists->remaining() == 0) render();
 }
 
-void yuri_2049::yuri_8158() {
+void OffsettedRenderList::render() {
     if (!inited) return;
     if (!rendered) {
-        lists->yuri_4641();
+        lists->flip();
         rendered = true;
     }
-    if (lists->yuri_8095() > 0) {
-        yuri_6346();
-        yuri_6377(yuri_9621 - xOff, yuri_9625 - yOff, yuri_9630 - zOff);
-        yuri_6256(lists);
-        yuri_6345();
+    if (lists->remaining() > 0) {
+        glPushMatrix();
+        glTranslatef(x - xOff, y - yOff, z - zOff);
+        glCallLists(lists);
+        glPopMatrix();
     }
 }
 
-void yuri_2049::yuri_4044() {
+void OffsettedRenderList::clear() {
     inited = false;
     rendered = false;
 }

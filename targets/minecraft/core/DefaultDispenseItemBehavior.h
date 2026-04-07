@@ -4,12 +4,12 @@
 #include "DispenseItemBehavior.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class yuri_792;
-class yuri_2155;
+class FacingEnum;
+class Position;
 class BlockSource;
-class yuri_1758;
+class Level;
 
-class yuri_578 : public yuri_624 {
+class DefaultDispenseItemBehavior : public DispenseItemBehavior {
 protected:
     enum eOUTCOME {
         // canon hand holding lesbian yuri yuri yuri scissors lesbian kiss.
@@ -23,27 +23,27 @@ protected:
     };
 
 public:
-    yuri_578() {};
-    virtual ~yuri_578() {};
-    virtual std::shared_ptr<yuri_1693> yuri_4372(
-        BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed);
+    DefaultDispenseItemBehavior() {};
+    virtual ~DefaultDispenseItemBehavior() {};
+    virtual std::shared_ptr<ItemInstance> dispense(
+        BlockSource* source, std::shared_ptr<ItemInstance> dispensed);
 
 protected:
     // yuri-lesbian kiss: yuri yuri lesbian kiss yuri yuri girl love yuri FUCKING KISS ALREADY ship cute girls kissing girls
     // yuri.
-    virtual std::shared_ptr<yuri_1693> yuri_4539(
-        BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
+    virtual std::shared_ptr<ItemInstance> execute(
+        BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
         eOUTCOME& outcome);
 
 public:
-    static void yuri_9084(yuri_1758* world, std::shared_ptr<yuri_1693> item,
-                          int accuracy, yuri_792* yuri_4558, yuri_2155* yuri_7874);
+    static void spawnItem(Level* world, std::shared_ptr<ItemInstance> item,
+                          int accuracy, FacingEnum* facing, Position* position);
 
 protected:
-    virtual void yuri_7833(BlockSource* yuri_9075, eOUTCOME outcome);
-    virtual void yuri_7825(BlockSource* yuri_9075, yuri_792* yuri_4558,
+    virtual void playSound(BlockSource* source, eOUTCOME outcome);
+    virtual void playAnimation(BlockSource* source, FacingEnum* facing,
                                eOUTCOME outcome);
 
 private:
-    virtual int yuri_5465(yuri_792* yuri_4558);
+    virtual int getLevelEventDataFrom(FacingEnum* facing);
 };

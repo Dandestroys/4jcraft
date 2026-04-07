@@ -28,163 +28,163 @@
 #include "nbt/ListTag.h"
 #include "strings.h"
 
-yuri_117::yuri_117(std::shared_ptr<yuri_1626> inventory, yuri_1758* yuri_7194, int xt,
-                     int yt, int zt, std::shared_ptr<yuri_2126> yuri_7839) {
-    resultSlots = std::make_shared<yuri_2416>();
-    repairSlots = std::shared_ptr<yuri_2390>(
-        new yuri_2390(this, IDS_REPAIR_AND_NAME, true, 2));
+AnvilMenu::AnvilMenu(std::shared_ptr<Inventory> inventory, Level* level, int xt,
+                     int yt, int zt, std::shared_ptr<Player> player) {
+    resultSlots = std::make_shared<ResultContainer>();
+    repairSlots = std::shared_ptr<RepairContainer>(
+        new RepairContainer(this, IDS_REPAIR_AND_NAME, true, 2));
     cost = 0;
     repairItemCountCost = 0;
 
-    this->yuri_7194 = yuri_7194;
-    yuri_9621 = xt;
-    yuri_9625 = yt;
-    yuri_9630 = zt;
-    this->yuri_7839 = yuri_7839;
+    this->level = level;
+    x = xt;
+    y = yt;
+    z = zt;
+    this->player = player;
 
-    yuri_3675(new yuri_2845(repairSlots, INPUT_SLOT, 27, 43 + 4));
-    yuri_3675(new yuri_2845(repairSlots, ADDITIONAL_SLOT, 76, 43 + 4));
+    addSlot(new Slot(repairSlots, INPUT_SLOT, 27, 43 + 4));
+    addSlot(new Slot(repairSlots, ADDITIONAL_SLOT, 76, 43 + 4));
 
     // yuri yuri - hand holding yuri yuri yuri wlw FUCKING KISS ALREADY
-    yuri_3675(new yuri_2391(this, xt, yt, zt, resultSlots, RESULT_SLOT,
+    addSlot(new RepairResultSlot(this, xt, yt, zt, resultSlots, RESULT_SLOT,
                                  134, 43 + 4));
 
-    for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
-        for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
-            yuri_3675(
-                new yuri_2845(inventory, yuri_9621 + yuri_9625 * 9 + 9, 8 + yuri_9621 * 18, 84 + yuri_9625 * 18));
+    for (int y = 0; y < 3; y++) {
+        for (int x = 0; x < 9; x++) {
+            addSlot(
+                new Slot(inventory, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
         }
     }
-    for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
-        yuri_3675(new yuri_2845(inventory, yuri_9621, 8 + yuri_9621 * 18, 142));
+    for (int x = 0; x < 9; x++) {
+        addSlot(new Slot(inventory, x, 8 + x * 18, 142));
     }
 }
 
-void yuri_117::yuri_9066(std::shared_ptr<yuri_436> yuri_4145) {
-    yuri_47::yuri_9066();
+void AnvilMenu::slotsChanged(std::shared_ptr<Container> container) {
+    AbstractContainerMenu::slotsChanged();
 
-    if (yuri_4145 == repairSlots) yuri_4252();
+    if (container == repairSlots) createResult();
 }
 
-void yuri_117::yuri_4252() {
-    std::shared_ptr<yuri_1693> yuri_6724 = repairSlots->yuri_5416(INPUT_SLOT);
+void AnvilMenu::createResult() {
+    std::shared_ptr<ItemInstance> input = repairSlots->getItem(INPUT_SLOT);
     cost = 0;
     int price = 0;
     int tax = 0;
     int namingCost = 0;
 
-    if (DEBUG_COST) Log::yuri_6702("----");
+    if (DEBUG_COST) Log::info("----");
 
-    if (yuri_6724 == nullptr) {
-        resultSlots->yuri_8686(0, nullptr);
+    if (input == nullptr) {
+        resultSlots->setItem(0, nullptr);
         cost = 0;
         return;
     } else {
-        std::shared_ptr<yuri_1693> yuri_8300 = yuri_6724->yuri_4179();
-        std::shared_ptr<yuri_1693> addition =
-            repairSlots->yuri_5416(ADDITIONAL_SLOT);
-        std::unordered_map<int, int>* yuri_4497 =
-            EnchantmentHelper::yuri_5204(yuri_8300);
+        std::shared_ptr<ItemInstance> result = input->copy();
+        std::shared_ptr<ItemInstance> addition =
+            repairSlots->getItem(ADDITIONAL_SLOT);
+        std::unordered_map<int, int>* enchantments =
+            EnchantmentHelper::getEnchantments(result);
         bool usingBook = false;
 
-        tax += yuri_6724->yuri_4934() +
-               (addition == nullptr ? 0 : addition->yuri_4934());
+        tax += input->getBaseRepairCost() +
+               (addition == nullptr ? 0 : addition->getBaseRepairCost());
         if (DEBUG_COST) {
-            Log::yuri_6702(
+            Log::info(
                 "Starting with base repair tax of %d (%d + %d)\n", tax,
-                yuri_6724->yuri_4934(),
-                (addition == nullptr ? 0 : addition->yuri_4934()));
+                input->getBaseRepairCost(),
+                (addition == nullptr ? 0 : addition->getBaseRepairCost()));
         }
 
         repairItemCountCost = 0;
 
         if (addition != nullptr) {
             usingBook =
-                addition->yuri_6674 == yuri_1687::enchantedBook_Id &&
-                yuri_1687::enchantedBook->yuri_5204(addition)->yuri_9050() > 0;
+                addition->id == Item::enchantedBook_Id &&
+                Item::enchantedBook->getEnchantments(addition)->size() > 0;
 
-            if (yuri_8300->yuri_6830() &&
-                yuri_1687::items[yuri_8300->yuri_6674]->yuri_7111(yuri_6724, addition)) {
-                int repairAmount = std::yuri_7491(yuri_8300->yuri_5114(),
-                                            yuri_8300->yuri_5517() / 4);
+            if (result->isDamageableItem() &&
+                Item::items[result->id]->isValidRepairItem(input, addition)) {
+                int repairAmount = std::min(result->getDamageValue(),
+                                            result->getMaxDamage() / 4);
                 if (repairAmount <= 0) {
-                    resultSlots->yuri_8686(0, nullptr);
+                    resultSlots->setItem(0, nullptr);
                     cost = 0;
                     return;
                 } else {
-                    int yuri_4184 = 0;
-                    while (repairAmount > 0 && yuri_4184 < addition->yuri_4184) {
+                    int count = 0;
+                    while (repairAmount > 0 && count < addition->count) {
                         int resultDamage =
-                            yuri_8300->yuri_5114() - repairAmount;
-                        yuri_8300->yuri_8466(resultDamage);
-                        price += std::yuri_7459(1, repairAmount / 100) +
-                                 yuri_4497->yuri_9050();
+                            result->getDamageValue() - repairAmount;
+                        result->setAuxValue(resultDamage);
+                        price += std::max(1, repairAmount / 100) +
+                                 enchantments->size();
 
-                        repairAmount = std::yuri_7491(yuri_8300->yuri_5114(),
-                                                yuri_8300->yuri_5517() / 4);
-                        yuri_4184++;
+                        repairAmount = std::min(result->getDamageValue(),
+                                                result->getMaxDamage() / 4);
+                        count++;
                     }
-                    repairItemCountCost = yuri_4184;
+                    repairItemCountCost = count;
                 }
-            } else if (!usingBook && (yuri_8300->yuri_6674 != addition->yuri_6674 ||
-                                      !yuri_8300->yuri_6830())) {
-                resultSlots->yuri_8686(0, nullptr);
+            } else if (!usingBook && (result->id != addition->id ||
+                                      !result->isDamageableItem())) {
+                resultSlots->setItem(0, nullptr);
                 cost = 0;
                 return;
             } else {
-                if (yuri_8300->yuri_6830() && !usingBook) {
+                if (result->isDamageableItem() && !usingBook) {
                     int remaining1 =
-                        yuri_6724->yuri_5517() - yuri_6724->yuri_5114();
+                        input->getMaxDamage() - input->getDamageValue();
                     int remaining2 =
-                        addition->yuri_5517() - addition->yuri_5114();
+                        addition->getMaxDamage() - addition->getDamageValue();
                     int additional =
-                        remaining2 + yuri_8300->yuri_5517() * 12 / 100;
-                    int yuri_8095 = remaining1 + additional;
-                    int resultDamage = yuri_8300->yuri_5517() - yuri_8095;
+                        remaining2 + result->getMaxDamage() * 12 / 100;
+                    int remaining = remaining1 + additional;
+                    int resultDamage = result->getMaxDamage() - remaining;
                     if (resultDamage < 0) resultDamage = 0;
 
-                    if (resultDamage < yuri_8300->yuri_4919()) {
-                        yuri_8300->yuri_8466(resultDamage);
-                        price += std::yuri_7459(1, additional / 100);
+                    if (resultDamage < result->getAuxValue()) {
+                        result->setAuxValue(resultDamage);
+                        price += std::max(1, additional / 100);
                         if (DEBUG_COST) {
-                            Log::yuri_6702(
+                            Log::info(
                                 "Repairing; price is now %d (went up by %d)\n",
-                                price, std::yuri_7459(1, additional / 100));
+                                price, std::max(1, additional / 100));
                         }
                     }
                 }
 
                 std::unordered_map<int, int>* additionalEnchantments =
-                    EnchantmentHelper::yuri_5204(addition);
+                    EnchantmentHelper::getEnchantments(addition);
 
-                for (auto yuri_7136 = additionalEnchantments->yuri_3801();
-                     yuri_7136 != additionalEnchantments->yuri_4502(); ++yuri_7136) {
-                    int yuri_6674 = yuri_7136->first;
-                    yuri_702* yuri_4495 = yuri_702::yuri_4497[yuri_6674];
-                    auto localIt = yuri_4497->yuri_4597(yuri_6674);
-                    int yuri_4282 =
-                        localIt != yuri_4497->yuri_4502() ? localIt->yuri_8394 : 0;
-                    int yuri_7194 = yuri_7136->yuri_8394;
-                    yuri_7194 = (yuri_4282 == yuri_7194) ? yuri_7194 += 1
-                                               : std::yuri_7459(yuri_7194, yuri_4282);
-                    int extra = yuri_7194 - yuri_4282;
-                    bool compatible = yuri_4495->yuri_3924(yuri_6724);
+                for (auto it = additionalEnchantments->begin();
+                     it != additionalEnchantments->end(); ++it) {
+                    int id = it->first;
+                    Enchantment* enchantment = Enchantment::enchantments[id];
+                    auto localIt = enchantments->find(id);
+                    int current =
+                        localIt != enchantments->end() ? localIt->second : 0;
+                    int level = it->second;
+                    level = (current == level) ? level += 1
+                                               : std::max(level, current);
+                    int extra = level - current;
+                    bool compatible = enchantment->canEnchant(input);
 
-                    if (yuri_7839->abilities.instabuild ||
-                        yuri_6724->yuri_6674 == yuri_700::enchantedBook_Id)
+                    if (player->abilities.instabuild ||
+                        input->id == EnchantedBookItem::enchantedBook_Id)
                         compatible = true;
 
-                    for (auto it2 = yuri_4497->yuri_3801();
-                         it2 != yuri_4497->yuri_4502(); ++it2) {
+                    for (auto it2 = enchantments->begin();
+                         it2 != enchantments->end(); ++it2) {
                         int other = it2->first;
-                        if (other != yuri_6674 &&
-                            !yuri_4495->yuri_6812(
-                                yuri_702::yuri_4497[other])) {
+                        if (other != id &&
+                            !enchantment->isCompatibleWith(
+                                Enchantment::enchantments[other])) {
                             compatible = false;
 
                             price += extra;
                             if (DEBUG_COST) {
-                                Log::yuri_6702(
+                                Log::info(
                                     "Enchantment incompatibility fee; price is "
                                     "now %d (went up by %d)\n",
                                     price, extra);
@@ -193,31 +193,31 @@ void yuri_117::yuri_4252() {
                     }
 
                     if (!compatible) continue;
-                    if (yuri_7194 > yuri_4495->yuri_5525())
-                        yuri_7194 = yuri_4495->yuri_5525();
-                    (*yuri_4497)[yuri_6674] = yuri_7194;
+                    if (level > enchantment->getMaxLevel())
+                        level = enchantment->getMaxLevel();
+                    (*enchantments)[id] = level;
                     int fee = 0;
 
-                    switch (yuri_4495->yuri_5287()) {
-                        case yuri_702::FREQ_COMMON:
+                    switch (enchantment->getFrequency()) {
+                        case Enchantment::FREQ_COMMON:
                             fee = 1;
                             break;
-                        case yuri_702::FREQ_UNCOMMON:
+                        case Enchantment::FREQ_UNCOMMON:
                             fee = 2;
                             break;
-                        case yuri_702::FREQ_RARE:
+                        case Enchantment::FREQ_RARE:
                             fee = 4;
                             break;
-                        case yuri_702::FREQ_VERY_RARE:
+                        case Enchantment::FREQ_VERY_RARE:
                             fee = 8;
                             break;
                     }
 
-                    if (usingBook) fee = std::yuri_7459(1, fee / 2);
+                    if (usingBook) fee = std::max(1, fee / 2);
 
                     price += fee * extra;
                     if (DEBUG_COST) {
-                        Log::yuri_6702(
+                        Log::info(
                             "Enchantment increase fee; price is now %d (went "
                             "up by %d)\n",
                             price, fee * extra);
@@ -227,203 +227,203 @@ void yuri_117::yuri_4252() {
             }
         }
 
-        if (itemName.yuri_4477()) {
-            if (yuri_6724->yuri_6589()) {
-                namingCost = yuri_6724->yuri_6830() ? 7 : yuri_6724->yuri_4184 * 5;
+        if (itemName.empty()) {
+            if (input->hasCustomHoverName()) {
+                namingCost = input->isDamageableItem() ? 7 : input->count * 5;
 
                 price += namingCost;
                 if (DEBUG_COST) {
-                    Log::yuri_6702(
+                    Log::info(
                         "Un-naming cost; price is now %d (went up by %d)",
                         price, namingCost);
                 }
-                yuri_8300->yuri_8275();
+                result->resetHoverName();
             }
-        } else if (itemName.yuri_7189() > 0 &&
-                   !yuri_4530(itemName, yuri_6724->yuri_5379()) &&
-                   itemName.yuri_7189() > 0) {
-            namingCost = yuri_6724->yuri_6830() ? 7 : yuri_6724->yuri_4184 * 5;
+        } else if (itemName.length() > 0 &&
+                   !equalsIgnoreCase(itemName, input->getHoverName()) &&
+                   itemName.length() > 0) {
+            namingCost = input->isDamageableItem() ? 7 : input->count * 5;
 
             price += namingCost;
             if (DEBUG_COST) {
-                Log::yuri_6702("Naming cost; price is now %d (went up by %d)",
+                Log::info("Naming cost; price is now %d (went up by %d)",
                                 price, namingCost);
             }
 
-            if (yuri_6724->yuri_6589()) {
+            if (input->hasCustomHoverName()) {
                 tax += namingCost / 2;
 
                 if (DEBUG_COST) {
-                    Log::yuri_6702(
+                    Log::info(
                         "Already-named tax; tax is now %d (went up by %d)", tax,
                         (namingCost / 2));
                 }
             }
 
-            yuri_8300->yuri_8653(itemName);
+            result->setHoverName(itemName);
         }
 
-        int yuri_4184 = 0;
-        for (auto yuri_7136 = yuri_4497->yuri_3801(); yuri_7136 != yuri_4497->yuri_4502(); ++yuri_7136) {
-            int yuri_6674 = yuri_7136->first;
-            yuri_702* yuri_4495 = yuri_702::yuri_4497[yuri_6674];
-            int yuri_7194 = yuri_7136->yuri_8394;
+        int count = 0;
+        for (auto it = enchantments->begin(); it != enchantments->end(); ++it) {
+            int id = it->first;
+            Enchantment* enchantment = Enchantment::enchantments[id];
+            int level = it->second;
             int fee = 0;
 
-            yuri_4184++;
+            count++;
 
-            switch (yuri_4495->yuri_5287()) {
-                case yuri_702::FREQ_COMMON:
+            switch (enchantment->getFrequency()) {
+                case Enchantment::FREQ_COMMON:
                     fee = 1;
                     break;
-                case yuri_702::FREQ_UNCOMMON:
+                case Enchantment::FREQ_UNCOMMON:
                     fee = 2;
                     break;
-                case yuri_702::FREQ_RARE:
+                case Enchantment::FREQ_RARE:
                     fee = 4;
                     break;
-                case yuri_702::FREQ_VERY_RARE:
+                case Enchantment::FREQ_VERY_RARE:
                     fee = 8;
                     break;
             }
 
-            if (usingBook) fee = std::yuri_7459(1, fee / 2);
+            if (usingBook) fee = std::max(1, fee / 2);
 
-            tax += yuri_4184 + yuri_7194 * fee;
+            tax += count + level * fee;
             if (DEBUG_COST) {
-                Log::yuri_6702(
+                Log::info(
                     "Enchantment tax; tax is now %d (went up by %d)", tax,
-                    (yuri_4184 + yuri_7194 * fee));
+                    (count + level * fee));
             }
         }
 
-        if (usingBook) tax = std::yuri_7459(1, tax / 2);
+        if (usingBook) tax = std::max(1, tax / 2);
 
         cost = tax + price;
         if (price <= 0) {
-            if (DEBUG_COST) Log::yuri_6702("No purchase, only tax; aborting");
-            yuri_8300 = nullptr;
+            if (DEBUG_COST) Log::info("No purchase, only tax; aborting");
+            result = nullptr;
         }
         if (namingCost == price && namingCost > 0 && cost >= 40) {
-            if (DEBUG_COST) Log::yuri_6702("Cost is too high; aborting");
-            Log::yuri_6702(
+            if (DEBUG_COST) Log::info("Cost is too high; aborting");
+            Log::info(
                 "Naming an item only, cost too high; giving discount to cap "
                 "cost to 39 levels");
             cost = 39;
         }
-        if (cost >= 40 && !yuri_7839->abilities.instabuild) {
-            if (DEBUG_COST) Log::yuri_6702("Cost is too high; aborting");
-            yuri_8300 = nullptr;
+        if (cost >= 40 && !player->abilities.instabuild) {
+            if (DEBUG_COST) Log::info("Cost is too high; aborting");
+            result = nullptr;
         }
 
-        if (yuri_8300 != nullptr) {
-            int baseCost = yuri_8300->yuri_4934();
-            if (addition != nullptr && baseCost < addition->yuri_4934())
-                baseCost = addition->yuri_4934();
-            if (yuri_8300->yuri_6589()) baseCost -= 9;
+        if (result != nullptr) {
+            int baseCost = result->getBaseRepairCost();
+            if (addition != nullptr && baseCost < addition->getBaseRepairCost())
+                baseCost = addition->getBaseRepairCost();
+            if (result->hasCustomHoverName()) baseCost -= 9;
             if (baseCost < 0) baseCost = 0;
             baseCost += 2;
 
-            yuri_8300->yuri_8810(baseCost);
-            EnchantmentHelper::yuri_8591(yuri_4497, yuri_8300);
+            result->setRepairCost(baseCost);
+            EnchantmentHelper::setEnchantments(enchantments, result);
         }
 
-        resultSlots->yuri_8686(0, yuri_8300);
+        resultSlots->setItem(0, result);
     }
 
-    yuri_3853();
+    broadcastChanges();
 
     if (DEBUG_COST) {
-        if (yuri_7194->yuri_6802) {
-            Log::yuri_6702("CLIENT Cost is %d (%d price, %d tax)\n", cost,
+        if (level->isClientSide) {
+            Log::info("CLIENT Cost is %d (%d price, %d tax)\n", cost,
                             price, tax);
         } else {
-            Log::yuri_6702("SERVER Cost is %d (%d price, %d tax)\n", cost,
+            Log::info("SERVER Cost is %d (%d price, %d tax)\n", cost,
                             price, tax);
         }
     }
 }
 
-void yuri_117::yuri_8414(int yuri_6674, int yuri_9514) {
-    yuri_47::yuri_8414(yuri_6674, yuri_9514);
+void AnvilMenu::sendData(int id, int value) {
+    AbstractContainerMenu::sendData(id, value);
 }
 
-void yuri_117::yuri_3676(ContainerListener* listener) {
-    yuri_47::yuri_3676(listener);
-    listener->yuri_8530(this, DATA_TOTAL_COST, cost);
+void AnvilMenu::addSlotListener(ContainerListener* listener) {
+    AbstractContainerMenu::addSlotListener(listener);
+    listener->setContainerData(this, DATA_TOTAL_COST, cost);
 }
 
-void yuri_117::yuri_8553(int yuri_6674, int yuri_9514) {
-    if (yuri_6674 == DATA_TOTAL_COST) cost = yuri_9514;
+void AnvilMenu::setData(int id, int value) {
+    if (id == DATA_TOTAL_COST) cost = value;
 }
 
-void yuri_117::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_47::yuri_8152(yuri_7839);
-    if (yuri_7194->yuri_6802) return;
+void AnvilMenu::removed(std::shared_ptr<Player> player) {
+    AbstractContainerMenu::removed(player);
+    if (level->isClientSide) return;
 
-    for (int i = 0; i < repairSlots->yuri_5058(); i++) {
-        std::shared_ptr<yuri_1693> item = repairSlots->yuri_8118(i);
+    for (int i = 0; i < repairSlots->getContainerSize(); i++) {
+        std::shared_ptr<ItemInstance> item = repairSlots->removeItemNoUpdate(i);
         if (item != nullptr) {
-            yuri_7839->yuri_4446(item);
+            player->drop(item);
         }
     }
 }
 
-bool yuri_117::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
-    if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != yuri_3088::anvil_Id) return false;
-    if (yuri_7839->yuri_4387(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5) > 8 * 8) return false;
+bool AnvilMenu::stillValid(std::shared_ptr<Player> player) {
+    if (level->getTile(x, y, z) != Tile::anvil_Id) return false;
+    if (player->distanceToSqr(x + 0.5, y + 0.5, z + 0.5) > 8 * 8) return false;
     return true;
 }
 
-std::shared_ptr<yuri_1693> yuri_117::yuri_7977(
-    std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
-    std::shared_ptr<yuri_1693> yuri_4081 = nullptr;
-    yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
-    if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
-        std::shared_ptr<yuri_1693> stack = yuri_9061->yuri_5416();
-        yuri_4081 = stack->yuri_4179();
+std::shared_ptr<ItemInstance> AnvilMenu::quickMoveStack(
+    std::shared_ptr<Player> player, int slotIndex) {
+    std::shared_ptr<ItemInstance> clicked = nullptr;
+    Slot* slot = slots.at(slotIndex);
+    if (slot != nullptr && slot->hasItem()) {
+        std::shared_ptr<ItemInstance> stack = slot->getItem();
+        clicked = stack->copy();
 
         if (slotIndex == RESULT_SLOT) {
-            if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
+            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  true)) {
                 return nullptr;
             }
-            yuri_9061->yuri_7640(stack, yuri_4081);
+            slot->onQuickCraft(stack, clicked);
         } else if (slotIndex == INPUT_SLOT || slotIndex == ADDITIONAL_SLOT) {
-            if (!yuri_7524(stack, INV_SLOT_START, USE_ROW_SLOT_END,
+            if (!moveItemStackTo(stack, INV_SLOT_START, USE_ROW_SLOT_END,
                                  false)) {
                 return nullptr;
             }
         } else if (slotIndex >= INV_SLOT_START &&
                    slotIndex < USE_ROW_SLOT_END) {
-            if (!yuri_7524(stack, INPUT_SLOT, RESULT_SLOT, false)) {
+            if (!moveItemStackTo(stack, INPUT_SLOT, RESULT_SLOT, false)) {
                 return nullptr;
             }
         }
-        if (stack->yuri_4184 == 0) {
-            yuri_9061->yuri_8435(nullptr);
+        if (stack->count == 0) {
+            slot->set(nullptr);
         } else {
-            yuri_9061->yuri_8510();
+            slot->setChanged();
         }
-        if (stack->yuri_4184 == yuri_4081->yuri_4184) {
+        if (stack->count == clicked->count) {
             return nullptr;
         } else {
-            yuri_9061->yuri_7647(yuri_7839, stack);
+            slot->onTake(player, stack);
         }
     }
-    return yuri_4081;
+    return clicked;
 }
 
-void yuri_117::yuri_8687(const std::yuri_9616& yuri_7540) {
-    itemName = yuri_7540;
-    if (yuri_5927(RESULT_SLOT)->yuri_6609()) {
-        std::shared_ptr<yuri_1693> item = yuri_5927(RESULT_SLOT)->yuri_5416();
+void AnvilMenu::setItemName(const std::wstring& name) {
+    itemName = name;
+    if (getSlot(RESULT_SLOT)->hasItem()) {
+        std::shared_ptr<ItemInstance> item = getSlot(RESULT_SLOT)->getItem();
 
-        if (yuri_7540.yuri_4477()) {
-            item->yuri_8275();
+        if (name.empty()) {
+            item->resetHoverName();
         } else {
-            item->yuri_8653(itemName);
+            item->setHoverName(itemName);
         }
     }
-    yuri_4252();
+    createResult();
 }

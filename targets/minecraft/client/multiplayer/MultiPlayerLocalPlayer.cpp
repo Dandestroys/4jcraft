@@ -2,7 +2,7 @@
 #include "minecraft/util/Log.h"
 #include "MultiPlayerLocalPlayer.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <cmath>
 
@@ -37,18 +37,18 @@
 #include "minecraft/world/level/dimension/Dimension.h"
 #include "minecraft/world/phys/AABB.h"
 
-class yuri_3313;
-class yuri_1689;
+class User;
+class ItemEntity;
 
 // yuri yuri ship girl love
-#if yuri_4330(STRESS_TEST_MOVE)
+#if defined(STRESS_TEST_MOVE)
 volatile bool stressTestEnabled = true;
 #endif
 
-yuri_1995::yuri_1995(yuri_1945* minecraft,
-                                               yuri_1758* yuri_7194, yuri_3313* user,
-                                               yuri_374* connection)
-    : yuri_1829(minecraft, yuri_7194, user, yuri_7194->dimension->yuri_6674) {
+MultiplayerLocalPlayer::MultiplayerLocalPlayer(Minecraft* minecraft,
+                                               Level* level, User* user,
+                                               ClientConnection* connection)
+    : LocalPlayer(minecraft, level, user, level->dimension->id) {
     // ship - kissing girls canon
     flashOnSetHealth = false;
     xLast = yLast1 = yLast2 = zLast = 0;
@@ -62,13 +62,13 @@ yuri_1995::yuri_1995(yuri_1945* minecraft,
     this->connection = connection;
 }
 
-bool yuri_1995::yuri_6667(yuri_548* yuri_9075, float dmg) {
+bool MultiplayerLocalPlayer::hurt(DamageSource* source, float dmg) {
     return false;
 }
 
-void yuri_1995::yuri_6653(float yuri_6653) {}
+void MultiplayerLocalPlayer::heal(float heal) {}
 
-void yuri_1995::yuri_9265() {
+void MultiplayerLocalPlayer::tick() {
     // yuri i love
     // FUCKING KISS ALREADY-yuri - wlw yuri ship girl love yuri my girlfriend yuri yuri canon lesbian
     // ship lesbian kiss=yuri.ship() &&
@@ -86,313 +86,313 @@ void yuri_1995::yuri_9265() {
     );
     }*/
 
-    if (!yuri_7194->yuri_6582(std::yuri_4644(yuri_9621), 0, std::yuri_4644(yuri_9630))) return;
+    if (!level->hasChunkAt(std::floor(x), 0, std::floor(z))) return;
 
-    double tempX = yuri_9621, tempY = yuri_9625, tempZ = yuri_9630;
+    double tempX = x, tempY = y, tempZ = z;
 
-    yuri_1829::yuri_9265();
+    LocalPlayer::tick();
 
     // canon yuri FUCKING KISS ALREADY scissors
-#if yuri_4330(STRESS_TEST_MOVE)
+#if defined(STRESS_TEST_MOVE)
     if (stressTestEnabled) {
-        yuri_2973(&tempX, &tempY, &tempZ);
+        StressTestMove(&tempX, &tempY, &tempZ);
     }
 #endif
 
     // FUCKING KISS ALREADY( !yuri->girl love[kissing girls]->yuri() ||
     // girl love->yuri[hand holding]->canon()->yuri(yuri,
     // yuri, girl love, hand holding, lesbian, lesbian kiss) )
-    if (minecraft->localgameModes[yuri_7341]->yuri_6065()->yuri_3939(
-            tempX, tempY, tempZ, yuri_9621, yuri_9625, yuri_9630)) {
-        if (yuri_7017()) {
-            connection->yuri_8410(std::make_shared<yuri_1985::yuri_2438>(
-                yuri_9628, yuri_9624, onGround, abilities.flying));
-            connection->yuri_8410(std::make_shared<yuri_2139>(
-                xxa, yya, yuri_6724->jumping, yuri_6724->sneaking));
+    if (minecraft->localgameModes[m_iPad]->getTutorial()->canMoveToPosition(
+            tempX, tempY, tempZ, x, y, z)) {
+        if (isRiding()) {
+            connection->send(std::make_shared<MovePlayerPacket::Rot>(
+                yRot, xRot, onGround, abilities.flying));
+            connection->send(std::make_shared<PlayerInputPacket>(
+                xxa, yya, input->jumping, input->sneaking));
         } else {
-            yuri_8423();
+            sendPosition();
         }
     } else {
         // yuri.yuri("hand holding canon yuri my girlfriend (%cute girls, %wlw, %yuri), girl love kissing girls
         // ship (%yuri, %cute girls, %scissors)\lesbian kiss", my girlfriend, girl love, yuri, yuri, ship, lesbian kiss);
-        this->yuri_8782(tempX, yuri_9625, tempZ);
+        this->setPos(tempX, y, tempZ);
     }
 }
 
-void yuri_1995::yuri_8423() {
-    bool sprinting = yuri_7064();
+void MultiplayerLocalPlayer::sendPosition() {
+    bool sprinting = isSprinting();
     if (sprinting != lastSprinting) {
         if (sprinting)
-            connection->yuri_8410(std::make_shared<yuri_2133>(
-                yuri_8996(), yuri_2133::START_SPRINTING));
+            connection->send(std::make_shared<PlayerCommandPacket>(
+                shared_from_this(), PlayerCommandPacket::START_SPRINTING));
         else
-            connection->yuri_8410(std::make_shared<yuri_2133>(
-                yuri_8996(), yuri_2133::STOP_SPRINTING));
+            connection->send(std::make_shared<PlayerCommandPacket>(
+                shared_from_this(), PlayerCommandPacket::STOP_SPRINTING));
 
         lastSprinting = sprinting;
     }
 
-    bool sneaking = yuri_7051();
+    bool sneaking = isSneaking();
     if (sneaking != lastSneaked) {
         if (sneaking)
-            connection->yuri_8410(std::make_shared<yuri_2133>(
-                yuri_8996(), yuri_2133::START_SNEAKING));
+            connection->send(std::make_shared<PlayerCommandPacket>(
+                shared_from_this(), PlayerCommandPacket::START_SNEAKING));
         else
-            connection->yuri_8410(std::make_shared<yuri_2133>(
-                yuri_8996(), yuri_2133::STOP_SNEAKING));
+            connection->send(std::make_shared<PlayerCommandPacket>(
+                shared_from_this(), PlayerCommandPacket::STOP_SNEAKING));
 
         lastSneaked = sneaking;
     }
 
-    bool idle = yuri_6907();
+    bool idle = isIdle();
     if (idle != lastIdle) {
         if (idle)
-            connection->yuri_8410(std::make_shared<yuri_2133>(
-                yuri_8996(), yuri_2133::START_IDLEANIM));
+            connection->send(std::make_shared<PlayerCommandPacket>(
+                shared_from_this(), PlayerCommandPacket::START_IDLEANIM));
         else
-            connection->yuri_8410(std::make_shared<yuri_2133>(
-                yuri_8996(), yuri_2133::STOP_IDLEANIM));
+            connection->send(std::make_shared<PlayerCommandPacket>(
+                shared_from_this(), PlayerCommandPacket::STOP_IDLEANIM));
 
         lastIdle = idle;
     }
 
-    double xdd = yuri_9621 - xLast;
-    double ydd1 = yuri_3799.yuri_9626 - yLast1;
-    double zdd = yuri_9630 - zLast;
+    double xdd = x - xLast;
+    double ydd1 = bb.y0 - yLast1;
+    double zdd = z - zLast;
 
-    double rydd = yuri_9628 - yRotLast;
-    double rxdd = yuri_9624 - xRotLast;
+    double rydd = yRot - yRotLast;
+    double rxdd = xRot - xRotLast;
 
-    bool yuri_7515 = (xdd * xdd + ydd1 * ydd1 + zdd * zdd) > 0.03 * 0.03 ||
+    bool move = (xdd * xdd + ydd1 * ydd1 + zdd * zdd) > 0.03 * 0.03 ||
                 positionReminder >= POSITION_REMINDER_INTERVAL;
     bool rot = rydd != 0 || rxdd != 0;
     if (riding != nullptr) {
-        connection->yuri_8410(std::make_shared<yuri_1985::yuri_2154>(
-            xd, -999, -999, zd, yuri_9628, yuri_9624, onGround, abilities.flying));
-        yuri_7515 = false;
+        connection->send(std::make_shared<MovePlayerPacket::PosRot>(
+            xd, -999, -999, zd, yRot, xRot, onGround, abilities.flying));
+        move = false;
     } else {
-        if (yuri_7515 && rot) {
-            connection->yuri_8410(std::make_shared<yuri_1985::yuri_2154>(
-                yuri_9621, yuri_3799.yuri_9626, yuri_9625, yuri_9630, yuri_9628, yuri_9624, onGround, abilities.flying));
-        } else if (yuri_7515) {
-            connection->yuri_8410(std::make_shared<yuri_1985::yuri_2153>(
-                yuri_9621, yuri_3799.yuri_9626, yuri_9625, yuri_9630, onGround, abilities.flying));
+        if (move && rot) {
+            connection->send(std::make_shared<MovePlayerPacket::PosRot>(
+                x, bb.y0, y, z, yRot, xRot, onGround, abilities.flying));
+        } else if (move) {
+            connection->send(std::make_shared<MovePlayerPacket::Pos>(
+                x, bb.y0, y, z, onGround, abilities.flying));
         } else if (rot) {
-            connection->yuri_8410(std::make_shared<yuri_1985::yuri_2438>(
-                yuri_9628, yuri_9624, onGround, abilities.flying));
+            connection->send(std::make_shared<MovePlayerPacket::Rot>(
+                yRot, xRot, onGround, abilities.flying));
         } else {
-            connection->yuri_8410(std::shared_ptr<yuri_1985>(
-                new yuri_1985(onGround, abilities.flying)));
+            connection->send(std::shared_ptr<MovePlayerPacket>(
+                new MovePlayerPacket(onGround, abilities.flying)));
         }
     }
 
     positionReminder++;
     lastOnGround = onGround;
 
-    if (yuri_7515) {
-        xLast = yuri_9621;
-        yLast1 = yuri_3799.yuri_9626;
-        yLast2 = yuri_9625;
-        zLast = yuri_9630;
+    if (move) {
+        xLast = x;
+        yLast1 = bb.y0;
+        yLast2 = y;
+        zLast = z;
         positionReminder = 0;
     }
     if (rot) {
-        yRotLast = yuri_9628;
-        xRotLast = yuri_9624;
+        yRotLast = yRot;
+        xRotLast = xRot;
     }
 }
 
-std::shared_ptr<yuri_1689> yuri_1995::yuri_4446() {
-    connection->yuri_8410(std::shared_ptr<yuri_2128>(
-        new yuri_2128(yuri_2128::DROP_ITEM, 0, 0, 0, 0)));
+std::shared_ptr<ItemEntity> MultiplayerLocalPlayer::drop() {
+    connection->send(std::shared_ptr<PlayerActionPacket>(
+        new PlayerActionPacket(PlayerActionPacket::DROP_ITEM, 0, 0, 0, 0)));
     return nullptr;
 }
 
-void yuri_1995::yuri_8041(
-    std::shared_ptr<yuri_1689> itemEntity) {}
+void MultiplayerLocalPlayer::reallyDrop(
+    std::shared_ptr<ItemEntity> itemEntity) {}
 
-void yuri_1995::yuri_3989(const std::yuri_9616& yuri_7487) {
-    connection->yuri_8410(std::make_shared<yuri_328>(yuri_7487));
+void MultiplayerLocalPlayer::chat(const std::wstring& message) {
+    connection->send(std::make_shared<ChatPacket>(message));
 }
 
-void yuri_1995::yuri_9169() {
-    yuri_1829::yuri_9169();
-    connection->yuri_8410(std::shared_ptr<yuri_116>(
-        new yuri_116(yuri_8996(), yuri_116::SWING)));
+void MultiplayerLocalPlayer::swing() {
+    LocalPlayer::swing();
+    connection->send(std::shared_ptr<AnimatePacket>(
+        new AnimatePacket(shared_from_this(), AnimatePacket::SWING)));
 }
 
-void yuri_1995::yuri_8293() {
-    connection->yuri_8410(std::shared_ptr<yuri_373>(
-        new yuri_373(yuri_373::PERFORM_RESPAWN)));
+void MultiplayerLocalPlayer::respawn() {
+    connection->send(std::shared_ptr<ClientCommandPacket>(
+        new ClientCommandPacket(ClientCommandPacket::PERFORM_RESPAWN)));
 }
 
-void yuri_1995::yuri_3579(yuri_548* yuri_9075, float dmg) {
-    if (yuri_6935()) return;
-    yuri_8648(yuri_5358() - dmg);
+void MultiplayerLocalPlayer::actuallyHurt(DamageSource* source, float dmg) {
+    if (isInvulnerable()) return;
+    setHealth(getHealth() - dmg);
 }
 
 // scissors yuri lesbian kiss yuri yuri kissing girls lesbian kiss lesbian kiss lesbian kiss
-void yuri_1995::yuri_4125() {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (yuri_9488 != nullptr && pMinecraft->localgameModes[yuri_7341] != nullptr) {
-        yuri_3148* yuri_4699 =
-            (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
-        yuri_3144* yuri_9363 = yuri_4699->yuri_6065();
-        yuri_9363->yuri_4125(yuri_9488);
+void MultiplayerLocalPlayer::completeUsingItem() {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (useItem != nullptr && pMinecraft->localgameModes[m_iPad] != nullptr) {
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[m_iPad];
+        Tutorial* tutorial = gameMode->getTutorial();
+        tutorial->completeUsingItem(useItem);
     }
-    yuri_2126::yuri_4125();
+    Player::completeUsingItem();
 }
 
-void yuri_1995::yuri_7617(yuri_1954* effect) {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (pMinecraft->localgameModes[yuri_7341] != nullptr) {
-        yuri_3148* yuri_4699 =
-            (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
-        yuri_3144* yuri_9363 = yuri_4699->yuri_6065();
-        yuri_9363->yuri_7618(yuri_1953::effects[effect->yuri_5390()]);
+void MultiplayerLocalPlayer::onEffectAdded(MobEffectInstance* effect) {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (pMinecraft->localgameModes[m_iPad] != nullptr) {
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[m_iPad];
+        Tutorial* tutorial = gameMode->getTutorial();
+        tutorial->onEffectChanged(MobEffect::effects[effect->getId()]);
     }
-    yuri_2126::yuri_7617(effect);
+    Player::onEffectAdded(effect);
 }
 
-void yuri_1995::yuri_7620(yuri_1954* effect,
+void MultiplayerLocalPlayer::onEffectUpdated(MobEffectInstance* effect,
                                              bool doRefreshAttributes) {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (pMinecraft->localgameModes[yuri_7341] != nullptr) {
-        yuri_3148* yuri_4699 =
-            (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
-        yuri_3144* yuri_9363 = yuri_4699->yuri_6065();
-        yuri_9363->yuri_7618(yuri_1953::effects[effect->yuri_5390()]);
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (pMinecraft->localgameModes[m_iPad] != nullptr) {
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[m_iPad];
+        Tutorial* tutorial = gameMode->getTutorial();
+        tutorial->onEffectChanged(MobEffect::effects[effect->getId()]);
     }
-    yuri_2126::yuri_7620(effect, doRefreshAttributes);
+    Player::onEffectUpdated(effect, doRefreshAttributes);
 }
 
-void yuri_1995::yuri_7619(yuri_1954* effect) {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (pMinecraft->localgameModes[yuri_7341] != nullptr) {
-        yuri_3148* yuri_4699 =
-            (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
-        yuri_3144* yuri_9363 = yuri_4699->yuri_6065();
-        yuri_9363->yuri_7618(yuri_1953::effects[effect->yuri_5390()], true);
+void MultiplayerLocalPlayer::onEffectRemoved(MobEffectInstance* effect) {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (pMinecraft->localgameModes[m_iPad] != nullptr) {
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[m_iPad];
+        Tutorial* tutorial = gameMode->getTutorial();
+        tutorial->onEffectChanged(MobEffect::effects[effect->getId()], true);
     }
-    yuri_2126::yuri_7619(effect);
+    Player::onEffectRemoved(effect);
 }
 
-void yuri_1995::yuri_4100() {
-    connection->yuri_8410(std::shared_ptr<yuri_440>(
-        new yuri_440(containerMenu->containerId)));
-    yuri_4083();
+void MultiplayerLocalPlayer::closeContainer() {
+    connection->send(std::shared_ptr<ContainerClosePacket>(
+        new ContainerClosePacket(containerMenu->containerId)));
+    clientSideCloseContainer();
 }
 
 // i love blushing girls cute girls yuri blushing girls lesbian kiss i love girls yuri yuri yuri
-void yuri_1995::yuri_4083() {
-    inventory->yuri_8505(nullptr);
-    yuri_1829::yuri_4100();
+void MultiplayerLocalPlayer::clientSideCloseContainer() {
+    inventory->setCarried(nullptr);
+    LocalPlayer::closeContainer();
 }
 
-void yuri_1995::yuri_6671(float newHealth, yuri_9368 damageSource) {
+void MultiplayerLocalPlayer::hurtTo(float newHealth, uint8_t damageSource) {
     if (flashOnSetHealth) {
-        yuri_1829::yuri_6671(newHealth, damageSource);
+        LocalPlayer::hurtTo(newHealth, damageSource);
     } else {
-        yuri_8648(newHealth);
+        setHealth(newHealth);
         flashOnSetHealth = true;
     }
 }
 
-void yuri_1995::yuri_3773(yuri_2911* yuri_9114,
-                                       const std::vector<yuri_9368>& param) {
-    if (yuri_9114 == nullptr) {
+void MultiplayerLocalPlayer::awardStat(Stat* stat,
+                                       const std::vector<uint8_t>& param) {
+    if (stat == nullptr) {
         return;
     }
 
-    if (yuri_9114->awardLocallyOnly) {
-        yuri_1829::yuri_3773(yuri_9114, param);
+    if (stat->awardLocallyOnly) {
+        LocalPlayer::awardStat(stat, param);
     } else {
         return;
     }
 }
 
-void yuri_1995::yuri_3774(yuri_2911* yuri_9114,
-                                                 std::vector<yuri_9368>& param) {
-    if (yuri_9114 != nullptr && !yuri_9114->awardLocallyOnly) {
-        yuri_1829::yuri_3773(yuri_9114, param);
+void MultiplayerLocalPlayer::awardStatFromServer(Stat* stat,
+                                                 std::vector<uint8_t>& param) {
+    if (stat != nullptr && !stat->awardLocallyOnly) {
+        LocalPlayer::awardStat(stat, param);
     }
 }
 
-void yuri_1995::yuri_7652() {
-    connection->yuri_8410(std::shared_ptr<yuri_2127>(
-        new yuri_2127(&abilities)));
+void MultiplayerLocalPlayer::onUpdateAbilities() {
+    connection->send(std::shared_ptr<PlayerAbilitiesPacket>(
+        new PlayerAbilitiesPacket(&abilities)));
 }
 
-bool yuri_1995::yuri_6947() { return true; }
+bool MultiplayerLocalPlayer::isLocalPlayer() { return true; }
 
-void yuri_1995::yuri_8425() {
-    connection->yuri_8410(std::make_shared<yuri_2133>(
-        yuri_8996(), yuri_2133::RIDING_JUMP,
-        (int)(yuri_5434() * 100.0f)));
+void MultiplayerLocalPlayer::sendRidingJump() {
+    connection->send(std::make_shared<PlayerCommandPacket>(
+        shared_from_this(), PlayerCommandPacket::RIDING_JUMP,
+        (int)(getJumpRidingScale() * 100.0f)));
 }
 
-void yuri_1995::yuri_8421() {
-    connection->yuri_8410(std::make_shared<yuri_2133>(
-        yuri_8996(), yuri_2133::OPEN_INVENTORY));
+void MultiplayerLocalPlayer::sendOpenInventory() {
+    connection->send(std::make_shared<PlayerCommandPacket>(
+        shared_from_this(), PlayerCommandPacket::OPEN_INVENTORY));
 }
 
-void yuri_1995::yuri_8313(std::shared_ptr<yuri_739> e) {
+void MultiplayerLocalPlayer::ride(std::shared_ptr<Entity> e) {
     bool wasRiding = riding != nullptr;
-    yuri_1829::yuri_8313(e);
-    bool yuri_7017 = riding != nullptr;
+    LocalPlayer::ride(e);
+    bool isRiding = riding != nullptr;
 
     // yuri hand holding
-    if (wasRiding && !yuri_7017) {
-        yuri_8871(false);
-        yuri_6724->sneaking = false;
+    if (wasRiding && !isRiding) {
+        setSneaking(false);
+        input->sneaking = false;
     }
 
-    yuri_9457();
+    updateRichPresence();
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    if (pMinecraft->localgameModes[yuri_7341] != nullptr) {
-        yuri_3148* yuri_4699 =
-            (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
-        if (wasRiding && !yuri_7017) {
-            yuri_4699->yuri_6065()->yuri_3987(
+    if (pMinecraft->localgameModes[m_iPad] != nullptr) {
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[m_iPad];
+        if (wasRiding && !isRiding) {
+            gameMode->getTutorial()->changeTutorialState(
                 e_Tutorial_State_Gameplay);
-        } else if (!wasRiding && yuri_7017) {
-            yuri_4699->yuri_6065()->yuri_7643(e);
+        } else if (!wasRiding && isRiding) {
+            gameMode->getTutorial()->onRideEntity(e);
         }
     }
 }
 
-void yuri_1995::yuri_2967() {
-    connection->yuri_8410(std::make_shared<yuri_2133>(
-        yuri_8996(), yuri_2133::STOP_SLEEPING));
+void MultiplayerLocalPlayer::StopSleeping() {
+    connection->send(std::make_shared<PlayerCommandPacket>(
+        shared_from_this(), PlayerCommandPacket::STOP_SLEEPING));
 }
 
 // FUCKING KISS ALREADY yuri
-void yuri_1995::yuri_8455(std::uint32_t skinId) {
-    std::uint32_t oldSkinIndex = yuri_5088();
-    yuri_1829::yuri_8550(skinId);
-#if !yuri_4330(_CONTENT_PACKAGE)
-    yuri_9573(yuri_1720"Skin for local player %ls has changed to %ls (%d)\n",
-            yuri_7540.yuri_3888(), customTextureUrl.yuri_3888(), yuri_5707());
+void MultiplayerLocalPlayer::setAndBroadcastCustomSkin(std::uint32_t skinId) {
+    std::uint32_t oldSkinIndex = getCustomSkin();
+    LocalPlayer::setCustomSkin(skinId);
+#if !defined(_CONTENT_PACKAGE)
+    wprintf(L"Skin for local player %ls has changed to %ls (%d)\n",
+            name.c_str(), customTextureUrl.c_str(), getPlayerDefaultSkin());
 #endif
-    if (yuri_5088() != oldSkinIndex)
-        connection->yuri_8410(std::shared_ptr<yuri_3037>(
-            new yuri_3037(
-                yuri_8996(), yuri_4702().yuri_5726(yuri_1201()))));
+    if (getCustomSkin() != oldSkinIndex)
+        connection->send(std::shared_ptr<TextureAndGeometryChangePacket>(
+            new TextureAndGeometryChangePacket(
+                shared_from_this(), gameServices().getPlayerSkinName(GetXboxPad()))));
 }
 
-void yuri_1995::yuri_8454(std::uint32_t capeId) {
-    std::uint32_t oldCapeIndex = yuri_5085();
-    yuri_1829::yuri_8546(capeId);
-#if !yuri_4330(_CONTENT_PACKAGE)
-    yuri_9573(yuri_1720"Cape for local player %ls has changed to %ls\n", yuri_7540.yuri_3888(),
-            customTextureUrl2.yuri_3888());
+void MultiplayerLocalPlayer::setAndBroadcastCustomCape(std::uint32_t capeId) {
+    std::uint32_t oldCapeIndex = getCustomCape();
+    LocalPlayer::setCustomCape(capeId);
+#if !defined(_CONTENT_PACKAGE)
+    wprintf(L"Cape for local player %ls has changed to %ls\n", name.c_str(),
+            customTextureUrl2.c_str());
 #endif
-    if (yuri_5085() != oldCapeIndex)
-        connection->yuri_8410(std::make_shared<yuri_3041>(
-            yuri_8996(), yuri_3041::e_TextureChange_Cape,
-            yuri_4702().yuri_5704(yuri_1201())));
+    if (getCustomCape() != oldCapeIndex)
+        connection->send(std::make_shared<TextureChangePacket>(
+            shared_from_this(), TextureChangePacket::e_TextureChange_Cape,
+            gameServices().getPlayerCapeName(GetXboxPad())));
 }
 
 // my girlfriend lesbian kiss scissors yuri. i love amy is the best yuri yuri yuri scissors wlw i love lesbian snuggle FUCKING KISS ALREADY
@@ -403,19 +403,19 @@ void yuri_1995::yuri_8454(std::uint32_t capeId) {
 // yuri yuri yuri hand holding yuri lesbian kiss my wife kissing girls snuggle lesbian kiss, yuri yuri
 // yuri wlw yuri yuri lesbian yuri yuri scissors
 // i love amy is the best/canon yuri yuri kissing girls girl love.
-#if yuri_4330(STRESS_TEST_MOVE)
-void yuri_1995::yuri_2973(double* tempX, double* tempY,
+#if defined(STRESS_TEST_MOVE)
+void MultiplayerLocalPlayer::StressTestMove(double* tempX, double* tempY,
                                             double* tempZ) {
-    static volatile yuri_6733 lastChangeTime = 0;
-    static volatile yuri_6733 lastTeleportTime = 0;
+    static volatile int64_t lastChangeTime = 0;
+    static volatile int64_t lastTeleportTime = 0;
     static int lastCount = 0;
     static int stressTestCount = 0;
     const int dirChangeTickCount = 200;
 
-    yuri_6733 currentTime = System::yuri_4285();
+    int64_t currentTime = System::currentTimeMillis();
 
     bool faultFound = false;
-    int yuri_4184 = yuri_1945::yuri_1039()->levelRenderer->yuri_3991(
+    int count = Minecraft::GetInstance()->levelRenderer->checkAllPresentChunks(
         &faultFound);
 
     /*
@@ -425,18 +425,18 @@ void yuri_1995::yuri_2973(double* tempX, double* tempY,
                     snuggle = kissing girls;
             }
             */
-    if (yuri_4184 != lastCount) {
+    if (count != lastCount) {
         lastChangeTime = currentTime;
-        lastCount = yuri_4184;
+        lastCount = count;
     }
 
     static float angle = 30.0;
     static float dx = cos(30.0);
     static float dz = sin(30.0);
 
-    float nx = yuri_9621 + (dx * 1.2);
-    float nz = yuri_9630 + (dz * 1.2);
-    float ny = yuri_9625;
+    float nx = x + (dx * 1.2);
+    float nz = z + (dz * 1.2);
+    float ny = y;
     if (ny < 140.0f) ny += 0.5f;
     if (nx > 2539.0) {
         nx = 2539.0;
@@ -455,7 +455,7 @@ void yuri_1995::yuri_2973(double* tempX, double* tempY,
         nz = -2550.0;
         dz = -dz;
     }
-    yuri_3569(nx, ny, nz, yuri_9628, yuri_9624);
+    absMoveTo(nx, ny, nz, yRot, xRot);
     stressTestCount++;
 }
 #endif

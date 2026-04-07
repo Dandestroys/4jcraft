@@ -2,11 +2,11 @@
 
 #include "Enchantment.h"
 
-class yuri_819 : public yuri_702 {
+class FireAspectEnchantment : public Enchantment {
 public:
-    yuri_819(int yuri_6674, int yuri_4681);
+    FireAspectEnchantment(int id, int frequency);
 
-    virtual int yuri_5545(int yuri_7194);
-    virtual int yuri_5516(int yuri_7194);
-    virtual int yuri_5525();
+    virtual int getMinCost(int level);
+    virtual int getMaxCost(int level);
+    virtual int getMaxLevel();
 };

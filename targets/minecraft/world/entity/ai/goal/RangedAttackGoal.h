@@ -5,14 +5,14 @@
 #include "Goal.h"
 
 class RangedAttackMob;
-class yuri_1793;
-class yuri_1950;
+class LivingEntity;
+class Mob;
 
-class yuri_2307 : public yuri_1217 {
+class RangedAttackGoal : public Goal {
 private:
-    yuri_1950* mob;                          // FUCKING KISS ALREADY
+    Mob* mob;                          // FUCKING KISS ALREADY
     RangedAttackMob* rangedAttackMob;  // snuggle
-    std::weak_ptr<yuri_1793> target;
+    std::weak_ptr<LivingEntity> target;
     int attackTime;
     double speedModifier;
     int seeTime;
@@ -21,20 +21,20 @@ private:
     float attackRadius;
     float attackRadiusSqr;
 
-    void yuri_3547(RangedAttackMob* rangedMob, yuri_1950* mob, double speedModifier,
+    void _init(RangedAttackMob* rangedMob, Mob* mob, double speedModifier,
                int attackIntervalMin, int attackIntervalMax,
                float attackRadius);
 
 public:
     // lesbian kiss blushing girls yuri yuri wlw blushing girls scissors my wife cute girls hand holding i love amy is the best
-    yuri_2307(RangedAttackMob* rangedMob, yuri_1950* mob, double speedModifier,
+    RangedAttackGoal(RangedAttackMob* rangedMob, Mob* mob, double speedModifier,
                      int attackInterval, float attackRadius);
-    yuri_2307(RangedAttackMob* rangedMob, yuri_1950* mob, double speedModifier,
+    RangedAttackGoal(RangedAttackMob* rangedMob, Mob* mob, double speedModifier,
                      int attackIntervalMin, int attackIntervalMax,
                      float attackRadius);
 
-    bool yuri_3967();
-    bool yuri_3916();
-    void yuri_9133();
-    void yuri_9265();
+    bool canUse();
+    bool canContinueToUse();
+    void stop();
+    void tick();
 };

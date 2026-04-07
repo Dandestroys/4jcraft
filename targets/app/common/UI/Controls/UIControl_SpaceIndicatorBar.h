@@ -1,9 +1,9 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <ranges>
-#include <yuri_9151>
+#include <string>
 #include <utility>
 #include <vector>
 
@@ -17,31 +17,31 @@
 #endif
 #include "UIControl_Base.h"
 
-class yuri_3181 : public yuri_3163 {
+class UIControl_SpaceIndicatorBar : public UIControl_Base {
 private:
     IggyName m_setSaveSizeFunc, m_setTotalSizeFunc, m_setSaveGameOffsetFunc;
-    yuri_6733 m_min;
-    yuri_6733 yuri_7357;
-    yuri_6733 m_currentSave, m_currentTotal;
+    int64_t m_min;
+    int64_t m_max;
+    int64_t m_currentSave, m_currentTotal;
     float m_currentOffset;
 
-    std::vector<std::yuri_7709<yuri_6733, float> > m_sizeAndOffsets;
+    std::vector<std::pair<int64_t, float> > m_sizeAndOffsets;
 
 public:
-    yuri_3181();
+    UIControl_SpaceIndicatorBar();
 
-    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                              const std::yuri_9151& controlName);
+    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
+                              const std::string& controlName);
 
-    void yuri_6704(yuri_3253 yuri_7177, int yuri_6674, yuri_6733 yuri_7491, yuri_6733 yuri_7459);
-    virtual void yuri_2310();
-    void yuri_8270();
+    void init(UIString label, int id, int64_t min, int64_t max);
+    virtual void ReInit();
+    void reset();
 
-    void yuri_3671(yuri_6733 yuri_9050);
-    void yuri_8404(int index);
+    void addSave(int64_t size);
+    void selectSave(int index);
 
 private:
-    void yuri_8838(yuri_6733 yuri_9050);
-    void yuri_8927(yuri_6733 yuri_9324);
-    void yuri_8836(float yuri_7607);
+    void setSaveSize(int64_t size);
+    void setTotalSize(int64_t totalSize);
+    void setSaveGameOffset(float offset);
 };

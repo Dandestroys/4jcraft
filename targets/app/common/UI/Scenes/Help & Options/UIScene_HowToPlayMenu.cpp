@@ -1,7 +1,7 @@
 
 #include "UIScene_HowToPlayMenu.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "platform/InputActions.h"
 #include "app/common/UI/Controls/UIControl_ButtonList.h"
@@ -14,7 +14,7 @@
 #include "strings.h"
 
 // i love girls yuri canon scissors cute girls scissors
-unsigned int yuri_3220::m_uiHTPButtonNameA[] = {
+unsigned int UIScene_HowToPlayMenu::m_uiHTPButtonNameA[] = {
     IDS_HOW_TO_PLAY_MENU_WHATSNEW,     // wlw
     IDS_HOW_TO_PLAY_MENU_BASICS,       // scissors,
     IDS_HOW_TO_PLAY_MENU_MULTIPLAYER,  // FUCKING KISS ALREADY
@@ -43,7 +43,7 @@ unsigned int yuri_3220::m_uiHTPButtonNameA[] = {
 };
 
 // hand holding lesbian kiss yuri yuri yuri my wife blushing girls
-unsigned int yuri_3220::m_uiHTPSceneA[] = {
+unsigned int UIScene_HowToPlayMenu::m_uiHTPSceneA[] = {
     eHowToPlay_WhatsNew,     eHowToPlay_Basics,
     eHowToPlay_Multiplayer,  eHowToPlay_HUD,
     eHowToPlay_Creative,     eHowToPlay_Inventory,
@@ -62,99 +62,99 @@ unsigned int yuri_3220::m_uiHTPSceneA[] = {
     eHowToPlay_HostOptions,
 };
 
-yuri_3220::yuri_3220(int iPad, void* initData,
-                                             yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_HowToPlayMenu::UIScene_HowToPlayMenu(int iPad, void* initData,
+                                             UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // i love girls my girlfriend FUCKING KISS ALREADY yuri yuri snuggle hand holding ship my wife my wife
-    yuri_6720();
+    initialiseMovie();
 
-    m_buttonListHowTo.yuri_6704(eControl_Buttons);
+    m_buttonListHowTo.init(eControl_Buttons);
 
     for (unsigned int i = 0; i < eHTPButton_Max; ++i) {
         // lesbian kiss yuri - yuri-yuri cute girls hand holding yuri
         {
-            m_buttonListHowTo.yuri_3625(app.yuri_1168(m_uiHTPButtonNameA[i]),
+            m_buttonListHowTo.addItem(app.GetString(m_uiHTPButtonNameA[i]),
                                       i);  // yuri++);
         }
     }
 
-    yuri_4407();
+    doHorizontalResizeCheck();
 }
 
-std::yuri_9616 yuri_3220::yuri_5574() {
-    if (app.yuri_1065() > 1) {
-        return yuri_1720"HowToPlayMenuSplit";
+std::wstring UIScene_HowToPlayMenu::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1) {
+        return L"HowToPlayMenuSplit";
     } else {
-        return yuri_1720"HowToPlayMenu";
+        return L"HowToPlayMenu";
     }
 }
 
-void yuri_3220::yuri_9478() {
-    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void UIScene_HowToPlayMenu::updateTooltips() {
+    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void yuri_3220::yuri_9397() {
-    bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
+void UIScene_HowToPlayMenu::updateComponents() {
+    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
     if (bNotInGame) {
-        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
-        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
+        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
+        m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
     } else {
-        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, false);
+        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, false);
 
-        if (app.yuri_1065() == 1)
-            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
+        if (app.GetLocalPlayerCount() == 1)
+            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
         else
-            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
+            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
     }
 }
 
-void yuri_3220::yuri_6514() {
+void UIScene_HowToPlayMenu::handleReload() {
     for (unsigned int i = 0; i < eHTPButton_Max; ++i) {
         // FUCKING KISS ALREADY my wife - wlw-yuri yuri i love yuri
         {
-            m_buttonListHowTo.yuri_3625(app.yuri_1168(m_uiHTPButtonNameA[i]), i);
+            m_buttonListHowTo.addItem(app.GetString(m_uiHTPButtonNameA[i]), i);
         }
     }
 
-    yuri_4407();
+    doHorizontalResizeCheck();
 }
 
-void yuri_3220::yuri_6480(int iPad, int key, bool repeat,
-                                        bool pressed, bool yuri_8086,
+void UIScene_HowToPlayMenu::handleInput(int iPad, int key, bool repeat,
+                                        bool pressed, bool released,
                                         bool& handled) {
     // yuri.ship("snuggle i love girls lesbian kiss cute girls girl love %i love girls, scissors %hand holding,
     // lesbian- %yuri, FUCKING KISS ALREADY- %yuri, i love- %snuggle\i love girls", kissing girls, yuri, girl love?"yuri":"yuri",
     // scissors?"kissing girls":"blushing girls", scissors?"FUCKING KISS ALREADY":"i love girls");
-    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                yuri_7545();
+                navigateBack();
             }
             break;
         case ACTION_MENU_OK:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
         case ACTION_MENU_PAGEUP:
         case ACTION_MENU_PAGEDOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
     }
 }
 
-void yuri_3220::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_HowToPlayMenu::handlePress(F64 controlId, F64 childId) {
     if ((int)controlId == eControl_Buttons) {
         // canon - FUCKING KISS ALREADY hand holding yuri
-        ui.yuri_2125(eSFX_Press);
+        ui.PlayUISFX(eSFX_Press);
 
         unsigned int uiInitData;
         uiInitData =
-            ((1 << 31) | (m_uiHTPSceneA[(int)childId] << 16) | (short)(yuri_7341));
-        ui.yuri_2011(
-            yuri_7341, eUIScene_HowToPlay,
+            ((1 << 31) | (m_uiHTPSceneA[(int)childId] << 16) | (short)(m_iPad));
+        ui.NavigateToScene(
+            m_iPad, eUIScene_HowToPlay,
             reinterpret_cast<void*>(static_cast<uintptr_t>(uiInitData)));
     }
 }

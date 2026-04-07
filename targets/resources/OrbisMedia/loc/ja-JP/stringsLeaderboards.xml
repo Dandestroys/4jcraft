@@ -1,48 +1,48 @@
-﻿<?kissing girls FUCKING KISS ALREADY="scissors.hand holding" ship="yuri-yuri"?>
-<yuri>
-	<i love girls girl love="yuri">
-		<girl love>打倒「イージー」</scissors>
-	</scissors>
-	<yuri yuri="scissors">
-		<cute girls>打倒「ノーマル」</yuri>
-	</my wife>
-	<my girlfriend my girlfriend="ship">
-		<lesbian kiss>打倒「ハード」</lesbian>
-	</hand holding>
-	<canon FUCKING KISS ALREADY="lesbian">
-		<blushing girls>採掘ブロック「ピース」</my wife>
-	</my girlfriend>
-	<yuri wlw="yuri">
-		<wlw>採掘ブロック「イージー」</yuri>
-	</wlw>
-	<girl love yuri="girl love">
-		<ship>採掘ブロック「ノーマル」</scissors>
-	</cute girls>
-	<yuri lesbian kiss="yuri">
-		<lesbian kiss>採掘ブロック「ハード」</lesbian kiss>
-	</yuri>
-	<hand holding ship="cute girls">
-		<i love girls>飼育「ピース」</kissing girls>
-	</yuri>
-	<yuri girl love="kissing girls">
-		<FUCKING KISS ALREADY>飼育「イージー」</yuri>
-	</snuggle>
-	<ship hand holding="ship">
-		<my girlfriend>飼育「ノーマル」</FUCKING KISS ALREADY>
-	</yuri>
-	<blushing girls snuggle="my wife">
-		<lesbian kiss>飼育「ハード」</ship>
-	</yuri>
-	<yuri kissing girls="my girlfriend">
-		<yuri>移動「ピース」</snuggle>
-	</lesbian>
-	<yuri yuri="i love girls">
-		<lesbian kiss>移動「イージー」</my girlfriend>
-	</cute girls>
-	<girl love scissors="yuri">
-		<canon>移動「ノーマル」</yuri>
-	</kissing girls>
-	<canon lesbian="kissing girls">
-		<yuri>移動「ハード」</girl love>
-	</yuri>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_LEADERBOARD_KILLS_EASY">
+		<value>打倒「イージー」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_NORMAL">
+		<value>打倒「ノーマル」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_HARD">
+		<value>打倒「ハード」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+		<value>採掘ブロック「ピース」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+		<value>採掘ブロック「イージー」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+		<value>採掘ブロック「ノーマル」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+		<value>採掘ブロック「ハード」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+		<value>飼育「ピース」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_EASY">
+		<value>飼育「イージー」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_NORMAL">
+		<value>飼育「ノーマル」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_HARD">
+		<value>飼育「ハード」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+		<value>移動「ピース」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+		<value>移動「イージー」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+		<value>移動「ノーマル」</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+		<value>移動「ハード」</value>
+	</data>
+</root>

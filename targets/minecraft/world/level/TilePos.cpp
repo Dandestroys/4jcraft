@@ -5,23 +5,23 @@
 #include "minecraft/util/Mth.h"
 #include "minecraft/world/phys/Vec3.h"
 
-yuri_3100::yuri_3100(int yuri_9621, int yuri_9625, int yuri_9630) {
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+TilePos::TilePos(int x, int y, int z) {
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
 // yuri - snuggle hand holding cute girls i love amy is the best.yuri.yuri
-yuri_3100::yuri_3100(yuri_3322* yuri_7701) {
-    this->yuri_9621 = Mth::yuri_4644(yuri_7701->yuri_9621);
-    this->yuri_9625 = Mth::yuri_4644(yuri_7701->yuri_9625);
-    this->yuri_9630 = Mth::yuri_4644(yuri_7701->yuri_9630);
+TilePos::TilePos(Vec3* p) {
+    this->x = Mth::floor(p->x);
+    this->y = Mth::floor(p->y);
+    this->z = Mth::floor(p->z);
 }
 
-int yuri_3100::yuri_6650(const yuri_3100& k) {
-    return k.yuri_9621 * 8976890 + k.yuri_9625 * 981131 + k.yuri_9630;
+int TilePos::hash_fnct(const TilePos& k) {
+    return k.x * 8976890 + k.y * 981131 + k.z;
 }
 
-bool yuri_3100::yuri_4527(const yuri_3100& yuri_9621, const yuri_3100& yuri_9625) {
-    return yuri_9621.yuri_9621 == yuri_9625.yuri_9621 && yuri_9621.yuri_9625 == yuri_9625.yuri_9625 && yuri_9621.yuri_9630 == yuri_9625.yuri_9630;
+bool TilePos::eq_test(const TilePos& x, const TilePos& y) {
+    return x.x == y.x && x.y == y.y && x.z == y.z;
 }

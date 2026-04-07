@@ -5,91 +5,91 @@
 #include "minecraft/server/level/GameMode.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class yuri_374;
-class yuri_924;
-class yuri_3322;
-class yuri_739;
-class yuri_1758;
-class yuri_1945;
-class yuri_2126;
-class yuri_3144;
+class ClientConnection;
+class GameType;
+class Vec3;
+class Entity;
+class Level;
+class Minecraft;
+class Player;
+class Tutorial;
 
-class yuri_1992 {
+class MultiPlayerGameMode {
 private:
     int xDestroyBlock;
     int yDestroyBlock;
     int zDestroyBlock;
-    std::shared_ptr<yuri_1693> destroyingItem;
+    std::shared_ptr<ItemInstance> destroyingItem;
     float destroyProgress;
     int destroyTicks;  // cute girls yuri hand holding canon blushing girls'hand holding cute girls yuri yuri i love yuri
     int destroyDelay;
     bool isDestroying;
-    yuri_924* localPlayerMode;
-    yuri_374* connection;
+    GameType* localPlayerMode;
+    ClientConnection* connection;
 
 protected:
-    yuri_1945* minecraft;
+    Minecraft* minecraft;
 
 public:
-    yuri_1992(yuri_1945* minecraft, yuri_374* connection);
-    static void yuri_4269(yuri_1945* minecraft,
-                                     yuri_1992* yuri_4699, int yuri_9621,
-                                     int yuri_9625, int yuri_9630, int face);
-    void yuri_3697(std::shared_ptr<yuri_2126> yuri_7839);
-    bool yuri_6829();
-    void yuri_8714(yuri_924* mode);
-    virtual void yuri_6713(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual bool yuri_3930();
-    virtual bool yuri_4348(int yuri_9621, int yuri_9625, int yuri_9630, int face);
-    virtual void yuri_9103(int yuri_9621, int yuri_9625, int yuri_9630, int face);
-    virtual void yuri_9134();
-    virtual void yuri_4163(int yuri_9621, int yuri_9625, int yuri_9630, int face);
-    virtual float yuri_5692();
-    virtual void yuri_9265();
+    MultiPlayerGameMode(Minecraft* minecraft, ClientConnection* connection);
+    static void creativeDestroyBlock(Minecraft* minecraft,
+                                     MultiPlayerGameMode* gameMode, int x,
+                                     int y, int z, int face);
+    void adjustPlayer(std::shared_ptr<Player> player);
+    bool isCutScene();
+    void setLocalMode(GameType* mode);
+    virtual void initPlayer(std::shared_ptr<Player> player);
+    virtual bool canHurtPlayer();
+    virtual bool destroyBlock(int x, int y, int z, int face);
+    virtual void startDestroyBlock(int x, int y, int z, int face);
+    virtual void stopDestroyBlock();
+    virtual void continueDestroyBlock(int x, int y, int z, int face);
+    virtual float getPickRange();
+    virtual void tick();
 
 private:
     int carriedItem;
 
 private:
-    bool yuri_8344(int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_4514();
+    bool sameDestroyTarget(int x, int y, int z);
+    void ensureHasSentCarriedItem();
 
 public:
-    virtual bool yuri_9489(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
-                           std::shared_ptr<yuri_1693> item, int yuri_9621, int yuri_9625,
-                           int yuri_9630, int face, yuri_3322* hit,
+    virtual bool useItemOn(std::shared_ptr<Player> player, Level* level,
+                           std::shared_ptr<ItemInstance> item, int x, int y,
+                           int z, int face, Vec3* hit,
                            bool bTestUseOnly = false,
                            bool* pbUsedItem = nullptr);
-    virtual bool yuri_9488(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
-                         std::shared_ptr<yuri_1693> item,
+    virtual bool useItem(std::shared_ptr<Player> player, Level* level,
+                         std::shared_ptr<ItemInstance> item,
                          bool bTestUseOnly = false);
-    virtual std::shared_ptr<yuri_1995> yuri_4246(yuri_1758* yuri_7194);
-    virtual void yuri_3762(std::shared_ptr<yuri_2126> yuri_7839,
-                        std::shared_ptr<yuri_739> entity);
-    virtual bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839,
-                          std::shared_ptr<yuri_739> entity);
-    virtual std::shared_ptr<yuri_1693> yuri_6484(
-        int containerId, int yuri_9064, int buttonNum, bool quickKeyHeld,
-        std::shared_ptr<yuri_2126> yuri_7839);
-    virtual void yuri_6483(int containerId, int buttonId);
-    virtual void yuri_6459(
-        std::shared_ptr<yuri_1693> yuri_4081, int yuri_9061);
-    virtual void yuri_6460(
-        std::shared_ptr<yuri_1693> yuri_4081);
-    virtual void yuri_8085(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual bool yuri_6595();
-    virtual bool yuri_6614();
-    virtual bool yuri_6605();
-    virtual bool yuri_6597();
-    virtual bool yuri_7037();
+    virtual std::shared_ptr<MultiplayerLocalPlayer> createPlayer(Level* level);
+    virtual void attack(std::shared_ptr<Player> player,
+                        std::shared_ptr<Entity> entity);
+    virtual bool interact(std::shared_ptr<Player> player,
+                          std::shared_ptr<Entity> entity);
+    virtual std::shared_ptr<ItemInstance> handleInventoryMouseClick(
+        int containerId, int slotNum, int buttonNum, bool quickKeyHeld,
+        std::shared_ptr<Player> player);
+    virtual void handleInventoryButtonClick(int containerId, int buttonId);
+    virtual void handleCreativeModeItemAdd(
+        std::shared_ptr<ItemInstance> clicked, int slot);
+    virtual void handleCreativeModeItemDrop(
+        std::shared_ptr<ItemInstance> clicked);
+    virtual void releaseUsingItem(std::shared_ptr<Player> player);
+    virtual bool hasExperience();
+    virtual bool hasMissTime();
+    virtual bool hasInfiniteItems();
+    virtual bool hasFarPickRange();
+    virtual bool isServerControlledInventory();
 
     // canon scissors - lesbian yuri yuri canon hand holding i love girls lesbian kiss yuri canon yuri yuri yuri
-    virtual bool yuri_6458(int recipe, std::shared_ptr<yuri_2126> yuri_7839);
-    virtual void yuri_6464(unsigned int uiVal,
-                                    std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool handleCraftItem(int recipe, std::shared_ptr<Player> player);
+    virtual void handleDebugOptions(unsigned int uiVal,
+                                    std::shared_ptr<Player> player);
 
     // snuggle my girlfriend - yuri yuri wlw yuri
-    virtual bool yuri_6923(int mapping) { return true; }
-    virtual bool yuri_7093() { return false; }
-    virtual yuri_3144* yuri_6065() { return nullptr; }
+    virtual bool isInputAllowed(int mapping) { return true; }
+    virtual bool isTutorial() { return false; }
+    virtual Tutorial* getTutorial() { return nullptr; }
 };

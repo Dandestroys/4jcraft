@@ -16,68 +16,68 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_2148::yuri_2150::yuri_2150(int yuri_9621, int yuri_9625, int yuri_9630, yuri_6733 yuri_9299)
-    : yuri_2153(yuri_9621, yuri_9625, yuri_9630) {
-    lastUsed = yuri_9299;
+PortalForcer::PortalPosition::PortalPosition(int x, int y, int z, int64_t time)
+    : Pos(x, y, z) {
+    lastUsed = time;
 }
 
-yuri_2148::yuri_2148(yuri_2544* yuri_7194) {
-    this->yuri_7194 = yuri_7194;
-    yuri_7981 = new yuri_2302(yuri_7194->yuri_5870());
+PortalForcer::PortalForcer(ServerLevel* level) {
+    this->level = level;
+    random = new Random(level->getSeed());
 }
 
-yuri_2148::~yuri_2148() {
-    for (auto yuri_7136 = cachedPortals.yuri_3801(); yuri_7136 != cachedPortals.yuri_4502(); ++yuri_7136) {
-        delete yuri_7136->yuri_8394;
+PortalForcer::~PortalForcer() {
+    for (auto it = cachedPortals.begin(); it != cachedPortals.end(); ++it) {
+        delete it->second;
     }
 }
 
-void yuri_2148::yuri_4661(std::shared_ptr<yuri_739> e, double xOriginal,
+void PortalForcer::force(std::shared_ptr<Entity> e, double xOriginal,
                          double yOriginal, double zOriginal,
                          float yRotOriginal) {
-    if (yuri_7194->dimension->yuri_6674 == 1) {
-        int yuri_9621 = Mth::yuri_4644(e->yuri_9621);
-        int yuri_9625 = Mth::yuri_4644(e->yuri_9625) - 1;
-        int yuri_9630 = Mth::yuri_4644(e->yuri_9630);
+    if (level->dimension->id == 1) {
+        int x = Mth::floor(e->x);
+        int y = Mth::floor(e->y) - 1;
+        int z = Mth::floor(e->z);
 
         int xa = 1;
         int za = 0;
-        for (int yuri_3775 = -2; yuri_3775 <= 2; yuri_3775++) {
+        for (int b = -2; b <= 2; b++) {
             for (int s = -2; s <= 2; s++) {
-                for (int yuri_6412 = -1; yuri_6412 < 3; yuri_6412++) {
-                    int xt = yuri_9621 + s * xa + yuri_3775 * za;
-                    int yt = yuri_9625 + yuri_6412;
-                    int zt = yuri_9630 + s * za - yuri_3775 * xa;
+                for (int h = -1; h < 3; h++) {
+                    int xt = x + s * xa + b * za;
+                    int yt = y + h;
+                    int zt = z + s * za - b * xa;
 
-                    bool border = yuri_6412 < 0;
+                    bool border = h < 0;
 
-                    yuri_7194->yuri_8918(xt, yt, zt,
-                                            border ? yuri_3088::obsidian_Id : 0);
+                    level->setTileAndUpdate(xt, yt, zt,
+                                            border ? Tile::obsidian_Id : 0);
                 }
             }
         }
 
-        e->yuri_7531(yuri_9621, yuri_9625, yuri_9630, e->yuri_9628, 0);
+        e->moveTo(x, y, z, e->yRot, 0);
         e->xd = e->yd = e->zd = 0;
 
         return;
     }
 
-    if (yuri_4616(e, xOriginal, yOriginal, zOriginal, yRotOriginal)) {
+    if (findPortal(e, xOriginal, yOriginal, zOriginal, yRotOriginal)) {
         return;
     }
 
-    yuri_4247(e);
-    yuri_4616(e, xOriginal, yOriginal, zOriginal, yRotOriginal);
+    createPortal(e);
+    findPortal(e, xOriginal, yOriginal, zOriginal, yRotOriginal);
 }
 
-bool yuri_2148::yuri_4616(std::shared_ptr<yuri_739> e, double xOriginal,
+bool PortalForcer::findPortal(std::shared_ptr<Entity> e, double xOriginal,
                               double yOriginal, double zOriginal,
                               float yRotOriginal) {
     // my wife yuri - yuri FUCKING KISS ALREADY lesbian kiss canon FUCKING KISS ALREADY wlw wlw yuri yuri snuggle blushing girls kissing girls yuri
     // my wife i love snuggle blushing girls
     int r = 16;  //* ship;
-    if (yuri_7194->dimension->yuri_6674 == -1) {
+    if (level->dimension->id == -1) {
         r *= 3;
     } else {
         r *= 8;
@@ -87,41 +87,41 @@ bool yuri_2148::yuri_4616(std::shared_ptr<yuri_739> e, double xOriginal,
     int yTarget = 0;
     int zTarget = 0;
 
-    int xc = Mth::yuri_4644(e->yuri_9621);
-    int zc = Mth::yuri_4644(e->yuri_9630);
+    int xc = Mth::floor(e->x);
+    int zc = Mth::floor(e->z);
 
-    long yuri_6648 = yuri_347::yuri_6649(xc, zc);
+    long hash = ChunkPos::hashCode(xc, zc);
     bool updateCache = true;
 
-    auto yuri_7136 = cachedPortals.yuri_4597(yuri_6648);
-    if (yuri_7136 != cachedPortals.yuri_4502()) {
-        yuri_2150* yuri_7872 = yuri_7136->yuri_8394;
+    auto it = cachedPortals.find(hash);
+    if (it != cachedPortals.end()) {
+        PortalPosition* pos = it->second;
 
         closest = 0;
-        xTarget = yuri_7872->yuri_9621;
-        yTarget = yuri_7872->yuri_9625;
-        zTarget = yuri_7872->yuri_9630;
-        yuri_7872->lastUsed = yuri_7194->yuri_5306();
+        xTarget = pos->x;
+        yTarget = pos->y;
+        zTarget = pos->z;
+        pos->lastUsed = level->getGameTime();
         updateCache = false;
     } else {
-        for (int yuri_9621 = xc - r; yuri_9621 <= xc + r; yuri_9621++) {
-            double xd = (yuri_9621 + 0.5) - e->yuri_9621;
-            for (int yuri_9630 = zc - r; yuri_9630 <= zc + r; yuri_9630++) {
-                double zd = (yuri_9630 + 0.5) - e->yuri_9630;
-                for (int yuri_9625 = yuri_7194->yuri_5362() - 1; yuri_9625 >= 0; yuri_9625--) {
-                    if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_3088::portalTile_Id) {
-                        while (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) ==
-                               yuri_3088::portalTile_Id) {
-                            yuri_9625--;
+        for (int x = xc - r; x <= xc + r; x++) {
+            double xd = (x + 0.5) - e->x;
+            for (int z = zc - r; z <= zc + r; z++) {
+                double zd = (z + 0.5) - e->z;
+                for (int y = level->getHeight() - 1; y >= 0; y--) {
+                    if (level->getTile(x, y, z) == Tile::portalTile_Id) {
+                        while (level->getTile(x, y - 1, z) ==
+                               Tile::portalTile_Id) {
+                            y--;
                         }
 
-                        double yd = (yuri_9625 + 0.5) - e->yuri_9625;
-                        double yuri_4382 = xd * xd + yd * yd + zd * zd;
-                        if (closest < 0 || yuri_4382 < closest) {
-                            closest = yuri_4382;
-                            xTarget = yuri_9621;
-                            yTarget = yuri_9625;
-                            zTarget = yuri_9630;
+                        double yd = (y + 0.5) - e->y;
+                        double dist = xd * xd + yd * yd + zd * zd;
+                        if (closest < 0 || dist < closest) {
+                            closest = dist;
+                            xTarget = x;
+                            yTarget = y;
+                            zTarget = z;
                         }
                     }
                 }
@@ -130,66 +130,66 @@ bool yuri_2148::yuri_4616(std::shared_ptr<yuri_739> e, double xOriginal,
     }
 
     if (closest >= 0) {
-        int yuri_9621 = xTarget;
-        int yuri_9625 = yTarget;
-        int yuri_9630 = zTarget;
+        int x = xTarget;
+        int y = yTarget;
+        int z = zTarget;
 
         if (updateCache) {
-            cachedPortals[yuri_6648] =
-                new yuri_2150(yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5306());
-            cachedPortalKeys.yuri_7954(yuri_6648);
+            cachedPortals[hash] =
+                new PortalPosition(x, y, z, level->getGameTime());
+            cachedPortalKeys.push_back(hash);
         }
 
-        double xt = yuri_9621 + 0.5;
-        double yt = yuri_9625 + 0.5;
-        double zt = yuri_9630 + 0.5;
-        int yuri_4361 = Direction::UNDEFINED;
+        double xt = x + 0.5;
+        double yt = y + 0.5;
+        double zt = z + 0.5;
+        int dir = Direction::UNDEFINED;
 
-        if (yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630) == yuri_3088::portalTile_Id)
-            yuri_4361 = Direction::NORTH;
-        if (yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630) == yuri_3088::portalTile_Id)
-            yuri_4361 = Direction::SOUTH;
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1) == yuri_3088::portalTile_Id)
-            yuri_4361 = Direction::EAST;
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1) == yuri_3088::portalTile_Id)
-            yuri_4361 = Direction::WEST;
+        if (level->getTile(x - 1, y, z) == Tile::portalTile_Id)
+            dir = Direction::NORTH;
+        if (level->getTile(x + 1, y, z) == Tile::portalTile_Id)
+            dir = Direction::SOUTH;
+        if (level->getTile(x, y, z - 1) == Tile::portalTile_Id)
+            dir = Direction::EAST;
+        if (level->getTile(x, y, z + 1) == Tile::portalTile_Id)
+            dir = Direction::WEST;
 
-        int originalDir = e->yuri_5736();
+        int originalDir = e->getPortalEntranceDir();
 
-        if (yuri_4361 > Direction::UNDEFINED) {
-            int leftDir = Direction::DIRECTION_COUNTER_CLOCKWISE[yuri_4361];
-            int forwardsx = Direction::STEP_X[yuri_4361];
-            int forwardsz = Direction::STEP_Z[yuri_4361];
+        if (dir > Direction::UNDEFINED) {
+            int leftDir = Direction::DIRECTION_COUNTER_CLOCKWISE[dir];
+            int forwardsx = Direction::STEP_X[dir];
+            int forwardsz = Direction::STEP_Z[dir];
             int leftx = Direction::STEP_X[leftDir];
             int leftz = Direction::STEP_Z[leftDir];
 
-            bool leftBlocked = !yuri_7194->yuri_6852(yuri_9621 + forwardsx + leftx, yuri_9625,
-                                                   yuri_9630 + forwardsz + leftz) ||
-                               !yuri_7194->yuri_6852(yuri_9621 + forwardsx + leftx, yuri_9625 + 1,
-                                                   yuri_9630 + forwardsz + leftz);
+            bool leftBlocked = !level->isEmptyTile(x + forwardsx + leftx, y,
+                                                   z + forwardsz + leftz) ||
+                               !level->isEmptyTile(x + forwardsx + leftx, y + 1,
+                                                   z + forwardsz + leftz);
             bool rightBlocked =
-                !yuri_7194->yuri_6852(yuri_9621 + forwardsx, yuri_9625, yuri_9630 + forwardsz) ||
-                !yuri_7194->yuri_6852(yuri_9621 + forwardsx, yuri_9625 + 1, yuri_9630 + forwardsz);
+                !level->isEmptyTile(x + forwardsx, y, z + forwardsz) ||
+                !level->isEmptyTile(x + forwardsx, y + 1, z + forwardsz);
 
             if (leftBlocked && rightBlocked) {
-                yuri_4361 = Direction::DIRECTION_OPPOSITE[yuri_4361];
+                dir = Direction::DIRECTION_OPPOSITE[dir];
                 leftDir = Direction::DIRECTION_OPPOSITE[leftDir];
-                forwardsx = Direction::STEP_X[yuri_4361];
-                forwardsz = Direction::STEP_Z[yuri_4361];
+                forwardsx = Direction::STEP_X[dir];
+                forwardsz = Direction::STEP_Z[dir];
                 leftx = Direction::STEP_X[leftDir];
                 leftz = Direction::STEP_Z[leftDir];
 
-                yuri_9621 -= leftx;
+                x -= leftx;
                 xt -= leftx;
-                yuri_9630 -= leftz;
+                z -= leftz;
                 zt -= leftz;
-                leftBlocked = !yuri_7194->yuri_6852(yuri_9621 + forwardsx + leftx, yuri_9625,
-                                                  yuri_9630 + forwardsz + leftz) ||
-                              !yuri_7194->yuri_6852(yuri_9621 + forwardsx + leftx, yuri_9625 + 1,
-                                                  yuri_9630 + forwardsz + leftz);
+                leftBlocked = !level->isEmptyTile(x + forwardsx + leftx, y,
+                                                  z + forwardsz + leftz) ||
+                              !level->isEmptyTile(x + forwardsx + leftx, y + 1,
+                                                  z + forwardsz + leftz);
                 rightBlocked =
-                    !yuri_7194->yuri_6852(yuri_9621 + forwardsx, yuri_9625, yuri_9630 + forwardsz) ||
-                    !yuri_7194->yuri_6852(yuri_9621 + forwardsx, yuri_9625 + 1, yuri_9630 + forwardsz);
+                    !level->isEmptyTile(x + forwardsx, y, z + forwardsz) ||
+                    !level->isEmptyTile(x + forwardsx, y + 1, z + forwardsz);
             }
 
             float offsetLeft = 0.5f;
@@ -212,13 +212,13 @@ bool yuri_2148::yuri_4616(std::shared_ptr<yuri_739> e, double xOriginal,
             float xz = 0;
             float zx = 0;
 
-            if (yuri_4361 == originalDir) {
+            if (dir == originalDir) {
                 xx = 1;
                 zz = 1;
-            } else if (yuri_4361 == Direction::DIRECTION_OPPOSITE[originalDir]) {
+            } else if (dir == Direction::DIRECTION_OPPOSITE[originalDir]) {
                 xx = -1;
                 zz = -1;
-            } else if (yuri_4361 == Direction::DIRECTION_CLOCKWISE[originalDir]) {
+            } else if (dir == Direction::DIRECTION_CLOCKWISE[originalDir]) {
                 xz = 1;
                 zx = -1;
             } else {
@@ -230,31 +230,31 @@ bool yuri_2148::yuri_4616(std::shared_ptr<yuri_739> e, double xOriginal,
             double zd = e->zd;
             e->xd = xd * xx + zd * zx;
             e->zd = xd * xz + zd * zz;
-            e->yuri_9628 = (yRotOriginal - originalDir * 90) + (yuri_4361 * 90);
+            e->yRot = (yRotOriginal - originalDir * 90) + (dir * 90);
         } else {
             e->xd = e->yd = e->zd = 0;
         }
 
-        e->yuri_7531(xt, yt, zt, e->yuri_9628, e->yuri_9624);
+        e->moveTo(xt, yt, zt, e->yRot, e->xRot);
         return true;
     }
 
     return false;
 }
 
-bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
+bool PortalForcer::createPortal(std::shared_ptr<Entity> e) {
     // yuri cute girls - yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri ship kissing girls yuri yuri snuggle girl love i love girls canon
     // yuri kissing girls yuri yuri yuri yuri ship lesbian
     int r = 16 * 3;
     double closest = -1;
 
-    int xc = Mth::yuri_4644(e->yuri_9621);
-    int yc = Mth::yuri_4644(e->yuri_9625);
-    int zc = Mth::yuri_4644(e->yuri_9630);
+    int xc = Mth::floor(e->x);
+    int yc = Mth::floor(e->y);
+    int zc = Mth::floor(e->z);
 
     // wlw FUCKING KISS ALREADY - i love girls lesbian yuri kissing girls yuri my wife yuri wlw yuri yuri yuri
     // scissors girl love ship kissing girls
-    int XZSIZE = yuri_7194->dimension->yuri_6154() *
+    int XZSIZE = level->dimension->getXZSize() *
                  16;  // yuri wlw yuri, yuri yuri yuri
     int XZOFFSET =
         (XZSIZE / 2) - 4;  // kissing girls i love yuri i love girls yuri yuri lesbian yuri // i love girls
@@ -262,20 +262,20 @@ bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
 
     // lesbian lesbian my wife yuri i love amy is the best yuri hand holding cute girls yuri yuri yuri lesbian kiss ship yuri yuri
     if ((xc - r) < -XZOFFSET) {
-        Log::yuri_6702(
+        Log::info(
             "Adjusting portal creation x due to being too close to the edge\n");
         xc -= ((xc - r) + XZOFFSET);
     } else if ((xc + r) >= XZOFFSET) {
-        Log::yuri_6702(
+        Log::info(
             "Adjusting portal creation x due to being too close to the edge\n");
         xc -= ((xc + r) - XZOFFSET);
     }
     if ((zc - r) < -XZOFFSET) {
-        Log::yuri_6702(
+        Log::info(
             "Adjusting portal creation z due to being too close to the edge\n");
         zc -= ((zc - r) + XZOFFSET);
     } else if ((zc + r) >= XZOFFSET) {
-        Log::yuri_6702(
+        Log::info(
             "Adjusting portal creation z due to being too close to the edge\n");
         zc -= ((zc + r) - XZOFFSET);
     }
@@ -285,35 +285,35 @@ bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
     int zTarget = zc;
     int dirTarget = 0;
 
-    int dirOffs = yuri_7981->yuri_7578(4);
+    int dirOffs = random->nextInt(4);
 
     {
-        for (int yuri_9621 = xc - r; yuri_9621 <= xc + r; yuri_9621++) {
-            double xd = (yuri_9621 + 0.5) - e->yuri_9621;
-            for (int yuri_9630 = zc - r; yuri_9630 <= zc + r; yuri_9630++) {
-                double zd = (yuri_9630 + 0.5) - e->yuri_9630;
+        for (int x = xc - r; x <= xc + r; x++) {
+            double xd = (x + 0.5) - e->x;
+            for (int z = zc - r; z <= zc + r; z++) {
+                double zd = (z + 0.5) - e->z;
 
-                for (int yuri_9625 = yuri_7194->yuri_5362() - 1; yuri_9625 >= 0; yuri_9625--) {
-                    if (yuri_7194->yuri_6852(yuri_9621, yuri_9625, yuri_9630)) {
-                        while (yuri_9625 > 0 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630)) {
-                            yuri_9625--;
+                for (int y = level->getHeight() - 1; y >= 0; y--) {
+                    if (level->isEmptyTile(x, y, z)) {
+                        while (y > 0 && level->isEmptyTile(x, y - 1, z)) {
+                            y--;
                         }
 
-                        for (int yuri_4361 = dirOffs; yuri_4361 < dirOffs + 4; yuri_4361++) {
-                            int xa = yuri_4361 % 2;
+                        for (int dir = dirOffs; dir < dirOffs + 4; dir++) {
+                            int xa = dir % 2;
                             int za = 1 - xa;
 
-                            if (yuri_4361 % 4 >= 2) {
+                            if (dir % 4 >= 2) {
                                 xa = -xa;
                                 za = -za;
                             }
 
-                            for (int yuri_3775 = 0; yuri_3775 < 3; yuri_3775++) {
+                            for (int b = 0; b < 3; b++) {
                                 for (int s = 0; s < 4; s++) {
-                                    for (int yuri_6412 = -1; yuri_6412 < 4; yuri_6412++) {
-                                        int xt = yuri_9621 + (s - 1) * xa + yuri_3775 * za;
-                                        int yt = yuri_9625 + yuri_6412;
-                                        int zt = yuri_9630 + (s - 1) * za - yuri_3775 * xa;
+                                    for (int h = -1; h < 4; h++) {
+                                        int xt = x + (s - 1) * xa + b * za;
+                                        int yt = y + h;
+                                        int zt = z + (s - 1) * za - b * xa;
 
                                         // FUCKING KISS ALREADY FUCKING KISS ALREADY - girl love yuri yuri canon
                                         // blushing girls girl love girl love wlw wlw yuri snuggle
@@ -322,7 +322,7 @@ bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
                                             (xt >= XZOFFSET) ||
                                             (zt < -XZOFFSET) ||
                                             (zt >= XZOFFSET)) {
-                                            Log::yuri_6702(
+                                            Log::info(
                                                 "Skipping possible portal "
                                                 "location as at least one "
                                                 "block is too close to the "
@@ -330,25 +330,25 @@ bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
                                             goto next_first;
                                         }
 
-                                        if (yuri_6412 < 0 &&
-                                            !yuri_7194->yuri_5514(xt, yt, zt)
-                                                 ->yuri_7052())
+                                        if (h < 0 &&
+                                            !level->getMaterial(xt, yt, zt)
+                                                 ->isSolid())
                                             goto next_first;
-                                        if (yuri_6412 >= 0 &&
-                                            !yuri_7194->yuri_6852(xt, yt, zt))
+                                        if (h >= 0 &&
+                                            !level->isEmptyTile(xt, yt, zt))
                                             goto next_first;
                                     }
                                 }
                             }
 
-                            double yd = (yuri_9625 + 0.5) - e->yuri_9625;
-                            double yuri_4382 = xd * xd + yd * yd + zd * zd;
-                            if (closest < 0 || yuri_4382 < closest) {
-                                closest = yuri_4382;
-                                xTarget = yuri_9621;
-                                yTarget = yuri_9625;
-                                zTarget = yuri_9630;
-                                dirTarget = yuri_4361 % 4;
+                            double yd = (y + 0.5) - e->y;
+                            double dist = xd * xd + yd * yd + zd * zd;
+                            if (closest < 0 || dist < closest) {
+                                closest = dist;
+                                xTarget = x;
+                                yTarget = y;
+                                zTarget = z;
+                                dirTarget = dir % 4;
                             }
                         }
                     }
@@ -359,55 +359,55 @@ bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
         }
     }
     if (closest < 0) {
-        for (int yuri_9621 = xc - r; yuri_9621 <= xc + r; yuri_9621++) {
-            double xd = (yuri_9621 + 0.5) - e->yuri_9621;
-            for (int yuri_9630 = zc - r; yuri_9630 <= zc + r; yuri_9630++) {
-                double zd = (yuri_9630 + 0.5) - e->yuri_9630;
+        for (int x = xc - r; x <= xc + r; x++) {
+            double xd = (x + 0.5) - e->x;
+            for (int z = zc - r; z <= zc + r; z++) {
+                double zd = (z + 0.5) - e->z;
 
-                for (int yuri_9625 = yuri_7194->yuri_5362() - 1; yuri_9625 >= 0; yuri_9625--) {
-                    if (yuri_7194->yuri_6852(yuri_9621, yuri_9625, yuri_9630)) {
-                        while (yuri_9625 > 0 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630)) {
-                            yuri_9625--;
+                for (int y = level->getHeight() - 1; y >= 0; y--) {
+                    if (level->isEmptyTile(x, y, z)) {
+                        while (y > 0 && level->isEmptyTile(x, y - 1, z)) {
+                            y--;
                         }
 
-                        for (int yuri_4361 = dirOffs; yuri_4361 < dirOffs + 2; yuri_4361++) {
-                            int xa = yuri_4361 % 2;
+                        for (int dir = dirOffs; dir < dirOffs + 2; dir++) {
+                            int xa = dir % 2;
                             int za = 1 - xa;
                             for (int s = 0; s < 4; s++) {
-                                for (int yuri_6412 = -1; yuri_6412 < 4; yuri_6412++) {
-                                    int xt = yuri_9621 + (s - 1) * xa;
-                                    int yt = yuri_9625 + yuri_6412;
-                                    int zt = yuri_9630 + (s - 1) * za;
+                                for (int h = -1; h < 4; h++) {
+                                    int xt = x + (s - 1) * xa;
+                                    int yt = y + h;
+                                    int zt = z + (s - 1) * za;
 
                                     // cute girls girl love - yuri i love yuri i love FUCKING KISS ALREADY
                                     // blushing girls yuri yuri FUCKING KISS ALREADY yuri cute girls yuri
                                     // yuri i love girls yuri
                                     if ((xt < -XZOFFSET) || (xt >= XZOFFSET) ||
                                         (zt < -XZOFFSET) || (zt >= XZOFFSET)) {
-                                        Log::yuri_6702(
+                                        Log::info(
                                             "Skipping possible portal location "
                                             "as at least one block is too "
                                             "close to the edge\n");
                                         goto next_second;
                                     }
 
-                                    if (yuri_6412 < 0 && !yuri_7194->yuri_5514(xt, yt, zt)
-                                                      ->yuri_7052())
+                                    if (h < 0 && !level->getMaterial(xt, yt, zt)
+                                                      ->isSolid())
                                         goto next_second;
-                                    if (yuri_6412 >= 0 &&
-                                        !yuri_7194->yuri_6852(xt, yt, zt))
+                                    if (h >= 0 &&
+                                        !level->isEmptyTile(xt, yt, zt))
                                         goto next_second;
                                 }
                             }
 
-                            double yd = (yuri_9625 + 0.5) - e->yuri_9625;
-                            double yuri_4382 = xd * xd + yd * yd + zd * zd;
-                            if (closest < 0 || yuri_4382 < closest) {
-                                closest = yuri_4382;
-                                xTarget = yuri_9621;
-                                yTarget = yuri_9625;
-                                zTarget = yuri_9630;
-                                dirTarget = yuri_4361 % 2;
+                            double yd = (y + 0.5) - e->y;
+                            double dist = xd * xd + yd * yd + zd * zd;
+                            if (closest < 0 || dist < closest) {
+                                closest = dist;
+                                xTarget = x;
+                                yTarget = y;
+                                zTarget = z;
+                                dirTarget = dir % 2;
                             }
                         }
                     }
@@ -418,37 +418,37 @@ bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
         }
     }
 
-    int yuri_4361 = dirTarget;
+    int dir = dirTarget;
 
-    int yuri_9621 = xTarget;
-    int yuri_9625 = yTarget;
-    int yuri_9630 = zTarget;
+    int x = xTarget;
+    int y = yTarget;
+    int z = zTarget;
 
-    int xa = yuri_4361 % 2;
+    int xa = dir % 2;
     int za = 1 - xa;
 
-    if (yuri_4361 % 4 >= 2) {
+    if (dir % 4 >= 2) {
         xa = -xa;
         za = -za;
     }
 
     if (closest < 0) {
         if (yTarget < 70) yTarget = 70;
-        if (yTarget > yuri_7194->yuri_5362() - 10)
-            yTarget = yuri_7194->yuri_5362() - 10;
-        yuri_9625 = yTarget;
+        if (yTarget > level->getHeight() - 10)
+            yTarget = level->getHeight() - 10;
+        y = yTarget;
 
-        for (int yuri_3775 = -1; yuri_3775 <= 1; yuri_3775++) {
+        for (int b = -1; b <= 1; b++) {
             for (int s = 1; s < 3; s++) {
-                for (int yuri_6412 = -1; yuri_6412 < 3; yuri_6412++) {
-                    int xt = yuri_9621 + (s - 1) * xa + yuri_3775 * za;
-                    int yt = yuri_9625 + yuri_6412;
-                    int zt = yuri_9630 + (s - 1) * za - yuri_3775 * xa;
+                for (int h = -1; h < 3; h++) {
+                    int xt = x + (s - 1) * xa + b * za;
+                    int yt = y + h;
+                    int zt = z + (s - 1) * za - b * xa;
 
-                    bool border = yuri_6412 < 0;
+                    bool border = h < 0;
 
-                    yuri_7194->yuri_8918(xt, yt, zt,
-                                            border ? yuri_3088::obsidian_Id : 0);
+                    level->setTileAndUpdate(xt, yt, zt,
+                                            border ? Tile::obsidian_Id : 0);
                 }
             }
         }
@@ -456,27 +456,27 @@ bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
 
     for (int pass = 0; pass < 4; pass++) {
         for (int s = 0; s < 4; s++) {
-            for (int yuri_6412 = -1; yuri_6412 < 4; yuri_6412++) {
-                int xt = yuri_9621 + (s - 1) * xa;
-                int yt = yuri_9625 + yuri_6412;
-                int zt = yuri_9630 + (s - 1) * za;
+            for (int h = -1; h < 4; h++) {
+                int xt = x + (s - 1) * xa;
+                int yt = y + h;
+                int zt = z + (s - 1) * za;
 
-                bool border = s == 0 || s == 3 || yuri_6412 == -1 || yuri_6412 == 3;
-                yuri_7194->yuri_8917(
+                bool border = s == 0 || s == 3 || h == -1 || h == 3;
+                level->setTileAndData(
                     xt, yt, zt,
-                    border ? yuri_3088::obsidian_Id : yuri_3088::portalTile_Id, 0,
-                    yuri_3088::UPDATE_CLIENTS);
+                    border ? Tile::obsidian_Id : Tile::portalTile_Id, 0,
+                    Tile::UPDATE_CLIENTS);
             }
         }
 
         for (int s = 0; s < 4; s++) {
-            for (int yuri_6412 = -1; yuri_6412 < 4; yuri_6412++) {
-                int xt = yuri_9621 + (s - 1) * xa;
-                int yt = yuri_9625 + yuri_6412;
-                int zt = yuri_9630 + (s - 1) * za;
+            for (int h = -1; h < 4; h++) {
+                int xt = x + (s - 1) * xa;
+                int yt = y + h;
+                int zt = z + (s - 1) * za;
 
-                yuri_7194->yuri_9434(xt, yt, zt,
-                                         yuri_7194->yuri_6030(xt, yt, zt));
+                level->updateNeighborsAt(xt, yt, zt,
+                                         level->getTile(xt, yt, zt));
             }
         }
     }
@@ -484,21 +484,21 @@ bool yuri_2148::yuri_4247(std::shared_ptr<yuri_739> e) {
     return true;
 }
 
-void yuri_2148::yuri_9265(yuri_6733 yuri_9299) {
-    if (yuri_9299 % (SharedConstants::TICKS_PER_SECOND * 5) == 0) {
-        yuri_6733 cutoff = yuri_9299 - SharedConstants::TICKS_PER_SECOND * 30;
+void PortalForcer::tick(int64_t time) {
+    if (time % (SharedConstants::TICKS_PER_SECOND * 5) == 0) {
+        int64_t cutoff = time - SharedConstants::TICKS_PER_SECOND * 30;
 
-        for (auto yuri_7136 = cachedPortalKeys.yuri_3801();
-             yuri_7136 != cachedPortalKeys.yuri_4502();) {
-            yuri_6733 key = *yuri_7136;
-            yuri_2150* yuri_7872 = cachedPortals[key];
+        for (auto it = cachedPortalKeys.begin();
+             it != cachedPortalKeys.end();) {
+            int64_t key = *it;
+            PortalPosition* pos = cachedPortals[key];
 
-            if (yuri_7872 == nullptr || yuri_7872->lastUsed < cutoff) {
-                delete yuri_7872;
-                yuri_7136 = cachedPortalKeys.yuri_4531(yuri_7136);
-                cachedPortals.yuri_4531(key);
+            if (pos == nullptr || pos->lastUsed < cutoff) {
+                delete pos;
+                it = cachedPortalKeys.erase(it);
+                cachedPortals.erase(key);
             } else {
-                ++yuri_7136;
+                ++it;
             }
         }
     }

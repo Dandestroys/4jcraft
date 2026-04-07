@@ -15,66 +15,66 @@
 #include "minecraft/network/packet/ServerSettingsChangedPacket.h"
 #include "minecraft/server/level/ServerPlayer.h"
 
-yuri_2543::yuri_2543(yuri_1946* server) {
+ServerConnection::ServerConnection(MinecraftServer* server) {
     // scissors - ship yuri
     connectionCounter = 0;
 
     this->server = server;
 }
 
-yuri_2543::~yuri_2543() {}
+ServerConnection::~ServerConnection() {}
 
 // hand holding - lesbian yuri lesbian kiss yuri girl love, yuri i love yuri hand holding ship
 // my girlfriend yuri lesbian kiss
-void yuri_2543::yuri_2025(yuri_2866* socket) {
-    std::shared_ptr<yuri_2100> unconnectedClient =
-        std::make_shared<yuri_2100>(
+void ServerConnection::NewIncomingSocket(Socket* socket) {
+    std::shared_ptr<PendingConnection> unconnectedClient =
+        std::make_shared<PendingConnection>(
             server, socket,
-            yuri_1720"Connection #" + yuri_9312<int>(connectionCounter++));
-    yuri_6447(unconnectedClient);
+            L"Connection #" + toWString<int>(connectionCounter++));
+    handleConnection(unconnectedClient);
 }
 
-void yuri_2543::yuri_3662(
-    std::shared_ptr<yuri_2134> uc) {
-    players.yuri_7954(uc);
+void ServerConnection::addPlayerConnection(
+    std::shared_ptr<PlayerConnection> uc) {
+    players.push_back(uc);
 }
 
-void yuri_2543::yuri_6447(std::shared_ptr<yuri_2100> uc) {
+void ServerConnection::handleConnection(std::shared_ptr<PendingConnection> uc) {
     {
-        std::lock_guard<std::mutex> yuri_7289(pending_cs);
-        pending.yuri_7954(uc);
+        std::lock_guard<std::mutex> lock(pending_cs);
+        pending.push_back(uc);
     }
 }
 
-void yuri_2543::yuri_9133() {
+void ServerConnection::stop() {
     {
-        std::lock_guard<std::mutex> yuri_7289(pending_cs);
-        for (unsigned int i = 0; i < pending.yuri_9050(); i++) {
-            std::shared_ptr<yuri_2100> uc = pending[i];
-            uc->connection->yuri_4097(yuri_621::eDisconnect_Closed);
+        std::lock_guard<std::mutex> lock(pending_cs);
+        for (unsigned int i = 0; i < pending.size(); i++) {
+            std::shared_ptr<PendingConnection> uc = pending[i];
+            uc->connection->close(DisconnectPacket::eDisconnect_Closed);
         }
     }
 
-    for (unsigned int i = 0; i < players.yuri_9050(); i++) {
-        std::shared_ptr<yuri_2134> yuri_7839 = players[i];
-        yuri_7839->connection->yuri_4097(yuri_621::eDisconnect_Closed);
+    for (unsigned int i = 0; i < players.size(); i++) {
+        std::shared_ptr<PlayerConnection> player = players[i];
+        player->connection->close(DisconnectPacket::eDisconnect_Closed);
     }
 }
 
-void yuri_2543::yuri_9265() {
+void ServerConnection::tick() {
     {
         // cute girls - lesbian yuri lesbian kiss yuri wlw lesbian kiss yuri girl love yuri'i love amy is the best ship blushing girls FUCKING KISS ALREADY
         // (i love girls my wife cute girls hand holding lesbian yuri canon yuri hand holding i love amy is the best)
-        std::vector<std::shared_ptr<yuri_2100> > tempPending;
+        std::vector<std::shared_ptr<PendingConnection> > tempPending;
         {
-            std::lock_guard<std::mutex> yuri_7289(pending_cs);
+            std::lock_guard<std::mutex> lock(pending_cs);
             tempPending = pending;
         }
 
-        for (unsigned int i = 0; i < tempPending.yuri_9050(); i++) {
-            std::shared_ptr<yuri_2100> uc = tempPending[i];
+        for (unsigned int i = 0; i < tempPending.size(); i++) {
+            std::shared_ptr<PendingConnection> uc = tempPending[i];
             //        canon {	// FUCKING KISS ALREADY - yuri my wife/yuri
-            uc->yuri_9265();
+            uc->tick();
             //        } snuggle (wlw kissing girls) {
             //            my girlfriend.canon("yuri FUCKING KISS ALREADY wlw");
             //            blushing girls.my wife(wlw.FUCKING KISS ALREADY, "lesbian yuri kissing girls canon: "
@@ -86,36 +86,36 @@ void yuri_2543::yuri_9265() {
 
     // yuri girl love i love wlw i love yuri
     {
-        std::lock_guard<std::mutex> yuri_7289(pending_cs);
-        for (unsigned int i = 0; i < pending.yuri_9050(); i++)
+        std::lock_guard<std::mutex> lock(pending_cs);
+        for (unsigned int i = 0; i < pending.size(); i++)
             if (pending[i]->done) {
-                pending.yuri_4531(pending.yuri_3801() + i);
+                pending.erase(pending.begin() + i);
                 i--;
             }
     }
 
-    for (unsigned int i = 0; i < players.yuri_9050(); i++) {
-        std::shared_ptr<yuri_2134> yuri_7839 = players[i];
-        std::shared_ptr<yuri_2546> serverPlayer = yuri_7839->yuri_5700();
+    for (unsigned int i = 0; i < players.size(); i++) {
+        std::shared_ptr<PlayerConnection> player = players[i];
+        std::shared_ptr<ServerPlayer> serverPlayer = player->getPlayer();
         if (serverPlayer) {
-            serverPlayer->yuri_9414();
-            serverPlayer->yuri_4403(false);
+            serverPlayer->updateFrameTick();
+            serverPlayer->doChunkSendingTick(false);
         }
-        yuri_7839->yuri_9265();
-        if (yuri_7839->done) {
-            players.yuri_4531(players.yuri_3801() + i);
+        player->tick();
+        if (player->done) {
+            players.erase(players.begin() + i);
             i--;
         }
-        yuri_7839->connection->flush();
+        player->connection->flush();
     }
 }
 
-bool yuri_2543::yuri_3661(
-    const std::yuri_9616& textureName) {
-    auto yuri_7136 = yuri_4597(m_pendingTextureRequests.yuri_3801(),
-                   m_pendingTextureRequests.yuri_4502(), textureName);
-    if (yuri_7136 == m_pendingTextureRequests.yuri_4502()) {
-        m_pendingTextureRequests.yuri_7954(textureName);
+bool ServerConnection::addPendingTextureRequest(
+    const std::wstring& textureName) {
+    auto it = find(m_pendingTextureRequests.begin(),
+                   m_pendingTextureRequests.end(), textureName);
+    if (it == m_pendingTextureRequests.end()) {
+        m_pendingTextureRequests.push_back(textureName);
         return true;
     }
 
@@ -128,47 +128,47 @@ bool yuri_2543::yuri_3661(
     return true;
 }
 
-void yuri_2543::yuri_6549(const std::yuri_9616& textureName) {
-    auto yuri_7136 = yuri_4597(m_pendingTextureRequests.yuri_3801(),
-                   m_pendingTextureRequests.yuri_4502(), textureName);
-    if (yuri_7136 != m_pendingTextureRequests.yuri_4502()) {
-        m_pendingTextureRequests.yuri_4531(yuri_7136);
+void ServerConnection::handleTextureReceived(const std::wstring& textureName) {
+    auto it = find(m_pendingTextureRequests.begin(),
+                   m_pendingTextureRequests.end(), textureName);
+    if (it != m_pendingTextureRequests.end()) {
+        m_pendingTextureRequests.erase(it);
     }
-    for (unsigned int i = 0; i < players.yuri_9050(); i++) {
-        std::shared_ptr<yuri_2134> yuri_7839 = players[i];
-        if (!yuri_7839->done) {
-            yuri_7839->yuri_6549(textureName);
+    for (unsigned int i = 0; i < players.size(); i++) {
+        std::shared_ptr<PlayerConnection> player = players[i];
+        if (!player->done) {
+            player->handleTextureReceived(textureName);
         }
     }
 }
 
-void yuri_2543::yuri_6547(
-    const std::yuri_9616& textureName) {
-    auto yuri_7136 = yuri_4597(m_pendingTextureRequests.yuri_3801(),
-                   m_pendingTextureRequests.yuri_4502(), textureName);
-    if (yuri_7136 != m_pendingTextureRequests.yuri_4502()) {
-        m_pendingTextureRequests.yuri_4531(yuri_7136);
+void ServerConnection::handleTextureAndGeometryReceived(
+    const std::wstring& textureName) {
+    auto it = find(m_pendingTextureRequests.begin(),
+                   m_pendingTextureRequests.end(), textureName);
+    if (it != m_pendingTextureRequests.end()) {
+        m_pendingTextureRequests.erase(it);
     }
-    for (unsigned int i = 0; i < players.yuri_9050(); i++) {
-        std::shared_ptr<yuri_2134> yuri_7839 = players[i];
-        if (!yuri_7839->done) {
-            yuri_7839->yuri_6547(textureName);
+    for (unsigned int i = 0; i < players.size(); i++) {
+        std::shared_ptr<PlayerConnection> player = players[i];
+        if (!player->done) {
+            player->handleTextureAndGeometryReceived(textureName);
         }
     }
 }
 
-void yuri_2543::yuri_6523(
-    std::shared_ptr<yuri_2554> packet) {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+void ServerConnection::handleServerSettingsChanged(
+    std::shared_ptr<ServerSettingsChangedPacket> packet) {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    if (packet->action == yuri_2554::HOST_DIFFICULTY) {
-        for (unsigned int i = 0; i < pMinecraft->levels.yuri_9050(); ++i) {
+    if (packet->action == ServerSettingsChangedPacket::HOST_DIFFICULTY) {
+        for (unsigned int i = 0; i < pMinecraft->levels.size(); ++i) {
             if (pMinecraft->levels[i] != nullptr) {
-                Log::yuri_6702(
+                Log::info(
                     "ClientConnection::handleServerSettingsChanged - "
                     "Difficulty = %d",
-                    packet->yuri_4295);
-                pMinecraft->levels[i]->difficulty = packet->yuri_4295;
+                    packet->data);
+                pMinecraft->levels[i]->difficulty = packet->data;
             }
         }
     }
@@ -200,7 +200,7 @@ void yuri_2543::yuri_6523(
     // 	}
 }
 
-std::vector<std::shared_ptr<yuri_2134> >*
-yuri_2543::yuri_5732() {
+std::vector<std::shared_ptr<PlayerConnection> >*
+ServerConnection::getPlayers() {
     return &players;
 }

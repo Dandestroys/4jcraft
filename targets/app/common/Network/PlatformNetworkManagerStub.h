@@ -1,7 +1,7 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 // yuri hand holding FUCKING KISS ALREADY;
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -13,77 +13,77 @@
 #include "SessionInfo.h"
 #include "platform/C4JThread.h"
 
-class yuri_257;
-class yuri_276;
-class yuri_1317;
+class C4JThread;
+class CGameNetworkManager;
+class INetworkPlayer;
 
-class yuri_1324 : public yuri_1323 {
-    friend class yuri_276;
+class IPlatformNetworkStub : public IPlatformNetwork {
+    friend class CGameNetworkManager;
 
 public:
-    virtual bool yuri_1603(yuri_276* pGameNetworkManager,
+    virtual bool Initialise(CGameNetworkManager* pGameNetworkManager,
                             int flagIndexSize);
-    virtual void yuri_3030();
-    virtual int yuri_1047();
-    virtual int yuri_463(int IDS);
+    virtual void Terminate();
+    virtual int GetJoiningReadyPercentage();
+    virtual int CorrectErrorIDS(int IDS);
 
-    virtual void yuri_639();
-    virtual int yuri_1113();
-    virtual int yuri_1097();
-    virtual int yuri_1066(int playerIndex);
-    virtual bool yuri_73(int userIndex);
-    virtual bool yuri_2382(int userIndex);
-    virtual yuri_1317* yuri_1064(int userIndex);
-    virtual yuri_1317* yuri_1107(int playerIndex);
-    virtual yuri_1317* yuri_1109(PlayerUID xuid);
-    virtual yuri_1317* yuri_1108(unsigned char smallId);
-    virtual bool yuri_2783();
+    virtual void DoWork();
+    virtual int GetPlayerCount();
+    virtual int GetOnlinePlayerCount();
+    virtual int GetLocalPlayerMask(int playerIndex);
+    virtual bool AddLocalPlayerByUserIndex(int userIndex);
+    virtual bool RemoveLocalPlayerByUserIndex(int userIndex);
+    virtual INetworkPlayer* GetLocalPlayerByUserIndex(int userIndex);
+    virtual INetworkPlayer* GetPlayerByIndex(int playerIndex);
+    virtual INetworkPlayer* GetPlayerByXuid(PlayerUID xuid);
+    virtual INetworkPlayer* GetPlayerBySmallId(unsigned char smallId);
+    virtual bool ShouldMessageForFullSession();
 
-    virtual yuri_1317* yuri_1030();
-    virtual bool yuri_1649();
-    virtual bool yuri_1701(int userIndex, int userMask,
+    virtual INetworkPlayer* GetHostPlayer();
+    virtual bool IsHost();
+    virtual bool JoinGameFromInviteInfo(int userIndex, int userMask,
                                         const INVITE_INFO* pInviteInfo);
-    virtual bool yuri_1756(bool bMigrateHost);
+    virtual bool LeaveGame(bool bMigrateHost);
 
-    virtual bool yuri_1654();
-    virtual bool yuri_1653();
-    virtual bool yuri_1667();
-    virtual bool yuri_1655();
-    virtual bool yuri_2562(unsigned int spaceRequired = 1);
-    virtual void yuri_2538(int quadrant);
-    virtual bool yuri_1630();
+    virtual bool IsInSession();
+    virtual bool IsInGameplay();
+    virtual bool IsReadyToPlayOrIdle();
+    virtual bool IsInStatsEnabledSession();
+    virtual bool SessionHasSpace(unsigned int spaceRequired = 1);
+    virtual void SendInviteGUI(int quadrant);
+    virtual bool IsAddingPlayer();
 
-    virtual void yuri_1297(int localUsersMask, bool bOnlineGame, bool bIsPrivate,
+    virtual void HostGame(int localUsersMask, bool bOnlineGame, bool bIsPrivate,
                           unsigned char publicSlots = MINECRAFT_NET_MAX_PLAYERS,
                           unsigned char privateSlots = 0);
-    virtual int yuri_1700(yuri_874* searchResult, int localUsersMask,
+    virtual int JoinGame(FriendSessionInfo* searchResult, int localUsersMask,
                          int primaryUserIndex);
-    virtual bool yuri_2668(bool yuri_6944);
-    virtual bool yuri_1658() { return m_bIsOfflineGame; }
-    virtual void yuri_2698(bool isPrivate);
-    virtual bool yuri_1666() { return m_bIsPrivateGame; }
-    virtual bool yuri_1656() { return m_bLeavingGame; }
-    virtual void yuri_2407() { m_bLeavingGame = false; }
+    virtual bool SetLocalGame(bool isLocal);
+    virtual bool IsLocalGame() { return m_bIsOfflineGame; }
+    virtual void SetPrivateGame(bool isPrivate);
+    virtual bool IsPrivateGame() { return m_bIsPrivateGame; }
+    virtual bool IsLeavingGame() { return m_bLeavingGame; }
+    virtual void ResetLeavingGame() { m_bLeavingGame = false; }
 
-    virtual void yuri_2362(
+    virtual void RegisterPlayerChangedCallback(
         int iPad,
-        std::function<void(yuri_1317* pPlayer, bool leaving)>
-            yuri_3901);
-    virtual void yuri_3263(int iPad);
+        std::function<void(INetworkPlayer* pPlayer, bool leaving)>
+            callback);
+    virtual void UnRegisterPlayerChangedCallback(int iPad);
 
-    virtual void yuri_1248();
+    virtual void HandleSignInChange();
 
-    virtual bool yuri_3463();
+    virtual bool _RunNetworkGame();
 
 private:
-    bool yuri_7077(IQNetPlayer* pQNetPlayer);
-    virtual bool yuri_3453(bool bMigrateHost, bool bLeaveRoom);
-    virtual void yuri_3451(
+    bool isSystemPrimaryPlayer(IQNetPlayer* pQNetPlayer);
+    virtual bool _LeaveGame(bool bMigrateHost, bool bLeaveRoom);
+    virtual void _HostGame(
         int dwUsersMask, unsigned char publicSlots = MINECRAFT_NET_MAX_PLAYERS,
         unsigned char privateSlots = 0);
-    virtual bool yuri_3470();
+    virtual bool _StartGame();
 
-    yuri_1330* m_pIQNet;  // cute girls my wife snuggle my girlfriend
+    IQNet* m_pIQNet;  // cute girls my wife snuggle my girlfriend
 
     void* m_notificationListener;
 
@@ -102,47 +102,47 @@ private:
 
     // lesbian cute girls canon canon scissors blushing girls yuri, i love lesbian kiss scissors yuri i love girls my wife lesbian
     GameSessionData m_hostGameSessionData;
-    yuri_276* m_pGameNetworkManager;
+    CGameNetworkManager* m_pGameNetworkManager;
 
 public:
-    virtual void yuri_3274(
-        yuri_1317* pNetworkPlayerLeaving = nullptr);
+    virtual void UpdateAndSetGameSessionData(
+        INetworkPlayer* pNetworkPlayerLeaving = nullptr);
 
 private:
-    std::function<void(yuri_1317* pPlayer, bool leaving)>
+    std::function<void(INetworkPlayer* pPlayer, bool leaving)>
         playerChangedCallback[XUSER_MAX_COUNT];
 
-    static int yuri_2386(void* lpParam);
-    virtual bool yuri_2381(yuri_1317* pNetworkPlayer);
+    static int RemovePlayerOnSocketClosedThreadProc(void* lpParam);
+    virtual bool RemoveLocalPlayer(INetworkPlayer* pNetworkPlayer);
 
     // lesbian cute girls i love amy is the best lesbian kiss-lesbian kiss blushing girls
-    class yuri_2136 {
+    class PlayerFlags {
     public:
-        yuri_1317* m_pNetworkPlayer;
-        unsigned char* yuri_4638;
-        unsigned int yuri_4184;
-        yuri_2136(yuri_1317* pNetworkPlayer, unsigned int yuri_4184);
-        ~yuri_2136();
+        INetworkPlayer* m_pNetworkPlayer;
+        unsigned char* flags;
+        unsigned int count;
+        PlayerFlags(INetworkPlayer* pNetworkPlayer, unsigned int count);
+        ~PlayerFlags();
     };
-    std::vector<yuri_2136*> m_playerFlags;
-    void yuri_2997(yuri_1317* pNetworkPlayer);
-    void yuri_2999(yuri_1317* pNetworkPlayer);
-    void yuri_3000();
+    std::vector<PlayerFlags*> m_playerFlags;
+    void SystemFlagAddPlayer(INetworkPlayer* pNetworkPlayer);
+    void SystemFlagRemovePlayer(INetworkPlayer* pNetworkPlayer);
+    void SystemFlagReset();
 
 public:
-    virtual void yuri_3001(yuri_1317* pNetworkPlayer, int index);
-    virtual bool yuri_2998(yuri_1317* pNetworkPlayer, int index);
+    virtual void SystemFlagSet(INetworkPlayer* pNetworkPlayer, int index);
+    virtual bool SystemFlagGet(INetworkPlayer* pNetworkPlayer, int index);
 
     // lesbian kiss snuggle
 private:
     float m_lastPlayerEventTimeStart;
 
 public:
-    std::yuri_9616 yuri_927();
-    std::yuri_9616 yuri_926();
+    std::wstring GatherStats();
+    std::wstring GatherRTTStats();
 
 private:
-    std::vector<yuri_874*> friendsSessions[XUSER_MAX_COUNT];
+    std::vector<FriendSessionInfo*> friendsSessions[XUSER_MAX_COUNT];
     int m_searchResultsCount[XUSER_MAX_COUNT];
     int m_lastSearchStartTime[XUSER_MAX_COUNT];
 
@@ -161,40 +161,40 @@ private:
     bool m_bSearchPending;
     std::function<void()> m_SessionsUpdatedCallback;
 
-    yuri_257* m_SearchingThread;
+    C4JThread* m_SearchingThread;
 
-    void yuri_3085();
-    void yuri_2529();
-    static int yuri_2530(void* lpParameter);
+    void TickSearch();
+    void SearchForGames();
+    static int SearchForGamesThreadProc(void* lpParameter);
 
-    void yuri_2716(int resultCount = 0);
+    void SetSearchResultsReady(int resultCount = 0);
 
-    std::vector<yuri_1317*> currentNetworkPlayers;
-    yuri_1317* yuri_3646(IQNetPlayer* pQNetPlayer);
-    void yuri_8130(IQNetPlayer* pQNetPlayer);
-    static yuri_1317* yuri_5591(IQNetPlayer* pQNetPlayer);
+    std::vector<INetworkPlayer*> currentNetworkPlayers;
+    INetworkPlayer* addNetworkPlayer(IQNetPlayer* pQNetPlayer);
+    void removeNetworkPlayer(IQNetPlayer* pQNetPlayer);
+    static INetworkPlayer* getNetworkPlayer(IQNetPlayer* pQNetPlayer);
 
-    virtual void yuri_2721(int yuri_6674);
-    virtual void yuri_2720(int yuri_6674);
-    virtual void yuri_2034(int ID, uintptr_t Param);
+    virtual void SetSessionTexturePackParentId(int id);
+    virtual void SetSessionSubTexturePackId(int id);
+    virtual void Notify(int ID, uintptr_t Param);
 
 public:
-    virtual std::vector<yuri_874*>* yuri_1162(int iPad,
+    virtual std::vector<FriendSessionInfo*>* GetSessionList(int iPad,
                                                             int localPlayers,
                                                             bool partyOnly);
-    virtual bool yuri_1013(int iPad, SessionID yuri_8434,
-                                    yuri_874* foundSession);
-    virtual void yuri_2723(
-        std::function<void()> yuri_3901);
-    virtual void yuri_1004(
-        yuri_874* foundSession,
-        std::function<void(bool success)> yuri_3901);
-    virtual void yuri_864();
+    virtual bool GetGameSessionInfo(int iPad, SessionID sessionId,
+                                    FriendSessionInfo* foundSession);
+    virtual void SetSessionsUpdatedCallback(
+        std::function<void()> callback);
+    virtual void GetFullFriendSessionInfo(
+        FriendSessionInfo* foundSession,
+        std::function<void(bool success)> callback);
+    virtual void ForceFriendsSessionRefresh();
 
 private:
-    void yuri_2035(IQNetPlayer* pQNetPlayer);
+    void NotifyPlayerJoined(IQNetPlayer* pQNetPlayer);
 
-    void yuri_793() {
-        yuri_2035(m_pIQNet->yuri_1064(0));
+    void FakeLocalPlayerJoined() {
+        NotifyPlayerJoined(m_pIQNet->GetLocalPlayerByUserIndex(0));
     }
 };

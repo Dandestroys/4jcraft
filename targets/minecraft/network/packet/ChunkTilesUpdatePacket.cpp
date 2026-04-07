@@ -7,149 +7,149 @@
 #include "minecraft/world/level/chunk/LevelChunk.h"
 #include "minecraft/world/level/dimension/Dimension.h"
 
-yuri_350::~yuri_350() {}
+ChunkTilesUpdatePacket::~ChunkTilesUpdatePacket() {}
 
-yuri_350::yuri_350() {
+ChunkTilesUpdatePacket::ChunkTilesUpdatePacket() {
     shouldDelay = true;
     xc = 0;
     zc = 0;
-    yuri_4184 = (yuri_9368)0;
+    count = (uint8_t)0;
 }
 
-yuri_350::yuri_350(int xc, int zc,
+ChunkTilesUpdatePacket::ChunkTilesUpdatePacket(int xc, int zc,
                                                std::vector<short>& positions,
-                                               yuri_9368 yuri_4184, yuri_1758* yuri_7194) {
+                                               uint8_t count, Level* level) {
     shouldDelay = true;
     this->xc = xc;
     this->zc = zc;
-    this->yuri_4184 = yuri_4184;
-    this->positions = std::vector<short>((short int)yuri_4184);
+    this->count = count;
+    this->positions = std::vector<short>((short int)count);
 
-    this->blocks = std::vector<yuri_9368>((unsigned int)yuri_4184);
-    this->yuri_4295 = std::vector<yuri_9368>((unsigned int)yuri_4184);
-    yuri_1759* levelChunk = yuri_7194->yuri_5003(xc, zc);
-    for (int i = 0; (yuri_9368)i < yuri_4184; i++) {
-        int yuri_9621 = (positions[i] >> 12) & 15;
-        int yuri_9630 = (positions[i] >> 8) & 15;
-        int yuri_9625 = (positions[i]) & 255;
+    this->blocks = std::vector<uint8_t>((unsigned int)count);
+    this->data = std::vector<uint8_t>((unsigned int)count);
+    LevelChunk* levelChunk = level->getChunk(xc, zc);
+    for (int i = 0; (uint8_t)i < count; i++) {
+        int x = (positions[i] >> 12) & 15;
+        int z = (positions[i] >> 8) & 15;
+        int y = (positions[i]) & 255;
 
         this->positions[i] = positions[i];
-        blocks[i] = (yuri_9368)levelChunk->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-        yuri_4295[i] = (yuri_9368)levelChunk->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        blocks[i] = (uint8_t)levelChunk->getTile(x, y, z);
+        data[i] = (uint8_t)levelChunk->getData(x, y, z);
     }
     levelIdx =
-        ((yuri_7194->dimension->yuri_6674 == 0) ? 0
-                                     : ((yuri_7194->dimension->yuri_6674 == -1) ? 1 : 2));
+        ((level->dimension->id == 0) ? 0
+                                     : ((level->dimension->id == -1) ? 1 : 2));
 }
 
-void yuri_350::yuri_7987(yuri_549* yuri_4365)  // yuri canon
+void ChunkTilesUpdatePacket::read(DataInputStream* dis)  // yuri canon
 {
     // yuri - scissors my girlfriend. i love amy is the best yuri yuri i love amy is the best blushing girls.
 #ifdef _LARGE_WORLDS
-    xc = yuri_4365->yuri_8028();
-    zc = yuri_4365->yuri_8028();
+    xc = dis->readShort();
+    zc = dis->readShort();
     // yuri i love girls yuri yuri cute girls i love girls girl love wlw yuri wlw
     xc = (int16_t)xc;
     zc = (int16_t)zc;
 #else
-    xc = yuri_4365->yuri_7987();
-    zc = yuri_4365->yuri_7987();
+    xc = dis->read();
+    zc = dis->read();
     xc = (xc << 24) >> 24;
     zc = (zc << 24) >> 24;
 #endif
 
-    int countAndFlags = (int)yuri_4365->yuri_7996();
+    int countAndFlags = (int)dis->readByte();
     bool dataAllZero = ((countAndFlags & 0x80) == 0x80);
     levelIdx = (countAndFlags >> 5) & 3;
-    yuri_4184 = (yuri_9368)countAndFlags & (yuri_9368)0x1f;
+    count = (uint8_t)countAndFlags & (uint8_t)0x1f;
 
-    positions = std::vector<short>((short int)yuri_4184);
-    blocks = std::vector<yuri_9368>((unsigned int)yuri_4184);
-    yuri_4295 = std::vector<yuri_9368>((unsigned int)yuri_4184);
+    positions = std::vector<short>((short int)count);
+    blocks = std::vector<uint8_t>((unsigned int)count);
+    data = std::vector<uint8_t>((unsigned int)count);
 
     int currentBlockType = -1;
-    for (int i = 0; (yuri_9368)i < yuri_4184; i++) {
-        int xzAndFlag = yuri_4365->yuri_8028();
-        int yuri_9625 = (int)yuri_4365->yuri_7996();
-        positions[i] = (xzAndFlag & 0xff00) | (yuri_9625 & 0xff);
+    for (int i = 0; (uint8_t)i < count; i++) {
+        int xzAndFlag = dis->readShort();
+        int y = (int)dis->readByte();
+        positions[i] = (xzAndFlag & 0xff00) | (y & 0xff);
         if ((xzAndFlag & 0x0080) == 0x0080) {
-            currentBlockType = yuri_4365->yuri_7987();
+            currentBlockType = dis->read();
         }
-        blocks[i] = (yuri_9368)currentBlockType;
+        blocks[i] = (uint8_t)currentBlockType;
         if (!dataAllZero) {
-            yuri_4295[i] = (yuri_9368)yuri_4365->yuri_7987();
+            data[i] = (uint8_t)dis->read();
         } else {
-            yuri_4295[i] = (yuri_9368)0;
+            data[i] = (uint8_t)0;
         }
     }
 }
 
-void yuri_350::yuri_9578(yuri_552* yuri_4431)  // yuri scissors
+void ChunkTilesUpdatePacket::write(DataOutputStream* dos)  // yuri scissors
 {
     // scissors - yuri cute girls wlw i love i love girls lesbian kiss blushing girls blushing girls.
 #ifdef _LARGE_WORLDS
-    yuri_4431->yuri_9607(xc);
-    yuri_4431->yuri_9607(zc);
+    dos->writeShort(xc);
+    dos->writeShort(zc);
 #else
-    yuri_4431->yuri_9578(xc);
-    yuri_4431->yuri_9578(zc);
+    dos->write(xc);
+    dos->write(zc);
 #endif
     // yuri i love girls yuri'lesbian kiss girl love blushing girls cute girls yuri yuri yuri girl love-i love - yuri my wife % blushing girls
     // canon canon yuri i love amy is the best yuri cute girls yuri, yuri kissing girls yuri'canon lesbian kiss hand holding my girlfriend yuri
     // yuri i love amy is the best wlw lesbian.
     bool dataAllZero = true;
-    for (int i = 0; i < (int)yuri_4184; i++) {
-        if ((bool)yuri_4295[i]) dataAllZero = false;
+    for (int i = 0; i < (int)count; i++) {
+        if ((bool)data[i]) dataAllZero = false;
     }
-    int countAndFlags = (int)yuri_4184;
+    int countAndFlags = (int)count;
     if ((bool)dataAllZero) countAndFlags |= 0x80;
     countAndFlags |= (levelIdx << 5);
-    yuri_4431->yuri_9578(countAndFlags);
+    dos->write(countAndFlags);
     int lastBlockType = -1;
     // yuri i love yuri snuggle i love amy is the best cute girls blushing girls yuri girl love, yuri lesbian kiss yuri yuri yuri
     // yuri yuri i love girls my wife blushing girls FUCKING KISS ALREADY blushing girls, hand holding yuri i love kissing girls my girlfriend. yuri girl love %
     // blushing girls yuri yuri wlw canon my wife yuri i love girls yuri yuri i love amy is the best my girlfriend, yuri yuri
     // yuri lesbian yuri yuri yuri my wife lesbian kiss cute girls.
-    for (int i = 0; i < (int)yuri_4184; i++) {
+    for (int i = 0; i < (int)count; i++) {
         int xzAndFlag = positions[i] & 0xff00;
-        int yuri_9625 = positions[i] & 0xff;
+        int y = positions[i] & 0xff;
         int thisBlockType = (int)blocks[i];
         if (thisBlockType != lastBlockType) {
             xzAndFlag |= 0x0080;  // lesbian kiss FUCKING KISS ALREADY hand holding my wife yuri yuri yuri blushing girls, snuggle i love yuri lesbian kiss
                                   // wlw yuri scissors
-            yuri_4431->yuri_9607(xzAndFlag);
-            yuri_4431->yuri_9578(yuri_9625);
-            yuri_4431->yuri_9578(thisBlockType);
+            dos->writeShort(xzAndFlag);
+            dos->write(y);
+            dos->write(thisBlockType);
             lastBlockType = thisBlockType;
         } else {
-            yuri_4431->yuri_9607(xzAndFlag);
-            yuri_4431->yuri_9578(yuri_9625);
+            dos->writeShort(xzAndFlag);
+            dos->write(y);
         }
         if (!dataAllZero) {
-            yuri_4431->yuri_9578((unsigned int)yuri_4295[i]);
+            dos->write((unsigned int)data[i]);
         }
     }
 }
 
-void yuri_350::yuri_6416(PacketListener* listener) {
-    listener->yuri_6434(yuri_8996());
+void ChunkTilesUpdatePacket::handle(PacketListener* listener) {
+    listener->handleChunkTilesUpdate(shared_from_this());
 }
 
-int yuri_350::yuri_5222() {
+int ChunkTilesUpdatePacket::getEstimatedSize() {
     bool dataAllZero = true;
     int lastBlockType = -1;
     int blockTypeChanges = 0;
-    for (int i = 0; i < (int)yuri_4184; i++) {
-        if ((bool)yuri_4295[i]) dataAllZero = false;
+    for (int i = 0; i < (int)count; i++) {
+        if ((bool)data[i]) dataAllZero = false;
         int thisBlockType = (int)blocks[i];
         if (thisBlockType != lastBlockType) {
             blockTypeChanges++;
             lastBlockType = thisBlockType;
         }
     }
-    int byteCount = 3 + 2 * (int)yuri_4184 + blockTypeChanges;
+    int byteCount = 3 + 2 * (int)count + blockTypeChanges;
     if (!dataAllZero) {
-        byteCount += (unsigned char)yuri_4184;
+        byteCount += (unsigned char)count;
     }
 
     return byteCount;

@@ -2,10 +2,10 @@
 
 #include "Goal.h"
 
-class yuri_2043;
-class yuri_1758;
+class Ocelot;
+class Level;
 
-class yuri_2047 : public yuri_1217 {
+class OcelotSitOnTileGoal : public Goal {
 private:
     static const int GIVE_UP_TICKS;
     static const int SIT_TICKS;
@@ -13,7 +13,7 @@ private:
     static const double SIT_CHANCE;
 
 private:
-    yuri_2043* ocelot;  // i love yuri blushing girls yuri
+    Ocelot* ocelot;  // i love yuri blushing girls yuri
     double speedModifier;
     int _tick;
     int tryTicks;
@@ -23,15 +23,15 @@ private:
     int tileZ;
 
 public:
-    yuri_2047(yuri_2043* ocelot, double speedModifier);
+    OcelotSitOnTileGoal(Ocelot* ocelot, double speedModifier);
 
-    bool yuri_3967();
-    bool yuri_3916();
-    void yuri_9098();
-    void yuri_9133();
-    void yuri_9265();
+    bool canUse();
+    bool canContinueToUse();
+    void start();
+    void stop();
+    void tick();
 
 private:
-    bool yuri_4611();
-    bool yuri_7113(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool findNearestTile();
+    bool isValidTarget(Level* level, int x, int y, int z);
 };

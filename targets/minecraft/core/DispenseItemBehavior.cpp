@@ -1,9 +1,9 @@
 #include "DispenseItemBehavior.h"
 
-yuri_624* yuri_624::NOOP =
-    new yuri_2026();
+DispenseItemBehavior* DispenseItemBehavior::NOOP =
+    new NoOpDispenseItemBehavior();
 
-std::shared_ptr<yuri_1693> yuri_2026::yuri_4372(
-    BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed) {
+std::shared_ptr<ItemInstance> NoOpDispenseItemBehavior::dispense(
+    BlockSource* source, std::shared_ptr<ItemInstance> dispensed) {
     return dispensed;
 }

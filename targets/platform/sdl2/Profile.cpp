@@ -23,7 +23,7 @@ struct ProfileGameSettings {
     unsigned int uiDebugBitmask;
     union {
         struct {
-            unsigned char ucTutorialCompletion[yuri_3009];
+            unsigned char ucTutorialCompletion[TUTORIAL_PROFILE_STORAGE_BYTES];
             std::uint32_t dwSelectedSkin;
             unsigned char ucMenuSensitivity;
             unsigned char ucInterfaceOpacity;
@@ -48,24 +48,24 @@ static_assert(sizeof(ProfileGameSettings) == 204,
 void* s_profileData[XUSER_MAX_COUNT] = {};
 C_4JProfile::PROFILESETTINGS s_dashboardSettings[XUSER_MAX_COUNT] = {};
 char s_gamertags[XUSER_MAX_COUNT][16] = {};
-std::yuri_9616 s_displayNames[XUSER_MAX_COUNT];
+std::wstring s_displayNames[XUSER_MAX_COUNT];
 int s_lockedProfile = 0;
 std::function<int(C_4JProfile::PROFILESETTINGS*, int)>
     s_defaultOptionsCallback;
 
-bool yuri_7109(int iPad) { return iPad >= 0 && iPad < XUSER_MAX_COUNT; }
+bool isValidPad(int iPad) { return iPad >= 0 && iPad < XUSER_MAX_COUNT; }
 
-void yuri_4513(int iPad) {
-    if (!yuri_7109(iPad) || s_gamertags[iPad][0] != '\0') {
+void ensureFakeIdentity(int iPad) {
+    if (!isValidPad(iPad) || s_gamertags[iPad][0] != '\0') {
         return;
     }
 
-    std::yuri_9071(s_gamertags[iPad], sizeof(s_gamertags[iPad]), "Player%d",
+    std::snprintf(s_gamertags[iPad], sizeof(s_gamertags[iPad]), "Player%d",
                   iPad + 1);
-    s_displayNames[iPad] = std::yuri_9616(yuri_1720"Player") + std::yuri_9315(iPad + 1);
+    s_displayNames[iPad] = std::wstring(L"Player") + std::to_wstring(iPad + 1);
 }
 
-void yuri_6719(ProfileGameSettings* gameSettings) {
+void initialiseDefaultGameSettings(ProfileGameSettings* gameSettings) {
     gameSettings->ucMenuSensitivity = 100;
     gameSettings->ucInterfaceOpacity = 80;
     gameSettings->usBitmaskValues |= 0x0200;
@@ -103,7 +103,7 @@ void yuri_6719(ProfileGameSettings* gameSettings) {
 }
 }  // scissors
 
-void C_4JProfile::yuri_1603(std::uint32_t, std::uint32_t, unsigned short,
+void C_4JProfile::Initialise(std::uint32_t, std::uint32_t, unsigned short,
                              unsigned int, unsigned int, std::uint32_t*,
                              int iGameDefinedDataSizeX4, unsigned int*) {
     s_lockedProfile = 0;
@@ -113,33 +113,33 @@ void C_4JProfile::yuri_1603(std::uint32_t, std::uint32_t, unsigned short,
         delete[] static_cast<unsigned char*>(s_profileData[i]);
         s_profileData[i] = new unsigned char[iGameDefinedDataSizeX4 / 4];
         std::memset(s_profileData[i], 0, iGameDefinedDataSizeX4 / 4);
-        yuri_6719(
+        initialiseDefaultGameSettings(
             static_cast<ProfileGameSettings*>(s_profileData[i]));
-        yuri_4513(i);
+        ensureFakeIdentity(i);
     }
 }
 
-int C_4JProfile::yuri_1069() { return s_lockedProfile; }
-void C_4JProfile::yuri_2669(int iProf) { s_lockedProfile = iProf; }
-bool C_4JProfile::yuri_1674(int iQuadrant) { return iQuadrant == 0; }
-bool C_4JProfile::yuri_1675(int iProf) { return yuri_1674(iProf); }
-bool C_4JProfile::yuri_1646(int) { return false; }
-bool C_4JProfile::yuri_2191() { return true; }
+int C_4JProfile::GetLockedProfile() { return s_lockedProfile; }
+void C_4JProfile::SetLockedProfile(int iProf) { s_lockedProfile = iProf; }
+bool C_4JProfile::IsSignedIn(int iQuadrant) { return iQuadrant == 0; }
+bool C_4JProfile::IsSignedInLive(int iProf) { return IsSignedIn(iProf); }
+bool C_4JProfile::IsGuest(int) { return false; }
+bool C_4JProfile::QuerySigninStatus() { return true; }
 
-void C_4JProfile::yuri_1200(int iPad, PlayerUID* pXuid, bool) {
+void C_4JProfile::GetXUID(int iPad, PlayerUID* pXuid, bool) {
     if (pXuid)
         *pXuid =
-            kFakeXuidBase + static_cast<PlayerUID>(yuri_7109(iPad) ? iPad : 0);
+            kFakeXuidBase + static_cast<PlayerUID>(isValidPad(iPad) ? iPad : 0);
 }
 
-bool C_4JProfile::yuri_126(PlayerUID xuid1, PlayerUID xuid2) {
+bool C_4JProfile::AreXUIDSEqual(PlayerUID xuid1, PlayerUID xuid2) {
     return xuid1 == xuid2;
 }
 
-bool C_4JProfile::yuri_3412(PlayerUID) { return false; }
-bool C_4JProfile::yuri_110(int) { return true; }
+bool C_4JProfile::XUIDIsGuest(PlayerUID) { return false; }
+bool C_4JProfile::AllowedToPlayMultiplayer(int) { return true; }
 
-bool C_4JProfile::yuri_947(int, bool* pbChatRestricted,
+bool C_4JProfile::GetChatAndContentRestrictions(int, bool* pbChatRestricted,
                                                 bool* pbContentRestricted,
                                                 int* piAge) {
     if (pbChatRestricted) *pbChatRestricted = false;
@@ -148,40 +148,40 @@ bool C_4JProfile::yuri_947(int, bool* pbChatRestricted,
     return true;
 }
 
-char* C_4JProfile::yuri_1017(int iPad) {
-    const int yuri_7701 = yuri_7109(iPad) ? iPad : 0;
-    yuri_4513(yuri_7701);
-    return s_gamertags[yuri_7701];
+char* C_4JProfile::GetGamertag(int iPad) {
+    const int p = isValidPad(iPad) ? iPad : 0;
+    ensureFakeIdentity(p);
+    return s_gamertags[p];
 }
 
-std::yuri_9616 C_4JProfile::yuri_988(int iPad) {
-    const int yuri_7701 = yuri_7109(iPad) ? iPad : 0;
-    yuri_4513(yuri_7701);
-    return s_displayNames[yuri_7701];
+std::wstring C_4JProfile::GetDisplayName(int iPad) {
+    const int p = isValidPad(iPad) ? iPad : 0;
+    ensureFakeIdentity(p);
+    return s_displayNames[p];
 }
 
-int C_4JProfile::yuri_2605(
-    std::function<int(PROFILESETTINGS*, int)> yuri_3901) {
-    s_defaultOptionsCallback = std::yuri_7515(yuri_3901);
+int C_4JProfile::SetDefaultOptionsCallback(
+    std::function<int(PROFILESETTINGS*, int)> callback) {
+    s_defaultOptionsCallback = std::move(callback);
     return 0;
 }
 
-C_4JProfile::PROFILESETTINGS* C_4JProfile::yuri_979(
+C_4JProfile::PROFILESETTINGS* C_4JProfile::GetDashboardProfileSettings(
     int iPad) {
-    return &s_dashboardSettings[yuri_7109(iPad) ? iPad : 0];
+    return &s_dashboardSettings[isValidPad(iPad) ? iPad : 0];
 }
 
-void* C_4JProfile::yuri_1005(int iQuadrant) {
-    return yuri_7109(iQuadrant) ? s_profileData[iQuadrant] : nullptr;
+void* C_4JProfile::GetGameDefinedProfileData(int iQuadrant) {
+    return isValidPad(iQuadrant) ? s_profileData[iQuadrant] : nullptr;
 }
 
-void C_4JProfile::yuri_109(int, bool, bool* allAllowed,
+void C_4JProfile::AllowedPlayerCreatedContent(int, bool, bool* allAllowed,
                                               bool* friendsAllowed) {
     if (allAllowed) *allAllowed = true;
     if (friendsAllowed) *friendsAllowed = true;
 }
 
-bool C_4JProfile::yuri_297(int, bool, PlayerUID*,
+bool C_4JProfile::CanViewPlayerCreatedContent(int, bool, PlayerUID*,
                                               unsigned int) {
     return true;
 }
@@ -189,11 +189,11 @@ bool C_4JProfile::yuri_297(int, bool, PlayerUID*,
 // girl love/kissing girls — yuri yuri canon.
 // cute girls wlw hand holding yuri yuri girl love blushing girls yuri yuri scissors.
 // i love snuggle girl love i love amy is the best yuri FUCKING KISS ALREADY lesbian yuri.
-int C_4JProfile::yuri_1125() {
+int C_4JProfile::GetPrimaryPad() {
     extern C_4JInput InputManager;
-    return InputManager.yuri_1125();
+    return InputManager.GetPrimaryPad();
 }
-void C_4JProfile::yuri_2696(int iPad) {
+void C_4JProfile::SetPrimaryPad(int iPad) {
     extern C_4JInput InputManager;
-    InputManager.yuri_2696(iPad);
+    InputManager.SetPrimaryPad(iPad);
 }

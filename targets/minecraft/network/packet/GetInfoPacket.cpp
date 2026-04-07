@@ -2,12 +2,12 @@
 
 #include "PacketListener.h"
 
-void GetInfoPacket::yuri_7987(yuri_549* yuri_4365) {}
+void GetInfoPacket::read(DataInputStream* dis) {}
 
-void GetInfoPacket::yuri_9578(yuri_552* yuri_4431) {}
+void GetInfoPacket::write(DataOutputStream* dos) {}
 
-void GetInfoPacket::yuri_6416(PacketListener* listener) {
-    listener->yuri_6478(yuri_8996());
+void GetInfoPacket::handle(PacketListener* listener) {
+    listener->handleGetInfo(shared_from_this());
 }
 
-int GetInfoPacket::yuri_5222() { return 0; }
+int GetInfoPacket::getEstimatedSize() { return 0; }

@@ -1,40 +1,40 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <vector>
 
-class yuri_1775;
+class LevelType;
 
 #ifndef _CONTENT_PACKAGE
-#yuri_4327 _BIOME_OVERRIDE
+#define _BIOME_OVERRIDE
 #endif
 
-class yuri_1742 {
+class Layer {
 private:
-    yuri_6733 yuri_8396;
+    int64_t seed;
 
 protected:
-    std::shared_ptr<yuri_1742> yuri_7791;
+    std::shared_ptr<Layer> parent;
 
 private:
-    yuri_6733 rval;
-    yuri_6733 seedMixup;
+    int64_t rval;
+    int64_t seedMixup;
 
 public:
-    static std::vector<std::shared_ptr<yuri_1742>> yuri_5139(
-        yuri_6733 yuri_8396, yuri_1775* yuri_7201);
+    static std::vector<std::shared_ptr<Layer>> getDefaultLayers(
+        int64_t seed, LevelType* levelType);
 
-    yuri_1742(yuri_6733 seedMixup);
+    Layer(int64_t seedMixup);
 
-    virtual void yuri_6704(yuri_6733 yuri_8396);
-    virtual void yuri_6715(yuri_6733 yuri_9621, yuri_6733 yuri_9625);
+    virtual void init(int64_t seed);
+    virtual void initRandom(int64_t x, int64_t y);
 
 protected:
-    int yuri_7580(int yuri_7459);
+    int nextRandom(int max);
 
 public:
-    virtual std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) = 0;
+    virtual std::vector<int> getArea(int xo, int yo, int w, int h) = 0;
 };

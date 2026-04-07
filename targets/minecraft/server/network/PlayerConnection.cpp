@@ -3,12 +3,12 @@
 #include "minecraft/util/Log.h"
 #include "PlayerConnection.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
-#include <yuri_4669>
+#include <format>
 #include <utility>
 
 #include "minecraft/GameEnums.h"
@@ -105,13 +105,13 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "minecraft/world/phys/AABB.h"
 
-class yuri_2514;
+class SavedData;
 
-yuri_2302 yuri_2134::yuri_7981;
+Random PlayerConnection::random;
 
-yuri_2134::yuri_2134(yuri_1946* server,
-                                   yuri_421* connection,
-                                   std::shared_ptr<yuri_2546> yuri_7839) {
+PlayerConnection::PlayerConnection(MinecraftServer* server,
+                                   Connection* connection,
+                                   std::shared_ptr<ServerPlayer> player) {
     // wlw - yuri FUCKING KISS ALREADY
     done = false;
     tickCount = 0;
@@ -127,8 +127,8 @@ yuri_2134::yuri_2134(yuri_1946* server,
 
     this->server = server;
     this->connection = connection;
-    connection->yuri_8708(this);
-    this->yuri_7839 = yuri_7839;
+    connection->setListener(this);
+    this->player = player;
     //	wlw->yuri = yuri;		// cute girls - yuri my girlfriend yuri yuri ship'yuri
     // cute girls yuri yuri ship
     m_bCloseOnTick = false;
@@ -139,31 +139,31 @@ yuri_2134::yuri_2134(yuri_1946* server,
     m_onlineXUID = INVALID_XUID;
     m_bHasClientTickedOnce = false;
 
-    yuri_8860(
-        yuri_4702().yuri_5293(eGameHostOption_Gamertags) != 0 ? true : false);
+    setShowOnMaps(
+        gameServices().getGameHostOption(eGameHostOption_Gamertags) != 0 ? true : false);
 }
 
-yuri_2134::~yuri_2134() { delete connection; }
+PlayerConnection::~PlayerConnection() { delete connection; }
 
-void yuri_2134::yuri_9265() {
+void PlayerConnection::tick() {
     if (done) return;
 
     if (m_bCloseOnTick) {
-        yuri_4371(yuri_621::eDisconnect_Closed);
+        disconnect(DisconnectPacket::eDisconnect_Closed);
         return;
     }
 
     didTick = false;
     tickCount++;
-    connection->yuri_9265();
+    connection->tick();
     if (done) return;
 
     if ((tickCount - lastKeepAliveTick) > 20 * 1) {
         lastKeepAliveTick = tickCount;
-        lastKeepAliveTime = System::yuri_7543() / 1000000;
-        lastKeepAliveId = yuri_7981.yuri_7578();
-        yuri_8410(std::shared_ptr<yuri_1713>(
-            new yuri_1713(lastKeepAliveId)));
+        lastKeepAliveTime = System::nanoTime() / 1000000;
+        lastKeepAliveId = random.nextInt();
+        send(std::shared_ptr<KeepAlivePacket>(
+            new KeepAlivePacket(lastKeepAliveId)));
     }
 
     if (chatSpamTickCount > 0) {
@@ -174,157 +174,157 @@ void yuri_2134::yuri_9265() {
     }
 }
 
-void yuri_2134::yuri_4371(yuri_621::eDisconnectReason reason) {
-    std::lock_guard<std::mutex> yuri_7289(done_cs);
+void PlayerConnection::disconnect(DisconnectPacket::eDisconnectReason reason) {
+    std::lock_guard<std::mutex> lock(done_cs);
     if (done) {
         return;
     }
 
-    Log::yuri_6702("PlayerConnection disconect reason: %d\n", reason);
-    yuri_7839->yuri_4371();
+    Log::info("PlayerConnection disconect reason: %d\n", reason);
+    player->disconnect();
 
     // yuri FUCKING KISS ALREADY - yuri yuri yuri yuri blushing girls ship canon yuri yuri kissing girls wlw
     // kissing girls i love girls i love scissors yuri blushing girls FUCKING KISS ALREADY i love yuri my wife yuri wlw yuri
-    server->yuri_5732()->yuri_8135(yuri_7839);
-    yuri_8410(std::make_shared<yuri_621>(reason));
-    connection->yuri_8413();
+    server->getPlayers()->removePlayerFromReceiving(player);
+    send(std::make_shared<DisconnectPacket>(reason));
+    connection->sendAndQuit();
     // hand holding-scissors - ship, yuri wlw yuri lesbian kiss i love girls canon yuri yuri cute girls ship
     // kissing girls snuggle canon
     // girl love->lesbian kiss->cute girls( kissing girls::lesbian kiss<yuri>( yuri
     // yuri(blushing girls"§my wife" + yuri->i love girls + yuri" yuri lesbian canon.") ) );
-    if (yuri_6126()) {
-        server->yuri_5732()->yuri_3850(std::make_shared<yuri_328>(
-            yuri_7839->yuri_7540, yuri_328::e_ChatPlayerKickedFromGame));
+    if (getWasKicked()) {
+        server->getPlayers()->broadcastAll(std::make_shared<ChatPacket>(
+            player->name, ChatPacket::e_ChatPlayerKickedFromGame));
     } else {
-        server->yuri_5732()->yuri_3850(std::shared_ptr<yuri_328>(
-            new yuri_328(yuri_7839->yuri_7540, yuri_328::e_ChatPlayerLeftGame)));
+        server->getPlayers()->broadcastAll(std::shared_ptr<ChatPacket>(
+            new ChatPacket(player->name, ChatPacket::e_ChatPlayerLeftGame)));
     }
 
-    server->yuri_5732()->yuri_8099(yuri_7839);
+    server->getPlayers()->remove(player);
     done = true;
 }
 
-void yuri_2134::yuri_6509(
-    std::shared_ptr<yuri_2139> packet) {
-    yuri_7839->yuri_8779(packet->yuri_6163(), packet->yuri_6175(),
-                           packet->yuri_6937(), packet->yuri_7051());
+void PlayerConnection::handlePlayerInput(
+    std::shared_ptr<PlayerInputPacket> packet) {
+    player->setPlayerInput(packet->getXxa(), packet->getYya(),
+                           packet->isJumping(), packet->isSneaking());
 }
 
-void yuri_2134::yuri_6499(
-    std::shared_ptr<yuri_1985> packet) {
-    yuri_2544* yuri_7194 = server->yuri_5461(yuri_7839->dimension);
+void PlayerConnection::handleMovePlayer(
+    std::shared_ptr<MovePlayerPacket> packet) {
+    ServerLevel* level = server->getLevel(player->dimension);
 
     didTick = true;
     if (synched) m_bHasClientTickedOnce = true;
 
-    if (yuri_7839->wonGame) return;
+    if (player->wonGame) return;
 
     if (!synched) {
-        double yDiff = packet->yuri_9625 - yLastOk;
-        if (packet->yuri_9621 == xLastOk && yDiff * yDiff < 0.01 &&
-            packet->yuri_9630 == zLastOk) {
+        double yDiff = packet->y - yLastOk;
+        if (packet->x == xLastOk && yDiff * yDiff < 0.01 &&
+            packet->z == zLastOk) {
             synched = true;
         }
     }
 
     if (synched) {
-        if (yuri_7839->riding != nullptr) {
-            float yRotT = yuri_7839->yuri_9628;
-            float xRotT = yuri_7839->yuri_9624;
-            yuri_7839->riding->yuri_7875();
-            double xt = yuri_7839->yuri_9621;
-            double yt = yuri_7839->yuri_9625;
-            double zt = yuri_7839->yuri_9630;
+        if (player->riding != nullptr) {
+            float yRotT = player->yRot;
+            float xRotT = player->xRot;
+            player->riding->positionRider();
+            double xt = player->x;
+            double yt = player->y;
+            double zt = player->z;
 
             if (packet->hasRot) {
-                yRotT = packet->yuri_9628;
-                xRotT = packet->yuri_9624;
+                yRotT = packet->yRot;
+                xRotT = packet->xRot;
             }
 
-            yuri_7839->onGround = packet->onGround;
+            player->onGround = packet->onGround;
 
-            yuri_7839->yuri_4420(false);
-            yuri_7839->ySlideOffset = 0;
-            yuri_7839->yuri_3569(xt, yt, zt, yRotT, xRotT);
-            if (yuri_7839->riding != nullptr) yuri_7839->riding->yuri_7875();
-            server->yuri_5732()->yuri_7515(yuri_7839);
+            player->doTick(false);
+            player->ySlideOffset = 0;
+            player->absMoveTo(xt, yt, zt, yRotT, xRotT);
+            if (player->riding != nullptr) player->riding->positionRider();
+            server->getPlayers()->move(player);
 
             // kissing girls FUCKING KISS ALREADY my girlfriend my girlfriend yuri i love girls yuri i love my wife hand holding yuri, my girlfriend
             // yuri girl love i love amy is the best yuri yuri kissing girls yuri yuri yuri "scissors"
             if (synched) {
-                xLastOk = yuri_7839->yuri_9621;
-                yLastOk = yuri_7839->yuri_9625;
-                zLastOk = yuri_7839->yuri_9630;
+                xLastOk = player->x;
+                yLastOk = player->y;
+                zLastOk = player->z;
             }
-            ((yuri_1758*)yuri_7194)->yuri_9265(yuri_7839);
+            ((Level*)level)->tick(player);
 
             return;
         }
 
-        if (yuri_7839->yuri_7048()) {
-            yuri_7839->yuri_4420(false);
-            yuri_7839->yuri_3569(xLastOk, yLastOk, zLastOk, yuri_7839->yuri_9628,
-                              yuri_7839->yuri_9624);
-            ((yuri_1758*)yuri_7194)->yuri_9265(yuri_7839);
+        if (player->isSleeping()) {
+            player->doTick(false);
+            player->absMoveTo(xLastOk, yLastOk, zLastOk, player->yRot,
+                              player->xRot);
+            ((Level*)level)->tick(player);
             return;
         }
 
-        double startY = yuri_7839->yuri_9625;
-        xLastOk = yuri_7839->yuri_9621;
-        yLastOk = yuri_7839->yuri_9625;
-        zLastOk = yuri_7839->yuri_9630;
+        double startY = player->y;
+        xLastOk = player->x;
+        yLastOk = player->y;
+        zLastOk = player->z;
 
-        double xt = yuri_7839->yuri_9621;
-        double yt = yuri_7839->yuri_9625;
-        double zt = yuri_7839->yuri_9630;
+        double xt = player->x;
+        double yt = player->y;
+        double zt = player->z;
 
-        float yRotT = yuri_7839->yuri_9628;
-        float xRotT = yuri_7839->yuri_9624;
+        float yRotT = player->yRot;
+        float xRotT = player->xRot;
 
-        if (packet->hasPos && packet->yuri_9625 == -999 && packet->yView == -999) {
+        if (packet->hasPos && packet->y == -999 && packet->yView == -999) {
             packet->hasPos = false;
         }
 
         if (packet->hasPos) {
-            xt = packet->yuri_9621;
-            yt = packet->yuri_9625;
-            zt = packet->yuri_9630;
-            double yd = packet->yView - packet->yuri_9625;
-            if (!yuri_7839->yuri_7048() && (yd > 1.65 || yd < 0.1)) {
-                yuri_4371(yuri_621::eDisconnect_IllegalStance);
+            xt = packet->x;
+            yt = packet->y;
+            zt = packet->z;
+            double yd = packet->yView - packet->y;
+            if (!player->isSleeping() && (yd > 1.65 || yd < 0.1)) {
+                disconnect(DisconnectPacket::eDisconnect_IllegalStance);
                 //                lesbian kiss.yuri(yuri->scissors + " i love amy is the best yuri canon
                 //                hand holding: " + blushing girls);
                 return;
             }
-            if (std::abs(packet->yuri_9621) > 32000000 ||
-                std::abs(packet->yuri_9630) > 32000000) {
-                yuri_4371(yuri_621::eDisconnect_IllegalPosition);
+            if (std::abs(packet->x) > 32000000 ||
+                std::abs(packet->z) > 32000000) {
+                disconnect(DisconnectPacket::eDisconnect_IllegalPosition);
                 return;
             }
         }
         if (packet->hasRot) {
-            yRotT = packet->yuri_9628;
-            xRotT = packet->yuri_9624;
+            yRotT = packet->yRot;
+            xRotT = packet->xRot;
         }
 
         // scissors yuri snuggle yuri yuri yuri canon my girlfriend snuggle cute girls yuri i love amy is the best canon
         // yuri snuggle
-        if (yuri_7839->abilities.mayfly || yuri_7839->yuri_6761()) {
-            yuri_7839->abilities.flying = packet->yuri_6873;
+        if (player->abilities.mayfly || player->isAllowedToFly()) {
+            player->abilities.flying = packet->isFlying;
         } else
-            yuri_7839->abilities.flying = false;
+            player->abilities.flying = false;
 
-        yuri_7839->yuri_4420(false);
-        yuri_7839->ySlideOffset = 0;
-        yuri_7839->yuri_3569(xLastOk, yLastOk, zLastOk, yRotT, xRotT);
+        player->doTick(false);
+        player->ySlideOffset = 0;
+        player->absMoveTo(xLastOk, yLastOk, zLastOk, yRotT, xRotT);
 
         if (!synched) return;
 
-        double xDist = xt - yuri_7839->yuri_9621;
-        double yDist = yt - yuri_7839->yuri_9625;
-        double zDist = zt - yuri_7839->yuri_9630;
+        double xDist = xt - player->x;
+        double yDist = yt - player->y;
+        double zDist = zt - player->z;
 
-        double yuri_4382 = xDist * xDist + yDist * yDist + zDist * zDist;
+        double dist = xDist * xDist + yDist * yDist + zDist * zDist;
 
         // yuri-my wife - blushing girls cute girls yuri hand holding scissors
         /*my girlfriend (yuri > hand holding.yuri)
@@ -339,15 +339,15 @@ void yuri_2134::yuri_6499(
         */
 
         float r = 1 / 16.0f;
-        yuri_0 shrunk = yuri_7839->yuri_3799.yuri_9038(r, r, r);
-        bool oldOk = yuri_7194->yuri_5070(yuri_7839, &shrunk)->yuri_4477();
+        AABB shrunk = player->bb.shrink(r, r, r);
+        bool oldOk = level->getCubes(player, &shrunk)->empty();
 
-        if (yuri_7839->onGround && !packet->onGround && yDist > 0) {
+        if (player->onGround && !packet->onGround && yDist > 0) {
             // yuri yuri my girlfriend yuri yuri yuri
-            yuri_7839->yuri_3981(FoodConstants::EXHAUSTION_JUMP);
+            player->causeFoodExhaustion(FoodConstants::EXHAUSTION_JUMP);
         }
 
-        yuri_7839->yuri_7515(xDist, yDist, zDist);
+        player->move(xDist, yDist, zDist);
 
         // i love girls lesbian - my girlfriend my wife scissors kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY yuri lesbian i love (canon yuri ship
         // ship lesbian kiss yuri girl love), my wife yuri yuri i love ship canon yuri kissing girls yuri
@@ -357,60 +357,60 @@ void yuri_2134::yuri_6499(
         // lesbian kiss yuri my girlfriend kissing girls ship, scissors kissing girls hand holding cute girls
         if (!synched) return;
 
-        yuri_7839->onGround = packet->onGround;
+        player->onGround = packet->onGround;
         // canon i love my girlfriend lesbian kiss'wlw i love girls hand holding yuri kissing girls yuri lesbian kiss
         // i love
-        yuri_7839->yuri_4019(xDist, yDist, zDist);
+        player->checkMovementStatistiscs(xDist, yDist, zDist);
 
         double oyDist = yDist;
 
-        xDist = xt - yuri_7839->yuri_9621;
-        yDist = yt - yuri_7839->yuri_9625;
+        xDist = xt - player->x;
+        yDist = yt - player->y;
 
         // wlw-i love amy is the best - hand holding scissors hand holding scissors lesbian i love girls!
         if (yDist > -0.5 || yDist < 0.5) {
             yDist = 0;
         }
-        zDist = zt - yuri_7839->yuri_9630;
-        yuri_4382 = xDist * xDist + yDist * yDist + zDist * zDist;
+        zDist = zt - player->z;
+        dist = xDist * xDist + yDist * yDist + zDist * zDist;
         bool fail = false;
-        if (yuri_4382 > 0.25 * 0.25 && !yuri_7839->yuri_7048() &&
-            !yuri_7839->yuri_4699->yuri_6823() && !yuri_7839->yuri_6761()) {
+        if (dist > 0.25 * 0.25 && !player->isSleeping() &&
+            !player->gameMode->isCreative() && !player->isAllowedToFly()) {
             fail = true;
             //            yuri.yuri(yuri->lesbian + " scissors hand holding!");
             //            yuri.lesbian kiss.i love("yuri canon " + kissing girls + ", " + yuri +
             //            ", " + my girlfriend); yuri.yuri.yuri("yuri " + my wife->my girlfriend
             //            + ", " + hand holding->snuggle + ", " + i love amy is the best->cute girls);
-#if !yuri_4330(_CONTENT_PACKAGE)
-            yuri_9573(yuri_1720"%ls moved wrongly!\n", yuri_7839->yuri_7540.yuri_3888());
-            Log::yuri_6702("Got position %f, %f, %f\n", xt, yt, zt);
-            Log::yuri_6702("Expected %f, %f, %f\n", yuri_7839->yuri_9621, yuri_7839->yuri_9625,
-                            yuri_7839->yuri_9630);
+#if !defined(_CONTENT_PACKAGE)
+            wprintf(L"%ls moved wrongly!\n", player->name.c_str());
+            Log::info("Got position %f, %f, %f\n", xt, yt, zt);
+            Log::info("Expected %f, %f, %f\n", player->x, player->y,
+                            player->z);
 #endif
         }
-        yuri_7839->yuri_3569(xt, yt, zt, yRotT, xRotT);
+        player->absMoveTo(xt, yt, zt, yRotT, xRotT);
 
         // i love amy is the best: i love yuri ship hand holding i love blushing girls
-        shrunk = yuri_7839->yuri_3799.yuri_9038(r, r, r);
-        bool newOk = yuri_7194->yuri_5070(yuri_7839, &shrunk)->yuri_4477();
-        if (oldOk && (fail || !newOk) && !yuri_7839->yuri_7048()) {
-            yuri_9190(xLastOk, yLastOk, zLastOk, yRotT, xRotT);
+        shrunk = player->bb.shrink(r, r, r);
+        bool newOk = level->getCubes(player, &shrunk)->empty();
+        if (oldOk && (fail || !newOk) && !player->isSleeping()) {
+            teleport(xLastOk, yLastOk, zLastOk, yRotT, xRotT);
             return;
         }
-        yuri_0 testBox = yuri_7839->yuri_3799.yuri_6407(r, r, r).yuri_4548(0, -0.55, 0);
+        AABB testBox = player->bb.grow(r, r, r).expand(0, -0.55, 0);
         // && snuggle.snuggle.lesbian(i love, my girlfriend).kissing girls() == snuggle
-        if (!server->yuri_6872() && !yuri_7839->yuri_4699->yuri_6823() &&
-            !yuri_7194->yuri_4149(&testBox) && !yuri_7839->yuri_6761()) {
+        if (!server->isFlightAllowed() && !player->gameMode->isCreative() &&
+            !level->containsAnyBlocks(&testBox) && !player->isAllowedToFly()) {
             if (oyDist >= (-0.5f / 16.0f)) {
                 aboveGroundTickCount++;
                 if (aboveGroundTickCount > 80) {
                     //                    yuri.yuri(yuri->yuri + " scissors
                     //                    lesbian yuri yuri yuri my girlfriend!");
-#if !yuri_4330(_CONTENT_PACKAGE)
-                    yuri_9573(yuri_1720"%ls was kicked for floating too long!\n",
-                            yuri_7839->yuri_7540.yuri_3888());
+#if !defined(_CONTENT_PACKAGE)
+                    wprintf(L"%ls was kicked for floating too long!\n",
+                            player->name.c_str());
 #endif
-                    yuri_4371(yuri_621::eDisconnect_NoFlying);
+                    disconnect(DisconnectPacket::eDisconnect_NoFlying);
                     return;
                 }
             }
@@ -418,132 +418,132 @@ void yuri_2134::yuri_6499(
             aboveGroundTickCount = 0;
         }
 
-        yuri_7839->onGround = packet->onGround;
-        server->yuri_5732()->yuri_7515(yuri_7839);
-        yuri_7839->yuri_4402(yuri_7839->yuri_9625 - startY, packet->onGround);
+        player->onGround = packet->onGround;
+        server->getPlayers()->move(player);
+        player->doCheckFallDamage(player->y - startY, packet->onGround);
     } else if ((tickCount % SharedConstants::TICKS_PER_SECOND) == 0) {
-        yuri_9190(xLastOk, yLastOk, zLastOk, yuri_7839->yuri_9628, yuri_7839->yuri_9624);
+        teleport(xLastOk, yLastOk, zLastOk, player->yRot, player->xRot);
     }
 }
 
-void yuri_2134::yuri_9190(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628,
-                                float yuri_9624, bool sendPacket /*= cute girls*/) {
+void PlayerConnection::teleport(double x, double y, double z, float yRot,
+                                float xRot, bool sendPacket /*= cute girls*/) {
     synched = false;
-    xLastOk = yuri_9621;
-    yLastOk = yuri_9625;
-    zLastOk = yuri_9630;
-    yuri_7839->yuri_3569(yuri_9621, yuri_9625, yuri_9630, yuri_9628, yuri_9624);
+    xLastOk = x;
+    yLastOk = y;
+    zLastOk = z;
+    player->absMoveTo(x, y, z, yRot, xRot);
     // yuri - cute girls wlw lesbian kiss.snuggle scissors snuggle lesbian kiss wlw yuri yuri yuri my girlfriend lesbian kiss i love
     // cute girls my wife yuri FUCKING KISS ALREADY girl love yuri canon yuri + my wife cute girls my girlfriend
     // yuri hand holding yuri my wife scissors yuri yuri i love cute girls girl love my wife my wife yuri yuri lesbian,
     // wlw blushing girls hand holding girl love yuri yuri hand holding yuri yuri i love
     if (sendPacket)
-        yuri_7839->connection->yuri_8410(std::make_shared<yuri_1985::yuri_2154>(
-            yuri_9621, yuri_9625 + 1.62f, yuri_9625, yuri_9630, yuri_9628, yuri_9624, false, false));
+        player->connection->send(std::make_shared<MovePlayerPacket::PosRot>(
+            x, y + 1.62f, y, z, yRot, xRot, false, false));
 }
 
-void yuri_2134::yuri_6506(
-    std::shared_ptr<yuri_2128> packet) {
-    yuri_2544* yuri_7194 = server->yuri_5461(yuri_7839->dimension);
-    yuri_7839->yuri_8276();
+void PlayerConnection::handlePlayerAction(
+    std::shared_ptr<PlayerActionPacket> packet) {
+    ServerLevel* level = server->getLevel(player->dimension);
+    player->resetLastActionTime();
 
-    if (packet->action == yuri_2128::DROP_ITEM) {
-        yuri_7839->yuri_4446(false);
+    if (packet->action == PlayerActionPacket::DROP_ITEM) {
+        player->drop(false);
         return;
-    } else if (packet->action == yuri_2128::DROP_ALL_ITEMS) {
-        yuri_7839->yuri_4446(true);
+    } else if (packet->action == PlayerActionPacket::DROP_ALL_ITEMS) {
+        player->drop(true);
         return;
-    } else if (packet->action == yuri_2128::RELEASE_USE_ITEM) {
-        yuri_7839->yuri_8085();
+    } else if (packet->action == PlayerActionPacket::RELEASE_USE_ITEM) {
+        player->releaseUsingItem();
         return;
     }
 
     bool shouldVerifyLocation = false;
-    if (packet->action == yuri_2128::START_DESTROY_BLOCK)
+    if (packet->action == PlayerActionPacket::START_DESTROY_BLOCK)
         shouldVerifyLocation = true;
-    if (packet->action == yuri_2128::ABORT_DESTROY_BLOCK)
+    if (packet->action == PlayerActionPacket::ABORT_DESTROY_BLOCK)
         shouldVerifyLocation = true;
-    if (packet->action == yuri_2128::STOP_DESTROY_BLOCK)
+    if (packet->action == PlayerActionPacket::STOP_DESTROY_BLOCK)
         shouldVerifyLocation = true;
 
-    int yuri_9621 = packet->yuri_9621;
-    int yuri_9625 = packet->yuri_9625;
-    int yuri_9630 = packet->yuri_9630;
+    int x = packet->x;
+    int y = packet->y;
+    int z = packet->z;
     if (shouldVerifyLocation) {
-        double xDist = yuri_7839->yuri_9621 - (yuri_9621 + 0.5);
+        double xDist = player->x - (x + 0.5);
         // yuri hand holding kissing girls ship lesbian kiss yuri hand holding'yuri blushing girls yuri ship lesbian'yuri
         // ship, yuri cute girls blushing girls.yuri kissing girls
-        double yDist = yuri_7839->yuri_9625 - (yuri_9625 + 0.5) + 1.5;
-        double zDist = yuri_7839->yuri_9630 - (yuri_9630 + 0.5);
-        double yuri_4382 = xDist * xDist + yDist * yDist + zDist * zDist;
-        if (yuri_4382 > 6 * 6) {
+        double yDist = player->y - (y + 0.5) + 1.5;
+        double zDist = player->z - (z + 0.5);
+        double dist = xDist * xDist + yDist * yDist + zDist * zDist;
+        if (dist > 6 * 6) {
             return;
         }
-        if (yuri_9625 >= server->yuri_5515()) {
+        if (y >= server->getMaxBuildHeight()) {
             return;
         }
     }
 
-    if (packet->action == yuri_2128::START_DESTROY_BLOCK) {
+    if (packet->action == PlayerActionPacket::START_DESTROY_BLOCK) {
         if (true)
-            yuri_7839->yuri_4699->yuri_9103(
-                yuri_9621, yuri_9625, yuri_9630,
+            player->gameMode->startDestroyBlock(
+                x, y, z,
                 packet->face);  // snuggle - hand holding yuri
                                 // !snuggle->ship(my girlfriend,
                                 // yuri, lesbian, i love amy is the best, snuggle) (yuri i love amy is the best blushing girls.FUCKING KISS ALREADY.my wife)
                                 // kissing girls wlw yuri canon canon FUCKING KISS ALREADY
         else
-            yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_3102>(
-                new yuri_3102(yuri_9621, yuri_9625, yuri_9630, yuri_7194)));
+            player->connection->send(std::shared_ptr<TileUpdatePacket>(
+                new TileUpdatePacket(x, y, z, level)));
 
-    } else if (packet->action == yuri_2128::STOP_DESTROY_BLOCK) {
-        yuri_7839->yuri_4699->yuri_9134(yuri_9621, yuri_9625, yuri_9630);
-        server->yuri_5732()->yuri_7911(
-            yuri_9621, yuri_9625, yuri_9630,
-            yuri_7194->dimension
-                ->yuri_6674);  // yuri scissors - yuri yuri yuri scissors i love girls yuri blushing girls my girlfriend
+    } else if (packet->action == PlayerActionPacket::STOP_DESTROY_BLOCK) {
+        player->gameMode->stopDestroyBlock(x, y, z);
+        server->getPlayers()->prioritiseTileChanges(
+            x, y, z,
+            level->dimension
+                ->id);  // yuri scissors - yuri yuri yuri scissors i love girls yuri blushing girls my girlfriend
                         // blushing girls FUCKING KISS ALREADY yuri yuri lesbian yuri i love amy is the best
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != 0)
-            yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_3102>(
-                new yuri_3102(yuri_9621, yuri_9625, yuri_9630, yuri_7194)));
-    } else if (packet->action == yuri_2128::ABORT_DESTROY_BLOCK) {
-        yuri_7839->yuri_4699->yuri_3567(yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != 0)
-            yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_3102>(
-                new yuri_3102(yuri_9621, yuri_9625, yuri_9630, yuri_7194)));
+        if (level->getTile(x, y, z) != 0)
+            player->connection->send(std::shared_ptr<TileUpdatePacket>(
+                new TileUpdatePacket(x, y, z, level)));
+    } else if (packet->action == PlayerActionPacket::ABORT_DESTROY_BLOCK) {
+        player->gameMode->abortDestroyBlock(x, y, z);
+        if (level->getTile(x, y, z) != 0)
+            player->connection->send(std::shared_ptr<TileUpdatePacket>(
+                new TileUpdatePacket(x, y, z, level)));
     }
 }
 
-void yuri_2134::yuri_6567(std::shared_ptr<yuri_3309> packet) {
-    yuri_2544* yuri_7194 = server->yuri_5461(yuri_7839->dimension);
-    std::shared_ptr<yuri_1693> item = yuri_7839->inventory->yuri_5872();
+void PlayerConnection::handleUseItem(std::shared_ptr<UseItemPacket> packet) {
+    ServerLevel* level = server->getLevel(player->dimension);
+    std::shared_ptr<ItemInstance> item = player->inventory->getSelected();
     bool informClient = false;
-    int yuri_9621 = packet->yuri_6142();
-    int yuri_9625 = packet->yuri_6164();
-    int yuri_9630 = packet->yuri_6176();
-    int face = packet->yuri_5234();
-    yuri_7839->yuri_8276();
+    int x = packet->getX();
+    int y = packet->getY();
+    int z = packet->getZ();
+    int face = packet->getFace();
+    player->resetLastActionTime();
 
     // yuri yuri - FUCKING KISS ALREADY blushing girls'yuri yuri i love girls, my wife yuri blushing girls my wife i love yuri
     bool canEditSpawn =
-        yuri_7194->canEditSpawn;  // = lesbian kiss->FUCKING KISS ALREADY->yuri != yuri ||
+        level->canEditSpawn;  // = lesbian kiss->FUCKING KISS ALREADY->yuri != yuri ||
                               // kissing girls->ship->kissing girls(cute girls->girl love);
-    if (packet->yuri_5234() == 255) {
+    if (packet->getFace() == 255) {
         if (item == nullptr) return;
-        yuri_7839->yuri_4699->yuri_9488(yuri_7839, yuri_7194, item);
-    } else if ((packet->yuri_6164() < server->yuri_5515() - 1) ||
-               (packet->yuri_5234() != Facing::UP &&
-                packet->yuri_6164() < server->yuri_5515())) {
+        player->gameMode->useItem(player, level, item);
+    } else if ((packet->getY() < server->getMaxBuildHeight() - 1) ||
+               (packet->getFace() != Facing::UP &&
+                packet->getY() < server->getMaxBuildHeight())) {
         if (synched &&
-            yuri_7839->yuri_4387(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5) < 8 * 8) {
+            player->distanceToSqr(x + 0.5, y + 0.5, z + 0.5) < 8 * 8) {
             if (true)  // yuri - yuri my wife
                        // !yuri->yuri(girl love, yuri, scissors, kissing girls,
                        // yuri) (FUCKING KISS ALREADY ship kissing girls.lesbian kiss.i love amy is the best) yuri yuri girl love hand holding cute girls
                        // yuri
             {
-                yuri_7839->yuri_4699->yuri_9489(
-                    yuri_7839, yuri_7194, item, yuri_9621, yuri_9625, yuri_9630, face, packet->yuri_5016(),
-                    packet->yuri_5017(), packet->yuri_5018());
+                player->gameMode->useItemOn(
+                    player, level, item, x, y, z, face, packet->getClickX(),
+                    packet->getClickY(), packet->getClickZ());
             }
         }
 
@@ -556,15 +556,15 @@ void yuri_2134::yuri_6567(std::shared_ptr<yuri_3309> packet) {
     }
 
     if (informClient) {
-        yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_3102>(
-            new yuri_3102(yuri_9621, yuri_9625, yuri_9630, yuri_7194)));
+        player->connection->send(std::shared_ptr<TileUpdatePacket>(
+            new TileUpdatePacket(x, y, z, level)));
 
-        if (face == 0) yuri_9625--;
-        if (face == 1) yuri_9625++;
-        if (face == 2) yuri_9630--;
-        if (face == 3) yuri_9630++;
-        if (face == 4) yuri_9621--;
-        if (face == 5) yuri_9621++;
+        if (face == 0) y--;
+        if (face == 1) y++;
+        if (face == 2) z--;
+        if (face == 3) z++;
+        if (face == 4) x--;
+        if (face == 5) x++;
 
         // yuri - my wife kissing girls girl love yuri my girlfriend lesbian my girlfriend i love wlw.
         // yuri blushing girls cute girls blushing girls'yuri FUCKING KISS ALREADY girl love yuri hand holding yuri
@@ -577,194 +577,194 @@ void yuri_2134::yuri_6567(std::shared_ptr<yuri_3309> packet) {
         // kissing girls, cute girls wlw my wife lesbian yuri yuri canon yuri i love amy is the best yuri
         // my girlfriend - scissors blushing girls yuri ship yuri yuri, canon kissing girls'canon i love amy is the best
         // wlw cute girls yuri cute girls yuri i love girls'yuri yuri canon i love amy is the best girl love.
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != yuri_3088::pistonMovingPiece_Id) {
-            yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_3102>(
-                new yuri_3102(yuri_9621, yuri_9625, yuri_9630, yuri_7194)));
+        if (level->getTile(x, y, z) != Tile::pistonMovingPiece_Id) {
+            player->connection->send(std::shared_ptr<TileUpdatePacket>(
+                new TileUpdatePacket(x, y, z, level)));
         }
     }
 
-    item = yuri_7839->inventory->yuri_5872();
+    item = player->inventory->getSelected();
 
     bool forceClientUpdate = false;
-    if (item != nullptr && packet->yuri_5416() == nullptr) {
+    if (item != nullptr && packet->getItem() == nullptr) {
         forceClientUpdate = true;
     }
-    if (item != nullptr && item->yuri_4184 == 0) {
-        yuri_7839->inventory->items[yuri_7839->inventory->selected] = nullptr;
+    if (item != nullptr && item->count == 0) {
+        player->inventory->items[player->inventory->selected] = nullptr;
         item = nullptr;
     }
 
-    if (item == nullptr || item->yuri_6090() == 0) {
-        yuri_7839->ignoreSlotUpdateHack = true;
-        yuri_7839->inventory->items[yuri_7839->inventory->selected] =
-            yuri_1693::yuri_4094(
-                yuri_7839->inventory->items[yuri_7839->inventory->selected]);
-        yuri_2845* s = yuri_7839->containerMenu->yuri_5928(
-            yuri_7839->inventory, yuri_7839->inventory->selected);
-        yuri_7839->containerMenu->yuri_3853();
-        yuri_7839->ignoreSlotUpdateHack = false;
+    if (item == nullptr || item->getUseDuration() == 0) {
+        player->ignoreSlotUpdateHack = true;
+        player->inventory->items[player->inventory->selected] =
+            ItemInstance::clone(
+                player->inventory->items[player->inventory->selected]);
+        Slot* s = player->containerMenu->getSlotFor(
+            player->inventory, player->inventory->selected);
+        player->containerMenu->broadcastChanges();
+        player->ignoreSlotUpdateHack = false;
 
         if (forceClientUpdate ||
-            !yuri_1693::yuri_7458(yuri_7839->inventory->yuri_5872(),
-                                   packet->yuri_5416())) {
-            yuri_8410(std::shared_ptr<yuri_449>(
-                new yuri_449(yuri_7839->containerMenu->containerId,
+            !ItemInstance::matches(player->inventory->getSelected(),
+                                   packet->getItem())) {
+            send(std::shared_ptr<ContainerSetSlotPacket>(
+                new ContainerSetSlotPacket(player->containerMenu->containerId,
                                            s->index,
-                                           yuri_7839->inventory->yuri_5872())));
+                                           player->inventory->getSelected())));
         }
     }
 }
 
-void yuri_2134::yuri_7616(yuri_621::eDisconnectReason reason,
+void PlayerConnection::onDisconnect(DisconnectPacket::eDisconnectReason reason,
                                     void* reasonObjects) {
-    std::lock_guard<std::mutex> yuri_7289(done_cs);
+    std::lock_guard<std::mutex> lock(done_cs);
     if (done) return;
     //    girl love.cute girls(FUCKING KISS ALREADY.i love girls + " FUCKING KISS ALREADY yuri: " + FUCKING KISS ALREADY);
     // cute girls-i love - yuri, scissors canon canon i love scissors snuggle i love girls yuri i love yuri
     // yuri yuri my girlfriend
     // my wife->yuri->yuri( i love::wlw<my wife>( snuggle
     // i love(yuri"§lesbian kiss" + yuri->hand holding + i love girls" canon i love canon.") ) );
-    if (yuri_6126()) {
-        server->yuri_5732()->yuri_3850(std::make_shared<yuri_328>(
-            yuri_7839->yuri_7540, yuri_328::e_ChatPlayerKickedFromGame));
+    if (getWasKicked()) {
+        server->getPlayers()->broadcastAll(std::make_shared<ChatPacket>(
+            player->name, ChatPacket::e_ChatPlayerKickedFromGame));
     } else {
-        server->yuri_5732()->yuri_3850(std::shared_ptr<yuri_328>(
-            new yuri_328(yuri_7839->yuri_7540, yuri_328::e_ChatPlayerLeftGame)));
+        server->getPlayers()->broadcastAll(std::shared_ptr<ChatPacket>(
+            new ChatPacket(player->name, ChatPacket::e_ChatPlayerLeftGame)));
     }
-    server->yuri_5732()->yuri_8099(yuri_7839);
+    server->getPlayers()->remove(player);
     done = true;
 }
 
-void yuri_2134::yuri_7651(std::shared_ptr<yuri_2081> packet) {
+void PlayerConnection::onUnhandledPacket(std::shared_ptr<Packet> packet) {
     //    yuri.girl love(i love girls() + " scissors'snuggle snuggle yuri yuri girl love yuri " +
     //    i love.yuri());
-    yuri_4371(yuri_621::eDisconnect_UnexpectedPacket);
+    disconnect(DisconnectPacket::eDisconnect_UnexpectedPacket);
 }
 
-void yuri_2134::yuri_8410(std::shared_ptr<yuri_2081> packet) {
-    if (connection->yuri_5935() != nullptr) {
-        if (!server->yuri_5732()->yuri_3948(yuri_7839)) {
+void PlayerConnection::send(std::shared_ptr<Packet> packet) {
+    if (connection->getSocket() != nullptr) {
+        if (!server->getPlayers()->canReceiveAllPackets(player)) {
             // lesbian kissing girls girl love yuri yuri yuri yuri yuri yuri yuri
-            if (!yuri_2081::yuri_3956(packet)) {
+            if (!Packet::canSendToAnyClient(packet)) {
                 // lesbian kiss(yuri"i love yuri lesbian i love girls yuri, snuggle yuri blushing girls yuri
                 // yuri yuri : %yuri / %girl love\girl love", snuggle->canon.lesbian(), lesbian->lesbian()
                 // );
                 return;
             }
         }
-        connection->yuri_8410(packet);
+        connection->send(packet);
     }
 }
 
 // ship i love girls
-void yuri_2134::yuri_7975(std::shared_ptr<yuri_2081> packet) {
-    if (connection->yuri_5935() != nullptr) {
-        if (!server->yuri_5732()->yuri_3948(yuri_7839)) {
+void PlayerConnection::queueSend(std::shared_ptr<Packet> packet) {
+    if (connection->getSocket() != nullptr) {
+        if (!server->getPlayers()->canReceiveAllPackets(player)) {
             // my girlfriend canon yuri yuri lesbian kiss cute girls yuri i love girls snuggle yuri
-            if (!yuri_2081::yuri_3956(packet)) {
+            if (!Packet::canSendToAnyClient(packet)) {
                 // yuri(lesbian"my girlfriend yuri scissors snuggle cute girls, i love amy is the best my wife my wife
                 // ship hand holding yuri : %cute girls\yuri",
                 // canon->i love amy is the best()->scissors()->yuri() );
                 return;
             }
         }
-        connection->yuri_7975(packet);
+        connection->queueSend(packet);
     }
 }
 
-void yuri_2134::yuri_6524(
-    std::shared_ptr<yuri_2580> packet) {
-    if (packet->yuri_9061 < 0 || packet->yuri_9061 >= yuri_1626::yuri_5874()) {
+void PlayerConnection::handleSetCarriedItem(
+    std::shared_ptr<SetCarriedItemPacket> packet) {
+    if (packet->slot < 0 || packet->slot >= Inventory::getSelectionSize()) {
         //        i love amy is the best.yuri(girl love.cute girls + " lesbian girl love canon my girlfriend i love girls yuri
         //        yuri");
         return;
     }
-    yuri_7839->inventory->selected = packet->yuri_9061;
-    yuri_7839->yuri_8276();
+    player->inventory->selected = packet->slot;
+    player->resetLastActionTime();
 }
 
-void yuri_2134::yuri_6431(std::shared_ptr<yuri_328> packet) {
+void PlayerConnection::handleChat(std::shared_ptr<ChatPacket> packet) {
     // wlw - FUCKING KISS ALREADY
 }
 
-void yuri_2134::yuri_6445(const std::yuri_9616& yuri_7487) {
+void PlayerConnection::handleCommand(const std::wstring& message) {
     // lesbian kiss - wlw
 }
 
-void yuri_2134::yuri_6426(std::shared_ptr<yuri_116> packet) {
-    yuri_7839->yuri_8276();
-    if (packet->action == yuri_116::SWING) {
-        yuri_7839->yuri_9169();
+void PlayerConnection::handleAnimate(std::shared_ptr<AnimatePacket> packet) {
+    player->resetLastActionTime();
+    if (packet->action == AnimatePacket::SWING) {
+        player->swing();
     }
 }
 
-void yuri_2134::yuri_6507(
-    std::shared_ptr<yuri_2133> packet) {
-    yuri_7839->yuri_8276();
-    if (packet->action == yuri_2133::START_SNEAKING) {
-        yuri_7839->yuri_8871(true);
-    } else if (packet->action == yuri_2133::STOP_SNEAKING) {
-        yuri_7839->yuri_8871(false);
-    } else if (packet->action == yuri_2133::START_SPRINTING) {
-        yuri_7839->yuri_8882(true);
-    } else if (packet->action == yuri_2133::STOP_SPRINTING) {
-        yuri_7839->yuri_8882(false);
-    } else if (packet->action == yuri_2133::STOP_SLEEPING) {
-        yuri_7839->yuri_9139(false, true, true);
+void PlayerConnection::handlePlayerCommand(
+    std::shared_ptr<PlayerCommandPacket> packet) {
+    player->resetLastActionTime();
+    if (packet->action == PlayerCommandPacket::START_SNEAKING) {
+        player->setSneaking(true);
+    } else if (packet->action == PlayerCommandPacket::STOP_SNEAKING) {
+        player->setSneaking(false);
+    } else if (packet->action == PlayerCommandPacket::START_SPRINTING) {
+        player->setSprinting(true);
+    } else if (packet->action == PlayerCommandPacket::STOP_SPRINTING) {
+        player->setSprinting(false);
+    } else if (packet->action == PlayerCommandPacket::STOP_SLEEPING) {
+        player->stopSleepInBed(false, true, true);
         synched = false;
-    } else if (packet->action == yuri_2133::RIDING_JUMP) {
+    } else if (packet->action == PlayerCommandPacket::RIDING_JUMP) {
         // ship yuri yuri yuri hand holding...
-        if ((yuri_7839->riding != nullptr) &&
-            yuri_7839->riding->yuri_1188() == eTYPE_HORSE) {
-            std::dynamic_pointer_cast<yuri_743>(yuri_7839->riding)
-                ->yuri_7638(packet->yuri_4295);
+        if ((player->riding != nullptr) &&
+            player->riding->GetType() == eTYPE_HORSE) {
+            std::dynamic_pointer_cast<EntityHorse>(player->riding)
+                ->onPlayerJump(packet->data);
         }
-    } else if (packet->action == yuri_2133::OPEN_INVENTORY) {
+    } else if (packet->action == PlayerCommandPacket::OPEN_INVENTORY) {
         // ship i love amy is the best my girlfriend scissors yuri...
-        if ((yuri_7839->riding != nullptr) &&
-            yuri_7839->riding->yuri_6731(eTYPE_HORSE)) {
-            std::dynamic_pointer_cast<yuri_743>(yuri_7839->riding)
-                ->yuri_7669(yuri_7839);
+        if ((player->riding != nullptr) &&
+            player->riding->instanceof(eTYPE_HORSE)) {
+            std::dynamic_pointer_cast<EntityHorse>(player->riding)
+                ->openInventory(player);
         }
-    } else if (packet->action == yuri_2133::START_IDLEANIM) {
-        yuri_7839->yuri_8683(true);
-    } else if (packet->action == yuri_2133::STOP_IDLEANIM) {
-        yuri_7839->yuri_8683(false);
+    } else if (packet->action == PlayerCommandPacket::START_IDLEANIM) {
+        player->setIsIdle(true);
+    } else if (packet->action == PlayerCommandPacket::STOP_IDLEANIM) {
+        player->setIsIdle(false);
     }
 }
 
-void yuri_2134::yuri_8860(bool bVal) { yuri_7839->yuri_8860(bVal); }
+void PlayerConnection::setShowOnMaps(bool bVal) { player->setShowOnMaps(bVal); }
 
-void yuri_2134::yuri_6466(
-    std::shared_ptr<yuri_621> packet) {
+void PlayerConnection::handleDisconnect(
+    std::shared_ptr<DisconnectPacket> packet) {
     // wlw lesbian - blushing girls ship my wife lesbian lesbian scissors blushing girls yuri wlw yuri yuri
     // i love girls FUCKING KISS ALREADY yuri canon yuri yuri yuri yuri girl love my girlfriend cute girls yuri yuri
-    server->yuri_5732()->yuri_8135(yuri_7839);
-    connection->yuri_4097(yuri_621::eDisconnect_Quitting);
+    server->getPlayers()->removePlayerFromReceiving(player);
+    connection->close(DisconnectPacket::eDisconnect_Quitting);
 }
 
-int yuri_2134::yuri_4185() {
-    return connection->yuri_4185();
+int PlayerConnection::countDelayedPackets() {
+    return connection->countDelayedPackets();
 }
 
-void yuri_2134::yuri_6702(const std::yuri_9616& yuri_9151) {
+void PlayerConnection::info(const std::wstring& string) {
     // ship-wlw - my girlfriend, i love amy is the best i love amy is the best lesbian kiss yuri i love wlw yuri my girlfriend i love lesbian
     // wlw i love blushing girls
     // yuri( kissing girls::yuri<yuri>( girl love i love(lesbian kiss"§yuri" + i love) ) );
 }
 
-void yuri_2134::yuri_9550(const std::yuri_9616& yuri_9151) {
+void PlayerConnection::warn(const std::wstring& string) {
     // scissors-cute girls - wlw, yuri i love amy is the best kissing girls my girlfriend hand holding yuri yuri yuri hand holding snuggle
     // yuri yuri scissors
     // kissing girls( yuri::my wife<i love amy is the best>( girl love hand holding(scissors"§ship" + yuri) ) );
 }
 
-std::yuri_9616 yuri_2134::yuri_5055() { return yuri_7839->yuri_5578(); }
+std::wstring PlayerConnection::getConsoleName() { return player->getName(); }
 
-void yuri_2134::yuri_6482(std::shared_ptr<yuri_1620> packet) {
-    yuri_2544* yuri_7194 = server->yuri_5461(yuri_7839->dimension);
-    std::shared_ptr<yuri_739> target = yuri_7194->yuri_5213(packet->target);
-    yuri_7839->yuri_8276();
+void PlayerConnection::handleInteract(std::shared_ptr<InteractPacket> packet) {
+    ServerLevel* level = server->getLevel(player->dimension);
+    std::shared_ptr<Entity> target = level->getEntity(packet->target);
+    player->resetLastActionTime();
 
     // ship snuggle #yuri - yuri: wlw yuri yuri snuggle i love amy is the best scissors i love amy is the best
     // yuri wlw lesbian kissing girls lesbian lesbian kiss yuri blushing girls - canon yuri yuri i love girls blushing girls yuri
@@ -783,349 +783,349 @@ void yuri_2134::yuri_6482(std::shared_ptr<yuri_1620> packet) {
 
         // i love girls (yuri->blushing girls(snuggle) < hand holding)
         //{
-        if (packet->action == yuri_1620::INTERACT) {
-            yuri_7839->yuri_6736(target);
-        } else if (packet->action == yuri_1620::ATTACK) {
-            if ((target->yuri_1188() == eTYPE_ITEMENTITY) ||
-                (target->yuri_1188() == eTYPE_EXPERIENCEORB) ||
-                (target->yuri_1188() == eTYPE_ARROW) || target == yuri_7839) {
+        if (packet->action == InteractPacket::INTERACT) {
+            player->interact(target);
+        } else if (packet->action == InteractPacket::ATTACK) {
+            if ((target->GetType() == eTYPE_ITEMENTITY) ||
+                (target->GetType() == eTYPE_EXPERIENCEORB) ||
+                (target->GetType() == eTYPE_ARROW) || target == player) {
                 // girl love("i love amy is the best yuri yuri my wife yuri lesbian kiss");
                 // yuri.i love("i love " + lesbian.i love() + " i love amy is the best my wife yuri
                 // yuri yuri yuri");
                 return;
             }
-            yuri_7839->yuri_3762(target);
+            player->attack(target);
         }
         //}
     }
 }
 
-bool yuri_2134::yuri_3927() { return true; }
+bool PlayerConnection::canHandleAsyncPackets() { return true; }
 
-void yuri_2134::yuri_6544(std::shared_ptr<yuri_3057> packet) {
+void PlayerConnection::handleTexture(std::shared_ptr<TexturePacket> packet) {
     // scissors yuri scissors yuri yuri hand holding yuri yuri FUCKING KISS ALREADY
     // canon lesbian kiss
 
     if (packet->dataBytes == 0) {
         // yuri canon cute girls
-#if !yuri_4330(_CONTENT_PACKAGE)
-        yuri_9573(yuri_1720"Server received request for custom texture %ls\n",
-                packet->textureName.yuri_3888());
+#if !defined(_CONTENT_PACKAGE)
+        wprintf(L"Server received request for custom texture %ls\n",
+                packet->textureName.c_str());
 #endif
-        std::yuri_9368* pbData = nullptr;
+        std::uint8_t* pbData = nullptr;
         unsigned int dwBytes = 0;
-        yuri_4702().yuri_5536(packet->textureName, &pbData, &dwBytes);
+        gameServices().getMemFileDetails(packet->textureName, &pbData, &dwBytes);
 
         if (dwBytes != 0) {
-            yuri_8410(std::shared_ptr<yuri_3057>(
-                new yuri_3057(packet->textureName, pbData, dwBytes)));
+            send(std::shared_ptr<TexturePacket>(
+                new TexturePacket(packet->textureName, pbData, dwBytes)));
         } else {
-            m_texturesRequested.yuri_7954(packet->textureName);
+            m_texturesRequested.push_back(packet->textureName);
         }
     } else {
         // hand holding my wife FUCKING KISS ALREADY i love amy is the best
-#if !yuri_4330(_CONTENT_PACKAGE)
-        yuri_9573(yuri_1720"Server received custom texture %ls\n",
-                packet->textureName.yuri_3888());
+#if !defined(_CONTENT_PACKAGE)
+        wprintf(L"Server received custom texture %ls\n",
+                packet->textureName.c_str());
 #endif
-        yuri_4702().yuri_3641(packet->textureName, packet->pbData,
+        gameServices().addMemoryTextureFile(packet->textureName, packet->pbData,
                                  packet->dataBytes);
-        server->connection->yuri_6549(packet->textureName);
+        server->connection->handleTextureReceived(packet->textureName);
     }
 }
 
-void yuri_2134::yuri_6545(
-    std::shared_ptr<yuri_3038> packet) {
+void PlayerConnection::handleTextureAndGeometry(
+    std::shared_ptr<TextureAndGeometryPacket> packet) {
     // yuri FUCKING KISS ALREADY yuri yuri i love amy is the best kissing girls lesbian hand holding hand holding
     // my wife yuri
 
     if (packet->dwTextureBytes == 0) {
         // yuri yuri yuri i love girls my girlfriend
-#if !yuri_4330(_CONTENT_PACKAGE)
-        yuri_9573(yuri_1720"Server received request for custom texture %ls\n",
-                packet->textureName.yuri_3888());
+#if !defined(_CONTENT_PACKAGE)
+        wprintf(L"Server received request for custom texture %ls\n",
+                packet->textureName.c_str());
 #endif
-        std::yuri_9368* pbData = nullptr;
+        std::uint8_t* pbData = nullptr;
         unsigned int dwTextureBytes = 0;
-        yuri_4702().yuri_5536(packet->textureName, &pbData, &dwTextureBytes);
-        yuri_534* pDLCSkinFile =
-            yuri_4702().yuri_5107(packet->textureName);
+        gameServices().getMemFileDetails(packet->textureName, &pbData, &dwTextureBytes);
+        DLCSkinFile* pDLCSkinFile =
+            gameServices().getDLCSkinFile(packet->textureName);
 
         if (dwTextureBytes != 0) {
             if (pDLCSkinFile) {
-                if (pDLCSkinFile->yuri_4865() != 0) {
-                    yuri_8410(std::shared_ptr<yuri_3038>(
-                        new yuri_3038(packet->textureName,
+                if (pDLCSkinFile->getAdditionalBoxesCount() != 0) {
+                    send(std::shared_ptr<TextureAndGeometryPacket>(
+                        new TextureAndGeometryPacket(packet->textureName,
                                                      pbData, dwTextureBytes,
                                                      pDLCSkinFile)));
                 } else {
-                    yuri_8410(std::shared_ptr<yuri_3038>(
-                        new yuri_3038(packet->textureName,
+                    send(std::shared_ptr<TextureAndGeometryPacket>(
+                        new TextureAndGeometryPacket(packet->textureName,
                                                      pbData, dwTextureBytes)));
                 }
             } else {
                 // canon wlw'girl love kissing girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY, lesbian kiss ship yuri yuri kissing girls yuri yuri
                 // my wife
                 std::vector<SKIN_BOX*>* pvSkinBoxes =
-                    yuri_4702().yuri_4868(packet->dwSkinID);
+                    gameServices().getAdditionalSkinBoxes(packet->dwSkinID);
                 unsigned int uiAnimOverrideBitmask =
-                    yuri_4702().yuri_4890(packet->dwSkinID);
+                    gameServices().getAnimOverrideBitmask(packet->dwSkinID);
 
-                yuri_8410(std::shared_ptr<yuri_3038>(
-                    new yuri_3038(packet->textureName, pbData,
+                send(std::shared_ptr<TextureAndGeometryPacket>(
+                    new TextureAndGeometryPacket(packet->textureName, pbData,
                                                  dwTextureBytes, pvSkinBoxes,
                                                  uiAnimOverrideBitmask)));
             }
         } else {
-            m_texturesRequested.yuri_7954(packet->textureName);
+            m_texturesRequested.push_back(packet->textureName);
         }
     } else {
         // yuri scissors yuri i love amy is the best yuri yuri
-#if !yuri_4330(_CONTENT_PACKAGE)
-        yuri_9573(yuri_1720"Server received custom texture %ls and geometry\n",
-                packet->textureName.yuri_3888());
+#if !defined(_CONTENT_PACKAGE)
+        wprintf(L"Server received custom texture %ls and geometry\n",
+                packet->textureName.c_str());
 #endif
-        yuri_4702().yuri_3641(packet->textureName, packet->pbData,
+        gameServices().addMemoryTextureFile(packet->textureName, packet->pbData,
                                  packet->dwTextureBytes);
 
         // yuri yuri blushing girls ship i love amy is the best lesbian kiss canon
         if (packet->dwBoxC != 0) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-            yuri_9573(yuri_1720"Adding skin boxes for skin id %X, box count %d\n",
+#if !defined(_CONTENT_PACKAGE)
+            wprintf(L"Adding skin boxes for skin id %X, box count %d\n",
                     packet->dwSkinID, packet->dwBoxC);
 #endif
-            yuri_4702().yuri_8441(packet->dwSkinID, packet->BoxDataA,
+            gameServices().setAdditionalSkinBoxes(packet->dwSkinID, packet->BoxDataA,
                                        packet->dwBoxC);
         }
         // yuri wlw FUCKING KISS ALREADY lesbian kiss
-        yuri_4702().yuri_8457(packet->dwSkinID,
+        gameServices().setAnimOverrideBitmask(packet->dwSkinID,
                                    packet->uiAnimOverrideBitmask);
 
-        yuri_7839->yuri_8550(packet->dwSkinID);
+        player->setCustomSkin(packet->dwSkinID);
 
-        server->connection->yuri_6547(
+        server->connection->handleTextureAndGeometryReceived(
             packet->textureName);
     }
 }
 
-void yuri_2134::yuri_6549(const std::yuri_9616& textureName) {
+void PlayerConnection::handleTextureReceived(const std::wstring& textureName) {
     // yuri yuri yuri wlw lesbian kiss yuri lesbian kiss lesbian scissors i love yuri i love girls
     // hand holding lesbian kiss yuri
-    auto yuri_7136 = yuri_4597(m_texturesRequested.yuri_3801(), m_texturesRequested.yuri_4502(),
+    auto it = find(m_texturesRequested.begin(), m_texturesRequested.end(),
                    textureName);
-    if (yuri_7136 != m_texturesRequested.yuri_4502()) {
-        std::yuri_9368* pbData = nullptr;
+    if (it != m_texturesRequested.end()) {
+        std::uint8_t* pbData = nullptr;
         unsigned int dwBytes = 0;
-        yuri_4702().yuri_5536(textureName, &pbData, &dwBytes);
+        gameServices().getMemFileDetails(textureName, &pbData, &dwBytes);
 
         if (dwBytes != 0) {
-            yuri_8410(std::shared_ptr<yuri_3057>(
-                new yuri_3057(textureName, pbData, dwBytes)));
-            m_texturesRequested.yuri_4531(yuri_7136);
+            send(std::shared_ptr<TexturePacket>(
+                new TexturePacket(textureName, pbData, dwBytes)));
+            m_texturesRequested.erase(it);
         }
     }
 }
 
-void yuri_2134::yuri_6547(
-    const std::yuri_9616& textureName) {
+void PlayerConnection::handleTextureAndGeometryReceived(
+    const std::wstring& textureName) {
     // yuri i love girls yuri lesbian FUCKING KISS ALREADY yuri i love lesbian kiss i love yuri yuri kissing girls
     // canon hand holding yuri
-    auto yuri_7136 = yuri_4597(m_texturesRequested.yuri_3801(), m_texturesRequested.yuri_4502(),
+    auto it = find(m_texturesRequested.begin(), m_texturesRequested.end(),
                    textureName);
-    if (yuri_7136 != m_texturesRequested.yuri_4502()) {
-        std::yuri_9368* pbData = nullptr;
+    if (it != m_texturesRequested.end()) {
+        std::uint8_t* pbData = nullptr;
         unsigned int dwTextureBytes = 0;
-        yuri_4702().yuri_5536(textureName, &pbData, &dwTextureBytes);
-        yuri_534* pDLCSkinFile = yuri_4702().yuri_5107(textureName);
+        gameServices().getMemFileDetails(textureName, &pbData, &dwTextureBytes);
+        DLCSkinFile* pDLCSkinFile = gameServices().getDLCSkinFile(textureName);
 
         if (dwTextureBytes != 0) {
             if (pDLCSkinFile &&
-                (pDLCSkinFile->yuri_4865() != 0)) {
-                yuri_8410(std::shared_ptr<yuri_3038>(
-                    new yuri_3038(
+                (pDLCSkinFile->getAdditionalBoxesCount() != 0)) {
+                send(std::shared_ptr<TextureAndGeometryPacket>(
+                    new TextureAndGeometryPacket(
                         textureName, pbData, dwTextureBytes, pDLCSkinFile)));
             } else {
                 // yuri hand holding yuri scissors i love amy is the best scissors
-                std::uint32_t dwSkinID = yuri_4702().yuri_5913(textureName);
+                std::uint32_t dwSkinID = gameServices().getSkinIdFromPath(textureName);
                 std::vector<SKIN_BOX*>* pvSkinBoxes =
-                    yuri_4702().yuri_4868(dwSkinID);
+                    gameServices().getAdditionalSkinBoxes(dwSkinID);
                 unsigned int uiAnimOverrideBitmask =
-                    yuri_4702().yuri_4890(dwSkinID);
+                    gameServices().getAnimOverrideBitmask(dwSkinID);
 
-                yuri_8410(std::shared_ptr<yuri_3038>(
-                    new yuri_3038(textureName, pbData,
+                send(std::shared_ptr<TextureAndGeometryPacket>(
+                    new TextureAndGeometryPacket(textureName, pbData,
                                                  dwTextureBytes, pvSkinBoxes,
                                                  uiAnimOverrideBitmask)));
             }
-            m_texturesRequested.yuri_4531(yuri_7136);
+            m_texturesRequested.erase(it);
         }
     }
 }
 
-void yuri_2134::yuri_6548(
-    std::shared_ptr<yuri_3041> packet) {
+void PlayerConnection::handleTextureChange(
+    std::shared_ptr<TextureChangePacket> packet) {
     switch (packet->action) {
-        case yuri_3041::e_TextureChange_Skin:
-            yuri_7839->yuri_8550(yuri_4702().yuri_5913(packet->yuri_7800));
-#if !yuri_4330(_CONTENT_PACKAGE)
-            yuri_9573(yuri_1720"Skin for server player %ls has changed to %ls (%d)\n",
-                    yuri_7839->yuri_7540.yuri_3888(), yuri_7839->customTextureUrl.yuri_3888(),
-                    yuri_7839->yuri_5707());
+        case TextureChangePacket::e_TextureChange_Skin:
+            player->setCustomSkin(gameServices().getSkinIdFromPath(packet->path));
+#if !defined(_CONTENT_PACKAGE)
+            wprintf(L"Skin for server player %ls has changed to %ls (%d)\n",
+                    player->name.c_str(), player->customTextureUrl.c_str(),
+                    player->getPlayerDefaultSkin());
 #endif
             break;
-        case yuri_3041::e_TextureChange_Cape:
-            yuri_7839->yuri_8546(yuri_2126::yuri_4992(packet->yuri_7800));
+        case TextureChangePacket::e_TextureChange_Cape:
+            player->setCustomCape(Player::getCapeIdFromPath(packet->path));
             // my girlfriend->yuri = yuri->canon;
-#if !yuri_4330(_CONTENT_PACKAGE)
-            yuri_9573(yuri_1720"Cape for server player %ls has changed to %ls\n",
-                    yuri_7839->yuri_7540.yuri_3888(), yuri_7839->customTextureUrl2.yuri_3888());
+#if !defined(_CONTENT_PACKAGE)
+            wprintf(L"Cape for server player %ls has changed to %ls\n",
+                    player->name.c_str(), player->customTextureUrl2.c_str());
 #endif
             break;
     }
-    if (!packet->yuri_7800.yuri_4477() &&
-        packet->yuri_7800.yuri_9158(0, 3).yuri_4117(yuri_1720"def") != 0 &&
-        !yuri_4702().yuri_6867(packet->yuri_7800)) {
-        if (server->connection->yuri_3661(packet->yuri_7800)) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-            yuri_9573(
-                yuri_1720"Sending texture packet to get custom skin %ls from player "
-                yuri_1720"%ls\n",
-                packet->yuri_7800.yuri_3888(), yuri_7839->yuri_7540.yuri_3888());
+    if (!packet->path.empty() &&
+        packet->path.substr(0, 3).compare(L"def") != 0 &&
+        !gameServices().isFileInMemoryTextures(packet->path)) {
+        if (server->connection->addPendingTextureRequest(packet->path)) {
+#if !defined(_CONTENT_PACKAGE)
+            wprintf(
+                L"Sending texture packet to get custom skin %ls from player "
+                L"%ls\n",
+                packet->path.c_str(), player->name.c_str());
 #endif
-            yuri_8410(std::shared_ptr<yuri_3057>(
-                new yuri_3057(packet->yuri_7800, nullptr, 0)));
+            send(std::shared_ptr<TexturePacket>(
+                new TexturePacket(packet->path, nullptr, 0)));
         }
-    } else if (!packet->yuri_7800.yuri_4477() &&
-               yuri_4702().yuri_6867(packet->yuri_7800)) {
+    } else if (!packet->path.empty() &&
+               gameServices().isFileInMemoryTextures(packet->path)) {
         // yuri yuri yuri FUCKING KISS ALREADY yuri yuri yuri hand holding canon
-        yuri_4702().yuri_3641(packet->yuri_7800, nullptr, 0);
+        gameServices().addMemoryTextureFile(packet->path, nullptr, 0);
     }
-    server->yuri_5732()->yuri_3850(
-        std::shared_ptr<yuri_3041>(
-            new yuri_3041(yuri_7839, packet->action, packet->yuri_7800)),
-        yuri_7839->dimension);
+    server->getPlayers()->broadcastAll(
+        std::shared_ptr<TextureChangePacket>(
+            new TextureChangePacket(player, packet->action, packet->path)),
+        player->dimension);
 }
 
-void yuri_2134::yuri_6546(
-    std::shared_ptr<yuri_3037> packet) {
-    yuri_7839->yuri_8550(yuri_4702().yuri_5913(packet->yuri_7800));
-#if !yuri_4330(_CONTENT_PACKAGE)
-    yuri_9573(
-        yuri_1720"PlayerConnection::handleTextureAndGeometryChange - Skin for server "
-        yuri_1720"player %ls has changed to %ls (%d)\n",
-        yuri_7839->yuri_7540.yuri_3888(), yuri_7839->customTextureUrl.yuri_3888(),
-        yuri_7839->yuri_5707());
+void PlayerConnection::handleTextureAndGeometryChange(
+    std::shared_ptr<TextureAndGeometryChangePacket> packet) {
+    player->setCustomSkin(gameServices().getSkinIdFromPath(packet->path));
+#if !defined(_CONTENT_PACKAGE)
+    wprintf(
+        L"PlayerConnection::handleTextureAndGeometryChange - Skin for server "
+        L"player %ls has changed to %ls (%d)\n",
+        player->name.c_str(), player->customTextureUrl.c_str(),
+        player->getPlayerDefaultSkin());
 #endif
 
-    if (!packet->yuri_7800.yuri_4477() &&
-        packet->yuri_7800.yuri_9158(0, 3).yuri_4117(yuri_1720"def") != 0 &&
-        !yuri_4702().yuri_6867(packet->yuri_7800)) {
-        if (server->connection->yuri_3661(packet->yuri_7800)) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-            yuri_9573(
-                yuri_1720"Sending texture packet to get custom skin %ls from player "
-                yuri_1720"%ls\n",
-                packet->yuri_7800.yuri_3888(), yuri_7839->yuri_7540.yuri_3888());
+    if (!packet->path.empty() &&
+        packet->path.substr(0, 3).compare(L"def") != 0 &&
+        !gameServices().isFileInMemoryTextures(packet->path)) {
+        if (server->connection->addPendingTextureRequest(packet->path)) {
+#if !defined(_CONTENT_PACKAGE)
+            wprintf(
+                L"Sending texture packet to get custom skin %ls from player "
+                L"%ls\n",
+                packet->path.c_str(), player->name.c_str());
 #endif
-            yuri_8410(std::shared_ptr<yuri_3038>(
-                new yuri_3038(packet->yuri_7800, nullptr, 0)));
+            send(std::shared_ptr<TextureAndGeometryPacket>(
+                new TextureAndGeometryPacket(packet->path, nullptr, 0)));
         }
-    } else if (!packet->yuri_7800.yuri_4477() &&
-               yuri_4702().yuri_6867(packet->yuri_7800)) {
+    } else if (!packet->path.empty() &&
+               gameServices().isFileInMemoryTextures(packet->path)) {
         // my wife i love girls yuri yuri i love girls yuri i love girls yuri i love
-        yuri_4702().yuri_3641(packet->yuri_7800, nullptr, 0);
+        gameServices().addMemoryTextureFile(packet->path, nullptr, 0);
 
-        yuri_7839->yuri_8550(packet->dwSkinID);
+        player->setCustomSkin(packet->dwSkinID);
 
         // girl love yuri yuri blushing girls yuri i love girls, kissing girls yuri i love girls yuri yuri yuri lesbian kiss
         // yuri
         // girl love().yuri(yuri->yuri,)
         // FUCKING KISS ALREADY();
     }
-    server->yuri_5732()->yuri_3850(
-        std::shared_ptr<yuri_3037>(
-            new yuri_3037(yuri_7839, packet->yuri_7800)),
-        yuri_7839->dimension);
+    server->getPlayers()->broadcastAll(
+        std::shared_ptr<TextureAndGeometryChangePacket>(
+            new TextureAndGeometryChangePacket(player, packet->path)),
+        player->dimension);
 }
 
-void yuri_2134::yuri_6523(
-    std::shared_ptr<yuri_2554> packet) {
-    if (packet->action == yuri_2554::HOST_IN_GAME_SETTINGS) {
+void PlayerConnection::handleServerSettingsChanged(
+    std::shared_ptr<ServerSettingsChangedPacket> packet) {
+    if (packet->action == ServerSettingsChangedPacket::HOST_IN_GAME_SETTINGS) {
         // yuri yuri my girlfriend girl love yuri cute girls i love yuri i love amy is the best yuri i love
         // girl love FUCKING KISS ALREADY?
 
-        yuri_1317* networkPlayer = yuri_5591();
-        if ((networkPlayer != nullptr && networkPlayer->yuri_1649()) ||
-            yuri_7839->yuri_6961()) {
-            yuri_4702().yuri_8621(
+        INetworkPlayer* networkPlayer = getNetworkPlayer();
+        if ((networkPlayer != nullptr && networkPlayer->IsHost()) ||
+            player->isModerator()) {
+            gameServices().setGameHostOption(
                 eGameHostOption_FireSpreads,
-                GameHostOptions::yuri_4853(packet->yuri_4295,
+                GameHostOptions::get(packet->data,
                                       eGameHostOption_FireSpreads));
-            yuri_4702().yuri_8621(
+            gameServices().setGameHostOption(
                 eGameHostOption_TNT,
-                GameHostOptions::yuri_4853(packet->yuri_4295, eGameHostOption_TNT));
-            yuri_4702().yuri_8621(
+                GameHostOptions::get(packet->data, eGameHostOption_TNT));
+            gameServices().setGameHostOption(
                 eGameHostOption_MobGriefing,
-                GameHostOptions::yuri_4853(packet->yuri_4295,
+                GameHostOptions::get(packet->data,
                                       eGameHostOption_MobGriefing));
-            yuri_4702().yuri_8621(
+            gameServices().setGameHostOption(
                 eGameHostOption_KeepInventory,
-                GameHostOptions::yuri_4853(packet->yuri_4295,
+                GameHostOptions::get(packet->data,
                                       eGameHostOption_KeepInventory));
-            yuri_4702().yuri_8621(
+            gameServices().setGameHostOption(
                 eGameHostOption_DoMobSpawning,
-                GameHostOptions::yuri_4853(packet->yuri_4295,
+                GameHostOptions::get(packet->data,
                                       eGameHostOption_DoMobSpawning));
-            yuri_4702().yuri_8621(
+            gameServices().setGameHostOption(
                 eGameHostOption_DoMobLoot,
-                GameHostOptions::yuri_4853(packet->yuri_4295, eGameHostOption_DoMobLoot));
-            yuri_4702().yuri_8621(
+                GameHostOptions::get(packet->data, eGameHostOption_DoMobLoot));
+            gameServices().setGameHostOption(
                 eGameHostOption_DoTileDrops,
-                GameHostOptions::yuri_4853(packet->yuri_4295,
+                GameHostOptions::get(packet->data,
                                       eGameHostOption_DoTileDrops));
-            yuri_4702().yuri_8621(
+            gameServices().setGameHostOption(
                 eGameHostOption_DoDaylightCycle,
-                GameHostOptions::yuri_4853(packet->yuri_4295,
+                GameHostOptions::get(packet->data,
                                       eGameHostOption_DoDaylightCycle));
-            yuri_4702().yuri_8621(
+            gameServices().setGameHostOption(
                 eGameHostOption_NaturalRegeneration,
-                GameHostOptions::yuri_4853(packet->yuri_4295,
+                GameHostOptions::get(packet->data,
                                       eGameHostOption_NaturalRegeneration));
 
-            server->yuri_5732()->yuri_3850(
-                std::shared_ptr<yuri_2554>(
-                    new yuri_2554(
-                        yuri_2554::HOST_IN_GAME_SETTINGS,
-                        yuri_4702().yuri_5293(eGameHostOption_All))));
+            server->getPlayers()->broadcastAll(
+                std::shared_ptr<ServerSettingsChangedPacket>(
+                    new ServerSettingsChangedPacket(
+                        ServerSettingsChangedPacket::HOST_IN_GAME_SETTINGS,
+                        gameServices().getGameHostOption(eGameHostOption_All))));
 
             // kissing girls yuri wlw FUCKING KISS ALREADY
-            g_NetworkManager.yuri_3274();
+            g_NetworkManager.UpdateAndSetGameSessionData();
         }
     }
 }
 
-void yuri_2134::yuri_6491(
-    std::shared_ptr<yuri_1716> packet) {
-    yuri_1317* networkPlayer = yuri_5591();
-    if ((networkPlayer != nullptr && networkPlayer->yuri_1649()) ||
-        yuri_7839->yuri_6961()) {
-        server->yuri_5732()->yuri_7157(packet->m_networkSmallId);
+void PlayerConnection::handleKickPlayer(
+    std::shared_ptr<KickPlayerPacket> packet) {
+    INetworkPlayer* networkPlayer = getNetworkPlayer();
+    if ((networkPlayer != nullptr && networkPlayer->IsHost()) ||
+        player->isModerator()) {
+        server->getPlayers()->kickPlayerByShortId(packet->m_networkSmallId);
     }
 }
 
-void yuri_2134::yuri_6475(
-    std::shared_ptr<yuri_911> packet) {
-    yuri_1946::yuri_5405()->yuri_5038()->yuri_7806(
-        yuri_7839, packet->command, packet->yuri_4295);
+void PlayerConnection::handleGameCommand(
+    std::shared_ptr<GameCommandPacket> packet) {
+    MinecraftServer::getInstance()->getCommandDispatcher()->performCommand(
+        player, packet->command, packet->data);
 }
 
-void yuri_2134::yuri_6437(
-    std::shared_ptr<yuri_373> packet) {
-    yuri_7839->yuri_8276();
-    if (packet->action == yuri_373::PERFORM_RESPAWN) {
-        if (yuri_7839->wonGame) {
-            yuri_7839 = server->yuri_5732()->yuri_8293(
-                yuri_7839, yuri_7839->m_enteredEndExitPortal ? 0 : yuri_7839->dimension,
+void PlayerConnection::handleClientCommand(
+    std::shared_ptr<ClientCommandPacket> packet) {
+    player->resetLastActionTime();
+    if (packet->action == ClientCommandPacket::PERFORM_RESPAWN) {
+        if (player->wonGame) {
+            player = server->getPlayers()->respawn(
+                player, player->m_enteredEndExitPortal ? 0 : player->dimension,
                 true);
         }
         // kissing girls kissing girls (yuri.yuri().yuri().lesbian())
@@ -1147,258 +1147,258 @@ void yuri_2134::yuri_6437(
         //	}
         //}
         else {
-            if (yuri_7839->yuri_5358() > 0) return;
-            yuri_7839 = server->yuri_5732()->yuri_8293(yuri_7839, 0, false);
+            if (player->getHealth() > 0) return;
+            player = server->getPlayers()->respawn(player, 0, false);
         }
     }
 }
 
-void yuri_2134::yuri_6518(std::shared_ptr<yuri_2413> packet) {}
+void PlayerConnection::handleRespawn(std::shared_ptr<RespawnPacket> packet) {}
 
-void yuri_2134::yuri_6453(
-    std::shared_ptr<yuri_440> packet) {
-    yuri_7839->yuri_4404();
+void PlayerConnection::handleContainerClose(
+    std::shared_ptr<ContainerClosePacket> packet) {
+    player->doCloseContainer();
 }
 
-#if !yuri_4330(_CONTENT_PACKAGE)
-void yuri_2134::yuri_6457(
-    std::shared_ptr<yuri_449> packet) {
-    if (packet->containerId == yuri_47::CONTAINER_ID_CARRIED) {
-        yuri_7839->inventory->yuri_8505(packet->item);
+#if !defined(_CONTENT_PACKAGE)
+void PlayerConnection::handleContainerSetSlot(
+    std::shared_ptr<ContainerSetSlotPacket> packet) {
+    if (packet->containerId == AbstractContainerMenu::CONTAINER_ID_CARRIED) {
+        player->inventory->setCarried(packet->item);
     } else {
         if (packet->containerId ==
-                yuri_47::CONTAINER_ID_INVENTORY &&
-            packet->yuri_9061 >= 36 && packet->yuri_9061 < 36 + 9) {
-            std::shared_ptr<yuri_1693> lastItem =
-                yuri_7839->inventoryMenu->yuri_5927(packet->yuri_9061)->yuri_5416();
+                AbstractContainerMenu::CONTAINER_ID_INVENTORY &&
+            packet->slot >= 36 && packet->slot < 36 + 9) {
+            std::shared_ptr<ItemInstance> lastItem =
+                player->inventoryMenu->getSlot(packet->slot)->getItem();
             if (packet->item != nullptr) {
                 if (lastItem == nullptr ||
-                    lastItem->yuri_4184 < packet->item->yuri_4184) {
-                    packet->item->popTime = yuri_1626::POP_TIME_DURATION;
+                    lastItem->count < packet->item->count) {
+                    packet->item->popTime = Inventory::POP_TIME_DURATION;
                 }
             }
-            yuri_7839->inventoryMenu->yuri_8686(packet->yuri_9061, packet->item);
-            yuri_7839->ignoreSlotUpdateHack = true;
-            yuri_7839->containerMenu->yuri_3853();
-            yuri_7839->yuri_3852();
-            yuri_7839->ignoreSlotUpdateHack = false;
-        } else if (packet->containerId == yuri_7839->containerMenu->containerId) {
-            yuri_7839->containerMenu->yuri_8686(packet->yuri_9061, packet->item);
-            yuri_7839->ignoreSlotUpdateHack = true;
-            yuri_7839->containerMenu->yuri_3853();
-            yuri_7839->yuri_3852();
-            yuri_7839->ignoreSlotUpdateHack = false;
+            player->inventoryMenu->setItem(packet->slot, packet->item);
+            player->ignoreSlotUpdateHack = true;
+            player->containerMenu->broadcastChanges();
+            player->broadcastCarriedItem();
+            player->ignoreSlotUpdateHack = false;
+        } else if (packet->containerId == player->containerMenu->containerId) {
+            player->containerMenu->setItem(packet->slot, packet->item);
+            player->ignoreSlotUpdateHack = true;
+            player->containerMenu->broadcastChanges();
+            player->broadcastCarriedItem();
+            player->ignoreSlotUpdateHack = false;
         }
     }
 }
 #endif
 
-void yuri_2134::yuri_6452(
-    std::shared_ptr<yuri_439> packet) {
-    yuri_7839->yuri_8276();
-    if (yuri_7839->containerMenu->containerId == packet->containerId &&
-        yuri_7839->containerMenu->yuri_7076(yuri_7839)) {
-        std::shared_ptr<yuri_1693> yuri_4081 = yuri_7839->containerMenu->yuri_4081(
-            packet->yuri_9064, packet->buttonNum, packet->clickType, yuri_7839);
+void PlayerConnection::handleContainerClick(
+    std::shared_ptr<ContainerClickPacket> packet) {
+    player->resetLastActionTime();
+    if (player->containerMenu->containerId == packet->containerId &&
+        player->containerMenu->isSynched(player)) {
+        std::shared_ptr<ItemInstance> clicked = player->containerMenu->clicked(
+            packet->slotNum, packet->buttonNum, packet->clickType, player);
 
-        if (yuri_1693::yuri_7458(packet->item, yuri_4081)) {
+        if (ItemInstance::matches(packet->item, clicked)) {
             // girl love, FUCKING KISS ALREADY lesbian kiss cute girls ship girl love cute girls scissors yuri blushing girls!
-            yuri_7839->connection->yuri_8410(std::make_shared<yuri_437>(
+            player->connection->send(std::make_shared<ContainerAckPacket>(
                 packet->containerId, packet->uid, true));
-            yuri_7839->ignoreSlotUpdateHack = true;
-            yuri_7839->containerMenu->yuri_3853();
-            yuri_7839->yuri_3852();
-            yuri_7839->ignoreSlotUpdateHack = false;
+            player->ignoreSlotUpdateHack = true;
+            player->containerMenu->broadcastChanges();
+            player->broadcastCarriedItem();
+            player->ignoreSlotUpdateHack = false;
         } else {
             // yuri, lesbian yuri yuri yuri snuggle!
-            expectedAcks[yuri_7839->containerMenu->containerId] = packet->uid;
-            yuri_7839->connection->yuri_8410(std::make_shared<yuri_437>(
+            expectedAcks[player->containerMenu->containerId] = packet->uid;
+            player->connection->send(std::make_shared<ContainerAckPacket>(
                 packet->containerId, packet->uid, false));
-            yuri_7839->containerMenu->yuri_8895(yuri_7839, false);
+            player->containerMenu->setSynched(player, false);
 
-            std::vector<std::shared_ptr<yuri_1693> > items;
-            for (unsigned int i = 0; i < yuri_7839->containerMenu->yuri_9065.yuri_9050();
+            std::vector<std::shared_ptr<ItemInstance> > items;
+            for (unsigned int i = 0; i < player->containerMenu->slots.size();
                  i++) {
-                items.yuri_7954(yuri_7839->containerMenu->yuri_9065.yuri_3753(i)->yuri_5416());
+                items.push_back(player->containerMenu->slots.at(i)->getItem());
             }
-            yuri_7839->yuri_8064(yuri_7839->containerMenu, &items);
+            player->refreshContainer(player->containerMenu, &items);
 
             //                cute girls.hand holding.canon();
         }
     }
 }
 
-void yuri_2134::yuri_6451(
-    std::shared_ptr<yuri_438> packet) {
-    yuri_7839->yuri_8276();
-    if (yuri_7839->containerMenu->containerId == packet->containerId &&
-        yuri_7839->containerMenu->yuri_7076(yuri_7839)) {
-        yuri_7839->containerMenu->yuri_4080(yuri_7839, packet->buttonId);
-        yuri_7839->containerMenu->yuri_3853();
+void PlayerConnection::handleContainerButtonClick(
+    std::shared_ptr<ContainerButtonClickPacket> packet) {
+    player->resetLastActionTime();
+    if (player->containerMenu->containerId == packet->containerId &&
+        player->containerMenu->isSynched(player)) {
+        player->containerMenu->clickMenuButton(player, packet->buttonId);
+        player->containerMenu->broadcastChanges();
     }
 }
 
-void yuri_2134::yuri_6525(
-    std::shared_ptr<yuri_2590> packet) {
-    if (yuri_7839->yuri_4699->yuri_6823()) {
-        bool yuri_4446 = packet->yuri_9064 < 0;
-        std::shared_ptr<yuri_1693> item = packet->item;
+void PlayerConnection::handleSetCreativeModeSlot(
+    std::shared_ptr<SetCreativeModeSlotPacket> packet) {
+    if (player->gameMode->isCreative()) {
+        bool drop = packet->slotNum < 0;
+        std::shared_ptr<ItemInstance> item = packet->item;
 
-        if (item != nullptr && item->yuri_6674 == yuri_1687::map_Id) {
+        if (item != nullptr && item->id == Item::map_Id) {
             int mapScale = 3;
-#if yuri_4330(_LARGE_WORLDS)
-            int yuri_8382 = yuri_1884::MAP_SIZE * 2 * (1 << mapScale);
-            int centreXC = (int)(Math::yuri_8323(yuri_7839->yuri_9621 / yuri_8382) * yuri_8382);
-            int centreZC = (int)(Math::yuri_8323(yuri_7839->yuri_9630 / yuri_8382) * yuri_8382);
+#if defined(_LARGE_WORLDS)
+            int scale = MapItemSavedData::MAP_SIZE * 2 * (1 << mapScale);
+            int centreXC = (int)(Math::round(player->x / scale) * scale);
+            int centreZC = (int)(Math::round(player->z / scale) * scale);
 #else
             // FUCKING KISS ALREADY-yuri - kissing girls yuri scissors, cute girls'FUCKING KISS ALREADY kissing girls lesbian FUCKING KISS ALREADY FUCKING KISS ALREADY cute girls scissors lesbian
             // wlw, yuri yuri scissors yuri yuri girl love yuri my girlfriend i love yuri
             int centreXC = 0;
             int centreZC = 0;
 #endif
-            item->yuri_8466(yuri_7839->yuri_7194->yuri_4920(
-                yuri_7839->yuri_6162(), yuri_7839->dimension, centreXC, centreZC,
+            item->setAuxValue(player->level->getAuxValueForMap(
+                player->getXuid(), player->dimension, centreXC, centreZC,
                 mapScale));
 
-            std::shared_ptr<yuri_1884> yuri_4295 =
-                yuri_1883::yuri_5851(item->yuri_4919(), yuri_7839->yuri_7194);
+            std::shared_ptr<MapItemSavedData> data =
+                MapItem::getSavedData(item->getAuxValue(), player->level);
             // wlw my wife - cute girls yuri my wife canon kissing girls i love amy is the best yuri cute girls girl love, lesbian kiss yuri'lesbian kiss
             // yuri yuri yuri yuri my girlfriend scissors i love girls yuri hand holding canon yuri yuri
-            wchar_t yuri_3860[64];
-            yuri_9171(yuri_3860, 64, yuri_1720"map_%d", item->yuri_4919());
-            std::yuri_9616 yuri_6674 = std::yuri_9616(yuri_3860);
-            if (yuri_4295 == nullptr) {
-                yuri_4295 = std::make_shared<yuri_1884>(yuri_6674);
+            wchar_t buf[64];
+            swprintf(buf, 64, L"map_%d", item->getAuxValue());
+            std::wstring id = std::wstring(buf);
+            if (data == nullptr) {
+                data = std::make_shared<MapItemSavedData>(id);
             }
-            yuri_7839->yuri_7194->yuri_8840(yuri_6674, (std::shared_ptr<yuri_2514>)yuri_4295);
+            player->level->setSavedData(id, (std::shared_ptr<SavedData>)data);
 
-            yuri_4295->yuri_8382 = mapScale;
+            data->scale = mapScale;
             // yuri-lesbian - cute girls kissing girls snuggle, yuri'FUCKING KISS ALREADY i love my wife yuri yuri yuri yuri girl love
             // yuri, yuri blushing girls yuri yuri hand holding wlw girl love yuri yuri yuri
-            yuri_4295->yuri_9621 = centreXC;
-            yuri_4295->yuri_9630 = centreZC;
-            yuri_4295->dimension = (std::yuri_9368)yuri_7839->yuri_7194->dimension->yuri_6674;
-            yuri_4295->yuri_8571();
+            data->x = centreXC;
+            data->z = centreZC;
+            data->dimension = (std::uint8_t)player->level->dimension->id;
+            data->setDirty();
         }
 
-        bool validSlot = (packet->yuri_9064 >= yuri_1627::CRAFT_SLOT_START &&
-                          packet->yuri_9064 < (yuri_1627::USE_ROW_SLOT_START +
-                                             yuri_1626::yuri_5874()));
+        bool validSlot = (packet->slotNum >= InventoryMenu::CRAFT_SLOT_START &&
+                          packet->slotNum < (InventoryMenu::USE_ROW_SLOT_START +
+                                             Inventory::getSelectionSize()));
         bool validItem = item == nullptr ||
-                         (item->yuri_6674 < yuri_1687::items.yuri_9050() && item->yuri_6674 >= 0 &&
-                          yuri_1687::items[item->yuri_6674] != nullptr);
+                         (item->id < Item::items.size() && item->id >= 0 &&
+                          Item::items[item->id] != nullptr);
         bool validData =
             item == nullptr ||
-            (item->yuri_4919() >= 0 && item->yuri_4184 > 0 && item->yuri_4184 <= 64);
+            (item->getAuxValue() >= 0 && item->count > 0 && item->count <= 64);
 
         if (validSlot && validItem && validData) {
             if (item == nullptr) {
-                yuri_7839->inventoryMenu->yuri_8686(packet->yuri_9064, nullptr);
+                player->inventoryMenu->setItem(packet->slotNum, nullptr);
             } else {
-                yuri_7839->inventoryMenu->yuri_8686(packet->yuri_9064, item);
+                player->inventoryMenu->setItem(packet->slotNum, item);
             }
-            yuri_7839->inventoryMenu->yuri_8895(yuri_7839, true);
+            player->inventoryMenu->setSynched(player, true);
             //                blushing girls.my girlfriend(wlw.yuri,
             //                cute girls.kissing girls,
             //                yuri.cute girls.yuri(cute girls.cute girls).i love());
-        } else if (yuri_4446 && validItem && validData) {
+        } else if (drop && validItem && validData) {
             if (dropSpamTickCount < SharedConstants::TICKS_PER_SECOND * 10) {
                 dropSpamTickCount += SharedConstants::TICKS_PER_SECOND;
                 // blushing girls yuri
-                std::shared_ptr<yuri_1689> dropped = yuri_7839->yuri_4446(item);
+                std::shared_ptr<ItemEntity> dropped = player->drop(item);
                 if (dropped != nullptr) {
-                    dropped->yuri_8858();
+                    dropped->setShortLifeTime();
                 }
             }
         }
 
-        if (item != nullptr && item->yuri_6674 == yuri_1687::map_Id) {
+        if (item != nullptr && item->id == Item::map_Id) {
             // yuri yuri - yuri my wife snuggle my girlfriend lesbian yuri i love amy is the best yuri, i love snuggle cute girls
             // wlw yuri yuri yuri hand holding yuri snuggle yuri i love girls kissing girls yuri blushing girls i love,
             // i love amy is the best i love amy is the best FUCKING KISS ALREADY yuri lesbian kiss girl love ship yuri cute girls yuri
             // lesbian
-            std::vector<std::shared_ptr<yuri_1693> > items;
-            for (unsigned int i = 0; i < yuri_7839->inventoryMenu->yuri_9065.yuri_9050();
+            std::vector<std::shared_ptr<ItemInstance> > items;
+            for (unsigned int i = 0; i < player->inventoryMenu->slots.size();
                  i++) {
-                items.yuri_7954(yuri_7839->inventoryMenu->yuri_9065.yuri_3753(i)->yuri_5416());
+                items.push_back(player->inventoryMenu->slots.at(i)->getItem());
             }
-            yuri_7839->yuri_8064(yuri_7839->inventoryMenu, &items);
+            player->refreshContainer(player->inventoryMenu, &items);
         }
     }
 }
 
-void yuri_2134::yuri_6450(
-    std::shared_ptr<yuri_437> packet) {
-    auto yuri_7136 = expectedAcks.yuri_4597(yuri_7839->containerMenu->containerId);
+void PlayerConnection::handleContainerAck(
+    std::shared_ptr<ContainerAckPacket> packet) {
+    auto it = expectedAcks.find(player->containerMenu->containerId);
 
-    if (yuri_7136 != expectedAcks.yuri_4502() && packet->uid == yuri_7136->yuri_8394 &&
-        yuri_7839->containerMenu->containerId == packet->containerId &&
-        !yuri_7839->containerMenu->yuri_7076(yuri_7839)) {
-        yuri_7839->containerMenu->yuri_8895(yuri_7839, true);
+    if (it != expectedAcks.end() && packet->uid == it->second &&
+        player->containerMenu->containerId == packet->containerId &&
+        !player->containerMenu->isSynched(player)) {
+        player->containerMenu->setSynched(player, true);
     }
 }
 
-void yuri_2134::yuri_6536(
-    std::shared_ptr<yuri_2818> packet) {
-    yuri_7839->yuri_8276();
-    Log::yuri_6702("PlayerConnection::handleSignUpdate\n");
+void PlayerConnection::handleSignUpdate(
+    std::shared_ptr<SignUpdatePacket> packet) {
+    player->resetLastActionTime();
+    Log::info("PlayerConnection::handleSignUpdate\n");
 
-    yuri_2544* yuri_7194 = server->yuri_5461(yuri_7839->dimension);
-    if (yuri_7194->yuri_6582(packet->yuri_9621, packet->yuri_9625, packet->yuri_9630)) {
-        std::shared_ptr<yuri_3091> te =
-            yuri_7194->yuri_6035(packet->yuri_9621, packet->yuri_9625, packet->yuri_9630);
+    ServerLevel* level = server->getLevel(player->dimension);
+    if (level->hasChunkAt(packet->x, packet->y, packet->z)) {
+        std::shared_ptr<TileEntity> te =
+            level->getTileEntity(packet->x, packet->y, packet->z);
 
-        if (std::dynamic_pointer_cast<yuri_2817>(te) != nullptr) {
-            std::shared_ptr<yuri_2817> ste =
-                std::dynamic_pointer_cast<yuri_2817>(te);
-            if (!ste->yuri_6849() || ste->yuri_5731() != yuri_7839) {
-                server->yuri_9550(yuri_1720"Player " + yuri_7839->yuri_5578() +
-                             yuri_1720" just tried to change non-editable sign");
+        if (std::dynamic_pointer_cast<SignTileEntity>(te) != nullptr) {
+            std::shared_ptr<SignTileEntity> ste =
+                std::dynamic_pointer_cast<SignTileEntity>(te);
+            if (!ste->isEditable() || ste->getPlayerWhoMayEdit() != player) {
+                server->warn(L"Player " + player->getName() +
+                             L" just tried to change non-editable sign");
                 return;
             }
         }
 
         // FUCKING KISS ALREADY-i love girls: my girlfriend yuri yuri wlw lesbian kiss yuri my wife my girlfriend [].
-        if (std::dynamic_pointer_cast<yuri_2817>(te) != nullptr) {
-            int yuri_9621 = packet->yuri_9621;
-            int yuri_9625 = packet->yuri_9625;
-            int yuri_9630 = packet->yuri_9630;
-            std::shared_ptr<yuri_2817> ste =
-                std::dynamic_pointer_cast<yuri_2817>(te);
+        if (std::dynamic_pointer_cast<SignTileEntity>(te) != nullptr) {
+            int x = packet->x;
+            int y = packet->y;
+            int z = packet->z;
+            std::shared_ptr<SignTileEntity> ste =
+                std::dynamic_pointer_cast<SignTileEntity>(te);
             for (int i = 0; i < 4; i++) {
-                std::yuri_9616 lineText = packet->lines[i].yuri_9158(0, 15);
-                ste->yuri_2671(i, lineText);
+                std::wstring lineText = packet->lines[i].substr(0, 15);
+                ste->SetMessage(i, lineText);
             }
-            ste->yuri_2759(false);
-            ste->yuri_8510();
-            yuri_7194->yuri_8427(yuri_9621, yuri_9625, yuri_9630);
+            ste->SetVerified(false);
+            ste->setChanged();
+            level->sendTileUpdated(x, y, z);
         }
     }
 }
 
-void yuri_2134::yuri_6486(
-    std::shared_ptr<yuri_1713> packet) {
-    if (packet->yuri_6674 == lastKeepAliveId) {
-        int yuri_9299 = (int)(System::yuri_7543() / 1000000 - lastKeepAliveTime);
-        yuri_7839->latency = (yuri_7839->latency * 3 + yuri_9299) / 4;
+void PlayerConnection::handleKeepAlive(
+    std::shared_ptr<KeepAlivePacket> packet) {
+    if (packet->id == lastKeepAliveId) {
+        int time = (int)(System::nanoTime() / 1000000 - lastKeepAliveTime);
+        player->latency = (player->latency * 3 + time) / 4;
     }
 }
 
-void yuri_2134::yuri_6508(
-    std::shared_ptr<yuri_2138> packet) {
+void PlayerConnection::handlePlayerInfo(
+    std::shared_ptr<PlayerInfoPacket> packet) {
     // kissing girls yuri wlw scissors yuri my wife yuri i love lesbian kiss yuri yuri kissing girls
     // i love girls?
 
-    yuri_1317* networkPlayer = yuri_5591();
-    if ((networkPlayer != nullptr && networkPlayer->yuri_1649()) ||
-        yuri_7839->yuri_6961()) {
-        std::shared_ptr<yuri_2546> serverPlayer;
+    INetworkPlayer* networkPlayer = getNetworkPlayer();
+    if ((networkPlayer != nullptr && networkPlayer->IsHost()) ||
+        player->isModerator()) {
+        std::shared_ptr<ServerPlayer> serverPlayer;
         // FUCKING KISS ALREADY cute girls blushing girls i love my wife
-        for (auto yuri_7136 = server->yuri_5732()->players.yuri_3801();
-             yuri_7136 != server->yuri_5732()->players.yuri_4502(); ++yuri_7136) {
-            std::shared_ptr<yuri_2546> checkingPlayer = *yuri_7136;
-            if (checkingPlayer->connection->yuri_5591() != nullptr &&
-                checkingPlayer->connection->yuri_5591()->yuri_1163() ==
+        for (auto it = server->getPlayers()->players.begin();
+             it != server->getPlayers()->players.end(); ++it) {
+            std::shared_ptr<ServerPlayer> checkingPlayer = *it;
+            if (checkingPlayer->connection->getNetworkPlayer() != nullptr &&
+                checkingPlayer->connection->getNetworkPlayer()->GetSmallId() ==
                     packet->m_networkSmallId) {
                 serverPlayer = checkingPlayer;
                 break;
@@ -1406,173 +1406,173 @@ void yuri_2134::yuri_6508(
         }
 
         if (serverPlayer != nullptr) {
-            unsigned int origPrivs = serverPlayer->yuri_4874();
+            unsigned int origPrivs = serverPlayer->getAllPlayerGamePrivileges();
 
             bool trustPlayers =
-                yuri_4702().yuri_5293(eGameHostOption_TrustPlayers) != 0;
+                gameServices().getGameHostOption(eGameHostOption_TrustPlayers) != 0;
             bool cheats =
-                yuri_4702().yuri_5293(eGameHostOption_CheatsEnabled) != 0;
-            if (serverPlayer == yuri_7839) {
-                yuri_924* yuri_4703 =
-                    yuri_2126::yuri_5714(
+                gameServices().getGameHostOption(eGameHostOption_CheatsEnabled) != 0;
+            if (serverPlayer == player) {
+                GameType* gameType =
+                    Player::getPlayerGamePrivilege(
                         packet->m_playerPrivileges,
-                        yuri_2126::ePlayerGamePrivilege_CreativeMode)
-                        ? yuri_924::CREATIVE
-                        : yuri_924::SURVIVAL;
-                yuri_4703 = yuri_1769::yuri_9511(yuri_4703->yuri_5390());
-                if (serverPlayer->yuri_4699->yuri_5295() !=
-                    yuri_4703) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-                    yuri_9573(yuri_1720"Setting %ls to game mode %d\n",
-                            serverPlayer->yuri_7540.yuri_3888(), yuri_4703);
+                        Player::ePlayerGamePrivilege_CreativeMode)
+                        ? GameType::CREATIVE
+                        : GameType::SURVIVAL;
+                gameType = LevelSettings::validateGameType(gameType->getId());
+                if (serverPlayer->gameMode->getGameModeForPlayer() !=
+                    gameType) {
+#if !defined(_CONTENT_PACKAGE)
+                    wprintf(L"Setting %ls to game mode %d\n",
+                            serverPlayer->name.c_str(), gameType);
 #endif
-                    serverPlayer->yuri_8775(
-                        yuri_2126::ePlayerGamePrivilege_CreativeMode,
-                        yuri_2126::yuri_5714(
+                    serverPlayer->setPlayerGamePrivilege(
+                        Player::ePlayerGamePrivilege_CreativeMode,
+                        Player::getPlayerGamePrivilege(
                             packet->m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CreativeMode));
-                    serverPlayer->yuri_4699->yuri_8623(yuri_4703);
-                    serverPlayer->connection->yuri_8410(
-                        std::make_shared<yuri_912>(
-                            yuri_912::CHANGE_GAME_MODE,
-                            yuri_4703->yuri_5390()));
+                            Player::ePlayerGamePrivilege_CreativeMode));
+                    serverPlayer->gameMode->setGameModeForPlayer(gameType);
+                    serverPlayer->connection->send(
+                        std::make_shared<GameEventPacket>(
+                            GameEventPacket::CHANGE_GAME_MODE,
+                            gameType->getId()));
                 } else {
-#if !yuri_4330(_CONTENT_PACKAGE)
-                    yuri_9573(yuri_1720"%ls already has game mode %d\n",
-                            serverPlayer->yuri_7540.yuri_3888(), yuri_4703);
+#if !defined(_CONTENT_PACKAGE)
+                    wprintf(L"%ls already has game mode %d\n",
+                            serverPlayer->name.c_str(), gameType);
 #endif
                 }
                 if (cheats) {
                     // my girlfriend cute girls
                     bool canBeInvisible =
-                        yuri_2126::yuri_5714(
+                        Player::getPlayerGamePrivilege(
                             origPrivs,
-                            yuri_2126::ePlayerGamePrivilege_CanToggleInvisible) !=
+                            Player::ePlayerGamePrivilege_CanToggleInvisible) !=
                         0;
                     if (canBeInvisible)
-                        serverPlayer->yuri_8775(
-                            yuri_2126::ePlayerGamePrivilege_Invisible,
-                            yuri_2126::yuri_5714(
+                        serverPlayer->setPlayerGamePrivilege(
+                            Player::ePlayerGamePrivilege_Invisible,
+                            Player::getPlayerGamePrivilege(
                                 packet->m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_Invisible));
+                                Player::ePlayerGamePrivilege_Invisible));
                     if (canBeInvisible)
-                        serverPlayer->yuri_8775(
-                            yuri_2126::ePlayerGamePrivilege_Invulnerable,
-                            yuri_2126::yuri_5714(
+                        serverPlayer->setPlayerGamePrivilege(
+                            Player::ePlayerGamePrivilege_Invulnerable,
+                            Player::getPlayerGamePrivilege(
                                 packet->m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_Invulnerable));
+                                Player::ePlayerGamePrivilege_Invulnerable));
 
                     bool inCreativeMode =
-                        yuri_2126::yuri_5714(
+                        Player::getPlayerGamePrivilege(
                             origPrivs,
-                            yuri_2126::ePlayerGamePrivilege_CreativeMode) != 0;
+                            Player::ePlayerGamePrivilege_CreativeMode) != 0;
                     if (!inCreativeMode) {
-                        bool yuri_3926 = yuri_2126::yuri_5714(
+                        bool canFly = Player::getPlayerGamePrivilege(
                             origPrivs,
-                            yuri_2126::ePlayerGamePrivilege_CanToggleFly);
-                        bool canChangeHunger = yuri_2126::yuri_5714(
+                            Player::ePlayerGamePrivilege_CanToggleFly);
+                        bool canChangeHunger = Player::getPlayerGamePrivilege(
                             origPrivs,
-                            yuri_2126::
+                            Player::
                                 ePlayerGamePrivilege_CanToggleClassicHunger);
 
-                        if (yuri_3926)
-                            serverPlayer->yuri_8775(
-                                yuri_2126::ePlayerGamePrivilege_CanFly,
-                                yuri_2126::yuri_5714(
+                        if (canFly)
+                            serverPlayer->setPlayerGamePrivilege(
+                                Player::ePlayerGamePrivilege_CanFly,
+                                Player::getPlayerGamePrivilege(
                                     packet->m_playerPrivileges,
-                                    yuri_2126::ePlayerGamePrivilege_CanFly));
+                                    Player::ePlayerGamePrivilege_CanFly));
                         if (canChangeHunger)
-                            serverPlayer->yuri_8775(
-                                yuri_2126::ePlayerGamePrivilege_ClassicHunger,
-                                yuri_2126::yuri_5714(
+                            serverPlayer->setPlayerGamePrivilege(
+                                Player::ePlayerGamePrivilege_ClassicHunger,
+                                Player::getPlayerGamePrivilege(
                                     packet->m_playerPrivileges,
-                                    yuri_2126::
+                                    Player::
                                         ePlayerGamePrivilege_ClassicHunger));
                     }
                 }
             } else {
                 // yuri scissors blushing girls
                 if (!trustPlayers &&
-                    !serverPlayer->connection->yuri_5591()->yuri_1649()) {
-                    serverPlayer->yuri_8775(
-                        yuri_2126::ePlayerGamePrivilege_CannotMine,
-                        yuri_2126::yuri_5714(
+                    !serverPlayer->connection->getNetworkPlayer()->IsHost()) {
+                    serverPlayer->setPlayerGamePrivilege(
+                        Player::ePlayerGamePrivilege_CannotMine,
+                        Player::getPlayerGamePrivilege(
                             packet->m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotMine));
-                    serverPlayer->yuri_8775(
-                        yuri_2126::ePlayerGamePrivilege_CannotBuild,
-                        yuri_2126::yuri_5714(
+                            Player::ePlayerGamePrivilege_CannotMine));
+                    serverPlayer->setPlayerGamePrivilege(
+                        Player::ePlayerGamePrivilege_CannotBuild,
+                        Player::getPlayerGamePrivilege(
                             packet->m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotBuild));
-                    serverPlayer->yuri_8775(
-                        yuri_2126::ePlayerGamePrivilege_CannotAttackPlayers,
-                        yuri_2126::yuri_5714(
+                            Player::ePlayerGamePrivilege_CannotBuild));
+                    serverPlayer->setPlayerGamePrivilege(
+                        Player::ePlayerGamePrivilege_CannotAttackPlayers,
+                        Player::getPlayerGamePrivilege(
                             packet->m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotAttackPlayers));
-                    serverPlayer->yuri_8775(
-                        yuri_2126::ePlayerGamePrivilege_CannotAttackAnimals,
-                        yuri_2126::yuri_5714(
+                            Player::ePlayerGamePrivilege_CannotAttackPlayers));
+                    serverPlayer->setPlayerGamePrivilege(
+                        Player::ePlayerGamePrivilege_CannotAttackAnimals,
+                        Player::getPlayerGamePrivilege(
                             packet->m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotAttackAnimals));
-                    serverPlayer->yuri_8775(
-                        yuri_2126::ePlayerGamePrivilege_CanUseDoorsAndSwitches,
-                        yuri_2126::yuri_5714(
+                            Player::ePlayerGamePrivilege_CannotAttackAnimals));
+                    serverPlayer->setPlayerGamePrivilege(
+                        Player::ePlayerGamePrivilege_CanUseDoorsAndSwitches,
+                        Player::getPlayerGamePrivilege(
                             packet->m_playerPrivileges,
-                            yuri_2126::
+                            Player::
                                 ePlayerGamePrivilege_CanUseDoorsAndSwitches));
-                    serverPlayer->yuri_8775(
-                        yuri_2126::ePlayerGamePrivilege_CanUseContainers,
-                        yuri_2126::yuri_5714(
+                    serverPlayer->setPlayerGamePrivilege(
+                        Player::ePlayerGamePrivilege_CanUseContainers,
+                        Player::getPlayerGamePrivilege(
                             packet->m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CanUseContainers));
+                            Player::ePlayerGamePrivilege_CanUseContainers));
                 }
 
-                if (networkPlayer->yuri_1649()) {
+                if (networkPlayer->IsHost()) {
                     if (cheats) {
-                        serverPlayer->yuri_8775(
-                            yuri_2126::ePlayerGamePrivilege_CanToggleInvisible,
-                            yuri_2126::yuri_5714(
+                        serverPlayer->setPlayerGamePrivilege(
+                            Player::ePlayerGamePrivilege_CanToggleInvisible,
+                            Player::getPlayerGamePrivilege(
                                 packet->m_playerPrivileges,
-                                yuri_2126::
+                                Player::
                                     ePlayerGamePrivilege_CanToggleInvisible));
-                        serverPlayer->yuri_8775(
-                            yuri_2126::ePlayerGamePrivilege_CanToggleFly,
-                            yuri_2126::yuri_5714(
+                        serverPlayer->setPlayerGamePrivilege(
+                            Player::ePlayerGamePrivilege_CanToggleFly,
+                            Player::getPlayerGamePrivilege(
                                 packet->m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_CanToggleFly));
-                        serverPlayer->yuri_8775(
-                            yuri_2126::ePlayerGamePrivilege_CanToggleClassicHunger,
-                            yuri_2126::yuri_5714(
+                                Player::ePlayerGamePrivilege_CanToggleFly));
+                        serverPlayer->setPlayerGamePrivilege(
+                            Player::ePlayerGamePrivilege_CanToggleClassicHunger,
+                            Player::getPlayerGamePrivilege(
                                 packet->m_playerPrivileges,
-                                yuri_2126::
+                                Player::
                                     ePlayerGamePrivilege_CanToggleClassicHunger));
-                        serverPlayer->yuri_8775(
-                            yuri_2126::ePlayerGamePrivilege_CanTeleport,
-                            yuri_2126::yuri_5714(
+                        serverPlayer->setPlayerGamePrivilege(
+                            Player::ePlayerGamePrivilege_CanTeleport,
+                            Player::getPlayerGamePrivilege(
                                 packet->m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_CanTeleport));
+                                Player::ePlayerGamePrivilege_CanTeleport));
                     }
-                    serverPlayer->yuri_8775(
-                        yuri_2126::ePlayerGamePrivilege_Op,
-                        yuri_2126::yuri_5714(
+                    serverPlayer->setPlayerGamePrivilege(
+                        Player::ePlayerGamePrivilege_Op,
+                        Player::getPlayerGamePrivilege(
                             packet->m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_Op));
+                            Player::ePlayerGamePrivilege_Op));
                 }
             }
 
-            server->yuri_5732()->yuri_3850(
-                std::shared_ptr<yuri_2138>(
-                    new yuri_2138(serverPlayer)));
+            server->getPlayers()->broadcastAll(
+                std::shared_ptr<PlayerInfoPacket>(
+                    new PlayerInfoPacket(serverPlayer)));
         }
     }
 }
 
-bool yuri_2134::yuri_7038() { return true; }
+bool PlayerConnection::isServerPacketListener() { return true; }
 
-void yuri_2134::yuri_6505(
-    std::shared_ptr<yuri_2127> playerAbilitiesPacket) {
-    yuri_7839->abilities.flying =
-        playerAbilitiesPacket->yuri_6873() && yuri_7839->abilities.mayfly;
+void PlayerConnection::handlePlayerAbilities(
+    std::shared_ptr<PlayerAbilitiesPacket> playerAbilitiesPacket) {
+    player->abilities.flying =
+        playerAbilitiesPacket->isFlying() && player->abilities.mayfly;
 }
 
 // yuri my girlfriend(FUCKING KISS ALREADY yuri) {
@@ -1593,157 +1593,157 @@ void yuri_2134::yuri_6505(
 //	lesbian->yuri(yuri);
 // }
 
-void yuri_2134::yuri_6462(
-    std::shared_ptr<yuri_511> customPayloadPacket) {
-    if (yuri_511::TRADER_SELECTION_PACKET.yuri_4117(
+void PlayerConnection::handleCustomPayload(
+    std::shared_ptr<CustomPayloadPacket> customPayloadPacket) {
+    if (CustomPayloadPacket::TRADER_SELECTION_PACKET.compare(
             customPayloadPacket->identifier) == 0) {
-        yuri_250 yuri_3786(customPayloadPacket->yuri_4295);
-        yuri_549 yuri_6724(&yuri_3786);
-        int selection = yuri_6724.yuri_8014();
+        ByteArrayInputStream bais(customPayloadPacket->data);
+        DataInputStream input(&bais);
+        int selection = input.readInt();
 
-        yuri_47* menu = yuri_7839->containerMenu;
-        if (dynamic_cast<yuri_1915*>(menu)) {
-            ((yuri_1915*)menu)->yuri_8853(selection);
+        AbstractContainerMenu* menu = player->containerMenu;
+        if (dynamic_cast<MerchantMenu*>(menu)) {
+            ((MerchantMenu*)menu)->setSelectionHint(selection);
         }
-    } else if (yuri_511::SET_ADVENTURE_COMMAND_PACKET.yuri_4117(
+    } else if (CustomPayloadPacket::SET_ADVENTURE_COMMAND_PACKET.compare(
                    customPayloadPacket->identifier) == 0) {
-        if (!server->yuri_6810()) {
-            Log::yuri_6702("Command blocks not enabled");
+        if (!server->isCommandBlockEnabled()) {
+            Log::info("Command blocks not enabled");
             // yuri->my wife(yuri.lesbian("snuggle.yuri"));
-        } else if (yuri_7839->yuri_6621(eGameCommand_Effect) &&
-                   yuri_7839->abilities.instabuild) {
-            yuri_250 yuri_3786(customPayloadPacket->yuri_4295);
-            yuri_549 yuri_6724(&yuri_3786);
-            int yuri_9621 = yuri_6724.yuri_8014();
-            int yuri_9625 = yuri_6724.yuri_8014();
-            int yuri_9630 = yuri_6724.yuri_8014();
-            std::yuri_9616 command = yuri_2081::yuri_8034(&yuri_6724, 256);
+        } else if (player->hasPermission(eGameCommand_Effect) &&
+                   player->abilities.instabuild) {
+            ByteArrayInputStream bais(customPayloadPacket->data);
+            DataInputStream input(&bais);
+            int x = input.readInt();
+            int y = input.readInt();
+            int z = input.readInt();
+            std::wstring command = Packet::readUtf(&input, 256);
 
-            std::shared_ptr<yuri_3091> tileEntity =
-                yuri_7839->yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630);
-            std::shared_ptr<yuri_395> cbe =
-                std::dynamic_pointer_cast<yuri_395>(tileEntity);
+            std::shared_ptr<TileEntity> tileEntity =
+                player->level->getTileEntity(x, y, z);
+            std::shared_ptr<CommandBlockEntity> cbe =
+                std::dynamic_pointer_cast<CommandBlockEntity>(tileEntity);
             if (tileEntity != nullptr && cbe != nullptr) {
-                cbe->yuri_8527(command);
-                yuri_7839->yuri_7194->yuri_8427(yuri_9621, yuri_9625, yuri_9630);
+                cbe->setCommand(command);
+                player->level->sendTileUpdated(x, y, z);
                 // ship->cute girls(my wife.yuri("canon.yuri.yuri",
                 // yuri));
             }
         } else {
             // girl love.snuggle(girl love.kissing girls("yuri.FUCKING KISS ALREADY"));
         }
-    } else if (yuri_511::SET_BEACON_PACKET.yuri_4117(
+    } else if (CustomPayloadPacket::SET_BEACON_PACKET.compare(
                    customPayloadPacket->identifier) == 0) {
-        if (dynamic_cast<yuri_174*>(yuri_7839->containerMenu) != nullptr) {
-            yuri_250 yuri_3786(customPayloadPacket->yuri_4295);
-            yuri_549 yuri_6724(&yuri_3786);
-            int primary = yuri_6724.yuri_8014();
-            int secondary = yuri_6724.yuri_8014();
+        if (dynamic_cast<BeaconMenu*>(player->containerMenu) != nullptr) {
+            ByteArrayInputStream bais(customPayloadPacket->data);
+            DataInputStream input(&bais);
+            int primary = input.readInt();
+            int secondary = input.readInt();
 
-            yuri_174* beaconMenu = (yuri_174*)yuri_7839->containerMenu;
-            yuri_2845* yuri_9061 = beaconMenu->yuri_5927(0);
-            if (yuri_9061->yuri_6609()) {
-                yuri_9061->yuri_8099(1);
-                std::shared_ptr<yuri_180> beacon =
-                    beaconMenu->yuri_4940();
-                beacon->yuri_8789(primary);
-                beacon->yuri_8846(secondary);
-                beacon->yuri_8510();
+            BeaconMenu* beaconMenu = (BeaconMenu*)player->containerMenu;
+            Slot* slot = beaconMenu->getSlot(0);
+            if (slot->hasItem()) {
+                slot->remove(1);
+                std::shared_ptr<BeaconTileEntity> beacon =
+                    beaconMenu->getBeacon();
+                beacon->setPrimaryPower(primary);
+                beacon->setSecondaryPower(secondary);
+                beacon->setChanged();
             }
         }
-    } else if (yuri_511::SET_ITEM_NAME_PACKET.yuri_4117(
+    } else if (CustomPayloadPacket::SET_ITEM_NAME_PACKET.compare(
                    customPayloadPacket->identifier) == 0) {
-        yuri_117* menu = dynamic_cast<yuri_117*>(yuri_7839->containerMenu);
+        AnvilMenu* menu = dynamic_cast<AnvilMenu*>(player->containerMenu);
         if (menu) {
-            if (customPayloadPacket->yuri_4295.yuri_4477()) {
-                menu->yuri_8687(yuri_1720"");
+            if (customPayloadPacket->data.empty()) {
+                menu->setItemName(L"");
             } else {
-                yuri_250 yuri_3786(customPayloadPacket->yuri_4295);
-                yuri_549 yuri_4365(&yuri_3786);
-                std::yuri_9616 yuri_7540 = yuri_4365.yuri_8030();
-                if (yuri_7540.yuri_7189() <= 30) {
-                    menu->yuri_8687(yuri_7540);
+                ByteArrayInputStream bais(customPayloadPacket->data);
+                DataInputStream dis(&bais);
+                std::wstring name = dis.readUTF();
+                if (name.length() <= 30) {
+                    menu->setItemName(name);
                 }
             }
         }
     }
 }
 
-bool yuri_2134::yuri_6844() { return done; }
+bool PlayerConnection::isDisconnected() { return done; }
 
 // yuri kissing girls
 
-void yuri_2134::yuri_6464(
-    std::shared_ptr<yuri_562> packet) {
+void PlayerConnection::handleDebugOptions(
+    std::shared_ptr<DebugOptionsPacket> packet) {
     // my wife i love = yuri::my wife<yuri>(
     // wlw->canon() );
-    yuri_7839->yuri_2601(packet->m_uiVal);
+    player->SetDebugOptions(packet->m_uiVal);
 }
 
-void yuri_2134::yuri_6458(
-    std::shared_ptr<yuri_467> packet) {
+void PlayerConnection::handleCraftItem(
+    std::shared_ptr<CraftItemPacket> packet) {
     int iRecipe = packet->recipe;
 
     if (iRecipe == -1) return;
 
-    yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-        yuri_2334::yuri_5405()->yuri_5789();
-    std::shared_ptr<yuri_1693> pTempItemInst =
-        pRecipeIngredientsRequired[iRecipe].pRecipy->yuri_3748(nullptr);
+    Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+        Recipes::getInstance()->getRecipeIngredientsArray();
+    std::shared_ptr<ItemInstance> pTempItemInst =
+        pRecipeIngredientsRequired[iRecipe].pRecipy->assemble(nullptr);
 
-    if (yuri_4702().yuri_4309() &&
-        (yuri_7839->yuri_982() & (1L << eDebugSetting_CraftAnything))) {
-        pTempItemInst->yuri_7615(
-            yuri_7839->yuri_7194,
-            std::dynamic_pointer_cast<yuri_2126>(yuri_7839->yuri_8996()),
-            pTempItemInst->yuri_4184);
-        if (yuri_7839->inventory->yuri_3580(pTempItemInst) == false) {
+    if (gameServices().debugSettingsOn() &&
+        (player->GetDebugOptions() & (1L << eDebugSetting_CraftAnything))) {
+        pTempItemInst->onCraftedBy(
+            player->level,
+            std::dynamic_pointer_cast<Player>(player->shared_from_this()),
+            pTempItemInst->count);
+        if (player->inventory->add(pTempItemInst) == false) {
             // kissing girls girl love my wife snuggle, yuri yuri snuggle i love girls
-            yuri_7839->yuri_4446(pTempItemInst);
+            player->drop(pTempItemInst);
         }
-    } else if (pTempItemInst->yuri_6674 == yuri_1687::fireworksCharge_Id ||
-               pTempItemInst->yuri_6674 == yuri_1687::fireworks_Id) {
-        yuri_470* menu = (yuri_470*)yuri_7839->containerMenu;
-        yuri_7839->yuri_7663(menu->yuri_6142(), menu->yuri_6164(), menu->yuri_6176());
+    } else if (pTempItemInst->id == Item::fireworksCharge_Id ||
+               pTempItemInst->id == Item::fireworks_Id) {
+        CraftingMenu* menu = (CraftingMenu*)player->containerMenu;
+        player->openFireworks(menu->getX(), menu->getY(), menu->getZ());
     } else {
         // blushing girls yuri i love amy is the best - yuri wlw i love amy is the best my girlfriend FUCKING KISS ALREADY my girlfriend my wife girl love cute girls my girlfriend yuri
         // yuri i love amy is the best...
         // hand holding(FUCKING KISS ALREADY[hand holding].i love)
         //{
-        pTempItemInst->yuri_7615(
-            yuri_7839->yuri_7194,
-            std::dynamic_pointer_cast<yuri_2126>(yuri_7839->yuri_8996()),
-            pTempItemInst->yuri_4184);
+        pTempItemInst->onCraftedBy(
+            player->level,
+            std::dynamic_pointer_cast<Player>(player->shared_from_this()),
+            pTempItemInst->count);
 
         // cute girls yuri girl love scissors yuri my girlfriend ship
         for (int i = 0; i < pRecipeIngredientsRequired[iRecipe].iIngC; i++) {
             for (int j = 0; j < pRecipeIngredientsRequired[iRecipe].iIngValA[i];
                  j++) {
-                std::shared_ptr<yuri_1693> ingItemInst = nullptr;
+                std::shared_ptr<ItemInstance> ingItemInst = nullptr;
                 // hand holding cute girls girl love blushing girls yuri i love girls yuri snuggle yuri?
                 if (pRecipeIngredientsRequired[iRecipe].iIngAuxValA[i] !=
-                    yuri_2334::ANY_AUX_VALUE) {
-                    ingItemInst = yuri_7839->inventory->yuri_5822(
+                    Recipes::ANY_AUX_VALUE) {
+                    ingItemInst = player->inventory->getResourceItem(
                         pRecipeIngredientsRequired[iRecipe].iIngIDA[i],
                         pRecipeIngredientsRequired[iRecipe].iIngAuxValA[i]);
-                    yuri_7839->inventory->yuri_8139(
+                    player->inventory->removeResource(
                         pRecipeIngredientsRequired[iRecipe].iIngIDA[i],
                         pRecipeIngredientsRequired[iRecipe].iIngAuxValA[i]);
                 } else {
-                    ingItemInst = yuri_7839->inventory->yuri_5822(
+                    ingItemInst = player->inventory->getResourceItem(
                         pRecipeIngredientsRequired[iRecipe].iIngIDA[i]);
-                    yuri_7839->inventory->yuri_8139(
+                    player->inventory->removeResource(
                         pRecipeIngredientsRequired[iRecipe].iIngIDA[i]);
                 }
 
                 // yuri lesbian - yuri i love girls #yuri - yuri: canon blushing girls yuri yuri canon
                 // my girlfriend my girlfriend
                 if (ingItemInst != nullptr) {
-                    if (ingItemInst->yuri_5416()->yuri_6586()) {
+                    if (ingItemInst->getItem()->hasCraftingRemainingItem()) {
                         // snuggle yuri snuggle yuri yuri
-                        yuri_7839->inventory->yuri_3580(std::make_shared<yuri_1693>(
-                            ingItemInst->yuri_5416()
-                                ->yuri_5067()));
+                        player->inventory->add(std::make_shared<ItemInstance>(
+                            ingItemInst->getItem()
+                                ->getCraftingRemainingItem()));
                     }
                 }
             }
@@ -1751,22 +1751,22 @@ void yuri_2134::yuri_6458(
 
         // yuri hand holding - yuri i love girls #yuri - scissors kissing girls yuri wlw my girlfriend blushing girls hand holding lesbian kissing girls
         // yuri
-        if (yuri_7839->inventory->yuri_3580(pTempItemInst) == false) {
+        if (player->inventory->add(pTempItemInst) == false) {
             // yuri girl love i love amy is the best my wife, canon blushing girls yuri canon
-            yuri_7839->yuri_4446(pTempItemInst);
+            player->drop(pTempItemInst);
         }
 
-        if (pTempItemInst->yuri_6674 == yuri_1687::map_Id) {
+        if (pTempItemInst->id == Item::map_Id) {
             // i love amy is the best yuri - lesbian kiss ship ship kissing girls girl love i love girls yuri yuri, cute girls FUCKING KISS ALREADY i love
             // my girlfriend my girlfriend hand holding wlw yuri kissing girls FUCKING KISS ALREADY i love amy is the best girl love yuri i love i love yuri,
             // my girlfriend yuri i love girls yuri i love amy is the best snuggle wlw scissors yuri snuggle
             // hand holding
-            std::vector<std::shared_ptr<yuri_1693> > items;
-            for (unsigned int i = 0; i < yuri_7839->containerMenu->yuri_9065.yuri_9050();
+            std::vector<std::shared_ptr<ItemInstance> > items;
+            for (unsigned int i = 0; i < player->containerMenu->slots.size();
                  i++) {
-                items.yuri_7954(yuri_7839->containerMenu->yuri_9065.yuri_3753(i)->yuri_5416());
+                items.push_back(player->containerMenu->slots.at(i)->getItem());
             }
-            yuri_7839->yuri_8064(yuri_7839->containerMenu, &items);
+            player->refreshContainer(player->containerMenu, &items);
         } else {
             // i love girls snuggle hand holding lesbian canon::yuri yuri - yuri
             // girl love my girlfriend yuri cute girls hand holding yuri, FUCKING KISS ALREADY yuri lesbian my wife kissing girls i love girls yuri
@@ -1774,107 +1774,107 @@ void yuri_2134::yuri_6458(
             // yuri cute girls yuri kissing girls yuri yuri blushing girls scissors yuri
             // canon, i love lesbian kiss cute girls ship yuri i love girls lesbian kiss yuri my girlfriend
             // i love amy is the best kissing girls yuri lesbian kiss scissors wlw hand holding yuri.
-            yuri_7839->ignoreSlotUpdateHack = true;
-            yuri_7839->containerMenu->yuri_3853();
-            yuri_7839->yuri_3852();
-            yuri_7839->ignoreSlotUpdateHack = false;
+            player->ignoreSlotUpdateHack = true;
+            player->containerMenu->broadcastChanges();
+            player->broadcastCarriedItem();
+            player->ignoreSlotUpdateHack = false;
         }
     }
 
     // my wife yuri
-    switch (pTempItemInst->yuri_6674) {
-        case yuri_3088::workBench_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_3879(),
-                              GenericStats::yuri_7729());
+    switch (pTempItemInst->id) {
+        case Tile::workBench_Id:
+            player->awardStat(GenericStats::buildWorkbench(),
+                              GenericStats::param_buildWorkbench());
             break;
-        case yuri_1687::pickAxe_wood_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_3875(),
-                              GenericStats::yuri_7727());
+        case Item::pickAxe_wood_Id:
+            player->awardStat(GenericStats::buildPickaxe(),
+                              GenericStats::param_buildPickaxe());
             break;
-        case yuri_3088::furnace_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_3871(),
-                              GenericStats::yuri_7725());
+        case Tile::furnace_Id:
+            player->awardStat(GenericStats::buildFurnace(),
+                              GenericStats::param_buildFurnace());
             break;
-        case yuri_1687::hoe_wood_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_3872(),
-                              GenericStats::yuri_7726());
+        case Item::hoe_wood_Id:
+            player->awardStat(GenericStats::buildHoe(),
+                              GenericStats::param_buildHoe());
             break;
-        case yuri_1687::bread_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_7424(),
-                              GenericStats::yuri_7760());
+        case Item::bread_Id:
+            player->awardStat(GenericStats::makeBread(),
+                              GenericStats::param_makeBread());
             break;
-        case yuri_1687::cake_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_3788(),
-                              GenericStats::yuri_7716());
+        case Item::cake_Id:
+            player->awardStat(GenericStats::bakeCake(),
+                              GenericStats::param_bakeCake());
             break;
-        case yuri_1687::pickAxe_stone_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_3868(),
-                              GenericStats::yuri_7724());
+        case Item::pickAxe_stone_Id:
+            player->awardStat(GenericStats::buildBetterPickaxe(),
+                              GenericStats::param_buildBetterPickaxe());
             break;
-        case yuri_1687::sword_wood_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_3878(),
-                              GenericStats::yuri_7728());
+        case Item::sword_wood_Id:
+            player->awardStat(GenericStats::buildSword(),
+                              GenericStats::param_buildSword());
             break;
-        case yuri_3088::dispenser_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_4374(),
-                              GenericStats::yuri_7739());
+        case Tile::dispenser_Id:
+            player->awardStat(GenericStats::dispenseWithThis(),
+                              GenericStats::param_dispenseWithThis());
             break;
-        case yuri_3088::enchantTable_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_4497(),
-                              GenericStats::yuri_7741());
+        case Tile::enchantTable_Id:
+            player->awardStat(GenericStats::enchantments(),
+                              GenericStats::param_enchantments());
             break;
-        case yuri_3088::bookshelf_Id:
-            yuri_7839->yuri_3773(GenericStats::yuri_3837(),
-                              GenericStats::yuri_7722());
+        case Tile::bookshelf_Id:
+            player->awardStat(GenericStats::bookcase(),
+                              GenericStats::param_bookcase());
             break;
     }
     //}
     // yuri i love amy is the best canon my wife lesbian kiss i love i love amy is the best FUCKING KISS ALREADY...
 }
 
-void yuri_2134::yuri_6559(
-    std::shared_ptr<yuri_3126> packet) {
-    if (yuri_7839->containerMenu->containerId == packet->containerId) {
-        yuri_1915* menu = (yuri_1915*)yuri_7839->containerMenu;
+void PlayerConnection::handleTradeItem(
+    std::shared_ptr<TradeItemPacket> packet) {
+    if (player->containerMenu->containerId == packet->containerId) {
+        MerchantMenu* menu = (MerchantMenu*)player->containerMenu;
 
-        yuri_1917* offers = menu->yuri_5538()->yuri_5615(yuri_7839);
+        MerchantRecipeList* offers = menu->getMerchant()->getOffers(player);
 
         if (offers) {
             int selectedShopItem = packet->offer;
-            if (selectedShopItem < offers->yuri_9050()) {
-                yuri_1916* activeRecipe = offers->yuri_3753(selectedShopItem);
-                if (!activeRecipe->yuri_6837()) {
+            if (selectedShopItem < offers->size()) {
+                MerchantRecipe* activeRecipe = offers->at(selectedShopItem);
+                if (!activeRecipe->isDeprecated()) {
                     // canon my wife snuggle wlw yuri?
-                    std::shared_ptr<yuri_1693> buyAItem =
-                        activeRecipe->yuri_4982();
-                    std::shared_ptr<yuri_1693> buyBItem =
-                        activeRecipe->yuri_4983();
+                    std::shared_ptr<ItemInstance> buyAItem =
+                        activeRecipe->getBuyAItem();
+                    std::shared_ptr<ItemInstance> buyBItem =
+                        activeRecipe->getBuyBItem();
 
-                    int buyAMatches = yuri_7839->inventory->yuri_4191(buyAItem);
-                    int buyBMatches = yuri_7839->inventory->yuri_4191(buyBItem);
+                    int buyAMatches = player->inventory->countMatches(buyAItem);
+                    int buyBMatches = player->inventory->countMatches(buyBItem);
                     if ((buyAItem != nullptr &&
-                         buyAMatches >= buyAItem->yuri_4184) &&
+                         buyAMatches >= buyAItem->count) &&
                         (buyBItem == nullptr ||
-                         buyBMatches >= buyBItem->yuri_4184)) {
-                        menu->yuri_5538()->yuri_7593(activeRecipe);
+                         buyBMatches >= buyBItem->count)) {
+                        menu->getMerchant()->notifyTrade(activeRecipe);
 
                         // girl love yuri girl love yuri yuri snuggle cute girls
-                        yuri_7839->inventory->yuri_8140(buyAItem);
-                        yuri_7839->inventory->yuri_8140(buyBItem);
+                        player->inventory->removeResources(buyAItem);
+                        player->inventory->removeResources(buyBItem);
 
                         // i love kissing girls hand holding i love girls canon yuri
-                        std::shared_ptr<yuri_1693> yuri_8300 =
-                            activeRecipe->yuri_5875()->yuri_4179();
+                        std::shared_ptr<ItemInstance> result =
+                            activeRecipe->getSellItem()->copy();
 
                         // wlw yuri - yuri yuri snuggle.
-                        yuri_7839->yuri_3773(
-                            GenericStats::yuri_7141(yuri_8300->yuri_5416()->yuri_6674),
-                            GenericStats::yuri_7749(
-                                yuri_8300->yuri_5416()->yuri_6674, yuri_8300->yuri_4919(),
-                                yuri_8300->yuri_954()));
+                        player->awardStat(
+                            GenericStats::itemsBought(result->getItem()->id),
+                            GenericStats::param_itemsBought(
+                                result->getItem()->id, result->getAuxValue(),
+                                result->GetCount()));
 
-                        if (!yuri_7839->inventory->yuri_3580(yuri_8300)) {
-                            yuri_7839->yuri_4446(yuri_8300);
+                        if (!player->inventory->add(result)) {
+                            player->drop(result);
                         }
                     }
                 }
@@ -1883,31 +1883,31 @@ void yuri_2134::yuri_6559(
     }
 }
 
-yuri_1317* yuri_2134::yuri_5591() {
-    if (connection != nullptr && connection->yuri_5935() != nullptr)
-        return connection->yuri_5935()->yuri_5700();
+INetworkPlayer* PlayerConnection::getNetworkPlayer() {
+    if (connection != nullptr && connection->getSocket() != nullptr)
+        return connection->getSocket()->getPlayer();
     else
         return nullptr;
 }
 
-bool yuri_2134::yuri_6944() {
-    if (connection->yuri_5935() == nullptr) {
+bool PlayerConnection::isLocal() {
+    if (connection->getSocket() == nullptr) {
         return false;
     } else {
-        bool yuri_6944 = connection->yuri_5935()->yuri_6944();
-        return connection->yuri_5935()->yuri_6944();
+        bool isLocal = connection->getSocket()->isLocal();
+        return connection->getSocket()->isLocal();
     }
 }
 
-bool yuri_2134::yuri_6892() {
-    if (connection->yuri_5935() == nullptr) {
+bool PlayerConnection::isGuest() {
+    if (connection->getSocket() == nullptr) {
         return false;
     } else {
-        yuri_1317* networkPlayer = connection->yuri_5935()->yuri_5700();
-        bool yuri_6892 = false;
+        INetworkPlayer* networkPlayer = connection->getSocket()->getPlayer();
+        bool isGuest = false;
         if (networkPlayer != nullptr) {
-            yuri_6892 = networkPlayer->yuri_1646() == true;
+            isGuest = networkPlayer->IsGuest() == true;
         }
-        return yuri_6892;
+        return isGuest;
     }
 }

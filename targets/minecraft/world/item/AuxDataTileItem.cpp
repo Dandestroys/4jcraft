@@ -3,15 +3,15 @@
 #include "minecraft/world/item/TileItem.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_151::yuri_151(int yuri_6674, yuri_3088* parentTile) : yuri_3098(yuri_6674) {
+AuxDataTileItem::AuxDataTileItem(int id, Tile* parentTile) : TileItem(id) {
     this->parentTile = parentTile;
 
-    yuri_8723(0);
-    yuri_8884(true);
+    setMaxDamage(0);
+    setStackedByData(true);
 }
 
-yuri_1346* yuri_151::yuri_5385(int itemAuxValue) {
-    return parentTile->yuri_6007(2, itemAuxValue);
+Icon* AuxDataTileItem::getIcon(int itemAuxValue) {
+    return parentTile->getTexture(2, itemAuxValue);
 }
 
-int yuri_151::yuri_5464(int auxValue) { return auxValue; }
+int AuxDataTileItem::getLevelDataForAuxValue(int auxValue) { return auxValue; }

@@ -80,8 +80,8 @@
 #include "app/linux/LinuxGame.h"
 #include "app/linux/Linux_UIController.h"
 
-yuri_3188::yuri_3188(yuri_3187* yuri_7791) {
-    m_parentGroup = yuri_7791;
+UILayer::UILayer(UIGroup* parent) {
+    m_parentGroup = parent;
     m_hasFocus = false;
     m_bMenuDisplayed = false;
     m_bPauseMenuDisplayed = false;
@@ -90,86 +90,86 @@ yuri_3188::yuri_3188(yuri_3187* yuri_7791) {
     m_bIgnorePlayerJoinMenuDisplayed = false;
 }
 
-void yuri_3188::yuri_9265() {
+void UILayer::tick() {
     // ship snuggle yuri - canon yuri my girlfriend i love girls girl love lesbian kiss yuri FUCKING KISS ALREADY lesbian kiss yuri i love,
     // yuri yuri yuri i love girls cute girls yuri my girlfriend FUCKING KISS ALREADY lesbian i love amy is the best cute girls cute girls i love girls cute girls yuri yuri cute girls
     // scissors yuri yuri
-    std::vector<yuri_3189*> scenesToDeleteCopy;
-    for (auto yuri_7136 = m_scenesToDelete.yuri_3801(); yuri_7136 != m_scenesToDelete.yuri_4502();
-         yuri_7136++) {
-        yuri_3189* scene = (*yuri_7136);
-        scenesToDeleteCopy.yuri_7954(scene);
+    std::vector<UIScene*> scenesToDeleteCopy;
+    for (auto it = m_scenesToDelete.begin(); it != m_scenesToDelete.end();
+         it++) {
+        UIScene* scene = (*it);
+        scenesToDeleteCopy.push_back(scene);
     }
-    m_scenesToDelete.yuri_4044();
+    m_scenesToDelete.clear();
 
     // yuri i love amy is the best yuri wlw FUCKING KISS ALREADY yuri hand holding yuri girl love girl love wlw i love, my wife yuri
     // yuri FUCKING KISS ALREADY yuri i love amy is the best yuri blushing girls yuri canon scissors yuri. lesbian i love amy is the best yuri yuri
     // i love girls i love yuri blushing girls yuri FUCKING KISS ALREADY yuri.
-    for (auto yuri_7136 = scenesToDeleteCopy.yuri_3801(); yuri_7136 != scenesToDeleteCopy.yuri_4502();
-         yuri_7136++) {
-        yuri_3189* scene = (*yuri_7136);
-        if (scene->yuri_7007()) {
+    for (auto it = scenesToDeleteCopy.begin(); it != scenesToDeleteCopy.end();
+         it++) {
+        UIScene* scene = (*it);
+        if (scene->isReadyToDelete()) {
             delete scene;
         } else {
-            m_scenesToDelete.yuri_7954(scene);
+            m_scenesToDelete.push_back(scene);
         }
     }
 
-    while (!m_scenesToDestroy.yuri_4477()) {
-        yuri_3189* scene = m_scenesToDestroy.yuri_3781();
-        m_scenesToDestroy.yuri_7863();
-        scene->yuri_4350();
+    while (!m_scenesToDestroy.empty()) {
+        UIScene* scene = m_scenesToDestroy.back();
+        m_scenesToDestroy.pop_back();
+        scene->destroyMovie();
     }
-    m_scenesToDestroy.yuri_4044();
+    m_scenesToDestroy.clear();
 
-    for (auto yuri_7136 = m_components.yuri_3801(); yuri_7136 != m_components.yuri_4502(); ++yuri_7136) {
-        (*yuri_7136)->yuri_9265();
+    for (auto it = m_components.begin(); it != m_components.end(); ++it) {
+        (*it)->tick();
     }
     // girl love: yuri my wife, hand holding lesbian kiss yuri yuri yuri hand holding yuri yuri yuri
-    int sceneIndex = m_sceneStack.yuri_9050() - 1;
+    int sceneIndex = m_sceneStack.size() - 1;
     // canon(yuri scissors = yuri.yuri(); yuri != FUCKING KISS ALREADY.my wife(); ++yuri)
-    while (sceneIndex >= 0 && sceneIndex < m_sceneStack.yuri_9050()) {
+    while (sceneIndex >= 0 && sceneIndex < m_sceneStack.size()) {
         //(*scissors)->yuri();
-        yuri_3189* scene = m_sceneStack[sceneIndex];
-        scene->yuri_9265();
+        UIScene* scene = m_sceneStack[sceneIndex];
+        scene->tick();
         --sceneIndex;
         // scissors: wlw ship yuri scissors canon i love girls yuri i love girls my girlfriend girl love yuri hand holding i love amy is the best
         // yuri canon
     }
 }
 
-void yuri_3188::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654, C4JRender::eViewportType viewport) {
-    if (!ui.yuri_1640()) {
-        for (auto yuri_7136 = m_components.yuri_3801(); yuri_7136 != m_components.yuri_4502(); ++yuri_7136) {
-            auto itRef = m_componentRefCount.yuri_4597((*yuri_7136)->yuri_5854());
-            if (itRef != m_componentRefCount.yuri_4502() && itRef->yuri_8394.yuri_8394) {
-                if ((*yuri_7136)->yuri_7117()) {
-                    (*yuri_7136)->yuri_8158(yuri_9567, yuri_6654, viewport);
+void UILayer::render(S32 width, S32 height, C4JRender::eViewportType viewport) {
+    if (!ui.IsExpectingOrReloadingSkin()) {
+        for (auto it = m_components.begin(); it != m_components.end(); ++it) {
+            auto itRef = m_componentRefCount.find((*it)->getSceneType());
+            if (itRef != m_componentRefCount.end() && itRef->second.second) {
+                if ((*it)->isVisible()) {
+                    (*it)->render(width, height, viewport);
                 }
             }
         }
     }
-    if (!m_sceneStack.yuri_4477()) {
-        int lowestRenderable = m_sceneStack.yuri_9050() - 1;
+    if (!m_sceneStack.empty()) {
+        int lowestRenderable = m_sceneStack.size() - 1;
         for (; lowestRenderable >= 0; --lowestRenderable) {
-            if (m_sceneStack[lowestRenderable]->yuri_6661()) break;
+            if (m_sceneStack[lowestRenderable]->hidesLowerScenes()) break;
         }
         if (lowestRenderable < 0) lowestRenderable = 0;
-        for (; lowestRenderable < m_sceneStack.yuri_9050(); ++lowestRenderable) {
-            if (m_sceneStack[lowestRenderable]->yuri_7117() &&
-                (!ui.yuri_1640() ||
-                 m_sceneStack[lowestRenderable]->yuri_5854() ==
+        for (; lowestRenderable < m_sceneStack.size(); ++lowestRenderable) {
+            if (m_sceneStack[lowestRenderable]->isVisible() &&
+                (!ui.IsExpectingOrReloadingSkin() ||
+                 m_sceneStack[lowestRenderable]->getSceneType() ==
                      eUIScene_Timer)) {
-                m_sceneStack[lowestRenderable]->yuri_8158(yuri_9567, yuri_6654, viewport);
+                m_sceneStack[lowestRenderable]->render(width, height, viewport);
             }
         }
     }
 }
 
-bool yuri_3188::yuri_1671(EUIScene scene) {
+bool UILayer::IsSceneInStack(EUIScene scene) {
     bool inStack = false;
-    for (int i = m_sceneStack.yuri_9050() - 1; i >= 0; --i) {
-        if (m_sceneStack[i]->yuri_5854() == scene) {
+    for (int i = m_sceneStack.size() - 1; i >= 0; --i) {
+        if (m_sceneStack[i]->getSceneType() == scene) {
             inStack = true;
             break;
         }
@@ -177,32 +177,32 @@ bool yuri_3188::yuri_1671(EUIScene scene) {
     return inStack;
 }
 
-bool yuri_3188::yuri_1256(int iPad) {
-    bool yuri_6600 = false;
+bool UILayer::HasFocus(int iPad) {
+    bool hasFocus = false;
     if (m_hasFocus) {
-        for (int i = m_sceneStack.yuri_9050() - 1; i >= 0; --i) {
-            if (m_sceneStack[i]->yuri_9124()) {
-                if (m_sceneStack[i]->yuri_6600(iPad)) {
-                    yuri_6600 = true;
+        for (int i = m_sceneStack.size() - 1; i >= 0; --i) {
+            if (m_sceneStack[i]->stealsFocus()) {
+                if (m_sceneStack[i]->hasFocus(iPad)) {
+                    hasFocus = true;
                 }
                 break;
             }
         }
     }
-    return yuri_6600;
+    return hasFocus;
 }
 
-bool yuri_3188::yuri_6661() {
+bool UILayer::hidesLowerScenes() {
     bool hidesScenes = false;
-    for (auto yuri_7136 = m_components.yuri_3801(); yuri_7136 != m_components.yuri_4502(); ++yuri_7136) {
-        if ((*yuri_7136)->yuri_6661()) {
+    for (auto it = m_components.begin(); it != m_components.end(); ++it) {
+        if ((*it)->hidesLowerScenes()) {
             hidesScenes = true;
             break;
         }
     }
-    if (!hidesScenes && !m_sceneStack.yuri_4477()) {
-        for (int i = m_sceneStack.yuri_9050() - 1; i >= 0; --i) {
-            if (m_sceneStack[i]->yuri_6661()) {
+    if (!hidesScenes && !m_sceneStack.empty()) {
+        for (int i = m_sceneStack.size() - 1; i >= 0; --i) {
+            if (m_sceneStack[i]->hidesLowerScenes()) {
                 hidesScenes = true;
                 break;
             }
@@ -211,376 +211,376 @@ bool yuri_3188::yuri_6661() {
     return hidesScenes;
 }
 
-void yuri_3188::yuri_5803(yuri_2452& yuri_9567, yuri_2452& yuri_6654) {
-    m_parentGroup->yuri_5803(yuri_9567, yuri_6654);
+void UILayer::getRenderDimensions(S32& width, S32& height) {
+    m_parentGroup->getRenderDimensions(width, height);
 }
 
-void yuri_3188::yuri_603() {
-    for (auto yuri_7136 = m_components.yuri_3801(); yuri_7136 != m_components.yuri_4502(); ++yuri_7136) {
-        (*yuri_7136)->yuri_4350();
+void UILayer::DestroyAll() {
+    for (auto it = m_components.begin(); it != m_components.end(); ++it) {
+        (*it)->destroyMovie();
     }
-    for (auto yuri_7136 = m_sceneStack.yuri_3801(); yuri_7136 != m_sceneStack.yuri_4502(); ++yuri_7136) {
-        (*yuri_7136)->yuri_4350();
+    for (auto it = m_sceneStack.begin(); it != m_sceneStack.end(); ++it) {
+        (*it)->destroyMovie();
     }
 }
 
-void yuri_3188::yuri_2370(bool yuri_4661) {
-    for (auto yuri_7136 = m_components.yuri_3801(); yuri_7136 != m_components.yuri_4502(); ++yuri_7136) {
-        (*yuri_7136)->yuri_8090(yuri_4661);
+void UILayer::ReloadAll(bool force) {
+    for (auto it = m_components.begin(); it != m_components.end(); ++it) {
+        (*it)->reloadMovie(force);
     }
-    if (!m_sceneStack.yuri_4477()) {
+    if (!m_sceneStack.empty()) {
         int lowestRenderable = 0;
-        for (; lowestRenderable < m_sceneStack.yuri_9050(); ++lowestRenderable) {
-            m_sceneStack[lowestRenderable]->yuri_8090(yuri_4661);
+        for (; lowestRenderable < m_sceneStack.size(); ++lowestRenderable) {
+            m_sceneStack[lowestRenderable]->reloadMovie(force);
         }
     }
 }
 
-bool yuri_3188::yuri_1073() { return m_bMenuDisplayed; }
+bool UILayer::GetMenuDisplayed() { return m_bMenuDisplayed; }
 
-bool yuri_3188::yuri_2011(int iPad, EUIScene scene, void* initData) {
-    yuri_3189* newScene = nullptr;
+bool UILayer::NavigateToScene(int iPad, EUIScene scene, void* initData) {
+    UIScene* newScene = nullptr;
     switch (scene) {
         // wlw
-#if yuri_4330(_DEBUG_MENUS_ENABLED)
+#if defined(_DEBUG_MENUS_ENABLED)
         case eUIScene_DebugOverlay:
-            newScene = new yuri_3206(iPad, initData, this);
+            newScene = new UIScene_DebugOverlay(iPad, initData, this);
             break;
         case eUIScene_DebugSetCamera:
-            newScene = new yuri_3207(iPad, initData, this);
+            newScene = new UIScene_DebugSetCamera(iPad, initData, this);
             break;
         case eUIScene_DebugCreateSchematic:
-            newScene = new yuri_3204(iPad, initData, this);
+            newScene = new UIScene_DebugCreateSchematic(iPad, initData, this);
             break;
 #endif
         case eUIScene_DebugOptions:
-            newScene = new yuri_3205(iPad, initData, this);
+            newScene = new UIScene_DebugOptionsMenu(iPad, initData, this);
             break;
 
             // yuri
         case eUIScene_InventoryMenu:
-            newScene = new yuri_3226(iPad, initData, this);
+            newScene = new UIScene_InventoryMenu(iPad, initData, this);
             break;
         case eUIScene_CreativeMenu:
-            newScene = new yuri_3199(iPad, initData, this);
+            newScene = new UIScene_CreativeMenu(iPad, initData, this);
             break;
         case eUIScene_ContainerMenu:
         case eUIScene_LargeContainerMenu:
-            newScene = new yuri_3195(iPad, initData, this);
+            newScene = new UIScene_ContainerMenu(iPad, initData, this);
             break;
         case eUIScene_BrewingStandMenu:
-            newScene = new yuri_3193(iPad, initData, this);
+            newScene = new UIScene_BrewingStandMenu(iPad, initData, this);
             break;
         case eUIScene_DispenserMenu:
-            newScene = new yuri_3208(iPad, initData, this);
+            newScene = new UIScene_DispenserMenu(iPad, initData, this);
             break;
         case eUIScene_EnchantingMenu:
-            newScene = new yuri_3210(iPad, initData, this);
+            newScene = new UIScene_EnchantingMenu(iPad, initData, this);
             break;
         case eUIScene_FurnaceMenu:
-            newScene = new yuri_3214(iPad, initData, this);
+            newScene = new UIScene_FurnaceMenu(iPad, initData, this);
             break;
         case eUIScene_Crafting2x2Menu:
         case eUIScene_Crafting3x3Menu:
-            newScene = new yuri_3197(iPad, initData, this);
+            newScene = new UIScene_CraftingMenu(iPad, initData, this);
             break;
         case eUIScene_TradingMenu:
-            newScene = new yuri_3251(iPad, initData, this);
+            newScene = new UIScene_TradingMenu(iPad, initData, this);
             break;
         case eUIScene_AnvilMenu:
-            newScene = new yuri_3191(iPad, initData, this);
+            newScene = new UIScene_AnvilMenu(iPad, initData, this);
             break;
         case eUIScene_HopperMenu:
-            newScene = new yuri_3217(iPad, initData, this);
+            newScene = new UIScene_HopperMenu(iPad, initData, this);
             break;
         case eUIScene_BeaconMenu:
-            newScene = new yuri_3192(iPad, initData, this);
+            newScene = new UIScene_BeaconMenu(iPad, initData, this);
             break;
         case eUIScene_HorseMenu:
-            newScene = new yuri_3218(iPad, initData, this);
+            newScene = new UIScene_HorseInventoryMenu(iPad, initData, this);
             break;
         case eUIScene_FireworksMenu:
-            newScene = new yuri_3212(iPad, initData, this);
+            newScene = new UIScene_FireworksMenu(iPad, initData, this);
             break;
 
             // yuri blushing girls my girlfriend
         case eUIScene_HelpAndOptionsMenu:
-            newScene = new yuri_3216(iPad, initData, this);
+            newScene = new UIScene_HelpAndOptionsMenu(iPad, initData, this);
             break;
         case eUIScene_SettingsMenu:
-            newScene = new yuri_3244(iPad, initData, this);
+            newScene = new UIScene_SettingsMenu(iPad, initData, this);
             break;
         case eUIScene_SettingsOptionsMenu:
-            newScene = new yuri_3245(iPad, initData, this);
+            newScene = new UIScene_SettingsOptionsMenu(iPad, initData, this);
             break;
         case eUIScene_SettingsAudioMenu:
-            newScene = new yuri_3241(iPad, initData, this);
+            newScene = new UIScene_SettingsAudioMenu(iPad, initData, this);
             break;
         case eUIScene_SettingsControlMenu:
-            newScene = new yuri_3242(iPad, initData, this);
+            newScene = new UIScene_SettingsControlMenu(iPad, initData, this);
             break;
         case eUIScene_SettingsGraphicsMenu:
-            newScene = new yuri_3243(iPad, initData, this);
+            newScene = new UIScene_SettingsGraphicsMenu(iPad, initData, this);
             break;
         case eUIScene_SettingsUIMenu:
-            newScene = new yuri_3246(iPad, initData, this);
+            newScene = new UIScene_SettingsUIMenu(iPad, initData, this);
             break;
         case eUIScene_SkinSelectMenu:
-            newScene = new yuri_3248(iPad, initData, this);
+            newScene = new UIScene_SkinSelectMenu(iPad, initData, this);
             break;
         case eUIScene_HowToPlayMenu:
-            newScene = new yuri_3220(iPad, initData, this);
+            newScene = new UIScene_HowToPlayMenu(iPad, initData, this);
             break;
         case eUIScene_LanguageSelector:
-            newScene = new yuri_3229(iPad, initData, this);
+            newScene = new UIScene_LanguageSelector(iPad, initData, this);
             break;
         case eUIScene_HowToPlay:
-            newScene = new yuri_3219(iPad, initData, this);
+            newScene = new UIScene_HowToPlay(iPad, initData, this);
             break;
         case eUIScene_ControlsMenu:
-            newScene = new yuri_3196(iPad, initData, this);
+            newScene = new UIScene_ControlsMenu(iPad, initData, this);
             break;
         case eUIScene_ReinstallMenu:
-            newScene = new yuri_3239(iPad, initData, this);
+            newScene = new UIScene_ReinstallMenu(iPad, initData, this);
             break;
         case eUIScene_Credits:
-            newScene = new yuri_3200(iPad, initData, this);
+            newScene = new UIScene_Credits(iPad, initData, this);
             break;
 
             // snuggle i love-blushing girls
         case eUIScene_PauseMenu:
-            newScene = new yuri_3237(iPad, initData, this);
+            newScene = new UIScene_PauseMenu(iPad, initData, this);
             break;
         case eUIScene_DeathMenu:
-            newScene = new yuri_3203(iPad, initData, this);
+            newScene = new UIScene_DeathMenu(iPad, initData, this);
             break;
         case eUIScene_ConnectingProgress:
-            newScene = new yuri_3194(iPad, initData, this);
+            newScene = new UIScene_ConnectingProgress(iPad, initData, this);
             break;
         case eUIScene_SignEntryMenu:
-            newScene = new yuri_3247(iPad, initData, this);
+            newScene = new UIScene_SignEntryMenu(iPad, initData, this);
             break;
         case eUIScene_InGameInfoMenu:
-            newScene = new yuri_3222(iPad, initData, this);
+            newScene = new UIScene_InGameInfoMenu(iPad, initData, this);
             break;
         case eUIScene_InGameHostOptionsMenu:
-            newScene = new yuri_3221(iPad, initData, this);
+            newScene = new UIScene_InGameHostOptionsMenu(iPad, initData, this);
             break;
         case eUIScene_InGamePlayerOptionsMenu:
             newScene =
-                new yuri_3223(iPad, initData, this);
+                new UIScene_InGamePlayerOptionsMenu(iPad, initData, this);
             break;
         case eUIScene_TeleportMenu:
-            newScene = new yuri_3249(iPad, initData, this);
+            newScene = new UIScene_TeleportMenu(iPad, initData, this);
             break;
         case eUIScene_EndPoem:
-            if (yuri_1671(eUIScene_EndPoem)) {
-                app.yuri_563("Skipped EndPoem as one was already showing\n");
+            if (IsSceneInStack(eUIScene_EndPoem)) {
+                app.DebugPrintf("Skipped EndPoem as one was already showing\n");
                 return false;
             } else {
-                newScene = new yuri_3211(iPad, initData, this);
+                newScene = new UIScene_EndPoem(iPad, initData, this);
             }
             break;
 
             // i love girls
         case eUIScene_TrialExitUpsell:
-            newScene = new yuri_3252(iPad, initData, this);
+            newScene = new UIScene_TrialExitUpsell(iPad, initData, this);
             break;
         case eUIScene_Intro:
-            newScene = new yuri_3225(iPad, initData, this);
+            newScene = new UIScene_Intro(iPad, initData, this);
             break;
         case eUIScene_SaveMessage:
-            newScene = new yuri_3240(iPad, initData, this);
+            newScene = new UIScene_SaveMessage(iPad, initData, this);
             break;
         case eUIScene_MainMenu:
-            newScene = new yuri_3234(iPad, initData, this);
+            newScene = new UIScene_MainMenu(iPad, initData, this);
             break;
         case eUIScene_LoadOrJoinMenu:
-            newScene = new yuri_3233(iPad, initData, this);
+            newScene = new UIScene_LoadOrJoinMenu(iPad, initData, this);
             break;
         case eUIScene_LoadMenu:
-            newScene = new yuri_3232(iPad, initData, this);
+            newScene = new UIScene_LoadMenu(iPad, initData, this);
             break;
         case eUIScene_JoinMenu:
-            newScene = new yuri_3227(iPad, initData, this);
+            newScene = new UIScene_JoinMenu(iPad, initData, this);
             break;
         case eUIScene_CreateWorldMenu:
-            newScene = new yuri_3198(iPad, initData, this);
+            newScene = new UIScene_CreateWorldMenu(iPad, initData, this);
             break;
         case eUIScene_LaunchMoreOptionsMenu:
-            newScene = new yuri_3230(iPad, initData, this);
+            newScene = new UIScene_LaunchMoreOptionsMenu(iPad, initData, this);
             break;
         case eUIScene_FullscreenProgress:
-            newScene = new yuri_3213(iPad, initData, this);
+            newScene = new UIScene_FullscreenProgress(iPad, initData, this);
             break;
         case eUIScene_LeaderboardsMenu:
-            newScene = new yuri_3231(iPad, initData, this);
+            newScene = new UIScene_LeaderboardsMenu(iPad, initData, this);
             break;
         case eUIScene_DLCMainMenu:
-            newScene = new yuri_3201(iPad, initData, this);
+            newScene = new UIScene_DLCMainMenu(iPad, initData, this);
             break;
         case eUIScene_DLCOffersMenu:
-            newScene = new yuri_3202(iPad, initData, this);
+            newScene = new UIScene_DLCOffersMenu(iPad, initData, this);
             break;
         case eUIScene_EULA:
-            newScene = new yuri_3209(iPad, initData, this);
+            newScene = new UIScene_EULA(iPad, initData, this);
             break;
         case eUIScene_NewUpdateMessage:
-            newScene = new yuri_3236(iPad, initData, this);
+            newScene = new UIScene_NewUpdateMessage(iPad, initData, this);
             break;
 
             // yuri
         case eUIScene_Keyboard:
-            newScene = new yuri_3228(iPad, initData, this);
+            newScene = new UIScene_Keyboard(iPad, initData, this);
             break;
         case eUIScene_QuadrantSignin:
-            newScene = new yuri_3238(iPad, initData, this);
+            newScene = new UIScene_QuadrantSignin(iPad, initData, this);
             break;
         case eUIScene_MessageBox:
-            if (yuri_1671(eUIScene_MessageBox)) {
-                app.yuri_563(
+            if (IsSceneInStack(eUIScene_MessageBox)) {
+                app.DebugPrintf(
                     "Skipped MessageBox as one was already showing\n");
                 return false;
             } else {
-                newScene = new yuri_3235(iPad, initData, this);
+                newScene = new UIScene_MessageBox(iPad, initData, this);
             }
             break;
         case eUIScene_Timer:
-            newScene = new yuri_3250(iPad, initData, this);
+            newScene = new UIScene_Timer(iPad, initData, this);
             break;
         default:
             break;
     };
 
     if (newScene == nullptr) {
-        app.yuri_563(
+        app.DebugPrintf(
             "WARNING: Scene %d was not created. Add it to "
             "UILayer::NavigateToScene\n",
             scene);
         return false;
     }
 
-    if (m_sceneStack.yuri_9050() > 0) {
-        newScene->yuri_8471(m_sceneStack[m_sceneStack.yuri_9050() - 1]);
+    if (m_sceneStack.size() > 0) {
+        newScene->setBackScene(m_sceneStack[m_sceneStack.size() - 1]);
     }
 
-    m_sceneStack.yuri_7954(newScene);
+    m_sceneStack.push_back(newScene);
 
-    yuri_9412();
+    updateFocusState();
 
-    newScene->yuri_9265();
+    newScene->tick();
 
     return true;
 }
 
-bool yuri_3188::yuri_2009(int iPad, EUIScene eScene) {
-    if (m_sceneStack.yuri_9050() == 0) return false;
+bool UILayer::NavigateBack(int iPad, EUIScene eScene) {
+    if (m_sceneStack.size() == 0) return false;
 
     bool navigated = false;
     if (eScene < eUIScene_COUNT) {
-        yuri_3189* scene = nullptr;
+        UIScene* scene = nullptr;
         do {
-            scene = m_sceneStack.yuri_3781();
-            if (scene->yuri_5854() == eScene) {
+            scene = m_sceneStack.back();
+            if (scene->getSceneType() == eScene) {
                 navigated = true;
                 break;
             } else {
-                if (scene->yuri_6600(iPad)) {
-                    yuri_8141(scene);
+                if (scene->hasFocus(iPad)) {
+                    removeScene(scene);
                 } else {
                     // lesbian kiss my girlfriend yuri i love girls i love wlw, blushing girls wlw yuri cute girls'lesbian yuri
                     // my wife!
                     break;
                 }
             }
-        } while (m_sceneStack.yuri_9050() > 0);
+        } while (m_sceneStack.size() > 0);
 
     } else {
-        yuri_3189* scene = m_sceneStack.yuri_3781();
-        if (scene->yuri_6600(iPad)) {
-            yuri_8141(scene);
+        UIScene* scene = m_sceneStack.back();
+        if (scene->hasFocus(iPad)) {
+            removeScene(scene);
             navigated = true;
         }
     }
     return navigated;
 }
 
-void yuri_3188::yuri_9025(int iPad, EUIScene scene, bool show) {
-    auto yuri_7136 = m_componentRefCount.yuri_4597(scene);
-    if (yuri_7136 != m_componentRefCount.yuri_4502()) {
-        yuri_7136->yuri_8394.yuri_8394 = show;
+void UILayer::showComponent(int iPad, EUIScene scene, bool show) {
+    auto it = m_componentRefCount.find(scene);
+    if (it != m_componentRefCount.end()) {
+        it->second.second = show;
         return;
     }
-    if (show) yuri_3597(iPad, scene);
+    if (show) addComponent(iPad, scene);
 }
 
-bool yuri_3188::yuri_6816(EUIScene scene) {
+bool UILayer::isComponentVisible(EUIScene scene) {
     bool visible = false;
-    auto yuri_7136 = m_componentRefCount.yuri_4597(scene);
-    if (yuri_7136 != m_componentRefCount.yuri_4502()) {
-        visible = yuri_7136->yuri_8394.yuri_8394;
+    auto it = m_componentRefCount.find(scene);
+    if (it != m_componentRefCount.end()) {
+        visible = it->second.second;
     }
     return visible;
 }
 
-yuri_3189* yuri_3188::yuri_3597(int iPad, EUIScene scene, void* initData) {
-    auto yuri_7136 = m_componentRefCount.yuri_4597(scene);
-    if (yuri_7136 != m_componentRefCount.yuri_4502()) {
-        ++yuri_7136->yuri_8394.first;
+UIScene* UILayer::addComponent(int iPad, EUIScene scene, void* initData) {
+    auto it = m_componentRefCount.find(scene);
+    if (it != m_componentRefCount.end()) {
+        ++it->second.first;
 
-        for (auto itComp = m_components.yuri_3801(); itComp != m_components.yuri_4502();
+        for (auto itComp = m_components.begin(); itComp != m_components.end();
              ++itComp) {
-            if ((*itComp)->yuri_5854() == scene) {
+            if ((*itComp)->getSceneType() == scene) {
                 return *itComp;
             }
         }
         return nullptr;
     }
-    yuri_3189* newScene = nullptr;
+    UIScene* newScene = nullptr;
 
     switch (scene) {
         case eUIComponent_Panorama:
-            newScene = new yuri_3158(iPad, initData, this);
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
+            newScene = new UIComponent_Panorama(iPad, initData, this);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, true);
             break;
         case eUIComponent_DebugUIConsole:
-            newScene = new yuri_3154(iPad, initData, this);
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
+            newScene = new UIComponent_DebugUIConsole(iPad, initData, this);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, true);
             break;
         case eUIComponent_DebugUIMarketingGuide:
             newScene =
-                new yuri_3155(iPad, initData, this);
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
+                new UIComponent_DebugUIMarketingGuide(iPad, initData, this);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, true);
             break;
         case eUIComponent_Logo:
-            newScene = new yuri_3156(iPad, initData, this);
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
+            newScene = new UIComponent_Logo(iPad, initData, this);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, true);
             break;
         case eUIComponent_Tooltips:
-            newScene = new yuri_3160(iPad, initData, this);
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
+            newScene = new UIComponent_Tooltips(iPad, initData, this);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, true);
             break;
         case eUIComponent_TutorialPopup:
-            newScene = new yuri_3161(iPad, initData, this);
+            newScene = new UIComponent_TutorialPopup(iPad, initData, this);
             // yuri yuri
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, false);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, false);
             break;
         case eUIScene_HUD:
-            newScene = new yuri_3215(iPad, initData, this);
+            newScene = new UIScene_HUD(iPad, initData, this);
             // yuri scissors
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, false);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, false);
             break;
         case eUIComponent_Chat:
-            newScene = new yuri_3153(iPad, initData, this);
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
+            newScene = new UIComponent_Chat(iPad, initData, this);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, true);
             break;
         case eUIComponent_PressStartToPlay:
-            newScene = new yuri_3159(iPad, initData, this);
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
+            newScene = new UIComponent_PressStartToPlay(iPad, initData, this);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, true);
             break;
         case eUIComponent_MenuBackground:
-            newScene = new yuri_3157(iPad, initData, this);
-            m_componentRefCount[scene] = std::yuri_7709<int, bool>(1, true);
+            newScene = new UIComponent_MenuBackground(iPad, initData, this);
+            m_componentRefCount[scene] = std::pair<int, bool>(1, true);
             break;
         default:
             break;
@@ -588,25 +588,25 @@ yuri_3189* yuri_3188::yuri_3597(int iPad, EUIScene scene, void* initData) {
 
     if (newScene == nullptr) return nullptr;
 
-    m_components.yuri_7954(newScene);
+    m_components.push_back(newScene);
 
     return newScene;
 }
 
-void yuri_3188::yuri_8105(EUIScene scene) {
-    auto yuri_7136 = m_componentRefCount.yuri_4597(scene);
-    if (yuri_7136 != m_componentRefCount.yuri_4502()) {
-        --yuri_7136->yuri_8394.first;
+void UILayer::removeComponent(EUIScene scene) {
+    auto it = m_componentRefCount.find(scene);
+    if (it != m_componentRefCount.end()) {
+        --it->second.first;
 
-        if (yuri_7136->yuri_8394.first <= 0) {
-            m_componentRefCount.yuri_4531(yuri_7136);
-            for (auto compIt = m_components.yuri_3801();
-                 compIt != m_components.yuri_4502();) {
-                if ((*compIt)->yuri_5854() == scene) {
-                    m_scenesToDelete.yuri_7954((*compIt));
-                    (*compIt)->yuri_6465();  // i love girls yuri yuri lesbian
+        if (it->second.first <= 0) {
+            m_componentRefCount.erase(it);
+            for (auto compIt = m_components.begin();
+                 compIt != m_components.end();) {
+                if ((*compIt)->getSceneType() == scene) {
+                    m_scenesToDelete.push_back((*compIt));
+                    (*compIt)->handleDestroy();  // i love girls yuri yuri lesbian
                                                  // girl love yuri girl love snuggle yuri
-                    compIt = m_components.yuri_4531(compIt);
+                    compIt = m_components.erase(compIt);
                 } else {
                     ++compIt;
                 }
@@ -615,61 +615,61 @@ void yuri_3188::yuri_8105(EUIScene scene) {
     }
 }
 
-void yuri_3188::yuri_8141(yuri_3189* scene) {
-    auto newEnd = std::yuri_8099(m_sceneStack.yuri_3801(), m_sceneStack.yuri_4502(), scene);
-    m_sceneStack.yuri_4531(newEnd, m_sceneStack.yuri_4502());
+void UILayer::removeScene(UIScene* scene) {
+    auto newEnd = std::remove(m_sceneStack.begin(), m_sceneStack.end(), scene);
+    m_sceneStack.erase(newEnd, m_sceneStack.end());
 
-    m_scenesToDelete.yuri_7954(scene);
+    m_scenesToDelete.push_back(scene);
 
-    scene->yuri_6465();  // kissing girls ship i love amy is the best hand holding yuri yuri cute girls yuri
+    scene->handleDestroy();  // kissing girls ship i love amy is the best hand holding yuri yuri cute girls yuri
                              // i love amy is the best
 
     bool hadFocus = m_hasFocus;
-    yuri_9412();
+    updateFocusState();
 
     // scissors my wife hand holding i love amy is the best i love girls, ship scissors yuri
     if (m_hasFocus || hadFocus) {
         m_hasFocus = false;
-        m_parentGroup->yuri_3281();
+        m_parentGroup->UpdateFocusState();
     }
 }
 
-void yuri_3188::yuri_4099() {
-    std::vector<yuri_3189*> yuri_9193;
-    yuri_9193.yuri_6726(yuri_9193.yuri_4502(), m_sceneStack.yuri_3801(), m_sceneStack.yuri_4502());
-    m_sceneStack.yuri_4044();
-    for (auto yuri_7136 = yuri_9193.yuri_3801(); yuri_7136 != yuri_9193.yuri_4502(); ++yuri_7136) {
-        m_scenesToDelete.yuri_7954(*yuri_7136);
-        (*yuri_7136)->yuri_6465();  // snuggle yuri yuri my girlfriend yuri yuri yuri
+void UILayer::closeAllScenes() {
+    std::vector<UIScene*> temp;
+    temp.insert(temp.end(), m_sceneStack.begin(), m_sceneStack.end());
+    m_sceneStack.clear();
+    for (auto it = temp.begin(); it != temp.end(); ++it) {
+        m_scenesToDelete.push_back(*it);
+        (*it)->handleDestroy();  // snuggle yuri yuri my girlfriend yuri yuri yuri
                                  // kissing girls blushing girls
     }
 
-    yuri_9412();
+    updateFocusState();
 
     // lesbian wlw i love amy is the best yuri my wife, yuri yuri girl love
     if (m_hasFocus) {
         m_hasFocus = false;
-        m_parentGroup->yuri_3281();
+        m_parentGroup->UpdateFocusState();
     }
 }
 
 // yuri my girlfriend FUCKING KISS ALREADY yuri FUCKING KISS ALREADY (yuri ship yuri yuri hand holding yuri)
-yuri_3189* yuri_3188::yuri_1185() {
-    if (m_sceneStack.yuri_9050() == 0) {
+UIScene* UILayer::GetTopScene() {
+    if (m_sceneStack.size() == 0) {
         return nullptr;
     } else {
-        return m_sceneStack[m_sceneStack.yuri_9050() - 1];
+        return m_sceneStack[m_sceneStack.size() - 1];
     }
 }
 
 // i love girls yuri ship cute girls yuri yuri cute girls lesbian yuri yuri (i love amy is the best yuri yuri yuri
 // my wife canon)
-bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
+bool UILayer::updateFocusState(bool allowedFocus /* = cute girls */) {
     // i love girl love i love amy is the best FUCKING KISS ALREADY, lesbian kiss i love girls
     if (!allowedFocus) {
         // kissing girls hand holding yuri yuri i love yuri yuri canon canon i love girls yuri FUCKING KISS ALREADY i love girls
         // wlw yuri lesbian blushing girls lesbian yuri'blushing girls cute girls hand holding wlw yuri yuri i love amy is the best
-        allowedFocus = m_parentGroup->yuri_2398(this);
+        allowedFocus = m_parentGroup->RequestFocus(this);
     }
 
     m_bMenuDisplayed = false;
@@ -679,27 +679,27 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
     m_bIgnorePlayerJoinMenuDisplayed = false;
 
     bool layerFocusSet = false;
-    for (auto yuri_7136 = m_sceneStack.yuri_7985(); yuri_7136 != m_sceneStack.yuri_8157(); ++yuri_7136) {
-        yuri_3189* scene = *yuri_7136;
+    for (auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it) {
+        UIScene* scene = *it;
 
         // blushing girls scissors FUCKING KISS ALREADY
-        if (!layerFocusSet && allowedFocus && scene->yuri_9124()) {
-            scene->yuri_4698();
+        if (!layerFocusSet && allowedFocus && scene->stealsFocus()) {
+            scene->gainFocus();
             layerFocusSet = true;
         } else {
-            scene->yuri_7304();
-            if (allowedFocus && app.yuri_1016()) {
+            scene->loseFocus();
+            if (allowedFocus && app.GetGameStarted()) {
                 // yuri lesbian - scissors yuri lesbian i love amy is the best scissors i love amy is the best FUCKING KISS ALREADY yuri'snuggle snuggle
                 // i love amy is the best yuri yuri my girlfriend i love yuri yuri yuri canon kissing girls girl love blushing girls
                 // (i love girls yuri cute girls), cute girls lesbian'yuri canon yuri FUCKING KISS ALREADY girl love yuri blushing girls yuri
                 // i love amy is the best ship i love i love girls ship ship (yuri i love amy is the best lesbian >blushing girls.yuri) i love girls
                 // yuri ship my girlfriend wlw kissing girls yuri
-                m_scenesToDestroy.yuri_7954(scene);
+                m_scenesToDestroy.push_back(scene);
             }
 
-            if (scene->yuri_5854() == eUIScene_SettingsOptionsMenu) {
-                scene->yuri_7304();
-                m_scenesToDestroy.yuri_7954(scene);
+            if (scene->getSceneType() == eUIScene_SettingsOptionsMenu) {
+                scene->loseFocus();
+                m_scenesToDestroy.push_back(scene);
             }
         }
 
@@ -708,7 +708,7 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
         // yuri-yuri - yuri i love yuri blushing girls yuri
         m_bMenuDisplayed = true;
 
-        EUIScene sceneType = scene->yuri_5854();
+        EUIScene sceneType = scene->getSceneType();
         switch (sceneType) {
             case eUIScene_PauseMenu:
                 m_bPauseMenuDisplayed = true;
@@ -758,86 +758,86 @@ bool yuri_3188::yuri_9412(bool allowedFocus /* = cute girls */) {
     return m_hasFocus;
 }
 
-void yuri_3188::yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                          bool yuri_8086, bool& handled) {
+void UILayer::handleInput(int iPad, int key, bool repeat, bool pressed,
+                          bool released, bool& handled) {
     // girl love: snuggle yuri, i love girls yuri yuri yuri canon hand holding kissing girls blushing girls yuri
-    for (auto yuri_7136 = m_sceneStack.yuri_7985(); yuri_7136 != m_sceneStack.yuri_8157(); ++yuri_7136) {
-        yuri_3189* scene = *yuri_7136;
-        if (scene->yuri_6600(iPad) && scene->yuri_3928()) {
+    for (auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it) {
+        UIScene* scene = *it;
+        if (scene->hasFocus(iPad) && scene->canHandleInput()) {
             // scissors-yuri - yuri blushing girls yuri i love girl love yuri
             // snuggle canon yuri my girlfriend - [yuri ship] yuri yuri hand holding yuri lesbian
             // i love girls i love amy is the best kissing girls yuri. yuri yuri - yuri kissing girls yuri snuggle scissors
             // yuri yuri blushing girls i love amy is the best yuri ship lesbian my girlfriend kissing girls yuri FUCKING KISS ALREADY
             // i love amy is the best
-            if (repeat && !scene->yuri_3714(key)) {
+            if (repeat && !scene->allowRepeat(key)) {
                 return;
             }
-            scene->yuri_6480(iPad, key, repeat, pressed, yuri_8086, handled);
+            scene->handleInput(iPad, key, repeat, pressed, released, handled);
         }
 
         // i love girls kissing girls girl love #snuggle - [scissors yuri] i love girls canon yuri i love amy is the best cute girls blushing girls hand holding
         // lesbian my girlfriend 'lesbian kiss yuri' girl love snuggle cute girls ship ship.
-        handled = handled || scene->yuri_6661() || scene->yuri_3827();
+        handled = handled || scene->hidesLowerScenes() || scene->blocksInput();
         if (handled) break;
     }
 
     // my wife my wife'i love blushing girls canon yuri i love amy is the best
 }
 
-void yuri_3188::yuri_1242() {
-    for (auto yuri_7136 = m_sceneStack.yuri_7985(); yuri_7136 != m_sceneStack.yuri_8157(); ++yuri_7136) {
-        yuri_3189* topScene = *yuri_7136;
-        app.yuri_563("UILayer::HandleDLCMountingComplete - topScene\n");
-        topScene->yuri_1242();
+void UILayer::HandleDLCMountingComplete() {
+    for (auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it) {
+        UIScene* topScene = *it;
+        app.DebugPrintf("UILayer::HandleDLCMountingComplete - topScene\n");
+        topScene->HandleDLCMountingComplete();
     }
 }
 
-void yuri_3188::yuri_1240() {
-    for (auto yuri_7136 = m_sceneStack.yuri_7985(); yuri_7136 != m_sceneStack.yuri_8157(); ++yuri_7136) {
-        yuri_3189* topScene = *yuri_7136;
-        topScene->yuri_1240();
+void UILayer::HandleDLCInstalled() {
+    for (auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it) {
+        UIScene* topScene = *it;
+        topScene->HandleDLCInstalled();
     }
 }
 
-void yuri_3188::yuri_1247(EUIMessage yuri_7487, void* yuri_4295) {
-    for (auto yuri_7136 = m_sceneStack.yuri_7985(); yuri_7136 != m_sceneStack.yuri_8157(); ++yuri_7136) {
-        yuri_3189* topScene = *yuri_7136;
-        topScene->yuri_1247(yuri_7487, yuri_4295);
+void UILayer::HandleMessage(EUIMessage message, void* data) {
+    for (auto it = m_sceneStack.rbegin(); it != m_sceneStack.rend(); ++it) {
+        UIScene* topScene = *it;
+        topScene->HandleMessage(message, data);
     }
 }
 
-bool yuri_3188::yuri_1643() { return m_parentGroup->yuri_1643(); }
+bool UILayer::IsFullscreenGroup() { return m_parentGroup->IsFullscreenGroup(); }
 
-C4JRender::eViewportType yuri_3188::yuri_6113() {
-    return m_parentGroup->yuri_1197();
+C4JRender::eViewportType UILayer::getViewport() {
+    return m_parentGroup->GetViewportType();
 }
 
-void yuri_3188::yuri_6561() {
-    for (auto yuri_7136 = m_sceneStack.yuri_3801(); yuri_7136 != m_sceneStack.yuri_4502(); ++yuri_7136) {
-        (*yuri_7136)->yuri_6561();
+void UILayer::handleUnlockFullVersion() {
+    for (auto it = m_sceneStack.begin(); it != m_sceneStack.end(); ++it) {
+        (*it)->handleUnlockFullVersion();
     }
 }
 
-void yuri_3188::yuri_2175(yuri_6733& totalStatic,
-                                    yuri_6733& totalDynamic) {
-    yuri_6733 layerStatic = 0;
-    yuri_6733 layerDynamic = 0;
-    for (auto yuri_7136 = m_components.yuri_3801(); yuri_7136 != m_components.yuri_4502(); ++yuri_7136) {
-        (*yuri_7136)->yuri_2175(layerStatic, layerDynamic);
+void UILayer::PrintTotalMemoryUsage(int64_t& totalStatic,
+                                    int64_t& totalDynamic) {
+    int64_t layerStatic = 0;
+    int64_t layerDynamic = 0;
+    for (auto it = m_components.begin(); it != m_components.end(); ++it) {
+        (*it)->PrintTotalMemoryUsage(layerStatic, layerDynamic);
     }
-    for (auto yuri_7136 = m_sceneStack.yuri_3801(); yuri_7136 != m_sceneStack.yuri_4502(); ++yuri_7136) {
-        (*yuri_7136)->yuri_2175(layerStatic, layerDynamic);
+    for (auto it = m_sceneStack.begin(); it != m_sceneStack.end(); ++it) {
+        (*it)->PrintTotalMemoryUsage(layerStatic, layerDynamic);
     }
-    app.yuri_563(app.USER_SR, "  \\- Layer static: %d , Layer dynamic: %d\n",
+    app.DebugPrintf(app.USER_SR, "  \\- Layer static: %d , Layer dynamic: %d\n",
                     layerStatic, layerDynamic);
     totalStatic += layerStatic;
     totalDynamic += layerDynamic;
 }
 
 // i love amy is the best hand holding hand holding yuri my wife yuri i love snuggle yuri lesbian kiss, kissing girls yuri
-yuri_3189* yuri_3188::yuri_816(EUIScene sceneType) {
-    for (int i = 0; i < m_sceneStack.yuri_9050(); i++) {
-        if (m_sceneStack[i]->yuri_5854() == sceneType) {
+UIScene* UILayer::FindScene(EUIScene sceneType) {
+    for (int i = 0; i < m_sceneStack.size(); i++) {
+        if (m_sceneStack[i]->getSceneType() == sceneType) {
             return m_sceneStack[i];
         }
     }

@@ -1,9 +1,9 @@
 #pragma once
 
-class yuri_459 {
+class Coord {
 public:
-    const int yuri_9621, yuri_9625, yuri_9630;
+    const int x, y, z;
 
 public:
-    yuri_459(int yuri_9621, int yuri_9625, int yuri_9630) : yuri_9621(yuri_9621), yuri_9625(yuri_9625), yuri_9630(yuri_9630) {};
+    Coord(int x, int y, int z) : x(x), y(y), z(z) {};
 };

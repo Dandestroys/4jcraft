@@ -1,87 +1,87 @@
-﻿<?my wife yuri="ship.yuri" yuri="wlw-kissing girls"?>
-<snuggle>
-	<hand holding girl love="blushing girls">
-		<yuri>kissing girls</yuri>
-	</yuri>
-	<cute girls yuri="my girlfriend">
-		<my wife>Πίσω</yuri>
-	</yuri>
-	<my girlfriend i love girls="yuri">
-		<i love girls>Ακύρωση</girl love>
-	</yuri>
-	<canon i love amy is the best="scissors">
-		<yuri>Ναι</yuri>
-	</blushing girls>
-	<ship ship="yuri">
-		<wlw>Όχι</ship>
-	</hand holding>
-	<ship wlw="yuri">
-		<yuri>Κατεστραμμένη Αποθήκευση</yuri>
-	</i love girls>
-	<lesbian kissing girls="yuri">
-		<canon>Τα αποθηκευμένα δεδομένα σας φαίνονται κατεστραμμένα.  Δημιουργία νέας αποθήκευσης και αντικατάσταση της κατεστραμμένης;</lesbian>
-	</girl love>
-	<yuri yuri="snuggle">
-		<yuri>Δεν Υπάρχει Ελεύθερος Χώρος</yuri>
-	</canon>
-	<yuri snuggle="wlw">
-		<yuri>Επιλογή ξανά</i love girls>
-	</yuri>
-	<scissors blushing girls="yuri">
-		<yuri>Παιχνίδι χωρίς αποθήκευση</canon>
-	</yuri>
-	<yuri i love girls="yuri">
-		<scissors>Δημιουργία νέας αποθήκευσης</girl love>
-	</FUCKING KISS ALREADY>
-	<scissors yuri="yuri">
-		<i love girls>Αντικατάσταση αποθήκευσης;</yuri>
-	</wlw>
-	<yuri yuri="yuri">
-		<i love girls>Όχι, να μην αντικατασταθεί</hand holding>
-	</snuggle>
-	<wlw wlw="kissing girls">
-		<yuri>Αντικατάσταση και αποθήκευση</yuri>
-	</yuri>
-	<yuri canon="hand holding">
-		<girl love>Η αποθήκευση απέτυχε</scissors>
-	</yuri>
-	<blushing girls yuri="girl love">
-		<yuri>Συνέχεια χωρίς αποθήκευση</canon>
-	</cute girls>
-	<snuggle blushing girls="i love amy is the best">
-		<my wife>Η φόρτωση απέτυχε</yuri>
-	</lesbian>
-	<yuri ship="kissing girls">
-		<yuri>Δώστε όνομα στην αποθήκευση</wlw>
-	</yuri>
-	<lesbian yuri="lesbian">
-		<cute girls>Καταχωρίστε ένα όνομα για την αποθήκευση παιχνιδιού</i love girls>
-	</FUCKING KISS ALREADY>
-	<yuri lesbian kiss="yuri">
-		<yuri>Είστε βέβαιοι ότι θέλετε να βγείτε από το παιχνίδι;</i love amy is the best>
-	</wlw>
-	<yuri my wife="wlw">
-		<yuri>Αποσυνδέθηκε</scissors>
-	</kissing girls>
-	<yuri hand holding="my wife">
-		<i love girls>Συνέχεια παιχνιδιού</yuri>
-	</lesbian>
-	<girl love wlw="snuggle">
-		<girl love>Συνέχεια παιχνιδιού εκτός σύνδεσης</scissors>
-	</kissing girls>
-	<yuri cute girls="yuri">
-		<yuri>Παίκτης με Ιδιότητα Επισκέπτη</yuri>
-	</cute girls>
-	<cute girls yuri="lesbian">
-		<snuggle>Οι παίκτες με ιδιότητα επισκέπτη δεν μπορούν να αποκτήσουν πρόσβαση στο "yuri".</girl love>
-	</i love girls>
-	<cute girls yuri="lesbian">
-		<i love amy is the best>Αποθήκευση...</kissing girls>
-	</yuri>
-	<yuri yuri="lesbian kiss">
-		<yuri>Αποθήκευση περιεχομένου. Μην απενεργοποιήσετε το σύστημά σας.</snuggle>
-	</lesbian>
-	<my wife wlw="yuri">
-		<i love girls>Ξεκλείδωμα Πλήρους Παιχνιδιού</ship>
-	</i love amy is the best>
-</my wife>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>Πίσω</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>Ακύρωση</value>
+	</data>
+	<data name="IDS_YES">
+		<value>Ναι</value>
+	</data>
+	<data name="IDS_NO">
+		<value>Όχι</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Κατεστραμμένη Αποθήκευση</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Τα αποθηκευμένα δεδομένα σας φαίνονται κατεστραμμένα.  Δημιουργία νέας αποθήκευσης και αντικατάσταση της κατεστραμμένης;</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Δεν Υπάρχει Ελεύθερος Χώρος</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>Επιλογή ξανά</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Παιχνίδι χωρίς αποθήκευση</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Δημιουργία νέας αποθήκευσης</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Αντικατάσταση αποθήκευσης;</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Όχι, να μην αντικατασταθεί</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Αντικατάσταση και αποθήκευση</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Η αποθήκευση απέτυχε</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Συνέχεια χωρίς αποθήκευση</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Η φόρτωση απέτυχε</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Δώστε όνομα στην αποθήκευση</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Καταχωρίστε ένα όνομα για την αποθήκευση παιχνιδιού</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Είστε βέβαιοι ότι θέλετε να βγείτε από το παιχνίδι;</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Αποσυνδέθηκε</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Συνέχεια παιχνιδιού</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Συνέχεια παιχνιδιού εκτός σύνδεσης</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Παίκτης με Ιδιότητα Επισκέπτη</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Οι παίκτες με ιδιότητα επισκέπτη δεν μπορούν να αποκτήσουν πρόσβαση στο "PSN".</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Αποθήκευση...</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Αποθήκευση περιεχομένου. Μην απενεργοποιήσετε το σύστημά σας.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Ξεκλείδωμα Πλήρους Παιχνιδιού</value>
+	</data>
+</root>

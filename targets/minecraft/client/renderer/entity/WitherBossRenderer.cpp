@@ -16,104 +16,104 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/boss/wither/WitherBoss.h"
 
-yuri_2412 yuri_3384::yuri_3350 =
-    yuri_2412(TN_MOB_WITHER_ARMOR);
-yuri_2412 yuri_3384::WITHER_INVULERABLE_LOCATION =
-    yuri_2412(TN_MOB_WITHER_INVULNERABLE);
-yuri_2412 yuri_3384::yuri_3351 =
-    yuri_2412(TN_MOB_WITHER);
+ResourceLocation WitherBossRenderer::WITHER_ARMOR_LOCATION =
+    ResourceLocation(TN_MOB_WITHER_ARMOR);
+ResourceLocation WitherBossRenderer::WITHER_INVULERABLE_LOCATION =
+    ResourceLocation(TN_MOB_WITHER_INVULNERABLE);
+ResourceLocation WitherBossRenderer::WITHER_LOCATION =
+    ResourceLocation(TN_MOB_WITHER);
 
-yuri_3384::yuri_3384()
-    : yuri_1955(new yuri_3383(), 1.0f) {
-    yuri_7508 = dynamic_cast<yuri_3383*>(model)->yuri_7508();
+WitherBossRenderer::WitherBossRenderer()
+    : MobRenderer(new WitherBossModel(), 1.0f) {
+    modelVersion = dynamic_cast<WitherBossModel*>(model)->modelVersion();
 }
 
-void yuri_3384::yuri_8158(std::shared_ptr<yuri_739> entity, double yuri_9621,
-                                double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
-    std::shared_ptr<yuri_3382> mob =
-        std::dynamic_pointer_cast<yuri_3382>(entity);
+void WitherBossRenderer::render(std::shared_ptr<Entity> entity, double x,
+                                double y, double z, float rot, float a) {
+    std::shared_ptr<WitherBoss> mob =
+        std::dynamic_pointer_cast<WitherBoss>(entity);
 
-    BossMobGuiInfo::yuri_8491(mob, true);
+    BossMobGuiInfo::setBossHealth(mob, true);
 
-    int yuri_7508 = dynamic_cast<yuri_3383*>(model)->yuri_7508();
-    if (yuri_7508 != this->yuri_7508) {
-        this->yuri_7508 = yuri_7508;
-        model = new yuri_3383();
+    int modelVersion = dynamic_cast<WitherBossModel*>(model)->modelVersion();
+    if (modelVersion != this->modelVersion) {
+        this->modelVersion = modelVersion;
+        model = new WitherBossModel();
     }
-    yuri_1955::yuri_8158(entity, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
+    MobRenderer::render(entity, x, y, z, rot, a);
 }
 
-yuri_2412* yuri_3384::yuri_6012(
-    std::shared_ptr<yuri_739> entity) {
-    std::shared_ptr<yuri_3382> mob =
-        std::dynamic_pointer_cast<yuri_3382>(entity);
+ResourceLocation* WitherBossRenderer::getTextureLocation(
+    std::shared_ptr<Entity> entity) {
+    std::shared_ptr<WitherBoss> mob =
+        std::dynamic_pointer_cast<WitherBoss>(entity);
 
-    int invulnerableTicks = mob->yuri_5413();
+    int invulnerableTicks = mob->getInvulnerableTicks();
     if (invulnerableTicks <= 0 ||
         ((invulnerableTicks <= (SharedConstants::TICKS_PER_SECOND * 4)) &&
          (invulnerableTicks / 5) % 2 == 1)) {
-        return &yuri_3351;
+        return &WITHER_LOCATION;
     }
     return &WITHER_INVULERABLE_LOCATION;
 }
 
-void yuri_3384::yuri_8382(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
-    std::shared_ptr<yuri_3382> mob =
-        std::dynamic_pointer_cast<yuri_3382>(_mob);
-    int inTicks = mob->yuri_5413();
+void WitherBossRenderer::scale(std::shared_ptr<LivingEntity> _mob, float a) {
+    std::shared_ptr<WitherBoss> mob =
+        std::dynamic_pointer_cast<WitherBoss>(_mob);
+    int inTicks = mob->getInvulnerableTicks();
     if (inTicks > 0) {
-        float yuri_8382 = 2.0f - (((float)inTicks - yuri_3565) /
+        float scale = 2.0f - (((float)inTicks - a) /
                               (SharedConstants::TICKS_PER_SECOND * 11)) *
                                  .5f;
-        yuri_6351(yuri_8382, yuri_8382, yuri_8382);
+        glScalef(scale, scale, scale);
     } else {
-        yuri_6351(2, 2, 2);
+        glScalef(2, 2, 2);
     }
 }
 
-int yuri_3384::yuri_7892(std::shared_ptr<yuri_1793> entity,
-                                     int layer, float yuri_3565) {
-    std::shared_ptr<yuri_3382> mob =
-        std::dynamic_pointer_cast<yuri_3382>(entity);
+int WitherBossRenderer::prepareArmor(std::shared_ptr<LivingEntity> entity,
+                                     int layer, float a) {
+    std::shared_ptr<WitherBoss> mob =
+        std::dynamic_pointer_cast<WitherBoss>(entity);
 
-    if (mob->yuri_6991()) {
-        if (mob->yuri_6933()) {
-            yuri_6282(false);
+    if (mob->isPowered()) {
+        if (mob->isInvisible()) {
+            glDepthMask(false);
         } else {
-            yuri_6282(true);
+            glDepthMask(true);
         }
 
         if (layer == 1) {
-            float yuri_9299 = mob->tickCount + yuri_3565;
-            yuri_3810(&yuri_3350);
-            yuri_6336(GL_TEXTURE);
-            yuri_6335();
-            float yuri_9388 = cos(yuri_9299 * 0.02f) * 3;
-            float yuri_9530 = yuri_9299 * 0.01f;
-            yuri_6377(yuri_9388, yuri_9530, 0);
-            yuri_8459(model);
-            yuri_6336(GL_MODELVIEW);
-            yuri_6286(GL_BLEND);
-            float yuri_3844 = 0.5f;
-            yuri_6264(yuri_3844, yuri_3844, yuri_3844, 1);
-            yuri_6283(GL_LIGHTING);
-            yuri_6251(GL_ONE, GL_ONE);
-            yuri_6377(0, -.01f, 0);
-            yuri_6351(1.1f, 1.1f, 1.1f);
+            float time = mob->tickCount + a;
+            bindTexture(&WITHER_ARMOR_LOCATION);
+            glMatrixMode(GL_TEXTURE);
+            glLoadIdentity();
+            float uo = cos(time * 0.02f) * 3;
+            float vo = time * 0.01f;
+            glTranslatef(uo, vo, 0);
+            setArmor(model);
+            glMatrixMode(GL_MODELVIEW);
+            glEnable(GL_BLEND);
+            float br = 0.5f;
+            glColor4f(br, br, br, 1);
+            glDisable(GL_LIGHTING);
+            glBlendFunc(GL_ONE, GL_ONE);
+            glTranslatef(0, -.01f, 0);
+            glScalef(1.1f, 1.1f, 1.1f);
             return 1;
         }
         if (layer == 2) {
-            yuri_6336(GL_TEXTURE);
-            yuri_6335();
-            yuri_6336(GL_MODELVIEW);
-            yuri_6286(GL_LIGHTING);
-            yuri_6283(GL_BLEND);
+            glMatrixMode(GL_TEXTURE);
+            glLoadIdentity();
+            glMatrixMode(GL_MODELVIEW);
+            glEnable(GL_LIGHTING);
+            glDisable(GL_BLEND);
         }
     }
     return -1;
 }
 
-int yuri_3384::yuri_7893(
-    std::shared_ptr<yuri_1793> entity, int layer, float yuri_3565) {
+int WitherBossRenderer::prepareArmorOverlay(
+    std::shared_ptr<LivingEntity> entity, int layer, float a) {
     return -1;
 }

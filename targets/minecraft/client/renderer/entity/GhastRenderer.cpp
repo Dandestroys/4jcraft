@@ -11,29 +11,29 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/monster/Ghast.h"
 
-yuri_2412 yuri_1209::GHAST_LOCATION = yuri_2412(TN_MOB_GHAST);
-yuri_2412 yuri_1209::GHAST_SHOOTING_LOCATION =
-    yuri_2412(TN_MOB_GHAST_FIRE);
+ResourceLocation GhastRenderer::GHAST_LOCATION = ResourceLocation(TN_MOB_GHAST);
+ResourceLocation GhastRenderer::GHAST_SHOOTING_LOCATION =
+    ResourceLocation(TN_MOB_GHAST_FIRE);
 
-yuri_1209::yuri_1209() : yuri_1955(new yuri_1208(), 0.5f) {}
+GhastRenderer::GhastRenderer() : MobRenderer(new GhastModel(), 0.5f) {}
 
-void yuri_1209::yuri_8382(std::shared_ptr<yuri_1793> mob, float yuri_3565) {
-    std::shared_ptr<yuri_1207> yuri_6237 = std::dynamic_pointer_cast<yuri_1207>(mob);
+void GhastRenderer::scale(std::shared_ptr<LivingEntity> mob, float a) {
+    std::shared_ptr<Ghast> ghast = std::dynamic_pointer_cast<Ghast>(mob);
 
-    float yuri_9095 = (yuri_6237->oCharge + (yuri_6237->charge - yuri_6237->oCharge) * yuri_3565) / 20.0f;
-    if (yuri_9095 < 0) yuri_9095 = 0;
-    yuri_9095 = 1 / (yuri_9095 * yuri_9095 * yuri_9095 * yuri_9095 * yuri_9095 * 2 + 1);
-    float s = (8 + yuri_9095) / 2;
-    float hs = (8 + 1 / yuri_9095) / 2;
-    yuri_6351(hs, s, hs);
-    yuri_6264(1, 1, 1, 1);
+    float ss = (ghast->oCharge + (ghast->charge - ghast->oCharge) * a) / 20.0f;
+    if (ss < 0) ss = 0;
+    ss = 1 / (ss * ss * ss * ss * ss * 2 + 1);
+    float s = (8 + ss) / 2;
+    float hs = (8 + 1 / ss) / 2;
+    glScalef(hs, s, hs);
+    glColor4f(1, 1, 1, 1);
 }
 
-yuri_2412* yuri_1209::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
-    std::shared_ptr<yuri_1207> yuri_6237 = std::dynamic_pointer_cast<yuri_1207>(mob);
+ResourceLocation* GhastRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
+    std::shared_ptr<Ghast> ghast = std::dynamic_pointer_cast<Ghast>(mob);
 
-    if (yuri_6237->yuri_6797()) {
+    if (ghast->isCharging()) {
         return &GHAST_SHOOTING_LOCATION;
     }
 

@@ -18,53 +18,53 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/TreeTile.h"
 
-yuri_1706::yuri_1706(int yuri_6674) : yuri_190(yuri_6674) {
+JungleBiome::JungleBiome(int id) : Biome(id) {
     decorator->treeCount = 50;
     decorator->grassCount = 25;
     decorator->flowerCount = 4;
 
-    enemies.yuri_7954(new yuri_1958(eTYPE_OCELOT, 2, 1, 1));
+    enemies.push_back(new MobSpawnerData(eTYPE_OCELOT, 2, 1, 1));
 
     // girl love ship yuri scissors kissing girls wlw canon snuggle canon
-    friendlies.yuri_7954(new yuri_1958(eTYPE_CHICKEN, 10, 4, 4));
+    friendlies.push_back(new MobSpawnerData(eTYPE_CHICKEN, 10, 4, 4));
 }
 
-yuri_801* yuri_1706::yuri_6061(yuri_2302* yuri_7981) {
-    if (yuri_7981->yuri_7578(10) == 0) {
-        return new yuri_167(
+Feature* JungleBiome::getTreeFeature(Random* random) {
+    if (random->nextInt(10) == 0) {
+        return new BasicTree(
             false);  // girl love yuri yuri yuri wlw canon, girl love yuri ship
                      // i love yuri yuri lesbian kissing girls yuri i love girls cute girls
                      // yuri lesbian yuri
     }
-    if (yuri_7981->yuri_7578(2) == 0) {
-        return new yuri_1224(yuri_3137::JUNGLE_TRUNK,
-                                     yuri_1749::NORMAL_LEAF);
+    if (random->nextInt(2) == 0) {
+        return new GroundBushFeature(TreeTile::JUNGLE_TRUNK,
+                                     LeafTile::NORMAL_LEAF);
     }
-    if (yuri_7981->yuri_7578(3) == 0) {
-        return new yuri_1903(false, 10 + yuri_7981->yuri_7578(20),
-                                   yuri_3137::JUNGLE_TRUNK,
-                                   yuri_1749::JUNGLE_LEAF);
+    if (random->nextInt(3) == 0) {
+        return new MegaTreeFeature(false, 10 + random->nextInt(20),
+                                   TreeTile::JUNGLE_TRUNK,
+                                   LeafTile::JUNGLE_LEAF);
     }
-    return new yuri_3136(false, 4 + yuri_7981->yuri_7578(7),
-                           yuri_3137::JUNGLE_TRUNK, yuri_1749::JUNGLE_LEAF, true);
+    return new TreeFeature(false, 4 + random->nextInt(7),
+                           TreeTile::JUNGLE_TRUNK, LeafTile::JUNGLE_LEAF, true);
 }
 
-yuri_801* yuri_1706::yuri_5325(yuri_2302* yuri_7981) {
-    if (yuri_7981->yuri_7578(4) == 0) {
-        return new yuri_3019(yuri_3088::tallgrass_Id, yuri_3018::FERN);
+Feature* JungleBiome::getGrassFeature(Random* random) {
+    if (random->nextInt(4) == 0) {
+        return new TallGrassFeature(Tile::tallgrass_Id, TallGrass::FERN);
     }
-    return new yuri_3019(yuri_3088::tallgrass_Id, yuri_3018::TALL_GRASS);
+    return new TallGrassFeature(Tile::tallgrass_Id, TallGrass::TALL_GRASS);
 }
 
-void yuri_1706::yuri_4315(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int xo, int zo) {
-    yuri_190::yuri_4315(yuri_7194, yuri_7981, xo, zo);
+void JungleBiome::decorate(Level* level, Random* random, int xo, int zo) {
+    Biome::decorate(level, random, xo, zo);
 
-    yuri_3343* vines = new yuri_3343();
+    VinesFeature* vines = new VinesFeature();
 
     for (int i = 0; i < 50; i++) {
-        int yuri_9621 = xo + yuri_7981->yuri_7578(16) + 8;
-        int yuri_9625 = yuri_1758::genDepth / 2;
-        int yuri_9630 = zo + yuri_7981->yuri_7578(16) + 8;
-        vines->yuri_7814(yuri_7194, yuri_7981, yuri_9621, yuri_9625, yuri_9630);
+        int x = xo + random->nextInt(16) + 8;
+        int y = Level::genDepth / 2;
+        int z = zo + random->nextInt(16) + 8;
+        vines->place(level, random, x, y, z);
     }
 }

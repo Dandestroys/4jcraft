@@ -4,12 +4,12 @@
 #include "app/common/DLC/DLCFile.h"
 #include "app/common/Localisation/StringTable.h"
 
-yuri_530::yuri_530(const std::yuri_9616& yuri_7800)
-    : yuri_524(yuri_531::e_DLCType_LocalisationData, yuri_7800) {
+DLCLocalisationFile::DLCLocalisationFile(const std::wstring& path)
+    : DLCFile(DLCManager::e_DLCType_LocalisationData, path) {
     m_strings = nullptr;
 }
 
-void yuri_530::yuri_3600(std::yuri_9368* pbData,
+void DLCLocalisationFile::addData(std::uint8_t* pbData,
                                   std::uint32_t dataBytes) {
-    m_strings = new yuri_2974(pbData, dataBytes);
+    m_strings = new StringTable(pbData, dataBytes);
 }

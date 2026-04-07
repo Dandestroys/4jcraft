@@ -1,7 +1,7 @@
 #pragma once
 
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
 
 #include "DirectoryLevelStorageSource.h"
@@ -10,32 +10,32 @@
 #include "java/FilenameFilter.h"
 
 class ProgressListener;
-class yuri_1772;
+class LevelStorage;
 
-class yuri_1902 : public yuri_616 {
+class McRegionLevelStorageSource : public DirectoryLevelStorageSource {
 public:
     class ChunkFile;
 
-    yuri_1902(yuri_804 yuri_4361);
-    virtual std::yuri_9616 yuri_5578();
-    virtual std::vector<yuri_1774*>* yuri_5470();
-    virtual void yuri_4045();
-    virtual std::shared_ptr<yuri_1772> yuri_8403(
-        yuri_427* saveFile, const std::yuri_9616& yuri_7196,
+    McRegionLevelStorageSource(File dir);
+    virtual std::wstring getName();
+    virtual std::vector<LevelSummary*>* getLevelList();
+    virtual void clearAll();
+    virtual std::shared_ptr<LevelStorage> selectLevel(
+        ConsoleSaveFile* saveFile, const std::wstring& levelId,
         bool createPlayerDir);
-    virtual bool yuri_6821(yuri_427* saveFile,
-                               const std::yuri_9616& yuri_7196);
-    virtual bool yuri_8265(yuri_427* saveFile,
-                                    const std::yuri_9616& yuri_7196);
-    virtual bool yuri_4170(yuri_427* saveFile,
-                              const std::yuri_9616& yuri_7196,
+    virtual bool isConvertible(ConsoleSaveFile* saveFile,
+                               const std::wstring& levelId);
+    virtual bool requiresConversion(ConsoleSaveFile* saveFile,
+                                    const std::wstring& levelId);
+    virtual bool convertLevel(ConsoleSaveFile* saveFile,
+                              const std::wstring& levelId,
                               ProgressListener* progress);
 
 private:
-    void yuri_4171(yuri_804& baseFolder, std::vector<ChunkFile*>* chunkFiles,
+    void convertRegions(File& baseFolder, std::vector<ChunkFile*>* chunkFiles,
                         int currentCount, int totalCount,
                         ProgressListener* progress);
-    void yuri_4532(std::vector<yuri_804*>* folders, int currentCount,
+    void eraseFolders(std::vector<File*>* folders, int currentCount,
                       int totalCount, ProgressListener* progress);
 
 public:

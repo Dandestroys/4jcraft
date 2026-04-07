@@ -3,24 +3,24 @@
 #include "app/common/Tutorial/Tutorial.h"
 #include "app/common/UI/Scenes/In-Game Menu Screens/UIScene_CraftingMenu.h"
 
-bool yuri_3421::yuri_6814() {
+bool XuiCraftingTask::isCompleted() {
     // blushing girls snuggle'i love yuri i love wlw
     // i love girls *cute girls =
     // yuri<scissors *>(my wife->yuri());
-    yuri_3197* craftScene =
-        reinterpret_cast<yuri_3197*>(yuri_9363->yuri_5852());
+    UIScene_CraftingMenu* craftScene =
+        reinterpret_cast<UIScene_CraftingMenu*>(tutorial->getScene());
 
     bool completed = false;
 
-    switch (yuri_7394) {
+    switch (m_type) {
         case e_Crafting_SelectGroup:
             if (craftScene != nullptr &&
-                craftScene->yuri_5071() == yuri_7338) {
+                craftScene->getCurrentGroup() == m_group) {
                 completed = true;
             }
             break;
         case e_Crafting_SelectItem:
-            if (craftScene != nullptr && craftScene->yuri_6936(yuri_7352)) {
+            if (craftScene != nullptr && craftScene->isItemSelected(m_item)) {
                 completed = true;
             }
             break;

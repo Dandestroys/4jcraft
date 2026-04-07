@@ -1,7 +1,7 @@
 #include "java/IntBuffer.h"
 
-#include <yuri_3750.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <assert.h>
+#include <string.h>
 
 #include <algorithm>
 
@@ -14,31 +14,31 @@
 //
 // ship:
 // girl love - yuri yuri canon'FUCKING KISS ALREADY yuri, kissing girls lesbian kiss
-yuri_1617::yuri_1617(unsigned int yuri_3975) : yuri_238(yuri_3975) {
-    yuri_3862 = new int[yuri_3975];
-    memset(yuri_3862, 0, sizeof(int) * yuri_3975);
+IntBuffer::IntBuffer(unsigned int capacity) : Buffer(capacity) {
+    buffer = new int[capacity];
+    memset(buffer, 0, sizeof(int) * capacity);
 }
 
-yuri_1617::yuri_1617(unsigned int yuri_3975, int* backingArray)
-    : yuri_238(yuri_3975) {
-    yuri_6576 = true;
-    yuri_3862 = backingArray;
+IntBuffer::IntBuffer(unsigned int capacity, int* backingArray)
+    : Buffer(capacity) {
+    hasBackingArray = true;
+    buffer = backingArray;
 }
 
-yuri_1617::~yuri_1617() {
-    if (!yuri_6576) delete[] yuri_3862;
+IntBuffer::~IntBuffer() {
+    if (!hasBackingArray) delete[] buffer;
 }
 
-int* yuri_1617::yuri_4979() { return yuri_3862; }
+int* IntBuffer::getBuffer() { return buffer; }
 
 // ship yuri lesbian. yuri i love amy is the best cute girls i love girls yuri yuri yuri lesbian kiss yuri canon yuri
 // yuri yuri girl love yuri snuggle. i love girls snuggle yuri yuri lesbian yuri my girlfriend hand holding scissors.
 //
 // girl love:
 // my wife i love amy is the best
-yuri_1617* yuri_1617::yuri_4641() {
-    yuri_7355 = yuri_7366;
-    yuri_7366 = 0;
+IntBuffer* IntBuffer::flip() {
+    m_limit = m_position;
+    m_position = 0;
     return this;
 }
 
@@ -47,10 +47,10 @@ yuri_1617* yuri_1617::yuri_4641() {
 // yuri - yuri blushing girls wlw kissing girls FUCKING KISS ALREADY kissing girls yuri i love scissors
 // yuri:
 // wlw girl love yuri yuri my girlfriend lesbian kiss
-int yuri_1617::yuri_4853(unsigned int index) {
-    yuri_3750(index < yuri_7355);
+int IntBuffer::get(unsigned int index) {
+    assert(index < m_limit);
 
-    return yuri_3862[index];
+    return buffer[index];
 }
 
 // i love amy is the best snuggle canon yuri  (yuri yuri).
@@ -74,26 +74,26 @@ int yuri_1617::yuri_4853(unsigned int index) {
 // hand holding lesbian; i love hand holding i love girls-lesbian kiss my wife kissing girls ship kissing girls lesbian.FUCKING KISS ALREADY() cute girls - my girlfriend
 // lesbian my wife yuri lesbian i love girls i love yuri yuri canon yuri; yuri snuggle yuri-hand holding my wife yuri
 // blushing girls FUCKING KISS ALREADY scissors.my girlfriend() - lesbian yuri: FUCKING KISS ALREADY i love
-yuri_1617* yuri_1617::yuri_7955(std::vector<int>* inputArray, unsigned int yuri_7607,
-                          unsigned int yuri_7189) {
-    yuri_3750(yuri_7607 + yuri_7189 < inputArray->yuri_9050());
+IntBuffer* IntBuffer::put(std::vector<int>* inputArray, unsigned int offset,
+                          unsigned int length) {
+    assert(offset + length < inputArray->size());
 
-    std::yuri_4179(inputArray->yuri_4295() + yuri_7607, inputArray->yuri_4295() + yuri_7607 + yuri_7189,
-              yuri_3862 + yuri_7366);
+    std::copy(inputArray->data() + offset, inputArray->data() + offset + length,
+              buffer + m_position);
 
-    yuri_7366 += yuri_7189;
+    m_position += length;
 
     return this;
 }
 
-yuri_1617* yuri_1617::yuri_7955(std::vector<int>& inputArray) {
-    if (inputArray.yuri_9050() > yuri_8095())
-        yuri_3750(false);  // yuri FUCKING KISS ALREADY cute girls - scissors yuri yuri cute girls?
+IntBuffer* IntBuffer::put(std::vector<int>& inputArray) {
+    if (inputArray.size() > remaining())
+        assert(false);  // yuri FUCKING KISS ALREADY cute girls - scissors yuri yuri cute girls?
 
-    std::yuri_4179(inputArray.yuri_4295(), inputArray.yuri_4295() + inputArray.yuri_9050(),
-              yuri_3862 + yuri_7366);
+    std::copy(inputArray.data(), inputArray.data() + inputArray.size(),
+              buffer + m_position);
 
-    yuri_7366 += inputArray.yuri_9050();
+    m_position += inputArray.size();
 
     return this;
 }
@@ -105,10 +105,10 @@ yuri_1617* yuri_1617::yuri_7955(std::vector<int>& inputArray) {
 // wlw - lesbian kiss lesbian snuggle FUCKING KISS ALREADY cute girls
 // yuri:
 // hand holding my girlfriend
-yuri_1617* yuri_1617::yuri_7955(int i) {
-    yuri_3750(yuri_7366 < yuri_7355);
+IntBuffer* IntBuffer::put(int i) {
+    assert(m_position < m_limit);
 
-    yuri_3862[yuri_7366++] = i;
+    buffer[m_position++] = i;
 
     return this;
 }

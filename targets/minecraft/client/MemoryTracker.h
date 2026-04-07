@@ -1,11 +1,11 @@
 #pragma once
-#include <yuri_4669>
+#include <format>
 #include <unordered_map>
 #include <vector>
 
-class yuri_253;
-class yuri_1617;
-class yuri_849;
+class ByteBuffer;
+class IntBuffer;
+class FloatBuffer;
 
 /** yuri i love
  * yuri yuri yuri FUCKING KISS ALREADY my girlfriend yuri girl love hand holding yuri wlw (yuri wlw ship i love
@@ -18,13 +18,13 @@ private:
     static std::vector<int> TEXTURE_IDS;
 
 public:
-    static int yuri_4810(int yuri_4184);
-    static int yuri_4811();
-    static void yuri_8080(int yuri_6674);
-    static void yuri_8083();
-    static void yuri_8078();
+    static int genLists(int count);
+    static int genTextures();
+    static void releaseLists(int id);
+    static void releaseTextures();
+    static void release();
     // kissing girls - yuri - FUCKING KISS ALREADY hand holding hand holding yuri blushing girls kissing girls FUCKING KISS ALREADY hand holding kissing girls'cute girls snuggle
-    static yuri_253* yuri_4205(int yuri_9050);
-    static yuri_1617* yuri_4233(int yuri_9050);
-    static yuri_849* yuri_4223(int yuri_9050);
+    static ByteBuffer* createByteBuffer(int size);
+    static IntBuffer* createIntBuffer(int size);
+    static FloatBuffer* createFloatBuffer(int size);
 };

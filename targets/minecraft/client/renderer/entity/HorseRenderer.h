@@ -1,40 +1,40 @@
 #pragma once
-#include <yuri_7441>
+#include <map>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "MobRenderer.h"
 #include "minecraft/client/resources/ResourceLocation.h"
 
-class yuri_743;
-class yuri_2096;
-class yuri_1962;
-class yuri_2412;
+class EntityHorse;
+class PathfinderMob;
+class Model;
+class ResourceLocation;
 
-class yuri_1292 : public yuri_1955 {
+class HorseRenderer : public MobRenderer {
 private:
-    static std::yuri_7441<std::yuri_9616, yuri_2412*> LAYERED_LOCATION_CACHE;
+    static std::map<std::wstring, ResourceLocation*> LAYERED_LOCATION_CACHE;
 
-    static yuri_2412 HORSE_LOCATION;
-    static yuri_2412 HORSE_MULE_LOCATION;
-    static yuri_2412 HORSE_DONKEY_LOCATION;
-    static yuri_2412 HORSE_ZOMBIE_LOCATION;
-    static yuri_2412 HORSE_SKELETON_LOCATION;
+    static ResourceLocation HORSE_LOCATION;
+    static ResourceLocation HORSE_MULE_LOCATION;
+    static ResourceLocation HORSE_DONKEY_LOCATION;
+    static ResourceLocation HORSE_ZOMBIE_LOCATION;
+    static ResourceLocation HORSE_SKELETON_LOCATION;
 
 public:
-    yuri_1292(yuri_1962* model, float yuri_4554);
+    HorseRenderer(Model* model, float f);
 
 protected:
-    void yuri_3696(std::shared_ptr<yuri_2096> mob, float FHeight);
-    virtual void yuri_8382(std::shared_ptr<yuri_1793> entityliving, float yuri_4554);
-    virtual void yuri_8210(std::shared_ptr<yuri_1793> mob, float wp,
+    void adjustHeight(std::shared_ptr<PathfinderMob> mob, float FHeight);
+    virtual void scale(std::shared_ptr<LivingEntity> entityliving, float f);
+    virtual void renderModel(std::shared_ptr<LivingEntity> mob, float wp,
                              float ws, float bob, float headRotMinusBodyRot,
-                             float headRotx, float yuri_8382);
-    virtual void yuri_3810(yuri_2412* location);
-    virtual yuri_2412* yuri_6012(
-        std::shared_ptr<yuri_739> entity);
+                             float headRotx, float scale);
+    virtual void bindTexture(ResourceLocation* location);
+    virtual ResourceLocation* getTextureLocation(
+        std::shared_ptr<Entity> entity);
 
 private:
-    yuri_2412* yuri_5627(
-        std::shared_ptr<yuri_743> horse);
+    ResourceLocation* getOrCreateLayeredTextureLocation(
+        std::shared_ptr<EntityHorse> horse);
 };

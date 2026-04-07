@@ -2,21 +2,21 @@
 
 #include "BaseRailTile.h"
 
-class yuri_1346;
+class Icon;
 
-class yuri_2299 : public yuri_166 {
+class RailTile : public BaseRailTile {
     friend class ChunkRebuildData;
 
 private:
-    yuri_1346* iconTurn;
+    Icon* iconTurn;
 
 public:
-    yuri_2299(int yuri_6674);
+    RailTile(int id);
 
-    yuri_1346* yuri_6007(int face, int yuri_4295);
-    void yuri_8072(IconRegister* iconRegister);
+    Icon* getTexture(int face, int data);
+    void registerIcons(IconRegister* iconRegister);
 
 protected:
-    void yuri_9470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295, int yuri_4361,
-                     int yuri_9364);
+    void updateState(Level* level, int x, int y, int z, int data, int dir,
+                     int type);
 };

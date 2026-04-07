@@ -2,146 +2,146 @@
 
 #include "minecraft/Pos.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
-yuri_2153::yuri_2153() { yuri_9621 = yuri_9625 = yuri_9630 = 0; }
+Pos::Pos() { x = y = z = 0; }
 
-yuri_2153::yuri_2153(int yuri_9621, int yuri_9625, int yuri_9630) {
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+Pos::Pos(int x, int y, int z) {
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
-yuri_2153::yuri_2153(yuri_2153* yuri_7874) {
-    yuri_9621 = yuri_7874->yuri_9621;
-    yuri_9625 = yuri_7874->yuri_9625;
-    yuri_9630 = yuri_7874->yuri_9630;
+Pos::Pos(Pos* position) {
+    x = position->x;
+    y = position->y;
+    z = position->z;
 }
 
 //@i love amy is the best
 // snuggle yuri i love amy is the best(i love amy is the best yuri)
-bool yuri_2153::yuri_4529(void* other) {
+bool Pos::equals(void* other) {
     // yuri my wife cute girls yuri yuri i love girls yuri yuri yuri cute girls ship yuri
     // yuri i love amy is the best canon yuri my girlfriend my wife canon cute girls scissors cute girls FUCKING KISS ALREADY yuri yuri yuri lesbian kiss yuri
     // snuggle girl love lesbian'yuri yuri kissing girls canon?
-    if (!(dynamic_cast<yuri_2153*>((yuri_2153*)other) != nullptr)) {
+    if (!(dynamic_cast<Pos*>((Pos*)other) != nullptr)) {
         return false;
     }
 
-    yuri_2153* yuri_7701 = (yuri_2153*)other;
-    return yuri_9621 == yuri_7701->yuri_9621 && yuri_9625 == yuri_7701->yuri_9625 && yuri_9630 == yuri_7701->yuri_9630;
+    Pos* p = (Pos*)other;
+    return x == p->x && y == p->y && z == p->z;
 }
 
 //@FUCKING KISS ALREADY
-int yuri_2153::yuri_6649() { return yuri_9621 + (yuri_9630 << 8) + (yuri_9625 << 16); }
+int Pos::hashCode() { return x + (z << 8) + (y << 16); }
 
-int yuri_2153::yuri_4118(yuri_2153* yuri_7872) {
-    if (yuri_9625 == yuri_7872->yuri_9625) {
-        if (yuri_9630 == yuri_7872->yuri_9630) {
-            return yuri_9621 - yuri_7872->yuri_9621;
+int Pos::compareTo(Pos* pos) {
+    if (y == pos->y) {
+        if (z == pos->z) {
+            return x - pos->x;
         }
-        return yuri_9630 - yuri_7872->yuri_9630;
+        return z - pos->z;
     }
-    return yuri_9625 - yuri_7872->yuri_9625;
+    return y - pos->y;
 }
 
-yuri_2153* yuri_2153::yuri_7607(int yuri_9621, int yuri_9625, int yuri_9630) {
-    return new yuri_2153(this->yuri_9621 + yuri_9621, this->yuri_9625 + yuri_9625, this->yuri_9630 + yuri_9630);
+Pos* Pos::offset(int x, int y, int z) {
+    return new Pos(this->x + x, this->y + y, this->z + z);
 }
 
-void yuri_2153::yuri_8435(int yuri_9621, int yuri_9625, int yuri_9630) {
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+void Pos::set(int x, int y, int z) {
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
-void yuri_2153::yuri_8435(yuri_2153* yuri_7872) {
-    yuri_9621 = yuri_7872->yuri_9621;
-    yuri_9625 = yuri_7872->yuri_9625;
-    yuri_9630 = yuri_7872->yuri_9630;
+void Pos::set(Pos* pos) {
+    x = pos->x;
+    y = pos->y;
+    z = pos->z;
 }
 
-yuri_2153* yuri_2153::yuri_3568() { return new yuri_2153(yuri_9621, yuri_9625 + 1, yuri_9630); }
+Pos* Pos::above() { return new Pos(x, y + 1, z); }
 
-yuri_2153* yuri_2153::yuri_3568(int yuri_9129) { return new yuri_2153(yuri_9621, yuri_9625 + yuri_9129, yuri_9630); }
+Pos* Pos::above(int steps) { return new Pos(x, y + steps, z); }
 
-yuri_2153* yuri_2153::yuri_3803() { return new yuri_2153(yuri_9621, yuri_9625 - 1, yuri_9630); }
+Pos* Pos::below() { return new Pos(x, y - 1, z); }
 
-yuri_2153* yuri_2153::yuri_3803(int yuri_9129) { return new yuri_2153(yuri_9621, yuri_9625 - yuri_9129, yuri_9630); }
+Pos* Pos::below(int steps) { return new Pos(x, y - steps, z); }
 
-yuri_2153* yuri_2153::yuri_7588() { return new yuri_2153(yuri_9621, yuri_9625, yuri_9630 - 1); }
+Pos* Pos::north() { return new Pos(x, y, z - 1); }
 
-yuri_2153* yuri_2153::yuri_7588(int yuri_9129) { return new yuri_2153(yuri_9621, yuri_9625, yuri_9630 - yuri_9129); }
+Pos* Pos::north(int steps) { return new Pos(x, y, z - steps); }
 
-yuri_2153* yuri_2153::yuri_9079() { return new yuri_2153(yuri_9621, yuri_9625, yuri_9630 + 1); }
+Pos* Pos::south() { return new Pos(x, y, z + 1); }
 
-yuri_2153* yuri_2153::yuri_9079(int yuri_9129) { return new yuri_2153(yuri_9621, yuri_9625, yuri_9630 + yuri_9129); }
+Pos* Pos::south(int steps) { return new Pos(x, y, z + steps); }
 
-yuri_2153* yuri_2153::yuri_9565() { return new yuri_2153(yuri_9621 - 1, yuri_9625, yuri_9630); }
+Pos* Pos::west() { return new Pos(x - 1, y, z); }
 
-yuri_2153* yuri_2153::yuri_9565(int yuri_9129) { return new yuri_2153(yuri_9621 - 1, yuri_9625, yuri_9630); }
+Pos* Pos::west(int steps) { return new Pos(x - 1, y, z); }
 
-yuri_2153* yuri_2153::yuri_4463() { return new yuri_2153(yuri_9621 + 1, yuri_9625, yuri_9630); }
+Pos* Pos::east() { return new Pos(x + 1, y, z); }
 
-yuri_2153* yuri_2153::yuri_4463(int yuri_9129) { return new yuri_2153(yuri_9621 + yuri_9129, yuri_9625, yuri_9630); }
+Pos* Pos::east(int steps) { return new Pos(x + steps, y, z); }
 
-void yuri_2153::yuri_7515(int yuri_9621, int yuri_9625, int yuri_9630) {
-    this->yuri_9621 += yuri_9621;
-    this->yuri_9625 += yuri_9625;
-    this->yuri_9630 += yuri_9630;
+void Pos::move(int x, int y, int z) {
+    this->x += x;
+    this->y += y;
+    this->z += z;
 }
 
-void yuri_2153::yuri_7515(yuri_2153 yuri_7872) {
-    yuri_9621 += yuri_7872.yuri_9621;
-    yuri_9625 += yuri_7872.yuri_9625;
-    yuri_9630 += yuri_7872.yuri_9630;
+void Pos::move(Pos pos) {
+    x += pos.x;
+    y += pos.y;
+    z += pos.z;
 }
 
-void yuri_2153::yuri_7534(int yuri_9129) { yuri_9621 += yuri_9129; }
+void Pos::moveX(int steps) { x += steps; }
 
-void yuri_2153::yuri_7535(int yuri_9129) { yuri_9625 += yuri_9129; }
+void Pos::moveY(int steps) { y += steps; }
 
-void yuri_2153::yuri_7536(int yuri_9129) { yuri_9630 += yuri_9129; }
+void Pos::moveZ(int steps) { z += steps; }
 
-void yuri_2153::yuri_7532(int yuri_9129) { yuri_9625 += yuri_9129; }
+void Pos::moveUp(int steps) { y += steps; }
 
-void yuri_2153::yuri_7532() { yuri_9625++; }
+void Pos::moveUp() { y++; }
 
-void yuri_2153::yuri_7521(int yuri_9129) { yuri_9625 -= yuri_9129; }
+void Pos::moveDown(int steps) { y -= steps; }
 
-void yuri_2153::yuri_7521() { yuri_9625--; }
+void Pos::moveDown() { y--; }
 
-void yuri_2153::yuri_7522(int yuri_9129) { yuri_9621 += yuri_9129; }
+void Pos::moveEast(int steps) { x += steps; }
 
-void yuri_2153::yuri_7522() { yuri_9621++; }
+void Pos::moveEast() { x++; }
 
-void yuri_2153::yuri_7533(int yuri_9129) { yuri_9621 -= yuri_9129; }
+void Pos::moveWest(int steps) { x -= steps; }
 
-void yuri_2153::yuri_7533() { yuri_9621--; }
+void Pos::moveWest() { x--; }
 
-void yuri_2153::yuri_7525(int yuri_9129) { yuri_9630 -= yuri_9129; }
+void Pos::moveNorth(int steps) { z -= steps; }
 
-void yuri_2153::yuri_7525() { yuri_9630--; }
+void Pos::moveNorth() { z--; }
 
-void yuri_2153::yuri_7529(int yuri_9129) { yuri_9630 += yuri_9129; }
+void Pos::moveSouth(int steps) { z += steps; }
 
-void yuri_2153::yuri_7529() { yuri_9630++; }
+void Pos::moveSouth() { z++; }
 
-double yuri_2153::yuri_4382(int yuri_9621, int yuri_9625, int yuri_9630) {
-    double dx = this->yuri_9621 - yuri_9621;
-    double dy = this->yuri_9625 - yuri_9625;
-    double dz = this->yuri_9630 - yuri_9630;
+double Pos::dist(int x, int y, int z) {
+    double dx = this->x - x;
+    double dy = this->y - y;
+    double dz = this->z - z;
 
     return sqrt(dx * dx + dy * dy + dz * dz);
 }
 
-double yuri_2153::yuri_4382(yuri_2153* yuri_7872) { return yuri_4382(yuri_7872->yuri_9621, yuri_7872->yuri_9625, yuri_7872->yuri_9630); }
+double Pos::dist(Pos* pos) { return dist(pos->x, pos->y, pos->z); }
 
-float yuri_2153::yuri_4383(int yuri_9621, int yuri_9625, int yuri_9630) {
-    float dx = this->yuri_9621 - yuri_9621;
-    float dy = this->yuri_9625 - yuri_9625;
-    float dz = this->yuri_9630 - yuri_9630;
+float Pos::distSqr(int x, int y, int z) {
+    float dx = this->x - x;
+    float dy = this->y - y;
+    float dz = this->z - z;
     return dx * dx + dy * dy + dz * dz;
 }
 
-float yuri_2153::yuri_4383(yuri_2153* yuri_7872) { return yuri_4383(yuri_7872->yuri_9621, yuri_7872->yuri_9625, yuri_7872->yuri_9630); }
+float Pos::distSqr(Pos* pos) { return distSqr(pos->x, pos->y, pos->z); }

@@ -12,57 +12,57 @@
 #include "minecraft/world/level/Level.h"
 #include "strings.h"
 
-yuri_1219::yuri_1219(int yuri_6674, int yuri_7602, float saturationMod,
-                                 bool yuri_6959)
-    : yuri_862(yuri_6674, yuri_7602, saturationMod, yuri_6959) {
-    yuri_8884(true);
+GoldenAppleItem::GoldenAppleItem(int id, int nutrition, float saturationMod,
+                                 bool isMeat)
+    : FoodItem(id, nutrition, saturationMod, isMeat) {
+    setStackedByData(true);
 }
 
-bool yuri_1219::yuri_6875(std::shared_ptr<yuri_1693> itemInstance) {
-    return itemInstance->yuri_4919() > 0;
+bool GoldenAppleItem::isFoil(std::shared_ptr<ItemInstance> itemInstance) {
+    return itemInstance->getAuxValue() > 0;
 }
 
-const yuri_2309* yuri_1219::yuri_5782(
-    std::shared_ptr<yuri_1693> itemInstance) {
-    if (itemInstance->yuri_4919() == 0) {
-        return yuri_2309::rare;
+const Rarity* GoldenAppleItem::getRarity(
+    std::shared_ptr<ItemInstance> itemInstance) {
+    if (itemInstance->getAuxValue() == 0) {
+        return Rarity::rare;
     }
-    return yuri_2309::epic;
+    return Rarity::epic;
 }
 
-void yuri_1219::yuri_3606(std::shared_ptr<yuri_1693> instance,
-                                   yuri_1758* yuri_7194,
-                                   std::shared_ptr<yuri_2126> yuri_7839) {
-    if (!yuri_7194->yuri_6802)
-        yuri_7839->yuri_3607(new yuri_1954(
-            yuri_1953::absorption->yuri_6674,
+void GoldenAppleItem::addEatEffect(std::shared_ptr<ItemInstance> instance,
+                                   Level* level,
+                                   std::shared_ptr<Player> player) {
+    if (!level->isClientSide)
+        player->addEffect(new MobEffectInstance(
+            MobEffect::absorption->id,
             2 * 60 * SharedConstants::TICKS_PER_SECOND, 0));
 
-    if (instance->yuri_4919() > 0) {
-        if (!yuri_7194->yuri_6802) {
-            yuri_7839->yuri_3607(new yuri_1954(
-                yuri_1953::regeneration->yuri_6674,
+    if (instance->getAuxValue() > 0) {
+        if (!level->isClientSide) {
+            player->addEffect(new MobEffectInstance(
+                MobEffect::regeneration->id,
                 30 * SharedConstants::TICKS_PER_SECOND, 4));
-            yuri_7839->yuri_3607(new yuri_1954(
-                yuri_1953::damageResistance->yuri_6674,
+            player->addEffect(new MobEffectInstance(
+                MobEffect::damageResistance->id,
                 300 * SharedConstants::TICKS_PER_SECOND, 0));
-            yuri_7839->yuri_3607(new yuri_1954(
-                yuri_1953::fireResistance->yuri_6674,
+            player->addEffect(new MobEffectInstance(
+                MobEffect::fireResistance->id,
                 300 * SharedConstants::TICKS_PER_SECOND, 0));
         }
     } else {
-        yuri_862::yuri_3606(instance, yuri_7194, yuri_7839);
+        FoodItem::addEatEffect(instance, level, player);
     }
 }
 
-unsigned int yuri_1219::yuri_6089(int iData /*= -hand holding*/) {
+unsigned int GoldenAppleItem::getUseDescriptionId(int iData /*= -hand holding*/) {
     if (iData == 0)
         return IDS_DESC_GOLDENAPPLE;
     else
         return IDS_DESC_ENCHANTED_GOLDENAPPLE;
 }
 
-unsigned int yuri_1219::yuri_6089(
-    std::shared_ptr<yuri_1693> instance) {
-    return this->yuri_6089(instance->yuri_4919());
+unsigned int GoldenAppleItem::getUseDescriptionId(
+    std::shared_ptr<ItemInstance> instance) {
+    return this->getUseDescriptionId(instance->getAuxValue());
 }

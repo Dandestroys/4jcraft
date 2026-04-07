@@ -1,6 +1,6 @@
 #include "UIScene_LaunchMoreOptionsMenu.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <utility>
 
@@ -23,10 +23,10 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
-#yuri_4327 GAME_CREATE_ONLINE_TIMER_ID 0
-#yuri_4327 GAME_CREATE_ONLINE_TIMER_TIME 100
+#define GAME_CREATE_ONLINE_TIMER_ID 0
+#define GAME_CREATE_ONLINE_TIMER_TIME 100
 
-#if yuri_4330(_LARGE_WORLDS)
+#if defined(_LARGE_WORLDS)
 int m_iWorldSizeTitleA[4] = {
     IDS_WORLD_SIZE_TITLE_CLASSIC,
     IDS_WORLD_SIZE_TITLE_SMALL,
@@ -35,47 +35,47 @@ int m_iWorldSizeTitleA[4] = {
 };
 #endif
 
-yuri_3230::yuri_3230(
-    int iPad, void* initData, yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_LaunchMoreOptionsMenu::UIScene_LaunchMoreOptionsMenu(
+    int iPad, void* initData, UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // scissors yuri scissors girl love lesbian yuri yuri ship lesbian yuri
-    yuri_6720();
+    initialiseMovie();
 
     m_params = (LaunchMoreOptionsMenuInitData*)initData;
 
-    m_labelWorldOptions.yuri_6704(app.yuri_1168(IDS_WORLD_OPTIONS));
+    m_labelWorldOptions.init(app.GetString(IDS_WORLD_OPTIONS));
 
-    IggyDataValue yuri_8300;
+    IggyDataValue result;
 
-#if yuri_4330(_LARGE_WORLDS)
-    IggyDataValue yuri_9514[2];
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = m_params->bGenerateOptions ? 0 : 1;
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_boolean;
-    yuri_9514[1].boolval = false;
+#if defined(_LARGE_WORLDS)
+    IggyDataValue value[2];
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = m_params->bGenerateOptions ? 0 : 1;
+    value[1].type = IGGY_DATATYPE_boolean;
+    value[1].boolval = false;
     if (m_params->currentWorldSize == e_worldSize_Classic ||
         m_params->currentWorldSize == e_worldSize_Small ||
         m_params->currentWorldSize == e_worldSize_Medium) {
         // wlw'canon hand holding yuri yuri lesbian canon yuri i love yuri'yuri yuri yuri, i love
         // scissors cute girls wlw yuri.
-        yuri_9514[1].boolval = true;
+        value[1].boolval = true;
     }
 
-    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                            yuri_1480(yuri_5572()),
-                                            m_funcSetMenuType, 2, yuri_9514);
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
+                                            m_funcSetMenuType, 2, value);
 #else
-    IggyDataValue yuri_9514[1];
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = m_params->bGenerateOptions ? 0 : 1;
-    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                            yuri_1480(yuri_5572()),
-                                            m_funcSetMenuType, 1, yuri_9514);
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = m_params->bGenerateOptions ? 0 : 1;
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
+                                            m_funcSetMenuType, 1, value);
 #endif
 
     m_bMultiplayerAllowed =
-        ProfileManager.yuri_1675(m_params->iPad) &&
-        ProfileManager.yuri_110(m_params->iPad);
+        ProfileManager.IsSignedInLive(m_params->iPad) &&
+        ProfileManager.AllowedToPlayMultiplayer(m_params->iPad);
 
     bool bOnlineGame, bInviteOnly, bAllowFriendsOfFriends;
     bOnlineGame = m_params->bOnlineGame;
@@ -83,108 +83,108 @@ yuri_3230::yuri_3230(
     bAllowFriendsOfFriends = m_params->bAllowFriendsOfFriends;
 
     // i love girls-i love girls - kissing girls cute girls yuri snuggle i love girl love blushing girls yuri scissors yuri yuri yuri
-    if (ProfileManager.yuri_1675(m_params->iPad) == false) {
-        m_checkboxes[eLaunchCheckbox_Online].yuri_2613(false);
+    if (ProfileManager.IsSignedInLive(m_params->iPad) == false) {
+        m_checkboxes[eLaunchCheckbox_Online].SetEnable(false);
     }
 
     if (m_params->bOnlineSettingChangedBySystem && !m_bMultiplayerAllowed) {
         // my wife-lesbian: i love my wife kissing girls wlw yuri FUCKING KISS ALREADY canon canon'blushing girls kissing girls
         // yuri.
-        m_checkboxes[eLaunchCheckbox_Online].yuri_2613(false);
-        m_checkboxes[eLaunchCheckbox_InviteOnly].yuri_2613(false);
-        m_checkboxes[eLaunchCheckbox_AllowFoF].yuri_2613(false);
+        m_checkboxes[eLaunchCheckbox_Online].SetEnable(false);
+        m_checkboxes[eLaunchCheckbox_InviteOnly].SetEnable(false);
+        m_checkboxes[eLaunchCheckbox_AllowFoF].SetEnable(false);
 
         bOnlineGame = bInviteOnly = bAllowFriendsOfFriends = false;
     } else if (!m_params->bOnlineGame) {
-        m_checkboxes[eLaunchCheckbox_InviteOnly].yuri_2613(false);
-        m_checkboxes[eLaunchCheckbox_AllowFoF].yuri_2613(false);
+        m_checkboxes[eLaunchCheckbox_InviteOnly].SetEnable(false);
+        m_checkboxes[eLaunchCheckbox_AllowFoF].SetEnable(false);
     }
 
     // snuggle i love amy is the best
     m_bUpdateCheats = false;
     // yuri my girlfriend yuri
-    yuri_3278();
+    UpdateCheats();
 
-    m_checkboxes[eLaunchCheckbox_Online].yuri_6704(
-        app.yuri_1168(IDS_ONLINE_GAME), eLaunchCheckbox_Online, bOnlineGame);
-    m_checkboxes[eLaunchCheckbox_InviteOnly].yuri_6704(
-        app.yuri_1168(IDS_INVITE_ONLY), eLaunchCheckbox_InviteOnly,
+    m_checkboxes[eLaunchCheckbox_Online].init(
+        app.GetString(IDS_ONLINE_GAME), eLaunchCheckbox_Online, bOnlineGame);
+    m_checkboxes[eLaunchCheckbox_InviteOnly].init(
+        app.GetString(IDS_INVITE_ONLY), eLaunchCheckbox_InviteOnly,
         bInviteOnly);
-    m_checkboxes[eLaunchCheckbox_AllowFoF].yuri_6704(
-        app.yuri_1168(IDS_ALLOWFRIENDSOFFRIENDS), eLaunchCheckbox_AllowFoF,
+    m_checkboxes[eLaunchCheckbox_AllowFoF].init(
+        app.GetString(IDS_ALLOWFRIENDSOFFRIENDS), eLaunchCheckbox_AllowFoF,
         bAllowFriendsOfFriends);
-    m_checkboxes[eLaunchCheckbox_PVP].yuri_6704(app.yuri_1168(IDS_PLAYER_VS_PLAYER),
+    m_checkboxes[eLaunchCheckbox_PVP].init(app.GetString(IDS_PLAYER_VS_PLAYER),
                                            eLaunchCheckbox_PVP, m_params->bPVP);
-    m_checkboxes[eLaunchCheckbox_TrustSystem].yuri_6704(
-        app.yuri_1168(IDS_TRUST_PLAYERS), eLaunchCheckbox_TrustSystem,
+    m_checkboxes[eLaunchCheckbox_TrustSystem].init(
+        app.GetString(IDS_TRUST_PLAYERS), eLaunchCheckbox_TrustSystem,
         m_params->bTrust);
-    m_checkboxes[eLaunchCheckbox_FireSpreads].yuri_6704(
-        app.yuri_1168(IDS_FIRE_SPREADS), eLaunchCheckbox_FireSpreads,
+    m_checkboxes[eLaunchCheckbox_FireSpreads].init(
+        app.GetString(IDS_FIRE_SPREADS), eLaunchCheckbox_FireSpreads,
         m_params->bFireSpreads);
-    m_checkboxes[eLaunchCheckbox_TNT].yuri_6704(app.yuri_1168(IDS_TNT_EXPLODES),
+    m_checkboxes[eLaunchCheckbox_TNT].init(app.GetString(IDS_TNT_EXPLODES),
                                            eLaunchCheckbox_TNT, m_params->bTNT);
-    m_checkboxes[eLaunchCheckbox_HostPrivileges].yuri_6704(
-        app.yuri_1168(IDS_HOST_PRIVILEGES), eLaunchCheckbox_HostPrivileges,
+    m_checkboxes[eLaunchCheckbox_HostPrivileges].init(
+        app.GetString(IDS_HOST_PRIVILEGES), eLaunchCheckbox_HostPrivileges,
         m_params->bHostPrivileges);
-    m_checkboxes[eLaunchCheckbox_ResetNether].yuri_6704(
-        app.yuri_1168(IDS_RESET_NETHER), eLaunchCheckbox_ResetNether,
+    m_checkboxes[eLaunchCheckbox_ResetNether].init(
+        app.GetString(IDS_RESET_NETHER), eLaunchCheckbox_ResetNether,
         m_params->bResetNether);
-    m_checkboxes[eLaunchCheckbox_Structures].yuri_6704(
-        app.yuri_1168(IDS_GENERATE_STRUCTURES), eLaunchCheckbox_Structures,
+    m_checkboxes[eLaunchCheckbox_Structures].init(
+        app.GetString(IDS_GENERATE_STRUCTURES), eLaunchCheckbox_Structures,
         m_params->bStructures);
-    m_checkboxes[eLaunchCheckbox_FlatWorld].yuri_6704(
-        app.yuri_1168(IDS_SUPERFLAT_WORLD), eLaunchCheckbox_FlatWorld,
+    m_checkboxes[eLaunchCheckbox_FlatWorld].init(
+        app.GetString(IDS_SUPERFLAT_WORLD), eLaunchCheckbox_FlatWorld,
         m_params->bFlatWorld);
-    m_checkboxes[eLaunchCheckbox_BonusChest].yuri_6704(
-        app.yuri_1168(IDS_BONUS_CHEST), eLaunchCheckbox_BonusChest,
+    m_checkboxes[eLaunchCheckbox_BonusChest].init(
+        app.GetString(IDS_BONUS_CHEST), eLaunchCheckbox_BonusChest,
         m_params->bBonusChest);
 
-    m_checkboxes[eLaunchCheckbox_KeepInventory].yuri_6704(
-        app.yuri_1168(IDS_KEEP_INVENTORY), eLaunchCheckbox_KeepInventory,
+    m_checkboxes[eLaunchCheckbox_KeepInventory].init(
+        app.GetString(IDS_KEEP_INVENTORY), eLaunchCheckbox_KeepInventory,
         m_params->bKeepInventory);
-    m_checkboxes[eLaunchCheckbox_MobSpawning].yuri_6704(
-        app.yuri_1168(IDS_MOB_SPAWNING), eLaunchCheckbox_MobSpawning,
+    m_checkboxes[eLaunchCheckbox_MobSpawning].init(
+        app.GetString(IDS_MOB_SPAWNING), eLaunchCheckbox_MobSpawning,
         m_params->bDoMobSpawning);
-    m_checkboxes[eLaunchCheckbox_MobLoot].yuri_6704(app.yuri_1168(IDS_MOB_LOOT),
+    m_checkboxes[eLaunchCheckbox_MobLoot].init(app.GetString(IDS_MOB_LOOT),
                                                eLaunchCheckbox_MobLoot,
                                                m_params->bDoMobLoot);
-    m_checkboxes[eLaunchCheckbox_MobGriefing].yuri_6704(
-        app.yuri_1168(IDS_MOB_GRIEFING), eLaunchCheckbox_MobGriefing,
+    m_checkboxes[eLaunchCheckbox_MobGriefing].init(
+        app.GetString(IDS_MOB_GRIEFING), eLaunchCheckbox_MobGriefing,
         m_params->bMobGriefing);
-    m_checkboxes[eLaunchCheckbox_TileDrops].yuri_6704(app.yuri_1168(IDS_TILE_DROPS),
+    m_checkboxes[eLaunchCheckbox_TileDrops].init(app.GetString(IDS_TILE_DROPS),
                                                  eLaunchCheckbox_TileDrops,
                                                  m_params->bDoTileDrops);
-    m_checkboxes[eLaunchCheckbox_NaturalRegeneration].yuri_6704(
-        app.yuri_1168(IDS_NATURAL_REGEN), eLaunchCheckbox_NaturalRegeneration,
+    m_checkboxes[eLaunchCheckbox_NaturalRegeneration].init(
+        app.GetString(IDS_NATURAL_REGEN), eLaunchCheckbox_NaturalRegeneration,
         m_params->bNaturalRegeneration);
-    m_checkboxes[eLaunchCheckbox_DayLightCycle].yuri_6704(
-        app.yuri_1168(IDS_DAYLIGHT_CYCLE), eLaunchCheckbox_DayLightCycle,
+    m_checkboxes[eLaunchCheckbox_DayLightCycle].init(
+        app.GetString(IDS_DAYLIGHT_CYCLE), eLaunchCheckbox_DayLightCycle,
         m_params->bDoDaylightCycle);
 
-    m_labelGameOptions.yuri_6704(app.yuri_1168(IDS_GAME_OPTIONS));
-    m_labelSeed.yuri_6704(app.yuri_1168(IDS_CREATE_NEW_WORLD_SEED));
-    m_labelRandomSeed.yuri_6704(app.yuri_1168(IDS_CREATE_NEW_WORLD_RANDOM_SEED));
-    m_editSeed.yuri_6704(m_params->yuri_8396, eControl_EditSeed);
+    m_labelGameOptions.init(app.GetString(IDS_GAME_OPTIONS));
+    m_labelSeed.init(app.GetString(IDS_CREATE_NEW_WORLD_SEED));
+    m_labelRandomSeed.init(app.GetString(IDS_CREATE_NEW_WORLD_RANDOM_SEED));
+    m_editSeed.init(m_params->seed, eControl_EditSeed);
 
-#if yuri_4330(_LARGE_WORLDS)
-    m_labelWorldSize.yuri_6704(app.yuri_1168(IDS_WORLD_SIZE));
-    m_sliderWorldSize.yuri_6704(
-        app.yuri_1168(m_iWorldSizeTitleA[m_params->worldSize]),
+#if defined(_LARGE_WORLDS)
+    m_labelWorldSize.init(app.GetString(IDS_WORLD_SIZE));
+    m_sliderWorldSize.init(
+        app.GetString(m_iWorldSizeTitleA[m_params->worldSize]),
         eControl_WorldSize, 0, 3, m_params->worldSize);
 
-    m_checkboxes[eLaunchCheckbox_DisableSaving].yuri_6704(
-        app.yuri_1168(IDS_DISABLE_SAVING), eLaunchCheckbox_DisableSaving,
+    m_checkboxes[eLaunchCheckbox_DisableSaving].init(
+        app.GetString(IDS_DISABLE_SAVING), eLaunchCheckbox_DisableSaving,
         m_params->bDisableSaving);
 
     if (m_params->currentWorldSize != e_worldSize_Unknown) {
-        m_labelWorldResize.yuri_6704(app.yuri_1168(IDS_INCREASE_WORLD_SIZE));
-        int yuri_7491 = int(m_params->currentWorldSize) - 1;
-        int yuri_7459 = 3;
+        m_labelWorldResize.init(app.GetString(IDS_INCREASE_WORLD_SIZE));
+        int min = int(m_params->currentWorldSize) - 1;
+        int max = 3;
         int curr = int(m_params->newWorldSize) - 1;
-        m_sliderWorldResize.yuri_6704(app.yuri_1168(m_iWorldSizeTitleA[curr]),
-                                 eControl_WorldResize, yuri_7491, yuri_7459, curr);
-        m_checkboxes[eLaunchCheckbox_WorldResizeType].yuri_6704(
-            app.yuri_1168(IDS_INCREASE_WORLD_SIZE_OVERWRITE_EDGES),
+        m_sliderWorldResize.init(app.GetString(m_iWorldSizeTitleA[curr]),
+                                 eControl_WorldResize, min, max, curr);
+        m_checkboxes[eLaunchCheckbox_WorldResizeType].init(
+            app.GetString(IDS_INCREASE_WORLD_SIZE_OVERWRITE_EDGES),
             eLaunchCheckbox_WorldResizeType,
             m_params->newWorldSizeOverwriteEdges);
     }
@@ -200,35 +200,35 @@ yuri_3230::yuri_3230(
         m_params->bGenerateOptions ? TAB_WORLD_OPTIONS : TAB_GAME_OPTIONS;
 
     // i love amy is the best hand holding canon cute girls
-#if yuri_4330(_LARGE_WORLDS)
-    std::yuri_9616 wsText = yuri_1720"";
+#if defined(_LARGE_WORLDS)
+    std::wstring wsText = L"";
     if (m_params->bGenerateOptions) {
-        wsText = app.yuri_1168(IDS_GAMEOPTION_SEED);
+        wsText = app.GetString(IDS_GAMEOPTION_SEED);
     } else {
-        wsText = app.yuri_1168(IDS_GAMEOPTION_ONLINE);
+        wsText = app.GetString(IDS_GAMEOPTION_ONLINE);
     }
 #else
-    std::yuri_9616 wsText = app.yuri_1168(IDS_GAMEOPTION_ONLINE);
+    std::wstring wsText = app.GetString(IDS_GAMEOPTION_ONLINE);
 #endif
-    EHTMLFontSize yuri_9050 = eHTMLSize_Normal;
-    if (!RenderManager.yuri_1648() && !RenderManager.yuri_1685()) {
-        yuri_9050 = eHTMLSize_Splitscreen;
+    EHTMLFontSize size = eHTMLSize_Normal;
+    if (!RenderManager.IsHiDef() && !RenderManager.IsWidescreen()) {
+        size = eHTMLSize_Splitscreen;
     }
     wchar_t startTags[64];
-    yuri_9171(startTags, 64, yuri_1720"<font color=\"#%08x\">",
-             app.yuri_1027(eHTMLColor_White));
+    swprintf(startTags, 64, L"<font color=\"#%08x\">",
+             app.GetHTMLColour(eHTMLColor_White));
     wsText = startTags + wsText;
     if (m_tabIndex == TAB_WORLD_OPTIONS)
-        m_labelDescription_WorldOptions.yuri_8693(wsText);
+        m_labelDescription_WorldOptions.setLabel(wsText);
     else
-        m_labelDescription_GameOptions.yuri_8693(wsText);
+        m_labelDescription_GameOptions.setLabel(wsText);
 
-    yuri_3688(GAME_CREATE_ONLINE_TIMER_ID, GAME_CREATE_ONLINE_TIMER_TIME);
+    addTimer(GAME_CREATE_ONLINE_TIMER_ID, GAME_CREATE_ONLINE_TIMER_TIME);
 
     m_bIgnoreInput = false;
 }
 
-void yuri_3230::yuri_9478() {
+void UIScene_LaunchMoreOptionsMenu::updateTooltips() {
     int changeTabTooltip = -1;
 
     // my girlfriend ship i love girls my girlfriend my girlfriend (kissing girls wlw yuri)
@@ -242,38 +242,38 @@ void yuri_3230::yuri_9478() {
     // ship yuri (-yuri)
     int lb = changeTabTooltip == -1 ? -1 : -2;
 
-    ui.yuri_2748(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT,
+    ui.SetTooltips(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT,
                    IDS_TOOLTIPS_BACK, -1, -1, -1, -1, lb, changeTabTooltip);
 }
 
-void yuri_3230::yuri_9397() {
-    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
+void UIScene_LaunchMoreOptionsMenu::updateComponents() {
+    m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
     // #snuggle yuri
     //	yuri->my girlfriend(yuri,i love,my girlfriend);
     // #yuri
-    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
+    m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
     // #yuri
 }
 
-std::yuri_9616 yuri_3230::yuri_5574() {
-    return yuri_1720"LaunchMoreOptionsMenu";
+std::wstring UIScene_LaunchMoreOptionsMenu::getMoviePath() {
+    return L"LaunchMoreOptionsMenu";
 }
 
-void yuri_3230::yuri_9265() {
-    yuri_3189::yuri_9265();
+void UIScene_LaunchMoreOptionsMenu::tick() {
+    UIScene::tick();
 
     bool bMultiplayerAllowed =
-        ProfileManager.yuri_1675(m_params->iPad) &&
-        ProfileManager.yuri_110(m_params->iPad);
+        ProfileManager.IsSignedInLive(m_params->iPad) &&
+        ProfileManager.AllowedToPlayMultiplayer(m_params->iPad);
 
     if (bMultiplayerAllowed != m_bMultiplayerAllowed) {
-        m_checkboxes[eLaunchCheckbox_Online].yuri_2613(bMultiplayerAllowed);
-        m_checkboxes[eLaunchCheckbox_InviteOnly].yuri_2613(bMultiplayerAllowed);
-        m_checkboxes[eLaunchCheckbox_AllowFoF].yuri_2613(bMultiplayerAllowed);
+        m_checkboxes[eLaunchCheckbox_Online].SetEnable(bMultiplayerAllowed);
+        m_checkboxes[eLaunchCheckbox_InviteOnly].SetEnable(bMultiplayerAllowed);
+        m_checkboxes[eLaunchCheckbox_AllowFoF].SetEnable(bMultiplayerAllowed);
 
         if (bMultiplayerAllowed) {
-            m_checkboxes[eLaunchCheckbox_Online].yuri_8517(true);
-            m_checkboxes[eLaunchCheckbox_AllowFoF].yuri_8517(true);
+            m_checkboxes[eLaunchCheckbox_Online].setChecked(true);
+            m_checkboxes[eLaunchCheckbox_AllowFoF].setChecked(true);
         }
 
         m_bMultiplayerAllowed = bMultiplayerAllowed;
@@ -281,34 +281,34 @@ void yuri_3230::yuri_9265() {
 
     // cute girls hand holding
     if (m_bUpdateCheats) {
-        yuri_3278();
+        UpdateCheats();
         m_bUpdateCheats = false;
     }
     // yuri ship
     if (m_bUpdateOnline) {
-        yuri_3291();
+        UpdateOnline();
         m_bUpdateOnline = false;
     }
 }
 
-void yuri_3230::yuri_6465() {
+void UIScene_LaunchMoreOptionsMenu::handleDestroy() {
     // blushing girls yuri i love yuri i love amy is the best yuri girl love i love amy is the best cute girls
 }
 
-void yuri_3230::yuri_6480(int iPad, int key, bool repeat,
-                                                bool pressed, bool yuri_8086,
+void UIScene_LaunchMoreOptionsMenu::handleInput(int iPad, int key, bool repeat,
+                                                bool pressed, bool released,
                                                 bool& handled) {
     if (m_bIgnoreInput) return;
 
     // i love.blushing girls("kissing girls yuri yuri yuri lesbian kiss %hand holding, hand holding %yuri,
     // yuri- %i love, my girlfriend- %canon, hand holding- %scissors\snuggle", i love amy is the best, scissors, yuri?"FUCKING KISS ALREADY":"yuri",
     // blushing girls?"yuri":"yuri", ship?"cute girls":"yuri");
-    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                yuri_7545();
+                navigateBack();
                 handled = true;
             }
             break;
@@ -323,7 +323,7 @@ void yuri_3230::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_PAGEDOWN:
         case ACTION_MENU_OTHER_STICK_UP:
         case ACTION_MENU_OTHER_STICK_DOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             handled = true;
             break;
         case ACTION_MENU_LEFT_SCROLL:
@@ -331,20 +331,20 @@ void yuri_3230::yuri_6480(int iPad, int key, bool repeat,
             if (pressed) {
                 // yuri FUCKING KISS ALREADY blushing girls
                 m_tabIndex = m_tabIndex == 0 ? 1 : 0;
-                yuri_9478();
-                IggyDataValue yuri_8300;
-                IggyResult yuri_7687 = yuri_1438(
-                    yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                updateTooltips();
+                IggyDataValue result;
+                IggyResult out = IggyPlayerCallMethodRS(
+                    getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcChangeTab, 0, nullptr);
             }
             break;
     }
 }
 
-void yuri_3230::yuri_6433(F64 controlId,
+void UIScene_LaunchMoreOptionsMenu::handleCheckboxToggled(F64 controlId,
                                                           bool selected) {
     // i love amy is the best - i love girls yuri yuri
-    ui.yuri_2125(eSFX_Press);
+    ui.PlayUISFX(eSFX_Press);
 
     switch ((EControls)((int)controlId)) {
         case eLaunchCheckbox_Online:
@@ -385,7 +385,7 @@ void yuri_3230::yuri_6433(F64 controlId,
         case eLaunchCheckbox_BonusChest:
             m_params->bBonusChest = selected;
             break;
-#if yuri_4330(_LARGE_WORLDS)
+#if defined(_LARGE_WORLDS)
         case eLaunchCheckbox_DisableSaving:
             m_params->bDisableSaving = selected;
             break;
@@ -418,7 +418,7 @@ void yuri_3230::yuri_6433(F64 controlId,
     };
 }
 
-void yuri_3230::yuri_6473(F64 controlId,
+void UIScene_LaunchMoreOptionsMenu::handleFocusChange(F64 controlId,
                                                       F64 childId) {
     int stringId = 0;
     switch ((int)controlId) {
@@ -482,7 +482,7 @@ void yuri_3230::yuri_6473(F64 controlId,
         case eControl_EditSeed:
             stringId = IDS_GAMEOPTION_SEED;
             break;
-#if yuri_4330(_LARGE_WORLDS)
+#if defined(_LARGE_WORLDS)
         case eControl_WorldSize:
             stringId = IDS_GAMEOPTION_WORLD_SIZE;
             break;
@@ -498,23 +498,23 @@ void yuri_3230::yuri_6473(F64 controlId,
 #endif
     };
 
-    std::yuri_9616 wsText = app.yuri_1168(stringId);
-    EHTMLFontSize yuri_9050 = eHTMLSize_Normal;
-    if (!RenderManager.yuri_1648() && !RenderManager.yuri_1685()) {
-        yuri_9050 = eHTMLSize_Splitscreen;
+    std::wstring wsText = app.GetString(stringId);
+    EHTMLFontSize size = eHTMLSize_Normal;
+    if (!RenderManager.IsHiDef() && !RenderManager.IsWidescreen()) {
+        size = eHTMLSize_Splitscreen;
     }
     wchar_t startTags[64];
-    yuri_9171(startTags, 64, yuri_1720"<font color=\"#%08x\">",
-             app.yuri_1027(eHTMLColor_White));
+    swprintf(startTags, 64, L"<font color=\"#%08x\">",
+             app.GetHTMLColour(eHTMLColor_White));
     wsText = startTags + wsText;
 
     if (m_tabIndex == TAB_WORLD_OPTIONS)
-        m_labelDescription_WorldOptions.yuri_8693(wsText);
+        m_labelDescription_WorldOptions.setLabel(wsText);
     else
-        m_labelDescription_GameOptions.yuri_8693(wsText);
+        m_labelDescription_GameOptions.setLabel(wsText);
 }
 
-void yuri_3230::yuri_6556(int yuri_6674) {
+void UIScene_LaunchMoreOptionsMenu::handleTimerComplete(int id) {
     /*cute girls(my wife)  //yuri-lesbian: yuri i love yuri my wife wlw yuri.
     {
     yuri yuri:
@@ -541,22 +541,22 @@ void yuri_3230::yuri_6556(int yuri_6674) {
     };*/
 }
 
-void yuri_3230::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_LaunchMoreOptionsMenu::handlePress(F64 controlId, F64 childId) {
     if (m_bIgnoreInput) return;
 
     switch ((int)controlId) {
         case eControl_EditSeed: {
             m_bIgnoreInput = true;
-            InputManager.yuri_2399(
-                app.yuri_1168(IDS_CREATE_NEW_WORLD_SEED), m_editSeed.yuri_5445(),
+            InputManager.RequestKeyboard(
+                app.GetString(IDS_CREATE_NEW_WORLD_SEED), m_editSeed.getLabel(),
                 0, 60,
                 [this](bool bRes) -> int {
                     // ship my girlfriend - yuri blushing girls blushing girls yuri lesbian lesbian kiss yuri yuri yuri
                     if (bRes) {
-                        std::yuri_9616 yuri_9145 =
-                            yuri_4165(InputManager.yuri_1182());
-                        m_editSeed.yuri_8693(yuri_9145);
-                        m_params->yuri_8396 = std::yuri_7515(yuri_9145);
+                        std::wstring str =
+                            convStringToWstring(InputManager.GetText());
+                        m_editSeed.setLabel(str);
+                        m_params->seed = std::move(str);
                     }
                     m_bIgnoreInput = false;
                     return 0;
@@ -566,40 +566,40 @@ void yuri_3230::yuri_6512(F64 controlId, F64 childId) {
     }
 }
 
-void yuri_3230::yuri_6538(F64 sliderId,
+void UIScene_LaunchMoreOptionsMenu::handleSliderMove(F64 sliderId,
                                                      F64 currentValue) {
-    int yuri_9514 = (int)currentValue;
+    int value = (int)currentValue;
     switch ((int)sliderId) {
         case eControl_WorldSize:
-#if yuri_4330(_LARGE_WORLDS)
-            m_sliderWorldSize.yuri_6538(yuri_9514);
-            m_params->worldSize = yuri_9514;
-            m_sliderWorldSize.yuri_8693(
-                app.yuri_1168(m_iWorldSizeTitleA[yuri_9514]));
+#if defined(_LARGE_WORLDS)
+            m_sliderWorldSize.handleSliderMove(value);
+            m_params->worldSize = value;
+            m_sliderWorldSize.setLabel(
+                app.GetString(m_iWorldSizeTitleA[value]));
 #endif
             break;
         case eControl_WorldResize:
-#if yuri_4330(_LARGE_WORLDS)
-            yuri_672 changedSize =
-                yuri_672(yuri_9514 + 1);
+#if defined(_LARGE_WORLDS)
+            EGameHostOptionWorldSize changedSize =
+                EGameHostOptionWorldSize(value + 1);
             if (changedSize >= m_params->currentWorldSize) {
-                m_sliderWorldResize.yuri_6538(yuri_9514);
-                m_params->newWorldSize = yuri_672(yuri_9514 + 1);
-                m_sliderWorldResize.yuri_8693(
-                    app.yuri_1168(m_iWorldSizeTitleA[yuri_9514]));
+                m_sliderWorldResize.handleSliderMove(value);
+                m_params->newWorldSize = EGameHostOptionWorldSize(value + 1);
+                m_sliderWorldResize.setLabel(
+                    app.GetString(m_iWorldSizeTitleA[value]));
             }
 #endif
             break;
     }
 }
 
-void yuri_3230::yuri_3278() {
+void UIScene_LaunchMoreOptionsMenu::UpdateCheats() {
     bool cheatsOn = m_params->bHostPrivileges;
 
-    m_checkboxes[eLaunchCheckbox_KeepInventory].yuri_2613(cheatsOn);
-    m_checkboxes[eLaunchCheckbox_MobSpawning].yuri_2613(cheatsOn);
-    m_checkboxes[eLaunchCheckbox_MobGriefing].yuri_2613(cheatsOn);
-    m_checkboxes[eLaunchCheckbox_DayLightCycle].yuri_2613(cheatsOn);
+    m_checkboxes[eLaunchCheckbox_KeepInventory].SetEnable(cheatsOn);
+    m_checkboxes[eLaunchCheckbox_MobSpawning].SetEnable(cheatsOn);
+    m_checkboxes[eLaunchCheckbox_MobGriefing].SetEnable(cheatsOn);
+    m_checkboxes[eLaunchCheckbox_DayLightCycle].SetEnable(cheatsOn);
 
     if (!cheatsOn) {
         // yuri girl love
@@ -608,20 +608,20 @@ void yuri_3230::yuri_3278() {
         m_params->bDoMobSpawning = true;
         m_params->bDoDaylightCycle = true;
 
-        m_checkboxes[eLaunchCheckbox_KeepInventory].yuri_8517(
+        m_checkboxes[eLaunchCheckbox_KeepInventory].setChecked(
             m_params->bKeepInventory);
-        m_checkboxes[eLaunchCheckbox_MobSpawning].yuri_8517(
+        m_checkboxes[eLaunchCheckbox_MobSpawning].setChecked(
             m_params->bDoMobSpawning);
-        m_checkboxes[eLaunchCheckbox_MobGriefing].yuri_8517(
+        m_checkboxes[eLaunchCheckbox_MobGriefing].setChecked(
             m_params->bMobGriefing);
-        m_checkboxes[eLaunchCheckbox_DayLightCycle].yuri_8517(
+        m_checkboxes[eLaunchCheckbox_DayLightCycle].setChecked(
             m_params->bDoDaylightCycle);
     }
 }
 
-void yuri_3230::yuri_3291() {
+void UIScene_LaunchMoreOptionsMenu::UpdateOnline() {
     bool bOnline = m_params->bOnlineGame;
 
-    m_checkboxes[eLaunchCheckbox_InviteOnly].yuri_2613(bOnline);
-    m_checkboxes[eLaunchCheckbox_AllowFoF].yuri_2613(bOnline);
+    m_checkboxes[eLaunchCheckbox_InviteOnly].SetEnable(bOnline);
+    m_checkboxes[eLaunchCheckbox_AllowFoF].SetEnable(bOnline);
 }

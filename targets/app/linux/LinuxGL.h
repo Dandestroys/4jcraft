@@ -2,41 +2,41 @@
 
 #ifdef __linux__
 
-#include <GL/gl.yuri_6412>
-#include <GL/glu.yuri_6412>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
-class yuri_849;
-class yuri_1617;
-class yuri_253;
+class FloatBuffer;
+class IntBuffer;
+class ByteBuffer;
 
-void yuri_6309(yuri_1617*);
-int yuri_6309();
-void yuri_6278(yuri_1617*);
-void yuri_6327(int, int, yuri_849*);
-void yuri_6328(int, yuri_849*);
-void yuri_6312(int yuri_3565, yuri_849* yuri_3775);
-void yuri_6366(int, int, int, int);
-void yuri_6366(int, int, yuri_849*);
-void yuri_6341(int, int, int);
-void yuri_6341(int, yuri_253*);
-void yuri_6267(int, bool, int, yuri_253*);
-void yuri_6267(int, int, int, int);
-void yuri_6389(int, int, int, int);
-void yuri_6389(int, int, yuri_849*);
-void yuri_6339(int, int);
-void yuri_6289(int yuri_9523 = 0);
-void yuri_6372(int, int, int, int, int, int, int, int, yuri_253*);
-void yuri_6256(yuri_1617*);
-void yuri_6305(yuri_1617*);
-void yuri_6243(int, int);
-void yuri_6291(int);
-void yuri_6317(int, int, yuri_1617*);
-void yuri_6295(int, yuri_849*);
-void yuri_6368(int, int, yuri_849*);
-void yuri_6347(int, int, int, int, int, int, yuri_253*);
-void yuri_6371(int, int, int);
-void yuri_6338(int, float, float);
-void yuri_6262(int);
-void yuri_6240(int);
+void glGenTextures(IntBuffer*);
+int glGenTextures();
+void glDeleteTextures(IntBuffer*);
+void glLight(int, int, FloatBuffer*);
+void glLightModel(int, FloatBuffer*);
+void glGetFloat(int a, FloatBuffer* b);
+void glTexCoordPointer(int, int, int, int);
+void glTexCoordPointer(int, int, FloatBuffer*);
+void glNormalPointer(int, int, int);
+void glNormalPointer(int, ByteBuffer*);
+void glColorPointer(int, bool, int, ByteBuffer*);
+void glColorPointer(int, int, int, int);
+void glVertexPointer(int, int, int, int);
+void glVertexPointer(int, int, FloatBuffer*);
+void glNewList(int, int);
+void glEndList(int vertexCount = 0);
+void glTexImage2D(int, int, int, int, int, int, int, int, ByteBuffer*);
+void glCallLists(IntBuffer*);
+void glGenQueriesARB(IntBuffer*);
+void glBeginQueryARB(int, int);
+void glEndQueryARB(int);
+void glGetQueryObjectuARB(int, int, IntBuffer*);
+void glFog(int, FloatBuffer*);
+void glTexGen(int, int, FloatBuffer*);
+void glReadPixels(int, int, int, int, int, int, ByteBuffer*);
+void glTexGeni(int, int, int);
+void glMultiTexCoord2f(int, float, float);
+void glClientActiveTexture(int);
+void glActiveTexture(int);
 
 #endif

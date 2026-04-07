@@ -1,17 +1,17 @@
 #pragma once
 #include "MobRenderer.h"
 
-class yuri_2412;
+class ResourceLocation;
 
-class yuri_201 : public yuri_1955 {
+class BlazeRenderer : public MobRenderer {
 private:
-    static yuri_2412 BLAZE_LOCATION;
-    int yuri_7508;
+    static ResourceLocation BLAZE_LOCATION;
+    int modelVersion;
 
 public:
-    yuri_201();
+    BlazeRenderer();
 
-    virtual void yuri_8158(std::shared_ptr<yuri_739> mob, double yuri_9621, double yuri_9625,
-                        double yuri_9630, float rot, float yuri_3565);
-    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
+    virtual void render(std::shared_ptr<Entity> mob, double x, double y,
+                        double z, float rot, float a);
+    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
 };

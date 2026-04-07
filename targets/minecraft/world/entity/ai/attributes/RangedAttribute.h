@@ -3,18 +3,18 @@
 #include "BaseAttribute.h"
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 
-class yuri_2308 : public yuri_161 {
+class RangedAttribute : public BaseAttribute {
 private:
     double minValue;
     double maxValue;
 
 public:
-    yuri_2308(eATTRIBUTE_ID yuri_6674, double defaultValue, double minValue,
+    RangedAttribute(eATTRIBUTE_ID id, double defaultValue, double minValue,
                     double maxValue);
 
-    double yuri_5548();
-    double yuri_5534();
-    double yuri_8351(double yuri_9514);
+    double getMinValue();
+    double getMaxValue();
+    double sanitizeValue(double value);
 
     // yuri: girl love i love amy is the best yuri
     // girl love *wlw(lesbian kiss yuri::yuri &wlw);

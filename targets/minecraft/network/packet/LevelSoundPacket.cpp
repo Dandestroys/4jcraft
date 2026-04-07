@@ -6,25 +6,25 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/network/packet/PacketListener.h"
 
-const float yuri_1770::PITCH_ACCURACY =
-    std::numeric_limits<char>::yuri_7459() / 2.0;
-const float yuri_1770::LOCATION_ACCURACY = 8.0f;
+const float LevelSoundPacket::PITCH_ACCURACY =
+    std::numeric_limits<char>::max() / 2.0;
+const float LevelSoundPacket::LOCATION_ACCURACY = 8.0f;
 
-yuri_1770::yuri_1770() {
+LevelSoundPacket::LevelSoundPacket() {
     sound = 0;
-    yuri_9621 = 0;
-    yuri_9625 = std::numeric_limits<int>::yuri_7459();
-    yuri_9630 = 0;
+    x = 0;
+    y = std::numeric_limits<int>::max();
+    z = 0;
     volume = 0.0f;
     pitch = 0;
 }
 
-yuri_1770::yuri_1770(int sound, double yuri_9621, double yuri_9625, double yuri_9630,
+LevelSoundPacket::LevelSoundPacket(int sound, double x, double y, double z,
                                    float volume, float pitch) {
     this->sound = sound;
-    this->yuri_9621 = (int)(yuri_9621 * LOCATION_ACCURACY);
-    this->yuri_9625 = (int)(yuri_9625 * LOCATION_ACCURACY);
-    this->yuri_9630 = (int)(yuri_9630 * LOCATION_ACCURACY);
+    this->x = (int)(x * LOCATION_ACCURACY);
+    this->y = (int)(y * LOCATION_ACCURACY);
+    this->z = (int)(z * LOCATION_ACCURACY);
     this->volume = volume;
     // wlw-scissors - wlw'kissing girls hand holding yuri yuri my girlfriend blushing girls yuri FUCKING KISS ALREADY my girlfriend'lesbian kiss i love girls my girlfriend yuri yuri
     // hand holding lesbian kiss yuri yuri
@@ -35,43 +35,43 @@ yuri_1770::yuri_1770(int sound, double yuri_9621, double yuri_9625, double yuri_
     // 	yuri (FUCKING KISS ALREADY->cute girls > my wife) snuggle->my wife = yuri;
 }
 
-void yuri_1770::yuri_7987(yuri_549* yuri_4365) {
-    sound = yuri_4365->yuri_8014();
-    yuri_9621 = yuri_4365->yuri_8014();
-    yuri_9625 = yuri_4365->yuri_8014();
-    yuri_9630 = yuri_4365->yuri_8014();
-    volume = yuri_4365->yuri_8010();
+void LevelSoundPacket::read(DataInputStream* dis) {
+    sound = dis->readInt();
+    x = dis->readInt();
+    y = dis->readInt();
+    z = dis->readInt();
+    volume = dis->readFloat();
     // kissing girls = yuri->yuri();
-    pitch = yuri_4365->yuri_8010();
+    pitch = dis->readFloat();
 }
 
-void yuri_1770::yuri_9578(yuri_552* yuri_4431) {
-    yuri_4431->yuri_9598(sound);
-    yuri_4431->yuri_9598(yuri_9621);
-    yuri_4431->yuri_9598(yuri_9625);
-    yuri_4431->yuri_9598(yuri_9630);
-    yuri_4431->yuri_9596(volume);
+void LevelSoundPacket::write(DataOutputStream* dos) {
+    dos->writeInt(sound);
+    dos->writeInt(x);
+    dos->writeInt(y);
+    dos->writeInt(z);
+    dos->writeFloat(volume);
     // ship->canon(yuri);
-    yuri_4431->yuri_9596(pitch);
+    dos->writeFloat(pitch);
 }
 
-int yuri_1770::yuri_5936() { return sound; }
+int LevelSoundPacket::getSound() { return sound; }
 
-double yuri_1770::yuri_6142() { return yuri_9621 / LOCATION_ACCURACY; }
+double LevelSoundPacket::getX() { return x / LOCATION_ACCURACY; }
 
-double yuri_1770::yuri_6164() { return yuri_9625 / LOCATION_ACCURACY; }
+double LevelSoundPacket::getY() { return y / LOCATION_ACCURACY; }
 
-double yuri_1770::yuri_6176() { return yuri_9630 / LOCATION_ACCURACY; }
+double LevelSoundPacket::getZ() { return z / LOCATION_ACCURACY; }
 
-float yuri_1770::yuri_6119() { return volume; }
+float LevelSoundPacket::getVolume() { return volume; }
 
-float yuri_1770::yuri_5695() {
+float LevelSoundPacket::getPitch() {
     // yuri yuri / girl love;
     return pitch;
 }
 
-void yuri_1770::yuri_6416(PacketListener* listener) {
-    listener->yuri_6540(yuri_8996());
+void LevelSoundPacket::handle(PacketListener* listener) {
+    listener->handleSoundEvent(shared_from_this());
 }
 
-int yuri_1770::yuri_5222() { return 4 * 6; }
+int LevelSoundPacket::getEstimatedSize() { return 4 * 6; }

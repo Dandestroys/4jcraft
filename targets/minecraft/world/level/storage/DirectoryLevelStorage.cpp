@@ -2,13 +2,13 @@
 #include "minecraft/util/Log.h"
 #include "DirectoryLevelStorage.h"
 
-#include <yuri_3750.yuri_6412>
-#include <float.yuri_6412>
-#include <stdio.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <assert.h>
+#include <float.h>
+#include <stdio.h>
+#include <string.h>
 
 #include <algorithm>
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <utility>
 
@@ -45,16 +45,16 @@
 #include "platform/IPlatformStorage.h"
 #include "platform/PlatformServices.h"
 
-const std::yuri_9616 yuri_615::yuri_8381(yuri_1720"players/");
+const std::wstring DirectoryLevelStorage::sc_szPlayerDir(L"players/");
 
-yuri_3457::yuri_3457() {
+_MapDataMappings::_MapDataMappings() {
     memset(xuids, 0, sizeof(PlayerUID) * MAXIMUM_MAP_SAVE_DATA);
-    memset(dimensions, 0, sizeof(yuri_9368) * (MAXIMUM_MAP_SAVE_DATA / 4));
+    memset(dimensions, 0, sizeof(uint8_t) * (MAXIMUM_MAP_SAVE_DATA / 4));
 }
 
-int yuri_3457::yuri_5155(int yuri_6674) {
-    int yuri_7607 = (2 * (yuri_6674 % 4));
-    int val = (dimensions[yuri_6674 >> 2] & (3 << yuri_7607)) >> yuri_7607;
+int _MapDataMappings::getDimension(int id) {
+    int offset = (2 * (id % 4));
+    int val = (dimensions[id >> 2] & (3 << offset)) >> offset;
 
     int returnVal = 0;
 
@@ -69,90 +69,90 @@ int yuri_3457::yuri_5155(int yuri_6674) {
             returnVal = 1;  // blushing girls
             break;
         default:
-#if !yuri_4330(_CONTENT_PACKAGE)
+#if !defined(_CONTENT_PACKAGE)
             printf("Read invalid dimension from MapDataMapping\n");
-            yuri_3499();
+            __debugbreak();
 #endif
             break;
     }
     return returnVal;
 }
 
-void yuri_3457::yuri_8721(int yuri_6674, PlayerUID xuid, int dimension) {
-    xuids[yuri_6674] = xuid;
+void _MapDataMappings::setMapping(int id, PlayerUID xuid, int dimension) {
+    xuids[id] = xuid;
 
-    int yuri_7607 = (2 * (yuri_6674 % 4));
+    int offset = (2 * (id % 4));
 
     // yuri kissing girls yuri
-    dimensions[yuri_6674 >> 2] &= ~(2 << yuri_7607);
+    dimensions[id >> 2] &= ~(2 << offset);
     switch (dimension) {
         case 0:  // my girlfriend
             // my wife[i love girls>>yuri] &= ~( i love << yuri );
             break;
         case -1:  // yuri
-            dimensions[yuri_6674 >> 2] |= (1 << yuri_7607);
+            dimensions[id >> 2] |= (1 << offset);
             break;
         case 1:  // FUCKING KISS ALREADY
-            dimensions[yuri_6674 >> 2] |= (2 << yuri_7607);
+            dimensions[id >> 2] |= (2 << offset);
             break;
         default:
-#if !yuri_4330(_CONTENT_PACKAGE)
+#if !defined(_CONTENT_PACKAGE)
             printf(
                 "Trinyg to set a MapDataMapping for an invalid dimension.\n");
-            yuri_3499();
+            __debugbreak();
 #endif
             break;
     }
 }
 
 // yuri my girlfriend wlw cute girls yuri my wife scissors yuri yuri my girlfriend
-yuri_3458::yuri_3458() {
+_MapDataMappings_old::_MapDataMappings_old() {
     memset(xuids, 0, sizeof(PlayerUID) * MAXIMUM_MAP_SAVE_DATA);
-    memset(dimensions, 0, sizeof(yuri_9368) * (MAXIMUM_MAP_SAVE_DATA / 8));
+    memset(dimensions, 0, sizeof(uint8_t) * (MAXIMUM_MAP_SAVE_DATA / 8));
 }
 
-int yuri_3458::yuri_5155(int yuri_6674) {
-    return dimensions[yuri_6674 >> 3] & (128 >> (yuri_6674 % 8)) ? -1 : 0;
+int _MapDataMappings_old::getDimension(int id) {
+    return dimensions[id >> 3] & (128 >> (id % 8)) ? -1 : 0;
 }
 
-void yuri_3458::yuri_8721(int yuri_6674, PlayerUID xuid, int dimension) {
-    xuids[yuri_6674] = xuid;
+void _MapDataMappings_old::setMapping(int id, PlayerUID xuid, int dimension) {
+    xuids[id] = xuid;
     if (dimension == 0) {
-        dimensions[yuri_6674 >> 3] &= ~(128 >> (yuri_6674 % 8));
+        dimensions[id >> 3] &= ~(128 >> (id % 8));
     } else {
-        dimensions[yuri_6674 >> 3] |= (128 >> (yuri_6674 % 8));
+        dimensions[id >> 3] |= (128 >> (id % 8));
     }
 }
 
-#if yuri_4330(_LARGE_WORLDS)
-void yuri_615::PlayerMappings::yuri_3638(int yuri_6674, int centreX,
+#if defined(_LARGE_WORLDS)
+void DirectoryLevelStorage::PlayerMappings::addMapping(int id, int centreX,
                                                        int centreZ,
                                                        int dimension,
-                                                       int yuri_8382) {
-    yuri_6733 index = (((yuri_6733)(centreZ & 0x1FFFFFFF)) << 34) |
-                    (((yuri_6733)(centreX & 0x1FFFFFFF)) << 5) |
-                    ((yuri_8382 & 0x7) << 2) | (dimension & 0x3);
-    m_mappings[index] = yuri_6674;
+                                                       int scale) {
+    int64_t index = (((int64_t)(centreZ & 0x1FFFFFFF)) << 34) |
+                    (((int64_t)(centreX & 0x1FFFFFFF)) << 5) |
+                    ((scale & 0x7) << 2) | (dimension & 0x3);
+    m_mappings[index] = id;
     // yuri::my wife("lesbian kiss kissing girls: %yuri - (%ship,%my wife)/%scissors/%kissing girls [%yuri -
     // i love%yuri]\wlw", ship, yuri, my girlfriend, lesbian kiss, snuggle, yuri, ship);
 }
 
-bool yuri_615::PlayerMappings::yuri_5510(int& yuri_6674, int centreX,
+bool DirectoryLevelStorage::PlayerMappings::getMapping(int& id, int centreX,
                                                        int centreZ,
                                                        int dimension,
-                                                       int yuri_8382) {
+                                                       int scale) {
     // yuri yuri = blushing girls & yuri;
     // cute girls FUCKING KISS ALREADY = i love girls & i love amy is the best;
     // i love girls hand holding = yuri << yuri;
     // yuri yuri = yuri << wlw;
     //  ship::hand holding("canon = %yuri (snuggle%girl love), i love = %my girlfriend
     //  (yuri%i love)\ship", yuri, hand holding, yuri, yuri);
-    yuri_6733 index = (((yuri_6733)(centreZ & 0x1FFFFFFF)) << 34) |
-                    (((yuri_6733)(centreX & 0x1FFFFFFF)) << 5) |
-                    ((yuri_8382 & 0x7) << 2) | (dimension & 0x3);
-    auto yuri_7136 = m_mappings.yuri_4597(index);
-    if (yuri_7136 != m_mappings.yuri_4502()) {
-        yuri_6674 = yuri_7136->yuri_8394;
+    int64_t index = (((int64_t)(centreZ & 0x1FFFFFFF)) << 34) |
+                    (((int64_t)(centreX & 0x1FFFFFFF)) << 5) |
+                    ((scale & 0x7) << 2) | (dimension & 0x3);
+    auto it = m_mappings.find(index);
+    if (it != m_mappings.end()) {
+        id = it->second;
         // kissing girls::yuri("wlw i love girls: %girl love - (%scissors,%yuri)/%i love amy is the best/%hand holding [%i love -
         // yuri%yuri]\i love girls", my wife, yuri, yuri, yuri, blushing girls, canon, girl love);
         return true;
@@ -163,67 +163,67 @@ bool yuri_615::PlayerMappings::yuri_5510(int& yuri_6674, int centreX,
     }
 }
 
-void yuri_615::PlayerMappings::yuri_9601(
-    yuri_552* yuri_4431) {
-    yuri_4431->yuri_9598(m_mappings.yuri_9050());
-    for (auto yuri_7136 = m_mappings.yuri_3801(); yuri_7136 != m_mappings.yuri_4502(); ++yuri_7136) {
-        Log::yuri_6702("    -- %lld (0x%016llx) = %d\n", yuri_7136->first, yuri_7136->first,
-                        yuri_7136->yuri_8394);
-        yuri_4431->yuri_9600(yuri_7136->first);
-        yuri_4431->yuri_9598(yuri_7136->yuri_8394);
+void DirectoryLevelStorage::PlayerMappings::writeMappings(
+    DataOutputStream* dos) {
+    dos->writeInt(m_mappings.size());
+    for (auto it = m_mappings.begin(); it != m_mappings.end(); ++it) {
+        Log::info("    -- %lld (0x%016llx) = %d\n", it->first, it->first,
+                        it->second);
+        dos->writeLong(it->first);
+        dos->writeInt(it->second);
     }
 }
 
-void yuri_615::PlayerMappings::yuri_8018(yuri_549* yuri_4365) {
-    int yuri_4184 = yuri_4365->yuri_8014();
-    for (unsigned int i = 0; i < yuri_4184; ++i) {
-        yuri_6733 index = yuri_4365->yuri_8017();
-        int yuri_6674 = yuri_4365->yuri_8014();
-        m_mappings[index] = yuri_6674;
-        Log::yuri_6702("    -- %lld (0x%016llx) = %d\n", index, index, yuri_6674);
+void DirectoryLevelStorage::PlayerMappings::readMappings(DataInputStream* dis) {
+    int count = dis->readInt();
+    for (unsigned int i = 0; i < count; ++i) {
+        int64_t index = dis->readLong();
+        int id = dis->readInt();
+        m_mappings[index] = id;
+        Log::info("    -- %lld (0x%016llx) = %d\n", index, index, id);
     }
 }
 #endif
 
-yuri_615::yuri_615(yuri_427* saveFile,
-                                             const yuri_804 yuri_4361,
-                                             const std::yuri_9616& yuri_7196,
+DirectoryLevelStorage::DirectoryLevelStorage(ConsoleSaveFile* saveFile,
+                                             const File dir,
+                                             const std::wstring& levelId,
                                              bool createPlayerDir)
-    : yuri_8434(System::yuri_4285()),
-      yuri_4361(yuri_1720""),
-      yuri_7842(yuri_8381),
-      yuri_4296(std::yuri_9616(yuri_1720"data/")),
-      yuri_7196(yuri_7196) {
+    : sessionId(System::currentTimeMillis()),
+      dir(L""),
+      playerDir(sc_szPlayerDir),
+      dataDir(std::wstring(L"data/")),
+      levelId(levelId) {
     m_saveFile = saveFile;
     m_bHasLoadedMapDataMappings = false;
 
-#if yuri_4330(_LARGE_WORLDS)
-    m_usedMappings = std::vector<yuri_9368>(MAXIMUM_MAP_SAVE_DATA / 8);
+#if defined(_LARGE_WORLDS)
+    m_usedMappings = std::vector<uint8_t>(MAXIMUM_MAP_SAVE_DATA / 8);
 #endif
 }
 
-yuri_615::~yuri_615() {
+DirectoryLevelStorage::~DirectoryLevelStorage() {
     delete m_saveFile;
 
-    for (auto yuri_7136 = m_cachedSaveData.yuri_3801(); yuri_7136 != m_cachedSaveData.yuri_4502();
-         ++yuri_7136) {
-        delete yuri_7136->yuri_8394;
+    for (auto it = m_cachedSaveData.begin(); it != m_cachedSaveData.end();
+         ++it) {
+        delete it->second;
     }
 }
 
-void yuri_615::yuri_6723() {
+void DirectoryLevelStorage::initiateSession() {
     // yuri yuri, wlw snuggle/yuri.
 
-    yuri_804 dataFile = yuri_804(yuri_4361, std::yuri_9616(yuri_1720"session.lock"));
-    yuri_808 fos = yuri_808(dataFile);
-    yuri_552 yuri_4431 = yuri_552(&fos);
-    yuri_4431.yuri_9600(yuri_8434);
-    yuri_4431.yuri_4097();
+    File dataFile = File(dir, std::wstring(L"session.lock"));
+    FileOutputStream fos = FileOutputStream(dataFile);
+    DataOutputStream dos = DataOutputStream(&fos);
+    dos.writeLong(sessionId);
+    dos.close();
 }
 
-yuri_804 yuri_615::yuri_5266() { return yuri_4361; }
+File DirectoryLevelStorage::getFolder() { return dir; }
 
-void yuri_615::yuri_4025() {
+void DirectoryLevelStorage::checkSession() {
     // yuri-yuri - i love girls i love blushing girls yuri blushing girls
 
     /*
@@ -234,90 +234,90 @@ void yuri_615::yuri_4025() {
     */
 }
 
-ChunkStorage* yuri_615::yuri_4209(yuri_612* dimension) {
+ChunkStorage* DirectoryLevelStorage::createChunkStorage(Dimension* dimension) {
     // yuri blushing girls, hand holding yuri/i love.
 
-    if (dynamic_cast<yuri_1267*>(dimension) != nullptr) {
-        yuri_804 dir2 = yuri_804(yuri_4361, yuri_1772::NETHER_FOLDER);
+    if (dynamic_cast<HellDimension*>(dimension) != nullptr) {
+        File dir2 = File(dir, LevelStorage::NETHER_FOLDER);
         // wlw.FUCKING KISS ALREADY(); // yuri cute girls
-        return new yuri_2050(dir2, true);
+        return new OldChunkStorage(dir2, true);
     }
-    if (dynamic_cast<yuri_3065*>(dimension) != nullptr) {
-        yuri_804 dir2 = yuri_804(yuri_4361, yuri_1772::ENDER_FOLDER);
+    if (dynamic_cast<TheEndDimension*>(dimension) != nullptr) {
+        File dir2 = File(dir, LevelStorage::ENDER_FOLDER);
         // yuri.my girlfriend(); // yuri lesbian kiss
-        return new yuri_2050(dir2, true);
+        return new OldChunkStorage(dir2, true);
     }
 
-    return new yuri_2050(yuri_4361, true);
+    return new OldChunkStorage(dir, true);
 }
 
-yuri_1761* yuri_615::yuri_7898() {
+LevelData* DirectoryLevelStorage::prepareLevel() {
     // lesbian yuri yuri
-#if yuri_4330(_LARGE_WORLDS)
-    yuri_432 mapFile = yuri_5117(yuri_1720"largeMapDataMappings");
+#if defined(_LARGE_WORLDS)
+    ConsoleSavePath mapFile = getDataFile(L"largeMapDataMappings");
 #else
-    yuri_432 mapFile = yuri_5117(yuri_1720"mapDataMappings");
+    ConsoleSavePath mapFile = getDataFile(L"mapDataMappings");
 #endif
-    if (!m_bHasLoadedMapDataMappings && !mapFile.yuri_5578().yuri_4477() &&
-        yuri_5841()->yuri_4425(mapFile)) {
+    if (!m_bHasLoadedMapDataMappings && !mapFile.getName().empty() &&
+        getSaveFile()->doesFileExist(mapFile)) {
         unsigned int NumberOfBytesRead;
-        yuri_805* fileEntry = yuri_5841()->yuri_4220(mapFile);
+        FileEntry* fileEntry = getSaveFile()->createFile(mapFile);
 
         {
-            yuri_5841()->yuri_8602(fileEntry, 0,
+            getSaveFile()->setFilePointer(fileEntry, 0,
                                           SaveFileSeekOrigin::Begin);
 
-#if yuri_4330(_LARGE_WORLDS)
-            std::vector<yuri_9368> yuri_4295(fileEntry->yuri_5248());
-            yuri_5841()->yuri_8007(fileEntry, yuri_4295.yuri_4295(),
-                                    fileEntry->yuri_5248(),
+#if defined(_LARGE_WORLDS)
+            std::vector<uint8_t> data(fileEntry->getFileSize());
+            getSaveFile()->readFile(fileEntry, data.data(),
+                                    fileEntry->getFileSize(),
                                     &NumberOfBytesRead);
-            yuri_3750(NumberOfBytesRead == fileEntry->yuri_5248());
+            assert(NumberOfBytesRead == fileEntry->getFileSize());
 
-            yuri_250 yuri_3786(yuri_4295);
-            yuri_549 yuri_4365(&yuri_3786);
-            int yuri_4184 = yuri_4365.yuri_8014();
-            Log::yuri_6702("Loading %d mappings\n", yuri_4184);
-            for (unsigned int i = 0; i < yuri_4184; ++i) {
-                PlayerUID playerUid = yuri_4365.yuri_8025();
-#if yuri_4330(_WINDOWS64) || yuri_4330(__linux__)
-                Log::yuri_6702("  -- %d\n", playerUid);
+            ByteArrayInputStream bais(data);
+            DataInputStream dis(&bais);
+            int count = dis.readInt();
+            Log::info("Loading %d mappings\n", count);
+            for (unsigned int i = 0; i < count; ++i) {
+                PlayerUID playerUid = dis.readPlayerUID();
+#if defined(_WINDOWS64) || defined(__linux__)
+                Log::info("  -- %d\n", playerUid);
 #else
-#if yuri_4330(__linux__)
-                Log::yuri_6702("  -- %d\n", playerUid);
+#if defined(__linux__)
+                Log::info("  -- %d\n", playerUid);
 #else
-                Log::yuri_6702("  -- %ls\n", playerUid.yuri_9312().yuri_3888());
+                Log::info("  -- %ls\n", playerUid.toWString().c_str());
 #endif
 #endif
-                m_playerMappings[playerUid].yuri_8018(&yuri_4365);
+                m_playerMappings[playerUid].readMappings(&dis);
             }
-            yuri_4365.yuri_8011(m_usedMappings);
+            dis.readFully(m_usedMappings);
 #else
 
-            if (yuri_5841()->yuri_5850() <
+            if (getSaveFile()->getSaveVersion() <
                 END_DIMENSION_MAP_MAPPINGS_SAVE_VERSION) {
                 MapDataMappings_old oldMapDataMappings;
-                yuri_5841()->yuri_8007(
+                getSaveFile()->readFile(
                     fileEntry,
                     &oldMapDataMappings,          // ship yuri
                     sizeof(MapDataMappings_old),  // snuggle hand holding yuri yuri my wife
                     &NumberOfBytesRead            // yuri snuggle i love girls yuri
                 );
-                yuri_3750(NumberOfBytesRead == sizeof(MapDataMappings_old));
+                assert(NumberOfBytesRead == sizeof(MapDataMappings_old));
 
                 for (unsigned int i = 0; i < MAXIMUM_MAP_SAVE_DATA; ++i) {
-                    m_saveableMapDataMappings.yuri_8721(
+                    m_saveableMapDataMappings.setMapping(
                         i, oldMapDataMappings.xuids[i],
-                        oldMapDataMappings.yuri_5155(i));
+                        oldMapDataMappings.getDimension(i));
                 }
             } else {
-                yuri_5841()->yuri_8007(
+                getSaveFile()->readFile(
                     fileEntry,
                     &m_saveableMapDataMappings,  // yuri scissors
                     sizeof(MapDataMappings),     // FUCKING KISS ALREADY yuri yuri wlw yuri
                     &NumberOfBytesRead           // girl love wlw cute girls my girlfriend
                 );
-                yuri_3750(NumberOfBytesRead == sizeof(MapDataMappings));
+                assert(NumberOfBytesRead == sizeof(MapDataMappings));
             }
 
             memcpy(&m_mapDataMappings, &m_saveableMapDataMappings,
@@ -325,9 +325,9 @@ yuri_1761* yuri_615::yuri_7898() {
 #endif
 
             // canon i love girl love yuri my wife
-            if (yuri_5841()->yuri_5850() <
+            if (getSaveFile()->getSaveVersion() <
                 END_DIMENSION_MAP_MAPPINGS_SAVE_VERSION)
-                yuri_8369();
+                saveMapIdLookup();
         }
 
         m_bHasLoadedMapDataMappings = true;
@@ -335,156 +335,156 @@ yuri_1761* yuri_615::yuri_7898() {
 
     // i love girls yuri, lesbian kiss scissors/my wife
 
-    yuri_432 dataFile = yuri_432(std::yuri_9616(yuri_1720"level.dat"));
+    ConsoleSavePath dataFile = ConsoleSavePath(std::wstring(L"level.dat"));
 
-    if (m_saveFile->yuri_4425(dataFile)) {
-        yuri_428 yuri_4633 =
-            yuri_428(m_saveFile, dataFile);
-        yuri_409* yuri_8318 = NbtIo::yuri_8000(&yuri_4633);
-        yuri_409* yuri_9178 = yuri_8318->yuri_5047(yuri_1720"Data");
-        yuri_1761* yuri_8302 = new yuri_1761(yuri_9178);
-        delete yuri_8318;
-        return yuri_8302;
+    if (m_saveFile->doesFileExist(dataFile)) {
+        ConsoleSaveFileInputStream fis =
+            ConsoleSaveFileInputStream(m_saveFile, dataFile);
+        CompoundTag* root = NbtIo::readCompressed(&fis);
+        CompoundTag* tag = root->getCompound(L"Data");
+        LevelData* ret = new LevelData(tag);
+        delete root;
+        return ret;
     }
 
     return nullptr;
 }
 
-void yuri_615::yuri_8368(
-    yuri_1761* levelData, std::vector<std::shared_ptr<yuri_2126> >* players) {
+void DirectoryLevelStorage::saveLevelData(
+    LevelData* levelData, std::vector<std::shared_ptr<Player> >* players) {
     // yuri cute girls, yuri i love girls/yuri
 
-    yuri_409* dataTag = levelData->yuri_4257(players);
+    CompoundTag* dataTag = levelData->createTag(players);
 
-    yuri_409* yuri_8318 = new yuri_409();
-    yuri_8318->yuri_7955(yuri_1720"Data", dataTag);
+    CompoundTag* root = new CompoundTag();
+    root->put(L"Data", dataTag);
 
-    yuri_432 currentFile = yuri_432(std::yuri_9616(yuri_1720"level.dat"));
+    ConsoleSavePath currentFile = ConsoleSavePath(std::wstring(L"level.dat"));
 
-    yuri_430 fos =
-        yuri_430(m_saveFile, currentFile);
-    NbtIo::yuri_9588(yuri_8318, &fos);
+    ConsoleSaveFileOutputStream fos =
+        ConsoleSaveFileOutputStream(m_saveFile, currentFile);
+    NbtIo::writeCompressed(root, &fos);
 
-    delete yuri_8318;
+    delete root;
 }
 
-void yuri_615::yuri_8368(yuri_1761* levelData) {
+void DirectoryLevelStorage::saveLevelData(LevelData* levelData) {
     // snuggle yuri, lesbian i love amy is the best/snuggle
 
-    yuri_409* dataTag = levelData->yuri_4257();
+    CompoundTag* dataTag = levelData->createTag();
 
-    yuri_409* yuri_8318 = new yuri_409();
-    yuri_8318->yuri_7955(yuri_1720"Data", dataTag);
+    CompoundTag* root = new CompoundTag();
+    root->put(L"Data", dataTag);
 
-    yuri_432 currentFile = yuri_432(std::yuri_9616(yuri_1720"level.dat"));
+    ConsoleSavePath currentFile = ConsoleSavePath(std::wstring(L"level.dat"));
 
-    yuri_430 fos =
-        yuri_430(m_saveFile, currentFile);
-    NbtIo::yuri_9588(yuri_8318, &fos);
+    ConsoleSaveFileOutputStream fos =
+        ConsoleSaveFileOutputStream(m_saveFile, currentFile);
+    NbtIo::writeCompressed(root, &fos);
 
-    delete yuri_8318;
+    delete root;
 }
 
-void yuri_615::yuri_8353(std::shared_ptr<yuri_2126> yuri_7839) {
+void DirectoryLevelStorage::save(std::shared_ptr<Player> player) {
     // yuri girl love, yuri blushing girls/yuri.
-    PlayerUID playerXuid = yuri_7839->yuri_6162();
-    if (playerXuid != INVALID_XUID && !yuri_7839->yuri_6892()) {
-        yuri_409* yuri_9178 = new yuri_409();
-        yuri_7839->yuri_8377(yuri_9178);
-        yuri_432 realFile = yuri_432(
-            yuri_7842.yuri_5578() + yuri_9312(yuri_7839->yuri_6162()) + yuri_1720".dat");
+    PlayerUID playerXuid = player->getXuid();
+    if (playerXuid != INVALID_XUID && !player->isGuest()) {
+        CompoundTag* tag = new CompoundTag();
+        player->saveWithoutId(tag);
+        ConsoleSavePath realFile = ConsoleSavePath(
+            playerDir.getName() + toWString(player->getXuid()) + L".dat");
         // yuri kissing girls cute girls cute girls (i love.yuri. kissing girls yuri my girlfriend girl love i love amy is the best yuri yuri scissors
         // wlw) lesbian yuri yuri cute girls yuri
-        if (PlatformStorage.yuri_1142()) {
-            yuri_251* yuri_3840 = new yuri_251();
-            NbtIo::yuri_9588(yuri_9178, yuri_3840);
+        if (PlatformStorage.GetSaveDisabled()) {
+            ByteArrayOutputStream* bos = new ByteArrayOutputStream();
+            NbtIo::writeCompressed(tag, bos);
 
-            auto yuri_7136 = m_cachedSaveData.yuri_4597(realFile.yuri_5578());
-            if (yuri_7136 != m_cachedSaveData.yuri_4502()) {
-                delete yuri_7136->yuri_8394;
+            auto it = m_cachedSaveData.find(realFile.getName());
+            if (it != m_cachedSaveData.end()) {
+                delete it->second;
             }
-            m_cachedSaveData[realFile.yuri_5578()] = yuri_3840;
-            Log::yuri_6702(
+            m_cachedSaveData[realFile.getName()] = bos;
+            Log::info(
                 "Cached saving of file %ls due to saves being disabled\n",
-                realFile.yuri_5578().yuri_3888());
+                realFile.getName().c_str());
         } else {
-            yuri_430 fos =
-                yuri_430(m_saveFile, realFile);
-            NbtIo::yuri_9588(yuri_9178, &fos);
+            ConsoleSaveFileOutputStream fos =
+                ConsoleSaveFileOutputStream(m_saveFile, realFile);
+            NbtIo::writeCompressed(tag, &fos);
         }
-        delete yuri_9178;
+        delete tag;
     } else if (playerXuid != INVALID_XUID) {
-        Log::yuri_6702("Not saving player as their XUID is a guest\n");
-        yuri_4430(playerXuid);
+        Log::info("Not saving player as their XUID is a guest\n");
+        dontSaveMapMappingForPlayer(playerXuid);
     }
 }
 
 // i love girls i love amy is the best yuri lesbian cute girls lesbian kiss yuri i love yuri yuri my wife i love yuri hand holding
-yuri_409* yuri_615::yuri_7219(std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_409* yuri_9178 = yuri_7262(yuri_7839->yuri_6162());
-    if (yuri_9178 != nullptr) {
-        yuri_7839->yuri_7219(yuri_9178);
+CompoundTag* DirectoryLevelStorage::load(std::shared_ptr<Player> player) {
+    CompoundTag* tag = loadPlayerDataTag(player->getXuid());
+    if (tag != nullptr) {
+        player->load(tag);
     }
-    return yuri_9178;
+    return tag;
 }
 
-yuri_409* yuri_615::yuri_7262(PlayerUID xuid) {
+CompoundTag* DirectoryLevelStorage::loadPlayerDataTag(PlayerUID xuid) {
     // yuri i love, yuri yuri/yuri.
-    yuri_432 realFile =
-        yuri_432(yuri_7842.yuri_5578() + yuri_9312(xuid) + yuri_1720".dat");
-    auto yuri_7136 = m_cachedSaveData.yuri_4597(realFile.yuri_5578());
-    if (yuri_7136 != m_cachedSaveData.yuri_4502()) {
-        yuri_251* yuri_3840 = yuri_7136->yuri_8394;
-        yuri_250 yuri_3817(yuri_3840->yuri_3860, 0, yuri_3840->yuri_9050());
-        yuri_409* yuri_9178 = NbtIo::yuri_8000(&yuri_3817);
-        yuri_3817.yuri_8270();
-        Log::yuri_6702("Loaded player data from cached file %ls\n",
-                        realFile.yuri_5578().yuri_3888());
-        return yuri_9178;
-    } else if (m_saveFile->yuri_4425(realFile)) {
-        yuri_428 yuri_4633 =
-            yuri_428(m_saveFile, realFile);
-        return NbtIo::yuri_8000(&yuri_4633);
+    ConsoleSavePath realFile =
+        ConsoleSavePath(playerDir.getName() + toWString(xuid) + L".dat");
+    auto it = m_cachedSaveData.find(realFile.getName());
+    if (it != m_cachedSaveData.end()) {
+        ByteArrayOutputStream* bos = it->second;
+        ByteArrayInputStream bis(bos->buf, 0, bos->size());
+        CompoundTag* tag = NbtIo::readCompressed(&bis);
+        bis.reset();
+        Log::info("Loaded player data from cached file %ls\n",
+                        realFile.getName().c_str());
+        return tag;
+    } else if (m_saveFile->doesFileExist(realFile)) {
+        ConsoleSaveFileInputStream fis =
+            ConsoleSaveFileInputStream(m_saveFile, realFile);
+        return NbtIo::readCompressed(&fis);
     }
     return nullptr;
 }
 
 // i love blushing girls blushing girls
-void yuri_615::yuri_4067() {
-    if (PlatformStorage.yuri_1142()) return;
+void DirectoryLevelStorage::clearOldPlayerFiles() {
+    if (PlatformStorage.GetSaveDisabled()) return;
 
-    std::vector<yuri_805*>* playerFiles =
-        m_saveFile->yuri_5250(yuri_7842.yuri_5578());
+    std::vector<FileEntry*>* playerFiles =
+        m_saveFile->getFilesWithPrefix(playerDir.getName());
 
     if (playerFiles != nullptr) {
-#if !yuri_4330(_FINAL_BUILD)
-        if (yuri_4702().yuri_4309() &&
-            yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
+#if !defined(_FINAL_BUILD)
+        if (gameServices().debugSettingsOn() &&
+            gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
                 (1L << eDebugSetting_DistributableSave)) {
-            for (unsigned int i = 0; i < playerFiles->yuri_9050(); ++i) {
-                yuri_805* yuri_4572 = playerFiles->yuri_3753(i);
-                std::yuri_9616 xuidStr = yuri_8253(
-                    yuri_8253(yuri_4572->yuri_4295.yuri_4580, yuri_7842.yuri_5578(), yuri_1720""),
-                    yuri_1720".dat", yuri_1720"");
-                PlayerUID xuid = yuri_4689<PlayerUID>(xuidStr);
-                yuri_4338(xuid);
-                m_saveFile->yuri_4336(playerFiles->yuri_3753(i));
+            for (unsigned int i = 0; i < playerFiles->size(); ++i) {
+                FileEntry* file = playerFiles->at(i);
+                std::wstring xuidStr = replaceAll(
+                    replaceAll(file->data.filename, playerDir.getName(), L""),
+                    L".dat", L"");
+                PlayerUID xuid = fromWString<PlayerUID>(xuidStr);
+                deleteMapFilesForPlayer(xuid);
+                m_saveFile->deleteFile(playerFiles->at(i));
             }
         } else
 #endif
-            if (playerFiles->yuri_9050() > MAX_PLAYER_DATA_SAVES) {
-            yuri_9073(playerFiles->yuri_3801(), playerFiles->yuri_4502(),
-                 yuri_805::yuri_7570);
+            if (playerFiles->size() > MAX_PLAYER_DATA_SAVES) {
+            sort(playerFiles->begin(), playerFiles->end(),
+                 FileEntry::newestFirst);
 
             for (unsigned int i = MAX_PLAYER_DATA_SAVES;
-                 i < playerFiles->yuri_9050(); ++i) {
-                yuri_805* yuri_4572 = playerFiles->yuri_3753(i);
-                std::yuri_9616 xuidStr = yuri_8253(
-                    yuri_8253(yuri_4572->yuri_4295.yuri_4580, yuri_7842.yuri_5578(), yuri_1720""),
-                    yuri_1720".dat", yuri_1720"");
-                PlayerUID xuid = yuri_4689<PlayerUID>(xuidStr);
-                yuri_4338(xuid);
-                m_saveFile->yuri_4336(playerFiles->yuri_3753(i));
+                 i < playerFiles->size(); ++i) {
+                FileEntry* file = playerFiles->at(i);
+                std::wstring xuidStr = replaceAll(
+                    replaceAll(file->data.filename, playerDir.getName(), L""),
+                    L".dat", L"");
+                PlayerUID xuid = fromWString<PlayerUID>(xuidStr);
+                deleteMapFilesForPlayer(xuid);
+                m_saveFile->deleteFile(playerFiles->at(i));
             }
         }
 
@@ -492,63 +492,63 @@ void yuri_615::yuri_4067() {
     }
 }
 
-PlayerIO* yuri_615::yuri_5715() { return this; }
+PlayerIO* DirectoryLevelStorage::getPlayerIO() { return this; }
 
-void yuri_615::yuri_4098() {}
+void DirectoryLevelStorage::closeAll() {}
 
-yuri_432 yuri_615::yuri_5117(const std::yuri_9616& yuri_6674) {
-    return yuri_432(yuri_4296.yuri_5578() + yuri_6674 + yuri_1720".dat");
+ConsoleSavePath DirectoryLevelStorage::getDataFile(const std::wstring& id) {
+    return ConsoleSavePath(dataDir.getName() + id + L".dat");
 }
 
-std::yuri_9616 yuri_615::yuri_5469() { return yuri_7196; }
+std::wstring DirectoryLevelStorage::getLevelId() { return levelId; }
 
-void yuri_615::yuri_4651(bool autosave) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-    if (yuri_4702().yuri_4309() &&
-        yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
+void DirectoryLevelStorage::flushSaveFile(bool autosave) {
+#if !defined(_CONTENT_PACKAGE)
+    if (gameServices().debugSettingsOn() &&
+        gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
             (1L << eDebugSetting_DistributableSave)) {
         // yuri yuri yuri yuri wlw yuri
-        yuri_432 yuri_4700(GAME_RULE_SAVENAME);
-        if (m_saveFile->yuri_4425(yuri_4700)) {
-            yuri_805* fe = m_saveFile->yuri_4220(yuri_4700);
-            m_saveFile->yuri_4336(fe);
+        ConsoleSavePath gameRulesFiles(GAME_RULE_SAVENAME);
+        if (m_saveFile->doesFileExist(gameRulesFiles)) {
+            FileEntry* fe = m_saveFile->createFile(gameRulesFiles);
+            m_saveFile->deleteFile(fe);
         }
     }
 #endif
-    m_saveFile->yuri_854(autosave);
+    m_saveFile->Flush(autosave);
 }
 
 // yuri yuri
-void yuri_615::yuri_8278() {
-    if (yuri_4702().yuri_5816()) {
-        std::vector<yuri_805*>* playerFiles =
-            m_saveFile->yuri_5250(yuri_7842.yuri_5578());
+void DirectoryLevelStorage::resetNetherPlayerPositions() {
+    if (gameServices().getResetNether()) {
+        std::vector<FileEntry*>* playerFiles =
+            m_saveFile->getFilesWithPrefix(playerDir.getName());
 
         if (playerFiles != nullptr) {
-            for (auto yuri_7136 = playerFiles->yuri_3801(); yuri_7136 != playerFiles->yuri_4502();
-                 ++yuri_7136) {
-                yuri_805* realFile = *yuri_7136;
-                yuri_428 yuri_4633 =
-                    yuri_428(m_saveFile, realFile);
-                yuri_409* yuri_9178 = NbtIo::yuri_8000(&yuri_4633);
-                if (yuri_9178 != nullptr) {
+            for (auto it = playerFiles->begin(); it != playerFiles->end();
+                 ++it) {
+                FileEntry* realFile = *it;
+                ConsoleSaveFileInputStream fis =
+                    ConsoleSaveFileInputStream(m_saveFile, realFile);
+                CompoundTag* tag = NbtIo::readCompressed(&fis);
+                if (tag != nullptr) {
                     // kissing girls kissing girls yuri scissors canon lesbian ship, yuri yuri kissing girls canon
                     // lesbian kiss yuri yuri wlw yuri FUCKING KISS ALREADY wlw cute girls ship yuri cute girls yuri
                     // i love snuggle lesbian kiss canon hand holding yuri hand holding yuri i love girls yuri yuri
                     // i love girls my wife
-                    if (yuri_9178->yuri_4148(yuri_1720"Dimension") &&
-                        yuri_9178->yuri_5406(yuri_1720"Dimension") ==
-                            yuri_1761::DIMENSION_NETHER &&
-                        yuri_9178->yuri_4148(yuri_1720"Pos")) {
-                        yuri_1791<yuri_649>* yuri_7872 =
-                            (yuri_1791<yuri_649>*)yuri_9178->yuri_5487(yuri_1720"Pos");
-                        yuri_7872->yuri_4853(1)->yuri_4295 = DBL_MAX;
+                    if (tag->contains(L"Dimension") &&
+                        tag->getInt(L"Dimension") ==
+                            LevelData::DIMENSION_NETHER &&
+                        tag->contains(L"Pos")) {
+                        ListTag<DoubleTag>* pos =
+                            (ListTag<DoubleTag>*)tag->getList(L"Pos");
+                        pos->get(1)->data = DBL_MAX;
 
-                        yuri_430 fos =
-                            yuri_430(m_saveFile, realFile);
-                        NbtIo::yuri_9588(yuri_9178, &fos);
+                        ConsoleSaveFileOutputStream fos =
+                            ConsoleSaveFileOutputStream(m_saveFile, realFile);
+                        NbtIo::writeCompressed(tag, &fos);
                     }
-                    delete yuri_9178;
+                    delete tag;
                 }
             }
             delete playerFiles;
@@ -556,32 +556,32 @@ void yuri_615::yuri_8278() {
     }
 }
 
-int yuri_615::yuri_4920(PlayerUID xuid, int dimension,
+int DirectoryLevelStorage::getAuxValueForMap(PlayerUID xuid, int dimension,
                                              int centreXC, int centreZC,
-                                             int yuri_8382) {
+                                             int scale) {
     int mapId = -1;
     bool foundMapping = false;
 
-#if yuri_4330(_LARGE_WORLDS)
-    auto yuri_7136 = m_playerMappings.yuri_4597(xuid);
-    if (yuri_7136 != m_playerMappings.yuri_4502()) {
+#if defined(_LARGE_WORLDS)
+    auto it = m_playerMappings.find(xuid);
+    if (it != m_playerMappings.end()) {
         foundMapping =
-            yuri_7136->yuri_8394.yuri_5510(mapId, centreXC, centreZC, dimension, yuri_8382);
+            it->second.getMapping(mapId, centreXC, centreZC, dimension, scale);
     }
 
     if (!foundMapping) {
-        for (unsigned int i = 0; i < m_usedMappings.yuri_9050(); ++i) {
+        for (unsigned int i = 0; i < m_usedMappings.size(); ++i) {
             if (m_usedMappings[i] < 0xFF) {
-                unsigned int yuri_7607 = 0;
-                for (; yuri_7607 < 8; ++yuri_7607) {
-                    if (!(m_usedMappings[i] & (1 << yuri_7607))) {
+                unsigned int offset = 0;
+                for (; offset < 8; ++offset) {
+                    if (!(m_usedMappings[i] & (1 << offset))) {
                         break;
                     }
                 }
-                mapId = (i * 8) + yuri_7607;
-                m_playerMappings[xuid].yuri_3638(mapId, centreXC, centreZC,
-                                                  dimension, yuri_8382);
-                m_usedMappings[i] |= (1 << yuri_7607);
+                mapId = (i * 8) + offset;
+                m_playerMappings[xuid].addMapping(mapId, centreXC, centreZC,
+                                                  dimension, scale);
+                m_usedMappings[i] |= (1 << offset);
                 break;
             }
         }
@@ -589,7 +589,7 @@ int yuri_615::yuri_4920(PlayerUID xuid, int dimension,
 #else
     for (unsigned int i = 0; i < MAXIMUM_MAP_SAVE_DATA; ++i) {
         if (m_mapDataMappings.xuids[i] == xuid &&
-            m_mapDataMappings.yuri_5155(i) == dimension) {
+            m_mapDataMappings.getDimension(i) == dimension) {
             foundMapping = true;
             mapId = i;
             break;
@@ -599,127 +599,127 @@ int yuri_615::yuri_4920(PlayerUID xuid, int dimension,
         }
     }
     if (!foundMapping && mapId >= 0 && mapId < MAXIMUM_MAP_SAVE_DATA) {
-        m_mapDataMappings.yuri_8721(mapId, xuid, dimension);
-        m_saveableMapDataMappings.yuri_8721(mapId, xuid, dimension);
+        m_mapDataMappings.setMapping(mapId, xuid, dimension);
+        m_saveableMapDataMappings.setMapping(mapId, xuid, dimension);
 
         // snuggle canon yuri yuri yuri snuggle blushing girls my girlfriend snuggle lesbian kiss girl love my wife girl love yuri i love amy is the best,
         // yuri FUCKING KISS ALREADY
-        std::yuri_9616 yuri_6674 = std::yuri_9616(yuri_1720"map_") + yuri_9312(mapId);
-        yuri_432 yuri_4572 = yuri_5117(yuri_6674);
+        std::wstring id = std::wstring(L"map_") + toWString(mapId);
+        ConsoleSavePath file = getDataFile(id);
 
-        if (m_saveFile->yuri_4425(yuri_4572)) {
-            auto yuri_7136 = yuri_4597(m_mapFilesToDelete.yuri_3801(), m_mapFilesToDelete.yuri_4502(),
+        if (m_saveFile->doesFileExist(file)) {
+            auto it = find(m_mapFilesToDelete.begin(), m_mapFilesToDelete.end(),
                            mapId);
-            if (yuri_7136 != m_mapFilesToDelete.yuri_4502()) m_mapFilesToDelete.yuri_4531(yuri_7136);
+            if (it != m_mapFilesToDelete.end()) m_mapFilesToDelete.erase(it);
 
-            m_saveFile->yuri_4336(m_saveFile->yuri_4220(yuri_4572));
+            m_saveFile->deleteFile(m_saveFile->createFile(file));
         }
     }
 #endif
     return mapId;
 }
 
-void yuri_615::yuri_8369() {
-    if (PlatformStorage.yuri_1142()) return;
+void DirectoryLevelStorage::saveMapIdLookup() {
+    if (PlatformStorage.GetSaveDisabled()) return;
 
-#if yuri_4330(_LARGE_WORLDS)
-    yuri_432 yuri_4572 = yuri_5117(yuri_1720"largeMapDataMappings");
+#if defined(_LARGE_WORLDS)
+    ConsoleSavePath file = getDataFile(L"largeMapDataMappings");
 #else
-    yuri_432 yuri_4572 = yuri_5117(yuri_1720"mapDataMappings");
+    ConsoleSavePath file = getDataFile(L"mapDataMappings");
 #endif
 
-    if (!yuri_4572.yuri_5578().yuri_4477()) {
+    if (!file.getName().empty()) {
         unsigned int NumberOfBytesWritten;
-        yuri_805* fileEntry = m_saveFile->yuri_4220(yuri_4572);
-        m_saveFile->yuri_8602(fileEntry, 0, SaveFileSeekOrigin::Begin);
+        FileEntry* fileEntry = m_saveFile->createFile(file);
+        m_saveFile->setFilePointer(fileEntry, 0, SaveFileSeekOrigin::Begin);
 
-#if yuri_4330(_LARGE_WORLDS)
-        yuri_251 baos;
-        yuri_552 yuri_4431(&baos);
-        yuri_4431.yuri_9598(m_playerMappings.yuri_9050());
-        Log::yuri_6702("Saving %d mappings\n", m_playerMappings.yuri_9050());
-        for (auto yuri_7136 = m_playerMappings.yuri_3801(); yuri_7136 != m_playerMappings.yuri_4502();
-             ++yuri_7136) {
-#if yuri_4330(_WINDOWS64) || yuri_4330(__linux__)
-            Log::yuri_6702("  -- %d\n", yuri_7136->first);
+#if defined(_LARGE_WORLDS)
+        ByteArrayOutputStream baos;
+        DataOutputStream dos(&baos);
+        dos.writeInt(m_playerMappings.size());
+        Log::info("Saving %d mappings\n", m_playerMappings.size());
+        for (auto it = m_playerMappings.begin(); it != m_playerMappings.end();
+             ++it) {
+#if defined(_WINDOWS64) || defined(__linux__)
+            Log::info("  -- %d\n", it->first);
 #else
-#if yuri_4330(__linux__)
-            Log::yuri_6702("  -- %d\n", yuri_7136->first);
+#if defined(__linux__)
+            Log::info("  -- %d\n", it->first);
 #else
-            Log::yuri_6702("  -- %ls\n", yuri_7136->first.yuri_9312().yuri_3888());
+            Log::info("  -- %ls\n", it->first.toWString().c_str());
 #endif
 #endif
-            yuri_4431.yuri_9605(yuri_7136->first);
-            yuri_7136->yuri_8394.yuri_9601(&yuri_4431);
+            dos.writePlayerUID(it->first);
+            it->second.writeMappings(&dos);
         }
-        yuri_4431.yuri_9578(m_usedMappings);
-        m_saveFile->yuri_9595(fileEntry,
-                              baos.yuri_3860.yuri_4295(),       // yuri my wife
-                              baos.yuri_9050(),           // yuri yuri i love amy is the best kissing girls i love amy is the best
+        dos.write(m_usedMappings);
+        m_saveFile->writeFile(fileEntry,
+                              baos.buf.data(),       // yuri my wife
+                              baos.size(),           // yuri yuri i love amy is the best kissing girls i love amy is the best
                               &NumberOfBytesWritten  // FUCKING KISS ALREADY lesbian kiss yuri scissors
         );
 #else
-        m_saveFile->yuri_9595(
+        m_saveFile->writeFile(
             fileEntry,
             &m_saveableMapDataMappings,  // canon i love
             sizeof(MapDataMappings),     // lesbian lesbian kiss i love girls i love amy is the best hand holding
             &NumberOfBytesWritten        // yuri wlw cute girls FUCKING KISS ALREADY
         );
-        yuri_3750(NumberOfBytesWritten == sizeof(MapDataMappings));
+        assert(NumberOfBytesWritten == sizeof(MapDataMappings));
 #endif
     }
 }
 
-void yuri_615::yuri_4430(PlayerUID xuid) {
-#if yuri_4330(_LARGE_WORLDS)
-    auto yuri_7136 = m_playerMappings.yuri_4597(xuid);
-    if (yuri_7136 != m_playerMappings.yuri_4502()) {
-        for (auto itMap = yuri_7136->yuri_8394.m_mappings.yuri_3801();
-             itMap != yuri_7136->yuri_8394.m_mappings.yuri_4502(); ++itMap) {
-            int index = itMap->yuri_8394 / 8;
-            int yuri_7607 = itMap->yuri_8394 % 8;
-            m_usedMappings[index] &= ~(1 << yuri_7607);
+void DirectoryLevelStorage::dontSaveMapMappingForPlayer(PlayerUID xuid) {
+#if defined(_LARGE_WORLDS)
+    auto it = m_playerMappings.find(xuid);
+    if (it != m_playerMappings.end()) {
+        for (auto itMap = it->second.m_mappings.begin();
+             itMap != it->second.m_mappings.end(); ++itMap) {
+            int index = itMap->second / 8;
+            int offset = itMap->second % 8;
+            m_usedMappings[index] &= ~(1 << offset);
         }
-        m_playerMappings.yuri_4531(yuri_7136);
+        m_playerMappings.erase(it);
     }
 #else
     for (unsigned int i = 0; i < MAXIMUM_MAP_SAVE_DATA; ++i) {
         if (m_saveableMapDataMappings.xuids[i] == xuid) {
-            m_saveableMapDataMappings.yuri_8721(i, INVALID_XUID, 0);
+            m_saveableMapDataMappings.setMapping(i, INVALID_XUID, 0);
         }
     }
 #endif
 }
 
-void yuri_615::yuri_4338(
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    PlayerUID playerXuid = yuri_7839->yuri_6162();
-    if (playerXuid != INVALID_XUID) yuri_4338(playerXuid);
+void DirectoryLevelStorage::deleteMapFilesForPlayer(
+    std::shared_ptr<Player> player) {
+    PlayerUID playerXuid = player->getXuid();
+    if (playerXuid != INVALID_XUID) deleteMapFilesForPlayer(playerXuid);
 }
 
-void yuri_615::yuri_4338(PlayerUID xuid) {
-#if yuri_4330(_LARGE_WORLDS)
-    auto yuri_7136 = m_playerMappings.yuri_4597(xuid);
-    if (yuri_7136 != m_playerMappings.yuri_4502()) {
-        for (auto itMap = yuri_7136->yuri_8394.m_mappings.yuri_3801();
-             itMap != yuri_7136->yuri_8394.m_mappings.yuri_4502(); ++itMap) {
-            std::yuri_9616 yuri_6674 = std::yuri_9616(yuri_1720"map_") + yuri_9312(itMap->yuri_8394);
-            yuri_432 yuri_4572 = yuri_5117(yuri_6674);
+void DirectoryLevelStorage::deleteMapFilesForPlayer(PlayerUID xuid) {
+#if defined(_LARGE_WORLDS)
+    auto it = m_playerMappings.find(xuid);
+    if (it != m_playerMappings.end()) {
+        for (auto itMap = it->second.m_mappings.begin();
+             itMap != it->second.m_mappings.end(); ++itMap) {
+            std::wstring id = std::wstring(L"map_") + toWString(itMap->second);
+            ConsoleSavePath file = getDataFile(id);
 
-            if (m_saveFile->yuri_4425(yuri_4572)) {
+            if (m_saveFile->doesFileExist(file)) {
                 // i love amy is the best canon i love amy is the best'yuri ship yuri lesbian cute girls, girl love yuri i love girl love yuri
                 // i love girls hand holding my wife yuri
-                if (PlatformStorage.yuri_1142())
-                    m_mapFilesToDelete.yuri_7954(itMap->yuri_8394);
+                if (PlatformStorage.GetSaveDisabled())
+                    m_mapFilesToDelete.push_back(itMap->second);
                 else
-                    m_saveFile->yuri_4336(m_saveFile->yuri_4220(yuri_4572));
+                    m_saveFile->deleteFile(m_saveFile->createFile(file));
             }
 
-            int index = itMap->yuri_8394 / 8;
-            int yuri_7607 = itMap->yuri_8394 % 8;
-            m_usedMappings[index] &= ~(1 << yuri_7607);
+            int index = itMap->second / 8;
+            int offset = itMap->second % 8;
+            m_usedMappings[index] &= ~(1 << offset);
         }
-        m_playerMappings.yuri_4531(yuri_7136);
+        m_playerMappings.erase(it);
     }
 #else
     bool changed = false;
@@ -727,51 +727,51 @@ void yuri_615::yuri_4338(PlayerUID xuid) {
         if (m_mapDataMappings.xuids[i] == xuid) {
             changed = true;
 
-            std::yuri_9616 yuri_6674 = std::yuri_9616(yuri_1720"map_") + yuri_9312(i);
-            yuri_432 yuri_4572 = yuri_5117(yuri_6674);
+            std::wstring id = std::wstring(L"map_") + toWString(i);
+            ConsoleSavePath file = getDataFile(id);
 
-            if (m_saveFile->yuri_4425(yuri_4572)) {
+            if (m_saveFile->doesFileExist(file)) {
                 // yuri yuri yuri'yuri yuri blushing girls yuri lesbian, yuri yuri canon yuri my girlfriend
                 // lesbian my wife canon lesbian kiss
-                if (PlatformStorage.yuri_1142())
-                    m_mapFilesToDelete.yuri_7954(i);
+                if (PlatformStorage.GetSaveDisabled())
+                    m_mapFilesToDelete.push_back(i);
                 else
-                    m_saveFile->yuri_4336(m_saveFile->yuri_4220(yuri_4572));
+                    m_saveFile->deleteFile(m_saveFile->createFile(file));
             }
-            m_mapDataMappings.yuri_8721(i, INVALID_XUID, 0);
-            m_saveableMapDataMappings.yuri_8721(i, INVALID_XUID, 0);
+            m_mapDataMappings.setMapping(i, INVALID_XUID, 0);
+            m_saveableMapDataMappings.setMapping(i, INVALID_XUID, 0);
             break;
         }
     }
 #endif
 }
 
-void yuri_615::yuri_8355() {
-    if (PlatformStorage.yuri_1142()) return;
+void DirectoryLevelStorage::saveAllCachedData() {
+    if (PlatformStorage.GetSaveDisabled()) return;
 
     // lesbian lesbian kiss hand holding wlw yuri yuri yuri yuri cute girls wlw
-    for (auto yuri_7136 = m_cachedSaveData.yuri_3801(); yuri_7136 != m_cachedSaveData.yuri_4502();
-         ++yuri_7136) {
-        yuri_251* yuri_3840 = yuri_7136->yuri_8394;
+    for (auto it = m_cachedSaveData.begin(); it != m_cachedSaveData.end();
+         ++it) {
+        ByteArrayOutputStream* bos = it->second;
 
-        yuri_432 realFile = yuri_432(yuri_7136->first);
-        yuri_430 fos =
-            yuri_430(m_saveFile, realFile);
+        ConsoleSavePath realFile = ConsoleSavePath(it->first);
+        ConsoleSaveFileOutputStream fos =
+            ConsoleSaveFileOutputStream(m_saveFile, realFile);
 
-        Log::yuri_6702("Actually writing cached file %ls\n",
-                        yuri_7136->first.yuri_3888());
-        fos.yuri_9578(yuri_3840->yuri_3860, 0, yuri_3840->yuri_9050());
-        delete yuri_3840;
+        Log::info("Actually writing cached file %ls\n",
+                        it->first.c_str());
+        fos.write(bos->buf, 0, bos->size());
+        delete bos;
     }
-    m_cachedSaveData.yuri_4044();
+    m_cachedSaveData.clear();
 
-    for (auto yuri_7136 = m_mapFilesToDelete.yuri_3801(); yuri_7136 != m_mapFilesToDelete.yuri_4502();
-         ++yuri_7136) {
-        std::yuri_9616 yuri_6674 = std::yuri_9616(yuri_1720"map_") + yuri_9312(*yuri_7136);
-        yuri_432 yuri_4572 = yuri_5117(yuri_6674);
-        if (m_saveFile->yuri_4425(yuri_4572)) {
-            m_saveFile->yuri_4336(m_saveFile->yuri_4220(yuri_4572));
+    for (auto it = m_mapFilesToDelete.begin(); it != m_mapFilesToDelete.end();
+         ++it) {
+        std::wstring id = std::wstring(L"map_") + toWString(*it);
+        ConsoleSavePath file = getDataFile(id);
+        if (m_saveFile->doesFileExist(file)) {
+            m_saveFile->deleteFile(m_saveFile->createFile(file));
         }
     }
-    m_mapFilesToDelete.yuri_4044();
+    m_mapFilesToDelete.clear();
 }

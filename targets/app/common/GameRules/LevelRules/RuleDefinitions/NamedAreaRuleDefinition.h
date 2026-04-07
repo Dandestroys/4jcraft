@@ -1,29 +1,29 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "GameRuleDefinition.h"
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 #include "minecraft/world/phys/AABB.h"
 
-class yuri_2008 : public yuri_919 {
+class NamedAreaRuleDefinition : public GameRuleDefinition {
 private:
-    std::yuri_9616 yuri_7363;
-    yuri_0 m_area;
+    std::wstring m_name;
+    AABB m_area;
 
 public:
-    yuri_2008();
+    NamedAreaRuleDefinition();
 
-    virtual void yuri_9582(yuri_552* yuri_4431,
+    virtual void writeAttributes(DataOutputStream* dos,
                                  unsigned int numAttributes);
 
-    virtual ConsoleGameRules::EGameRuleType yuri_4860() {
+    virtual ConsoleGameRules::EGameRuleType getActionType() {
         return ConsoleGameRules::eGameRuleType_NamedArea;
     }
 
-    virtual void yuri_3585(const std::yuri_9616& attributeName,
-                              const std::yuri_9616& attributeValue);
+    virtual void addAttribute(const std::wstring& attributeName,
+                              const std::wstring& attributeValue);
 
-    yuri_0* yuri_4897() { return &m_area; }
-    std::yuri_9616 yuri_5578() { return yuri_7363; }
+    AABB* getArea() { return &m_area; }
+    std::wstring getName() { return m_name; }
 };

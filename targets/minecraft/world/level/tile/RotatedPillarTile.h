@@ -2,10 +2,10 @@
 
 #include "Tile.h"
 
-class yuri_1346;
-class yuri_1886;
+class Icon;
+class Material;
 
-class yuri_2441 : public yuri_3088 {
+class RotatedPillarTile : public Tile {
 public:
     static const int MASK_TYPE = 0x3;
     static const int MASK_FACING = 0xC;
@@ -14,26 +14,26 @@ public:
     static const int FACING_Z = 2 << 2;
 
 protected:
-    yuri_1346* iconTop;
+    Icon* iconTop;
 
-    yuri_2441(int yuri_6674, yuri_1886* material);
+    RotatedPillarTile(int id, Material* material);
 
 public:
-    virtual int yuri_5806();
-    virtual int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    virtual int getRenderShape();
+    virtual int getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue);
-    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
+    virtual Icon* getTexture(int face, int data);
 
 protected:
-    virtual yuri_1346* yuri_6070(int yuri_9364) = 0;
+    virtual Icon* getTypeTexture(int type) = 0;
 
-    virtual yuri_1346* yuri_6049(int yuri_9364);
+    virtual Icon* getTopTexture(int type);
 
 public:
-    virtual int yuri_5947(int yuri_4295);
-    virtual int yuri_6068(int yuri_4295);
+    virtual int getSpawnResourcesAuxValue(int data);
+    virtual int getType(int data);
 
 protected:
-    virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
+    virtual std::shared_ptr<ItemInstance> getSilkTouchItemInstance(int data);
 };

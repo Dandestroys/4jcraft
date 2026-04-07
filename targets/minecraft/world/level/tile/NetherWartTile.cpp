@@ -1,7 +1,7 @@
 #include "NetherWartTile.h"
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "util/StringHelpers.h"
 #include "java/Random.h"
@@ -12,86 +12,86 @@
 #include "minecraft/world/level/tile/PlantTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_2020::yuri_2020(int yuri_6674) : yuri_244(yuri_6674) {
-    yuri_8915(true);
-    yuri_9402();
+NetherWartTile::NetherWartTile(int id) : Bush(id) {
+    setTicking(true);
+    updateDefaultShape();
 }
 
 // hand holding lesbian blushing girls
-void yuri_2020::yuri_9402() {
-    float yuri_9095 = 0.5f;
-    yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, 0.25f, 0.5f + yuri_9095);
+void NetherWartTile::updateDefaultShape() {
+    float ss = 0.5f;
+    setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.25f, 0.5f + ss);
 }
 
-bool yuri_2020::yuri_7470(int tile) { return tile == yuri_3088::soulsand_Id; }
+bool NetherWartTile::mayPlaceOn(int tile) { return tile == Tile::soulsand_Id; }
 
 // girl love i love yuri my wife #ship - cute girls: yuri: FUCKING KISS ALREADY: FUCKING KISS ALREADY yuri FUCKING KISS ALREADY
 // i love girls yuri kissing girls yuri yuri snuggle yuri lesbian canon
-bool yuri_2020::yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_7470(yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630));
+bool NetherWartTile::canSurvive(Level* level, int x, int y, int z) {
+    return mayPlaceOn(level->getTile(x, y - 1, z));
 }
 
-void yuri_2020::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    int age = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+void NetherWartTile::tick(Level* level, int x, int y, int z, Random* random) {
+    int age = level->getData(x, y, z);
     if (age < MAX_AGE) {
-        if (yuri_7981->yuri_7578(10) == 0) {
+        if (random->nextInt(10) == 0) {
             age++;
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, age, yuri_3088::UPDATE_CLIENTS);
+            level->setData(x, y, z, age, Tile::UPDATE_CLIENTS);
         }
     }
 
-    yuri_244::yuri_9265(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
+    Bush::tick(level, x, y, z, random);
 }
 
-void yuri_2020::yuri_6410(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, MAX_AGE, yuri_3088::UPDATE_CLIENTS);
+void NetherWartTile::growCropsToMax(Level* level, int x, int y, int z) {
+    level->setData(x, y, z, MAX_AGE, Tile::UPDATE_CLIENTS);
 }
 
-yuri_1346* yuri_2020::yuri_6007(int face, int yuri_4295) {
-    if (yuri_4295 >= MAX_AGE) {
+Icon* NetherWartTile::getTexture(int face, int data) {
+    if (data >= MAX_AGE) {
         return icons[2];
     }
-    if (yuri_4295 > 0) {
+    if (data > 0) {
         return icons[1];
     }
     return icons[0];
 }
 
-int yuri_2020::yuri_5806() { return yuri_3088::SHAPE_ROWS; }
+int NetherWartTile::getRenderShape() { return Tile::SHAPE_ROWS; }
 
-void yuri_2020::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void NetherWartTile::spawnResources(Level* level, int x, int y, int z, int data,
                                     float odds, int playerBonus) {
-    if (yuri_7194->yuri_6802) {
+    if (level->isClientSide) {
         return;
     }
-    int yuri_4184 = 1;
-    if (yuri_4295 >= MAX_AGE) {
-        yuri_4184 = 2 + yuri_7194->yuri_7981->yuri_7578(3);
+    int count = 1;
+    if (data >= MAX_AGE) {
+        count = 2 + level->random->nextInt(3);
         if (playerBonus > 0) {
-            yuri_4184 += yuri_7194->yuri_7981->yuri_7578(playerBonus + 1);
+            count += level->random->nextInt(playerBonus + 1);
         }
     }
-    for (int i = 0; i < yuri_4184; i++) {
-        yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                    std::shared_ptr<yuri_1693>(
-                        new yuri_1693(yuri_1687::netherwart_seeds)));
+    for (int i = 0; i < count; i++) {
+        popResource(level, x, y, z,
+                    std::shared_ptr<ItemInstance>(
+                        new ItemInstance(Item::netherwart_seeds)));
     }
 }
 
-int yuri_2020::yuri_5817(int yuri_4295, yuri_2302* yuri_7981,
+int NetherWartTile::getResource(int data, Random* random,
                                 int playerBonusLevel) {
     return 0;
 }
 
-int yuri_2020::yuri_5819(yuri_2302* yuri_7981) { return 0; }
+int NetherWartTile::getResourceCount(Random* random) { return 0; }
 
-int yuri_2020::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_1687::netherwart_seeds_Id;
+int NetherWartTile::cloneTileId(Level* level, int x, int y, int z) {
+    return Item::netherwart_seeds_Id;
 }
 
-void yuri_2020::yuri_8072(IconRegister* iconRegister) {
+void NetherWartTile::registerIcons(IconRegister* iconRegister) {
     for (int i = 0; i < NETHER_STALK_TEXTURE_COUNT; i++) {
-        icons[i] = iconRegister->yuri_8071(yuri_5386() + yuri_1720"_stage_" +
-                                              yuri_9312<int>(i));
+        icons[i] = iconRegister->registerIcon(getIconName() + L"_stage_" +
+                                              toWString<int>(i));
     }
 }

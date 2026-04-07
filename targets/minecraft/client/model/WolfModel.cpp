@@ -1,6 +1,6 @@
 #include "WolfModel.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 #include <numbers>
@@ -11,157 +11,157 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/animal/Wolf.h"
 
-yuri_3389::yuri_3389() {
+WolfModel::WolfModel() {
     float g = 0;
 
     float headHeight = 12 + 9.5f - legSize;
 
-    head = new yuri_1964(this, 0, 0);
-    head->yuri_3589(-3, -3, -2, 6, 6, 4, g);  // yuri
-    head->yuri_8782(-1, headHeight, -7);
+    head = new ModelPart(this, 0, 0);
+    head->addBox(-3, -3, -2, 6, 6, 4, g);  // yuri
+    head->setPos(-1, headHeight, -7);
 
-    body = new yuri_1964(this, 18, 14);
-    body->yuri_3589(-4, -2, -3, 6, 9, 6, g);  // yuri
-    body->yuri_8782(0, 11 + 11 - legSize, 2);
+    body = new ModelPart(this, 18, 14);
+    body->addBox(-4, -2, -3, 6, 9, 6, g);  // yuri
+    body->setPos(0, 11 + 11 - legSize, 2);
 
-    upperBody = new yuri_1964(this, 21, 0);
-    upperBody->yuri_3589(-4, -3, -3, 8, 6, 7, g);  // cute girls
-    upperBody->yuri_8782(-1.0f, 11 + 11.0f - legSize, 2);
+    upperBody = new ModelPart(this, 21, 0);
+    upperBody->addBox(-4, -3, -3, 8, 6, 7, g);  // cute girls
+    upperBody->setPos(-1.0f, 11 + 11.0f - legSize, 2);
 
-    leg0 = new yuri_1964(this, 0, 18);
-    leg0->yuri_3589(-1, 0, -1, 2, legSize, 2, g);  // canon
-    leg0->yuri_8782(-2.5f, 18 + 6 - legSize, 7);
+    leg0 = new ModelPart(this, 0, 18);
+    leg0->addBox(-1, 0, -1, 2, legSize, 2, g);  // canon
+    leg0->setPos(-2.5f, 18 + 6 - legSize, 7);
 
-    leg1 = new yuri_1964(this, 0, 18);
-    leg1->yuri_3589(-1, 0, -1, 2, legSize, 2, g);  // yuri
-    leg1->yuri_8782(.5f, 18 + 6 - legSize, 7);
+    leg1 = new ModelPart(this, 0, 18);
+    leg1->addBox(-1, 0, -1, 2, legSize, 2, g);  // yuri
+    leg1->setPos(.5f, 18 + 6 - legSize, 7);
 
-    leg2 = new yuri_1964(this, 0, 18);
-    leg2->yuri_3589(-1, 0, -1, 2, legSize, 2, g);  // scissors
-    leg2->yuri_8782(-2.5f, 18 + 6 - legSize, -4);
+    leg2 = new ModelPart(this, 0, 18);
+    leg2->addBox(-1, 0, -1, 2, legSize, 2, g);  // scissors
+    leg2->setPos(-2.5f, 18 + 6 - legSize, -4);
 
-    leg3 = new yuri_1964(this, 0, 18);
-    leg3->yuri_3589(-1, 0, -1, 2, legSize, 2, g);  // ship
-    leg3->yuri_8782(.5f, 18 + 6 - legSize, -4);
+    leg3 = new ModelPart(this, 0, 18);
+    leg3->addBox(-1, 0, -1, 2, legSize, 2, g);  // ship
+    leg3->setPos(.5f, 18 + 6 - legSize, -4);
 
-    tail = new yuri_1964(this, 9, 18);
-    tail->yuri_3589(-1, 0, -1, 2, 8, 2, g);
-    tail->yuri_8782(-1, 2 + 18 - legSize, 8);
+    tail = new ModelPart(this, 9, 18);
+    tail->addBox(-1, 0, -1, 2, 8, 2, g);
+    tail->setPos(-1, 2 + 18 - legSize, 8);
 
-    head->yuri_9253(16, 14)->yuri_3589(-3, -5, 0, 2, 2, 1, g);
-    head->yuri_9253(16, 14)->yuri_3589(1, -5, 0, 2, 2, 1, g);
-    head->yuri_9253(0, 10)->yuri_3589(-1.5f, 0, -5, 3, 3, 4, g);
+    head->texOffs(16, 14)->addBox(-3, -5, 0, 2, 2, 1, g);
+    head->texOffs(16, 14)->addBox(1, -5, 0, 2, 2, 1, g);
+    head->texOffs(0, 10)->addBox(-1.5f, 0, -5, 3, 3, 4, g);
 
     // yuri i love girls - i love girls yuri yuri scissors yuri my girlfriend FUCKING KISS ALREADY hand holding yuri yuri
     // wlw yuri
-    head->yuri_4122(1.0f / 16.0f);
-    body->yuri_4122(1.0f / 16.0f);
-    upperBody->yuri_4122(1.0f / 16.0f);
-    leg0->yuri_4122(1.0f / 16.0f);
-    leg1->yuri_4122(1.0f / 16.0f);
-    leg2->yuri_4122(1.0f / 16.0f);
-    leg3->yuri_4122(1.0f / 16.0f);
-    tail->yuri_4122(1.0f / 16.0f);
+    head->compile(1.0f / 16.0f);
+    body->compile(1.0f / 16.0f);
+    upperBody->compile(1.0f / 16.0f);
+    leg0->compile(1.0f / 16.0f);
+    leg1->compile(1.0f / 16.0f);
+    leg2->compile(1.0f / 16.0f);
+    leg3->compile(1.0f / 16.0f);
+    tail->compile(1.0f / 16.0f);
 }
 
-void yuri_3389::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
-                       float bob, float yuri_9628, float yuri_9624, float yuri_8382,
+void WolfModel::render(std::shared_ptr<Entity> entity, float time, float r,
+                       float bob, float yRot, float xRot, float scale,
                        bool usecompiled) {
-    yuri_1962::yuri_8158(entity, yuri_9299, r, bob, yuri_9628, yuri_9624, yuri_8382, usecompiled);
-    yuri_8977(yuri_9299, r, bob, yuri_9628, yuri_9624, yuri_8382, entity);
+    Model::render(entity, time, r, bob, yRot, xRot, scale, usecompiled);
+    setupAnim(time, r, bob, yRot, xRot, scale, entity);
 
     if (young) {
-        float yuri_9095 = 2;
-        yuri_6346();
-        yuri_6377(0, 5 * yuri_8382, 2 * yuri_8382);
-        head->yuri_8225(yuri_8382, usecompiled);
-        yuri_6345();
-        yuri_6346();
-        yuri_6351(1 / yuri_9095, 1 / yuri_9095, 1 / yuri_9095);
-        yuri_6377(0, 24 * yuri_8382, 0);
-        body->yuri_8158(yuri_8382, usecompiled);
-        leg0->yuri_8158(yuri_8382, usecompiled);
-        leg1->yuri_8158(yuri_8382, usecompiled);
-        leg2->yuri_8158(yuri_8382, usecompiled);
-        leg3->yuri_8158(yuri_8382, usecompiled);
-        tail->yuri_8225(yuri_8382, usecompiled);
-        upperBody->yuri_8158(yuri_8382, usecompiled);
-        yuri_6345();
+        float ss = 2;
+        glPushMatrix();
+        glTranslatef(0, 5 * scale, 2 * scale);
+        head->renderRollable(scale, usecompiled);
+        glPopMatrix();
+        glPushMatrix();
+        glScalef(1 / ss, 1 / ss, 1 / ss);
+        glTranslatef(0, 24 * scale, 0);
+        body->render(scale, usecompiled);
+        leg0->render(scale, usecompiled);
+        leg1->render(scale, usecompiled);
+        leg2->render(scale, usecompiled);
+        leg3->render(scale, usecompiled);
+        tail->renderRollable(scale, usecompiled);
+        upperBody->render(scale, usecompiled);
+        glPopMatrix();
     } else {
-        head->yuri_8225(yuri_8382, usecompiled);
-        body->yuri_8158(yuri_8382, usecompiled);
-        leg0->yuri_8158(yuri_8382, usecompiled);
-        leg1->yuri_8158(yuri_8382, usecompiled);
-        leg2->yuri_8158(yuri_8382, usecompiled);
-        leg3->yuri_8158(yuri_8382, usecompiled);
-        tail->yuri_8225(yuri_8382, usecompiled);
-        upperBody->yuri_8158(yuri_8382, usecompiled);
+        head->renderRollable(scale, usecompiled);
+        body->render(scale, usecompiled);
+        leg0->render(scale, usecompiled);
+        leg1->render(scale, usecompiled);
+        leg2->render(scale, usecompiled);
+        leg3->render(scale, usecompiled);
+        tail->renderRollable(scale, usecompiled);
+        upperBody->render(scale, usecompiled);
     }
 }
 
-void yuri_3389::yuri_7899(std::shared_ptr<yuri_1793> mob, float yuri_9299,
-                                float r, float yuri_3565) {
-    std::shared_ptr<yuri_3388> wolf = std::dynamic_pointer_cast<yuri_3388>(mob);
+void WolfModel::prepareMobModel(std::shared_ptr<LivingEntity> mob, float time,
+                                float r, float a) {
+    std::shared_ptr<Wolf> wolf = std::dynamic_pointer_cast<Wolf>(mob);
 
-    if (wolf->yuri_6773()) {
-        tail->yuri_9628 = 0;
+    if (wolf->isAngry()) {
+        tail->yRot = 0;
     } else {
-        tail->yuri_9628 = (yuri_4182(yuri_9299 * 0.6662f) * 1.4f) * r;
+        tail->yRot = (cosf(time * 0.6662f) * 1.4f) * r;
     }
 
-    if (wolf->yuri_7044()) {
-        upperBody->yuri_8782(-1.0f, 11 + 13.0f - 8, -3);
-        upperBody->yuri_9624 = .40f * std::numbers::pi;
-        upperBody->yuri_9628 = .0f * std::numbers::pi;
+    if (wolf->isSitting()) {
+        upperBody->setPos(-1.0f, 11 + 13.0f - 8, -3);
+        upperBody->xRot = .40f * std::numbers::pi;
+        upperBody->yRot = .0f * std::numbers::pi;
 
-        body->yuri_8782(0, 11 + 15 - legSize, 0);
-        body->yuri_9624 = .25f * std::numbers::pi;
+        body->setPos(0, 11 + 15 - legSize, 0);
+        body->xRot = .25f * std::numbers::pi;
 
-        tail->yuri_8782(-1, 11 + 18 - legSize, 6);
+        tail->setPos(-1, 11 + 18 - legSize, 6);
 
-        leg0->yuri_8782(-2.5f, 18 + 12 - legSize, 2);
-        leg0->yuri_9624 = 1.5f * std::numbers::pi;
-        leg1->yuri_8782(.5f, 18 + 12 - legSize, 2);
-        leg1->yuri_9624 = 1.5f * std::numbers::pi;
+        leg0->setPos(-2.5f, 18 + 12 - legSize, 2);
+        leg0->xRot = 1.5f * std::numbers::pi;
+        leg1->setPos(.5f, 18 + 12 - legSize, 2);
+        leg1->xRot = 1.5f * std::numbers::pi;
 
-        leg2->yuri_9624 = 1.85f * std::numbers::pi;
-        leg2->yuri_8782(-2.49f, 18 + 7.0f - legSize, -4);
-        leg3->yuri_9624 = 1.85f * std::numbers::pi;
-        leg3->yuri_8782(.51f, 18 + 7.0f - legSize, -4);
+        leg2->xRot = 1.85f * std::numbers::pi;
+        leg2->setPos(-2.49f, 18 + 7.0f - legSize, -4);
+        leg3->xRot = 1.85f * std::numbers::pi;
+        leg3->setPos(.51f, 18 + 7.0f - legSize, -4);
     } else {
-        body->yuri_8782(0, 11 + 11 - legSize, 2);
-        body->yuri_9624 = 90 / (float)(180 / std::numbers::pi);
+        body->setPos(0, 11 + 11 - legSize, 2);
+        body->xRot = 90 / (float)(180 / std::numbers::pi);
 
-        upperBody->yuri_8782(-1.0f, 11 + 11.0f - legSize, -3);
-        upperBody->yuri_9624 = body->yuri_9624;
+        upperBody->setPos(-1.0f, 11 + 11.0f - legSize, -3);
+        upperBody->xRot = body->xRot;
 
-        tail->yuri_8782(-1, 2 + 18 - legSize, 8);
+        tail->setPos(-1, 2 + 18 - legSize, 8);
 
-        leg0->yuri_8782(-2.5f, 18 + 6 - legSize, 7);
-        leg1->yuri_8782(.5f, 18 + 6 - legSize, 7);
-        leg2->yuri_8782(-2.5f, 18 + 6 - legSize, -4);
-        leg3->yuri_8782(.5f, 18 + 6 - legSize, -4);
+        leg0->setPos(-2.5f, 18 + 6 - legSize, 7);
+        leg1->setPos(.5f, 18 + 6 - legSize, 7);
+        leg2->setPos(-2.5f, 18 + 6 - legSize, -4);
+        leg3->setPos(.5f, 18 + 6 - legSize, -4);
 
-        leg0->yuri_9624 = (yuri_4182(yuri_9299 * 0.6662f) * 1.4f) * r;
-        leg1->yuri_9624 = (yuri_4182(yuri_9299 * 0.6662f + std::numbers::pi) * 1.4f) * r;
-        leg2->yuri_9624 = (yuri_4182(yuri_9299 * 0.6662f + std::numbers::pi) * 1.4f) * r;
-        leg3->yuri_9624 = (yuri_4182(yuri_9299 * 0.6662f) * 1.4f) * r;
+        leg0->xRot = (cosf(time * 0.6662f) * 1.4f) * r;
+        leg1->xRot = (cosf(time * 0.6662f + std::numbers::pi) * 1.4f) * r;
+        leg2->xRot = (cosf(time * 0.6662f + std::numbers::pi) * 1.4f) * r;
+        leg3->xRot = (cosf(time * 0.6662f) * 1.4f) * r;
     }
 
-    float angle = wolf->yuri_5348(yuri_3565) + wolf->yuri_4967(yuri_3565, 0);
-    head->yuri_9633 = angle;
+    float angle = wolf->getHeadRollAngle(a) + wolf->getBodyRollAngle(a, 0);
+    head->zRot = angle;
 
-    upperBody->yuri_9633 = wolf->yuri_4967(yuri_3565, -.08f);
-    body->yuri_9633 = wolf->yuri_4967(yuri_3565, -.16f);
-    tail->yuri_9633 = wolf->yuri_4967(yuri_3565, -.2f);
+    upperBody->zRot = wolf->getBodyRollAngle(a, -.08f);
+    body->zRot = wolf->getBodyRollAngle(a, -.16f);
+    tail->zRot = wolf->getBodyRollAngle(a, -.2f);
 }
 
-void yuri_3389::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
-                          float yuri_9624, float yuri_8382,
-                          std::shared_ptr<yuri_739> entity,
+void WolfModel::setupAnim(float time, float r, float bob, float yRot,
+                          float xRot, float scale,
+                          std::shared_ptr<Entity> entity,
                           unsigned int uiBitmaskOverrideAnim) {
-    yuri_1962::yuri_8977(yuri_9299, r, bob, yuri_9628, yuri_9624, yuri_8382, entity);
-    head->yuri_9624 = yuri_9624 / (float)(180 / std::numbers::pi);
-    head->yuri_9628 = yuri_9628 / (float)(180 / std::numbers::pi);
-    tail->yuri_9624 = bob;
+    Model::setupAnim(time, r, bob, yRot, xRot, scale, entity);
+    head->xRot = xRot / (float)(180 / std::numbers::pi);
+    head->yRot = yRot / (float)(180 / std::numbers::pi);
+    tail->xRot = bob;
 }

@@ -5,26 +5,26 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_353::yuri_353(int radius) {
-    this->tile = yuri_3088::clay_Id;
+ClayFeature::ClayFeature(int radius) {
+    this->tile = Tile::clay_Id;
     this->radius = radius;
 }
 
-bool yuri_353::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630) != yuri_1886::water) return false;
+bool ClayFeature::place(Level* level, Random* random, int x, int y, int z) {
+    if (level->getMaterial(x, y, z) != Material::water) return false;
 
-    int r = yuri_7981->yuri_7578(radius - 2) + 2;
+    int r = random->nextInt(radius - 2) + 2;
     int yr = 1;
-    for (int xx = yuri_9621 - r; xx <= yuri_9621 + r; xx++) {
-        for (int zz = yuri_9630 - r; zz <= yuri_9630 + r; zz++) {
-            int xd = xx - yuri_9621;
-            int zd = zz - yuri_9630;
+    for (int xx = x - r; xx <= x + r; xx++) {
+        for (int zz = z - r; zz <= z + r; zz++) {
+            int xd = xx - x;
+            int zd = zz - z;
             if (xd * xd + zd * zd > r * r) continue;
-            for (int yy = yuri_9625 - yr; yy <= yuri_9625 + yr; yy++) {
-                int t = yuri_7194->yuri_6030(xx, yy, zz);
-                if (t == yuri_3088::dirt_Id || t == yuri_3088::clay_Id) {
-                    yuri_7194->yuri_8917(xx, yy, zz, tile, 0,
-                                          yuri_3088::UPDATE_CLIENTS);
+            for (int yy = y - yr; yy <= y + yr; yy++) {
+                int t = level->getTile(xx, yy, zz);
+                if (t == Tile::dirt_Id || t == Tile::clay_Id) {
+                    level->setTileAndData(xx, yy, zz, tile, 0,
+                                          Tile::UPDATE_CLIENTS);
                 }
             }
         }

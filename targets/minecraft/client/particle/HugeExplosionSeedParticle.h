@@ -3,19 +3,19 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_1301 : public yuri_2090 {
+class HugeExplosionSeedParticle : public Particle {
 private:
-    int yuri_7203;
+    int life;
     int lifeTime;
 
 public:
-    virtual eINSTANCEOF yuri_1188() { return eType_HUGEEXPLOSIONSEEDPARTICLE; }
-    yuri_1301(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
+    virtual eINSTANCEOF GetType() { return eType_HUGEEXPLOSIONSEEDPARTICLE; }
+    HugeExplosionSeedParticle(Level* level, double x, double y, double z,
                               double xa, double ya, double za);
-    void yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za, float xa2,
+    void render(Tesselator* t, float a, float xa, float ya, float za, float xa2,
                 float za2);
-    void yuri_9265();
-    int yuri_5688();
+    void tick();
+    int getParticleTexture();
 };

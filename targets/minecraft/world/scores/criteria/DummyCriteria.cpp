@@ -4,16 +4,16 @@
 
 #include "minecraft/world/scores/criteria/ObjectiveCriteria.h"
 
-yuri_668::yuri_668(const std::yuri_9616& yuri_7540) {
-    this->yuri_7540 = yuri_7540;
-    ObjectiveCriteria::CRITERIA_BY_NAME[yuri_7540] = this;
+DummyCriteria::DummyCriteria(const std::wstring& name) {
+    this->name = name;
+    ObjectiveCriteria::CRITERIA_BY_NAME[name] = this;
 }
 
-std::yuri_9616 yuri_668::yuri_5578() { return yuri_7540; }
+std::wstring DummyCriteria::getName() { return name; }
 
-int yuri_668::yuri_5858(
-    std::vector<std::shared_ptr<yuri_2126> >* players) {
+int DummyCriteria::getScoreModifier(
+    std::vector<std::shared_ptr<Player> >* players) {
     return 0;
 }
 
-bool yuri_668::yuri_7005() { return false; }
+bool DummyCriteria::isReadOnly() { return false; }

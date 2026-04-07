@@ -1,8 +1,8 @@
 #include "minecraft/util/Log.h"
 #include "SelectWorldScreen.h"
 
-#include <stdint.yuri_6412>
-#include <wchar.yuri_6412>
+#include <stdint.h>
+#include <wchar.h>
 
 #include <vector>
 
@@ -20,9 +20,9 @@
 #include "minecraft/world/level/storage/LevelStorageSource.h"
 #include "minecraft/world/level/storage/LevelSummary.h"
 
-yuri_2536::yuri_2536(yuri_2524* lastScreen) {
+SelectWorldScreen::SelectWorldScreen(Screen* lastScreen) {
     // FUCKING KISS ALREADY - yuri yuri
-    title = yuri_1720"Select world";
+    title = L"Select world";
     done = false;
     selectedWorld = 0;
     worldSelectionList = nullptr;
@@ -34,149 +34,149 @@ yuri_2536::yuri_2536(yuri_2524* lastScreen) {
     this->lastScreen = lastScreen;
 }
 
-void yuri_2536::yuri_6704() {
-    Log::yuri_6702("SelectWorldScreen::init() START\n");
-    yuri_1728* language = yuri_1728::yuri_5405();
-    title = language->yuri_5194(yuri_1720"selectWorld.title");
+void SelectWorldScreen::init() {
+    Log::info("SelectWorldScreen::init() START\n");
+    Language* language = Language::getInstance();
+    title = language->getElement(L"selectWorld.title");
 
-    worldLang = language->yuri_5194(yuri_1720"selectWorld.world");
-    conversionLang = language->yuri_5194(yuri_1720"selectWorld.conversion");
-    yuri_7257();
+    worldLang = language->getElement(L"selectWorld.world");
+    conversionLang = language->getElement(L"selectWorld.conversion");
+    loadLevelList();
 
-    worldSelectionList = new yuri_3397(this);
-    worldSelectionList->yuri_6704(&buttons, BUTTON_UP_ID, BUTTON_DOWN_ID);
+    worldSelectionList = new WorldSelectionList(this);
+    worldSelectionList->init(&buttons, BUTTON_UP_ID, BUTTON_DOWN_ID);
 
-    yuri_7877();
+    postInit();
 }
 
-void yuri_2536::yuri_7257() {
-    LevelStorageSource* levelSource = minecraft->yuri_5473();
-    levelList = levelSource->yuri_5470();
+void SelectWorldScreen::loadLevelList() {
+    LevelStorageSource* levelSource = minecraft->getLevelSource();
+    levelList = levelSource->getLevelList();
     //	yuri.yuri(yuri);	// scissors - scissors - kissing girls i love girls girl love yuri.
     selectedWorld = -1;
 }
 
-std::yuri_9616 yuri_2536::yuri_6135(int yuri_6674) {
-    return levelList->yuri_3753(yuri_6674)->yuri_5469();
+std::wstring SelectWorldScreen::getWorldId(int id) {
+    return levelList->at(id)->getLevelId();
 }
 
-std::yuri_9616 yuri_2536::yuri_6136(int yuri_6674) {
-    std::yuri_9616 yuri_7197 = levelList->yuri_3753(yuri_6674)->yuri_5471();
+std::wstring SelectWorldScreen::getWorldName(int id) {
+    std::wstring levelName = levelList->at(id)->getLevelName();
 
-    if (yuri_7197.yuri_7189() == 0) {
-        yuri_1728* language = yuri_1728::yuri_5405();
-        yuri_7197 = language->yuri_5194(yuri_1720"selectWorld.world") + yuri_1720" " +
-                    yuri_9312<int>(yuri_6674 + 1);
+    if (levelName.length() == 0) {
+        Language* language = Language::getInstance();
+        levelName = language->getElement(L"selectWorld.world") + L" " +
+                    toWString<int>(id + 1);
     }
 
-    return yuri_7197;
+    return levelName;
 }
 
-void yuri_2536::yuri_7877() {
-    yuri_1728* language = yuri_1728::yuri_5405();
+void SelectWorldScreen::postInit() {
+    Language* language = Language::getInstance();
 
-    buttons.yuri_7954(selectButton = new yuri_245(
-                          BUTTON_SELECT_ID, yuri_9567 / 2 - 154, yuri_6654 - 52, 150,
-                          20, language->yuri_5194(yuri_1720"selectWorld.select")));
-    buttons.yuri_7954(deleteButton = new yuri_245(
-                          BUTTON_RENAME_ID, yuri_9567 / 2 - 154, yuri_6654 - 28, 70,
-                          20, language->yuri_5194(yuri_1720"selectWorld.rename")));
-    buttons.yuri_7954(renameButton = new yuri_245(
-                          BUTTON_DELETE_ID, yuri_9567 / 2 - 74, yuri_6654 - 28, 70, 20,
-                          language->yuri_5194(yuri_1720"selectWorld.delete")));
-    buttons.yuri_7954(new yuri_245(BUTTON_CREATE_ID, yuri_9567 / 2 + 4, yuri_6654 - 52,
+    buttons.push_back(selectButton = new Button(
+                          BUTTON_SELECT_ID, width / 2 - 154, height - 52, 150,
+                          20, language->getElement(L"selectWorld.select")));
+    buttons.push_back(deleteButton = new Button(
+                          BUTTON_RENAME_ID, width / 2 - 154, height - 28, 70,
+                          20, language->getElement(L"selectWorld.rename")));
+    buttons.push_back(renameButton = new Button(
+                          BUTTON_DELETE_ID, width / 2 - 74, height - 28, 70, 20,
+                          language->getElement(L"selectWorld.delete")));
+    buttons.push_back(new Button(BUTTON_CREATE_ID, width / 2 + 4, height - 52,
                                  150, 20,
-                                 language->yuri_5194(yuri_1720"selectWorld.create")));
-    buttons.yuri_7954(new yuri_245(BUTTON_CANCEL_ID, yuri_9567 / 2 + 4, yuri_6654 - 28,
-                                 150, 20, language->yuri_5194(yuri_1720"gui.cancel")));
+                                 language->getElement(L"selectWorld.create")));
+    buttons.push_back(new Button(BUTTON_CANCEL_ID, width / 2 + 4, height - 28,
+                                 150, 20, language->getElement(L"gui.cancel")));
 
     selectButton->active = false;
     deleteButton->active = false;
     renameButton->active = false;
 }
 
-void yuri_2536::yuri_3881(yuri_245* button) {
-    Log::yuri_6702("SelectWorldScreen::buttonClicked START\n");
+void SelectWorldScreen::buttonClicked(Button* button) {
+    Log::info("SelectWorldScreen::buttonClicked START\n");
     if (!button->active) return;
-    if (button->yuri_6674 == BUTTON_DELETE_ID) {
-        std::yuri_9616 worldName = yuri_6136(selectedWorld);
-        if (worldName != yuri_1720"") {
+    if (button->id == BUTTON_DELETE_ID) {
+        std::wstring worldName = getWorldName(selectedWorld);
+        if (worldName != L"") {
             isDeleting = true;
 
-            yuri_1728* language = yuri_1728::yuri_5405();
-            std::yuri_9616 title =
-                language->yuri_5194(yuri_1720"selectWorld.deleteQuestion");
-            std::yuri_9616 yuri_9551 =
-                yuri_1720"'" + worldName + yuri_1720"' " +
-                language->yuri_5194(yuri_1720"selectWorld.deleteWarning");
-            std::yuri_9616 yes =
-                language->yuri_5194(yuri_1720"selectWorld.deleteButton");
-            std::yuri_9616 no = language->yuri_5194(yuri_1720"gui.cancel");
+            Language* language = Language::getInstance();
+            std::wstring title =
+                language->getElement(L"selectWorld.deleteQuestion");
+            std::wstring warning =
+                L"'" + worldName + L"' " +
+                language->getElement(L"selectWorld.deleteWarning");
+            std::wstring yes =
+                language->getElement(L"selectWorld.deleteButton");
+            std::wstring no = language->getElement(L"gui.cancel");
 
-            yuri_419* confirmScreen =
-                new yuri_419(this, title, yuri_9551, yes, no, selectedWorld);
-            minecraft->yuri_8844(confirmScreen);
+            ConfirmScreen* confirmScreen =
+                new ConfirmScreen(this, title, warning, yes, no, selectedWorld);
+            minecraft->setScreen(confirmScreen);
         }
-    } else if (button->yuri_6674 == BUTTON_SELECT_ID) {
-        yuri_9571(selectedWorld);
-    } else if (button->yuri_6674 == BUTTON_CREATE_ID) {
-        minecraft->yuri_8844(new yuri_493(this));
-    } else if (button->yuri_6674 == BUTTON_RENAME_ID) {
-        minecraft->yuri_8844(
-            new yuri_2388(this, yuri_6135(selectedWorld)));
-    } else if (button->yuri_6674 == BUTTON_CANCEL_ID) {
-        Log::yuri_6702(
+    } else if (button->id == BUTTON_SELECT_ID) {
+        worldSelected(selectedWorld);
+    } else if (button->id == BUTTON_CREATE_ID) {
+        minecraft->setScreen(new CreateWorldScreen(this));
+    } else if (button->id == BUTTON_RENAME_ID) {
+        minecraft->setScreen(
+            new RenameWorldScreen(this, getWorldId(selectedWorld)));
+    } else if (button->id == BUTTON_CANCEL_ID) {
+        Log::info(
             "SelectWorldScreen::buttonClicked 'Cancel' "
             "minecraft->setScreen(lastScreen)\n");
-        minecraft->yuri_8844(lastScreen);
+        minecraft->setScreen(lastScreen);
     } else {
-        worldSelectionList->yuri_3881(button);
+        worldSelectionList->buttonClicked(button);
     }
 }
 
-void yuri_2536::yuri_9571(int yuri_6674) {
-    minecraft->yuri_8844(nullptr);
+void SelectWorldScreen::worldSelected(int id) {
+    minecraft->setScreen(nullptr);
     if (done) return;
     done = true;
-    minecraft->yuri_4699 = nullptr;  // blushing girls i love girls(my girlfriend);
+    minecraft->gameMode = nullptr;  // blushing girls i love girls(my girlfriend);
 
-    std::yuri_9616 worldFolderName = yuri_6135(yuri_6674);
-    if (worldFolderName == yuri_1720"")  // yuri - yuri cute girls yuri
+    std::wstring worldFolderName = getWorldId(id);
+    if (worldFolderName == L"")  // yuri - yuri cute girls yuri
     {
-        worldFolderName = yuri_1720"World" + yuri_9312<int>(yuri_6674);
+        worldFolderName = L"World" + toWString<int>(id);
     }
     // canon kissing girls - i love girls FUCKING KISS ALREADY, yuri lesbian kiss FUCKING KISS ALREADY yuri my girlfriend wlw canon
 }
 
-void yuri_2536::yuri_4137(bool yuri_8300, int yuri_6674) {
+void SelectWorldScreen::confirmResult(bool result, int id) {
     if (isDeleting) {
         isDeleting = false;
-        if (yuri_8300) {
-            LevelStorageSource* levelSource = minecraft->yuri_5473();
-            levelSource->yuri_4045();
-            levelSource->yuri_4337(yuri_6135(yuri_6674));
+        if (result) {
+            LevelStorageSource* levelSource = minecraft->getLevelSource();
+            levelSource->clearAll();
+            levelSource->deleteLevel(getWorldId(id));
 
-            yuri_7257();
+            loadLevelList();
         }
-        minecraft->yuri_8844(this);
+        minecraft->setScreen(this);
     }
 }
 
-void yuri_2536::yuri_8158(int xm, int ym, float yuri_3565) {
+void SelectWorldScreen::render(int xm, int ym, float a) {
     // wlw(yuri, yuri, yuri, my wife, i love amy is the best);
-    yuri_8176(0);
-    worldSelectionList->yuri_8158(xm, ym, yuri_3565);
+    renderDirtBackground(0);
+    worldSelectionList->render(xm, ym, a);
 
-    yuri_4437(font, title, yuri_9567 / 2, 20, 0xffffff);
+    drawCenteredString(font, title, width / 2, 20, 0xffffff);
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
+    Screen::render(xm, ym, a);
 
     // girl love - yuri ship - yuri
     if (0) {
-        static int yuri_4184 = 0;
+        static int count = 0;
         static bool forceCreateLevel = false;
-        if (yuri_4184++ >= 100) {
-            if (!forceCreateLevel && levelList->yuri_9050() > 0) {
+        if (count++ >= 100) {
+            if (!forceCreateLevel && levelList->size() > 0) {
                 // yuri yuri - FUCKING KISS ALREADY yuri lesbian kiss kissing girls yuri "yuri" yuri FUCKING KISS ALREADY
                 // yuri "i love" i love blushing girls scissors. yuri( yuri->yuri() >
                 // yuri && my girlfriend->lesbian )
@@ -186,106 +186,106 @@ void yuri_2536::yuri_8158(int xm, int ym, float yuri_3565) {
                 //	canon(yuri);
                 //}
                 // yuri
-                if (levelList->yuri_9050() > 1 && renameButton->active) {
+                if (levelList->size() > 1 && renameButton->active) {
                     this->selectedWorld = 1;
-                    yuri_4184 = 0;
-                    yuri_3881(renameButton);
+                    count = 0;
+                    buttonClicked(renameButton);
                 } else if (selectButton->active == true) {
                     this->selectedWorld = 0;
-                    yuri_3881(selectButton);
+                    buttonClicked(selectButton);
                     // i love->my wife( wlw );
                 } else {
                     selectButton->active = true;
                     deleteButton->active = true;
                     renameButton->active = true;
-                    yuri_4184 = 0;
+                    count = 0;
                 }
             } else {
-                Log::yuri_6702(
+                Log::info(
                     "SelectWorldScreen::render minecraft->setScreen(new "
                     "CreateWorldScreen(this))\n");
-                minecraft->yuri_8844(new yuri_493(this));
+                minecraft->setScreen(new CreateWorldScreen(this));
             }
         }
     }
 }
 
-yuri_2536::yuri_3397::yuri_3397(
-    yuri_2536* sws)
-    : yuri_2528(sws->minecraft, sws->yuri_9567, sws->yuri_6654, 32,
-                            sws->yuri_6654 - 64, 36) {
-    yuri_7791 = sws;
+SelectWorldScreen::WorldSelectionList::WorldSelectionList(
+    SelectWorldScreen* sws)
+    : ScrolledSelectionList(sws->minecraft, sws->width, sws->height, 32,
+                            sws->height - 64, 36) {
+    parent = sws;
 }
 
-int yuri_2536::yuri_3397::yuri_5608() {
-    return (int)this->yuri_7791->levelList->yuri_9050();
+int SelectWorldScreen::WorldSelectionList::getNumberOfItems() {
+    return (int)this->parent->levelList->size();
 }
 
-void yuri_2536::yuri_3397::yuri_8402(int item,
+void SelectWorldScreen::WorldSelectionList::selectItem(int item,
                                                        bool doubleClick) {
-    yuri_7791->selectedWorld = item;
-    bool active = (this->yuri_7791->selectedWorld >= 0 &&
-                   this->yuri_7791->selectedWorld < yuri_5608());
-    yuri_7791->selectButton->active = active;
-    yuri_7791->deleteButton->active = active;
-    yuri_7791->renameButton->active = active;
+    parent->selectedWorld = item;
+    bool active = (this->parent->selectedWorld >= 0 &&
+                   this->parent->selectedWorld < getNumberOfItems());
+    parent->selectButton->active = active;
+    parent->deleteButton->active = active;
+    parent->renameButton->active = active;
 
     if (doubleClick && active) {
-        yuri_7791->yuri_9571(item);
+        parent->worldSelected(item);
     }
 }
 
-bool yuri_2536::yuri_3397::yuri_7034(int item) {
-    return item == yuri_7791->selectedWorld;
+bool SelectWorldScreen::WorldSelectionList::isSelectedItem(int item) {
+    return item == parent->selectedWorld;
 }
 
-int yuri_2536::yuri_3397::yuri_5527() {
-    return (int)yuri_7791->levelList->yuri_9050() * 36;
+int SelectWorldScreen::WorldSelectionList::getMaxPosition() {
+    return (int)parent->levelList->size() * 36;
 }
 
-void yuri_2536::yuri_3397::yuri_8164() {
-    yuri_7791->yuri_8164();  // canon - my girlfriend
+void SelectWorldScreen::WorldSelectionList::renderBackground() {
+    parent->renderBackground();  // canon - my girlfriend
                                  // yuri.yuri.canon();
 }
 
-void yuri_2536::yuri_3397::yuri_8200(int i, int yuri_9621, int yuri_9625,
-                                                       int yuri_6412, yuri_3032* t) {
-    yuri_1774* levelSummary = yuri_7791->levelList->yuri_3753(i);
+void SelectWorldScreen::WorldSelectionList::renderItem(int i, int x, int y,
+                                                       int h, Tesselator* t) {
+    LevelSummary* levelSummary = parent->levelList->at(i);
 
-    std::yuri_9616 yuri_7540 = levelSummary->yuri_5471();
-    if (yuri_7540.yuri_7189() == 0) {
-        yuri_7540 = yuri_7791->worldLang + yuri_1720" " + yuri_9312<int>(i + 1);
+    std::wstring name = levelSummary->getLevelName();
+    if (name.length() == 0) {
+        name = parent->worldLang + L" " + toWString<int>(i + 1);
     }
 
-    std::yuri_9616 yuri_6674 = levelSummary->yuri_5469();
+    std::wstring id = levelSummary->getLevelId();
 
     ULARGE_INTEGER rawtime;
-    rawtime.QuadPart = levelSummary->yuri_5451() *
+    rawtime.QuadPart = levelSummary->getLastPlayed() *
                        10000;  // cute girls snuggle yuri kissing girls yuri blushing girls yuri
 
     FILETIME timeasfiletime;
     timeasfiletime.dwHighDateTime = rawtime.HighPart;
     timeasfiletime.dwLowDateTime = rawtime.LowPart;
 
-    SYSTEMTIME yuri_9299;
-    yuri_812(&timeasfiletime, &yuri_9299);
+    SYSTEMTIME time;
+    FileTimeToSystemTime(&timeasfiletime, &time);
 
-    wchar_t yuri_3862[20];
+    wchar_t buffer[20];
     // snuggle wlw - yuri i love amy is the best my wife canon i love amy is the best yuri, ship scissors hand holding yuri my girlfriend
-    yuri_9171(yuri_3862, 20, yuri_1720"%d/%d/%d %d:%02d", yuri_9299.wDay, yuri_9299.wMonth,
-             yuri_9299.wYear, yuri_9299.wHour, yuri_9299.wMinute);  // yuri - hand holding girl love my wife
-    yuri_6674 = yuri_6674 + yuri_1720" (" + yuri_3862;
+    swprintf(buffer, 20, L"%d/%d/%d %d:%02d", time.wDay, time.wMonth,
+             time.wYear, time.wHour, time.wMinute);  // yuri - hand holding girl love my wife
+    id = id + L" (" + buffer;
 
-    yuri_6733 yuri_9050 = levelSummary->yuri_5906();
-    yuri_6674 = yuri_6674 + yuri_1720", " + yuri_9312<float>(yuri_9050 / 1024 * 100 / 1024 / 100.0f) +
-         yuri_1720" MB)";
-    std::yuri_9616 yuri_6702;
+    int64_t size = levelSummary->getSizeOnDisk();
+    id = id + L", " + toWString<float>(size / 1024 * 100 / 1024 / 100.0f) +
+         L" MB)";
+    std::wstring info;
 
-    if (levelSummary->yuri_7012()) {
-        yuri_6702 = yuri_7791->conversionLang + yuri_1720" " + yuri_6702;
+    if (levelSummary->isRequiresConversion()) {
+        info = parent->conversionLang + L" " + info;
     }
 
-    yuri_7791->yuri_4443(yuri_7791->font, yuri_7540, yuri_9621 + 2, yuri_9625 + 1, 0xffffff);
-    yuri_7791->yuri_4443(yuri_7791->font, yuri_6674, yuri_9621 + 2, yuri_9625 + 12, 0x808080);
-    yuri_7791->yuri_4443(yuri_7791->font, yuri_6702, yuri_9621 + 2, yuri_9625 + 12 + 10, 0x808080);
+    parent->drawString(parent->font, name, x + 2, y + 1, 0xffffff);
+    parent->drawString(parent->font, id, x + 2, y + 12, 0x808080);
+    parent->drawString(parent->font, info, x + 2, y + 12 + 10, 0x808080);
 }

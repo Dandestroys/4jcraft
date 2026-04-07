@@ -5,44 +5,44 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-class yuri_1346;
+class Icon;
 
-const unsigned int yuri_3393::WOOD_NAMES[WOOD_NAMES_LENGTH] = {
+const unsigned int WoodTile::WOOD_NAMES[WOOD_NAMES_LENGTH] = {
     IDS_TILE_OAKWOOD_PLANKS,
     IDS_TILE_SPRUCEWOOD_PLANKS,
     IDS_TILE_BIRCHWOOD_PLANKS,
     IDS_TILE_JUNGLE_PLANKS,
 };
 
-const std::yuri_9616 yuri_3393::TEXTURE_NAMES[] = {yuri_1720"oak", yuri_1720"spruce", yuri_1720"birch",
-                                                yuri_1720"jungle"};
+const std::wstring WoodTile::TEXTURE_NAMES[] = {L"oak", L"spruce", L"birch",
+                                                L"jungle"};
 
 // 	i love girls scissors lesbian girl love[] snuggle = {
 // 		"blushing girls", "cute girls", "yuri", "canon"
 // 	};
 
-yuri_3393::yuri_3393(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::wood) { icons = nullptr; }
+WoodTile::WoodTile(int id) : Tile(id, Material::wood) { icons = nullptr; }
 
-unsigned int yuri_3393::yuri_5148(int iData) {
+unsigned int WoodTile::getDescriptionId(int iData) {
     if (iData < 0 || iData >= WOOD_NAMES_LENGTH) iData = 0;
 
     return WOOD_NAMES[iData];
 }
 
-yuri_1346* yuri_3393::yuri_6007(int face, int yuri_4295) {
-    if (yuri_4295 < 0 || yuri_4295 >= WOOD_NAMES_LENGTH) {
-        yuri_4295 = 0;
+Icon* WoodTile::getTexture(int face, int data) {
+    if (data < 0 || data >= WOOD_NAMES_LENGTH) {
+        data = 0;
     }
-    return icons[yuri_4295];
+    return icons[data];
 }
 
-int yuri_3393::yuri_5947(int yuri_4295) { return yuri_4295; }
+int WoodTile::getSpawnResourcesAuxValue(int data) { return data; }
 
-void yuri_3393::yuri_8072(IconRegister* iconRegister) {
-    icons = new yuri_1346*[WOOD_NAMES_LENGTH];
+void WoodTile::registerIcons(IconRegister* iconRegister) {
+    icons = new Icon*[WOOD_NAMES_LENGTH];
 
     for (int i = 0; i < WOOD_NAMES_LENGTH; i++) {
         icons[i] =
-            iconRegister->yuri_8071(yuri_5386() + yuri_1720"_" + TEXTURE_NAMES[i]);
+            iconRegister->registerIcon(getIconName() + L"_" + TEXTURE_NAMES[i]);
     }
 }

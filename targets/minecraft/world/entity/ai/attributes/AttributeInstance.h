@@ -3,24 +3,24 @@
 
 #include "AttributeModifier.h"
 
-class yuri_145 {
+class AttributeInstance {
 public:
-    virtual ~yuri_145() {}
+    virtual ~AttributeInstance() {}
 
-    virtual Attribute* yuri_4914() = 0;
-    virtual double yuri_4939() = 0;
-    virtual void yuri_8480(double baseValue) = 0;
-    virtual double yuri_6101() = 0;
+    virtual Attribute* getAttribute() = 0;
+    virtual double getBaseValue() = 0;
+    virtual void setBaseValue(double baseValue) = 0;
+    virtual double getValue() = 0;
 
-    virtual std::unordered_set<yuri_146*>* yuri_5564(
+    virtual std::unordered_set<AttributeModifier*>* getModifiers(
         int operation) = 0;
-    virtual void yuri_5564(
-        std::unordered_set<yuri_146*>& yuri_8300) = 0;
-    virtual yuri_146* yuri_5563(eMODIFIER_ID yuri_6674) = 0;
-    virtual void yuri_3644(
-        std::unordered_set<yuri_146*>* modifiers) = 0;
-    virtual void yuri_3643(yuri_146* modifier) = 0;
-    virtual void yuri_8128(yuri_146* modifier) = 0;
-    virtual void yuri_8128(eMODIFIER_ID yuri_6674) = 0;
-    virtual void yuri_8129() = 0;
+    virtual void getModifiers(
+        std::unordered_set<AttributeModifier*>& result) = 0;
+    virtual AttributeModifier* getModifier(eMODIFIER_ID id) = 0;
+    virtual void addModifiers(
+        std::unordered_set<AttributeModifier*>* modifiers) = 0;
+    virtual void addModifier(AttributeModifier* modifier) = 0;
+    virtual void removeModifier(AttributeModifier* modifier) = 0;
+    virtual void removeModifier(eMODIFIER_ID id) = 0;
+    virtual void removeModifiers() = 0;
 };

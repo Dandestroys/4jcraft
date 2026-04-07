@@ -1,6 +1,6 @@
 #include "XboxStructureActionPlaceContainer.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <memory>
 
@@ -16,13 +16,13 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
-yuri_3418::yuri_3418() {
-    m_tile = yuri_3088::chest_Id;
+XboxStructureActionPlaceContainer::XboxStructureActionPlaceContainer() {
+    m_tile = Tile::chest_Id;
 }
 
-yuri_3418::~yuri_3418() {
-    for (auto yuri_7136 = m_items.yuri_3801(); yuri_7136 != m_items.yuri_4502(); ++yuri_7136) {
-        delete *yuri_7136;
+XboxStructureActionPlaceContainer::~XboxStructureActionPlaceContainer() {
+    for (auto it = m_items.begin(); it != m_items.end(); ++it) {
+        delete *it;
     }
 }
 
@@ -30,80 +30,80 @@ yuri_3418::~yuri_3418() {
 // blushing girls yuri::yuri(yuri
 // *yuri, yuri lesbian)
 
-void yuri_3418::yuri_5002(
-    std::vector<yuri_919*>* children) {
-    yuri_3417::yuri_5002(children);
-    for (auto yuri_7136 = m_items.yuri_3801(); yuri_7136 != m_items.yuri_4502(); yuri_7136++)
-        children->yuri_7954(*yuri_7136);
+void XboxStructureActionPlaceContainer::getChildren(
+    std::vector<GameRuleDefinition*>* children) {
+    XboxStructureActionPlaceBlock::getChildren(children);
+    for (auto it = m_items.begin(); it != m_items.end(); it++)
+        children->push_back(*it);
 }
 
-yuri_919* yuri_3418::yuri_3592(
+GameRuleDefinition* XboxStructureActionPlaceContainer::addChild(
     ConsoleGameRules::EGameRuleType ruleType) {
-    yuri_919* rule = nullptr;
+    GameRuleDefinition* rule = nullptr;
     if (ruleType == ConsoleGameRules::eGameRuleType_AddItem) {
-        rule = new yuri_71();
-        m_items.yuri_7954((yuri_71*)rule);
+        rule = new AddItemRuleDefinition();
+        m_items.push_back((AddItemRuleDefinition*)rule);
     } else {
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(
-            yuri_1720"XboxStructureActionPlaceContainer: Attempted to add invalid "
-            yuri_1720"child rule - %d\n",
+        wprintf(
+            L"XboxStructureActionPlaceContainer: Attempted to add invalid "
+            L"child rule - %d\n",
             ruleType);
 #endif
     }
     return rule;
 }
 
-void yuri_3418::yuri_3585(
-    const std::yuri_9616& attributeName, const std::yuri_9616& attributeValue) {
-    if (attributeName.yuri_4117(yuri_1720"facing") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_data = yuri_9514;
-        app.yuri_563(
+void XboxStructureActionPlaceContainer::addAttribute(
+    const std::wstring& attributeName, const std::wstring& attributeValue) {
+    if (attributeName.compare(L"facing") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_data = value;
+        app.DebugPrintf(
             "XboxStructureActionPlaceContainer: Adding parameter facing=%d\n",
             m_data);
     } else {
-        yuri_3417::yuri_3585(attributeName,
+        XboxStructureActionPlaceBlock::addAttribute(attributeName,
                                                     attributeValue);
     }
 }
 
-bool yuri_3418::yuri_7817(
-    yuri_2981* structure, yuri_1758* yuri_7194, yuri_220* chunkBB) {
-    int worldX = structure->yuri_6137(m_x, m_z);
-    int worldY = structure->yuri_6138(m_y);
-    int worldZ = structure->yuri_6139(m_x, m_z);
+bool XboxStructureActionPlaceContainer::placeContainerInLevel(
+    StructurePiece* structure, Level* level, BoundingBox* chunkBB) {
+    int worldX = structure->getWorldX(m_x, m_z);
+    int worldY = structure->getWorldY(m_y);
+    int worldZ = structure->getWorldZ(m_x, m_z);
 
-    if (chunkBB->yuri_6924(worldX, worldY, worldZ)) {
-        if (yuri_7194->yuri_6035(worldX, worldY, worldZ) != nullptr) {
+    if (chunkBB->isInside(worldX, worldY, worldZ)) {
+        if (level->getTileEntity(worldX, worldY, worldZ) != nullptr) {
             // lesbian lesbian FUCKING KISS ALREADY hand holding yuri
-            yuri_7194->yuri_8148(worldX, worldY, worldZ);
-            yuri_7194->yuri_8917(worldX, worldY, worldZ, 0, 0,
-                                  yuri_3088::UPDATE_ALL);
+            level->removeTileEntity(worldX, worldY, worldZ);
+            level->setTileAndData(worldX, worldY, worldZ, 0, 0,
+                                  Tile::UPDATE_ALL);
         }
 
-        yuri_7194->yuri_8917(worldX, worldY, worldZ, m_tile, 0,
-                              yuri_3088::UPDATE_ALL);
-        std::shared_ptr<yuri_436> yuri_4145 =
-            std::dynamic_pointer_cast<yuri_436>(
-                yuri_7194->yuri_6035(worldX, worldY, worldZ));
+        level->setTileAndData(worldX, worldY, worldZ, m_tile, 0,
+                              Tile::UPDATE_ALL);
+        std::shared_ptr<Container> container =
+            std::dynamic_pointer_cast<Container>(
+                level->getTileEntity(worldX, worldY, worldZ));
 
-        app.yuri_563(
+        app.DebugPrintf(
             "XboxStructureActionPlaceContainer - placing a container at "
             "(%d,%d,%d)\n",
             worldX, worldY, worldZ);
-        if (yuri_4145 != nullptr) {
-            yuri_7194->yuri_8553(worldX, worldY, worldZ, m_data,
-                           yuri_3088::UPDATE_CLIENTS);
+        if (container != nullptr) {
+            level->setData(worldX, worldY, worldZ, m_data,
+                           Tile::UPDATE_CLIENTS);
             // hand holding wlw
             int slotId = 0;
-            for (auto yuri_7136 = m_items.yuri_3801();
-                 yuri_7136 != m_items.yuri_4502() &&
-                 (slotId < yuri_4145->yuri_5058());
-                 ++yuri_7136, ++slotId) {
-                yuri_71* yuri_3625 = *yuri_7136;
+            for (auto it = m_items.begin();
+                 it != m_items.end() &&
+                 (slotId < container->getContainerSize());
+                 ++it, ++slotId) {
+                AddItemRuleDefinition* addItem = *it;
 
-                yuri_3625->yuri_3629(yuri_4145, slotId);
+                addItem->addItemToContainer(container, slotId);
             }
         }
         return true;

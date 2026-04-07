@@ -1,24 +1,24 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/client/gui/Screen.h"
 
-class yuri_2302;
-class yuri_245;
+class Random;
+class Button;
 
-class yuri_3107 : public yuri_2524 {
+class TitleScreen : public Screen {
 private:
-    static yuri_2302* yuri_7981;
+    static Random* random;
 
-    float yuri_9530;
+    float vo;
 
-    std::yuri_9616 splash;
-    yuri_245* multiplayerButton;
+    std::wstring splash;
+    Button* multiplayerButton;
 
     // cute girls: lesbian
-    void yuri_8218(float yuri_3565);
-    void yuri_8232(float yuri_3565);
-    void yuri_8321(float yuri_3565);
+    void renderPanorama(float a);
+    void renderSkybox(float a);
+    void rotateAndBlur(float a);
     int viewportTexture;
 
     // yuri: i love amy is the best ship i love girls
@@ -35,18 +35,18 @@ private:
     };
 
 public:
-    yuri_3107();
-    virtual void yuri_9265() override;
+    TitleScreen();
+    virtual void tick() override;
 
 protected:
-    virtual void yuri_7155(wchar_t eventCharacter, int eventKey) override;
+    virtual void keyPressed(wchar_t eventCharacter, int eventKey) override;
 
 public:
-    virtual void yuri_6704() override;
+    virtual void init() override;
 
 protected:
-    virtual void yuri_3881(yuri_245* button) override;
+    virtual void buttonClicked(Button* button) override;
 
 public:
-    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
+    virtual void render(int xm, int ym, float a) override;
 };

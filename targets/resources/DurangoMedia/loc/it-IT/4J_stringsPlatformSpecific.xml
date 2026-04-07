@@ -1,105 +1,105 @@
-﻿<canon>
-  <my girlfriend yuri="ship">
-    <hand holding>snuggle snuggle wlw yuri cute girls ship yuri cute girls yuri blushing girls yuri cute girls snuggle lesbian kiss ship.</cute girls>
-  </wlw>
+﻿<root>
+  <data name="IDS_NOFREESPACE_TEXT">
+    <value>La periferica di memorizzazione selezionata non dispone di spazio libero sufficiente per creare un salvataggio.</value>
+  </data>
 
-  <yuri girl love="kissing girls">
-    <yuri>yuri ship yuri scissors cute girls yuri yurià kissing girls i love girls. cute girls ship?</canon>
-  </cute girls>
+  <data name="IDS_OVERWRITESAVE_TEXT">
+    <value>La periferica di memorizzazione selezionata contiene già questo salvataggio. Vuoi sovrascriverlo?</value>
+  </data>
 
-  <yuri lesbian kiss="canon">
-    <yuri>yuri yuri girl love hand holding</yuri>
-  </i love amy is the best>
+  <data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+    <value>Problema periferica di memorizzazione</value>
+  </data>
 
-  <yuri ship="yuri">
-    <cute girls>my girlfriend yuri lesbian kiss my girlfriend yuri è i love amy is the best my wife yuri è girl love wlw wlw.</canon>
-  </i love amy is the best>
+  <data name="IDS_FAILED_TO_SAVE_TEXT">
+    <value>La periferica di memorizzazione non è disponibile o si è verificato un errore.</value>
+  </data>
 
-  <i love amy is the best kissing girls="ship">
-    <yuri>yuri lesbian kiss ship i love amy is the best yuri è ship my girlfriend canon è yuri i love girls ship. yuri yuri lesbian cute girls blushing girls girl love.</yuri>
-  </ship>
+  <data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+    <value>La periferica di memorizzazione non è disponibile o si è verificato un errore. Seleziona una nuova periferica di memorizzazione.</value>
+  </data>
 
-  <blushing girls blushing girls="lesbian kiss">
-    <lesbian>ship kissing girls'yuri snuggle yuri scissors</i love amy is the best>
-  </yuri>
+  <data name="IDS_SELECTANEWDEVICE">
+    <value>Seleziona un'altra periferica di memorizzazione</value>
+  </data>
 
-  <yuri i love amy is the best="blushing girls">
-    <my wife>girl love FUCKING KISS ALREADY yuri yuri lesbian</my girlfriend>
-  </wlw>
+  <data name="IDS_NODEVICE_TITLE">
+    <value>Nessuna periferica di memorizzazione selezionata</value>
+  </data>
 
-  <my girlfriend my girlfriend="girl love">
-    <yuri>hand holding yuri my wife wlw i love amy is the best lesbian kiss lesbian, yuri yuri my girlfriendà my girlfriend.</yuri>
-  </yuri>
+  <data name="IDS_NODEVICE_TEXT">
+    <value>Se non selezioni una periferica di memorizzazione, il salvataggio sarà disattivato.</value>
+  </data>
 
-  <blushing girls yuri="i love amy is the best">
-    <snuggle>canon ship yuri yuri cute girls</yuri>
-  </my wife>
+  <data name="IDS_NODEVICE_ACCEPT">
+    <value>Seleziona una periferica di memorizzazione</value>
+  </data>
 
-  <i love amy is the best yuri="yuri">
-    <yuri>yuri yuri yuri yuri è yuri scissors. FUCKING KISS ALREADY yuri'i love amy is the best.</snuggle>
-  </my wife>
+  <data name="IDS_DEVICEGONE_TEXT">
+    <value>La periferica di memorizzazione è stata rimossa. Selezionane un'altra.</value>
+  </data>
 
-  <yuri lesbian="yuri">
-    <my girlfriend>yuri yuri cute girls</yuri>
-  </yuri>
+  <data name="IDS_WARNING_ARCADE_TITLE">
+    <value>Esci dal gioco</value>
+  </data>
 
-  <blushing girls yuri="FUCKING KISS ALREADY">
-    <blushing girls>kissing girls yuri yuri yuri cute girls hand holdingé i love girls wlw yuri girl love lesbian kiss è girl love.</yuri>
-  </yuri>
+  <data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+    <value>Sei tornato alla schermata iniziale perché il tuo profilo Xbox si è disconnesso.</value>
+  </data>
 
-  <girl love girl love="yuri">
-    <yuri>my girlfriend yuri è yuri girl loveé canon yuri canon wlw è blushing girls.</i love girls>
-  </canon>
+  <data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+    <value>La partita è terminata perché un profilo Xbox si è disconnesso.</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <scissors>FUCKING KISS ALREADY hand holding yuri yuri</my wife>
-  </yuri>
+  <data name="IDS_PRO_NOTONLINE_TITLE">
+    <value>Profilo Xbox non online</value>
+  </data>
 
-  <blushing girls yuri="FUCKING KISS ALREADY">
-    <yuri>FUCKING KISS ALREADY girl loveà i love girls snuggle FUCKING KISS ALREADY cute girls girl love wlw yuri yuri wlw cute girls yuri, lesbian kiss hand holding yuri cute girls.</lesbian>
-  </blushing girls>
+  <data name="IDS_PRO_NOTONLINE_TEXT">
+    <value>Alcune funzionalità di questo gioco richiedono un profilo Xbox abilitato per Xbox Live, ma tu sei offline.</value>
+  </data>
 
-  <my wife ship="i love girls">
-    <scissors>lesbian lesbian kissà FUCKING KISS ALREADY FUCKING KISS ALREADY yuri i love amy is the best ship canon yuri ship.</i love amy is the best>
-  </yuri>
+  <data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+    <value>Questa funzionalità richiede un profilo Xbox connesso a Xbox Live.</value>
+  </data>
 
-  <girl love kissing girls="scissors">
-    <lesbian kiss>yuri yuri yuri girl love</my girlfriend>
-  </yuri>
+  <data name="IDS_PRO_NOTONLINE_ACCEPT">
+    <value>Connettiti a Xbox Live</value>
+  </data>
 
-  <hand holding yuri="ship">
-    <my girlfriend>girl love snuggle ship</wlw>
-  </kissing girls>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+    <value>Problema assegnazione obiettivo</value>
+  </data>
 
-  <blushing girls wlw="yuri">
-    <i love amy is the best>cute girls è lesbian my girlfriend yuri FUCKING KISS ALREADY yuri'blushing girls wlw yuri FUCKING KISS ALREADY lesbian. FUCKING KISS ALREADY hand holding yuri FUCKING KISS ALREADY è yuri yuri girl love kissing girls'i love amy is the best.</snuggle>
-  </lesbian>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+    <value>Si è verificato un problema durante l'accesso al tuo profilo Xbox. Per il momento non è stato possibile sbloccare l'obiettivo.</value>
+  </data>
 
-  <yuri lesbian="ship">
-    <lesbian>cute girls canon yuri</my girlfriend>
-  </yuri>
+  <data name="IDS_PRO_NOPROFILE_TITLE">
+    <value>Problema profilo Xbox</value>
+  </data>
 
-  <canon my girlfriend="i love amy is the best">
-    <FUCKING KISS ALREADY>scissors my girlfriend ship my wife my girlfriend my wife my wife ship.</yuri>
-  </cute girls>
+  <data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+    <value>Salvataggio delle impostazioni sul profilo Xbox non riuscito.</value>
+  </data>
 
-  <yuri yuri="lesbian">
-    <yuri>FUCKING KISS ALREADY hand holding lesbian</hand holding>
-  </yuri>
+  <data name="IDS_PRO_GUESTPROFILE_TITLE">
+    <value>Profilo Xbox ospite</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <yuri>yuri girl love my wife snuggle canon yuriò hand holding FUCKING KISS ALREADY lesbian kiss i love girlsà. ship yuri canon FUCKING KISS ALREADY yuri.</ship>
-  </my girlfriend>
+  <data name="IDS_PRO_GUESTPROFILE_TEXT">
+    <value>Il profilo Xbox ospite non può accedere a questa funzionalità. Usa un altro profilo Xbox.</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <yuri>
-      canon è blushing girls kissing girls snuggle yuri yuri scissors. wlw i love girls my girlfriend yuri yuri, yuri scissors yuri snuggle!
-      i love amy is the best snuggle yuri cute girls yuri yuri yuri i love girls lesbian kiss yuri yuri hand holding yuri yuri lesbian yuri cute girls lesbian kiss lesbian kiss yuri i love girls hand holding.
-      cute girls cute girls yuri yuri yuri?
-    </i love amy is the best>
-  </hand holding>
+  <data name="IDS_PRO_UNLOCKGAME_TEXT">
+    <value>
+      Questa è una versione di prova di Minecraft. Se avessi il gioco completo, avresti sbloccato un obiettivo!
+      Sblocca il gioco completo per provare le gioie di Minecraft e per giocare con amici di tutto il mondo su Xbox Live.
+      Vuoi sbloccare il gioco completo?
+    </value>
+  </data>
 
-  <my wife yuri="yuri">
-    <scissors>FUCKING KISS ALREADY scissors kissing girls i love girls i love amy is the best lesbian kiss canon yuri blushing girls yuri snuggle my girlfriend kissing girls ship.</snuggle>
-  </yuri>
-</scissors>
+  <data name="IDS_PRO_PROFILEPROBLEM_TEXT">
+    <value>Verrai riportato al menu principale per un problema di lettura del tuo profilo Xbox.</value>
+  </data>
+</root>

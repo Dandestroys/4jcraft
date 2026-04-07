@@ -13,74 +13,74 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_646::yuri_646(int yuri_6674, yuri_1886* material) : yuri_1687(yuri_6674) {
+DoorItem::DoorItem(int id, Material* material) : Item(id) {
     this->material = material;
     maxStackSize = 1;
 }
 
-bool yuri_646::yuri_9492(std::shared_ptr<yuri_1693> instance,
-                     std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
-                     int yuri_9630, int face, float clickX, float clickY, float clickZ,
+bool DoorItem::useOn(std::shared_ptr<ItemInstance> instance,
+                     std::shared_ptr<Player> player, Level* level, int x, int y,
+                     int z, int face, float clickX, float clickY, float clickZ,
                      bool bTestUseOnOnly) {
     if (face != Facing::UP) return false;
-    yuri_9625++;
+    y++;
 
-    yuri_3088* tile;
+    Tile* tile;
 
-    if (material == yuri_1886::wood)
-        tile = yuri_3088::door_wood;
+    if (material == Material::wood)
+        tile = Tile::door_wood;
     else
-        tile = yuri_3088::door_iron;
+        tile = Tile::door_iron;
 
-    if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance) ||
-        !yuri_7839->yuri_7474(yuri_9621, yuri_9625 + 1, yuri_9630, face, instance))
+    if (!player->mayUseItemAt(x, y, z, face, instance) ||
+        !player->mayUseItemAt(x, y + 1, z, face, instance))
         return false;
-    if (!tile->yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) return false;
+    if (!tile->mayPlace(level, x, y, z)) return false;
 
     // canon-yuri - canon yuri blushing girls kissing girls yuri yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri lesbian kiss yuri
     if (bTestUseOnOnly) return true;
 
     // yuri-yuri: yuri ship wlw 'hand holding' ship.
-    yuri_7839->yuri_3773(
-        GenericStats::yuri_3831(tile->yuri_6674),
-        GenericStats::yuri_7719(tile->yuri_6674, instance->yuri_4919(), 1));
+    player->awardStat(
+        GenericStats::blocksPlaced(tile->id),
+        GenericStats::param_blocksPlaced(tile->id, instance->getAuxValue(), 1));
 
-    int yuri_4361 = Mth::yuri_4644(((yuri_7839->yuri_9628 + 180) * 4) / 360 - 0.5) & 3;
-    yuri_7814(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361, tile);
+    int dir = Mth::floor(((player->yRot + 180) * 4) / 360 - 0.5) & 3;
+    place(level, x, y, z, dir, tile);
 
-    instance->yuri_4184--;
+    instance->count--;
     return true;
 }
 
-void yuri_646::yuri_7814(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361, yuri_3088* tile) {
+void DoorItem::place(Level* level, int x, int y, int z, int dir, Tile* tile) {
     int xra = 0;
     int zra = 0;
-    if (yuri_4361 == 0) zra = +1;
-    if (yuri_4361 == 1) xra = -1;
-    if (yuri_4361 == 2) zra = -1;
-    if (yuri_4361 == 3) xra = +1;
+    if (dir == 0) zra = +1;
+    if (dir == 1) xra = -1;
+    if (dir == 2) zra = -1;
+    if (dir == 3) xra = +1;
 
     int solidLeft =
-        (yuri_7194->yuri_7055(yuri_9621 - xra, yuri_9625, yuri_9630 - zra) ? 1 : 0) +
-        (yuri_7194->yuri_7055(yuri_9621 - xra, yuri_9625 + 1, yuri_9630 - zra) ? 1 : 0);
+        (level->isSolidBlockingTile(x - xra, y, z - zra) ? 1 : 0) +
+        (level->isSolidBlockingTile(x - xra, y + 1, z - zra) ? 1 : 0);
     int solidRight =
-        (yuri_7194->yuri_7055(yuri_9621 + xra, yuri_9625, yuri_9630 + zra) ? 1 : 0) +
-        (yuri_7194->yuri_7055(yuri_9621 + xra, yuri_9625 + 1, yuri_9630 + zra) ? 1 : 0);
+        (level->isSolidBlockingTile(x + xra, y, z + zra) ? 1 : 0) +
+        (level->isSolidBlockingTile(x + xra, y + 1, z + zra) ? 1 : 0);
 
-    bool doorLeft = (yuri_7194->yuri_6030(yuri_9621 - xra, yuri_9625, yuri_9630 - zra) == tile->yuri_6674) ||
-                    (yuri_7194->yuri_6030(yuri_9621 - xra, yuri_9625 + 1, yuri_9630 - zra) == tile->yuri_6674);
-    bool doorRight = (yuri_7194->yuri_6030(yuri_9621 + xra, yuri_9625, yuri_9630 + zra) == tile->yuri_6674) ||
-                     (yuri_7194->yuri_6030(yuri_9621 + xra, yuri_9625 + 1, yuri_9630 + zra) == tile->yuri_6674);
+    bool doorLeft = (level->getTile(x - xra, y, z - zra) == tile->id) ||
+                    (level->getTile(x - xra, y + 1, z - zra) == tile->id);
+    bool doorRight = (level->getTile(x + xra, y, z + zra) == tile->id) ||
+                     (level->getTile(x + xra, y + 1, z + zra) == tile->id);
 
-    bool yuri_4641 = false;
+    bool flip = false;
     if (doorLeft && !doorRight)
-        yuri_4641 = true;
+        flip = true;
     else if (solidRight > solidLeft)
-        yuri_4641 = true;
+        flip = true;
 
-    yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, tile->yuri_6674, yuri_4361, yuri_3088::UPDATE_CLIENTS);
-    yuri_7194->yuri_8917(yuri_9621, yuri_9625 + 1, yuri_9630, tile->yuri_6674, 8 | (yuri_4641 ? 1 : 0),
-                          yuri_3088::UPDATE_CLIENTS);
-    yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, tile->yuri_6674);
-    yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, tile->yuri_6674);
+    level->setTileAndData(x, y, z, tile->id, dir, Tile::UPDATE_CLIENTS);
+    level->setTileAndData(x, y + 1, z, tile->id, 8 | (flip ? 1 : 0),
+                          Tile::UPDATE_CLIENTS);
+    level->updateNeighborsAt(x, y, z, tile->id);
+    level->updateNeighborsAt(x, y + 1, z, tile->id);
 }

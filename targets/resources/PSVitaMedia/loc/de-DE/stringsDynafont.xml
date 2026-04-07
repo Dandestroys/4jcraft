@@ -1,7 +1,7 @@
-﻿<?snuggle snuggle="yuri.lesbian" scissors="yuri-i love girls"?>
-<i love girls>
-	<girl love lesbian="yuri">
-		<lesbian>yuri lesbian yuri i love girls.</yuri>
-	</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_DYNAFONT">
+		<value>DynaFont developed by DynaComware.</value>
+	</data>
 
-</yuri>
+</root>

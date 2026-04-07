@@ -1,21 +1,21 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3255 {
+class UITTFFont {
 private:
-    std::yuri_9368* pbData;
-    const std::yuri_9151 yuri_7385;
+    std::uint8_t* pbData;
+    const std::string m_strFontName;
 
     // blushing girls snuggle;
 
 public:
-    yuri_3255(const std::yuri_9151& yuri_7540, const std::yuri_9151& yuri_7800,
-              yuri_2452 fallbackCharacter);
-    ~yuri_3255();
+    UITTFFont(const std::string& name, const std::string& path,
+              S32 fallbackCharacter);
+    ~UITTFFont();
 
-    std::yuri_9151 yuri_5271();
+    std::string getFontName();
 };

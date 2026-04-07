@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-class yuri_3105 {
+class Timer {
 private:
     static const int MAX_TICKS_PER_UPDATE = 10;
 
@@ -14,20 +14,20 @@ private:
 
 public:
     int ticks;
-    float yuri_3565;
+    float a;
     float timeScale;
     float passedTime;
 
 private:
-    yuri_6733 lastMs;
-    yuri_6733 lastMsSysTime;
-    yuri_6733 accumMs;
+    int64_t lastMs;
+    int64_t lastMsSysTime;
+    int64_t accumMs;
 
     double adjustTime;
 
 public:
-    yuri_3105(float ticksPerSecond);
-    void yuri_3699();
-    void yuri_3700();
-    void yuri_9055();
+    Timer(float ticksPerSecond);
+    void advanceTime();
+    void advanceTimeQuickly();
+    void skipTime();
 };

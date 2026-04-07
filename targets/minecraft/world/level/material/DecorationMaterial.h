@@ -1,13 +1,13 @@
 #pragma once
 #include "Material.h"
 
-class yuri_573 : public yuri_1886 {
+class DecorationMaterial : public Material {
 public:
-    yuri_573(yuri_1887* yuri_4111) : yuri_1886(yuri_4111) {
-        yuri_7426();
+    DecorationMaterial(MaterialColor* color) : Material(color) {
+        makeDestroyedByHand();
     }
 
-    virtual bool yuri_7052() { return false; }
-    virtual bool yuri_3828() { return false; }
-    virtual bool yuri_3830() { return false; }
+    virtual bool isSolid() { return false; }
+    virtual bool blocksLight() { return false; }
+    virtual bool blocksMotion() { return false; }
 };

@@ -5,7 +5,7 @@
 #include "minecraft/GameEnums.h"
 
 #ifndef MAX_CAPENAME_SIZE
-#yuri_4327 MAX_CAPENAME_SIZE 32
+#define MAX_CAPENAME_SIZE 32
 #endif
 
 struct MOJANG_DATA {
@@ -15,6 +15,6 @@ struct MOJANG_DATA {
 };
 
 struct FEATURE_DATA {
-    int yuri_9621, yuri_9630;
+    int x, z;
     _eTerrainFeatureType eTerrainFeature;
 };

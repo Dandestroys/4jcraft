@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "Monster.h"
 #include "java/Class.h"
@@ -9,11 +9,11 @@
 #include "minecraft/world/entity/MobType.h"
 
 class Attribute;
-class yuri_146;
-class yuri_739;
-class yuri_1758;
+class AttributeModifier;
+class Entity;
+class Level;
 
-class yuri_3435 : public yuri_1966 {
+class Zombie : public Monster {
 private:
     static const int VILLAGER_CONVERSION_WAIT_MIN =
         SharedConstants::TICKS_PER_SECOND * 60 * 3;
@@ -24,7 +24,7 @@ protected:
     static Attribute* SPAWN_REINFORCEMENTS_CHANCE;
 
 private:
-    static yuri_146* SPEED_MODIFIER_BABY;
+    static AttributeModifier* SPEED_MODIFIER_BABY;
 
     static const int DATA_BABY_ID = 12;
     static const int DATA_VILLAGER_ID = 13;
@@ -44,76 +44,76 @@ public:
     static const int SPECIAL_BLOCK_RADIUS = 4;
 
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_ZOMBIE; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3435(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_ZOMBIE; }
+    static Entity* create(Level* level) { return new Zombie(level); }
 
-    yuri_3435(yuri_1758* yuri_7194);
-
-protected:
-    virtual void yuri_8067();
-    virtual void yuri_4329();
-
-public:
-    virtual int yuri_4904();
+    Zombie(Level* level);
 
 protected:
-    virtual bool yuri_9490();
+    virtual void registerAttributes();
+    virtual void defineSynchedData();
 
 public:
-    virtual bool yuri_6781();
-    virtual void yuri_8470(bool baby);
-    virtual bool yuri_7116();
-    virtual void yuri_8949(bool villager);
-    virtual void yuri_3704();
-    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
-    virtual void yuri_9265();
-    virtual bool yuri_4408(std::shared_ptr<yuri_739> target);
+    virtual int getArmorValue();
 
 protected:
-    virtual int yuri_4882();
-    virtual int yuri_5383();
-    virtual int yuri_5130();
-    virtual int yuri_5128();
-    virtual void yuri_7835(int xt, int yt, int zt, int t);
+    virtual bool useNewAi();
 
 public:
-    virtual MobType yuri_5555();
+    virtual bool isBaby();
+    virtual void setBaby(bool baby);
+    virtual bool isVillager();
+    virtual void setVillager(bool villager);
+    virtual void aiStep();
+    virtual bool hurt(DamageSource* source, float dmg);
+    virtual void tick();
+    virtual bool doHurtTarget(std::shared_ptr<Entity> target);
 
 protected:
-    virtual void yuri_4456(int rareLootLevel);
-    virtual void yuri_7866();
+    virtual int getAmbientSound();
+    virtual int getHurtSound();
+    virtual int getDeathSound();
+    virtual int getDeathLoot();
+    virtual void playStepSound(int xt, int yt, int zt, int t);
 
 public:
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual void yuri_7163(std::shared_ptr<yuri_1793> mob);
-    virtual MobGroupData* yuri_4592(
+    virtual MobType getMobType();
+
+protected:
+    virtual void dropRareDeathLoot(int rareLootLevel);
+    virtual void populateDefaultEquipmentSlots();
+
+public:
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void killed(std::shared_ptr<LivingEntity> mob);
+    virtual MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
         int extraData = 0);  // lesbian kiss yuri ship cute girls
-    virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool mobInteract(std::shared_ptr<Player> player);
 
 protected:
-    virtual void yuri_9101(int yuri_9299);
+    virtual void startConverting(int time);
 
 public:
-    virtual void yuri_6469(yuri_9368 yuri_6674);
+    virtual void handleEntityEvent(uint8_t id);
 
 protected:
-    virtual bool yuri_8151();
+    virtual bool removeWhenFarAway();
 
 public:
-    virtual bool yuri_6822();
+    virtual bool isConverting();
 
 protected:
-    virtual void yuri_4630();
-    virtual int yuri_5065();
+    virtual void finishConversion();
+    virtual int getConversionProgress();
 
 private:
-    class yuri_3436 : public MobGroupData {
+    class ZombieGroupData : public MobGroupData {
     public:
-        bool yuri_6781;
-        bool yuri_7116;
+        bool isBaby;
+        bool isVillager;
 
-        yuri_3436(bool baby, bool villager);
+        ZombieGroupData(bool baby, bool villager);
     };
 };

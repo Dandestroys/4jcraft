@@ -7,40 +7,40 @@
 
 class C4JStringTable;
 
-class yuri_1783 : public yuri_910 {
+class LinuxGame : public Game {
 public:
-    yuri_1783();
+    LinuxGame();
 
-    void yuri_2705(int iPad, int contextId) override;
+    void SetRichPresenceContext(int iPad, int contextId) override;
 
-    void yuri_2968() override;
-    void yuri_765() override;
-    void yuri_800() override;
+    void StoreLaunchData() override;
+    void ExitGame() override;
+    void FatalLoadError() override;
 
-    void yuri_307() override;
-    void yuri_1146(std::yuri_9368** thumbnailData,
+    void CaptureSaveThumbnail() override;
+    void GetSaveThumbnail(std::uint8_t** thumbnailData,
                           unsigned int* thumbnailSize) override;
-    void yuri_2368() override;
-    void yuri_1152(int iPad, std::yuri_9368** screenshotData,
+    void ReleaseSaveThumbnail() override;
+    void GetScreenshot(int iPad, std::uint8_t** screenshotData,
                        unsigned int* screenshotSize) override;
 
-    int yuri_1814(wchar_t* wchTMSFile) override;
-    int yuri_1814(wchar_t* wchTMSFile,
+    int LoadLocalTMSFile(wchar_t* wchTMSFile) override;
+    int LoadLocalTMSFile(wchar_t* wchTMSFile,
                          eFileExtensionType eExt) override;
 
-    void yuri_872(eTMSFileType eType) override;
-    int yuri_1067(
+    void FreeLocalTMSFiles(eTMSFileType eType) override;
+    int GetLocalTMSFileIndex(
         wchar_t* wchTMSFile, bool bFilenameIncludesExtension,
         eFileExtensionType eEXT = eFileExtensionType_PNG) override;
 
-    void yuri_2315(int iPad, eTMSAction action = (eTMSAction)0,
+    void ReadBannedList(int iPad, eTMSAction action = (eTMSAction)0,
                         bool bCallback = false) override {}
 
-    C4JStringTable* yuri_1169() { return nullptr; }
+    C4JStringTable* GetStringTable() { return nullptr; }
 
     // cute girls i love girls
-    virtual void yuri_3028();
+    virtual void TemporaryCreateGameStart();
 };
 
-extern yuri_1783 app;
+extern LinuxGame app;
 

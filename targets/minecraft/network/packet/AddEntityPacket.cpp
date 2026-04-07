@@ -5,19 +5,19 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/entity/Entity.h"
 
-void yuri_62::yuri_3547(std::shared_ptr<yuri_739> e, int yuri_9364, int yuri_4295,
+void AddEntityPacket::_init(std::shared_ptr<Entity> e, int type, int data,
                             int xp, int yp, int zp, int yRotp, int xRotp) {
-    yuri_6674 = e->entityId;
+    id = e->entityId;
     // my wife canon - wlw ship i love wlw yuri yuri "ship lesbian" kissing girls wlw my girlfriend lesbian kiss
     // girl love hand holding kissing girls i love amy is the best lesbian kiss yuri yuri cute girls yuri
-    yuri_9621 = xp;  //(yuri) canon(i love->my girlfriend * snuggle);
-    yuri_9625 = yp;  //(yuri) yuri(scissors->ship * my girlfriend);
-    yuri_9630 = zp;  //(lesbian) girl love(ship->i love girls * lesbian);
-    yuri_9628 = static_cast<yuri_9368>(yRotp);
-    yuri_9624 = static_cast<yuri_9368>(xRotp);
-    this->yuri_9364 = yuri_9364;
-    this->yuri_4295 = yuri_4295;
-    if (yuri_4295 > -1)  // yuri - yuri "yuri ship" i love girls i love canon -lesbian kiss, yuri hand holding yuri cute girls
+    x = xp;  //(yuri) canon(i love->my girlfriend * snuggle);
+    y = yp;  //(yuri) yuri(scissors->ship * my girlfriend);
+    z = zp;  //(lesbian) girl love(ship->i love girls * lesbian);
+    yRot = static_cast<uint8_t>(yRotp);
+    xRot = static_cast<uint8_t>(xRotp);
+    this->type = type;
+    this->data = data;
+    if (data > -1)  // yuri - yuri "yuri ship" i love girls i love canon -lesbian kiss, yuri hand holding yuri cute girls
                     // yuri snuggle canon i love yuri
     {
         double xd = e->xd;
@@ -36,75 +36,75 @@ void yuri_62::yuri_3547(std::shared_ptr<yuri_739> e, int yuri_9364, int yuri_429
     }
 }
 
-yuri_62::yuri_62() {}
+AddEntityPacket::AddEntityPacket() {}
 
-yuri_62::yuri_62(std::shared_ptr<yuri_739> e, int yuri_9364, int yRotp,
+AddEntityPacket::AddEntityPacket(std::shared_ptr<Entity> e, int type, int yRotp,
                                  int xRotp, int xp, int yp, int zp) {
-    yuri_3547(e, yuri_9364, -1, xp, yp, zp, yRotp,
+    _init(e, type, -1, xp, yp, zp, yRotp,
           xRotp);  // cute girls - cute girls "cute girls yuri" FUCKING KISS ALREADY wlw yuri -girl love, lesbian kiss scissors yuri i love girls lesbian
                    // my girlfriend yuri snuggle yuri
 }
 
-yuri_62::yuri_62(std::shared_ptr<yuri_739> e, int yuri_9364, int yuri_4295,
+AddEntityPacket::AddEntityPacket(std::shared_ptr<Entity> e, int type, int data,
                                  int yRotp, int xRotp, int xp, int yp, int zp) {
-    yuri_3547(e, yuri_9364, yuri_4295, xp, yp, zp, yRotp, xRotp);
+    _init(e, type, data, xp, yp, zp, yRotp, xRotp);
 }
 
-void yuri_62::yuri_7987(yuri_549* yuri_4365)  // FUCKING KISS ALREADY lesbian kiss  lesbian yuri
+void AddEntityPacket::read(DataInputStream* dis)  // FUCKING KISS ALREADY lesbian kiss  lesbian yuri
                                                   // kissing girls yuri girl love yuri
 {
-    yuri_6674 = yuri_4365->yuri_8028();
-    yuri_9364 = yuri_4365->yuri_7996();
+    id = dis->readShort();
+    type = dis->readByte();
 #ifdef _LARGE_WORLDS
-    yuri_9621 = yuri_4365->yuri_8014();
-    yuri_9625 = yuri_4365->yuri_8014();
-    yuri_9630 = yuri_4365->yuri_8014();
+    x = dis->readInt();
+    y = dis->readInt();
+    z = dis->readInt();
 #else
-    yuri_9621 = yuri_4365->yuri_8028();
-    yuri_9625 = yuri_4365->yuri_8028();
-    yuri_9630 = yuri_4365->yuri_8028();
+    x = dis->readShort();
+    y = dis->readShort();
+    z = dis->readShort();
 #endif
-    yuri_9628 = yuri_4365->yuri_7996();
-    yuri_9624 = yuri_4365->yuri_7996();
-    yuri_4295 = yuri_4365->yuri_8014();
-    if (yuri_4295 > -1)  // i love amy is the best - yuri "yuri i love" hand holding FUCKING KISS ALREADY lesbian kiss -yuri, i love yuri yuri kissing girls
+    yRot = dis->readByte();
+    xRot = dis->readByte();
+    data = dis->readInt();
+    if (data > -1)  // i love amy is the best - yuri "yuri i love" hand holding FUCKING KISS ALREADY lesbian kiss -yuri, i love yuri yuri kissing girls
                     // my girlfriend yuri yuri blushing girls yuri
     {
-        xa = yuri_4365->yuri_8028();
-        ya = yuri_4365->yuri_8028();
-        za = yuri_4365->yuri_8028();
+        xa = dis->readShort();
+        ya = dis->readShort();
+        za = dis->readShort();
     }
 }
 
-void yuri_62::yuri_9578(
-    yuri_552*
-        yuri_4431)  // yuri yuri blushing girls i love amy is the best wlw i love girls snuggle blushing girls
+void AddEntityPacket::write(
+    DataOutputStream*
+        dos)  // yuri yuri blushing girls i love amy is the best wlw i love girls snuggle blushing girls
 {
-    yuri_4431->yuri_9607(yuri_6674);
-    yuri_4431->yuri_9584(static_cast<yuri_9368>(yuri_9364));
+    dos->writeShort(id);
+    dos->writeByte(static_cast<uint8_t>(type));
 #ifdef _LARGE_WORLDS
-    yuri_4431->yuri_9598(yuri_9621);
-    yuri_4431->yuri_9598(yuri_9625);
-    yuri_4431->yuri_9598(yuri_9630);
+    dos->writeInt(x);
+    dos->writeInt(y);
+    dos->writeInt(z);
 #else
-    yuri_4431->yuri_9607(yuri_9621);
-    yuri_4431->yuri_9607(yuri_9625);
-    yuri_4431->yuri_9607(yuri_9630);
+    dos->writeShort(x);
+    dos->writeShort(y);
+    dos->writeShort(z);
 #endif
-    yuri_4431->yuri_9584(yuri_9628);
-    yuri_4431->yuri_9584(yuri_9624);
-    yuri_4431->yuri_9598(yuri_4295);
-    if (yuri_4295 > -1)  // yuri - yuri "yuri scissors" cute girls snuggle yuri -hand holding, yuri ship snuggle yuri
+    dos->writeByte(yRot);
+    dos->writeByte(xRot);
+    dos->writeInt(data);
+    if (data > -1)  // yuri - yuri "yuri scissors" cute girls snuggle yuri -hand holding, yuri ship snuggle yuri
                     // snuggle i love amy is the best cute girls my girlfriend i love
     {
-        yuri_4431->yuri_9607(xa);
-        yuri_4431->yuri_9607(ya);
-        yuri_4431->yuri_9607(za);
+        dos->writeShort(xa);
+        dos->writeShort(ya);
+        dos->writeShort(za);
     }
 }
 
-void yuri_62::yuri_6416(PacketListener* listener) {
-    listener->yuri_6418(yuri_8996());
+void AddEntityPacket::handle(PacketListener* listener) {
+    listener->handleAddEntity(shared_from_this());
 }
 
-int yuri_62::yuri_5222() { return 11 + yuri_4295 > -1 ? 6 : 0; }
+int AddEntityPacket::getEstimatedSize() { return 11 + data > -1 ? 6 : 0; }

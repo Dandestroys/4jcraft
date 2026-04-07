@@ -1,17 +1,17 @@
 #include "AllowAllCuller.h"
 
-class yuri_0;
+class AABB;
 
-bool AllowAllCuller::yuri_7117(yuri_0* yuri_3799) { return true; }
+bool AllowAllCuller::isVisible(AABB* bb) { return true; }
 
-bool AllowAllCuller::yuri_4278(double yuri_9622, double yuri_9626, double yuri_9631, double yuri_9623,
-                                   double yuri_9627, double yuri_9632) {
+bool AllowAllCuller::cubeInFrustum(double x0, double y0, double z0, double x1,
+                                   double y1, double z1) {
     return true;
 }
 
-bool AllowAllCuller::yuri_4277(double yuri_9622, double yuri_9626, double yuri_9631,
-                                        double yuri_9623, double yuri_9627, double yuri_9632) {
+bool AllowAllCuller::cubeFullyInFrustum(double x0, double y0, double z0,
+                                        double x1, double y1, double z1) {
     return true;
 }
 
-void AllowAllCuller::yuri_7890(double xOff, double yOff, double zOff) {}
+void AllowAllCuller::prepare(double xOff, double yOff, double zOff) {}

@@ -1,16 +1,16 @@
 #pragma once
 #include "minecraft/client/model/geom/Model.h"
 
-class yuri_1964;
+class ModelPart;
 
-class yuri_2843 : public yuri_1962 {
+class SlimeModel : public Model {
 public:
-    yuri_1964* cube;
-    yuri_1964 *eye0, *eye1, *mouth;
+    ModelPart* cube;
+    ModelPart *eye0, *eye1, *mouth;
 
-    yuri_2843(int vOffs);
+    SlimeModel(int vOffs);
 
-    virtual void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
-                        float bob, float yuri_9628, float yuri_9624, float yuri_8382,
+    virtual void render(std::shared_ptr<Entity> entity, float time, float r,
+                        float bob, float yRot, float xRot, float scale,
                         bool usecompiled);
 };

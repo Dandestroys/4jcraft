@@ -1,13 +1,13 @@
 #pragma once
 #include "Tile.h"
 
-class yuri_2302;
-class yuri_1886;
+class Random;
+class Material;
 
-class yuri_1216 : public yuri_3088 {
+class Glowstonetile : public Tile {
 public:
-    yuri_1216(int yuri_6674, yuri_1886* material);
-    virtual int yuri_5820(int bonusLevel, yuri_2302* yuri_7981);
-    virtual int yuri_5819(yuri_2302* yuri_7981);
-    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    Glowstonetile(int id, Material* material);
+    virtual int getResourceCountForLootBonus(int bonusLevel, Random* random);
+    virtual int getResourceCount(Random* random);
+    virtual int getResource(int data, Random* random, int playerBonusLevel);
 };

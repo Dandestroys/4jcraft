@@ -4,24 +4,24 @@
 #include "AbstractContainerScreen.h"
 
 
-class yuri_436;
-class yuri_743;
-class yuri_1626;
+class Container;
+class EntityHorse;
+class Inventory;
 
-class yuri_1291 : public yuri_48 {
+class HorseInventoryScreen : public AbstractContainerScreen {
 public:
-    yuri_1291(std::shared_ptr<yuri_1626> inventory,
-                         std::shared_ptr<yuri_436> horseContainer,
-                         std::shared_ptr<yuri_743> horse);
+    HorseInventoryScreen(std::shared_ptr<Inventory> inventory,
+                         std::shared_ptr<Container> horseContainer,
+                         std::shared_ptr<EntityHorse> horse);
 
-    virtual void yuri_6704() override;
-    virtual void yuri_8204() override;
-    virtual void yuri_8165(float yuri_3565) override;
-    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
+    virtual void init() override;
+    virtual void renderLabels() override;
+    virtual void renderBg(float a) override;
+    virtual void render(int xm, int ym, float a) override;
 
 private:
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_436> horseContainer;
-    std::shared_ptr<yuri_743> horse;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<Container> horseContainer;
+    std::shared_ptr<EntityHorse> horse;
     float xMouse, yMouse;
 };

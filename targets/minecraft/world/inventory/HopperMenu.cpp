@@ -7,61 +7,61 @@
 #include "minecraft/world/inventory/Slot.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-yuri_1281::yuri_1281(std::shared_ptr<yuri_436> inventory,
-                       std::shared_ptr<yuri_436> hopper) {
+HopperMenu::HopperMenu(std::shared_ptr<Container> inventory,
+                       std::shared_ptr<Container> hopper) {
     this->hopper = hopper;
-    hopper->yuri_9106();
+    hopper->startOpen();
     int yo = 51;
 
-    for (int yuri_9621 = 0; yuri_9621 < hopper->yuri_5058(); yuri_9621++) {
-        yuri_3675(new yuri_2845(hopper, yuri_9621, 44 + yuri_9621 * 18, 20));
+    for (int x = 0; x < hopper->getContainerSize(); x++) {
+        addSlot(new Slot(hopper, x, 44 + x * 18, 20));
     }
 
-    for (int yuri_9625 = 0; yuri_9625 < 3; yuri_9625++) {
-        for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
-            yuri_3675(
-                new yuri_2845(inventory, yuri_9621 + yuri_9625 * 9 + 9, 8 + yuri_9621 * 18, yuri_9625 * 18 + yo));
+    for (int y = 0; y < 3; y++) {
+        for (int x = 0; x < 9; x++) {
+            addSlot(
+                new Slot(inventory, x + y * 9 + 9, 8 + x * 18, y * 18 + yo));
         }
     }
-    for (int yuri_9621 = 0; yuri_9621 < 9; yuri_9621++) {
-        yuri_3675(new yuri_2845(inventory, yuri_9621, 8 + yuri_9621 * 18, 58 + yo));
+    for (int x = 0; x < 9; x++) {
+        addSlot(new Slot(inventory, x, 8 + x * 18, 58 + yo));
     }
 }
 
-bool yuri_1281::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
-    return hopper->yuri_9130(yuri_7839);
+bool HopperMenu::stillValid(std::shared_ptr<Player> player) {
+    return hopper->stillValid(player);
 }
 
-std::shared_ptr<yuri_1693> yuri_1281::yuri_7977(
-    std::shared_ptr<yuri_2126> yuri_7839, int slotIndex) {
-    std::shared_ptr<yuri_1693> yuri_4081 = nullptr;
-    yuri_2845* yuri_9061 = yuri_9065.yuri_3753(slotIndex);
-    if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
-        std::shared_ptr<yuri_1693> stack = yuri_9061->yuri_5416();
-        yuri_4081 = stack->yuri_4179();
+std::shared_ptr<ItemInstance> HopperMenu::quickMoveStack(
+    std::shared_ptr<Player> player, int slotIndex) {
+    std::shared_ptr<ItemInstance> clicked = nullptr;
+    Slot* slot = slots.at(slotIndex);
+    if (slot != nullptr && slot->hasItem()) {
+        std::shared_ptr<ItemInstance> stack = slot->getItem();
+        clicked = stack->copy();
 
-        if (slotIndex < hopper->yuri_5058()) {
-            if (!yuri_7524(stack, hopper->yuri_5058(),
-                                 yuri_9065.yuri_9050(), true)) {
+        if (slotIndex < hopper->getContainerSize()) {
+            if (!moveItemStackTo(stack, hopper->getContainerSize(),
+                                 slots.size(), true)) {
                 return nullptr;
             }
         } else {
-            if (!yuri_7524(stack, 0, hopper->yuri_5058(), false)) {
+            if (!moveItemStackTo(stack, 0, hopper->getContainerSize(), false)) {
                 return nullptr;
             }
         }
-        if (stack->yuri_4184 == 0) {
-            yuri_9061->yuri_8435(nullptr);
+        if (stack->count == 0) {
+            slot->set(nullptr);
         } else {
-            yuri_9061->yuri_8510();
+            slot->setChanged();
         }
     }
-    return yuri_4081;
+    return clicked;
 }
 
-void yuri_1281::yuri_8152(std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_47::yuri_8152(yuri_7839);
-    hopper->yuri_9135();
+void HopperMenu::removed(std::shared_ptr<Player> player) {
+    AbstractContainerMenu::removed(player);
+    hopper->stopOpen();
 }
 
-std::shared_ptr<yuri_436> yuri_1281::yuri_5056() { return hopper; }
+std::shared_ptr<Container> HopperMenu::getContainer() { return hopper; }

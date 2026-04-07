@@ -4,10 +4,10 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_354::yuri_354(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::clay) {}
+ClayTile::ClayTile(int id) : Tile(id, Material::clay) {}
 
-int yuri_354::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_1687::clay->yuri_6674;
+int ClayTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Item::clay->id;
 }
 
-int yuri_354::yuri_5819(yuri_2302* yuri_7981) { return 4; }
+int ClayTile::getResourceCount(Random* random) { return 4; }

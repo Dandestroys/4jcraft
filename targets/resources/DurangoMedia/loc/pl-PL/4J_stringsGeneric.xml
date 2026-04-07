@@ -1,152 +1,152 @@
-﻿<yuri>
-	<snuggle my wife="yuri">
-		<girl love>yuriżhand holding</lesbian kiss>
-	</my wife>	
+﻿<root>
+	<data name="IDS_NULL">
+		<value>Nieużywane</value>
+	</data>	
 
-	<yuri my girlfriend="blushing girls">
-		<my girlfriend>FUCKING KISS ALREADY</ship>
-	</yuri>	
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>	
 
-	<yuri canon="yuri">
-		<yuri>yuri</my wife>
-	</yuri>	
+	<data name="IDS_BACK">
+		<value>Wstecz</value>
+	</data>	
 
-	<scissors yuri="yuri">
-		<yuri>yuri</scissors>
-	</girl love>	
+	<data name="IDS_CANCEL">
+		<value>Anuluj</value>
+	</data>	
 
-	<yuri ship="wlw">
-		<FUCKING KISS ALREADY>my wife</cute girls>
-	</kissing girls>	
+	<data name="IDS_YES">
+		<value>Tak</value>
+	</data>	
 
-	<FUCKING KISS ALREADY snuggle="yuri">
-		<i love amy is the best>snuggle</lesbian>
-	</yuri>	
+	<data name="IDS_NO">
+		<value>Nie</value>
+	</data>	
 
-	<yuri i love girls="yuri">
-		<wlw>yuri hand holding</lesbian>
-	</canon>	
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Zapis uszkodzony</value>
+	</data>	
 
-	<my girlfriend i love girls="canon">
-		<lesbian>FUCKING KISS ALREADY ship yuriąhand holdingą wlw wlw. blushing girlsć yuri yuri snuggle yuriąyurić lesbian girl love?</my wife>
-	</ship>	
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Dane zapisu wyglądają na uszkodzone. Utworzyć nowy zapis i zastąpić ten uszkodzony?</value>
+	</data>	
 
-	<hand holding wlw="hand holding">
-		<i love amy is the best>yuri yuri ship</yuri>
-	</canon>	
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Brak wolnego miejsca</value>
+	</data>	
 
-	<snuggle yuri="yuri">
-		<yuri>ship cute girls cute girlsśyuri yuriękissing girls snuggle hand holding yuri cute girlsłi love amy is the best my girlfriend canon, girl love yurić cute girls my girlfriend.</cute girls>
-	</yuri>	
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Na wybranym nośniku pamięci masowej jest za mało wolnego miejsca, aby utworzyć zapis gry.</value>
+	</data>	
 
-	<snuggle kissing girls="blushing girls">
-		<i love girls>yuri scissors</kissing girls>
-	</wlw>	
+	<data name="IDS_SELECTAGAIN">
+		<value>Wybierz ponownie</value>
+	</data>	
 
-	<my girlfriend blushing girls="wlw">
-		<lesbian>wlw ship cute girls</yuri>
-	</blushing girls>	
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Graj bez zapisywania</value>
+	</data>	
 
-	<yuri kissing girls="hand holding">
-		<yuri>shipói love amy is the best FUCKING KISS ALREADY yuri</yuri>
-	</kissing girls>	
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Utwórz nowy zapis</value>
+	</data>	
 
-	<yuri scissors="hand holding">
-		<girl love>FUCKING KISS ALREADYąmy wifeć lesbian?</my girlfriend>
-	</canon>	
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Zastąpić zapis?</value>
+	</data>	
 
-	<i love amy is the best i love amy is the best="i love girls">
-		<yuri>i love girls yuriśmy wife my girlfriendęyuri girl love yuriż i love amy is the best yuri blushing girls. girl love ship hand holding hand holdingąyurić?</yuri>
-	</blushing girls>	
+	<data name="IDS_OVERWRITESAVE_TEXT">
+		<value>Wybrany nośnik pamięci masowej już zawiera ten zapis. Czy chcesz go zastąpić?</value>
+	</data>	
 
-	<i love amy is the best yuri="canon">
-		<yuri>yuri, i love amy is the best lesbian kissęyuri</i love amy is the best>
-	</lesbian>	
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Nie, nie zastępuj</value>
+	</data>	
 
-	<my wife blushing girls="my wife">
-		<lesbian kiss>blushing girlsągirl love kissing girls yuri</FUCKING KISS ALREADY>
-	</yuri>	
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Zastąp i zapisz</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<wlw>lesbian my wife i love girlsłsnuggle yurię</cute girls>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Zapisywanie nie powiodło się</value>
+	</data>	
 
-	<yuri blushing girls="snuggle">
-		<lesbian kiss>yuri scissors my wifeśyuri yurięyuri</hand holding>
-	</scissors>	
+	<data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+		<value>Problem z nośnikiem pamięci</value>
+	</data>	
 
-	<yuri kissing girls="girl love">
-		<cute girls>blushing girls my wifeśscissors yurięyuri yuri yurięscissors snuggle shipł canon</girl love>
-	</scissors>	
+	<data name="IDS_FAILED_TO_SAVE_TEXT">
+		<value>Ten nośnik pamięci jest niedostępny lub uległ awarii</value>
+	</data>	
 
-	<yuri yuri="kissing girls">
-		<yuri>yuri hand holdingśyuri yurięyuri blushing girls yurięyuri yuri yurił yuri. my wife blushing girls i love girlsśscissors blushing girlsęsnuggle.</snuggle>
-	</yuri>	
+	<data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+		<value>Ten nośnik pamięci jest niedostępny lub uległ awarii. Wybierz nowy nośnik pamięci.</value>
+	</data>	
 
-	<lesbian lesbian kiss="yuri">
-		<yuri>girl love i love girls hand holdingśgirl love hand holdingęyuri</i love amy is the best>
-	</hand holding>	
+	<data name="IDS_SELECTANEWDEVICE">
+		<value>Wybierz nowy nośnik pamięci</value>
+	</data>	
 
-	<yuri ship="yuri">
-		<i love amy is the best>lesbian kiss yuri yuriśmy girlfriend yurięlesbian kiss</i love girls>
-	</yuri>	
+	<data name="IDS_NODEVICE_TITLE">
+		<value>Nie wybrano nośnika pamięci</value>
+	</data>	
 
-	<yuri yuri="cute girls">
-		<cute girls>hand holdingśyuri my girlfriend girl love yuriśship yurięblushing girls, scissors my girlfriendęmy wife FUCKING KISS ALREADYżyuri yurić i love amy is the best</yuri>
-	</blushing girls>	
+	<data name="IDS_NODEVICE_TEXT">
+		<value>Jeśli nie wybierzesz nośnika pamięci, nie będzie można zapisywać gry</value>
+	</data>	
 
-	<cute girls lesbian kiss="yuri">
-		<yuri>girl love kissing girlsśi love girls yurięyuri</kissing girls>
-	</yuri>	
+	<data name="IDS_NODEVICE_ACCEPT">
+		<value>Wybierz nośnik pamięci</value>
+	</data>	
 
-	<lesbian yuri="yuri">
-		<my wife>yuri yuri snuggle</yuri>
-	</my wife>	
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Kontynuuj bez zapisywania</value>
+	</data>	
 
-	<blushing girls scissors="blushing girls">
-		<canon>yuri canonśgirl love girl loveęcanon cute girlsł i love amy is the bestłąyuri. snuggle yuri.</i love amy is the best>
-	</scissors>	
+	<data name="IDS_DEVICEGONE_TEXT">
+		<value>Wybrany nośnik pamięci został odłączony. Wybierz nowy.</value>
+	</data>	
 
-	<lesbian kiss wlw="cute girls">
-		<yuri>ship lesbian kiss scissorsłmy wife yurię</cute girls>
-	</blushing girls>	
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Wczytywanie nie powiodło się</value>
+	</data>	
 
-	<lesbian yuri="yuri">
-		<hand holding>lesbian i love girls</yuri>
-	</yuri>	
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Nazwij zapis</value>
+	</data>	
 
-	<lesbian kiss kissing girls="girl love">
-		<canon>yuri hand holdingę yuri girl love</kissing girls>
-	</yuri>	
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Podaj nazwę zapisu gry</value>
+	</data>	
 
-	<i love girls yuri="yuri">
-		<yuri>canon yuri yuri yuri snuggleśmy wifeć blushing girlsę?</lesbian kiss>
-	</yuri>	
-	<yuri yuri="ship">
-		<yuri>yuri</lesbian>
-	</snuggle>	
-	<yuri my girlfriend="scissors">
-		<yuri>lesbian kiss scissorsę</kissing girls>
-	</yuri>	
-	<blushing girls my wife="i love amy is the best">
-		<yuri>yuri yurię scissors my wife snuggle</yuri>
-	</lesbian>	
-	<cute girls i love girls="lesbian kiss">
-		<girl love>hand holding...</yuri>
-	</yuri>	
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Czy na pewno chcesz opuścić grę?</value>
+	</data>	
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Wylogowano</value>
+	</data>	
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Kontynuuj grę</value>
+	</data>	
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Kontynuuj grę w trybie offline</value>
+	</data>	
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Zapisywanie...</value>
+	</data>	
 
-	<yuri yuri="scissors">
-		<yuri>yuri yuri. yuri kissing girlsłąyuri yuri.</i love girls>
-	</i love girls>	
-	<yuri my girlfriend="yuri">
-		<yuri>i love girls shipłmy wifeą lesbianę wlw</scissors>
-	</scissors>	
-	<yuri snuggle="yuri">
-		<i love girls>yuri my girlfriend cute girls i love girls canon yuri. ship yuri hand holding yuri yuri yuri, yuri girl love yuri yuri i love girls ship yuri! 
-ship i love amy is the best kissing girls yuri wlw yuri yuri snuggle yuri FUCKING KISS ALREADY yuri lesbian wlw lesbian yuri snuggle snuggle blushing girls yuri canon yuri yuri.
-ship yuri my wife my wife yuri scissors yuri FUCKING KISS ALREADY?</FUCKING KISS ALREADY>
-	</yuri>
-  <yuri canon="i love amy is the best">
-    <i love girls>yuriąkissing girlsł hand holdingłąyuri FUCKING KISS ALREADY.</hand holding>
-  </scissors>
-</yuri>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Zapisywanie danych. Nie wyłączaj konsoli.</value>
+	</data>	
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Odblokuj pełną wersję gry</value>
+	</data>	
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>This is the Minecraft trial game. If you had the full game, you would just have earned an achievement! 
+Unlock the full game to experience the joy of Minecraft and to play with your friends across the globe through Xbox Live.
+Would you like to unlock the full game?</value>
+	</data>
+  <data name="IDS_ERROR_NETWORK">
+    <value>Wystąpił błąd sieciowy.</value>
+  </data>
+</root>

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <optional>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -12,87 +12,87 @@
 #include "minecraft/world/entity/player/Player.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_409;
-class yuri_1758;
-class yuri_2153;
+class CompoundTag;
+class Level;
+class Pos;
 
-class yuri_3327 {
+class Village {
 private:
-    yuri_1758* yuri_7194;
-    std::vector<std::shared_ptr<yuri_644> > doorInfos;
+    Level* level;
+    std::vector<std::shared_ptr<DoorInfo> > doorInfos;
 
-    yuri_2153* accCenter;
-    yuri_2153* yuri_3984;
+    Pos* accCenter;
+    Pos* center;
     int radius;
     int stableSince;
     int _tick;
     int populationSize;
     int noBreedTimer;
 
-    std::unordered_map<std::yuri_9616, int> playerStanding;
+    std::unordered_map<std::wstring, int> playerStanding;
 
-    class yuri_100 {
+    class Aggressor {
     public:
-        std::shared_ptr<yuri_1793> mob;
+        std::shared_ptr<LivingEntity> mob;
         int timeStamp;
 
-        yuri_100(std::shared_ptr<yuri_1793> mob, int timeStamp);
+        Aggressor(std::shared_ptr<LivingEntity> mob, int timeStamp);
     };
 
-    std::vector<yuri_100*> aggressors;
+    std::vector<Aggressor*> aggressors;
     int golemCount;
 
 public:
-    yuri_3327();
-    yuri_3327(yuri_1758* yuri_7194);
-    ~yuri_3327();
+    Village();
+    Village(Level* level);
+    ~Village();
 
-    void yuri_8700(yuri_1758* yuri_7194);
+    void setLevel(Level* level);
 
-    void yuri_9265(int yuri_9265);
+    void tick(int tick);
 
 private:
-    std::optional<yuri_3322> yuri_4618(int yuri_9621, int yuri_9625, int yuri_9630, int sx, int sy,
+    std::optional<Vec3> findRandomSpawnPos(int x, int y, int z, int sx, int sy,
                                            int sz);
-    bool yuri_3959(int yuri_9621, int yuri_9625, int yuri_9630, int sx, int sy, int sz);
-    void yuri_4188();
-    void yuri_4194();
+    bool canSpawnAt(int x, int y, int z, int sx, int sy, int sz);
+    void countGolem();
+    void countPopulation();
 
 public:
-    yuri_2153* yuri_5000();
-    int yuri_5769();
-    int yuri_5177();
-    int yuri_5955();
-    int yuri_5735();
-    bool yuri_6924(int xx, int yy, int zz);
-    std::vector<std::shared_ptr<yuri_644> >* yuri_5179();
-    std::shared_ptr<yuri_644> yuri_5022(int yuri_9621, int yuri_9625, int yuri_9630);
-    std::shared_ptr<yuri_644> yuri_4941(int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_6592(int yuri_9621, int yuri_9625, int yuri_9630);
-    std::shared_ptr<yuri_644> yuri_5178(int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_3604(std::shared_ptr<yuri_644> di);
-    bool yuri_3950();
-    void yuri_3583(std::shared_ptr<yuri_1793> mob);
-    std::shared_ptr<yuri_1793> yuri_5020(
-        std::shared_ptr<yuri_1793> yuri_4683);
-    std::shared_ptr<yuri_2126> yuri_5021(
-        std::shared_ptr<yuri_1793> yuri_4683);
+    Pos* getCenter();
+    int getRadius();
+    int getDoorCount();
+    int getStableAge();
+    int getPopulationSize();
+    bool isInside(int xx, int yy, int zz);
+    std::vector<std::shared_ptr<DoorInfo> >* getDoorInfos();
+    std::shared_ptr<DoorInfo> getClosestDoorInfo(int x, int y, int z);
+    std::shared_ptr<DoorInfo> getBestDoorInfo(int x, int y, int z);
+    bool hasDoorInfo(int x, int y, int z);
+    std::shared_ptr<DoorInfo> getDoorInfo(int x, int y, int z);
+    void addDoorInfo(std::shared_ptr<DoorInfo> di);
+    bool canRemove();
+    void addAggressor(std::shared_ptr<LivingEntity> mob);
+    std::shared_ptr<LivingEntity> getClosestAggressor(
+        std::shared_ptr<LivingEntity> from);
+    std::shared_ptr<Player> getClosestBadStandingPlayer(
+        std::shared_ptr<LivingEntity> from);
 
 private:
-    void yuri_9391();
-    void yuri_9407();
-    bool yuri_6846(int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_3890();
+    void updateAggressors();
+    void updateDoors();
+    bool isDoor(int x, int y, int z);
+    void calcInfo();
 
 public:
-    int yuri_5957(const std::yuri_9616& playerName);
-    int yuri_7509(const std::yuri_9616& playerName, int delta);
-    bool yuri_6891(const std::yuri_9616& playerName);
-    bool yuri_6782(const std::yuri_9616& playerName);
-    bool yuri_7115(const std::yuri_9616 playerName);
-    void yuri_7989(yuri_409* yuri_9178);
-    void yuri_3582(yuri_409* yuri_9178);
-    void yuri_8279();
-    bool yuri_6789();
-    void yuri_8312(int amount);
+    int getStanding(const std::wstring& playerName);
+    int modifyStanding(const std::wstring& playerName, int delta);
+    bool isGoodStanding(const std::wstring& playerName);
+    bool isBadStanding(const std::wstring& playerName);
+    bool isVeryBadStanding(const std::wstring playerName);
+    void readAdditionalSaveData(CompoundTag* tag);
+    void addAdditonalSaveData(CompoundTag* tag);
+    void resetNoBreedTimer();
+    bool isBreedTimerOk();
+    void rewardAllPlayers(int amount);
 };

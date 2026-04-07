@@ -4,23 +4,23 @@
 
 #include "Goal.h"
 
-class yuri_1793;
-class yuri_2096;
+class LivingEntity;
+class PathfinderMob;
 
-class yuri_1988 : public yuri_1217 {
+class MoveTowardsTargetGoal : public Goal {
 private:
-    yuri_2096* mob;
-    std::weak_ptr<yuri_1793> target;
+    PathfinderMob* mob;
+    std::weak_ptr<LivingEntity> target;
     double wantedX, wantedY, wantedZ;
     double speedModifier;
     float within;
 
 public:
-    yuri_1988(yuri_2096* mob, double speedModifier,
+    MoveTowardsTargetGoal(PathfinderMob* mob, double speedModifier,
                           float within);
 
-    bool yuri_3967();
-    bool yuri_3916();
-    void yuri_9133();
-    void yuri_9098();
+    bool canUse();
+    bool canContinueToUse();
+    void stop();
+    void start();
 };

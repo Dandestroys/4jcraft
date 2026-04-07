@@ -5,24 +5,24 @@
 #include "Throwable.h"
 #include "java/Class.h"
 
-class yuri_1278;
-class yuri_739;
-class yuri_1758;
-class yuri_1793;
+class HitResult;
+class Entity;
+class Level;
+class LivingEntity;
 
-class yuri_3078 : public yuri_3075 {
+class ThrownExpBottle : public Throwable {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_THROWNEXPBOTTLE; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3078(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_THROWNEXPBOTTLE; }
+    static Entity* create(Level* level) { return new ThrownExpBottle(level); }
 
 public:
-    yuri_3078(yuri_1758* yuri_7194);
-    yuri_3078(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob);
-    yuri_3078(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    ThrownExpBottle(Level* level);
+    ThrownExpBottle(Level* level, std::shared_ptr<LivingEntity> mob);
+    ThrownExpBottle(Level* level, double x, double y, double z);
 
 protected:
-    virtual float yuri_5326();
-    virtual float yuri_6020();
-    virtual float yuri_6021();
-    virtual void yuri_7623(yuri_1278* res);
+    virtual float getGravity();
+    virtual float getThrowPower();
+    virtual float getThrowUpAngleOffset();
+    virtual void onHit(HitResult* res);
 };

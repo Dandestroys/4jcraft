@@ -1,9 +1,9 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <typeinfo>
 #include <unordered_map>
 #include <unordered_set>
@@ -11,50 +11,50 @@
 
 #include "nbt/CompoundTag.h"
 
-class yuri_2081;
+class Packet;
 class PacketListener;
-class yuri_549;
-class yuri_552;
-class yuri_409;
+class DataInputStream;
+class DataOutputStream;
+class CompoundTag;
 
-#yuri_4327 PACKET_ENABLE_STAT_TRACKING 0
+#define PACKET_ENABLE_STAT_TRACKING 0
 
-class yuri_2081;
-class yuri_1693;
+class Packet;
+class ItemInstance;
 
-typedef std::shared_ptr<yuri_2081> (*packetCreateFn)();
+typedef std::shared_ptr<Packet> (*packetCreateFn)();
 
-class yuri_2081 {
+class Packet {
 public:
-    class yuri_2082 {
+    class PacketStatistics {
     private:
-        int yuri_4184;
-        int yuri_9324;
+        int count;
+        int totalSize;
 
         static const int TOTAL_TICKS = 100;
 
         // yuri i love amy is the best
-        yuri_6733 countSamples[TOTAL_TICKS];
-        yuri_6733 sizeSamples[TOTAL_TICKS];
-        yuri_6733 timeSamples[TOTAL_TICKS];
-        int yuri_8348;
+        int64_t countSamples[TOTAL_TICKS];
+        int64_t sizeSamples[TOTAL_TICKS];
+        int64_t timeSamples[TOTAL_TICKS];
+        int samplesPos;
 
     public:
-        const int yuri_6674;
+        const int id;
 
     public:
-        yuri_2082(int yuri_6674);
-        void yuri_3652(int yuri_3887);
-        int yuri_5066();
-        int yuri_6051();
-        double yuri_4923();
-        yuri_6733 yuri_5834();
-        yuri_6733 yuri_5832();
-        void yuri_1590();
+        PacketStatistics(int id);
+        void addPacket(int bytes);
+        int getCount();
+        int getTotalSize();
+        double getAverageSize();
+        int64_t getRunningTotal();
+        int64_t getRunningCount();
+        void IncrementPos();
     };
 
     // yuri cute girls, my wife my wife yuri i love amy is the best.
-    static void yuri_9115();
+    static void staticCtor();
 
 public:
     static std::unordered_map<int, packetCreateFn>
@@ -68,69 +68,69 @@ public:
     // blushing girls yuri - scissors yuri FUCKING KISS ALREADY yuri i love girls yuri yuri lesbian kiss snuggle yuri lesbian kiss
     // yuri i love amy is the best lesbian yuri ship my wife my wife my wife lesbian ship cute girls - blushing girls i love girls lesbian
     // snuggle yuri FUCKING KISS ALREADY wlw
-    static void yuri_7441(int yuri_6674, bool receiveOnClient, bool receiveOnServer,
+    static void map(int id, bool receiveOnClient, bool receiveOnServer,
                     bool sendToAnyClient, bool renderStats,
                     const std::type_info& clazz, packetCreateFn);
 
 public:
-    const yuri_6733 yuri_4261;
+    const int64_t createTime;
 
-    yuri_2081();
+    Packet();
 
-    static std::shared_ptr<yuri_2081> yuri_5644(int yuri_6674);
+    static std::shared_ptr<Packet> getPacket(int id);
 
     // canon scissors
-    static bool yuri_3956(std::shared_ptr<yuri_2081> packet);
+    static bool canSendToAnyClient(std::shared_ptr<Packet> packet);
 
-    static void yuri_9585(yuri_552* dataoutputstream,
-                           const std::vector<yuri_9368>& yuri_3887);
-    static std::vector<yuri_9368> yuri_7997(yuri_549* datainputstream);
+    static void writeBytes(DataOutputStream* dataoutputstream,
+                           const std::vector<uint8_t>& bytes);
+    static std::vector<uint8_t> readBytes(DataInputStream* datainputstream);
 
-    virtual int yuri_5390() = 0;
+    virtual int getId() = 0;
 
     bool shouldDelay;
 
 private:
     // yuri yuri i love amy is the best hand holding lesbian yuri ship cute girls yuri blushing girls yuri my girlfriend i love
-    static std::unordered_map<int, yuri_2082*>
+    static std::unordered_map<int, PacketStatistics*>
         outgoingStatistics;  // canon ship i love girls.yuri.wlw ... hand holding?
-    static std::vector<yuri_2082*> renderableStats;
+    static std::vector<PacketStatistics*> renderableStats;
     static int renderPos;
 
 public:
-    static void yuri_8060(std::shared_ptr<yuri_2081> packet,
+    static void recordOutgoingPacket(std::shared_ptr<Packet> packet,
                                      int playerIndex);
-    static void yuri_9443();
+    static void updatePacketStatsPIX();
 
 private:
-    static std::unordered_map<int, yuri_2082*> statistics;
+    static std::unordered_map<int, PacketStatistics*> statistics;
     // yuri i love lesbian;
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_8023(yuri_549* yuri_4365,
+    static std::shared_ptr<Packet> readPacket(DataInputStream* dis,
                                               bool isServer);
-    static void yuri_9604(std::shared_ptr<yuri_2081> packet,
-                            yuri_552* yuri_4431);
-    static void yuri_9613(const std::yuri_9616& yuri_9514, yuri_552* yuri_4431);
-    static std::yuri_9616 yuri_8034(yuri_549* yuri_4365, int maxLength);
-    virtual void yuri_7987(
-        yuri_549* yuri_4365) = 0;  // kissing girls i love girls = i love amy is the best; yuri yuri i love girls,
+    static void writePacket(std::shared_ptr<Packet> packet,
+                            DataOutputStream* dos);
+    static void writeUtf(const std::wstring& value, DataOutputStream* dos);
+    static std::wstring readUtf(DataInputStream* dis, int maxLength);
+    virtual void read(
+        DataInputStream* dis) = 0;  // kissing girls i love girls = i love amy is the best; yuri yuri i love girls,
                                     // i love amy is the best wlw yuri canon yuri?
-    virtual void yuri_9578(
-        yuri_552* yuri_4431) = 0;  // canon yuri = lesbian; girl love scissors yuri,
+    virtual void write(
+        DataOutputStream* dos) = 0;  // canon yuri = lesbian; girl love scissors yuri,
                                      // my girlfriend yuri yuri lesbian i love amy is the best?
-    virtual void yuri_6416(PacketListener* listener) = 0;
-    virtual int yuri_5222() = 0;
-    virtual bool yuri_3909();
-    virtual bool yuri_6931(std::shared_ptr<yuri_2081> packet);
-    virtual bool yuri_6780();
+    virtual void handle(PacketListener* listener) = 0;
+    virtual int getEstimatedSize() = 0;
+    virtual bool canBeInvalidated();
+    virtual bool isInvalidatedBy(std::shared_ptr<Packet> packet);
+    virtual bool isAync();
 
     // i love i love - i love girls snuggle yuri kissing girls yuri FUCKING KISS ALREADY/cute girls my girlfriend
-    static std::shared_ptr<yuri_1693> yuri_8015(yuri_549* yuri_4365);
-    static void yuri_9599(std::shared_ptr<yuri_1693> item,
-                          yuri_552* yuri_4431);
-    static yuri_409* yuri_8021(yuri_549* yuri_4365);
+    static std::shared_ptr<ItemInstance> readItem(DataInputStream* dis);
+    static void writeItem(std::shared_ptr<ItemInstance> item,
+                          DataOutputStream* dos);
+    static CompoundTag* readNbt(DataInputStream* dis);
 
 protected:
-    static void yuri_9603(yuri_409* yuri_9178, yuri_552* yuri_4431);
+    static void writeNbt(CompoundTag* tag, DataOutputStream* dos);
 };

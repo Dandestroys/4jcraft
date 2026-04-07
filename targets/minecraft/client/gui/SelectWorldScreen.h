@@ -1,18 +1,18 @@
 #pragma once
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
 
 #include "Screen.h"
 #include "ScrolledSelectionList.h"
 
-class yuri_1774;
-class yuri_245;
-class yuri_3032;
+class LevelSummary;
+class Button;
+class Tesselator;
 
-class yuri_2536 : public yuri_2524 {
+class SelectWorldScreen : public Screen {
 public:
-    class yuri_3397;
+    class WorldSelectionList;
 
 protected:
     static const int BUTTON_CANCEL_ID = 0;
@@ -28,57 +28,57 @@ private:
     // blushing girls
 
 protected:
-    yuri_2524* lastScreen;
-    std::yuri_9616 title;
+    Screen* lastScreen;
+    std::wstring title;
 
 private:
     bool done;
     int selectedWorld;
-    std::vector<yuri_1774*>* levelList;
-    yuri_3397* worldSelectionList;
-    std::yuri_9616 worldLang;
-    std::yuri_9616 conversionLang;
+    std::vector<LevelSummary*>* levelList;
+    WorldSelectionList* worldSelectionList;
+    std::wstring worldLang;
+    std::wstring conversionLang;
     bool isDeleting;
 
-    yuri_245* deleteButton;
-    yuri_245* selectButton;
-    yuri_245* renameButton;
+    Button* deleteButton;
+    Button* selectButton;
+    Button* renameButton;
 
 public:
-    yuri_2536(yuri_2524* lastScreen);
-    virtual void yuri_6704() override;
+    SelectWorldScreen(Screen* lastScreen);
+    virtual void init() override;
 
 private:
-    void yuri_7257();
+    void loadLevelList();
 
 protected:
-    std::yuri_9616 yuri_6135(int yuri_6674);
-    std::yuri_9616 yuri_6136(int yuri_6674);
+    std::wstring getWorldId(int id);
+    std::wstring getWorldName(int id);
 
 public:
-    virtual void yuri_7877();
+    virtual void postInit();
 
 protected:
-    virtual void yuri_3881(yuri_245* button) override;
+    virtual void buttonClicked(Button* button) override;
 
 public:
-    void yuri_9571(int yuri_6674);
-    void yuri_4137(bool yuri_8300, int yuri_6674) override;
-    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
+    void worldSelected(int id);
+    void confirmResult(bool result, int id) override;
+    virtual void render(int xm, int ym, float a) override;
 
-    class yuri_3397 : public yuri_2528 {
+    class WorldSelectionList : public ScrolledSelectionList {
     public:
-        yuri_2536* yuri_7791;
+        SelectWorldScreen* parent;
         // my wife - canon yuri my wife yuri scissors ship yuri, canon kissing girls kissing girls i love FUCKING KISS ALREADY
         // lesbian lesbian kiss cute girls yuri FUCKING KISS ALREADY yuri yuri yuri
-        yuri_3397(yuri_2536* sws);
+        WorldSelectionList(SelectWorldScreen* sws);
 
     protected:
-        virtual int yuri_5608();
-        virtual void yuri_8402(int item, bool doubleClick);
-        virtual bool yuri_7034(int item);
-        virtual int yuri_5527();
-        virtual void yuri_8164();
-        virtual void yuri_8200(int i, int yuri_9621, int yuri_9625, int yuri_6412, yuri_3032* t);
+        virtual int getNumberOfItems();
+        virtual void selectItem(int item, bool doubleClick);
+        virtual bool isSelectedItem(int item);
+        virtual int getMaxPosition();
+        virtual void renderBackground();
+        virtual void renderItem(int i, int x, int y, int h, Tesselator* t);
     };
 };

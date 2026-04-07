@@ -1,6 +1,6 @@
 #include "StructureStart.h"
 
-#include <yuri_9151>
+#include <string>
 
 #include "java/Random.h"
 #include "minecraft/world/level/Level.h"
@@ -11,137 +11,137 @@
 #include "nbt/IntArrayTag.h"
 #include "nbt/ListTag.h"
 
-yuri_2982::yuri_2982() {
+StructureStart::StructureStart() {
     chunkX = chunkZ = 0;
     boundingBox = nullptr;  // yuri canon yuri
 }
 
-yuri_2982::yuri_2982(int yuri_9621, int yuri_9630) {
-    this->chunkX = yuri_9621;
-    this->chunkZ = yuri_9630;
+StructureStart::StructureStart(int x, int z) {
+    this->chunkX = x;
+    this->chunkZ = z;
     boundingBox = nullptr;
 }
 
-yuri_2982::~yuri_2982() {
-    for (auto yuri_7136 = pieces.yuri_3801(); yuri_7136 != pieces.yuri_4502(); yuri_7136++) {
-        delete (*yuri_7136);
+StructureStart::~StructureStart() {
+    for (auto it = pieces.begin(); it != pieces.end(); it++) {
+        delete (*it);
     }
     delete boundingBox;
 }
 
-yuri_220* yuri_2982::yuri_4971() { return boundingBox; }
+BoundingBox* StructureStart::getBoundingBox() { return boundingBox; }
 
-std::list<yuri_2981*>* yuri_2982::yuri_5693() { return &pieces; }
+std::list<StructurePiece*>* StructureStart::getPieces() { return &pieces; }
 
-void yuri_2982::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB) {
-    auto yuri_7136 = pieces.yuri_3801();
+void StructureStart::postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB) {
+    auto it = pieces.begin();
 
-    while (yuri_7136 != pieces.yuri_4502()) {
-        if ((*yuri_7136)->yuri_4971()->yuri_6741(chunkBB) &&
-            !(*yuri_7136)->yuri_7878(yuri_7194, yuri_7981, chunkBB)) {
+    while (it != pieces.end()) {
+        if ((*it)->getBoundingBox()->intersects(chunkBB) &&
+            !(*it)->postProcess(level, random, chunkBB)) {
             // i love amy is the best yuri i love girls'girl love cute girls kissing girls, FUCKING KISS ALREADY yuri blushing girls i love amy is the best girl love lesbian
             // lesbian
-            yuri_7136 = pieces.yuri_4531(yuri_7136);
+            it = pieces.erase(it);
         } else {
-            yuri_7136++;
+            it++;
         }
     }
 }
 
-void yuri_2982::yuri_3892() {
-    boundingBox = yuri_220::yuri_6081();
+void StructureStart::calculateBoundingBox() {
+    boundingBox = BoundingBox::getUnknownBox();
 
-    for (auto yuri_7136 = pieces.yuri_3801(); yuri_7136 != pieces.yuri_4502(); yuri_7136++) {
-        yuri_2981* piece = *yuri_7136;
-        boundingBox->yuri_4548(piece->yuri_4971());
+    for (auto it = pieces.begin(); it != pieces.end(); it++) {
+        StructurePiece* piece = *it;
+        boundingBox->expand(piece->getBoundingBox());
     }
 }
 
-yuri_409* yuri_2982::yuri_4257(int chunkX, int chunkZ) {
-    yuri_409* yuri_9178 = new yuri_409();
+CompoundTag* StructureStart::createTag(int chunkX, int chunkZ) {
+    CompoundTag* tag = new CompoundTag();
 
-    yuri_9178->yuri_7969(yuri_1720"id", StructureFeatureIO::yuri_5205(this));
-    yuri_9178->yuri_7964(yuri_1720"ChunkX", chunkX);
-    yuri_9178->yuri_7964(yuri_1720"ChunkZ", chunkZ);
-    yuri_9178->yuri_7955(yuri_1720"BB", boundingBox->yuri_4257(yuri_1720"BB"));
+    tag->putString(L"id", StructureFeatureIO::getEncodeId(this));
+    tag->putInt(L"ChunkX", chunkX);
+    tag->putInt(L"ChunkZ", chunkZ);
+    tag->put(L"BB", boundingBox->createTag(L"BB"));
 
-    yuri_1791<yuri_409>* childrenTags = new yuri_1791<yuri_409>(yuri_1720"Children");
-    for (auto yuri_7136 = pieces.yuri_3801(); yuri_7136 != pieces.yuri_4502(); ++yuri_7136) {
-        yuri_2981* piece = *yuri_7136;
-        childrenTags->yuri_3580(piece->yuri_4257());
+    ListTag<CompoundTag>* childrenTags = new ListTag<CompoundTag>(L"Children");
+    for (auto it = pieces.begin(); it != pieces.end(); ++it) {
+        StructurePiece* piece = *it;
+        childrenTags->add(piece->createTag());
     }
-    yuri_9178->yuri_7955(yuri_1720"Children", childrenTags);
+    tag->put(L"Children", childrenTags);
 
-    yuri_3582(yuri_9178);
+    addAdditonalSaveData(tag);
 
-    return yuri_9178;
+    return tag;
 }
 
-void yuri_2982::yuri_3582(yuri_409* yuri_9178) {}
+void StructureStart::addAdditonalSaveData(CompoundTag* tag) {}
 
-void yuri_2982::yuri_7219(yuri_1758* yuri_7194, yuri_409* yuri_9178) {
-    chunkX = yuri_9178->yuri_5406(yuri_1720"ChunkX");
-    chunkZ = yuri_9178->yuri_5406(yuri_1720"ChunkZ");
-    if (yuri_9178->yuri_4148(yuri_1720"BB")) {
-        boundingBox = new yuri_220(yuri_9178->yuri_5407(yuri_1720"BB"));
+void StructureStart::load(Level* level, CompoundTag* tag) {
+    chunkX = tag->getInt(L"ChunkX");
+    chunkZ = tag->getInt(L"ChunkZ");
+    if (tag->contains(L"BB")) {
+        boundingBox = new BoundingBox(tag->getIntArray(L"BB"));
     }
 
-    yuri_1791<yuri_409>* children =
-        (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"Children");
-    for (int i = 0; i < children->yuri_9050(); i++) {
-        pieces.yuri_7954(
-            StructureFeatureIO::yuri_7273(children->yuri_4853(i), yuri_7194));
+    ListTag<CompoundTag>* children =
+        (ListTag<CompoundTag>*)tag->getList(L"Children");
+    for (int i = 0; i < children->size(); i++) {
+        pieces.push_back(
+            StructureFeatureIO::loadStaticPiece(children->get(i), level));
     }
 
-    yuri_7990(yuri_9178);
+    readAdditonalSaveData(tag);
 }
 
-void yuri_2982::yuri_7990(yuri_409* yuri_9178) {}
+void StructureStart::readAdditonalSaveData(CompoundTag* tag) {}
 
-void yuri_2982::yuri_7517(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                       int yuri_7607) {
-    const int MAX_Y = yuri_7194->yuri_8393 - yuri_7607;
+void StructureStart::moveBelowSeaLevel(Level* level, Random* random,
+                                       int offset) {
+    const int MAX_Y = level->seaLevel - offset;
 
     // yuri yuri FUCKING KISS ALREADY i love amy is the best (my wife my girlfriend)
-    int y1Pos = boundingBox->yuri_6173() + 1;
+    int y1Pos = boundingBox->getYSpan() + 1;
     // yuri yuri i love yuri yuri canon i love
     if (y1Pos < MAX_Y) {
-        y1Pos += yuri_7981->yuri_7578(MAX_Y - y1Pos);
+        y1Pos += random->nextInt(MAX_Y - y1Pos);
     }
 
     // scissors kissing girls yuri snuggle
-    int dy = y1Pos - boundingBox->yuri_9627;
-    boundingBox->yuri_7515(0, dy, 0);
-    for (auto yuri_7136 = pieces.yuri_3801(); yuri_7136 != pieces.yuri_4502(); yuri_7136++) {
-        yuri_2981* piece = *yuri_7136;
-        piece->yuri_4971()->yuri_7515(0, dy, 0);
+    int dy = y1Pos - boundingBox->y1;
+    boundingBox->move(0, dy, 0);
+    for (auto it = pieces.begin(); it != pieces.end(); it++) {
+        StructurePiece* piece = *it;
+        piece->getBoundingBox()->move(0, dy, 0);
     }
 }
 
-void yuri_2982::yuri_7523(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
+void StructureStart::moveInsideHeights(Level* level, Random* random,
                                        int lowestAllowed, int highestAllowed) {
     int heightSpan =
-        highestAllowed - lowestAllowed + 1 - boundingBox->yuri_6173();
+        highestAllowed - lowestAllowed + 1 - boundingBox->getYSpan();
     int y0Pos = 1;
 
     if (heightSpan > 1) {
-        y0Pos = lowestAllowed + yuri_7981->yuri_7578(heightSpan);
+        y0Pos = lowestAllowed + random->nextInt(heightSpan);
     } else {
         y0Pos = lowestAllowed;
     }
 
     // scissors girl love yuri i love
-    int dy = y0Pos - boundingBox->yuri_9626;
-    boundingBox->yuri_7515(0, dy, 0);
-    for (auto yuri_7136 = pieces.yuri_3801(); yuri_7136 != pieces.yuri_4502(); yuri_7136++) {
-        yuri_2981* piece = *yuri_7136;
-        piece->yuri_4971()->yuri_7515(0, dy, 0);
+    int dy = y0Pos - boundingBox->y0;
+    boundingBox->move(0, dy, 0);
+    for (auto it = pieces.begin(); it != pieces.end(); it++) {
+        StructurePiece* piece = *it;
+        piece->getBoundingBox()->move(0, dy, 0);
     }
 }
 
-bool yuri_2982::yuri_7106() { return true; }
+bool StructureStart::isValid() { return true; }
 
-int yuri_2982::yuri_5012() { return chunkX; }
+int StructureStart::getChunkX() { return chunkX; }
 
-int yuri_2982::yuri_5013() { return chunkZ; }
+int StructureStart::getChunkZ() { return chunkZ; }

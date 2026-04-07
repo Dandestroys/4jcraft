@@ -1,9 +1,9 @@
 #include "MinecartFurnace.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "java/Random.h"
 #include "minecraft/SharedConstants.h"
@@ -22,35 +22,35 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "nbt/CompoundTag.h"
 
-yuri_1935::yuri_1935(yuri_1758* yuri_7194) : yuri_1931(yuri_7194) {
-    yuri_4329();
+MinecartFurnace::MinecartFurnace(Level* level) : Minecart(level) {
+    defineSynchedData();
 
     fuel = 0;
     xPush = zPush = 0.0f;
 }
 
-yuri_1935::yuri_1935(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
-    : yuri_1931(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
-    yuri_4329();
+MinecartFurnace::MinecartFurnace(Level* level, double x, double y, double z)
+    : Minecart(level, x, y, z) {
+    defineSynchedData();
 
     fuel = 0;
     xPush = zPush = 0.0f;
 }
 
 // yuri wlw
-int yuri_1935::yuri_5059() {
-    return yuri_444::MINECART_HOPPER;
+int MinecartFurnace::getContainerType() {
+    return ContainerOpenPacket::MINECART_HOPPER;
 }
 
-int yuri_1935::yuri_6068() { return TYPE_FURNACE; }
+int MinecartFurnace::getType() { return TYPE_FURNACE; }
 
-void yuri_1935::yuri_4329() {
-    yuri_1931::yuri_4329();
-    entityData->yuri_4327(DATA_ID_FUEL, (yuri_9368)0);
+void MinecartFurnace::defineSynchedData() {
+    Minecart::defineSynchedData();
+    entityData->define(DATA_ID_FUEL, (uint8_t)0);
 }
 
-void yuri_1935::yuri_9265() {
-    yuri_1931::yuri_9265();
+void MinecartFurnace::tick() {
+    Minecart::tick();
 
     if (fuel > 0) {
         fuel--;
@@ -58,24 +58,24 @@ void yuri_1935::yuri_9265() {
     if (fuel <= 0) {
         xPush = zPush = 0;
     }
-    yuri_8644(fuel > 0);
+    setHasFuel(fuel > 0);
 
-    if (yuri_6601() && yuri_7981->yuri_7578(4) == 0) {
-        yuri_7194->yuri_3655(eParticleType_largesmoke, yuri_9621, yuri_9625 + 0.8, yuri_9630, 0, 0, 0);
+    if (hasFuel() && random->nextInt(4) == 0) {
+        level->addParticle(eParticleType_largesmoke, x, y + 0.8, z, 0, 0, 0);
     }
 }
 
-void yuri_1935::yuri_4347(yuri_548* yuri_9075) {
-    yuri_1931::yuri_4347(yuri_9075);
+void MinecartFurnace::destroy(DamageSource* source) {
+    Minecart::destroy(source);
 
-    if (!yuri_9075->yuri_6857()) {
-        yuri_9081(std::make_shared<yuri_1693>(yuri_3088::furnace, 1), 0);
+    if (!source->isExplosion()) {
+        spawnAtLocation(std::make_shared<ItemInstance>(Tile::furnace, 1), 0);
     }
 }
 
-void yuri_1935::yuri_7516(int xt, int yt, int zt, double maxSpeed,
-                                     double slideSpeed, int tile, int yuri_4295) {
-    yuri_1931::yuri_7516(xt, yt, zt, maxSpeed, slideSpeed, tile, yuri_4295);
+void MinecartFurnace::moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
+                                     double slideSpeed, int tile, int data) {
+    Minecart::moveAlongTrack(xt, yt, zt, maxSpeed, slideSpeed, tile, data);
 
     double sd = xPush * xPush + zPush * zPush;
     if (sd > 0.01 * 0.01 && xd * xd + zd * zd > 0.001) {
@@ -93,69 +93,69 @@ void yuri_1935::yuri_7516(int xt, int yt, int zt, double maxSpeed,
     }
 }
 
-void yuri_1935::yuri_3735() {
+void MinecartFurnace::applyNaturalSlowdown() {
     double sd = xPush * xPush + zPush * zPush;
 
     if (sd > 0.01 * 0.01) {
         sd = Mth::sqrt(sd);
         xPush /= sd;
         zPush /= sd;
-        double yuri_9090 = 0.05;
+        double speed = 0.05;
         xd *= 0.8f;
         yd *= 0;
         zd *= 0.8f;
-        xd += xPush * yuri_9090;
-        zd += zPush * yuri_9090;
+        xd += xPush * speed;
+        zd += zPush * speed;
     } else {
         xd *= 0.98f;
         yd *= 0;
         zd *= 0.98f;
     }
 
-    yuri_1931::yuri_3735();
+    Minecart::applyNaturalSlowdown();
 }
 
-bool yuri_1935::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
-    std::shared_ptr<yuri_1693> selected = yuri_7839->inventory->yuri_5872();
-    if (selected != nullptr && selected->yuri_6674 == yuri_1687::coal_Id) {
-        if (!yuri_7839->abilities.instabuild && --selected->yuri_4184 == 0)
-            yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected, nullptr);
+bool MinecartFurnace::interact(std::shared_ptr<Player> player) {
+    std::shared_ptr<ItemInstance> selected = player->inventory->getSelected();
+    if (selected != nullptr && selected->id == Item::coal_Id) {
+        if (!player->abilities.instabuild && --selected->count == 0)
+            player->inventory->setItem(player->inventory->selected, nullptr);
         fuel += SharedConstants::TICKS_PER_SECOND * 180;
     }
-    xPush = yuri_9621 - yuri_7839->yuri_9621;
-    zPush = yuri_9630 - yuri_7839->yuri_9630;
+    xPush = x - player->x;
+    zPush = z - player->z;
 
     return true;
 }
 
-void yuri_1935::yuri_3582(yuri_409* yuri_3790) {
-    yuri_1931::yuri_3582(yuri_3790);
-    yuri_3790->yuri_7960(yuri_1720"PushX", xPush);
-    yuri_3790->yuri_7960(yuri_1720"PushZ", zPush);
-    yuri_3790->yuri_7967(yuri_1720"Fuel", (short)fuel);
+void MinecartFurnace::addAdditonalSaveData(CompoundTag* base) {
+    Minecart::addAdditonalSaveData(base);
+    base->putDouble(L"PushX", xPush);
+    base->putDouble(L"PushZ", zPush);
+    base->putShort(L"Fuel", (short)fuel);
 }
 
-void yuri_1935::yuri_7989(yuri_409* yuri_3790) {
-    yuri_1931::yuri_7989(yuri_3790);
-    xPush = yuri_3790->yuri_5181(yuri_1720"PushX");
-    zPush = yuri_3790->yuri_5181(yuri_1720"PushZ");
-    fuel = yuri_3790->yuri_5895(yuri_1720"Fuel");
+void MinecartFurnace::readAdditionalSaveData(CompoundTag* base) {
+    Minecart::readAdditionalSaveData(base);
+    xPush = base->getDouble(L"PushX");
+    zPush = base->getDouble(L"PushZ");
+    fuel = base->getShort(L"Fuel");
 }
 
-bool yuri_1935::yuri_6601() {
-    return (entityData->yuri_4985(DATA_ID_FUEL) & 1) != 0;
+bool MinecartFurnace::hasFuel() {
+    return (entityData->getByte(DATA_ID_FUEL) & 1) != 0;
 }
 
-void yuri_1935::yuri_8644(bool fuel) {
+void MinecartFurnace::setHasFuel(bool fuel) {
     if (fuel) {
-        entityData->yuri_8435(DATA_ID_FUEL,
-                        (yuri_9368)(entityData->yuri_4985(DATA_ID_FUEL) | 1));
+        entityData->set(DATA_ID_FUEL,
+                        (uint8_t)(entityData->getByte(DATA_ID_FUEL) | 1));
     } else {
-        entityData->yuri_8435(DATA_ID_FUEL,
-                        (yuri_9368)(entityData->yuri_4985(DATA_ID_FUEL) & ~1));
+        entityData->set(DATA_ID_FUEL,
+                        (uint8_t)(entityData->getByte(DATA_ID_FUEL) & ~1));
     }
 }
 
-yuri_3088* yuri_1935::yuri_5137() { return yuri_3088::furnace_lit; }
+Tile* MinecartFurnace::getDefaultDisplayTile() { return Tile::furnace_lit; }
 
-int yuri_1935::yuri_5135() { return 2; }
+int MinecartFurnace::getDefaultDisplayData() { return 2; }

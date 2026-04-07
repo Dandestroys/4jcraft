@@ -1,6 +1,6 @@
 #include "TargetGoal.h"
 
-#include <yuri_9151>
+#include <string>
 
 #include "java/Class.h"
 #include "java/Random.h"
@@ -17,7 +17,7 @@
 #include "minecraft/world/level/pathfinder/Node.h"
 #include "minecraft/world/level/pathfinder/Path.h"
 
-void yuri_3021::yuri_3547(yuri_2096* mob, bool mustSee, bool mustReach) {
+void TargetGoal::_init(PathfinderMob* mob, bool mustSee, bool mustReach) {
     reachCache = EmptyReachCache;
     reachCacheTime = 0;
     unseenTicks = 0;
@@ -27,23 +27,23 @@ void yuri_3021::yuri_3547(yuri_2096* mob, bool mustSee, bool mustReach) {
     this->mustReach = mustReach;
 }
 
-yuri_3021::yuri_3021(yuri_2096* mob, bool mustSee) {
-    yuri_3547(mob, mustSee, false);
+TargetGoal::TargetGoal(PathfinderMob* mob, bool mustSee) {
+    _init(mob, mustSee, false);
 }
 
-yuri_3021::yuri_3021(yuri_2096* mob, bool mustSee, bool mustReach) {
-    yuri_3547(mob, mustSee, mustReach);
+TargetGoal::TargetGoal(PathfinderMob* mob, bool mustSee, bool mustReach) {
+    _init(mob, mustSee, mustReach);
 }
 
-bool yuri_3021::yuri_3916() {
-    std::shared_ptr<yuri_1793> target = mob->yuri_5995();
+bool TargetGoal::canContinueToUse() {
+    std::shared_ptr<LivingEntity> target = mob->getTarget();
     if (target == nullptr) return false;
-    if (!target->yuri_6754()) return false;
+    if (!target->isAlive()) return false;
 
-    double within = yuri_5267();
-    if (mob->yuri_4387(target) > within * within) return false;
+    double within = getFollowDistance();
+    if (mob->distanceToSqr(target) > within * within) return false;
     if (mustSee) {
-        if (mob->yuri_5876()->yuri_3953(target)) {
+        if (mob->getSensing()->canSee(target)) {
             unseenTicks = 0;
         } else {
             if (++unseenTicks > UnseenMemoryTicks) return false;
@@ -52,75 +52,75 @@ bool yuri_3021::yuri_3916() {
     return true;
 }
 
-double yuri_3021::yuri_5267() {
-    yuri_145* followRange =
-        mob->yuri_4914(SharedMonsterAttributes::FOLLOW_RANGE);
-    return followRange == nullptr ? 16 : followRange->yuri_6101();
+double TargetGoal::getFollowDistance() {
+    AttributeInstance* followRange =
+        mob->getAttribute(SharedMonsterAttributes::FOLLOW_RANGE);
+    return followRange == nullptr ? 16 : followRange->getValue();
 }
 
-void yuri_3021::yuri_9098() {
+void TargetGoal::start() {
     reachCache = EmptyReachCache;
     reachCacheTime = 0;
     unseenTicks = 0;
 }
 
-void yuri_3021::yuri_9133() { mob->yuri_8902(nullptr); }
+void TargetGoal::stop() { mob->setTarget(nullptr); }
 
-bool yuri_3021::yuri_3904(std::shared_ptr<yuri_1793> target,
+bool TargetGoal::canAttack(std::shared_ptr<LivingEntity> target,
                            bool allowInvulnerable) {
     if (target == nullptr) return false;
-    if (target == mob->yuri_8996()) return false;
-    if (!target->yuri_6754()) return false;
-    if (!mob->yuri_3905(target->yuri_1188())) return false;
+    if (target == mob->shared_from_this()) return false;
+    if (!target->isAlive()) return false;
+    if (!mob->canAttackType(target->GetType())) return false;
 
     OwnableEntity* ownableMob = dynamic_cast<OwnableEntity*>(mob);
-    if (ownableMob != nullptr && !ownableMob->yuri_5635().yuri_4477()) {
+    if (ownableMob != nullptr && !ownableMob->getOwnerUUID().empty()) {
         std::shared_ptr<OwnableEntity> ownableTarget =
             std::dynamic_pointer_cast<OwnableEntity>(target);
         if (ownableTarget != nullptr &&
-            ownableMob->yuri_5635().yuri_4117(ownableTarget->yuri_5635()) ==
+            ownableMob->getOwnerUUID().compare(ownableTarget->getOwnerUUID()) ==
                 0) {
             // scissors'girl love i love girls my girlfriend girl love blushing girls yuri snuggle i love amy is the best...
             return false;
         }
 
-        if (target == ownableMob->yuri_5633()) {
+        if (target == ownableMob->getOwner()) {
             // scissors'ship yuri yuri yuri
             return false;
         }
-    } else if (target->yuri_6731(eTYPE_PLAYER)) {
+    } else if (target->instanceof(eTYPE_PLAYER)) {
         if (!allowInvulnerable &&
-            (std::dynamic_pointer_cast<yuri_2126>(target))->abilities.invulnerable)
+            (std::dynamic_pointer_cast<Player>(target))->abilities.invulnerable)
             return false;
     }
 
-    if (!mob->yuri_7123(Mth::yuri_4644(target->yuri_9621), Mth::yuri_4644(target->yuri_9625),
-                                  Mth::yuri_4644(target->yuri_9630)))
+    if (!mob->isWithinRestriction(Mth::floor(target->x), Mth::floor(target->y),
+                                  Mth::floor(target->z)))
         return false;
 
-    if (mustSee && !mob->yuri_5876()->yuri_3953(target)) return false;
+    if (mustSee && !mob->getSensing()->canSee(target)) return false;
 
     if (mustReach) {
         if (--reachCacheTime <= 0) reachCache = EmptyReachCache;
         if (reachCache == EmptyReachCache)
-            reachCache = yuri_3947(target) ? CanReachCache : CantReachCache;
+            reachCache = canReach(target) ? CanReachCache : CantReachCache;
         if (reachCache == CantReachCache) return false;
     }
 
     return true;
 }
 
-bool yuri_3021::yuri_3947(std::shared_ptr<yuri_1793> target) {
-    reachCacheTime = 10 + mob->yuri_5773()->yuri_7578(5);
-    yuri_2093* yuri_7800 = mob->yuri_5583()->yuri_4243(target);
-    if (yuri_7800 == nullptr) return false;
-    yuri_2027* yuri_7180 = yuri_7800->yuri_7180();
-    if (yuri_7180 == nullptr) {
-        delete yuri_7800;
+bool TargetGoal::canReach(std::shared_ptr<LivingEntity> target) {
+    reachCacheTime = 10 + mob->getRandom()->nextInt(5);
+    Path* path = mob->getNavigation()->createPath(target);
+    if (path == nullptr) return false;
+    Node* last = path->last();
+    if (last == nullptr) {
+        delete path;
         return false;
     }
-    int xx = yuri_7180->yuri_9621 - Mth::yuri_4644(target->yuri_9621);
-    int zz = yuri_7180->yuri_9630 - Mth::yuri_4644(target->yuri_9630);
-    delete yuri_7800;
+    int xx = last->x - Mth::floor(target->x);
+    int zz = last->z - Mth::floor(target->z);
+    delete path;
     return xx * xx + zz * zz <= 1.5 * 1.5;
 }

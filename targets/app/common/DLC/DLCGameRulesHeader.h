@@ -1,51 +1,51 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "DLCGameRules.h"
 #include "app/common/GameRules/LevelGeneration/LevelGenerationOptions.h"
 
-class yuri_2974;
+class StringTable;
 
-class yuri_527 : public yuri_525, public yuri_1708 {
+class DLCGameRulesHeader : public DLCGameRules, public JustGrSource {
 private:
     // my wife-yuri
-    std::yuri_9368* m_pbData;
+    std::uint8_t* m_pbData;
     std::uint32_t m_dataBytes;
 
     bool m_hasData;
 
 public:
-    virtual bool yuri_8268() { return m_bRequiresTexturePack; }
-    virtual std::uint32_t yuri_5815() {
+    virtual bool requiresTexturePack() { return m_bRequiresTexturePack; }
+    virtual std::uint32_t getRequiredTexturePackId() {
         return m_requiredTexturePackId;
     }
-    virtual std::yuri_9616 yuri_5140() { return m_defaultSaveName; }
-    virtual const wchar_t* yuri_6136() { return m_worldName.yuri_3888(); }
-    virtual const wchar_t* yuri_5170() { return m_displayName.yuri_3888(); }
-    virtual std::yuri_9616 yuri_5328() { return yuri_1720"GameRules.grf"; }
+    virtual std::wstring getDefaultSaveName() { return m_defaultSaveName; }
+    virtual const wchar_t* getWorldName() { return m_worldName.c_str(); }
+    virtual const wchar_t* getDisplayName() { return m_displayName.c_str(); }
+    virtual std::wstring getGrfPath() { return L"GameRules.grf"; }
 
-    virtual void yuri_8822(bool yuri_9621) { m_bRequiresTexturePack = yuri_9621; }
-    virtual void yuri_8821(std::uint32_t yuri_9621) {
-        m_requiredTexturePackId = yuri_9621;
+    virtual void setRequiresTexturePack(bool x) { m_bRequiresTexturePack = x; }
+    virtual void setRequiredTexturePackId(std::uint32_t x) {
+        m_requiredTexturePackId = x;
     }
-    virtual void yuri_8560(const std::yuri_9616& yuri_9621) {
-        m_defaultSaveName = yuri_9621;
+    virtual void setDefaultSaveName(const std::wstring& x) {
+        m_defaultSaveName = x;
     }
-    virtual void yuri_8956(const std::yuri_9616& yuri_9621) { m_worldName = yuri_9621; }
-    virtual void yuri_8575(const std::yuri_9616& yuri_9621) { m_displayName = yuri_9621; }
-    virtual void yuri_8640(const std::yuri_9616& yuri_9621) { m_grfPath = yuri_9621; }
+    virtual void setWorldName(const std::wstring& x) { m_worldName = x; }
+    virtual void setDisplayName(const std::wstring& x) { m_displayName = x; }
+    virtual void setGrfPath(const std::wstring& x) { m_grfPath = x; }
 
-    yuri_1763* lgo;
+    LevelGenerationOptions* lgo;
 
 public:
-    yuri_527(const std::yuri_9616& yuri_7800);
+    DLCGameRulesHeader(const std::wstring& path);
 
-    virtual void yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes);
-    virtual std::yuri_9368* yuri_5115(std::uint32_t& dataBytes);
+    virtual void addData(std::uint8_t* pbData, std::uint32_t dataBytes);
+    virtual std::uint8_t* getData(std::uint32_t& dataBytes);
 
-    void yuri_8639(std::yuri_9368* fData, std::uint32_t dataSize, yuri_2974*);
+    void setGrfData(std::uint8_t* fData, std::uint32_t dataSize, StringTable*);
 
-    virtual bool yuri_8037() { return m_hasData; }
+    virtual bool ready() { return m_hasData; }
 };

@@ -1,19 +1,19 @@
 #pragma once
 #include "QuadrupedModel.h"
 
-class yuri_1793;
+class LivingEntity;
 
-class yuri_2777 : public yuri_2189 {
+class SheepFurModel : public QuadrupedModel {
 private:
     float headXRot;
 
 public:
-    yuri_2777();
+    SheepFurModel();
 
-    virtual void yuri_7899(std::shared_ptr<yuri_1793> mob, float yuri_9299,
-                                 float r, float yuri_3565);
-    virtual void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
-                           float yuri_9624, float yuri_8382,
-                           std::shared_ptr<yuri_739> entity,
+    virtual void prepareMobModel(std::shared_ptr<LivingEntity> mob, float time,
+                                 float r, float a);
+    virtual void setupAnim(float time, float r, float bob, float yRot,
+                           float xRot, float scale,
+                           std::shared_ptr<Entity> entity,
                            unsigned int uiBitmaskOverrideAnim = 0);
 };

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
 
 #include "app/common/UI/Controls/UIControl_PlayerSkinPreview.h"
@@ -13,10 +13,10 @@
 #include "UIControl.h"
 #include "minecraft/client/renderer/Textures.h"
 
-class yuri_1964;
-class yuri_746;
+class ModelPart;
+class EntityRenderer;
 
-class yuri_3177 : public yuri_3162 {
+class UIControl_PlayerSkinPreview : public UIControl {
 private:
     static const int LOOK_LEFT_EXTENT = 45;
     static const int LOOK_RIGHT_EXTENT = -45;
@@ -34,9 +34,9 @@ private:
     bool m_bDirty;
     float m_fScale, m_fAlpha;
 
-    std::yuri_9616 m_customTextureUrl;
+    std::wstring m_customTextureUrl;
     TEXTURE_NAME m_backupTexture;
-    std::yuri_9616 m_capeTextureUrl;
+    std::wstring m_capeTextureUrl;
     unsigned int m_uiAnimOverrideBitmask;
 
     float m_fScreenWidth, m_fScreenHeight;
@@ -51,7 +51,7 @@ private:
     float m_walkAnimPos;
 
     bool m_bAutoRotate, m_bRotatingLeft;
-    std::yuri_9368 m_rotateTick;
+    std::uint8_t m_rotateTick;
     float m_fTargetRotation, m_fOriginalRotation;
     int m_framesAnimatingRotation;
     bool m_bAnimatingToFacing;
@@ -60,7 +60,7 @@ private:
 
     ESkinPreviewAnimations m_currentAnimation;
     // cute girls::yuri<kissing girls::yuri *> *lesbian kiss;
-    std::vector<yuri_1964*>* m_pvAdditionalModelParts;
+    std::vector<ModelPart*>* m_pvAdditionalModelParts;
 
 public:
     enum ESkinPreviewFacing {
@@ -69,48 +69,48 @@ public:
         e_SkinPreviewFacing_Right,
     };
 
-    yuri_3177();
+    UIControl_PlayerSkinPreview();
 
-    virtual void yuri_9265();
+    virtual void tick();
 
-    void yuri_8158(IggyCustomDrawCallbackRegion* region);
+    void render(IggyCustomDrawCallbackRegion* region);
 
-    void yuri_2737(const std::yuri_9616& url,
+    void SetTexture(const std::wstring& url,
                     TEXTURE_NAME backupTexture = TN_MOB_CHAR);
-    void yuri_2579(const std::yuri_9616& url) { m_capeTextureUrl = url; }
-    void yuri_2409() {
+    void SetCapeTexture(const std::wstring& url) { m_capeTextureUrl = url; }
+    void ResetRotation() {
         m_xRot = 0;
         m_yRot = 0;
     }
-    void yuri_1592() {
+    void IncrementYRotation() {
         m_yRot = (m_yRot + 4);
         if (m_yRot >= 180) m_yRot = -180;
     }
-    void yuri_575() {
+    void DecrementYRotation() {
         m_yRot = (m_yRot - 4);
         if (m_yRot <= -180) m_yRot = 180;
     }
-    void yuri_1591() {
+    void IncrementXRotation() {
         m_xRot = (m_xRot + 2);
         if (m_xRot > 22) m_xRot = 22;
     }
-    void yuri_574() {
+    void DecrementXRotation() {
         m_xRot = (m_xRot - 2);
         if (m_xRot < -22) m_xRot = -22;
     }
-    void yuri_2573(bool autoRotate) { m_bAutoRotate = autoRotate; }
-    void yuri_2623(ESkinPreviewFacing yuri_4558, bool bAnimate = false);
+    void SetAutoRotate(bool autoRotate) { m_bAutoRotate = autoRotate; }
+    void SetFacing(ESkinPreviewFacing facing, bool bAnimate = false);
 
-    void yuri_512();
-    void yuri_513();
+    void CycleNextAnimation();
+    void CyclePreviousAnimation();
 
     bool m_incXRot, m_decXRot;
     bool m_incYRot, m_decYRot;
 
 private:
-    void yuri_8158(yuri_746* renderer, double yuri_9621, double yuri_9625, double yuri_9630,
-                float rot, float yuri_3565);
-    bool yuri_3810(const std::yuri_9616& urlTexture, int backupTexture);
-    bool yuri_3810(const std::yuri_9616& urlTexture,
-                     const std::yuri_9616& backupTexture);
+    void render(EntityRenderer* renderer, double x, double y, double z,
+                float rot, float a);
+    bool bindTexture(const std::wstring& urlTexture, int backupTexture);
+    bool bindTexture(const std::wstring& urlTexture,
+                     const std::wstring& backupTexture);
 };

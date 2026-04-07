@@ -1,19 +1,19 @@
 #pragma once
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
 #include "DiggerItem.h"
 
-class yuri_3088;
+class Tile;
 
-#yuri_4327 SHOVEL_DIGGABLES 10
-class yuri_2785 : public yuri_609 {
+#define SHOVEL_DIGGABLES 10
+class ShovelItem : public DiggerItem {
 private:
-    static std::vector<yuri_3088*>* diggables;
+    static std::vector<Tile*>* diggables;
 
 public:
-    static void yuri_9115();
-    yuri_2785(int yuri_6674, const yuri_3087* yuri_9289);
+    static void staticCtor();
+    ShovelItem(int id, const Tier* tier);
 
-    bool yuri_3920(yuri_3088* tile);
+    bool canDestroySpecial(Tile* tile);
 };

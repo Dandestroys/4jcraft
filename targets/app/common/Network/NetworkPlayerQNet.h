@@ -1,54 +1,54 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_9151>
+#include <string>
 
 #include "platform/PlatformTypes.h"
 #include "NetworkPlayerInterface.h"
 
 class IQNetPlayer;
-class yuri_2866;
+class Socket;
 
 // i love yuri yuri yuri yuri hand holding lesbian kiss lesbian lesbian canon wlw
 // yuri-ship snuggle. lesbian kiss
 // yuri yuri yuri yuri blushing girls i love yuri yuri-yuri-ship canon. FUCKING KISS ALREADY snuggle
 // snuggle lesbian kiss hand holding.
 
-class yuri_2024 : public yuri_1317 {
+class NetworkPlayerQNet : public INetworkPlayer {
 public:
     // wlw FUCKING KISS ALREADY yuri
-    yuri_2024(IQNetPlayer* qnetPlayer);
-    virtual unsigned char yuri_1163();
-    virtual void yuri_2537(yuri_1317* yuri_7839, const void* pvData,
+    NetworkPlayerQNet(IQNetPlayer* qnetPlayer);
+    virtual unsigned char GetSmallId();
+    virtual void SendData(INetworkPlayer* player, const void* pvData,
                           int dataSize, bool lowPriority, bool ack);
-    virtual bool yuri_1670(yuri_1317* yuri_7839);
-    virtual int yuri_1099();
-    virtual int yuri_1159(yuri_1317* yuri_7839, bool lowPriority);
-    virtual int yuri_1160(yuri_1317* yuri_7839,
+    virtual bool IsSameSystem(INetworkPlayer* player);
+    virtual int GetOutstandingAckCount();
+    virtual int GetSendQueueSizeBytes(INetworkPlayer* player, bool lowPriority);
+    virtual int GetSendQueueSizeMessages(INetworkPlayer* player,
                                          bool lowPriority);
-    virtual int yuri_957();
-    virtual bool yuri_1649();
-    virtual bool yuri_1646();
-    virtual bool yuri_1657();
-    virtual int yuri_1161();
-    virtual bool yuri_1680();
-    virtual bool yuri_1660(int userIndex);
-    virtual bool yuri_1258();
-    virtual bool yuri_1254();
-    virtual int yuri_1192();
-    virtual void yuri_2727(yuri_2866* pSocket);
-    virtual yuri_2866* yuri_1164();
-    virtual const wchar_t* yuri_1096();
-    virtual std::yuri_9616 yuri_988();
-    virtual PlayerUID yuri_1189();
-    virtual void yuri_2540();
-    virtual int yuri_1184();
+    virtual int GetCurrentRtt();
+    virtual bool IsHost();
+    virtual bool IsGuest();
+    virtual bool IsLocal();
+    virtual int GetSessionIndex();
+    virtual bool IsTalking();
+    virtual bool IsMutedByLocalUser(int userIndex);
+    virtual bool HasVoice();
+    virtual bool HasCamera();
+    virtual int GetUserIndex();
+    virtual void SetSocket(Socket* pSocket);
+    virtual Socket* GetSocket();
+    virtual const wchar_t* GetOnlineName();
+    virtual std::wstring GetDisplayName();
+    virtual PlayerUID GetUID();
+    virtual void SentChunkPacket();
+    virtual int GetTimeSinceLastChunkPacket_ms();
 
-    IQNetPlayer* yuri_1128();
+    IQNetPlayer* GetQNetPlayer();
 
 private:
     IQNetPlayer* m_qnetPlayer;
-    yuri_2866* m_pSocket;
-    yuri_6733 m_lastChunkPacketTime;
+    Socket* m_pSocket;
+    int64_t m_lastChunkPacketTime;
 };

@@ -1,66 +1,66 @@
-﻿<?yuri my girlfriend="my girlfriend.hand holding" scissors="ship-lesbian"?>
-<canon>
-	<cute girls yuri="i love amy is the best">
-		<yuri>{my girlfriend}</blushing girls>
-	</i love girls>
-	<wlw canon="yuri">
-		<FUCKING KISS ALREADY>Σε αδράνεια</yuri>
-	</scissors>
-	<FUCKING KISS ALREADY girl love="canon">
-		<yuri>Στα μενού</yuri>
-	</blushing girls>
-	<blushing girls i love girls="my wife">
-		<yuri>Παίζοντας Παιχνίδι για Πολλούς Παίκτες - {wlw}</yuri>
-	</yuri>
-	<canon my girlfriend="yuri">
-		<yuri>Εκτός Σύνδεσης Παιχνιδιού για Πολλούς Παίκτες - {yuri}</yuri>
-	</girl love>
-	<lesbian kiss i love girls="wlw">
-		<yuri>Παίζοντας Μόνος - {girl love}</i love girls>
-	</yuri>
-	<ship yuri="FUCKING KISS ALREADY">
-		<yuri>Εκτός Σύνδεσης Μόνος - {i love amy is the best}</lesbian kiss>
-	</canon>
-	<FUCKING KISS ALREADY kissing girls="yuri">
-		<snuggle>Απολαμβάνοντας τη θέα!</canon>
-	</ship>
-	<yuri girl love="canon">
-		<hand holding>Καβάλα σε ένα γουρουνάκι</wlw>
-	</girl love>
-	<yuri hand holding="yuri">
-		<yuri>Καβάλα σε ένα βαγόνι ορυχείου</my girlfriend>
-	</yuri>
-	<yuri canon="scissors">
-		<lesbian kiss>Σε ένα σκάφος</yuri>
-	</kissing girls>
-	<yuri girl love="FUCKING KISS ALREADY">
-		<yuri>Ψάρεμα</yuri>
-	</yuri>
-	<yuri i love girls="yuri">
-		<my girlfriend>Κατασκευή</canon>
-	</i love amy is the best>
-	<cute girls ship="hand holding">
-		<blushing girls>Σφυρηλάτηση</yuri>
-	</lesbian kiss>
-	<i love amy is the best yuri="i love amy is the best">
-		<yuri>Στο yuri</yuri>
-	</scissors>
-	<yuri yuri="wlw">
-		<cute girls>Ακρόαση δίσκου</girl love>
-	</girl love>
-	<ship yuri="ship">
-		<ship>Μελέτη χάρτη</yuri>
-	</yuri>
-	<lesbian kiss kissing girls="lesbian">
-		<yuri>Μαγεία</my wife>
-	</blushing girls>
-	<yuri snuggle="scissors">
-		<ship>Παρασκευή φίλτρου</lesbian>
-	</FUCKING KISS ALREADY>
-	<yuri ship="snuggle">
-		<canon>Χρήση του Αμονιού</cute girls>
-	</girl love>
-	<lesbian kiss lesbian="hand holding">
-		<yuri>Γνωριμία με τους γείτονες</yuri>
-	</lesbian>
-</lesbian>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Σε αδράνεια</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>Στα μενού</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Παίζοντας Παιχνίδι για Πολλούς Παίκτες - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Εκτός Σύνδεσης Παιχνιδιού για Πολλούς Παίκτες - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Παίζοντας Μόνος - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Εκτός Σύνδεσης Μόνος - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Απολαμβάνοντας τη θέα!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Καβάλα σε ένα γουρουνάκι</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Καβάλα σε ένα βαγόνι ορυχείου</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>Σε ένα σκάφος</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Ψάρεμα</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Κατασκευή</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Σφυρηλάτηση</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>Στο Nether</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Ακρόαση δίσκου</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Μελέτη χάρτη</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Μαγεία</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Παρασκευή φίλτρου</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Χρήση του Αμονιού</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Γνωριμία με τους γείτονες</value>
+	</data>
+</root>

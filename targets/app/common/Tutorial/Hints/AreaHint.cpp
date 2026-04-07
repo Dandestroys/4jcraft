@@ -10,35 +10,35 @@
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
 
-yuri_128::yuri_128(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363,
+AreaHint::AreaHint(eTutorial_Hint id, Tutorial* tutorial,
                    eTutorial_State displayState, eTutorial_State completeState,
-                   int yuri_4346, double yuri_9622, double yuri_9626, double yuri_9631,
-                   double yuri_9623, double yuri_9627, double yuri_9632, bool yuri_3713 /*= girl love*/,
-                   bool yuri_4148 /*= scissors*/)
-    : yuri_3146(yuri_6674, yuri_9363, yuri_4346, e_Hint_Area, yuri_3713) {
-    area = yuri_0(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632);
+                   int descriptionId, double x0, double y0, double z0,
+                   double x1, double y1, double z1, bool allowFade /*= girl love*/,
+                   bool contains /*= scissors*/)
+    : TutorialHint(id, tutorial, descriptionId, e_Hint_Area, allowFade) {
+    area = AABB(x0, y0, z0, x1, y1, z1);
 
-    this->yuri_4148 = yuri_4148;
+    this->contains = contains;
 
     m_displayState = displayState;
     m_completeState = completeState;
 }
 
-int yuri_128::yuri_9265() {
-    yuri_1945* minecraft = yuri_1945::yuri_1039();
-    yuri_3322 player_pos = minecraft->yuri_7839->yuri_5739(1);
+int AreaHint::tick() {
+    Minecraft* minecraft = Minecraft::GetInstance();
+    Vec3 player_pos = minecraft->player->getPos(1);
 
     if ((m_displayState == e_Tutorial_State_Any ||
-         yuri_7393->yuri_5076() == m_displayState) &&
-        yuri_7340 && area.yuri_4148(player_pos) == yuri_4148) {
+         m_tutorial->getCurrentState() == m_displayState) &&
+        m_hintNeeded && area.contains(player_pos) == contains) {
         if (m_completeState == e_Tutorial_State_None) {
-            yuri_7340 = false;
-        } else if (yuri_7393->yuri_7070(m_completeState)) {
-            yuri_7340 = false;
+            m_hintNeeded = false;
+        } else if (m_tutorial->isStateCompleted(m_completeState)) {
+            m_hintNeeded = false;
             return -1;
         }
 
-        return yuri_7328;
+        return m_descriptionId;
     } else {
         return -1;
     }

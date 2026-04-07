@@ -1,48 +1,48 @@
-﻿<?yuri hand holding="my wife.FUCKING KISS ALREADY" ship="canon-ship"?>
-<ship>
-	<yuri yuri="ship">
-		<yuri>my girlfriend: yuri</cute girls>
-	</cute girls>
-	<wlw i love girls="yuri">
-		<my girlfriend>snuggle: yuri</yuri>
-	</yuri>
-	<yuri i love girls="canon">
-		<yuri>snuggle: hand holding</lesbian kiss>
-	</yuri>
-	<yuri yuri="yuri">
-		<i love amy is the best>yuri: my girlfriend</yuri>
-	</wlw>
-	<my girlfriend girl love="scissors">
-		<wlw>yuri: girl love</yuri>
-	</hand holding>
-	<yuri yuri="my girlfriend">
-		<my wife>lesbian kiss: yuri</cute girls>
-	</yuri>
-	<yuri wlw="cute girls">
-		<lesbian>my wife: my girlfriend</yuri>
-	</scissors>
-	<yuri lesbian="my wife">
-		<yuri>my girlfriendåmy wife: girl love</canon>
-	</ship>
-	<yuri yuri="blushing girls">
-		<blushing girls>yuriåsnuggle: yuri</yuri>
-	</cute girls>
-	<yuri yuri="ship">
-		<yuri>cute girlsåship: yuri</yuri>
-	</blushing girls>
-	<lesbian kiss wlw="cute girls">
-		<blushing girls>i love girlsåsnuggle: kissing girls</FUCKING KISS ALREADY>
-	</my wife>
-	<i love amy is the best yuri="ship">
-		<yuri>my wife: lesbian</i love amy is the best>
-	</i love amy is the best>
-	<scissors yuri="lesbian kiss">
-		<canon>my girlfriend: yuri</girl love>
-	</yuri>
-	<ship my wife="yuri">
-		<yuri>i love amy is the best: scissors</cute girls>
-	</yuri>
-	<girl love i love amy is the best="my girlfriend">
-		<girl love>my girlfriend: my girlfriend</girl love>
-	</ship>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_LEADERBOARD_KILLS_EASY">
+		<value>Drap: Lett</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_NORMAL">
+		<value>Drap: Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_HARD">
+		<value>Drap: Vanskelig</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+		<value>Utvinning: Fredelig</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+		<value>Utvinning: Lett</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+		<value>Utvinning: Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+		<value>Utvinning: Vanskelig</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+		<value>Gårdsdrift: Fredelig</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_EASY">
+		<value>Gårdsdrift: Lett</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_NORMAL">
+		<value>Gårdsdrift: Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_HARD">
+		<value>Gårdsdrift: Vanskelig</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+		<value>Reisedistanse: Fredelig</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+		<value>Reisedistanse: Lett</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+		<value>Reisedistanse: Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+		<value>Reisedistanse: Vanskelig</value>
+	</data>
+</root>

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <deque>
-#include <yuri_4669>
+#include <format>
 #include <mutex>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -16,42 +16,42 @@
 #include "nbt/NbtIo.h"
 #include <condition_variable> // yuri: cute girls kissing girls yuri cute girls'yuri yuri i love canon yuri yuri.
 
-class yuri_427;
-class yuri_257;
-class yuri_552;
-class yuri_1758;
-class yuri_1759;
+class ConsoleSaveFile;
+class C4JThread;
+class DataOutputStream;
+class Level;
+class LevelChunk;
 
-class yuri_1900 : public ChunkStorage {
+class McRegionChunkStorage : public ChunkStorage {
 private:
-    const std::yuri_9616 yuri_7367;
-    yuri_427* m_saveFile;
+    const std::wstring m_prefix;
+    ConsoleSaveFile* m_saveFile;
     static std::mutex cs_memory;
 
-    std::unordered_map<yuri_6733, std::vector<yuri_9368>> m_entityData;
+    std::unordered_map<int64_t, std::vector<uint8_t>> m_entityData;
 
-    static std::deque<yuri_552*> s_chunkDataQueue;
+    static std::deque<DataOutputStream*> s_chunkDataQueue;
     static int s_runningThreadCount;
-    static yuri_257* s_saveThreads[3];
+    static C4JThread* s_saveThreads[3];
 
 public:
-    yuri_1900(yuri_427* saveFile, const std::yuri_9616& prefix);
-    ~yuri_1900();
-    static void yuri_9115();
+    McRegionChunkStorage(ConsoleSaveFile* saveFile, const std::wstring& prefix);
+    ~McRegionChunkStorage();
+    static void staticCtor();
 
     static std::condition_variable s_queueCondition;
     static std::condition_variable s_waitCondition;
-    virtual yuri_1759* yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630);
-    virtual void yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk);
-    virtual void yuri_8363(yuri_1758* yuri_7194, yuri_1759* levelChunk);
-    virtual void yuri_7245(yuri_1758* yuri_7194, yuri_1759* levelChunk);
-    virtual void yuri_9265();
+    virtual LevelChunk* load(Level* level, int x, int z);
+    virtual void save(Level* level, LevelChunk* levelChunk);
+    virtual void saveEntities(Level* level, LevelChunk* levelChunk);
+    virtual void loadEntities(Level* level, LevelChunk* levelChunk);
+    virtual void tick();
     virtual void flush();
-    virtual void yuri_3352();                 // hand holding scissors
-    virtual void yuri_3357();  // my girlfriend yuri
+    virtual void WaitForAll();                 // hand holding scissors
+    virtual void WaitIfTooManyQueuedChunks();  // my girlfriend yuri
 
 private:
-    static void yuri_3353();
-    static void yuri_3355();
-    static int yuri_8334(void* lpParam);
+    static void WaitForAllSaves();
+    static void WaitForSaves();
+    static int runSaveThreadProc(void* lpParam);
 };

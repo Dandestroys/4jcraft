@@ -1,50 +1,50 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "Minecart.h"
 #include "java/Class.h"
 #include "minecraft/world/entity/item/Minecart.h"
 #include "minecraft/world/level/BaseMobSpawner.h"
 
-class yuri_739;
-class yuri_1758;
+class Entity;
+class Level;
 
-class yuri_1942 : public yuri_1931 {
+class MinecartSpawner : public Minecart {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_MINECART_SPAWNER; };
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1942(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_MINECART_SPAWNER; };
+    static Entity* create(Level* level) { return new MinecartSpawner(level); }
 
 private:
-    yuri_164* spawner;
+    BaseMobSpawner* spawner;
 
-    class yuri_1938 : public yuri_164 {
+    class MinecartMobSpawner : public BaseMobSpawner {
     private:
-        yuri_1942* m_parent;
+        MinecartSpawner* m_parent;
 
     public:
-        yuri_1938(yuri_1942* yuri_7791);
-        void yuri_3855(int yuri_6674);
-        yuri_1758* yuri_5461();
-        int yuri_6142();
-        int yuri_6164();
-        int yuri_6176();
+        MinecartMobSpawner(MinecartSpawner* parent);
+        void broadcastEvent(int id);
+        Level* getLevel();
+        int getX();
+        int getY();
+        int getZ();
     };
 
 public:
-    yuri_1942(yuri_1758* yuri_7194);
-    yuri_1942(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
-    virtual ~yuri_1942();
+    MinecartSpawner(Level* level);
+    MinecartSpawner(Level* level, double x, double y, double z);
+    virtual ~MinecartSpawner();
 
-    virtual int yuri_6068();
-    virtual yuri_3088* yuri_5137();
+    virtual int getType();
+    virtual Tile* getDefaultDisplayTile();
 
 protected:
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
 
 public:
-    virtual void yuri_6469(yuri_9368 eventId);
-    virtual void yuri_9265();
-    virtual yuri_164* yuri_5949();
+    virtual void handleEntityEvent(uint8_t eventId);
+    virtual void tick();
+    virtual BaseMobSpawner* getSpawner();
 };

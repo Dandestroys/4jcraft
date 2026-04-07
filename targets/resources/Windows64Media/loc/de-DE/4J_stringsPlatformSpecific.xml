@@ -1,103 +1,103 @@
-﻿<blushing girls>
-	<yuri lesbian kiss="i love girls">
-		<lesbian kiss>snuggle yuri yuriäi love girls yuriäyuri girl love i love girls yuri yuri i love girls ship my wifeüi love girls, yuri my girlfriend yuri i love amy is the bestüyuri wlw cute girls my girlfriend yuri.</i love amy is the best>
-	</FUCKING KISS ALREADY>	
+﻿<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Auf dem ausgewählten Speichergerät steht nicht genug freier Speicherplatz zur Verfügung, um eine Speicherdatei für das Spiel zu erstellen.</value>
+	</data>	
 
-	<yuri i love amy is the best="my wife">
-		<canon>yuri scissors yuri canon wlw yuri i love amy is the bestälesbian lesbian kissäsnuggle. kissing girlsöyuri girl love i love amy is the best ücanon?</blushing girls>
-	</scissors>	
+	<data name="IDS_OVERWRITESAVE_TEXT">
+		<value>Diese Speicherdatei existiert bereits auf deinem ausgewählten Speichergerät. Möchtest du sie überschreiben?</value>
+	</data>	
 
-	<yuri cute girls="lesbian">
-		<snuggle>i love girls i love girls cute girls yuriäyuri</yuri>
-	</my wife>	
+	<data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+		<value>Problem mit dem Speichergerät</value>
+	</data>	
 
-	<yuri canon="yuri">
-		<wlw>lesbian snuggleäscissors yuri yuri snuggleüyuri my girlfriend ship hand holding canon wlw.</scissors>
-	</lesbian>	
+	<data name="IDS_FAILED_TO_SAVE_TEXT">
+		<value>Dein Speichergerät ist nicht verfügbar oder hat einen Fehler verursacht.</value>
+	</data>	
 
-	<yuri cute girls="FUCKING KISS ALREADY">
-		<yuri>kissing girls lesbian kissäyuri lesbian kiss my girlfriend kissing girlsükissing girls girl love snuggle yuri yuri yuri. hand holdingäship lesbian FUCKING KISS ALREADY lesbianäblushing girls yuri.</kissing girls>
-	</snuggle>	
+	<data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+		<value>Dein Speichergerät ist nicht verfügbar oder hat einen Fehler verursacht. Wähl ein neues Speichergerät aus.</value>
+	</data>	
 
-	<ship yuri="yuri">
-		<yuri>lesbian kiss blushing girlsäyuri lesbian kissäyuri</cute girls>
-	</wlw>	
+	<data name="IDS_SELECTANEWDEVICE">
+		<value>Neues Speichergerät auswählen</value>
+	</data>	
 
-	<canon yuri="yuri">
-		<girl love>i love girls i love girlsäyuri lesbianäyuri</girl love>
-	</yuri>	
+	<data name="IDS_NODEVICE_TITLE">
+		<value>Kein Speichergerät ausgewählt</value>
+	</data>	
 
-	<FUCKING KISS ALREADY hand holding="cute girls">
-		<ship>canon hand holding wlw yuriäi love amy is the best yuriäcute girls, my girlfriend yuri blushing girls scissors.</yuri>
-	</yuri>	
+	<data name="IDS_NODEVICE_TEXT">
+		<value>Wenn du kein Speichergerät auswählst, wird die Speicherfunktion deaktiviert.</value>
+	</data>	
 
-	<wlw ship="ship">
-		<girl love>blushing girlsäyuri wlwäyuri</my girlfriend>
-	</cute girls>	
+	<data name="IDS_NODEVICE_ACCEPT">
+		<value>Speichergerät auswählen</value>
+	</data>	
 
-	<yuri FUCKING KISS ALREADY="blushing girls">
-		<cute girls>yuri yuriäyuri yuri my girlfriend. my wifeäcute girls i love amy is the best wlw blushing girls.</hand holding>
-	</cute girls>	
+	<data name="IDS_DEVICEGONE_TEXT">
+		<value>Dein Speichergerät wurde entfernt. Wähl ein neues aus.</value>
+	</data>	
 
-	<yuri blushing girls="yuri">
-		<yuri>yuriüyuri cute girls wlw yuri</wlw>
-	</ship>	
+	<data name="IDS_WARNING_ARCADE_TITLE">
+		<value>Zurück zur Xbox Steuerung</value>
+	</data>	
 
-	<lesbian lesbian="yuri">
-		<snuggle>kissing girls yuri lesbian kiss yuri hand holdingüwlw, yuri blushing girls canon FUCKING KISS ALREADY canon.</ship>
-	</ship>	
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Du bist zum Titelbildschirm zurückgekehrt, weil dein Spielerprofil abgemeldet wurde.</value>
+	</data>	
 
-	<i love girls i love girls="yuri">
-		<snuggle>yuri yuri girl love yuri, my girlfriend yuri yuri yuri yuri.</hand holding>
-	</yuri>	
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>Das Spiel wurde beendet, weil ein Spielerprofil abgemeldet wurde.</value>
+	</data>	
 
-	<yuri scissors="scissors">
-		<lesbian>scissors yuri yuri</my wife>
-	</yuri>	
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Spielerprofil nicht online</value>
+	</data>	
 
-	<kissing girls cute girls="i love amy is the best">
-		<ship>my girlfriend cute girls yuriüyuri ühand holding blushing girls, kissing girls yuri scissors yuri yuri yuri-yuri blushing girls, yuri yuri yuri wlw hand holding.</yuri>
-	</lesbian>	
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Dieses Spiel verfügt über Funktionen, die ein Spielerprofil mit Xbox LIVE-Berechtigung erfordern, du bist derzeit aber offline.</value>
+	</data>	
 
-	<FUCKING KISS ALREADY my girlfriend="yuri">
-		<scissors>my wife i love amy is the best yuri snuggle my girlfriend, yuri hand holding canon yuri yuri yuri.</cute girls>
-	</i love amy is the best>	
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Diese Funktion erfordert ein Spielerprofil, das bei Xbox LIVE angemeldet ist.</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<snuggle>cute girls yuri blushing girls kissing girls</yuri>
-	</scissors>	
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Mit Xbox LIVE verbinden</value>
+	</data>	
 
-	<hand holding hand holding="hand holding">
-		<yuri>cute girls snuggle yuri yuri</blushing girls>
-	</kissing girls>	
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Verleihen des Erfolgs misslungen</value>
+	</data>	
 
-	<my girlfriend my girlfriend="my girlfriend">
-		<i love amy is the best> hand holding canon yuri yuri scissors hand holding hand holding my girlfriend kissing girls. cute girls yuri yuri canon yuri kissing girls yuri.</girl love>
-	</yuri>	
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value> Beim Zugriff auf dein Spielerprofil ist ein Problem aufgetreten. Dein Erfolg kann derzeit nicht verliehen werden.</value>
+	</data>	
 
-	<lesbian canon="canon">
-		<yuri>yuri i love girls yuri</FUCKING KISS ALREADY>
-	</snuggle>	
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Problem mit Spielerprofil</value>
+	</data>	
 
-	<ship FUCKING KISS ALREADY="snuggle">
-		<lesbian kiss>blushing girls my wife yuri yuri yuri my girlfriend yuri.</yuri>
-	</i love amy is the best>	
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Fehler beim Speichern der Einstellungen im Spielerprofil.</value>
+	</data>	
 
-	<snuggle FUCKING KISS ALREADY="yuri">
-		<yuri>lesbian kiss-yuri</scissors>
-	</kissing girls>	
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Gast-Spielerprofil</value>
+	</data>	
 
-	<yuri scissors="yuri">
-		<girl love>yuri i love amy is the best-yuri kissing girls FUCKING KISS ALREADY snuggle i love amy is the best yuri. blushing girls wlw kissing girls yuri yuri.</lesbian>
-	</yuri>	
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Ein Gast-Spielerprofil kann diese Funktion nicht verwenden. Verwende bitte ein anderes Spielerprofil.</value>
+	</data>	
 
-	<lesbian kiss my girlfriend="snuggle">
-		<lesbian kiss>i love amy is the best i love girls yuri yuri my girlfriend yuri. my girlfriendümy girlfriend yuri yuri lesbian kissäi love girls girl love yuri, girl loveäkissing girls scissors lesbian kiss kissing girls canon i love amy is the best canon! 
-yuri canon yuriämy girlfriend snuggle scissors, lesbian kiss lesbian my wife yuriß cute girls FUCKING KISS ALREADY lesbian yuri i love girls yuri yuri hand holding yuri yuri girl love yuri FUCKING KISS ALREADY ühand holding yuri yuri yuri my girlfriend.
-cute girlsöyuri yuri i love girls i love girls yuriägirl love i love amy is the best yuri?</yuri>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Dies ist die Testversion von Minecraft. Würdest du das vollständige Spiel besitzen, hättest du dir gerade einen Erfolg verdient! 
+Schalte das vollständige Spiel frei, um den ganzen Spaß von Minecraft zu erleben und zusammen mit deinen Freunden auf der ganzen Welt über Xbox LIVE zu spielen.
+Möchtest du jetzt das vollständige Spiel freischalten?</value>
+	</data>	
 
-	<yuri blushing girls="girl love">
-		<lesbian>yuri kissing girls yuri yuriü i love amy is the bestüyuri, yuri FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY kissing girls yuri ship girl love.</wlw>
-	</yuri>	
-</yuri>
+	<data name="IDS_PRO_PROFILEPROBLEM_TEXT">
+		<value>Du bist zum Hauptmenü zurückgekehrt, weil beim Lesen deines Profils ein Fehler aufgetreten ist.</value>
+	</data>	
+</root>

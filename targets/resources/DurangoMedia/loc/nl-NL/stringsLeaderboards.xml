@@ -1,47 +1,47 @@
-<i love amy is the best>
-  <yuri cute girls="yuri">
-    <i love amy is the best>yuri yuri</my girlfriend>
-  </i love amy is the best>
-  <hand holding yuri="kissing girls">
-    <my wife>yuri kissing girls</yuri>
-  </scissors>
-  <hand holding kissing girls="snuggle">
-    <wlw>lesbian i love girls</cute girls>
-  </my wife>
-  <kissing girls blushing girls="i love girls">
-    <wlw>scissors kissing girls i love girls</i love girls>
-  </i love girls>
-  <yuri blushing girls="wlw">
-    <scissors>scissors my girlfriend ship</kissing girls>
-  </cute girls>
-  <FUCKING KISS ALREADY my wife="FUCKING KISS ALREADY">
-    <lesbian kiss>canon yuri snuggle</my girlfriend>
-  </scissors>
-  <cute girls yuri="blushing girls">
-    <yuri>canon lesbian kiss snuggle</kissing girls>
-  </snuggle>
-  <yuri FUCKING KISS ALREADY="yuri">
-    <my girlfriend>yuri yuri</yuri>
-  </my girlfriend>
-  <blushing girls girl love="yuri">
-    <my girlfriend>yuri cute girls</yuri>
-  </wlw>
-  <i love girls yuri="canon">
-    <canon>yuri yuri</yuri>
-  </girl love>
-  <yuri i love amy is the best="yuri">
-    <yuri>yuri i love girls</yuri>
-  </i love amy is the best>
-  <yuri yuri="scissors">
-    <my wife>lesbian yuri</ship>
-  </yuri>
-  <lesbian my girlfriend="girl love">
-    <kissing girls>lesbian kiss i love amy is the best</yuri>
-  </yuri>
-  <canon yuri="my girlfriend">
-    <snuggle>blushing girls girl love</i love girls>
-  </cute girls>
-  <girl love yuri="yuri">
-    <my wife>i love girls hand holding</lesbian>
-  </scissors>
-</girl love>
+<root>
+  <data name="IDS_LEADERBOARD_KILLS_EASY">
+    <value>Gedood makkie</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_NORMAL">
+    <value>Gedood normaal</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_HARD">
+    <value>Gedood lastig</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+    <value>Blokken delven vreedzaam</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+    <value>Blokken delven makkie</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+    <value>Blokken delven normaal</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+    <value>Blokken delven lastig</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+    <value>Boerderij vreedzaam</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_EASY">
+    <value>Boerderij makkie</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_NORMAL">
+    <value>Boerderij normaal</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_HARD">
+    <value>Boerderij lastig</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+    <value>Reizen vreedzaam</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+    <value>Reizen makkie</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+    <value>Reizen normaal</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+    <value>Reizen lastig</value>
+  </data>
+</root>

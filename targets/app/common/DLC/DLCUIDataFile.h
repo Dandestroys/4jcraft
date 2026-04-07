@@ -1,23 +1,23 @@
 #pragma once
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "DLCFile.h"
 
-class yuri_537 : public yuri_524 {
+class DLCUIDataFile : public DLCFile {
 private:
-    std::yuri_9368* m_pbData;
+    std::uint8_t* m_pbData;
     std::uint32_t m_dataBytes;
     bool m_canDeleteData;
 
 public:
-    yuri_537(const std::yuri_9616& yuri_7800);
-    ~yuri_537();
+    DLCUIDataFile(const std::wstring& path);
+    ~DLCUIDataFile();
 
-    using yuri_524::yuri_3600;
-    using yuri_524::yuri_3653;
+    using DLCFile::addData;
+    using DLCFile::addParameter;
 
-    virtual void yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes,
+    virtual void addData(std::uint8_t* pbData, std::uint32_t dataBytes,
                          bool canDeleteData = false);
-    virtual std::yuri_9368* yuri_5115(std::uint32_t& dataBytes);
+    virtual std::uint8_t* getData(std::uint32_t& dataBytes);
 };

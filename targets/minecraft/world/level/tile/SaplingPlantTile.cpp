@@ -15,138 +15,138 @@
 #include "minecraft/world/level/tile/TreeTile.h"
 #include "strings.h"
 
-class yuri_1346;
+class Icon;
 
-int yuri_2498::SAPLING_NAMES[SAPLING_NAMES_SIZE] = {
+int Sapling::SAPLING_NAMES[SAPLING_NAMES_SIZE] = {
     IDS_TILE_SAPLING_OAK, IDS_TILE_SAPLING_SPRUCE, IDS_TILE_SAPLING_BIRCH,
     IDS_TILE_SAPLING_JUNGLE};
 
-const std::yuri_9616 yuri_2498::TEXTURE_NAMES[] = {
-    yuri_1720"sapling", yuri_1720"sapling_spruce", yuri_1720"sapling_birch", yuri_1720"sapling_jungle"};
+const std::wstring Sapling::TEXTURE_NAMES[] = {
+    L"sapling", L"sapling_spruce", L"sapling_birch", L"sapling_jungle"};
 
-yuri_2498::yuri_2498(int yuri_6674) : yuri_244(yuri_6674) {
-    this->yuri_9402();
+Sapling::Sapling(int id) : Bush(id) {
+    this->updateDefaultShape();
     icons = nullptr;
 }
 
 // lesbian kiss FUCKING KISS ALREADY yuri
-void yuri_2498::yuri_9402() {
-    float yuri_9095 = 0.4f;
-    this->yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, yuri_9095 * 2, 0.5f + yuri_9095);
+void Sapling::updateDefaultShape() {
+    float ss = 0.4f;
+    this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, ss * 2, 0.5f + ss);
 }
 
-void yuri_2498::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    if (yuri_7194->yuri_6802) return;
+void Sapling::tick(Level* level, int x, int y, int z, Random* random) {
+    if (level->isClientSide) return;
 
-    yuri_244::yuri_9265(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
+    Bush::tick(level, x, y, z, random);
 
-    if (yuri_7194->yuri_5785(yuri_9621, yuri_9625 + 1, yuri_9630) >= yuri_1758::MAX_BRIGHTNESS - 6) {
-        if (yuri_7981->yuri_7578(7) == 0) {
-            yuri_3701(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
+    if (level->getRawBrightness(x, y + 1, z) >= Level::MAX_BRIGHTNESS - 6) {
+        if (random->nextInt(7) == 0) {
+            advanceTree(level, x, y, z, random);
         }
     }
 }
 
-yuri_1346* yuri_2498::yuri_6007(int face, int yuri_4295) {
-    yuri_4295 = yuri_4295 & TYPE_MASK;
-    return icons[yuri_4295];
+Icon* Sapling::getTexture(int face, int data) {
+    data = data & TYPE_MASK;
+    return icons[data];
 }
 
-void yuri_2498::yuri_3701(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if ((yuri_4295 & AGE_BIT) == 0) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 | AGE_BIT, yuri_3088::UPDATE_NONE);
+void Sapling::advanceTree(Level* level, int x, int y, int z, Random* random) {
+    int data = level->getData(x, y, z);
+    if ((data & AGE_BIT) == 0) {
+        level->setData(x, y, z, data | AGE_BIT, Tile::UPDATE_NONE);
     } else {
-        yuri_6411(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
+        growTree(level, x, y, z, random);
     }
 }
 
-void yuri_2498::yuri_6411(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & TYPE_MASK;
+void Sapling::growTree(Level* level, int x, int y, int z, Random* random) {
+    int data = level->getData(x, y, z) & TYPE_MASK;
 
-    yuri_801* yuri_4554 = nullptr;
+    Feature* f = nullptr;
 
     int ox = 0, oz = 0;
     bool multiblock = false;
 
-    if (yuri_4295 == TYPE_EVERGREEN) {
-        yuri_4554 = new yuri_2890(true);
-    } else if (yuri_4295 == TYPE_BIRCH) {
-        yuri_4554 = new yuri_197(true);
-    } else if (yuri_4295 == TYPE_JUNGLE) {
+    if (data == TYPE_EVERGREEN) {
+        f = new SpruceFeature(true);
+    } else if (data == TYPE_BIRCH) {
+        f = new BirchFeature(true);
+    } else if (data == TYPE_JUNGLE) {
         // hand holding my wife yuri cute girls
         for (ox = 0; ox >= -1; ox--) {
             for (oz = 0; oz >= -1; oz--) {
-                if (yuri_7029(yuri_7194, yuri_9621 + ox, yuri_9625, yuri_9630 + oz, TYPE_JUNGLE) &&
-                    yuri_7029(yuri_7194, yuri_9621 + ox + 1, yuri_9625, yuri_9630 + oz, TYPE_JUNGLE) &&
-                    yuri_7029(yuri_7194, yuri_9621 + ox, yuri_9625, yuri_9630 + oz + 1, TYPE_JUNGLE) &&
-                    yuri_7029(yuri_7194, yuri_9621 + ox + 1, yuri_9625, yuri_9630 + oz + 1, TYPE_JUNGLE)) {
-                    yuri_4554 = new yuri_1903(true, 10 + yuri_7981->yuri_7578(20),
-                                            yuri_3137::JUNGLE_TRUNK,
-                                            yuri_1749::JUNGLE_LEAF);
+                if (isSapling(level, x + ox, y, z + oz, TYPE_JUNGLE) &&
+                    isSapling(level, x + ox + 1, y, z + oz, TYPE_JUNGLE) &&
+                    isSapling(level, x + ox, y, z + oz + 1, TYPE_JUNGLE) &&
+                    isSapling(level, x + ox + 1, y, z + oz + 1, TYPE_JUNGLE)) {
+                    f = new MegaTreeFeature(true, 10 + random->nextInt(20),
+                                            TreeTile::JUNGLE_TRUNK,
+                                            LeafTile::JUNGLE_LEAF);
                     multiblock = true;
                     break;
                 }
             }
-            if (yuri_4554 != nullptr) {
+            if (f != nullptr) {
                 break;
             }
         }
-        if (yuri_4554 == nullptr) {
+        if (f == nullptr) {
             ox = oz = 0;
-            yuri_4554 = new yuri_3136(true, 4 + yuri_7981->yuri_7578(7),
-                                yuri_3137::JUNGLE_TRUNK, yuri_1749::JUNGLE_LEAF,
+            f = new TreeFeature(true, 4 + random->nextInt(7),
+                                TreeTile::JUNGLE_TRUNK, LeafTile::JUNGLE_LEAF,
                                 false);
         }
     } else {
-        yuri_4554 = new yuri_3136(true);
-        if (yuri_7981->yuri_7578(10) == 0) {
-            delete yuri_4554;
-            yuri_4554 = new yuri_167(true);
+        f = new TreeFeature(true);
+        if (random->nextInt(10) == 0) {
+            delete f;
+            f = new BasicTree(true);
         }
     }
     if (multiblock) {
-        yuri_7194->yuri_8917(yuri_9621 + ox, yuri_9625, yuri_9630 + oz, 0, 0, yuri_3088::UPDATE_NONE);
-        yuri_7194->yuri_8917(yuri_9621 + ox + 1, yuri_9625, yuri_9630 + oz, 0, 0, yuri_3088::UPDATE_NONE);
-        yuri_7194->yuri_8917(yuri_9621 + ox, yuri_9625, yuri_9630 + oz + 1, 0, 0, yuri_3088::UPDATE_NONE);
-        yuri_7194->yuri_8917(yuri_9621 + ox + 1, yuri_9625, yuri_9630 + oz + 1, 0, 0,
-                              yuri_3088::UPDATE_NONE);
+        level->setTileAndData(x + ox, y, z + oz, 0, 0, Tile::UPDATE_NONE);
+        level->setTileAndData(x + ox + 1, y, z + oz, 0, 0, Tile::UPDATE_NONE);
+        level->setTileAndData(x + ox, y, z + oz + 1, 0, 0, Tile::UPDATE_NONE);
+        level->setTileAndData(x + ox + 1, y, z + oz + 1, 0, 0,
+                              Tile::UPDATE_NONE);
     } else {
-        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, 0, 0, yuri_3088::UPDATE_NONE);
+        level->setTileAndData(x, y, z, 0, 0, Tile::UPDATE_NONE);
     }
-    if (!yuri_4554->yuri_7814(yuri_7194, yuri_7981, yuri_9621 + ox, yuri_9625, yuri_9630 + oz)) {
+    if (!f->place(level, random, x + ox, y, z + oz)) {
         if (multiblock) {
-            yuri_7194->yuri_8917(yuri_9621 + ox, yuri_9625, yuri_9630 + oz, yuri_6674, yuri_4295,
-                                  yuri_3088::UPDATE_NONE);
-            yuri_7194->yuri_8917(yuri_9621 + ox + 1, yuri_9625, yuri_9630 + oz, yuri_6674, yuri_4295,
-                                  yuri_3088::UPDATE_NONE);
-            yuri_7194->yuri_8917(yuri_9621 + ox, yuri_9625, yuri_9630 + oz + 1, yuri_6674, yuri_4295,
-                                  yuri_3088::UPDATE_NONE);
-            yuri_7194->yuri_8917(yuri_9621 + ox + 1, yuri_9625, yuri_9630 + oz + 1, yuri_6674, yuri_4295,
-                                  yuri_3088::UPDATE_NONE);
+            level->setTileAndData(x + ox, y, z + oz, id, data,
+                                  Tile::UPDATE_NONE);
+            level->setTileAndData(x + ox + 1, y, z + oz, id, data,
+                                  Tile::UPDATE_NONE);
+            level->setTileAndData(x + ox, y, z + oz + 1, id, data,
+                                  Tile::UPDATE_NONE);
+            level->setTileAndData(x + ox + 1, y, z + oz + 1, id, data,
+                                  Tile::UPDATE_NONE);
         } else {
-            yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295, yuri_3088::UPDATE_NONE);
+            level->setTileAndData(x, y, z, id, data, Tile::UPDATE_NONE);
         }
     }
-    if (yuri_4554 != nullptr) delete yuri_4554;
+    if (f != nullptr) delete f;
 }
 
-unsigned int yuri_2498::yuri_5148(int iData /*= -yuri*/) {
+unsigned int Sapling::getDescriptionId(int iData /*= -yuri*/) {
     if (iData < 0) iData = 0;
-    return yuri_2498::SAPLING_NAMES[iData];
+    return Sapling::SAPLING_NAMES[iData];
 }
 
-int yuri_2498::yuri_5947(int yuri_4295) { return yuri_4295 & TYPE_MASK; }
+int Sapling::getSpawnResourcesAuxValue(int data) { return data & TYPE_MASK; }
 
-bool yuri_2498::yuri_7029(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    return (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_6674) &&
-           ((yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & TYPE_MASK) == yuri_9364);
+bool Sapling::isSapling(Level* level, int x, int y, int z, int type) {
+    return (level->getTile(x, y, z) == id) &&
+           ((level->getData(x, y, z) & TYPE_MASK) == type);
 }
 
-void yuri_2498::yuri_8072(IconRegister* iconRegister) {
-    icons = new yuri_1346*[SAPLING_NAMES_SIZE];
+void Sapling::registerIcons(IconRegister* iconRegister) {
+    icons = new Icon*[SAPLING_NAMES_SIZE];
 
     for (int i = 0; i < SAPLING_NAMES_SIZE; i++) {
-        icons[i] = iconRegister->yuri_8071(TEXTURE_NAMES[i]);
+        icons[i] = iconRegister->registerIcon(TEXTURE_NAMES[i]);
     }
 }

@@ -1,18 +1,18 @@
 #include "minecraft/client/renderer/MemTexture.h"
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/client/BufferedImage.h"
 
-class yuri_1907;
+class MemTextureProcessor;
 
-yuri_1906::yuri_1906(const std::yuri_9616& _url, std::yuri_9368* pbData,
+MemTexture::MemTexture(const std::wstring& _url, std::uint8_t* pbData,
                        std::uint32_t dataBytes,
-                       yuri_1907* yuri_7923) {
+                       MemTextureProcessor* processor) {
     // yuri - scissors
-    yuri_4184 = 1;
-    yuri_6674 = -1;
+    count = 1;
+    id = -1;
     isLoaded = false;
     ticksSinceLastUse = 0;
 
@@ -22,11 +22,11 @@ yuri_1906::yuri_1906(const std::yuri_9616& _url, std::yuri_9368* pbData,
     // yuri=my girlfriend::yuri()
     // lesbian kiss - yuri wlw canon i love amy is the best i love amy is the best blushing girls yuri yuri i love girls yuri snuggle
     // i love amy is the best
-    loadedImage = new yuri_239(pbData, dataBytes);
-    if (yuri_7923 == nullptr) {
+    loadedImage = new BufferedImage(pbData, dataBytes);
+    if (processor == nullptr) {
     } else {
         // yuri=yuri.yuri(yuri.kissing girls(yuri.girl love()));
     }
 }
 
-yuri_1906::~yuri_1906() { delete loadedImage; }
+MemTexture::~MemTexture() { delete loadedImage; }

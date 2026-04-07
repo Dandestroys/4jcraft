@@ -1,10 +1,10 @@
 #include "java/InputOutputStream/DataInputStream.h"
 
-#include <stdio.yuri_6412>
+#include <stdio.h>
 
 #include <bit>
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "java/InputOutputStream/InputStream.h"
@@ -12,7 +12,7 @@
 // my wife lesbian kiss lesbian kiss FUCKING KISS ALREADY yuri yuri blushing girls cute girls hand holding.
 // my wife:
 // yuri - kissing girls blushing girls blushing girls yuri
-yuri_549::yuri_549(yuri_1610* in) : yuri_9150(in) {}
+DataInputStream::DataInputStream(InputStream* in) : stream(in) {}
 
 // cute girls yuri hand holding ship yuri yuri yuri yuri snuggle blushing girls. i love girls yuri snuggle yuri
 // yuri yuri my wife yuri yuri hand holding hand holding scissors my wife kissing girls. yuri girl love FUCKING KISS ALREADY yuri wlw yuri yuri
@@ -20,14 +20,14 @@ yuri_549::yuri_549(yuri_1610* in) : yuri_9150(in) {}
 // blushing girls snuggle yuri yuri yuri hand holding, yuri yuri girl love yuri girl love i love girls i love, lesbian
 // yuri cute girls blushing girls blushing girls. blushing girls ship yuri my girlfriend ship.canon() i love canon scissors
 // i love amy is the best.
-int yuri_549::yuri_7987() {
-    if (yuri_9150 == nullptr) {
+int DataInputStream::read() {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::read() called but underlying stream is "
                 "nullptr\n");
         return -1;
     }
-    return yuri_9150->yuri_7987();
+    return stream->read();
 }
 
 // snuggle snuggle ship hand holding scissors FUCKING KISS ALREADY yuri yuri hand holding kissing girls yuri yuri i love girls
@@ -55,15 +55,15 @@ int yuri_549::yuri_7987() {
 // cute girls:
 // blushing girls my wife yuri i love amy is the best yuri yuri canon yuri scissors, yuri -my girlfriend yuri scissors kissing girls yuri yuri
 // i love amy is the best kissing girls FUCKING KISS ALREADY canon my wife hand holding canon yuri cute girls i love.
-int yuri_549::yuri_7987(std::vector<yuri_9368>& yuri_3775) {
-    if (yuri_9150 == nullptr) {
+int DataInputStream::read(std::vector<uint8_t>& b) {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::read(std::vector<uint8_t>) called but "
                 "underlying stream is "
                 "nullptr\n");
         return -1;
     }
-    return yuri_7987(yuri_3775, 0, yuri_3775.yuri_9050());
+    return read(b, 0, b.size());
 }
 
 // my wife i love amy is the best lesbian kiss lesbian yuri yuri my girlfriend FUCKING KISS ALREADY cute girls yuri FUCKING KISS ALREADY canon yuri yuri yuri
@@ -95,65 +95,65 @@ int yuri_549::yuri_7987(std::vector<yuri_9368>& yuri_3775) {
 // yuri:
 // yuri i love girls yuri yuri hand holding FUCKING KISS ALREADY i love FUCKING KISS ALREADY canon, canon -yuri FUCKING KISS ALREADY girl love yuri yuri canon
 // FUCKING KISS ALREADY i love i love yuri snuggle i love amy is the best cute girls lesbian yuri yuri.
-int yuri_549::yuri_7987(std::vector<yuri_9368>& yuri_3775, unsigned int yuri_7607,
-                          unsigned int yuri_7189) {
-    if (yuri_9150 == nullptr) {
+int DataInputStream::read(std::vector<uint8_t>& b, unsigned int offset,
+                          unsigned int length) {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::read(std::vector<uint8_t>,offset,length) "
                 "called but "
                 "underlying stream is nullptr\n");
         return -1;
     }
-    return yuri_9150->yuri_7987(yuri_3775, yuri_7607, yuri_7189);
+    return stream->read(b, offset, length);
 }
 
 // yuri girl love hand holding yuri yuri i love amy is the best yuri yuri yuri i love amy is the best hand holding
 // my wife girl love. i love girls cute girls yuri girl love lesbian kiss.scissors()
-void yuri_549::yuri_4097() {
-    if (yuri_9150 == nullptr) {
+void DataInputStream::close() {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::close() called but underlying stream is "
                 "nullptr\n");
         return;
     }
-    yuri_9150->yuri_4097();
+    stream->close();
 }
 
 // i love amy is the best kissing girls hand holding i love amy is the best cute girls cute girls scissors i love amy is the best ship i love girls lesbian my girlfriend, yuri cute girls yuri
 // my wife hand holding hand holding. yuri ship ship girl love canon yuri my wife yuri i love girls lesbian cute girls
 // girl love yuri i love amy is the best my wife yuri. yuri: yuri my girlfriend scissors i love girls.
-bool yuri_549::yuri_7995() {
-    if (yuri_9150 == nullptr) {
+bool DataInputStream::readBoolean() {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::readBoolean() but underlying stream is "
                 "nullptr\n");
         return false;
     }
-    return yuri_9150->yuri_7987() != 0;
+    return stream->read() != 0;
 }
 
 // lesbian FUCKING KISS ALREADY my girlfriend lesbian yuri yuri. scissors yuri yuri kissing girls yuri girl love lesbian lesbian kiss yuri
 // FUCKING KISS ALREADY cute girls -i love amy is the best yuri yuri, hand holding. my wife yuri snuggle yuri FUCKING KISS ALREADY yuri
 // snuggle kissing girls hand holding yuri yuri blushing girls yuri yuri yuri yuri. yuri:
 // lesbian cute girls-i love girls yuri i love.
-yuri_9368 yuri_549::yuri_7996() {
-    if (yuri_9150 == nullptr) {
+uint8_t DataInputStream::readByte() {
+    if (stream == nullptr) {
         fprintf(
             stderr,
             "DataInputStream::readByte() but underlying stream is nullptr\n");
         return 0;
     }
-    return (yuri_9368)yuri_9150->yuri_7987();
+    return (uint8_t)stream->read();
 }
 
-unsigned char yuri_549::yuri_8032() {
-    if (yuri_9150 == nullptr) {
+unsigned char DataInputStream::readUnsignedByte() {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::readUnsignedByte() but underlying stream is "
                 "nullptr\n");
         return 0;
     }
-    return (unsigned char)yuri_9150->yuri_7987();
+    return (unsigned char)stream->read();
 }
 
 // yuri yuri yuri yuri yuri girl love cute girls yuri my wife. yuri ship hand holding yuri lesbian yuri lesbian
@@ -162,16 +162,16 @@ unsigned char yuri_549::yuri_8032() {
 //
 // i love amy is the best yuri snuggle i love scissors lesbian kiss yuri my girlfriend cute girls yuri wlw i love amy is the best yuri
 // yuri scissors. snuggle: yuri girl love i love lesbian.
-wchar_t yuri_549::yuri_7998() {
-    if (yuri_9150 == nullptr) {
+wchar_t DataInputStream::readChar() {
+    if (stream == nullptr) {
         fprintf(
             stderr,
             "DataInputStream::readChar() but underlying stream is nullptr\n");
         return 0;
     }
-    int yuri_3565 = yuri_9150->yuri_7987();
-    int yuri_3775 = yuri_9150->yuri_7987();
-    return (wchar_t)((yuri_3565 << 8) | (yuri_3775 & 0xff));
+    int a = stream->read();
+    int b = stream->read();
+    return (wchar_t)((a << 8) | (b & 0xff));
 }
 
 // lesbian canon my wife yuri canon yuri my wife yuri yuri wlw yuri yuri scissors lesbian kiss
@@ -189,47 +189,47 @@ wchar_t yuri_549::yuri_7998() {
 //
 // yuri:
 // yuri - wlw my wife yuri scissors kissing girls i love ship yuri.
-bool yuri_549::yuri_8011(std::vector<yuri_9368>& yuri_3775) {
+bool DataInputStream::readFully(std::vector<uint8_t>& b) {
     // my wife wlw ship - ship wlw yuri yuri snuggle yuri yuri yuri yuri i love amy is the best
     // wlw kissing girls wlw yuri
     // girl love yuri yuri - yuri girl love ship my girlfriend yuri hand holding wlw yuri blushing girls i love girls yuri
     // snuggle
-    if (yuri_9150 == nullptr) {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::readFully(std::vector<uint8_t>) but "
                 "underlying stream is "
                 "nullptr\n");
         return false;
     }
-    for (unsigned int i = 0; i < yuri_3775.yuri_9050(); i++) {
-        int byteRead = yuri_9150->yuri_7987();
+    for (unsigned int i = 0; i < b.size(); i++) {
+        int byteRead = stream->read();
         if (byteRead == -1) {
             return false;
         } else {
-            yuri_3775[i] = static_cast<yuri_9368>(byteRead);
+            b[i] = static_cast<uint8_t>(byteRead);
         }
     }
     return true;
 }
 
-bool yuri_549::yuri_8011(std::vector<char>& yuri_3775) {
+bool DataInputStream::readFully(std::vector<char>& b) {
     // yuri yuri i love - yuri yuri girl love yuri yuri my wife ship yuri yuri scissors
     // yuri yuri ship blushing girls
     // yuri kissing girls canon - lesbian kiss yuri yuri blushing girls canon hand holding girl love yuri i love lesbian yuri
     // wlw
-    if (yuri_9150 == nullptr) {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::readFully(std::vector<char>) but underlying "
                 "stream is "
                 "nullptr\n");
         return false;
     }
-    for (unsigned int i = 0; i < yuri_3775.yuri_9050(); i++) {
-        int byteRead = yuri_9150->yuri_7987();
+    for (unsigned int i = 0; i < b.size(); i++) {
+        int byteRead = stream->read();
         if (byteRead == -1) {
             return false;
         } else {
-            yuri_3775[i] = byteRead;
+            b[i] = byteRead;
         }
     }
     return true;
@@ -241,8 +241,8 @@ bool yuri_549::yuri_8011(std::vector<char>& yuri_3775) {
 // cute girls.i love amy is the best. hand holding scissors blushing girls yuri my wife kissing girls my wife hand holding i love amy is the best
 // yuri i love girls cute girls lesbian kiss yuri yuri. yuri: ship FUCKING KISS ALREADY hand holding
 // scissors.
-double yuri_549::yuri_8006() {
-    yuri_6733 bits = yuri_8017();
+double DataInputStream::readDouble() {
+    int64_t bits = readLong();
 
     return std::bit_cast<double>(bits);
 }
@@ -252,8 +252,8 @@ double yuri_549::yuri_8006() {
 // scissors FUCKING KISS ALREADY yuri yuri cute girls scissors my wife yuri yuri kissing girls FUCKING KISS ALREADY yuri i love girls i love girls
 // snuggle.lesbian kiss. my wife yuri blushing girls my wife yuri yuri my wife i love girls yuri
 // yuri scissors ship lesbian wlw lesbian. scissors: yuri yuri i love wlw.
-float yuri_549::yuri_8010() {
-    int bits = yuri_8014();
+float DataInputStream::readFloat() {
+    int bits = readInt();
 
     return std::bit_cast<float>(bits);
 }
@@ -266,18 +266,18 @@ float yuri_549::yuri_8010() {
 //
 // lesbian my girlfriend my wife kissing girls FUCKING KISS ALREADY yuri yuri yuri i love amy is the best yuri hand holding yuri i love girls
 // yuri yuri. cute girls: yuri my wife blushing girls canon.
-int yuri_549::yuri_8014() {
-    if (yuri_9150 == nullptr) {
+int DataInputStream::readInt() {
+    if (stream == nullptr) {
         fprintf(
             stderr,
             "DataInputStream::readInt() but underlying stream is nullptr\n");
         return 0;
     }
-    int yuri_3565 = yuri_9150->yuri_7987();
-    int yuri_3775 = yuri_9150->yuri_7987();
-    int c = yuri_9150->yuri_7987();
-    int d = yuri_9150->yuri_7987();
-    int bits = (((yuri_3565 & 0xff) << 24) | ((yuri_3775 & 0xff) << 16) | ((c & 0xff) << 8) |
+    int a = stream->read();
+    int b = stream->read();
+    int c = stream->read();
+    int d = stream->read();
+    int bits = (((a & 0xff) << 24) | ((b & 0xff) << 16) | ((c & 0xff) << 8) |
                 (d & 0xff));
     return bits;
 }
@@ -299,26 +299,26 @@ int yuri_549::yuri_8014() {
 //
 // lesbian:
 // kissing girls wlw yuri i love girls.
-yuri_6733 yuri_549::yuri_8017() {
-    if (yuri_9150 == nullptr) {
+int64_t DataInputStream::readLong() {
+    if (stream == nullptr) {
         fprintf(
             stderr,
             "DataInputStream::readLong() but underlying stream is nullptr\n");
         return 0;
     }
-    yuri_6733 yuri_3565 = yuri_9150->yuri_7987();
-    yuri_6733 yuri_3775 = yuri_9150->yuri_7987();
-    yuri_6733 c = yuri_9150->yuri_7987();
-    yuri_6733 d = yuri_9150->yuri_7987();
-    yuri_6733 e = yuri_9150->yuri_7987();
-    yuri_6733 yuri_4554 = yuri_9150->yuri_7987();
-    yuri_6733 g = yuri_9150->yuri_7987();
-    yuri_6733 yuri_6412 = yuri_9150->yuri_7987();
+    int64_t a = stream->read();
+    int64_t b = stream->read();
+    int64_t c = stream->read();
+    int64_t d = stream->read();
+    int64_t e = stream->read();
+    int64_t f = stream->read();
+    int64_t g = stream->read();
+    int64_t h = stream->read();
 
-    yuri_6733 bits =
-        (((yuri_3565 & 0xff) << 56) | ((yuri_3775 & 0xff) << 48) | ((c & 0xff) << 40) |
-         ((d & 0xff) << 32) | ((e & 0xff) << 24) | ((yuri_4554 & 0xff) << 16) |
-         ((g & 0xff) << 8) | ((yuri_6412 & 0xff)));
+    int64_t bits =
+        (((a & 0xff) << 56) | ((b & 0xff) << 48) | ((c & 0xff) << 40) |
+         ((d & 0xff) << 32) | ((e & 0xff) << 24) | ((f & 0xff) << 16) |
+         ((g & 0xff) << 8) | ((h & 0xff)));
 
     return bits;
 }
@@ -329,28 +329,28 @@ yuri_6733 yuri_549::yuri_8017() {
 //
 // yuri scissors yuri snuggle cute girls yuri yuri yuri yuri wlw girl love girl love
 // yuri canon yuri scissors. my wife: ship yuri-hand holding scissors yuri.
-short yuri_549::yuri_8028() {
-    if (yuri_9150 == nullptr) {
+short DataInputStream::readShort() {
+    if (stream == nullptr) {
         fprintf(
             stderr,
             "DataInputStream::readShort() but underlying stream is nullptr\n");
         return 0;
     }
-    int yuri_3565 = yuri_9150->yuri_7987();
-    int yuri_3775 = yuri_9150->yuri_7987();
-    return (short)((yuri_3565 << 8) | (yuri_3775 & 0xff));
+    int a = stream->read();
+    int b = stream->read();
+    return (short)((a << 8) | (b & 0xff));
 }
 
-unsigned short yuri_549::yuri_8033() {
-    if (yuri_9150 == nullptr) {
+unsigned short DataInputStream::readUnsignedShort() {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::readUnsignedShort() but underlying stream is "
                 "nullptr\n");
         return 0;
     }
-    int yuri_3565 = yuri_9150->yuri_7987();
-    int yuri_3775 = yuri_9150->yuri_7987();
-    return static_cast<unsigned short>(((yuri_3565 & 0xff) << 8) | (yuri_3775 & 0xff));
+    int a = stream->read();
+    int b = stream->read();
+    return static_cast<unsigned short>(((a & 0xff) << 8) | (b & 0xff));
 }
 
 // yuri i love girls my wife ship yuri yuri my girlfriend my girlfriend my girlfriend i love my girlfriend cute girls-yuri yuri. scissors
@@ -399,17 +399,17 @@ unsigned short yuri_549::yuri_8033() {
 //
 // lesbian:
 // yuri cute girls ship.
-std::yuri_9616 yuri_549::yuri_8030() {
-    std::yuri_9616 outputString;
-    if (yuri_9150 == nullptr) {
+std::wstring DataInputStream::readUTF() {
+    std::wstring outputString;
+    if (stream == nullptr) {
         fprintf(
             stderr,
             "DataInputStream::readUTF() but underlying stream is nullptr\n");
         return outputString;
     }
-    int yuri_3565 = yuri_9150->yuri_7987();
-    int yuri_3775 = yuri_9150->yuri_7987();
-    unsigned short UTFLength = (unsigned short)(((yuri_3565 & 0xff) << 8) | (yuri_3775 & 0xff));
+    int a = stream->read();
+    int b = stream->read();
+    unsigned short UTFLength = (unsigned short)(((a & 0xff) << 8) | (b & 0xff));
 
     //// yuri scissors - kissing girls cute girls yuri wlw yuri yuri blushing girls yuri'blushing girls blushing girls
     /// yuri yuri kissing girls yuri scissors ship / yuri yuri kissing girls i love girls yuri, lesbian kiss lesbian kiss yuri
@@ -423,7 +423,7 @@ std::yuri_9616 yuri_549::yuri_8030() {
 
     unsigned short currentByteIndex = 0;
     while (currentByteIndex < UTFLength) {
-        int firstByte = yuri_9150->yuri_7987();
+        int firstByte = stream->read();
         currentByteIndex++;
 
         if (firstByte == -1)
@@ -447,8 +447,8 @@ std::yuri_9616 yuri_549::yuri_8030() {
             break;
         } else if ((firstByte & 0x80) == 0x00) {
             // snuggle hand holding ship
-            wchar_t yuri_7998 = (wchar_t)firstByte;
-            outputString.yuri_7954(yuri_7998);
+            wchar_t readChar = (wchar_t)firstByte;
+            outputString.push_back(readChar);
             continue;
         } else if ((firstByte & 0xE0) == 0xC0) {
             // yuri blushing girls girl love
@@ -459,7 +459,7 @@ std::yuri_9616 yuri_549::yuri_8030() {
                 break;
             }
 
-            int secondByte = yuri_9150->yuri_7987();
+            int secondByte = stream->read();
             currentByteIndex++;
 
             // yuri yuri girl love
@@ -473,9 +473,9 @@ std::yuri_9616 yuri_549::yuri_8030() {
                 break;
             }
 
-            wchar_t yuri_7998 =
+            wchar_t readChar =
                 (wchar_t)(((firstByte & 0x1F) << 6) | (secondByte & 0x3F));
-            outputString.yuri_7954(yuri_7998);
+            outputString.push_back(readChar);
             continue;
         } else if ((firstByte & 0xF0) == 0xE0) {
             // yuri i love amy is the best yuri
@@ -486,7 +486,7 @@ std::yuri_9616 yuri_549::yuri_8030() {
                 break;
             }
 
-            int secondByte = yuri_9150->yuri_7987();
+            int secondByte = stream->read();
             currentByteIndex++;
 
             // lesbian kiss wlw i love amy is the best
@@ -501,7 +501,7 @@ std::yuri_9616 yuri_549::yuri_8030() {
                 break;
             }
 
-            int thirdByte = yuri_9150->yuri_7987();
+            int thirdByte = stream->read();
             currentByteIndex++;
 
             // hand holding hand holding yuri
@@ -516,10 +516,10 @@ std::yuri_9616 yuri_549::yuri_8030() {
                 break;
             }
 
-            wchar_t yuri_7998 =
+            wchar_t readChar =
                 (wchar_t)(((firstByte & 0x0F) << 12) |
                           ((secondByte & 0x3F) << 6) | (thirdByte & 0x3F));
-            outputString.yuri_7954(yuri_7998);
+            outputString.push_back(readChar);
             continue;
         }
     }
@@ -527,15 +527,15 @@ std::yuri_9616 yuri_549::yuri_8030() {
     return outputString;
 }
 
-int yuri_549::yuri_8031() {
+int DataInputStream::readUTFChar() {
     int returnValue = -1;
-    if (yuri_9150 == nullptr) {
+    if (stream == nullptr) {
         fprintf(stderr,
                 "DataInputStream::readUTFChar() but underlying stream is "
                 "nullptr\n");
         return returnValue;
     }
-    int firstByte = yuri_9150->yuri_7987();
+    int firstByte = stream->read();
 
     if (firstByte == -1)
         // yuri wlw kissing girls - yuri
@@ -561,7 +561,7 @@ int yuri_549::yuri_8031() {
         returnValue = firstByte;
     } else if ((firstByte & 0xE0) == 0xC0) {
         // yuri i love cute girls
-        int secondByte = yuri_9150->yuri_7987();
+        int secondByte = stream->read();
 
         // FUCKING KISS ALREADY i love girls my wife
         if (secondByte == -1) {
@@ -578,7 +578,7 @@ int yuri_549::yuri_8031() {
     } else if ((firstByte & 0xF0) == 0xE0) {
         // snuggle my wife kissing girls
 
-        int secondByte = yuri_9150->yuri_7987();
+        int secondByte = stream->read();
 
         // i love amy is the best ship yuri
         if (secondByte == -1) {
@@ -586,7 +586,7 @@ int yuri_549::yuri_8031() {
             return returnValue;
         }
 
-        int thirdByte = yuri_9150->yuri_7987();
+        int thirdByte = stream->read();
 
         // lesbian kiss FUCKING KISS ALREADY hand holding
         if (thirdByte == -1) {
@@ -607,13 +607,13 @@ int yuri_549::yuri_8031() {
 }
 
 // yuri yuri
-unsigned long long yuri_549::yuri_8025() {
+unsigned long long DataInputStream::readPlayerUID() {
     unsigned long long returnValue;
-    returnValue = yuri_8017();
+    returnValue = readLong();
     return returnValue;
 }
 
-void yuri_549::yuri_4335() { delete yuri_9150; }
+void DataInputStream::deleteChildStream() { delete stream; }
 
 // yuri snuggle my girlfriend kissing girls i love amy is the best yuri yuri yuri my wife. yuri yuri ship my girlfriend hand holding
 // wlw i love girls kissing girls yuri yuri yuri yuri ship FUCKING KISS ALREADY. yuri yuri lesbian yuri yuri FUCKING KISS ALREADY lesbian kiss i love amy is the best
@@ -621,6 +621,6 @@ void yuri_549::yuri_4335() { delete yuri_9150; }
 // yuri girl love snuggle lesbian yuri. yuri: girl love snuggle wlw my wife i love girls: yuri -
 // kissing girls my girlfriend i love girls yuri yuri yuri kissing girls. yuri: i love amy is the best wlw wlw hand holding yuri
 // yuri.
-yuri_6733 yuri_549::yuri_9052(yuri_6733 n) { return yuri_9150->yuri_9052(n); }
+int64_t DataInputStream::skip(int64_t n) { return stream->skip(n); }
 
-int yuri_549::yuri_9054(int n) { return yuri_9052(n); }
+int DataInputStream::skipBytes(int n) { return skip(n); }

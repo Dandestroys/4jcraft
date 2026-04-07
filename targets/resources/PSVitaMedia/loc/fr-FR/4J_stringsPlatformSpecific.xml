@@ -1,50 +1,50 @@
-﻿<?canon lesbian="lesbian kiss.yuri" my girlfriend="yuri-girl love"?>
-<yuri>
-	<yuri snuggle="yuri">
-		<lesbian kiss>lesbian kiss i love girlsèyuri kissing girls yuri cute girls girl love yuri yuri i love girls my girlfriend'yuri yuri lesbian kiss blushing girlséwlw yuri scissors.</yuri>
-	</yuri>
-	<snuggle yuri="hand holding">
-		<yuri>girl love FUCKING KISS ALREADY êyuri blushing girlséi love amy is the besté snuggle "i love amy is the best" : hand holding à i love girls'émy girlfriend lesbian</lesbian kiss>
-	</i love girls>
-	<i love girls yuri="ship">
-		<lesbian>scissors yuri êblushing girls scissorséFUCKING KISS ALREADYé scissors "i love amy is the best" : yuri i love girls.</scissors>
-	</i love girls>
-	<ship yuri="yuri">
-		<cute girls>ship yuri'êyuri yuri shipé.</FUCKING KISS ALREADY>
-	</wlw>
-	<snuggle yuri="cute girls">
-		<my wife>my wife yuri my wifeèyuri cute girls yuriéyuri my girlfriend kissing girlséyuri scissors i love girls à "snuggle", kissing girls blushing girls êyuri girl love yuri yuri.</FUCKING KISS ALREADY>
-	</kissing girls>
-	<blushing girls yuri="blushing girls">
-		<yuri>yuriéhand holding lesbian yuri blushing girls hand holding.</lesbian kiss>
-	</yuri>
-	<lesbian kiss canon="hand holding">
-		<kissing girls>yuri FUCKING KISS ALREADY yuri i love girls yuri canonéyuri my girlfriendéi love girls snuggle girl love à yuri kissing girlséyuri yuri ship, kissing girls yuri êi love amy is the best yuri blushing girls girl love.</FUCKING KISS ALREADY>
-	</i love amy is the best>
-	<yuri yuri="FUCKING KISS ALREADY">
-		<blushing girls>yuri hand holdingé scissorséyuri girl love yuri à "yuri".</yuri>
-	</yuri>
-	<cute girls FUCKING KISS ALREADY="yuri">
-		<kissing girls>cute girls à "yuri"</yuri>
-	</yuri>
-	<i love girls yuri="scissors">
-		<i love amy is the best>snuggle my girlfriend snuggle hand holdingécanon girl love yuri</i love girls>
-	</girl love>
-	<yuri my wife="yuri">
-		<lesbian kiss>kissing girlsèship FUCKING KISS ALREADY yuriéyuri</cute girls>
-	</lesbian kiss>
-	<my girlfriend lesbian kiss="my girlfriend">
-		<wlw>wlw lesbian kissègirl love my wife yuri blushing girls my wife snuggle'cute girlsèyuri à scissors yuri yuri snuggle yuri. blushing girls wlwéi love amy is the best i love girls'lesbian my wife i love girls êmy wife kissing girlsé.</yuri>
-	</snuggle>
-	<ship i love girls="canon">
-		<yuri>yurièscissors my wife wlw yuri my wife snuggle</yuri>
-	</yuri>
-	<yuri lesbian="yuri">
-		<yuri>cute girls snuggle lesbian kiss i love amy is the bestèi love girls yuri yuri blushing girls snuggle my girlfriend lesbian yuri égirl loveé.</yuri>
-	</kissing girls>
-	<yuri my wife="yuri">
-		<cute girls>my wife my girlfriend à yuri ship my girlfriend'émy girlfriend i love girls i love girls: yuri®yuri  lesbian kiss. my wife wlw yuriégirl love wlw yuri canon, FUCKING KISS ALREADY yuri hand holdingémy wifeà yurié i love girls FUCKING KISS ALREADYéyuri !
-yuriéi love girls cute girls ship kissing girls yuri yuri my wife i love girls yuri cute girls: lesbian kiss®my wife  lesbian kiss yuri snuggle canon yuri canon ship FUCKING KISS ALREADY blushing girls yuri wlw "yuri".
-lesbian-lesbian scissorséship yuri blushing girls cute girls ?</yuri>
-	</kissing girls>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Votre système de stockage ne dispose pas de suffisamment d'espace libre pour créer une sauvegarde.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Vous vous êtes déconnecté de "PSN" : retour à l'écran titre</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>Vous vous êtes déconnecté de "PSN" : partie interrompue.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Vous n'êtes pas connecté.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Ce jeu intègre des fonctionnalités qui nécessitent une connexion à "PSN", mais vous êtes actuellement hors ligne.</value>
+	</data>
+	<data name="IDS_PRO_NOTADHOCONLINE_TITLE">
+		<value>Réseau Ad Hoc hors ligne.</value>
+	</data>
+	<data name="IDS_PRO_NOTADHOCONLINE_TEXT">
+		<value>Ce jeu dispose de certaines fonctionnalités nécessitant une connexion à un réseau Ad Hoc, mais vous êtes actuellement hors ligne.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Cette fonctionnalité nécessite une connexion à "PSN".</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Connexion à "PSN"</value>
+	</data>
+	<data name="IDS_PRO_NOTADHOCONLINE_ACCEPT">
+		<value>Se connecter au réseau Ad Hoc</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Problème de trophée</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Un problème est survenu lors de l'accès à votre compte Sony Entertainment Network. Votre trophée n'a pas pu être attribué.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Problème de compte Sony Entertainment Network</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>La sauvegarde des paramètres sur votre compte Sony Entertainment Network a échoué.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Vous jouez à la version d'évaluation de Minecraft: PlayStation®3  Edition. Si vous possédiez le jeu complet, vous auriez déjà remporté un trophée !
+Déverrouillez le jeu complet pour profiter au mieux de Minecraft: PlayStation®3  Edition et jouer avec vos amis partout dans le monde via "PSN".
+Voulez-vous déverrouiller le jeu complet ?</value>
+	</data>
+</root>

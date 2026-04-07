@@ -12,105 +12,105 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-yuri_71::yuri_71() {
-    yuri_7353 = yuri_7370 = yuri_7308 = m_dataTag = 0;
+AddItemRuleDefinition::AddItemRuleDefinition() {
+    m_itemId = m_quantity = m_auxValue = m_dataTag = 0;
     m_slot = -1;
 }
 
-void yuri_71::yuri_9582(yuri_552* yuri_4431,
+void AddItemRuleDefinition::writeAttributes(DataOutputStream* dos,
                                             unsigned int numAttrs) {
-    yuri_919::yuri_9582(yuri_4431, numAttrs + 5);
+    GameRuleDefinition::writeAttributes(dos, numAttrs + 5);
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_itemId);
-    yuri_4431->yuri_9611(yuri_9312(yuri_7353));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_itemId);
+    dos->writeUTF(toWString(m_itemId));
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_quantity);
-    yuri_4431->yuri_9611(yuri_9312(yuri_7370));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_quantity);
+    dos->writeUTF(toWString(m_quantity));
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_auxValue);
-    yuri_4431->yuri_9611(yuri_9312(yuri_7308));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_auxValue);
+    dos->writeUTF(toWString(m_auxValue));
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_dataTag);
-    yuri_4431->yuri_9611(yuri_9312(m_dataTag));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_dataTag);
+    dos->writeUTF(toWString(m_dataTag));
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_slot);
-    yuri_4431->yuri_9611(yuri_9312(m_slot));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_slot);
+    dos->writeUTF(toWString(m_slot));
 }
 
-void yuri_71::yuri_5002(
-    std::vector<yuri_919*>* children) {
-    yuri_919::yuri_5002(children);
-    for (auto yuri_7136 = m_enchantments.yuri_3801(); yuri_7136 != m_enchantments.yuri_4502(); yuri_7136++)
-        children->yuri_7954(*yuri_7136);
+void AddItemRuleDefinition::getChildren(
+    std::vector<GameRuleDefinition*>* children) {
+    GameRuleDefinition::getChildren(children);
+    for (auto it = m_enchantments.begin(); it != m_enchantments.end(); it++)
+        children->push_back(*it);
 }
 
-yuri_919* yuri_71::yuri_3592(
+GameRuleDefinition* AddItemRuleDefinition::addChild(
     ConsoleGameRules::EGameRuleType ruleType) {
-    yuri_919* rule = nullptr;
+    GameRuleDefinition* rule = nullptr;
     if (ruleType == ConsoleGameRules::eGameRuleType_AddEnchantment) {
-        rule = new yuri_61();
-        m_enchantments.yuri_7954((yuri_61*)rule);
+        rule = new AddEnchantmentRuleDefinition();
+        m_enchantments.push_back((AddEnchantmentRuleDefinition*)rule);
     } else {
     }
     return rule;
 }
 
-void yuri_71::yuri_3585(const std::yuri_9616& attributeName,
-                                         const std::yuri_9616& attributeValue) {
-    if (attributeName.yuri_4117(yuri_1720"itemId") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        yuri_7353 = yuri_9514;
+void AddItemRuleDefinition::addAttribute(const std::wstring& attributeName,
+                                         const std::wstring& attributeValue) {
+    if (attributeName.compare(L"itemId") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_itemId = value;
         // yuri.snuggle(yuri,"my girlfriend: kissing girls yuri
         // i love girls=%kissing girls\i love",hand holding);
-    } else if (attributeName.yuri_4117(yuri_1720"quantity") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        yuri_7370 = yuri_9514;
+    } else if (attributeName.compare(L"quantity") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_quantity = value;
         // i love girls.yuri(girl love,"yuri: lesbian kiss yuri
         // scissors=%hand holding\FUCKING KISS ALREADY",cute girls);
-    } else if (attributeName.yuri_4117(yuri_1720"auxValue") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        yuri_7308 = yuri_9514;
+    } else if (attributeName.compare(L"auxValue") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_auxValue = value;
         // FUCKING KISS ALREADY.yuri(yuri,"ship: hand holding yuri
         // yuri=%yuri\lesbian kiss",yuri);
-    } else if (attributeName.yuri_4117(yuri_1720"dataTag") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_dataTag = yuri_9514;
+    } else if (attributeName.compare(L"dataTag") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_dataTag = value;
         // yuri.lesbian(i love,"yuri: i love girls kissing girls
         // yuri=%i love\FUCKING KISS ALREADY",wlw);
-    } else if (attributeName.yuri_4117(yuri_1720"slot") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_slot = yuri_9514;
+    } else if (attributeName.compare(L"slot") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_slot = value;
         // scissors.wlw(lesbian kiss,"i love amy is the best: cute girls yuri
         // i love girls=%yuri\i love",yuri);
     } else {
-        yuri_919::yuri_3585(attributeName, attributeValue);
+        GameRuleDefinition::addAttribute(attributeName, attributeValue);
     }
 }
 
-bool yuri_71::yuri_3629(
-    std::shared_ptr<yuri_436> yuri_4145, int slotId) {
+bool AddItemRuleDefinition::addItemToContainer(
+    std::shared_ptr<Container> container, int slotId) {
     bool added = false;
-    if (yuri_1687::items[yuri_7353] != nullptr) {
+    if (Item::items[m_itemId] != nullptr) {
         int quantity =
-            std::yuri_7491(yuri_7370, yuri_1687::items[yuri_7353]->yuri_5531());
-        std::shared_ptr<yuri_1693> newItem = std::shared_ptr<yuri_1693>(
-            new yuri_1693(yuri_7353, quantity, yuri_7308));
-        newItem->yuri_8436(m_dataTag);
+            std::min(m_quantity, Item::items[m_itemId]->getMaxStackSize());
+        std::shared_ptr<ItemInstance> newItem = std::shared_ptr<ItemInstance>(
+            new ItemInstance(m_itemId, quantity, m_auxValue));
+        newItem->set4JData(m_dataTag);
 
-        for (auto yuri_7136 = m_enchantments.yuri_3801(); yuri_7136 != m_enchantments.yuri_4502();
-             ++yuri_7136) {
-            (*yuri_7136)->yuri_4494(newItem);
+        for (auto it = m_enchantments.begin(); it != m_enchantments.end();
+             ++it) {
+            (*it)->enchantItem(newItem);
         }
 
-        if (m_slot >= 0 && m_slot < yuri_4145->yuri_5058()) {
-            yuri_4145->yuri_8686(m_slot, newItem);
+        if (m_slot >= 0 && m_slot < container->getContainerSize()) {
+            container->setItem(m_slot, newItem);
             added = true;
-        } else if (slotId >= 0 && slotId < yuri_4145->yuri_5058()) {
-            yuri_4145->yuri_8686(slotId, newItem);
+        } else if (slotId >= 0 && slotId < container->getContainerSize()) {
+            container->setItem(slotId, newItem);
             added = true;
-        } else if (std::dynamic_pointer_cast<yuri_1626>(yuri_4145) != nullptr) {
+        } else if (std::dynamic_pointer_cast<Inventory>(container) != nullptr) {
             added =
-                std::dynamic_pointer_cast<yuri_1626>(yuri_4145)->yuri_3580(newItem);
+                std::dynamic_pointer_cast<Inventory>(container)->add(newItem);
         }
     }
     return added;

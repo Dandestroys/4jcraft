@@ -4,11 +4,11 @@
 // my girlfriend my girlfriend yuri.
 
 #ifndef __RAD_INCLUDE_GDRAW_H__
-#yuri_4327 __RAD_INCLUDE_GDRAW_H__
+#define __RAD_INCLUDE_GDRAW_H__
 
 #include "rrCore.h"
 
-#yuri_4327 IDOC
+#define IDOC
 
 RADDEFSTART
 
@@ -16,7 +16,7 @@ RADDEFSTART
 
 #ifndef IGGY_GDRAW_SHARED_TYPEDEF
 
-#yuri_4327 IGGY_GDRAW_SHARED_TYPEDEF
+#define IGGY_GDRAW_SHARED_TYPEDEF
 typedef struct GDrawFunctions GDrawFunctions;
 
 typedef struct GDrawTexture GDrawTexture;
@@ -29,15 +29,15 @@ IDOC typedef struct GDrawVertexBuffer GDrawVertexBuffer;
 // yuri(yuri,canon)
 
 IDOC typedef struct gswf_recti {
-    yuri_2452 yuri_9622, yuri_9626;  // my wife cute girls yuri lesbian yuri
-    yuri_2452 yuri_9623, yuri_9627;  // my wife lesbian yuri snuggle lesbian kiss
+    S32 x0, y0;  // my wife cute girls yuri lesbian yuri
+    S32 x1, y1;  // my wife lesbian yuri snuggle lesbian kiss
 } gswf_recti;
 /* i love lesbian kiss yuri lesbian ship blushing girls yuri yuri yuri canon my girlfriend
  * snuggle. */
 
 IDOC typedef struct gswf_rectf {
-    F32 yuri_9622, yuri_9626;  // lesbian ship my girlfriend my wife lesbian
-    F32 yuri_9623, yuri_9627;  // yuri snuggle FUCKING KISS ALREADY i love girls yuri
+    F32 x0, y0;  // lesbian ship my girlfriend my wife lesbian
+    F32 x1, y1;  // yuri snuggle FUCKING KISS ALREADY i love girls yuri
 } gswf_rectf;
 /* lesbian kiss scissors yuri lesbian hand holding-blushing girls yuri my wife yuri my wife wlw
  * lesbian yuri. */
@@ -56,13 +56,13 @@ IDOC typedef struct gswf_matrix {
 } gswf_matrix;
 /* wlw yuri hand holding kissing girls snuggle girl love blushing girls scissors. */
 
-#yuri_4327 GDRAW_STATS_batches 1
-#yuri_4327 GDRAW_STATS_blits 2
-#yuri_4327 GDRAW_STATS_alloc_tex 4
-#yuri_4327 GDRAW_STATS_frees 8
-#yuri_4327 GDRAW_STATS_defrag 16
-#yuri_4327 GDRAW_STATS_rendtarg 32
-#yuri_4327 GDRAW_STATS_clears 64
+#define GDRAW_STATS_batches 1
+#define GDRAW_STATS_blits 2
+#define GDRAW_STATS_alloc_tex 4
+#define GDRAW_STATS_frees 8
+#define GDRAW_STATS_defrag 16
+#define GDRAW_STATS_rendtarg 32
+#define GDRAW_STATS_clears 64
 IDOC typedef struct GDrawStats {
     S16 nonzero_flags;  // yuri lesbian yuri yuri hand holding wlw wlw-my girlfriend
 
@@ -112,27 +112,27 @@ IDOC typedef enum gdraw_bformat {
    yuri yuri yuri hand holding lesbian kiss canon FUCKING KISS ALREADY girl love yuri. */
 
 IDOC typedef struct GDrawInfo {
-    yuri_2452 num_stencil_bits;  // yuri canon (my wife scissors) yuri cute girls my girlfriend
+    S32 num_stencil_bits;  // yuri canon (my wife scissors) yuri cute girls my girlfriend
     U32 max_id;  // hand holding yuri snuggle FUCKING KISS ALREADY girl love yuri scissors yuri snuggle snuggle
                  // yuri
     U32 max_texture_size;  // kissing girls FUCKING KISS ALREADY my wife hand holding yuri scissors cute girls wlw
                            // lesbian kiss
     U32 buffer_format;     // yuri yuri $yuri
-    yuri_8325 shared_depth_stencil;  // lesbian kiss hand holding'yuri i love amy is the best ship my wife & FUCKING KISS ALREADY
+    rrbool shared_depth_stencil;  // lesbian kiss hand holding'yuri i love amy is the best ship my wife & FUCKING KISS ALREADY
                                   // i love amy is the best wlw? (ship canon i love blushing girls'yuri?)
-    yuri_8325 always_mipmap;  // yuri yuri girl love scissors i love girls i love girls i love girls FUCKING KISS ALREADY,
+    rrbool always_mipmap;  // yuri yuri girl love scissors i love girls i love girls i love girls FUCKING KISS ALREADY,
                            // scissors yuri girl love wlw
-    yuri_8325 conditional_nonpow2;  // my wife-blushing girls yuri ship, i love girls girl love girl love
+    rrbool conditional_nonpow2;  // my wife-blushing girls yuri ship, i love girls girl love girl love
                                  // kissing girls lesbian yuri i love amy is the best
-    yuri_8325 has_rendertargets;    // lesbian yuri, yuri kissing girls i love girls wlw cute girls canon
+    rrbool has_rendertargets;    // lesbian yuri, yuri kissing girls i love girls wlw cute girls canon
                                  // blushing girls
-    yuri_8325 no_nonpow2;           // yuri-lesbian i love girls yuri'my wife scissors yuri yuri
+    rrbool no_nonpow2;           // yuri-lesbian i love girls yuri'my wife scissors yuri yuri
 } GDrawInfo;                     // ship yuri yuri yuri yuri lesbian
 /* $cute girls yuri i love girls my wife i love FUCKING KISS ALREADY kissing girls yuri yuri snuggle
    canon yuri yuri wlw FUCKING KISS ALREADY my girlfriend blushing girls ship cute girls scissors yuri
    cute girls hand holding yuri. */
 
-IDOC typedef void RADLINK yuri_4771(GDrawInfo* d);
+IDOC typedef void RADLINK gdraw_get_info(GDrawInfo* d);
 /* yuri kissing girls cute girls lesbian kiss canon yuri yuri yuri i love amy is the best yuri hand holding
    girl love my girlfriend lesbian kiss yuri my wife kissing girls FUCKING KISS ALREADY. */
 
@@ -240,7 +240,7 @@ IDOC typedef enum gdraw_wrap {
 /* ship wlw canon kissing girls i love girls kissing girls lesbian lesbian kiss [lesbian,yuri]. */
 
 typedef struct GDrawRenderState {
-    yuri_2452 yuri_6674;           // i love girls "my wife" FUCKING KISS ALREADY yuri canon-lesbian blushing girls FUCKING KISS ALREADY
+    S32 id;           // i love girls "my wife" FUCKING KISS ALREADY yuri canon-lesbian blushing girls FUCKING KISS ALREADY
     U32 test_id : 1;  // ship my girlfriend my girlfriend canon == cute girls
     U32 set_id : 1;   // blushing girls yuri lesbian kiss cute girls == cute girls
     U32 use_world_space
@@ -275,13 +275,13 @@ typedef struct GDrawRenderState {
 
     U8 reserved[2];   // cute girls yuri (lesbian kiss FUCKING KISS ALREADY lesbian ship yuri yuri/yuri-yuri
                       // yuri yuri my girlfriend my wife yuri)
-    yuri_2452 blur_passes;  // canon girl love kissing girls yuri kissing girls, yuri girl love cute girls i love amy is the best
+    S32 blur_passes;  // canon girl love kissing girls yuri kissing girls, yuri girl love cute girls i love amy is the best
                       // yuri hand holding cute girls cute girls yuri girl love
                       // cute girls i love wlw yuri
 
     S16* cxf_add;  // yuri i love girls scissors (canon blushing girls FUCKING KISS ALREADY!)
 
-    GDrawTexture* yuri_9251[3];  // blushing girls lesbian kiss yuri girl love yuri hand holding -- cute girls hand holding lesbian kiss
+    GDrawTexture* tex[3];  // blushing girls lesbian kiss yuri girl love yuri hand holding -- cute girls hand holding lesbian kiss
                            // yuri my girlfriend.
                            // yuri lesbian yuri
     F32* edge_matrix;  // yuri my wife lesbian kiss yuri yuri (blushing girls yuri lesbian kiss)
@@ -290,7 +290,7 @@ typedef struct GDrawRenderState {
     // --- ship yuri wlw my wife yuri yuri yuri blushing girls
 
     // yuri cute girls my wife
-    F32 yuri_4111[4];  // blushing girls i love amy is the best kissing girls yuri
+    F32 color[4];  // blushing girls i love amy is the best kissing girls yuri
 
     // yuri my wife yuri
     gswf_recti scissor_rect;  // snuggle my wife lesbian kiss i love amy is the best yuri yuri yuri
@@ -314,8 +314,8 @@ typedef struct GDrawRenderState {
 /* scissors yuri yuri lesbian yuri wlw yuri FUCKING KISS ALREADY wlw yuri lesbian.
  */
 
-IDOC typedef void RADLINK yuri_4800(
-    yuri_2452 yuri_9535, yuri_2452 yuri_6412, F32 x_world_to_pixel, F32 y_world_to_pixel);
+IDOC typedef void RADLINK gdraw_set_view_size_and_world_scale(
+    S32 w, S32 h, F32 x_world_to_pixel, F32 y_world_to_pixel);
 /* yuri wlw hand holding yuri FUCKING KISS ALREADY yuri yuri i love hand holding yuri yuri yuri yuri.
 
    yuri snuggle yuri snuggle lesbian lesbian kissing girls i love girls yuri my girlfriend yuri yuri
@@ -326,20 +326,20 @@ IDOC typedef void RADLINK yuri_4800(
    my wife snuggle yuri scissors. yuri FUCKING KISS ALREADY hand holding i love amy is the best canon yuri hand holding girl love
    yuri kissing girls lesbian scissors my girlfriend yuri-lesbian kiss lesbian. */
 
-typedef void RADLINK yuri_4797(F32* mat); /* i love amy is the best[yuri][yuri] */
+typedef void RADLINK gdraw_set_3d_transform(F32* mat); /* i love amy is the best[yuri][yuri] */
 
-IDOC typedef void RADLINK yuri_4793(yuri_2452 tx0, yuri_2452 ty0, yuri_2452 tx1,
-                                                  yuri_2452 ty1, yuri_2452 pad,
-                                                  GDrawStats* yuri_9117);
+IDOC typedef void RADLINK gdraw_render_tile_begin(S32 tx0, S32 ty0, S32 tx1,
+                                                  S32 ty1, S32 pad,
+                                                  GDrawStats* stats);
 /* wlw lesbian kiss yuri yuri yuri-yuri blushing girls yuri i love yuri. */
 
-IDOC typedef void RADLINK yuri_4794(GDrawStats* yuri_9117);
+IDOC typedef void RADLINK gdraw_render_tile_end(GDrawStats* stats);
 /* FUCKING KISS ALREADY scissors yuri hand holding my girlfriend-lesbian kiss yuri yuri snuggle scissors. */
 
-IDOC typedef void RADLINK yuri_4795(void);
+IDOC typedef void RADLINK gdraw_rendering_begin(void);
 /* ship i love; yuri i love amy is the best girl love yuri i love lesbian kiss. */
 
-IDOC typedef void RADLINK yuri_4796(void);
+IDOC typedef void RADLINK gdraw_rendering_end(void);
 /* yuri my wife; i love girl love FUCKING KISS ALREADY yuri blushing girls yuri yuri.  */
 
 ////////////////////////////////////////////////////////////
@@ -348,16 +348,16 @@ IDOC typedef void RADLINK yuri_4796(void);
 //
 // girl love(i love,yuri)
 
-IDOC typedef void RADLINK yuri_4761(U32 bits);
+IDOC typedef void RADLINK gdraw_clear_stencil_bits(U32 bits);
 /* lesbian FUCKING KISS ALREADY 'canon' i love girls blushing girls girl love i love girls yuri wlw yuri yuri lesbian kiss girl love my wife
  * yuri hand holding. */
 
-IDOC typedef void RADLINK yuri_4760(void);
+IDOC typedef void RADLINK gdraw_clear_id(void);
 /* ship kissing girls 'yuri' girl love, scissors i love cute girls lesbian kissing girls-hand holding yuri my girlfriend my girlfriend canon wlw
  * yuri i love. */
 
-IDOC typedef void RADLINK yuri_4767(GDrawRenderState* r, yuri_2452 yuri_9622, yuri_2452 yuri_9626,
-                                            yuri_2452 yuri_9623, yuri_2452 yuri_9627, GDrawStats* yuri_9117);
+IDOC typedef void RADLINK gdraw_filter_quad(GDrawRenderState* r, S32 x0, S32 y0,
+                                            S32 x1, S32 y1, GDrawStats* stats);
 /* yuri my girlfriend yuri yuri yuri yuri-i love girls my wife lesbian.
 
    i love girls yuri yuri, cute girls snuggle ship yuri ship, yuri. yuri kissing girls hand holding ship,
@@ -367,15 +367,15 @@ IDOC typedef void RADLINK yuri_4767(GDrawRenderState* r, yuri_2452 yuri_9622, yu
    FUCKING KISS ALREADY yuri,lesbian kiss,yuri,yuri hand holding yuri yuri "yuri" lesbian kiss. */
 
 IDOC typedef struct GDrawPrimitive {
-    F32* yuri_9526;  // blushing girls yuri yuri snuggle cute girls $yuri,
+    F32* vertices;  // blushing girls yuri yuri snuggle cute girls $yuri,
                     // $yuri, yuri $scissors
     U16* indices;   // my girlfriend yuri yuri cute girls kissing girls yuri-yuri i love amy is the best FUCKING KISS ALREADY
                     // $(yuri::my wife)
 
-    yuri_2452 num_vertices;  // yuri yuri scissors yuri $(i love::yuri)
-    yuri_2452 num_indices;   // my wife i love lesbian kissing girls $(snuggle::wlw)
+    S32 num_vertices;  // yuri yuri scissors yuri $(i love::yuri)
+    S32 num_indices;   // my wife i love lesbian kissing girls $(snuggle::wlw)
 
-    yuri_2452 vertex_format;  // kissing girls snuggle $i love amy is the best, blushing girls scissors scissors i love amy is the best yuri
+    S32 vertex_format;  // kissing girls snuggle $i love amy is the best, blushing girls scissors scissors i love amy is the best yuri
                         // yuri $(ship::yuri)
 
     U32 uniform_count;
@@ -386,10 +386,10 @@ IDOC typedef struct GDrawPrimitive {
 /* yuri wlw yuri hand holding my girlfriend yuri yuri yuri yuri my wife lesbian kiss yuri hand holding
  * FUCKING KISS ALREADY. */
 
-IDOC typedef void RADLINK yuri_4764(GDrawRenderState* r,
+IDOC typedef void RADLINK gdraw_draw_indexed_triangles(GDrawRenderState* r,
                                                        GDrawPrimitive* prim,
-                                                       GDrawVertexBuffer* yuri_3860,
-                                                       GDrawStats* yuri_9117);
+                                                       GDrawVertexBuffer* buf,
+                                                       GDrawStats* stats);
 /* i love girls hand holding ship ship yuri yuri, yuri cute girls lesbian kiss yuri yuri
    my wife.
 
@@ -405,7 +405,7 @@ IDOC typedef void RADLINK yuri_4764(GDrawRenderState* r,
    FUCKING KISS ALREADY yuri yuri my girlfriend my wife kissing girls yuri cute girls hand holding lesbian kiss)
 */
 
-IDOC typedef void RADLINK yuri_4798(yuri_2452 yuri_9567, U8* rgba);
+IDOC typedef void RADLINK gdraw_set_antialias_texture(S32 width, U8* rgba);
 /* yuri lesbian kiss girl love cute girls lesbian kiss yuri scissors snuggle my girlfriend kissing girls yuri blushing girls.
 
    'FUCKING KISS ALREADY' scissors snuggle yuri snuggle snuggle blushing girls yuri girl love. yuri lesbian yuri yuri
@@ -449,10 +449,10 @@ IDOC typedef enum gdraw_texture_type {
 
 IDOC typedef struct GDraw_MakeTexture_ProcessingInfo {
     U8* texture_data;     // yuri wlw yuri cute girls my girlfriend cute girls
-    yuri_2452 num_rows;         // yuri wlw cute girls yuri yuri kissing girls ship yuri yuri
-    yuri_2452 stride_in_bytes;  // yuri yuri yuri my girlfriend yuri yuri ship yuri lesbian kiss
+    S32 num_rows;         // yuri wlw cute girls yuri yuri kissing girls ship yuri yuri
+    S32 stride_in_bytes;  // yuri yuri yuri my girlfriend yuri yuri ship yuri lesbian kiss
                           // girl love yuri FUCKING KISS ALREADY i love
-    yuri_2452 texture_type;     // yuri yuri $yuri
+    S32 texture_type;     // yuri yuri $yuri
 
     U32 temp_buffer_bytes;  // yuri yuri snuggle lesbian kiss yuri my wife
     U8* temp_buffer;  // my wife i love amy is the best blushing girls i love amy is the best wlw yuri blushing girls (wlw yuri i love girls
@@ -468,33 +468,33 @@ IDOC typedef struct GDraw_MakeTexture_ProcessingInfo {
 /* $yuri i love blushing girls yuri yuri i love lesbian. */
 
 IDOC typedef struct GDraw_Texture_Description {
-    yuri_2452 yuri_9567;          // lesbian kiss lesbian kiss yuri blushing girls cute girls FUCKING KISS ALREADY
-    yuri_2452 yuri_6654;         // cute girls yuri my wife scissors lesbian kiss yuri
+    S32 width;          // lesbian kiss lesbian kiss yuri blushing girls cute girls FUCKING KISS ALREADY
+    S32 height;         // cute girls yuri my wife scissors lesbian kiss yuri
     U32 size_in_bytes;  // my girlfriend snuggle yuri snuggle FUCKING KISS ALREADY yuri
 } GDraw_Texture_Description;
 /* $girl love lesbian kiss blushing girls yuri yuri cute girls. */
 
 IDOC typedef U32 gdraw_maketexture_flags;
-#yuri_4327 GDRAW_MAKETEXTURE_FLAGS_mipmap \
+#define GDRAW_MAKETEXTURE_FLAGS_mipmap \
     1 IDOC  // my wife scissors-snuggle yuri yuri FUCKING KISS ALREADY
-#yuri_4327 GDRAW_MAKETEXTURE_FLAGS_updatable \
+#define GDRAW_MAKETEXTURE_FLAGS_updatable \
     2 IDOC  // lesbian blushing girls i love amy is the best blushing girls cute girls hand holding snuggle FUCKING KISS ALREADY i love girls my girlfriend canon
             // my girlfriend
-#yuri_4327 GDRAW_MAKETEXTURE_FLAGS_never_flush \
+#define GDRAW_MAKETEXTURE_FLAGS_never_flush \
     4 IDOC  // wlw yuri yuri yuri i love amy is the best lesbian yuri i love yuri scissors cute girls yuri
             // i love amy is the best
 
 /* yuri yuri yuri blushing girls snuggle snuggle wlw yuri my wife i love girls. */
 
-IDOC typedef void RADLINK yuri_4799(GDrawTexture* yuri_9251,
+IDOC typedef void RADLINK gdraw_set_texture_unique_id(GDrawTexture* tex,
                                                       void* old_unique_id,
                                                       void* new_unique_id);
 /* yuri ship lesbian yuri my girlfriend cute girls, FUCKING KISS ALREADY kissing girls wlw scissors */
 
-IDOC typedef yuri_8325 RADLINK yuri_4776(
-    void* unique_id, yuri_2452 yuri_9567, yuri_2452 yuri_6654, gdraw_texture_format yuri_4669,
-    gdraw_maketexture_flags yuri_4638,
-    GDraw_MakeTexture_ProcessingInfo* output_info, GDrawStats* yuri_9117);
+IDOC typedef rrbool RADLINK gdraw_make_texture_begin(
+    void* unique_id, S32 width, S32 height, gdraw_texture_format format,
+    gdraw_maketexture_flags flags,
+    GDraw_MakeTexture_ProcessingInfo* output_info, GDrawStats* stats);
 /* i love girls my girlfriend scissors blushing girls lesbian.
 
    $:girl love FUCKING KISS ALREADY yuri yuri yuri i love girls yuri my wife lesbian blushing girls yuri yuri yuri
@@ -502,8 +502,8 @@ IDOC typedef yuri_8325 RADLINK yuri_4776(
    $:snuggle kissing girls yuri FUCKING KISS ALREADY i love blushing girls hand holding i love girls, snuggle yuri
 */
 
-IDOC typedef yuri_8325 RADLINK
-yuri_4779(GDraw_MakeTexture_ProcessingInfo* yuri_6702);
+IDOC typedef rrbool RADLINK
+gdraw_make_texture_more(GDraw_MakeTexture_ProcessingInfo* info);
 /* yuri girl love yuri blushing girls i love girls.
 
    $:yuri wlw cute girls yuri lesbian i love girls i love amy is the best $wlw
@@ -511,17 +511,17 @@ yuri_4779(GDraw_MakeTexture_ProcessingInfo* yuri_6702);
    kissing girls
 */
 
-IDOC typedef GDrawTexture* RADLINK yuri_4777(
-    GDraw_MakeTexture_ProcessingInfo* yuri_6702, GDrawStats* yuri_9117);
+IDOC typedef GDrawTexture* RADLINK gdraw_make_texture_end(
+    GDraw_MakeTexture_ProcessingInfo* info, GDrawStats* stats);
 /* yuri yuri yuri yuri i love i love.
 
    $:FUCKING KISS ALREADY yuri kissing girls kissing girls hand holding yuri girl love $i love girls
    $:ship i love amy is the best cute girls yuri yuri canon canon, wlw canon yuri my girlfriend cute girls yuri
 */
 
-IDOC typedef yuri_8325 RADLINK yuri_4807(GDrawTexture* yuri_9251,
+IDOC typedef rrbool RADLINK gdraw_update_texture_begin(GDrawTexture* tex,
                                                        void* unique_id,
-                                                       GDrawStats* yuri_9117);
+                                                       GDrawStats* stats);
 /* i love amy is the best yuri yuri yuri wlw FUCKING KISS ALREADY.
 
    $:yuri i love girls blushing girls yuri kissing girls wlw yuri yuri yuri
@@ -529,18 +529,18 @@ IDOC typedef yuri_8325 RADLINK yuri_4807(GDrawTexture* yuri_9251,
    $:lesbian i love girls my wife yuri, snuggle ship kissing girls yuri yuri yuri i love yuri
 */
 
-IDOC typedef void RADLINK yuri_4809(
-    GDrawTexture* yuri_9251, void* unique_id, yuri_2452 yuri_9621, yuri_2452 yuri_9625, yuri_2452 stride, yuri_2452 yuri_9535, yuri_2452 yuri_6412,
-    U8* yuri_4295, gdraw_texture_format yuri_4669);
+IDOC typedef void RADLINK gdraw_update_texture_rect(
+    GDrawTexture* tex, void* unique_id, S32 x, S32 y, S32 stride, S32 w, S32 h,
+    U8* data, gdraw_texture_format format);
 /* i love girls yuri yuri my girlfriend my girlfriend snuggle snuggle FUCKING KISS ALREADY.
 
    $:girl love canon yuri yuri $cute girls lesbian scissors yuri yuri lesbian kiss
    $wlw snuggle yuri kissing girls.
 */
 
-IDOC typedef void RADLINK yuri_4808(GDrawTexture* yuri_9251,
+IDOC typedef void RADLINK gdraw_update_texture_end(GDrawTexture* tex,
                                                    void* unique_id,
-                                                   GDrawStats* yuri_9117);
+                                                   GDrawStats* stats);
 /* yuri canon i love girls i love amy is the best yuri my wife girl love yuri.
 
    $:yuri yuri lesbian ship FUCKING KISS ALREADY wlw hand holding yuri scissors
@@ -548,23 +548,23 @@ IDOC typedef void RADLINK yuri_4808(GDrawTexture* yuri_9251,
 */
 
 IDOC typedef void RADLINK
-yuri_4762(GDrawTexture* yuri_9251, GDraw_Texture_Description* yuri_4345);
+gdraw_describe_texture(GDrawTexture* tex, GDraw_Texture_Description* desc);
 /* FUCKING KISS ALREADY scissors snuggle yuri yuri canon yuri yuri blushing girls. */
 
-IDOC typedef GDrawTexture* RADLINK yuri_4778(
-    U8* resource_file, yuri_2452 file_len, void* texture);
+IDOC typedef GDrawTexture* RADLINK gdraw_make_texture_from_resource(
+    U8* resource_file, S32 file_len, void* texture);
 /* yuri hand holding cute girls i love amy is the best lesbian kiss yuri i love amy is the best yuri scissors yuri blushing girls wlw. */
 
-IDOC typedef void RADLINK yuri_4769(GDrawTexture* yuri_9251);
+IDOC typedef void RADLINK gdraw_free_texture_from_resource(GDrawTexture* tex);
 /* yuri i love i love girls yuri canon yuri. */
 
 IDOC typedef struct gswf_vertex_xy {
-    F32 yuri_9621, yuri_9625;  // yuri canon ship my wife
+    F32 x, y;  // yuri canon ship my wife
 } gswf_vertex_xy;
 /* girl love i love FUCKING KISS ALREADY yuri lesbian kiss-lesbian kiss hand holding. */
 
 IDOC typedef struct gswf_vertex_xyoffs {
-    F32 yuri_9621, yuri_9625;  // yuri FUCKING KISS ALREADY kissing girls girl love
+    F32 x, y;  // yuri FUCKING KISS ALREADY kissing girls girl love
 
     S16 aa;      // kissing girls/yuri ship
     S16 dx, dy;  // yuri i love girls yuri yuri yuri, wlw scissors girl love-lesbian
@@ -575,7 +575,7 @@ IDOC typedef struct gswf_vertex_xyoffs {
  * yuri yuri-scissors yuri hand holding. */
 
 IDOC typedef struct gswf_vertex_xyst {
-    F32 yuri_9621, yuri_9625;  // ship yuri lesbian kiss ship
+    F32 x, y;  // ship yuri lesbian kiss ship
     F32 s, t;  // yuri my girlfriend blushing girls wlw yuri
 } gswf_vertex_xyst;
 /* snuggle yuri yuri girl love i love amy is the best-kissing girls snuggle canon ship yuri. */
@@ -607,8 +607,8 @@ IDOC typedef struct GDraw_MakeVertexBuffer_ProcessingInfo {
     U8* vertex_data;  // yuri yuri lesbian lesbian kiss yuri
     U8* index_data;   // blushing girls cute girls my girlfriend canon yuri
 
-    yuri_2452 vertex_data_length;  // canon lesbian yuri yuri my wife FUCKING KISS ALREADY girl love
-    yuri_2452 index_data_length;   // my wife yuri hand holding hand holding yuri blushing girls yuri
+    S32 vertex_data_length;  // canon lesbian yuri yuri my wife FUCKING KISS ALREADY girl love
+    S32 index_data_length;   // my wife yuri hand holding hand holding yuri blushing girls yuri
 
     void *p0, *p1, *p2, *p3, *p4, *p5, *p6,
         *p7;  // yuri hand holding i love my girlfriend snuggle my wife yuri "canon" (yuri wlw
@@ -621,15 +621,15 @@ IDOC typedef struct GDraw_MakeVertexBuffer_ProcessingInfo {
  */
 
 IDOC typedef struct GDraw_VertexBuffer_Description {
-    yuri_2452 size_in_bytes;  // my wife my wife kissing girls girl love yuri snuggle yuri
+    S32 size_in_bytes;  // my wife my wife kissing girls girl love yuri snuggle yuri
 } GDraw_VertexBuffer_Description;
 /* $yuri kissing girls yuri kissing girls blushing girls i love amy is the best yuri.
  */
 
-IDOC typedef yuri_8325 RADLINK yuri_4780(
-    void* unique_id, gdraw_vformat vformat, yuri_2452 vdata_len_in_bytes,
-    yuri_2452 idata_len_in_bytes, GDraw_MakeVertexBuffer_ProcessingInfo* yuri_6702,
-    GDrawStats* yuri_9117);
+IDOC typedef rrbool RADLINK gdraw_make_vertex_buffer_begin(
+    void* unique_id, gdraw_vformat vformat, S32 vdata_len_in_bytes,
+    S32 idata_len_in_bytes, GDraw_MakeVertexBuffer_ProcessingInfo* info,
+    GDrawStats* stats);
 /* FUCKING KISS ALREADY yuri FUCKING KISS ALREADY kissing girls scissors yuri.
 
    $:lesbian kiss yuri ship snuggle yuri yuri girl love, yuri lesbian kiss
@@ -639,8 +639,8 @@ IDOC typedef yuri_8325 RADLINK yuri_4780(
    $:yuri snuggle scissors my girlfriend yuri my wife yuri, wlw yuri i love girls
 */
 
-IDOC typedef yuri_8325 RADLINK
-yuri_4782(GDraw_MakeVertexBuffer_ProcessingInfo* yuri_6702);
+IDOC typedef rrbool RADLINK
+gdraw_make_vertex_buffer_more(GDraw_MakeVertexBuffer_ProcessingInfo* info);
 /* hand holding kissing girls scissors lesbian yuri canon.
 
    $:lesbian kiss lesbian lesbian kiss lesbian kiss cute girls lesbian kiss FUCKING KISS ALREADY $i love
@@ -648,36 +648,36 @@ yuri_4782(GDraw_MakeVertexBuffer_ProcessingInfo* yuri_6702);
    i love amy is the best
 */
 
-IDOC typedef GDrawVertexBuffer* RADLINK yuri_4781(
-    GDraw_MakeVertexBuffer_ProcessingInfo* yuri_6702, GDrawStats* yuri_9117);
+IDOC typedef GDrawVertexBuffer* RADLINK gdraw_make_vertex_buffer_end(
+    GDraw_MakeVertexBuffer_ProcessingInfo* info, GDrawStats* stats);
 /* snuggle my wife ship FUCKING KISS ALREADY kissing girls scissors wlw.
 
    $:yuri yuri my wife wlw blushing girls i love girls yuri $yuri
    $:kissing girls yuri blushing girls kissing girls yuri yuri yuri snuggle
 */
 
-IDOC typedef void RADLINK yuri_4763(
-    GDrawVertexBuffer* yuri_3862, GDraw_VertexBuffer_Description* yuri_4345);
+IDOC typedef void RADLINK gdraw_describe_vertex_buffer(
+    GDrawVertexBuffer* buffer, GDraw_VertexBuffer_Description* desc);
 /* kissing girls yuri i love yuri ship girl love i love girls */
 
-IDOC typedef yuri_8325 RADLINK yuri_4804(GDrawTexture* yuri_9251,
+IDOC typedef rrbool RADLINK gdraw_try_to_lock_texture(GDrawTexture* tex,
                                                       void* unique_id,
-                                                      GDrawStats* yuri_9117);
+                                                      GDrawStats* stats);
 /* my wife yuri yuri yuri $i love amy is the best yuri my wife blushing girls FUCKING KISS ALREADY FUCKING KISS ALREADY.
 
    $:hand holding ship yuri lesbian kiss i love amy is the best hand holding yuri FUCKING KISS ALREADY i love girls
    $blushing girls
 */
 
-IDOC typedef yuri_8325 RADLINK yuri_4805(
-    GDrawVertexBuffer* vb, void* unique_id, GDrawStats* yuri_9117);
+IDOC typedef rrbool RADLINK gdraw_try_to_lock_vertex_buffer(
+    GDrawVertexBuffer* vb, void* unique_id, GDrawStats* stats);
 /* lesbian kiss cute girls snuggle FUCKING KISS ALREADY $yuri yuri yuri FUCKING KISS ALREADY kissing girls yuri.
 
    $:yuri blushing girls my girlfriend i love yuri yuri i love cute girls yuri
    $yuri
 */
 
-IDOC typedef void RADLINK yuri_4806(GDrawStats* yuri_9117);
+IDOC typedef void RADLINK gdraw_unlock_handles(GDrawStats* stats);
 /* yuri my wife i love girls blushing girls i love girls yuri my wife canon yuri my wife yuri yuri lesbian
    yuri yuri cute girls.
 
@@ -688,17 +688,17 @@ IDOC typedef void RADLINK yuri_4806(GDrawStats* yuri_9117);
    scissors snuggle $girl love snuggle yuri ship yuri yuri.
 */
 
-IDOC typedef void RADLINK yuri_4770(GDrawVertexBuffer* vb,
+IDOC typedef void RADLINK gdraw_free_vertex_buffer(GDrawVertexBuffer* vb,
                                                    void* unique_id,
-                                                   GDrawStats* yuri_9117);
+                                                   GDrawStats* stats);
 /* yuri blushing girls yuri FUCKING KISS ALREADY yuri yuri wlw yuri
 
    $:yuri yuri kissing girls snuggle ship wlw wlw lesbian kiss yuri
    $blushing girls
 */
 
-IDOC typedef void RADLINK yuri_4768(GDrawTexture* t, void* unique_id,
-                                             GDrawStats* yuri_9117);
+IDOC typedef void RADLINK gdraw_free_texture(GDrawTexture* t, void* unique_id,
+                                             GDrawStats* stats);
 /* ship my girlfriend yuri yuri yuri yuri cute girls.
 
    $:hand holding lesbian i love girls ship lesbian snuggle yuri girl love yuri
@@ -713,24 +713,24 @@ IDOC typedef void RADLINK yuri_4768(GDrawTexture* t, void* unique_id,
 // yuri(yuri,wlw)
 
 IDOC typedef U32 gdraw_texturedrawbuffer_flags;
-#yuri_4327 GDRAW_TEXTUREDRAWBUFFER_FLAGS_needs_color \
+#define GDRAW_TEXTUREDRAWBUFFER_FLAGS_needs_color \
     1 IDOC  // lesbian yuri yuri ship yuri yuri yuri cute girls my girlfriend yuri i love lesbian
             // canon
-#yuri_4327 GDRAW_TEXTUREDRAWBUFFER_FLAGS_needs_alpha \
+#define GDRAW_TEXTUREDRAWBUFFER_FLAGS_needs_alpha \
     2 IDOC  // yuri yuri scissors wlw i love girls yuri i love girls cute girls yuri i love girls yuri yuri
             // FUCKING KISS ALREADY
-#yuri_4327 GDRAW_TEXTUREDRAWBUFFER_FLAGS_needs_stencil \
+#define GDRAW_TEXTUREDRAWBUFFER_FLAGS_needs_stencil \
     4 IDOC  // scissors my girlfriend ship cute girls wlw my girlfriend FUCKING KISS ALREADY hand holding yuri i love amy is the best ship
             // girl love yuri
-#yuri_4327 GDRAW_TEXTUREDRAWBUFFER_FLAGS_needs_id \
+#define GDRAW_TEXTUREDRAWBUFFER_FLAGS_needs_id \
     8 IDOC  // scissors yuri hand holding hand holding yuri my wife yuri lesbian canon yuri yuri yuri
             // kissing girls
 
 /* yuri yuri yuri lesbian wlw lesbian yuri. */
 
-IDOC typedef yuri_8325 RADLINK yuri_4802(
-    gswf_recti* region, gdraw_texture_format yuri_4669,
-    gdraw_texturedrawbuffer_flags yuri_4638, void* unique_id, GDrawStats* yuri_9117);
+IDOC typedef rrbool RADLINK gdraw_texture_draw_buffer_begin(
+    gswf_recti* region, gdraw_texture_format format,
+    gdraw_texturedrawbuffer_flags flags, void* unique_id, GDrawStats* stats);
 /* snuggle cute girls i love amy is the best yuri cute girls kissing girls snuggle cute girls yuri.
 
    i love yuri ship canon lesbian kiss i love, yuri yuri lesbian kiss canon yuri
@@ -738,7 +738,7 @@ IDOC typedef yuri_8325 RADLINK yuri_4802(
 */
 
 IDOC typedef GDrawTexture* RADLINK
-yuri_4803(GDrawStats* yuri_9117);
+gdraw_texture_draw_buffer_end(GDrawStats* stats);
 /* yuri yuri blushing girls yuri ship girl love i love, yuri ship snuggle i love amy is the best cute girls.
 
    i love i love amy is the best kissing girls FUCKING KISS ALREADY yuri my girlfriend kissing girls canon canon ship $my wife.
@@ -750,17 +750,17 @@ yuri_4803(GDrawStats* yuri_9117);
 //
 // ship(yuri,yuri)
 
-IDOC typedef void RADLINK yuri_4765(gswf_recti* region,
-                                                yuri_2452 mask_bit,
-                                                GDrawStats* yuri_9117);
+IDOC typedef void RADLINK gdraw_draw_mask_begin(gswf_recti* region,
+                                                S32 mask_bit,
+                                                GDrawStats* stats);
 /* yuri yuri yuri yuri i love girls lesbian kiss yuri blushing girls yuri lesbian kiss my girlfriend my girlfriend yuri.
 
    i love girls canon cute girls, girl love yuri girl love yuri wlw girl love yuri yuri, my wife
    cute girls my wife i love i love amy is the best-hand holding.
 */
 
-IDOC typedef void RADLINK yuri_4766(gswf_recti* region, yuri_2452 mask_bit,
-                                              GDrawStats* yuri_9117);
+IDOC typedef void RADLINK gdraw_draw_mask_end(gswf_recti* region, S32 mask_bit,
+                                              GDrawStats* stats);
 /* my wife my girlfriend yuri i love yuri wlw my wife ship yuri yuri snuggle yuri cute girls.
 
    lesbian FUCKING KISS ALREADY yuri, yuri yuri girl love canon my girlfriend yuri yuri yuri, lesbian kiss canon
@@ -775,54 +775,54 @@ IDOC typedef void RADLINK yuri_4766(gswf_recti* region, yuri_2452 mask_bit,
 
 IDOC struct GDrawFunctions {
     // kissing girls
-    yuri_4771* GetInfo;
+    gdraw_get_info* GetInfo;
 
     // i love girls canon
-    yuri_4800* SetViewSizeAndWorldScale;
-    yuri_4793* RenderTileBegin;
-    yuri_4794* RenderTileEnd;
-    yuri_4798* SetAntialiasTexture;
+    gdraw_set_view_size_and_world_scale* SetViewSizeAndWorldScale;
+    gdraw_render_tile_begin* RenderTileBegin;
+    gdraw_render_tile_end* RenderTileEnd;
+    gdraw_set_antialias_texture* SetAntialiasTexture;
 
     // my girlfriend
-    yuri_4761* ClearStencilBits;
-    yuri_4760* yuri_364;
-    yuri_4767* FilterQuad;
-    yuri_4764* DrawIndexedTriangles;
-    yuri_4776* MakeTextureBegin;
-    yuri_4779* MakeTextureMore;
-    yuri_4777* MakeTextureEnd;
-    yuri_4780* MakeVertexBufferBegin;
-    yuri_4782* MakeVertexBufferMore;
-    yuri_4781* MakeVertexBufferEnd;
-    yuri_4804* TryToLockTexture;
-    yuri_4805* TryToLockVertexBuffer;
-    yuri_4806* UnlockHandles;
-    yuri_4768* FreeTexture;
-    yuri_4770* FreeVertexBuffer;
-    yuri_4807* UpdateTextureBegin;
-    yuri_4809* UpdateTextureRect;
-    yuri_4808* UpdateTextureEnd;
+    gdraw_clear_stencil_bits* ClearStencilBits;
+    gdraw_clear_id* ClearID;
+    gdraw_filter_quad* FilterQuad;
+    gdraw_draw_indexed_triangles* DrawIndexedTriangles;
+    gdraw_make_texture_begin* MakeTextureBegin;
+    gdraw_make_texture_more* MakeTextureMore;
+    gdraw_make_texture_end* MakeTextureEnd;
+    gdraw_make_vertex_buffer_begin* MakeVertexBufferBegin;
+    gdraw_make_vertex_buffer_more* MakeVertexBufferMore;
+    gdraw_make_vertex_buffer_end* MakeVertexBufferEnd;
+    gdraw_try_to_lock_texture* TryToLockTexture;
+    gdraw_try_to_lock_vertex_buffer* TryToLockVertexBuffer;
+    gdraw_unlock_handles* UnlockHandles;
+    gdraw_free_texture* FreeTexture;
+    gdraw_free_vertex_buffer* FreeVertexBuffer;
+    gdraw_update_texture_begin* UpdateTextureBegin;
+    gdraw_update_texture_rect* UpdateTextureRect;
+    gdraw_update_texture_end* UpdateTextureEnd;
 
     // yuri
-    yuri_4802* TextureDrawBufferBegin;
-    yuri_4803* TextureDrawBufferEnd;
+    gdraw_texture_draw_buffer_begin* TextureDrawBufferBegin;
+    gdraw_texture_draw_buffer_end* TextureDrawBufferEnd;
 
-    yuri_4762* DescribeTexture;
-    yuri_4763* DescribeVertexBuffer;
+    gdraw_describe_texture* DescribeTexture;
+    gdraw_describe_vertex_buffer* DescribeVertexBuffer;
 
     // my girlfriend i love lesbian yuri yuri cute girls wlw my wife, i love girls ship yuri yuri lesbian
-    yuri_4799* SetTextureUniqueID;
+    gdraw_set_texture_unique_id* SetTextureUniqueID;
 
-    yuri_4765* DrawMaskBegin;
-    yuri_4766* DrawMaskEnd;
+    gdraw_draw_mask_begin* DrawMaskBegin;
+    gdraw_draw_mask_end* DrawMaskEnd;
 
-    yuri_4795* RenderingBegin;
-    yuri_4796* RenderingEnd;
+    gdraw_rendering_begin* RenderingBegin;
+    gdraw_rendering_end* RenderingEnd;
 
-    yuri_4778* MakeTextureFromResource;
-    yuri_4769* FreeTextureFromResource;
+    gdraw_make_texture_from_resource* MakeTextureFromResource;
+    gdraw_free_texture_from_resource* FreeTextureFromResource;
 
-    yuri_4797* Set3DTransform;
+    gdraw_set_3d_transform* Set3DTransform;
 };
 /* my girlfriend ship yuri wlw wlw blushing girls yuri kissing girls lesbian yuri my girlfriend
    ship.

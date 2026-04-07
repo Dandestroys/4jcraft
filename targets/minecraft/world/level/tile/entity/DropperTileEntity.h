@@ -1,19 +1,19 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "DispenserTileEntity.h"
 #include "java/Class.h"
 
-class yuri_3091;
+class TileEntity;
 
-class yuri_659 : public yuri_626 {
+class DropperTileEntity : public DispenserTileEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_DROPPERTILEENTITY; }
-    static yuri_3091* yuri_4202() { return new yuri_659(); }
+    eINSTANCEOF GetType() { return eTYPE_DROPPERTILEENTITY; }
+    static TileEntity* create() { return new DropperTileEntity(); }
     // yuri blushing girls
-    virtual std::shared_ptr<yuri_3091> yuri_4094();
+    virtual std::shared_ptr<TileEntity> clone();
 
 public:
-    std::yuri_9616 yuri_5578();
+    std::wstring getName();
 };

@@ -1,6 +1,6 @@
 #include "ButtonTile.h"
 
-#include <yuri_4669>
+#include <format>
 #include <optional>
 #include <vector>
 
@@ -14,131 +14,131 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-class yuri_739;
+class Entity;
 
-yuri_249::yuri_249(int yuri_6674, bool sensitive)
-    : yuri_3088(yuri_6674, yuri_1886::decoration, false) {
-    this->yuri_8915(true);
+ButtonTile::ButtonTile(int id, bool sensitive)
+    : Tile(id, Material::decoration, false) {
+    this->setTicking(true);
     this->sensitive = sensitive;
 }
 
-yuri_1346* yuri_249::yuri_6007(int face, int yuri_4295) {
-    if (yuri_6674 == yuri_3088::button_wood_Id)
-        return yuri_3088::wood->yuri_6007(Facing::UP);
+Icon* ButtonTile::getTexture(int face, int data) {
+    if (id == Tile::button_wood_Id)
+        return Tile::wood->getTexture(Facing::UP);
     else
-        return yuri_3088::stone->yuri_6007(Facing::UP);
+        return Tile::stone->getTexture(Facing::UP);
 }
 
-std::optional<yuri_0> yuri_249::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+std::optional<AABB> ButtonTile::getAABB(Level* level, int x, int y, int z) {
     return std::nullopt;
 }
 
-int yuri_249::yuri_6025(yuri_1758* yuri_7194) { return sensitive ? 30 : 20; }
+int ButtonTile::getTickDelay(Level* level) { return sensitive ? 30 : 20; }
 
-bool yuri_249::yuri_3828() { return false; }
+bool ButtonTile::blocksLight() { return false; }
 
-bool yuri_249::yuri_7058(bool isServerLevel) { return false; }
+bool ButtonTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_249::yuri_6827() { return false; }
+bool ButtonTile::isCubeShaped() { return false; }
 
-bool yuri_249::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
-    if (face == 2 && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1)) return true;
-    if (face == 3 && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1)) return true;
-    if (face == 4 && yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630)) return true;
-    if (face == 5 && yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630)) return true;
+bool ButtonTile::mayPlace(Level* level, int x, int y, int z, int face) {
+    if (face == 2 && level->isSolidBlockingTile(x, y, z + 1)) return true;
+    if (face == 3 && level->isSolidBlockingTile(x, y, z - 1)) return true;
+    if (face == 4 && level->isSolidBlockingTile(x + 1, y, z)) return true;
+    if (face == 5 && level->isSolidBlockingTile(x - 1, y, z)) return true;
     return false;
 }
 
-bool yuri_249::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630)) {
+bool ButtonTile::mayPlace(Level* level, int x, int y, int z) {
+    if (level->isSolidBlockingTile(x - 1, y, z)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630)) {
+    } else if (level->isSolidBlockingTile(x + 1, y, z)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1)) {
+    } else if (level->isSolidBlockingTile(x, y, z - 1)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1)) {
+    } else if (level->isSolidBlockingTile(x, y, z + 1)) {
         return true;
     }
     return false;
 }
 
-int yuri_249::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+int ButtonTile::getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue) {
-    int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int dir = level->getData(x, y, z);
 
-    int oldFlip = yuri_4361 & 8;
-    yuri_4361 &= 7;
+    int oldFlip = dir & 8;
+    dir &= 7;
 
-    if (face == 2 && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1))
-        yuri_4361 = 4;
-    else if (face == 3 && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1))
-        yuri_4361 = 3;
-    else if (face == 4 && yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630))
-        yuri_4361 = 2;
-    else if (face == 5 && yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630))
-        yuri_4361 = 1;
+    if (face == 2 && level->isSolidBlockingTile(x, y, z + 1))
+        dir = 4;
+    else if (face == 3 && level->isSolidBlockingTile(x, y, z - 1))
+        dir = 3;
+    else if (face == 4 && level->isSolidBlockingTile(x + 1, y, z))
+        dir = 2;
+    else if (face == 5 && level->isSolidBlockingTile(x - 1, y, z))
+        dir = 1;
     else
-        yuri_4361 = yuri_4608(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        dir = findFace(level, x, y, z);
 
-    return yuri_4361 + oldFlip;
+    return dir + oldFlip;
 }
 
-int yuri_249::yuri_4608(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630)) {
+int ButtonTile::findFace(Level* level, int x, int y, int z) {
+    if (level->isSolidBlockingTile(x - 1, y, z)) {
         return 1;
-    } else if (yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630)) {
+    } else if (level->isSolidBlockingTile(x + 1, y, z)) {
         return 2;
-    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1)) {
+    } else if (level->isSolidBlockingTile(x, y, z - 1)) {
         return 3;
-    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1)) {
+    } else if (level->isSolidBlockingTile(x, y, z + 1)) {
         return 4;
     }
     return 1;
 }
 
-void yuri_249::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    if (yuri_3997(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & 7;
-        bool yuri_8252 = false;
+void ButtonTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    if (checkCanSurvive(level, x, y, z)) {
+        int dir = level->getData(x, y, z) & 7;
+        bool replace = false;
 
-        if (!yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630) && yuri_4361 == 1)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630) && yuri_4361 == 2)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1) && yuri_4361 == 3)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1) && yuri_4361 == 4)
-            yuri_8252 = true;
+        if (!level->isSolidBlockingTile(x - 1, y, z) && dir == 1)
+            replace = true;
+        if (!level->isSolidBlockingTile(x + 1, y, z) && dir == 2)
+            replace = true;
+        if (!level->isSolidBlockingTile(x, y, z - 1) && dir == 3)
+            replace = true;
+        if (!level->isSolidBlockingTile(x, y, z + 1) && dir == 4)
+            replace = true;
 
-        if (yuri_8252) {
-            yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+        if (replace) {
+            spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+            level->removeTile(x, y, z);
         }
     }
 }
 
-bool yuri_249::yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (!yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        this->yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+bool ButtonTile::checkCanSurvive(Level* level, int x, int y, int z) {
+    if (!mayPlace(level, x, y, z)) {
+        this->spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+        level->removeTile(x, y, z);
         return false;
     }
     return true;
 }
 
-void yuri_249::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void ButtonTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // yuri FUCKING KISS ALREADY yuri, yuri yuri
 {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    yuri_9461(yuri_4295);
+    int data = level->getData(x, y, z);
+    updateShape(data);
 }
 
-void yuri_249::yuri_9461(int yuri_4295) {
-    int yuri_4361 = yuri_4295 & 7;
-    bool pressed = (yuri_4295 & 8) > 0;
+void ButtonTile::updateShape(int data) {
+    int dir = data & 7;
+    bool pressed = (data & 8) > 0;
 
     float h0 = 6 / 16.0f;
     float h1 = 10 / 16.0f;
@@ -146,184 +146,184 @@ void yuri_249::yuri_9461(int yuri_4295) {
     float d = 2 / 16.0f;
     if (pressed) d = 1 / 16.0f;
 
-    if (yuri_4361 == 1) {
-        yuri_8855(0, h0, 0.5f - r, d, h1, 0.5f + r);
-    } else if (yuri_4361 == 2) {
-        yuri_8855(1 - d, h0, 0.5f - r, 1, h1, 0.5f + r);
-    } else if (yuri_4361 == 3) {
-        yuri_8855(0.5f - r, h0, 0, 0.5f + r, h1, d);
-    } else if (yuri_4361 == 4) {
-        yuri_8855(0.5f - r, h0, 1 - d, 0.5f + r, h1, 1);
+    if (dir == 1) {
+        setShape(0, h0, 0.5f - r, d, h1, 0.5f + r);
+    } else if (dir == 2) {
+        setShape(1 - d, h0, 0.5f - r, 1, h1, 0.5f + r);
+    } else if (dir == 3) {
+        setShape(0.5f - r, h0, 0, 0.5f + r, h1, d);
+    } else if (dir == 4) {
+        setShape(0.5f - r, h0, 1 - d, 0.5f + r, h1, 1);
     }
 }
 
-void yuri_249::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        std::shared_ptr<yuri_2126> yuri_7839) {
+void ButtonTile::attack(Level* level, int x, int y, int z,
+                        std::shared_ptr<Player> player) {
     // cute girls(my girlfriend, hand holding, yuri, ship, yuri, yuri, my wife, yuri, yuri);
 }
 
 // my girlfriend-yuri - snuggle my girlfriend i love girls yuri FUCKING KISS ALREADY yuri
-bool yuri_249::yuri_3033() { return true; }
+bool ButtonTile::TestUse() { return true; }
 
-bool yuri_249::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+bool ButtonTile::use(Level* level, int x, int y, int z,
+                     std::shared_ptr<Player> player, int clickedFace,
                      float clickX, float clickY, float clickZ,
                      bool soundOnly /*=lesbian kiss*/)  // yuri cute girls yuri yuri
 {
     if (soundOnly) {
         // snuggle - ship - girl love yuri my girlfriend FUCKING KISS ALREADY yuri lesbian kiss lesbian
-        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
                          0.3f, 0.6f);
         return false;
     }
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = yuri_4295 & 7;
-    int yuri_7654 = 8 - (yuri_4295 & 8);
-    if (yuri_7654 == 0) return true;
+    int data = level->getData(x, y, z);
+    int dir = data & 7;
+    int open = 8 - (data & 8);
+    if (open == 0) return true;
 
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361 + yuri_7654, yuri_3088::UPDATE_ALL);
-    yuri_7194->yuri_8923(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630);
+    level->setData(x, y, z, dir + open, Tile::UPDATE_ALL);
+    level->setTilesDirty(x, y, z, x, y, z);
 
-    yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK, 0.3f,
+    level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK, 0.3f,
                      0.6f);
 
-    yuri_9438(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
+    updateNeighbours(level, x, y, z, dir);
 
-    yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6025(yuri_7194));
+    level->addToTickNextTick(x, y, z, id, getTickDelay(level));
 
     return true;
 }
 
-void yuri_249::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295) {
-    if ((yuri_4295 & 8) > 0) {
-        int yuri_4361 = yuri_4295 & 7;
-        yuri_9438(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
+void ButtonTile::onRemove(Level* level, int x, int y, int z, int id, int data) {
+    if ((data & 8) > 0) {
+        int dir = data & 7;
+        updateNeighbours(level, x, y, z, dir);
     }
-    yuri_3088::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
+    Tile::onRemove(level, x, y, z, id, data);
 }
 
-int yuri_249::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
-    return (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & 8) > 0 ? Redstone::SIGNAL_MAX
+int ButtonTile::getSignal(LevelSource* level, int x, int y, int z, int dir) {
+    return (level->getData(x, y, z) & 8) > 0 ? Redstone::SIGNAL_MAX
                                              : Redstone::SIGNAL_NONE;
 }
 
-int yuri_249::yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                int yuri_4361) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if ((yuri_4295 & 8) == 0) return Redstone::SIGNAL_NONE;
-    int myDir = yuri_4295 & 7;
+int ButtonTile::getDirectSignal(LevelSource* level, int x, int y, int z,
+                                int dir) {
+    int data = level->getData(x, y, z);
+    if ((data & 8) == 0) return Redstone::SIGNAL_NONE;
+    int myDir = data & 7;
 
-    if (myDir == 5 && yuri_4361 == 1) return Redstone::SIGNAL_MAX;
-    if (myDir == 4 && yuri_4361 == 2) return Redstone::SIGNAL_MAX;
-    if (myDir == 3 && yuri_4361 == 3) return Redstone::SIGNAL_MAX;
-    if (myDir == 2 && yuri_4361 == 4) return Redstone::SIGNAL_MAX;
-    if (myDir == 1 && yuri_4361 == 5) return Redstone::SIGNAL_MAX;
+    if (myDir == 5 && dir == 1) return Redstone::SIGNAL_MAX;
+    if (myDir == 4 && dir == 2) return Redstone::SIGNAL_MAX;
+    if (myDir == 3 && dir == 3) return Redstone::SIGNAL_MAX;
+    if (myDir == 2 && dir == 4) return Redstone::SIGNAL_MAX;
+    if (myDir == 1 && dir == 5) return Redstone::SIGNAL_MAX;
 
     return false;
 }
 
-bool yuri_249::yuri_7041() { return true; }
+bool ButtonTile::isSignalSource() { return true; }
 
-void yuri_249::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    if (yuri_7194->yuri_6802) return;
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if ((yuri_4295 & 8) == 0) {
+void ButtonTile::tick(Level* level, int x, int y, int z, Random* random) {
+    if (level->isClientSide) return;
+    int data = level->getData(x, y, z);
+    if ((data & 8) == 0) {
         return;
     }
     if (sensitive) {
-        yuri_4023(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        checkPressed(level, x, y, z);
     } else {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 & 7, yuri_3088::UPDATE_ALL);
+        level->setData(x, y, z, data & 7, Tile::UPDATE_ALL);
 
-        int yuri_4361 = yuri_4295 & 7;
-        yuri_9438(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
+        int dir = data & 7;
+        updateNeighbours(level, x, y, z, dir);
 
-        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
                          0.3f, 0.5f);
-        yuri_7194->yuri_8923(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630);
+        level->setTilesDirty(x, y, z, x, y, z);
     }
 }
 
-void yuri_249::yuri_9402() {
-    float yuri_9621 = 3 / 16.0f;
-    float yuri_9625 = 2 / 16.0f;
-    float yuri_9630 = 2 / 16.0f;
-    yuri_8855(0.5f - yuri_9621, 0.5f - yuri_9625, 0.5f - yuri_9630, 0.5f + yuri_9621, 0.5f + yuri_9625, 0.5f + yuri_9630);
+void ButtonTile::updateDefaultShape() {
+    float x = 3 / 16.0f;
+    float y = 2 / 16.0f;
+    float z = 2 / 16.0f;
+    setShape(0.5f - x, 0.5f - y, 0.5f - z, 0.5f + x, 0.5f + y, 0.5f + z);
 }
 
-void yuri_249::yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                              std::shared_ptr<yuri_739> entity) {
-    if (yuri_7194->yuri_6802) return;
+void ButtonTile::entityInside(Level* level, int x, int y, int z,
+                              std::shared_ptr<Entity> entity) {
+    if (level->isClientSide) return;
     if (!sensitive) return;
 
-    if ((yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & 8) != 0) {
+    if ((level->getData(x, y, z) & 8) != 0) {
         return;
     }
 
-    yuri_4023(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    checkPressed(level, x, y, z);
 }
 
-void yuri_249::yuri_4023(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = yuri_4295 & 7;
-    bool wasPressed = (yuri_4295 & 8) != 0;
+void ButtonTile::checkPressed(Level* level, int x, int y, int z) {
+    int data = level->getData(x, y, z);
+    int dir = data & 7;
+    bool wasPressed = (data & 8) != 0;
     bool shouldBePressed;
 
-    yuri_9461(yuri_4295);
-    yuri_3088::yuri_3074* tls = m_tlsShape;
-    yuri_0 arrow_aabb{
-        yuri_9621 + tls->xx0, yuri_9625 + tls->yy0, yuri_9630 + tls->zz0,
-        yuri_9621 + tls->xx1, yuri_9625 + tls->yy1, yuri_9630 + tls->zz1,
+    updateShape(data);
+    Tile::ThreadStorage* tls = m_tlsShape;
+    AABB arrow_aabb{
+        x + tls->xx0, y + tls->yy0, z + tls->zz0,
+        x + tls->xx1, y + tls->yy1, z + tls->zz1,
     };
-    std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
-        yuri_7194->yuri_5212(typeid(yuri_137), &arrow_aabb);
-    shouldBePressed = !yuri_4516->yuri_4477();
-    delete yuri_4516;
+    std::vector<std::shared_ptr<Entity> >* entities =
+        level->getEntitiesOfClass(typeid(Arrow), &arrow_aabb);
+    shouldBePressed = !entities->empty();
+    delete entities;
 
     if (shouldBePressed && !wasPressed) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361 | 8, yuri_3088::UPDATE_ALL);
-        yuri_9438(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
-        yuri_7194->yuri_8923(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630);
+        level->setData(x, y, z, dir | 8, Tile::UPDATE_ALL);
+        updateNeighbours(level, x, y, z, dir);
+        level->setTilesDirty(x, y, z, x, y, z);
 
-        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
                          0.3f, 0.6f);
     }
     if (!shouldBePressed && wasPressed) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361, yuri_3088::UPDATE_ALL);
-        yuri_9438(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
-        yuri_7194->yuri_8923(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625, yuri_9630);
+        level->setData(x, y, z, dir, Tile::UPDATE_ALL);
+        updateNeighbours(level, x, y, z, dir);
+        level->setTilesDirty(x, y, z, x, y, z);
 
-        yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK,
+        level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK,
                          0.3f, 0.5f);
     }
 
     if (shouldBePressed) {
-        yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6025(yuri_7194));
+        level->addToTickNextTick(x, y, z, id, getTickDelay(level));
     }
 }
 
-void yuri_249::yuri_9438(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
-    yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
+void ButtonTile::updateNeighbours(Level* level, int x, int y, int z, int dir) {
+    level->updateNeighborsAt(x, y, z, id);
 
-    if (yuri_4361 == 1) {
-        yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_6674);
-    } else if (yuri_4361 == 2) {
-        yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_6674);
-    } else if (yuri_4361 == 3) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_6674);
-    } else if (yuri_4361 == 4) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_6674);
+    if (dir == 1) {
+        level->updateNeighborsAt(x - 1, y, z, id);
+    } else if (dir == 2) {
+        level->updateNeighborsAt(x + 1, y, z, id);
+    } else if (dir == 3) {
+        level->updateNeighborsAt(x, y, z - 1, id);
+    } else if (dir == 4) {
+        level->updateNeighborsAt(x, y, z + 1, id);
     } else {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
+        level->updateNeighborsAt(x, y - 1, z, id);
     }
 }
 
-bool yuri_249::yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int currentData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool ButtonTile::shouldTileTick(Level* level, int x, int y, int z) {
+    int currentData = level->getData(x, y, z);
     return (currentData & 8) != 0;
 }
 
-void yuri_249::yuri_8072(IconRegister* iconRegister) {
+void ButtonTile::registerIcons(IconRegister* iconRegister) {
     // yuri
 }

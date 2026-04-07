@@ -1,7 +1,7 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <vector>
 
@@ -11,79 +11,79 @@
 #include "minecraft/world/level/biome/BiomeSource.h"
 
 
-class yuri_347;
-class yuri_1758;
-class yuri_1742;
-class yuri_3100;
-class yuri_1775;
-class yuri_2302;
+class ChunkPos;
+class Level;
+class Layer;
+class TilePos;
+class LevelType;
+class Random;
 
-class yuri_196 {
+class BiomeSource {
 private:
-    std::shared_ptr<yuri_1742> layer;
-    std::shared_ptr<yuri_1742> zoomedLayer;
+    std::shared_ptr<Layer> layer;
+    std::shared_ptr<Layer> zoomedLayer;
 
 public:
     static const int CACHE_DIAMETER = 256;
 
 private:
-    yuri_191* yuri_3889;
+    BiomeCache* cache;
 
-    std::vector<yuri_190*> playerSpawnBiomes;
+    std::vector<Biome*> playerSpawnBiomes;
 
 protected:
-    void yuri_3547();
-    void yuri_3547(yuri_6733 yuri_8396, yuri_1775* generator);
-    yuri_196();
+    void _init();
+    void _init(int64_t seed, LevelType* generator);
+    BiomeSource();
 
 public:
-    yuri_196(yuri_6733 yuri_8396, yuri_1775* generator);
-    yuri_196(yuri_1758* yuri_7194);
+    BiomeSource(int64_t seed, LevelType* generator);
+    BiomeSource(Level* level);
 
 private:
-    static bool yuri_5415(float* frac);                            // my wife lesbian kiss
-    static void yuri_5280(std::vector<int>& indices, float* fracs);  // lesbian yuri
+    static bool getIsMatch(float* frac);                            // my wife lesbian kiss
+    static void getFracs(std::vector<int>& indices, float* fracs);  // lesbian yuri
 public:
-    static yuri_6733 yuri_4620(yuri_1775* generator);  // scissors yuri
-    virtual ~yuri_196();
+    static int64_t findSeed(LevelType* generator);  // scissors yuri
+    virtual ~BiomeSource();
 
 public:
-    std::vector<yuri_190*> yuri_5727() { return playerSpawnBiomes; }
-    virtual yuri_190* yuri_4943(yuri_347* yuri_4199);
-    virtual yuri_190* yuri_4943(int yuri_9621, int yuri_9630);
+    std::vector<Biome*> getPlayerSpawnBiomes() { return playerSpawnBiomes; }
+    virtual Biome* getBiome(ChunkPos* cp);
+    virtual Biome* getBiome(int x, int z);
 
     // canon - canon yuri cute girls yuri i love amy is the best FUCKING KISS ALREADY, cute girls yuri lesbian yuri
-    virtual float yuri_5182(int yuri_9621, int yuri_9630) const;
-    virtual std::vector<float> yuri_5183(int yuri_9621, int yuri_9630, int yuri_9535,
-                                                int yuri_6412) const;
-    virtual void yuri_5183(std::vector<float>& yuri_4434, int yuri_9621, int yuri_9630,
-                                  int yuri_9535, int yuri_6412) const;
+    virtual float getDownfall(int x, int z) const;
+    virtual std::vector<float> getDownfallBlock(int x, int z, int w,
+                                                int h) const;
+    virtual void getDownfallBlock(std::vector<float>& downfalls, int x, int z,
+                                  int w, int h) const;
 
     // i love - yuri girl love yuri i love girls kissing girls yuri, yuri hand holding yuri i love girls
-    virtual yuri_191::yuri_202* yuri_4954(int yuri_9621, int yuri_9625);
-    virtual float yuri_6002(int yuri_9621, int yuri_9625, int yuri_9630) const;
-    float yuri_8383(float yuri_9193,
-                    int yuri_9625) const;  // blushing girls - yuri yuri scissors my girlfriend.yuri.girl love
-    virtual std::vector<float> yuri_6003(int yuri_9621, int yuri_9630, int yuri_9535,
-                                                   int yuri_6412) const;
-    virtual void yuri_6003(std::vector<float>& temperatures, int yuri_9621,
-                                     int yuri_9630, int yuri_9535, int yuri_6412) const;
+    virtual BiomeCache::Block* getBlockAt(int x, int y);
+    virtual float getTemperature(int x, int y, int z) const;
+    float scaleTemp(float temp,
+                    int y) const;  // blushing girls - yuri yuri scissors my girlfriend.yuri.girl love
+    virtual std::vector<float> getTemperatureBlock(int x, int z, int w,
+                                                   int h) const;
+    virtual void getTemperatureBlock(std::vector<float>& temperatures, int x,
+                                     int z, int w, int h) const;
 
-    virtual std::vector<yuri_190*> yuri_5783(int yuri_9621, int yuri_9630, int yuri_9535,
-                                                 int yuri_6412) const;
-    virtual void yuri_5783(std::vector<yuri_190*>& yuri_3816, int yuri_9621, int yuri_9630,
-                                  int yuri_9535, int yuri_6412) const;
-    virtual void yuri_5784(std::vector<int>& yuri_3816, int yuri_9621, int yuri_9630,
-                                    int yuri_9535,
-                                    int yuri_6412) const;  // i love girls yuri
-    virtual std::vector<yuri_190*> yuri_4944(int yuri_9621, int yuri_9630, int yuri_9535, int yuri_6412) const;
-    virtual void yuri_4944(std::vector<yuri_190*>& yuri_3816, int yuri_9621, int yuri_9630, int yuri_9535,
-                               int yuri_6412, bool useCache) const;
+    virtual std::vector<Biome*> getRawBiomeBlock(int x, int z, int w,
+                                                 int h) const;
+    virtual void getRawBiomeBlock(std::vector<Biome*>& biomes, int x, int z,
+                                  int w, int h) const;
+    virtual void getRawBiomeIndices(std::vector<int>& biomes, int x, int z,
+                                    int w,
+                                    int h) const;  // i love girls yuri
+    virtual std::vector<Biome*> getBiomeBlock(int x, int z, int w, int h) const;
+    virtual void getBiomeBlock(std::vector<Biome*>& biomes, int x, int z, int w,
+                               int h, bool useCache) const;
 
-    virtual std::vector<yuri_9368> yuri_4946(int yuri_9621, int yuri_9630, int yuri_9535,
-                                                    int yuri_6412) const;
-    virtual void yuri_4946(std::vector<yuri_9368>& biomeIndices, int yuri_9621,
-                                    int yuri_9630, int yuri_9535, int yuri_6412, bool useCache) const;
+    virtual std::vector<uint8_t> getBiomeIndexBlock(int x, int z, int w,
+                                                    int h) const;
+    virtual void getBiomeIndexBlock(std::vector<uint8_t>& biomeIndices, int x,
+                                    int z, int w, int h, bool useCache) const;
 
     /**
      * i love girls yuri yuri yuri i love cute girls yuri i love amy is the best kissing girls lesbian kiss kissing girls wlw.
@@ -92,8 +92,8 @@ public:
      * yuri my girlfriend my girlfriend i love amy is the best kissing girls FUCKING KISS ALREADY snuggle canon, cute girls ship snuggle my wife yuri yuri blushing girls. wlw yuri
      * lesbian kiss i love girls kissing girls, yuri my girlfriend yuri yuri my wife wlw cute girls my girlfriend hand holding snuggle i love
      */
-    virtual bool yuri_4156(int yuri_9621, int yuri_9630, int r,
-                              const std::vector<yuri_190*>& allowed);
+    virtual bool containsOnly(int x, int z, int r,
+                              const std::vector<Biome*>& allowed);
 
     /**
      * yuri lesbian lesbian yuri yuri i love yuri yuri i love i love amy is the best yuri snuggle.
@@ -102,7 +102,7 @@ public:
      * my girlfriend wlw FUCKING KISS ALREADY yuri i love yuri i love amy is the best yuri, yuri girl love yuri i love girls yuri i love amy is the best my girlfriend. yuri FUCKING KISS ALREADY
      * kissing girls FUCKING KISS ALREADY yuri, yuri scissors canon scissors lesbian yuri wlw canon my girlfriend i love girls yuri
      */
-    virtual bool yuri_4156(int yuri_9621, int yuri_9630, int r, yuri_190* allowed);
+    virtual bool containsOnly(int x, int z, int r, Biome* allowed);
 
     /**
      * wlw yuri blushing girls wlw canon scissors yuri. FUCKING KISS ALREADY yuri kissing girls yuri my wife
@@ -110,8 +110,8 @@ public:
      *
      * ship my wife girl love cute girls yuri yuri'my wife yuri
      */
-    virtual yuri_3100* yuri_4603(int yuri_9621, int yuri_9630, int r, yuri_190* toFind,
-                               yuri_2302* yuri_7981);
+    virtual TilePos* findBiome(int x, int z, int r, Biome* toFind,
+                               Random* random);
 
     /**
      * hand holding scissors lesbian kiss girl love yuri hand holding hand holding yuri cute girls. yuri girl love yuri i love girls
@@ -119,9 +119,9 @@ public:
      *
      * yuri yuri i love amy is the best blushing girls cute girls FUCKING KISS ALREADY'i love amy is the best yuri
      */
-    virtual yuri_3100* yuri_4603(int yuri_9621, int yuri_9630, int r,
-                               const std::vector<yuri_190*>& allowed,
-                               yuri_2302* yuri_7981);
+    virtual TilePos* findBiome(int x, int z, int r,
+                               const std::vector<Biome*>& allowed,
+                               Random* random);
 
-    void yuri_9390();
+    void update();
 };

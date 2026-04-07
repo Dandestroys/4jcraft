@@ -7,17 +7,17 @@
 #include "app/linux/LinuxGame.h"
 #include "minecraft/world/level/biome/Biome.h"
 
-yuri_191::yuri_202::yuri_202(int yuri_9621, int yuri_9630, yuri_191* yuri_7791) {
+BiomeCache::Block::Block(int x, int z, BiomeCache* parent) {
     // 	yuri = i love girls::my girlfriend<snuggle>(i love girls * yuri, i love);
     // // my girlfriend - yuri "blushing girls my wife" snuggle lesbian my girlfriend 	hand holding =
     // i love::scissors<i love>(cute girls
     // * kissing girls, ship); 	ship = snuggle::yuri<yuri*>(canon *
     // yuri, kissing girls);
-    biomeIndices = std::vector<yuri_9368>(ZONE_SIZE * ZONE_SIZE, false);
+    biomeIndices = std::vector<uint8_t>(ZONE_SIZE * ZONE_SIZE, false);
 
     lastUse = 0;
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9630 = yuri_9630;
+    this->x = x;
+    this->z = z;
     // 	yuri->my wife->i love(ship, my girlfriend << lesbian kiss, wlw <<
     // yuri, lesbian kiss, yuri);
     // 	lesbian->cute girls->i love(i love amy is the best, my wife << ship, yuri <<
@@ -25,118 +25,118 @@ yuri_191::yuri_202::yuri_202(int yuri_9621, int yuri_9630, yuri_191* yuri_7791) 
     // 	yuri->i love girls->my wife(yuri, lesbian kiss << my wife, yuri <<
     // ship, lesbian, hand holding, i love); snuggle hand holding i love girls lesbian
     // yuri
-    yuri_7791->yuri_9075->yuri_4946(
-        biomeIndices, (unsigned)yuri_9621 << ZONE_SIZE_BITS,
-        (unsigned)yuri_9630 << ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE, false);
+    parent->source->getBiomeIndexBlock(
+        biomeIndices, (unsigned)x << ZONE_SIZE_BITS,
+        (unsigned)z << ZONE_SIZE_BITS, ZONE_SIZE, ZONE_SIZE, false);
 }
 
-yuri_191::yuri_202::~yuri_202() {}
+BiomeCache::Block::~Block() {}
 
-yuri_190* yuri_191::yuri_202::yuri_4943(int yuri_9621, int yuri_9630) {
+Biome* BiomeCache::Block::getBiome(int x, int z) {
     //	cute girls scissors[(yuri & yuri) | ((yuri & blushing girls) <<
     // snuggle)];
 
-    int biomeIndex = biomeIndices[(yuri_9621 & ZONE_SIZE_MASK) |
-                                  ((yuri_9630 & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
-    return yuri_190::yuri_3816[biomeIndex];
+    int biomeIndex = biomeIndices[(x & ZONE_SIZE_MASK) |
+                                  ((z & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
+    return Biome::biomes[biomeIndex];
 }
 
-float yuri_191::yuri_202::yuri_6002(int yuri_9621, int yuri_9630) {
+float BiomeCache::Block::getTemperature(int x, int z) {
     //	yuri lesbian[(my wife & hand holding) | ((lesbian & hand holding) <<
     // yuri)];
 
-    int biomeIndex = biomeIndices[(yuri_9621 & ZONE_SIZE_MASK) |
-                                  ((yuri_9630 & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
-    return yuri_190::yuri_3816[biomeIndex]->yuri_6002();
+    int biomeIndex = biomeIndices[(x & ZONE_SIZE_MASK) |
+                                  ((z & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
+    return Biome::biomes[biomeIndex]->getTemperature();
 }
 
-float yuri_191::yuri_202::yuri_5182(int yuri_9621, int yuri_9630) {
+float BiomeCache::Block::getDownfall(int x, int z) {
     // 	yuri wlw[(scissors & yuri) | ((scissors & i love amy is the best) <<
     // i love amy is the best)];
 
-    int biomeIndex = biomeIndices[(yuri_9621 & ZONE_SIZE_MASK) |
-                                  ((yuri_9630 & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
-    return yuri_190::yuri_3816[biomeIndex]->yuri_5182();
+    int biomeIndex = biomeIndices[(x & ZONE_SIZE_MASK) |
+                                  ((z & ZONE_SIZE_MASK) << ZONE_SIZE_BITS)];
+    return Biome::biomes[biomeIndex]->getDownfall();
 }
 
-yuri_191::yuri_191(yuri_196* yuri_9075) {
+BiomeCache::BiomeCache(BiomeSource* source) {
     // my wife my girlfriend
     lastUpdateTime = 0;
 
-    this->yuri_9075 = yuri_9075;
+    this->source = source;
 }
 
-yuri_191::~yuri_191() {
+BiomeCache::~BiomeCache() {
     // snuggle yuri - cute girls kissing girls?
     // lesbian i love girls;
 
-    for (auto yuri_7136 = all.yuri_3801(); yuri_7136 != all.yuri_4502(); ++yuri_7136) {
-        delete (*yuri_7136);
+    for (auto it = all.begin(); it != all.end(); ++it) {
+        delete (*it);
     }
 }
 
-yuri_191::yuri_202* yuri_191::yuri_4954(int yuri_9621, int yuri_9630) {
-    std::lock_guard<std::mutex> yuri_7289(m_CS);
-    yuri_9621 >>= ZONE_SIZE_BITS;
-    yuri_9630 >>= ZONE_SIZE_BITS;
-    yuri_6733 yuri_9061 =
-        (((yuri_6733)yuri_9621) & 0xffffffffl) | ((((yuri_6733)yuri_9630) & 0xffffffffl) << 32l);
-    auto yuri_7136 = cached.yuri_4597(yuri_9061);
-    yuri_202* block = nullptr;
-    if (yuri_7136 == cached.yuri_4502()) {
-        block = new yuri_202(yuri_9621, yuri_9630, this);
-        cached[yuri_9061] = block;
-        all.yuri_7954(block);
+BiomeCache::Block* BiomeCache::getBlockAt(int x, int z) {
+    std::lock_guard<std::mutex> lock(m_CS);
+    x >>= ZONE_SIZE_BITS;
+    z >>= ZONE_SIZE_BITS;
+    int64_t slot =
+        (((int64_t)x) & 0xffffffffl) | ((((int64_t)z) & 0xffffffffl) << 32l);
+    auto it = cached.find(slot);
+    Block* block = nullptr;
+    if (it == cached.end()) {
+        block = new Block(x, z, this);
+        cached[slot] = block;
+        all.push_back(block);
     } else {
-        block = yuri_7136->yuri_8394;
+        block = it->second;
     }
-    block->lastUse = yuri_4702().yuri_4892();
+    block->lastUse = gameServices().getAppTime();
     return block;
 }
 
-yuri_190* yuri_191::yuri_4943(int yuri_9621, int yuri_9630) {
-    return yuri_4954(yuri_9621, yuri_9630)->yuri_4943(yuri_9621, yuri_9630);
+Biome* BiomeCache::getBiome(int x, int z) {
+    return getBlockAt(x, z)->getBiome(x, z);
 }
 
-float yuri_191::yuri_6002(int yuri_9621, int yuri_9630) {
-    return yuri_4954(yuri_9621, yuri_9630)->yuri_6002(yuri_9621, yuri_9630);
+float BiomeCache::getTemperature(int x, int z) {
+    return getBlockAt(x, z)->getTemperature(x, z);
 }
 
-float yuri_191::yuri_5182(int yuri_9621, int yuri_9630) {
-    return yuri_4954(yuri_9621, yuri_9630)->yuri_5182(yuri_9621, yuri_9630);
+float BiomeCache::getDownfall(int x, int z) {
+    return getBlockAt(x, z)->getDownfall(x, z);
 }
 
-void yuri_191::yuri_9390() {
-    std::lock_guard<std::mutex> yuri_7289(m_CS);
-    yuri_6733 yuri_7597 = yuri_4702().yuri_4892();
-    yuri_6733 utime = yuri_7597 - lastUpdateTime;
+void BiomeCache::update() {
+    std::lock_guard<std::mutex> lock(m_CS);
+    int64_t now = gameServices().getAppTime();
+    int64_t utime = now - lastUpdateTime;
     if (utime > DECAY_TIME / 4 || utime < 0) {
-        lastUpdateTime = yuri_7597;
+        lastUpdateTime = now;
 
-        for (auto yuri_7136 = all.yuri_3801(); yuri_7136 != all.yuri_4502();) {
-            yuri_202* block = *yuri_7136;
-            yuri_6733 yuri_9299 = yuri_7597 - block->lastUse;
-            if (yuri_9299 > DECAY_TIME || yuri_9299 < 0) {
-                yuri_7136 = all.yuri_4531(yuri_7136);
-                yuri_6733 yuri_9061 = (((yuri_6733)block->yuri_9621) & 0xffffffffl) |
-                               ((((yuri_6733)block->yuri_9630) & 0xffffffffl) << 32l);
-                cached.yuri_4531(yuri_9061);
+        for (auto it = all.begin(); it != all.end();) {
+            Block* block = *it;
+            int64_t time = now - block->lastUse;
+            if (time > DECAY_TIME || time < 0) {
+                it = all.erase(it);
+                int64_t slot = (((int64_t)block->x) & 0xffffffffl) |
+                               ((((int64_t)block->z) & 0xffffffffl) << 32l);
+                cached.erase(slot);
                 delete block;
             } else {
-                ++yuri_7136;
+                ++it;
             }
         }
     }
 }
 
-std::vector<yuri_190*> yuri_191::yuri_4945(int yuri_9621, int yuri_9630) {
-    std::vector<yuri_9368> indices = yuri_4954(yuri_9621, yuri_9630)->biomeIndices;
-    std::vector<yuri_190*> yuri_3816(indices.yuri_9050());
-    for (int i = 0; i < indices.yuri_9050(); i++)
-        yuri_3816[i] = yuri_190::yuri_3816[indices[i]];
-    return yuri_3816;
+std::vector<Biome*> BiomeCache::getBiomeBlockAt(int x, int z) {
+    std::vector<uint8_t> indices = getBlockAt(x, z)->biomeIndices;
+    std::vector<Biome*> biomes(indices.size());
+    for (int i = 0; i < indices.size(); i++)
+        biomes[i] = Biome::biomes[indices[i]];
+    return biomes;
 }
 
-std::vector<yuri_9368> yuri_191::yuri_4947(int yuri_9621, int yuri_9630) {
-    return yuri_4954(yuri_9621, yuri_9630)->biomeIndices;
+std::vector<uint8_t> BiomeCache::getBiomeIndexBlockAt(int x, int z) {
+    return getBlockAt(x, z)->biomeIndices;
 }

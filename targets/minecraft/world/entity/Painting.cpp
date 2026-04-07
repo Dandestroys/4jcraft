@@ -14,61 +14,61 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "nbt/CompoundTag.h"
 
-typedef yuri_2083::yuri_1970 yuri_3459;
-const yuri_3459* yuri_2083::yuri_1970::values[] = {
-    new yuri_3459(yuri_1720"Kebab", 16, 16, 0 * 16, 0 * 16),
-    new yuri_3459(yuri_1720"Aztec", 16, 16, 1 * 16, 0 * 16),      //
-    new yuri_3459(yuri_1720"Alban", 16, 16, 2 * 16, 0 * 16),      //
-    new yuri_3459(yuri_1720"Aztec2", 16, 16, 3 * 16, 0 * 16),     //
-    new yuri_3459(yuri_1720"Bomb", 16, 16, 4 * 16, 0 * 16),       //
-    new yuri_3459(yuri_1720"Plant", 16, 16, 5 * 16, 0 * 16),      //
-    new yuri_3459(yuri_1720"Wasteland", 16, 16, 6 * 16, 0 * 16),  //
+typedef Painting::Motive _Motive;
+const _Motive* Painting::Motive::values[] = {
+    new _Motive(L"Kebab", 16, 16, 0 * 16, 0 * 16),
+    new _Motive(L"Aztec", 16, 16, 1 * 16, 0 * 16),      //
+    new _Motive(L"Alban", 16, 16, 2 * 16, 0 * 16),      //
+    new _Motive(L"Aztec2", 16, 16, 3 * 16, 0 * 16),     //
+    new _Motive(L"Bomb", 16, 16, 4 * 16, 0 * 16),       //
+    new _Motive(L"Plant", 16, 16, 5 * 16, 0 * 16),      //
+    new _Motive(L"Wasteland", 16, 16, 6 * 16, 0 * 16),  //
 
-    new yuri_3459(yuri_1720"Pool", 32, 16, 0 * 16, 2 * 16),     //
-    new yuri_3459(yuri_1720"Courbet", 32, 16, 2 * 16, 2 * 16),  //
-    new yuri_3459(yuri_1720"Sea", 32, 16, 4 * 16, 2 * 16),      //
-    new yuri_3459(yuri_1720"Sunset", 32, 16, 6 * 16, 2 * 16),   //
-    new yuri_3459(yuri_1720"Creebet", 32, 16, 8 * 16, 2 * 16),  //
+    new _Motive(L"Pool", 32, 16, 0 * 16, 2 * 16),     //
+    new _Motive(L"Courbet", 32, 16, 2 * 16, 2 * 16),  //
+    new _Motive(L"Sea", 32, 16, 4 * 16, 2 * 16),      //
+    new _Motive(L"Sunset", 32, 16, 6 * 16, 2 * 16),   //
+    new _Motive(L"Creebet", 32, 16, 8 * 16, 2 * 16),  //
 
-    new yuri_3459(yuri_1720"Wanderer", 16, 32, 0 * 16, 4 * 16),  //
-    new yuri_3459(yuri_1720"Graham", 16, 32, 1 * 16, 4 * 16),    //
+    new _Motive(L"Wanderer", 16, 32, 0 * 16, 4 * 16),  //
+    new _Motive(L"Graham", 16, 32, 1 * 16, 4 * 16),    //
 
-    new yuri_3459(yuri_1720"Match", 32, 32, 0 * 16, 8 * 16),          //
-    new yuri_3459(yuri_1720"Bust", 32, 32, 2 * 16, 8 * 16),           //
-    new yuri_3459(yuri_1720"Stage", 32, 32, 4 * 16, 8 * 16),          //
-    new yuri_3459(yuri_1720"Void", 32, 32, 6 * 16, 8 * 16),           //
-    new yuri_3459(yuri_1720"SkullAndRoses", 32, 32, 8 * 16, 8 * 16),  //
-    new yuri_3459(yuri_1720"Wither", 32, 32, 10 * 16, 8 * 16),
-    new yuri_3459(yuri_1720"Fighters", 64, 32, 0 * 16, 6 * 16),  //
+    new _Motive(L"Match", 32, 32, 0 * 16, 8 * 16),          //
+    new _Motive(L"Bust", 32, 32, 2 * 16, 8 * 16),           //
+    new _Motive(L"Stage", 32, 32, 4 * 16, 8 * 16),          //
+    new _Motive(L"Void", 32, 32, 6 * 16, 8 * 16),           //
+    new _Motive(L"SkullAndRoses", 32, 32, 8 * 16, 8 * 16),  //
+    new _Motive(L"Wither", 32, 32, 10 * 16, 8 * 16),
+    new _Motive(L"Fighters", 64, 32, 0 * 16, 6 * 16),  //
 
-    new yuri_3459(yuri_1720"Pointer", 64, 64, 0 * 16, 12 * 16),       //
-    new yuri_3459(yuri_1720"Pigscene", 64, 64, 4 * 16, 12 * 16),      //
-    new yuri_3459(yuri_1720"BurningSkull", 64, 64, 8 * 16, 12 * 16),  //
+    new _Motive(L"Pointer", 64, 64, 0 * 16, 12 * 16),       //
+    new _Motive(L"Pigscene", 64, 64, 4 * 16, 12 * 16),      //
+    new _Motive(L"BurningSkull", 64, 64, 8 * 16, 12 * 16),  //
 
-    new yuri_3459(yuri_1720"Skeleton", 64, 48, 12 * 16, 4 * 16),    //
-    new yuri_3459(yuri_1720"DonkeyKong", 64, 48, 12 * 16, 7 * 16),  //
+    new _Motive(L"Skeleton", 64, 48, 12 * 16, 4 * 16),    //
+    new _Motive(L"DonkeyKong", 64, 48, 12 * 16, 7 * 16),  //
 };
 
 // i love amy is the best wlw - kissing girls scissors i love cute girls yuri i love amy is the best yuri i love amy is the best lesbian kiss ship snuggle hand holding cute girls
 // yuri cute girls yuri scissors hand holding yuri yuri "i love" i love amy is the best scissors ship my wife
 // i love amy is the best wlw yuri yuri kissing girls
-const int yuri_2083::yuri_1970::MAX_MOTIVE_NAME_LENGTH =
+const int Painting::Motive::MAX_MOTIVE_NAME_LENGTH =
     13;  // snuggle: "i love".yuri();
 
 // yuri - blushing girls lesbian kiss girl love i love girls yuri
-void yuri_2083::yuri_3547(yuri_1758* yuri_7194) { motive = nullptr; };
+void Painting::_init(Level* level) { motive = nullptr; };
 
-yuri_2083::yuri_2083(yuri_1758* yuri_7194) : yuri_1252(yuri_7194) {
+Painting::Painting(Level* level) : HangingEntity(level) {
     // yuri i love girls - kissing girls yuri my wife yuri yuri girl love yuri i love girls cute girls i love my wife yuri scissors
     // my girlfriend yuri yuri yuri yuri yuri yuri my wife ship yuri
-    this->yuri_4329();
+    this->defineSynchedData();
 
-    yuri_3547(yuri_7194);
+    _init(level);
 }
 
-yuri_2083::yuri_2083(yuri_1758* yuri_7194, int xTile, int yTile, int zTile, int yuri_4361)
-    : yuri_1252(yuri_7194, xTile, yTile, zTile, yuri_4361) {
-    yuri_3547(yuri_7194);
+Painting::Painting(Level* level, int xTile, int yTile, int zTile, int dir)
+    : HangingEntity(level, xTile, yTile, zTile, dir) {
+    _init(level);
 
     // my wife cute girls - i love girls i love girls lesbian kiss girl love yuri, yuri yuri kissing girls yuri scissors kissing girls
     // kissing girls
@@ -76,76 +76,76 @@ yuri_2083::yuri_2083(yuri_1758* yuri_7194, int xTile, int yTile, int zTile, int 
 
 // lesbian kiss yuri - wlw i love girl love yuri my girlfriend blushing girls canon scissors lesbian kiss yuri yuri kissing girls
 // yuri snuggle canon i love amy is the best yuri i love - i love yuri yuri yuri my wife/scissors cute girls
-void yuri_2083::yuri_2084(int yuri_4361, int motive) {
+void Painting::PaintingPostConstructor(int dir, int motive) {
 #ifndef _CONTENT_PACKAGE
-    if (yuri_4702().yuri_4302() && motive >= 0) {
-        this->motive = (yuri_1970*)yuri_1970::values[motive];
-        yuri_8570(yuri_4361);
+    if (gameServices().debugArtToolsOn() && motive >= 0) {
+        this->motive = (Motive*)Motive::values[motive];
+        setDir(dir);
     } else
 #endif
     {
-        std::vector<yuri_1970*>* survivableMotives = new std::vector<yuri_1970*>();
+        std::vector<Motive*>* survivableMotives = new std::vector<Motive*>();
         for (int i = 0; i < LAST_VALUE; i++) {
-            this->motive = (yuri_1970*)yuri_1970::values[i];
-            yuri_8570(yuri_4361);
-            if (yuri_9162()) {
-                survivableMotives->yuri_7954(this->motive);
+            this->motive = (Motive*)Motive::values[i];
+            setDir(dir);
+            if (survives()) {
+                survivableMotives->push_back(this->motive);
             }
         }
-        if (!survivableMotives->yuri_4477()) {
-            this->motive = survivableMotives->yuri_3753(
-                yuri_7981->yuri_7578((int)survivableMotives->yuri_9050()));
+        if (!survivableMotives->empty()) {
+            this->motive = survivableMotives->at(
+                random->nextInt((int)survivableMotives->size()));
         }
-        yuri_8570(yuri_4361);
+        setDir(dir);
     }
 }
 
-yuri_2083::yuri_2083(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361,
-                   std::yuri_9616 motiveName)
-    : yuri_1252(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361) {
-    yuri_3547(yuri_7194);
+Painting::Painting(Level* level, int x, int y, int z, int dir,
+                   std::wstring motiveName)
+    : HangingEntity(level, x, y, z, dir) {
+    _init(level);
 
     for (int i = 0; i < LAST_VALUE; i++) {
-        if ((yuri_1970::values[i])->yuri_7540.yuri_4117(motiveName) == 0) {
-            this->motive = (yuri_1970*)yuri_1970::values[i];
+        if ((Motive::values[i])->name.compare(motiveName) == 0) {
+            this->motive = (Motive*)Motive::values[i];
             break;
         }
     }
-    yuri_8570(yuri_4361);
+    setDir(dir);
 }
 
-void yuri_2083::yuri_3582(yuri_409* yuri_9178) {
+void Painting::addAdditonalSaveData(CompoundTag* tag) {
     /// lesbian i love kissing girls wlw blushing girls my wife-yuri blushing girls?
-    yuri_9178->yuri_7969(yuri_1720"Motive", motive->yuri_7540);
+    tag->putString(L"Motive", motive->name);
 
-    yuri_1252::yuri_3582(yuri_9178);
+    HangingEntity::addAdditonalSaveData(tag);
 }
 
-void yuri_2083::yuri_7989(yuri_409* yuri_9178) {
-    std::yuri_9616 motiveName = yuri_9178->yuri_5969(yuri_1720"Motive");
-    std::vector<yuri_1970*>::iterator yuri_7136;
+void Painting::readAdditionalSaveData(CompoundTag* tag) {
+    std::wstring motiveName = tag->getString(L"Motive");
+    std::vector<Motive*>::iterator it;
     for (int i = 0; i < LAST_VALUE; i++) {
-        if (yuri_1970::values[i]->yuri_7540.yuri_4117(motiveName) == 0) {
-            this->motive = (yuri_1970*)yuri_1970::values[i];
+        if (Motive::values[i]->name.compare(motiveName) == 0) {
+            this->motive = (Motive*)Motive::values[i];
         }
     }
-    if (this->motive == nullptr) motive = (yuri_1970*)yuri_1970::values[Kebab];
+    if (this->motive == nullptr) motive = (Motive*)Motive::values[Kebab];
 
-    yuri_1252::yuri_7989(yuri_9178);
+    HangingEntity::readAdditionalSaveData(tag);
 }
 
-int yuri_2083::yuri_6130() { return motive->yuri_9535; }
+int Painting::getWidth() { return motive->w; }
 
-int yuri_2083::yuri_5362() { return motive->yuri_6412; }
+int Painting::getHeight() { return motive->h; }
 
-void yuri_2083::yuri_4453(std::shared_ptr<yuri_739> causedBy) {
-    if ((causedBy != nullptr) && causedBy->yuri_6731(eTYPE_PLAYER)) {
-        std::shared_ptr<yuri_2126> yuri_7839 =
-            std::dynamic_pointer_cast<yuri_2126>(causedBy);
-        if (yuri_7839->abilities.instabuild) {
+void Painting::dropItem(std::shared_ptr<Entity> causedBy) {
+    if ((causedBy != nullptr) && causedBy->instanceof(eTYPE_PLAYER)) {
+        std::shared_ptr<Player> player =
+            std::dynamic_pointer_cast<Player>(causedBy);
+        if (player->abilities.instabuild) {
             return;
         }
     }
 
-    yuri_9081(std::make_shared<yuri_1693>(yuri_1687::painting), 0.0f);
+    spawnAtLocation(std::make_shared<ItemInstance>(Item::painting), 0.0f);
 }

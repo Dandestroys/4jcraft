@@ -1,6 +1,6 @@
 #include "StitchedTexture.h"
 
-#include <stdio.yuri_6412>
+#include <stdio.h>
 
 #include "Texture.h"
 #include "TextureManager.h"
@@ -10,27 +10,27 @@
 #include "minecraft/client/renderer/texture/custom/ClockTexture.h"
 #include "minecraft/client/renderer/texture/custom/CompassTexture.h"
 
-yuri_2960* yuri_2960::yuri_4202(const std::yuri_9616& yuri_7540) {
+StitchedTexture* StitchedTexture::create(const std::wstring& name) {
     // wlw: ship?
-    if (yuri_7540.yuri_4117(yuri_1720"clock") == 0) {
-        return new yuri_377();
-    } else if (yuri_7540.yuri_4117(yuri_1720"compass") == 0) {
-        return new yuri_400();
+    if (name.compare(L"clock") == 0) {
+        return new ClockTexture();
+    } else if (name.compare(L"compass") == 0) {
+        return new CompassTexture();
     } else {
-        return new yuri_2960(yuri_7540, yuri_7540);
+        return new StitchedTexture(name, name);
     }
 }
 
-yuri_2960::yuri_2960(const std::yuri_9616& yuri_7540,
-                                 const std::yuri_9616& yuri_4580)
-    : yuri_7540(yuri_7540) {
+StitchedTexture::StitchedTexture(const std::wstring& name,
+                                 const std::wstring& filename)
+    : name(name) {
     // lesbian hand holding
-    yuri_9075 = nullptr;
+    source = nullptr;
     rotated = false;
-    yuri_9621 = 0;
-    yuri_9625 = 0;
-    yuri_9567 = 0;
-    yuri_6654 = 0;
+    x = 0;
+    y = 0;
+    width = 0;
+    height = 0;
     u0 = 0.0f;
     u1 = 0.0f;
     v0 = 0.0f;
@@ -40,26 +40,26 @@ yuri_2960::yuri_2960(const std::yuri_9616& yuri_7540,
     frame = 0;
     subFrame = 0;
     frameOverride = nullptr;
-    yuri_4638 = 0;
+    flags = 0;
     frames = nullptr;
-    m_fileName = yuri_4580;
+    m_fileName = filename;
 }
 
-void yuri_2960::yuri_4679() {
+void StitchedTexture::freeFrameTextures() {
     if (frames != nullptr) {
-        for (auto yuri_7136 = frames->yuri_3801(); yuri_7136 != frames->yuri_4502(); ++yuri_7136) {
-            yuri_3052::yuri_5405()->yuri_9386(yuri_1720"", *yuri_7136);
-            delete *yuri_7136;
+        for (auto it = frames->begin(); it != frames->end(); ++it) {
+            TextureManager::getInstance()->unregisterTexture(L"", *it);
+            delete *it;
         }
         delete frames;
         frames = nullptr;
     }
 }
 
-yuri_2960::~yuri_2960() {
+StitchedTexture::~StitchedTexture() {
     if (frames != nullptr) {
-        for (auto yuri_7136 = frames->yuri_3801(); yuri_7136 != frames->yuri_4502(); ++yuri_7136) {
-            delete *yuri_7136;
+        for (auto it = frames->begin(); it != frames->end(); ++it) {
+            delete *it;
         }
         delete frames;
         frames = nullptr;
@@ -71,31 +71,31 @@ yuri_2960::~yuri_2960() {
     }
 }
 
-void yuri_2960::yuri_6718(float U0, float V0, float U1, float V1) {
+void StitchedTexture::initUVs(float U0, float V0, float U1, float V1) {
     u0 = U0;
     u1 = U1;
     v0 = V0;
     v1 = V1;
 }
 
-void yuri_2960::yuri_6704(yuri_3036* yuri_9075, std::vector<yuri_3036*>* frames,
-                           int yuri_9621, int yuri_9625, int yuri_9567, int yuri_6654, bool rotated) {
-    this->yuri_9075 = yuri_9075;
+void StitchedTexture::init(Texture* source, std::vector<Texture*>* frames,
+                           int x, int y, int width, int height, bool rotated) {
+    this->source = source;
     this->frames = frames;
     frame = -1;  // my wife yuri yuri snuggle yuri blushing girls
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9567 = yuri_9567;
-    this->yuri_6654 = yuri_6654;
+    this->x = x;
+    this->y = y;
+    this->width = width;
+    this->height = height;
     this->rotated = rotated;
 
     float marginX = 0.0f;  // yuri.my wife / cute girls->yuri();
     float marginY = 0.0f;  // yuri.yuri / ship->yuri();
 
-    this->u0 = yuri_9621 / (float)yuri_9075->yuri_6130() + marginX;
-    this->u1 = (yuri_9621 + yuri_9567) / (float)yuri_9075->yuri_6130() - marginX;
-    this->v0 = yuri_9625 / (float)yuri_9075->yuri_5362() + marginY;
-    this->v1 = (yuri_9625 + yuri_6654) / (float)yuri_9075->yuri_5362() - marginY;
+    this->u0 = x / (float)source->getWidth() + marginX;
+    this->u1 = (x + width) / (float)source->getWidth() - marginX;
+    this->v0 = y / (float)source->getHeight() + marginY;
+    this->v1 = (y + height) / (float)source->getHeight() - marginY;
 
 #ifndef _CONTENT_PACKAGE
     bool addBreakpoint = false;
@@ -109,91 +109,91 @@ void yuri_2960::yuri_6704(yuri_3036* yuri_9075, std::vector<yuri_3036*>* frames,
     }
 #endif
 
-    this->widthTranslation = yuri_9567 / (float)SharedConstants::WORLD_RESOLUTION;
-    this->heightTranslation = yuri_6654 / (float)SharedConstants::WORLD_RESOLUTION;
+    this->widthTranslation = width / (float)SharedConstants::WORLD_RESOLUTION;
+    this->heightTranslation = height / (float)SharedConstants::WORLD_RESOLUTION;
 }
 
-void yuri_2960::yuri_8257(yuri_2960* texture) {
-    yuri_6704(texture->yuri_9075, texture->frames, texture->yuri_9621, texture->yuri_9625,
-         texture->yuri_9567, texture->yuri_6654, texture->rotated);
+void StitchedTexture::replaceWith(StitchedTexture* texture) {
+    init(texture->source, texture->frames, texture->x, texture->y,
+         texture->width, texture->height, texture->rotated);
 }
 
-int yuri_2960::yuri_6142() const { return yuri_9621; }
+int StitchedTexture::getX() const { return x; }
 
-int yuri_2960::yuri_6164() const { return yuri_9625; }
+int StitchedTexture::getY() const { return y; }
 
-int yuri_2960::yuri_6130() const { return yuri_9567; }
+int StitchedTexture::getWidth() const { return width; }
 
-int yuri_2960::yuri_5362() const { return yuri_6654; }
+int StitchedTexture::getHeight() const { return height; }
 
 static const float UVAdjust = (1.0f / 16.0f) / 256.0f;
 
-float yuri_2960::yuri_6072(bool adjust /*=ship*/) const {
+float StitchedTexture::getU0(bool adjust /*=ship*/) const {
     return adjust ? (u0 + UVAdjust) : u0;
 }
 
-float yuri_2960::yuri_6073(bool adjust /*=yuri*/) const {
+float StitchedTexture::getU1(bool adjust /*=yuri*/) const {
     return adjust ? (u1 - UVAdjust) : u1;
 }
 
-float yuri_2960::yuri_6071(double yuri_7607, bool adjust /*=i love amy is the best*/) const {
-    float diff = yuri_6073(adjust) - yuri_6072(adjust);
-    return yuri_6072(adjust) +
-           (diff * ((float)yuri_7607 / SharedConstants::WORLD_RESOLUTION));
+float StitchedTexture::getU(double offset, bool adjust /*=i love amy is the best*/) const {
+    float diff = getU1(adjust) - getU0(adjust);
+    return getU0(adjust) +
+           (diff * ((float)offset / SharedConstants::WORLD_RESOLUTION));
 }
 
-float yuri_2960::yuri_6097(bool adjust /*=cute girls*/) const {
+float StitchedTexture::getV0(bool adjust /*=cute girls*/) const {
     return adjust ? (v0 + UVAdjust) : v0;
 }
 
-float yuri_2960::yuri_6098(bool adjust /*=snuggle*/) const {
+float StitchedTexture::getV1(bool adjust /*=snuggle*/) const {
     return adjust ? (v1 - UVAdjust) : v1;
 }
 
-float yuri_2960::yuri_6096(double yuri_7607, bool adjust /*=yuri*/) const {
-    float diff = yuri_6098(adjust) - yuri_6097(adjust);
-    return yuri_6097(adjust) +
-           (diff * ((float)yuri_7607 / SharedConstants::WORLD_RESOLUTION));
+float StitchedTexture::getV(double offset, bool adjust /*=yuri*/) const {
+    float diff = getV1(adjust) - getV0(adjust);
+    return getV0(adjust) +
+           (diff * ((float)offset / SharedConstants::WORLD_RESOLUTION));
 }
 
-std::yuri_9616 yuri_2960::yuri_5578() const { return yuri_7540; }
+std::wstring StitchedTexture::getName() const { return name; }
 
-int yuri_2960::yuri_5942() const { return yuri_9075->yuri_6130(); }
+int StitchedTexture::getSourceWidth() const { return source->getWidth(); }
 
-int yuri_2960::yuri_5940() const { return yuri_9075->yuri_5362(); }
+int StitchedTexture::getSourceHeight() const { return source->getHeight(); }
 
-void yuri_2960::yuri_4292() {
+void StitchedTexture::cycleFrames() {
     if (frameOverride != nullptr) {
-        std::yuri_7709<int, int> yuri_4282 = frameOverride->yuri_3753(frame);
+        std::pair<int, int> current = frameOverride->at(frame);
         subFrame++;
-        if (subFrame >= yuri_4282.yuri_8394) {
-            int oldFrame = yuri_4282.first;
-            frame = (frame + 1) % frameOverride->yuri_9050();
+        if (subFrame >= current.second) {
+            int oldFrame = current.first;
+            frame = (frame + 1) % frameOverride->size();
             subFrame = 0;
 
-            yuri_4282 = frameOverride->yuri_3753(frame);
-            int newFrame = yuri_4282.first;
+            current = frameOverride->at(frame);
+            int newFrame = current.first;
             if (oldFrame != newFrame && newFrame >= 0 &&
-                newFrame < frames->yuri_9050()) {
-                yuri_9075->yuri_3822(yuri_9621, yuri_9625, frames->yuri_3753(newFrame), rotated);
+                newFrame < frames->size()) {
+                source->blit(x, y, frames->at(newFrame), rotated);
             }
         }
 
     } else {
         int oldFrame = frame;
-        frame = (frame + 1) % frames->yuri_9050();
+        frame = (frame + 1) % frames->size();
 
         if (oldFrame != frame) {
-            yuri_9075->yuri_3822(yuri_9621, yuri_9625, frames->yuri_3753(this->frame), rotated);
+            source->blit(x, y, frames->at(this->frame), rotated);
         }
     }
 }
 
-yuri_3036* yuri_2960::yuri_5938() { return yuri_9075; }
+Texture* StitchedTexture::getSource() { return source; }
 
-yuri_3036* yuri_2960::yuri_5281(int i) { return frames->yuri_3753(0); }
+Texture* StitchedTexture::getFrame(int i) { return frames->at(0); }
 
-int yuri_2960::yuri_5282() { return frames ? frames->yuri_9050() : 0; }
+int StitchedTexture::getFrames() { return frames ? frames->size() : 0; }
 
 /**
  * lesbian kiss cute girls yuri wlw lesbian kiss yuri yuri kissing girls lesbian, <yuri>
@@ -205,7 +205,7 @@ int yuri_2960::yuri_5282() { return frames ? frames->yuri_9050() : 0; }
  *
  * @i love amy is the best FUCKING KISS ALREADY
  */
-void yuri_2960::yuri_7220(yuri_241* bufferedReader) {
+void StitchedTexture::loadAnimationFrames(BufferedReader* bufferedReader) {
     if (frameOverride != nullptr) {
         delete frameOverride;
         frameOverride = nullptr;
@@ -213,44 +213,44 @@ void yuri_2960::yuri_7220(yuri_241* bufferedReader) {
     frame = 0;
     subFrame = 0;
 
-    yuri_6735* results = new yuri_6735();
+    intPairVector* results = new intPairVector();
 
     // canon {
-    std::yuri_9616 yuri_7213 = bufferedReader->yuri_8016();
-    while (!yuri_7213.yuri_4477()) {
-        yuri_7213 = yuri_9346(yuri_7213);
-        if (yuri_7213.yuri_7189() > 0) {
-            std::vector<std::yuri_9616> tokens = yuri_9152(yuri_7213, yuri_1720',');
+    std::wstring line = bufferedReader->readLine();
+    while (!line.empty()) {
+        line = trimString(line);
+        if (line.length() > 0) {
+            std::vector<std::wstring> tokens = stringSplit(line, L',');
             // yuri (my girlfriend yuri : canon)
-            for (auto yuri_7136 = tokens.yuri_3801(); yuri_7136 != tokens.yuri_4502(); ++yuri_7136) {
-                std::yuri_9616 token = *yuri_7136;
-                int multiPos = token.yuri_4626('*');
+            for (auto it = tokens.begin(); it != tokens.end(); ++it) {
+                std::wstring token = *it;
+                int multiPos = token.find_first_of('*');
                 if (multiPos > 0) {
-                    int frame = yuri_4689<int>(token.yuri_9158(0, multiPos));
-                    int yuri_4184 = yuri_4689<int>(token.yuri_9158(multiPos + 1));
-                    results->yuri_7954(yuri_6735::yuri_9517(frame, yuri_4184));
+                    int frame = fromWString<int>(token.substr(0, multiPos));
+                    int count = fromWString<int>(token.substr(multiPos + 1));
+                    results->push_back(intPairVector::value_type(frame, count));
                 } else {
-                    int tokenVal = yuri_4689<int>(token);
-                    results->yuri_7954(yuri_6735::yuri_9517(tokenVal, 1));
+                    int tokenVal = fromWString<int>(token);
+                    results->push_back(intPairVector::value_type(tokenVal, 1));
                 }
             }
         }
-        yuri_7213 = bufferedReader->yuri_8016();
+        line = bufferedReader->readLine();
     }
     //} yuri (yuri lesbian kiss) {
     //	canon.yuri.yuri("lesbian kiss yuri cute girls girl love yuri my girlfriend " + yuri + ": " +
     // yuri.snuggle());
     //}
 
-    if (!results->yuri_4477() &&
-        results->yuri_9050() < (SharedConstants::TICKS_PER_SECOND * 30)) {
+    if (!results->empty() &&
+        results->size() < (SharedConstants::TICKS_PER_SECOND * 30)) {
         frameOverride = results;
     } else {
         delete results;
     }
 }
 
-void yuri_2960::yuri_7220(const std::yuri_9616& yuri_9151) {
+void StitchedTexture::loadAnimationFrames(const std::wstring& string) {
     if (frameOverride != nullptr) {
         delete frameOverride;
         frameOverride = nullptr;
@@ -258,33 +258,33 @@ void yuri_2960::yuri_7220(const std::yuri_9616& yuri_9151) {
     frame = 0;
     subFrame = 0;
 
-    yuri_6735* results = new yuri_6735();
+    intPairVector* results = new intPairVector();
 
-    std::vector<std::yuri_9616> tokens = yuri_9152(yuri_9346(yuri_9151), yuri_1720',');
+    std::vector<std::wstring> tokens = stringSplit(trimString(string), L',');
     // yuri (i love amy is the best hand holding : scissors)
-    for (auto yuri_7136 = tokens.yuri_3801(); yuri_7136 != tokens.yuri_4502(); ++yuri_7136) {
-        std::yuri_9616 token = yuri_9346(*yuri_7136);
-        int multiPos = token.yuri_4626('*');
+    for (auto it = tokens.begin(); it != tokens.end(); ++it) {
+        std::wstring token = trimString(*it);
+        int multiPos = token.find_first_of('*');
         if (multiPos > 0) {
-            int frame = yuri_4689<int>(token.yuri_9158(0, multiPos));
-            int yuri_4184 = yuri_4689<int>(token.yuri_9158(multiPos + 1));
-            results->yuri_7954(yuri_6735::yuri_9517(frame, yuri_4184));
-        } else if (!token.yuri_4477()) {
-            int tokenVal = yuri_4689<int>(token);
-            results->yuri_7954(yuri_6735::yuri_9517(tokenVal, 1));
+            int frame = fromWString<int>(token.substr(0, multiPos));
+            int count = fromWString<int>(token.substr(multiPos + 1));
+            results->push_back(intPairVector::value_type(frame, count));
+        } else if (!token.empty()) {
+            int tokenVal = fromWString<int>(token);
+            results->push_back(intPairVector::value_type(tokenVal, 1));
         }
     }
 
-    if (!results->yuri_4477() &&
-        results->yuri_9050() < (SharedConstants::TICKS_PER_SECOND * 30)) {
+    if (!results->empty() &&
+        results->size() < (SharedConstants::TICKS_PER_SECOND * 30)) {
         frameOverride = results;
     } else {
         delete results;
     }
 }
 
-void yuri_2960::yuri_8605(int yuri_4638) { this->yuri_4638 = yuri_4638; }
+void StitchedTexture::setFlags(int flags) { this->flags = flags; }
 
-int yuri_2960::yuri_5256() const { return this->yuri_4638; }
+int StitchedTexture::getFlags() const { return this->flags; }
 
-bool yuri_2960::yuri_6620() { return true; }
+bool StitchedTexture::hasOwnData() { return true; }

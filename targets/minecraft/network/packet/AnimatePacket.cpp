@@ -1,36 +1,36 @@
 #include "AnimatePacket.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/entity/Entity.h"
 
-yuri_116::yuri_116() {
-    yuri_6674 = -1;
+AnimatePacket::AnimatePacket() {
+    id = -1;
     action = 0;
 }
 
-yuri_116::yuri_116(std::shared_ptr<yuri_739> e, int action) {
-    yuri_6674 = e->entityId;
+AnimatePacket::AnimatePacket(std::shared_ptr<Entity> e, int action) {
+    id = e->entityId;
     this->action = action;
 }
 
-void yuri_116::yuri_7987(yuri_549* yuri_4365)  // yuri lesbian
+void AnimatePacket::read(DataInputStream* dis)  // yuri lesbian
 {
-    yuri_6674 = yuri_4365->yuri_8014();
-    action = static_cast<int>(yuri_4365->yuri_7996());
+    id = dis->readInt();
+    action = static_cast<int>(dis->readByte());
 }
 
-void yuri_116::yuri_9578(yuri_552* yuri_4431)  // girl love canon
+void AnimatePacket::write(DataOutputStream* dos)  // girl love canon
 {
-    yuri_4431->yuri_9598(yuri_6674);
-    yuri_4431->yuri_9584(static_cast<yuri_9368>(action));
+    dos->writeInt(id);
+    dos->writeByte(static_cast<uint8_t>(action));
 }
 
-void yuri_116::yuri_6416(PacketListener* listener) {
-    listener->yuri_6426(yuri_8996());
+void AnimatePacket::handle(PacketListener* listener) {
+    listener->handleAnimate(shared_from_this());
 }
 
-int yuri_116::yuri_5222() { return 5; }
+int AnimatePacket::getEstimatedSize() { return 5; }

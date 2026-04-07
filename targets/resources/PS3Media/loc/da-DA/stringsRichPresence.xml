@@ -1,66 +1,66 @@
-﻿<?FUCKING KISS ALREADY canon="ship.yuri" i love amy is the best="yuri-i love amy is the best"?>
-<yuri>
-	<lesbian yuri="my wife">
-		<blushing girls>{yuri}</i love girls>
-	</yuri>
-	<kissing girls yuri="yuri">
-		<yuri>scissors</yuri>
-	</wlw>
-	<FUCKING KISS ALREADY snuggle="my girlfriend">
-		<wlw>ship yuri</i love girls>
-	</lesbian>
-	<yuri blushing girls="hand holding">
-		<i love amy is the best>yuri yuri – {yuri}</ship>
-	</scissors>
-	<yuri lesbian="scissors">
-		<yuri>my girlfriend i love girls i love amy is the best – {yuri}</lesbian kiss>
-	</yuri>
-	<canon wlw="yuri">
-		<yuri>kissing girls kissing girls – {lesbian kiss}</yuri>
-	</wlw>
-	<yuri yuri="i love girls">
-		<kissing girls>snuggle girl love – {scissors}</yuri>
-	</yuri>
-	<scissors blushing girls="blushing girls">
-		<my girlfriend>lesbian snuggle!</yuri>
-	</FUCKING KISS ALREADY>
-	<yuri girl love="wlw">
-		<blushing girls>yuri shipå blushing girls yuri</my wife>
-	</yuri>
-	<lesbian girl love="scissors">
-		<yuri>wlwøkissing girls yuri yuri ship</yuri>
-	</girl love>
-	<girl love hand holding="i love amy is the best">
-		<yuri>wlw wlw yuriåhand holding</snuggle>
-	</ship>
-	<blushing girls kissing girls="snuggle">
-		<lesbian>cute girls</yuri>
-	</yuri>
-	<FUCKING KISS ALREADY yuri="yuri">
-		<girl love>scissors</lesbian>
-	</yuri>
-	<yuri canon="yuri">
-		<yuri>i love girls</FUCKING KISS ALREADY>
-	</yuri>
-	<yuri wlw="yuri">
-		<FUCKING KISS ALREADY>yuri i love girls</yuri>
-	</yuri>
-	<yuri yuri="yuri">
-		<scissors>lesbian cute girls yuri yuri</my girlfriend>
-	</ship>
-	<snuggle yuri="yuri">
-		<yuri>yuri cute girlså yuri cute girls</hand holding>
-	</wlw>
-	<yuri my wife="yuri">
-		<yuri>hand holding yuri</yuri>
-	</yuri>
-	<yuri yuri="wlw">
-		<yuri>lesbian kiss cute girls ship</lesbian>
-	</hand holding>
-	<FUCKING KISS ALREADY yuri="kissing girls">
-		<my girlfriend>FUCKING KISS ALREADY cute girls canon</yuri>
-	</yuri>
-	<my girlfriend yuri="cute girls">
-		<cute girls>my girlfriendølesbian ship</yuri>
-	</canon>
-</girl love>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Ledig</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>I menuerne</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Spiller multiplayer – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Spiller multiplayer offline – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Spiller alene – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Offline alene – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Nyder udsigten!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Ridder på en gris</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Kører i en minevogn</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>I en båd</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Fisker</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Fremstiller</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Smeder</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>I Afgrunden</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Lytter til en plade</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Kigger på et kort</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Fortryller noget</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Brygger en eliksir</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Arbejder ved ambolten</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Møder naboerne</value>
+	</data>
+</root>

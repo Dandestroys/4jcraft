@@ -6,10 +6,10 @@
 #include "minecraft/world/level/levelgen/structure/StructureFeatureIO.h"
 #include "minecraft/world/level/levelgen/structure/StructurePiece.h"
 
-class yuri_220;
-class yuri_1758;
-class yuri_2302;
-class yuri_3373;
+class BoundingBox;
+class Level;
+class Random;
+class WeighedTreasure;
 
 class NetherBridgePieces {
 private:
@@ -37,582 +37,582 @@ private:
     };
 
 public:
-    static void yuri_7272();
+    static void loadStatic();
 
 private:
-    class yuri_2107 {
+    class PieceWeight {
     public:
         EPieceClass pieceClass;
-        const int yuri_9564;
+        const int weight;
         int placeCount;
         int maxPlaceCount;
         bool allowInRow;
 
-        yuri_2107(EPieceClass pieceClass, int yuri_9564, int maxPlaceCount,
+        PieceWeight(EPieceClass pieceClass, int weight, int maxPlaceCount,
                     bool allowInRow);
-        yuri_2107(EPieceClass pieceClass, int yuri_9564, int maxPlaceCount);
-        bool yuri_4409(int depth);
-        bool yuri_7106();
+        PieceWeight(EPieceClass pieceClass, int weight, int maxPlaceCount);
+        bool doPlace(int depth);
+        bool isValid();
     };
 
     static const int BRIDGE_PIECEWEIGHTS_COUNT = 6;
     static const int CASTLE_PIECEWEIGHTS_COUNT = 7;
-    static NetherBridgePieces::yuri_2107*
+    static NetherBridgePieces::PieceWeight*
         bridgePieceWeights[BRIDGE_PIECEWEIGHTS_COUNT];
-    static NetherBridgePieces::yuri_2107*
+    static NetherBridgePieces::PieceWeight*
         castlePieceWeights[CASTLE_PIECEWEIGHTS_COUNT];
 
 private:
-    class yuri_2016;
+    class NetherBridgePiece;
 
-    static yuri_2016* yuri_4599(
-        NetherBridgePieces::yuri_2107* piece,
-        std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-        int footY, int footZ, int yuri_4362, int depth);
+    static NetherBridgePiece* findAndCreateBridgePieceFactory(
+        NetherBridgePieces::PieceWeight* piece,
+        std::list<StructurePiece*>* pieces, Random* random, int footX,
+        int footY, int footZ, int direction, int depth);
 
     /**
      *
      *
      */
 public:
-    class yuri_2907;
+    class StartPiece;
 
 private:
-    class yuri_2016 : public yuri_2981 {
+    class NetherBridgePiece : public StructurePiece {
     protected:
         static const int FORTRESS_TREASURE_ITEMS_COUNT = 11;
-        static yuri_3373*
+        static WeighedTreasure*
             fortressTreasureItems[FORTRESS_TREASURE_ITEMS_COUNT];
 
     public:
-        yuri_2016();
+        NetherBridgePiece();
 
     protected:
-        yuri_2016(int genDepth);
+        NetherBridgePiece(int genDepth);
 
-        virtual void yuri_7990(yuri_409* yuri_9178);
-        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void readAdditonalSaveData(CompoundTag* tag);
+        virtual void addAdditonalSaveData(CompoundTag* tag);
 
     private:
-        int yuri_9445(std::list<yuri_2107*>* currentPieces);
+        int updatePieceWeight(std::list<PieceWeight*>* currentPieces);
 
-        yuri_2016* yuri_4837(
-            yuri_2907* startPiece,
-            std::list<NetherBridgePieces::yuri_2107*>* currentPieces,
-            std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-            int footY, int footZ, int yuri_4362, int depth);
-        yuri_2981* yuri_4814(yuri_2907* startPiece,
-                                            std::list<yuri_2981*>* pieces,
-                                            yuri_2302* yuri_7981, int footX,
-                                            int footY, int footZ, int yuri_4362,
+        NetherBridgePiece* generatePiece(
+            StartPiece* startPiece,
+            std::list<NetherBridgePieces::PieceWeight*>* currentPieces,
+            std::list<StructurePiece*>* pieces, Random* random, int footX,
+            int footY, int footZ, int direction, int depth);
+        StructurePiece* generateAndAddPiece(StartPiece* startPiece,
+                                            std::list<StructurePiece*>* pieces,
+                                            Random* random, int footX,
+                                            int footY, int footZ, int direction,
                                             int depth, bool isCastle);
 
     protected:
-        yuri_2981* yuri_4819(yuri_2907* startPiece,
-                                             std::list<yuri_2981*>* pieces,
-                                             yuri_2302* yuri_7981, int xOff, int yOff,
+        StructurePiece* generateChildForward(StartPiece* startPiece,
+                                             std::list<StructurePiece*>* pieces,
+                                             Random* random, int xOff, int yOff,
                                              bool isCastle);
-        yuri_2981* yuri_4820(yuri_2907* startPiece,
-                                          std::list<yuri_2981*>* pieces,
-                                          yuri_2302* yuri_7981, int yOff, int zOff,
+        StructurePiece* generateChildLeft(StartPiece* startPiece,
+                                          std::list<StructurePiece*>* pieces,
+                                          Random* random, int yOff, int zOff,
                                           bool isCastle);
-        yuri_2981* yuri_4821(yuri_2907* startPiece,
-                                           std::list<yuri_2981*>* pieces,
-                                           yuri_2302* yuri_7981, int yOff, int zOff,
+        StructurePiece* generateChildRight(StartPiece* startPiece,
+                                           std::list<StructurePiece*>* pieces,
+                                           Random* random, int yOff, int zOff,
                                            bool isCastle);
 
-        static bool yuri_6975(yuri_220* yuri_3843,
-                            yuri_2907* startRoom);  // yuri yuri i love my girlfriend
-        void yuri_4827(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                               yuri_220* chunkBB, int yuri_9621, int yuri_9625, int yuri_9630,
+        static bool isOkBox(BoundingBox* box,
+                            StartPiece* startRoom);  // yuri yuri i love my girlfriend
+        void generateLightPost(Level* level, Random* random,
+                               BoundingBox* chunkBB, int x, int y, int z,
                                int xOff, int zOff);
 
-        void yuri_4830(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                          yuri_220* chunkBB, int yuri_9621, int yuri_9625,
-                                          int yuri_9630);
-        void yuri_4829(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                         yuri_220* chunkBB, int yuri_9621, int yuri_9625,
-                                         int yuri_9630);
-        void yuri_4831(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                       yuri_220* chunkBB, int yuri_9621, int yuri_9625,
-                                       int yuri_9630);
-        void yuri_4828(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                         yuri_220* chunkBB, int yuri_9621, int yuri_9625,
-                                         int yuri_9630);
+        void generateLightPostFacingRight(Level* level, Random* random,
+                                          BoundingBox* chunkBB, int x, int y,
+                                          int z);
+        void generateLightPostFacingLeft(Level* level, Random* random,
+                                         BoundingBox* chunkBB, int x, int y,
+                                         int z);
+        void generateLightPostFacingUp(Level* level, Random* random,
+                                       BoundingBox* chunkBB, int x, int y,
+                                       int z);
+        void generateLightPostFacingDown(Level* level, Random* random,
+                                         BoundingBox* chunkBB, int x, int y,
+                                         int z);
     };
 
     /**
      *
      *
      */
-    class yuri_233 : public yuri_2016 {
+    class BridgeStraight : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_233(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new BridgeStraight(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_BridgeStraight;
         }
 
     private:
-        static const int yuri_9567 = 5;
-        static const int yuri_6654 = 10;
+        static const int width = 5;
+        static const int height = 10;
         static const int depth = 19;
 
     public:
-        yuri_233();
-        yuri_233(int genDepth, yuri_2302* yuri_7981, yuri_220* stairsBox,
-                       int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_233* yuri_4244(std::list<yuri_2981*>* pieces,
-                                           yuri_2302* yuri_7981, int footX, int footY,
-                                           int footZ, int yuri_4362,
+        BridgeStraight();
+        BridgeStraight(int genDepth, Random* random, BoundingBox* stairsBox,
+                       int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static BridgeStraight* createPiece(std::list<StructurePiece*>* pieces,
+                                           Random* random, int footX, int footY,
+                                           int footZ, int direction,
                                            int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
-    class yuri_232 : public yuri_2016 {
+    class BridgeEndFiller : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_232(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new BridgeEndFiller(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_BridgeEndFiller;
         }
 
     private:
-        static const int yuri_9567 = 5;
-        static const int yuri_6654 = 10;
+        static const int width = 5;
+        static const int height = 10;
         static const int depth = 8;
 
         int selfSeed;
 
     public:
-        yuri_232();
-        yuri_232(int genDepth, yuri_2302* yuri_7981, yuri_220* stairsBox,
-                        int yuri_4362);
+        BridgeEndFiller();
+        BridgeEndFiller(int genDepth, Random* random, BoundingBox* stairsBox,
+                        int direction);
 
-        static yuri_232* yuri_4244(std::list<yuri_2981*>* pieces,
-                                            yuri_2302* yuri_7981, int footX,
-                                            int footY, int footZ, int yuri_4362,
+        static BridgeEndFiller* createPiece(std::list<StructurePiece*>* pieces,
+                                            Random* random, int footX,
+                                            int footY, int footZ, int direction,
                                             int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
 
     protected:
-        void yuri_7990(yuri_409* yuri_9178);
-        void yuri_3582(yuri_409* yuri_9178);
+        void readAdditonalSaveData(CompoundTag* tag);
+        void addAdditonalSaveData(CompoundTag* tag);
     };
 
-    class yuri_231 : public yuri_2016 {
+    class BridgeCrossing : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_231(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new BridgeCrossing(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_BridgeCrossing;
         }
 
     private:
-        static const int yuri_9567 = 19;
-        static const int yuri_6654 = 10;
+        static const int width = 19;
+        static const int height = 10;
         static const int depth = 19;
 
     public:
-        yuri_231();
-        yuri_231(int genDepth, yuri_2302* yuri_7981, yuri_220* stairsBox,
-                       int yuri_4362);
+        BridgeCrossing();
+        BridgeCrossing(int genDepth, Random* random, BoundingBox* stairsBox,
+                       int direction);
 
     protected:
-        yuri_231(yuri_2302* yuri_7981, int yuri_9565, int yuri_7588);
+        BridgeCrossing(Random* random, int west, int north);
 
     public:
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_231* yuri_4244(std::list<yuri_2981*>* pieces,
-                                           yuri_2302* yuri_7981, int footX, int footY,
-                                           int footZ, int yuri_4362,
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static BridgeCrossing* createPiece(std::list<StructurePiece*>* pieces,
+                                           Random* random, int footX, int footY,
+                                           int footZ, int direction,
                                            int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
 public:
-    class yuri_2907 : public yuri_231 {
+    class StartPiece : public BridgeCrossing {
     public:
-        virtual EStructurePiece yuri_1188() {
+        virtual EStructurePiece GetType() {
             return eStructurePiece_NetherBridgeStartPiece;
         }
 
     public:
-        yuri_2107* previousPiece;
-        yuri_1758* m_level;
+        PieceWeight* previousPiece;
+        Level* m_level;
 
-        std::list<yuri_2107*> availableBridgePieces;
-        std::list<yuri_2107*> availableCastlePieces;
+        std::list<PieceWeight*> availableBridgePieces;
+        std::list<PieceWeight*> availableCastlePieces;
 
         // yuri girl love blushing girls my girlfriend yuri kissing girls yuri kissing girls snuggle i love girls
         // FUCKING KISS ALREADY yuri my girlfriend kissing girls i love girls
-        std::vector<yuri_2981*> pendingChildren;
+        std::vector<StructurePiece*> pendingChildren;
 
-        yuri_2907();
-        yuri_2907(yuri_2302* yuri_7981, int yuri_9565, int yuri_7588,
-                   yuri_1758* yuri_7194);  // yuri yuri yuri snuggle
+        StartPiece();
+        StartPiece(Random* random, int west, int north,
+                   Level* level);  // yuri yuri yuri snuggle
 
     protected:
-        virtual void yuri_7990(yuri_409* yuri_9178);
-        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void readAdditonalSaveData(CompoundTag* tag);
+        virtual void addAdditonalSaveData(CompoundTag* tag);
     };
 
 private:
-    class yuri_2437 : public yuri_2016 {
+    class RoomCrossing : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_2437(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new RoomCrossing(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_RoomCrossing;
         }
 
     private:
-        static const int yuri_9567 = 7;
-        static const int yuri_6654 = 9;
+        static const int width = 7;
+        static const int height = 9;
         static const int depth = 7;
 
     public:
-        yuri_2437();
-        yuri_2437(int genDepth, yuri_2302* yuri_7981, yuri_220* yuri_3843,
-                     int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_2437* yuri_4244(std::list<yuri_2981*>* pieces,
-                                         yuri_2302* yuri_7981, int footX, int footY,
-                                         int footZ, int yuri_4362,
+        RoomCrossing();
+        RoomCrossing(int genDepth, Random* random, BoundingBox* box,
+                     int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static RoomCrossing* createPiece(std::list<StructurePiece*>* pieces,
+                                         Random* random, int footX, int footY,
+                                         int footZ, int direction,
                                          int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
-    class yuri_2898 : public yuri_2016 {
+    class StairsRoom : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_2898(); }
-        virtual EStructurePiece yuri_1188() { return eStructurePiece_StairsRoom; }
+        static StructurePiece* Create() { return new StairsRoom(); }
+        virtual EStructurePiece GetType() { return eStructurePiece_StairsRoom; }
 
     private:
-        static const int yuri_9567 = 7;
-        static const int yuri_6654 = 11;
+        static const int width = 7;
+        static const int height = 11;
         static const int depth = 7;
 
     public:
-        yuri_2898();
-        yuri_2898(int genDepth, yuri_2302* yuri_7981, yuri_220* yuri_3843,
-                   int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_2898* yuri_4244(std::list<yuri_2981*>* pieces,
-                                       yuri_2302* yuri_7981, int footX, int footY,
-                                       int footZ, int yuri_4362, int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        StairsRoom();
+        StairsRoom(int genDepth, Random* random, BoundingBox* box,
+                   int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static StairsRoom* createPiece(std::list<StructurePiece*>* pieces,
+                                       Random* random, int footX, int footY,
+                                       int footZ, int direction, int genDepth);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
-    class yuri_1968 : public yuri_2016 {
+    class MonsterThrone : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_1968(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new MonsterThrone(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_MonsterThrone;
         }
 
     private:
-        static const int yuri_9567 = 7;
-        static const int yuri_6654 = 8;
+        static const int width = 7;
+        static const int height = 8;
         static const int depth = 9;
 
         bool hasPlacedMobSpawner;
 
     public:
-        yuri_1968();
-        yuri_1968(int genDepth, yuri_2302* yuri_7981, yuri_220* yuri_3843,
-                      int yuri_4362);
+        MonsterThrone();
+        MonsterThrone(int genDepth, Random* random, BoundingBox* box,
+                      int direction);
 
     protected:
-        virtual void yuri_7990(yuri_409* yuri_9178);
-        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void readAdditonalSaveData(CompoundTag* tag);
+        virtual void addAdditonalSaveData(CompoundTag* tag);
 
     public:
-        static yuri_1968* yuri_4244(std::list<yuri_2981*>* pieces,
-                                          yuri_2302* yuri_7981, int footX, int footY,
-                                          int footZ, int yuri_4362,
+        static MonsterThrone* createPiece(std::list<StructurePiece*>* pieces,
+                                          Random* random, int footX, int footY,
+                                          int footZ, int direction,
                                           int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_315 : public yuri_2016 {
+    class CastleEntrance : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_315(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new CastleEntrance(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_CastleEntrance;
         }
 
     private:
-        static const int yuri_9567 = 13;
-        static const int yuri_6654 = 14;
+        static const int width = 13;
+        static const int height = 14;
         static const int depth = 13;
 
     public:
-        yuri_315();
-        yuri_315(int genDepth, yuri_2302* yuri_7981, yuri_220* stairsBox,
-                       int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_315* yuri_4244(std::list<yuri_2981*>* pieces,
-                                           yuri_2302* yuri_7981, int footX, int footY,
-                                           int footZ, int yuri_4362,
+        CastleEntrance();
+        CastleEntrance(int genDepth, Random* random, BoundingBox* stairsBox,
+                       int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static CastleEntrance* createPiece(std::list<StructurePiece*>* pieces,
+                                           Random* random, int footX, int footY,
+                                           int footZ, int direction,
                                            int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_320 : public yuri_2016 {
+    class CastleStalkRoom : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_320(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new CastleStalkRoom(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_CastleStalkRoom;
         }
 
     private:
-        static const int yuri_9567 = 13;
-        static const int yuri_6654 = 14;
+        static const int width = 13;
+        static const int height = 14;
         static const int depth = 13;
 
     public:
-        yuri_320();
-        yuri_320(int genDepth, yuri_2302* yuri_7981, yuri_220* stairsBox,
-                        int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_320* yuri_4244(std::list<yuri_2981*>* pieces,
-                                            yuri_2302* yuri_7981, int footX,
-                                            int footY, int footZ, int yuri_4362,
+        CastleStalkRoom();
+        CastleStalkRoom(int genDepth, Random* random, BoundingBox* stairsBox,
+                        int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static CastleStalkRoom* createPiece(std::list<StructurePiece*>* pieces,
+                                            Random* random, int footX,
+                                            int footY, int footZ, int direction,
                                             int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_318 : public yuri_2016 {
+    class CastleSmallCorridorPiece : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() {
-            return new yuri_318();
+        static StructurePiece* Create() {
+            return new CastleSmallCorridorPiece();
         }
-        virtual EStructurePiece yuri_1188() {
+        virtual EStructurePiece GetType() {
             return eStructurePiece_CastleSmallCorridorPiece;
         }
 
     private:
-        static const int yuri_9567 = 5;
-        static const int yuri_6654 = 7;
+        static const int width = 5;
+        static const int height = 7;
         static const int depth = 5;
 
     public:
-        yuri_318();
-        yuri_318(int genDepth, yuri_2302* yuri_7981,
-                                 yuri_220* stairsBox, int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_318* yuri_4244(
-            std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-            int footY, int footZ, int yuri_4362, int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        CastleSmallCorridorPiece();
+        CastleSmallCorridorPiece(int genDepth, Random* random,
+                                 BoundingBox* stairsBox, int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static CastleSmallCorridorPiece* createPiece(
+            std::list<StructurePiece*>* pieces, Random* random, int footX,
+            int footY, int footZ, int direction, int genDepth);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_316 : public yuri_2016 {
+    class CastleSmallCorridorCrossingPiece : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() {
-            return new yuri_316();
+        static StructurePiece* Create() {
+            return new CastleSmallCorridorCrossingPiece();
         }
-        virtual EStructurePiece yuri_1188() {
+        virtual EStructurePiece GetType() {
             return eStructurePiece_CastleSmallCorridorCrossingPiece;
         }
 
     private:
-        static const int yuri_9567 = 5;
-        static const int yuri_6654 = 7;
+        static const int width = 5;
+        static const int height = 7;
         static const int depth = 5;
 
     public:
-        yuri_316();
-        yuri_316(int genDepth, yuri_2302* yuri_7981,
-                                         yuri_220* stairsBox, int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_316* yuri_4244(
-            std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-            int footY, int footZ, int yuri_4362, int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        CastleSmallCorridorCrossingPiece();
+        CastleSmallCorridorCrossingPiece(int genDepth, Random* random,
+                                         BoundingBox* stairsBox, int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static CastleSmallCorridorCrossingPiece* createPiece(
+            std::list<StructurePiece*>* pieces, Random* random, int footX,
+            int footY, int footZ, int direction, int genDepth);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_319 : public yuri_2016 {
+    class CastleSmallCorridorRightTurnPiece : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() {
-            return new yuri_319();
+        static StructurePiece* Create() {
+            return new CastleSmallCorridorRightTurnPiece();
         }
-        virtual EStructurePiece yuri_1188() {
+        virtual EStructurePiece GetType() {
             return eStructurePiece_CastleSmallCorridorRightTurnPiece;
         }
 
     private:
-        static const int yuri_9567 = 5;
-        static const int yuri_6654 = 7;
+        static const int width = 5;
+        static const int height = 7;
         static const int depth = 5;
 
         bool isNeedingChest;
 
     public:
-        yuri_319();
-        yuri_319(int genDepth, yuri_2302* yuri_7981,
-                                          yuri_220* stairsBox,
-                                          int yuri_4362);
+        CastleSmallCorridorRightTurnPiece();
+        CastleSmallCorridorRightTurnPiece(int genDepth, Random* random,
+                                          BoundingBox* stairsBox,
+                                          int direction);
 
     protected:
-        virtual void yuri_7990(yuri_409* yuri_9178);
-        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void readAdditonalSaveData(CompoundTag* tag);
+        virtual void addAdditonalSaveData(CompoundTag* tag);
 
     public:
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_319* yuri_4244(
-            std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-            int footY, int footZ, int yuri_4362, int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static CastleSmallCorridorRightTurnPiece* createPiece(
+            std::list<StructurePiece*>* pieces, Random* random, int footX,
+            int footY, int footZ, int direction, int genDepth);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_317 : public yuri_2016 {
+    class CastleSmallCorridorLeftTurnPiece : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() {
-            return new yuri_317();
+        static StructurePiece* Create() {
+            return new CastleSmallCorridorLeftTurnPiece();
         }
-        virtual EStructurePiece yuri_1188() {
+        virtual EStructurePiece GetType() {
             return eStructurePiece_CastleSmallCorridorLeftTurnPiece;
         }
 
     private:
-        static const int yuri_9567 = 5;
-        static const int yuri_6654 = 7;
+        static const int width = 5;
+        static const int height = 7;
         static const int depth = 5;
         bool isNeedingChest;
 
     public:
-        yuri_317();
-        yuri_317(int genDepth, yuri_2302* yuri_7981,
-                                         yuri_220* stairsBox, int yuri_4362);
+        CastleSmallCorridorLeftTurnPiece();
+        CastleSmallCorridorLeftTurnPiece(int genDepth, Random* random,
+                                         BoundingBox* stairsBox, int direction);
 
     protected:
-        virtual void yuri_7990(yuri_409* yuri_9178);
-        virtual void yuri_3582(yuri_409* yuri_9178);
+        virtual void readAdditonalSaveData(CompoundTag* tag);
+        virtual void addAdditonalSaveData(CompoundTag* tag);
 
     public:
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_317* yuri_4244(
-            std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-            int footY, int footZ, int yuri_4362, int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static CastleSmallCorridorLeftTurnPiece* createPiece(
+            std::list<StructurePiece*>* pieces, Random* random, int footX,
+            int footY, int footZ, int direction, int genDepth);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_313 : public yuri_2016 {
+    class CastleCorridorStairsPiece : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() {
-            return new yuri_313();
+        static StructurePiece* Create() {
+            return new CastleCorridorStairsPiece();
         }
-        virtual EStructurePiece yuri_1188() {
+        virtual EStructurePiece GetType() {
             return eStructurePiece_CastleCorridorStairsPiece;
         }
 
     private:
-        static const int yuri_9567 = 5;
-        static const int yuri_6654 = 14;
+        static const int width = 5;
+        static const int height = 14;
         static const int depth = 10;
 
     public:
-        yuri_313();
-        yuri_313(int genDepth, yuri_2302* yuri_7981,
-                                  yuri_220* stairsBox, int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_313* yuri_4244(
-            std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-            int footY, int footZ, int yuri_4362, int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        CastleCorridorStairsPiece();
+        CastleCorridorStairsPiece(int genDepth, Random* random,
+                                  BoundingBox* stairsBox, int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static CastleCorridorStairsPiece* createPiece(
+            std::list<StructurePiece*>* pieces, Random* random, int footX,
+            int footY, int footZ, int direction, int genDepth);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_314 : public yuri_2016 {
+    class CastleCorridorTBalconyPiece : public NetherBridgePiece {
     public:
-        static yuri_2981* yuri_473() {
-            return new yuri_314();
+        static StructurePiece* Create() {
+            return new CastleCorridorTBalconyPiece();
         }
-        virtual EStructurePiece yuri_1188() {
+        virtual EStructurePiece GetType() {
             return eStructurePiece_CastleCorridorTBalconyPiece;
         }
 
     private:
-        static const int yuri_9567 = 9;
-        static const int yuri_6654 = 7;
+        static const int width = 9;
+        static const int height = 7;
         static const int depth = 9;
 
     public:
-        yuri_314();
-        yuri_314(int genDepth, yuri_2302* yuri_7981,
-                                    yuri_220* stairsBox, int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        static yuri_314* yuri_4244(
-            std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-            int footY, int footZ, int yuri_4362, int genDepth);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        CastleCorridorTBalconyPiece();
+        CastleCorridorTBalconyPiece(int genDepth, Random* random,
+                                    BoundingBox* stairsBox, int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        static CastleCorridorTBalconyPiece* createPiece(
+            std::list<StructurePiece*>* pieces, Random* random, int footX,
+            int footY, int footZ, int direction, int genDepth);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 };

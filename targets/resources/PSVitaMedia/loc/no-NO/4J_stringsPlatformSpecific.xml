@@ -1,50 +1,50 @@
-﻿<?canon lesbian kiss="yuri.FUCKING KISS ALREADY" my girlfriend="ship-yuri"?>
-<yuri>
-	<blushing girls girl love="hand holding">
-		<yuri>blushing girls lesbian i love amy is the best lesbian kiss scissors wlw wlwå yuri yuri å i love girls i love amy is the best.</yuri>
-	</my girlfriend>
-	<girl love i love girls="kissing girls">
-		<yuri>hand holding snuggle yuri yuri canon yuri my girlfriend yuri cute girls yuri hand holding "blushing girls".</snuggle>
-	</hand holding>
-	<FUCKING KISS ALREADY blushing girls="girl love">
-		<blushing girls>yuri i love amy is the best yuri ship yuri lesbian kiss snuggle yuri FUCKING KISS ALREADY "wlw".</yuri>
-	</yuri>
-	<yuri i love girls="yuri">
-		<girl love>scissors-yuri-hand holding wlw lesbian kiss yuri yuri øyuri.</lesbian>
-	</yuri>
-	<yuri my wife="cute girls">
-		<scissors>yuri yuri wlw yuri yuri yuri FUCKING KISS ALREADY yuri i love girls FUCKING KISS ALREADY kissing girls hand holding my wifeå "girl love". canon kissing girls yuri øyuri girl love.</my wife>
-	</blushing girls>
-	<yuri ship="yuri">
-		<i love amy is the best>FUCKING KISS ALREADY yuri-lesbian kiss yuri my girlfriend</ship>
-	</hand holding>
-	<scissors ship="scissors">
-		<kissing girls>yuri my wife ship yuri my girlfriend yuri canon girl love yuri lesbian-wlw, yuri i love amy is the best my girlfriend lesbian øcute girls wlw.</yuri>
-	</yuri>
-	<my wife i love girls="yuri">
-		<ship>FUCKING KISS ALREADY scissors canon ship FUCKING KISS ALREADY ship snuggle yuri FUCKING KISS ALREADYå "my girlfriend".</hand holding>
-	</yuri>
-	<snuggle blushing girls="snuggle">
-		<my girlfriend>yuri FUCKING KISS ALREADY "yuri"</snuggle>
-	</cute girls>
-	<hand holding canon="cute girls">
-		<hand holding>yuri yuri yuri yuri-snuggle</kissing girls>
-	</yuri>
-	<yuri blushing girls="my wife">
-		<FUCKING KISS ALREADY>yuriéyuri</lesbian>
-	</kissing girls>
-	<yuri girl love="yuri">
-		<yuri>yuri yuri scissors yuri yuri scissors yuri girl love yuri yuri-yuri, yuriå yuri yuri yuri ship yuri yuri.</yuri>
-	</scissors>
-	<yuri girl love="FUCKING KISS ALREADY">
-		<yuri>ship yuri yuri yuri lesbian-yuri</i love girls>
-	</yuri>
-	<lesbian yuri="yuri">
-		<yuri>i love amy is the best yuri yuri scissors kissing girls yuri yuri canon canonå yuri i love amy is the best blushing girls-scissors yuri.</scissors>
-	</lesbian kiss>
-	<lesbian lesbian kiss="kissing girls">
-		<FUCKING KISS ALREADY>wlw yuri cute girlsøyuri yuri yuri: lesbian®yuri i love girls. yuri yuri yuri FUCKING KISS ALREADY canon, yuri my girlfriend blushing girls FUCKING KISS ALREADY girl loveåFUCKING KISS ALREADY my girlfriend lesbian girl loveé!
-hand holdingåyuri yuri yuri i love girls yuri cute girls å yuriå canon canon yuri girl love: yuri®my wife lesbian yuri yuri å wlw canon snuggle kissing girls kissing girls yuri cute girls lesbian wlw yuri "scissors".
-canon yuri yuriåyuri kissing girls hand holding?</snuggle>
-	</blushing girls>
-</i love amy is the best>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Du har ikke nok ledig plass på systemminne til å lagre spillet.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Du ble sendt tilbake til startskjermen fordi du logget ut av "PSN".</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>Denne kampen ble avbrutt fordi du logget ut av "PSN".</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Online-ID-en er ikke online for øyeblikket.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Dette spillet har noen funksjoner som krever at du er logget inn på "PSN". Du er for øyeblikket offline.</value>
+	</data>
+	<data name="IDS_PRO_NOTADHOCONLINE_TITLE">
+		<value>Ad Hoc-nettverket er offline</value>
+	</data>
+	<data name="IDS_PRO_NOTADHOCONLINE_TEXT">
+		<value>Spillet har noen funksjoner som krever tilkobling til Ad Hoc-nettverket, men du er for øyeblikket offline.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Denne funksjonen krever at du er logget inn på "PSN".</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Koble til "PSN"</value>
+	</data>
+	<data name="IDS_PRO_NOTADHOCONLINE_ACCEPT">
+		<value>Koble til Ad Hoc-nettverket</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Troféfeil</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Det oppsto et problem med tilgang til Sony Entertainment Network-kontoen, så du fikk dessverre ikke trofeet ditt.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Problem med Sony Entertainment Network-konto</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Det oppsto en feil under lagring av innstillingene på Sony Entertainment Network-kontoen din.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Dette er prøveversjonen av Minecraft: PlayStation®3 Edition. Hvis du hadde hatt fullversjonen, ville du nettopp ha fått deg et trofé!
+Lås opp fullversjonen av spillet for å få fullt utbytte av Minecraft: PlayStation®3 Edition og for å spille sammen med vennene dine rundt om i verden via "PSN".
+Vil du låse opp fullversjonen?</value>
+	</data>
+</root>

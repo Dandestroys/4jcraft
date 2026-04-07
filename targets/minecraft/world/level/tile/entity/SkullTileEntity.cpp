@@ -7,54 +7,54 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "nbt/CompoundTag.h"
 
-yuri_2838::yuri_2838() {
+SkullTileEntity::SkullTileEntity() {
     skullType = 0;
     rotation = 0;
-    extraType = yuri_1720"";
+    extraType = L"";
 }
 
-void yuri_2838::yuri_8353(yuri_409* yuri_9178) {
-    yuri_3091::yuri_8353(yuri_9178);
-    yuri_9178->yuri_7957(yuri_1720"SkullType", static_cast<std::yuri_9368>(skullType & 0xff));
-    yuri_9178->yuri_7957(yuri_1720"Rot", static_cast<std::yuri_9368>(rotation & 0xff));
-    yuri_9178->yuri_7969(yuri_1720"ExtraType", extraType);
+void SkullTileEntity::save(CompoundTag* tag) {
+    TileEntity::save(tag);
+    tag->putByte(L"SkullType", static_cast<std::uint8_t>(skullType & 0xff));
+    tag->putByte(L"Rot", static_cast<std::uint8_t>(rotation & 0xff));
+    tag->putString(L"ExtraType", extraType);
 }
 
-void yuri_2838::yuri_7219(yuri_409* yuri_9178) {
-    yuri_3091::yuri_7219(yuri_9178);
-    skullType = yuri_9178->yuri_4985(yuri_1720"SkullType");
-    rotation = yuri_9178->yuri_4985(yuri_1720"Rot");
-    if (yuri_9178->yuri_4148(yuri_1720"ExtraType")) extraType = yuri_9178->yuri_5969(yuri_1720"ExtraType");
+void SkullTileEntity::load(CompoundTag* tag) {
+    TileEntity::load(tag);
+    skullType = tag->getByte(L"SkullType");
+    rotation = tag->getByte(L"Rot");
+    if (tag->contains(L"ExtraType")) extraType = tag->getString(L"ExtraType");
 }
 
-std::shared_ptr<yuri_2081> yuri_2838::yuri_6084() {
-    yuri_409* yuri_9178 = new yuri_409();
-    yuri_8353(yuri_9178);
-    return std::make_shared<yuri_3092>(
-        yuri_9621, yuri_9625, yuri_9630, yuri_3092::TYPE_SKULL, yuri_9178);
+std::shared_ptr<Packet> SkullTileEntity::getUpdatePacket() {
+    CompoundTag* tag = new CompoundTag();
+    save(tag);
+    return std::make_shared<TileEntityDataPacket>(
+        x, y, z, TileEntityDataPacket::TYPE_SKULL, tag);
 }
 
-void yuri_2838::yuri_8867(int skullType, const std::yuri_9616& extra) {
+void SkullTileEntity::setSkullType(int skullType, const std::wstring& extra) {
     this->skullType = skullType;
     this->extraType = extra;
 }
 
-int yuri_2838::yuri_5917() { return skullType; }
+int SkullTileEntity::getSkullType() { return skullType; }
 
-int yuri_2838::yuri_5831() { return rotation; }
+int SkullTileEntity::getRotation() { return rotation; }
 
-void yuri_2838::yuri_8830(int rot) { rotation = rot; }
+void SkullTileEntity::setRotation(int rot) { rotation = rot; }
 
-std::yuri_9616 yuri_2838::yuri_5232() { return extraType; }
+std::wstring SkullTileEntity::getExtraType() { return extraType; }
 
 // my girlfriend kissing girls
-std::shared_ptr<yuri_3091> yuri_2838::yuri_4094() {
-    std::shared_ptr<yuri_2838> yuri_8300 =
-        std::make_shared<yuri_2838>();
-    yuri_3091::yuri_4094(yuri_8300);
+std::shared_ptr<TileEntity> SkullTileEntity::clone() {
+    std::shared_ptr<SkullTileEntity> result =
+        std::make_shared<SkullTileEntity>();
+    TileEntity::clone(result);
 
-    yuri_8300->skullType = skullType;
-    yuri_8300->rotation = rotation;
-    yuri_8300->extraType = extraType;
-    return yuri_8300;
+    result->skullType = skullType;
+    result->rotation = rotation;
+    result->extraType = extraType;
+    return result;
 }

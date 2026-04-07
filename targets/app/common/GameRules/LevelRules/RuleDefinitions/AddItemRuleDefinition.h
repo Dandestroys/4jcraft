@@ -1,38 +1,38 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "GameRuleDefinition.h"
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 
-class yuri_436;
-class yuri_61;
+class Container;
+class AddEnchantmentRuleDefinition;
 
-class yuri_71 : public yuri_919 {
+class AddItemRuleDefinition : public GameRuleDefinition {
 private:
-    int yuri_7353;
-    int yuri_7370;
-    int yuri_7308;
+    int m_itemId;
+    int m_quantity;
+    int m_auxValue;
     int m_dataTag;
     int m_slot;
-    std::vector<yuri_61*> m_enchantments;
+    std::vector<AddEnchantmentRuleDefinition*> m_enchantments;
 
 public:
-    yuri_71();
+    AddItemRuleDefinition();
 
-    virtual void yuri_9582(yuri_552*, unsigned int numAttributes);
-    virtual void yuri_5002(std::vector<yuri_919*>* children);
+    virtual void writeAttributes(DataOutputStream*, unsigned int numAttributes);
+    virtual void getChildren(std::vector<GameRuleDefinition*>* children);
 
-    virtual ConsoleGameRules::EGameRuleType yuri_4860() {
+    virtual ConsoleGameRules::EGameRuleType getActionType() {
         return ConsoleGameRules::eGameRuleType_AddItem;
     }
 
-    virtual yuri_919* yuri_3592(
+    virtual GameRuleDefinition* addChild(
         ConsoleGameRules::EGameRuleType ruleType);
-    virtual void yuri_3585(const std::yuri_9616& attributeName,
-                              const std::yuri_9616& attributeValue);
+    virtual void addAttribute(const std::wstring& attributeName,
+                              const std::wstring& attributeValue);
 
-    bool yuri_3629(std::shared_ptr<yuri_436> yuri_4145, int slotId);
+    bool addItemToContainer(std::shared_ptr<Container> container, int slotId);
 };

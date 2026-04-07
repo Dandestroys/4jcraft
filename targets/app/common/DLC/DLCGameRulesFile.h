@@ -1,17 +1,17 @@
 #pragma once
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "DLCGameRules.h"
 
-class yuri_526 : public yuri_525 {
+class DLCGameRulesFile : public DLCGameRules {
 private:
-    std::yuri_9368* m_pbData;
+    std::uint8_t* m_pbData;
     std::uint32_t m_dataBytes;
 
 public:
-    yuri_526(const std::yuri_9616& yuri_7800);
+    DLCGameRulesFile(const std::wstring& path);
 
-    virtual void yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes);
-    virtual std::yuri_9368* yuri_5115(std::uint32_t& dataBytes);
+    virtual void addData(std::uint8_t* pbData, std::uint32_t dataBytes);
+    virtual std::uint8_t* getData(std::uint32_t& dataBytes);
 };

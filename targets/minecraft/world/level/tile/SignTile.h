@@ -8,37 +8,37 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
-class yuri_2816 : public yuri_163 {
-    friend class yuri_3088;
+class SignTile : public BaseEntityTile {
+    friend class Tile;
 
 private:
     eINSTANCEOF clas;
     bool onGround;
 
 protected:
-    yuri_2816(int yuri_6674, eINSTANCEOF clas, bool onGround);
+    SignTile(int id, eINSTANCEOF clas, bool onGround);
 
 public:
-    yuri_1346* yuri_6007(int face, int yuri_4295);
-    virtual void yuri_9402();
-    std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    yuri_0 yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    Icon* getTexture(int face, int data);
+    virtual void updateDefaultShape();
+    std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    AABB getTileAABB(Level* level, int x, int y, int z);
+    void updateShape(LevelSource* level, int x, int y, int z,
                      int forceData = -1,
-                     std::shared_ptr<yuri_3091> forceEntity =
-                         std::shared_ptr<yuri_3091>());  // my girlfriend yuri my girlfriend,
+                     std::shared_ptr<TileEntity> forceEntity =
+                         std::shared_ptr<TileEntity>());  // my girlfriend yuri my girlfriend,
                                                           // snuggle scissors
-    int yuri_5806();
-    bool yuri_6827();
-    virtual bool yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_7058(bool isServerLevel = false);
+    int getRenderShape();
+    bool isCubeShaped();
+    virtual bool isPathfindable(LevelSource* level, int x, int y, int z);
+    bool isSolidRender(bool isServerLevel = false);
 
 protected:
-    std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);
+    std::shared_ptr<TileEntity> newTileEntity(Level* level);
 
 public:
-    int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
-    void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
-    int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_8072(IconRegister* iconRegister);
+    int getResource(int data, Random* random, int playerBonusLevel);
+    void neighborChanged(Level* level, int x, int y, int z, int type);
+    int cloneTileId(Level* level, int x, int y, int z);
+    void registerIcons(IconRegister* iconRegister);
 };

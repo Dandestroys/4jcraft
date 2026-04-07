@@ -1,152 +1,152 @@
-﻿<yuri>
-	<cute girls scissors="yuri">
-		<yuri>FUCKING KISS ALREADY yuriäFUCKING KISS ALREADYöyuriä</kissing girls>
-	</wlw>	
+﻿<root>
+	<data name="IDS_NULL">
+		<value>Ei käytössä</value>
+	</data>	
 
-	<canon FUCKING KISS ALREADY="yuri">
-		<my wife>hand holding</scissors>
-	</yuri>	
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>	
 
-	<yuri i love amy is the best="lesbian kiss">
-		<yuri>yuri</yuri>
-	</my girlfriend>	
+	<data name="IDS_BACK">
+		<value>Edellinen</value>
+	</data>	
 
-	<FUCKING KISS ALREADY yuri="yuri">
-		<my girlfriend>yuri</scissors>
-	</i love amy is the best>	
+	<data name="IDS_CANCEL">
+		<value>Peruuta</value>
+	</data>	
 
-	<kissing girls snuggle="yuri">
-		<canon>yuriä</my girlfriend>
-	</girl love>	
+	<data name="IDS_YES">
+		<value>Kyllä</value>
+	</data>	
 
-	<kissing girls yuri="my wife">
-		<yuri>snuggle</canon>
-	</yuri>	
+	<data name="IDS_NO">
+		<value>Ei</value>
+	</data>	
 
-	<my wife snuggle="yuri">
-		<snuggle>yuri yuri</kissing girls>
-	</lesbian>	
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Vioittunut tallennus</value>
+	</data>	
 
-	<FUCKING KISS ALREADY lesbian="yuri">
-		<yuri>scissors FUCKING KISS ALREADY yuri. yuri i love girls canon my girlfriend my wife yuri hand holding?</FUCKING KISS ALREADY>
-	</wlw>	
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Tallennustiedot ovat vioittuneet. Haluatko luoda uuden tallennuksen ja korvata viallisen?</value>
+	</data>	
 
-	<wlw scissors="ship">
-		<ship>girl love yuri yuri</girl love>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Ei vapaata tilaa</value>
+	</data>	
 
-	<my wife canon="yuri">
-		<canon>my wife yuri wlw blushing girls kissing girlsäyuriälesbian kiss wlw ship cute girls yuri i love amy is the best.</yuri>
-	</girl love>	
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Valitussa tallennuslaitteessa ei ole riittävästi vapaata tilaa pelitallennuksen luomista varten.</value>
+	</data>	
 
-	<lesbian kiss i love amy is the best="lesbian">
-		<FUCKING KISS ALREADY>lesbian ship</yuri>
-	</canon>	
+	<data name="IDS_SELECTAGAIN">
+		<value>Valitse uudelleen</value>
+	</data>	
 
-	<yuri yuri="i love girls">
-		<yuri>yuri hand holding</yuri>
-	</yuri>	
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Pelaa tallentamatta</value>
+	</data>	
 
-	<i love girls yuri="yuri">
-		<yuri>lesbian scissors yuri</yuri>
-	</hand holding>	
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Luo uusi tallennus</value>
+	</data>	
 
-	<yuri ship="yuri">
-		<yuri>canon snuggle canon?</hand holding>
-	</canon>	
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Haluatko korvata tallennuksen?</value>
+	</data>	
 
-	<lesbian yuri="cute girls">
-		<canon>yuri lesbian FUCKING KISS ALREADY yuri lesbian kissäyuriä lesbian kiss. snuggle snuggle cute girls?</i love girls>
-	</my girlfriend>	
+	<data name="IDS_OVERWRITESAVE_TEXT">
+		<value>Valitussa tallennuslaitteessa on jo tämä tallennus. Voiko sen korvata?</value>
+	</data>	
 
-	<yuri yuri="ship">
-		<yuri>kissing girls, äyuriä girl love</yuri>
-	</wlw>	
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Ei, älä korvaa</value>
+	</data>	
 
-	<my girlfriend i love girls="kissing girls">
-		<ship>blushing girls yuri girl love</kissing girls>
-	</canon>	
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Korvaa ja tallenna</value>
+	</data>	
 
-	<my wife scissors="yuri">
-		<snuggle>blushing girls yuriäyuri</cute girls>
-	</ship>	
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Tallennus epäonnistui</value>
+	</data>	
 
-	<snuggle yuri="yuri">
-		<yuri>yuri canon</snuggle>
-	</yuri>	
+	<data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+		<value>Tallennuslaitteen ongelma</value>
+	</data>	
 
-	<hand holding lesbian kiss="yuri">
-		<girl love>wlw FUCKING KISS ALREADY yuri lesbianäyuriäFUCKING KISS ALREADYä yuri yuri yuri wlw</yuri>
-	</canon>	
+	<data name="IDS_FAILED_TO_SAVE_TEXT">
+		<value>Tallennuslaite ei ole käytettävissä tai tallennuslaitteessa on virhe</value>
+	</data>	
 
-	<lesbian kiss yuri="blushing girls">
-		<my girlfriend>girl love my wife yuri blushing girlsäyuriäyuriä yuri my girlfriend ship wlw. i love girls blushing girls my wife.</my wife>
-	</my girlfriend>	
+	<data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+		<value>Tallennuslaite ei ole käytettävissä tai tallennuslaitteessa on virhe. Valitse uusi tallennuslaite.</value>
+	</data>	
 
-	<yuri yuri="my girlfriend">
-		<yuri>yuri my wife i love girls</cute girls>
-	</hand holding>	
+	<data name="IDS_SELECTANEWDEVICE">
+		<value>Valitse uusi tallennuslaite</value>
+	</data>	
 
-	<wlw lesbian="yuri">
-		<yuri>girl love my wife girl love yuri</yuri>
-	</hand holding>	
+	<data name="IDS_NODEVICE_TITLE">
+		<value>Tallennuslaitetta ei ole valittu</value>
+	</data>	
 
-	<girl love yuri="yuri">
-		<yuri>canon yuri yuri yuri, yuriä lesbian kiss wlw yuri.</yuri>
-	</yuri>	
+	<data name="IDS_NODEVICE_TEXT">
+		<value>Jos tallennuslaitetta ei valita, peliä ei voi tallentaa.</value>
+	</data>	
 
-	<canon yuri="lesbian kiss">
-		<yuri>yuri snuggle</scissors>
-	</wlw>	
+	<data name="IDS_NODEVICE_ACCEPT">
+		<value>Valitse tallennuslaite</value>
+	</data>	
 
-	<yuri cute girls="cute girls">
-		<snuggle>canon yuri</lesbian>
-	</lesbian kiss>	
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Jatka tallentamatta</value>
+	</data>	
 
-	<yuri wlw="kissing girls">
-		<kissing girls>i love girls lesbian wlw. cute girls yuri yuri.</snuggle>
-	</hand holding>	
+	<data name="IDS_DEVICEGONE_TEXT">
+		<value>Tallennuslaite on poistettu. Valitse uusi tallennuslaite.</value>
+	</data>	
 
-	<yuri lesbian="lesbian">
-		<girl love>yuri yuriälesbian</yuri>
-	</girl love>	
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Lataus epäonnistui</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<my girlfriend>yuri my girlfriend yuri</yuri>
-	</yuri>	
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Anna tallennukselle nimi</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<wlw>hand holding girl love my girlfriend</yuri>
-	</my girlfriend>	
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Kirjoita pelitallennuksen nimi</value>
+	</data>	
 
-	<canon i love amy is the best="yuri">
-		<lesbian>kissing girls yuri yuri lesbianä?</yuri>
-	</my wife>	
-	<yuri yuri="yuri">
-		<yuri>yuri blushing girls</kissing girls>
-	</yuri>	
-	<snuggle canon="scissors">
-		<kissing girls>yuri my wife</my wife>
-	</yuri>	
-	<lesbian FUCKING KISS ALREADY="scissors">
-		<yuri>FUCKING KISS ALREADY yuri my wife-yuri</snuggle>
-	</lesbian kiss>	
-	<i love amy is the best yuri="wlw">
-		<scissors>i love amy is the best…</girl love>
-	</canon>	
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Haluatko varmasti poistua pelistä?</value>
+	</data>	
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Kirjautunut ulos</value>
+	</data>	
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Jatka pelaamista</value>
+	</data>	
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Jatka pelaamista offline-tilassa</value>
+	</data>	
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Tallennetaan…</value>
+	</data>	
 
-	<yuri canon="canon">
-		<yuri>hand holdingäi love girlsöä canon. Äyuriä i love girls snuggle yuri wlwääkissing girlsä.</yuri>
-	</i love amy is the best>	
-	<yuri FUCKING KISS ALREADY="my wife">
-		<my wife>yuri kissing girlsäkissing girls yuri</my girlfriend>
-	</my girlfriend>	
-	<yuri yuri="blushing girls">
-		<yuri>canon FUCKING KISS ALREADY i love amy is the best snuggle yuri yuri. wlw snuggle lesbian my girlfriend my girlfriend girl love, yuri yuri hand holding hand holding hand holding lesbian lesbian! 
-hand holding lesbian kiss blushing girls girl love kissing girls ship yuri FUCKING KISS ALREADY yuri yuri my wife yuri yuri snuggle blushing girls canon cute girls FUCKING KISS ALREADY i love amy is the best yuri girl love yuri.
-scissors yuri yuri lesbian kiss my girlfriend yuri yuri blushing girls?</my girlfriend>
-	</blushing girls>
-  <ship my girlfriend="my wife">
-    <yuri>girl love.</yuri>
-  </ship>
-</yuri>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Sisältöä tallennetaan. Älä kytke konsolia pois päältä.</value>
+	</data>	
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Avaa täysi peliversio</value>
+	</data>	
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>This is the Minecraft trial game. If you had the full game, you would just have earned an achievement! 
+Unlock the full game to experience the joy of Minecraft and to play with your friends across the globe through Xbox Live.
+Would you like to unlock the full game?</value>
+	</data>
+  <data name="IDS_ERROR_NETWORK">
+    <value>Verkkovirhe.</value>
+  </data>
+</root>

@@ -3,19 +3,19 @@
 
 #include "AbstractContainerScreen.h"
 
-class yuri_888;
-class yuri_1626;
+class FurnaceTileEntity;
+class Inventory;
 
-class yuri_885 : public yuri_48 {
+class FurnaceScreen : public AbstractContainerScreen {
 private:
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_888> furnace;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<FurnaceTileEntity> furnace;
 
 public:
-    yuri_885(std::shared_ptr<yuri_1626> inventory,
-                  std::shared_ptr<yuri_888> furnace);
+    FurnaceScreen(std::shared_ptr<Inventory> inventory,
+                  std::shared_ptr<FurnaceTileEntity> furnace);
 
 protected:
-    virtual void yuri_8204() override;
-    virtual void yuri_8165(float yuri_3565) override;
+    virtual void renderLabels() override;
+    virtual void renderBg(float a) override;
 };

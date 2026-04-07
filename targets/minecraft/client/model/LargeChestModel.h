@@ -2,7 +2,7 @@
 
 #include "ChestModel.h"
 
-class yuri_1731 : public yuri_337 {
+class LargeChestModel : public ChestModel {
 public:
-    yuri_1731();
+    LargeChestModel();
 };

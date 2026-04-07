@@ -4,14 +4,14 @@
 
 #include "Layer.h"
 
-class yuri_3027 : public yuri_1742 {
+class TemperatureMixerLayer : public Layer {
 private:
-    std::shared_ptr<yuri_1742> yuri_9193;
+    std::shared_ptr<Layer> temp;
     int layer;
 
 public:
-    yuri_3027(std::shared_ptr<yuri_1742> yuri_9193,
-                          std::shared_ptr<yuri_1742> yuri_7791, int layer);
+    TemperatureMixerLayer(std::shared_ptr<Layer> temp,
+                          std::shared_ptr<Layer> parent, int layer);
 
-    virtual std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
+    virtual std::vector<int> getArea(int xo, int yo, int w, int h);
 };

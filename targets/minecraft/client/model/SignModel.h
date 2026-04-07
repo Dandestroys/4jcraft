@@ -2,15 +2,15 @@
 
 #include "minecraft/client/model/geom/Model.h"
 
-class yuri_507;
-class yuri_1964;
+class Cube;
+class ModelPart;
 
-class yuri_2814 : public yuri_1962 {
+class SignModel : public Model {
 public:
-    using yuri_1962::yuri_8158;
-    yuri_1964* cube;
-    yuri_1964* cube2;
+    using Model::render;
+    ModelPart* cube;
+    ModelPart* cube2;
 
-    yuri_2814();
-    void yuri_8158(bool usecompiled);
+    SignModel();
+    void render(bool usecompiled);
 };

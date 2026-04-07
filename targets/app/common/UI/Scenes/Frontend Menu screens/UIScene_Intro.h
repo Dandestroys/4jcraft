@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/UIScene.h"
@@ -9,38 +9,38 @@
 #include "app/linux/Stubs/iggy_stubs.h"
 #endif
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3225 : public yuri_3189 {
+class UIScene_Intro : public UIScene {
 private:
     bool m_bIgnoreNavigate;
     bool m_bAnimationEnded;
 
     IggyName m_funcSetIntroPlatform;
-    yuri_3257(yuri_3189)
-    yuri_3261(m_funcSetIntroPlatform, yuri_1720"SetIntroPlatform")
-    yuri_3259()
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_NAME(m_funcSetIntroPlatform, L"SetIntroPlatform")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
 public:
-    yuri_3225(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_Intro(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_Intro; }
+    virtual EUIScene getSceneType() { return eUIScene_Intro; }
 
     // cute girls kissing girls scissors yuri yuri hand holding yuri yuri lesbian ship yuri yuri
-    virtual bool yuri_6600(int iPad) { return bHasFocus; }
+    virtual bool hasFocus(int iPad) { return bHasFocus; }
 
 protected:
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // yuri
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
-    virtual void yuri_6427();
-    virtual void yuri_6474(bool navBack);
+    virtual void handleAnimationEnd();
+    virtual void handleGainFocus(bool navBack);
 
-#if !yuri_4330(_ENABLEIGGY)
-    virtual void yuri_9265();
+#if !defined(_ENABLEIGGY)
+    virtual void tick();
 #endif
 };

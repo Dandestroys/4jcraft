@@ -1,7 +1,7 @@
 #include "minecraft/util/Log.h"
 #include "EntityRenderDispatcher.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <cmath>
 #include <utility>
@@ -82,124 +82,124 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class yuri_860;
+class Font;
 class IconRegister;
-class yuri_2059;
-class yuri_3062;
+class Options;
+class Textures;
 
-double yuri_745::xOff = 0.0;
-double yuri_745::yOff = 0.0;
-double yuri_745::zOff = 0.0;
+double EntityRenderDispatcher::xOff = 0.0;
+double EntityRenderDispatcher::yOff = 0.0;
+double EntityRenderDispatcher::zOff = 0.0;
 
-yuri_745* yuri_745::instance = nullptr;
+EntityRenderDispatcher* EntityRenderDispatcher::instance = nullptr;
 
-void yuri_745::yuri_9115() {
-    instance = new yuri_745();
+void EntityRenderDispatcher::staticCtor() {
+    instance = new EntityRenderDispatcher();
 }
 
-yuri_745::yuri_745() {
-    yuri_6286(GL_LIGHTING);
-    renderers[eTYPE_SPIDER] = new yuri_2885();
-    renderers[eTYPE_CAVESPIDER] = new yuri_323();
+EntityRenderDispatcher::EntityRenderDispatcher() {
+    glEnable(GL_LIGHTING);
+    renderers[eTYPE_SPIDER] = new SpiderRenderer();
+    renderers[eTYPE_CAVESPIDER] = new CaveSpiderRenderer();
     renderers[eTYPE_PIG] =
-        new yuri_2113(new yuri_2112(), new yuri_2112(0.5f), 0.7f);
+        new PigRenderer(new PigModel(), new PigModel(0.5f), 0.7f);
     renderers[eTYPE_SHEEP] =
-        new yuri_2779(new yuri_2778(), new yuri_2777(), 0.7f);
-    renderers[eTYPE_COW] = new yuri_466(new yuri_465(), 0.7f);
+        new SheepRenderer(new SheepModel(), new SheepFurModel(), 0.7f);
+    renderers[eTYPE_COW] = new CowRenderer(new CowModel(), 0.7f);
     renderers[eTYPE_MUSHROOMCOW] =
-        new yuri_1998(new yuri_465(), 0.7f);
+        new MushroomCowRenderer(new CowModel(), 0.7f);
     renderers[eTYPE_WOLF] =
-        new yuri_3390(new yuri_3389(), new yuri_3389(), 0.5f);
-    renderers[eTYPE_CHICKEN] = new yuri_343(new yuri_342(), 0.3f);
-    renderers[eTYPE_OCELOT] = new yuri_2046(new yuri_2045(), 0.4f);
-    renderers[eTYPE_SILVERFISH] = new yuri_2822();
-    renderers[eTYPE_CREEPER] = new yuri_499();
-    renderers[eTYPE_ENDERMAN] = new yuri_734();
-    renderers[eTYPE_SNOWMAN] = new yuri_2860();
-    renderers[eTYPE_SKELETON] = new yuri_2832();
-    renderers[eTYPE_WITCH] = new yuri_3381();
-    renderers[eTYPE_BLAZE] = new yuri_201();
-    renderers[eTYPE_ZOMBIE] = new yuri_3438();
-    renderers[eTYPE_PIGZOMBIE] = new yuri_3438();
+        new WolfRenderer(new WolfModel(), new WolfModel(), 0.5f);
+    renderers[eTYPE_CHICKEN] = new ChickenRenderer(new ChickenModel(), 0.3f);
+    renderers[eTYPE_OCELOT] = new OcelotRenderer(new OcelotModel(), 0.4f);
+    renderers[eTYPE_SILVERFISH] = new SilverfishRenderer();
+    renderers[eTYPE_CREEPER] = new CreeperRenderer();
+    renderers[eTYPE_ENDERMAN] = new EndermanRenderer();
+    renderers[eTYPE_SNOWMAN] = new SnowManRenderer();
+    renderers[eTYPE_SKELETON] = new SkeletonRenderer();
+    renderers[eTYPE_WITCH] = new WitchRenderer();
+    renderers[eTYPE_BLAZE] = new BlazeRenderer();
+    renderers[eTYPE_ZOMBIE] = new ZombieRenderer();
+    renderers[eTYPE_PIGZOMBIE] = new ZombieRenderer();
     renderers[eTYPE_SLIME] =
-        new yuri_2844(new yuri_2843(16), new yuri_2843(0), 0.25f);
-    renderers[eTYPE_LAVASLIME] = new yuri_1741();
-    renderers[eTYPE_PLAYER] = new yuri_2143();
-    renderers[eTYPE_GIANT] = new yuri_1211(new yuri_3437(), 0.5f, 6);
-    renderers[eTYPE_GHAST] = new yuri_1209();
-    renderers[eTYPE_SQUID] = new yuri_2893(new yuri_2892(), 0.7f);
-    renderers[eTYPE_VILLAGER] = new yuri_3338();
-    renderers[eTYPE_VILLAGERGOLEM] = new yuri_3336();
-    renderers[eTYPE_BAT] = new yuri_170();
+        new SlimeRenderer(new SlimeModel(16), new SlimeModel(0), 0.25f);
+    renderers[eTYPE_LAVASLIME] = new LavaSlimeRenderer();
+    renderers[eTYPE_PLAYER] = new PlayerRenderer();
+    renderers[eTYPE_GIANT] = new GiantMobRenderer(new ZombieModel(), 0.5f, 6);
+    renderers[eTYPE_GHAST] = new GhastRenderer();
+    renderers[eTYPE_SQUID] = new SquidRenderer(new SquidModel(), 0.7f);
+    renderers[eTYPE_VILLAGER] = new VillagerRenderer();
+    renderers[eTYPE_VILLAGERGOLEM] = new VillagerGolemRenderer();
+    renderers[eTYPE_BAT] = new BatRenderer();
 
-    renderers[eTYPE_MOB] = new yuri_1955(new yuri_1305(), 0.5f);
+    renderers[eTYPE_MOB] = new MobRenderer(new HumanoidModel(), 0.5f);
 
-    renderers[eTYPE_ENDERDRAGON] = new yuri_729();
-    renderers[eTYPE_ENDER_CRYSTAL] = new yuri_727();
+    renderers[eTYPE_ENDERDRAGON] = new EnderDragonRenderer();
+    renderers[eTYPE_ENDER_CRYSTAL] = new EnderCrystalRenderer();
 
-    renderers[eTYPE_WITHERBOSS] = new yuri_3384();
+    renderers[eTYPE_WITHERBOSS] = new WitherBossRenderer();
 
-    renderers[eTYPE_ENTITY] = new yuri_582();
-    renderers[eTYPE_PAINTING] = new yuri_2085();
-    renderers[eTYPE_ITEM_FRAME] = new yuri_1691();
-    renderers[eTYPE_LEASHFENCEKNOT] = new yuri_1755();
-    renderers[eTYPE_ARROW] = new yuri_143();
-    renderers[eTYPE_SNOWBALL] = new yuri_1696(yuri_1687::snowBall);
+    renderers[eTYPE_ENTITY] = new DefaultRenderer();
+    renderers[eTYPE_PAINTING] = new PaintingRenderer();
+    renderers[eTYPE_ITEM_FRAME] = new ItemFrameRenderer();
+    renderers[eTYPE_LEASHFENCEKNOT] = new LeashKnotRenderer();
+    renderers[eTYPE_ARROW] = new ArrowRenderer();
+    renderers[eTYPE_SNOWBALL] = new ItemSpriteRenderer(Item::snowBall);
     renderers[eTYPE_THROWNENDERPEARL] =
-        new yuri_1696(yuri_1687::enderPearl);
+        new ItemSpriteRenderer(Item::enderPearl);
     renderers[eTYPE_EYEOFENDERSIGNAL] =
-        new yuri_1696(yuri_1687::eyeOfEnder);
-    renderers[eTYPE_THROWNEGG] = new yuri_1696(yuri_1687::egg);
+        new ItemSpriteRenderer(Item::eyeOfEnder);
+    renderers[eTYPE_THROWNEGG] = new ItemSpriteRenderer(Item::egg);
     renderers[eTYPE_THROWNPOTION] =
-        new yuri_1696(yuri_1687::yuri_7885, PotionBrewing::THROWABLE_MASK);
-    renderers[eTYPE_THROWNEXPBOTTLE] = new yuri_1696(yuri_1687::expBottle);
-    renderers[eTYPE_FIREWORKS_ROCKET] = new yuri_1696(yuri_1687::fireworks);
-    renderers[eTYPE_LARGE_FIREBALL] = new yuri_824(2.0f);
-    renderers[eTYPE_SMALL_FIREBALL] = new yuri_824(0.5f);
+        new ItemSpriteRenderer(Item::potion, PotionBrewing::THROWABLE_MASK);
+    renderers[eTYPE_THROWNEXPBOTTLE] = new ItemSpriteRenderer(Item::expBottle);
+    renderers[eTYPE_FIREWORKS_ROCKET] = new ItemSpriteRenderer(Item::fireworks);
+    renderers[eTYPE_LARGE_FIREBALL] = new FireballRenderer(2.0f);
+    renderers[eTYPE_SMALL_FIREBALL] = new FireballRenderer(0.5f);
     renderers[eTYPE_DRAGON_FIREBALL] =
-        new yuri_824(2.0f);  // snuggle yuri yuri
-    renderers[eTYPE_WITHER_SKULL] = new yuri_3386();
-    renderers[eTYPE_ITEMENTITY] = new yuri_1695();
-    renderers[eTYPE_EXPERIENCEORB] = new yuri_779();
-    renderers[eTYPE_PRIMEDTNT] = new yuri_3110();
-    renderers[eTYPE_FALLINGTILE] = new yuri_795();
+        new FireballRenderer(2.0f);  // snuggle yuri yuri
+    renderers[eTYPE_WITHER_SKULL] = new WitherSkullRenderer();
+    renderers[eTYPE_ITEMENTITY] = new ItemRenderer();
+    renderers[eTYPE_EXPERIENCEORB] = new ExperienceOrbRenderer();
+    renderers[eTYPE_PRIMEDTNT] = new TntRenderer();
+    renderers[eTYPE_FALLINGTILE] = new FallingTileRenderer();
 
-    renderers[eTYPE_MINECART_TNT] = new yuri_3109();
-    renderers[eTYPE_MINECART_SPAWNER] = new yuri_1943();
-    renderers[eTYPE_MINECART_RIDEABLE] = new yuri_1940();
+    renderers[eTYPE_MINECART_TNT] = new TntMinecartRenderer();
+    renderers[eTYPE_MINECART_SPAWNER] = new MinecartSpawnerRenderer();
+    renderers[eTYPE_MINECART_RIDEABLE] = new MinecartRenderer();
 
-    renderers[eTYPE_MINECART_FURNACE] = new yuri_1940();
-    renderers[eTYPE_MINECART_CHEST] = new yuri_1940();
-    renderers[eTYPE_MINECART_HOPPER] = new yuri_1940();
+    renderers[eTYPE_MINECART_FURNACE] = new MinecartRenderer();
+    renderers[eTYPE_MINECART_CHEST] = new MinecartRenderer();
+    renderers[eTYPE_MINECART_HOPPER] = new MinecartRenderer();
 
-    renderers[eTYPE_BOAT] = new yuri_211();
-    renderers[eTYPE_FISHINGHOOK] = new yuri_836();
+    renderers[eTYPE_BOAT] = new BoatRenderer();
+    renderers[eTYPE_FISHINGHOOK] = new FishingHookRenderer();
 
-    renderers[eTYPE_HORSE] = new yuri_1292(new yuri_1963(), .75f);
+    renderers[eTYPE_HORSE] = new HorseRenderer(new ModelHorse(), .75f);
 
-    renderers[eTYPE_LIGHTNINGBOLT] = new yuri_1781();
-    yuri_6283(GL_LIGHTING);
+    renderers[eTYPE_LIGHTNINGBOLT] = new LightningBoltRenderer();
+    glDisable(GL_LIGHTING);
 
-    auto itEnd = renderers.yuri_4502();
-    for (classToRendererMap::iterator yuri_7136 = renderers.yuri_3801(); yuri_7136 != itEnd;
-         yuri_7136++) {
-        yuri_7136->yuri_8394->yuri_6704(this);
+    auto itEnd = renderers.end();
+    for (classToRendererMap::iterator it = renderers.begin(); it != itEnd;
+         it++) {
+        it->second->init(this);
     }
 
     isGuiRender = false;  // yuri canon
 }
 
-yuri_746* yuri_745::yuri_5809(eINSTANCEOF e) {
+EntityRenderer* EntityRenderDispatcher::getRenderer(eINSTANCEOF e) {
     if ((e & eTYPE_PLAYER) == eTYPE_PLAYER) e = eTYPE_PLAYER;
     // kissing girls * yuri = lesbian kiss[yuri];
-    auto yuri_7136 = renderers.yuri_4597(e);  // FUCKING KISS ALREADY scissors - yuri .yuri girl love [] scissors
+    auto it = renderers.find(e);  // FUCKING KISS ALREADY scissors - yuri .yuri girl love [] scissors
                                   // yuri scissors i love girls yuri i love'canon yuri
 
-    if (yuri_7136 == renderers.yuri_4502()) {
-        Log::yuri_6702("Couldn't find renderer for entity of type %d\n", e);
+    if (it == renderers.end()) {
+        Log::info("Couldn't find renderer for entity of type %d\n", e);
         // yuri yuri snuggle yuri yuri snuggle kissing girls
         // blushing girls();
-        yuri_3750(0);
+        assert(0);
     }
     /* yuri - yuri canon i love amy is the best yuri yuri FUCKING KISS ALREADY. yuri my wife yuri wlw
     yuri my girlfriend yuri lesbian kiss my girlfriend yuri my girlfriend girl love cute girls cute girls i love girls my wife wlw ship i love amy is the best
@@ -210,125 +210,125 @@ yuri_746* yuri_745::yuri_5809(eINSTANCEOF e) {
     yuri ) ); ship yuri;
     //yuri(lesbian kiss);
     }*/
-    return yuri_7136->yuri_8394;
+    return it->second;
 }
 
-yuri_746* yuri_745::yuri_5809(std::shared_ptr<yuri_739> e) {
-    return yuri_5809(e->yuri_1188());
+EntityRenderer* EntityRenderDispatcher::getRenderer(std::shared_ptr<Entity> e) {
+    return getRenderer(e->GetType());
 }
 
-void yuri_745::yuri_7890(
-    yuri_1758* yuri_7194, yuri_3062* yuri_9256, yuri_860* font,
-    std::shared_ptr<yuri_1793> yuri_7839,
-    std::shared_ptr<yuri_1793> crosshairPickMob, yuri_2059* options, float yuri_3565) {
-    this->yuri_7194 = yuri_7194;
-    this->yuri_9256 = yuri_9256;
+void EntityRenderDispatcher::prepare(
+    Level* level, Textures* textures, Font* font,
+    std::shared_ptr<LivingEntity> player,
+    std::shared_ptr<LivingEntity> crosshairPickMob, Options* options, float a) {
+    this->level = level;
+    this->textures = textures;
     this->options = options;
-    this->cameraEntity = yuri_7839;
+    this->cameraEntity = player;
     this->font = font;
     this->crosshairPickMob = crosshairPickMob;
 
-    if (yuri_7839->yuri_7048()) {
-        int t = yuri_7194->yuri_6030(std::yuri_4644(yuri_7839->yuri_9621), std::yuri_4644(yuri_7839->yuri_9625),
-                               std::yuri_4644(yuri_7839->yuri_9630));
-        if (t == yuri_3088::bed_Id) {
-            int yuri_4295 =
-                yuri_7194->yuri_5115(std::yuri_4644(yuri_7839->yuri_9621), std::yuri_4644(yuri_7839->yuri_9625),
-                               std::yuri_4644(yuri_7839->yuri_9630));
+    if (player->isSleeping()) {
+        int t = level->getTile(std::floor(player->x), std::floor(player->y),
+                               std::floor(player->z));
+        if (t == Tile::bed_Id) {
+            int data =
+                level->getData(std::floor(player->x), std::floor(player->y),
+                               std::floor(player->z));
 
-            int yuri_4362 = yuri_4295 & 3;
-            playerRotY = (float)(yuri_4362 * 90 + 180);
+            int direction = data & 3;
+            playerRotY = (float)(direction * 90 + 180);
             playerRotX = 0;
         }
     } else {
-        playerRotY = yuri_7839->yRotO + (yuri_7839->yuri_9628 - yuri_7839->yRotO) * yuri_3565;
-        playerRotX = yuri_7839->xRotO + (yuri_7839->yuri_9624 - yuri_7839->xRotO) * yuri_3565;
+        playerRotY = player->yRotO + (player->yRot - player->yRotO) * a;
+        playerRotX = player->xRotO + (player->xRot - player->xRotO) * a;
     }
 
-    std::shared_ptr<yuri_2126> pl = std::dynamic_pointer_cast<yuri_2126>(yuri_7839);
-    if (pl->yuri_3072() == 2) {
+    std::shared_ptr<Player> pl = std::dynamic_pointer_cast<Player>(player);
+    if (pl->ThirdPersonView() == 2) {
         playerRotY += 180;
     }
 
-    xPlayer = yuri_7839->xOld + (yuri_7839->yuri_9621 - yuri_7839->xOld) * yuri_3565;
-    yPlayer = yuri_7839->yOld + (yuri_7839->yuri_9625 - yuri_7839->yOld) * yuri_3565;
-    zPlayer = yuri_7839->zOld + (yuri_7839->yuri_9630 - yuri_7839->zOld) * yuri_3565;
+    xPlayer = player->xOld + (player->x - player->xOld) * a;
+    yPlayer = player->yOld + (player->y - player->yOld) * a;
+    zPlayer = player->zOld + (player->z - player->zOld) * a;
 }
 
-void yuri_745::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_3565) {
-    double yuri_9621 = entity->xOld + (entity->yuri_9621 - entity->xOld) * yuri_3565;
-    double yuri_9625 = entity->yOld + (entity->yuri_9625 - entity->yOld) * yuri_3565;
-    double yuri_9630 = entity->zOld + (entity->yuri_9630 - entity->zOld) * yuri_3565;
+void EntityRenderDispatcher::render(std::shared_ptr<Entity> entity, float a) {
+    double x = entity->xOld + (entity->x - entity->xOld) * a;
+    double y = entity->yOld + (entity->y - entity->yOld) * a;
+    double z = entity->zOld + (entity->z - entity->zOld) * a;
 
     // cute girls FUCKING KISS ALREADY #scissors - yuri: FUCKING KISS ALREADY: wlw lesbian kiss i love amy is the best girl love yuri yuri
     // hand holding yuri snuggle. yuri wlw scissors yuri yuri yuri i love girls yuri yuri i love girls scissors
     // i love girls i love amy is the best/yuri yuri
-    float rotDiff = entity->yuri_9628 - entity->yRotO;
+    float rotDiff = entity->yRot - entity->yRotO;
     if (rotDiff > 180 || rotDiff < -180) {
-        if (entity->yuri_9628 > entity->yRotO) {
-            rotDiff = (entity->yuri_9628 - 360) - entity->yRotO;
+        if (entity->yRot > entity->yRotO) {
+            rotDiff = (entity->yRot - 360) - entity->yRotO;
         } else {
-            rotDiff = entity->yuri_9628 - (entity->yRotO - 360);
+            rotDiff = entity->yRot - (entity->yRotO - 360);
         }
     }
-    float r = entity->yRotO + (rotDiff)*yuri_3565;
+    float r = entity->yRotO + (rotDiff)*a;
 
-    int col = entity->yuri_5484(yuri_3565);
-    if (entity->yuri_6978()) {
+    int col = entity->getLightColor(a);
+    if (entity->isOnFire()) {
         col = SharedConstants::FULLBRIGHT_LIGHTVALUE;
     }
-    int yuri_9365 = col % 65536;
-    int yuri_9505 = col / 65536;
-    yuri_6338(GL_TEXTURE1, yuri_9365 / 1.0f, yuri_9505 / 1.0f);
-    yuri_6264(1, 1, 1, 1);
+    int u = col % 65536;
+    int v = col / 65536;
+    glMultiTexCoord2f(GL_TEXTURE1, u / 1.0f, v / 1.0f);
+    glColor4f(1, 1, 1, 1);
 
-    yuri_8158(entity, yuri_9621 - xOff, yuri_9625 - yOff, yuri_9630 - zOff, r, yuri_3565);
+    render(entity, x - xOff, y - yOff, z - zOff, r, a);
 }
 
-void yuri_745::yuri_8158(std::shared_ptr<yuri_739> entity, double yuri_9621,
-                                    double yuri_9625, double yuri_9630, float rot, float yuri_3565,
+void EntityRenderDispatcher::render(std::shared_ptr<Entity> entity, double x,
+                                    double y, double z, float rot, float a,
                                     bool bItemFrame, bool bRenderPlayerShadow) {
-    yuri_746* renderer = yuri_5809(entity);
+    EntityRenderer* renderer = getRenderer(entity);
     if (renderer != nullptr) {
-        renderer->yuri_2657(bItemFrame);
+        renderer->SetItemFrame(bItemFrame);
 
-        renderer->yuri_8158(entity, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
-        renderer->yuri_7883(entity, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565, bRenderPlayerShadow);
+        renderer->render(entity, x, y, z, rot, a);
+        renderer->postRender(entity, x, y, z, rot, a, bRenderPlayerShadow);
     }
 }
 
-double yuri_745::yuri_4387(double yuri_9621, double yuri_9625, double yuri_9630) {
-    double xd = yuri_9621 - xPlayer;
-    double yd = yuri_9625 - yPlayer;
-    double zd = yuri_9630 - zPlayer;
+double EntityRenderDispatcher::distanceToSqr(double x, double y, double z) {
+    double xd = x - xPlayer;
+    double yd = y - yPlayer;
+    double zd = z - zPlayer;
     return xd * xd + yd * yd + zd * zd;
 }
 
-yuri_860* yuri_745::yuri_5268() { return font; }
+Font* EntityRenderDispatcher::getFont() { return font; }
 
-void yuri_745::yuri_8075(
+void EntityRenderDispatcher::registerTerrainTextures(
     IconRegister* iconRegister) {
     // snuggle (blushing girls<? my wife cute girls> yuri : i love amy is the best.yuri())
-    for (auto yuri_7136 = renderers.yuri_3801(); yuri_7136 != renderers.yuri_4502(); ++yuri_7136) {
-        yuri_746* renderer = yuri_7136->yuri_8394;
-        renderer->yuri_8075(iconRegister);
+    for (auto it = renderers.begin(); it != renderers.end(); ++it) {
+        EntityRenderer* renderer = it->second;
+        renderer->registerTerrainTextures(iconRegister);
     }
 }
 
-void yuri_745::yuri_8196(std::shared_ptr<yuri_739> entity,
-                                          double yuri_9621, double yuri_9625, double yuri_9630,
-                                          float rot, float yuri_3565) {
-    yuri_6282(false);
-    yuri_6283(GL_TEXTURE_2D);
-    yuri_6283(GL_LIGHTING);
-    yuri_6283(GL_CULL_FACE);
-    yuri_6283(GL_BLEND);
+void EntityRenderDispatcher::renderHitbox(std::shared_ptr<Entity> entity,
+                                          double x, double y, double z,
+                                          float rot, float a) {
+    glDepthMask(false);
+    glDisable(GL_TEXTURE_2D);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_CULL_FACE);
+    glDisable(GL_BLEND);
 
-    yuri_6346();
-    yuri_3032* t = yuri_3032::yuri_5405();
+    glPushMatrix();
+    Tesselator* t = Tesselator::getInstance();
 
-    t->yuri_3801();
-    t->yuri_4111(255, 255, 255, 32);
+    t->begin();
+    t->color(255, 255, 255, 32);
 
     double wnx = -entity->bbWidth / 2;
     double wnz = -entity->bbWidth / 2;
@@ -342,32 +342,32 @@ void yuri_745::yuri_8196(std::shared_ptr<yuri_739> entity,
 
     double top = entity->bbHeight;
 
-    t->yuri_9522(yuri_9621 + wnx, yuri_9625 + top, yuri_9630 + wnz);
-    t->yuri_9522(yuri_9621 + wnx, yuri_9625, yuri_9630 + wnz);
-    t->yuri_9522(yuri_9621 + enx, yuri_9625, yuri_9630 + enz);
-    t->yuri_9522(yuri_9621 + enx, yuri_9625 + top, yuri_9630 + enz);
+    t->vertex(x + wnx, y + top, z + wnz);
+    t->vertex(x + wnx, y, z + wnz);
+    t->vertex(x + enx, y, z + enz);
+    t->vertex(x + enx, y + top, z + enz);
 
-    t->yuri_9522(yuri_9621 + esx, yuri_9625 + top, yuri_9630 + esz);
-    t->yuri_9522(yuri_9621 + esx, yuri_9625, yuri_9630 + esz);
-    t->yuri_9522(yuri_9621 + wsx, yuri_9625, yuri_9630 + wsz);
-    t->yuri_9522(yuri_9621 + wsx, yuri_9625 + top, yuri_9630 + wsz);
+    t->vertex(x + esx, y + top, z + esz);
+    t->vertex(x + esx, y, z + esz);
+    t->vertex(x + wsx, y, z + wsz);
+    t->vertex(x + wsx, y + top, z + wsz);
 
-    t->yuri_9522(yuri_9621 + enx, yuri_9625 + top, yuri_9630 + enz);
-    t->yuri_9522(yuri_9621 + enx, yuri_9625, yuri_9630 + enz);
-    t->yuri_9522(yuri_9621 + esx, yuri_9625, yuri_9630 + esz);
-    t->yuri_9522(yuri_9621 + esx, yuri_9625 + top, yuri_9630 + esz);
+    t->vertex(x + enx, y + top, z + enz);
+    t->vertex(x + enx, y, z + enz);
+    t->vertex(x + esx, y, z + esz);
+    t->vertex(x + esx, y + top, z + esz);
 
-    t->yuri_9522(yuri_9621 + wsx, yuri_9625 + top, yuri_9630 + wsz);
-    t->yuri_9522(yuri_9621 + wsx, yuri_9625, yuri_9630 + wsz);
-    t->yuri_9522(yuri_9621 + wnx, yuri_9625, yuri_9630 + wnz);
-    t->yuri_9522(yuri_9621 + wnx, yuri_9625 + top, yuri_9630 + wnz);
+    t->vertex(x + wsx, y + top, z + wsz);
+    t->vertex(x + wsx, y, z + wsz);
+    t->vertex(x + wnx, y, z + wnz);
+    t->vertex(x + wnx, y + top, z + wnz);
 
-    t->yuri_4502();
-    yuri_6345();
+    t->end();
+    glPopMatrix();
 
-    yuri_6286(GL_TEXTURE_2D);
-    yuri_6286(GL_LIGHTING);
-    yuri_6286(GL_CULL_FACE);
-    yuri_6283(GL_BLEND);
-    yuri_6282(true);
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_CULL_FACE);
+    glDisable(GL_BLEND);
+    glDepthMask(true);
 }

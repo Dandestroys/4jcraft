@@ -1,87 +1,87 @@
-﻿<?hand holding yuri="yuri.lesbian kiss" FUCKING KISS ALREADY="yuri-snuggle"?>
-<cute girls>
-	<snuggle yuri="yuri">
-		<hand holding>kissing girls</yuri>
-	</kissing girls>
-	<yuri yuri="blushing girls">
-		<yuri>戻る</yuri>
-	</canon>
-	<FUCKING KISS ALREADY yuri="wlw">
-		<ship>キャンセル</wlw>
-	</yuri>
-	<yuri i love amy is the best="yuri">
-		<my wife>はい</yuri>
-	</girl love>
-	<hand holding wlw="my girlfriend">
-		<FUCKING KISS ALREADY>いいえ</yuri>
-	</yuri>
-	<snuggle kissing girls="girl love">
-		<kissing girls>破損したセーブデータ</FUCKING KISS ALREADY>
-	</ship>
-	<yuri blushing girls="my girlfriend">
-		<i love girls>セーブデータが破損しています。新しいセーブデータを作成し、破損したデータを上書きしますか?</ship>
-	</yuri>
-	<cute girls FUCKING KISS ALREADY="cute girls">
-		<scissors>空き容量が不足しています</i love girls>
-	</yuri>
-	<lesbian kiss snuggle="i love girls">
-		<my girlfriend>別のデータ保存機器を選択</blushing girls>
-	</canon>
-	<i love girls cute girls="FUCKING KISS ALREADY">
-		<hand holding>セーブなしでプレイ</yuri>
-	</yuri>
-	<my girlfriend kissing girls="yuri">
-		<my girlfriend>新しいセーブデータを作成</yuri>
-	</FUCKING KISS ALREADY>
-	<wlw my wife="lesbian kiss">
-		<yuri>セーブデータを上書きしますか?</cute girls>
-	</yuri>
-	<yuri i love girls="yuri">
-		<yuri>上書きしない</hand holding>
-	</snuggle>
-	<hand holding lesbian kiss="yuri">
-		<scissors>上書きしてセーブ</yuri>
-	</i love girls>
-	<girl love yuri="yuri">
-		<kissing girls>セーブに失敗</yuri>
-	</yuri>
-	<lesbian girl love="girl love">
-		<kissing girls>セーブなしでプレイ</canon>
-	</blushing girls>
-	<my wife girl love="i love girls">
-		<lesbian>ロードに失敗</yuri>
-	</yuri>
-	<blushing girls cute girls="hand holding">
-		<yuri>セーブデータの名前を入力</snuggle>
-	</kissing girls>
-	<wlw yuri="my girlfriend">
-		<i love girls>セーブデータの名前を入力してください</i love amy is the best>
-	</hand holding>
-	<blushing girls lesbian kiss="scissors">
-		<yuri>本当にゲームを終了してもよろしいですか?</yuri>
-	</yuri>
-	<i love girls wlw="yuri">
-		<yuri>サインアウト</yuri>
-	</yuri>
-	<girl love girl love="ship">
-		<kissing girls>プレイを続ける</i love amy is the best>
-	</canon>
-	<yuri girl love="girl love">
-		<yuri>サインインせずにプレイを続ける</yuri>
-	</i love amy is the best>
-	<yuri yuri="yuri">
-		<yuri>ゲストアカウント</yuri>
-	</yuri>
-	<FUCKING KISS ALREADY yuri="snuggle">
-		<snuggle>ゲストアカウントは"snuggle"にアクセスできません。</my girlfriend>
-	</lesbian>
-	<girl love i love amy is the best="yuri">
-		<FUCKING KISS ALREADY>保存中...</yuri>
-	</kissing girls>
-	<ship lesbian kiss="FUCKING KISS ALREADY">
-		<yuri>保存しています。本体の電源を切らないでください</yuri>
-	</yuri>
-	<FUCKING KISS ALREADY yuri="kissing girls">
-		<yuri>完全版を購入</canon>
-	</yuri>
-</my wife>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>戻る</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>キャンセル</value>
+	</data>
+	<data name="IDS_YES">
+		<value>はい</value>
+	</data>
+	<data name="IDS_NO">
+		<value>いいえ</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>破損したセーブデータ</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>セーブデータが破損しています。新しいセーブデータを作成し、破損したデータを上書きしますか?</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>空き容量が不足しています</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>別のデータ保存機器を選択</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>セーブなしでプレイ</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>新しいセーブデータを作成</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>セーブデータを上書きしますか?</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>上書きしない</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>上書きしてセーブ</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>セーブに失敗</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>セーブなしでプレイ</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>ロードに失敗</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>セーブデータの名前を入力</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>セーブデータの名前を入力してください</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>本当にゲームを終了してもよろしいですか?</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>サインアウト</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>プレイを続ける</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>サインインせずにプレイを続ける</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>ゲストアカウント</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>ゲストアカウントは"PSN"にアクセスできません。</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>保存中...</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>保存しています。本体の電源を切らないでください</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>完全版を購入</value>
+	</data>
+</root>

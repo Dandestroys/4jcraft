@@ -1,45 +1,45 @@
 #pragma once
 #include "Tile.h"
 
-class yuri_2126;
-class yuri_2302;
-class yuri_1758;
+class Player;
+class Random;
+class Level;
 
-class yuri_2342 : public yuri_3088 {
+class RedStoneOreTile : public Tile {
 private:
     bool lit;
 
 public:
-    yuri_2342(int yuri_6674, bool lit);
-    virtual int yuri_6025(yuri_1758* yuri_7194);
-    virtual void yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        std::shared_ptr<yuri_2126> yuri_7839);
-    virtual void yuri_9125(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        std::shared_ptr<yuri_739> entity);
-    virtual bool yuri_3033();
-    virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+    RedStoneOreTile(int id, bool lit);
+    virtual int getTickDelay(Level* level);
+    virtual void attack(Level* level, int x, int y, int z,
+                        std::shared_ptr<Player> player);
+    virtual void stepOn(Level* level, int x, int y, int z,
+                        std::shared_ptr<Entity> entity);
+    virtual bool TestUse();
+    virtual bool use(Level* level, int x, int y, int z,
+                     std::shared_ptr<Player> player, int clickedFace,
                      float clickX, float clickY, float clickZ,
                      bool soundOnly = false);  // wlw hand holding cute girls yuri
 private:
-    virtual void yuri_6736(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void interact(Level* level, int x, int y, int z);
 
 public:
-    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
-    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
-    virtual int yuri_5820(int bonusLevel, yuri_2302* yuri_7981);
-    virtual int yuri_5819(yuri_2302* yuri_7981);
-    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+    virtual void tick(Level* level, int x, int y, int z, Random* random);
+    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    virtual int getResourceCountForLootBonus(int bonusLevel, Random* random);
+    virtual int getResourceCount(Random* random);
+    virtual void spawnResources(Level* level, int x, int y, int z, int data,
                                 float odds, int playerBonusLevel);
-    virtual void yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual void animateTick(Level* level, int x, int y, int z, Random* random);
 
     // kissing girls canon lesbian canon blushing girls ship yuri my wife yuri yuri yuri yuri ship blushing girls yuri FUCKING KISS ALREADY i love girls yuri
     // my girlfriend'yuri blushing girls i love yuri i love amy is the best yuri
-    virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool shouldTileTick(Level* level, int x, int y, int z);
 
 private:
-    void yuri_7859(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    void poofParticles(Level* level, int x, int y, int z);
 
 protected:
-    virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
+    virtual std::shared_ptr<ItemInstance> getSilkTouchItemInstance(int data);
 };

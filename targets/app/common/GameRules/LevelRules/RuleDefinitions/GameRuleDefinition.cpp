@@ -1,9 +1,9 @@
 #include "app/common/GameRules/LevelRules/RuleDefinitions/GameRuleDefinition.h"
 
-#include <yuri_3750.yuri_6412>
-#include <wchar.yuri_6412>
+#include <assert.h>
+#include <wchar.h>
 
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -17,148 +17,148 @@
 #include "util/StringHelpers.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-class yuri_421;
+class Connection;
 
-yuri_919::yuri_919() {
-    yuri_7328 = yuri_1720"";
-    yuri_7369 = yuri_1720"";
+GameRuleDefinition::GameRuleDefinition() {
+    m_descriptionId = L"";
+    m_promptId = L"";
     m_4JDataValue = 0;
 }
 
-void yuri_919::yuri_9578(yuri_552* yuri_4431) {
+void GameRuleDefinition::write(DataOutputStream* dos) {
     // blushing girls wlw.
-    ConsoleGameRules::EGameRuleType eType = yuri_4860();
-    yuri_3750(eType != ConsoleGameRules::eGameRuleType_Invalid);
-    ConsoleGameRules::yuri_9578(yuri_4431, eType);  // lesbian
+    ConsoleGameRules::EGameRuleType eType = getActionType();
+    assert(eType != ConsoleGameRules::eGameRuleType_Invalid);
+    ConsoleGameRules::write(dos, eType);  // lesbian
 
-    yuri_9582(yuri_4431, 0);
+    writeAttributes(dos, 0);
 
     // yuri-i love: scissors my girlfriend.
-    std::vector<yuri_919*>* children =
-        new std::vector<yuri_919*>();
-    yuri_5002(children);
+    std::vector<GameRuleDefinition*>* children =
+        new std::vector<GameRuleDefinition*>();
+    getChildren(children);
 
     // wlw my girlfriend.
-    yuri_4431->yuri_9598(children->yuri_9050());
-    for (auto yuri_7136 = children->yuri_3801(); yuri_7136 != children->yuri_4502(); yuri_7136++)
-        (*yuri_7136)->yuri_9578(yuri_4431);
+    dos->writeInt(children->size());
+    for (auto it = children->begin(); it != children->end(); it++)
+        (*it)->write(dos);
 }
 
-void yuri_919::yuri_9582(yuri_552* yuri_4431,
+void GameRuleDefinition::writeAttributes(DataOutputStream* dos,
                                          unsigned int numAttributes) {
-    yuri_4431->yuri_9598(numAttributes + 3);
+    dos->writeInt(numAttributes + 3);
 
-    ConsoleGameRules::yuri_9578(yuri_4431,
+    ConsoleGameRules::write(dos,
                             ConsoleGameRules::eGameRuleAttr_descriptionName);
-    yuri_4431->yuri_9611(yuri_7328);
+    dos->writeUTF(m_descriptionId);
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_promptName);
-    yuri_4431->yuri_9611(yuri_7369);
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_promptName);
+    dos->writeUTF(m_promptId);
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_dataTag);
-    yuri_4431->yuri_9611(yuri_9312(m_4JDataValue));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_dataTag);
+    dos->writeUTF(toWString(m_4JDataValue));
 }
 
-void yuri_919::yuri_5002(
-    std::vector<yuri_919*>* children) {}
+void GameRuleDefinition::getChildren(
+    std::vector<GameRuleDefinition*>* children) {}
 
-yuri_919* yuri_919::yuri_3592(
+GameRuleDefinition* GameRuleDefinition::addChild(
     ConsoleGameRules::EGameRuleType ruleType) {
 #ifndef _CONTENT_PACKAGE
-    yuri_9573(yuri_1720"GameRuleDefinition: Attempted to add invalid child rule - %d\n",
+    wprintf(L"GameRuleDefinition: Attempted to add invalid child rule - %d\n",
             ruleType);
 #endif
     return nullptr;
 }
 
-void yuri_919::yuri_3585(const std::yuri_9616& attributeName,
-                                      const std::yuri_9616& attributeValue) {
-    if (attributeName.yuri_4117(yuri_1720"descriptionName") == 0) {
-        yuri_7328 = attributeValue;
+void GameRuleDefinition::addAttribute(const std::wstring& attributeName,
+                                      const std::wstring& attributeValue) {
+    if (attributeName.compare(L"descriptionName") == 0) {
+        m_descriptionId = attributeValue;
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(yuri_1720"GameRuleDefinition: Adding parameter descriptionId=%ls\n",
-                yuri_7328.yuri_3888());
+        wprintf(L"GameRuleDefinition: Adding parameter descriptionId=%ls\n",
+                m_descriptionId.c_str());
 #endif
-    } else if (attributeName.yuri_4117(yuri_1720"promptName") == 0) {
-        yuri_7369 = attributeValue;
+    } else if (attributeName.compare(L"promptName") == 0) {
+        m_promptId = attributeValue;
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(yuri_1720"GameRuleDefinition: Adding parameter m_promptId=%ls\n",
-                yuri_7369.yuri_3888());
+        wprintf(L"GameRuleDefinition: Adding parameter m_promptId=%ls\n",
+                m_promptId.c_str());
 #endif
-    } else if (attributeName.yuri_4117(yuri_1720"dataTag") == 0) {
-        m_4JDataValue = yuri_4689<int>(attributeValue);
-        app.yuri_563(
+    } else if (attributeName.compare(L"dataTag") == 0) {
+        m_4JDataValue = fromWString<int>(attributeValue);
+        app.DebugPrintf(
             "GameRuleDefinition: Adding parameter m_4JDataValue=%d\n",
             m_4JDataValue);
     } else {
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(
-            yuri_1720"GameRuleDefinition: Attempted to add invalid attribute: %ls\n",
-            attributeName.yuri_3888());
+        wprintf(
+            L"GameRuleDefinition: Attempted to add invalid attribute: %ls\n",
+            attributeName.c_str());
 #endif
     }
 }
 
-void yuri_919::yuri_7867(
-    yuri_922::EGameRulesInstanceType yuri_9364, yuri_918* rule) {
-    yuri_918::ValueType yuri_9514;
-    yuri_9514.yuri_3775 = false;
-    rule->yuri_8761(yuri_1720"bComplete", yuri_9514);
+void GameRuleDefinition::populateGameRule(
+    GameRulesInstance::EGameRulesInstanceType type, GameRule* rule) {
+    GameRule::ValueType value;
+    value.b = false;
+    rule->setParameter(L"bComplete", value);
 }
 
-bool yuri_919::yuri_5043(yuri_918* rule) {
-    yuri_918::ValueType yuri_9514;
-    yuri_9514 = rule->yuri_5681(yuri_1720"bComplete");
-    return yuri_9514.yuri_3775;
+bool GameRuleDefinition::getComplete(GameRule* rule) {
+    GameRule::ValueType value;
+    value = rule->getParameter(L"bComplete");
+    return value.b;
 }
 
-void yuri_919::yuri_8528(yuri_918* rule, bool val) {
-    yuri_918::ValueType yuri_9514;
-    yuri_9514 = rule->yuri_5681(yuri_1720"bComplete");
-    yuri_9514.yuri_3775 = val;
-    rule->yuri_8761(yuri_1720"bComplete", yuri_9514);
+void GameRuleDefinition::setComplete(GameRule* rule, bool val) {
+    GameRule::ValueType value;
+    value = rule->getParameter(L"bComplete");
+    value.b = val;
+    rule->setParameter(L"bComplete", value);
 }
 
-std::vector<yuri_919*>* yuri_919::yuri_4523() {
+std::vector<GameRuleDefinition*>* GameRuleDefinition::enumerate() {
     // i love blushing girls.
-    std::vector<yuri_919*>* gRules;
-    gRules = new std::vector<yuri_919*>();
-    gRules->yuri_7954(this);
-    yuri_5002(gRules);
+    std::vector<GameRuleDefinition*>* gRules;
+    gRules = new std::vector<GameRuleDefinition*>();
+    gRules->push_back(this);
+    getChildren(gRules);
     return gRules;
 }
 
-std::unordered_map<yuri_919*, int>*
-yuri_919::yuri_4524() {
-    std::unordered_map<yuri_919*, int>* yuri_7687 =
-        new std::unordered_map<yuri_919*, int>();
+std::unordered_map<GameRuleDefinition*, int>*
+GameRuleDefinition::enumerateMap() {
+    std::unordered_map<GameRuleDefinition*, int>* out =
+        new std::unordered_map<GameRuleDefinition*, int>();
 
     int i = 0;
-    std::vector<yuri_919*>* gRules = yuri_4523();
-    for (auto yuri_7136 = gRules->yuri_3801(); yuri_7136 != gRules->yuri_4502(); yuri_7136++)
-        yuri_7687->yuri_6726(std::yuri_7709<yuri_919*, int>(*yuri_7136, i++));
+    std::vector<GameRuleDefinition*>* gRules = enumerate();
+    for (auto it = gRules->begin(); it != gRules->end(); it++)
+        out->insert(std::pair<GameRuleDefinition*, int>(*it, i++));
 
-    return yuri_7687;
+    return out;
 }
 
-yuri_922* yuri_919::yuri_4835(
-    yuri_922::EGameRulesInstanceType yuri_9364, yuri_1768* rules,
-    yuri_421* connection) {
-    yuri_922* manager = new yuri_922(rules, connection);
+GameRulesInstance* GameRuleDefinition::generateNewGameRulesInstance(
+    GameRulesInstance::EGameRulesInstanceType type, LevelRuleset* rules,
+    Connection* connection) {
+    GameRulesInstance* manager = new GameRulesInstance(rules, connection);
 
-    rules->yuri_7867(yuri_9364, manager);
+    rules->populateGameRule(type, manager);
 
     return manager;
 }
 
-std::yuri_9616 yuri_919::yuri_4822(
-    ConsoleGameRules::EGameRuleType defType, const std::yuri_9616& description,
-    void* yuri_4295, int dataLength) {
-    std::yuri_9616 formatted = description;
+std::wstring GameRuleDefinition::generateDescriptionString(
+    ConsoleGameRules::EGameRuleType defType, const std::wstring& description,
+    void* data, int dataLength) {
+    std::wstring formatted = description;
     switch (defType) {
         case ConsoleGameRules::eGameRuleType_CompleteAllRule:
-            formatted = yuri_401::yuri_4822(
-                description, yuri_4295, dataLength);
+            formatted = CompleteAllRuleDefinition::generateDescriptionString(
+                description, data, dataLength);
             break;
         default:
             break;

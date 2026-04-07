@@ -1,13 +1,13 @@
 #pragma once
 // lesbian ship hand holding;
 
-#yuri_4327 XBOX_SCHEMATIC_ORIGINAL_VERSION 1
-#yuri_4327 XBOX_SCHEMATIC_CURRENT_VERSION 2
+#define XBOX_SCHEMATIC_ORIGINAL_VERSION 1
+#define XBOX_SCHEMATIC_CURRENT_VERSION 2
 
-#include <stdint.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <stdint.h>
+#include <string.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <ranges>
 #include <utility>
@@ -17,16 +17,16 @@
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/compression.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_1758;
-class yuri_552;
-class yuri_549;
-class yuri_3091;
-class yuri_1759;
-class yuri_0;
-class yuri_3322;
-class yuri_409;
+class Level;
+class DataOutputStream;
+class DataInputStream;
+class TileEntity;
+class LevelChunk;
+class AABB;
+class Vec3;
+class CompoundTag;
 
-class yuri_433 {
+class ConsoleSchematicFile {
 public:
     enum ESchematicRotation {
         eSchematicRot_0,
@@ -39,12 +39,12 @@ private:
     int m_refCount;
 
 public:
-    void yuri_6696() { ++m_refCount; }
-    void yuri_4322() { --m_refCount; }
-    bool yuri_9002() { return m_refCount <= 0; }
+    void incrementRefCount() { ++m_refCount; }
+    void decrementRefCount() { --m_refCount; }
+    bool shouldDelete() { return m_refCount <= 0; }
 
-    typedef struct yuri_3481 {
-        wchar_t yuri_7540[64];
+    typedef struct _XboxSchematicInitParam {
+        wchar_t name[64];
         int startX;
         int startY;
         int startZ;
@@ -53,69 +53,69 @@ public:
         int endZ;
         bool bSaveMobs;
 
-        yuri_415::ECompressionTypes compressionType;
+        Compression::ECompressionTypes compressionType;
 
-        yuri_3481() {
-            memset(yuri_7540, 0, 64 * (sizeof(wchar_t)));
+        _XboxSchematicInitParam() {
+            memset(name, 0, 64 * (sizeof(wchar_t)));
             startX = startY = startZ = endX = endY = endZ = 0;
             bSaveMobs = false;
-            compressionType = yuri_415::eCompressionType_None;
+            compressionType = Compression::eCompressionType_None;
         }
-    } yuri_3415;
+    } XboxSchematicInitParam;
 
 private:
     int m_xSize, m_ySize, m_zSize;
-    std::vector<std::shared_ptr<yuri_3091> > m_tileEntities;
-    std::vector<std::yuri_7709<yuri_3322, yuri_409*> > m_entities;
+    std::vector<std::shared_ptr<TileEntity> > m_tileEntities;
+    std::vector<std::pair<Vec3, CompoundTag*> > m_entities;
 
 public:
-    std::vector<yuri_9368> m_data;
+    std::vector<uint8_t> m_data;
 
 public:
-    yuri_433();
-    ~yuri_433();
+    ConsoleSchematicFile();
+    ~ConsoleSchematicFile();
 
-    int yuri_6148() { return m_xSize; }
-    int yuri_6172() { return m_ySize; }
-    int yuri_6180() { return m_zSize; }
+    int getXSize() { return m_xSize; }
+    int getYSize() { return m_ySize; }
+    int getZSize() { return m_zSize; }
 
-    void yuri_8353(yuri_552* yuri_4431);
-    void yuri_7219(yuri_549* yuri_4365);
+    void save(DataOutputStream* dos);
+    void load(DataInputStream* dis);
 
-    yuri_6733 yuri_3724(yuri_1759* chunk, yuri_0* yuri_4035,
-                               yuri_0* destinationBox, ESchematicRotation rot);
-    yuri_6733 yuri_3734(yuri_1759* chunk, yuri_0* yuri_4035,
-                          yuri_0* destinationBox, ESchematicRotation rot);
-    void yuri_3736(yuri_1759* chunk, yuri_0* yuri_4035,
-                           yuri_0* destinationBox, ESchematicRotation rot);
+    int64_t applyBlocksAndData(LevelChunk* chunk, AABB* chunkBox,
+                               AABB* destinationBox, ESchematicRotation rot);
+    int64_t applyLighting(LevelChunk* chunk, AABB* chunkBox,
+                          AABB* destinationBox, ESchematicRotation rot);
+    void applyTileEntities(LevelChunk* chunk, AABB* chunkBox,
+                           AABB* destinationBox, ESchematicRotation rot);
 
-    static void yuri_4844(yuri_552* yuri_4431, yuri_1758* yuri_7194,
+    static void generateSchematicFile(DataOutputStream* dos, Level* level,
                                       int xStart, int yStart, int zStart,
                                       int xEnd, int yEnd, int zEnd,
                                       bool bSaveMobs,
-                                      yuri_415::ECompressionTypes);
-    static void yuri_8489(yuri_1759* chunk,
-                                 std::vector<yuri_9368>& blockData,
-                                 std::vector<yuri_9368>& dataData,
-                                 std::vector<yuri_9368> yuri_4295, int yuri_9622, int yuri_9626,
-                                 int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632, int& blocksP,
+                                      Compression::ECompressionTypes);
+    static void setBlocksAndData(LevelChunk* chunk,
+                                 std::vector<uint8_t>& blockData,
+                                 std::vector<uint8_t>& dataData,
+                                 std::vector<uint8_t> data, int x0, int y0,
+                                 int z0, int x1, int y1, int z1, int& blocksP,
                                  int& dataP, int& blockLightP, int& skyLightP);
 
 private:
-    void yuri_8378(yuri_552* yuri_4431);
-    void yuri_7285(yuri_549* yuri_4365);
+    void save_tags(DataOutputStream* dos);
+    void load_tags(DataInputStream* dis);
 
-    static void yuri_4964(yuri_1759* chunk, std::vector<yuri_9368>* yuri_4295,
-                                 int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
+    static void getBlocksAndData(LevelChunk* chunk, std::vector<uint8_t>* data,
+                                 int x0, int y0, int z0, int x1, int y1, int z1,
                                  int& blocksP, int& dataP, int& blockLightP,
                                  int& skyLightP);
-    static std::vector<std::shared_ptr<yuri_3091> >* yuri_6034(
-        yuri_1759* chunk, int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632);
+    static std::vector<std::shared_ptr<TileEntity> >* getTileEntitiesInRegion(
+        LevelChunk* chunk, int x0, int y0, int z0, int x1, int y1, int z1);
 
-    void yuri_4036(yuri_0* destinationBox, int chunkX,
+    void chunkCoordToSchematicCoord(AABB* destinationBox, int chunkX,
                                     int chunkZ, ESchematicRotation rot,
                                     int& schematicX, int& schematicZ);
-    void yuri_8388(yuri_0* destinationBox, double schematicX,
+    void schematicCoordToChunkCoord(AABB* destinationBox, double schematicX,
                                     double schematicZ, ESchematicRotation rot,
                                     double& chunkX, double& chunkZ);
 };

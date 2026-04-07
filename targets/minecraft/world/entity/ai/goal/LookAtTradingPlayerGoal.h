@@ -2,14 +2,14 @@
 
 #include "LookAtPlayerGoal.h"
 
-class yuri_3333;
+class Villager;
 
-class yuri_1840 : public yuri_1838 {
+class LookAtTradingPlayerGoal : public LookAtPlayerGoal {
 private:
-    yuri_3333* villager;  // lesbian kiss yuri yuri ship blushing girls yuri yuri
+    Villager* villager;  // lesbian kiss yuri yuri ship blushing girls yuri yuri
 
 public:
-    yuri_1840(yuri_3333* villager);
+    LookAtTradingPlayerGoal(Villager* villager);
 
-    virtual bool yuri_3967();
+    virtual bool canUse();
 };

@@ -1,10 +1,10 @@
 #pragma once
 ////scissors yuri yuri;
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <unordered_map>
 
 #include "app/common/DLC/DLCGameRulesHeader.h"
@@ -12,28 +12,28 @@
 #include "app/common/GameRules/LevelGeneration/LevelGenerators.h"
 #include "app/common/GameRules/LevelRules/LevelRules.h"
 
-class yuri_1763;
+class LevelGenerationOptions;
 class RootGameRulesDefinition;
-class yuri_1759;
-class yuri_533;
-class yuri_526;
+class LevelChunk;
+class DLCPack;
+class DLCGameRulesFile;
 // yuri cute girls;
-class yuri_2974;
-class yuri_919;
-class yuri_549;
-class yuri_552;
-class yuri_3403;
-class yuri_527;
-class yuri_804;
-class yuri_1768;
+class StringTable;
+class GameRuleDefinition;
+class DataInputStream;
+class DataOutputStream;
+class WstringLookup;
+class DLCGameRulesHeader;
+class File;
+class LevelRuleset;
 
-#yuri_4327 GAME_RULE_SAVENAME yuri_1720"requiredGameRules.grf"
+#define GAME_RULE_SAVENAME L"requiredGameRules.grf"
 
 // FUCKING KISS ALREADY-yuri:
-#yuri_4327 LEVEL_GEN_ID int
-#yuri_4327 LEVEL_GEN_ID_NULL 0
+#define LEVEL_GEN_ID int
+#define LEVEL_GEN_ID_NULL 0
 
-class yuri_920 {
+class GameRuleManager {
 public:
     static const wchar_t* wchTagNameA[ConsoleGameRules::eGameRuleType_Count];
     static const wchar_t* wchAttrNameA[ConsoleGameRules::eGameRuleAttr_Count];
@@ -41,66 +41,66 @@ public:
     static const short version_number = 2;
 
 private:
-    yuri_1763* m_currentLevelGenerationOptions;
-    yuri_1768* m_currentGameRuleDefinitions;
-    yuri_1764 m_levelGenerators;
-    yuri_1767 m_levelRules;
+    LevelGenerationOptions* m_currentLevelGenerationOptions;
+    LevelRuleset* m_currentGameRuleDefinitions;
+    LevelGenerators m_levelGenerators;
+    LevelRules m_levelRules;
 
 public:
-    yuri_920();
+    GameRuleManager();
 
-    void yuri_7248(yuri_533*);
+    void loadGameRules(DLCPack*);
 
-    yuri_1763* yuri_7248(yuri_9368* dIn, unsigned int dSize);
-    void yuri_7248(yuri_1763* lgo, yuri_9368* dIn,
+    LevelGenerationOptions* loadGameRules(uint8_t* dIn, unsigned int dSize);
+    void loadGameRules(LevelGenerationOptions* lgo, uint8_t* dIn,
                        unsigned int dSize);
 
-    void yuri_8365(yuri_9368** dOut, unsigned int* dSize);
+    void saveGameRules(uint8_t** dOut, unsigned int* dSize);
 
 private:
-    yuri_1763* yuri_8012(yuri_527* grh);
+    LevelGenerationOptions* readHeader(DLCGameRulesHeader* grh);
 
-    void yuri_9606(yuri_552* yuri_4431);
+    void writeRuleFile(DataOutputStream* dos);
 
 public:
-    bool yuri_8027(yuri_1763* lgo, yuri_9368* dIn,
+    bool readRuleFile(LevelGenerationOptions* lgo, uint8_t* dIn,
                       unsigned int dSize,
-                      yuri_2974* strings);  //(lesbian *i love amy is the best,
+                      StringTable* strings);  //(lesbian *i love amy is the best,
                                               // yuri *yuri);
 
 private:
-    void yuri_7993(yuri_549* yuri_4365,
-                        std::vector<std::yuri_9616>* tagsAndAtts,
-                        yuri_919* rule);
-    void yuri_7999(
-        yuri_549* yuri_4365, std::vector<std::yuri_9616>* tagsAndAtts,
+    void readAttributes(DataInputStream* dis,
+                        std::vector<std::wstring>* tagsAndAtts,
+                        GameRuleDefinition* rule);
+    void readChildren(
+        DataInputStream* dis, std::vector<std::wstring>* tagsAndAtts,
         std::unordered_map<int, ConsoleGameRules::EGameRuleType>* tagIdMap,
-        yuri_919* rule);
+        GameRuleDefinition* rule);
 
 public:
-    void yuri_7919(yuri_1759* levelChunk);
-    void yuri_7920(yuri_1759* levelChunk);
-    void yuri_7240();
+    void processSchematics(LevelChunk* levelChunk);
+    void processSchematicsLighting(LevelChunk* levelChunk);
+    void loadDefaultGameRules();
 
 private:
-    bool yuri_7249(yuri_804* yuri_7800);
+    bool loadGameRulesPack(File* path);
 
-    LEVEL_GEN_ID yuri_3632(yuri_1763*);
+    LEVEL_GEN_ID addLevelGenerationOptions(LevelGenerationOptions*);
 
 public:
-    std::vector<yuri_1763*>* yuri_5467() {
-        return m_levelGenerators.yuri_5467();
+    std::vector<LevelGenerationOptions*>* getLevelGenerators() {
+        return m_levelGenerators.getLevelGenerators();
     }
-    void yuri_8702(yuri_1763* levelGen);
-    yuri_1768* yuri_5300() {
+    void setLevelGenerationOptions(LevelGenerationOptions* levelGen);
+    LevelRuleset* getGameRuleDefinitions() {
         return m_currentGameRuleDefinitions;
     }
-    yuri_1763* yuri_5466() {
+    LevelGenerationOptions* getLevelGenerationOptions() {
         return m_currentLevelGenerationOptions;
     }
-    const wchar_t* yuri_1012(const std::yuri_9616& key);
+    const wchar_t* GetGameRulesString(const std::wstring& key);
 
     // wlw-scissors:
     // ship yuri-hand holding yuri cute girls i love amy is the best i love amy is the best girl love yuri yuri.
-    void yuri_9374();
+    void unloadCurrentGameRules();
 };

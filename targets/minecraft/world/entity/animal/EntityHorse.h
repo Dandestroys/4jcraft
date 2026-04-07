@@ -1,10 +1,10 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "Animal.h"
@@ -15,26 +15,26 @@
 #include "minecraft/world/net.minecraft.world.ContainerListener.h"
 
 class Attribute;
-class yuri_114;
-class yuri_739;
-class yuri_1693;
-class yuri_1758;
+class AnimalChest;
+class Entity;
+class ItemInstance;
+class Level;
 
-class yuri_1288 : public yuri_747 {
+class HorseEntitySelector : public EntitySelector {
 public:
-    bool yuri_7458(std::shared_ptr<yuri_739> entity) const;
+    bool matches(std::shared_ptr<Entity> entity) const;
 };
 
-class yuri_743 : public yuri_113,
+class EntityHorse : public Animal,
                     public net_minecraft_world::ContainerListener {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_HORSE; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_743(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_HORSE; }
+    static Entity* create(Level* level) { return new EntityHorse(level); }
 
 private:
-    static const std::yuri_9616 TEX_FOLDER;
+    static const std::wstring TEX_FOLDER;
 
-    static const yuri_747* PARENT_HORSE_SELECTOR;
+    static const EntitySelector* PARENT_HORSE_SELECTOR;
 
     static Attribute* JUMP_STRENGTH;
 
@@ -66,9 +66,9 @@ public:
 
 private:
     static const int ARMORS = 4;
-    static std::yuri_9616 ARMOR_TEXTURES[ARMORS];
+    static std::wstring ARMOR_TEXTURES[ARMORS];
     static int ARMOR_TEXTURES_ID[ARMORS];
-    static std::yuri_9616 ARMOR_HASHES[ARMORS];
+    static std::wstring ARMOR_HASHES[ARMORS];
     static int ARMOR_PROTECTION[ARMORS];
 
 public:
@@ -88,9 +88,9 @@ public:
 
 private:
     static const int VARIANTS = 7;
-    static std::yuri_9616 VARIANT_TEXTURES[VARIANTS];
+    static std::wstring VARIANT_TEXTURES[VARIANTS];
     static int VARIANT_TEXTURES_ID[VARIANTS];
-    static std::yuri_9616 VARIANT_HASHES[VARIANTS];
+    static std::wstring VARIANT_HASHES[VARIANTS];
 
 public:
     static const int MARKING_NONE = 0;
@@ -101,9 +101,9 @@ public:
 
 private:
     static const int MARKINGS = 5;
-    static std::yuri_9616 MARKING_TEXTURES[MARKINGS];
+    static std::wstring MARKING_TEXTURES[MARKINGS];
     static int MARKING_TEXTURES_ID[MARKINGS];
-    static std::yuri_9616 MARKING_HASHES[MARKINGS];
+    static std::wstring MARKING_HASHES[MARKINGS];
 
 private:
     int countEating;  // lesbian blushing girls
@@ -118,7 +118,7 @@ protected:
     bool isEntityJumping;
 
 private:
-    std::shared_ptr<yuri_114> inventory;
+    std::shared_ptr<AnimalChest> inventory;
     bool hasReproduced;
 
 protected:
@@ -134,222 +134,222 @@ private:
     float mouthAnim, mouthAnimO;
 
 public:
-    yuri_743(yuri_1758* world);
-    ~yuri_743() = default;
+    EntityHorse(Level* world);
+    ~EntityHorse() = default;
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual void yuri_8935(int i);
-    virtual int yuri_6068();
-    virtual void yuri_8946(int i);
-    virtual int yuri_6109();
-    virtual std::yuri_9616 yuri_4856();
+    virtual void setType(int i);
+    virtual int getType();
+    virtual void setVariant(int i);
+    virtual int getVariant();
+    virtual std::wstring getAName();
 
 private:
-    virtual bool yuri_5377(int flag);
-    virtual void yuri_8652(int flag, bool yuri_9514);
+    virtual bool getHorseFlag(int flag);
+    virtual void setHorseFlag(int flag, bool value);
 
 public:
-    virtual bool yuri_6752();
-    virtual bool yuri_7081();
-    virtual bool yuri_7016();
-    virtual std::yuri_9616 yuri_5634();
-    virtual void yuri_8757(const std::yuri_9616& par1Str);
-    virtual float yuri_5262();
-    virtual void yuri_9463(bool yuri_6781);
-    virtual bool yuri_5414();
-    virtual void yuri_8901(bool flag);
-    virtual void yuri_8685(bool flag);
-    virtual bool yuri_3910();
+    virtual bool isAdult();
+    virtual bool isTamed();
+    virtual bool isRidable();
+    virtual std::wstring getOwnerName();
+    virtual void setOwner(const std::wstring& par1Str);
+    virtual float getFoalScale();
+    virtual void updateSize(bool isBaby);
+    virtual bool getIsJumping();
+    virtual void setTamed(bool flag);
+    virtual void setIsJumping(bool flag);
+    virtual bool canBeLeashed();
 
 protected:
-    virtual void yuri_7627(float distanceToLeashHolder);
+    virtual void onLeashDistance(float distanceToLeashHolder);
 
 public:
-    virtual bool yuri_6799();
-    virtual int yuri_4902();
-    virtual int yuri_4903(std::shared_ptr<yuri_1693> armorItem);
-    virtual bool yuri_6848();
-    virtual bool yuri_7068();
-    virtual bool yuri_6788();
-    virtual bool yuri_5338();
-    virtual void yuri_8460(int i);
-    virtual void yuri_8492(bool flag);
-    virtual void yuri_8518(bool flag);
-    virtual void yuri_8811(bool flag);
-    virtual void yuri_8832(bool flag);
-    virtual int yuri_6001();
-    virtual void yuri_8903(int temper);
-    virtual int yuri_7510(int amount);
-    virtual bool yuri_6667(yuri_548* damagesource, float dmg);
-    virtual int yuri_4904();
-    virtual bool yuri_6998();
-    virtual bool yuri_4027();
-    virtual void yuri_4448();
+    virtual bool isChestedHorse();
+    virtual int getArmorType();
+    virtual int getArmorTypeForItem(std::shared_ptr<ItemInstance> armorItem);
+    virtual bool isEating();
+    virtual bool isStanding();
+    virtual bool isBred();
+    virtual bool getHasReproduced();
+    virtual void setArmorType(int i);
+    virtual void setBred(bool flag);
+    virtual void setChestedHorse(bool flag);
+    virtual void setReproduced(bool flag);
+    virtual void setSaddled(bool flag);
+    virtual int getTemper();
+    virtual void setTemper(int temper);
+    virtual int modifyTemper(int amount);
+    virtual bool hurt(DamageSource* damagesource, float dmg);
+    virtual int getArmorValue();
+    virtual bool isPushable();
+    virtual bool checkSpawningBiome();
+    virtual void dropBags();
 
 private:
-    virtual void yuri_4466();
+    virtual void eatingHorse();
 
 protected:
-    virtual void yuri_3980(float fallDistance);
+    virtual void causeFallDamage(float fallDistance);
 
 private:
-    virtual int yuri_5411();
-    virtual void yuri_4234();
-    virtual void yuri_9410();
+    virtual int getInventorySize();
+    virtual void createInventory();
+    virtual void updateEquipment();
 
 public:
-    virtual void yuri_4146();
-    virtual bool yuri_3958();
+    virtual void containerChanged();
+    virtual bool canSpawn();
 
 protected:
-    virtual std::shared_ptr<yuri_743> yuri_5024(
-        std::shared_ptr<yuri_739> baby, double searchRadius);
+    virtual std::shared_ptr<EntityHorse> getClosestMommy(
+        std::shared_ptr<Entity> baby, double searchRadius);
 
 public:
-    virtual double yuri_5086();
+    virtual double getCustomJump();
 
 protected:
-    virtual int yuri_5130();
-    virtual int yuri_5128();
-    virtual int yuri_5383();
+    virtual int getDeathSound();
+    virtual int getDeathLoot();
+    virtual int getHurtSound();
 
 public:
-    virtual bool yuri_7021();
+    virtual bool isSaddled();
 
 protected:
-    virtual int yuri_4882();
-    virtual int yuri_5506();
+    virtual int getAmbientSound();
+    virtual int getMadSound();
 
 private:
     int gallopSoundCounter;
 
 protected:
-    virtual void yuri_7835(int xt, int yt, int zt, int t);
-    virtual void yuri_8067();
+    virtual void playStepSound(int xt, int yt, int zt, int t);
+    virtual void registerAttributes();
 
 public:
-    virtual int yuri_5529();
-    virtual int yuri_5532();
+    virtual int getMaxSpawnClusterSize();
+    virtual int getMaxTemper();
 
 protected:
-    virtual float yuri_5937();
+    virtual float getSoundVolume();
 
 public:
-    virtual int yuri_4883();
-    virtual bool yuri_6610();
+    virtual int getAmbientSoundInterval();
+    virtual bool hasLayeredTextures();
 
 private:
-    std::yuri_9616 layerTextureHashName;
+    std::wstring layerTextureHashName;
     std::vector<int> layerTextureLayers;
 
 private:
-    virtual void yuri_4063();
-    virtual void yuri_8049();
+    virtual void clearLayeredTextureInfo();
+    virtual void rebuildLayeredTextureInfo();
 
 public:
-    virtual std::yuri_9616 yuri_5455();
-    virtual std::vector<int> yuri_5456();
-    virtual void yuri_7669(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual std::wstring getLayeredTextureHashName();
+    virtual std::vector<int> getLayeredTextureLayers();
+    virtual void openInventory(std::shared_ptr<Player> player);
+    virtual bool mobInteract(std::shared_ptr<Player> player);
 
 private:
-    virtual void yuri_4412(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual void doPlayerRide(std::shared_ptr<Player> player);
 
 public:
-    virtual bool yuri_6772();
-    virtual bool yuri_3972();
-    virtual bool yuri_3973();
+    virtual bool isAmuletHorse();
+    virtual bool canWearArmor();
+    virtual bool canWearBags();
 
 protected:
-    virtual bool yuri_6909();
+    virtual bool isImmobile();
 
 public:
-    virtual bool yuri_6997();
-    virtual bool yuri_7095();
-    virtual bool yuri_7071();
-    virtual bool yuri_6876(std::shared_ptr<yuri_1693> itemInstance);
+    virtual bool isPureBreed();
+    virtual bool isUndead();
+    virtual bool isSterile();
+    virtual bool isFood(std::shared_ptr<ItemInstance> itemInstance);
 
 private:
-    virtual void yuri_7530();
+    virtual void moveTail();
 
 public:
-    virtual int yuri_7541();
-    virtual void yuri_4360(yuri_548* damagesource);
-    virtual void yuri_3704();
-    virtual void yuri_9265();
+    virtual int nameYOffset();
+    virtual void die(DamageSource* damagesource);
+    virtual void aiStep();
+    virtual void tick();
 
 private:
-    virtual void yuri_7671();
+    virtual void openMouth();
 
 public:
     // i love-lesbian kiss: yuri snuggle canon yuri yuri, yuri'yuri lesbian canon ship.
-    virtual bool yuri_7006();
+    virtual bool isReadyForParenting();
 
 public:
-    virtual bool yuri_8212();
-    virtual bool yuri_8315();
-    virtual void yuri_8943(bool flag);
-    virtual void yuri_8584(bool state);
-    virtual void yuri_8885(bool state);
+    virtual bool renderName();
+    virtual bool rideableEntity();
+    virtual void setUsingItemFlag(bool flag);
+    virtual void setEating(bool state);
+    virtual void setStanding(bool state);
 
 private:
-    virtual void yuri_9097();
+    virtual void stand();
 
 public:
-    virtual void yuri_7430();
-    virtual void yuri_4455();
+    virtual void makeMad();
+    virtual void dropMyStuff();
 
 private:
-    virtual void yuri_4452(std::shared_ptr<yuri_739> entity,
-                               std::shared_ptr<yuri_114> animalchest);
+    virtual void dropInventory(std::shared_ptr<Entity> entity,
+                               std::shared_ptr<AnimalChest> animalchest);
 
 public:
-    virtual bool yuri_9182(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual void yuri_9337(float xa, float ya);
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual bool yuri_3936(std::shared_ptr<yuri_113> partner);
-    virtual std::shared_ptr<yuri_99> yuri_4973(
-        std::shared_ptr<yuri_99> partner);
-    virtual MobGroupData* yuri_4592(
+    virtual bool tameWithName(std::shared_ptr<Player> player);
+    virtual void travel(float xa, float ya);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual bool canMate(std::shared_ptr<Animal> partner);
+    virtual std::shared_ptr<AgableMob> getBreedOffspring(
+        std::shared_ptr<AgableMob> partner);
+    virtual MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
         int extraData = 0);  // girl love yuri snuggle hand holding
-    virtual float yuri_5189(float yuri_3565);
-    virtual float yuri_5956(float yuri_3565);
-    virtual float yuri_5570(float yuri_3565);
+    virtual float getEatAnim(float a);
+    virtual float getStandAnim(float a);
+    virtual float getMouthAnim(float a);
 
 protected:
-    virtual bool yuri_9490();
+    virtual bool useNewAi();
 
 public:
-    virtual void yuri_7638(int jumpAmount);
+    virtual void onPlayerJump(int jumpAmount);
 
 protected:
-    virtual void yuri_9088(bool success);
+    virtual void spawnTamingParticles(bool success);
 
 public:
-    virtual void yuri_6469(yuri_9368 yuri_6674);
-    virtual void yuri_7875();
+    virtual void handleEntityEvent(uint8_t id);
+    virtual void positionRider();
 
 private:
-    virtual float yuri_4841();
-    virtual double yuri_4840();
-    virtual double yuri_4843();
+    virtual float generateRandomMaxHealth();
+    virtual double generateRandomJumpStrength();
+    virtual double generateRandomSpeed();
 
-    std::shared_ptr<yuri_2126> yuri_5633();
+    std::shared_ptr<Player> getOwner();
 
 public:
-    class yuri_1289 : public MobGroupData {
+    class HorseGroupData : public MobGroupData {
     public:
         int horseType;
         int horseVariant;
 
-        yuri_1289(int yuri_9364, int variant);
+        HorseGroupData(int type, int variant);
     };
 
-    static bool yuri_6900(int yuri_7138);
-    virtual bool yuri_7624();
+    static bool isHorseArmor(int itemId);
+    virtual bool onLadder();
 };

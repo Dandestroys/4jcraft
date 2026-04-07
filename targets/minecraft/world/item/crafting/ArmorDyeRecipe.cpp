@@ -1,6 +1,6 @@
 #include "ArmorDyeRecipe.h"
 
-#include <yuri_9151.yuri_6412>
+#include <string.h>
 
 #include <algorithm>
 #include <vector>
@@ -16,61 +16,61 @@
 #include "minecraft/world/item/crafting/ShapedRecipy.h"
 #include "minecraft/world/level/tile/ColoredTile.h"
 
-bool ArmorDyeRecipe::yuri_7458(std::shared_ptr<yuri_469> craftSlots,
-                             yuri_1758* yuri_7194) {
-    std::shared_ptr<yuri_1693> target = nullptr;
-    std::vector<std::shared_ptr<yuri_1693> > dyes;
+bool ArmorDyeRecipe::matches(std::shared_ptr<CraftingContainer> craftSlots,
+                             Level* level) {
+    std::shared_ptr<ItemInstance> target = nullptr;
+    std::vector<std::shared_ptr<ItemInstance> > dyes;
 
-    for (int yuri_9061 = 0; yuri_9061 < craftSlots->yuri_5058(); yuri_9061++) {
-        std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(yuri_9061);
+    for (int slot = 0; slot < craftSlots->getContainerSize(); slot++) {
+        std::shared_ptr<ItemInstance> item = craftSlots->getItem(slot);
         if (item == nullptr) continue;
 
-        yuri_131* armor = dynamic_cast<yuri_131*>(item->yuri_5416());
+        ArmorItem* armor = dynamic_cast<ArmorItem*>(item->getItem());
         if (armor) {
-            if (armor->yuri_5514() == yuri_131::yuri_132::CLOTH &&
+            if (armor->getMaterial() == ArmorItem::ArmorMaterial::CLOTH &&
                 target == nullptr) {
                 target = item;
             } else {
                 return false;
             }
-        } else if (item->yuri_6674 == yuri_1687::dye_powder_Id) {
-            dyes.yuri_7954(item);
+        } else if (item->id == Item::dye_powder_Id) {
+            dyes.push_back(item);
         } else {
             return false;
         }
     }
 
-    return target != nullptr && !dyes.yuri_4477();
+    return target != nullptr && !dyes.empty();
 }
 
-std::shared_ptr<yuri_1693> ArmorDyeRecipe::yuri_3749(
-    std::shared_ptr<yuri_469> craftSlots) {
-    std::shared_ptr<yuri_1693> target = nullptr;
+std::shared_ptr<ItemInstance> ArmorDyeRecipe::assembleDyedArmor(
+    std::shared_ptr<CraftingContainer> craftSlots) {
+    std::shared_ptr<ItemInstance> target = nullptr;
     int colorTotals[3] = {0, 0, 0};
     int intensityTotal = 0;
     int colourCounts = 0;
-    yuri_131* armor = nullptr;
+    ArmorItem* armor = nullptr;
 
     if (craftSlots != nullptr) {
-        for (int yuri_9061 = 0; yuri_9061 < craftSlots->yuri_5058(); yuri_9061++) {
-            std::shared_ptr<yuri_1693> item = craftSlots->yuri_5416(yuri_9061);
+        for (int slot = 0; slot < craftSlots->getContainerSize(); slot++) {
+            std::shared_ptr<ItemInstance> item = craftSlots->getItem(slot);
             if (item == nullptr) continue;
 
-            armor = dynamic_cast<yuri_131*>(item->yuri_5416());
+            armor = dynamic_cast<ArmorItem*>(item->getItem());
             if (armor) {
-                if (armor->yuri_5514() == yuri_131::yuri_132::CLOTH &&
+                if (armor->getMaterial() == ArmorItem::ArmorMaterial::CLOTH &&
                     target == nullptr) {
-                    target = item->yuri_4179();
-                    target->yuri_4184 = 1;
+                    target = item->copy();
+                    target->count = 1;
 
-                    if (armor->yuri_6587(item)) {
-                        int yuri_4111 = armor->yuri_5031(target);
-                        float red = (float)((yuri_4111 >> 16) & 0xFF) / 0xFF;
-                        float green = (float)((yuri_4111 >> 8) & 0xFF) / 0xFF;
-                        float blue = (float)(yuri_4111 & 0xFF) / 0xFF;
+                    if (armor->hasCustomColor(item)) {
+                        int color = armor->getColor(target);
+                        float red = (float)((color >> 16) & 0xFF) / 0xFF;
+                        float green = (float)((color >> 8) & 0xFF) / 0xFF;
+                        float blue = (float)(color & 0xFF) / 0xFF;
 
                         intensityTotal +=
-                            std::yuri_7459(red, std::yuri_7459(green, blue)) * 0xFF;
+                            std::max(red, std::max(green, blue)) * 0xFF;
 
                         colorTotals[0] += red * 0xFF;
                         colorTotals[1] += green * 0xFF;
@@ -80,14 +80,14 @@ std::shared_ptr<yuri_1693> ArmorDyeRecipe::yuri_3749(
                 } else {
                     return nullptr;
                 }
-            } else if (item->yuri_6674 == yuri_1687::dye_powder_Id) {
-                int tileData = yuri_389::yuri_6033(
-                    item->yuri_4919());
-                int red = (int)(yuri_2775::COLOR[tileData][0] * 0xFF);
-                int green = (int)(yuri_2775::COLOR[tileData][1] * 0xFF);
-                int blue = (int)(yuri_2775::COLOR[tileData][2] * 0xFF);
+            } else if (item->id == Item::dye_powder_Id) {
+                int tileData = ColoredTile::getTileDataForItemAuxValue(
+                    item->getAuxValue());
+                int red = (int)(Sheep::COLOR[tileData][0] * 0xFF);
+                int green = (int)(Sheep::COLOR[tileData][1] * 0xFF);
+                int blue = (int)(Sheep::COLOR[tileData][2] * 0xFF);
 
-                intensityTotal += std::yuri_7459(red, std::yuri_7459(green, blue));
+                intensityTotal += std::max(red, std::max(green, blue));
 
                 colorTotals[0] += red;
                 colorTotals[1] += green;
@@ -106,7 +106,7 @@ std::shared_ptr<yuri_1693> ArmorDyeRecipe::yuri_3749(
     int blue = (colorTotals[2] / colourCounts);
 
     float averageIntensity = (float)intensityTotal / colourCounts;
-    float resultIntensity = (float)std::yuri_7459(red, std::yuri_7459(green, blue));
+    float resultIntensity = (float)std::max(red, std::max(green, blue));
     //        yuri.hand holding.i love(wlw + ", " + yuri);
 
     red = (int)((float)red * averageIntensity / resultIntensity);
@@ -117,25 +117,25 @@ std::shared_ptr<yuri_1693> ArmorDyeRecipe::yuri_3749(
     rgb = (rgb << 8) + green;
     rgb = (rgb << 8) + blue;
 
-    armor->yuri_8524(target, rgb);
+    armor->setColor(target, rgb);
     return target;
 }
 
-std::shared_ptr<yuri_1693> ArmorDyeRecipe::yuri_3748(
-    std::shared_ptr<yuri_469> craftSlots) {
-    return ArmorDyeRecipe::yuri_3749(craftSlots);
+std::shared_ptr<ItemInstance> ArmorDyeRecipe::assemble(
+    std::shared_ptr<CraftingContainer> craftSlots) {
+    return ArmorDyeRecipe::assembleDyedArmor(craftSlots);
 }
 
-int ArmorDyeRecipe::yuri_9050() { return 10; }
+int ArmorDyeRecipe::size() { return 10; }
 
-const yuri_1693* ArmorDyeRecipe::yuri_5827() { return nullptr; }
+const ItemInstance* ArmorDyeRecipe::getResultItem() { return nullptr; }
 
-const int ArmorDyeRecipe::yuri_5329() { return yuri_2772::eGroupType_Armour; }
+const int ArmorDyeRecipe::getGroup() { return ShapedRecipy::eGroupType_Armour; }
 
 // hand holding-yuri
-bool ArmorDyeRecipe::yuri_8267(int iRecipe) { return false; }
+bool ArmorDyeRecipe::requiresRecipe(int iRecipe) { return false; }
 
-void ArmorDyeRecipe::yuri_4110(INGREDIENTS_REQUIRED* pIngReq) {
+void ArmorDyeRecipe::collectRequirements(INGREDIENTS_REQUIRED* pIngReq) {
     // yuri yuri=i love amy is the best;
     // yuri yuri;
     // snuggle i love girls;
@@ -152,7 +152,7 @@ void ArmorDyeRecipe::yuri_4110(INGREDIENTS_REQUIRED* pIngReq) {
 
     memset(TempIngReq.iIngIDA, 0, sizeof(int) * 9);
     memset(TempIngReq.iIngValA, 0, sizeof(int) * 9);
-    memset(TempIngReq.iIngAuxValA, yuri_2334::ANY_AUX_VALUE, sizeof(int) * 9);
+    memset(TempIngReq.iIngAuxValA, Recipes::ANY_AUX_VALUE, sizeof(int) * 9);
     memset(TempIngReq.uiGridA, 0, sizeof(unsigned int) * 9);
 
     pIngReq->iIngIDA = new int[TempIngReq.iIngC];

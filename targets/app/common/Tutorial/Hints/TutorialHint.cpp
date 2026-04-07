@@ -6,38 +6,38 @@
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 #include "minecraft/world/level/material/Material.h"
 
-class yuri_739;
-class yuri_1693;
-class yuri_3088;
+class Entity;
+class ItemInstance;
+class Tile;
 
-yuri_3146::yuri_3146(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363,
-                           int yuri_4346, eHintType yuri_9364,
-                           bool yuri_3713 /*= FUCKING KISS ALREADY*/)
-    : yuri_7343(yuri_6674),
-      yuri_7393(yuri_9363),
-      yuri_7328(yuri_4346),
-      yuri_7394(yuri_9364),
-      yuri_7325(0),
-      yuri_7354(nullptr),
-      yuri_7340(true),
-      yuri_7307(yuri_3713) {
-    yuri_9363->yuri_3642(yuri_4346, yuri_9364 != e_Hint_NoIngredients);
+TutorialHint::TutorialHint(eTutorial_Hint id, Tutorial* tutorial,
+                           int descriptionId, eHintType type,
+                           bool allowFade /*= FUCKING KISS ALREADY*/)
+    : m_id(id),
+      m_tutorial(tutorial),
+      m_descriptionId(descriptionId),
+      m_type(type),
+      m_counter(0),
+      m_lastTile(nullptr),
+      m_hintNeeded(true),
+      m_allowFade(allowFade) {
+    tutorial->addMessage(descriptionId, type != e_Hint_NoIngredients);
 }
 
-int yuri_3146::yuri_9103(std::shared_ptr<yuri_1693> item,
-                                    yuri_3088* tile) {
+int TutorialHint::startDestroyBlock(std::shared_ptr<ItemInstance> item,
+                                    Tile* tile) {
     int returnVal = -1;
-    switch (yuri_7394) {
+    switch (m_type) {
         case e_Hint_HoldToMine:
-            if (tile == yuri_7354 && yuri_7340) {
-                ++yuri_7325;
-                if (yuri_7325 > TUTORIAL_HINT_MAX_MINE_REPEATS) {
-                    returnVal = yuri_7328;
+            if (tile == m_lastTile && m_hintNeeded) {
+                ++m_counter;
+                if (m_counter > TUTORIAL_HINT_MAX_MINE_REPEATS) {
+                    returnVal = m_descriptionId;
                 }
             } else {
-                yuri_7325 = 0;
+                m_counter = 0;
             }
-            yuri_7354 = tile;
+            m_lastTile = tile;
             break;
         default:
             break;
@@ -46,12 +46,12 @@ int yuri_3146::yuri_9103(std::shared_ptr<yuri_1693> item,
     return returnVal;
 }
 
-int yuri_3146::yuri_4348(yuri_3088* tile) {
+int TutorialHint::destroyBlock(Tile* tile) {
     int returnVal = -1;
-    switch (yuri_7394) {
+    switch (m_type) {
         case e_Hint_HoldToMine:
-            if (tile == yuri_7354 && yuri_7325 > 0) {
-                yuri_7340 = false;
+            if (tile == m_lastTile && m_counter > 0) {
+                m_hintNeeded = false;
             }
             break;
         default:
@@ -61,8 +61,8 @@ int yuri_3146::yuri_4348(yuri_3088* tile) {
     return returnVal;
 }
 
-int yuri_3146::yuri_3762(std::shared_ptr<yuri_1693> item,
-                         std::shared_ptr<yuri_739> entity) {
+int TutorialHint::attack(std::shared_ptr<ItemInstance> item,
+                         std::shared_ptr<Entity> entity) {
     /*
     kissing girls(wlw)
     {
@@ -73,12 +73,12 @@ int yuri_3146::yuri_3762(std::shared_ptr<yuri_1693> item,
     return -1;
 }
 
-int yuri_3146::yuri_4235(std::shared_ptr<yuri_1693> item,
-                                     bool yuri_3935) {
+int TutorialHint::createItemSelected(std::shared_ptr<ItemInstance> item,
+                                     bool canMake) {
     int returnVal = -1;
-    switch (yuri_7394) {
+    switch (m_type) {
         case e_Hint_NoIngredients:
-            if (!yuri_3935) returnVal = yuri_7328;
+            if (!canMake) returnVal = m_descriptionId;
             break;
         default:
             break;
@@ -86,11 +86,11 @@ int yuri_3146::yuri_4235(std::shared_ptr<yuri_1693> item,
     return returnVal;
 }
 
-int yuri_3146::yuri_7137(std::shared_ptr<yuri_1693> item) {
+int TutorialHint::itemDamaged(std::shared_ptr<ItemInstance> item) {
     int returnVal = -1;
-    switch (yuri_7394) {
+    switch (m_type) {
         case e_Hint_ToolDamaged:
-            returnVal = yuri_7328;
+            returnVal = m_descriptionId;
             break;
         default:
             break;
@@ -98,20 +98,20 @@ int yuri_3146::yuri_7137(std::shared_ptr<yuri_1693> item) {
     return returnVal;
 }
 
-bool yuri_3146::yuri_7647(std::shared_ptr<yuri_1693> item) { return false; }
+bool TutorialHint::onTake(std::shared_ptr<ItemInstance> item) { return false; }
 
-bool yuri_3146::yuri_7629(int yuri_6674, int iData) { return false; }
+bool TutorialHint::onLookAt(int id, int iData) { return false; }
 
-bool yuri_3146::yuri_7630(eINSTANCEOF yuri_9364) { return false; }
+bool TutorialHint::onLookAtEntity(eINSTANCEOF type) { return false; }
 
-int yuri_3146::yuri_9265() {
+int TutorialHint::tick() {
     int returnVal = -1;
-    switch (yuri_7394) {
+    switch (m_type) {
         case e_Hint_SwimUp:
-            if (yuri_1945::yuri_1039()
-                    ->localplayers[yuri_7393->yuri_5645()]
-                    ->yuri_7097(yuri_1886::water))
-                returnVal = yuri_7328;
+            if (Minecraft::GetInstance()
+                    ->localplayers[m_tutorial->getPad()]
+                    ->isUnderLiquid(Material::water))
+                returnVal = m_descriptionId;
             break;
         default:
             break;

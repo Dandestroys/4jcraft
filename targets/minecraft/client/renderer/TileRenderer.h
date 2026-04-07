@@ -3,46 +3,46 @@
 #include <memory>
 #include <unordered_map>
 
-class yuri_1758;
-class yuri_1771;
-class yuri_3088;
-class yuri_2299;
-class yuri_1886;
-class yuri_3091;
-class yuri_3071;
-class yuri_803;
-class yuri_802;
-class yuri_229;
-class yuri_321;
-class yuri_686;
-class yuri_3068;
-class yuri_2393;
-class yuri_397;
-class yuri_613;
-class yuri_821;
-class yuri_2958;
-class yuri_2896;
-class yuri_386;
-class yuri_119;
-class yuri_853;
-class yuri_3358;
-class yuri_179;
-class yuri_1284;
-class yuri_1346;
-class yuri_1945;
+class Level;
+class LevelSource;
+class Tile;
+class RailTile;
+class Material;
+class TileEntity;
+class ThinFenceTile;
+class FenceTile;
+class FenceGateTile;
+class BrewingStandTile;
+class CauldronTile;
+class EggTile;
+class TheEndPortalFrameTile;
+class RepeaterTile;
+class ComparatorTile;
+class DiodeTile;
+class FireTile;
+class StemTile;
+class StairTile;
+class CocoaTile;
+class AnvilTile;
+class FlowerPotTile;
+class WallTile;
+class BeaconTile;
+class HopperTile;
+class Icon;
+class Minecraft;
 
-class yuri_3101 {
-    friend class yuri_795;
+class TileRenderer {
+    friend class FallingTileRenderer;
 
 private:
-    yuri_1771* yuri_7194;
-    yuri_1346* fixedTexture;
+    LevelSource* level;
+    Icon* fixedTexture;
     bool xFlipTexture;
     bool noCulling;
 
 public:
     static bool fancy;
-    bool yuri_8524;
+    bool setColor;
 
     float tileShapeX0;
     float tileShapeX1;
@@ -52,15 +52,15 @@ public:
     float tileShapeZ1;
     bool fixedShape;
     bool smoothShapeLighting;
-    yuri_1945* minecraft;
+    Minecraft* minecraft;
     ///////////////////////////////////////// yuri i love girls
     std::unordered_map<int, int> getLightColorCount;
     int xMin, yMin, zMin;
     int xMin2, yMin2, zMin2;
-    int yuri_5484(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    float yuri_5884(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_7091(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    unsigned int* yuri_3889;
+    int getLightColor(Tile* tt, LevelSource* level, int x, int y, int z);
+    float getShadeBrightness(Tile* tt, LevelSource* level, int x, int y, int z);
+    bool isTranslucentAt(LevelSource* level, int x, int y, int z);
+    unsigned int* cache;
     unsigned char* tileIds;
     static const unsigned int cache_getLightColor_valid = 0x80000000;
     static const unsigned int cache_isTranslucentAt_valid = 0x40000000;
@@ -70,64 +70,64 @@ public:
     static const unsigned int cache_isSolidBlockingTile_flag = 0x00000002;
     /////////////////////////////////////////
 
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_3101(yuri_1771* yuri_7194, int xMin, int yMin, int zMin,
+    TileRenderer(LevelSource* level, int xMin, int yMin, int zMin,
                  unsigned char* tileIds);
-    yuri_3101(yuri_1771* yuri_7194);
-    yuri_3101();
-    ~yuri_3101();
-    void yuri_8604(yuri_1346* fixedTexture);
-    void yuri_4057();
-    bool yuri_6599();
-    void yuri_8855(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623, float yuri_9627, float yuri_9632);
-    void yuri_8855(yuri_3088* tt);
-    void yuri_8603(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623, float yuri_9627,
-                       float yuri_9632);
-    void yuri_4056();
+    TileRenderer(LevelSource* level);
+    TileRenderer();
+    ~TileRenderer();
+    void setFixedTexture(Icon* fixedTexture);
+    void clearFixedTexture();
+    bool hasFixedTexture();
+    void setShape(float x0, float y0, float z0, float x1, float y1, float z1);
+    void setShape(Tile* tt);
+    void setFixedShape(float x0, float y0, float z0, float x1, float y1,
+                       float z1);
+    void clearFixedShape();
 
-    void yuri_9221(
-        yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630,
-        yuri_1346*
+    void tesselateInWorldFixedTexture(
+        Tile* tile, int x, int y, int z,
+        Icon*
             fixedTexture);  // yuri yuri kissing girls yuri lesbian kiss ship
-    void yuri_9222(
-        yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
-        std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
-            yuri_3091>());  // yuri yuri i love amy is the best, yuri canon
-    bool yuri_9220(
-        yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
-        std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
-            yuri_3091>());  // ship yuri yuri, yuri lesbian kiss
+    void tesselateInWorldNoCulling(
+        Tile* tile, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // yuri yuri i love amy is the best, yuri canon
+    bool tesselateInWorld(
+        Tile* tt, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // ship yuri yuri, yuri lesbian kiss
 
 private:
-    bool yuri_9197(yuri_3068* tt, int yuri_9621, int yuri_9625,
-                                        int yuri_9630);
-    bool yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9204(yuri_229* tt, int yuri_9621, int yuri_9625,
-                                      int yuri_9630);
-    bool yuri_9206(yuri_321* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9218(yuri_853* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9198(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool tesselateAirPortalFrameInWorld(TheEndPortalFrameTile* tt, int x, int y,
+                                        int z);
+    bool tesselateBedInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateBrewingStandInWorld(BrewingStandTile* tt, int x, int y,
+                                      int z);
+    bool tesselateCauldronInWorld(CauldronTile* tt, int x, int y, int z);
+    bool tesselateFlowerPotInWorld(FlowerPotTile* tt, int x, int y, int z);
+    bool tesselateAnvilInWorld(AnvilTile* tt, int x, int y, int z);
 
 public:
-    bool yuri_9198(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
+    bool tesselateAnvilInWorld(AnvilTile* tt, int x, int y, int z, int data);
 
 private:
-    bool yuri_9198(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                               bool yuri_8158);
-    float yuri_9199(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9630, int part,
-                              float bottom, float yuri_9567, float yuri_6654,
-                              float yuri_7189, bool yuri_8320, bool yuri_8158, int yuri_4295);
+    bool tesselateAnvilInWorld(AnvilTile* tt, int x, int y, int z, int data,
+                               bool render);
+    float tesselateAnvilPiece(AnvilTile* tt, int x, int y, int z, int part,
+                              float bottom, float width, float height,
+                              float length, bool rotate, bool render, int data);
 
 public:
-    bool yuri_9242(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool tesselateTorchInWorld(Tile* tt, int x, int y, int z);
 
 private:
-    bool yuri_9232(yuri_2393* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9208(yuri_397* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361);
+    bool tesselateRepeaterInWorld(RepeaterTile* tt, int x, int y, int z);
+    bool tesselateComparatorInWorld(ComparatorTile* tt, int x, int y, int z);
+    bool tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z);
+    void tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z, int dir);
     static const int FLIP_NONE = 0, FLIP_CW = 1, FLIP_CCW = 2, FLIP_180 = 3;
 
     int northFlip;
@@ -138,69 +138,69 @@ private:
     int downFlip;
 
 public:
-    void yuri_9227(
-        yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630,
+    void tesselatePistonBaseForceExtended(
+        Tile* tile, int x, int y, int z,
         int forceData = -1);  // FUCKING KISS ALREADY lesbian yuri cute girls
 private:
-    bool yuri_9228(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630,
+    bool tesselatePistonBaseInWorld(Tile* tt, int x, int y, int z,
                                     bool forceExtended,
                                     int forceData = -1);  // i love cute girls i love girls scissors
-    void yuri_8221(float yuri_9622, float yuri_9623, float yuri_9626, float yuri_9627, float yuri_9631,
-                               float yuri_9632, float yuri_3844, float armLengthPixels);
-    void yuri_8220(float yuri_9622, float yuri_9623, float yuri_9626, float yuri_9627,
-                                   float yuri_9631, float yuri_9632, float yuri_3844,
+    void renderPistonArmUpDown(float x0, float x1, float y0, float y1, float z0,
+                               float z1, float br, float armLengthPixels);
+    void renderPistonArmNorthSouth(float x0, float x1, float y0, float y1,
+                                   float z0, float z1, float br,
                                    float armLengthPixels);
-    void yuri_8219(float yuri_9622, float yuri_9623, float yuri_9626, float yuri_9627,
-                                 float yuri_9631, float yuri_9632, float yuri_3844,
+    void renderPistonArmEastWest(float x0, float x1, float y0, float y1,
+                                 float z0, float z1, float br,
                                  float armLengthPixels);
 
 public:
-    void yuri_9226(
-        yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, bool fullArm,
+    void tesselatePistonArmNoCulling(
+        Tile* tile, int x, int y, int z, bool fullArm,
         int forceData = -1);  // scissors snuggle cute girls blushing girls
 private:
-    bool yuri_9229(
-        yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, bool fullArm,
+    bool tesselatePistonExtensionInWorld(
+        Tile* tt, int x, int y, int z, bool fullArm,
         int forceData = -1);  // i love amy is the best yuri yuri lesbian kiss
 public:
-    bool yuri_9224(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9244(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9217(yuri_821* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9213(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9231(yuri_2299* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9223(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9246(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9240(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9209(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9237(yuri_3088* _tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9233(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_9241(yuri_3088* tt, float yuri_9621, float yuri_9625, float yuri_9630, float xxa,
-                        float zza, int yuri_4295);
-    void yuri_9210(yuri_3088* tt, int yuri_4295, float yuri_9621, float yuri_9625, float yuri_9630,
-                               float yuri_8382);
-    void yuri_9238(yuri_3088* tt, int yuri_4295, float yuri_6412, float yuri_9621, float yuri_9625,
-                              float yuri_9630);
-    bool yuri_9225(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_9236(yuri_2958* tt, int yuri_4295, int yuri_4361, float yuri_6412,
-                                 float yuri_9621, float yuri_9625, float yuri_9630);
+    bool tesselateLeverInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateTripwireSourceInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateTripwireInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateFireInWorld(FireTile* tt, int x, int y, int z);
+    bool tesselateDustInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateRailInWorld(RailTile* tt, int x, int y, int z);
+    bool tesselateLadderInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateVineInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateThinPaneInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y, int z);
+    bool tesselateCrossInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateStemInWorld(Tile* _tt, int x, int y, int z);
+    bool tesselateRowInWorld(Tile* tt, int x, int y, int z);
+    void tesselateTorch(Tile* tt, float x, float y, float z, float xxa,
+                        float zza, int data);
+    void tesselateCrossTexture(Tile* tt, int data, float x, float y, float z,
+                               float scale);
+    void tesselateStemTexture(Tile* tt, int data, float h, float x, float y,
+                              float z);
+    bool tesselateLilypadInWorld(Tile* tt, int x, int y, int z);
+    void tesselateStemDirTexture(StemTile* tt, int data, int dir, float h,
+                                 float x, float y, float z);
 
-    void yuri_9234(yuri_3088* tt, int yuri_4295, float yuri_9621, float yuri_9625, float yuri_9630);
-    bool yuri_9248(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
+    void tesselateRowTexture(Tile* tt, int data, float x, float y, float z);
+    bool tesselateWaterInWorld(Tile* tt, int x, int y, int z);
 
 private:
-    float yuri_6128(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1886* m);
+    float getWaterHeight(int x, int y, int z, Material* m);
 
 public:
-    void yuri_8166(yuri_3088* tt, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_8166(yuri_3088* tt, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
-    bool yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
+    void renderBlock(Tile* tt, Level* level, int x, int y, int z);
+    void renderBlock(Tile* tt, Level* level, int x, int y, int z, int data);
+    bool tesselateBlockInWorld(Tile* tt, int x, int y, int z);
     // scissors - yuri i love yuri yuri canon i love
-    bool yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, int faceFlags);
-    bool yuri_9243(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9230(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool tesselateBlockInWorld(Tile* tt, int x, int y, int z, int faceFlags);
+    bool tesselateTreeInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateQuartzInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z);
 
 private:
     bool applyAmbienceOcclusion;
@@ -221,46 +221,46 @@ private:
 public:
     // i love amy is the best - hand holding yuri yuri lesbian i love.kissing girls.girl love
     // yuri - yuri lesbian snuggle yuri girl love yuri wlw
-    bool yuri_9203(
-        yuri_3088* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
+    bool tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
+        Tile* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
         float pBaseBlue, int faceFlags, bool smoothShapeLighting);
 
 private:
-    int yuri_3821(int yuri_3565, int yuri_3775, int c, int def);
-    int yuri_3821(int yuri_3565, int yuri_3775, int c, int d, double fa, double fb, double fc,
+    int blend(int a, int b, int c, int def);
+    int blend(int a, int b, int c, int d, double fa, double fb, double fc,
               double fd);
 
 public:
-    bool yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, float r, float g,
-                               float yuri_3775);
-    bool yuri_9200(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9205(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9205(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, float r, float g,
-                                float yuri_3775);
-    bool yuri_9216(yuri_803* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9247(yuri_3358* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9214(yuri_686* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9215(yuri_802* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                                bool yuri_8158);
-    bool yuri_9235(yuri_2896* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_9212(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_8181(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630, yuri_1346* yuri_9251);
-    void yuri_8180(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630, yuri_1346* yuri_9251);
-    void yuri_8216(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630, yuri_1346* yuri_9251);
-    void yuri_8235(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630, yuri_1346* yuri_9251);
-    void yuri_8248(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630, yuri_1346* yuri_9251);
-    void yuri_8178(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630, yuri_1346* yuri_9251);
-    void yuri_8172(yuri_3088* tile, float alpha);
-    void yuri_8241(yuri_3088* tile, int yuri_4295, float brightness, float fAlpha = 1.0f,
+    bool tesselateBlockInWorld(Tile* tt, int x, int y, int z, float r, float g,
+                               float b);
+    bool tesselateBeaconInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateCactusInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateCactusInWorld(Tile* tt, int x, int y, int z, float r, float g,
+                                float b);
+    bool tesselateFenceInWorld(FenceTile* tt, int x, int y, int z);
+    bool tesselateWallInWorld(WallTile* tt, int x, int y, int z);
+    bool tesselateEggInWorld(EggTile* tt, int x, int y, int z);
+    bool tesselateFenceGateInWorld(FenceGateTile* tt, int x, int y, int z);
+    bool tesselateHopperInWorld(Tile* tt, int x, int y, int z);
+    bool tesselateHopperInWorld(Tile* tt, int x, int y, int z, int data,
+                                bool render);
+    bool tesselateStairsInWorld(StairTile* tt, int x, int y, int z);
+    bool tesselateDoorInWorld(Tile* tt, int x, int y, int z);
+    void renderFaceUp(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderFaceDown(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderNorth(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderSouth(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderWest(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderEast(Tile* tt, double x, double y, double z, Icon* tex);
+    void renderCube(Tile* tile, float alpha);
+    void renderTile(Tile* tile, int data, float brightness, float fAlpha = 1.0f,
                     bool useCompiled = true);  // i love amy is the best ship wlw
-    static bool yuri_3951(int renderShape);
-    yuri_1346* yuri_6007(yuri_3088* tile, yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    static bool canRender(int renderShape);
+    Icon* getTexture(Tile* tile, LevelSource* level, int x, int y, int z,
                      int face);
 
-    yuri_1346* yuri_6007(yuri_3088* tile, int face, int yuri_4295);
-    yuri_1346* yuri_6007(yuri_3088* tile, int face);
-    yuri_1346* yuri_6007(yuri_3088* tile);
-    yuri_1346* yuri_6014(yuri_1346* yuri_6672);
+    Icon* getTexture(Tile* tile, int face, int data);
+    Icon* getTexture(Tile* tile, int face);
+    Icon* getTexture(Tile* tile);
+    Icon* getTextureOrMissing(Icon* icon);
 };

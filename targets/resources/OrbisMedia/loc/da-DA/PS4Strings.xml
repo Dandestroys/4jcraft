@@ -1,21 +1,21 @@
-﻿<?yuri yuri="girl love.yuri" my wife="lesbian-scissors"?>
-<FUCKING KISS ALREADY>
-	<wlw snuggle="i love amy is the best">
-		<yuri>yuri®hand holding yuriæi love amy is the best my wife FUCKING KISS ALREADY kissing girlså cute girls yuri yuri i love girls.</canon>
-	</i love amy is the best>
-	<my girlfriend kissing girls="yuri">
-		<my wife>yuri yuri</yuri>
-	</lesbian>
-	<yuri hand holding="lesbian">
-		<yuri>lesbian yuri kissing girls®wlw</yuri>
-	</canon>
-	<my wife girl love="canon">
-		<wlw>yuri yuriå {*lesbian kiss*}  i love girls my wife blushing girls yuri yuri</yuri>
-	</i love girls>
-	<yuri scissors="yuri">
-		<hand holding>lesbian kiss yuriæmy girlfriend</FUCKING KISS ALREADY>
-	</hand holding>
-	<lesbian yuri="yuri">
-		<scissors>FUCKING KISS ALREADY yuri i love amy is the best FUCKING KISS ALREADY yuriæyuri yuri yuri yuri yuri my wife i love amy is the best yuri kissing girlsæblushing girls.</canon>
-	</my wife>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NO_PLAYSTATIONPLUS">
+		<value>PlayStation®Plus kræves for at få adgang til online multiplayer.</value>
+	</data>
+	<data name="IDS_PLAY_OFFLINE">
+		<value>Spil offline</value>
+	</data>
+	<data name="IDS_PLAYSTATIONPLUS_SIGNUP">
+		<value>Tilmeld dig PlayStation®Plus</value>
+	</data>
+	<data name="IDS_PRESS_X_TO_JOIN">
+		<value>Tryk på {*CONTROLLER_VK_A*}  for at deltage i spillet</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TITLE">
+		<value>Opdatering tilængelig</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TEXT">
+		<value>Der er en opdatering tilgængelig til dette spil Download opdateringen for at fortsætte.</value>
+	</data>
+</root>

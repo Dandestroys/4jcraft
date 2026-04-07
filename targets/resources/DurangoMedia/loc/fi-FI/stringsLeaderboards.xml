@@ -1,47 +1,47 @@
-<yuri>
-  <yuri yuri="my wife">
-    <wlw>yuri lesbian kiss</ship>
-  </lesbian kiss>
-  <yuri girl love="canon">
-    <hand holding>hand holding my wife</FUCKING KISS ALREADY>
-  </snuggle>
-  <my girlfriend yuri="yuri">
-    <canon>canon my wife</yuri>
-  </ship>
-  <my wife yuri="canon">
-    <FUCKING KISS ALREADY>yuri canon yuri</scissors>
-  </wlw>
-  <i love girls snuggle="lesbian kiss">
-    <yuri>yuri i love girls wlw</my girlfriend>
-  </snuggle>
-  <yuri girl love="ship">
-    <yuri>yuri blushing girls girl love</lesbian kiss>
-  </scissors>
-  <FUCKING KISS ALREADY cute girls="canon">
-    <yuri>lesbian kiss yuri yuri</yuri>
-  </girl love>
-  <yuri yuri="girl love">
-    <i love amy is the best>girl love yuri</scissors>
-  </cute girls>
-  <yuri yuri="blushing girls">
-    <yuri>lesbian yuri</my girlfriend>
-  </i love girls>
-  <yuri yuri="cute girls">
-    <yuri>cute girls my girlfriend</yuri>
-  </yuri>
-  <blushing girls yuri="FUCKING KISS ALREADY">
-    <wlw>my girlfriend my girlfriend</cute girls>
-  </yuri>
-  <FUCKING KISS ALREADY hand holding="yuri">
-    <scissors>yuri blushing girls</kissing girls>
-  </blushing girls>
-  <yuri yuri="my wife">
-    <yuri>cute girls yuri</snuggle>
-  </my girlfriend>
-  <yuri yuri="yuri">
-    <kissing girls>scissors FUCKING KISS ALREADY</snuggle>
-  </kissing girls>
-  <yuri canon="yuri">
-    <lesbian>cute girls canon</blushing girls>
-  </yuri>
-</cute girls>
+<root>
+  <data name="IDS_LEADERBOARD_KILLS_EASY">
+    <value>Tapot Helppo</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_NORMAL">
+    <value>Tapot Normaali</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_HARD">
+    <value>Tapot Vaikea</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+    <value>Kuutioiden kaivuu Rauhallinen</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+    <value>Kuutioiden kaivuu Helppo</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+    <value>Kuutioiden kaivuu Normaali</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+    <value>Kuutioiden kaivuu Vaikea</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+    <value>Maanviljely Rauhallinen</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_EASY">
+    <value>Maanviljely Helppo</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_NORMAL">
+    <value>Maanviljely Normaali</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_HARD">
+    <value>Maanviljely Vaikea</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+    <value>Matkustaminen Rauhallinen</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+    <value>Matkustaminen Helppo</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+    <value>Matkustaminen Normaali</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+    <value>Matkustaminen Vaikea</value>
+  </data>
+</root>

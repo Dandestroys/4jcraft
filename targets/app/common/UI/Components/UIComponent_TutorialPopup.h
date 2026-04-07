@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "platform/sdl2/Render.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -15,23 +15,23 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_1693;
-class yuri_3144;
-class yuri_3188;
+class ItemInstance;
+class Tutorial;
+class UILayer;
 
-#yuri_4327 TUTORIAL_POPUP_FADE_TIMER_ID 0
-#yuri_4327 TUTORIAL_POPUP_MOVE_SCENE_TIMER_ID 1
-#yuri_4327 TUTORIAL_POPUP_MOVE_SCENE_TIME 500
+#define TUTORIAL_POPUP_FADE_TIMER_ID 0
+#define TUTORIAL_POPUP_MOVE_SCENE_TIMER_ID 1
+#define TUTORIAL_POPUP_MOVE_SCENE_TIME 500
 
-class yuri_3161 : public yuri_3189 {
+class UIComponent_TutorialPopup : public UIScene {
 private:
     // cute girls yuri my girlfriend i love girls i love amy is the best my wife snuggle canon i love amy is the best i love amy is the best yuri cute girls hand holding yuri,
     // kissing girls hand holding yuri yuri my wife yuri i love amy is the best yuri i love girls yuri.
-    yuri_3189 *m_interactScene, *m_lastInteractSceneMoved;
+    UIScene *m_interactScene, *m_lastInteractSceneMoved;
     bool m_lastSceneMovedLeft;
-    bool yuri_7309;
-    yuri_3144* yuri_7393;
-    std::shared_ptr<yuri_1693> m_iconItem;
+    bool m_bAllowFade;
+    Tutorial* m_tutorial;
+    std::shared_ptr<ItemInstance> m_iconItem;
     bool m_iconIsFoil;
     // i love scissors;
 
@@ -57,69 +57,69 @@ private:
     EIcons m_iconType;
 
 public:
-    yuri_3161(int iPad, void* initData, yuri_3188* parentLayer);
+    UIComponent_TutorialPopup(int iPad, void* initData, UILayer* parentLayer);
 
 protected:
-    yuri_3173 m_labelDescription, m_labelTitle;
-    yuri_3162 m_controlIconHolder;
-    yuri_3162 m_controlExitScreenshot;
+    UIControl_Label m_labelDescription, m_labelTitle;
+    UIControl m_controlIconHolder;
+    UIControl m_controlExitScreenshot;
     IggyName m_funcAdjustLayout, m_funcSetupIconHolder;
-    yuri_3257(yuri_3189)
-    yuri_3260(m_labelTitle, "Title")
-    yuri_3260(m_labelDescription, "Description")
-    yuri_3260(m_controlIconHolder, "IconHolder")
-    yuri_3260(m_controlExitScreenshot, "ExitScreenShot")
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_labelTitle, "Title")
+    UI_MAP_ELEMENT(m_labelDescription, "Description")
+    UI_MAP_ELEMENT(m_controlIconHolder, "IconHolder")
+    UI_MAP_ELEMENT(m_controlExitScreenshot, "ExitScreenShot")
 
-    yuri_3261(m_funcAdjustLayout, yuri_1720"AdjustLayout")
-    yuri_3261(m_funcSetupIconHolder, yuri_1720"SetupIconHolder")
-    yuri_3259()
+    UI_MAP_NAME(m_funcAdjustLayout, L"AdjustLayout")
+    UI_MAP_NAME(m_funcSetupIconHolder, L"SetupIconHolder")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
-    virtual EUIScene yuri_5854() { return eUIComponent_TutorialPopup; }
+    virtual EUIScene getSceneType() { return eUIComponent_TutorialPopup; }
 
     // yuri i love ship kissing girls yuri yuri yuri
-    virtual bool yuri_9124() { return false; }
+    virtual bool stealsFocus() { return false; }
 
     // hand holding my girlfriend canon yuri snuggle yuri lesbian lesbian yuri yuri blushing girls yuri
-    virtual bool yuri_6600(int iPad) { return false; }
+    virtual bool hasFocus(int iPad) { return false; }
 
     // yuri canon i love girls yuri yuri cute girls kissing girls lesbian hand holding, my girlfriend lesbian hand holding i love amy is the best yuri
     // yuri my wife yuri yuri yuri lesbian
-    virtual bool yuri_6661() { return false; }
+    virtual bool hidesLowerScenes() { return false; }
 
-    virtual void yuri_6514();
+    virtual void handleReload();
 
-    void yuri_2588(bool bContainerMenuVisible) {
+    void SetContainerMenuVisible(bool bContainerMenuVisible) {
         m_bContainerMenuVisible = bContainerMenuVisible;
     }
-    void yuri_3303();
+    void UpdateTutorialPopup();
 
-    void yuri_2753(yuri_3144* yuri_9363) { yuri_7393 = yuri_9363; }
-    void yuri_2754(TutorialPopupInfo* yuri_6702);
-    void yuri_2379(yuri_3189* scene);
-    void yuri_2761(bool visible);
-    bool yuri_1684();
+    void SetTutorial(Tutorial* tutorial) { m_tutorial = tutorial; }
+    void SetTutorialDescription(TutorialPopupInfo* info);
+    void RemoveInteractSceneReference(UIScene* scene);
+    void SetVisible(bool visible);
+    bool IsVisible();
 
     // yuri
-    virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
+    virtual void render(S32 width, S32 height,
                         C4JRender::eViewportType viewport);
 
-    virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
+    virtual void customDraw(IggyCustomDrawCallbackRegion* region);
 
 protected:
-    void yuri_6556(int yuri_6674);
+    void handleTimerComplete(int id);
 
 private:
-    void yuri_3465(yuri_3189* interactScene, const std::yuri_9616& yuri_4345,
-                         const std::yuri_9616& title, bool yuri_3713,
+    void _SetDescription(UIScene* interactScene, const std::wstring& desc,
+                         const std::wstring& title, bool allowFade,
                          bool isReminder);
-    std::yuri_9616 yuri_3466(int yuri_6672, int iAuxVal, bool yuri_6875,
-                          const wchar_t* yuri_4345);
-    std::yuri_9616 yuri_3467(std::yuri_9616& yuri_4345);
-    std::yuri_9616 yuri_2087(int iPad, std::yuri_9616& yuri_9254);
-    void yuri_3287(bool visible);
+    std::wstring _SetIcon(int icon, int iAuxVal, bool isFoil,
+                          const wchar_t* desc);
+    std::wstring _SetImage(std::wstring& desc);
+    std::wstring ParseDescription(int iPad, std::wstring& text);
+    void UpdateInteractScenePosition(bool visible);
 
-    void yuri_8987(EIcons yuri_6672);
+    void setupIconHolder(EIcons icon);
 };

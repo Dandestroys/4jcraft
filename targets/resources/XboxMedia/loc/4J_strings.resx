@@ -1,171 +1,171 @@
-<root>
+﻿<root>
 
   <data name="IDS_NULL">
-    <value>i love girls yuri</value>
+    <value>Not Used</value>
   </data>
 
   <data name="IDS_OK">
-    <value>yuri</value>
+    <value>OK</value>
   </data>
   <data name="IDS_BACK">
-    <value>yuri</value>
+    <value>Back</value>
   </data>
   <data name="IDS_CANCEL">
-    <value>FUCKING KISS ALREADY</value>
+    <value>Cancel</value>
   </data>
   <data name="IDS_YES">
-    <value>yuri</value>
+    <value>Yes</value>
   </data>
   <data name="IDS_NO">
-    <value>canon</value>
+    <value>No</value>
   </data>
   <data name="IDS_CORRUPTSAVE_TITLE">
-    <value>lesbian kiss yuri</value>
+    <value>Corrupt Save</value>
   </data>
   <data name="IDS_CORRUPTSAVE_TEXT">
-    <value>lesbian hand holding FUCKING KISS ALREADY snuggle yuri yuri hand holding.  yuri wlw yuri girl love wlw yuri my wife yuri yuri?</value>
+    <value>Your save data appears to be corrupt.  Create a new save and overwrite the corrupt one?</value>
   </data>
   <data name="IDS_NOFREESPACE_TITLE">
-    <value>yuri yuri my wife</value>
+    <value>No Free Space</value>
   </data>
   <data name="IDS_NOFREESPACE_TEXT">
-    <value>snuggle yuri girl love lesbian yuri'kissing girls kissing girls wlw wlw girl love yuri ship yuri yuri yuri.</value>
+    <value>Your selected storage device doesn't have enough free space to create a game save.</value>
   </data>
   <data name="IDS_SELECTAGAIN">
-    <value>my girlfriend canon</value>
+    <value>Select again</value>
   </data>
   <data name="IDS_PLAYWITHOUTSAVING">
-    <value>yuri girl love my girlfriend</value>
+    <value>Play without saving</value>
   </data>
   <data name="IDS_CREATEANEWSAVE">
-    <value>i love amy is the best kissing girls yuri yuri</value>
+    <value>Create a new save</value>
   </data>
   <data name="IDS_OVERWRITESAVE_TITLE">
-    <value>scissors yuri?</value>
+    <value>Overwrite save?</value>
   </data>
   <data name="IDS_OVERWRITESAVE_TEXT">
-    <value>my girlfriend ship scissors yuri lesbian my wife yuri yuri.  yuri i love girls i love girls blushing girls yuri canon?</value>
+    <value>Your selected storage device already contains this save.  Is it OK to overwrite it?</value>
   </data>
   <data name="IDS_OVERWRITESAVE_NO">
-    <value>wlw - canon'yuri ship</value>
+    <value>No - don't overwrite</value>
   </data>
   <data name="IDS_OVERWRITESAVE_YES">
-    <value>yuri yuri kissing girls</value>
+    <value>Overwrite and save</value>
   </data>
   <data name="IDS_FAILED_TO_SAVE_TITLE">
-    <value>i love girls yuri</value>
+    <value>Save failed</value>
   </data>
   <data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
-    <value>canon wlw ship</value>
+    <value>Storage Device Problem</value>
   </data>
   <data name="IDS_FAILED_TO_SAVE_TEXT">
-    <value>hand holding lesbian canon girl love lesbian kiss girl love cute girls yuri yuri</value>
+    <value>Your storage device is unavailable or has an error</value>
   </data>
   <data name="IDS_FAILED_TO_LOADSAVE_TEXT">
-    <value>canon yuri cute girls yuri scissors snuggle lesbian kiss canon snuggle. canon yuri i love amy is the best snuggle FUCKING KISS ALREADY lesbian kiss.</value>
+    <value>Your storage device is unavailable or has an error. Please select a new storage device.</value>
   </data>
   <data name="IDS_SELECTANEWDEVICE">
-    <value>yuri yuri hand holding yuri girl love</value>
+    <value>Select a new storage device</value>
   </data>
 <data name="IDS_NODEVICE_TITLE">
-    <value>yuri blushing girls girl love yuri</value>
+    <value>No storage device selected</value>
   </data>
 <data name="IDS_NODEVICE_TEXT">
-    <value>kissing girls scissors FUCKING KISS ALREADY snuggle scissors lesbian kiss yuri yuri, FUCKING KISS ALREADY girl love yuri snuggle cute girls</value>
+    <value>If you do not select a storage device, game saves will be disabled</value>
   </data>
 <data name="IDS_NODEVICE_ACCEPT">
-    <value>snuggle my wife yuri yuri</value>
+    <value>Select a storage device</value>
   </data>
 <data name="IDS_NODEVICE_DECLINE">
-    <value>yuri FUCKING KISS ALREADY kissing girls</value>
+    <value>Continue without saving</value>
   </data>
 <data name="IDS_DEVICEGONE_TEXT">
-    <value>yuri FUCKING KISS ALREADY cute girls blushing girls yuri yuri.  my wife blushing girls yuri yuri yuri.</value>
+    <value>Your storage device has been removed.  Please select a new one.</value>
   </data>
 <data name="IDS_DEVICEGONE_TITLE">
-    <value>my girlfriend canon</value>
+    <value>Loading failed</value>
   </data>
   <data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
-    <value>yuri snuggle yuri</value>
+    <value>Name the save</value>
   </data>
   <data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
-    <value>wlw my wife girl love yuri yuri yuri</value>
+    <value>Enter a name for your savegame</value>
   </data>
   <data name="IDS_WARNING_ARCADE_TITLE">
-    <value>girl love yuri lesbian cute girls</value>
+    <value>Return to Xbox Dashboard</value>
   </data>
   <data name="IDS_WARNING_ARCADE_TEXT">
-    <value>snuggle yuri yuri i love amy is the best i love amy is the best lesbian kiss i love girls yuri yuri?</value>
+    <value>Are you sure you want to exit the game?</value>
   </data>
 
   <data name="IDS_PRO_RETURNEDTOMENU_TITLE">
-    <value>yuri my wife</value>
+    <value>Signed out</value>
   </data>
   <data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
-    <value>cute girls wlw ship i love amy is the best ship ship yuri lesbian kiss my wife yuri my wife yuri yuri hand holding ship</value>
+    <value>You have been returned to the title screen because your gamer profile was signed out</value>
   </data>
   <data name="IDS_PRO_RETURNEDTOMENU_TEXT">
-    <value>yuri scissors yuri yuri FUCKING KISS ALREADY girl love yuri yuri yuri yuri my girlfriend</value>
+    <value>The match has ended because a gamer profile was signed out</value>
   </data>
   <data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
-    <value>i love girls kissing girls</value>
+    <value>Continue playing</value>
   </data>
 
   <data name="IDS_PRO_NOTONLINE_TITLE">
-    <value>FUCKING KISS ALREADY ship yuri yuri</value>
+    <value>Gamer profile not online</value>
   </data>
   <data name="IDS_PRO_NOTONLINE_TEXT">
-    <value>yuri my girlfriend canon yuri my wife girl love yuri snuggle yuri yuri wlw yuri ship, yuri FUCKING KISS ALREADY cute girls FUCKING KISS ALREADY yuri.</value>
+    <value>This game has some features which require an Xbox Live enabled gamer profile, but you are currently offline.</value>
   </data>
   <data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
-    <value>kissing girls yuri yuri ship scissors i love amy is the best yuri yuri yuri yuri yuri yuri.</value>
+    <value>This feature requires a gamer profile which is signed into Xbox Live.</value>
   </data>
   <data name="IDS_PRO_NOTONLINE_ACCEPT">
-    <value>i love girls yuri scissors i love girls</value>
+    <value>Connect to Xbox Live</value>
   </data>
   <data name="IDS_PRO_NOTONLINE_DECLINE">
-    <value>lesbian i love girls i love girls</value>
+    <value>Continue playing offline</value>
   </data>
 
  
  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
-    <value>hand holding yuri scissors</value>
+    <value>Achievement Award Problem</value>
   </data>
   <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
-    <value> cute girls i love amy is the best blushing girls canon scissors yuri hand holding cute girls. lesbian i love amy is the best yuri i love amy is the best yuri blushing girls i love amy is the best blushing girls yuri.</value>
+    <value> There was a problem accessing your gamer profile. Your achievement could not be awarded at this time.</value>
   </data>
 
 
   <data name="IDS_PRO_NOPROFILE_TITLE">
-    <value>yuri yuri canon</value>
+    <value>Gamer profile problem</value>
   </data>
   <data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
-    <value>kissing girls yuri girl love i love girls yuri yuri i love amy is the best yuri.</value>
+    <value>Saving of settings to gamer profile has failed.</value>
   </data>
 
   <data name="IDS_PRO_GUESTPROFILE_TITLE">
-    <value>girl love yuri ship</value>
+    <value>Guest Gamer Profile</value>
   </data>
   <data name="IDS_PRO_GUESTPROFILE_TEXT">
-    <value>snuggle cute girls yuri i love girls lesbian girl love girl love. yuri lesbian yuri yuri i love girls my girlfriend.</value>
+    <value>Guest gamer profile cannot access this feature. Please use a different gamer profile.</value>
   </data>
 
   <data name="IDS_STO_SAVING_SHORT">
-    <value>blushing girls…</value>
+    <value>Saving…</value>
   </data>
   <data name="IDS_STO_SAVING_LONG">
-    <value>yuri yuri. yuri yuri'yuri i love girls yuri i love amy is the best yuri.</value>
+    <value>Saving content. Please don't turn off your console.</value>
   </data>
   <data name="IDS_PRO_UNLOCKGAME_TITLE">
-    <value>FUCKING KISS ALREADY girl love lesbian</value>
+    <value>Unlock Full Game</value>
   </data>
  <data name="IDS_PRO_UNLOCKGAME_TEXT">
-    <value>yuri yuri lesbian kiss FUCKING KISS ALREADY yuri i love girls. kissing girls scissors FUCKING KISS ALREADY yuri yuri i love girls, yuri snuggle hand holding blushing girls my girlfriend yuri scissors! 
-canon lesbian kiss yuri wlw hand holding lesbian kiss yuri ship hand holding my wife i love girls scissors girl love blushing girls yuri my wife wlw girl love hand holding scissors yuri lesbian kiss.
-wlw cute girls scissors scissors yuri cute girls yuri my girlfriend?</value>
+    <value>This is the Minecraft trial game. If you had the full game, you would just have earned an achievement! 
+Unlock the full game to experience the joy of Minecraft and to play with your friends across the globe through Xbox Live.
+Would you like to unlock the full game?</value>
   </data>
 <data name="IDS_PRO_PROFILEPROBLEM_TEXT"> 
-  <value>canon i love amy is the best lesbian wlw yuri yuri blushing girls lesbian yuri yuri yuri girl love yuri FUCKING KISS ALREADY canon.</value>
+  <value>You are being returned to the main menu because of a problem reading your profile.</value>
 </data>
 
 </root>

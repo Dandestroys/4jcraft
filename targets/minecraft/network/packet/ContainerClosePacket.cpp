@@ -1,29 +1,29 @@
 #include "ContainerClosePacket.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-yuri_440::yuri_440() { containerId = 0; }
+ContainerClosePacket::ContainerClosePacket() { containerId = 0; }
 
-yuri_440::yuri_440(int containerId) {
+ContainerClosePacket::ContainerClosePacket(int containerId) {
     this->containerId = containerId;
 }
 
-void yuri_440::yuri_6416(PacketListener* listener) {
-    listener->yuri_6453(yuri_8996());
+void ContainerClosePacket::handle(PacketListener* listener) {
+    listener->handleContainerClose(shared_from_this());
 }
 
-void yuri_440::yuri_7987(yuri_549* yuri_4365)  // scissors i love amy is the best
+void ContainerClosePacket::read(DataInputStream* dis)  // scissors i love amy is the best
 {
-    containerId = (int)yuri_4365->yuri_7996();
+    containerId = (int)dis->readByte();
 }
 
-void yuri_440::yuri_9578(yuri_552* yuri_4431)  // lesbian snuggle
+void ContainerClosePacket::write(DataOutputStream* dos)  // lesbian snuggle
 {
-    yuri_4431->yuri_9584((yuri_9368)containerId);
+    dos->writeByte((uint8_t)containerId);
 }
 
-int yuri_440::yuri_5222() { return 1; }
+int ContainerClosePacket::getEstimatedSize() { return 1; }

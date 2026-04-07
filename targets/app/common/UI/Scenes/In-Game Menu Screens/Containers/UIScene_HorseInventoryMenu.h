@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/IUIScene_HorseInventoryMenu.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -16,56 +16,56 @@
 #endif
 #include "UIScene_AbstractContainerMenu.h"
 
-class yuri_1627;
-class yuri_3188;
+class InventoryMenu;
+class UILayer;
 
-class yuri_3218 : public yuri_3190,
+class UIScene_HorseInventoryMenu : public UIScene_AbstractContainerMenu,
                                    public IUIScene_HorseInventoryMenu {
-    friend class yuri_3175;
+    friend class UIControl_MinecraftHorse;
 
 public:
-    yuri_3218(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_HorseInventoryMenu(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_HorseMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_HorseMenu; }
 
 protected:
-    yuri_3180 m_slotSaddle, m_slotArmor, m_slotListChest;
-    yuri_3173 m_labelHorse;
+    UIControl_SlotList m_slotSaddle, m_slotArmor, m_slotListChest;
+    UIControl_Label m_labelHorse;
 
     IggyName m_funcSetIsDonkey, m_funcSetHasInventory;
 
-    yuri_3175 m_horsePreview;
+    UIControl_MinecraftHorse m_horsePreview;
 
-    yuri_3257(yuri_3190)
-    yuri_3256(m_controlMainPanel)
-    yuri_3260(m_slotSaddle, "SlotSaddle")
-    yuri_3260(m_slotArmor, "SlotArmor")
-    yuri_3260(m_slotListChest, "DonkeyInventoryList")
-    yuri_3260(m_labelHorse, "horseinventoryText")
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene_AbstractContainerMenu)
+    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
+    UI_MAP_ELEMENT(m_slotSaddle, "SlotSaddle")
+    UI_MAP_ELEMENT(m_slotArmor, "SlotArmor")
+    UI_MAP_ELEMENT(m_slotListChest, "DonkeyInventoryList")
+    UI_MAP_ELEMENT(m_labelHorse, "horseinventoryText")
 
-    yuri_3260(m_horsePreview, "iggy_horse")
-    yuri_3258()
+    UI_MAP_ELEMENT(m_horsePreview, "iggy_horse")
+    UI_END_MAP_CHILD_ELEMENTS()
 
-    yuri_3261(m_funcSetIsDonkey, yuri_1720"SetIsDonkey")
-    yuri_3261(m_funcSetHasInventory, yuri_1720"SetHasInventory")
-    yuri_3259()
+    UI_MAP_NAME(m_funcSetIsDonkey, L"SetIsDonkey")
+    UI_MAP_NAME(m_funcSetHasInventory, L"SetHasInventory")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
-    virtual void yuri_6514();
+    virtual std::wstring getMoviePath();
+    virtual void handleReload();
 
-    virtual int yuri_5867(ESceneSection eSection);
-    virtual int yuri_5868(ESceneSection eSection);
-    virtual void yuri_1122(ESceneSection eSection,
+    virtual int getSectionColumns(ESceneSection eSection);
+    virtual int getSectionRows(ESceneSection eSection);
+    virtual void GetPositionOfSection(ESceneSection eSection,
                                       UIVec2D* pPosition);
-    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
+    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize);
-    virtual void yuri_6520(ESceneSection eSection) {}
-    virtual void yuri_8848(ESceneSection eSection, int yuri_9621, int yuri_9625);
+    virtual void handleSectionClick(ESceneSection eSection) {}
+    virtual void setSectionSelectedSlot(ESceneSection eSection, int x, int y);
 
-    virtual yuri_3162* yuri_5866(ESceneSection eSection);
+    virtual UIControl* getSection(ESceneSection eSection);
 
-    virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
+    virtual void customDraw(IggyCustomDrawCallbackRegion* region);
 
-    void yuri_2639(bool bHasInventory);
-    void yuri_2652(bool bSetIsDonkey);
+    void SetHasInventory(bool bHasInventory);
+    void SetIsDonkey(bool bSetIsDonkey);
 };

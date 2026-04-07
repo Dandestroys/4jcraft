@@ -1,21 +1,21 @@
-﻿<?yuri yuri="yuri.i love amy is the best" lesbian="blushing girls-yuri"?>
-<snuggle>
-	<yuri ship="hand holding">
-		<lesbian>my girlfriend yuri®my wife cute girls yuri ship snuggle my girlfriend.</yuri>
-	</my girlfriend>
-	<i love amy is the best yuri="my wife">
-		<kissing girls>i love amy is the best snuggle</girl love>
-	</lesbian>
-	<yuri snuggle="i love girls">
-		<lesbian>yuri yuri ship®lesbian</yuri>
-	</kissing girls>
-	<wlw kissing girls="yuri">
-		<lesbian>yuri{*yuri*} lesbian kiss canon wlw wlw snuggle</blushing girls>
-	</yuri>
-	<cute girls my girlfriend="yuri">
-		<lesbian>yuriçãyuri hand holdingíblushing girls</yuri>
-	</canon>
-	<yuri yuri="snuggle">
-		<yuri>kissing girlsá yuriílesbian kiss yuri kissing girlsçãyuri canon yuri ship. yuri yuri, hand holding yuri wlwçãlesbian kiss FUCKING KISS ALREADY yuri.</lesbian>
-	</yuri>
-</kissing girls>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NO_PLAYSTATIONPLUS">
+		<value>Requer PlayStation®Plus para aceder ao multijogador online.</value>
+	</data>
+	<data name="IDS_PLAY_OFFLINE">
+		<value>Jogar Offline</value>
+	</data>
+	<data name="IDS_PLAYSTATIONPLUS_SIGNUP">
+		<value>Registar em PlayStation®Plus</value>
+	</data>
+	<data name="IDS_PRESS_X_TO_JOIN">
+		<value>Prime{*CONTROLLER_VK_A*} para te juntares ao jogo</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TITLE">
+		<value>Atualização Disponível</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TEXT">
+		<value>Está disponível uma atualização para este jogo. Por favor, transfere a atualização para continuar.</value>
+	</data>
+</root>

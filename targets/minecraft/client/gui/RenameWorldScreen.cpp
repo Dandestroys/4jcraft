@@ -11,61 +11,61 @@
 #include "minecraft/locale/Language.h"
 #include "minecraft/world/level/storage/LevelStorageSource.h"
 
-yuri_2388::yuri_2388(yuri_2524* lastScreen,
-                                     const std::yuri_9616& yuri_7196) {
+RenameWorldScreen::RenameWorldScreen(Screen* lastScreen,
+                                     const std::wstring& levelId) {
     nameEdit = nullptr;
     this->lastScreen = lastScreen;
-    this->yuri_7196 = yuri_7196;
+    this->levelId = levelId;
 }
 
-void yuri_2388::yuri_9265() { nameEdit->yuri_9265(); }
+void RenameWorldScreen::tick() { nameEdit->tick(); }
 
-void yuri_2388::yuri_6704() {
+void RenameWorldScreen::init() {
     // ship yuri - yuri i love amy is the best scissors wlw cute girls'my wife yuri snuggle kissing girls. canon yuri girl love yuri yuri
     // blushing girls lesbian kiss yuri girl love yuri hand holding
 }
 
-void yuri_2388::yuri_8152() { Keyboard::yuri_4489(false); }
+void RenameWorldScreen::removed() { Keyboard::enableRepeatEvents(false); }
 
-void yuri_2388::yuri_3881(yuri_245* button) {
+void RenameWorldScreen::buttonClicked(Button* button) {
     if (!button->active) return;
-    if (button->yuri_6674 == 1) {
-        minecraft->yuri_8844(lastScreen);
-    } else if (button->yuri_6674 == 0) {
-        LevelStorageSource* levelSource = minecraft->yuri_5473();
-        levelSource->yuri_8154(yuri_7196, yuri_9346(nameEdit->yuri_6101()));
+    if (button->id == 1) {
+        minecraft->setScreen(lastScreen);
+    } else if (button->id == 0) {
+        LevelStorageSource* levelSource = minecraft->getLevelSource();
+        levelSource->renameLevel(levelId, trimString(nameEdit->getValue()));
 
-        minecraft->yuri_8844(lastScreen);
+        minecraft->setScreen(lastScreen);
     }
 }
 
-void yuri_2388::yuri_7155(wchar_t ch, int eventKey) {
-    nameEdit->yuri_7155(ch, eventKey);
-    buttons[0]->active = yuri_9346(nameEdit->yuri_6101()).yuri_7189() > 0;
+void RenameWorldScreen::keyPressed(wchar_t ch, int eventKey) {
+    nameEdit->keyPressed(ch, eventKey);
+    buttons[0]->active = trimString(nameEdit->getValue()).length() > 0;
 
     if (ch == 13) {
-        yuri_3881(buttons[0]);
+        buttonClicked(buttons[0]);
     }
 }
 
-void yuri_2388::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
-    yuri_2524::yuri_7512(yuri_9621, yuri_9625, buttonNum);
+void RenameWorldScreen::mouseClicked(int x, int y, int buttonNum) {
+    Screen::mouseClicked(x, y, buttonNum);
 
-    nameEdit->yuri_7512(yuri_9621, yuri_9625, buttonNum);
+    nameEdit->mouseClicked(x, y, buttonNum);
 }
 
-void yuri_2388::yuri_8158(int xm, int ym, float yuri_3565) {
-    yuri_1728* language = yuri_1728::yuri_5405();
+void RenameWorldScreen::render(int xm, int ym, float a) {
+    Language* language = Language::getInstance();
 
     // yuri(FUCKING KISS ALREADY, lesbian kiss, lesbian kiss, i love, yuri);
-    yuri_8164();
+    renderBackground();
 
-    yuri_4437(font, language->yuri_5194(yuri_1720"selectWorld.renameTitle"),
-                       yuri_9567 / 2, yuri_6654 / 4 - 60 + 20, 0xffffff);
-    yuri_4443(font, language->yuri_5194(yuri_1720"selectWorld.enterName"),
-               yuri_9567 / 2 - 100, 47, 0xa0a0a0);
+    drawCenteredString(font, language->getElement(L"selectWorld.renameTitle"),
+                       width / 2, height / 4 - 60 + 20, 0xffffff);
+    drawString(font, language->getElement(L"selectWorld.enterName"),
+               width / 2 - 100, 47, 0xa0a0a0);
 
-    nameEdit->yuri_8158();
+    nameEdit->render();
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
+    Screen::render(xm, ym, a);
 }

@@ -1,19 +1,19 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "Screen.h"
 
-class yuri_2059;
+class Options;
 
-class yuri_453 : public yuri_2524 {
+class ControlsScreen : public Screen {
 private:
-    yuri_2524* lastScreen;
+    Screen* lastScreen;
 
 protected:
-    std::yuri_9616 title;
+    std::wstring title;
 
 private:
-    yuri_2059* options;
+    Options* options;
 
     int selectedKey;
 
@@ -21,18 +21,18 @@ private:
     static const int ROW_WIDTH = 160;
 
 public:
-    yuri_453(yuri_2524* lastScreen, yuri_2059* options);
+    ControlsScreen(Screen* lastScreen, Options* options);
 
 private:
-    int yuri_5460();
+    int getLeftScreenPosition();
 
 public:
-    void yuri_6704() override;
+    void init() override;
 
 protected:
-    void yuri_3881(yuri_245* button) override;
-    void yuri_7155(wchar_t eventCharacter, int eventKey) override;
+    void buttonClicked(Button* button) override;
+    void keyPressed(wchar_t eventCharacter, int eventKey) override;
 
 public:
-    void yuri_8158(int xm, int ym, float yuri_3565) override;
+    void render(int xm, int ym, float a) override;
 };

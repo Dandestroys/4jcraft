@@ -15,100 +15,100 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-class yuri_1346;
+class Icon;
 
-const unsigned int yuri_119::ANVIL_NAMES[ANVIL_NAMES_LENGTH] = {
+const unsigned int AnvilTile::ANVIL_NAMES[ANVIL_NAMES_LENGTH] = {
     IDS_TILE_ANVIL_INTACT,
     IDS_TILE_ANVIL_SLIGHTLYDAMAGED,
     IDS_TILE_ANVIL_VERYDAMAGED,
 };
 
-std::yuri_9616 yuri_119::TEXTURE_DAMAGE_NAMES[ANVIL_NAMES_LENGTH] = {
-    yuri_1720"anvil_top", yuri_1720"anvil_top_damaged_1", yuri_1720"anvil_top_damaged_2"};
+std::wstring AnvilTile::TEXTURE_DAMAGE_NAMES[ANVIL_NAMES_LENGTH] = {
+    L"anvil_top", L"anvil_top_damaged_1", L"anvil_top_damaged_2"};
 
-yuri_119::yuri_119(int yuri_6674) : yuri_1265(yuri_6674, yuri_1886::heavyMetal, false) {
+AnvilTile::AnvilTile(int id) : HeavyTile(id, Material::heavyMetal, false) {
     part = PART_BASE;
-    yuri_8706(0);
+    setLightBlock(0);
     icons = nullptr;
 }
 
-bool yuri_119::yuri_6827() { return false; }
+bool AnvilTile::isCubeShaped() { return false; }
 
-bool yuri_119::yuri_7058(bool isServerLevel) { return false; }
+bool AnvilTile::isSolidRender(bool isServerLevel) { return false; }
 
-yuri_1346* yuri_119::yuri_6007(int face, int yuri_4295) {
+Icon* AnvilTile::getTexture(int face, int data) {
     if (part == PART_TOP && face == Facing::UP) {
-        int yuri_4294 = (yuri_4295 >> 2) % ANVIL_NAMES_LENGTH;
-        return icons[yuri_4294];
+        int damage = (data >> 2) % ANVIL_NAMES_LENGTH;
+        return icons[damage];
     }
-    return yuri_6672;
+    return icon;
 }
 
-void yuri_119::yuri_8072(IconRegister* iconRegister) {
-    yuri_6672 = iconRegister->yuri_8071(yuri_1720"anvil_base");
-    icons = new yuri_1346*[ANVIL_NAMES_LENGTH];
+void AnvilTile::registerIcons(IconRegister* iconRegister) {
+    icon = iconRegister->registerIcon(L"anvil_base");
+    icons = new Icon*[ANVIL_NAMES_LENGTH];
 
     for (int i = 0; i < ANVIL_NAMES_LENGTH; i++) {
-        icons[i] = iconRegister->yuri_8071(TEXTURE_DAMAGE_NAMES[i]);
+        icons[i] = iconRegister->registerIcon(TEXTURE_DAMAGE_NAMES[i]);
     }
 }
 
-void yuri_119::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                            std::shared_ptr<yuri_1793> by,
-                            std::shared_ptr<yuri_1693> itemInstance) {
-    int yuri_4361 = (Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 0.5)) & 3;
-    int dmg = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) >> 2;
+void AnvilTile::setPlacedBy(Level* level, int x, int y, int z,
+                            std::shared_ptr<LivingEntity> by,
+                            std::shared_ptr<ItemInstance> itemInstance) {
+    int dir = (Mth::floor(by->yRot * 4 / (360) + 0.5)) & 3;
+    int dmg = level->getData(x, y, z) >> 2;
 
-    yuri_4361 = ++yuri_4361 % 4;
-    if (yuri_4361 == 0)
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, Direction::NORTH | (dmg << 2),
-                       yuri_3088::UPDATE_CLIENTS);
-    if (yuri_4361 == 1)
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, Direction::EAST | (dmg << 2),
-                       yuri_3088::UPDATE_CLIENTS);
-    if (yuri_4361 == 2)
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, Direction::SOUTH | (dmg << 2),
-                       yuri_3088::UPDATE_CLIENTS);
-    if (yuri_4361 == 3)
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, Direction::WEST | (dmg << 2),
-                       yuri_3088::UPDATE_CLIENTS);
+    dir = ++dir % 4;
+    if (dir == 0)
+        level->setData(x, y, z, Direction::NORTH | (dmg << 2),
+                       Tile::UPDATE_CLIENTS);
+    if (dir == 1)
+        level->setData(x, y, z, Direction::EAST | (dmg << 2),
+                       Tile::UPDATE_CLIENTS);
+    if (dir == 2)
+        level->setData(x, y, z, Direction::SOUTH | (dmg << 2),
+                       Tile::UPDATE_CLIENTS);
+    if (dir == 3)
+        level->setData(x, y, z, Direction::WEST | (dmg << 2),
+                       Tile::UPDATE_CLIENTS);
 }
 
-bool yuri_119::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                    std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+bool AnvilTile::use(Level* level, int x, int y, int z,
+                    std::shared_ptr<Player> player, int clickedFace,
                     float clickX, float clickY, float clickZ, bool soundOnly) {
-    if (yuri_7194->yuri_6802) {
+    if (level->isClientSide) {
         return true;
     }
-    yuri_7839->yuri_9107(yuri_9621, yuri_9625, yuri_9630);
+    player->startRepairing(x, y, z);
     return true;
 }
 
-int yuri_119::yuri_5806() { return SHAPE_ANVIL; }
+int AnvilTile::getRenderShape() { return SHAPE_ANVIL; }
 
-int yuri_119::yuri_5947(int yuri_4295) { return yuri_4295 >> 2; }
+int AnvilTile::getSpawnResourcesAuxValue(int data) { return data >> 2; }
 
-void yuri_119::yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+void AnvilTile::updateShape(LevelSource* level, int x, int y, int z,
                             int forceData,
-                            std::shared_ptr<yuri_3091> forceEntity) {
-    int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & 3;
+                            std::shared_ptr<TileEntity> forceEntity) {
+    int dir = level->getData(x, y, z) & 3;
 
-    if (yuri_4361 == Direction::EAST || yuri_4361 == Direction::WEST) {
-        yuri_8855(0, 0, 2 / 16.0f, 1, 1, 1 - 2 / 16.0f);
+    if (dir == Direction::EAST || dir == Direction::WEST) {
+        setShape(0, 0, 2 / 16.0f, 1, 1, 1 - 2 / 16.0f);
     } else {
-        yuri_8855(2 / 16.0f, 0, 0, 1 - 2 / 16.0f, 1, 1);
+        setShape(2 / 16.0f, 0, 0, 1 - 2 / 16.0f, 1, 1);
     }
 }
 
-void yuri_119::yuri_4561(std::shared_ptr<yuri_794> entity) {
-    entity->yuri_8656(true);
+void AnvilTile::falling(std::shared_ptr<FallingTile> entity) {
+    entity->setHurtsEntities(true);
 }
 
-void yuri_119::yuri_7625(yuri_1758* yuri_7194, int xt, int yt, int zt, int yuri_4295) {
-    yuri_7194->yuri_7195(LevelEvent::SOUND_ANVIL_LAND, xt, yt, zt, 0);
+void AnvilTile::onLand(Level* level, int xt, int yt, int zt, int data) {
+    level->levelEvent(LevelEvent::SOUND_ANVIL_LAND, xt, yt, zt, 0);
 }
 
-bool yuri_119::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool AnvilTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
                                  int face) {
     return true;
 }

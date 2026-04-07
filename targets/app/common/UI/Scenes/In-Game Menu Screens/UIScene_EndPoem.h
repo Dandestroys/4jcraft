@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -11,42 +11,42 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3211 : public yuri_3189 {
+class UIScene_EndPoem : public UIScene {
 private:
-    std::yuri_9616 noNoiseString;
-    std::yuri_9616 noiseString;
+    std::wstring noNoiseString;
+    std::wstring noiseString;
     std::vector<int> m_noiseLengths;
     bool m_bIgnoreInput;
     int m_requestedLabel;
 
-    std::vector<std::yuri_9616> m_paragraphs;
+    std::vector<std::wstring> m_paragraphs;
 
     IggyName m_funcSetNextLabel;
-    yuri_3257(yuri_3189)
-    yuri_3261(m_funcSetNextLabel, yuri_1720"SetNextLabel")
-    yuri_3259()
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_NAME(m_funcSetNextLabel, L"SetNextLabel")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
 public:
-    yuri_3211(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_EndPoem(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_EndPoem; }
-    virtual void yuri_9478();
+    virtual EUIScene getSceneType() { return eUIScene_EndPoem; }
+    virtual void updateTooltips();
 
 protected:
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
-    virtual void yuri_9265();
+    virtual void tick();
 
     // lesbian kiss
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
-    virtual void yuri_6465();
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+    virtual void handleDestroy();
 
-    virtual void yuri_6517(F64 startIndex, bool up);
+    virtual void handleRequestMoreData(F64 startIndex, bool up);
 
 private:
-    void yuri_9439();
+    void updateNoise();
 };

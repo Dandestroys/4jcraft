@@ -5,27 +5,27 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_739;
+class Entity;
 
-class yuri_740
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_740> {
+class EntityActionAtPositionPacket
+    : public Packet,
+      public std::enable_shared_from_this<EntityActionAtPositionPacket> {
 public:
     static const int START_SLEEP;
-    int yuri_6674, yuri_9621, yuri_9625, yuri_9630, action;
+    int id, x, y, z, action;
 
-    yuri_740();
-    yuri_740(std::shared_ptr<yuri_739> e, int action, int yuri_9621,
-                                 int yuri_9625, int yuri_9630);
+    EntityActionAtPositionPacket();
+    EntityActionAtPositionPacket(std::shared_ptr<Entity> e, int action, int x,
+                                 int y, int z);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual void yuri_6416(PacketListener* listener);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual void handle(PacketListener* listener);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_740>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<EntityActionAtPositionPacket>();
     }
-    virtual int yuri_5390() { return 17; }
+    virtual int getId() { return 17; }
 };

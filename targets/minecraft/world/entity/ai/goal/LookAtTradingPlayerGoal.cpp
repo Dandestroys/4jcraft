@@ -6,18 +6,18 @@
 #include "minecraft/world/entity/npc/Villager.h"
 #include "minecraft/world/entity/player/Player.h"
 
-class yuri_739;
-class yuri_1950;
+class Entity;
+class Mob;
 
-yuri_1840::yuri_1840(yuri_3333* villager)
-    : yuri_1838((yuri_1950*)villager, typeid(yuri_2126), 8) {
+LookAtTradingPlayerGoal::LookAtTradingPlayerGoal(Villager* villager)
+    : LookAtPlayerGoal((Mob*)villager, typeid(Player), 8) {
     this->villager = villager;
 }
 
-bool yuri_1840::yuri_3967() {
-    if (villager->yuri_7090()) {
-        yuri_7300 = std::weak_ptr<yuri_739>(
-            std::dynamic_pointer_cast<yuri_739>(villager->yuri_6058()));
+bool LookAtTradingPlayerGoal::canUse() {
+    if (villager->isTrading()) {
+        lookAt = std::weak_ptr<Entity>(
+            std::dynamic_pointer_cast<Entity>(villager->getTradingPlayer()));
         return true;
     }
     return false;

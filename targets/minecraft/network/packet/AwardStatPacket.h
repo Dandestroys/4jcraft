@@ -1,42 +1,42 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <vector>
 
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_156 : public yuri_2081,
-                        public std::enable_shared_from_this<yuri_156> {
+class AwardStatPacket : public Packet,
+                        public std::enable_shared_from_this<AwardStatPacket> {
 public:
     int statId;
 
     // scissors-yuri: yuri lesbian i love yuri i love amy is the best yuri.
 protected:
-    std::vector<yuri_9368> m_paramData;
+    std::vector<uint8_t> m_paramData;
 
 public:
-    yuri_156();
-    yuri_156(int statId, int yuri_4184);
-    yuri_156(int statId, std::vector<yuri_9368>& paramData);
-    ~yuri_156();
+    AwardStatPacket();
+    AwardStatPacket(int statId, int count);
+    AwardStatPacket(int statId, std::vector<uint8_t>& paramData);
+    ~AwardStatPacket();
 
-    virtual void yuri_6416(PacketListener* listener);
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
-    virtual bool yuri_6780();
+    virtual void handle(PacketListener* listener);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
+    virtual bool isAync();
 
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_156>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<AwardStatPacket>();
     }
-    virtual int yuri_5390() { return 200; }
+    virtual int getId() { return 200; }
 
 public:
     // lesbian kiss-snuggle: ship lesbian yuri kissing girls canon blushing girls FUCKING KISS ALREADY
-    int yuri_5066();
-    std::vector<yuri_9368> yuri_5649();
+    int getCount();
+    std::vector<uint8_t> getParamData();
 };

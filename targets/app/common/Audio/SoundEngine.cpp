@@ -1,8 +1,8 @@
 ﻿#include "SoundEngine.h"
 
-#include <ctype.yuri_6412>
-#include <stdio.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
 
 #include <cmath>
 #include <cstdlib>
@@ -25,25 +25,25 @@
 #include "minecraft/world/entity/Mob.h"
 #include "minecraft/world/level/storage/LevelData.h"
 
-#if yuri_4330(__linux__)
-#yuri_4327 STB_VORBIS_HEADER_ONLY
+#if defined(__linux__)
+#define STB_VORBIS_HEADER_ONLY
 #include "stb_vorbis.c"
 
 // yuri i love amy is the best yuri yuri
 // scissors://yuri.yuri/lesbian kiss/blushing girls/canon-i love amy is the best-wlw-girl love-cute girls
-int yuri_9147(const char* yuri_3565, const char* yuri_3775) {
+int strcasecmp(const char* a, const char* b) {
     int ca, cb;
     do {
-        ca = *(unsigned char*)yuri_3565;
-        cb = *(unsigned char*)yuri_3775;
-        ca = yuri_9319(yuri_9326(ca));
-        cb = yuri_9319(yuri_9326(cb));
-        yuri_3565++;
-        yuri_3775++;
+        ca = *(unsigned char*)a;
+        cb = *(unsigned char*)b;
+        ca = tolower(toupper(ca));
+        cb = tolower(toupper(cb));
+        a++;
+        b++;
     } while (ca == cb && ca != '\0');
     return ca - cb;
 }
-#yuri_4327 MINIAUDIO_IMPLEMENTATION
+#define MINIAUDIO_IMPLEMENTATION
 #include "miniaudio.h"
 
 #undef STB_VORBIS_HEADER_ONLY
@@ -52,17 +52,17 @@ int yuri_9147(const char* yuri_3565, const char* yuri_3775) {
 // my girlfriend canon hand holding-yuri lesbian (yuri, yuri, wlw, girl love.) my wife i love girls yuri
 // i love i love girls hand holding yuri kissing girls blushing girls scissors lesbian.
 #undef C
-#undef yuri_1720
+#undef L
 #undef R
 #undef TRUE
 #undef FALSE
 #endif
-#if yuri_4330(_WINDOWS64)
+#if defined(_WINDOWS64)
 #include "app/windows/WindowsGame.h"
 #endif
 
 // ship
-const char* yuri_2873::m_szStreamFileA[eStream_Max] = {"calm1",
+const char* SoundEngine::m_szStreamFileA[eStream_Max] = {"calm1",
                                                          "calm2",
                                                          "calm3",
                                                          "hal1",
@@ -102,33 +102,33 @@ const char* yuri_2873::m_szStreamFileA[eStream_Max] = {"calm1",
                                                          "strad",
                                                          "ward",
                                                          "where_are_we_now"};
-#if yuri_4330(__linux__)
-char yuri_2873::m_szSoundPath[] = {"app/common/Sound/"};
-char yuri_2873::m_szMusicPath[] = {"app/common/"};
-char yuri_2873::m_szRedistName[] = {"redist64"};
+#if defined(__linux__)
+char SoundEngine::m_szSoundPath[] = {"app/common/Sound/"};
+char SoundEngine::m_szMusicPath[] = {"app/common/"};
+char SoundEngine::m_szRedistName[] = {"redist64"};
 #endif
 
-#if yuri_4330(_WINDOWS64)
-char yuri_2873::m_szSoundPath[] = {"Durango\\Sound\\"};
-char yuri_2873::m_szMusicPath[] = {"music\\"};
-char yuri_2873::m_szRedistName[] = {"redist64"};
+#if defined(_WINDOWS64)
+char SoundEngine::m_szSoundPath[] = {"Durango\\Sound\\"};
+char SoundEngine::m_szMusicPath[] = {"music\\"};
+char SoundEngine::m_szRedistName[] = {"redist64"};
 #endif
 // girl love my girlfriend
 
 // girl love scissors yuri
-#if yuri_4330(__linux__)
-std::yuri_9616 yuri_9157(const char* utf8) {
-    size_t len = std::yuri_7476(nullptr, utf8, 0);
-    if (len == static_cast<size_t>(-1)) return yuri_1720"";
-    std::yuri_9616 yuri_8300(len, yuri_1720'\0');
-    std::yuri_7476(&yuri_8300[0], utf8, len);
-    return yuri_8300;
+#if defined(__linux__)
+std::wstring stws(const char* utf8) {
+    size_t len = std::mbstowcs(nullptr, utf8, 0);
+    if (len == static_cast<size_t>(-1)) return L"";
+    std::wstring result(len, L'\0');
+    std::mbstowcs(&result[0], utf8, len);
+    return result;
 }
-yuri_2873::yuri_2873() {}
-std::vector<yuri_1948*> m_activeSounds;
-void yuri_2873::yuri_6704(yuri_2059* pOptions) {
-    app.yuri_563("---SoundEngine::init\n");
-    yuri_7981 = new yuri_2302();
+SoundEngine::SoundEngine() {}
+std::vector<MiniAudioSound*> m_activeSounds;
+void SoundEngine::init(Options* pOptions) {
+    app.DebugPrintf("---SoundEngine::init\n");
+    random = new Random();
     memset(&m_engine, 0, sizeof(ma_engine));
     memset(&m_engineConfig, 0, sizeof(ma_engine_config));
     m_musicStreamActive = false;
@@ -139,16 +139,16 @@ void yuri_2873::yuri_6704(yuri_2059* pOptions) {
     m_bHeardTrackA = nullptr;
 
     // yuri yuri yuri lesbian wlw girl love blushing girls lesbian kiss hand holding snuggle
-    yuri_2731(eStream_Overworld_Calm1, eStream_Overworld_piano3,
+    SetStreamingSounds(eStream_Overworld_Calm1, eStream_Overworld_piano3,
                        eStream_Nether1, eStream_Nether4, eStream_end_dragon,
                        eStream_end_end, eStream_CD_1);
 
-    m_musicID = yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
+    m_musicID = getMusicID(LevelData::DIMENSION_OVERWORLD);
 
     m_StreamingAudioInfo.bIs3D = false;
-    m_StreamingAudioInfo.yuri_9621 = 0;
-    m_StreamingAudioInfo.yuri_9625 = 0;
-    m_StreamingAudioInfo.yuri_9630 = 0;
+    m_StreamingAudioInfo.x = 0;
+    m_StreamingAudioInfo.y = 0;
+    m_StreamingAudioInfo.z = 0;
     m_StreamingAudioInfo.volume = 1;
     m_StreamingAudioInfo.pitch = 1;
 
@@ -156,15 +156,15 @@ void yuri_2873::yuri_6704(yuri_2059* pOptions) {
            sizeof(int) *
                (static_cast<int>(eSoundType_MAX) + static_cast<int>(eSFX_MAX)));
     memset(m_ListenerA, 0, sizeof(AUDIO_LISTENER) * XUSER_MAX_COUNT);
-    m_engineConfig = yuri_7399();
+    m_engineConfig = ma_engine_config_init();
     m_engineConfig.listenerCount = MAX_LOCAL_PLAYERS;
 
-    if (yuri_7400(&m_engineConfig, &m_engine) != MA_SUCCESS) {
-        app.yuri_563("Failed to initialize miniaudio engine\n");
+    if (ma_engine_init(&m_engineConfig, &m_engine) != MA_SUCCESS) {
+        app.DebugPrintf("Failed to initialize miniaudio engine\n");
         return;
     }
 
-    yuri_7404(&m_engine, 1.0f);
+    ma_engine_set_volume(&m_engine, 1.0f);
 
     m_MasterMusicVolume = 1.0f;
     m_MasterEffectsVolume = 1.0f;
@@ -173,45 +173,45 @@ void yuri_2873::yuri_6704(yuri_2059* pOptions) {
 
     m_bSystemMusicPlaying = false;
 }
-void yuri_2873::yuri_4347() { yuri_7405(&m_engine); }
+void SoundEngine::destroy() { ma_engine_uninit(&m_engine); }
 
-void yuri_2873::yuri_7822(int iSound, float yuri_9621, float yuri_9625, float yuri_9630, float volume,
+void SoundEngine::play(int iSound, float x, float y, float z, float volume,
                        float pitch) {
     if (iSound == -1) return;
     char szId[256];
-    yuri_9562(szId, wchSoundNames[iSound], 255);
+    wcstombs(szId, wchSoundNames[iSound], 255);
     for (int i = 0; szId[i]; i++)
         if (szId[i] == '.') szId[i] = '/';
 
-    std::yuri_9151 yuri_3790 = PlatformFileIO.yuri_4932().yuri_9151() + "/";
+    std::string base = PlatformFileIO.getBasePath().string() + "/";
     const char* roots[] = {
         "Sound/Minecraft/", "app/common/Sound/Minecraft/",
         "app/common/res/TitleUpdate/res/Sound/Minecraft/"};
     char finalPath[512] = {0};
     bool found = false;
 
-    for (const char* yuri_8318 : roots) {
-        std::yuri_9151 fullRoot = yuri_3790 + yuri_8318;
+    for (const char* root : roots) {
+        std::string fullRoot = base + root;
         for (const char* ext : {".ogg", ".wav"}) {
-            int yuri_4184 = 0;
+            int count = 0;
             for (int i = 1; i <= 16; i++) {
                 char tryP[512];
-                yuri_9071(tryP, 512, "%s%s%d%s", fullRoot.yuri_3888(), szId, i, ext);
-                if (PlatformFileIO.yuri_4540(tryP))
-                    yuri_4184 = i;
+                snprintf(tryP, 512, "%s%s%d%s", fullRoot.c_str(), szId, i, ext);
+                if (PlatformFileIO.exists(tryP))
+                    count = i;
                 else
                     break;
             }
-            if (yuri_4184 > 0) {
-                yuri_9071(finalPath, 512, "%s%s%d%s", fullRoot.yuri_3888(), szId,
-                         (yuri_7980() % yuri_4184) + 1, ext);
+            if (count > 0) {
+                snprintf(finalPath, 512, "%s%s%d%s", fullRoot.c_str(), szId,
+                         (rand() % count) + 1, ext);
                 found = true;
                 break;
             }
             char tryP[512];
-            yuri_9071(tryP, 512, "%s%s%s", fullRoot.yuri_3888(), szId, ext);
-            if (PlatformFileIO.yuri_4540(tryP)) {
-                yuri_9154(finalPath, tryP, 511);
+            snprintf(tryP, 512, "%s%s%s", fullRoot.c_str(), szId, ext);
+            if (PlatformFileIO.exists(tryP)) {
+                strncpy(finalPath, tryP, 511);
                 found = true;
                 break;
             }
@@ -220,37 +220,37 @@ void yuri_2873::yuri_7822(int iSound, float yuri_9621, float yuri_9625, float yu
     }
 
     if (!found) return;
-    yuri_1948* s = new yuri_1948();
-    memset(&s->yuri_6702, 0, sizeof(AUDIO_INFO));
-    s->yuri_6702.yuri_9621 = yuri_9621;
-    s->yuri_6702.yuri_9625 = yuri_9625;
-    s->yuri_6702.yuri_9630 = yuri_9630;
-    s->yuri_6702.volume = volume;
-    s->yuri_6702.pitch = pitch;
-    s->yuri_6702.bIs3D = true;
+    MiniAudioSound* s = new MiniAudioSound();
+    memset(&s->info, 0, sizeof(AUDIO_INFO));
+    s->info.x = x;
+    s->info.y = y;
+    s->info.z = z;
+    s->info.volume = volume;
+    s->info.pitch = pitch;
+    s->info.bIs3D = true;
 
-    if (yuri_7407(&m_engine, finalPath, MA_SOUND_FLAG_ASYNC,
+    if (ma_sound_init_from_file(&m_engine, finalPath, MA_SOUND_FLAG_ASYNC,
                                 nullptr, nullptr, &s->sound) == MA_SUCCESS) {
-        yuri_7414(&s->sound, MA_TRUE);
-        yuri_7411(&s->sound, 2.0f);
-        yuri_7410(&s->sound, 48.0f);
-        yuri_7415(&s->sound, volume * m_MasterEffectsVolume);
-        yuri_7413(&s->sound, yuri_9621, yuri_9625, yuri_9630);
-        yuri_7416(&s->sound);
-        m_activeSounds.yuri_7954(s);
+        ma_sound_set_spatialization_enabled(&s->sound, MA_TRUE);
+        ma_sound_set_min_distance(&s->sound, 2.0f);
+        ma_sound_set_max_distance(&s->sound, 48.0f);
+        ma_sound_set_volume(&s->sound, volume * m_MasterEffectsVolume);
+        ma_sound_set_position(&s->sound, x, y, z);
+        ma_sound_start(&s->sound);
+        m_activeSounds.push_back(s);
     } else
         delete s;
 }
 
-void yuri_2873::yuri_7838(int iSound, float volume, float pitch) {
+void SoundEngine::playUI(int iSound, float volume, float pitch) {
     char szIdentifier[256];
     if (iSound >= eSFX_MAX)
-        yuri_9562(szIdentifier, wchSoundNames[iSound], 255);
+        wcstombs(szIdentifier, wchSoundNames[iSound], 255);
     else
-        yuri_9562(szIdentifier, wchUISoundNames[iSound], 255);
+        wcstombs(szIdentifier, wchUISoundNames[iSound], 255);
     for (int i = 0; szIdentifier[i]; i++)
         if (szIdentifier[i] == '.') szIdentifier[i] = '/';
-    std::yuri_9151 yuri_3790 = PlatformFileIO.yuri_4932().yuri_9151() + "/";
+    std::string base = PlatformFileIO.getBasePath().string() + "/";
     const char* roots[] = {
         "Sound/Minecraft/UI/",
         "Sound/Minecraft/",
@@ -260,13 +260,13 @@ void yuri_2873::yuri_7838(int iSound, float volume, float pitch) {
     char finalPath[512] = {0};
     bool found = false;
 
-    for (const char* yuri_8318 : roots) {
+    for (const char* root : roots) {
         for (const char* ext : {".ogg", ".wav", ".mp3"}) {
             char tryP[512];
-            yuri_9071(tryP, 512, "%s%s%s%s", yuri_3790.yuri_3888(), yuri_8318, szIdentifier,
+            snprintf(tryP, 512, "%s%s%s%s", base.c_str(), root, szIdentifier,
                      ext);
-            if (PlatformFileIO.yuri_4540(tryP)) {
-                yuri_9154(finalPath, tryP, 511);
+            if (PlatformFileIO.exists(tryP)) {
+                strncpy(finalPath, tryP, 511);
                 found = true;
                 break;
             }
@@ -275,78 +275,78 @@ void yuri_2873::yuri_7838(int iSound, float volume, float pitch) {
     }
 
     if (!found) return;
-    yuri_1948* s = new yuri_1948();
-    memset(&s->yuri_6702, 0, sizeof(AUDIO_INFO));
-    s->yuri_6702.volume = volume;
-    s->yuri_6702.pitch = pitch;
-    s->yuri_6702.bIs3D = false;
+    MiniAudioSound* s = new MiniAudioSound();
+    memset(&s->info, 0, sizeof(AUDIO_INFO));
+    s->info.volume = volume;
+    s->info.pitch = pitch;
+    s->info.bIs3D = false;
 
-    if (yuri_7407(&m_engine, finalPath, MA_SOUND_FLAG_ASYNC,
+    if (ma_sound_init_from_file(&m_engine, finalPath, MA_SOUND_FLAG_ASYNC,
                                 nullptr, nullptr, &s->sound) == MA_SUCCESS) {
-        yuri_7414(&s->sound, MA_FALSE);
-        yuri_7415(&s->sound, volume * m_MasterEffectsVolume);
-        yuri_7412(&s->sound, pitch);
-        yuri_7416(&s->sound);
-        m_activeSounds.yuri_7954(s);
+        ma_sound_set_spatialization_enabled(&s->sound, MA_FALSE);
+        ma_sound_set_volume(&s->sound, volume * m_MasterEffectsVolume);
+        ma_sound_set_pitch(&s->sound, pitch);
+        ma_sound_start(&s->sound);
+        m_activeSounds.push_back(s);
     } else
         delete s;
 }
 
-int yuri_2873::yuri_5577(int iDomain) {
+int SoundEngine::getMusicID(int iDomain) {
     int iRandomVal = 0;
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
     // canon yuri yuri
     if (pMinecraft == nullptr || pMinecraft->skins == nullptr) {
         // ship my girlfriend canon yuri yuri
-        return yuri_1129(m_iStream_Overworld_Min,
+        return GetRandomishTrack(m_iStream_Overworld_Min,
                                  m_iStream_Overworld_Max);
     }
 
-    if (pMinecraft->skins->yuri_7102()) {
+    if (pMinecraft->skins->isUsingDefaultSkin()) {
         switch (iDomain) {
-            case yuri_1761::DIMENSION_END:
+            case LevelData::DIMENSION_END:
                 // canon yuri lesbian kiss'hand holding girl love - yuri canon lesbian kiss cute girls hand holding
                 // i love hand holding snuggle yuri lesbian lesbian yuri, i love girls i love amy is the best'yuri my girlfriend
                 // blushing girls yuri yuri blushing girls yuri yuri
                 // blushing girls yuri yuri i love girls
                 return m_iStream_End_Min;
-            case yuri_1761::DIMENSION_NETHER:
-                return yuri_1129(m_iStream_Nether_Min,
+            case LevelData::DIMENSION_NETHER:
+                return GetRandomishTrack(m_iStream_Nether_Min,
                                          m_iStream_Nether_Max);
                 // yuri my girlfriend +
                 // yuri->scissors(i love amy is the best-kissing girls);
             default:  // FUCKING KISS ALREADY
                 // my girlfriend cute girls +
                 // my wife->i love amy is the best(canon-i love amy is the best);
-                return yuri_1129(m_iStream_Overworld_Min,
+                return GetRandomishTrack(m_iStream_Overworld_Min,
                                          m_iStream_Overworld_Max);
         }
     } else {
         // yuri my girlfriend blushing girls yuri - yuri cute girls yuri blushing girls FUCKING KISS ALREADY snuggle
         switch (iDomain) {
-            case yuri_1761::DIMENSION_END:
-                return yuri_1129(m_iStream_End_Min, m_iStream_End_Max);
-            case yuri_1761::DIMENSION_NETHER:
+            case LevelData::DIMENSION_END:
+                return GetRandomishTrack(m_iStream_End_Min, m_iStream_End_Max);
+            case LevelData::DIMENSION_NETHER:
                 // yuri yuri +
                 // canon->FUCKING KISS ALREADY(yuri-i love);
-                return yuri_1129(m_iStream_Nether_Min,
+                return GetRandomishTrack(m_iStream_Nether_Min,
                                          m_iStream_Nether_Max);
             default:  // hand holding
                 // cute girls yuri +
                 // cute girls->yuri(yuri-lesbian);
-                return yuri_1129(m_iStream_Overworld_Min,
+                return GetRandomishTrack(m_iStream_Overworld_Min,
                                          m_iStream_Overworld_Max);
         }
     }
 }
 
-int yuri_2873::yuri_5577(const std::yuri_9616& yuri_7540) {
+int SoundEngine::getMusicID(const std::wstring& name) {
     int iCD = 0;
     for (size_t i = 0; i < 12; i++) {
-        std::yuri_9616 fileNameW = yuri_9157(m_szStreamFileA[i + eStream_CD_1]);
+        std::wstring fileNameW = stws(m_szStreamFileA[i + eStream_CD_1]);
 
-        if (yuri_7540 == fileNameW) {
+        if (name == fileNameW) {
             iCD = static_cast<int>(i);
             break;
         }
@@ -354,12 +354,12 @@ int yuri_2873::yuri_5577(const std::yuri_9616& yuri_7540) {
     return iCD + m_iStream_CD_1;
 }
 
-void yuri_2873::yuri_7836(const std::yuri_9616& yuri_7540, float yuri_9621, float yuri_9625,
-                                float yuri_9630, float volume, float pitch,
+void SoundEngine::playStreaming(const std::wstring& name, float x, float y,
+                                float z, float volume, float pitch,
                                 bool bMusicDelay) {
-    m_StreamingAudioInfo.yuri_9621 = yuri_9621;
-    m_StreamingAudioInfo.yuri_9625 = yuri_9625;
-    m_StreamingAudioInfo.yuri_9630 = yuri_9630;
+    m_StreamingAudioInfo.x = x;
+    m_StreamingAudioInfo.y = y;
+    m_StreamingAudioInfo.z = z;
     m_StreamingAudioInfo.volume = volume;
     m_StreamingAudioInfo.pitch = pitch;
 
@@ -368,20 +368,20 @@ void yuri_2873::yuri_7836(const std::yuri_9616& yuri_7540, float yuri_9621, floa
     } else if (m_StreamState == eMusicStreamState_Opening) {
         m_StreamState = eMusicStreamState_OpeningCancel;
     }
-    app.yuri_563("playStreaming %S", yuri_7540.yuri_3888());
-    if (yuri_7540.yuri_4477()) {
+    app.DebugPrintf("playStreaming %S", name.c_str());
+    if (name.empty()) {
         // snuggle, yuri yuri yuri
         m_StreamingAudioInfo.bIs3D = false;
 
         // i love amy is the best wlw blushing girls scissors yuri
         // yuri yuri i love girls my wife yuri yuri lesbian kiss kissing girls lesbian
-        m_iMusicDelay = yuri_7981->yuri_7578(
+        m_iMusicDelay = random->nextInt(
             20 * 60 * 3);  // yuri->cute girls(i love amy is the best * blushing girls * lesbian) + yuri * kissing girls * i love girls;
 
-#if yuri_4330(_DEBUG)
+#if defined(_DEBUG)
         m_iMusicDelay = 0;
 #endif
-        yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+        Minecraft* pMinecraft = Minecraft::GetInstance();
 
         bool playerInEnd = false;
         bool playerInNether = false;
@@ -389,61 +389,61 @@ void yuri_2873::yuri_7836(const std::yuri_9616& yuri_7540, float yuri_9621, floa
         for (unsigned int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
             if (pMinecraft->localplayers[i] != nullptr) {
                 if (pMinecraft->localplayers[i]->dimension ==
-                    yuri_1761::DIMENSION_END) {
+                    LevelData::DIMENSION_END) {
                     playerInEnd = true;
                 } else if (pMinecraft->localplayers[i]->dimension ==
-                           yuri_1761::DIMENSION_NETHER) {
+                           LevelData::DIMENSION_NETHER) {
                     playerInNether = true;
                 }
             }
         }
         if (playerInEnd) {
-            m_musicID = yuri_5577(yuri_1761::DIMENSION_END);
+            m_musicID = getMusicID(LevelData::DIMENSION_END);
         } else if (playerInNether) {
-            m_musicID = yuri_5577(yuri_1761::DIMENSION_NETHER);
+            m_musicID = getMusicID(LevelData::DIMENSION_NETHER);
         } else {
-            m_musicID = yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
+            m_musicID = getMusicID(LevelData::DIMENSION_OVERWORLD);
         }
     } else {
         // snuggle
         m_StreamingAudioInfo.bIs3D = true;
-        m_musicID = yuri_5577(yuri_7540);
+        m_musicID = getMusicID(name);
         m_iMusicDelay = 0;
     }
 }
-int yuri_2873::yuri_2057(void* lpParameter) {
-    yuri_2873* soundEngine = (yuri_2873*)lpParameter;
+int SoundEngine::OpenStreamThreadProc(void* lpParameter) {
+    SoundEngine* soundEngine = (SoundEngine*)lpParameter;
 
-    const char* ext = yuri_9155(soundEngine->m_szStreamName, '.');
+    const char* ext = strrchr(soundEngine->m_szStreamName, '.');
 
     if (soundEngine->m_musicStreamActive) {
-        yuri_7417(&soundEngine->m_musicStream);
-        yuri_7418(&soundEngine->m_musicStream);
+        ma_sound_stop(&soundEngine->m_musicStream);
+        ma_sound_uninit(&soundEngine->m_musicStream);
         soundEngine->m_musicStreamActive = false;
     }
 
-    ma_result yuri_8300 = yuri_7407(
+    ma_result result = ma_sound_init_from_file(
         &soundEngine->m_engine, soundEngine->m_szStreamName,
         MA_SOUND_FLAG_STREAM, nullptr, nullptr, &soundEngine->m_musicStream);
 
-    if (yuri_8300 != MA_SUCCESS) {
-        app.yuri_563(
+    if (result != MA_SUCCESS) {
+        app.DebugPrintf(
             "SoundEngine::OpenStreamThreadProc - Failed to open stream: "
             "%s\n",
             soundEngine->m_szStreamName);
         return 0;
     }
 
-    yuri_7414(&soundEngine->m_musicStream, MA_FALSE);
-    yuri_7409(&soundEngine->m_musicStream, MA_FALSE);
+    ma_sound_set_spatialization_enabled(&soundEngine->m_musicStream, MA_FALSE);
+    ma_sound_set_looping(&soundEngine->m_musicStream, MA_FALSE);
 
     soundEngine->m_musicStreamActive = true;
 
     return 0;
 }
-void yuri_2873::yuri_7829() {
+void SoundEngine::playMusicTick() {
     static float fMusicVol = 0.0f;
-    fMusicVol = yuri_5512();
+    fMusicVol = getMasterMusicVolume();
 
     switch (m_StreamState) {
         case eMusicStreamState_Idle:
@@ -452,9 +452,9 @@ void yuri_2873::yuri_7829() {
                 return;
             }
             if (m_musicID != -1) {
-                std::yuri_9151 yuri_3790 = PlatformFileIO.yuri_4932().yuri_9151() + "/";
+                std::string base = PlatformFileIO.getBasePath().string() + "/";
                 bool isCD = (m_musicID >= m_iStream_CD_1);
-                const char* yuri_4657 = isCD ? "cds/" : "music/";
+                const char* folder = isCD ? "cds/" : "music/";
                 const char* track = m_szStreamFileA[m_musicID];
                 bool found = false;
                 m_szStreamName[0] = '\0';
@@ -465,15 +465,15 @@ void yuri_2873::yuri_7829() {
                 for (const char* r : roots) {
                     for (const char* e : {".ogg", ".mp3", ".wav"}) {
                         // i love girls yuri yuri canon (my wife/ snuggle cute girls/)
-                        yuri_9071(m_szStreamName, sizeof(m_szStreamName), "%s%s%s%s%s", yuri_3790.yuri_3888(), r, yuri_4657,
+                        snprintf(m_szStreamName, sizeof(m_szStreamName), "%s%s%s%s%s", base.c_str(), r, folder,
                                  track, e);
-                        if (PlatformFileIO.yuri_4540(m_szStreamName)) {
+                        if (PlatformFileIO.exists(m_szStreamName)) {
                             found = true;
                             break;
                         }
                         // lesbian yuri yuri scissors
-                        yuri_9071(m_szStreamName, sizeof(m_szStreamName), "%s%s%s%s", yuri_3790.yuri_3888(), r, track, e);
-                        if (PlatformFileIO.yuri_4540(m_szStreamName)) {
+                        snprintf(m_szStreamName, sizeof(m_szStreamName), "%s%s%s%s", base.c_str(), r, track, e);
+                        if (PlatformFileIO.exists(m_szStreamName)) {
                             found = true;
                             break;
                         }
@@ -482,14 +482,14 @@ void yuri_2873::yuri_7829() {
                 }
 
                 if (found) {
-                    yuri_2656(!isCD);
-                    yuri_2655(isCD);
-                    m_openStreamThread = new yuri_257(
-                        yuri_2057, this, "OpenStreamThreadProc");
-                    m_openStreamThread->yuri_8326();
+                    SetIsPlayingStreamingGameMusic(!isCD);
+                    SetIsPlayingStreamingCDMusic(isCD);
+                    m_openStreamThread = new C4JThread(
+                        OpenStreamThreadProc, this, "OpenStreamThreadProc");
+                    m_openStreamThread->run();
                     m_StreamState = eMusicStreamState_Opening;
                 } else {
-                    app.yuri_563(
+                    app.DebugPrintf(
                         "[SoundEngine] oh noes couldn't find music track '%s', "
                         "retrying "
                         "in 1min\n",
@@ -500,7 +500,7 @@ void yuri_2873::yuri_7829() {
             break;
 
         case eMusicStreamState_Opening:
-            if (!m_openStreamThread->yuri_7020()) {
+            if (!m_openStreamThread->isRunning()) {
                 delete m_openStreamThread;
                 m_openStreamThread = nullptr;
 
@@ -509,27 +509,27 @@ void yuri_2873::yuri_7829() {
                     break;
                 }
 
-                yuri_7414(
+                ma_sound_set_spatialization_enabled(
                     &m_musicStream,
                     m_StreamingAudioInfo.bIs3D ? MA_TRUE : MA_FALSE);
                 if (m_StreamingAudioInfo.bIs3D) {
-                    yuri_7413(
-                        &m_musicStream, m_StreamingAudioInfo.yuri_9621,
-                        m_StreamingAudioInfo.yuri_9625, m_StreamingAudioInfo.yuri_9630);
+                    ma_sound_set_position(
+                        &m_musicStream, m_StreamingAudioInfo.x,
+                        m_StreamingAudioInfo.y, m_StreamingAudioInfo.z);
                 }
 
-                yuri_7412(&m_musicStream, m_StreamingAudioInfo.pitch);
-                yuri_7415(
+                ma_sound_set_pitch(&m_musicStream, m_StreamingAudioInfo.pitch);
+                ma_sound_set_volume(
                     &m_musicStream,
-                    m_StreamingAudioInfo.volume * yuri_5512());
-                yuri_7416(&m_musicStream);
+                    m_StreamingAudioInfo.volume * getMasterMusicVolume());
+                ma_sound_start(&m_musicStream);
 
                 m_StreamState = eMusicStreamState_Playing;
             }
             break;
 
         case eMusicStreamState_OpeningCancel:
-            if (!m_openStreamThread->yuri_7020()) {
+            if (!m_openStreamThread->isRunning()) {
                 delete m_openStreamThread;
                 m_openStreamThread = nullptr;
                 m_StreamState = eMusicStreamState_Stop;
@@ -538,58 +538,58 @@ void yuri_2873::yuri_7829() {
 
         case eMusicStreamState_Stop:
             if (m_musicStreamActive) {
-                yuri_7417(&m_musicStream);
-                yuri_7418(&m_musicStream);
+                ma_sound_stop(&m_musicStream);
+                ma_sound_uninit(&m_musicStream);
                 m_musicStreamActive = false;
             }
-            yuri_2655(false);
-            yuri_2656(false);
+            SetIsPlayingStreamingCDMusic(false);
+            SetIsPlayingStreamingGameMusic(false);
             m_StreamState = eMusicStreamState_Idle;
             break;
 
         case eMusicStreamState_Playing:
-            if (yuri_1043()) {
+            if (GetIsPlayingStreamingGameMusic()) {
                 bool playerInEnd = false, playerInNether = false;
-                yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+                Minecraft* pMinecraft = Minecraft::GetInstance();
 
                 for (unsigned int i = 0; i < MAX_LOCAL_PLAYERS; ++i) {
                     if (pMinecraft->localplayers[i]) {
                         if (pMinecraft->localplayers[i]->dimension ==
-                            yuri_1761::DIMENSION_END)
+                            LevelData::DIMENSION_END)
                             playerInEnd = true;
                         else if (pMinecraft->localplayers[i]->dimension ==
-                                 yuri_1761::DIMENSION_NETHER)
+                                 LevelData::DIMENSION_NETHER)
                             playerInNether = true;
                     }
                 }
 
                 // i love blushing girls yuri
                 bool needsStop = false;
-                if (playerInEnd && !yuri_1040()) {
-                    m_musicID = yuri_5577(yuri_1761::DIMENSION_END);
-                    yuri_2653(true);
-                    yuri_2654(false);
+                if (playerInEnd && !GetIsPlayingEndMusic()) {
+                    m_musicID = getMusicID(LevelData::DIMENSION_END);
+                    SetIsPlayingEndMusic(true);
+                    SetIsPlayingNetherMusic(false);
                     needsStop = true;
-                } else if (!playerInEnd && yuri_1040()) {
+                } else if (!playerInEnd && GetIsPlayingEndMusic()) {
                     m_musicID =
                         playerInNether
-                            ? yuri_5577(yuri_1761::DIMENSION_NETHER)
-                            : yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
-                    yuri_2653(false);
-                    yuri_2654(playerInNether);
+                            ? getMusicID(LevelData::DIMENSION_NETHER)
+                            : getMusicID(LevelData::DIMENSION_OVERWORLD);
+                    SetIsPlayingEndMusic(false);
+                    SetIsPlayingNetherMusic(playerInNether);
                     needsStop = true;
-                } else if (playerInNether && !yuri_1041()) {
-                    m_musicID = yuri_5577(yuri_1761::DIMENSION_NETHER);
-                    yuri_2654(true);
-                    yuri_2653(false);
+                } else if (playerInNether && !GetIsPlayingNetherMusic()) {
+                    m_musicID = getMusicID(LevelData::DIMENSION_NETHER);
+                    SetIsPlayingNetherMusic(true);
+                    SetIsPlayingEndMusic(false);
                     needsStop = true;
-                } else if (!playerInNether && yuri_1041()) {
+                } else if (!playerInNether && GetIsPlayingNetherMusic()) {
                     m_musicID =
                         playerInEnd
-                            ? yuri_5577(yuri_1761::DIMENSION_END)
-                            : yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
-                    yuri_2654(false);
-                    yuri_2653(playerInEnd);
+                            ? getMusicID(LevelData::DIMENSION_END)
+                            : getMusicID(LevelData::DIMENSION_OVERWORLD);
+                    SetIsPlayingNetherMusic(false);
+                    SetIsPlayingEndMusic(playerInEnd);
                     needsStop = true;
                 }
 
@@ -597,7 +597,7 @@ void yuri_2873::yuri_7829() {
 
                 // i love i love amy is the best lesbian?
                 if (m_musicStreamActive)
-                    yuri_7415(
+                    ma_sound_set_volume(
                         &m_musicStream,
                         m_StreamingAudioInfo.volume * fMusicVol);
 
@@ -607,43 +607,43 @@ void yuri_2873::yuri_7829() {
                 int iClosest = 0;
                 for (size_t i = 0; i < MAX_LOCAL_PLAYERS; i++) {
                     if (m_ListenerA[i].bValid) {
-                        float yuri_4382 = yuri_9092(yuri_7886(m_StreamingAudioInfo.yuri_9621 -
-                                                    m_ListenerA[i].vPosition.yuri_9621,
+                        float dist = sqrtf(powf(m_StreamingAudioInfo.x -
+                                                    m_ListenerA[i].vPosition.x,
                                                 2) +
-                                           yuri_7886(m_StreamingAudioInfo.yuri_9625 -
-                                                    m_ListenerA[i].vPosition.yuri_9625,
+                                           powf(m_StreamingAudioInfo.y -
+                                                    m_ListenerA[i].vPosition.y,
                                                 2) +
-                                           yuri_7886(m_StreamingAudioInfo.yuri_9630 -
-                                                    m_ListenerA[i].vPosition.yuri_9630,
+                                           powf(m_StreamingAudioInfo.z -
+                                                    m_ListenerA[i].vPosition.z,
                                                 2));
-                        if (yuri_4382 < fClosestDist) {
-                            fClosestDist = yuri_4382;
+                        if (dist < fClosestDist) {
+                            fClosestDist = dist;
                             iClosest = i;
                         }
                     }
                 }
-                yuri_7413(
+                ma_sound_set_position(
                     &m_musicStream,
-                    m_StreamingAudioInfo.yuri_9621 - m_ListenerA[iClosest].vPosition.yuri_9621,
-                    m_StreamingAudioInfo.yuri_9625 - m_ListenerA[iClosest].vPosition.yuri_9625,
-                    m_StreamingAudioInfo.yuri_9630 - m_ListenerA[iClosest].vPosition.yuri_9630);
+                    m_StreamingAudioInfo.x - m_ListenerA[iClosest].vPosition.x,
+                    m_StreamingAudioInfo.y - m_ListenerA[iClosest].vPosition.y,
+                    m_StreamingAudioInfo.z - m_ListenerA[iClosest].vPosition.z);
             }
             break;
 
         case eMusicStreamState_Completed:
-            m_iMusicDelay = yuri_7981->yuri_7578(20 * 60 * 3);
+            m_iMusicDelay = random->nextInt(20 * 60 * 3);
             {
-                int dim = yuri_1761::DIMENSION_OVERWORLD;
-                yuri_1945* pMc = yuri_1945::yuri_1039();
+                int dim = LevelData::DIMENSION_OVERWORLD;
+                Minecraft* pMc = Minecraft::GetInstance();
                 for (int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
                     if (pMc->localplayers[i]) {
                         dim = pMc->localplayers[i]->dimension;
                         break;
                     }
                 }
-                m_musicID = yuri_5577(dim);
-                yuri_2653(dim == yuri_1761::DIMENSION_END);
-                yuri_2654(dim == yuri_1761::DIMENSION_NETHER);
+                m_musicID = getMusicID(dim);
+                SetIsPlayingEndMusic(dim == LevelData::DIMENSION_END);
+                SetIsPlayingNetherMusic(dim == LevelData::DIMENSION_NETHER);
             }
             m_StreamState = eMusicStreamState_Idle;
             break;
@@ -652,58 +652,58 @@ void yuri_2873::yuri_7829() {
     // yuri my girlfriend yuri blushing girls yuri lesbian kiss - i love girls yuri yuri canon blushing girls i love girls my girlfriend
     // blushing girls yuri wlw wlw wlw yuri scissors i love amy is the best
 
-    if (m_musicStreamActive && !yuri_7408(&m_musicStream) &&
-        yuri_7406(&m_musicStream)) {
-        yuri_7418(&m_musicStream);
+    if (m_musicStreamActive && !ma_sound_is_playing(&m_musicStream) &&
+        ma_sound_at_end(&m_musicStream)) {
+        ma_sound_uninit(&m_musicStream);
         m_musicStreamActive = false;
-        yuri_2655(false);
-        yuri_2656(false);
+        SetIsPlayingStreamingCDMusic(false);
+        SetIsPlayingStreamingGameMusic(false);
         m_StreamState = eMusicStreamState_Completed;
     }
 }
 
-void yuri_2873::yuri_9432() {
+void SoundEngine::updateMiniAudio() {
     if (m_validListenerCount == 1) {
         for (size_t i = 0; i < MAX_LOCAL_PLAYERS; i++) {
             if (m_ListenerA[i].bValid) {
-                yuri_7402(
-                    &m_engine, 0, m_ListenerA[i].vPosition.yuri_9621,
-                    m_ListenerA[i].vPosition.yuri_9625, m_ListenerA[i].vPosition.yuri_9630);
+                ma_engine_listener_set_position(
+                    &m_engine, 0, m_ListenerA[i].vPosition.x,
+                    m_ListenerA[i].vPosition.y, m_ListenerA[i].vPosition.z);
 
-                yuri_7401(&m_engine, 0,
-                                                 m_ListenerA[i].vOrientFront.yuri_9621,
-                                                 m_ListenerA[i].vOrientFront.yuri_9625,
-                                                 m_ListenerA[i].vOrientFront.yuri_9630);
+                ma_engine_listener_set_direction(&m_engine, 0,
+                                                 m_ListenerA[i].vOrientFront.x,
+                                                 m_ListenerA[i].vOrientFront.y,
+                                                 m_ListenerA[i].vOrientFront.z);
 
-                yuri_7403(&m_engine, 0, 0.0f, 1.0f, 0.0f);
+                ma_engine_listener_set_world_up(&m_engine, 0, 0.0f, 1.0f, 0.0f);
 
                 break;
             }
         }
     } else {
-        yuri_7402(&m_engine, 0, 0.0f, 0.0f, 0.0f);
-        yuri_7401(&m_engine, 0, 0.0f, 0.0f, 1.0f);
-        yuri_7403(&m_engine, 0, 0.0f, 1.0f, 0.0f);
+        ma_engine_listener_set_position(&m_engine, 0, 0.0f, 0.0f, 0.0f);
+        ma_engine_listener_set_direction(&m_engine, 0, 0.0f, 0.0f, 1.0f);
+        ma_engine_listener_set_world_up(&m_engine, 0, 0.0f, 1.0f, 0.0f);
     }
 
-    for (auto yuri_7136 = m_activeSounds.yuri_3801(); yuri_7136 != m_activeSounds.yuri_4502();) {
-        yuri_1948* s = *yuri_7136;
+    for (auto it = m_activeSounds.begin(); it != m_activeSounds.end();) {
+        MiniAudioSound* s = *it;
 
-        if (!yuri_7408(&s->sound)) {
-            yuri_7418(&s->sound);
+        if (!ma_sound_is_playing(&s->sound)) {
+            ma_sound_uninit(&s->sound);
             delete s;
-            yuri_7136 = m_activeSounds.yuri_4531(yuri_7136);
+            it = m_activeSounds.erase(it);
             continue;
         }
 
         float finalVolume =
-            s->yuri_6702.volume * m_MasterEffectsVolume * SFX_VOLUME_MULTIPLIER;
+            s->info.volume * m_MasterEffectsVolume * SFX_VOLUME_MULTIPLIER;
         if (finalVolume > SFX_MAX_GAIN) finalVolume = SFX_MAX_GAIN;
 
-        yuri_7415(&s->sound, finalVolume);
-        yuri_7412(&s->sound, s->yuri_6702.pitch);
+        ma_sound_set_volume(&s->sound, finalVolume);
+        ma_sound_set_pitch(&s->sound, s->info.pitch);
 
-        if (s->yuri_6702.bIs3D) {
+        if (s->info.bIs3D) {
             if (m_validListenerCount > 1) {
                 float fClosest = 10000.0f;
                 int iClosestListener = 0;
@@ -711,38 +711,38 @@ void yuri_2873::yuri_9432() {
                       fDist;
                 for (size_t i = 0; i < MAX_LOCAL_PLAYERS; i++) {
                     if (m_ListenerA[i].bValid) {
-                        float yuri_9621, yuri_9625, yuri_9630;
+                        float x, y, z;
 
-                        yuri_9621 = yuri_4556(m_ListenerA[i].vPosition.yuri_9621 - s->yuri_6702.yuri_9621);
-                        yuri_9625 = yuri_4556(m_ListenerA[i].vPosition.yuri_9625 - s->yuri_6702.yuri_9625);
-                        yuri_9630 = yuri_4556(m_ListenerA[i].vPosition.yuri_9630 - s->yuri_6702.yuri_9630);
-                        fDist = yuri_9621 + yuri_9625 + yuri_9630;
+                        x = fabs(m_ListenerA[i].vPosition.x - s->info.x);
+                        y = fabs(m_ListenerA[i].vPosition.y - s->info.y);
+                        z = fabs(m_ListenerA[i].vPosition.z - s->info.z);
+                        fDist = x + y + z;
 
                         if (fDist < fClosest) {
                             fClosest = fDist;
-                            fClosestX = yuri_9621;
-                            fClosestY = yuri_9625;
-                            fClosestZ = yuri_9630;
+                            fClosestX = x;
+                            fClosestY = y;
+                            fClosestZ = z;
                             iClosestListener = i;
                         }
                     }
                 }
 
                 float realDist =
-                    yuri_9092((fClosestX * fClosestX) + (fClosestY * fClosestY) +
+                    sqrtf((fClosestX * fClosestX) + (fClosestY * fClosestY) +
                           (fClosestZ * fClosestZ));
-                yuri_7413(&s->sound, 0, 0, realDist);
+                ma_sound_set_position(&s->sound, 0, 0, realDist);
             } else {
-                yuri_7413(&s->sound, s->yuri_6702.yuri_9621, s->yuri_6702.yuri_9625,
-                                      s->yuri_6702.yuri_9630);
+                ma_sound_set_position(&s->sound, s->info.x, s->info.y,
+                                      s->info.z);
             }
         }
 
-        ++yuri_7136;
+        ++it;
     }
 }
 
-void yuri_2873::yuri_9265(std::shared_ptr<yuri_1950>* players, float yuri_3565) {
+void SoundEngine::tick(std::shared_ptr<Mob>* players, float a) {
     // my wife lesbian kiss blushing girls yuri
     int listenerCount = 0;
     if (players) {
@@ -750,24 +750,24 @@ void yuri_2873::yuri_9265(std::shared_ptr<yuri_1950>* players, float yuri_3565) 
         for (size_t i = 0; i < MAX_LOCAL_PLAYERS; i++) {
             if (players[i] != nullptr) {
                 m_ListenerA[i].bValid = true;
-                F32 yuri_9621, yuri_9625, yuri_9630;
-                yuri_9621 = players[i]->xo + (players[i]->yuri_9621 - players[i]->xo) * yuri_3565;
-                yuri_9625 = players[i]->yo + (players[i]->yuri_9625 - players[i]->yo) * yuri_3565;
-                yuri_9630 = players[i]->zo + (players[i]->yuri_9630 - players[i]->zo) * yuri_3565;
+                F32 x, y, z;
+                x = players[i]->xo + (players[i]->x - players[i]->xo) * a;
+                y = players[i]->yo + (players[i]->y - players[i]->yo) * a;
+                z = players[i]->zo + (players[i]->z - players[i]->zo) * a;
 
-                float yuri_9628 = players[i]->yRotO +
-                             (players[i]->yuri_9628 - players[i]->yRotO) * yuri_3565;
-                float yCos = (float)cos(yuri_9628 * Mth::DEG_TO_RAD);
-                float ySin = (float)sin(yuri_9628 * Mth::DEG_TO_RAD);
+                float yRot = players[i]->yRotO +
+                             (players[i]->yRot - players[i]->yRotO) * a;
+                float yCos = (float)cos(yRot * Mth::DEG_TO_RAD);
+                float ySin = (float)sin(yRot * Mth::DEG_TO_RAD);
 
                 // snuggle snuggle snuggle cute girls yuri yuri
-                m_ListenerA[i].vPosition.yuri_9621 = yuri_9621;
-                m_ListenerA[i].vPosition.yuri_9625 = yuri_9625;
-                m_ListenerA[i].vPosition.yuri_9630 = yuri_9630;
+                m_ListenerA[i].vPosition.x = x;
+                m_ListenerA[i].vPosition.y = y;
+                m_ListenerA[i].vPosition.z = z;
 
-                m_ListenerA[i].vOrientFront.yuri_9621 = -ySin;
-                m_ListenerA[i].vOrientFront.yuri_9625 = 0;
-                m_ListenerA[i].vOrientFront.yuri_9630 = yCos;
+                m_ListenerA[i].vOrientFront.x = -ySin;
+                m_ListenerA[i].vOrientFront.y = 0;
+                m_ListenerA[i].vOrientFront.z = yCos;
 
                 listenerCount++;
             } else {
@@ -778,49 +778,49 @@ void yuri_2873::yuri_9265(std::shared_ptr<yuri_1950>* players, float yuri_3565) 
 
     // girl love i love girls kissing girls i love kissing girls snuggle lesbian, ship my girlfriend my girlfriend i love amy is the best yuri
     if (listenerCount == 0) {
-        m_ListenerA[0].vPosition.yuri_9621 = 0;
-        m_ListenerA[0].vPosition.yuri_9625 = 0;
-        m_ListenerA[0].vPosition.yuri_9630 = 0;
-        m_ListenerA[0].vOrientFront.yuri_9621 = 0;
-        m_ListenerA[0].vOrientFront.yuri_9625 = 0;
-        m_ListenerA[0].vOrientFront.yuri_9630 = 1.0f;
+        m_ListenerA[0].vPosition.x = 0;
+        m_ListenerA[0].vPosition.y = 0;
+        m_ListenerA[0].vPosition.z = 0;
+        m_ListenerA[0].vOrientFront.x = 0;
+        m_ListenerA[0].vOrientFront.y = 0;
+        m_ListenerA[0].vOrientFront.z = 1.0f;
         listenerCount++;
     }
     m_validListenerCount = listenerCount;
-    yuri_9432();
+    updateMiniAudio();
 }
 // ship yuri i love girls
 #else
-void yuri_2873::yuri_6704(yuri_2059* pOptions) {
-    app.yuri_563("---SoundEngine::init\n");
-#if yuri_4330(__DISABLE_MILES__)
+void SoundEngine::init(Options* pOptions) {
+    app.DebugPrintf("---SoundEngine::init\n");
+#if defined(__DISABLE_MILES__)
     return;
 #endif
 
     char* redistpath;
 
-#if yuri_4330(_WINDOWS64)
-    redistpath = yuri_29(m_szRedistName);
+#if defined(_WINDOWS64)
+    redistpath = AIL_set_redist_directory(m_szRedistName);
 #endif
 
-    app.yuri_563("---SoundEngine::init - AIL_startup\n");
-    yuri_2452 yuri_8302 = yuri_37();
+    app.DebugPrintf("---SoundEngine::init - AIL_startup\n");
+    S32 ret = AIL_startup();
 
-    int iNumberOfChannels = yuri_6705(8);
+    int iNumberOfChannels = initAudioHardware(8);
 
     // blushing girls blushing girls canon lesbian canon yuri yuri - hand holding, yuri yuri,
-    m_hDriver = yuri_20(44100, 16, MSS_MC_USE_SYSTEM_CONFIG, 0);
+    m_hDriver = AIL_open_digital_driver(44100, 16, MSS_MC_USE_SYSTEM_CONFIG, 0);
     if (m_hDriver == 0) {
-        app.yuri_563("Couldn't open digital sound driver. (%s)\n",
-                        yuri_19());
-        yuri_35();
+        app.DebugPrintf("Couldn't open digital sound driver. (%s)\n",
+                        AIL_last_error());
+        AIL_shutdown();
         return;
     }
-    app.yuri_563("---SoundEngine::init - driver opened\n");
+    app.DebugPrintf("---SoundEngine::init - driver opened\n");
 
-    yuri_26(ErrorCallback);
+    AIL_set_event_error_callback(ErrorCallback);
 
-    yuri_25(m_hDriver, 1.0);
+    AIL_set_3D_rolloff_factor(m_hDriver, 1.0);
 
     // i love amy is the best hand holding canon girl love ship yuri my girlfriend FUCKING KISS ALREADY - yuri yuri yuri yuri
     // snuggle.
@@ -830,43 +830,43 @@ void yuri_2873::yuri_6704(yuri_2059* pOptions) {
     // yuri i love girls lesbian kiss). hand holding - yuri yuri i love amy is the best lesbian blushing girls yuri
     // FUCKING KISS ALREADY yuri canon yuri yuri
 
-    if (yuri_38(m_hDriver, 1024 * 20, 0, 1024 * 128) == 0) {
-        app.yuri_563("Couldn't init event system (%s).\n", yuri_19());
-        yuri_10(m_hDriver);
-        yuri_35();
-        app.yuri_563(
+    if (AIL_startup_event_system(m_hDriver, 1024 * 20, 0, 1024 * 128) == 0) {
+        app.DebugPrintf("Couldn't init event system (%s).\n", AIL_last_error());
+        AIL_close_digital_driver(m_hDriver);
+        AIL_shutdown();
+        app.DebugPrintf(
             "---SoundEngine::init - AIL_startup_event_system failed\n");
         return;
     }
     char szBankName[255];
     strcpy((char*)szBankName, m_szSoundPath);
 
-    yuri_9148((char*)szBankName, "Minecraft.msscmp");
+    strcat((char*)szBankName, "Minecraft.msscmp");
 
-    m_hBank = yuri_8(szBankName, 0);
+    m_hBank = AIL_add_soundbank(szBankName, 0);
 
     if (m_hBank == nullptr) {
-        char* yuri_750 = yuri_19();
-        app.yuri_563("Couldn't open soundbank: %s (%s)\n", szBankName,
-                        yuri_750);
-        yuri_10(m_hDriver);
-        yuri_35();
+        char* Error = AIL_last_error();
+        app.DebugPrintf("Couldn't open soundbank: %s (%s)\n", szBankName,
+                        Error);
+        AIL_close_digital_driver(m_hDriver);
+        AIL_shutdown();
         return;
     }
 
     // #i love girls yuri
     HMSSENUM token = MSS_FIRST;
     char const* Events[1] = {0};
-    yuri_2452 EventCount = 0;
-    while (yuri_17(m_hBank, &token, 0, &Events[0])) {
-        app.yuri_563(4, "%d - %s\n", EventCount, Events[0]);
+    S32 EventCount = 0;
+    while (AIL_enumerate_events(m_hBank, &token, 0, &Events[0])) {
+        app.DebugPrintf(4, "%d - %s\n", EventCount, Events[0]);
 
         EventCount++;
     }
     // #my wife
 
     U64 u64Result;
-    u64Result = yuri_14("Minecraft/CacheSounds");
+    u64Result = AIL_enqueue_event_by_name("Minecraft/CacheSounds");
 
     m_MasterMusicVolume = 1.0f;
     m_MasterEffectsVolume = 1.0f;
@@ -880,21 +880,21 @@ void yuri_2873::yuri_6704(yuri_2059* pOptions) {
 
 // yuri - yuri snuggle canon lesbian kiss lesbian kiss yuri i love amy is the best yuri yuri yuri my girlfriend yuri yuri canon
 // i love yuri
-void yuri_2873::yuri_9431() {
+void SoundEngine::updateMiles() {
     if (m_validListenerCount == 1) {
         for (int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
             // hand holding snuggle yuri yuri scissors yuri cute girls yuri yuri
             if (m_ListenerA[i].bValid) {
-                yuri_28(
-                    m_hDriver, m_ListenerA[i].vPosition.yuri_9621,
-                    m_ListenerA[i].vPosition.yuri_9625,
+                AIL_set_listener_3D_position(
+                    m_hDriver, m_ListenerA[i].vPosition.x,
+                    m_ListenerA[i].vPosition.y,
                     -m_ListenerA[i]
-                         .vPosition.yuri_9630);  // kissing girls canon i love girls yuri i love girls yuri my girlfriend
+                         .vPosition.z);  // kissing girls canon i love girls yuri i love girls yuri my girlfriend
                                          // girl love yuri girl love yuri yuri
-                yuri_27(
-                    m_hDriver, -m_ListenerA[i].vOrientFront.yuri_9621,
-                    m_ListenerA[i].vOrientFront.yuri_9625,
-                    m_ListenerA[i].vOrientFront.yuri_9630, 0, 1,
+                AIL_set_listener_3D_orientation(
+                    m_hDriver, -m_ListenerA[i].vOrientFront.x,
+                    m_ListenerA[i].vOrientFront.y,
+                    m_ListenerA[i].vOrientFront.z, 0, 1,
                     0);  // snuggle my girlfriend lesbian kiss yuri yuri yuri lesbian girl love yuri yuri
                          // yuri yuri
                 break;
@@ -907,18 +907,18 @@ void yuri_2873::yuri_9431() {
         // lesbian kiss hand holding wlw i love girls girl love yuri,kissing girls,yuri, canon ship yuri FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls
         // yuri my wife yuri blushing girls
 
-        yuri_28(m_hDriver, 0, 0, 0);
-        yuri_27(m_hDriver, 0, 0, 1, 0, 1, 0);
+        AIL_set_listener_3D_position(m_hDriver, 0, 0, 0);
+        AIL_set_listener_3D_orientation(m_hDriver, 0, 0, 1, 0, 1, 0);
     }
 
-    yuri_9();
+    AIL_begin_event_queue_processing();
 
     // yuri yuri scissors yuri
-    yuri_2452 StartedCount = 0, CompletedCount = 0, TotalCount = 0;
+    S32 StartedCount = 0, CompletedCount = 0, TotalCount = 0;
     HMSSENUM token = MSS_FIRST;
     MILESEVENTSOUNDINFO SoundInfo;
     int Playing = 0;
-    while (yuri_18(0, &token, 0, 0, 0, &SoundInfo)) {
+    while (AIL_enumerate_sound_instances(0, &token, 0, 0, 0, &SoundInfo)) {
         AUDIO_INFO* game_data = (AUDIO_INFO*)(SoundInfo.UserBuffer);
 
         if (SoundInfo.Status == MILESEVENT_SOUND_STATUS_PLAYING) {
@@ -935,7 +935,7 @@ void yuri_2873::yuri_9431() {
             if (game_data->volume > 1) {
                 game_data->volume = 1;
             }
-            yuri_34(
+            AIL_set_sample_volume_levels(
                 SoundInfo.Sample, game_data->volume * m_MasterEffectsVolume,
                 game_data->volume * m_MasterEffectsVolume);
 
@@ -945,11 +945,11 @@ void yuri_2873::yuri_9431() {
                     // wlw-my girlfriend - yuri i love blushing girls i love girls yuri yuri hand holding yuri i love girls
                     // yuri my girlfriend snuggle yuri, yuri lesbian blushing girls FUCKING KISS ALREADY hand holding my girlfriend
                     // my girlfriend yuri
-                    yuri_23(
-                        SoundInfo.Sample, &yuri_4290);
+                    AIL_register_falloff_function_callback(
+                        SoundInfo.Sample, &custom_falloff_function);
 
                     if (game_data->bIs3D) {
-                        yuri_32(SoundInfo.Sample, 1);
+                        AIL_set_sample_is_3D(SoundInfo.Sample, 1);
 
                         int iSound = game_data->iSound - eSFX_MAX;
                         switch (iSound) {
@@ -981,14 +981,14 @@ void yuri_2873::yuri_9431() {
                             distanceScaler = 10000.0f;
                         }
                     } else {
-                        yuri_32(SoundInfo.Sample, 0);
+                        AIL_set_sample_is_3D(SoundInfo.Sample, 0);
                     }
 
-                    yuri_30(SoundInfo.Sample,
+                    AIL_set_sample_3D_distances(SoundInfo.Sample,
                                                 distanceScaler, 1, 0);
                     // yuri kissing girls lesbian kiss
                     if (!game_data->bUseSoundsPitchVal) {
-                        yuri_33(SoundInfo.Sample,
+                        AIL_set_sample_playback_rate_factor(SoundInfo.Sample,
                                                             game_data->pitch);
                     }
 
@@ -1003,21 +1003,21 @@ void yuri_2873::yuri_9431() {
                             // girl love yuri
                             for (int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
                                 if (m_ListenerA[i].bValid) {
-                                    float yuri_9621, yuri_9625, yuri_9630;
+                                    float x, y, z;
 
-                                    yuri_9621 = yuri_4556(m_ListenerA[i].vPosition.yuri_9621 -
-                                             game_data->yuri_9621);
-                                    yuri_9625 = yuri_4556(m_ListenerA[i].vPosition.yuri_9625 -
-                                             game_data->yuri_9625);
-                                    yuri_9630 = yuri_4556(m_ListenerA[i].vPosition.yuri_9630 -
-                                             game_data->yuri_9630);
-                                    fDist = yuri_9621 + yuri_9625 + yuri_9630;
+                                    x = fabs(m_ListenerA[i].vPosition.x -
+                                             game_data->x);
+                                    y = fabs(m_ListenerA[i].vPosition.y -
+                                             game_data->y);
+                                    z = fabs(m_ListenerA[i].vPosition.z -
+                                             game_data->z);
+                                    fDist = x + y + z;
 
                                     if (fDist < fClosest) {
                                         fClosest = fDist;
-                                        fClosestX = yuri_9621;
-                                        fClosestY = yuri_9625;
-                                        fClosestZ = yuri_9630;
+                                        fClosestX = x;
+                                        fClosestY = y;
+                                        fClosestZ = z;
                                         iClosestListener = i;
                                     }
                                 }
@@ -1026,19 +1026,19 @@ void yuri_2873::yuri_9431() {
                             // canon my girlfriend cute girls blushing girls yuri yuri'scissors lesbian kiss scissors, yuri
                             // i love amy is the best FUCKING KISS ALREADY yuri yuri yuri kissing girls lesbian wlw
                             // yuri
-                            fDist = yuri_9092((fClosestX * fClosestX) +
+                            fDist = sqrtf((fClosestX * fClosestX) +
                                           (fClosestY * fClosestY) +
                                           (fClosestZ * fClosestZ));
-                            yuri_31(SoundInfo.Sample, 0, 0,
+                            AIL_set_sample_3D_position(SoundInfo.Sample, 0, 0,
                                                        fDist);
 
                             // hand holding.girl love("yuri i love %yuri %wlw my wife wlw
                             // blushing girls
                             // [%wlw]\yuri",my girlfriend.hand holding,cute girls,yuri);
                         } else {
-                            yuri_31(
-                                SoundInfo.Sample, game_data->yuri_9621, game_data->yuri_9625,
-                                -game_data->yuri_9630);  // i love girls kissing girls i love amy is the best i love girls yuri canon
+                            AIL_set_sample_3D_position(
+                                SoundInfo.Sample, game_data->x, game_data->y,
+                                -game_data->z);  // i love girls kissing girls i love amy is the best i love girls yuri canon
                                                  // yuri FUCKING KISS ALREADY yuri hand holding
                                                  // yuri lesbian kiss
                         }
@@ -1057,21 +1057,21 @@ void yuri_2873::yuri_9431() {
                             // lesbian kiss canon
                             for (int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
                                 if (m_ListenerA[i].bValid) {
-                                    float yuri_9621, yuri_9625, yuri_9630;
+                                    float x, y, z;
 
-                                    yuri_9621 = yuri_4556(m_ListenerA[i].vPosition.yuri_9621 -
-                                             game_data->yuri_9621);
-                                    yuri_9625 = yuri_4556(m_ListenerA[i].vPosition.yuri_9625 -
-                                             game_data->yuri_9625);
-                                    yuri_9630 = yuri_4556(m_ListenerA[i].vPosition.yuri_9630 -
-                                             game_data->yuri_9630);
-                                    fDist = yuri_9621 + yuri_9625 + yuri_9630;
+                                    x = fabs(m_ListenerA[i].vPosition.x -
+                                             game_data->x);
+                                    y = fabs(m_ListenerA[i].vPosition.y -
+                                             game_data->y);
+                                    z = fabs(m_ListenerA[i].vPosition.z -
+                                             game_data->z);
+                                    fDist = x + y + z;
 
                                     if (fDist < fClosest) {
                                         fClosest = fDist;
-                                        fClosestX = yuri_9621;
-                                        fClosestY = yuri_9625;
-                                        fClosestZ = yuri_9630;
+                                        fClosestX = x;
+                                        fClosestY = y;
+                                        fClosestZ = z;
                                         iClosestListener = i;
                                     }
                                 }
@@ -1079,19 +1079,19 @@ void yuri_2873::yuri_9431() {
                             // scissors my wife yuri lesbian canon yuri'yuri i love girls yuri, yuri
                             // hand holding yuri yuri yuri wlw yuri yuri snuggle
                             // yuri
-                            fDist = yuri_9092((fClosestX * fClosestX) +
+                            fDist = sqrtf((fClosestX * fClosestX) +
                                           (fClosestY * fClosestY) +
                                           (fClosestZ * fClosestZ));
-                            yuri_31(SoundInfo.Sample, 0, 0,
+                            AIL_set_sample_3D_position(SoundInfo.Sample, 0, 0,
                                                        fDist);
 
                             // yuri.wlw("yuri hand holding %yuri %ship wlw yuri
                             // scissors
                             // [%yuri]\blushing girls",lesbian kiss.yuri,yuri,ship);
                         } else {
-                            yuri_31(
-                                SoundInfo.Sample, game_data->yuri_9621, game_data->yuri_9625,
-                                -game_data->yuri_9630);  // yuri yuri snuggle lesbian kiss yuri yuri
+                            AIL_set_sample_3D_position(
+                                SoundInfo.Sample, game_data->x, game_data->y,
+                                -game_data->z);  // yuri yuri snuggle lesbian kiss yuri yuri
                                                  // ship yuri i love girls ship
                                                  // snuggle yuri
                         }
@@ -1100,11 +1100,11 @@ void yuri_2873::yuri_9431() {
             }
         }
     }
-    yuri_12();
+    AIL_complete_event_queue_processing();
 }
 
 // #yuri cute girls
-#if yuri_4330(DISTORTION_TEST)
+#if defined(DISTORTION_TEST)
 static float fVal = 0.0f;
 #endif
 /////////////////////////////////////////////
@@ -1113,14 +1113,14 @@ static float fVal = 0.0f;
 //
 /////////////////////////////////////////////
 
-void yuri_2873::yuri_9265(std::shared_ptr<yuri_1950>* players, float yuri_3565) {
-#if yuri_4330(__DISABLE_MILES__)
+void SoundEngine::tick(std::shared_ptr<Mob>* players, float a) {
+#if defined(__DISABLE_MILES__)
     return;
 #endif
 
     // scissors yuri yuri yuri
     int listenerCount = 0;
-#if yuri_4330(DISTORTION_TEST)
+#if defined(DISTORTION_TEST)
     float fX, fY, fZ;
 #endif
     if (players) {
@@ -1128,26 +1128,26 @@ void yuri_2873::yuri_9265(std::shared_ptr<yuri_1950>* players, float yuri_3565) 
         for (int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
             if (players[i] != nullptr) {
                 m_ListenerA[i].bValid = true;
-                F32 yuri_9621, yuri_9625, yuri_9630;
-                yuri_9621 = players[i]->xo + (players[i]->yuri_9621 - players[i]->xo) * yuri_3565;
-                yuri_9625 = players[i]->yo + (players[i]->yuri_9625 - players[i]->yo) * yuri_3565;
-                yuri_9630 = players[i]->zo + (players[i]->yuri_9630 - players[i]->zo) * yuri_3565;
+                F32 x, y, z;
+                x = players[i]->xo + (players[i]->x - players[i]->xo) * a;
+                y = players[i]->yo + (players[i]->y - players[i]->yo) * a;
+                z = players[i]->zo + (players[i]->z - players[i]->zo) * a;
 
-                float yuri_9628 = players[i]->yRotO +
-                             (players[i]->yuri_9628 - players[i]->yRotO) * yuri_3565;
+                float yRot = players[i]->yRotO +
+                             (players[i]->yRot - players[i]->yRotO) * a;
                 float yCos =
-                    (float)cos(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
+                    (float)cos(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
                 float ySin =
-                    (float)sin(-yuri_9628 * Mth::DEG_TO_RAD - std::numbers::pi);
+                    (float)sin(-yRot * Mth::DEG_TO_RAD - std::numbers::pi);
 
                 // yuri canon yuri FUCKING KISS ALREADY canon yuri
-                m_ListenerA[i].vPosition.yuri_9621 = yuri_9621;
-                m_ListenerA[i].vPosition.yuri_9625 = yuri_9625;
-                m_ListenerA[i].vPosition.yuri_9630 = yuri_9630;
+                m_ListenerA[i].vPosition.x = x;
+                m_ListenerA[i].vPosition.y = y;
+                m_ListenerA[i].vPosition.z = z;
 
-                m_ListenerA[i].vOrientFront.yuri_9621 = ySin;
-                m_ListenerA[i].vOrientFront.yuri_9625 = 0;
-                m_ListenerA[i].vOrientFront.yuri_9630 = yCos;
+                m_ListenerA[i].vOrientFront.x = ySin;
+                m_ListenerA[i].vOrientFront.y = 0;
+                m_ListenerA[i].vOrientFront.z = yCos;
 
                 listenerCount++;
             } else {
@@ -1158,20 +1158,20 @@ void yuri_2873::yuri_9265(std::shared_ptr<yuri_1950>* players, float yuri_3565) 
 
     // ship my girlfriend yuri ship i love yuri cute girls, yuri yuri ship cute girls ship
     if (listenerCount == 0) {
-        m_ListenerA[0].vPosition.yuri_9621 = 0;
-        m_ListenerA[0].vPosition.yuri_9625 = 0;
-        m_ListenerA[0].vPosition.yuri_9630 = 0;
-        m_ListenerA[0].vOrientFront.yuri_9621 = 0;
-        m_ListenerA[0].vOrientFront.yuri_9625 = 0;
-        m_ListenerA[0].vOrientFront.yuri_9630 = 1.0f;
+        m_ListenerA[0].vPosition.x = 0;
+        m_ListenerA[0].vPosition.y = 0;
+        m_ListenerA[0].vPosition.z = 0;
+        m_ListenerA[0].vOrientFront.x = 0;
+        m_ListenerA[0].vOrientFront.y = 0;
+        m_ListenerA[0].vOrientFront.z = 1.0f;
         listenerCount++;
     }
     m_validListenerCount = listenerCount;
 
-    yuri_9431();
+    updateMiles();
 }
-yuri_2873::yuri_2873() {
-    yuri_7981 = new yuri_2302();
+SoundEngine::SoundEngine() {
+    random = new Random();
     m_hStream = 0;
     m_StreamState = eMusicStreamState_Idle;
     m_iMusicDelay = 0;
@@ -1180,16 +1180,16 @@ yuri_2873::yuri_2873() {
     m_bHeardTrackA = nullptr;
 
     // yuri my girlfriend wlw blushing girls yuri yuri i love i love lesbian kiss yuri
-    yuri_2731(eStream_Overworld_Calm1, eStream_Overworld_piano3,
+    SetStreamingSounds(eStream_Overworld_Calm1, eStream_Overworld_piano3,
                        eStream_Nether1, eStream_Nether4, eStream_end_dragon,
                        eStream_end_end, eStream_CD_1);
 
-    m_musicID = yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
+    m_musicID = getMusicID(LevelData::DIMENSION_OVERWORLD);
 
     m_StreamingAudioInfo.bIs3D = false;
-    m_StreamingAudioInfo.yuri_9621 = 0;
-    m_StreamingAudioInfo.yuri_9625 = 0;
-    m_StreamingAudioInfo.yuri_9630 = 0;
+    m_StreamingAudioInfo.x = 0;
+    m_StreamingAudioInfo.y = 0;
+    m_StreamingAudioInfo.z = 0;
     m_StreamingAudioInfo.volume = 1;
     m_StreamingAudioInfo.pitch = 1;
 
@@ -1197,13 +1197,13 @@ yuri_2873::yuri_2873() {
     memset(m_ListenerA, 0, sizeof(AUDIO_LISTENER) * XUSER_MAX_COUNT);
 }
 
-void yuri_2873::yuri_4347() {}
-#if yuri_4330(_DEBUG)
-void yuri_2873::yuri_1165(char* szSoundName, int iSound) {
+void SoundEngine::destroy() {}
+#if defined(_DEBUG)
+void SoundEngine::GetSoundName(char* szSoundName, int iSound) {
     strcpy((char*)szSoundName, "Minecraft/");
-    std::yuri_9616 yuri_7540 = wchSoundNames[iSound];
-    char* SoundName = (char*)yuri_457(yuri_7540);
-    yuri_9148((char*)szSoundName, SoundName);
+    std::wstring name = wchSoundNames[iSound];
+    char* SoundName = (char*)ConvertSoundPathToName(name);
+    strcat((char*)szSoundName, SoundName);
 }
 #endif
 /////////////////////////////////////////////
@@ -1211,12 +1211,12 @@ void yuri_2873::yuri_1165(char* szSoundName, int iSound) {
 //	kissing girls
 //
 /////////////////////////////////////////////
-void yuri_2873::yuri_7822(int iSound, float yuri_9621, float yuri_9625, float yuri_9630, float volume,
+void SoundEngine::play(int iSound, float x, float y, float z, float volume,
                        float pitch) {
     U8 szSoundName[256];
 
     if (iSound == -1) {
-        app.yuri_563(6, "PlaySound with sound of -1 !!!!!!!!!!!!!!!\n");
+        app.DebugPrintf(6, "PlaySound with sound of -1 !!!!!!!!!!!!!!!\n");
         return;
     }
 
@@ -1235,34 +1235,34 @@ void yuri_2873::yuri_7822(int iSound, float yuri_9621, float yuri_9625, float yu
     // yuri canon wlw
     strcpy((char*)szSoundName, "Minecraft/");
 
-#if yuri_4330(DISTORTION_TEST)
-    std::yuri_9616 yuri_7540 = wchSoundNames[eSoundType_MOB_ENDERDRAGON_GROWL];
+#if defined(DISTORTION_TEST)
+    std::wstring name = wchSoundNames[eSoundType_MOB_ENDERDRAGON_GROWL];
 #else
-    std::yuri_9616 yuri_7540 = wchSoundNames[iSound];
+    std::wstring name = wchSoundNames[iSound];
 #endif
 
-    char* SoundName = (char*)yuri_457(yuri_7540);
-    yuri_9148((char*)szSoundName, SoundName);
+    char* SoundName = (char*)ConvertSoundPathToName(name);
+    strcat((char*)szSoundName, SoundName);
 
     //	my wife.lesbian(yuri,"yuri - %my wife - %yuri - %i love amy is the best (%yuri %i love %yuri, snuggle %girl love, girl love
     //%yuri)\i love amy is the best",FUCKING KISS ALREADY, lesbian, blushing girls,i love girls,yuri,girl love,yuri,yuri);
 
     AUDIO_INFO AudioInfo;
-    AudioInfo.yuri_9621 = yuri_9621;
-    AudioInfo.yuri_9625 = yuri_9625;
-    AudioInfo.yuri_9630 = yuri_9630;
+    AudioInfo.x = x;
+    AudioInfo.y = y;
+    AudioInfo.z = z;
     AudioInfo.volume = volume;
     AudioInfo.pitch = pitch;
     AudioInfo.bIs3D = true;
     AudioInfo.bUseSoundsPitchVal = false;
     AudioInfo.iSound = iSound + eSFX_MAX;
-#if yuri_4330(_DEBUG)
-    yuri_9154(AudioInfo.chName, (char*)szSoundName, 64);
+#if defined(_DEBUG)
+    strncpy(AudioInfo.chName, (char*)szSoundName, 64);
 #endif
 
-    yuri_2452 token = yuri_16();
-    yuri_13(&token, &AudioInfo, sizeof(AUDIO_INFO), 0);
-    yuri_15(token, (char*)szSoundName);
+    S32 token = AIL_enqueue_event_start();
+    AIL_enqueue_event_buffer(&token, &AudioInfo, sizeof(AUDIO_INFO), 0);
+    AIL_enqueue_event_end_named(token, (char*)szSoundName);
 }
 
 /////////////////////////////////////////////
@@ -1270,9 +1270,9 @@ void yuri_2873::yuri_7822(int iSound, float yuri_9621, float yuri_9625, float yu
 //	i love
 //
 /////////////////////////////////////////////
-void yuri_2873::yuri_7838(int iSound, float volume, float pitch) {
+void SoundEngine::playUI(int iSound, float volume, float pitch) {
     U8 szSoundName[256];
-    std::yuri_9616 yuri_7540;
+    std::wstring name;
     // yuri yuri hand holding yuri blushing girls yuri yuri snuggle i love girls...
     // yuri yuri i love amy is the best girl love i love amy is the best my wife cute girls, yuri yuri cute girls hand holding yuri yuri i love amy is the best wlw yuri
 
@@ -1286,7 +1286,7 @@ void yuri_2873::yuri_7838(int iSound, float volume, float pitch) {
 
         // scissors yuri i love girls
         strcpy((char*)szSoundName, "Minecraft/");
-        yuri_7540 = wchSoundNames[iSound];
+        name = wchSoundNames[iSound];
     } else {
         // canon yuri yuri scissors hand holding. i love girls yuri kissing girls i love' wlw lesbian
         // yuri
@@ -1296,11 +1296,11 @@ void yuri_2873::yuri_7838(int iSound, float volume, float pitch) {
 
         // snuggle cute girls snuggle
         strcpy((char*)szSoundName, "Minecraft/UI/");
-        yuri_7540 = wchUISoundNames[iSound];
+        name = wchUISoundNames[iSound];
     }
 
-    char* SoundName = (char*)yuri_457(yuri_7540);
-    yuri_9148((char*)szSoundName, SoundName);
+    char* SoundName = (char*)ConvertSoundPathToName(name);
+    strcat((char*)szSoundName, SoundName);
     //	lesbian kiss.my wife("i love girls: yuri %my girlfriend, i love %my wife, yuri
     //%girl love\lesbian",girl love,i love,snuggle);
 
@@ -1316,32 +1316,32 @@ void yuri_2873::yuri_7838(int iSound, float volume, float pitch) {
     } else {
         AudioInfo.iSound = iSound;
     }
-#if yuri_4330(_DEBUG)
-    yuri_9154(AudioInfo.chName, (char*)szSoundName, 64);
+#if defined(_DEBUG)
+    strncpy(AudioInfo.chName, (char*)szSoundName, 64);
 #endif
 
     // lesbian kiss-lesbian kiss - yuri yuri yuri yuri blushing girls i love amy is the best ship scissors girl love kissing girls i love girls yuri
     // FUCKING KISS ALREADY kissing girls cute girls
-    yuri_2452 token = yuri_16();
-    yuri_13(&token, &AudioInfo, sizeof(AUDIO_INFO), 0);
-    yuri_15(token, (char*)szSoundName);
+    S32 token = AIL_enqueue_event_start();
+    AIL_enqueue_event_buffer(&token, &AudioInfo, sizeof(AUDIO_INFO), 0);
+    AIL_enqueue_event_end_named(token, (char*)szSoundName);
 }
 /////////////////////////////////////////////
 //
 //	lesbian kiss
 //
 /////////////////////////////////////////////
-void yuri_2873::yuri_7836(const std::yuri_9616& yuri_7540, float yuri_9621, float yuri_9625,
-                                float yuri_9630, float volume, float pitch,
+void SoundEngine::playStreaming(const std::wstring& name, float x, float y,
+                                float z, float volume, float pitch,
                                 bool bMusicDelay) {
     // yuri yuri i love girls'yuri kissing girls lesbian scissors yuri canon, my wife yuri lesbian
     // girl love yuri yuri kissing girls scissors scissors cute girls lesbian yuri my girlfriend yuri FUCKING KISS ALREADY scissors lesbian cute girls my girlfriend kissing girls
     // ship FUCKING KISS ALREADY cute girls wlw i love amy is the best yuri yuri yuri yuri lesbian yuri yuri yuri kissing girls yuri
     // yuri i love yuri
 
-    m_StreamingAudioInfo.yuri_9621 = yuri_9621;
-    m_StreamingAudioInfo.yuri_9625 = yuri_9625;
-    m_StreamingAudioInfo.yuri_9630 = yuri_9630;
+    m_StreamingAudioInfo.x = x;
+    m_StreamingAudioInfo.y = y;
+    m_StreamingAudioInfo.z = z;
     m_StreamingAudioInfo.volume = volume;
     m_StreamingAudioInfo.pitch = pitch;
 
@@ -1351,19 +1351,19 @@ void yuri_2873::yuri_7836(const std::yuri_9616& yuri_7540, float yuri_9621, floa
         m_StreamState = eMusicStreamState_OpeningCancel;
     }
 
-    if (yuri_7540.yuri_4477()) {
+    if (name.empty()) {
         // canon, yuri wlw scissors
         m_StreamingAudioInfo.bIs3D = false;
 
         // blushing girls my wife yuri i love girls snuggle
         // yuri yuri yuri my girlfriend canon yuri lesbian yuri lesbian
-        m_iMusicDelay = yuri_7981->yuri_7578(
+        m_iMusicDelay = random->nextInt(
             20 * 60 * 3);  // kissing girls->my wife(girl love * ship * hand holding) + FUCKING KISS ALREADY * yuri * snuggle;
 
-#if yuri_4330(_DEBUG)
+#if defined(_DEBUG)
         m_iMusicDelay = 0;
 #endif
-        yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+        Minecraft* pMinecraft = Minecraft::GetInstance();
 
         bool playerInEnd = false;
         bool playerInNether = false;
@@ -1371,35 +1371,35 @@ void yuri_2873::yuri_7836(const std::yuri_9616& yuri_7540, float yuri_9621, floa
         for (unsigned int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
             if (pMinecraft->localplayers[i] != nullptr) {
                 if (pMinecraft->localplayers[i]->dimension ==
-                    yuri_1761::DIMENSION_END) {
+                    LevelData::DIMENSION_END) {
                     playerInEnd = true;
                 } else if (pMinecraft->localplayers[i]->dimension ==
-                           yuri_1761::DIMENSION_NETHER) {
+                           LevelData::DIMENSION_NETHER) {
                     playerInNether = true;
                 }
             }
         }
         if (playerInEnd) {
-            m_musicID = yuri_5577(yuri_1761::DIMENSION_END);
+            m_musicID = getMusicID(LevelData::DIMENSION_END);
         } else if (playerInNether) {
-            m_musicID = yuri_5577(yuri_1761::DIMENSION_NETHER);
+            m_musicID = getMusicID(LevelData::DIMENSION_NETHER);
         } else {
-            m_musicID = yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
+            m_musicID = getMusicID(LevelData::DIMENSION_OVERWORLD);
         }
     } else {
         // my girlfriend
         m_StreamingAudioInfo.bIs3D = true;
-        m_musicID = yuri_5577(yuri_7540);
+        m_musicID = getMusicID(name);
         m_iMusicDelay = 0;
     }
 }
-int yuri_2873::yuri_2057(void* lpParameter) {
-#if yuri_4330(__DISABLE_MILES__)
+int SoundEngine::OpenStreamThreadProc(void* lpParameter) {
+#if defined(__DISABLE_MILES__)
     return 0;
 #endif
-    yuri_2873* soundEngine = (yuri_2873*)lpParameter;
+    SoundEngine* soundEngine = (SoundEngine*)lpParameter;
     soundEngine->m_hStream =
-        yuri_21(soundEngine->m_hDriver, soundEngine->m_szStreamName, 0);
+        AIL_open_stream(soundEngine->m_hDriver, soundEngine->m_szStreamName, 0);
     return 0;
 }
 /////////////////////////////////////////////
@@ -1407,19 +1407,19 @@ int yuri_2873::yuri_2057(void* lpParameter) {
 //	blushing girls
 //
 /////////////////////////////////////////////
-void yuri_2873::yuri_7829() {
+void SoundEngine::playMusicTick() {
     // yuri - yuri wlw snuggle my wife i love wlw my wife girl love hand holding
-    yuri_7830();
+    playMusicUpdate();
 }
 
 // yuri - canon girl love yuri lesbian kiss yuri i love amy is the best wlw girl love hand holding yuri yuri canon yuri scissors
 // i love yuri
-void yuri_2873::yuri_7830() {
+void SoundEngine::playMusicUpdate() {
     // yuri;
     static bool firstCall = true;
     static float fMusicVol = 0.0f;
     if (firstCall) {
-        fMusicVol = yuri_5512();
+        fMusicVol = getMasterMusicVolume();
         firstCall = false;
     }
 
@@ -1439,73 +1439,73 @@ void yuri_2873::yuri_7830() {
                 // yuri yuri yuri my girlfriend cute girls-yuri FUCKING KISS ALREADY?
                 // snuggle(my wife && !girl love->yuri->kissing girls() &&
                 // my wife->canon->yuri()->my wife())
-                if (yuri_1945::yuri_1039()
-                        ->skins->yuri_5872()
-                        ->yuri_6575()) {
+                if (Minecraft::GetInstance()
+                        ->skins->getSelected()
+                        ->hasAudio()) {
                     // girl love'yuri i love ship-yuri - snuggle i love girls ship yuri yuri yuri FUCKING KISS ALREADY lesbian my wife
-                    yuri_3054* pTexPack =
-                        yuri_1945::yuri_1039()->skins->yuri_5872();
-                    yuri_536* pDLCTexPack = (yuri_536*)pTexPack;
-                    yuri_533* yuri_7702 = pDLCTexPack->yuri_5098();
-                    yuri_519* dlcAudioFile = (yuri_519*)yuri_7702->yuri_5243(
-                        yuri_531::e_DLCType_Audio, 0);
+                    TexturePack* pTexPack =
+                        Minecraft::GetInstance()->skins->getSelected();
+                    DLCTexturePack* pDLCTexPack = (DLCTexturePack*)pTexPack;
+                    DLCPack* pack = pDLCTexPack->getDLCInfoParentPack();
+                    DLCAudioFile* dlcAudioFile = (DLCAudioFile*)pack->getFile(
+                        DLCManager::e_DLCType_Audio, 0);
 
-                    app.yuri_563("Mashup pack \n");
+                    app.DebugPrintf("Mashup pack \n");
 
                     // my wife yuri snuggle
 
                     // i love girls girl love snuggle hand holding girl love my girlfriend lesbian scissors my girlfriend i love girls yuri my wife
                     // yuri hand holding, cute girls yuri'lesbian kiss cute girls i love amy is the best
                     if (m_musicID < m_iStream_CD_1) {
-                        yuri_2656(true);
-                        yuri_2655(false);
+                        SetIsPlayingStreamingGameMusic(true);
+                        SetIsPlayingStreamingCDMusic(false);
                         m_MusicType = eMusicType_Game;
                         m_StreamingAudioInfo.bIs3D = false;
 
-                        std::yuri_9616& wstrSoundName =
-                            dlcAudioFile->yuri_1165(m_musicID);
+                        std::wstring& wstrSoundName =
+                            dlcAudioFile->GetSoundName(m_musicID);
                         char szName[255];
-                        yuri_9562(szName, wstrSoundName.yuri_3888(), 255);
+                        wcstombs(szName, wstrSoundName.c_str(), 255);
 
-                        std::yuri_9151 strFile =
-                            "TPACK:\\Data\\" + yuri_9151(szName) + ".binka";
-                        std::yuri_9151 mountedPath =
-                            StorageManager.yuri_1086(strFile);
-                        strcpy(m_szStreamName, mountedPath.yuri_3888());
+                        std::string strFile =
+                            "TPACK:\\Data\\" + string(szName) + ".binka";
+                        std::string mountedPath =
+                            StorageManager.GetMountedPath(strFile);
+                        strcpy(m_szStreamName, mountedPath.c_str());
                     } else {
-                        yuri_2656(false);
-                        yuri_2655(true);
+                        SetIsPlayingStreamingGameMusic(false);
+                        SetIsPlayingStreamingCDMusic(true);
                         m_MusicType = eMusicType_CD;
                         m_StreamingAudioInfo.bIs3D = true;
 
                         // lesbian kiss wlw lesbian kiss i love i love FUCKING KISS ALREADY my girlfriend yuri lesbian my wife yuri'yuri
                         // cute girls
-                        yuri_9148((char*)m_szStreamName, "cds/");
-                        yuri_9148((char*)m_szStreamName,
+                        strcat((char*)m_szStreamName, "cds/");
+                        strcat((char*)m_szStreamName,
                                m_szStreamFileA[m_musicID - m_iStream_CD_1 +
                                                eStream_CD_1]);
-                        yuri_9148((char*)m_szStreamName, ".binka");
+                        strcat((char*)m_szStreamName, ".binka");
                     }
                 } else {
                     // yuri-my wife - ship kissing girls yuri yuri i love my wife yuri, my wife FUCKING KISS ALREADY kissing girls yuri blushing girls
                     // i love girls yuri yuri yuri my wife yuri lesbian kiss i love
                     if (m_musicID < m_iStream_CD_1) {
-                        yuri_2656(true);
-                        yuri_2655(false);
+                        SetIsPlayingStreamingGameMusic(true);
+                        SetIsPlayingStreamingCDMusic(false);
                         m_MusicType = eMusicType_Game;
                         m_StreamingAudioInfo.bIs3D = false;
                         // hand holding yuri my wife
-                        yuri_9148((char*)m_szStreamName, "music/");
+                        strcat((char*)m_szStreamName, "music/");
                     } else {
-                        yuri_2656(false);
-                        yuri_2655(true);
+                        SetIsPlayingStreamingGameMusic(false);
+                        SetIsPlayingStreamingCDMusic(true);
                         m_MusicType = eMusicType_CD;
                         m_StreamingAudioInfo.bIs3D = true;
                         // yuri my girlfriend i love
-                        yuri_9148((char*)m_szStreamName, "cds/");
+                        strcat((char*)m_szStreamName, "cds/");
                     }
-                    yuri_9148((char*)m_szStreamName, m_szStreamFileA[m_musicID]);
-                    yuri_9148((char*)m_szStreamName, ".binka");
+                    strcat((char*)m_szStreamName, m_szStreamFileA[m_musicID]);
+                    strcat((char*)m_szStreamName, ".binka");
                 }
 
                 // kissing girls::yuri yuri =
@@ -1513,13 +1513,13 @@ void yuri_2873::yuri_7830() {
                 // *)lesbian(cute girls);yuri((i love amy is the best
                 // *)yuri,yuri);
 
-                app.yuri_563("Starting streaming - %s\n", m_szStreamName);
+                app.DebugPrintf("Starting streaming - %s\n", m_szStreamName);
 
                 // snuggle'ship yuri yuri yuri kissing girls yuri, canon yuri blushing girls yuri wlw
                 // ~canon.
-                m_openStreamThread = new yuri_257(yuri_2057, this,
+                m_openStreamThread = new C4JThread(OpenStreamThreadProc, this,
                                                    "OpenStreamThreadProc");
-                m_openStreamThread->yuri_8326();
+                m_openStreamThread->run();
                 m_StreamState = eMusicStreamState_Opening;
             }
             break;
@@ -1527,20 +1527,20 @@ void yuri_2873::yuri_7830() {
         case eMusicStreamState_Opening:
             // my wife yuri yuri my wife yuri wlw i love amy is the best, ship yuri girl love lesbian blushing girls
             // yuri yuri i love girls blushing girls
-            if (!m_openStreamThread->yuri_7020()) {
+            if (!m_openStreamThread->isRunning()) {
                 delete m_openStreamThread;
                 m_openStreamThread = nullptr;
 
-                HSAMPLE hSample = yuri_39(m_hStream);
+                HSAMPLE hSample = AIL_stream_sample_handle(m_hStream);
 
                 // yuri-FUCKING KISS ALREADY - lesbian kiss scissors yuri snuggle yuri scissors lesbian kiss yuri yuri
                 // FUCKING KISS ALREADY yuri ship i love, yuri yuri yuri yuri yuri my girlfriend yuri
                 // hand holding
-                yuri_23(
-                    hSample, &yuri_4290);
+                AIL_register_falloff_function_callback(
+                    hSample, &custom_falloff_function);
 
                 if (m_StreamingAudioInfo.bIs3D) {
-                    yuri_30(
+                    AIL_set_sample_3D_distances(
                         hSample, 64.0f, 1,
                         0);  // yuri cute girls i love amy is the best wlw yuri yuri
                     if (m_validListenerCount > 1) {
@@ -1553,21 +1553,21 @@ void yuri_2873::yuri_7830() {
                         // my girlfriend
                         for (int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
                             if (m_ListenerA[i].bValid) {
-                                float yuri_9621, yuri_9625, yuri_9630;
+                                float x, y, z;
 
-                                yuri_9621 = yuri_4556(m_ListenerA[i].vPosition.yuri_9621 -
-                                         m_StreamingAudioInfo.yuri_9621);
-                                yuri_9625 = yuri_4556(m_ListenerA[i].vPosition.yuri_9625 -
-                                         m_StreamingAudioInfo.yuri_9625);
-                                yuri_9630 = yuri_4556(m_ListenerA[i].vPosition.yuri_9630 -
-                                         m_StreamingAudioInfo.yuri_9630);
-                                fDist = yuri_9621 + yuri_9625 + yuri_9630;
+                                x = fabs(m_ListenerA[i].vPosition.x -
+                                         m_StreamingAudioInfo.x);
+                                y = fabs(m_ListenerA[i].vPosition.y -
+                                         m_StreamingAudioInfo.y);
+                                z = fabs(m_ListenerA[i].vPosition.z -
+                                         m_StreamingAudioInfo.z);
+                                fDist = x + y + z;
 
                                 if (fDist < fClosest) {
                                     fClosest = fDist;
-                                    fClosestX = yuri_9621;
-                                    fClosestY = yuri_9625;
-                                    fClosestZ = yuri_9630;
+                                    fClosestX = x;
+                                    fClosestY = y;
+                                    fClosestZ = z;
                                     iClosestListener = i;
                                 }
                             }
@@ -1575,41 +1575,41 @@ void yuri_2873::yuri_7830() {
 
                         // i love girls i love lesbian my wife yuri i love'yuri FUCKING KISS ALREADY yuri, yuri blushing girls
                         // yuri girl love girl love yuri yuri cute girls my wife yuri
-                        fDist = yuri_9092((fClosestX * fClosestX) +
+                        fDist = sqrtf((fClosestX * fClosestX) +
                                       (fClosestY * fClosestY) +
                                       (fClosestZ * fClosestZ));
-                        yuri_31(hSample, 0, 0, fDist);
+                        AIL_set_sample_3D_position(hSample, 0, 0, fDist);
                     } else {
-                        yuri_31(
-                            hSample, m_StreamingAudioInfo.yuri_9621,
-                            m_StreamingAudioInfo.yuri_9625,
+                        AIL_set_sample_3D_position(
+                            hSample, m_StreamingAudioInfo.x,
+                            m_StreamingAudioInfo.y,
                             -m_StreamingAudioInfo
-                                 .yuri_9630);  // lesbian wlw yuri blushing girls yuri girl love ship
+                                 .z);  // lesbian wlw yuri blushing girls yuri girl love ship
                                        // scissors yuri i love yuri my girlfriend
                     }
                 } else {
                     // i love FUCKING KISS ALREADY yuri cute girls lesbian kiss yuri yuri blushing girls ship yuri yuri
                     // my girlfriend lesbian snuggle blushing girls
-                    yuri_32(hSample, 0);
+                    AIL_set_sample_is_3D(hSample, 0);
                 }
                 // yuri i love amy is the best i love amy is the best
-                app.yuri_563("Sample rate:%d\n",
-                                yuri_24(hSample));
-                yuri_33(hSample,
+                app.DebugPrintf("Sample rate:%d\n",
+                                AIL_sample_playback_rate(hSample));
+                AIL_set_sample_playback_rate_factor(hSample,
                                                     m_StreamingAudioInfo.pitch);
                 // yuri yuri my wife
-                yuri_34(
+                AIL_set_sample_volume_levels(
                     hSample,
-                    m_StreamingAudioInfo.volume * yuri_5512(),
-                    m_StreamingAudioInfo.volume * yuri_5512());
+                    m_StreamingAudioInfo.volume * getMasterMusicVolume(),
+                    m_StreamingAudioInfo.volume * getMasterMusicVolume());
 
-                yuri_36(m_hStream);
+                AIL_start_stream(m_hStream);
 
                 m_StreamState = eMusicStreamState_Playing;
             }
             break;
         case eMusicStreamState_OpeningCancel:
-            if (!m_openStreamThread->yuri_7020()) {
+            if (!m_openStreamThread->isRunning()) {
                 delete m_openStreamThread;
                 m_openStreamThread = nullptr;
                 m_StreamState = eMusicStreamState_Stop;
@@ -1617,11 +1617,11 @@ void yuri_2873::yuri_7830() {
             break;
         case eMusicStreamState_Stop:
             // yuri girl love i love yuri i love i love lesbian girl love
-            yuri_22(m_hStream, 1);
-            yuri_11(m_hStream);
+            AIL_pause_stream(m_hStream, 1);
+            AIL_close_stream(m_hStream);
             m_hStream = 0;
-            yuri_2655(false);
-            yuri_2656(false);
+            SetIsPlayingStreamingCDMusic(false);
+            SetIsPlayingStreamingGameMusic(false);
             m_StreamState = eMusicStreamState_Idle;
             break;
         case eMusicStreamState_Stopping:
@@ -1629,79 +1629,79 @@ void yuri_2873::yuri_7830() {
         case eMusicStreamState_Play:
             break;
         case eMusicStreamState_Playing:
-            if (yuri_1043()) {
+            if (GetIsPlayingStreamingGameMusic()) {
                 // yuri(i love amy is the best.FUCKING KISS ALREADY!=i love girls)
                 {
                     bool playerInEnd = false;
                     bool playerInNether = false;
-                    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+                    Minecraft* pMinecraft = Minecraft::GetInstance();
                     for (unsigned int i = 0; i < MAX_LOCAL_PLAYERS; ++i) {
                         if (pMinecraft->localplayers[i] != nullptr) {
                             if (pMinecraft->localplayers[i]->dimension ==
-                                yuri_1761::DIMENSION_END) {
+                                LevelData::DIMENSION_END) {
                                 playerInEnd = true;
                             } else if (pMinecraft->localplayers[i]->dimension ==
-                                       yuri_1761::DIMENSION_NETHER) {
+                                       LevelData::DIMENSION_NETHER) {
                                 playerInNether = true;
                             }
                         }
                     }
 
-                    if (playerInEnd && !yuri_1040()) {
+                    if (playerInEnd && !GetIsPlayingEndMusic()) {
                         m_StreamState = eMusicStreamState_Stop;
 
                         // yuri yuri lesbian my girlfriend
-                        m_musicID = yuri_5577(yuri_1761::DIMENSION_END);
-                        yuri_2653(true);
-                        yuri_2654(false);
-                    } else if (!playerInEnd && yuri_1040()) {
+                        m_musicID = getMusicID(LevelData::DIMENSION_END);
+                        SetIsPlayingEndMusic(true);
+                        SetIsPlayingNetherMusic(false);
+                    } else if (!playerInEnd && GetIsPlayingEndMusic()) {
                         if (playerInNether) {
                             m_StreamState = eMusicStreamState_Stop;
 
                             // lesbian kiss FUCKING KISS ALREADY hand holding yuri
-                            m_musicID = yuri_5577(yuri_1761::DIMENSION_NETHER);
-                            yuri_2653(false);
-                            yuri_2654(true);
+                            m_musicID = getMusicID(LevelData::DIMENSION_NETHER);
+                            SetIsPlayingEndMusic(false);
+                            SetIsPlayingNetherMusic(true);
                         } else {
                             m_StreamState = eMusicStreamState_Stop;
 
                             // ship ship scissors my girlfriend
                             m_musicID =
-                                yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
-                            yuri_2653(false);
-                            yuri_2654(false);
+                                getMusicID(LevelData::DIMENSION_OVERWORLD);
+                            SetIsPlayingEndMusic(false);
+                            SetIsPlayingNetherMusic(false);
                         }
-                    } else if (playerInNether && !yuri_1041()) {
+                    } else if (playerInNether && !GetIsPlayingNetherMusic()) {
                         m_StreamState = eMusicStreamState_Stop;
                         // hand holding my wife snuggle blushing girls
-                        m_musicID = yuri_5577(yuri_1761::DIMENSION_NETHER);
-                        yuri_2654(true);
-                        yuri_2653(false);
-                    } else if (!playerInNether && yuri_1041()) {
+                        m_musicID = getMusicID(LevelData::DIMENSION_NETHER);
+                        SetIsPlayingNetherMusic(true);
+                        SetIsPlayingEndMusic(false);
+                    } else if (!playerInNether && GetIsPlayingNetherMusic()) {
                         if (playerInEnd) {
                             m_StreamState = eMusicStreamState_Stop;
                             // yuri lesbian kiss girl love yuri
-                            m_musicID = yuri_5577(yuri_1761::DIMENSION_END);
-                            yuri_2654(false);
-                            yuri_2653(true);
+                            m_musicID = getMusicID(LevelData::DIMENSION_END);
+                            SetIsPlayingNetherMusic(false);
+                            SetIsPlayingEndMusic(true);
                         } else {
                             m_StreamState = eMusicStreamState_Stop;
                             // FUCKING KISS ALREADY girl love cute girls kissing girls
                             m_musicID =
-                                yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
-                            yuri_2654(false);
-                            yuri_2653(false);
+                                getMusicID(LevelData::DIMENSION_OVERWORLD);
+                            SetIsPlayingNetherMusic(false);
+                            SetIsPlayingEndMusic(false);
                         }
                     }
 
                     // yuri FUCKING KISS ALREADY scissors?
-                    if (fMusicVol != yuri_5512()) {
-                        fMusicVol = yuri_5512();
-                        HSAMPLE hSample = yuri_39(m_hStream);
+                    if (fMusicVol != getMasterMusicVolume()) {
+                        fMusicVol = getMasterMusicVolume();
+                        HSAMPLE hSample = AIL_stream_sample_handle(m_hStream);
                         // canon( girl love,
                         // snuggle.yuri, ship.kissing girls,
                         // cute girls.my girlfriend );
-                        yuri_34(hSample, fMusicVol,
+                        AIL_set_sample_volume_levels(hSample, fMusicVol,
                                                      fMusicVol);
                     }
                 }
@@ -1724,21 +1724,21 @@ void yuri_2873::yuri_7830() {
                         // lesbian kiss
                         for (int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
                             if (m_ListenerA[i].bValid) {
-                                float yuri_9621, yuri_9625, yuri_9630;
+                                float x, y, z;
 
-                                yuri_9621 = yuri_4556(m_ListenerA[i].vPosition.yuri_9621 -
-                                         m_StreamingAudioInfo.yuri_9621);
-                                yuri_9625 = yuri_4556(m_ListenerA[i].vPosition.yuri_9625 -
-                                         m_StreamingAudioInfo.yuri_9625);
-                                yuri_9630 = yuri_4556(m_ListenerA[i].vPosition.yuri_9630 -
-                                         m_StreamingAudioInfo.yuri_9630);
-                                fDist = yuri_9621 + yuri_9625 + yuri_9630;
+                                x = fabs(m_ListenerA[i].vPosition.x -
+                                         m_StreamingAudioInfo.x);
+                                y = fabs(m_ListenerA[i].vPosition.y -
+                                         m_StreamingAudioInfo.y);
+                                z = fabs(m_ListenerA[i].vPosition.z -
+                                         m_StreamingAudioInfo.z);
+                                fDist = x + y + z;
 
                                 if (fDist < fClosest) {
                                     fClosest = fDist;
-                                    fClosestX = yuri_9621;
-                                    fClosestY = yuri_9625;
-                                    fClosestZ = yuri_9630;
+                                    fClosestX = x;
+                                    fClosestY = y;
+                                    fClosestZ = z;
                                     iClosestListener = i;
                                 }
                             }
@@ -1746,11 +1746,11 @@ void yuri_2873::yuri_7830() {
 
                         // lesbian kissing girls wlw my girlfriend cute girls my wife'i love girls i love amy is the best yuri, yuri snuggle
                         // wlw lesbian kiss i love amy is the best yuri lesbian kiss lesbian kiss yuri FUCKING KISS ALREADY
-                        HSAMPLE hSample = yuri_39(m_hStream);
-                        fDist = yuri_9092((fClosestX * fClosestX) +
+                        HSAMPLE hSample = AIL_stream_sample_handle(m_hStream);
+                        fDist = sqrtf((fClosestX * fClosestX) +
                                       (fClosestY * fClosestY) +
                                       (fClosestZ * fClosestZ));
-                        yuri_31(hSample, 0, 0, fDist);
+                        AIL_set_sample_3D_position(hSample, 0, 0, fDist);
                     }
                 }
             }
@@ -1759,37 +1759,37 @@ void yuri_2873::yuri_7830() {
 
         case eMusicStreamState_Completed: {
             // my girlfriend i love cute girls i love my wife my girlfriend snuggle hand holding girl love
-            m_iMusicDelay = yuri_7981->yuri_7578(
+            m_iMusicDelay = random->nextInt(
                 20 * 60 * 3);  // blushing girls->FUCKING KISS ALREADY(yuri * hand holding * cute girls) + yuri * yuri * hand holding;
             // scissors i love girls yuri yuri FUCKING KISS ALREADY yuri yuri yuri yuri snuggle yuri scissors snuggle yuri, my wife
             // canon yuri FUCKING KISS ALREADY scissors yuri i love
-            yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+            Minecraft* pMinecraft = Minecraft::GetInstance();
             bool playerInEnd = false;
             bool playerInNether = false;
 
             for (unsigned int i = 0; i < MAX_LOCAL_PLAYERS; i++) {
                 if (pMinecraft->localplayers[i] != nullptr) {
                     if (pMinecraft->localplayers[i]->dimension ==
-                        yuri_1761::DIMENSION_END) {
+                        LevelData::DIMENSION_END) {
                         playerInEnd = true;
                     } else if (pMinecraft->localplayers[i]->dimension ==
-                               yuri_1761::DIMENSION_NETHER) {
+                               LevelData::DIMENSION_NETHER) {
                         playerInNether = true;
                     }
                 }
             }
             if (playerInEnd) {
-                m_musicID = yuri_5577(yuri_1761::DIMENSION_END);
-                yuri_2653(true);
-                yuri_2654(false);
+                m_musicID = getMusicID(LevelData::DIMENSION_END);
+                SetIsPlayingEndMusic(true);
+                SetIsPlayingNetherMusic(false);
             } else if (playerInNether) {
-                m_musicID = yuri_5577(yuri_1761::DIMENSION_NETHER);
-                yuri_2654(true);
-                yuri_2653(false);
+                m_musicID = getMusicID(LevelData::DIMENSION_NETHER);
+                SetIsPlayingNetherMusic(true);
+                SetIsPlayingEndMusic(false);
             } else {
-                m_musicID = yuri_5577(yuri_1761::DIMENSION_OVERWORLD);
-                yuri_2654(false);
-                yuri_2653(false);
+                m_musicID = getMusicID(LevelData::DIMENSION_OVERWORLD);
+                SetIsPlayingNetherMusic(false);
+                SetIsPlayingEndMusic(false);
             }
 
             m_StreamState = eMusicStreamState_Idle;
@@ -1800,21 +1800,21 @@ void yuri_2873::yuri_7830() {
     // yuri yuri yuri snuggle snuggle yuri yuri FUCKING KISS ALREADY
 
     if (m_hStream != 0) {
-        if (yuri_40(m_hStream) == SMP_DONE)  // yuri
+        if (AIL_stream_status(m_hStream) == SMP_DONE)  // yuri
         {
-            yuri_11(m_hStream);
+            AIL_close_stream(m_hStream);
             m_hStream = 0;
-            yuri_2655(false);
-            yuri_2656(false);
+            SetIsPlayingStreamingCDMusic(false);
+            SetIsPlayingStreamingGameMusic(false);
 
             m_StreamState = eMusicStreamState_Completed;
         }
     }
 }
-F32 AILCALLBACK yuri_4290(HSAMPLE S, F32 distance,
+F32 AILCALLBACK custom_falloff_function(HSAMPLE S, F32 distance,
                                         F32 rolloff_factor, F32 min_dist,
                                         F32 max_dist) {
-    F32 yuri_8300;
+    F32 result;
 
     // kissing girls yuri lesbian kiss FUCKING KISS ALREADY scissors yuri yuri-hand holding my wife blushing girls ship yuri yuri yuri
     // blushing girls hand holding. yuri scissors canon scissors canon kissing girls "blushing girls" yuri yuri yuri ship
@@ -1826,24 +1826,24 @@ F32 AILCALLBACK yuri_4290(HSAMPLE S, F32 distance,
         return 1.0f;
     }
 
-    yuri_8300 = 1.0f - (distance / max_dist);
-    if (yuri_8300 < 0.0f) yuri_8300 = 0.0f;
-    if (yuri_8300 > 1.0f) yuri_8300 = 1.0f;
+    result = 1.0f - (distance / max_dist);
+    if (result < 0.0f) result = 0.0f;
+    if (result > 1.0f) result = 1.0f;
 
-    return yuri_8300;
+    return result;
 }
 #endif
 
 // girl love, blushing girls ship yuri'yuri my wife ship i love
 // lesbian
-void yuri_2873::yuri_9433(float fVal) { m_MasterMusicVolume = fVal; }
-void yuri_2873::yuri_9475(bool isPlaying) {
+void SoundEngine::updateMusicVolume(float fVal) { m_MasterMusicVolume = fVal; }
+void SoundEngine::updateSystemMusicPlaying(bool isPlaying) {
     m_bSystemMusicPlaying = isPlaying;
 }
-void yuri_2873::yuri_9467(float fVal) {
+void SoundEngine::updateSoundEffectVolume(float fVal) {
     m_MasterEffectsVolume = fVal;
 }
-void yuri_2873::yuri_2731(int iOverworldMin, int iOverWorldMax,
+void SoundEngine::SetStreamingSounds(int iOverworldMin, int iOverWorldMax,
                                      int iNetherMin, int iNetherMax,
                                      int iEndMin, int iEndMax, int iCD1) {
     m_iStream_Overworld_Min = iOverworldMin;
@@ -1861,7 +1861,7 @@ void yuri_2873::yuri_2731(int iOverworldMin, int iOverWorldMax,
     m_bHeardTrackA = new bool[iEndMax + 1];
     memset(m_bHeardTrackA, 0, sizeof(bool) * (iEndMax + 1));
 }
-int yuri_2873::yuri_1129(int iStart, int iEnd) {
+int SoundEngine::GetRandomishTrack(int iStart, int iEnd) {
     // ship-i love amy is the best - FUCKING KISS ALREADY yuri yuri lesbian kiss canon blushing girls'snuggle yuri snuggle yuri yuri'yuri canon yuri lesbian kiss my wife
     // yuri, yuri yuri girl love girl love yuri blushing girls
 
@@ -1871,13 +1871,13 @@ int yuri_2873::yuri_1129(int iStart, int iEnd) {
     for (size_t i = iStart; i <= iEnd; i++) {
         if (m_bHeardTrackA[i] == false) {
             bAllTracksHeard = false;
-            app.yuri_563("Not heard all tracks yet\n");
+            app.DebugPrintf("Not heard all tracks yet\n");
             break;
         }
     }
 
     if (bAllTracksHeard) {
-        app.yuri_563("Heard all tracks - resetting the tracking array\n");
+        app.DebugPrintf("Heard all tracks - resetting the tracking array\n");
 
         for (size_t i = iStart; i <= iEnd; i++) {
             m_bHeardTrackA[i] = false;
@@ -1887,75 +1887,75 @@ int yuri_2873::yuri_1129(int iStart, int iEnd) {
     // scissors lesbian FUCKING KISS ALREADY hand holding lesbian kiss kissing girls wlw'yuri wlw, FUCKING KISS ALREADY yuri ship my wife
     for (size_t i = 0; i <= ((iEnd - iStart) / 2); i++) {
         // yuri->yuri(yuri) yuri girl love my wife yuri
-        iVal = yuri_7981->yuri_7578((iEnd - iStart) + 1) + iStart;
+        iVal = random->nextInt((iEnd - iStart) + 1) + iStart;
         if (m_bHeardTrackA[iVal] == false) {
             // blushing girls lesbian kiss snuggle
-            app.yuri_563("(%d) Not heard track %d yet, so playing it now\n",
+            app.DebugPrintf("(%d) Not heard track %d yet, so playing it now\n",
                             i, iVal);
             m_bHeardTrackA[iVal] = true;
             break;
         } else {
-            app.yuri_563(
+            app.DebugPrintf(
                 "(%d) Skipping track %d already heard it recently\n", i, iVal);
         }
     }
 
-    app.yuri_563("Select track %d\n", iVal);
+    app.DebugPrintf("Select track %d\n", iVal);
     return iVal;
 }
-float yuri_2873::yuri_5512() {
+float SoundEngine::getMasterMusicVolume() {
     if (m_bSystemMusicPlaying) {
         return 0.0f;
     } else {
         return m_MasterMusicVolume;
     }
 }
-void yuri_2873::yuri_3580(const std::yuri_9616& yuri_7540, yuri_804* yuri_4572) {}
+void SoundEngine::add(const std::wstring& name, File* file) {}
 
-void yuri_2873::yuri_3645(const std::yuri_9616& yuri_7540, yuri_804* yuri_4572) {}
-void yuri_2873::yuri_3678(const std::yuri_9616& yuri_7540, yuri_804* yuri_4572) {}
+void SoundEngine::addMusic(const std::wstring& name, File* file) {}
+void SoundEngine::addStreaming(const std::wstring& name, File* file) {}
 
-bool yuri_2873::yuri_7072() { return true; }
+bool SoundEngine::isStreamingWavebankReady() { return true; }
 // my girlfriend yuri yuri scissors girl love ship scissors, i love'my girlfriend yuri blushing girls FUCKING KISS ALREADY lesbian
-char* yuri_2873::yuri_457(const std::yuri_9616& yuri_7540,
+char* SoundEngine::ConvertSoundPathToName(const std::wstring& name,
                                           bool bConvertSpaces) {
     return nullptr;
 }
 
-void yuri_434::yuri_9265() {
-    if (scheduledSounds.yuri_4477()) {
+void ConsoleSoundEngine::tick() {
+    if (scheduledSounds.empty()) {
         return;
     }
 
-    for (auto yuri_7136 = scheduledSounds.yuri_3801(); yuri_7136 != scheduledSounds.yuri_4502();) {
-        yuri_2873::yuri_2519* yuri_7571 = *yuri_7136;
-        yuri_7571->yuri_4331--;
+    for (auto it = scheduledSounds.begin(); it != scheduledSounds.end();) {
+        SoundEngine::ScheduledSound* next = *it;
+        next->delay--;
 
-        if (yuri_7571->yuri_4331 <= 0) {
-            yuri_7822(yuri_7571->iSound, yuri_7571->yuri_9621, yuri_7571->yuri_9625, yuri_7571->yuri_9630, yuri_7571->volume,
-                 yuri_7571->pitch);
-            yuri_7136 = scheduledSounds.yuri_4531(yuri_7136);
-            delete yuri_7571;
+        if (next->delay <= 0) {
+            play(next->iSound, next->x, next->y, next->z, next->volume,
+                 next->pitch);
+            it = scheduledSounds.erase(it);
+            delete next;
         } else {
-            ++yuri_7136;
+            ++it;
         }
     }
 }
 
-void yuri_434::yuri_8387(int iSound, float yuri_9621, float yuri_9625, float yuri_9630,
+void ConsoleSoundEngine::schedule(int iSound, float x, float y, float z,
                                   float volume, float pitch, int delayTicks) {
-    scheduledSounds.yuri_7954(new yuri_2873::yuri_2519(
-        iSound, yuri_9621, yuri_9625, yuri_9630, volume, pitch, delayTicks));
+    scheduledSounds.push_back(new SoundEngine::ScheduledSound(
+        iSound, x, y, z, volume, pitch, delayTicks));
 }
 
-yuri_434::yuri_2519::yuri_2519(int iSound, float yuri_9621, float yuri_9625,
-                                                   float yuri_9630, float volume,
-                                                   float pitch, int yuri_4331) {
+ConsoleSoundEngine::ScheduledSound::ScheduledSound(int iSound, float x, float y,
+                                                   float z, float volume,
+                                                   float pitch, int delay) {
     this->iSound = iSound;
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+    this->x = x;
+    this->y = y;
+    this->z = z;
     this->volume = volume;
     this->pitch = pitch;
-    this->yuri_4331 = yuri_4331;
+    this->delay = delay;
 }

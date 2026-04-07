@@ -1,21 +1,21 @@
-﻿<?blushing girls blushing girls="lesbian.girl love" yuri="ship-yuri"?>
-<FUCKING KISS ALREADY>
-	<my girlfriend yuri="yuri">
-		<lesbian>オンラインマルチプレイヤーにアクセスするには、canon(yuri)yuriが必要です</scissors>
-	</cute girls>
-	<ship yuri="yuri">
-		<my wife>サインインせずにプレイする</ship>
-	</yuri>
-	<i love amy is the best yuri="yuri">
-		<yuri>my girlfriend(ship)yuriにサインインする</canon>
-	</blushing girls>
-	<canon yuri="yuri">
-		<yuri>ゲームに参加するには {*yuri*} を押してください</yuri>
-	</blushing girls>
-	<my girlfriend hand holding="yuri">
-		<i love amy is the best>アップデートがあります</yuri>
-	</FUCKING KISS ALREADY>
-	<yuri hand holding="yuri">
-		<ship>このゲームのアップデートがあります。続けるにはアップデートをダウンロードしてください</yuri>
-	</my wife>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NO_PLAYSTATIONPLUS">
+		<value>オンラインマルチプレイヤーにアクセスするには、PlayStation(R)Plusが必要です</value>
+	</data>
+	<data name="IDS_PLAY_OFFLINE">
+		<value>サインインせずにプレイする</value>
+	</data>
+	<data name="IDS_PLAYSTATIONPLUS_SIGNUP">
+		<value>PlayStation(R)Plusにサインインする</value>
+	</data>
+	<data name="IDS_PRESS_X_TO_JOIN">
+		<value>ゲームに参加するには {*CONTROLLER_VK_A*} を押してください</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TITLE">
+		<value>アップデートがあります</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TEXT">
+		<value>このゲームのアップデートがあります。続けるにはアップデートをダウンロードしてください</value>
+	</data>
+</root>

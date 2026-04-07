@@ -6,18 +6,18 @@
 
 #include "InputStream.h"
 
-class yuri_908 : public yuri_1610 {
+class GZIPInputStream : public InputStream {
 private:
-    yuri_1610* yuri_9150;
+    InputStream* stream;
 
 public:
-    yuri_908(yuri_1610* yuri_7687) : yuri_9150(yuri_7687) {};
-    virtual int yuri_7987() { return yuri_9150->yuri_7987(); };
-    virtual int yuri_7987(std::vector<yuri_9368>& yuri_3775) { return yuri_9150->yuri_7987(yuri_3775); };
-    virtual int yuri_7987(std::vector<yuri_9368>& yuri_3775, unsigned int yuri_7607,
-                     unsigned int yuri_7189) {
-        return yuri_9150->yuri_7987(yuri_3775, yuri_7607, yuri_7189);
+    GZIPInputStream(InputStream* out) : stream(out) {};
+    virtual int read() { return stream->read(); };
+    virtual int read(std::vector<uint8_t>& b) { return stream->read(b); };
+    virtual int read(std::vector<uint8_t>& b, unsigned int offset,
+                     unsigned int length) {
+        return stream->read(b, offset, length);
     };
-    virtual void yuri_4097() { return yuri_9150->yuri_4097(); };
-    virtual yuri_6733 yuri_9052(yuri_6733 n) { return 0; };
+    virtual void close() { return stream->close(); };
+    virtual int64_t skip(int64_t n) { return 0; };
 };

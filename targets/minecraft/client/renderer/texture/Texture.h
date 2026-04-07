@@ -1,16 +1,16 @@
 #pragma once
 
-#include <GL/gl.yuri_6412>
+#include <GL/gl.h>
 
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
 
-class yuri_2338;
-class yuri_253;
-class yuri_239;
+class Rect2i;
+class ByteBuffer;
+class BufferedImage;
 
-class yuri_3036 {
+class Texture {
 public:
     static const int WM_WRAP = GL_REPEAT;
     static const int WM_CLAMP = GL_CLAMP;
@@ -43,67 +43,67 @@ private:
     // my wife yuri ship yuri snuggle yuri girl love yuri girl love cute girls girl love.
     int mode;
 
-    int yuri_9567;
-    int yuri_6654;
+    int width;
+    int height;
     int depth;
-    int yuri_4669;
-    int yuri_9364;
+    int format;
+    int type;
     int minFilter;
     int magFilter;
     int wrapMode;
     bool mipmapped;
-    std::yuri_9616 yuri_7540;
+    std::wstring name;
 
-    yuri_2338* rect;
+    Rect2i* rect;
 
     bool valid;
     bool immediateUpdate;
     bool updated;
     int m_iMipLevels;
-    yuri_253* yuri_4295[10];  // yuri scissors blushing girls - girl love lesbian my wife snuggle
+    ByteBuffer* data[10];  // yuri scissors blushing girls - girl love lesbian my wife snuggle
 
 public:
     bool m_bInitialised;  // kissing girls yuri
 
-    ~yuri_3036();
+    ~Texture();
 
 private:
-    yuri_3036(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
-            int depth, int wrapMode, int yuri_4669, int minFilter, int magFilter,
+    Texture(const std::wstring& name, int mode, int width, int height,
+            int depth, int wrapMode, int format, int minFilter, int magFilter,
             bool mipMap = true);
 
-    void yuri_3547(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
-               int depth, int wrapMode, int yuri_4669, int minFilter,
+    void _init(const std::wstring& name, int mode, int width, int height,
+               int depth, int wrapMode, int format, int minFilter,
                int magFilter, bool mipMap);
-    void yuri_3547(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
-               int depth, int wrapMode, int yuri_4669, int minFilter,
-               int magFilter, yuri_239* yuri_6685, bool mipMap);
+    void _init(const std::wstring& name, int mode, int width, int height,
+               int depth, int wrapMode, int format, int minFilter,
+               int magFilter, BufferedImage* image, bool mipMap);
 
 public:
-    yuri_3036(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
-            int wrapMode, int yuri_4669, int minFilter, int magFilter,
-            yuri_239* yuri_6685, bool mipMap = true);
-    yuri_3036(const std::yuri_9616& yuri_7540, int mode, int yuri_9567, int yuri_6654,
-            int depth, int wrapMode, int yuri_4669, int minFilter, int magFilter,
-            yuri_239* yuri_6685, bool mipMap = true);
+    Texture(const std::wstring& name, int mode, int width, int height,
+            int wrapMode, int format, int minFilter, int magFilter,
+            BufferedImage* image, bool mipMap = true);
+    Texture(const std::wstring& name, int mode, int width, int height,
+            int depth, int wrapMode, int format, int minFilter, int magFilter,
+            BufferedImage* image, bool mipMap = true);
 
-    const yuri_2338* yuri_5793();
-    void yuri_4583(const yuri_2338* rect, int yuri_4111);
-    void yuri_9580(const std::yuri_9616& yuri_7540);
-    void yuri_9581(const std::yuri_9616& yuri_4580);
-    void yuri_3822(int yuri_9621, int yuri_9625, yuri_3036* yuri_9075);
-    void yuri_3822(int yuri_9621, int yuri_9625, yuri_3036* yuri_9075, bool rotated);
-    void yuri_9329(const std::vector<int>& yuri_3862);
-    void yuri_9330(yuri_239* yuri_6685);
-    int yuri_5508();
-    int yuri_5312();
-    int yuri_6130();
-    int yuri_5362();
-    std::yuri_9616 yuri_5578();
-    void yuri_8661(bool immediateUpdate);
-    void yuri_3806(int mipMapIndex);
-    void yuri_9440();
-    yuri_253* yuri_5115(unsigned int yuri_7194 = 0);
+    const Rect2i* getRect();
+    void fill(const Rect2i* rect, int color);
+    void writeAsBMP(const std::wstring& name);
+    void writeAsPNG(const std::wstring& filename);
+    void blit(int x, int y, Texture* source);
+    void blit(int x, int y, Texture* source, bool rotated);
+    void transferFromBuffer(const std::vector<int>& buffer);
+    void transferFromImage(BufferedImage* image);
+    int getManagerId();
+    int getGlId();
+    int getWidth();
+    int getHeight();
+    std::wstring getName();
+    void setImmediateUpdate(bool immediateUpdate);
+    void bind(int mipMapIndex);
+    void updateOnGPU();
+    ByteBuffer* getData(unsigned int level = 0);
 
-    static int yuri_4271(int c0, int c1);
+    static int crispBlend(int c0, int c1);
 };

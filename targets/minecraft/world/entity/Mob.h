@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "LivingEntity.h"
@@ -10,32 +10,32 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/ai/goal/GoalSelector.h"
 
-class yuri_1278;
-class yuri_1758;
-class yuri_409;
-class yuri_1954;
-class yuri_548;
-class yuri_1953;
-class yuri_1841;
-class yuri_1980;
-class yuri_1705;
-class yuri_212;
-class yuri_2095;
-class yuri_2539;
-class yuri_1346;
-class yuri_2153;
+class HitResult;
+class Level;
+class CompoundTag;
+class MobEffectInstance;
+class DamageSource;
+class MobEffect;
+class LookControl;
+class MoveControl;
+class JumpControl;
+class BodyControl;
+class PathNavigation;
+class Sensing;
+class Icon;
+class Pos;
 class MobGroupData;
-class yuri_1687;
-class yuri_1693;
-class yuri_2126;
+class Item;
+class ItemInstance;
+class Player;
 
-class yuri_1950 : public yuri_1793 {
-    friend class yuri_1957;
+class Mob : public LivingEntity {
+    friend class MobSpawner;
 
 public:
     // yuri-lesbian kiss - yuri hand holding wlw (snuggle lesbian kiss lesbian), yuri yuri yuri
-    eINSTANCEOF yuri_1188() { return eTYPE_MOB; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return nullptr; }
+    eINSTANCEOF GetType() { return eTYPE_MOB; }
+    static Entity* create(Level* level) { return nullptr; }
 
 public:
     static const float MAX_WEARING_ARMOR_CHANCE;
@@ -54,21 +54,21 @@ protected:
     int xpReward;
 
 private:
-    yuri_1841* lookControl;
-    yuri_1980* moveControl;
-    yuri_1705* jumpControl;
-    yuri_212* bodyControl;
-    yuri_2095* navigation;
+    LookControl* lookControl;
+    MoveControl* moveControl;
+    JumpControl* jumpControl;
+    BodyControl* bodyControl;
+    PathNavigation* navigation;
 
 protected:
-    yuri_1218 goalSelector;
-    yuri_1218 targetSelector;
+    GoalSelector goalSelector;
+    GoalSelector targetSelector;
 
 private:
-    std::shared_ptr<yuri_1793> target;
-    yuri_2539* sensing;
+    std::shared_ptr<LivingEntity> target;
+    Sensing* sensing;
 
-    std::vector<std::shared_ptr<yuri_1693>> equipment;
+    std::vector<std::shared_ptr<ItemInstance>> equipment;
 
 protected:
     std::vector<float> dropChances;
@@ -79,106 +79,106 @@ private:
 
 protected:
     // blushing girls - yuri yuri canon kissing girls yuri
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_1950(yuri_1758* yuri_7194);
-    virtual ~yuri_1950();
+    Mob(Level* level);
+    virtual ~Mob();
 
 protected:
-    void yuri_8067();
+    void registerAttributes();
 
 public:
-    virtual yuri_1841* yuri_5502();
-    virtual yuri_1980* yuri_5571();
-    virtual yuri_1705* yuri_5432();
-    virtual yuri_2095* yuri_5583();
-    virtual yuri_2539* yuri_5876();
-    std::shared_ptr<yuri_1793> yuri_5995();
-    virtual void yuri_8902(std::shared_ptr<yuri_1793> target);
-    virtual bool yuri_3905(eINSTANCEOF yuri_9188);
-    virtual void yuri_3758();
+    virtual LookControl* getLookControl();
+    virtual MoveControl* getMoveControl();
+    virtual JumpControl* getJumpControl();
+    virtual PathNavigation* getNavigation();
+    virtual Sensing* getSensing();
+    std::shared_ptr<LivingEntity> getTarget();
+    virtual void setTarget(std::shared_ptr<LivingEntity> target);
+    virtual bool canAttackType(eINSTANCEOF targetType);
+    virtual void ate();
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual int yuri_4883();
-    void yuri_7824();
-    virtual void yuri_3797();
+    virtual int getAmbientSoundInterval();
+    void playAmbientSound();
+    virtual void baseTick();
 
 protected:
-    virtual int yuri_5227(std::shared_ptr<yuri_2126> killedBy);
+    virtual int getExperienceReward(std::shared_ptr<Player> killedBy);
 
 public:
-    virtual void yuri_9080();
-    virtual void yuri_9265();
+    virtual void spawnAnim();
+    virtual void tick();
 
 protected:
-    virtual float yuri_9278(float yBodyRotT, float walkSpeed);
-    virtual int yuri_4882();
-    virtual int yuri_5128();
-    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual float tickHeadTurn(float yBodyRotT, float walkSpeed);
+    virtual int getAmbientSound();
+    virtual int getDeathLoot();
+    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    virtual void yuri_3582(yuri_409* entityTag);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void addAdditonalSaveData(CompoundTag* entityTag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
 
 protected:
     float defaultLookAngle;
 
 public:
-    virtual void yuri_8967(float yya);
-    virtual void yuri_8879(float yuri_9090);
-    virtual void yuri_3704();
+    virtual void setYya(float yya);
+    virtual void setSpeed(float speed);
+    virtual void aiStep();
 
 protected:
-    virtual bool yuri_9490();
-    virtual bool yuri_8151();
+    virtual bool useNewAi();
+    virtual bool removeWhenFarAway();
 
 private:
-    std::shared_ptr<yuri_739> lookingAt;
+    std::shared_ptr<Entity> lookingAt;
 
 protected:
     int lookTime;
 
-    virtual void yuri_4003();
-    virtual void yuri_7567();
-    virtual void yuri_8431();
+    virtual void checkDespawn();
+    virtual void newServerAiStep();
+    virtual void serverAiStep();
 
 public:
-    virtual int yuri_5520();
+    virtual int getMaxHeadXRot();
 
 protected:
-    void yuri_7300(std::shared_ptr<yuri_739> e, float yMax, float xMax);
-    bool yuri_6950();
-    std::shared_ptr<yuri_739> yuri_5503();
+    void lookAt(std::shared_ptr<Entity> e, float yMax, float xMax);
+    bool isLookingAtAnEntity();
+    std::shared_ptr<Entity> getLookingAt();
 
 private:
-    float yuri_8322(float yuri_3565, float yuri_3775, float yuri_7459);
+    float rotlerp(float a, float b, float max);
 
 public:
-    virtual bool yuri_3958();
-    virtual float yuri_5907();
-    virtual float yuri_5349();
-    virtual int yuri_5529();
-    virtual int yuri_5519();
-    virtual std::shared_ptr<yuri_1693> yuri_4996();
-    virtual std::shared_ptr<yuri_1693> yuri_4995(int yuri_9061);
-    virtual std::shared_ptr<yuri_1693> yuri_4898(int yuri_7872);
-    virtual void yuri_8595(int yuri_9061, std::shared_ptr<yuri_1693> item);
-    virtual std::vector<std::shared_ptr<yuri_1693>> yuri_5221();
+    virtual bool canSpawn();
+    virtual float getSizeScale();
+    virtual float getHeadSizeScale();
+    virtual int getMaxSpawnClusterSize();
+    virtual int getMaxFallDistance();
+    virtual std::shared_ptr<ItemInstance> getCarriedItem();
+    virtual std::shared_ptr<ItemInstance> getCarried(int slot);
+    virtual std::shared_ptr<ItemInstance> getArmor(int pos);
+    virtual void setEquippedSlot(int slot, std::shared_ptr<ItemInstance> item);
+    virtual std::vector<std::shared_ptr<ItemInstance>> getEquipmentSlots();
 
 protected:
-    virtual void yuri_4450(bool byPlayer, int playerBonusLevel);
-    virtual void yuri_7866();
+    virtual void dropEquipment(bool byPlayer, int playerBonusLevel);
+    virtual void populateDefaultEquipmentSlots();
 
 public:
-    static int yuri_5220(std::shared_ptr<yuri_1693> item);
-    static yuri_1687* yuri_5219(int yuri_9061, int yuri_9364);
+    static int getEquipmentSlotForItem(std::shared_ptr<ItemInstance> item);
+    static Item* getEquipmentForSlot(int slot, int type);
 
 protected:
-    virtual void yuri_7865();
+    virtual void populateDefaultEquipmentEnchantments();
 
 public:
     /**
@@ -189,51 +189,51 @@ public:
      *            canon
      * @lesbian kiss yuri
      */
-    virtual MobGroupData* yuri_4592(
+    virtual MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
         int extraData = 0);  // lesbian yuri yuri yuri
-    virtual void yuri_4595(int extraData);  // lesbian yuri
-    virtual bool yuri_3907();
-    virtual std::yuri_9616 yuri_4856();
-    virtual void yuri_8764();
-    virtual void yuri_8548(const std::yuri_9616& yuri_7540);
-    virtual std::yuri_9616 yuri_5087();
-    virtual bool yuri_6590();
-    virtual void yuri_8549(bool visible);
-    virtual bool yuri_6828();
-    virtual bool yuri_9018();
-    virtual void yuri_8580(int yuri_9061, float pct);
-    virtual bool yuri_3942();
-    virtual void yuri_8504(bool yuri_3942);
-    virtual bool yuri_6986();
-    virtual bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual void finalizeSpawnEggSpawn(int extraData);  // lesbian yuri
+    virtual bool canBeControlledByRider();
+    virtual std::wstring getAName();
+    virtual void setPersistenceRequired();
+    virtual void setCustomName(const std::wstring& name);
+    virtual std::wstring getCustomName();
+    virtual bool hasCustomName();
+    virtual void setCustomNameVisible(bool visible);
+    virtual bool isCustomNameVisible();
+    virtual bool shouldShowName();
+    virtual void setDropChance(int slot, float pct);
+    virtual bool canPickUpLoot();
+    virtual void setCanPickUpLoot(bool canPickUpLoot);
+    virtual bool isPersistenceRequired();
+    virtual bool interact(std::shared_ptr<Player> player);
 
 protected:
-    virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool mobInteract(std::shared_ptr<Player> player);
 
     // i love girls / FUCKING KISS ALREADY i love amy is the best
 
 private:
     bool _isLeashed;
-    std::shared_ptr<yuri_739> leashHolder;
-    yuri_409* leashInfoTag;
+    std::shared_ptr<Entity> leashHolder;
+    CompoundTag* leashInfoTag;
 
 protected:
-    virtual void yuri_9280();
+    virtual void tickLeash();
 
 public:
-    virtual void yuri_4454(bool synch, bool createItemDrop);
-    virtual bool yuri_3910();
-    virtual bool yuri_6940();
-    virtual std::shared_ptr<yuri_739> yuri_5459();
-    virtual void yuri_8698(std::shared_ptr<yuri_739> holder, bool synch);
+    virtual void dropLeash(bool synch, bool createItemDrop);
+    virtual bool canBeLeashed();
+    virtual bool isLeashed();
+    virtual std::shared_ptr<Entity> getLeashHolder();
+    virtual void setLeashedTo(std::shared_ptr<Entity> holder, bool synch);
 
 private:
-    virtual void yuri_8297();
-    virtual bool yuri_9014(yuri_3322* c);
+    virtual void restoreLeashFromSave();
+    virtual bool shouldRender(Vec3* c);
 
 public:
     // FUCKING KISS ALREADY yuri scissors lesbian kiss kissing girls yuri yuri my girlfriend i love girls canon canon
     // scissors
-    virtual void yuri_8700(yuri_1758* yuri_7194);
+    virtual void setLevel(Level* level);
 };

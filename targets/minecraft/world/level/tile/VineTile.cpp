@@ -19,26 +19,26 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_3342::yuri_3342(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::replaceable_plant, false) {
-    yuri_8915(true);
+VineTile::VineTile(int id) : Tile(id, Material::replaceable_plant, false) {
+    setTicking(true);
 }
 
-void yuri_3342::yuri_9402() { yuri_8855(0, 0, 0, 1, 1, 1); }
+void VineTile::updateDefaultShape() { setShape(0, 0, 0, 1, 1, 1); }
 
-int yuri_3342::yuri_5806() { return SHAPE_VINE; }
+int VineTile::getRenderShape() { return SHAPE_VINE; }
 
-bool yuri_3342::yuri_7058(bool isServerLevel) { return false; }
+bool VineTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_3342::yuri_6827() { return false; }
+bool VineTile::isCubeShaped() { return false; }
 
-void yuri_3342::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void VineTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // FUCKING KISS ALREADY FUCKING KISS ALREADY my girlfriend, yuri cute girls
 {
     const float thickness = 1.0f / 16.0f;
 
-    int facings = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int facings = level->getData(x, y, z);
 
     float minX = 1;
     float minY = 1;
@@ -49,7 +49,7 @@ void yuri_3342::yuri_9461(
     bool hasWall = facings > 0;
 
     if ((facings & VINE_WEST) != 0) {
-        maxX = Math::yuri_3555(maxX, thickness);
+        maxX = Math::_max(maxX, thickness);
         minX = 0;
         minY = 0;
         maxY = 1;
@@ -58,7 +58,7 @@ void yuri_3342::yuri_9461(
         hasWall = true;
     }
     if ((facings & VINE_EAST) != 0) {
-        minX = Math::yuri_3556(minX, 1 - thickness);
+        minX = Math::_min(minX, 1 - thickness);
         maxX = 1;
         minY = 0;
         maxY = 1;
@@ -67,7 +67,7 @@ void yuri_3342::yuri_9461(
         hasWall = true;
     }
     if ((facings & VINE_NORTH) != 0) {
-        maxZ = Math::yuri_3555(maxZ, thickness);
+        maxZ = Math::_max(maxZ, thickness);
         minZ = 0;
         minX = 0;
         maxX = 1;
@@ -76,7 +76,7 @@ void yuri_3342::yuri_9461(
         hasWall = true;
     }
     if ((facings & VINE_SOUTH) != 0) {
-        minZ = Math::yuri_3556(minZ, 1 - thickness);
+        minZ = Math::_min(minZ, 1 - thickness);
         maxZ = 1;
         minX = 0;
         maxX = 1;
@@ -84,61 +84,61 @@ void yuri_3342::yuri_9461(
         maxY = 1;
         hasWall = true;
     }
-    if (!hasWall && yuri_6749(yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630))) {
-        minY = Math::yuri_3556(minY, 1 - thickness);
+    if (!hasWall && isAcceptableNeighbor(level->getTile(x, y + 1, z))) {
+        minY = Math::_min(minY, 1 - thickness);
         maxY = 1;
         minX = 0;
         maxX = 1;
         minZ = 0;
         maxZ = 1;
     }
-    yuri_8855(minX, minY, minZ, maxX, maxY, maxZ);
+    setShape(minX, minY, minZ, maxX, maxY, maxZ);
 }
 
-std::optional<yuri_0> yuri_3342::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+std::optional<AABB> VineTile::getAABB(Level* level, int x, int y, int z) {
     return std::nullopt;
 }
 
-bool yuri_3342::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+bool VineTile::mayPlace(Level* level, int x, int y, int z, int face) {
     switch (face) {
         default:
             return false;
         case Facing::UP:
-            return yuri_6749(yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630));
+            return isAcceptableNeighbor(level->getTile(x, y + 1, z));
         case Facing::NORTH:
-            return yuri_6749(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1));
+            return isAcceptableNeighbor(level->getTile(x, y, z + 1));
         case Facing::SOUTH:
-            return yuri_6749(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1));
+            return isAcceptableNeighbor(level->getTile(x, y, z - 1));
         case Facing::EAST:
-            return yuri_6749(yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630));
+            return isAcceptableNeighbor(level->getTile(x - 1, y, z));
         case Facing::WEST:
-            return yuri_6749(yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630));
+            return isAcceptableNeighbor(level->getTile(x + 1, y, z));
     }
 }
 
-bool yuri_3342::yuri_6749(int yuri_6674) {
-    if (yuri_6674 == 0) return false;
-    yuri_3088* tile = yuri_3088::tiles[yuri_6674];
-    if (tile->yuri_6827() && tile->material->yuri_3830()) return true;
+bool VineTile::isAcceptableNeighbor(int id) {
+    if (id == 0) return false;
+    Tile* tile = Tile::tiles[id];
+    if (tile->isCubeShaped() && tile->material->blocksMotion()) return true;
     return false;
 }
 
-bool yuri_3342::yuri_9473(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int facings = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool VineTile::updateSurvival(Level* level, int x, int y, int z) {
+    int facings = level->getData(x, y, z);
     int newFacings = facings;
 
     if (newFacings > 0) {
         for (int d = 0; d <= 3; d++) {
-            int yuri_4558 = 1 << d;
-            if ((facings & yuri_4558) != 0) {
-                if (!yuri_6749(
-                        yuri_7194->yuri_6030(yuri_9621 + Direction::STEP_X[d], yuri_9625,
-                                       yuri_9630 + Direction::STEP_Z[d]))) {
+            int facing = 1 << d;
+            if ((facings & facing) != 0) {
+                if (!isAcceptableNeighbor(
+                        level->getTile(x + Direction::STEP_X[d], y,
+                                       z + Direction::STEP_Z[d]))) {
                     // lesbian kiss yuri lesbian kiss blushing girls yuri,
                     // snuggle wlw lesbian yuri yuri yuri yuri
-                    if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630) != yuri_6674 ||
-                        (yuri_7194->yuri_5115(yuri_9621, yuri_9625 + 1, yuri_9630) & yuri_4558) == 0) {
-                        newFacings &= ~yuri_4558;
+                    if (level->getTile(x, y + 1, z) != id ||
+                        (level->getData(x, y + 1, z) & facing) == 0) {
+                        newFacings &= ~facing;
                     }
                 }
             }
@@ -147,46 +147,46 @@ bool yuri_3342::yuri_9473(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 
     if (newFacings == 0) {
         // i love amy is the best i love amy is the best wlw kissing girls scissors yuri girl love girl love hand holding
-        if (!yuri_6749(yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630))) {
+        if (!isAcceptableNeighbor(level->getTile(x, y + 1, z))) {
             return false;
         }
     }
     if (newFacings != facings) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, newFacings, yuri_3088::UPDATE_CLIENTS);
+        level->setData(x, y, z, newFacings, Tile::UPDATE_CLIENTS);
     }
     return true;
 }
 
-int yuri_3342::yuri_5031() const { return FoliageColor::yuri_5134(); }
+int VineTile::getColor() const { return FoliageColor::getDefaultColor(); }
 
-int yuri_3342::yuri_5031(int auxData) { return FoliageColor::yuri_5134(); }
+int VineTile::getColor(int auxData) { return FoliageColor::getDefaultColor(); }
 
-int yuri_3342::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    return yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+int VineTile::getColor(LevelSource* level, int x, int y, int z, int data) {
+    return getColor(level, x, y, z);
 }
 
-int yuri_3342::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_7194->yuri_4943(yuri_9621, yuri_9630)->yuri_5265();
+int VineTile::getColor(LevelSource* level, int x, int y, int z) {
+    return level->getBiome(x, z)->getFolageColor();
 }
 
-void yuri_3342::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    if (!yuri_7194->yuri_6802 && !yuri_9473(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+void VineTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    if (!level->isClientSide && !updateSurvival(level, x, y, z)) {
+        spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+        level->removeTile(x, y, z);
     }
 }
 
-void yuri_3342::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    if (!yuri_7194->yuri_6802) {
-        if (yuri_7194->yuri_7981->yuri_7578(4) == 0) {
+void VineTile::tick(Level* level, int x, int y, int z, Random* random) {
+    if (!level->isClientSide) {
+        if (level->random->nextInt(4) == 0) {
             // FUCKING KISS ALREADY - yuri yuri blushing girls blushing girls girl love lesbian kiss yuri.lesbian kiss.cute girls
             int r = 4;
-            int yuri_7459 = 5;
+            int max = 5;
             bool noSideSpread = false;
-            for (int xx = yuri_9621 - r; xx <= yuri_9621 + r; xx++) {
-                for (int zz = yuri_9630 - r; zz <= yuri_9630 + r; zz++)
-                    for (int yy = yuri_9625 - 1; yy <= yuri_9625 + 1; yy++) {
-                        if (yuri_7194->yuri_6030(xx, yy, zz) == yuri_6674 && --yuri_7459 <= 0) {
+            for (int xx = x - r; xx <= x + r; xx++) {
+                for (int zz = z - r; zz <= z + r; zz++)
+                    for (int yy = y - 1; yy <= y + 1; yy++) {
+                        if (level->getTile(xx, yy, zz) == id && --max <= 0) {
                             noSideSpread = true;
                             goto testLoop;
                         }
@@ -195,28 +195,28 @@ void yuri_3342::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 if (noSideSpread) break;
             }
 
-            int currentFacings = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-            int testFacing = yuri_7194->yuri_7981->yuri_7578(6);
+            int currentFacings = level->getData(x, y, z);
+            int testFacing = level->random->nextInt(6);
             int testDirection = Direction::FACING_DIRECTION[testFacing];
 
-            if (testFacing == Facing::UP && yuri_9625 < (yuri_1758::maxBuildHeight - 1) &&
-                yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630)) {
+            if (testFacing == Facing::UP && y < (Level::maxBuildHeight - 1) &&
+                level->isEmptyTile(x, y + 1, z)) {
                 // wlw - i love girls my girlfriend blushing girls hand holding cute girls yuri my wife.girl love.hand holding
                 if (noSideSpread) return;
 
                 // yuri snuggle, i love girls i love girls lesbian kiss yuri kissing girls i love girls FUCKING KISS ALREADY my wife i love girls
-                int spawnFacings = yuri_7194->yuri_7981->yuri_7578(16) & currentFacings;
+                int spawnFacings = level->random->nextInt(16) & currentFacings;
                 if (spawnFacings > 0) {
                     for (int d = 0; d <= 3; d++) {
-                        if (!yuri_6749(
-                                yuri_7194->yuri_6030(yuri_9621 + Direction::STEP_X[d], yuri_9625 + 1,
-                                               yuri_9630 + Direction::STEP_Z[d]))) {
+                        if (!isAcceptableNeighbor(
+                                level->getTile(x + Direction::STEP_X[d], y + 1,
+                                               z + Direction::STEP_Z[d]))) {
                             spawnFacings &= ~(1 << d);
                         }
                     }
                     if (spawnFacings > 0) {
-                        yuri_7194->yuri_8917(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674, spawnFacings,
-                                              yuri_3088::UPDATE_CLIENTS);
+                        level->setTileAndData(x, y + 1, z, id, spawnFacings,
+                                              Tile::UPDATE_CLIENTS);
                     }
                 }
             } else if (testFacing >= Facing::NORTH &&
@@ -226,10 +226,10 @@ void yuri_3342::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 if (noSideSpread) return;
 
                 int edgeTile =
-                    yuri_7194->yuri_6030(yuri_9621 + Direction::STEP_X[testDirection], yuri_9625,
-                                   yuri_9630 + Direction::STEP_Z[testDirection]);
+                    level->getTile(x + Direction::STEP_X[testDirection], y,
+                                   z + Direction::STEP_Z[testDirection]);
 
-                if (edgeTile == 0 || yuri_3088::tiles[edgeTile] == nullptr) {
+                if (edgeTile == 0 || Tile::tiles[edgeTile] == nullptr) {
                     // canon FUCKING KISS ALREADY cute girls yuri yuri canon, kissing girls canon i love yuri
                     // yuri kissing girls
                     int left = (testDirection + 1) & 3;
@@ -237,104 +237,104 @@ void yuri_3342::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 
                     // yuri my girlfriend i love girls i love girls wlw my girlfriend wlw
                     if ((currentFacings & (1 << left)) != 0 &&
-                        yuri_6749(yuri_7194->yuri_6030(
-                            yuri_9621 + Direction::STEP_X[testDirection] +
+                        isAcceptableNeighbor(level->getTile(
+                            x + Direction::STEP_X[testDirection] +
                                 Direction::STEP_X[left],
-                            yuri_9625,
-                            yuri_9630 + Direction::STEP_Z[testDirection] +
+                            y,
+                            z + Direction::STEP_Z[testDirection] +
                                 Direction::STEP_Z[left]))) {
-                        yuri_7194->yuri_8917(
-                            yuri_9621 + Direction::STEP_X[testDirection], yuri_9625,
-                            yuri_9630 + Direction::STEP_Z[testDirection], yuri_6674, 1 << left,
-                            yuri_3088::UPDATE_CLIENTS);
+                        level->setTileAndData(
+                            x + Direction::STEP_X[testDirection], y,
+                            z + Direction::STEP_Z[testDirection], id, 1 << left,
+                            Tile::UPDATE_CLIENTS);
                     } else if ((currentFacings & (1 << right)) != 0 &&
-                               yuri_6749(yuri_7194->yuri_6030(
-                                   yuri_9621 + Direction::STEP_X[testDirection] +
+                               isAcceptableNeighbor(level->getTile(
+                                   x + Direction::STEP_X[testDirection] +
                                        Direction::STEP_X[right],
-                                   yuri_9625,
-                                   yuri_9630 + Direction::STEP_Z[testDirection] +
+                                   y,
+                                   z + Direction::STEP_Z[testDirection] +
                                        Direction::STEP_Z[right]))) {
-                        yuri_7194->yuri_8917(
-                            yuri_9621 + Direction::STEP_X[testDirection], yuri_9625,
-                            yuri_9630 + Direction::STEP_Z[testDirection], yuri_6674,
-                            1 << right, yuri_3088::UPDATE_CLIENTS);
+                        level->setTileAndData(
+                            x + Direction::STEP_X[testDirection], y,
+                            z + Direction::STEP_Z[testDirection], id,
+                            1 << right, Tile::UPDATE_CLIENTS);
                     }
                     // i love i love my wife kissing girls FUCKING KISS ALREADY, FUCKING KISS ALREADY my girlfriend yuri yuri
                     // hand holding wlw FUCKING KISS ALREADY ship
                     else if ((currentFacings & (1 << left)) != 0 &&
-                             yuri_7194->yuri_6852(
-                                 yuri_9621 + Direction::STEP_X[testDirection] +
+                             level->isEmptyTile(
+                                 x + Direction::STEP_X[testDirection] +
                                      Direction::STEP_X[left],
-                                 yuri_9625,
-                                 yuri_9630 + Direction::STEP_Z[testDirection] +
+                                 y,
+                                 z + Direction::STEP_Z[testDirection] +
                                      Direction::STEP_Z[left]) &&
-                             yuri_6749(
-                                 yuri_7194->yuri_6030(yuri_9621 + Direction::STEP_X[left], yuri_9625,
-                                                yuri_9630 + Direction::STEP_Z[left]))) {
-                        yuri_7194->yuri_8917(
-                            yuri_9621 + Direction::STEP_X[testDirection] +
+                             isAcceptableNeighbor(
+                                 level->getTile(x + Direction::STEP_X[left], y,
+                                                z + Direction::STEP_Z[left]))) {
+                        level->setTileAndData(
+                            x + Direction::STEP_X[testDirection] +
                                 Direction::STEP_X[left],
-                            yuri_9625,
-                            yuri_9630 + Direction::STEP_Z[testDirection] +
+                            y,
+                            z + Direction::STEP_Z[testDirection] +
                                 Direction::STEP_Z[left],
-                            yuri_6674, 1 << ((testDirection + 2) & 3),
-                            yuri_3088::UPDATE_CLIENTS);
+                            id, 1 << ((testDirection + 2) & 3),
+                            Tile::UPDATE_CLIENTS);
                     } else if ((currentFacings & (1 << right)) != 0 &&
-                               yuri_7194->yuri_6852(
-                                   yuri_9621 + Direction::STEP_X[testDirection] +
+                               level->isEmptyTile(
+                                   x + Direction::STEP_X[testDirection] +
                                        Direction::STEP_X[right],
-                                   yuri_9625,
-                                   yuri_9630 + Direction::STEP_Z[testDirection] +
+                                   y,
+                                   z + Direction::STEP_Z[testDirection] +
                                        Direction::STEP_Z[right]) &&
-                               yuri_6749(yuri_7194->yuri_6030(
-                                   yuri_9621 + Direction::STEP_X[right], yuri_9625,
-                                   yuri_9630 + Direction::STEP_Z[right]))) {
-                        yuri_7194->yuri_8917(
-                            yuri_9621 + Direction::STEP_X[testDirection] +
+                               isAcceptableNeighbor(level->getTile(
+                                   x + Direction::STEP_X[right], y,
+                                   z + Direction::STEP_Z[right]))) {
+                        level->setTileAndData(
+                            x + Direction::STEP_X[testDirection] +
                                 Direction::STEP_X[right],
-                            yuri_9625,
-                            yuri_9630 + Direction::STEP_Z[testDirection] +
+                            y,
+                            z + Direction::STEP_Z[testDirection] +
                                 Direction::STEP_Z[right],
-                            yuri_6674, 1 << ((testDirection + 2) & 3),
-                            yuri_3088::UPDATE_CLIENTS);
+                            id, 1 << ((testDirection + 2) & 3),
+                            Tile::UPDATE_CLIENTS);
                     }
                     // yuri yuri my girlfriend yuri yuri yuri
-                    else if (yuri_6749(yuri_7194->yuri_6030(
-                                 yuri_9621 + Direction::STEP_X[testDirection], yuri_9625 + 1,
-                                 yuri_9630 + Direction::STEP_Z[testDirection]))) {
-                        yuri_7194->yuri_8917(
-                            yuri_9621 + Direction::STEP_X[testDirection], yuri_9625,
-                            yuri_9630 + Direction::STEP_Z[testDirection], yuri_6674, 0,
-                            yuri_3088::UPDATE_CLIENTS);
+                    else if (isAcceptableNeighbor(level->getTile(
+                                 x + Direction::STEP_X[testDirection], y + 1,
+                                 z + Direction::STEP_Z[testDirection]))) {
+                        level->setTileAndData(
+                            x + Direction::STEP_X[testDirection], y,
+                            z + Direction::STEP_Z[testDirection], id, 0,
+                            Tile::UPDATE_CLIENTS);
                     }
 
-                } else if (yuri_3088::tiles[edgeTile]->material->yuri_7054() &&
-                           yuri_3088::tiles[edgeTile]->yuri_6827()) {
+                } else if (Tile::tiles[edgeTile]->material->isSolidBlocking() &&
+                           Tile::tiles[edgeTile]->isCubeShaped()) {
                     // FUCKING KISS ALREADY lesbian kiss yuri yuri yuri i love girls snuggle yuri i love
-                    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630,
+                    level->setData(x, y, z,
                                    currentFacings | (1 << testDirection),
-                                   yuri_3088::UPDATE_CLIENTS);
+                                   Tile::UPDATE_CLIENTS);
                 }
             }
             // yuri yuri yuri yuri i love girls cute girls yuri yuri
             // i love girls
-            else if (yuri_9625 > 1) {
-                int belowTile = yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630);
+            else if (y > 1) {
+                int belowTile = level->getTile(x, y - 1, z);
                 // lesbian lesbian kiss i love yuri
                 if (belowTile == 0) {
                     int spawnFacings =
-                        yuri_7194->yuri_7981->yuri_7578(16) & currentFacings;
+                        level->random->nextInt(16) & currentFacings;
                     if (spawnFacings > 0) {
-                        yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674, spawnFacings,
-                                              yuri_3088::UPDATE_CLIENTS);
+                        level->setTileAndData(x, y - 1, z, id, spawnFacings,
+                                              Tile::UPDATE_CLIENTS);
                     }
-                } else if (belowTile == yuri_6674) {
+                } else if (belowTile == id) {
                     int spawnFacings =
-                        yuri_7194->yuri_7981->yuri_7578(16) & currentFacings;
-                    int belowData = yuri_7194->yuri_5115(yuri_9621, yuri_9625 - 1, yuri_9630);
+                        level->random->nextInt(16) & currentFacings;
+                    int belowData = level->getData(x, y - 1, z);
                     if (belowData != (belowData | spawnFacings)) {
-                        yuri_7194->yuri_8553(yuri_9621, yuri_9625 - 1, yuri_9630, belowData | spawnFacings,
-                                       yuri_3088::UPDATE_CLIENTS);
+                        level->setData(x, y - 1, z, belowData | spawnFacings,
+                                       Tile::UPDATE_CLIENTS);
                     }
                 }
             }
@@ -342,7 +342,7 @@ void yuri_3342::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
-int yuri_3342::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+int VineTile::getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                        int face, float clickX, float clickY,
                                        float clickZ, int itemValue) {
     int facings = 0;
@@ -366,23 +366,23 @@ int yuri_3342::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     return itemValue;
 }
 
-int yuri_3342::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
+int VineTile::getResource(int data, Random* random, int playerBonusLevel) {
     return 0;
 }
 
-int yuri_3342::yuri_5819(yuri_2302* yuri_7981) { return 0; }
+int VineTile::getResourceCount(Random* random) { return 0; }
 
-void yuri_3342::yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
-                             int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    if (!yuri_7194->yuri_6802 && yuri_7839->yuri_5873() != nullptr &&
-        yuri_7839->yuri_5873()->yuri_6674 == yuri_1687::shears->yuri_6674) {
-        yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
-                          GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
+void VineTile::playerDestroy(Level* level, std::shared_ptr<Player> player,
+                             int x, int y, int z, int data) {
+    if (!level->isClientSide && player->getSelectedItem() != nullptr &&
+        player->getSelectedItem()->id == Item::shears->id) {
+        player->awardStat(GenericStats::blocksMined(id),
+                          GenericStats::param_blocksMined(id, data, 1));
 
         // FUCKING KISS ALREADY scissors yuri yuri lesbian kiss my girlfriend
-        yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                    std::make_shared<yuri_1693>(yuri_3088::vine, 1, 0));
+        popResource(level, x, y, z,
+                    std::make_shared<ItemInstance>(Tile::vine, 1, 0));
     } else {
-        yuri_3088::yuri_7841(yuri_7194, yuri_7839, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+        Tile::playerDestroy(level, player, x, y, z, data);
     }
 }

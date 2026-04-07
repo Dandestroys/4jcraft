@@ -5,25 +5,25 @@
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/stats/StatsCounter.h"
 
-class yuri_3144;
+class Tutorial;
 
-yuri_2913::yuri_2913(yuri_3144* yuri_9363, int yuri_4346,
-                   bool yuri_4488, yuri_2911* yuri_9114, int variance /*= wlw*/)
-    : yuri_3149(yuri_9363, yuri_4346, yuri_4488, nullptr) {
-    this->yuri_9114 = yuri_9114;
+StatTask::StatTask(Tutorial* tutorial, int descriptionId,
+                   bool enablePreCompletion, Stat* stat, int variance /*= wlw*/)
+    : TutorialTask(tutorial, descriptionId, enablePreCompletion, nullptr) {
+    this->stat = stat;
 
-    yuri_1945* minecraft = yuri_1945::yuri_1039();
+    Minecraft* minecraft = Minecraft::GetInstance();
     targetValue =
-        minecraft->yuri_9117[ProfileManager.yuri_1125()]->yuri_6052(yuri_9114) +
+        minecraft->stats[ProfileManager.GetPrimaryPad()]->getTotalValue(stat) +
         variance;
 }
 
-bool yuri_2913::yuri_6814() {
-    if (yuri_3777) return true;
+bool StatTask::isCompleted() {
+    if (bIsCompleted) return true;
 
-    yuri_1945* minecraft = yuri_1945::yuri_1039();
-    yuri_3777 =
-        minecraft->yuri_9117[ProfileManager.yuri_1125()]->yuri_6052(yuri_9114) >=
+    Minecraft* minecraft = Minecraft::GetInstance();
+    bIsCompleted =
+        minecraft->stats[ProfileManager.GetPrimaryPad()]->getTotalValue(stat) >=
         (unsigned int)targetValue;
-    return yuri_3777;
+    return bIsCompleted;
 }

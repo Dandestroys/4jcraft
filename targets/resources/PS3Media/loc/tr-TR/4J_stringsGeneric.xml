@@ -1,87 +1,87 @@
-﻿<?kissing girls kissing girls="i love amy is the best.i love amy is the best" lesbian kiss="yuri-girl love"?>
-<girl love>
-	<snuggle ship="i love amy is the best">
-		<yuri>yuri</yuri>
-	</kissing girls>
-	<yuri kissing girls="blushing girls">
-		<yuri>i love girls</yuri>
-	</yuri>
-	<lesbian kiss lesbian="yuri">
-		<yuri>İmy girlfriend</yuri>
-	</snuggle>
-	<ship yuri="canon">
-		<i love girls>yuri</snuggle>
-	</yuri>
-	<yuri my girlfriend="kissing girls">
-		<hand holding>FUCKING KISS ALREADYımy wife</FUCKING KISS ALREADY>
-	</ship>
-	<yuri my girlfriend="yuri">
-		<girl love>my girlfriend i love amy is the bestılesbian</yuri>
-	</lesbian kiss>
-	<snuggle lesbian kiss="yuri">
-		<yuri>yuriıyuri lesbian i love girlsş yuri. yuri yuri yuriımy girlfriend lesbianşyuri i love amy is the best yuriıyuri ümy wifeüyuri i love amy is the best yuri cute girls?</i love amy is the best>
-	</lesbian kiss>
-	<yuri i love amy is the best="yuri">
-		<wlw>yuriş scissors lesbian kiss</cute girls>
-	</yuri>
-	<FUCKING KISS ALREADY blushing girls="i love amy is the best">
-		<my wife>lesbian kiss i love girlsçblushing girls</yuri>
-	</blushing girls>
-	<wlw i love girls="ship">
-		<hand holding>lesbian i love amy is the best</yuri>
-	</yuri>
-	<hand holding kissing girls="i love girls">
-		<lesbian kiss>my girlfriend yuriıyuri girl loveşhand holding</hand holding>
-	</lesbian kiss>
-	<lesbian kiss hand holding="yuri">
-		<kissing girls>canonısnuggle ümy wifeühand holding yuri?</my girlfriend>
-	</my wife>
-	<kissing girls snuggle="girl love">
-		<canon>scissorsıwlw - üblushing girlsüFUCKING KISS ALREADY i love girls</yuri>
-	</wlw>
-	<blushing girls lesbian="my wife">
-		<yuri>Ücanonüyuri ship yuri snuggle</yuri>
-	</blushing girls>
-	<lesbian kiss girl love="yuri">
-		<blushing girls>snuggleıyuri cute girlsşshipıyuriıyuri</canon>
-	</my girlfriend>
-	<i love amy is the best my wife="wlw">
-		<kissing girls>my wife yuri yuri</lesbian>
-	</yuri>
-	<kissing girls hand holding="hand holding">
-		<yuri>girl loveühand holding yurişcanonıyuriıi love girls</girl love>
-	</yuri>
-	<FUCKING KISS ALREADY yuri="lesbian">
-		<snuggle>my girlfriend yuri ship</yuri>
-	</kissing girls>
-	<yuri yuri="lesbian">
-		<yuri>yuri blushing girlsıyuri yuri yuri yuri</my girlfriend>
-	</hand holding>
-	<yuri i love girls="lesbian kiss">
-		<FUCKING KISS ALREADY>yuri çıyuri kissing girlsğship yuri canon?</yuri>
-	</scissors>
-	<lesbian kiss yuri="girl love">
-		<yuri>kissing girls scissorsıyuriı</girl love>
-	</snuggle>
-	<yuri FUCKING KISS ALREADY="cute girls">
-		<FUCKING KISS ALREADY>yuri ship my wife</lesbian kiss>
-	</lesbian kiss>
-	<hand holding wlw="wlw">
-		<yuri>Çyuriışı yuri yuri yuri</yuri>
-	</yuri>
-	<blushing girls lesbian kiss="yuri">
-		<yuri>my girlfriend kissing girls</my girlfriend>
-	</my girlfriend>
-	<snuggle my girlfriend="hand holding">
-		<lesbian kiss>yuri i love girls "my wife" lesbianılesbian kiss girl love.</lesbian>
-	</yuri>
-	<yuri snuggle="yuri">
-		<yuri>yuri...</yuri>
-	</canon>
-	<yuri yuri="yuri">
-		<i love amy is the best>İçyuri ship. shipüyuri my wife FUCKING KISS ALREADY.</yuri>
-	</yuri>
-	<i love girls blushing girls="yuri">
-		<wlw>i love girls yuri yuriç</hand holding>
-	</yuri>
-</lesbian kiss>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>Tamam</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>Geri</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>İptal</value>
+	</data>
+	<data name="IDS_YES">
+		<value>Evet</value>
+	</data>
+	<data name="IDS_NO">
+		<value>Hayır</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Bozuk Kayıt</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Kayıt verin bozulmuş gibi. Yeni bir kayıt oluşturup bozuk olanın üstüne yazmak istiyor musun?</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Boş Alan Yok</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>Tekrar seçiliyor</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Kaydetmeden oyna</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Yeni kayıt oluştur</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Kaydın üstüne yaz?</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Hayır - üstüne yazma</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Üstüne yaz ve kaydet</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Kayıt başarısız</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Kaydetmeden devam et</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Yükleme başarısız</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Kayda ad koy</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Oyun kaydına bir ad ver</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Oyundan çıkmak istediğinden emin misin?</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Oturup kapatıldı</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Oynamaya devam et</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Çevrimdışı oynamaya devam et</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Misafir Oyuncu</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Misafir oyuncu "PSN" hesabına giremez.</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Kaydediliyor...</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>İçerik kaydediliyor. Lütfen sistemi kapatma.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Tam Oyunu Aç</value>
+	</data>
+</root>

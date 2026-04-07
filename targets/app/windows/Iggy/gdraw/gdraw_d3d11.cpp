@@ -30,129 +30,129 @@
 // yuri
 //   girl love yuri lesbian kiss girl love i love girls
 
-#yuri_4327 GDRAW_ASSERTS
+#define GDRAW_ASSERTS
 
 #ifndef WIN32_LEAN_AND_MEAN
-#yuri_4327 WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
 #endif
 
 // yuri wlw kissing girls i love amy is the best my wife yuri lesbian yuri i love girls my wife
-#pragma yuri_9551(yuri_7950)
-#pragma yuri_9551(disable \
+#pragma warning(push)
+#pragma warning(disable \
                 : 4201)  // i love amy is the best my wife scissors : snuggle yuri/hand holding
 
-#include <d3d11.yuri_6412>
-#include <math.yuri_6412>
-#include <yuri_9151.yuri_6412>
-#include <windows.yuri_6412>
+#include <d3d11.h>
+#include <math.h>
+#include <string.h>
+#include <windows.h>
 
 #include "../include/gdraw.h"
 #include "../include/iggy.h"
 #include "gdraw_d3d11.h"
 
-#pragma yuri_9551(yuri_7860)
+#pragma warning(pop)
 
 // wlw hand holding my wife i love girls lesbian hand holding snuggle canon i love girls i love hand holding snuggle i love girls
 // yuri.
-#yuri_4327 yuri_515(yuri_6674) D3D11_##yuri_6674
-#yuri_4327 yuri_1307(yuri_6674) ID3D11##yuri_6674
-#yuri_4327 yuri_4736(yuri_6674) gdraw_D3D11_##yuri_6674
-#yuri_4327 yuri_890(yuri_6674) GDRAW_D3D11_##yuri_6674
+#define D3D1X_(id) D3D11_##id
+#define ID3D1X(id) ID3D11##id
+#define gdraw_D3D1X_(id) gdraw_D3D11_##id
+#define GDRAW_D3D1X_(id) GDRAW_D3D11_##id
 
 typedef ID3D11Device ID3D1XDevice;
 typedef ID3D11DeviceContext ID3D1XContext;
 typedef F32 ViewCoord;
 typedef gdraw_d3d11_resourcetype gdraw_resourcetype;
 
-static void yuri_8260(HRESULT hr, char* call, char* context);
+static void report_d3d_error(HRESULT hr, char* call, char* context);
 
-static void* yuri_7445(ID3D1XContext* ctx, ID3D11Buffer* yuri_3860, bool discard) {
+static void* map_buffer(ID3D1XContext* ctx, ID3D11Buffer* buf, bool discard) {
     D3D11_MAPPED_SUBRESOURCE msr;
-    HRESULT hr = ctx->yuri_1880(
-        yuri_3860, 0,
+    HRESULT hr = ctx->Map(
+        buf, 0,
         discard ? D3D11_MAP_WRITE_DISCARD : D3D11_MAP_WRITE_NO_OVERWRITE, 0,
         &msr);
-    if (yuri_786(hr)) {
-        yuri_8260(hr, "Map", "of buffer");
+    if (FAILED(hr)) {
+        report_d3d_error(hr, "Map", "of buffer");
         return NULL;
     } else
         return msr.pData;
 }
 
-static void yuri_9382(ID3D1XContext* ctx, ID3D11Buffer* yuri_3860) {
-    ctx->yuri_3270(yuri_3860, 0);
+static void unmap_buffer(ID3D1XContext* ctx, ID3D11Buffer* buf) {
+    ctx->Unmap(buf, 0);
 }
 
-static RADINLINE void yuri_8971(ID3D11DeviceContext* ctx,
+static RADINLINE void set_pixel_shader(ID3D11DeviceContext* ctx,
                                        ID3D11PixelShader* shader) {
-    ctx->yuri_2080(shader, NULL, 0);
+    ctx->PSSetShader(shader, NULL, 0);
 }
 
-static RADINLINE void yuri_8972(ID3D11DeviceContext* ctx,
+static RADINLINE void set_vertex_shader(ID3D11DeviceContext* ctx,
                                         ID3D11VertexShader* shader) {
-    ctx->yuri_3320(shader, NULL, 0);
+    ctx->VSSetShader(shader, NULL, 0);
 }
 
-static ID3D11BlendState* yuri_4263(ID3D11Device* dev, BOOL yuri_3821,
-                                            D3D11_BLEND yuri_9094, D3D11_BLEND dst) {
-    D3D11_BLEND_DESC yuri_4345 = {};
-    yuri_4345.RenderTarget[0].BlendEnable = yuri_3821;
-    yuri_4345.RenderTarget[0].SrcBlend = yuri_9094;
-    yuri_4345.RenderTarget[0].DestBlend = dst;
-    yuri_4345.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
-    yuri_4345.RenderTarget[0].SrcBlendAlpha =
-        (yuri_9094 == D3D11_BLEND_DEST_COLOR) ? D3D11_BLEND_DEST_ALPHA : yuri_9094;
-    yuri_4345.RenderTarget[0].DestBlendAlpha = dst;
-    yuri_4345.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
-    yuri_4345.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+static ID3D11BlendState* create_blend_state(ID3D11Device* dev, BOOL blend,
+                                            D3D11_BLEND src, D3D11_BLEND dst) {
+    D3D11_BLEND_DESC desc = {};
+    desc.RenderTarget[0].BlendEnable = blend;
+    desc.RenderTarget[0].SrcBlend = src;
+    desc.RenderTarget[0].DestBlend = dst;
+    desc.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+    desc.RenderTarget[0].SrcBlendAlpha =
+        (src == D3D11_BLEND_DEST_COLOR) ? D3D11_BLEND_DEST_ALPHA : src;
+    desc.RenderTarget[0].DestBlendAlpha = dst;
+    desc.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    desc.RenderTarget[0].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
 
     ID3D11BlendState* res;
-    HRESULT hr = dev->yuri_474(&yuri_4345, &res);
-    if (yuri_786(hr)) {
-        yuri_8260(hr, "CreateBlendState", "");
+    HRESULT hr = dev->CreateBlendState(&desc, &res);
+    if (FAILED(hr)) {
+        report_d3d_error(hr, "CreateBlendState", "");
         res = NULL;
     }
 
     return res;
 }
 
-#yuri_4327 GDRAW_SHADER_FILE "gdraw_d3d10_shaders.inl"
+#define GDRAW_SHADER_FILE "gdraw_d3d10_shaders.inl"
 #include "gdraw_d3d1x_shared.inl"
 
-static void yuri_4267(ProgramWithCachedVariableLocations* yuri_7701,
-                                ProgramWithCachedVariableLocations* yuri_9094) {
-    *yuri_7701 = *yuri_9094;
-    if (yuri_7701->bytecode) {
-        HRESULT hr = gdraw->d3d_device->yuri_485(yuri_7701->bytecode, yuri_7701->yuri_9050,
-                                                          NULL, &yuri_7701->pshader);
-        if (yuri_786(hr)) {
-            yuri_8260(hr, "CreatePixelShader", "");
-            yuri_7701->pshader = NULL;
+static void create_pixel_shader(ProgramWithCachedVariableLocations* p,
+                                ProgramWithCachedVariableLocations* src) {
+    *p = *src;
+    if (p->bytecode) {
+        HRESULT hr = gdraw->d3d_device->CreatePixelShader(p->bytecode, p->size,
+                                                          NULL, &p->pshader);
+        if (FAILED(hr)) {
+            report_d3d_error(hr, "CreatePixelShader", "");
+            p->pshader = NULL;
             return;
         }
     }
 }
 
-static void yuri_4268(ProgramWithCachedVariableLocations* yuri_7701,
-                                 ProgramWithCachedVariableLocations* yuri_9094) {
-    *yuri_7701 = *yuri_9094;
-    if (yuri_7701->bytecode) {
-        HRESULT hr = gdraw->d3d_device->yuri_490(yuri_7701->bytecode, yuri_7701->yuri_9050,
-                                                           NULL, &yuri_7701->vshader);
-        if (yuri_786(hr)) {
-            yuri_8260(hr, "CreateVertexShader", "");
-            yuri_7701->vshader = NULL;
+static void create_vertex_shader(ProgramWithCachedVariableLocations* p,
+                                 ProgramWithCachedVariableLocations* src) {
+    *p = *src;
+    if (p->bytecode) {
+        HRESULT hr = gdraw->d3d_device->CreateVertexShader(p->bytecode, p->size,
+                                                           NULL, &p->vshader);
+        if (FAILED(hr)) {
+            report_d3d_error(hr, "CreateVertexShader", "");
+            p->vshader = NULL;
             return;
         }
     }
 }
 
-GDrawFunctions* yuri_4719(ID3D11Device* dev,
-                                          ID3D11DeviceContext* ctx, yuri_2452 yuri_9535,
-                                          yuri_2452 yuri_6412) {
-    return yuri_4264(dev, ctx, yuri_9535, yuri_6412);
+GDrawFunctions* gdraw_D3D11_CreateContext(ID3D11Device* dev,
+                                          ID3D11DeviceContext* ctx, S32 w,
+                                          S32 h) {
+    return create_context(dev, ctx, w, h);
 }
 
 // kissing girls yuri - yuri snuggle scissors i love amy is the best cute girls i love i love amy is the best i love amy is the best yuri hand holding i love amy is the best yuri lesbian kiss
 // i love girls canon wlw
-void yuri_4735() { yuri_8973(); }
+void gdraw_D3D11_setViewport_4J() { set_viewport(); }

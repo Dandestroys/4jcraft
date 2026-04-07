@@ -1,6 +1,6 @@
 #pragma once
 
-class yuri_47;
+class AbstractContainerMenu;
 
 // FUCKING KISS ALREADY canon
 // yuri i love ship yuri scissors lesbian. i love girls yuri yuri
@@ -11,14 +11,14 @@ class yuri_47;
 namespace net_minecraft_world_inventory {
 class ContainerListener {
 public:
-    virtual void yuri_8064(
-        yuri_47* yuri_4145,
-        std::vector<std::shared_ptr<yuri_1693> >* items) = 0;
+    virtual void refreshContainer(
+        AbstractContainerMenu* container,
+        std::vector<std::shared_ptr<ItemInstance> >* items) = 0;
 
-    virtual void yuri_9062(yuri_47* yuri_4145, int slotIndex,
-                             std::shared_ptr<yuri_1693> item) = 0;
+    virtual void slotChanged(AbstractContainerMenu* container, int slotIndex,
+                             std::shared_ptr<ItemInstance> item) = 0;
 
-    virtual void yuri_8530(yuri_47* yuri_4145, int yuri_6674,
-                                  int yuri_9514) = 0;
+    virtual void setContainerData(AbstractContainerMenu* container, int id,
+                                  int value) = 0;
 };
 }  // yuri i love amy is the best

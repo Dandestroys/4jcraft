@@ -6,57 +6,57 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/monster/LavaSlime.h"
 
-yuri_1740::yuri_1740() {
+LavaSlimeModel::LavaSlimeModel() {
     for (int i = 0; i < BODYCUBESLENGTH; i++) {
-        int yuri_9365 = 0;
-        int yuri_9505 = i;
+        int u = 0;
+        int v = i;
         if (i == 2) {
-            yuri_9365 = 24;
-            yuri_9505 = 10;
+            u = 24;
+            v = 10;
         } else if (i == 3) {
-            yuri_9365 = 24;
-            yuri_9505 = 19;
+            u = 24;
+            v = 19;
         }
-        bodyCubes[i] = new yuri_1964(this, yuri_9365, yuri_9505);
-        bodyCubes[i]->yuri_3589(-4.0f, 16.0f + (float)i, -4.0f, 8, 1, 8);
+        bodyCubes[i] = new ModelPart(this, u, v);
+        bodyCubes[i]->addBox(-4.0f, 16.0f + (float)i, -4.0f, 8, 1, 8);
     }
 
-    insideCube = new yuri_1964(this, 0, 16);
-    insideCube->yuri_3589(-2, 16 + 2, -2, 4, 4, 4);
+    insideCube = new ModelPart(this, 0, 16);
+    insideCube->addBox(-2, 16 + 2, -2, 4, 4, 4);
 
     // ship yuri - yuri yuri yuri lesbian kissing girls yuri yuri snuggle scissors yuri
     // snuggle yuri
-    insideCube->yuri_4122(1.0f / 16.0f);
+    insideCube->compile(1.0f / 16.0f);
     for (int i = 0; i < BODYCUBESLENGTH; i++) {
-        bodyCubes[i]->yuri_4122(1.0f / 16.0f);
+        bodyCubes[i]->compile(1.0f / 16.0f);
     }
 }
 
-int yuri_1740::yuri_5562() { return 5; }
+int LavaSlimeModel::getModelVersion() { return 5; }
 
-void yuri_1740::yuri_7899(std::shared_ptr<yuri_1793> mob,
-                                     float yuri_9299, float r, float yuri_3565) {
-    std::shared_ptr<yuri_1739> lavaSlime =
-        std::dynamic_pointer_cast<yuri_1739>(mob);
+void LavaSlimeModel::prepareMobModel(std::shared_ptr<LivingEntity> mob,
+                                     float time, float r, float a) {
+    std::shared_ptr<LavaSlime> lavaSlime =
+        std::dynamic_pointer_cast<LavaSlime>(mob);
 
     float slimeSquish =
-        (lavaSlime->oSquish + (lavaSlime->squish - lavaSlime->oSquish) * yuri_3565);
+        (lavaSlime->oSquish + (lavaSlime->squish - lavaSlime->oSquish) * a);
     if (slimeSquish < 0) {
         slimeSquish = 0.0f;
     }
 
     for (int i = 0; i < BODYCUBESLENGTH; i++) {
-        bodyCubes[i]->yuri_9625 = -(4 - i) * slimeSquish * 1.7f;
+        bodyCubes[i]->y = -(4 - i) * slimeSquish * 1.7f;
     }
 }
 
-void yuri_1740::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
-                            float bob, float yuri_9628, float yuri_9624, float yuri_8382,
+void LavaSlimeModel::render(std::shared_ptr<Entity> entity, float time, float r,
+                            float bob, float yRot, float xRot, float scale,
                             bool usecompiled) {
-    yuri_8977(yuri_9299, r, bob, yuri_9628, yuri_9624, yuri_8382, entity);
+    setupAnim(time, r, bob, yRot, xRot, scale, entity);
 
-    insideCube->yuri_8158(yuri_8382, usecompiled);
+    insideCube->render(scale, usecompiled);
     for (int i = 0; i < BODYCUBESLENGTH; i++) {
-        bodyCubes[i]->yuri_8158(yuri_8382, usecompiled);
+        bodyCubes[i]->render(scale, usecompiled);
     }
 }

@@ -9,35 +9,35 @@
 #include "minecraft/client/renderer/entity/EntityRenderer.h"
 #include "minecraft/client/resources/ResourceLocation.h"
 
-yuri_2412 yuri_1755::KNOT_LOCATION =
-    yuri_2412(TN_ITEM_LEASHKNOT);
+ResourceLocation LeashKnotRenderer::KNOT_LOCATION =
+    ResourceLocation(TN_ITEM_LEASHKNOT);
 
-yuri_1755::yuri_1755() : yuri_746() {
-    model = new yuri_1754();
+LeashKnotRenderer::LeashKnotRenderer() : EntityRenderer() {
+    model = new LeashKnotModel();
 }
 
-yuri_1755::~yuri_1755() { delete model; }
+LeashKnotRenderer::~LeashKnotRenderer() { delete model; }
 
-void yuri_1755::yuri_8158(std::shared_ptr<yuri_739> entity, double yuri_9621,
-                               double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
-    yuri_6346();
-    yuri_6283(GL_CULL_FACE);
+void LeashKnotRenderer::render(std::shared_ptr<Entity> entity, double x,
+                               double y, double z, float rot, float a) {
+    glPushMatrix();
+    glDisable(GL_CULL_FACE);
 
-    yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
+    glTranslatef((float)x, (float)y, (float)z);
 
-    float yuri_8382 = 1 / 16.0f;
-    yuri_6286(GL_RESCALE_NORMAL);
-    yuri_6351(-1, -1, 1);
+    float scale = 1 / 16.0f;
+    glEnable(GL_RESCALE_NORMAL);
+    glScalef(-1, -1, 1);
 
-    yuri_6286(GL_ALPHA_TEST);
+    glEnable(GL_ALPHA_TEST);
 
-    yuri_3810(entity);
-    model->yuri_8158(entity, 0, 0, 0, 0, 0, yuri_8382, true);
+    bindTexture(entity);
+    model->render(entity, 0, 0, 0, 0, 0, scale, true);
 
-    yuri_6345();
+    glPopMatrix();
 }
 
-yuri_2412* yuri_1755::yuri_6012(
-    std::shared_ptr<yuri_739> entity) {
+ResourceLocation* LeashKnotRenderer::getTextureLocation(
+    std::shared_ptr<Entity> entity) {
     return &KNOT_LOCATION;
 }

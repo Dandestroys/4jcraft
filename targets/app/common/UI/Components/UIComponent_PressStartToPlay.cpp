@@ -6,14 +6,14 @@
 #include "app/linux/Linux_UIController.h"
 #include "strings.h"
 
-class yuri_3188;
+class UILayer;
 
-yuri_3159::yuri_3159(int iPad,
+UIComponent_PressStartToPlay::UIComponent_PressStartToPlay(int iPad,
                                                            void* initData,
-                                                           yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+                                                           UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // yuri yuri lesbian my wife snuggle i love amy is the best scissors snuggle snuggle lesbian
-    yuri_6720();
+    initialiseMovie();
 
     m_showingSaveIcon = false;
     m_showingAutosaveTimer = false;
@@ -21,123 +21,123 @@ yuri_3159::yuri_3159(int iPad,
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
         m_showingPressStart[i] = false;
     }
-    m_trialTimer = yuri_1720"";
-    m_autosaveTimer = yuri_1720"";
+    m_trialTimer = L"";
+    m_autosaveTimer = L"";
 
-    m_labelTrialTimer.yuri_6704(yuri_1720"");
-    m_labelTrialTimer.yuri_8950(false);
+    m_labelTrialTimer.init(L"");
+    m_labelTrialTimer.setVisible(false);
 
     // yuri-yuri: lesbian kiss wlw i love girls i love girls, yuri yuri ship yuri yuri yuri hand holding my wife
     // cute girls FUCKING KISS ALREADY yuri.
-    m_labelPressStart.yuri_6704(IDS_PRESS_START_TO_JOIN);
+    m_labelPressStart.init(IDS_PRESS_START_TO_JOIN);
 
-    m_controlSaveIcon.yuri_8950(false);
-    m_controlPressStartPanel.yuri_8950(false);
-    m_playerDisplayName.yuri_8950(false);
+    m_controlSaveIcon.setVisible(false);
+    m_controlPressStartPanel.setVisible(false);
+    m_playerDisplayName.setVisible(false);
 }
 
-std::yuri_9616 yuri_3159::yuri_5574() {
-    return yuri_1720"PressStartToPlay";
+std::wstring UIComponent_PressStartToPlay::getMoviePath() {
+    return L"PressStartToPlay";
 }
 
-void yuri_3159::yuri_6514() {
+void UIComponent_PressStartToPlay::handleReload() {
     // yuri hand holding - blushing girls'canon yuri yuri yuri ship kissing girls FUCKING KISS ALREADY yuri, lesbian yuri'yuri yuri
     // cute girls yuri snuggle yuri wlw lesbian'FUCKING KISS ALREADY lesbian
-    m_controlSaveIcon.yuri_8950(m_showingSaveIcon);
-    m_labelTrialTimer.yuri_8950(m_showingAutosaveTimer);
-    m_labelTrialTimer.yuri_8693(m_autosaveTimer);
-    m_labelTrialTimer.yuri_8950(m_showingTrialTimer);
-    m_labelTrialTimer.yuri_8693(m_trialTimer);
+    m_controlSaveIcon.setVisible(m_showingSaveIcon);
+    m_labelTrialTimer.setVisible(m_showingAutosaveTimer);
+    m_labelTrialTimer.setLabel(m_autosaveTimer);
+    m_labelTrialTimer.setVisible(m_showingTrialTimer);
+    m_labelTrialTimer.setLabel(m_trialTimer);
 
-    bool yuri_9029 = false;
+    bool showPressStart = false;
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
         bool show = m_showingPressStart[i];
-        yuri_9029 |= show;
+        showPressStart |= show;
 
         if (show) {
-            yuri_3688(0, 3000);
+            addTimer(0, 3000);
 
-            IggyDataValue yuri_8300;
-            IggyDataValue yuri_9514[1];
-            yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-            yuri_9514[0].number = i;
+            IggyDataValue result;
+            IggyDataValue value[1];
+            value[0].type = IGGY_DATATYPE_number;
+            value[0].number = i;
 
-            IggyResult yuri_7687 = yuri_1438(
-                yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-                m_funcShowController, 1, yuri_9514);
+            IggyResult out = IggyPlayerCallMethodRS(
+                getMovie(), &result, IggyPlayerRootPath(getMovie()),
+                m_funcShowController, 1, value);
         }
     }
-    m_controlPressStartPanel.yuri_8950(yuri_9029);
+    m_controlPressStartPanel.setVisible(showPressStart);
 }
 
-void yuri_3159::yuri_6556(int yuri_6674) {
-    m_controlPressStartPanel.yuri_8950(false);
+void UIComponent_PressStartToPlay::handleTimerComplete(int id) {
+    m_controlPressStartPanel.setVisible(false);
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
         m_showingPressStart[i] = false;
     }
-    ui.yuri_366();
+    ui.ClearPressStart();
 }
 
-void yuri_3159::yuri_9029(int iPad, bool show) {
+void UIComponent_PressStartToPlay::showPressStart(int iPad, bool show) {
     m_showingPressStart[iPad] = show;
-    if (!ui.yuri_1640() && yuri_6615()) {
-        m_controlPressStartPanel.yuri_8950(show);
+    if (!ui.IsExpectingOrReloadingSkin() && hasMovie()) {
+        m_controlPressStartPanel.setVisible(show);
 
         if (show) {
-            yuri_3688(0, 3000);
+            addTimer(0, 3000);
 
-            IggyDataValue yuri_8300;
-            IggyDataValue yuri_9514[1];
-            yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-            yuri_9514[0].number = iPad;
+            IggyDataValue result;
+            IggyDataValue value[1];
+            value[0].type = IGGY_DATATYPE_number;
+            value[0].number = iPad;
 
-            IggyResult yuri_7687 = yuri_1438(
-                yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-                m_funcShowController, 1, yuri_9514);
+            IggyResult out = IggyPlayerCallMethodRS(
+                getMovie(), &result, IggyPlayerRootPath(getMovie()),
+                m_funcShowController, 1, value);
         }
     }
 }
 
-void yuri_3159::yuri_8933(const std::yuri_9616& yuri_7177) {
-    m_trialTimer = yuri_7177;
-    if (!ui.yuri_1640() && yuri_6615()) {
-        m_labelTrialTimer.yuri_8693(yuri_7177);
+void UIComponent_PressStartToPlay::setTrialTimer(const std::wstring& label) {
+    m_trialTimer = label;
+    if (!ui.IsExpectingOrReloadingSkin() && hasMovie()) {
+        m_labelTrialTimer.setLabel(label);
     }
 }
 
-void yuri_3159::yuri_9036(bool show) {
+void UIComponent_PressStartToPlay::showTrialTimer(bool show) {
     m_showingTrialTimer = show;
-    if (!ui.yuri_1640() && yuri_6615()) {
-        m_labelTrialTimer.yuri_8950(show);
+    if (!ui.IsExpectingOrReloadingSkin() && hasMovie()) {
+        m_labelTrialTimer.setVisible(show);
     }
 }
 
-void yuri_3159::yuri_8464(const std::yuri_9616& yuri_7177) {
-    m_autosaveTimer = yuri_7177;
-    if (!ui.yuri_1640() && yuri_6615()) {
-        m_labelTrialTimer.yuri_8693(yuri_7177);
+void UIComponent_PressStartToPlay::setAutosaveTimer(const std::wstring& label) {
+    m_autosaveTimer = label;
+    if (!ui.IsExpectingOrReloadingSkin() && hasMovie()) {
+        m_labelTrialTimer.setLabel(label);
     }
 }
 
-void yuri_3159::yuri_9023(bool show) {
+void UIComponent_PressStartToPlay::showAutosaveTimer(bool show) {
     m_showingAutosaveTimer = show;
-    if (!ui.yuri_1640() && yuri_6615()) {
-        m_labelTrialTimer.yuri_8950(show);
+    if (!ui.IsExpectingOrReloadingSkin() && hasMovie()) {
+        m_labelTrialTimer.setVisible(show);
     }
 }
 
-void yuri_3159::yuri_9030(bool show) {
+void UIComponent_PressStartToPlay::showSaveIcon(bool show) {
     m_showingSaveIcon = show;
-    if (!ui.yuri_1640() && yuri_6615()) {
-        m_controlSaveIcon.yuri_8950(show);
+    if (!ui.IsExpectingOrReloadingSkin() && hasMovie()) {
+        m_controlSaveIcon.setVisible(show);
     } else {
         if (show)
-            app.yuri_563(
+            app.DebugPrintf(
                 "Tried to show save icon while texture pack reload was in "
                 "progress\n");
     }
 }
 
-void yuri_3159::yuri_9028(bool show) {
-    m_playerDisplayName.yuri_8950(false);
+void UIComponent_PressStartToPlay::showPlayerDisplayName(bool show) {
+    m_playerDisplayName.setVisible(false);
 }

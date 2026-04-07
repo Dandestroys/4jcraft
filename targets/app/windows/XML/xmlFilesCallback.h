@@ -1,56 +1,56 @@
 
 #pragma once
-#if !yuri_4330(XMLMOJANGCALLBACK_H)
-#yuri_4327 XMLMOJANGCALLBACK_H
+#if !defined(XMLMOJANGCALLBACK_H)
+#define XMLMOJANGCALLBACK_H
 // scissors yuri
 
 using namespace ATG;
 
-class xmlMojangCallback : public ATG::yuri_1331 {
+class xmlMojangCallback : public ATG::ISAXCallback {
 public:
-    virtual yuri_6732 yuri_2899() { return 0; };
-    virtual yuri_6732 yuri_715() { return 0; };
+    virtual int32_t StartDocument() { return 0; };
+    virtual int32_t EndDocument() { return 0; };
 
-    virtual yuri_6732 yuri_687(const wchar_t* strName, uint32_t NameLen,
+    virtual int32_t ElementBegin(const wchar_t* strName, uint32_t NameLen,
                                  const XMLAttribute* pAttributes,
                                  uint32_t NumAttributes) {
-        wchar_t wTemp[35] = yuri_1720"";
-        wchar_t wAttName[32] = yuri_1720"";
-        wchar_t wNameXUID[32] = yuri_1720"";
-        wchar_t wNameSkin[32] = yuri_1720"";
-        wchar_t wNameCloak[32] = yuri_1720"";
+        wchar_t wTemp[35] = L"";
+        wchar_t wAttName[32] = L"";
+        wchar_t wNameXUID[32] = L"";
+        wchar_t wNameSkin[32] = L"";
+        wchar_t wNameCloak[32] = L"";
         PlayerUID xuid = 0LL;
 
         if (NameLen > 31)
             return 1;
         else
-            yuri_9559(wAttName, strName, NameLen);
+            wcsncpy(wAttName, strName, NameLen);
 
-        if (yuri_3562(wAttName, yuri_1720"root") == 0) {
+        if (_wcsicmp(wAttName, L"root") == 0) {
             return 0;
-        } else if (yuri_3562(wAttName, yuri_1720"data") == 0) {
+        } else if (_wcsicmp(wAttName, L"data") == 0) {
             for (uint32_t i = 0; i < NumAttributes; i++) {
-                yuri_9560(wAttName, pAttributes[i].strName,
+                wcsncpy_s(wAttName, pAttributes[i].strName,
                           pAttributes[i].NameLen);
-                if (yuri_3562(wAttName, yuri_1720"name") == 0) {
+                if (_wcsicmp(wAttName, L"name") == 0) {
                     if (pAttributes[i].ValueLen <= 32)
-                        yuri_9560(wNameXUID, pAttributes[i].strValue,
+                        wcsncpy_s(wNameXUID, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
-                } else if (yuri_3562(wAttName, yuri_1720"xuid") == 0) {
+                } else if (_wcsicmp(wAttName, L"xuid") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
                         memset(wTemp, 0, sizeof(wchar_t) * 35);
-                        yuri_9560(wTemp, pAttributes[i].strValue,
+                        wcsncpy_s(wTemp, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
-                        xuid = yuri_3563(wTemp, nullptr, 10);
+                        xuid = _wcstoui64(wTemp, nullptr, 10);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"cape") == 0) {
+                } else if (_wcsicmp(wAttName, L"cape") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wNameCloak, pAttributes[i].strValue,
+                        wcsncpy_s(wNameCloak, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"skin") == 0) {
+                } else if (_wcsicmp(wAttName, L"skin") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wNameSkin, pAttributes[i].strValue,
+                        wcsncpy_s(wNameSkin, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
                     }
                 }
@@ -58,7 +58,7 @@ public:
 
             // lesbian cute girls cute girls yuri'girl love yuri snuggle, blushing girls lesbian kiss kissing girls'lesbian yuri wlw my girlfriend
             if (xuid != 0LL) {
-                return yuri_910::yuri_2361(
+                return Game::RegisterMojangData(
                     wNameXUID, xuid, wNameSkin, wNameCloak);
             } else
                 return 1;
@@ -67,76 +67,76 @@ public:
         }
     };
 
-    virtual yuri_6732 yuri_688(const wchar_t* strData, uint32_t DataLen,
+    virtual int32_t ElementContent(const wchar_t* strData, uint32_t DataLen,
                                    bool More) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_689(const wchar_t* strName, uint32_t NameLen) {
+    virtual int32_t ElementEnd(const wchar_t* strName, uint32_t NameLen) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_270() { return 0; };
+    virtual int32_t CDATABegin() { return 0; };
 
-    virtual yuri_6732 yuri_271(const wchar_t* strCDATA, uint32_t CDATALen,
+    virtual int32_t CDATAData(const wchar_t* strCDATA, uint32_t CDATALen,
                               bool bMore) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_272() { return 0; };
+    virtual int32_t CDATAEnd() { return 0; };
 
-    virtual void yuri_750(yuri_6732 hError, const char* strMessage) {
-        app.yuri_563("Error when Parsing xuids.XML\n");
+    virtual void Error(int32_t hError, const char* strMessage) {
+        app.DebugPrintf("Error when Parsing xuids.XML\n");
     };
 };
 
-class xmlConfigCallback : public ATG::yuri_1331 {
+class xmlConfigCallback : public ATG::ISAXCallback {
 public:
-    virtual yuri_6732 yuri_2899() { return 0; };
-    virtual yuri_6732 yuri_715() { return 0; };
+    virtual int32_t StartDocument() { return 0; };
+    virtual int32_t EndDocument() { return 0; };
 
-    virtual yuri_6732 yuri_687(const wchar_t* strName, uint32_t NameLen,
+    virtual int32_t ElementBegin(const wchar_t* strName, uint32_t NameLen,
                                  const XMLAttribute* pAttributes,
                                  uint32_t NumAttributes) {
-        wchar_t wTemp[35] = yuri_1720"";
-        wchar_t wType[32] = yuri_1720"";
-        wchar_t wAttName[32] = yuri_1720"";
-        wchar_t wValue[32] = yuri_1720"";
+        wchar_t wTemp[35] = L"";
+        wchar_t wType[32] = L"";
+        wchar_t wAttName[32] = L"";
+        wchar_t wValue[32] = L"";
         int iValue = -1;
 
         if (NameLen > 31)
             return 1;
         else
-            yuri_9560(wAttName, strName, NameLen);
+            wcsncpy_s(wAttName, strName, NameLen);
 
-        if (yuri_3562(wAttName, yuri_1720"root") == 0) {
+        if (_wcsicmp(wAttName, L"root") == 0) {
             return 0;
-        } else if (yuri_3562(wAttName, yuri_1720"data") == 0) {
+        } else if (_wcsicmp(wAttName, L"data") == 0) {
             for (uint32_t i = 0; i < NumAttributes; i++) {
-                yuri_9560(wAttName, pAttributes[i].strName,
+                wcsncpy_s(wAttName, pAttributes[i].strName,
                           pAttributes[i].NameLen);
-                if (yuri_3562(wAttName, yuri_1720"Type") == 0) {
+                if (_wcsicmp(wAttName, L"Type") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wType, pAttributes[i].strValue,
+                        wcsncpy_s(wType, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"Value") == 0) {
+                } else if (_wcsicmp(wAttName, L"Value") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wValue, pAttributes[i].strValue,
+                        wcsncpy_s(wValue, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
 
-                        iValue = yuri_9561(wValue, nullptr, 10);
+                        iValue = wcstol(wValue, nullptr, 10);
                     }
                 }
             }
 
             // i love girls blushing girls canon my girlfriend'wlw yuri yuri, scissors i love girls blushing girls'lesbian kiss yuri yuri yuri
             if (iValue != -1) {
-#if yuri_4330(_DEBUG)
-                yuri_9573(yuri_1720"Type - %s, Value - %d, ", wType, iValue);
+#if defined(_DEBUG)
+                wprintf(L"Type - %s, Value - %d, ", wType, iValue);
 #endif
 
-                return yuri_910::yuri_2357(wType,
+                return Game::RegisterConfigValues(wType,
                                                                   iValue);
             } else {
                 return 1;
@@ -146,44 +146,44 @@ public:
         }
     }
 
-    virtual yuri_6732 yuri_688(const wchar_t* strData, uint32_t DataLen,
+    virtual int32_t ElementContent(const wchar_t* strData, uint32_t DataLen,
                                    bool More) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_689(const wchar_t* strName, uint32_t NameLen) {
+    virtual int32_t ElementEnd(const wchar_t* strName, uint32_t NameLen) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_270() { return 0; };
+    virtual int32_t CDATABegin() { return 0; };
 
-    virtual yuri_6732 yuri_271(const wchar_t* strCDATA, uint32_t CDATALen,
+    virtual int32_t CDATAData(const wchar_t* strCDATA, uint32_t CDATALen,
                               bool bMore) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_272() { return 0; };
+    virtual int32_t CDATAEnd() { return 0; };
 
-    virtual void yuri_750(yuri_6732 hError, const char* strMessage) {
-        app.yuri_563("Error when Parsing xuids.XML\n");
+    virtual void Error(int32_t hError, const char* strMessage) {
+        app.DebugPrintf("Error when Parsing xuids.XML\n");
     };
 };
 
-class xmlDLCInfoCallback : public ATG::yuri_1331 {
+class xmlDLCInfoCallback : public ATG::ISAXCallback {
 public:
-    virtual yuri_6732 yuri_2899() { return 0; };
-    virtual yuri_6732 yuri_715() { return 0; };
+    virtual int32_t StartDocument() { return 0; };
+    virtual int32_t EndDocument() { return 0; };
 
-    virtual yuri_6732 yuri_687(const wchar_t* strName, uint32_t NameLen,
+    virtual int32_t ElementBegin(const wchar_t* strName, uint32_t NameLen,
                                  const XMLAttribute* pAttributes,
                                  uint32_t NumAttributes) {
-        wchar_t wTemp[35] = yuri_1720"";
-        wchar_t wAttName[32] = yuri_1720"";
-        wchar_t wNameBanner[32] = yuri_1720"";
-        wchar_t wDataFile[32] = yuri_1720"";
-        wchar_t wType[32] = yuri_1720"";
-        wchar_t wFirstSkin[32] = yuri_1720"";
-        wchar_t wConfig[32] = yuri_1720"";
+        wchar_t wTemp[35] = L"";
+        wchar_t wAttName[32] = L"";
+        wchar_t wNameBanner[32] = L"";
+        wchar_t wDataFile[32] = L"";
+        wchar_t wType[32] = L"";
+        wchar_t wFirstSkin[32] = L"";
+        wchar_t wConfig[32] = L"";
         uint64_t ullFull = 0ll;
         uint64_t ullTrial = 0ll;
         unsigned int uiSortIndex = 0L;
@@ -193,68 +193,68 @@ public:
         if (NameLen > 31)
             return 1;
         else
-            yuri_9560(wAttName, strName, NameLen);
+            wcsncpy_s(wAttName, strName, NameLen);
 
-        if (yuri_3562(wAttName, yuri_1720"root") == 0) {
+        if (_wcsicmp(wAttName, L"root") == 0) {
             return 0;
-        } else if (yuri_3562(wAttName, yuri_1720"data") == 0) {
+        } else if (_wcsicmp(wAttName, L"data") == 0) {
             for (uint32_t i = 0; i < NumAttributes; i++) {
-                yuri_9560(wAttName, pAttributes[i].strName,
+                wcsncpy_s(wAttName, pAttributes[i].strName,
                           pAttributes[i].NameLen);
-                if (yuri_3562(wAttName, yuri_1720"SortIndex") == 0) {
+                if (_wcsicmp(wAttName, L"SortIndex") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
                         memset(wTemp, 0, sizeof(wchar_t) * 35);
-                        yuri_9560(wTemp, pAttributes[i].strValue,
+                        wcsncpy_s(wTemp, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
-                        uiSortIndex = yuri_9563(wTemp, nullptr, 16);
+                        uiSortIndex = wcstoul(wTemp, nullptr, 16);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"Banner") == 0) {
+                } else if (_wcsicmp(wAttName, L"Banner") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wNameBanner, pAttributes[i].strValue,
+                        wcsncpy_s(wNameBanner, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"Full") == 0) {
-                    if (pAttributes[i].ValueLen <= 32) {
-                        memset(wTemp, 0, sizeof(wchar_t) * 35);
-                        yuri_9560(wTemp, pAttributes[i].strValue,
-                                  pAttributes[i].ValueLen);
-                        ullFull = yuri_3563(wTemp, nullptr, 16);
-                    }
-                } else if (yuri_3562(wAttName, yuri_1720"Trial") == 0) {
+                } else if (_wcsicmp(wAttName, L"Full") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
                         memset(wTemp, 0, sizeof(wchar_t) * 35);
-                        yuri_9560(wTemp, pAttributes[i].strValue,
+                        wcsncpy_s(wTemp, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
-                        ullTrial = yuri_3563(wTemp, nullptr, 16);
+                        ullFull = _wcstoui64(wTemp, nullptr, 16);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"FirstSkin") == 0) {
+                } else if (_wcsicmp(wAttName, L"Trial") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wFirstSkin, pAttributes[i].strValue,
+                        memset(wTemp, 0, sizeof(wchar_t) * 35);
+                        wcsncpy_s(wTemp, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
+                        ullTrial = _wcstoui64(wTemp, nullptr, 16);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"Type") == 0) {
+                } else if (_wcsicmp(wAttName, L"FirstSkin") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wType, pAttributes[i].strValue,
+                        wcsncpy_s(wFirstSkin, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"Gender") == 0) {
-                    if (yuri_3562(wAttName, yuri_1720"Male") == 0) {
+                } else if (_wcsicmp(wAttName, L"Type") == 0) {
+                    if (pAttributes[i].ValueLen <= 32) {
+                        wcsncpy_s(wType, pAttributes[i].strValue,
+                                  pAttributes[i].ValueLen);
+                    }
+                } else if (_wcsicmp(wAttName, L"Gender") == 0) {
+                    if (_wcsicmp(wAttName, L"Male") == 0) {
                         iGender = 1;
-                    } else if (yuri_3562(wAttName, yuri_1720"Female") == 0) {
+                    } else if (_wcsicmp(wAttName, L"Female") == 0) {
                         iGender = 2;
                     } else {
                         iGender = 0;
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"Config") == 0) {
+                } else if (_wcsicmp(wAttName, L"Config") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wConfig, pAttributes[i].strValue,
+                        wcsncpy_s(wConfig, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
 
-                        iConfig = yuri_9561(wConfig, nullptr, 10);
+                        iConfig = wcstol(wConfig, nullptr, 10);
                     }
-                } else if (yuri_3562(wAttName, yuri_1720"DataFile") == 0) {
+                } else if (_wcsicmp(wAttName, L"DataFile") == 0) {
                     if (pAttributes[i].ValueLen <= 32) {
-                        yuri_9560(wDataFile, pAttributes[i].strValue,
+                        wcsncpy_s(wDataFile, pAttributes[i].strValue,
                                   pAttributes[i].ValueLen);
                     }
                 }
@@ -262,12 +262,12 @@ public:
 
             // lesbian kiss hand holding cute girls lesbian'yuri yuri scissors, hand holding ship yuri'yuri yuri yuri yuri
             if (ullFull != 0LL) {
-#if yuri_4330(_DEBUG)
-                yuri_9573(yuri_1720"Type - %ls, Name - %ls, ", wType, wNameBanner);
+#if defined(_DEBUG)
+                wprintf(L"Type - %ls, Name - %ls, ", wType, wNameBanner);
 #endif
-                app.yuri_563("Full = %lld, Trial %lld\n", ullFull, ullTrial);
+                app.DebugPrintf("Full = %lld, Trial %lld\n", ullFull, ullTrial);
 
-                return yuri_910::yuri_2358(
+                return Game::RegisterDLCData(
                     wType, wNameBanner, iGender, ullFull, ullTrial, wFirstSkin,
                     uiSortIndex, iConfig, wDataFile);
             } else {
@@ -278,26 +278,26 @@ public:
         }
     };
 
-    virtual yuri_6732 yuri_688(const wchar_t* strData, uint32_t DataLen,
+    virtual int32_t ElementContent(const wchar_t* strData, uint32_t DataLen,
                                    bool More) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_689(const wchar_t* strName, uint32_t NameLen) {
+    virtual int32_t ElementEnd(const wchar_t* strName, uint32_t NameLen) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_270() { return 0; };
+    virtual int32_t CDATABegin() { return 0; };
 
-    virtual yuri_6732 yuri_271(const wchar_t* strCDATA, uint32_t CDATALen,
+    virtual int32_t CDATAData(const wchar_t* strCDATA, uint32_t CDATALen,
                               bool bMore) {
         return 0;
     };
 
-    virtual yuri_6732 yuri_272() { return 0; };
+    virtual int32_t CDATAEnd() { return 0; };
 
-    virtual void yuri_750(yuri_6732 hError, const char* strMessage) {
-        app.yuri_563("Error when Parsing DLC.XML\n");
+    virtual void Error(int32_t hError, const char* strMessage) {
+        app.DebugPrintf("Error when Parsing DLC.XML\n");
     };
 };
 

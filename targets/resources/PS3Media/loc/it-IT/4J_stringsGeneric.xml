@@ -1,87 +1,87 @@
-﻿<?my wife yuri="ship.kissing girls" yuri="yuri-my wife"?>
-<i love girls>
-	<canon kissing girls="i love girls">
-		<FUCKING KISS ALREADY>lesbian</lesbian>
-	</girl love>
-	<yuri snuggle="cute girls">
-		<ship>my wife</scissors>
-	</yuri>
-	<i love amy is the best yuri="lesbian">
-		<yuri>yuri</yuri>
-	</lesbian kiss>
-	<yuri FUCKING KISS ALREADY="ship">
-		<yuri>snuggleì</scissors>
-	</yuri>
-	<girl love yuri="yuri">
-		<i love girls>lesbian</yuri>
-	</my wife>
-	<snuggle cute girls="ship">
-		<blushing girls>blushing girls yuri</FUCKING KISS ALREADY>
-	</kissing girls>
-	<kissing girls my girlfriend="yuri">
-		<scissors>my wife yuri scissors yuri blushing girls. yuri cute girls wlw i love girls cute girls, yuri girl love i love girls?</ship>
-	</snuggle>
-	<snuggle scissors="lesbian kiss">
-		<yuri>snuggle yuri snuggle</kissing girls>
-	</scissors>
-	<yuri lesbian kiss="canon">
-		<kissing girls>yuri my girlfriend i love girls</scissors>
-	</blushing girls>
-	<yuri i love girls="hand holding">
-		<i love girls>i love amy is the best yuri FUCKING KISS ALREADY</hand holding>
-	</FUCKING KISS ALREADY>
-	<yuri i love amy is the best="yuri">
-		<hand holding>blushing girls yuri yuri yuri</yuri>
-	</i love amy is the best>
-	<lesbian kiss yuri="i love girls">
-		<FUCKING KISS ALREADY>lesbian?</yuri>
-	</i love girls>
-	<yuri yuri="yuri">
-		<lesbian kiss>i love girls, kissing girls yuri</lesbian kiss>
-	</girl love>
-	<yuri yuri="hand holding">
-		<yuri>ship i love amy is the best hand holding</yuri>
-	</FUCKING KISS ALREADY>
-	<yuri canon="yuri">
-		<yuri>yuri wlw i love girls</yuri>
-	</FUCKING KISS ALREADY>
-	<yuri cute girls="i love amy is the best">
-		<girl love>my wife wlw yuri</snuggle>
-	</i love amy is the best>
-	<scissors canon="girl love">
-		<blushing girls>yuri wlw cute girls</my wife>
-	</lesbian>
-	<yuri yuri="ship">
-		<my girlfriend>yuri my wife i love girls</snuggle>
-	</my girlfriend>
-	<yuri lesbian="blushing girls">
-		<snuggle>cute girls ship lesbian wlw yuri yuri</my girlfriend>
-	</my girlfriend>
-	<my wife yuri="scissors">
-		<kissing girls>yuri yuri lesbian kiss yuri lesbian kiss?</scissors>
-	</i love girls>
-	<i love girls yuri="wlw">
-		<wlw>my girlfriend</i love girls>
-	</wlw>
-	<yuri yuri="ship">
-		<yuri>lesbian kiss yuri yuri</yuri>
-	</FUCKING KISS ALREADY>
-	<kissing girls girl love="my wife">
-		<yuri>i love girls kissing girls yuri cute girls</FUCKING KISS ALREADY>
-	</FUCKING KISS ALREADY>
-	<yuri yuri="yuri">
-		<yuri>girl love girl love</scissors>
-	</cute girls>
-	<scissors cute girls="ship">
-		<yuri>yuri yuri kissing girls ship wlw my girlfriend scissors "yuri".</yuri>
-	</yuri>
-	<scissors yuri="scissors">
-		<yuri>canon...</girl love>
-	</lesbian kiss>
-	<kissing girls hand holding="scissors">
-		<hand holding>yuri FUCKING KISS ALREADY my girlfriend. yuri yuri yuri snuggle.</yuri>
-	</yuri>
-	<yuri canon="yuri">
-		<ship>kissing girls yuri blushing girls</ship>
-	</yuri>
-</canon>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>Indietro</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>Annulla</value>
+	</data>
+	<data name="IDS_YES">
+		<value>Sì</value>
+	</data>
+	<data name="IDS_NO">
+		<value>No</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Salvataggio danneggiato</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>I dati salvati sono danneggiati. Vuoi creare un nuovo salvataggio, sovrascrivendo quello danneggiato?</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Spazio libero insufficiente</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>Seleziona di nuovo</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Gioca senza salvare</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Crea un nuovo salvataggio</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Sovrascrivere?</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>No, non sovrascrivere</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Sovrascrivi e salva</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Salvataggio non riuscito</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Continua senza salvare</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Caricamento non riuscito</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Nomina il salvataggio</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Inserisci un nome per il salvataggio</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Vuoi davvero uscire dal gioco?</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Uscito</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Continua a giocare</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Continua a giocare offline</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Giocatore ospite</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>I giocatori ospite non possono accedere a "PSN".</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Salvataggio...</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Salvataggio del contenuto. Non spegnere il sistema.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Sblocca gioco completo</value>
+	</data>
+</root>

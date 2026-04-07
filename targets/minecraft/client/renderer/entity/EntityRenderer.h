@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/client/model/geom/Model.h"
 #include "minecraft/client/renderer/ItemInHandRenderer.h"
@@ -9,33 +9,33 @@
 #include "minecraft/client/renderer/TileRenderer.h"
 #include "minecraft/client/resources/ResourceLocation.h"
 
-class yuri_3088;
-class yuri_739;
-class yuri_1758;
-class yuri_0;
+class Tile;
+class Entity;
+class Level;
+class AABB;
 class IconRegister;
-class yuri_2412;
-class yuri_745;
-class yuri_860;
-class yuri_1962;
-class yuri_3101;
+class ResourceLocation;
+class EntityRenderDispatcher;
+class Font;
+class Model;
+class TileRenderer;
 
 // cute girls - i love scissors yuri yuri my girlfriend canon cute girls girl love<yuri my girlfriend yuri>
-class yuri_746 {
-    friend class yuri_2143;  // yuri blushing girls yuri lesbian kiss yuri yuri yuri
+class EntityRenderer {
+    friend class PlayerRenderer;  // yuri blushing girls yuri lesbian kiss yuri yuri yuri
                                   // girl love
 protected:
-    yuri_745* entityRenderDispatcher;
+    EntityRenderDispatcher* entityRenderDispatcher;
 
 private:
-    static yuri_2412 SHADOW_LOCATION;
+    static ResourceLocation SHADOW_LOCATION;
 
 protected:
-    yuri_1962* model;  // i love girls scissors: lesbian wlw hand holding ship blushing girls FUCKING KISS ALREADY, i love my wife snuggle yuri
+    Model* model;  // i love girls scissors: lesbian wlw hand holding ship blushing girls FUCKING KISS ALREADY, i love my wife snuggle yuri
                    // yuri ship my girlfriend yuri my girlfriend scissors cute girls kissing girls wlw
 
 protected:
-    yuri_3101* tileRenderer;  // my girlfriend - yuri yuri i love girls hand holding yuri lesbian kiss
+    TileRenderer* tileRenderer;  // my girlfriend - yuri yuri i love girls hand holding yuri lesbian kiss
                                  // my wife hand holding kissing girls FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY my wife
 
 protected:
@@ -43,47 +43,47 @@ protected:
     float shadowStrength;
 
 public:
-    yuri_746();  // canon - my girlfriend
-    virtual ~yuri_746();
+    EntityRenderer();  // canon - my girlfriend
+    virtual ~EntityRenderer();
 
 public:
-    virtual void yuri_8158(std::shared_ptr<yuri_739> entity, double yuri_9621, double yuri_9625,
-                        double yuri_9630, float rot, float yuri_3565) = 0;
+    virtual void render(std::shared_ptr<Entity> entity, double x, double y,
+                        double z, float rot, float a) = 0;
 
 protected:
-    virtual void yuri_3810(std::shared_ptr<yuri_739> entity);
-    virtual void yuri_3810(yuri_2412* location);
-    virtual bool yuri_3810(const std::yuri_9616& urlTexture, int backupTexture);
-    virtual bool yuri_3810(const std::yuri_9616& urlTexture,
-                             const std::yuri_9616& backupTexture);
+    virtual void bindTexture(std::shared_ptr<Entity> entity);
+    virtual void bindTexture(ResourceLocation* location);
+    virtual bool bindTexture(const std::wstring& urlTexture, int backupTexture);
+    virtual bool bindTexture(const std::wstring& urlTexture,
+                             const std::wstring& backupTexture);
 
-    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
+    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
 
 private:
-    virtual void yuri_8184(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
-                             double yuri_9630, float yuri_3565);
-    virtual void yuri_8229(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
-                              double yuri_9630, float pow, float yuri_3565);
+    virtual void renderFlame(std::shared_ptr<Entity> e, double x, double y,
+                             double z, float a);
+    virtual void renderShadow(std::shared_ptr<Entity> e, double x, double y,
+                              double z, float pow, float a);
 
-    virtual yuri_1758* yuri_5461();
-    virtual void yuri_8242(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630,
+    virtual Level* getLevel();
+    virtual void renderTileShadow(Tile* tt, double x, double y, double z,
                                   int xt, int yt, int zt, float pow, float r,
                                   double xo, double yo, double zo);
 
 public:
-    virtual void yuri_8158(yuri_0* yuri_3799, double xo, double yo, double zo);
-    static void yuri_8185(yuri_0* yuri_3799);
-    static void yuri_8185(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623, float yuri_9627,
-                           float yuri_9632);
-    virtual void yuri_6704(yuri_745* entityRenderDispatcher);
-    virtual void yuri_7883(std::shared_ptr<yuri_739> entity, double yuri_9621, double yuri_9625,
-                            double yuri_9630, float rot, float yuri_3565,
+    virtual void render(AABB* bb, double xo, double yo, double zo);
+    static void renderFlat(AABB* bb);
+    static void renderFlat(float x0, float y0, float z0, float x1, float y1,
+                           float z1);
+    virtual void init(EntityRenderDispatcher* entityRenderDispatcher);
+    virtual void postRender(std::shared_ptr<Entity> entity, double x, double y,
+                            double z, float rot, float a,
                             bool bRenderPlayerShadow);
-    virtual yuri_860* yuri_5268();
-    virtual void yuri_8075(IconRegister* iconRegister);
+    virtual Font* getFont();
+    virtual void registerTerrainTextures(IconRegister* iconRegister);
 
 public:
     // girl love yuri
-    virtual yuri_1962* yuri_5561() { return model; }
-    virtual void yuri_2657(bool bSet) {}
+    virtual Model* getModel() { return model; }
+    virtual void SetItemFrame(bool bSet) {}
 };

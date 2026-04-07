@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/Controls/UIControl_PlayerList.h"
 #include "app/common/UI/UIScene.h"
@@ -10,16 +10,16 @@
 #endif
 #include "UIControl_ButtonList.h"
 
-class UIControl_PlayerList : public yuri_3166 {
+class UIControl_PlayerList : public UIControl_ButtonList {
 private:
     IggyName m_funcSetPlayerIcon, m_funcSetVOIPIcon;
 
 public:
-    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                              const std::yuri_9151& controlName);
+    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
+                              const std::string& controlName);
 
-    using yuri_3166::yuri_3625;
-    void yuri_3625(const std::yuri_9616& yuri_7177, int iPlayerIcon, int iVOIPIcon);
-    void yuri_8776(int iId, int iPlayerIcon);
-    void yuri_8944(int iId, int iVOIPIcon);
+    using UIControl_ButtonList::addItem;
+    void addItem(const std::wstring& label, int iPlayerIcon, int iVOIPIcon);
+    void setPlayerIcon(int iId, int iPlayerIcon);
+    void setVOIPIcon(int iId, int iVOIPIcon);
 };

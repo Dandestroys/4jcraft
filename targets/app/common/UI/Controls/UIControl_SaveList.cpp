@@ -10,115 +10,115 @@
 #include "app/linux/Iggy/include/rrCore.h"
 #include "util/StringHelpers.h"
 
-bool UIControl_SaveList::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                                      const std::yuri_9151& controlName) {
-    yuri_3162::yuri_8531(yuri_3162::eSaveList);
+bool UIControl_SaveList::setupControl(UIScene* scene, IggyValuePath* parent,
+                                      const std::string& controlName) {
+    UIControl::setControlType(UIControl::eSaveList);
     bool success =
-        yuri_3166::yuri_8980(scene, yuri_7791, controlName);
+        UIControl_ButtonList::setupControl(scene, parent, controlName);
 
     // yuri snuggle yuri
-    m_funcSetTextureName = yuri_8069(yuri_1720"SetTextureName");
+    m_funcSetTextureName = registerFastName(L"SetTextureName");
 
     return success;
 }
 
-void UIControl_SaveList::yuri_3625(const std::yuri_9616& yuri_7177) {
-    yuri_3625(yuri_7177, yuri_1720"");
+void UIControl_SaveList::addItem(const std::wstring& label) {
+    addItem(label, L"");
 }
 
-void UIControl_SaveList::yuri_3625(const std::yuri_9151& yuri_7177) {
-    yuri_3625(yuri_7177, yuri_1720"");
+void UIControl_SaveList::addItem(const std::string& label) {
+    addItem(label, L"");
 }
 
-void UIControl_SaveList::yuri_3625(const std::yuri_9616& yuri_7177, int yuri_4295) {
-    yuri_3625(yuri_7177, yuri_1720"", yuri_4295);
+void UIControl_SaveList::addItem(const std::wstring& label, int data) {
+    addItem(label, L"", data);
 }
 
-void UIControl_SaveList::yuri_3625(const std::yuri_9151& yuri_7177, int yuri_4295) {
-    yuri_3625(yuri_7177, yuri_1720"", yuri_4295);
+void UIControl_SaveList::addItem(const std::string& label, int data) {
+    addItem(label, L"", data);
 }
 
-void UIControl_SaveList::yuri_3625(const std::yuri_9151& yuri_7177,
-                                 const std::yuri_9616& iconName) {
-    yuri_3625(yuri_7177, iconName, m_itemCount);
+void UIControl_SaveList::addItem(const std::string& label,
+                                 const std::wstring& iconName) {
+    addItem(label, iconName, m_itemCount);
     ++m_itemCount;
 }
 
-void UIControl_SaveList::yuri_3625(const std::yuri_9616& yuri_7177,
-                                 const std::yuri_9616& iconName) {
-    yuri_3625(yuri_7177, iconName, m_itemCount);
+void UIControl_SaveList::addItem(const std::wstring& label,
+                                 const std::wstring& iconName) {
+    addItem(label, iconName, m_itemCount);
     ++m_itemCount;
 }
 
-void UIControl_SaveList::yuri_3625(const std::yuri_9151& yuri_7177,
-                                 const std::yuri_9616& iconName, int yuri_4295) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[3];
+void UIControl_SaveList::addItem(const std::string& label,
+                                 const std::wstring& iconName, int data) {
+    IggyDataValue result;
+    IggyDataValue value[3];
 
     IggyStringUTF8 stringVal;
-    stringVal.yuri_9151 = (char*)yuri_7177.yuri_3888();
-    stringVal.yuri_7189 = (yuri_2452)yuri_7177.yuri_7189();
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF8;
-    yuri_9514[0].string8 = stringVal;
+    stringVal.string = (char*)label.c_str();
+    stringVal.length = (S32)label.length();
+    value[0].type = IGGY_DATATYPE_string_UTF8;
+    value[0].string8 = stringVal;
 
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[1].number = m_itemCount;
+    value[1].type = IGGY_DATATYPE_number;
+    value[1].number = m_itemCount;
 
-    const std::yuri_9366 convName = yuri_9617(iconName);
-
-    IggyStringUTF16 stringVal2;
-    stringVal2.yuri_9151 = convName.yuri_3888();
-    stringVal2.yuri_7189 = convName.yuri_7189();
-    yuri_9514[2].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-    yuri_9514[2].string16 = stringVal2;
-    IggyResult yuri_7687 =
-        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                               yuri_5392(), m_addNewItemFunc, 3, yuri_9514);
-}
-
-void UIControl_SaveList::yuri_3625(const std::yuri_9616& yuri_7177,
-                                 const std::yuri_9616& iconName, int yuri_4295) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[3];
-
-    const std::yuri_9366 convLabel = yuri_9617(yuri_7177);
-
-    IggyStringUTF16 stringVal;
-    stringVal.yuri_9151 = convLabel.yuri_3888();
-    stringVal.yuri_7189 = (yuri_2452)convLabel.yuri_7189();
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-    yuri_9514[0].string16 = stringVal;
-
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[1].number = m_itemCount;
-
-    const std::yuri_9366 convName = yuri_9617(iconName);
+    const std::u16string convName = wstring_to_u16string(iconName);
 
     IggyStringUTF16 stringVal2;
-    stringVal2.yuri_9151 = convName.yuri_3888();
-    stringVal2.yuri_7189 = convName.yuri_7189();
-    yuri_9514[2].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-    yuri_9514[2].string16 = stringVal2;
-    IggyResult yuri_7687 =
-        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                               yuri_5392(), m_addNewItemFunc, 3, yuri_9514);
+    stringVal2.string = convName.c_str();
+    stringVal2.length = convName.length();
+    value[2].type = IGGY_DATATYPE_string_UTF16;
+    value[2].string16 = stringVal2;
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_addNewItemFunc, 3, value);
 }
 
-void UIControl_SaveList::yuri_8908(int iId, const std::yuri_9616& iconName) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[2];
+void UIControl_SaveList::addItem(const std::wstring& label,
+                                 const std::wstring& iconName, int data) {
+    IggyDataValue result;
+    IggyDataValue value[3];
 
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = iId;
-
-    const std::yuri_9366 convName = yuri_9617(iconName);
+    const std::u16string convLabel = wstring_to_u16string(label);
 
     IggyStringUTF16 stringVal;
-    stringVal.yuri_9151 = convName.yuri_3888();
-    stringVal.yuri_7189 = convName.yuri_7189();
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-    yuri_9514[1].string16 = stringVal;
-    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                                            yuri_5392(),
-                                            m_funcSetTextureName, 2, yuri_9514);
+    stringVal.string = convLabel.c_str();
+    stringVal.length = (S32)convLabel.length();
+    value[0].type = IGGY_DATATYPE_string_UTF16;
+    value[0].string16 = stringVal;
+
+    value[1].type = IGGY_DATATYPE_number;
+    value[1].number = m_itemCount;
+
+    const std::u16string convName = wstring_to_u16string(iconName);
+
+    IggyStringUTF16 stringVal2;
+    stringVal2.string = convName.c_str();
+    stringVal2.length = convName.length();
+    value[2].type = IGGY_DATATYPE_string_UTF16;
+    value[2].string16 = stringVal2;
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_addNewItemFunc, 3, value);
+}
+
+void UIControl_SaveList::setTextureName(int iId, const std::wstring& iconName) {
+    IggyDataValue result;
+    IggyDataValue value[2];
+
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = iId;
+
+    const std::u16string convName = wstring_to_u16string(iconName);
+
+    IggyStringUTF16 stringVal;
+    stringVal.string = convName.c_str();
+    stringVal.length = convName.length();
+    value[1].type = IGGY_DATATYPE_string_UTF16;
+    value[1].string16 = stringVal;
+    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                                            getIggyValuePath(),
+                                            m_funcSetTextureName, 2, value);
 }

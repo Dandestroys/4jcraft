@@ -5,7 +5,7 @@
 #include "ZoneIo.h"
 #include "ZonedChunkStorage.h"
 
-class yuri_3439 {
+class ZoneFile {
 public:
     static const int FILE_HEADER_SIZE = 1024 * 4;
 
@@ -14,30 +14,30 @@ private:
 
     static const int slotsLength;
 
-    std::vector<short> yuri_9065;
+    std::vector<short> slots;
     short slotCount;
 
 public:
-    yuri_6733 lastUse;
+    int64_t lastUse;
 
 private:
     std::FILE* channel;
 
 public:
-    yuri_6733 key;
-    yuri_804 yuri_4572;
+    int64_t key;
+    File file;
 
-    yuri_2012* entityFile;
+    NbtSlotFile* entityFile;
 
-    yuri_3439(yuri_6733 key, yuri_804 yuri_4572, yuri_804 entityFile);
-    ~yuri_3439();
+    ZoneFile(int64_t key, File file, File entityFile);
+    ~ZoneFile();
 
-    void yuri_8012();
+    void readHeader();
 
-    void yuri_9597();
+    void writeHeader();
 
 public:
-    void yuri_4097();
-    yuri_3440* yuri_6186(int yuri_9061);
-    bool yuri_4158(int yuri_9061);
+    void close();
+    ZoneIo* getZoneIo(int slot);
+    bool containsSlot(int slot);
 };

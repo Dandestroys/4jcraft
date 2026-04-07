@@ -3,35 +3,35 @@
 
 #include "IUIScene_AbstractContainerMenu.h"
 
-class yuri_180;
+class BeaconTileEntity;
 
-class yuri_1337 : public virtual yuri_1335 {
+class IUIScene_BeaconMenu : public virtual IUIScene_AbstractContainerMenu {
 public:
-    yuri_1337();
+    IUIScene_BeaconMenu();
 
-    virtual ESceneSection yuri_1154(ESceneSection eSection,
+    virtual ESceneSection GetSectionAndSlotInDirection(ESceneSection eSection,
                                                        ETapState eTapDirection,
                                                        int* piTargetX,
                                                        int* piTargetY);
-    int yuri_5869(ESceneSection eSection);
-    virtual void yuri_6500(int iPad, ESceneSection eSection,
+    int getSectionStartOffset(ESceneSection eSection);
+    virtual void handleOtherClicked(int iPad, ESceneSection eSection,
                                     int buttonNum, bool quickKey);
-    virtual bool yuri_1672(ESceneSection eSection);
-    virtual std::vector<yuri_1298>* yuri_1156(
+    virtual bool IsSectionSlotList(ESceneSection eSection);
+    virtual std::vector<HtmlString>* GetSectionHoverText(
         ESceneSection eSection);
-    bool yuri_1684(ESceneSection eSection);
+    bool IsVisible(ESceneSection eSection);
 
 protected:
-    void yuri_6550();
-    int yuri_1033(int yuri_9289, int effectId);
+    void handleTick();
+    int GetId(int tier, int effectId);
 
-    virtual void yuri_2587(bool enabled) = 0;
-    virtual void yuri_83(int yuri_6674, int yuri_6672, int yuri_9289, int yuri_4184,
+    virtual void SetConfirmButtonEnabled(bool enabled) = 0;
+    virtual void AddPowerButton(int id, int icon, int tier, int count,
                                 bool active, bool selected) = 0;
-    virtual int yuri_1124(ESceneSection eSection) = 0;
-    virtual bool yuri_1665(ESceneSection eSection) = 0;
-    virtual void yuri_2695(ESceneSection eSection) = 0;
+    virtual int GetPowerButtonId(ESceneSection eSection) = 0;
+    virtual bool IsPowerButtonSelected(ESceneSection eSection) = 0;
+    virtual void SetPowerButtonSelected(ESceneSection eSection) = 0;
 
-    std::shared_ptr<yuri_180> m_beacon;
+    std::shared_ptr<BeaconTileEntity> m_beacon;
     bool m_initPowerButtons;
 };

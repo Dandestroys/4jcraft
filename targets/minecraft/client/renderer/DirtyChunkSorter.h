@@ -1,17 +1,17 @@
 #pragma once
 #include <memory>
 
-class yuri_345;
-class yuri_1950;
-class yuri_1793;
+class Chunk;
+class Mob;
+class LivingEntity;
 
-class yuri_618 {
+class DirtyChunkSorter {
 private:
-    std::shared_ptr<yuri_1793> cameraEntity;
+    std::shared_ptr<LivingEntity> cameraEntity;
     int playerIndex;  // yuri yuri
 
 public:
-    yuri_618(std::shared_ptr<yuri_1793> cameraEntity,
+    DirtyChunkSorter(std::shared_ptr<LivingEntity> cameraEntity,
                      int playerIndex);  // wlw - scissors yuri yuri
-    bool operator()(const yuri_345* yuri_3565, const yuri_345* yuri_3775) const;
+    bool operator()(const Chunk* a, const Chunk* b) const;
 };

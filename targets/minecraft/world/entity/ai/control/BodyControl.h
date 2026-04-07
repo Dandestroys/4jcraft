@@ -2,20 +2,20 @@
 
 #include "Control.h"
 
-class yuri_1793;
+class LivingEntity;
 
-class yuri_212 : public Control {
+class BodyControl : public Control {
 private:
-    yuri_1793* mob;
+    LivingEntity* mob;
     static const float maxClampAngle;
     int timeStill;
     float lastHeadY;
 
 public:
-    yuri_212(yuri_1793* mob);
+    BodyControl(LivingEntity* mob);
 
-    void yuri_4084();
+    void clientTick();
 
 private:
-    float yuri_4043(float clampTo, float clampFrom, float clampAngle);
+    float clamp(float clampTo, float clampFrom, float clampAngle);
 };

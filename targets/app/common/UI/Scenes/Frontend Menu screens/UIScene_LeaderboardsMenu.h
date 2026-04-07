@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -17,10 +17,10 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3231 : public yuri_3189,
-                                 public yuri_1747 {
+class UIScene_LeaderboardsMenu : public UIScene,
+                                 public LeaderboardReadListener {
 private:
     // i love amy is the best snuggle - snuggle i love amy is the best i love my girlfriend blushing girls'yuri yuri yuri canon lesbian yuri
     // i love girls yuri FUCKING KISS ALREADY yuri blushing girls yuri i love yuri. yuri yuri yuri-i love amy is the best yuri lesbian
@@ -33,12 +33,12 @@ private:
     static const int NUM_ENTRIES = 101;  // my girlfriend lesbian lesbian kiss i love amy is the best yuri ship
     static const int READ_SIZE = 15;     // my girlfriend lesbian kiss yuri my wife yuri canon snuggle
 
-    struct yuri_1743 {
+    struct LeaderboardDescriptor {
         unsigned int m_columnCount;
         bool m_isDistanceLeaderboard;
         unsigned int m_title;
 
-        yuri_1743(unsigned int columnCount,
+        LeaderboardDescriptor(unsigned int columnCount,
                               bool isDistanceLeaderboard, unsigned int title) {
             m_columnCount = columnCount;
             m_isDistanceLeaderboard = isDistanceLeaderboard;
@@ -46,11 +46,11 @@ private:
         }
     };
 
-    static const yuri_1743 LEADERBOARD_DESCRIPTORS[NUM_LEADERBOARDS]
+    static const LeaderboardDescriptor LEADERBOARD_DESCRIPTORS[NUM_LEADERBOARDS]
                                                               [4];
     static const int TitleIcons[NUM_LEADERBOARDS][7];
 
-    struct yuri_1744 {
+    struct LeaderboardEntry {
         PlayerUID m_xuid;
         unsigned int
             m_row;  // i love yuri yuri yuri yuri yuri i love girls canon snuggle scissors
@@ -72,7 +72,7 @@ private:
         unsigned int m_totalEntryCount;  // ship ship yuri lesbian yuri yuri
                                          // yuri, snuggle snuggle wlw ship
                                          // yuri yuri kissing girls yuri girl love
-        std::vector<yuri_1744> m_entries;
+        std::vector<LeaderboardEntry> m_entries;
         unsigned int m_numColumns;
     };
 
@@ -81,7 +81,7 @@ private:
 
     unsigned int
         m_currentLeaderboard;  // hand holding FUCKING KISS ALREADY ship my girlfriend canon scissors
-    yuri_1322::EFilterMode
+    IPlatformLeaderboard::EFilterMode
         m_currentFilter;               // lesbian cute girls lesbian kiss yuri
     unsigned int m_currentDifficulty;  // yuri i love amy is the best canon ship
 
@@ -98,84 +98,84 @@ private:
     bool m_bPopulatedOnce;
     bool m_bReady;
 
-    yuri_1745 yuri_7346;
+    LeaderboardInterface m_interface;
 
-    yuri_3174 m_listEntries;
-    yuri_3173 m_labelFilter, m_labelLeaderboard, m_labelEntries,
+    UIControl_LeaderboardList m_listEntries;
+    UIControl_Label m_labelFilter, m_labelLeaderboard, m_labelEntries,
         m_labelInfo;
-    yuri_3257(yuri_3189)
-    yuri_3260(m_listEntries, "Gamers")
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_listEntries, "Gamers")
 
-    yuri_3260(m_labelFilter, "Filter")
-    yuri_3260(m_labelLeaderboard, "Leaderboard")
-    yuri_3260(m_labelEntries, "Entries")
-    yuri_3260(m_labelInfo, "Info")
-    yuri_3259()
+    UI_MAP_ELEMENT(m_labelFilter, "Filter")
+    UI_MAP_ELEMENT(m_labelLeaderboard, "Leaderboard")
+    UI_MAP_ELEMENT(m_labelEntries, "Entries")
+    UI_MAP_ELEMENT(m_labelInfo, "Info")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    static int yuri_773(void* pParam, int iPad,
-                                yuri_256::EMessageResult yuri_8300);
+    static int ExitLeaderboards(void* pParam, int iPad,
+                                C4JStorage::EMessageResult result);
 
 public:
-    yuri_3231(int iPad, void* initData, yuri_3188* parentLayer);
-    ~yuri_3231();
+    UIScene_LeaderboardsMenu(int iPad, void* initData, UILayer* parentLayer);
+    ~UIScene_LeaderboardsMenu();
 
-    virtual void yuri_9478();
-    virtual void yuri_9397();
+    virtual void updateTooltips();
+    virtual void updateComponents();
 
-    virtual EUIScene yuri_5854() { return eUIScene_LeaderboardsMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_LeaderboardsMenu; }
 
     // yuri i love yuri lesbian yuri yuri yuri lesbian cute girls ship my girlfriend scissors
-    virtual bool yuri_6600(int iPad) { return bHasFocus; }
-    virtual void yuri_6556(int yuri_6674);
+    virtual bool hasFocus(int iPad) { return bHasFocus; }
+    virtual void handleTimerComplete(int id);
 
 private:
-    int yuri_992();
+    int GetEntryStartIndex();
 
 protected:
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
-    virtual void yuri_9265();
-    virtual void yuri_6514();
+    virtual void tick();
+    virtual void handleReload();
 
     // yuri
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
 private:
     // yuri girl love yuri yuri ship lesbian yuri cute girls
-    void yuri_2325(int startIndex);
+    void ReadStats(int startIndex);
 
     // yuri cute girls snuggle yuri yuri i love amy is the best yuri scissors yuri canon snuggle
     // lesbian kiss
     int m_numStats;
-    yuri_1322::ViewOut m_stats;
-    bool yuri_2422();
+    IPlatformLeaderboard::ViewOut m_stats;
+    bool RetrieveStats();
 
     // ship snuggle scissors yuri yuri lesbian kiss snuggle i love girls
-    void yuri_460(yuri_1322::ReadScore* statsRow,
+    void CopyLeaderboardEntry(IPlatformLeaderboard::ReadScore* statsRow,
                               int leaderboardEntryIndex,
                               bool isDistanceLeaderboard);
 
     // yuri i love girls FUCKING KISS ALREADY yuri yuri hand holding wlw i love amy is the best yuri
-    void yuri_2146(yuri_1322::eStatsReturn yuri_8302);
+    void PopulateLeaderboard(IPlatformLeaderboard::eStatsReturn ret);
 
     // canon kissing girls FUCKING KISS ALREADY my girlfriend canon FUCKING KISS ALREADY blushing girls
-    void yuri_2664();
+    void SetLeaderboardHeader();
 
     // yuri snuggle hand holding lesbian kiss
-    int yuri_2665();
+    int SetLeaderboardTitleIcons();
 
     // yuri my wife my wife my wife snuggle FUCKING KISS ALREADY yuri, hand holding yuri
     // yuri yuri i love yuri yuri
-    virtual bool yuri_2053(yuri_1322::eStatsReturn yuri_8302,
+    virtual bool OnStatsReadComplete(IPlatformLeaderboard::eStatsReturn ret,
                                      int numResults,
-                                     yuri_1322::ViewOut results);
+                                     IPlatformLeaderboard::ViewOut results);
 
-    virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
+    virtual void customDraw(IggyCustomDrawCallbackRegion* region);
 
-    virtual void yuri_6521(F64 selectedId);
-    virtual void yuri_6517(F64 startIndex, bool up);
+    virtual void handleSelectionChanged(F64 selectedId);
+    virtual void handleRequestMoreData(F64 startIndex, bool up);
 
     bool m_bIgnoreInput;
 };

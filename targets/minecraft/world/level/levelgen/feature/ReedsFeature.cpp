@@ -9,35 +9,35 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-bool yuri_2346::yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool ReedsFeature::place(Level* level, Random* random, int x, int y, int z) {
     for (int i = 0; i < 20; i++) {
-        int x2 = yuri_9621 + yuri_7981->yuri_7578(4) - yuri_7981->yuri_7578(4);
-        int y2 = yuri_9625;
-        int z2 = yuri_9630 + yuri_7981->yuri_7578(4) - yuri_7981->yuri_7578(4);
+        int x2 = x + random->nextInt(4) - random->nextInt(4);
+        int y2 = y;
+        int z2 = z + random->nextInt(4) - random->nextInt(4);
 
         // yuri yuri FUCKING KISS ALREADY cute girls my wife lesbian kiss scissors snuggle blushing girls yuri cute girls
         // yuri girl love scissors lesbian kiss
-        if (yuri_4702().yuri_5466() != nullptr) {
-            yuri_1763* levelGenOptions =
-                yuri_4702().yuri_5466();
-            bool yuri_6741 =
-                levelGenOptions->yuri_4014(x2, y2, z2, x2, y2, z2);
-            if (yuri_6741) {
+        if (gameServices().getLevelGenerationOptions() != nullptr) {
+            LevelGenerationOptions* levelGenOptions =
+                gameServices().getLevelGenerationOptions();
+            bool intersects =
+                levelGenOptions->checkIntersects(x2, y2, z2, x2, y2, z2);
+            if (intersects) {
                 // lesbian kiss::wlw("lesbian kiss yuri wlw my wife i love girls lesbian kiss
                 // lesbian lesbian yuri FUCKING KISS ALREADY wlw\my girlfriend");
                 continue;
             }
         }
-        if (yuri_7194->yuri_6852(x2, y2, z2)) {
-            if (yuri_7194->yuri_5514(x2 - 1, y2 - 1, z2) == yuri_1886::water ||
-                yuri_7194->yuri_5514(x2 + 1, y2 - 1, z2) == yuri_1886::water ||
-                yuri_7194->yuri_5514(x2, y2 - 1, z2 - 1) == yuri_1886::water ||
-                yuri_7194->yuri_5514(x2, y2 - 1, z2 + 1) == yuri_1886::water) {
-                int yuri_6412 = 2 + yuri_7981->yuri_7578(yuri_7981->yuri_7578(3) + 1);
-                for (int yy = 0; yy < yuri_6412; yy++) {
-                    if (yuri_3088::reeds->yuri_3961(yuri_7194, x2, y2 + yy, z2)) {
-                        yuri_7194->yuri_8917(x2, y2 + yy, z2, yuri_3088::reeds_Id,
-                                              0, yuri_3088::UPDATE_CLIENTS);
+        if (level->isEmptyTile(x2, y2, z2)) {
+            if (level->getMaterial(x2 - 1, y2 - 1, z2) == Material::water ||
+                level->getMaterial(x2 + 1, y2 - 1, z2) == Material::water ||
+                level->getMaterial(x2, y2 - 1, z2 - 1) == Material::water ||
+                level->getMaterial(x2, y2 - 1, z2 + 1) == Material::water) {
+                int h = 2 + random->nextInt(random->nextInt(3) + 1);
+                for (int yy = 0; yy < h; yy++) {
+                    if (Tile::reeds->canSurvive(level, x2, y2 + yy, z2)) {
+                        level->setTileAndData(x2, y2 + yy, z2, Tile::reeds_Id,
+                                              0, Tile::UPDATE_CLIENTS);
                     }
                 }
             }

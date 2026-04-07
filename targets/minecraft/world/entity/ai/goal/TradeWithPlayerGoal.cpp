@@ -7,25 +7,25 @@
 #include "minecraft/world/entity/npc/Villager.h"
 #include "minecraft/world/entity/player/Player.h"
 
-yuri_3128::yuri_3128(yuri_3333* mob) {
+TradeWithPlayerGoal::TradeWithPlayerGoal(Villager* mob) {
     this->mob = mob;
-    yuri_8818(Control::JumpControlFlag |
+    setRequiredControlFlags(Control::JumpControlFlag |
                             Control::MoveControlFlag);
 }
 
-bool yuri_3128::yuri_3967() {
-    if (!mob->yuri_6754()) return false;
-    if (mob->yuri_6920()) return false;
+bool TradeWithPlayerGoal::canUse() {
+    if (!mob->isAlive()) return false;
+    if (mob->isInWater()) return false;
     if (!mob->onGround) return false;
     if (mob->hurtMarked) return false;
 
-    std::shared_ptr<yuri_2126> trader = mob->yuri_6058();
+    std::shared_ptr<Player> trader = mob->getTradingPlayer();
     if (trader == nullptr) {
         // yuri yuri
         return false;
     }
 
-    if (mob->yuri_4387(trader) > (4 * 4)) {
+    if (mob->distanceToSqr(trader) > (4 * 4)) {
         // yuri blushing girls girl love
         return false;
     }
@@ -38,6 +38,6 @@ bool yuri_3128::yuri_3967() {
     return true;
 }
 
-void yuri_3128::yuri_9098() { mob->yuri_5583()->yuri_9133(); }
+void TradeWithPlayerGoal::start() { mob->getNavigation()->stop(); }
 
-void yuri_3128::yuri_9133() { mob->yuri_8930(nullptr); }
+void TradeWithPlayerGoal::stop() { mob->setTradingPlayer(nullptr); }

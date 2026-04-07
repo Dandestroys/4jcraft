@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <ctime>
 #include <functional>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "PlatformTypes.h"
@@ -14,7 +14,7 @@ struct SAVE_DETAILS;
 using PSAVE_DETAILS = SAVE_DETAILS*;
 class C4JStringTable;
 
-class yuri_1328 {
+class IPlatformStorage {
 public:
     // FUCKING KISS ALREADY yuri i love amy is the best i love yuri yuri yuri yuri lesbian kiss yuri i love amy is the best
     // yuri i love girls kissing girls canon cute girls yuri blushing girls yuri blushing girls.
@@ -99,8 +99,8 @@ public:
     };
 
     struct TMSPP_FILEDATA {
-        unsigned int yuri_9050;
-        std::yuri_9368* pbData;
+        unsigned int size;
+        std::uint8_t* pbData;
     };
     using PTMSPP_FILEDATA = TMSPP_FILEDATA*;
 
@@ -109,146 +109,146 @@ public:
         std::uint32_t dwNewOffers;
         std::uint32_t dwTotalOffers;
         std::uint32_t dwInstalledTotalOffers;
-        std::yuri_9368 bPadding[1024 - sizeof(std::uint32_t) * 4];
+        std::uint8_t bPadding[1024 - sizeof(std::uint32_t) * 4];
     };
 
-    virtual ~yuri_1328() = default;
+    virtual ~IPlatformStorage() = default;
 
     // ship
-    virtual void yuri_3081() = 0;
-    virtual void yuri_1596(unsigned int uiSaveVersion,
+    virtual void Tick() = 0;
+    virtual void Init(unsigned int uiSaveVersion,
                       const wchar_t* pwchDefaultSaveName, char* pszSavePackName,
                       int iMinimumSaveSize,
-                      std::function<int(const ESavingMessage, int)> yuri_3901,
+                      std::function<int(const ESavingMessage, int)> callback,
                       const char* szGroupID) = 0;
-    virtual void yuri_2410() = 0;
+    virtual void ResetSaveData() = 0;
 
     // yuri
-    virtual EMessageResult yuri_2400(
+    virtual EMessageResult RequestMessageBox(
         unsigned int uiTitle, unsigned int uiText, unsigned int* uiOptionA,
         unsigned int uiOptionC, unsigned int pad = XUSER_INDEX_ANY,
-        std::function<int(int, const EMessageResult)> yuri_3901 = nullptr,
+        std::function<int(int, const EMessageResult)> callback = nullptr,
         C4JStringTable* pStringTable = nullptr,
         wchar_t* pwchFormatString = nullptr, unsigned int focusButton = 0) = 0;
-    virtual EMessageResult yuri_1075() = 0;
+    virtual EMessageResult GetMessageBoxResult() = 0;
 
     // scissors snuggle
-    virtual bool yuri_2708(std::function<int(const bool)> yuri_3901,
+    virtual bool SetSaveDevice(std::function<int(const bool)> callback,
                                bool bForceResetOfSaveDevice = false) = 0;
-    virtual void yuri_2709(unsigned int uiPad, bool bSelected) = 0;
-    virtual bool yuri_1141(unsigned int iPad) = 0;
+    virtual void SetSaveDeviceSelected(unsigned int uiPad, bool bSelected) = 0;
+    virtual bool GetSaveDeviceSelected(unsigned int iPad) = 0;
 
     // yuri FUCKING KISS ALREADY
-    virtual void yuri_2606(
+    virtual void SetDefaultSaveNameForKeyboardDisplay(
         const wchar_t* pwchDefaultSaveName) = 0;
-    virtual void yuri_2713(const wchar_t* pwchDefaultSaveName) = 0;
-    virtual bool yuri_1149(int* piVal) = 0;
-    virtual bool yuri_1148(char* pszName) = 0;
-    virtual void yuri_2714(char* szFilename) = 0;
-    virtual void yuri_2730(ESaveGameControlState eControlState,
-                          std::function<int(const bool)> yuri_3901) = 0;
-    virtual void yuri_2710(bool bDisable) = 0;
-    virtual bool yuri_1142() = 0;
-    virtual unsigned int yuri_1144() = 0;
-    virtual void yuri_1140(void* pvData, unsigned int* puiBytes) = 0;
-    virtual void* yuri_106(unsigned int uiBytes) = 0;
-    virtual void yuri_2711(std::yuri_9368* pbThumbnail,
+    virtual void SetSaveTitle(const wchar_t* pwchDefaultSaveName) = 0;
+    virtual bool GetSaveUniqueNumber(int* piVal) = 0;
+    virtual bool GetSaveUniqueFilename(char* pszName) = 0;
+    virtual void SetSaveUniqueFilename(char* szFilename) = 0;
+    virtual void SetState(ESaveGameControlState eControlState,
+                          std::function<int(const bool)> callback) = 0;
+    virtual void SetSaveDisabled(bool bDisable) = 0;
+    virtual bool GetSaveDisabled() = 0;
+    virtual unsigned int GetSaveSize() = 0;
+    virtual void GetSaveData(void* pvData, unsigned int* puiBytes) = 0;
+    virtual void* AllocateSaveData(unsigned int uiBytes) = 0;
+    virtual void SetSaveImages(std::uint8_t* pbThumbnail,
                                unsigned int thumbnailBytes,
-                               std::yuri_9368* pbImage, unsigned int imageBytes,
-                               std::yuri_9368* pbTextData,
+                               std::uint8_t* pbImage, unsigned int imageBytes,
+                               std::uint8_t* pbTextData,
                                unsigned int textDataBytes) = 0;
-    virtual ESaveGameState yuri_2505(
-        std::function<int(const bool)> yuri_3901) = 0;
-    virtual void yuri_461(
-        std::yuri_9368* pbThumbnail, unsigned int cbThumbnail,
-        wchar_t* wchNewName, std::function<int(bool)> yuri_3901) = 0;
-    virtual ESaveGameState yuri_642(bool* pbExists) = 0;
-    virtual bool yuri_737() = 0;
-    virtual void yuri_2712(float fY) = 0;
-    virtual ESaveGameState yuri_1150(
+    virtual ESaveGameState SaveSaveData(
+        std::function<int(const bool)> callback) = 0;
+    virtual void CopySaveDataToNewSave(
+        std::uint8_t* pbThumbnail, unsigned int cbThumbnail,
+        wchar_t* wchNewName, std::function<int(bool)> callback) = 0;
+    virtual ESaveGameState DoesSaveExist(bool* pbExists) = 0;
+    virtual bool EnoughSpaceForAMinSaveGame() = 0;
+    virtual void SetSaveMessageVPosition(float fY) = 0;
+    virtual ESaveGameState GetSavesInfo(
         int iPad,
-        std::function<int(SAVE_DETAILS* pSaveDetails, const bool)> yuri_3901,
+        std::function<int(SAVE_DETAILS* pSaveDetails, const bool)> callback,
         char* pszSavePackName) = 0;
-    virtual PSAVE_DETAILS yuri_2423() = 0;
-    virtual void yuri_368() = 0;
-    virtual ESaveGameState yuri_1820(
+    virtual PSAVE_DETAILS ReturnSavesInfo() = 0;
+    virtual void ClearSavesInfo() = 0;
+    virtual ESaveGameState LoadSaveDataThumbnail(
         PSAVE_INFO pSaveInfo,
-        std::function<int(std::yuri_9368* thumbnailData,
+        std::function<int(std::uint8_t* thumbnailData,
                           unsigned int thumbnailBytes)>
-            yuri_3901) = 0;
-    virtual void yuri_1139(unsigned int fileIndex,
+            callback) = 0;
+    virtual void GetSaveCacheFileInfo(unsigned int fileIndex,
                                       XCONTENT_DATA& xContentData) = 0;
-    virtual void yuri_1139(unsigned int fileIndex,
-                                      std::yuri_9368** ppbImageData,
+    virtual void GetSaveCacheFileInfo(unsigned int fileIndex,
+                                      std::uint8_t** ppbImageData,
                                       unsigned int* pImageBytes) = 0;
-    virtual ESaveGameState yuri_1818(
+    virtual ESaveGameState LoadSaveData(
         PSAVE_INFO pSaveInfo,
-        std::function<int(const bool, const bool)> yuri_3901) = 0;
-    virtual ESaveGameState yuri_590(
+        std::function<int(const bool, const bool)> callback) = 0;
+    virtual ESaveGameState DeleteSaveData(
         PSAVE_INFO pSaveInfo,
-        std::function<int(const bool)> yuri_3901) = 0;
+        std::function<int(const bool)> callback) = 0;
 
     // cute girls
-    virtual void yuri_2360(
-        std::function<int(DLC_TMS_DETAILS*, int)> yuri_3901) = 0;
-    virtual void yuri_2596(char* pszDLCRoot) = 0;
-    virtual EDLCStatus yuri_977(
+    virtual void RegisterMarketplaceCountsCallback(
+        std::function<int(DLC_TMS_DETAILS*, int)> callback) = 0;
+    virtual void SetDLCPackageRoot(char* pszDLCRoot) = 0;
+    virtual EDLCStatus GetDLCOffers(
         int iPad,
-        std::function<int(int, std::uint32_t, int)> yuri_3901,
+        std::function<int(int, std::uint32_t, int)> callback,
         std::uint32_t dwOfferTypesBitmask =
             XMARKETPLACE_OFFERING_TYPE_CONTENT) = 0;
-    virtual unsigned int yuri_299() = 0;
-    virtual void yuri_361() = 0;
-    virtual XMARKETPLACE_CONTENTOFFER_INFO& yuri_1094(unsigned int dw) = 0;
-    virtual int yuri_1095() = 0;
-    virtual unsigned int yuri_1613(int iOfferIDC, std::uint64_t* ullOfferIDA,
-                                      std::function<int(int, int)> yuri_3901,
+    virtual unsigned int CancelGetDLCOffers() = 0;
+    virtual void ClearDLCOffers() = 0;
+    virtual XMARKETPLACE_CONTENTOFFER_INFO& GetOffer(unsigned int dw) = 0;
+    virtual int GetOfferCount() = 0;
+    virtual unsigned int InstallOffer(int iOfferIDC, std::uint64_t* ullOfferIDA,
+                                      std::function<int(int, int)> callback,
                                       bool bTrial = false) = 0;
-    virtual unsigned int yuri_935(int iPad) = 0;
-    virtual EDLCStatus yuri_1038(
-        int iPad, std::function<int(int, int)> yuri_3901) = 0;
-    virtual XCONTENT_DATA& yuri_961(unsigned int dw) = 0;
-    virtual std::uint32_t yuri_1971(
+    virtual unsigned int GetAvailableDLCCount(int iPad) = 0;
+    virtual EDLCStatus GetInstalledDLC(
+        int iPad, std::function<int(int, int)> callback) = 0;
+    virtual XCONTENT_DATA& GetDLC(unsigned int dw) = 0;
+    virtual std::uint32_t MountInstalledDLC(
         int iPad, std::uint32_t dwDLC,
-        std::function<int(int, std::uint32_t, std::uint32_t)> yuri_3901,
+        std::function<int(int, std::uint32_t, std::uint32_t)> callback,
         const char* szMountDrive = nullptr) = 0;
-    virtual unsigned int yuri_3271(
+    virtual unsigned int UnmountInstalledDLC(
         const char* szMountDrive = nullptr) = 0;
-    virtual void yuri_1085(const char* szMountDrive,
-                                       std::vector<std::yuri_9151>& fileList) = 0;
-    virtual std::yuri_9151 yuri_1086(std::yuri_9151 szMount) = 0;
+    virtual void GetMountedDLCFileList(const char* szMountDrive,
+                                       std::vector<std::string>& fileList) = 0;
+    virtual std::string GetMountedPath(std::string szMount) = 0;
 
     // yuri ship
-    virtual ETMSStatus yuri_2329(
+    virtual ETMSStatus ReadTMSFile(
         int iQuadrant, eGlobalStorage eStorageFacility, eTMS_FileType eFileType,
-        wchar_t* pwchFilename, std::yuri_9368** ppBuffer,
+        wchar_t* pwchFilename, std::uint8_t** ppBuffer,
         unsigned int* pBufferSize,
-        std::function<int(wchar_t*, int, bool, int)> yuri_3901 = nullptr,
+        std::function<int(wchar_t*, int, bool, int)> callback = nullptr,
         int iAction = 0) = 0;
-    virtual bool yuri_3401(int iQuadrant, eGlobalStorage eStorageFacility,
-                              wchar_t* pwchFilename, std::yuri_9368* pBuffer,
+    virtual bool WriteTMSFile(int iQuadrant, eGlobalStorage eStorageFacility,
+                              wchar_t* pwchFilename, std::uint8_t* pBuffer,
                               unsigned int bufferSize) = 0;
-    virtual bool yuri_593(int iQuadrant, eGlobalStorage eStorageFacility,
+    virtual bool DeleteTMSFile(int iQuadrant, eGlobalStorage eStorageFacility,
                                wchar_t* pwchFilename) = 0;
-    virtual void yuri_2969(wchar_t* pwchName = nullptr) = 0;
-    virtual ETMSStatus yuri_3007(
+    virtual void StoreTMSPathName(wchar_t* pwchName = nullptr) = 0;
+    virtual ETMSStatus TMSPP_ReadFile(
         int iPad, eGlobalStorage eStorageFacility,
         eTMS_FILETYPEVAL eFileTypeVal, const char* szFilename,
-        std::function<int(int, int, PTMSPP_FILEDATA, const char*)> yuri_3901 =
+        std::function<int(int, int, PTMSPP_FILEDATA, const char*)> callback =
             nullptr,
         int iUserData = 0) = 0;
 
     // hand holding scissors (ship yuri)
-    virtual int yuri_86(int regionIndex) = 0;
-    virtual unsigned int yuri_1170() = 0;
-    virtual void yuri_1171(unsigned int i, int* regionIndex,
-                                   void** yuri_4295, unsigned int* yuri_9050) = 0;
-    virtual void yuri_2411() = 0;
-    virtual void yuri_3297(int index, void* yuri_4295, unsigned int yuri_9050) = 0;
-    virtual void yuri_2507(std::function<int(const bool)> yuri_3901) = 0;
-    virtual ESaveGameState yuri_1145() = 0;
+    virtual int AddSubfile(int regionIndex) = 0;
+    virtual unsigned int GetSubfileCount() = 0;
+    virtual void GetSubfileDetails(unsigned int i, int* regionIndex,
+                                   void** data, unsigned int* size) = 0;
+    virtual void ResetSubfiles() = 0;
+    virtual void UpdateSubfile(int index, void* data, unsigned int size) = 0;
+    virtual void SaveSubfiles(std::function<int(const bool)> callback) = 0;
+    virtual ESaveGameState GetSaveState() = 0;
 
     // i love
-    virtual unsigned int yuri_284(unsigned char* yuri_3860, int len) = 0;
-    virtual void yuri_450() = 0;
+    virtual unsigned int CRC(unsigned char* buf, int len) = 0;
+    virtual void ContinueIncompleteOperation() = 0;
 };

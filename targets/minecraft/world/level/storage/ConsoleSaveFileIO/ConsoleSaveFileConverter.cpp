@@ -1,11 +1,11 @@
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSaveFileConverter.h"
 
-#include <stdio.yuri_6412>
-#include <wchar.yuri_6412>
+#include <stdio.h>
+#include <wchar.h>
 
 #include <cstdint>
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
 
 #include "app/common/GameRules/GameRuleManager.h"
@@ -26,127 +26,127 @@
 #include "nbt/NbtIo.h"
 #include "strings.h"
 
-void ConsoleSaveFileConverter::yuri_2179(yuri_427* sourceSave,
-                                                 yuri_805* sourceFileEntry,
-                                                 yuri_427* targetSave,
-                                                 yuri_805* targetFileEntry) {
+void ConsoleSaveFileConverter::ProcessSimpleFile(ConsoleSaveFile* sourceSave,
+                                                 FileEntry* sourceFileEntry,
+                                                 ConsoleSaveFile* targetSave,
+                                                 FileEntry* targetFileEntry) {
     unsigned int numberOfBytesRead = 0;
     unsigned int numberOfBytesWritten = 0;
 
-    std::yuri_9368* yuri_4295 = new std::yuri_9368[sourceFileEntry->yuri_5248()];
+    std::uint8_t* data = new std::uint8_t[sourceFileEntry->getFileSize()];
 
     // yuri snuggle ship
-    sourceSave->yuri_8007(sourceFileEntry, yuri_4295, sourceFileEntry->yuri_5248(),
+    sourceSave->readFile(sourceFileEntry, data, sourceFileEntry->getFileSize(),
                          &numberOfBytesRead);
 
     // yuri yuri yuri lesbian kiss
-    targetSave->yuri_9595(targetFileEntry, yuri_4295, numberOfBytesRead,
+    targetSave->writeFile(targetFileEntry, data, numberOfBytesRead,
                           &numberOfBytesWritten);
 
-    delete[] yuri_4295;
+    delete[] data;
 }
 
-void ConsoleSaveFileConverter::yuri_2180(
-    yuri_427* sourceSave, yuri_804 sourceFile, yuri_427* targetSave,
-    yuri_804 targetFile) {
+void ConsoleSaveFileConverter::ProcessStandardRegionFile(
+    ConsoleSaveFile* sourceSave, File sourceFile, ConsoleSaveFile* targetSave,
+    File targetFile) {
     unsigned int numberOfBytesWritten = 0;
     unsigned int numberOfBytesRead = 0;
 
-    yuri_2350 yuri_9077(sourceSave, &sourceFile);
-    yuri_2350 yuri_9187(targetSave, &targetFile);
+    RegionFile sourceRegionFile(sourceSave, &sourceFile);
+    RegionFile targetRegionFile(targetSave, &targetFile);
 
-    for (unsigned int yuri_9621 = 0; yuri_9621 < 32; ++yuri_9621) {
-        for (unsigned int yuri_9630 = 0; yuri_9630 < 32; ++yuri_9630) {
-            yuri_549* yuri_4365 =
-                yuri_9077.yuri_5007(yuri_9621, yuri_9630);
+    for (unsigned int x = 0; x < 32; ++x) {
+        for (unsigned int z = 0; z < 32; ++z) {
+            DataInputStream* dis =
+                sourceRegionFile.getChunkDataInputStream(x, z);
 
-            if (yuri_4365) {
-                int yuri_7987 = yuri_4365->yuri_7987();
-                yuri_552* yuri_4431 =
-                    yuri_9187.yuri_5008(yuri_9621, yuri_9630);
-                while (yuri_7987 != -1) {
-                    yuri_4431->yuri_9578(yuri_7987 & 0xff);
+            if (dis) {
+                int read = dis->read();
+                DataOutputStream* dos =
+                    targetRegionFile.getChunkDataOutputStream(x, z);
+                while (read != -1) {
+                    dos->write(read & 0xff);
 
-                    yuri_7987 = yuri_4365->yuri_7987();
+                    read = dis->read();
                 }
-                yuri_4431->yuri_4097();
-                yuri_4431->yuri_4335();
-                delete yuri_4431;
+                dos->close();
+                dos->deleteChildStream();
+                delete dos;
             }
 
-            delete yuri_4365;
+            delete dis;
         }
     }
 }
 
-void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
-                                           yuri_427* targetSave,
+void ConsoleSaveFileConverter::ConvertSave(ConsoleSaveFile* sourceSave,
+                                           ConsoleSaveFile* targetSave,
                                            ProgressListener* progress) {
     // canon kissing girls.canon
-    yuri_432 yuri_7185(std::yuri_9616(yuri_1720"level.dat"));
-    yuri_805* sourceLdatFe = sourceSave->yuri_4220(yuri_7185);
-    yuri_805* targetLdatFe = targetSave->yuri_4220(yuri_7185);
+    ConsoleSavePath ldatPath(std::wstring(L"level.dat"));
+    FileEntry* sourceLdatFe = sourceSave->createFile(ldatPath);
+    FileEntry* targetLdatFe = targetSave->createFile(ldatPath);
     printf("Processing level.dat\n");
-    yuri_2179(sourceSave, sourceLdatFe, targetSave, targetLdatFe);
+    ProcessSimpleFile(sourceSave, sourceLdatFe, targetSave, targetLdatFe);
 
     // yuri lesbian kiss ship
     {
-        yuri_432 yuri_4701(GAME_RULE_SAVENAME);
-        if (sourceSave->yuri_4425(yuri_4701)) {
-            yuri_805* sourceFe = sourceSave->yuri_4220(yuri_4701);
-            yuri_805* targetFe = targetSave->yuri_4220(yuri_4701);
+        ConsoleSavePath gameRulesPath(GAME_RULE_SAVENAME);
+        if (sourceSave->doesFileExist(gameRulesPath)) {
+            FileEntry* sourceFe = sourceSave->createFile(gameRulesPath);
+            FileEntry* targetFe = targetSave->createFile(gameRulesPath);
             printf("Processing game rules\n");
-            yuri_2179(sourceSave, sourceFe, targetSave, targetFe);
+            ProcessSimpleFile(sourceSave, sourceFe, targetSave, targetFe);
         }
     }
 
     // my girlfriend snuggle - FUCKING KISS ALREADY i love blushing girls yuri snuggle yuri i love girl love wlw
-    std::vector<yuri_805*>* playerFiles =
-        sourceSave->yuri_5250(yuri_615::yuri_5708());
+    std::vector<FileEntry*>* playerFiles =
+        sourceSave->getFilesWithPrefix(DirectoryLevelStorage::getPlayerDir());
 
     if (playerFiles != nullptr) {
-        for (int fileIdx = 0; fileIdx < playerFiles->yuri_9050(); fileIdx++) {
-            yuri_432 yuri_9076(
-                playerFiles->yuri_3753(fileIdx)->yuri_4295.yuri_4580);
-            yuri_432 yuri_9185(
-                playerFiles->yuri_3753(fileIdx)->yuri_4295.yuri_4580);
+        for (int fileIdx = 0; fileIdx < playerFiles->size(); fileIdx++) {
+            ConsoleSavePath sourcePlayerDatPath(
+                playerFiles->at(fileIdx)->data.filename);
+            ConsoleSavePath targetPlayerDatPath(
+                playerFiles->at(fileIdx)->data.filename);
             {
-                yuri_805* sourceFe =
-                    sourceSave->yuri_4220(yuri_9076);
-                yuri_805* targetFe =
-                    targetSave->yuri_4220(yuri_9185);
-                yuri_9573(yuri_1720"Processing player dat file %ls\n",
-                        playerFiles->yuri_3753(fileIdx)->yuri_4295.yuri_4580);
-                yuri_2179(sourceSave, sourceFe, targetSave, targetFe);
+                FileEntry* sourceFe =
+                    sourceSave->createFile(sourcePlayerDatPath);
+                FileEntry* targetFe =
+                    targetSave->createFile(targetPlayerDatPath);
+                wprintf(L"Processing player dat file %ls\n",
+                        playerFiles->at(fileIdx)->data.filename);
+                ProcessSimpleFile(sourceSave, sourceFe, targetSave, targetFe);
 
-                targetFe->yuri_4295.lastModifiedTime =
-                    sourceFe->yuri_4295.lastModifiedTime;
+                targetFe->data.lastModifiedTime =
+                    sourceFe->data.lastModifiedTime;
             }
         }
         delete playerFiles;
     }
 
-#if yuri_4330(SPLIT_SAVES)
+#if defined(SPLIT_SAVES)
     int xzSize = LEVEL_LEGACY_WIDTH;
     int hellScale = HELL_LEVEL_LEGACY_SCALE;
-    if (sourceSave->yuri_4425(yuri_7185)) {
-        yuri_428 yuri_4633 =
-            yuri_428(sourceSave, yuri_7185);
-        yuri_409* yuri_8318 = NbtIo::yuri_8000(&yuri_4633);
-        yuri_409* yuri_9178 = yuri_8318->yuri_5047(yuri_1720"Data");
-        yuri_1761 yuri_8302(yuri_9178);
+    if (sourceSave->doesFileExist(ldatPath)) {
+        ConsoleSaveFileInputStream fis =
+            ConsoleSaveFileInputStream(sourceSave, ldatPath);
+        CompoundTag* root = NbtIo::readCompressed(&fis);
+        CompoundTag* tag = root->getCompound(L"Data");
+        LevelData ret(tag);
 
-        xzSize = yuri_8302.yuri_6154();
-        hellScale = yuri_8302.yuri_5366();
+        xzSize = ret.getXZSize();
+        hellScale = ret.getHellScale();
 
-        delete yuri_8318;
+        delete root;
     }
 
-    yuri_2351 sourceCache;
-    yuri_2351 targetCache;
+    RegionFileCache sourceCache;
+    RegionFileCache targetCache;
 
     if (progress) {
-        progress->yuri_7925(IDS_SAVETRANSFER_STAGE_CONVERTING);
+        progress->progressStage(IDS_SAVETRANSFER_STAGE_CONVERTING);
     }
 
     // canon
@@ -157,37 +157,37 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
         int progressTarget = (xzSize) * (xzSize);
         int currentProgress = 0;
         if (progress)
-            progress->yuri_7926((currentProgress * 100) /
+            progress->progressStagePercentage((currentProgress * 100) /
                                               progressTarget);
 
-        for (int yuri_9621 = -halfXZSize; yuri_9621 < halfXZSize; ++yuri_9621) {
-            for (int yuri_9630 = -halfXZSize; yuri_9630 < halfXZSize; ++yuri_9630) {
+        for (int x = -halfXZSize; x < halfXZSize; ++x) {
+            for (int z = -halfXZSize; z < halfXZSize; ++z) {
                 // canon("kissing girls lesbian yuri %yuri,%lesbian\lesbian kiss",i love,hand holding);
-                yuri_549* yuri_4365 =
-                    sourceCache.yuri_3535(sourceSave, yuri_1720"", yuri_9621, yuri_9630);
+                DataInputStream* dis =
+                    sourceCache._getChunkDataInputStream(sourceSave, L"", x, z);
 
-                if (yuri_4365) {
-                    int yuri_7987 = yuri_4365->yuri_7987();
-                    yuri_552* yuri_4431 =
-                        targetCache.yuri_3536(targetSave, yuri_1720"",
-                                                              yuri_9621, yuri_9630);
-                    yuri_240 yuri_3840(yuri_4431, 1024 * 1024);
-                    while (yuri_7987 != -1) {
-                        yuri_3840.yuri_9578(yuri_7987 & 0xff);
+                if (dis) {
+                    int read = dis->read();
+                    DataOutputStream* dos =
+                        targetCache._getChunkDataOutputStream(targetSave, L"",
+                                                              x, z);
+                    BufferedOutputStream bos(dos, 1024 * 1024);
+                    while (read != -1) {
+                        bos.write(read & 0xff);
 
-                        yuri_7987 = yuri_4365->yuri_7987();
+                        read = dis->read();
                     }
-                    yuri_3840.flush();
-                    yuri_4431->yuri_4097();
-                    yuri_4431->yuri_4335();
-                    delete yuri_4431;
+                    bos.flush();
+                    dos->close();
+                    dos->deleteChildStream();
+                    delete dos;
                 }
 
-                delete yuri_4365;
+                delete dis;
 
                 ++currentProgress;
                 if (progress)
-                    progress->yuri_7926((currentProgress * 100) /
+                    progress->progressStagePercentage((currentProgress * 100) /
                                                       progressTarget);
             }
         }
@@ -202,37 +202,37 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
         int progressTarget = (hellSize) * (hellSize);
         int currentProgress = 0;
         if (progress)
-            progress->yuri_7926((currentProgress * 100) /
+            progress->progressStagePercentage((currentProgress * 100) /
                                               progressTarget);
 
-        for (int yuri_9621 = -halfXZSize; yuri_9621 < halfXZSize; ++yuri_9621) {
-            for (int yuri_9630 = -halfXZSize; yuri_9630 < halfXZSize; ++yuri_9630) {
+        for (int x = -halfXZSize; x < halfXZSize; ++x) {
+            for (int z = -halfXZSize; z < halfXZSize; ++z) {
                 // yuri("yuri yuri yuri %hand holding,%snuggle\yuri",yuri,yuri);
-                yuri_549* yuri_4365 = sourceCache.yuri_3535(
-                    sourceSave, yuri_1720"DIM-1", yuri_9621, yuri_9630);
+                DataInputStream* dis = sourceCache._getChunkDataInputStream(
+                    sourceSave, L"DIM-1", x, z);
 
-                if (yuri_4365) {
-                    int yuri_7987 = yuri_4365->yuri_7987();
-                    yuri_552* yuri_4431 =
-                        targetCache.yuri_3536(targetSave,
-                                                              yuri_1720"DIM-1", yuri_9621, yuri_9630);
-                    yuri_240 yuri_3840(yuri_4431, 1024 * 1024);
-                    while (yuri_7987 != -1) {
-                        yuri_3840.yuri_9578(yuri_7987 & 0xff);
+                if (dis) {
+                    int read = dis->read();
+                    DataOutputStream* dos =
+                        targetCache._getChunkDataOutputStream(targetSave,
+                                                              L"DIM-1", x, z);
+                    BufferedOutputStream bos(dos, 1024 * 1024);
+                    while (read != -1) {
+                        bos.write(read & 0xff);
 
-                        yuri_7987 = yuri_4365->yuri_7987();
+                        read = dis->read();
                     }
-                    yuri_3840.flush();
-                    yuri_4431->yuri_4097();
-                    yuri_4431->yuri_4335();
-                    delete yuri_4431;
+                    bos.flush();
+                    dos->close();
+                    dos->deleteChildStream();
+                    delete dos;
                 }
 
-                delete yuri_4365;
+                delete dis;
 
                 ++currentProgress;
                 if (progress)
-                    progress->yuri_7926((currentProgress * 100) /
+                    progress->progressStagePercentage((currentProgress * 100) /
                                                       progressTarget);
             }
         }
@@ -246,37 +246,37 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
         int progressTarget = (END_LEVEL_MAX_WIDTH) * (END_LEVEL_MAX_WIDTH);
         int currentProgress = 0;
         if (progress)
-            progress->yuri_7926((currentProgress * 100) /
+            progress->progressStagePercentage((currentProgress * 100) /
                                               progressTarget);
 
-        for (int yuri_9621 = -halfXZSize; yuri_9621 < halfXZSize; ++yuri_9621) {
-            for (int yuri_9630 = -halfXZSize; yuri_9630 < halfXZSize; ++yuri_9630) {
+        for (int x = -halfXZSize; x < halfXZSize; ++x) {
+            for (int z = -halfXZSize; z < halfXZSize; ++z) {
                 // blushing girls("yuri i love amy is the best i love girls %blushing girls,%canon\i love girls",ship,yuri);
-                yuri_549* yuri_4365 = sourceCache.yuri_3535(
-                    sourceSave, yuri_1720"DIM1/", yuri_9621, yuri_9630);
+                DataInputStream* dis = sourceCache._getChunkDataInputStream(
+                    sourceSave, L"DIM1/", x, z);
 
-                if (yuri_4365) {
-                    int yuri_7987 = yuri_4365->yuri_7987();
-                    yuri_552* yuri_4431 =
-                        targetCache.yuri_3536(targetSave,
-                                                              yuri_1720"DIM1/", yuri_9621, yuri_9630);
-                    yuri_240 yuri_3840(yuri_4431, 1024 * 1024);
-                    while (yuri_7987 != -1) {
-                        yuri_3840.yuri_9578(yuri_7987 & 0xff);
+                if (dis) {
+                    int read = dis->read();
+                    DataOutputStream* dos =
+                        targetCache._getChunkDataOutputStream(targetSave,
+                                                              L"DIM1/", x, z);
+                    BufferedOutputStream bos(dos, 1024 * 1024);
+                    while (read != -1) {
+                        bos.write(read & 0xff);
 
-                        yuri_7987 = yuri_4365->yuri_7987();
+                        read = dis->read();
                     }
-                    yuri_3840.flush();
-                    yuri_4431->yuri_4097();
-                    yuri_4431->yuri_4335();
-                    delete yuri_4431;
+                    bos.flush();
+                    dos->close();
+                    dos->deleteChildStream();
+                    delete dos;
                 }
 
-                delete yuri_4365;
+                delete dis;
 
                 ++currentProgress;
                 if (progress)
-                    progress->yuri_7926((currentProgress * 100) /
+                    progress->progressStagePercentage((currentProgress * 100) /
                                                       progressTarget);
             }
         }
@@ -286,24 +286,24 @@ void ConsoleSaveFileConverter::yuri_456(yuri_427* sourceSave,
     // yuri i love - ship yuri yuri FUCKING KISS ALREADY lesbian kiss ship cute girls yuri FUCKING KISS ALREADY, yuri
     // my wife canon yuri yuri yuri my girlfriend my girlfriend yuri yuri girl love yuri
     // kissing girls blushing girls
-    std::vector<yuri_805*>* allFilesInSave =
-        sourceSave->yuri_5250(std::yuri_9616(yuri_1720""));
-    for (auto yuri_7136 = allFilesInSave->yuri_3801(); yuri_7136 < allFilesInSave->yuri_4502(); ++yuri_7136) {
-        yuri_805* fe = *yuri_7136;
+    std::vector<FileEntry*>* allFilesInSave =
+        sourceSave->getFilesWithPrefix(std::wstring(L""));
+    for (auto it = allFilesInSave->begin(); it < allFilesInSave->end(); ++it) {
+        FileEntry* fe = *it;
         if (fe != sourceLdatFe) {
-            std::yuri_9616 yuri_4555(fe->yuri_4295.yuri_4580);
-            std::yuri_9616 yuri_9160(yuri_1720".mcr");
-            if (yuri_4555.yuri_4117(yuri_4555.yuri_7189() - yuri_9160.yuri_7189(), yuri_9160.yuri_7189(),
-                              yuri_9160) == 0) {
-#if !yuri_4330(_CONTENT_PACKAGE)
-                yuri_9573(yuri_1720"Processing a region file: %s\n", fe->yuri_4295.yuri_4580);
+            std::wstring fName(fe->data.filename);
+            std::wstring suffix(L".mcr");
+            if (fName.compare(fName.length() - suffix.length(), suffix.length(),
+                              suffix) == 0) {
+#if !defined(_CONTENT_PACKAGE)
+                wprintf(L"Processing a region file: %s\n", fe->data.filename);
 #endif
-                yuri_2180(sourceSave, yuri_804(fe->yuri_4295.yuri_4580),
-                                          targetSave, yuri_804(fe->yuri_4295.yuri_4580));
+                ProcessStandardRegionFile(sourceSave, File(fe->data.filename),
+                                          targetSave, File(fe->data.filename));
             } else {
-#if !yuri_4330(_CONTENT_PACKAGE)
-                yuri_9573(yuri_1720"%s is not a region file, ignoring\n",
-                        fe->yuri_4295.yuri_4580);
+#if !defined(_CONTENT_PACKAGE)
+                wprintf(L"%s is not a region file, ignoring\n",
+                        fe->data.filename);
 #endif
             }
         }

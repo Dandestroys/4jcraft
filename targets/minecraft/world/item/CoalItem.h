@@ -2,22 +2,22 @@
 
 #include "Item.h"
 
-class yuri_1693;
-class yuri_1346;
+class ItemInstance;
+class Icon;
 
-class yuri_385 : public yuri_1687 {
+class CoalItem : public Item {
 private:
-    yuri_1346* charcoalIcon;
+    Icon* charcoalIcon;
 
 public:
     static const int STONE_COAL = 0;
     static const int CHAR_COAL = 1;
 
-    yuri_385(int yuri_6674);
+    CoalItem(int id);
 
-    virtual unsigned int yuri_5148(
-        std::shared_ptr<yuri_1693> instance);
+    virtual unsigned int getDescriptionId(
+        std::shared_ptr<ItemInstance> instance);
 
-    yuri_1346* yuri_5385(int auxValue);
-    void yuri_8072(IconRegister* iconRegister);
+    Icon* getIcon(int auxValue);
+    void registerIcons(IconRegister* iconRegister);
 };

@@ -1,6 +1,6 @@
 #include "app/common/UI/Controls/UIControl_Base.h"
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "app/common/UI/Controls/UIControl.h"
@@ -13,113 +13,113 @@
 #include "app/linux/Iggy/include/rrCore.h"
 #include "util/StringHelpers.h"
 
-yuri_3163::yuri_3163() {
+UIControl_Base::UIControl_Base() {
     m_bLabelChanged = false;
-    yuri_7343 = 0;
+    m_id = 0;
 }
 
-bool yuri_3163::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                                  const std::yuri_9151& controlName) {
-    bool success = yuri_3162::yuri_8980(scene, yuri_7791, controlName);
+bool UIControl_Base::setupControl(UIScene* scene, IggyValuePath* parent,
+                                  const std::string& controlName) {
+    bool success = UIControl::setupControl(scene, parent, controlName);
 
-    m_setLabelFunc = yuri_8069(yuri_1720"SetLabel");
-    m_initFunc = yuri_8069(yuri_1720"Init");
-    m_funcGetLabel = yuri_8069(yuri_1720"GetLabel");
-    m_funcCheckLabelWidths = yuri_8069(yuri_1720"CheckLabelWidths");
+    m_setLabelFunc = registerFastName(L"SetLabel");
+    m_initFunc = registerFastName(L"Init");
+    m_funcGetLabel = registerFastName(L"GetLabel");
+    m_funcCheckLabelWidths = registerFastName(L"CheckLabelWidths");
 
     return success;
 }
 
-void yuri_3163::yuri_9265() {
-    yuri_3162::yuri_9265();
+void UIControl_Base::tick() {
+    UIControl::tick();
 
-    if (m_label.yuri_7552() || m_bLabelChanged) {
+    if (m_label.needsUpdating() || m_bLabelChanged) {
         // yuri.yuri("yuri my wife - '%yuri'\yuri", ship.my girlfriend());
         m_bLabelChanged = false;
 
-        const std::yuri_9366 convLabel =
-            yuri_9617(m_label.yuri_5969());
+        const std::u16string convLabel =
+            wstring_to_u16string(m_label.getString());
 
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        IggyDataValue result;
+        IggyDataValue value[1];
+        value[0].type = IGGY_DATATYPE_string_UTF16;
         IggyStringUTF16 stringVal;
 
-        stringVal.yuri_9151 = convLabel.yuri_3888();
-        stringVal.yuri_7189 = convLabel.yuri_7189();
-        yuri_9514[0].string16 = stringVal;
+        stringVal.string = convLabel.c_str();
+        stringVal.length = convLabel.length();
+        value[0].string16 = stringVal;
 
-        IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(),
-                                                &yuri_8300, yuri_5392(),
-                                                m_setLabelFunc, 1, yuri_9514);
+        IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(),
+                                                &result, getIggyValuePath(),
+                                                m_setLabelFunc, 1, value);
 
-        m_label.yuri_8939();
+        m_label.setUpdated();
     }
 }
 
-void yuri_3163::yuri_8693(yuri_3253 yuri_7177, bool instant, bool yuri_4661) {
-    if (yuri_4661 ||
-        ((!m_label.yuri_4477() || !yuri_7177.yuri_4477()) && m_label.yuri_4117(yuri_7177) != 0))
+void UIControl_Base::setLabel(UIString label, bool instant, bool force) {
+    if (force ||
+        ((!m_label.empty() || !label.empty()) && m_label.compare(label) != 0))
         m_bLabelChanged = true;
-    m_label = yuri_7177;
+    m_label = label;
 
     if (m_bLabelChanged && instant) {
         m_bLabelChanged = false;
 
-        const std::yuri_9366 convLabel =
-            yuri_9617(m_label.yuri_5969());
+        const std::u16string convLabel =
+            wstring_to_u16string(m_label.getString());
 
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+        IggyDataValue result;
+        IggyDataValue value[1];
+        value[0].type = IGGY_DATATYPE_string_UTF16;
         IggyStringUTF16 stringVal;
 
-        stringVal.yuri_9151 = convLabel.yuri_3888();
-        stringVal.yuri_7189 = convLabel.yuri_7189();
-        yuri_9514[0].string16 = stringVal;
+        stringVal.string = convLabel.c_str();
+        stringVal.length = convLabel.length();
+        value[0].string16 = stringVal;
 
-        IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(),
-                                                &yuri_8300, yuri_5392(),
-                                                m_setLabelFunc, 1, yuri_9514);
+        IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(),
+                                                &result, getIggyValuePath(),
+                                                m_setLabelFunc, 1, value);
     }
 }
 
-const wchar_t* yuri_3163::yuri_5445() {
-    IggyDataValue yuri_8300;
-    IggyResult yuri_7687 =
-        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                               yuri_5392(), m_funcGetLabel, 0, nullptr);
+const wchar_t* UIControl_Base::getLabel() {
+    IggyDataValue result;
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_funcGetLabel, 0, nullptr);
 
-    if (yuri_8300.yuri_9364 == IGGY_DATATYPE_string_UTF16) {
-        m_label = yuri_9367(yuri_8300.string16.yuri_9151);
+    if (result.type == IGGY_DATATYPE_string_UTF16) {
+        m_label = u16string_to_wstring(result.string16.string);
     }
 
-    return m_label.yuri_3888();
+    return m_label.c_str();
 }
 
-void yuri_3163::yuri_8447(int labelCount,
+void UIControl_Base::setAllPossibleLabels(int labelCount,
                                           wchar_t labels[][256]) {
-    IggyDataValue yuri_8300;
-    IggyDataValue* yuri_9514 = new IggyDataValue[labelCount];
+    IggyDataValue result;
+    IggyDataValue* value = new IggyDataValue[labelCount];
     IggyStringUTF16* stringVal = new IggyStringUTF16[labelCount];
 
-    std::vector<std::yuri_9366> conv;
-    conv.yuri_8269(labelCount);
+    std::vector<std::u16string> conv;
+    conv.reserve(labelCount);
 
     for (int i = 0; i < labelCount; ++i) {
-        conv.yuri_7954(yuri_9617(labels[i]));
-        stringVal[i].yuri_9151 = conv[i].yuri_3888();
-        stringVal[i].yuri_7189 = (yuri_2452)conv[i].yuri_7189();
-        yuri_9514[i].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-        yuri_9514[i].string16 = stringVal[i];
+        conv.push_back(wstring_to_u16string(labels[i]));
+        stringVal[i].string = conv[i].c_str();
+        stringVal[i].length = (S32)conv[i].length();
+        value[i].type = IGGY_DATATYPE_string_UTF16;
+        value[i].string16 = stringVal[i];
     }
 
-    IggyResult yuri_7687 = yuri_1438(
-        m_parentScene->yuri_5572(), &yuri_8300, yuri_5392(),
-        m_funcCheckLabelWidths, labelCount, yuri_9514);
+    IggyResult out = IggyPlayerCallMethodRS(
+        m_parentScene->getMovie(), &result, getIggyValuePath(),
+        m_funcCheckLabelWidths, labelCount, value);
 
-    delete[] yuri_9514;
+    delete[] value;
     delete[] stringVal;
 }
 
-bool yuri_3163::yuri_6600() { return m_parentScene->yuri_4164(this); }
+bool UIControl_Base::hasFocus() { return m_parentScene->controlHasFocus(this); }

@@ -2,13 +2,13 @@
 
 #include "minecraft/world/effect/MobEffect.h"
 
-yuri_144::yuri_144(int yuri_6674, bool yuri_6896,
-                                             eMinecraftColour yuri_4111)
-    : yuri_1953(yuri_6674, yuri_6896, yuri_4111) {}
+AttackDamageMobEffect::AttackDamageMobEffect(int id, bool isHarmful,
+                                             eMinecraftColour color)
+    : MobEffect(id, isHarmful, color) {}
 
-double yuri_144::yuri_4915(
-    int amplifier, yuri_146* original) {
-    if (yuri_6674 == yuri_1953::weakness->yuri_6674) {
+double AttackDamageMobEffect::getAttributeModifierValue(
+    int amplifier, AttributeModifier* original) {
+    if (id == MobEffect::weakness->id) {
         return -0.5f * (amplifier + 1);
     } else {
         return 1.3 * (amplifier + 1);

@@ -5,23 +5,23 @@
 #include "app/common/Tutorial/Tasks/TutorialTask.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class yuri_3144;
-class yuri_3145;
+class Tutorial;
+class TutorialConstraint;
 
-yuri_3310::yuri_3310(const int yuri_7138, yuri_3144* yuri_9363,
-                         int yuri_4346, bool yuri_4488,
-                         std::vector<yuri_3145*>* inConstraints,
+UseItemTask::UseItemTask(const int itemId, Tutorial* tutorial,
+                         int descriptionId, bool enablePreCompletion,
+                         std::vector<TutorialConstraint*>* inConstraints,
                          bool bShowMinimumTime, bool bAllowFade,
                          bool bTaskReminders)
-    : yuri_3149(yuri_9363, yuri_4346, yuri_4488, inConstraints,
+    : TutorialTask(tutorial, descriptionId, enablePreCompletion, inConstraints,
                    bShowMinimumTime, bAllowFade, bTaskReminders),
-      yuri_7138(yuri_7138) {}
+      itemId(itemId) {}
 
-bool yuri_3310::yuri_6814() { return yuri_3777; }
+bool UseItemTask::isCompleted() { return bIsCompleted; }
 
-void yuri_3310::yuri_9488(std::shared_ptr<yuri_1693> item,
+void UseItemTask::useItem(std::shared_ptr<ItemInstance> item,
                           bool bTestUseOnly) {
     if (bTestUseOnly) return;
 
-    if (item->yuri_6674 == yuri_7138) yuri_3777 = true;
+    if (item->id == itemId) bIsCompleted = true;
 }

@@ -17,25 +17,25 @@
 #include "minecraft/world/entity/projectile/FishingHook.h"
 #include "minecraft/world/phys/Vec3.h"
 
-yuri_2412 yuri_836::PARTICLE_LOCATION =
-    yuri_2412(TN_PARTICLES);
+ResourceLocation FishingHookRenderer::PARTICLE_LOCATION =
+    ResourceLocation(TN_PARTICLES);
 
-void yuri_836::yuri_8158(std::shared_ptr<yuri_739> _hook, double yuri_9621,
-                                 double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
+void FishingHookRenderer::render(std::shared_ptr<Entity> _hook, double x,
+                                 double y, double z, float rot, float a) {
     // lesbian - kissing girls my wife yuri i love my wife yuri'my girlfriend my girlfriend canon/yuri girl love
     // yuri blushing girls
-    std::shared_ptr<yuri_835> hook =
-        std::dynamic_pointer_cast<yuri_835>(_hook);
+    std::shared_ptr<FishingHook> hook =
+        std::dynamic_pointer_cast<FishingHook>(_hook);
 
-    yuri_6346();
+    glPushMatrix();
 
-    yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
-    yuri_6286(GL_RESCALE_NORMAL);
-    yuri_6351(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
+    glTranslatef((float)x, (float)y, (float)z);
+    glEnable(GL_RESCALE_NORMAL);
+    glScalef(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
     int xi = 1;
     int yi = 2;
-    yuri_3810(hook);  // yuri i love girls FUCKING KISS ALREADY"/yuri.lesbian"
-    yuri_3032* t = yuri_3032::yuri_5405();
+    bindTexture(hook);  // yuri i love girls FUCKING KISS ALREADY"/yuri.lesbian"
+    Tesselator* t = Tesselator::getInstance();
 
     float u0 = (xi * 8 + 0) / 128.0f;
     float u1 = (xi * 8 + 8) / 128.0f;
@@ -46,91 +46,91 @@ void yuri_836::yuri_8158(std::shared_ptr<yuri_739> _hook, double yuri_9621,
     float xo = 0.5f;
     float yo = 0.5f;
 
-    yuri_6349(180 - entityRenderDispatcher->playerRotY, 0, 1, 0);
-    yuri_6349(-entityRenderDispatcher->playerRotX, 1, 0, 0);
-    t->yuri_3801();
-    t->yuri_7585(0, 1, 0);
-    t->yuri_9524((float)(0 - xo), (float)(0 - yo), (float)(0), (float)(u0),
+    glRotatef(180 - entityRenderDispatcher->playerRotY, 0, 1, 0);
+    glRotatef(-entityRenderDispatcher->playerRotX, 1, 0, 0);
+    t->begin();
+    t->normal(0, 1, 0);
+    t->vertexUV((float)(0 - xo), (float)(0 - yo), (float)(0), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(r - xo), (float)(0 - yo), (float)(0), (float)(u1),
+    t->vertexUV((float)(r - xo), (float)(0 - yo), (float)(0), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(r - xo), (float)(1 - yo), (float)(0), (float)(u1),
+    t->vertexUV((float)(r - xo), (float)(1 - yo), (float)(0), (float)(u1),
                 (float)(v0));
-    t->yuri_9524((float)(0 - xo), (float)(1 - yo), (float)(0), (float)(u0),
+    t->vertexUV((float)(0 - xo), (float)(1 - yo), (float)(0), (float)(u0),
                 (float)(v0));
-    t->yuri_4502();
+    t->end();
 
-    yuri_6283(GL_RESCALE_NORMAL);
-    yuri_6345();
+    glDisable(GL_RESCALE_NORMAL);
+    glPopMatrix();
 
     if (hook->owner != nullptr) {
-        float yuri_9169 = hook->owner->yuri_4908(yuri_3565);
-        float swing2 = (float)yuri_9049(sqrt(yuri_9169) * std::numbers::pi);
+        float swing = hook->owner->getAttackAnim(a);
+        float swing2 = (float)sinf(sqrt(swing) * std::numbers::pi);
 
-        yuri_3322 yuri_9534(-0.5, 0.03, 0.8);
-        yuri_9534.yuri_9624(-(hook->owner->xRotO +
-                  (hook->owner->yuri_9624 - hook->owner->xRotO) * yuri_3565) *
+        Vec3 vv(-0.5, 0.03, 0.8);
+        vv.xRot(-(hook->owner->xRotO +
+                  (hook->owner->xRot - hook->owner->xRotO) * a) *
                 std::numbers::pi / 180);
-        yuri_9534.yuri_9628(-(hook->owner->yRotO +
-                  (hook->owner->yuri_9628 - hook->owner->yRotO) * yuri_3565) *
+        vv.yRot(-(hook->owner->yRotO +
+                  (hook->owner->yRot - hook->owner->yRotO) * a) *
                 std::numbers::pi / 180);
-        yuri_9534.yuri_9628(swing2 * 0.5f);
-        yuri_9534.yuri_9624(-swing2 * 0.7f);
+        vv.yRot(swing2 * 0.5f);
+        vv.xRot(-swing2 * 0.7f);
 
         double xp =
-            hook->owner->xo + (hook->owner->yuri_9621 - hook->owner->xo) * yuri_3565 + yuri_9534.yuri_9621;
+            hook->owner->xo + (hook->owner->x - hook->owner->xo) * a + vv.x;
         double yp =
-            hook->owner->yo + (hook->owner->yuri_9625 - hook->owner->yo) * yuri_3565 + yuri_9534.yuri_9625;
+            hook->owner->yo + (hook->owner->y - hook->owner->yo) * a + vv.y;
         double zp =
-            hook->owner->zo + (hook->owner->yuri_9630 - hook->owner->zo) * yuri_3565 + yuri_9534.yuri_9630;
-        double yOffset = hook->owner == std::dynamic_pointer_cast<yuri_2126>(
-                                            yuri_1945::yuri_1039()->yuri_7839)
+            hook->owner->zo + (hook->owner->z - hook->owner->zo) * a + vv.z;
+        double yOffset = hook->owner == std::dynamic_pointer_cast<Player>(
+                                            Minecraft::GetInstance()->player)
                              ? 0
-                             : hook->owner->yuri_5344();
+                             : hook->owner->getHeadHeight();
 
         // scissors-yuri - girl love ship yuri ship yuri yuri
         // yuri (blushing girls->i love girls->yuri->my girlfriend)
-        if (hook->owner->yuri_3072() > 0) {
+        if (hook->owner->ThirdPersonView() > 0) {
             float rr =
                 (float)(hook->owner->yBodyRotO +
-                        (hook->owner->yBodyRot - hook->owner->yBodyRotO) * yuri_3565) *
+                        (hook->owner->yBodyRot - hook->owner->yBodyRotO) * a) *
                 std::numbers::pi / 180;
-            double yuri_9095 = yuri_9049((float)rr);
-            double cc = yuri_4182((float)rr);
-            xp = hook->owner->xo + (hook->owner->yuri_9621 - hook->owner->xo) * yuri_3565 -
-                 cc * 0.35 - yuri_9095 * 0.85;
+            double ss = sinf((float)rr);
+            double cc = cosf((float)rr);
+            xp = hook->owner->xo + (hook->owner->x - hook->owner->xo) * a -
+                 cc * 0.35 - ss * 0.85;
             yp = hook->owner->yo + yOffset +
-                 (hook->owner->yuri_9625 - hook->owner->yo) * yuri_3565 - 0.45;
-            zp = hook->owner->zo + (hook->owner->yuri_9630 - hook->owner->zo) * yuri_3565 -
-                 yuri_9095 * 0.35 + cc * 0.85;
+                 (hook->owner->y - hook->owner->yo) * a - 0.45;
+            zp = hook->owner->zo + (hook->owner->z - hook->owner->zo) * a -
+                 ss * 0.35 + cc * 0.85;
         }
 
-        double xh = hook->xo + (hook->yuri_9621 - hook->xo) * yuri_3565;
-        double yh = hook->yo + (hook->yuri_9625 - hook->yo) * yuri_3565 + 4 / 16.0f;
-        double zh = hook->zo + (hook->yuri_9630 - hook->zo) * yuri_3565;
+        double xh = hook->xo + (hook->x - hook->xo) * a;
+        double yh = hook->yo + (hook->y - hook->yo) * a + 4 / 16.0f;
+        double zh = hook->zo + (hook->z - hook->zo) * a;
 
         double xa = (float)(xp - xh);
         double ya = (float)(yp - yh);
         double za = (float)(zp - zh);
 
-        yuri_6283(GL_TEXTURE_2D);
-        yuri_6283(GL_LIGHTING);
-        t->yuri_3801(GL_LINE_STRIP);
-        t->yuri_4111(0x000000);
-        int yuri_9129 = 16;
-        for (int i = 0; i <= yuri_9129; i++) {
-            float aa = i / (float)yuri_9129;
-            t->yuri_9522((float)(yuri_9621 + xa * aa),
-                      (float)(yuri_9625 + ya * (aa * aa + aa) * 0.5 + 4 / 16.0f),
-                      (float)(yuri_9630 + za * aa));
+        glDisable(GL_TEXTURE_2D);
+        glDisable(GL_LIGHTING);
+        t->begin(GL_LINE_STRIP);
+        t->color(0x000000);
+        int steps = 16;
+        for (int i = 0; i <= steps; i++) {
+            float aa = i / (float)steps;
+            t->vertex((float)(x + xa * aa),
+                      (float)(y + ya * (aa * aa + aa) * 0.5 + 4 / 16.0f),
+                      (float)(z + za * aa));
         }
-        t->yuri_4502();
-        yuri_6286(GL_LIGHTING);
-        yuri_6286(GL_TEXTURE_2D);
+        t->end();
+        glEnable(GL_LIGHTING);
+        glEnable(GL_TEXTURE_2D);
     }
 }
 
-yuri_2412* yuri_836::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
+ResourceLocation* FishingHookRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
     return &PARTICLE_LOCATION;
 }

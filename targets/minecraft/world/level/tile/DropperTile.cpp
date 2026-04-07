@@ -1,7 +1,7 @@
 #include "DropperTile.h"
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/Facing.h"
 #include "minecraft/core/BlockSourceImpl.h"
@@ -16,65 +16,65 @@
 #include "minecraft/world/level/tile/entity/DropperTileEntity.h"
 #include "minecraft/world/level/tile/entity/HopperTileEntity.h"
 
-class yuri_436;
+class Container;
 
-yuri_658::yuri_658(int yuri_6674) : yuri_625(yuri_6674) {
-    DISPENSE_BEHAVIOUR = new yuri_578();
+DropperTile::DropperTile(int id) : DispenserTile(id) {
+    DISPENSE_BEHAVIOUR = new DefaultDispenseItemBehavior();
 }
 
-void yuri_658::yuri_8072(IconRegister* iconRegister) {
-    yuri_6672 = iconRegister->yuri_8071(yuri_1720"furnace_side");
-    iconTop = iconRegister->yuri_8071(yuri_1720"furnace_top");
+void DropperTile::registerIcons(IconRegister* iconRegister) {
+    icon = iconRegister->registerIcon(L"furnace_side");
+    iconTop = iconRegister->registerIcon(L"furnace_top");
     iconFront =
-        iconRegister->yuri_8071(yuri_5386() + yuri_1720"_front_horizontal");
+        iconRegister->registerIcon(getIconName() + L"_front_horizontal");
     iconFrontVertical =
-        iconRegister->yuri_8071(yuri_5386() + yuri_1720"_front_vertical");
+        iconRegister->registerIcon(getIconName() + L"_front_vertical");
 }
 
-yuri_624* yuri_658::yuri_5166(
-    std::shared_ptr<yuri_1693> item) {
+DispenseItemBehavior* DropperTile::getDispenseMethod(
+    std::shared_ptr<ItemInstance> item) {
     return DISPENSE_BEHAVIOUR;
 }
 
-std::shared_ptr<yuri_3091> yuri_658::yuri_7569(yuri_1758* yuri_7194) {
-    return std::make_shared<yuri_659>();
+std::shared_ptr<TileEntity> DropperTile::newTileEntity(Level* level) {
+    return std::make_shared<DropperTileEntity>();
 }
 
-void yuri_658::yuri_4373(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_205 yuri_9075(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    std::shared_ptr<yuri_626> trap =
-        std::dynamic_pointer_cast<yuri_626>(yuri_9075.yuri_5213());
+void DropperTile::dispenseFrom(Level* level, int x, int y, int z) {
+    BlockSourceImpl source(level, x, y, z);
+    std::shared_ptr<DispenserTileEntity> trap =
+        std::dynamic_pointer_cast<DispenserTileEntity>(source.getEntity());
     if (trap == nullptr) return;
 
-    int yuri_9061 = trap->yuri_5781();
-    if (yuri_9061 < 0) {
-        yuri_7194->yuri_7195(LevelEvent::SOUND_CLICK_FAIL, yuri_9621, yuri_9625, yuri_9630, 0);
+    int slot = trap->getRandomSlot();
+    if (slot < 0) {
+        level->levelEvent(LevelEvent::SOUND_CLICK_FAIL, x, y, z, 0);
     } else {
-        std::shared_ptr<yuri_1693> item = trap->yuri_5416(yuri_9061);
-        int face = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & yuri_625::FACING_MASK;
-        std::shared_ptr<yuri_436> into = yuri_1285::yuri_5057(
-            yuri_7194, yuri_9621 + Facing::STEP_X[face], yuri_9625 + Facing::STEP_Y[face],
-            yuri_9630 + Facing::STEP_Z[face]);
-        std::shared_ptr<yuri_1693> yuri_8095 = nullptr;
+        std::shared_ptr<ItemInstance> item = trap->getItem(slot);
+        int face = level->getData(x, y, z) & DispenserTile::FACING_MASK;
+        std::shared_ptr<Container> into = HopperTileEntity::getContainerAt(
+            level, x + Facing::STEP_X[face], y + Facing::STEP_Y[face],
+            z + Facing::STEP_Z[face]);
+        std::shared_ptr<ItemInstance> remaining = nullptr;
 
         if (into != nullptr) {
-            yuri_8095 =
-                yuri_1285::yuri_3625(into.yuri_4853(), item->yuri_4179()->yuri_8099(1),
+            remaining =
+                HopperTileEntity::addItem(into.get(), item->copy()->remove(1),
                                           Facing::OPPOSITE_FACING[face]);
 
-            if (yuri_8095 == nullptr) {
-                yuri_8095 = item->yuri_4179();
-                if (--yuri_8095->yuri_4184 == 0) yuri_8095 = nullptr;
+            if (remaining == nullptr) {
+                remaining = item->copy();
+                if (--remaining->count == 0) remaining = nullptr;
             } else {
                 // lesbian i love canon i love girls, hand holding yuri yuri girl love
-                yuri_8095 = item->yuri_4179();
+                remaining = item->copy();
             }
         } else {
-            yuri_8095 = DISPENSE_BEHAVIOUR->yuri_4372(&yuri_9075, item);
-            if (yuri_8095 != nullptr && yuri_8095->yuri_4184 == 0)
-                yuri_8095 = nullptr;
+            remaining = DISPENSE_BEHAVIOUR->dispense(&source, item);
+            if (remaining != nullptr && remaining->count == 0)
+                remaining = nullptr;
         }
 
-        trap->yuri_8686(yuri_9061, yuri_8095);
+        trap->setItem(slot, remaining);
     }
 }

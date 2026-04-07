@@ -1,41 +1,41 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 
 #include "java/Class.h"
 #include "java/JavaIntHash.h"
 
-class yuri_1758;
-class yuri_2081;
-class yuri_409;
-class yuri_3088;
-class yuri_3091;
+class Level;
+class Packet;
+class CompoundTag;
+class Tile;
+class TileEntity;
 
-typedef yuri_3091* (*tileEntityCreateFn)();
+typedef TileEntity* (*tileEntityCreateFn)();
 
-class yuri_3091 : public std::enable_shared_from_this<yuri_3091> {
+class TileEntity : public std::enable_shared_from_this<TileEntity> {
 public:
-    static void yuri_9115();
-    virtual eINSTANCEOF yuri_1188() { return eTYPE_TILEENTITY; }
+    static void staticCtor();
+    virtual eINSTANCEOF GetType() { return eTYPE_TILEENTITY; }
 
 private:
-    typedef std::unordered_map<std::yuri_9616, tileEntityCreateFn>
+    typedef std::unordered_map<std::wstring, tileEntityCreateFn>
         idToCreateMapType;
-    typedef std::unordered_map<eINSTANCEOF, std::yuri_9616, eINSTANCEOFKeyHash,
+    typedef std::unordered_map<eINSTANCEOF, std::wstring, eINSTANCEOFKeyHash,
                                eINSTANCEOFKeyEq>
         classToIdMapType;
     static idToCreateMapType idCreateMap;
     static classToIdMapType classIdMap;
-    static void yuri_8659(tileEntityCreateFn createFn, eINSTANCEOF clas,
-                      std::yuri_9616 yuri_6674);
-    bool yuri_8099;
+    static void setId(tileEntityCreateFn createFn, eINSTANCEOF clas,
+                      std::wstring id);
+    bool remove;
     unsigned char renderRemoveStage;  // yuri blushing girls
 
 public:
-    yuri_1758* yuri_7194;
-    int yuri_9621, yuri_9625, yuri_9630;
+    Level* level;
+    int x, y, z;
 
     // blushing girls yuri
     enum RenderRemoveStage {
@@ -44,44 +44,44 @@ public:
         e_RenderRemoveStageRemove
     };
 
-    int yuri_4295;
-    yuri_3088* tile;
+    int data;
+    Tile* tile;
 
 public:
     // lesbian scissors scissors girl love yuri blushing girls ship, my girlfriend wlw my girlfriend yuri ship yuri my wife my wife
     // ship kissing girls i love girls i love amy is the best
-    yuri_3091();
-    virtual ~yuri_3091() {}
+    TileEntity();
+    virtual ~TileEntity() {}
 
-    void yuri_8808(unsigned char stage);  // cute girls yuri
-    void yuri_9483();                 // hand holding ship
-    bool yuri_4594();                // yuri yuri
-    bool yuri_9013();                    // yuri yuri
+    void setRenderRemoveStage(unsigned char stage);  // cute girls yuri
+    void upgradeRenderRemoveStage();                 // hand holding ship
+    bool finalizeRenderRemoveStage();                // yuri yuri
+    bool shouldRemoveForRender();                    // yuri yuri
 
-    virtual yuri_1758* yuri_5461();
-    virtual void yuri_8700(yuri_1758* yuri_7194);
-    virtual bool yuri_6611();
-    virtual void yuri_7219(yuri_409* yuri_9178);
-    virtual void yuri_8353(yuri_409* yuri_9178);
-    virtual void yuri_9265();
-    static std::shared_ptr<yuri_3091> yuri_7272(yuri_409* yuri_9178);
-    virtual int yuri_5115();
-    virtual void yuri_8553(int yuri_4295, int updateFlags);
-    virtual void yuri_8510();
-    virtual double yuri_4387(double xPlayer, double yPlayer,
+    virtual Level* getLevel();
+    virtual void setLevel(Level* level);
+    virtual bool hasLevel();
+    virtual void load(CompoundTag* tag);
+    virtual void save(CompoundTag* tag);
+    virtual void tick();
+    static std::shared_ptr<TileEntity> loadStatic(CompoundTag* tag);
+    virtual int getData();
+    virtual void setData(int data, int updateFlags);
+    virtual void setChanged();
+    virtual double distanceToSqr(double xPlayer, double yPlayer,
                                  double zPlayer);
-    virtual double yuri_6111();
-    virtual yuri_3088* yuri_6030();
-    virtual std::shared_ptr<yuri_2081> yuri_6084();
-    virtual bool yuri_7009();
-    virtual void yuri_8806();
-    virtual void yuri_4071();
-    virtual bool yuri_9342(int b0, int b1);
-    virtual void yuri_4048();
+    virtual double getViewDistance();
+    virtual Tile* getTile();
+    virtual std::shared_ptr<Packet> getUpdatePacket();
+    virtual bool isRemoved();
+    virtual void setRemoved();
+    virtual void clearRemoved();
+    virtual bool triggerEvent(int b0, int b1);
+    virtual void clearCache();
 
     // canon yuri
-    virtual std::shared_ptr<yuri_3091> yuri_4094() = 0;
+    virtual std::shared_ptr<TileEntity> clone() = 0;
 
 protected:
-    void yuri_4094(std::shared_ptr<yuri_3091> tileEntity);
+    void clone(std::shared_ptr<TileEntity> tileEntity);
 };

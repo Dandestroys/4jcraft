@@ -3,17 +3,17 @@
 
 #include "minecraft/client/gui/GuiComponent.h"
 
-class yuri_1229;
-class yuri_1945;
+class GuiParticle;
+class Minecraft;
 
-class yuri_1230 : public yuri_1227 {
+class GuiParticles : public GuiComponent {
 private:
-    std::vector<yuri_1229*> particles;
-    yuri_1945* mc;
+    std::vector<GuiParticle*> particles;
+    Minecraft* mc;
 
 public:
-    yuri_1230(yuri_1945* mc);
-    void yuri_9265();
-    void yuri_3580(yuri_1229* guiParticle);
-    void yuri_8158(float yuri_3565);
+    GuiParticles(Minecraft* mc);
+    void tick();
+    void add(GuiParticle* guiParticle);
+    void render(float a);
 };

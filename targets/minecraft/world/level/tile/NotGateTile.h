@@ -1,16 +1,16 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <deque>
 #include <unordered_map>
 
 #include "TorchTile.h"
 
-class yuri_2302;
-class yuri_1758;
+class Random;
+class Level;
 
-class yuri_2030 : public yuri_3120 {
-    friend class yuri_3088;
+class NotGateTile : public TorchTile {
+    friend class Tile;
 
 private:
     static const int RECENT_TOGGLE_TIMER = 20 * 3;
@@ -19,51 +19,51 @@ private:
     bool on;
 
 public:
-    class yuri_3116 {
+    class Toggle {
     public:
-        int yuri_9621, yuri_9625, yuri_9630;
-        yuri_6733 when;
+        int x, y, z;
+        int64_t when;
 
-        yuri_3116(int yuri_9621, int yuri_9625, int yuri_9630, yuri_6733 when) {
-            this->yuri_9621 = yuri_9621;
-            this->yuri_9625 = yuri_9625;
-            this->yuri_9630 = yuri_9630;
+        Toggle(int x, int y, int z, int64_t when) {
+            this->x = x;
+            this->y = y;
+            this->z = z;
             this->when = when;
         }
     };
 
 private:
-    static std::unordered_map<yuri_1758*, std::deque<yuri_3116>*>
+    static std::unordered_map<Level*, std::deque<Toggle>*>
         recentToggles;  // yuri - scissors lesbian my girlfriend girl love scissors.yuri.girl love
 public:
-    static void yuri_8121(yuri_1758* yuri_7194);  // ship snuggle
+    static void removeLevelReferences(Level* level);  // ship snuggle
 private:
-    bool yuri_7087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool yuri_3580);
+    bool isToggledTooFrequently(Level* level, int x, int y, int z, bool add);
 
 protected:
-    yuri_2030(int yuri_6674, bool on);
+    NotGateTile(int id, bool on);
 
 public:
-    int yuri_6025(yuri_1758* yuri_7194);
-    void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
-    int yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
+    int getTickDelay(Level* level);
+    void onPlace(Level* level, int x, int y, int z);
+    void onRemove(Level* level, int x, int y, int z, int id, int data);
+    int getSignal(LevelSource* level, int x, int y, int z, int face);
 
 private:
-    bool yuri_6618(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool hasNeighborSignal(Level* level, int x, int y, int z);
 
 public:
-    void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
-    void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
+    void tick(Level* level, int x, int y, int z, Random* random);
+    void neighborChanged(Level* level, int x, int y, int z, int type);
 
-    int yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
+    int getDirectSignal(LevelSource* level, int x, int y, int z, int face);
 
-    int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
-    bool yuri_7041();
+    int getResource(int data, Random* random, int playerBonusLevel);
+    bool isSignalSource();
 
 public:
-    void yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt, yuri_2302* yuri_7981);
-    int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_7200(yuri_1758* yuri_7194, yuri_6733 delta, yuri_6733 newTime);
-    bool yuri_6958(int yuri_6674);
+    void animateTick(Level* level, int xt, int yt, int zt, Random* random);
+    int cloneTileId(Level* level, int x, int y, int z);
+    void levelTimeChanged(Level* level, int64_t delta, int64_t newTime);
+    bool isMatching(int id);
 };

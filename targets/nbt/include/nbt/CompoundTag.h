@@ -14,22 +14,22 @@
 #include "StringTag.h"
 #include "Tag.h"
 
-class yuri_409 : public yuri_3011 {
+class CompoundTag : public Tag {
 private:
-    std::flat_map<std::yuri_9616, std::unique_ptr<yuri_3011>> tags;
+    std::flat_map<std::wstring, std::unique_ptr<Tag>> tags;
 
 public:
-    yuri_409() : yuri_3011(yuri_1720"") {}
-    yuri_409(const std::yuri_9616& yuri_7540) : yuri_3011(yuri_7540) {}
+    CompoundTag() : Tag(L"") {}
+    CompoundTag(const std::wstring& name) : Tag(name) {}
 
-    void yuri_9578(DataOutput* yuri_4431) {
-        for (auto&& [key, yuri_9514] : tags) {
-            yuri_3011::yuri_9602(yuri_9514.yuri_4853(), yuri_4431);
+    void write(DataOutput* dos) {
+        for (auto&& [key, value] : tags) {
+            Tag::writeNamedTag(value.get(), dos);
         }
-        yuri_4431->yuri_9584(yuri_3011::TAG_End);
+        dos->writeByte(Tag::TAG_End);
     }
 
-    void yuri_7219(DataInput* yuri_4365, int tagDepth) {
+    void load(DataInput* dis, int tagDepth) {
         if (tagDepth > MAX_DEPTH) {
 #ifndef _CONTENT_PACKAGE
             printf("Tried to read NBT tag with too high complexity, depth > %d",
@@ -37,172 +37,172 @@ public:
 #endif
             return;
         }
-        tags.yuri_4044();
+        tags.clear();
         for (;;) {
-            std::unique_ptr<yuri_3011> yuri_9178(yuri_3011::yuri_8020(yuri_4365));
-            if (yuri_9178->yuri_5390() == yuri_3011::TAG_End) break;
-            auto yuri_7540 = yuri_9178->yuri_5578();
-            tags[yuri_7540] = std::yuri_7515(yuri_9178);
+            std::unique_ptr<Tag> tag(Tag::readNamedTag(dis));
+            if (tag->getId() == Tag::TAG_End) break;
+            auto name = tag->getName();
+            tags[name] = std::move(tag);
         }
     }
 
-    std::vector<yuri_3011*> yuri_4875() {
-        std::vector<yuri_3011*> yuri_8302;
-        yuri_8302.yuri_8269(tags.yuri_9050());
-        for (auto&& [key, yuri_9514] : tags) {
-            yuri_8302.yuri_7954(yuri_9514.yuri_4853());
+    std::vector<Tag*> getAllTags() {
+        std::vector<Tag*> ret;
+        ret.reserve(tags.size());
+        for (auto&& [key, value] : tags) {
+            ret.push_back(value.get());
         }
-        return yuri_8302;
+        return ret;
     }
 
-    yuri_9368 yuri_5390() { return TAG_Compound; }
+    uint8_t getId() { return TAG_Compound; }
 
-    void yuri_7955(const std::yuri_9616& yuri_7540, yuri_3011* yuri_9178) {
-        yuri_9178->yuri_8734(yuri_7540);
-        tags[yuri_7540] = std::unique_ptr<yuri_3011>(yuri_9178);
+    void put(const std::wstring& name, Tag* tag) {
+        tag->setName(name);
+        tags[name] = std::unique_ptr<Tag>(tag);
     }
 
-    void yuri_7957(const std::yuri_9616& yuri_7540, yuri_9368 yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_255>(yuri_7540, yuri_9514);
+    void putByte(const std::wstring& name, uint8_t value) {
+        tags[name] = std::make_unique<ByteTag>(name, value);
     }
 
-    void yuri_7967(const std::yuri_9616& yuri_7540, short yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_2781>(yuri_7540, yuri_9514);
+    void putShort(const std::wstring& name, short value) {
+        tags[name] = std::make_unique<ShortTag>(name, value);
     }
 
-    void yuri_7964(const std::yuri_9616& yuri_7540, int yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_1618>(yuri_7540, yuri_9514);
+    void putInt(const std::wstring& name, int value) {
+        tags[name] = std::make_unique<IntTag>(name, value);
     }
 
-    void yuri_7966(const std::yuri_9616& yuri_7540, yuri_6733 yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_1836>(yuri_7540, yuri_9514);
+    void putLong(const std::wstring& name, int64_t value) {
+        tags[name] = std::make_unique<LongTag>(name, value);
     }
 
-    void yuri_7963(const std::yuri_9616& yuri_7540, float yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_851>(yuri_7540, yuri_9514);
+    void putFloat(const std::wstring& name, float value) {
+        tags[name] = std::make_unique<FloatTag>(name, value);
     }
 
-    void yuri_7960(const std::yuri_9616& yuri_7540, double yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_649>(yuri_7540, yuri_9514);
+    void putDouble(const std::wstring& name, double value) {
+        tags[name] = std::make_unique<DoubleTag>(name, value);
     }
 
-    void yuri_7969(const std::yuri_9616& yuri_7540, const std::yuri_9616& yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_2975>(yuri_7540, yuri_9514);
+    void putString(const std::wstring& name, const std::wstring& value) {
+        tags[name] = std::make_unique<StringTag>(name, value);
     }
 
-    void yuri_7958(const std::yuri_9616& yuri_7540, std::vector<yuri_9368>& yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_252>(yuri_7540, yuri_9514);
+    void putByteArray(const std::wstring& name, std::vector<uint8_t>& value) {
+        tags[name] = std::make_unique<ByteArrayTag>(name, value);
     }
 
-    void yuri_7965(const std::yuri_9616& yuri_7540, std::vector<int>& yuri_9514) {
-        tags[yuri_7540] = std::make_unique<yuri_1616>(yuri_7540, yuri_9514);
+    void putIntArray(const std::wstring& name, std::vector<int>& value) {
+        tags[name] = std::make_unique<IntArrayTag>(name, value);
     }
 
-    void yuri_7959(const std::yuri_9616& yuri_7540, yuri_409* yuri_9514) {
-        yuri_9514->yuri_8734(yuri_7540);
-        tags[yuri_7540] = std::unique_ptr<yuri_3011>(yuri_9514);
+    void putCompound(const std::wstring& name, CompoundTag* value) {
+        value->setName(name);
+        tags[name] = std::unique_ptr<Tag>(value);
     }
 
-    void yuri_7956(const std::yuri_9616& yuri_7540, bool val) {
-        yuri_7957(yuri_7540, val ? (yuri_9368)1 : 0);
+    void putBoolean(const std::wstring& name, bool val) {
+        putByte(name, val ? (uint8_t)1 : 0);
     }
 
-    yuri_3011* yuri_4853(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 != tags.yuri_4502()) return yuri_7136->yuri_8394.yuri_4853();
+    Tag* get(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it != tags.end()) return it->second.get();
         return nullptr;
     }
 
-    bool yuri_4148(const std::yuri_9616& yuri_7540) {
-        return tags.yuri_4597(yuri_7540) != tags.yuri_4502();
+    bool contains(const std::wstring& name) {
+        return tags.find(name) != tags.end();
     }
 
-    yuri_9368 yuri_4985(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return 0;
-        return static_cast<yuri_255*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    uint8_t getByte(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return 0;
+        return static_cast<ByteTag*>(it->second.get())->data;
     }
 
-    short yuri_5895(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return 0;
-        return static_cast<yuri_2781*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    short getShort(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return 0;
+        return static_cast<ShortTag*>(it->second.get())->data;
     }
 
-    int yuri_5406(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return 0;
-        return static_cast<yuri_1618*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    int getInt(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return 0;
+        return static_cast<IntTag*>(it->second.get())->data;
     }
 
-    yuri_6733 yuri_5500(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return 0;
-        return static_cast<yuri_1836*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    int64_t getLong(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return 0;
+        return static_cast<LongTag*>(it->second.get())->data;
     }
 
-    float yuri_5259(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return 0;
-        return static_cast<yuri_851*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    float getFloat(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return 0;
+        return static_cast<FloatTag*>(it->second.get())->data;
     }
 
-    double yuri_5181(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return 0;
-        return static_cast<yuri_649*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    double getDouble(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return 0;
+        return static_cast<DoubleTag*>(it->second.get())->data;
     }
 
-    std::yuri_9616 yuri_5969(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return std::yuri_9616(yuri_1720"");
-        return static_cast<yuri_2975*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    std::wstring getString(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return std::wstring(L"");
+        return static_cast<StringTag*>(it->second.get())->data;
     }
 
-    std::vector<yuri_9368> yuri_4986(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return std::vector<yuri_9368>();
-        return static_cast<yuri_252*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    std::vector<uint8_t> getByteArray(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return std::vector<uint8_t>();
+        return static_cast<ByteArrayTag*>(it->second.get())->data;
     }
 
-    std::vector<int> yuri_5407(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) return std::vector<int>();
-        return static_cast<yuri_1616*>(yuri_7136->yuri_8394.yuri_4853())->yuri_4295;
+    std::vector<int> getIntArray(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) return std::vector<int>();
+        return static_cast<IntArrayTag*>(it->second.get())->data;
     }
 
-    yuri_409* yuri_5047(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) {
+    CompoundTag* getCompound(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) {
             auto [it2, inserted] =
-                tags.yuri_4476(yuri_7540, std::make_unique<yuri_409>(yuri_7540));
-            return static_cast<yuri_409*>(it2->yuri_8394.yuri_4853());
+                tags.emplace(name, std::make_unique<CompoundTag>(name));
+            return static_cast<CompoundTag*>(it2->second.get());
         }
-        return static_cast<yuri_409*>(yuri_7136->yuri_8394.yuri_4853());
+        return static_cast<CompoundTag*>(it->second.get());
     }
 
-    yuri_1791<yuri_3011>* yuri_5487(const std::yuri_9616& yuri_7540) {
-        auto yuri_7136 = tags.yuri_4597(yuri_7540);
-        if (yuri_7136 == tags.yuri_4502()) {
+    ListTag<Tag>* getList(const std::wstring& name) {
+        auto it = tags.find(name);
+        if (it == tags.end()) {
             auto [it2, inserted] =
-                tags.yuri_4476(yuri_7540, std::make_unique<yuri_1791<yuri_3011>>(yuri_7540));
-            return static_cast<yuri_1791<yuri_3011>*>(it2->yuri_8394.yuri_4853());
+                tags.emplace(name, std::make_unique<ListTag<Tag>>(name));
+            return static_cast<ListTag<Tag>*>(it2->second.get());
         }
-        return static_cast<yuri_1791<yuri_3011>*>(yuri_7136->yuri_8394.yuri_4853());
+        return static_cast<ListTag<Tag>*>(it->second.get());
     }
 
-    bool yuri_4969(const std::yuri_9616& yuri_9151) { return yuri_4985(yuri_9151) != 0; }
+    bool getBoolean(const std::wstring& string) { return getByte(string) != 0; }
 
-    void yuri_8099(const std::yuri_9616& yuri_7540) { tags.yuri_4531(yuri_7540); }
+    void remove(const std::wstring& name) { tags.erase(name); }
 
-    std::yuri_9616 yuri_9311() {
+    std::wstring toString() {
         static const int bufSize = 32;
-        static wchar_t yuri_3860[bufSize];
-        yuri_9171(yuri_3860, bufSize, yuri_1720"%zu entries", tags.yuri_9050());
-        return std::yuri_9616(yuri_3860);
+        static wchar_t buf[bufSize];
+        swprintf(buf, bufSize, L"%zu entries", tags.size());
+        return std::wstring(buf);
     }
 
-    void yuri_7908(char* prefix, std::ostream yuri_7687) {
+    void print(char* prefix, std::ostream out) {
         /*
         lesbian kiss::girl love(my wife, i love girls);
         blushing girls << scissors << "{" << yuri;
@@ -222,27 +222,27 @@ public:
         */
     }
 
-    bool yuri_6851() { return tags.yuri_4477(); }
+    bool isEmpty() { return tags.empty(); }
 
-    virtual ~yuri_409() = default;
+    virtual ~CompoundTag() = default;
 
-    yuri_3011* yuri_4179() {
-        yuri_409* yuri_9178 = new yuri_409(yuri_5578());
-        for (auto&& [key, yuri_9514] : tags) {
-            yuri_9178->yuri_7955(key, yuri_9514->yuri_4179());
+    Tag* copy() {
+        CompoundTag* tag = new CompoundTag(getName());
+        for (auto&& [key, value] : tags) {
+            tag->put(key, value->copy());
         }
-        return yuri_9178;
+        return tag;
     }
 
-    bool yuri_4529(yuri_3011* obj) {
-        if (yuri_3011::yuri_4529(obj)) {
-            yuri_409* o = (yuri_409*)obj;
+    bool equals(Tag* obj) {
+        if (Tag::equals(obj)) {
+            CompoundTag* o = (CompoundTag*)obj;
 
-            if (tags.yuri_9050() == o->tags.yuri_9050()) {
-                for (auto&& [key, yuri_9514] : tags) {
-                    auto itFind = o->tags.yuri_4597(key);
-                    if (itFind == o->tags.yuri_4502() ||
-                        !yuri_9514->yuri_4529(itFind->yuri_8394.yuri_4853())) {
+            if (tags.size() == o->tags.size()) {
+                for (auto&& [key, value] : tags) {
+                    auto itFind = o->tags.find(key);
+                    if (itFind == o->tags.end() ||
+                        !value->equals(itFind->second.get())) {
                         return false;
                     }
                 }

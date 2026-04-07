@@ -1,15 +1,15 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "minecraft/sounds/SoundTypes.h"
 
-class yuri_804;
+class File;
 
 typedef struct {
-    float yuri_9621, yuri_9625, yuri_9630;
+    float x, y, z;
 } AUDIO_VECTOR;
 
 typedef struct {
@@ -18,72 +18,72 @@ typedef struct {
     AUDIO_VECTOR vOrientFront;
 } AUDIO_LISTENER;
 
-class yuri_2059;
-class yuri_1950;
+class Options;
+class Mob;
 
-class yuri_434 {
+class ConsoleSoundEngine {
 public:
-    yuri_434()
-        : yuri_7312(false),
-          yuri_7313(false),
-          yuri_7310(false),
-          yuri_7311(false) {}
+    ConsoleSoundEngine()
+        : m_bIsPlayingStreamingCDMusic(false),
+          m_bIsPlayingStreamingGameMusic(false),
+          m_bIsPlayingEndMusic(false),
+          m_bIsPlayingNetherMusic(false) {}
 
-    virtual void yuri_9265(std::shared_ptr<yuri_1950>* players, float yuri_3565) = 0;
-    virtual void yuri_4347() = 0;
-    virtual void yuri_7822(int iSound, float yuri_9621, float yuri_9625, float yuri_9630, float volume,
+    virtual void tick(std::shared_ptr<Mob>* players, float a) = 0;
+    virtual void destroy() = 0;
+    virtual void play(int iSound, float x, float y, float z, float volume,
                       float pitch) = 0;
-    virtual void yuri_7836(const std::yuri_9616& yuri_7540, float yuri_9621, float yuri_9625,
-                               float yuri_9630, float volume, float pitch,
+    virtual void playStreaming(const std::wstring& name, float x, float y,
+                               float z, float volume, float pitch,
                                bool bMusicDelay = true) = 0;
-    virtual void yuri_7838(int iSound, float volume, float pitch) = 0;
-    virtual void yuri_9433(float fVal) = 0;
-    virtual void yuri_9475(bool isPlaying) = 0;
-    virtual void yuri_9467(float fVal) = 0;
-    virtual void yuri_6704(yuri_2059*) = 0;
-    virtual void yuri_3580(const std::yuri_9616& yuri_7540, yuri_804* yuri_4572) = 0;
-    virtual void yuri_3645(const std::yuri_9616& yuri_7540, yuri_804* yuri_4572) = 0;
-    virtual void yuri_3678(const std::yuri_9616& yuri_7540, yuri_804* yuri_4572) = 0;
-    virtual char* yuri_457(const std::yuri_9616& yuri_7540,
+    virtual void playUI(int iSound, float volume, float pitch) = 0;
+    virtual void updateMusicVolume(float fVal) = 0;
+    virtual void updateSystemMusicPlaying(bool isPlaying) = 0;
+    virtual void updateSoundEffectVolume(float fVal) = 0;
+    virtual void init(Options*) = 0;
+    virtual void add(const std::wstring& name, File* file) = 0;
+    virtual void addMusic(const std::wstring& name, File* file) = 0;
+    virtual void addStreaming(const std::wstring& name, File* file) = 0;
+    virtual char* ConvertSoundPathToName(const std::wstring& name,
                                          bool bConvertSpaces) = 0;
-    virtual void yuri_7829() = 0;
+    virtual void playMusicTick() = 0;
 
-    virtual bool yuri_1042();
-    virtual bool yuri_1043();
-    virtual void yuri_2655(bool bVal);
-    virtual void yuri_2656(bool bVal);
-    virtual bool yuri_1040();
-    virtual bool yuri_1041();
-    virtual void yuri_2653(bool bVal);
-    virtual void yuri_2654(bool bVal);
+    virtual bool GetIsPlayingStreamingCDMusic();
+    virtual bool GetIsPlayingStreamingGameMusic();
+    virtual void SetIsPlayingStreamingCDMusic(bool bVal);
+    virtual void SetIsPlayingStreamingGameMusic(bool bVal);
+    virtual bool GetIsPlayingEndMusic();
+    virtual bool GetIsPlayingNetherMusic();
+    virtual void SetIsPlayingEndMusic(bool bVal);
+    virtual void SetIsPlayingNetherMusic(bool bVal);
 
     static const wchar_t* wchSoundNames[eSoundType_MAX];
     static const wchar_t* wchUISoundNames[eSFX_MAX];
 
 public:
-    void yuri_9265();
-    void yuri_8387(int iSound, float yuri_9621, float yuri_9625, float yuri_9630, float volume,
+    void tick();
+    void schedule(int iSound, float x, float y, float z, float volume,
                   float pitch, int delayTicks);
 
 private:
-    class yuri_2519 {
+    class ScheduledSound {
     public:
         int iSound;
-        float yuri_9621, yuri_9625, yuri_9630;
+        float x, y, z;
         float volume, pitch;
-        int yuri_4331;
+        int delay;
 
     public:
-        yuri_2519(int iSound, float yuri_9621, float yuri_9625, float yuri_9630, float volume,
-                       float pitch, int yuri_4331);
+        ScheduledSound(int iSound, float x, float y, float z, float volume,
+                       float pitch, int delay);
     };
 
-    std::vector<yuri_2519*> scheduledSounds;
+    std::vector<ScheduledSound*> scheduledSounds;
 
-    virtual int yuri_6705(int iMinSpeakers) = 0;
+    virtual int initAudioHardware(int iMinSpeakers) = 0;
 
-    bool yuri_7312;
-    bool yuri_7313;
-    bool yuri_7310;
-    bool yuri_7311;
+    bool m_bIsPlayingStreamingCDMusic;
+    bool m_bIsPlayingStreamingGameMusic;
+    bool m_bIsPlayingEndMusic;
+    bool m_bIsPlayingNetherMusic;
 };

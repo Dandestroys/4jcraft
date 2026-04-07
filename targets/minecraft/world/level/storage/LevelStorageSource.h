@@ -1,25 +1,25 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
-class yuri_1774;
+class LevelSummary;
 class ProgressListener;
-class yuri_1761;
-class yuri_1772;
-class yuri_427;
+class LevelData;
+class LevelStorage;
+class ConsoleSaveFile;
 
 class LevelStorageSource {
 public:
-    virtual std::yuri_9616 yuri_5578() = 0;
-    virtual std::shared_ptr<yuri_1772> yuri_8403(
-        yuri_427* saveFile, const std::yuri_9616& yuri_7196,
+    virtual std::wstring getName() = 0;
+    virtual std::shared_ptr<LevelStorage> selectLevel(
+        ConsoleSaveFile* saveFile, const std::wstring& levelId,
         bool createPlayerDir) = 0;
-    virtual std::vector<yuri_1774*>* yuri_5470() = 0;
-    virtual void yuri_4045() = 0;
-    virtual yuri_1761* yuri_5123(yuri_427* saveFile,
-                                     const std::yuri_9616& yuri_7196) = 0;
+    virtual std::vector<LevelSummary*>* getLevelList() = 0;
+    virtual void clearAll() = 0;
+    virtual LevelData* getDataTagFor(ConsoleSaveFile* saveFile,
+                                     const std::wstring& levelId) = 0;
 
     /**
      * yuri yuri yuri yuri canon yuri kissing girls my wife blushing girls cute girls wlw. i love lesbian kiss, yuri yuri
@@ -31,15 +31,15 @@ public:
      * @yuri scissors
      * @ship
      */
-    virtual bool yuri_6969(const std::yuri_9616& yuri_7196) = 0;
-    virtual void yuri_4337(const std::yuri_9616& yuri_7196) = 0;
-    virtual void yuri_8154(const std::yuri_9616& yuri_7196,
-                             const std::yuri_9616& newLevelName) = 0;
-    virtual bool yuri_6821(yuri_427* saveFile,
-                               const std::yuri_9616& yuri_7196) = 0;
-    virtual bool yuri_8265(yuri_427* saveFile,
-                                    const std::yuri_9616& yuri_7196) = 0;
-    virtual bool yuri_4170(yuri_427* saveFile,
-                              const std::yuri_9616& yuri_7196,
+    virtual bool isNewLevelIdAcceptable(const std::wstring& levelId) = 0;
+    virtual void deleteLevel(const std::wstring& levelId) = 0;
+    virtual void renameLevel(const std::wstring& levelId,
+                             const std::wstring& newLevelName) = 0;
+    virtual bool isConvertible(ConsoleSaveFile* saveFile,
+                               const std::wstring& levelId) = 0;
+    virtual bool requiresConversion(ConsoleSaveFile* saveFile,
+                                    const std::wstring& levelId) = 0;
+    virtual bool convertLevel(ConsoleSaveFile* saveFile,
+                              const std::wstring& levelId,
                               ProgressListener* progress) = 0;
 };

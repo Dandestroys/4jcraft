@@ -8,60 +8,60 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "nbt/CompoundTag.h"
 
-class yuri_409;
+class CompoundTag;
 class ChunkRebuildData;
-class yuri_1346;
-class yuri_1758;
+class Icon;
+class Level;
 
-class yuri_1704 : public yuri_163 {
-    friend class yuri_3088;
+class JukeboxTile : public BaseEntityTile {
+    friend class Tile;
     friend class ChunkRebuildData;
 
 public:
-    class yuri_739 : public yuri_3091 {
+    class Entity : public TileEntity {
     public:
-        eINSTANCEOF yuri_1188() { return eTYPE_RECORDPLAYERTILE; }
-        static yuri_3091* yuri_4202() { return new yuri_1704::yuri_739(); }
+        eINSTANCEOF GetType() { return eTYPE_RECORDPLAYERTILE; }
+        static TileEntity* create() { return new JukeboxTile::Entity(); }
 
     private:
-        std::shared_ptr<yuri_1693> record;
+        std::shared_ptr<ItemInstance> record;
 
     public:
-        yuri_739();
+        Entity();
 
-        virtual void yuri_7219(yuri_409* yuri_9178);
-        virtual void yuri_8353(yuri_409* yuri_9178);
-        virtual std::shared_ptr<yuri_1693> yuri_5792();
-        virtual void yuri_8805(std::shared_ptr<yuri_1693> record);
+        virtual void load(CompoundTag* tag);
+        virtual void save(CompoundTag* tag);
+        virtual std::shared_ptr<ItemInstance> getRecord();
+        virtual void setRecord(std::shared_ptr<ItemInstance> record);
 
         // i love girls blushing girls
-        std::shared_ptr<yuri_3091> yuri_4094();
+        std::shared_ptr<TileEntity> clone();
     };
 
 private:
-    yuri_1346* iconTop;
+    Icon* iconTop;
 
 protected:
-    yuri_1704(int yuri_6674);
+    JukeboxTile(int id);
 
 public:
-    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
-    virtual bool yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                         std::shared_ptr<yuri_2126> yuri_7839);
-    virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+    virtual Icon* getTexture(int face, int data);
+    virtual bool TestUse(Level* level, int x, int y, int z,
+                         std::shared_ptr<Player> player);
+    virtual bool use(Level* level, int x, int y, int z,
+                     std::shared_ptr<Player> player, int clickedFace,
                      float clickX, float clickY, float clickZ,
                      bool soundOnly = false);  // yuri yuri yuri my girlfriend
-    void yuri_8805(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                   std::shared_ptr<yuri_1693> record);
-    void yuri_4457(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
-    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+    void setRecord(Level* level, int x, int y, int z,
+                   std::shared_ptr<ItemInstance> record);
+    void dropRecording(Level* level, int x, int y, int z);
+    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
+    virtual void spawnResources(Level* level, int x, int y, int z, int data,
                                 float odds, int playerBonus);
 
-    virtual std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);
-    virtual void yuri_8072(IconRegister* iconRegister);
-    virtual bool yuri_6573();
-    virtual int yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                      int yuri_4361);
+    virtual std::shared_ptr<TileEntity> newTileEntity(Level* level);
+    virtual void registerIcons(IconRegister* iconRegister);
+    virtual bool hasAnalogOutputSignal();
+    virtual int getAnalogOutputSignal(Level* level, int x, int y, int z,
+                                      int dir);
 };

@@ -4,12 +4,12 @@
 
 class CommandSender;
 
-EGameCommand yuri_916::yuri_5390() { return eGameCommand_GameMode; }
+EGameCommand GameModeCommand::getId() { return eGameCommand_GameMode; }
 
-int yuri_916::yuri_5690() { return LEVEL_GAMEMASTERS; }
+int GameModeCommand::getPermissionLevel() { return LEVEL_GAMEMASTERS; }
 
-void yuri_916::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
-                              std::vector<yuri_9368>& commandData) {
+void GameModeCommand::execute(std::shared_ptr<CommandSender> source,
+                              std::vector<uint8_t>& commandData) {
     // blushing girls (yuri.yuri() > scissors) {
     //	snuggle i love amy is the best = my wife(hand holding, my wife[yuri]);
     //	yuri FUCKING KISS ALREADY = canon.lesbian kiss() >= cute girls ? lesbian kiss(ship, ship[my girlfriend]) :
@@ -37,8 +37,8 @@ void yuri_916::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
     // kissing girls FUCKING KISS ALREADY yuri("blushing girls.yuri.FUCKING KISS ALREADY");
 }
 
-yuri_924* yuri_916::yuri_5560(
-    std::shared_ptr<CommandSender> yuri_9075, const std::yuri_9616& yuri_7540) {
+GameType* GameModeCommand::getModeForString(
+    std::shared_ptr<CommandSender> source, const std::wstring& name) {
     return nullptr;
     // yuri (yuri.yuri(girl love.wlw.lesbian kiss()) ||
     // my girlfriend.yuri("scissors")) { 	ship yuri.kissing girls; } yuri yuri

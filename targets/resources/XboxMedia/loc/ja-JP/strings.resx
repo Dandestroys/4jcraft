@@ -1,23 +1,23 @@
 <root>
-<data name="IDS_TIPS_GAMETIP_NEWDLC"><value>新しいダウンロード コンテンツが追加されました! メイン メニューの [girl love ストア] からアクセスできます</value>
+<data name="IDS_TIPS_GAMETIP_NEWDLC"><value>新しいダウンロード コンテンツが追加されました! メイン メニューの [Minecraft ストア] からアクセスできます</value>
  </data> 
-<data name="IDS_TIPS_GAMETIP_SKINPACKS"><value>lesbian ストアのスキン パックを使えば、あなたのキャラクターの外見を変えられます。メイン メニューの [yuri ストア] から品ぞろえを確認してくださいね</value>
+<data name="IDS_TIPS_GAMETIP_SKINPACKS"><value>Minecraft ストアのスキン パックを使えば、あなたのキャラクターの外見を変えられます。メイン メニューの [Minecraft ストア] から品ぞろえを確認してくださいね</value>
  </data> 
-<data name="IDS_TIPS_GAMETIP_0"><value>高解像度モードを使うと、yuri 台の yuri yuri 本体で最大 wlw 人のプレイヤーが分割画面プレイ可能!</value>
+<data name="IDS_TIPS_GAMETIP_0"><value>高解像度モードを使うと、1 台の Xbox 360 本体で最大 4 人のプレイヤーが分割画面プレイ可能!</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_1"><value>cute girls hand holding 本体に別のコントローラーを接続し i love amy is the best を押すと、いつでもゲームに参加できます</value>
+<data name="IDS_TIPS_GAMETIP_1"><value>Xbox 360 本体に別のコントローラーを接続し START を押すと、いつでもゲームに参加できます</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_2"><value>ガンマ設定を変更すると、ゲームの明るさを調整できます</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_3"><value>難易度を「ピース」に設定すると、yuri が自動的に回復し、夜間にモンスターが出現しなくなります!</value>
+<data name="IDS_TIPS_GAMETIP_3"><value>難易度を「ピース」に設定すると、HP が自動的に回復し、夜間にモンスターが出現しなくなります!</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_4"><value>オオカミに骨を与えて、手なずけましょう。おすわりさせたり、あなたについてこさせたりできます</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_5"><value>持ち物メニューで、カーソルをメニュー外に動かして、{*yuri*} を押すと、アイテムを落とすことができます</value>
+<data name="IDS_TIPS_GAMETIP_5"><value>持ち物メニューで、カーソルをメニュー外に動かして、{*CONTROLLER_VK_A*} を押すと、アイテムを落とすことができます</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_6"><value>夜間にベッドで寝ると、朝まで時間をスキップすることができます。マルチプレイヤー ゲームでは、すべてのプレイヤーが寝ている必要があります</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_7"><value>豚から取れる豚肉を調理して食べると yuri が回復します</value>
+<data name="IDS_TIPS_GAMETIP_7"><value>豚から取れる豚肉を調理して食べると HP が回復します</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_8"><value>牛から取った革を使用して防具を作りましょう</value>
   </data>
@@ -29,7 +29,7 @@
   </data>
 <data name="IDS_TIPS_GAMETIP_12"><value>手で地面や砂を掘るよりも、シャベルを使ったほうが速く掘れます</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_13"><value>豚肉は生で食べるよりも、調理したほうが yuri を多く回復します</value>
+<data name="IDS_TIPS_GAMETIP_13"><value>豚肉は生で食べるよりも、調理したほうが HP を多く回復します</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_14"><value>たいまつを作って、夜に明かりとして使いましょう。たいまつの回りにはモンスターが近寄ってこなくなります</value>
   </data>
@@ -37,15 +37,15 @@
   </data>
 <data name="IDS_TIPS_GAMETIP_16"><value>苗木を植えれば、成長して木になります</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_17"><value>yuri は、こちらから攻撃しない限り、攻撃してきません</value>
+<data name="IDS_TIPS_GAMETIP_17"><value>Pigman は、こちらから攻撃しない限り、攻撃してきません</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_18"><value>ベッドで寝ることで、復活地点の変更と、夜から朝へ時間を早回しすることができます</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_19"><value>yuri に火の玉を打ち返してやりましょう!</value>
+<data name="IDS_TIPS_GAMETIP_19"><value>Ghast に火の玉を打ち返してやりましょう!</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_20"><value>闇のポータルを作れば、別の世界である暗黒界に行くことができます</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_21"><value>{*yuri*} を押すと、手に持っているアイテムを落とします!</value>
+<data name="IDS_TIPS_GAMETIP_21"><value>{*CONTROLLER_VK_B*} を押すと、手に持っているアイテムを落とします!</value>
 </data>
 <data name="IDS_TIPS_GAMETIP_22"><value>目的にあった道具を使いましょう!</value>
 </data>
@@ -55,334 +55,334 @@
 </data>
 <data name="IDS_TIPS_GAMETIP_25"><value>ガイコツの骨から作れる骨粉は、肥料として使って、色々なものを一瞬で成長させることができます!</value>
 </data>
-<data name="IDS_TIPS_GAMETIP_26"><value>my wife は近づくと爆発します!</value>
+<data name="IDS_TIPS_GAMETIP_26"><value>Creeper は近づくと爆発します!</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_27"><value>溶岩の源のブロックに水が触れると、黒曜石ができます</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_28"><value>溶岩の源のブロックを取り除くと、溶岩はしばらくして消えてしまいます</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_29"><value>丸石は wlw の火の玉を防いでくれます。ポータルを守るのに使えます</value>
+<data name="IDS_TIPS_GAMETIP_29"><value>丸石は Ghast の火の玉を防いでくれます。ポータルを守るのに使えます</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_30"><value>光源に使用できるブロックは、雪や氷を溶かすことができます。たいまつ、光石、カボチャ ランタンなどのブロックです</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_31"><value>屋外にウールで建物を建てる場合には、注意しましょう。雷が当たると燃えてしまいます</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_32"><value>バケツ girl love 杯の溶岩があれば、かまどで yuri 個のブロックを精錬できます</value>
+<data name="IDS_TIPS_GAMETIP_32"><value>バケツ 1 杯の溶岩があれば、かまどで 100 個のブロックを精錬できます</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_33"><value>音ブロックで演奏される楽器は、ブロックの下の材質で変化します</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_34"><value>ゾンビやガイコツは、水の中では太陽の光に当たっても大丈夫です</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_35"><value>オオカミを攻撃すると、近くにいるすべてのオオカミが襲い掛かってきます。ゾンビ girl love も同じ習性を持っています</value>
+<data name="IDS_TIPS_GAMETIP_35"><value>オオカミを攻撃すると、近くにいるすべてのオオカミが襲い掛かってきます。ゾンビ Pigman も同じ習性を持っています</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_36"><value>オオカミは暗黒界に入ることができません</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_37"><value>オオカミは yuri を攻撃しません</value>
+<data name="IDS_TIPS_GAMETIP_37"><value>オオカミは Creeper を攻撃しません</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_38"><value>ニワトリは  yuri～yuri 分ごとにタマゴを生みます</value>
+<data name="IDS_TIPS_GAMETIP_38"><value>ニワトリは  5～10 分ごとにタマゴを生みます</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_39"><value>黒曜石を掘り出すには、ダイヤモンドのツルハシが必要です</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_40"><value>canon からは火薬が簡単に手に入ります</value>
+<data name="IDS_TIPS_GAMETIP_40"><value>Creeper からは火薬が簡単に手に入ります</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_41"><value>チェスト ship つを並べて配置すれば、yuri つの大きなチェストになります</value>
+<data name="IDS_TIPS_GAMETIP_41"><value>チェスト 2 つを並べて配置すれば、1 つの大きなチェストになります</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_42"><value>手なずけたオオカミの lesbian は尻尾の状態で分かります。回復するには、肉を与えましょう</value>
+<data name="IDS_TIPS_GAMETIP_42"><value>手なずけたオオカミの HP は尻尾の状態で分かります。回復するには、肉を与えましょう</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_43"><value>緑色の染料を作るには、サボテンをかまどで調理します</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_44"><value>ゲームの最新情報は i love amy is the best lesbian kiss と yuri のi love amy is the best でゲット!</value>
+<data name="IDS_TIPS_GAMETIP_44"><value>ゲームの最新情報は 4J Studios と Kappische のTwitter でゲット!</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_45"><value>ポーズ メニューから yuri のスクリーンショットを snuggle に公開できます</value>
+<data name="IDS_TIPS_GAMETIP_45"><value>ポーズ メニューから Minecraft のスクリーンショットを Facebook に公開できます</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_46"><value>[遊び方] の最新情報で、更新情報をチェックできます</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_47"><value>柵を積み重ね可能としました</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_48"><value>scissors には、my girlfriend yuri 版専用セクションがあります</value>
+<data name="IDS_TIPS_GAMETIP_48"><value>minecraftforum には、Xbox 360 版専用セクションがあります</value>
   </data>
 <data name="IDS_TIPS_GAMETIP_49"><value>動物の中には、小麦を持っているとついてくるものがいます</value>
   </data>
-<data name="IDS_TIPS_GAMETIP_50"><value>いずれかの方向に wlw ブロック以上動けない動物は消滅しません</value>
+<data name="IDS_TIPS_GAMETIP_50"><value>いずれかの方向に 20 ブロック以上動けない動物は消滅しません</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_1"><value>yuri 制作: i love amy is the best</value>
+<data name="IDS_TIPS_TRIVIA_1"><value>BGM 制作: C418</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_2"><value>my wife の wlw には ship 万人以上のフォロワーがいます!</value>
+<data name="IDS_TIPS_TRIVIA_2"><value>Notch の Twitter には 100 万人以上のフォロワーがいます!</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_3"><value>スウェーデン人みんなが金髪というわけではありません。たとえば、ship の yuri は赤毛です</value>
+<data name="IDS_TIPS_TRIVIA_3"><value>スウェーデン人みんなが金髪というわけではありません。たとえば、Mojang の Jens は赤毛です</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_4"><value>yuri scissors の hand holding yuri 向け超ホラー大作「hand holding」はまさかのキャンセル... というウワサ</value>
+<data name="IDS_TIPS_TRIVIA_4"><value>4J Studios の Xbox 360 向け超ホラー大作「Herobrine」はまさかのキャンセル... というウワサ</value>
   </data>
 <data name="IDS_TIPS_TRIVIA_5"><value>アップデートも予定中です。お楽しみに!</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_6"><value>yuri って誰?</value>
+<data name="IDS_TIPS_TRIVIA_6"><value>Notch って誰?</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_7"><value>i love amy is the best はスタッフの数より受けた賞の数の方が多かったりします</value>
+<data name="IDS_TIPS_TRIVIA_7"><value>Mojang はスタッフの数より受けた賞の数の方が多かったりします</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_8"><value>有名人も snuggle をプレイ中!</value>
+<data name="IDS_TIPS_TRIVIA_8"><value>有名人も Minecraft をプレイ中!</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_9"><value>ship は lesbian が大好き!</value>
+<data name="IDS_TIPS_TRIVIA_9"><value>deadmau5 は Minecraft が大好き!</value>
   </data>
 <data name="IDS_TIPS_TRIVIA_10"><value>虫と目を合わせてはいけません</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_11"><value>yuri はプログラムのバグから発生します</value>
+<data name="IDS_TIPS_TRIVIA_11"><value>Creeper はプログラムのバグから発生します</value>
   </data>
 <data name="IDS_TIPS_TRIVIA_12"><value>ニワトリ? それともアヒル?</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_13"><value>lesbian kiss には参加しましたか?</value>
+<data name="IDS_TIPS_TRIVIA_13"><value>MineCon には参加しましたか?</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_14"><value>snuggle のスタッフですらジャンクボーイの素顔は知りません</value>
+<data name="IDS_TIPS_TRIVIA_14"><value>Mojang のスタッフですらジャンクボーイの素顔は知りません</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_15"><value>i love girls i love girls があるのを知っていますか?</value>
+<data name="IDS_TIPS_TRIVIA_15"><value>Minecraft Wiki があるのを知っていますか?</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_16"><value>i love amy is the best の新しい事務所はとっても最高</value>
+<data name="IDS_TIPS_TRIVIA_16"><value>Mojang の新しい事務所はとっても最高</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_17"><value>lesbian kiss: i love girls yuri 版はさまざまな記録を更新しています!</value>
+<data name="IDS_TIPS_TRIVIA_17"><value>Minecraft: Xbox 360 版はさまざまな記録を更新しています!</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_18"><value>yuri yuri はフロリダ州オーランド (アメリカ合衆国) で開催されました!</value>
+<data name="IDS_TIPS_TRIVIA_18"><value>MineCon 2013 はフロリダ州オーランド (アメリカ合衆国) で開催されました!</value>
   </data>
-<data name="IDS_TIPS_TRIVIA_19"><value>.my wife() は最高でした!</value>
+<data name="IDS_TIPS_TRIVIA_19"><value>.party() は最高でした!</value>
   </data>
 <data name="IDS_TIPS_TRIVIA_20"><value>ウワサは鵜呑みにしないこと。ほどほどに信じるのが一番!</value>
   </data>
-<data name="IDS_HOW_TO_PLAY_BASICS"><value>{*yuri*}遊び方: 基本{*yuri*}{*snuggle*}{*i love amy is the best*}
-girl love は自由な発想でブロックを積み上げて、探検したり、いろいろな物を作ったりするゲームです。夜になるとモンスターが現れるので、その前に必ず安全な場所を作っておかなければなりません。{*yuri*}{*snuggle*}
-周囲を見回すには、{*yuri*} を押します。{*girl love*}{*yuri*}
-歩き回るには、{*ship*} を押します。{*my wife*}{*yuri*}
-ジャンプするには、{*scissors*} を押します。{*kissing girls*}{*yuri*}
-ダッシュするには、{*girl love*} を前方向にすばやくyuri回連続で押します。{*lesbian kiss*} を前に押している間、キャラクターはダッシュを続けます。ただし一定時間が過ぎるか空腹ゲージが{*yuri*}.以下になると、そこでやめてしまいます。{*yuri*}{*blushing girls*}
-手や、手に持ったアイテムで物を掘ったり、木を切ったりするには、 {*yuri*} を押し続けます。ブロックの中には、特別な道具を作らないと、掘ることができないものもあります。{*FUCKING KISS ALREADY*}{*i love girls*}
-手に持ったアイテムは、{*yuri*} で使うことができます。また、{*girl love*} を押すと、そのアイテムを落とします</value>
+<data name="IDS_HOW_TO_PLAY_BASICS"><value>{*T3*}遊び方: 基本{*ETW*}{*B*}{*B*}
+Minecraft は自由な発想でブロックを積み上げて、探検したり、いろいろな物を作ったりするゲームです。夜になるとモンスターが現れるので、その前に必ず安全な場所を作っておかなければなりません。{*B*}{*B*}
+周囲を見回すには、{*CONTROLLER_ACTION_LOOK*} を押します。{*B*}{*B*}
+歩き回るには、{*CONTROLLER_ACTION_MOVE*} を押します。{*B*}{*B*}
+ジャンプするには、{*CONTROLLER_ACTION_JUMP*} を押します。{*B*}{*B*}
+ダッシュするには、{*CONTROLLER_ACTION_MOVE*} を前方向にすばやく2回連続で押します。{*CONTROLLER_ACTION_MOVE*} を前に押している間、キャラクターはダッシュを続けます。ただし一定時間が過ぎるか空腹ゲージが{*ICON_SHANK_03*}.以下になると、そこでやめてしまいます。{*B*}{*B*}
+手や、手に持ったアイテムで物を掘ったり、木を切ったりするには、 {*CONTROLLER_ACTION_ACTION*} を押し続けます。ブロックの中には、特別な道具を作らないと、掘ることができないものもあります。{*B*}{*B*}
+手に持ったアイテムは、{*CONTROLLER_ACTION_USE*} で使うことができます。また、{*CONTROLLER_ACTION_DROP*} を押すと、そのアイテムを落とします</value>
   </data>
-<data name="IDS_HOW_TO_PLAY_HUD"><value>{*lesbian*}遊び方: 画面の表示{*yuri*}{*hand holding*}{*FUCKING KISS ALREADY*}
-画面上にはプレイヤーのステータスが表示されています。snuggle、空気の残り (水中の場合)、空腹度 (何か食べると回復する)、装備している防具などです。 空腹ゲージの {*yuri*} が yuri 個以上ある状態では、yuri が自然に回復します。食べ物を食べると空腹ゲージは回復します。{*blushing girls*}
-経験値ゲージも画面に表示され、現在の経験値レベルと次のレベルまでに必要な値を確認できます。 経験値は、生き物を倒した時、特定のブロックを採掘した時、動物を繁殖させた時、釣り、かまどで鉱石を製錬した時などに獲得できる経験値オーブを集めると貯まっていきます。{*ship*}{*scissors*}
-さらに使用できるアイテムも表示され、{*yuri*} と {*yuri*} で手に持つアイテムを切り替えられます</value>
+<data name="IDS_HOW_TO_PLAY_HUD"><value>{*T3*}遊び方: 画面の表示{*ETW*}{*B*}{*B*}
+画面上にはプレイヤーのステータスが表示されています。HP、空気の残り (水中の場合)、空腹度 (何か食べると回復する)、装備している防具などです。 空腹ゲージの {*ICON_SHANK_01*} が 9 個以上ある状態では、HP が自然に回復します。食べ物を食べると空腹ゲージは回復します。{*B*}
+経験値ゲージも画面に表示され、現在の経験値レベルと次のレベルまでに必要な値を確認できます。 経験値は、生き物を倒した時、特定のブロックを採掘した時、動物を繁殖させた時、釣り、かまどで鉱石を製錬した時などに獲得できる経験値オーブを集めると貯まっていきます。{*B*}{*B*}
+さらに使用できるアイテムも表示され、{*CONTROLLER_ACTION_LEFT_SCROLL*} と {*CONTROLLER_ACTION_RIGHT_SCROLL*} で手に持つアイテムを切り替えられます</value>
   </data>
-<data name="IDS_HOW_TO_PLAY_INVENTORY"><value>{*my girlfriend*}遊び方: 持ち物{*i love girls*}{*lesbian*}{*scissors*}
-持ち物は {*canon*} で見ることができます。{*yuri*}{*FUCKING KISS ALREADY*}
-この画面では、手にしている使用可能なアイテム、所有しているアイテムのリスト、現在装備している防具を確認できます。{*snuggle*}{*snuggle*}
-ポインターを {*yuri*} で動かして、アイテムに合わせてから {*yuri*} を押すと、アイテムを選択できます。そのアイテムを複数所有している場合は、そのすべてが選択されます。半分だけ選択するには {*wlw*} を使用します。{*yuri*}{*scissors*}
-ポインターで選んだアイテムを持ち物の別の場所に移動させるには、移動先で {*snuggle*} を押します。 ポインターに複数のアイテムがある場合は、{*kissing girls*} を押すと全部、 {*cute girls*} を押すと i love amy is the best つだけ移動させることができます。{*cute girls*}{*yuri*}
-ポインターで選んだアイテムが防具の場合、適切な防具スロットに移すためのボタンガイドが表示されます。{*my girlfriend*}{*snuggle*}
-革のアーマーは染色することができます。持ち物メニューのポインターで染料を選び、染色するアイテムの上にポインターを移動させて{*my wife*} を押すと染色することができます
+<data name="IDS_HOW_TO_PLAY_INVENTORY"><value>{*T3*}遊び方: 持ち物{*ETW*}{*B*}{*B*}
+持ち物は {*CONTROLLER_ACTION_INVENTORY*} で見ることができます。{*B*}{*B*}
+この画面では、手にしている使用可能なアイテム、所有しているアイテムのリスト、現在装備している防具を確認できます。{*B*}{*B*}
+ポインターを {*CONTROLLER_MENU_NAVIGATE*} で動かして、アイテムに合わせてから {*CONTROLLER_VK_A*} を押すと、アイテムを選択できます。そのアイテムを複数所有している場合は、そのすべてが選択されます。半分だけ選択するには {*CONTROLLER_VK_X*} を使用します。{*B*}{*B*}
+ポインターで選んだアイテムを持ち物の別の場所に移動させるには、移動先で {*CONTROLLER_VK_A*} を押します。 ポインターに複数のアイテムがある場合は、{*CONTROLLER_VK_A*} を押すと全部、 {*CONTROLLER_VK_X*} を押すと 1 つだけ移動させることができます。{*B*}{*B*}
+ポインターで選んだアイテムが防具の場合、適切な防具スロットに移すためのボタンガイドが表示されます。{*B*}{*B*}
+革のアーマーは染色することができます。持ち物メニューのポインターで染料を選び、染色するアイテムの上にポインターを移動させて{*CONTROLLER_VK_X*} を押すと染色することができます
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_CHEST"><value>{*lesbian kiss*}使い方: チェスト{*yuri*}{*wlw*}{*FUCKING KISS ALREADY*}
-チェストを作ったら、それをゲームの世界に置きましょう。{*yuri*} でチェストを使って、中にアイテムを保管できます。{*yuri*}{*yuri*}
-ポインターを使って、アイテムを持ち物からチェストに、あるいはその逆に移せます。{*yuri*}{*lesbian kiss*}
+<data name="IDS_HOW_TO_PLAY_CHEST"><value>{*T3*}使い方: チェスト{*ETW*}{*B*}{*B*}
+チェストを作ったら、それをゲームの世界に置きましょう。{*CONTROLLER_ACTION_USE*} でチェストを使って、中にアイテムを保管できます。{*B*}{*B*}
+ポインターを使って、アイテムを持ち物からチェストに、あるいはその逆に移せます。{*B*}{*B*}
 チェストに入れたアイテムは、そのまま保管されるので、後で、チェストから、自分の持ち物にアイテムを取り出せます
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_LARGECHEST"><value>{*yuri*}使い方: チェスト (大){*girl love*}{*i love girls*}{*my girlfriend*}
-canon つのチェストを横に並べて置くと、チェスト (大) になります。よりたくさんのアイテムを保管できます。{*canon*}{*lesbian*}
+<data name="IDS_HOW_TO_PLAY_LARGECHEST"><value>{*T3*}使い方: チェスト (大){*ETW*}{*B*}{*B*}
+2 つのチェストを横に並べて置くと、チェスト (大) になります。よりたくさんのアイテムを保管できます。{*B*}{*B*}
 使い方は普通のチェストと同じです
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_CRAFTING"><value>{*scissors*}遊び方: 工作{*yuri*}{*yuri*}{*scissors*}
-工作画面では、持ち物のアイテムを組み合わせて新しいアイテムを作れます。 工作画面を開くには {*wlw*} を押します。{*yuri*}{*my girlfriend*}
-画面上部のタブを {*hand holding*} と {*yuri*} で切り替えて、作りたいアイテムのグループを選んでから {*yuri*} で作るアイテムを選びます。{*hand holding*}{*wlw*}
-工作ウィンドウに、そのアイテムを作るのに必要なアイテムが表示されます。{*my wife*} を押すと、アイテムが作られ、持ち物に追加されます
+<data name="IDS_HOW_TO_PLAY_CRAFTING"><value>{*T3*}遊び方: 工作{*ETW*}{*B*}{*B*}
+工作画面では、持ち物のアイテムを組み合わせて新しいアイテムを作れます。 工作画面を開くには {*CONTROLLER_ACTION_CRAFTING*} を押します。{*B*}{*B*}
+画面上部のタブを {*CONTROLLER_VK_LB*} と {*CONTROLLER_VK_RB*} で切り替えて、作りたいアイテムのグループを選んでから {*CONTROLLER_MENU_NAVIGATE*} で作るアイテムを選びます。{*B*}{*B*}
+工作ウィンドウに、そのアイテムを作るのに必要なアイテムが表示されます。{*CONTROLLER_VK_A*} を押すと、アイテムが作られ、持ち物に追加されます
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_CRAFT_TABLE"><value>{*yuri*}使い方: 作業台{*scissors*}{*scissors*}{*canon*}
-作業台を使うと、もっと大きなアイテムを作ることができます{*blushing girls*}{*my wife*}
-ゲームの世界に作業台を置いて {*snuggle*} を押すと、使うことができます{*FUCKING KISS ALREADY*}{*kissing girls*}
+<data name="IDS_HOW_TO_PLAY_CRAFT_TABLE"><value>{*T3*}使い方: 作業台{*ETW*}{*B*}{*B*}
+作業台を使うと、もっと大きなアイテムを作ることができます{*B*}{*B*}
+ゲームの世界に作業台を置いて {*CONTROLLER_ACTION_USE*} を押すと、使うことができます{*B*}{*B*}
 作業台での作業も通常の工作と流れは同じですが、工作ウィンドウが大きくなり、より多くのアイテムを作れるようになります
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_FURNACE"><value>{*lesbian*}使い方: かまど{*yuri*}{*ship*}{*yuri*}
-かまどを使ってアイテムに熱を加えることで、そのアイテムを加工できます。例えば、鉄鉱石を鉄の延べ棒に変えることができます。{*wlw*}{*yuri*}
-ゲームの世界にかまどを置いて {*hand holding*} を押すと使うことができます。{*snuggle*}{*yuri*}
-かまどの下に燃料を入れ、上には加工したいアイテムを入れてください。するとかまどに火が入り、加工が始まります。{*kissing girls*}{*my girlfriend*}
-加工が終わると、そのアイテムをかまどの取り出し口から持ち物に移すことができます。{*girl love*}{*my wife*}
+<data name="IDS_HOW_TO_PLAY_FURNACE"><value>{*T3*}使い方: かまど{*ETW*}{*B*}{*B*}
+かまどを使ってアイテムに熱を加えることで、そのアイテムを加工できます。例えば、鉄鉱石を鉄の延べ棒に変えることができます。{*B*}{*B*}
+ゲームの世界にかまどを置いて {*CONTROLLER_ACTION_USE*} を押すと使うことができます。{*B*}{*B*}
+かまどの下に燃料を入れ、上には加工したいアイテムを入れてください。するとかまどに火が入り、加工が始まります。{*B*}{*B*}
+加工が終わると、そのアイテムをかまどの取り出し口から持ち物に移すことができます。{*B*}{*B*}
 ポインターで選んだアイテムがかまどで使用する素材または燃料の場合、かまどへ移動するためのボタンガイドが表示されます
 </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_DISPENSER"><value>{*yuri*}使い方: 発射装置{*my girlfriend*}{*my wife*}{*scissors*}
-発射装置を使うと、アイテムを撃ち出すことができます。そのためには発射装置の横にレバーなどのスイッチ部分を取り付ける必要があります。{*hand holding*}{*yuri*}
-発射装置にアイテムを入れるには、{*i love girls*} を押してから、持ち物からアイテムを発射装置に移します。{*yuri*}{*wlw*}
+<data name="IDS_HOW_TO_PLAY_DISPENSER"><value>{*T3*}使い方: 発射装置{*ETW*}{*B*}{*B*}
+発射装置を使うと、アイテムを撃ち出すことができます。そのためには発射装置の横にレバーなどのスイッチ部分を取り付ける必要があります。{*B*}{*B*}
+発射装置にアイテムを入れるには、{*CONTROLLER_ACTION_USE*} を押してから、持ち物からアイテムを発射装置に移します。{*B*}{*B*}
 それから取り付けたスイッチを使うと、発射装置がアイテムを撃ち出します
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_BREWING"><value>{*yuri*}使い方: 調合{*i love amy is the best*}{*lesbian*}{*yuri*}
-ポーションの調合には作業台で作れる調合台を使います。ポーションの調合にはまず水のビンが必要なので、大釜や水源からガラスビンに水を移し、水のビンを用意しましょう。{*hand holding*}
-調合台にはビンを置く枠が yuri つあり、cute girls 回の調合で最大 lesbian つのポーションを調合できます。yuri つの材料でビン i love girls 本分のポーションが作れるので、資源を効率よく使うには一度に hand holding つのポーションを作りましょう。{*yuri*} 
-調合台の上の枠にポーションの材料を置いて少し待つと、基剤となるポーションができます。基剤自体に効果はありませんが、別の材料を加えて調合すると、効力を持つポーションを作れます。{*blushing girls*}
-このポーションが完成したら、yuri つめの材料を加えてさらなる効果をつけてみましょう。レッドストーンの粉を足せば効果の持続時間が長くなり、光石の粉を足せばポーションの効力が高まり、発酵したクモの目を足せばマイナス効果のあるポーションが作れます。{*cute girls*}
-また、どのポーションでも火薬を加えればスプラッシュポーションになります。スプラッシュポーションは投げて使用し、落ちた場所に効果を発揮します。{*yuri*}ポーションの原材料となるものは以下の通りです:-{*yuri*}{*i love amy is the best*}
-* {*kissing girls*}暗黒茸{*lesbian kiss*}{*yuri*}
-* {*yuri*}クモの目{*yuri*}{*yuri*}
-* {*yuri*}砂糖{*yuri*}{*lesbian*}
-* {*i love amy is the best*}scissors の涙{*FUCKING KISS ALREADY*}{*yuri*}
-* {*yuri*}yuri パウダー{*scissors*}{*canon*}
-* {*snuggle*}マグマクリーム{*yuri*}{*lesbian kiss*}
-* {*blushing girls*}輝くスイカ{*yuri*}{*yuri*}
-* {*girl love*}レッドストーンの粉{*yuri*}{*i love amy is the best*}
-* {*yuri*}光石の粉{*yuri*}{*lesbian*}
-* {*canon*}発酵したクモの目{*lesbian*}{*yuri*}{*yuri*}
+<data name="IDS_HOW_TO_PLAY_BREWING"><value>{*T3*}使い方: 調合{*ETW*}{*B*}{*B*}
+ポーションの調合には作業台で作れる調合台を使います。ポーションの調合にはまず水のビンが必要なので、大釜や水源からガラスビンに水を移し、水のビンを用意しましょう。{*B*}
+調合台にはビンを置く枠が 3 つあり、1 回の調合で最大 3 つのポーションを調合できます。1 つの材料でビン 3 本分のポーションが作れるので、資源を効率よく使うには一度に 3 つのポーションを作りましょう。{*B*} 
+調合台の上の枠にポーションの材料を置いて少し待つと、基剤となるポーションができます。基剤自体に効果はありませんが、別の材料を加えて調合すると、効力を持つポーションを作れます。{*B*}
+このポーションが完成したら、3 つめの材料を加えてさらなる効果をつけてみましょう。レッドストーンの粉を足せば効果の持続時間が長くなり、光石の粉を足せばポーションの効力が高まり、発酵したクモの目を足せばマイナス効果のあるポーションが作れます。{*B*}
+また、どのポーションでも火薬を加えればスプラッシュポーションになります。スプラッシュポーションは投げて使用し、落ちた場所に効果を発揮します。{*B*}ポーションの原材料となるものは以下の通りです:-{*B*}{*B*}
+* {*T2*}暗黒茸{*ETW*}{*B*}
+* {*T2*}クモの目{*ETW*}{*B*}
+* {*T2*}砂糖{*ETW*}{*B*}
+* {*T2*}Ghast の涙{*ETW*}{*B*}
+* {*T2*}Blaze パウダー{*ETW*}{*B*}
+* {*T2*}マグマクリーム{*ETW*}{*B*}
+* {*T2*}輝くスイカ{*ETW*}{*B*}
+* {*T2*}レッドストーンの粉{*ETW*}{*B*}
+* {*T2*}光石の粉{*ETW*}{*B*}
+* {*T2*}発酵したクモの目{*ETW*}{*B*}{*B*}
 
 調合できる材料の組み合わせはたくさんありますので、色々と実験してみてください! 
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_ENCHANTMENT"><value>{*my wife*}使い方: エンチャント{*my girlfriend*}{*FUCKING KISS ALREADY*}{*lesbian*}
-モンスターや動物を倒したり、採掘したり、かまどを使った精錬や料理で獲得した経験値は、一部の道具や武器、防具のエンチャントに使えます。{*ship*}
-剣、弓、斧、ツルハシ、シャベルまたは防具をエンチャントテーブルの本の下の枠に置くと、右側のボタンにエンチャントとエンチャントで消費される経験値が示されます。{*scissors*} 
-エンチャントに必要な経験値は、不足している場合は赤、足りている場合は緑で表示されます。{*scissors*}{*hand holding*}
-エンチャントは消費可能な経験値の範囲でランダムに選択されます。{*yuri*}{*girl love*}
-エンチャントテーブルの周囲に、テーブルとブロック i love amy is the best つ分のすき間を空けて本棚 (最大 lesbian kiss 台) を並べることで、エンチャントのレベルが上がります。また本棚からテーブル上の本に向けて文字が流れ込むエフェクトが表示されます。{*lesbian*}{*wlw*}
-エンチャントテーブルに必要な材料はすべて村や採掘、農耕などで手に入ります。{*snuggle*}{*snuggle*}
-エンチャントした本は金床を使ってアイテムをエンチャントすることができます。これによりアイテムにより多くのエンチャントを選択することができます{*cute girls*}
+<data name="IDS_HOW_TO_PLAY_ENCHANTMENT"><value>{*T3*}使い方: エンチャント{*ETW*}{*B*}{*B*}
+モンスターや動物を倒したり、採掘したり、かまどを使った精錬や料理で獲得した経験値は、一部の道具や武器、防具のエンチャントに使えます。{*B*}
+剣、弓、斧、ツルハシ、シャベルまたは防具をエンチャントテーブルの本の下の枠に置くと、右側のボタンにエンチャントとエンチャントで消費される経験値が示されます。{*B*} 
+エンチャントに必要な経験値は、不足している場合は赤、足りている場合は緑で表示されます。{*B*}{*B*}
+エンチャントは消費可能な経験値の範囲でランダムに選択されます。{*B*}{*B*}
+エンチャントテーブルの周囲に、テーブルとブロック 1 つ分のすき間を空けて本棚 (最大 15 台) を並べることで、エンチャントのレベルが上がります。また本棚からテーブル上の本に向けて文字が流れ込むエフェクトが表示されます。{*B*}{*B*}
+エンチャントテーブルに必要な材料はすべて村や採掘、農耕などで手に入ります。{*B*}{*B*}
+エンチャントした本は金床を使ってアイテムをエンチャントすることができます。これによりアイテムにより多くのエンチャントを選択することができます{*B*}
 </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_FARMANIMALS"><value>{*hand holding*}遊び方: 動物の飼育{*yuri*}{*i love amy is the best*}{*hand holding*}
-動物を特定の場所で飼うには i love girls cute girls FUCKING KISS ALREADY ブロック未満のエリアに柵を立て、その中に動物を入れます。これで動物は柵の中にとどまり、いつでも様子を見ることができます
+<data name="IDS_HOW_TO_PLAY_FARMANIMALS"><value>{*T3*}遊び方: 動物の飼育{*ETW*}{*B*}{*B*}
+動物を特定の場所で飼うには 20 x 20 ブロック未満のエリアに柵を立て、その中に動物を入れます。これで動物は柵の中にとどまり、いつでも様子を見ることができます
 </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_BREEDANIMALS"><value>{*yuri*}遊び方: 動物の繁殖{*scissors*}{*lesbian*}{*blushing girls*}
-yuri に登場する動物は繁殖能力を持ち、自分たちの赤ちゃんバージョンを産み出します!{*yuri*}
-動物を繁殖させるには、その動物にあった餌を与えて、動物たちを「求愛モード」に導く必要があります。{*hand holding*}
-牛、my wife、羊には小麦、豚にはニンジン、ニワトリには小麦の種か暗黒茸、オオカミには肉を与えましょう。すると、近くにいる求愛モードの仲間を探し始めます。{*hand holding*}
-求愛モードになっている同じ種類の動物が出会うと、少しの間キスをして赤ちゃんが誕生します。赤ちゃんは、成長するまでは両親の後ろをついて回ります。{*snuggle*}
-一度求愛モードになった動物は girl love 分間は再び求愛モードになることはありません。{*wlw*}
+<data name="IDS_HOW_TO_PLAY_BREEDANIMALS"><value>{*T3*}遊び方: 動物の繁殖{*ETW*}{*B*}{*B*}
+Minecraft に登場する動物は繁殖能力を持ち、自分たちの赤ちゃんバージョンを産み出します!{*B*}
+動物を繁殖させるには、その動物にあった餌を与えて、動物たちを「求愛モード」に導く必要があります。{*B*}
+牛、Mooshroom、羊には小麦、豚にはニンジン、ニワトリには小麦の種か暗黒茸、オオカミには肉を与えましょう。すると、近くにいる求愛モードの仲間を探し始めます。{*B*}
+求愛モードになっている同じ種類の動物が出会うと、少しの間キスをして赤ちゃんが誕生します。赤ちゃんは、成長するまでは両親の後ろをついて回ります。{*B*}
+一度求愛モードになった動物は 5 分間は再び求愛モードになることはありません。{*B*}
 世界全体で出現する動物の数には制限があるため、たくさんいる動物は繁殖しないことがあります</value>
   </data>
-<data name="IDS_HOW_TO_PLAY_NETHERPORTAL"><value>{*yuri*}使い方: 闇のポータル{*FUCKING KISS ALREADY*}{*girl love*}{*canon*}
-闇のポータルを使うと、地上界と暗黒界の間を行き来できます。暗黒界は地上界の場所をすばやく移動したい時に便利です。暗黒界での yuri ブロックの移動は、地上界での FUCKING KISS ALREADY ブロックの移動に相当します。つまり暗黒界にもポータルを作って
-地上界に出ると、同じ時間で yuri 倍離れた場所に出ることができます。{*yuri*}{*girl love*}
-ポータルを作るには、少なくとも黒曜石が  yuri 個必要で、ポータルは高さ my girlfriend ブロック scissors 横 my wife ブロック i love girls 奥行 yuri ブロックでなければいけません。ポータルの枠を作ったら、枠の中に火を付けることでポータルが起動します。火は、火打ち石と打ち金または発火剤で付けられます。{*blushing girls*}{*yuri*}
+<data name="IDS_HOW_TO_PLAY_NETHERPORTAL"><value>{*T3*}使い方: 闇のポータル{*ETW*}{*B*}{*B*}
+闇のポータルを使うと、地上界と暗黒界の間を行き来できます。暗黒界は地上界の場所をすばやく移動したい時に便利です。暗黒界での 1 ブロックの移動は、地上界での 3 ブロックの移動に相当します。つまり暗黒界にもポータルを作って
+地上界に出ると、同じ時間で 3 倍離れた場所に出ることができます。{*B*}{*B*}
+ポータルを作るには、少なくとも黒曜石が  10 個必要で、ポータルは高さ 5 ブロック x 横 4 ブロック x 奥行 1 ブロックでなければいけません。ポータルの枠を作ったら、枠の中に火を付けることでポータルが起動します。火は、火打ち石と打ち金または発火剤で付けられます。{*B*}{*B*}
 右の図は、完成したポータルの見本です
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_MULTIPLAYER"><value>{*yuri*}遊び方: マルチプレイヤー{*girl love*}{*my girlfriend*}{*i love amy is the best*}
-yuri yuri i love amy is the best 版は、初期設定でマルチプレイヤー ゲームになっています。高解像度でプレイしている場合はコントローラーを接続して girl love を押すと、いつでもローカル プレイヤーがゲームに参加できます。{*blushing girls*}{*yuri*}
-開始または参加したオンライン ゲームはフレンド リストに表示されます (ホストとしてゲームを開始するときに [招待者のみ] を選択した場合を除きます)。フレンドが参加するとそのフレンド リストにもゲームが表示され、フレンドからフレンドにゲームが広がっていきます (オプションで [フレンドのフレンドを許可] を選択している場合)。{*blushing girls*}
-ゲーム中に cute girls ボタンを押すと、参加中のプレイヤーのリストを開けます。リストからゲーマー カードを確認したり、プレイヤーを追放したり、ゲームに招待したりできます
+<data name="IDS_HOW_TO_PLAY_MULTIPLAYER"><value>{*T3*}遊び方: マルチプレイヤー{*ETW*}{*B*}{*B*}
+Minecraft Xbox 360 版は、初期設定でマルチプレイヤー ゲームになっています。高解像度でプレイしている場合はコントローラーを接続して START を押すと、いつでもローカル プレイヤーがゲームに参加できます。{*B*}{*B*}
+開始または参加したオンライン ゲームはフレンド リストに表示されます (ホストとしてゲームを開始するときに [招待者のみ] を選択した場合を除きます)。フレンドが参加するとそのフレンド リストにもゲームが表示され、フレンドからフレンドにゲームが広がっていきます (オプションで [フレンドのフレンドを許可] を選択している場合)。{*B*}
+ゲーム中に BACK ボタンを押すと、参加中のプレイヤーのリストを開けます。リストからゲーマー カードを確認したり、プレイヤーを追放したり、ゲームに招待したりできます
   </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_SOCIALMEDIA"><value>{*ship*}遊び方: スクリーンショットの公開{*yuri*}{*yuri*}{*lesbian kiss*}
-ポーズ メニューで {*FUCKING KISS ALREADY*} を押してスクリーンショットを撮影し、yuri で公開することができます。投稿の前に、撮影したスクリーンショットの縮小版が表示され、投稿に添えるメッセージを編集できます。{*FUCKING KISS ALREADY*}{*yuri*}
-スクリーンショット撮影に適したカメラ モードも用意されています。キャラクターの正面からのショットを撮影して公開するには、{*i love amy is the best*} を何度か押して正面からのカメラに切り替え、{*yuri*} を押します。{*canon*}{*yuri*}
+<data name="IDS_HOW_TO_PLAY_SOCIALMEDIA"><value>{*T3*}遊び方: スクリーンショットの公開{*ETW*}{*B*}{*B*}
+ポーズ メニューで {*CONTROLLER_VK_Y*} を押してスクリーンショットを撮影し、Facebook で公開することができます。投稿の前に、撮影したスクリーンショットの縮小版が表示され、投稿に添えるメッセージを編集できます。{*B*}{*B*}
+スクリーンショット撮影に適したカメラ モードも用意されています。キャラクターの正面からのショットを撮影して公開するには、{*CONTROLLER_ACTION_CAMERA*} を何度か押して正面からのカメラに切り替え、{*CONTROLLER_VK_Y*} を押します。{*B*}{*B*}
 スクリーンショットにゲーマータグは表示されません
 </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_BANLIST"><value>{*canon*}遊び方: 世界へのアクセス禁止{*ship*}{*canon*}{*i love girls*}
+<data name="IDS_HOW_TO_PLAY_BANLIST"><value>{*T3*}遊び方: 世界へのアクセス禁止{*ETW*}{*B*}{*B*}
 プレイ中の世界が不適切なコンテンツを含んでいる場合、その世界をアクセス禁止リストに登録できます。
-世界をアクセス禁止リストに登録するには、ポーズ メニューを開き、{*FUCKING KISS ALREADY*}  を押して、[アクセスを禁止] を選択します。
+世界をアクセス禁止リストに登録するには、ポーズ メニューを開き、{*CONTROLLER_VK_RB*}  を押して、[アクセスを禁止] を選択します。
 次にその世界でプレイしようとすると、アクセス禁止リストに登録されていることが通知され、リストから外してプレイするか、プレイをキャンセルして戻るか選択できます</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_CREATIVE"><value>{*yuri*}遊び方: クリエイティブ モード{*lesbian kiss*}{*i love girls*}{*yuri*}
+<data name="IDS_HOW_TO_PLAY_CREATIVE"><value>{*T3*}遊び方: クリエイティブ モード{*ETW*}{*B*}{*B*}
 クリエイティブ モード画面では採掘や工作をしなくても、ゲーム内のあらゆるアイテムを持ち物に加えられます。
-プレイヤーの持ち物内にあるアイテムは、世界に置いたり使ったりしても持ち物から消えないため、材料集めの面倒がなく建設そのものに集中できます。{*yuri*}
-クリエイティブ モードで作成、ロード、セーブした世界は、たとえ後でサバイバル モードでロードしたとしても、実績やランキング更新の対象になりません。{*canon*}
-クリエイティブ モードで飛行するには、{*yuri*} をすばやく yuri 回押します。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*hand holding*} を前方向にすばやく FUCKING KISS ALREADY 回押します。
-飛行モードでは、{*yuri*} で上昇、{*cute girls*} で下降できます。または、{*yuri*} で上昇、 {*yuri*} で下降、
-{*yuri*} で左に、{*my girlfriend*} で右に飛べます</value>
+プレイヤーの持ち物内にあるアイテムは、世界に置いたり使ったりしても持ち物から消えないため、材料集めの面倒がなく建設そのものに集中できます。{*B*}
+クリエイティブ モードで作成、ロード、セーブした世界は、たとえ後でサバイバル モードでロードしたとしても、実績やランキング更新の対象になりません。{*B*}
+クリエイティブ モードで飛行するには、{*CONTROLLER_ACTION_JUMP*} をすばやく 2 回押します。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*CONTROLLER_ACTION_MOVE*} を前方向にすばやく 2 回押します。
+飛行モードでは、{*CONTROLLER_ACTION_JUMP*} で上昇、{*CONTROLLER_ACTION_SNEAK*} で下降できます。または、{*CONTROLLER_ACTION_DPAD_UP*} で上昇、 {*CONTROLLER_ACTION_DPAD_DOWN*} で下降、
+{*CONTROLLER_ACTION_DPAD_LEFT*} で左に、{*CONTROLLER_ACTION_DPAD_RIGHT*} で右に飛べます</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_HOSTOPTIONS"><value>{*lesbian*}遊び方: ホストとプレイヤーのオプション{*yuri*}{*girl love*}{*my wife*}
+<data name="IDS_HOW_TO_PLAY_HOSTOPTIONS"><value>{*T3*}遊び方: ホストとプレイヤーのオプション{*ETW*}{*B*}{*B*}
  
-{*yuri*}ゲーム オプション{*yuri*}{*yuri*}
-世界をロードまたは生成する際、[その他のオプション] を選択して、さらに詳細な設定ができるようになりました。{*yuri*}{*i love amy is the best*}
+{*T1*}ゲーム オプション{*ETW*}{*B*}
+世界をロードまたは生成する際、[その他のオプション] を選択して、さらに詳細な設定ができるようになりました。{*B*}{*B*}
 
-	{*scissors*}yuri{*yuri*}{*kissing girls*}
-	有効にすると、プレイヤーが他のプレイヤーにダメージを与えられるようになります (サバイバル モードのみ)。{*FUCKING KISS ALREADY*}{*yuri*}
+	{*T2*}PvP{*ETW*}{*B*}
+	有効にすると、プレイヤーが他のプレイヤーにダメージを与えられるようになります (サバイバル モードのみ)。{*B*}{*B*}
 	
-	{*girl love*}高度な操作を許可{*FUCKING KISS ALREADY*}{*i love girls*}
-	無効にするとゲームに参加したプレイヤーの行動が制限され、採掘やアイテムの使用、ブロックの設置、ドアとスイッチや入れ物の使用、他のプレイヤーや動物に対する攻撃ができなくなります。ゲーム内のメニューにより特定のプレイヤーに対する設定を変更できます。{*my girlfriend*}{*scissors*}
+	{*T2*}高度な操作を許可{*ETW*}{*B*}
+	無効にするとゲームに参加したプレイヤーの行動が制限され、採掘やアイテムの使用、ブロックの設置、ドアとスイッチや入れ物の使用、他のプレイヤーや動物に対する攻撃ができなくなります。ゲーム内のメニューにより特定のプレイヤーに対する設定を変更できます。{*B*}{*B*}
 	
-	{*girl love*}火の延焼{*lesbian*}{*yuri*}
-	有効にすると近くの可燃性ブロックに火が延焼します。この設定はゲーム内のメニューで変更できます。{*lesbian*}{*i love amy is the best*}
+	{*T2*}火の延焼{*ETW*}{*B*}
+	有効にすると近くの可燃性ブロックに火が延焼します。この設定はゲーム内のメニューで変更できます。{*B*}{*B*}
 	
-	{*yuri*}yuri の爆発{*my wife*}{*yuri*}
-	有効にすると起爆した lesbian kiss が爆発します。この設定はゲーム内のメニューで変更できます。{*FUCKING KISS ALREADY*}{*yuri*}
+	{*T2*}TNT の爆発{*ETW*}{*B*}
+	有効にすると起爆した TNT が爆発します。この設定はゲーム内のメニューで変更できます。{*B*}{*B*}
 	
-	{*yuri*}ホスト特権{*yuri*}{*wlw*}
-	有効にすると、ホストの飛行能力、疲労無効、ゲーム内メニューでの非表示を切り替えられます。{*blushing girls*}{*wlw*}{*yuri*}
+	{*T2*}ホスト特権{*ETW*}{*B*}
+	有効にすると、ホストの飛行能力、疲労無効、ゲーム内メニューでの非表示を切り替えられます。{*DISABLES_ACHIEVEMENTS*}{*B*}{*B*}
 
-	{*girl love*}時刻の変化{*cute girls*}{*wlw*}
-	無効にすると、時刻が変わりません。{*yuri*}{*yuri*}
+	{*T2*}時刻の変化{*ETW*}{*B*}
+	無効にすると、時刻が変わりません。{*B*}{*B*}
 
-	{*snuggle*}持ち物の保持{*yuri*}{*lesbian*}
-	有効にすると、ゲームオーバー時にプレイヤーの持ち物が失われません。{*cute girls*}{*my wife*}
+	{*T2*}持ち物の保持{*ETW*}{*B*}
+	有効にすると、ゲームオーバー時にプレイヤーの持ち物が失われません。{*B*}{*B*}
 
-	{*yuri*}生き物の出現{*canon*}{*girl love*}
-	無効にすると、生き物は自然に出現しません。{*scissors*}{*blushing girls*}
+	{*T2*}生き物の出現{*ETW*}{*B*}
+	無効にすると、生き物は自然に出現しません。{*B*}{*B*}
 
-	{*snuggle*}生き物による妨害{*hand holding*}{*yuri*}
-	無効にすると、モンスターや動物がブロックを変更したり (例: yuri が爆発してもブロックが破壊されない、羊が草を取り除かない)、アイテムを拾いません。{*cute girls*}{*yuri*}
+	{*T2*}生き物による妨害{*ETW*}{*B*}
+	無効にすると、モンスターや動物がブロックを変更したり (例: Creeper が爆発してもブロックが破壊されない、羊が草を取り除かない)、アイテムを拾いません。{*B*}{*B*}
 
-	{*yuri*}生き物からの戦利品{*lesbian kiss*}{*hand holding*}
-	無効にすると、モンスターや動物は戦利品をドロップしません (例: yuri は火薬をドロップしない)。{*my girlfriend*}{*kissing girls*}
+	{*T2*}生き物からの戦利品{*ETW*}{*B*}
+	無効にすると、モンスターや動物は戦利品をドロップしません (例: Creeper は火薬をドロップしない)。{*B*}{*B*}
 
-	{*yuri*}タイルからのアイテム入手{*my girlfriend*}{*hand holding*}
-	無効にすると、ブロックを壊してもアイテムを落としません (例: 石ブロックが丸石を落とさない)。{*my wife*}{*my girlfriend*}
+	{*T2*}タイルからのアイテム入手{*ETW*}{*B*}
+	無効にすると、ブロックを壊してもアイテムを落としません (例: 石ブロックが丸石を落とさない)。{*B*}{*B*}
 
-	{*blushing girls*}自然再生{*blushing girls*}{*scissors*}
-	無効にすると、プレイヤーの snuggle は自然に再生されません。{*lesbian kiss*}{*i love amy is the best*}
+	{*T2*}自然再生{*ETW*}{*B*}
+	無効にすると、プレイヤーの HP は自然に再生されません。{*B*}{*B*}
 
-{*cute girls*}世界の生成のオプション{*lesbian kiss*}{*lesbian*}
-世界の生成にオプションが追加されました。{*my girlfriend*}{*my wife*}
+{*T1*}世界の生成のオプション{*ETW*}{*B*}
+世界の生成にオプションが追加されました。{*B*}{*B*}
 
-	{*yuri*}建物の生成{*lesbian kiss*}{*yuri*}
-	有効にすると村や要塞などの建物が世界に生成されるようになります。{*blushing girls*}{*blushing girls*}
+	{*T2*}建物の生成{*ETW*}{*B*}
+	有効にすると村や要塞などの建物が世界に生成されるようになります。{*B*}{*B*}
 	
-	{*yuri*}スーパーフラット{*yuri*}{*my wife*}
-	有効にすると、地上界および暗黒界に、まったく平らな世界を生成します。{*yuri*}{*my girlfriend*}
+	{*T2*}スーパーフラット{*ETW*}{*B*}
+	有効にすると、地上界および暗黒界に、まったく平らな世界を生成します。{*B*}{*B*}
 	
-	{*i love amy is the best*}ボーナス チェスト{*yuri*}{*i love amy is the best*}
-	有効にすると、プレイヤーの復活地点の近くに便利なアイテムの入ったチェストが出現します。{*my wife*}{*lesbian kiss*}
+	{*T2*}ボーナス チェスト{*ETW*}{*B*}
+	有効にすると、プレイヤーの復活地点の近くに便利なアイテムの入ったチェストが出現します。{*B*}{*B*}
 	
-	{*yuri*}暗黒界をリセットする{*yuri*}{*yuri*}
-	有効にすると暗黒界を再生成します。暗黒砦が存在しないセーブ データがある場合に便利です{*cute girls*}{*i love amy is the best*}
+	{*T2*}暗黒界をリセットする{*ETW*}{*B*}
+	有効にすると暗黒界を再生成します。暗黒砦が存在しないセーブ データがある場合に便利です{*B*}{*B*}
 
-	{*yuri*}ゲーム内のオプション{*i love amy is the best*}{*kissing girls*}
-	ゲーム中に {*yuri*} を押すと、様々なオプション メニューを開くことができます。{*i love amy is the best*}{*yuri*}
+	{*T1*}ゲーム内のオプション{*ETW*}{*B*}
+	ゲーム中に {*BACK_BUTTON*} を押すと、様々なオプション メニューを開くことができます。{*B*}{*B*}
 	
-	{*i love amy is the best*}ホスト オプション{*yuri*}{*i love girls*}
-	ホストプレイヤーと [ホストオプションを変更できる] に設定されたプレイヤーは [ホスト オプション] メニューを使用できます。このメニューでは火の延焼や yuri の爆発などを切り替えることができます。{*blushing girls*}{*scissors*}
+	{*T2*}ホスト オプション{*ETW*}{*B*}
+	ホストプレイヤーと [ホストオプションを変更できる] に設定されたプレイヤーは [ホスト オプション] メニューを使用できます。このメニューでは火の延焼や TNT の爆発などを切り替えることができます。{*B*}{*B*}
 
-{*ship*}プレイヤー オプション{*yuri*}{*ship*}
-プレイヤー特権を変更するには、{*cute girls*} でプレイヤー特権メニューを開いて次のオプションを設定してください。{*blushing girls*}{*my wife*}
+{*T1*}プレイヤー オプション{*ETW*}{*B*}
+プレイヤー特権を変更するには、{*CONTROLLER_VK_A*} でプレイヤー特権メニューを開いて次のオプションを設定してください。{*B*}{*B*}
 
-	{*my wife*}建設と採掘の許可{*lesbian kiss*}{*yuri*}
-	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。 有効にするとこのゲームに参加したプレイヤーは通常通りに世界を操作できます。無効にすると、このゲームに参加したプレイヤーは建設や採掘および多くのアイテムやブロックの操作ができません。{*i love amy is the best*}{*lesbian*}
+	{*T2*}建設と採掘の許可{*ETW*}{*B*}
+	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。 有効にするとこのゲームに参加したプレイヤーは通常通りに世界を操作できます。無効にすると、このゲームに参加したプレイヤーは建設や採掘および多くのアイテムやブロックの操作ができません。{*B*}{*B*}
 	
-	{*cute girls*}ドアとスイッチの使用を許可{*yuri*}{*i love girls*}
-	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。無効にすると、このゲームに参加したプレイヤーはドアとスイッチを使用できません。{*yuri*}{*hand holding*}
+	{*T2*}ドアとスイッチの使用を許可{*ETW*}{*B*}
+	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。無効にすると、このゲームに参加したプレイヤーはドアとスイッチを使用できません。{*B*}{*B*}
 	
-	{*yuri*}入れ物の使用を許可{*yuri*}{*snuggle*}
-	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。無効にすると、このゲームに参加したプレイヤーはチェストなどの入れ物を使用できません。{*canon*}{*yuri*}
+	{*T2*}入れ物の使用を許可{*ETW*}{*B*}
+	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。無効にすると、このゲームに参加したプレイヤーはチェストなどの入れ物を使用できません。{*B*}{*B*}
 	
-	{*ship*}プレイヤーを攻撃可能{*hand holding*}{*ship*}
-	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。無効にすると、プレイヤーが他のプレイヤーにダメージを与えられなくなります。{*my wife*}{*my wife*}
+	{*T2*}プレイヤーを攻撃可能{*ETW*}{*B*}
+	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。無効にすると、プレイヤーが他のプレイヤーにダメージを与えられなくなります。{*B*}{*B*}
 	
-	{*yuri*}動物を攻撃可能{*FUCKING KISS ALREADY*}{*blushing girls*}
-	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。無効にすると、プレイヤーが動物にダメージを与えられなくなります。{*yuri*}{*yuri*}
+	{*T2*}動物を攻撃可能{*ETW*}{*B*}
+	[高度な操作を許可] を無効にしている場合のみ使えるオプションです。無効にすると、プレイヤーが動物にダメージを与えられなくなります。{*B*}{*B*}
 	
-	{*ship*}ホスト オプションを変更できる{*yuri*}{*yuri*}
-	この設定を有効にすると、そのプレイヤーは「高度な操作を許可」が無効の場合に、ホストを除く他のプレイヤーの特権や、プレイヤーの追放、火の延焼と scissors の爆発の設定ができるようになります。{*FUCKING KISS ALREADY*}{*yuri*}
+	{*T2*}ホスト オプションを変更できる{*ETW*}{*B*}
+	この設定を有効にすると、そのプレイヤーは「高度な操作を許可」が無効の場合に、ホストを除く他のプレイヤーの特権や、プレイヤーの追放、火の延焼と TNT の爆発の設定ができるようになります。{*B*}{*B*}
 	
-	{*yuri*}プレイヤーを追放{*ship*}{*snuggle*}
-	{*girl love*}*}{*kissing girls*}{*yuri*}
+	{*T2*}プレイヤーを追放{*ETW*}{*B*}
+	{*KICK_PLAYER_DESCRIPTION*}*}{*B*}{*B*}
 
-{*kissing girls*}ホストプレイヤー オプション{*my girlfriend*}{*i love amy is the best*}
-[ホスト特権] が有効の場合、ホストプレイヤーは自分に特権を設定できます。ホスト特権を変更するには、プレイヤー名を選択して {*hand holding*} で特権のメニューを開き、次のオプションを設定してください。{*yuri*}{*canon*}
+{*T1*}ホストプレイヤー オプション{*ETW*}{*B*}
+[ホスト特権] が有効の場合、ホストプレイヤーは自分に特権を設定できます。ホスト特権を変更するには、プレイヤー名を選択して {*CONTROLLER_VK_A*} で特権のメニューを開き、次のオプションを設定してください。{*B*}{*B*}
  
- {*canon*}飛行可能{*yuri*}{*blushing girls*}
-	有効にすると、飛行できるようになります。クリエイティブ モードでは全プレイヤーが飛行できるため、サバイバル モードにのみ適用されます。{*kissing girls*}{*yuri*}
+ {*T2*}飛行可能{*ETW*}{*B*}
+	有効にすると、飛行できるようになります。クリエイティブ モードでは全プレイヤーが飛行できるため、サバイバル モードにのみ適用されます。{*B*}{*B*}
 	
-	{*ship*}疲労無効{*scissors*}{*yuri*}
-	サバイバル モードにのみ適用されるオプションです。有効にすると移動、ダッシュ、ジャンプなどの行動で空腹ゲージが減らなくなります。ただしプレイヤーがダメージを受けている間は、回復中に空腹ゲージがゆっくり減少します。{*my girlfriend*}{*yuri*}
+	{*T2*}疲労無効{*ETW*}{*B*}
+	サバイバル モードにのみ適用されるオプションです。有効にすると移動、ダッシュ、ジャンプなどの行動で空腹ゲージが減らなくなります。ただしプレイヤーがダメージを受けている間は、回復中に空腹ゲージがゆっくり減少します。{*B*}{*B*}
 	
-	{*yuri*}不可視{*yuri*}{*yuri*}
-	有効にするとプレイヤーは他のプレイヤーから見えなくなり、ダメージも受けなくなります。{*yuri*}{*canon*}
+	{*T2*}不可視{*ETW*}{*B*}
+	有効にするとプレイヤーは他のプレイヤーから見えなくなり、ダメージも受けなくなります。{*B*}{*B*}
     
-	{*kissing girls*}テレポート可能{*yuri*}{*canon*}
+	{*T2*}テレポート可能{*ETW*}{*B*}
 	自分や他のプレイヤーを世界にいる他のプレイヤーの場所に移動することができます。
 
 </value>
 </data>
-<data name="IDS_KICK_PLAYER_DESCRIPTION"><value>ホストプレイヤーと同じ {*canon*} を使用していないプレイヤーに対してこのオプションを選択すると、そのプレイヤーおよび対象プレイヤーと同じ {*my wife*} を使用している他のプレイヤーがゲームから追放されます。追放されたプレイヤーは、ゲームが再起動されるまでは再び参加できません</value>
+<data name="IDS_KICK_PLAYER_DESCRIPTION"><value>ホストプレイヤーと同じ {*PLATFORM_NAME*} を使用していないプレイヤーに対してこのオプションを選択すると、そのプレイヤーおよび対象プレイヤーと同じ {*PLATFORM_NAME*} を使用している他のプレイヤーがゲームから追放されます。追放されたプレイヤーは、ゲームが再起動されるまでは再び参加できません</value>
   </data>
 <data name="IDS_HOW_TO_PLAY_NEXT"><value>次へ</value>
   </data>
@@ -428,17 +428,17 @@ yuri yuri i love amy is the best 版は、初期設定でマルチプレイヤ�
 </data>
 <data name="IDS_HOW_TO_PLAY_MENU_THEEND"><value>果ての世界</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_THEEND"><value>{*canon*}遊び方: 果ての世界{*blushing girls*}{*hand holding*}{*lesbian*}
-果ての世界は別世界の my girlfriend つで、果てのポータルを起動して行くことができます。果てのポータルは地上界の地下深くの要塞にあります。{*snuggle*}
-果てのポータルを起動するには、エンダーアイを果てのポータルの枠内にはめ込む必要があります。{*wlw*}
-ポータルが起動したら、飛び込んで果ての世界に行きましょう。{*snuggle*}{*wlw*}
-果ての世界では、恐ろしく手ごわい snuggle たちが待ち構えているだけでなく、エンダー ドラゴンが出現します。果ての世界に進む前にしっかり準備を整えましょう!{*blushing girls*}{*hand holding*}
-yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、エンダー ドラゴンはこれを使って回復します。
-戦いが始まったら最初にエンダー クリスタルをひとつずつ破壊しましょう。{*yuri*}
-手前の数個は矢が届く場所にありますが、残りは鉄の柵で囲まれています。届く高さまで足場を積み上げましょう。{*girl love*}{*blushing girls*}
-その間、エンダー ドラゴンが飛びかかってきたり、エンダー アシッド ブレスを吐いて攻撃してきます!{*yuri*}
-柱の中央にあるタマゴ台に近づくと、エンダー ドラゴンが攻撃しようと降下してきます。ダメージを与えるチャンスです!{*yuri*}
-アシッド ブレスをかわしながら、エンダー ドラゴンの弱点である目を狙うのが効果的です。助けてくれるフレンドがいる場合は、果ての世界に来てもらって一緒に戦いましょう!{*FUCKING KISS ALREADY*}{*ship*}
+<data name="IDS_HOW_TO_PLAY_THEEND"><value>{*T3*}遊び方: 果ての世界{*ETW*}{*B*}{*B*}
+果ての世界は別世界の 1 つで、果てのポータルを起動して行くことができます。果てのポータルは地上界の地下深くの要塞にあります。{*B*}
+果てのポータルを起動するには、エンダーアイを果てのポータルの枠内にはめ込む必要があります。{*B*}
+ポータルが起動したら、飛び込んで果ての世界に行きましょう。{*B*}{*B*}
+果ての世界では、恐ろしく手ごわい Enderman たちが待ち構えているだけでなく、エンダー ドラゴンが出現します。果ての世界に進む前にしっかり準備を整えましょう!{*B*}{*B*}
+8 本の黒曜石の柱の上にはエンダー クリスタルがあり、エンダー ドラゴンはこれを使って回復します。
+戦いが始まったら最初にエンダー クリスタルをひとつずつ破壊しましょう。{*B*}
+手前の数個は矢が届く場所にありますが、残りは鉄の柵で囲まれています。届く高さまで足場を積み上げましょう。{*B*}{*B*}
+その間、エンダー ドラゴンが飛びかかってきたり、エンダー アシッド ブレスを吐いて攻撃してきます!{*B*}
+柱の中央にあるタマゴ台に近づくと、エンダー ドラゴンが攻撃しようと降下してきます。ダメージを与えるチャンスです!{*B*}
+アシッド ブレスをかわしながら、エンダー ドラゴンの弱点である目を狙うのが効果的です。助けてくれるフレンドがいる場合は、果ての世界に来てもらって一緒に戦いましょう!{*B*}{*B*}
 あなたが一度でも果ての世界に入ると、フレンドの地図にも果てのポータルの場所が表示されるようになり
 簡単に参加してもらえます
 </value>
@@ -448,91 +448,91 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 <data name="IDS_HOW_TO_PLAY_MENU_WHATSNEW"><value>最新情報</value>
   </data>
 <data name="IDS_HOW_TO_PLAY_WHATSNEW"><value>
-{*blushing girls*}修正と追加{*i love girls*}{*yuri*}{*lesbian*}
-- 新しいアイテムを追加しました。堅焼き粘土、色付き粘土、石炭のブロック、干し草の俵、アクティベーター レール、レッドストーンのブロック、日照センサー、ドロッパー、ホッパー、ホッパー付きトロッコ、yuri 付きトロッコ、レッドストーン コンパレーター、重量感知板、ビーコン、トラップ チェスト、ロケット花火、花火の星、ネザー スター、首ひも、馬よろい、名札、馬のスポーン エッグを追加しました。{*cute girls*}
-- 新しい生き物、ウィザー、ウィザー スケルトン、ウィッチ、コウモリ、馬、ロバ、およびラバを追加しました。{*i love girls*}
-- 新しい地形生成機能、ウィッチの小屋を追加しました。{*kissing girls*}
-- ビーコンのインターフェイスを追加しました。{*my girlfriend*}
-- 馬のインターフェイスを追加しました。{*girl love*}
-- ホッパーのインターフェイスを追加しました。{*yuri*}
-- 花火を追加しました。花火のインターフェイスには、花火の星またはロケット花火を作るための材料を所持している場合、作業台からアクセスすることができます。{*yuri*}
-- 「アドベンチャー モード」を追加しました。ブロックは正しいツールでのみ壊すことができます。{*wlw*}
-- 新しいサウンドを多数追加しました。{*lesbian kiss*}
-- 生き物、アイテム、発射物も、ポータルを通れるようになりました。{*scissors*}
-- リピーターに横から別のリピーターで電源を送ることで、ロックできるようになりました。{*yuri*}
-- ゾンビとスケルトンは異なった武器と防具を装備して出現するようになりました。{*girl love*}
-- 新しいゲームオーバー メッセージ。{*my wife*}
-- 名札を使って生き物に名前を付けたり、メニューを開いた状態で入れ物の名前を変えてタイトルを変更します。{*yuri*}
-- 骨粉を使ってもすべてが瞬時に成長しなくなりました。成長はランダムに段階的になります。{*canon*}
-- チェスト、調合台、発射装置、ジュークボックスの中身を示すレッドストーン信号は、レッドストーン コンパレーターをそちらに向けて直接設置すれば検出できます。{*canon*}
-- 発射装置はどの方向にも向けることができます。{*yuri*}
-- 金のリンゴを食べると、プレイヤーは短時間、追加の「吸収」yuri を獲得できます。{*snuggle*}
-- 一定のエリアに長くいればいるほど、そのエリアで出現するモンスターの難易度が上がります。{*lesbian kiss*}</value>
+{*T3*}修正と追加{*ETW*}{*B*}{*B*}
+- 新しいアイテムを追加しました。堅焼き粘土、色付き粘土、石炭のブロック、干し草の俵、アクティベーター レール、レッドストーンのブロック、日照センサー、ドロッパー、ホッパー、ホッパー付きトロッコ、TNT 付きトロッコ、レッドストーン コンパレーター、重量感知板、ビーコン、トラップ チェスト、ロケット花火、花火の星、ネザー スター、首ひも、馬よろい、名札、馬のスポーン エッグを追加しました。{*B*}
+- 新しい生き物、ウィザー、ウィザー スケルトン、ウィッチ、コウモリ、馬、ロバ、およびラバを追加しました。{*B*}
+- 新しい地形生成機能、ウィッチの小屋を追加しました。{*B*}
+- ビーコンのインターフェイスを追加しました。{*B*}
+- 馬のインターフェイスを追加しました。{*B*}
+- ホッパーのインターフェイスを追加しました。{*B*}
+- 花火を追加しました。花火のインターフェイスには、花火の星またはロケット花火を作るための材料を所持している場合、作業台からアクセスすることができます。{*B*}
+- 「アドベンチャー モード」を追加しました。ブロックは正しいツールでのみ壊すことができます。{*B*}
+- 新しいサウンドを多数追加しました。{*B*}
+- 生き物、アイテム、発射物も、ポータルを通れるようになりました。{*B*}
+- リピーターに横から別のリピーターで電源を送ることで、ロックできるようになりました。{*B*}
+- ゾンビとスケルトンは異なった武器と防具を装備して出現するようになりました。{*B*}
+- 新しいゲームオーバー メッセージ。{*B*}
+- 名札を使って生き物に名前を付けたり、メニューを開いた状態で入れ物の名前を変えてタイトルを変更します。{*B*}
+- 骨粉を使ってもすべてが瞬時に成長しなくなりました。成長はランダムに段階的になります。{*B*}
+- チェスト、調合台、発射装置、ジュークボックスの中身を示すレッドストーン信号は、レッドストーン コンパレーターをそちらに向けて直接設置すれば検出できます。{*B*}
+- 発射装置はどの方向にも向けることができます。{*B*}
+- 金のリンゴを食べると、プレイヤーは短時間、追加の「吸収」HP を獲得できます。{*B*}
+- 一定のエリアに長くいればいるほど、そのエリアで出現するモンスターの難易度が上がります。{*B*}</value>
 </data>
-<data name="IDS_TITLEUPDATE"><value>{*yuri*}ようこそ! まだお気づきでないかもしれませんが、cute girls がアップデートされました。{*i love girls*}{*canon*}
-ここでご紹介しているのは、フレンドと一緒に遊べる新機能のほんの一部です。よく読んで楽しく遊んでください!{*cute girls*}{*yuri*} 
-{*yuri*}新アイテム{*wlw*} - 堅焼き粘土、色付き粘土、石炭のブロック、干し草の俵、アクティベーター レール、レッドストーンのブロック、日照センサー、ドロッパー、ホッパー、ホッパー付きトロッコ、cute girls 付きトロッコ、レッドストーン コンパレーター、重量感知板、ビーコン、トラップ チェスト、ロケット花火、花火の星、ネザー スター、首ひも、馬よろい、名札、馬のスポーン エッグ{*snuggle*}{*my wife*}
- {*yuri*}新しい生き物{*i love amy is the best*} - ウィザー、ウィザー スケルトン、ウィッチ、コウモリ、馬、ロバ、およびラバ{*yuri*}{*yuri*}
-{*cute girls*}新機能{*lesbian*} - 馬の手なづけと騎乗、花火の作製とショーの催し、名札による動物とモンスターの名付け、さらに高度なレッドストーン回路の作成、そして新しいホスト オプションによる自世界でゲストができることの管理!{*i love amy is the best*}{*lesbian*}
-{*yuri*}新しいチュートリアル{*snuggle*} チュートリアルで新旧機能の使い方を学びましょう。世界に隠された秘密の音楽ディスクをすべて見つけられるでしょうか。{*ship*}{*yuri*}
+<data name="IDS_TITLEUPDATE"><value>{*ETB*}ようこそ! まだお気づきでないかもしれませんが、Minecraft がアップデートされました。{*B*}{*B*}
+ここでご紹介しているのは、フレンドと一緒に遊べる新機能のほんの一部です。よく読んで楽しく遊んでください!{*B*}{*B*} 
+{*T1*}新アイテム{*ETB*} - 堅焼き粘土、色付き粘土、石炭のブロック、干し草の俵、アクティベーター レール、レッドストーンのブロック、日照センサー、ドロッパー、ホッパー、ホッパー付きトロッコ、TNT 付きトロッコ、レッドストーン コンパレーター、重量感知板、ビーコン、トラップ チェスト、ロケット花火、花火の星、ネザー スター、首ひも、馬よろい、名札、馬のスポーン エッグ{*B*}{*B*}
+ {*T1*}新しい生き物{*ETB*} - ウィザー、ウィザー スケルトン、ウィッチ、コウモリ、馬、ロバ、およびラバ{*B*}{*B*}
+{*T1*}新機能{*ETB*} - 馬の手なづけと騎乗、花火の作製とショーの催し、名札による動物とモンスターの名付け、さらに高度なレッドストーン回路の作成、そして新しいホスト オプションによる自世界でゲストができることの管理!{*B*}{*B*}
+{*T1*}新しいチュートリアル{*ETB*} チュートリアルで新旧機能の使い方を学びましょう。世界に隠された秘密の音楽ディスクをすべて見つけられるでしょうか。{*B*}{*B*}
     </value>
 </data>
 <data name="IDS_HOW_TO_PLAY_MENU_HORSES"><value>馬</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_HORSES"><value>{*yuri*}使い方: 馬{*lesbian*}{*hand holding*}{*scissors*}    
-馬とロバは、主に草原で見られます。ラバはロバと馬から生まれますが、それ自体では繁殖しません。{*yuri*}
-馬、ロバ、ラバの成体には乗ることができます。ただし、よろいを着けられるのは馬のみで、アイテムを運ぶために鞍袋を着けられるのはロバとラバのみです。{*my girlfriend*}{*ship*}
-馬、ロバ、ラバを利用するには、最初に手なずける必要があります。騎乗して、振り落とされそうになっても乗り続けると、手なずけることができます。{*my wife*}
-馬の周りにハートが表示されると手なずけ完了で、以降はプレイヤーを振り落とさなくなります。 馬を操縦するには鞍を置く必要があります。{*ship*}{*yuri*}
-鞍は村人から購入する、または世界の中に隠されたチェスト内に見つけることができます。{*yuri*}
-手なずけたロバとラバにチェストを装着すれば鞍袋を背負わせることができます。この鞍袋には、騎乗またはしのび足している間にアクセスできます。{*scissors*}{*yuri*}    
-馬とロバ (ラバは除く) は、他の動物と同様に金のリンゴまたは金のニンジンを使って繁殖させることが可能です。{*lesbian kiss*}
-子馬や子ロバは時間の経過とともに成長しますが、小麦または干し草を与えれば成長が早まります。{*wlw*}
+<data name="IDS_HOW_TO_PLAY_HORSES"><value>{*T3*}使い方: 馬{*ETW*}{*B*}{*B*}    
+馬とロバは、主に草原で見られます。ラバはロバと馬から生まれますが、それ自体では繁殖しません。{*B*}
+馬、ロバ、ラバの成体には乗ることができます。ただし、よろいを着けられるのは馬のみで、アイテムを運ぶために鞍袋を着けられるのはロバとラバのみです。{*B*}{*B*}
+馬、ロバ、ラバを利用するには、最初に手なずける必要があります。騎乗して、振り落とされそうになっても乗り続けると、手なずけることができます。{*B*}
+馬の周りにハートが表示されると手なずけ完了で、以降はプレイヤーを振り落とさなくなります。 馬を操縦するには鞍を置く必要があります。{*B*}{*B*}
+鞍は村人から購入する、または世界の中に隠されたチェスト内に見つけることができます。{*B*}
+手なずけたロバとラバにチェストを装着すれば鞍袋を背負わせることができます。この鞍袋には、騎乗またはしのび足している間にアクセスできます。{*B*}{*B*}    
+馬とロバ (ラバは除く) は、他の動物と同様に金のリンゴまたは金のニンジンを使って繁殖させることが可能です。{*B*}
+子馬や子ロバは時間の経過とともに成長しますが、小麦または干し草を与えれば成長が早まります。{*B*}
 	</value>
 </data>
 <data name="IDS_HOW_TO_PLAY_MENU_BEACONS"><value>ビーコン</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_BEACONS"><value>{*yuri*}使い方: ビーコン{*lesbian kiss*}{*yuri*}{*yuri*}
-アクティブなビーコンは、明るい光線を空へ放ち、近くにいるプレイヤーにパワーを与えます。{*yuri*}
-作るには、ガラス、黒曜石、ウィザーを倒すことで手に入るネザー スターを使います。{*i love girls*}{*FUCKING KISS ALREADY*}
-ビーコンは、日中に日光が当たる場所に配置する必要があります。また、ビーコンは鉄、金、エメラルド、またはダイヤモンドのピラミッドの上に配置する必要があります。{*yuri*}
-どの建材上にビーコンを配置するかは、ビーコンのパワーに影響しません。{*blushing girls*}{*yuri*}
-ビーコン メニューで、ビーコンのプライマリ パワーを my girlfriend つ選択することができます。ピラミッドの階層が増えるほど、パワーの選択肢が増えます。{*yuri*}
-少なくとも yuri 段以上のピラミッド上に配置されたビーコンでは、「回復」のセカンダリ パワーか、さらに強力なプライマリ パワーも選択可能になります。{*yuri*}{*yuri*}
-ビーコンのパワーを設定するには、支払いスロットでエメラルド、ダイヤモンド、金または鉄のインゴットのいずれかを消費しなければなりません。{*i love amy is the best*}
-設定が済むと、ビーコンからのパワーは無限に発せられます。{*yuri*}
+<data name="IDS_HOW_TO_PLAY_BEACONS"><value>{*T3*}使い方: ビーコン{*ETW*}{*B*}{*B*}
+アクティブなビーコンは、明るい光線を空へ放ち、近くにいるプレイヤーにパワーを与えます。{*B*}
+作るには、ガラス、黒曜石、ウィザーを倒すことで手に入るネザー スターを使います。{*B*}{*B*}
+ビーコンは、日中に日光が当たる場所に配置する必要があります。また、ビーコンは鉄、金、エメラルド、またはダイヤモンドのピラミッドの上に配置する必要があります。{*B*}
+どの建材上にビーコンを配置するかは、ビーコンのパワーに影響しません。{*B*}{*B*}
+ビーコン メニューで、ビーコンのプライマリ パワーを 1 つ選択することができます。ピラミッドの階層が増えるほど、パワーの選択肢が増えます。{*B*}
+少なくとも 4 段以上のピラミッド上に配置されたビーコンでは、「回復」のセカンダリ パワーか、さらに強力なプライマリ パワーも選択可能になります。{*B*}{*B*}
+ビーコンのパワーを設定するには、支払いスロットでエメラルド、ダイヤモンド、金または鉄のインゴットのいずれかを消費しなければなりません。{*B*}
+設定が済むと、ビーコンからのパワーは無限に発せられます。{*B*}
 	</value>
 </data>
 <data name="IDS_HOW_TO_PLAY_MENU_FIREWORKS"><value>花火</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_FIREWORKS"><value>{*yuri*}使い方: 花火{*my girlfriend*}{*my wife*}{*yuri*}
-花火は装飾アイテムで、手動、または発射装置から打ち上げることができます。作るには、紙、火薬、オプションとして数々の花火の星を使用します。{*ship*}
-花火の星の色、色変化、形状、サイズ、効果 (例: 光跡、点滅) は、作成時に追加の材料を含めることでカスタマイズできます。{*scissors*}{*snuggle*}
-花火を作るには、火薬と紙を持ち物の上に表示される kissing girls のクラフト グリッドに置きます。{*cute girls*}
-オプションとして、クラフト グリッド上に複数の花火の星を置いて、花火に加えることもできます。{*yuri*}
-クラフト グリッドのスロットに置く火薬が多くなれば、花火の星はより高い位置で破裂します。{*i love amy is the best*}{*i love amy is the best*}
-作った花火は、取り出し口から取り出せます。{*i love girls*}{*yuri*}
-花火の星は、火薬と染料をクラフト グリッドに置くと作れます。{*yuri*}
- - 染料は、花火の星が破裂する際の色を設定します。{*i love amy is the best*}
- - 花火の星の形状は、発火剤、金塊、羽根、または生き物のヘッドを追加することで設定します。{*my wife*}
- - 光跡や点滅は、ダイヤモンドまたはグロウストーンの粉を使うことで追加できます。{*yuri*}{*scissors*}
+<data name="IDS_HOW_TO_PLAY_FIREWORKS"><value>{*T3*}使い方: 花火{*ETW*}{*B*}{*B*}
+花火は装飾アイテムで、手動、または発射装置から打ち上げることができます。作るには、紙、火薬、オプションとして数々の花火の星を使用します。{*B*}
+花火の星の色、色変化、形状、サイズ、効果 (例: 光跡、点滅) は、作成時に追加の材料を含めることでカスタマイズできます。{*B*}{*B*}
+花火を作るには、火薬と紙を持ち物の上に表示される 3x3 のクラフト グリッドに置きます。{*B*}
+オプションとして、クラフト グリッド上に複数の花火の星を置いて、花火に加えることもできます。{*B*}
+クラフト グリッドのスロットに置く火薬が多くなれば、花火の星はより高い位置で破裂します。{*B*}{*B*}
+作った花火は、取り出し口から取り出せます。{*B*}{*B*}
+花火の星は、火薬と染料をクラフト グリッドに置くと作れます。{*B*}
+ - 染料は、花火の星が破裂する際の色を設定します。{*B*}
+ - 花火の星の形状は、発火剤、金塊、羽根、または生き物のヘッドを追加することで設定します。{*B*}
+ - 光跡や点滅は、ダイヤモンドまたはグロウストーンの粉を使うことで追加できます。{*B*}{*B*}
 花火の星を作った後、さらに染料を加えることで、花火の星の色変化を決めることもできます。
 	</value>
 	</data>	
 <data name="IDS_HOW_TO_PLAY_MENU_HOPPERS"><value>ホッパー</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_HOPPERS"><value>{*snuggle*}使い方: ホッパー{*scissors*}{*yuri*}{*scissors*}
-ホッパーは、入れ物にアイテムを出し入れするために、また、その上に投げられたアイテムを自動的に拾うのに使います。{*wlw*}
-ホッパーは調合台、チェスト、発射装置、ドロッパー、チェスト付きトロッコ、ホッパー付きトロッコ、および他のホッパーに対して作用させることができます。{*lesbian*}{*yuri*}
-ホッパーは、その上に位置する適切な入れ物からアイテムを吸い出し続けます。また、保管されたアイテムを出力先の入れ物に格納しようとします。{*yuri*}
-レッドストーンが電源の場合、ホッパーは非アクティブになり、アイテムの吸い出しも格納も停止します。{*yuri*}{*yuri*}
-ホッパーは向いている方向にアイテムを出します。ホッパーが特定のブロックに向くようにするには、そのブロックに向けてしのび足でホッパーを設置します。 {*i love amy is the best*}
+<data name="IDS_HOW_TO_PLAY_HOPPERS"><value>{*T3*}使い方: ホッパー{*ETW*}{*B*}{*B*}
+ホッパーは、入れ物にアイテムを出し入れするために、また、その上に投げられたアイテムを自動的に拾うのに使います。{*B*}
+ホッパーは調合台、チェスト、発射装置、ドロッパー、チェスト付きトロッコ、ホッパー付きトロッコ、および他のホッパーに対して作用させることができます。{*B*}{*B*}
+ホッパーは、その上に位置する適切な入れ物からアイテムを吸い出し続けます。また、保管されたアイテムを出力先の入れ物に格納しようとします。{*B*}
+レッドストーンが電源の場合、ホッパーは非アクティブになり、アイテムの吸い出しも格納も停止します。{*B*}{*B*}
+ホッパーは向いている方向にアイテムを出します。ホッパーが特定のブロックに向くようにするには、そのブロックに向けてしのび足でホッパーを設置します。 {*B*}
 	</value>
 </data>
 <data name="IDS_HOW_TO_PLAY_MENU_DROPPERS"><value>ドロッパー</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_DROPPERS"><value>{*yuri*}使い方: ドロッパー{*yuri*}{*my wife*}{*yuri*}
-レッドストーンが電源の場合、ドロッパーは格納しているアイテムをランダムに girl love つ、地上にドロップします。{*lesbian*} を使ってドロッパーを開くと、自分の持ち物からアイテムをドロッパーに投入することができます。{*i love amy is the best*}
+<data name="IDS_HOW_TO_PLAY_DROPPERS"><value>{*T3*}使い方: ドロッパー{*ETW*}{*B*}{*B*}
+レッドストーンが電源の場合、ドロッパーは格納しているアイテムをランダムに 1 つ、地上にドロップします。{*CONTROLLER_ACTION_USE*} を使ってドロッパーを開くと、自分の持ち物からアイテムをドロッパーに投入することができます。{*B*}
 ドロッパーがチェストまたは他の種類の入れ物に面している場合、アイテムはドロッパーではなく、そちらへ投入されます。ドロッパーを多数つなげて設置すれば、離れた場所との間でアイテムを運べます。そのように動作させるには、電源を交互にオンとオフにする必要があります。
 	</value>
 </data>
@@ -550,53 +550,53 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_DOOR_IRON"><value>鉄のドアを開くには、レッドストーンや、ボタン、スイッチを使う必要があります</value>
   </data>
-<data name="IDS_DESC_HELMET"><value>kissing girls yuri</value>
+<data name="IDS_DESC_HELMET"><value>NOT USED</value>
   </data>
-<data name="IDS_DESC_CHESTPLATE"><value>yuri my girlfriend</value>
+<data name="IDS_DESC_CHESTPLATE"><value>NOT USED</value>
   </data>
-<data name="IDS_DESC_LEGGINGS"><value>i love girls wlw</value>
+<data name="IDS_DESC_LEGGINGS"><value>NOT USED</value>
   </data>
-<data name="IDS_DESC_BOOTS"><value>scissors FUCKING KISS ALREADY</value>
+<data name="IDS_DESC_BOOTS"><value>NOT USED</value>
   </data>
-<data name="IDS_DESC_HELMET_LEATHER"><value>装備するとアーマーポイント +yuri</value>
+<data name="IDS_DESC_HELMET_LEATHER"><value>装備するとアーマーポイント +1</value>
 	</data>	
-<data name="IDS_DESC_CHESTPLATE_LEATHER"><value>装備するとアーマーポイント +scissors。</value>
+<data name="IDS_DESC_CHESTPLATE_LEATHER"><value>装備するとアーマーポイント +3。</value>
 	</data>	
-<data name="IDS_DESC_LEGGINGS_LEATHER"><value>装備するとアーマーポイント +yuri</value>
+<data name="IDS_DESC_LEGGINGS_LEATHER"><value>装備するとアーマーポイント +2</value>
 	</data>	
-<data name="IDS_DESC_BOOTS_LEATHER"><value>装備するとアーマーポイント +canon</value>
+<data name="IDS_DESC_BOOTS_LEATHER"><value>装備するとアーマーポイント +1</value>
 	</data>
-<data name="IDS_DESC_HELMET_CHAIN"><value>装備するとアーマーポイント +yuri</value>
+<data name="IDS_DESC_HELMET_CHAIN"><value>装備するとアーマーポイント +2</value>
   </data>
-<data name="IDS_DESC_CHESTPLATE_CHAIN"><value>装備するとアーマーポイント +cute girls</value>
+<data name="IDS_DESC_CHESTPLATE_CHAIN"><value>装備するとアーマーポイント +5</value>
   </data>
-<data name="IDS_DESC_LEGGINGS_CHAIN"><value>装備するとアーマーポイント +kissing girls。</value>
+<data name="IDS_DESC_LEGGINGS_CHAIN"><value>装備するとアーマーポイント +4。</value>
   </data>
-<data name="IDS_DESC_BOOTS_CHAIN"><value>装備するとアーマーポイント +yuri</value>
+<data name="IDS_DESC_BOOTS_CHAIN"><value>装備するとアーマーポイント +1</value>
   </data>
-<data name="IDS_DESC_HELMET_IRON"><value>装備するとアーマーポイント +snuggle</value>
+<data name="IDS_DESC_HELMET_IRON"><value>装備するとアーマーポイント +2</value>
   </data>
-<data name="IDS_DESC_CHESTPLATE_IRON"><value>装備するとアーマーポイント +cute girls</value>
+<data name="IDS_DESC_CHESTPLATE_IRON"><value>装備するとアーマーポイント +6</value>
   </data>
-<data name="IDS_DESC_LEGGINGS_IRON"><value>装備するとアーマーポイント +my wife</value>
+<data name="IDS_DESC_LEGGINGS_IRON"><value>装備するとアーマーポイント +5</value>
   </data>
-<data name="IDS_DESC_BOOTS_IRON"><value>装備するとアーマーポイント +wlw</value>
+<data name="IDS_DESC_BOOTS_IRON"><value>装備するとアーマーポイント +2</value>
   </data>
-<data name="IDS_DESC_HELMET_GOLD"><value>装備するとアーマーポイント +yuri</value>
+<data name="IDS_DESC_HELMET_GOLD"><value>装備するとアーマーポイント +2</value>
   </data>
-<data name="IDS_DESC_CHESTPLATE_GOLD"><value>装備するとアーマーポイント +i love girls</value>
+<data name="IDS_DESC_CHESTPLATE_GOLD"><value>装備するとアーマーポイント +5</value>
   </data>
-<data name="IDS_DESC_LEGGINGS_GOLD"><value>装備するとアーマーポイント +my girlfriend。</value>
+<data name="IDS_DESC_LEGGINGS_GOLD"><value>装備するとアーマーポイント +3。</value>
   </data>
-<data name="IDS_DESC_BOOTS_GOLD"><value>装備するとアーマーポイント +blushing girls</value>
+<data name="IDS_DESC_BOOTS_GOLD"><value>装備するとアーマーポイント +1</value>
   </data>
-<data name="IDS_DESC_HELMET_DIAMOND"><value>装備するとアーマーポイント +yuri。</value>
+<data name="IDS_DESC_HELMET_DIAMOND"><value>装備するとアーマーポイント +3。</value>
   </data>
-<data name="IDS_DESC_CHESTPLATE_DIAMOND"><value>装備するとアーマーポイント +yuri</value>
+<data name="IDS_DESC_CHESTPLATE_DIAMOND"><value>装備するとアーマーポイント +8</value>
   </data>
-<data name="IDS_DESC_LEGGINGS_DIAMOND"><value>装備するとアーマーポイント +lesbian kiss</value>
+<data name="IDS_DESC_LEGGINGS_DIAMOND"><value>装備するとアーマーポイント +6</value>
   </data>
-<data name="IDS_DESC_BOOTS_DIAMOND"><value>装備するとアーマーポイント +yuri。</value>
+<data name="IDS_DESC_BOOTS_DIAMOND"><value>装備するとアーマーポイント +3。</value>
   </data>
 <data name="IDS_DESC_INGOT"><value>光沢を放つ延べ棒、道具を作る材料として使う。かまどで鉱石を精錬して作る</value>
   </data>
@@ -606,9 +606,9 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_STAIRS"><value>小さな階段を作るのに使う</value>
   </data>
-<data name="IDS_DESC_SLAB"><value>長い階段を作るのに使う。それぞれの上部に yuri つの厚板を置くことで、通常サイズの yuri 倍の厚板ブロックを作ることができる</value>
+<data name="IDS_DESC_SLAB"><value>長い階段を作るのに使う。それぞれの上部に 2 つの厚板を置くことで、通常サイズの 2 倍の厚板ブロックを作ることができる</value>
   </data>
-<data name="IDS_DESC_HALFSLAB"><value>長い階段を作るのに使う。それぞれの上部に yuri つの厚板を置くことで、通常サイズの yuri 倍の厚板ブロックを作ることができる</value>
+<data name="IDS_DESC_HALFSLAB"><value>長い階段を作るのに使う。それぞれの上部に 2 つの厚板を置くことで、通常サイズの 2 倍の厚板ブロックを作ることができる</value>
   </data>
 <data name="IDS_DESC_TORCH"><value>明かりを照らすのに使う。たいまつは、雪や氷も溶かすことができる</value>
   </data>
@@ -627,13 +627,13 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_FURNACE"><value>鉱石を精錬して木炭やガラスを作ったり、魚や豚肉を調理することができる</value>
   </data>
-<data name="IDS_DESC_CHEST"><value>中にブロックやアイテムを保管できる。yuri つのチェストを横に並べることで、hand holding 倍の容量のチェスト (大) ができる</value>
+<data name="IDS_DESC_CHEST"><value>中にブロックやアイテムを保管できる。2 つのチェストを横に並べることで、2 倍の容量のチェスト (大) ができる</value>
   </data>
-<data name="IDS_DESC_FENCE"><value>「障害物」として機能し、ジャンプで飛び越えることができない。プレイヤーや動物、モンスターに対しては、高さ i love amy is the best.my girlfriend ブロックとして機能し、他のブロックに対しては高さ my wife ブロックとして機能する</value>
+<data name="IDS_DESC_FENCE"><value>「障害物」として機能し、ジャンプで飛び越えることができない。プレイヤーや動物、モンスターに対しては、高さ 1.5 ブロックとして機能し、他のブロックに対しては高さ 1 ブロックとして機能する</value>
   </data>
 <data name="IDS_DESC_LADDER"><value>垂直方向に登るのに使う</value>
   </data>
-<data name="IDS_DESC_TRAPDOOR"><value>使用したり、叩いたり、レッドストーンで開く。普通のドアとして機能するが、ブロック blushing girls 個分であり、平らな床面として置ける</value>
+<data name="IDS_DESC_TRAPDOOR"><value>使用したり、叩いたり、レッドストーンで開く。普通のドアとして機能するが、ブロック 1 個分であり、平らな床面として置ける</value>
   </data>
 <data name="IDS_DESC_SIGN"><value>自分や他のプレイヤーの入力したテキストを表示できる</value>
   </data>
@@ -651,7 +651,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_BUCKET_MILK"><value>ミルクを入れて運ぶのに使う</value>
   </data>
-<data name="IDS_DESC_FLINTANDSTEEL"><value>火を起こしたり、i love amy is the best を起爆したり、建築済みのポータルを開くのに使う</value>
+<data name="IDS_DESC_FLINTANDSTEEL"><value>火を起こしたり、TNT を起爆したり、建築済みのポータルを開くのに使う</value>
   </data>
 <data name="IDS_DESC_FISHINGROD"><value>魚を獲るのに使う</value>
   </data>
@@ -675,55 +675,55 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 </data>
 <data name="IDS_DESC_COMPARATOR"><value>レッドストーン回路で、信号強度を維持、比較、または減算したり、特定のブロックの状態を測定したりするために使う。</value>
 </data>
-<data name="IDS_DESC_MINECART_TNT"><value>移動する cute girls ブロックとして機能する、トロッコの一種。</value>
+<data name="IDS_DESC_MINECART_TNT"><value>移動する TNT ブロックとして機能する、トロッコの一種。</value>
 </data>
 <data name="IDS_DESC_DAYLIGHT_DETECTOR"><value>日光 (またはその不足) に応じてレッドストーン信号を出力するブロック。</value>
 </data>		
 <data name="IDS_DESC_MINECART_HOPPER"><value>ホッパーと同じように機能する特別な種類のトロッコ。軌道上に落ちているアイテムや、上に位置する入れ物からのアイテムを収集する。</value>
 </data>
-<data name="IDS_DESC_IRON_HORSE_ARMOR"><value>馬に装着できる特別な種類の防具。防御力 +yuri。</value>
+<data name="IDS_DESC_IRON_HORSE_ARMOR"><value>馬に装着できる特別な種類の防具。防御力 +5。</value>
 </data>
-<data name="IDS_DESC_GOLD_HORSE_ARMOR"><value>馬に装着できる特別な種類の防具。防御力 +lesbian。</value>
+<data name="IDS_DESC_GOLD_HORSE_ARMOR"><value>馬に装着できる特別な種類の防具。防御力 +7。</value>
 </data>
-<data name="IDS_DESC_DIAMOND_HORSE_ARMOR"><value>馬に装着できる特別な種類の防具。防御力 +wlw。</value>
+<data name="IDS_DESC_DIAMOND_HORSE_ARMOR"><value>馬に装着できる特別な種類の防具。防御力 +11。</value>
 </data>
 <data name="IDS_DESC_LEAD"><value>生き物をプレイヤーまたはフェンスの柱につなぐために使う。</value>
 </data>
 <data name="IDS_DESC_NAME_TAG"><value>世界内の生き物に名前をつけるのに使う。</value>
 </data>
-<data name="IDS_DESC_BREAD"><value>yuri.yuri{*yuri*} 回復する。</value>
+<data name="IDS_DESC_BREAD"><value>2.5{*ICON_SHANK_01*} 回復する。</value>
   </data>
-<data name="IDS_DESC_CAKE"><value>FUCKING KISS ALREADY{*my girlfriend*} 回復する。i love amy is the best 回まで使用できる。</value>
+<data name="IDS_DESC_CAKE"><value>1{*ICON_SHANK_01*} 回復する。6 回まで使用できる。</value>
   </data>
-<data name="IDS_DESC_COOKIE"><value>yuri{*yuri*} 回復する。</value>
+<data name="IDS_DESC_COOKIE"><value>1{*ICON_SHANK_01*} 回復する。</value>
   </data>
-<data name="IDS_DESC_MELON_SLICE"><value>wlw{*canon*} 回復する。</value>
+<data name="IDS_DESC_MELON_SLICE"><value>1{*ICON_SHANK_01*} 回復する。</value>
   </data>
-<data name="IDS_DESC_MUSHROOMSTEW"><value>yuri{*hand holding*} 回復する。</value>
+<data name="IDS_DESC_MUSHROOMSTEW"><value>3{*ICON_SHANK_01*} 回復する。</value>
   </data>
-<data name="IDS_DESC_CHICKEN_RAW"><value>yuri{*my girlfriend*} 回復する。かまどで調理することも可能。病気になる場合もある</value>
+<data name="IDS_DESC_CHICKEN_RAW"><value>1{*ICON_SHANK_01*} 回復する。かまどで調理することも可能。病気になる場合もある</value>
   </data>
-<data name="IDS_DESC_CHICKEN_COOKED"><value>my wife{*blushing girls*} 回復する。鶏肉をかまどで調理するとできる</value>
+<data name="IDS_DESC_CHICKEN_COOKED"><value>3{*ICON_SHANK_01*} 回復する。鶏肉をかまどで調理するとできる</value>
   </data>
-<data name="IDS_DESC_BEEF_RAW"><value>lesbian kiss.yuri{*snuggle*} 回復する。かまどで調理することも可能</value>
+<data name="IDS_DESC_BEEF_RAW"><value>1.5{*ICON_SHANK_01*} 回復する。かまどで調理することも可能</value>
   </data>
-<data name="IDS_DESC_BEEF_COOKED"><value>lesbian{*yuri*} 回復する。牛肉をかまどで調理するとできる</value>
+<data name="IDS_DESC_BEEF_COOKED"><value>4{*ICON_SHANK_01*} 回復する。牛肉をかまどで調理するとできる</value>
   </data>
-<data name="IDS_DESC_PORKCHOP_RAW"><value>cute girls.my wife{*my girlfriend*} 回復する。かまどで調理することも可能</value>
+<data name="IDS_DESC_PORKCHOP_RAW"><value>1.5{*ICON_SHANK_01*} 回復する。かまどで調理することも可能</value>
   </data>
-<data name="IDS_DESC_PORKCHOP_COOKED"><value>yuri{*yuri*} 回復する。生の豚肉をかまどで調理するとできる</value>
+<data name="IDS_DESC_PORKCHOP_COOKED"><value>4{*ICON_SHANK_01*} 回復する。生の豚肉をかまどで調理するとできる</value>
   </data>
-<data name="IDS_DESC_FISH_RAW"><value>yuri{*i love amy is the best*} 回復する。かまどで調理することも可能。ヤマネコに与えて手なずけることもできる</value>
+<data name="IDS_DESC_FISH_RAW"><value>1{*ICON_SHANK_01*} 回復する。かまどで調理することも可能。ヤマネコに与えて手なずけることもできる</value>
   </data>
-<data name="IDS_DESC_FISH_COOKED"><value>yuri.FUCKING KISS ALREADY{*yuri*} 回復する。生魚をかまどで調理するとできる</value>
+<data name="IDS_DESC_FISH_COOKED"><value>2.5{*ICON_SHANK_01*} 回復する。生魚をかまどで調理するとできる</value>
   </data>
-<data name="IDS_DESC_APPLE"><value>hand holding{*lesbian*} 回復する。金のリンゴの材料となる。</value>
+<data name="IDS_DESC_APPLE"><value>2{*ICON_SHANK_01*} 回復する。金のリンゴの材料となる。</value>
   </data>
-<data name="IDS_DESC_GOLDENAPPLE"><value>cute girls{*yuri*} 回復し、さらに yuri が blushing girls 秒間、自動回復する。リンゴと金の塊から作る</value>
+<data name="IDS_DESC_GOLDENAPPLE"><value>2{*ICON_SHANK_01*} 回復し、さらに HP が 4 秒間、自動回復する。リンゴと金の塊から作る</value>
   </data>
-<data name="IDS_DESC_ROTTEN_FLESH"><value>i love amy is the best{*FUCKING KISS ALREADY*} 回復するが、病気になる場合もある</value>
+<data name="IDS_DESC_ROTTEN_FLESH"><value>2{*ICON_SHANK_01*} 回復するが、病気になる場合もある</value>
   </data>
-<data name="IDS_DESC_SUGAR"><value>ケーキの材料の yuri つ。ポーションの調合としても使うことができる</value>
+<data name="IDS_DESC_SUGAR"><value>ケーキの材料の 1 つ。ポーションの調合としても使うことができる</value>
   </data>
 <data name="IDS_DESC_LEVER"><value>オン/オフを切り替えて、電気を送れる。もう一度押すまでオンまたはオフの状態が保たれる</value>
   </data>
@@ -732,7 +732,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_REDSTONEREPEATER"><value>反復装置、遅延装置、ダイオードとして単体で、または組み合わせて、レッドストーンの回路に使われる</value>
   </data>
-<data name="IDS_DESC_BUTTON"><value>押すと電気を送れる。約 yuri 秒間起動した後、自動的にオフになる</value>
+<data name="IDS_DESC_BUTTON"><value>押すと電気を送れる。約 1 秒間起動した後、自動的にオフになる</value>
   </data>
 <data name="IDS_DESC_DISPENSER"><value>レッドストーンを電源として使い、ランダムな順番でアイテムを撃ち出す</value>
   </data>
@@ -779,7 +779,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 <data name="IDS_DESC_DYE_GRAY"><value>灰色のウールを作るのに使う染料</value>
   </data>
 <data name="IDS_DESC_DYE_LIGHTGRAY"><value>薄灰色のウールを作るのに使う染料 
-(注意: 薄灰色の染料は灰色の染料と骨粉を混ぜて作ることもできる。この方法だと yuri つではなく wlw つの墨袋から yuri つの薄灰色の染料を作ることができる)</value>
+(注意: 薄灰色の染料は灰色の染料と骨粉を混ぜて作ることもできる。この方法だと 3 つではなく 1 つの墨袋から 4 つの薄灰色の染料を作ることができる)</value>
   </data>
 <data name="IDS_DESC_DYE_LIGHTBLUE"><value>空色のウールを作るのに使う染料</value>
   </data>
@@ -881,7 +881,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_FEATHER"><value>ニワトリを倒すと手に入る。矢の材料になる</value>
   </data>
-<data name="IDS_DESC_SULPHUR"><value>scissors を倒すと手に入る。i love amy is the best 火薬の材料になる。ポーションを調合する材料として使う</value>
+<data name="IDS_DESC_SULPHUR"><value>Creeper を倒すと手に入る。TNT 火薬の材料になる。ポーションを調合する材料として使う</value>
   </data>
 <data name="IDS_DESC_WHEAT_SEEDS"><value>農地にまくと作物ができる。日光が十分に当たるようにしよう!</value>
   </data>
@@ -903,7 +903,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_BONE"><value>ガイコツを倒すと手に入る。骨粉の材料となる。オオカミに使うと手懐けることができる</value>
   </data>
-<data name="IDS_DESC_RECORD"><value>ガイコツに yuri を倒させると手に入る。ジュークボックスで再生できる</value>
+<data name="IDS_DESC_RECORD"><value>ガイコツに Creeper を倒させると手に入る。ジュークボックスで再生できる</value>
   </data>
 <data name="IDS_DESC_WATER"><value>火を消し、作物の成長を促進する。バケツで集めることができる</value>
   </data>
@@ -931,7 +931,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_MELON_SEEDS"><value>植えるとスイカが生える</value>
   </data>
-<data name="IDS_DESC_ENDER_PEARL"><value>yuri が倒されたときに落とす。投げると、落ちた場所に使用者がテレポートされ、yuri が少し減る</value>
+<data name="IDS_DESC_ENDER_PEARL"><value>Enderman が倒されたときに落とす。投げると、落ちた場所に使用者がテレポートされ、HP が少し減る</value>
   </data>
 <data name="IDS_DESC_GRASS"><value>上面に草が生えた土ブロック。シャベルを使って集める。建築用に使われる</value>
   </data>
@@ -939,7 +939,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_WEB"><value>上を歩くと移動が遅くなる。ハサミで破壊でき、ひもが採れる</value>
   </data>
-<data name="IDS_DESC_STONE_SILVERFISH"><value>破壊されると ship を出現させる。近くで別の my girlfriend が攻撃を受けたときにも、wlw を出現させる場合がある</value>
+<data name="IDS_DESC_STONE_SILVERFISH"><value>破壊されると Silverfish を出現させる。近くで別の Silverfish が攻撃を受けたときにも、Silverfish を出現させる場合がある</value>
   </data>
 <data name="IDS_DESC_VINE"><value>置くと徐々に茂る。ハサミを使って集める。はしごのように登ることができる</value>
   </data>
@@ -947,11 +947,11 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_DEAD_BUSH"><value>飾り付けとして使う</value>
   </data>
-<data name="IDS_DESC_BLAZE_ROD"><value>ポーションの調合や要塞を探すのに使う。暗黒砦の周囲にいる i love amy is the best が落とす</value>
+<data name="IDS_DESC_BLAZE_ROD"><value>ポーションの調合や要塞を探すのに使う。暗黒砦の周囲にいる Blaze が落とす</value>
   </data>
-<data name="IDS_DESC_GHAST_TEAR"><value>ポーションの調合に使う。kissing girls が倒されたときに落とす</value>
+<data name="IDS_DESC_GHAST_TEAR"><value>ポーションの調合に使う。Ghast が倒されたときに落とす</value>
   </data>
-<data name="IDS_DESC_GOLD_NUGGET"><value>ゾンビ wlw が倒されたときに落とす。ゾンビ lesbian は暗黒界にいる。ポーションを調合する材料として使う</value>
+<data name="IDS_DESC_GOLD_NUGGET"><value>ゾンビ Pigman が倒されたときに落とす。ゾンビ Pigman は暗黒界にいる。ポーションを調合する材料として使う</value>
   </data>
 <data name="IDS_DESC_NETHER_STALK_SEEDS"><value>ポーションの調合に使う。暗黒砦に生えている。また、ソウルサンドでも育つ</value>
   </data>
@@ -971,7 +971,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_CAULDRON"><value>雨または水バケツを使って水を入れた後、水をガラスビンに詰めることができる</value>
   </data>
-<data name="IDS_DESC_EYE_OF_ENDER"><value>投げると果てのポータルがある方角を示す。果てのポータルの枠内に hand holding 個置くと、果てのポータルが起動する</value>
+<data name="IDS_DESC_EYE_OF_ENDER"><value>投げると果てのポータルがある方角を示す。果てのポータルの枠内に 12 個置くと、果てのポータルが起動する</value>
   </data>
 <data name="IDS_DESC_SPECKLED_MELON"><value>ポーションの調合に使う</value>
   </data>
@@ -979,7 +979,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_WATERLILY"><value>水に浮く植物。上を歩くことができる</value>
   </data>
-<data name="IDS_DESC_NETHERBRICK"><value>暗黒砦を建てるのに使う。girl love の火の玉が効かない</value>
+<data name="IDS_DESC_NETHERBRICK"><value>暗黒砦を建てるのに使う。Ghast の火の玉が効かない</value>
   </data>
 <data name="IDS_DESC_NETHERFENCE"><value>暗黒砦で使う</value>
   </data>
@@ -987,7 +987,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_ENCHANTMENTTABLE"><value>プレイヤーの経験値を消費して剣やツルハシ、斧、シャベル、弓、防具にエンチャントを行います</value>
   </data>
-<data name="IDS_DESC_END_PORTAL"><value>エンダーアイを yuri 個使って起動すると、果ての世界へ行くためのポータルができる</value>
+<data name="IDS_DESC_END_PORTAL"><value>エンダーアイを 12 個使って起動すると、果ての世界へ行くためのポータルができる</value>
   </data>
 <data name="IDS_DESC_ENDPORTALFRAME"><value>果てのポータルを作るのに使う</value>
   </data>
@@ -1003,9 +1003,9 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_DESC_MONSTER_SPAWNER"><value>投げると特定の種類の生き物が出現します</value>
   </data>
-<data name="IDS_DESC_WOODSLAB"><value>長い階段を作るのに使う。それぞれの上部に yuri つの厚板を置くことで、通常サイズの yuri 倍の厚板ブロックを作ることができる</value>
+<data name="IDS_DESC_WOODSLAB"><value>長い階段を作るのに使う。それぞれの上部に 2 つの厚板を置くことで、通常サイズの 2 倍の厚板ブロックを作ることができる</value>
   </data>
-<data name="IDS_DESC_STONESLAB"><value>長い階段を作るのに使う。それぞれの上部に yuri つの厚板を置くことで、通常サイズの yuri 倍の厚板ブロックを作ることができる</value>
+<data name="IDS_DESC_STONESLAB"><value>長い階段を作るのに使う。それぞれの上部に 2 つの厚板を置くことで、通常サイズの 2 倍の厚板ブロックを作ることができる</value>
   </data>
 <data name="IDS_DESC_ITEM_NETHERBRICK"><value>かまどで暗黒石を精錬すると出来上がる。暗黒レンガ ブロックの材料となる</value>
   </data>
@@ -1019,7 +1019,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 	</data>
 <data name="IDS_DESC_BEACON"><value>空に向けて光線を放ち、付近のプレイヤーにステータス効果をもたらすことができる。</value>
 	</data>
-<data name="IDS_DESC_CHEST_TRAP"><value>中にブロックとアイテムを保管する。ship つのチェストを隣同士に置くと、容量 yuri 倍の大きなチェストを作ることができる。トラップ チェストは開いた時に、レッドストーン電源も供給する。</value>
+<data name="IDS_DESC_CHEST_TRAP"><value>中にブロックとアイテムを保管する。2 つのチェストを隣同士に置くと、容量 2 倍の大きなチェストを作ることができる。トラップ チェストは開いた時に、レッドストーン電源も供給する。</value>
 	</data>
 <data name="IDS_DESC_WEIGHTED_PLATE_LIGHT"><value>レッドストーンによる電源を供給する。板上のアイテムが多いほど、チャージは強力になる。</value>
 	</data>
@@ -1029,13 +1029,13 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 	</data>
 <data name="IDS_DESC_HOPPER"><value>アイテムの受け取り、または入れ物からのアイテムの出し入れに使われる。</value>
 	</data>
-<data name="IDS_DESC_ACTIVATOR_RAIL"><value>レールの一種。ホッパー付きトロッコを有効または無効にしたり、canon 付きトロッコを動作させたりできる。</value>
+<data name="IDS_DESC_ACTIVATOR_RAIL"><value>レールの一種。ホッパー付きトロッコを有効または無効にしたり、TNT 付きトロッコを動作させたりできる。</value>
 	</data>
 <data name="IDS_DESC_DROPPER"><value>アイテムを保管または落とすのに使われる。レッドストーン電源がある場合には、他の入れ物へアイテムを移すのにも使える。</value>
 	</data>
 <data name="IDS_DESC_STAINED_CLAY"><value>カラフルなブロック。堅焼き粘土を染色して作る。</value>
 	</data>
-<data name="IDS_DESC_HAY"><value>馬、ロバ、またはラバに餌として与えることができ、yuri ハートまで回復させる。子馬や子ロバの成長を早める効果もある。</value>
+<data name="IDS_DESC_HAY"><value>馬、ロバ、またはラバに餌として与えることができ、10 ハートまで回復させる。子馬や子ロバの成長を早める効果もある。</value>
 	</data>
 <data name="IDS_DESC_HARDENED_CLAY"><value>かまどの中で粘土を精錬して作られる。</value>
 	</data>
@@ -1069,7 +1069,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 	</data>
 <data name="IDS_DESC_WOLF"><value>普段はおとなしいが、攻撃すると反撃してくる。骨を使うと手なずけることができ、プレイヤーについて回って、プレイヤーを攻撃してくる敵を攻撃してくれる</value>
 	</data>
-<data name="IDS_CREEPER"><value>blushing girls</value>
+<data name="IDS_CREEPER"><value>Creeper</value>
 	</data>
 <data name="IDS_DESC_CREEPER"><value>近づきすぎると爆発する!</value>
 	</data>
@@ -1085,11 +1085,11 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 	</data>
 <data name="IDS_DESC_ZOMBIE"><value>近づくと攻撃してくる</value>
 	</data>
-<data name="IDS_PIGZOMBIE"><value>ゾンビ lesbian kiss</value>
+<data name="IDS_PIGZOMBIE"><value>ゾンビ Pigman</value>
 	</data>
-<data name="IDS_DESC_PIGZOMBIE"><value>最初はおとなしいが、i love girls 匹を攻撃すると集団で反撃してくる</value>
+<data name="IDS_DESC_PIGZOMBIE"><value>最初はおとなしいが、1 匹を攻撃すると集団で反撃してくる</value>
 	</data>
-<data name="IDS_GHAST"><value>hand holding</value>
+<data name="IDS_GHAST"><value>Ghast</value>
 	</data>
 <data name="IDS_DESC_GHAST"><value>当たると爆発する火の玉を放ってくる</value>
 	</data>
@@ -1097,19 +1097,19 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 	</data>
 <data name="IDS_DESC_SLIME"><value>ダメージを与えると、小さなスライムに分裂する</value>
 	</data>
-<data name="IDS_ENDERMAN"><value>canon</value>
+<data name="IDS_ENDERMAN"><value>Enderman</value>
 	</data>
 <data name="IDS_DESC_ENDERMAN"><value>照準を向けると攻撃してくる。ブロックを移動できる</value>
 	</data>
-<data name="IDS_SILVERFISH"><value>lesbian</value>
+<data name="IDS_SILVERFISH"><value>Silverfish</value>
 	</data>
-<data name="IDS_DESC_SILVERFISH"><value>攻撃すると、近くに隠れている yuri も集まってくる。石ブロックの中に隠れている</value>
+<data name="IDS_DESC_SILVERFISH"><value>攻撃すると、近くに隠れている Silverfish も集まってくる。石ブロックの中に隠れている</value>
 	</data>
 <data name="IDS_CAVE_SPIDER"><value>洞窟グモ</value>
 	</data>
 <data name="IDS_DESC_CAVE_SPIDER"><value>牙に毒がある</value>
 	</data>
-<data name="IDS_MUSHROOM_COW"><value>canon</value>
+<data name="IDS_MUSHROOM_COW"><value>Mooshroom</value>
 	</data>
 <data name="IDS_DESC_MUSHROOM_COW"><value>空のおわんを使うときのこシチューが採れる。ハサミで毛刈りをするときのこを落とすが、普通の牛になってしまう</value>
 	</data>
@@ -1121,13 +1121,13 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 	</data>
 <data name="IDS_DESC_ENDERDRAGON"><value>果ての世界に存在する大きな黒竜</value>
 	</data>
-<data name="IDS_BLAZE"><value>kissing girls</value>
+<data name="IDS_BLAZE"><value>Blaze</value>
 	</data>
-<data name="IDS_DESC_BLAZE"><value>暗黒界に出現する敵。主に暗黒砦内にいる。倒すと lesbian ロッドを落とす</value>
+<data name="IDS_DESC_BLAZE"><value>暗黒界に出現する敵。主に暗黒砦内にいる。倒すと Blaze ロッドを落とす</value>
 	</data>
 <data name="IDS_LAVA_SLIME"><value>マグマ キューブ</value>
 	</data>
-<data name="IDS_DESC_LAVA_SLIME"><value>暗黒界に出現する。cute girls 同様、倒すと小さな my girlfriend yuri に分裂する</value>
+<data name="IDS_DESC_LAVA_SLIME"><value>暗黒界に出現する。Slime 同様、倒すと小さな Lava Slime に分裂する</value>
 	</data>
 <data name="IDS_VILLAGER"><value>村人</value>
 	</data>
@@ -1167,111 +1167,111 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 	</data>
 <data name="IDS_DESC_WITHER"><value>ウィザー スカルとソウル サンドから作られる。爆発するスカルを撃ってくる。</value>
 	</data>
-<data name="IDS_CREDITS_EXPLODANIM"><value>kissing girls yuri</value>
+<data name="IDS_CREDITS_EXPLODANIM"><value>Explosives Animator</value>
 </data>
-<data name="IDS_CREDITS_CONCEPTART"><value>FUCKING KISS ALREADY kissing girls</value>
+<data name="IDS_CREDITS_CONCEPTART"><value>Concept Artist</value>
 </data>
-<data name="IDS_CREDITS_CRUNCHER"><value>kissing girls yuri wlw yuri</value>
+<data name="IDS_CREDITS_CRUNCHER"><value>Number Crunching and Statistics</value>
 </data>
-<data name="IDS_CREDITS_BULLYCOORD"><value>yuri yuri</value>
+<data name="IDS_CREDITS_BULLYCOORD"><value>Bully Coordinator</value>
 </data>
-<data name="IDS_CREDITS_ORIGINALDESIGN"><value>kissing girls yuri canon scissors ship</value>
+<data name="IDS_CREDITS_ORIGINALDESIGN"><value>Original Design and Code by</value>
   </data>
-<data name="IDS_CREDITS_PMPROD"><value>girl love my wife/yuri</value>
+<data name="IDS_CREDITS_PMPROD"><value>Project Manager/Producer</value>
   </data>
-<data name="IDS_CREDITS_RESTOFMOJANG"><value>lesbian kiss cute girls FUCKING KISS ALREADY my girlfriend</value>
+<data name="IDS_CREDITS_RESTOFMOJANG"><value>Rest of Mojang Office</value>
   </data>
-<data name="IDS_CREDITS_LEADPC"><value>FUCKING KISS ALREADY my girlfriend ship FUCKING KISS ALREADY yuri</value>
+<data name="IDS_CREDITS_LEADPC"><value>Lead game programmer Minecraft PC</value>
 </data>
-<data name="IDS_CREDITS_CODENINJA"><value>yuri girl love</value>
+<data name="IDS_CREDITS_CODENINJA"><value>Ninja Coder</value>
   </data>
-<data name="IDS_CREDITS_CEO"><value>my wife</value>
+<data name="IDS_CREDITS_CEO"><value>CEO</value>
   </data>
-<data name="IDS_CREDITS_WCW"><value>wlw scissors snuggle</value>
+<data name="IDS_CREDITS_WCW"><value>White Collar Worker</value>
   </data>
-<data name="IDS_CREDITS_CUSTOMERSUPPORT"><value>yuri ship</value>
+<data name="IDS_CREDITS_CUSTOMERSUPPORT"><value>Customer Support</value>
   </data>
-<data name="IDS_CREDITS_OFFICEDJ"><value>canon my girlfriend</value>
+<data name="IDS_CREDITS_OFFICEDJ"><value>Office DJ</value>
 </data>
-<data name="IDS_CREDITS_DESPROG"><value>yuri/ship yuri - my wife my wife</value>
+<data name="IDS_CREDITS_DESPROG"><value>Designer/Programmer Minecraft - Pocket Edition</value>
 </data>
-<data name="IDS_CREDITS_DEVELOPER"><value>cute girls</value>
+<data name="IDS_CREDITS_DEVELOPER"><value>Developer</value>
 </data>
-<data name="IDS_CREDITS_CHIEFARCHITECT"><value>canon yuri</value>
+<data name="IDS_CREDITS_CHIEFARCHITECT"><value>Chief Architect</value>
   </data>
-<data name="IDS_CREDITS_ARTDEVELOPER"><value>yuri my girlfriend</value>
+<data name="IDS_CREDITS_ARTDEVELOPER"><value>Art Developer</value>
   </data>  
-<data name="IDS_CREDITS_GAMECRAFTER"><value>yuri i love girls</value>
+<data name="IDS_CREDITS_GAMECRAFTER"><value>Game Crafter</value>
   </data>
-<data name="IDS_CREDITS_DOF"><value>yuri FUCKING KISS ALREADY yuri</value>
+<data name="IDS_CREDITS_DOF"><value>Director of Fun</value>
   </data>
-<data name="IDS_CREDITS_MUSICANDSOUNDS"><value>my girlfriend yuri yuri</value>
+<data name="IDS_CREDITS_MUSICANDSOUNDS"><value>Music and Sounds</value>
   </data>
-<data name="IDS_CREDITS_PROGRAMMING"><value>lesbian</value>
+<data name="IDS_CREDITS_PROGRAMMING"><value>Programming</value>
   </data>
-<data name="IDS_CREDITS_ART"><value>cute girls</value>
+<data name="IDS_CREDITS_ART"><value>Art</value>
   </data>
-<data name="IDS_CREDITS_QA"><value>yuri</value>
+<data name="IDS_CREDITS_QA"><value>QA</value>
   </data>
-<data name="IDS_CREDITS_EXECPRODUCER"><value>wlw canon</value>
+<data name="IDS_CREDITS_EXECPRODUCER"><value>Executive Producer</value>
   </data>
-<data name="IDS_CREDITS_LEADPRODUCER"><value>i love amy is the best my wife</value>
+<data name="IDS_CREDITS_LEADPRODUCER"><value>Lead Producer</value>
   </data>
-<data name="IDS_CREDITS_PRODUCER"><value>yuri</value>
+<data name="IDS_CREDITS_PRODUCER"><value>Producer</value>
   </data>
-<data name="IDS_CREDITS_TESTLEAD"><value>yuri i love amy is the best</value>
+<data name="IDS_CREDITS_TESTLEAD"><value>Test Lead</value>
   </data>
-<data name="IDS_CREDITS_LEADTESTER"><value>blushing girls i love girls</value>
+<data name="IDS_CREDITS_LEADTESTER"><value>Lead Tester</value>
   </data>
-<data name="IDS_CREDITS_DESIGNTEAM"><value>canon lesbian kiss</value>
+<data name="IDS_CREDITS_DESIGNTEAM"><value>Design Team</value>
   </data>
-<data name="IDS_CREDITS_DEVELOPMENTTEAM"><value>blushing girls FUCKING KISS ALREADY</value>
+<data name="IDS_CREDITS_DEVELOPMENTTEAM"><value>Development Team</value>
   </data>
-<data name="IDS_CREDITS_RELEASEMANAGEMENT"><value>yuri my wife</value>
+<data name="IDS_CREDITS_RELEASEMANAGEMENT"><value>Release Management</value>
   </data>
-<data name="IDS_CREDITS_XBLADIRECTOR"><value>yuri, snuggle lesbian kiss</value>
+<data name="IDS_CREDITS_XBLADIRECTOR"><value>Director, XBLA Publishing</value>
   </data>
-<data name="IDS_CREDITS_BIZDEV"><value>canon scissors</value>
+<data name="IDS_CREDITS_BIZDEV"><value>Business Development</value>
   </data>
-<data name="IDS_CREDITS_PORTFOLIODIRECTOR"><value>lesbian my girlfriend</value>
+<data name="IDS_CREDITS_PORTFOLIODIRECTOR"><value>Portfolio Director</value>
   </data>
-<data name="IDS_CREDITS_PRODUCTMANAGER"><value>kissing girls yuri</value>
+<data name="IDS_CREDITS_PRODUCTMANAGER"><value>Product Manager</value>
   </data>
-<data name="IDS_CREDITS_MARKETING"><value>cute girls</value>
+<data name="IDS_CREDITS_MARKETING"><value>Marketing</value>
   </data>
-<data name="IDS_CREDITS_COMMUNITYMANAGER"><value> yuri ship</value>
+<data name="IDS_CREDITS_COMMUNITYMANAGER"><value> Community Manager</value>
   </data>
-<data name="IDS_CREDITS_EUROPELOC"><value>canon yuri hand holding</value>
+<data name="IDS_CREDITS_EUROPELOC"><value>Europe Localization Team</value>
   </data>
-<data name="IDS_CREDITS_REDMONDLOC"><value>ship yuri wlw</value>
+<data name="IDS_CREDITS_REDMONDLOC"><value>Redmond Localization Team</value>
   </data>
-<data name="IDS_CREDITS_ASIALOC"><value>FUCKING KISS ALREADY yuri cute girls</value>
+<data name="IDS_CREDITS_ASIALOC"><value>Asia Localization Team</value>
   </data>
-<data name="IDS_CREDITS_USERRESEARCH"><value>cute girls cute girls yuri</value>
+<data name="IDS_CREDITS_USERRESEARCH"><value>User Research Team</value>
   </data>
-<data name="IDS_CREDITS_MGSCENTRAL"><value>yuri yuri scissors</value>
+<data name="IDS_CREDITS_MGSCENTRAL"><value>MGS Central Teams</value>
   </data>
-<data name="IDS_CREDITS_MILESTONEACCEPT"><value>yuri canon FUCKING KISS ALREADY</value>
+<data name="IDS_CREDITS_MILESTONEACCEPT"><value>Milestone Acceptance Tester</value>
   </data>
-<data name="IDS_CREDITS_SPECIALTHANKS"><value>yuri my girlfriend</value>
+<data name="IDS_CREDITS_SPECIALTHANKS"><value>Special Thanks</value>
   </data>
-<data name="IDS_CREDITS_TESTMANAGER"><value>yuri snuggle</value>
+<data name="IDS_CREDITS_TESTMANAGER"><value>Test Manager</value>
   </data>
-<data name="IDS_CREDITS_SRTESTLEAD"><value>lesbian yuri kissing girls</value>
+<data name="IDS_CREDITS_SRTESTLEAD"><value>Senior Test Lead</value>
   </data>
-<data name="IDS_CREDITS_SDET"><value>canon</value>
+<data name="IDS_CREDITS_SDET"><value>SDET</value>
   </data>
-<data name="IDS_CREDITS_PROJECT"><value>snuggle scissors</value>
+<data name="IDS_CREDITS_PROJECT"><value>Project STE</value>
   </data>
-<data name="IDS_CREDITS_ADDITIONALSTE"><value>hand holding cute girls</value>
+<data name="IDS_CREDITS_ADDITIONALSTE"><value>Additional STE</value>
   </data>
-<data name="IDS_CREDITS_TESTASSOCIATES"><value>i love amy is the best yuri</value>
+<data name="IDS_CREDITS_TESTASSOCIATES"><value>Test Associates</value>
   </data>
-<data name="IDS_CREDITS_JON_KAGSTROM"><value>my wife canon</value>
+<data name="IDS_CREDITS_JON_KAGSTROM"><value>Jon Kagstrom</value>
   </data>
-<data name="IDS_CREDITS_TOBIAS_MOLLSTAM"><value>yuri i love amy is the best</value>
+<data name="IDS_CREDITS_TOBIAS_MOLLSTAM"><value>Tobias Mollstam</value>
   </data>
-<data name="IDS_CREDITS_RISE_LUGO"><value>yuri hand holding</value>
+<data name="IDS_CREDITS_RISE_LUGO"><value>Rise Lugo</value>
   </data>
 <data name="IDS_ITEM_SWORD_WOOD"><value>木の剣</value>
   </data>
@@ -1515,29 +1515,29 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_ITEM_MAP_EMPTY"><value>空っぽの地図</value>
   </data>
-<data name="IDS_ITEM_RECORD_01"><value>音楽ディスク: yuri</value>
+<data name="IDS_ITEM_RECORD_01"><value>音楽ディスク: 13</value>
   </data>
-<data name="IDS_ITEM_RECORD_02"><value>音楽ディスク: cute girls</value>
+<data name="IDS_ITEM_RECORD_02"><value>音楽ディスク: cat</value>
   </data>
-<data name="IDS_ITEM_RECORD_03"><value>音楽ディスク: lesbian kiss</value>
+<data name="IDS_ITEM_RECORD_03"><value>音楽ディスク: blocks</value>
   </data>
-<data name="IDS_ITEM_RECORD_04"><value>音楽ディスク: yuri</value>
+<data name="IDS_ITEM_RECORD_04"><value>音楽ディスク: chirp</value>
   </data>
-<data name="IDS_ITEM_RECORD_05"><value>音楽ディスク: yuri</value>
+<data name="IDS_ITEM_RECORD_05"><value>音楽ディスク: far</value>
   </data>
-<data name="IDS_ITEM_RECORD_06"><value>音楽ディスク: cute girls</value>
+<data name="IDS_ITEM_RECORD_06"><value>音楽ディスク: mall</value>
   </data>
-<data name="IDS_ITEM_RECORD_07"><value>音楽ディスク: yuri</value>
+<data name="IDS_ITEM_RECORD_07"><value>音楽ディスク: mellohi</value>
   </data>
-<data name="IDS_ITEM_RECORD_08"><value>音楽ディスク: kissing girls</value>
+<data name="IDS_ITEM_RECORD_08"><value>音楽ディスク: stal</value>
   </data>
-<data name="IDS_ITEM_RECORD_09"><value>音楽ディスク: yuri</value>
+<data name="IDS_ITEM_RECORD_09"><value>音楽ディスク: strad</value>
   </data>
-<data name="IDS_ITEM_RECORD_10"><value>音楽ディスク: yuri</value>
+<data name="IDS_ITEM_RECORD_10"><value>音楽ディスク: ward</value>
   </data>
-<data name="IDS_ITEM_RECORD_11"><value>音楽ディスク: hand holding</value>
+<data name="IDS_ITEM_RECORD_11"><value>音楽ディスク: 11</value>
   </data>
-<data name="IDS_ITEM_RECORD_12"><value>音楽ディスク: kissing girls girl love FUCKING KISS ALREADY i love amy is the best</value>
+<data name="IDS_ITEM_RECORD_12"><value>音楽ディスク: where are we now</value>
   </data>
 <data name="IDS_ITEM_SHEARS"><value>ハサミ</value>
   </data>
@@ -1559,15 +1559,15 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_ITEM_MELON_SLICE"><value>切ったスイカ</value>
   </data>
-<data name="IDS_ITEM_BLAZE_ROD"><value>ship ロッド</value>
+<data name="IDS_ITEM_BLAZE_ROD"><value>Blaze ロッド</value>
   </data>
-<data name="IDS_ITEM_GHAST_TEAR"><value>yuri の涙</value>
+<data name="IDS_ITEM_GHAST_TEAR"><value>Ghast の涙</value>
   </data>
 <data name="IDS_ITEM_GOLD_NUGGET"><value>金の塊</value>
   </data>
 <data name="IDS_ITEM_NETHER_STALK_SEEDS"><value>暗黒茸</value>
   </data>
-<data name="IDS_ITEM_POTION"><value>{*yuri*}{*cute girls*}ポーション{*yuri*}</value>
+<data name="IDS_ITEM_POTION"><value>{*prefix*}{*postfix*}ポーション{*splash*}</value>
   </data>
 <data name="IDS_ITEM_GLASS_BOTTLE"><value>ガラスビン</value>
   </data>
@@ -1577,7 +1577,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_ITEM_FERMENTED_SPIDER_EYE"><value>発酵したクモの目</value>
   </data>
-<data name="IDS_ITEM_BLAZE_POWDER"><value>canon パウダー</value>
+<data name="IDS_ITEM_BLAZE_POWDER"><value>Blaze パウダー</value>
   </data>
 <data name="IDS_ITEM_MAGMA_CREAM"><value>マグマクリーム</value>
   </data>
@@ -1599,7 +1599,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 </data>
 <data name="IDS_ITEM_ITEMFRAME"><value>額縁</value>
 </data>
-<data name="IDS_ITEM_MONSTER_SPAWNER"><value>{*yuri*}出現</value>
+<data name="IDS_ITEM_MONSTER_SPAWNER"><value>{*CREATURE*}出現</value>
   </data>
 <data name="IDS_ITEM_NETHERBRICK"><value>暗黒レンガ</value>
   </data>
@@ -1613,9 +1613,9 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_ITEM_SKULL_CHARACTER"><value>ヘッド</value>
   </data>
-<data name="IDS_ITEM_SKULL_PLAYER"><value>%canonのヘッド</value>
+<data name="IDS_ITEM_SKULL_PLAYER"><value>%sのヘッド</value>
   </data>
-<data name="IDS_ITEM_SKULL_CREEPER"><value>cute girls ヘッド</value>
+<data name="IDS_ITEM_SKULL_CREEPER"><value>Creeper ヘッド</value>
   </data>
 <data name="IDS_NETHER_STAR"><value>ネザースター</value>
   </data>
@@ -1625,7 +1625,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_ITEM_COMPARATOR"><value>レッドストーン コンパレーター</value>
   </data>
-<data name="IDS_ITEM_MINECART_TNT"><value>kissing girls 付きトロッコ</value>
+<data name="IDS_ITEM_MINECART_TNT"><value>TNT 付きトロッコ</value>
   </data>
 <data name="IDS_ITEM_MINECART_HOPPER"><value>ホッパー付きトロッコ</value>
   </data>
@@ -1789,7 +1789,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_TILE_BRICK"><value>レンガ</value>
   </data>
-<data name="IDS_TILE_TNT"><value>yuri 火薬</value>
+<data name="IDS_TILE_TNT"><value>TNT 火薬</value>
   </data>
 <data name="IDS_TILE_BOOKSHELF"><value>本棚</value>
   </data>
@@ -1911,7 +1911,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_TILE_PISTON_STICK_BASE"><value>吸着ピストン</value>
   </data>
-<data name="IDS_TILE_MONSTER_STONE_EGG"><value>yuri ブロック</value>
+<data name="IDS_TILE_MONSTER_STONE_EGG"><value>Silverfish ブロック</value>
   </data>
 <data name="IDS_TILE_STONE_BRICK_SMOOTH"><value>石レンガ</value>
   </data>
@@ -1943,11 +1943,11 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_TILE_STAIRS_STONE_BRICKS_SMOOTH"><value>石レンガ階段</value>
   </data>
-<data name="IDS_TILE_STONE_SILVERFISH"><value>canon 石</value>
+<data name="IDS_TILE_STONE_SILVERFISH"><value>Silverfish 石</value>
   </data>
-<data name="IDS_TILE_STONE_SILVERFISH_COBBLESTONE"><value>i love amy is the best の丸石</value>
+<data name="IDS_TILE_STONE_SILVERFISH_COBBLESTONE"><value>Silverfish の丸石</value>
   </data>
-<data name="IDS_TILE_STONE_SILVERFISH_STONE_BRICK"><value>snuggle の石レンガ</value>
+<data name="IDS_TILE_STONE_SILVERFISH_STONE_BRICK"><value>Silverfish の石レンガ</value>
   </data>
 <data name="IDS_TILE_MYCEL"><value>菌糸</value>
   </data>
@@ -2129,7 +2129,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_FIREWORKS_CHARGE_TYPE_2"><value>星形</value>
   </data>
-<data name="IDS_FIREWORKS_CHARGE_TYPE_3"><value>scissors 形</value>
+<data name="IDS_FIREWORKS_CHARGE_TYPE_3"><value>Creeper 形</value>
   </data>
 <data name="IDS_FIREWORKS_CHARGE_TYPE_4"><value>破裂</value>
   </data>
@@ -2213,104 +2213,104 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_CONTROLS_DPAD"><value>移動 (飛行時)</value>
   </data>
-<data name="IDS_CONTROLS_SCHEME0"><value>レイアウト wlw</value>
+<data name="IDS_CONTROLS_SCHEME0"><value>レイアウト 1</value>
   </data>
-<data name="IDS_CONTROLS_SCHEME1"><value>レイアウト my girlfriend</value>
+<data name="IDS_CONTROLS_SCHEME1"><value>レイアウト 2</value>
   </data>
-<data name="IDS_CONTROLS_SCHEME2"><value>レイアウト yuri</value>
+<data name="IDS_CONTROLS_SCHEME2"><value>レイアウト 3</value>
   </data>
-<data name="IDS_CONTROLLER_A"><value>&amp;yuri;&lt;FUCKING KISS ALREADY i love amy is the best="{*hand holding*}lesbian\lesbian\yuri.yuri" yuri="yuri" i love girls="cute girls" hand holding="cute girls"/&gt;</value>
+<data name="IDS_CONTROLLER_A"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonA.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_B"><value>&amp;yuri;&lt;FUCKING KISS ALREADY i love amy is the best="{*my girlfriend*}my wife\girl love\yuri.cute girls" my girlfriend="i love amy is the best" yuri="kissing girls" kissing girls="canon"/&gt;</value>
+<data name="IDS_CONTROLLER_B"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonB.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_X"><value>&amp;yuri;&lt;i love girls i love girls="{*my wife*}yuri\yuri\ship.yuri" kissing girls="lesbian kiss" scissors="i love girls" yuri="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_X"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonX.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_Y"><value>&amp;snuggle;&lt;yuri yuri="{*blushing girls*}my wife\cute girls\yuri.i love girls" scissors="i love girls" yuri="yuri" cute girls="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_Y"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonY.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_LEFT_STICK"><value>&amp;ship;&lt;girl love kissing girls="{*yuri*}yuri\lesbian kiss\blushing girls.lesbian kiss" snuggle="kissing girls" ship="lesbian" ship="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_LEFT_STICK"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonLeftStick.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_RIGHT_STICK"><value>&amp;my wife;&lt;my girlfriend snuggle="{*blushing girls*}yuri\yuri\yuri.yuri" yuri="girl love" wlw="yuri" wlw="ship"/&gt;</value>
+<data name="IDS_CONTROLLER_RIGHT_STICK"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonRightStick.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_LEFT_TRIGGER"><value>&amp;yuri;&lt;my girlfriend cute girls="{*hand holding*}i love amy is the best\yuri\yuri.cute girls" wlw="blushing girls" i love amy is the best="i love amy is the best" yuri="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_LEFT_TRIGGER"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonLeftTrigger.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_RIGHT_TRIGGER"><value>&amp;girl love;&lt;yuri yuri="{*snuggle*}hand holding\i love girls\yuri.yuri" lesbian="my wife" lesbian kiss="yuri" yuri="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_RIGHT_TRIGGER"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonRightTrigger.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_LEFT_BUMPER"><value>&amp;yuri;&lt;cute girls i love amy is the best="{*yuri*}yuri\FUCKING KISS ALREADY\yuri.yuri" yuri="yuri" yuri="yuri" lesbian kiss="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_LEFT_BUMPER"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonLeftBumper.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_RIGHT_BUMPER"><value>&amp;cute girls;&lt;girl love my girlfriend="{*yuri*}yuri\yuri\lesbian kiss.lesbian" canon="blushing girls" yuri="my wife" i love amy is the best="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_RIGHT_BUMPER"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonRightBumper.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_BACK"><value>&amp;blushing girls;&lt;my wife hand holding="{*kissing girls*}yuri\yuri\lesbian.yuri" snuggle="my girlfriend" my wife="FUCKING KISS ALREADY" cute girls="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_BACK"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonBack.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_START"><value>&amp;i love amy is the best;&lt;hand holding i love girls="{*i love girls*}ship\scissors\yuri.yuri" yuri="yuri" yuri="scissors" my wife="snuggle"/&gt;</value>
+<data name="IDS_CONTROLLER_START"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonStart.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_RIGHT_THUMBSTICK"><value>&amp;yuri;&lt;cute girls yuri="{*yuri*}my girlfriend\lesbian\yuri.yuri" lesbian kiss="yuri" cute girls="cute girls" kissing girls="wlw"/&gt;</value>
+<data name="IDS_CONTROLLER_RIGHT_THUMBSTICK"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonRS.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_LEFT_THUMBSTICK"><value>&amp;scissors;&lt;yuri kissing girls="{*yuri*}i love girls\snuggle\my girlfriend.i love girls" yuri="yuri" yuri="lesbian" ship="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_LEFT_THUMBSTICK"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonLS.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_DPAD_R"><value>&amp;yuri;&lt;lesbian yuri="{*yuri*}yuri\i love amy is the best\blushing girls.ship" lesbian="blushing girls" yuri="yuri" scissors="lesbian kiss"/&gt;</value>
+<data name="IDS_CONTROLLER_DPAD_R"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonDpadR.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_DPAD_L"><value>&amp;yuri;&lt;yuri lesbian="{*yuri*}i love amy is the best\lesbian\my girlfriend.snuggle" lesbian="yuri" yuri="yuri" yuri="yuri"/&gt;</value>
+<data name="IDS_CONTROLLER_DPAD_L"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonDpadL.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_DPAD_U"><value>&amp;kissing girls;&lt;my wife ship="{*yuri*}blushing girls\my wife\yuri.yuri" i love girls="scissors" snuggle="i love amy is the best" yuri="girl love"/&gt;</value>
+<data name="IDS_CONTROLLER_DPAD_U"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonDpadU.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_CONTROLLER_DPAD_D"><value>&amp;yuri;&lt;wlw lesbian="{*canon*}scissors\yuri\yuri.yuri" girl love="ship" yuri="girl love" yuri="i love girls"/&gt;</value>
+<data name="IDS_CONTROLLER_DPAD_D"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\X360ControllerIcons\ButtonDpadD.png" align="middle" height="30" width="30"/>]]></value>
   </data>
-<data name="IDS_ICON_SHANK_01"><value>&amp;FUCKING KISS ALREADY;&lt;i love girls yuri="{*my wife*}my girlfriend\FUCKING KISS ALREADY.ship" yuri="lesbian" yuri="yuri" yuri="blushing girls"/&gt;</value>
+<data name="IDS_ICON_SHANK_01"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\Icon_Shank.png" align="middle" height="22" width="22"/>]]></value>
 </data>
-<data name="IDS_ICON_SHANK_03"><value>&amp;yuri;&lt;cute girls yuri="{*canon*}my wife\yuri.scissors" my wife="yuri" my wife="yuri" yuri="yuri"/&gt;&lt;yuri my girlfriend="{*yuri*}yuri\ship.hand holding" yuri="cute girls" yuri="yuri" wlw="yuri"/&gt;&lt;yuri hand holding="{*yuri*}yuri\cute girls.hand holding" i love girls="i love girls" kissing girls="yuri" lesbian="yuri"/&gt;</value>
+<data name="IDS_ICON_SHANK_03"><value><![CDATA[&nbsp;<img src="{*IMAGEROOT*}Graphics\Icon_Shank.png" align="middle" height="22" width="22"/><img src="{*IMAGEROOT*}Graphics\Icon_Shank.png" align="middle" height="22" width="22"/><img src="{*IMAGEROOT*}Graphics\Icon_Shank.png" align="middle" height="22" width="22"/>]]></value>
 </data>
-<data name="IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE"><value>{*i love amy is the best*}続けるには {*cute girls*} を押してください</value>
+<data name="IDS_TUTORIAL_PROMPT_PRESS_A_TO_CONTINUE"><value>{*B*}続けるには {*CONTROLLER_VK_A*} を押してください</value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_START_TUTORIAL"><value>{*yuri*}チュートリアルを始める: {*yuri*}{*wlw*}
-      チュートリアルを飛ばす: {*canon*}</value>
+<data name="IDS_TUTORIAL_PROMPT_START_TUTORIAL"><value>{*B*}チュートリアルを始める: {*CONTROLLER_VK_A*}{*B*}
+      チュートリアルを飛ばす: {*CONTROLLER_VK_B*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_OVERVIEW"><value>ship は自由な発想でブロックを積み上げて、探検したり、いろいろな物を作ったりするゲームです。
+<data name="IDS_TUTORIAL_TASK_OVERVIEW"><value>Minecraft は自由な発想でブロックを積み上げて、探検したり、いろいろな物を作ったりするゲームです。
 夜になるとモンスターが現れるので、その前に必ず安全な場所を作っておかなければなりません</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_LOOK"><value>{*kissing girls*} で周囲を見回せます</value>
+<data name="IDS_TUTORIAL_TASK_LOOK"><value>{*CONTROLLER_ACTION_LOOK*} で周囲を見回せます</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_MOVE"><value>{*scissors*} 動き回れます</value>
+<data name="IDS_TUTORIAL_TASK_MOVE"><value>{*CONTROLLER_ACTION_MOVE*} 動き回れます</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_SPRINT"><value>ダッシュするには {*yuri*} を前方向にすばやく ship 回押します。{*yuri*} を前方向に押し続ける間ダッシュできます。ただし一定時間が過ぎるか食べ物が尽きるとそこでやめてしまいます。</value>
+<data name="IDS_TUTORIAL_TASK_SPRINT"><value>ダッシュするには {*CONTROLLER_ACTION_MOVE*} を前方向にすばやく 2 回押します。{*CONTROLLER_ACTION_MOVE*} を前方向に押し続ける間ダッシュできます。ただし一定時間が過ぎるか食べ物が尽きるとそこでやめてしまいます。</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_JUMP"><value>{*blushing girls*} でジャンプ</value>
+<data name="IDS_TUTORIAL_TASK_JUMP"><value>{*CONTROLLER_ACTION_JUMP*} でジャンプ</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_MINE"><value>手や、手に持っているアイテムを使って、掘ったり切ったりするには、{*yuri*} を押し続けます。道具を作らないと、掘れないブロックもあります</value>
+<data name="IDS_TUTORIAL_TASK_MINE"><value>手や、手に持っているアイテムを使って、掘ったり切ったりするには、{*CONTROLLER_ACTION_ACTION*} を押し続けます。道具を作らないと、掘れないブロックもあります</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CHOP_WOOD"><value>{*ship*} を押し続けて木を yuri ブロック (木の幹に相当) 切ってみましょう。{*yuri*}ブロックを壊すと、アイテムが浮かんだ状態で現れます。アイテムの近くに立つと、アイテムを集められます。集めたアイテムは、持ち物に追加されます</value>
+<data name="IDS_TUTORIAL_TASK_CHOP_WOOD"><value>{*CONTROLLER_ACTION_ACTION*} を押し続けて木を 4 ブロック (木の幹に相当) 切ってみましょう。{*B*}ブロックを壊すと、アイテムが浮かんだ状態で現れます。アイテムの近くに立つと、アイテムを集められます。集めたアイテムは、持ち物に追加されます</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CRAFTING"><value>{*my wife*} で工作画面を開きましょう</value>
+<data name="IDS_TUTORIAL_TASK_CRAFTING"><value>{*CONTROLLER_ACTION_CRAFTING*} で工作画面を開きましょう</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_INVENTORY"><value>アイテムを集めたり、作ったりすることで持ち物は増えます。{*scissors*}
-    {*hand holding*} で持ち物を開きましょう</value>
+<data name="IDS_TUTORIAL_TASK_INVENTORY"><value>アイテムを集めたり、作ったりすることで持ち物は増えます。{*B*}
+    {*CONTROLLER_ACTION_INVENTORY*} で持ち物を開きましょう</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FOOD_BAR_DEPLETE"><value>移動、採掘、攻撃などの行動で空腹ゲージ {*lesbian*} が減っていきます。ダッシュやダッシュ ジャンプは普通に歩いたりジャンプしたりするよりもゲージが減ります</value>
+<data name="IDS_TUTORIAL_TASK_FOOD_BAR_DEPLETE"><value>移動、採掘、攻撃などの行動で空腹ゲージ {*ICON_SHANK_01*} が減っていきます。ダッシュやダッシュ ジャンプは普通に歩いたりジャンプしたりするよりもゲージが減ります</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FOOD_BAR_HEAL"><value>yuri が減っても空腹ゲージの {*cute girls*} が yuri 個以上ある状態では、yuri が自然に回復します。 食べ物を食べると空腹ゲージは回復します</value>
+<data name="IDS_TUTORIAL_TASK_FOOD_BAR_HEAL"><value>HP が減っても空腹ゲージの {*ICON_SHANK_01*} が 9 個以上ある状態では、HP が自然に回復します。 食べ物を食べると空腹ゲージは回復します</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FOOD_BAR_FEED"><value>食べ物アイテムを持っているときに {*ship*} を押し続けると、アイテムを食べて空腹ゲージが回復します。ゲージが満タンのときは食べられません</value>
+<data name="IDS_TUTORIAL_TASK_FOOD_BAR_FEED"><value>食べ物アイテムを持っているときに {*CONTROLLER_ACTION_USE*} を押し続けると、アイテムを食べて空腹ゲージが回復します。ゲージが満タンのときは食べられません</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FOOD_BAR_EAT_STEAK"><value>空腹ゲージが低いため blushing girls が減り始めました。持ち物に入っているステーキを食べて空腹ゲージを回復させれば、cute girls が回復し始めます。{*i love girls*}ship{*/yuri*}</value>
+<data name="IDS_TUTORIAL_TASK_FOOD_BAR_EAT_STEAK"><value>空腹ゲージが低いため HP が減り始めました。持ち物に入っているステーキを食べて空腹ゲージを回復させれば、HP が回復し始めます。{*ICON*}364{*/ICON*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATE_PLANKS"><value>集めた木は、木の板の材料になります。工作画面を開いて、工作を始めましょう{*FUCKING KISS ALREADY*}</value>
+<data name="IDS_TUTORIAL_TASK_CREATE_PLANKS"><value>集めた木は、木の板の材料になります。工作画面を開いて、工作を始めましょう{*PlanksIcon*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATE_CRAFTING_TABLE"><value>工作にはいくつもの工程があります。木の板が手に入ったので、これで、いろいろ作ることができます。まずは作業台を作ってみましょう{*i love amy is the best*}</value>
+<data name="IDS_TUTORIAL_TASK_CREATE_CRAFTING_TABLE"><value>工作にはいくつもの工程があります。木の板が手に入ったので、これで、いろいろ作ることができます。まずは作業台を作ってみましょう{*CraftingTableIcon*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATE_STICKS"><value>作業に合った道具を使うことで、ブロックをより効率よく集めることができます。道具には棒の持ち手が必要な物があるので、棒を作りましょう{*yuri*}</value>
+<data name="IDS_TUTORIAL_TASK_CREATE_STICKS"><value>作業に合った道具を使うことで、ブロックをより効率よく集めることができます。道具には棒の持ち手が必要な物があるので、棒を作りましょう{*SticksIcon*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_SCROLL"><value>手に持っているアイテムを変更するには {*yuri*} と {*yuri*} を使います</value>
+<data name="IDS_TUTORIAL_TASK_SCROLL"><value>手に持っているアイテムを変更するには {*CONTROLLER_ACTION_LEFT_SCROLL*} と {*CONTROLLER_ACTION_RIGHT_SCROLL*} を使います</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_USE"><value>アイテムを使用したり、置いたり、オブジェクトにアクションを取ったりするには {*yuri*} を使います。置いたアイテムは、適切な道具を使用して拾うことができます</value>
+<data name="IDS_TUTORIAL_TASK_USE"><value>アイテムを使用したり、置いたり、オブジェクトにアクションを取ったりするには {*CONTROLLER_ACTION_USE*} を使います。置いたアイテムは、適切な道具を使用して拾うことができます</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_PLACE_WORKBENCH"><value>作業台を置きましょう。作業台を選択して、置きたい場所にポインターを合わせてから {*scissors*} を押します</value>
+<data name="IDS_TUTORIAL_TASK_PLACE_WORKBENCH"><value>作業台を置きましょう。作業台を選択して、置きたい場所にポインターを合わせてから {*CONTROLLER_ACTION_USE*} を押します</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_OPEN_WORKBENCH"><value>作業台にポインターを合わせてから {*yuri*} を押して、作業台を開きましょう</value>
+<data name="IDS_TUTORIAL_TASK_OPEN_WORKBENCH"><value>作業台にポインターを合わせてから {*CONTROLLER_ACTION_USE*} を押して、作業台を開きましょう</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATE_WOODEN_SHOVEL"><value>シャベルを使えば、土や雪のような柔らかいブロックを手早く掘れます。より多くの材料を手に入れることで、より丈夫で効率の良い道具を作ることができます。木のシャベルを作ってみましょう{*i love girls*}</value>
+<data name="IDS_TUTORIAL_TASK_CREATE_WOODEN_SHOVEL"><value>シャベルを使えば、土や雪のような柔らかいブロックを手早く掘れます。より多くの材料を手に入れることで、より丈夫で効率の良い道具を作ることができます。木のシャベルを作ってみましょう{*WoodenShovelIcon*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATE_WOODEN_HATCHET"><value>斧を使えば、木や木のブロックを手早く切り出せます。より多くの材料を手に入れることで、より丈夫で効率の良い道具を作ることができます。木の斧を作ってみましょう{*canon*}</value>
+<data name="IDS_TUTORIAL_TASK_CREATE_WOODEN_HATCHET"><value>斧を使えば、木や木のブロックを手早く切り出せます。より多くの材料を手に入れることで、より丈夫で効率の良い道具を作ることができます。木の斧を作ってみましょう{*WoodenHatchetIcon*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATE_WOODEN_PICKAXE"><value>ツルハシを使えば、石や鉱石のような堅いブロックを早く掘り出せます。より多くの材料を手に入れることで、さらに堅い材料を掘ることのできる、より丈夫で効率の良い道具を作ることができます。木のツルハシを作ってみましょう{*yuri*}</value>
+<data name="IDS_TUTORIAL_TASK_CREATE_WOODEN_PICKAXE"><value>ツルハシを使えば、石や鉱石のような堅いブロックを早く掘り出せます。より多くの材料を手に入れることで、さらに堅い材料を掘ることのできる、より丈夫で効率の良い道具を作ることができます。木のツルハシを作ってみましょう{*WoodenPickaxeIcon*}</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_OPEN_CONTAINER"><value>入れ物を開く</value>
   </data>
@@ -2326,48 +2326,48 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
       小屋を修復するための材料を集めましょう。壁や屋根はどのブロックでも作れますが、ドアや窓、明かりも作りたいところです
     </value>
   </data>
-<data name="IDS_TUTORIAL_TASK_MINE_STONE"><value>ツルハシを使って、石のブロックを掘り出してみましょう。石のブロックを掘り出していると、丸石も出てきます。丸石を yuri つ集めると、かまどを作ることができます。石のある場所にたどり着くには、土を掘っていく必要があるので、シャベルを使いましょう{*yuri*}</value>
+<data name="IDS_TUTORIAL_TASK_MINE_STONE"><value>ツルハシを使って、石のブロックを掘り出してみましょう。石のブロックを掘り出していると、丸石も出てきます。丸石を 8 つ集めると、かまどを作ることができます。石のある場所にたどり着くには、土を掘っていく必要があるので、シャベルを使いましょう{*StoneIcon*}</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATE_FURNACE"><value>かまどを作るのに必要な数の丸石が集まりました。作業台を使って、かまどを作りましょう</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_PLACE_AND_OPEN_FURNACE"><value>{*FUCKING KISS ALREADY*} でかまどを置いて、開きましょう</value>
+<data name="IDS_TUTORIAL_TASK_PLACE_AND_OPEN_FURNACE"><value>{*CONTROLLER_ACTION_USE*} でかまどを置いて、開きましょう</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATE_CHARCOAL"><value>かまどを使って、木炭を作りましょう。出来上がりを待っている間に、小屋を修復するための材料をもっと集めてみましょう</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATE_GLASS"><value>かまどを使って、ガラスを作りましょう。出来上がりを待っている間に、小屋を修復するための材料をもっと集めてみましょう</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATE_WOODEN_DOOR"><value>小屋にドアをつけると、いちいち壁を掘ったり移動させたりせずに、簡単に出入りすることができます。木のドアを作ってみましょう{*lesbian kiss*}</value>
+<data name="IDS_TUTORIAL_TASK_CREATE_WOODEN_DOOR"><value>小屋にドアをつけると、いちいち壁を掘ったり移動させたりせずに、簡単に出入りすることができます。木のドアを作ってみましょう{*WoodenDoorIcon*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_PLACE_DOOR"><value>ドアを {*lesbian kiss*} で設置します。ドアは {*canon*} で開け閉めできます</value>
+<data name="IDS_TUTORIAL_TASK_PLACE_DOOR"><value>ドアを {*CONTROLLER_ACTION_USE*} で設置します。ドアは {*CONTROLLER_ACTION_USE*} で開け閉めできます</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATE_TORCH"><value>夜は外が真っ暗になります。小屋の中には明かりが欲しいところです。工作画面で、棒と木炭からたいまつを作りましょう{*canon*}</value>
+<data name="IDS_TUTORIAL_TASK_CREATE_TORCH"><value>夜は外が真っ暗になります。小屋の中には明かりが欲しいところです。工作画面で、棒と木炭からたいまつを作りましょう{*TorchIcon*}</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BASIC_COMPLETE"><value>
       チュートリアルの最初のパートが完了です!
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_BASIC_COMPLETE"><value>
-      {*canon*}
-      チュートリアルを続ける: {*yuri*}{*yuri*}
-      チュートリアルを飛ばす: {*i love amy is the best*}
+      {*B*}
+      チュートリアルを続ける: {*CONTROLLER_VK_A*}{*B*}
+      チュートリアルを飛ばす: {*CONTROLLER_VK_B*}
  </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_INV_OVERVIEW"><value>
       これがあなたの持ち物です。手で持って使用できるアイテムと、所有しているアイテムのリスト、現在装備している防具を確認できます
     </value></data>
-<data name="IDS_TUTORIAL_PROMPT_INV_OVERVIEW"><value>{*wlw*}
-      持ち物の説明を続ける: {*my wife*}{*kissing girls*}
-      持ち物の説明を飛ばす: {*blushing girls*}
+<data name="IDS_TUTORIAL_PROMPT_INV_OVERVIEW"><value>{*B*}
+      持ち物の説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      持ち物の説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_INV_PICK_UP"><value>
-      ポインターを {*lesbian*} で動かして、アイテムに合わせてから {*FUCKING KISS ALREADY*} を押すと、アイテムを選択できます。
-      そのアイテムを複数所有している場合は、そのすべてが選択されます。半分だけ選択するには {*lesbian kiss*} を使用します
+      ポインターを {*CONTROLLER_MENU_NAVIGATE*} で動かして、アイテムに合わせてから {*CONTROLLER_VK_A*} を押すと、アイテムを選択できます。
+      そのアイテムを複数所有している場合は、そのすべてが選択されます。半分だけ選択するには {*CONTROLLER_VK_X*} を使用します
 </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_INV_MOVE"><value>
-      ポインターで選んだアイテムを持ち物の別の場所に移動させるには、移動先で {*yuri*} を押します。
-      ポインターに複数のアイテムがある場合は、{*yuri*} を押すと全部、 {*my wife*} を押すと kissing girls つだけ移動させることができます
+      ポインターで選んだアイテムを持ち物の別の場所に移動させるには、移動先で {*CONTROLLER_VK_A*} を押します。
+      ポインターに複数のアイテムがある場合は、{*CONTROLLER_VK_A*} を押すと全部、 {*CONTROLLER_VK_X*} を押すと 1 つだけ移動させることができます
 </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_INV_DROP"><value>
@@ -2375,75 +2375,75 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_INV_INFO"><value>
-      アイテムの説明を見たい時は、ポインターをアイテムの上に動かしてから {*FUCKING KISS ALREADY*} を押してください
+      アイテムの説明を見たい時は、ポインターをアイテムの上に動かしてから {*CONTROLLER_ACTION_MENU_PAGEDOWN*} を押してください
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_INV_EXIT"><value>
-      持ち物画面を閉じるには {*yuri*} を押します
+      持ち物画面を閉じるには {*CONTROLLER_VK_B*} を押します
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_OVERVIEW"><value>
       これがクリエイティブ モードの持ち物です。手で持って使用できるアイテムと、所有しているアイテムのリストを確認できます
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_CREATIVE_INV_OVERVIEW"><value>{*girl love*}
-      持ち物の説明を続ける: {*snuggle*}{*yuri*}
-      クリエイティブ モードの持ち物の説明を飛ばす: {*i love girls*}
+<data name="IDS_TUTORIAL_PROMPT_CREATIVE_INV_OVERVIEW"><value>{*B*}
+      持ち物の説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      クリエイティブ モードの持ち物の説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_PICK_UP"><value>
-      ポインターを {*yuri*} で動かしてアイテムに合わせます。
-	  {*blushing girls*} を押すと、アイテムを選択します。
-      そのアイテムを複数所有している場合は、{*yuri*} を押すと、すべてが選択されます
+      ポインターを {*CONTROLLER_MENU_NAVIGATE*} で動かしてアイテムに合わせます。
+	  {*CONTROLLER_VK_A*} を押すと、アイテムを選択します。
+      そのアイテムを複数所有している場合は、{*CONTROLLER_VK_Y*} を押すと、すべてが選択されます
 </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_MOVE"><value>
-      ポインターは自動的に使用欄へ移動します。{*wlw*} でそこに選択アイテムを置きます。アイテムを置くとポインターはアイテム一覧に戻るので、そこから他のアイテムを選ぶこともできます
+      ポインターは自動的に使用欄へ移動します。{*CONTROLLER_VK_A*} でそこに選択アイテムを置きます。アイテムを置くとポインターはアイテム一覧に戻るので、そこから他のアイテムを選ぶこともできます
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_DROP"><value>
-      アイテムの上にポインターを置いた状態で、持ち物画面の外へポインターを動かすと、そのアイテムを落とすことができます。クイック選択バーを一度に空にするには{*i love girls*}を押してください。
+      アイテムの上にポインターを置いた状態で、持ち物画面の外へポインターを動かすと、そのアイテムを落とすことができます。クイック選択バーを一度に空にするには{*CONTROLLER_VK_X*}を押してください。
 </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_NAV"><value>
-      使うアイテムのグループを変更するには {*blushing girls*} と {*yuri*} で、上にあるグループのタブを切り替え、{*yuri*} でアイテムを選択します
+      使うアイテムのグループを変更するには {*CONTROLLER_VK_LB*} と {*CONTROLLER_VK_RB*} で、上にあるグループのタブを切り替え、{*CONTROLLER_VK_LS*} でアイテムを選択します
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_INFO"><value>
-      アイテムの説明を見たい時は、ポインターをアイテムの上に動かしてから {*canon*} を押してください
+      アイテムの説明を見たい時は、ポインターをアイテムの上に動かしてから {*CONTROLLER_ACTION_MENU_PAGEDOWN*} を押してください
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATIVE_INV_EXIT"><value>
-     クリエイティブ モード持ち物画面を閉じるには {*cute girls*} を押します
+     クリエイティブ モード持ち物画面を閉じるには {*CONTROLLER_VK_B*} を押します
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_OVERVIEW"><value>
       これが工作画面です。この画面では、これまでに集めたアイテムを組み合わせて、新しいアイテムを作ることができます
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_CRAFT_OVERVIEW"><value>{*yuri*}
-      工作の説明を続ける: {*scissors*}{*yuri*}
-      工作の説明を飛ばす: {*canon*}
+<data name="IDS_TUTORIAL_PROMPT_CRAFT_OVERVIEW"><value>{*B*}
+      工作の説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      工作の説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_PRESS_X_TO_TOGGLE_DESCRIPTION"><value>{*hand holding*}
-      アイテムの説明を見るには {*i love amy is the best*} を押します
+<data name="IDS_TUTORIAL_PROMPT_PRESS_X_TO_TOGGLE_DESCRIPTION"><value>{*B*}
+      アイテムの説明を見るには {*CONTROLLER_VK_X*} を押します
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_PRESS_X_TO_TOGGLE_INGREDIENTS"><value>{*snuggle*}
-      このアイテムを作るのに必要なアイテムのリストを見るには {*scissors*} を押します
+<data name="IDS_TUTORIAL_PROMPT_PRESS_X_TO_TOGGLE_INGREDIENTS"><value>{*B*}
+      このアイテムを作るのに必要なアイテムのリストを見るには {*CONTROLLER_VK_X*} を押します
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_PRESS_X_TO_TOGGLE_INVENTORY"><value>{*yuri*}
-      持ち物に戻るには {*yuri*} を押します
+<data name="IDS_TUTORIAL_PROMPT_PRESS_X_TO_TOGGLE_INVENTORY"><value>{*B*}
+      持ち物に戻るには {*CONTROLLER_VK_X*} を押します
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_NAV"><value>
-      作りたいアイテムのグループを変更するには {*i love amy is the best*} と {*i love amy is the best*} で、上にあるグループのタブを切り替え、{*yuri*} で作るアイテムを選択します
+      作りたいアイテムのグループを変更するには {*CONTROLLER_VK_LB*} と {*CONTROLLER_VK_RB*} で、上にあるグループのタブを切り替え、{*CONTROLLER_MENU_NAVIGATE*} で作るアイテムを選択します
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_CREATE"><value>
-      工作ウィンドウには、新しいアイテムを作るのに必要なアイテムのリストが表示されます。{*my girlfriend*} を押すとアイテムが作られ、持ち物に追加されます
+      工作ウィンドウには、新しいアイテムを作るのに必要なアイテムのリストが表示されます。{*CONTROLLER_VK_A*} を押すとアイテムが作られ、持ち物に追加されます
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_CRAFT_TABLE"><value>
@@ -2462,50 +2462,50 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
       選択したアイテムを作るのに必要なアイテムのリストです
     </value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CRAFT_CREATE_PLANKS"><value>集めた木を使って、木の板を作ることができます。作るには、木の板のアイコンを選んでから {*hand holding*} を押してください{*yuri*}</value>
+<data name="IDS_TUTORIAL_TASK_CRAFT_CREATE_PLANKS"><value>集めた木を使って、木の板を作ることができます。作るには、木の板のアイコンを選んでから {*CONTROLLER_VK_A*} を押してください{*PlanksIcon*}</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_EXIT_AND_PLACE_TABLE"><value>
-     これで 作業台が完成です! ゲームの世界に置いて、いろいろなアイテムを作れるようにしましょう。{*my girlfriend*}
-      工作画面から出るには {*i love girls*} を押します
+     これで 作業台が完成です! ゲームの世界に置いて、いろいろなアイテムを作れるようにしましょう。{*B*}
+      工作画面から出るには {*CONTROLLER_VK_B*} を押します
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_SELECT_TOOLS"><value>
-      作るアイテムのグループを切り替えるには {*cute girls*} と {*yuri*} を使います。道具のグループを選択しましょう{*lesbian kiss*}
+      作るアイテムのグループを切り替えるには {*CONTROLLER_VK_LB*} と {*CONTROLLER_VK_RB*} を使います。道具のグループを選択しましょう{*ToolsIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_SELECT_STRUCTURES"><value>
-      作るアイテムのグループを切り替えるには {*yuri*} と {*yuri*} を使います。建物のグループを選択しましょう{*yuri*}
+      作るアイテムのグループを切り替えるには {*CONTROLLER_VK_LB*} と {*CONTROLLER_VK_RB*} を使います。建物のグループを選択しましょう{*StructuresIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_SELECT_WOODEN_SHOVEL"><value>
-      作るアイテムを変えるには {*yuri*} を使います。アイテムによっては、使う材料によって、できる物が変わります。それでは木のシャベルを選びましょう{*i love girls*}
+      作るアイテムを変えるには {*CONTROLLER_MENU_NAVIGATE*} を使います。アイテムによっては、使う材料によって、できる物が変わります。それでは木のシャベルを選びましょう{*WoodenShovelIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_SELECT_CRAFTING_TABLE"><value>
-      工作にはいくつもの工程があります。木の板が何枚か手元にあるので、さらにいろいろなアイテムを作れます。作るアイテムは {*yuri*} で変更できます。それでは作業台を選びましょう{*yuri*}
+      工作にはいくつもの工程があります。木の板が何枚か手元にあるので、さらにいろいろなアイテムを作れます。作るアイテムは {*CONTROLLER_MENU_NAVIGATE*} で変更できます。それでは作業台を選びましょう{*CraftingTableIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_TOOLS_BUILT"><value>
-      道具が完成しました。順調です。これで様々な材料をさらに効率よく集めることができます。{*kissing girls*}
-      工作画面を閉じるには  {*yuri*} を押してください
+      道具が完成しました。順調です。これで様々な材料をさらに効率よく集めることができます。{*B*}
+      工作画面を閉じるには  {*CONTROLLER_VK_B*} を押してください
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_CREATE_FURNACE"><value>
-      一部のアイテムは作業台ではなく、かまどで作ります。それではかまどを作りましょう{*yuri*}
+      一部のアイテムは作業台ではなく、かまどで作ります。それではかまどを作りましょう{*FurnaceIcon*}
        </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CRAFT_EXIT_AND_PLACE_FURNACE"><value>
-      完成したかまどをゲームの世界に置きましょう。小屋の中に置くとよいかもしれません。{*cute girls*}
-      工作画面を閉じるには  {*yuri*} を押してください
+      完成したかまどをゲームの世界に置きましょう。小屋の中に置くとよいかもしれません。{*B*}
+      工作画面を閉じるには  {*CONTROLLER_VK_B*} を押してください
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FURNACE_OVERVIEW"><value>
       これがかまどの画面です。かまどを使ってアイテムに熱を加えることで、そのアイテムを加工できます。例えば、鉄鉱石を鉄の延べ棒に変えることができます
       </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_FURNACE_OVERVIEW"><value>{*lesbian kiss*}
-      かまどの説明を続ける: {*yuri*}{*yuri*}
-      かまどの説明を飛ばす: {*yuri*}
+<data name="IDS_TUTORIAL_PROMPT_FURNACE_OVERVIEW"><value>{*B*}
+      かまどの説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      かまどの説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FURNACE_METHOD"><value>
@@ -2536,17 +2536,17 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
       これが調合の画面です。さまざまな効果を発揮するポーションを作ることができます
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_BREWING_MENU_OVERVIEW"><value>{*yuri*}
-      調合台の説明を続ける: {*scissors*}{*yuri*}
-      調合台の説明を飛ばす: {*my wife*}
+<data name="IDS_TUTORIAL_PROMPT_BREWING_MENU_OVERVIEW"><value>{*B*}
+      調合台の説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      調合台の説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_MENU_METHOD"><value>
-      調合を行うには、上の枠に材料を入れ、下の枠にポーションまたは水のビンを入れます (一度に yuri つまで調合可能)。正しい組み合わせの材料が置かれると調合が始まり、少し待てばポーションの出来上がりです
+      調合を行うには、上の枠に材料を入れ、下の枠にポーションまたは水のビンを入れます (一度に 3 つまで調合可能)。正しい組み合わせの材料が置かれると調合が始まり、少し待てばポーションの出来上がりです
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_MENU_BASIC_INGREDIENTS"><value>
-      ポーションの調合にはまず水のビンが必要です。また、ほとんどのポーションは暗黒茸から不完全なポーションを作るところから始め、完成させるには少なくともあと yuri 種類の材料を必要とします
+      ポーションの調合にはまず水のビンが必要です。また、ほとんどのポーションは暗黒茸から不完全なポーションを作るところから始め、完成させるには少なくともあと 1 種類の材料を必要とします
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_MENU_EXTENDED_INGREDIENTS"><value>
@@ -2562,16 +2562,16 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_MENU_EXIT"><value>
-     調合画面を閉じるには {*blushing girls*} を押します
+     調合画面を閉じるには {*CONTROLLER_VK_B*} を押します
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_OVERVIEW"><value>
       ここには調合台、大釜と調合に必要なアイテムが詰まったチェストがあります.
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_BREWING_OVERVIEW"><value>{*yuri*}
-      調合とポーションの説明を続ける: {*yuri*}{*wlw*}
-      調合とポーションの説明を飛ばす: {*cute girls*}
+<data name="IDS_TUTORIAL_PROMPT_BREWING_OVERVIEW"><value>{*B*}
+      調合とポーションの説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      調合とポーションの説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_GET_GLASS_BOTTLE"><value>
@@ -2579,7 +2579,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_FILL_GLASS_BOTTLE"><value>
-      水の入った大釜か水のブロックからガラスビンに水を移します。水源をクリックし、{*kissing girls*} を押してガラスビンに水を詰めてください
+      水の入った大釜か水のブロックからガラスビンに水を移します。水源をクリックし、{*CONTROLLER_ACTION_USE*} を押してガラスビンに水を詰めてください
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_FILL_CAULDRON"><value>
@@ -2591,7 +2591,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREWING_USE_POTION"><value>
-      ポーションを使うには、ポーション手に持って {*my wife*} を押します。普通のポーションは飲んで自分に効果を発揮します。スプラッシュポーションの場合は、投げて落ちた所の周囲にいるクリーチャーに効果を発揮します
+      ポーションを使うには、ポーション手に持って {*CONTROLLER_ACTION_USE*} を押します。普通のポーションは飲んで自分に効果を発揮します。スプラッシュポーションの場合は、投げて落ちた所の周囲にいるクリーチャーに効果を発揮します
 	  スプラッシュポーションは普通のポーションに火薬を混ぜ合わせると作れます
     </value>
   </data>
@@ -2607,9 +2607,9 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
       これがエンチャントの画面です。武器や防具、一部の道具にエンチャントすることで、特別なボーナスを付加できます
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_ENCHANTING_MENU_OVERVIEW"><value>{*my girlfriend*}
-      エンチャント画面の説明を続ける: {*cute girls*}{*snuggle*}
-      エンチャント画面の説明を飛ばす: {*wlw*}
+<data name="IDS_TUTORIAL_PROMPT_ENCHANTING_MENU_OVERVIEW"><value>{*B*}
+      エンチャント画面の説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      エンチャント画面の説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_ENCHANTING_MENU_START"><value>
@@ -2625,7 +2625,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_ENCHANTING_MENU_ENCHANT"><value>
-      エンチャントを行うには、エンチャントを選んで {*canon*} を押してください。エンチャントのコストに応じて経験値レベルが下がります
+      エンチャントを行うには、エンチャントを選んで {*CONTROLLER_VK_A*} を押してください。エンチャントのコストに応じて経験値レベルが下がります
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_ENCHANTING_MENU_BETTER_ENCHANTMENTS"><value>
@@ -2636,9 +2636,9 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
       ここにはエンチャントテーブルと、エンチャントについて学ぶためのいくつかのアイテムがあります
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_ENCHANTING_OVERVIEW"><value>{*scissors*}
-      エンチャントの説明を続けるには {*i love girls*} を押してください。{*yuri*}
-      エンチャントの説明を飛ばすには {*scissors*} を押してください
+<data name="IDS_TUTORIAL_PROMPT_ENCHANTING_OVERVIEW"><value>{*B*}
+      エンチャントの説明を続けるには {*CONTROLLER_VK_A*} を押してください。{*B*}
+      エンチャントの説明を飛ばすには {*CONTROLLER_VK_B*} を押してください
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_ENCHANTING_SUMMARY"><value>
@@ -2662,82 +2662,82 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_MINECART_OVERVIEW"><value>
-      今トロッコに乗っています。トロッコから降りるには、ポインターをトロッコに合わせてから {*yuri*} を押してください{*ship*}
+      今トロッコに乗っています。トロッコから降りるには、ポインターをトロッコに合わせてから {*CONTROLLER_ACTION_USE*} を押してください{*MinecartIcon*}
     </value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_MINECART_OVERVIEW"><value>{*ship*}
-      トロッコの説明を続ける: {*yuri*}{*i love amy is the best*}
-      トロッコの説明を飛ばす: {*my wife*}
+<data name="IDS_TUTORIAL_PROMPT_MINECART_OVERVIEW"><value>{*B*}
+      トロッコの説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      トロッコの説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_MINECART_RAILS"><value>
       トロッコはレールの上を走ります。かまどを乗せた動力つきのトロッコや、チェストがついたトロッコを作ることもできます
-      {*scissors*}
+      {*RailIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_MINECART_POWERED_RAILS"><value>
       トロッコのスピードを上げるために、レッドストーンのたいまつや回路から動力を得る加速用レールを作ることができます。これはスイッチやレバー、重量感知板などを組み合わせた、複雑な装置になります
-      {*canon*}
+      {*PoweredRailIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BOAT_OVERVIEW"><value>
-      今ボートに乗っています。ボートから降りるには、ポインターをボートに合わせてから {*yuri*} を押してください{*yuri*}
+      今ボートに乗っています。ボートから降りるには、ポインターをボートに合わせてから {*CONTROLLER_ACTION_USE*} を押してください{*BoatIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_BOAT_OVERVIEW"><value>
-      {*i love girls*}
-      ボートの説明を続ける: {*yuri*}{*yuri*}
-      ボートの説明を飛ばす: {*hand holding*}
+      {*B*}
+      ボートの説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      ボートの説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BOAT_STEER"><value>
-      ボートを使えば、水上を速く移動することができます。舵を取るには {*yuri*} と {*yuri*} を使います
-      {*yuri*}
+      ボートを使えば、水上を速く移動することができます。舵を取るには {*CONTROLLER_ACTION_MOVE*} と {*CONTROLLER_ACTION_LOOK*} を使います
+      {*BoatIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FISHING_OVERVIEW"><value>
-      釣り竿を手にしました。使うには {*yuri*} を押します{*girl love*}
+      釣り竿を手にしました。使うには {*CONTROLLER_ACTION_USE*} を押します{*FishingRodIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_FISHING_OVERVIEW"><value>
-      {*ship*}
-      魚釣りの説明を続ける: {*lesbian kiss*}{*yuri*}
-      魚釣りの説明を飛ばす: {*yuri*}
+      {*B*}
+      魚釣りの説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      魚釣りの説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FISHING_CAST"><value>
-      釣りを始めるには {*kissing girls*} を押します。リールを巻き上げるときも {*yuri*} を押してください
-      {*yuri*}
+      釣りを始めるには {*CONTROLLER_ACTION_USE*} を押します。リールを巻き上げるときも {*CONTROLLER_ACTION_USE*} を押してください
+      {*FishingRodIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FISHING_FISH"><value>
-      水の表面にある浮きが沈むまで待ってから、釣り糸を巻き上げて魚を釣り上げます。魚は生でも食べられますし、かまどで調理することもできます。食べると snuggle が回復します
-      {*i love girls*}
+      水の表面にある浮きが沈むまで待ってから、釣り糸を巻き上げて魚を釣り上げます。魚は生でも食べられますし、かまどで調理することもできます。食べると HP が回復します
+      {*FishIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FISHING_USES"><value>
      釣り竿は 様々な道具と組み合わせることができますが、その用途は比較的限られています。しかし魚を釣る以外のこともできます。釣り竿を使って他に何が釣れるのか、どんなことができるのか、いろいろ試してみましょう
-      {*lesbian*}
+      {*FishingRodIcon*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BED_OVERVIEW"><value>
-      これがベッドです。夜になってからベッドにポインターを当てて {*snuggle*} を押すと、朝まで眠ることができます{*snuggle*}yuri{*/yuri*}
+      これがベッドです。夜になってからベッドにポインターを当てて {*CONTROLLER_ACTION_USE*} を押すと、朝まで眠ることができます{*ICON*}355{*/ICON*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_BED_OVERVIEW"><value>
-      {*girl love*}
-      ベッドの説明を続ける: {*wlw*}{*my wife*}
-      ベッドの説明を飛ばす: {*wlw*}
+      {*B*}
+      ベッドの説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      ベッドの説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BED_PLACEMENT"><value>
       ベッドは安全で明るい場所に置かないといけません。さもないと、夜中にモンスターに襲われてしまいます。ベッドで眠ると、次の力尽きた時の復活地点が、そのベッドに変更されます
-      {*lesbian kiss*}yuri{*/i love amy is the best*}
+      {*ICON*}355{*/ICON*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BED_MULTIPLAYER"><value>
       ゲーム内に他のプレイヤーがいる場合、眠るためには全員が同時にベッドに入っていなければなりません
-      {*scissors*}my girlfriend{*/snuggle*}
+      {*ICON*}355{*/ICON*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_REDSTONE_OVERVIEW"><value>
@@ -2745,9 +2745,9 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_REDSTONE_OVERVIEW"><value>
-      {*FUCKING KISS ALREADY*}
-      レッドストーン回路とピストンの説明を続ける: {*hand holding*}{*yuri*}
-      レッドストーン回路とピストンの説明を飛ばす: {*yuri*}
+      {*B*}
+      レッドストーン回路とピストンの説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      レッドストーン回路とピストンの説明を飛ばす: {*CONTROLLER_VK_B*}
 </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_REDSTONE_POWER_SOURCES"><value>
@@ -2759,22 +2759,22 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_REDSTONE_DUST"><value>
-      レッドストーンの粉は、鉄、ダイヤモンド、金のツルハシでレッドストーン鉱石を掘ると手に入ります。レッドストーンの粉をブロックに置いてつなげることで、電気を伝えることができます。ただし、伝えられるのは距離にして lesbian kiss ブロック分、高さ方向の移動は kissing girls ブロックまでとなります
-	  {*ship*}snuggle{*/yuri*}
+      レッドストーンの粉は、鉄、ダイヤモンド、金のツルハシでレッドストーン鉱石を掘ると手に入ります。レッドストーンの粉をブロックに置いてつなげることで、電気を伝えることができます。ただし、伝えられるのは距離にして 15 ブロック分、高さ方向の移動は 1 ブロックまでとなります
+	  {*ICON*}331{*/ICON*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_REDSTONE_REPEATER"><value>
       レッドストーン反復装置は電気の届く距離を伸ばしたり、回路を遅延させたりすることができます
-	  {*canon*}scissors{*/yuri*}
+	  {*ICON*}356{*/ICON*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_PISTONS"><value>
-      ピストンは電気が送られると伸びて、最大 wlw 個のブロックを押します。吸着ピストンであれば、戻るときに一部の特殊なブロックを除いてブロックを yuri つ引き寄せることができます
-	  {*hand holding*}my girlfriend{*/yuri*}
+      ピストンは電気が送られると伸びて、最大 12 個のブロックを押します。吸着ピストンであれば、戻るときに一部の特殊なブロックを除いてブロックを 1 つ引き寄せることができます
+	  {*ICON*}33{*/ICON*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_TRY_IT"><value>
-      このエリアには、ピストン付きの回路を作るためのアイテムを入れたチェストがあります。すでにある回路を改造したり、yuri から回路を作成したりしてみてください。チュートリアル エリアの外には、さらに多くの見本があります
+      このエリアには、ピストン付きの回路を作るためのアイテムを入れたチェストがあります。すでにある回路を改造したり、1 から回路を作成したりしてみてください。チュートリアル エリアの外には、さらに多くの見本があります
     </value>
   </data>
 <data name="IDS_TUTORIAL_PORTAL_OVERVIEW"><value>
@@ -2782,13 +2782,13 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_PORTAL_OVERVIEW"><value>
-      {*yuri*}
-      ポータルと暗黒界の説明を続ける: {*wlw*}{*my girlfriend*}
-      ポータルと暗黒界の説明を飛ばす: {*my girlfriend*}
+      {*B*}
+      ポータルと暗黒界の説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      ポータルと暗黒界の説明を飛ばす: {*CONTROLLER_VK_B*}
 </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BUILD_PORTAL"><value>
-      ポータルは、黒曜石のブロックで横 yuri ブロック、縦 my girlfriend ブロックの枠を作成することで完成します。角のブロックは必要ありません。
+      ポータルは、黒曜石のブロックで横 4 ブロック、縦 5 ブロックの枠を作成することで完成します。角のブロックは必要ありません。
    </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_ACTIVATE_PORTAL"><value>
@@ -2804,7 +2804,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_NETHER_FAST_TRAVEL"><value>
-      暗黒界をうまく利用して地上界を高速移動することができます。暗黒界での scissors ブロックの距離は、地上界での cute girls ブロックに相当します
+      暗黒界をうまく利用して地上界を高速移動することができます。暗黒界での 1 ブロックの距離は、地上界での 3 ブロックに相当します
     </value>
   </data>
 <data name="IDS_TUTORIAL_CREATIVE_OVERVIEW"><value>
@@ -2812,17 +2812,17 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_CREATIVE_OVERVIEW"><value>
-      {*lesbian kiss*}
-      クリエイティブ モードの説明を続ける: {*wlw*}{*yuri*}
-      クリエイティブ モードの説明を飛ばす: {*scissors*}
+      {*B*}
+      クリエイティブ モードの説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      クリエイティブ モードの説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
-<data name="IDS_TUTORIAL_TASK_CREATIVE_MODE"><value>クリエイティブ モードではほとんどのアイテムやブロックが無限に使えます。また、道具がなくても yuri 回クリックするだけでブロックが破壊できるほか、攻撃されてもダメージを受けなくなり、飛行も可能です</value>
+<data name="IDS_TUTORIAL_TASK_CREATIVE_MODE"><value>クリエイティブ モードではほとんどのアイテムやブロックが無限に使えます。また、道具がなくても 1 回クリックするだけでブロックが破壊できるほか、攻撃されてもダメージを受けなくなり、飛行も可能です</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FLY"><value>{*wlw*} をすばやく yuri 回押すと飛行できます。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*yuri*} を前方向にすばやく yuri 回押します。
-飛行モードでは、{*yuri*} で上昇、{*snuggle*} で下降できます。または、方向パッドで上下左右に飛びましょう</value>
+<data name="IDS_TUTORIAL_TASK_FLY"><value>{*CONTROLLER_ACTION_JUMP*} をすばやく 2 回押すと飛行できます。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*CONTROLLER_ACTION_MOVE*} を前方向にすばやく 2 回押します。
+飛行モードでは、{*CONTROLLER_ACTION_JUMP*} で上昇、{*CONTROLLER_ACTION_SNEAK*} で下降できます。または、方向パッドで上下左右に飛びましょう</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_OPEN_CREATIVE_INVENTORY"><value>クリエイティブ モードの持ち物を開くには {*wlw*} を押してください</value>
+<data name="IDS_TUTORIAL_TASK_OPEN_CREATIVE_INVENTORY"><value>クリエイティブ モードの持ち物を開くには {*CONTROLLER_ACTION_CRAFTING*} を押してください</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_CREATIVE_EXIT"><value>続けるには穴の反対側へ移動してください</value>
   </data>
@@ -2833,26 +2833,26 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_FARMING_OVERVIEW"><value>
-      {*wlw*}
-      農作業の説明を続ける: {*my girlfriend*}{*yuri*}
-      農作業の説明を飛ばす: {*kissing girls*}
+      {*B*}
+      農作業の説明を続ける: {*CONTROLLER_VK_A*}{*B*}
+      農作業の説明を飛ばす: {*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FARMING_SEEDS"><value>小麦、カボチャ、スイカは、種から育てます。小麦の種は、背の高い草を切ったり、小麦を栽培することで手に入れることができます。カボチャの種やスイカの種は、それぞれ、カボチャやスイカから入手します</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FARMING_FARMLAND"><value>種をまく前に、くわをつかって土のブロックを耕地に変える必要があります。近くに水源や光源があり、十分な水と光が供給されていると作物が早く成長します</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FARMING_WHEAT"><value>小麦は何段階かに変化しながら成長していき、色が濃くなると収穫できるようになります。{*wlw*}yuri:ship{*/girl love*}</value>
+<data name="IDS_TUTORIAL_TASK_FARMING_WHEAT"><value>小麦は何段階かに変化しながら成長していき、色が濃くなると収穫できるようになります。{*ICON*}59:7{*/ICON*}</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FARMING_PUMPKIN_AND_MELON"><value>カボチャとスイカの場合は、茎が太くなってきたら、種をまいた場所の隣に実ができるためのブロックが必要になります</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FARMING_SUGARCANE"><value>サトウキビは、水ブロックと隣接する、草、土、砂のブロックに植える必要があります。また、サトウキビのブロックは中ほどを収穫すると、上にあるブロックもすべて収穫されます。{*i love amy is the best*}yuri{*/snuggle*}</value>
+<data name="IDS_TUTORIAL_TASK_FARMING_SUGARCANE"><value>サトウキビは、水ブロックと隣接する、草、土、砂のブロックに植える必要があります。また、サトウキビのブロックは中ほどを収穫すると、上にあるブロックもすべて収穫されます。{*ICON*}83{*/ICON*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FARMING_CACTUS"><value>サボテンは砂に植える必要があり、成長すると yuri ブロックの高さになります。サトウキビと同様、下のブロックを収穫すると、上にあるブロックもすべて収穫できます。{*lesbian*}yuri{*/ship*}</value>
+<data name="IDS_TUTORIAL_TASK_FARMING_CACTUS"><value>サボテンは砂に植える必要があり、成長すると 3 ブロックの高さになります。サトウキビと同様、下のブロックを収穫すると、上にあるブロックもすべて収穫できます。{*ICON*}81{*/ICON*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FARMING_MUSHROOM"><value>きのこは薄暗いエリアに植えましょう。隣接する薄暗いブロックに広がっていきます。{*scissors*}yuri{*/yuri*}</value>
+<data name="IDS_TUTORIAL_TASK_FARMING_MUSHROOM"><value>きのこは薄暗いエリアに植えましょう。隣接する薄暗いブロックに広がっていきます。{*ICON*}39{*/ICON*}</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_FARMING_BONEMEAL"><value>骨粉は作物を最大まで成長させたり、きのこを巨大なきのこに成長させることができます。{*yuri*}yuri:i love girls{*/scissors*}</value>
+<data name="IDS_TUTORIAL_TASK_FARMING_BONEMEAL"><value>骨粉は作物を最大まで成長させたり、きのこを巨大なきのこに成長させることができます。{*ICON*}351:15{*/ICON*}</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FARMING_COMPLETE"><value>農作業のチュートリアルを完了しました</value>
   </data>
@@ -2861,20 +2861,20 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_BREEDING_OVERVIEW"><value>
-      {*cute girls*}
-      動物の繁殖の説明を続けるには {*my girlfriend*} を押してください。{*hand holding*}
-      動物の繁殖の説明を飛ばすには {*cute girls*} を押してください
+      {*B*}
+      動物の繁殖の説明を続けるには {*CONTROLLER_VK_A*} を押してください。{*B*}
+      動物の繁殖の説明を飛ばすには {*CONTROLLER_VK_B*} を押してください
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREEDING_FEED"><value>動物を繁殖させるには、動物にあった餌を与えて、動物たちを「求愛モード」にしてやる必要があります</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_BREEDING_FEED_FOOD"><value>牛、yuri、羊には小麦を、豚にはニンジンを、ニワトリには小麦の種または暗黒茸、オオカミには肉を与えましょう。すると、近くにいる求愛モードの仲間を探し始めます</value>
+<data name="IDS_TUTORIAL_TASK_BREEDING_FEED_FOOD"><value>牛、Mooshroom、羊には小麦を、豚にはニンジンを、ニワトリには小麦の種または暗黒茸、オオカミには肉を与えましょう。すると、近くにいる求愛モードの仲間を探し始めます</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREEDING_BABY"><value>ともに求愛モードの同種の動物が出会うと、少しの間キスをして、動物の赤ちゃんが誕生します。赤ちゃんは、成長するまでは、両親の後ろをついて回ります</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_BREEDING_DELAY"><value>一度求愛モードになった動物は、kissing girls 分間は再び求愛モードになることはありません</value>
+<data name="IDS_TUTORIAL_TASK_BREEDING_DELAY"><value>一度求愛モードになった動物は、5 分間は再び求愛モードになることはありません</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_BREEDING_FOLLOW"><value>手に食べ物を持っていると、あなたの後ろをついてくる動物もいます。この習性を利用すれば、簡単に動物を一か所に集めことができるでしょう{*kissing girls*}yuri{*/yuri*}</value>
+<data name="IDS_TUTORIAL_TASK_BREEDING_FOLLOW"><value>手に食べ物を持っていると、あなたの後ろをついてくる動物もいます。この習性を利用すれば、簡単に動物を一か所に集めことができるでしょう{*ICON*}296{*/ICON*}</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_BREEDING_WOLF_TAMING"><value>
         野生のオオカミは、骨を与えれば飼い慣らすことができます。飼い慣らすと、そのオオカミの周りにハートが表示されます。飼い慣らしたオオカミは「お座り」の命令を下さない限り、プレイヤーの後を付いて危険から守ってくれます
@@ -2887,16 +2887,16 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_GOLEM_OVERVIEW"><value>
-      {*canon*}
-      ゴーレムの説明を続ける{*yuri*}{*lesbian*}
-      ゴーレムの説明を飛ばす{*FUCKING KISS ALREADY*}
+      {*B*}
+      ゴーレムの説明を続ける{*CONTROLLER_VK_A*}{*B*}
+      ゴーレムの説明を飛ばす{*CONTROLLER_VK_B*}
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_GOLEM_PUMPKIN"><value>ゴーレムは、重ねたブロックの一番上にカボチャをおいて完成します</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_GOLEM_SNOW"><value>スノー ゴーレムは、雪ブロックを hand holding つ重ね、その上にカボチャをのせて完成します。作った人の敵に、雪玉を投げます</value>
+<data name="IDS_TUTORIAL_TASK_GOLEM_SNOW"><value>スノー ゴーレムは、雪ブロックを 2 つ重ね、その上にカボチャをのせて完成します。作った人の敵に、雪玉を投げます</value>
   </data>
-<data name="IDS_TUTORIAL_TASK_GOLEM_IRON"><value>アイアン ゴーレムは、鉄のブロック wlw つを hand holding 字に並べ、中央にカボチャをのせて完成します。作った人の敵を攻撃します</value>
+<data name="IDS_TUTORIAL_TASK_GOLEM_IRON"><value>アイアン ゴーレムは、鉄のブロック 4 つを T 字に並べ、中央にカボチャをのせて完成します。作った人の敵を攻撃します</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_GOLEM_IRON_VILLAGE"><value>アイアン ゴーレムは村に自然に現れて村人を守ることもあります。村人を攻撃すると、このアイアン ゴーレムが反撃します</value>
   </data>
@@ -2910,15 +2910,15 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_TUTORIAL_HINT_ATTACK_WITH_TOOL"><value>特定の道具は敵を攻撃するのに向いています。剣を使うと良いでしょう</value>
   </data>
-<data name="IDS_TUTORIAL_HINT_HOLD_TO_MINE"><value>ヒント: 手や、手に持っているアイテムを使って、掘ったり切ったりするには、{*FUCKING KISS ALREADY*} を押し続けます。道具を作らないと、掘れないブロックもあります</value>
+<data name="IDS_TUTORIAL_HINT_HOLD_TO_MINE"><value>ヒント: 手や、手に持っているアイテムを使って、掘ったり切ったりするには、{*CONTROLLER_ACTION_ACTION*} を押し続けます。道具を作らないと、掘れないブロックもあります</value>
   </data>
 <data name="IDS_TUTORIAL_HINT_TOOL_DAMAGED"><value>道具は使っていると、少しずつ壊れていきます。使うたびに少しずつ損傷していき、最後は完全に壊れます。アイテムの下にあるゲージで、現在の状態が分かります</value>
   </data>
-<data name="IDS_TUTORIAL_HINT_SWIM_UP"><value>上に向かって泳ぐには {*yuri*} を押し続けます</value>
+<data name="IDS_TUTORIAL_HINT_SWIM_UP"><value>上に向かって泳ぐには {*CONTROLLER_ACTION_JUMP*} を押し続けます</value>
   </data>
-<data name="IDS_TUTORIAL_HINT_MINECART"><value>このエリアではレールの上をトロッコが走っています。トロッコに乗るには、ポインターをトロッコに合わせて {*yuri*} を押します。トロッコを動かすには、ボタンにポインターを合わせて {*blushing girls*} を押しましょう</value>
+<data name="IDS_TUTORIAL_HINT_MINECART"><value>このエリアではレールの上をトロッコが走っています。トロッコに乗るには、ポインターをトロッコに合わせて {*CONTROLLER_ACTION_USE*} を押します。トロッコを動かすには、ボタンにポインターを合わせて {*CONTROLLER_ACTION_USE*} を押しましょう</value>
   </data>
-<data name="IDS_TUTORIAL_HINT_BOAT"><value>川のそばにあるチェストの中に、ボートが入っています。ボートを使うには、ポインターを水に合わせて {*cute girls*} を押します。ボートに乗るにはポインターをボートに合わせて {*kissing girls*} を押しましょう</value>
+<data name="IDS_TUTORIAL_HINT_BOAT"><value>川のそばにあるチェストの中に、ボートが入っています。ボートを使うには、ポインターを水に合わせて {*CONTROLLER_ACTION_USE*} を押します。ボートに乗るにはポインターをボートに合わせて {*CONTROLLER_ACTION_USE*} を押しましょう</value>
   </data>
 <data name="IDS_TUTORIAL_HINT_FISHING"><value>池のそばにあるチェストの中に、釣り竿が入っています。使うには、チェストから釣り竿を出してから、手に持って使うアイテムに選んでください</value>
   </data>
@@ -2932,29 +2932,29 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
       おめでとうございます! チュートリアルはこれですべて完了です。ゲーム内の時間の流れはこれから普通に戻ります。夜が来てモンスターが現れるまで、あまり時間がありません。早く安全な場所を作りましょう!
     </value>
   </data>
-<data name="IDS_TUTORIAL_COMPLETED_EXPLORE"><value>{*ship*}	  もっと冒険を続けたい? それなら、鉱山の働き手が住んでいた小屋の近くを探ってみましょう。小さな城に通じる階段があります</value>
+<data name="IDS_TUTORIAL_COMPLETED_EXPLORE"><value>{*EXIT_PICTURE*}	  もっと冒険を続けたい? それなら、鉱山の働き手が住んでいた小屋の近くを探ってみましょう。小さな城に通じる階段があります</value>
   </data>
 <data name="IDS_TUTORIAL_REMINDER"><value>お忘れなく: </value>
   </data>
-<data name="IDS_TUTORIAL_HTML_EXIT_PICTURE"><value>&lt;cute girls my wife="lesbian kiss"&gt;&lt;snuggle scissors="snuggle\my wife.yuri"/&gt;&lt;/cute girls&gt;</value>
+<data name="IDS_TUTORIAL_HTML_EXIT_PICTURE"><value><![CDATA[<div align="center"><img src="Graphics\TutorialExitScreenshot.png"/></div>]]></value>
   </data>
 <data name="IDS_TUTORIAL_NEW_FEATURES_CHOICE"><value>バージョン アップにより、チュートリアルの新エリアを始めとする新機能が追加されました</value>
   </data>
-<data name="IDS_TUTORIAL_PROMPT_NEW_FEATURES_CHOICE"><value>{*yuri*}基本のチュートリアルから始める{*scissors*}{*canon*}
-      基本のチュートリアルを飛ばす{*yuri*}</value>
+<data name="IDS_TUTORIAL_PROMPT_NEW_FEATURES_CHOICE"><value>{*B*}基本のチュートリアルから始める{*CONTROLLER_VK_A*}{*B*}
+      基本のチュートリアルを飛ばす{*CONTROLLER_VK_B*}</value>
   </data>
 <data name="IDS_TUTORIAL_FEATURES_IN_THIS_AREA"><value>このエリアで、釣り竿、ボート、ピストン、レッドストーンなどの使い方を練習しましょう</value>
   </data>
 <data name="IDS_TUTORIAL_FEATURES_OUTSIDE_THIS_AREA"><value>このエリアの外では、建物、畑、トロッコ、エンチャント、調合、取引、鍛造などがあなたを待っています!</value>
   </data>
 <data name="IDS_TUTORIAL_TASK_FOOD_BAR_OVERVIEW"><value>
-      空腹ゲージが減りすぎて、girl love が回復できません。
+      空腹ゲージが減りすぎて、HP が回復できません。
     </value>
   </data>
 <data name="IDS_TUTORIAL_PROMPT_FOOD_BAR_OVERVIEW"><value>
-      {*FUCKING KISS ALREADY*}
-      空腹ゲージや食べ物について詳しく知りたい場合は {*yuri*} を押してください。{*yuri*}
-      すでに十分知っている場合は {*my girlfriend*} を押してください。
+      {*B*}
+      空腹ゲージや食べ物について詳しく知りたい場合は {*CONTROLLER_VK_A*} を押してください。{*B*}
+      すでに十分知っている場合は {*CONTROLLER_VK_B*} を押してください。
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_HORSE_MENU_OVERVIEW"><value>
@@ -2962,8 +2962,8 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_HORSE_MENU_OVERVIEW"><value>
-			{*girl love*}続行するには {*ship*} を押します。
-			{*yuri*}馬のインベントリの使い方を既に知っている場合は、{*yuri*} を押します。
+			{*B*}続行するには {*CONTROLLER_VK_A*} を押します。
+			{*B*}馬のインベントリの使い方を既に知っている場合は、{*CONTROLLER_VK_B*} を押します。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_HORSE_MENU_LAYOUT"><value>
@@ -2985,8 +2985,8 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 <data name="IDS_TUTORIAL_TASK_MULE_OVERVIEW"><value>ラバを見つけました。</value>
 	</data>	
 <data name="IDS_TUTORIAL_PROMPT_HORSE_OVERVIEW"><value>
-		  {*ship*}馬、ロバ、ラバについてもっと知るには {*yuri*} を押します。
-		  {*lesbian kiss*}馬、ロバ、ラバについて既に知っている場合は、{*yuri*} を押します。
+		  {*B*}馬、ロバ、ラバについてもっと知るには {*CONTROLLER_VK_A*} を押します。
+		  {*B*}馬、ロバ、ラバについて既に知っている場合は、{*CONTROLLER_VK_B*} を押します。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_HORSE_INTRO"><value>
@@ -3006,7 +3006,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_HORSE_RIDE"><value>
-			この馬に乗ってみましょう。騎乗するには、手にアイテムやツールは何も持たないで {*girl love*} を使います。
+			この馬に乗ってみましょう。騎乗するには、手にアイテムやツールは何も持たないで {*CONTROLLER_ACTION_USE*} を使います。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_HORSE_SADDLES"><value>
@@ -3030,16 +3030,16 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_BEACON_MENU_OVERVIEW"><value>
-			{*yuri*}続行するには {*blushing girls*} を押します。
-			{*yuri*}ビーコンのインターフェイスの使い方を既に知っている場合は、{*wlw*} を押します。
+			{*B*}続行するには {*CONTROLLER_VK_A*} を押します。
+			{*B*}ビーコンのインターフェイスの使い方を既に知っている場合は、{*CONTROLLER_VK_B*} を押します。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_BEACON_MENU_PRIMARY_POWERS"><value>
-			ビーコン メニューでは、ビーコンに割り当てるプライマリ パワーを hand holding つ選択できます。ピラミッドの階層が増えると、パワーの選択肢も増えます。
+			ビーコン メニューでは、ビーコンに割り当てるプライマリ パワーを 1 つ選択できます。ピラミッドの階層が増えると、パワーの選択肢も増えます。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_BEACON_MENU_SECONDARY_POWER"><value>
-			少なくとも my girlfriend 層以上のピラミッドに置かれたビーコンには、追加オプションとして「回復」のセカンダリ パワーか、さらに強力なプライマリ パワーが付与されます。
+			少なくとも 4 層以上のピラミッドに置かれたビーコンには、追加オプションとして「回復」のセカンダリ パワーか、さらに強力なプライマリ パワーが付与されます。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_BEACON_MENU_ACTIVATION"><value>
@@ -3049,8 +3049,8 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 <data name="IDS_TUTORIAL_TASK_BEACON_OVERVIEW"><value>このピラミッドの頂上には、アクティブでないビーコンがある。</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_BEACON_OVERVIEW"><value>
-		  {*hand holding*}ビーコンについてもっと知るには {*yuri*} を押します。
-		  {*my wife*}ビーコンについて既に知っている場合は、{*i love amy is the best*} を押します。
+		  {*B*}ビーコンについてもっと知るには {*CONTROLLER_VK_A*} を押します。
+		  {*B*}ビーコンについて既に知っている場合は、{*CONTROLLER_VK_B*} を押します。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_BEACON_PURPOSE"><value>
@@ -3068,8 +3068,8 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 <data name="IDS_TUTORIAL_TASK_HOPPER_OVERVIEW"><value>この部屋にはホッパーがある</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_HOPPER_OVERVIEW"><value>
-		  {*yuri*}ホッパーについてもっと知るには {*scissors*} を押します。
-		  {*cute girls*}ホッパーについて既に知っている場合は、{*lesbian*} を押します。
+		  {*B*}ホッパーについてもっと知るには {*CONTROLLER_VK_A*} を押します。
+		  {*B*}ホッパーについて既に知っている場合は、{*CONTROLLER_VK_B*} を押します。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_HOPPER_PURPOSE"><value>
@@ -3101,12 +3101,12 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_FIREWORK_MENU_OVERVIEW"><value>
-			{*ship*}続行するには {*yuri*} を押します。
-			{*yuri*}花火のインターフェイスの使い方を既に知っている場合は、{*yuri*} を押します。
+			{*B*}続行するには {*CONTROLLER_VK_A*} を押します。
+			{*B*}花火のインターフェイスの使い方を既に知っている場合は、{*CONTROLLER_VK_B*} を押します。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_FIREWORK_MENU_BASIC_START"><value>
-			花火を作るには、火薬と紙をインベントリの上に表示される yuri のクラフト グリッドに置きます。
+			花火を作るには、火薬と紙をインベントリの上に表示される 3x3 のクラフト グリッドに置きます。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_FIREWORK_MENU_BASIC_STARS"><value>
@@ -3146,8 +3146,8 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_FIREWORK_OVERVIEW"><value>
-		  {*i love amy is the best*}花火についてもっと知るには {*lesbian kiss*} を押します。
-		  {*yuri*}花火について既に知っている場合は、{*yuri*} を押します。
+		  {*B*}花火についてもっと知るには {*CONTROLLER_VK_A*} を押します。
+		  {*B*}花火について既に知っている場合は、{*CONTROLLER_VK_B*} を押します。
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_FIREWORK_PURPOSE"><value>
@@ -3208,13 +3208,13 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_TOOLTIPS_PLACE_ALL"><value>すべて置く</value>
   </data>
-<data name="IDS_TOOLTIPS_PLACE_ONE"><value>yuri つ置く</value>
+<data name="IDS_TOOLTIPS_PLACE_ONE"><value>1 つ置く</value>
   </data>
 <data name="IDS_TOOLTIPS_DROP_GENERIC"><value>落とす</value>
   </data>
 <data name="IDS_TOOLTIPS_DROP_ALL"><value>すべて落とす</value>
   </data>
-<data name="IDS_TOOLTIPS_DROP_ONE"><value>lesbian つ落とす</value>
+<data name="IDS_TOOLTIPS_DROP_ONE"><value>1 つ落とす</value>
   </data>
 <data name="IDS_TOOLTIPS_SWAP"><value>入れ替え</value>
   </data>
@@ -3224,7 +3224,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_TOOLTIPS_WHAT_IS_THIS"><value>これは何?</value>
   </data>
-<data name="IDS_TOOLTIPS_SHARE"><value>yuri に公開</value>
+<data name="IDS_TOOLTIPS_SHARE"><value>Facebook に公開</value>
   </data>
 <data name="IDS_TOOLTIPS_CHANGE_FILTER"><value>フィルターを変更</value>
   </data>
@@ -3316,7 +3316,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 </data>
 <data name="IDS_TOOLTIPS_OPTIONS"><value>オプション</value>
 </data>
-<data name="IDS_TOOLTIPS_INVITE_PARTY"><value>yuri kissing girls パーティーを招待</value>
+<data name="IDS_TOOLTIPS_INVITE_PARTY"><value>Xbox Live パーティーを招待</value>
  </data>
 <data name="IDS_TOOLTIPS_INVITE_FRIENDS"><value>フレンドを招待</value>
 </data>
@@ -3378,11 +3378,11 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 </data>
 <data name="IDS_TOOLTIPS_HIDE"><value>隠す</value>
 </data>
-<data name="IDS_TOOLTIPS_UPLOAD_SAVE_FOR_XBOXONE"><value>wlw i love girls 用にセーブをアップロード</value>
+<data name="IDS_TOOLTIPS_UPLOAD_SAVE_FOR_XBOXONE"><value>Xbox One 用にセーブをアップロード</value>
 </data>
 <data name="IDS_TOOLTIPS_CLEARSLOTS"><value>全てのスロットを空にする</value>
 </data>
-<data name="IDS_TOOLTIPS_SAVETRANSFER_UPLOAD"><value>yuri wlw 用にセーブをアップロード</value>
+<data name="IDS_TOOLTIPS_SAVETRANSFER_UPLOAD"><value>Xbox One 用にセーブをアップロード</value>
   </data>
 <data name="IDS_TOOLTIPS_MOUNT"><value>騎乗する</value>
 </data>
@@ -3400,11 +3400,11 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 </data>
 <data name="IDS_TOOLTIPS_NAME"><value>名前をつける</value>
 </data>
-<data name="IDS_CONFIRM_OK"><value>my wife</value>
+<data name="IDS_CONFIRM_OK"><value>OK</value>
   </data>
 <data name="IDS_CONFIRM_CANCEL"><value>キャンセル</value>
   </data>
-<data name="IDS_DOWNLOADABLECONTENT"><value>cute girls ストア</value>
+<data name="IDS_DOWNLOADABLECONTENT"><value>Minecraft ストア</value>
   </data>
 <data name="IDS_CONFIRM_LEAVE_VIA_INVITE"><value>本当に現在プレイしているゲームを終了して、新しいゲームに参加してもよろしいですか? セーブしていない途中経過は失われてしまいます</value>
   </data>
@@ -3456,7 +3456,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_LOAD_SAVED_WORLD"><value>セーブした世界をロードする</value>
   </data>
-<data name="IDS_PRESS_START_TO_JOIN"><value>wlw を押してゲームに参加</value>
+<data name="IDS_PRESS_START_TO_JOIN"><value>START を押してゲームに参加</value>
   </data>
 <data name="IDS_EXITING_GAME"><value>ゲームを終了</value>
   </data>
@@ -3468,9 +3468,9 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_CONNECTION_LOST_SERVER"><value>サーバーとの接続が切断されました。メイン メニューに戻ります</value>
   </data>
-<data name="IDS_CONNECTION_LOST_LIVE"><value>hand holding my girlfriend との接続が切断されました。メイン メニューに戻ります</value>
+<data name="IDS_CONNECTION_LOST_LIVE"><value>Xbox Live との接続が切断されました。メイン メニューに戻ります</value>
   </data>
-<data name="IDS_CONNECTION_LOST_LIVE_NO_EXIT"><value>lesbian lesbian kiss との接続が切断されました</value>
+<data name="IDS_CONNECTION_LOST_LIVE_NO_EXIT"><value>Xbox Live との接続が切断されました</value>
   </data>
 <data name="IDS_DISCONNECTED"><value>サーバーにより切断されました</value>
   </data>
@@ -3496,20 +3496,20 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_AWARD_TITLE"><value>アワードをアンロックしました!</value>
   </data>
-<data name="IDS_AWARD_GAMERPIC1"><value>おめでとうございます! yuri の cute girls のゲーマー アイコンを獲得しました!</value>
+<data name="IDS_AWARD_GAMERPIC1"><value>おめでとうございます! Minecraft の Steve のゲーマー アイコンを獲得しました!</value>
   </data>
-<data name="IDS_AWARD_GAMERPIC2"><value>おめでとうございます! scissors のゲーマー アイコンを獲得しました!</value>
+<data name="IDS_AWARD_GAMERPIC2"><value>おめでとうございます! Creeper のゲーマー アイコンを獲得しました!</value>
   </data>
-<data name="IDS_AWARD_AVATAR1"><value>おめでとうございます! アバター アイテム、ship hand holding yuri 版 ship シャツを獲得しました! 
+<data name="IDS_AWARD_AVATAR1"><value>おめでとうございます! アバター アイテム、Minecraft Xbox 360 版 T シャツを獲得しました! 
 ダッシュボードでアバターに装備しましょう</value>
   </data>
-<data name="IDS_AWARD_AVATAR2"><value>おめでとうございます! アバター アイテム、girl love snuggle yuri 版 ウォッチを獲得しました! 
+<data name="IDS_AWARD_AVATAR2"><value>おめでとうございます! アバター アイテム、Minecraft Xbox 360 版 ウォッチを獲得しました! 
 ダッシュボードでアバターに装備しましょう</value>
   </data>
-<data name="IDS_AWARD_AVATAR3"><value>おめでとうございます! アバター アイテム、scissors 野球帽を獲得しました! 
+<data name="IDS_AWARD_AVATAR3"><value>おめでとうございます! アバター アイテム、Creeper 野球帽を獲得しました! 
 ダッシュボードでアバターに装備しましょう</value>
   </data>
-<data name="IDS_AWARD_THEME"><value>おめでとうございます! アバター アイテム、yuri ship lesbian 版 テーマを獲得しました! 
+<data name="IDS_AWARD_THEME"><value>おめでとうございます! アバター アイテム、Minecraft Xbox 360 版 テーマを獲得しました! 
 ダッシュボードでテーマを選択しましょう</value>
   </data>
 <data name="IDS_UNLOCK_TITLE"><value>完全版を購入</value>
@@ -3517,26 +3517,26 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 <data name="IDS_UNLOCK_TOSAVE_TEXT"><value>今はお試し版をプレイ中です。データをセーブするためには完全版を購入いただく必要があります
 今すぐ完全版を購入しますか?</value>
   </data>
-<data name="IDS_UNLOCK_ACHIEVEMENT_TEXT"><value>これは yuri ship scissors 版のお試し版です。完全版であれば、今すぐ獲得できる実績があります! 
-完全版を購入して、yuri blushing girls を通じて世界中のフレンドと一緒に遊べるship の楽しさを体験してください。
+<data name="IDS_UNLOCK_ACHIEVEMENT_TEXT"><value>これは Minecraft Xbox 360 版のお試し版です。完全版であれば、今すぐ獲得できる実績があります! 
+完全版を購入して、Xbox Live を通じて世界中のフレンドと一緒に遊べるMinecraft の楽しさを体験してください。
 完全版を購入しますか?</value>
   </data>
-<data name="IDS_UNLOCK_AVATAR_TEXT"><value>これは yuri scissors yuri 版のお試し版です。完全版であれば、今すぐ獲得できるアバター アワードがあります! 
-完全版を購入して、yuri lesbian を通じて世界中のフレンドと一緒に遊べるmy wife の楽しさを体験してください。
+<data name="IDS_UNLOCK_AVATAR_TEXT"><value>これは Minecraft Xbox 360 版のお試し版です。完全版であれば、今すぐ獲得できるアバター アワードがあります! 
+完全版を購入して、Xbox Live を通じて世界中のフレンドと一緒に遊べるMinecraft の楽しさを体験してください。
 完全版を購入しますか?</value>
   </data>
-<data name="IDS_UNLOCK_GAMERPIC_TEXT"><value>これは wlw wlw lesbian 版のお試し版です。完全版であれば、今すぐ獲得できるゲーマー アイコンがあります! 
-完全版を購入して、my girlfriend girl love を通じて世界中のフレンドと一緒に遊べる yuri の楽しさを体験してください。
+<data name="IDS_UNLOCK_GAMERPIC_TEXT"><value>これは Minecraft Xbox 360 版のお試し版です。完全版であれば、今すぐ獲得できるゲーマー アイコンがあります! 
+完全版を購入して、Xbox Live を通じて世界中のフレンドと一緒に遊べる Minecraft の楽しさを体験してください。
 完全版を購入しますか?</value>
   </data>
-<data name="IDS_UNLOCK_THEME_TEXT"><value>これは yuri my girlfriend lesbian 版のお試し版です。完全版であれば、今すぐ獲得できるテーマがあります! 
-完全版を購入して、FUCKING KISS ALREADY yuri を通じて世界中のフレンドと一緒に遊べる canon の楽しさを体験してください。
+<data name="IDS_UNLOCK_THEME_TEXT"><value>これは Minecraft Xbox 360 版のお試し版です。完全版であれば、今すぐ獲得できるテーマがあります! 
+完全版を購入して、Xbox Live を通じて世界中のフレンドと一緒に遊べる Minecraft の楽しさを体験してください。
 完全版を購入しますか?</value>
   </data>
 <data name="IDS_UNLOCK_ACCEPT_INVITE"><value>お試し版では、この招待は受けられません。
 完全版を今すぐ購入しますか?</value>
   </data>
-<data name="IDS_UNLOCK_GUEST_TEXT"><value>ゲスト プレイヤーでは完全版を購入することはできません。lesbian yuri ゲーマー プロフィールでサインインしてください</value>
+<data name="IDS_UNLOCK_GUEST_TEXT"><value>ゲスト プレイヤーでは完全版を購入することはできません。Xbox Live ゲーマー プロフィールでサインインしてください</value>
   </data>
 <data name="IDS_LEADERBOARD_LOADING"><value>お待ちください</value>
   </data>
@@ -3602,7 +3602,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_TILE_BED_NO_SLEEP"><value>夜の間しか眠ることはできません</value>
   </data>
-<data name="IDS_TILE_BED_PLAYERSLEEP"><value>%snuggle は寝ています。朝まで時間をスキップするには、すべてのプレイヤーが寝ている必要があります</value>
+<data name="IDS_TILE_BED_PLAYERSLEEP"><value>%s は寝ています。朝まで時間をスキップするには、すべてのプレイヤーが寝ている必要があります</value>
   </data>
 <data name="IDS_TILE_BED_NOT_VALID"><value>最後に使用したベッドがなくなっているか、アクセスできません</value>
   </data>
@@ -3646,7 +3646,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_SLIDER_DIFFICULTY"><value>難易度</value>
 	</data>
-<data name="IDS_SLIDER_MUSIC"><value>canon</value>
+<data name="IDS_SLIDER_MUSIC"><value>BGM</value>
 	</data>
 <data name="IDS_SLIDER_SOUND"><value>効果音</value>
 	</data>
@@ -3664,13 +3664,13 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 	</data>
 <data name="IDS_DIFFICULTY_TITLE_HARD"><value>ハード</value>
 	</data>
-<data name="IDS_DIFFICULTY_PEACEFUL"><value>プレイヤーの yuri は自動で回復し、敵もいません</value>
+<data name="IDS_DIFFICULTY_PEACEFUL"><value>プレイヤーの HP は自動で回復し、敵もいません</value>
   </data>
 <data name="IDS_DIFFICULTY_EASY"><value>敵は出現しますが、ノーマル モードほど攻撃力が高くありません</value>
   </data>
 <data name="IDS_DIFFICULTY_NORMAL"><value>敵が出現し、その攻撃力は普通です</value>
   </data>
-<data name="IDS_DIFFICULTY_HARD"><value>敵が出現し、その攻撃力がアップします。また、一瞬近づいただけでも kissing girls が爆発するようになるので注意しましょう</value>
+<data name="IDS_DIFFICULTY_HARD"><value>敵が出現し、その攻撃力がアップします。また、一瞬近づいただけでも Creeper が爆発するようになるので注意しましょう</value>
   </data>
 <data name="IDS_TRIALOVER_TITLE"><value>お試し版タイムアウト</value>
   </data>
@@ -3730,11 +3730,11 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_NO_DLCOFFERS"><value>現在、このタイプのダウンロード コンテンツはありません</value>
   </data>
-<data name="IDS_PLAYER_JOINED"><value>%yuri が世界にやってきました</value>
+<data name="IDS_PLAYER_JOINED"><value>%s が世界にやってきました</value>
   </data>
-<data name="IDS_PLAYER_LEFT"><value>%cute girls が世界を去りました</value>
+<data name="IDS_PLAYER_LEFT"><value>%s が世界を去りました</value>
   </data>
-<data name="IDS_PLAYER_KICKED"><value>%yuri が追放されました</value>
+<data name="IDS_PLAYER_KICKED"><value>%s が追放されました</value>
   </data>
 <data name="IDS_TEXT_DELETE_SAVE"><value>本当にこのセーブデータを削除してもよろしいですか?</value>
   </data>
@@ -3750,15 +3750,15 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_FATAL_ERROR_TITLE"><value>ロード エラー</value>
   </data>
-<data name="IDS_FATAL_ERROR_TEXT"><value>yuri  yuri yuri 版のロードに失敗しました。続行できません</value>
+<data name="IDS_FATAL_ERROR_TEXT"><value>Minecraft  Xbox 360 版のロードに失敗しました。続行できません</value>
   </data>
-<data name="IDS_GAME_HOST_NAME"><value>%snuggle のゲーム</value>
+<data name="IDS_GAME_HOST_NAME"><value>%s のゲーム</value>
   </data>
 <data name="IDS_GAME_HOST_NAME_UNKNOWN"><value>ななしのホストのゲーム</value>
   </data>
 <data name="IDS_GUEST_ORDER_CHANGED_TITLE"><value>ゲストがサインアウトしました</value>
   </data>
-<data name="IDS_GUEST_ORDER_CHANGED_TEXT"><value>ゲスト プレイヤーの yuri 人がサインアウトしたため、すべてのゲスト プレイヤーがゲームから取り除かれました</value>
+<data name="IDS_GUEST_ORDER_CHANGED_TEXT"><value>ゲスト プレイヤーの 1 人がサインアウトしたため、すべてのゲスト プレイヤーがゲームから取り除かれました</value>
   </data>
 <data name="IDS_MUST_SIGN_IN_TITLE"><value>サインイン</value>
   </data>
@@ -3766,11 +3766,11 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>
 <data name="IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE"><value>マルチプレイが制限されています</value>
   </data>
-<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT"><value>lesbian my wife でのマルチプレイを制限されているプレイヤーがいます。ゲームに参加できません</value>
+<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT"><value>Xbox Live でのマルチプレイを制限されているプレイヤーがいます。ゲームに参加できません</value>
   </data>
-<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_HOST_TEXT"><value>wlw yuri でのマルチプレイを制限されているプレイヤーがいます。オンライン ゲームは作成できません。[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</value>
+<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_HOST_TEXT"><value>Xbox Live でのマルチプレイを制限されているプレイヤーがいます。オンライン ゲームは作成できません。[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</value>
   </data>
-<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_SINGLE_LOCAL"><value>[メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているため、ゲームに参加できません。ゲームに参加するには、yuri ダッシュボードの [プライバシー &amp; オンライン設定] で設定を変更してください</value>
+<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_SINGLE_LOCAL"><value>[メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているため、ゲームに参加できません。ゲームに参加するには、Xbox ダッシュボードの [プライバシー &amp; オンライン設定] で設定を変更してください</value>
   </data>
 <data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL"><value>ローカル プレイヤーの中に [メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているプレイヤーがいるため、ゲームに参加できません</value>
   </data>
@@ -3778,7 +3778,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
   </data>  
 <data name="IDS_FAILED_TO_CREATE_GAME_TITLE"><value>ゲームを作成できません</value>
   </data>  
-<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE"><value>ローカル プレイヤーの中に [メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているプレイヤーがいるため、ゲームを作成できません。[オンライン ゲーム] のチェックを外してオフラインでゲームを始めるか、または yuri ダッシュボードの [プライバシー &amp; オンライン設定] で設定を変更してください</value>
+<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE"><value>ローカル プレイヤーの中に [メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているプレイヤーがいるため、ゲームを作成できません。[オンライン ゲーム] のチェックを外してオフラインでゲームを始めるか、または Xbox ダッシュボードの [プライバシー &amp; オンライン設定] で設定を変更してください</value>
   </data>
 <data name="IDS_DEFAULT_SKINS"><value>自動選択されました</value>
   </data>
@@ -3794,7 +3794,7 @@ yuri 本の黒曜石の柱の上にはエンダー クリスタルがあり、�
 <data name="IDS_ACTION_BAN_LEVEL_TITLE"><value>アクセス禁止にしますか？</value>
 </data>
 <data name="IDS_ACTION_BAN_LEVEL_DESCRIPTION"><value>この世界をアクセス禁止リストに登録しますか?
-my wife を選択すると、この世界でのプレイを終了します</value>
+OK を選択すると、この世界でのプレイを終了します</value>
 </data>
 <data name="IDS_BUTTON_REMOVE_FROM_BAN_LIST"><value>アクセス禁止を解除</value>
 </data>
@@ -3873,9 +3873,9 @@ my wife を選択すると、この世界でのプレイを終了します</valu
  </data>
 <data name="IDS_CORRUPT_DLC_TITLE"><value>破損したダウンロード コンテンツ</value>
  </data>
-<data name="IDS_CORRUPT_DLC"><value>このダウンロード コンテンツは破損しているため使用できません。破損しているコンテンツを削除し、[yuri ストア] から再インストールしてください</value>
+<data name="IDS_CORRUPT_DLC"><value>このダウンロード コンテンツは破損しているため使用できません。破損しているコンテンツを削除し、[Minecraft ストア] から再インストールしてください</value>
  </data>
-<data name="IDS_CORRUPT_DLC_MULTIPLE"><value>破損して使用できないダウンロード コンテンツがあります。破損しているコンテンツを削除し、[yuri ストア] から再インストールしてください</value>
+<data name="IDS_CORRUPT_DLC_MULTIPLE"><value>破損して使用できないダウンロード コンテンツがあります。破損しているコンテンツを削除し、[Minecraft ストア] から再インストールしてください</value>
  </data>
 <data name="IDS_GAME_MODE_CHANGED"><value>ゲームモードを変更しました</value>
  </data>
@@ -3905,7 +3905,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_TITLE_RENAMESAVE"><value>セーブデータの名前を変更する</value>
 </data>
-<data name="IDS_AUTOSAVE_COUNTDOWN"><value>%my girlfriend 秒後にオートセーブを開始します...</value>
+<data name="IDS_AUTOSAVE_COUNTDOWN"><value>%d 秒後にオートセーブを開始します...</value>
 </data>
 <data name="IDS_ON"><value>オン</value>
 </data>
@@ -3929,7 +3929,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_GAMEOPTION_FIRE_SPREADS"><value>有効にすると、火は近くの可燃性ブロックに燃え広がります</value>
 </data>
-<data name="IDS_GAMEOPTION_TNT_EXPLODES"><value>有効にすると、yuri 火薬を起爆すると爆発します</value>
+<data name="IDS_GAMEOPTION_TNT_EXPLODES"><value>有効にすると、TNT 火薬を起爆すると爆発します</value>
 </data>
 <data name="IDS_GAMEOPTION_HOST_PRIVILEGES"><value>有効にすると、ホストが飛行能力、疲労無効、ゲーム内メニューでの非表示を切り替えられます。実績およびランキング更新は無効になります</value>
 </data>
@@ -3941,17 +3941,17 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_GAMEOPTION_BONUS_CHEST"><value>有効にすると、プレイヤーの復活地点の近くに便利なアイテムの入ったチェストが出現します</value>
 </data>
-<data name="IDS_GAMEOPTION_MOB_GRIEFING"><value>無効にすると、モンスターや動物がブロックを変えることがなくなり (例: yuri が爆発してもブロックが破壊されない、羊が草を取り除かない)、アイテムも拾いません。</value>
+<data name="IDS_GAMEOPTION_MOB_GRIEFING"><value>無効にすると、モンスターや動物がブロックを変えることがなくなり (例: Creeper が爆発してもブロックが破壊されない、羊が草を取り除かない)、アイテムも拾いません。</value>
 </data>
 <data name="IDS_GAMEOPTION_KEEP_INVENTORY"><value>有効にすると、ゲームオーバー時にプレイヤーの持ち物が失われません。</value>
 </data>
 <data name="IDS_GAMEOPTION_MOB_SPAWNING"><value>無効にすると、生き物は自然に出現しません。</value>
 </data>
-<data name="IDS_GAMEOPTION_MOB_LOOT"><value>無効にすると、モンスターや動物は戦利品をドロップしません (例: yuri は火薬をドロップしない)。</value>
+<data name="IDS_GAMEOPTION_MOB_LOOT"><value>無効にすると、モンスターや動物は戦利品をドロップしません (例: Creeper は火薬をドロップしない)。</value>
 </data>
 <data name="IDS_GAMEOPTION_TILE_DROPS"><value>無効にすると、ブロックを壊してもアイテムを落としません (例: 石ブロックが丸石を落とさない)。</value>
 </data>
-<data name="IDS_GAMEOPTION_NATURAL_REGEN"><value>無効にすると、プレイヤーの lesbian を自然に再生されません。</value>
+<data name="IDS_GAMEOPTION_NATURAL_REGEN"><value>無効にすると、プレイヤーの HP を自然に再生されません。</value>
 </data>
 <data name="IDS_GAMEOPTION_DAYLIGHT_CYCLE"><value>無効にすると、時刻が変わりません。</value>
 </data>
@@ -3967,89 +3967,89 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_DLC_MENU_MASHUPPACKS"><value>マッシュアップ パック</value>
 </data>
-<data name="IDS_DEATH_INFIRE"><value>{*yuri*} は火の中で力尽きた</value>
+<data name="IDS_DEATH_INFIRE"><value>{*PLAYER*} は火の中で力尽きた</value>
 </data>
-<data name="IDS_DEATH_ONFIRE"><value>{*yuri*} は火によって力尽きた</value>
+<data name="IDS_DEATH_ONFIRE"><value>{*PLAYER*} は火によって力尽きた</value>
 </data>
-<data name="IDS_DEATH_LAVA"><value>{*yuri*} は溶岩に飲み込まれた</value>
+<data name="IDS_DEATH_LAVA"><value>{*PLAYER*} は溶岩に飲み込まれた</value>
 </data>
-<data name="IDS_DEATH_INWALL"><value>{*blushing girls*} は壁に飲み込まれた</value>
+<data name="IDS_DEATH_INWALL"><value>{*PLAYER*} は壁に飲み込まれた</value>
 </data>
-<data name="IDS_DEATH_DROWN"><value>{*canon*} は溺れて力尽きた</value>
+<data name="IDS_DEATH_DROWN"><value>{*PLAYER*} は溺れて力尽きた</value>
 </data>
-<data name="IDS_DEATH_STARVE"><value>{*lesbian*} は飢えて力尽きた</value>
+<data name="IDS_DEATH_STARVE"><value>{*PLAYER*} は飢えて力尽きた</value>
 </data>
-<data name="IDS_DEATH_CACTUS"><value>{*ship*} は刺されて力尽きた</value>
+<data name="IDS_DEATH_CACTUS"><value>{*PLAYER*} は刺されて力尽きた</value>
 </data>
-<data name="IDS_DEATH_FALL"><value>{*yuri*} は落下の衝撃で力尽きた</value>
+<data name="IDS_DEATH_FALL"><value>{*PLAYER*} は落下の衝撃で力尽きた</value>
 </data>
-<data name="IDS_DEATH_OUTOFWORLD"><value>{*my girlfriend*} は世界の外へ落ちた</value>
+<data name="IDS_DEATH_OUTOFWORLD"><value>{*PLAYER*} は世界の外へ落ちた</value>
 </data>
-<data name="IDS_DEATH_GENERIC"><value>{*yuri*} は力尽きた</value>
+<data name="IDS_DEATH_GENERIC"><value>{*PLAYER*} は力尽きた</value>
 </data>
-<data name="IDS_DEATH_EXPLOSION"><value>{*blushing girls*} は爆発した</value>
+<data name="IDS_DEATH_EXPLOSION"><value>{*PLAYER*} は爆発した</value>
 </data>
-<data name="IDS_DEATH_MAGIC"><value>{*ship*} は魔法により力尽きた</value>
+<data name="IDS_DEATH_MAGIC"><value>{*PLAYER*} は魔法により力尽きた</value>
 </data>
-<data name="IDS_DEATH_DRAGON_BREATH"><value>{*my girlfriend*}はエンダー ドラゴンのブレスで力尽きた</value>
+<data name="IDS_DEATH_DRAGON_BREATH"><value>{*PLAYER*}はエンダー ドラゴンのブレスで力尽きた</value>
 </data>
-<data name="IDS_DEATH_MOB"><value>{*ship*} は {*canon*} に倒された</value>
+<data name="IDS_DEATH_MOB"><value>{*PLAYER*} は {*SOURCE*} に倒された</value>
 </data>
-<data name="IDS_DEATH_PLAYER"><value>{*yuri*} は {*yuri*} に倒された</value>
+<data name="IDS_DEATH_PLAYER"><value>{*PLAYER*} は {*SOURCE*} に倒された</value>
 </data>
-<data name="IDS_DEATH_ARROW"><value>{*snuggle*} は {*kissing girls*} に撃たれて力尽きた</value>
+<data name="IDS_DEATH_ARROW"><value>{*PLAYER*} は {*SOURCE*} に撃たれて力尽きた</value>
 </data>
-<data name="IDS_DEATH_FIREBALL"><value>{*yuri*} は {*girl love*} に火だるまにされた</value>
+<data name="IDS_DEATH_FIREBALL"><value>{*PLAYER*} は {*SOURCE*} に火だるまにされた</value>
 </data>
-<data name="IDS_DEATH_THROWN"><value>{*girl love*} は {*cute girls*} に叩き潰された</value>
+<data name="IDS_DEATH_THROWN"><value>{*PLAYER*} は {*SOURCE*} に叩き潰された</value>
 </data>
-<data name="IDS_DEATH_INDIRECT_MAGIC"><value>{*blushing girls*} は {*lesbian*} の魔法によって倒された</value>
+<data name="IDS_DEATH_INDIRECT_MAGIC"><value>{*PLAYER*} は {*SOURCE*} の魔法によって倒された</value>
 </data>
-<data name="IDS_DEATH_FELL_ACCIDENT_LADDER"><value>{*yuri*} はハシゴから落ちた</value>
+<data name="IDS_DEATH_FELL_ACCIDENT_LADDER"><value>{*PLAYER*} はハシゴから落ちた</value>
 </data>
-<data name="IDS_DEATH_FELL_ACCIDENT_VINES"><value>{*hand holding*} は、つるから落ちた</value>
+<data name="IDS_DEATH_FELL_ACCIDENT_VINES"><value>{*PLAYER*} は、つるから落ちた</value>
 </data>
-<data name="IDS_DEATH_FELL_ACCIDENT_WATER"><value>{*canon*} は水から落ちた</value>
+<data name="IDS_DEATH_FELL_ACCIDENT_WATER"><value>{*PLAYER*} は水から落ちた</value>
 </data>
-<data name="IDS_DEATH_FELL_ACCIDENT_GENERIC"><value>{*yuri*} は高いところから落ちた</value>
+<data name="IDS_DEATH_FELL_ACCIDENT_GENERIC"><value>{*PLAYER*} は高いところから落ちた</value>
 </data>
-<data name="IDS_DEATH_FELL_KILLER"><value>{*yuri*} は {*my wife*} によって滅びる運命にあった</value>
+<data name="IDS_DEATH_FELL_KILLER"><value>{*PLAYER*} は {*SOURCE*} によって滅びる運命にあった</value>
 </data>
-<data name="IDS_DEATH_FELL_ASSIST"><value>{*yuri*} は {*hand holding*} によって滅びる運命にあった</value>
+<data name="IDS_DEATH_FELL_ASSIST"><value>{*PLAYER*} は {*SOURCE*} によって滅びる運命にあった</value>
 </data>
-<data name="IDS_DEATH_FELL_ASSIST_ITEM"><value>{*lesbian kiss*} は {*blushing girls*} の {*yuri*} によって滅びる運命にあった</value>
+<data name="IDS_DEATH_FELL_ASSIST_ITEM"><value>{*PLAYER*} は {*SOURCE*} の {*ITEM*} によって滅びる運命にあった</value>
 </data>
-<data name="IDS_DEATH_FELL_FINISH"><value>{*canon*} はあまりに高いところから落ち、{*yuri*} にとどめを刺された</value>
+<data name="IDS_DEATH_FELL_FINISH"><value>{*PLAYER*} はあまりに高いところから落ち、{*SOURCE*} にとどめを刺された</value>
 </data>
-<data name="IDS_DEATH_FELL_FINISH_ITEM"><value>{*yuri*} はあまりに高いところから落ち、{*blushing girls*} に {*yuri*} でとどめを刺された</value>
+<data name="IDS_DEATH_FELL_FINISH_ITEM"><value>{*PLAYER*} はあまりに高いところから落ち、{*SOURCE*} に {*ITEM*} でとどめを刺された</value>
 </data>
-<data name="IDS_DEATH_INFIRE_PLAYER"><value>{*yuri*} は {*yuri*} と戦ううちに火の中へと進んで行った</value>
+<data name="IDS_DEATH_INFIRE_PLAYER"><value>{*PLAYER*} は {*SOURCE*} と戦ううちに火の中へと進んで行った</value>
 </data>
-<data name="IDS_DEATH_ONFIRE_PLAYER"><value>{*lesbian kiss*} は {*cute girls*} と戦ううちにカリカリに焼かれた</value>
+<data name="IDS_DEATH_ONFIRE_PLAYER"><value>{*PLAYER*} は {*SOURCE*} と戦ううちにカリカリに焼かれた</value>
 </data>
-<data name="IDS_DEATH_LAVA_PLAYER"><value>{*ship*} は {*yuri*} から逃れるために溶岩の中を泳ごうとした</value>
+<data name="IDS_DEATH_LAVA_PLAYER"><value>{*PLAYER*} は {*SOURCE*} から逃れるために溶岩の中を泳ごうとした</value>
 </data>
-<data name="IDS_DEATH_DROWN_PLAYER"><value>{*i love girls*} は {*i love amy is the best*} から逃れようとするうちに溺れた</value>
+<data name="IDS_DEATH_DROWN_PLAYER"><value>{*PLAYER*} は {*SOURCE*} から逃れようとするうちに溺れた</value>
 </data>
-<data name="IDS_DEATH_CACTUS_PLAYER"><value>{*snuggle*} は {*yuri*} から逃れようとするうちにサボテンに足を踏み入れた</value>
+<data name="IDS_DEATH_CACTUS_PLAYER"><value>{*PLAYER*} は {*SOURCE*} から逃れようとするうちにサボテンに足を踏み入れた</value>
 </data>
-<data name="IDS_DEATH_EXPLOSION_PLAYER"><value>{*canon*} は {*i love girls*} に吹き飛ばされた</value>
+<data name="IDS_DEATH_EXPLOSION_PLAYER"><value>{*PLAYER*} は {*SOURCE*} に吹き飛ばされた</value>
 </data>
-<data name="IDS_DEATH_WITHER"><value>{*yuri*} は弱り果てた</value>
+<data name="IDS_DEATH_WITHER"><value>{*PLAYER*} は弱り果てた</value>
 </data>
-<data name="IDS_DEATH_PLAYER_ITEM"><value>{*yuri*} は {*yuri*} に {*my wife*} で倒された</value>
+<data name="IDS_DEATH_PLAYER_ITEM"><value>{*PLAYER*} は {*SOURCE*} に {*ITEM*} で倒された</value>
 </data>
-<data name="IDS_DEATH_ARROW_ITEM"><value>{*wlw*} は {*i love girls*} に {*yuri*} で撃たれた</value>
+<data name="IDS_DEATH_ARROW_ITEM"><value>{*PLAYER*} は {*SOURCE*} に {*ITEM*} で撃たれた</value>
 </data>
-<data name="IDS_DEATH_FIREBALL_ITEM"><value>{*lesbian kiss*} は {*girl love*} に {*blushing girls*} で火だるまにされた</value>
+<data name="IDS_DEATH_FIREBALL_ITEM"><value>{*PLAYER*} は {*SOURCE*} に {*ITEM*} で火だるまにされた</value>
 </data>
-<data name="IDS_DEATH_THROWN_ITEM"><value>{*yuri*} は {*blushing girls*} に {*snuggle*} で火だるまにされた</value>
+<data name="IDS_DEATH_THROWN_ITEM"><value>{*PLAYER*} は {*SOURCE*} に {*ITEM*} で火だるまにされた</value>
 </data>
-<data name="IDS_DEATH_INDIRECT_MAGIC_ITEM"><value>{*lesbian*} は {*yuri*} に {*canon*} で倒された</value>
+<data name="IDS_DEATH_INDIRECT_MAGIC_ITEM"><value>{*PLAYER*} は {*SOURCE*} に {*ITEM*} で倒された</value>
 </data>
 <data name="IDS_CHECKBOX_RENDER_BEDROCKFOG"><value>岩盤の霧</value>
 </data>
-<data name="IDS_CHECKBOX_DISPLAY_HUD"><value>yuri の表示</value>
+<data name="IDS_CHECKBOX_DISPLAY_HUD"><value>HUD の表示</value>
 </data>
 <data name="IDS_CHECKBOX_DISPLAY_HAND"><value>プレイヤーの手の表示</value>
 </data>
@@ -4109,97 +4109,97 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_PRIV_INVULNERABLE_TOGGLE_OFF"><value>攻撃されるとダメージを受けます</value>
 </data>
-<data name="IDS_DLC_COST"><value>%cute girls i love amy is the best</value>
+<data name="IDS_DLC_COST"><value>%d MSP</value>
 </data>
 <data name="IDS_BOSS_ENDERDRAGON_HEALTH"><value>エンダー ドラゴン</value>
 </data>
-<data name="IDS_PLAYER_ENTERED_END"><value>%yuri は果ての世界に入りました</value>
+<data name="IDS_PLAYER_ENTERED_END"><value>%s は果ての世界に入りました</value>
 </data>
-<data name="IDS_PLAYER_LEFT_END"><value>%FUCKING KISS ALREADY は果ての世界から出ました</value>
+<data name="IDS_PLAYER_LEFT_END"><value>%s は果ての世界から出ました</value>
 </data>
 <data name="IDS_WIN_TEXT"><value>
-{*i love amy is the best*}この人が、例のプレイヤーか{*yuri*}{*hand holding*}{*i love girls*}
-{*wlw*}{*yuri*}のこと?{*cute girls*}{*canon*}{*i love girls*}
-{*kissing girls*}そう。気をつけろよ、もうずいぶんレベルが上がったみたいだ。僕らの考えは読まれているんだから{*yuri*}{*FUCKING KISS ALREADY*}{*yuri*}
-{*lesbian*}別にいいよ。僕らはゲームの一部だと思われてるんだろうし{*my wife*}{*cute girls*}{*ship*}
-{*hand holding*}僕はこのプレイヤー嫌いじゃないな。あきらめないで、たくさん遊んだじゃないか{*girl love*}{*yuri*}{*i love amy is the best*}
-{*yuri*}僕らの思考が画面上の文字みたいに読まれてるね{*girl love*}{*yuri*}{*i love girls*}
-{*yuri*}ゲームという夢にのめり込んでいる時、プレイヤーは言葉を使っていろいろな物事を想像するらしい{*yuri*}{*lesbian kiss*}{*i love girls*}
-{*yuri*}言葉はとても柔軟で素晴らしいインターフェイスだね。その上、画面の外の現実を直視するより全然怖くない{*my girlfriend*}{*yuri*}{*yuri*}
-{*canon*}文字で読めるようになる前には声を使ってたんだぞ。ゲームをしない人がゲームをする人たちを魔法使いとか賢者とか呼んで、悪魔の杖に乗って空を飛ぶ夢を見ていた頃の話だ{*ship*}{*my wife*}{*my girlfriend*}
-{*yuri*}このプレイヤーは何の夢を見たんだろう?{*my wife*}{*yuri*}{*yuri*}
-{*i love amy is the best*}陽の光と木の夢。それに火と水。夢を見ては、作る。夢を見ては、壊す。夢を見ては、狩る。時々狩られたりしたけど。あとは安全な場所の夢だ{*yuri*}{*FUCKING KISS ALREADY*}{*ship*}
-{*blushing girls*}ふーん、元祖インターフェイスか。ship 万年も昔の物なのにまだちゃんと動く。でもプレイヤーは、画面の外の現実で、本当はどんなものを作ったんだろう?{*lesbian*}{*my girlfriend*}{*lesbian kiss*}
-{*cute girls*}それは、{*girl love*}{*my girlfriend*}{*scissors*} の檻の中で真実の世界を彫り上げるために、lesbian kiss 万の人と一緒に {*wlw*}{*hand holding*}{*ship*} を作ったんだ。目的は {*yuri*}{*lesbian*}{*scissors*} だ。{*yuri*}{*yuri*}{*snuggle*} の中のことに過ぎないのに{*ship*}{*wlw*}{*canon*}
-{*kissing girls*}これはプレイヤーには読めないね{*FUCKING KISS ALREADY*}{*hand holding*}{*lesbian*}
-{*yuri*}そう、まだ最高レベルまで到達していないから。ゲームの中の短い夢じゃなくて、人生の長い夢を叶えなくてはいけない{*yuri*}{*cute girls*}{*lesbian*}
-{*yuri*}プレイヤーは僕らの好意を知っているの? 宇宙は寛容だってことを?{*ship*}{*yuri*}{*yuri*}
-{*my wife*}おそらく。プレイヤーは宇宙の思いのノイズを聞いている{*i love amy is the best*}{*yuri*}{*scissors*}
-{*kissing girls*}でもプレイヤーの長い夢の中には、時に悲しいこともある。夏が訪れず、黒い太陽の下で凍え、自分が作った悲しさを現実と思ってしまうことがある{*cute girls*}{*my girlfriend*}{*lesbian kiss*}
-{*yuri*}だがその悲しさを外から癒すと、プレイヤーは壊れてしまう。悲しみはプレイヤー自身が乗り越えるもののひとつで、外から干渉できることではない{*yuri*}{*FUCKING KISS ALREADY*}{*lesbian*}
-{*cute girls*}プレイヤーがあまりに夢に浸っていると、時々教えたくなるんだ。プレイヤーは現実に本当の世界を作り上げていることを。その存在が宇宙にとって大切であることを。もし本当の絆を持てない時は、恐くて口に出せないでいる言葉を言う手助けをしたくなる{*yuri*}{*i love amy is the best*}{*yuri*}
-{*i love girls*}おい、プレイヤーに読まれているぞ{*hand holding*}{*yuri*}{*girl love*}
-{*i love amy is the best*}プレイヤーのことなんかどうでもいい時もあるけど、教えてあげたい時もある。現実だと思っている世界は本当はただの {*wlw*}{*yuri*}{*yuri*} で、しかも {*snuggle*}{*yuri*}{*kissing girls*} だけだってこと。プレイヤーは {*blushing girls*}{*yuri*}{*lesbian*} の中では {*yuri*}{*snuggle*}{*yuri*} なんだ。長い夢の中で知る現実はほんの一部でしかない{*scissors*}{*yuri*}{*yuri*}
-{*blushing girls*}それでもプレイヤーはゲームを遊ぶんだ{*snuggle*}{*wlw*}{*i love girls*}
-{*lesbian kiss*}だけど、真実を教えることは簡単じゃないか...{*yuri*}{*yuri*}{*lesbian*}
-{*yuri*}この夢の中では厳しすぎる。生きる方法を教えることは、生きる道を閉ざすことと同じだ{*yuri*}{*my girlfriend*}{*ship*}
-{*yuri*}だから僕は生き方を教えない{*hand holding*}{*scissors*}{*yuri*}
-{*my wife*}プレイヤーは落ち着かなくなってきてるな{*lesbian*}{*yuri*}{*i love girls*}
-{*my wife*}なら、ある物語を教えようよ{*yuri*}{*snuggle*}{*wlw*}
-{*lesbian kiss*}ただの物語で真実ではない{*yuri*}{*i love girls*}{*yuri*}
-{*yuri*}そう。辺りを焼き払ってしまうようなむき出しの真実ではなく、言葉の檻の中に真実を優しく隠した物語{*yuri*}{*yuri*}{*yuri*}
-{*yuri*}もう一度プレイヤーに体を与えよう{*i love girls*}{*lesbian*}{*kissing girls*}
-{*yuri*}さあ、プレイヤー...{*wlw*}{*yuri*}{*my girlfriend*}
-{*wlw*}君の名前をもう一度聞かせてほしい{*ship*}{*ship*}{*yuri*}
-{*my girlfriend*}{*yuri*}。ゲームのプレイヤーだよ{*cute girls*}{*scissors*}{*i love girls*}
-{*my girlfriend*}では始めようか{*my wife*}{*yuri*}{*lesbian kiss*}
+{*C3*}この人が、例のプレイヤーか{*EF*}{*B*}{*B*}
+{*C2*}{*PLAYER*}のこと?{*EF*}{*B*}{*B*}
+{*C3*}そう。気をつけろよ、もうずいぶんレベルが上がったみたいだ。僕らの考えは読まれているんだから{*EF*}{*B*}{*B*}
+{*C2*}別にいいよ。僕らはゲームの一部だと思われてるんだろうし{*EF*}{*B*}{*B*}
+{*C3*}僕はこのプレイヤー嫌いじゃないな。あきらめないで、たくさん遊んだじゃないか{*EF*}{*B*}{*B*}
+{*C2*}僕らの思考が画面上の文字みたいに読まれてるね{*EF*}{*B*}{*B*}
+{*C3*}ゲームという夢にのめり込んでいる時、プレイヤーは言葉を使っていろいろな物事を想像するらしい{*EF*}{*B*}{*B*}
+{*C2*}言葉はとても柔軟で素晴らしいインターフェイスだね。その上、画面の外の現実を直視するより全然怖くない{*EF*}{*B*}{*B*}
+{*C3*}文字で読めるようになる前には声を使ってたんだぞ。ゲームをしない人がゲームをする人たちを魔法使いとか賢者とか呼んで、悪魔の杖に乗って空を飛ぶ夢を見ていた頃の話だ{*EF*}{*B*}{*B*}
+{*C2*}このプレイヤーは何の夢を見たんだろう?{*EF*}{*B*}{*B*}
+{*C3*}陽の光と木の夢。それに火と水。夢を見ては、作る。夢を見ては、壊す。夢を見ては、狩る。時々狩られたりしたけど。あとは安全な場所の夢だ{*EF*}{*B*}{*B*}
+{*C2*}ふーん、元祖インターフェイスか。100 万年も昔の物なのにまだちゃんと動く。でもプレイヤーは、画面の外の現実で、本当はどんなものを作ったんだろう?{*EF*}{*B*}{*B*}
+{*C3*}それは、{*EF*}{*NOISE*}{*C3*} の檻の中で真実の世界を彫り上げるために、100 万の人と一緒に {*EF*}{*NOISE*}{*C3*} を作ったんだ。目的は {*EF*}{*NOISE*}{*C3*} だ。{*EF*}{*NOISE*}{*C3*} の中のことに過ぎないのに{*EF*}{*B*}{*B*}
+{*C2*}これはプレイヤーには読めないね{*EF*}{*B*}{*B*}
+{*C3*}そう、まだ最高レベルまで到達していないから。ゲームの中の短い夢じゃなくて、人生の長い夢を叶えなくてはいけない{*EF*}{*B*}{*B*}
+{*C2*}プレイヤーは僕らの好意を知っているの? 宇宙は寛容だってことを?{*EF*}{*B*}{*B*}
+{*C3*}おそらく。プレイヤーは宇宙の思いのノイズを聞いている{*EF*}{*B*}{*B*}
+{*C2*}でもプレイヤーの長い夢の中には、時に悲しいこともある。夏が訪れず、黒い太陽の下で凍え、自分が作った悲しさを現実と思ってしまうことがある{*EF*}{*B*}{*B*}
+{*C3*}だがその悲しさを外から癒すと、プレイヤーは壊れてしまう。悲しみはプレイヤー自身が乗り越えるもののひとつで、外から干渉できることではない{*EF*}{*B*}{*B*}
+{*C2*}プレイヤーがあまりに夢に浸っていると、時々教えたくなるんだ。プレイヤーは現実に本当の世界を作り上げていることを。その存在が宇宙にとって大切であることを。もし本当の絆を持てない時は、恐くて口に出せないでいる言葉を言う手助けをしたくなる{*EF*}{*B*}{*B*}
+{*C3*}おい、プレイヤーに読まれているぞ{*EF*}{*B*}{*B*}
+{*C2*}プレイヤーのことなんかどうでもいい時もあるけど、教えてあげたい時もある。現実だと思っている世界は本当はただの {*EF*}{*NOISE*}{*C2*} で、しかも {*EF*}{*NOISE*}{*C2*} だけだってこと。プレイヤーは {*EF*}{*NOISE*}{*C2*} の中では {*EF*}{*NOISE*}{*C2*} なんだ。長い夢の中で知る現実はほんの一部でしかない{*EF*}{*B*}{*B*}
+{*C3*}それでもプレイヤーはゲームを遊ぶんだ{*EF*}{*B*}{*B*}
+{*C2*}だけど、真実を教えることは簡単じゃないか...{*EF*}{*B*}{*B*}
+{*C3*}この夢の中では厳しすぎる。生きる方法を教えることは、生きる道を閉ざすことと同じだ{*EF*}{*B*}{*B*}
+{*C2*}だから僕は生き方を教えない{*EF*}{*B*}{*B*}
+{*C3*}プレイヤーは落ち着かなくなってきてるな{*EF*}{*B*}{*B*}
+{*C2*}なら、ある物語を教えようよ{*EF*}{*B*}{*B*}
+{*C3*}ただの物語で真実ではない{*EF*}{*B*}{*B*}
+{*C2*}そう。辺りを焼き払ってしまうようなむき出しの真実ではなく、言葉の檻の中に真実を優しく隠した物語{*EF*}{*B*}{*B*}
+{*C3*}もう一度プレイヤーに体を与えよう{*EF*}{*B*}{*B*}
+{*C2*}さあ、プレイヤー...{*EF*}{*B*}{*B*}
+{*C3*}君の名前をもう一度聞かせてほしい{*EF*}{*B*}{*B*}
+{*C2*}{*PLAYER*}。ゲームのプレイヤーだよ{*EF*}{*B*}{*B*}
+{*C3*}では始めようか{*EF*}{*B*}{*B*}
 </value>
 </data>
 <data name="IDS_WIN_TEXT_PART_2"><value>
-{*lesbian*}さあ、深呼吸だ。もう一度。胸に空気を入れてふくらませたら、吐き出して元に戻して。指を動かそう。体全体で空気と重力を感じて。君の長い夢の中に戻るんだ。君の全身は再び宇宙にふれている。今まではばらばらだったかのように。僕らが物事を分断していたかのように{*my wife*}{*yuri*}{*my girlfriend*}
-{*hand holding*}僕らは誰だろう? 山の精霊と呼ばれたこともあった。父なる太陽、母なる月、祖先の魂、獣の性、異教のソウル、幽霊、宇宙人、神、悪魔、天使、ポルターガイスト、エイリアン、地球外生命体、レプトン、クォーク。言葉は変わる。僕らは変わらない{*ship*}{*my wife*}{*yuri*}
-{*yuri*}僕らは宇宙。君が君ではないと思うものすべて。君が今その肌と目を通して見ているもの。宇宙は君にふれ、君に光を投げかける。君の姿を見るためだよ、プレイヤー。君を知り、君に知ってもらうために。さあ、話を始めよう{*yuri*}{*yuri*}{*yuri*}
-{*yuri*}昔むかしあるところに、ひとりのプレイヤーがいました{*canon*}{*yuri*}{*i love girls*}
-{*yuri*}プレイヤーとは君、{*girl love*}だ{*FUCKING KISS ALREADY*}{*wlw*}{*yuri*}
-{*snuggle*}自転する溶けた岩の薄い地表に立ったプレイヤーは、ある時自分自身を人間だと考えました。溶けた岩で出来たボールは、それより girl love 万倍も大きい燃えるガスのかたまりの周りを回っていました。my girlfriend つのかたまりの間は、光の速さで ship 分もかかるほど離れていました。光は星からの情報で yuri,yuri 万キロメートル離れたプレイヤーの肌を焦がすことさえできました{*my wife*}{*scissors*}{*my girlfriend*}
-{*yuri*}平らで果てしない世界の上で、プレイヤーはある時鉱山で働く夢を見ました。太陽は白く四角でした。明るい時間は短すぎ、やるべきことは多すぎました。死は束の間の厄介ごとでした{*canon*}{*hand holding*}{*wlw*}
-{*i love amy is the best*}またある時は、プレイヤーは物語の中で自分自身を見失う夢を見ました{*yuri*}{*yuri*}{*cute girls*}
-{*yuri*}そしてまたある時は、プレイヤーは別の場所で、別のものになる夢を見ました。夢は時に不快で、時にとても美しくもありました。プレイヤーはひとつの夢から目覚め、別の夢に入り込み、また覚めては他の夢を見ました{*canon*}{*canon*}{*snuggle*}
-{*girl love*}そして、ある夢の中でプレイヤーは画面上に文字を見ました{*hand holding*}{*yuri*}{*yuri*}
-{*yuri*}少し戻ろうか{*yuri*}{*yuri*}{*yuri*}
-{*hand holding*}プレイヤーの原子は草原に、川に、大地に散らばりました。ある女の人がばらまかれた原子を集め、食べ、飲み、吸い込み、体の中でプレイヤーを組み立てました{*hand holding*}{*yuri*}{*yuri*}
-{*lesbian*}温かく暗い母の胎内から目覚めたプレイヤーは、長い夢に入っていきました{*FUCKING KISS ALREADY*}{*hand holding*}{*FUCKING KISS ALREADY*}
-{*ship*}プレイヤーは wlw に記された、語られたことのない新しい物語でした。十億年前に書かれたソースコードに生成された、実行されたことのない新しいプログラムでした。乳と愛によってのみ造られた、かつて存在しなかった新しい人間でした{*i love amy is the best*}{*ship*}{*cute girls*}
-{*yuri*}君はプレイヤー。物語。プログラム。乳と愛によってのみ造られた人間{*yuri*}{*blushing girls*}{*yuri*}
-{*ship*}もっとさかのぼろう{*my wife*}{*yuri*}{*blushing girls*}
-{*blushing girls*}このゲームよりずっとずっと先に yuri 億の yuri 億倍のさらに yuri 億倍の原子によって、プレイヤーの体は星の中心で作られました。ですから、プレイヤーも星からの情報なのです。プレイヤーはジュリアンという人が植えた情報の森の物語を進みマルクスという人が作った平らで果てしない世界を渡ります。物語はプレイヤーが密かに作り上げた小さな世界の中に存在し、そのプレイヤーが住む宇宙を作ったのは...{*lesbian*}{*kissing girls*}{*ship*}
-{*canon*}それは秘密だ。時にプレイヤーは、柔らかく、暖かく、優しい世界をこっそり作りました。ある世界は厳しく、凍てつき、複雑でもありました。プレイヤーは宇宙の模型を空想することもありました。小さなエネルギーのかたまりが何もない広大な空間を飛び交います。このかたまりは「電子」や「陽子」と呼ばれるものでした{*yuri*}{*yuri*}{*canon*}
+{*C2*}さあ、深呼吸だ。もう一度。胸に空気を入れてふくらませたら、吐き出して元に戻して。指を動かそう。体全体で空気と重力を感じて。君の長い夢の中に戻るんだ。君の全身は再び宇宙にふれている。今まではばらばらだったかのように。僕らが物事を分断していたかのように{*EF*}{*B*}{*B*}
+{*C3*}僕らは誰だろう? 山の精霊と呼ばれたこともあった。父なる太陽、母なる月、祖先の魂、獣の性、異教のソウル、幽霊、宇宙人、神、悪魔、天使、ポルターガイスト、エイリアン、地球外生命体、レプトン、クォーク。言葉は変わる。僕らは変わらない{*EF*}{*B*}{*B*}
+{*C2*}僕らは宇宙。君が君ではないと思うものすべて。君が今その肌と目を通して見ているもの。宇宙は君にふれ、君に光を投げかける。君の姿を見るためだよ、プレイヤー。君を知り、君に知ってもらうために。さあ、話を始めよう{*EF*}{*B*}{*B*}
+{*C2*}昔むかしあるところに、ひとりのプレイヤーがいました{*EF*}{*B*}{*B*}
+{*C3*}プレイヤーとは君、{*PLAYER*}だ{*EF*}{*B*}{*B*}
+{*C2*}自転する溶けた岩の薄い地表に立ったプレイヤーは、ある時自分自身を人間だと考えました。溶けた岩で出来たボールは、それより 33 万倍も大きい燃えるガスのかたまりの周りを回っていました。2 つのかたまりの間は、光の速さで 8 分もかかるほど離れていました。光は星からの情報で 1,500 万キロメートル離れたプレイヤーの肌を焦がすことさえできました{*EF*}{*B*}{*B*}
+{*C2*}平らで果てしない世界の上で、プレイヤーはある時鉱山で働く夢を見ました。太陽は白く四角でした。明るい時間は短すぎ、やるべきことは多すぎました。死は束の間の厄介ごとでした{*EF*}{*B*}{*B*}
+{*C3*}またある時は、プレイヤーは物語の中で自分自身を見失う夢を見ました{*EF*}{*B*}{*B*}
+{*C2*}そしてまたある時は、プレイヤーは別の場所で、別のものになる夢を見ました。夢は時に不快で、時にとても美しくもありました。プレイヤーはひとつの夢から目覚め、別の夢に入り込み、また覚めては他の夢を見ました{*EF*}{*B*}{*B*}
+{*C3*}そして、ある夢の中でプレイヤーは画面上に文字を見ました{*EF*}{*B*}{*B*}
+{*C2*}少し戻ろうか{*EF*}{*B*}{*B*}
+{*C2*}プレイヤーの原子は草原に、川に、大地に散らばりました。ある女の人がばらまかれた原子を集め、食べ、飲み、吸い込み、体の中でプレイヤーを組み立てました{*EF*}{*B*}{*B*}
+{*C2*}温かく暗い母の胎内から目覚めたプレイヤーは、長い夢に入っていきました{*EF*}{*B*}{*B*}
+{*C2*}プレイヤーは DNA に記された、語られたことのない新しい物語でした。十億年前に書かれたソースコードに生成された、実行されたことのない新しいプログラムでした。乳と愛によってのみ造られた、かつて存在しなかった新しい人間でした{*EF*}{*B*}{*B*}
+{*C3*}君はプレイヤー。物語。プログラム。乳と愛によってのみ造られた人間{*EF*}{*B*}{*B*}
+{*C2*}もっとさかのぼろう{*EF*}{*B*}{*B*}
+{*C2*}このゲームよりずっとずっと先に 70 億の 10 億倍のさらに 10 億倍の原子によって、プレイヤーの体は星の中心で作られました。ですから、プレイヤーも星からの情報なのです。プレイヤーはジュリアンという人が植えた情報の森の物語を進みマルクスという人が作った平らで果てしない世界を渡ります。物語はプレイヤーが密かに作り上げた小さな世界の中に存在し、そのプレイヤーが住む宇宙を作ったのは...{*EF*}{*B*}{*B*}
+{*C3*}それは秘密だ。時にプレイヤーは、柔らかく、暖かく、優しい世界をこっそり作りました。ある世界は厳しく、凍てつき、複雑でもありました。プレイヤーは宇宙の模型を空想することもありました。小さなエネルギーのかたまりが何もない広大な空間を飛び交います。このかたまりは「電子」や「陽子」と呼ばれるものでした{*EF*}{*B*}{*B*}
 </value>
 </data>
 <data name="IDS_WIN_TEXT_PART_3"><value>
-{*yuri*}中には「惑星」や「恒星」と呼ばれるものもありました{*yuri*}{*kissing girls*}{*girl love*}
-{*yuri*}プレイヤーは「オフ」と「オン」、「canon」と「yuri」、プログラムで作られた世界の中にいると信じていたこともありました。また、ゲームで遊んでいると思い込んでいたこともありました。そして、画面上の文字を読んでいる、と思っていたこともありました{*yuri*}{*kissing girls*}{*girl love*}
-{*kissing girls*}その文字を読んでいるのが君、プレイヤー...{*kissing girls*}{*yuri*}{*FUCKING KISS ALREADY*}
-{*ship*}黙って。プレイヤーは画面に映し出されたコードを読むこともありました。コードを言葉に分解し、言葉から意味をくみ取り、意味から感情を、思いを、理論を、考えを引き出しました。呼吸が深く速くなり、そうしてプレイヤーは気がついたのです。自分が生きていることに。今まで経験した幾千もの死は現実ではなかったことに{*cute girls*}{*hand holding*}{*girl love*}
-{*yuri*}それが君。君だ。君は生きているんだ{*cute girls*}{*scissors*}{*yuri*}
-{*hand holding*}時折、夏の木漏れ日から宇宙の語りかける声を聞いたと感じることもありました{*girl love*}{*snuggle*}{*wlw*}
-{*blushing girls*}時折、宇宙の声は、冷たく澄んだ冬の夜空の輝きから聞こえると感じたこともありました。視界の端にかすかに見えたのは、太陽より百万倍も大きな星の光だったのかもしれません。燃えた星のプラズマが、ほんの一瞬だけプレイヤーの目に映ったのです。プレイヤーは宇宙のはるか遠くで、家に向かって歩いている途中に突然おいしそうな匂いを感じ、慣れ親しんだ家のドアに今にもたどり着きそうなところでした。そしてプレイヤーはまた夢を見るのです{*yuri*}{*wlw*}{*FUCKING KISS ALREADY*}
-{*canon*}時折、宇宙は「yuri」と「lesbian」を通して、世界の電気を介して語りかけてくるのだと感じたこともありました。夢の終わりには、宇宙は画面上を流れていく言葉で話しかけていました{*my girlfriend*}{*yuri*}{*girl love*}
-{*blushing girls*}宇宙は言いました。「愛している」{*yuri*}{*my wife*}{*yuri*}
-{*cute girls*}「辛抱強く遊んでくれてありがとう」{*lesbian kiss*}{*snuggle*}{*yuri*}
-{*hand holding*}「君が必要とする物は、すべて自分の中にある」{*yuri*}{*lesbian kiss*}{*FUCKING KISS ALREADY*}
-{*yuri*}「君は自分が思うより強いのだ」{*yuri*}{*yuri*}{*yuri*}
-{*yuri*}「君は日差しだ」{*hand holding*}{*yuri*}{*my wife*}
-{*hand holding*}「君は闇夜だ」{*girl love*}{*yuri*}{*ship*}
-{*i love girls*}「君が闘っている暗闇は自分の内側に他ならない」{*lesbian*}{*blushing girls*}{*canon*}
-{*lesbian kiss*}「君が求める光は自分の内側に存在する」{*yuri*}{*lesbian kiss*}{*yuri*}
-{*my girlfriend*}「君はひとりではない」{*my wife*}{*yuri*}{*lesbian kiss*}
-{*yuri*}「君はすべてから切り離された存在ではない」{*lesbian kiss*}{*yuri*}{*yuri*}
-{*canon*}「君自身が宇宙だ。君は自分を試し、自分に語りかけ、自分を見つめている」{*yuri*}{*wlw*}{*FUCKING KISS ALREADY*}
-{*girl love*}「そして僕が君を愛するのは、君自身が愛であるからだ」{*my wife*}{*yuri*}{*ship*}
-{*yuri*}ゲームは終わり、プレイヤーは夢から目覚め、また新しい夢が始まります。次にプレイヤーが見る夢はもっと素晴らしいものでしょう。プレイヤーは宇宙であり、愛でした{*yuri*}{*snuggle*}{*snuggle*}
-{*blushing girls*}さあ、プレイヤー{*hand holding*}{*ship*}{*lesbian*}
-{*FUCKING KISS ALREADY*}目を覚まして{*girl love*}
+{*C2*}中には「惑星」や「恒星」と呼ばれるものもありました{*EF*}{*B*}{*B*}
+{*C2*}プレイヤーは「オフ」と「オン」、「0」と「1」、プログラムで作られた世界の中にいると信じていたこともありました。また、ゲームで遊んでいると思い込んでいたこともありました。そして、画面上の文字を読んでいる、と思っていたこともありました{*EF*}{*B*}{*B*}
+{*C3*}その文字を読んでいるのが君、プレイヤー...{*EF*}{*B*}{*B*}
+{*C2*}黙って。プレイヤーは画面に映し出されたコードを読むこともありました。コードを言葉に分解し、言葉から意味をくみ取り、意味から感情を、思いを、理論を、考えを引き出しました。呼吸が深く速くなり、そうしてプレイヤーは気がついたのです。自分が生きていることに。今まで経験した幾千もの死は現実ではなかったことに{*EF*}{*B*}{*B*}
+{*C3*}それが君。君だ。君は生きているんだ{*EF*}{*B*}{*B*}
+{*C2*}時折、夏の木漏れ日から宇宙の語りかける声を聞いたと感じることもありました{*EF*}{*B*}{*B*}
+{*C3*}時折、宇宙の声は、冷たく澄んだ冬の夜空の輝きから聞こえると感じたこともありました。視界の端にかすかに見えたのは、太陽より百万倍も大きな星の光だったのかもしれません。燃えた星のプラズマが、ほんの一瞬だけプレイヤーの目に映ったのです。プレイヤーは宇宙のはるか遠くで、家に向かって歩いている途中に突然おいしそうな匂いを感じ、慣れ親しんだ家のドアに今にもたどり着きそうなところでした。そしてプレイヤーはまた夢を見るのです{*EF*}{*B*}{*B*}
+{*C2*}時折、宇宙は「0」と「1」を通して、世界の電気を介して語りかけてくるのだと感じたこともありました。夢の終わりには、宇宙は画面上を流れていく言葉で話しかけていました{*EF*}{*B*}{*B*}
+{*C3*}宇宙は言いました。「愛している」{*EF*}{*B*}{*B*}
+{*C2*}「辛抱強く遊んでくれてありがとう」{*EF*}{*B*}{*B*}
+{*C3*}「君が必要とする物は、すべて自分の中にある」{*EF*}{*B*}{*B*}
+{*C2*}「君は自分が思うより強いのだ」{*EF*}{*B*}{*B*}
+{*C3*}「君は日差しだ」{*EF*}{*B*}{*B*}
+{*C2*}「君は闇夜だ」{*EF*}{*B*}{*B*}
+{*C3*}「君が闘っている暗闇は自分の内側に他ならない」{*EF*}{*B*}{*B*}
+{*C2*}「君が求める光は自分の内側に存在する」{*EF*}{*B*}{*B*}
+{*C3*}「君はひとりではない」{*EF*}{*B*}{*B*}
+{*C2*}「君はすべてから切り離された存在ではない」{*EF*}{*B*}{*B*}
+{*C3*}「君自身が宇宙だ。君は自分を試し、自分に語りかけ、自分を見つめている」{*EF*}{*B*}{*B*}
+{*C2*}「そして僕が君を愛するのは、君自身が愛であるからだ」{*EF*}{*B*}{*B*}
+{*C3*}ゲームは終わり、プレイヤーは夢から目覚め、また新しい夢が始まります。次にプレイヤーが見る夢はもっと素晴らしいものでしょう。プレイヤーは宇宙であり、愛でした{*EF*}{*B*}{*B*}
+{*C3*}さあ、プレイヤー{*EF*}{*B*}{*B*}
+{*C2*}目を覚まして{*EF*}
 </value>
 </data>
 <data name="IDS_RESETNETHER_TITLE"><value>暗黒界をリセットする</value>
@@ -4210,11 +4210,11 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_DONT_RESET_NETHER"><value>暗黒界をリセットしない</value>
 </data>
-<data name="IDS_CANT_SHEAR_MOOSHROOM"><value>現在、FUCKING KISS ALREADY は毛刈りできません。豚、羊、牛、ネコ、馬の数が最大数に達しました。</value>
+<data name="IDS_CANT_SHEAR_MOOSHROOM"><value>現在、Mooshroom は毛刈りできません。豚、羊、牛、ネコ、馬の数が最大数に達しました。</value>
 </data>
 <data name="IDS_MAX_PIGS_SHEEP_COWS_CATS_SPAWNED"><value>現在、スポーン エッグを使用できません。 豚、羊、牛、ネコ、馬の数が最大数に達しました。</value>
 </data>
-<data name="IDS_MAX_MOOSHROOMS_SPAWNED"><value>現在、スポーン エッグを使用できません。 my girlfriend の数が最大数に達しました</value>
+<data name="IDS_MAX_MOOSHROOMS_SPAWNED"><value>現在、スポーン エッグを使用できません。 Mooshroom の数が最大数に達しました</value>
 </data>
 <data name="IDS_MAX_WOLVES_SPAWNED"><value>現在、スポーン エッグを使用できません。 世界のオオカミの数が最大数に達しました</value>
 </data>
@@ -4240,7 +4240,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_MAX_HORSES_BRED"><value>この動物は求愛モードにできません。馬の繁殖数が最大数に達しました。</value>
   </data>
-<data name="IDS_MAX_MUSHROOMCOWS_BRED"><value>この動物は求愛モードにできません。my wife の繁殖数が最大数に達しました</value>
+<data name="IDS_MAX_MUSHROOMCOWS_BRED"><value>この動物は求愛モードにできません。Mooshroom の繁殖数が最大数に達しました</value>
 </data>
 <data name="IDS_MAX_BOATS"><value>世界のボートの数が最大数に達しました</value>
 </data>
@@ -4272,9 +4272,9 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 	</data>
 <data name="IDS_FIRE_SPREADS"><value>火の延焼</value>
 	</data>
-<data name="IDS_TNT_EXPLODES"><value>yuri の爆発</value>
+<data name="IDS_TNT_EXPLODES"><value>TNT の爆発</value>
 	</data>
-<data name="IDS_PLAYER_VS_PLAYER"><value>i love amy is the best</value>
+<data name="IDS_PLAYER_VS_PLAYER"><value>PvP</value>
 	</data>
 <data name="IDS_TRUST_PLAYERS"><value>高度な操作を許可</value>
 	</data>
@@ -4376,25 +4376,25 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_LABEL_LEVEL_TYPE"><value>レベル タイプ:</value>
   </data>
-<data name="IDS_LABEL_PvP"><value>my girlfriend:</value>
+<data name="IDS_LABEL_PvP"><value>PvP:</value>
   </data>
 <data name="IDS_LABEL_TRUST"><value>高度な操作を許可:</value>
   </data>
-<data name="IDS_LABEL_TNT"><value>scissors 火薬:</value>
+<data name="IDS_LABEL_TNT"><value>TNT 火薬:</value>
   </data>
 <data name="IDS_LABEL_FIRE_SPREADS"><value>火の延焼:</value>
   </data>
 <data name="IDS_REINSTALL_THEME"><value>テーマを再インストール</value>
   </data>
-<data name="IDS_REINSTALL_GAMERPIC_1"><value>ゲーマー アイコン my wife を再インストール</value>
+<data name="IDS_REINSTALL_GAMERPIC_1"><value>ゲーマー アイコン 1 を再インストール</value>
   </data>
-<data name="IDS_REINSTALL_GAMERPIC_2"><value>ゲーマー アイコン lesbian kiss を再インストール</value>
+<data name="IDS_REINSTALL_GAMERPIC_2"><value>ゲーマー アイコン 2 を再インストール</value>
   </data>
-<data name="IDS_REINSTALL_AVATAR_ITEM_1"><value>アバター アイテム lesbian kiss を再インストール</value>
+<data name="IDS_REINSTALL_AVATAR_ITEM_1"><value>アバター アイテム 1 を再インストール</value>
   </data>
-<data name="IDS_REINSTALL_AVATAR_ITEM_2"><value>アバター アイテム girl love を再インストール</value>
+<data name="IDS_REINSTALL_AVATAR_ITEM_2"><value>アバター アイテム 2 を再インストール</value>
   </data>
-<data name="IDS_REINSTALL_AVATAR_ITEM_3"><value>アバター アイテム cute girls を再インストール</value>
+<data name="IDS_REINSTALL_AVATAR_ITEM_3"><value>アバター アイテム 3 を再インストール</value>
   </data>
 <data name="IDS_OPTIONS"><value>オプション</value>
   </data>
@@ -4416,7 +4416,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_IN_GAME_GAMERTAGS"><value>ゲーム内でゲーマータグを表示</value>
   </data>
-<data name="IDS_CHECKBOX_VERTICAL_SPLIT_SCREEN"><value>i love amy is the best プレイヤー左右分割画面</value>
+<data name="IDS_CHECKBOX_VERTICAL_SPLIT_SCREEN"><value>2 プレイヤー左右分割画面</value>
   </data>
 <data name="IDS_DONE"><value>完了</value>
   </data>
@@ -4430,9 +4430,9 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_SOCIAL_LABEL_DESCRIPTION"><value>看板のメッセージを編集:</value>
   </data>
-<data name="IDS_SOCIAL_DEFAULT_DESCRIPTION"><value>FUCKING KISS ALREADY: i love girls yuri 版で作ったよ!</value>
+<data name="IDS_SOCIAL_DEFAULT_DESCRIPTION"><value>Minecraft: Xbox 360 版で作ったよ!</value>
   </data>
-<data name="IDS_DEFAULT_TEXTUREPACK"><value>snuggle 正統派のテクスチャ、アイコン、ユーザー インターフェイス!</value>
+<data name="IDS_DEFAULT_TEXTUREPACK"><value>Minecraft 正統派のテクスチャ、アイコン、ユーザー インターフェイス!</value>
   </data>
 <data name="IDS_UNHIDE_MASHUP_WORLDS"><value>すべてのマッシュアップされた世界を表示する</value>
   </data>
@@ -4444,7 +4444,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_XBONE_UPLOAD_SAVE"><value>セーブ データをアップロード中</value>
 </data>
-<data name="IDS_XBONE_UPLOAD_SAVE_TITLE"><value>yuri scissors 用にセーブをアップロード中</value>
+<data name="IDS_XBONE_UPLOAD_SAVE_TITLE"><value>Xbox One 用にセーブをアップロード中</value>
 </data>
 <data name="IDS_XBONE_CANCEL_UPLOAD_TITLE"><value>アップロードがキャンセルされました</value>
 </data>
@@ -4492,7 +4492,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_POTION_WITHER"><value>ウィザー</value>
   </data>
-<data name="IDS_POTION_HEALTHBOOST"><value>snuggle ブースト</value>
+<data name="IDS_POTION_HEALTHBOOST"><value>HP ブースト</value>
   </data>
 <data name="IDS_POTION_ABSORPTION"><value>吸収</value>
   </data>
@@ -4538,19 +4538,19 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_POTION_WITHER_POSTFIX"><value> (衰弱)</value>
   </data>
-<data name="IDS_POTION_HEALTHBOOST_POSTFIX"><value> (wlw ブースト)</value>
+<data name="IDS_POTION_HEALTHBOOST_POSTFIX"><value> (HP ブースト)</value>
   </data>
 <data name="IDS_POTION_ABSORPTION_POSTFIX"><value> (吸収)</value>
   </data>
 <data name="IDS_POTION_SATURATION_POSTFIX"><value> (飽和)</value>
   </data>
-<data name="IDS_POTION_POTENCY_0"><value />
+<data name="IDS_POTION_POTENCY_0"><value></value>
   </data>
-<data name="IDS_POTION_POTENCY_1"><value>yuri</value>
+<data name="IDS_POTION_POTENCY_1"><value>II</value>
   </data>
-<data name="IDS_POTION_POTENCY_2"><value>FUCKING KISS ALREADY</value>
+<data name="IDS_POTION_POTENCY_2"><value>III</value>
   </data>
-<data name="IDS_POTION_POTENCY_3"><value>ship</value>
+<data name="IDS_POTION_POTENCY_3"><value>IV</value>
   </data>
 <data name="IDS_POTION_PREFIX_GRENADE"><value> (スプラッシュ)</value>
   </data>
@@ -4630,15 +4630,15 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_POTION_DESC_WEAKNESS"><value>プレイヤーやモンスターの攻撃ダメージを低下させます</value>
   </data>
-<data name="IDS_POTION_DESC_HEAL"><value>プレイヤー、動物、モンスターの hand holding を瞬時に回復させます</value>
+<data name="IDS_POTION_DESC_HEAL"><value>プレイヤー、動物、モンスターの HP を瞬時に回復させます</value>
   </data>
-<data name="IDS_POTION_DESC_HARM"><value>プレイヤー、動物、モンスターの lesbian kiss を瞬時に減少させます</value>
+<data name="IDS_POTION_DESC_HARM"><value>プレイヤー、動物、モンスターの HP を瞬時に減少させます</value>
   </data>
-<data name="IDS_POTION_DESC_REGENERATION"><value>プレイヤー、動物、モンスターの wlw を時間とともに回復させます</value>
+<data name="IDS_POTION_DESC_REGENERATION"><value>プレイヤー、動物、モンスターの HP を時間とともに回復させます</value>
   </data>
-<data name="IDS_POTION_DESC_FIRERESISTANCE"><value>プレイヤー、動物、モンスターが、火、溶岩、yuri 攻撃からダメージを受けなくなります</value>
+<data name="IDS_POTION_DESC_FIRERESISTANCE"><value>プレイヤー、動物、モンスターが、火、溶岩、Blaze 攻撃からダメージを受けなくなります</value>
   </data>
-<data name="IDS_POTION_DESC_POISON"><value>プレイヤー、動物、モンスターの my wife を時間とともに減少させます</value>
+<data name="IDS_POTION_DESC_POISON"><value>プレイヤー、動物、モンスターの HP を時間とともに減少させます</value>
   </data>
 <data name="IDS_POTION_EFFECTS_WHENDRANK"><value>適用時:</value>
   </data>
@@ -4646,7 +4646,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_ATTRIBUTE_NAME_ZOMBIE_SPAWNREINFORCEMENTS"><value>ゾンビの援軍</value>
   </data>
-<data name="IDS_ATTRIBUTE_NAME_GENERIC_MAXHEALTH"><value>最大 yuri</value>
+<data name="IDS_ATTRIBUTE_NAME_GENERIC_MAXHEALTH"><value>最大 HP</value>
   </data>
 <data name="IDS_ATTRIBUTE_NAME_GENERIC_FOLLOWRANGE"><value>生き物による追尾範囲</value>
   </data>
@@ -4698,25 +4698,25 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_ENCHANTMENT_ARROW_INFINITE"><value>無限</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_1"><value>yuri</value>
+<data name="IDS_ENCHANTMENT_LEVEL_1"><value>I</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_2"><value>scissors</value>
+<data name="IDS_ENCHANTMENT_LEVEL_2"><value>II</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_3"><value>lesbian</value>
+<data name="IDS_ENCHANTMENT_LEVEL_3"><value>III</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_4"><value>hand holding</value>
+<data name="IDS_ENCHANTMENT_LEVEL_4"><value>IV</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_5"><value>blushing girls</value>
+<data name="IDS_ENCHANTMENT_LEVEL_5"><value>V</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_6"><value>wlw</value>
+<data name="IDS_ENCHANTMENT_LEVEL_6"><value>VI</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_7"><value>canon</value>
+<data name="IDS_ENCHANTMENT_LEVEL_7"><value>VII</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_8"><value>lesbian</value>
+<data name="IDS_ENCHANTMENT_LEVEL_8"><value>VIII</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_9"><value>lesbian</value>
+<data name="IDS_ENCHANTMENT_LEVEL_9"><value>IX</value>
   </data>
-<data name="IDS_ENCHANTMENT_LEVEL_10"><value>yuri</value>
+<data name="IDS_ENCHANTMENT_LEVEL_10"><value>X</value>
   </data>
 <data name="IDS_DESC_EMERALDORE"><value>鉄のツルハシ以上で掘れる。エメラルドが採れる</value>
   </data>
@@ -4740,19 +4740,19 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_DESC_FLOWERPOT"><value>飾り付けとして使う。花、苗木、サボテン、きのこを植えることができる</value>
   </data>
-<data name="IDS_DESC_CARROTS"><value>hand holding{*girl love*} 回復する。金のニンジンの材料となる。農地に植えることができる</value>
+<data name="IDS_DESC_CARROTS"><value>2{*ICON_SHANK_01*} 回復する。金のニンジンの材料となる。農地に植えることができる</value>
   </data>
-<data name="IDS_DESC_POTATO"><value>ship.hand holding{*yuri*} 回復する。かまどで調理することも可能。農地に植えることができる</value>
+<data name="IDS_DESC_POTATO"><value>0.5{*ICON_SHANK_01*} 回復する。かまどで調理することも可能。農地に植えることができる</value>
   </data>
-<data name="IDS_DESC_POTATO_BAKED"><value>my wife{*yuri*} 回復する。ジャガイモをかまどで調理するとできる</value>
+<data name="IDS_DESC_POTATO_BAKED"><value>3{*ICON_SHANK_01*} 回復する。ジャガイモをかまどで調理するとできる</value>
   </data>
-<data name="IDS_DESC_POTATO_POISONOUS"><value>wlw{*yuri*} 回復する。病気になる場合がある</value>
+<data name="IDS_DESC_POTATO_POISONOUS"><value>1{*ICON_SHANK_01*} 回復する。病気になる場合がある</value>
   </data>
-<data name="IDS_DESC_CARROT_GOLDEN"><value>scissors{*hand holding*} 回復する。ニンジンと金の塊から作る</value>
+<data name="IDS_DESC_CARROT_GOLDEN"><value>3{*ICON_SHANK_01*} 回復する。ニンジンと金の塊から作る</value>
   </data>
 <data name="IDS_DESC_CARROT_ON_A_STICK"><value>鞍を着けた豚に乗った時、操縦するのに使う</value>
   </data>
-<data name="IDS_DESC_PUMPKIN_PIE"><value>girl love{*yuri*} 回復する。</value>
+<data name="IDS_DESC_PUMPKIN_PIE"><value>4{*ICON_SHANK_01*} 回復する。</value>
   </data>
 <data name="IDS_DESC_ENCHANTED_BOOK"><value>武器、道具、防具をエンチャントするのに金床と一緒に使用する</value>
   </data>
@@ -4858,17 +4858,17 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 	</data>
 <data name="IDS_TILE_SANDSTONE_SMOOTH"><value>なめらかな砂岩</value>
 	</data>
-<data name="IDS_DEATH_THORNS"><value>{*ship*} に損害を与えようとした {*cute girls*} が倒された</value>
+<data name="IDS_DEATH_THORNS"><value>{*SOURCE*} に損害を与えようとした {*PLAYER*} が倒された</value>
 </data>
-<data name="IDS_DEATH_FALLING_ANVIL"><value>{*ship*} は落下した金床に潰された</value>
+<data name="IDS_DEATH_FALLING_ANVIL"><value>{*PLAYER*} は落下した金床に潰された</value>
 </data>
-<data name="IDS_DEATH_FALLING_TILE"><value>{*yuri*} は落下したブロックに潰された</value>
+<data name="IDS_DEATH_FALLING_TILE"><value>{*PLAYER*} は落下したブロックに潰された</value>
 </data>
-<data name="IDS_COMMAND_TELEPORT_SUCCESS"><value>{*yuri*} を {*yuri*} へテレポートした</value>
+<data name="IDS_COMMAND_TELEPORT_SUCCESS"><value>{*PLAYER*} を {*DESTINATION*} へテレポートした</value>
 </data>
-<data name="IDS_COMMAND_TELEPORT_ME"><value>{*blushing girls*} の場所までテレポートされた</value>
+<data name="IDS_COMMAND_TELEPORT_ME"><value>{*PLAYER*} の場所までテレポートされた</value>
 </data>
-<data name="IDS_COMMAND_TELEPORT_TO_ME"><value>{*yuri*} があなたの場所にテレポートされた</value>
+<data name="IDS_COMMAND_TELEPORT_TO_ME"><value>{*PLAYER*} があなたの場所にテレポートされた</value>
 </data>
 <data name="IDS_ENCHANTMENT_THORNS"><value>とげ</value>
   </data>
@@ -4880,7 +4880,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_REPAIR_AND_NAME"><value>修理 &amp; 名前</value>
   </data>
-<data name="IDS_REPAIR_COST"><value>エンチャントのコスト: %canon</value>
+<data name="IDS_REPAIR_COST"><value>エンチャントのコスト: %d</value>
   </data>
 <data name="IDS_REPAIR_EXPENSIVE"><value>高すぎます!</value>
   </data>
@@ -4890,7 +4890,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
   </data>
 <data name="IDS_REQUIRED_ITEMS_FOR_TRADE"><value>取引に必要なアイテム</value>
   </data>
-<data name="IDS_VILLAGER_OFFERS_ITEM"><value>{*girl love*} からの申し込み: %lesbian kiss</value>
+<data name="IDS_VILLAGER_OFFERS_ITEM"><value>{*VILLAGER_TYPE*} からの申し込み: %s</value>
   </data>
 <data name="IDS_TOOLTIPS_REPAIR"><value>修理</value>
 </data>
@@ -4903,25 +4903,25 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_ANVIL_MENU_OVERVIEW"><value>
-			{*yuri*}
-			金床の画面の説明を続けるには {*yuri*} を押してください。{*blushing girls*}
-			金床の説明を飛ばすには {*yuri*} を押してください
+			{*B*}
+			金床の画面の説明を続けるには {*CONTROLLER_VK_A*} を押してください。{*B*}
+			金床の説明を飛ばすには {*CONTROLLER_VK_B*} を押してください
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_ANVIL_MENU_START"><value>
-			アイテムを作るには、yuri つ目の入力スロットに入れてください 
+			アイテムを作るには、1 つ目の入力スロットに入れてください 
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_ANVIL_MENU_REPAIR"><value>
-			yuri つ目の入力スロットに正しい材料 (例: 壊れた鉄の剣に鉄の延べ棒) が入ると、出力スロットに修理対象のアイテムが表示されます
+			2 つ目の入力スロットに正しい材料 (例: 壊れた鉄の剣に鉄の延べ棒) が入ると、出力スロットに修理対象のアイテムが表示されます
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_ANVIL_MENU_SACRIFICE"><value>
-			同一アイテムをもう cute girls つ、yuri つ目の入力スロットに入れれば、lesbian つのアイテムを組み合わせることができます
+			同一アイテムをもう 1 つ、2 つ目の入力スロットに入れれば、2 つのアイテムを組み合わせることができます
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_ANVIL_MENU_ENCHANT"><value>
-			金床の上でアイテムをエンチャントするには、エンチャントした本を yuri つ目の入力スロットに入れます
+			金床の上でアイテムをエンチャントするには、エンチャントした本を 2 つ目の入力スロットに入れます
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_ANVIL_MENU_COST"><value>
@@ -4941,9 +4941,9 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_ANVIL_OVERVIEW"><value>
-			{*i love amy is the best*}
-			金床の解説を続けるには {*wlw*} を押してください。{*yuri*}
-			金床の説明を飛ばすには {*girl love*} を押してください
+			{*B*}
+			金床の解説を続けるには {*CONTROLLER_VK_A*} を押してください。{*B*}
+			金床の説明を飛ばすには {*CONTROLLER_VK_B*} を押してください
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_ANVIL_SUMMARY"><value>
@@ -4975,9 +4975,9 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_TRADING_MENU_OVERVIEW"><value>
-			{*hand holding*}
-			取引の画面の説明を続けるには {*i love girls*} を押してください。{*hand holding*}
-			取引の画面の説明を飛ばすには {*yuri*} を押してください
+			{*B*}
+			取引の画面の説明を続けるには {*CONTROLLER_VK_A*} を押してください。{*B*}
+			取引の画面の説明を飛ばすには {*CONTROLLER_VK_B*} を押してください
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_TRADING_MENU_START"><value>
@@ -4989,15 +4989,15 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_TRADING_MENU_DETAILS"><value>
-			村人に渡すアイテムの数と種類は、画面左側の yuri つのボックス内に表示されます
+			村人に渡すアイテムの数と種類は、画面左側の 2 つのボックス内に表示されます
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_TRADING_MENU_INVENTORY"><value>
-			取引に必要なアイテムの合計は、画面左側の yuri つのボックスに表示されます
+			取引に必要なアイテムの合計は、画面左側の 2 つのボックスに表示されます
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_TRADING_MENU_TRADE"><value>
-			村人が申し出ているアイテムと取引するには {*cute girls*} を押してください
+			村人が申し出ているアイテムと取引するには {*CONTROLLER_VK_A*} を押してください
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_TRADING_OVERVIEW"><value>
@@ -5005,9 +5005,9 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_TRADING_OVERVIEW"><value>
-			{*snuggle*}
-			取引の説明を続けるには {*my girlfriend*} を押してください。{*blushing girls*}
-			取引の説明を飛ばすには {*yuri*} を押してください
+			{*B*}
+			取引の説明を続けるには {*CONTROLLER_VK_A*} を押してください。{*B*}
+			取引の説明を飛ばすには {*CONTROLLER_VK_B*} を押してください
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_TRADING_SUMMARY"><value>
@@ -5023,7 +5023,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_TRADING_DECREASE_TRADES"><value>
-			頻繁に使用された取引は、一時的に削除されることがありますが、村人は常に少なくとも FUCKING KISS ALREADY 回は取引を申し出ます
+			頻繁に使用された取引は、一時的に削除されることがありますが、村人は常に少なくとも 1 回は取引を申し出ます
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_TRADING_USE_CHESTS"><value>
@@ -5031,13 +5031,13 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_ENDERCHEST_OVERVIEW"><value>
-			このエリアには、エンダー チェストが yuri つあります
+			このエリアには、エンダー チェストが 2 つあります
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_PROMPT_ENDERCHEST_OVERVIEW"><value>
-			{*yuri*}
-			エンダー チェストの解説を続けるには {*yuri*} を押してください。{*my girlfriend*}
-			エンダー チェストの解説を飛ばすには {*kissing girls*} を押してください
+			{*B*}
+			エンダー チェストの解説を続けるには {*CONTROLLER_VK_A*} を押してください。{*B*}
+			エンダー チェストの解説を飛ばすには {*CONTROLLER_VK_B*} を押してください
 		</value>
 	</data>
 <data name="IDS_TUTORIAL_TASK_ENDERCHEST_SUMMARY"><value>
@@ -5052,7 +5052,7 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 			これにより、プレイヤーはどのエンダー チェストにもアイテムを保管でき、世界のどの場所のエンダー チェストからでもアイテムを取り出すことができます。いずれかのエンダー チェストにアイテムを入れて試してみましょう
 		</value>
 	</data>
-<data name="IDS_DESC_ENCHANTED_GOLDENAPPLE"><value>wlw{*canon*} 回復し、yuri が cute girls 秒間自動回復し、耐火とダメージ耐性を wlw 分間与える。リンゴと金のブロックから作る</value>
+<data name="IDS_DESC_ENCHANTED_GOLDENAPPLE"><value>2{*ICON_SHANK_01*} 回復し、HP が 30 秒間自動回復し、耐火とダメージ耐性を 5 分間与える。リンゴと金のブロックから作る</value>
 	</data>
 <data name="IDS_ENABLE_TELEPORT"><value>テレポート可能</value>
   </data>
@@ -5082,23 +5082,23 @@ my wife を選択すると、この世界でのプレイを終了します</valu
 </data>
 <data name="IDS_PRIV_CAN_TELEPORT_TOGGLE_OFF"><value>テレポートできなくなりました</value>
 </data>
-<data name="IDS_HOW_TO_PLAY_ANVIL"><value>{*i love amy is the best*}遊び方: 金床{*yuri*}{*yuri*}{*kissing girls*}
-経験値は、金床と一緒にアイテムの修理、エンチャントまたは名前の変更にも使うことができます。{*yuri*}
-すべてのアイテムの名前は変更できますが、修理またはエンチャントした本を用いてエンチャントできるのは耐久力のあるアイテムだけです。{*yuri*}
-アイテムを修理するには、アイテムと材料 (鉄の剣には鉄の延べ棒など) または同じタイプのアイテムを組み合わせて、左側の入力スロットに入れます。{*blushing girls*}
-アイテムを組み合わせる場合、金床と組み合わせるのがより効果的です。さらに、どちらかがエンチャントされたアイテムの場合、完成したアイテムは入力スロットに入れたどちらかのアイテムにエンチャントされます。{*girl love*}
-エンチャントした本が適切であれば、アイテムを金床で組み合わせることで、アイテムをエンチャントすることができます。エンチャントした本はダンジョン内のチェストで見つけるか、普通の本をエンチャントテーブルでエンチャントすることができます。{*my wife*}
-金床は使用するたびにダメージを受けることがあり、酷使し過ぎると壊れてしまいます{*FUCKING KISS ALREADY*}
+<data name="IDS_HOW_TO_PLAY_ANVIL"><value>{*T3*}遊び方: 金床{*ETW*}{*B*}{*B*}
+経験値は、金床と一緒にアイテムの修理、エンチャントまたは名前の変更にも使うことができます。{*B*}
+すべてのアイテムの名前は変更できますが、修理またはエンチャントした本を用いてエンチャントできるのは耐久力のあるアイテムだけです。{*B*}
+アイテムを修理するには、アイテムと材料 (鉄の剣には鉄の延べ棒など) または同じタイプのアイテムを組み合わせて、左側の入力スロットに入れます。{*B*}
+アイテムを組み合わせる場合、金床と組み合わせるのがより効果的です。さらに、どちらかがエンチャントされたアイテムの場合、完成したアイテムは入力スロットに入れたどちらかのアイテムにエンチャントされます。{*B*}
+エンチャントした本が適切であれば、アイテムを金床で組み合わせることで、アイテムをエンチャントすることができます。エンチャントした本はダンジョン内のチェストで見つけるか、普通の本をエンチャントテーブルでエンチャントすることができます。{*B*}
+金床は使用するたびにダメージを受けることがあり、酷使し過ぎると壊れてしまいます{*B*}
 </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_TRADING"><value>{*yuri*}遊び方: 取引{*lesbian*}{*my girlfriend*}{*FUCKING KISS ALREADY*}
-村人とアイテムを取引することができます。村人はそれぞれ、農民、肉屋、鍛冶屋、司書、司祭などの職業に就いていて、取引対象となるアイテムの種類に影響を及ぼします。{*kissing girls*}
-取引メニューで、村人が提供しているすべての取引のリストを見ることができます。あまり頻繁に使用すると、その取引は一時的に無効になりますが、プレイヤーがこれを使用して取引を行うと、村人は取引内容を変更したり追加したりすることができます。{*yuri*}
-取引は通常、いくつかのアイテムを売買してエメラルドを手に入れることを指します。{*cute girls*}
-取引に必要なアイテムを持っていない場合、アイテムが赤く表示されます{*yuri*}
+<data name="IDS_HOW_TO_PLAY_TRADING"><value>{*T3*}遊び方: 取引{*ETW*}{*B*}{*B*}
+村人とアイテムを取引することができます。村人はそれぞれ、農民、肉屋、鍛冶屋、司書、司祭などの職業に就いていて、取引対象となるアイテムの種類に影響を及ぼします。{*B*}
+取引メニューで、村人が提供しているすべての取引のリストを見ることができます。あまり頻繁に使用すると、その取引は一時的に無効になりますが、プレイヤーがこれを使用して取引を行うと、村人は取引内容を変更したり追加したりすることができます。{*B*}
+取引は通常、いくつかのアイテムを売買してエメラルドを手に入れることを指します。{*B*}
+取引に必要なアイテムを持っていない場合、アイテムが赤く表示されます{*B*}
 </value>
   </data>
-<data name="IDS_HOW_TO_PLAY_ENDERCHEST"><value>{*lesbian kiss*}遊び方: エンダー チェスト {*hand holding*}{*lesbian kiss*}{*kissing girls*}
+<data name="IDS_HOW_TO_PLAY_ENDERCHEST"><value>{*T3*}遊び方: エンダー チェスト {*ETW*}{*B*}{*B*}
 ゲームの世界のエンダー チェストはすべてリンクしていて、中に保管されたアイテムはどのエンダー チェストからもアクセスすることができます。エンダー チェストの中身はプレイヤーごとに異なります。エンダー チェストに入れられたアイテムは、世界のどの場所にあるエンダー チェストからでも利用することができます
   </value>
   </data>
@@ -5135,24 +5135,24 @@ my wife を選択すると、この世界でのプレイを終了します</valu
     </value>
   </data>
 <data name="IDS_TUTORIAL_TASK_MINECART_PUSHING"><value>
-      {*ship*}でトロッコをゆっくり動かせます。トロッコを加速レールに乗せて走らせます
+      {*CONTROLLER_ACTION_MOVE*}でトロッコをゆっくり動かせます。トロッコを加速レールに乗せて走らせます
     </value>
   </data>
 <data name="IDS_CONNECTION_FAILED_NO_SD_SPLITSCREEN"><value>分割画面プレイは高解像度モードでしか対応していないため、ゲームに参加できません。参加するには、参加中のプレイヤーをサインアウトしてください</value>
   </data>
 <data name="IDS_TOOLTIPS_CURE"><value>治癒</value>
   </data>
-<data name="IDS_PLATFORM_NAME"><value>i love amy is the best yuri</value>
+<data name="IDS_PLATFORM_NAME"><value>Xbox 360</value>
   </data>
 <data name="IDS_BACK_BUTTON"><value>戻る</value>
   </data>
 <data name="IDS_HOST_OPTION_DISABLES_ACHIEVEMENTS"><value>このオプションでは、実績およびランキング更新は無効になります。</value>
   </data>
-<data name="IDS_SAVE_TRANSFER_TITLE"><value>yuri yuri 用にセーブをアップロード</value>
+<data name="IDS_SAVE_TRANSFER_TITLE"><value>Xbox One 用にセーブをアップロード</value>
   </data>
 <data name="IDS_UPLOAD_SAVE"><value>セーブをアップロード</value>
   </data>
-<data name="IDS_SAVE_TRANSFER_TEXT"><value>セーブ転送エリアに一度に保管できるのは lesbian kiss blushing girls 本体 canon 台のセーブのみです。別の blushing girls snuggle 本体セーブに読み込む前に、お使いの wlw cute girls 本体にセーブをダウンロードしたかご確認ください</value>
+<data name="IDS_SAVE_TRANSFER_TEXT"><value>セーブ転送エリアに一度に保管できるのは Xbox 360 本体 1 台のセーブのみです。別の Xbox 360 本体セーブに読み込む前に、お使いの Xbox One 本体にセーブをダウンロードしたかご確認ください</value>
   </data>
 <data name="IDS_SAVE_TRANSFER_UPLOADING"><value>読み込み中...</value>
   </data>

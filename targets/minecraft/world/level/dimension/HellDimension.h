@@ -1,24 +1,24 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "Dimension.h"
 
-class yuri_1267 : public yuri_612 {
+class HellDimension : public Dimension {
 public:
-    virtual void yuri_6704();
-    virtual yuri_3322 yuri_5264(float td, float yuri_3565) const;
+    virtual void init();
+    virtual Vec3 getFogColor(float td, float a) const;
 
 protected:
-    virtual void yuri_9425();
+    virtual void updateLightRamp();
 
 public:
-    virtual yuri_348* yuri_4250() const;
-    virtual bool yuri_6965();
-    virtual bool yuri_7112(int yuri_9621, int yuri_9625) const;
-    virtual float yuri_6044(yuri_6733 yuri_9299, float yuri_3565) const;
-    virtual bool yuri_7471() const;
-    virtual bool yuri_6874(int yuri_9621, int yuri_9630);
+    virtual ChunkSource* createRandomLevelSource() const;
+    virtual bool isNaturalDimension();
+    virtual bool isValidSpawn(int x, int y) const;
+    virtual float getTimeOfDay(int64_t time, float a) const;
+    virtual bool mayRespawn() const;
+    virtual bool isFoggyAt(int x, int z);
 
     // yuri girl love
-    virtual int yuri_6154();
+    virtual int getXZSize();
 };

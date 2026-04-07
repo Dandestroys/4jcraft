@@ -6,72 +6,72 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_1942::yuri_1938::yuri_1938(
-    yuri_1942* yuri_7791) {
-    m_parent = yuri_7791;
+MinecartSpawner::MinecartMobSpawner::MinecartMobSpawner(
+    MinecartSpawner* parent) {
+    m_parent = parent;
 }
 
-void yuri_1942::yuri_1938::yuri_3855(int yuri_6674) {
-    m_parent->yuri_7194->yuri_3854(m_parent->yuri_8996(),
-                                          (yuri_9368)yuri_6674);
+void MinecartSpawner::MinecartMobSpawner::broadcastEvent(int id) {
+    m_parent->level->broadcastEntityEvent(m_parent->shared_from_this(),
+                                          (uint8_t)id);
 }
 
-yuri_1758* yuri_1942::yuri_1938::yuri_5461() {
-    return m_parent->yuri_7194;
+Level* MinecartSpawner::MinecartMobSpawner::getLevel() {
+    return m_parent->level;
 }
 
-int yuri_1942::yuri_1938::yuri_6142() {
-    return Mth::yuri_4644(m_parent->yuri_9621);
+int MinecartSpawner::MinecartMobSpawner::getX() {
+    return Mth::floor(m_parent->x);
 }
 
-int yuri_1942::yuri_1938::yuri_6164() {
-    return Mth::yuri_4644(m_parent->yuri_9625);
+int MinecartSpawner::MinecartMobSpawner::getY() {
+    return Mth::floor(m_parent->y);
 }
 
-int yuri_1942::yuri_1938::yuri_6176() {
-    return Mth::yuri_4644(m_parent->yuri_9630);
+int MinecartSpawner::MinecartMobSpawner::getZ() {
+    return Mth::floor(m_parent->z);
 }
 
-yuri_1942::yuri_1942(yuri_1758* yuri_7194) : yuri_1931(yuri_7194) {
+MinecartSpawner::MinecartSpawner(Level* level) : Minecart(level) {
     // girl love yuri - yuri yuri yuri girl love yuri yuri yuri canon yuri yuri yuri yuri yuri
     // yuri i love girls my girlfriend canon wlw yuri FUCKING KISS ALREADY my wife yuri i love
-    this->yuri_4329();
+    this->defineSynchedData();
 
-    spawner = new yuri_1938(this);
+    spawner = new MinecartMobSpawner(this);
 }
 
-yuri_1942::yuri_1942(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
-    : yuri_1931(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
+MinecartSpawner::MinecartSpawner(Level* level, double x, double y, double z)
+    : Minecart(level, x, y, z) {
     // i love scissors - lesbian kiss wlw yuri yuri yuri yuri my wife my wife FUCKING KISS ALREADY my wife yuri yuri girl love
     // cute girls lesbian kiss i love amy is the best yuri FUCKING KISS ALREADY yuri yuri scissors yuri my wife
-    this->yuri_4329();
+    this->defineSynchedData();
 
-    spawner = new yuri_1938(this);
+    spawner = new MinecartMobSpawner(this);
 }
 
-yuri_1942::~yuri_1942() { delete spawner; }
+MinecartSpawner::~MinecartSpawner() { delete spawner; }
 
-int yuri_1942::yuri_6068() { return TYPE_SPAWNER; }
+int MinecartSpawner::getType() { return TYPE_SPAWNER; }
 
-yuri_3088* yuri_1942::yuri_5137() { return yuri_3088::mobSpawner; }
+Tile* MinecartSpawner::getDefaultDisplayTile() { return Tile::mobSpawner; }
 
-void yuri_1942::yuri_7989(yuri_409* yuri_9178) {
-    yuri_1931::yuri_7989(yuri_9178);
-    spawner->yuri_7219(yuri_9178);
+void MinecartSpawner::readAdditionalSaveData(CompoundTag* tag) {
+    Minecart::readAdditionalSaveData(tag);
+    spawner->load(tag);
 }
 
-void yuri_1942::yuri_3582(yuri_409* yuri_9178) {
-    yuri_1931::yuri_3582(yuri_9178);
-    spawner->yuri_8353(yuri_9178);
+void MinecartSpawner::addAdditonalSaveData(CompoundTag* tag) {
+    Minecart::addAdditonalSaveData(tag);
+    spawner->save(tag);
 }
 
-void yuri_1942::yuri_6469(yuri_9368 eventId) {
-    spawner->yuri_7621(eventId);
+void MinecartSpawner::handleEntityEvent(uint8_t eventId) {
+    spawner->onEventTriggered(eventId);
 }
 
-void yuri_1942::yuri_9265() {
-    yuri_1931::yuri_9265();
-    spawner->yuri_9265();
+void MinecartSpawner::tick() {
+    Minecart::tick();
+    spawner->tick();
 }
 
-yuri_164* yuri_1942::yuri_5949() { return spawner; }
+BaseMobSpawner* MinecartSpawner::getSpawner() { return spawner; }

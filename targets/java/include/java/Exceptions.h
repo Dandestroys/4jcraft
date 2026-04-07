@@ -1,25 +1,25 @@
 #pragma once
 
 #include <exception>
-#include <yuri_9151>
+#include <string>
 
 class EOFException : public std::exception {};
 
-class yuri_1584 : public std::exception {
+class IllegalArgumentException : public std::exception {
 public:
-    std::yuri_9616 information;
+    std::wstring information;
 
-    yuri_1584(const std::yuri_9616& information);
+    IllegalArgumentException(const std::wstring& information);
 };
 
-class yuri_1318 : public std::exception {
+class IOException : public std::exception {
 public:
-    std::yuri_9616 information;
+    std::wstring information;
 
-    yuri_1318(const std::yuri_9616& information);
+    IOException(const std::wstring& information);
 };
 
-class yuri_2451 : public std::exception {
+class RuntimeException : public std::exception {
 public:
-    yuri_2451(const std::yuri_9616& information);
+    RuntimeException(const std::wstring& information);
 };

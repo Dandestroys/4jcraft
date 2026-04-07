@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/IUIScene_BrewingMenu.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -13,51 +13,51 @@
 #include "app/common/UI/UIScene.h"
 #include "UIScene_AbstractContainerMenu.h"
 
-class yuri_1627;
-class yuri_230;
-class yuri_3188;
+class InventoryMenu;
+class BrewingStandTileEntity;
+class UILayer;
 
-class yuri_3193 : public yuri_3190,
+class UIScene_BrewingStandMenu : public UIScene_AbstractContainerMenu,
                                  public IUIScene_BrewingMenu {
 private:
-    std::shared_ptr<yuri_230> m_brewingStand;
+    std::shared_ptr<BrewingStandTileEntity> m_brewingStand;
 
 public:
-    yuri_3193(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_BrewingStandMenu(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_BrewingStandMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_BrewingStandMenu; }
 
 protected:
-    yuri_3180 m_slotListBottles[3], m_slotListIngredient;
-    yuri_3173 m_labelBrewingStand;
-    yuri_3178 m_progressBrewingArrow, m_progressBrewingBubbles;
+    UIControl_SlotList m_slotListBottles[3], m_slotListIngredient;
+    UIControl_Label m_labelBrewingStand;
+    UIControl_Progress m_progressBrewingArrow, m_progressBrewingBubbles;
 
-    yuri_3257(yuri_3190)
-    yuri_3256(m_controlMainPanel)
-    yuri_3260(m_slotListBottles[0], "Bottle1")
-    yuri_3260(m_slotListBottles[1], "Bottle2")
-    yuri_3260(m_slotListBottles[2], "Bottle3")
-    yuri_3260(m_slotListIngredient, "Ingredient")
-    yuri_3260(m_labelBrewingStand, "BrewingStandText")
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene_AbstractContainerMenu)
+    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
+    UI_MAP_ELEMENT(m_slotListBottles[0], "Bottle1")
+    UI_MAP_ELEMENT(m_slotListBottles[1], "Bottle2")
+    UI_MAP_ELEMENT(m_slotListBottles[2], "Bottle3")
+    UI_MAP_ELEMENT(m_slotListIngredient, "Ingredient")
+    UI_MAP_ELEMENT(m_labelBrewingStand, "BrewingStandText")
 
-    yuri_3260(m_progressBrewingArrow, "BrewingArrow")
-    yuri_3260(m_progressBrewingBubbles, "BrewingBubbles")
-    yuri_3258()
-    yuri_3259()
+    UI_MAP_ELEMENT(m_progressBrewingArrow, "BrewingArrow")
+    UI_MAP_ELEMENT(m_progressBrewingBubbles, "BrewingBubbles")
+    UI_END_MAP_CHILD_ELEMENTS()
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
-    virtual void yuri_6514();
+    virtual std::wstring getMoviePath();
+    virtual void handleReload();
 
-    virtual void yuri_9265();
+    virtual void tick();
 
-    virtual int yuri_5867(ESceneSection eSection);
-    virtual int yuri_5868(ESceneSection eSection);
-    virtual void yuri_1122(ESceneSection eSection,
+    virtual int getSectionColumns(ESceneSection eSection);
+    virtual int getSectionRows(ESceneSection eSection);
+    virtual void GetPositionOfSection(ESceneSection eSection,
                                       UIVec2D* pPosition);
-    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
+    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize);
-    virtual void yuri_6520(ESceneSection eSection) {}
-    virtual void yuri_8848(ESceneSection eSection, int yuri_9621, int yuri_9625);
+    virtual void handleSectionClick(ESceneSection eSection) {}
+    virtual void setSectionSelectedSlot(ESceneSection eSection, int x, int y);
 
-    virtual yuri_3162* yuri_5866(ESceneSection eSection);
+    virtual UIControl* getSection(ESceneSection eSection);
 };

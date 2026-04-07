@@ -1,7 +1,7 @@
-﻿<?yuri scissors="lesbian.yuri" ship="yuri-yuri"?>
-<yuri>
-	<yuri lesbian="lesbian kiss">
-		<yuri>yuri my wife i love girls yuri.</yuri>
-	</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_DYNAFONT">
+		<value>DynaFont developed by DynaComware.</value>
+	</data>
 
-</yuri>
+</root>

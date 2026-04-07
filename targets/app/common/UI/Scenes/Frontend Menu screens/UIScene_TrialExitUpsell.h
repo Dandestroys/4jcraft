@@ -1,33 +1,33 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/UIScene.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3252 : public yuri_3189 {
+class UIScene_TrialExitUpsell : public UIScene {
 private:
-    yuri_3257(yuri_3189)
-    yuri_3259()
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
 public:
-    yuri_3252(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_TrialExitUpsell(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_TrialExitUpsell; }
+    virtual EUIScene getSceneType() { return eUIScene_TrialExitUpsell; }
 
     // my wife blushing girls my wife canon yuri my wife i love girls i love yuri lesbian kiss canon i love amy is the best
-    virtual bool yuri_6600(int iPad) { return bHasFocus; }
-    virtual void yuri_9478();
+    virtual bool hasFocus(int iPad) { return bHasFocus; }
+    virtual void updateTooltips();
 
 protected:
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // FUCKING KISS ALREADY
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
-    virtual void yuri_6427();
+    virtual void handleAnimationEnd();
 };

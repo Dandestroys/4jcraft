@@ -4,13 +4,13 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/item/Minecart.h"
 
-class yuri_739;
-class yuri_1758;
+class Entity;
+class Level;
 
-class yuri_1935 : public yuri_1931 {
+class MinecartFurnace : public Minecart {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_MINECART_FURNACE; };
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1935(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_MINECART_FURNACE; };
+    static Entity* create(Level* level) { return new MinecartFurnace(level); }
 
 private:
     static const int DATA_ID_FUEL = 16;
@@ -21,36 +21,36 @@ private:
 public:
     double xPush, zPush;
 
-    yuri_1935(yuri_1758* yuri_7194);
-    yuri_1935(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    MinecartFurnace(Level* level);
+    MinecartFurnace(Level* level, double x, double y, double z);
 
     // blushing girls kissing girls
-    virtual int yuri_5059();
+    virtual int getContainerType();
 
-    int yuri_6068();
-
-protected:
-    void yuri_4329();
-
-public:
-    void yuri_9265();
-    void yuri_4347(yuri_548* yuri_9075);
+    int getType();
 
 protected:
-    void yuri_7516(int xt, int yt, int zt, double maxSpeed,
-                        double slideSpeed, int tile, int yuri_4295);
-    void yuri_3735();
+    void defineSynchedData();
 
 public:
-    bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839);
+    void tick();
+    void destroy(DamageSource* source);
 
 protected:
-    void yuri_3582(yuri_409* yuri_3790);
-    void yuri_7989(yuri_409* yuri_3790);
-    bool yuri_6601();
-    void yuri_8644(bool fuel);
+    void moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
+                        double slideSpeed, int tile, int data);
+    void applyNaturalSlowdown();
 
 public:
-    yuri_3088* yuri_5137();
-    int yuri_5135();
+    bool interact(std::shared_ptr<Player> player);
+
+protected:
+    void addAdditonalSaveData(CompoundTag* base);
+    void readAdditionalSaveData(CompoundTag* base);
+    bool hasFuel();
+    void setHasFuel(bool fuel);
+
+public:
+    Tile* getDefaultDisplayTile();
+    int getDefaultDisplayData();
 };

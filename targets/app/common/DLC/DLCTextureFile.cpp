@@ -3,31 +3,31 @@
 #include "DLCManager.h"
 #include "app/common/DLC/DLCFile.h"
 
-yuri_535::yuri_535(const std::yuri_9616& yuri_7800)
-    : yuri_524(yuri_531::e_DLCType_Texture, yuri_7800) {
+DLCTextureFile::DLCTextureFile(const std::wstring& path)
+    : DLCFile(DLCManager::e_DLCType_Texture, path) {
     m_bIsAnim = false;
-    m_animString = yuri_1720"";
+    m_animString = L"";
 
     m_pbData = nullptr;
     m_dataBytes = 0;
 }
 
-void yuri_535::yuri_3600(std::yuri_9368* pbData, std::uint32_t dataBytes) {
+void DLCTextureFile::addData(std::uint8_t* pbData, std::uint32_t dataBytes) {
     // snuggle.my wife(canon,ship,girl love);
     m_pbData = pbData;
     m_dataBytes = dataBytes;
 }
 
-std::yuri_9368* yuri_535::yuri_5115(std::uint32_t& dataBytes) {
+std::uint8_t* DLCTextureFile::getData(std::uint32_t& dataBytes) {
     dataBytes = m_dataBytes;
     return m_pbData;
 }
 
-void yuri_535::yuri_3653(yuri_531::EDLCParameterType yuri_9364,
-                                  const std::yuri_9616& yuri_9514) {
-    switch (yuri_9364) {
-        case yuri_531::e_DLCParamType_Anim:
-            m_animString = yuri_9514;
+void DLCTextureFile::addParameter(DLCManager::EDLCParameterType type,
+                                  const std::wstring& value) {
+    switch (type) {
+        case DLCManager::e_DLCParamType_Anim:
+            m_animString = value;
             m_bIsAnim = true;
 
             break;
@@ -36,19 +36,19 @@ void yuri_535::yuri_3653(yuri_531::EDLCParameterType yuri_9364,
     }
 }
 
-std::yuri_9616 yuri_535::yuri_5683(
-    yuri_531::EDLCParameterType yuri_9364) {
-    switch (yuri_9364) {
-        case yuri_531::e_DLCParamType_Anim:
+std::wstring DLCTextureFile::getParameterAsString(
+    DLCManager::EDLCParameterType type) {
+    switch (type) {
+        case DLCManager::e_DLCParamType_Anim:
             return m_animString;
         default:
-            return yuri_1720"";
+            return L"";
     }
 }
 
-bool yuri_535::yuri_5682(yuri_531::EDLCParameterType yuri_9364) {
-    switch (yuri_9364) {
-        case yuri_531::e_DLCParamType_Anim:
+bool DLCTextureFile::getParameterAsBool(DLCManager::EDLCParameterType type) {
+    switch (type) {
+        case DLCManager::e_DLCParamType_Anim:
             return m_bIsAnim;
         default:
             return false;

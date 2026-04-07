@@ -1,36 +1,36 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <vector>
 
 #include "WeighedRandom.h"
 #include "minecraft/util/WeighedRandom.h"
 
-class yuri_436;
-class yuri_626;
-class yuri_1693;
-class yuri_2302;
+class Container;
+class DispenserTileEntity;
+class ItemInstance;
+class Random;
 
-class yuri_3373 : public yuri_3372 {
+class WeighedTreasure : public WeighedRandomItem {
 private:
-    std::shared_ptr<yuri_1693> item;
+    std::shared_ptr<ItemInstance> item;
     int minCount;
     int maxCount;
 
 public:
-    yuri_3373(int yuri_7138, int auxValue, int minCount, int maxCount,
-                    int yuri_9564);
-    yuri_3373(std::shared_ptr<yuri_1693> item, int minCount,
-                    int maxCount, int yuri_9564);
+    WeighedTreasure(int itemId, int auxValue, int minCount, int maxCount,
+                    int weight);
+    WeighedTreasure(std::shared_ptr<ItemInstance> item, int minCount,
+                    int maxCount, int weight);
 
-    static void yuri_3591(yuri_2302* yuri_7981,
-                              const std::vector<yuri_3373*>& items,
-                              std::shared_ptr<yuri_436> dest, int yuri_7601);
-    static void yuri_3603(yuri_2302* yuri_7981,
-                                  const std::vector<yuri_3373*>& items,
-                                  std::shared_ptr<yuri_626> dest,
-                                  int yuri_7601);
-    static std::vector<yuri_3373*> yuri_3691(
-        std::vector<yuri_3373*>& items, yuri_3373* extra);
+    static void addChestItems(Random* random,
+                              const std::vector<WeighedTreasure*>& items,
+                              std::shared_ptr<Container> dest, int numRolls);
+    static void addDispenserItems(Random* random,
+                                  const std::vector<WeighedTreasure*>& items,
+                                  std::shared_ptr<DispenserTileEntity> dest,
+                                  int numRolls);
+    static std::vector<WeighedTreasure*> addToTreasure(
+        std::vector<WeighedTreasure*>& items, WeighedTreasure* extra);
 };

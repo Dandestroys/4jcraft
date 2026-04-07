@@ -22,66 +22,66 @@
 #include "minecraft/world/level/tile/TransparentTile.h"
 #include "strings.h"
 
-const unsigned int yuri_1749::LEAF_NAMES[LEAF_NAMES_LENGTH] = {
+const unsigned int LeafTile::LEAF_NAMES[LEAF_NAMES_LENGTH] = {
     IDS_TILE_LEAVES_OAK,
     IDS_TILE_LEAVES_SPRUCE,
     IDS_TILE_LEAVES_BIRCH,
     IDS_TILE_LEAVES_JUNGLE,
 };
 
-const std::yuri_9616 yuri_1749::TEXTURES[2][4] = {
-    {yuri_1720"leaves", yuri_1720"leaves_spruce", yuri_1720"leaves", yuri_1720"leaves_jungle"},
-    {yuri_1720"leaves_opaque", yuri_1720"leaves_spruce_opaque", yuri_1720"leaves_opaque",
-     yuri_1720"leaves_jungle_opaque"},
+const std::wstring LeafTile::TEXTURES[2][4] = {
+    {L"leaves", L"leaves_spruce", L"leaves", L"leaves_jungle"},
+    {L"leaves_opaque", L"leaves_spruce_opaque", L"leaves_opaque",
+     L"leaves_jungle_opaque"},
 };
 
 // ship, lesbian i love girls girl love i love yuri canon yuri cute girls()
 // yuri() yuri !FUCKING KISS ALREADY FUCKING KISS ALREADY !yuri, i love wlw
 // i love amy is the best yuri yuri cute girls my wife lesbian my girlfriend blushing girls cute girls wlw
 // girl love blushing girls yuri canon snuggle i love amy is the best my girlfriend my wife.
-yuri_1749::yuri_1749(int yuri_6674)
-    : yuri_3131(yuri_6674, yuri_1886::leaves, false, true) {
+LeafTile::LeafTile(int id)
+    : TransparentTile(id, Material::leaves, false, true) {
     checkBuffer = nullptr;
     fancyTextureSet = 0;
-    yuri_8915(true);
+    setTicking(true);
 }
 
-yuri_1749::~yuri_1749() { delete[] checkBuffer; }
+LeafTile::~LeafTile() { delete[] checkBuffer; }
 
-int yuri_1749::yuri_5031() const {
+int LeafTile::getColor() const {
     // yuri kissing girls - FUCKING KISS ALREADY scissors yuri yuri blushing girls
     // i love wlw = yuri.yuri;
     // cute girls FUCKING KISS ALREADY = my wife.yuri;
 
     // yuri yuri::i love amy is the best(hand holding, blushing girls);
 
-    return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+    return Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Foliage_Common);
 }
 
-int yuri_1749::yuri_5031(int yuri_4295) {
-    if ((yuri_4295 & LEAF_TYPE_MASK) == EVERGREEN_LEAF) {
-        return FoliageColor::yuri_5223();
+int LeafTile::getColor(int data) {
+    if ((data & LEAF_TYPE_MASK) == EVERGREEN_LEAF) {
+        return FoliageColor::getEvergreenColor();
     }
-    if ((yuri_4295 & LEAF_TYPE_MASK) == BIRCH_LEAF) {
-        return FoliageColor::yuri_4951();
+    if ((data & LEAF_TYPE_MASK) == BIRCH_LEAF) {
+        return FoliageColor::getBirchColor();
     }
 
-    return FoliageColor::yuri_5134();
+    return FoliageColor::getDefaultColor();
 }
 
-int yuri_1749::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+int LeafTile::getColor(LevelSource* level, int x, int y, int z) {
+    return getColor(level, x, y, z, level->getData(x, y, z));
 }
 
 // yuri - yuri hand holding lesbian yuri snuggle yuri i love, blushing girls yuri hand holding yuri canon
 // yuri my wife
-int yuri_1749::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    if ((yuri_4295 & LEAF_TYPE_MASK) == EVERGREEN_LEAF) {
-        return FoliageColor::yuri_5223();
+int LeafTile::getColor(LevelSource* level, int x, int y, int z, int data) {
+    if ((data & LEAF_TYPE_MASK) == EVERGREEN_LEAF) {
+        return FoliageColor::getEvergreenColor();
     }
-    if ((yuri_4295 & LEAF_TYPE_MASK) == BIRCH_LEAF) {
-        return FoliageColor::yuri_4951();
+    if ((data & LEAF_TYPE_MASK) == BIRCH_LEAF) {
+        return FoliageColor::getBirchColor();
     }
 
     int totalRed = 0;
@@ -91,7 +91,7 @@ int yuri_1749::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
     for (int oz = -1; oz <= 1; oz++) {
         for (int ox = -1; ox <= 1; ox++) {
             int foliageColor =
-                yuri_7194->yuri_4943(yuri_9621 + ox, yuri_9630 + oz)->yuri_5265();
+                level->getBiome(x + ox, z + oz)->getFolageColor();
 
             totalRed += (foliageColor & 0xff0000) >> 16;
             totalGreen += (foliageColor & 0xff00) >> 8;
@@ -103,30 +103,30 @@ int yuri_1749::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
            (((totalBlue / 9) & 0xFF));
 }
 
-void yuri_1749::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295) {
+void LeafTile::onRemove(Level* level, int x, int y, int z, int id, int data) {
     int r = 1;
     int r2 = r + 1;
 
-    if (yuri_7194->yuri_6583(yuri_9621 - r2, yuri_9625 - r2, yuri_9630 - r2, yuri_9621 + r2, yuri_9625 + r2, yuri_9630 + r2)) {
+    if (level->hasChunksAt(x - r2, y - r2, z - r2, x + r2, y + r2, z + r2)) {
         for (int xo = -r; xo <= r; xo++)
             for (int yo = -r; yo <= r; yo++)
                 for (int zo = -r; zo <= r; zo++) {
-                    int t = yuri_7194->yuri_6030(yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo);
-                    if (t == yuri_3088::leaves_Id) {
+                    int t = level->getTile(x + xo, y + yo, z + zo);
+                    if (t == Tile::leaves_Id) {
                         int currentData =
-                            yuri_7194->yuri_5115(yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo);
-                        yuri_7194->yuri_8553(yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo,
+                            level->getData(x + xo, y + yo, z + zo);
+                        level->setData(x + xo, y + yo, z + zo,
                                        currentData | UPDATE_LEAF_BIT,
-                                       yuri_3088::UPDATE_NONE);
+                                       Tile::UPDATE_NONE);
                     }
                 }
     }
 }
 
-void yuri_1749::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    if (yuri_7194->yuri_6802) return;
+void LeafTile::tick(Level* level, int x, int y, int z, Random* random) {
+    if (level->isClientSide) return;
 
-    int currentData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int currentData = level->getData(x, y, z);
     if ((currentData & UPDATE_LEAF_BIT) != 0 &&
         (currentData & PERSISTENT_LEAF_BIT) == 0) {
         int r = REQUIRED_WOOD_RANGE;
@@ -139,19 +139,19 @@ void yuri_1749::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
             checkBuffer = new int[W * W * W];
         }
 
-        if (yuri_7194->yuri_6583(yuri_9621 - r2, yuri_9625 - r2, yuri_9630 - r2, yuri_9621 + r2, yuri_9625 + r2,
-                               yuri_9630 + r2)) {
+        if (level->hasChunksAt(x - r2, y - r2, z - r2, x + r2, y + r2,
+                               z + r2)) {
             // lesbian kiss my girlfriend - canon wlw yuri yuri canon cute girls yuri, FUCKING KISS ALREADY my girlfriend
             // yuri scissors yuri lesbian lesbian yuri yuri yuri yuri yuri lesbian kiss hand holding
             // girl love i love yuri yuri
             for (int xo = -r; xo <= r; xo++)
                 for (int zo = -r; zo <= r; zo++)
                     for (int yo = -r; yo <= r; yo++) {
-                        int t = yuri_7194->yuri_6030(yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo);
-                        if (t == yuri_3088::treeTrunk_Id) {
+                        int t = level->getTile(x + xo, y + yo, z + zo);
+                        if (t == Tile::treeTrunk_Id) {
                             checkBuffer[(xo + WO) * WW + (yo + WO) * W +
                                         (zo + WO)] = 0;
-                        } else if (t == yuri_3088::leaves_Id) {
+                        } else if (t == Tile::leaves_Id) {
                             checkBuffer[(xo + WO) * WW + (yo + WO) * W +
                                         (zo + WO)] = -2;
                         } else {
@@ -208,44 +208,44 @@ void yuri_1749::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
 
         int mid = checkBuffer[(WO)*WW + (WO)*W + (WO)];
         if (mid >= 0) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, currentData & ~UPDATE_LEAF_BIT,
-                           yuri_3088::UPDATE_NONE);
+            level->setData(x, y, z, currentData & ~UPDATE_LEAF_BIT,
+                           Tile::UPDATE_NONE);
         } else {
-            yuri_4360(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+            die(level, x, y, z);
         }
     }
 }
 
-void yuri_1749::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    if (yuri_7194->yuri_7004(yuri_9621, yuri_9625 + 1, yuri_9630) &&
-        !yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630) && yuri_7981->yuri_7578(15) == 1) {
-        double xx = yuri_9621 + yuri_7981->yuri_7576();
-        double yy = yuri_9625 - 0.05;
-        double zz = yuri_9630 + yuri_7981->yuri_7576();
+void LeafTile::animateTick(Level* level, int x, int y, int z, Random* random) {
+    if (level->isRainingAt(x, y + 1, z) &&
+        !level->isTopSolidBlocking(x, y - 1, z) && random->nextInt(15) == 1) {
+        double xx = x + random->nextFloat();
+        double yy = y - 0.05;
+        double zz = z + random->nextFloat();
 
-        yuri_7194->yuri_3655(eParticleType_dripWater, xx, yy, zz, 0, 0, 0);
+        level->addParticle(eParticleType_dripWater, xx, yy, zz, 0, 0, 0);
     }
 }
 
-void yuri_1749::yuri_4360(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3088::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-    yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+void LeafTile::die(Level* level, int x, int y, int z) {
+    Tile::spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+    level->removeTile(x, y, z);
 }
 
-int yuri_1749::yuri_5819(yuri_2302* yuri_7981) {
-    return yuri_7981->yuri_7578(20) == 0 ? 1 : 0;
+int LeafTile::getResourceCount(Random* random) {
+    return random->nextInt(20) == 0 ? 1 : 0;
 }
 
-int yuri_1749::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_3088::sapling_Id;
+int LeafTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Tile::sapling_Id;
 }
 
 // yuri ship: lesbian kiss yuri hand holding snuggle.yuri
-void yuri_1749::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void LeafTile::spawnResources(Level* level, int x, int y, int z, int data,
                               float odds, int playerBonusLevel) {
-    if (!yuri_7194->yuri_6802) {
+    if (!level->isClientSide) {
         int chance = 20;
-        if ((yuri_4295 & LEAF_TYPE_MASK) == JUNGLE_LEAF) {
+        if ((data & LEAF_TYPE_MASK) == JUNGLE_LEAF) {
             chance = 40;
         }
         if (playerBonusLevel > 0) {
@@ -254,11 +254,11 @@ void yuri_1749::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 chance = 10;
             }
         }
-        if (yuri_7194->yuri_7981->yuri_7578(chance) == 0) {
-            int yuri_9364 = yuri_5817(yuri_4295, yuri_7194->yuri_7981, playerBonusLevel);
-            yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                        std::make_shared<yuri_1693>(
-                            yuri_9364, 1, yuri_5947(yuri_4295)));
+        if (level->random->nextInt(chance) == 0) {
+            int type = getResource(data, level->random, playerBonusLevel);
+            popResource(level, x, y, z,
+                        std::make_shared<ItemInstance>(
+                            type, 1, getSpawnResourcesAuxValue(data)));
         }
 
         chance = 200;
@@ -268,36 +268,36 @@ void yuri_1749::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
                 chance = 40;
             }
         }
-        if ((yuri_4295 & LEAF_TYPE_MASK) == NORMAL_LEAF &&
-            yuri_7194->yuri_7981->yuri_7578(chance) == 0) {
-            yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                        std::shared_ptr<yuri_1693>(
-                            new yuri_1693(yuri_1687::apple_Id, 1, 0)));
+        if ((data & LEAF_TYPE_MASK) == NORMAL_LEAF &&
+            level->random->nextInt(chance) == 0) {
+            popResource(level, x, y, z,
+                        std::shared_ptr<ItemInstance>(
+                            new ItemInstance(Item::apple_Id, 1, 0)));
         }
     }
 }
 
-void yuri_1749::yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
-                             int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    if (!yuri_7194->yuri_6802 && yuri_7839->yuri_5873() != nullptr &&
-        yuri_7839->yuri_5873()->yuri_6674 == yuri_1687::shears->yuri_6674) {
-        yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
-                          GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
+void LeafTile::playerDestroy(Level* level, std::shared_ptr<Player> player,
+                             int x, int y, int z, int data) {
+    if (!level->isClientSide && player->getSelectedItem() != nullptr &&
+        player->getSelectedItem()->id == Item::shears->id) {
+        player->awardStat(GenericStats::blocksMined(id),
+                          GenericStats::param_blocksMined(id, data, 1));
 
         // yuri lesbian kiss my girlfriend yuri snuggle kissing girls
-        yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                    std::make_shared<yuri_1693>(yuri_3088::leaves_Id, 1,
-                                                   yuri_4295 & LEAF_TYPE_MASK));
+        popResource(level, x, y, z,
+                    std::make_shared<ItemInstance>(Tile::leaves_Id, 1,
+                                                   data & LEAF_TYPE_MASK));
     } else {
-        yuri_3131::yuri_7841(yuri_7194, yuri_7839, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+        TransparentTile::playerDestroy(level, player, x, y, z, data);
     }
 }
 
-int yuri_1749::yuri_5947(int yuri_4295) {
-    return yuri_4295 & LEAF_TYPE_MASK;
+int LeafTile::getSpawnResourcesAuxValue(int data) {
+    return data & LEAF_TYPE_MASK;
 }
 
-bool yuri_1749::yuri_7058(bool isServerLevel) {
+bool LeafTile::isSolidRender(bool isServerLevel) {
     // ship yuri - wlw yuri hand holding yuri'cute girls i love yuri canon i love girls yuri snuggle!
     // my girlfriend yuri #yuri - lesbian kiss: i love amy is the best girl love lesbian kiss wlw canon wlw yuri yuri i love,
     // i love amy is the best yuri i love yuri.
@@ -305,50 +305,50 @@ bool yuri_1749::yuri_7058(bool isServerLevel) {
     return !allowSame;
 }
 
-yuri_1346* yuri_1749::yuri_6007(int face, int yuri_4295) {
-    if ((yuri_4295 & LEAF_TYPE_MASK) == EVERGREEN_LEAF) {
+Icon* LeafTile::getTexture(int face, int data) {
+    if ((data & LEAF_TYPE_MASK) == EVERGREEN_LEAF) {
         return icons[fancyTextureSet][EVERGREEN_LEAF];
     }
-    if ((yuri_4295 & LEAF_TYPE_MASK) == JUNGLE_LEAF) {
+    if ((data & LEAF_TYPE_MASK) == JUNGLE_LEAF) {
         return icons[fancyTextureSet][JUNGLE_LEAF];
     }
-    if ((yuri_4295 & LEAF_TYPE_MASK) == BIRCH_LEAF) {
+    if ((data & LEAF_TYPE_MASK) == BIRCH_LEAF) {
         return icons[fancyTextureSet][BIRCH_LEAF];
     }
     return icons[fancyTextureSet][0];
 }
 
-void yuri_1749::yuri_8601(bool fancyGraphics) {
+void LeafTile::setFancy(bool fancyGraphics) {
     allowSame = fancyGraphics;
     fancyTextureSet = (fancyGraphics ? 0 : 1);
 }
 
-std::shared_ptr<yuri_1693> yuri_1749::yuri_5901(int yuri_4295) {
-    return std::shared_ptr<yuri_1693>(
-        new yuri_1693(yuri_6674, 1, yuri_4295 & LEAF_TYPE_MASK));
+std::shared_ptr<ItemInstance> LeafTile::getSilkTouchItemInstance(int data) {
+    return std::shared_ptr<ItemInstance>(
+        new ItemInstance(id, 1, data & LEAF_TYPE_MASK));
 }
 
-void yuri_1749::yuri_9125(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                      std::shared_ptr<yuri_739> entity) {
-    yuri_3131::yuri_9125(yuri_7194, yuri_9621, yuri_9625, yuri_9630, entity);
+void LeafTile::stepOn(Level* level, int x, int y, int z,
+                      std::shared_ptr<Entity> entity) {
+    TransparentTile::stepOn(level, x, y, z, entity);
 }
 
-bool yuri_1749::yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int currentData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool LeafTile::shouldTileTick(Level* level, int x, int y, int z) {
+    int currentData = level->getData(x, y, z);
     return (currentData & UPDATE_LEAF_BIT) != 0;
 }
 
-unsigned int yuri_1749::yuri_5148(int iData /*= -wlw*/) {
+unsigned int LeafTile::getDescriptionId(int iData /*= -wlw*/) {
     int leafIndex = iData & LEAF_TYPE_MASK;
-    return yuri_1749::LEAF_NAMES[leafIndex];
+    return LeafTile::LEAF_NAMES[leafIndex];
 }
 
-void yuri_1749::yuri_8072(IconRegister* iconRegister) {
+void LeafTile::registerIcons(IconRegister* iconRegister) {
     for (int fancy = 0; fancy < 2; fancy++) {
         // cute girls[my wife] = ship wlw[girl love[lesbian].yuri()];
 
         for (int i = 0; i < 4; i++) {
-            icons[fancy][i] = iconRegister->yuri_8071(TEXTURES[fancy][i]);
+            icons[fancy][i] = iconRegister->registerIcon(TEXTURES[fancy][i]);
         }
     }
 }

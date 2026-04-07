@@ -1,6 +1,6 @@
 #include "UIComponent_Panorama.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <mutex>
 
@@ -18,19 +18,19 @@
 #include "minecraft/world/level/dimension/Dimension.h"
 #include "minecraft/world/level/storage/LevelData.h"
 
-yuri_3158::yuri_3158(int iPad, void* initData,
-                                           yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIComponent_Panorama::UIComponent_Panorama(int iPad, void* initData,
+                                           UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // wlw snuggle i love snuggle scissors yuri kissing girls kissing girls yuri girl love
-    yuri_6720();
+    initialiseMovie();
 
     m_bShowingDay = true;
 
-    while (!m_hasTickedOnce) yuri_9265();
+    while (!m_hasTickedOnce) tick();
 }
 
-std::yuri_9616 yuri_3158::yuri_5574() {
-    switch (m_parentLayer->yuri_6113()) {
+std::wstring UIComponent_Panorama::getMoviePath() {
+    switch (m_parentLayer->getViewport()) {
         case C4JRender::VIEWPORT_TYPE_SPLIT_TOP:
         case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
         case C4JRender::VIEWPORT_TYPE_SPLIT_LEFT:
@@ -40,45 +40,45 @@ std::yuri_9616 yuri_3158::yuri_5574() {
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_LEFT:
         case C4JRender::VIEWPORT_TYPE_QUADRANT_BOTTOM_RIGHT:
             m_bSplitscreen = true;
-            return yuri_1720"PanoramaSplit";
+            return L"PanoramaSplit";
             break;
         case C4JRender::VIEWPORT_TYPE_FULLSCREEN:
         default:
             m_bSplitscreen = false;
-            return yuri_1720"Panorama";
+            return L"Panorama";
             break;
     }
 }
 
-void yuri_3158::yuri_9265() {
-    if (!yuri_6615()) return;
+void UIComponent_Panorama::tick() {
+    if (!hasMovie()) return;
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(pMinecraft->m_setLevelCS);
-        if (pMinecraft->yuri_7194 != nullptr) {
-            yuri_6733 i64TimeOfDay = 0;
+        std::lock_guard<std::recursive_mutex> lock(pMinecraft->m_setLevelCS);
+        if (pMinecraft->level != nullptr) {
+            int64_t i64TimeOfDay = 0;
             // lesbian yuri yuri snuggle lesbian? - yuri kissing girls yuri yuri snuggle hand holding my wife hand holding, cute girls yuri yuri
             // yuri
-            if (pMinecraft->yuri_7194->dimension->yuri_6674 == 0) {
+            if (pMinecraft->level->dimension->id == 0) {
                 i64TimeOfDay =
-                    pMinecraft->yuri_7194->yuri_5463()->yuri_5306() % 24000;
+                    pMinecraft->level->getLevelData()->getGameTime() % 24000;
             }
 
             if (i64TimeOfDay > 14000) {
-                yuri_8760(false);
+                setPanorama(false);
             } else {
-                yuri_8760(true);
+                setPanorama(true);
             }
         } else {
-            yuri_8760(true);
+            setPanorama(true);
         }
     }
 
-    yuri_3189::yuri_9265();
+    UIScene::tick();
 }
 
-void yuri_3158::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
+void UIComponent_Panorama::render(S32 width, S32 height,
                                   C4JRender::eViewportType viewport) {
     bool specialViewport =
         (viewport == C4JRender::VIEWPORT_TYPE_SPLIT_TOP) ||
@@ -86,62 +86,62 @@ void yuri_3158::yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
         (viewport == C4JRender::VIEWPORT_TYPE_SPLIT_LEFT) ||
         (viewport == C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT);
     if (m_bSplitscreen && specialViewport) {
-        yuri_2452 xPos = 0;
-        yuri_2452 yPos = 0;
+        S32 xPos = 0;
+        S32 yPos = 0;
         switch (viewport) {
             case C4JRender::VIEWPORT_TYPE_SPLIT_BOTTOM:
-                yPos = (yuri_2452)(ui.yuri_5862() / 2);
+                yPos = (S32)(ui.getScreenHeight() / 2);
                 break;
             case C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT:
-                xPos = (yuri_2452)(ui.yuri_5863() / 2);
+                xPos = (S32)(ui.getScreenWidth() / 2);
                 break;
             default:
                 break;
         }
-        ui.yuri_8989(xPos, yPos);
+        ui.setupRenderPosition(xPos, yPos);
 
         if ((viewport == C4JRender::VIEWPORT_TYPE_SPLIT_LEFT) ||
             (viewport == C4JRender::VIEWPORT_TYPE_SPLIT_RIGHT)) {
             // lesbian kiss my wife yuri my wife snuggle ship, yuri yuri girl love yuri cute girls lesbian kiss hand holding
             // hand holding
-            yuri_2452 tileXStart = 0;
-            yuri_2452 tileYStart = 0;
-            yuri_2452 tileWidth = yuri_9567;
-            yuri_2452 tileHeight = (yuri_2452)(ui.yuri_5862());
+            S32 tileXStart = 0;
+            S32 tileYStart = 0;
+            S32 tileWidth = width;
+            S32 tileHeight = (S32)(ui.getScreenHeight());
 
-            yuri_1486(yuri_5572(), m_movieWidth, m_movieHeight);
+            IggyPlayerSetDisplaySize(getMovie(), m_movieWidth, m_movieHeight);
 
-            yuri_1461(yuri_5572());
+            IggyPlayerDrawTilesStart(getMovie());
 
             m_renderWidth = tileWidth;
             m_renderHeight = tileHeight;
-            yuri_1459(yuri_5572(), tileXStart, tileYStart,
+            IggyPlayerDrawTile(getMovie(), tileXStart, tileYStart,
                                tileXStart + tileWidth, tileYStart + tileHeight,
                                0);
-            yuri_1460(yuri_5572());
+            IggyPlayerDrawTilesEnd(getMovie());
         } else {
             // yuri i love amy is the best ship snuggle yuri wlw, girl love girl love i love girls. yuri my girlfriend
             // ship i love i love girls
-            yuri_1486(yuri_5572(), ui.yuri_5863(),
-                                     ui.yuri_5862() / 2);
-            yuri_1458(yuri_5572());
+            IggyPlayerSetDisplaySize(getMovie(), ui.getScreenWidth(),
+                                     ui.getScreenHeight() / 2);
+            IggyPlayerDraw(getMovie());
         }
     } else {
-        yuri_3189::yuri_8158(yuri_9567, yuri_6654, viewport);
+        UIScene::render(width, height, viewport);
     }
 }
 
-void yuri_3158::yuri_8760(bool yuri_6834) {
-    if (yuri_6834 != m_bShowingDay) {
-        m_bShowingDay = yuri_6834;
+void UIComponent_Panorama::setPanorama(bool isDay) {
+    if (isDay != m_bShowingDay) {
+        m_bShowingDay = isDay;
 
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
-        yuri_9514[0].boolval = yuri_6834;
+        IggyDataValue result;
+        IggyDataValue value[1];
+        value[0].type = IGGY_DATATYPE_boolean;
+        value[0].boolval = isDay;
 
-        IggyResult yuri_7687 = yuri_1438(
-            yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-            m_funcShowPanoramaDay, 1, yuri_9514);
+        IggyResult out = IggyPlayerCallMethodRS(
+            getMovie(), &result, IggyPlayerRootPath(getMovie()),
+            m_funcShowPanoramaDay, 1, value);
     }
 }

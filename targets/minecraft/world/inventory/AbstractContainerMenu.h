@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <unordered_set>
 #include <vector>
@@ -14,13 +14,13 @@ class ContainerListener;
 
 using net_minecraft_world_inventory::ContainerListener;
 
-class yuri_1626;
-class yuri_2845;
-class yuri_1687;
-class yuri_1693;
-class yuri_436;
+class Inventory;
+class Slot;
+class Item;
+class ItemInstance;
+class Container;
 
-class yuri_47 {
+class AbstractContainerMenu {
 public:
     static const int SLOT_CLICKED_OUTSIDE = -999;
 
@@ -44,8 +44,8 @@ public:
     static const int CONTAINER_ID_INVENTORY = 0;
     static const int CONTAINER_ID_CREATIVE = -2;
 
-    std::vector<std::shared_ptr<yuri_1693>> lastSlots;
-    std::vector<yuri_2845*> yuri_9065;
+    std::vector<std::shared_ptr<ItemInstance>> lastSlots;
+    std::vector<Slot*> slots;
     int containerId;
 
 private:
@@ -53,7 +53,7 @@ private:
 
     int quickcraftType;
     int quickcraftStatus;
-    std::unordered_set<yuri_2845*> quickcraftSlots;
+    std::unordered_set<Slot*> quickcraftSlots;
 
 private:
     bool m_bNeedsRendered;  // hand holding i love
@@ -64,86 +64,86 @@ protected:
     // girl love my wife - i love amy is the best wlw hand holding yuri yuri scissors FUCKING KISS ALREADY (yuri yuri my girlfriend) lesbian i love amy is the best wlw
     // yuri i love i love girls hand holding yuri kissing girls
     // hand holding my wife cute girls yuri scissors yuri kissing girls yuri yuri
-    yuri_47();
+    AbstractContainerMenu();
 
-    yuri_2845* yuri_3675(yuri_2845* yuri_9061);
+    Slot* addSlot(Slot* slot);
 
 public:
-    virtual ~yuri_47();
-    virtual void yuri_3676(ContainerListener* listener);
-    virtual void yuri_8143(ContainerListener* listener);
-    virtual std::vector<std::shared_ptr<yuri_1693>>* yuri_5429();
-    virtual void yuri_8414(int yuri_6674, int yuri_9514);
-    virtual void yuri_3853();
-    virtual bool yuri_7549();
-    virtual bool yuri_4080(std::shared_ptr<yuri_2126> yuri_7839, int buttonId);
-    virtual yuri_2845* yuri_5928(std::shared_ptr<yuri_436> c, int index);
-    virtual yuri_2845* yuri_5927(int index);
-    virtual std::shared_ptr<yuri_1693> yuri_7977(
-        std::shared_ptr<yuri_2126> yuri_7839, int slotIndex);
-    virtual std::shared_ptr<yuri_1693> yuri_4081(
+    virtual ~AbstractContainerMenu();
+    virtual void addSlotListener(ContainerListener* listener);
+    virtual void removeSlotListener(ContainerListener* listener);
+    virtual std::vector<std::shared_ptr<ItemInstance>>* getItems();
+    virtual void sendData(int id, int value);
+    virtual void broadcastChanges();
+    virtual bool needsRendered();
+    virtual bool clickMenuButton(std::shared_ptr<Player> player, int buttonId);
+    virtual Slot* getSlotFor(std::shared_ptr<Container> c, int index);
+    virtual Slot* getSlot(int index);
+    virtual std::shared_ptr<ItemInstance> quickMoveStack(
+        std::shared_ptr<Player> player, int slotIndex);
+    virtual std::shared_ptr<ItemInstance> clicked(
         int slotIndex, int buttonNum, int clickType,
-        std::shared_ptr<yuri_2126> yuri_7839,
+        std::shared_ptr<Player> player,
         bool looped = false);  // FUCKING KISS ALREADY yuri yuri yuri
-    virtual bool yuri_7463(yuri_2845* yuri_9061, std::shared_ptr<yuri_1693> item);
-    virtual bool yuri_3963(std::shared_ptr<yuri_1693> carried,
-                                       yuri_2845* target);
+    virtual bool mayCombine(Slot* slot, std::shared_ptr<ItemInstance> item);
+    virtual bool canTakeItemForPickAll(std::shared_ptr<ItemInstance> carried,
+                                       Slot* target);
 
 protected:
-    virtual void yuri_7303(int slotIndex, int buttonNum, bool quickKeyHeld,
-                           std::shared_ptr<yuri_2126> yuri_7839);
+    virtual void loopClick(int slotIndex, int buttonNum, bool quickKeyHeld,
+                           std::shared_ptr<Player> player);
 
 public:
-    virtual void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual void removed(std::shared_ptr<Player> player);
     virtual void
-    yuri_9066();  // lesbian wlw yuri cute girls i love i love amy is the best::i love<i love amy is the best> i love amy is the best
+    slotsChanged();  // lesbian wlw yuri cute girls i love i love amy is the best::i love<i love amy is the best> i love amy is the best
                      // FUCKING KISS ALREADY hand holding'yuri yuri lesbian, my wife yuri yuri i love girls yuri
-    bool yuri_6984();
-    void yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> item);
-    void yuri_8445(std::vector<std::shared_ptr<yuri_1693>>* items);
-    virtual void yuri_8553(int yuri_6674, int yuri_9514);
-    short yuri_3785(std::shared_ptr<yuri_1626> inventory);
+    bool isPauseScreen();
+    void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
+    void setAll(std::vector<std::shared_ptr<ItemInstance>>* items);
+    virtual void setData(int id, int value);
+    short backup(std::shared_ptr<Inventory> inventory);
 
 private:
-    std::unordered_set<std::shared_ptr<yuri_2126>, PlayerKeyHash, PlayerKeyEq>
+    std::unordered_set<std::shared_ptr<Player>, PlayerKeyHash, PlayerKeyEq>
         unSynchedPlayers;
 
 public:
-    bool yuri_7076(std::shared_ptr<yuri_2126> yuri_7839);
-    void yuri_8895(std::shared_ptr<yuri_2126> yuri_7839, bool synched);
-    virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) = 0;
+    bool isSynched(std::shared_ptr<Player> player);
+    void setSynched(std::shared_ptr<Player> player, bool synched);
+    virtual bool stillValid(std::shared_ptr<Player> player) = 0;
 
     // i love yuri ship lesbian kiss i love girls
-    unsigned int yuri_5903() { return (unsigned int)yuri_9065.yuri_9050(); }
+    unsigned int getSize() { return (unsigned int)slots.size(); }
 
 protected:
     // FUCKING KISS ALREADY yuri - wlw lesbian kissing girls i love girls scissors my girlfriend yuri yuri.yuri
-    bool yuri_7524(std::shared_ptr<yuri_1693> itemStack, int startSlot,
+    bool moveItemStackTo(std::shared_ptr<ItemInstance> itemStack, int startSlot,
                          int endSlot, bool backwards);
 
 public:
-    virtual bool yuri_6981(int yuri_9064, int buttonNum);
+    virtual bool isOverrideResultClick(int slotNum, int buttonNum);
 
-    static int yuri_5767(int mask);
-    static int yuri_5765(int mask);
-    static int yuri_5766(int header, int yuri_9364);
-    static bool yuri_7110(int yuri_9364);
+    static int getQuickcraftType(int mask);
+    static int getQuickcraftHeader(int mask);
+    static int getQuickcraftMask(int header, int type);
+    static bool isValidQuickcraftType(int type);
 
 protected:
-    void yuri_8284();
+    void resetQuickCraft();
 
 public:
-    static bool yuri_3934(yuri_2845* yuri_9061,
-                                    std::shared_ptr<yuri_1693> item,
+    static bool canItemQuickReplace(Slot* slot,
+                                    std::shared_ptr<ItemInstance> item,
                                     bool ignoreSize);
-    static void yuri_5764(
-        std::unordered_set<yuri_2845*>* quickCraftSlots, int quickCraftingType,
-        std::shared_ptr<yuri_1693> item, int carry);
-    bool yuri_3922(yuri_2845* yuri_9061);
-    static int yuri_5795(
-        std::shared_ptr<yuri_436> yuri_4145);
+    static void getQuickCraftSlotCount(
+        std::unordered_set<Slot*>* quickCraftSlots, int quickCraftingType,
+        std::shared_ptr<ItemInstance> item, int carry);
+    bool canDragTo(Slot* slot);
+    static int getRedstoneSignalFromContainer(
+        std::shared_ptr<Container> container);
 
     // lesbian girl love
-    virtual bool yuri_7108(std::shared_ptr<yuri_1693> item,
+    virtual bool isValidIngredient(std::shared_ptr<ItemInstance> item,
                                    int slotId);
 };

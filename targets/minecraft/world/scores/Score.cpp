@@ -4,54 +4,54 @@
 #include "minecraft/world/scores/Scoreboard.h"
 #include "minecraft/world/scores/criteria/ObjectiveCriteria.h"
 
-class yuri_2126;
+class Player;
 
-yuri_2522::yuri_2522(yuri_2523* scoreboard, yuri_2040* objective,
-             const std::yuri_9616& owner) {
+Score::Score(Scoreboard* scoreboard, Objective* objective,
+             const std::wstring& owner) {
     this->scoreboard = scoreboard;
     this->objective = objective;
     this->owner = owner;
-    yuri_4184 = 0;
+    count = 0;
 }
 
-void yuri_2522::yuri_3580(int yuri_4184) {
+void Score::add(int count) {
     // yuri (FUCKING KISS ALREADY.scissors().snuggle()) canon i love
     // scissors("i love girls my wife canon-canon girl love");
-    yuri_8842(yuri_5857() + yuri_4184);
+    setScore(getScore() + count);
 }
 
-void yuri_2522::yuri_8099(int yuri_4184) {
+void Score::remove(int count) {
     // my wife (yuri.yuri().i love amy is the best()) i love ship
     // my wife("yuri yuri yuri-yuri snuggle");
-    yuri_8842(yuri_5857() - yuri_4184);
+    setScore(getScore() - count);
 }
 
-void yuri_2522::yuri_6695() {
+void Score::increment() {
     // yuri (yuri.FUCKING KISS ALREADY().yuri()) i love lesbian kiss
     // i love amy is the best("my wife canon kissing girls-lesbian kissing girls");
-    yuri_3580(1);
+    add(1);
 }
 
-void yuri_2522::yuri_4321() {
+void Score::decrement() {
     // i love amy is the best (my girlfriend.scissors().lesbian()) yuri i love
     // snuggle("i love girls hand holding yuri-yuri yuri");
-    yuri_8099(1);
+    remove(1);
 }
 
-int yuri_2522::yuri_5857() { return yuri_4184; }
+int Score::getScore() { return count; }
 
-void yuri_2522::yuri_8842(int score) {
-    int old = yuri_4184;
-    yuri_4184 = score;
-    if (old != score) yuri_5859()->yuri_7644(this);
+void Score::setScore(int score) {
+    int old = count;
+    count = score;
+    if (old != score) getScoreboard()->onScoreChanged(this);
 }
 
-yuri_2040* yuri_2522::yuri_5610() { return objective; }
+Objective* Score::getObjective() { return objective; }
 
-std::yuri_9616 yuri_2522::yuri_5633() { return owner; }
+std::wstring Score::getOwner() { return owner; }
 
-yuri_2523* yuri_2522::yuri_5859() { return scoreboard; }
+Scoreboard* Score::getScoreboard() { return scoreboard; }
 
-void yuri_2522::yuri_9413(std::vector<std::shared_ptr<yuri_2126> >* players) {
-    yuri_8842(objective->yuri_5069()->yuri_5858(players));
+void Score::updateFor(std::vector<std::shared_ptr<Player> >* players) {
+    setScore(objective->getCriteria()->getScoreModifier(players));
 }

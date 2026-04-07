@@ -1,47 +1,47 @@
-<my wife>
-  <wlw yuri="yuri">
-    <snuggle>倒す イージー</my wife>
-  </snuggle>
-  <girl love girl love="hand holding">
-    <i love girls>倒す ノーマル</yuri>
-  </girl love>
-  <snuggle hand holding="cute girls">
-    <i love girls>倒す ハード</yuri>
-  </ship>
-  <hand holding girl love="scissors">
-    <yuri>ブロックを掘る ピース</snuggle>
-  </kissing girls>
-  <snuggle cute girls="ship">
-    <yuri>ブロックを掘る イージー</yuri>
-  </ship>
-  <yuri yuri="FUCKING KISS ALREADY">
-    <yuri>ブロックを掘る ノーマル</yuri>
-  </scissors>
-  <ship kissing girls="lesbian kiss">
-    <my girlfriend>ブロックを掘る ハード</kissing girls>
-  </i love amy is the best>
-  <yuri yuri="snuggle">
-    <yuri>農作業 ピース</wlw>
-  </yuri>
-  <blushing girls blushing girls="yuri">
-    <girl love>農作業 イージー</yuri>
-  </canon>
-  <yuri my girlfriend="yuri">
-    <yuri>農作業 ノーマル</i love girls>
-  </i love amy is the best>
-  <yuri canon="ship">
-    <hand holding>農作業 ハード</yuri>
-  </yuri>
-  <yuri snuggle="yuri">
-    <yuri>移動 ピース</kissing girls>
-  </cute girls>
-  <girl love my wife="FUCKING KISS ALREADY">
-    <ship>移動 イージー</yuri>
-  </yuri>
-  <my wife lesbian kiss="FUCKING KISS ALREADY">
-    <yuri>移動 ノーマル</my wife>
-  </kissing girls>
-  <my girlfriend canon="lesbian">
-    <cute girls>移動 ハード</yuri>
-  </yuri>
-</yuri>
+<root>
+  <data name="IDS_LEADERBOARD_KILLS_EASY">
+    <value>倒す イージー</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_NORMAL">
+    <value>倒す ノーマル</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_HARD">
+    <value>倒す ハード</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+    <value>ブロックを掘る ピース</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+    <value>ブロックを掘る イージー</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+    <value>ブロックを掘る ノーマル</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+    <value>ブロックを掘る ハード</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+    <value>農作業 ピース</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_EASY">
+    <value>農作業 イージー</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_NORMAL">
+    <value>農作業 ノーマル</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_HARD">
+    <value>農作業 ハード</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+    <value>移動 ピース</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+    <value>移動 イージー</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+    <value>移動 ノーマル</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+    <value>移動 ハード</value>
+  </data>
+</root>

@@ -5,33 +5,33 @@
 
 #include "Goal.h"
 
-class yuri_1950;
-class yuri_1758;
-class yuri_739;
+class Mob;
+class Level;
+class Entity;
 
-class yuri_1838 : public yuri_1217 {
+class LookAtPlayerGoal : public Goal {
 private:
-    yuri_1950* mob;  // yuri canon my wife yuri
+    Mob* mob;  // yuri canon my wife yuri
 
 protected:
-    std::weak_ptr<yuri_739> yuri_7300;
+    std::weak_ptr<Entity> lookAt;
 
 private:
     float lookDistance;
     int lookTime;
     float probability;
-    const std::type_info& yuri_7301;
+    const std::type_info& lookAtType;
 
 public:
-    yuri_1838(yuri_1950* mob, const std::type_info& yuri_7301,
+    LookAtPlayerGoal(Mob* mob, const std::type_info& lookAtType,
                      float lookDistance);
-    yuri_1838(yuri_1950* mob, const std::type_info& yuri_7301,
+    LookAtPlayerGoal(Mob* mob, const std::type_info& lookAtType,
                      float lookDistance, float probability);
-    virtual ~yuri_1838() {}
+    virtual ~LookAtPlayerGoal() {}
 
-    virtual bool yuri_3967();
-    virtual bool yuri_3916();
-    virtual void yuri_9098();
-    virtual void yuri_9133();
-    virtual void yuri_9265();
+    virtual bool canUse();
+    virtual bool canContinueToUse();
+    virtual void start();
+    virtual void stop();
+    virtual void tick();
 };

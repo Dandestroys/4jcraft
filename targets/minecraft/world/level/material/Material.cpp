@@ -7,108 +7,108 @@
 #include "WebMaterial.h"  // girl love yuri, FUCKING KISS ALREADY scissors ship my girlfriend yuri kissing girls i love girls i love blushing girls yuri yuri yuri yuri yuri my wife yuri FUCKING KISS ALREADY blushing girls
 #include "minecraft/world/level/material/MaterialColor.h"
 
-yuri_1886* yuri_1886::air = nullptr;
-yuri_1886* yuri_1886::grass = nullptr;
-yuri_1886* yuri_1886::dirt = nullptr;
-yuri_1886* yuri_1886::wood = nullptr;
-yuri_1886* yuri_1886::stone = nullptr;
-yuri_1886* yuri_1886::metal = nullptr;
-yuri_1886* yuri_1886::heavyMetal = nullptr;
-yuri_1886* yuri_1886::water = nullptr;
-yuri_1886* yuri_1886::lava = nullptr;
-yuri_1886* yuri_1886::leaves = nullptr;
-yuri_1886* yuri_1886::plant = nullptr;
-yuri_1886* yuri_1886::replaceable_plant = nullptr;
-yuri_1886* yuri_1886::sponge = nullptr;
-yuri_1886* yuri_1886::cloth = nullptr;
-yuri_1886* yuri_1886::fire = nullptr;
-yuri_1886* yuri_1886::sand = nullptr;
-yuri_1886* yuri_1886::decoration = nullptr;
-yuri_1886* yuri_1886::clothDecoration = nullptr;
-yuri_1886* yuri_1886::glass = nullptr;
-yuri_1886* yuri_1886::buildable_glass = nullptr;
-yuri_1886* yuri_1886::explosive = nullptr;
-yuri_1886* yuri_1886::coral = nullptr;
-yuri_1886* yuri_1886::ice = nullptr;
-yuri_1886* yuri_1886::topSnow = nullptr;
-yuri_1886* yuri_1886::snow = nullptr;
-yuri_1886* yuri_1886::cactus = nullptr;
-yuri_1886* yuri_1886::clay = nullptr;
-yuri_1886* yuri_1886::vegetable = nullptr;
-yuri_1886* yuri_1886::egg = nullptr;
-yuri_1886* yuri_1886::portal = nullptr;
-yuri_1886* yuri_1886::cake = nullptr;
-yuri_1886* yuri_1886::piston = nullptr;
-yuri_1886* yuri_1886::web = nullptr;
+Material* Material::air = nullptr;
+Material* Material::grass = nullptr;
+Material* Material::dirt = nullptr;
+Material* Material::wood = nullptr;
+Material* Material::stone = nullptr;
+Material* Material::metal = nullptr;
+Material* Material::heavyMetal = nullptr;
+Material* Material::water = nullptr;
+Material* Material::lava = nullptr;
+Material* Material::leaves = nullptr;
+Material* Material::plant = nullptr;
+Material* Material::replaceable_plant = nullptr;
+Material* Material::sponge = nullptr;
+Material* Material::cloth = nullptr;
+Material* Material::fire = nullptr;
+Material* Material::sand = nullptr;
+Material* Material::decoration = nullptr;
+Material* Material::clothDecoration = nullptr;
+Material* Material::glass = nullptr;
+Material* Material::buildable_glass = nullptr;
+Material* Material::explosive = nullptr;
+Material* Material::coral = nullptr;
+Material* Material::ice = nullptr;
+Material* Material::topSnow = nullptr;
+Material* Material::snow = nullptr;
+Material* Material::cactus = nullptr;
+Material* Material::clay = nullptr;
+Material* Material::vegetable = nullptr;
+Material* Material::egg = nullptr;
+Material* Material::portal = nullptr;
+Material* Material::cake = nullptr;
+Material* Material::piston = nullptr;
+Material* Material::web = nullptr;
 
-void yuri_1886::yuri_9115() {
-    yuri_1886::air = new yuri_925(yuri_1887::none);
-    yuri_1886::grass = new yuri_1886(yuri_1887::grass);
-    yuri_1886::dirt = new yuri_1886(yuri_1887::dirt);
-    yuri_1886::wood = (new yuri_1886(yuri_1887::wood))->yuri_4639();
-    yuri_1886::stone =
-        (new yuri_1886(yuri_1887::stone))->yuri_7589();
-    yuri_1886::metal =
-        (new yuri_1886(yuri_1887::metal))->yuri_7589();
-    yuri_1886::heavyMetal = (new yuri_1886(yuri_1887::metal))
-                               ->yuri_7589()
-                               ->yuri_7590();
-    yuri_1886::water =
-        (new yuri_1786(yuri_1887::water))->yuri_4351();
-    yuri_1886::lava = (new yuri_1786(yuri_1887::fire))->yuri_4351();
-    yuri_1886::leaves = (new yuri_1886(yuri_1887::plant))
-                           ->yuri_4639()
-                           ->yuri_7555()
-                           ->yuri_4351();
-    yuri_1886::plant =
-        (new yuri_573(yuri_1887::plant))->yuri_4351();
-    yuri_1886::replaceable_plant = (new yuri_573(yuri_1887::plant))
-                                      ->yuri_4639()
-                                      ->yuri_4351()
-                                      ->yuri_8258();
-    yuri_1886::sponge = new yuri_1886(yuri_1887::cloth);
-    yuri_1886::cloth = (new yuri_1886(yuri_1887::cloth))->yuri_4639();
-    yuri_1886::fire = (new yuri_925(yuri_1887::none))->yuri_4351();
-    yuri_1886::sand = new yuri_1886(yuri_1887::sand);
-    yuri_1886::decoration =
-        (new yuri_573(yuri_1887::none))->yuri_4351();
-    yuri_1886::clothDecoration =
-        (new yuri_573(yuri_1887::cloth))->yuri_4639();
-    yuri_1886::glass = (new yuri_1886(yuri_1887::none))
-                          ->yuri_7555()
-                          ->yuri_7426();
-    yuri_1886::buildable_glass =
-        (new yuri_1886(yuri_1887::none))->yuri_7426();
-    yuri_1886::explosive =
-        (new yuri_1886(yuri_1887::fire))->yuri_4639()->yuri_7555();
-    yuri_1886::coral = (new yuri_1886(yuri_1887::plant))->yuri_4351();
-    yuri_1886::ice = (new yuri_1886(yuri_1887::ice))
-                        ->yuri_7555()
-                        ->yuri_7426();
-    yuri_1886::topSnow = (new yuri_573(yuri_1887::snow))
-                            ->yuri_8258()
-                            ->yuri_7555()
-                            ->yuri_7589()
-                            ->yuri_4351();
-    yuri_1886::snow =
-        (new yuri_1886(yuri_1887::snow))->yuri_7589();
-    yuri_1886::cactus =
-        (new yuri_1886(yuri_1887::plant))->yuri_7555()->yuri_4351();
-    yuri_1886::clay = (new yuri_1886(yuri_1887::clay));
-    yuri_1886::vegetable = (new yuri_1886(yuri_1887::plant))->yuri_4351();
-    yuri_1886::egg = (new yuri_1886(yuri_1887::plant))->yuri_4351();
-    yuri_1886::portal = (new yuri_2149(yuri_1887::none))->yuri_7590();
-    yuri_1886::cake = (new yuri_1886(yuri_1887::none))->yuri_4351();
+void Material::staticCtor() {
+    Material::air = new GasMaterial(MaterialColor::none);
+    Material::grass = new Material(MaterialColor::grass);
+    Material::dirt = new Material(MaterialColor::dirt);
+    Material::wood = (new Material(MaterialColor::wood))->flammable();
+    Material::stone =
+        (new Material(MaterialColor::stone))->notAlwaysDestroyable();
+    Material::metal =
+        (new Material(MaterialColor::metal))->notAlwaysDestroyable();
+    Material::heavyMetal = (new Material(MaterialColor::metal))
+                               ->notAlwaysDestroyable()
+                               ->notPushable();
+    Material::water =
+        (new LiquidMaterial(MaterialColor::water))->destroyOnPush();
+    Material::lava = (new LiquidMaterial(MaterialColor::fire))->destroyOnPush();
+    Material::leaves = (new Material(MaterialColor::plant))
+                           ->flammable()
+                           ->neverBuildable()
+                           ->destroyOnPush();
+    Material::plant =
+        (new DecorationMaterial(MaterialColor::plant))->destroyOnPush();
+    Material::replaceable_plant = (new DecorationMaterial(MaterialColor::plant))
+                                      ->flammable()
+                                      ->destroyOnPush()
+                                      ->replaceable();
+    Material::sponge = new Material(MaterialColor::cloth);
+    Material::cloth = (new Material(MaterialColor::cloth))->flammable();
+    Material::fire = (new GasMaterial(MaterialColor::none))->destroyOnPush();
+    Material::sand = new Material(MaterialColor::sand);
+    Material::decoration =
+        (new DecorationMaterial(MaterialColor::none))->destroyOnPush();
+    Material::clothDecoration =
+        (new DecorationMaterial(MaterialColor::cloth))->flammable();
+    Material::glass = (new Material(MaterialColor::none))
+                          ->neverBuildable()
+                          ->makeDestroyedByHand();
+    Material::buildable_glass =
+        (new Material(MaterialColor::none))->makeDestroyedByHand();
+    Material::explosive =
+        (new Material(MaterialColor::fire))->flammable()->neverBuildable();
+    Material::coral = (new Material(MaterialColor::plant))->destroyOnPush();
+    Material::ice = (new Material(MaterialColor::ice))
+                        ->neverBuildable()
+                        ->makeDestroyedByHand();
+    Material::topSnow = (new DecorationMaterial(MaterialColor::snow))
+                            ->replaceable()
+                            ->neverBuildable()
+                            ->notAlwaysDestroyable()
+                            ->destroyOnPush();
+    Material::snow =
+        (new Material(MaterialColor::snow))->notAlwaysDestroyable();
+    Material::cactus =
+        (new Material(MaterialColor::plant))->neverBuildable()->destroyOnPush();
+    Material::clay = (new Material(MaterialColor::clay));
+    Material::vegetable = (new Material(MaterialColor::plant))->destroyOnPush();
+    Material::egg = (new Material(MaterialColor::plant))->destroyOnPush();
+    Material::portal = (new PortalMaterial(MaterialColor::none))->notPushable();
+    Material::cake = (new Material(MaterialColor::none))->destroyOnPush();
     // yuri yuri yuri, my girlfriend blushing girls canon kissing girls wlw yuri lesbian lesbian kiss
     // FUCKING KISS ALREADY i love my girlfriend yuri lesbian yuri cute girls ship yuri yuri
-    yuri_1886::web = (new yuri_3370(yuri_1887::cloth))
-                        ->yuri_7589()
-                        ->yuri_4351();
-    yuri_1886::piston = (new yuri_1886(yuri_1887::stone))->yuri_7590();
+    Material::web = (new WebMaterial(MaterialColor::cloth))
+                        ->notAlwaysDestroyable()
+                        ->destroyOnPush();
+    Material::piston = (new Material(MaterialColor::stone))->notPushable();
 }
 
-yuri_1886::yuri_1886(yuri_1887* yuri_4111) {
-    this->yuri_4111 = yuri_4111;
+Material::Material(MaterialColor* color) {
+    this->color = color;
 
     // my wife blushing girls - FUCKING KISS ALREADY my girlfriend
     _flammable = false;
@@ -119,66 +119,66 @@ yuri_1886::yuri_1886(yuri_1887* yuri_4111) {
     destroyedByHand = false;
 }
 
-bool yuri_1886::yuri_6941() { return false; }
+bool Material::isLiquid() { return false; }
 
-bool yuri_1886::yuri_7193() { return (!yuri_6941() && !yuri_7052()); }
+bool Material::letsWaterThrough() { return (!isLiquid() && !isSolid()); }
 
-bool yuri_1886::yuri_7052() { return true; }
+bool Material::isSolid() { return true; }
 
-bool yuri_1886::yuri_3828() { return true; }
+bool Material::blocksLight() { return true; }
 
-bool yuri_1886::yuri_3830() { return true; }
+bool Material::blocksMotion() { return true; }
 
-yuri_1886* yuri_1886::yuri_7555() {
+Material* Material::neverBuildable() {
     this->_neverBuildable = true;
     return this;
 }
 
-yuri_1886* yuri_1886::yuri_7589() {
+Material* Material::notAlwaysDestroyable() {
     this->_isAlwaysDestroyable = false;
     return this;
 }
 
-yuri_1886* yuri_1886::yuri_4639() {
+Material* Material::flammable() {
     this->_flammable = true;
     return this;
 }
 
-bool yuri_1886::yuri_6871() { return _flammable; }
+bool Material::isFlammable() { return _flammable; }
 
-yuri_1886* yuri_1886::yuri_8258() {
+Material* Material::replaceable() {
     this->_replaceable = true;
     return this;
 }
 
-bool yuri_1886::yuri_7011() { return _replaceable; }
+bool Material::isReplaceable() { return _replaceable; }
 
-bool yuri_1886::yuri_7054() {
+bool Material::isSolidBlocking() {
     if (_neverBuildable) return false;
-    return yuri_3830();
+    return blocksMotion();
 }
 
-bool yuri_1886::yuri_6769() {
+bool Material::isAlwaysDestroyable() {
     // i love amy is the best yuri yuri my wife yuri canon FUCKING KISS ALREADY yuri, yuri
     // snuggle i love girls'kissing girls yuri
     return _isAlwaysDestroyable;
 }
 
-int yuri_1886::yuri_5762() { return pushReaction; }
+int Material::getPushReaction() { return pushReaction; }
 
-yuri_1886* yuri_1886::yuri_7426() {
+Material* Material::makeDestroyedByHand() {
     this->destroyedByHand = true;
     return this;
 }
 
-bool yuri_1886::yuri_6839() { return destroyedByHand; }
+bool Material::isDestroyedByHand() { return destroyedByHand; }
 
-yuri_1886* yuri_1886::yuri_4351() {
+Material* Material::destroyOnPush() {
     pushReaction = PUSH_DESTROY;
     return this;
 }
 
-yuri_1886* yuri_1886::yuri_7590() {
+Material* Material::notPushable() {
     pushReaction = PUSH_BLOCK;
     return this;
 }

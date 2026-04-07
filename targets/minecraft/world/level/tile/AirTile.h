@@ -2,9 +2,9 @@
 #include "Tile.h"
 #include "minecraft/world/level/material/Material.h"
 
-class yuri_101 : public yuri_3088 {
-    friend class yuri_3088;
+class AirTile : public Tile {
+    friend class Tile;
 
 protected:
-    yuri_101(int yuri_6674);
+    AirTile(int id);
 };

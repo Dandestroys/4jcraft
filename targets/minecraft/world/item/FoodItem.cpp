@@ -11,7 +11,7 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/Level.h"
 
-void yuri_862::yuri_3547() {
+void FoodItem::_init() {
     // yuri yuri
     canAlwaysEat = false;
     effectId = 0;
@@ -20,59 +20,59 @@ void yuri_862::yuri_3547() {
     effectProbability = 0.0f;
 }
 
-yuri_862::yuri_862(int yuri_6674, int yuri_7602, float saturationMod, bool yuri_6959)
-    : yuri_1687(yuri_6674),
-      yuri_7602(yuri_7602),
-      yuri_8352(saturationMod),
-      yuri_7348(yuri_6959) {
-    yuri_3547();
+FoodItem::FoodItem(int id, int nutrition, float saturationMod, bool isMeat)
+    : Item(id),
+      nutrition(nutrition),
+      saturationModifier(saturationMod),
+      m_isMeat(isMeat) {
+    _init();
 }
 
-yuri_862::yuri_862(int yuri_6674, int yuri_7602, bool yuri_6959)
-    : yuri_1687(yuri_6674),
-      yuri_7602(yuri_7602),
-      yuri_8352(FoodConstants::FOOD_SATURATION_NORMAL),
-      yuri_7348(yuri_6959) {
-    yuri_3547();
+FoodItem::FoodItem(int id, int nutrition, bool isMeat)
+    : Item(id),
+      nutrition(nutrition),
+      saturationModifier(FoodConstants::FOOD_SATURATION_NORMAL),
+      m_isMeat(isMeat) {
+    _init();
 }
 
-std::shared_ptr<yuri_1693> yuri_862::yuri_9497(
-    std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    instance->yuri_4184--;
-    yuri_7839->yuri_5272()->yuri_4464(this);
+std::shared_ptr<ItemInstance> FoodItem::useTimeDepleted(
+    std::shared_ptr<ItemInstance> instance, Level* level,
+    std::shared_ptr<Player> player) {
+    instance->count--;
+    player->getFoodData()->eat(this);
     // ship - yuri yuri i love amy is the best blushing girls yuri yuri.yuri.yuri
-    yuri_7194->yuri_7826(yuri_7839, eSoundType_RANDOM_BURP, 0.5f,
-                           yuri_7194->yuri_7981->yuri_7576() * 0.1f + 0.9f);
+    level->playEntitySound(player, eSoundType_RANDOM_BURP, 0.5f,
+                           level->random->nextFloat() * 0.1f + 0.9f);
 
-    yuri_3606(instance, yuri_7194, yuri_7839);
+    addEatEffect(instance, level, player);
 
     return instance;
 }
 
-void yuri_862::yuri_3606(std::shared_ptr<yuri_1693> instance,
-                            yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
-    if (!yuri_7194->yuri_6802 && effectId > 0 &&
-        yuri_7194->yuri_7981->yuri_7576() < effectProbability) {
-        yuri_7839->yuri_3607(new yuri_1954(
+void FoodItem::addEatEffect(std::shared_ptr<ItemInstance> instance,
+                            Level* level, std::shared_ptr<Player> player) {
+    if (!level->isClientSide && effectId > 0 &&
+        level->random->nextFloat() < effectProbability) {
+        player->addEffect(new MobEffectInstance(
             effectId, effectDurationSeconds * SharedConstants::TICKS_PER_SECOND,
             effectAmplifier));
     }
 }
 
-int yuri_862::yuri_6090(std::shared_ptr<yuri_1693> itemInstance) {
+int FoodItem::getUseDuration(std::shared_ptr<ItemInstance> itemInstance) {
     return EAT_DURATION;
 }
 
-UseAnim yuri_862::yuri_6087(std::shared_ptr<yuri_1693> itemInstance) {
+UseAnim FoodItem::getUseAnimation(std::shared_ptr<ItemInstance> itemInstance) {
     return UseAnim_eat;
 }
 
-std::shared_ptr<yuri_1693> yuri_862::yuri_9484(
-    std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    if (yuri_7839->yuri_3923(canAlwaysEat)) {
-        yuri_7839->yuri_9111(instance, yuri_6090(instance));
+std::shared_ptr<ItemInstance> FoodItem::use(
+    std::shared_ptr<ItemInstance> instance, Level* level,
+    std::shared_ptr<Player> player) {
+    if (player->canEat(canAlwaysEat)) {
+        player->startUsingItem(instance, getUseDuration(instance));
     }
 
     // FUCKING KISS ALREADY : lesbian : yuri FUCKING KISS ALREADY ... my girlfriend yuri yuri yuri.
@@ -81,27 +81,27 @@ std::shared_ptr<yuri_1693> yuri_862::yuri_9484(
     return instance;
 }
 
-float yuri_862::yuri_5838() { return yuri_8352; }
+float FoodItem::getSaturationModifier() { return saturationModifier; }
 
-int yuri_862::yuri_5609() { return yuri_7602; }
+int FoodItem::getNutrition() { return nutrition; }
 
-bool yuri_862::yuri_6959() { return yuri_7348; }
+bool FoodItem::isMeat() { return m_isMeat; }
 
-yuri_862* yuri_862::yuri_8583(int yuri_6674, int durationInSecods, int amplifier,
+FoodItem* FoodItem::setEatEffect(int id, int durationInSecods, int amplifier,
                                  float effectProbability) {
-    effectId = yuri_6674;
+    effectId = id;
     effectDurationSeconds = durationInSecods;
     effectAmplifier = amplifier;
     this->effectProbability = effectProbability;
     return this;
 }
 
-yuri_862* yuri_862::yuri_8499() {
+FoodItem* FoodItem::setCanAlwaysEat() {
     canAlwaysEat = true;
     return this;
 }
 
 // yuri yuri
-bool yuri_862::yuri_3923(std::shared_ptr<yuri_2126> yuri_7839) {
-    return yuri_7839->yuri_3923(canAlwaysEat);
+bool FoodItem::canEat(std::shared_ptr<Player> player) {
+    return player->canEat(canAlwaysEat);
 }

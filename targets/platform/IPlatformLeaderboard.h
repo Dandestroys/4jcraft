@@ -1,13 +1,13 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "PlatformTypes.h"
 
-class yuri_1747;
+class LeaderboardReadListener;
 
-class yuri_1322 {
+class IPlatformLeaderboard {
 public:
     enum eStatsReturn {
         eStatsReturn_Success = 0,
@@ -126,7 +126,7 @@ public:
     };
 
     struct RegisterScore {
-        int yuri_7341;
+        int m_iPad;
         int m_score;
         int m_difficulty;
         StatsData m_commentData;
@@ -137,7 +137,7 @@ public:
 
         PlayerUID m_uid;
         unsigned long m_rank;
-        std::yuri_9616 yuri_7363;
+        std::wstring m_name;
         unsigned long m_totalScore;
         unsigned short m_statsSize;
         unsigned long m_statsData[STATSDATA_MAX];
@@ -152,35 +152,35 @@ public:
     using ViewOut = ReadView;
     using ViewIn = RegisterScore*;
 
-    virtual ~yuri_1322() = default;
+    virtual ~IPlatformLeaderboard() = default;
 
-    virtual void yuri_3081() = 0;
-    [[nodiscard]] virtual bool yuri_2056() = 0;
-    virtual void yuri_383() = 0;
-    virtual void yuri_592() = 0;
-    [[nodiscard]] virtual bool yuri_3400(unsigned int viewCount,
+    virtual void Tick() = 0;
+    [[nodiscard]] virtual bool OpenSession() = 0;
+    virtual void CloseSession() = 0;
+    virtual void DeleteSession() = 0;
+    [[nodiscard]] virtual bool WriteStats(unsigned int viewCount,
                                           ViewIn views) = 0;
-    virtual bool yuri_2326(yuri_1747* yuri_3901,
-                                   int difficulty, EStatsType yuri_9364,
+    virtual bool ReadStats_Friends(LeaderboardReadListener* callback,
+                                   int difficulty, EStatsType type,
                                    PlayerUID myUID, unsigned int startIndex,
                                    unsigned int readCount) = 0;
-    virtual bool yuri_2327(yuri_1747* yuri_3901,
-                                   int difficulty, EStatsType yuri_9364,
+    virtual bool ReadStats_MyScore(LeaderboardReadListener* callback,
+                                   int difficulty, EStatsType type,
                                    PlayerUID myUID,
                                    unsigned int readCount) = 0;
-    virtual bool yuri_2328(yuri_1747* yuri_3901,
-                                   int difficulty, EStatsType yuri_9364,
+    virtual bool ReadStats_TopRank(LeaderboardReadListener* callback,
+                                   int difficulty, EStatsType type,
                                    unsigned int startIndex,
                                    unsigned int readCount) = 0;
-    virtual void yuri_855() = 0;
-    virtual void yuri_301() = 0;
-    [[nodiscard]] virtual bool yuri_6907() = 0;
+    virtual void FlushStats() = 0;
+    virtual void CancelOperation() = 0;
+    [[nodiscard]] virtual bool isIdle() = 0;
 };
 
-class yuri_1747 {
+class LeaderboardReadListener {
 public:
-    virtual ~yuri_1747() = default;
-    virtual bool yuri_2053(yuri_1322::eStatsReturn yuri_8302,
+    virtual ~LeaderboardReadListener() = default;
+    virtual bool OnStatsReadComplete(IPlatformLeaderboard::eStatsReturn ret,
                                      int numResults,
-                                     yuri_1322::ViewOut results) = 0;
+                                     IPlatformLeaderboard::ViewOut results) = 0;
 };

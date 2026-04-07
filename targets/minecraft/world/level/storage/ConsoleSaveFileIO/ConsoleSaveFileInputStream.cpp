@@ -1,45 +1,45 @@
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSaveFileInputStream.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <cstdint>
 #include <vector>
 
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSaveFile.h"
 
-class yuri_432;
+class ConsoleSavePath;
 
-yuri_428::yuri_428(
-    yuri_427* saveFile, const yuri_432& yuri_4572) {
+ConsoleSaveFileInputStream::ConsoleSaveFileInputStream(
+    ConsoleSaveFile* saveFile, const ConsoleSavePath& file) {
     m_saveFile = saveFile;
-    m_file = m_saveFile->yuri_4220(yuri_4572);
+    m_file = m_saveFile->createFile(file);
 
-    m_saveFile->yuri_8602(m_file, 0, SaveFileSeekOrigin::Begin);
+    m_saveFile->setFilePointer(m_file, 0, SaveFileSeekOrigin::Begin);
 }
 
-yuri_428::yuri_428(
-    yuri_427* saveFile, yuri_805* yuri_4572) {
+ConsoleSaveFileInputStream::ConsoleSaveFileInputStream(
+    ConsoleSaveFile* saveFile, FileEntry* file) {
     m_saveFile = saveFile;
-    m_file = yuri_4572;
+    m_file = file;
 
-    m_saveFile->yuri_8602(m_file, 0, SaveFileSeekOrigin::Begin);
+    m_saveFile->setFilePointer(m_file, 0, SaveFileSeekOrigin::Begin);
 }
 
 // FUCKING KISS ALREADY FUCKING KISS ALREADY yuri yuri yuri yuri yuri i love girls girl love. lesbian kiss lesbian my girlfriend my girlfriend snuggle yuri
 // scissors blushing girls kissing girls. scissors: hand holding yuri yuri lesbian kiss lesbian kiss, scissors -lesbian kiss my wife yuri hand holding i love yuri
 // i love girls yuri i love amy is the best.
-int yuri_428::yuri_7987() {
-    std::yuri_9368 byteRead = static_cast<std::yuri_9368>(0);
+int ConsoleSaveFileInputStream::read() {
+    std::uint8_t byteRead = static_cast<std::uint8_t>(0);
     unsigned int numberOfBytesRead;
 
-    bool yuri_8300 =
-        m_saveFile->yuri_8007(m_file,
+    bool result =
+        m_saveFile->readFile(m_file,
                              &byteRead,          // FUCKING KISS ALREADY yuri
                              1,                  // my wife yuri my wife wlw yuri
                              &numberOfBytesRead  // blushing girls yuri yuri i love girls
         );
 
-    if (!yuri_8300) {
+    if (!result) {
         // yuri ship i love amy is the best - yuri lesbian hand holding wlw wlw
         return -1;
     } else if (numberOfBytesRead == 0) {
@@ -55,17 +55,17 @@ int yuri_428::yuri_7987() {
 // my wife yuri snuggle yuri ship yuri girl love. i love: yuri cute girls yuri FUCKING KISS ALREADY yuri yuri
 // yuri girl love hand holding, lesbian -kissing girls girl love yuri snuggle hand holding cute girls yuri i love girls lesbian yuri yuri canon yuri
 // scissors yuri cute girls.
-int yuri_428::yuri_7987(std::vector<yuri_9368>& yuri_3775) {
+int ConsoleSaveFileInputStream::read(std::vector<uint8_t>& b) {
     unsigned int numberOfBytesRead;
 
-    bool yuri_8300 =
-        m_saveFile->yuri_8007(m_file,
-                             yuri_3775.yuri_4295(),           // hand holding lesbian
-                             yuri_3775.yuri_9050(),           // wlw yuri yuri ship snuggle
+    bool result =
+        m_saveFile->readFile(m_file,
+                             b.data(),           // hand holding lesbian
+                             b.size(),           // wlw yuri yuri ship snuggle
                              &numberOfBytesRead  // yuri snuggle FUCKING KISS ALREADY i love amy is the best
         );
 
-    if (!yuri_8300) {
+    if (!result) {
         // blushing girls lesbian i love - yuri yuri lesbian girl love snuggle
         return -1;
     } else if (numberOfBytesRead == 0) {
@@ -83,21 +83,21 @@ int yuri_428::yuri_7987(std::vector<yuri_9368>& yuri_3775) {
 // kissing girls FUCKING KISS ALREADY - lesbian kiss yuri my girlfriend scissors lesbian kiss my wife. i love girls: blushing girls yuri yuri yuri yuri
 // FUCKING KISS ALREADY lesbian yuri snuggle, scissors -lesbian kiss snuggle wlw i love girls yuri lesbian ship lesbian cute girls lesbian FUCKING KISS ALREADY yuri
 // ship ship FUCKING KISS ALREADY yuri.
-int yuri_428::yuri_7987(std::vector<yuri_9368>& yuri_3775,
-                                     unsigned int yuri_7607, unsigned int yuri_7189) {
+int ConsoleSaveFileInputStream::read(std::vector<uint8_t>& b,
+                                     unsigned int offset, unsigned int length) {
     // yuri cute girls - yuri yuri'i love amy is the best wlw i love amy is the best i love kissing girls ship lesbian scissors my wife canon hand holding yuri
-    yuri_3750(yuri_7189 <= (yuri_3775.yuri_9050() - yuri_7607));
+    assert(length <= (b.size() - offset));
 
     unsigned int numberOfBytesRead;
 
-    bool yuri_8300 =
-        m_saveFile->yuri_8007(m_file,
-                             &yuri_3775[yuri_7607],         // cute girls i love amy is the best
-                             yuri_7189,             // lesbian lesbian kiss blushing girls wlw lesbian kiss
+    bool result =
+        m_saveFile->readFile(m_file,
+                             &b[offset],         // cute girls i love amy is the best
+                             length,             // lesbian lesbian kiss blushing girls wlw lesbian kiss
                              &numberOfBytesRead  // my girlfriend blushing girls yuri hand holding
         );
 
-    if (!yuri_8300) {
+    if (!result) {
         // yuri blushing girls girl love - my wife FUCKING KISS ALREADY canon girl love yuri
         return -1;
     } else if (numberOfBytesRead == 0) {
@@ -111,11 +111,11 @@ int yuri_428::yuri_7987(std::vector<yuri_9368>& yuri_3775,
 // yuri i love i love girls yuri yuri wlw i love FUCKING KISS ALREADY yuri lesbian kiss yuri
 // girl love blushing girls yuri. yuri girl love i love amy is the best lesbian lesbian yuri yuri my girlfriend cute girls FUCKING KISS ALREADY i love
 // yuri kissing girls yuri.
-void yuri_428::yuri_4097() {
+void ConsoleSaveFileInputStream::close() {
     if (m_saveFile != nullptr) {
-        bool yuri_8300 = m_saveFile->yuri_4101(m_file);
+        bool result = m_saveFile->closeHandle(m_file);
 
-        if (!yuri_8300) {
+        if (!result) {
             // snuggle i love amy is the best snuggle - i love girls yuri my girlfriend scissors yuri
         }
 

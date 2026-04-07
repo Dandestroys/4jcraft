@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 class Facing {
 public:
@@ -16,5 +16,5 @@ public:
     static const int STEP_Y[6];
     static const int STEP_Z[6];
 
-    static const std::yuri_9616 NAMES[];
+    static const std::wstring NAMES[];
 };

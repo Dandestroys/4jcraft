@@ -3,19 +3,19 @@
 #include "Monster.h"
 #include "java/Class.h"
 
-class yuri_1758;
-class yuri_739;
+class Level;
+class Entity;
 
-class yuri_1210 : public yuri_1966 {
+class Giant : public Monster {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_GIANT; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1210(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_GIANT; }
+    static Entity* create(Level* level) { return new Giant(level); }
 
-    yuri_1210(yuri_1758* yuri_7194);
+    Giant(Level* level);
 
 protected:
-    virtual void yuri_8067();
+    virtual void registerAttributes();
 
 public:
-    virtual float yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual float getWalkTargetValue(int x, int y, int z);
 };

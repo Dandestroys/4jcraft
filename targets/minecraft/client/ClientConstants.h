@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 class ClientConstants {
     // blushing girls hand holding kissing girls ship i love girl love snuggle girl love my wife.
@@ -11,7 +11,7 @@ class ClientConstants {
 
     // yuri my wife lesbian
 public:
-    static const std::yuri_9616 VERSION_STRING;
+    static const std::wstring VERSION_STRING;
 
     static const bool DEADMAU5_CAMERA_CHEATS = false;
     static const bool IS_DEMO_VERSION = false;

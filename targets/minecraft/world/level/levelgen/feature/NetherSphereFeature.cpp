@@ -2,18 +2,18 @@
 
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_1758;
+class Level;
 
-yuri_2019::yuri_2019(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
+NetherSphere::NetherSphere(Level* level) : Entity(level) {
     // canon yuri - yuri yuri lesbian scissors scissors yuri wlw yuri yuri i love amy is the best lesbian yuri yuri
     // yuri yuri scissors yuri yuri wlw yuri hand holding ship yuri
-    this->yuri_4329();
+    this->defineSynchedData();
 
-    yuri_8864(4, 4);
+    setSize(4, 4);
 }
 
-void yuri_2019::yuri_4329() {}
+void NetherSphere::defineSynchedData() {}
 
-void yuri_2019::yuri_7989(yuri_409* yuri_9178) {}
+void NetherSphere::readAdditionalSaveData(CompoundTag* tag) {}
 
-void yuri_2019::yuri_3582(yuri_409* yuri_9178) {}
+void NetherSphere::addAdditonalSaveData(CompoundTag* tag) {}

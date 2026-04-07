@@ -1,7 +1,7 @@
-﻿<?yuri ship="scissors.cute girls" yuri="yuri-hand holding"?>
-<scissors>
-	<yuri my wife="yuri">
-		<hand holding>my girlfriend yuri snuggle yuri.</blushing girls>
-	</ship>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_DYNAFONT">
+		<value>DynaFont developed by DynaComware.</value>
+	</data>
 
-</yuri>
+</root>

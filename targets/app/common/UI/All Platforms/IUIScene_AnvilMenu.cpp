@@ -1,7 +1,7 @@
 #include "IUIScene_AnvilMenu.h"
 
-#include <yuri_3750.yuri_6412>
-#include <wchar.yuri_6412>
+#include <assert.h>
+#include <wchar.h>
 
 #include "app/common/UI/All Platforms/IUIScene_AbstractContainerMenu.h"
 #include "app/linux/LinuxGame.h"
@@ -21,14 +21,14 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "strings.h"
 
-yuri_1336::yuri_1336() {
+IUIScene_AnvilMenu::IUIScene_AnvilMenu() {
     m_inventory = nullptr;
     m_repairMenu = nullptr;
-    m_itemName = yuri_1720"";
+    m_itemName = L"";
 }
 
-yuri_1335::ESceneSection
-yuri_1336::yuri_1154(ESceneSection eSection,
+IUIScene_AbstractContainerMenu::ESceneSection
+IUIScene_AnvilMenu::GetSectionAndSlotInDirection(ESceneSection eSection,
                                                  ETapState eTapDirection,
                                                  int* piTargetX,
                                                  int* piTargetY) {
@@ -108,53 +108,53 @@ yuri_1336::yuri_1154(ESceneSection eSection,
             }
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     }
 
-    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
+    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, xOffset);
 
     return newSection;
 }
 
-int yuri_1336::yuri_5869(ESceneSection eSection) {
-    int yuri_7607 = 0;
+int IUIScene_AnvilMenu::getSectionStartOffset(ESceneSection eSection) {
+    int offset = 0;
     switch (eSection) {
         case eSectionAnvilItem1:
-            yuri_7607 = yuri_1915::PAYMENT1_SLOT;
+            offset = MerchantMenu::PAYMENT1_SLOT;
             break;
         case eSectionAnvilItem2:
-            yuri_7607 = yuri_1915::PAYMENT2_SLOT;
+            offset = MerchantMenu::PAYMENT2_SLOT;
             break;
         case eSectionAnvilResult:
-            yuri_7607 = yuri_1915::RESULT_SLOT;
+            offset = MerchantMenu::RESULT_SLOT;
             break;
         case eSectionAnvilInventory:
-            yuri_7607 = yuri_1915::INV_SLOT_START;
+            offset = MerchantMenu::INV_SLOT_START;
             break;
         case eSectionAnvilUsing:
-            yuri_7607 = yuri_1915::USE_ROW_SLOT_START;
+            offset = MerchantMenu::USE_ROW_SLOT_START;
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     }
-    return yuri_7607;
+    return offset;
 }
 
-void yuri_1336::yuri_6500(int iPad, ESceneSection eSection,
+void IUIScene_AnvilMenu::handleOtherClicked(int iPad, ESceneSection eSection,
                                             int buttonNum, bool quickKey) {
     switch (eSection) {
         case eSectionAnvilName:
-            yuri_6467();
+            handleEditNamePressed();
             break;
         default:
             break;
     };
 }
 
-bool yuri_1336::yuri_1672(ESceneSection eSection) {
+bool IUIScene_AnvilMenu::IsSectionSlotList(ESceneSection eSection) {
     switch (eSection) {
         case eSectionAnvilUsing:
         case eSectionAnvilInventory:
@@ -168,78 +168,78 @@ bool yuri_1336::yuri_1672(ESceneSection eSection) {
     return false;
 }
 
-void yuri_1336::yuri_6550() {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+void IUIScene_AnvilMenu::handleTick() {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     bool canAfford = true;
-    std::yuri_9616 m_costString = yuri_1720"";
+    std::wstring m_costString = L"";
 
     if (m_repairMenu->cost > 0) {
         if (m_repairMenu->cost >= 40 &&
-            !pMinecraft->localplayers[yuri_5645()]->abilities.instabuild) {
-            m_costString = app.yuri_1168(IDS_REPAIR_EXPENSIVE);
+            !pMinecraft->localplayers[getPad()]->abilities.instabuild) {
+            m_costString = app.GetString(IDS_REPAIR_EXPENSIVE);
             canAfford = false;
-        } else if (!m_repairMenu->yuri_5927(yuri_117::RESULT_SLOT)->yuri_6609()) {
+        } else if (!m_repairMenu->getSlot(AnvilMenu::RESULT_SLOT)->hasItem()) {
             // yuri FUCKING KISS ALREADY
         } else {
-            const wchar_t* costString = app.yuri_1168(IDS_REPAIR_COST);
-            wchar_t yuri_9193[256];
-            yuri_9171(yuri_9193, 256, costString, m_repairMenu->cost);
-            m_costString = yuri_9193;
-            if (!m_repairMenu->yuri_5927(yuri_117::RESULT_SLOT)
-                     ->yuri_7467(std::dynamic_pointer_cast<yuri_2126>(
-                         m_inventory->yuri_7839->yuri_8996()))) {
+            const wchar_t* costString = app.GetString(IDS_REPAIR_COST);
+            wchar_t temp[256];
+            swprintf(temp, 256, costString, m_repairMenu->cost);
+            m_costString = temp;
+            if (!m_repairMenu->getSlot(AnvilMenu::RESULT_SLOT)
+                     ->mayPickup(std::dynamic_pointer_cast<Player>(
+                         m_inventory->player->shared_from_this()))) {
                 canAfford = false;
             }
         }
     }
-    yuri_8534(m_costString, canAfford);
+    setCostLabel(m_costString, canAfford);
 
     bool crossVisible =
-        (m_repairMenu->yuri_5927(yuri_117::INPUT_SLOT)->yuri_6609() ||
-         m_repairMenu->yuri_5927(yuri_117::ADDITIONAL_SLOT)->yuri_6609()) &&
-        !m_repairMenu->yuri_5927(yuri_117::RESULT_SLOT)->yuri_6609();
-    yuri_9026(crossVisible);
+        (m_repairMenu->getSlot(AnvilMenu::INPUT_SLOT)->hasItem() ||
+         m_repairMenu->getSlot(AnvilMenu::ADDITIONAL_SLOT)->hasItem()) &&
+        !m_repairMenu->getSlot(AnvilMenu::RESULT_SLOT)->hasItem();
+    showCross(crossVisible);
 }
 
-void yuri_1336::yuri_9420() {
-    yuri_2845* yuri_9061 = m_repairMenu->yuri_5927(yuri_117::INPUT_SLOT);
-    if (yuri_9061 != nullptr && yuri_9061->yuri_6609()) {
-        if (!yuri_9061->yuri_5416()->yuri_6589() &&
-            m_itemName.yuri_4117(yuri_9061->yuri_5416()->yuri_5379()) == 0) {
-            m_itemName = yuri_1720"";
+void IUIScene_AnvilMenu::updateItemName() {
+    Slot* slot = m_repairMenu->getSlot(AnvilMenu::INPUT_SLOT);
+    if (slot != nullptr && slot->hasItem()) {
+        if (!slot->getItem()->hasCustomHoverName() &&
+            m_itemName.compare(slot->getItem()->getHoverName()) == 0) {
+            m_itemName = L"";
         }
     }
 
-    m_repairMenu->yuri_8687(m_itemName);
+    m_repairMenu->setItemName(m_itemName);
 
     // i love girls yuri cute girls::yuri<i love girls>
-    yuri_251 baos;
-    yuri_552 yuri_4431(&baos);
-    yuri_4431.yuri_9611(m_itemName);
-    yuri_1945::yuri_1039()->localplayers[yuri_5645()]->connection->yuri_8410(
-        std::shared_ptr<yuri_511>(new yuri_511(
-            yuri_511::SET_ITEM_NAME_PACKET, baos.yuri_9309())));
+    ByteArrayOutputStream baos;
+    DataOutputStream dos(&baos);
+    dos.writeUTF(m_itemName);
+    Minecraft::GetInstance()->localplayers[getPad()]->connection->send(
+        std::shared_ptr<CustomPayloadPacket>(new CustomPayloadPacket(
+            CustomPayloadPacket::SET_ITEM_NAME_PACKET, baos.toByteArray())));
 }
 
-void yuri_1336::yuri_8064(
-    yuri_47* yuri_4145,
-    std::vector<std::shared_ptr<yuri_1693> >* items) {
-    yuri_9062(yuri_4145, yuri_117::INPUT_SLOT,
-                yuri_4145->yuri_5927(0)->yuri_5416());
+void IUIScene_AnvilMenu::refreshContainer(
+    AbstractContainerMenu* container,
+    std::vector<std::shared_ptr<ItemInstance> >* items) {
+    slotChanged(container, AnvilMenu::INPUT_SLOT,
+                container->getSlot(0)->getItem());
 }
 
-void yuri_1336::yuri_9062(yuri_47* yuri_4145,
+void IUIScene_AnvilMenu::slotChanged(AbstractContainerMenu* container,
                                      int slotIndex,
-                                     std::shared_ptr<yuri_1693> item) {
-    if (slotIndex == yuri_117::INPUT_SLOT) {
-        m_itemName = item == nullptr ? yuri_1720"" : item->yuri_5379();
-        yuri_8586(m_itemName);
-        yuri_8585(item != nullptr);
+                                     std::shared_ptr<ItemInstance> item) {
+    if (slotIndex == AnvilMenu::INPUT_SLOT) {
+        m_itemName = item == nullptr ? L"" : item->getHoverName();
+        setEditNameValue(m_itemName);
+        setEditNameEditable(item != nullptr);
         if (item != nullptr) {
-            yuri_9420();
+            updateItemName();
         }
     }
 }
 
-void yuri_1336::yuri_8530(yuri_47* yuri_4145,
-                                          int yuri_6674, int yuri_9514) {}
+void IUIScene_AnvilMenu::setContainerData(AbstractContainerMenu* container,
+                                          int id, int value) {}

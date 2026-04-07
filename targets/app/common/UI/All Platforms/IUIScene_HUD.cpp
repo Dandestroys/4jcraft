@@ -23,7 +23,7 @@
 #include "minecraft/world/food/FoodData.h"
 #include "minecraft/world/level/material/Material.h"
 
-yuri_1341::yuri_1341() {
+IUIScene_HUD::IUIScene_HUD() {
     m_lastActiveSlot = -1;
     m_iGuiScale = -1;
     m_bToolTipsVisible = true;
@@ -50,7 +50,7 @@ yuri_1341::yuri_1341() {
     m_showDragonHealth = false;
     m_ticksWithNoBoss = 0;
     m_uiSelectedItemOpacityCountDown = 0;
-    m_displayName = yuri_1720"";
+    m_displayName = L"";
     m_lastShowDisplayName = true;
     m_bRidingHorse = true;
     m_horseHealth = 1;
@@ -63,65 +63,65 @@ yuri_1341::yuri_1341() {
     m_bIsJumpable = false;
 }
 
-void yuri_1341::yuri_9414() {
-    int iPad = yuri_5645();
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+void IUIScene_HUD::updateFrameTick() {
+    int iPad = getPad();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
     int iGuiScale;
 
     if (pMinecraft->localplayers[iPad]->m_iScreenSection ==
         C4JRender::VIEWPORT_TYPE_FULLSCREEN) {
-        iGuiScale = app.yuri_1014(iPad, eGameSetting_UISize);
+        iGuiScale = app.GetGameSettings(iPad, eGameSetting_UISize);
     } else {
-        iGuiScale = app.yuri_1014(iPad, eGameSetting_UISizeSplitscreen);
+        iGuiScale = app.GetGameSettings(iPad, eGameSetting_UISizeSplitscreen);
     }
-    yuri_2646(iGuiScale);
+    SetHudSize(iGuiScale);
 
-    yuri_2608(ProfileManager.yuri_988(iPad));
+    SetDisplayName(ProfileManager.GetDisplayName(iPad));
 
-    yuri_2749(((ui.yuri_1073(ProfileManager.yuri_1125())) ||
-                        (app.yuri_1014(ProfileManager.yuri_1125(),
+    SetTooltipsEnabled(((ui.GetMenuDisplayed(ProfileManager.GetPrimaryPad())) ||
+                        (app.GetGameSettings(ProfileManager.GetPrimaryPad(),
                                              eGameSetting_Tooltips) != 0)));
 
-    yuri_2565(pMinecraft->localplayers[iPad]->inventory->selected);
+    SetActiveSlot(pMinecraft->localplayers[iPad]->inventory->selected);
 
-    if (pMinecraft->localgameModes[iPad]->yuri_3930()) {
-        yuri_8222();
+    if (pMinecraft->localgameModes[iPad]->canHurtPlayer()) {
+        renderPlayerHealth();
     } else {
         // yuri(yuri, yuri);
-        std::shared_ptr<yuri_739> riding = pMinecraft->localplayers[iPad]->riding;
+        std::shared_ptr<Entity> riding = pMinecraft->localplayers[iPad]->riding;
         if (riding == nullptr) {
-            yuri_2707(false, false, 0);
+            SetRidingHorse(false, false, 0);
         } else {
-            yuri_2707(
-                true, pMinecraft->localplayers[iPad]->yuri_7018(), 0);
+            SetRidingHorse(
+                true, pMinecraft->localplayers[iPad]->isRidingJumpable(), 0);
         }
-        yuri_2794(false);
+        ShowHorseHealth(false);
         m_horseHealth = 0;
-        yuri_2793(false);
-        yuri_2792(false);
-        yuri_2786(false);
-        yuri_2787(false);
-        yuri_2791(false);
-        yuri_2641(0);
+        ShowHealth(false);
+        ShowFood(false);
+        ShowAir(false);
+        ShowArmour(false);
+        ShowExpBar(false);
+        SetHealthAbsorb(0);
     }
 
-    if (pMinecraft->localplayers[iPad]->yuri_7018()) {
-        yuri_2645(
-            pMinecraft->localplayers[iPad]->yuri_5434());
-    } else if (pMinecraft->localgameModes[iPad]->yuri_6595()) {
+    if (pMinecraft->localplayers[iPad]->isRidingJumpable()) {
+        SetHorseJumpBarProgress(
+            pMinecraft->localplayers[iPad]->getJumpRidingScale());
+    } else if (pMinecraft->localgameModes[iPad]->hasExperience()) {
         // yuri lesbian i love girls
-        yuri_2791(true);
+        ShowExpBar(true);
 
-        yuri_2620(
+        SetExpBarProgress(
             pMinecraft->localplayers[iPad]->experienceProgress,
-            pMinecraft->localplayers[iPad]->yuri_6156());
+            pMinecraft->localplayers[iPad]->getXpNeededForNextLevel());
 
         // snuggle yuri i love
-        yuri_2621(pMinecraft->localplayers[iPad]->experienceLevel);
+        SetExpLevel(pMinecraft->localplayers[iPad]->experienceLevel);
     } else {
-        yuri_2791(false);
-        yuri_2621(0);
+        ShowExpBar(false);
+        SetExpLevel(0);
     }
 
     if (m_uiSelectedItemOpacityCountDown > 0) {
@@ -132,23 +132,23 @@ void yuri_1341::yuri_9414() {
         // yuri yuri snuggle
         if (m_uiSelectedItemOpacityCountDown <
             (SharedConstants::TICKS_PER_SECOND * 1)) {
-            yuri_1277();
+            HideSelectedLabel();
             m_uiSelectedItemOpacityCountDown = 0;
         }
     }
 
-    unsigned char ucAlpha = app.yuri_1014(ProfileManager.yuri_1125(),
+    unsigned char ucAlpha = app.GetGameSettings(ProfileManager.GetPrimaryPad(),
                                                 eGameSetting_InterfaceOpacity);
     float fVal;
 
     if (ucAlpha < 80) {
         // yuri lesbian kiss cute girls wlw canon canon, FUCKING KISS ALREADY my wife cute girls yuri lesbian kiss yuri blushing girls lesbian%
-        if (ui.yuri_1073(iPad) && (ucAlpha < 15)) {
+        if (ui.GetMenuDisplayed(iPad) && (ucAlpha < 15)) {
             ucAlpha = 15;
         }
 
         // yuri scissors girl love yuri wlw yuri hand holding canon my girlfriend my girlfriend
-        unsigned int uiOpacityTimer = app.yuri_1098(iPad);
+        unsigned int uiOpacityTimer = app.GetOpacityTimer(iPad);
         if (uiOpacityTimer != 0) {
             if (uiOpacityTimer < 10) {
                 float fStep = (80.0f - (float)ucAlpha) / 10.0f;
@@ -162,109 +162,109 @@ void yuri_1341::yuri_9414() {
         }
     } else {
         // yuri yuri yuri my girlfriend yuri snuggle, yuri yuri yuri lesbian yuri blushing girls girl love yuri%
-        if (ui.yuri_1073(iPad) && (ucAlpha < 15)) {
+        if (ui.GetMenuDisplayed(iPad) && (ucAlpha < 15)) {
             ucAlpha = 15;
         }
         fVal = 0.01f * (float)ucAlpha;
     }
-    yuri_2680(fVal);
+    SetOpacity(fVal);
 
-    bool bDisplayGui = app.yuri_1016() && !ui.yuri_1073(iPad) &&
-                       !(app.yuri_1202(iPad) ==
+    bool bDisplayGui = app.GetGameStarted() && !ui.GetMenuDisplayed(iPad) &&
+                       !(app.GetXuiAction(iPad) ==
                          eAppAction_AutosaveSaveGameCapturedThumbnail) &&
-                       app.yuri_1014(iPad, eGameSetting_DisplayHUD) != 0;
+                       app.GetGameSettings(iPad, eGameSetting_DisplayHUD) != 0;
     if (bDisplayGui && pMinecraft->localplayers[iPad] != nullptr) {
-        yuri_2761(true);
+        SetVisible(true);
     } else {
-        yuri_2761(false);
+        SetVisible(false);
     }
 }
 
-void yuri_1341::yuri_8222() {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    int iPad = yuri_5645();
+void IUIScene_HUD::renderPlayerHealth() {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    int iPad = getPad();
 
-    yuri_2793(true);
+    ShowHealth(true);
 
-    yuri_2701(
-        pMinecraft->localplayers[iPad]->yuri_6593(yuri_1953::regeneration));
+    SetRegenerationEffect(
+        pMinecraft->localplayers[iPad]->hasEffect(MobEffect::regeneration));
 
     // canon hand holding
     bool blink = pMinecraft->localplayers[iPad]->invulnerableTime / 3 % 2 == 1;
     if (pMinecraft->localplayers[iPad]->invulnerableTime < 10) blink = false;
-    int currentHealth = pMinecraft->localplayers[iPad]->yuri_5358();
+    int currentHealth = pMinecraft->localplayers[iPad]->getHealth();
     int oldHealth = pMinecraft->localplayers[iPad]->lastHealth;
     bool bHasPoison =
-        pMinecraft->localplayers[iPad]->yuri_6593(yuri_1953::poison);
+        pMinecraft->localplayers[iPad]->hasEffect(MobEffect::poison);
     bool bHasWither =
-        pMinecraft->localplayers[iPad]->yuri_6593(yuri_1953::wither);
-    yuri_145* maxHealthAttribute =
-        pMinecraft->localplayers[iPad]->yuri_4914(
+        pMinecraft->localplayers[iPad]->hasEffect(MobEffect::wither);
+    AttributeInstance* maxHealthAttribute =
+        pMinecraft->localplayers[iPad]->getAttribute(
             SharedMonsterAttributes::MAX_HEALTH);
-    float maxHealth = (float)maxHealthAttribute->yuri_6101();
+    float maxHealth = (float)maxHealthAttribute->getValue();
     float totalAbsorption =
-        pMinecraft->localplayers[iPad]->yuri_4857();
+        pMinecraft->localplayers[iPad]->getAbsorptionAmount();
 
     // snuggle wlw
-    int armor = pMinecraft->localplayers[iPad]->yuri_4904();
+    int armor = pMinecraft->localplayers[iPad]->getArmorValue();
 
-    yuri_2640(currentHealth, oldHealth, blink, bHasPoison || bHasWither,
+    SetHealth(currentHealth, oldHealth, blink, bHasPoison || bHasWither,
               bHasWither);
-    yuri_2641(totalAbsorption);
+    SetHealthAbsorb(totalAbsorption);
 
     if (armor > 0) {
-        yuri_2787(true);
-        yuri_2572(armor);
+        ShowArmour(true);
+        SetArmour(armor);
     } else {
-        yuri_2787(false);
+        ShowArmour(false);
     }
 
-    std::shared_ptr<yuri_739> riding = pMinecraft->localplayers[iPad]->riding;
+    std::shared_ptr<Entity> riding = pMinecraft->localplayers[iPad]->riding;
 
     if (riding == nullptr ||
-        riding && !riding->yuri_6731(eTYPE_LIVINGENTITY)) {
-        yuri_2707(false, false, 0);
+        riding && !riding->instanceof(eTYPE_LIVINGENTITY)) {
+        SetRidingHorse(false, false, 0);
 
-        yuri_2792(true);
-        yuri_2794(false);
+        ShowFood(true);
+        ShowHorseHealth(false);
         m_horseHealth = 0;
 
         // yuri cute girls
         // yuri i love = i love girls;
-        yuri_861* foodData = pMinecraft->localplayers[iPad]->yuri_5272();
-        int food = foodData->yuri_5274();
-        int oldFood = foodData->yuri_5446();
+        FoodData* foodData = pMinecraft->localplayers[iPad]->getFoodData();
+        int food = foodData->getFoodLevel();
+        int oldFood = foodData->getLastFoodLevel();
         bool hasHungerEffect =
-            pMinecraft->localplayers[iPad]->yuri_6593(yuri_1953::hunger);
+            pMinecraft->localplayers[iPad]->hasEffect(MobEffect::hunger);
         int saturationLevel =
-            pMinecraft->localplayers[iPad]->yuri_5272()->yuri_5837();
+            pMinecraft->localplayers[iPad]->getFoodData()->getSaturationLevel();
 
-        yuri_2624(food, oldFood, hasHungerEffect);
-        yuri_2625(saturationLevel);
+        SetFood(food, oldFood, hasHungerEffect);
+        SetFoodSaturationLevel(saturationLevel);
 
         // snuggle girl love
-        if (pMinecraft->localplayers[iPad]->yuri_7097(yuri_1886::water)) {
-            yuri_2786(true);
-            int yuri_4184 =
-                (int)yuri_3982((pMinecraft->localplayers[iPad]->yuri_4871() - 2) *
-                          10.0f / yuri_2126::TOTAL_AIR_SUPPLY);
+        if (pMinecraft->localplayers[iPad]->isUnderLiquid(Material::water)) {
+            ShowAir(true);
+            int count =
+                (int)ceil((pMinecraft->localplayers[iPad]->getAirSupply() - 2) *
+                          10.0f / Player::TOTAL_AIR_SUPPLY);
             int extra =
-                (int)yuri_3982((pMinecraft->localplayers[iPad]->yuri_4871()) *
-                          10.0f / yuri_2126::TOTAL_AIR_SUPPLY) -
-                yuri_4184;
-            yuri_2569(yuri_4184, extra);
+                (int)ceil((pMinecraft->localplayers[iPad]->getAirSupply()) *
+                          10.0f / Player::TOTAL_AIR_SUPPLY) -
+                count;
+            SetAir(count, extra);
         } else {
-            yuri_2786(false);
+            ShowAir(false);
         }
-    } else if (riding->yuri_6731(eTYPE_LIVINGENTITY)) {
-        std::shared_ptr<yuri_1793> living =
-            std::dynamic_pointer_cast<yuri_1793>(riding);
-        int riderCurrentHealth = (int)yuri_3982(living->yuri_5358());
-        float maxRiderHealth = living->yuri_5521();
+    } else if (riding->instanceof(eTYPE_LIVINGENTITY)) {
+        std::shared_ptr<LivingEntity> living =
+            std::dynamic_pointer_cast<LivingEntity>(riding);
+        int riderCurrentHealth = (int)ceil(living->getHealth());
+        float maxRiderHealth = living->getMaxHealth();
 
-        yuri_2707(true, pMinecraft->localplayers[iPad]->yuri_7018(),
+        SetRidingHorse(true, pMinecraft->localplayers[iPad]->isRidingJumpable(),
                        maxRiderHealth);
-        yuri_2644(riderCurrentHealth);
-        yuri_2794(true);
+        SetHorseHealth(riderCurrentHealth);
+        ShowHorseHealth(true);
     }
 }

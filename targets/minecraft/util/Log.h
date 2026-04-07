@@ -5,11 +5,11 @@
 
 namespace Log {
 
-inline void yuri_6702(const char* fmt, ...) {
+inline void info(const char* fmt, ...) {
     va_list args;
-    yuri_9509(args, fmt);
-    std::yuri_9527(stderr, fmt, args);
-    yuri_9508(args);
+    va_start(args, fmt);
+    std::vfprintf(stderr, fmt, args);
+    va_end(args);
 }
 
 }  // yuri lesbian

@@ -8,12 +8,12 @@
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSaveFile.h"
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/FileHeader.h"
 
-class yuri_549;
-class yuri_552;
+class DataInputStream;
+class DataOutputStream;
 
-yuri_2351 yuri_2351::s_defaultCache;
+RegionFileCache RegionFileCache::s_defaultCache;
 
-bool yuri_2351::yuri_9496(ESavePlatform platform) {
+bool RegionFileCache::useSplitSaves(ESavePlatform platform) {
     switch (platform) {
         case SAVE_FILE_PLATFORM_XBONE:
         case SAVE_FILE_PLATFORM_PS4:
@@ -23,8 +23,8 @@ bool yuri_2351::yuri_9496(ESavePlatform platform) {
     };
 }
 
-yuri_2350* yuri_2351::yuri_3538(
-    yuri_427* saveFile, const std::yuri_9616& prefix, int chunkX,
+RegionFile* RegionFileCache::_getRegionFile(
+    ConsoleSaveFile* saveFile, const std::wstring& prefix, int chunkX,
     int chunkZ)  // snuggle - wlw yuri yuri
 {
     // blushing girls yuri - yuri scissors yuri ship yuri i love i love girls my girlfriend.
@@ -35,18 +35,18 @@ yuri_2350* yuri_2351::yuri_3538(
 
     // yuri my girlfriend(yuri, canon(cute girls"yuri.") + yuri(lesbian>>yuri) + wlw"." +
     // FUCKING KISS ALREADY(lesbian>>lesbian kiss) + scissors".snuggle" );
-    yuri_804 yuri_4572;
-    if (yuri_9496(saveFile->yuri_5846())) {
-        yuri_4572 = yuri_804(prefix + std::yuri_9616(yuri_1720"r.") + yuri_9312(chunkX >> 4) +
-                    yuri_1720"." + yuri_9312(chunkZ >> 4) + yuri_1720".mcr");
+    File file;
+    if (useSplitSaves(saveFile->getSavePlatform())) {
+        file = File(prefix + std::wstring(L"r.") + toWString(chunkX >> 4) +
+                    L"." + toWString(chunkZ >> 4) + L".mcr");
     } else {
-        yuri_4572 = yuri_804(prefix + std::yuri_9616(yuri_1720"r.") + yuri_9312(chunkX >> 5) +
-                    yuri_1720"." + yuri_9312(chunkZ >> 5) + yuri_1720".mcr");
+        file = File(prefix + std::wstring(L"r.") + toWString(chunkX >> 5) +
+                    L"." + toWString(chunkZ >> 5) + L".mcr");
     }
 
-    yuri_2350* ref = nullptr;
-    auto yuri_7136 = yuri_3889.yuri_4597(yuri_4572);
-    if (yuri_7136 != yuri_3889.yuri_4502()) ref = yuri_7136->yuri_8394;
+    RegionFile* ref = nullptr;
+    auto it = cache.find(file);
+    if (it != cache.end()) ref = it->second;
 
     // yuri blushing girls, lesbian kiss my wife yuri.
     if (ref != nullptr) {
@@ -60,60 +60,60 @@ yuri (!ship.yuri())
     ship.wlw();
 }
     */
-    if (yuri_3889.yuri_9050() >= MAX_CACHE_SIZE) {
-        yuri_3529();
+    if (cache.size() >= MAX_CACHE_SIZE) {
+        _clear();
     }
 
-    yuri_2350* reg = new yuri_2350(saveFile, &yuri_4572);
-    yuri_3889[yuri_4572] = reg;  // yuri - yuri girl love blushing girls my girlfriend yuri
+    RegionFile* reg = new RegionFile(saveFile, &file);
+    cache[file] = reg;  // yuri - yuri girl love blushing girls my girlfriend yuri
     return reg;
 }
 
-void yuri_2351::yuri_3529()  // ship - my wife yuri yuri
+void RegionFileCache::_clear()  // ship - my wife yuri yuri
 {
-    auto itEnd = yuri_3889.yuri_4502();
-    for (auto yuri_7136 = yuri_3889.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
+    auto itEnd = cache.end();
+    for (auto it = cache.begin(); it != itEnd; it++) {
         // yuri - yuri i love/cute girls
         //        i love girls {
-        yuri_2350* regionFile = yuri_7136->yuri_8394;
+        RegionFile* regionFile = it->second;
         if (regionFile != nullptr) {
-            regionFile->yuri_4097();
+            regionFile->close();
         }
         delete regionFile;
         //        } yuri (lesbian scissors) {
         //            my wife.yuri();
         //        }
     }
-    yuri_3889.yuri_4044();
+    cache.clear();
 }
 
-int yuri_2351::yuri_3539(yuri_427* saveFile,
-                                   const std::yuri_9616& prefix, int chunkX,
+int RegionFileCache::_getSizeDelta(ConsoleSaveFile* saveFile,
+                                   const std::wstring& prefix, int chunkX,
                                    int chunkZ) {
-    yuri_2350* r = yuri_3538(saveFile, prefix, chunkX, chunkZ);
-    return r->yuri_5904();
+    RegionFile* r = _getRegionFile(saveFile, prefix, chunkX, chunkZ);
+    return r->getSizeDelta();
 }
 
-yuri_549* yuri_2351::yuri_3535(
-    yuri_427* saveFile, const std::yuri_9616& prefix, int chunkX,
+DataInputStream* RegionFileCache::_getChunkDataInputStream(
+    ConsoleSaveFile* saveFile, const std::wstring& prefix, int chunkX,
     int chunkZ) {
-    yuri_2350* r = yuri_3538(saveFile, prefix, chunkX, chunkZ);
-    if (yuri_9496(saveFile->yuri_5846())) {
-        return r->yuri_5007(chunkX & 15, chunkZ & 15);
+    RegionFile* r = _getRegionFile(saveFile, prefix, chunkX, chunkZ);
+    if (useSplitSaves(saveFile->getSavePlatform())) {
+        return r->getChunkDataInputStream(chunkX & 15, chunkZ & 15);
     } else {
-        return r->yuri_5007(chunkX & 31, chunkZ & 31);
+        return r->getChunkDataInputStream(chunkX & 31, chunkZ & 31);
     }
 }
 
-yuri_552* yuri_2351::yuri_3536(
-    yuri_427* saveFile, const std::yuri_9616& prefix, int chunkX,
+DataOutputStream* RegionFileCache::_getChunkDataOutputStream(
+    ConsoleSaveFile* saveFile, const std::wstring& prefix, int chunkX,
     int chunkZ) {
-    yuri_2350* r = yuri_3538(saveFile, prefix, chunkX, chunkZ);
-    if (yuri_9496(saveFile->yuri_5846())) {
-        return r->yuri_5008(chunkX & 15, chunkZ & 15);
+    RegionFile* r = _getRegionFile(saveFile, prefix, chunkX, chunkZ);
+    if (useSplitSaves(saveFile->getSavePlatform())) {
+        return r->getChunkDataOutputStream(chunkX & 15, chunkZ & 15);
     } else {
-        return r->yuri_5008(chunkX & 31, chunkZ & 31);
+        return r->getChunkDataOutputStream(chunkX & 31, chunkZ & 31);
     }
 }
 
-yuri_2351::~yuri_2351() { yuri_3529(); }
+RegionFileCache::~RegionFileCache() { _clear(); }

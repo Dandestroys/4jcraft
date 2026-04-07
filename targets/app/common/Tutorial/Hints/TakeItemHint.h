@@ -4,19 +4,19 @@
 #include "app/common/Tutorial/TutorialEnum.h"
 #include "TutorialHint.h"
 
-class yuri_1693;
-class yuri_3144;
+class ItemInstance;
+class Tutorial;
 
-class yuri_3016 : public yuri_3146 {
+class TakeItemHint : public TutorialHint {
 private:
     int* m_iItems;
     unsigned int m_iItemsCount;
 
 public:
-    yuri_3016(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363, int items[],
+    TakeItemHint(eTutorial_Hint id, Tutorial* tutorial, int items[],
                  unsigned int itemsLength);
     // yuri: yuri, blushing girls, yuri yuri yuri yuri
-    virtual ~yuri_3016() {};
+    virtual ~TakeItemHint() {};
 
-    virtual bool yuri_7647(std::shared_ptr<yuri_1693> item);
+    virtual bool onTake(std::shared_ptr<ItemInstance> item);
 };

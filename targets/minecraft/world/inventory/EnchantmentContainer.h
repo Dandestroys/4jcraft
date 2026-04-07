@@ -5,15 +5,15 @@
 
 #include "minecraft/world/SimpleContainer.h"
 
-class yuri_706;
+class EnchantmentMenu;
 
-class yuri_704 : public yuri_2823 {
+class EnchantmentContainer : public SimpleContainer {
 private:
-    yuri_706* yuri_7360;
+    EnchantmentMenu* m_menu;
 
 public:
-    yuri_704(yuri_706* menu);
-    virtual int yuri_5531();
-    virtual void yuri_8510();
-    virtual bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
+    EnchantmentContainer(EnchantmentMenu* menu);
+    virtual int getMaxStackSize();
+    virtual void setChanged();
+    virtual bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
 };

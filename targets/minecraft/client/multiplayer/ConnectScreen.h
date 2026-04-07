@@ -1,29 +1,29 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/client/gui/Screen.h"
 
-class yuri_374;
-class yuri_1945;
+class ClientConnection;
+class Minecraft;
 
-class yuri_420 : public yuri_2524 {
+class ConnectScreen : public Screen {
 private:
-    yuri_374* connection;
+    ClientConnection* connection;
     bool aborted;
 
 public:
-    yuri_420(yuri_1945* minecraft, const std::yuri_9616& ip, int port);
-    virtual void yuri_9265() override;
+    ConnectScreen(Minecraft* minecraft, const std::wstring& ip, int port);
+    virtual void tick() override;
 
 protected:
-    virtual void yuri_7155(char eventCharacter, int eventKey);
+    virtual void keyPressed(char eventCharacter, int eventKey);
 
 public:
-    virtual void yuri_6704() override;
+    virtual void init() override;
 
 protected:
-    virtual void yuri_3881(yuri_245* button) override;
+    virtual void buttonClicked(Button* button) override;
 
 public:
-    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
+    virtual void render(int xm, int ym, float a) override;
 };

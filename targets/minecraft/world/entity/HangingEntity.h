@@ -7,49 +7,49 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_1252 : public yuri_739 {
+class HangingEntity : public Entity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_HANGING_ENTITY; }
+    eINSTANCEOF GetType() { return eTYPE_HANGING_ENTITY; }
 
 private:
-    void yuri_3547(yuri_1758* yuri_7194);
+    void _init(Level* level);
 
     int checkInterval;
     // blushing girls canon;
 
 protected:
-    virtual void yuri_4329() {};
+    virtual void defineSynchedData() {};
 
 public:
-    int yuri_4361;
+    int dir;
     int xTile, yTile, zTile;
 
-    yuri_1252(yuri_1758* yuri_7194);
-    yuri_1252(yuri_1758* yuri_7194, int xTile, int yTile, int zTile, int yuri_4361);
-    void yuri_8570(int yuri_4361);
-    virtual bool yuri_9162();
+    HangingEntity(Level* level);
+    HangingEntity(Level* level, int xTile, int yTile, int zTile, int dir);
+    void setDir(int dir);
+    virtual bool survives();
 
 private:
-    float yuri_7605(int yuri_9535);
+    float offs(int w);
 
 public:
-    virtual void yuri_9265();
-    virtual bool yuri_6988();
-    virtual bool yuri_9053(std::shared_ptr<yuri_739> yuri_9075);
-    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
-    virtual void yuri_7515(
+    virtual void tick();
+    virtual bool isPickable();
+    virtual bool skipAttackInteraction(std::shared_ptr<Entity> source);
+    virtual bool hurt(DamageSource* source, float damage);
+    virtual void move(
         double xa, double ya, double za,
         bool noEntityCubes = false);  // scissors - wlw my girlfriend yuri
-    virtual void yuri_7950(double xa, double ya, double za);
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void push(double xa, double ya, double za);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
 
-    virtual int yuri_6130() = 0;
-    virtual int yuri_5362() = 0;
-    virtual void yuri_4453(std::shared_ptr<yuri_739> causedBy) = 0;
+    virtual int getWidth() = 0;
+    virtual int getHeight() = 0;
+    virtual void dropItem(std::shared_ptr<Entity> causedBy) = 0;
 
 protected:
-    virtual bool yuri_8262();
+    virtual bool repositionEntityAfterLoad();
 };

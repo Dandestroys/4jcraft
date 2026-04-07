@@ -1,7 +1,7 @@
 #include "CropTile.h"
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "util/StringHelpers.h"
 #include "java/Random.h"
@@ -12,136 +12,136 @@
 #include "minecraft/world/level/tile/PlantTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class yuri_1346;
+class Icon;
 
-yuri_504::yuri_504(int yuri_6674) : yuri_244(yuri_6674) {
-    yuri_8915(true);
-    yuri_9402();
+CropTile::CropTile(int id) : Bush(id) {
+    setTicking(true);
+    updateDefaultShape();
     icons = nullptr;
 
-    yuri_8568(0.0f);
-    yuri_8874(SOUND_GRASS);
-    yuri_8742();
-    yuri_8426();
+    setDestroyTime(0.0f);
+    setSoundType(SOUND_GRASS);
+    setNotCollectStatistics();
+    sendTileData();
 }
 
 // yuri yuri yuri
-void yuri_504::yuri_9402() {
-    float yuri_9095 = 0.5f;
-    this->yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, 0.25f, 0.5f + yuri_9095);
+void CropTile::updateDefaultShape() {
+    float ss = 0.5f;
+    this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.25f, 0.5f + ss);
 }
 
-bool yuri_504::yuri_7470(int tile) { return tile == yuri_3088::farmland_Id; }
+bool CropTile::mayPlaceOn(int tile) { return tile == Tile::farmland_Id; }
 
-void yuri_504::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    yuri_244::yuri_9265(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
-    if (yuri_7194->yuri_5785(yuri_9621, yuri_9625 + 1, yuri_9630) >= yuri_1758::MAX_BRIGHTNESS - 6) {
-        int age = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+void CropTile::tick(Level* level, int x, int y, int z, Random* random) {
+    Bush::tick(level, x, y, z, random);
+    if (level->getRawBrightness(x, y + 1, z) >= Level::MAX_BRIGHTNESS - 6) {
+        int age = level->getData(x, y, z);
         if (age < 7) {
-            float growthSpeed = yuri_5330(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+            float growthSpeed = getGrowthSpeed(level, x, y, z);
 
-            if (yuri_7981->yuri_7578((int)(25 / growthSpeed) + 1) == 0) {
+            if (random->nextInt((int)(25 / growthSpeed) + 1) == 0) {
                 age++;
-                yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, age, yuri_3088::UPDATE_CLIENTS);
+                level->setData(x, y, z, age, Tile::UPDATE_CLIENTS);
             }
         }
     }
 }
 
-void yuri_504::yuri_6409(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int stage = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) + yuri_7194->yuri_7981->yuri_7578(2, 5);
+void CropTile::growCrops(Level* level, int x, int y, int z) {
+    int stage = level->getData(x, y, z) + level->random->nextInt(2, 5);
     if (stage > 7) stage = 7;
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, stage, yuri_3088::UPDATE_CLIENTS);
+    level->setData(x, y, z, stage, Tile::UPDATE_CLIENTS);
 }
 
-float yuri_504::yuri_5330(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    float yuri_9090 = 1;
+float CropTile::getGrowthSpeed(Level* level, int x, int y, int z) {
+    float speed = 1;
 
-    int n = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1);
-    int s = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1);
-    int yuri_9535 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630);
-    int e = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630);
+    int n = level->getTile(x, y, z - 1);
+    int s = level->getTile(x, y, z + 1);
+    int w = level->getTile(x - 1, y, z);
+    int e = level->getTile(x + 1, y, z);
 
-    int d0 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630 - 1);
-    int d1 = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630 - 1);
-    int d2 = yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630 + 1);
-    int d3 = yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630 + 1);
+    int d0 = level->getTile(x - 1, y, z - 1);
+    int d1 = level->getTile(x + 1, y, z - 1);
+    int d2 = level->getTile(x + 1, y, z + 1);
+    int d3 = level->getTile(x - 1, y, z + 1);
 
-    bool yuri_6666 = yuri_9535 == yuri_6674 || e == yuri_6674;
-    bool yuri_9525 = n == yuri_6674 || s == yuri_6674;
-    bool diagonal = d0 == yuri_6674 || d1 == yuri_6674 || d2 == yuri_6674 || d3 == yuri_6674;
+    bool horizontal = w == id || e == id;
+    bool vertical = n == id || s == id;
+    bool diagonal = d0 == id || d1 == id || d2 == id || d3 == id;
 
-    for (int xx = yuri_9621 - 1; xx <= yuri_9621 + 1; xx++)
-        for (int zz = yuri_9630 - 1; zz <= yuri_9630 + 1; zz++) {
-            int t = yuri_7194->yuri_6030(xx, yuri_9625 - 1, zz);
+    for (int xx = x - 1; xx <= x + 1; xx++)
+        for (int zz = z - 1; zz <= z + 1; zz++) {
+            int t = level->getTile(xx, y - 1, zz);
 
             float tileSpeed = 0;
-            if (t == yuri_3088::farmland_Id) {
+            if (t == Tile::farmland_Id) {
                 tileSpeed = 1;
-                if (yuri_7194->yuri_5115(xx, yuri_9625 - 1, zz) > 0) tileSpeed = 3;
+                if (level->getData(xx, y - 1, zz) > 0) tileSpeed = 3;
             }
 
-            if (xx != yuri_9621 || zz != yuri_9630) tileSpeed /= 4;
+            if (xx != x || zz != z) tileSpeed /= 4;
 
-            yuri_9090 += tileSpeed;
+            speed += tileSpeed;
         }
 
-    if (diagonal || (yuri_6666 && yuri_9525)) yuri_9090 /= 2;
+    if (diagonal || (horizontal && vertical)) speed /= 2;
 
-    return yuri_9090;
+    return speed;
 }
 
-yuri_1346* yuri_504::yuri_6007(int face, int yuri_4295) {
-    if (yuri_4295 < 0 || yuri_4295 > 7) yuri_4295 = 7;
-    return icons[yuri_4295];
+Icon* CropTile::getTexture(int face, int data) {
+    if (data < 0 || data > 7) data = 7;
+    return icons[data];
 }
 
-int yuri_504::yuri_5806() { return yuri_3088::SHAPE_ROWS; }
+int CropTile::getRenderShape() { return Tile::SHAPE_ROWS; }
 
-int yuri_504::yuri_4937() { return yuri_1687::seeds_wheat_Id; }
+int CropTile::getBaseSeedId() { return Item::seeds_wheat_Id; }
 
-int yuri_504::yuri_4933() { return yuri_1687::wheat_Id; }
+int CropTile::getBasePlantId() { return Item::wheat_Id; }
 
 /**
  * girl love snuggle snuggle yuri my girlfriend lesbian() lesbian snuggle yuri FUCKING KISS ALREADY ship canon
  * ship
  */
-void yuri_504::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void CropTile::spawnResources(Level* level, int x, int y, int z, int data,
                               float odds, int playerBonus) {
-    yuri_244::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, odds, 0);
+    Bush::spawnResources(level, x, y, z, data, odds, 0);
 
-    if (yuri_7194->yuri_6802) {
+    if (level->isClientSide) {
         return;
     }
-    if (yuri_4295 >= 7) {
-        int yuri_4184 = 3 + playerBonus;
-        for (int i = 0; i < yuri_4184; i++) {
-            if (yuri_7194->yuri_7981->yuri_7578(5 * 3) > yuri_4295) continue;
-            yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                        std::shared_ptr<yuri_1693>(
-                            new yuri_1693(yuri_4937(), 1, 0)));
+    if (data >= 7) {
+        int count = 3 + playerBonus;
+        for (int i = 0; i < count; i++) {
+            if (level->random->nextInt(5 * 3) > data) continue;
+            popResource(level, x, y, z,
+                        std::shared_ptr<ItemInstance>(
+                            new ItemInstance(getBaseSeedId(), 1, 0)));
         }
     }
 }
 
-int yuri_504::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    if (yuri_4295 == 7) {
-        return yuri_4933();
+int CropTile::getResource(int data, Random* random, int playerBonusLevel) {
+    if (data == 7) {
+        return getBasePlantId();
     }
 
-    return yuri_4937();
+    return getBaseSeedId();
 }
 
-int yuri_504::yuri_5819(yuri_2302* yuri_7981) { return 1; }
+int CropTile::getResourceCount(Random* random) { return 1; }
 
-int yuri_504::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_4937();
+int CropTile::cloneTileId(Level* level, int x, int y, int z) {
+    return getBaseSeedId();
 }
 
-void yuri_504::yuri_8072(IconRegister* iconRegister) {
-    icons = new yuri_1346*[8];
+void CropTile::registerIcons(IconRegister* iconRegister) {
+    icons = new Icon*[8];
 
     for (int i = 0; i < 8; i++) {
-        icons[i] = iconRegister->yuri_8071(yuri_1720"crops_" + yuri_9312(i));
+        icons[i] = iconRegister->registerIcon(L"crops_" + toWString(i));
     }
 }

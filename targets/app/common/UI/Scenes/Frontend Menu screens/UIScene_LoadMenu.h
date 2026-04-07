@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "platform/sdl2/Storage.h"
 #include "IUIScene_StartGame.h"
@@ -17,11 +17,11 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_533;
-class yuri_1763;
-class yuri_3188;
+class DLCPack;
+class LevelGenerationOptions;
+class UILayer;
 
-class yuri_3232 : public yuri_1342 {
+class UIScene_LoadMenu : public IUIScene_StartGame {
 private:
     enum EControls {
         eControl_GameMode,
@@ -34,32 +34,32 @@ private:
 
     static int m_iDifficultyTitleSettingA[4];
 
-    yuri_3162 m_controlMainPanel;
-    yuri_3173 m_labelGameName, m_labelSeed, m_labelCreatedMode;
-    yuri_3165 m_buttonGamemode, m_buttonMoreOptions, m_buttonLoadWorld;
-    yuri_3179 m_sliderDifficulty;
+    UIControl m_controlMainPanel;
+    UIControl_Label m_labelGameName, m_labelSeed, m_labelCreatedMode;
+    UIControl_Button m_buttonGamemode, m_buttonMoreOptions, m_buttonLoadWorld;
+    UIControl_Slider m_sliderDifficulty;
     UIControl_BitmapIcon m_bitmapIcon;
 
-    yuri_3167 m_checkboxOnline;
+    UIControl_CheckBox m_checkboxOnline;
 
-    yuri_3257(yuri_1342)
-    yuri_3260(m_controlMainPanel, "MainPanel")
-    yuri_3256(m_controlMainPanel)
-    yuri_3260(m_labelGameName, "GameName")
-    yuri_3260(m_labelCreatedMode, "CreatedMode")
-    yuri_3260(m_labelSeed, "Seed")
-    yuri_3260(m_texturePackList, "TexturePackSelector")
-    yuri_3260(m_buttonGamemode, "GameModeToggle")
-    yuri_3260(m_checkboxOnline, "CheckboxOnline")
-    yuri_3260(m_buttonMoreOptions, "MoreOptions")
-    yuri_3260(m_buttonLoadWorld, "LoadSettings")
-    yuri_3260(m_sliderDifficulty, "Difficulty")
-    yuri_3260(m_bitmapIcon, "LevelIcon")
-    yuri_3258()
-    yuri_3259()
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(IUIScene_StartGame)
+    UI_MAP_ELEMENT(m_controlMainPanel, "MainPanel")
+    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
+    UI_MAP_ELEMENT(m_labelGameName, "GameName")
+    UI_MAP_ELEMENT(m_labelCreatedMode, "CreatedMode")
+    UI_MAP_ELEMENT(m_labelSeed, "Seed")
+    UI_MAP_ELEMENT(m_texturePackList, "TexturePackSelector")
+    UI_MAP_ELEMENT(m_buttonGamemode, "GameModeToggle")
+    UI_MAP_ELEMENT(m_checkboxOnline, "CheckboxOnline")
+    UI_MAP_ELEMENT(m_buttonMoreOptions, "MoreOptions")
+    UI_MAP_ELEMENT(m_buttonLoadWorld, "LoadSettings")
+    UI_MAP_ELEMENT(m_sliderDifficulty, "Difficulty")
+    UI_MAP_ELEMENT(m_bitmapIcon, "LevelIcon")
+    UI_END_MAP_CHILD_ELEMENTS()
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    yuri_1763* m_levelGen;
-    yuri_533* m_pDLCPack;
+    LevelGenerationOptions* m_levelGen;
+    DLCPack* m_pDLCPack;
 
     int m_iSaveGameInfoIndex;
     int m_CurrentDifficulty;
@@ -75,67 +75,67 @@ private:
     bool m_bRequestQuadrantSignin;
     bool m_bIsCorrupt;
     bool m_bThumbnailGetFailed;
-    yuri_6733 m_seed;
+    int64_t m_seed;
 
     // i love amy is the best *blushing girls; // yuri FUCKING KISS ALREADY yuri lesbian kiss lesbian yuri cute girls'yuri my wife my girlfriend
 
-    std::yuri_9368* m_pbThumbnailData;
+    std::uint8_t* m_pbThumbnailData;
     unsigned int m_uiThumbnailSize;
-    std::yuri_9616 m_thumbnailName;
+    std::wstring m_thumbnailName;
 
     bool m_bRebuildTouchBoxes;
 
 public:
-    yuri_3232(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_LoadMenu(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual void yuri_9478();
-    virtual void yuri_9397();
+    virtual void updateTooltips();
+    virtual void updateComponents();
 
-    virtual EUIScene yuri_5854() { return eUIScene_LoadMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_LoadMenu; }
 
-    virtual void yuri_9265();
+    virtual void tick();
 
-    virtual yuri_3162* yuri_1070();
+    virtual UIControl* GetMainPanel();
 
-    virtual void yuri_6557();
+    virtual void handleTouchBoxRebuild();
 
 protected:
     // ship: yuri yuri yuri hand holding yuri i love wlw yuri
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // yuri
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
-    virtual void yuri_6556(int yuri_6674);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+    virtual void handleTimerComplete(int id);
 
 protected:
-    void yuri_6512(F64 controlId, F64 childId);
-    void yuri_6538(F64 sliderId, F64 currentValue);
-    virtual void yuri_6474(bool navBack);
+    void handlePress(F64 controlId, F64 childId);
+    void handleSliderMove(F64 sliderId, F64 currentValue);
+    virtual void handleGainFocus(bool navBack);
 
 private:
-    void yuri_2909();
-    virtual void yuri_4028();
-    void yuri_1735(void);
+    void StartSharedLaunchFlow();
+    virtual void checkStateAndStartGame();
+    void LaunchGame(void);
 
-    static int yuri_418(void* pParam, int iPad,
-                                   yuri_256::EMessageResult yuri_8300);
-    static void yuri_2902(yuri_3232* pClass, int localUsersMask);
-    int yuri_7265(bool bIsCorrupt, bool bIsOwner);
-    static int yuri_3143(void* pParam, int iPad,
-                                    yuri_256::EMessageResult yuri_8300);
-    static int yuri_1805(void* pParam);
-    static int yuri_334(void* pParam, int iPad,
-                                        yuri_256::EMessageResult yuri_8300);
-    static int yuri_591(void* pParam, int iPad,
-                                        yuri_256::EMessageResult yuri_8300);
-    int yuri_4340(bool bSuccess);
-    static int yuri_2002(void* pParam, int iPad,
-                                     yuri_256::EMessageResult yuri_8300);
+    static int ConfirmLoadReturned(void* pParam, int iPad,
+                                   C4JStorage::EMessageResult result);
+    static void StartGameFromSave(UIScene_LoadMenu* pClass, int localUsersMask);
+    int loadSaveDataReturned(bool bIsCorrupt, bool bIsOwner);
+    static int TrophyDialogReturned(void* pParam, int iPad,
+                                    C4JStorage::EMessageResult result);
+    static int LoadDataComplete(void* pParam);
+    static int CheckResetNetherReturned(void* pParam, int iPad,
+                                        C4JStorage::EMessageResult result);
+    static int DeleteSaveDialogReturned(void* pParam, int iPad,
+                                        C4JStorage::EMessageResult result);
+    int deleteSaveDataReturned(bool bSuccess);
+    static int MustSignInReturnedPSN(void* pParam, int iPad,
+                                     C4JStorage::EMessageResult result);
 
 public:
-    int yuri_7266(std::yuri_9368* pbThumbnail,
+    int loadSaveDataThumbnailReturned(std::uint8_t* pbThumbnail,
                                      unsigned int thumbnailBytes);
-    static int yuri_2903(void* pParam, bool, int);
+    static int StartGame_SignInReturned(void* pParam, bool, int);
 };

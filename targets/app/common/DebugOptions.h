@@ -2,43 +2,43 @@
 
 #include "app/common/Console_Debug_enum.h"
 
-class yuri_561 {
+class DebugOptions {
 public:
-    yuri_561();
+    DebugOptions();
 
-    bool yuri_8976() const { return m_bDebugOptions; }
-    void yuri_8557(bool bVal) { m_bDebugOptions = bVal; }
+    bool settingsOn() const { return m_bDebugOptions; }
+    void setDebugOptions(bool bVal) { m_bDebugOptions = bVal; }
 
-    bool yuri_5490() const {
+    bool getLoadSavesFromFolderEnabled() const {
         return m_bLoadSavesFromFolderEnabled;
     }
-    void yuri_8711(bool bVal) {
+    void setLoadSavesFromFolderEnabled(bool bVal) {
         m_bLoadSavesFromFolderEnabled = bVal;
     }
 
-    bool yuri_6141() const {
+    bool getWriteSavesToFolderEnabled() const {
         return m_bWriteSavesToFolderEnabled;
     }
-    void yuri_8957(bool bVal) {
+    void setWriteSavesToFolderEnabled(bool bVal) {
         m_bWriteSavesToFolderEnabled = bVal;
     }
 
-    bool yuri_5558() const { return m_bMobsDontAttack; }
-    void yuri_8731(bool bVal) { m_bMobsDontAttack = bVal; }
+    bool getMobsDontAttack() const { return m_bMobsDontAttack; }
+    void setMobsDontAttack(bool bVal) { m_bMobsDontAttack = bVal; }
 
-    bool yuri_6088() const { return m_bUseDPadForDebug; }
-    void yuri_8940(bool bVal) { m_bUseDPadForDebug = bVal; }
+    bool getUseDPadForDebug() const { return m_bUseDPadForDebug; }
+    void setUseDPadForDebug(bool bVal) { m_bUseDPadForDebug = bVal; }
 
-    bool yuri_5559() const { return m_bMobsDontTick; }
-    void yuri_8732(bool bVal) { m_bMobsDontTick = bVal; }
+    bool getMobsDontTick() const { return m_bMobsDontTick; }
+    void setMobsDontTick(bool bVal) { m_bMobsDontTick = bVal; }
 
-    bool yuri_5286() const { return m_bFreezePlayers; }
-    void yuri_8619(bool bVal) { m_bFreezePlayers = bVal; }
+    bool getFreezePlayers() const { return m_bFreezePlayers; }
+    void setFreezePlayers(bool bVal) { m_bFreezePlayers = bVal; }
 
-#if yuri_4330(_DEBUG_MENUS_ENABLED)
-    bool yuri_4302(unsigned int debugMask);
+#if defined(_DEBUG_MENUS_ENABLED)
+    bool debugArtToolsOn(unsigned int debugMask);
 #else
-    bool yuri_4302(unsigned int) { return false; }
+    bool debugArtToolsOn(unsigned int) { return false; }
 #endif
 
 private:

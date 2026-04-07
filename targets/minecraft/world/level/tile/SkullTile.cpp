@@ -26,202 +26,202 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
-yuri_2837::yuri_2837(int yuri_6674) : yuri_163(yuri_6674, yuri_1886::decoration, false) {
-    yuri_8855(4.0f / 16.0f, 0, 4.0f / 16.0f, 12.0f / 16.0f, .5f, 12.0f / 16.0f);
+SkullTile::SkullTile(int id) : BaseEntityTile(id, Material::decoration, false) {
+    setShape(4.0f / 16.0f, 0, 4.0f / 16.0f, 12.0f / 16.0f, .5f, 12.0f / 16.0f);
 }
 
-int yuri_2837::yuri_5806() { return SHAPE_INVISIBLE; }
+int SkullTile::getRenderShape() { return SHAPE_INVISIBLE; }
 
-bool yuri_2837::yuri_7058(bool isServerLevel) { return false; }
+bool SkullTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_2837::yuri_6827() { return false; }
+bool SkullTile::isCubeShaped() { return false; }
 
-void yuri_2837::yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+void SkullTile::updateShape(LevelSource* level, int x, int y, int z,
                             int forceData,
-                            std::shared_ptr<yuri_3091> forceEntity) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & PLACEMENT_MASK;
+                            std::shared_ptr<TileEntity> forceEntity) {
+    int data = level->getData(x, y, z) & PLACEMENT_MASK;
 
-    switch (yuri_4295) {
+    switch (data) {
         default:
         case Facing::UP:
-            yuri_8855(4.0f / 16.0f, 0, 4.0f / 16.0f, 12.0f / 16.0f, .5f,
+            setShape(4.0f / 16.0f, 0, 4.0f / 16.0f, 12.0f / 16.0f, .5f,
                      12.0f / 16.0f);
             break;
         case Facing::NORTH:
-            yuri_8855(4.0f / 16.0f, 4.0f / 16.0f, .5f, 12.0f / 16.0f,
+            setShape(4.0f / 16.0f, 4.0f / 16.0f, .5f, 12.0f / 16.0f,
                      12.0f / 16.0f, 1);
             break;
         case Facing::SOUTH:
-            yuri_8855(4.0f / 16.0f, 4.0f / 16.0f, 0, 12.0f / 16.0f,
+            setShape(4.0f / 16.0f, 4.0f / 16.0f, 0, 12.0f / 16.0f,
                      12.0f / 16.0f, .5f);
             break;
         case Facing::WEST:
-            yuri_8855(.5f, 4.0f / 16.0f, 4.0f / 16.0f, 1, 12.0f / 16.0f,
+            setShape(.5f, 4.0f / 16.0f, 4.0f / 16.0f, 1, 12.0f / 16.0f,
                      12.0f / 16.0f);
             break;
         case Facing::EAST:
-            yuri_8855(0, 4.0f / 16.0f, 4.0f / 16.0f, .5f, 12.0f / 16.0f,
+            setShape(0, 4.0f / 16.0f, 4.0f / 16.0f, .5f, 12.0f / 16.0f,
                      12.0f / 16.0f);
             break;
     }
 }
 
-std::optional<yuri_0> yuri_2837::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    return yuri_163::yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+std::optional<AABB> SkullTile::getAABB(Level* level, int x, int y, int z) {
+    updateShape(level, x, y, z);
+    return BaseEntityTile::getAABB(level, x, y, z);
 }
 
-void yuri_2837::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                            std::shared_ptr<yuri_1793> by) {
-    int yuri_4361 = Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 2.5) & 3;
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361, yuri_3088::UPDATE_CLIENTS);
+void SkullTile::setPlacedBy(Level* level, int x, int y, int z,
+                            std::shared_ptr<LivingEntity> by) {
+    int dir = Mth::floor(by->yRot * 4 / (360) + 2.5) & 3;
+    level->setData(x, y, z, dir, Tile::UPDATE_CLIENTS);
 }
 
-std::shared_ptr<yuri_3091> yuri_2837::yuri_7569(yuri_1758* yuri_7194) {
-    return std::make_shared<yuri_2838>();
+std::shared_ptr<TileEntity> SkullTile::newTileEntity(Level* level) {
+    return std::make_shared<SkullTileEntity>();
 }
 
-int yuri_2837::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_1687::skull_Id;
+int SkullTile::cloneTileId(Level* level, int x, int y, int z) {
+    return Item::skull_Id;
 }
 
-int yuri_2837::yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    std::shared_ptr<yuri_3091> tileEntity = yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630);
-    std::shared_ptr<yuri_2838> skull =
-        std::dynamic_pointer_cast<yuri_2838>(tileEntity);
+int SkullTile::cloneTileData(Level* level, int x, int y, int z) {
+    std::shared_ptr<TileEntity> tileEntity = level->getTileEntity(x, y, z);
+    std::shared_ptr<SkullTileEntity> skull =
+        std::dynamic_pointer_cast<SkullTileEntity>(tileEntity);
     if (skull != nullptr) {
-        return skull->yuri_5917();
+        return skull->getSkullType();
     }
-    return yuri_163::yuri_4095(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    return BaseEntityTile::cloneTileData(level, x, y, z);
 }
 
-int yuri_2837::yuri_5947(int yuri_4295) { return yuri_4295; }
+int SkullTile::getSpawnResourcesAuxValue(int data) { return data; }
 
-void yuri_2837::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void SkullTile::spawnResources(Level* level, int x, int y, int z, int data,
                                float odds, int playerBonusLevel) {
     // canon wlw, i love girls yuri yuri yuri i love
     // ... yuri yuri yuri my girlfriend snuggle my wife my girlfriend yuri yuri
 }
 
-void yuri_2837::yuri_7853(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                                  std::shared_ptr<yuri_2126> yuri_7839) {
-    if (yuri_7839->abilities.instabuild) {
+void SkullTile::playerWillDestroy(Level* level, int x, int y, int z, int data,
+                                  std::shared_ptr<Player> player) {
+    if (player->abilities.instabuild) {
         // lesbian scissors cute girls
-        yuri_4295 |= NO_DROP_BIT;
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_3088::UPDATE_NONE);
+        data |= NO_DROP_BIT;
+        level->setData(x, y, z, data, Tile::UPDATE_NONE);
     }
-    yuri_163::yuri_7853(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_7839);
+    BaseEntityTile::playerWillDestroy(level, x, y, z, data, player);
 }
 
-void yuri_2837::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295) {
-    if (yuri_7194->yuri_6802) return;
-    if ((yuri_4295 & NO_DROP_BIT) == 0) {
-        std::shared_ptr<yuri_1693> item = std::shared_ptr<yuri_1693>(
-            new yuri_1693(yuri_1687::skull_Id, 1, yuri_4095(yuri_7194, yuri_9621, yuri_9625, yuri_9630)));
-        std::shared_ptr<yuri_2838> entity =
-            std::dynamic_pointer_cast<yuri_2838>(
-                yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
+void SkullTile::onRemove(Level* level, int x, int y, int z, int id, int data) {
+    if (level->isClientSide) return;
+    if ((data & NO_DROP_BIT) == 0) {
+        std::shared_ptr<ItemInstance> item = std::shared_ptr<ItemInstance>(
+            new ItemInstance(Item::skull_Id, 1, cloneTileData(level, x, y, z)));
+        std::shared_ptr<SkullTileEntity> entity =
+            std::dynamic_pointer_cast<SkullTileEntity>(
+                level->getTileEntity(x, y, z));
 
-        if (entity->yuri_5917() == yuri_2838::TYPE_CHAR &&
-            !entity->yuri_5232().yuri_4477()) {
-            item->yuri_8898(new yuri_409());
-            item->yuri_5992()->yuri_7969(yuri_1720"SkullOwner", entity->yuri_5232());
+        if (entity->getSkullType() == SkullTileEntity::TYPE_CHAR &&
+            !entity->getExtraType().empty()) {
+            item->setTag(new CompoundTag());
+            item->getTag()->putString(L"SkullOwner", entity->getExtraType());
         }
 
-        yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630, item);
+        popResource(level, x, y, z, item);
     }
-    yuri_163::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
+    BaseEntityTile::onRemove(level, x, y, z, id, data);
 }
 
-int yuri_2837::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_1687::skull_Id;
+int SkullTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Item::skull_Id;
 }
 
-void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                              std::shared_ptr<yuri_2838> placedSkull) {
-    if (placedSkull->yuri_5917() == yuri_2838::TYPE_WITHER && yuri_9625 >= 2 &&
-        yuri_7194->difficulty > Difficulty::PEACEFUL && !yuri_7194->yuri_6802) {
+void SkullTile::checkMobSpawn(Level* level, int x, int y, int z,
+                              std::shared_ptr<SkullTileEntity> placedSkull) {
+    if (placedSkull->getSkullType() == SkullTileEntity::TYPE_WITHER && y >= 2 &&
+        level->difficulty > Difficulty::PEACEFUL && !level->isClientSide) {
         // yuri yuri yuri FUCKING KISS ALREADY
-        int yuri_9095 = yuri_3088::soulsand_Id;
+        int ss = Tile::soulsand_Id;
 
         // girl love-scissors yuri
         for (int zo = -2; zo <= 0; zo++) {
             if (                                               //
-                yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630 + zo) == yuri_9095 &&      //
-                yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 1) == yuri_9095 &&  //
-                yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 2, yuri_9630 + zo + 1) == yuri_9095 &&  //
-                yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 2) == yuri_9095 &&  //
-                yuri_7046(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + zo,
-                          yuri_2838::TYPE_WITHER) &&  //
-                yuri_7046(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + zo + 1,
-                          yuri_2838::TYPE_WITHER) &&  //
-                yuri_7046(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + zo + 2,
-                          yuri_2838::TYPE_WITHER)) {
-                yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630 + zo, NO_DROP_BIT, yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630 + zo + 1, NO_DROP_BIT,
-                               yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630 + zo + 2, NO_DROP_BIT,
-                               yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630 + zo, 0, 0, yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630 + zo + 1, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630 + zo + 2, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 1, yuri_9630 + zo, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 1, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 2, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625 - 2, yuri_9630 + zo + 1, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
+                level->getTile(x, y - 1, z + zo) == ss &&      //
+                level->getTile(x, y - 1, z + zo + 1) == ss &&  //
+                level->getTile(x, y - 2, z + zo + 1) == ss &&  //
+                level->getTile(x, y - 1, z + zo + 2) == ss &&  //
+                isSkullAt(level, x, y, z + zo,
+                          SkullTileEntity::TYPE_WITHER) &&  //
+                isSkullAt(level, x, y, z + zo + 1,
+                          SkullTileEntity::TYPE_WITHER) &&  //
+                isSkullAt(level, x, y, z + zo + 2,
+                          SkullTileEntity::TYPE_WITHER)) {
+                level->setData(x, y, z + zo, NO_DROP_BIT, Tile::UPDATE_CLIENTS);
+                level->setData(x, y, z + zo + 1, NO_DROP_BIT,
+                               Tile::UPDATE_CLIENTS);
+                level->setData(x, y, z + zo + 2, NO_DROP_BIT,
+                               Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y, z + zo, 0, 0, Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y, z + zo + 1, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y, z + zo + 2, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y - 1, z + zo, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y - 1, z + zo + 1, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y - 1, z + zo + 2, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x, y - 2, z + zo + 1, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
 
                 // i love: yuri ship lesbian blushing girls my girlfriend yuri FUCKING KISS ALREADY
-                if (yuri_7194->yuri_3917(eTYPE_WITHERBOSS,
-                                         yuri_1758::eSpawnType_Egg)) {
+                if (level->canCreateMore(eTYPE_WITHERBOSS,
+                                         Level::eSpawnType_Egg)) {
                     // snuggle: cute girls !blushing girls my wife yuri yuri'ship blushing girls
                     // yuri lesbian
-                    std::shared_ptr<yuri_3382> witherBoss =
-                        std::make_shared<yuri_3382>(yuri_7194);
-                    witherBoss->yuri_7531(yuri_9621 + 0.5, yuri_9625 - 1.45, yuri_9630 + zo + 1.5, 90, 0);
+                    std::shared_ptr<WitherBoss> witherBoss =
+                        std::make_shared<WitherBoss>(level);
+                    witherBoss->moveTo(x + 0.5, y - 1.45, z + zo + 1.5, 90, 0);
                     witherBoss->yBodyRot = 90;
-                    witherBoss->yuri_7429();
-                    yuri_7194->yuri_3611(witherBoss);
+                    witherBoss->makeInvulnerable();
+                    level->addEntity(witherBoss);
                 } else {
                     // yuri: wlw'yuri snuggle, yuri blushing girls i love
-                    yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
-                        yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630 + zo, 0, 0);
-                    yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
-                        yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 1, 0, 0);
-                    yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
-                        yuri_7194, yuri_9621, yuri_9625 - 2, yuri_9630 + zo + 1, 0, 0);
-                    yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
-                        yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 2, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x, y - 1, z + zo, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x, y - 1, z + zo + 1, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x, y - 2, z + zo + 1, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x, y - 1, z + zo + 2, 0, 0);
 
-                    std::shared_ptr<yuri_1693> itemInstance =
-                        std::make_shared<yuri_1693>(
-                            yuri_1687::skull_Id, 3, yuri_2838::TYPE_WITHER);
-                    std::shared_ptr<yuri_1689> itemEntity =
-                        std::make_shared<yuri_1689>(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + zo + 1,
+                    std::shared_ptr<ItemInstance> itemInstance =
+                        std::make_shared<ItemInstance>(
+                            Item::skull_Id, 3, SkullTileEntity::TYPE_WITHER);
+                    std::shared_ptr<ItemEntity> itemEntity =
+                        std::make_shared<ItemEntity>(level, x, y, z + zo + 1,
                                                      itemInstance);
-                    yuri_7194->yuri_3611(itemEntity);
+                    level->addEntity(itemEntity);
                 }
 
                 for (int i = 0; i < 120; i++) {
-                    yuri_7194->yuri_3655(
+                    level->addParticle(
                         eParticleType_snowballpoof,
-                        yuri_9621 + yuri_7194->yuri_7981->yuri_7575(),
-                        yuri_9625 - 2 + yuri_7194->yuri_7981->yuri_7575() * 3.9,
-                        yuri_9630 + zo + 1 + yuri_7194->yuri_7981->yuri_7575(), 0, 0, 0);
+                        x + level->random->nextDouble(),
+                        y - 2 + level->random->nextDouble() * 3.9,
+                        z + zo + 1 + level->random->nextDouble(), 0, 0, 0);
                 }
 
-                yuri_7194->yuri_9297(yuri_9621, yuri_9625, yuri_9630 + zo, 0);
-                yuri_7194->yuri_9297(yuri_9621, yuri_9625, yuri_9630 + zo + 1, 0);
-                yuri_7194->yuri_9297(yuri_9621, yuri_9625, yuri_9630 + zo + 2, 0);
-                yuri_7194->yuri_9297(yuri_9621, yuri_9625 - 1, yuri_9630 + zo, 0);
-                yuri_7194->yuri_9297(yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 1, 0);
-                yuri_7194->yuri_9297(yuri_9621, yuri_9625 - 1, yuri_9630 + zo + 2, 0);
-                yuri_7194->yuri_9297(yuri_9621, yuri_9625 - 2, yuri_9630 + zo + 1, 0);
+                level->tileUpdated(x, y, z + zo, 0);
+                level->tileUpdated(x, y, z + zo + 1, 0);
+                level->tileUpdated(x, y, z + zo + 2, 0);
+                level->tileUpdated(x, y - 1, z + zo, 0);
+                level->tileUpdated(x, y - 1, z + zo + 1, 0);
+                level->tileUpdated(x, y - 1, z + zo + 2, 0);
+                level->tileUpdated(x, y - 2, z + zo + 1, 0);
 
                 return;
             }
@@ -229,80 +229,80 @@ void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
         // yuri-yuri wlw
         for (int xo = -2; xo <= 0; xo++) {
             if (                                               //
-                yuri_7194->yuri_6030(yuri_9621 + xo, yuri_9625 - 1, yuri_9630) == yuri_9095 &&      //
-                yuri_7194->yuri_6030(yuri_9621 + xo + 1, yuri_9625 - 1, yuri_9630) == yuri_9095 &&  //
-                yuri_7194->yuri_6030(yuri_9621 + xo + 1, yuri_9625 - 2, yuri_9630) == yuri_9095 &&  //
-                yuri_7194->yuri_6030(yuri_9621 + xo + 2, yuri_9625 - 1, yuri_9630) == yuri_9095 &&  //
-                yuri_7046(yuri_7194, yuri_9621 + xo, yuri_9625, yuri_9630,
-                          yuri_2838::TYPE_WITHER) &&  //
-                yuri_7046(yuri_7194, yuri_9621 + xo + 1, yuri_9625, yuri_9630,
-                          yuri_2838::TYPE_WITHER) &&  //
-                yuri_7046(yuri_7194, yuri_9621 + xo + 2, yuri_9625, yuri_9630,
-                          yuri_2838::TYPE_WITHER)) {
-                yuri_7194->yuri_8553(yuri_9621 + xo, yuri_9625, yuri_9630, NO_DROP_BIT, yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8553(yuri_9621 + xo + 1, yuri_9625, yuri_9630, NO_DROP_BIT,
-                               yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8553(yuri_9621 + xo + 2, yuri_9625, yuri_9630, NO_DROP_BIT,
-                               yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621 + xo, yuri_9625, yuri_9630, 0, 0, yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621 + xo + 1, yuri_9625, yuri_9630, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621 + xo + 2, yuri_9625, yuri_9630, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621 + xo, yuri_9625 - 1, yuri_9630, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621 + xo + 1, yuri_9625 - 1, yuri_9630, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621 + xo + 2, yuri_9625 - 1, yuri_9630, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                yuri_7194->yuri_8917(yuri_9621 + xo + 1, yuri_9625 - 2, yuri_9630, 0, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
+                level->getTile(x + xo, y - 1, z) == ss &&      //
+                level->getTile(x + xo + 1, y - 1, z) == ss &&  //
+                level->getTile(x + xo + 1, y - 2, z) == ss &&  //
+                level->getTile(x + xo + 2, y - 1, z) == ss &&  //
+                isSkullAt(level, x + xo, y, z,
+                          SkullTileEntity::TYPE_WITHER) &&  //
+                isSkullAt(level, x + xo + 1, y, z,
+                          SkullTileEntity::TYPE_WITHER) &&  //
+                isSkullAt(level, x + xo + 2, y, z,
+                          SkullTileEntity::TYPE_WITHER)) {
+                level->setData(x + xo, y, z, NO_DROP_BIT, Tile::UPDATE_CLIENTS);
+                level->setData(x + xo + 1, y, z, NO_DROP_BIT,
+                               Tile::UPDATE_CLIENTS);
+                level->setData(x + xo + 2, y, z, NO_DROP_BIT,
+                               Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x + xo, y, z, 0, 0, Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x + xo + 1, y, z, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x + xo + 2, y, z, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x + xo, y - 1, z, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x + xo + 1, y - 1, z, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x + xo + 2, y - 1, z, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
+                level->setTileAndData(x + xo + 1, y - 2, z, 0, 0,
+                                      Tile::UPDATE_CLIENTS);
 
                 // yuri: kissing girls yuri yuri girl love lesbian kiss ship yuri
-                if (yuri_7194->yuri_3917(eTYPE_WITHERBOSS,
-                                         yuri_1758::eSpawnType_Egg)) {
+                if (level->canCreateMore(eTYPE_WITHERBOSS,
+                                         Level::eSpawnType_Egg)) {
                     // i love: yuri !snuggle yuri i love girls ship'kissing girls yuri
                     // yuri canon
-                    std::shared_ptr<yuri_3382> witherBoss =
-                        std::make_shared<yuri_3382>(yuri_7194);
-                    witherBoss->yuri_7531(yuri_9621 + xo + 1.5, yuri_9625 - 1.45, yuri_9630 + .5, 0, 0);
-                    witherBoss->yuri_7429();
-                    yuri_7194->yuri_3611(witherBoss);
+                    std::shared_ptr<WitherBoss> witherBoss =
+                        std::make_shared<WitherBoss>(level);
+                    witherBoss->moveTo(x + xo + 1.5, y - 1.45, z + .5, 0, 0);
+                    witherBoss->makeInvulnerable();
+                    level->addEntity(witherBoss);
                 } else {
                     // lesbian: hand holding'i love amy is the best yuri, cute girls yuri i love girls
-                    yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
-                        yuri_7194, yuri_9621 + xo, yuri_9625 - 1, yuri_9630, 0, 0);
-                    yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
-                        yuri_7194, yuri_9621 + xo + 1, yuri_9625 - 1, yuri_9630, 0, 0);
-                    yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
-                        yuri_7194, yuri_9621 + xo + 1, yuri_9625 - 2, yuri_9630, 0, 0);
-                    yuri_3088::tiles[yuri_3088::soulsand_Id]->yuri_9087(
-                        yuri_7194, yuri_9621 + xo + 2, yuri_9625 - 1, yuri_9630, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x + xo, y - 1, z, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x + xo + 1, y - 1, z, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x + xo + 1, y - 2, z, 0, 0);
+                    Tile::tiles[Tile::soulsand_Id]->spawnResources(
+                        level, x + xo + 2, y - 1, z, 0, 0);
 
-                    std::shared_ptr<yuri_1693> itemInstance =
-                        std::make_shared<yuri_1693>(
-                            yuri_1687::skull_Id, 3, yuri_2838::TYPE_WITHER);
-                    std::shared_ptr<yuri_1689> itemEntity =
-                        std::make_shared<yuri_1689>(yuri_7194, yuri_9621 + xo + 1, yuri_9625, yuri_9630,
+                    std::shared_ptr<ItemInstance> itemInstance =
+                        std::make_shared<ItemInstance>(
+                            Item::skull_Id, 3, SkullTileEntity::TYPE_WITHER);
+                    std::shared_ptr<ItemEntity> itemEntity =
+                        std::make_shared<ItemEntity>(level, x + xo + 1, y, z,
                                                      itemInstance);
-                    yuri_7194->yuri_3611(itemEntity);
+                    level->addEntity(itemEntity);
                 }
 
                 for (int i = 0; i < 120; i++) {
-                    yuri_7194->yuri_3655(
+                    level->addParticle(
                         eParticleType_snowballpoof,
-                        yuri_9621 + xo + 1 + yuri_7194->yuri_7981->yuri_7575(),
-                        yuri_9625 - 2 + yuri_7194->yuri_7981->yuri_7575() * 3.9,
-                        yuri_9630 + yuri_7194->yuri_7981->yuri_7575(), 0, 0, 0);
+                        x + xo + 1 + level->random->nextDouble(),
+                        y - 2 + level->random->nextDouble() * 3.9,
+                        z + level->random->nextDouble(), 0, 0, 0);
                 }
 
-                yuri_7194->yuri_9297(yuri_9621 + xo, yuri_9625, yuri_9630, 0);
-                yuri_7194->yuri_9297(yuri_9621 + xo + 1, yuri_9625, yuri_9630, 0);
-                yuri_7194->yuri_9297(yuri_9621 + xo + 2, yuri_9625, yuri_9630, 0);
-                yuri_7194->yuri_9297(yuri_9621 + xo, yuri_9625 - 1, yuri_9630, 0);
-                yuri_7194->yuri_9297(yuri_9621 + xo + 1, yuri_9625 - 1, yuri_9630, 0);
-                yuri_7194->yuri_9297(yuri_9621 + xo + 2, yuri_9625 - 1, yuri_9630, 0);
-                yuri_7194->yuri_9297(yuri_9621 + xo + 1, yuri_9625 - 2, yuri_9630, 0);
+                level->tileUpdated(x + xo, y, z, 0);
+                level->tileUpdated(x + xo + 1, y, z, 0);
+                level->tileUpdated(x + xo + 2, y, z, 0);
+                level->tileUpdated(x + xo, y - 1, z, 0);
+                level->tileUpdated(x + xo + 1, y - 1, z, 0);
+                level->tileUpdated(x + xo + 2, y - 1, z, 0);
+                level->tileUpdated(x + xo + 1, y - 2, z, 0);
 
                 return;
             }
@@ -310,27 +310,27 @@ void yuri_2837::yuri_4018(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     }
 }
 
-bool yuri_2837::yuri_7046(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int skullType) {
-    if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != yuri_6674) {
+bool SkullTile::isSkullAt(Level* level, int x, int y, int z, int skullType) {
+    if (level->getTile(x, y, z) != id) {
         return false;
     }
-    std::shared_ptr<yuri_3091> te = yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630);
-    std::shared_ptr<yuri_2838> skull =
-        std::dynamic_pointer_cast<yuri_2838>(te);
+    std::shared_ptr<TileEntity> te = level->getTileEntity(x, y, z);
+    std::shared_ptr<SkullTileEntity> skull =
+        std::dynamic_pointer_cast<SkullTileEntity>(te);
     if (skull == nullptr) {
         return false;
     }
-    return skull->yuri_5917() == skullType;
+    return skull->getSkullType() == skullType;
 }
 
-void yuri_2837::yuri_8072(IconRegister* iconRegister) {
+void SkullTile::registerIcons(IconRegister* iconRegister) {
     // blushing girls
 }
 
-yuri_1346* yuri_2837::yuri_6007(int face, int yuri_4295) {
-    return yuri_3088::soulsand->yuri_6007(face);
+Icon* SkullTile::getTexture(int face, int data) {
+    return Tile::soulsand->getTexture(face);
 }
 
-std::yuri_9616 yuri_2837::yuri_6038() {
-    return yuri_5386() + yuri_1720"_" + yuri_2836::ICON_NAMES[0];
+std::wstring SkullTile::getTileItemIconName() {
+    return getIconName() + L"_" + SkullItem::ICON_NAMES[0];
 }

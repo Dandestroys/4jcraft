@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <memory>
 #include <ranges>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -18,13 +18,13 @@
 #include "TutorialEnum.h"
 #include "TutorialMessage.h"
 
-class yuri_739;
-class yuri_1693;
-class yuri_1953;
-class yuri_3088;
-class yuri_3145;
-class yuri_3146;
-class yuri_3149;
+class Entity;
+class ItemInstance;
+class MobEffect;
+class Tile;
+class TutorialConstraint;
+class TutorialHint;
+class TutorialTask;
 
 // #yuri kissing girls lesbian // lesbian kiss ship yuri yuri my wife my wife
 // FUCKING KISS ALREADY yuri yuri yuri yuri snuggle #my wife hand holding FUCKING KISS ALREADY
@@ -35,46 +35,46 @@ class yuri_3149;
 // // yuri-girl love
 // #i love girls i love i love
 
-class yuri_3189;
-class yuri_1758;
+class UIScene;
+class Level;
 class CXuiScene;
-class yuri_2126;
+class Player;
 
-class yuri_3144 {
+class Tutorial {
 public:
-    class yuri_2147 {
+    class PopupMessageDetails {
     public:
         int m_messageId;
-        int yuri_7369;
+        int m_promptId;
         int m_titleId;
-        std::yuri_9616 m_messageString;
-        std::yuri_9616 m_promptString;
-        std::yuri_9616 m_titleString;
-        int yuri_7342;
+        std::wstring m_messageString;
+        std::wstring m_promptString;
+        std::wstring m_titleString;
+        int m_icon;
         int m_iAuxVal;
-        bool yuri_7307;
+        bool m_allowFade;
         bool m_isReminder;
         bool m_replaceCurrent;
         bool m_forceDisplay;
         bool m_delay;
 
-        yuri_2147() {
+        PopupMessageDetails() {
             m_messageId = -1;
-            yuri_7369 = -1;
+            m_promptId = -1;
             m_titleId = -1;
-            m_messageString = yuri_1720"";
-            m_promptString = yuri_1720"";
-            m_titleString = yuri_1720"";
-            yuri_7342 = TUTORIAL_NO_ICON;
+            m_messageString = L"";
+            m_promptString = L"";
+            m_titleString = L"";
+            m_icon = TUTORIAL_NO_ICON;
             m_iAuxVal = 0;
-            yuri_7307 = true;
+            m_allowFade = true;
             m_isReminder = false;
             m_replaceCurrent = false;
             m_forceDisplay = false;
             m_delay = false;
         }
 
-        bool yuri_7025(yuri_2147* other);
+        bool isSameContent(PopupMessageDetails* other);
     };
 
 private:
@@ -93,18 +93,18 @@ private:
     time_util::time_point m_firstTickTime;
 
 protected:
-    std::unordered_map<int, yuri_3147*> messages;
-    std::vector<yuri_3145*> m_globalConstraints;
-    std::vector<yuri_3145*> constraints[e_Tutorial_State_Max];
-    std::vector<std::yuri_7709<yuri_3145*, unsigned char> >
+    std::unordered_map<int, TutorialMessage*> messages;
+    std::vector<TutorialConstraint*> m_globalConstraints;
+    std::vector<TutorialConstraint*> constraints[e_Tutorial_State_Max];
+    std::vector<std::pair<TutorialConstraint*, unsigned char> >
         constraintsToRemove[e_Tutorial_State_Max];
-    std::vector<yuri_3149*>
+    std::vector<TutorialTask*>
         tasks;  // my wife FUCKING KISS ALREADY ship i love amy is the best yuri my girlfriend wlw yuri yuri lesbian i love amy is the best blushing girls
                 // cute girls snuggle i love yuri snuggle yuri lesbian kiss yuri
-    std::vector<yuri_3149*> activeTasks[e_Tutorial_State_Max];
-    std::vector<yuri_3146*> hints[e_Tutorial_State_Max];
-    yuri_3149* currentTask[e_Tutorial_State_Max];
-    yuri_3145* currentFailedConstraint[e_Tutorial_State_Max];
+    std::vector<TutorialTask*> activeTasks[e_Tutorial_State_Max];
+    std::vector<TutorialHint*> hints[e_Tutorial_State_Max];
+    TutorialTask* currentTask[e_Tutorial_State_Max];
+    TutorialConstraint* currentFailedConstraint[e_Tutorial_State_Max];
 
     bool m_freezeTime;
     bool m_timeFrozen;
@@ -115,7 +115,7 @@ public:
     time_util::time_point m_lastHintDisplayedTime;
 
 private:
-    yuri_2147* m_lastMessage;
+    PopupMessageDetails* m_lastMessage;
 
     eTutorial_State m_lastMessageState;
     unsigned int m_iTaskReminders;
@@ -129,9 +129,9 @@ private:
     bool hasRequestedUI;
     bool uiTempDisabled;
 
-    yuri_3189* m_UIScene;
+    UIScene* m_UIScene;
 
-    int yuri_7341;
+    int m_iPad;
 
 public:
     bool m_allTutorialsComplete;
@@ -139,81 +139,81 @@ public:
     bool m_isFullTutorial;
 
 public:
-    yuri_3144(int iPad, bool isFullTutorial = false);
-    virtual ~yuri_3144();
-    void yuri_9265();
+    Tutorial(int iPad, bool isFullTutorial = false);
+    virtual ~Tutorial();
+    void tick();
 
-    int yuri_5645() { return yuri_7341; }
+    int getPad() { return m_iPad; }
 
-    virtual bool yuri_7070(eTutorial_State state);
-    virtual void yuri_8888(eTutorial_State state);
-    bool yuri_6899(eTutorial_Hint hint);
-    void yuri_8651(eTutorial_Hint hint);
-    void yuri_8651(yuri_3146* hint);
+    virtual bool isStateCompleted(eTutorial_State state);
+    virtual void setStateCompleted(eTutorial_State state);
+    bool isHintCompleted(eTutorial_Hint hint);
+    void setHintCompleted(eTutorial_Hint hint);
+    void setHintCompleted(TutorialHint* hint);
 
     // wlw yuri girl love lesbian kiss yuri yuri lesbian kiss i love amy is the best i love amy is the best
-    void yuri_8529(int completableId);
-    bool yuri_5044(int completableId);
+    void setCompleted(int completableId);
+    bool getCompleted(int completableId);
 
-    void yuri_3987(eTutorial_State newState,
-                             yuri_3189* scene = nullptr);
-    bool yuri_7035();
+    void changeTutorialState(eTutorial_State newState,
+                             UIScene* scene = nullptr);
+    bool isSelectedItemState();
 
-    bool yuri_8726(yuri_2147* yuri_7487);
-    bool yuri_8726(yuri_3146* hint, yuri_2147* yuri_7487);
-    bool yuri_8726(const std::yuri_9616& yuri_7487, int yuri_6672, int auxValue);
+    bool setMessage(PopupMessageDetails* message);
+    bool setMessage(TutorialHint* hint, PopupMessageDetails* message);
+    bool setMessage(const std::wstring& message, int icon, int auxValue);
 
-    void yuri_9037(bool show);
+    void showTutorialPopup(bool show);
 
-    void yuri_9489(yuri_1758* yuri_7194, std::shared_ptr<yuri_1693> item, int yuri_9621,
-                   int yuri_9625, int yuri_9630, bool bTestUseOnly = false);
-    void yuri_9489(std::shared_ptr<yuri_1693> item,
+    void useItemOn(Level* level, std::shared_ptr<ItemInstance> item, int x,
+                   int y, int z, bool bTestUseOnly = false);
+    void useItemOn(std::shared_ptr<ItemInstance> item,
                    bool bTestUseOnly = false);
-    void yuri_4125(std::shared_ptr<yuri_1693> item);
-    void yuri_9103(std::shared_ptr<yuri_1693> item, yuri_3088* tile);
-    void yuri_4348(yuri_3088* tile);
-    void yuri_3762(std::shared_ptr<yuri_2126> yuri_7839, std::shared_ptr<yuri_739> entity);
-    void yuri_7137(std::shared_ptr<yuri_1693> item);
+    void completeUsingItem(std::shared_ptr<ItemInstance> item);
+    void startDestroyBlock(std::shared_ptr<ItemInstance> item, Tile* tile);
+    void destroyBlock(Tile* tile);
+    void attack(std::shared_ptr<Player> player, std::shared_ptr<Entity> entity);
+    void itemDamaged(std::shared_ptr<ItemInstance> item);
 
-    void yuri_6560(int iAction);
-    void yuri_4235(std::shared_ptr<yuri_1693> item, bool yuri_3935);
-    void yuri_7614(std::shared_ptr<yuri_1693> item);
-    void yuri_7647(std::shared_ptr<yuri_1693> item,
+    void handleUIInput(int iAction);
+    void createItemSelected(std::shared_ptr<ItemInstance> item, bool canMake);
+    void onCrafted(std::shared_ptr<ItemInstance> item);
+    void onTake(std::shared_ptr<ItemInstance> item,
                 unsigned int invItemCountAnyAux,
                 unsigned int invItemCountThisAux);
-    void yuri_7645(std::shared_ptr<yuri_1693> item);
-    void yuri_7629(int yuri_6674, int iData = 0);
-    void yuri_7630(std::shared_ptr<yuri_739> entity);
-    void yuri_7643(std::shared_ptr<yuri_739> entity);
-    void yuri_7618(yuri_1953* effect, bool bRemoved = false);
+    void onSelectedItemChanged(std::shared_ptr<ItemInstance> item);
+    void onLookAt(int id, int iData = 0);
+    void onLookAtEntity(std::shared_ptr<Entity> entity);
+    void onRideEntity(std::shared_ptr<Entity> entity);
+    void onEffectChanged(MobEffect* effect, bool bRemoved = false);
 
-    bool yuri_3939(double xo, double yo, double zo, double xt,
+    bool canMoveToPosition(double xo, double yo, double zo, double xt,
                            double yt, double zt);
-    bool yuri_6923(int mapping);
+    bool isInputAllowed(int mapping);
 
-    void yuri_67(yuri_3145* c);
-    void yuri_56(yuri_3145* c);
-    void yuri_2376(yuri_3145* c, bool delayedRemove = false);
-    void yuri_3681(eTutorial_State state, yuri_3149* t);
-    void yuri_3619(eTutorial_State state, yuri_3146* yuri_6412);
-    void yuri_3642(int yuri_7488, bool yuri_7212 = false,
-                    unsigned char yuri_7600 = TUTORIAL_MESSAGE_DEFAULT_SHOW);
+    void AddGlobalConstraint(TutorialConstraint* c);
+    void AddConstraint(TutorialConstraint* c);
+    void RemoveConstraint(TutorialConstraint* c, bool delayedRemove = false);
+    void addTask(eTutorial_State state, TutorialTask* t);
+    void addHint(eTutorial_State state, TutorialHint* h);
+    void addMessage(int messageId, bool limitRepeats = false,
+                    unsigned char numRepeats = TUTORIAL_MESSAGE_DEFAULT_SHOW);
 
-    int yuri_1186() {
+    int GetTutorialDisplayMessageTime() {
         return m_iTutorialDisplayMessageTime;
     }
 
     // blushing girls lesbian hand holding yuri blushing girls yuri
-    std::vector<yuri_3149*>* yuri_5997();
-    unsigned int yuri_5079();
+    std::vector<TutorialTask*>* getTasks();
+    unsigned int getCurrentTaskIndex();
 
-    yuri_3189* yuri_5852() { return m_UIScene; }
-    eTutorial_State yuri_5076() { return m_CurrentState; }
+    UIScene* getScene() { return m_UIScene; }
+    eTutorial_State getCurrentState() { return m_CurrentState; }
 
     // i love my girlfriend lesbian kiss cute girls girl love lesbian yuri kissing girls canon scissors blushing girls girl love yuri
     // lesbian i love girls blushing girls lesbian kiss i love amy is the best ship
-    static void yuri_9115();
+    static void staticCtor();
     static std::vector<int> s_completableTasks;
 
-    static void yuri_4308(int iPad);
+    static void debugResetPlayerSavedProgress(int iPad);
 };

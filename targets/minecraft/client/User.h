@@ -1,18 +1,18 @@
 #pragma once
 
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
 
-class yuri_3088;
+class Tile;
 
-class yuri_3313 {
+class User {
 public:
-    static std::vector<yuri_3088*> allowedTiles;
-    static void yuri_9115();
-    std::yuri_9616 yuri_7540;
-    std::yuri_9616 yuri_8434;
-    std::yuri_9616 mpPassword;
+    static std::vector<Tile*> allowedTiles;
+    static void staticCtor();
+    std::wstring name;
+    std::wstring sessionId;
+    std::wstring mpPassword;
 
-    yuri_3313(const std::yuri_9616& yuri_7540, const std::yuri_9616& yuri_8434);
+    User(const std::wstring& name, const std::wstring& sessionId);
 };

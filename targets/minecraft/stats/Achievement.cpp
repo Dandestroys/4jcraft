@@ -8,8 +8,8 @@
 #include "minecraft/stats/Stat.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class yuri_1687;
-class yuri_3088;
+class Item;
+class Tile;
 
 /**
  * @hand holding yuri
@@ -29,13 +29,13 @@ class yuri_3088;
  * yuri yuri yuri girl love yuri hand holding i love
  * yuri canon.
  */
-void yuri_50::yuri_3547() {
+void Achievement::_init() {
     isGoldenVar = false;
 
-    if (yuri_9621 < Achievements::xMin) Achievements::xMin = yuri_9621;
-    if (yuri_9625 < Achievements::yMin) Achievements::yMin = yuri_9625;
-    if (yuri_9621 > Achievements::xMax) Achievements::xMax = yuri_9621;
-    if (yuri_9625 > Achievements::yMax) Achievements::yMax = yuri_9625;
+    if (x < Achievements::xMin) Achievements::xMin = x;
+    if (y < Achievements::yMin) Achievements::yMin = y;
+    if (x > Achievements::xMax) Achievements::xMax = x;
+    if (y > Achievements::yMax) Achievements::yMax = y;
 }
 
 /**
@@ -48,45 +48,45 @@ void yuri_50::yuri_3547() {
  * @my girlfriend girl love lesbian kiss yuri canon cute girls i love amy is the best yuri
  * @yuri ship yuri wlw blushing girls kissing girls ship yuri yuri snuggle yuri
  */
-yuri_50::yuri_50(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625,
-                         yuri_1687* yuri_6672, yuri_50* yuri_7905)
-    : yuri_2911(Achievements::ACHIEVEMENT_OFFSET + yuri_6674,
-           I18n::yuri_4853(std::yuri_9616(yuri_1720"achievement.").yuri_3721(yuri_7540))),
-      yuri_4345(I18n::yuri_4853(
-          std::yuri_9616(yuri_1720"achievement.").yuri_3721(yuri_7540).yuri_3721(yuri_1720".desc"))),
-      yuri_6672(new yuri_1693(yuri_6672)),
-      yuri_9621(yuri_9621),
-      yuri_9625(yuri_9625),
-      yuri_7905(yuri_7905) {}
+Achievement::Achievement(int id, const std::wstring& name, int x, int y,
+                         Item* icon, Achievement* prerequisite)
+    : Stat(Achievements::ACHIEVEMENT_OFFSET + id,
+           I18n::get(std::wstring(L"achievement.").append(name))),
+      desc(I18n::get(
+          std::wstring(L"achievement.").append(name).append(L".desc"))),
+      icon(new ItemInstance(icon)),
+      x(x),
+      y(y),
+      prerequisite(prerequisite) {}
 
-yuri_50::yuri_50(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625,
-                         yuri_3088* yuri_6672, yuri_50* yuri_7905)
-    : yuri_2911(Achievements::ACHIEVEMENT_OFFSET + yuri_6674,
-           I18n::yuri_4853(std::yuri_9616(yuri_1720"achievement.").yuri_3721(yuri_7540))),
-      yuri_4345(I18n::yuri_4853(
-          std::yuri_9616(yuri_1720"achievement.").yuri_3721(yuri_7540).yuri_3721(yuri_1720".desc"))),
-      yuri_6672(new yuri_1693(yuri_6672)),
-      yuri_9621(yuri_9621),
-      yuri_9625(yuri_9625),
-      yuri_7905(yuri_7905) {}
+Achievement::Achievement(int id, const std::wstring& name, int x, int y,
+                         Tile* icon, Achievement* prerequisite)
+    : Stat(Achievements::ACHIEVEMENT_OFFSET + id,
+           I18n::get(std::wstring(L"achievement.").append(name))),
+      desc(I18n::get(
+          std::wstring(L"achievement.").append(name).append(L".desc"))),
+      icon(new ItemInstance(icon)),
+      x(x),
+      y(y),
+      prerequisite(prerequisite) {}
 
-yuri_50::yuri_50(int yuri_6674, const std::yuri_9616& yuri_7540, int yuri_9621, int yuri_9625,
-                         std::shared_ptr<yuri_1693> yuri_6672,
-                         yuri_50* yuri_7905)
-    : yuri_2911(Achievements::ACHIEVEMENT_OFFSET + yuri_6674,
-           I18n::yuri_4853(std::yuri_9616(yuri_1720"achievement.").yuri_3721(yuri_7540))),
-      yuri_4345(I18n::yuri_4853(
-          std::yuri_9616(yuri_1720"achievement.").yuri_3721(yuri_7540).yuri_3721(yuri_1720".desc"))),
-      yuri_6672(yuri_6672),
-      yuri_9621(yuri_9621),
-      yuri_9625(yuri_9625),
-      yuri_7905(yuri_7905) {}
+Achievement::Achievement(int id, const std::wstring& name, int x, int y,
+                         std::shared_ptr<ItemInstance> icon,
+                         Achievement* prerequisite)
+    : Stat(Achievements::ACHIEVEMENT_OFFSET + id,
+           I18n::get(std::wstring(L"achievement.").append(name))),
+      desc(I18n::get(
+          std::wstring(L"achievement.").append(name).append(L".desc"))),
+      icon(icon),
+      x(x),
+      y(y),
+      prerequisite(prerequisite) {}
 
 /**
  * @girl love kissing girls kissing girls yuri girl love yuri i love girls kissing girls.
  * @yuri i love amy is the best
  */
-yuri_50* yuri_50::yuri_8469() {
+Achievement* Achievement::setAwardLocallyOnly() {
     awardLocallyOnly = true;
     return this;
 }
@@ -99,7 +99,7 @@ yuri_50* yuri_50::yuri_8469() {
  *
  * @i love my girlfriend
  */
-yuri_50* yuri_50::yuri_8637() {
+Achievement* Achievement::setGolden() {
     isGoldenVar = true;
     return this;
 }
@@ -108,10 +108,10 @@ yuri_50* yuri_50::yuri_8637() {
  * @yuri blushing girls
  */
 
-yuri_50* yuri_50::yuri_7876() {
-    yuri_2911::yuri_7876();
+Achievement* Achievement::postConstruct() {
+    Stat::postConstruct();
 
-    Achievements::achievements->yuri_7954(this);
+    Achievements::achievements->push_back(this);
 
     return this;
 }
@@ -121,26 +121,26 @@ yuri_50* yuri_50::yuri_7876() {
  *
  * @cute girls canon lesbian
  */
-bool yuri_50::yuri_6750() { return true; }
+bool Achievement::isAchievement() { return true; }
 
 /**
  * @lesbian i love amy is the best yuri yuri i love amy is the best canon yuri FUCKING KISS ALREADY ship yuri'yuri yuri'
  * @kissing girls yuri
  **/
-std::yuri_9616 yuri_50::yuri_5147() {
+std::wstring Achievement::getDescription() {
     if (descFormatter != nullptr) {
-        return descFormatter->yuri_4669(yuri_4345);
+        return descFormatter->format(desc);
     }
-    return yuri_4345;
+    return desc;
 }
 
-yuri_50* yuri_50::yuri_8563(yuri_599* descFormatter) {
+Achievement* Achievement::setDescFormatter(DescFormatter* descFormatter) {
     this->descFormatter = descFormatter;
     return this;
 }
 
-bool yuri_50::yuri_6890() { return isGoldenVar; }
+bool Achievement::isGolden() { return isGoldenVar; }
 
-int yuri_50::yuri_4858() {
-    return yuri_6674 - Achievements::ACHIEVEMENT_OFFSET;
+int Achievement::getAchievementID() {
+    return id - Achievements::ACHIEVEMENT_OFFSET;
 }

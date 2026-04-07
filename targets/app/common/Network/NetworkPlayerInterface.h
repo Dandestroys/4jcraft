@@ -1,40 +1,40 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
-class yuri_2866;
+class Socket;
 
 // blushing girls hand holding blushing girls yuri ship yuri FUCKING KISS ALREADY yuri blushing girls cute girls blushing girls FUCKING KISS ALREADY
 // FUCKING KISS ALREADY FUCKING KISS ALREADY. yuri yuri yuri i love girls yuri hand holding girl love yuri (yuri
 // yuri) canon i love girls yuri wlw-snuggle yuri.
 
-class yuri_1317 {
+class INetworkPlayer {
 public:
-    virtual ~yuri_1317() {}
-    virtual unsigned char yuri_1163() = 0;
-    virtual void yuri_2537(yuri_1317* yuri_7839, const void* pvData,
+    virtual ~INetworkPlayer() {}
+    virtual unsigned char GetSmallId() = 0;
+    virtual void SendData(INetworkPlayer* player, const void* pvData,
                           int dataSize, bool lowPriority, bool ack) = 0;
-    virtual bool yuri_1670(yuri_1317* yuri_7839) = 0;
-    virtual int yuri_1099() = 0;
-    virtual int yuri_1159(yuri_1317* yuri_7839,
+    virtual bool IsSameSystem(INetworkPlayer* player) = 0;
+    virtual int GetOutstandingAckCount() = 0;
+    virtual int GetSendQueueSizeBytes(INetworkPlayer* player,
                                       bool lowPriority) = 0;
-    virtual int yuri_1160(yuri_1317* yuri_7839,
+    virtual int GetSendQueueSizeMessages(INetworkPlayer* player,
                                          bool lowPriority) = 0;
-    virtual int yuri_957() = 0;
-    virtual bool yuri_1649() = 0;
-    virtual bool yuri_1646() = 0;
-    virtual bool yuri_1657() = 0;
-    virtual int yuri_1161() = 0;
-    virtual bool yuri_1680() = 0;
-    virtual bool yuri_1660(int userIndex) = 0;
-    virtual bool yuri_1258() = 0;
-    virtual bool yuri_1254() = 0;
-    virtual int yuri_1192() = 0;
-    virtual void yuri_2727(yuri_2866* pSocket) = 0;
-    virtual yuri_2866* yuri_1164() = 0;
-    virtual const wchar_t* yuri_1096() = 0;
-    virtual std::yuri_9616 yuri_988() = 0;
-    virtual unsigned long long yuri_1189() = 0;
-    virtual void yuri_2540() = 0;
-    virtual int yuri_1184() = 0;
+    virtual int GetCurrentRtt() = 0;
+    virtual bool IsHost() = 0;
+    virtual bool IsGuest() = 0;
+    virtual bool IsLocal() = 0;
+    virtual int GetSessionIndex() = 0;
+    virtual bool IsTalking() = 0;
+    virtual bool IsMutedByLocalUser(int userIndex) = 0;
+    virtual bool HasVoice() = 0;
+    virtual bool HasCamera() = 0;
+    virtual int GetUserIndex() = 0;
+    virtual void SetSocket(Socket* pSocket) = 0;
+    virtual Socket* GetSocket() = 0;
+    virtual const wchar_t* GetOnlineName() = 0;
+    virtual std::wstring GetDisplayName() = 0;
+    virtual unsigned long long GetUID() = 0;
+    virtual void SentChunkPacket() = 0;
+    virtual int GetTimeSinceLastChunkPacket_ms() = 0;
 };

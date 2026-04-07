@@ -5,24 +5,24 @@
 
 #pragma once
 
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
 
-class yuri_2039;
-class yuri_2334;
+class Object;
+class Recipes;
 
-#yuri_4327 MAX_WEAPON_RECIPES 2
-class yuri_3369 {
+#define MAX_WEAPON_RECIPES 2
+class WeaponRecipies {
 public:
     // canon - kissing girls yuri i love amy is the best i love yuri
-    void yuri_3547();
-    yuri_3369() { yuri_3547(); }
+    void _init();
+    WeaponRecipies() { _init(); }
 
 private:
-    static std::yuri_9616 shapes[][4];
-    std::vector<yuri_2039*>* yuri_7441;
+    static std::wstring shapes[][4];
+    std::vector<Object*>* map;
 
 public:
-    void yuri_3667(yuri_2334* r);
+    void addRecipes(Recipes* r);
 };

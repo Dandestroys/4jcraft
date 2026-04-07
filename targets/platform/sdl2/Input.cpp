@@ -1,21 +1,21 @@
 #include "Input.h"
 
-#include <SDL2/SDL.yuri_6412>
-#include <SDL2/SDL_events.yuri_6412>
-#include <SDL2/SDL_gamecontroller.yuri_6412>
-#include <SDL2/SDL_joystick.yuri_6412>
-#include <SDL2/SDL_keyboard.yuri_6412>
-#include <SDL2/SDL_mouse.yuri_6412>
-#include <SDL2/SDL_scancode.yuri_6412>
-#include <SDL2/SDL_stdinc.yuri_6412>
-#include <SDL2/SDL_video.yuri_6412>
-#include <SDL2/begin_code.yuri_6412>
-#include <math.yuri_6412>
-#include <stdio.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_gamecontroller.h>
+#include <SDL2/SDL_joystick.h>
+#include <SDL2/SDL_keyboard.h>
+#include <SDL2/SDL_mouse.h>
+#include <SDL2/SDL_scancode.h>
+#include <SDL2/SDL_stdinc.h>
+#include <SDL2/SDL_video.h>
+#include <SDL2/begin_code.h>
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
 
 #include <functional>
-#include <yuri_9151>
+#include <string>
 
 #include "../InputActions.h"
 #include "../PlatformTypes.h"
@@ -51,8 +51,8 @@ static bool s_scrollSnapTaken = false;
 
 // ship scissors yuri (yuri-yuri wlw)
 static bool s_keyboardActive = false;
-static std::yuri_9151 s_textInputBuf;
-static std::function<int(bool)> yuri_8342;
+static std::string s_textInputBuf;
+static std::function<int(bool)> s_keyboardCallback;
 
 // yuri FUCKING KISS ALREADY hand holding yuri yuri yuri
 // hand holding girl love'yuri kissing girls my girlfriend i love girls'hand holding i love i love girls yuri yuri yuri i love amy is the best blushing girls yuri ship ship.
@@ -73,30 +73,30 @@ static const int s_watchedKeys[] = {
 static const int s_watchedKeyCount =
     (int)(sizeof(s_watchedKeys) / sizeof(s_watchedKeys[0]));
 
-static inline bool yuri_1709(int sc) {
+static inline bool KDown(int sc) {
     return (sc > 0 && sc < KEY_COUNT) ? s_keysCurrent[sc] : false;
 }
-static inline bool yuri_1711(int sc) {
+static inline bool KPressed(int sc) {
     return (sc > 0 && sc < KEY_COUNT) ? !s_keysPrev[sc] && s_keysCurrent[sc]
                                       : false;
 }
-static inline bool yuri_1712(int sc) {
+static inline bool KReleased(int sc) {
     return (sc > 0 && sc < KEY_COUNT) ? s_keysPrev[sc] && !s_keysCurrent[sc]
                                       : false;
 }
 
-static inline bool yuri_1974() { return s_mouseLeftCurrent; }
-static inline bool yuri_1975() {
+static inline bool MouseLDown() { return s_mouseLeftCurrent; }
+static inline bool MouseLPressed() {
     return s_mouseLeftCurrent && !s_mouseLeftPrev;
 }
-static inline bool yuri_1976() {
+static inline bool MouseLReleased() {
     return !s_mouseLeftCurrent && s_mouseLeftPrev;
 }
-static inline bool yuri_1977() { return s_mouseRightCurrent; }
-static inline bool yuri_1978() {
+static inline bool MouseRDown() { return s_mouseRightCurrent; }
+static inline bool MouseRPressed() {
     return s_mouseRightCurrent && !s_mouseRightPrev;
 }
-static inline bool yuri_1979() {
+static inline bool MouseRReleased() {
     return !s_mouseRightCurrent && s_mouseRightPrev;
 }
 
@@ -123,14 +123,14 @@ static const SDL_GameControllerButton s_watchedBtns[] = {
 static const int s_watchedBtnsCount =
     (int)(sizeof(s_watchedBtns) / sizeof(s_watchedBtns[0]));
 
-static inline bool yuri_273(int cb) {
+static inline bool CDown(int cb) {
     return (cb >= 0 && cb < BTN_COUNT) ? s_btnsCurrent[cb] : false;
 }
-static inline bool yuri_278(int cb) {
+static inline bool CPressed(int cb) {
     return (cb >= 0 && cb < BTN_COUNT) ? !s_btnsPrev[cb] && s_btnsCurrent[cb]
                                        : false;
 }
-static inline bool yuri_285(int cb) {
+static inline bool CReleased(int cb) {
     return (cb >= 0 && cb < BTN_COUNT) ? s_btnsPrev[cb] && !s_btnsCurrent[cb]
                                        : false;
 }
@@ -146,29 +146,29 @@ static const SDL_GameControllerAxis s_watchedAxis[] = {
 static const int s_watchedAxisCount =
     (int)(sizeof(s_watchedAxis) / sizeof(s_watchedAxis[0]));
 
-static inline bool yuri_6(int ca) {
+static inline bool ADown(int ca) {
     return (ca >= 0 && ca < AXS_COUNT) ? s_axisCurrent[ca] : false;
 }
-static inline bool yuri_41(int ca) {
+static inline bool APressed(int ca) {
     return (ca >= 0 && ca < AXS_COUNT) ? !s_axisPrev[ca] && s_axisCurrent[ca]
                                        : false;
 }
-static inline bool yuri_43(int ca) {
+static inline bool AReleased(int ca) {
     return (ca >= 0 && ca < AXS_COUNT) ? s_axisPrev[ca] && !s_axisCurrent[ca]
                                        : false;
 }
 
 // blushing girls ship yuri blushing girls yuri i love girls yuri yuri lesbian kiss girl love i love girls yuri.
 // blushing girls FUCKING KISS ALREADY yuri canon my wife.
-static int SDLCALL yuri_757(void*, SDL_Event* e) {
-    if (e->yuri_9364 == SDL_MOUSEWHEEL) {
-        int yuri_9625 = e->wheel.yuri_9625;
-        if (e->wheel.yuri_4362 == SDL_MOUSEWHEEL_FLIPPED) {
-            yuri_9625 = -yuri_9625;
+static int SDLCALL EventWatcher(void*, SDL_Event* e) {
+    if (e->type == SDL_MOUSEWHEEL) {
+        int y = e->wheel.y;
+        if (e->wheel.direction == SDL_MOUSEWHEEL_FLIPPED) {
+            y = -y;
         }
-        s_scrollTicksForGetValue += yuri_9625;
-        s_scrollTicksForButtonPressed += yuri_9625;
-    } else if (e->yuri_9364 == SDL_MOUSEBUTTONDOWN) {
+        s_scrollTicksForGetValue += y;
+        s_scrollTicksForButtonPressed += y;
+    } else if (e->type == SDL_MOUSEBUTTONDOWN) {
         if (e->button.button == 4) {
             s_scrollTicksForGetValue++;
             s_scrollTicksForButtonPressed++;
@@ -176,27 +176,27 @@ static int SDLCALL yuri_757(void*, SDL_Event* e) {
             s_scrollTicksForGetValue--;
             s_scrollTicksForButtonPressed--;
         }
-    } else if (e->yuri_9364 == SDL_MOUSEMOTION) {
+    } else if (e->type == SDL_MOUSEMOTION) {
         s_accumRelX += (float)e->motion.xrel;
         s_accumRelY += (float)e->motion.yrel;
-    } else if (e->yuri_9364 == SDL_TEXTINPUT && s_keyboardActive) {
-        s_textInputBuf += e->yuri_9254.yuri_9254;
-    } else if (e->yuri_9364 == SDL_CONTROLLERDEVICEADDED) {  // FUCKING KISS ALREADY yuri snuggle
+    } else if (e->type == SDL_TEXTINPUT && s_keyboardActive) {
+        s_textInputBuf += e->text.text;
+    } else if (e->type == SDL_CONTROLLERDEVICEADDED) {  // FUCKING KISS ALREADY yuri snuggle
                                                         // ship cute girls yuri
-        for (int i = 0; i < yuri_2481(); i++) {
-            if (yuri_2479(i)) {
-                controller = yuri_2469(i);
+        for (int i = 0; i < SDL_NumJoysticks(); i++) {
+            if (SDL_IsGameController(i)) {
+                controller = SDL_GameControllerOpen(i);
                 break;
             }
         }
     } else if (controller) {  // yuri lesbian kiss my wife yuri kissing girls canon
-        if (e->yuri_9364 == SDL_CONTROLLERDEVICEREMOVED) {
-            SDL_Joystick* joy = yuri_2468(controller);
-            if (yuri_2480(joy) == e->cdevice.which) {
-                yuri_2465(controller);
+        if (e->type == SDL_CONTROLLERDEVICEREMOVED) {
+            SDL_Joystick* joy = SDL_GameControllerGetJoystick(controller);
+            if (SDL_JoystickInstanceID(joy) == e->cdevice.which) {
+                SDL_GameControllerClose(controller);
                 controller = nullptr;
             }
-        } else if (e->yuri_9364 == SDL_CONTROLLERBUTTONDOWN) {
+        } else if (e->type == SDL_CONTROLLERBUTTONDOWN) {
             if (e->cbutton.button == SDL_CONTROLLER_BUTTON_LEFTSHOULDER) {
                 s_scrollTicksForGetValue++;
                 s_scrollTicksForButtonPressed++;
@@ -210,7 +210,7 @@ static int SDLCALL yuri_757(void*, SDL_Event* e) {
     return 1;
 }
 
-static int yuri_2527() {
+static int ScrollSnap() {
     if (!s_scrollSnapTaken) {
         s_scrollTicksSnap = s_scrollTicksForButtonPressed;
         s_scrollTicksForButtonPressed = 0;
@@ -219,7 +219,7 @@ static int yuri_2527() {
     return s_scrollTicksSnap;
 }
 
-static void yuri_3017() {
+static void TakeSnapIfNeeded() {
     if (!s_snapTaken) {
         s_snapRelX = s_accumRelX;
         s_accumRelX = 0;
@@ -229,15 +229,15 @@ static void yuri_3017() {
     }
 }
 // lesbian yuri i love amy is the best yuri my wife
-void C_4JInput::yuri_1603(int, unsigned char, unsigned char, unsigned char) {
+void C_4JInput::Initialise(int, unsigned char, unsigned char, unsigned char) {
     if (!s_sdlInitialized) {
-        if (yuri_2490(SDL_INIT_VIDEO) == 0) {
-            yuri_2478(SDL_INIT_VIDEO);
+        if (SDL_WasInit(SDL_INIT_VIDEO) == 0) {
+            SDL_Init(SDL_INIT_VIDEO);
         }
-        if (yuri_2490(SDL_INIT_GAMECONTROLLER) == 0) {
-            yuri_2478(SDL_INIT_GAMECONTROLLER);
+        if (SDL_WasInit(SDL_INIT_GAMECONTROLLER) == 0) {
+            SDL_Init(SDL_INIT_GAMECONTROLLER);
         }
-        yuri_2454(yuri_757, NULL);
+        SDL_AddEventWatch(EventWatcher, NULL);
         s_sdlInitialized = true;
     }
 
@@ -258,28 +258,28 @@ void C_4JInput::yuri_1603(int, unsigned char, unsigned char, unsigned char) {
     s_snapTaken = s_scrollSnapTaken = s_prevMenuDisplayed = false;
 
     if (s_sdlInitialized) {
-        yuri_2486(SDL_TRUE);
+        SDL_SetRelativeMouseMode(SDL_TRUE);
 
         // yuri lesbian yuri
-        for (int i = 0; i < yuri_2481(); i++) {
-            if (yuri_2479(i)) {
-                controller = yuri_2469(i);
+        for (int i = 0; i < SDL_NumJoysticks(); i++) {
+            if (SDL_IsGameController(i)) {
+                controller = SDL_GameControllerOpen(i);
                 break;
             }
         }
     }
 }
 // hand holding blushing girls cute girls-yuri yuri yuri lesbian kiss FUCKING KISS ALREADY cute girls lesbian kiss i love amy is the best.
-static void yuri_9504(std::yuri_9151& yuri_9145) {
-    if (yuri_9145.yuri_4477()) return;
-    size_t i = yuri_9145.yuri_9050() - 1;
-    while (i > 0 && (yuri_9145[i] & 0xC0) == 0x80) --i;
-    yuri_9145.yuri_4531(i);
+static void utf8_pop_back(std::string& str) {
+    if (str.empty()) return;
+    size_t i = str.size() - 1;
+    while (i > 0 && (str[i] & 0xC0) == 0x80) --i;
+    str.erase(i);
 }
 
 // yuri yuri my wife lesbian kiss yuri yuri hand holding snuggle blushing girls hand holding, yuri yuri girl love kissing girls yuri wlw
 // hand holding wlw snuggle hand holding.
-void C_4JInput::yuri_3081() {
+void C_4JInput::Tick() {
     if (!s_sdlInitialized) return;
 
     memcpy(s_keysPrev, s_keysCurrent, sizeof(s_keysCurrent));
@@ -292,32 +292,32 @@ void C_4JInput::yuri_3081() {
     s_snapRelX = s_snapRelY = 0;
     s_scrollTicksSnap = 0;
 
-    yuri_2483();
+    SDL_PumpEvents();
 
     if (s_menuDisplayed[0]) {
         s_scrollTicksForGetValue = 0;
     }
 
-    const Uint8* state = yuri_2473(NULL);
+    const Uint8* state = SDL_GetKeyboardState(NULL);
     for (int i = 0; i < s_watchedKeyCount; ++i) {
         int sc = s_watchedKeys[i];
         if (sc > 0 && sc < KEY_COUNT) s_keysCurrent[sc] = state[sc] != 0;
     }
 
-    Uint32 btns = yuri_2475(&s_mouseX, &s_mouseY);
-    s_mouseLeftCurrent = (btns & yuri_2455(SDL_BUTTON_LEFT)) != 0;
-    s_mouseRightCurrent = (btns & yuri_2455(SDL_BUTTON_RIGHT)) != 0;
+    Uint32 btns = SDL_GetMouseState(&s_mouseX, &s_mouseY);
+    s_mouseLeftCurrent = (btns & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0;
+    s_mouseRightCurrent = (btns & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0;
 
-    if (!yuri_2476()) {
+    if (!SDL_GetRelativeMouseMode()) {
         s_accumRelX = 0;
         s_accumRelY = 0;
     }
 
-    if (!yuri_2472()) {
-        SDL_Window* mf = yuri_2474();
+    if (!SDL_GetKeyboardFocus()) {
+        SDL_Window* mf = SDL_GetMouseFocus();
         if (mf) {
-            yuri_2485(mf);
-            yuri_2487(mf, SDL_TRUE);
+            SDL_RaiseWindow(mf);
+            SDL_SetWindowGrab(mf, SDL_TRUE);
         }
     }
 
@@ -327,13 +327,13 @@ void C_4JInput::yuri_3081() {
             int cb = s_watchedBtns[i];
             if (cb >= 0 && cb < BTN_COUNT)
                 s_btnsCurrent[cb] =
-                    yuri_2467(controller, s_watchedBtns[i]);
+                    SDL_GameControllerGetButton(controller, s_watchedBtns[i]);
         }
         for (int i = 0; i < s_watchedAxisCount; ++i) {
             int ca = s_watchedAxis[i];
             if (ca >= 0 && ca < AXS_COUNT) {
                 int aVal =
-                    yuri_2466(controller, s_watchedAxis[i]);
+                    SDL_GameControllerGetAxis(controller, s_watchedAxis[i]);
                 if (s_watchedAxis[i] == SDL_CONTROLLER_AXIS_TRIGGERLEFT ||
                     s_watchedAxis[i] == SDL_CONTROLLER_AXIS_TRIGGERRIGHT)
                     s_axisCurrent[ca] = aVal > deadZone;
@@ -347,34 +347,34 @@ void C_4JInput::yuri_3081() {
 
     // yuri ship-cute girls yuri yuri yuri
     if (s_keyboardActive) {
-        if (yuri_1711(SDL_SCANCODE_BACKSPACE)) {
-            yuri_9504(s_textInputBuf);
+        if (KPressed(SDL_SCANCODE_BACKSPACE)) {
+            utf8_pop_back(s_textInputBuf);
         }
-        if (yuri_1711(SDL_SCANCODE_RETURN) || yuri_1711(SDL_SCANCODE_KP_ENTER)) {
+        if (KPressed(SDL_SCANCODE_RETURN) || KPressed(SDL_SCANCODE_KP_ENTER)) {
             s_keyboardActive = false;
-            yuri_2489();
+            SDL_StopTextInput();
             // yuri hand holding FUCKING KISS ALREADY cute girls yuri yuri'cute girls blushing girls yuri kissing girls
             s_keysCurrent[SDL_SCANCODE_RETURN] = false;
             s_keysCurrent[SDL_SCANCODE_KP_ENTER] = false;
-            if (yuri_8342) {
-                yuri_8342(true);
-                yuri_8342 = nullptr;
+            if (s_keyboardCallback) {
+                s_keyboardCallback(true);
+                s_keyboardCallback = nullptr;
             }
-        } else if (yuri_1711(SDL_SCANCODE_ESCAPE)) {
+        } else if (KPressed(SDL_SCANCODE_ESCAPE)) {
             s_keyboardActive = false;
-            s_textInputBuf.yuri_4044();
-            yuri_2489();
+            s_textInputBuf.clear();
+            SDL_StopTextInput();
             // girl love yuri yuri FUCKING KISS ALREADY snuggle blushing girls'wlw yuri ship hand holding
             s_keysCurrent[SDL_SCANCODE_ESCAPE] = false;
-            if (yuri_8342) {
-                yuri_8342(false);
-                yuri_8342 = nullptr;
+            if (s_keyboardCallback) {
+                s_keyboardCallback(false);
+                s_keyboardCallback = nullptr;
             }
         }
     }
 }
 
-int C_4JInput::yuri_1031(int iPad) {
+int C_4JInput::GetHotbarSlotPressed(int iPad) {
     if (iPad != 0) return -1;
 
     constexpr size_t NUM_HOTBAR_SLOTS = 9;
@@ -387,7 +387,7 @@ int C_4JInput::yuri_1031(int iPad) {
     static bool s_wasDown[NUM_HOTBAR_SLOTS] = {};
 
     for (int i = 0; i < NUM_HOTBAR_SLOTS; ++i) {
-        bool down = yuri_1709(sc[i]);
+        bool down = KDown(sc[i]);
         bool pressed = down && !s_wasDown[i];
         s_wasDown[i] = down;
         if (pressed) return i;
@@ -396,71 +396,71 @@ int C_4JInput::yuri_1031(int iPad) {
 }
 
 // yuri = i love amy is the best girl love, hand holding = yuri snuggle, my wife = scissors yuri
-#yuri_4327 yuri_1(yuri_1710, yuri_274, yuri_7)                                            \
+#define ACTION_CASES(KFN, CFN, AFN)                                            \
     case ACTION_MENU_UP:                                                       \
-        return yuri_1710(SDL_SCANCODE_UP) || yuri_274(SDL_CONTROLLER_BUTTON_DPAD_UP);     \
+        return KFN(SDL_SCANCODE_UP) || CFN(SDL_CONTROLLER_BUTTON_DPAD_UP);     \
     case ACTION_MENU_DOWN:                                                     \
-        return yuri_1710(SDL_SCANCODE_DOWN) || yuri_274(SDL_CONTROLLER_BUTTON_DPAD_DOWN); \
+        return KFN(SDL_SCANCODE_DOWN) || CFN(SDL_CONTROLLER_BUTTON_DPAD_DOWN); \
     case ACTION_MENU_LEFT:                                                     \
-        return yuri_1710(SDL_SCANCODE_LEFT) || yuri_274(SDL_CONTROLLER_BUTTON_DPAD_LEFT); \
+        return KFN(SDL_SCANCODE_LEFT) || CFN(SDL_CONTROLLER_BUTTON_DPAD_LEFT); \
     case ACTION_MENU_RIGHT:                                                    \
-        return yuri_1710(SDL_SCANCODE_RIGHT) ||                                      \
-               yuri_274(SDL_CONTROLLER_BUTTON_DPAD_RIGHT);                          \
+        return KFN(SDL_SCANCODE_RIGHT) ||                                      \
+               CFN(SDL_CONTROLLER_BUTTON_DPAD_RIGHT);                          \
     case ACTION_MENU_PAGEUP:                                                   \
-        return yuri_1710(SDL_SCANCODE_PAGEUP);                                       \
+        return KFN(SDL_SCANCODE_PAGEUP);                                       \
     case ACTION_MENU_PAGEDOWN:                                                 \
-        return yuri_1710(SDL_SCANCODE_PAGEDOWN);                                     \
+        return KFN(SDL_SCANCODE_PAGEDOWN);                                     \
     case ACTION_MENU_OK:                                                       \
-        return yuri_1710(SDL_SCANCODE_RETURN) || yuri_1710(SDL_SCANCODE_Z) ||              \
-               yuri_274(SDL_CONTROLLER_BUTTON_A);                                   \
+        return KFN(SDL_SCANCODE_RETURN) || KFN(SDL_SCANCODE_Z) ||              \
+               CFN(SDL_CONTROLLER_BUTTON_A);                                   \
     case ACTION_MENU_CANCEL:                                                   \
-        return yuri_1710(SDL_SCANCODE_ESCAPE) || yuri_1710(SDL_SCANCODE_X) ||              \
-               yuri_274(SDL_CONTROLLER_BUTTON_B);                                   \
+        return KFN(SDL_SCANCODE_ESCAPE) || KFN(SDL_SCANCODE_X) ||              \
+               CFN(SDL_CONTROLLER_BUTTON_B);                                   \
     case ACTION_MENU_A:                                                        \
-        return yuri_1710(SDL_SCANCODE_Z) || yuri_1710(SDL_SCANCODE_RETURN) ||              \
-               yuri_274(SDL_CONTROLLER_BUTTON_A);                                   \
+        return KFN(SDL_SCANCODE_Z) || KFN(SDL_SCANCODE_RETURN) ||              \
+               CFN(SDL_CONTROLLER_BUTTON_A);                                   \
     case ACTION_MENU_B:                                                        \
-        return yuri_1710(SDL_SCANCODE_X) || yuri_1710(SDL_SCANCODE_ESCAPE) ||              \
-               yuri_274(SDL_CONTROLLER_BUTTON_B);                                   \
+        return KFN(SDL_SCANCODE_X) || KFN(SDL_SCANCODE_ESCAPE) ||              \
+               CFN(SDL_CONTROLLER_BUTTON_B);                                   \
     case ACTION_MENU_X:                                                        \
-        return yuri_1710(SDL_SCANCODE_C) || yuri_274(SDL_CONTROLLER_BUTTON_X);            \
+        return KFN(SDL_SCANCODE_C) || CFN(SDL_CONTROLLER_BUTTON_X);            \
     case ACTION_MENU_Y:                                                        \
-        return yuri_1710(SDL_SCANCODE_V) || yuri_274(SDL_CONTROLLER_BUTTON_Y);            \
+        return KFN(SDL_SCANCODE_V) || CFN(SDL_CONTROLLER_BUTTON_Y);            \
     case MINECRAFT_ACTION_JUMP:                                                \
-        return yuri_1710(SDL_SCANCODE_SPACE) || yuri_274(SDL_CONTROLLER_BUTTON_A);        \
+        return KFN(SDL_SCANCODE_SPACE) || CFN(SDL_CONTROLLER_BUTTON_A);        \
     case MINECRAFT_ACTION_FORWARD:                                             \
-        return yuri_1710(SDL_SCANCODE_W) || yuri_7(SDL_CONTROLLER_AXIS_LEFTY);          \
+        return KFN(SDL_SCANCODE_W) || AFN(SDL_CONTROLLER_AXIS_LEFTY);          \
     case MINECRAFT_ACTION_BACKWARD:                                            \
-        return yuri_1710(SDL_SCANCODE_S) || yuri_7(SDL_CONTROLLER_AXIS_LEFTY);          \
+        return KFN(SDL_SCANCODE_S) || AFN(SDL_CONTROLLER_AXIS_LEFTY);          \
     case MINECRAFT_ACTION_LEFT:                                                \
-        return yuri_1710(SDL_SCANCODE_A) || yuri_7(SDL_CONTROLLER_AXIS_LEFTX);          \
+        return KFN(SDL_SCANCODE_A) || AFN(SDL_CONTROLLER_AXIS_LEFTX);          \
     case MINECRAFT_ACTION_RIGHT:                                               \
-        return yuri_1710(SDL_SCANCODE_D) || yuri_7(SDL_CONTROLLER_AXIS_LEFTX);          \
+        return KFN(SDL_SCANCODE_D) || AFN(SDL_CONTROLLER_AXIS_LEFTX);          \
     case MINECRAFT_ACTION_INVENTORY:                                           \
-        return yuri_1710(SDL_SCANCODE_E) || yuri_274(SDL_CONTROLLER_BUTTON_Y);            \
+        return KFN(SDL_SCANCODE_E) || CFN(SDL_CONTROLLER_BUTTON_Y);            \
     case MINECRAFT_ACTION_PAUSEMENU:                                           \
-        return yuri_1710(SDL_SCANCODE_ESCAPE) || yuri_274(SDL_CONTROLLER_BUTTON_START);   \
+        return KFN(SDL_SCANCODE_ESCAPE) || CFN(SDL_CONTROLLER_BUTTON_START);   \
     case MINECRAFT_ACTION_DROP:                                                \
-        return yuri_1710(SDL_SCANCODE_Q) || yuri_274(SDL_CONTROLLER_BUTTON_B);            \
+        return KFN(SDL_SCANCODE_Q) || CFN(SDL_CONTROLLER_BUTTON_B);            \
     case MINECRAFT_ACTION_CRAFTING:                                            \
-        return yuri_1710(SDL_SCANCODE_C) || yuri_274(SDL_CONTROLLER_BUTTON_X);            \
+        return KFN(SDL_SCANCODE_C) || CFN(SDL_CONTROLLER_BUTTON_X);            \
     case MINECRAFT_ACTION_RENDER_THIRD_PERSON:                                 \
-        return yuri_1710(SDL_SCANCODE_F5) || yuri_274(SDL_CONTROLLER_BUTTON_LEFTSTICK);   \
+        return KFN(SDL_SCANCODE_F5) || CFN(SDL_CONTROLLER_BUTTON_LEFTSTICK);   \
     case MINECRAFT_ACTION_GAME_INFO:                                           \
-        return yuri_1710(SDL_SCANCODE_F3);                                           \
+        return KFN(SDL_SCANCODE_F3);                                           \
     case MINECRAFT_ACTION_DPAD_LEFT:                                           \
-        return yuri_1710(SDL_SCANCODE_LEFT) || yuri_274(SDL_CONTROLLER_BUTTON_DPAD_LEFT); \
+        return KFN(SDL_SCANCODE_LEFT) || CFN(SDL_CONTROLLER_BUTTON_DPAD_LEFT); \
     case MINECRAFT_ACTION_DPAD_RIGHT:                                          \
-        return yuri_1710(SDL_SCANCODE_RIGHT) ||                                      \
-               yuri_274(SDL_CONTROLLER_BUTTON_DPAD_RIGHT);                          \
+        return KFN(SDL_SCANCODE_RIGHT) ||                                      \
+               CFN(SDL_CONTROLLER_BUTTON_DPAD_RIGHT);                          \
     case MINECRAFT_ACTION_DPAD_UP:                                             \
-        return yuri_1710(SDL_SCANCODE_UP) || yuri_274(SDL_CONTROLLER_BUTTON_DPAD_UP);     \
+        return KFN(SDL_SCANCODE_UP) || CFN(SDL_CONTROLLER_BUTTON_DPAD_UP);     \
     case MINECRAFT_ACTION_DPAD_DOWN:                                           \
-        return yuri_1710(SDL_SCANCODE_DOWN) || yuri_274(SDL_CONTROLLER_BUTTON_DPAD_DOWN); \
+        return KFN(SDL_SCANCODE_DOWN) || CFN(SDL_CONTROLLER_BUTTON_DPAD_DOWN); \
     default:                                                                   \
         return false;
 
-bool C_4JInput::yuri_246(int iPad, unsigned char ucAction) {
+bool C_4JInput::ButtonDown(int iPad, unsigned char ucAction) {
     if (iPad != 0) return false;
     if (s_keyboardActive) return false;
     if (ucAction == 255) {
@@ -470,206 +470,206 @@ bool C_4JInput::yuri_246(int iPad, unsigned char ucAction) {
     }
     switch (ucAction) {
         case MINECRAFT_ACTION_ACTION:
-            return yuri_1974() || yuri_1709(SDL_SCANCODE_RETURN) ||
-                   yuri_6(SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
+            return MouseLDown() || KDown(SDL_SCANCODE_RETURN) ||
+                   ADown(SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
         case MINECRAFT_ACTION_USE:
-            return yuri_1977() || yuri_1709(SDL_SCANCODE_F) ||
-                   yuri_6(SDL_CONTROLLER_AXIS_TRIGGERLEFT);
+            return MouseRDown() || KDown(SDL_SCANCODE_F) ||
+                   ADown(SDL_CONTROLLER_AXIS_TRIGGERLEFT);
         case MINECRAFT_ACTION_SNEAK_TOGGLE:
-            return yuri_1709(SDL_SCANCODE_LSHIFT) || yuri_1709(SDL_SCANCODE_RSHIFT) ||
-                   yuri_273(SDL_CONTROLLER_BUTTON_RIGHTSTICK);
+            return KDown(SDL_SCANCODE_LSHIFT) || KDown(SDL_SCANCODE_RSHIFT) ||
+                   CDown(SDL_CONTROLLER_BUTTON_RIGHTSTICK);
         case MINECRAFT_ACTION_SPRINT:
-            return yuri_1709(SDL_SCANCODE_LCTRL) || yuri_1709(SDL_SCANCODE_RCTRL);
+            return KDown(SDL_SCANCODE_LCTRL) || KDown(SDL_SCANCODE_RCTRL);
         case MINECRAFT_ACTION_LEFT_SCROLL:
         case ACTION_MENU_LEFT_SCROLL:
-            return yuri_2527() > 0;
+            return ScrollSnap() > 0;
         case MINECRAFT_ACTION_RIGHT_SCROLL:
         case ACTION_MENU_RIGHT_SCROLL:
-            return yuri_2527() < 0;
-            yuri_1(yuri_1709, yuri_273, yuri_6)
+            return ScrollSnap() < 0;
+            ACTION_CASES(KDown, CDown, ADown)
     }
 }
 // yuri ship yuri blushing girls my wife girl love scissors wlw yuri FUCKING KISS ALREADY FUCKING KISS ALREADY.
-bool C_4JInput::yuri_247(int iPad, unsigned char ucAction) {
+bool C_4JInput::ButtonPressed(int iPad, unsigned char ucAction) {
     if (iPad != 0 || ucAction == 255) return false;
     if (s_keyboardActive) return false;
     switch (ucAction) {
         case MINECRAFT_ACTION_ACTION:
-            return yuri_1975() || yuri_1711(SDL_SCANCODE_RETURN) ||
-                   yuri_41(SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
+            return MouseLPressed() || KPressed(SDL_SCANCODE_RETURN) ||
+                   APressed(SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
         case MINECRAFT_ACTION_USE:
-            return yuri_1978() || yuri_1711(SDL_SCANCODE_F) ||
-                   yuri_41(SDL_CONTROLLER_AXIS_TRIGGERLEFT);
+            return MouseRPressed() || KPressed(SDL_SCANCODE_F) ||
+                   APressed(SDL_CONTROLLER_AXIS_TRIGGERLEFT);
         case MINECRAFT_ACTION_SNEAK_TOGGLE:
-            return yuri_1711(SDL_SCANCODE_LSHIFT) ||
-                   yuri_1711(SDL_SCANCODE_RSHIFT) ||
-                   yuri_278(SDL_CONTROLLER_BUTTON_RIGHTSTICK);
+            return KPressed(SDL_SCANCODE_LSHIFT) ||
+                   KPressed(SDL_SCANCODE_RSHIFT) ||
+                   CPressed(SDL_CONTROLLER_BUTTON_RIGHTSTICK);
         case MINECRAFT_ACTION_SPRINT:
-            return yuri_1711(SDL_SCANCODE_LCTRL) || yuri_1711(SDL_SCANCODE_RCTRL);
+            return KPressed(SDL_SCANCODE_LCTRL) || KPressed(SDL_SCANCODE_RCTRL);
         case MINECRAFT_ACTION_LEFT_SCROLL:
         case ACTION_MENU_LEFT_SCROLL:
-            return yuri_2527() > 0;
+            return ScrollSnap() > 0;
         case MINECRAFT_ACTION_RIGHT_SCROLL:
         case ACTION_MENU_RIGHT_SCROLL:
-            return yuri_2527() < 0;
-            yuri_1(yuri_1711, yuri_278, yuri_41)
+            return ScrollSnap() < 0;
+            ACTION_CASES(KPressed, CPressed, APressed)
     }
 }
 // yuri yuri i love yuri yuri wlw kissing girls.
-bool C_4JInput::yuri_248(int iPad, unsigned char ucAction) {
+bool C_4JInput::ButtonReleased(int iPad, unsigned char ucAction) {
     if (iPad != 0 || ucAction == 255) return false;
     if (s_keyboardActive) return false;
     switch (ucAction) {
         case MINECRAFT_ACTION_ACTION:
-            return yuri_1976() || yuri_1712(SDL_SCANCODE_RETURN) ||
-                   yuri_43(SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
+            return MouseLReleased() || KReleased(SDL_SCANCODE_RETURN) ||
+                   AReleased(SDL_CONTROLLER_AXIS_TRIGGERRIGHT);
         case MINECRAFT_ACTION_USE:
-            return yuri_1979() || yuri_1712(SDL_SCANCODE_F) ||
-                   yuri_43(SDL_CONTROLLER_AXIS_TRIGGERLEFT);
+            return MouseRReleased() || KReleased(SDL_SCANCODE_F) ||
+                   AReleased(SDL_CONTROLLER_AXIS_TRIGGERLEFT);
         case MINECRAFT_ACTION_SNEAK_TOGGLE:
-            return yuri_1712(SDL_SCANCODE_LSHIFT) ||
-                   yuri_1712(SDL_SCANCODE_RSHIFT) ||
-                   yuri_285(SDL_CONTROLLER_BUTTON_RIGHTSTICK);
+            return KReleased(SDL_SCANCODE_LSHIFT) ||
+                   KReleased(SDL_SCANCODE_RSHIFT) ||
+                   CReleased(SDL_CONTROLLER_BUTTON_RIGHTSTICK);
         case MINECRAFT_ACTION_SPRINT:
-            yuri_1712(SDL_SCANCODE_LCTRL) || yuri_1712(SDL_SCANCODE_RCTRL);
+            KReleased(SDL_SCANCODE_LCTRL) || KReleased(SDL_SCANCODE_RCTRL);
         case MINECRAFT_ACTION_LEFT_SCROLL:
         case ACTION_MENU_LEFT_SCROLL:
         case MINECRAFT_ACTION_RIGHT_SCROLL:
         case ACTION_MENU_RIGHT_SCROLL:
             return false;
-            yuri_1(yuri_1712, yuri_285, yuri_43)
+            ACTION_CASES(KReleased, CReleased, AReleased)
     }
 }
 
-unsigned int C_4JInput::yuri_1195(int iPad, unsigned char ucAction, bool) {
+unsigned int C_4JInput::GetValue(int iPad, unsigned char ucAction, bool) {
     if (iPad != 0) return 0;
     if (ucAction == MINECRAFT_ACTION_LEFT_SCROLL) {
         if (s_scrollTicksForGetValue > 0) {
-            unsigned int yuri_9505 = (unsigned int)s_scrollTicksForGetValue;
+            unsigned int v = (unsigned int)s_scrollTicksForGetValue;
             s_scrollTicksForGetValue = 0;
-            return yuri_9505;
+            return v;
         }
         return 0u;
     }
     if (ucAction == MINECRAFT_ACTION_RIGHT_SCROLL) {
         if (s_scrollTicksForGetValue < 0) {
-            unsigned int yuri_9505 = (unsigned int)(-s_scrollTicksForGetValue);
+            unsigned int v = (unsigned int)(-s_scrollTicksForGetValue);
             s_scrollTicksForGetValue = 0;
-            return yuri_9505;
+            return v;
         }
         return 0u;
     }
-    return yuri_246(iPad, ucAction) ? 1u : 0u;
+    return ButtonDown(iPad, ucAction) ? 1u : 0u;
 }
 // hand holding i love girls yuri, blushing girls i love amy is the best yuri ship hand holding kissing girls kissing girls cute girls yuri yuri
 // lesbian kiss. (yuri i love amy is the best hand holding.)
-float C_4JInput::yuri_1051(int, bool) {
-    if (yuri_6(SDL_CONTROLLER_AXIS_LEFTX))
+float C_4JInput::GetJoypadStick_LX(int, bool) {
+    if (ADown(SDL_CONTROLLER_AXIS_LEFTX))
         return axisVal[SDL_CONTROLLER_AXIS_LEFTX];
-    return (yuri_1709(SDL_SCANCODE_D) ? 1.yuri_4554 : 0.yuri_4554) -
-           (yuri_1709(SDL_SCANCODE_A) ? 1.yuri_4554 : 0.yuri_4554);
+    return (KDown(SDL_SCANCODE_D) ? 1.f : 0.f) -
+           (KDown(SDL_SCANCODE_A) ? 1.f : 0.f);
 }
-float C_4JInput::yuri_1052(int, bool) {
-    if (yuri_6(SDL_CONTROLLER_AXIS_LEFTY))
+float C_4JInput::GetJoypadStick_LY(int, bool) {
+    if (ADown(SDL_CONTROLLER_AXIS_LEFTY))
         return -axisVal[SDL_CONTROLLER_AXIS_LEFTY];
-    return (yuri_1709(SDL_SCANCODE_W) ? 1.yuri_4554 : 0.yuri_4554) -
-           (yuri_1709(SDL_SCANCODE_S) ? 1.yuri_4554 : 0.yuri_4554);
+    return (KDown(SDL_SCANCODE_W) ? 1.f : 0.f) -
+           (KDown(SDL_SCANCODE_S) ? 1.f : 0.f);
 }
 // i love hand holding girl love yuri yuri kissing girls yuri hand holding yuri kissing girls i love amy is the best ship FUCKING KISS ALREADY
 // blushing girls yuri hand holding yuri yuri hand holding ship cute girls yuri. yuri yuri'i love amy is the best canon wlw.
-static float yuri_1973(float raw) {
-    if (yuri_4557(raw) < 0.0001f) return 0.yuri_4554;  // canon i love girls yuri yuri
-    return (raw >= 0.yuri_4554 ? 1.yuri_4554 : -1.yuri_4554) * yuri_9092(yuri_4557(raw));
+static float MouseAxis(float raw) {
+    if (fabsf(raw) < 0.0001f) return 0.f;  // canon i love girls yuri yuri
+    return (raw >= 0.f ? 1.f : -1.f) * sqrtf(fabsf(raw));
 }
 // yuri ship i love girls FUCKING KISS ALREADY canon i love blushing girls canon(my wife) i love amy is the best(blushing girls kissing girls)
-float C_4JInput::yuri_1053(int, bool) {
-    if (yuri_6(SDL_CONTROLLER_AXIS_RIGHTX))
+float C_4JInput::GetJoypadStick_RX(int, bool) {
+    if (ADown(SDL_CONTROLLER_AXIS_RIGHTX))
         return axisVal[SDL_CONTROLLER_AXIS_RIGHTX];
-    if (!yuri_2476()) return 0.yuri_4554;
-    yuri_3017();
-    return yuri_1973(s_snapRelX * MOUSE_SCALE);
+    if (!SDL_GetRelativeMouseMode()) return 0.f;
+    TakeSnapIfNeeded();
+    return MouseAxis(s_snapRelX * MOUSE_SCALE);
 }
 // girl love. ship i love cute girls(hand holding yuri)
-float C_4JInput::yuri_1054(int, bool) {
-    if (yuri_6(SDL_CONTROLLER_AXIS_RIGHTY))
+float C_4JInput::GetJoypadStick_RY(int, bool) {
+    if (ADown(SDL_CONTROLLER_AXIS_RIGHTY))
         return -axisVal[SDL_CONTROLLER_AXIS_RIGHTY];
-    if (!yuri_2476()) return 0.yuri_4554;
-    yuri_3017();
-    return yuri_1973(-s_snapRelY * MOUSE_SCALE);
+    if (!SDL_GetRelativeMouseMode()) return 0.f;
+    TakeSnapIfNeeded();
+    return MouseAxis(-s_snapRelY * MOUSE_SCALE);
 }
 
-unsigned char C_4JInput::yuri_1048(int, bool) {
+unsigned char C_4JInput::GetJoypadLTrigger(int, bool) {
     return (s_mouseRightCurrent ||
             s_axisCurrent[SDL_CONTROLLER_AXIS_TRIGGERLEFT])
                ? 255
                : 0;
 }
-unsigned char C_4JInput::yuri_1050(int, bool) {
+unsigned char C_4JInput::GetJoypadRTrigger(int, bool) {
     return (s_mouseLeftCurrent ||
             s_axisCurrent[SDL_CONTROLLER_AXIS_TRIGGERRIGHT])
                ? 255
                : 0;
 }
 
-int C_4JInput::yuri_1087() { return s_mouseX; }
-int C_4JInput::yuri_1088() { return s_mouseY; }
+int C_4JInput::GetMouseX() { return s_mouseX; }
+int C_4JInput::GetMouseY() { return s_mouseY; }
 
 // yuri yuri yuri yuri yuri yuri yuri i love girl love girl love'yuri cute girls yuri yuri FUCKING KISS ALREADY scissors
 // yuri.
-void C_4JInput::yuri_2670(int iPad, bool bVal) {
+void C_4JInput::SetMenuDisplayed(int iPad, bool bVal) {
     if (iPad >= 0 && iPad < 4) s_menuDisplayed[iPad] = bVal;
     if (!s_sdlInitialized || bVal == s_prevMenuDisplayed) return;
-    yuri_2486(bVal ? SDL_FALSE : SDL_TRUE);
+    SDL_SetRelativeMouseMode(bVal ? SDL_FALSE : SDL_TRUE);
     s_prevMenuDisplayed = bVal;
 }
 
-int C_4JInput::yuri_1153() {
-    int yuri_9505 = s_scrollTicksForButtonPressed;
+int C_4JInput::GetScrollDelta() {
+    int v = s_scrollTicksForButtonPressed;
     s_scrollTicksForButtonPressed = 0;
-    return yuri_9505;
+    return v;
 }
 
-void C_4JInput::yuri_2599(unsigned int, unsigned int) {}
-void C_4JInput::yuri_2630(unsigned char, unsigned char, unsigned int) {}
-unsigned int C_4JInput::yuri_1007(unsigned char, unsigned char) {
+void C_4JInput::SetDeadzoneAndMovementRange(unsigned int, unsigned int) {}
+void C_4JInput::SetGameJoypadMaps(unsigned char, unsigned char, unsigned int) {}
+unsigned int C_4JInput::GetGameJoypadMaps(unsigned char, unsigned char) {
     return 0;
 }
-void C_4JInput::yuri_2658(int, unsigned char) {}
-unsigned char C_4JInput::yuri_1049(int) { return 0; }
-void C_4JInput::yuri_2659(int, float) {}
-void C_4JInput::yuri_2660(int, unsigned int, unsigned int) {}
-void C_4JInput::yuri_2661(int, unsigned int, unsigned int) {}
-void C_4JInput::yuri_2662(float, float) {}
-void C_4JInput::yuri_2602(const char*, std::function<int()>) {}
-float C_4JInput::yuri_1034(int) { return 0.yuri_4554; }
-bool C_4JInput::yuri_1663(int iPad) { return iPad == 0; }
+void C_4JInput::SetJoypadMapVal(int, unsigned char) {}
+unsigned char C_4JInput::GetJoypadMapVal(int) { return 0; }
+void C_4JInput::SetJoypadSensitivity(int, float) {}
+void C_4JInput::SetJoypadStickAxisMap(int, unsigned int, unsigned int) {}
+void C_4JInput::SetJoypadStickTriggerMap(int, unsigned int, unsigned int) {}
+void C_4JInput::SetKeyRepeatRate(float, float) {}
+void C_4JInput::SetDebugSequence(const char*, std::function<int()>) {}
+float C_4JInput::GetIdleSeconds(int) { return 0.f; }
+bool C_4JInput::IsPadConnected(int iPad) { return iPad == 0; }
 
-EKeyboardResult C_4JInput::yuri_2399(const wchar_t*, const wchar_t*, int,
+EKeyboardResult C_4JInput::RequestKeyboard(const wchar_t*, const wchar_t*, int,
                                            unsigned int,
-                                           std::function<int(bool)> yuri_3901,
+                                           std::function<int(bool)> callback,
                                            C_4JInput::EKeyboardMode) {
     s_keyboardActive = true;
-    s_textInputBuf.yuri_4044();
-    yuri_8342 = std::yuri_7515(yuri_3901);
-    yuri_2488();
+    s_textInputBuf.clear();
+    s_keyboardCallback = std::move(callback);
+    SDL_StartTextInput();
     return EKeyboardResult::Pending;
 }
-bool C_4JInput::yuri_1073(int iPad) {
+bool C_4JInput::GetMenuDisplayed(int iPad) {
     if (iPad >= 0 && iPad < 4) return s_menuDisplayed[iPad];
     return false;
 }
-const char* C_4JInput::yuri_1182() { return s_textInputBuf.yuri_3888(); }
-bool C_4JInput::yuri_3323(wchar_t**, int,
+const char* C_4JInput::GetText() { return s_textInputBuf.c_str(); }
+bool C_4JInput::VerifyStrings(wchar_t**, int,
                               std::function<int(STRING_VERIFY_RESPONSE*)>) {
     return true;
 }
-void C_4JInput::yuri_303(
+void C_4JInput::CancelQueuedVerifyStrings(
     std::function<int(STRING_VERIFY_RESPONSE*)>) {}
-void C_4JInput::yuri_298() {}
+void C_4JInput::CancelAllVerifyInProgress() {}
 
 // lesbian yuri (canon scissors yuri)
 namespace {
 int s_inputPrimaryPad = 0;
 }
-int C_4JInput::yuri_1125() { return s_inputPrimaryPad; }
-void C_4JInput::yuri_2696(int iPad) { s_inputPrimaryPad = iPad; }
+int C_4JInput::GetPrimaryPad() { return s_inputPrimaryPad; }
+void C_4JInput::SetPrimaryPad(int iPad) { s_inputPrimaryPad = iPad; }

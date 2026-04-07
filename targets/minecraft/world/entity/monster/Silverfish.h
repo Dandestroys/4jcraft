@@ -4,50 +4,50 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/MobType.h"
 
-class yuri_739;
-class yuri_1758;
+class Entity;
+class Level;
 
-class yuri_2820 : public yuri_1966 {
+class Silverfish : public Monster {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_SILVERFISH; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2820(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_SILVERFISH; }
+    static Entity* create(Level* level) { return new Silverfish(level); }
 
 private:
     int lookForFriends;
 
 public:
-    yuri_2820(yuri_1758* yuri_7194);
+    Silverfish(Level* level);
 
 protected:
-    virtual void yuri_8067();
-    virtual bool yuri_7434();
-    virtual std::shared_ptr<yuri_739> yuri_4601();
+    virtual void registerAttributes();
+    virtual bool makeStepSound();
+    virtual std::shared_ptr<Entity> findAttackTarget();
 
-    virtual int yuri_4882();
-    virtual int yuri_5383();
-    virtual int yuri_5130();
+    virtual int getAmbientSound();
+    virtual int getHurtSound();
+    virtual int getDeathSound();
 
 public:
-    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
+    virtual bool hurt(DamageSource* source, float dmg);
 
 protected:
-    virtual void yuri_4009(std::shared_ptr<yuri_739> target, float d);
-    virtual void yuri_7835(int xt, int yt, int zt, int t);
-    virtual int yuri_5128();
+    virtual void checkHurtTarget(std::shared_ptr<Entity> target, float d);
+    virtual void playStepSound(int xt, int yt, int zt, int t);
+    virtual int getDeathLoot();
 
 public:
-    virtual void yuri_9265();
+    virtual void tick();
 
 protected:
-    virtual void yuri_8431();
+    virtual void serverAiStep();
 
 public:
-    virtual float yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual float getWalkTargetValue(int x, int y, int z);
 
 protected:
-    virtual bool yuri_6833();
+    virtual bool isDarkEnoughToSpawn();
 
 public:
-    virtual bool yuri_3958();
-    virtual MobType yuri_5555();
+    virtual bool canSpawn();
+    virtual MobType getMobType();
 };

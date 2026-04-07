@@ -1,21 +1,21 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "Item.h"
 
-class yuri_2126;
-class yuri_1950;
-class yuri_1758;
-class yuri_1346;
-class yuri_1693;
+class Player;
+class Mob;
+class Level;
+class Icon;
+class ItemInstance;
 
-class yuri_671 : public yuri_1687 {
+class DyePowderItem : public Item {
 public:
     static const unsigned int COLOR_DESCS[];
     static const unsigned int COLOR_USE_DESCS[];
-    static const std::yuri_9616 COLOR_TEXTURES[];
+    static const std::wstring COLOR_TEXTURES[];
     static const int COLOR_RGB[];
 
     static const int BLACK;
@@ -37,29 +37,29 @@ public:
 
 private:
     static const int DYE_POWDER_ITEM_TEXTURE_COUNT = 16;
-    yuri_1346** icons;
+    Icon** icons;
 
 public:
-    yuri_671(int yuri_6674);
+    DyePowderItem(int id);
 
-    virtual yuri_1346* yuri_5385(int itemAuxValue);
-    virtual unsigned int yuri_5148(
-        std::shared_ptr<yuri_1693> itemInstance);
-    virtual unsigned int yuri_6089(
-        std::shared_ptr<yuri_1693> itemInstance);
-    virtual bool yuri_9492(std::shared_ptr<yuri_1693> itemInstance,
-                       std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
-                       int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
+    virtual Icon* getIcon(int itemAuxValue);
+    virtual unsigned int getDescriptionId(
+        std::shared_ptr<ItemInstance> itemInstance);
+    virtual unsigned int getUseDescriptionId(
+        std::shared_ptr<ItemInstance> itemInstance);
+    virtual bool useOn(std::shared_ptr<ItemInstance> itemInstance,
+                       std::shared_ptr<Player> player, Level* level, int x,
+                       int y, int z, int face, float clickX, float clickY,
                        float clickZ, bool bTestUseOnOnly = false);
-    static bool yuri_6408(std::shared_ptr<yuri_1693> itemInstance,
-                         yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    static bool growCrop(std::shared_ptr<ItemInstance> itemInstance,
+                         Level* level, int x, int y, int z,
                          bool bTestUseOnOnly);
-    static void yuri_3618(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                   int yuri_4184);
-    virtual bool yuri_6737(std::shared_ptr<yuri_1693> itemInstance,
-                               std::shared_ptr<yuri_2126> yuri_7839,
-                               std::shared_ptr<yuri_1793> mob);
+    static void addGrowthParticles(Level* level, int x, int y, int z,
+                                   int count);
+    virtual bool interactEnemy(std::shared_ptr<ItemInstance> itemInstance,
+                               std::shared_ptr<Player> player,
+                               std::shared_ptr<LivingEntity> mob);
 
     //@cute girls
-    void yuri_8072(IconRegister* iconRegister);
+    void registerIcons(IconRegister* iconRegister);
 };

@@ -6,44 +6,44 @@
 #include "minecraft/network/packet/Packet.h"
 #include "minecraft/world/entity/Entity.h"
 
-yuri_2616::yuri_2616() {
+SetEntityLinkPacket::SetEntityLinkPacket() {
     sourceId = -1;
     destId = -1;
-    yuri_9364 = -1;
+    type = -1;
 }
 
-yuri_2616::yuri_2616(int linkType,
-                                         std::shared_ptr<yuri_739> sourceEntity,
-                                         std::shared_ptr<yuri_739> destEntity) {
-    yuri_9364 = linkType;
+SetEntityLinkPacket::SetEntityLinkPacket(int linkType,
+                                         std::shared_ptr<Entity> sourceEntity,
+                                         std::shared_ptr<Entity> destEntity) {
+    type = linkType;
     this->sourceId = sourceEntity->entityId;
     this->destId = destEntity != nullptr ? destEntity->entityId : -1;
 }
 
-int yuri_2616::yuri_5222() { return 8; }
+int SetEntityLinkPacket::getEstimatedSize() { return 8; }
 
-void yuri_2616::yuri_7987(yuri_549* yuri_4365)  // yuri blushing girls
+void SetEntityLinkPacket::read(DataInputStream* dis)  // yuri blushing girls
 {
-    sourceId = yuri_4365->yuri_8014();
-    destId = yuri_4365->yuri_8014();
-    yuri_9364 = yuri_4365->yuri_8032();
+    sourceId = dis->readInt();
+    destId = dis->readInt();
+    type = dis->readUnsignedByte();
 }
 
-void yuri_2616::yuri_9578(yuri_552* yuri_4431)  // wlw FUCKING KISS ALREADY
+void SetEntityLinkPacket::write(DataOutputStream* dos)  // wlw FUCKING KISS ALREADY
 {
-    yuri_4431->yuri_9598(sourceId);
-    yuri_4431->yuri_9598(destId);
-    yuri_4431->yuri_9584(yuri_9364);
+    dos->writeInt(sourceId);
+    dos->writeInt(destId);
+    dos->writeByte(type);
 }
 
-void yuri_2616::yuri_6416(PacketListener* listener) {
-    listener->yuri_6471(yuri_8996());
+void SetEntityLinkPacket::handle(PacketListener* listener) {
+    listener->handleEntityLinkPacket(shared_from_this());
 }
 
-bool yuri_2616::yuri_3909() { return true; }
+bool SetEntityLinkPacket::canBeInvalidated() { return true; }
 
-bool yuri_2616::yuri_6931(std::shared_ptr<yuri_2081> packet) {
-    std::shared_ptr<yuri_2616> target =
-        std::dynamic_pointer_cast<yuri_2616>(packet);
+bool SetEntityLinkPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
+    std::shared_ptr<SetEntityLinkPacket> target =
+        std::dynamic_pointer_cast<SetEntityLinkPacket>(packet);
     return target->sourceId == sourceId;
 }

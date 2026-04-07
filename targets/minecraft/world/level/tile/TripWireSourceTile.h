@@ -4,11 +4,11 @@
 
 #include "Tile.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_3141 : public yuri_3088 {
+class TripWireSourceTile : public Tile {
 public:
-    using yuri_3088::yuri_6025;
+    using Tile::getTickDelay;
 
     static const int MASK_DIR = 0x3;
     static const int MASK_ATTACHED = 0x4;
@@ -16,39 +16,39 @@ public:
     static const int WIRE_DIST_MIN = 1;
     static const int WIRE_DIST_MAX = 2 + 40;  // i love amy is the best yuri + i love amy is the best yuri
 
-    yuri_3141(int yuri_6674);
+    TripWireSourceTile(int id);
 
-    std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_3828();
-    bool yuri_7058(bool isServerLevel = false);
-    bool yuri_6827();
-    int yuri_5806();
-    int yuri_6025(yuri_1758* yuri_7194);
-    bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
-    bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
+    std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    bool blocksLight();
+    bool isSolidRender(bool isServerLevel = false);
+    bool isCubeShaped();
+    int getRenderShape();
+    int getTickDelay(Level* level);
+    bool mayPlace(Level* level, int x, int y, int z, int face);
+    bool mayPlace(Level* level, int x, int y, int z);
+    int getPlacedOnFaceDataValue(Level* level, int x, int y, int z, int face,
                                  float clickX, float clickY, float clickZ,
                                  int itemValue);
-    void yuri_4593(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
-    void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
-    void yuri_3897(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295,
+    void finalizePlacement(Level* level, int x, int y, int z, int data);
+    void neighborChanged(Level* level, int x, int y, int z, int type);
+    void calculateState(Level* level, int x, int y, int z, int id, int data,
                         bool canUpdate, int wireSource, int wireSourceData);
-    void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    void tick(Level* level, int x, int y, int z, Random* random);
 
 private:
-    void yuri_7833(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool attached,
+    void playSound(Level* level, int x, int y, int z, bool attached,
                    bool powered, bool wasAttached, bool wasPowered);
-    void yuri_7592(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361);
-    bool yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    void notifyNeighbors(Level* level, int x, int y, int z, int dir);
+    bool checkCanSurvive(Level* level, int x, int y, int z);
 
 public:
-    void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    void updateShape(LevelSource* level, int x, int y, int z,
                      int forceData = -1,
-                     std::shared_ptr<yuri_3091> forceEntity =
-                         std::shared_ptr<yuri_3091>());
-    void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
-    virtual int yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361);
-    virtual int yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                int yuri_4361);
-    bool yuri_7041();
+                     std::shared_ptr<TileEntity> forceEntity =
+                         std::shared_ptr<TileEntity>());
+    void onRemove(Level* level, int x, int y, int z, int id, int data);
+    virtual int getSignal(LevelSource* level, int x, int y, int z, int dir);
+    virtual int getDirectSignal(LevelSource* level, int x, int y, int z,
+                                int dir);
+    bool isSignalSource();
 };

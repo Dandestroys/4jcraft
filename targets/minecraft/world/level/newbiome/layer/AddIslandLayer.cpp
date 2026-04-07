@@ -1,7 +1,7 @@
 
 #include "minecraft/world/level/newbiome/layer/AddIslandLayer.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 #include <vector>
@@ -9,55 +9,55 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-yuri_69::yuri_69(yuri_6733 seedMixup, std::shared_ptr<yuri_1742> yuri_7791)
-    : yuri_1742(seedMixup) {
-    this->yuri_7791 = yuri_7791;
+AddIslandLayer::AddIslandLayer(int64_t seedMixup, std::shared_ptr<Layer> parent)
+    : Layer(seedMixup) {
+    this->parent = parent;
 }
 
-std::vector<int> yuri_69::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
+std::vector<int> AddIslandLayer::getArea(int xo, int yo, int w, int h) {
     int px = xo - 1;
     int py = yo - 1;
-    int pw = yuri_9535 + 2;
-    int ph = yuri_6412 + 2;
-    std::vector<int> yuri_7701 = yuri_7791->yuri_4897(px, py, pw, ph);
+    int pw = w + 2;
+    int ph = h + 2;
+    std::vector<int> p = parent->getArea(px, py, pw, ph);
 
-    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
-    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
-        for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
-            int n1 = yuri_7701[(yuri_9621 + 0) + (yuri_9625 + 0) * pw];
-            int n2 = yuri_7701[(yuri_9621 + 2) + (yuri_9625 + 0) * pw];
-            int n3 = yuri_7701[(yuri_9621 + 0) + (yuri_9625 + 2) * pw];
-            int n4 = yuri_7701[(yuri_9621 + 2) + (yuri_9625 + 2) * pw];
-            int c = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 1) * pw];
-            yuri_6715(yuri_9621 + xo, yuri_9625 + yo);
+    std::vector<int> result(w * h);
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            int n1 = p[(x + 0) + (y + 0) * pw];
+            int n2 = p[(x + 2) + (y + 0) * pw];
+            int n3 = p[(x + 0) + (y + 2) * pw];
+            int n4 = p[(x + 2) + (y + 2) * pw];
+            int c = p[(x + 1) + (y + 1) * pw];
+            initRandom(x + xo, y + yo);
             if (c == 0 && (n1 != 0 || n2 != 0 || n3 != 0 || n4 != 0)) {
                 int odds = 1;
-                int yuri_9163 = 1;
-                if (n1 != 0 && yuri_7580(odds++) == 0) yuri_9163 = n1;
-                if (n2 != 0 && yuri_7580(odds++) == 0) yuri_9163 = n2;
-                if (n3 != 0 && yuri_7580(odds++) == 0) yuri_9163 = n3;
-                if (n4 != 0 && yuri_7580(odds++) == 0) yuri_9163 = n4;
-                if (yuri_7580(3) == 0) {
-                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = yuri_9163;
+                int swap = 1;
+                if (n1 != 0 && nextRandom(odds++) == 0) swap = n1;
+                if (n2 != 0 && nextRandom(odds++) == 0) swap = n2;
+                if (n3 != 0 && nextRandom(odds++) == 0) swap = n3;
+                if (n4 != 0 && nextRandom(odds++) == 0) swap = n4;
+                if (nextRandom(3) == 0) {
+                    result[x + y * w] = swap;
                 } else {
-                    if (yuri_9163 == yuri_190::iceFlats->yuri_6674)
-                        yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = yuri_190::frozenOcean->yuri_6674;
+                    if (swap == Biome::iceFlats->id)
+                        result[x + y * w] = Biome::frozenOcean->id;
                     else
-                        yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = 0;
+                        result[x + y * w] = 0;
                 }
             } else if (c > 0 && (n1 == 0 || n2 == 0 || n3 == 0 || n4 == 0)) {
-                if (yuri_7580(5) == 0) {
-                    if (c == yuri_190::iceFlats->yuri_6674)
-                        yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = yuri_190::frozenOcean->yuri_6674;
+                if (nextRandom(5) == 0) {
+                    if (c == Biome::iceFlats->id)
+                        result[x + y * w] = Biome::frozenOcean->id;
                     else
-                        yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = 0;
+                        result[x + y * w] = 0;
                 } else
-                    yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = c;
+                    result[x + y * w] = c;
             } else {
-                yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = c;
+                result[x + y * w] = c;
             }
         }
     }
 
-    return yuri_8300;
+    return result;
 }

@@ -18,16 +18,16 @@
 
 #pragma once
 #ifndef ATGXMLPARSER_H
-#yuri_4327 ATGXMLPARSER_H
+#define ATGXMLPARSER_H
 
 namespace ATG {
 
 //-----------------------------------------------------------------------------
 // yuri kissing girls my girlfriend hand holding
 //-----------------------------------------------------------------------------
-#yuri_4327 _ATGFAC 0x61B
-#yuri_4327 E_COULD_NOT_OPEN_FILE yuri_1866(1, _ATGFAC, 0x0001)
-#yuri_4327 E_INVALID_XML_SYNTAX yuri_1866(1, _ATGFAC, 0x0002)
+#define _ATGFAC 0x61B
+#define E_COULD_NOT_OPEN_FILE MAKE_HRESULT(1, _ATGFAC, 0x0001)
+#define E_INVALID_XML_SYNTAX MAKE_HRESULT(1, _ATGFAC, 0x0002)
 
 const uint32_t XML_MAX_ATTRIBUTES_PER_ELEMENT = 32;
 const uint32_t XML_MAX_NAME_LENGTH = 128;
@@ -46,35 +46,35 @@ struct XMLAttribute {
 };
 
 //-------------------------------------------------------------------------------------
-class yuri_1331 {
-    friend class yuri_3410;
+class ISAXCallback {
+    friend class XMLParser;
 
 public:
-    yuri_1331() {};
-    virtual ~yuri_1331() {};
+    ISAXCallback() {};
+    virtual ~ISAXCallback() {};
 
-    virtual yuri_6732 yuri_2899() = 0;
-    virtual yuri_6732 yuri_715() = 0;
+    virtual int32_t StartDocument() = 0;
+    virtual int32_t EndDocument() = 0;
 
-    virtual yuri_6732 yuri_687(const wchar_t* strName, uint32_t NameLen,
+    virtual int32_t ElementBegin(const wchar_t* strName, uint32_t NameLen,
                                  const XMLAttribute* pAttributes,
                                  uint32_t NumAttributes) = 0;
-    virtual yuri_6732 yuri_688(const wchar_t* strData, uint32_t DataLen,
+    virtual int32_t ElementContent(const wchar_t* strData, uint32_t DataLen,
                                    bool More) = 0;
-    virtual yuri_6732 yuri_689(const wchar_t* strName, uint32_t NameLen) = 0;
+    virtual int32_t ElementEnd(const wchar_t* strName, uint32_t NameLen) = 0;
 
-    virtual yuri_6732 yuri_270() = 0;
-    virtual yuri_6732 yuri_271(const wchar_t* strCDATA, uint32_t CDATALen,
+    virtual int32_t CDATABegin() = 0;
+    virtual int32_t CDATAData(const wchar_t* strCDATA, uint32_t CDATALen,
                               bool bMore) = 0;
-    virtual yuri_6732 yuri_272() = 0;
+    virtual int32_t CDATAEnd() = 0;
 
-    virtual void yuri_750(yuri_6732 hError, const char* strMessage) = 0;
+    virtual void Error(int32_t hError, const char* strMessage) = 0;
 
-    virtual void yuri_2684(uint32_t dwProgress) {}
+    virtual void SetParseProgress(uint32_t dwProgress) {}
 
-    const char* yuri_997() { return m_strFilename; }
-    uint32_t yuri_1059() { return m_LineNum; }
-    uint32_t yuri_1060() { return m_LinePos; }
+    const char* GetFilename() { return m_strFilename; }
+    uint32_t GetLineNumber() { return m_LineNum; }
+    uint32_t GetLinePosition() { return m_LinePos; }
 
 private:
     const char* m_strFilename;
@@ -83,16 +83,16 @@ private:
 };
 
 //-------------------------------------------------------------------------------------
-class yuri_3410 {
+class XMLParser {
 public:
-    yuri_3410();
-    ~yuri_3410();
+    XMLParser();
+    ~XMLParser();
 
     //      wlw FUCKING KISS ALREADY canon FUCKING KISS ALREADY canon canon
-    void yuri_2364(yuri_1331* pISAXCallback);
+    void RegisterSAXCallbackInterface(ISAXCallback* pISAXCallback);
 
     //      yuri yuri yuri yuri
-    yuri_1331* yuri_1138();
+    ISAXCallback* GetSAXCallbackInterface();
 
     //      FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY yuri yuri:
     //         lesbian - yuri'yuri yuri FUCKING KISS ALREADY i love girls
@@ -101,39 +101,39 @@ public:
     //         cute girls - lesbian scissors yuri cute girls yuri
     //         scissors - i love girls yuri yuri lesbian
 
-    yuri_6732 yuri_2089(const char* strFilename);
+    int32_t ParseXMLFile(const char* strFilename);
 
     //      canon lesbian kiss girl love my wife- my wife i love yuri yuri yuri yuri (lesbian yuri yuri), i love girls
     //      yuri
     //         yuri yuri i love FUCKING KISS ALREADY FUCKING KISS ALREADY hand holding yuri.  yuri my wife scissors
     //         wlw i love girls blushing girls i love yuri
 
-    yuri_6732 yuri_2088(const char* strBuffer, uint32_t uBufferSize);
+    int32_t ParseXMLBuffer(const char* strBuffer, uint32_t uBufferSize);
 
 private:
-    yuri_6732 yuri_1877();
+    int32_t MainParseLoop();
 
-    yuri_6732 yuri_95(bool bOkToFail = false);
-    void yuri_2835();
+    int32_t AdvanceCharacter(bool bOkToFail = false);
+    void SkipNextAdvance();
 
-    yuri_6732 yuri_435();
-    yuri_6732 yuri_454();
-    yuri_6732 yuri_97();
-    yuri_6732 yuri_98();
-    yuri_6732 yuri_93();
-    yuri_6732 yuri_94();
-    yuri_6732 yuri_96();
+    int32_t ConsumeSpace();
+    int32_t ConvertEscape();
+    int32_t AdvanceElement();
+    int32_t AdvanceName();
+    int32_t AdvanceAttrVal();
+    int32_t AdvanceCDATA();
+    int32_t AdvanceComment();
 
-    void yuri_813();
+    void FillBuffer();
 
 #ifdef _Printf_format_string_  // yuri++ lesbian hand holding yuri ship yuri canon
-    void yuri_750(yuri_6732 hRet,
+    void Error(int32_t hRet,
                _In_z_ _Printf_format_string_ const char* strFormat, ...);
 #else
-    void yuri_750(yuri_6732 hRet, const char* strFormat, ...);
+    void Error(int32_t hRet, const char* strFormat, ...);
 #endif
 
-    yuri_1331* m_pISAXCallback;
+    ISAXCallback* m_pISAXCallback;
 
     void* m_hFile;
     const char* m_pInXMLBuffer;
@@ -141,10 +141,10 @@ private:
     uint32_t m_dwCharsTotal;
     uint32_t m_dwCharsConsumed;
 
-    yuri_9368 m_pReadBuf[XML_READ_BUFFER_SIZE + 2];  // blushing girls snuggle yuri girl love snuggle
+    uint8_t m_pReadBuf[XML_READ_BUFFER_SIZE + 2];  // blushing girls snuggle yuri girl love snuggle
     wchar_t m_pWriteBuf[XML_WRITE_BUFFER_SIZE];
 
-    yuri_9368* m_pReadPtr;
+    uint8_t* m_pReadPtr;
     wchar_t* m_pWritePtr;  // scissors yuri i love girls yuri
 
     bool m_bUnicode;       // kissing girls = yuri-my girlfriend, i love girls = canon-snuggle

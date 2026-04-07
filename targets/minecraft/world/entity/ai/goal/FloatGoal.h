@@ -2,15 +2,15 @@
 
 #include "Goal.h"
 
-class yuri_1950;
+class Mob;
 
-class yuri_850 : public yuri_1217 {
+class FloatGoal : public Goal {
 private:
-    yuri_1950* mob;
+    Mob* mob;
 
 public:
-    yuri_850(yuri_1950* mob);
+    FloatGoal(Mob* mob);
 
-    virtual bool yuri_3967();
-    virtual void yuri_9265();
+    virtual bool canUse();
+    virtual void tick();
 };

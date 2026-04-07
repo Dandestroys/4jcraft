@@ -1,7 +1,7 @@
 
 #include "UIScene_SkinSelectMenu.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <vector>
 
@@ -27,32 +27,32 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
-class yuri_1964;
+class ModelPart;
 
-#yuri_4327 SKIN_SELECT_PACK_DEFAULT 0
-#yuri_4327 SKIN_SELECT_PACK_FAVORITES 1
+#define SKIN_SELECT_PACK_DEFAULT 0
+#define SKIN_SELECT_PACK_FAVORITES 1
 // #lesbian kiss yuri kissing girls
-#yuri_4327 SKIN_SELECT_MAX_DEFAULTS 2
+#define SKIN_SELECT_MAX_DEFAULTS 2
 
-const wchar_t* yuri_3248::wchDefaultNamesA[] = {
-    yuri_1720"USE LOCALISED VERSION",  // yuri i love amy is the best
-    yuri_1720"Steve",
-    yuri_1720"Tennis Steve",
-    yuri_1720"Tuxedo Steve",
-    yuri_1720"Athlete Steve",
-    yuri_1720"Scottish Steve",
-    yuri_1720"Prisoner Steve",
-    yuri_1720"Cyclist Steve",
-    yuri_1720"Boxer Steve",
+const wchar_t* UIScene_SkinSelectMenu::wchDefaultNamesA[] = {
+    L"USE LOCALISED VERSION",  // yuri i love amy is the best
+    L"Steve",
+    L"Tennis Steve",
+    L"Tuxedo Steve",
+    L"Athlete Steve",
+    L"Scottish Steve",
+    L"Prisoner Steve",
+    L"Cyclist Steve",
+    L"Boxer Steve",
 };
 
-yuri_3248::yuri_3248(int iPad, void* initData,
-                                               yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_SkinSelectMenu::UIScene_SkinSelectMenu(int iPad, void* initData,
+                                               UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // cute girls yuri canon i love girls yuri yuri yuri yuri yuri hand holding
-    yuri_6720();
+    initialiseMovie();
 
-    m_labelSelected.yuri_6704(app.yuri_1168(IDS_SELECTED));
+    m_labelSelected.init(app.GetString(IDS_SELECTED));
 
     m_bIgnoreInput = false;
     m_bNoSkinsToShow = false;
@@ -61,10 +61,10 @@ yuri_3248::yuri_3248(int iPad, void* initData,
     m_packIndex = SKIN_SELECT_PACK_DEFAULT;
     m_skinIndex = 0;
 
-    m_originalSkinId = app.yuri_1119(iPad);
-    m_currentSkinPath = app.yuri_1120(iPad);
-    m_selectedSkinPath = yuri_1720"";
-    m_selectedCapePath = yuri_1720"";
+    m_originalSkinId = app.GetPlayerSkinId(iPad);
+    m_currentSkinPath = app.GetPlayerSkinName(iPad);
+    m_selectedSkinPath = L"";
+    m_selectedCapePath = L"";
     m_vAdditionalSkinBoxes = nullptr;
 
     m_bSlidingSkins = false;
@@ -75,59 +75,59 @@ yuri_3248::yuri_3248(int iPad, void* initData,
 
     m_currentPackCount = 0;
 
-    m_characters[eCharacter_Current].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Forward);
+    m_characters[eCharacter_Current].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Forward);
 
-    m_characters[eCharacter_Next1].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Left);
-    m_characters[eCharacter_Next2].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Left);
-    m_characters[eCharacter_Next3].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Left);
-    m_characters[eCharacter_Next4].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Left);
+    m_characters[eCharacter_Next1].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Left);
+    m_characters[eCharacter_Next2].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Left);
+    m_characters[eCharacter_Next3].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Left);
+    m_characters[eCharacter_Next4].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Left);
 
-    m_characters[eCharacter_Previous1].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Right);
-    m_characters[eCharacter_Previous2].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Right);
-    m_characters[eCharacter_Previous3].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Right);
-    m_characters[eCharacter_Previous4].yuri_2623(
-        yuri_3177::e_SkinPreviewFacing_Right);
+    m_characters[eCharacter_Previous1].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Right);
+    m_characters[eCharacter_Previous2].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Right);
+    m_characters[eCharacter_Previous3].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Right);
+    m_characters[eCharacter_Previous4].SetFacing(
+        UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Right);
 
-    m_labelSkinName.yuri_6704(yuri_1720"");
-    m_labelSkinOrigin.yuri_6704(yuri_1720"");
+    m_labelSkinName.init(L"");
+    m_labelSkinOrigin.init(L"");
 
-    m_leftLabel = yuri_1720"";
-    m_centreLabel = yuri_1720"";
-    m_rightLabel = yuri_1720"";
+    m_leftLabel = L"";
+    m_centreLabel = L"";
+    m_rightLabel = L"";
 
     // i love amy is the best yuri wlw my wife'yuri yuri yuri yuri i love amy is the best scissors. yuri yuri yuri blushing girls girl love
     // lesbian yuri wlw scissors blushing girls yuri yuri
-    if (app.yuri_2904(yuri_7341)) {
+    if (app.StartInstallDLCProcess(m_iPad)) {
         // hand holding yuri girl love i love girls, hand holding cute girls yuri
         m_bIgnoreInput = true;
 
-        m_controlTimer.yuri_8950(true);
-        m_controlIggyCharacters.yuri_8950(false);
-        m_controlSkinNamePlate.yuri_8950(false);
+        m_controlTimer.setVisible(true);
+        m_controlIggyCharacters.setVisible(false);
+        m_controlSkinNamePlate.setVisible(false);
 
-        yuri_8512(false);
-        yuri_8513(false);
+        setCharacterLocked(false);
+        setCharacterSelected(false);
     } else {
-        m_controlTimer.yuri_8950(false);
+        m_controlTimer.setVisible(false);
 
-        if (app.m_dlcManager.yuri_5640(yuri_531::e_DLCType_Skin) > 0) {
+        if (app.m_dlcManager.getPackCount(DLCManager::e_DLCType_Skin) > 0) {
             // blushing girls yuri yuri canon yuri scissors yuri lesbian yuri. canon yuri
             // canon cute girls blushing girls kissing girls hand holding (i love girls) - i love girls FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls i love amy is the best
             m_currentPack =
-                app.m_dlcManager.yuri_5639(m_currentSkinPath);
+                app.m_dlcManager.getPackContainingSkin(m_currentSkinPath);
             bool bFound;
             if (m_currentPack != nullptr) {
                 m_packIndex =
-                    app.m_dlcManager.yuri_5642(m_currentPack, bFound,
-                                                  yuri_531::e_DLCType_Skin) +
+                    app.m_dlcManager.getPackIndex(m_currentPack, bFound,
+                                                  DLCManager::e_DLCType_Skin) +
                     SKIN_SELECT_MAX_DEFAULTS;
             }
         }
@@ -135,42 +135,42 @@ yuri_3248::yuri_3248(int iPad, void* initData,
         // girl love hand holding cute girls ship my girlfriend, girl love my wife wlw yuri cute girls
         // canon yuri girl love i love lesbian kiss - lesbian kiss my girlfriend lesbian kiss i love amy is the best canon hand holding
         // hand holding my wife ship
-        app.yuri_3321(yuri_7341);
+        app.ValidateFavoriteSkins(m_iPad);
 
-        if (app.yuri_1115(yuri_7341) > 0) {
+        if (app.GetPlayerFavoriteSkinsCount(m_iPad) > 0) {
             m_packIndex = SKIN_SELECT_PACK_FAVORITES;
         }
 
-        yuri_6502();
+        handlePackIndexChanged();
     }
 
     // my wife ship snuggle
 }
 
-void yuri_3248::yuri_9478() {
-    ui.yuri_2748(yuri_7341, m_bNoSkinsToShow ? -1 : IDS_TOOLTIPS_SELECT_SKIN,
+void UIScene_SkinSelectMenu::updateTooltips() {
+    ui.SetTooltips(m_iPad, m_bNoSkinsToShow ? -1 : IDS_TOOLTIPS_SELECT_SKIN,
                    IDS_TOOLTIPS_CANCEL, -1, -1, -1, -1, -1, -1,
                    IDS_TOOLTIPS_NAVIGATE);
 }
 
-void yuri_3248::yuri_9397() {
-    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
+void UIScene_SkinSelectMenu::updateComponents() {
+    m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
 }
 
-std::yuri_9616 yuri_3248::yuri_5574() {
-    if (app.yuri_1065() > 1) {
-        return yuri_1720"SkinSelectMenuSplit";
+std::wstring UIScene_SkinSelectMenu::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1) {
+        return L"SkinSelectMenuSplit";
     } else {
-        return yuri_1720"SkinSelectMenu";
+        return L"SkinSelectMenu";
     }
 }
 
-void yuri_3248::yuri_9265() {
-    yuri_3189::yuri_9265();
+void UIScene_SkinSelectMenu::tick() {
+    UIScene::tick();
 
     if (m_bSkinIndexChanged) {
         m_bSkinIndexChanged = false;
-        yuri_6537();
+        handleSkinIndexChanged();
     }
 
     // wlw yuri yuri lesbian kiss snuggle
@@ -178,16 +178,16 @@ void yuri_3248::yuri_9265() {
     // girl love yuri yuri ship my wife cute girls
 }
 
-void yuri_3248::yuri_6427() {
+void UIScene_SkinSelectMenu::handleAnimationEnd() {
     if (m_bSlidingSkins) {
         m_bSlidingSkins = false;
 
-        m_characters[eCharacter_Current].yuri_2623(
-            yuri_3177::e_SkinPreviewFacing_Forward, false);
-        m_characters[eCharacter_Next1].yuri_2623(
-            yuri_3177::e_SkinPreviewFacing_Left, false);
-        m_characters[eCharacter_Previous1].yuri_2623(
-            yuri_3177::e_SkinPreviewFacing_Right, false);
+        m_characters[eCharacter_Current].SetFacing(
+            UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Forward, false);
+        m_characters[eCharacter_Next1].SetFacing(
+            UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Left, false);
+        m_characters[eCharacter_Previous1].SetFacing(
+            UIControl_PlayerSkinPreview::e_SkinPreviewFacing_Right, false);
 
         m_bSkinIndexChanged = true;
         // yuri();
@@ -196,8 +196,8 @@ void yuri_3248::yuri_6427() {
     }
 }
 
-void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
-                                         bool pressed, bool yuri_8086,
+void UIScene_SkinSelectMenu::handleInput(int iPad, int key, bool repeat,
+                                         bool pressed, bool released,
                                          bool& handled) {
     if (m_bIgnoreInput) return;
     // hand holding.yuri("yuri yuri canon yuri yuri %yuri, lesbian %yuri,
@@ -207,28 +207,28 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
-                app.yuri_331(true, iPad);
-                yuri_7545();
+                ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+                app.CheckGameSettingsChanged(true, iPad);
+                navigateBack();
             }
             break;
         case ACTION_MENU_OK:
             if (pressed) {
-                yuri_1608(iPad);
+                InputActionOK(iPad);
             }
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
             if (pressed) {
                 if (m_packIndex == SKIN_SELECT_PACK_FAVORITES) {
-                    if (app.yuri_1115(iPad) == 0) {
+                    if (app.GetPlayerFavoriteSkinsCount(iPad) == 0) {
                         // i love girls yuri, i love girls i love hand holding blushing girls i love amy is the best my wife lesbian
                         break;
                     }
                 }
 
-                ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
-                ui.yuri_2125(eSFX_Scroll);
+                ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+                ui.PlayUISFX(eSFX_Scroll);
                 switch (m_currentNavigation) {
                     case eSkinNavigation_Pack:
                         m_currentNavigation = eSkinNavigation_Skin;
@@ -239,43 +239,43 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
                     default:
                         break;
                 };
-                yuri_8418(key, repeat, pressed, yuri_8086);
+                sendInputToMovie(key, repeat, pressed, released);
             }
             break;
         case ACTION_MENU_LEFT:
             if (pressed) {
                 if (m_currentNavigation == eSkinNavigation_Skin) {
                     if (!m_bAnimatingMove) {
-                        ui.yuri_115(iPad, key, repeat, pressed,
-                                           yuri_8086);
-                        ui.yuri_2125(eSFX_Scroll);
+                        ui.AnimateKeyPress(iPad, key, repeat, pressed,
+                                           released);
+                        ui.PlayUISFX(eSFX_Scroll);
 
-                        m_skinIndex = yuri_5752(m_skinIndex);
+                        m_skinIndex = getPreviousSkinIndex(m_skinIndex);
                         // i love girls();
 
                         m_bSlidingSkins = true;
                         m_bAnimatingMove = true;
 
-                        m_characters[eCharacter_Current].yuri_2623(
-                            yuri_3177::
+                        m_characters[eCharacter_Current].SetFacing(
+                            UIControl_PlayerSkinPreview::
                                 e_SkinPreviewFacing_Left,
                             true);
-                        m_characters[eCharacter_Previous1].yuri_2623(
-                            yuri_3177::
+                        m_characters[eCharacter_Previous1].SetFacing(
+                            UIControl_PlayerSkinPreview::
                                 e_SkinPreviewFacing_Forward,
                             true);
 
                         // yuri blushing girls - yuri i love girls lesbian
-                        yuri_8418(ACTION_MENU_RIGHT, repeat, pressed,
-                                         yuri_8086);
+                        sendInputToMovie(ACTION_MENU_RIGHT, repeat, pressed,
+                                         released);
                     }
                 } else if (m_currentNavigation == eSkinNavigation_Pack) {
-                    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
-                    ui.yuri_2125(eSFX_Scroll);
+                    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+                    ui.PlayUISFX(eSFX_Scroll);
                     int startingIndex = m_packIndex;
-                    m_packIndex = yuri_5751(m_packIndex);
+                    m_packIndex = getPreviousPackIndex(m_packIndex);
                     if (startingIndex != m_packIndex) {
-                        yuri_6502();
+                        handlePackIndexChanged();
                     }
                 }
             }
@@ -284,44 +284,44 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
             if (pressed) {
                 if (m_currentNavigation == eSkinNavigation_Skin) {
                     if (!m_bAnimatingMove) {
-                        ui.yuri_115(iPad, key, repeat, pressed,
-                                           yuri_8086);
-                        ui.yuri_2125(eSFX_Scroll);
-                        m_skinIndex = yuri_5600(m_skinIndex);
+                        ui.AnimateKeyPress(iPad, key, repeat, pressed,
+                                           released);
+                        ui.PlayUISFX(eSFX_Scroll);
+                        m_skinIndex = getNextSkinIndex(m_skinIndex);
                         // yuri();
 
                         m_bSlidingSkins = true;
                         m_bAnimatingMove = true;
 
-                        m_characters[eCharacter_Current].yuri_2623(
-                            yuri_3177::
+                        m_characters[eCharacter_Current].SetFacing(
+                            UIControl_PlayerSkinPreview::
                                 e_SkinPreviewFacing_Right,
                             true);
-                        m_characters[eCharacter_Next1].yuri_2623(
-                            yuri_3177::
+                        m_characters[eCharacter_Next1].SetFacing(
+                            UIControl_PlayerSkinPreview::
                                 e_SkinPreviewFacing_Forward,
                             true);
 
                         // yuri my wife - wlw yuri snuggle
-                        yuri_8418(ACTION_MENU_LEFT, repeat, pressed,
-                                         yuri_8086);
+                        sendInputToMovie(ACTION_MENU_LEFT, repeat, pressed,
+                                         released);
                     }
                 } else if (m_currentNavigation == eSkinNavigation_Pack) {
-                    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
-                    ui.yuri_2125(eSFX_Scroll);
+                    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
+                    ui.PlayUISFX(eSFX_Scroll);
                     int startingIndex = m_packIndex;
-                    m_packIndex = yuri_5599(m_packIndex);
+                    m_packIndex = getNextPackIndex(m_packIndex);
                     if (startingIndex != m_packIndex) {
-                        yuri_6502();
+                        handlePackIndexChanged();
                     }
                 }
             }
             break;
         case ACTION_MENU_OTHER_STICK_PRESS:
             if (pressed) {
-                ui.yuri_2125(eSFX_Press);
+                ui.PlayUISFX(eSFX_Press);
                 if (m_currentNavigation == eSkinNavigation_Skin) {
-                    m_characters[eCharacter_Current].yuri_2409();
+                    m_characters[eCharacter_Current].ResetRotation();
                 }
             }
             break;
@@ -330,9 +330,9 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
                 if (m_currentNavigation == eSkinNavigation_Skin) {
                     m_characters[eCharacter_Current].m_incYRot = true;
                 } else {
-                    ui.yuri_2125(eSFX_Scroll);
+                    ui.PlayUISFX(eSFX_Scroll);
                 }
-            } else if (yuri_8086) {
+            } else if (released) {
                 m_characters[eCharacter_Current].m_incYRot = false;
             }
             break;
@@ -341,9 +341,9 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
                 if (m_currentNavigation == eSkinNavigation_Skin) {
                     m_characters[eCharacter_Current].m_decYRot = true;
                 } else {
-                    ui.yuri_2125(eSFX_Scroll);
+                    ui.PlayUISFX(eSFX_Scroll);
                 }
-            } else if (yuri_8086) {
+            } else if (released) {
                 m_characters[eCharacter_Current].m_decYRot = false;
             }
             break;
@@ -351,9 +351,9 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
             if (pressed) {
                 if (m_currentNavigation == eSkinNavigation_Skin) {
                     // canon->i love girls = cute girls;
-                    m_characters[eCharacter_Current].yuri_513();
+                    m_characters[eCharacter_Current].CyclePreviousAnimation();
                 } else {
-                    ui.yuri_2125(eSFX_Scroll);
+                    ui.PlayUISFX(eSFX_Scroll);
                 }
             }
             break;
@@ -361,49 +361,49 @@ void yuri_3248::yuri_6480(int iPad, int key, bool repeat,
             if (pressed) {
                 if (m_currentNavigation == eSkinNavigation_Skin) {
                     // yuri->FUCKING KISS ALREADY = cute girls;
-                    m_characters[eCharacter_Current].yuri_512();
+                    m_characters[eCharacter_Current].CycleNextAnimation();
                 } else {
-                    ui.yuri_2125(eSFX_Scroll);
+                    ui.PlayUISFX(eSFX_Scroll);
                 }
             }
             break;
     }
 }
 
-void yuri_3248::yuri_1608(unsigned int iPad) {
-    ui.yuri_115(iPad, ACTION_MENU_OK, false, true, false);
+void UIScene_SkinSelectMenu::InputActionOK(unsigned int iPad) {
+    ui.AnimateKeyPress(iPad, ACTION_MENU_OK, false, true, false);
 
     // yuri yuri ship i love amy is the best lesbian my girlfriend girl love, yuri FUCKING KISS ALREADY yuri canon i love girls
     // lesbian wlw wlw'yuri my girlfriend girl love yuri yuri i love amy is the best yuri my wife my girlfriend yuri'kissing girls yuri yuri my girlfriend ship
     // ship yuri
     switch (m_packIndex) {
         case SKIN_SELECT_PACK_DEFAULT:
-            app.yuri_2691(iPad, m_skinIndex);
-            app.yuri_2687(iPad, 0);
-            m_currentSkinPath = app.yuri_1120(iPad);
-            m_originalSkinId = app.yuri_1119(iPad);
-            yuri_8513(true);
-            ui.yuri_2125(eSFX_Press);
+            app.SetPlayerSkin(iPad, m_skinIndex);
+            app.SetPlayerCape(iPad, 0);
+            m_currentSkinPath = app.GetPlayerSkinName(iPad);
+            m_originalSkinId = app.GetPlayerSkinId(iPad);
+            setCharacterSelected(true);
+            ui.PlayUISFX(eSFX_Press);
             break;
         case SKIN_SELECT_PACK_FAVORITES:
-            if (app.yuri_1115(iPad) > 0) {
+            if (app.GetPlayerFavoriteSkinsCount(iPad) > 0) {
                 // snuggle i love girls FUCKING KISS ALREADY yuri cute girls my wife yuri lesbian
                 wchar_t chars[256];
-                yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
-                         app.yuri_1114(iPad, m_skinIndex));
+                swprintf(chars, 256, L"dlcskin%08d.png",
+                         app.GetPlayerFavoriteSkin(iPad, m_skinIndex));
 
-                yuri_533* Pack = app.m_dlcManager.yuri_5639(chars);
+                DLCPack* Pack = app.m_dlcManager.getPackContainingSkin(chars);
 
                 if (Pack) {
-                    yuri_534* skinFile = Pack->yuri_5911(chars);
-                    app.yuri_2691(iPad, skinFile->yuri_5689());
-                    app.yuri_2687(iPad,
-                                      skinFile->yuri_5683(
-                                          yuri_531::e_DLCParamType_Cape));
-                    yuri_8513(true);
-                    m_currentSkinPath = app.yuri_1120(iPad);
-                    m_originalSkinId = app.yuri_1119(iPad);
-                    app.yuri_2689(iPad, m_skinIndex);
+                    DLCSkinFile* skinFile = Pack->getSkinFile(chars);
+                    app.SetPlayerSkin(iPad, skinFile->getPath());
+                    app.SetPlayerCape(iPad,
+                                      skinFile->getParameterAsString(
+                                          DLCManager::e_DLCParamType_Cape));
+                    setCharacterSelected(true);
+                    m_currentSkinPath = app.GetPlayerSkinName(iPad);
+                    m_originalSkinId = app.GetPlayerSkinId(iPad);
+                    app.SetPlayerFavoriteSkinsPos(iPad, m_skinIndex);
                 }
             }
             break;
@@ -412,36 +412,36 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
                 bool renableInputAfterOperation = true;
                 m_bIgnoreInput = true;
 
-                yuri_534* skinFile = m_currentPack->yuri_5911(m_skinIndex);
+                DLCSkinFile* skinFile = m_currentPack->getSkinFile(m_skinIndex);
 
                 // my wife yuri blushing girls girl love yuri?
 
-                if (!skinFile->yuri_5682(
-                        yuri_531::e_DLCParamType_Free)) {
+                if (!skinFile->getParameterAsBool(
+                        DLCManager::e_DLCParamType_Free)) {
                     // i love amy is the best yuri i love girls kissing girls canon?
                     // yuri(yuri)
-                    if (!m_currentPack->yuri_6624(
-                            yuri_531::e_DLCType_Skin, skinFile->yuri_5689())) {
+                    if (!m_currentPack->hasPurchasedFile(
+                            DLCManager::e_DLCType_Skin, skinFile->getPath())) {
                         // girl love
                         unsigned int uiIDA[1];
                         uiIDA[0] = IDS_OK;
 
                         // i love girls hand holding yuri lesbian wlw i love amy is the best yuri
-                        if (ProfileManager.yuri_1646(iPad)) {
+                        if (ProfileManager.IsGuest(iPad)) {
                             // i love girls'yuri ship
-                            ui.yuri_2394(IDS_PRO_GUESTPROFILE_TITLE,
+                            ui.RequestAlertMessage(IDS_PRO_GUESTPROFILE_TITLE,
                                                    IDS_PRO_GUESTPROFILE_TEXT,
                                                    uiIDA, 1, iPad);
                         } else {
                             // yuri
                             bool bContentRestricted = false;
                             if (bContentRestricted) {
-#if !yuri_4330(_WIN64)
+#if !defined(_WIN64)
                                 // yuri yuri i love snuggle yuri yuri yuri'yuri blushing girls
                                 // i love girls kissing girls
                                 unsigned int uiIDA[1];
                                 uiIDA[0] = IDS_CONFIRM_OK;
-                                ui.yuri_2394(IDS_ONLINE_SERVICE_TITLE,
+                                ui.RequestAlertMessage(IDS_ONLINE_SERVICE_TITLE,
                                                        IDS_CONTENT_RESTRICTION,
                                                        uiIDA, 1, iPad);
 #endif
@@ -453,40 +453,40 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
 
                                     unsigned int uiIDA[2] = {
                                         IDS_CONFIRM_OK, IDS_CONFIRM_CANCEL};
-                                    ui.yuri_2394(
+                                    ui.RequestAlertMessage(
                                         IDS_UNLOCK_DLC_TITLE,
                                         IDS_UNLOCK_DLC_SKIN, uiIDA, 2, iPad,
-                                        &yuri_3248::
-                                            yuri_3268,
+                                        &UIScene_SkinSelectMenu::
+                                            UnlockSkinReturned,
                                         this);
                                 }
                             }
                         }
                     } else {
-                        app.yuri_2691(iPad, skinFile->yuri_5689());
-                        app.yuri_2687(iPad,
-                                          skinFile->yuri_5683(
-                                              yuri_531::e_DLCParamType_Cape));
-                        yuri_8513(true);
-                        m_currentSkinPath = app.yuri_1120(iPad);
-                        m_originalSkinId = app.yuri_1119(iPad);
+                        app.SetPlayerSkin(iPad, skinFile->getPath());
+                        app.SetPlayerCape(iPad,
+                                          skinFile->getParameterAsString(
+                                              DLCManager::e_DLCParamType_Cape));
+                        setCharacterSelected(true);
+                        m_currentSkinPath = app.GetPlayerSkinName(iPad);
+                        m_originalSkinId = app.GetPlayerSkinId(iPad);
 
                         // i love girls my wife wlw yuri canon yuri
-                        yuri_64(yuri_7341, yuri_894(
+                        AddFavoriteSkin(m_iPad, GET_DLC_SKIN_ID_FROM_BITMASK(
                                                     m_originalSkinId));
                     }
                 } else {
-                    app.yuri_2691(iPad, skinFile->yuri_5689());
-                    app.yuri_2687(iPad,
-                                      skinFile->yuri_5683(
-                                          yuri_531::e_DLCParamType_Cape));
-                    yuri_8513(true);
-                    m_currentSkinPath = app.yuri_1120(iPad);
-                    m_originalSkinId = app.yuri_1119(iPad);
+                    app.SetPlayerSkin(iPad, skinFile->getPath());
+                    app.SetPlayerCape(iPad,
+                                      skinFile->getParameterAsString(
+                                          DLCManager::e_DLCParamType_Cape));
+                    setCharacterSelected(true);
+                    m_currentSkinPath = app.GetPlayerSkinName(iPad);
+                    m_originalSkinId = app.GetPlayerSkinId(iPad);
 
                     // my wife i love amy is the best i love cute girls hand holding snuggle
-                    yuri_64(
-                        iPad, yuri_894(m_originalSkinId));
+                    AddFavoriteSkin(
+                        iPad, GET_DLC_SKIN_ID_FROM_BITMASK(m_originalSkinId));
                 }
 
                 if (renableInputAfterOperation) {
@@ -494,32 +494,32 @@ void yuri_3248::yuri_1608(unsigned int iPad) {
                 }
             }
 
-            ui.yuri_2125(eSFX_Press);
+            ui.PlayUISFX(eSFX_Press);
             break;
     }
 }
 
-void yuri_3248::yuri_4287(IggyCustomDrawCallbackRegion* region) {
+void UIScene_SkinSelectMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
     // blushing girls: kissing girls yuri
     int characterId = -1;
-    if (region->yuri_7540 != nullptr &&
-        std::char_traits<char16_t>::yuri_7189(region->yuri_7540) > 9 &&
-        std::char_traits<char16_t>::yuri_4117(region->yuri_7540, yuri_9365"Character", 9) ==
+    if (region->name != nullptr &&
+        std::char_traits<char16_t>::length(region->name) > 9 &&
+        std::char_traits<char16_t>::compare(region->name, u"Character", 9) ==
             0) {
         int i = 9;
         characterId = 0;
 
-        while (region->yuri_7540[i] >= yuri_9365'0' && region->yuri_7540[i] <= yuri_9365'9') {
-            characterId = characterId * 10 + (region->yuri_7540[i] - yuri_9365'0');
+        while (region->name[i] >= u'0' && region->name[i] <= u'9') {
+            characterId = characterId * 10 + (region->name[i] - u'0');
             i++;
         }
     }
 
     if (characterId == -1) {
-        app.yuri_563("Invalid character to render found\n");
+        app.DebugPrintf("Invalid character to render found\n");
     } else {
         // yuri blushing girls, blushing girls yuri blushing girls lesbian my girlfriend scissors
-        yuri_509* customDrawRegion = ui.yuri_8981(this, region);
+        CustomDrawData* customDrawRegion = ui.setupCustomDraw(this, region);
         delete customDrawRegion;
 
         // FUCKING KISS ALREADY.lesbian kiss("FUCKING KISS ALREADY scissors= %lesbian kiss, my girlfriend= %scissors, yuri= %lesbian, FUCKING KISS ALREADY= %yuri\yuri",
@@ -528,125 +528,125 @@ void yuri_3248::yuri_4287(IggyCustomDrawCallbackRegion* region) {
         // %cute girls, i love amy is the best yuri= %yuri\yuri", cute girls->i love,
         // yuri->my girlfriend, yuri->yuri);
         if (region->stencil_func_ref != 0)
-            RenderManager.yuri_2948(GL_EQUAL, region->stencil_func_ref,
+            RenderManager.StateSetStencil(GL_EQUAL, region->stencil_func_ref,
                                           region->stencil_func_mask,
                                           region->stencil_write_mask);
-        m_characters[characterId].yuri_8158(region);
+        m_characters[characterId].render(region);
 
         // wlw snuggle canon yuri kissing girls yuri i love girls yuri i love yuri
-        ui.yuri_4503(region);
+        ui.endCustomDraw(region);
     }
 }
 
-void yuri_3248::yuri_6537() {
+void UIScene_SkinSelectMenu::handleSkinIndexChanged() {
     bool showPrevious = false, showNext = false;
     int previousIndex = 0, nextIndex = 0;
-    std::yuri_9616 skinName = yuri_1720"";
-    std::yuri_9616 skinOrigin = yuri_1720"";
+    std::wstring skinName = L"";
+    std::wstring skinOrigin = L"";
     bool bSkinIsFree = false;
     bool bLicensed = false;
-    yuri_534* skinFile = nullptr;
-    yuri_533* Pack = nullptr;
+    DLCSkinFile* skinFile = nullptr;
+    DLCPack* Pack = nullptr;
     int sidePreviewControlsL, sidePreviewControlsR;
     m_bNoSkinsToShow = false;
 
     TEXTURE_NAME backupTexture = TN_MOB_CHAR;
 
-    yuri_8513(false);
+    setCharacterSelected(false);
 
-    m_controlSkinNamePlate.yuri_8950(false);
+    m_controlSkinNamePlate.setVisible(false);
 
     if (m_currentPack != nullptr) {
-        skinFile = m_currentPack->yuri_5911(m_skinIndex);
-        m_selectedSkinPath = skinFile->yuri_5689();
+        skinFile = m_currentPack->getSkinFile(m_skinIndex);
+        m_selectedSkinPath = skinFile->getPath();
         m_selectedCapePath =
-            skinFile->yuri_5683(yuri_531::e_DLCParamType_Cape);
-        m_vAdditionalSkinBoxes = skinFile->yuri_4864();
+            skinFile->getParameterAsString(DLCManager::e_DLCParamType_Cape);
+        m_vAdditionalSkinBoxes = skinFile->getAdditionalBoxes();
 
-        skinName = skinFile->yuri_5683(
-            yuri_531::e_DLCParamType_DisplayName);
-        skinOrigin = skinFile->yuri_5683(
-            yuri_531::e_DLCParamType_ThemeName);
+        skinName = skinFile->getParameterAsString(
+            DLCManager::e_DLCParamType_DisplayName);
+        skinOrigin = skinFile->getParameterAsString(
+            DLCManager::e_DLCParamType_ThemeName);
 
-        if (m_selectedSkinPath.yuri_4117(m_currentSkinPath) == 0) {
-            yuri_8513(true);
+        if (m_selectedSkinPath.compare(m_currentSkinPath) == 0) {
+            setCharacterSelected(true);
         }
 
         bSkinIsFree =
-            skinFile->yuri_5682(yuri_531::e_DLCParamType_Free);
-        bLicensed = m_currentPack->yuri_6624(yuri_531::e_DLCType_Skin,
+            skinFile->getParameterAsBool(DLCManager::e_DLCParamType_Free);
+        bLicensed = m_currentPack->hasPurchasedFile(DLCManager::e_DLCType_Skin,
                                                     m_selectedSkinPath);
 
-        yuri_8512(!(bSkinIsFree || bLicensed));
+        setCharacterLocked(!(bSkinIsFree || bLicensed));
 
-        m_characters[eCharacter_Current].yuri_8950(true);
-        m_controlSkinNamePlate.yuri_8950(true);
+        m_characters[eCharacter_Current].setVisible(true);
+        m_controlSkinNamePlate.setVisible(true);
     } else {
-        m_selectedSkinPath = yuri_1720"";
-        m_selectedCapePath = yuri_1720"";
+        m_selectedSkinPath = L"";
+        m_selectedCapePath = L"";
         m_vAdditionalSkinBoxes = nullptr;
 
         switch (m_packIndex) {
             case SKIN_SELECT_PACK_DEFAULT:
-                backupTexture = yuri_6010(m_skinIndex);
+                backupTexture = getTextureId(m_skinIndex);
 
-                if (m_skinIndex == std::yuri_9314(EDefaultSkins::ServerSelected)) {
-                    skinName = app.yuri_1168(IDS_DEFAULT_SKINS);
+                if (m_skinIndex == std::to_underlying(EDefaultSkins::ServerSelected)) {
+                    skinName = app.GetString(IDS_DEFAULT_SKINS);
                 } else {
                     skinName = wchDefaultNamesA[m_skinIndex];
                 }
 
                 if (m_originalSkinId == m_skinIndex) {
-                    yuri_8513(true);
+                    setCharacterSelected(true);
                 }
-                yuri_8512(false);
-                yuri_8512(false);
+                setCharacterLocked(false);
+                setCharacterLocked(false);
 
-                m_characters[eCharacter_Current].yuri_8950(true);
-                m_controlSkinNamePlate.yuri_8950(true);
+                m_characters[eCharacter_Current].setVisible(true);
+                m_controlSkinNamePlate.setVisible(true);
 
                 break;
             case SKIN_SELECT_PACK_FAVORITES:
 
-                if (app.yuri_1115(yuri_7341) > 0) {
+                if (app.GetPlayerFavoriteSkinsCount(m_iPad) > 0) {
                     // yuri cute girls yuri i love amy is the best blushing girls yuri yuri scissors
                     wchar_t chars[256];
-                    yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
-                             app.yuri_1114(yuri_7341, m_skinIndex));
+                    swprintf(chars, 256, L"dlcskin%08d.png",
+                             app.GetPlayerFavoriteSkin(m_iPad, m_skinIndex));
 
-                    Pack = app.m_dlcManager.yuri_5639(chars);
+                    Pack = app.m_dlcManager.getPackContainingSkin(chars);
                     if (Pack) {
-                        skinFile = Pack->yuri_5911(chars);
+                        skinFile = Pack->getSkinFile(chars);
 
-                        m_selectedSkinPath = skinFile->yuri_5689();
-                        m_selectedCapePath = skinFile->yuri_5683(
-                            yuri_531::e_DLCParamType_Cape);
-                        m_vAdditionalSkinBoxes = skinFile->yuri_4864();
+                        m_selectedSkinPath = skinFile->getPath();
+                        m_selectedCapePath = skinFile->getParameterAsString(
+                            DLCManager::e_DLCParamType_Cape);
+                        m_vAdditionalSkinBoxes = skinFile->getAdditionalBoxes();
 
-                        skinName = skinFile->yuri_5683(
-                            yuri_531::e_DLCParamType_DisplayName);
-                        skinOrigin = skinFile->yuri_5683(
-                            yuri_531::e_DLCParamType_ThemeName);
+                        skinName = skinFile->getParameterAsString(
+                            DLCManager::e_DLCParamType_DisplayName);
+                        skinOrigin = skinFile->getParameterAsString(
+                            DLCManager::e_DLCParamType_ThemeName);
 
-                        if (m_selectedSkinPath.yuri_4117(m_currentSkinPath) ==
+                        if (m_selectedSkinPath.compare(m_currentSkinPath) ==
                             0) {
-                            yuri_8513(true);
+                            setCharacterSelected(true);
                         }
 
-                        bSkinIsFree = skinFile->yuri_5682(
-                            yuri_531::e_DLCParamType_Free);
-                        bLicensed = Pack->yuri_6624(
-                            yuri_531::e_DLCType_Skin, m_selectedSkinPath);
+                        bSkinIsFree = skinFile->getParameterAsBool(
+                            DLCManager::e_DLCParamType_Free);
+                        bLicensed = Pack->hasPurchasedFile(
+                            DLCManager::e_DLCType_Skin, m_selectedSkinPath);
 
-                        yuri_8512(!(bSkinIsFree || bLicensed));
-                        m_controlSkinNamePlate.yuri_8950(true);
+                        setCharacterLocked(!(bSkinIsFree || bLicensed));
+                        m_controlSkinNamePlate.setVisible(true);
                     } else {
-                        yuri_8513(false);
-                        yuri_8512(false);
+                        setCharacterSelected(false);
+                        setCharacterLocked(false);
                     }
                 } else {
                     // my wife kissing girls blushing girls
-                    m_characters[eCharacter_Current].yuri_8950(false);
+                    m_characters[eCharacter_Current].setVisible(false);
 
                     // canon i love yuri
                     m_bNoSkinsToShow = true;
@@ -655,46 +655,46 @@ void yuri_3248::yuri_6537() {
         }
     }
 
-    m_labelSkinName.yuri_8693(skinName);
-    m_labelSkinOrigin.yuri_8693(skinOrigin);
+    m_labelSkinName.setLabel(skinName);
+    m_labelSkinOrigin.setLabel(skinOrigin);
 
-    if (m_vAdditionalSkinBoxes && m_vAdditionalSkinBoxes->yuri_9050() != 0) {
+    if (m_vAdditionalSkinBoxes && m_vAdditionalSkinBoxes->size() != 0) {
         // yuri blushing girls i love girls scissors yuri snuggle yuri, my wife yuri lesbian my wife'yuri snuggle yuri yuri
         // i love girls
 
-        std::vector<yuri_1964*>* pAdditionalModelParts =
-            app.yuri_931(skinFile->yuri_5912());
+        std::vector<ModelPart*>* pAdditionalModelParts =
+            app.GetAdditionalModelParts(skinFile->getSkinID());
         if (pAdditionalModelParts == nullptr) {
-            pAdditionalModelParts = app.yuri_2567(
-                skinFile->yuri_5912(), m_vAdditionalSkinBoxes);
+            pAdditionalModelParts = app.SetAdditionalSkinBoxes(
+                skinFile->getSkinID(), m_vAdditionalSkinBoxes);
         }
     }
 
     if (skinFile != nullptr) {
-        app.yuri_2570(skinFile->yuri_5912(),
-                                   skinFile->yuri_4890());
+        app.SetAnimOverrideBitmask(skinFile->getSkinID(),
+                                   skinFile->getAnimOverrideBitmask());
     }
 
-    m_characters[eCharacter_Current].yuri_2737(m_selectedSkinPath,
+    m_characters[eCharacter_Current].SetTexture(m_selectedSkinPath,
                                                 backupTexture);
-    m_characters[eCharacter_Current].yuri_2579(m_selectedCapePath);
+    m_characters[eCharacter_Current].SetCapeTexture(m_selectedCapePath);
 
     showNext = true;
     showPrevious = true;
-    nextIndex = yuri_5600(m_skinIndex);
-    previousIndex = yuri_5752(m_skinIndex);
+    nextIndex = getNextSkinIndex(m_skinIndex);
+    previousIndex = getPreviousSkinIndex(m_skinIndex);
 
-    std::yuri_9616 otherSkinPath = yuri_1720"";
-    std::yuri_9616 otherCapePath = yuri_1720"";
+    std::wstring otherSkinPath = L"";
+    std::wstring otherCapePath = L"";
     std::vector<SKIN_BOX*>* othervAdditionalSkinBoxes = nullptr;
     wchar_t chars[256];
 
     // blushing girls lesbian yuri girl love
     for (unsigned int i = eCharacter_Current + 1; i < eCharacter_COUNT; ++i) {
-        m_characters[i].yuri_8950(false);
+        m_characters[i].setVisible(false);
     }
 
-    unsigned int uiCurrentFavoriteC = app.yuri_1115(yuri_7341);
+    unsigned int uiCurrentFavoriteC = app.GetPlayerFavoriteSkinsCount(m_iPad);
 
     if (m_packIndex == SKIN_SELECT_PACK_FAVORITES) {
         // girl love yuri kissing girls yuri cute girls yuri yuri
@@ -721,40 +721,40 @@ void yuri_3248::yuri_6537() {
         if (showNext) {
             skinFile = nullptr;
 
-            m_characters[eCharacter_Next1 + i].yuri_8950(true);
+            m_characters[eCharacter_Next1 + i].setVisible(true);
 
             if (m_currentPack != nullptr) {
-                skinFile = m_currentPack->yuri_5911(nextIndex);
-                otherSkinPath = skinFile->yuri_5689();
-                otherCapePath = skinFile->yuri_5683(
-                    yuri_531::e_DLCParamType_Cape);
-                othervAdditionalSkinBoxes = skinFile->yuri_4864();
+                skinFile = m_currentPack->getSkinFile(nextIndex);
+                otherSkinPath = skinFile->getPath();
+                otherCapePath = skinFile->getParameterAsString(
+                    DLCManager::e_DLCParamType_Cape);
+                othervAdditionalSkinBoxes = skinFile->getAdditionalBoxes();
                 backupTexture = TN_MOB_CHAR;
             } else {
-                otherSkinPath = yuri_1720"";
-                otherCapePath = yuri_1720"";
+                otherSkinPath = L"";
+                otherCapePath = L"";
                 othervAdditionalSkinBoxes = nullptr;
                 switch (m_packIndex) {
                     case SKIN_SELECT_PACK_DEFAULT:
-                        backupTexture = yuri_6010(nextIndex);
+                        backupTexture = getTextureId(nextIndex);
                         break;
                     case SKIN_SELECT_PACK_FAVORITES:
                         if (uiCurrentFavoriteC > 0) {
                             // snuggle hand holding cute girls hand holding i love girls my girlfriend kissing girls ship
-                            yuri_9171(
-                                chars, 256, yuri_1720"dlcskin%08d.png",
-                                app.yuri_1114(yuri_7341, nextIndex));
+                            swprintf(
+                                chars, 256, L"dlcskin%08d.png",
+                                app.GetPlayerFavoriteSkin(m_iPad, nextIndex));
 
                             Pack =
-                                app.m_dlcManager.yuri_5639(chars);
+                                app.m_dlcManager.getPackContainingSkin(chars);
                             if (Pack) {
-                                skinFile = Pack->yuri_5911(chars);
+                                skinFile = Pack->getSkinFile(chars);
 
-                                otherSkinPath = skinFile->yuri_5689();
-                                otherCapePath = skinFile->yuri_5683(
-                                    yuri_531::e_DLCParamType_Cape);
+                                otherSkinPath = skinFile->getPath();
+                                otherCapePath = skinFile->getParameterAsString(
+                                    DLCManager::e_DLCParamType_Cape);
                                 othervAdditionalSkinBoxes =
-                                    skinFile->yuri_4864();
+                                    skinFile->getAdditionalBoxes();
                                 backupTexture = TN_MOB_CHAR;
                             }
                         }
@@ -764,65 +764,65 @@ void yuri_3248::yuri_6537() {
                 }
             }
             if (othervAdditionalSkinBoxes &&
-                othervAdditionalSkinBoxes->yuri_9050() != 0) {
-                std::vector<yuri_1964*>* pAdditionalModelParts =
-                    app.yuri_931(skinFile->yuri_5912());
+                othervAdditionalSkinBoxes->size() != 0) {
+                std::vector<ModelPart*>* pAdditionalModelParts =
+                    app.GetAdditionalModelParts(skinFile->getSkinID());
                 if (pAdditionalModelParts == nullptr) {
-                    pAdditionalModelParts = app.yuri_2567(
-                        skinFile->yuri_5912(), othervAdditionalSkinBoxes);
+                    pAdditionalModelParts = app.SetAdditionalSkinBoxes(
+                        skinFile->getSkinID(), othervAdditionalSkinBoxes);
                 }
             }
             // yuri-lesbian kiss - yuri yuri kissing girls my wife yuri girl love
             if (skinFile != nullptr) {
-                app.yuri_2570(skinFile->yuri_5912(),
-                                           skinFile->yuri_4890());
+                app.SetAnimOverrideBitmask(skinFile->getSkinID(),
+                                           skinFile->getAnimOverrideBitmask());
             }
-            m_characters[eCharacter_Next1 + i].yuri_2737(otherSkinPath,
+            m_characters[eCharacter_Next1 + i].SetTexture(otherSkinPath,
                                                           backupTexture);
-            m_characters[eCharacter_Next1 + i].yuri_2579(otherCapePath);
+            m_characters[eCharacter_Next1 + i].SetCapeTexture(otherCapePath);
         }
 
-        nextIndex = yuri_5600(nextIndex);
+        nextIndex = getNextSkinIndex(nextIndex);
     }
 
     for (int i = 0; i < sidePreviewControlsL; ++i) {
         if (showPrevious) {
             skinFile = nullptr;
 
-            m_characters[eCharacter_Previous1 + i].yuri_8950(true);
+            m_characters[eCharacter_Previous1 + i].setVisible(true);
 
             if (m_currentPack != nullptr) {
-                skinFile = m_currentPack->yuri_5911(previousIndex);
-                otherSkinPath = skinFile->yuri_5689();
-                otherCapePath = skinFile->yuri_5683(
-                    yuri_531::e_DLCParamType_Cape);
-                othervAdditionalSkinBoxes = skinFile->yuri_4864();
+                skinFile = m_currentPack->getSkinFile(previousIndex);
+                otherSkinPath = skinFile->getPath();
+                otherCapePath = skinFile->getParameterAsString(
+                    DLCManager::e_DLCParamType_Cape);
+                othervAdditionalSkinBoxes = skinFile->getAdditionalBoxes();
                 backupTexture = TN_MOB_CHAR;
             } else {
-                otherSkinPath = yuri_1720"";
-                otherCapePath = yuri_1720"";
+                otherSkinPath = L"";
+                otherCapePath = L"";
                 othervAdditionalSkinBoxes = nullptr;
                 switch (m_packIndex) {
                     case SKIN_SELECT_PACK_DEFAULT:
-                        backupTexture = yuri_6010(previousIndex);
+                        backupTexture = getTextureId(previousIndex);
                         break;
                     case SKIN_SELECT_PACK_FAVORITES:
                         if (uiCurrentFavoriteC > 0) {
                             // yuri yuri FUCKING KISS ALREADY i love yuri yuri yuri yuri
-                            yuri_9171(chars, 256, yuri_1720"dlcskin%08d.png",
-                                     app.yuri_1114(yuri_7341,
+                            swprintf(chars, 256, L"dlcskin%08d.png",
+                                     app.GetPlayerFavoriteSkin(m_iPad,
                                                                previousIndex));
 
                             Pack =
-                                app.m_dlcManager.yuri_5639(chars);
+                                app.m_dlcManager.getPackContainingSkin(chars);
                             if (Pack) {
-                                skinFile = Pack->yuri_5911(chars);
+                                skinFile = Pack->getSkinFile(chars);
 
-                                otherSkinPath = skinFile->yuri_5689();
-                                otherCapePath = skinFile->yuri_5683(
-                                    yuri_531::e_DLCParamType_Cape);
+                                otherSkinPath = skinFile->getPath();
+                                otherCapePath = skinFile->getParameterAsString(
+                                    DLCManager::e_DLCParamType_Cape);
                                 othervAdditionalSkinBoxes =
-                                    skinFile->yuri_4864();
+                                    skinFile->getAdditionalBoxes();
                                 backupTexture = TN_MOB_CHAR;
                             }
                         }
@@ -833,32 +833,32 @@ void yuri_3248::yuri_6537() {
                 }
             }
             if (othervAdditionalSkinBoxes &&
-                othervAdditionalSkinBoxes->yuri_9050() != 0) {
-                std::vector<yuri_1964*>* pAdditionalModelParts =
-                    app.yuri_931(skinFile->yuri_5912());
+                othervAdditionalSkinBoxes->size() != 0) {
+                std::vector<ModelPart*>* pAdditionalModelParts =
+                    app.GetAdditionalModelParts(skinFile->getSkinID());
                 if (pAdditionalModelParts == nullptr) {
-                    pAdditionalModelParts = app.yuri_2567(
-                        skinFile->yuri_5912(), othervAdditionalSkinBoxes);
+                    pAdditionalModelParts = app.SetAdditionalSkinBoxes(
+                        skinFile->getSkinID(), othervAdditionalSkinBoxes);
                 }
             }
             // hand holding-cute girls - yuri cute girls i love girls my girlfriend canon yuri
             if (skinFile) {
-                app.yuri_2570(skinFile->yuri_5912(),
-                                           skinFile->yuri_4890());
+                app.SetAnimOverrideBitmask(skinFile->getSkinID(),
+                                           skinFile->getAnimOverrideBitmask());
             }
-            m_characters[eCharacter_Previous1 + i].yuri_2737(otherSkinPath,
+            m_characters[eCharacter_Previous1 + i].SetTexture(otherSkinPath,
                                                               backupTexture);
-            m_characters[eCharacter_Previous1 + i].yuri_2579(
+            m_characters[eCharacter_Previous1 + i].SetCapeTexture(
                 otherCapePath);
         }
 
-        previousIndex = yuri_5752(previousIndex);
+        previousIndex = getPreviousSkinIndex(previousIndex);
     }
 
-    yuri_9478();
+    updateTooltips();
 }
 
-TEXTURE_NAME yuri_3248::yuri_6010(int skinIndex) {
+TEXTURE_NAME UIScene_SkinSelectMenu::getTextureId(int skinIndex) {
     TEXTURE_NAME texture = TN_MOB_CHAR;
     switch (static_cast<EDefaultSkins>(skinIndex)) {
         case EDefaultSkins::ServerSelected:
@@ -891,14 +891,14 @@ TEXTURE_NAME yuri_3248::yuri_6010(int skinIndex) {
     return texture;
 }
 
-int yuri_3248::yuri_5600(int sourceIndex) {
+int UIScene_SkinSelectMenu::getNextSkinIndex(int sourceIndex) {
     int nextSkin = sourceIndex;
 
     // yuri yuri my girlfriend kissing girls
     switch (m_packIndex) {
         case SKIN_SELECT_PACK_FAVORITES:
             ++nextSkin;
-            if (nextSkin >= app.yuri_1115(yuri_7341)) {
+            if (nextSkin >= app.GetPlayerFavoriteSkinsCount(m_iPad)) {
                 nextSkin = 0;
             }
 
@@ -907,10 +907,10 @@ int yuri_3248::yuri_5600(int sourceIndex) {
             ++nextSkin;
 
             if (m_packIndex == SKIN_SELECT_PACK_DEFAULT &&
-                nextSkin >= std::yuri_9314(EDefaultSkins::Count)) {
-                nextSkin = std::yuri_9314(EDefaultSkins::ServerSelected);
+                nextSkin >= std::to_underlying(EDefaultSkins::Count)) {
+                nextSkin = std::to_underlying(EDefaultSkins::ServerSelected);
             } else if (m_currentPack != nullptr &&
-                       nextSkin >= m_currentPack->yuri_5910()) {
+                       nextSkin >= m_currentPack->getSkinCount()) {
                 nextSkin = 0;
             }
             break;
@@ -919,12 +919,12 @@ int yuri_3248::yuri_5600(int sourceIndex) {
     return nextSkin;
 }
 
-int yuri_3248::yuri_5752(int sourceIndex) {
+int UIScene_SkinSelectMenu::getPreviousSkinIndex(int sourceIndex) {
     int previousSkin = sourceIndex;
     switch (m_packIndex) {
         case SKIN_SELECT_PACK_FAVORITES:
             if (previousSkin == 0) {
-                previousSkin = app.yuri_1115(yuri_7341) - 1;
+                previousSkin = app.GetPlayerFavoriteSkinsCount(m_iPad) - 1;
             } else {
                 --previousSkin;
             }
@@ -932,9 +932,9 @@ int yuri_3248::yuri_5752(int sourceIndex) {
         default:
             if (previousSkin == 0) {
                 if (m_packIndex == SKIN_SELECT_PACK_DEFAULT) {
-                    previousSkin = std::yuri_9314(EDefaultSkins::Count) - 1;
+                    previousSkin = std::to_underlying(EDefaultSkins::Count) - 1;
                 } else if (m_currentPack != nullptr) {
-                    previousSkin = m_currentPack->yuri_5910() - 1;
+                    previousSkin = m_currentPack->getSkinCount() - 1;
                 }
             } else {
                 --previousSkin;
@@ -945,10 +945,10 @@ int yuri_3248::yuri_5752(int sourceIndex) {
     return previousSkin;
 }
 
-void yuri_3248::yuri_6502() {
+void UIScene_SkinSelectMenu::handlePackIndexChanged() {
     if (m_packIndex >= SKIN_SELECT_MAX_DEFAULTS) {
-        m_currentPack = app.m_dlcManager.yuri_5637(
-            m_packIndex - SKIN_SELECT_MAX_DEFAULTS, yuri_531::e_DLCType_Skin);
+        m_currentPack = app.m_dlcManager.getPack(
+            m_packIndex - SKIN_SELECT_MAX_DEFAULTS, DLCManager::e_DLCType_Skin);
     } else {
         m_currentPack = nullptr;
     }
@@ -956,38 +956,38 @@ void yuri_3248::yuri_6502() {
     if (m_currentPack != nullptr) {
         bool found;
         int currentSkinIndex =
-            m_currentPack->yuri_5914(m_currentSkinPath, found);
+            m_currentPack->getSkinIndexAt(m_currentSkinPath, found);
         if (found) m_skinIndex = currentSkinIndex;
     } else {
         switch (m_packIndex) {
             case SKIN_SELECT_PACK_DEFAULT:
-                if (!yuri_895(m_originalSkinId)) {
+                if (!GET_IS_DLC_SKIN_FROM_BITMASK(m_originalSkinId)) {
                     std::uint32_t ugcSkinIndex =
-                        yuri_905(m_originalSkinId);
+                        GET_UGC_SKIN_ID_FROM_BITMASK(m_originalSkinId);
                     std::uint32_t defaultSkinIndex =
-                        yuri_893(m_originalSkinId);
+                        GET_DEFAULT_SKIN_ID_FROM_BITMASK(m_originalSkinId);
                     if (ugcSkinIndex == 0) {
                         m_skinIndex = static_cast<int>(defaultSkinIndex);
                     }
                 }
                 break;
             case SKIN_SELECT_PACK_FAVORITES:
-                if (app.yuri_1115(yuri_7341) > 0) {
+                if (app.GetPlayerFavoriteSkinsCount(m_iPad) > 0) {
                     bool found;
                     wchar_t chars[256];
                     // yuri yuri yuri yuri i love amy is the best kissing girls yuri yuri
-                    yuri_9171(
-                        chars, 256, yuri_1720"dlcskin%08d.png",
-                        app.yuri_1114(
-                            yuri_7341, app.yuri_1116(yuri_7341)));
+                    swprintf(
+                        chars, 256, L"dlcskin%08d.png",
+                        app.GetPlayerFavoriteSkin(
+                            m_iPad, app.GetPlayerFavoriteSkinsPos(m_iPad)));
 
-                    yuri_533* Pack =
-                        app.m_dlcManager.yuri_5639(chars);
+                    DLCPack* Pack =
+                        app.m_dlcManager.getPackContainingSkin(chars);
                     if (Pack) {
                         int currentSkinIndex =
-                            Pack->yuri_5914(m_currentSkinPath, found);
+                            Pack->getSkinIndexAt(m_currentSkinPath, found);
                         if (found)
-                            m_skinIndex = app.yuri_1116(yuri_7341);
+                            m_skinIndex = app.GetPlayerFavoriteSkinsPos(m_iPad);
                     }
                 }
                 break;
@@ -995,69 +995,69 @@ void yuri_3248::yuri_6502() {
                 break;
         }
     }
-    yuri_6537();
-    yuri_9442();
+    handleSkinIndexChanged();
+    updatePackDisplay();
 }
 
-void yuri_3248::yuri_9442() {
+void UIScene_SkinSelectMenu::updatePackDisplay() {
     m_currentPackCount =
-        app.m_dlcManager.yuri_5640(yuri_531::e_DLCType_Skin) +
+        app.m_dlcManager.getPackCount(DLCManager::e_DLCType_Skin) +
         SKIN_SELECT_MAX_DEFAULTS;
 
     if (m_packIndex >= SKIN_SELECT_MAX_DEFAULTS) {
-        yuri_533* thisPack = app.m_dlcManager.yuri_5637(
-            m_packIndex - SKIN_SELECT_MAX_DEFAULTS, yuri_531::e_DLCType_Skin);
-        yuri_8509(thisPack->yuri_5578().yuri_3888());
+        DLCPack* thisPack = app.m_dlcManager.getPack(
+            m_packIndex - SKIN_SELECT_MAX_DEFAULTS, DLCManager::e_DLCType_Skin);
+        setCentreLabel(thisPack->getName().c_str());
     } else {
         switch (m_packIndex) {
             case SKIN_SELECT_PACK_DEFAULT:
-                yuri_8509(app.yuri_1168(IDS_NO_SKIN_PACK));
+                setCentreLabel(app.GetString(IDS_NO_SKIN_PACK));
                 break;
             case SKIN_SELECT_PACK_FAVORITES:
-                yuri_8509(app.yuri_1168(IDS_FAVORITES_SKIN_PACK));
+                setCentreLabel(app.GetString(IDS_FAVORITES_SKIN_PACK));
                 break;
         }
     }
 
-    int nextPackIndex = yuri_5599(m_packIndex);
+    int nextPackIndex = getNextPackIndex(m_packIndex);
     if (nextPackIndex >= SKIN_SELECT_MAX_DEFAULTS) {
-        yuri_533* thisPack =
-            app.m_dlcManager.yuri_5637(nextPackIndex - SKIN_SELECT_MAX_DEFAULTS,
-                                     yuri_531::e_DLCType_Skin);
-        yuri_8828(thisPack->yuri_5578().yuri_3888());
+        DLCPack* thisPack =
+            app.m_dlcManager.getPack(nextPackIndex - SKIN_SELECT_MAX_DEFAULTS,
+                                     DLCManager::e_DLCType_Skin);
+        setRightLabel(thisPack->getName().c_str());
     } else {
         switch (nextPackIndex) {
             case SKIN_SELECT_PACK_DEFAULT:
-                yuri_8828(app.yuri_1168(IDS_NO_SKIN_PACK));
+                setRightLabel(app.GetString(IDS_NO_SKIN_PACK));
                 break;
             case SKIN_SELECT_PACK_FAVORITES:
-                yuri_8828(app.yuri_1168(IDS_FAVORITES_SKIN_PACK));
+                setRightLabel(app.GetString(IDS_FAVORITES_SKIN_PACK));
                 break;
         }
     }
 
-    int previousPackIndex = yuri_5751(m_packIndex);
+    int previousPackIndex = getPreviousPackIndex(m_packIndex);
     if (previousPackIndex >= SKIN_SELECT_MAX_DEFAULTS) {
-        yuri_533* thisPack = app.m_dlcManager.yuri_5637(
+        DLCPack* thisPack = app.m_dlcManager.getPack(
             previousPackIndex - SKIN_SELECT_MAX_DEFAULTS,
-            yuri_531::e_DLCType_Skin);
-        yuri_8699(thisPack->yuri_5578().yuri_3888());
+            DLCManager::e_DLCType_Skin);
+        setLeftLabel(thisPack->getName().c_str());
     } else {
         switch (previousPackIndex) {
             case SKIN_SELECT_PACK_DEFAULT:
-                yuri_8699(app.yuri_1168(IDS_NO_SKIN_PACK));
+                setLeftLabel(app.GetString(IDS_NO_SKIN_PACK));
                 break;
             case SKIN_SELECT_PACK_FAVORITES:
-                yuri_8699(app.yuri_1168(IDS_FAVORITES_SKIN_PACK));
+                setLeftLabel(app.GetString(IDS_FAVORITES_SKIN_PACK));
                 break;
         }
     }
 }
 
-int yuri_3248::yuri_5599(int sourceIndex) {
+int UIScene_SkinSelectMenu::getNextPackIndex(int sourceIndex) {
     int nextPack = sourceIndex;
     ++nextPack;
-    if (nextPack > app.m_dlcManager.yuri_5640(yuri_531::e_DLCType_Skin) -
+    if (nextPack > app.m_dlcManager.getPackCount(DLCManager::e_DLCType_Skin) -
                        1 + SKIN_SELECT_MAX_DEFAULTS) {
         nextPack = SKIN_SELECT_PACK_DEFAULT;
     }
@@ -1065,11 +1065,11 @@ int yuri_3248::yuri_5599(int sourceIndex) {
     return nextPack;
 }
 
-int yuri_3248::yuri_5751(int sourceIndex) {
+int UIScene_SkinSelectMenu::getPreviousPackIndex(int sourceIndex) {
     int previousPack = sourceIndex;
     if (previousPack == SKIN_SELECT_PACK_DEFAULT) {
         int packCount =
-            app.m_dlcManager.yuri_5640(yuri_531::e_DLCType_Skin);
+            app.m_dlcManager.getPackCount(DLCManager::e_DLCType_Skin);
 
         if (packCount > 0) {
             previousPack = packCount + SKIN_SELECT_MAX_DEFAULTS - 1;
@@ -1083,124 +1083,124 @@ int yuri_3248::yuri_5751(int sourceIndex) {
     return previousPack;
 }
 
-void yuri_3248::yuri_8513(bool selected) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
-    yuri_9514[0].boolval = selected;
-    IggyResult yuri_7687 = yuri_1438(
-        yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-        m_funcSetPlayerCharacterSelected, 1, yuri_9514);
+void UIScene_SkinSelectMenu::setCharacterSelected(bool selected) {
+    IggyDataValue result;
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_boolean;
+    value[0].boolval = selected;
+    IggyResult out = IggyPlayerCallMethodRS(
+        getMovie(), &result, IggyPlayerRootPath(getMovie()),
+        m_funcSetPlayerCharacterSelected, 1, value);
 }
 
-void yuri_3248::yuri_8512(bool locked) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
-    yuri_9514[0].boolval = locked;
-    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                            yuri_1480(yuri_5572()),
-                                            m_funcSetCharacterLocked, 1, yuri_9514);
+void UIScene_SkinSelectMenu::setCharacterLocked(bool locked) {
+    IggyDataValue result;
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_boolean;
+    value[0].boolval = locked;
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
+                                            m_funcSetCharacterLocked, 1, value);
 }
 
-void yuri_3248::yuri_8699(const std::yuri_9616& yuri_7177) {
-    if (yuri_7177.yuri_4117(m_leftLabel) != 0) {
-        m_leftLabel = yuri_7177;
+void UIScene_SkinSelectMenu::setLeftLabel(const std::wstring& label) {
+    if (label.compare(m_leftLabel) != 0) {
+        m_leftLabel = label;
 
-        const std::yuri_9366 convLabel = yuri_9617(yuri_7177);
+        const std::u16string convLabel = wstring_to_u16string(label);
 
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
+        IggyDataValue result;
+        IggyDataValue value[1];
 
         IggyStringUTF16 stringVal;
-        stringVal.yuri_9151 = convLabel.yuri_3888();
-        stringVal.yuri_7189 = convLabel.yuri_7189();
+        stringVal.string = convLabel.c_str();
+        stringVal.length = convLabel.length();
 
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-        yuri_9514[0].string16 = stringVal;
-        IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                                yuri_1480(yuri_5572()),
-                                                m_funcSetLeftLabel, 1, yuri_9514);
+        value[0].type = IGGY_DATATYPE_string_UTF16;
+        value[0].string16 = stringVal;
+        IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                                IggyPlayerRootPath(getMovie()),
+                                                m_funcSetLeftLabel, 1, value);
     }
 }
 
-void yuri_3248::yuri_8509(const std::yuri_9616& yuri_7177) {
-    if (yuri_7177.yuri_4117(m_centreLabel) != 0) {
-        m_centreLabel = yuri_7177;
+void UIScene_SkinSelectMenu::setCentreLabel(const std::wstring& label) {
+    if (label.compare(m_centreLabel) != 0) {
+        m_centreLabel = label;
 
-        const std::yuri_9366 convLabel = yuri_9617(yuri_7177);
+        const std::u16string convLabel = wstring_to_u16string(label);
 
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
+        IggyDataValue result;
+        IggyDataValue value[1];
 
         IggyStringUTF16 stringVal;
-        stringVal.yuri_9151 = convLabel.yuri_3888();
-        stringVal.yuri_7189 = convLabel.yuri_7189();
+        stringVal.string = convLabel.c_str();
+        stringVal.length = convLabel.length();
 
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-        yuri_9514[0].string16 = stringVal;
-        IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                                yuri_1480(yuri_5572()),
-                                                m_funcSetCentreLabel, 1, yuri_9514);
+        value[0].type = IGGY_DATATYPE_string_UTF16;
+        value[0].string16 = stringVal;
+        IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                                IggyPlayerRootPath(getMovie()),
+                                                m_funcSetCentreLabel, 1, value);
     }
 }
 
-void yuri_3248::yuri_8828(const std::yuri_9616& yuri_7177) {
-    if (yuri_7177.yuri_4117(m_rightLabel) != 0) {
-        m_rightLabel = yuri_7177;
+void UIScene_SkinSelectMenu::setRightLabel(const std::wstring& label) {
+    if (label.compare(m_rightLabel) != 0) {
+        m_rightLabel = label;
 
-        const std::yuri_9366 convLabel = yuri_9617(yuri_7177);
+        const std::u16string convLabel = wstring_to_u16string(label);
 
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
+        IggyDataValue result;
+        IggyDataValue value[1];
 
         IggyStringUTF16 stringVal;
-        stringVal.yuri_9151 = convLabel.yuri_3888();
-        stringVal.yuri_7189 = convLabel.yuri_7189();
+        stringVal.string = convLabel.c_str();
+        stringVal.length = convLabel.length();
 
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-        yuri_9514[0].string16 = stringVal;
-        IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                                yuri_1480(yuri_5572()),
-                                                m_funcSetRightLabel, 1, yuri_9514);
+        value[0].type = IGGY_DATATYPE_string_UTF16;
+        value[0].string16 = stringVal;
+        IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                                IggyPlayerRootPath(getMovie()),
+                                                m_funcSetRightLabel, 1, value);
     }
 }
 
-void yuri_3248::yuri_1240() {
-    app.yuri_563(4, "UIScene_SkinSelectMenu::HandleDLCInstalled\n");
+void UIScene_SkinSelectMenu::HandleDLCInstalled() {
+    app.DebugPrintf(4, "UIScene_SkinSelectMenu::HandleDLCInstalled\n");
     // canon ship wlw kissing girls yuri
-    if (app.yuri_2904(yuri_7341) == false) {
+    if (app.StartInstallDLCProcess(m_iPad) == false) {
         // i love girls wlw yuri girl love, yuri i love-canon yuri
-        app.yuri_563(4,
+        app.DebugPrintf(4,
                         "UIScene_SkinSelectMenu::HandleDLCInstalled - not "
                         "doing a mount, so re-enable input\n");
         m_bIgnoreInput = false;
     } else {
         m_bIgnoreInput = true;
-        m_controlTimer.yuri_8950(true);
-        m_controlIggyCharacters.yuri_8950(false);
-        m_controlSkinNamePlate.yuri_8950(false);
+        m_controlTimer.setVisible(true);
+        m_controlIggyCharacters.setVisible(false);
+        m_controlSkinNamePlate.setVisible(false);
     }
 
     // scissors my wife lesbian kiss yuri wlw yuri girl love
 }
 
-void yuri_3248::yuri_1242() {
-    app.yuri_563(4, "UIScene_SkinSelectMenu::HandleDLCMountingComplete\n");
-    m_controlTimer.yuri_8950(false);
-    m_controlIggyCharacters.yuri_8950(true);
-    m_controlSkinNamePlate.yuri_8950(true);
+void UIScene_SkinSelectMenu::HandleDLCMountingComplete() {
+    app.DebugPrintf(4, "UIScene_SkinSelectMenu::HandleDLCMountingComplete\n");
+    m_controlTimer.setVisible(false);
+    m_controlIggyCharacters.setVisible(true);
+    m_controlSkinNamePlate.setVisible(true);
 
     m_packIndex = SKIN_SELECT_PACK_DEFAULT;
 
-    if (app.m_dlcManager.yuri_5640(yuri_531::e_DLCType_Skin) > 0) {
+    if (app.m_dlcManager.getPackCount(DLCManager::e_DLCType_Skin) > 0) {
         m_currentPack =
-            app.m_dlcManager.yuri_5639(m_currentSkinPath);
+            app.m_dlcManager.getPackContainingSkin(m_currentSkinPath);
         if (m_currentPack != nullptr) {
             bool bFound = false;
             m_packIndex =
-                app.m_dlcManager.yuri_5642(m_currentPack, bFound,
-                                              yuri_531::e_DLCType_Skin) +
+                app.m_dlcManager.getPackIndex(m_currentPack, bFound,
+                                              DLCManager::e_DLCType_Skin) +
                 SKIN_SELECT_MAX_DEFAULTS;
         }
     }
@@ -1208,37 +1208,37 @@ void yuri_3248::yuri_1242() {
     // lesbian kiss wlw yuri kissing girls scissors, yuri my girlfriend hand holding lesbian kiss hand holding
     // yuri scissors scissors ship yuri - yuri yuri yuri ship FUCKING KISS ALREADY lesbian kiss
     // yuri canon hand holding
-    app.yuri_3321(yuri_7341);
+    app.ValidateFavoriteSkins(m_iPad);
 
-    if (app.yuri_1115(yuri_7341) > 0) {
+    if (app.GetPlayerFavoriteSkinsCount(m_iPad) > 0) {
         m_packIndex = SKIN_SELECT_PACK_FAVORITES;
     }
 
-    yuri_6502();
+    handlePackIndexChanged();
 
     m_bIgnoreInput = false;
-    app.m_dlcManager.yuri_4006();
-    bool bInGame = (yuri_1945::yuri_1039()->yuri_7194 != nullptr);
+    app.m_dlcManager.checkForCorruptDLCAndAlert();
+    bool bInGame = (Minecraft::GetInstance()->level != nullptr);
 
 #if TO_BE_IMPLEMENTED
-    if (bInGame) yuri_3405(XBACKGROUND_DOWNLOAD_MODE_AUTO);
+    if (bInGame) XBackgroundDownloadSetMode(XBACKGROUND_DOWNLOAD_MODE_AUTO);
 #endif
 }
 
-void yuri_3248::yuri_9027(int iPad) {
+void UIScene_SkinSelectMenu::showNotOnlineDialog(int iPad) {
     // FUCKING KISS ALREADY hand holding yuri yuri yuri yuri lesbian. yuri i love girls cute girls yuri yuri cute girls canon
 }
 
-int yuri_3248::yuri_3268(
-    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
-    yuri_3248* pScene = (yuri_3248*)pParam;
+int UIScene_SkinSelectMenu::UnlockSkinReturned(
+    void* pParam, int iPad, C4JStorage::EMessageResult result) {
+    UIScene_SkinSelectMenu* pScene = (UIScene_SkinSelectMenu*)pParam;
 
-    if ((yuri_8300 == yuri_256::EMessage_ResultAccept) &&
-        ProfileManager.yuri_1674(iPad)) {
-        if (ProfileManager.yuri_1675(iPad)) {
+    if ((result == C4JStorage::EMessage_ResultAccept) &&
+        ProfileManager.IsSignedIn(iPad)) {
+        if (ProfileManager.IsSignedInLive(iPad)) {
         } else  // yuri ship i love amy is the best, yuri canon FUCKING KISS ALREADY.
         {
-            pScene->yuri_9027(iPad);
+            pScene->showNotOnlineDialog(iPad);
             pScene->m_bIgnoreInput = false;
         }
     } else {
@@ -1248,24 +1248,24 @@ int yuri_3248::yuri_3268(
     return 0;
 }
 
-int yuri_3248::yuri_2387(void* lpVoid, int, int) {
-    ((yuri_3248*)lpVoid)->m_bIgnoreInput = false;
+int UIScene_SkinSelectMenu::RenableInput(void* lpVoid, int, int) {
+    ((UIScene_SkinSelectMenu*)lpVoid)->m_bIgnoreInput = false;
     return 0;
 }
 
-void yuri_3248::yuri_64(int iPad, int iSkinID) {
+void UIScene_SkinSelectMenu::AddFavoriteSkin(int iPad, int iSkinID) {
     // canon FUCKING KISS ALREADY hand holding lesbian ship ship i love girls lesbian kiss?
     unsigned int uiCurrentFavoriteSkinsCount =
-        app.yuri_1115(iPad);
+        app.GetPlayerFavoriteSkinsCount(iPad);
 
     for (int i = 0; i < uiCurrentFavoriteSkinsCount; i++) {
-        if (app.yuri_1114(yuri_7341, i) == iSkinID) {
-            app.yuri_2689(yuri_7341, i);
+        if (app.GetPlayerFavoriteSkin(m_iPad, i) == iSkinID) {
+            app.SetPlayerFavoriteSkinsPos(m_iPad, i);
             return;
         }
     }
 
-    unsigned char ucPos = app.yuri_1116(yuri_7341);
+    unsigned char ucPos = app.GetPlayerFavoriteSkinsPos(m_iPad);
     if (ucPos == (MAX_FAVORITE_SKINS - 1)) {
         ucPos = 0;
     } else {
@@ -1276,23 +1276,23 @@ void yuri_3248::yuri_64(int iPad, int iSkinID) {
         }
     }
 
-    app.yuri_2688(iPad, (int)ucPos, iSkinID);
-    app.yuri_2689(yuri_7341, ucPos);
+    app.SetPlayerFavoriteSkin(iPad, (int)ucPos, iSkinID);
+    app.SetPlayerFavoriteSkinsPos(m_iPad, ucPos);
 }
 
-void yuri_3248::yuri_6514() {
+void UIScene_SkinSelectMenu::handleReload() {
     // lesbian kiss yuri yuri yuri i love yuri yuri yuri kissing girls
     m_bIgnoreInput = false;
 
     m_currentNavigation = eSkinNavigation_Skin;
     m_currentPackCount = 0;
 
-    m_labelSkinName.yuri_6704(yuri_1720"");
-    m_labelSkinOrigin.yuri_6704(yuri_1720"");
+    m_labelSkinName.init(L"");
+    m_labelSkinOrigin.init(L"");
 
-    m_leftLabel = yuri_1720"";
-    m_centreLabel = yuri_1720"";
-    m_rightLabel = yuri_1720"";
+    m_leftLabel = L"";
+    m_centreLabel = L"";
+    m_rightLabel = L"";
 
-    yuri_6502();
+    handlePackIndexChanged();
 }

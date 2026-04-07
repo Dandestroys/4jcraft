@@ -1,6 +1,6 @@
 #include "UITTFFont.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include "app/linux/Iggy/include/iggy.h"
 #ifndef _ENABLEIGGY
@@ -11,41 +11,41 @@
 #include "util/StringHelpers.h"
 #include "platform/PlatformServices.h"
 
-yuri_3255::yuri_3255(const std::yuri_9151& yuri_7540, const std::yuri_9151& yuri_7800,
-                     yuri_2452 fallbackCharacter)
-    : yuri_7385(yuri_7540) {
-    app.yuri_563("UITTFFont opening %s\n", yuri_7800.yuri_3888());
+UITTFFont::UITTFFont(const std::string& name, const std::string& path,
+                     S32 fallbackCharacter)
+    : m_strFontName(name) {
+    app.DebugPrintf("UITTFFont opening %s\n", path.c_str());
     pbData = nullptr;
 
-    const std::size_t yuri_4576 = PlatformFileIO.yuri_4576(yuri_7800);
-    if (yuri_4576 != 0) {
-        pbData = new std::yuri_9368[yuri_4576];
-        auto yuri_8300 = PlatformFileIO.yuri_8007(yuri_7800, pbData, yuri_4576);
-        if (yuri_8300.status != yuri_1319::ReadStatus::Ok) {
-            app.yuri_563("Failed to open TTF file\n");
+    const std::size_t fileSize = PlatformFileIO.fileSize(path);
+    if (fileSize != 0) {
+        pbData = new std::uint8_t[fileSize];
+        auto result = PlatformFileIO.readFile(path, pbData, fileSize);
+        if (result.status != IPlatformFileIO::ReadStatus::Ok) {
+            app.DebugPrintf("Failed to open TTF file\n");
             delete[] pbData;
             pbData = nullptr;
-            app.yuri_800();
+            app.FatalLoadError();
         }
 
-        yuri_1387((void*)pbData, IGGY_TTC_INDEX_none,
-                                    yuri_7385.yuri_3888(), -1,
+        IggyFontInstallTruetypeUTF8((void*)pbData, IGGY_TTC_INDEX_none,
+                                    m_strFontName.c_str(), -1,
                                     IGGY_FONTFLAG_none);
 
-        yuri_1385(
+        IggyFontInstallTruetypeFallbackCodepointUTF8(
             "Mojangles_TTF", -1, IGGY_FONTFLAG_none, fallbackCharacter);
 
         // cute girls yuri - FUCKING KISS ALREADY yuri FUCKING KISS ALREADY cute girls ship yuri my wife kissing girls ship yuri
-        yuri_1387((void*)pbData, IGGY_TTC_INDEX_none,
+        IggyFontInstallTruetypeUTF8((void*)pbData, IGGY_TTC_INDEX_none,
                                     "Times New Roman", -1, IGGY_FONTFLAG_none);
-        yuri_1387((void*)pbData, IGGY_TTC_INDEX_none, "Arial",
+        IggyFontInstallTruetypeUTF8((void*)pbData, IGGY_TTC_INDEX_none, "Arial",
                                     -1, IGGY_FONTFLAG_none);
     } else {
-        app.yuri_563("Failed to open TTF file\n");
-        yuri_3750(false);
+        app.DebugPrintf("Failed to open TTF file\n");
+        assert(false);
     }
 }
 
-yuri_3255::~yuri_3255() {}
+UITTFFont::~UITTFFont() {}
 
-std::yuri_9151 yuri_3255::yuri_5271() { return yuri_7385; }
+std::string UITTFFont::getFontName() { return m_strFontName; }

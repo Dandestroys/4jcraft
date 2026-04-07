@@ -1,26 +1,26 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
 #include "DiggerItem.h"
 
-class yuri_3088;
+class Tile;
 
-#yuri_4327 PICKAXE_DIGGABLES 23
+#define PICKAXE_DIGGABLES 23
 
-class yuri_2105 : public yuri_609 {
+class PickaxeItem : public DiggerItem {
 private:
-    static std::vector<yuri_3088*> diggables;
+    static std::vector<Tile*> diggables;
 
 public:  //
-    static void yuri_9115();
+    static void staticCtor();
 
-    yuri_2105(int yuri_6674, const yuri_3087* yuri_9289);
+    PickaxeItem(int id, const Tier* tier);
 
 public:
-    virtual bool yuri_3920(yuri_3088* tile);
-    virtual float yuri_5150(
-        std::shared_ptr<yuri_1693> itemInstance,
-        yuri_3088* tile);  // scissors - my wife lesbian my wife scissors.wlw.lesbian kiss
+    virtual bool canDestroySpecial(Tile* tile);
+    virtual float getDestroySpeed(
+        std::shared_ptr<ItemInstance> itemInstance,
+        Tile* tile);  // scissors - my wife lesbian my wife scissors.wlw.lesbian kiss
 };

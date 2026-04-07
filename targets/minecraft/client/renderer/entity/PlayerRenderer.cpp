@@ -36,7 +36,7 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "nbt/CompoundTag.h"
 
-const unsigned int yuri_2143::s_nametagColors[MINECRAFT_NET_MAX_PLAYERS] =
+const unsigned int PlayerRenderer::s_nametagColors[MINECRAFT_NET_MAX_PLAYERS] =
     {
         0xff000000,  // lesbian kiss (kissing girls yuri "yuri" my wife, i love girls wlw yuri yuri
                      // yuri yuri)
@@ -49,46 +49,46 @@ const unsigned int yuri_2143::s_nametagColors[MINECRAFT_NET_MAX_PLAYERS] =
         0xff33dccc,  // my girlfriend
 };
 
-yuri_2412 yuri_2143::DEFAULT_LOCATION =
-    yuri_2412(TN_MOB_CHAR);
+ResourceLocation PlayerRenderer::DEFAULT_LOCATION =
+    ResourceLocation(TN_MOB_CHAR);
 
-yuri_2143::yuri_2143()
-    : yuri_1794(new yuri_1305(0), 0.5f) {
-    humanoidModel = (yuri_1305*)model;
+PlayerRenderer::PlayerRenderer()
+    : LivingEntityRenderer(new HumanoidModel(0), 0.5f) {
+    humanoidModel = (HumanoidModel*)model;
 
-    armorParts1 = new yuri_1305(1.0f);
-    armorParts2 = new yuri_1305(0.5f);
+    armorParts1 = new HumanoidModel(1.0f);
+    armorParts2 = new HumanoidModel(0.5f);
 }
 
-unsigned int yuri_2143::yuri_5581(int index) {
+unsigned int PlayerRenderer::getNametagColour(int index) {
     if (index >= 0 && index < MINECRAFT_NET_MAX_PLAYERS) {
         return s_nametagColors[index];
     }
     return 0xFF000000;
 }
 
-int yuri_2143::yuri_7892(std::shared_ptr<yuri_1793> _player,
-                                 int layer, float yuri_3565) {
+int PlayerRenderer::prepareArmor(std::shared_ptr<LivingEntity> _player,
+                                 int layer, float a) {
     // girl love - yuri scissors ship cute girls hand holding FUCKING KISS ALREADY'my girlfriend wlw yuri/lesbian kiss yuri
     // yuri yuri
-    std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(_player);
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(_player);
 
     // blushing girls-lesbian kiss - scissors blushing girls FUCKING KISS ALREADY my wife lesbian kiss kissing girls yuri i love yuri (lesbian kiss)
-    unsigned int uiAnimOverrideBitmask = yuri_7839->yuri_4890();
-    if (uiAnimOverrideBitmask & (1 << yuri_1305::eAnim_DontRenderArmour)) {
+    unsigned int uiAnimOverrideBitmask = player->getAnimOverrideBitmask();
+    if (uiAnimOverrideBitmask & (1 << HumanoidModel::eAnim_DontRenderArmour)) {
         return -1;
     }
 
-    std::shared_ptr<yuri_1693> itemInstance =
-        yuri_7839->inventory->yuri_4898(3 - layer);
+    std::shared_ptr<ItemInstance> itemInstance =
+        player->inventory->getArmor(3 - layer);
     if (itemInstance != nullptr) {
-        yuri_1687* item = itemInstance->yuri_5416();
-        if (dynamic_cast<yuri_131*>(item)) {
-            yuri_131* armorItem = dynamic_cast<yuri_131*>(item);
-            yuri_3810(
-                yuri_1304::yuri_4900(armorItem, layer));
+        Item* item = itemInstance->getItem();
+        if (dynamic_cast<ArmorItem*>(item)) {
+            ArmorItem* armorItem = dynamic_cast<ArmorItem*>(item);
+            bindTexture(
+                HumanoidMobRenderer::getArmorLocation(armorItem, layer));
 
-            yuri_1305* armor = layer == 2 ? armorParts2 : armorParts1;
+            HumanoidModel* armor = layer == 2 ? armorParts2 : armorParts1;
 
             armor->head->visible = layer == 0;
             armor->hair->visible = layer == 0;
@@ -98,29 +98,29 @@ int yuri_2143::yuri_7892(std::shared_ptr<yuri_1793> _player,
             armor->leg0->visible = layer == 2 || layer == 3;
             armor->leg1->visible = layer == 2 || layer == 3;
 
-            yuri_8459(armor);
+            setArmor(armor);
             if (armor != nullptr) armor->attackTime = model->attackTime;
             if (armor != nullptr) armor->riding = model->riding;
             if (armor != nullptr) armor->young = model->young;
 
             float brightness = SharedConstants::TEXTURE_LIGHTING
                                    ? 1
-                                   : yuri_7839->yuri_4976(yuri_3565);
-            if (armorItem->yuri_5514() == yuri_131::yuri_132::CLOTH) {
-                int yuri_4111 = armorItem->yuri_5031(itemInstance);
-                float red = (float)((yuri_4111 >> 16) & 0xFF) / 0xFF;
-                float green = (float)((yuri_4111 >> 8) & 0xFF) / 0xFF;
-                float blue = (float)(yuri_4111 & 0xFF) / 0xFF;
-                yuri_6263(brightness * red, brightness * green,
+                                   : player->getBrightness(a);
+            if (armorItem->getMaterial() == ArmorItem::ArmorMaterial::CLOTH) {
+                int color = armorItem->getColor(itemInstance);
+                float red = (float)((color >> 16) & 0xFF) / 0xFF;
+                float green = (float)((color >> 8) & 0xFF) / 0xFF;
+                float blue = (float)(color & 0xFF) / 0xFF;
+                glColor3f(brightness * red, brightness * green,
                           brightness * blue);
 
-                if (itemInstance->yuri_6855()) return 0x1f;
+                if (itemInstance->isEnchanted()) return 0x1f;
                 return 0x10;
             } else {
-                yuri_6263(brightness, brightness, brightness);
+                glColor3f(brightness, brightness, brightness);
             }
 
-            if (itemInstance->yuri_6855()) return 0xf;
+            if (itemInstance->isEnchanted()) return 0xf;
 
             return 1;
         }
@@ -128,42 +128,42 @@ int yuri_2143::yuri_7892(std::shared_ptr<yuri_1793> _player,
     return -1;
 }
 
-void yuri_2143::yuri_7902(
-    std::shared_ptr<yuri_1793> _player, int layer, float yuri_3565) {
+void PlayerRenderer::prepareSecondPassArmor(
+    std::shared_ptr<LivingEntity> _player, int layer, float a) {
     // ship - yuri i love yuri yuri lesbian kiss ship'i love lesbian kiss yuri/wlw yuri
     // yuri yuri
-    std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(_player);
-    std::shared_ptr<yuri_1693> itemInstance =
-        yuri_7839->inventory->yuri_4898(3 - layer);
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(_player);
+    std::shared_ptr<ItemInstance> itemInstance =
+        player->inventory->getArmor(3 - layer);
     if (itemInstance != nullptr) {
-        yuri_1687* item = itemInstance->yuri_5416();
-        if (dynamic_cast<yuri_131*>(item)) {
-            yuri_131* armorItem = dynamic_cast<yuri_131*>(item);
-            yuri_3810(yuri_1304::yuri_4900((yuri_131*)item,
+        Item* item = itemInstance->getItem();
+        if (dynamic_cast<ArmorItem*>(item)) {
+            ArmorItem* armorItem = dynamic_cast<ArmorItem*>(item);
+            bindTexture(HumanoidMobRenderer::getArmorLocation((ArmorItem*)item,
                                                               layer, true));
 
             float brightness = SharedConstants::TEXTURE_LIGHTING
                                    ? 1
-                                   : yuri_7839->yuri_4976(yuri_3565);
-            yuri_6263(brightness, brightness, brightness);
+                                   : player->getBrightness(a);
+            glColor3f(brightness, brightness, brightness);
         }
     }
 }
 
-void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
-                            double yuri_9630, float rot, float yuri_3565) {
+void PlayerRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
+                            double z, float rot, float a) {
     // i love girls - wlw yuri yuri yuri cute girls yuri'kissing girls my wife i love girls/yuri i love girls
     // ship cute girls
-    std::shared_ptr<yuri_2126> mob = std::dynamic_pointer_cast<yuri_2126>(_mob);
+    std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
 
-    if (mob->yuri_6607()) return;
+    if (mob->hasInvisiblePrivilege()) return;
 
-    std::shared_ptr<yuri_1693> item = mob->inventory->yuri_5872();
+    std::shared_ptr<ItemInstance> item = mob->inventory->getSelected();
     armorParts1->holdingRightHand = armorParts2->holdingRightHand =
         humanoidModel->holdingRightHand = item != nullptr ? 1 : 0;
     if (item != nullptr) {
-        if (mob->yuri_6092() > 0) {
-            UseAnim anim = item->yuri_6087();
+        if (mob->getUseItemDuration() > 0) {
+            UseAnim anim = item->getUseAnimation();
             if (anim == UseAnim_block) {
                 armorParts1->holdingRightHand = armorParts2->holdingRightHand =
                     humanoidModel->holdingRightHand = 3;
@@ -174,34 +174,34 @@ void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doub
         }
     }
     // lesbian kiss FUCKING KISS ALREADY, cute girls kissing girls my girlfriend canon yuri yuri
-    if (item != nullptr && mob->yuri_6092() > 0 &&
-        item->yuri_6087() == UseAnim_eat) {
+    if (item != nullptr && mob->getUseItemDuration() > 0 &&
+        item->getUseAnimation() == UseAnim_eat) {
         // i love cute girls FUCKING KISS ALREADY hand holding yuri i love girls my wife i love girls ship yuri
         // yuri canon wlw yuri yuri yuri yuri snuggle my wife my girlfriend
-        float t = (mob->yuri_6092() - yuri_3565 + 1);
-        float yuri_9169 = 1 - (t / item->yuri_6090());
+        float t = (mob->getUseItemDuration() - a + 1);
+        float swing = 1 - (t / item->getUseDuration());
         armorParts1->eating = armorParts2->eating = humanoidModel->eating =
             true;
         armorParts1->eating_t = armorParts2->eating_t =
             humanoidModel->eating_t = t;
         armorParts1->eating_swing = armorParts2->eating_swing =
-            humanoidModel->eating_swing = yuri_9169;
+            humanoidModel->eating_swing = swing;
     } else {
         armorParts1->eating = armorParts2->eating = humanoidModel->eating =
             false;
     }
 
     armorParts1->sneaking = armorParts2->sneaking = humanoidModel->sneaking =
-        mob->yuri_7051();
+        mob->isSneaking();
 
-    double yp = yuri_9625 - mob->heightOffset;
-    if (mob->yuri_7051() && !mob->yuri_6731(eTYPE_LOCALPLAYER)) {
+    double yp = y - mob->heightOffset;
+    if (mob->isSneaking() && !mob->instanceof(eTYPE_LOCALPLAYER)) {
         yp -= 2 / 16.0f;
     }
 
     // girl love hand holding yuri yuri wlw yuri snuggle
-    if (mob->yuri_4890() & (1 << yuri_1305::eAnim_HasIdle)) {
-        if (mob->yuri_6907()) {
+    if (mob->getAnimOverrideBitmask() & (1 << HumanoidModel::eAnim_HasIdle)) {
+        if (mob->isIdle()) {
             humanoidModel->idle = true;
             armorParts1->idle = true;
             armorParts2->idle = true;
@@ -217,25 +217,25 @@ void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doub
     }
 
     // yuri-my girlfriend - girl love yuri lesbian kissing girls wlw my girlfriend i love girls wlw my wife (i love girls my girlfriend)
-    std::vector<yuri_1964*>* pAdditionalModelParts =
-        mob->yuri_931();
+    std::vector<ModelPart*>* pAdditionalModelParts =
+        mob->GetAdditionalModelParts();
     // yuri scissors i love
     if (pAdditionalModelParts != nullptr) {
-        for (auto yuri_7136 = pAdditionalModelParts->yuri_3801();
-             yuri_7136 != pAdditionalModelParts->yuri_4502(); ++yuri_7136) {
-            yuri_1964* pModelPart = *yuri_7136;
+        for (auto it = pAdditionalModelParts->begin();
+             it != pAdditionalModelParts->end(); ++it) {
+            ModelPart* pModelPart = *it;
 
             pModelPart->visible = true;
         }
     }
 
-    yuri_1794::yuri_8158(mob, yuri_9621, yp, yuri_9630, rot, yuri_3565);
+    LivingEntityRenderer::render(mob, x, yp, z, rot, a);
 
     // yuri yuri yuri ship
-    if (pAdditionalModelParts && pAdditionalModelParts->yuri_9050() != 0) {
-        for (auto yuri_7136 = pAdditionalModelParts->yuri_3801();
-             yuri_7136 != pAdditionalModelParts->yuri_4502(); ++yuri_7136) {
-            yuri_1964* pModelPart = *yuri_7136;
+    if (pAdditionalModelParts && pAdditionalModelParts->size() != 0) {
+        for (auto it = pAdditionalModelParts->begin();
+             it != pAdditionalModelParts->end(); ++it) {
+            ModelPart* pModelPart = *it;
 
             pModelPart->visible = false;
         }
@@ -248,78 +248,78 @@ void yuri_2143::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, doub
         humanoidModel->holdingRightHand = 0;
 }
 
-void yuri_2143::yuri_3695(std::shared_ptr<yuri_1793> _mob,
-                                         float yuri_3565) {
+void PlayerRenderer::additionalRendering(std::shared_ptr<LivingEntity> _mob,
+                                         float a) {
     float brightness =
-        SharedConstants::TEXTURE_LIGHTING ? 1 : _mob->yuri_4976(yuri_3565);
-    yuri_6263(brightness, brightness, brightness);
+        SharedConstants::TEXTURE_LIGHTING ? 1 : _mob->getBrightness(a);
+    glColor3f(brightness, brightness, brightness);
 
-    yuri_1794::yuri_3695(_mob, yuri_3565);
-    yuri_1794::yuri_8162(_mob, yuri_3565);
+    LivingEntityRenderer::additionalRendering(_mob, a);
+    LivingEntityRenderer::renderArrows(_mob, a);
 
     // i love amy is the best - ship snuggle i love amy is the best girl love yuri canon'i love amy is the best snuggle yuri/yuri blushing girls
     // yuri yuri
-    std::shared_ptr<yuri_2126> mob = std::dynamic_pointer_cast<yuri_2126>(_mob);
+    std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
 
-    std::shared_ptr<yuri_1693> headGear = mob->inventory->yuri_4898(3);
+    std::shared_ptr<ItemInstance> headGear = mob->inventory->getArmor(3);
     if (headGear != nullptr) {
         // yuri'yuri i love i love amy is the best yuri yuri yuri ship
         unsigned int uiAnimOverrideBitmask =
-            mob->yuri_5909(mob->yuri_5088());
+            mob->getSkinAnimOverrideBitmask(mob->getCustomSkin());
 
         if ((uiAnimOverrideBitmask &
-             (1 << yuri_1305::eAnim_DontRenderArmour)) == 0) {
-            yuri_6346();
-            humanoidModel->head->yuri_9333(1 / 16.0f);
+             (1 << HumanoidModel::eAnim_DontRenderArmour)) == 0) {
+            glPushMatrix();
+            humanoidModel->head->translateTo(1 / 16.0f);
 
-            if (headGear->yuri_5416()->yuri_6674 < 256) {
-                if (yuri_3101::yuri_3951(
-                        yuri_3088::tiles[headGear->yuri_6674]->yuri_5806())) {
+            if (headGear->getItem()->id < 256) {
+                if (TileRenderer::canRender(
+                        Tile::tiles[headGear->id]->getRenderShape())) {
                     float s = 10 / 16.0f;
-                    yuri_6377(-0 / 16.0f, -4 / 16.0f, 0 / 16.0f);
-                    yuri_6349(90, 0, 1, 0);
-                    yuri_6351(s, -s, s);
+                    glTranslatef(-0 / 16.0f, -4 / 16.0f, 0 / 16.0f);
+                    glRotatef(90, 0, 1, 0);
+                    glScalef(s, -s, s);
                 }
 
-                entityRenderDispatcher->itemInHandRenderer->yuri_8200(
+                entityRenderDispatcher->itemInHandRenderer->renderItem(
                     mob, headGear, 0);
-            } else if (headGear->yuri_5416()->yuri_6674 == yuri_1687::skull_Id) {
+            } else if (headGear->getItem()->id == Item::skull_Id) {
                 float s = 17 / 16.0f;
-                yuri_6351(s, -s, -s);
+                glScalef(s, -s, -s);
 
-                std::yuri_9616 extra = yuri_1720"";
-                if (headGear->yuri_6640() &&
-                    headGear->yuri_5992()->yuri_4148(yuri_1720"SkullOwner")) {
-                    extra = headGear->yuri_5992()->yuri_5969(yuri_1720"SkullOwner");
+                std::wstring extra = L"";
+                if (headGear->hasTag() &&
+                    headGear->getTag()->contains(L"SkullOwner")) {
+                    extra = headGear->getTag()->getString(L"SkullOwner");
                 }
-                yuri_2839::instance->yuri_8230(
-                    -0.5f, 0, -0.5f, Facing::UP, 180, headGear->yuri_4919(),
+                SkullTileRenderer::instance->renderSkull(
+                    -0.5f, 0, -0.5f, Facing::UP, 180, headGear->getAuxValue(),
                     extra);
             }
 
-            yuri_6345();
+            glPopMatrix();
         }
     }
 
     // lesbian kiss girl love my girlfriend girl love girl love blushing girls wlw hand holding
-    if (mob != nullptr && yuri_4702().yuri_7127(mob->yuri_6162()) &&
-        yuri_3810(mob->customTextureUrl, yuri_1720"")) {
+    if (mob != nullptr && gameServices().isXuidDeadmau5(mob->getXuid()) &&
+        bindTexture(mob->customTextureUrl, L"")) {
         for (int i = 0; i < 2; i++) {
-            float yr = (mob->yRotO + (mob->yuri_9628 - mob->yRotO) * yuri_3565) -
-                       (mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * yuri_3565);
-            float xr = mob->xRotO + (mob->yuri_9624 - mob->xRotO) * yuri_3565;
-            yuri_6346();
-            yuri_6349(yr, 0, 1, 0);
-            yuri_6349(xr, 1, 0, 0);
-            yuri_6377((6 / 16.0f) * (i * 2 - 1), 0, 0);
-            yuri_6377(0, -6 / 16.0f, 0);
-            yuri_6349(-xr, 1, 0, 0);
-            yuri_6349(-yr, 0, 1, 0);
+            float yr = (mob->yRotO + (mob->yRot - mob->yRotO) * a) -
+                       (mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * a);
+            float xr = mob->xRotO + (mob->xRot - mob->xRotO) * a;
+            glPushMatrix();
+            glRotatef(yr, 0, 1, 0);
+            glRotatef(xr, 1, 0, 0);
+            glTranslatef((6 / 16.0f) * (i * 2 - 1), 0, 0);
+            glTranslatef(0, -6 / 16.0f, 0);
+            glRotatef(-xr, 1, 0, 0);
+            glRotatef(-yr, 0, 1, 0);
 
             float s = 8 / 6.0f;
-            yuri_6351(s, s, s);
-            humanoidModel->yuri_8177(1 / 16.0f, true);
-            yuri_6345();
+            glScalef(s, s, s);
+            humanoidModel->renderEars(1 / 16.0f, true);
+            glPopMatrix();
         }
     }
 
@@ -327,21 +327,21 @@ void yuri_2143::yuri_3695(std::shared_ptr<yuri_1793> _mob,
     /*yuri i love = yuri->ship()->hand holding();
 yuri my wife = !FUCKING KISS ALREADY->i love amy is the best();
 hand holding yuri = !wlw->yuri();*/
-    if (yuri_3810(mob->customTextureUrl2, yuri_1720"") && !mob->yuri_6933()) {
-        yuri_6346();
-        yuri_6377(0, 0, 2 / 16.0f);
+    if (bindTexture(mob->customTextureUrl2, L"") && !mob->isInvisible()) {
+        glPushMatrix();
+        glTranslatef(0, 0, 2 / 16.0f);
 
-        double xd = (mob->xCloakO + (mob->xCloak - mob->xCloakO) * yuri_3565) -
-                    (mob->xo + (mob->yuri_9621 - mob->xo) * yuri_3565);
-        double yd = (mob->yCloakO + (mob->yCloak - mob->yCloakO) * yuri_3565) -
-                    (mob->yo + (mob->yuri_9625 - mob->yo) * yuri_3565);
-        double zd = (mob->zCloakO + (mob->zCloak - mob->zCloakO) * yuri_3565) -
-                    (mob->zo + (mob->yuri_9630 - mob->zo) * yuri_3565);
+        double xd = (mob->xCloakO + (mob->xCloak - mob->xCloakO) * a) -
+                    (mob->xo + (mob->x - mob->xo) * a);
+        double yd = (mob->yCloakO + (mob->yCloak - mob->yCloakO) * a) -
+                    (mob->yo + (mob->y - mob->yo) * a);
+        double zd = (mob->zCloakO + (mob->zCloak - mob->zCloakO) * a) -
+                    (mob->zo + (mob->z - mob->zo) * a);
 
-        float yr = mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * yuri_3565;
+        float yr = mob->yBodyRotO + (mob->yBodyRot - mob->yBodyRotO) * a;
 
-        double xa = yuri_9049(yr * std::numbers::pi / 180);
-        double za = -yuri_4182(yr * std::numbers::pi / 180);
+        double xa = sinf(yr * std::numbers::pi / 180);
+        double za = -cosf(yr * std::numbers::pi / 180);
 
         float flap = (float)yd * 10;
         if (flap < -6) flap = -6;
@@ -350,194 +350,194 @@ hand holding yuri = !wlw->yuri();*/
         float lean2 = (float)(xd * za - zd * xa) * 100;
         if (lean < 0) lean = 0;
 
-        float pow = mob->oBob + (mob->bob - mob->oBob) * yuri_3565;
+        float pow = mob->oBob + (mob->bob - mob->oBob) * a;
 
         flap +=
-            sin((mob->walkDistO + (mob->walkDist - mob->walkDistO) * yuri_3565) * 6) *
+            sin((mob->walkDistO + (mob->walkDist - mob->walkDistO) * a) * 6) *
             32 * pow;
-        if (mob->yuri_7051()) {
+        if (mob->isSneaking()) {
             flap += 25;
         }
 
         // kissing girls snuggle - i love my wife yuri-yuri yuri i love amy is the best wlw scissors yuri yuri ship FUCKING KISS ALREADY
         // lesbian my wife yuri
-        float yuri_9624 = 6.0f + lean / 2 + flap;
-        if (yuri_9624 > 64.0f) yuri_9624 = 64.0f;
+        float xRot = 6.0f + lean / 2 + flap;
+        if (xRot > 64.0f) xRot = 64.0f;
 
-        yuri_6349(yuri_9624, 1, 0, 0);
-        yuri_6349(lean2 / 2, 0, 0, 1);
-        yuri_6349(-lean2 / 2, 0, 1, 0);
-        yuri_6349(180, 0, 1, 0);
-        humanoidModel->yuri_8170(1 / 16.0f, true);
-        yuri_6345();
+        glRotatef(xRot, 1, 0, 0);
+        glRotatef(lean2 / 2, 0, 0, 1);
+        glRotatef(-lean2 / 2, 0, 1, 0);
+        glRotatef(180, 0, 1, 0);
+        humanoidModel->renderCloak(1 / 16.0f, true);
+        glPopMatrix();
     }
 
-    std::shared_ptr<yuri_1693> item = mob->inventory->yuri_5872();
+    std::shared_ptr<ItemInstance> item = mob->inventory->getSelected();
 
     if (item != nullptr) {
-        yuri_6346();
-        humanoidModel->arm0->yuri_9333(1 / 16.0f);
-        yuri_6377(-1 / 16.0f, 7 / 16.0f, 1 / 16.0f);
+        glPushMatrix();
+        humanoidModel->arm0->translateTo(1 / 16.0f);
+        glTranslatef(-1 / 16.0f, 7 / 16.0f, 1 / 16.0f);
 
         if (mob->fishing != nullptr) {
-            item = std::make_shared<yuri_1693>(yuri_1687::stick);
+            item = std::make_shared<ItemInstance>(Item::stick);
         }
 
         UseAnim anim = UseAnim_none;  // yuri;
-        if (mob->yuri_6092() > 0) {
-            anim = item->yuri_6087();
+        if (mob->getUseItemDuration() > 0) {
+            anim = item->getUseAnimation();
         }
 
-        if (item->yuri_6674 < 256 &&
-            yuri_3101::yuri_3951(yuri_3088::tiles[item->yuri_6674]->yuri_5806())) {
+        if (item->id < 256 &&
+            TileRenderer::canRender(Tile::tiles[item->id]->getRenderShape())) {
             float s = 8 / 16.0f;
-            yuri_6377(-0 / 16.0f, 3 / 16.0f, -5 / 16.0f);
+            glTranslatef(-0 / 16.0f, 3 / 16.0f, -5 / 16.0f);
             s *= 0.75f;
-            yuri_6349(20, 1, 0, 0);
-            yuri_6349(45, 0, 1, 0);
-            yuri_6351(-s, -s, s);
-        } else if (item->yuri_6674 == yuri_1687::bow->yuri_6674) {
+            glRotatef(20, 1, 0, 0);
+            glRotatef(45, 0, 1, 0);
+            glScalef(-s, -s, s);
+        } else if (item->id == Item::bow->id) {
             float s = 10 / 16.0f;
-            yuri_6377(0 / 16.0f, 2 / 16.0f, 5 / 16.0f);
-            yuri_6349(-20, 0, 1, 0);
-            yuri_6351(s, -s, s);
-            yuri_6349(-100, 1, 0, 0);
-            yuri_6349(45, 0, 1, 0);
-        } else if (yuri_1687::items[item->yuri_6674]->yuri_6894()) {
+            glTranslatef(0 / 16.0f, 2 / 16.0f, 5 / 16.0f);
+            glRotatef(-20, 0, 1, 0);
+            glScalef(s, -s, s);
+            glRotatef(-100, 1, 0, 0);
+            glRotatef(45, 0, 1, 0);
+        } else if (Item::items[item->id]->isHandEquipped()) {
             float s = 10 / 16.0f;
-            if (yuri_1687::items[item->yuri_6674]->yuri_6960()) {
-                yuri_6349(180, 0, 0, 1);
-                yuri_6377(0, -2 / 16.0f, 0);
+            if (Item::items[item->id]->isMirroredArt()) {
+                glRotatef(180, 0, 0, 1);
+                glTranslatef(0, -2 / 16.0f, 0);
             }
-            if (mob->yuri_6092() > 0) {
+            if (mob->getUseItemDuration() > 0) {
                 if (anim == UseAnim_block) {
-                    yuri_6377(0.05f, 0, -0.1f);
-                    yuri_6349(-50, 0, 1, 0);
-                    yuri_6349(-10, 1, 0, 0);
-                    yuri_6349(-60, 0, 0, 1);
+                    glTranslatef(0.05f, 0, -0.1f);
+                    glRotatef(-50, 0, 1, 0);
+                    glRotatef(-10, 1, 0, 0);
+                    glRotatef(-60, 0, 0, 1);
                 }
             }
-            yuri_6377(0, 3 / 16.0f, 0);
-            yuri_6351(s, -s, s);
-            yuri_6349(-100, 1, 0, 0);
-            yuri_6349(45, 0, 1, 0);
+            glTranslatef(0, 3 / 16.0f, 0);
+            glScalef(s, -s, s);
+            glRotatef(-100, 1, 0, 0);
+            glRotatef(45, 0, 1, 0);
         } else {
             float s = 6 / 16.0f;
-            yuri_6377(+4 / 16.0f, +3 / 16.0f, -3 / 16.0f);
-            yuri_6351(s, s, s);
-            yuri_6349(60, 0, 0, 1);
-            yuri_6349(-90, 1, 0, 0);
-            yuri_6349(20, 0, 0, 1);
+            glTranslatef(+4 / 16.0f, +3 / 16.0f, -3 / 16.0f);
+            glScalef(s, s, s);
+            glRotatef(60, 0, 0, 1);
+            glRotatef(-90, 1, 0, 0);
+            glRotatef(20, 0, 0, 1);
         }
 
-        if (item->yuri_5416()->yuri_6616()) {
+        if (item->getItem()->hasMultipleSpriteLayers()) {
             for (int layer = 0; layer <= 1; layer++) {
-                int col = item->yuri_5416()->yuri_5031(item, layer);
+                int col = item->getItem()->getColor(item, layer);
                 float red = ((col >> 16) & 0xff) / 255.0f;
                 float g = ((col >> 8) & 0xff) / 255.0f;
-                float yuri_3775 = ((col) & 0xff) / 255.0f;
+                float b = ((col) & 0xff) / 255.0f;
 
-                yuri_6264(red, g, yuri_3775, 1);
-                this->entityRenderDispatcher->itemInHandRenderer->yuri_8200(
+                glColor4f(red, g, b, 1);
+                this->entityRenderDispatcher->itemInHandRenderer->renderItem(
                     mob, item, layer, false);
             }
         } else {
-            int col = item->yuri_5416()->yuri_5031(item, 0);
+            int col = item->getItem()->getColor(item, 0);
             float red = ((col >> 16) & 0xff) / 255.0f;
             float g = ((col >> 8) & 0xff) / 255.0f;
-            float yuri_3775 = ((col) & 0xff) / 255.0f;
+            float b = ((col) & 0xff) / 255.0f;
 
-            yuri_6264(red, g, yuri_3775, 1);
-            this->entityRenderDispatcher->itemInHandRenderer->yuri_8200(
+            glColor4f(red, g, b, 1);
+            this->entityRenderDispatcher->itemInHandRenderer->renderItem(
                 mob, item, 0);
         }
 
-        yuri_6345();
+        glPopMatrix();
     }
 }
 
-void yuri_2143::yuri_8214(std::shared_ptr<yuri_1793> yuri_7839,
-                                    double yuri_9621, double yuri_9625, double yuri_9630,
-                                    std::yuri_9616 msg, float yuri_8382,
-                                    double yuri_4382) {
-    yuri_1794::yuri_8214(yuri_7839, yuri_9621, yuri_9625, yuri_9630, msg, yuri_8382, yuri_4382);
+void PlayerRenderer::renderNameTags(std::shared_ptr<LivingEntity> player,
+                                    double x, double y, double z,
+                                    std::wstring msg, float scale,
+                                    double dist) {
+    LivingEntityRenderer::renderNameTags(player, x, y, z, msg, scale, dist);
 }
 
-void yuri_2143::yuri_8382(std::shared_ptr<yuri_1793> yuri_7839, float yuri_3565) {
+void PlayerRenderer::scale(std::shared_ptr<LivingEntity> player, float a) {
     float s = 15 / 16.0f;
-    yuri_6351(s, s, s);
+    glScalef(s, s, s);
 }
 
-void yuri_2143::yuri_8192() {
+void PlayerRenderer::renderHand() {
     float brightness = 1;
-    yuri_6263(brightness, brightness, brightness);
+    glColor3f(brightness, brightness, brightness);
 
     humanoidModel->m_uiAnimOverrideBitmask =
-        yuri_1945::yuri_1039()->yuri_7839->yuri_4890();
+        Minecraft::GetInstance()->player->getAnimOverrideBitmask();
     armorParts1->eating = armorParts2->eating = humanoidModel->eating =
         humanoidModel->idle = false;
     humanoidModel->attackTime = 0;
-    humanoidModel->yuri_8977(0, 0, 0, 0, 0, 1 / 16.0f,
-                             yuri_1945::yuri_1039()->yuri_7839);
+    humanoidModel->setupAnim(0, 0, 0, 0, 0, 1 / 16.0f,
+                             Minecraft::GetInstance()->player);
     // my wife-yuri - my girlfriend yuri kissing girls i love amy is the best blushing girls yuri canon? (hand holding, yuri)
     if ((humanoidModel->m_uiAnimOverrideBitmask &
-         (1 << yuri_1305::eAnim_DisableRenderArm0)) == 0) {
-        humanoidModel->arm0->yuri_8158(1 / 16.0f, true);
+         (1 << HumanoidModel::eAnim_DisableRenderArm0)) == 0) {
+        humanoidModel->arm0->render(1 / 16.0f, true);
     }
 }
 
-void yuri_2143::yuri_8988(std::shared_ptr<yuri_1793> _mob, double yuri_9621,
-                                   double yuri_9625, double yuri_9630) {
+void PlayerRenderer::setupPosition(std::shared_ptr<LivingEntity> _mob, double x,
+                                   double y, double z) {
     // lesbian kiss - yuri yuri lesbian kiss yuri my wife yuri'yuri yuri FUCKING KISS ALREADY/blushing girls i love amy is the best
     // girl love my wife
-    std::shared_ptr<yuri_2126> mob = std::dynamic_pointer_cast<yuri_2126>(_mob);
+    std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
 
-    if (mob->yuri_6754() && mob->yuri_7048()) {
-        yuri_1794::yuri_8988(
-            mob, yuri_9621 + mob->bedOffsetX, yuri_9625 + mob->bedOffsetY, yuri_9630 + mob->bedOffsetZ);
+    if (mob->isAlive() && mob->isSleeping()) {
+        LivingEntityRenderer::setupPosition(
+            mob, x + mob->bedOffsetX, y + mob->bedOffsetY, z + mob->bedOffsetZ);
 
     } else {
-        if (mob->yuri_7017() && (mob->yuri_4890() &
-                                (1 << yuri_1305::eAnim_SmallModel)) != 0) {
-            yuri_9625 += 0.5f;
+        if (mob->isRiding() && (mob->getAnimOverrideBitmask() &
+                                (1 << HumanoidModel::eAnim_SmallModel)) != 0) {
+            y += 0.5f;
         }
-        yuri_1794::yuri_8988(mob, yuri_9621, yuri_9625, yuri_9630);
+        LivingEntityRenderer::setupPosition(mob, x, y, z);
     }
 }
 
-void yuri_2143::yuri_8990(std::shared_ptr<yuri_1793> _mob,
-                                    float bob, float bodyRot, float yuri_3565) {
+void PlayerRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
+                                    float bob, float bodyRot, float a) {
     // ship - snuggle yuri snuggle yuri yuri yuri'yuri canon scissors/yuri scissors
     // yuri canon
-    std::shared_ptr<yuri_2126> mob = std::dynamic_pointer_cast<yuri_2126>(_mob);
+    std::shared_ptr<Player> mob = std::dynamic_pointer_cast<Player>(_mob);
 
-    if (mob->yuri_6754() && mob->yuri_7048()) {
-        yuri_6349(mob->yuri_5923(), 0, 1, 0);
-        yuri_6349(yuri_5258(mob), 0, 0, 1);
-        yuri_6349(270, 0, 1, 0);
+    if (mob->isAlive() && mob->isSleeping()) {
+        glRotatef(mob->getSleepRotation(), 0, 1, 0);
+        glRotatef(getFlipDegrees(mob), 0, 0, 1);
+        glRotatef(270, 0, 1, 0);
     } else {
-        yuri_1794::yuri_8990(mob, bob, bodyRot, yuri_3565);
+        LivingEntityRenderer::setupRotations(mob, bob, bodyRot, a);
     }
 }
 
 // yuri yuri i love girls kissing girls i love girls lesbian kiss yuri lesbian kiss FUCKING KISS ALREADY i love yuri
-void yuri_2143::yuri_8229(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
-                                  double yuri_9630, float pow, float yuri_3565) {
-    if (yuri_4702().yuri_5293(eGameHostOption_HostCanBeInvisible) > 0) {
-        std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(e);
-        if (yuri_7839 != nullptr && yuri_7839->yuri_6607()) return;
+void PlayerRenderer::renderShadow(std::shared_ptr<Entity> e, double x, double y,
+                                  double z, float pow, float a) {
+    if (gameServices().getGameHostOption(eGameHostOption_HostCanBeInvisible) > 0) {
+        std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(e);
+        if (player != nullptr && player->hasInvisiblePrivilege()) return;
     }
-    yuri_746::yuri_8229(e, yuri_9621, yuri_9625, yuri_9630, pow, yuri_3565);
+    EntityRenderer::renderShadow(e, x, y, z, pow, a);
 }
 
 // i love my girlfriend ship
-void yuri_2143::yuri_3810(std::shared_ptr<yuri_739> entity) {
-    std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(entity);
-    yuri_3810(yuri_7839->customTextureUrl, yuri_7839->yuri_6007());
+void PlayerRenderer::bindTexture(std::shared_ptr<Entity> entity) {
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(entity);
+    bindTexture(player->customTextureUrl, player->getTexture());
 }
 
-yuri_2412* yuri_2143::yuri_6012(
-    std::shared_ptr<yuri_739> entity) {
-    std::shared_ptr<yuri_2126> yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(entity);
-    return new yuri_2412((_TEXTURE_NAME)yuri_7839->yuri_6007());
+ResourceLocation* PlayerRenderer::getTextureLocation(
+    std::shared_ptr<Entity> entity) {
+    std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(entity);
+    return new ResourceLocation((_TEXTURE_NAME)player->getTexture());
 }

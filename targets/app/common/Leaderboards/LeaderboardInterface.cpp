@@ -1,100 +1,100 @@
 #include "LeaderboardInterface.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include "app/common/Leaderboards/LeaderboardManager.h"
 
-yuri_1745::yuri_1745(yuri_1322* man) {
+LeaderboardInterface::LeaderboardInterface(IPlatformLeaderboard* man) {
     m_manager = man;
     m_pending = false;
 
-    m_filter = (yuri_1322::EFilterMode)-1;
+    m_filter = (IPlatformLeaderboard::EFilterMode)-1;
     m_callback = nullptr;
     m_difficulty = 0;
-    yuri_7394 = yuri_1322::eStatsType_UNDEFINED;
+    m_type = IPlatformLeaderboard::eStatsType_UNDEFINED;
     m_startIndex = 0;
     m_readCount = 0;
 
-    m_manager->yuri_2056();
+    m_manager->OpenSession();
 }
 
-yuri_1745::~yuri_1745() {
-    m_manager->yuri_301();
-    m_manager->yuri_383();
+LeaderboardInterface::~LeaderboardInterface() {
+    m_manager->CancelOperation();
+    m_manager->CloseSession();
 }
 
-void yuri_1745::yuri_2326(
-    yuri_1747* yuri_3901, int difficulty,
-    yuri_1322::EStatsType yuri_9364, PlayerUID myUID,
+void LeaderboardInterface::ReadStats_Friends(
+    LeaderboardReadListener* callback, int difficulty,
+    IPlatformLeaderboard::EStatsType type, PlayerUID myUID,
     unsigned int startIndex, unsigned int readCount) {
-    m_filter = yuri_1322::eFM_Friends;
+    m_filter = IPlatformLeaderboard::eFM_Friends;
     m_pending = true;
 
-    m_callback = yuri_3901;
+    m_callback = callback;
     m_difficulty = difficulty;
-    yuri_7394 = yuri_9364;
+    m_type = type;
     m_myUID = myUID;
     m_startIndex = startIndex;
     m_readCount = readCount;
 
-    yuri_9265();
+    tick();
 }
 
-void yuri_1745::yuri_2327(
-    yuri_1747* yuri_3901, int difficulty,
-    yuri_1322::EStatsType yuri_9364, PlayerUID myUID,
+void LeaderboardInterface::ReadStats_MyScore(
+    LeaderboardReadListener* callback, int difficulty,
+    IPlatformLeaderboard::EStatsType type, PlayerUID myUID,
     unsigned int readCount) {
-    m_filter = yuri_1322::eFM_MyScore;
+    m_filter = IPlatformLeaderboard::eFM_MyScore;
     m_pending = true;
 
-    m_callback = yuri_3901;
+    m_callback = callback;
     m_difficulty = difficulty;
-    yuri_7394 = yuri_9364;
+    m_type = type;
     m_myUID = myUID;
     m_readCount = readCount;
 
-    yuri_9265();
+    tick();
 }
 
-void yuri_1745::yuri_2328(
-    yuri_1747* yuri_3901, int difficulty,
-    yuri_1322::EStatsType yuri_9364, unsigned int startIndex,
+void LeaderboardInterface::ReadStats_TopRank(
+    LeaderboardReadListener* callback, int difficulty,
+    IPlatformLeaderboard::EStatsType type, unsigned int startIndex,
     unsigned int readCount) {
-    m_filter = yuri_1322::eFM_TopRank;
+    m_filter = IPlatformLeaderboard::eFM_TopRank;
     m_pending = true;
 
-    m_callback = yuri_3901;
+    m_callback = callback;
     m_difficulty = difficulty;
-    yuri_7394 = yuri_9364;
+    m_type = type;
     m_startIndex = startIndex;
     m_readCount = readCount;
 
-    yuri_9265();
+    tick();
 }
 
-void yuri_1745::yuri_301() {
-    m_manager->yuri_301();
+void LeaderboardInterface::CancelOperation() {
+    m_manager->CancelOperation();
     m_pending = false;
 }
 
-void yuri_1745::yuri_9265() {
-    if (m_pending) m_pending = !yuri_3899();
+void LeaderboardInterface::tick() {
+    if (m_pending) m_pending = !callManager();
 }
 
-bool yuri_1745::yuri_3899() {
+bool LeaderboardInterface::callManager() {
     switch (m_filter) {
-        case yuri_1322::eFM_Friends:
-            return m_manager->yuri_2326(m_callback, m_difficulty,
-                                                yuri_7394, m_myUID, m_startIndex,
+        case IPlatformLeaderboard::eFM_Friends:
+            return m_manager->ReadStats_Friends(m_callback, m_difficulty,
+                                                m_type, m_myUID, m_startIndex,
                                                 m_readCount);
-        case yuri_1322::eFM_MyScore:
-            return m_manager->yuri_2327(m_callback, m_difficulty,
-                                                yuri_7394, m_myUID, m_readCount);
-        case yuri_1322::eFM_TopRank:
-            return m_manager->yuri_2328(
-                m_callback, m_difficulty, yuri_7394, m_startIndex, m_readCount);
+        case IPlatformLeaderboard::eFM_MyScore:
+            return m_manager->ReadStats_MyScore(m_callback, m_difficulty,
+                                                m_type, m_myUID, m_readCount);
+        case IPlatformLeaderboard::eFM_TopRank:
+            return m_manager->ReadStats_TopRank(
+                m_callback, m_difficulty, m_type, m_startIndex, m_readCount);
         default:
-            yuri_3750(false);
+            assert(false);
             return true;
     }
 }

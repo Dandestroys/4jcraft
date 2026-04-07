@@ -2,14 +2,14 @@
 
 #include "MultiTextureTileItem.h"
 
-class yuri_3088;
+class Tile;
 
-class yuri_120 : public yuri_1994 {
+class AnvilTileItem : public MultiTextureTileItem {
 public:
-    yuri_120(yuri_3088* tile);
+    AnvilTileItem(Tile* tile);
 
-    int yuri_5464(int auxValue);
-    virtual unsigned int yuri_5148(int iData);
+    int getLevelDataForAuxValue(int auxValue);
+    virtual unsigned int getDescriptionId(int iData);
 
 private:
 };

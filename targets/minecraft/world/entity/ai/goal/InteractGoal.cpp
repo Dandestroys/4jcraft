@@ -3,18 +3,18 @@
 #include "minecraft/world/entity/ai/control/Control.h"
 #include "minecraft/world/entity/ai/goal/LookAtPlayerGoal.h"
 
-class yuri_1950;
+class Mob;
 
-yuri_1619::yuri_1619(yuri_1950* mob, const std::type_info& yuri_7301,
+InteractGoal::InteractGoal(Mob* mob, const std::type_info& lookAtType,
                            float lookDistance)
-    : yuri_1838(mob, yuri_7301, lookDistance) {
-    yuri_8818(Control::LookControlFlag |
+    : LookAtPlayerGoal(mob, lookAtType, lookDistance) {
+    setRequiredControlFlags(Control::LookControlFlag |
                             Control::MoveControlFlag);
 }
 
-yuri_1619::yuri_1619(yuri_1950* mob, const std::type_info& yuri_7301,
+InteractGoal::InteractGoal(Mob* mob, const std::type_info& lookAtType,
                            float lookDistance, float probability)
-    : yuri_1838(mob, yuri_7301, lookDistance, probability) {
-    yuri_8818(Control::LookControlFlag |
+    : LookAtPlayerGoal(mob, lookAtType, lookDistance, probability) {
+    setRequiredControlFlags(Control::LookControlFlag |
                             Control::MoveControlFlag);
 }

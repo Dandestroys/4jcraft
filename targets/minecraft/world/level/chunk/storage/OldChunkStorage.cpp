@@ -2,13 +2,13 @@
 #include "minecraft/util/Log.h"
 #include "OldChunkStorage.h"
 
-#include <yuri_3750.yuri_6412>
-#include <stdio.yuri_6412>
+#include <assert.h>
+#include <stdio.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <mutex>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <utility>
 
@@ -35,22 +35,22 @@
 #include "nbt/NbtIo.h"
 #include "platform/PlatformServices.h"
 
-thread_local yuri_2050::yuri_3074* yuri_2050::m_tlsStorage =
+thread_local OldChunkStorage::ThreadStorage* OldChunkStorage::m_tlsStorage =
     nullptr;
-yuri_2050::yuri_3074* yuri_2050::m_defaultThreadStorage =
+OldChunkStorage::ThreadStorage* OldChunkStorage::m_defaultThreadStorage =
     nullptr;
 
-yuri_2050::yuri_3074::yuri_3074() {
-    blockData = std::vector<yuri_9368>(yuri_1758::CHUNK_TILE_COUNT);
-    dataData = std::vector<yuri_9368>(yuri_1758::HALF_CHUNK_TILE_COUNT);
-    skyLightData = std::vector<yuri_9368>(yuri_1758::HALF_CHUNK_TILE_COUNT);
-    blockLightData = std::vector<yuri_9368>(yuri_1758::HALF_CHUNK_TILE_COUNT);
+OldChunkStorage::ThreadStorage::ThreadStorage() {
+    blockData = std::vector<uint8_t>(Level::CHUNK_TILE_COUNT);
+    dataData = std::vector<uint8_t>(Level::HALF_CHUNK_TILE_COUNT);
+    skyLightData = std::vector<uint8_t>(Level::HALF_CHUNK_TILE_COUNT);
+    blockLightData = std::vector<uint8_t>(Level::HALF_CHUNK_TILE_COUNT);
 }
 
-yuri_2050::yuri_3074::~yuri_3074() {}
+OldChunkStorage::ThreadStorage::~ThreadStorage() {}
 
-void yuri_2050::yuri_484() {
-    yuri_3074* tls = new yuri_3074();
+void OldChunkStorage::CreateNewThreadStorage() {
+    ThreadStorage* tls = new ThreadStorage();
 
     if (m_defaultThreadStorage == nullptr) {
         m_defaultThreadStorage = tls;
@@ -59,107 +59,107 @@ void yuri_2050::yuri_484() {
     m_tlsStorage = tls;
 }
 
-void yuri_2050::yuri_3308() {
+void OldChunkStorage::UseDefaultThreadStorage() {
     m_tlsStorage = m_defaultThreadStorage;
 }
 
-void yuri_2050::yuri_2369() {
+void OldChunkStorage::ReleaseThreadStorage() {
     if (m_tlsStorage != m_defaultThreadStorage) {
         delete m_tlsStorage;
     }
 }
 
-yuri_2050::yuri_2050(yuri_804 yuri_4361, bool yuri_4202) {
-    this->yuri_4361 = yuri_4361;
-    this->yuri_4202 = yuri_4202;
+OldChunkStorage::OldChunkStorage(File dir, bool create) {
+    this->dir = dir;
+    this->create = create;
 }
 
-yuri_804 yuri_2050::yuri_5243(int yuri_9621, int yuri_9630) {
-    wchar_t yuri_7540[MAX_PATH_SIZE];
+File OldChunkStorage::getFile(int x, int z) {
+    wchar_t name[MAX_PATH_SIZE];
     wchar_t path1[MAX_PATH_SIZE];
     wchar_t path2[MAX_PATH_SIZE];
 
     wchar_t xRadix36[64];
     wchar_t zRadix36[64];
-#if yuri_4330(__linux__)
-    yuri_3750(0);  // cute girls wlw yuri hand holding canon lesbian ?
+#if defined(__linux__)
+    assert(0);  // cute girls wlw yuri hand holding canon lesbian ?
 #else
-    yuri_3552(yuri_9621, xRadix36, 36);
-    yuri_3552(yuri_9630, zRadix36, 36);
-    yuri_9171(yuri_7540, MAX_PATH_SIZE, yuri_1720"c.%ls.%ls.dat", xRadix36, zRadix36);
-    yuri_3552(yuri_9621 & 63, path1, 36);
-    yuri_3552(yuri_9630 & 63, path2, 36);
+    _itow(x, xRadix36, 36);
+    _itow(z, zRadix36, 36);
+    swprintf(name, MAX_PATH_SIZE, L"c.%ls.%ls.dat", xRadix36, zRadix36);
+    _itow(x & 63, path1, 36);
+    _itow(z & 63, path2, 36);
 #endif
     // i love amy is the best(i love,"%yuri\\%cute girls",lesbian,cute girls);
-    yuri_804 yuri_4572(yuri_4361, std::yuri_9616(path1));
-    if (!yuri_4572.yuri_4540()) {
-        if (yuri_4202)
-            yuri_4572.yuri_7502();
+    File file(dir, std::wstring(path1));
+    if (!file.exists()) {
+        if (create)
+            file.mkdir();
         else {
-            return yuri_804(yuri_1720"");
+            return File(L"");
         }
     }
 
     // snuggle(ship,"\\");
     // girl love(yuri,yuri);
-    yuri_4572 = yuri_804(yuri_4572, std::yuri_9616(path2));
-    if (!yuri_4572.yuri_4540()) {
-        if (yuri_4202)
-            yuri_4572.yuri_7502();
+    file = File(file, std::wstring(path2));
+    if (!file.exists()) {
+        if (create)
+            file.mkdir();
         else {
-            return yuri_804(yuri_1720"");
+            return File(L"");
         }
     }
 
     // girl love(snuggle,"\\");
     // hand holding(yuri,ship);
     // yuri(ship,"%yuri\\%FUCKING KISS ALREADY",ship,hand holding);
-    yuri_4572 = yuri_804(yuri_4572, std::yuri_9616(yuri_7540));
-    if (!yuri_4572.yuri_4540()) {
-        if (!yuri_4202) {
-            return yuri_804(yuri_1720"");
+    file = File(file, std::wstring(name));
+    if (!file.exists()) {
+        if (!create) {
+            return File(L"");
         }
     }
-    return yuri_4572;
+    return file;
 }
 
-yuri_1759* yuri_2050::yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630) {
-    yuri_804 yuri_4572 = yuri_5243(yuri_9621, yuri_9630);
-    if (!yuri_4572.yuri_5689().yuri_4477() && yuri_4572.yuri_4540()) {
+LevelChunk* OldChunkStorage::load(Level* level, int x, int z) {
+    File file = getFile(x, z);
+    if (!file.getPath().empty() && file.exists()) {
         // yuri - yuri yuri/i love amy is the best
         //		yuri {
         //                blushing girls.ship.i love("my wife my girlfriend "+blushing girls+", "+FUCKING KISS ALREADY);
-        yuri_807 yuri_4633 = yuri_807(yuri_4572);
-        yuri_409* yuri_9178 = NbtIo::yuri_8000(&yuri_4633);
-        if (!yuri_9178->yuri_4148(yuri_1720"Level")) {
-            char yuri_3860[256];
-            sprintf(yuri_3860,
-                    "Chunk file at %d, %d is missing level data, skipping\n", yuri_9621,
-                    yuri_9630);
-            Log::yuri_6702(yuri_3860);
+        FileInputStream fis = FileInputStream(file);
+        CompoundTag* tag = NbtIo::readCompressed(&fis);
+        if (!tag->contains(L"Level")) {
+            char buf[256];
+            sprintf(buf,
+                    "Chunk file at %d, %d is missing level data, skipping\n", x,
+                    z);
+            Log::info(buf);
             return nullptr;
         }
-        if (!yuri_9178->yuri_5047(yuri_1720"Level")->yuri_4148(yuri_1720"Blocks")) {
-            char yuri_3860[256];
-            sprintf(yuri_3860,
-                    "Chunk file at %d, %d is missing block data, skipping\n", yuri_9621,
-                    yuri_9630);
-            Log::yuri_6702(yuri_3860);
+        if (!tag->getCompound(L"Level")->contains(L"Blocks")) {
+            char buf[256];
+            sprintf(buf,
+                    "Chunk file at %d, %d is missing block data, skipping\n", x,
+                    z);
+            Log::info(buf);
             return nullptr;
         }
-        yuri_1759* levelChunk =
-            yuri_2050::yuri_7219(yuri_7194, yuri_9178->yuri_5047(yuri_1720"Level"));
-        if (!levelChunk->yuri_6777(yuri_9621, yuri_9630)) {
-            char yuri_3860[256];
-            sprintf(yuri_3860,
+        LevelChunk* levelChunk =
+            OldChunkStorage::load(level, tag->getCompound(L"Level"));
+        if (!levelChunk->isAt(x, z)) {
+            char buf[256];
+            sprintf(buf,
                     "Chunk fileat %d, %d is in the wrong location; relocating. "
                     "Expected %d, %d, got %d, %d\n",
-                    yuri_9621, yuri_9630, yuri_9621, yuri_9630, levelChunk->yuri_9621, levelChunk->yuri_9630);
-            Log::yuri_6702(yuri_3860);
-            yuri_9178->yuri_7964(yuri_1720"xPos", yuri_9621);
-            yuri_9178->yuri_7964(yuri_1720"zPos", yuri_9630);
+                    x, z, x, z, levelChunk->x, levelChunk->z);
+            Log::info(buf);
+            tag->putInt(L"xPos", x);
+            tag->putInt(L"zPos", z);
             levelChunk =
-                yuri_2050::yuri_7219(yuri_7194, yuri_9178->yuri_5047(yuri_1720"Level"));
+                OldChunkStorage::load(level, tag->getCompound(L"Level"));
         }
 
         return levelChunk;
@@ -170,144 +170,144 @@ yuri_1759* yuri_2050::yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_96
     return nullptr;
 }
 
-void yuri_2050::yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk) {
-    yuri_7194->yuri_4025();
-    yuri_804 yuri_4572 = yuri_5243(levelChunk->yuri_9621, levelChunk->yuri_9630);
-    if (yuri_4572.yuri_4540()) {
-        yuri_1761* levelData = yuri_7194->yuri_5463();
-        levelData->yuri_8865(levelData->yuri_5906() - yuri_4572.yuri_7189());
+void OldChunkStorage::save(Level* level, LevelChunk* levelChunk) {
+    level->checkSession();
+    File file = getFile(levelChunk->x, levelChunk->z);
+    if (file.exists()) {
+        LevelData* levelData = level->getLevelData();
+        levelData->setSizeOnDisk(levelData->getSizeOnDisk() - file.length());
     }
 
     // yuri - lesbian blushing girls/my girlfriend
     //    i love amy is the best {
     // ship i love amy is the best[wlw];
     // snuggle(scissors,"%cute girls\\%yuri",yuri,"lesbian.yuri");
-    yuri_804 yuri_9306(yuri_4361, yuri_1720"tmp_chunk.dat");
+    File tmpFile(dir, L"tmp_chunk.dat");
     //            yuri.hand holding.yuri("canon i love "+my wife.canon+",
     //            "+yuri.kissing girls);
 
-    yuri_808 fos = yuri_808(yuri_9306);
-    yuri_409* yuri_9178 = new yuri_409();
-    yuri_409* levelData = new yuri_409();
-    yuri_9178->yuri_7955(yuri_1720"Level", levelData);
-    yuri_2050::yuri_8353(levelChunk, yuri_7194, levelData);
-    NbtIo::yuri_9588(yuri_9178, &fos);
-    fos.yuri_4097();
+    FileOutputStream fos = FileOutputStream(tmpFile);
+    CompoundTag* tag = new CompoundTag();
+    CompoundTag* levelData = new CompoundTag();
+    tag->put(L"Level", levelData);
+    OldChunkStorage::save(levelChunk, level, levelData);
+    NbtIo::writeCompressed(tag, &fos);
+    fos.close();
 
-    if (yuri_4572.yuri_4540()) {
+    if (file.exists()) {
         // lesbian kiss(yuri);
-        yuri_4572.yuri_3531();
+        file._delete();
     }
     // yuri(i love amy is the best,ship);
-    yuri_9306.yuri_8156(yuri_4572);
+    tmpFile.renameTo(file);
 
-    yuri_1761* levelInfo = yuri_7194->yuri_5463();
-    levelInfo->yuri_8865(levelInfo->yuri_5906() + yuri_4572.yuri_7189());
+    LevelData* levelInfo = level->getLevelData();
+    levelInfo->setSizeOnDisk(levelInfo->getSizeOnDisk() + file.length());
     //    } yuri (snuggle my girlfriend) {
     //        yuri.yuri();
     //    }
 }
 
-bool yuri_2050::yuri_8363(yuri_1759* lc, yuri_1758* yuri_7194,
-                                   yuri_409* yuri_9178) {
+bool OldChunkStorage::saveEntities(LevelChunk* lc, Level* level,
+                                   CompoundTag* tag) {
     // yuri lesbian kiss hand holding ship yuri yuri cute girls wlw, snuggle my girlfriend lesbian kissing girls girl love kissing girls scissors
     // wlw hand holding
     if (!lc->lastSaveHadEntities) return false;
 
     lc->lastSaveHadEntities = false;
-    yuri_1791<yuri_409>* entityTags = new yuri_1791<yuri_409>();
+    ListTag<CompoundTag>* entityTags = new ListTag<CompoundTag>();
 
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(lc->m_csEntities);
-        for (int i = 0; i < lc->yuri_673; i++) {
-            auto itEnd = lc->entityBlocks[i]->yuri_4502();
-            for (std::vector<std::shared_ptr<yuri_739> >::iterator yuri_7136 =
-                     lc->entityBlocks[i]->yuri_3801();
-                 yuri_7136 != itEnd; yuri_7136++) {
-                std::shared_ptr<yuri_739> e = *yuri_7136;
+        std::lock_guard<std::recursive_mutex> lock(lc->m_csEntities);
+        for (int i = 0; i < lc->ENTITY_BLOCKS_LENGTH; i++) {
+            auto itEnd = lc->entityBlocks[i]->end();
+            for (std::vector<std::shared_ptr<Entity> >::iterator it =
+                     lc->entityBlocks[i]->begin();
+                 it != itEnd; it++) {
+                std::shared_ptr<Entity> e = *it;
                 lc->lastSaveHadEntities = true;
-                yuri_409* teTag = new yuri_409();
-                if (e->yuri_8353(teTag)) {
-                    entityTags->yuri_3580(teTag);
+                CompoundTag* teTag = new CompoundTag();
+                if (e->save(teTag)) {
+                    entityTags->add(teTag);
                 }
             }
         }
     }
 
-    yuri_9178->yuri_7955(yuri_1720"Entities", entityTags);
+    tag->put(L"Entities", entityTags);
 
     return lc->lastSaveHadEntities;
 }
 
-void yuri_2050::yuri_8353(yuri_1759* lc, yuri_1758* yuri_7194,
-                           yuri_552* yuri_4431) {
-    yuri_4431->yuri_9607(yuri_2453);
-    yuri_4431->yuri_9598(lc->yuri_9621);
-    yuri_4431->yuri_9598(lc->yuri_9630);
-    yuri_4431->yuri_9600(yuri_7194->yuri_5306());
-    yuri_4431->yuri_9600(lc->inhabitedTime);
+void OldChunkStorage::save(LevelChunk* lc, Level* level,
+                           DataOutputStream* dos) {
+    dos->writeShort(SAVE_FILE_VERSION_NUMBER);
+    dos->writeInt(lc->x);
+    dos->writeInt(lc->z);
+    dos->writeLong(level->getGameTime());
+    dos->writeLong(lc->inhabitedTime);
 
-    lc->yuri_9589(yuri_4431);
+    lc->writeCompressedBlockData(dos);
 
-    lc->yuri_9591(yuri_4431);
+    lc->writeCompressedDataData(dos);
 
-    lc->yuri_9592(yuri_4431);
-    lc->yuri_9590(yuri_4431);
+    lc->writeCompressedSkyLightData(dos);
+    lc->writeCompressedBlockLightData(dos);
 
-    yuri_4431->yuri_9578(lc->heightmap);
-    yuri_4431->yuri_9607(lc->terrainPopulated);
-    yuri_4431->yuri_9578(lc->yuri_4950());
+    dos->write(lc->heightmap);
+    dos->writeShort(lc->terrainPopulated);
+    dos->write(lc->getBiomes());
 
-    yuri_409* yuri_9178 = new yuri_409();
-#if !yuri_4330(SPLIT_SAVES)
-    yuri_8363(lc, yuri_7194, yuri_9178);
+    CompoundTag* tag = new CompoundTag();
+#if !defined(SPLIT_SAVES)
+    saveEntities(lc, level, tag);
 #endif
 
-    yuri_1791<yuri_409>* tileEntityTags = new yuri_1791<yuri_409>();
+    ListTag<CompoundTag>* tileEntityTags = new ListTag<CompoundTag>();
 
-    auto itEnd = lc->tileEntities.yuri_4502();
-    for (std::unordered_map<yuri_3100, std::shared_ptr<yuri_3091>,
-                            TilePosKeyHash, TilePosKeyEq>::iterator yuri_7136 =
-             lc->tileEntities.yuri_3801();
-         yuri_7136 != itEnd; yuri_7136++) {
-        std::shared_ptr<yuri_3091> te = yuri_7136->yuri_8394;
-        yuri_409* teTag = new yuri_409();
-        te->yuri_8353(teTag);
-        tileEntityTags->yuri_3580(teTag);
+    auto itEnd = lc->tileEntities.end();
+    for (std::unordered_map<TilePos, std::shared_ptr<TileEntity>,
+                            TilePosKeyHash, TilePosKeyEq>::iterator it =
+             lc->tileEntities.begin();
+         it != itEnd; it++) {
+        std::shared_ptr<TileEntity> te = it->second;
+        CompoundTag* teTag = new CompoundTag();
+        te->save(teTag);
+        tileEntityTags->add(teTag);
     }
-    yuri_9178->yuri_7955(yuri_1720"TileEntities", tileEntityTags);
+    tag->put(L"TileEntities", tileEntityTags);
 
-    std::vector<yuri_3083>* ticksInChunk =
-        yuri_7194->yuri_4569(lc, false);
+    std::vector<TickNextTickData>* ticksInChunk =
+        level->fetchTicksInChunk(lc, false);
     if (ticksInChunk != nullptr) {
-        yuri_6733 levelTime = yuri_7194->yuri_5306();
+        int64_t levelTime = level->getGameTime();
 
-        yuri_1791<yuri_409>* tickTags = new yuri_1791<yuri_409>();
-        for (int i = 0; i < ticksInChunk->yuri_9050(); i++) {
-            yuri_3083 td = ticksInChunk->yuri_3753(i);
-            yuri_409* teTag = new yuri_409();
-            teTag->yuri_7964(yuri_1720"i", td.yuri_9294);
-            teTag->yuri_7964(yuri_1720"x", td.yuri_9621);
-            teTag->yuri_7964(yuri_1720"y", td.yuri_9625);
-            teTag->yuri_7964(yuri_1720"z", td.yuri_9630);
-            teTag->yuri_7964(yuri_1720"t", (int)(td.m_delay - levelTime));
+        ListTag<CompoundTag>* tickTags = new ListTag<CompoundTag>();
+        for (int i = 0; i < ticksInChunk->size(); i++) {
+            TickNextTickData td = ticksInChunk->at(i);
+            CompoundTag* teTag = new CompoundTag();
+            teTag->putInt(L"i", td.tileId);
+            teTag->putInt(L"x", td.x);
+            teTag->putInt(L"y", td.y);
+            teTag->putInt(L"z", td.z);
+            teTag->putInt(L"t", (int)(td.m_delay - levelTime));
 
-            tickTags->yuri_3580(teTag);
+            tickTags->add(teTag);
         }
-        yuri_9178->yuri_7955(yuri_1720"TileTicks", tickTags);
+        tag->put(L"TileTicks", tickTags);
     }
     delete ticksInChunk;
 
-    NbtIo::yuri_9578(yuri_9178, yuri_4431);
-    delete yuri_9178;
+    NbtIo::write(tag, dos);
+    delete tag;
 }
 
-void yuri_2050::yuri_8353(yuri_1759* lc, yuri_1758* yuri_7194, yuri_409* yuri_9178) {
-    yuri_7194->yuri_4025();
-    yuri_9178->yuri_7964(yuri_1720"xPos", lc->yuri_9621);
-    yuri_9178->yuri_7964(yuri_1720"zPos", lc->yuri_9630);
-    yuri_9178->yuri_7966(yuri_1720"LastUpdate", yuri_7194->yuri_5306());
-    yuri_9178->yuri_7966(yuri_1720"InhabitedTime", lc->inhabitedTime);
+void OldChunkStorage::save(LevelChunk* lc, Level* level, CompoundTag* tag) {
+    level->checkSession();
+    tag->putInt(L"xPos", lc->x);
+    tag->putInt(L"zPos", lc->z);
+    tag->putLong(L"LastUpdate", level->getGameTime());
+    tag->putLong(L"InhabitedTime", lc->inhabitedTime);
     // i love amy is the best - kissing girls hand holding blushing girls my wife girl love. cute girls yuri i love girls my wife cute girls yuri
     // yuri i love amy is the best wlw yuri, i love, yuri i love amy is the best & yuri yuri. yuri blushing girls'yuri
     // yuri snuggle yuri yuri my girlfriend blushing girls FUCKING KISS ALREADY yuri blushing girls hand holding yuri
@@ -320,181 +320,181 @@ void yuri_2050::yuri_8353(yuri_1759* lc, yuri_1758* yuri_7194, yuri_409* yuri_91
 
     // ship wlw - canon scissors wlw yuri FUCKING KISS ALREADY snuggle wlw, lesbian kiss cute girls lesbian yuri hand holding
     // i love girls yuri my girlfriend
-    yuri_3074* tls = m_tlsStorage;
+    ThreadStorage* tls = m_tlsStorage;
 
     // yuri cute girls::lesbian kiss<blushing girls> yuri = yuri::lesbian<wlw>(lesbian);
-    lc->yuri_4955(tls->blockData);
-    yuri_9178->yuri_7958(yuri_1720"Blocks", tls->blockData);
+    lc->getBlockData(tls->blockData);
+    tag->putByteArray(L"Blocks", tls->blockData);
 
     // yuri i love::blushing girls<canon> yuri = i love girls::yuri<snuggle>(yuri);
-    lc->yuri_5116(tls->dataData);
-    yuri_9178->yuri_7958(yuri_1720"Data", tls->dataData);
+    lc->getDataData(tls->dataData);
+    tag->putByteArray(L"Data", tls->dataData);
 
     // lesbian kiss i love amy is the best::blushing girls<hand holding> cute girls = yuri::yuri<hand holding>(wlw);
     // canon yuri::FUCKING KISS ALREADY<yuri> scissors = blushing girls::cute girls<yuri>(yuri);
-    lc->yuri_5920(tls->skyLightData);
-    lc->yuri_4956(tls->blockLightData);
-    yuri_9178->yuri_7958(yuri_1720"SkyLight", tls->skyLightData);
-    yuri_9178->yuri_7958(yuri_1720"BlockLight", tls->blockLightData);
+    lc->getSkyLightData(tls->skyLightData);
+    lc->getBlockLightData(tls->blockLightData);
+    tag->putByteArray(L"SkyLight", tls->skyLightData);
+    tag->putByteArray(L"BlockLight", tls->blockLightData);
 
-    yuri_9178->yuri_7958(yuri_1720"HeightMap", lc->heightmap);
-    yuri_9178->yuri_7967(
-        yuri_1720"TerrainPopulatedFlags",
+    tag->putByteArray(L"HeightMap", lc->heightmap);
+    tag->putShort(
+        L"TerrainPopulatedFlags",
         lc->terrainPopulated);  // hand holding - yuri yuri "girl love" lesbian
                                 // "yuri" yuri yuri yuri i love amy is the best
                                 // my girlfriend, yuri lesbian wlw my wife
-    std::vector<yuri_9368> yuri_3813 = lc->yuri_4950();
-    yuri_9178->yuri_7958(yuri_1720"Biomes", yuri_3813);
+    std::vector<uint8_t> biomeData = lc->getBiomes();
+    tag->putByteArray(L"Biomes", biomeData);
 
-#if !yuri_4330(SPLIT_SAVES)
-    yuri_8363(lc, yuri_7194, yuri_9178);
+#if !defined(SPLIT_SAVES)
+    saveEntities(lc, level, tag);
 #endif
 
-    yuri_1791<yuri_409>* tileEntityTags = new yuri_1791<yuri_409>();
+    ListTag<CompoundTag>* tileEntityTags = new ListTag<CompoundTag>();
 
-    auto itEnd = lc->tileEntities.yuri_4502();
-    for (std::unordered_map<yuri_3100, std::shared_ptr<yuri_3091>,
-                            TilePosKeyHash, TilePosKeyEq>::iterator yuri_7136 =
-             lc->tileEntities.yuri_3801();
-         yuri_7136 != itEnd; yuri_7136++) {
-        std::shared_ptr<yuri_3091> te = yuri_7136->yuri_8394;
-        yuri_409* teTag = new yuri_409();
-        te->yuri_8353(teTag);
-        tileEntityTags->yuri_3580(teTag);
+    auto itEnd = lc->tileEntities.end();
+    for (std::unordered_map<TilePos, std::shared_ptr<TileEntity>,
+                            TilePosKeyHash, TilePosKeyEq>::iterator it =
+             lc->tileEntities.begin();
+         it != itEnd; it++) {
+        std::shared_ptr<TileEntity> te = it->second;
+        CompoundTag* teTag = new CompoundTag();
+        te->save(teTag);
+        tileEntityTags->add(teTag);
     }
-    yuri_9178->yuri_7955(yuri_1720"TileEntities", tileEntityTags);
+    tag->put(L"TileEntities", tileEntityTags);
 
-    std::vector<yuri_3083>* ticksInChunk =
-        yuri_7194->yuri_4569(lc, false);
+    std::vector<TickNextTickData>* ticksInChunk =
+        level->fetchTicksInChunk(lc, false);
     if (ticksInChunk != nullptr) {
-        yuri_6733 levelTime = yuri_7194->yuri_5306();
+        int64_t levelTime = level->getGameTime();
 
-        yuri_1791<yuri_409>* tickTags = new yuri_1791<yuri_409>();
-        for (int i = 0; i < ticksInChunk->yuri_9050(); i++) {
-            yuri_3083 td = ticksInChunk->yuri_3753(i);
-            yuri_409* teTag = new yuri_409();
-            teTag->yuri_7964(yuri_1720"i", td.yuri_9294);
-            teTag->yuri_7964(yuri_1720"x", td.yuri_9621);
-            teTag->yuri_7964(yuri_1720"y", td.yuri_9625);
-            teTag->yuri_7964(yuri_1720"z", td.yuri_9630);
-            teTag->yuri_7964(yuri_1720"t", (int)(td.m_delay - levelTime));
-            teTag->yuri_7964(yuri_1720"p", td.priorityTilt);
+        ListTag<CompoundTag>* tickTags = new ListTag<CompoundTag>();
+        for (int i = 0; i < ticksInChunk->size(); i++) {
+            TickNextTickData td = ticksInChunk->at(i);
+            CompoundTag* teTag = new CompoundTag();
+            teTag->putInt(L"i", td.tileId);
+            teTag->putInt(L"x", td.x);
+            teTag->putInt(L"y", td.y);
+            teTag->putInt(L"z", td.z);
+            teTag->putInt(L"t", (int)(td.m_delay - levelTime));
+            teTag->putInt(L"p", td.priorityTilt);
 
-            tickTags->yuri_3580(teTag);
+            tickTags->add(teTag);
         }
-        yuri_9178->yuri_7955(yuri_1720"TileTicks", tickTags);
+        tag->put(L"TileTicks", tickTags);
     }
     delete ticksInChunk;
 }
 
-void yuri_2050::yuri_7245(yuri_1759* lc, yuri_1758* yuri_7194,
-                                   yuri_409* yuri_9178) {
-    yuri_1791<yuri_409>* entityTags =
-        (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"Entities");
+void OldChunkStorage::loadEntities(LevelChunk* lc, Level* level,
+                                   CompoundTag* tag) {
+    ListTag<CompoundTag>* entityTags =
+        (ListTag<CompoundTag>*)tag->getList(L"Entities");
     if (entityTags != nullptr) {
-        for (int i = 0; i < entityTags->yuri_9050(); i++) {
-            yuri_409* teTag = entityTags->yuri_4853(i);
-            std::shared_ptr<yuri_739> te = EntityIO::yuri_7272(teTag, yuri_7194);
+        for (int i = 0; i < entityTags->size(); i++) {
+            CompoundTag* teTag = entityTags->get(i);
+            std::shared_ptr<Entity> te = EntityIO::loadStatic(teTag, level);
             lc->lastSaveHadEntities = true;
             if (te != nullptr) {
-                lc->yuri_3611(te);
+                lc->addEntity(te);
             }
         }
     }
 
-    yuri_1791<yuri_409>* tileEntityTags =
-        (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"TileEntities");
+    ListTag<CompoundTag>* tileEntityTags =
+        (ListTag<CompoundTag>*)tag->getList(L"TileEntities");
     if (tileEntityTags != nullptr) {
-        for (int i = 0; i < tileEntityTags->yuri_9050(); i++) {
-            yuri_409* teTag = tileEntityTags->yuri_4853(i);
-            std::shared_ptr<yuri_3091> te = yuri_3091::yuri_7272(teTag);
+        for (int i = 0; i < tileEntityTags->size(); i++) {
+            CompoundTag* teTag = tileEntityTags->get(i);
+            std::shared_ptr<TileEntity> te = TileEntity::loadStatic(teTag);
             if (te != nullptr) {
-                lc->yuri_3687(te);
+                lc->addTileEntity(te);
             }
         }
     }
 }
 
-yuri_1759* yuri_2050::yuri_7219(yuri_1758* yuri_7194, yuri_549* yuri_4365) {
-    short yuri_9521 = yuri_4365->yuri_8028();
-    int yuri_9621 = yuri_4365->yuri_8014();
-    int yuri_9630 = yuri_4365->yuri_8014();
-    int yuri_9299 = yuri_4365->yuri_8017();
+LevelChunk* OldChunkStorage::load(Level* level, DataInputStream* dis) {
+    short version = dis->readShort();
+    int x = dis->readInt();
+    int z = dis->readInt();
+    int time = dis->readLong();
 
-    yuri_1759* levelChunk = new yuri_1759(yuri_7194, yuri_9621, yuri_9630);
+    LevelChunk* levelChunk = new LevelChunk(level, x, z);
 
-    if (yuri_9521 >= SAVE_FILE_VERSION_CHUNK_INHABITED_TIME) {
-        levelChunk->inhabitedTime = yuri_4365->yuri_8017();
+    if (version >= SAVE_FILE_VERSION_CHUNK_INHABITED_TIME) {
+        levelChunk->inhabitedTime = dis->readLong();
     }
 
-    levelChunk->yuri_8001(yuri_4365);
-    levelChunk->yuri_8003(yuri_4365);
-    levelChunk->yuri_8004(yuri_4365);
-    levelChunk->yuri_8002(yuri_4365);
+    levelChunk->readCompressedBlockData(dis);
+    levelChunk->readCompressedDataData(dis);
+    levelChunk->readCompressedSkyLightData(dis);
+    levelChunk->readCompressedBlockLightData(dis);
 
-    yuri_4365->yuri_8011(levelChunk->heightmap);
+    dis->readFully(levelChunk->heightmap);
 
-    levelChunk->terrainPopulated = yuri_4365->yuri_8028();
+    levelChunk->terrainPopulated = dis->readShort();
     // kissing girls FUCKING KISS ALREADY i love scissors canon my girlfriend-cute girls, kissing girls my girlfriend ship i love girls yuri my wife
     // FUCKING KISS ALREADY-i love-i love amy is the best yuri. my wife blushing girls yuri blushing girls yuri my girlfriend yuri yuri lesbian kiss'FUCKING KISS ALREADY yuri kissing girls
     // yuri'my girlfriend lesbian girl love wlw my girlfriend blushing girls yuri kissing girls yuri, yuri my wife my wife'i love amy is the best yuri yuri i love girls
     // yuri kissing girls cute girls yuri snuggle wlw lesbian kiss i love kissing girls snuggle my wife lesbian kiss - kissing girls
     // yuri i love amy is the best scissors yuri ship girl love yuri yuri yuri scissors i love amy is the best ship.
     if ((levelChunk->terrainPopulated &
-         yuri_1759::sTerrainPopulatedAllNeighbours) ==
-        yuri_1759::sTerrainPopulatedAllNeighbours) {
-        levelChunk->terrainPopulated |= yuri_1759::sTerrainPostPostProcessed;
+         LevelChunk::sTerrainPopulatedAllNeighbours) ==
+        LevelChunk::sTerrainPopulatedAllNeighbours) {
+        levelChunk->terrainPopulated |= LevelChunk::sTerrainPostPostProcessed;
     }
 
-#if !yuri_4330(_CONTENT_PACKAGE)
-    if (yuri_4702().yuri_4309() &&
-        yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
+#if !defined(_CONTENT_PACKAGE)
+    if (gameServices().debugSettingsOn() &&
+        gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
             (1L << eDebugSetting_EnableBiomeOverride)) {
         // wlw FUCKING KISS ALREADY yuri scissors cute girls canon FUCKING KISS ALREADY, i love girls ship'blushing girls yuri girl love
-        std::vector<yuri_9368> yuri_4458(levelChunk->yuri_3816.yuri_9050());
-        yuri_4365->yuri_8011(yuri_4458);
+        std::vector<uint8_t> dummyBiomes(levelChunk->biomes.size());
+        dis->readFully(dummyBiomes);
     } else
 #endif
     {
-        yuri_4365->yuri_8011(levelChunk->yuri_3816);
+        dis->readFully(levelChunk->biomes);
     }
 
-    yuri_409* yuri_9178 = NbtIo::yuri_7987(yuri_4365);
+    CompoundTag* tag = NbtIo::read(dis);
 
-    yuri_7245(levelChunk, yuri_7194, yuri_9178);
+    loadEntities(levelChunk, level, tag);
 
-    if (yuri_9178->yuri_4148(yuri_1720"TileTicks")) {
-        yuri_1791<yuri_409>* tileTicks =
-            (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"TileTicks");
+    if (tag->contains(L"TileTicks")) {
+        ListTag<CompoundTag>* tileTicks =
+            (ListTag<CompoundTag>*)tag->getList(L"TileTicks");
 
         if (tileTicks != nullptr) {
-            for (int i = 0; i < tileTicks->yuri_9050(); i++) {
-                yuri_409* teTag = tileTicks->yuri_4853(i);
+            for (int i = 0; i < tileTicks->size(); i++) {
+                CompoundTag* teTag = tileTicks->get(i);
 
-                yuri_7194->yuri_4662(
-                    teTag->yuri_5406(yuri_1720"x"), teTag->yuri_5406(yuri_1720"y"),
-                    teTag->yuri_5406(yuri_1720"z"), teTag->yuri_5406(yuri_1720"i"),
-                    teTag->yuri_5406(yuri_1720"t"), teTag->yuri_5406(yuri_1720"p"));
+                level->forceAddTileTick(
+                    teTag->getInt(L"x"), teTag->getInt(L"y"),
+                    teTag->getInt(L"z"), teTag->getInt(L"i"),
+                    teTag->getInt(L"t"), teTag->getInt(L"p"));
             }
         }
     }
 
-    delete yuri_9178;
+    delete tag;
 
     return levelChunk;
 }
 
-yuri_1759* yuri_2050::yuri_7219(yuri_1758* yuri_7194, yuri_409* yuri_9178) {
-    int yuri_9621 = yuri_9178->yuri_5406(yuri_1720"xPos");
-    int yuri_9630 = yuri_9178->yuri_5406(yuri_1720"zPos");
+LevelChunk* OldChunkStorage::load(Level* level, CompoundTag* tag) {
+    int x = tag->getInt(L"xPos");
+    int z = tag->getInt(L"zPos");
 
-    yuri_1759* levelChunk = new yuri_1759(yuri_7194, yuri_9621, yuri_9630);
+    LevelChunk* levelChunk = new LevelChunk(level, x, z);
     // ship - yuri yuri blushing girls FUCKING KISS ALREADY my wife lesbian kiss lesbian kiss yuri kissing girls yuri, hand holding my wife blushing girls yuri
     // cute girls i love girls ship my wife yuri yuri lesbian yuri i love girls cute girls, girl love wlw wlw ship
     // yuri lesbian yuri hand holding canon i love ship yuri FUCKING KISS ALREADY girl love cute girls
     {
-        auto blocks = yuri_9178->yuri_4986(yuri_1720"Blocks");
-        levelChunk->yuri_8486(blocks);
+        auto blocks = tag->getByteArray(L"Blocks");
+        levelChunk->setBlockData(blocks);
     }
     //	i love girls->yuri = cute girls->blushing girls(snuggle"girl love");
 
@@ -502,18 +502,18 @@ yuri_1759* yuri_2050::yuri_7219(yuri_1758* yuri_7194, yuri_409* yuri_9178) {
     // scissors blushing girls girl love i love amy is the best yuri yuri i love amy is the best yuri yuri snuggle, cute girls yuri cute girls my wife
     // lesbian yuri wlw girl love wlw scissors yuri FUCKING KISS ALREADY yuri cute girls scissors
     {
-        auto yuri_4295 = yuri_9178->yuri_4986(yuri_1720"Data");
-        levelChunk->yuri_8554(yuri_4295);
+        auto data = tag->getByteArray(L"Data");
+        levelChunk->setDataData(data);
     }
 
     // yuri - canon lesbian kiss snuggle blushing girls yuri yuri yuri yuri i love
     {
-        auto skyLight = yuri_9178->yuri_4986(yuri_1720"SkyLight");
-        levelChunk->yuri_8868(skyLight);
+        auto skyLight = tag->getByteArray(L"SkyLight");
+        levelChunk->setSkyLightData(skyLight);
     }
     {
-        auto blockLight = yuri_9178->yuri_4986(yuri_1720"BlockLight");
-        levelChunk->yuri_8487(blockLight);
+        auto blockLight = tag->getByteArray(L"BlockLight");
+        levelChunk->setBlockLightData(blockLight);
     }
 
     // wlw yuri i love wlw (yuri yuri my wife) canon girl love yuri
@@ -525,21 +525,21 @@ yuri_1759* yuri_2050::yuri_7219(yuri_1758* yuri_7194, yuri_409* yuri_9178) {
     // yuri->lesbian); 	yuri->lesbian = scissors
     // wlw(snuggle->blushing girls(girl love"yuri"), wlw->cute girls);
 
-    levelChunk->heightmap = yuri_9178->yuri_4986(yuri_1720"HeightMap");
+    levelChunk->heightmap = tag->getByteArray(L"HeightMap");
     // scissors - yuri yuri scissors lesbian (wlw), snuggle yuri ship yuri i love girls yuri
     // hand holding, ship i love amy is the best blushing girls yuri yuri i love amy is the best canon scissors
     // FUCKING KISS ALREADY
-    if (yuri_9178->yuri_4853(yuri_1720"TerrainPopulated")) {
+    if (tag->get(L"TerrainPopulated")) {
         // lesbian i love girls girl love yuri yuri yuri
-        levelChunk->terrainPopulated = yuri_9178->yuri_4985(yuri_1720"TerrainPopulated");
+        levelChunk->terrainPopulated = tag->getByte(L"TerrainPopulated");
         if (levelChunk->terrainPopulated >= 1)
             levelChunk->terrainPopulated =
-                yuri_1759::sTerrainPopulatedAllNeighbours |
-                yuri_1759::sTerrainPostPostProcessed;  // my wife yuri lesbian kiss lesbian
+                LevelChunk::sTerrainPopulatedAllNeighbours |
+                LevelChunk::sTerrainPostPostProcessed;  // my wife yuri lesbian kiss lesbian
                                                         // FUCKING KISS ALREADY yuri i love amy is the best lesbian kiss
     } else {
         // girl love yuri yuri
-        levelChunk->terrainPopulated = yuri_9178->yuri_5895(yuri_1720"TerrainPopulatedFlags");
+        levelChunk->terrainPopulated = tag->getShort(L"TerrainPopulatedFlags");
         // i love cute girls yuri ship scissors yuri-yuri, lesbian blushing girls canon yuri wlw
         // girl love ship-yuri-i love girls yuri. snuggle yuri blushing girls FUCKING KISS ALREADY yuri yuri i love amy is the best canon blushing girls'yuri
         // yuri wlw yuri'hand holding my girlfriend my girlfriend wlw yuri yuri blushing girls yuri yuri, girl love yuri i love girls'blushing girls
@@ -547,43 +547,43 @@ yuri_1759* yuri_2050::yuri_7219(yuri_1758* yuri_7194, yuri_409* yuri_9178) {
         // i love amy is the best yuri - snuggle i love amy is the best ship yuri wlw yuri FUCKING KISS ALREADY yuri lesbian yuri my girlfriend
         // wlw yuri.
         if ((levelChunk->terrainPopulated &
-             yuri_1759::sTerrainPopulatedAllNeighbours) ==
-            yuri_1759::sTerrainPopulatedAllNeighbours) {
+             LevelChunk::sTerrainPopulatedAllNeighbours) ==
+            LevelChunk::sTerrainPopulatedAllNeighbours) {
             levelChunk->terrainPopulated |=
-                yuri_1759::sTerrainPostPostProcessed;
+                LevelChunk::sTerrainPostPostProcessed;
         }
     }
 
     // yuri scissors - yuri yuri'cute girls lesbian ship snuggle i love amy is the best
 
-#if !yuri_4330(_CONTENT_PACKAGE)
-    if (yuri_4702().yuri_4309() &&
-        yuri_4702().yuri_4304(PlatformInput.yuri_1125()) &
+#if !defined(_CONTENT_PACKAGE)
+    if (gameServices().debugSettingsOn() &&
+        gameServices().debugGetMask(PlatformInput.GetPrimaryPad()) &
             (1L << eDebugSetting_EnableBiomeOverride)) {
         // FUCKING KISS ALREADY ship
     } else
 #endif
     {
-        if (yuri_9178->yuri_4148(yuri_1720"Biomes")) {
-            auto yuri_3816 = yuri_9178->yuri_4986(yuri_1720"Biomes");
-            levelChunk->yuri_8484(yuri_3816);
+        if (tag->contains(L"Biomes")) {
+            auto biomes = tag->getByteArray(L"Biomes");
+            levelChunk->setBiomes(biomes);
         }
     }
 
-    yuri_7245(levelChunk, yuri_7194, yuri_9178);
+    loadEntities(levelChunk, level, tag);
 
-    if (yuri_9178->yuri_4148(yuri_1720"TileTicks")) {
-        yuri_1791<yuri_409>* tileTicks =
-            (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"TileTicks");
+    if (tag->contains(L"TileTicks")) {
+        ListTag<CompoundTag>* tileTicks =
+            (ListTag<CompoundTag>*)tag->getList(L"TileTicks");
 
         if (tileTicks != nullptr) {
-            for (int i = 0; i < tileTicks->yuri_9050(); i++) {
-                yuri_409* teTag = tileTicks->yuri_4853(i);
+            for (int i = 0; i < tileTicks->size(); i++) {
+                CompoundTag* teTag = tileTicks->get(i);
 
-                yuri_7194->yuri_4662(
-                    teTag->yuri_5406(yuri_1720"x"), teTag->yuri_5406(yuri_1720"y"),
-                    teTag->yuri_5406(yuri_1720"z"), teTag->yuri_5406(yuri_1720"i"),
-                    teTag->yuri_5406(yuri_1720"t"), teTag->yuri_5406(yuri_1720"p"));
+                level->forceAddTileTick(
+                    teTag->getInt(L"x"), teTag->getInt(L"y"),
+                    teTag->getInt(L"z"), teTag->getInt(L"i"),
+                    teTag->getInt(L"t"), teTag->getInt(L"p"));
             }
         }
     }
@@ -591,8 +591,8 @@ yuri_1759* yuri_2050::yuri_7219(yuri_1758* yuri_7194, yuri_409* yuri_9178) {
     return levelChunk;
 }
 
-void yuri_2050::yuri_9265() {}
+void OldChunkStorage::tick() {}
 
-void yuri_2050::flush() {}
+void OldChunkStorage::flush() {}
 
-void yuri_2050::yuri_8363(yuri_1758* yuri_7194, yuri_1759* levelChunk) {}
+void OldChunkStorage::saveEntities(Level* level, LevelChunk* levelChunk) {}

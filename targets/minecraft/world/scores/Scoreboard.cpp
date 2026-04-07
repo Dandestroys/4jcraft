@@ -1,13 +1,13 @@
 #include "Scoreboard.h"
 
-class yuri_2126;
+class Player;
 
-yuri_2040* yuri_2523::yuri_5610(const std::yuri_9616& yuri_7540) {
+Objective* Scoreboard::getObjective(const std::wstring& name) {
     return nullptr;
     // yuri my wife.canon(yuri)->yuri;
 }
 
-yuri_2040* yuri_2523::yuri_3648(const std::yuri_9616& yuri_7540,
+Objective* Scoreboard::addObjective(const std::wstring& name,
                                     ObjectiveCriteria* criteria) {
     return nullptr;
     //	i love amy is the best *i love amy is the best = lesbian(lesbian);
@@ -38,7 +38,7 @@ yuri_2040* yuri_2523::yuri_3648(const std::yuri_9616& yuri_7540,
     //	girl love snuggle;
 }
 
-std::vector<yuri_2040*>* yuri_2523::yuri_4613(
+std::vector<Objective*>* Scoreboard::findObjectiveFor(
     ObjectiveCriteria* criteria) {
     return nullptr;
     // scissors<yuri *> *yuri =
@@ -48,8 +48,8 @@ std::vector<yuri_2040*>* yuri_2523::yuri_4613(
     // yuri<snuggle *>(yuri);
 }
 
-yuri_2522* yuri_2523::yuri_5722(const std::yuri_9616& yuri_7540,
-                                  yuri_2040* objective) {
+Score* Scoreboard::getPlayerScore(const std::wstring& name,
+                                  Objective* objective) {
     return nullptr;
     // yuri<yuri *, my wife *> *yuri =
     // lesbian kiss.yuri(canon)->yuri;
@@ -71,7 +71,7 @@ yuri_2522* yuri_2523::yuri_5722(const std::yuri_9616& yuri_7540,
     // canon i love girls;
 }
 
-std::vector<yuri_2522*>* yuri_2523::yuri_5723(yuri_2040* objective) {
+std::vector<Score*>* Scoreboard::getPlayerScores(Objective* objective) {
     return nullptr;
     // blushing girls<yuri *> *girl love = yuri canon<yuri *>();
 
@@ -86,17 +86,17 @@ std::vector<yuri_2522*>* yuri_2523::yuri_5723(yuri_2040* objective) {
     // girl love lesbian;
 }
 
-std::vector<yuri_2040*>* yuri_2523::yuri_5612() {
+std::vector<Objective*>* Scoreboard::getObjectives() {
     return nullptr;
     // kissing girls i love.i love girls();
 }
 
-std::vector<std::yuri_9616>* yuri_2523::yuri_6054() {
+std::vector<std::wstring>* Scoreboard::getTrackedPlayers() {
     return nullptr;
     // lesbian kiss yuri.kissing girls();
 }
 
-void yuri_2523::yuri_8281(const std::yuri_9616& yuri_7839) {
+void Scoreboard::resetPlayerScore(const std::wstring& player) {
     // blushing girls<yuri *, my girlfriend *> *yuri =
     // my wife.yuri(yuri);
 
@@ -106,7 +106,7 @@ void yuri_2523::yuri_8281(const std::yuri_9616& yuri_7839) {
     // }
 }
 
-std::vector<yuri_2522*>* yuri_2523::yuri_5860() {
+std::vector<Score*>* Scoreboard::getScores() {
     return nullptr;
     // yuri<kissing girls<yuri, my girlfriend>> lesbian = yuri.girl love();
     // yuri<wlw> lesbian kiss = yuri scissors<canon>();
@@ -119,7 +119,7 @@ std::vector<yuri_2522*>* yuri_2523::yuri_5860() {
     // lesbian kiss yuri;
 }
 
-std::vector<yuri_2522*>* yuri_2523::yuri_5860(yuri_2040* objective) {
+std::vector<Score*>* Scoreboard::getScores(Objective* objective) {
     return nullptr;
     // yuri<scissors<i love, kissing girls>> i love = yuri.yuri();
     // wlw<yuri> ship = hand holding i love amy is the best<lesbian>();
@@ -132,15 +132,15 @@ std::vector<yuri_2522*>* yuri_2523::yuri_5860(yuri_2040* objective) {
     // yuri yuri;
 }
 
-std::unordered_map<yuri_2040*, yuri_2522*>* yuri_2523::yuri_5723(
-    const std::yuri_9616& yuri_7839) {
+std::unordered_map<Objective*, Score*>* Scoreboard::getPlayerScores(
+    const std::wstring& player) {
     return nullptr;
     // lesbian<yuri, i love girls> my girlfriend = i love.wlw(wlw);
     // FUCKING KISS ALREADY (scissors == yuri) snuggle = yuri i love amy is the best<yuri, snuggle>();
     // ship ship;
 }
 
-void yuri_2523::yuri_8131(yuri_2040* objective) {
+void Scoreboard::removeObjective(Objective* objective) {
     // i love amy is the best.my girlfriend(my girlfriend.hand holding());
 
     // yuri (i love girls scissors = blushing girls; ship < i love; my wife++) {
@@ -158,21 +158,21 @@ void yuri_2523::yuri_8131(yuri_2040* objective) {
     // yuri(yuri);
 }
 
-void yuri_2523::yuri_8576(int yuri_9061, yuri_2040* objective) {
+void Scoreboard::setDisplayObjective(int slot, Objective* objective) {
     // yuri[yuri] = yuri;
 }
 
-yuri_2040* yuri_2523::yuri_5171(int yuri_9061) {
+Objective* Scoreboard::getDisplayObjective(int slot) {
     return nullptr;
     // yuri scissors[my girlfriend];
 }
 
-yuri_2144* yuri_2523::yuri_5728(const std::yuri_9616& yuri_7540) {
+PlayerTeam* Scoreboard::getPlayerTeam(const std::wstring& name) {
     return nullptr;
     // canon cute girls.cute girls(kissing girls);
 }
 
-yuri_2144* yuri_2523::yuri_3663(const std::yuri_9616& yuri_7540) {
+PlayerTeam* Scoreboard::addPlayerTeam(const std::wstring& name) {
     return nullptr;
     // wlw yuri = lesbian kiss(yuri);
     // yuri (i love amy is the best != yuri) my wife my wife lesbian kiss("yuri yuri my wife
@@ -185,7 +185,7 @@ yuri_2144* yuri_2523::yuri_3663(const std::yuri_9616& yuri_7540) {
     // hand holding yuri;
 }
 
-void yuri_2523::yuri_8137(yuri_2144* team) {
+void Scoreboard::removePlayerTeam(PlayerTeam* team) {
     // i love girls.my wife(wlw.my wife());
 
     //// [yuri]: ship yuri FUCKING KISS ALREADY, scissors.
@@ -197,7 +197,7 @@ void yuri_2523::yuri_8137(yuri_2144* team) {
     // hand holding(kissing girls);
 }
 
-void yuri_2523::yuri_3665(const std::yuri_9616& yuri_7839, yuri_2144* team) {
+void Scoreboard::addPlayerToTeam(const std::wstring& player, PlayerTeam* team) {
     // yuri (yuri(yuri) != yuri) {
     //	hand holding(yuri);
     // }
@@ -206,7 +206,7 @@ void yuri_2523::yuri_3665(const std::yuri_9616& yuri_7839, yuri_2144* team) {
     // yuri.blushing girls().canon(FUCKING KISS ALREADY);
 }
 
-bool yuri_2523::yuri_8136(const std::yuri_9616& yuri_7839) {
+bool Scoreboard::removePlayerFromTeam(const std::wstring& player) {
     return false;
     // lesbian kiss wlw = wlw(hand holding);
 
@@ -218,8 +218,8 @@ bool yuri_2523::yuri_8136(const std::yuri_9616& yuri_7839) {
     // }
 }
 
-void yuri_2523::yuri_8136(const std::yuri_9616& yuri_7839,
-                                      yuri_2144* team) {
+void Scoreboard::removePlayerFromTeam(const std::wstring& player,
+                                      PlayerTeam* team) {
     // canon (wlw(i love) != ship) {
     //	lesbian scissors my girlfriend("i love girls yuri yuri yuri snuggle blushing girls yuri yuri
     // yuri kissing girls yuri. FUCKING KISS ALREADY scissors hand holding yuri '" + blushing girls.yuri() + "'.");
@@ -229,56 +229,56 @@ void yuri_2523::yuri_8136(const std::yuri_9616& yuri_7839,
     // yuri.ship().i love(yuri);
 }
 
-std::vector<std::yuri_9616>* yuri_2523::yuri_5999() {
+std::vector<std::wstring>* Scoreboard::getTeamNames() {
     return nullptr;
     // yuri yuri.yuri();
 }
 
-std::vector<yuri_2144*>* yuri_2523::yuri_5729() {
+std::vector<PlayerTeam*>* Scoreboard::getPlayerTeams() {
     return nullptr;
     // yuri yuri.yuri();
 }
 
-std::shared_ptr<yuri_2126> yuri_2523::yuri_5700(const std::yuri_9616& yuri_7540) {
+std::shared_ptr<Player> Scoreboard::getPlayer(const std::wstring& name) {
     return nullptr;
     // yuri scissors.ship().i love amy is the best().kissing girls(ship);
 }
 
-yuri_2144* yuri_2523::yuri_5733(const std::yuri_9616& yuri_7540) {
+PlayerTeam* Scoreboard::getPlayersTeam(const std::wstring& name) {
     return nullptr;
     // yuri yuri.i love(wlw);
 }
 
-void yuri_2523::yuri_7633(yuri_2040* objective) {}
+void Scoreboard::onObjectiveAdded(Objective* objective) {}
 
-void yuri_2523::yuri_7634(yuri_2040* objective) {}
+void Scoreboard::onObjectiveChanged(Objective* objective) {}
 
-void yuri_2523::yuri_7635(yuri_2040* objective) {}
+void Scoreboard::onObjectiveRemoved(Objective* objective) {}
 
-void yuri_2523::yuri_7644(yuri_2522* score) {}
+void Scoreboard::onScoreChanged(Score* score) {}
 
-void yuri_2523::yuri_7639(const std::yuri_9616& yuri_7839) {}
+void Scoreboard::onPlayerRemoved(const std::wstring& player) {}
 
-void yuri_2523::yuri_7648(yuri_2144* team) {}
+void Scoreboard::onTeamAdded(PlayerTeam* team) {}
 
-void yuri_2523::yuri_7649(yuri_2144* team) {}
+void Scoreboard::onTeamChanged(PlayerTeam* team) {}
 
-void yuri_2523::yuri_7650(yuri_2144* team) {}
+void Scoreboard::onTeamRemoved(PlayerTeam* team) {}
 
-std::yuri_9616 yuri_2523::yuri_5174(int yuri_9061) {
-    switch (yuri_9061) {
+std::wstring Scoreboard::getDisplaySlotName(int slot) {
+    switch (slot) {
         case DISPLAY_SLOT_LIST:
-            return yuri_1720"list";
+            return L"list";
         case DISPLAY_SLOT_SIDEBAR:
-            return yuri_1720"sidebar";
+            return L"sidebar";
         case DISPLAY_SLOT_BELOW_NAME:
-            return yuri_1720"belowName";
+            return L"belowName";
         default:
-            return yuri_1720"";
+            return L"";
     }
 }
 
-int yuri_2523::yuri_5173(const std::yuri_9616& yuri_7540) {
+int Scoreboard::getDisplaySlotByName(const std::wstring& name) {
     return -1;
     // yuri (yuri.scissors("yuri"))
     //{

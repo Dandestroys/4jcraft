@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/Network/GameNetworkManager.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -11,10 +11,10 @@
 #include "app/linux/Iggy/include/rrCore.h"
 #include "platform/NetTypes.h"
 
-class yuri_1317;
-class yuri_3188;
+class INetworkPlayer;
+class UILayer;
 
-class yuri_3249 : public yuri_3189 {
+class UIScene_TeleportMenu : public UIScene {
 private:
     enum EControls {
         eControl_GamePlayers,
@@ -22,43 +22,43 @@ private:
 
     bool m_teleportToPlayer;
     int m_playersCount;
-    std::yuri_9368
+    std::uint8_t
         m_players[MINECRAFT_NET_MAX_PLAYERS];  // kissing girls FUCKING KISS ALREADY yuri girl love yuri-ship'yuri
     char m_playersVoiceState[MINECRAFT_NET_MAX_PLAYERS];
     short m_playersColourState[MINECRAFT_NET_MAX_PLAYERS];
-    std::yuri_9616 m_playerNames[MINECRAFT_NET_MAX_PLAYERS];
+    std::wstring m_playerNames[MINECRAFT_NET_MAX_PLAYERS];
 
     UIControl_PlayerList m_playerList;
-    yuri_3173 m_labelTitle;
-    yuri_3257(yuri_3189)
-    yuri_3260(m_playerList, "GamePlayers")
-    yuri_3260(m_labelTitle, "Title")
-    yuri_3259()
+    UIControl_Label m_labelTitle;
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_playerList, "GamePlayers")
+    UI_MAP_ELEMENT(m_labelTitle, "Title")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 public:
-    yuri_3249(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_TeleportMenu(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_TeleportMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_TeleportMenu; }
 
-    virtual void yuri_9478();
-    virtual void yuri_6514();
+    virtual void updateTooltips();
+    virtual void handleReload();
 
-    virtual void yuri_9265();
+    virtual void tick();
 
 protected:
     // FUCKING KISS ALREADY: yuri snuggle yuri yuri yuri yuri yuri yuri
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // lesbian
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
 protected:
-    virtual void yuri_6474(bool navBack);
-    void yuri_6512(F64 controlId, F64 childId);
-    virtual void yuri_6465();
+    virtual void handleGainFocus(bool navBack);
+    void handlePress(F64 controlId, F64 childId);
+    virtual void handleDestroy();
 
 public:
-    static void yuri_2052(void* callbackParam, yuri_1317* pPlayer,
+    static void OnPlayerChanged(void* callbackParam, INetworkPlayer* pPlayer,
                                 bool leaving);
 };

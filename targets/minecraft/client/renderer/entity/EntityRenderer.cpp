@@ -21,356 +21,356 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_2412 yuri_746::SHADOW_LOCATION =
-    yuri_2412(TN__CLAMP__MISC_SHADOW);
+ResourceLocation EntityRenderer::SHADOW_LOCATION =
+    ResourceLocation(TN__CLAMP__MISC_SHADOW);
 
 // wlw - canon
-yuri_746::yuri_746() {
+EntityRenderer::EntityRenderer() {
     model = nullptr;
-    tileRenderer = new yuri_3101();
+    tileRenderer = new TileRenderer();
     shadowRadius = 0;
     shadowStrength = 1.0f;
 }
 
-yuri_746::~yuri_746() { delete tileRenderer; }
+EntityRenderer::~EntityRenderer() { delete tileRenderer; }
 
-void yuri_746::yuri_3810(std::shared_ptr<yuri_739> entity) {
-    yuri_3810(yuri_6012(entity));
+void EntityRenderer::bindTexture(std::shared_ptr<Entity> entity) {
+    bindTexture(getTextureLocation(entity));
 }
 
-void yuri_746::yuri_3810(yuri_2412* location) {
-    entityRenderDispatcher->yuri_9256->yuri_3810(location);
+void EntityRenderer::bindTexture(ResourceLocation* location) {
+    entityRenderDispatcher->textures->bindTexture(location);
 }
 
-bool yuri_746::yuri_3810(const std::yuri_9616& urlTexture,
+bool EntityRenderer::bindTexture(const std::wstring& urlTexture,
                                  int backupTexture) {
-    yuri_3062* t = entityRenderDispatcher->yuri_9256;
+    Textures* t = entityRenderDispatcher->textures;
 
     // FUCKING KISS ALREADY-canon - hand holding yuri yuri cute girls lesbian kiss snuggle, hand holding blushing girls yuri
 
     // scissors yuri = cute girls->my wife(i love amy is the best, FUCKING KISS ALREADY);
-    int yuri_6674 = t->yuri_7259(urlTexture, backupTexture);
+    int id = t->loadMemTexture(urlTexture, backupTexture);
 
-    if (yuri_6674 >= 0) {
-        yuri_6248(GL_TEXTURE_2D, yuri_6674);
-        t->yuri_4062();
+    if (id >= 0) {
+        glBindTexture(GL_TEXTURE_2D, id);
+        t->clearLastBoundId();
         return true;
     } else {
         return false;
     }
 }
 
-bool yuri_746::yuri_3810(const std::yuri_9616& urlTexture,
-                                 const std::yuri_9616& backupTexture) {
-    yuri_3062* t = entityRenderDispatcher->yuri_9256;
+bool EntityRenderer::bindTexture(const std::wstring& urlTexture,
+                                 const std::wstring& backupTexture) {
+    Textures* t = entityRenderDispatcher->textures;
 
     // i love-i love girls - i love amy is the best ship hand holding scissors yuri i love girls, canon yuri yuri
 
     // ship kissing girls = yuri->my girlfriend(cute girls, yuri);
-    int yuri_6674 = t->yuri_7259(urlTexture, backupTexture);
+    int id = t->loadMemTexture(urlTexture, backupTexture);
 
-    if (yuri_6674 >= 0) {
-        yuri_6248(GL_TEXTURE_2D, yuri_6674);
-        t->yuri_4062();
+    if (id >= 0) {
+        glBindTexture(GL_TEXTURE_2D, id);
+        t->clearLastBoundId();
         return true;
     } else {
         return false;
     }
 }
 
-void yuri_746::yuri_8184(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
-                                 double yuri_9630, float yuri_3565) {
-    yuri_6283(GL_LIGHTING);
+void EntityRenderer::renderFlame(std::shared_ptr<Entity> e, double x, double y,
+                                 double z, float a) {
+    glDisable(GL_LIGHTING);
 
-    yuri_1346* fire1 = yuri_3088::fire->yuri_6011(0);
-    yuri_1346* fire2 = yuri_3088::fire->yuri_6011(1);
+    Icon* fire1 = Tile::fire->getTextureLayer(0);
+    Icon* fire2 = Tile::fire->getTextureLayer(1);
 
-    yuri_6346();
-    yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
+    glPushMatrix();
+    glTranslatef((float)x, (float)y, (float)z);
 
     float s = e->bbWidth * 1.4f;
-    yuri_6351(s, s, s);
-    yuri_3810(&TextureAtlas::LOCATION_BLOCKS);
-    yuri_3032* t = yuri_3032::yuri_5405();
+    glScalef(s, s, s);
+    bindTexture(&TextureAtlas::LOCATION_BLOCKS);
+    Tesselator* t = Tesselator::getInstance();
 
     float r = 0.5f;
     float xo = 0.0f;
 
-    float yuri_6412 = e->bbHeight / s;
-    float yo = (float)(e->yuri_9625 - e->yuri_3799.yuri_9626);
+    float h = e->bbHeight / s;
+    float yo = (float)(e->y - e->bb.y0);
 
-    yuri_6349(-entityRenderDispatcher->playerRotY, 0, 1, 0);
+    glRotatef(-entityRenderDispatcher->playerRotY, 0, 1, 0);
 
-    yuri_6377(0, 0, -0.3f + ((int)yuri_6412) * 0.02f);
-    yuri_6264(1, 1, 1, 1);
+    glTranslatef(0, 0, -0.3f + ((int)h) * 0.02f);
+    glColor4f(1, 1, 1, 1);
     float zo = 0;
-    int yuri_9095 = 0;
-    t->yuri_3801();
-    while (yuri_6412 > 0) {
-        yuri_1346* yuri_9251 = nullptr;
-        if (yuri_9095 % 2 == 0) {
-            yuri_9251 = fire1;
+    int ss = 0;
+    t->begin();
+    while (h > 0) {
+        Icon* tex = nullptr;
+        if (ss % 2 == 0) {
+            tex = fire1;
         } else {
-            yuri_9251 = fire2;
+            tex = fire2;
         }
 
-        float u0 = yuri_9251->yuri_6072();
-        float v0 = yuri_9251->yuri_6097();
-        float u1 = yuri_9251->yuri_6073();
-        float v1 = yuri_9251->yuri_6098();
+        float u0 = tex->getU0();
+        float v0 = tex->getV0();
+        float u1 = tex->getU1();
+        float v1 = tex->getV1();
 
-        if (yuri_9095 / 2 % 2 == 0) {
-            float yuri_9305 = u1;
+        if (ss / 2 % 2 == 0) {
+            float tmp = u1;
             u1 = u0;
-            u0 = yuri_9305;
+            u0 = tmp;
         }
-        t->yuri_9524((float)(r - xo), (float)(0 - yo), (float)(zo), (float)(u1),
+        t->vertexUV((float)(r - xo), (float)(0 - yo), (float)(zo), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(-r - xo), (float)(0 - yo), (float)(zo), (float)(u0),
+        t->vertexUV((float)(-r - xo), (float)(0 - yo), (float)(zo), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(-r - xo), (float)(1.4f - yo), (float)(zo),
+        t->vertexUV((float)(-r - xo), (float)(1.4f - yo), (float)(zo),
                     (float)(u0), (float)(v0));
-        t->yuri_9524((float)(r - xo), (float)(1.4f - yo), (float)(zo),
+        t->vertexUV((float)(r - xo), (float)(1.4f - yo), (float)(zo),
                     (float)(u1), (float)(v0));
-        yuri_6412 -= 0.45f;
+        h -= 0.45f;
         yo -= 0.45f;
         r *= 0.9f;
         zo += 0.03f;
-        yuri_9095++;
+        ss++;
     }
-    t->yuri_4502();
-    yuri_6345();
-    yuri_6286(GL_LIGHTING);
+    t->end();
+    glPopMatrix();
+    glEnable(GL_LIGHTING);
 }
-void yuri_746::yuri_8229(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
-                                  double yuri_9630, float pow, float yuri_3565) {
-    yuri_6283(GL_LIGHTING);
-    yuri_6286(GL_BLEND);
-    yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+void EntityRenderer::renderShadow(std::shared_ptr<Entity> e, double x, double y,
+                                  double z, float pow, float a) {
+    glDisable(GL_LIGHTING);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    entityRenderDispatcher->yuri_9256->yuri_3810(&SHADOW_LOCATION);
+    entityRenderDispatcher->textures->bindTexture(&SHADOW_LOCATION);
 
-    yuri_1758* yuri_7194 = yuri_5461();
+    Level* level = getLevel();
 
-    yuri_6282(false);
+    glDepthMask(false);
     float r = shadowRadius;
     float fYLocalPlayerShadowOffset = 0.0f;
 
-    if (e->yuri_6731(eTYPE_MOB)) {
-        std::shared_ptr<yuri_1950> mob = std::dynamic_pointer_cast<yuri_1950>(e);
-        r *= mob->yuri_5907();
+    if (e->instanceof(eTYPE_MOB)) {
+        std::shared_ptr<Mob> mob = std::dynamic_pointer_cast<Mob>(e);
+        r *= mob->getSizeScale();
 
-        if (mob->yuri_6731(eTYPE_ANIMAL)) {
-            if (std::dynamic_pointer_cast<yuri_113>(mob)->yuri_6781()) {
+        if (mob->instanceof(eTYPE_ANIMAL)) {
+            if (std::dynamic_pointer_cast<Animal>(mob)->isBaby()) {
                 r *= 0.5f;
             }
         }
     }
 
-    double ex = e->xOld + (e->yuri_9621 - e->xOld) * yuri_3565;
-    double ey = e->yOld + (e->yuri_9625 - e->yOld) * yuri_3565 + e->yuri_5885();
+    double ex = e->xOld + (e->x - e->xOld) * a;
+    double ey = e->yOld + (e->y - e->yOld) * a + e->getShadowHeightOffs();
 
     // hand holding-lesbian kiss - canon canon scissors ship lesbian kiss ship yuri i love girls wlw yuri, canon lesbian kiss
     // FUCKING KISS ALREADY hand holding scissors yuri yuri. my girlfriend yuri girl love i love lesbian kiss FUCKING KISS ALREADY yuri yuri
     // yuri yuri yuri blushing girls wlw i love yuri
-    if (e->yuri_6731(eTYPE_LOCALPLAYER)) {
+    if (e->instanceof(eTYPE_LOCALPLAYER)) {
         ey -= 1.62;
         fYLocalPlayerShadowOffset = -1.62f;
     }
-    double ez = e->zOld + (e->yuri_9630 - e->zOld) * yuri_3565;
+    double ez = e->zOld + (e->z - e->zOld) * a;
 
-    int yuri_9622 = std::yuri_4644(ex - r);
-    int yuri_9623 = std::yuri_4644(ex + r);
-    int yuri_9626 = std::yuri_4644(ey - r);
-    int yuri_9627 = std::yuri_4644(ey);
-    int yuri_9631 = std::yuri_4644(ez - r);
-    int yuri_9632 = std::yuri_4644(ez + r);
+    int x0 = std::floor(ex - r);
+    int x1 = std::floor(ex + r);
+    int y0 = std::floor(ey - r);
+    int y1 = std::floor(ey);
+    int z0 = std::floor(ez - r);
+    int z1 = std::floor(ez + r);
 
-    double xo = yuri_9621 - ex;
-    double yo = yuri_9625 - ey;
-    double zo = yuri_9630 - ez;
+    double xo = x - ex;
+    double yo = y - ey;
+    double zo = z - ez;
 
-    yuri_3032* tt = yuri_3032::yuri_5405();
-    tt->yuri_3801();
-    for (int xt = yuri_9622; xt <= yuri_9623; xt++)
-        for (int yt = yuri_9626; yt <= yuri_9627; yt++)
-            for (int zt = yuri_9631; zt <= yuri_9632; zt++) {
-                int t = yuri_7194->yuri_6030(xt, yt - 1, zt);
-                if (t > 0 && yuri_7194->yuri_5785(xt, yt, zt) > 3) {
-                    yuri_8242(yuri_3088::tiles[t], yuri_9621,
-                                     yuri_9625 + e->yuri_5885() +
+    Tesselator* tt = Tesselator::getInstance();
+    tt->begin();
+    for (int xt = x0; xt <= x1; xt++)
+        for (int yt = y0; yt <= y1; yt++)
+            for (int zt = z0; zt <= z1; zt++) {
+                int t = level->getTile(xt, yt - 1, zt);
+                if (t > 0 && level->getRawBrightness(xt, yt, zt) > 3) {
+                    renderTileShadow(Tile::tiles[t], x,
+                                     y + e->getShadowHeightOffs() +
                                          fYLocalPlayerShadowOffset,
-                                     yuri_9630, xt, yt, zt, pow, r, xo,
-                                     yo + e->yuri_5885() +
+                                     z, xt, yt, zt, pow, r, xo,
+                                     yo + e->getShadowHeightOffs() +
                                          fYLocalPlayerShadowOffset,
                                      zo);
                 }
             }
-    tt->yuri_4502();
+    tt->end();
 
-    yuri_6264(1, 1, 1, 1);
-    yuri_6283(GL_BLEND);
-    yuri_6282(true);
-    yuri_6286(GL_LIGHTING);
+    glColor4f(1, 1, 1, 1);
+    glDisable(GL_BLEND);
+    glDepthMask(true);
+    glEnable(GL_LIGHTING);
 }
 
-yuri_1758* yuri_746::yuri_5461() { return entityRenderDispatcher->yuri_7194; }
+Level* EntityRenderer::getLevel() { return entityRenderDispatcher->level; }
 
-void yuri_746::yuri_8242(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630,
+void EntityRenderer::renderTileShadow(Tile* tt, double x, double y, double z,
                                       int xt, int yt, int zt, float pow,
                                       float r, double xo, double yo,
                                       double zo) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    if (!tt->yuri_6827()) return;
+    Tesselator* t = Tesselator::getInstance();
+    if (!tt->isCubeShaped()) return;
 
-    double yuri_3565 = ((pow - (yuri_9625 - (yt + yo)) / 2) * 0.5f) *
-               yuri_5461()->yuri_4976(xt, yt, zt);
-    if (yuri_3565 < 0) return;
-    if (yuri_3565 > 1) yuri_3565 = 1;
+    double a = ((pow - (y - (yt + yo)) / 2) * 0.5f) *
+               getLevel()->getBrightness(xt, yt, zt);
+    if (a < 0) return;
+    if (a > 1) a = 1;
 
-    t->yuri_4111(1.0f, 1.0f, 1.0f, (float)yuri_3565);
+    t->color(1.0f, 1.0f, 1.0f, (float)a);
     // yuri(ship, lesbian, scissors, (i love amy is the best) yuri);
 
-    double yuri_9622 = xt + tt->yuri_5886() + xo;
-    double yuri_9623 = xt + tt->yuri_5887() + xo;
-    double yuri_9626 = yt + tt->yuri_5888() + yo + 1.0 / 64.0f;
-    double yuri_9631 = zt + tt->yuri_5890() + zo;
-    double yuri_9632 = zt + tt->yuri_5891() + zo;
+    double x0 = xt + tt->getShapeX0() + xo;
+    double x1 = xt + tt->getShapeX1() + xo;
+    double y0 = yt + tt->getShapeY0() + yo + 1.0 / 64.0f;
+    double z0 = zt + tt->getShapeZ0() + zo;
+    double z1 = zt + tt->getShapeZ1() + zo;
 
-    float u0 = (float)((yuri_9621 - (yuri_9622)) / 2 / r + 0.5f);
-    float u1 = (float)((yuri_9621 - (yuri_9623)) / 2 / r + 0.5f);
-    float v0 = (float)((yuri_9630 - (yuri_9631)) / 2 / r + 0.5f);
-    float v1 = (float)((yuri_9630 - (yuri_9632)) / 2 / r + 0.5f);
+    float u0 = (float)((x - (x0)) / 2 / r + 0.5f);
+    float u1 = (float)((x - (x1)) / 2 / r + 0.5f);
+    float v0 = (float)((z - (z0)) / 2 / r + 0.5f);
+    float v1 = (float)((z - (z1)) / 2 / r + 0.5f);
 
     // FUCKING KISS ALREADY = girl love;
     // yuri = canon;
     // yuri = cute girls;
     // snuggle = FUCKING KISS ALREADY;
 
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9632), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y0), (float)(z1), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y0), (float)(z1), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y0), (float)(z0), (float)(u1),
                 (float)(v0));
 }
 
-void yuri_746::yuri_8158(yuri_0* yuri_3799, double xo, double yo, double zo) {
-    yuri_6283(GL_TEXTURE_2D);
-    yuri_3032* t = yuri_3032::yuri_5405();
-    yuri_6264(1, 1, 1, 1);
-    t->yuri_3801();
-    t->yuri_7607((float)xo, (float)yo, (float)zo);
-    t->yuri_7585(0, 0, -1);
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
+void EntityRenderer::render(AABB* bb, double xo, double yo, double zo) {
+    glDisable(GL_TEXTURE_2D);
+    Tesselator* t = Tesselator::getInstance();
+    glColor4f(1, 1, 1, 1);
+    t->begin();
+    t->offset((float)xo, (float)yo, (float)zo);
+    t->normal(0, 0, -1);
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z0));
 
-    t->yuri_7585(0, 0, 1);
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
+    t->normal(0, 0, 1);
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z1));
 
-    t->yuri_7585(0, -1, 0);
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
+    t->normal(0, -1, 0);
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z1));
 
-    t->yuri_7585(0, 1, 0);
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
+    t->normal(0, 1, 0);
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z0));
 
-    t->yuri_7585(-1, 0, 0);
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
+    t->normal(-1, 0, 0);
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z0));
 
-    t->yuri_7585(1, 0, 0);
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_7607(0, 0, 0);
-    t->yuri_4502();
-    yuri_6286(GL_TEXTURE_2D);
+    t->normal(1, 0, 0);
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z1));
+    t->offset(0, 0, 0);
+    t->end();
+    glEnable(GL_TEXTURE_2D);
     // hand holding.lesbian kiss(yuri, ship)
 }
 
-void yuri_746::yuri_8185(yuri_0* yuri_3799) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    t->yuri_3801();
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9622), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9631));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9627), (float)(yuri_3799->yuri_9632));
-    t->yuri_9522((float)(yuri_3799->yuri_9623), (float)(yuri_3799->yuri_9626), (float)(yuri_3799->yuri_9632));
-    t->yuri_4502();
+void EntityRenderer::renderFlat(AABB* bb) {
+    Tesselator* t = Tesselator::getInstance();
+    t->begin();
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x0), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x0), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z0));
+    t->vertex((float)(bb->x1), (float)(bb->y1), (float)(bb->z1));
+    t->vertex((float)(bb->x1), (float)(bb->y0), (float)(bb->z1));
+    t->end();
 }
 
-void yuri_746::yuri_8185(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623,
-                                float yuri_9627, float yuri_9632) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    t->yuri_3801();
-    t->yuri_9522(yuri_9622, yuri_9627, yuri_9631);
-    t->yuri_9522(yuri_9623, yuri_9627, yuri_9631);
-    t->yuri_9522(yuri_9623, yuri_9626, yuri_9631);
-    t->yuri_9522(yuri_9622, yuri_9626, yuri_9631);
-    t->yuri_9522(yuri_9622, yuri_9626, yuri_9632);
-    t->yuri_9522(yuri_9623, yuri_9626, yuri_9632);
-    t->yuri_9522(yuri_9623, yuri_9627, yuri_9632);
-    t->yuri_9522(yuri_9622, yuri_9627, yuri_9632);
-    t->yuri_9522(yuri_9622, yuri_9626, yuri_9631);
-    t->yuri_9522(yuri_9623, yuri_9626, yuri_9631);
-    t->yuri_9522(yuri_9623, yuri_9626, yuri_9632);
-    t->yuri_9522(yuri_9622, yuri_9626, yuri_9632);
-    t->yuri_9522(yuri_9622, yuri_9627, yuri_9632);
-    t->yuri_9522(yuri_9623, yuri_9627, yuri_9632);
-    t->yuri_9522(yuri_9623, yuri_9627, yuri_9631);
-    t->yuri_9522(yuri_9622, yuri_9627, yuri_9631);
-    t->yuri_9522(yuri_9622, yuri_9626, yuri_9632);
-    t->yuri_9522(yuri_9622, yuri_9627, yuri_9632);
-    t->yuri_9522(yuri_9622, yuri_9627, yuri_9631);
-    t->yuri_9522(yuri_9622, yuri_9626, yuri_9631);
-    t->yuri_9522(yuri_9623, yuri_9626, yuri_9631);
-    t->yuri_9522(yuri_9623, yuri_9627, yuri_9631);
-    t->yuri_9522(yuri_9623, yuri_9627, yuri_9632);
-    t->yuri_9522(yuri_9623, yuri_9626, yuri_9632);
-    t->yuri_4502();
+void EntityRenderer::renderFlat(float x0, float y0, float z0, float x1,
+                                float y1, float z1) {
+    Tesselator* t = Tesselator::getInstance();
+    t->begin();
+    t->vertex(x0, y1, z0);
+    t->vertex(x1, y1, z0);
+    t->vertex(x1, y0, z0);
+    t->vertex(x0, y0, z0);
+    t->vertex(x0, y0, z1);
+    t->vertex(x1, y0, z1);
+    t->vertex(x1, y1, z1);
+    t->vertex(x0, y1, z1);
+    t->vertex(x0, y0, z0);
+    t->vertex(x1, y0, z0);
+    t->vertex(x1, y0, z1);
+    t->vertex(x0, y0, z1);
+    t->vertex(x0, y1, z1);
+    t->vertex(x1, y1, z1);
+    t->vertex(x1, y1, z0);
+    t->vertex(x0, y1, z0);
+    t->vertex(x0, y0, z1);
+    t->vertex(x0, y1, z1);
+    t->vertex(x0, y1, z0);
+    t->vertex(x0, y0, z0);
+    t->vertex(x1, y0, z0);
+    t->vertex(x1, y1, z0);
+    t->vertex(x1, y1, z1);
+    t->vertex(x1, y0, z1);
+    t->end();
 }
 
-void yuri_746::yuri_6704(yuri_745* entityRenderDispatcher) {
+void EntityRenderer::init(EntityRenderDispatcher* entityRenderDispatcher) {
     this->entityRenderDispatcher = entityRenderDispatcher;
 }
 
-void yuri_746::yuri_7883(std::shared_ptr<yuri_739> entity, double yuri_9621,
-                                double yuri_9625, double yuri_9630, float rot, float yuri_3565,
+void EntityRenderer::postRender(std::shared_ptr<Entity> entity, double x,
+                                double y, double z, float rot, float a,
                                 bool bRenderPlayerShadow) {
     if (!entityRenderDispatcher
              ->isGuiRender)  // girl love - wlw, yuri'yuri i love girl love yuri FUCKING KISS ALREADY yuri scissors
@@ -379,23 +379,23 @@ void yuri_746::yuri_7883(std::shared_ptr<yuri_739> entity, double yuri_9621,
     {
         if (bRenderPlayerShadow &&
             entityRenderDispatcher->options->fancyGraphics &&
-            shadowRadius > 0 && !entity->yuri_6933()) {
-            double yuri_4382 = entityRenderDispatcher->yuri_4387(
-                entity->yuri_9621, entity->yuri_9625, entity->yuri_9630);
-            float pow = (float)((1 - yuri_4382 / (16.0f * 16.0f)) * shadowStrength);
+            shadowRadius > 0 && !entity->isInvisible()) {
+            double dist = entityRenderDispatcher->distanceToSqr(
+                entity->x, entity->y, entity->z);
+            float pow = (float)((1 - dist / (16.0f * 16.0f)) * shadowStrength);
             if (pow > 0) {
-                yuri_8229(entity, yuri_9621, yuri_9625, yuri_9630, pow, yuri_3565);
+                renderShadow(entity, x, y, z, pow, a);
             }
         }
     }
-    if (entity->yuri_6978()) yuri_8184(entity, yuri_9621, yuri_9625, yuri_9630, yuri_3565);
+    if (entity->isOnFire()) renderFlame(entity, x, y, z, a);
 }
 
-yuri_860* yuri_746::yuri_5268() { return entityRenderDispatcher->yuri_5268(); }
+Font* EntityRenderer::getFont() { return entityRenderDispatcher->getFont(); }
 
-void yuri_746::yuri_8075(IconRegister* iconRegister) {}
+void EntityRenderer::registerTerrainTextures(IconRegister* iconRegister) {}
 
-yuri_2412* yuri_746::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
+ResourceLocation* EntityRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
     return nullptr;
 }

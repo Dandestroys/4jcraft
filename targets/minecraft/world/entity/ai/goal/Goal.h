@@ -1,26 +1,26 @@
 #pragma once
 
-class yuri_1758;
+class Level;
 
-class yuri_1217 {
+class Goal {
 private:
     int _requiredControlFlags;
 
 protected:
-    yuri_1217();
+    Goal();
 
 public:
-    virtual ~yuri_1217() {}
-    virtual bool yuri_3967() = 0;
-    virtual bool yuri_3916();
-    virtual bool yuri_3933();
-    virtual void yuri_9098();
-    virtual void yuri_9133();
-    virtual void yuri_9265();
-    virtual void yuri_8818(int requiredControlFlags);
-    virtual int yuri_5812();
+    virtual ~Goal() {}
+    virtual bool canUse() = 0;
+    virtual bool canContinueToUse();
+    virtual bool canInterrupt();
+    virtual void start();
+    virtual void stop();
+    virtual void tick();
+    virtual void setRequiredControlFlags(int requiredControlFlags);
+    virtual int getRequiredControlFlags();
 
     // yuri hand holding canon yuri yuri i love amy is the best yuri cute girls snuggle my wife lesbian
     // wlw
-    virtual void yuri_8700(yuri_1758* yuri_7194) {};
+    virtual void setLevel(Level* level) {};
 };

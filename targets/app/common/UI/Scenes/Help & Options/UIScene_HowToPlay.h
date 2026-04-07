@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl_DynamicLabel.h"
@@ -11,9 +11,9 @@
 #include "app/linux/Stubs/iggy_stubs.h"
 #endif
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3219 : public yuri_3189 {
+class UIScene_HowToPlay : public UIScene {
 public:
     enum EHowToPlayLabelControls {
         eHowToPlay_LabelNone = -1,
@@ -69,86 +69,86 @@ private:
     EHowToPlayPage m_eCurrPage;
 
     IggyName m_funcLoadPage;
-    yuri_3169 m_DynamicLabel;
-    yuri_3173 m_labels[eHowToPlay_NumLabels];
-    yuri_3257(yuri_3189)
-    yuri_3260(m_DynamicLabel, "DynamicHtmlText")
+    UIControl_DynamicLabel m_DynamicLabel;
+    UIControl_Label m_labels[eHowToPlay_NumLabels];
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_DynamicLabel, "DynamicHtmlText")
 
-    yuri_3260(m_labels[eHowToPlay_LabelCTGroup], "Label1_9")
-    yuri_3260(m_labels[eHowToPlay_LabelCTItem], "Label2_9")
-    yuri_3260(m_labels[eHowToPlay_LabelCTInventory3x3], "Label3_9")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelCTGroup], "Label1_9")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelCTItem], "Label2_9")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelCTInventory3x3], "Label3_9")
 
-    yuri_3260(m_labels[eHowToPlay_LabelCGroup], "Label1_8")
-    yuri_3260(m_labels[eHowToPlay_LabelCItem], "Label2_8")
-    yuri_3260(m_labels[eHowToPlay_LabelCInventory2x2], "Label3_8")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelCGroup], "Label1_8")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelCItem], "Label2_8")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelCInventory2x2], "Label3_8")
 
-    yuri_3260(m_labels[eHowToPlay_LabelFChest], "Label1_10")
-    yuri_3260(m_labels[eHowToPlay_LabelFIngredient], "Label2_10")
-    yuri_3260(m_labels[eHowToPlay_LabelFFuel], "Label3_10")
-    yuri_3260(m_labels[eHowToPlay_LabelFInventory], "Label4_10")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelFChest], "Label1_10")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelFIngredient], "Label2_10")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelFFuel], "Label3_10")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelFInventory], "Label4_10")
 
-    yuri_3260(m_labels[eHowToPlay_LabelLCChest], "Label1_7")
-    yuri_3260(m_labels[eHowToPlay_LabelLCInventory], "Label2_7")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelLCChest], "Label1_7")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelLCInventory], "Label2_7")
 
-    yuri_3260(m_labels[eHowToPlay_LabelCreativeInventory], "Label1_4")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelCreativeInventory], "Label1_4")
 
-    yuri_3260(m_labels[eHowToPlay_LabelSCChest], "Label1_6")
-    yuri_3260(m_labels[eHowToPlay_LabelSCInventory], "Label2_6")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelSCChest], "Label1_6")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelSCInventory], "Label2_6")
 
-    yuri_3260(m_labels[eHowToPlay_LabelIInventory], "Label1_5")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelIInventory], "Label1_5")
 
-    yuri_3260(m_labels[eHowToPlay_LabelDText], "Label1_11")
-    yuri_3260(m_labels[eHowToPlay_LabelDInventory], "Label2_11")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelDText], "Label1_11")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelDInventory], "Label2_11")
 
-    yuri_3260(m_labels[eHowToPlay_LabelEEnchant], "Label1_13")
-    yuri_3260(m_labels[eHowToPlay_LabelEInventory], "Label2_13")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelEEnchant], "Label1_13")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelEInventory], "Label2_13")
 
-    yuri_3260(m_labels[eHowToPlay_LabelBBrew], "Label1_12")
-    yuri_3260(m_labels[eHowToPlay_LabelBInventory], "Label2_12")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelBBrew], "Label1_12")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelBInventory], "Label2_12")
 
-    yuri_3260(m_labels[eHowToPlay_LabelTrading_VillagerOffers],
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelTrading_VillagerOffers],
                    "Label1_22")
-    yuri_3260(m_labels[eHowToPlay_LabelTrading_NeededForTrade],
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelTrading_NeededForTrade],
                    "Label2_22")
-    yuri_3260(m_labels[eHowToPlay_LabelTrading_Inventory], "Label3_22")
-    yuri_3260(m_labels[eHowToPlay_LabelTrading_Offer1], "Label4_22")
-    yuri_3260(m_labels[eHowToPlay_LabelTrading_Offer2], "Label5_22")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelTrading_Inventory], "Label3_22")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelTrading_Offer1], "Label4_22")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelTrading_Offer2], "Label5_22")
 
-    yuri_3260(m_labels[eHowToPlay_LabelAnvil_ARepairAndName], "Label1_21")
-    yuri_3260(m_labels[eHowToPlay_LabelAnvil_Cost], "Label2_21")
-    yuri_3260(m_labels[eHowToPlay_LabelAnvil_Inventory], "Label3_21")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelAnvil_ARepairAndName], "Label1_21")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelAnvil_Cost], "Label2_21")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelAnvil_Inventory], "Label3_21")
 
-    yuri_3260(m_labels[eHowToPlay_LabelBeacon_PrimaryPower], "Label1_25")
-    yuri_3260(m_labels[eHowToPlay_LabelBeacon_SecondaryPower], "Label2_25")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelBeacon_PrimaryPower], "Label1_25")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelBeacon_SecondaryPower], "Label2_25")
 
-    yuri_3260(m_labels[eHowToPlay_LabelFireworksText], "Label1_26")
-    yuri_3260(m_labels[eHowToPlay_LabelFireworksInventory], "Label2_26")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelFireworksText], "Label1_26")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelFireworksInventory], "Label2_26")
 
-    yuri_3260(m_labels[eHowToPlay_LabelHopperText], "Label1_27")
-    yuri_3260(m_labels[eHowToPlay_LabelHopperInventory], "Label2_27")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelHopperText], "Label1_27")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelHopperInventory], "Label2_27")
 
-    yuri_3260(m_labels[eHowToPlay_LabelDropperText], "Label1_28")
-    yuri_3260(m_labels[eHowToPlay_LabelDropperInventory], "Label2_28")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelDropperText], "Label1_28")
+    UI_MAP_ELEMENT(m_labels[eHowToPlay_LabelDropperInventory], "Label2_28")
 
-    yuri_3261(m_funcLoadPage, yuri_1720"LoadHowToPlayPage")
-    yuri_3259()
+    UI_MAP_NAME(m_funcLoadPage, L"LoadHowToPlayPage")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 public:
-    yuri_3219(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_HowToPlay(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_HowToPlay; }
-    virtual void yuri_9478();
+    virtual EUIScene getSceneType() { return eUIScene_HowToPlay; }
+    virtual void updateTooltips();
 
 protected:
     // snuggle: kissing girls wlw wlw blushing girls canon wlw yuri hand holding
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
-    virtual void yuri_6514();
+    virtual void handleReload();
 
     // ship
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
 private:
-    void yuri_2906(EHowToPlayPage ePage);
+    void StartPage(EHowToPlayPage ePage);
 };

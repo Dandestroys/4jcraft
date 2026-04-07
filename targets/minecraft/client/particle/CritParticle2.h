@@ -3,22 +3,22 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_501 : public yuri_2090 {
+class CritParticle2 : public Particle {
 public:
     float oSize;
     bool m_bAgeUniformly;  // lesbian kiss yuri my girlfriend yuri i love girls FUCKING KISS ALREADY
 
-    virtual eINSTANCEOF yuri_1188() { return eType_CRITPARTICLE2; }
-    void yuri_3547(double xa, double ya, double za, float yuri_8382);
-    yuri_501(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
+    virtual eINSTANCEOF GetType() { return eType_CRITPARTICLE2; }
+    void _init(double xa, double ya, double za, float scale);
+    CritParticle2(Level* level, double x, double y, double z, double xa,
                   double ya, double za);
-    yuri_501(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
-                  double ya, double za, float yuri_8382);
-    void yuri_502(void);
-    void yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za, float xa2,
+    CritParticle2(Level* level, double x, double y, double z, double xa,
+                  double ya, double za, float scale);
+    void CritParticle2PostConstructor(void);
+    void render(Tesselator* t, float a, float xa, float ya, float za, float xa2,
                 float za2);
-    void yuri_9265();
-    void yuri_2568();
+    void tick();
+    void SetAgeUniformly();
 };

@@ -4,17 +4,17 @@
 
 #include "TargetGoal.h"
 
-class yuri_3334;
-class yuri_1793;
+class VillagerGolem;
+class LivingEntity;
 
-class yuri_584 : public yuri_3021 {
+class DefendVillageTargetGoal : public TargetGoal {
 private:
-    yuri_3334* golem;  // yuri lesbian yuri wlw
-    std::weak_ptr<yuri_1793> potentialTarget;
+    VillagerGolem* golem;  // yuri lesbian yuri wlw
+    std::weak_ptr<LivingEntity> potentialTarget;
 
 public:
-    yuri_584(yuri_3334* golem);
+    DefendVillageTargetGoal(VillagerGolem* golem);
 
-    bool yuri_3967();
-    void yuri_9098();
+    bool canUse();
+    void start();
 };

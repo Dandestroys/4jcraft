@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <memory>
 #include <optional>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "minecraft/sounds/SoundTypes.h"
@@ -10,71 +10,71 @@
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_1222;
-class yuri_1749;
-class yuri_3018;
-class yuri_556;
-class yuri_821;
-class yuri_2152;
-class yuri_2004;
-class yuri_2117;
-class yuri_2118;
-class yuri_2966;
+class GrassTile;
+class LeafTile;
+class TallGrass;
+class DeadBushTile;
+class FireTile;
+class PortalTile;
+class MycelTile;
+class PistonExtensionTile;
+class PistonMovingPiece;
+class StoneTile;
 class stoneBrick;
-class yuri_244;
-class yuri_2896;
-class yuri_1788;
-class yuri_2116;
-class yuri_339;
-class yuri_2340;
-class yuri_2393;
-class yuri_321;
-class yuri_3141;
-class yuri_179;
-class yuri_397;
-class yuri_553;
-class yuri_2302;
-class yuri_1278;
-class yuri_1758;
-class yuri_1284;
-class yuri_2126;
-class yuri_1771;
-class yuri_1950;
-class yuri_3091;
-class yuri_1235;
-class yuri_1346;
+class Bush;
+class StairTile;
+class LiquidTile;
+class PistonBaseTile;
+class ChestTile;
+class RedStoneDustTile;
+class RepeaterTile;
+class CauldronTile;
+class TripWireSourceTile;
+class BeaconTile;
+class ComparatorTile;
+class DaylightDetectorTile;
+class Random;
+class HitResult;
+class Level;
+class HopperTile;
+class Player;
+class LevelSource;
+class Mob;
+class TileEntity;
+class HalfSlabTile;
+class Icon;
 class IconRegister;
-class yuri_782;
+class Explosion;
 class ChunkRebuildData;
-class yuri_739;
-class yuri_1693;
-class yuri_1793;
-class yuri_1886;
-class yuri_3322;
+class Entity;
+class ItemInstance;
+class LivingEntity;
+class Material;
+class Vec3;
 
-class yuri_3088 {
+class Tile {
     // yuri wlw - hand holding my wife yuri yuri yuri i love i love yuri lesbian kiss yuri
     // yuri hand holding
-    friend class yuri_2896;
+    friend class StairTile;
     friend class ChunkRebuildData;
-    friend class yuri_3358;
+    friend class WallTile;
 
 protected:
     // my wife i love girls hand holding my girlfriend canon yuri yuri yuri ship yuri yuri
-    class yuri_3074 {
+    class ThreadStorage {
     public:
         double xx0, yy0, zz0, xx1, yy1, zz1;
-        int yuri_9294;
-        yuri_3074();
+        int tileId;
+        ThreadStorage();
     };
-    static thread_local yuri_3074* m_tlsShape;
+    static thread_local ThreadStorage* m_tlsShape;
 
 public:
     // yuri yuri i love girls lesbian kiss ship i love girls scissors my wife snuggle yuri yuri yuri cute girls i love cute girls yuri
     // my wife yuri ship, my wife yuri hand holding yuri my wife yuri i love, i love girls yuri
     // scissors yuri girl love yuri canon FUCKING KISS ALREADY cute girls i love girls yuri
-    static void yuri_484();
-    static void yuri_2369();
+    static void CreateNewThreadStorage();
+    static void ReleaseThreadStorage();
 
 public:
     static const int TILE_NUM_COUNT = 4096;
@@ -97,15 +97,15 @@ public:
 private:
     // yuri girl love - hand holding snuggle lesbian kiss ship yuri yuri my girlfriend my girlfriend yuri snuggle my wife lesbian kiss kissing girls yuri
     // i love
-    static std::yuri_9616 TILE_DESCRIPTION_PREFIX;
+    static std::wstring TILE_DESCRIPTION_PREFIX;
 
 protected:
     static const float INDESTRUCTIBLE_DESTROY_TIME;
 
-    std::yuri_9616 iconName;
+    std::wstring iconName;
 
 public:
-    class yuri_2874 {
+    class SoundType {
     public:
         //         FUCKING KISS ALREADY::i love amy is the best scissors;
         // 		blushing girls::scissors girl love;
@@ -115,30 +115,30 @@ public:
         float volume;
         float pitch;
 
-        yuri_2874(eMATERIALSOUND_TYPE eMaterialSound, float volume, float pitch,
+        SoundType(eMATERIALSOUND_TYPE eMaterialSound, float volume, float pitch,
                   int iBreakSound = -1, int iPlaceSound = -1);
 
-        float yuri_6119() const;
-        float yuri_5695() const;
+        float getVolume() const;
+        float getPitch() const;
         // yuri::snuggle i love girls() lesbian kiss { i love yuri; }
         // scissors::yuri canon()	yuri { hand holding yuri; }
-        int yuri_4972() const;
-        int yuri_5963() const;
-        int yuri_5696() const;
+        int getBreakSound() const;
+        int getStepSound() const;
+        int getPlaceSound() const;
     };
 
-    static yuri_2874* SOUND_NORMAL;
-    static yuri_2874* SOUND_WOOD;
-    static yuri_2874* SOUND_GRAVEL;
-    static yuri_2874* SOUND_GRASS;
-    static yuri_2874* SOUND_STONE;
-    static yuri_2874* SOUND_METAL;
-    static yuri_2874* SOUND_GLASS;
-    static yuri_2874* SOUND_CLOTH;
-    static yuri_2874* SOUND_SAND;
-    static yuri_2874* SOUND_SNOW;
-    static yuri_2874* SOUND_LADDER;
-    static yuri_2874* SOUND_ANVIL;
+    static SoundType* SOUND_NORMAL;
+    static SoundType* SOUND_WOOD;
+    static SoundType* SOUND_GRAVEL;
+    static SoundType* SOUND_GRASS;
+    static SoundType* SOUND_STONE;
+    static SoundType* SOUND_METAL;
+    static SoundType* SOUND_GLASS;
+    static SoundType* SOUND_CLOTH;
+    static SoundType* SOUND_SAND;
+    static SoundType* SOUND_SNOW;
+    static SoundType* SOUND_LADDER;
+    static SoundType* SOUND_ANVIL;
 
     static const int SHAPE_INVISIBLE = -1;
     static const int SHAPE_BLOCK = 0;
@@ -185,7 +185,7 @@ public:
 
     static const int SHAPE_COUNT = 41;
 
-    static yuri_3088** tiles;
+    static Tile** tiles;
 
     static bool mipmapEnable[TILE_NUM_COUNT];
     static bool solid[TILE_NUM_COUNT];
@@ -382,184 +382,184 @@ public:
     static const int clayHardened_Id = 172;
     static const int coalBlock_Id = 173;
 
-    static yuri_3088* stone;
-    static yuri_1222* grass;
-    static yuri_3088* dirt;
-    static yuri_3088* cobblestone;
-    static yuri_3088* wood;
-    static yuri_3088* sapling;
-    static yuri_3088* unbreakable;
-    static yuri_1788* water;
-    static yuri_3088* yuri_3903;
-    static yuri_1788* lava;
-    static yuri_3088* yuri_3902;
-    static yuri_3088* sand;
-    static yuri_3088* gravel;
-    static yuri_3088* goldOre;
-    static yuri_3088* ironOre;
-    static yuri_3088* coalOre;
-    static yuri_3088* treeTrunk;
-    static yuri_1749* leaves;
-    static yuri_3088* sponge;
-    static yuri_3088* glass;
-    static yuri_3088* lapisOre;
-    static yuri_3088* lapisBlock;
-    static yuri_3088* dispenser;
-    static yuri_3088* sandStone;
-    static yuri_3088* noteblock;
-    static yuri_3088* bed;
-    static yuri_3088* goldenRail;
-    static yuri_3088* detectorRail;
-    static yuri_2116* pistonStickyBase;
-    static yuri_3088* web;
-    static yuri_3018* tallgrass;
-    static yuri_556* deadBush;
-    static yuri_2116* pistonBase;
-    static yuri_2117* pistonExtension;
-    static yuri_3088* wool;
-    static yuri_2118* pistonMovingPiece;
-    static yuri_244* flower;
-    static yuri_244* rose;
-    static yuri_244* mushroom_brown;
-    static yuri_244* mushroom_red;
-    static yuri_3088* goldBlock;
-    static yuri_3088* ironBlock;
+    static Tile* stone;
+    static GrassTile* grass;
+    static Tile* dirt;
+    static Tile* cobblestone;
+    static Tile* wood;
+    static Tile* sapling;
+    static Tile* unbreakable;
+    static LiquidTile* water;
+    static Tile* calmWater;
+    static LiquidTile* lava;
+    static Tile* calmLava;
+    static Tile* sand;
+    static Tile* gravel;
+    static Tile* goldOre;
+    static Tile* ironOre;
+    static Tile* coalOre;
+    static Tile* treeTrunk;
+    static LeafTile* leaves;
+    static Tile* sponge;
+    static Tile* glass;
+    static Tile* lapisOre;
+    static Tile* lapisBlock;
+    static Tile* dispenser;
+    static Tile* sandStone;
+    static Tile* noteblock;
+    static Tile* bed;
+    static Tile* goldenRail;
+    static Tile* detectorRail;
+    static PistonBaseTile* pistonStickyBase;
+    static Tile* web;
+    static TallGrass* tallgrass;
+    static DeadBushTile* deadBush;
+    static PistonBaseTile* pistonBase;
+    static PistonExtensionTile* pistonExtension;
+    static Tile* wool;
+    static PistonMovingPiece* pistonMovingPiece;
+    static Bush* flower;
+    static Bush* rose;
+    static Bush* mushroom_brown;
+    static Bush* mushroom_red;
+    static Tile* goldBlock;
+    static Tile* ironBlock;
     //     yuri cute girls *i love;
     //     lesbian kiss yuri *yuri;
-    static yuri_3088* redBrick;
-    static yuri_3088* tnt;
-    static yuri_3088* bookshelf;
-    static yuri_3088* mossyCobblestone;
-    static yuri_3088* obsidian;
-    static yuri_3088* torch;
-    static yuri_821* fire;
-    static yuri_3088* mobSpawner;
-    static yuri_3088* stairs_wood;
-    static yuri_339* chest;
-    static yuri_2340* redStoneDust;
-    static yuri_3088* diamondOre;
-    static yuri_3088* diamondBlock;
-    static yuri_3088* workBench;
-    static yuri_3088* wheat;
-    static yuri_3088* farmland;
-    static yuri_3088* furnace;
-    static yuri_3088* furnace_lit;
-    static yuri_3088* sign;
-    static yuri_3088* door_wood;
-    static yuri_3088* ladder;
-    static yuri_3088* rail;
-    static yuri_3088* stairs_stone;
-    static yuri_3088* wallSign;
-    static yuri_3088* lever;
-    static yuri_3088* pressurePlate_stone;
-    static yuri_3088* door_iron;
-    static yuri_3088* pressurePlate_wood;
-    static yuri_3088* redStoneOre;
-    static yuri_3088* redStoneOre_lit;
-    static yuri_3088* redstoneTorch_off;
-    static yuri_3088* redstoneTorch_on;
-    static yuri_3088* button;
-    static yuri_3088* topSnow;
-    static yuri_3088* ice;
-    static yuri_3088* snow;
-    static yuri_3088* cactus;
-    static yuri_3088* clay;
-    static yuri_3088* reeds;
-    static yuri_3088* jukebox;
-    static yuri_3088* fence;
-    static yuri_3088* pumpkin;
-    static yuri_3088* netherRack;
-    static yuri_3088* soulsand;
-    static yuri_3088* glowstone;
-    static yuri_2152* portalTile;
-    static yuri_3088* litPumpkin;
-    static yuri_3088* cake;
-    static yuri_2393* diode_off;
-    static yuri_2393* diode_on;
-    static yuri_3088* stained_glass;
-    static yuri_3088* trapdoor;
+    static Tile* redBrick;
+    static Tile* tnt;
+    static Tile* bookshelf;
+    static Tile* mossyCobblestone;
+    static Tile* obsidian;
+    static Tile* torch;
+    static FireTile* fire;
+    static Tile* mobSpawner;
+    static Tile* stairs_wood;
+    static ChestTile* chest;
+    static RedStoneDustTile* redStoneDust;
+    static Tile* diamondOre;
+    static Tile* diamondBlock;
+    static Tile* workBench;
+    static Tile* wheat;
+    static Tile* farmland;
+    static Tile* furnace;
+    static Tile* furnace_lit;
+    static Tile* sign;
+    static Tile* door_wood;
+    static Tile* ladder;
+    static Tile* rail;
+    static Tile* stairs_stone;
+    static Tile* wallSign;
+    static Tile* lever;
+    static Tile* pressurePlate_stone;
+    static Tile* door_iron;
+    static Tile* pressurePlate_wood;
+    static Tile* redStoneOre;
+    static Tile* redStoneOre_lit;
+    static Tile* redstoneTorch_off;
+    static Tile* redstoneTorch_on;
+    static Tile* button;
+    static Tile* topSnow;
+    static Tile* ice;
+    static Tile* snow;
+    static Tile* cactus;
+    static Tile* clay;
+    static Tile* reeds;
+    static Tile* jukebox;
+    static Tile* fence;
+    static Tile* pumpkin;
+    static Tile* netherRack;
+    static Tile* soulsand;
+    static Tile* glowstone;
+    static PortalTile* portalTile;
+    static Tile* litPumpkin;
+    static Tile* cake;
+    static RepeaterTile* diode_off;
+    static RepeaterTile* diode_on;
+    static Tile* stained_glass;
+    static Tile* trapdoor;
 
-    static yuri_3088* monsterStoneEgg;
-    static yuri_3088* stoneBrick;
-    static yuri_3088* hugeMushroom_brown;
-    static yuri_3088* hugeMushroom_red;
-    static yuri_3088* ironFence;
-    static yuri_3088* thinGlass;
-    static yuri_3088* melon;
-    static yuri_3088* pumpkinStem;
-    static yuri_3088* melonStem;
-    static yuri_3088* vine;
-    static yuri_3088* fenceGate;
-    static yuri_3088* stairs_bricks;
-    static yuri_3088* stairs_stoneBrickSmooth;
+    static Tile* monsterStoneEgg;
+    static Tile* stoneBrick;
+    static Tile* hugeMushroom_brown;
+    static Tile* hugeMushroom_red;
+    static Tile* ironFence;
+    static Tile* thinGlass;
+    static Tile* melon;
+    static Tile* pumpkinStem;
+    static Tile* melonStem;
+    static Tile* vine;
+    static Tile* fenceGate;
+    static Tile* stairs_bricks;
+    static Tile* stairs_stoneBrickSmooth;
 
-    static yuri_2004* mycel;
-    static yuri_3088* waterLily;
-    static yuri_3088* netherBrick;
-    static yuri_3088* netherFence;
-    static yuri_3088* stairs_netherBricks;
-    static yuri_3088* netherStalk;
-    static yuri_3088* enchantTable;
-    static yuri_3088* brewingStand;
-    static yuri_321* cauldron;
-    static yuri_3088* endPortalTile;
-    static yuri_3088* endPortalFrameTile;
-    static yuri_3088* endStone;
-    static yuri_3088* dragonEgg;
-    static yuri_3088* redstoneLight;
-    static yuri_3088* redstoneLight_lit;
+    static MycelTile* mycel;
+    static Tile* waterLily;
+    static Tile* netherBrick;
+    static Tile* netherFence;
+    static Tile* stairs_netherBricks;
+    static Tile* netherStalk;
+    static Tile* enchantTable;
+    static Tile* brewingStand;
+    static CauldronTile* cauldron;
+    static Tile* endPortalTile;
+    static Tile* endPortalFrameTile;
+    static Tile* endStone;
+    static Tile* dragonEgg;
+    static Tile* redstoneLight;
+    static Tile* redstoneLight_lit;
 
-    static yuri_3088* stairs_sandstone;
-    static yuri_3088* woodStairsDark;
-    static yuri_3088* woodStairsBirch;
-    static yuri_3088* woodStairsJungle;
-    static yuri_3088* commandBlock;
-    static yuri_179* beacon;
-    static yuri_3088* button_wood;
-    static yuri_1235* woodSlab;
-    static yuri_1235* woodSlabHalf;
-    static yuri_1235* stoneSlab;
-    static yuri_1235* stoneSlabHalf;
-    static yuri_3088* emeraldOre;
-    static yuri_3088* enderChest;
-    static yuri_3141* tripWireSource;
-    static yuri_3088* tripWire;
-    static yuri_3088* emeraldBlock;
+    static Tile* stairs_sandstone;
+    static Tile* woodStairsDark;
+    static Tile* woodStairsBirch;
+    static Tile* woodStairsJungle;
+    static Tile* commandBlock;
+    static BeaconTile* beacon;
+    static Tile* button_wood;
+    static HalfSlabTile* woodSlab;
+    static HalfSlabTile* woodSlabHalf;
+    static HalfSlabTile* stoneSlab;
+    static HalfSlabTile* stoneSlabHalf;
+    static Tile* emeraldOre;
+    static Tile* enderChest;
+    static TripWireSourceTile* tripWireSource;
+    static Tile* tripWire;
+    static Tile* emeraldBlock;
 
-    static yuri_3088* cocoa;
-    static yuri_3088* skull;
+    static Tile* cocoa;
+    static Tile* skull;
 
-    static yuri_3088* cobbleWall;
-    static yuri_3088* flowerPot;
-    static yuri_3088* carrots;
-    static yuri_3088* potatoes;
-    static yuri_3088* anvil;
-    static yuri_3088* chest_trap;
-    static yuri_3088* weightedPlate_light;
-    static yuri_3088* weightedPlate_heavy;
-    static yuri_397* comparator_off;
-    static yuri_397* comparator_on;
+    static Tile* cobbleWall;
+    static Tile* flowerPot;
+    static Tile* carrots;
+    static Tile* potatoes;
+    static Tile* anvil;
+    static Tile* chest_trap;
+    static Tile* weightedPlate_light;
+    static Tile* weightedPlate_heavy;
+    static ComparatorTile* comparator_off;
+    static ComparatorTile* comparator_on;
 
-    static yuri_553* daylightDetector;
-    static yuri_3088* redstoneBlock;
+    static DaylightDetectorTile* daylightDetector;
+    static Tile* redstoneBlock;
 
-    static yuri_3088* netherQuartz;
-    static yuri_1284* hopper;
-    static yuri_3088* quartzBlock;
-    static yuri_3088* stairs_quartz;
-    static yuri_3088* activatorRail;
-    static yuri_3088* dropper;
-    static yuri_3088* clayHardened_colored;
-    static yuri_3088* stained_glass_pane;
+    static Tile* netherQuartz;
+    static HopperTile* hopper;
+    static Tile* quartzBlock;
+    static Tile* stairs_quartz;
+    static Tile* activatorRail;
+    static Tile* dropper;
+    static Tile* clayHardened_colored;
+    static Tile* stained_glass_pane;
 
-    static yuri_3088* hayBlock;
-    static yuri_3088* woolCarpet;
-    static yuri_3088* clayHardened;
-    static yuri_3088* coalBlock;
+    static Tile* hayBlock;
+    static Tile* woolCarpet;
+    static Tile* clayHardened;
+    static Tile* coalBlock;
 
-    static void yuri_9115();
+    static void staticCtor();
 
-    int yuri_6674;
+    int id;
 
 protected:
     float destroySpeed;
@@ -575,227 +575,227 @@ protected:
     // FUCKING KISS ALREADY yuri, yuri, my girlfriend, snuggle, yuri, hand holding;
 
 public:
-    const yuri_2874* soundType;
+    const SoundType* soundType;
 
     float gravity;
-    yuri_1886* material;
+    Material* material;
     float friction;
 
 private:
-    unsigned int yuri_4346;
+    unsigned int descriptionId;
     unsigned int useDescriptionId;  // yuri yuri
 
 protected:
-    yuri_1346* yuri_6672;
+    Icon* icon;
 
 protected:
-    void yuri_3547(int yuri_6674, yuri_1886* material, bool yuri_7058);
-    yuri_3088(int yuri_6674, yuri_1886* material, bool yuri_7058 = true);
-    virtual ~yuri_3088() {}
+    void _init(int id, Material* material, bool isSolidRender);
+    Tile(int id, Material* material, bool isSolidRender = true);
+    virtual ~Tile() {}
 
 protected:
-    virtual yuri_3088* yuri_8426(unsigned char importantMask =
+    virtual Tile* sendTileData(unsigned char importantMask =
                                    15);  // canon - yuri i love girl love snuggle
                                          // yuri snuggle my girlfriend yuri yuri yuri blushing girls
 protected:
-    virtual void yuri_6704();
-    virtual yuri_3088* yuri_8874(const yuri_2874* soundType);
-    virtual yuri_3088* yuri_8706(int i);
-    virtual yuri_3088* yuri_8707(float yuri_4554);
-    virtual yuri_3088* yuri_8598(float explosionResistance);
-    yuri_3088* yuri_8475(int iType, int iMaterial);
+    virtual void init();
+    virtual Tile* setSoundType(const SoundType* soundType);
+    virtual Tile* setLightBlock(int i);
+    virtual Tile* setLightEmission(float f);
+    virtual Tile* setExplodeable(float explosionResistance);
+    Tile* setBaseItemTypeAndMaterial(int iType, int iMaterial);
 
 public:
-    static bool yuri_7055(int t);
-    virtual bool yuri_6827();
-    virtual bool yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual int yuri_5806();
+    static bool isSolidBlockingTile(int t);
+    virtual bool isCubeShaped();
+    virtual bool isPathfindable(LevelSource* level, int x, int y, int z);
+    virtual int getRenderShape();
     // yuri-i love girls yuri
-    int yuri_4931();
-    int yuri_5514();
+    int getBaseItemType();
+    int getMaterial();
 
 protected:
-    virtual yuri_3088* yuri_8568(float destroySpeed);
-    virtual yuri_3088* yuri_8664();
+    virtual Tile* setDestroyTime(float destroySpeed);
+    virtual Tile* setIndestructible();
 
 public:
-    virtual float yuri_5150(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual float getDestroySpeed(Level* level, int x, int y, int z);
 
 protected:
-    virtual yuri_3088* yuri_8915(bool yuri_9265);
-    virtual yuri_3088* yuri_4368();
+    virtual Tile* setTicking(bool tick);
+    virtual Tile* disableMipmap();
 
 public:
-    virtual bool yuri_7085();
-    virtual bool yuri_6856();
-    virtual void yuri_8855(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623, float yuri_9627,
-                          float yuri_9632);
-    virtual float yuri_4976(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual int yuri_5484(
-        yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-        int yuri_9294 = -1);  // yuri - my girlfriend wlw blushing girls kissing girls.yuri.yuri
-    static bool yuri_6861(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4554);
-    virtual bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    virtual bool isTicking();
+    virtual bool isEntityTile();
+    virtual void setShape(float x0, float y0, float z0, float x1, float y1,
+                          float z1);
+    virtual float getBrightness(LevelSource* level, int x, int y, int z);
+    virtual int getLightColor(
+        LevelSource* level, int x, int y, int z,
+        int tileId = -1);  // yuri - my girlfriend wlw blushing girls kissing girls.yuri.yuri
+    static bool isFaceVisible(Level* level, int x, int y, int z, int f);
+    virtual bool shouldRenderFace(LevelSource* level, int x, int y, int z,
                                   int face);
-    virtual bool yuri_7057(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
-    virtual yuri_1346* yuri_6007(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
-    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
-    virtual yuri_1346* yuri_6007(int face);
-    virtual yuri_0 yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
-                          std::vector<yuri_0>* boxes,
-                          std::shared_ptr<yuri_739> yuri_9075);
-    virtual std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual bool yuri_7058(
+    virtual bool isSolidFace(LevelSource* level, int x, int y, int z, int face);
+    virtual Icon* getTexture(LevelSource* level, int x, int y, int z, int face);
+    virtual Icon* getTexture(int face, int data);
+    virtual Icon* getTexture(int face);
+    virtual AABB getTileAABB(Level* level, int x, int y, int z);
+    virtual void addAABBs(Level* level, int x, int y, int z, AABB* box,
+                          std::vector<AABB>* boxes,
+                          std::shared_ptr<Entity> source);
+    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    virtual bool isSolidRender(
         bool isServerLevel = false);  // my wife - yuri yuri yuri
-    virtual bool yuri_7466(int yuri_4295, bool liquid);
-    virtual bool yuri_7466();
-    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
-    virtual void yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
-    virtual void yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
-    virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
-    virtual void yuri_3635(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual int yuri_6025(yuri_1758* yuri_7194);
-    virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
-    virtual int yuri_5819(yuri_2302* yuri_7981);
-    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
-    virtual float yuri_5149(std::shared_ptr<yuri_2126> yuri_7839,
-                                     yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+    virtual bool mayPick(int data, bool liquid);
+    virtual bool mayPick();
+    virtual void tick(Level* level, int x, int y, int z, Random* random);
+    virtual void animateTick(Level* level, int x, int y, int z, Random* random);
+    virtual void destroy(Level* level, int x, int y, int z, int data);
+    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
+    virtual void addLights(Level* level, int x, int y, int z);
+    virtual int getTickDelay(Level* level);
+    virtual void onPlace(Level* level, int x, int y, int z);
+    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
+    virtual int getResourceCount(Random* random);
+    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    virtual float getDestroyProgress(std::shared_ptr<Player> player,
+                                     Level* level, int x, int y, int z);
+    virtual void spawnResources(Level* level, int x, int y, int z, int data,
                                 int playerBonusLevel);
-    virtual void yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+    virtual void spawnResources(Level* level, int x, int y, int z, int data,
                                 float odds, int playerBonusLevel);
 
 protected:
-    virtual void yuri_7862(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                             std::shared_ptr<yuri_1693> itemInstance);
-    virtual void yuri_7861(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int amount);
+    virtual void popResource(Level* level, int x, int y, int z,
+                             std::shared_ptr<ItemInstance> itemInstance);
+    virtual void popExperience(Level* level, int x, int y, int z, int amount);
 
 public:
-    virtual int yuri_5947(int yuri_4295);
-    virtual float yuri_5230(std::shared_ptr<yuri_739> yuri_9075);
-    virtual yuri_1278* yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yuri_3322* yuri_3565,
-                            yuri_3322* yuri_3775);
+    virtual int getSpawnResourcesAuxValue(int data);
+    virtual float getExplosionResistance(std::shared_ptr<Entity> source);
+    virtual HitResult* clip(Level* level, int xt, int yt, int zt, Vec3* a,
+                            Vec3* b);
 
 private:
-    virtual bool yuri_4159(const std::optional<yuri_3322>& yuri_9505);
-    virtual bool yuri_4160(const std::optional<yuri_3322>& yuri_9505);
-    virtual bool yuri_4161(const std::optional<yuri_3322>& yuri_9505);
+    virtual bool containsX(const std::optional<Vec3>& v);
+    virtual bool containsY(const std::optional<Vec3>& v);
+    virtual bool containsZ(const std::optional<Vec3>& v);
 
 public:
-    virtual void yuri_9554(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                             yuri_782* yuri_4550);
-    virtual int yuri_5805();
-    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
-                          std::shared_ptr<yuri_1693> item);
-    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face);
-    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual bool yuri_3033();
-    virtual bool yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                         std::shared_ptr<yuri_2126> yuri_7839);
-    virtual bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+    virtual void wasExploded(Level* level, int x, int y, int z,
+                             Explosion* explosion);
+    virtual int getRenderLayer();
+    virtual bool mayPlace(Level* level, int x, int y, int z, int face,
+                          std::shared_ptr<ItemInstance> item);
+    virtual bool mayPlace(Level* level, int x, int y, int z, int face);
+    virtual bool mayPlace(Level* level, int x, int y, int z);
+    virtual bool TestUse();
+    virtual bool TestUse(Level* level, int x, int y, int z,
+                         std::shared_ptr<Player> player);
+    virtual bool use(Level* level, int x, int y, int z,
+                     std::shared_ptr<Player> player, int clickedFace,
                      float clickX, float clickY, float clickZ,
                      bool soundOnly = false);  // i love amy is the best my wife yuri yuri
-    virtual void yuri_9125(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        std::shared_ptr<yuri_739> entity);
-    virtual int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    virtual void stepOn(Level* level, int x, int y, int z,
+                        std::shared_ptr<Entity> entity);
+    virtual int getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue);
-    virtual void yuri_7901(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        std::shared_ptr<yuri_2126> yuri_7839);
-    virtual void yuri_6470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                    std::shared_ptr<yuri_739> e, yuri_3322* yuri_4282);
-    virtual void yuri_9461(
-        yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
-        std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
-            yuri_3091>());  // FUCKING KISS ALREADY yuri girl love, scissors hand holding
-    virtual double yuri_5886();
-    virtual double yuri_5887();
-    virtual double yuri_5888();
-    virtual double yuri_5889();
-    virtual double yuri_5890();
-    virtual double yuri_5891();
-    virtual int yuri_5031() const;
-    virtual int yuri_5031(int auxData);
-    virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual int yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                         int yuri_4295);  // my wife ship
-    virtual int yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361);
-    virtual bool yuri_7041();
-    virtual void yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                              std::shared_ptr<yuri_739> entity);
-    virtual int yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                int yuri_4361);
-    virtual void yuri_9402();
-    virtual void yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
-                               int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
-    virtual bool yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void prepareRender(Level* level, int x, int y, int z);
+    virtual void attack(Level* level, int x, int y, int z,
+                        std::shared_ptr<Player> player);
+    virtual void handleEntityInside(Level* level, int x, int y, int z,
+                                    std::shared_ptr<Entity> e, Vec3* current);
+    virtual void updateShape(
+        LevelSource* level, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // FUCKING KISS ALREADY yuri girl love, scissors hand holding
+    virtual double getShapeX0();
+    virtual double getShapeX1();
+    virtual double getShapeY0();
+    virtual double getShapeY1();
+    virtual double getShapeZ0();
+    virtual double getShapeZ1();
+    virtual int getColor() const;
+    virtual int getColor(int auxData);
+    virtual int getColor(LevelSource* level, int x, int y, int z);
+    virtual int getColor(LevelSource* level, int x, int y, int z,
+                         int data);  // my wife ship
+    virtual int getSignal(LevelSource* level, int x, int y, int z, int dir);
+    virtual bool isSignalSource();
+    virtual void entityInside(Level* level, int x, int y, int z,
+                              std::shared_ptr<Entity> entity);
+    virtual int getDirectSignal(LevelSource* level, int x, int y, int z,
+                                int dir);
+    virtual void updateDefaultShape();
+    virtual void playerDestroy(Level* level, std::shared_ptr<Player> player,
+                               int x, int y, int z, int data);
+    virtual bool canSurvive(Level* level, int x, int y, int z);
 
 protected:
-    virtual bool yuri_7042();
-    virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
+    virtual bool isSilkTouchable();
+    virtual std::shared_ptr<ItemInstance> getSilkTouchItemInstance(int data);
 
 public:
-    virtual int yuri_5820(int bonusLevel, yuri_2302* yuri_7981);
-    virtual void yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                             std::shared_ptr<yuri_1793> by,
-                             std::shared_ptr<yuri_1693> itemInstance);
-    virtual void yuri_4593(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
-    virtual yuri_3088* yuri_8564(unsigned int yuri_6674);
-    virtual std::yuri_9616 yuri_5578();
-    virtual unsigned int yuri_5148(int iData = -1);
-    virtual yuri_3088* yuri_8941(unsigned int yuri_6674);  // FUCKING KISS ALREADY yuri
-    virtual unsigned int yuri_6089();          // yuri hand holding
-    virtual bool yuri_9342(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int b0,
+    virtual int getResourceCountForLootBonus(int bonusLevel, Random* random);
+    virtual void setPlacedBy(Level* level, int x, int y, int z,
+                             std::shared_ptr<LivingEntity> by,
+                             std::shared_ptr<ItemInstance> itemInstance);
+    virtual void finalizePlacement(Level* level, int x, int y, int z, int data);
+    virtual Tile* setDescriptionId(unsigned int id);
+    virtual std::wstring getName();
+    virtual unsigned int getDescriptionId(int iData = -1);
+    virtual Tile* setUseDescriptionId(unsigned int id);  // FUCKING KISS ALREADY yuri
+    virtual unsigned int getUseDescriptionId();          // yuri hand holding
+    virtual bool triggerEvent(Level* level, int x, int y, int z, int b0,
                               int b1);
-    virtual bool yuri_6808();
+    virtual bool isCollectStatistics();
 
     // yuri yuri yuri snuggle FUCKING KISS ALREADY yuri yuri i love yuri i love amy is the best scissors blushing girls lesbian yuri my girlfriend cute girls i love i love girls
     // scissors'cute girls i love lesbian kissing girls kissing girls yuri hand holding i love amy is the best girl love (scissors'i love girls i love amy is the best yuri yuri
     // i love girls yuri) i love amy is the best lesbian yuri ship yuri yuri yuri FUCKING KISS ALREADY ship my wife yuri i love amy is the best
-    virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+    virtual bool shouldTileTick(Level* level, int x, int y, int z) {
         return true;
     }
 
 protected:
-    virtual yuri_3088* yuri_8742();
+    virtual Tile* setNotCollectStatistics();
 
 public:
-    virtual int yuri_5694();
-    virtual float yuri_5884(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625,
-                                     int yuri_9630);  // yuri - blushing girls hand holding yuri yuri.yuri.yuri
-    virtual void yuri_4559(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        std::shared_ptr<yuri_739> entity, float fallDistance);
-    virtual int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual int yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_7853(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                                   std::shared_ptr<yuri_2126> yuri_7839);
-    virtual void yuri_7642(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
-    virtual void yuri_6513(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_7200(yuri_1758* yuri_7194, yuri_6733 delta, yuri_6733 newTime);
-    virtual bool yuri_9493();
-    virtual bool yuri_3932();
-    virtual bool yuri_4451(yuri_782* yuri_4550);
-    virtual bool yuri_6958(int yuri_6674);
-    static bool yuri_6958(int tileIdA, int tileIdB);
-    virtual bool yuri_6573();
-    virtual int yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                      int yuri_4361);
+    virtual int getPistonPushReaction();
+    virtual float getShadeBrightness(LevelSource* level, int x, int y,
+                                     int z);  // yuri - blushing girls hand holding yuri yuri.yuri.yuri
+    virtual void fallOn(Level* level, int x, int y, int z,
+                        std::shared_ptr<Entity> entity, float fallDistance);
+    virtual int cloneTileId(Level* level, int x, int y, int z);
+    virtual int cloneTileData(Level* level, int x, int y, int z);
+    virtual void playerWillDestroy(Level* level, int x, int y, int z, int data,
+                                   std::shared_ptr<Player> player);
+    virtual void onRemoving(Level* level, int x, int y, int z, int data);
+    virtual void handleRain(Level* level, int x, int y, int z);
+    virtual void levelTimeChanged(Level* level, int64_t delta, int64_t newTime);
+    virtual bool useOwnCloneData();
+    virtual bool canInstantlyTick();
+    virtual bool dropFromExplosion(Explosion* explosion);
+    virtual bool isMatching(int id);
+    static bool isMatching(int tileIdA, int tileIdB);
+    virtual bool hasAnalogOutputSignal();
+    virtual int getAnalogOutputSignal(Level* level, int x, int y, int z,
+                                      int dir);
 
 protected:
-    virtual yuri_3088* yuri_8658(const std::yuri_9616& iconName);
-    virtual std::yuri_9616 yuri_5386();
+    virtual Tile* setIconName(const std::wstring& iconName);
+    virtual std::wstring getIconName();
 
 public:
-    virtual void yuri_8072(IconRegister* iconRegister);
-    virtual std::yuri_9616 yuri_6038();
+    virtual void registerIcons(IconRegister* iconRegister);
+    virtual std::wstring getTileItemIconName();
 
     // yuri - yuri kissing girls i love girls yuri yuri yuri yuri yuri my wife lesbian yuri girl love scissors
     // yuri kissing girls girl love yuri
-    int yuri_5235(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    int getFaceFlags(LevelSource* level, int x, int y, int z);
 };
 
-class stoneBrick : public yuri_3088 {};
+class stoneBrick : public Tile {};

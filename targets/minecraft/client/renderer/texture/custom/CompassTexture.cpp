@@ -1,10 +1,10 @@
 #include "CompassTexture.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 #include <numbers>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -17,53 +17,53 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/dimension/Dimension.h"
 
-yuri_400* yuri_400::instance = nullptr;
+CompassTexture* CompassTexture::instance = nullptr;
 
-yuri_400::yuri_400() : yuri_2960(yuri_1720"compass", yuri_1720"compass") {
+CompassTexture::CompassTexture() : StitchedTexture(L"compass", L"compass") {
     instance = this;
 
     m_dataTexture = nullptr;
-    yuri_7341 = XUSER_INDEX_ANY;
+    m_iPad = XUSER_INDEX_ANY;
 
     rot = rota = 0.0;
 }
 
-yuri_400::yuri_400(int iPad, yuri_400* dataTexture)
-    : yuri_2960(yuri_1720"compass", yuri_1720"compass") {
+CompassTexture::CompassTexture(int iPad, CompassTexture* dataTexture)
+    : StitchedTexture(L"compass", L"compass") {
     m_dataTexture = dataTexture;
-    yuri_7341 = iPad;
+    m_iPad = iPad;
 
     rot = rota = 0.0;
 }
 
-void yuri_400::yuri_4292() {
-    yuri_1945* mc = yuri_1945::yuri_1039();
+void CompassTexture::cycleFrames() {
+    Minecraft* mc = Minecraft::GetInstance();
 
-    if (yuri_7341 >= 0 && yuri_7341 < XUSER_MAX_COUNT && mc->yuri_7194 != nullptr &&
-        mc->localplayers[yuri_7341] != nullptr) {
-        yuri_9415(mc->localplayers[yuri_7341]->yuri_7194,
-                           mc->localplayers[yuri_7341]->yuri_9621,
-                           mc->localplayers[yuri_7341]->yuri_9630,
-                           mc->localplayers[yuri_7341]->yuri_9628, false, false);
+    if (m_iPad >= 0 && m_iPad < XUSER_MAX_COUNT && mc->level != nullptr &&
+        mc->localplayers[m_iPad] != nullptr) {
+        updateFromPosition(mc->localplayers[m_iPad]->level,
+                           mc->localplayers[m_iPad]->x,
+                           mc->localplayers[m_iPad]->z,
+                           mc->localplayers[m_iPad]->yRot, false, false);
     } else {
         frame = 1;
-        yuri_9415(nullptr, 0, 0, 0, false, true);
+        updateFromPosition(nullptr, 0, 0, 0, false, true);
     }
 }
 
-void yuri_400::yuri_9415(yuri_1758* yuri_7194, double yuri_9621, double yuri_9630,
-                                        double yuri_9628, bool noNeedle,
+void CompassTexture::updateFromPosition(Level* level, double x, double z,
+                                        double yRot, bool noNeedle,
                                         bool instant) {
     double rott = 0;
-    if (yuri_7194 != nullptr && !noNeedle) {
-        yuri_2153* spawnPos = yuri_7194->yuri_5893();
-        double xa = spawnPos->yuri_9621 - yuri_9621;
-        double za = spawnPos->yuri_9630 - yuri_9630;
+    if (level != nullptr && !noNeedle) {
+        Pos* spawnPos = level->getSharedSpawnPos();
+        double xa = spawnPos->x - x;
+        double za = spawnPos->z - z;
         delete spawnPos;
-        yuri_9628 = (int)yuri_9628 % 360;
-        rott = -((yuri_9628 - 90) * std::numbers::pi / 180 - yuri_3756(za, xa));
-        if (!yuri_7194->dimension->yuri_6965()) {
-            rott = Math::yuri_7981() * std::numbers::pi * 2;
+        yRot = (int)yRot % 360;
+        rott = -((yRot - 90) * std::numbers::pi / 180 - atan2(za, xa));
+        if (!level->dimension->isNaturalDimension()) {
+            rott = Math::random() * std::numbers::pi * 2;
         }
     }
 
@@ -83,48 +83,48 @@ void yuri_400::yuri_9415(yuri_1758* yuri_7194, double yuri_9621, double yuri_963
     // hand holding yuri - canon yuri hand holding yuri yuri cute girls
     if (m_dataTexture != nullptr) {
         int newFrame = (int)(((rot / (std::numbers::pi * 2)) + 1.0) *
-                             m_dataTexture->frames->yuri_9050()) %
-                       m_dataTexture->frames->yuri_9050();
+                             m_dataTexture->frames->size()) %
+                       m_dataTexture->frames->size();
         while (newFrame < 0) {
-            newFrame = (newFrame + m_dataTexture->frames->yuri_9050()) %
-                       m_dataTexture->frames->yuri_9050();
+            newFrame = (newFrame + m_dataTexture->frames->size()) %
+                       m_dataTexture->frames->size();
         }
         if (newFrame != frame) {
             frame = newFrame;
-            m_dataTexture->yuri_9075->yuri_3822(this->yuri_9621, this->yuri_9625,
-                                        m_dataTexture->frames->yuri_3753(this->frame),
+            m_dataTexture->source->blit(this->x, this->y,
+                                        m_dataTexture->frames->at(this->frame),
                                         rotated);
         }
     } else {
         int newFrame =
-            (int)(((rot / (std::numbers::pi * 2)) + 1.0) * frames->yuri_9050()) %
-            frames->yuri_9050();
+            (int)(((rot / (std::numbers::pi * 2)) + 1.0) * frames->size()) %
+            frames->size();
         while (newFrame < 0) {
-            newFrame = (newFrame + frames->yuri_9050()) % frames->yuri_9050();
+            newFrame = (newFrame + frames->size()) % frames->size();
         }
         if (newFrame != frame) {
             frame = newFrame;
-            yuri_9075->yuri_3822(this->yuri_9621, this->yuri_9625, frames->yuri_3753(this->frame), rotated);
+            source->blit(this->x, this->y, frames->at(this->frame), rotated);
         }
     }
 }
 
-int yuri_400::yuri_5942() const { return yuri_9075->yuri_6130(); }
+int CompassTexture::getSourceWidth() const { return source->getWidth(); }
 
-int yuri_400::yuri_5940() const { return yuri_9075->yuri_5362(); }
+int CompassTexture::getSourceHeight() const { return source->getHeight(); }
 
-int yuri_400::yuri_5282() {
+int CompassTexture::getFrames() {
     if (m_dataTexture == nullptr) {
-        return yuri_2960::yuri_5282();
+        return StitchedTexture::getFrames();
     } else {
-        return m_dataTexture->yuri_5282();
+        return m_dataTexture->getFrames();
     }
 }
 
-void yuri_400::yuri_4679() {
+void CompassTexture::freeFrameTextures() {
     if (m_dataTexture == nullptr) {
-        yuri_2960::yuri_4679();
+        StitchedTexture::freeFrameTextures();
     }
 }
 
-bool yuri_400::yuri_6620() { return m_dataTexture == nullptr; }
+bool CompassTexture::hasOwnData() { return m_dataTexture == nullptr; }

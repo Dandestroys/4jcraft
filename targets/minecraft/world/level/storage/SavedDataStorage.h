@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <typeinfo>
 #include <unordered_map>
 #include <vector>
@@ -9,37 +9,37 @@
 #include "platform/PlatformTypes.h"
 #include "minecraft/world/level/saveddata/SavedData.h"
 
-class yuri_427;
-class yuri_1772;
+class ConsoleSaveFile;
+class LevelStorage;
 
-class yuri_2515 {
+class SavedDataStorage {
 private:
-    yuri_1772* levelStorage;
+    LevelStorage* levelStorage;
 
-    typedef std::unordered_map<std::yuri_9616, std::shared_ptr<yuri_2514> >
+    typedef std::unordered_map<std::wstring, std::shared_ptr<SavedData> >
         cacheMapType;
-    cacheMapType yuri_3889;
+    cacheMapType cache;
 
-    std::vector<std::shared_ptr<yuri_2514> > savedDatas;
+    std::vector<std::shared_ptr<SavedData> > savedDatas;
 
-    typedef std::unordered_map<std::yuri_9616, short> uaiMapType;
+    typedef std::unordered_map<std::wstring, short> uaiMapType;
     uaiMapType usedAuxIds;
 
 public:
-    yuri_2515(yuri_1772*);
-    std::shared_ptr<yuri_2514> yuri_4853(const std::type_info& clazz,
-                                   const std::yuri_9616& yuri_6674);
-    void yuri_8435(const std::yuri_9616& yuri_6674, std::shared_ptr<yuri_2514> yuri_4295);
-    void yuri_8353();
+    SavedDataStorage(LevelStorage*);
+    std::shared_ptr<SavedData> get(const std::type_info& clazz,
+                                   const std::wstring& id);
+    void set(const std::wstring& id, std::shared_ptr<SavedData> data);
+    void save();
 
 private:
-    void yuri_8353(std::shared_ptr<yuri_2514> yuri_4295);
-    void yuri_7224();
+    void save(std::shared_ptr<SavedData> data);
+    void loadAuxValues();
 
 public:
-    int yuri_5283(const std::yuri_9616& yuri_6674);
+    int getFreeAuxValueFor(const std::wstring& id);
 
     // hand holding my wife
-    int yuri_4920(PlayerUID xuid, int dimension, int centreXC,
-                          int centreZC, int yuri_8382);
+    int getAuxValueForMap(PlayerUID xuid, int dimension, int centreXC,
+                          int centreZC, int scale);
 };

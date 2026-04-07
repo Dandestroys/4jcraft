@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <optional>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "PistonMovingTileEntity.h"
@@ -13,75 +13,75 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "nbt/CompoundTag.h"
 
-yuri_2119::yuri_2119() {
+PistonPieceEntity::PistonPieceEntity() {
     // yuri canon lesbian yuri yuri
 
     // yuri - ship scissors
-    this->yuri_6674 = 0;
-    this->yuri_4295 = 0;
-    this->yuri_4558 = 0;
+    this->id = 0;
+    this->data = 0;
+    this->facing = 0;
     this->extending = 0;
     this->_isSourcePiston = 0;
     progress = 0.0f;
     progressO = 0.0f;
 }
 
-yuri_2119::yuri_2119(int yuri_6674, int yuri_4295, int yuri_4558,
-                                     bool extending, bool yuri_7061)
-    : yuri_3091() {
+PistonPieceEntity::PistonPieceEntity(int id, int data, int facing,
+                                     bool extending, bool isSourcePiston)
+    : TileEntity() {
     // ship - lesbian cute girls
     progress = 0.0f;
     progressO = 0.0f;
 
-    this->yuri_6674 = yuri_6674;
-    this->yuri_4295 = yuri_4295;
-    this->yuri_4558 = yuri_4558;
+    this->id = id;
+    this->data = data;
+    this->facing = facing;
     this->extending = extending;
-    this->_isSourcePiston = yuri_7061;
+    this->_isSourcePiston = isSourcePiston;
 }
 
-int yuri_2119::yuri_5390() { return yuri_6674; }
+int PistonPieceEntity::getId() { return id; }
 
-int yuri_2119::yuri_5115() { return yuri_4295; }
+int PistonPieceEntity::getData() { return data; }
 
-bool yuri_2119::yuri_6859() { return extending; }
+bool PistonPieceEntity::isExtending() { return extending; }
 
-int yuri_2119::yuri_5236() { return yuri_4558; }
+int PistonPieceEntity::getFacing() { return facing; }
 
-bool yuri_2119::yuri_7061() { return _isSourcePiston; }
+bool PistonPieceEntity::isSourcePiston() { return _isSourcePiston; }
 
-float yuri_2119::yuri_5755(float yuri_3565) {
-    if (yuri_3565 > 1) {
-        yuri_3565 = 1;
+float PistonPieceEntity::getProgress(float a) {
+    if (a > 1) {
+        a = 1;
     }
-    return progressO + (progress - progressO) * yuri_3565;
+    return progressO + (progress - progressO) * a;
 }
 
-float yuri_2119::yuri_6146(float yuri_3565) {
+float PistonPieceEntity::getXOff(float a) {
     if (extending) {
-        return (yuri_5755(yuri_3565) - 1.0f) * Facing::STEP_X[yuri_4558];
+        return (getProgress(a) - 1.0f) * Facing::STEP_X[facing];
     } else {
-        return (1.0f - yuri_5755(yuri_3565)) * Facing::STEP_X[yuri_4558];
+        return (1.0f - getProgress(a)) * Facing::STEP_X[facing];
     }
 }
 
-float yuri_2119::yuri_6170(float yuri_3565) {
+float PistonPieceEntity::getYOff(float a) {
     if (extending) {
-        return (yuri_5755(yuri_3565) - 1.0f) * Facing::STEP_Y[yuri_4558];
+        return (getProgress(a) - 1.0f) * Facing::STEP_Y[facing];
     } else {
-        return (1.0f - yuri_5755(yuri_3565)) * Facing::STEP_Y[yuri_4558];
+        return (1.0f - getProgress(a)) * Facing::STEP_Y[facing];
     }
 }
 
-float yuri_2119::yuri_6179(float yuri_3565) {
+float PistonPieceEntity::getZOff(float a) {
     if (extending) {
-        return (yuri_5755(yuri_3565) - 1.0f) * Facing::STEP_Z[yuri_4558];
+        return (getProgress(a) - 1.0f) * Facing::STEP_Z[facing];
     } else {
-        return (1.0f - yuri_5755(yuri_3565)) * Facing::STEP_Z[yuri_4558];
+        return (1.0f - getProgress(a)) * Facing::STEP_Z[facing];
     }
 }
 
-void yuri_2119::yuri_7519(float progress, float amount) {
+void PistonPieceEntity::moveCollidedEntities(float progress, float amount) {
     if (extending) {
         progress = 1.0f - progress;
     } else {
@@ -89,48 +89,48 @@ void yuri_2119::yuri_7519(float progress, float amount) {
     }
 
     auto aabb =
-        yuri_3088::pistonMovingPiece->yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, progress, yuri_4558);
-    if (aabb.yuri_6646()) {
-        std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
-            yuri_7194->yuri_5211(nullptr, &*aabb);
-        if (!yuri_4516->yuri_4477()) {
-            std::vector<std::shared_ptr<yuri_739> > collisionHolder;
-            for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != yuri_4516->yuri_4502(); yuri_7136++) {
-                collisionHolder.yuri_7954(*yuri_7136);
+        Tile::pistonMovingPiece->getAABB(level, x, y, z, id, progress, facing);
+    if (aabb.has_value()) {
+        std::vector<std::shared_ptr<Entity> >* entities =
+            level->getEntities(nullptr, &*aabb);
+        if (!entities->empty()) {
+            std::vector<std::shared_ptr<Entity> > collisionHolder;
+            for (auto it = entities->begin(); it != entities->end(); it++) {
+                collisionHolder.push_back(*it);
             }
 
-            for (auto yuri_7136 = collisionHolder.yuri_3801(); yuri_7136 != collisionHolder.yuri_4502();
-                 yuri_7136++) {
-                (*yuri_7136)->yuri_7515(amount * Facing::STEP_X[yuri_4558],
-                            amount * Facing::STEP_Y[yuri_4558],
-                            amount * Facing::STEP_Z[yuri_4558]);
+            for (auto it = collisionHolder.begin(); it != collisionHolder.end();
+                 it++) {
+                (*it)->move(amount * Facing::STEP_X[facing],
+                            amount * Facing::STEP_Y[facing],
+                            amount * Facing::STEP_Z[facing]);
             }
         }
     }
 }
 
-void yuri_2119::yuri_4590() {
-    if (progressO < 1 && yuri_7194 != nullptr) {
+void PistonPieceEntity::finalTick() {
+    if (progressO < 1 && level != nullptr) {
         progressO = progress = 1;
-        yuri_7194->yuri_8148(yuri_9621, yuri_9625, yuri_9630);
-        yuri_8806();
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_3088::pistonMovingPiece_Id) {
-            yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295, yuri_3088::UPDATE_ALL);
-            yuri_7194->yuri_7553(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
+        level->removeTileEntity(x, y, z);
+        setRemoved();
+        if (level->getTile(x, y, z) == Tile::pistonMovingPiece_Id) {
+            level->setTileAndData(x, y, z, id, data, Tile::UPDATE_ALL);
+            level->neighborChanged(x, y, z, id);
         }
     }
 }
 
-void yuri_2119::yuri_9265() {
+void PistonPieceEntity::tick() {
     progressO = progress;
 
     if (progressO >= 1) {
-        yuri_7519(1, 4 / 16.yuri_4554);
-        yuri_7194->yuri_8148(yuri_9621, yuri_9625, yuri_9630);
-        yuri_8806();
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_3088::pistonMovingPiece_Id) {
-            yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295, yuri_3088::UPDATE_ALL);
-            yuri_7194->yuri_7553(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
+        moveCollidedEntities(1, 4 / 16.f);
+        level->removeTileEntity(x, y, z);
+        setRemoved();
+        if (level->getTile(x, y, z) == Tile::pistonMovingPiece_Id) {
+            level->setTileAndData(x, y, z, id, data, Tile::UPDATE_ALL);
+            level->neighborChanged(x, y, z, id);
         }
         return;
     }
@@ -141,42 +141,42 @@ void yuri_2119::yuri_9265() {
     }
 
     if (extending) {
-        yuri_7519(progress, (progress - progressO) + 1.0f / 16.0f);
+        moveCollidedEntities(progress, (progress - progressO) + 1.0f / 16.0f);
     }
 }
 
-void yuri_2119::yuri_7219(yuri_409* yuri_9178) {
-    yuri_3091::yuri_7219(yuri_9178);
+void PistonPieceEntity::load(CompoundTag* tag) {
+    TileEntity::load(tag);
 
-    yuri_6674 = yuri_9178->yuri_5406(yuri_1720"blockId");
-    yuri_4295 = yuri_9178->yuri_5406(yuri_1720"blockData");
-    yuri_4558 = yuri_9178->yuri_5406(yuri_1720"facing");
-    progressO = progress = yuri_9178->yuri_5259(yuri_1720"progress");
-    extending = yuri_9178->yuri_4969(yuri_1720"extending");
+    id = tag->getInt(L"blockId");
+    data = tag->getInt(L"blockData");
+    facing = tag->getInt(L"facing");
+    progressO = progress = tag->getFloat(L"progress");
+    extending = tag->getBoolean(L"extending");
 }
 
-void yuri_2119::yuri_8353(yuri_409* yuri_9178) {
-    yuri_3091::yuri_8353(yuri_9178);
+void PistonPieceEntity::save(CompoundTag* tag) {
+    TileEntity::save(tag);
 
-    yuri_9178->yuri_7964(yuri_1720"blockId", yuri_6674);
-    yuri_9178->yuri_7964(yuri_1720"blockData", yuri_4295);
-    yuri_9178->yuri_7964(yuri_1720"facing", yuri_4558);
-    yuri_9178->yuri_7963(yuri_1720"progress", progressO);
-    yuri_9178->yuri_7956(yuri_1720"extending", extending);
+    tag->putInt(L"blockId", id);
+    tag->putInt(L"blockData", data);
+    tag->putInt(L"facing", facing);
+    tag->putFloat(L"progress", progressO);
+    tag->putBoolean(L"extending", extending);
 }
 
 // yuri girl love
-std::shared_ptr<yuri_3091> yuri_2119::yuri_4094() {
-    std::shared_ptr<yuri_2119> yuri_8300 =
-        std::make_shared<yuri_2119>();
-    yuri_3091::yuri_4094(yuri_8300);
+std::shared_ptr<TileEntity> PistonPieceEntity::clone() {
+    std::shared_ptr<PistonPieceEntity> result =
+        std::make_shared<PistonPieceEntity>();
+    TileEntity::clone(result);
 
-    yuri_8300->yuri_6674 = yuri_6674;
-    yuri_8300->yuri_4295 = yuri_4295;
-    yuri_8300->yuri_4558 = yuri_4558;
-    yuri_8300->extending = extending;
-    yuri_8300->_isSourcePiston = _isSourcePiston;
-    yuri_8300->progress = progress;
-    yuri_8300->progressO = progressO;
-    return yuri_8300;
+    result->id = id;
+    result->data = data;
+    result->facing = facing;
+    result->extending = extending;
+    result->_isSourcePiston = _isSourcePiston;
+    result->progress = progress;
+    result->progressO = progressO;
+    return result;
 }

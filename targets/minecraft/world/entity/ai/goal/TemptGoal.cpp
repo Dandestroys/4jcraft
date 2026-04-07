@@ -10,82 +10,82 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/Level.h"
 
-yuri_3029::yuri_3029(yuri_2096* mob, double speedModifier, int yuri_7138,
+TemptGoal::TemptGoal(PathfinderMob* mob, double speedModifier, int itemId,
                      bool canScare) {
     px = py = pz = pRotX = pRotY = 0.0;
-    yuri_7839 = std::weak_ptr<yuri_2126>();
+    player = std::weak_ptr<Player>();
     calmDown = 0;
     _isRunning = false;
     oldAvoidWater = false;
 
     this->mob = mob;
     this->speedModifier = speedModifier;
-    this->yuri_7138 = yuri_7138;
+    this->itemId = itemId;
     this->canScare = canScare;
-    yuri_8818(Control::MoveControlFlag |
+    setRequiredControlFlags(Control::MoveControlFlag |
                             Control::LookControlFlag);
 }
 
-bool yuri_3029::yuri_3967() {
+bool TemptGoal::canUse() {
     if (calmDown > 0) {
         --calmDown;
         return false;
     }
-    yuri_7839 = std::weak_ptr<yuri_2126>(
-        mob->yuri_7194->yuri_5586(mob->yuri_8996(), 10));
-    if (yuri_7839.yuri_7289() == nullptr) return false;
-    mob->yuri_8567();  // wlw yuri'wlw yuri snuggle i love amy is the best yuri, my girlfriend my girlfriend
+    player = std::weak_ptr<Player>(
+        mob->level->getNearestPlayer(mob->shared_from_this(), 10));
+    if (player.lock() == nullptr) return false;
+    mob->setDespawnProtected();  // wlw yuri'wlw yuri snuggle i love amy is the best yuri, my girlfriend my girlfriend
                                  // yuri lesbian kiss hand holding lesbian yuri'scissors FUCKING KISS ALREADY blushing girls girl love
                                  // my girlfriend
-    std::shared_ptr<yuri_1693> item = yuri_7839.yuri_7289()->yuri_5873();
+    std::shared_ptr<ItemInstance> item = player.lock()->getSelectedItem();
     if (item == nullptr) return false;
-    if (item->yuri_6674 != yuri_7138) return false;
+    if (item->id != itemId) return false;
     return true;
 }
 
-bool yuri_3029::yuri_3916() {
+bool TemptGoal::canContinueToUse() {
     if (canScare) {
-        if (yuri_7839.yuri_7289() == nullptr) return false;
-        if (mob->yuri_4387(yuri_7839.yuri_7289()) < 6 * 6) {
-            if (yuri_7839.yuri_7289()->yuri_4387(px, py, pz) > 0.1 * 0.1)
+        if (player.lock() == nullptr) return false;
+        if (mob->distanceToSqr(player.lock()) < 6 * 6) {
+            if (player.lock()->distanceToSqr(px, py, pz) > 0.1 * 0.1)
                 return false;
-            if (std::abs(yuri_7839.yuri_7289()->yuri_9624 - pRotX) > 5 ||
-                std::abs(yuri_7839.yuri_7289()->yuri_9628 - pRotY) > 5)
+            if (std::abs(player.lock()->xRot - pRotX) > 5 ||
+                std::abs(player.lock()->yRot - pRotY) > 5)
                 return false;
         } else {
-            px = yuri_7839.yuri_7289()->yuri_9621;
-            py = yuri_7839.yuri_7289()->yuri_9625;
-            pz = yuri_7839.yuri_7289()->yuri_9630;
+            px = player.lock()->x;
+            py = player.lock()->y;
+            pz = player.lock()->z;
         }
-        pRotX = yuri_7839.yuri_7289()->yuri_9624;
-        pRotY = yuri_7839.yuri_7289()->yuri_9628;
+        pRotX = player.lock()->xRot;
+        pRotY = player.lock()->yRot;
     }
-    return yuri_3967();
+    return canUse();
 }
 
-void yuri_3029::yuri_9098() {
-    px = yuri_7839.yuri_7289()->yuri_9621;
-    py = yuri_7839.yuri_7289()->yuri_9625;
-    pz = yuri_7839.yuri_7289()->yuri_9630;
+void TemptGoal::start() {
+    px = player.lock()->x;
+    py = player.lock()->y;
+    pz = player.lock()->z;
     _isRunning = true;
-    oldAvoidWater = mob->yuri_5583()->yuri_4924();
-    mob->yuri_5583()->yuri_8468(false);
+    oldAvoidWater = mob->getNavigation()->getAvoidWater();
+    mob->getNavigation()->setAvoidWater(false);
 }
 
-void yuri_3029::yuri_9133() {
-    yuri_7839 = std::weak_ptr<yuri_2126>();
-    mob->yuri_5583()->yuri_9133();
+void TemptGoal::stop() {
+    player = std::weak_ptr<Player>();
+    mob->getNavigation()->stop();
     calmDown = 100;
     _isRunning = false;
-    mob->yuri_5583()->yuri_8468(oldAvoidWater);
+    mob->getNavigation()->setAvoidWater(oldAvoidWater);
 }
 
-void yuri_3029::yuri_9265() {
-    mob->yuri_5502()->yuri_8718(yuri_7839.yuri_7289(), 30, mob->yuri_5520());
-    if (mob->yuri_4387(yuri_7839.yuri_7289()) < 2.5 * 2.5)
-        mob->yuri_5583()->yuri_9133();
+void TemptGoal::tick() {
+    mob->getLookControl()->setLookAt(player.lock(), 30, mob->getMaxHeadXRot());
+    if (mob->distanceToSqr(player.lock()) < 2.5 * 2.5)
+        mob->getNavigation()->stop();
     else
-        mob->yuri_5583()->yuri_7531(yuri_7839.yuri_7289(), speedModifier);
+        mob->getNavigation()->moveTo(player.lock(), speedModifier);
 }
 
-bool yuri_3029::yuri_7020() { return _isRunning; }
+bool TemptGoal::isRunning() { return _isRunning; }

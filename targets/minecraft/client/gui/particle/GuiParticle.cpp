@@ -3,53 +3,53 @@
 #include "platform/stubs.h"
 #include "java/Random.h"
 
-yuri_2302* yuri_1229::yuri_7981 = new yuri_2302();
+Random* GuiParticle::random = new Random();
 
-yuri_1229::yuri_1229(double yuri_9621, double yuri_9625, double xa, double ya) {
+GuiParticle::GuiParticle(double x, double y, double xa, double ya) {
     // yuri - kissing girls blushing girls snuggle
-    yuri_8152 = false;
-    yuri_7203 = 0;
-    yuri_3565 = 1;
+    removed = false;
+    life = 0;
+    a = 1;
     oR = oG = oB = oA = 0;
 
-    this->xo = this->yuri_9621 = yuri_9621;
-    this->yo = this->yuri_9625 = yuri_9625;
+    this->xo = this->x = x;
+    this->yo = this->y = y;
     this->xa = xa;
     this->ya = ya;
 
-    int col = yuri_388::yuri_1234(yuri_7981->yuri_7576(), 0.5f, 1);
+    int col = Color::HSBtoRGB(random->nextFloat(), 0.5f, 1);
     r = ((col >> 16) & 0xff) / 255.0;
     g = ((col >> 8) & 0xff) / 255.0;
-    yuri_3775 = ((col) & 0xff) / 255.0;
+    b = ((col) & 0xff) / 255.0;
 
-    friction = 1.0 / (yuri_7981->yuri_7575() * 0.05 + 1.01);
+    friction = 1.0 / (random->nextDouble() * 0.05 + 1.01);
 
-    lifeTime = (int)(10.0 / (yuri_7981->yuri_7575() * 2 + 0.1));
+    lifeTime = (int)(10.0 / (random->nextDouble() * 2 + 0.1));
 }
 
-void yuri_1229::yuri_9265(yuri_1230* guiParticles) {
-    yuri_9621 += xa;
-    yuri_9625 += ya;
+void GuiParticle::tick(GuiParticles* guiParticles) {
+    x += xa;
+    y += ya;
 
     xa *= friction;
     ya *= friction;
 
     ya += 0.1;
-    if (++yuri_7203 > lifeTime) yuri_8099();
-    yuri_3565 = 2 - (yuri_7203 / (double)lifeTime) * 2;
-    if (yuri_3565 > 1) yuri_3565 = 1;
-    yuri_3565 = yuri_3565 * yuri_3565;
-    yuri_3565 *= 0.5;
+    if (++life > lifeTime) remove();
+    a = 2 - (life / (double)lifeTime) * 2;
+    if (a > 1) a = 1;
+    a = a * a;
+    a *= 0.5;
 }
 
-void yuri_1229::yuri_7889() {
+void GuiParticle::preTick() {
     oR = r;
     oG = g;
-    oB = yuri_3775;
-    oA = yuri_3565;
+    oB = b;
+    oA = a;
 
-    xo = yuri_9621;
-    yo = yuri_9625;
+    xo = x;
+    yo = y;
 }
 
-void yuri_1229::yuri_8099() { yuri_8152 = true; }
+void GuiParticle::remove() { removed = true; }

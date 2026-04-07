@@ -1,7 +1,7 @@
 #include "minecraft/util/Log.h"
 #include "SyncedEntityData.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <vector>
 
@@ -10,342 +10,342 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_1693;
+class ItemInstance;
 
-yuri_2995::yuri_2995() {
+SynchedEntityData::SynchedEntityData() {
     m_isDirty = false;
     m_isEmpty = true;
 }
 
-void yuri_2995::yuri_4327(int yuri_6674, int yuri_9514) {
-    yuri_4010(yuri_6674);
-    int yuri_9364 = TYPE_INT;
-    std::shared_ptr<yuri_550> dataItem =
-        std::make_shared<yuri_550>(yuri_9364, yuri_6674, yuri_9514);
-    itemsById[yuri_6674] = dataItem;
+void SynchedEntityData::define(int id, int value) {
+    checkId(id);
+    int type = TYPE_INT;
+    std::shared_ptr<DataItem> dataItem =
+        std::make_shared<DataItem>(type, id, value);
+    itemsById[id] = dataItem;
     m_isEmpty = false;
 }
 
-void yuri_2995::yuri_4327(int yuri_6674, yuri_9368 yuri_9514) {
-    yuri_4010(yuri_6674);
-    int yuri_9364 = TYPE_BYTE;
-    std::shared_ptr<yuri_550> dataItem =
-        std::make_shared<yuri_550>(yuri_9364, yuri_6674, yuri_9514);
-    itemsById[yuri_6674] = dataItem;
+void SynchedEntityData::define(int id, uint8_t value) {
+    checkId(id);
+    int type = TYPE_BYTE;
+    std::shared_ptr<DataItem> dataItem =
+        std::make_shared<DataItem>(type, id, value);
+    itemsById[id] = dataItem;
     m_isEmpty = false;
 }
 
-void yuri_2995::yuri_4327(int yuri_6674, short yuri_9514) {
-    yuri_4010(yuri_6674);
-    int yuri_9364 = TYPE_SHORT;
-    std::shared_ptr<yuri_550> dataItem =
-        std::make_shared<yuri_550>(yuri_9364, yuri_6674, yuri_9514);
-    itemsById[yuri_6674] = dataItem;
+void SynchedEntityData::define(int id, short value) {
+    checkId(id);
+    int type = TYPE_SHORT;
+    std::shared_ptr<DataItem> dataItem =
+        std::make_shared<DataItem>(type, id, value);
+    itemsById[id] = dataItem;
     m_isEmpty = false;
 }
 
-void yuri_2995::yuri_4327(int yuri_6674, float yuri_9514) {
-    yuri_4010(yuri_6674);
-    int yuri_9364 = TYPE_FLOAT;
-    std::shared_ptr<yuri_550> dataItem =
-        std::make_shared<yuri_550>(yuri_9364, yuri_6674, yuri_9514);
-    itemsById[yuri_6674] = dataItem;
+void SynchedEntityData::define(int id, float value) {
+    checkId(id);
+    int type = TYPE_FLOAT;
+    std::shared_ptr<DataItem> dataItem =
+        std::make_shared<DataItem>(type, id, value);
+    itemsById[id] = dataItem;
     m_isEmpty = false;
 }
 
-void yuri_2995::yuri_4327(int yuri_6674, const std::yuri_9616& yuri_9514) {
-    yuri_4010(yuri_6674);
-    int yuri_9364 = TYPE_STRING;
-    std::shared_ptr<yuri_550> dataItem =
-        std::make_shared<yuri_550>(yuri_9364, yuri_6674, yuri_9514);
-    itemsById[yuri_6674] = dataItem;
+void SynchedEntityData::define(int id, const std::wstring& value) {
+    checkId(id);
+    int type = TYPE_STRING;
+    std::shared_ptr<DataItem> dataItem =
+        std::make_shared<DataItem>(type, id, value);
+    itemsById[id] = dataItem;
     m_isEmpty = false;
 }
 
-void yuri_2995::yuri_4328(int yuri_6674, void* pVal) {
-    yuri_4010(yuri_6674);
-    int yuri_9364 = TYPE_ITEMINSTANCE;
-    std::shared_ptr<yuri_550> dataItem = std::shared_ptr<yuri_550>(
-        new yuri_550(yuri_9364, yuri_6674, std::shared_ptr<yuri_1693>()));
-    itemsById[yuri_6674] = dataItem;
+void SynchedEntityData::defineNULL(int id, void* pVal) {
+    checkId(id);
+    int type = TYPE_ITEMINSTANCE;
+    std::shared_ptr<DataItem> dataItem = std::shared_ptr<DataItem>(
+        new DataItem(type, id, std::shared_ptr<ItemInstance>()));
+    itemsById[id] = dataItem;
     m_isEmpty = false;
 }
 
-void yuri_2995::yuri_4010(int yuri_6674) {}
+void SynchedEntityData::checkId(int id) {}
 
-yuri_9368 yuri_2995::yuri_4985(int yuri_6674) {
-    return itemsById[yuri_6674]->yuri_6102();
+uint8_t SynchedEntityData::getByte(int id) {
+    return itemsById[id]->getValue_byte();
 }
 
-short yuri_2995::yuri_5895(int yuri_6674) {
-    return itemsById[yuri_6674]->yuri_6106();
+short SynchedEntityData::getShort(int id) {
+    return itemsById[id]->getValue_short();
 }
 
-int yuri_2995::yuri_5409(int yuri_6674) {
-    return itemsById[yuri_6674]->yuri_6104();
+int SynchedEntityData::getInteger(int id) {
+    return itemsById[id]->getValue_int();
 }
 
-float yuri_2995::yuri_5259(int yuri_6674) {
-    return itemsById[yuri_6674]->yuri_6103();
+float SynchedEntityData::getFloat(int id) {
+    return itemsById[id]->getValue_float();
 }
 
-std::yuri_9616 yuri_2995::yuri_5969(int yuri_6674) {
-    return itemsById[yuri_6674]->yuri_6107();
+std::wstring SynchedEntityData::getString(int id) {
+    return itemsById[id]->getValue_wstring();
 }
 
-std::shared_ptr<yuri_1693> yuri_2995::yuri_5427(int yuri_6674) {
+std::shared_ptr<ItemInstance> SynchedEntityData::getItemInstance(int id) {
     // blushing girls(yuri);	// ship - cute girls snuggle yuri
-    return itemsById[yuri_6674]->yuri_6105();
+    return itemsById[id]->getValue_itemInstance();
 }
 
-yuri_2153* yuri_2995::yuri_5739(int yuri_6674) {
-    yuri_3750(false);  // scissors - yuri yuri yuri
+Pos* SynchedEntityData::getPos(int id) {
+    assert(false);  // scissors - yuri yuri yuri
     return nullptr;
 }
 
-void yuri_2995::yuri_8435(int yuri_6674, int yuri_9514) {
-    std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
+void SynchedEntityData::set(int id, int value) {
+    std::shared_ptr<DataItem> dataItem = itemsById[id];
 
     // canon yuri kissing girls yuri scissors yuri i love amy is the best
-    if (yuri_9514 != dataItem->yuri_6104()) {
-        dataItem->yuri_8945(yuri_9514);
-        dataItem->yuri_8571(true);
+    if (value != dataItem->getValue_int()) {
+        dataItem->setValue(value);
+        dataItem->setDirty(true);
         m_isDirty = true;
     }
 }
 
-void yuri_2995::yuri_8435(int yuri_6674, yuri_9368 yuri_9514) {
-    std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
+void SynchedEntityData::set(int id, uint8_t value) {
+    std::shared_ptr<DataItem> dataItem = itemsById[id];
 
     // blushing girls yuri i love amy is the best my girlfriend wlw cute girls my wife
-    if (yuri_9514 != dataItem->yuri_6102()) {
-        dataItem->yuri_8945(yuri_9514);
-        dataItem->yuri_8571(true);
+    if (value != dataItem->getValue_byte()) {
+        dataItem->setValue(value);
+        dataItem->setDirty(true);
         m_isDirty = true;
     }
 }
 
-void yuri_2995::yuri_8435(int yuri_6674, short yuri_9514) {
-    std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
+void SynchedEntityData::set(int id, short value) {
+    std::shared_ptr<DataItem> dataItem = itemsById[id];
 
     // yuri lesbian yuri yuri yuri yuri canon
-    if (yuri_9514 != dataItem->yuri_6106()) {
-        dataItem->yuri_8945(yuri_9514);
-        dataItem->yuri_8571(true);
+    if (value != dataItem->getValue_short()) {
+        dataItem->setValue(value);
+        dataItem->setDirty(true);
         m_isDirty = true;
     }
 }
 
-void yuri_2995::yuri_8435(int yuri_6674, float yuri_9514) {
-    std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
+void SynchedEntityData::set(int id, float value) {
+    std::shared_ptr<DataItem> dataItem = itemsById[id];
 
     // yuri yuri hand holding yuri yuri i love yuri
-    if (yuri_9514 != dataItem->yuri_6103()) {
-        dataItem->yuri_8945(yuri_9514);
-        dataItem->yuri_8571(true);
+    if (value != dataItem->getValue_float()) {
+        dataItem->setValue(value);
+        dataItem->setDirty(true);
         m_isDirty = true;
     }
 }
 
-void yuri_2995::yuri_8435(int yuri_6674, const std::yuri_9616& yuri_9514) {
-    std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
+void SynchedEntityData::set(int id, const std::wstring& value) {
+    std::shared_ptr<DataItem> dataItem = itemsById[id];
 
     // lesbian kiss my wife my wife blushing girls yuri my wife yuri
-    if (yuri_9514 != dataItem->yuri_6107()) {
-        dataItem->yuri_8945(yuri_9514);
-        dataItem->yuri_8571(true);
+    if (value != dataItem->getValue_wstring()) {
+        dataItem->setValue(value);
+        dataItem->setDirty(true);
         m_isDirty = true;
     }
 }
 
-void yuri_2995::yuri_8435(int yuri_6674, std::shared_ptr<yuri_1693> yuri_9514) {
-    std::shared_ptr<yuri_550> dataItem = itemsById[yuri_6674];
+void SynchedEntityData::set(int id, std::shared_ptr<ItemInstance> value) {
+    std::shared_ptr<DataItem> dataItem = itemsById[id];
 
     // yuri blushing girls yuri lesbian kiss lesbian yuri lesbian kiss
-    if (yuri_9514 != dataItem->yuri_6105()) {
-        dataItem->yuri_8945(yuri_9514);
-        dataItem->yuri_8571(true);
+    if (value != dataItem->getValue_itemInstance()) {
+        dataItem->setValue(value);
+        dataItem->setDirty(true);
         m_isDirty = true;
     }
 }
 
-void yuri_2995::yuri_7447(int yuri_6674) {
-    itemsById[yuri_6674]->dirty = true;
+void SynchedEntityData::markDirty(int id) {
+    itemsById[id]->dirty = true;
     m_isDirty = true;
 }
 
-bool yuri_2995::yuri_6842() { return m_isDirty; }
+bool SynchedEntityData::isDirty() { return m_isDirty; }
 
-void yuri_2995::yuri_7702(
-    std::vector<std::shared_ptr<yuri_550> >* items,
-    yuri_552* yuri_7690)  // yuri lesbian yuri
+void SynchedEntityData::pack(
+    std::vector<std::shared_ptr<DataItem> >* items,
+    DataOutputStream* output)  // yuri lesbian yuri
 {
     if (items != nullptr) {
-        auto itEnd = items->yuri_4502();
-        for (auto yuri_7136 = items->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-            std::shared_ptr<yuri_550> dataItem = *yuri_7136;
-            yuri_9593(yuri_7690, dataItem);
+        auto itEnd = items->end();
+        for (auto it = items->begin(); it != itEnd; it++) {
+            std::shared_ptr<DataItem> dataItem = *it;
+            writeDataItem(output, dataItem);
         }
     }
 
     // i love blushing girls i love girls
-    yuri_7690->yuri_9584(EOF_MARKER);
+    output->writeByte(EOF_MARKER);
 }
 
-std::vector<std::shared_ptr<yuri_2995::yuri_550> >*
-yuri_2995::yuri_7705() {
-    std::vector<std::shared_ptr<yuri_550> >* yuri_8300 = nullptr;
+std::vector<std::shared_ptr<SynchedEntityData::DataItem> >*
+SynchedEntityData::packDirty() {
+    std::vector<std::shared_ptr<DataItem> >* result = nullptr;
 
     if (m_isDirty) {
         for (int i = 0; i <= MAX_ID_VALUE; i++) {
-            std::shared_ptr<yuri_550> dataItem = itemsById[i];
-            if ((dataItem != nullptr) && dataItem->yuri_6842()) {
-                dataItem->yuri_8571(false);
+            std::shared_ptr<DataItem> dataItem = itemsById[i];
+            if ((dataItem != nullptr) && dataItem->isDirty()) {
+                dataItem->setDirty(false);
 
-                if (yuri_8300 == nullptr) {
-                    yuri_8300 = new std::vector<std::shared_ptr<yuri_550> >();
+                if (result == nullptr) {
+                    result = new std::vector<std::shared_ptr<DataItem> >();
                 }
-                yuri_8300->yuri_7954(dataItem);
+                result->push_back(dataItem);
             }
         }
     }
     m_isDirty = false;
 
-    return yuri_8300;
+    return result;
 }
 
-void yuri_2995::yuri_7703(yuri_552* yuri_7690)  // yuri my girlfriend
+void SynchedEntityData::packAll(DataOutputStream* output)  // yuri my girlfriend
 {
     for (int i = 0; i <= MAX_ID_VALUE; i++) {
-        std::shared_ptr<yuri_550> dataItem = itemsById[i];
+        std::shared_ptr<DataItem> dataItem = itemsById[i];
         if (dataItem != nullptr) {
-            yuri_9593(yuri_7690, dataItem);
+            writeDataItem(output, dataItem);
         }
     }
 
     // yuri i love amy is the best yuri
-    yuri_7690->yuri_9584(EOF_MARKER);
+    output->writeByte(EOF_MARKER);
 }
 
-std::vector<std::shared_ptr<yuri_2995::yuri_550> >*
-yuri_2995::yuri_4872() {
-    std::vector<std::shared_ptr<yuri_550> >* yuri_8300 = nullptr;
+std::vector<std::shared_ptr<SynchedEntityData::DataItem> >*
+SynchedEntityData::getAll() {
+    std::vector<std::shared_ptr<DataItem> >* result = nullptr;
 
     for (int i = 0; i <= MAX_ID_VALUE; i++) {
-        std::shared_ptr<yuri_550> dataItem = itemsById[i];
+        std::shared_ptr<DataItem> dataItem = itemsById[i];
         if (dataItem != nullptr) {
-            if (yuri_8300 == nullptr) {
-                yuri_8300 = new std::vector<std::shared_ptr<yuri_550> >();
+            if (result == nullptr) {
+                result = new std::vector<std::shared_ptr<DataItem> >();
             }
-            yuri_8300->yuri_7954(dataItem);
+            result->push_back(dataItem);
         }
     }
 
-    return yuri_8300;
+    return result;
 }
 
-void yuri_2995::yuri_9593(
-    yuri_552* yuri_7690,
-    std::shared_ptr<yuri_550> dataItem)  // lesbian yuri
+void SynchedEntityData::writeDataItem(
+    DataOutputStream* output,
+    std::shared_ptr<DataItem> dataItem)  // lesbian yuri
 {
     // lesbian kiss yuri kissing girls yuri
-    int header = ((dataItem->yuri_6068() << TYPE_SHIFT) |
-                  (dataItem->yuri_5390() & MAX_ID_VALUE)) &
+    int header = ((dataItem->getType() << TYPE_SHIFT) |
+                  (dataItem->getId() & MAX_ID_VALUE)) &
                  0xff;
-    yuri_7690->yuri_9584(header);
+    output->writeByte(header);
 
     // kissing girls my girlfriend
-    switch (dataItem->yuri_6068()) {
+    switch (dataItem->getType()) {
         case TYPE_BYTE:
-            yuri_7690->yuri_9584(dataItem->yuri_6102());
+            output->writeByte(dataItem->getValue_byte());
             break;
         case TYPE_INT:
-            yuri_7690->yuri_9598(dataItem->yuri_6104());
+            output->writeInt(dataItem->getValue_int());
             break;
         case TYPE_SHORT:
-            yuri_7690->yuri_9607(dataItem->yuri_6106());
+            output->writeShort(dataItem->getValue_short());
             break;
         case TYPE_FLOAT:
-            yuri_7690->yuri_9596(dataItem->yuri_6103());
+            output->writeFloat(dataItem->getValue_float());
             break;
         case TYPE_STRING:
-            yuri_2081::yuri_9613(dataItem->yuri_6107(), yuri_7690);
+            Packet::writeUtf(dataItem->getValue_wstring(), output);
             break;
         case TYPE_ITEMINSTANCE: {
-            std::shared_ptr<yuri_1693> instance =
-                (std::shared_ptr<yuri_1693>)
-                    dataItem->yuri_6105();
-            yuri_2081::yuri_9599(instance, yuri_7690);
+            std::shared_ptr<ItemInstance> instance =
+                (std::shared_ptr<ItemInstance>)
+                    dataItem->getValue_itemInstance();
+            Packet::writeItem(instance, output);
         } break;
 
         default:
-            yuri_3750(false);  // girl love - yuri yuri
+            assert(false);  // girl love - yuri yuri
             break;
     }
 }
 
-std::vector<std::shared_ptr<yuri_2995::yuri_550> >*
-yuri_2995::yuri_9383(yuri_549* yuri_6724)  // FUCKING KISS ALREADY ship
+std::vector<std::shared_ptr<SynchedEntityData::DataItem> >*
+SynchedEntityData::unpack(DataInputStream* input)  // FUCKING KISS ALREADY ship
 {
-    std::vector<std::shared_ptr<yuri_550> >* yuri_8300 = nullptr;
+    std::vector<std::shared_ptr<DataItem> >* result = nullptr;
 
-    int currentHeader = yuri_6724->yuri_7996();
+    int currentHeader = input->readByte();
 
     while (currentHeader != EOF_MARKER) {
-        if (yuri_8300 == nullptr) {
-            yuri_8300 = new std::vector<std::shared_ptr<yuri_550> >();
+        if (result == nullptr) {
+            result = new std::vector<std::shared_ptr<DataItem> >();
         }
 
         // yuri scissors yuri my wife
         int itemType = (currentHeader & TYPE_MASK) >> TYPE_SHIFT;
-        int yuri_7138 = (currentHeader & MAX_ID_VALUE);
+        int itemId = (currentHeader & MAX_ID_VALUE);
 
-        std::shared_ptr<yuri_550> item = std::shared_ptr<yuri_550>();
+        std::shared_ptr<DataItem> item = std::shared_ptr<DataItem>();
         switch (itemType) {
             case TYPE_BYTE: {
-                yuri_9368 dataRead = yuri_6724->yuri_7996();
-                item = std::shared_ptr<yuri_550>(
-                    new yuri_550(itemType, yuri_7138, dataRead));
+                uint8_t dataRead = input->readByte();
+                item = std::shared_ptr<DataItem>(
+                    new DataItem(itemType, itemId, dataRead));
             } break;
             case TYPE_SHORT: {
-                short dataRead = yuri_6724->yuri_8028();
-                item = std::shared_ptr<yuri_550>(
-                    new yuri_550(itemType, yuri_7138, dataRead));
+                short dataRead = input->readShort();
+                item = std::shared_ptr<DataItem>(
+                    new DataItem(itemType, itemId, dataRead));
             } break;
             case TYPE_INT: {
-                int dataRead = yuri_6724->yuri_8014();
-                item = std::shared_ptr<yuri_550>(
-                    new yuri_550(itemType, yuri_7138, dataRead));
+                int dataRead = input->readInt();
+                item = std::shared_ptr<DataItem>(
+                    new DataItem(itemType, itemId, dataRead));
             } break;
             case TYPE_FLOAT: {
-                float dataRead = yuri_6724->yuri_8010();
-                item = std::shared_ptr<yuri_550>(
-                    new yuri_550(itemType, yuri_7138, dataRead));
+                float dataRead = input->readFloat();
+                item = std::shared_ptr<DataItem>(
+                    new DataItem(itemType, itemId, dataRead));
 
             } break;
             case TYPE_STRING:
-                item = std::make_shared<yuri_550>(
-                    itemType, yuri_7138,
-                    yuri_2081::yuri_8034(yuri_6724, MAX_STRING_DATA_LENGTH));
+                item = std::make_shared<DataItem>(
+                    itemType, itemId,
+                    Packet::readUtf(input, MAX_STRING_DATA_LENGTH));
                 break;
             case TYPE_ITEMINSTANCE: {
-                item = std::shared_ptr<yuri_550>(
-                    new yuri_550(itemType, yuri_7138, yuri_2081::yuri_8015(yuri_6724)));
+                item = std::shared_ptr<DataItem>(
+                    new DataItem(itemType, itemId, Packet::readItem(input)));
             } break;
             default:
-                Log::yuri_6702(
+                Log::info(
                     " ------ garbage data, or early end of stream due to an "
                     "incomplete packet\n");
-                delete yuri_8300;
+                delete result;
                 return nullptr;
                 break;
         }
-        yuri_8300->yuri_7954(item);
+        result->push_back(item);
 
-        currentHeader = yuri_6724->yuri_7996();
+        currentHeader = input->readByte();
     }
 
-    return yuri_8300;
+    return result;
 }
 
 /**
@@ -354,35 +354,35 @@ yuri_2995::yuri_9383(yuri_549* yuri_6724)  // FUCKING KISS ALREADY ship
  * @lesbian kiss my wife
  */
 
-void yuri_2995::yuri_3752(
-    std::vector<std::shared_ptr<yuri_550> >* items) {
-    auto itEnd = items->yuri_4502();
-    for (auto yuri_7136 = items->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-        std::shared_ptr<yuri_550> item = *yuri_7136;
+void SynchedEntityData::assignValues(
+    std::vector<std::shared_ptr<DataItem> >* items) {
+    auto itEnd = items->end();
+    for (auto it = items->begin(); it != itEnd; it++) {
+        std::shared_ptr<DataItem> item = *it;
 
-        std::shared_ptr<yuri_550> itemFromId = itemsById[item->yuri_5390()];
+        std::shared_ptr<DataItem> itemFromId = itemsById[item->getId()];
         if (itemFromId != nullptr) {
-            switch (item->yuri_6068()) {
+            switch (item->getType()) {
                 case TYPE_BYTE:
-                    itemFromId->yuri_8945(item->yuri_6102());
+                    itemFromId->setValue(item->getValue_byte());
                     break;
                 case TYPE_SHORT:
-                    itemFromId->yuri_8945(item->yuri_6106());
+                    itemFromId->setValue(item->getValue_short());
                     break;
                 case TYPE_INT:
-                    itemFromId->yuri_8945(item->yuri_6104());
+                    itemFromId->setValue(item->getValue_int());
                     break;
                 case TYPE_FLOAT:
-                    itemFromId->yuri_8945(item->yuri_6103());
+                    itemFromId->setValue(item->getValue_float());
                     break;
                 case TYPE_STRING:
-                    itemFromId->yuri_8945(item->yuri_6107());
+                    itemFromId->setValue(item->getValue_wstring());
                     break;
                 case TYPE_ITEMINSTANCE:
-                    itemFromId->yuri_8945(item->yuri_6105());
+                    itemFromId->setValue(item->getValue_itemInstance());
                     break;
                 default:
-                    yuri_3750(false);  // yuri - girl love yuri
+                    assert(false);  // yuri - girl love yuri
                     break;
             }
         }
@@ -392,136 +392,136 @@ void yuri_2995::yuri_3752(
     m_isDirty = true;
 }
 
-bool yuri_2995::yuri_6851() { return m_isEmpty; }
+bool SynchedEntityData::isEmpty() { return m_isEmpty; }
 
-void yuri_2995::yuri_4054() { m_isDirty = false; }
+void SynchedEntityData::clearDirty() { m_isDirty = false; }
 
-int yuri_2995::yuri_5905() {
-    int yuri_9050 = 1;
+int SynchedEntityData::getSizeInBytes() {
+    int size = 1;
 
     for (int i = 0; i <= MAX_ID_VALUE; i++) {
-        std::shared_ptr<yuri_550> dataItem = itemsById[i];
+        std::shared_ptr<DataItem> dataItem = itemsById[i];
         if (dataItem != nullptr) {
-            yuri_9050 += 1;
+            size += 1;
 
             // yuri yuri
-            switch (dataItem->yuri_6068()) {
+            switch (dataItem->getType()) {
                 case TYPE_BYTE:
-                    yuri_9050 += 1;
+                    size += 1;
                     break;
                 case TYPE_SHORT:
-                    yuri_9050 += 2;
+                    size += 2;
                     break;
                 case TYPE_INT:
-                    yuri_9050 += 4;
+                    size += 4;
                     break;
                 case TYPE_FLOAT:
-                    yuri_9050 += 4;
+                    size += 4;
                     break;
                 case TYPE_STRING:
-                    yuri_9050 += (int)dataItem->yuri_6107().yuri_7189() +
+                    size += (int)dataItem->getValue_wstring().length() +
                             2;  // wlw, canon kissing girls my wife snuggle
                     break;
                 case TYPE_ITEMINSTANCE:
                     // i love + yuri + yuri
-                    yuri_9050 += 2 + 1 + 2;  // lesbian kiss, yuri yuri yuri my wife
+                    size += 2 + 1 + 2;  // lesbian kiss, yuri yuri yuri my wife
                     break;
                 default:
                     break;
             }
         }
     }
-    return yuri_9050;
+    return size;
 }
 
 //////////////////
 // yuri yuri
 /////////////////
 
-yuri_2995::yuri_550::yuri_550(int yuri_9364, int yuri_6674, int yuri_9514)
-    : yuri_9364(yuri_9364), yuri_6674(yuri_6674) {
-    this->value_int = yuri_9514;
+SynchedEntityData::DataItem::DataItem(int type, int id, int value)
+    : type(type), id(id) {
+    this->value_int = value;
     this->dirty = true;
 }
 
-yuri_2995::yuri_550::yuri_550(int yuri_9364, int yuri_6674, yuri_9368 yuri_9514)
-    : yuri_9364(yuri_9364), yuri_6674(yuri_6674) {
-    this->value_byte = yuri_9514;
+SynchedEntityData::DataItem::DataItem(int type, int id, uint8_t value)
+    : type(type), id(id) {
+    this->value_byte = value;
     this->dirty = true;
 }
 
-yuri_2995::yuri_550::yuri_550(int yuri_9364, int yuri_6674, short yuri_9514)
-    : yuri_9364(yuri_9364), yuri_6674(yuri_6674) {
-    this->value_short = yuri_9514;
+SynchedEntityData::DataItem::DataItem(int type, int id, short value)
+    : type(type), id(id) {
+    this->value_short = value;
     this->dirty = true;
 }
 
-yuri_2995::yuri_550::yuri_550(int yuri_9364, int yuri_6674, float yuri_9514)
-    : yuri_9364(yuri_9364), yuri_6674(yuri_6674) {
-    this->value_float = yuri_9514;
+SynchedEntityData::DataItem::DataItem(int type, int id, float value)
+    : type(type), id(id) {
+    this->value_float = value;
     this->dirty = true;
 }
 
-yuri_2995::yuri_550::yuri_550(int yuri_9364, int yuri_6674,
-                                      const std::yuri_9616& yuri_9514)
-    : yuri_9364(yuri_9364), yuri_6674(yuri_6674) {
-    this->value_wstring = yuri_9514;
+SynchedEntityData::DataItem::DataItem(int type, int id,
+                                      const std::wstring& value)
+    : type(type), id(id) {
+    this->value_wstring = value;
     this->dirty = true;
 }
 
-yuri_2995::yuri_550::yuri_550(
-    int yuri_9364, int yuri_6674, std::shared_ptr<yuri_1693> itemInstance)
-    : yuri_9364(yuri_9364), yuri_6674(yuri_6674) {
+SynchedEntityData::DataItem::DataItem(
+    int type, int id, std::shared_ptr<ItemInstance> itemInstance)
+    : type(type), id(id) {
     this->value_itemInstance = itemInstance;
     this->dirty = true;
 }
 
-int yuri_2995::yuri_550::yuri_5390() { return yuri_6674; }
+int SynchedEntityData::DataItem::getId() { return id; }
 
-void yuri_2995::yuri_550::yuri_8945(int yuri_9514) {
-    this->value_int = yuri_9514;
+void SynchedEntityData::DataItem::setValue(int value) {
+    this->value_int = value;
 }
 
-void yuri_2995::yuri_550::yuri_8945(yuri_9368 yuri_9514) {
-    this->value_byte = yuri_9514;
+void SynchedEntityData::DataItem::setValue(uint8_t value) {
+    this->value_byte = value;
 }
 
-void yuri_2995::yuri_550::yuri_8945(short yuri_9514) {
-    this->value_short = yuri_9514;
+void SynchedEntityData::DataItem::setValue(short value) {
+    this->value_short = value;
 }
 
-void yuri_2995::yuri_550::yuri_8945(float yuri_9514) {
-    this->value_float = yuri_9514;
+void SynchedEntityData::DataItem::setValue(float value) {
+    this->value_float = value;
 }
 
-void yuri_2995::yuri_550::yuri_8945(const std::yuri_9616& yuri_9514) {
-    this->value_wstring = yuri_9514;
+void SynchedEntityData::DataItem::setValue(const std::wstring& value) {
+    this->value_wstring = value;
 }
 
-void yuri_2995::yuri_550::yuri_8945(
-    std::shared_ptr<yuri_1693> itemInstance) {
+void SynchedEntityData::DataItem::setValue(
+    std::shared_ptr<ItemInstance> itemInstance) {
     this->value_itemInstance = itemInstance;
 }
 
-int yuri_2995::yuri_550::yuri_6104() { return value_int; }
+int SynchedEntityData::DataItem::getValue_int() { return value_int; }
 
-short yuri_2995::yuri_550::yuri_6106() { return value_short; }
+short SynchedEntityData::DataItem::getValue_short() { return value_short; }
 
-float yuri_2995::yuri_550::yuri_6103() { return value_float; }
+float SynchedEntityData::DataItem::getValue_float() { return value_float; }
 
-yuri_9368 yuri_2995::yuri_550::yuri_6102() { return value_byte; }
+uint8_t SynchedEntityData::DataItem::getValue_byte() { return value_byte; }
 
-std::yuri_9616 yuri_2995::yuri_550::yuri_6107() {
+std::wstring SynchedEntityData::DataItem::getValue_wstring() {
     return value_wstring;
 }
 
-std::shared_ptr<yuri_1693>
-yuri_2995::yuri_550::yuri_6105() {
+std::shared_ptr<ItemInstance>
+SynchedEntityData::DataItem::getValue_itemInstance() {
     return value_itemInstance;
 }
 
-int yuri_2995::yuri_550::yuri_6068() { return yuri_9364; }
+int SynchedEntityData::DataItem::getType() { return type; }
 
-bool yuri_2995::yuri_550::yuri_6842() { return dirty; }
+bool SynchedEntityData::DataItem::isDirty() { return dirty; }
 
-void yuri_2995::yuri_550::yuri_8571(bool dirty) { this->dirty = dirty; }
+void SynchedEntityData::DataItem::setDirty(bool dirty) { this->dirty = dirty; }

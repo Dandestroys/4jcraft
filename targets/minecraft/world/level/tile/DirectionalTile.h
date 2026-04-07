@@ -2,16 +2,16 @@
 
 #include "Tile.h"
 
-class yuri_1886;
+class Material;
 
-class yuri_614 : public yuri_3088 {
+class DirectionalTile : public Tile {
 public:
     static const int DIRECTION_MASK = 0x3;
     static const int DIRECTION_INV_MASK = 0xC;
 
 protected:
-    yuri_614(int yuri_6674, yuri_1886* material, bool yuri_7058);
+    DirectionalTile(int id, Material* material, bool isSolidRender);
 
 public:
-    static int yuri_5163(int yuri_4295);
+    static int getDirection(int data);
 };

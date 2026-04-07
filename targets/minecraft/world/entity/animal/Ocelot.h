@@ -1,20 +1,20 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "java/Class.h"
 #include "minecraft/world/entity/TamableAnimal.h"
 
-class yuri_3029;
-class yuri_739;
-class yuri_1758;
+class TemptGoal;
+class Entity;
+class Level;
 
-class yuri_2043 : public yuri_3020 {
-    friend class yuri_2047;
+class Ocelot : public TamableAnimal {
+    friend class OcelotSitOnTileGoal;
 
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_OCELOT; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2043(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_OCELOT; }
+    static Entity* create(Level* level) { return new Ocelot(level); }
 
 public:
     static const double SNEAK_SPEED_MOD;
@@ -34,64 +34,64 @@ public:
     };
 
 private:
-    yuri_3029* temptGoal;
+    TemptGoal* temptGoal;
 
 public:
-    yuri_2043(yuri_1758* yuri_7194);
+    Ocelot(Level* level);
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual void yuri_8430();
+    virtual void serverAiMobStep();
 
 protected:
-    virtual bool yuri_8151();
+    virtual bool removeWhenFarAway();
 
 public:
-    virtual bool yuri_9490();
+    virtual bool useNewAi();
 
 protected:
-    virtual void yuri_8067();
-    virtual void yuri_3980(float distance);
+    virtual void registerAttributes();
+    virtual void causeFallDamage(float distance);
 
 public:
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
 
 protected:
-    virtual int yuri_4882();
-    virtual int yuri_5383();
-    virtual int yuri_5130();
-    virtual float yuri_5937();
-    virtual int yuri_5128();
+    virtual int getAmbientSound();
+    virtual int getHurtSound();
+    virtual int getDeathSound();
+    virtual float getSoundVolume();
+    virtual int getDeathLoot();
 
 public:
-    virtual bool yuri_4408(std::shared_ptr<yuri_739> target);
-    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
+    virtual bool doHurtTarget(std::shared_ptr<Entity> target);
+    virtual bool hurt(DamageSource* source, float dmg);
 
 protected:
-    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual std::shared_ptr<yuri_99> yuri_4973(
-        std::shared_ptr<yuri_99> target);
-    virtual bool yuri_6876(std::shared_ptr<yuri_1693> itemInstance);
-    virtual bool yuri_3936(std::shared_ptr<yuri_113> animal);
-    virtual int yuri_4999();
-    virtual void yuri_8508(int yuri_9364);
-    virtual bool yuri_3958();
-    virtual std::yuri_9616 yuri_4856();
-    virtual MobGroupData* yuri_4592(
+    virtual bool mobInteract(std::shared_ptr<Player> player);
+    virtual std::shared_ptr<AgableMob> getBreedOffspring(
+        std::shared_ptr<AgableMob> target);
+    virtual bool isFood(std::shared_ptr<ItemInstance> itemInstance);
+    virtual bool canMate(std::shared_ptr<Animal> animal);
+    virtual int getCatType();
+    virtual void setCatType(int type);
+    virtual bool canSpawn();
+    virtual std::wstring getAName();
+    virtual MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
         int extraData = 0);  // yuri cute girls wlw yuri
 
     // wlw-yuri: yuri yuri ship, snuggle yuri FUCKING KISS ALREADY kissing girls yuri snuggle yuri FUCKING KISS ALREADY i love
     // scissors.
 private:
-    void yuri_8863(bool val);
+    void setSittingOnTile(bool val);
 
 public:
-    bool yuri_7045();
+    bool isSittingOnTile();
 };

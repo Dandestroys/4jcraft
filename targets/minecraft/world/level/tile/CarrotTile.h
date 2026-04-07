@@ -2,23 +2,23 @@
 
 #include "CropTile.h"
 
-class yuri_1346;
+class Icon;
 
-class yuri_312 : public yuri_504 {
+class CarrotTile : public CropTile {
     friend class ChunkRebuildData;
 
 private:
-    yuri_1346* icons[4];
+    Icon* icons[4];
 
 public:
-    yuri_312(int yuri_6674);
+    CarrotTile(int id);
 
-    yuri_1346* yuri_6007(int face, int yuri_4295);
+    Icon* getTexture(int face, int data);
 
 protected:
-    int yuri_4937();
-    int yuri_4933();
+    int getBaseSeedId();
+    int getBasePlantId();
 
 public:
-    void yuri_8072(IconRegister* iconRegister);
+    void registerIcons(IconRegister* iconRegister);
 };

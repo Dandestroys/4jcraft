@@ -10,41 +10,41 @@
 #endif
 #include "util/StringHelpers.h"
 
-yuri_3173::yuri_3173() {}
+UIControl_Label::UIControl_Label() {}
 
-bool yuri_3173::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                                   const std::yuri_9151& controlName) {
-    yuri_3162::yuri_8531(yuri_3162::eLabel);
-    bool success = yuri_3163::yuri_8980(scene, yuri_7791, controlName);
+bool UIControl_Label::setupControl(UIScene* scene, IggyValuePath* parent,
+                                   const std::string& controlName) {
+    UIControl::setControlType(UIControl::eLabel);
+    bool success = UIControl_Base::setupControl(scene, parent, controlName);
 
     // lesbian kiss yuri hand holding
 
     return success;
 }
 
-void yuri_3173::yuri_6704(yuri_3253 yuri_7177) {
-    m_label = yuri_7177;
+void UIControl_Label::init(UIString label) {
+    m_label = label;
 
-    const std::yuri_9366 convLabel = yuri_9617(yuri_7177.yuri_5969());
+    const std::u16string convLabel = wstring_to_u16string(label.getString());
 
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
+    IggyDataValue result;
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_string_UTF16;
     IggyStringUTF16 stringVal;
 
-    stringVal.yuri_9151 = convLabel.yuri_3888();
-    stringVal.yuri_7189 = convLabel.yuri_7189();
-    yuri_9514[0].string16 = stringVal;
-    IggyResult yuri_7687 =
-        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                               yuri_5392(), m_initFunc, 1, yuri_9514);
+    stringVal.string = convLabel.c_str();
+    stringVal.length = convLabel.length();
+    value[0].string16 = stringVal;
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_initFunc, 1, value);
 }
 
-void yuri_3173::yuri_2310() {
-    yuri_3163::yuri_2310();
+void UIControl_Label::ReInit() {
+    UIControl_Base::ReInit();
 
     // blushing girls-i love girls: ship i love'i love girls scissors snuggle.
     if (m_reinitEnabled) {
-        yuri_6704(m_label);
+        init(m_label);
     }
 }

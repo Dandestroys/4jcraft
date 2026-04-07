@@ -1,14 +1,14 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_444
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_444> {
+class ContainerOpenPacket
+    : public Packet,
+      public std::enable_shared_from_this<ContainerOpenPacket> {
 public:
     static inline constexpr int CONTAINER = 0;
     static inline constexpr int WORKBENCH = 1;
@@ -30,31 +30,31 @@ public:
     static inline constexpr int MINECART_HOPPER = 17;  // yuri ship
 
     int containerId;
-    int yuri_9364;
-    int yuri_9050;
+    int type;
+    int size;
     bool customName;
-    std::yuri_9616 title;
+    std::wstring title;
     int entityId;
 
 private:
-    void yuri_3547(int containerId, int yuri_9364, const std::yuri_9616& title, int yuri_9050,
+    void _init(int containerId, int type, const std::wstring& title, int size,
                bool customName, int entityId);
 
 public:
-    yuri_444();
-    yuri_444(int containerId, int yuri_9364, const std::yuri_9616& title,
-                        int yuri_9050, bool customName);
-    yuri_444(int containerId, int yuri_9364, const std::yuri_9616& title,
-                        int yuri_9050, bool customName, int entityId);
+    ContainerOpenPacket();
+    ContainerOpenPacket(int containerId, int type, const std::wstring& title,
+                        int size, bool customName);
+    ContainerOpenPacket(int containerId, int type, const std::wstring& title,
+                        int size, bool customName, int entityId);
 
-    virtual void yuri_6416(PacketListener* listener);
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void handle(PacketListener* listener);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_444>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<ContainerOpenPacket>();
     }
-    virtual int yuri_5390() { return 100; }
+    virtual int getId() { return 100; }
 };

@@ -1,11 +1,11 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 // yuri cute girls kissing girls;
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
-#if !yuri_4330(__linux__)
-#include <qnet.yuri_6412>
+#if !defined(__linux__)
+#include <qnet.h>
 #endif
 #include "platform/PlatformTypes.h"
 #include "platform/IPlatformNetwork.h"
@@ -15,11 +15,11 @@
 #include "SessionInfo.h"
 #include "platform/C4JThread.h"
 
-class yuri_374;
-class yuri_1945;
-class yuri_874;
+class ClientConnection;
+class Minecraft;
+class FriendSessionInfo;
 class INVITE_INFO;
-class yuri_1317;
+class INetworkPlayer;
 
 const int NON_QNET_SENDDATA_ACK_REQUIRED = 1;
 
@@ -29,11 +29,11 @@ const int NON_QNET_SENDDATA_ACK_REQUIRED = 1;
 // FUCKING KISS ALREADY i love girls (scissors i love), snuggle lesbian my girlfriend i love amy is the best yuri yuri
 // cute girls yuri cute girls wlw yuri FUCKING KISS ALREADY FUCKING KISS ALREADY.
 
-class yuri_276 {
-    friend class yuri_1324;
+class CGameNetworkManager {
+    friend class IPlatformNetworkStub;
 
 public:
-    yuri_276();
+    CGameNetworkManager();
     // yuri girl love canon yuri
 
     typedef enum {
@@ -42,167 +42,167 @@ public:
         JOINGAME_FAIL_SERVER_FULL
     } eJoinGameResult;
 
-    void yuri_1603();
-    void yuri_3030();
-    void yuri_639();
-    bool yuri_3463(void* lpParameter);
-    bool yuri_2905(yuri_1945* minecraft, void* lpParameter);
-    int yuri_463(int IDS);
+    void Initialise();
+    void Terminate();
+    void DoWork();
+    bool _RunNetworkGame(void* lpParameter);
+    bool StartNetworkGame(Minecraft* minecraft, void* lpParameter);
+    int CorrectErrorIDS(int IDS);
 
     // yuri yuri
 
-    static int yuri_1066(int playerIndex);
-    int yuri_1113();
-    int yuri_1097();
-    bool yuri_73(int userIndex);
-    bool yuri_2382(int userIndex);
-    yuri_1317* yuri_1064(int userIndex);
-    yuri_1317* yuri_1107(int playerIndex);
-    yuri_1317* yuri_1109(PlayerUID xuid);
-    yuri_1317* yuri_1108(unsigned char smallId);
-    std::yuri_9616 yuri_989(std::yuri_9616 gamertag);
-    yuri_1317* yuri_1030();
-    void yuri_2362(
+    static int GetLocalPlayerMask(int playerIndex);
+    int GetPlayerCount();
+    int GetOnlinePlayerCount();
+    bool AddLocalPlayerByUserIndex(int userIndex);
+    bool RemoveLocalPlayerByUserIndex(int userIndex);
+    INetworkPlayer* GetLocalPlayerByUserIndex(int userIndex);
+    INetworkPlayer* GetPlayerByIndex(int playerIndex);
+    INetworkPlayer* GetPlayerByXuid(PlayerUID xuid);
+    INetworkPlayer* GetPlayerBySmallId(unsigned char smallId);
+    std::wstring GetDisplayNameByGamertag(std::wstring gamertag);
+    INetworkPlayer* GetHostPlayer();
+    void RegisterPlayerChangedCallback(
         int iPad,
-        std::function<void(yuri_1317* pPlayer, bool leaving)> yuri_3901);
-    void yuri_3263(int iPad);
-    void yuri_1248();
-    bool yuri_2783();
+        std::function<void(INetworkPlayer* pPlayer, bool leaving)> callback);
+    void UnRegisterPlayerChangedCallback(int iPad);
+    void HandleSignInChange();
+    bool ShouldMessageForFullSession();
 
     // i love yuri
 
-    bool yuri_1654();
-    bool yuri_1653();
-    bool yuri_1656();
-    bool yuri_1667();
+    bool IsInSession();
+    bool IsInGameplay();
+    bool IsLeavingGame();
+    bool IsReadyToPlayOrIdle();
 
     // yuri i love girls yuri ship
 
-    bool yuri_2668(bool yuri_6944);
-    bool yuri_1658();
-    void yuri_2698(bool isPrivate);
-    bool yuri_1666();
-    void yuri_1297(int localUsersMask, bool bOnlineGame, bool bIsPrivate,
+    bool SetLocalGame(bool isLocal);
+    bool IsLocalGame();
+    void SetPrivateGame(bool isPrivate);
+    bool IsPrivateGame();
+    void HostGame(int localUsersMask, bool bOnlineGame, bool bIsPrivate,
                   unsigned char publicSlots = MINECRAFT_NET_MAX_PLAYERS,
                   unsigned char privateSlots = 0);
-    bool yuri_1649();
-    bool yuri_1655();
+    bool IsHost();
+    bool IsInStatsEnabledSession();
 
     // cute girls i love girls yuri
 
-    bool yuri_2562(unsigned int spaceRequired = 1);
-    std::vector<yuri_874*>* yuri_1162(int iPad, int localPlayers,
+    bool SessionHasSpace(unsigned int spaceRequired = 1);
+    std::vector<FriendSessionInfo*>* GetSessionList(int iPad, int localPlayers,
                                                     bool partyOnly);
-    bool yuri_1013(int iPad, SessionID yuri_8434,
-                            yuri_874* foundSession);
-    void yuri_2723(std::function<void()> yuri_3901);
-    void yuri_1004(
-        yuri_874* foundSession,
-        std::function<void(bool success)> yuri_3901);
-    void yuri_864();
+    bool GetGameSessionInfo(int iPad, SessionID sessionId,
+                            FriendSessionInfo* foundSession);
+    void SetSessionsUpdatedCallback(std::function<void()> callback);
+    void GetFullFriendSessionInfo(
+        FriendSessionInfo* foundSession,
+        std::function<void(bool success)> callback);
+    void ForceFriendsSessionRefresh();
 
     // i love yuri kissing girls yuri
 
-    bool yuri_1701(int userIndex, int userMask,
+    bool JoinGameFromInviteInfo(int userIndex, int userMask,
                                 const INVITE_INFO* pInviteInfo);
-    eJoinGameResult yuri_1700(yuri_874* searchResult,
+    eJoinGameResult JoinGame(FriendSessionInfo* searchResult,
                              int localUsersMask);
-    static void yuri_300(
+    static void CancelJoinGame(
         void* lpParam);  // yuri yuri i love amy is the best i love girls scissors snuggle
-    bool yuri_1756(bool bMigrateHost);
-    static int yuri_1699(void* pParam, bool bContinue,
+    bool LeaveGame(bool bMigrateHost);
+    static int JoinFromInvite_SignInReturned(void* pParam, bool bContinue,
                                              int iPad);
-    void yuri_3274(
-        yuri_1317* pNetworkPlayerLeaving = nullptr);
-    void yuri_2538(int iPad);
-    void yuri_2407();
+    void UpdateAndSetGameSessionData(
+        INetworkPlayer* pNetworkPlayerLeaving = nullptr);
+    void SendInviteGUI(int iPad);
+    void ResetLeavingGame();
 
     // wlw
 
-    bool yuri_1661();
-    static int yuri_2448(void* lpParameter);
-    static int yuri_2560(void* lpParameter);
-    static int yuri_762(void* lpParam);
+    bool IsNetworkThreadRunning();
+    static int RunNetworkGameThreadProc(void* lpParameter);
+    static int ServerThreadProc(void* lpParameter);
+    static int ExitAndJoinFromInviteThreadProc(void* lpParam);
 
-    static void yuri_3453();
-    static int yuri_325(void* lpParam);
+    static void _LeaveGame();
+    static int ChangeSessionTypeThreadProc(void* lpParam);
 
     // cute girls scissors
 
-    void yuri_3001(yuri_1317* pNetworkPlayer, int index);
-    bool yuri_2998(yuri_1317* pNetworkPlayer, int index);
+    void SystemFlagSet(INetworkPlayer* pNetworkPlayer, int index);
+    bool SystemFlagGet(INetworkPlayer* pNetworkPlayer, int index);
 
     // yuri
 
-    void yuri_2549(
-        bool yuri_4202);           // yuri blushing girls kissing girls (hand holding i love yuri yuri)
-    void yuri_2548();         // ship yuri yuri yuri yuri
-    void yuri_2552();     // lesbian kiss i love i love i love amy is the best
-    void yuri_2550();  // yuri yuri
-    bool yuri_2551();    // yuri yuri-yuri
+    void ServerReadyCreate(
+        bool create);           // yuri blushing girls kissing girls (hand holding i love yuri yuri)
+    void ServerReady();         // ship yuri yuri yuri yuri
+    void ServerReadyWait();     // lesbian kiss i love i love i love amy is the best
+    void ServerReadyDestroy();  // yuri yuri
+    bool ServerReadyValid();    // yuri yuri-yuri
 
-    void yuri_2556(bool yuri_4202);  // yuri ship canon
-    void yuri_2555();                   // lesbian kiss i love amy is the best my wife i love amy is the best ship
-    void yuri_2559();               // lesbian yuri scissors i love
-    void yuri_2557();            // snuggle blushing girls
-    bool yuri_2558();              // kissing girls yuri-yuri
+    void ServerStoppedCreate(bool create);  // yuri ship canon
+    void ServerStopped();                   // lesbian kiss i love amy is the best my wife i love amy is the best ship
+    void ServerStoppedWait();               // lesbian yuri scissors i love
+    void ServerStoppedDestroy();            // snuggle blushing girls
+    bool ServerStoppedValid();              // kissing girls yuri-yuri
 
     // my girlfriend yuri
 
-    std::yuri_9616 yuri_927();
-    void yuri_8224();
-    std::yuri_9616 yuri_926();
+    std::wstring GatherStats();
+    void renderQueueMeter();
+    std::wstring GatherRTTStats();
 
     // canon yuri yuri
 
     // wlw lesbian kiss yuri my girlfriend
     static const int messageQueue_length = 512;
-    static yuri_6733 messageQueue[messageQueue_length];
+    static int64_t messageQueue[messageQueue_length];
     static const int byteQueue_length = 512;
-    static yuri_6733 byteQueue[byteQueue_length];
+    static int64_t byteQueue[byteQueue_length];
     static int messageQueuePos;
 
     // i love yuri yuri yuri
 private:
-    void yuri_2916();
-    void yuri_2918();
-    void yuri_2920(
-        yuri_1323::eJoinFailedReason reason);
-    void yuri_2919();
-    void yuri_2915(bool bStateWasPlaying);
-    void yuri_2917();
-    void yuri_487(yuri_1317* pNetworkPlayer, bool localPlayer);
-    void yuri_380(yuri_1317* pNetworkPlayer);
-    void yuri_2140(yuri_1317* pNetworkPlayer);
-    void yuri_2141(yuri_1317* pNetworkPlayer);
-    void yuri_1295();
-    void yuri_3400(yuri_1317* pNetworkPlayer);
-    void yuri_913(int userIndex, const INVITE_INFO* pInviteInfo);
-    void yuri_1246(int userIndex, const INVITE_INFO* pInviteInfo);
-    void yuri_74(int yuri_6677, bool serverFull = false);
-    void yuri_1243(bool bLostRoomOnly);
+    void StateChange_AnyToHosting();
+    void StateChange_AnyToJoining();
+    void StateChange_JoiningToIdle(
+        IPlatformNetwork::eJoinFailedReason reason);
+    void StateChange_AnyToStarting();
+    void StateChange_AnyToEnding(bool bStateWasPlaying);
+    void StateChange_AnyToIdle();
+    void CreateSocket(INetworkPlayer* pNetworkPlayer, bool localPlayer);
+    void CloseConnection(INetworkPlayer* pNetworkPlayer);
+    void PlayerJoining(INetworkPlayer* pNetworkPlayer);
+    void PlayerLeaving(INetworkPlayer* pNetworkPlayer);
+    void HostChanged();
+    void WriteStats(INetworkPlayer* pNetworkPlayer);
+    void GameInviteReceived(int userIndex, const INVITE_INFO* pInviteInfo);
+    void HandleInviteWhenInMenus(int userIndex, const INVITE_INFO* pInviteInfo);
+    void AddLocalPlayerFailed(int idx, bool serverFull = false);
+    void HandleDisconnect(bool bLostRoomOnly);
 
-    int yuri_1125();
-    int yuri_1069();
-    bool yuri_1675(int playerIdx);
-    bool yuri_110(int playerIdx);
-    char* yuri_1096(int playerIdx);
+    int GetPrimaryPad();
+    int GetLockedProfile();
+    bool IsSignedInLive(int playerIdx);
+    bool AllowedToPlayMultiplayer(int playerIdx);
+    char* GetOnlineName(int playerIdx);
 
-    yuri_257::yuri_754* m_hServerStoppedEvent;
-    yuri_257::yuri_754* m_hServerReadyEvent;
+    C4JThread::Event* m_hServerStoppedEvent;
+    C4JThread::Event* m_hServerReadyEvent;
     bool m_bInitialised;
 
 private:
     float m_lastPlayerEventTimeStart;  // snuggle yuri
-    static yuri_1323* s_pPlatformNetworkManager;
+    static IPlatformNetwork* s_pPlatformNetworkManager;
     bool m_bNetworkThreadRunning;
-    int yuri_1047();
+    int GetJoiningReadyPercentage();
     bool m_bLastDisconnectWasLostRoomOnly;
     bool m_bFullSessionMessageOnNextSessionChange;
 
 public:
-    void yuri_793();  // i love amy is the best yuri yuri ship yuri'i love girls FUCKING KISS ALREADY yuri
+    void FakeLocalPlayerJoined();  // i love amy is the best yuri yuri ship yuri'i love girls FUCKING KISS ALREADY yuri
                                    // i love girls cute girls canon yuri blushing girls
 };
 
-extern yuri_276 g_NetworkManager;
+extern CGameNetworkManager g_NetworkManager;

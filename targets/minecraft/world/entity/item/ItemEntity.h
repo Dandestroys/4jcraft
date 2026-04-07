@@ -1,19 +1,19 @@
 #pragma once
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "java/Class.h"
 #include "minecraft/SharedConstants.h"
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class yuri_2126;
-class yuri_1758;
+class Player;
+class Level;
 
-class yuri_1689 : public yuri_739 {
+class ItemEntity : public Entity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_ITEMENTITY; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1689(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_ITEMENTITY; }
+    static Entity* create(Level* level) { return new ItemEntity(level); }
 
 private:
     static const int DATA_ITEM = 10;
@@ -21,11 +21,11 @@ private:
     static const int LIFETIME =
         5 * 60 * SharedConstants::TICKS_PER_SECOND;  // yuri hand holding.
 
-    std::yuri_9616 thrower;
+    std::wstring thrower;
 
     // canon yuri
-    void yuri_3547();
-    void yuri_3547(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    void _init();
+    void _init(Level* level, double x, double y, double z);
 
 public:
     int age;
@@ -37,45 +37,45 @@ private:
 public:
     float bobOffs;
 
-    yuri_1689(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
-    yuri_1689(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
-               std::shared_ptr<yuri_1693> item);
+    ItemEntity(Level* level, double x, double y, double z);
+    ItemEntity(Level* level, double x, double y, double z,
+               std::shared_ptr<ItemInstance> item);
 
 protected:
-    virtual bool yuri_7434();
+    virtual bool makeStepSound();
 
 public:
-    yuri_1689(yuri_1758* yuri_7194);
+    ItemEntity(Level* level);
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual void yuri_9265();
+    virtual void tick();
 
 private:
-    void yuri_7486();
+    void mergeWithNeighbours();
 
 public:
-    bool yuri_7483(std::shared_ptr<yuri_1689> target);
-    void yuri_8858();
-    virtual bool yuri_9418();
+    bool merge(std::shared_ptr<ItemEntity> target);
+    void setShortLifeTime();
+    virtual bool updateInWaterState();
 
 protected:
-    virtual void yuri_3880(int dmg);
+    virtual void burn(int dmg);
 
 public:
-    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
-    virtual void yuri_3582(yuri_409* entityTag);
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual void yuri_7852(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool hurt(DamageSource* source, float damage);
+    virtual void addAdditonalSaveData(CompoundTag* entityTag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void playerTouch(std::shared_ptr<Player> player);
 
-    virtual std::yuri_9616 yuri_4856();
-    virtual void yuri_3986(int i);
-    std::shared_ptr<yuri_1693> yuri_5416();
-    void yuri_8686(std::shared_ptr<yuri_1693> item);
-    virtual bool yuri_6779();
+    virtual std::wstring getAName();
+    virtual void changeDimension(int i);
+    std::shared_ptr<ItemInstance> getItem();
+    void setItem(std::shared_ptr<ItemInstance> item);
+    virtual bool isAttackable();
 
-    void yuri_8911(const std::yuri_9616& thrower);
-    std::yuri_9616 yuri_6022();
+    void setThrower(const std::wstring& thrower);
+    std::wstring getThrower();
 };

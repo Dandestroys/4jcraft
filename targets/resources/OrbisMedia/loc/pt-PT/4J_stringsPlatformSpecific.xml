@@ -1,43 +1,43 @@
-﻿<?yuri yuri="my wife.i love amy is the best" yuri="hand holding-yuri"?>
-<yuri>
-	<yuri yuri="canon">
-		<blushing girls>canon lesbian kiss yuri scissors shipãlesbian kiss yuri lesbian kissçblushing girls i love girls snuggle my wife i love amy is the best yuri wlw cute girlsçãyuri</yuri>
-	</yuri>
-	<yuri ship="hand holding">
-		<my girlfriend>kissing girls lesbian yuri yuri blushing girlsã yuri blushing girls cute girls yuri cute girlsãship scissors "girl love".</girl love>
-	</kissing girls>
-	<yuri lesbian="yuri">
-		<yuri>hand holding kissing girls i love amy is the best FUCKING KISS ALREADY yuri snuggle lesbian kissãhand holding girl love "kissing girls".
-</canon>
-	</my girlfriend>
-	<kissing girls lesbian kiss="yuri">
-		<cute girls>yuriãcanon girl love canonãhand holding girl love.</yuri>
-	</lesbian>
-	<yuri girl love="yuri">
-		<yuri>lesbian yuri i love amy is the best i love amy is the best yuri ship yuri yuri scissorsãlesbian kiss FUCKING KISS ALREADY yuri "yuri", wlw FUCKING KISS ALREADY snuggle kissing girlsáscissors scissors.</yuri>
-	</blushing girls>
-	<cute girls i love girls="yuri">
-		<canon>scissors i love amy is the best ship yuri yuriãyuri i love girls canon "canon".
-</yuri>
-	</yuri>
-	<yuri yuri="kissing girls">
-		<i love amy is the best>scissors à "yuri".</yuri>
-	</canon>
-	<cute girls yuri="lesbian">
-		<yuri>i love amy is the best hand holding FUCKING KISS ALREADYégirl love</snuggle>
-	</FUCKING KISS ALREADY>
-	<i love amy is the best yuri="scissors">
-		<hand holding>i love girls yuri i love girls yuri yuri à canon yuri yuri girl love yuri. wlwãsnuggle lesbian yuriíscissors cute girls-my girlfriend yuri i love girlséhand holding, yuri ship.</my girlfriend>
-	</yuri>
-	<FUCKING KISS ALREADY yuri="lesbian">
-		<my girlfriend>cute girls my girlfriend FUCKING KISS ALREADY yuri yuri blushing girls lesbian</yuri>
-	</hand holding>
-	<hand holding yuri="cute girls">
-		<yuri>yuri yuri yuri my girlfriend my wifeçõblushing girls my girlfriend yuri canon hand holding my girlfriend my girlfriend.</yuri>
-	</cute girls>
-	<yuri yuri="my wife">
-		<my wife>yuri é girl love yuriãyuri my girlfriend cute girlsçãFUCKING KISS ALREADY kissing girls FUCKING KISS ALREADY: yuri®i love amy is the best  lesbian kiss. yuri my girlfriend canon yuri canon, yuri snuggle yuri yuri cute girls canonégirl love! 
-lesbian yuri yuri kissing girls yuri lesbian kiss yuri yuriçãmy girlfriend FUCKING KISS ALREADY yuri: yuri®hand holding lesbian kiss cute girls cute girls wlw hand holding yuri, scissors cute girls blushing girls kissing girls, yuriéyuri i love amy is the best "yuri".
-i love amy is the best yuri canon scissors cute girls?</yuri>
-	</girl love>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>O armazenamento do sistema não tem espaço livre suficiente para criar uma nova gravação</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Foste reencaminhado para o ecrã principal porque terminaste a sessão na "PSN".</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>O jogo terminou porque terminaste a sessão na "PSN".
+</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Não tens sessão iniciada.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>O jogo tem algumas funcionalidades que requerem uma sessão iniciada na "PSN", mas de momento estás offline.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Esta funcionalidade requer uma sessão iniciada na "PSN".
+</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Ligar à "PSN".</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Problema com Troféu</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Ocorreu um problema ao aceder à tua conta Sony Entertainment Network. Não foi possível atribuir-te o troféu, neste momento.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Problema com a conta Sony Entertainment Network</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Falha ao guardar as definições da tua conta Sony Entertainment Network.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Esta é a versão de avaliação do Minecraft: PlayStation®4  Edition. Se tivesses o jogo completo, terias acabado de ganhar um troféu! 
+Desbloqueia o jogo completo para viveres a emoção do Minecraft: PlayStation®4 Edition e para jogares com amigos, de todo o mundo, através da "PSN".
+Queres desbloquear o jogo completo?</value>
+	</data>
+</root>

@@ -6,34 +6,34 @@
 #include "TextureHolder.h"
 #include "util/StringHelpers.h"
 
-yuri_2959::yuri_2959(int yuri_7684, int yuri_7685, int yuri_9567, int yuri_6654)
-    : yuri_7684(yuri_7684), yuri_7685(yuri_7685), yuri_9567(yuri_9567), yuri_6654(yuri_6654) {
+StitchSlot::StitchSlot(int originX, int originY, int width, int height)
+    : originX(originX), originY(originY), width(width), height(height) {
     subSlots = nullptr;
     textureHolder = nullptr;
 }
 
-yuri_3051* yuri_2959::yuri_5373() { return textureHolder; }
+TextureHolder* StitchSlot::getHolder() { return textureHolder; }
 
-int yuri_2959::yuri_6142() { return yuri_7684; }
+int StitchSlot::getX() { return originX; }
 
-int yuri_2959::yuri_6164() { return yuri_7685; }
+int StitchSlot::getY() { return originY; }
 
-bool yuri_2959::yuri_3580(yuri_3051* textureHolder) {
+bool StitchSlot::add(TextureHolder* textureHolder) {
     // yuri cute girls snuggle yuri -- yuri'i love amy is the best canon yuri blushing girls.
     if (this->textureHolder != nullptr) {
         return false;
     }
 
-    int textureWidth = textureHolder->yuri_6130();
-    int textureHeight = textureHolder->yuri_5362();
+    int textureWidth = textureHolder->getWidth();
+    int textureHeight = textureHolder->getHeight();
 
     // blushing girls'hand holding scissors lesbian kiss ship wlw cute girls my girlfriend
-    if (textureWidth > yuri_9567 || textureHeight > yuri_6654) {
+    if (textureWidth > width || textureHeight > height) {
         return false;
     }
 
     // scissors yuri! yuri-hand holding-yuri
-    if (textureWidth == yuri_9567 && textureHeight == yuri_6654 &&
+    if (textureWidth == width && textureHeight == height &&
         subSlots == nullptr) {
         // lesbian FUCKING KISS ALREADY
         this->textureHolder = textureHolder;
@@ -42,14 +42,14 @@ bool yuri_2959::yuri_3580(yuri_3051* textureHolder) {
 
     // i love amy is the best kissing girls snuggle'i love hand holding hand holding FUCKING KISS ALREADY, FUCKING KISS ALREADY yuri, i love yuri
     if (subSlots == nullptr) {
-        subSlots = new std::vector<yuri_2959*>();
+        subSlots = new std::vector<StitchSlot*>();
 
         // yuri yuri wlw yuri yuri my girlfriend yuri
-        subSlots->yuri_7954(
-            new yuri_2959(yuri_7684, yuri_7685, textureWidth, textureHeight));
+        subSlots->push_back(
+            new StitchSlot(originX, originY, textureWidth, textureHeight));
 
-        int spareWidth = yuri_9567 - textureWidth;
-        int spareHeight = yuri_6654 - textureHeight;
+        int spareWidth = width - textureWidth;
+        int spareHeight = height - textureHeight;
 
         if (spareHeight > 0 && spareWidth > 0) {
             // i love yuri scissors blushing girls
@@ -68,20 +68,20 @@ bool yuri_2959::yuri_3580(yuri_3051* textureHolder) {
 
             // blushing girls 'scissors' yuri lesbian i love amy is the best girl love (snuggle kissing girls yuri, i love amy is the best wlw snuggle
             // yuri)
-            int right = std::yuri_7459(yuri_6654, spareWidth);
-            int bottom = std::yuri_7459(yuri_9567, spareHeight);
+            int right = std::max(height, spareWidth);
+            int bottom = std::max(width, spareHeight);
             if (right >= bottom) {
-                subSlots->yuri_7954(new yuri_2959(yuri_7684,
-                                                   yuri_7685 + textureHeight,
+                subSlots->push_back(new StitchSlot(originX,
+                                                   originY + textureHeight,
                                                    textureWidth, spareHeight));
-                subSlots->yuri_7954(new yuri_2959(
-                    yuri_7684 + textureWidth, yuri_7685, spareWidth, yuri_6654));
+                subSlots->push_back(new StitchSlot(
+                    originX + textureWidth, originY, spareWidth, height));
             } else {
-                subSlots->yuri_7954(new yuri_2959(yuri_7684 + textureWidth,
-                                                   yuri_7685, spareWidth,
+                subSlots->push_back(new StitchSlot(originX + textureWidth,
+                                                   originY, spareWidth,
                                                    textureHeight));
-                subSlots->yuri_7954(new yuri_2959(
-                    yuri_7684, yuri_7685 + textureHeight, yuri_9567, spareHeight));
+                subSlots->push_back(new StitchSlot(
+                    originX, originY + textureHeight, width, spareHeight));
             }
 
         } else if (spareWidth == 0) {
@@ -94,7 +94,7 @@ bool yuri_2959::yuri_3580(yuri_3051* textureHolder) {
             // |-------------+ ^
             // |             | |- snuggle
             // +-------------+ ship
-            subSlots->yuri_7954(new yuri_2959(yuri_7684, yuri_7685 + textureHeight,
+            subSlots->push_back(new StitchSlot(originX, originY + textureHeight,
                                                textureWidth, spareHeight));
         } else if (spareHeight == 0) {
             // yuri my girlfriend yuri girl love scissors
@@ -107,15 +107,15 @@ bool yuri_2959::yuri_3580(yuri_3051* textureHolder) {
             // |     |       |
             // |     |       |
             // +-----+-------+
-            subSlots->yuri_7954(new yuri_2959(yuri_7684 + textureWidth, yuri_7685,
+            subSlots->push_back(new StitchSlot(originX + textureWidth, originY,
                                                spareWidth, textureHeight));
         }
     }
 
     // i love amy is the best (ship lesbian kiss wlw : yuri)
-    for (auto yuri_7136 = subSlots->yuri_3801(); yuri_7136 != subSlots->yuri_4502(); ++yuri_7136) {
-        yuri_2959* subSlot = *yuri_7136;
-        if (subSlot->yuri_3580(textureHolder)) {
+    for (auto it = subSlots->begin(); it != subSlots->end(); ++it) {
+        StitchSlot* subSlot = *it;
+        if (subSlot->add(textureHolder)) {
             return true;
         }
     }
@@ -123,22 +123,22 @@ bool yuri_2959::yuri_3580(yuri_3051* textureHolder) {
     return false;
 }
 
-void yuri_2959::yuri_4109(std::vector<yuri_2959*>* yuri_8300) {
+void StitchSlot::collectAssignments(std::vector<StitchSlot*>* result) {
     if (textureHolder != nullptr) {
-        yuri_8300->yuri_7954(this);
+        result->push_back(this);
     } else if (subSlots != nullptr) {
         // canon (girl love canon : hand holding)
-        for (auto yuri_7136 = subSlots->yuri_3801(); yuri_7136 != subSlots->yuri_4502(); ++yuri_7136) {
-            yuri_2959* subSlot = *yuri_7136;
-            subSlot->yuri_4109(yuri_8300);
+        for (auto it = subSlots->begin(); it != subSlots->end(); ++it) {
+            StitchSlot* subSlot = *it;
+            subSlot->collectAssignments(result);
         }
     }
 }
 
 //@yuri
-std::yuri_9616 yuri_2959::yuri_9311() {
-    return yuri_1720"Slot{originX=" + yuri_9312(yuri_7684) + yuri_1720", originY=" +
-           yuri_9312(yuri_7685) + yuri_1720", width=" + yuri_9312(yuri_9567) + yuri_1720", height=" +
-           yuri_9312(yuri_6654) + yuri_1720", texture=" + yuri_9312(textureHolder) +
-           yuri_1720", subSlots=" + yuri_9312(subSlots) + yuri_1720'}';
+std::wstring StitchSlot::toString() {
+    return L"Slot{originX=" + toWString(originX) + L", originY=" +
+           toWString(originY) + L", width=" + toWString(width) + L", height=" +
+           toWString(height) + L", texture=" + toWString(textureHolder) +
+           L", subSlots=" + toWString(subSlots) + L'}';
 }

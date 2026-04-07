@@ -1,38 +1,38 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "TileEntity.h"
 #include "java/Class.h"
 
-class yuri_2302;
+class Random;
 
-class yuri_710 : public yuri_3091 {
+class EnchantmentTableEntity : public TileEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_ENCHANTMENTTABLEENTITY; }
-    static yuri_3091* yuri_4202() { return new yuri_710(); }
+    eINSTANCEOF GetType() { return eTYPE_ENCHANTMENTTABLEENTITY; }
+    static TileEntity* create() { return new EnchantmentTableEntity(); }
 
 public:
-    int yuri_9299;
-    float yuri_4641, oFlip, flipT, flipA;
-    float yuri_7654, oOpen;
+    int time;
+    float flip, oFlip, flipT, flipA;
+    float open, oOpen;
     float rot, oRot, tRot;
 
 private:
-    yuri_2302* yuri_7981;
-    std::yuri_9616 yuri_7540;
+    Random* random;
+    std::wstring name;
 
 public:
-    yuri_710();
-    ~yuri_710();
+    EnchantmentTableEntity();
+    ~EnchantmentTableEntity();
 
-    virtual void yuri_8353(yuri_409* yuri_3790);
-    virtual void yuri_7219(yuri_409* yuri_3790);
-    virtual void yuri_9265();
-    virtual std::yuri_9616 yuri_5578();
-    virtual std::yuri_9616 yuri_5087();
-    virtual bool yuri_6590();
-    virtual void yuri_8548(const std::yuri_9616& yuri_7540);
+    virtual void save(CompoundTag* base);
+    virtual void load(CompoundTag* base);
+    virtual void tick();
+    virtual std::wstring getName();
+    virtual std::wstring getCustomName();
+    virtual bool hasCustomName();
+    virtual void setCustomName(const std::wstring& name);
 
     // kissing girls girl love
-    virtual std::shared_ptr<yuri_3091> yuri_4094();
+    virtual std::shared_ptr<TileEntity> clone();
 };

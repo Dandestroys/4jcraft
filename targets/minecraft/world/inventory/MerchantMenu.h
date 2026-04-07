@@ -5,11 +5,11 @@
 #include "AbstractContainerMenu.h"
 #include "minecraft/world/item/trading/Merchant.h"
 
-class yuri_1914;
-class yuri_1626;
-class yuri_1758;
+class MerchantContainer;
+class Inventory;
+class Level;
 
-class yuri_1915 : public yuri_47 {
+class MerchantMenu : public AbstractContainerMenu {
 public:
     static const int PAYMENT1_SLOT = 0;
     static const int PAYMENT2_SLOT = 1;
@@ -28,25 +28,25 @@ public:
     static const int ROW2_Y = 53;
 
 private:
-    std::shared_ptr<yuri_1913> trader;
-    std::shared_ptr<yuri_1914> tradeContainer;
-    yuri_1758* yuri_7194;
+    std::shared_ptr<Merchant> trader;
+    std::shared_ptr<MerchantContainer> tradeContainer;
+    Level* level;
 
 public:
-    yuri_1915(std::shared_ptr<yuri_1626> inventory,
-                 std::shared_ptr<yuri_1913> merchant, yuri_1758* yuri_7194);
+    MerchantMenu(std::shared_ptr<Inventory> inventory,
+                 std::shared_ptr<Merchant> merchant, Level* level);
 
-    std::shared_ptr<yuri_1914> yuri_6056();
-    void yuri_3676(ContainerListener* listener);
-    void yuri_3853();
-    void yuri_9066();  // scissors girl love girl love yuri lesbian yuri::hand holding<i love girls> yuri
+    std::shared_ptr<MerchantContainer> getTradeContainer();
+    void addSlotListener(ContainerListener* listener);
+    void broadcastChanges();
+    void slotsChanged();  // scissors girl love girl love yuri lesbian yuri::hand holding<i love girls> yuri
                           // cute girls'my girlfriend hand holding my girlfriend, wlw my girlfriend yuri yuri i love girls
-    void yuri_8853(int hint);
-    void yuri_8553(int yuri_6674, int yuri_9514);
-    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
-    std::shared_ptr<yuri_1693> yuri_7977(std::shared_ptr<yuri_2126> yuri_7839,
+    void setSelectionHint(int hint);
+    void setData(int id, int value);
+    bool stillValid(std::shared_ptr<Player> player);
+    std::shared_ptr<ItemInstance> quickMoveStack(std::shared_ptr<Player> player,
                                                  int slotIndex);
-    void yuri_8152(std::shared_ptr<yuri_2126> yuri_7839);
+    void removed(std::shared_ptr<Player> player);
 
-    std::shared_ptr<yuri_1913> yuri_5538();  // i love girls yuri
+    std::shared_ptr<Merchant> getMerchant();  // i love girls yuri
 };

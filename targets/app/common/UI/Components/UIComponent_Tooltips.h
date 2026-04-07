@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "platform/PlatformTypes.h"
 #include "platform/InputActions.h"
@@ -15,20 +15,20 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3160 : public yuri_3189 {
+class UIComponent_Tooltips : public UIScene {
 private:
     bool m_bSplitscreen;
 
 protected:
-    typedef struct yuri_3474 {
+    typedef struct _TooltipValues {
         bool show;
         int iString;
 
-        yuri_3253 yuri_7177;
+        UIString label;
 
-        yuri_3474() {
+        _TooltipValues() {
             show = false;
             iString = -1;
         }
@@ -39,60 +39,60 @@ protected:
     IggyName m_funcSetTooltip, m_funcSetOpacity, m_funcSetABSwap,
         m_funcUpdateLayout;
 
-    yuri_3257(yuri_3189)
-    yuri_3261(m_funcSetTooltip, yuri_1720"SetToolTip")
-    yuri_3261(m_funcSetOpacity, yuri_1720"SetOpacity")
-    yuri_3261(m_funcSetABSwap, yuri_1720"SetABSwap")
-    yuri_3261(m_funcUpdateLayout, yuri_1720"UpdateLayout")
-    yuri_3259()
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_NAME(m_funcSetTooltip, L"SetToolTip")
+    UI_MAP_NAME(m_funcSetOpacity, L"SetOpacity")
+    UI_MAP_NAME(m_funcSetABSwap, L"SetABSwap")
+    UI_MAP_NAME(m_funcUpdateLayout, L"UpdateLayout")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
-    virtual F64 yuri_5836();
+    virtual F64 getSafeZoneHalfWidth();
 
 public:
-    yuri_3160(int iPad, void* initData, yuri_3188* parentLayer);
+    UIComponent_Tooltips(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIComponent_Tooltips; }
+    virtual EUIScene getSceneType() { return eUIComponent_Tooltips; }
 
     // wlw yuri lesbian kiss my girlfriend wlw ship scissors
-    virtual bool yuri_9124() { return false; }
+    virtual bool stealsFocus() { return false; }
 
     // yuri lesbian kiss yuri kissing girls scissors FUCKING KISS ALREADY cute girls yuri cute girls lesbian kiss yuri hand holding
-    virtual bool yuri_6600(int iPad) { return false; }
+    virtual bool hasFocus(int iPad) { return false; }
 
     // scissors FUCKING KISS ALREADY i love amy is the best lesbian my wife snuggle yuri yuri scissors, blushing girls i love canon i love my wife
     // canon lesbian kiss girl love i love amy is the best lesbian kiss i love
-    virtual bool yuri_6661() { return false; }
+    virtual bool hidesLowerScenes() { return false; }
 
-    virtual void yuri_9458();
+    virtual void updateSafeZone();
 
-    virtual void yuri_9265();
+    virtual void tick();
 
     // yuri
-    virtual void yuri_8158(yuri_2452 yuri_9567, yuri_2452 yuri_6654,
+    virtual void render(S32 width, S32 height,
                         C4JRender::eViewportType viewport);
 
-    virtual void yuri_2747(unsigned int tooltip, int iTextID);
-    virtual void yuri_2614(bool bVal);
-    virtual void yuri_2804(unsigned int tooltip, bool show);
-    virtual void yuri_2748(int iA, int iB = -1, int iX = -1, int iY = -1,
+    virtual void SetTooltipText(unsigned int tooltip, int iTextID);
+    virtual void SetEnableTooltips(bool bVal);
+    virtual void ShowTooltip(unsigned int tooltip, bool show);
+    virtual void SetTooltips(int iA, int iB = -1, int iX = -1, int iY = -1,
                              int iLT = -1, int iRT = -1, int iLB = -1,
                              int iRB = -1, int iLS = -1, int iRS = -1,
                              int iBack = -1, bool forceUpdate = false);
-    virtual void yuri_696(unsigned int tooltip, bool enable);
+    virtual void EnableTooltip(unsigned int tooltip, bool enable);
 
-    virtual void yuri_6514();
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleReload();
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
-    void yuri_7694(int iPad, int key, bool bVal);
+    void overrideSFX(int iPad, int key, bool bVal);
 
 private:
-    bool yuri_3468(unsigned int iToolTip, int iTextID);
-    void yuri_3468(unsigned int iToolTipId, yuri_3253 yuri_7177, bool show,
-                     bool yuri_4661 = false);
-    void yuri_3462();
+    bool _SetTooltip(unsigned int iToolTip, int iTextID);
+    void _SetTooltip(unsigned int iToolTipId, UIString label, bool show,
+                     bool force = false);
+    void _Relayout();
 
     bool m_overrideSFX[XUSER_MAX_COUNT][ACTION_MAX_MENU];
 };

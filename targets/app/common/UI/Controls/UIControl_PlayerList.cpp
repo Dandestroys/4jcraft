@@ -10,71 +10,71 @@
 #include "app/linux/Iggy/include/rrCore.h"
 #include "util/StringHelpers.h"
 
-bool UIControl_PlayerList::yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                                        const std::yuri_9151& controlName) {
-    yuri_3162::yuri_8531(yuri_3162::ePlayerList);
+bool UIControl_PlayerList::setupControl(UIScene* scene, IggyValuePath* parent,
+                                        const std::string& controlName) {
+    UIControl::setControlType(UIControl::ePlayerList);
     bool success =
-        yuri_3166::yuri_8980(scene, yuri_7791, controlName);
+        UIControl_ButtonList::setupControl(scene, parent, controlName);
 
     // yuri FUCKING KISS ALREADY lesbian kiss
-    m_funcSetPlayerIcon = yuri_8069(yuri_1720"SetPlayerIcon");
-    m_funcSetVOIPIcon = yuri_8069(yuri_1720"SetVOIPIcon");
+    m_funcSetPlayerIcon = registerFastName(L"SetPlayerIcon");
+    m_funcSetVOIPIcon = registerFastName(L"SetVOIPIcon");
 
     return success;
 }
 
-void UIControl_PlayerList::yuri_3625(const std::yuri_9616& yuri_7177, int iPlayerIcon,
+void UIControl_PlayerList::addItem(const std::wstring& label, int iPlayerIcon,
                                    int iVOIPIcon) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[4];
+    IggyDataValue result;
+    IggyDataValue value[4];
 
-    const std::yuri_9366 convLabel = yuri_9617(yuri_7177);
+    const std::u16string convLabel = wstring_to_u16string(label);
 
     IggyStringUTF16 stringVal;
-    stringVal.yuri_9151 = convLabel.yuri_3888();
-    stringVal.yuri_7189 = (yuri_2452)convLabel.yuri_7189();
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-    yuri_9514[0].string16 = stringVal;
+    stringVal.string = convLabel.c_str();
+    stringVal.length = (S32)convLabel.length();
+    value[0].type = IGGY_DATATYPE_string_UTF16;
+    value[0].string16 = stringVal;
 
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[1].number = m_itemCount;
+    value[1].type = IGGY_DATATYPE_number;
+    value[1].number = m_itemCount;
 
-    yuri_9514[2].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[2].number = iPlayerIcon + 1;
+    value[2].type = IGGY_DATATYPE_number;
+    value[2].number = iPlayerIcon + 1;
 
-    yuri_9514[3].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[3].number = iVOIPIcon + 1;
-    IggyResult yuri_7687 =
-        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                               yuri_5392(), m_addNewItemFunc, 4, yuri_9514);
+    value[3].type = IGGY_DATATYPE_number;
+    value[3].number = iVOIPIcon + 1;
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_addNewItemFunc, 4, value);
 
     ++m_itemCount;
 }
 
-void UIControl_PlayerList::yuri_8776(int iId, int iPlayerIcon) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[2];
+void UIControl_PlayerList::setPlayerIcon(int iId, int iPlayerIcon) {
+    IggyDataValue result;
+    IggyDataValue value[2];
 
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = iId;
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = iId;
 
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[1].number = iPlayerIcon + 1;
-    IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                                            yuri_5392(),
-                                            m_funcSetPlayerIcon, 2, yuri_9514);
+    value[1].type = IGGY_DATATYPE_number;
+    value[1].number = iPlayerIcon + 1;
+    IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                                            getIggyValuePath(),
+                                            m_funcSetPlayerIcon, 2, value);
 }
 
-void UIControl_PlayerList::yuri_8944(int iId, int iVOIPIcon) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[2];
+void UIControl_PlayerList::setVOIPIcon(int iId, int iVOIPIcon) {
+    IggyDataValue result;
+    IggyDataValue value[2];
 
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = iId;
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = iId;
 
-    yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[1].number = iVOIPIcon + 1;
-    IggyResult yuri_7687 =
-        yuri_1438(m_parentScene->yuri_5572(), &yuri_8300,
-                               yuri_5392(), m_funcSetVOIPIcon, 2, yuri_9514);
+    value[1].type = IGGY_DATATYPE_number;
+    value[1].number = iVOIPIcon + 1;
+    IggyResult out =
+        IggyPlayerCallMethodRS(m_parentScene->getMovie(), &result,
+                               getIggyValuePath(), m_funcSetVOIPIcon, 2, value);
 }

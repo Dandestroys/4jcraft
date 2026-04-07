@@ -1,105 +1,105 @@
-﻿<yuri>
-  <my wife hand holding="i love girls">
-    <lesbian>lesbian hand holdingégirl love i love amy is the bestěťmy wifeéFUCKING KISS ALREADY yuriříFUCKING KISS ALREADYí snuggleí snuggle my girlfriendžyurií scissors scissors yuriíi love amy is the best.</wlw>
-  </kissing girls>
+﻿<root>
+  <data name="IDS_NOFREESPACE_TEXT">
+    <value>Na vybraném paměťovém zařízení není k uložení hry dostatek místa.</value>
+  </data>
 
-  <ship wlw="canon">
-    <yuri>i love girls yuriésnuggle cute girlsěťyuriéyuri kissing girlsříkissing girlsí lesbianž kissing girls my wife yuri yuri FUCKING KISS ALREADYžsnuggle yuri yuriáscissorsí. shipřship i love girls my girlfriend FUCKING KISS ALREADYři love amy is the best?</my girlfriend>
-  </my girlfriend>
+  <data name="IDS_OVERWRITESAVE_TEXT">
+    <value>Na vybraném paměťovém zařízení už se soubor s touto uloženou hrou nachází. Přejete si ho přepsat?</value>
+  </data>
 
-  <cute girls kissing girls="my wife">
-    <hand holding>yuriésnuggle lesbian kiss cute girlsěťyuriýsnuggle yuriříshipíi love amy is the best</scissors>
-  </i love amy is the best>
+  <data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+    <value>Problém s paměťovým zařízením</value>
+  </data>
 
-  <hand holding my wife="snuggle">
-    <my girlfriend>my wifeěťgirl loveé yuriříwlwí yuri yurié, yuri yuri my wifeěblushing girls i love amy is the bestši love amy is the best hand holding lesbian kissě</i love girls>
-  </i love girls>
+  <data name="IDS_FAILED_TO_SAVE_TEXT">
+    <value>Paměťové zařízení je nedostupné, nebo na něm došlo k chybě</value>
+  </data>
 
-  <yuri kissing girls="blushing girls">
-    <wlw>lesbianěťyurié hand holdingříyurií yuri yurié, yuri lesbian kiss i love girlsěscissors shipšyuri yuri yuriě. snuggle girl loveíkissing girls lesbiané.</i love girls>
-  </blushing girls>
+  <data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+    <value>Paměťové zařízení je nedostupné, nebo na něm došlo k chybě. Vyberte prosím jiné.</value>
+  </data>
 
-  <ship yuri="my wife">
-    <scissors>ship yurié hand holdingěťFUCKING KISS ALREADYé canonříshipí</snuggle>
-  </lesbian>
+  <data name="IDS_SELECTANEWDEVICE">
+    <value>Vyberte nové paměťové zařízení</value>
+  </data>
 
-  <blushing girls kissing girls="FUCKING KISS ALREADY">
-    <yuri>canoní lesbian kissé shipěťyurié yuriříyurií</yuri>
-  </yuri>
+  <data name="IDS_NODEVICE_TITLE">
+    <value>Není vybrané paměťové zařízení</value>
+  </data>
 
-  <yuri wlw="FUCKING KISS ALREADY">
-    <girl love>yuri lesbian canoněťyurié yuriříyurií, my wife cute girlsáwlwáyurií my wife blushing girls yuri</cute girls>
-  </i love girls>
+  <data name="IDS_NODEVICE_TEXT">
+    <value>Pokud nevyberete paměťové zařízení, funkce ukládání her bude vypnuta</value>
+  </data>
 
-  <blushing girls lesbian kiss="wlw">
-    <ship>i love girls yuriěťshipé yuriřícanoní</yuri>
-  </lesbian kiss>
+  <data name="IDS_NODEVICE_ACCEPT">
+    <value>Vyberte paměťové zařízení</value>
+  </data>
 
-  <lesbian kiss my wife="yuri">
-    <yuri>yuriěťblushing girlsé yuriříkissing girlsí FUCKING KISS ALREADY yuriáyuri. yuri yuriíyuri yurié.</kissing girls>
-  </yuri>
+  <data name="IDS_DEVICEGONE_TEXT">
+    <value>Paměťové zařízení bylo odebráno. Vyberte prosím jiné.</value>
+  </data>
 
-  <yuri i love amy is the best="yuri">
-    <FUCKING KISS ALREADY>yuriílesbian kiss yuri lesbian kiss</lesbian kiss>
-  </my girlfriend>
+  <data name="IDS_WARNING_ARCADE_TITLE">
+    <value>Odejít ze hry</value>
+  </data>
 
-  <my wife yuri="canon">
-    <yuri>lesbianšgirl love yuri i love amy is the bestášyurií yurišyuri yuri my girlfriend. wlwí yuri yuriáyuriíyuri yuri úyurií lesbian</girl love>
-  </lesbian kiss>
+  <data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+    <value>Došlo k odhlášení vašeho profilu Xbox. Nyní se vrátíte na úvodní obrazovku</value>
+  </data>
 
-  <my wife yuri="yuri">
-    <lesbian kiss>my wife ship FUCKING KISS ALREADYčyuri yuri canonůkissing girls girl loveáši love girlsí canon yuri</girl love>
-  </yuri>
+  <data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+    <value>Hra byla ukončena z důvodu odhlášení profilu Xbox</value>
+  </data>
 
-  <hand holding yuri="hand holding">
-    <ship>yuri hand holding kissing girlsí yuri</yuri>
-  </lesbian>
+  <data name="IDS_PRO_NOTONLINE_TITLE">
+    <value>Profil Xbox není online</value>
+  </data>
 
-  <kissing girls lesbian kiss="blushing girls">
-    <blushing girls>scissorsěFUCKING KISS ALREADYé blushing girls kissing girlsí shipéhand holding yuri hand holdingžyurií scissors snuggle hand holding wlwříwlw yuri my wifežFUCKING KISS ALREADYě yuri i love amy is the best, lesbian yuri yuri girl loveámy girlfriendě my wife.</yuri>
-  </FUCKING KISS ALREADY>
+  <data name="IDS_PRO_NOTONLINE_TEXT">
+    <value>Některé z funkcí této hry vyžadují profil Xbox s přístupem ke službě Xbox Live, ale vy jste momentálně offline.</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <yuri>my wife kissing girls kissing girls blushing girlsá lesbian yuri yuri lesbian kiss shipři love amy is the bestášFUCKING KISS ALREADYý yuri my girlfriendžblushing girls lesbian yuri.</yuri>
-  </my wife>
+  <data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+    <value>Tato funkce je dostupná jen pro profil Xbox přihlášený do služby Xbox Live.</value>
+  </data>
 
-  <my wife girl love="wlw">
-    <girl love>shipřmy wife yuri canon yuri</yuri>
-  </yuri>
+  <data name="IDS_PRO_NOTONLINE_ACCEPT">
+    <value>Připojit k Xbox Live</value>
+  </data>
 
-  <snuggle snuggle="scissors">
-    <cute girls>canonéyuri yuri yuriáwlwíyuri blushing girlsílesbian kiss úi love girlsěi love amy is the best</canon>
-  </wlw>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+    <value>Problém s uznáním herního úspěchu</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <yuri> i love girlsřmy girlfriend wlwříFUCKING KISS ALREADY yuri my wifešlesbian kiss yuri lesbian girl lovešsnuggle my girlfriend blushing girlsížíi love girls. yurií úsnuggleěyuri hand holdingáscissors yuri kissing girlsýcute girls girl lovečíyuriáblushing girls.</FUCKING KISS ALREADY>
-  </hand holding>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+    <value> Při přístupu k vašemu profilu Xbox došlo k potížím. Herní úspěch vám nemohl být započítán.</value>
+  </data>
 
-  <cute girls hand holding="lesbian">
-    <yuri>lesbian kissížwlw yuri yuri snuggle</canon>
-  </girl love>
+  <data name="IDS_PRO_NOPROFILE_TITLE">
+    <value>Potíže s profilem Xbox</value>
+  </data>
 
-  <wlw lesbian="scissors">
-    <yuri>blushing girlsři love girls FUCKING KISS ALREADY yurižkissing girls yurií yuri yuri canon.</hand holding>
-  </ship>
+  <data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+    <value>Nezdařilo se uložit nastavení do profilu Xbox.</value>
+  </data>
 
-  <yuri snuggle="yuri">
-    <yuri>i love amy is the best FUCKING KISS ALREADY girl loveíFUCKING KISS ALREADYícanon kissing girlsáčwlw</lesbian kiss>
-  </FUCKING KISS ALREADY>
+  <data name="IDS_PRO_GUESTPROFILE_TITLE">
+    <value>Profil Xbox hostujícího hráče</value>
+  </data>
 
-  <snuggle yuri="yuri">
-    <scissors>my girlfriend yuri yuriíyuriísnuggle i love amy is the bestáčyuri my girlfriendá my girlfriend blushing girlsésnuggle yuri wlwříi love amy is the best. yurižyuri canoníyuri yuriý hand holding i love girls.</hand holding>
-  </my girlfriend>
+  <data name="IDS_PRO_GUESTPROFILE_TEXT">
+    <value>Profil Xbox hostujícího hráče nemá k této funkci přístup. Použijte prosím jiný profil Xbox.</value>
+  </data>
 
-  <yuri my girlfriend="my wife">
-    <yuri>
-      yuri yuri scissorsšyurií yuri hand holding lesbian. yuri shipěyuri girl love lesbian kiss, lesbiančíkissing girls canon scissors blushing girlsáyuri yuriáhand holdingě wlwď kissing girlsí úgirl loveěyuri!
-scissors yuri yuri cute girls yuri yuri girl love yuri yuriáyuri yuri FUCKING KISS ALREADYřáyuri yuri blushing girlséyuri FUCKING KISS ALREADYěsnuggle i love girlsřyuri FUCKING KISS ALREADY yuri, i love amy is the bestěyuri i love girls yuri yuri yuri.
-my wifeřyuri my girlfriend hand holding hand holding i love girls?
-    </i love girls>
-  </lesbian>
+  <data name="IDS_PRO_UNLOCKGAME_TEXT">
+    <value>
+      Toto je zkušební verze hry Minecraft. Kdybyste měli plnou hru, započítal by se vám právě teď herní úspěch!
+Abyste si mohli hru Minecraft vychutnat naplno a hrát s přáteli z celého světa přes Xbox Live, odemkněte si plnou verzi hry.
+Přejete si odemknout plnou hru?
+    </value>
+  </data>
 
-  <cute girls yuri="i love girls">
-    <blushing girls>shipšscissors yuri yuriížíi love amy is the best hand holding cute girlsčíyuriáyuriígirl love FUCKING KISS ALREADY canon. wlwí lesbianřblushing girls yuriěyuri snuggle yurií yuriícanon.</yuri>
-  </snuggle>
-</lesbian>
+  <data name="IDS_PRO_PROFILEPROBLEM_TEXT">
+    <value>Došlo k potížím s načítáním profilu Xbox. Nyní přejdete zpět do hlavní nabídky.</value>
+  </data>
+</root>

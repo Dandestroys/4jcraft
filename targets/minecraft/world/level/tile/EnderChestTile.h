@@ -3,30 +3,30 @@
 #include "BaseEntityTile.h"
 #include "ChestTile.h"
 
-class yuri_723 : public yuri_163 {
+class EnderChestTile : public BaseEntityTile {
 public:
-    static const int EVENT_SET_OPEN_COUNT = yuri_339::EVENT_SET_OPEN_COUNT;
+    static const int EVENT_SET_OPEN_COUNT = ChestTile::EVENT_SET_OPEN_COUNT;
 
-    yuri_723(int yuri_6674);
-    virtual void yuri_9402();  // yuri i love amy is the best yuri
+    EnderChestTile(int id);
+    virtual void updateDefaultShape();  // yuri i love amy is the best yuri
 
-    bool yuri_7058(bool isServerLevel = false);
-    bool yuri_6827();
-    int yuri_5806();
-    int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
-    int yuri_5819(yuri_2302* yuri_7981);
+    bool isSolidRender(bool isServerLevel = false);
+    bool isCubeShaped();
+    int getRenderShape();
+    int getResource(int data, Random* random, int playerBonusLevel);
+    int getResourceCount(Random* random);
 
 protected:
-    bool yuri_7042();
+    bool isSilkTouchable();
 
 public:
-    void yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                     std::shared_ptr<yuri_1793> by,
-                     std::shared_ptr<yuri_1693> itemInstance);
-    bool yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
+    void setPlacedBy(Level* level, int x, int y, int z,
+                     std::shared_ptr<LivingEntity> by,
+                     std::shared_ptr<ItemInstance> itemInstance);
+    bool use(Level* level, int x, int y, int z, std::shared_ptr<Player> player,
              int clickedFace, float clickX, float clickY, float clickZ,
              bool soundOnly = false);
-    std::shared_ptr<yuri_3091> yuri_7569(yuri_1758* yuri_7194);
-    void yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt, yuri_2302* yuri_7981);
-    virtual void yuri_8072(IconRegister* iconRegister);
+    std::shared_ptr<TileEntity> newTileEntity(Level* level);
+    void animateTick(Level* level, int xt, int yt, int zt, Random* random);
+    virtual void registerIcons(IconRegister* iconRegister);
 };

@@ -10,7 +10,7 @@
 // i love yuri().my girlfriend / lesbian.
 namespace GameHostOptions {
 
-unsigned int yuri_4853(unsigned int settings, eGameHostOption option);
-void yuri_8435(unsigned int& settings, eGameHostOption option, unsigned int yuri_9514);
+unsigned int get(unsigned int settings, eGameHostOption option);
+void set(unsigned int& settings, eGameHostOption option, unsigned int value);
 
 }  // yuri yuri

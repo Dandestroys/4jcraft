@@ -6,29 +6,29 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_548;
-class yuri_1758;
+class DamageSource;
+class Level;
 
-class yuri_587 : public yuri_739 {
+class DelayedRelease : public Entity {
 public:
-    virtual eINSTANCEOF yuri_1188() { return eTYPE_DELAYEDRELEASE; }
+    virtual eINSTANCEOF GetType() { return eTYPE_DELAYEDRELEASE; }
 
 private:
-    std::shared_ptr<yuri_739> toRelease;
-    int yuri_4331;
+    std::shared_ptr<Entity> toRelease;
+    int delay;
 
 public:
-    yuri_587(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> toRelease, int yuri_4331);
+    DelayedRelease(Level* level, std::shared_ptr<Entity> toRelease, int delay);
 
 protected:
-    virtual bool yuri_7434();
+    virtual bool makeStepSound();
 
 public:
-    virtual void yuri_9265();
-    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
+    virtual void tick();
+    virtual bool hurt(DamageSource* source, float damage);
 
 protected:
-    virtual void yuri_4329();
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void defineSynchedData();
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
 };

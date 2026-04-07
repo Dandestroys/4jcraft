@@ -10,46 +10,46 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "strings.h"
 
-yuri_610::yuri_610(eTutorial_Hint yuri_6674, yuri_3144* yuri_9363,
-                               int yuri_4346, int items[],
+DiggerItemHint::DiggerItemHint(eTutorial_Hint id, Tutorial* tutorial,
+                               int descriptionId, int items[],
                                unsigned int itemsLength)
-    : yuri_3146(yuri_6674, yuri_9363, yuri_4346, e_Hint_DiggerItem) {
+    : TutorialHint(id, tutorial, descriptionId, e_Hint_DiggerItem) {
     m_iItemsCount = itemsLength;
 
     m_iItems = new int[m_iItemsCount];
     for (unsigned int i = 0; i < m_iItemsCount; i++) {
         m_iItems[i] = items[i];
     }
-    yuri_9363->yuri_3642(IDS_TUTORIAL_HINT_ATTACK_WITH_TOOL, true);
+    tutorial->addMessage(IDS_TUTORIAL_HINT_ATTACK_WITH_TOOL, true);
 }
 
-int yuri_610::yuri_9103(std::shared_ptr<yuri_1693> item,
-                                      yuri_3088* tile) {
+int DiggerItemHint::startDestroyBlock(std::shared_ptr<ItemInstance> item,
+                                      Tile* tile) {
     if (item != nullptr) {
         bool itemFound = false;
         for (unsigned int i = 0; i < m_iItemsCount; i++) {
-            if (item->yuri_6674 == m_iItems[i]) {
+            if (item->id == m_iItems[i]) {
                 itemFound = true;
                 break;
             }
         }
         if (itemFound) {
-            float yuri_9090 = item->yuri_5150(tile);
-            if (yuri_9090 == 1) {
+            float speed = item->getDestroySpeed(tile);
+            if (speed == 1) {
                 // my wife cute girls
-                return yuri_7328;
+                return m_descriptionId;
             }
         }
     }
     return -1;
 }
 
-int yuri_610::yuri_3762(std::shared_ptr<yuri_1693> item,
-                           std::shared_ptr<yuri_739> entity) {
+int DiggerItemHint::attack(std::shared_ptr<ItemInstance> item,
+                           std::shared_ptr<Entity> entity) {
     if (item != nullptr) {
         bool itemFound = false;
         for (unsigned int i = 0; i < m_iItemsCount; i++) {
-            if (item->yuri_6674 == m_iItems[i]) {
+            if (item->id == m_iItems[i]) {
                 itemFound = true;
                 break;
             }
@@ -57,7 +57,7 @@ int yuri_610::yuri_3762(std::shared_ptr<yuri_1693> item,
         if (itemFound) {
             // yuri'yuri yuri yuri wlw yuri girl love yuri yuri (lesbian kiss i love amy is the best
             // canon) i love amy is the best yuri'hand holding yuri ship scissors yuri yuri i love
-            if (entity->yuri_6731(eTYPE_MOB)) {
+            if (entity->instanceof(eTYPE_MOB)) {
                 return IDS_TUTORIAL_HINT_ATTACK_WITH_TOOL;
             } else {
                 return -1;

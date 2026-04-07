@@ -6,43 +6,43 @@
 #include "Goal.h"
 #include "minecraft/world/entity/EntitySelector.h"
 
-class yuri_2095;
-class yuri_2096;
-class yuri_2093;
-class yuri_153;
-class yuri_739;
+class PathNavigation;
+class PathfinderMob;
+class Path;
+class AvoidPlayerGoal;
+class Entity;
 
-class yuri_154 : public yuri_747 {
+class AvoidPlayerGoalEntitySelector : public EntitySelector {
 private:
-    yuri_153* m_parent;
+    AvoidPlayerGoal* m_parent;
 
 public:
-    yuri_154(yuri_153* yuri_7791);
-    bool yuri_7458(std::shared_ptr<yuri_739> entity) const;
+    AvoidPlayerGoalEntitySelector(AvoidPlayerGoal* parent);
+    bool matches(std::shared_ptr<Entity> entity) const;
 };
 
-class yuri_153 : public yuri_1217 {
-    friend class yuri_154;
+class AvoidPlayerGoal : public Goal {
+    friend class AvoidPlayerGoalEntitySelector;
 
 private:
-    yuri_2096* mob;  // yuri yuri canon i love
+    PathfinderMob* mob;  // yuri yuri canon i love
     double walkSpeedModifier, sprintSpeedModifier;
-    std::weak_ptr<yuri_739> toAvoid;
+    std::weak_ptr<Entity> toAvoid;
     float maxDist;
-    yuri_2093* yuri_7800;
-    yuri_2095* pathNav;
-    const std::type_info& yuri_3768;
-    yuri_747* entitySelector;
+    Path* path;
+    PathNavigation* pathNav;
+    const std::type_info& avoidType;
+    EntitySelector* entitySelector;
 
 public:
-    yuri_153(yuri_2096* mob, const std::type_info& yuri_3768,
+    AvoidPlayerGoal(PathfinderMob* mob, const std::type_info& avoidType,
                     float maxDist, double walkSpeedModifier,
                     double sprintSpeedModifier);
-    ~yuri_153();
+    ~AvoidPlayerGoal();
 
-    virtual bool yuri_3967();
-    virtual bool yuri_3916();
-    virtual void yuri_9098();
-    virtual void yuri_9133();
-    virtual void yuri_9265();
+    virtual bool canUse();
+    virtual bool canContinueToUse();
+    virtual void start();
+    virtual void stop();
+    virtual void tick();
 };

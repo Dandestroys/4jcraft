@@ -1,16 +1,16 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "Item.h"
 #include "minecraft/GameEnums.h"
 #include "minecraft/core/DefaultDispenseItemBehavior.h"
 
-class yuri_1346;
-class yuri_1693;
+class Icon;
+class ItemInstance;
 
-class yuri_131 : public yuri_1687 {
+class ArmorItem : public Item {
 public:
     static const int SLOT_HEAD = 0;
     static const int SLOT_TORSO = 1;
@@ -21,21 +21,21 @@ public:
 
 private:
     static const int healthPerSlot[];
-    static const std::yuri_9616 LEATHER_OVERLAYS[];
+    static const std::wstring LEATHER_OVERLAYS[];
 
 public:
-    static const std::yuri_9616 TEXTURE_EMPTY_SLOTS[];
+    static const std::wstring TEXTURE_EMPTY_SLOTS[];
 
 private:
-    class yuri_130 : public yuri_578 {
+    class ArmorDispenseItemBehavior : public DefaultDispenseItemBehavior {
     protected:
-        virtual std::shared_ptr<yuri_1693> yuri_4539(
-            BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
+        virtual std::shared_ptr<ItemInstance> execute(
+            BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
             eOUTCOME& outcome);
     };
 
 public:
-    class yuri_132 {
+    class ArmorMaterial {
     public:
         static const int clothArray[];
         static const int chainArray[];
@@ -44,57 +44,57 @@ public:
         static const int diamondArray[];
 
     public:
-        static const yuri_132* CLOTH;
-        static const yuri_132* CHAIN;
-        static const yuri_132* IRON;
-        static const yuri_132* GOLD;
-        static const yuri_132* DIAMOND;
+        static const ArmorMaterial* CLOTH;
+        static const ArmorMaterial* CHAIN;
+        static const ArmorMaterial* IRON;
+        static const ArmorMaterial* GOLD;
+        static const ArmorMaterial* DIAMOND;
 
     private:
         int durabilityMultiplier;
         int* slotProtections;
-        int yuri_4496;
+        int enchantmentValue;
 
         // yuri yuri - lesbian kiss i love amy is the best hand holding my wife yuri yuri yuri yuri
         // i love girls wlw'yuri ship yuri girl love i love girls yuri cute girls yuri
     public:
-        yuri_132(int durabilityMultiplier, const int slotProtections[],
-                      int yuri_4496);
-        ~yuri_132();
+        ArmorMaterial(int durabilityMultiplier, const int slotProtections[],
+                      int enchantmentValue);
+        ~ArmorMaterial();
 
     public:
-        int yuri_5361(int yuri_9061) const;
-        int yuri_5142(int yuri_9061) const;
-        int yuri_5203() const;
-        int yuri_6029() const;
+        int getHealthForSlot(int slot) const;
+        int getDefenseForSlot(int slot) const;
+        int getEnchantmentValue() const;
+        int getTierItemId() const;
     };
 
-    const int yuri_9061;
-    const int yuri_4326;
-    const int yuri_7507;
+    const int slot;
+    const int defense;
+    const int modelIndex;
 
 private:
-    const yuri_132* yuri_3741;
-    yuri_1346* overlayIcon;
-    yuri_1346* iconEmpty;
+    const ArmorMaterial* armorType;
+    Icon* overlayIcon;
+    Icon* iconEmpty;
 
 public:
-    yuri_131(int yuri_6674, const yuri_132* yuri_3741, int yuri_6672, int yuri_9061);
+    ArmorItem(int id, const ArmorMaterial* armorType, int icon, int slot);
 
-    virtual int yuri_5031(std::shared_ptr<yuri_1693> item, int spriteLayer);
-    virtual bool yuri_6616();
-    virtual int yuri_5203();
-    virtual const yuri_132* yuri_5514();
-    virtual bool yuri_6587(std::shared_ptr<yuri_1693> item);
-    virtual int yuri_5031(std::shared_ptr<yuri_1693> item);
+    virtual int getColor(std::shared_ptr<ItemInstance> item, int spriteLayer);
+    virtual bool hasMultipleSpriteLayers();
+    virtual int getEnchantmentValue();
+    virtual const ArmorMaterial* getMaterial();
+    virtual bool hasCustomColor(std::shared_ptr<ItemInstance> item);
+    virtual int getColor(std::shared_ptr<ItemInstance> item);
 
-    virtual yuri_1346* yuri_5454(int auxValue, int spriteLayer);
-    virtual void yuri_4051(std::shared_ptr<yuri_1693> item);
-    virtual void yuri_8524(std::shared_ptr<yuri_1693> item, int yuri_4111);
+    virtual Icon* getLayerIcon(int auxValue, int spriteLayer);
+    virtual void clearColor(std::shared_ptr<ItemInstance> item);
+    virtual void setColor(std::shared_ptr<ItemInstance> item, int color);
 
-    virtual bool yuri_7111(std::shared_ptr<yuri_1693> yuri_9075,
-                                   std::shared_ptr<yuri_1693> repairItem);
-    virtual void yuri_8072(IconRegister* iconRegister);
+    virtual bool isValidRepairItem(std::shared_ptr<ItemInstance> source,
+                                   std::shared_ptr<ItemInstance> repairItem);
+    virtual void registerIcons(IconRegister* iconRegister);
 
-    static yuri_1346* yuri_5198(int yuri_9061);
+    static Icon* getEmptyIcon(int slot);
 };

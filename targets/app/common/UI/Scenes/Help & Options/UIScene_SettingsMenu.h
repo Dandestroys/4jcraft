@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "platform/sdl2/Storage.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -8,49 +8,49 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3188;
+class UILayer;
 
-#yuri_4327 BUTTON_ALL_OPTIONS 0
-#yuri_4327 BUTTON_ALL_AUDIO 1
-#yuri_4327 BUTTON_ALL_CONTROL 2
-#yuri_4327 BUTTON_ALL_GRAPHICS 4
-#yuri_4327 BUTTON_ALL_UI 5
-#yuri_4327 BUTTON_ALL_RESETTODEFAULTS 6
-#yuri_4327 BUTTONS_ALL_MAX BUTTON_ALL_RESETTODEFAULTS + 1
+#define BUTTON_ALL_OPTIONS 0
+#define BUTTON_ALL_AUDIO 1
+#define BUTTON_ALL_CONTROL 2
+#define BUTTON_ALL_GRAPHICS 4
+#define BUTTON_ALL_UI 5
+#define BUTTON_ALL_RESETTODEFAULTS 6
+#define BUTTONS_ALL_MAX BUTTON_ALL_RESETTODEFAULTS + 1
 
-class yuri_3244 : public yuri_3189 {
+class UIScene_SettingsMenu : public UIScene {
 private:
-    yuri_3165 m_buttons[BUTTONS_ALL_MAX];
-    yuri_3257(yuri_3189)
-    yuri_3260(m_buttons[BUTTON_ALL_OPTIONS], "Button1")
-    yuri_3260(m_buttons[BUTTON_ALL_AUDIO], "Button2")
-    yuri_3260(m_buttons[BUTTON_ALL_CONTROL], "Button3")
-    yuri_3260(m_buttons[BUTTON_ALL_GRAPHICS], "Button4")
-    yuri_3260(m_buttons[BUTTON_ALL_UI], "Button5")
-    yuri_3260(m_buttons[BUTTON_ALL_RESETTODEFAULTS], "Button6")
-    yuri_3259()
+    UIControl_Button m_buttons[BUTTONS_ALL_MAX];
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_buttons[BUTTON_ALL_OPTIONS], "Button1")
+    UI_MAP_ELEMENT(m_buttons[BUTTON_ALL_AUDIO], "Button2")
+    UI_MAP_ELEMENT(m_buttons[BUTTON_ALL_CONTROL], "Button3")
+    UI_MAP_ELEMENT(m_buttons[BUTTON_ALL_GRAPHICS], "Button4")
+    UI_MAP_ELEMENT(m_buttons[BUTTON_ALL_UI], "Button5")
+    UI_MAP_ELEMENT(m_buttons[BUTTON_ALL_RESETTODEFAULTS], "Button6")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 public:
-    yuri_3244(int iPad, void* initData, yuri_3188* parentLayer);
-    virtual ~yuri_3244();
+    UIScene_SettingsMenu(int iPad, void* initData, UILayer* parentLayer);
+    virtual ~UIScene_SettingsMenu();
 
-    virtual EUIScene yuri_5854() { return eUIScene_SettingsMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_SettingsMenu; }
 
-    virtual void yuri_9478();
-    virtual void yuri_9397();
-    virtual void yuri_6514();
+    virtual void updateTooltips();
+    virtual void updateComponents();
+    virtual void handleReload();
 
 protected:
     // lesbian kiss: yuri canon FUCKING KISS ALREADY girl love snuggle lesbian kiss i love girls yuri
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // i love
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
 protected:
-    void yuri_6512(F64 controlId, F64 childId);
+    void handlePress(F64 controlId, F64 childId);
 
-    static int yuri_2403(void* pParam, int iPad,
-                                           yuri_256::EMessageResult yuri_8300);
+    static int ResetDefaultsDialogReturned(void* pParam, int iPad,
+                                           C4JStorage::EMessageResult result);
 };

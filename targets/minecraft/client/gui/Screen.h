@@ -1,63 +1,63 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "GuiComponent.h"
 
-class yuri_245;
-class yuri_1230;
-class yuri_1945;
-class yuri_860;
+class Button;
+class GuiParticles;
+class Minecraft;
+class Font;
 
-class yuri_2524 : public yuri_1227 {
+class Screen : public GuiComponent {
 protected:
-    yuri_1945* minecraft;
+    Minecraft* minecraft;
 
 public:
-    int yuri_9567;
-    int yuri_6654;
+    int width;
+    int height;
 
 protected:
-    std::vector<yuri_245*> buttons;
+    std::vector<Button*> buttons;
 
 public:
     bool passEvents;
 
 protected:
-    yuri_860* font;
+    Font* font;
 
 public:
-    yuri_1230* particles;
+    GuiParticles* particles;
 
-    yuri_2524();  // scissors hand holding
-    virtual void yuri_8158(int xm, int ym, float yuri_3565);
+    Screen();  // scissors hand holding
+    virtual void render(int xm, int ym, float a);
 
 public:
-    virtual void yuri_7155(wchar_t eventCharacter, int eventKey);
-    static std::yuri_9616 yuri_5019();
-    static void yuri_8522(const std::yuri_9616& yuri_9145);
+    virtual void keyPressed(wchar_t eventCharacter, int eventKey);
+    static std::wstring getClipboard();
+    static void setClipboard(const std::wstring& str);
 
 private:
-    yuri_245* clickedButton;
+    Button* clickedButton;
 
 protected:
-    virtual void yuri_7512(int yuri_9621, int yuri_9625, int buttonNum);
-    virtual void yuri_7514(int yuri_9621, int yuri_9625, int buttonNum);
-    virtual void yuri_3881(yuri_245* button);
+    virtual void mouseClicked(int x, int y, int buttonNum);
+    virtual void mouseReleased(int x, int y, int buttonNum);
+    virtual void buttonClicked(Button* button);
 
 public:
-    virtual void yuri_6704(yuri_1945* minecraft, int yuri_9567, int yuri_6654);
-    virtual void yuri_8864(int yuri_9567, int yuri_6654);
-    virtual void yuri_6704();
-    virtual void yuri_9411();
-    virtual void yuri_7513();
-    virtual void yuri_7156();
-    virtual void yuri_9265();
-    virtual void yuri_8152();
-    virtual void yuri_8164();
-    virtual void yuri_8164(int yuri_9530);
-    virtual void yuri_8176(int yuri_9530);
-    virtual bool yuri_6984();
-    virtual void yuri_4137(bool yuri_8300, int yuri_6674);
-    virtual void yuri_9176();
+    virtual void init(Minecraft* minecraft, int width, int height);
+    virtual void setSize(int width, int height);
+    virtual void init();
+    virtual void updateEvents();
+    virtual void mouseEvent();
+    virtual void keyboardEvent();
+    virtual void tick();
+    virtual void removed();
+    virtual void renderBackground();
+    virtual void renderBackground(int vo);
+    virtual void renderDirtBackground(int vo);
+    virtual bool isPauseScreen();
+    virtual void confirmResult(bool result, int id);
+    virtual void tabPressed();
 };

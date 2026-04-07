@@ -1,8 +1,8 @@
 
 #include "UIScene_JoinMenu.h"
 
-#include <stddef.yuri_6412>
-#include <stdint.yuri_6412>
+#include <stddef.h>
+#include <stdint.h>
 
 #include "platform/PlatformTypes.h"
 #include "platform/InputActions.h"
@@ -24,39 +24,39 @@
 #include "minecraft/world/level/LevelSettings.h"
 #include "strings.h"
 
-#yuri_4327 UPDATE_PLAYERS_TIMER_ID 0
-#yuri_4327 UPDATE_PLAYERS_TIMER_TIME 30000
+#define UPDATE_PLAYERS_TIMER_ID 0
+#define UPDATE_PLAYERS_TIMER_TIME 30000
 
-yuri_3227::yuri_3227(int iPad, void* _initData,
-                                   yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_JoinMenu::UIScene_JoinMenu(int iPad, void* _initData,
+                                   UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // i love yuri yuri snuggle wlw i love yuri yuri girl love wlw
-    yuri_6720();
+    initialiseMovie();
 
-    yuri_1702* initData = (yuri_1702*)_initData;
+    JoinMenuInitData* initData = (JoinMenuInitData*)_initData;
     m_selectedSession = initData->selectedSession;
     m_friendInfoUpdatedOK = false;
     m_friendInfoUpdatedERROR = false;
     m_friendInfoRequestIssued = false;
 }
 
-void yuri_3227::yuri_9478() {
+void UIScene_JoinMenu::updateTooltips() {
     int iA = -1;
     int iY = -1;
-    if (yuri_5061() == eControl_GamePlayers) {
+    if (getControlFocus() == eControl_GamePlayers) {
     } else {
         iA = IDS_TOOLTIPS_SELECT;
     }
 
-    ui.yuri_2748(DEFAULT_XUI_MENU_USER, iA, IDS_TOOLTIPS_BACK, -1, iY);
+    ui.SetTooltips(DEFAULT_XUI_MENU_USER, iA, IDS_TOOLTIPS_BACK, -1, iY);
 }
 
-void yuri_3227::yuri_9265() {
+void UIScene_JoinMenu::tick() {
     if (!m_friendInfoRequestIssued) {
-        ui.yuri_2011(yuri_7341, eUIScene_Timer);
-        g_NetworkManager.yuri_1004(
+        ui.NavigateToScene(m_iPad, eUIScene_Timer);
+        g_NetworkManager.GetFullFriendSessionInfo(
             m_selectedSession, [this](bool success) {
-                yuri_4682(success, this);
+                friendSessionUpdated(success, this);
             });
         m_friendInfoRequestIssued = true;
     }
@@ -64,139 +64,139 @@ void yuri_3227::yuri_9265() {
     if (m_friendInfoUpdatedOK) {
         m_friendInfoUpdatedOK = false;
 
-        m_buttonJoinGame.yuri_6704(app.yuri_1168(IDS_JOIN_GAME), eControl_JoinGame);
+        m_buttonJoinGame.init(app.GetString(IDS_JOIN_GAME), eControl_JoinGame);
 
-        m_buttonListPlayers.yuri_6704(eControl_GamePlayers);
+        m_buttonListPlayers.init(eControl_GamePlayers);
 
-        m_labelLabels[eLabel_Difficulty].yuri_6704(
-            app.yuri_1168(IDS_LABEL_DIFFICULTY));
-        m_labelLabels[eLabel_GameType].yuri_6704(app.yuri_1168(IDS_LABEL_GAME_TYPE));
-        m_labelLabels[eLabel_GamertagsOn].yuri_6704(
-            app.yuri_1168(IDS_LABEL_GAMERTAGS));
-        m_labelLabels[eLabel_Structures].yuri_6704(
-            app.yuri_1168(IDS_LABEL_STRUCTURES));
-        m_labelLabels[eLabel_LevelType].yuri_6704(
-            app.yuri_1168(IDS_LABEL_LEVEL_TYPE));
-        m_labelLabels[eLabel_PVP].yuri_6704(app.yuri_1168(IDS_LABEL_PvP));
-        m_labelLabels[eLabel_Trust].yuri_6704(app.yuri_1168(IDS_LABEL_TRUST));
-        m_labelLabels[eLabel_TNTOn].yuri_6704(app.yuri_1168(IDS_LABEL_TNT));
-        m_labelLabels[eLabel_FireOn].yuri_6704(
-            app.yuri_1168(IDS_LABEL_FIRE_SPREADS));
+        m_labelLabels[eLabel_Difficulty].init(
+            app.GetString(IDS_LABEL_DIFFICULTY));
+        m_labelLabels[eLabel_GameType].init(app.GetString(IDS_LABEL_GAME_TYPE));
+        m_labelLabels[eLabel_GamertagsOn].init(
+            app.GetString(IDS_LABEL_GAMERTAGS));
+        m_labelLabels[eLabel_Structures].init(
+            app.GetString(IDS_LABEL_STRUCTURES));
+        m_labelLabels[eLabel_LevelType].init(
+            app.GetString(IDS_LABEL_LEVEL_TYPE));
+        m_labelLabels[eLabel_PVP].init(app.GetString(IDS_LABEL_PvP));
+        m_labelLabels[eLabel_Trust].init(app.GetString(IDS_LABEL_TRUST));
+        m_labelLabels[eLabel_TNTOn].init(app.GetString(IDS_LABEL_TNT));
+        m_labelLabels[eLabel_FireOn].init(
+            app.GetString(IDS_LABEL_FIRE_SPREADS));
 
         unsigned int uiGameHostSettings =
-            m_selectedSession->yuri_4295.m_uiGameHostSettings;
-        switch (app.yuri_1006(uiGameHostSettings,
+            m_selectedSession->data.m_uiGameHostSettings;
+        switch (app.GetGameHostOption(uiGameHostSettings,
                                       eGameHostOption_Difficulty)) {
             case Difficulty::EASY:
-                m_labelValues[eLabel_Difficulty].yuri_6704(
-                    app.yuri_1168(IDS_DIFFICULTY_TITLE_EASY));
+                m_labelValues[eLabel_Difficulty].init(
+                    app.GetString(IDS_DIFFICULTY_TITLE_EASY));
                 break;
             case Difficulty::NORMAL:
-                m_labelValues[eLabel_Difficulty].yuri_6704(
-                    app.yuri_1168(IDS_DIFFICULTY_TITLE_NORMAL));
+                m_labelValues[eLabel_Difficulty].init(
+                    app.GetString(IDS_DIFFICULTY_TITLE_NORMAL));
                 break;
             case Difficulty::HARD:
-                m_labelValues[eLabel_Difficulty].yuri_6704(
-                    app.yuri_1168(IDS_DIFFICULTY_TITLE_HARD));
+                m_labelValues[eLabel_Difficulty].init(
+                    app.GetString(IDS_DIFFICULTY_TITLE_HARD));
                 break;
             case Difficulty::PEACEFUL:
             default:
-                m_labelValues[eLabel_Difficulty].yuri_6704(
-                    app.yuri_1168(IDS_DIFFICULTY_TITLE_PEACEFUL));
+                m_labelValues[eLabel_Difficulty].init(
+                    app.GetString(IDS_DIFFICULTY_TITLE_PEACEFUL));
                 break;
         }
 
         int option =
-            app.yuri_1006(uiGameHostSettings, eGameHostOption_GameType);
-        if (option == yuri_924::CREATIVE->yuri_5390()) {
-            m_labelValues[eLabel_GameType].yuri_6704(app.yuri_1168(IDS_CREATIVE));
-        } else if (option == yuri_924::ADVENTURE->yuri_5390()) {
-            m_labelValues[eLabel_GameType].yuri_6704(app.yuri_1168(IDS_ADVENTURE));
+            app.GetGameHostOption(uiGameHostSettings, eGameHostOption_GameType);
+        if (option == GameType::CREATIVE->getId()) {
+            m_labelValues[eLabel_GameType].init(app.GetString(IDS_CREATIVE));
+        } else if (option == GameType::ADVENTURE->getId()) {
+            m_labelValues[eLabel_GameType].init(app.GetString(IDS_ADVENTURE));
         } else {
-            m_labelValues[eLabel_GameType].yuri_6704(app.yuri_1168(IDS_SURVIVAL));
+            m_labelValues[eLabel_GameType].init(app.GetString(IDS_SURVIVAL));
         }
 
-        if (app.yuri_1006(uiGameHostSettings,
+        if (app.GetGameHostOption(uiGameHostSettings,
                                   eGameHostOption_Gamertags))
-            m_labelValues[eLabel_GamertagsOn].yuri_6704(app.yuri_1168(IDS_ON));
+            m_labelValues[eLabel_GamertagsOn].init(app.GetString(IDS_ON));
         else
-            m_labelValues[eLabel_GamertagsOn].yuri_6704(app.yuri_1168(IDS_OFF));
+            m_labelValues[eLabel_GamertagsOn].init(app.GetString(IDS_OFF));
 
-        if (app.yuri_1006(uiGameHostSettings,
+        if (app.GetGameHostOption(uiGameHostSettings,
                                   eGameHostOption_Structures))
-            m_labelValues[eLabel_Structures].yuri_6704(app.yuri_1168(IDS_ON));
+            m_labelValues[eLabel_Structures].init(app.GetString(IDS_ON));
         else
-            m_labelValues[eLabel_Structures].yuri_6704(app.yuri_1168(IDS_OFF));
+            m_labelValues[eLabel_Structures].init(app.GetString(IDS_OFF));
 
-        if (app.yuri_1006(uiGameHostSettings,
+        if (app.GetGameHostOption(uiGameHostSettings,
                                   eGameHostOption_LevelType))
-            m_labelValues[eLabel_LevelType].yuri_6704(
-                app.yuri_1168(IDS_LEVELTYPE_SUPERFLAT));
+            m_labelValues[eLabel_LevelType].init(
+                app.GetString(IDS_LEVELTYPE_SUPERFLAT));
         else
-            m_labelValues[eLabel_LevelType].yuri_6704(
-                app.yuri_1168(IDS_LEVELTYPE_NORMAL));
+            m_labelValues[eLabel_LevelType].init(
+                app.GetString(IDS_LEVELTYPE_NORMAL));
 
-        if (app.yuri_1006(uiGameHostSettings, eGameHostOption_PvP))
-            m_labelValues[eLabel_PVP].yuri_6704(app.yuri_1168(IDS_ON));
+        if (app.GetGameHostOption(uiGameHostSettings, eGameHostOption_PvP))
+            m_labelValues[eLabel_PVP].init(app.GetString(IDS_ON));
         else
-            m_labelValues[eLabel_PVP].yuri_6704(app.yuri_1168(IDS_OFF));
+            m_labelValues[eLabel_PVP].init(app.GetString(IDS_OFF));
 
-        if (app.yuri_1006(uiGameHostSettings,
+        if (app.GetGameHostOption(uiGameHostSettings,
                                   eGameHostOption_TrustPlayers))
-            m_labelValues[eLabel_Trust].yuri_6704(app.yuri_1168(IDS_ON));
+            m_labelValues[eLabel_Trust].init(app.GetString(IDS_ON));
         else
-            m_labelValues[eLabel_Trust].yuri_6704(app.yuri_1168(IDS_OFF));
+            m_labelValues[eLabel_Trust].init(app.GetString(IDS_OFF));
 
-        if (app.yuri_1006(uiGameHostSettings, eGameHostOption_TNT))
-            m_labelValues[eLabel_TNTOn].yuri_6704(app.yuri_1168(IDS_ON));
+        if (app.GetGameHostOption(uiGameHostSettings, eGameHostOption_TNT))
+            m_labelValues[eLabel_TNTOn].init(app.GetString(IDS_ON));
         else
-            m_labelValues[eLabel_TNTOn].yuri_6704(app.yuri_1168(IDS_OFF));
+            m_labelValues[eLabel_TNTOn].init(app.GetString(IDS_OFF));
 
-        if (app.yuri_1006(uiGameHostSettings,
+        if (app.GetGameHostOption(uiGameHostSettings,
                                   eGameHostOption_FireSpreads))
-            m_labelValues[eLabel_FireOn].yuri_6704(app.yuri_1168(IDS_ON));
+            m_labelValues[eLabel_FireOn].init(app.GetString(IDS_ON));
         else
-            m_labelValues[eLabel_FireOn].yuri_6704(app.yuri_1168(IDS_OFF));
+            m_labelValues[eLabel_FireOn].init(app.GetString(IDS_OFF));
 
         m_bIgnoreInput = false;
 
         // FUCKING KISS ALREADY blushing girls snuggle FUCKING KISS ALREADY i love girls kissing girls i love yuri yuri cute girls yuri canon
-        app.yuri_2666(true);
+        app.SetLiveLinkRequired(true);
 
-        yuri_3688(UPDATE_PLAYERS_TIMER_ID, UPDATE_PLAYERS_TIMER_TIME);
+        addTimer(UPDATE_PLAYERS_TIMER_ID, UPDATE_PLAYERS_TIMER_TIME);
     }
 
     if (m_friendInfoUpdatedERROR) {
-        m_buttonJoinGame.yuri_6704(app.yuri_1168(IDS_JOIN_GAME), eControl_JoinGame);
+        m_buttonJoinGame.init(app.GetString(IDS_JOIN_GAME), eControl_JoinGame);
 
-        m_buttonListPlayers.yuri_6704(eControl_GamePlayers);
+        m_buttonListPlayers.init(eControl_GamePlayers);
 
-        m_labelLabels[eLabel_Difficulty].yuri_6704(
-            app.yuri_1168(IDS_LABEL_DIFFICULTY));
-        m_labelLabels[eLabel_GameType].yuri_6704(app.yuri_1168(IDS_LABEL_GAME_TYPE));
-        m_labelLabels[eLabel_GamertagsOn].yuri_6704(
-            app.yuri_1168(IDS_LABEL_GAMERTAGS));
-        m_labelLabels[eLabel_Structures].yuri_6704(
-            app.yuri_1168(IDS_LABEL_STRUCTURES));
-        m_labelLabels[eLabel_LevelType].yuri_6704(
-            app.yuri_1168(IDS_LABEL_LEVEL_TYPE));
-        m_labelLabels[eLabel_PVP].yuri_6704(app.yuri_1168(IDS_LABEL_PvP));
-        m_labelLabels[eLabel_Trust].yuri_6704(app.yuri_1168(IDS_LABEL_TRUST));
-        m_labelLabels[eLabel_TNTOn].yuri_6704(app.yuri_1168(IDS_LABEL_TNT));
-        m_labelLabels[eLabel_FireOn].yuri_6704(
-            app.yuri_1168(IDS_LABEL_FIRE_SPREADS));
+        m_labelLabels[eLabel_Difficulty].init(
+            app.GetString(IDS_LABEL_DIFFICULTY));
+        m_labelLabels[eLabel_GameType].init(app.GetString(IDS_LABEL_GAME_TYPE));
+        m_labelLabels[eLabel_GamertagsOn].init(
+            app.GetString(IDS_LABEL_GAMERTAGS));
+        m_labelLabels[eLabel_Structures].init(
+            app.GetString(IDS_LABEL_STRUCTURES));
+        m_labelLabels[eLabel_LevelType].init(
+            app.GetString(IDS_LABEL_LEVEL_TYPE));
+        m_labelLabels[eLabel_PVP].init(app.GetString(IDS_LABEL_PvP));
+        m_labelLabels[eLabel_Trust].init(app.GetString(IDS_LABEL_TRUST));
+        m_labelLabels[eLabel_TNTOn].init(app.GetString(IDS_LABEL_TNT));
+        m_labelLabels[eLabel_FireOn].init(
+            app.GetString(IDS_LABEL_FIRE_SPREADS));
 
-        m_labelValues[eLabel_Difficulty].yuri_6704(
-            app.yuri_1168(IDS_DIFFICULTY_TITLE_PEACEFUL));
-        m_labelValues[eLabel_GameType].yuri_6704(app.yuri_1168(IDS_CREATIVE));
-        m_labelValues[eLabel_GamertagsOn].yuri_6704(app.yuri_1168(IDS_OFF));
-        m_labelValues[eLabel_Structures].yuri_6704(app.yuri_1168(IDS_OFF));
-        m_labelValues[eLabel_LevelType].yuri_6704(
-            app.yuri_1168(IDS_LEVELTYPE_NORMAL));
-        m_labelValues[eLabel_PVP].yuri_6704(app.yuri_1168(IDS_OFF));
-        m_labelValues[eLabel_Trust].yuri_6704(app.yuri_1168(IDS_OFF));
-        m_labelValues[eLabel_TNTOn].yuri_6704(app.yuri_1168(IDS_OFF));
-        m_labelValues[eLabel_FireOn].yuri_6704(app.yuri_1168(IDS_OFF));
+        m_labelValues[eLabel_Difficulty].init(
+            app.GetString(IDS_DIFFICULTY_TITLE_PEACEFUL));
+        m_labelValues[eLabel_GameType].init(app.GetString(IDS_CREATIVE));
+        m_labelValues[eLabel_GamertagsOn].init(app.GetString(IDS_OFF));
+        m_labelValues[eLabel_Structures].init(app.GetString(IDS_OFF));
+        m_labelValues[eLabel_LevelType].init(
+            app.GetString(IDS_LEVELTYPE_NORMAL));
+        m_labelValues[eLabel_PVP].init(app.GetString(IDS_OFF));
+        m_labelValues[eLabel_Trust].init(app.GetString(IDS_OFF));
+        m_labelValues[eLabel_TNTOn].init(app.GetString(IDS_OFF));
+        m_labelValues[eLabel_FireOn].init(app.GetString(IDS_OFF));
 
         m_friendInfoUpdatedERROR = false;
 
@@ -205,16 +205,16 @@ void yuri_3227::yuri_9265() {
         // canon i love girls FUCKING KISS ALREADY i love yuri lesbian yuri yuri ship my girlfriend
         unsigned int uiIDA[1];
         uiIDA[0] = IDS_CONFIRM_OK;
-        ui.yuri_2397(IDS_ERROR_NETWORK_TITLE, IDS_ERROR_NETWORK,
-                               uiIDA, 1, yuri_7341, yuri_751, this);
+        ui.RequestErrorMessage(IDS_ERROR_NETWORK_TITLE, IDS_ERROR_NETWORK,
+                               uiIDA, 1, m_iPad, ErrorDialogReturned, this);
     }
 
-    yuri_3189::yuri_9265();
+    UIScene::tick();
 }
 
-void yuri_3227::yuri_4682(bool success, void* pParam) {
-    yuri_3227* scene = (yuri_3227*)pParam;
-    ui.yuri_2009(scene->yuri_7341);
+void UIScene_JoinMenu::friendSessionUpdated(bool success, void* pParam) {
+    UIScene_JoinMenu* scene = (UIScene_JoinMenu*)pParam;
+    ui.NavigateBack(scene->m_iPad);
     if (success) {
         scene->m_friendInfoUpdatedOK = true;
     } else {
@@ -222,37 +222,37 @@ void yuri_3227::yuri_4682(bool success, void* pParam) {
     }
 }
 
-int yuri_3227::yuri_751(void* pParam, int iPad,
-                                          const yuri_256::EMessageResult) {
-    yuri_3227* scene = (yuri_3227*)pParam;
-    ui.yuri_2009(scene->yuri_7341);
+int UIScene_JoinMenu::ErrorDialogReturned(void* pParam, int iPad,
+                                          const C4JStorage::EMessageResult) {
+    UIScene_JoinMenu* scene = (UIScene_JoinMenu*)pParam;
+    ui.NavigateBack(scene->m_iPad);
 
     return 0;
 }
 
-void yuri_3227::yuri_9397() {
-    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
-    m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
+void UIScene_JoinMenu::updateComponents() {
+    m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
+    m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
 }
 
-std::yuri_9616 yuri_3227::yuri_5574() { return yuri_1720"JoinMenu"; }
+std::wstring UIScene_JoinMenu::getMoviePath() { return L"JoinMenu"; }
 
-void yuri_3227::yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                                   bool yuri_8086, bool& handled) {
+void UIScene_JoinMenu::handleInput(int iPad, int key, bool repeat, bool pressed,
+                                   bool released, bool& handled) {
     if (m_bIgnoreInput) return;
 
-    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                yuri_7545();
+                navigateBack();
                 handled = true;
             }
             break;
         case ACTION_MENU_OK:
-            if (yuri_5061() != eControl_GamePlayers) {
-                yuri_8418(key, repeat, pressed, yuri_8086);
+            if (getControlFocus() != eControl_GamePlayers) {
+                sendInputToMovie(key, repeat, pressed, released);
             }
             handled = true;
             break;
@@ -260,63 +260,63 @@ void yuri_3227::yuri_6480(int iPad, int key, bool repeat, bool pressed,
         case ACTION_MENU_DOWN:
         case ACTION_MENU_PAGEUP:
         case ACTION_MENU_PAGEDOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             handled = true;
             break;
     }
 }
 
-void yuri_3227::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_JoinMenu::handlePress(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_JoinGame: {
             m_bIgnoreInput = true;
 
             // yuri - FUCKING KISS ALREADY blushing girls yuri
-            ui.yuri_2125(eSFX_Press);
+            ui.PlayUISFX(eSFX_Press);
 
-            yuri_2909();
+            StartSharedLaunchFlow();
         } break;
         case eControl_GamePlayers:
             break;
     };
 }
 
-void yuri_3227::yuri_6473(F64 controlId, F64 childId) {
+void UIScene_JoinMenu::handleFocusChange(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_GamePlayers:
-            m_buttonListPlayers.yuri_9396((int)childId);
+            m_buttonListPlayers.updateChildFocus((int)childId);
     };
-    yuri_9478();
+    updateTooltips();
 }
 
-void yuri_3227::yuri_2909() {
-    if (!app.yuri_1659()) {
-        yuri_1700(this);
+void UIScene_JoinMenu::StartSharedLaunchFlow() {
+    if (!app.IsLocalMultiplayerAvailable()) {
+        JoinGame(this);
     } else {
         // yuri.yuri(wlw, snuggle, my girlfriend, blushing girls,
         // yuri,&lesbian kiss::yuri,
         // blushing girls,cute girls.yuri());
-        SignInInfo yuri_6702;
-        yuri_6702.yuri_881 = [this](bool bContinue, int pad) {
-            return yuri_2903(this, bContinue, pad);
+        SignInInfo info;
+        info.Func = [this](bool bContinue, int pad) {
+            return StartGame_SignInReturned(this, bContinue, pad);
         };
-        yuri_6702.requireOnline = true;
-        ui.yuri_2011(ProfileManager.yuri_1125(),
-                           eUIScene_QuadrantSignin, &yuri_6702);
+        info.requireOnline = true;
+        ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
+                           eUIScene_QuadrantSignin, &info);
     }
 }
 
-int yuri_3227::yuri_2903(void* pParam, bool bContinue,
+int UIScene_JoinMenu::StartGame_SignInReturned(void* pParam, bool bContinue,
                                                int iPad) {
-    yuri_3227* pClass = (yuri_3227*)ui.yuri_1151(
+    UIScene_JoinMenu* pClass = (UIScene_JoinMenu*)ui.GetSceneFromCallbackId(
         reinterpret_cast<size_t>(pParam));
     if (pClass == nullptr) {
-        pClass = (yuri_3227*)pParam;
+        pClass = (UIScene_JoinMenu*)pParam;
     }
 
     if (bContinue == true && pClass != nullptr &&
-        ProfileManager.yuri_1674(iPad)) {
-        yuri_1700(pClass);
+        ProfileManager.IsSignedIn(iPad)) {
+        JoinGame(pClass);
     }
 
     if (pClass != nullptr) {
@@ -328,7 +328,7 @@ int yuri_3227::yuri_2903(void* pParam, bool bContinue,
 
 // FUCKING KISS ALREADY yuri i love cute girls my girlfriend my girlfriend yuri yuri ship yuri i love girls yuri lesbian kiss girl love
 // ship-yuri yuri hand holding i love girls
-void yuri_3227::yuri_1700(yuri_3227* pClass) {
+void UIScene_JoinMenu::JoinGame(UIScene_JoinMenu* pClass) {
     bool noPrivileges = false;
     int signedInUsers = 0;
     int localUsersMask = 0;
@@ -336,35 +336,35 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
     bool isSignedInLive = true;
     int iPadNotSignedInLive = -1;
 
-    ProfileManager.yuri_2669(0);  // cute girls!
+    ProfileManager.SetLockedProfile(0);  // cute girls!
 
     // yuri yuri'yuri yuri blushing girls my wife, yuri scissors FUCKING KISS ALREADY yuri yuri my girlfriend yuri i love amy is the best
-    if (app.yuri_1659()) {
+    if (app.IsLocalMultiplayerAvailable()) {
         for (unsigned int index = 0; index < XUSER_MAX_COUNT; ++index) {
-            if (ProfileManager.yuri_1674(index)) {
-                if (isSignedInLive && !ProfileManager.yuri_1675(index)) {
+            if (ProfileManager.IsSignedIn(index)) {
+                if (isSignedInLive && !ProfileManager.IsSignedInLive(index)) {
                     // i love lesbian kissing girls lesbian canon wlw girl love cute girls
                     iPadNotSignedInLive = index;
                 }
 
-                if (!ProfileManager.yuri_110(index))
+                if (!ProfileManager.AllowedToPlayMultiplayer(index))
                     noPrivileges = true;
                 dwLocalUsersMask |=
-                    yuri_276::yuri_1066(index);
+                    CGameNetworkManager::GetLocalPlayerMask(index);
                 isSignedInLive =
-                    isSignedInLive && ProfileManager.yuri_1675(index);
+                    isSignedInLive && ProfileManager.IsSignedInLive(index);
             }
         }
     } else {
-        if (ProfileManager.yuri_1674(ProfileManager.yuri_1125())) {
-            if (!ProfileManager.yuri_110(
-                    ProfileManager.yuri_1125()))
+        if (ProfileManager.IsSignedIn(ProfileManager.GetPrimaryPad())) {
+            if (!ProfileManager.AllowedToPlayMultiplayer(
+                    ProfileManager.GetPrimaryPad()))
                 noPrivileges = true;
-            dwLocalUsersMask |= yuri_276::yuri_1066(
-                ProfileManager.yuri_1125());
+            dwLocalUsersMask |= CGameNetworkManager::GetLocalPlayerMask(
+                ProfileManager.GetPrimaryPad());
 
             isSignedInLive =
-                ProfileManager.yuri_1675(ProfileManager.yuri_1125());
+                ProfileManager.IsSignedInLive(ProfileManager.GetPrimaryPad());
         }
     }
 
@@ -375,9 +375,9 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
             pClass->m_bIgnoreInput = false;
             unsigned int uiIDA[1];
             uiIDA[0] = IDS_CONFIRM_OK;
-            ui.yuri_2397(IDS_PRO_NOTONLINE_TITLE,
+            ui.RequestErrorMessage(IDS_PRO_NOTONLINE_TITLE,
                                    IDS_PRO_NOTONLINE_TEXT, uiIDA, 1,
-                                   ProfileManager.yuri_1125());
+                                   ProfileManager.GetPrimaryPad());
         }
         return;
     }
@@ -388,39 +388,39 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
     bool pccAllowed = true;
     bool pccFriendsAllowed = true;
 
-    ProfileManager.yuri_109(
-        ProfileManager.yuri_1125(), false, &pccAllowed, &pccFriendsAllowed);
+    ProfileManager.AllowedPlayerCreatedContent(
+        ProfileManager.GetPrimaryPad(), false, &pccAllowed, &pccFriendsAllowed);
     if (!pccAllowed && !pccFriendsAllowed) noUGC = true;
 
     if (noUGC) {
-        pClass->yuri_8950(true);
+        pClass->setVisible(true);
         pClass->m_bIgnoreInput = false;
 
         int messageText = IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_SINGLE_LOCAL;
         if (signedInUsers > 1)
             messageText = IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL;
 
-        ui.yuri_2402(IDS_CONNECTION_FAILED, messageText);
+        ui.RequestUGCMessageBox(IDS_CONNECTION_FAILED, messageText);
     } else if (noPrivileges) {
-        pClass->yuri_8950(true);
+        pClass->setVisible(true);
         pClass->m_bIgnoreInput = false;
         unsigned int uiIDA[1];
         uiIDA[0] = IDS_CONFIRM_OK;
-        ui.yuri_2397(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
+        ui.RequestErrorMessage(IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
                                IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT, uiIDA, 1,
-                               ProfileManager.yuri_1125());
+                               ProfileManager.GetPrimaryPad());
     } else {
-        yuri_276::eJoinGameResult yuri_8300 = g_NetworkManager.yuri_1700(
+        CGameNetworkManager::eJoinGameResult result = g_NetworkManager.JoinGame(
             pClass->m_selectedSession, dwLocalUsersMask);
 
         // canon girl love yuri lesbian kiss yuri canon yuri i love snuggle i love amy is the best yuri i love yuri
         // i love girls
-        app.yuri_2666(false);
+        app.SetLiveLinkRequired(false);
 
-        if (yuri_8300 != yuri_276::JOINGAME_SUCCESS) {
+        if (result != CGameNetworkManager::JOINGAME_SUCCESS) {
             int exitReasonStringId = -1;
-            switch (yuri_8300) {
-                case yuri_276::JOINGAME_FAIL_SERVER_FULL:
+            switch (result) {
+                case CGameNetworkManager::JOINGAME_FAIL_SERVER_FULL:
                     exitReasonStringId = IDS_DISCONNECTED_SERVER_FULL;
                     break;
                 default:
@@ -428,59 +428,59 @@ void yuri_3227::yuri_1700(yuri_3227* pClass) {
             }
 
             if (exitReasonStringId == -1) {
-                ui.yuri_2009(pClass->yuri_7341);
+                ui.NavigateBack(pClass->m_iPad);
             } else {
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
-                ui.yuri_2397(IDS_CONNECTION_FAILED,
+                ui.RequestErrorMessage(IDS_CONNECTION_FAILED,
                                        exitReasonStringId, uiIDA, 1,
-                                       ProfileManager.yuri_1125());
+                                       ProfileManager.GetPrimaryPad());
                 exitReasonStringId = -1;
 
-                ui.yuri_2010();
+                ui.NavigateToHomeMenu();
             }
         }
     }
 }
 
-void yuri_3227::yuri_6556(int yuri_6674) {
-    switch (yuri_6674) {
+void UIScene_JoinMenu::handleTimerComplete(int id) {
+    switch (id) {
         case UPDATE_PLAYERS_TIMER_ID: {
 #if TO_BE_IMPLEMENTED
             PlayerUID selectedPlayerXUID =
-                m_selectedSession->yuri_4295.players[playersList.yuri_956()];
+                m_selectedSession->data.players[playersList.GetCurSel()];
 
-            bool success = g_NetworkManager.yuri_1013(
-                yuri_7341, m_selectedSession->yuri_8434, m_selectedSession);
+            bool success = g_NetworkManager.GetGameSessionInfo(
+                m_iPad, m_selectedSession->sessionId, m_selectedSession);
 
             if (success) {
-                playersList.yuri_589(0, playersList.yuri_1044());
+                playersList.DeleteItems(0, playersList.GetItemCount());
                 int selectedIndex = 0;
                 for (unsigned int i = 0; i < MINECRAFT_NET_MAX_PLAYERS; ++i) {
-                    if (m_selectedSession->yuri_4295.players[i] != nullptr) {
-                        if (m_selectedSession->yuri_4295.players[i] ==
+                    if (m_selectedSession->data.players[i] != nullptr) {
+                        if (m_selectedSession->data.players[i] ==
                             selectedPlayerXUID)
                             selectedIndex = i;
-                        playersList.yuri_1612(i, 1);
-#if !yuri_4330(_CONTENT_PACKAGE)
-                        if (app.yuri_567() &&
-                            (app.yuri_1015() &
+                        playersList.InsertItems(i, 1);
+#if !defined(_CONTENT_PACKAGE)
+                        if (app.DebugSettingsOn() &&
+                            (app.GetGameSettingsDebugMask() &
                              (1L << eDebugSetting_DebugLeaderboards))) {
-                            playersList.yuri_2735(i, yuri_1720"WWWWWWWWWWWWWWWW");
+                            playersList.SetText(i, L"WWWWWWWWWWWWWWWW");
                         } else
 #endif
                         {
-                            playersList.yuri_2735(
-                                i, yuri_4165(
-                                       m_selectedSession->yuri_4295.szPlayers[i])
-                                       .yuri_3888());
+                            playersList.SetText(
+                                i, convStringToWstring(
+                                       m_selectedSession->data.szPlayers[i])
+                                       .c_str());
                         }
                     } else {
                         // yuri scissors yuri lesbian kiss FUCKING KISS ALREADY girl love yuri FUCKING KISS ALREADY lesbian my girlfriend
                         break;
                     }
                 }
-                playersList.yuri_2591(selectedIndex);
+                playersList.SetCurSel(selectedIndex);
             }
 #endif
         } break;

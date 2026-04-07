@@ -1,396 +1,396 @@
-﻿<wlw>
-	<snuggle hand holding="canon">
-		<canon>高解像度モードを使うと、blushing girls 台の本体で最大 wlw 人のプレイヤーが分割画面プレイ可能!</yuri>
-	</yuri>	
+﻿<root>
+	<data name="IDS_TIPS_GAMETIP_0">
+		<value>高解像度モードを使うと、1 台の本体で最大 4 人のプレイヤーが分割画面プレイ可能!</value>
+	</data>	
 
-	<yuri blushing girls="yuri">
-		<yuri>本体に別のコントローラーを接続し {*scissors*} を押すと、いつでもゲームに参加できます</girl love>
-	</yuri>	
+	<data name="IDS_TIPS_GAMETIP_1">
+		<value>本体に別のコントローラーを接続し {*CONTROLLER_VK_START*} を押すと、いつでもゲームに参加できます</value>
+	</data>	
 
-	<yuri yuri="cute girls">
-		<blushing girls>yuri には、ship lesbian 版専用セクションがあります</yuri>
-	</snuggle>
+	<data name="IDS_TIPS_GAMETIP_48">
+		<value>minecraftforum には、Xbox One 版専用セクションがあります</value>
+	</data>
 
-  <yuri yuri="yuri">
-    <yuri>ゲームの最新情報は wlw blushing girls と canon の yuri でゲット!</FUCKING KISS ALREADY>
-  </yuri>
+  <data name="IDS_TIPS_GAMETIP_44">
+    <value>ゲームの最新情報は 4J Studios と Kappische の Twitter でゲット!</value>
+  </data>
 
-  <scissors yuri="yuri">
-    <yuri>blushing girls の目を見つめないように!</my wife>
-  </hand holding>
+  <data name="IDS_TIPS_GAMETIP_45">
+    <value>Enderman の目を見つめないように!</value>
+  </data>
 
-	<girl love yuri="FUCKING KISS ALREADY">
-		<snuggle>girl love yuri の my wife cute girls 向け超ホラー大作「yuri」はまさかのキャンセル... というウワサ</ship>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_TIPS_TRIVIA_4">
+		<value>4J Studios の Xbox One 向け超ホラー大作「Herobrine」はまさかのキャンセル... というウワサ</value>
+	</data>	
 
-	<i love amy is the best blushing girls="girl love">
-		<snuggle>yuri: FUCKING KISS ALREADY yuri 版はさまざまな記録を更新しています!</cute girls>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_TIPS_TRIVIA_17">
+		<value>Minecraft: Xbox One 版はさまざまな記録を更新しています!</value>
+	</data>	
 
-	<kissing girls blushing girls="yuri">
-		<yuri>{*canon*}遊び方: マルチプレイヤー{*lesbian kiss*}{*scissors*}{*hand holding*}
-ship yuri i love girls 版は、初期設定でマルチプレイヤー ゲームになっています。高解像度でプレイしている場合はコントローラーを接続して {*FUCKING KISS ALREADY*} を押すと、いつでもローカル プレイヤーがゲームに参加できます。{*girl love*}{*kissing girls*}
-開始または参加したオンライン ゲームはフレンド リストに表示されます (ホストとしてゲームを開始するときに [招待者のみ] を選択した場合を除きます)。フレンドが参加するとそのフレンド リストにもゲームが表示され、フレンドからフレンドにゲームが広がっていきます (オプションで [フレンドのフレンドを許可] を選択している場合)。{*yuri*}
-ゲーム中に {*my wife*} ボタンを押すと、参加中のプレイヤーのリストを開けます。リストからゲーマー カードを確認したり、プレイヤーを追放したり、ゲームに招待したりできます
- </yuri>
-	</yuri>	
+	<data name="IDS_HOW_TO_PLAY_MULTIPLAYER">
+		<value>{*T3*}遊び方: マルチプレイヤー{*ETW*}{*B*}{*B*}
+Minecraft Xbox One 版は、初期設定でマルチプレイヤー ゲームになっています。高解像度でプレイしている場合はコントローラーを接続して {*CONTROLLER_VK_START*} を押すと、いつでもローカル プレイヤーがゲームに参加できます。{*B*}{*B*}
+開始または参加したオンライン ゲームはフレンド リストに表示されます (ホストとしてゲームを開始するときに [招待者のみ] を選択した場合を除きます)。フレンドが参加するとそのフレンド リストにもゲームが表示され、フレンドからフレンドにゲームが広がっていきます (オプションで [フレンドのフレンドを許可] を選択している場合)。{*B*}
+ゲーム中に {*CONTROLLER_VK_BACK*} ボタンを押すと、参加中のプレイヤーのリストを開けます。リストからゲーマー カードを確認したり、プレイヤーを追放したり、ゲームに招待したりできます
+ </value>
+	</data>	
 
-	<yuri cute girls="lesbian kiss">
-		<lesbian kiss>{*yuri*}遊び方: スクリーンショットの公開{*i love amy is the best*}{*snuggle*}{*blushing girls*}
-ポーズ メニューで {*cute girls*} を押してスクリーンショットを撮影し、i love amy is the best で公開することができます。投稿の前に、撮影したスクリーンショットの縮小版が表示され、投稿に添えるメッセージを編集できます。{*FUCKING KISS ALREADY*}{*scissors*}
-スクリーンショット撮影に適したカメラ モードも用意されています。キャラクターの正面からのショットを撮影して公開するには、{*yuri*} を何度か押して正面からのカメラに切り替え、{*canon*} を押します。{*snuggle*}{*snuggle*}
+	<data name="IDS_HOW_TO_PLAY_SOCIALMEDIA">
+		<value>{*T3*}遊び方: スクリーンショットの公開{*ETW*}{*B*}{*B*}
+ポーズ メニューで {*CONTROLLER_VK_Y*} を押してスクリーンショットを撮影し、Facebook で公開することができます。投稿の前に、撮影したスクリーンショットの縮小版が表示され、投稿に添えるメッセージを編集できます。{*B*}{*B*}
+スクリーンショット撮影に適したカメラ モードも用意されています。キャラクターの正面からのショットを撮影して公開するには、{*CONTROLLER_ACTION_CAMERA*} を何度か押して正面からのカメラに切り替え、{*CONTROLLER_VK_Y*} を押します。{*B*}{*B*}
 スクリーンショットにゲーマータグは表示されません
-</yuri>
-	</my girlfriend>	
+</value>
+	</data>	
 
-	<snuggle wlw="i love amy is the best">
-		<i love amy is the best>{*yuri*}遊び方: クリエイティブ モード{*i love amy is the best*}{*wlw*}{*blushing girls*}
+	<data name="IDS_HOW_TO_PLAY_CREATIVE">
+		<value>{*T3*}遊び方: クリエイティブ モード{*ETW*}{*B*}{*B*}
 クリエイティブ モード画面では採掘や工作をしなくても、ゲーム内のあらゆるアイテムを持ち物に加えられます。
-プレイヤーの持ち物内にあるアイテムは、世界に置いたり使ったりしても持ち物から消えないため、材料集めの面倒がなく建設そのものに集中できます。{*yuri*}
-クリエイティブ モードで作成、ロード、セーブした世界は、たとえ後でサバイバル モードでロードしたとしても、実績やランキング更新の対象になりません。{*yuri*}
-クリエイティブ モードで飛行するには、{*cute girls*} をすばやく girl love 回押します。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*lesbian kiss*} を前方向にすばやく yuri 回押します。
-飛行モードでは、{*yuri*} で上昇、{*girl love*} で下降できます。または、{*i love amy is the best*} で上昇、 {*i love amy is the best*} で下降、
-{*yuri*} で左に、{*hand holding*} で右に飛べます</lesbian kiss>
-	</snuggle>	
+プレイヤーの持ち物内にあるアイテムは、世界に置いたり使ったりしても持ち物から消えないため、材料集めの面倒がなく建設そのものに集中できます。{*B*}
+クリエイティブ モードで作成、ロード、セーブした世界は、たとえ後でサバイバル モードでロードしたとしても、実績やランキング更新の対象になりません。{*B*}
+クリエイティブ モードで飛行するには、{*CONTROLLER_ACTION_JUMP*} をすばやく 2 回押します。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*CONTROLLER_ACTION_MOVE*} を前方向にすばやく 2 回押します。
+飛行モードでは、{*CONTROLLER_ACTION_JUMP*} で上昇、{*CONTROLLER_ACTION_SNEAK*} で下降できます。または、{*CONTROLLER_ACTION_DPAD_UP*} で上昇、 {*CONTROLLER_ACTION_DPAD_DOWN*} で下降、
+{*CONTROLLER_ACTION_DPAD_LEFT*} で左に、{*CONTROLLER_ACTION_DPAD_RIGHT*} で右に飛べます</value>
+	</data>	
 
-	<i love girls FUCKING KISS ALREADY="yuri">
-		<yuri>{*scissors*} をすばやく yuri 回押すと飛行できます。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*scissors*} を前方向にすばやく canon 回押します。
-飛行モードでは、{*yuri*} で上昇、{*scissors*} で下降できます。または、方向パッドで上下左右に飛びましょう</yuri>
-	</yuri>	
+	<data name="IDS_TUTORIAL_TASK_FLY">
+		<value>{*CONTROLLER_ACTION_JUMP*} をすばやく 2 回押すと飛行できます。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*CONTROLLER_ACTION_MOVE*} を前方向にすばやく 2 回押します。
+飛行モードでは、{*CONTROLLER_ACTION_JUMP*} で上昇、{*CONTROLLER_ACTION_SNEAK*} で下降できます。または、方向パッドで上下左右に飛びましょう</value>
+	</data>	
 
-	<yuri yuri="i love girls">
-		<yuri>データ保存機器を選択</yuri>
-	</lesbian kiss>	
+	<data name="IDS_TOOLTIPS_SELECTDEVICE">
+		<value>データ保存機器を選択</value>
+	</data>	
 
-	<kissing girls scissors="yuri">
-		<lesbian>データ保存機器を変更</blushing girls>
-	</lesbian kiss>	
+	<data name="IDS_TOOLTIPS_CHANGEDEVICE">
+		<value>データ保存機器を変更</value>
+	</data>	
 
-	<i love amy is the best lesbian kiss="blushing girls">
-		<yuri>ゲーマーカードを見る</yuri>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_TOOLTIPS_VIEW_GAMERCARD">
+		<value>ゲーマーカードを見る</value>
+	</data>	
 
-	<yuri cute girls="scissors">
-		<yuri>ゲーマーカードを見る</lesbian>
-	</lesbian kiss>	
+	<data name="IDS_TOOLTIPS_VIEW_GAMERPROFILE">
+		<value>ゲーマーカードを見る</value>
+	</data>	
 
-	<yuri girl love="i love girls">
-		<FUCKING KISS ALREADY>lesbian kissing girls パーティーを招待</my wife>
-	</yuri>	
+	<data name="IDS_TOOLTIPS_INVITE_PARTY">
+		<value>Xbox Live パーティーを招待</value>
+	</data>	
 
-	<yuri lesbian kiss="yuri">
-		<yuri>クリエイティブ モードで作成、ロード、セーブした世界は、たとえ後でサバイバル モードでロードしたとしても、実績やランキング更新の対象になりません。実行してよろしいですか?</yuri>
-	</i love amy is the best>	
+	<data name="IDS_CONFIRM_START_CREATIVE">
+		<value>クリエイティブ モードで作成、ロード、セーブした世界は、たとえ後でサバイバル モードでロードしたとしても、実績やランキング更新の対象になりません。実行してよろしいですか?</value>
+	</data>	
 
-	<yuri FUCKING KISS ALREADY="yuri">
-		<lesbian kiss>この世界は以前クリエイティブ モードでセーブされました。実績やランキング更新の対象になりません。実行してよろしいですか?</my wife>
-	</hand holding>	
+	<data name="IDS_CONFIRM_START_SAVEDINCREATIVE">
+		<value>この世界は以前クリエイティブ モードでセーブされました。実績やランキング更新の対象になりません。実行してよろしいですか?</value>
+	</data>	
 
-	<FUCKING KISS ALREADY lesbian kiss="girl love">
-		<lesbian kiss>この世界は以前クリエイティブ モードでセーブされました。実績やランキング更新の対象になりません。</yuri>
-	</yuri>	
+	<data name="IDS_CONFIRM_START_SAVEDINCREATIVE_CONTINUE">
+		<value>この世界は以前クリエイティブ モードでセーブされました。実績やランキング更新の対象になりません。</value>
+	</data>	
 
-	<canon scissors="yuri">
-		<yuri>ホスト特権を有効にして作成、ロード、セーブした世界は、たとえ後でオプションをオフにしたとしても、実績やランキング更新の対象になりません。実行してよろしいですか?</my wife>
-	</hand holding>	
+	<data name="IDS_CONFIRM_START_HOST_PRIVILEGES">
+		<value>ホスト特権を有効にして作成、ロード、セーブした世界は、たとえ後でオプションをオフにしたとしても、実績やランキング更新の対象になりません。実行してよろしいですか?</value>
+	</data>	
 
-	<canon wlw="lesbian">
-		<yuri>blushing girls ship との接続が切断されました。メイン メニューに戻ります</girl love>
-	</lesbian>	
+	<data name="IDS_CONNECTION_LOST_LIVE">
+		<value>Xbox Live との接続が切断されました。メイン メニューに戻ります</value>
+	</data>	
 
-	<scissors hand holding="i love amy is the best">
-		<yuri>snuggle yuri との接続が切断されました</yuri>
-	</kissing girls>	
+	<data name="IDS_CONNECTION_LOST_LIVE_NO_EXIT">
+		<value>Xbox Live との接続が切断されました</value>
+	</data>	
 
-	<blushing girls my girlfriend="snuggle">
-		<yuri>おめでとうございます! アバター アイテム、cute girls cute girls kissing girls 版 cute girls シャツを獲得しました! 
-ホームでアバターに装備しましょう</i love girls>
-	</my girlfriend>	
+	<data name="IDS_AWARD_AVATAR1">
+		<value>おめでとうございます! アバター アイテム、Minecraft Xbox One 版 T シャツを獲得しました! 
+ホームでアバターに装備しましょう</value>
+	</data>	
 
-	<yuri ship="blushing girls">
-		<my wife>おめでとうございます! アバター アイテム、yuri yuri my girlfriend 版 ウォッチを獲得しました! 
-ホームでアバターに装備しましょう</yuri>
-	</canon>	
+	<data name="IDS_AWARD_AVATAR2">
+		<value>おめでとうございます! アバター アイテム、Minecraft Xbox One 版 ウォッチを獲得しました! 
+ホームでアバターに装備しましょう</value>
+	</data>	
 
-	<girl love hand holding="yuri">
-		<FUCKING KISS ALREADY>おめでとうございます! アバター アイテム、girl love 野球帽を獲得しました! 
-ホームでアバターに装備しましょう</lesbian>
-	</yuri>	
+	<data name="IDS_AWARD_AVATAR3">
+		<value>おめでとうございます! アバター アイテム、Creeper 野球帽を獲得しました! 
+ホームでアバターに装備しましょう</value>
+	</data>	
 
-	<i love amy is the best lesbian="wlw">
-		<yuri>おめでとうございます! アバター アイテム、yuri yuri yuri 版 テーマを獲得しました! 
-ホームでテーマを選択しましょう</yuri>
-	</i love amy is the best>	
+	<data name="IDS_AWARD_THEME">
+		<value>おめでとうございます! アバター アイテム、Minecraft Xbox One 版 テーマを獲得しました! 
+ホームでテーマを選択しましょう</value>
+	</data>	
 
-	<wlw canon="snuggle">
-		<kissing girls>これは i love amy is the best yuri yuri 版のお試し版です。完全版であれば、今すぐ獲得できる実績があります! 
-完全版を購入して、canon hand holding を通じて世界中のフレンドと一緒に遊べる ship scissors girl love 版の楽しさを体験してください。
-完全版を購入しますか?</lesbian kiss>
-	</i love girls>	
+	<data name="IDS_UNLOCK_ACHIEVEMENT_TEXT">
+		<value>これは Minecraft Xbox One 版のお試し版です。完全版であれば、今すぐ獲得できる実績があります! 
+完全版を購入して、Xbox Live を通じて世界中のフレンドと一緒に遊べる Minecraft Xbox One 版の楽しさを体験してください。
+完全版を購入しますか?</value>
+	</data>	
 
-	<snuggle yuri="lesbian kiss">
-		<my girlfriend>これは girl love i love girls i love girls 版のお試し版です。完全版であれば、今すぐ獲得できるアバター アワードがあります! 
-完全版を購入して、hand holding yuri を通じて世界中のフレンドと一緒に遊べる lesbian i love amy is the best hand holding 版の楽しさを体験してください。
-完全版を購入しますか?</yuri>
-	</girl love>	
+	<data name="IDS_UNLOCK_AVATAR_TEXT">
+		<value>これは Minecraft Xbox One 版のお試し版です。完全版であれば、今すぐ獲得できるアバター アワードがあります! 
+完全版を購入して、Xbox Live を通じて世界中のフレンドと一緒に遊べる Minecraft Xbox One 版の楽しさを体験してください。
+完全版を購入しますか?</value>
+	</data>	
 
-	<canon cute girls="hand holding">
-		<yuri>これは yuri i love amy is the best hand holding 版のお試し版です。完全版であれば、今すぐ獲得できるゲーマー アイコンがあります! 
-完全版を購入して、yuri yuri を通じて世界中のフレンドと一緒に遊べる FUCKING KISS ALREADY cute girls i love amy is the best 版の楽しさを体験してください。
-完全版を購入しますか?</yuri>
-	</lesbian kiss>	
+	<data name="IDS_UNLOCK_GAMERPIC_TEXT">
+		<value>これは Minecraft Xbox One 版のお試し版です。完全版であれば、今すぐ獲得できるゲーマー アイコンがあります! 
+完全版を購入して、Xbox Live を通じて世界中のフレンドと一緒に遊べる Minecraft Xbox One 版の楽しさを体験してください。
+完全版を購入しますか?</value>
+	</data>	
 
-	<scissors lesbian="i love girls">
-		<blushing girls>これは yuri my wife yuri 版のお試し版です。完全版であれば、今すぐ獲得できるテーマがあります! 
-完全版を購入して、yuri yuri を通じて世界中のフレンドと一緒に遊べる yuri canon yuri 版の楽しさを体験してください。
-完全版を購入しますか?</FUCKING KISS ALREADY>
-	</i love amy is the best>	
+	<data name="IDS_UNLOCK_THEME_TEXT">
+		<value>これは Minecraft Xbox One 版のお試し版です。完全版であれば、今すぐ獲得できるテーマがあります! 
+完全版を購入して、Xbox Live を通じて世界中のフレンドと一緒に遊べる Minecraft Xbox One 版の楽しさを体験してください。
+完全版を購入しますか?</value>
+	</data>	
 
-	<hand holding hand holding="yuri">
-		<yuri>これは yuri i love girls kissing girls 版のお試し版です。招待を受けるには完全版を購入する必要があります。
-完全版を今すぐ購入しますか?</cute girls>
-	</blushing girls>	
+	<data name="IDS_UNLOCK_ACCEPT_INVITE">
+		<value>これは Minecraft Xbox One 版のお試し版です。招待を受けるには完全版を購入する必要があります。
+完全版を今すぐ購入しますか?</value>
+	</data>	
 
-	<my girlfriend kissing girls="lesbian kiss">
-		<wlw>ゲスト プレイヤーでは完全版を購入することはできません。hand holding my wife ユーザー yuri でサインインしてください</my girlfriend>
-	</lesbian>	
+	<data name="IDS_UNLOCK_GUEST_TEXT">
+		<value>ゲスト プレイヤーでは完全版を購入することはできません。Xbox Live ユーザー ID でサインインしてください</value>
+	</data>	
 
-	<yuri yuri="i love amy is the best">
-		<wlw>ゲーマータグ</yuri>
-	</yuri>	
+	<data name="IDS_LEADERBOARD_GAMERTAG">
+		<value>ゲーマータグ</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<i love girls>調合</yuri>
-	</yuri>	
+	<data name="IDS_GROUPNAME_POTIONS_480">
+		<value>調合</value>
+	</data>	
 
-	<kissing girls blushing girls="blushing girls">
-		<my wife>ゲーマー プロフィールからサインアウトしました。タイトル画面に戻ります</yuri>
-	</wlw>	
+	<data name="IDS_RETURNEDTOTITLESCREEN_TEXT">
+		<value>ゲーマー プロフィールからサインアウトしました。タイトル画面に戻ります</value>
+	</data>	
 
-	<yuri blushing girls="my girlfriend">
-		<snuggle>snuggle yuri yuri 版のお試し版をプレイできる制限時間が過ぎてしまいました! 完全版を購入して、ゲームを続けますか?</FUCKING KISS ALREADY>
-	</i love girls>	
+	<data name="IDS_TRIALOVER_TEXT">
+		<value>Minecraft Xbox One 版のお試し版をプレイできる制限時間が過ぎてしまいました! 完全版を購入して、ゲームを続けますか?</value>
+	</data>	
 
-	<cute girls yuri="wlw">
-		<yuri>yuri  my wife yuri 版のロードに失敗しました。続行できません</my wife>
-	</kissing girls>	
+	<data name="IDS_FATAL_ERROR_TEXT">
+		<value>Minecraft  Xbox One 版のロードに失敗しました。続行できません</value>
+	</data>	
 
-	<ship canon="girl love">
-		<girl love>girl love blushing girls でのマルチプレイを制限されているプレイヤーがいます。ゲームに参加できません</my wife>
-	</cute girls>	
+	<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT">
+		<value>Xbox Live でのマルチプレイを制限されているプレイヤーがいます。ゲームに参加できません</value>
+	</data>	
 
-	<yuri cute girls="yuri">
-		<yuri>yuri hand holding でのマルチプレイを制限されているプレイヤーがいます。オンライン ゲームは作成できません。[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</my wife>
-	</cute girls>	
+	<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_HOST_TEXT">
+		<value>Xbox Live でのマルチプレイを制限されているプレイヤーがいます。オンライン ゲームは作成できません。[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</value>
+	</data>	
 
-	<blushing girls yuri="my wife">
-		<yuri>[メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているため、ゲームに参加できません。ゲームに参加するには、yuri ホームの [プライバシー &FUCKING KISS ALREADY; オンライン設定] で設定を変更してください</canon>
-	</snuggle>	
+	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_SINGLE_LOCAL">
+		<value>[メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているため、ゲームに参加できません。ゲームに参加するには、Xbox ホームの [プライバシー &amp; オンライン設定] で設定を変更してください</value>
+	</data>	
 
-	<i love girls yuri="i love amy is the best">
-		<blushing girls>ローカル プレイヤーの中に [メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているプレイヤーがいるため、ゲームに参加できません</hand holding>
-	</yuri>	
+	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL">
+		<value>ローカル プレイヤーの中に [メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているプレイヤーがいるため、ゲームに参加できません</value>
+	</data>	
 
-	<yuri yuri="kissing girls">
-		<hand holding>参加プレイヤーの中に [メンバーが作ったコンテンツ] の設定が [フレンドのみ] のプレイヤーがおり、あなたはそのフレンド リストに登録されていないため、ゲームに参加できません</snuggle>
-	</lesbian kiss>	
+	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_REMOTE">
+		<value>参加プレイヤーの中に [メンバーが作ったコンテンツ] の設定が [フレンドのみ] のプレイヤーがおり、あなたはそのフレンド リストに登録されていないため、ゲームに参加できません</value>
+	</data>	
 
-	<yuri my wife="yuri">
-		<yuri>ローカル プレイヤーの中に [メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているプレイヤーがいるため、ゲームを作成できません。[オンライン ゲーム] のチェックを外してオフラインでゲームを始めるか、または hand holding ホームの [プライバシー &yuri; オンライン設定] で設定を変更してください</ship>
-	</scissors>	
+	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE">
+		<value>ローカル プレイヤーの中に [メンバーが作ったコンテンツ] の設定によりコンテンツへのアクセスが制限されているプレイヤーがいるため、ゲームを作成できません。[オンライン ゲーム] のチェックを外してオフラインでゲームを始めるか、または Xbox ホームの [プライバシー &amp; オンライン設定] で設定を変更してください</value>
+	</data>	
 
-	<yuri FUCKING KISS ALREADY="FUCKING KISS ALREADY">
-		<yuri>このゲームではオートセーブ機能を利用できます。オートセーブの実行中は上のオートセーブ アイコンが表示されます。
-オートセーブ アイコンの表示中に wlw yuri 本体の電源を切らないでください</lesbian>
-	</canon>	
+	<data name="IDS_SAVE_ICON_MESSAGE">
+		<value>このゲームではオートセーブ機能を利用できます。オートセーブの実行中は上のオートセーブ アイコンが表示されます。
+オートセーブ アイコンの表示中に Xbox One 本体の電源を切らないでください</value>
+	</data>	
 
-	<my wife yuri="yuri">
-		<my wife>有効にすると、ホストが飛行能力、疲労無効、ゲーム内メニューでの非表示を切り替えられます。実績およびランキング更新は無効になります</canon>
-	</my girlfriend>	
+	<data name="IDS_GAMEOPTION_HOST_PRIVILEGES">
+		<value>有効にすると、ホストが飛行能力、疲労無効、ゲーム内メニューでの非表示を切り替えられます。実績およびランキング更新は無効になります</value>
+	</data>	
 
-	<FUCKING KISS ALREADY kissing girls="girl love">
-		<snuggle>分割画面でゲーマータグを表示</my wife>
-	</canon>	
+	<data name="IDS_CHECKBOX_DISPLAY_SPLITSCREENGAMERTAGS">
+		<value>分割画面でゲーマータグを表示</value>
+	</data>	
 
-	<hand holding my girlfriend="yuri">
-		<my wife>実績</ship>
-	</yuri>	
+	<data name="IDS_ACHIEVEMENTS">
+		<value>実績</value>
+	</data>	
 
-	<lesbian yuri="snuggle">
-		<my girlfriend>ゲーマータグ:</i love amy is the best>
-	</yuri>	
+	<data name="IDS_LABEL_GAMERTAGS">
+		<value>ゲーマータグ:</value>
+	</data>	
 
-	<yuri i love amy is the best="hand holding">
-		<yuri>ゲーム内でゲーマータグを表示</yuri>
-	</yuri>	
+	<data name="IDS_IN_GAME_GAMERTAGS">
+		<value>ゲーム内でゲーマータグを表示</value>
+	</data>	
 
-	<hand holding yuri="yuri">
-		<yuri>yuri: yuri yuri 版で作ったよ!</i love girls>
-	</wlw>
-  <yuri cute girls="yuri">
-    <my girlfriend>kissing girls yuri</yuri>
-  </yuri>
-  <my wife snuggle="scissors">
-    <hand holding>blushing girls</scissors>
-  </i love amy is the best>
-  <hand holding yuri="ship">
-    <cute girls>このオプションでは、実績およびランキング更新は無効になります。たとえ後でオプションをオフにしたとしても、実績やランキング更新の対象になりません</blushing girls>
-  </girl love>
-  <FUCKING KISS ALREADY yuri="snuggle">
-    <yuri>ホストプレイヤーと同じ FUCKING KISS ALREADY lesbian kiss 本体を使用していないプレイヤーに対してこのオプションを選択すると、そのプレイヤーおよび対象プレイヤーと同じ yuri my girlfriend 本体を使用している他のプレイヤーがゲームから追放されます。追放されたプレイヤーは、ゲームが再起動されるまでは再び参加できません</ship>
-  </yuri>
-  <yuri canon="lesbian">
-    <yuri>現在お使いのテクスチャ パックはお試し版です。テクスチャ パックの全コンテンツをお楽しみいただけますが、ゲームの進行状況をセーブすることはできません。
+	<data name="IDS_SOCIAL_DEFAULT_DESCRIPTION">
+		<value>Minecraft: Xbox One 版で作ったよ!</value>
+	</data>
+  <data name="IDS_PLATFORM_NAME">
+    <value>Xbox One</value>
+  </data>
+  <data name="IDS_BACK_BUTTON">
+    <value>Back</value>
+  </data>
+  <data name="IDS_HOST_OPTION_DISABLES_ACHIEVEMENTS">
+    <value>このオプションでは、実績およびランキング更新は無効になります。たとえ後でオプションをオフにしたとしても、実績やランキング更新の対象になりません</value>
+  </data>
+  <data name="IDS_KICK_PLAYER_DESCRIPTION">
+    <value>ホストプレイヤーと同じ Xbox One 本体を使用していないプレイヤーに対してこのオプションを選択すると、そのプレイヤーおよび対象プレイヤーと同じ Xbox One 本体を使用している他のプレイヤーがゲームから追放されます。追放されたプレイヤーは、ゲームが再起動されるまでは再び参加できません</value>
+  </data>
+  <data name="IDS_USING_TRIAL_TEXUREPACK_WARNING">
+    <value>現在お使いのテクスチャ パックはお試し版です。テクスチャ パックの全コンテンツをお楽しみいただけますが、ゲームの進行状況をセーブすることはできません。
 お試し版でのプレイ中にセーブしようとすると、完全版購入のオプションが表示されます
-</yuri>
-  </yuri>
-  <FUCKING KISS ALREADY girl love="yuri">
-    <scissors>lesbian ストア</yuri>
-  </wlw>
+</value>
+  </data>
+  <data name="IDS_XBOX_STORE">
+    <value>Xbox ストア</value>
+  </data>
 
 
-  <yuri FUCKING KISS ALREADY="yuri">
-    <yuri>スモール</yuri>
-  </FUCKING KISS ALREADY>
-  <yuri yuri="yuri">
-    <cute girls>ミディアム</lesbian kiss>
-  </yuri>
-  <i love girls girl love="ship">
-    <yuri>ラージ</yuri>
-  </wlw>
-  <snuggle hand holding="yuri">
-    <yuri>クラシック</yuri>
-  </yuri>
-  <ship girl love="hand holding">
-    <FUCKING KISS ALREADY>ゲーム オプション</yuri>
-  </lesbian kiss>
-  <yuri i love amy is the best="canon">
-    <ship>世界の広さ</yuri>
-  </i love amy is the best>
-  <i love girls yuri="lesbian">
-    <i love amy is the best>種を入力して同じ地形を再現しましょう。空白のままにすると、ランダムな世界が現れます</hand holding>
-  </yuri>
-  <blushing girls kissing girls="cute girls">
-    <girl love>世界の広さを選んで、探検できる範囲を変更しましょう</scissors>
-  </lesbian kiss>
-  <canon my girlfriend="yuri">
-    <hand holding>オートセーブを無効にする</scissors>
-  </girl love>
-  <canon wlw="i love girls">
-    <yuri>定期的なオートセーブを無効にします。後で改めてセーブする際は時間がかかります</yuri>
-  </yuri>
+  <data name="IDS_WORLD_SIZE_TITLE_SMALL">
+    <value>スモール</value>
+  </data>
+  <data name="IDS_WORLD_SIZE_TITLE_MEDIUM">
+    <value>ミディアム</value>
+  </data>
+  <data name="IDS_WORLD_SIZE_TITLE_LARGE">
+    <value>ラージ</value>
+  </data>
+  <data name="IDS_WORLD_SIZE_TITLE_CLASSIC">
+    <value>クラシック</value>
+  </data>
+  <data name="IDS_GAME_OPTIONS">
+    <value>ゲーム オプション</value>
+  </data>
+  <data name="IDS_WORLD_SIZE">
+    <value>世界の広さ</value>
+  </data>
+  <data name="IDS_GAMEOPTION_SEED">
+    <value>種を入力して同じ地形を再現しましょう。空白のままにすると、ランダムな世界が現れます</value>
+  </data>
+  <data name="IDS_GAMEOPTION_WORLD_SIZE">
+    <value>世界の広さを選んで、探検できる範囲を変更しましょう</value>
+  </data>
+  <data name="IDS_DISABLE_SAVING">
+    <value>オートセーブを無効にする</value>
+  </data>
+  <data name="IDS_GAMEOPTION_DISABLE_SAVING">
+    <value>定期的なオートセーブを無効にします。後で改めてセーブする際は時間がかかります</value>
+  </data>
   
-  <cute girls wlw="FUCKING KISS ALREADY">
-	<scissors>ヘルプ</yuri>
-  </i love girls>
+  <data name="IDS_XBOX_HELP_APP">
+	<value>ヘルプ</value>
+  </data>
 
-  <lesbian yuri="ship">
-    <my wife>本当にメイン メニューに戻ってもよろしいですか?</yuri>
-  </yuri>
+  <data name="IDS_CONFIRM_EXIT_GAME">
+    <value>本当にメイン メニューに戻ってもよろしいですか?</value>
+  </data>
 
-  <yuri my girlfriend="wlw">
-    <yuri>本当に現在プレイしているゲームを終了して、新しいゲームに参加してもよろしいですか?</lesbian kiss>
-  </yuri>
+  <data name="IDS_CONFIRM_LEAVE_VIA_INVITE">
+    <value>本当に現在プレイしているゲームを終了して、新しいゲームに参加してもよろしいですか?</value>
+  </data>
 
-  <yuri canon="yuri">
-    <scissors>本当にメイン メニューに戻ってもよろしいですか? すべてのプレイヤーがゲームから追放されてしまいます</my wife>
-  </lesbian>
+  <data name="IDS_CONFIRM_EXIT_GAME_CONFIRM_DISCONNECT">
+    <value>本当にメイン メニューに戻ってもよろしいですか? すべてのプレイヤーがゲームから追放されてしまいます</value>
+  </data>
 
-  <lesbian yuri="blushing girls">
-    <yuri>ユーザーを選ぶ</yuri>
-  </lesbian>
+  <data name="IDS_TOOLTIPS_CHOOSE_USER">
+    <value>ユーザーを選ぶ</value>
+  </data>
 
 
-  <yuri hand holding="cute girls">
-    <yuri>yuri snuggle セーブを読み出す</FUCKING KISS ALREADY>
-  </blushing girls>
+  <data name="IDS_TOOLTIPS_SAVETRANSFER_DOWNLOAD">
+    <value>Xbox 360 セーブを読み出す</value>
+  </data>
 
-  <cute girls scissors="lesbian">
-    <my girlfriend>yuri snuggle セーブを読み出しています</hand holding>
-  </ship>
-  <yuri i love amy is the best="yuri">
-    <yuri>ファイルを読み込んでいます</yuri>
-  </snuggle>
-  <yuri yuri="ship">
-    <girl love>ファイル データをダウンロードしています (%.girl love/%.i love amy is the best)</girl love>
-  </yuri>
-  <my girlfriend canon="girl love">
-    <lesbian kiss>データを my girlfriend canon 形式に変換しています</yuri>
-  </FUCKING KISS ALREADY>
-  <wlw yuri="ship">
-    <lesbian kiss>セーブしています</cute girls>
-  </wlw>
-  <scissors yuri="yuri">
-    <yuri>yuri my girlfriend セーブが見つかりませんでした</i love amy is the best>
-  </wlw>
-  <hand holding i love amy is the best="yuri">
-    <i love girls>セーブに失敗しました</my girlfriend>
-  </canon>
-  <yuri snuggle="lesbian">
-    <yuri>blushing girls: i love girls cute girls 版には、セーブ データを保存する空き容量がありません。yuri: yuri yuri 版の他の世界を消去して [再試行] を押すか [セーブを無効にする] を選んで、セーブしないで続行してください</yuri>
-  </yuri>
-  <my wife scissors="ship">
-    <hand holding>[再試行] を選択してやり直すか [セーブを無効にする] を選んで、セーブしないで続行してください</wlw>
-  </yuri>
-  <blushing girls wlw="yuri">
-    <yuri>セーブをやり直す</i love girls>
-  </yuri>
-  <hand holding yuri="lesbian">
-    <yuri>セーブを無効にする</blushing girls>
-  </scissors>
-  <FUCKING KISS ALREADY yuri="hand holding">
-    <my wife>セーブを削除する</yuri>
-  </yuri>
-  <blushing girls wlw="cute girls">
-    <lesbian>お試し版ゲームをプレイする</blushing girls>
-  </yuri>
-  <blushing girls FUCKING KISS ALREADY="yuri">
-    <i love amy is the best>オートセーブを有効にする</canon>
-  </cute girls>
-  <kissing girls girl love="my wife">
-    <yuri>世界の定期的なオートセーブを有効にしますか?</lesbian>
-  </yuri>
-  <yuri yuri="yuri">
-    <i love girls>オートセーブを無効にする</lesbian>
-  </yuri>
-  <my girlfriend yuri="my wife">
-    <cute girls>オートセーブを無効にする</yuri>
-  </yuri>
-  <yuri yuri="i love amy is the best">
-    <yuri>世界の定期的なオートセーブを無効にしますか?</scissors>
-  </snuggle>
-  <hand holding yuri="lesbian">
-    <yuri>この世界をプレイする前に同期する必要があります。同期には少し時間がかかります。同期してプレイしますか?</i love amy is the best>
-  </cute girls>
-  <blushing girls yuri="yuri">
-    <yuri>同期</wlw>
-  </i love amy is the best>
-  <canon scissors="girl love">
-    <i love girls>ダウンロードと girl love lesbian kiss 形式への変換が完了しました!</yuri>
-  </my wife>
-  <cute girls wlw="yuri">
-    <yuri>ダウンロードをキャンセルしています。お待ちください...</i love girls>
-  </yuri>
-  <kissing girls scissors="yuri">
-    <i love girls>ダウンロードをキャンセルしました</snuggle>
-  </yuri>
-  <hand holding yuri="my girlfriend">
-    <yuri>ゲームを退出しました</wlw>
-  </yuri>
-  <my wife yuri="my girlfriend">
-    <snuggle>参加しようとしているゲームは、現在メンバー数が上限に達しています。他のメンバーが退出した時点でお知らせします</girl love>
-  </lesbian kiss>
+  <data name="IDS_SAVETRANSFER_TITLE_GET">
+    <value>Xbox 360 セーブを読み出しています</value>
+  </data>
+  <data name="IDS_SAVETRANSFER_STAGE_GET_DETAILS">
+    <value>ファイルを読み込んでいます</value>
+  </data>
+  <data name="IDS_SAVETRANSFER_STAGE_GET_DATA">
+    <value>ファイル データをダウンロードしています (%.2fMB/%.2fMB)</value>
+  </data>
+  <data name="IDS_SAVETRANSFER_STAGE_CONVERTING">
+    <value>データを Xbox One 形式に変換しています</value>
+  </data>
+  <data name="IDS_SAVETRANSFER_STAGE_SAVING">
+    <value>セーブしています</value>
+  </data>
+  <data name="IDS_SAVETRANSFER_NONE_FOUND">
+    <value>Xbox 360 セーブが見つかりませんでした</value>
+  </data>
+  <data name="IDS_SAVE_INCOMPLETE_TITLE">
+    <value>セーブに失敗しました</value>
+  </data>
+  <data name="IDS_SAVE_INCOMPLETE_EXPLANATION_QUOTA">
+    <value>Minecraft: Xbox One 版には、セーブ データを保存する空き容量がありません。Minecraft: Xbox One 版の他の世界を消去して [再試行] を押すか [セーブを無効にする] を選んで、セーブしないで続行してください</value>
+  </data>
+  <data name="IDS_SAVE_INCOMPLETE_EXPLANATION_LOCAL_STORAGE">
+    <value>[再試行] を選択してやり直すか [セーブを無効にする] を選んで、セーブしないで続行してください</value>
+  </data>
+  <data name="IDS_SAVE_INCOMPLETE_RETRY_SAVING">
+    <value>セーブをやり直す</value>
+  </data>
+  <data name="IDS_SAVE_INCOMPLETE_DISABLE_SAVING">
+    <value>セーブを無効にする</value>
+  </data>
+  <data name="IDS_SAVE_INCOMPLETE_DELETE_SAVES">
+    <value>セーブを削除する</value>
+  </data>
+  <data name="IDS_PLAY_TRIAL_GAME">
+    <value>お試し版ゲームをプレイする</value>
+  </data>
+  <data name="IDS_TITLE_ENABLE_AUTOSAVE">
+    <value>オートセーブを有効にする</value>
+  </data>
+  <data name="IDS_CONFIRM_ENABLE_AUTOSAVE">
+    <value>世界の定期的なオートセーブを有効にしますか?</value>
+  </data>
+  <data name="IDS_DISABLE_AUTOSAVE">
+    <value>オートセーブを無効にする</value>
+  </data>
+  <data name="IDS_TITLE_DISABLE_AUTOSAVE">
+    <value>オートセーブを無効にする</value>
+  </data>
+  <data name="IDS_CONFIRM_DISABLE_AUTOSAVE">
+    <value>世界の定期的なオートセーブを無効にしますか?</value>
+  </data>
+  <data name="IDS_CONFIRM_SYNC_REQUIRED">
+    <value>この世界をプレイする前に同期する必要があります。同期には少し時間がかかります。同期してプレイしますか?</value>
+  </data>
+  <data name="IDS_CONFIRM_SYNC">
+    <value>同期</value>
+  </data>
+  <data name="IDS_SAVE_TRANSFER_DOWNLOAD_AND_CONVERT_COMPLETE">
+    <value>ダウンロードと Xbox One 形式への変換が完了しました!</value>
+  </data>
+  <data name="IDS_SAVE_TRANSFER_DOWNLOAD_CANCELLING">
+    <value>ダウンロードをキャンセルしています。お待ちください...</value>
+  </data>
+  <data name="IDS_SAVE_TRANSFER_DOWNLOAD_CANCELLED">
+    <value>ダウンロードをキャンセルしました</value>
+  </data>
+  <data name="IDS_DISCONNECTED_EXITED_GAME">
+    <value>ゲームを退出しました</value>
+  </data>
+  <data name="IDS_IN_PARTY_SESSION_FULL">
+    <value>参加しようとしているゲームは、現在メンバー数が上限に達しています。他のメンバーが退出した時点でお知らせします</value>
+  </data>
 
-  <i love girls yuri="i love girls">
-    <lesbian>プレイヤーのプライバシー設定により表示されません</girl love>
-  </kissing girls>
-  <snuggle i love girls="kissing girls">
-    <yuri>本当にセーブデータをコピーしてもよろしいですか?</yuri>
-  </yuri>
-  <cute girls yuri="yuri">
-    <girl love>セーブデータをコピー</lesbian kiss>
-  </yuri>
-  <blushing girls yuri="blushing girls">
-    <lesbian kiss>セーブデータをコピーしています</kissing girls>
-  </yuri>
-</scissors>
+  <data name="IDS_LEADERBOARD_SCORE_HIDDEN">
+    <value>プレイヤーのプライバシー設定により表示されません</value>
+  </data>
+  <data name="IDS_TEXT_COPY_SAVE">
+    <value>本当にセーブデータをコピーしてもよろしいですか?</value>
+  </data>
+  <data name="IDS_COPYSAVE">
+    <value>セーブデータをコピー</value>
+  </data>
+  <data name="IDS_PROGRESS_COPYING_SAVE">
+    <value>セーブデータをコピーしています</value>
+  </data>
+</root>

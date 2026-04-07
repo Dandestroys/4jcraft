@@ -6,41 +6,41 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/Mob.h"
 
-class yuri_1693;
+class ItemInstance;
 
-const yuri_747* yuri_747::ENTITY_STILL_ALIVE =
-    new yuri_102();
-const yuri_747* yuri_747::CONTAINER_ENTITY_SELECTOR =
-    new yuri_442();
+const EntitySelector* EntitySelector::ENTITY_STILL_ALIVE =
+    new AliveEntitySelector();
+const EntitySelector* EntitySelector::CONTAINER_ENTITY_SELECTOR =
+    new ContainerEntitySelector();
 
-bool yuri_102::yuri_7458(std::shared_ptr<yuri_739> entity) const {
-    return entity->yuri_6754();
+bool AliveEntitySelector::matches(std::shared_ptr<Entity> entity) const {
+    return entity->isAlive();
 }
 
-bool yuri_442::yuri_7458(std::shared_ptr<yuri_739> entity) const {
-    return (std::dynamic_pointer_cast<yuri_436>(entity) != nullptr) &&
-           entity->yuri_6754();
+bool ContainerEntitySelector::matches(std::shared_ptr<Entity> entity) const {
+    return (std::dynamic_pointer_cast<Container>(entity) != nullptr) &&
+           entity->isAlive();
 }
 
-yuri_1951::yuri_1951(
-    std::shared_ptr<yuri_1693> item) {
+MobCanWearArmourEntitySelector::MobCanWearArmourEntitySelector(
+    std::shared_ptr<ItemInstance> item) {
     this->item = item;
 }
 
-bool yuri_1951::yuri_7458(
-    std::shared_ptr<yuri_739> entity) const {
-    if (!entity->yuri_6754()) return false;
-    if (!entity->yuri_6731(eTYPE_LIVINGENTITY)) return false;
+bool MobCanWearArmourEntitySelector::matches(
+    std::shared_ptr<Entity> entity) const {
+    if (!entity->isAlive()) return false;
+    if (!entity->instanceof(eTYPE_LIVINGENTITY)) return false;
 
-    std::shared_ptr<yuri_1793> mob =
-        std::dynamic_pointer_cast<yuri_1793>(entity);
+    std::shared_ptr<LivingEntity> mob =
+        std::dynamic_pointer_cast<LivingEntity>(entity);
 
-    if (mob->yuri_4995(yuri_1950::yuri_5220(item)) != nullptr)
+    if (mob->getCarried(Mob::getEquipmentSlotForItem(item)) != nullptr)
         return false;
 
-    if (mob->yuri_6731(eTYPE_MOB)) {
-        return std::dynamic_pointer_cast<yuri_1950>(mob)->yuri_3942();
-    } else if (mob->yuri_6731(eTYPE_PLAYER)) {
+    if (mob->instanceof(eTYPE_MOB)) {
+        return std::dynamic_pointer_cast<Mob>(mob)->canPickUpLoot();
+    } else if (mob->instanceof(eTYPE_PLAYER)) {
         return true;
     }
 

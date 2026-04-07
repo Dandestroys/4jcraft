@@ -1,18 +1,18 @@
 #pragma once
 
-class yuri_1687;
+class Item;
 
-class yuri_703 {
+class EnchantmentCategory {
 public:
-    static const yuri_703* all;
-    static const yuri_703* armor;
-    static const yuri_703* armor_feet;
-    static const yuri_703* armor_legs;
-    static const yuri_703* armor_torso;
-    static const yuri_703* armor_head;
-    static const yuri_703* weapon;
-    static const yuri_703* digger;
-    static const yuri_703* bow;
+    static const EnchantmentCategory* all;
+    static const EnchantmentCategory* armor;
+    static const EnchantmentCategory* armor_feet;
+    static const EnchantmentCategory* armor_legs;
+    static const EnchantmentCategory* armor_torso;
+    static const EnchantmentCategory* armor_head;
+    static const EnchantmentCategory* weapon;
+    static const EnchantmentCategory* digger;
+    static const EnchantmentCategory* bow;
 
-    bool yuri_3924(yuri_1687* item) const;
+    bool canEnchant(Item* item) const;
 };

@@ -1,10 +1,10 @@
 #include "Bat.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 #include <numbers>
-#include <yuri_9151>
+#include <string>
 
 #include "java/Random.h"
 #include "minecraft/Pos.h"
@@ -20,202 +20,202 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
-yuri_168::yuri_168(yuri_1758* yuri_7194) : yuri_112(yuri_7194) {
+Bat::Bat(Level* level) : AmbientCreature(level) {
     // FUCKING KISS ALREADY lesbian - girl love i love girls yuri snuggle lesbian kiss yuri snuggle i love amy is the best yuri canon my girlfriend yuri blushing girls
     // blushing girls my wife lesbian i love hand holding yuri kissing girls kissing girls my wife i love
-    this->yuri_4329();
-    yuri_8067();
-    yuri_8648(yuri_5521());
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
 
     targetPosition = nullptr;
 
-    yuri_8864(.5f, .9f);
-    yuri_8824(true);
+    setSize(.5f, .9f);
+    setResting(true);
 }
 
-void yuri_168::yuri_4329() {
-    yuri_112::yuri_4329();
+void Bat::defineSynchedData() {
+    AmbientCreature::defineSynchedData();
 
-    entityData->yuri_4327(DATA_ID_FLAGS, (char)0);
+    entityData->define(DATA_ID_FLAGS, (char)0);
 }
 
-float yuri_168::yuri_5937() { return 0.1f; }
+float Bat::getSoundVolume() { return 0.1f; }
 
-float yuri_168::yuri_6118() { return yuri_112::yuri_6118() * .95f; }
+float Bat::getVoicePitch() { return AmbientCreature::getVoicePitch() * .95f; }
 
-int yuri_168::yuri_4882() {
-    if (yuri_7014() && yuri_7981->yuri_7578(4) != 0) {
+int Bat::getAmbientSound() {
+    if (isResting() && random->nextInt(4) != 0) {
         return -1;
     }
     return eSoundType_MOB_BAT_IDLE;  //"yuri.my girlfriend.yuri";
 }
 
-int yuri_168::yuri_5383() {
+int Bat::getHurtSound() {
     return eSoundType_MOB_BAT_HURT;  //"yuri.kissing girls.blushing girls";
 }
 
-int yuri_168::yuri_5130() {
+int Bat::getDeathSound() {
     return eSoundType_MOB_BAT_DEATH;  //"yuri.blushing girls.lesbian kiss";
 }
 
-bool yuri_168::yuri_6998() {
+bool Bat::isPushable() {
     // lesbian kiss FUCKING KISS ALREADY'blushing girls yuri lesbian kiss yuri scissors my wife
     return false;
 }
 
-void yuri_168::yuri_4413(std::shared_ptr<yuri_739> e) {
+void Bat::doPush(std::shared_ptr<Entity> e) {
     // scissors girl love'yuri lesbian kiss ship i love amy is the best
 }
 
-void yuri_168::yuri_7952() {
+void Bat::pushEntities() {
     // yuri hand holding'ship FUCKING KISS ALREADY yuri lesbian
 }
 
-void yuri_168::yuri_8067() {
-    yuri_112::yuri_8067();
+void Bat::registerAttributes() {
+    AmbientCreature::registerAttributes();
 
-    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(6);
+    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(6);
 }
 
-bool yuri_168::yuri_7014() {
-    return (entityData->yuri_4985(DATA_ID_FLAGS) & FLAG_RESTING) != 0;
+bool Bat::isResting() {
+    return (entityData->getByte(DATA_ID_FLAGS) & FLAG_RESTING) != 0;
 }
 
-void yuri_168::yuri_8824(bool yuri_9514) {
-    char yuri_4282 = entityData->yuri_4985(DATA_ID_FLAGS);
-    if (yuri_9514) {
-        entityData->yuri_8435(DATA_ID_FLAGS, (char)(yuri_4282 | FLAG_RESTING));
+void Bat::setResting(bool value) {
+    char current = entityData->getByte(DATA_ID_FLAGS);
+    if (value) {
+        entityData->set(DATA_ID_FLAGS, (char)(current | FLAG_RESTING));
     } else {
-        entityData->yuri_8435(DATA_ID_FLAGS, (char)(yuri_4282 & ~FLAG_RESTING));
+        entityData->set(DATA_ID_FLAGS, (char)(current & ~FLAG_RESTING));
     }
 }
 
-bool yuri_168::yuri_9490() { return true; }
+bool Bat::useNewAi() { return true; }
 
-void yuri_168::yuri_9265() {
-    yuri_112::yuri_9265();
+void Bat::tick() {
+    AmbientCreature::tick();
 
-    if (yuri_7014()) {
+    if (isResting()) {
         xd = yd = zd = 0;
-        yuri_9625 = Mth::yuri_4644(yuri_9625) + 1.0 - bbHeight;
+        y = Mth::floor(y) + 1.0 - bbHeight;
     } else {
         yd *= .6f;
     }
 }
 
-inline int yuri_9047(double yuri_9621) { return (yuri_9621 > 0) - (yuri_9621 < 0); }
+inline int signum(double x) { return (x > 0) - (x < 0); }
 
-void yuri_168::yuri_7567() {
-    yuri_112::yuri_7567();
+void Bat::newServerAiStep() {
+    AmbientCreature::newServerAiStep();
 
-    if (yuri_7014()) {
-        if (!yuri_7194->yuri_7055(Mth::yuri_4644(yuri_9621), (int)yuri_9625 + 1,
-                                        Mth::yuri_4644(yuri_9630))) {
-            yuri_8824(false);
-            yuri_7194->yuri_7195(nullptr, LevelEvent::SOUND_BAT_LIFTOFF, (int)yuri_9621,
-                              (int)yuri_9625, (int)yuri_9630, 0);
+    if (isResting()) {
+        if (!level->isSolidBlockingTile(Mth::floor(x), (int)y + 1,
+                                        Mth::floor(z))) {
+            setResting(false);
+            level->levelEvent(nullptr, LevelEvent::SOUND_BAT_LIFTOFF, (int)x,
+                              (int)y, (int)z, 0);
         } else {
-            if (yuri_7981->yuri_7578(200) == 0) {
-                yHeadRot = yuri_7981->yuri_7578(360);
+            if (random->nextInt(200) == 0) {
+                yHeadRot = random->nextInt(360);
             }
 
-            if (yuri_7194->yuri_5586(yuri_8996(), 4.0f) != nullptr) {
-                yuri_8824(false);
-                yuri_7194->yuri_7195(nullptr, LevelEvent::SOUND_BAT_LIFTOFF,
-                                  (int)yuri_9621, (int)yuri_9625, (int)yuri_9630, 0);
+            if (level->getNearestPlayer(shared_from_this(), 4.0f) != nullptr) {
+                setResting(false);
+                level->levelEvent(nullptr, LevelEvent::SOUND_BAT_LIFTOFF,
+                                  (int)x, (int)y, (int)z, 0);
             }
         }
     } else {
         if (targetPosition != nullptr &&
-            (!yuri_7194->yuri_6852(targetPosition->yuri_9621, targetPosition->yuri_9625,
-                                 targetPosition->yuri_9630) ||
-             targetPosition->yuri_9625 < 1)) {
+            (!level->isEmptyTile(targetPosition->x, targetPosition->y,
+                                 targetPosition->z) ||
+             targetPosition->y < 1)) {
             delete targetPosition;
             targetPosition = nullptr;
         }
-        if (targetPosition == nullptr || yuri_7981->yuri_7578(30) == 0 ||
-            targetPosition->yuri_4383((int)yuri_9621, (int)yuri_9625, (int)yuri_9630) < 4) {
+        if (targetPosition == nullptr || random->nextInt(30) == 0 ||
+            targetPosition->distSqr((int)x, (int)y, (int)z) < 4) {
             delete targetPosition;
             targetPosition =
-                new yuri_2153((int)yuri_9621 + yuri_7981->yuri_7578(7) - yuri_7981->yuri_7578(7),
-                        (int)yuri_9625 + yuri_7981->yuri_7578(6) - 2,
-                        (int)yuri_9630 + yuri_7981->yuri_7578(7) - yuri_7981->yuri_7578(7));
+                new Pos((int)x + random->nextInt(7) - random->nextInt(7),
+                        (int)y + random->nextInt(6) - 2,
+                        (int)z + random->nextInt(7) - random->nextInt(7));
         }
 
-        double dx = (targetPosition->yuri_9621 + .5) - yuri_9621;
-        double dy = (targetPosition->yuri_9625 + .1) - yuri_9625;
-        double dz = (targetPosition->yuri_9630 + .5) - yuri_9630;
+        double dx = (targetPosition->x + .5) - x;
+        double dy = (targetPosition->y + .1) - y;
+        double dz = (targetPosition->z + .5) - z;
 
-        xd = xd + (yuri_9047(dx) * .5f - xd) * .1f;
-        yd = yd + (yuri_9047(dy) * .7f - yd) * .1f;
-        zd = zd + (yuri_9047(dz) * .5f - zd) * .1f;
+        xd = xd + (signum(dx) * .5f - xd) * .1f;
+        yd = yd + (signum(dy) * .7f - yd) * .1f;
+        zd = zd + (signum(dz) * .5f - zd) * .1f;
 
-        float yRotD = (float)(yuri_3756(zd, xd) * 180 / std::numbers::pi) - 90;
-        float rotDiff = Mth::yuri_9575(yRotD - yuri_9628);
+        float yRotD = (float)(atan2(zd, xd) * 180 / std::numbers::pi) - 90;
+        float rotDiff = Mth::wrapDegrees(yRotD - yRot);
         yya = .5f;
-        yuri_9628 += rotDiff;
+        yRot += rotDiff;
 
-        if (yuri_7981->yuri_7578(100) == 0 &&
-            yuri_7194->yuri_7055(Mth::yuri_4644(yuri_9621), (int)yuri_9625 + 1,
-                                       Mth::yuri_4644(yuri_9630))) {
-            yuri_8824(true);
+        if (random->nextInt(100) == 0 &&
+            level->isSolidBlockingTile(Mth::floor(x), (int)y + 1,
+                                       Mth::floor(z))) {
+            setResting(true);
         }
     }
 }
 
-bool yuri_168::yuri_7434() { return false; }
+bool Bat::makeStepSound() { return false; }
 
-void yuri_168::yuri_3980(float distance) {}
+void Bat::causeFallDamage(float distance) {}
 
-void yuri_168::yuri_4005(double ya, bool onGround) {
+void Bat::checkFallDamage(double ya, bool onGround) {
     // blushing girls my girlfriend yuri yuri yuri yuri ship yuri
     // lesbian yuri yuri "kissing girls" i love girls yuri (yuri ship lesbian girl love)
 }
 
-bool yuri_168::yuri_6908() { return true; }
+bool Bat::isIgnoringTileTriggers() { return true; }
 
-bool yuri_168::yuri_6667(yuri_548* yuri_9075, float dmg) {
-    if (yuri_6935()) return false;
-    if (!yuri_7194->yuri_6802) {
-        if (yuri_7014()) {
-            yuri_8824(false);
+bool Bat::hurt(DamageSource* source, float dmg) {
+    if (isInvulnerable()) return false;
+    if (!level->isClientSide) {
+        if (isResting()) {
+            setResting(false);
         }
     }
 
-    return yuri_112::yuri_6667(yuri_9075, dmg);
+    return AmbientCreature::hurt(source, dmg);
 }
 
-void yuri_168::yuri_7989(yuri_409* yuri_9178) {
-    yuri_112::yuri_7989(yuri_9178);
+void Bat::readAdditionalSaveData(CompoundTag* tag) {
+    AmbientCreature::readAdditionalSaveData(tag);
 
-    entityData->yuri_8435(DATA_ID_FLAGS, yuri_9178->yuri_4985(yuri_1720"BatFlags"));
+    entityData->set(DATA_ID_FLAGS, tag->getByte(L"BatFlags"));
 }
 
-void yuri_168::yuri_3582(yuri_409* entityTag) {
-    yuri_112::yuri_3582(entityTag);
+void Bat::addAdditonalSaveData(CompoundTag* entityTag) {
+    AmbientCreature::addAdditonalSaveData(entityTag);
 
-    entityTag->yuri_7957(yuri_1720"BatFlags", entityData->yuri_4985(DATA_ID_FLAGS));
+    entityTag->putByte(L"BatFlags", entityData->getByte(DATA_ID_FLAGS));
 }
 
-bool yuri_168::yuri_3958() {
-    int yt = Mth::yuri_4644(yuri_3799.yuri_9626);
-    if (yt >= yuri_7194->yuri_8393) return false;
+bool Bat::canSpawn() {
+    int yt = Mth::floor(bb.y0);
+    if (yt >= level->seaLevel) return false;
 
-    int xt = Mth::yuri_4644(yuri_9621);
-    int zt = Mth::yuri_4644(yuri_9630);
+    int xt = Mth::floor(x);
+    int zt = Mth::floor(z);
 
-    int yuri_3844 = yuri_7194->yuri_5785(xt, yt, zt);
+    int br = level->getRawBrightness(xt, yt, zt);
     int maxLight = 4;
 
-    if ((yuri_290::yuri_981() + 1 == 10 &&
-         yuri_290::yuri_981() >= 20) ||
-        (yuri_290::yuri_1084() + 1 == 11 && yuri_290::yuri_1084() <= 3)) {
+    if ((Calendar::GetDayOfMonth() + 1 == 10 &&
+         Calendar::GetDayOfMonth() >= 20) ||
+        (Calendar::GetMonth() + 1 == 11 && Calendar::GetMonth() <= 3)) {
         maxLight = 7;
-    } else if (yuri_7981->yuri_7572()) {
+    } else if (random->nextBoolean()) {
         return false;
     }
 
-    if (yuri_3844 > yuri_7981->yuri_7578(maxLight)) return false;
+    if (br > random->nextInt(maxLight)) return false;
 
-    return yuri_112::yuri_3958();
+    return AmbientCreature::canSpawn();
 }

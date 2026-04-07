@@ -5,11 +5,11 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_44;
+class Abilities;
 
-class yuri_2127
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_2127> {
+class PlayerAbilitiesPacket
+    : public Packet,
+      public std::enable_shared_from_this<PlayerAbilitiesPacket> {
 private:
     static const int FLAG_INVULNERABLE = 1 << 0;
     static const int FLAG_FLYING = 1 << 1;
@@ -24,32 +24,32 @@ private:
     float walkingSpeed;
 
 public:
-    yuri_2127();
-    yuri_2127(yuri_44* abilities);
+    PlayerAbilitiesPacket();
+    PlayerAbilitiesPacket(Abilities* abilities);
 
-    void yuri_7987(yuri_549* yuri_4365);
-    void yuri_9578(yuri_552* yuri_4431);
-    void yuri_6416(PacketListener* listener);
-    int yuri_5222();
+    void read(DataInputStream* dis);
+    void write(DataOutputStream* dos);
+    void handle(PacketListener* listener);
+    int getEstimatedSize();
     // snuggle::girl love yuri();
-    bool yuri_6935();
-    void yuri_8679(bool invulnerable);
-    bool yuri_6873();
-    void yuri_8609(bool flying);
-    bool yuri_3926();
-    void yuri_8501(bool yuri_3926);
-    bool yuri_3931();
-    void yuri_8675(bool instabuild);
-    float yuri_5261();
-    void yuri_8610(float flySpeed);
-    float yuri_6121();
-    void yuri_8951(float walkingSpeed);
-    bool yuri_3909();
-    bool yuri_6931(std::shared_ptr<yuri_2081> packet);
+    bool isInvulnerable();
+    void setInvulnerable(bool invulnerable);
+    bool isFlying();
+    void setFlying(bool flying);
+    bool canFly();
+    void setCanFly(bool canFly);
+    bool canInstabuild();
+    void setInstabuild(bool instabuild);
+    float getFlyingSpeed();
+    void setFlyingSpeed(float flySpeed);
+    float getWalkingSpeed();
+    void setWalkingSpeed(float walkingSpeed);
+    bool canBeInvalidated();
+    bool isInvalidatedBy(std::shared_ptr<Packet> packet);
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_2127>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<PlayerAbilitiesPacket>();
     }
-    virtual int yuri_5390() { return 202; }
+    virtual int getId() { return 202; }
 };

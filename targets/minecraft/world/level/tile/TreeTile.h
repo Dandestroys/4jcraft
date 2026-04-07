@@ -1,15 +1,15 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "RotatedPillarTile.h"
 
 class ChunkRebuildData;
-class yuri_2126;
-class yuri_1346;
+class Player;
+class Icon;
 
-class yuri_3137 : public yuri_2441 {
-    friend class yuri_3088;
+class TreeTile : public RotatedPillarTile {
+    friend class Tile;
     friend class ChunkRebuildData;
 
 public:
@@ -27,31 +27,31 @@ public:
 
     static const unsigned int TREE_NAMES[TREE_NAMES_LENGTH];
 
-    static const std::yuri_9616 TREE_STRING_NAMES[TREE_NAMES_LENGTH];
+    static const std::wstring TREE_STRING_NAMES[TREE_NAMES_LENGTH];
 
-    static const std::yuri_9616 TREE_TEXTURES[];
+    static const std::wstring TREE_TEXTURES[];
 
 private:
-    yuri_1346* icons_side[TREE_NAMES_LENGTH];
-    yuri_1346* icons_top[TREE_NAMES_LENGTH];
+    Icon* icons_side[TREE_NAMES_LENGTH];
+    Icon* icons_top[TREE_NAMES_LENGTH];
 
 protected:
-    yuri_3137(int yuri_6674);
+    TreeTile(int id);
 
 public:
-    virtual int yuri_5819(yuri_2302* yuri_7981);
-    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
-    virtual void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
-    virtual unsigned int yuri_5148(int iData = -1);
+    virtual int getResourceCount(Random* random);
+    virtual int getResource(int data, Random* random, int playerBonusLevel);
+    virtual void onRemove(Level* level, int x, int y, int z, int id, int data);
+    virtual unsigned int getDescriptionId(int iData = -1);
 
 protected:
-    virtual yuri_1346* yuri_6070(int yuri_9364);
-    virtual yuri_1346* yuri_6049(int yuri_9364);
+    virtual Icon* getTypeTexture(int type);
+    virtual Icon* getTopTexture(int type);
 
 public:
-    static int yuri_6131(int yuri_4295);
-    void yuri_8072(IconRegister* iconRegister);
+    static int getWoodType(int data);
+    void registerIcons(IconRegister* iconRegister);
 
 protected:
-    virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
+    virtual std::shared_ptr<ItemInstance> getSilkTouchItemInstance(int data);
 };

@@ -3,9 +3,9 @@
 #include "DoorInteractGoal.h"
 #include "minecraft/SharedConstants.h"
 
-class yuri_1950;
+class Mob;
 
-class yuri_223 : public yuri_645 {
+class BreakDoorGoal : public DoorInteractGoal {
 private:
     static const int DOOR_BREAK_TIME = SharedConstants::TICKS_PER_SECOND * 12;
 
@@ -13,11 +13,11 @@ private:
     int lastBreakProgress;
 
 public:
-    yuri_223(yuri_1950* mob);
+    BreakDoorGoal(Mob* mob);
 
-    virtual bool yuri_3967();
-    virtual void yuri_9098();
-    virtual void yuri_9133();
-    virtual bool yuri_3916();
-    virtual void yuri_9265();
+    virtual bool canUse();
+    virtual void start();
+    virtual void stop();
+    virtual bool canContinueToUse();
+    virtual void tick();
 };

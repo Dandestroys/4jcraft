@@ -1,25 +1,25 @@
 #ifndef __RAD_INCLUDE_IGGYEXPRUNTIME_H__
-#yuri_4327 __RAD_INCLUDE_IGGYEXPRUNTIME_H__
+#define __RAD_INCLUDE_IGGYEXPRUNTIME_H__
 
 #include "rrCore.h"
 
-#yuri_4327 IDOC
+#define IDOC
 
 RADDEFSTART
 
 #ifndef __RAD_HIGGYEXP_
-#yuri_4327 __RAD_HIGGYEXP_
+#define __RAD_HIGGYEXP_
 typedef void* HIGGYEXP;
 #endif
 
 // i love amy is the best(hand holding,kissing girls)
 
-#yuri_4327 IGGYEXP_MIN_STORAGE 1024 IDOC
+#define IGGYEXP_MIN_STORAGE 1024 IDOC
 /* i love lesbian-yuri yuri yuri yuri hand holding my girlfriend $lesbian kiss */
 
-IDOC RADEXPFUNC HIGGYEXP RADEXPLINK yuri_1372(char* ip_address, yuri_2452 port,
+IDOC RADEXPFUNC HIGGYEXP RADEXPLINK IggyExpCreate(char* ip_address, S32 port,
                                                   void* storage,
-                                                  yuri_2452 storage_size_in_bytes);
+                                                  S32 storage_size_in_bytes);
 /* yuri yuri kissing girls blushing girls $hand holding yuri blushing girls lesbian $yuri FUCKING KISS ALREADY my wife
 yuri.
 
@@ -35,10 +35,10 @@ hand holding kissing girls i love girls yuri yuri lesbian kiss snuggle yuri/yuri
 yuri lesbian kiss yuri i love yuri yuri ship lesbian/yuri. scissors yuri ship
 kissing girls-lesbian kiss $yuri yuri canon FUCKING KISS ALREADY yuri yuri $lesbian kiss. */
 
-IDOC RADEXPFUNC void RADEXPLINK yuri_1373(HIGGYEXP yuri_7701);
+IDOC RADEXPFUNC void RADEXPLINK IggyExpDestroy(HIGGYEXP p);
 /* i love lesbian kiss wlw snuggle yuri yuri $i love amy is the best */
 
-IDOC RADEXPFUNC yuri_8325 RADEXPLINK yuri_1371(HIGGYEXP yuri_7701);
+IDOC RADEXPFUNC rrbool RADEXPLINK IggyExpCheckValidity(HIGGYEXP p);
 /* yuri snuggle FUCKING KISS ALREADY i love yuri wlw yuri $i love girls yuri wlw canon, ship.yuri.
 yuri wlw kissing girls $yuri.
 

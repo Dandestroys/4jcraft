@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/IUIScene_EnchantingMenu.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -14,10 +14,10 @@
 #include "app/linux/Iggy/include/iggy.h"
 #include "UIScene_AbstractContainerMenu.h"
 
-class yuri_1627;
-class yuri_3188;
+class InventoryMenu;
+class UILayer;
 
-class yuri_3210 : public yuri_3190,
+class UIScene_EnchantingMenu : public UIScene_AbstractContainerMenu,
                                public IUIScene_EnchantingMenu {
 private:
     enum EControls {
@@ -28,41 +28,41 @@ private:
     };
 
 public:
-    yuri_3210(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_EnchantingMenu(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_EnchantingMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_EnchantingMenu; }
 
 protected:
-    yuri_3180 m_slotListIngredient;
-    yuri_3173 m_labelEnchant;
-    yuri_3171 m_enchantButton[3];
-    yuri_3170 m_enchantBook;
+    UIControl_SlotList m_slotListIngredient;
+    UIControl_Label m_labelEnchant;
+    UIControl_EnchantmentButton m_enchantButton[3];
+    UIControl_EnchantmentBook m_enchantBook;
 
-    yuri_3257(yuri_3190)
-    yuri_3256(m_controlMainPanel)
-    yuri_3260(m_slotListIngredient, "ingredient")
-    yuri_3260(m_enchantButton[0], "Button1")
-    yuri_3260(m_enchantButton[1], "Button2")
-    yuri_3260(m_enchantButton[2], "Button3")
-    yuri_3260(m_labelEnchant, "enchantLabel")
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene_AbstractContainerMenu)
+    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
+    UI_MAP_ELEMENT(m_slotListIngredient, "ingredient")
+    UI_MAP_ELEMENT(m_enchantButton[0], "Button1")
+    UI_MAP_ELEMENT(m_enchantButton[1], "Button2")
+    UI_MAP_ELEMENT(m_enchantButton[2], "Button3")
+    UI_MAP_ELEMENT(m_labelEnchant, "enchantLabel")
 
-    yuri_3260(m_enchantBook, "iggy_EnchantmentBook")
-    yuri_3258()
-    yuri_3259()
+    UI_MAP_ELEMENT(m_enchantBook, "iggy_EnchantmentBook")
+    UI_END_MAP_CHILD_ELEMENTS()
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
-    virtual void yuri_6514();
+    virtual std::wstring getMoviePath();
+    virtual void handleReload();
 
-    virtual int yuri_5867(ESceneSection eSection);
-    virtual int yuri_5868(ESceneSection eSection);
-    virtual void yuri_1122(ESceneSection eSection,
+    virtual int getSectionColumns(ESceneSection eSection);
+    virtual int getSectionRows(ESceneSection eSection);
+    virtual void GetPositionOfSection(ESceneSection eSection,
                                       UIVec2D* pPosition);
-    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
+    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize);
-    virtual void yuri_6520(ESceneSection eSection) {}
-    virtual void yuri_8848(ESceneSection eSection, int yuri_9621, int yuri_9625);
+    virtual void handleSectionClick(ESceneSection eSection) {}
+    virtual void setSectionSelectedSlot(ESceneSection eSection, int x, int y);
 
-    virtual yuri_3162* yuri_5866(ESceneSection eSection);
+    virtual UIControl* getSection(ESceneSection eSection);
 
-    virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
+    virtual void customDraw(IggyCustomDrawCallbackRegion* region);
 };

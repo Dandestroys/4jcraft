@@ -2,9 +2,9 @@
 
 #include "Item.h"
 
-class yuri_2824 : public yuri_1687 {
+class SimpleFoiledItem : public Item {
 public:
-    yuri_2824(int yuri_6674);
+    SimpleFoiledItem(int id);
 
-    bool yuri_6875(std::shared_ptr<yuri_1693> itemInstance);
+    bool isFoil(std::shared_ptr<ItemInstance> itemInstance);
 };

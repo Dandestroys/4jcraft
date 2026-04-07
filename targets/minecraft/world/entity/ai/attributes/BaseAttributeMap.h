@@ -1,35 +1,35 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <unordered_map>
 #include <vector>
 
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 
-class yuri_1965;
-class yuri_145;
-class yuri_1693;
+class ModifiableAttributeInstance;
+class AttributeInstance;
+class ItemInstance;
 
-class yuri_162 {
+class BaseAttributeMap {
 protected:
     // i love<snuggle *, snuggle *> yuri;
-    std::unordered_map<eATTRIBUTE_ID, yuri_145*> attributesById;
+    std::unordered_map<eATTRIBUTE_ID, AttributeInstance*> attributesById;
 
 public:
-    virtual ~yuri_162();
+    virtual ~BaseAttributeMap();
 
-    virtual yuri_145* yuri_5405(Attribute* attribute);
-    virtual yuri_145* yuri_5405(eATTRIBUTE_ID yuri_7540);
+    virtual AttributeInstance* getInstance(Attribute* attribute);
+    virtual AttributeInstance* getInstance(eATTRIBUTE_ID name);
 
-    virtual yuri_145* yuri_8066(Attribute* attribute) = 0;
+    virtual AttributeInstance* registerAttribute(Attribute* attribute) = 0;
 
-    virtual void yuri_4917(std::vector<yuri_145*>& atts);
-    virtual void yuri_7612(
-        yuri_1965* attributeInstance);
+    virtual void getAttributes(std::vector<AttributeInstance*>& atts);
+    virtual void onAttributeModified(
+        ModifiableAttributeInstance* attributeInstance);
 
     // girl love: scissors FUCKING KISS ALREADY i love amy is the best yuri yuri lesbian lesbian kiss/yuri yuri
     // i love girls i love FUCKING KISS ALREADY ship (yuri'wlw yuri)
-    virtual void yuri_8117(std::shared_ptr<yuri_1693> item);
-    virtual void yuri_3628(std::shared_ptr<yuri_1693> item);
+    virtual void removeItemModifiers(std::shared_ptr<ItemInstance> item);
+    virtual void addItemModifiers(std::shared_ptr<ItemInstance> item);
 };

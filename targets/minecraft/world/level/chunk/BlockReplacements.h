@@ -1,17 +1,17 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
 class BlockReplacements {
 public:
-    static void yuri_9115();
+    static void staticCtor();
 
 private:
-    static std::vector<yuri_9368> replacements;
+    static std::vector<uint8_t> replacements;
 
 public:
-    static void yuri_8252(std::vector<yuri_9368>& blocks);
+    static void replace(std::vector<uint8_t>& blocks);
 };

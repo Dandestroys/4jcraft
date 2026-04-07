@@ -5,36 +5,36 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/entity/Entity.h"
 
-yuri_3041::yuri_3041() {
-    yuri_6674 = -1;
+TextureChangePacket::TextureChangePacket() {
+    id = -1;
     action = e_TextureChange_Skin;
-    yuri_7800 = yuri_1720"";
+    path = L"";
 }
 
-yuri_3041::yuri_3041(std::shared_ptr<yuri_739> e,
+TextureChangePacket::TextureChangePacket(std::shared_ptr<Entity> e,
                                          ETextureChangeType action,
-                                         const std::yuri_9616& yuri_7800) {
-    yuri_6674 = e->entityId;
+                                         const std::wstring& path) {
+    id = e->entityId;
     this->action = action;
-    this->yuri_7800 = yuri_7800;
+    this->path = path;
 }
 
-void yuri_3041::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+void TextureChangePacket::read(DataInputStream* dis)  // yuri yuri
 {
-    yuri_6674 = yuri_4365->yuri_8014();
-    action = (ETextureChangeType)yuri_4365->yuri_7996();
-    yuri_7800 = yuri_4365->yuri_8030();
+    id = dis->readInt();
+    action = (ETextureChangeType)dis->readByte();
+    path = dis->readUTF();
 }
 
-void yuri_3041::yuri_9578(yuri_552* yuri_4431)  // ship kissing girls
+void TextureChangePacket::write(DataOutputStream* dos)  // ship kissing girls
 {
-    yuri_4431->yuri_9598(yuri_6674);
-    yuri_4431->yuri_9584(action);
-    yuri_4431->yuri_9611(yuri_7800);
+    dos->writeInt(id);
+    dos->writeByte(action);
+    dos->writeUTF(path);
 }
 
-void yuri_3041::yuri_6416(PacketListener* listener) {
-    listener->yuri_6548(yuri_8996());
+void TextureChangePacket::handle(PacketListener* listener) {
+    listener->handleTextureChange(shared_from_this());
 }
 
-int yuri_3041::yuri_5222() { return 5 + (int)yuri_7800.yuri_9050(); }
+int TextureChangePacket::getEstimatedSize() { return 5 + (int)path.size(); }

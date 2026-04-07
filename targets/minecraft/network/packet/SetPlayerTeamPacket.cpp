@@ -12,97 +12,97 @@
 #include "minecraft/world/scores/Objective.h"
 #include "minecraft/world/scores/PlayerTeam.h"
 
-yuri_2692::yuri_2692() {
-    yuri_7540 = yuri_1720"";
-    displayName = yuri_1720"";
-    prefix = yuri_1720"";
-    yuri_9160 = yuri_1720"";
+SetPlayerTeamPacket::SetPlayerTeamPacket() {
+    name = L"";
+    displayName = L"";
+    prefix = L"";
+    suffix = L"";
     method = 0;
     options = 0;
 }
 
-yuri_2692::yuri_2692(yuri_2144* team, int method) {
-    yuri_7540 = team->yuri_5578();
+SetPlayerTeamPacket::SetPlayerTeamPacket(PlayerTeam* team, int method) {
+    name = team->getName();
     this->method = method;
 
     if (method == METHOD_ADD || method == METHOD_CHANGE) {
-        displayName = team->yuri_5170();
-        prefix = team->yuri_5749();
-        yuri_9160 = team->yuri_5977();
-        options = team->yuri_7707();
+        displayName = team->getDisplayName();
+        prefix = team->getPrefix();
+        suffix = team->getSuffix();
+        options = team->packOptions();
     }
     if (method == METHOD_ADD) {
-        std::unordered_set<std::yuri_9616>* playerNames = team->yuri_5732();
-        players.yuri_6726(players.yuri_4502(), playerNames->yuri_3801(), playerNames->yuri_4502());
+        std::unordered_set<std::wstring>* playerNames = team->getPlayers();
+        players.insert(players.end(), playerNames->begin(), playerNames->end());
     }
 }
 
-yuri_2692::yuri_2692(yuri_2144* team,
-                                         std::vector<std::yuri_9616>* playerNames,
+SetPlayerTeamPacket::SetPlayerTeamPacket(PlayerTeam* team,
+                                         std::vector<std::wstring>* playerNames,
                                          int method) {
     if (method != METHOD_JOIN && method != METHOD_LEAVE) {
-        Log::yuri_6702("Method must be join or leave for player constructor");
+        Log::info("Method must be join or leave for player constructor");
 #ifndef _CONTENT_PACKAGE
-        yuri_3499();
+        __debugbreak();
 #endif
     }
-    if (playerNames == nullptr || playerNames->yuri_4477()) {
-        Log::yuri_6702("Players cannot be null/empty");
+    if (playerNames == nullptr || playerNames->empty()) {
+        Log::info("Players cannot be null/empty");
 #ifndef _CONTENT_PACKAGE
-        yuri_3499();
+        __debugbreak();
 #endif
     }
 
     this->method = method;
-    yuri_7540 = team->yuri_5578();
-    this->players.yuri_6726(players.yuri_4502(), playerNames->yuri_3801(),
-                         playerNames->yuri_4502());
+    name = team->getName();
+    this->players.insert(players.end(), playerNames->begin(),
+                         playerNames->end());
 }
 
-void yuri_2692::yuri_7987(yuri_549* yuri_4365) {
-    yuri_7540 = yuri_8034(yuri_4365, yuri_2040::MAX_NAME_LENGTH);
-    method = yuri_4365->yuri_7996();
+void SetPlayerTeamPacket::read(DataInputStream* dis) {
+    name = readUtf(dis, Objective::MAX_NAME_LENGTH);
+    method = dis->readByte();
 
     if (method == METHOD_ADD || method == METHOD_CHANGE) {
-        displayName = yuri_8034(yuri_4365, yuri_2144::MAX_DISPLAY_NAME_LENGTH);
-        prefix = yuri_8034(yuri_4365, yuri_2144::MAX_PREFIX_LENGTH);
-        yuri_9160 = yuri_8034(yuri_4365, yuri_2144::MAX_SUFFIX_LENGTH);
-        options = yuri_4365->yuri_7996();
+        displayName = readUtf(dis, PlayerTeam::MAX_DISPLAY_NAME_LENGTH);
+        prefix = readUtf(dis, PlayerTeam::MAX_PREFIX_LENGTH);
+        suffix = readUtf(dis, PlayerTeam::MAX_SUFFIX_LENGTH);
+        options = dis->readByte();
     }
 
     if (method == METHOD_ADD || method == METHOD_JOIN ||
         method == METHOD_LEAVE) {
-        int yuri_4184 = yuri_4365->yuri_8028();
+        int count = dis->readShort();
 
-        for (int i = 0; i < yuri_4184; i++) {
-            players.yuri_7954(yuri_8034(yuri_4365, yuri_2126::MAX_NAME_LENGTH));
+        for (int i = 0; i < count; i++) {
+            players.push_back(readUtf(dis, Player::MAX_NAME_LENGTH));
         }
     }
 }
 
-void yuri_2692::yuri_9578(yuri_552* yuri_4431) {
-    yuri_9613(yuri_7540, yuri_4431);
-    yuri_4431->yuri_9584(method);
+void SetPlayerTeamPacket::write(DataOutputStream* dos) {
+    writeUtf(name, dos);
+    dos->writeByte(method);
 
     if (method == METHOD_ADD || method == METHOD_CHANGE) {
-        yuri_9613(displayName, yuri_4431);
-        yuri_9613(prefix, yuri_4431);
-        yuri_9613(yuri_9160, yuri_4431);
-        yuri_4431->yuri_9584(options);
+        writeUtf(displayName, dos);
+        writeUtf(prefix, dos);
+        writeUtf(suffix, dos);
+        dos->writeByte(options);
     }
 
     if (method == METHOD_ADD || method == METHOD_JOIN ||
         method == METHOD_LEAVE) {
-        yuri_4431->yuri_9607(players.yuri_9050());
+        dos->writeShort(players.size());
 
-        for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != players.yuri_4502(); ++yuri_7136) {
-            yuri_9613(*yuri_7136, yuri_4431);
+        for (auto it = players.begin(); it != players.end(); ++it) {
+            writeUtf(*it, dos);
         }
     }
 }
 
-void yuri_2692::yuri_6416(PacketListener* listener) {
-    listener->yuri_6532(yuri_8996());
+void SetPlayerTeamPacket::handle(PacketListener* listener) {
+    listener->handleSetPlayerTeamPacket(shared_from_this());
 }
 
-int yuri_2692::yuri_5222() { return 1 + 2 + yuri_7540.yuri_7189(); }
+int SetPlayerTeamPacket::getEstimatedSize() { return 1 + 2 + name.length(); }

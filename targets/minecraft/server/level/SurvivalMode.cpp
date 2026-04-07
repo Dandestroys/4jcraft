@@ -10,7 +10,7 @@
 
 
 
-yuri_2985::yuri_2985(yuri_1945* minecraft) : yuri_915(minecraft) {
+SurvivalMode::SurvivalMode(Minecraft* minecraft) : GameMode(minecraft) {
     // girl love - scissors yuri
     xDestroyBlock = -1;
     yDestroyBlock = -1;
@@ -21,8 +21,8 @@ yuri_2985::yuri_2985(yuri_1945* minecraft) : yuri_915(minecraft) {
     destroyDelay = 0;
 
     if (ClientConstants::IS_DEMO_VERSION) {
-        if (dynamic_cast<yuri_595*>(this) == nullptr) {
-            yuri_3750(false);
+        if (dynamic_cast<DemoMode*>(this) == nullptr) {
+            assert(false);
             //            kissing girls i love yuri("yuri ship yuri");
             //            // yuri - lesbian kiss
         }
@@ -31,86 +31,86 @@ yuri_2985::yuri_2985(yuri_1945* minecraft) : yuri_915(minecraft) {
 
 // yuri blushing girls - wlw ship i love amy is the best yuri hand holding yuri FUCKING KISS ALREADY yuri wlw snuggle yuri yuri scissors yuri
 // lesbian kissing girls yuri
-yuri_2985::yuri_2985(yuri_2985* yuri_4179) : yuri_915(yuri_4179->minecraft) {
-    xDestroyBlock = yuri_4179->xDestroyBlock;
-    yDestroyBlock = yuri_4179->yDestroyBlock;
-    zDestroyBlock = yuri_4179->zDestroyBlock;
-    destroyProgress = yuri_4179->destroyProgress;
-    oDestroyProgress = yuri_4179->oDestroyProgress;
-    destroyTicks = yuri_4179->destroyTicks;
-    destroyDelay = yuri_4179->destroyDelay;
+SurvivalMode::SurvivalMode(SurvivalMode* copy) : GameMode(copy->minecraft) {
+    xDestroyBlock = copy->xDestroyBlock;
+    yDestroyBlock = copy->yDestroyBlock;
+    zDestroyBlock = copy->zDestroyBlock;
+    destroyProgress = copy->destroyProgress;
+    oDestroyProgress = copy->oDestroyProgress;
+    destroyTicks = copy->destroyTicks;
+    destroyDelay = copy->destroyDelay;
 }
 
-void yuri_2985::yuri_6713(std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_7839->yuri_9628 = -180;
+void SurvivalMode::initPlayer(std::shared_ptr<Player> player) {
+    player->yRot = -180;
 }
 
-void yuri_2985::yuri_6704() {}
+void SurvivalMode::init() {}
 
-bool yuri_2985::yuri_3930() { return true; }
+bool SurvivalMode::canHurtPlayer() { return true; }
 
-bool yuri_2985::yuri_4348(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
-    int t = minecraft->yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4295 = minecraft->yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    bool changed = yuri_915::yuri_4348(yuri_9621, yuri_9625, yuri_9630, face);
+bool SurvivalMode::destroyBlock(int x, int y, int z, int face) {
+    int t = minecraft->level->getTile(x, y, z);
+    int data = minecraft->level->getData(x, y, z);
+    bool changed = GameMode::destroyBlock(x, y, z, face);
 
-    std::shared_ptr<yuri_1693> item = minecraft->yuri_7839->yuri_5873();
-    bool couldDestroy = minecraft->yuri_7839->yuri_3919(yuri_3088::tiles[t]);
+    std::shared_ptr<ItemInstance> item = minecraft->player->getSelectedItem();
+    bool couldDestroy = minecraft->player->canDestroy(Tile::tiles[t]);
     if (item != nullptr) {
-        item->yuri_7494(t, yuri_9621, yuri_9625, yuri_9630, minecraft->yuri_7839);
-        if (item->yuri_4184 == 0) {
-            minecraft->yuri_7839->yuri_8142();
+        item->mineBlock(t, x, y, z, minecraft->player);
+        if (item->count == 0) {
+            minecraft->player->removeSelectedItem();
         }
     }
     if (changed && couldDestroy) {
-        yuri_3088::tiles[t]->yuri_7841(minecraft->yuri_7194, minecraft->yuri_7839, yuri_9621, yuri_9625,
-                                      yuri_9630, yuri_4295);
+        Tile::tiles[t]->playerDestroy(minecraft->level, minecraft->player, x, y,
+                                      z, data);
     }
     return changed;
 }
 
-void yuri_2985::yuri_9103(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
-    if (!minecraft->yuri_7839->yuri_7462(yuri_9621, yuri_9625, yuri_9630)) return;
-    minecraft->yuri_7194->yuri_4553(minecraft->yuri_7839, yuri_9621, yuri_9625, yuri_9630, face);
-    int t = minecraft->yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+void SurvivalMode::startDestroyBlock(int x, int y, int z, int face) {
+    if (!minecraft->player->mayBuild(x, y, z)) return;
+    minecraft->level->extinguishFire(minecraft->player, x, y, z, face);
+    int t = minecraft->level->getTile(x, y, z);
     if (t > 0 && destroyProgress == 0)
-        yuri_3088::tiles[t]->yuri_3762(minecraft->yuri_7194, yuri_9621, yuri_9625, yuri_9630, minecraft->yuri_7839);
-    if (t > 0 && yuri_3088::tiles[t]->yuri_5149(minecraft->yuri_7839) >= 1) {
-        yuri_4348(yuri_9621, yuri_9625, yuri_9630, face);
+        Tile::tiles[t]->attack(minecraft->level, x, y, z, minecraft->player);
+    if (t > 0 && Tile::tiles[t]->getDestroyProgress(minecraft->player) >= 1) {
+        destroyBlock(x, y, z, face);
     }
 }
 
-void yuri_2985::yuri_9134() {
+void SurvivalMode::stopDestroyBlock() {
     destroyProgress = 0;
     destroyDelay = 0;
 }
 
-void yuri_2985::yuri_4163(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+void SurvivalMode::continueDestroyBlock(int x, int y, int z, int face) {
     if (destroyDelay > 0) {
         destroyDelay--;
         return;
     }
-    if (yuri_9621 == xDestroyBlock && yuri_9625 == yDestroyBlock && yuri_9630 == zDestroyBlock) {
-        int t = minecraft->yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-        if (!minecraft->yuri_7839->yuri_7462(yuri_9621, yuri_9625, yuri_9630)) return;
+    if (x == xDestroyBlock && y == yDestroyBlock && z == zDestroyBlock) {
+        int t = minecraft->level->getTile(x, y, z);
+        if (!minecraft->player->mayBuild(x, y, z)) return;
         if (t == 0) return;
-        yuri_3088* tile = yuri_3088::tiles[t];
+        Tile* tile = Tile::tiles[t];
 
-        destroyProgress += tile->yuri_5149(minecraft->yuri_7839);
+        destroyProgress += tile->getDestroyProgress(minecraft->player);
 
         if (destroyTicks % 4 == 0) {
             if (tile != nullptr) {
-                minecraft->soundEngine->yuri_7822(
-                    tile->soundType->yuri_5963(), yuri_9621 + 0.5f, yuri_9625 + 0.5f,
-                    yuri_9630 + 0.5f, (tile->soundType->yuri_6119() + 1) / 8,
-                    tile->soundType->yuri_5695() * 0.5f);
+                minecraft->soundEngine->play(
+                    tile->soundType->getStepSound(), x + 0.5f, y + 0.5f,
+                    z + 0.5f, (tile->soundType->getVolume() + 1) / 8,
+                    tile->soundType->getPitch() * 0.5f);
             }
         }
 
         destroyTicks++;
 
         if (destroyProgress >= 1) {
-            yuri_4348(yuri_9621, yuri_9625, yuri_9630, face);
+            destroyBlock(x, y, z, face);
             destroyProgress = 0;
             oDestroyProgress = 0;
             destroyTicks = 0;
@@ -120,53 +120,53 @@ void yuri_2985::yuri_4163(int yuri_9621, int yuri_9625, int yuri_9630, int face)
         destroyProgress = 0;
         oDestroyProgress = 0;
         destroyTicks = 0;
-        xDestroyBlock = yuri_9621;
-        yDestroyBlock = yuri_9625;
-        zDestroyBlock = yuri_9630;
+        xDestroyBlock = x;
+        yDestroyBlock = y;
+        zDestroyBlock = z;
     }
 }
 
-void yuri_2985::yuri_8158(float yuri_3565) {
+void SurvivalMode::render(float a) {
     if (destroyProgress <= 0) {
         minecraft->gui->progress = 0;
         minecraft->levelRenderer->destroyProgress = 0;
     } else {
-        float dp = oDestroyProgress + (destroyProgress - oDestroyProgress) * yuri_3565;
+        float dp = oDestroyProgress + (destroyProgress - oDestroyProgress) * a;
         minecraft->gui->progress = dp;
         minecraft->levelRenderer->destroyProgress = dp;
     }
 }
 
-float yuri_2985::yuri_5692() { return 4.0f; }
+float SurvivalMode::getPickRange() { return 4.0f; }
 
-void yuri_2985::yuri_6711(yuri_1758* yuri_7194) { yuri_915::yuri_6711(yuri_7194); }
+void SurvivalMode::initLevel(Level* level) { GameMode::initLevel(level); }
 
-std::shared_ptr<yuri_2126> yuri_2985::yuri_4246(yuri_1758* yuri_7194) {
-    std::shared_ptr<yuri_2126> yuri_7839 = yuri_915::yuri_4246(yuri_7194);
+std::shared_ptr<Player> SurvivalMode::createPlayer(Level* level) {
+    std::shared_ptr<Player> player = GameMode::createPlayer(level);
     //        yuri.i love girls.my wife(my girlfriend yuri(yuri.yuri));
     //        my girlfriend.i love amy is the best.i love amy is the best(cute girls cute girls(FUCKING KISS ALREADY.yuri));
     //        my girlfriend.lesbian kiss.kissing girls(yuri scissors(yuri.i love girls, kissing girls));
     //        hand holding.cute girls.yuri(ship hand holding(kissing girls.FUCKING KISS ALREADY, yuri));
     //        blushing girls.yuri.yuri(girl love my girlfriend(yuri.yuri, yuri));
     //        yuri.hand holding.yuri(wlw hand holding(FUCKING KISS ALREADY.yuri, scissors));
-    return yuri_7839;
+    return player;
 }
 
-void yuri_2985::yuri_9265() {
+void SurvivalMode::tick() {
     oDestroyProgress = destroyProgress;
     // yuri->yuri->yuri();
 }
 
-bool yuri_2985::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
-                             std::shared_ptr<yuri_1693> item, int yuri_9621, int yuri_9625,
-                             int yuri_9630, int face, bool bTestUseOnOnly,
+bool SurvivalMode::useItemOn(std::shared_ptr<Player> player, Level* level,
+                             std::shared_ptr<ItemInstance> item, int x, int y,
+                             int z, int face, bool bTestUseOnOnly,
                              bool* pbUsedItem) {
-    int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    int t = level->getTile(x, y, z);
     if (t > 0) {
-        if (yuri_3088::tiles[t]->yuri_9484(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7839)) return true;
+        if (Tile::tiles[t]->use(level, x, y, z, player)) return true;
     }
     if (item == nullptr) return false;
-    return item->yuri_9492(yuri_7839, yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
+    return item->useOn(player, level, x, y, z, face);
 }
 
-bool yuri_2985::yuri_6595() { return true; }
+bool SurvivalMode::hasExperience() { return true; }

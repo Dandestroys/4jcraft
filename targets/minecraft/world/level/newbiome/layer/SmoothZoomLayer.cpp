@@ -1,7 +1,7 @@
 
 #include "minecraft/world/level/newbiome/layer/SmoothZoomLayer.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <algorithm>
 #include <memory>
@@ -9,59 +9,59 @@
 
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-yuri_2856::yuri_2856(yuri_6733 seedMixup,
-                                 std::shared_ptr<yuri_1742> yuri_7791)
-    : yuri_1742(seedMixup) {
-    this->yuri_7791 = yuri_7791;
+SmoothZoomLayer::SmoothZoomLayer(int64_t seedMixup,
+                                 std::shared_ptr<Layer> parent)
+    : Layer(seedMixup) {
+    this->parent = parent;
 }
 
-std::vector<int> yuri_2856::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
+std::vector<int> SmoothZoomLayer::getArea(int xo, int yo, int w, int h) {
     int px = xo >> 1;
     int py = yo >> 1;
-    int pw = (yuri_9535 >> 1) + 3;
-    int ph = (yuri_6412 >> 1) + 3;
-    std::vector<int> yuri_7701 = yuri_7791->yuri_4897(px, py, pw, ph);
+    int pw = (w >> 1) + 3;
+    int ph = (h >> 1) + 3;
+    std::vector<int> p = parent->getArea(px, py, pw, ph);
 
-    std::vector<int> yuri_9305(pw * ph * 4);
+    std::vector<int> tmp(pw * ph * 4);
     int ww = (pw << 1);
-    for (int yuri_9625 = 0; yuri_9625 < ph - 1; yuri_9625++) {
-        int ry = yuri_9625 << 1;
+    for (int y = 0; y < ph - 1; y++) {
+        int ry = y << 1;
         int pp = ry * ww;
-        int ul = yuri_7701[(0 + 0) + (yuri_9625 + 0) * pw];
-        int dl = yuri_7701[(0 + 0) + (yuri_9625 + 1) * pw];
-        for (int yuri_9621 = 0; yuri_9621 < pw - 1; yuri_9621++) {
-            yuri_6715((yuri_9621 + px) << 1, (yuri_9625 + py) << 1);
+        int ul = p[(0 + 0) + (y + 0) * pw];
+        int dl = p[(0 + 0) + (y + 1) * pw];
+        for (int x = 0; x < pw - 1; x++) {
+            initRandom((x + px) << 1, (y + py) << 1);
 
-            int ur = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 0) * pw];
-            int dr = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 1) * pw];
+            int ur = p[(x + 1) + (y + 0) * pw];
+            int dr = p[(x + 1) + (y + 1) * pw];
 
-            yuri_9305[pp] = ul;
-            yuri_9305[pp++ + ww] = ul + (dl - ul) * (yuri_7580(256)) / 256;
-            yuri_9305[pp] = ul + (ur - ul) * (yuri_7580(256)) / 256;
+            tmp[pp] = ul;
+            tmp[pp++ + ww] = ul + (dl - ul) * (nextRandom(256)) / 256;
+            tmp[pp] = ul + (ur - ul) * (nextRandom(256)) / 256;
 
-            int yuri_3565 = ul + (ur - ul) * (yuri_7580(256)) / 256;
-            int yuri_3775 = dl + (dr - dl) * (yuri_7580(256)) / 256;
-            yuri_9305[pp++ + ww] = yuri_3565 + (yuri_3775 - yuri_3565) * (yuri_7580(256)) / 256;
+            int a = ul + (ur - ul) * (nextRandom(256)) / 256;
+            int b = dl + (dr - dl) * (nextRandom(256)) / 256;
+            tmp[pp++ + ww] = a + (b - a) * (nextRandom(256)) / 256;
 
             ul = ur;
             dl = dr;
         }
     }
-    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
-    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
-        std::yuri_4179(yuri_9305.yuri_3801() + (yuri_9625 + (yo & 1)) * (pw << 1) + (xo & 1),
-                  yuri_9305.yuri_3801() + (yuri_9625 + (yo & 1)) * (pw << 1) + (xo & 1) + yuri_9535,
-                  yuri_8300.yuri_3801() + yuri_9625 * yuri_9535);
+    std::vector<int> result(w * h);
+    for (int y = 0; y < h; y++) {
+        std::copy(tmp.begin() + (y + (yo & 1)) * (pw << 1) + (xo & 1),
+                  tmp.begin() + (y + (yo & 1)) * (pw << 1) + (xo & 1) + w,
+                  result.begin() + y * w);
     }
-    return yuri_8300;
+    return result;
 }
 
-std::shared_ptr<yuri_1742> yuri_2856::yuri_9638(yuri_6733 yuri_8396,
-                                             std::shared_ptr<yuri_1742> sup,
-                                             int yuri_4184) {
-    std::shared_ptr<yuri_1742> yuri_8300 = sup;
-    for (int i = 0; i < yuri_4184; i++) {
-        yuri_8300 = std::make_shared<yuri_2856>(yuri_8396 + i, yuri_8300);
+std::shared_ptr<Layer> SmoothZoomLayer::zoom(int64_t seed,
+                                             std::shared_ptr<Layer> sup,
+                                             int count) {
+    std::shared_ptr<Layer> result = sup;
+    for (int i = 0; i < count; i++) {
+        result = std::make_shared<SmoothZoomLayer>(seed + i, result);
     }
-    return yuri_8300;
+    return result;
 }

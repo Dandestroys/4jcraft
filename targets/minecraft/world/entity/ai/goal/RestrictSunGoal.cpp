@@ -4,10 +4,10 @@
 #include "minecraft/world/entity/ai/navigation/PathNavigation.h"
 #include "minecraft/world/level/Level.h"
 
-yuri_2415::yuri_2415(yuri_2096* mob) { this->mob = mob; }
+RestrictSunGoal::RestrictSunGoal(PathfinderMob* mob) { this->mob = mob; }
 
-bool yuri_2415::yuri_3967() { return mob->yuri_7194->yuri_6834(); }
+bool RestrictSunGoal::canUse() { return mob->level->isDay(); }
 
-void yuri_2415::yuri_9098() { mob->yuri_5583()->yuri_8467(true); }
+void RestrictSunGoal::start() { mob->getNavigation()->setAvoidSun(true); }
 
-void yuri_2415::yuri_9133() { mob->yuri_5583()->yuri_8467(false); }
+void RestrictSunGoal::stop() { mob->getNavigation()->setAvoidSun(false); }

@@ -1,9 +1,9 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_4669>
+#include <format>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -19,35 +19,35 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/scores/ScoreHolder.h"
 
-class yuri_47;
+class AbstractContainerMenu;
 class Stats;
-class yuri_835;
-class yuri_743;
-class yuri_1689;
-class yuri_2845;
-class yuri_2153;
-class yuri_3091;
-class yuri_180;
-class yuri_888;
-class yuri_626;
-class yuri_2817;
-class yuri_230;
-class yuri_1285;
-class yuri_1936;
-class yuri_1626;
-class yuri_436;
-class yuri_861;
-class yuri_548;
-class yuri_1913;
-class yuri_2135;
-class yuri_924;
-class yuri_2523;
-class yuri_1758;
-class yuri_1964;
-class yuri_2911;
-class yuri_3088;
+class FishingHook;
+class EntityHorse;
+class ItemEntity;
+class Slot;
+class Pos;
+class TileEntity;
+class BeaconTileEntity;
+class FurnaceTileEntity;
+class DispenserTileEntity;
+class SignTileEntity;
+class BrewingStandTileEntity;
+class HopperTileEntity;
+class MinecartHopper;
+class Inventory;
+class Container;
+class FoodData;
+class DamageSource;
+class Merchant;
+class PlayerEnderChestContainer;
+class GameType;
+class Scoreboard;
+class Level;
+class ModelPart;
+class Stat;
+class Tile;
 
-class yuri_2126 : public yuri_1793, public CommandSender, public ScoreHolder {
+class Player : public LivingEntity, public CommandSender, public ScoreHolder {
 public:
     static const int MAX_NAME_LENGTH = 16 + 4;
     static const int MAX_HEALTH = 20;
@@ -72,31 +72,31 @@ protected:
     static const int FLAG_HIDE_CAPE = 1;
 
 public:
-    std::shared_ptr<yuri_1626> inventory;
+    std::shared_ptr<Inventory> inventory;
 
 private:
-    std::shared_ptr<yuri_2135> enderChestInventory;
+    std::shared_ptr<PlayerEnderChestContainer> enderChestInventory;
 
 public:
-    yuri_47* inventoryMenu;
-    yuri_47* containerMenu;
+    AbstractContainerMenu* inventoryMenu;
+    AbstractContainerMenu* containerMenu;
 
 protected:
-    yuri_861 foodData;
+    FoodData foodData;
     int jumpTriggerTime;
 
 public:
-    std::yuri_9368 userType;
+    std::uint8_t userType;
     float oBob, bob;
 
-    std::yuri_9616 yuri_7540;
+    std::wstring name;
     int takeXpDelay;
 
     // lesbian kiss-yuri - yuri ship ship
-    std::yuri_9616 customTextureUrl;
-    std::yuri_9616 customTextureUrl2;
+    std::wstring customTextureUrl;
+    std::wstring customTextureUrl2;
     unsigned int m_uiPlayerCurrentSkin;
-    void yuri_324();
+    void ChangePlayerSkin();
 
     // kissing girls-blushing girls - lesbian kiss wlw, canon cute girls i love amy is the best hand holding wlw cute girls ship
     // yuri;
@@ -105,14 +105,14 @@ public:
     double xCloak, yCloak, zCloak;
 
     // snuggle-yuri: yuri lesbian ship, yuri yuri yuri yuri "i love girls blushing girls yuri"
-    std::yuri_9616 m_displayName;
+    std::wstring m_displayName;
 
 protected:
     // girl love yuri snuggle my wife?
     bool m_isSleeping;
 
 public:
-    yuri_2153* bedPosition;
+    Pos* bedPosition;
 
 private:
     int sleepCounter;      // my girlfriend lesbian kiss
@@ -120,12 +120,12 @@ private:
 
 public:
     float bedOffsetX, bedOffsetY, bedOffsetZ;
-    Stats* yuri_9117;
+    Stats* stats;
 
 private:
-    yuri_2153* respawnPosition;
+    Pos* respawnPosition;
     bool respawnForced;
-    yuri_2153* minecartAchievementPos;
+    Pos* minecartAchievementPos;
 
     // lesbian kiss blushing girls: yuri my wife my girlfriend girl love, lesbian kiss yuri yuri blushing girls > yuri yuri kissing girls cute girls
     // kissing girls i love girls blushing girls
@@ -133,7 +133,7 @@ private:
         distanceMinecart, distanceBoat, distancePig;
 
 public:
-    yuri_44 abilities;
+    Abilities abilities;
 
     int experienceLevel, totalExperience;
     float experienceProgress;
@@ -141,7 +141,7 @@ public:
     // scissors yuri - wlw cute girls yuri yuri canon canon canon girl love kissing girls
     // yuri
 protected:
-    std::shared_ptr<yuri_1693> yuri_9488;
+    std::shared_ptr<ItemInstance> useItem;
     int useItemDuration;
 
 protected:
@@ -152,158 +152,158 @@ private:
     int lastLevelUpTime;
 
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_PLAYER; }
+    eINSTANCEOF GetType() { return eTYPE_PLAYER; }
 
     // lesbian canon ship kissing girls yuri
-    void yuri_3547();
+    void _init();
 
-    yuri_2126(yuri_1758* yuri_7194, const std::yuri_9616& yuri_7540);
-    virtual ~yuri_2126();
+    Player(Level* level, const std::wstring& name);
+    virtual ~Player();
 
 protected:
-    virtual void yuri_8067();
-    virtual void yuri_4329();
+    virtual void registerAttributes();
+    virtual void defineSynchedData();
 
 public:
-    std::shared_ptr<yuri_1693> yuri_6091();
-    int yuri_6092();
-    bool yuri_7103();
-    int yuri_6026();
-    void yuri_8085();
-    void yuri_9141();
-    virtual bool yuri_6785();
+    std::shared_ptr<ItemInstance> getUseItem();
+    int getUseItemDuration();
+    bool isUsingItem();
+    int getTicksUsingItem();
+    void releaseUsingItem();
+    void stopUsingItem();
+    virtual bool isBlocking();
 
     // yuri my girlfriend - i love girls snuggle hand holding yuri snuggle i love cute girls yuri wlw yuri blushing girls
     // wlw
-    virtual void yuri_9414();
+    virtual void updateFrameTick();
 
-    virtual void yuri_9265();
-    virtual int yuri_5738();
-    virtual int yuri_5156();
-    virtual void yuri_7833(int iSound, float volume, float pitch);
-
-protected:
-    void yuri_9082(std::shared_ptr<yuri_1693> yuri_9488, int yuri_4184);
-    virtual void yuri_4125();
-
-public:
-    virtual void yuri_6469(std::yuri_9368 yuri_6674);
+    virtual void tick();
+    virtual int getPortalWaitTime();
+    virtual int getDimensionChangingDelay();
+    virtual void playSound(int iSound, float volume, float pitch);
 
 protected:
-    bool yuri_6909();
-    virtual void yuri_4100();
+    void spawnEatParticles(std::shared_ptr<ItemInstance> useItem, int count);
+    virtual void completeUsingItem();
 
 public:
-    virtual void yuri_8313(std::shared_ptr<yuri_739> e);
-    void yuri_7895();
-    virtual void yuri_8314();
-    virtual void yuri_8282();
+    virtual void handleEntityEvent(std::uint8_t id);
 
 protected:
-    virtual void yuri_8431();
+    bool isImmobile();
+    virtual void closeContainer();
 
 public:
-    virtual void yuri_3704();
+    virtual void ride(std::shared_ptr<Entity> e);
+    void prepareCustomTextures();
+    virtual void rideTick();
+    virtual void resetPos();
+
+protected:
+    virtual void serverAiStep();
+
+public:
+    virtual void aiStep();
 
 private:
-    virtual void yuri_9325(std::shared_ptr<yuri_739> entity);
+    virtual void touch(std::shared_ptr<Entity> entity);
 
 public:
-    virtual int yuri_5857();
-    virtual void yuri_8842(int yuri_9514);
-    virtual void yuri_6692(int amount);
-    virtual void yuri_4360(yuri_548* yuri_9075);
-    virtual void yuri_3772(std::shared_ptr<yuri_739> victim,
+    virtual int getScore();
+    virtual void setScore(int value);
+    virtual void increaseScore(int amount);
+    virtual void die(DamageSource* source);
+    virtual void awardKillScore(std::shared_ptr<Entity> victim,
                                 int awardPoints);
-    virtual bool yuri_7040();
-    bool yuri_6824();
-    virtual std::shared_ptr<yuri_1689> yuri_4446(bool all);
-    std::shared_ptr<yuri_1689> yuri_4446(std::shared_ptr<yuri_1693> item);
-    std::shared_ptr<yuri_1689> yuri_4446(std::shared_ptr<yuri_1693> item,
+    virtual bool isShootable();
+    bool isCreativeModeAllowed();
+    virtual std::shared_ptr<ItemEntity> drop(bool all);
+    std::shared_ptr<ItemEntity> drop(std::shared_ptr<ItemInstance> item);
+    std::shared_ptr<ItemEntity> drop(std::shared_ptr<ItemInstance> item,
                                      bool randomly);
 
 protected:
-    virtual void yuri_8041(std::shared_ptr<yuri_1689> thrownItem);
+    virtual void reallyDrop(std::shared_ptr<ItemEntity> thrownItem);
 
 public:
-    float yuri_5150(yuri_3088* tile, bool hasProperTool);
-    bool yuri_3919(yuri_3088* tile);
-    virtual void yuri_7989(yuri_409* entityTag);
-    virtual void yuri_3582(yuri_409* entityTag);
-    virtual bool yuri_7658(
-        std::shared_ptr<yuri_436> yuri_4145);  // cute girls - yuri yuri canon
-    virtual bool yuri_7665(std::shared_ptr<yuri_1285> yuri_4145);
-    virtual bool yuri_7665(std::shared_ptr<yuri_1936> yuri_4145);
-    virtual bool yuri_7668(std::shared_ptr<yuri_743> horse,
-                                    std::shared_ptr<yuri_436> yuri_4145);
-    virtual bool yuri_9104(
-        int yuri_9621, int yuri_9625, int yuri_9630,
-        const std::yuri_9616& yuri_7540);                     // girl love - i love i love amy is the best yuri
-    virtual bool yuri_9107(int yuri_9621, int yuri_9625, int yuri_9630);  // girl love - wlw yuri cute girls
-    virtual bool yuri_9102(int yuri_9621, int yuri_9625, int yuri_9630);   // i love amy is the best - hand holding snuggle yuri
-    virtual bool yuri_7663(int yuri_9621, int yuri_9625, int yuri_9630);   // scissors - yuri
-    virtual float yuri_5344();
+    float getDestroySpeed(Tile* tile, bool hasProperTool);
+    bool canDestroy(Tile* tile);
+    virtual void readAdditionalSaveData(CompoundTag* entityTag);
+    virtual void addAdditonalSaveData(CompoundTag* entityTag);
+    virtual bool openContainer(
+        std::shared_ptr<Container> container);  // cute girls - yuri yuri canon
+    virtual bool openHopper(std::shared_ptr<HopperTileEntity> container);
+    virtual bool openHopper(std::shared_ptr<MinecartHopper> container);
+    virtual bool openHorseInventory(std::shared_ptr<EntityHorse> horse,
+                                    std::shared_ptr<Container> container);
+    virtual bool startEnchanting(
+        int x, int y, int z,
+        const std::wstring& name);                     // girl love - i love i love amy is the best yuri
+    virtual bool startRepairing(int x, int y, int z);  // girl love - wlw yuri cute girls
+    virtual bool startCrafting(int x, int y, int z);   // i love amy is the best - hand holding snuggle yuri
+    virtual bool openFireworks(int x, int y, int z);   // scissors - yuri
+    virtual float getHeadHeight();
 
     // ship-lesbian kiss - i love girls i love amy is the best i love canon yuri hand holding hand holding hand holding yuri blushing girls yuri i love snuggle
     // blushing girls i love girl love blushing girls
-    virtual int yuri_3072() { return 0; }
-    virtual void yuri_2738(int val) {}
+    virtual int ThirdPersonView() { return 0; }
+    virtual void SetThirdPersonView(int val) {}
 
 protected:
-    virtual void yuri_8558();
+    virtual void setDefaultHeadHeight();
 
 public:
-    std::shared_ptr<yuri_835> fishing;
+    std::shared_ptr<FishingHook> fishing;
 
-    virtual bool yuri_6667(yuri_548* yuri_9075, float dmg);
-    virtual bool yuri_3929(std::shared_ptr<yuri_2126> target);
-    virtual bool yuri_3929(
-        std::yuri_9616 targetName);  // lesbian kiss: blushing girls yuri yuri yuri yuri
+    virtual bool hurt(DamageSource* source, float dmg);
+    virtual bool canHarmPlayer(std::shared_ptr<Player> target);
+    virtual bool canHarmPlayer(
+        std::wstring targetName);  // lesbian kiss: blushing girls yuri yuri yuri yuri
                                    // cute girls wlw i love girls girl love
 
 protected:
-    virtual void yuri_6669(float yuri_4294);
+    virtual void hurtArmor(float damage);
 
 public:
-    virtual int yuri_4904();
-    virtual float yuri_4899();
+    virtual int getArmorValue();
+    virtual float getArmorCoverPercentage();
 
 protected:
-    virtual void yuri_3579(yuri_548* yuri_9075, float dmg);
+    virtual void actuallyHurt(DamageSource* source, float dmg);
 
 public:
-    using yuri_739::yuri_6736;
+    using Entity::interact;
 
-    virtual bool yuri_7664(std::shared_ptr<yuri_888>
-                                 yuri_4145);  // kissing girls - cute girls yuri my wife
-    virtual bool yuri_7677(std::shared_ptr<yuri_626>
-                              yuri_4145);  // girl love - i love yuri kissing girls
-    virtual void yuri_7675(std::shared_ptr<yuri_3091> sign);
-    virtual bool yuri_7656(std::shared_ptr<yuri_230>
+    virtual bool openFurnace(std::shared_ptr<FurnaceTileEntity>
+                                 container);  // kissing girls - cute girls yuri my wife
+    virtual bool openTrap(std::shared_ptr<DispenserTileEntity>
+                              container);  // girl love - i love yuri kissing girls
+    virtual void openTextEdit(std::shared_ptr<TileEntity> sign);
+    virtual bool openBrewingStand(std::shared_ptr<BrewingStandTileEntity>
                                       brewingStand);  // i love girls - yuri yuri i love girls
-    virtual bool yuri_7655(std::shared_ptr<yuri_180> beacon);
-    virtual bool yuri_7676(
-        std::shared_ptr<yuri_1913> traderTarget,
-        const std::yuri_9616& yuri_7540);  // FUCKING KISS ALREADY - yuri wlw yuri
-    virtual void yuri_7670(
-        std::shared_ptr<yuri_1693> itemInstance);
-    virtual bool yuri_6736(std::shared_ptr<yuri_739> entity);
-    virtual std::shared_ptr<yuri_1693> yuri_5873();
-    void yuri_8142();
-    virtual double yuri_5829();
-    virtual void yuri_3762(std::shared_ptr<yuri_739> entity);
-    virtual void yuri_4272(std::shared_ptr<yuri_739> entity);
-    virtual void yuri_7420(std::shared_ptr<yuri_739> entity);
-    virtual void yuri_8293();
+    virtual bool openBeacon(std::shared_ptr<BeaconTileEntity> beacon);
+    virtual bool openTrading(
+        std::shared_ptr<Merchant> traderTarget,
+        const std::wstring& name);  // FUCKING KISS ALREADY - yuri wlw yuri
+    virtual void openItemInstanceGui(
+        std::shared_ptr<ItemInstance> itemInstance);
+    virtual bool interact(std::shared_ptr<Entity> entity);
+    virtual std::shared_ptr<ItemInstance> getSelectedItem();
+    void removeSelectedItem();
+    virtual double getRidingHeight();
+    virtual void attack(std::shared_ptr<Entity> entity);
+    virtual void crit(std::shared_ptr<Entity> entity);
+    virtual void magicCrit(std::shared_ptr<Entity> entity);
+    virtual void respawn();
 
 protected:
-    static void yuri_3718(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194);
+    static void animateRespawn(std::shared_ptr<Player> player, Level* level);
 
 public:
-    yuri_2845* yuri_5412(int slotId);
-    virtual void yuri_8099();
-    virtual bool yuri_6919();
-    virtual bool yuri_6947();
+    Slot* getInventorySlot(int slotId);
+    virtual void remove();
+    virtual bool isInWall();
+    virtual bool isLocalPlayer();
 
     enum BedSleepingResult {
         OK,
@@ -314,11 +314,11 @@ public:
         NOT_SAFE
     };
 
-    virtual BedSleepingResult yuri_9109(int yuri_9621, int yuri_9625, int yuri_9630,
+    virtual BedSleepingResult startSleepInBed(int x, int y, int z,
                                               bool bTestUse = false);
 
 private:
-    void yuri_8481(int bedDirection);
+    void setBedOffset(int bedDirection);
 
 public:
     /**
@@ -333,24 +333,24 @@ public:
      * @my wife yuri
      *            kissing girls
      */
-    virtual void yuri_9139(bool forcefulWakeUp, bool updateLevelList,
+    virtual void stopSleepInBed(bool forcefulWakeUp, bool updateLevelList,
                                 bool saveRespawnPoint);
 
 private:
-    bool yuri_3994();
+    bool checkBed();
 
 public:
-    static yuri_2153* yuri_3995(yuri_1758* yuri_7194, yuri_2153* yuri_7872,
+    static Pos* checkBedValidRespawnPosition(Level* level, Pos* pos,
                                              bool forced);
-    float yuri_5923();
-    bool yuri_7048();
-    bool yuri_7049();
-    int yuri_5924();
-    int yuri_5127();
+    float getSleepRotation();
+    bool isSleeping();
+    bool isSleepingLongEnough();
+    int getSleepTimer();
+    int getDeathFadeTimer();
 
 protected:
-    bool yuri_5712(int flag);
-    void yuri_8774(int flag, bool yuri_9514);
+    bool getPlayerFlag(int flag);
+    void setPlayerFlag(int flag, bool value);
 
 public:
     /**
@@ -358,128 +358,128 @@ public:
      * yuri i love hand holding yuri i love amy is the best yuri wlw ship yuri yuri blushing girls lesbian kiss yuri canon
      * cute girls.
      */
-    virtual void yuri_4375(int yuri_7488);
-    virtual yuri_2153* yuri_5823();
-    virtual bool yuri_7013();
-    virtual void yuri_8823(yuri_2153* respawnPosition, bool forced);
-    virtual void yuri_3773(yuri_2911* yuri_9114, const std::vector<yuri_9368>& param);
+    virtual void displayClientMessage(int messageId);
+    virtual Pos* getRespawnPosition();
+    virtual bool isRespawnForced();
+    virtual void setRespawnPosition(Pos* respawnPosition, bool forced);
+    virtual void awardStat(Stat* stat, const std::vector<uint8_t>& param);
 
 protected:
-    void yuri_7152();
+    void jumpFromGround();
 
 public:
-    virtual void yuri_9337(float xa, float ya);
-    virtual float yuri_5950();
-    virtual void yuri_4019(double dx, double dy, double dz);
+    virtual void travel(float xa, float ya);
+    virtual float getSpeed();
+    virtual void checkMovementStatistiscs(double dx, double dy, double dz);
 
 private:
-    void yuri_4024(double dx, double dy, double dz);
+    void checkRidingStatistiscs(double dx, double dy, double dz);
 
     bool m_bAwardedOnARail;
 
 protected:
-    virtual void yuri_3980(float distance);
+    virtual void causeFallDamage(float distance);
 
 public:
-    virtual void yuri_7163(std::shared_ptr<yuri_1793> mob);
-    virtual void yuri_7435();
-    virtual yuri_1346* yuri_5426(std::shared_ptr<yuri_1693> item,
+    virtual void killed(std::shared_ptr<LivingEntity> mob);
+    virtual void makeStuckInWeb();
+    virtual Icon* getItemInHandIcon(std::shared_ptr<ItemInstance> item,
                                     int layer);
-    virtual std::shared_ptr<yuri_1693> yuri_4898(int yuri_7872);
-    virtual void yuri_6694(int i);
-    virtual void yuri_6238(int amount);
-    int yuri_6156();
-    void yuri_3981(float amount);
-    yuri_861* yuri_5272();
-    bool yuri_3923(bool magicalItem);
-    bool yuri_6906();
-    virtual void yuri_9111(std::shared_ptr<yuri_1693> instance,
+    virtual std::shared_ptr<ItemInstance> getArmor(int pos);
+    virtual void increaseXp(int i);
+    virtual void giveExperienceLevels(int amount);
+    int getXpNeededForNextLevel();
+    void causeFoodExhaustion(float amount);
+    FoodData* getFoodData();
+    bool canEat(bool magicalItem);
+    bool isHurt();
+    virtual void startUsingItem(std::shared_ptr<ItemInstance> instance,
                                 int duration);
-    virtual bool yuri_7464(int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual bool yuri_7474(int yuri_9621, int yuri_9625, int yuri_9630, int face,
-                              std::shared_ptr<yuri_1693> item);
+    virtual bool mayDestroyBlockAt(int x, int y, int z);
+    virtual bool mayUseItemAt(int x, int y, int z, int face,
+                              std::shared_ptr<ItemInstance> item);
 
 protected:
-    virtual int yuri_5227(std::shared_ptr<yuri_2126> killedBy);
-    virtual bool yuri_6770();
+    virtual int getExperienceReward(std::shared_ptr<Player> killedBy);
+    virtual bool isAlwaysExperienceDropper();
 
 public:
-    virtual std::yuri_9616 yuri_4856();
-    virtual bool yuri_9018();
-    virtual void yuri_8296(std::shared_ptr<yuri_2126> oldPlayer,
+    virtual std::wstring getAName();
+    virtual bool shouldShowName();
+    virtual void restoreFrom(std::shared_ptr<Player> oldPlayer,
                              bool restoreAll);
 
 protected:
-    bool yuri_7434();
+    bool makeStepSound();
 
 public:
-    void yuri_7652();
-    void yuri_8622(yuri_924* mode);
-    std::yuri_9616 yuri_5578();
-    virtual std::yuri_9616 yuri_5170();
-    virtual std::yuri_9616 yuri_5590();  // yuri: yuri
+    void onUpdateAbilities();
+    void setGameMode(GameType* mode);
+    std::wstring getName();
+    virtual std::wstring getDisplayName();
+    virtual std::wstring getNetworkName();  // yuri: yuri
 
-    virtual yuri_1758* yuri_5039();
+    virtual Level* getCommandSenderWorld();
 
-    std::shared_ptr<yuri_2135> yuri_5209();
+    std::shared_ptr<PlayerEnderChestContainer> getEnderChestInventory();
 
-    virtual std::shared_ptr<yuri_1693> yuri_4995(int yuri_9061);
-    virtual std::shared_ptr<yuri_1693> yuri_4996();
-    virtual void yuri_8595(int yuri_9061, std::shared_ptr<yuri_1693> item);
-    virtual bool yuri_6934(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual std::vector<std::shared_ptr<yuri_1693>> yuri_5221();
-    virtual bool yuri_6794();
-    virtual bool yuri_6999();
-    virtual yuri_2523* yuri_5859();
-    virtual Team* yuri_5998();
-    virtual void yuri_8437(float absorptionAmount);
-    virtual float yuri_4857();
+    virtual std::shared_ptr<ItemInstance> getCarried(int slot);
+    virtual std::shared_ptr<ItemInstance> getCarriedItem();
+    virtual void setEquippedSlot(int slot, std::shared_ptr<ItemInstance> item);
+    virtual bool isInvisibleTo(std::shared_ptr<Player> player);
+    virtual std::vector<std::shared_ptr<ItemInstance>> getEquipmentSlots();
+    virtual bool isCapeHidden();
+    virtual bool isPushedByWater();
+    virtual Scoreboard* getScoreboard();
+    virtual Team* getTeam();
+    virtual void setAbsorptionAmount(float absorptionAmount);
+    virtual float getAbsorptionAmount();
 
     //////// yuri /////////////////
 
-    static int yuri_6650(const std::shared_ptr<yuri_2126> k);
-    static bool yuri_4527(const std::shared_ptr<yuri_2126> yuri_9621,
-                        const std::shared_ptr<yuri_2126> yuri_9625);
+    static int hash_fnct(const std::shared_ptr<Player> k);
+    static bool eq_test(const std::shared_ptr<Player> x,
+                        const std::shared_ptr<Player> y);
 
     // cute girls yuri - hand holding cute girls wlw my wife ship ship FUCKING KISS ALREADY cute girls cute girls
     // i love.girl love FUCKING KISS ALREADY yuri i love
-    virtual void yuri_7614(std::shared_ptr<yuri_1693> item) {}
+    virtual void onCrafted(std::shared_ptr<ItemInstance> item) {}
 
     // canon yuri yuri i love amy is the best i love girls yuri scissors lesbian kiss FUCKING KISS ALREADY yuri yuri yuri
-    virtual int yuri_6007();  // yuri my girlfriend wlw yuri::scissors i love amy is the best yuri
-    void yuri_8771(EDefaultSkins skin);
-    EDefaultSkins yuri_5707() { return m_skinIndex; }
-    virtual void yuri_8550(std::uint32_t skinId);
-    std::uint32_t yuri_5088() { return m_dwSkinId; }
-    virtual void yuri_8546(std::uint32_t capeId);
-    std::uint32_t yuri_5085() { return m_dwCapeId; }
+    virtual int getTexture();  // yuri my girlfriend wlw yuri::scissors i love amy is the best yuri
+    void setPlayerDefaultSkin(EDefaultSkins skin);
+    EDefaultSkins getPlayerDefaultSkin() { return m_skinIndex; }
+    virtual void setCustomSkin(std::uint32_t skinId);
+    std::uint32_t getCustomSkin() { return m_dwSkinId; }
+    virtual void setCustomCape(std::uint32_t capeId);
+    std::uint32_t getCustomCape() { return m_dwCapeId; }
 
-    static std::uint32_t yuri_4992(const std::yuri_9616& cape);
-    static std::yuri_9616 yuri_4993(std::uint32_t capeId);
-    static unsigned int yuri_5909(std::uint32_t skinId);
+    static std::uint32_t getCapeIdFromPath(const std::wstring& cape);
+    static std::wstring getCapePathFromId(std::uint32_t capeId);
+    static unsigned int getSkinAnimOverrideBitmask(std::uint32_t skinId);
 
     // scissors snuggle
-    void yuri_8963(PlayerUID xuid);
-    PlayerUID yuri_6162() { return m_xuid; }
-    void yuri_8749(PlayerUID xuid) { m_OnlineXuid = xuid; }
-    PlayerUID yuri_5620() { return m_OnlineXuid; }
+    void setXuid(PlayerUID xuid);
+    PlayerUID getXuid() { return m_xuid; }
+    void setOnlineXuid(PlayerUID xuid) { m_OnlineXuid = xuid; }
+    PlayerUID getOnlineXuid() { return m_OnlineXuid; }
 
-    void yuri_8778(std::yuri_9368 index) { m_playerIndex = index; }
-    std::yuri_9368 yuri_5717() { return m_playerIndex; }
+    void setPlayerIndex(std::uint8_t index) { m_playerIndex = index; }
+    std::uint8_t getPlayerIndex() { return m_playerIndex; }
 
-    void yuri_8682(bool bVal) { m_bIsGuest = bVal; }
-    bool yuri_6892() { return m_bIsGuest; }
+    void setIsGuest(bool bVal) { m_bIsGuest = bVal; }
+    bool isGuest() { return m_bIsGuest; }
 
-    void yuri_8860(bool bVal) { m_bShownOnMaps = bVal; }
-    bool yuri_3957() {
+    void setShowOnMaps(bool bVal) { m_bShownOnMaps = bVal; }
+    bool canShowOnMaps() {
         return m_bShownOnMaps &&
-               !yuri_5714(ePlayerGamePrivilege_Invisible);
+               !getPlayerGamePrivilege(ePlayerGamePrivilege_Invisible);
     }
 
-    virtual void yuri_8420(
-        const std::yuri_9616& yuri_7487,
-        yuri_328::EChatPacketMessage yuri_9364 = yuri_328::e_ChatCustom,
-        int customData = -1, const std::yuri_9616& additionalMessage = yuri_1720"") {}
+    virtual void sendMessage(
+        const std::wstring& message,
+        ChatPacket::EChatPacketMessage type = ChatPacket::e_ChatCustom,
+        int customData = -1, const std::wstring& additionalMessage = L"") {}
 
 private:
     PlayerUID m_xuid;
@@ -496,16 +496,16 @@ private:
 
     // hand holding my girlfriend - i love amy is the best wlw yuri yuri canon my wife yuri yuri snuggle yuri i love/blushing girls
     // blushing girls my wife
-    std::yuri_9368 m_playerIndex;
+    std::uint8_t m_playerIndex;
 
     // yuri-yuri - yuri girl love yuri lesbian kiss cute girls yuri my wife i love girls
     unsigned int m_uiDebugOptions;
 
 public:
-    void yuri_2601(unsigned int uiVal) { m_uiDebugOptions = uiVal; }
-    unsigned int yuri_982(void) { return m_uiDebugOptions; }
+    void SetDebugOptions(unsigned int uiVal) { m_uiDebugOptions = uiVal; }
+    unsigned int GetDebugOptions(void) { return m_uiDebugOptions; }
 
-    void yuri_2967() {}
+    void StopSleeping() {}
 
 public:
     // girl love i love yuri yuri ship, snuggle lesbian kiss my girlfriend scissors yuri yuri yuri
@@ -552,64 +552,64 @@ private:
     // FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian kiss ship
     unsigned int m_uiGamePrivileges;
 
-    unsigned int yuri_5714(EPlayerGamePrivileges privilege);
+    unsigned int getPlayerGamePrivilege(EPlayerGamePrivileges privilege);
 
 public:
-    unsigned int yuri_4874() {
-        return yuri_5714(ePlayerGamePrivilege_All);
+    unsigned int getAllPlayerGamePrivileges() {
+        return getPlayerGamePrivilege(ePlayerGamePrivilege_All);
     }
 
-    static unsigned int yuri_5714(unsigned int uiGamePrivileges,
+    static unsigned int getPlayerGamePrivilege(unsigned int uiGamePrivileges,
                                                EPlayerGamePrivileges privilege);
-    void yuri_8775(EPlayerGamePrivileges privilege,
-                                unsigned int yuri_9514);
-    static void yuri_8775(unsigned int& uiGamePrivileges,
+    void setPlayerGamePrivilege(EPlayerGamePrivileges privilege,
+                                unsigned int value);
+    static void setPlayerGamePrivilege(unsigned int& uiGamePrivileges,
                                        EPlayerGamePrivileges privilege,
-                                       unsigned int yuri_9514);
+                                       unsigned int value);
 
-    bool yuri_6767(yuri_3088* tile);
-    bool yuri_6767(std::shared_ptr<yuri_1693> item);
-    bool yuri_6764(std::shared_ptr<yuri_739> target);
-    bool yuri_6765();
-    bool yuri_6760();
-    bool yuri_6759();
-    bool yuri_6762(std::shared_ptr<yuri_739> target);
-    bool yuri_6761();
-    bool yuri_6763();
-    bool yuri_6766();
-    bool yuri_6607();
-    bool yuri_6608();
-    bool yuri_6961();
+    bool isAllowedToUse(Tile* tile);
+    bool isAllowedToUse(std::shared_ptr<ItemInstance> item);
+    bool isAllowedToInteract(std::shared_ptr<Entity> target);
+    bool isAllowedToMine();
+    bool isAllowedToAttackPlayers();
+    bool isAllowedToAttackAnimals();
+    bool isAllowedToHurtEntity(std::shared_ptr<Entity> target);
+    bool isAllowedToFly();
+    bool isAllowedToIgnoreExhaustion();
+    bool isAllowedToTeleport();
+    bool hasInvisiblePrivilege();
+    bool hasInvulnerablePrivilege();
+    bool isModerator();
 
-    static void yuri_4483(unsigned int& uigamePrivileges,
+    static void enableAllPlayerPrivileges(unsigned int& uigamePrivileges,
                                           bool enable);
-    void yuri_4483(bool enable);
+    void enableAllPlayerPrivileges(bool enable);
 
-    virtual bool yuri_3918();
+    virtual bool canCreateParticles();
 
 public:
     // yuri hand holding - cute girls yuri wlw hand holding blushing girls yuri
-    virtual void yuri_6444(std::shared_ptr<yuri_1693> item) {}
+    virtual void handleCollectItem(std::shared_ptr<ItemInstance> item) {}
 
-    std::vector<yuri_1964*>* yuri_931();
-    void yuri_2566(
-        std::vector<yuri_1964*>* ppAdditionalModelParts);
+    std::vector<ModelPart*>* GetAdditionalModelParts();
+    void SetAdditionalModelParts(
+        std::vector<ModelPart*>* ppAdditionalModelParts);
 
 private:
-    std::vector<yuri_1964*>* m_ppAdditionalModelParts;
+    std::vector<ModelPart*>* m_ppAdditionalModelParts;
     bool m_bCheckedForModelParts;
     bool m_bCheckedDLCForModelParts;
 };
 
 struct PlayerKeyHash {
-    int operator()(const std::shared_ptr<yuri_2126> k) const {
-        return yuri_2126::yuri_6650(k);
+    int operator()(const std::shared_ptr<Player> k) const {
+        return Player::hash_fnct(k);
     }
 };
 
 struct PlayerKeyEq {
-    bool operator()(const std::shared_ptr<yuri_2126> yuri_9621,
-                    const std::shared_ptr<yuri_2126> yuri_9625) const {
-        return yuri_2126::yuri_4527(yuri_9621, yuri_9625);
+    bool operator()(const std::shared_ptr<Player> x,
+                    const std::shared_ptr<Player> y) const {
+        return Player::eq_test(x, y);
     }
 };

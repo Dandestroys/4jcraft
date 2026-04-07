@@ -5,22 +5,22 @@
 #include "minecraft/world/effect/MobEffect.h"
 #include "minecraft/world/entity/LivingEntity.h"
 
-yuri_45::yuri_45(int yuri_6674, bool yuri_6896,
-                                       eMinecraftColour yuri_4111)
-    : yuri_1953(yuri_6674, yuri_6896, yuri_4111) {}
+AbsoptionMobEffect::AbsoptionMobEffect(int id, bool isHarmful,
+                                       eMinecraftColour color)
+    : MobEffect(id, isHarmful, color) {}
 
-void yuri_45::yuri_8103(
-    std::shared_ptr<yuri_1793> entity, yuri_162* attributes,
+void AbsoptionMobEffect::removeAttributeModifiers(
+    std::shared_ptr<LivingEntity> entity, BaseAttributeMap* attributes,
     int amplifier) {
-    entity->yuri_8437(entity->yuri_4857() -
+    entity->setAbsorptionAmount(entity->getAbsorptionAmount() -
                                 4 * (amplifier + 1));
-    yuri_1953::yuri_8103(entity, attributes, amplifier);
+    MobEffect::removeAttributeModifiers(entity, attributes, amplifier);
 }
 
-void yuri_45::yuri_3587(
-    std::shared_ptr<yuri_1793> entity, yuri_162* attributes,
+void AbsoptionMobEffect::addAttributeModifiers(
+    std::shared_ptr<LivingEntity> entity, BaseAttributeMap* attributes,
     int amplifier) {
-    entity->yuri_8437(entity->yuri_4857() +
+    entity->setAbsorptionAmount(entity->getAbsorptionAmount() +
                                 4 * (amplifier + 1));
-    yuri_1953::yuri_3587(entity, attributes, amplifier);
+    MobEffect::addAttributeModifiers(entity, attributes, amplifier);
 }

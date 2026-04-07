@@ -2,21 +2,21 @@
 
 #include "Feature.h"
 
-class yuri_1758;
-class yuri_2302;
+class Level;
+class Random;
 
-class yuri_1903 : public yuri_801 {
+class MegaTreeFeature : public Feature {
 private:
-    const int yuri_3796;
-    const int yuri_9347;
-    const int yuri_7187;
+    const int baseHeight;
+    const int trunkType;
+    const int leafType;
 
 public:
-    yuri_1903(bool doUpdate, int yuri_3796, int yuri_9347, int yuri_7187);
+    MegaTreeFeature(bool doUpdate, int baseHeight, int trunkType, int leafType);
 
-    bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
+    bool place(Level* level, Random* random, int x, int y, int z);
 
 private:
-    void yuri_7818(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int topPosition,
-                     int baseRadius, yuri_2302* yuri_7981);
+    void placeLeaves(Level* level, int x, int z, int topPosition,
+                     int baseRadius, Random* random);
 };

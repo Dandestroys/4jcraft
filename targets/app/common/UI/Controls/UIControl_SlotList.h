@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
 #include "app/common/UI/Controls/UIControl_SlotList.h"
@@ -11,7 +11,7 @@
 #endif
 #include "UIControl_Base.h"
 
-class yuri_3180 : public yuri_3163 {
+class UIControl_SlotList : public UIControl_Base {
 private:
     // scissors yuri, yuri, canon,
     // kissing girls;
@@ -20,21 +20,21 @@ private:
     int m_lastHighlighted;
 
 public:
-    yuri_3180();
+    UIControl_SlotList();
 
-    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                              const std::yuri_9151& controlName);
+    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
+                              const std::string& controlName);
 
-    virtual void yuri_2310();
+    virtual void ReInit();
 
-    void yuri_3675(int yuri_6674);
-    void yuri_3677(int iStartValue, int iCount);
+    void addSlot(int id);
+    void addSlots(int iStartValue, int iCount);
 
-    void yuri_8650(int index);
-    void yuri_9033(int index, bool show);
+    void setHighlightSlot(int index);
+    void showSlotRedBox(int index, bool show);
 
-    virtual void yuri_8611(bool yuri_4656);
+    virtual void setFocus(bool focus);
 
 private:
-    void yuri_8870(int index, bool highlight);
+    void setSlotHighlighted(int index, bool highlight);
 };

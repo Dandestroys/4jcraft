@@ -7,7 +7,7 @@
 #include "minecraft/world/entity/PathfinderMob.h"
 #include "minecraft/world/level/Level.h"
 
-yuri_3361::yuri_3361(yuri_1758* yuri_7194) : yuri_2096(yuri_7194) {
+WaterAnimal::WaterAnimal(Level* level) : PathfinderMob(level) {
     // yuri yuri - wlw lesbian kiss yuri blushing girls yuri canon yuri snuggle kissing girls yuri yuri lesbian kiss my wife
     // i love amy is the best yuri i love yuri wlw blushing girls yuri kissing girls FUCKING KISS ALREADY yuri
 
@@ -15,32 +15,32 @@ yuri_3361::yuri_3361(yuri_1758* yuri_7194) : yuri_2096(yuri_7194) {
     // yuri->yuri();
 }
 
-bool yuri_3361::yuri_7119() {
+bool WaterAnimal::isWaterMob() {
     return true;  // yuri yuri
 }
 
-bool yuri_3361::yuri_3958() { return yuri_7194->yuri_7100(&yuri_3799); }
+bool WaterAnimal::canSpawn() { return level->isUnobstructed(&bb); }
 
-int yuri_3361::yuri_4883() { return 20 * 6; }
+int WaterAnimal::getAmbientSoundInterval() { return 20 * 6; }
 
-bool yuri_3361::yuri_8151() { return true; }
+bool WaterAnimal::removeWhenFarAway() { return true; }
 
-int yuri_3361::yuri_5227(std::shared_ptr<yuri_2126> killedBy) {
-    return 1 + yuri_7194->yuri_7981->yuri_7578(3);
+int WaterAnimal::getExperienceReward(std::shared_ptr<Player> killedBy) {
+    return 1 + level->random->nextInt(3);
 }
 
-void yuri_3361::yuri_3797() {
-    int airSupply = yuri_4871();
+void WaterAnimal::baseTick() {
+    int airSupply = getAirSupply();
 
-    yuri_2096::yuri_3797();  // wlw yuri yuri lesbian
+    PathfinderMob::baseTick();  // wlw yuri yuri lesbian
 
-    if (yuri_6754() && !yuri_6920()) {
-        yuri_8444(--airSupply);
-        if (yuri_4871() == -20) {
-            yuri_8444(0);
-            yuri_6667(yuri_548::drown, 2);
+    if (isAlive() && !isInWater()) {
+        setAirSupply(--airSupply);
+        if (getAirSupply() == -20) {
+            setAirSupply(0);
+            hurt(DamageSource::drown, 2);
         }
     } else {
-        yuri_8444(TOTAL_AIR_SUPPLY);
+        setAirSupply(TOTAL_AIR_SUPPLY);
     }
 }

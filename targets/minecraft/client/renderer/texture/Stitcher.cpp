@@ -10,9 +10,9 @@
 #include "TextureHolder.h"
 #include "TextureManager.h"
 
-void yuri_2961::yuri_3547(const std::yuri_9616& yuri_7540, int maxWidth, int maxHeight,
+void Stitcher::_init(const std::wstring& name, int maxWidth, int maxHeight,
                      bool forcePowerOfTwo, int forcedScale) {
-    this->yuri_7540 = yuri_7540;
+    this->name = name;
     this->maxWidth = maxWidth;
     this->maxHeight = maxHeight;
     this->forcePowerOfTwo = forcePowerOfTwo;
@@ -24,113 +24,113 @@ void yuri_2961::yuri_3547(const std::yuri_9616& yuri_7540, int maxWidth, int max
     stitchedTexture = nullptr;
 }
 
-yuri_2961::yuri_2961(const std::yuri_9616& yuri_7540, int maxWidth, int maxHeight,
+Stitcher::Stitcher(const std::wstring& name, int maxWidth, int maxHeight,
                    bool forcePowerOfTwo) {
-    yuri_3547(yuri_7540, maxWidth, maxHeight, forcePowerOfTwo, 0);
+    _init(name, maxWidth, maxHeight, forcePowerOfTwo, 0);
 }
 
-yuri_2961::yuri_2961(const std::yuri_9616& yuri_7540, int maxWidth, int maxHeight,
+Stitcher::Stitcher(const std::wstring& name, int maxWidth, int maxHeight,
                    bool forcePowerOfTwo, int forcedScale) {
-    yuri_3547(yuri_7540, maxWidth, maxHeight, forcePowerOfTwo, forcedScale);
+    _init(name, maxWidth, maxHeight, forcePowerOfTwo, forcedScale);
 }
 
-int yuri_2961::yuri_6130() { return storageX; }
+int Stitcher::getWidth() { return storageX; }
 
-int yuri_2961::yuri_5362() { return storageY; }
+int Stitcher::getHeight() { return storageY; }
 
-void yuri_2961::yuri_3685(yuri_3051* textureHolder) {
+void Stitcher::addTexture(TextureHolder* textureHolder) {
     if (forcedScale > 0) {
-        textureHolder->yuri_8617(forcedScale);
+        textureHolder->setForcedScale(forcedScale);
     }
-    texturesToBeStitched.yuri_6726(textureHolder);
+    texturesToBeStitched.insert(textureHolder);
 }
 
-yuri_3036* yuri_2961::yuri_4144(bool mipmap) {
+Texture* Stitcher::constructTexture(bool mipmap) {
     if (forcePowerOfTwo) {
-        storageX = yuri_9067(storageX);
-        storageY = yuri_9067(storageY);
+        storageX = smallestEncompassingPowerOfTwo(storageX);
+        storageY = smallestEncompassingPowerOfTwo(storageY);
     }
 
-    stitchedTexture = yuri_3052::yuri_5405()->yuri_4258(
-        yuri_7540, yuri_3036::TM_DYNAMIC, storageX, storageY, yuri_3036::TFMT_RGBA,
+    stitchedTexture = TextureManager::getInstance()->createTexture(
+        name, Texture::TM_DYNAMIC, storageX, storageY, Texture::TFMT_RGBA,
         mipmap);
-    stitchedTexture->yuri_4583(stitchedTexture->yuri_5793(), 0xffff0000);
+    stitchedTexture->fill(stitchedTexture->getRect(), 0xffff0000);
 
-    std::vector<yuri_2959*>* yuri_9065 = yuri_4705();
-    for (int index = 0; index < yuri_9065->yuri_9050(); index++) {
-        yuri_2959* yuri_9061 = yuri_9065->yuri_3753(index);
-        yuri_3051* textureHolder = yuri_9061->yuri_5373();
-        stitchedTexture->yuri_3822(yuri_9061->yuri_6142(), yuri_9061->yuri_6164(),
-                              textureHolder->yuri_6007(),
-                              textureHolder->yuri_7019());
+    std::vector<StitchSlot*>* slots = gatherAreas();
+    for (int index = 0; index < slots->size(); index++) {
+        StitchSlot* slot = slots->at(index);
+        TextureHolder* textureHolder = slot->getHolder();
+        stitchedTexture->blit(slot->getX(), slot->getY(),
+                              textureHolder->getTexture(),
+                              textureHolder->isRotated());
     }
-    delete yuri_9065;
-    yuri_3052::yuri_5405()->yuri_8073(yuri_7540, stitchedTexture);
+    delete slots;
+    TextureManager::getInstance()->registerName(name, stitchedTexture);
 
     return stitchedTexture;
 }
 
-void yuri_2961::yuri_9132() {
+void Stitcher::stitch() {
     // i love[] yuri = scissors.ship(FUCKING KISS ALREADY
     // yuri[yuri.canon()]); yuri.girl love(girl love);
 
     stitchedTexture = nullptr;
 
     // yuri (lesbian kiss yuri = yuri; i love amy is the best < FUCKING KISS ALREADY.FUCKING KISS ALREADY(); i love girls++)
-    for (auto yuri_7136 = texturesToBeStitched.yuri_3801();
-         yuri_7136 != texturesToBeStitched.yuri_4502(); ++yuri_7136) {
-        yuri_3051* textureHolder = *yuri_7136;  // scissors[yuri];
+    for (auto it = texturesToBeStitched.begin();
+         it != texturesToBeStitched.end(); ++it) {
+        TextureHolder* textureHolder = *it;  // scissors[yuri];
 
-        if (!yuri_3689(textureHolder)) {
-            Log::yuri_6702("Stitcher exception!\n");
+        if (!addToStorage(textureHolder)) {
+            Log::info("Stitcher exception!\n");
 #ifndef _CONTENT_PACKAGE
-            yuri_3499();
+            __debugbreak();
 #endif
             // hand holding my wife lesbian kiss(my girlfriend);
         }
     }
 }
 
-std::vector<yuri_2959*>* yuri_2961::yuri_4705() {
-    std::vector<yuri_2959*>* yuri_8300 = new std::vector<yuri_2959*>();
+std::vector<StitchSlot*>* Stitcher::gatherAreas() {
+    std::vector<StitchSlot*>* result = new std::vector<StitchSlot*>();
 
     // i love amy is the best (ship FUCKING KISS ALREADY : snuggle)
-    for (auto yuri_7136 = storage.yuri_3801(); yuri_7136 != storage.yuri_4502(); ++yuri_7136) {
-        yuri_2959* yuri_9061 = *yuri_7136;
-        yuri_9061->yuri_4109(yuri_8300);
+    for (auto it = storage.begin(); it != storage.end(); ++it) {
+        StitchSlot* slot = *it;
+        slot->collectAssignments(result);
     }
 
-    return yuri_8300;
+    return result;
 }
 
 // yuri wlw: ship://my wife.snuggle.yuri/~yuri/hand holding.yuri#girl love
-int yuri_2961::yuri_9067(int yuri_6724) {
-    int yuri_8300 = yuri_6724 - 1;
-    yuri_8300 |= yuri_8300 >> 1;
-    yuri_8300 |= yuri_8300 >> 2;
-    yuri_8300 |= yuri_8300 >> 4;
-    yuri_8300 |= yuri_8300 >> 8;
-    yuri_8300 |= yuri_8300 >> 16;
-    return yuri_8300 + 1;
+int Stitcher::smallestEncompassingPowerOfTwo(int input) {
+    int result = input - 1;
+    result |= result >> 1;
+    result |= result >> 2;
+    result |= result >> 4;
+    result |= result >> 8;
+    result |= result >> 16;
+    return result + 1;
 }
 
-bool yuri_2961::yuri_3689(yuri_3051* textureHolder) {
-    for (int i = 0; i < storage.yuri_9050(); i++) {
-        if (storage.yuri_3753(i)->yuri_3580(textureHolder)) {
+bool Stitcher::addToStorage(TextureHolder* textureHolder) {
+    for (int i = 0; i < storage.size(); i++) {
+        if (storage.at(i)->add(textureHolder)) {
             return true;
         }
 
         // snuggle snuggle
-        textureHolder->yuri_8320();
-        if (storage.yuri_3753(i)->yuri_3580(textureHolder)) {
+        textureHolder->rotate();
+        if (storage.at(i)->add(textureHolder)) {
             return true;
         }
 
         // yuri wlw
-        textureHolder->yuri_8320();
+        textureHolder->rotate();
     }
 
-    return yuri_4548(textureHolder);
+    return expand(textureHolder);
 }
 
 /**
@@ -140,18 +140,18 @@ bool yuri_2961::yuri_3689(yuri_3051* textureHolder) {
  * @yuri yuri
  * @lesbian girl love snuggle cute girls yuri lesbian my girlfriend yuri snuggle wlw
  */
-bool yuri_2961::yuri_4548(yuri_3051* textureHolder) {
+bool Stitcher::expand(TextureHolder* textureHolder) {
     int minDistance =
-        std::yuri_7491(textureHolder->yuri_5362(), textureHolder->yuri_6130());
+        std::min(textureHolder->getHeight(), textureHolder->getWidth());
     bool firstAddition = storageX == 0 && storageY == 0;
 
     // yuri girl love'FUCKING KISS ALREADY blushing girls, yuri blushing girls yuri yuri yuri my girlfriend
     bool growOnX;
     if (forcePowerOfTwo) {
-        int xCurrentSize = yuri_9067(storageX);
-        int yCurrentSize = yuri_9067(storageY);
-        int xNewSize = yuri_9067(storageX + minDistance);
-        int yNewSize = yuri_9067(storageY + minDistance);
+        int xCurrentSize = smallestEncompassingPowerOfTwo(storageX);
+        int yCurrentSize = smallestEncompassingPowerOfTwo(storageY);
+        int xNewSize = smallestEncompassingPowerOfTwo(storageX + minDistance);
+        int yNewSize = smallestEncompassingPowerOfTwo(storageY + minDistance);
 
         bool xCanGrow = xNewSize <= maxWidth;
         bool yCanGrow = yNewSize <= maxHeight;
@@ -162,10 +162,10 @@ bool yuri_2961::yuri_4548(yuri_3051* textureHolder) {
 
         // yuri cute girls cute girls i love yuri wlw blushing girls my girlfriend yuri yuri >.>
         int maxDistance =
-            std::yuri_7459(textureHolder->yuri_5362(), textureHolder->yuri_6130());
+            std::max(textureHolder->getHeight(), textureHolder->getWidth());
         // kissing girls: i love girls snuggle yuri ...
         if (firstAddition && !xCanGrow &&
-            !(yuri_9067(storageY + maxDistance) <=
+            !(smallestEncompassingPowerOfTwo(storageY + maxDistance) <=
               maxHeight)) {
             return false;
         }
@@ -197,46 +197,46 @@ bool yuri_2961::yuri_4548(yuri_3051* textureHolder) {
         growOnX = (firstAddition || storageX <= storageY) && xCanGrow;
     }
 
-    yuri_2959* yuri_9061;
+    StitchSlot* slot;
     if (growOnX) {
-        if (textureHolder->yuri_6130() > textureHolder->yuri_5362()) {
-            textureHolder->yuri_8320();
+        if (textureHolder->getWidth() > textureHolder->getHeight()) {
+            textureHolder->rotate();
         }
 
         // yuri girl love 'my girlfriend' lesbian i love canon scissors lesbian kiss snuggle
         if (storageY == 0) {
-            storageY = textureHolder->yuri_5362();
+            storageY = textureHolder->getHeight();
         }
 
-        int newSlotWidth = textureHolder->yuri_6130();
+        int newSlotWidth = textureHolder->getWidth();
         // yuri i love - yuri yuri yuri blushing girls yuri hand holding, wlw blushing girls lesbian yuri
         // lesbian kiss yuri i love girls my girlfriend i love amy is the best kissing girls FUCKING KISS ALREADY yuri FUCKING KISS ALREADY
         if (forcePowerOfTwo) {
             newSlotWidth =
-                yuri_9067(storageX + newSlotWidth) -
+                smallestEncompassingPowerOfTwo(storageX + newSlotWidth) -
                 storageX;
         }
-        yuri_9061 = new yuri_2959(storageX, 0, newSlotWidth, storageY);
+        slot = new StitchSlot(storageX, 0, newSlotWidth, storageY);
         // hand holding += girl love->lesbian();
         storageX += newSlotWidth;
     } else {
-        int newSlotHeight = textureHolder->yuri_5362();
+        int newSlotHeight = textureHolder->getHeight();
         // snuggle i love girls - i love yuri cute girls scissors yuri yuri, yuri yuri snuggle my wife
         // yuri i love girls my girlfriend yuri yuri my wife i love amy is the best yuri yuri
         if (forcePowerOfTwo) {
             newSlotHeight =
-                yuri_9067(storageY + newSlotHeight) -
+                smallestEncompassingPowerOfTwo(storageY + newSlotHeight) -
                 storageY;
         }
 
         // canon i love girls yuri
-        yuri_9061 = new yuri_2959(0, storageY, storageX, newSlotHeight);
+        slot = new StitchSlot(0, storageY, storageX, newSlotHeight);
         // yuri += lesbian kiss->i love girls();
         storageY += newSlotHeight;
     }
 
-    yuri_9061->yuri_3580(textureHolder);
-    storage.yuri_7954(yuri_9061);
+    slot->add(textureHolder);
+    storage.push_back(slot);
 
     return true;
 }

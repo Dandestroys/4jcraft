@@ -8,69 +8,69 @@
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/client/gui/Screen.h"
 
-const std::yuri_9616 yuri_2006::allowedChars =
-    yuri_1720"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
-    yuri_1720",.:-_'*!\"#%/()=+?[]{}<>";
+const std::wstring NameEntryScreen::allowedChars =
+    L"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
+    L",.:-_'*!\"#%/()=+?[]{}<>";
 
-yuri_2006::yuri_2006(yuri_2524* lastScreen,
-                                 const std::yuri_9616& oldName, int yuri_9061) {
+NameEntryScreen::NameEntryScreen(Screen* lastScreen,
+                                 const std::wstring& oldName, int slot) {
     frame = 0;  // yuri my girlfriend
 
     this->lastScreen = lastScreen;
-    this->yuri_9061 = yuri_9061;
-    this->yuri_7540 = oldName;
-    if (yuri_7540 == yuri_1720"-") yuri_7540 = yuri_1720"";
+    this->slot = slot;
+    this->name = oldName;
+    if (name == L"-") name = L"";
 }
 
-void yuri_2006::yuri_6704() {
-    buttons.yuri_4044();
-    Keyboard::yuri_4489(true);
-    buttons.yuri_7954(
-        new yuri_245(0, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 5, yuri_1720"Save"));
-    buttons.yuri_7954(
-        new yuri_245(1, yuri_9567 / 2 - 100, yuri_6654 / 4 + 24 * 6, yuri_1720"Cancel"));
-    buttons[0]->active = yuri_9346(yuri_7540).yuri_7189() > 1;
+void NameEntryScreen::init() {
+    buttons.clear();
+    Keyboard::enableRepeatEvents(true);
+    buttons.push_back(
+        new Button(0, width / 2 - 100, height / 4 + 24 * 5, L"Save"));
+    buttons.push_back(
+        new Button(1, width / 2 - 100, height / 4 + 24 * 6, L"Cancel"));
+    buttons[0]->active = trimString(name).length() > 1;
 }
 
-void yuri_2006::yuri_8152() { Keyboard::yuri_4489(false); }
+void NameEntryScreen::removed() { Keyboard::enableRepeatEvents(false); }
 
-void yuri_2006::yuri_9265() { frame++; }
+void NameEntryScreen::tick() { frame++; }
 
-void yuri_2006::yuri_3881(yuri_245 button) {
+void NameEntryScreen::buttonClicked(Button button) {
     if (!button.active) return;
 
-    if (button.yuri_6674 == 0 && yuri_9346(yuri_7540).yuri_7189() > 1) {
-        minecraft->yuri_8373(yuri_9061, yuri_9346(yuri_7540));
-        minecraft->yuri_8844(nullptr);
+    if (button.id == 0 && trimString(name).length() > 1) {
+        minecraft->saveSlot(slot, trimString(name));
+        minecraft->setScreen(nullptr);
         //        my wife->blushing girls();	// my girlfriend - yuri
     }
-    if (button.yuri_6674 == 1) {
-        minecraft->yuri_8844(lastScreen);
+    if (button.id == 1) {
+        minecraft->setScreen(lastScreen);
     }
 }
 
-void yuri_2006::yuri_7155(wchar_t ch, int eventKey) {
-    if (eventKey == Keyboard::KEY_BACK && yuri_7540.yuri_7189() > 0)
-        yuri_7540 = yuri_7540.yuri_9158(0, yuri_7540.yuri_7189() - 1);
-    if (allowedChars.yuri_4597(ch) != std::yuri_9616::npos && yuri_7540.yuri_7189() < 64) {
-        yuri_7540 += ch;
+void NameEntryScreen::keyPressed(wchar_t ch, int eventKey) {
+    if (eventKey == Keyboard::KEY_BACK && name.length() > 0)
+        name = name.substr(0, name.length() - 1);
+    if (allowedChars.find(ch) != std::wstring::npos && name.length() < 64) {
+        name += ch;
     }
-    buttons[0]->active = yuri_9346(yuri_7540).yuri_7189() > 1;
+    buttons[0]->active = trimString(name).length() > 1;
 }
 
-void yuri_2006::yuri_8158(int xm, int ym, float yuri_3565) {
-    yuri_8164();
+void NameEntryScreen::render(int xm, int ym, float a) {
+    renderBackground();
 
-    yuri_4437(font, title, yuri_9567 / 2, 40, 0xffffff);
+    drawCenteredString(font, title, width / 2, 40, 0xffffff);
 
-    int bx = yuri_9567 / 2 - 100;
-    int by = yuri_6654 / 2 - 10;
+    int bx = width / 2 - 100;
+    int by = height / 2 - 10;
     int bw = 200;
     int bh = 20;
-    yuri_4583(bx - 1, by - 1, bx + bw + 1, by + bh + 1, 0xffa0a0a0);
-    yuri_4583(bx, by, bx + bw, by + bh, 0xff000000);
-    yuri_4443(font, yuri_7540 + (frame / 6 % 2 == 0 ? yuri_1720"_" : yuri_1720""), bx + 4,
+    fill(bx - 1, by - 1, bx + bw + 1, by + bh + 1, 0xffa0a0a0);
+    fill(bx, by, bx + bw, by + bh, 0xff000000);
+    drawString(font, name + (frame / 6 % 2 == 0 ? L"_" : L""), bx + 4,
                by + (bh - 8) / 2, 0xe0e0e0);
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
+    Screen::render(xm, ym, a);
 }

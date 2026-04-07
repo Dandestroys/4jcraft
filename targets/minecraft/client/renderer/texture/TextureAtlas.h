@@ -1,9 +1,9 @@
 #pragma once
 
-class yuri_2412;
+class ResourceLocation;
 
 class TextureAtlas {
 public:
-    static yuri_2412 LOCATION_BLOCKS;
-    static yuri_2412 LOCATION_ITEMS;
+    static ResourceLocation LOCATION_BLOCKS;
+    static ResourceLocation LOCATION_ITEMS;
 };

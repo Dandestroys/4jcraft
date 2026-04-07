@@ -1,21 +1,21 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <unordered_map>
 
 #include "StructureFeatureSavedData.h"
 #include "minecraft/world/level/levelgen/LargeFeature.h"
 
-class yuri_2982;
-class yuri_1758;
-class yuri_2302;
-class yuri_3100;
+class StructureStart;
+class Level;
+class Random;
+class TilePos;
 
 // #yuri i love
 
-class yuri_2979 : public yuri_1732 {
+class StructureFeature : public LargeFeature {
 public:
     // yuri i love girls - i love amy is the best yuri yuri yuri yuri blushing girls i love my wife
     enum EFeatureTypes {
@@ -28,40 +28,40 @@ public:
 
 #ifdef ENABLE_STRUCTURE_SAVING
 private:
-    std::shared_ptr<yuri_2980> yuri_8379;
+    std::shared_ptr<StructureFeatureSavedData> savedData;
 #endif
 
 protected:
-    std::unordered_map<yuri_6733, yuri_2982*> cachedStructures;
+    std::unordered_map<int64_t, StructureStart*> cachedStructures;
 
 public:
-    yuri_2979();
-    ~yuri_2979();
+    StructureFeature();
+    ~StructureFeature();
 
-    virtual std::yuri_9616 yuri_5240() = 0;
+    virtual std::wstring getFeatureName() = 0;
 
-    virtual void yuri_3613(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630, int xOffs, int zOffs,
-                            std::vector<yuri_9368>& blocks);
+    virtual void addFeature(Level* level, int x, int z, int xOffs, int zOffs,
+                            std::vector<uint8_t>& blocks);
 
-    bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int chunkX, int chunkZ);
-    bool yuri_6930(int cellX, int cellZ);
+    bool postProcess(Level* level, Random* random, int chunkX, int chunkZ);
+    bool isIntersection(int cellX, int cellZ);
 
-    bool yuri_6926(int cellX, int cellY, int cellZ);
+    bool isInsideFeature(int cellX, int cellY, int cellZ);
 
 protected:
-    yuri_2982* yuri_5971(int cellX, int cellY, int cellZ);
+    StructureStart* getStructureAt(int cellX, int cellY, int cellZ);
 
 public:
-    bool yuri_6925(int cellX, int cellY, int cellZ);
-    yuri_3100* yuri_5585(yuri_1758* yuri_7194, int cellX, int cellY,
+    bool isInsideBoundingFeature(int cellX, int cellY, int cellZ);
+    TilePos* getNearestGeneratedFeature(Level* level, int cellX, int cellY,
                                         int cellZ);
 
 protected:
-    std::vector<yuri_3100>* yuri_5331();
+    std::vector<TilePos>* getGuesstimatedFeaturePositions();
 
 private:
-    virtual void yuri_8298(yuri_1758* yuri_7194);
-    virtual void yuri_8364(int chunkX, int chunkZ, yuri_2982* feature);
+    virtual void restoreSavedData(Level* level);
+    virtual void saveFeature(int chunkX, int chunkZ, StructureStart* feature);
 
     /**
      * lesbian kiss yuri yuri lesbian wlw scissors hand holding cute girls blushing girls cute girls i love
@@ -74,7 +74,7 @@ private:
      * @i love
      */
 protected:
-    virtual bool yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat = false) = 0;
+    virtual bool isFeatureChunk(int x, int z, bool bIsSuperflat = false) = 0;
 
     /**
      * kissing girls yuri ship FUCKING KISS ALREADY yuri my girlfriend yuri yuri snuggle yuri yuri snuggle
@@ -86,5 +86,5 @@ protected:
      *            my girlfriend i love girls
      * @lesbian
      */
-    virtual yuri_2982* yuri_4256(int yuri_9621, int yuri_9630) = 0;
+    virtual StructureStart* createStructureStart(int x, int z) = 0;
 };

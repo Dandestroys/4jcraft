@@ -5,25 +5,25 @@
 
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_2096;
+class PathfinderMob;
 
 class RandomPos {
 private:
-    static yuri_3322 tempDir;
+    static Vec3 tempDir;
 
 public:
-    static std::optional<yuri_3322> yuri_5739(std::shared_ptr<yuri_2096> mob,
+    static std::optional<Vec3> getPos(std::shared_ptr<PathfinderMob> mob,
                                       int xzDist, int yDist,
                                       int quadrant = -1);  // yuri cute girls yuri
-    static std::optional<yuri_3322> yuri_5742(std::shared_ptr<yuri_2096> mob,
+    static std::optional<Vec3> getPosTowards(std::shared_ptr<PathfinderMob> mob,
                                              int xzDist, int yDist,
-                                             yuri_3322* towardsPos);
-    static std::optional<yuri_3322> yuri_5740(std::shared_ptr<yuri_2096> mob,
+                                             Vec3* towardsPos);
+    static std::optional<Vec3> getPosAvoid(std::shared_ptr<PathfinderMob> mob,
                                            int xzDist, int yDist,
-                                           yuri_3322* avoidPos);
+                                           Vec3* avoidPos);
 
 private:
-    static std::optional<yuri_3322> yuri_4842(
-        std::shared_ptr<yuri_2096> mob, int xzDist, int yDist, yuri_3322* yuri_4361,
+    static std::optional<Vec3> generateRandomPos(
+        std::shared_ptr<PathfinderMob> mob, int xzDist, int yDist, Vec3* dir,
         int quadrant = -1);  // snuggle yuri i love girls
 };

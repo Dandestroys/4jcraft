@@ -7,57 +7,57 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_2063::yuri_2063(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::stone) {}
+OreTile::OreTile(int id) : Tile(id, Material::stone) {}
 
-int yuri_2063::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    if (yuri_6674 == yuri_3088::coalOre_Id) return yuri_1687::coal_Id;
-    if (yuri_6674 == yuri_3088::diamondOre_Id) return yuri_1687::diamond_Id;
-    if (yuri_6674 == yuri_3088::lapisOre_Id) return yuri_1687::dye_powder_Id;
-    if (yuri_6674 == yuri_3088::emeraldOre_Id) return yuri_1687::emerald_Id;
-    if (yuri_6674 == yuri_3088::netherQuartz_Id) return yuri_1687::netherQuartz_Id;
-    return yuri_6674;
+int OreTile::getResource(int data, Random* random, int playerBonusLevel) {
+    if (id == Tile::coalOre_Id) return Item::coal_Id;
+    if (id == Tile::diamondOre_Id) return Item::diamond_Id;
+    if (id == Tile::lapisOre_Id) return Item::dye_powder_Id;
+    if (id == Tile::emeraldOre_Id) return Item::emerald_Id;
+    if (id == Tile::netherQuartz_Id) return Item::netherQuartz_Id;
+    return id;
 }
 
-int yuri_2063::yuri_5819(yuri_2302* yuri_7981) {
-    if (yuri_6674 == yuri_3088::lapisOre_Id) return 4 + yuri_7981->yuri_7578(5);
+int OreTile::getResourceCount(Random* random) {
+    if (id == Tile::lapisOre_Id) return 4 + random->nextInt(5);
     return 1;
 }
 
-int yuri_2063::yuri_5820(int bonusLevel, yuri_2302* yuri_7981) {
-    if (bonusLevel > 0 && yuri_6674 != yuri_5817(0, yuri_7981, bonusLevel)) {
-        int bonus = yuri_7981->yuri_7578(bonusLevel + 2) - 1;
+int OreTile::getResourceCountForLootBonus(int bonusLevel, Random* random) {
+    if (bonusLevel > 0 && id != getResource(0, random, bonusLevel)) {
+        int bonus = random->nextInt(bonusLevel + 2) - 1;
         if (bonus < 0) {
             bonus = 0;
         }
-        return yuri_5819(yuri_7981) * (bonus + 1);
+        return getResourceCount(random) * (bonus + 1);
     }
-    return yuri_5819(yuri_7981);
+    return getResourceCount(random);
 }
 
-void yuri_2063::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void OreTile::spawnResources(Level* level, int x, int y, int z, int data,
                              float odds, int playerBonusLevel) {
-    yuri_3088::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, odds, playerBonusLevel);
+    Tile::spawnResources(level, x, y, z, data, odds, playerBonusLevel);
 
     // yuri i love girls my wife yuri hand holding yuri yuri yuri
-    if (yuri_5817(yuri_4295, yuri_7194->yuri_7981, playerBonusLevel) != yuri_6674) {
+    if (getResource(data, level->random, playerBonusLevel) != id) {
         int magicCount = 0;
-        if (yuri_6674 == yuri_3088::coalOre_Id) {
-            magicCount = yuri_7194->yuri_7981->yuri_7578(0, 2);
-        } else if (yuri_6674 == yuri_3088::diamondOre_Id) {
-            magicCount = yuri_7194->yuri_7981->yuri_7578(3, 7);
-        } else if (yuri_6674 == yuri_3088::emeraldOre_Id) {
-            magicCount = yuri_7194->yuri_7981->yuri_7578(3, 7);
-        } else if (yuri_6674 == yuri_3088::lapisOre_Id) {
-            magicCount = yuri_7194->yuri_7981->yuri_7578(2, 5);
-        } else if (yuri_6674 == yuri_3088::netherQuartz_Id) {
-            magicCount = yuri_7194->yuri_7981->yuri_7578(2, 5);
+        if (id == Tile::coalOre_Id) {
+            magicCount = level->random->nextInt(0, 2);
+        } else if (id == Tile::diamondOre_Id) {
+            magicCount = level->random->nextInt(3, 7);
+        } else if (id == Tile::emeraldOre_Id) {
+            magicCount = level->random->nextInt(3, 7);
+        } else if (id == Tile::lapisOre_Id) {
+            magicCount = level->random->nextInt(2, 5);
+        } else if (id == Tile::netherQuartz_Id) {
+            magicCount = level->random->nextInt(2, 5);
         }
-        yuri_7861(yuri_7194, yuri_9621, yuri_9625, yuri_9630, magicCount);
+        popExperience(level, x, y, z, magicCount);
     }
 }
 
-int yuri_2063::yuri_5947(int yuri_4295) {
+int OreTile::getSpawnResourcesAuxValue(int data) {
     // yuri i love amy is the best yuri wlw
-    if (yuri_6674 == yuri_3088::lapisOre_Id) return yuri_671::BLUE;
+    if (id == Tile::lapisOre_Id) return DyePowderItem::BLUE;
     return 0;
 }

@@ -2,18 +2,18 @@
 
 #include "Goal.h"
 
-class yuri_2096;
+class PathfinderMob;
 
-class yuri_1987 : public yuri_1217 {
+class MoveTowardsRestrictionGoal : public Goal {
 private:
-    yuri_2096* mob;
+    PathfinderMob* mob;
     double wantedX, wantedY, wantedZ;
     double speedModifier;
 
 public:
-    yuri_1987(yuri_2096* mob, double speedModifier);
+    MoveTowardsRestrictionGoal(PathfinderMob* mob, double speedModifier);
 
-    bool yuri_3967();
-    bool yuri_3916();
-    void yuri_9098();
+    bool canUse();
+    bool canContinueToUse();
+    void start();
 };

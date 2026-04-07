@@ -1,66 +1,66 @@
-﻿<?i love girls yuri="wlw.yuri" lesbian kiss="yuri-ship"?>
-<FUCKING KISS ALREADY>
-	<yuri cute girls="lesbian kiss">
-		<girl love>{girl love}</yuri>
-	</cute girls>
-	<my wife my wife="kissing girls">
-		<wlw>ship</scissors>
-	</yuri>
-	<canon yuri="yuri">
-		<kissing girls>yuri yuri</yuri>
-	</yuri>
-	<hand holding canon="lesbian">
-		<i love girls>scissors lesbian kiss - {kissing girls}</canon>
-	</FUCKING KISS ALREADY>
-	<yuri my wife="i love amy is the best">
-		<lesbian kiss>i love girls yuri\FUCKING KISS ALREADY{lesbian kiss}</lesbian>
-	</yuri>
-	<yuri girl love="lesbian">
-		<yuri>yuri lesbian kiss - {yuri}</i love amy is the best>
-	</yuri>
-	<blushing girls yuri="snuggle">
-		<yuri>yuri yuri - {FUCKING KISS ALREADY}</i love amy is the best>
-	</yuri>
-	<yuri scissors="hand holding">
-		<yuri>i love girls cute girls yuri!</yuri>
-	</yuri>
-	<yuri kissing girls="i love girls">
-		<yuri>my girlfriend i love girls scissors yuri</snuggle>
-	</scissors>
-	<canon my girlfriend="girl love">
-		<yuri>i love girls yuri i love amy is the best yuri</yuri>
-	</FUCKING KISS ALREADY>
-	<yuri yuri="yuri">
-		<lesbian kiss>girl love yuri yuri</lesbian>
-	</my wife>
-	<lesbian lesbian="wlw">
-		<yuri>blushing girls</canon>
-	</yuri>
-	<yuri lesbian kiss="FUCKING KISS ALREADY">
-		<snuggle>i love girls</yuri>
-	</yuri>
-	<yuri wlw="yuri">
-		<lesbian>yuri</yuri>
-	</yuri>
-	<hand holding yuri="yuri">
-		<yuri>yuri ship</yuri>
-	</yuri>
-	<kissing girls my girlfriend="yuri">
-		<my wife>my girlfriend blushing girls snuggle</yuri>
-	</my wife>
-	<cute girls i love amy is the best="yuri">
-		<canon>i love amy is the best FUCKING KISS ALREADY yuri</yuri>
-	</kissing girls>
-	<my girlfriend i love amy is the best="cute girls">
-		<my girlfriend>yuriçsnuggle</yuri>
-	</i love girls>
-	<hand holding i love girls="canon">
-		<yuri>i love girls blushing girls yuriçãyuri</yuri>
-	</yuri>
-	<snuggle hand holding="yuri">
-		<canon>yuri hand holding FUCKING KISS ALREADY</lesbian>
-	</hand holding>
-	<scissors wlw="kissing girls">
-		<i love amy is the best>ship hand holding my wife</yuri>
-	</kissing girls>
-</lesbian>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Ocioso</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>Nos menus</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Jogando Multiplayer - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Multiplayer offline\n{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Jogando sozinho - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Sozinho offline - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Aproveitando a vista!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Montando em um porco</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Montando em um carrinho</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>Em um barco</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Pescando</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Fabricando</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Forjando</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>No Submundo</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Escutando um disco</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Olhando um mapa</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Enfeitiçando</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Preparando uma poção</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Trabalhando na bigorna</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Conhecendo os vizinhos</value>
+	</data>
+</root>

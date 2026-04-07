@@ -1,26 +1,26 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "Tile.h"
 
 class ChunkRebuildData;
-class yuri_1886;
+class Material;
 
-class yuri_1236 : public yuri_3088 {
+class HalfTransparentTile : public Tile {
     friend class ChunkRebuildData;
 
 private:
     bool allowSame;
-    std::yuri_9616 texture;
+    std::wstring texture;
 
 protected:
-    yuri_1236(int yuri_6674, const std::yuri_9616& yuri_9251, yuri_1886* material,
+    HalfTransparentTile(int id, const std::wstring& tex, Material* material,
                         bool allowSame);
 
 public:
-    virtual bool yuri_7058(bool isServerLevel = false);
-    virtual bool yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    virtual bool isSolidRender(bool isServerLevel = false);
+    virtual bool shouldRenderFace(LevelSource* level, int x, int y, int z,
                                   int face);
-    virtual bool yuri_3828();
-    virtual void yuri_8072(IconRegister* iconRegister);
+    virtual bool blocksLight();
+    virtual void registerIcons(IconRegister* iconRegister);
 };

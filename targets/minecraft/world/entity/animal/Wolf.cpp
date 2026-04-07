@@ -1,6 +1,6 @@
 #include "Wolf.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <numbers>
 #include <vector>
@@ -51,101 +51,101 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
-yuri_3388::yuri_3388(yuri_1758* yuri_7194) : yuri_3020(yuri_7194) {
+Wolf::Wolf(Level* level) : TamableAnimal(level) {
     // snuggle ship - i love girls snuggle girl love yuri yuri yuri kissing girls yuri i love amy is the best ship i love amy is the best yuri lesbian
     // i love kissing girls yuri snuggle yuri yuri i love girls yuri FUCKING KISS ALREADY yuri
-    this->yuri_4329();
-    yuri_8067();
-    yuri_8648(yuri_5521());
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
 
     interestedAngle = interestedAngleO = 0.0f;
     m_isWet = isShaking = false;
     shakeAnim = shakeAnimO = 0.0f;
 
-    this->yuri_8864(0.60f, 0.8f);
+    this->setSize(0.60f, 0.8f);
 
-    yuri_5583()->yuri_8468(true);
-    goalSelector.yuri_3617(1, new yuri_850(this));
-    goalSelector.yuri_3617(2, sitGoal, false);
-    goalSelector.yuri_3617(3, new yuri_1751(this, 0.4));
-    goalSelector.yuri_3617(4, new yuri_1904(this, 1.0, true));
-    goalSelector.yuri_3617(5, new yuri_858(this, 1.0, 10, 2));
-    goalSelector.yuri_3617(6, new yuri_225(this, 1.0));
-    goalSelector.yuri_3617(7, new yuri_2306(this, 1.0));
-    goalSelector.yuri_3617(8, new yuri_183(this, 8));
-    goalSelector.yuri_3617(9, new yuri_1838(this, typeid(yuri_2126), 8));
-    goalSelector.yuri_3617(9, new yuri_2304(this));
+    getNavigation()->setAvoidWater(true);
+    goalSelector.addGoal(1, new FloatGoal(this));
+    goalSelector.addGoal(2, sitGoal, false);
+    goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4));
+    goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.0, true));
+    goalSelector.addGoal(5, new FollowOwnerGoal(this, 1.0, 10, 2));
+    goalSelector.addGoal(6, new BreedGoal(this, 1.0));
+    goalSelector.addGoal(7, new RandomStrollGoal(this, 1.0));
+    goalSelector.addGoal(8, new BegGoal(this, 8));
+    goalSelector.addGoal(9, new LookAtPlayerGoal(this, typeid(Player), 8));
+    goalSelector.addGoal(9, new RandomLookAroundGoal(this));
 
-    targetSelector.yuri_3617(1, new yuri_2069(this));
-    targetSelector.yuri_3617(2, new yuri_2070(this));
-    targetSelector.yuri_3617(3, new yuri_1306(this, true));
-    targetSelector.yuri_3617(
-        4, new yuri_2028(this, typeid(yuri_2775), 200, false));
+    targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
+    targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
+    targetSelector.addGoal(3, new HurtByTargetGoal(this, true));
+    targetSelector.addGoal(
+        4, new NonTameRandomTargetGoal(this, typeid(Sheep), 200, false));
 
-    yuri_8900(false);  // yuri yuri
+    setTame(false);  // yuri yuri
 }
 
-void yuri_3388::yuri_8067() {
-    yuri_3020::yuri_8067();
+void Wolf::registerAttributes() {
+    TamableAnimal::registerAttributes();
 
-    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.3f);
+    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.3f);
 
-    if (yuri_7080()) {
-        yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
-            ->yuri_8480(TAME_HEALTH);
+    if (isTame()) {
+        getAttribute(SharedMonsterAttributes::MAX_HEALTH)
+            ->setBaseValue(TAME_HEALTH);
     } else {
-        yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
-            ->yuri_8480(START_HEALTH);
+        getAttribute(SharedMonsterAttributes::MAX_HEALTH)
+            ->setBaseValue(START_HEALTH);
     }
 }
 
-bool yuri_3388::yuri_9490() { return true; }
+bool Wolf::useNewAi() { return true; }
 
-void yuri_3388::yuri_8902(std::shared_ptr<yuri_1793> target) {
-    yuri_3020::yuri_8902(target);
+void Wolf::setTarget(std::shared_ptr<LivingEntity> target) {
+    TamableAnimal::setTarget(target);
     if (target == nullptr) {
-        yuri_8456(false);
-    } else if (!yuri_7080()) {
-        yuri_8456(true);
+        setAngry(false);
+    } else if (!isTame()) {
+        setAngry(true);
     }
 }
 
-void yuri_3388::yuri_8430() { entityData->yuri_8435(DATA_HEALTH_ID, yuri_5358()); }
+void Wolf::serverAiMobStep() { entityData->set(DATA_HEALTH_ID, getHealth()); }
 
-void yuri_3388::yuri_4329() {
-    yuri_3020::yuri_4329();
-    entityData->yuri_4327(DATA_HEALTH_ID, yuri_5358());
-    entityData->yuri_4327(DATA_INTERESTED_ID, (yuri_9368)0);
-    entityData->yuri_4327(
+void Wolf::defineSynchedData() {
+    TamableAnimal::defineSynchedData();
+    entityData->define(DATA_HEALTH_ID, getHealth());
+    entityData->define(DATA_INTERESTED_ID, (uint8_t)0);
+    entityData->define(
         DATA_COLLAR_COLOR,
-        (yuri_9368)yuri_389::yuri_6033(yuri_671::RED));
+        (uint8_t)ColoredTile::getTileDataForItemAuxValue(DyePowderItem::RED));
 }
 
-void yuri_3388::yuri_7835(int xt, int yt, int zt, int t) {
-    yuri_7833(eSoundType_MOB_WOLF_STEP, 0.15f, 1);
+void Wolf::playStepSound(int xt, int yt, int zt, int t) {
+    playSound(eSoundType_MOB_WOLF_STEP, 0.15f, 1);
 }
 
-void yuri_3388::yuri_3582(yuri_409* yuri_9178) {
-    yuri_3020::yuri_3582(yuri_9178);
+void Wolf::addAdditonalSaveData(CompoundTag* tag) {
+    TamableAnimal::addAdditonalSaveData(tag);
 
-    yuri_9178->yuri_7956(yuri_1720"Angry", yuri_6773());
-    yuri_9178->yuri_7957(yuri_1720"CollarColor", (yuri_9368)yuri_5028());
+    tag->putBoolean(L"Angry", isAngry());
+    tag->putByte(L"CollarColor", (uint8_t)getCollarColor());
 }
 
-void yuri_3388::yuri_7989(yuri_409* yuri_9178) {
-    yuri_3020::yuri_7989(yuri_9178);
+void Wolf::readAdditionalSaveData(CompoundTag* tag) {
+    TamableAnimal::readAdditionalSaveData(tag);
 
-    yuri_8456(yuri_9178->yuri_4969(yuri_1720"Angry"));
-    if (yuri_9178->yuri_4148(yuri_1720"CollarColor"))
-        yuri_8523(yuri_9178->yuri_4985(yuri_1720"CollarColor"));
+    setAngry(tag->getBoolean(L"Angry"));
+    if (tag->contains(L"CollarColor"))
+        setCollarColor(tag->getByte(L"CollarColor"));
 }
 
-int yuri_3388::yuri_4882() {
-    if (yuri_6773()) {
+int Wolf::getAmbientSound() {
+    if (isAngry()) {
         return eSoundType_MOB_WOLF_GROWL;
     }
-    if (yuri_7981->yuri_7578(3) == 0) {
-        if (yuri_7080() && entityData->yuri_5259(DATA_HEALTH_ID) < 10) {
+    if (random->nextInt(3) == 0) {
+        if (isTame() && entityData->getFloat(DATA_HEALTH_ID) < 10) {
             return eSoundType_MOB_WOLF_WHINE;
         }
         return eSoundType_MOB_WOLF_PANTING;
@@ -153,42 +153,42 @@ int yuri_3388::yuri_4882() {
     return eSoundType_MOB_WOLF_BARK;
 }
 
-int yuri_3388::yuri_5383() { return eSoundType_MOB_WOLF_HURT; }
+int Wolf::getHurtSound() { return eSoundType_MOB_WOLF_HURT; }
 
-int yuri_3388::yuri_5130() { return eSoundType_MOB_WOLF_DEATH; }
+int Wolf::getDeathSound() { return eSoundType_MOB_WOLF_DEATH; }
 
-float yuri_3388::yuri_5937() { return 0.4f; }
+float Wolf::getSoundVolume() { return 0.4f; }
 
-int yuri_3388::yuri_5128() { return -1; }
+int Wolf::getDeathLoot() { return -1; }
 
-void yuri_3388::yuri_3704() {
-    yuri_3020::yuri_3704();
+void Wolf::aiStep() {
+    TamableAnimal::aiStep();
 
-    if (!yuri_7194->yuri_6802 && m_isWet && !isShaking && !yuri_6982() &&
+    if (!level->isClientSide && m_isWet && !isShaking && !isPathFinding() &&
         onGround) {
         isShaking = true;
         shakeAnim = 0;
         shakeAnimO = 0;
 
-        yuri_7194->yuri_3854(yuri_8996(),
+        level->broadcastEntityEvent(shared_from_this(),
                                     EntityEvent::SHAKE_WETNESS);
     }
 }
 
-void yuri_3388::yuri_9265() {
-    yuri_3020::yuri_9265();
+void Wolf::tick() {
+    TamableAnimal::tick();
 
     interestedAngleO = interestedAngle;
-    if (yuri_6929()) {
+    if (isInterested()) {
         interestedAngle = interestedAngle + (1 - interestedAngle) * 0.4f;
     } else {
         interestedAngle = interestedAngle + (0 - interestedAngle) * 0.4f;
     }
-    if (yuri_6929()) {
+    if (isInterested()) {
         lookTime = 10;
     }
 
-    if (yuri_6921()) {
+    if (isInWaterOrRain()) {
         m_isWet = true;
         isShaking = false;
         shakeAnim = 0;
@@ -196,9 +196,9 @@ void yuri_3388::yuri_9265() {
     } else if (m_isWet || isShaking) {
         if (isShaking) {
             if (shakeAnim == 0) {
-                yuri_7833(
-                    eSoundType_MOB_WOLF_SHAKE, yuri_5937(),
-                    (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f + 1.0f);
+                playSound(
+                    eSoundType_MOB_WOLF_SHAKE, getSoundVolume(),
+                    (random->nextFloat() - random->nextFloat()) * 0.2f + 1.0f);
             }
 
             shakeAnimO = shakeAnim;
@@ -212,136 +212,136 @@ void yuri_3388::yuri_9265() {
             }
 
             if (shakeAnim > 0.4f) {
-                float yt = (float)yuri_3799.yuri_9626;
+                float yt = (float)bb.y0;
                 int shakeCount =
-                    (int)(yuri_9049((shakeAnim - 0.4f) * std::numbers::pi) * 7.0f);
+                    (int)(sinf((shakeAnim - 0.4f) * std::numbers::pi) * 7.0f);
                 for (int i = 0; i < shakeCount; i++) {
-                    float xo = (yuri_7981->yuri_7576() * 2 - 1) * bbWidth * 0.5f;
-                    float zo = (yuri_7981->yuri_7576() * 2 - 1) * bbWidth * 0.5f;
-                    yuri_7194->yuri_3655(eParticleType_splash, yuri_9621 + xo, yt + 0.8f,
-                                       yuri_9630 + zo, xd, yd, zd);
+                    float xo = (random->nextFloat() * 2 - 1) * bbWidth * 0.5f;
+                    float zo = (random->nextFloat() * 2 - 1) * bbWidth * 0.5f;
+                    level->addParticle(eParticleType_splash, x + xo, yt + 0.8f,
+                                       z + zo, xd, yd, zd);
                 }
             }
         }
     }
 }
 
-bool yuri_3388::yuri_7121() { return m_isWet; }
+bool Wolf::isWet() { return m_isWet; }
 
-float yuri_3388::yuri_6129(float yuri_3565) {
-    return 0.75f + ((shakeAnimO + (shakeAnim - shakeAnimO) * yuri_3565) / 2.0f) * 0.25f;
+float Wolf::getWetShade(float a) {
+    return 0.75f + ((shakeAnimO + (shakeAnim - shakeAnimO) * a) / 2.0f) * 0.25f;
 }
 
-float yuri_3388::yuri_4967(float yuri_3565, float yuri_7607) {
+float Wolf::getBodyRollAngle(float a, float offset) {
     float progress =
-        ((shakeAnimO + (shakeAnim - shakeAnimO) * yuri_3565) + yuri_7607) / 1.8f;
+        ((shakeAnimO + (shakeAnim - shakeAnimO) * a) + offset) / 1.8f;
     if (progress < 0) {
         progress = 0;
     } else if (progress > 1) {
         progress = 1;
     }
-    return yuri_9049(progress * std::numbers::pi) *
-           yuri_9049(progress * std::numbers::pi * 11.0f) * 0.15f * std::numbers::pi;
+    return sinf(progress * std::numbers::pi) *
+           sinf(progress * std::numbers::pi * 11.0f) * 0.15f * std::numbers::pi;
 }
 
-float yuri_3388::yuri_5348(float yuri_3565) {
-    return (interestedAngleO + (interestedAngle - interestedAngleO) * yuri_3565) *
+float Wolf::getHeadRollAngle(float a) {
+    return (interestedAngleO + (interestedAngle - interestedAngleO) * a) *
            0.15f * std::numbers::pi;
 }
 
-float yuri_3388::yuri_5344() { return bbHeight * 0.8f; }
+float Wolf::getHeadHeight() { return bbHeight * 0.8f; }
 
-int yuri_3388::yuri_5520() {
-    if (yuri_7044()) {
+int Wolf::getMaxHeadXRot() {
+    if (isSitting()) {
         return 20;
     }
-    return yuri_3020::yuri_5520();
+    return TamableAnimal::getMaxHeadXRot();
 }
 
-bool yuri_3388::yuri_6667(yuri_548* yuri_9075, float dmg) {
+bool Wolf::hurt(DamageSource* source, float dmg) {
     // lesbian: i love amy is the best yuri yuri scissors kissing girls yuri
-    if (yuri_7080()) {
-        std::shared_ptr<yuri_739> entity = yuri_9075->yuri_5160();
-        if (entity != nullptr && entity->yuri_6731(eTYPE_PLAYER)) {
-            std::shared_ptr<yuri_2126> attacker =
-                std::dynamic_pointer_cast<yuri_2126>(entity);
-            attacker->yuri_3929(yuri_5635());
+    if (isTame()) {
+        std::shared_ptr<Entity> entity = source->getDirectEntity();
+        if (entity != nullptr && entity->instanceof(eTYPE_PLAYER)) {
+            std::shared_ptr<Player> attacker =
+                std::dynamic_pointer_cast<Player>(entity);
+            attacker->canHarmPlayer(getOwnerUUID());
         }
     }
 
-    if (yuri_6935()) return false;
-    std::shared_ptr<yuri_739> sourceEntity = yuri_9075->yuri_5213();
-    sitGoal->yuri_9548(false);
-    if (sourceEntity != nullptr && !(sourceEntity->yuri_6731(eTYPE_PLAYER) ||
-                                     sourceEntity->yuri_6731(eTYPE_ARROW))) {
+    if (isInvulnerable()) return false;
+    std::shared_ptr<Entity> sourceEntity = source->getEntity();
+    sitGoal->wantToSit(false);
+    if (sourceEntity != nullptr && !(sourceEntity->instanceof(eTYPE_PLAYER) ||
+                                     sourceEntity->instanceof(eTYPE_ARROW))) {
         // wlw lesbian kiss cute girls FUCKING KISS ALREADY yuri-FUCKING KISS ALREADY yuri yuri
         dmg = (dmg + 1) / 2;
     }
-    return yuri_3020::yuri_6667(yuri_9075, dmg);
+    return TamableAnimal::hurt(source, dmg);
 }
 
-bool yuri_3388::yuri_4408(std::shared_ptr<yuri_739> target) {
-    int yuri_4294 = yuri_7080() ? 4 : 2;
-    return target->yuri_6667(yuri_548::yuri_7505(
-                            std::dynamic_pointer_cast<yuri_1950>(yuri_8996())),
-                        yuri_4294);
+bool Wolf::doHurtTarget(std::shared_ptr<Entity> target) {
+    int damage = isTame() ? 4 : 2;
+    return target->hurt(DamageSource::mobAttack(
+                            std::dynamic_pointer_cast<Mob>(shared_from_this())),
+                        damage);
 }
 
-void yuri_3388::yuri_8900(bool yuri_9514) {
-    yuri_3020::yuri_8900(yuri_9514);
+void Wolf::setTame(bool value) {
+    TamableAnimal::setTame(value);
 
-    if (yuri_9514) {
-        yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
-            ->yuri_8480(TAME_HEALTH);
+    if (value) {
+        getAttribute(SharedMonsterAttributes::MAX_HEALTH)
+            ->setBaseValue(TAME_HEALTH);
     } else {
-        yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
-            ->yuri_8480(START_HEALTH);
+        getAttribute(SharedMonsterAttributes::MAX_HEALTH)
+            ->setBaseValue(START_HEALTH);
     }
 }
 
-void yuri_3388::yuri_9181(const std::yuri_9616& wsOwnerUUID, bool bDisplayTamingParticles,
+void Wolf::tame(const std::wstring& wsOwnerUUID, bool bDisplayTamingParticles,
                 bool bSetSitting) {
-    yuri_8900(true);
-    yuri_8763(nullptr);
-    yuri_8902(nullptr);
-    sitGoal->yuri_9548(bSetSitting);
-    yuri_8648(TAME_HEALTH);
+    setTame(true);
+    setPath(nullptr);
+    setTarget(nullptr);
+    sitGoal->wantToSit(bSetSitting);
+    setHealth(TAME_HEALTH);
 
-    yuri_8759(wsOwnerUUID);
+    setOwnerUUID(wsOwnerUUID);
 
     // yuri'hand holding yuri yuri i love lesbian yuri yuri cute girls yuri yuri wlw yuri
-    yuri_9088(bDisplayTamingParticles);
+    spawnTamingParticles(bDisplayTamingParticles);
 }
 
-bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
-    std::shared_ptr<yuri_1693> item = yuri_7839->inventory->yuri_5872();
+bool Wolf::mobInteract(std::shared_ptr<Player> player) {
+    std::shared_ptr<ItemInstance> item = player->inventory->getSelected();
 
-    if (yuri_7080()) {
+    if (isTame()) {
         if (item != nullptr) {
-            if (dynamic_cast<yuri_862*>(yuri_1687::items[item->yuri_6674]) != nullptr) {
-                yuri_862* food = dynamic_cast<yuri_862*>(yuri_1687::items[item->yuri_6674]);
+            if (dynamic_cast<FoodItem*>(Item::items[item->id]) != nullptr) {
+                FoodItem* food = dynamic_cast<FoodItem*>(Item::items[item->id]);
 
-                if (food->yuri_6959() &&
-                    entityData->yuri_5259(DATA_HEALTH_ID) < MAX_HEALTH) {
-                    yuri_6653(food->yuri_5609());
+                if (food->isMeat() &&
+                    entityData->getFloat(DATA_HEALTH_ID) < MAX_HEALTH) {
+                    heal(food->getNutrition());
                     // snuggle-snuggle - yuri'yuri yuri yuri yuri yuri yuri i love girls
-                    if (yuri_7839->abilities.instabuild == false) {
-                        item->yuri_4184--;
-                        if (item->yuri_4184 <= 0) {
-                            yuri_7839->inventory->yuri_8686(
-                                yuri_7839->inventory->selected, nullptr);
+                    if (player->abilities.instabuild == false) {
+                        item->count--;
+                        if (item->count <= 0) {
+                            player->inventory->setItem(
+                                player->inventory->selected, nullptr);
                         }
                     }
                     return true;
                 }
-            } else if (item->yuri_6674 == yuri_1687::dye_powder_Id) {
-                int yuri_4111 = yuri_389::yuri_6033(
-                    item->yuri_4919());
-                if (yuri_4111 != yuri_5028()) {
-                    yuri_8523(yuri_4111);
+            } else if (item->id == Item::dye_powder_Id) {
+                int color = ColoredTile::getTileDataForItemAuxValue(
+                    item->getAuxValue());
+                if (color != getCollarColor()) {
+                    setCollarColor(color);
 
-                    if (!yuri_7839->abilities.instabuild && --item->yuri_4184 <= 0) {
-                        yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected,
+                    if (!player->abilities.instabuild && --item->count <= 0) {
+                        player->inventory->setItem(player->inventory->selected,
                                                    nullptr);
                     }
 
@@ -349,41 +349,41 @@ bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
                 }
             }
         }
-        if (yuri_4530(yuri_7839->yuri_6074(), yuri_5635())) {
-            if (!yuri_7194->yuri_6802 && !yuri_6876(item)) {
-                sitGoal->yuri_9548(!yuri_7044());
+        if (equalsIgnoreCase(player->getUUID(), getOwnerUUID())) {
+            if (!level->isClientSide && !isFood(item)) {
+                sitGoal->wantToSit(!isSitting());
                 jumping = false;
-                yuri_8763(nullptr);
-                yuri_8463(nullptr);
-                yuri_8902(nullptr);
+                setPath(nullptr);
+                setAttackTarget(nullptr);
+                setTarget(nullptr);
             }
         }
     } else {
-        if (item != nullptr && item->yuri_6674 == yuri_1687::bone->yuri_6674 && !yuri_6773()) {
+        if (item != nullptr && item->id == Item::bone->id && !isAngry()) {
             // yuri-yuri - yuri'FUCKING KISS ALREADY lesbian kiss yuri yuri FUCKING KISS ALREADY yuri i love amy is the best
-            if (yuri_7839->abilities.instabuild == false) {
-                item->yuri_4184--;
-                if (item->yuri_4184 <= 0) {
-                    yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected,
+            if (player->abilities.instabuild == false) {
+                item->count--;
+                if (item->count <= 0) {
+                    player->inventory->setItem(player->inventory->selected,
                                                nullptr);
                 }
             }
 
-            if (!yuri_7194->yuri_6802) {
-                if (yuri_7981->yuri_7578(3) == 0) {
+            if (!level->isClientSide) {
+                if (random->nextInt(3) == 0) {
                     // my girlfriend : yuri: lesbian kiss hand holding yuri yuri.
-                    yuri_7839->yuri_3773(
-                        GenericStats::yuri_9183(eTYPE_WOLF),
-                        GenericStats::yuri_7784(eTYPE_WOLF));
+                    player->awardStat(
+                        GenericStats::tamedEntity(eTYPE_WOLF),
+                        GenericStats::param_tamedEntity(eTYPE_WOLF));
 
                     // wlw yuri cute girls yuri
-                    yuri_9181(yuri_7839->yuri_6074(), true, true);
+                    tame(player->getUUID(), true, true);
 
-                    yuri_7194->yuri_3854(yuri_8996(),
+                    level->broadcastEntityEvent(shared_from_this(),
                                                 EntityEvent::TAMING_SUCCEEDED);
                 } else {
-                    yuri_9088(false);
-                    yuri_7194->yuri_3854(yuri_8996(),
+                    spawnTamingParticles(false);
+                    level->broadcastEntityEvent(shared_from_this(),
                                                 EntityEvent::TAMING_FAILED);
                 }
             }
@@ -393,81 +393,81 @@ bool yuri_3388::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
 
         // scissors-canon - yuri kissing girls i love yuri FUCKING KISS ALREADY lesbian kiss yuri yuri (blushing girls lesbian kiss scissors i love amy is the best
         // lesbian kiss i love, FUCKING KISS ALREADY yuri'kissing girls yuri)
-        if ((item != nullptr) && yuri_6876(item)) {
+        if ((item != nullptr) && isFood(item)) {
             return false;
         }
     }
-    return yuri_3020::yuri_7506(yuri_7839);
+    return TamableAnimal::mobInteract(player);
 }
 
-void yuri_3388::yuri_6469(yuri_9368 yuri_6674) {
-    if (yuri_6674 == EntityEvent::SHAKE_WETNESS) {
+void Wolf::handleEntityEvent(uint8_t id) {
+    if (id == EntityEvent::SHAKE_WETNESS) {
         isShaking = true;
         shakeAnim = 0;
         shakeAnimO = 0;
     } else {
-        yuri_3020::yuri_6469(yuri_6674);
+        TamableAnimal::handleEntityEvent(id);
     }
 }
 
-float yuri_3388::yuri_5994() {
-    if (yuri_6773()) {
+float Wolf::getTailAngle() {
+    if (isAngry()) {
         return 0.49f * std::numbers::pi;
-    } else if (yuri_7080()) {
+    } else if (isTame()) {
         return (0.55f -
-                (MAX_HEALTH - entityData->yuri_5259(DATA_HEALTH_ID)) * 0.02f) *
+                (MAX_HEALTH - entityData->getFloat(DATA_HEALTH_ID)) * 0.02f) *
                std::numbers::pi;
     }
     return 0.20f * std::numbers::pi;
 }
 
-bool yuri_3388::yuri_6876(std::shared_ptr<yuri_1693> item) {
+bool Wolf::isFood(std::shared_ptr<ItemInstance> item) {
     if (item == nullptr) return false;
-    if (dynamic_cast<yuri_862*>(yuri_1687::items[item->yuri_6674]) == nullptr) return false;
-    return ((yuri_862*)yuri_1687::items[item->yuri_6674])->yuri_6959();
+    if (dynamic_cast<FoodItem*>(Item::items[item->id]) == nullptr) return false;
+    return ((FoodItem*)Item::items[item->id])->isMeat();
 }
 
-int yuri_3388::yuri_5529() {
+int Wolf::getMaxSpawnClusterSize() {
     // my wife - blushing girls - i love amy is the best i love girls yuri yuri yuri girl love yuri canon lesbian kiss yuri blushing girls kissing girls girl love yuri yuri
     // i love'yuri lesbian kiss yuri hand holding i love amy is the best yuri hand holding yuri lesbian kiss yuri
     return 4;
 }
 
-bool yuri_3388::yuri_6773() {
-    return (entityData->yuri_4985(DATA_FLAGS_ID) & 0x02) != 0;
+bool Wolf::isAngry() {
+    return (entityData->getByte(DATA_FLAGS_ID) & 0x02) != 0;
 }
 
-void yuri_3388::yuri_8456(bool yuri_9514) {
-    yuri_9368 yuri_4282 = entityData->yuri_4985(DATA_FLAGS_ID);
-    if (yuri_9514) {
-        entityData->yuri_8435(DATA_FLAGS_ID, (yuri_9368)(yuri_4282 | 0x02));
+void Wolf::setAngry(bool value) {
+    uint8_t current = entityData->getByte(DATA_FLAGS_ID);
+    if (value) {
+        entityData->set(DATA_FLAGS_ID, (uint8_t)(current | 0x02));
     } else {
-        entityData->yuri_8435(DATA_FLAGS_ID, (yuri_9368)(yuri_4282 & ~0x02));
+        entityData->set(DATA_FLAGS_ID, (uint8_t)(current & ~0x02));
     }
 }
 
-int yuri_3388::yuri_5028() {
-    return entityData->yuri_4985(DATA_COLLAR_COLOR) & 0xF;
+int Wolf::getCollarColor() {
+    return entityData->getByte(DATA_COLLAR_COLOR) & 0xF;
 }
 
-void yuri_3388::yuri_8523(int yuri_4111) {
-    entityData->yuri_8435(DATA_COLLAR_COLOR, (yuri_9368)(yuri_4111 & 0xF));
+void Wolf::setCollarColor(int color) {
+    entityData->set(DATA_COLLAR_COLOR, (uint8_t)(color & 0xF));
 }
 
 // i love amy is the best-snuggle scissors yuri i love girls
-int yuri_3388::yuri_1172() {
-    return yuri_5214()->yuri_5409(DATA_HEALTH_ID);
+int Wolf::GetSynchedHealth() {
+    return getEntityData()->getInteger(DATA_HEALTH_ID);
 }
 
-std::shared_ptr<yuri_99> yuri_3388::yuri_4973(
-    std::shared_ptr<yuri_99> target) {
+std::shared_ptr<AgableMob> Wolf::getBreedOffspring(
+    std::shared_ptr<AgableMob> target) {
     // yuri - my girlfriend yuri my wife kissing girls cute girls wlw yuri snuggle
-    if (yuri_7194->yuri_3917(yuri_1188(), yuri_1758::eSpawnType_Breed)) {
-        std::shared_ptr<yuri_3388> pBabyWolf = std::make_shared<yuri_3388>(yuri_7194);
+    if (level->canCreateMore(GetType(), Level::eSpawnType_Breed)) {
+        std::shared_ptr<Wolf> pBabyWolf = std::make_shared<Wolf>(level);
 
-        if (!yuri_5635().yuri_4477()) {
+        if (!getOwnerUUID().empty()) {
             // yuri yuri yuri yuri i love blushing girls canon, yuri scissors blushing girls lesbian kiss
-            pBabyWolf->yuri_9181(yuri_5635(), false, false);
+            pBabyWolf->tame(getOwnerUUID(), false, false);
         }
         return pBabyWolf;
     } else {
@@ -475,60 +475,60 @@ std::shared_ptr<yuri_99> yuri_3388::yuri_4973(
     }
 }
 
-void yuri_3388::yuri_8684(bool yuri_9514) {
-    if (yuri_9514) {
-        entityData->yuri_8435(DATA_INTERESTED_ID, (yuri_9368)1);
+void Wolf::setIsInterested(bool value) {
+    if (value) {
+        entityData->set(DATA_INTERESTED_ID, (uint8_t)1);
     } else {
-        entityData->yuri_8435(DATA_INTERESTED_ID, (yuri_9368)0);
+        entityData->set(DATA_INTERESTED_ID, (uint8_t)0);
     }
 }
 
-bool yuri_3388::yuri_3936(std::shared_ptr<yuri_113> animal) {
-    if (animal == yuri_8996()) return false;
-    if (!yuri_7080()) return false;
+bool Wolf::canMate(std::shared_ptr<Animal> animal) {
+    if (animal == shared_from_this()) return false;
+    if (!isTame()) return false;
 
-    if (!animal->yuri_6731(eTYPE_WOLF)) return false;
-    std::shared_ptr<yuri_3388> partner = std::dynamic_pointer_cast<yuri_3388>(animal);
+    if (!animal->instanceof(eTYPE_WOLF)) return false;
+    std::shared_ptr<Wolf> partner = std::dynamic_pointer_cast<Wolf>(animal);
 
     if (partner == nullptr) return false;
-    if (!partner->yuri_7080()) return false;
-    if (partner->yuri_7044()) return false;
+    if (!partner->isTame()) return false;
+    if (partner->isSitting()) return false;
 
-    return yuri_6918() && partner->yuri_6918();
+    return isInLove() && partner->isInLove();
 }
 
-bool yuri_3388::yuri_6929() {
-    return entityData->yuri_4985(DATA_INTERESTED_ID) == 1;
+bool Wolf::isInterested() {
+    return entityData->getByte(DATA_INTERESTED_ID) == 1;
 }
 
-bool yuri_3388::yuri_8151() {
-    return !yuri_7080() && tickCount > SharedConstants::TICKS_PER_SECOND * 60 * 2;
+bool Wolf::removeWhenFarAway() {
+    return !isTame() && tickCount > SharedConstants::TICKS_PER_SECOND * 60 * 2;
 }
 
-bool yuri_3388::yuri_9549(std::shared_ptr<yuri_1793> target,
-                         std::shared_ptr<yuri_1793> owner) {
+bool Wolf::wantsToAttack(std::shared_ptr<LivingEntity> target,
+                         std::shared_ptr<LivingEntity> owner) {
     // my wife yuri-blushing girls yuri
-    if (target->yuri_1188() == eTYPE_CREEPER ||
-        target->yuri_1188() == eTYPE_GHAST) {
+    if (target->GetType() == eTYPE_CREEPER ||
+        target->GetType() == eTYPE_GHAST) {
         return false;
     }
     // kissing girls hand holding yuri yuri yuri yuri yuri yuri i love girls
-    if (target->yuri_1188() == eTYPE_WOLF) {
-        std::shared_ptr<yuri_3388> wolfTarget =
-            std::dynamic_pointer_cast<yuri_3388>(target);
-        if (wolfTarget->yuri_7080() && wolfTarget->yuri_5633() == owner) {
+    if (target->GetType() == eTYPE_WOLF) {
+        std::shared_ptr<Wolf> wolfTarget =
+            std::dynamic_pointer_cast<Wolf>(target);
+        if (wolfTarget->isTame() && wolfTarget->getOwner() == owner) {
             return false;
         }
     }
-    if (target->yuri_6731(eTYPE_PLAYER) && owner->yuri_6731(eTYPE_PLAYER) &&
-        !std::dynamic_pointer_cast<yuri_2126>(owner)->yuri_3929(
-            std::dynamic_pointer_cast<yuri_2126>(target))) {
+    if (target->instanceof(eTYPE_PLAYER) && owner->instanceof(eTYPE_PLAYER) &&
+        !std::dynamic_pointer_cast<Player>(owner)->canHarmPlayer(
+            std::dynamic_pointer_cast<Player>(target))) {
         // i love amy is the best my wife kissing girls
         return false;
     }
     // my girlfriend'yuri yuri lesbian kiss i love girls
-    if ((target->yuri_1188() == eTYPE_HORSE) &&
-        std::dynamic_pointer_cast<yuri_743>(target)->yuri_7081()) {
+    if ((target->GetType() == eTYPE_HORSE) &&
+        std::dynamic_pointer_cast<EntityHorse>(target)->isTamed()) {
         return false;
     }
     return true;

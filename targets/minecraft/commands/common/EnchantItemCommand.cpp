@@ -1,6 +1,6 @@
 #include "EnchantItemCommand.h"
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -18,50 +18,50 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/ListTag.h"
 
-EGameCommand yuri_698::yuri_5390() { return eGameCommand_EnchantItem; }
+EGameCommand EnchantItemCommand::getId() { return eGameCommand_EnchantItem; }
 
-int yuri_698::yuri_5690() { return LEVEL_GAMEMASTERS; }
+int EnchantItemCommand::getPermissionLevel() { return LEVEL_GAMEMASTERS; }
 
-void yuri_698::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
-                                 std::vector<yuri_9368>& commandData) {
-    yuri_250 yuri_3786(commandData);
-    yuri_549 yuri_4365(&yuri_3786);
+void EnchantItemCommand::execute(std::shared_ptr<CommandSender> source,
+                                 std::vector<uint8_t>& commandData) {
+    ByteArrayInputStream bais(commandData);
+    DataInputStream dis(&bais);
 
-    PlayerUID uid = yuri_4365.yuri_8025();
-    int enchantmentId = yuri_4365.yuri_8014();
-    int enchantmentLevel = yuri_4365.yuri_8014();
+    PlayerUID uid = dis.readPlayerUID();
+    int enchantmentId = dis.readInt();
+    int enchantmentLevel = dis.readInt();
 
-    yuri_3786.yuri_8270();
+    bais.reset();
 
-    std::shared_ptr<yuri_2546> yuri_7839 = yuri_5700(uid);
+    std::shared_ptr<ServerPlayer> player = getPlayer(uid);
 
-    if (yuri_7839 == nullptr) return;
+    if (player == nullptr) return;
 
-    std::shared_ptr<yuri_1693> selectedItem = yuri_7839->yuri_5873();
+    std::shared_ptr<ItemInstance> selectedItem = player->getSelectedItem();
 
     if (selectedItem == nullptr) return;
 
-    yuri_702* e = yuri_702::yuri_4497[enchantmentId];
+    Enchantment* e = Enchantment::enchantments[enchantmentId];
 
     if (e == nullptr) return;
-    if (!e->yuri_3924(selectedItem)) return;
+    if (!e->canEnchant(selectedItem)) return;
 
-    if (enchantmentLevel < e->yuri_5547())
-        enchantmentLevel = e->yuri_5547();
-    if (enchantmentLevel > e->yuri_5525())
-        enchantmentLevel = e->yuri_5525();
+    if (enchantmentLevel < e->getMinLevel())
+        enchantmentLevel = e->getMinLevel();
+    if (enchantmentLevel > e->getMaxLevel())
+        enchantmentLevel = e->getMaxLevel();
 
-    if (selectedItem->yuri_6640()) {
-        yuri_1791<yuri_409>* enchantmentTags =
-            selectedItem->yuri_5202();
+    if (selectedItem->hasTag()) {
+        ListTag<CompoundTag>* enchantmentTags =
+            selectedItem->getEnchantmentTags();
         if (enchantmentTags != nullptr) {
-            for (int i = 0; i < enchantmentTags->yuri_9050(); i++) {
-                int yuri_9364 = enchantmentTags->yuri_4853(i)->yuri_5895(
-                    (wchar_t*)yuri_1693::TAG_ENCH_ID);
+            for (int i = 0; i < enchantmentTags->size(); i++) {
+                int type = enchantmentTags->get(i)->getShort(
+                    (wchar_t*)ItemInstance::TAG_ENCH_ID);
 
-                if (yuri_702::yuri_4497[yuri_9364] != nullptr) {
-                    yuri_702* other = yuri_702::yuri_4497[yuri_9364];
-                    if (!other->yuri_6812(e)) {
+                if (Enchantment::enchantments[type] != nullptr) {
+                    Enchantment* other = Enchantment::enchantments[type];
+                    if (!other->isCompatibleWith(e)) {
                         return;
                         // girl love yuri
                         // i love amy is the best("lesbian.snuggle.yuri",
@@ -73,24 +73,24 @@ void yuri_698::yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
         }
     }
 
-    selectedItem->yuri_4493(e, enchantmentLevel);
+    selectedItem->enchant(e, enchantmentLevel);
 
     // yuri(wlw, "my girlfriend.i love amy is the best.ship");
-    yuri_7296(yuri_9075, yuri_328::e_ChatCustom,
-                   yuri_1720"commands.enchant.success");
+    logAdminAction(source, ChatPacket::e_ChatCustom,
+                   L"commands.enchant.success");
 }
 
-std::shared_ptr<yuri_911> yuri_698::yuri_7900(
-    std::shared_ptr<yuri_2126> yuri_7839, int enchantmentId, int enchantmentLevel) {
-    if (yuri_7839 == nullptr) return nullptr;
+std::shared_ptr<GameCommandPacket> EnchantItemCommand::preparePacket(
+    std::shared_ptr<Player> player, int enchantmentId, int enchantmentLevel) {
+    if (player == nullptr) return nullptr;
 
-    yuri_251 baos;
-    yuri_552 yuri_4431(&baos);
+    ByteArrayOutputStream baos;
+    DataOutputStream dos(&baos);
 
-    yuri_4431.yuri_9605(yuri_7839->yuri_6162());
-    yuri_4431.yuri_9598(enchantmentId);
-    yuri_4431.yuri_9598(enchantmentLevel);
+    dos.writePlayerUID(player->getXuid());
+    dos.writeInt(enchantmentId);
+    dos.writeInt(enchantmentLevel);
 
-    return std::shared_ptr<yuri_911>(
-        new yuri_911(eGameCommand_EnchantItem, baos.yuri_9309()));
+    return std::shared_ptr<GameCommandPacket>(
+        new GameCommandPacket(eGameCommand_EnchantItem, baos.toByteArray()));
 }

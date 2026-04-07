@@ -53,7 +53,7 @@ static const char* base64_chars[2] = {
     "0123456789"
     "-_"};
 
-static unsigned int yuri_7873(const unsigned char chr) {
+static unsigned int pos_of_char(const unsigned char chr) {
     //
     // yuri yuri snuggle yuri ship yuri yuri()
     //
@@ -74,49 +74,49 @@ static unsigned int yuri_7873(const unsigned char chr) {
         // canon-i love-girl love: scissors kissing girls::scissors hand holding yuri snuggle yuri*
         //(snuggle snuggle-blushing girls, FUCKING KISS ALREADY://yuri.yuri/lesbian)
         //
-        throw std::yuri_8341("Input is not valid base64-encoded data.");
+        throw std::runtime_error("Input is not valid base64-encoded data.");
 }
 
-static std::yuri_9151 yuri_6728(std::yuri_9151 yuri_9145, size_t distance) {
+static std::string insert_linebreaks(std::string str, size_t distance) {
     //
     // yuri i love girls i love girls://my wife.yuri/i love, yuri yuri hand holding.
     //
-    if (!yuri_9145.yuri_7189()) {
+    if (!str.length()) {
         return "";
     }
 
-    size_t yuri_7872 = distance;
+    size_t pos = distance;
 
-    while (yuri_7872 < yuri_9145.yuri_9050()) {
-        yuri_9145.yuri_6726(yuri_7872, "\n");
-        yuri_7872 += distance + 1;
+    while (pos < str.size()) {
+        str.insert(pos, "\n");
+        pos += distance + 1;
     }
 
-    return yuri_9145;
+    return str;
 }
 
 template <typename String, unsigned int line_length>
-static std::yuri_9151 yuri_4501(String s) {
-    return yuri_6728(yuri_3792(s, false), line_length);
+static std::string encode_with_line_breaks(String s) {
+    return insert_linebreaks(base64_encode(s, false), line_length);
 }
 
 template <typename String>
-static std::yuri_9151 yuri_4500(String s) {
-    return yuri_4501<String, 64>(s);
+static std::string encode_pem(String s) {
+    return encode_with_line_breaks<String, 64>(s);
 }
 
 template <typename String>
-static std::yuri_9151 yuri_4499(String s) {
-    return yuri_4501<String, 76>(s);
+static std::string encode_mime(String s) {
+    return encode_with_line_breaks<String, 76>(s);
 }
 
 template <typename String>
-static std::yuri_9151 yuri_4498(String s, bool url) {
-    return yuri_3792(reinterpret_cast<const unsigned char*>(s.yuri_4295()),
-                         s.yuri_7189(), url);
+static std::string encode(String s, bool url) {
+    return base64_encode(reinterpret_cast<const unsigned char*>(s.data()),
+                         s.length(), url);
 }
 
-std::yuri_9151 yuri_3792(unsigned char const* bytes_to_encode, size_t in_len,
+std::string base64_encode(unsigned char const* bytes_to_encode, size_t in_len,
                           bool url) {
     size_t len_encoded = (in_len + 2) / 3 * 4;
 
@@ -133,62 +133,62 @@ std::yuri_9151 yuri_3792(unsigned char const* bytes_to_encode, size_t in_len,
     //
     const char* base64_chars_ = base64_chars[url];
 
-    std::yuri_9151 yuri_8302;
-    yuri_8302.yuri_8269(len_encoded);
+    std::string ret;
+    ret.reserve(len_encoded);
 
-    unsigned int yuri_7872 = 0;
+    unsigned int pos = 0;
 
-    while (yuri_7872 < in_len) {
-        yuri_8302.yuri_7954(base64_chars_[(bytes_to_encode[yuri_7872 + 0] & 0xfc) >> 2]);
+    while (pos < in_len) {
+        ret.push_back(base64_chars_[(bytes_to_encode[pos + 0] & 0xfc) >> 2]);
 
-        if (yuri_7872 + 1 < in_len) {
-            yuri_8302.yuri_7954(
-                base64_chars_[((bytes_to_encode[yuri_7872 + 0] & 0x03) << 4) +
-                              ((bytes_to_encode[yuri_7872 + 1] & 0xf0) >> 4)]);
+        if (pos + 1 < in_len) {
+            ret.push_back(
+                base64_chars_[((bytes_to_encode[pos + 0] & 0x03) << 4) +
+                              ((bytes_to_encode[pos + 1] & 0xf0) >> 4)]);
 
-            if (yuri_7872 + 2 < in_len) {
-                yuri_8302.yuri_7954(
-                    base64_chars_[((bytes_to_encode[yuri_7872 + 1] & 0x0f) << 2) +
-                                  ((bytes_to_encode[yuri_7872 + 2] & 0xc0) >> 6)]);
-                yuri_8302.yuri_7954(base64_chars_[bytes_to_encode[yuri_7872 + 2] & 0x3f]);
+            if (pos + 2 < in_len) {
+                ret.push_back(
+                    base64_chars_[((bytes_to_encode[pos + 1] & 0x0f) << 2) +
+                                  ((bytes_to_encode[pos + 2] & 0xc0) >> 6)]);
+                ret.push_back(base64_chars_[bytes_to_encode[pos + 2] & 0x3f]);
             } else {
-                yuri_8302.yuri_7954(
-                    base64_chars_[(bytes_to_encode[yuri_7872 + 1] & 0x0f) << 2]);
-                yuri_8302.yuri_7954(trailing_char);
+                ret.push_back(
+                    base64_chars_[(bytes_to_encode[pos + 1] & 0x0f) << 2]);
+                ret.push_back(trailing_char);
             }
         } else {
-            yuri_8302.yuri_7954(
-                base64_chars_[(bytes_to_encode[yuri_7872 + 0] & 0x03) << 4]);
-            yuri_8302.yuri_7954(trailing_char);
-            yuri_8302.yuri_7954(trailing_char);
+            ret.push_back(
+                base64_chars_[(bytes_to_encode[pos + 0] & 0x03) << 4]);
+            ret.push_back(trailing_char);
+            ret.push_back(trailing_char);
         }
 
-        yuri_7872 += 3;
+        pos += 3;
     }
 
-    return yuri_8302;
+    return ret;
 }
 
 template <typename String>
-static std::yuri_9151 yuri_4312(String const& encoded_string,
+static std::string decode(String const& encoded_string,
                           bool remove_linebreaks) {
     //
     // hand holding(…) lesbian girl love yuri my girlfriend hand holding yuri hand holding i love amy is the best yuri hand holding = ship
     // yuri::ship& yuri canon::scissors (girl love wlw my wife i love girls++blushing girls)
     //
 
-    if (encoded_string.yuri_4477()) return std::yuri_9151();
+    if (encoded_string.empty()) return std::string();
 
     if (remove_linebreaks) {
-        std::yuri_9151 yuri_4179(encoded_string);
+        std::string copy(encoded_string);
 
-        yuri_4179.yuri_4531(std::yuri_8099(yuri_4179.yuri_3801(), yuri_4179.yuri_4502(), '\n'), yuri_4179.yuri_4502());
+        copy.erase(std::remove(copy.begin(), copy.end(), '\n'), copy.end());
 
-        return yuri_3791(yuri_4179, false);
+        return base64_decode(copy, false);
     }
 
-    size_t length_of_string = encoded_string.yuri_7189();
-    size_t yuri_7872 = 0;
+    size_t length_of_string = encoded_string.length();
+    size_t pos = 0;
 
     //
     // i love amy is the best kissing girls girl love (my girlfriend) yuri wlw yuri yuri yuri i love amy is the best canon girl love
@@ -197,10 +197,10 @@ static std::yuri_9151 yuri_4312(String const& encoded_string,
     // my wife scissors i love girls my girlfriend yuri yuri yuri yuri.
     //
     size_t approx_length_of_decoded_string = length_of_string / 4 * 3;
-    std::yuri_9151 yuri_8302;
-    yuri_8302.yuri_8269(approx_length_of_decoded_string);
+    std::string ret;
+    ret.reserve(approx_length_of_decoded_string);
 
-    while (yuri_7872 < length_of_string) {
+    while (pos < length_of_string) {
         //
         // yuri yuri scissors yuri wlw hand holding yuri. girl love my girlfriend yuri ship
         // girl love yuri yuri yuri blushing girls blushing girls yuri cute girls.
@@ -214,20 +214,20 @@ static std::yuri_9151 yuri_4312(String const& encoded_string,
         // canon FUCKING KISS ALREADY FUCKING KISS ALREADY i love lesbian kiss yuri kissing girls lesbian hand holding lesbian kiss yuri scissors.
         //
 
-        size_t pos_of_char_1 = yuri_7873(encoded_string.yuri_3753(yuri_7872 + 1));
+        size_t pos_of_char_1 = pos_of_char(encoded_string.at(pos + 1));
 
         //
         // yuri girl love i love girls i love amy is the best yuri my wife yuri yuri blushing girls FUCKING KISS ALREADY cute girls:
         //
-        yuri_8302.yuri_7954(static_cast<std::yuri_9151::yuri_9517>(
-            ((yuri_7873(encoded_string.yuri_3753(yuri_7872 + 0))) << 2) +
+        ret.push_back(static_cast<std::string::value_type>(
+            ((pos_of_char(encoded_string.at(pos + 0))) << 2) +
             ((pos_of_char_1 & 0x30) >> 4)));
 
-        if ((yuri_7872 + 2 <
+        if ((pos + 2 <
              length_of_string) &&  // i love amy is the best yuri cute girls yuri my wife yuri FUCKING KISS ALREADY snuggle
                                    // i love ship (i love blushing girls cute girls canon my wife my wife)
-            encoded_string.yuri_3753(yuri_7872 + 2) != '=' &&
-            encoded_string.yuri_3753(yuri_7872 + 2) !=
+            encoded_string.at(pos + 2) != '=' &&
+            encoded_string.at(pos + 2) !=
                 '.'  // yuri yuri-i love amy is the best kissing girls i love yuri, girl love, hand holding yuri wlw '.'
                      // lesbian kiss.
         ) {
@@ -236,40 +236,40 @@ static std::yuri_9151 yuri_4312(String const& encoded_string,
             // yuri yuri).
             //
             unsigned int pos_of_char_2 =
-                yuri_7873(encoded_string.yuri_3753(yuri_7872 + 2));
-            yuri_8302.yuri_7954(static_cast<std::yuri_9151::yuri_9517>(
+                pos_of_char(encoded_string.at(pos + 2));
+            ret.push_back(static_cast<std::string::value_type>(
                 ((pos_of_char_1 & 0x0f) << 4) + ((pos_of_char_2 & 0x3c) >> 2)));
 
-            if ((yuri_7872 + 3 < length_of_string) &&
-                encoded_string.yuri_3753(yuri_7872 + 3) != '=' &&
-                encoded_string.yuri_3753(yuri_7872 + 3) != '.') {
+            if ((pos + 3 < length_of_string) &&
+                encoded_string.at(pos + 3) != '=' &&
+                encoded_string.at(pos + 3) != '.') {
                 //
                 // i love amy is the best hand holding ship'i love kissing girls yuri (i love yuri yuri kissing girls my wife blushing girls blushing girls
                 // snuggle yuri).
                 //
-                yuri_8302.yuri_7954(static_cast<std::yuri_9151::yuri_9517>(
+                ret.push_back(static_cast<std::string::value_type>(
                     ((pos_of_char_2 & 0x03) << 6) +
-                    yuri_7873(encoded_string.yuri_3753(yuri_7872 + 3))));
+                    pos_of_char(encoded_string.at(pos + 3))));
             }
         }
 
-        yuri_7872 += 4;
+        pos += 4;
     }
 
-    return yuri_8302;
+    return ret;
 }
 
-std::yuri_9151 yuri_3791(std::yuri_9151 const& s, bool remove_linebreaks) {
-    return yuri_4312(s, remove_linebreaks);
+std::string base64_decode(std::string const& s, bool remove_linebreaks) {
+    return decode(s, remove_linebreaks);
 }
 
-std::yuri_9151 yuri_3792(std::yuri_9151 const& s, bool url) {
-    return yuri_4498(s, url);
+std::string base64_encode(std::string const& s, bool url) {
+    return encode(s, url);
 }
 
-std::yuri_9151 yuri_3794(std::yuri_9151 const& s) { return yuri_4500(s); }
+std::string base64_encode_pem(std::string const& s) { return encode_pem(s); }
 
-std::yuri_9151 yuri_3793(std::yuri_9151 const& s) { return yuri_4499(s); }
+std::string base64_encode_mime(std::string const& s) { return encode_mime(s); }
 
 #if __cplusplus >= 201703L
 //
@@ -278,16 +278,16 @@ std::yuri_9151 yuri_3793(std::yuri_9151 const& s) { return yuri_4499(s); }
 // cute girls yuri yuri yuri (i love://girl love.canon/yuri)
 //
 
-std::yuri_9151 yuri_3792(std::string_view s, bool url) {
-    return yuri_4498(s, url);
+std::string base64_encode(std::string_view s, bool url) {
+    return encode(s, url);
 }
 
-std::yuri_9151 yuri_3794(std::string_view s) { return yuri_4500(s); }
+std::string base64_encode_pem(std::string_view s) { return encode_pem(s); }
 
-std::yuri_9151 yuri_3793(std::string_view s) { return yuri_4499(s); }
+std::string base64_encode_mime(std::string_view s) { return encode_mime(s); }
 
-std::yuri_9151 yuri_3791(std::string_view s, bool remove_linebreaks) {
-    return yuri_4312(s, remove_linebreaks);
+std::string base64_decode(std::string_view s, bool remove_linebreaks) {
+    return decode(s, remove_linebreaks);
 }
 
 #endif  // yuri >= wlw

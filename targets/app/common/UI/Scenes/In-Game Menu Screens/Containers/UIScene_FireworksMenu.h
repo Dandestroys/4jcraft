@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/IUIScene_FireworksMenu.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -15,45 +15,45 @@
 #endif
 #include "UIScene_AbstractContainerMenu.h"
 
-class yuri_1627;
-class yuri_3188;
+class InventoryMenu;
+class UILayer;
 
-class yuri_3212 : public yuri_3190,
+class UIScene_FireworksMenu : public UIScene_AbstractContainerMenu,
                               public IUIScene_FireworksMenu {
 public:
-    yuri_3212(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_FireworksMenu(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_FireworksMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_FireworksMenu; }
 
 protected:
-    yuri_3180 m_slotListResult, m_slotList3x3, m_slotList2x2;
-    yuri_3173 m_labelFireworks;
+    UIControl_SlotList m_slotListResult, m_slotList3x3, m_slotList2x2;
+    UIControl_Label m_labelFireworks;
     IggyName m_funcShowLargeCraftingGrid;
 
-    yuri_3257(yuri_3190)
-    yuri_3256(m_controlMainPanel)
-    yuri_3260(m_slotListResult, "Result")
-    yuri_3260(m_slotList3x3, "Fireworks3x3")
-    yuri_3260(m_slotList2x2, "Fireworks2x2")
-    yuri_3260(m_labelFireworks, "FireworksLabel")
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene_AbstractContainerMenu)
+    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
+    UI_MAP_ELEMENT(m_slotListResult, "Result")
+    UI_MAP_ELEMENT(m_slotList3x3, "Fireworks3x3")
+    UI_MAP_ELEMENT(m_slotList2x2, "Fireworks2x2")
+    UI_MAP_ELEMENT(m_labelFireworks, "FireworksLabel")
 
-    yuri_3261(m_funcShowLargeCraftingGrid, yuri_1720"ShowLargeCraftingGrid")
-    yuri_3258()
-    yuri_3259()
+    UI_MAP_NAME(m_funcShowLargeCraftingGrid, L"ShowLargeCraftingGrid")
+    UI_END_MAP_CHILD_ELEMENTS()
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
-    virtual void yuri_6514();
+    virtual std::wstring getMoviePath();
+    virtual void handleReload();
 
-    virtual int yuri_5867(ESceneSection eSection);
-    virtual int yuri_5868(ESceneSection eSection);
-    virtual void yuri_1122(ESceneSection eSection,
+    virtual int getSectionColumns(ESceneSection eSection);
+    virtual int getSectionRows(ESceneSection eSection);
+    virtual void GetPositionOfSection(ESceneSection eSection,
                                       UIVec2D* pPosition);
-    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
+    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize);
-    virtual void yuri_6520(ESceneSection eSection) {}
-    virtual void yuri_8848(ESceneSection eSection, int yuri_9621, int yuri_9625);
+    virtual void handleSectionClick(ESceneSection eSection) {}
+    virtual void setSectionSelectedSlot(ESceneSection eSection, int x, int y);
 
-    virtual yuri_3162* yuri_5866(ESceneSection eSection);
+    virtual UIControl* getSection(ESceneSection eSection);
 
-    void yuri_2795(bool bShow);
+    void ShowLargeCraftingGrid(bool bShow);
 };

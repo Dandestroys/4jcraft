@@ -3,41 +3,41 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_785 : public yuri_739 {
+class EyeOfEnderSignal : public Entity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_EYEOFENDERSIGNAL; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_785(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_EYEOFENDERSIGNAL; }
+    static Entity* create(Level* level) { return new EyeOfEnderSignal(level); }
 
 public:
     int shakeTime;
 
 private:
     double tx, ty, tz;
-    int yuri_7203;
+    int life;
     bool surviveAfterDeath;
 
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_785(yuri_1758* yuri_7194);
+    EyeOfEnderSignal(Level* level);
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual bool yuri_9015(double distance);
+    virtual bool shouldRenderAtSqrDistance(double distance);
 
-    yuri_785(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    EyeOfEnderSignal(Level* level, double x, double y, double z);
 
-    void yuri_9045(double tx, int ty, double tz);
-    virtual void yuri_7191(double xd, double yd, double zd);
-    virtual void yuri_9265();
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual float yuri_5885();
-    virtual float yuri_4976(float yuri_3565);
-    virtual int yuri_5484(float yuri_3565);
-    virtual bool yuri_6779();
+    void signalTo(double tx, int ty, double tz);
+    virtual void lerpMotion(double xd, double yd, double zd);
+    virtual void tick();
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual float getShadowHeightOffs();
+    virtual float getBrightness(float a);
+    virtual int getLightColor(float a);
+    virtual bool isAttackable();
 };

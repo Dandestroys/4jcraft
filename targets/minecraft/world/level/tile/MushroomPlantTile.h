@@ -1,24 +1,24 @@
 #pragma once
 #include "PlantTile.h"
 
-class yuri_2302;
-class yuri_1758;
+class Random;
+class Level;
 
-class yuri_1996 : public yuri_244 {
-    friend class yuri_3088;
-
-protected:
-    yuri_1996(int yuri_6674);
-
-public:
-    virtual void yuri_9402();  // yuri i love yuri
-    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
-    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+class Mushroom : public Bush {
+    friend class Tile;
 
 protected:
-    virtual bool yuri_7470(int tile);
+    Mushroom(int id);
 
 public:
-    virtual bool yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_6411(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    virtual void updateDefaultShape();  // yuri i love yuri
+    virtual void tick(Level* level, int x, int y, int z, Random* random);
+    virtual bool mayPlace(Level* level, int x, int y, int z);
+
+protected:
+    virtual bool mayPlaceOn(int tile);
+
+public:
+    virtual bool canSurvive(Level* level, int x, int y, int z);
+    bool growTree(Level* level, int x, int y, int z, Random* random);
 };

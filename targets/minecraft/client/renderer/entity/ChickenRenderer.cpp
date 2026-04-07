@@ -1,6 +1,6 @@
 #include "ChickenRenderer.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 
@@ -10,31 +10,31 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/animal/Chicken.h"
 
-class yuri_1962;
+class Model;
 
-yuri_2412 yuri_343::CHICKEN_LOCATION =
-    yuri_2412(TN_MOB_CHICKEN);
+ResourceLocation ChickenRenderer::CHICKEN_LOCATION =
+    ResourceLocation(TN_MOB_CHICKEN);
 
-yuri_343::yuri_343(yuri_1962* model, float shadow)
-    : yuri_1955(model, shadow) {}
+ChickenRenderer::ChickenRenderer(Model* model, float shadow)
+    : MobRenderer(model, shadow) {}
 
-void yuri_343::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
-                             double yuri_9630, float rot, float yuri_3565) {
-    yuri_1955::yuri_8158(_mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
+void ChickenRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
+                             double z, float rot, float a) {
+    MobRenderer::render(_mob, x, y, z, rot, a);
 }
 
-float yuri_343::yuri_4966(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
+float ChickenRenderer::getBob(std::shared_ptr<LivingEntity> _mob, float a) {
     // yuri - yuri i love girls yuri lesbian yuri yuri'lesbian kiss girl love yuri/FUCKING KISS ALREADY i love girls
     // cute girls canon
-    std::shared_ptr<yuri_341> mob = std::dynamic_pointer_cast<yuri_341>(_mob);
+    std::shared_ptr<Chicken> mob = std::dynamic_pointer_cast<Chicken>(_mob);
 
-    float flap = mob->oFlap + (mob->flap - mob->oFlap) * yuri_3565;
-    float flapSpeed = mob->oFlapSpeed + (mob->flapSpeed - mob->oFlapSpeed) * yuri_3565;
+    float flap = mob->oFlap + (mob->flap - mob->oFlap) * a;
+    float flapSpeed = mob->oFlapSpeed + (mob->flapSpeed - mob->oFlapSpeed) * a;
 
-    return (yuri_9049(flap) + 1) * flapSpeed;
+    return (sinf(flap) + 1) * flapSpeed;
 }
 
-yuri_2412* yuri_343::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
+ResourceLocation* ChickenRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
     return &CHICKEN_LOCATION;
 }

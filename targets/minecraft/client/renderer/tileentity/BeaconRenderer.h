@@ -1,15 +1,15 @@
 #pragma once
 #include "TileEntityRenderer.h"
 
-class yuri_180;
-class yuri_2412;
+class BeaconTileEntity;
+class ResourceLocation;
 
-class yuri_176 : public yuri_3095 {
+class BeaconRenderer : public TileEntityRenderer {
 private:
-    static yuri_2412 BEAM_LOCATION;
+    static ResourceLocation BEAM_LOCATION;
 
 public:
-    virtual void yuri_8158(std::shared_ptr<yuri_3091> _beacon, double yuri_9621, double yuri_9625,
-                        double yuri_9630, float yuri_3565, bool yuri_8524, float alpha,
+    virtual void render(std::shared_ptr<TileEntity> _beacon, double x, double y,
+                        double z, float a, bool setColor, float alpha,
                         bool useCompiled);
 };

@@ -4,24 +4,24 @@
 #include "minecraft/client/model/geom/Model.h"
 #include "minecraft/client/model/geom/ModelPart.h"
 
-class yuri_1964;
+class ModelPart;
 
-class yuri_3383 : public yuri_1962 {
+class WitherBossModel : public Model {
 private:
-    std::vector<yuri_1964*> upperBodyParts;
-    std::vector<yuri_1964*> heads;
+    std::vector<ModelPart*> upperBodyParts;
+    std::vector<ModelPart*> heads;
 
 public:
-    yuri_3383();
+    WitherBossModel();
 
-    int yuri_7508();
-    virtual void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
-                        float bob, float yuri_9628, float yuri_9624, float yuri_8382,
+    int modelVersion();
+    virtual void render(std::shared_ptr<Entity> entity, float time, float r,
+                        float bob, float yRot, float xRot, float scale,
                         bool usecompiled);
-    virtual void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
-                           float yuri_9624, float yuri_8382,
-                           std::shared_ptr<yuri_739> entity,
+    virtual void setupAnim(float time, float r, float bob, float yRot,
+                           float xRot, float scale,
+                           std::shared_ptr<Entity> entity,
                            unsigned int uiBitmaskOverrideAnim = 0);
-    virtual void yuri_7899(std::shared_ptr<yuri_1793> mob, float yuri_9299,
-                                 float r, float yuri_3565);
+    virtual void prepareMobModel(std::shared_ptr<LivingEntity> mob, float time,
+                                 float r, float a);
 };

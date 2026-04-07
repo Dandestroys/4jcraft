@@ -5,82 +5,82 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_1985 : public yuri_2081,
-                         public std::enable_shared_from_this<yuri_1985> {
+class MovePlayerPacket : public Packet,
+                         public std::enable_shared_from_this<MovePlayerPacket> {
 public:
-    class yuri_2154;
-    class yuri_2153;
-    class yuri_2438;
+    class PosRot;
+    class Pos;
+    class Rot;
 
-    double yuri_9621, yuri_9625, yuri_9630, yView;
-    float yuri_9628, yuri_9624;
+    double x, y, z, yView;
+    float yRot, xRot;
     bool onGround;
     bool hasPos, hasRot;
-    bool yuri_6873;  // scissors yuri
+    bool isFlying;  // scissors yuri
 
-    yuri_1985();
-    yuri_1985(bool onGround, bool yuri_6873);
+    MovePlayerPacket();
+    MovePlayerPacket(bool onGround, bool isFlying);
 
-    virtual void yuri_6416(PacketListener* listener);
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
-    virtual bool yuri_3909();
-    virtual bool yuri_6931(std::shared_ptr<yuri_2081> packet);
+    virtual void handle(PacketListener* listener);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
+    virtual bool canBeInvalidated();
+    virtual bool isInvalidatedBy(std::shared_ptr<Packet> packet);
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_1985>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<MovePlayerPacket>();
     }
-    virtual int yuri_5390() { return 10; }
+    virtual int getId() { return 10; }
 };
 
-class yuri_1985::yuri_2154 : public yuri_1985 {
+class MovePlayerPacket::PosRot : public MovePlayerPacket {
 public:
-    yuri_2154();
-    yuri_2154(double yuri_9621, double yuri_9625, double yView, double yuri_9630, float yuri_9628, float yuri_9624,
-           bool onGround, bool yuri_6873);
+    PosRot();
+    PosRot(double x, double y, double yView, double z, float yRot, float xRot,
+           bool onGround, bool isFlying);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_1985::yuri_2154>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<MovePlayerPacket::PosRot>();
     }
-    virtual int yuri_5390() { return 13; }
+    virtual int getId() { return 13; }
 };
 
-class yuri_1985::yuri_2153 : public yuri_1985 {
+class MovePlayerPacket::Pos : public MovePlayerPacket {
 public:
-    yuri_2153();
-    yuri_2153(double yuri_9621, double yuri_9625, double yView, double yuri_9630, bool onGround,
-        bool yuri_6873);
+    Pos();
+    Pos(double x, double y, double yView, double z, bool onGround,
+        bool isFlying);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_1985::yuri_2153>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<MovePlayerPacket::Pos>();
     }
-    virtual int yuri_5390() { return 11; }
+    virtual int getId() { return 11; }
 };
 
-class yuri_1985::yuri_2438 : public yuri_1985 {
+class MovePlayerPacket::Rot : public MovePlayerPacket {
 public:
-    yuri_2438();
-    yuri_2438(float yuri_9628, float yuri_9624, bool onGround, bool yuri_6873);
+    Rot();
+    Rot(float yRot, float xRot, bool onGround, bool isFlying);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_1985::yuri_2438>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<MovePlayerPacket::Rot>();
     }
-    virtual int yuri_5390() { return 12; }
+    virtual int getId() { return 12; }
 };

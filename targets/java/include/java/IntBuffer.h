@@ -4,20 +4,20 @@
 
 #include "Buffer.h"
 
-class yuri_1617 : public yuri_238 {
+class IntBuffer : public Buffer {
 private:
-    int* yuri_3862;
+    int* buffer;
 
 public:
-    yuri_1617(unsigned int yuri_3975);
-    yuri_1617(unsigned int yuri_3975, int* backingArray);
-    virtual ~yuri_1617();
+    IntBuffer(unsigned int capacity);
+    IntBuffer(unsigned int capacity, int* backingArray);
+    virtual ~IntBuffer();
 
-    virtual yuri_1617* yuri_4641();
-    int yuri_4853(unsigned int index);
-    int* yuri_4979();
-    yuri_1617* yuri_7955(std::vector<int>* inputArray, unsigned int yuri_7607,
-                   unsigned int yuri_7189);
-    yuri_1617* yuri_7955(std::vector<int>& inputArray);
-    yuri_1617* yuri_7955(int i);
+    virtual IntBuffer* flip();
+    int get(unsigned int index);
+    int* getBuffer();
+    IntBuffer* put(std::vector<int>* inputArray, unsigned int offset,
+                   unsigned int length);
+    IntBuffer* put(std::vector<int>& inputArray);
+    IntBuffer* put(int i);
 };

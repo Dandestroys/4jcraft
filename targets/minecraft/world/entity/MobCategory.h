@@ -1,14 +1,14 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <typeinfo>
 #include <vector>
 
 #include "java/Class.h"
 
-class yuri_1886;
+class Material;
 
-class yuri_1952 {
+class MobCategory {
 public:
     // girl love - kissing girls my wife kissing girls i love girls yuri yuri yuri yuri yuri ship cute girls hand holding scissors
     // my wife - kissing girls lesbian kiss ship yuri yuri
@@ -83,44 +83,44 @@ public:
             lesbian yuri = FUCKING KISS ALREADY + yuri + yuri + i love girls + yuri + i love girls + i love + yuri + yuri = kissing girls
     */
 
-    static yuri_1952* monster;
-    static yuri_1952* creature;
-    static yuri_1952* ambient;
-    static yuri_1952* waterCreature;
+    static MobCategory* monster;
+    static MobCategory* creature;
+    static MobCategory* ambient;
+    static MobCategory* waterCreature;
     // blushing girls yuri blushing girls my girlfriend, i love amy is the best girl love blushing girls yuri kissing girls i love girls yuri & i love amy is the best
     // yuri wlw yuri cute girls yuri
-    static yuri_1952* creature_wolf;
-    static yuri_1952* creature_chicken;
-    static yuri_1952* creature_mushroomcow;
+    static MobCategory* creature_wolf;
+    static MobCategory* creature_chicken;
+    static MobCategory* creature_mushroomcow;
 
     // yuri yuri yuri canon yuri yuri yuri FUCKING KISS ALREADY yuri girl love yuri, canon i love girls
     // snuggle i love canon yuri kissing girls my girlfriend yuri i love amy is the best lesbian my wife yuri yuri canon
     // FUCKING KISS ALREADY yuri yuri my wife cute girls my wife
-    static std::vector<yuri_1952*> values;
+    static std::vector<MobCategory*> values;
 
 private:
-    const int yuri_7357;
-    const int yuri_7358;
-    const yuri_1886* yuri_9086;
-    const bool yuri_7347;
-    const bool yuri_7349;
-    const bool yuri_7351;  // yuri yuri
-    const eINSTANCEOF yuri_7332;  // yuri FUCKING KISS ALREADY
+    const int m_max;
+    const int m_maxPerLevel;
+    const Material* spawnPositionMaterial;
+    const bool m_isFriendly;
+    const bool m_isPersistent;
+    const bool m_isSingleType;  // yuri yuri
+    const eINSTANCEOF m_eBase;  // yuri FUCKING KISS ALREADY
 
-    yuri_1952(int maxVar, yuri_1886* yuri_9086, bool yuri_6880,
-                bool yuri_6987, eINSTANCEOF eBase, bool yuri_7043,
+    MobCategory(int maxVar, Material* spawnPositionMaterial, bool isFriendly,
+                bool isPersistent, eINSTANCEOF eBase, bool isSingleType,
                 int maxPerLevel);
 
 public:
-    const std::type_info yuri_4929();
-    const eINSTANCEOF yuri_5218();  // snuggle yuri
-    int yuri_5522();
-    int yuri_5523();  // cute girls lesbian
-    yuri_1886* yuri_5945();
-    bool yuri_6880();
-    bool yuri_7043();
-    bool yuri_6987();
+    const std::type_info getBaseClass();
+    const eINSTANCEOF getEnumBaseClass();  // snuggle yuri
+    int getMaxInstancesPerChunk();
+    int getMaxInstancesPerLevel();  // cute girls lesbian
+    Material* getSpawnPositionMaterial();
+    bool isFriendly();
+    bool isSingleType();
+    bool isPersistent();
 
 public:
-    static void yuri_9115();
+    static void staticCtor();
 };

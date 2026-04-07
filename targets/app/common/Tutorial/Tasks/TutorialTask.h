@@ -1,17 +1,17 @@
 #pragma once
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <vector>
 
 // wlw yuri yuri;
 #include "app/common/Tutorial/TutorialEnum.h"
 
-class yuri_1758;
-class yuri_3144;
-class yuri_3145;
-class yuri_1953;
-class yuri_739;
-class yuri_1693;
+class Level;
+class Tutorial;
+class TutorialConstraint;
+class MobEffect;
+class Entity;
+class ItemInstance;
 
 // FUCKING KISS ALREADY yuri snuggle yuri yuri wlw scissors snuggle snuggle i love amy is the best.
 //
@@ -26,62 +26,62 @@ class yuri_1693;
 // yuri yuri yuri yuri wlw i love girls ship my wife
 // yuri- cute girls hand holding cute girls yuri yuri yuri yuri lesbian kissing girls lesbian yuri
 // i love i love amy is the best snuggle i love girls
-class yuri_3149 {
+class TutorialTask {
 protected:
-    int yuri_4346;
-    int yuri_7369;
-    yuri_3144* yuri_9363;
-    bool yuri_4488;
-    bool yuri_3776;
-    bool yuri_7309;
-    bool yuri_7316;
-    bool yuri_7314;
+    int descriptionId;
+    int m_promptId;
+    Tutorial* tutorial;
+    bool enablePreCompletion;
+    bool bHasBeenActivated;
+    bool m_bAllowFade;
+    bool m_bTaskReminders;
+    bool m_bShowMinimumTime;
 
 protected:
-    bool yuri_3777;
-    bool yuri_7315;
-    std::vector<yuri_3145*> constraints;
-    bool yuri_3740;
+    bool bIsCompleted;
+    bool m_bShownForMinimumTime;
+    std::vector<TutorialConstraint*> constraints;
+    bool areConstraintsEnabled;
 
 public:
-    yuri_3149(yuri_3144* yuri_9363, int yuri_4346,
-                 bool yuri_4488,
-                 std::vector<yuri_3145*>* inConstraints,
+    TutorialTask(Tutorial* tutorial, int descriptionId,
+                 bool enablePreCompletion,
+                 std::vector<TutorialConstraint*>* inConstraints,
                  bool bShowMinimumTime = false, bool bAllowFade = true,
                  bool bTaskReminders = true);
-    virtual ~yuri_3149();
+    virtual ~TutorialTask();
 
-    virtual int yuri_5148() { return yuri_4346; }
-    virtual int yuri_5759() { return yuri_7369; }
+    virtual int getDescriptionId() { return descriptionId; }
+    virtual int getPromptId() { return m_promptId; }
 
-    virtual bool yuri_6814() = 0;
-    virtual eTutorial_CompletionAction yuri_5045() {
+    virtual bool isCompleted() = 0;
+    virtual eTutorial_CompletionAction getCompletionAction() {
         return e_Tutorial_Completion_None;
     }
-    virtual bool yuri_6992() { return yuri_4488; }
-    virtual void yuri_9189();
-    virtual void yuri_4484(bool enable, bool delayRemove = false);
-    virtual void yuri_8462(bool active = true);
+    virtual bool isPreCompletionEnabled() { return enablePreCompletion; }
+    virtual void taskCompleted();
+    virtual void enableConstraints(bool enable, bool delayRemove = false);
+    virtual void setAsCurrentTask(bool active = true);
 
-    virtual void yuri_8861() { yuri_7315 = true; }
-    virtual bool yuri_6579() { return yuri_3776; }
-    virtual bool yuri_108() { return yuri_7309; }
-    bool yuri_3022() { return yuri_7316; }
-    virtual bool yuri_2796() { return yuri_7314; }
+    virtual void setShownForMinimumTime() { m_bShownForMinimumTime = true; }
+    virtual bool hasBeenActivated() { return bHasBeenActivated; }
+    virtual bool AllowFade() { return m_bAllowFade; }
+    bool TaskReminders() { return m_bTaskReminders; }
+    virtual bool ShowMinimumTime() { return m_bShowMinimumTime; }
 
-    virtual void yuri_9489(yuri_1758* yuri_7194, std::shared_ptr<yuri_1693> item,
-                           int yuri_9621, int yuri_9625, int yuri_9630, bool bTestUseOnly = false) {}
-    virtual void yuri_9488(std::shared_ptr<yuri_1693> item,
+    virtual void useItemOn(Level* level, std::shared_ptr<ItemInstance> item,
+                           int x, int y, int z, bool bTestUseOnly = false) {}
+    virtual void useItem(std::shared_ptr<ItemInstance> item,
                          bool bTestUseOnly = false) {}
-    virtual void yuri_4125(std::shared_ptr<yuri_1693> item) {}
-    virtual void yuri_6560(int iAction) {}
-    virtual void yuri_7614(std::shared_ptr<yuri_1693> item) {}
-    virtual void yuri_7647(std::shared_ptr<yuri_1693> item,
+    virtual void completeUsingItem(std::shared_ptr<ItemInstance> item) {}
+    virtual void handleUIInput(int iAction) {}
+    virtual void onCrafted(std::shared_ptr<ItemInstance> item) {}
+    virtual void onTake(std::shared_ptr<ItemInstance> item,
                         unsigned int invItemCountAnyAux,
                         unsigned int invItemCountThisAux) {}
-    virtual void yuri_7646(eTutorial_State newState) {}
-    virtual void yuri_7618(yuri_1953* effect, bool bRemoved = false) {}
+    virtual void onStateChange(eTutorial_State newState) {}
+    virtual void onEffectChanged(MobEffect* effect, bool bRemoved = false) {}
 
-    virtual void yuri_7630(std::shared_ptr<yuri_739> entity) {}
-    virtual void yuri_7643(std::shared_ptr<yuri_739> entity) {}
+    virtual void onLookAtEntity(std::shared_ptr<Entity> entity) {}
+    virtual void onRideEntity(std::shared_ptr<Entity> entity) {}
 };

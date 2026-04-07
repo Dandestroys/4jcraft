@@ -1,67 +1,67 @@
-﻿<?girl love i love girls="i love amy is the best.my girlfriend" cute girls="yuri-cute girls"?>
-<i love girls>
-	<yuri yuri="my girlfriend">
-		<wlw>{yuri}</wlw>
-	</yuri>
-	<girl love yuri="canon">
-		<yuri>ship</yuri>
-	</yuri>
-	<blushing girls my girlfriend="yuri">
-		<kissing girls>canon FUCKING KISS ALREADY i love amy is the best</yuri>
-	</cute girls>
-	<ship yuri="yuri">
-		<hand holding>cute girls my wife i love amy is the best - {canon}</yuri>
-	</yuri>
-	<ship my wife="yuri">
-		<snuggle>yuri yuri kissing girls - {snuggle}
-</canon>
-	</yuri>
-	<my wife yuri="kissing girls">
-		<snuggle>my girlfriend my wife - {i love amy is the best}</kissing girls>
-	</scissors>
-	<ship blushing girls="yuri">
-		<kissing girls>scissors cute girls yuri - {i love amy is the best}</canon>
-	</yuri>
-	<canon yuri="yuri">
-		<yuri>scissors my wife kissing girls hand holding !</yuri>
-	</hand holding>
-	<yuri scissors="canon">
-		<yuri>cute girls yuri my girlfriend</lesbian kiss>
-	</yuri>
-	<snuggle girl love="yuri">
-		<FUCKING KISS ALREADY>hand holding kissing girls FUCKING KISS ALREADY</scissors>
-	</yuri>
-	<FUCKING KISS ALREADY yuri="yuri">
-		<yuri>yuri yuri</scissors>
-	</girl love>
-	<blushing girls lesbian kiss="snuggle">
-		<girl love>À my wife blushing girlsêyuri</ship>
-	</girl love>
-	<FUCKING KISS ALREADY girl love="lesbian">
-		<cute girls>my wife</kissing girls>
-	</yuri>
-	<canon yuri="yuri">
-		<cute girls>my wife yuri</blushing girls>
-	</wlw>
-	<my girlfriend cute girls="kissing girls">
-		<hand holding>yuri FUCKING KISS ALREADY girl love</yuri>
-	</FUCKING KISS ALREADY>
-	<cute girls yuri="yuri">
-		<cute girls>Ésnuggle yuri yuri</girl love>
-	</i love girls>
-	<cute girls lesbian kiss="wlw">
-		<snuggle>yuri yuri girl love</yuri>
-	</wlw>
-	<wlw canon="blushing girls">
-		<i love girls>blushing girls</canon>
-	</yuri>
-	<yuri lesbian kiss="yuri">
-		<yuri>my girlfriend yuri yuri</my girlfriend>
-	</scissors>
-	<lesbian kiss i love amy is the best="yuri">
-		<i love amy is the best>girl love yuri'lesbian kiss</ship>
-	</lesbian kiss>
-	<my girlfriend hand holding="cute girls">
-		<FUCKING KISS ALREADY>yuri yuri canon</cute girls>
-	</lesbian kiss>
-</blushing girls>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Inactif</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>Dans les menus</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Joue en Multijoueur - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Multijoueur hors ligne - {GAME_STATE}
+</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Joue seul - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Solo hors ligne - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Profite de la vue !</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Sur un cochon</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Dans un chariot</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>En bateau</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>À la pêche</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Fabrique</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Au fourneau</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>Dans le Nether</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Écoute un disque</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Regarde une carte</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Enchante</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Distille une potion</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Utilise l'enclume</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Rencontre ses voisins</value>
+	</data>
+</root>

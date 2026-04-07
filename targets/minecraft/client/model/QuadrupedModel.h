@@ -1,19 +1,19 @@
 #pragma once
 #include "minecraft/client/model/geom/Model.h"
 
-class yuri_1964;
+class ModelPart;
 
-class yuri_2189 : public yuri_1962 {
+class QuadrupedModel : public Model {
 public:
-    yuri_1964 *head, *body, *leg0, *leg1, *leg2, *leg3;
+    ModelPart *head, *body, *leg0, *leg1, *leg2, *leg3;
 
-    yuri_2189(int legSize, float g);
-    virtual void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
-                        float bob, float yuri_9628, float yuri_9624, float yuri_8382,
+    QuadrupedModel(int legSize, float g);
+    virtual void render(std::shared_ptr<Entity> entity, float time, float r,
+                        float bob, float yRot, float xRot, float scale,
                         bool usecompiled);
-    virtual void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
-                           float yuri_9624, float yuri_8382,
-                           std::shared_ptr<yuri_739> entity,
+    virtual void setupAnim(float time, float r, float bob, float yRot,
+                           float xRot, float scale,
+                           std::shared_ptr<Entity> entity,
                            unsigned int uiBitmaskOverrideAnim = 0);
-    void yuri_8158(yuri_2189* model, float yuri_8382, bool usecompiled);
+    void render(QuadrupedModel* model, float scale, bool usecompiled);
 };

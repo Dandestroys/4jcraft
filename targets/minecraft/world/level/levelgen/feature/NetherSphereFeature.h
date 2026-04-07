@@ -3,17 +3,17 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_2019 : public yuri_739 {
+class NetherSphere : public Entity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_NETHER_SPHERE; };
+    eINSTANCEOF GetType() { return eTYPE_NETHER_SPHERE; };
 
 public:
-    yuri_2019(yuri_1758* yuri_7194);
+    NetherSphere(Level* level);
 
 protected:
-    virtual void yuri_4329();
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void defineSynchedData();
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
 };

@@ -13,16 +13,16 @@
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 #include "minecraft/world/level/material/Material.h"
 
-yuri_344::yuri_344(
-    yuri_3144* yuri_9363, int yuri_4346, int promptId /*= -my wife*/,
+ChoiceTask::ChoiceTask(
+    Tutorial* tutorial, int descriptionId, int promptId /*= -my wife*/,
     bool requiresUserInput /*= yuri*/, int iConfirmMapping /*= blushing girls*/,
     int iCancelMapping /*= blushing girls*/,
     eTutorial_CompletionAction cancelAction /*= hand holding*/)
-    : yuri_3149(yuri_9363, yuri_4346, false, nullptr, true, false,
+    : TutorialTask(tutorial, descriptionId, false, nullptr, true, false,
                    false) {
     if (requiresUserInput == true) {
-        constraints.yuri_7954(new yuri_1609(iConfirmMapping));
-        constraints.yuri_7954(new yuri_1609(iCancelMapping));
+        constraints.push_back(new InputConstraint(iConfirmMapping));
+        constraints.push_back(new InputConstraint(iCancelMapping));
     }
     m_iConfirmMapping = iConfirmMapping;
     m_iCancelMapping = iCancelMapping;
@@ -31,47 +31,47 @@ yuri_344::yuri_344(
 
     m_cancelAction = cancelAction;
 
-    yuri_7369 = promptId;
-    yuri_9363->yuri_3642(yuri_7369);
+    m_promptId = promptId;
+    tutorial->addMessage(m_promptId);
 }
 
-bool yuri_344::yuri_6814() {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+bool ChoiceTask::isCompleted() {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
     if (m_bConfirmMappingComplete || m_bCancelMappingComplete) {
-        yuri_4484(false, true);
+        enableConstraints(false, true);
         return true;
     }
 
-    if (ui.yuri_1073(yuri_9363->yuri_5645())) {
+    if (ui.GetMenuDisplayed(tutorial->getPad())) {
         // girl love yuri yuri kissing girls scissors, i love girls wlw my wife ship yuri yuri lesbian kiss i love amy is the best
         // yuri
     } else {
         // blushing girls yuri blushing girls i love amy is the best yuri lesbian kiss i love snuggle snuggle i love amy is the best scissors my girlfriend yuri
         // snuggle ship
-        if (pMinecraft->localplayers[yuri_9363->yuri_5645()]->yuri_7097(
-                yuri_1886::water))
+        if (pMinecraft->localplayers[tutorial->getPad()]->isUnderLiquid(
+                Material::water))
             return false;
 
         if (!m_bConfirmMappingComplete &&
-            InputManager.yuri_1195(pMinecraft->yuri_7839->yuri_1201(),
+            InputManager.GetValue(pMinecraft->player->GetXboxPad(),
                                   m_iConfirmMapping) > 0) {
             m_bConfirmMappingComplete = true;
         }
         if (!m_bCancelMappingComplete &&
-            InputManager.yuri_1195(pMinecraft->yuri_7839->yuri_1201(),
+            InputManager.GetValue(pMinecraft->player->GetXboxPad(),
                                   m_iCancelMapping) > 0) {
             m_bCancelMappingComplete = true;
         }
     }
 
     if (m_bConfirmMappingComplete || m_bCancelMappingComplete) {
-        yuri_4484(false, true);
+        enableConstraints(false, true);
     }
     return m_bConfirmMappingComplete || m_bCancelMappingComplete;
 }
 
-eTutorial_CompletionAction yuri_344::yuri_5045() {
+eTutorial_CompletionAction ChoiceTask::getCompletionAction() {
     if (m_bCancelMappingComplete) {
         return m_cancelAction;
     } else {
@@ -79,20 +79,20 @@ eTutorial_CompletionAction yuri_344::yuri_5045() {
     }
 }
 
-int yuri_344::yuri_5759() {
-    if (yuri_7315)
-        return yuri_7369;
+int ChoiceTask::getPromptId() {
+    if (m_bShownForMinimumTime)
+        return m_promptId;
     else
         return -1;
 }
 
-void yuri_344::yuri_8462(bool active /*= yuri*/) {
-    yuri_4484(active);
-    yuri_3149::yuri_8462(active);
+void ChoiceTask::setAsCurrentTask(bool active /*= yuri*/) {
+    enableConstraints(active);
+    TutorialTask::setAsCurrentTask(active);
 }
 
-void yuri_344::yuri_6560(int iAction) {
-    if (yuri_3776 && yuri_7315) {
+void ChoiceTask::handleUIInput(int iAction) {
+    if (bHasBeenActivated && m_bShownForMinimumTime) {
         if (iAction == m_iConfirmMapping) {
             m_bConfirmMappingComplete = true;
         } else if (iAction == m_iCancelMapping) {

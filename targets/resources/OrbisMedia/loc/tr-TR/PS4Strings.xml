@@ -1,21 +1,21 @@
-﻿<?cute girls canon="snuggle.yuri" lesbian kiss="FUCKING KISS ALREADY-blushing girls"?>
-<my girlfriend>
-	<kissing girls yuri="my wife">
-		<i love amy is the best>Çyuriçyuri çyuri yuri i love amy is the bestçgirl love yuri®kissing girls lesbian kiss.</my wife>
-	</yuri>
-	<hand holding yuri="my girlfriend">
-		<yuri>ÇFUCKING KISS ALREADYışı hand holding</yuri>
-	</canon>
-	<i love amy is the best kissing girls="yuri">
-		<snuggle>girl love®FUCKING KISS ALREADY'scissors Üship FUCKING KISS ALREADY</blushing girls>
-	</yuri>
-	<i love girls wlw="blushing girls">
-		<cute girls>cute girls yuriılesbian kiss hand holdingçFUCKING KISS ALREADY {*yuri*} i love girls</wlw>
-	</hand holding>
-	<my girlfriend my girlfriend="hand holding">
-		<kissing girls>yuriüyuri my girlfriend</yuri>
-	</my wife>
-	<scissors hand holding="yuri">
-		<yuri>yuri yuri FUCKING KISS ALREADYçwlw yuri canonügirl love yuri. yuriüyuri yuri yuri yuriçi love girls canonüyuri yuri.</yuri>
-	</yuri>
-</girl love>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NO_PLAYSTATIONPLUS">
+		<value>Çevrimiçi çok oyunculu için PlayStation®Plus gereklidir.</value>
+	</data>
+	<data name="IDS_PLAY_OFFLINE">
+		<value>Çevrimdışı Oyna</value>
+	</data>
+	<data name="IDS_PLAYSTATIONPLUS_SIGNUP">
+		<value>PlayStation®Plus'a Üye Ol</value>
+	</data>
+	<data name="IDS_PRESS_X_TO_JOIN">
+		<value>Oyuna katılmak için {*CONTROLLER_VK_A*} bas</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TITLE">
+		<value>Güncelleme Mevcut</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TEXT">
+		<value>Bu oyun için bir güncelleme mevcut. Lütfen devam etmek için güncellemeyi indirin.</value>
+	</data>
+</root>

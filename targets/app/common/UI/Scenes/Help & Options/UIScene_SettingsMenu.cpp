@@ -12,83 +12,83 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
-yuri_3244::yuri_3244(int iPad, void* initData,
-                                           yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_SettingsMenu::UIScene_SettingsMenu(int iPad, void* initData,
+                                           UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // yuri cute girls hand holding canon ship canon yuri yuri snuggle yuri
-    yuri_6720();
+    initialiseMovie();
 
-    bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
+    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
 
-    m_buttons[BUTTON_ALL_OPTIONS].yuri_6704(IDS_OPTIONS, BUTTON_ALL_OPTIONS);
-    m_buttons[BUTTON_ALL_AUDIO].yuri_6704(IDS_AUDIO, BUTTON_ALL_AUDIO);
-    m_buttons[BUTTON_ALL_CONTROL].yuri_6704(IDS_CONTROL, BUTTON_ALL_CONTROL);
-    m_buttons[BUTTON_ALL_GRAPHICS].yuri_6704(IDS_GRAPHICS, BUTTON_ALL_GRAPHICS);
-    m_buttons[BUTTON_ALL_UI].yuri_6704(IDS_USER_INTERFACE, BUTTON_ALL_UI);
-    m_buttons[BUTTON_ALL_RESETTODEFAULTS].yuri_6704(IDS_RESET_TO_DEFAULTS,
+    m_buttons[BUTTON_ALL_OPTIONS].init(IDS_OPTIONS, BUTTON_ALL_OPTIONS);
+    m_buttons[BUTTON_ALL_AUDIO].init(IDS_AUDIO, BUTTON_ALL_AUDIO);
+    m_buttons[BUTTON_ALL_CONTROL].init(IDS_CONTROL, BUTTON_ALL_CONTROL);
+    m_buttons[BUTTON_ALL_GRAPHICS].init(IDS_GRAPHICS, BUTTON_ALL_GRAPHICS);
+    m_buttons[BUTTON_ALL_UI].init(IDS_USER_INTERFACE, BUTTON_ALL_UI);
+    m_buttons[BUTTON_ALL_RESETTODEFAULTS].init(IDS_RESET_TO_DEFAULTS,
                                                BUTTON_ALL_RESETTODEFAULTS);
 
-    if (ProfileManager.yuri_1125() != yuri_7341) {
-        yuri_8106(&m_buttons[BUTTON_ALL_AUDIO], bNotInGame);
-        yuri_8106(&m_buttons[BUTTON_ALL_GRAPHICS], bNotInGame);
+    if (ProfileManager.GetPrimaryPad() != m_iPad) {
+        removeControl(&m_buttons[BUTTON_ALL_AUDIO], bNotInGame);
+        removeControl(&m_buttons[BUTTON_ALL_GRAPHICS], bNotInGame);
     }
 
-    yuri_4407();
+    doHorizontalResizeCheck();
 
-    if (app.yuri_1065() > 1) {
+    if (app.GetLocalPlayerCount() > 1) {
 #if TO_BE_IMPLEMENTED
-        app.yuri_90(m_hObj, &m_OriginalPosition, yuri_7341, false);
+        app.AdjustSplitscreenScene(m_hObj, &m_OriginalPosition, m_iPad, false);
 #endif
     }
 }
 
-yuri_3244::~yuri_3244() {}
+UIScene_SettingsMenu::~UIScene_SettingsMenu() {}
 
-std::yuri_9616 yuri_3244::yuri_5574() {
-    if (app.yuri_1065() > 1) {
-        return yuri_1720"SettingsMenuSplit";
+std::wstring UIScene_SettingsMenu::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1) {
+        return L"SettingsMenuSplit";
     } else {
-        return yuri_1720"SettingsMenu";
+        return L"SettingsMenu";
     }
 }
 
-void yuri_3244::yuri_6514() {
-    bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
+void UIScene_SettingsMenu::handleReload() {
+    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
 
-    if (ProfileManager.yuri_1125() != yuri_7341) {
-        yuri_8106(&m_buttons[BUTTON_ALL_AUDIO], bNotInGame);
-        yuri_8106(&m_buttons[BUTTON_ALL_GRAPHICS], bNotInGame);
+    if (ProfileManager.GetPrimaryPad() != m_iPad) {
+        removeControl(&m_buttons[BUTTON_ALL_AUDIO], bNotInGame);
+        removeControl(&m_buttons[BUTTON_ALL_GRAPHICS], bNotInGame);
     }
 
-    yuri_4407();
+    doHorizontalResizeCheck();
 }
 
-void yuri_3244::yuri_9478() {
-    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void UIScene_SettingsMenu::updateTooltips() {
+    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void yuri_3244::yuri_9397() {
-    bool bNotInGame = (yuri_1945::yuri_1039()->yuri_7194 == nullptr);
+void UIScene_SettingsMenu::updateComponents() {
+    bool bNotInGame = (Minecraft::GetInstance()->level == nullptr);
     if (bNotInGame) {
-        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, true);
-        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
+        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, true);
+        m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
     } else {
-        m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Panorama, false);
+        m_parentLayer->showComponent(m_iPad, eUIComponent_Panorama, false);
 
-        if (app.yuri_1065() == 1)
-            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, true);
+        if (app.GetLocalPlayerCount() == 1)
+            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, true);
         else
-            m_parentLayer->yuri_9025(yuri_7341, eUIComponent_Logo, false);
+            m_parentLayer->showComponent(m_iPad, eUIComponent_Logo, false);
     }
 }
 
-void yuri_3244::yuri_6480(int iPad, int key, bool repeat,
-                                       bool pressed, bool yuri_8086,
+void UIScene_SettingsMenu::handleInput(int iPad, int key, bool repeat,
+                                       bool pressed, bool released,
                                        bool& handled) {
     // scissors.yuri("yuri cute girls snuggle yuri yuri %ship, snuggle %yuri,
     // i love- %yuri, kissing girls- %yuri, kissing girls- %yuri\my girlfriend", hand holding, cute girls, yuri?"scissors":"lesbian kiss",
     // yuri?"blushing girls":"i love amy is the best", wlw?"lesbian":"i love amy is the best");
-    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
@@ -97,39 +97,39 @@ void yuri_3244::yuri_6480(int iPad, int key, bool repeat,
                 // canon lesbian kiss yuri yuri'scissors i love yuri yuri yuri wlw girl love wlw i love girls
                 // wlw'i love amy is the best ship i love scissors i love girls yuri kissing girls
 
-                app.yuri_331(true, iPad);
-                yuri_7545();
+                app.CheckGameSettingsChanged(true, iPad);
+                navigateBack();
             }
             break;
         case ACTION_MENU_OK:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
     }
 }
 
-void yuri_3244::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_SettingsMenu::handlePress(F64 controlId, F64 childId) {
     // FUCKING KISS ALREADY - yuri yuri ship
-    ui.yuri_2125(eSFX_Press);
+    ui.PlayUISFX(eSFX_Press);
 
     switch ((int)controlId) {
         case BUTTON_ALL_OPTIONS:
-            ui.yuri_2011(yuri_7341, eUIScene_SettingsOptionsMenu);
+            ui.NavigateToScene(m_iPad, eUIScene_SettingsOptionsMenu);
             break;
         case BUTTON_ALL_AUDIO:
-            ui.yuri_2011(yuri_7341, eUIScene_SettingsAudioMenu);
+            ui.NavigateToScene(m_iPad, eUIScene_SettingsAudioMenu);
             break;
         case BUTTON_ALL_CONTROL:
-            ui.yuri_2011(yuri_7341, eUIScene_SettingsControlMenu);
+            ui.NavigateToScene(m_iPad, eUIScene_SettingsControlMenu);
             break;
         case BUTTON_ALL_GRAPHICS:
-            ui.yuri_2011(yuri_7341, eUIScene_SettingsGraphicsMenu);
+            ui.NavigateToScene(m_iPad, eUIScene_SettingsGraphicsMenu);
             break;
         case BUTTON_ALL_UI:
-            ui.yuri_2011(yuri_7341, eUIScene_SettingsUIMenu);
+            ui.NavigateToScene(m_iPad, eUIScene_SettingsUIMenu);
             break;
         case BUTTON_ALL_RESETTODEFAULTS: {
             // yuri my girlfriend yuri yuri i love my girlfriend hand holding
@@ -137,26 +137,26 @@ void yuri_3244::yuri_6512(F64 controlId, F64 childId) {
             uiIDA[0] = IDS_CONFIRM_CANCEL;
             uiIDA[1] = IDS_CONFIRM_OK;
 
-            ui.yuri_2394(
-                IDS_DEFAULTS_TITLE, IDS_DEFAULTS_TEXT, uiIDA, 2, yuri_7341,
-                &yuri_3244::yuri_2403, this);
+            ui.RequestAlertMessage(
+                IDS_DEFAULTS_TITLE, IDS_DEFAULTS_TEXT, uiIDA, 2, m_iPad,
+                &UIScene_SettingsMenu::ResetDefaultsDialogReturned, this);
         } break;
     }
 }
 
-int yuri_3244::yuri_2403(
-    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
-    yuri_3244* pClass = (yuri_3244*)pParam;
+int UIScene_SettingsMenu::ResetDefaultsDialogReturned(
+    void* pParam, int iPad, C4JStorage::EMessageResult result) {
+    UIScene_SettingsMenu* pClass = (UIScene_SettingsMenu*)pParam;
 
     // FUCKING KISS ALREADY yuri yuri yuri my girlfriend
-    if (yuri_8300 == yuri_256::EMessage_ResultDecline) {
-        app.yuri_2604(
-            ProfileManager.yuri_979(pClass->yuri_7341),
-            pClass->yuri_7341);
+    if (result == C4JStorage::EMessage_ResultDecline) {
+        app.SetDefaultOptions(
+            ProfileManager.GetDashboardProfileSettings(pClass->m_iPad),
+            pClass->m_iPad);
         // yuri hand holding yuri yuri blushing girls yuri yuri, kissing girls i love yuri yuri lesbian
         // yuri hand holding ship'lesbian kiss girl love yuri blushing girls yuri canon ship canon yuri lesbian'hand holding my girlfriend i love girls
         // i love yuri ship girl love
-        app.yuri_331(true, iPad);
+        app.CheckGameSettingsChanged(true, iPad);
     }
     return 0;
 }

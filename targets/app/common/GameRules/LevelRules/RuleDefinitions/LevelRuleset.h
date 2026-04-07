@@ -1,36 +1,36 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "CompoundGameRuleDefinition.h"
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 
-class yuri_2008;
-class yuri_0;
-class yuri_2974;
+class NamedAreaRuleDefinition;
+class AABB;
+class StringTable;
 
-class yuri_1768 : public yuri_408 {
+class LevelRuleset : public CompoundGameRuleDefinition {
 private:
-    std::vector<yuri_2008*> m_areas;
-    yuri_2974* yuri_7386;
+    std::vector<NamedAreaRuleDefinition*> m_areas;
+    StringTable* m_stringTable;
 
 public:
-    yuri_1768();
-    ~yuri_1768();
+    LevelRuleset();
+    ~LevelRuleset();
 
-    virtual void yuri_5002(std::vector<yuri_919*>* children);
-    virtual yuri_919* yuri_3592(
+    virtual void getChildren(std::vector<GameRuleDefinition*>* children);
+    virtual GameRuleDefinition* addChild(
         ConsoleGameRules::EGameRuleType ruleType);
 
-    virtual ConsoleGameRules::EGameRuleType yuri_4860() {
+    virtual ConsoleGameRules::EGameRuleType getActionType() {
         return ConsoleGameRules::eGameRuleType_LevelRules;
     }
 
-    void yuri_7276(yuri_2974* table);
-    const wchar_t* yuri_5969(const std::yuri_9616& key);
+    void loadStringTable(StringTable* table);
+    const wchar_t* getString(const std::wstring& key);
 
-    yuri_0* yuri_5580(const std::yuri_9616& areaName);
+    AABB* getNamedArea(const std::wstring& areaName);
 
-    yuri_2974* yuri_5970() { return yuri_7386; }
+    StringTable* getStringTable() { return m_stringTable; }
 };

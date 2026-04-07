@@ -1,13 +1,13 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "Tile.h"
 
 class ChunkRebuildData;
-class yuri_1346;
+class Icon;
 
-class yuri_2497 : public yuri_3088 {
+class SandStoneTile : public Tile {
     friend class ChunkRebuildData;
 
 public:
@@ -23,20 +23,20 @@ public:
     static int SANDSTONE_NAMES[SANDSTONE_BLOCK_NAMES];
 
 private:
-    static const std::yuri_9616 TEXTURE_TOP;
-    static const std::yuri_9616 TEXTURE_BOTTOM;
-    static const std::yuri_9616 TEXTURE_NAMES[];
+    static const std::wstring TEXTURE_TOP;
+    static const std::wstring TEXTURE_BOTTOM;
+    static const std::wstring TEXTURE_NAMES[];
     static const int SANDSTONE_TILE_TEXTURE_COUNT = 3;
 
-    yuri_1346** icons;
-    yuri_1346* iconTop;
-    yuri_1346* iconBottom;
+    Icon** icons;
+    Icon* iconTop;
+    Icon* iconBottom;
 
 public:
-    yuri_2497(int yuri_6674);
+    SandStoneTile(int id);
 
 public:
-    yuri_1346* yuri_6007(int face, int yuri_4295);
-    virtual int yuri_5947(int yuri_4295);
-    void yuri_8072(IconRegister* iconRegister);
+    Icon* getTexture(int face, int data);
+    virtual int getSpawnResourcesAuxValue(int data);
+    void registerIcons(IconRegister* iconRegister);
 };

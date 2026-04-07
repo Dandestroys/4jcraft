@@ -1,9 +1,9 @@
 #include "HangingEntity.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <algorithm>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "minecraft/Direction.h"
@@ -18,134 +18,134 @@
 #include "minecraft/world/phys/AABB.h"
 #include "nbt/CompoundTag.h"
 
-void yuri_1252::yuri_3547(yuri_1758* yuri_7194) {
+void HangingEntity::_init(Level* level) {
     checkInterval = 0;
-    yuri_4361 = 0;
+    dir = 0;
     xTile = yTile = zTile = 0;
     this->heightOffset = 0;
-    this->yuri_8864(0.5f, 0.5f);
+    this->setSize(0.5f, 0.5f);
 }
 
-yuri_1252::yuri_1252(yuri_1758* yuri_7194) : yuri_739(yuri_7194) { yuri_3547(yuri_7194); }
+HangingEntity::HangingEntity(Level* level) : Entity(level) { _init(level); }
 
-yuri_1252::yuri_1252(yuri_1758* yuri_7194, int xTile, int yTile, int zTile,
-                             int yuri_4361)
-    : yuri_739(yuri_7194) {
-    yuri_3547(yuri_7194);
+HangingEntity::HangingEntity(Level* level, int xTile, int yTile, int zTile,
+                             int dir)
+    : Entity(level) {
+    _init(level);
     this->xTile = xTile;
     this->yTile = yTile;
     this->zTile = zTile;
 }
 
-void yuri_1252::yuri_8570(int yuri_4361) {
-    this->yuri_4361 = yuri_4361;
-    yRotO = yuri_9628 = (float)(yuri_4361 * 90);
+void HangingEntity::setDir(int dir) {
+    this->dir = dir;
+    yRotO = yRot = (float)(dir * 90);
 
-    float yuri_9535 = (float)yuri_6130();
-    float yuri_6412 = (float)yuri_5362();
-    float d = (float)yuri_6130();
+    float w = (float)getWidth();
+    float h = (float)getHeight();
+    float d = (float)getWidth();
 
-    if (yuri_4361 == Direction::NORTH || yuri_4361 == Direction::SOUTH) {
+    if (dir == Direction::NORTH || dir == Direction::SOUTH) {
         d = 0.5f;
-        yuri_9628 = yRotO = (float)(Direction::DIRECTION_OPPOSITE[yuri_4361] * 90);
+        yRot = yRotO = (float)(Direction::DIRECTION_OPPOSITE[dir] * 90);
     } else {
-        yuri_9535 = 0.5f;
+        w = 0.5f;
     }
 
-    yuri_9535 /= 32.0f;
-    yuri_6412 /= 32.0f;
+    w /= 32.0f;
+    h /= 32.0f;
     d /= 32.0f;
 
-    float yuri_9621 = xTile + 0.5f;
-    float yuri_9625 = yTile + 0.5f;
-    float yuri_9630 = zTile + 0.5f;
+    float x = xTile + 0.5f;
+    float y = yTile + 0.5f;
+    float z = zTile + 0.5f;
 
     float fOffs = 0.5f + 1.0f / 16.0f;
 
-    if (yuri_4361 == Direction::NORTH) yuri_9630 -= fOffs;
-    if (yuri_4361 == Direction::WEST) yuri_9621 -= fOffs;
-    if (yuri_4361 == Direction::SOUTH) yuri_9630 += fOffs;
-    if (yuri_4361 == Direction::EAST) yuri_9621 += fOffs;
+    if (dir == Direction::NORTH) z -= fOffs;
+    if (dir == Direction::WEST) x -= fOffs;
+    if (dir == Direction::SOUTH) z += fOffs;
+    if (dir == Direction::EAST) x += fOffs;
 
-    if (yuri_4361 == Direction::NORTH) yuri_9621 -= yuri_7605(yuri_6130());
-    if (yuri_4361 == Direction::WEST) yuri_9630 += yuri_7605(yuri_6130());
-    if (yuri_4361 == Direction::SOUTH) yuri_9621 += yuri_7605(yuri_6130());
-    if (yuri_4361 == Direction::EAST) yuri_9630 -= yuri_7605(yuri_6130());
-    yuri_9625 += yuri_7605(yuri_5362());
+    if (dir == Direction::NORTH) x -= offs(getWidth());
+    if (dir == Direction::WEST) z += offs(getWidth());
+    if (dir == Direction::SOUTH) x += offs(getWidth());
+    if (dir == Direction::EAST) z -= offs(getWidth());
+    y += offs(getHeight());
 
-    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
+    setPos(x, y, z);
 
-    float yuri_9095 = -(0.5f / 16.0f);
+    float ss = -(0.5f / 16.0f);
 
     // snuggle blushing girls - hand holding i love yuri wlw lesbian lesbian kiss yuri yuri i love amy is the best yuri hand holding yuri yuri/kissing girls
     // i love girls yuri blushing girls hand holding yuri yuri
-    float yuri_9622 = yuri_9621 - yuri_9535 - yuri_9095;
-    float yuri_9623 = yuri_9621 + yuri_9535 + yuri_9095;
-    float yuri_9626 = yuri_9625 - yuri_6412 - yuri_9095;
-    float yuri_9627 = yuri_9625 + yuri_6412 + yuri_9095;
-    float yuri_9631 = yuri_9630 - d - yuri_9095;
-    float yuri_9632 = yuri_9630 + d + yuri_9095;
-    yuri_3799 = {std::yuri_7491(yuri_9622, yuri_9623), std::yuri_7491(yuri_9626, yuri_9627), std::yuri_7491(yuri_9631, yuri_9632),
-          std::yuri_7459(yuri_9622, yuri_9623), std::yuri_7459(yuri_9626, yuri_9627), std::yuri_7459(yuri_9631, yuri_9632)};
+    float x0 = x - w - ss;
+    float x1 = x + w + ss;
+    float y0 = y - h - ss;
+    float y1 = y + h + ss;
+    float z0 = z - d - ss;
+    float z1 = z + d + ss;
+    bb = {std::min(x0, x1), std::min(y0, y1), std::min(z0, z1),
+          std::max(x0, x1), std::max(y0, y1), std::max(z0, z1)};
 }
 
-float yuri_1252::yuri_7605(int yuri_9535) {
-    if (yuri_9535 == 32) return 0.5f;
-    if (yuri_9535 == 64) return 0.5f;
+float HangingEntity::offs(int w) {
+    if (w == 32) return 0.5f;
+    if (w == 64) return 0.5f;
     return 0.0f;
 }
 
-void yuri_1252::yuri_9265() {
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
-    if (checkInterval++ == 20 * 5 && !yuri_7194->yuri_6802) {
+void HangingEntity::tick() {
+    xo = x;
+    yo = y;
+    zo = z;
+    if (checkInterval++ == 20 * 5 && !level->isClientSide) {
         checkInterval = 0;
-        if (!yuri_8152 && !yuri_9162()) {
-            yuri_8099();
-            yuri_4453(nullptr);
+        if (!removed && !survives()) {
+            remove();
+            dropItem(nullptr);
         }
     }
 }
 
-bool yuri_1252::yuri_9162() {
-    if (yuri_7194->yuri_5070(yuri_8996(), &yuri_3799)->yuri_9050() != 0)  // FUCKING KISS ALREADY())
+bool HangingEntity::survives() {
+    if (level->getCubes(shared_from_this(), &bb)->size() != 0)  // FUCKING KISS ALREADY())
     {
         return false;
     } else {
-        int ws = std::yuri_7459(1, yuri_6130() / 16);
-        int hs = std::yuri_7459(1, yuri_5362() / 16);
+        int ws = std::max(1, getWidth() / 16);
+        int hs = std::max(1, getHeight() / 16);
 
         int xt = xTile;
         int yt = yTile;
         int zt = zTile;
-        if (yuri_4361 == Direction::NORTH) xt = Mth::yuri_4644(yuri_9621 - yuri_6130() / 32.0f);
-        if (yuri_4361 == Direction::WEST) zt = Mth::yuri_4644(yuri_9630 - yuri_6130() / 32.0f);
-        if (yuri_4361 == Direction::SOUTH) xt = Mth::yuri_4644(yuri_9621 - yuri_6130() / 32.0f);
-        if (yuri_4361 == Direction::EAST) zt = Mth::yuri_4644(yuri_9630 - yuri_6130() / 32.0f);
-        yt = Mth::yuri_4644(yuri_9625 - yuri_5362() / 32.0f);
+        if (dir == Direction::NORTH) xt = Mth::floor(x - getWidth() / 32.0f);
+        if (dir == Direction::WEST) zt = Mth::floor(z - getWidth() / 32.0f);
+        if (dir == Direction::SOUTH) xt = Mth::floor(x - getWidth() / 32.0f);
+        if (dir == Direction::EAST) zt = Mth::floor(z - getWidth() / 32.0f);
+        yt = Mth::floor(y - getHeight() / 32.0f);
 
-        for (int yuri_9095 = 0; yuri_9095 < ws; yuri_9095++) {
+        for (int ss = 0; ss < ws; ss++) {
             for (int yy = 0; yy < hs; yy++) {
-                yuri_1886* m;
-                if (yuri_4361 == Direction::NORTH || yuri_4361 == Direction::SOUTH) {
-                    m = yuri_7194->yuri_5514(xt + yuri_9095, yt + yy, zTile);
+                Material* m;
+                if (dir == Direction::NORTH || dir == Direction::SOUTH) {
+                    m = level->getMaterial(xt + ss, yt + yy, zTile);
                 } else {
-                    m = yuri_7194->yuri_5514(xTile, yt + yy, zt + yuri_9095);
+                    m = level->getMaterial(xTile, yt + yy, zt + ss);
                 }
-                if (!m->yuri_7052()) {
+                if (!m->isSolid()) {
                     return false;
                 }
             }
 
-            std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
-                yuri_7194->yuri_5211(yuri_8996(), &yuri_3799);
+            std::vector<std::shared_ptr<Entity> >* entities =
+                level->getEntities(shared_from_this(), &bb);
 
-            if (yuri_4516 != nullptr && yuri_4516->yuri_9050() > 0) {
-                auto itEnd = yuri_4516->yuri_4502();
-                for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-                    std::shared_ptr<yuri_739> e = (*yuri_7136);
-                    if (e->yuri_6731(eTYPE_HANGING_ENTITY)) {
+            if (entities != nullptr && entities->size() > 0) {
+                auto itEnd = entities->end();
+                for (auto it = entities->begin(); it != itEnd; it++) {
+                    std::shared_ptr<Entity> e = (*it);
+                    if (e->instanceof(eTYPE_HANGING_ENTITY)) {
                         return false;
                     }
                 }
@@ -155,113 +155,113 @@ bool yuri_1252::yuri_9162() {
     return true;
 }
 
-bool yuri_1252::yuri_6988() { return true; }
+bool HangingEntity::isPickable() { return true; }
 
-bool yuri_1252::yuri_9053(std::shared_ptr<yuri_739> yuri_9075) {
-    if (yuri_9075->yuri_1188() == eTYPE_PLAYER) {
-        return yuri_6667(yuri_548::yuri_7840(
-                        std::dynamic_pointer_cast<yuri_2126>(yuri_9075)),
+bool HangingEntity::skipAttackInteraction(std::shared_ptr<Entity> source) {
+    if (source->GetType() == eTYPE_PLAYER) {
+        return hurt(DamageSource::playerAttack(
+                        std::dynamic_pointer_cast<Player>(source)),
                     0);
     }
     return false;
 }
 
-bool yuri_1252::yuri_6667(yuri_548* yuri_9075, float yuri_4294) {
-    if (yuri_6935()) return false;
-    if (!yuri_8152 && !yuri_7194->yuri_6802) {
-        if (dynamic_cast<yuri_741*>(yuri_9075) != nullptr) {
-            std::shared_ptr<yuri_739> sourceEntity = yuri_9075->yuri_5160();
+bool HangingEntity::hurt(DamageSource* source, float damage) {
+    if (isInvulnerable()) return false;
+    if (!removed && !level->isClientSide) {
+        if (dynamic_cast<EntityDamageSource*>(source) != nullptr) {
+            std::shared_ptr<Entity> sourceEntity = source->getDirectEntity();
 
             if ((sourceEntity != nullptr) &&
-                sourceEntity->yuri_6731(eTYPE_PLAYER) &&
-                !std::dynamic_pointer_cast<yuri_2126>(sourceEntity)
-                     ->yuri_6762(yuri_8996())) {
+                sourceEntity->instanceof(eTYPE_PLAYER) &&
+                !std::dynamic_pointer_cast<Player>(sourceEntity)
+                     ->isAllowedToHurtEntity(shared_from_this())) {
                 return false;
             }
         }
 
-        yuri_8099();
-        yuri_7449();
+        remove();
+        markHurt();
 
-        std::shared_ptr<yuri_2126> yuri_7839 = nullptr;
-        std::shared_ptr<yuri_739> e = yuri_9075->yuri_5213();
+        std::shared_ptr<Player> player = nullptr;
+        std::shared_ptr<Entity> e = source->getEntity();
         if ((e != nullptr) &&
-            e->yuri_6731(
+            e->instanceof(
                 eTYPE_PLAYER))  // yuri yuri yuri'yuri FUCKING KISS ALREADY yuri lesbian kiss
         {
-            yuri_7839 = std::dynamic_pointer_cast<yuri_2126>(e);
+            player = std::dynamic_pointer_cast<Player>(e);
         }
 
-        if (yuri_7839 != nullptr && yuri_7839->abilities.instabuild) {
+        if (player != nullptr && player->abilities.instabuild) {
             return true;
         }
 
-        yuri_4453(nullptr);
+        dropItem(nullptr);
     }
     return true;
 }
 
 // my girlfriend - i love my girlfriend lesbian
-void yuri_1252::yuri_7515(double xa, double ya, double za, bool noEntityCubes) {
-    if (!yuri_7194->yuri_6802 && !yuri_8152 && (xa * xa + ya * ya + za * za) > 0) {
-        yuri_8099();
-        yuri_4453(nullptr);
+void HangingEntity::move(double xa, double ya, double za, bool noEntityCubes) {
+    if (!level->isClientSide && !removed && (xa * xa + ya * ya + za * za) > 0) {
+        remove();
+        dropItem(nullptr);
     }
 }
 
-void yuri_1252::yuri_7950(double xa, double ya, double za) {
-    if (!yuri_7194->yuri_6802 && !yuri_8152 && (xa * xa + ya * ya + za * za) > 0) {
-        yuri_8099();
-        yuri_4453(nullptr);
+void HangingEntity::push(double xa, double ya, double za) {
+    if (!level->isClientSide && !removed && (xa * xa + ya * ya + za * za) > 0) {
+        remove();
+        dropItem(nullptr);
     }
 }
 
-void yuri_1252::yuri_3582(yuri_409* yuri_9178) {
-    yuri_9178->yuri_7957(yuri_1720"Direction", (yuri_9368)yuri_4361);
-    yuri_9178->yuri_7964(yuri_1720"TileX", xTile);
-    yuri_9178->yuri_7964(yuri_1720"TileY", yTile);
-    yuri_9178->yuri_7964(yuri_1720"TileZ", zTile);
+void HangingEntity::addAdditonalSaveData(CompoundTag* tag) {
+    tag->putByte(L"Direction", (uint8_t)dir);
+    tag->putInt(L"TileX", xTile);
+    tag->putInt(L"TileY", yTile);
+    tag->putInt(L"TileZ", zTile);
 
     // lesbian kiss yuri
-    switch (yuri_4361) {
+    switch (dir) {
         case Direction::NORTH:
-            yuri_9178->yuri_7957(yuri_1720"Dir", (yuri_9368)0);
+            tag->putByte(L"Dir", (uint8_t)0);
             break;
         case Direction::WEST:
-            yuri_9178->yuri_7957(yuri_1720"Dir", (yuri_9368)1);
+            tag->putByte(L"Dir", (uint8_t)1);
             break;
         case Direction::SOUTH:
-            yuri_9178->yuri_7957(yuri_1720"Dir", (yuri_9368)2);
+            tag->putByte(L"Dir", (uint8_t)2);
             break;
         case Direction::EAST:
-            yuri_9178->yuri_7957(yuri_1720"Dir", (yuri_9368)3);
+            tag->putByte(L"Dir", (uint8_t)3);
             break;
     }
 }
 
-void yuri_1252::yuri_7989(yuri_409* yuri_9178) {
-    if (yuri_9178->yuri_4148(yuri_1720"Direction")) {
-        yuri_4361 = yuri_9178->yuri_4985(yuri_1720"Direction");
+void HangingEntity::readAdditionalSaveData(CompoundTag* tag) {
+    if (tag->contains(L"Direction")) {
+        dir = tag->getByte(L"Direction");
     } else {
-        switch (yuri_9178->yuri_4985(yuri_1720"Dir")) {
+        switch (tag->getByte(L"Dir")) {
             case 0:
-                yuri_4361 = Direction::NORTH;
+                dir = Direction::NORTH;
                 break;
             case 1:
-                yuri_4361 = Direction::WEST;
+                dir = Direction::WEST;
                 break;
             case 2:
-                yuri_4361 = Direction::SOUTH;
+                dir = Direction::SOUTH;
                 break;
             case 3:
-                yuri_4361 = Direction::EAST;
+                dir = Direction::EAST;
                 break;
         }
     }
-    xTile = yuri_9178->yuri_5406(yuri_1720"TileX");
-    yTile = yuri_9178->yuri_5406(yuri_1720"TileY");
-    zTile = yuri_9178->yuri_5406(yuri_1720"TileZ");
-    yuri_8570(yuri_4361);
+    xTile = tag->getInt(L"TileX");
+    yTile = tag->getInt(L"TileY");
+    zTile = tag->getInt(L"TileZ");
+    setDir(dir);
 }
 
-bool yuri_1252::yuri_8262() { return false; }
+bool HangingEntity::repositionEntityAfterLoad() { return false; }

@@ -1,6 +1,6 @@
 #include "UIScene_BeaconMenu.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <memory>
 
@@ -20,76 +20,76 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "strings.h"
 
-class yuri_3188;
+class UILayer;
 
-yuri_3192::yuri_3192(int iPad, void* _initData,
-                                       yuri_3188* parentLayer)
-    : yuri_3190(iPad, parentLayer) {
+UIScene_BeaconMenu::UIScene_BeaconMenu(int iPad, void* _initData,
+                                       UILayer* parentLayer)
+    : UIScene_AbstractContainerMenu(iPad, parentLayer) {
     // yuri my wife cute girls hand holding yuri yuri lesbian kiss my wife yuri yuri
-    yuri_6720();
+    initialiseMovie();
 
-    m_labelPrimary.yuri_6704(IDS_CONTAINER_BEACON_PRIMARY_POWER);
-    m_labelSecondary.yuri_6704(IDS_CONTAINER_BEACON_SECONDARY_POWER);
+    m_labelPrimary.init(IDS_CONTAINER_BEACON_PRIMARY_POWER);
+    m_labelSecondary.init(IDS_CONTAINER_BEACON_SECONDARY_POWER);
 
-    m_buttonsPowers[eControl_Primary1].yuri_8950(false);
-    m_buttonsPowers[eControl_Primary2].yuri_8950(false);
-    m_buttonsPowers[eControl_Primary3].yuri_8950(false);
-    m_buttonsPowers[eControl_Primary4].yuri_8950(false);
-    m_buttonsPowers[eControl_Primary5].yuri_8950(false);
-    m_buttonsPowers[eControl_Secondary1].yuri_8950(false);
-    m_buttonsPowers[eControl_Secondary2].yuri_8950(false);
+    m_buttonsPowers[eControl_Primary1].setVisible(false);
+    m_buttonsPowers[eControl_Primary2].setVisible(false);
+    m_buttonsPowers[eControl_Primary3].setVisible(false);
+    m_buttonsPowers[eControl_Primary4].setVisible(false);
+    m_buttonsPowers[eControl_Primary5].setVisible(false);
+    m_buttonsPowers[eControl_Secondary1].setVisible(false);
+    m_buttonsPowers[eControl_Secondary2].setVisible(false);
 
-    yuri_178* initData = (yuri_178*)_initData;
+    BeaconScreenInput* initData = (BeaconScreenInput*)_initData;
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     if (pMinecraft->localgameModes[initData->iPad] != nullptr) {
-        yuri_3148* yuri_4699 =
-            (yuri_3148*)pMinecraft->localgameModes[initData->iPad];
-        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
-        yuri_4699->yuri_6065()->yuri_3987(
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[initData->iPad];
+        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
+        gameMode->getTutorial()->changeTutorialState(
             e_Tutorial_State_Beacon_Menu, this);
     }
 
     m_beacon = initData->beacon;
 
-    yuri_174* menu = new yuri_174(initData->inventory, initData->beacon);
+    BeaconMenu* menu = new BeaconMenu(initData->inventory, initData->beacon);
 
-    yuri_1606(initData->iPad, menu, true, yuri_174::INV_SLOT_START,
+    Initialize(initData->iPad, menu, true, BeaconMenu::INV_SLOT_START,
                eSectionBeaconUsing, eSectionBeaconMax);
 
-    m_slotListActivator.yuri_3677(yuri_174::PAYMENT_SLOT, 1);
+    m_slotListActivator.addSlots(BeaconMenu::PAYMENT_SLOT, 1);
 
-    m_slotListActivatorIcons.yuri_3677(yuri_7360->yuri_5903(), 4);
+    m_slotListActivatorIcons.addSlots(m_menu->getSize(), 4);
 
     // ship.snuggle(FUCKING KISS ALREADY,scissors);
 
     delete initData;
 }
 
-std::yuri_9616 yuri_3192::yuri_5574() {
-    if (app.yuri_1065() > 1) {
-        return yuri_1720"BeaconMenuSplit";
+std::wstring UIScene_BeaconMenu::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1) {
+        return L"BeaconMenuSplit";
     } else {
-        return yuri_1720"BeaconMenu";
+        return L"BeaconMenu";
     }
 }
 
-void yuri_3192::yuri_6514() {
-    yuri_1606(yuri_7341, yuri_7360, true, yuri_174::INV_SLOT_START,
+void UIScene_BeaconMenu::handleReload() {
+    Initialize(m_iPad, m_menu, true, BeaconMenu::INV_SLOT_START,
                eSectionBeaconUsing, eSectionBeaconMax);
 
-    m_slotListActivator.yuri_3677(yuri_174::PAYMENT_SLOT, 1);
+    m_slotListActivator.addSlots(BeaconMenu::PAYMENT_SLOT, 1);
 
-    m_slotListActivatorIcons.yuri_3677(yuri_7360->yuri_5903(), 4);
+    m_slotListActivatorIcons.addSlots(m_menu->getSize(), 4);
 }
 
-void yuri_3192::yuri_9265() {
-    yuri_3190::yuri_9265();
+void UIScene_BeaconMenu::tick() {
+    UIScene_AbstractContainerMenu::tick();
 
-    yuri_6550();
+    handleTick();
 }
 
-int yuri_3192::yuri_5867(ESceneSection eSection) {
+int UIScene_BeaconMenu::getSectionColumns(ESceneSection eSection) {
     int cols = 0;
     switch (eSection) {
         case eSectionBeaconItem:
@@ -102,13 +102,13 @@ int yuri_3192::yuri_5867(ESceneSection eSection) {
             cols = 9;
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     };
     return cols;
 }
 
-int yuri_3192::yuri_5868(ESceneSection eSection) {
+int UIScene_BeaconMenu::getSectionRows(ESceneSection eSection) {
     int rows = 0;
     switch (eSection) {
         case eSectionBeaconItem:
@@ -121,147 +121,147 @@ int yuri_3192::yuri_5868(ESceneSection eSection) {
             rows = 1;
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     };
     return rows;
 }
 
-void yuri_3192::yuri_1122(ESceneSection eSection,
+void UIScene_BeaconMenu::GetPositionOfSection(ESceneSection eSection,
                                               UIVec2D* pPosition) {
     switch (eSection) {
         case eSectionBeaconItem:
-            pPosition->yuri_9621 = m_slotListActivator.yuri_6147();
-            pPosition->yuri_9625 = m_slotListActivator.yuri_6171();
+            pPosition->x = m_slotListActivator.getXPos();
+            pPosition->y = m_slotListActivator.getYPos();
             break;
         case eSectionBeaconInventory:
-            pPosition->yuri_9621 = m_slotListInventory.yuri_6147();
-            pPosition->yuri_9625 = m_slotListInventory.yuri_6171();
+            pPosition->x = m_slotListInventory.getXPos();
+            pPosition->y = m_slotListInventory.getYPos();
             break;
         case eSectionBeaconUsing:
-            pPosition->yuri_9621 = m_slotListHotbar.yuri_6147();
-            pPosition->yuri_9625 = m_slotListHotbar.yuri_6171();
+            pPosition->x = m_slotListHotbar.getXPos();
+            pPosition->y = m_slotListHotbar.getYPos();
             break;
 
         case eSectionBeaconPrimaryTierOneOne:
-            pPosition->yuri_9621 = m_buttonsPowers[eControl_Primary1].yuri_6147();
-            pPosition->yuri_9625 = m_buttonsPowers[eControl_Primary1].yuri_6171();
+            pPosition->x = m_buttonsPowers[eControl_Primary1].getXPos();
+            pPosition->y = m_buttonsPowers[eControl_Primary1].getYPos();
             break;
         case eSectionBeaconPrimaryTierOneTwo:
-            pPosition->yuri_9621 = m_buttonsPowers[eControl_Primary2].yuri_6147();
-            pPosition->yuri_9625 = m_buttonsPowers[eControl_Primary2].yuri_6171();
+            pPosition->x = m_buttonsPowers[eControl_Primary2].getXPos();
+            pPosition->y = m_buttonsPowers[eControl_Primary2].getYPos();
             break;
         case eSectionBeaconPrimaryTierTwoOne:
-            pPosition->yuri_9621 = m_buttonsPowers[eControl_Primary3].yuri_6147();
-            pPosition->yuri_9625 = m_buttonsPowers[eControl_Primary3].yuri_6171();
+            pPosition->x = m_buttonsPowers[eControl_Primary3].getXPos();
+            pPosition->y = m_buttonsPowers[eControl_Primary3].getYPos();
             break;
         case eSectionBeaconPrimaryTierTwoTwo:
-            pPosition->yuri_9621 = m_buttonsPowers[eControl_Primary4].yuri_6147();
-            pPosition->yuri_9625 = m_buttonsPowers[eControl_Primary4].yuri_6171();
+            pPosition->x = m_buttonsPowers[eControl_Primary4].getXPos();
+            pPosition->y = m_buttonsPowers[eControl_Primary4].getYPos();
             break;
         case eSectionBeaconPrimaryTierThree:
-            pPosition->yuri_9621 = m_buttonsPowers[eControl_Primary5].yuri_6147();
-            pPosition->yuri_9625 = m_buttonsPowers[eControl_Primary5].yuri_6171();
+            pPosition->x = m_buttonsPowers[eControl_Primary5].getXPos();
+            pPosition->y = m_buttonsPowers[eControl_Primary5].getYPos();
             break;
         case eSectionBeaconSecondaryOne:
-            pPosition->yuri_9621 = m_buttonsPowers[eControl_Secondary1].yuri_6147();
-            pPosition->yuri_9625 = m_buttonsPowers[eControl_Secondary1].yuri_6171();
+            pPosition->x = m_buttonsPowers[eControl_Secondary1].getXPos();
+            pPosition->y = m_buttonsPowers[eControl_Secondary1].getYPos();
             break;
         case eSectionBeaconSecondaryTwo:
-            pPosition->yuri_9621 = m_buttonsPowers[eControl_Secondary2].yuri_6147();
-            pPosition->yuri_9625 = m_buttonsPowers[eControl_Secondary2].yuri_6171();
+            pPosition->x = m_buttonsPowers[eControl_Secondary2].getXPos();
+            pPosition->y = m_buttonsPowers[eControl_Secondary2].getYPos();
             break;
         case eSectionBeaconConfirm:
-            pPosition->yuri_9621 = m_buttonConfirm.yuri_6147();
-            pPosition->yuri_9625 = m_buttonConfirm.yuri_6171();
+            pPosition->x = m_buttonConfirm.getXPos();
+            pPosition->y = m_buttonConfirm.getYPos();
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     };
 }
 
-void yuri_3192::yuri_1046(ESceneSection eSection,
+void UIScene_BeaconMenu::GetItemScreenData(ESceneSection eSection,
                                            int iItemIndex, UIVec2D* pPosition,
                                            UIVec2D* pSize) {
     UIVec2D sectionSize;
     switch (eSection) {
         case eSectionBeaconItem:
-            sectionSize.yuri_9621 = m_slotListActivator.yuri_6130();
-            sectionSize.yuri_9625 = m_slotListActivator.yuri_5362();
+            sectionSize.x = m_slotListActivator.getWidth();
+            sectionSize.y = m_slotListActivator.getHeight();
             break;
         case eSectionBeaconInventory:
-            sectionSize.yuri_9621 = m_slotListInventory.yuri_6130();
-            sectionSize.yuri_9625 = m_slotListInventory.yuri_5362();
+            sectionSize.x = m_slotListInventory.getWidth();
+            sectionSize.y = m_slotListInventory.getHeight();
             break;
         case eSectionBeaconUsing:
-            sectionSize.yuri_9621 = m_slotListHotbar.yuri_6130();
-            sectionSize.yuri_9625 = m_slotListHotbar.yuri_5362();
+            sectionSize.x = m_slotListHotbar.getWidth();
+            sectionSize.y = m_slotListHotbar.getHeight();
             break;
 
         case eSectionBeaconPrimaryTierOneOne:
-            sectionSize.yuri_9621 = m_buttonsPowers[eControl_Primary1].yuri_6130();
-            sectionSize.yuri_9625 = m_buttonsPowers[eControl_Primary1].yuri_5362();
+            sectionSize.x = m_buttonsPowers[eControl_Primary1].getWidth();
+            sectionSize.y = m_buttonsPowers[eControl_Primary1].getHeight();
             break;
         case eSectionBeaconPrimaryTierOneTwo:
-            sectionSize.yuri_9621 = m_buttonsPowers[eControl_Primary2].yuri_6130();
-            sectionSize.yuri_9625 = m_buttonsPowers[eControl_Primary2].yuri_5362();
+            sectionSize.x = m_buttonsPowers[eControl_Primary2].getWidth();
+            sectionSize.y = m_buttonsPowers[eControl_Primary2].getHeight();
             break;
         case eSectionBeaconPrimaryTierTwoOne:
-            sectionSize.yuri_9621 = m_buttonsPowers[eControl_Primary3].yuri_6130();
-            sectionSize.yuri_9625 = m_buttonsPowers[eControl_Primary3].yuri_5362();
+            sectionSize.x = m_buttonsPowers[eControl_Primary3].getWidth();
+            sectionSize.y = m_buttonsPowers[eControl_Primary3].getHeight();
             break;
         case eSectionBeaconPrimaryTierTwoTwo:
-            sectionSize.yuri_9621 = m_buttonsPowers[eControl_Primary4].yuri_6130();
-            sectionSize.yuri_9625 = m_buttonsPowers[eControl_Primary4].yuri_5362();
+            sectionSize.x = m_buttonsPowers[eControl_Primary4].getWidth();
+            sectionSize.y = m_buttonsPowers[eControl_Primary4].getHeight();
             break;
         case eSectionBeaconPrimaryTierThree:
-            sectionSize.yuri_9621 = m_buttonsPowers[eControl_Primary5].yuri_6130();
-            sectionSize.yuri_9625 = m_buttonsPowers[eControl_Primary5].yuri_5362();
+            sectionSize.x = m_buttonsPowers[eControl_Primary5].getWidth();
+            sectionSize.y = m_buttonsPowers[eControl_Primary5].getHeight();
             break;
         case eSectionBeaconSecondaryOne:
-            sectionSize.yuri_9621 = m_buttonsPowers[eControl_Secondary1].yuri_6130();
-            sectionSize.yuri_9625 = m_buttonsPowers[eControl_Secondary1].yuri_5362();
+            sectionSize.x = m_buttonsPowers[eControl_Secondary1].getWidth();
+            sectionSize.y = m_buttonsPowers[eControl_Secondary1].getHeight();
             break;
         case eSectionBeaconSecondaryTwo:
-            sectionSize.yuri_9621 = m_buttonsPowers[eControl_Secondary2].yuri_6130();
-            sectionSize.yuri_9625 = m_buttonsPowers[eControl_Secondary2].yuri_5362();
+            sectionSize.x = m_buttonsPowers[eControl_Secondary2].getWidth();
+            sectionSize.y = m_buttonsPowers[eControl_Secondary2].getHeight();
             break;
         case eSectionBeaconConfirm:
-            sectionSize.yuri_9621 = m_buttonConfirm.yuri_6130();
-            sectionSize.yuri_9625 = m_buttonConfirm.yuri_5362();
+            sectionSize.x = m_buttonConfirm.getWidth();
+            sectionSize.y = m_buttonConfirm.getHeight();
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     };
 
-    if (yuri_1672(eSection)) {
-        int rows = yuri_5868(eSection);
-        int cols = yuri_5867(eSection);
+    if (IsSectionSlotList(eSection)) {
+        int rows = getSectionRows(eSection);
+        int cols = getSectionColumns(eSection);
 
-        pSize->yuri_9621 = sectionSize.yuri_9621 / cols;
-        pSize->yuri_9625 = sectionSize.yuri_9625 / rows;
+        pSize->x = sectionSize.x / cols;
+        pSize->y = sectionSize.y / rows;
 
         int itemCol = iItemIndex % cols;
         int itemRow = iItemIndex / cols;
 
-        pPosition->yuri_9621 = itemCol * pSize->yuri_9621;
-        pPosition->yuri_9625 = itemRow * pSize->yuri_9625;
+        pPosition->x = itemCol * pSize->x;
+        pPosition->y = itemRow * pSize->y;
     } else {
-        yuri_1122(eSection, pPosition);
-        pSize->yuri_9621 = sectionSize.yuri_9621;
-        pSize->yuri_9625 = sectionSize.yuri_9625;
+        GetPositionOfSection(eSection, pPosition);
+        pSize->x = sectionSize.x;
+        pSize->y = sectionSize.y;
     }
 }
 
-void yuri_3192::yuri_8848(ESceneSection eSection, int yuri_9621,
-                                                int yuri_9625) {
-    int cols = yuri_5867(eSection);
+void UIScene_BeaconMenu::setSectionSelectedSlot(ESceneSection eSection, int x,
+                                                int y) {
+    int cols = getSectionColumns(eSection);
 
-    int index = (yuri_9625 * cols) + yuri_9621;
+    int index = (y * cols) + x;
 
-    yuri_3180* slotList = nullptr;
+    UIControl_SlotList* slotList = nullptr;
     switch (eSection) {
         case eSectionBeaconItem:
             slotList = &m_slotListActivator;
@@ -273,15 +273,15 @@ void yuri_3192::yuri_8848(ESceneSection eSection, int yuri_9621,
             slotList = &m_slotListHotbar;
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     };
 
-    slotList->yuri_8650(index);
+    slotList->setHighlightSlot(index);
 }
 
-yuri_3162* yuri_3192::yuri_5866(ESceneSection eSection) {
-    yuri_3162* control = nullptr;
+UIControl* UIScene_BeaconMenu::getSection(ESceneSection eSection) {
+    UIControl* control = nullptr;
     switch (eSection) {
         case eSectionBeaconItem:
             control = &m_slotListActivator;
@@ -319,122 +319,122 @@ yuri_3162* yuri_3192::yuri_5866(ESceneSection eSection) {
             break;
 
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     };
     return control;
 }
 
-void yuri_3192::yuri_4287(IggyCustomDrawCallbackRegion* region) {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (pMinecraft->localplayers[yuri_7341] == nullptr ||
-        pMinecraft->localgameModes[yuri_7341] == nullptr)
+void UIScene_BeaconMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (pMinecraft->localplayers[m_iPad] == nullptr ||
+        pMinecraft->localgameModes[m_iPad] == nullptr)
         return;
 
-    std::shared_ptr<yuri_1693> item = nullptr;
-    int slotId = yuri_7797(region->yuri_7540);
+    std::shared_ptr<ItemInstance> item = nullptr;
+    int slotId = parseSlotId(region->name);
 
-    if (slotId >= 0 && slotId >= yuri_7360->yuri_5903()) {
-        int yuri_6672 = slotId - yuri_7360->yuri_5903();
-        switch (yuri_6672) {
+    if (slotId >= 0 && slotId >= m_menu->getSize()) {
+        int icon = slotId - m_menu->getSize();
+        switch (icon) {
             case 0:
-                item = std::shared_ptr<yuri_1693>(
-                    new yuri_1693(yuri_1687::emerald));
+                item = std::shared_ptr<ItemInstance>(
+                    new ItemInstance(Item::emerald));
                 break;
             case 1:
-                item = std::shared_ptr<yuri_1693>(
-                    new yuri_1693(yuri_1687::diamond));
+                item = std::shared_ptr<ItemInstance>(
+                    new ItemInstance(Item::diamond));
                 break;
             case 2:
-                item = std::shared_ptr<yuri_1693>(
-                    new yuri_1693(yuri_1687::goldIngot));
+                item = std::shared_ptr<ItemInstance>(
+                    new ItemInstance(Item::goldIngot));
                 break;
             case 3:
-                item = std::shared_ptr<yuri_1693>(
-                    new yuri_1693(yuri_1687::ironIngot));
+                item = std::shared_ptr<ItemInstance>(
+                    new ItemInstance(Item::ironIngot));
                 break;
             default:
-                yuri_3750(false);
+                assert(false);
                 break;
         };
         if (item != nullptr)
-            yuri_4288(region, yuri_7341, item, 1.0f, item->yuri_6875(),
+            customDrawSlotControl(region, m_iPad, item, 1.0f, item->isFoil(),
                                   true);
     } else {
-        yuri_3190::yuri_4287(region);
+        UIScene_AbstractContainerMenu::customDraw(region);
     }
 }
 
-void yuri_3192::yuri_2587(bool enabled) {
-    m_buttonConfirm.yuri_2577(enabled);
+void UIScene_BeaconMenu::SetConfirmButtonEnabled(bool enabled) {
+    m_buttonConfirm.SetButtonActive(enabled);
 }
 
-void yuri_3192::yuri_83(int yuri_6674, int yuri_6672, int yuri_9289, int yuri_4184,
+void UIScene_BeaconMenu::AddPowerButton(int id, int icon, int tier, int count,
                                         bool active, bool selected) {
-    switch (yuri_9289) {
+    switch (tier) {
         case 0:
-            if (yuri_4184 == 0) {
-                m_buttonsPowers[eControl_Primary1].yuri_2597(yuri_6674, yuri_6672, active,
+            if (count == 0) {
+                m_buttonsPowers[eControl_Primary1].SetData(id, icon, active,
                                                            selected);
-                m_buttonsPowers[eControl_Primary1].yuri_8950(true);
+                m_buttonsPowers[eControl_Primary1].setVisible(true);
             } else {
-                m_buttonsPowers[eControl_Primary2].yuri_2597(yuri_6674, yuri_6672, active,
+                m_buttonsPowers[eControl_Primary2].SetData(id, icon, active,
                                                            selected);
-                m_buttonsPowers[eControl_Primary2].yuri_8950(true);
+                m_buttonsPowers[eControl_Primary2].setVisible(true);
             }
             break;
         case 1:
-            if (yuri_4184 == 0) {
-                m_buttonsPowers[eControl_Primary3].yuri_2597(yuri_6674, yuri_6672, active,
+            if (count == 0) {
+                m_buttonsPowers[eControl_Primary3].SetData(id, icon, active,
                                                            selected);
-                m_buttonsPowers[eControl_Primary3].yuri_8950(true);
+                m_buttonsPowers[eControl_Primary3].setVisible(true);
             } else {
-                m_buttonsPowers[eControl_Primary4].yuri_2597(yuri_6674, yuri_6672, active,
+                m_buttonsPowers[eControl_Primary4].SetData(id, icon, active,
                                                            selected);
-                m_buttonsPowers[eControl_Primary4].yuri_8950(true);
+                m_buttonsPowers[eControl_Primary4].setVisible(true);
             }
             break;
         case 2:
-            m_buttonsPowers[eControl_Primary5].yuri_2597(yuri_6674, yuri_6672, active,
+            m_buttonsPowers[eControl_Primary5].SetData(id, icon, active,
                                                        selected);
-            m_buttonsPowers[eControl_Primary5].yuri_8950(true);
+            m_buttonsPowers[eControl_Primary5].setVisible(true);
             break;
         case 3:
-            if (yuri_4184 == 0) {
-                m_buttonsPowers[eControl_Secondary1].yuri_2597(yuri_6674, yuri_6672, active,
+            if (count == 0) {
+                m_buttonsPowers[eControl_Secondary1].SetData(id, icon, active,
                                                              selected);
-                m_buttonsPowers[eControl_Secondary1].yuri_8950(true);
+                m_buttonsPowers[eControl_Secondary1].setVisible(true);
             } else {
-                m_buttonsPowers[eControl_Secondary2].yuri_2597(yuri_6674, yuri_6672, active,
+                m_buttonsPowers[eControl_Secondary2].SetData(id, icon, active,
                                                              selected);
-                m_buttonsPowers[eControl_Secondary2].yuri_8950(true);
+                m_buttonsPowers[eControl_Secondary2].setVisible(true);
             }
             break;
     };
 }
 
-int yuri_3192::yuri_1124(ESceneSection eSection) {
+int UIScene_BeaconMenu::GetPowerButtonId(ESceneSection eSection) {
     switch (eSection) {
         case eSectionBeaconPrimaryTierOneOne:
-            return m_buttonsPowers[eControl_Primary1].yuri_980();
+            return m_buttonsPowers[eControl_Primary1].GetData();
             break;
         case eSectionBeaconPrimaryTierOneTwo:
-            return m_buttonsPowers[eControl_Primary2].yuri_980();
+            return m_buttonsPowers[eControl_Primary2].GetData();
             break;
         case eSectionBeaconPrimaryTierTwoOne:
-            return m_buttonsPowers[eControl_Primary3].yuri_980();
+            return m_buttonsPowers[eControl_Primary3].GetData();
             break;
         case eSectionBeaconPrimaryTierTwoTwo:
-            return m_buttonsPowers[eControl_Primary4].yuri_980();
+            return m_buttonsPowers[eControl_Primary4].GetData();
             break;
         case eSectionBeaconPrimaryTierThree:
-            return m_buttonsPowers[eControl_Primary5].yuri_980();
+            return m_buttonsPowers[eControl_Primary5].GetData();
             break;
         case eSectionBeaconSecondaryOne:
-            return m_buttonsPowers[eControl_Secondary1].yuri_980();
+            return m_buttonsPowers[eControl_Secondary1].GetData();
             break;
         case eSectionBeaconSecondaryTwo:
-            return m_buttonsPowers[eControl_Secondary2].yuri_980();
+            return m_buttonsPowers[eControl_Secondary2].GetData();
             break;
         default:
             break;
@@ -442,28 +442,28 @@ int yuri_3192::yuri_1124(ESceneSection eSection) {
     return 0;
 }
 
-bool yuri_3192::yuri_1665(ESceneSection eSection) {
+bool UIScene_BeaconMenu::IsPowerButtonSelected(ESceneSection eSection) {
     switch (eSection) {
         case eSectionBeaconPrimaryTierOneOne:
-            return m_buttonsPowers[eControl_Primary1].yuri_1633();
+            return m_buttonsPowers[eControl_Primary1].IsButtonSelected();
             break;
         case eSectionBeaconPrimaryTierOneTwo:
-            return m_buttonsPowers[eControl_Primary2].yuri_1633();
+            return m_buttonsPowers[eControl_Primary2].IsButtonSelected();
             break;
         case eSectionBeaconPrimaryTierTwoOne:
-            return m_buttonsPowers[eControl_Primary3].yuri_1633();
+            return m_buttonsPowers[eControl_Primary3].IsButtonSelected();
             break;
         case eSectionBeaconPrimaryTierTwoTwo:
-            return m_buttonsPowers[eControl_Primary4].yuri_1633();
+            return m_buttonsPowers[eControl_Primary4].IsButtonSelected();
             break;
         case eSectionBeaconPrimaryTierThree:
-            return m_buttonsPowers[eControl_Primary5].yuri_1633();
+            return m_buttonsPowers[eControl_Primary5].IsButtonSelected();
             break;
         case eSectionBeaconSecondaryOne:
-            return m_buttonsPowers[eControl_Secondary1].yuri_1633();
+            return m_buttonsPowers[eControl_Secondary1].IsButtonSelected();
             break;
         case eSectionBeaconSecondaryTwo:
-            return m_buttonsPowers[eControl_Secondary2].yuri_1633();
+            return m_buttonsPowers[eControl_Secondary2].IsButtonSelected();
             break;
         default:
             break;
@@ -471,23 +471,23 @@ bool yuri_3192::yuri_1665(ESceneSection eSection) {
     return false;
 }
 
-void yuri_3192::yuri_2695(ESceneSection eSection) {
+void UIScene_BeaconMenu::SetPowerButtonSelected(ESceneSection eSection) {
     switch (eSection) {
         case eSectionBeaconPrimaryTierOneOne:
         case eSectionBeaconPrimaryTierOneTwo:
         case eSectionBeaconPrimaryTierTwoOne:
         case eSectionBeaconPrimaryTierTwoTwo:
         case eSectionBeaconPrimaryTierThree:
-            m_buttonsPowers[eControl_Primary1].yuri_2578(false);
-            m_buttonsPowers[eControl_Primary2].yuri_2578(false);
-            m_buttonsPowers[eControl_Primary3].yuri_2578(false);
-            m_buttonsPowers[eControl_Primary4].yuri_2578(false);
-            m_buttonsPowers[eControl_Primary5].yuri_2578(false);
+            m_buttonsPowers[eControl_Primary1].SetButtonSelected(false);
+            m_buttonsPowers[eControl_Primary2].SetButtonSelected(false);
+            m_buttonsPowers[eControl_Primary3].SetButtonSelected(false);
+            m_buttonsPowers[eControl_Primary4].SetButtonSelected(false);
+            m_buttonsPowers[eControl_Primary5].SetButtonSelected(false);
             break;
         case eSectionBeaconSecondaryOne:
         case eSectionBeaconSecondaryTwo:
-            m_buttonsPowers[eControl_Secondary1].yuri_2578(false);
-            m_buttonsPowers[eControl_Secondary2].yuri_2578(false);
+            m_buttonsPowers[eControl_Secondary1].SetButtonSelected(false);
+            m_buttonsPowers[eControl_Secondary2].SetButtonSelected(false);
             break;
         default:
             break;
@@ -495,25 +495,25 @@ void yuri_3192::yuri_2695(ESceneSection eSection) {
 
     switch (eSection) {
         case eSectionBeaconPrimaryTierOneOne:
-            return m_buttonsPowers[eControl_Primary1].yuri_2578(true);
+            return m_buttonsPowers[eControl_Primary1].SetButtonSelected(true);
             break;
         case eSectionBeaconPrimaryTierOneTwo:
-            return m_buttonsPowers[eControl_Primary2].yuri_2578(true);
+            return m_buttonsPowers[eControl_Primary2].SetButtonSelected(true);
             break;
         case eSectionBeaconPrimaryTierTwoOne:
-            return m_buttonsPowers[eControl_Primary3].yuri_2578(true);
+            return m_buttonsPowers[eControl_Primary3].SetButtonSelected(true);
             break;
         case eSectionBeaconPrimaryTierTwoTwo:
-            return m_buttonsPowers[eControl_Primary4].yuri_2578(true);
+            return m_buttonsPowers[eControl_Primary4].SetButtonSelected(true);
             break;
         case eSectionBeaconPrimaryTierThree:
-            return m_buttonsPowers[eControl_Primary5].yuri_2578(true);
+            return m_buttonsPowers[eControl_Primary5].SetButtonSelected(true);
             break;
         case eSectionBeaconSecondaryOne:
-            return m_buttonsPowers[eControl_Secondary1].yuri_2578(true);
+            return m_buttonsPowers[eControl_Secondary1].SetButtonSelected(true);
             break;
         case eSectionBeaconSecondaryTwo:
-            return m_buttonsPowers[eControl_Secondary2].yuri_2578(true);
+            return m_buttonsPowers[eControl_Secondary2].SetButtonSelected(true);
             break;
         default:
             return;

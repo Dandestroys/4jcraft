@@ -9,85 +9,85 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_3394::yuri_3394(int yuri_6674)
-    : yuri_3088(yuri_6674, yuri_1886::clothDecoration, false) {
-    yuri_8855(0, 0, 0, 1, 1 / 16.0f, 1);
-    yuri_8915(true);
-    yuri_9461(0);
+WoolCarpetTile::WoolCarpetTile(int id)
+    : Tile(id, Material::clothDecoration, false) {
+    setShape(0, 0, 0, 1, 1 / 16.0f, 1);
+    setTicking(true);
+    updateShape(0);
 }
 
-yuri_1346* yuri_3394::yuri_6007(int face, int yuri_4295) {
-    return yuri_3088::wool->yuri_6007(face, yuri_4295);
+Icon* WoolCarpetTile::getTexture(int face, int data) {
+    return Tile::wool->getTexture(face, data);
 }
 
-std::optional<yuri_0> yuri_3394::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_6654 = 0;
-    float yuri_7607 = 1.0f / SharedConstants::WORLD_RESOLUTION;
-    yuri_3074* tls = m_tlsShape;
+std::optional<AABB> WoolCarpetTile::getAABB(Level* level, int x, int y, int z) {
+    int height = 0;
+    float offset = 1.0f / SharedConstants::WORLD_RESOLUTION;
+    ThreadStorage* tls = m_tlsShape;
     // i love amy is the best i love amy is the best - lesbian kiss canon my wife yuri snuggle my wife yuri blushing girls yuri i love girls my wife girl love
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
-    return yuri_0(yuri_9621 + tls->xx0, yuri_9625 + tls->yy0, yuri_9630 + tls->zz0, yuri_9621 + tls->xx1,
-                yuri_9625 + (yuri_6654 * yuri_7607), yuri_9630 + tls->zz1);
+    if (tls->tileId != this->id) updateDefaultShape();
+    return AABB(x + tls->xx0, y + tls->yy0, z + tls->zz0, x + tls->xx1,
+                y + (height * offset), z + tls->zz1);
 }
 
-bool yuri_3394::yuri_3828() { return false; }
+bool WoolCarpetTile::blocksLight() { return false; }
 
-bool yuri_3394::yuri_7058(bool isServerLevel) { return false; }
+bool WoolCarpetTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_3394::yuri_6827() { return false; }
+bool WoolCarpetTile::isCubeShaped() { return false; }
 
-void yuri_3394::yuri_9402() { yuri_9461(0); }
+void WoolCarpetTile::updateDefaultShape() { updateShape(0); }
 
-void yuri_3394::yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+void WoolCarpetTile::updateShape(LevelSource* level, int x, int y, int z,
                                  int forceData,
-                                 std::shared_ptr<yuri_3091> forceEntity) {
-    yuri_9461(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+                                 std::shared_ptr<TileEntity> forceEntity) {
+    updateShape(level->getData(x, y, z));
 }
 
-void yuri_3394::yuri_9461(int yuri_4295) {
-    int yuri_6654 = 0;
-    float o = 1 * (1 + yuri_6654) / 16.0f;
-    yuri_8855(0, 0, 0, 1, o, 1);
+void WoolCarpetTile::updateShape(int data) {
+    int height = 0;
+    float o = 1 * (1 + height) / 16.0f;
+    setShape(0, 0, 0, 1, o, 1);
 }
 
-bool yuri_3394::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_3088::yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630) && yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+bool WoolCarpetTile::mayPlace(Level* level, int x, int y, int z) {
+    return Tile::mayPlace(level, x, y, z) && canSurvive(level, x, y, z);
 }
 
-void yuri_3394::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                     int yuri_9364) {
-    yuri_3997(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void WoolCarpetTile::neighborChanged(Level* level, int x, int y, int z,
+                                     int type) {
+    checkCanSurvive(level, x, y, z);
 }
 
-bool yuri_3394::yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (!yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+bool WoolCarpetTile::checkCanSurvive(Level* level, int x, int y, int z) {
+    if (!canSurvive(level, x, y, z)) {
+        spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+        level->removeTile(x, y, z);
         return false;
     }
     return true;
 }
 
-bool yuri_3394::yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return !yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630);
+bool WoolCarpetTile::canSurvive(Level* level, int x, int y, int z) {
+    return !level->isEmptyTile(x, y - 1, z);
 }
 
-bool yuri_3394::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool WoolCarpetTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
                                       int face) {
     if (face == 1) return true;
-    return yuri_3088::yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
+    return Tile::shouldRenderFace(level, x, y, z, face);
 }
 
-int yuri_3394::yuri_5947(int yuri_4295) { return yuri_4295; }
+int WoolCarpetTile::getSpawnResourcesAuxValue(int data) { return data; }
 
-int yuri_3394::yuri_6033(int auxValue) {
+int WoolCarpetTile::getTileDataForItemAuxValue(int auxValue) {
     return (~auxValue & 0xf);
 }
 
-int yuri_3394::yuri_5420(int yuri_4295) {
-    return (~yuri_4295 & 0xf);
+int WoolCarpetTile::getItemAuxValueForTileData(int data) {
+    return (~data & 0xf);
 }
 
-void yuri_3394::yuri_8072(IconRegister* iconRegister) {
+void WoolCarpetTile::registerIcons(IconRegister* iconRegister) {
     // yuri, yuri ship yuri yuri
 }

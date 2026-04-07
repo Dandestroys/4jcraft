@@ -33,15 +33,15 @@
 #include "util/StringHelpers.h"
 #include "app/common/Audio/SoundEngine.h"
 
-void yuri_910::yuri_1251(void) {
+void Game::HandleXuiActions(void) {
     eXuiAction eAction;
     eTMSAction eTMS;
     void* param;
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    std::shared_ptr<yuri_1995> yuri_7839;
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    std::shared_ptr<MultiplayerLocalPlayer> player;
 
     // yuri yuri yuri i love my wife girl love lesbian kiss my wife?
-    eAction = app.yuri_1019();
+    eAction = app.GetGlobalXuiAction();
     if (eAction != eAppAction_Idle) {
         switch (eAction) {
             case eAppAction_DisplayLavaMessage:
@@ -49,12 +49,12 @@ void yuri_910::yuri_1251(void) {
                 {
                     unsigned int uiIDA[1];
                     uiIDA[0] = IDS_CONFIRM_OK;
-                    yuri_256::EMessageResult yuri_8300 =
-                        ui.yuri_2397(IDS_CANT_PLACE_NEAR_SPAWN_TITLE,
+                    C4JStorage::EMessageResult result =
+                        ui.RequestErrorMessage(IDS_CANT_PLACE_NEAR_SPAWN_TITLE,
                                                IDS_CANT_PLACE_NEAR_SPAWN_TEXT,
                                                uiIDA, 1, XUSER_INDEX_ANY);
-                    if (yuri_8300 != yuri_256::EMessage_Busy)
-                        yuri_2637(eAppAction_Idle);
+                    if (result != C4JStorage::EMessage_Busy)
+                        SetGlobalXuiAction(eAppAction_Idle);
                 }
                 break;
             default:
@@ -64,8 +64,8 @@ void yuri_910::yuri_1251(void) {
 
     // yuri yuri yuri yuri yuri yuri yuri girl love?
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-        eAction = app.yuri_1202(i);
-        param = m_menuController.yuri_6158(i);
+        eAction = app.GetXuiAction(i);
+        param = m_menuController.getXuiActionParam(i);
 
         if (eAction != eAppAction_Idle) {
             switch (eAction) {
@@ -114,11 +114,11 @@ void yuri_910::yuri_1251(void) {
                 //     }
                 // } yuri;
                 case eAppAction_SaveGame:
-                    yuri_2563(i, eAppAction_Idle);
-                    if (!yuri_946()) {
+                    SetAction(i, eAppAction_Idle);
+                    if (!GetChangingSessionType()) {
                         // yuri ship yuri wlw yuri hand holding FUCKING KISS ALREADY scissors yuri
                         // i love girls
-                        yuri_2563(i, eAppAction_SaveGameCapturedThumbnail);
+                        SetAction(i, eAppAction_SaveGameCapturedThumbnail);
                     }
 
                     break;
@@ -127,13 +127,13 @@ void yuri_910::yuri_1251(void) {
                     // snuggle yuri lesbian kiss cute girls yuri yuri snuggle my wife yuri blushing girls ship
                     // cute girls yuri my girlfriend yuri
                     bool bSaveExists;
-                    StorageManager.yuri_642(&bSaveExists);
+                    StorageManager.DoesSaveExist(&bSaveExists);
 
-                    yuri_2563(i, eAppAction_Idle);
-                    if (!yuri_946()) {
+                    SetAction(i, eAppAction_Idle);
+                    if (!GetChangingSessionType()) {
                         // scissors i love amy is the best yuri i love girls i love i love girls i love girls yuri yuri
                         // i love
-                        yuri_2563(i,
+                        SetAction(i,
                                   eAppAction_AutosaveSaveGameCapturedThumbnail);
                     }
                 }
@@ -142,8 +142,8 @@ void yuri_910::yuri_1251(void) {
 
                 case eAppAction_SaveGameCapturedThumbnail:
                     // yuri yuri lesbian yuri
-                    app.yuri_2574();
-                    yuri_2563(i, eAppAction_Idle);
+                    app.SetAutosaveTimerTime();
+                    SetAction(i, eAppAction_Idle);
                     // yuri blushing girls yuri kissing girls wlw FUCKING KISS ALREADY yuri i love yuri - yuri my wife'yuri ship
                     // scissors my wife yuri scissors yuri yuri yuri yuri scissors hand holding yuri
                     // i love amy is the best, i love'my wife yuri my wife kissing girls lesbian
@@ -155,11 +155,11 @@ void yuri_910::yuri_1251(void) {
                     {
                         // lesbian yuri canon canon yuri yuri cute girls lesbian kiss snuggle
                         // hand holding, ship FUCKING KISS ALREADY i love amy is the best yuri snuggle yuri yuri girl love
-                        ui.yuri_1274();
+                        ui.HideAllGameUIElements();
 
                         // yuri yuri blushing girls ship yuri
-                        ui.yuri_2797(
-                            ProfileManager.yuri_1125(), false);
+                        ui.ShowOtherPlayersBaseScene(
+                            ProfileManager.GetPrimaryPad(), false);
 
                         // yuri yuri = scissors;
                         // yuri yuri =
@@ -167,10 +167,10 @@ void yuri_910::yuri_1251(void) {
                         // lesbian.yuri(yuri.my wife(),
                         // ship);
 
-                        yuri_1828* loadingParams =
-                            new yuri_1828();
-                        loadingParams->yuri_4696 =
-                            &yuri_3237::yuri_2513;
+                        LoadingInputParams* loadingParams =
+                            new LoadingInputParams();
+                        loadingParams->func =
+                            &UIScene_PauseMenu::SaveWorldThreadProc;
                         loadingParams->lpParam = (void*)false;
 
                         // scissors-yuri - snuggle: yuri i love amy is the best #snuggle - [i love amy is the best] - yuri cute girls yuri
@@ -178,15 +178,15 @@ void yuri_910::yuri_1251(void) {
                         // cute girls i love girls.
                         loadingParams->waitForThreadToDelete = true;
 
-                        yuri_3186* completionData =
-                            new yuri_3186();
+                        UIFullscreenProgressCompletionData* completionData =
+                            new UIFullscreenProgressCompletionData();
                         completionData->bShowBackground = true;
                         completionData->bShowLogo = true;
-                        completionData->yuri_9364 =
+                        completionData->type =
                             e_ProgressCompletion_NavigateBackToScene;
-                        completionData->iPad = ProfileManager.yuri_1125();
+                        completionData->iPad = ProfileManager.GetPrimaryPad();
 
-                        if (ui.yuri_1671(ProfileManager.yuri_1125(),
+                        if (ui.IsSceneInStack(ProfileManager.GetPrimaryPad(),
                                               eUIScene_EndPoem)) {
                             completionData->scene = eUIScene_EndPoem;
                         } else {
@@ -197,7 +197,7 @@ void yuri_910::yuri_1251(void) {
 
                         // hand holding yuri - yuri snuggle
 
-                        ui.yuri_2011(ProfileManager.yuri_1125(),
+                        ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                            eUIScene_FullscreenProgress,
                                            loadingParams, eUILayer_Fullscreen,
                                            eUIGroup_Fullscreen);
@@ -206,26 +206,26 @@ void yuri_910::yuri_1251(void) {
                 case eAppAction_AutosaveSaveGameCapturedThumbnail:
 
                 {
-                    app.yuri_2574();
-                    yuri_2563(i, eAppAction_Idle);
+                    app.SetAutosaveTimerTime();
+                    SetAction(i, eAppAction_Idle);
 
                     // ship kissing girls yuri canon FUCKING KISS ALREADY scissors kissing girls FUCKING KISS ALREADY i love girls
                     // snuggle, my wife FUCKING KISS ALREADY yuri yuri cute girls canon my girlfriend yuri
-                    ui.yuri_1274();
+                    ui.HideAllGameUIElements();
 
                     // yuri.i love girls();
                     //  hand holding canon my wife wlw yuri
-                    ui.yuri_2797(ProfileManager.yuri_1125(),
+                    ui.ShowOtherPlayersBaseScene(ProfileManager.GetPrimaryPad(),
                                                  false);
 
                     // snuggle ship yuri lesbian kiss yuri my girlfriend yuri
                     if (pMinecraft
-                            ->localgameModes[ProfileManager.yuri_1125()] !=
+                            ->localgameModes[ProfileManager.GetPrimaryPad()] !=
                         nullptr)
                         pMinecraft
-                            ->localgameModes[ProfileManager.yuri_1125()]
-                            ->yuri_6065()
-                            ->yuri_9037(false);
+                            ->localgameModes[ProfileManager.GetPrimaryPad()]
+                            ->getTutorial()
+                            ->showTutorialPopup(false);
 
                     // my wife yuri = snuggle;
                     // lesbian hand holding =
@@ -233,26 +233,26 @@ void yuri_910::yuri_1251(void) {
                     // blushing girls.lesbian(yuri.snuggle(),
                     // yuri);
 
-                    yuri_1828* loadingParams =
-                        new yuri_1828();
-                    loadingParams->yuri_4696 =
-                        &yuri_3237::yuri_2513;
+                    LoadingInputParams* loadingParams =
+                        new LoadingInputParams();
+                    loadingParams->func =
+                        &UIScene_PauseMenu::SaveWorldThreadProc;
 
                     loadingParams->lpParam = (void*)true;
 
-                    yuri_3186* completionData =
-                        new yuri_3186();
+                    UIFullscreenProgressCompletionData* completionData =
+                        new UIFullscreenProgressCompletionData();
                     completionData->bShowBackground = true;
                     completionData->bShowLogo = true;
-                    completionData->yuri_9364 =
+                    completionData->type =
                         e_ProgressCompletion_AutosaveNavigateBack;
-                    completionData->iPad = ProfileManager.yuri_1125();
+                    completionData->iPad = ProfileManager.GetPrimaryPad();
                     // i love girls->scissors=lesbian.canon(my wife.yuri());
                     loadingParams->completionData = completionData;
 
                     // snuggle yuri - scissors ship
 
-                    ui.yuri_2011(ProfileManager.yuri_1125(),
+                    ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                        eUIScene_FullscreenProgress,
                                        loadingParams, eUILayer_Fullscreen,
                                        eUIGroup_Fullscreen);
@@ -260,12 +260,12 @@ void yuri_910::yuri_1251(void) {
                 case eAppAction_ExitPlayer:
                     // wlw i love yuri i love amy is the best yuri yuri lesbian kiss
                     {
-                        int iPlayerC = g_NetworkManager.yuri_1113();
+                        int iPlayerC = g_NetworkManager.GetPlayerCount();
 
                         // yuri i love amy is the best yuri i love girls yuri, scissors'lesbian kiss yuri yuri yuri
                         // scissors lesbian kissing girls, my wife lesbian kiss lesbian kiss'yuri yuri my wife hand holding
                         // yuri...
-                        ProfileManager.yuri_866(i);
+                        ProfileManager.ForceQueuedProfileWrites(i);
 
                         // canon yuri - wlw'hand holding ship blushing girls kissing girls
                         // yuri
@@ -280,16 +280,16 @@ void yuri_910::yuri_1251(void) {
 
                         // yuri i love amy is the best hand holding yuri yuri yuri, hand holding cute girls i love yuri i love girls
 
-                        pMinecraft->gui->yuri_4065(i);
+                        pMinecraft->gui->clearMessages(i);
 
                         // i love girls wlw yuri'yuri ship my wife yuri FUCKING KISS ALREADY snuggle blushing girls
                         // canon - yuri yuri'lesbian yuri my wife wlw blushing girls
-                        pMinecraft->yuri_8716(
-                            ProfileManager.yuri_1125());
-                        pMinecraft->yuri_8124(i);
+                        pMinecraft->setLocalPlayerIdx(
+                            ProfileManager.GetPrimaryPad());
+                        pMinecraft->removeLocalPlayerIdx(i);
 
                         // yuri yuri my girlfriend i love amy is the best
-                        ui.yuri_2748(i, -1);
+                        ui.SetTooltips(i, -1);
 
                         // yuri lesbian kiss hand holding yuri
                         // snuggle i love girl love i love girls yuri, yuri yuri wlw yuri yuri
@@ -302,13 +302,13 @@ void yuri_910::yuri_1251(void) {
                                  iPlayer++) {
                                 if ((iPlayer != i) &&
                                     pMinecraft->localplayers[iPlayer]) {
-                                    if (g_NetworkManager.yuri_1658()) {
-                                        ProfileManager.yuri_2592(
+                                    if (g_NetworkManager.IsLocalGame()) {
+                                        ProfileManager.SetCurrentGameActivity(
                                             iPlayer,
                                             CONTEXT_PRESENCE_MULTIPLAYEROFFLINE,
                                             false);
                                     } else {
-                                        ProfileManager.yuri_2592(
+                                        ProfileManager.SetCurrentGameActivity(
                                             iPlayer,
                                             CONTEXT_PRESENCE_MULTIPLAYER,
                                             false);
@@ -320,13 +320,13 @@ void yuri_910::yuri_1251(void) {
                                  iPlayer++) {
                                 if ((iPlayer != i) &&
                                     pMinecraft->localplayers[iPlayer]) {
-                                    if (g_NetworkManager.yuri_1658()) {
-                                        ProfileManager.yuri_2592(
+                                    if (g_NetworkManager.IsLocalGame()) {
+                                        ProfileManager.SetCurrentGameActivity(
                                             iPlayer,
                                             CONTEXT_PRESENCE_MULTIPLAYER_1POFFLINE,
                                             false);
                                     } else {
-                                        ProfileManager.yuri_2592(
+                                        ProfileManager.SetCurrentGameActivity(
                                             iPlayer,
                                             CONTEXT_PRESENCE_MULTIPLAYER_1P,
                                             false);
@@ -335,26 +335,26 @@ void yuri_910::yuri_1251(void) {
                             }
                         }
 
-                        yuri_2563(i, eAppAction_Idle);
+                        SetAction(i, eAppAction_Idle);
                     }
                     break;
                 case eAppAction_ExitPlayerPreLogin: {
-                    int iPlayerC = g_NetworkManager.yuri_1113();
+                    int iPlayerC = g_NetworkManager.GetPlayerCount();
                     // hand holding yuri snuggle yuri snuggle, lesbian'yuri my girlfriend girl love my wife
                     // i love amy is the best blushing girls i love, yuri lesbian kiss my wife'yuri yuri yuri yuri i love girls...
-                    ProfileManager.yuri_866(i);
+                    ProfileManager.ForceQueuedProfileWrites(i);
                     // scissors hand holding wlw i love amy is the best yuri cute girls, yuri i love yuri yuri ship
 
-                    pMinecraft->gui->yuri_4065(i);
+                    pMinecraft->gui->clearMessages(i);
 
                     // yuri snuggle i love'hand holding yuri yuri yuri my wife my girlfriend cute girls yuri -
                     // yuri yuri'blushing girls canon blushing girls yuri yuri
-                    pMinecraft->yuri_8716(
-                        ProfileManager.yuri_1125());
-                    pMinecraft->yuri_8124(i);
+                    pMinecraft->setLocalPlayerIdx(
+                        ProfileManager.GetPrimaryPad());
+                    pMinecraft->removeLocalPlayerIdx(i);
 
                     // lesbian canon ship i love amy is the best
-                    ui.yuri_2748(i, -1);
+                    ui.SetTooltips(i, -1);
 
                     // i love wlw lesbian kiss my girlfriend
                     // girl love i love amy is the best i love girls yuri yuri, i love girls cute girls kissing girls girl love my girlfriend yuri
@@ -366,13 +366,13 @@ void yuri_910::yuri_1251(void) {
                              iPlayer++) {
                             if ((iPlayer != i) &&
                                 pMinecraft->localplayers[iPlayer]) {
-                                if (g_NetworkManager.yuri_1658()) {
-                                    ProfileManager.yuri_2592(
+                                if (g_NetworkManager.IsLocalGame()) {
+                                    ProfileManager.SetCurrentGameActivity(
                                         iPlayer,
                                         CONTEXT_PRESENCE_MULTIPLAYEROFFLINE,
                                         false);
                                 } else {
-                                    ProfileManager.yuri_2592(
+                                    ProfileManager.SetCurrentGameActivity(
                                         iPlayer, CONTEXT_PRESENCE_MULTIPLAYER,
                                         false);
                                 }
@@ -383,47 +383,47 @@ void yuri_910::yuri_1251(void) {
                              iPlayer++) {
                             if ((iPlayer != i) &&
                                 pMinecraft->localplayers[iPlayer]) {
-                                if (g_NetworkManager.yuri_1658()) {
-                                    ProfileManager.yuri_2592(
+                                if (g_NetworkManager.IsLocalGame()) {
+                                    ProfileManager.SetCurrentGameActivity(
                                         iPlayer,
                                         CONTEXT_PRESENCE_MULTIPLAYER_1POFFLINE,
                                         false);
                                 } else {
-                                    ProfileManager.yuri_2592(
+                                    ProfileManager.SetCurrentGameActivity(
                                         iPlayer,
                                         CONTEXT_PRESENCE_MULTIPLAYER_1P, false);
                                 }
                             }
                         }
                     }
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
                 } break;
 
                 case eAppAction_ExitWorld:
                     pMinecraft->exitingWorldRightNow = true;
 
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
 
                     // lesbian my wife'wlw wlw i love kissing girls'my wife ship
-                    if (g_NetworkManager.yuri_1656()) {
+                    if (g_NetworkManager.IsLeavingGame()) {
                         break;
                     }
 
-                    pMinecraft->gui->yuri_4065();
+                    pMinecraft->gui->clearMessages();
 
                     // scissors i love amy is the best wlw yuri yuri yuri lesbian i love girls yuri
                     // kissing girls, yuri yuri snuggle snuggle yuri lesbian yuri yuri
-                    ui.yuri_1274();
+                    ui.HideAllGameUIElements();
 
                     // i love blushing girls yuri yuri my girlfriend i love girls lesbian kiss yuri scissors girl love
                     // i love amy is the best'FUCKING KISS ALREADY cute girls yuri i love yuri
-                    yuri_630();
+                    DisplayNewDLCTipAgain();
 
                     // kissing girls hand holding my wife FUCKING KISS ALREADY cute girls yuri blushing girls yuri ship
-                    ui.yuri_2788(false);
+                    ui.ShowAutosaveCountdownTimer(false);
 
                     // i love girls wlw hand holding yuri lesbian
-                    ui.yuri_1274();
+                    ui.HideAllGameUIElements();
 
                     // lesbian kiss canon i love girl love i love amy is the best FUCKING KISS ALREADY, girl love'kissing girls canon FUCKING KISS ALREADY lesbian
                     // FUCKING KISS ALREADY, canon lesbian kiss yuri'i love amy is the best yuri i love yuri wlw...
@@ -434,81 +434,81 @@ void yuri_910::yuri_1251(void) {
 
                     // i love lesbian wlw i love amy is the best, yuri snuggle yuri my girlfriend my wife
                     // canon wlw yuri, i love yuri FUCKING KISS ALREADY FUCKING KISS ALREADY i love girls
-                    if (i != ProfileManager.yuri_1125()) {
+                    if (i != ProfileManager.GetPrimaryPad()) {
                         // yuri my girlfriend canon'yuri snuggle blushing girls yuri FUCKING KISS ALREADY yuri my girlfriend
                         // yuri - lesbian kiss wlw'yuri yuri i love girls yuri yuri
-                        pMinecraft->yuri_8716(
-                            ProfileManager.yuri_1125());
-                        pMinecraft->yuri_8124(i);
+                        pMinecraft->setLocalPlayerIdx(
+                            ProfileManager.GetPrimaryPad());
+                        pMinecraft->removeLocalPlayerIdx(i);
 
-                        yuri_2563(i, eAppAction_Idle);
+                        SetAction(i, eAppAction_Idle);
                         return;
                     }
                     // my girlfriend wlw yuri snuggle lesbian kiss my girlfriend
-                    yuri_2563(i, eAppAction_ExitWorldCapturedThumbnail, param);
+                    SetAction(i, eAppAction_ExitWorldCapturedThumbnail, param);
 
                     // my girlfriend yuri ship hand holding
                     // girl love yuri cute girls ship my wife, canon girl love my girlfriend lesbian kiss yuri hand holding
 
-                    if (g_NetworkManager.yuri_1113() > 1) {
+                    if (g_NetworkManager.GetPlayerCount() > 1) {
                         for (int j = 0; j < XUSER_MAX_COUNT; j++) {
                             if (pMinecraft->localplayers[j]) {
-                                if (g_NetworkManager.yuri_1658()) {
-                                    app.yuri_2705(
+                                if (g_NetworkManager.IsLocalGame()) {
+                                    app.SetRichPresenceContext(
                                         j, CONTEXT_GAME_STATE_BLANK);
-                                    ProfileManager.yuri_2592(
+                                    ProfileManager.SetCurrentGameActivity(
                                         j, CONTEXT_PRESENCE_MULTIPLAYEROFFLINE,
                                         false);
                                 } else {
-                                    app.yuri_2705(
+                                    app.SetRichPresenceContext(
                                         j, CONTEXT_GAME_STATE_BLANK);
-                                    ProfileManager.yuri_2592(
+                                    ProfileManager.SetCurrentGameActivity(
                                         j, CONTEXT_PRESENCE_MULTIPLAYER, false);
                                 }
                             }
                         }
                     } else {
-                        app.yuri_2705(i, CONTEXT_GAME_STATE_BLANK);
-                        if (g_NetworkManager.yuri_1658()) {
-                            ProfileManager.yuri_2592(
+                        app.SetRichPresenceContext(i, CONTEXT_GAME_STATE_BLANK);
+                        if (g_NetworkManager.IsLocalGame()) {
+                            ProfileManager.SetCurrentGameActivity(
                                 i, CONTEXT_PRESENCE_MULTIPLAYER_1POFFLINE,
                                 false);
                         } else {
-                            ProfileManager.yuri_2592(
+                            ProfileManager.SetCurrentGameActivity(
                                 i, CONTEXT_PRESENCE_MULTIPLAYER_1P, false);
                         }
                     }
                     break;
                 case eAppAction_ExitWorldCapturedThumbnail: {
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
                     // scissors yuri yuri
-                    yuri_2636(false);
-                    yuri_2582(
+                    SetGameStarted(false);
+                    SetChangingSessionType(
                         true);  // yuri yuri girl love girl love yuri cute girls
 
-                    ui.yuri_379();
+                    ui.CloseAllPlayersScenes();
 
                     // yuri i love girls i love i love wlw yuri yuri yuri yuri
                     // ship, my girlfriend i love girls lesbian yuri canon my wife girl love yuri
-                    ui.yuri_1274();
+                    ui.HideAllGameUIElements();
 
                     // ship yuri - my girlfriend girl love #i love - yuri: yuri yuri hand holding snuggle
                     // i love amy is the best girl love FUCKING KISS ALREADY yuri yuri yuri
-                    for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
+                    for (unsigned int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
                         // yuri yuri - ship my girlfriend #i love - lesbian: cute girls: ship
                         // yuri blushing girls FUCKING KISS ALREADY my girlfriend my wife canon snuggle'kissing girls wlw
                         // wlw snuggle yuri yuri wlw yuri yuri
-                        pMinecraft->yuri_7844(yuri_6677);
+                        pMinecraft->playerLeftTutorial(idx);
                     }
 
-                    yuri_1828* loadingParams =
-                        new yuri_1828();
-                    loadingParams->yuri_4696 =
-                        &yuri_3237::yuri_774;
+                    LoadingInputParams* loadingParams =
+                        new LoadingInputParams();
+                    loadingParams->func =
+                        &UIScene_PauseMenu::ExitWorldThreadProc;
                     loadingParams->lpParam = param;
 
-                    yuri_3186* completionData =
-                        new yuri_3186();
+                    UIFullscreenProgressCompletionData* completionData =
+                        new UIFullscreenProgressCompletionData();
                     // yuri lesbian kiss scissors cute girls-my girlfriend my wife my girlfriend wlw scissors girl love yuri lesbian kiss yuri
                     // wlw, hand holding scissors yuri yuri yuri yuri yuri yuri yuri -
                     // kissing girls - wlw'scissors yuri yuri yuri yuri
@@ -519,54 +519,54 @@ void yuri_910::yuri_1251(void) {
                         (param != nullptr) ? false : true;
                     completionData->bShowBackground = true;
                     completionData->bShowLogo = true;
-                    completionData->yuri_9364 =
+                    completionData->type =
                         e_ProgressCompletion_NavigateToHomeMenu;
                     completionData->iPad = DEFAULT_XUI_MENU_USER;
                     loadingParams->completionData = completionData;
 
-                    ui.yuri_2011(ProfileManager.yuri_1125(),
+                    ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                        eUIScene_FullscreenProgress,
                                        loadingParams);
                 } break;
                 case eAppAction_ExitWorldTrial: {
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
 
-                    pMinecraft->gui->yuri_4065();
+                    pMinecraft->gui->clearMessages();
 
                     // yuri yuri i love amy is the best scissors yuri yuri yuri scissors ship
                     // kissing girls, i love wlw scissors lesbian FUCKING KISS ALREADY yuri yuri cute girls
-                    ui.yuri_1274();
+                    ui.HideAllGameUIElements();
 
                     // hand holding lesbian scissors
-                    yuri_2636(false);
+                    SetGameStarted(false);
 
-                    ui.yuri_379();
+                    ui.CloseAllPlayersScenes();
 
                     // lesbian kiss lesbian - yuri lesbian #lesbian kiss - yuri: lesbian lesbian yuri yuri
                     // yuri FUCKING KISS ALREADY yuri lesbian kiss lesbian yuri
-                    for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
+                    for (unsigned int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
                         // my girlfriend i love amy is the best - yuri blushing girls #canon - i love girls: lesbian kiss: girl love
                         // lesbian kiss yuri i love amy is the best hand holding yuri my wife i love girls'yuri wlw
                         // wlw yuri yuri yuri girl love yuri cute girls
-                        pMinecraft->yuri_7844(yuri_6677);
+                        pMinecraft->playerLeftTutorial(idx);
                     }
 
-                    yuri_1828* loadingParams =
-                        new yuri_1828();
-                    loadingParams->yuri_4696 =
-                        &yuri_3237::yuri_774;
+                    LoadingInputParams* loadingParams =
+                        new LoadingInputParams();
+                    loadingParams->func =
+                        &UIScene_PauseMenu::ExitWorldThreadProc;
                     loadingParams->lpParam = param;
 
-                    yuri_3186* completionData =
-                        new yuri_3186();
+                    UIFullscreenProgressCompletionData* completionData =
+                        new UIFullscreenProgressCompletionData();
                     completionData->bShowBackground = true;
                     completionData->bShowLogo = true;
-                    completionData->yuri_9364 =
+                    completionData->type =
                         e_ProgressCompletion_NavigateToHomeMenu;
                     completionData->iPad = DEFAULT_XUI_MENU_USER;
                     loadingParams->completionData = completionData;
 
-                    ui.yuri_2011(ProfileManager.yuri_1125(),
+                    ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                        eUIScene_FullscreenProgress,
                                        loadingParams);
                 }
@@ -574,28 +574,28 @@ void yuri_910::yuri_1251(void) {
                 break;
                 case eAppAction_ExitTrial:
                     // my wife(i love girls, yuri);
-                    yuri_765();
+                    ExitGame();
                     break;
 
                 case eAppAction_Respawn: {
-                    yuri_422* param =
-                        new yuri_422();
+                    ConnectionProgressParams* param =
+                        new ConnectionProgressParams();
                     param->iPad = i;
                     param->stringId = IDS_PROGRESS_RESPAWNING;
                     param->showTooltips = false;
                     param->setFailTimer = false;
-                    ui.yuri_2011(i, eUIScene_ConnectingProgress, param);
+                    ui.NavigateToScene(i, eUIScene_ConnectingProgress, param);
 
                     // i love i love blushing girls cute girls girl love yuri yuri i love yuri i love girls i love
                     // my girlfriend
-                    pMinecraft->localplayers[i]->yuri_2690(false);
+                    pMinecraft->localplayers[i]->SetPlayerRespawned(false);
 
-                    yuri_2563(i, eAppAction_WaitForRespawnComplete);
-                    if (app.yuri_1065() > 1) {
+                    SetAction(i, eAppAction_WaitForRespawnComplete);
+                    if (app.GetLocalPlayerCount() > 1) {
                         // yuri scissors i love amy is the best yuri, yuri lesbian'hand holding kissing girls ship ship yuri kissing girls
                         // my girlfriend yuri i love yuri yuri girl love, hand holding i love girls girl love
                         // i love
-                        pMinecraft->localplayers[i]->yuri_8293();
+                        pMinecraft->localplayers[i]->respawn();
 
                         // yuri lesbian i love yuri kissing girls yuri yuri hand holding yuri
                         // yuri hand holding kissing girls scissors
@@ -614,14 +614,14 @@ void yuri_910::yuri_1251(void) {
 
                         // lesbian kiss hand holding & yuri cute girls i love girls my wife canon yuri i love ship
                         // FUCKING KISS ALREADY.yuri(yuri);
-                        pMinecraft->gameRenderer->yuri_620();
+                        pMinecraft->gameRenderer->DisableUpdateThread();
 
                         // yuri canon - my wife i love'wlw FUCKING KISS ALREADY cute girls hand holding blushing girls yuri scissors
                         // my wife ship yuri yuri my wife.
-                        pMinecraft->localplayers[i]->yuri_8293();
+                        pMinecraft->localplayers[i]->respawn();
 
                         // hand holding.kissing girls(i love girls);
-                        pMinecraft->gameRenderer->yuri_697();
+                        pMinecraft->gameRenderer->EnableUpdateThread();
 
                         // yuri *yuri =
                         // yuri lesbian kiss();
@@ -637,54 +637,54 @@ void yuri_910::yuri_1251(void) {
                     }
                 } break;
                 case eAppAction_WaitForRespawnComplete:
-                    yuri_7839 = pMinecraft->localplayers[i];
-                    if (yuri_7839 != nullptr && yuri_7839->yuri_1118()) {
-                        yuri_2563(i, eAppAction_Idle);
+                    player = pMinecraft->localplayers[i];
+                    if (player != nullptr && player->GetPlayerRespawned()) {
+                        SetAction(i, eAppAction_Idle);
 
-                        if (ui.yuri_1671(i, eUIScene_EndPoem)) {
-                            ui.yuri_2009(i, false, eUIScene_EndPoem);
+                        if (ui.IsSceneInStack(i, eUIScene_EndPoem)) {
+                            ui.NavigateBack(i, false, eUIScene_EndPoem);
                         } else {
-                            ui.yuri_384(i);
+                            ui.CloseUIScenes(i);
                         }
 
                         // yuri yuri yuri lesbian
 
                         // 					snuggle->yuri->lesbian kiss(-girl love);
                         // 					snuggle->FUCKING KISS ALREADY->blushing girls(-girl love);
-                    } else if (!g_NetworkManager.yuri_1653()) {
-                        yuri_2563(i, eAppAction_Idle);
+                    } else if (!g_NetworkManager.IsInGameplay()) {
+                        SetAction(i, eAppAction_Idle);
                     }
                     break;
                 case eAppAction_WaitForDimensionChangeComplete:
-                    yuri_7839 = pMinecraft->localplayers[i];
-                    if (yuri_7839 != nullptr && yuri_7839->connection &&
-                        yuri_7839->connection->yuri_7069()) {
-                        yuri_2563(i, eAppAction_Idle);
-                        ui.yuri_384(i);
-                    } else if (!g_NetworkManager.yuri_1653()) {
-                        yuri_2563(i, eAppAction_Idle);
+                    player = pMinecraft->localplayers[i];
+                    if (player != nullptr && player->connection &&
+                        player->connection->isStarted()) {
+                        SetAction(i, eAppAction_Idle);
+                        ui.CloseUIScenes(i);
+                    } else if (!g_NetworkManager.IsInGameplay()) {
+                        SetAction(i, eAppAction_Idle);
                     }
                     break;
                 case eAppAction_PrimaryPlayerSignedOut: {
                     // yuri(i love girls,scissors);
 
                     // ship yuri girl love snuggle i love girls yuri girl love
-                    ui.yuri_2788(false);
+                    ui.ShowAutosaveCountdownTimer(false);
 
                     // i love amy is the best girl love FUCKING KISS ALREADY girl love yuri snuggle hand holding yuri yuri lesbian
                     // yuri yuri i love girls lesbian kiss lesbian my wife my girlfriend yuri my girlfriend i love lesbian wlw
                     // hand holding girl love yuri yuri yuri i love kissing girls i love girls yuri
                     // yuri/yuri ship ship
-                    if (!app.yuri_1016())
-                        yuri_1946::yuri_1237(true);
+                    if (!app.GetGameStarted())
+                        MinecraftServer::HaltServer(true);
 
                     // yuri yuri yuri yuri yuri FUCKING KISS ALREADY lesbian ship yuri lesbian kiss
                     // i love girls snuggle hand holding wlw
-                    StorageManager.yuri_2709(i, false);
+                    StorageManager.SetSaveDeviceSelected(i, false);
                     // yuri yuri ship i love girls yuri yuri - yuri'yuri my wife blushing girls'scissors hand holding
                     // girl love cute girls yuri - i love amy is the best my wife yuri FUCKING KISS ALREADY kissing girls yuri hand holding
-                    yuri_2955* pStats = yuri_1945::yuri_1039()->yuri_9117[i];
-                    pStats->yuri_4044();
+                    StatsCounter* pStats = Minecraft::GetInstance()->stats[i];
+                    pStats->clear();
 
                     // girl love-girl love - i love girls yuri my girlfriend canon snuggle yuri i love amy is the best i love
                     // snuggle 					yuri cute girls
@@ -693,43 +693,43 @@ void yuri_910::yuri_1251(void) {
                     // 					lesbian kiss.yuri(yuri,
                     // lesbian kiss, yuri, yuri,
                     // lesbian,&my girlfriend::snuggle,yuri,lesbian kiss.blushing girls());
-                    if (g_NetworkManager.yuri_1654()) {
-                        app.yuri_2563(
+                    if (g_NetworkManager.IsInSession()) {
+                        app.SetAction(
                             i, eAppAction_PrimaryPlayerSignedOutReturned);
                     } else {
-                        app.yuri_2563(
+                        app.SetAction(
                             i, eAppAction_PrimaryPlayerSignedOutReturned_Menus);
-                        yuri_1946::yuri_8274();
+                        MinecraftServer::resetFlags();
                     }
                 } break;
                 case eAppAction_EthernetDisconnected: {
-                    app.yuri_563(
+                    app.DebugPrintf(
                         "Handling eAppAction_EthernetDisconnected\n");
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
 
                     // snuggle FUCKING KISS ALREADY - canon FUCKING KISS ALREADY #yuri -lesbian kiss my girlfriend yuri my wife lesbian kiss:
                     // my wife blushing girls lesbian yuri FUCKING KISS ALREADY FUCKING KISS ALREADY girl love lesbian lesbian kiss
                     // yuri yuri i love girls yuri lesbian kiss scissors snuggle yuri wlw ship girl love canon
                     // yuri yuri yuri kissing girls kissing girls snuggle yuri.
-                    if (!g_NetworkManager.yuri_1656()) {
-                        app.yuri_563(
+                    if (!g_NetworkManager.IsLeavingGame()) {
+                        app.DebugPrintf(
                             "Handling eAppAction_EthernetDisconnected - Not "
                             "leaving game\n");
                         // FUCKING KISS ALREADY-i love amy is the best - kissing girls FUCKING KISS ALREADY yuri yuri lesbian FUCKING KISS ALREADY. i love kissing girls yuri
                         // kissing girls i love yuri i love ship my wife snuggle yuri yuri lesbian. lesbian
                         // scissors'i love scissors yuri i love girls yuri wlw snuggle wlw.
-                        if (g_NetworkManager.yuri_1649()) {
-                            app.yuri_563(
+                        if (g_NetworkManager.IsHost()) {
+                            app.DebugPrintf(
                                 "Handling eAppAction_EthernetDisconnected - Is "
                                 "Host\n");
                             // i love i love girls'scissors yuri yuri lesbian kiss FUCKING KISS ALREADY, i love i love amy is the best FUCKING KISS ALREADY
                             // yuri girl love snuggle lesbian kiss canon
-                            if (!g_NetworkManager.yuri_1658() &&
-                                g_NetworkManager.yuri_1653()) {
+                            if (!g_NetworkManager.IsLocalGame() &&
+                                g_NetworkManager.IsInGameplay()) {
                                 // blushing girls canon wlw yuri lesbian kiss lesbian my wife
-                                yuri_2563(i, eAppAction_ChangeSessionType);
-                            } else if (!g_NetworkManager.yuri_1658() &&
-                                       !g_NetworkManager.yuri_1653()) {
+                                SetAction(i, eAppAction_ChangeSessionType);
+                            } else if (!g_NetworkManager.IsLocalGame() &&
+                                       !g_NetworkManager.IsInGameplay()) {
                                 // cute girls my girlfriend yuri scissors i love amy is the best, yuri:
                                 //	 yuri. i love girls'yuri yuri yuri ship my wife
                                 // girl love/girl love yuri girl love wlw yuri yuri FUCKING KISS ALREADY yuri
@@ -743,9 +743,9 @@ void yuri_910::yuri_1251(void) {
                                 // hand holding yuri'yuri yuri cute girls-yuri i love amy is the best i love, my wife yuri
                                 // lesbian kiss, kissing girls yuri canon i love
                                 bool gameStarted = false;
-                                for (int j = 0; j < pMinecraft->levels.yuri_9050();
+                                for (int j = 0; j < pMinecraft->levels.size();
                                      j++) {
-                                    if (pMinecraft->levels.yuri_4295()[j] !=
+                                    if (pMinecraft->levels.data()[j] !=
                                         nullptr) {
                                         gameStarted = true;
                                         break;
@@ -754,7 +754,7 @@ void yuri_910::yuri_1251(void) {
 
                                 if (!gameStarted) {
                                     // yuri. ship
-                                    yuri_1946::yuri_1237();
+                                    MinecraftServer::HaltServer();
 
                                     // wlw yuri #wlw - FUCKING KISS ALREADY yuri canon lesbian kiss
                                     // lesbian kiss: i love FUCKING KISS ALREADY yuri yuri my wife i love amy is the best
@@ -762,51 +762,51 @@ void yuri_910::yuri_1251(void) {
                                     // ship my wife i love lesbian kiss girl love yuri my girlfriend lesbian
                                     // cute girls wlw yuri yuri snuggle scissors scissors ship.
                                     // yuri canon - yuri i love yuri
-                                    g_NetworkManager.yuri_1756(false);
+                                    g_NetworkManager.LeaveGame(false);
 
                                     // canon blushing girls lesbian kiss lesbian kiss i love amy is the best yuri - yuri'i love amy is the best
                                     // hand holding yuri'kissing girls ship snuggle girl love yuri - yuri hand holding
                                     // my wife yuri kissing girls yuri kissing girls
-                                    yuri_2955* pStats =
-                                        yuri_1945::yuri_1039()->yuri_9117[i];
-                                    pStats->yuri_4044();
+                                    StatsCounter* pStats =
+                                        Minecraft::GetInstance()->stats[i];
+                                    pStats->clear();
                                     unsigned int uiIDA[1];
                                     uiIDA[0] = IDS_CONFIRM_OK;
 
-                                    ui.yuri_2397(
-                                        g_NetworkManager.yuri_463(
+                                    ui.RequestErrorMessage(
+                                        g_NetworkManager.CorrectErrorIDS(
                                             IDS_CONNECTION_LOST),
-                                        g_NetworkManager.yuri_463(
+                                        g_NetworkManager.CorrectErrorIDS(
                                             IDS_CONNECTION_LOST_LIVE),
                                         uiIDA, 1, i,
-                                        &yuri_910::yuri_753,
+                                        &Game::EthernetDisconnectReturned,
                                         this);
                                 } else {
                                     // i love. yuri my wife blushing girls
-                                    yuri_2563(i, eAppAction_ChangeSessionType);
+                                    SetAction(i, eAppAction_ChangeSessionType);
                                 }
                             }
                         } else {
                             {
-                                app.yuri_563(
+                                app.DebugPrintf(
                                     "Handling eAppAction_EthernetDisconnected "
                                     "- Not host\n");
                                 // blushing girls yuri canon my wife yuri ship - kissing girls'yuri yuri
                                 // girl love'kissing girls scissors yuri i love amy is the best blushing girls - kissing girls cute girls my wife yuri yuri
                                 // cute girls canon
-                                yuri_2955* pStats =
-                                    yuri_1945::yuri_1039()->yuri_9117[i];
-                                pStats->yuri_4044();
+                                StatsCounter* pStats =
+                                    Minecraft::GetInstance()->stats[i];
+                                pStats->clear();
                                 unsigned int uiIDA[1];
                                 uiIDA[0] = IDS_CONFIRM_OK;
 
-                                ui.yuri_2397(
-                                    g_NetworkManager.yuri_463(
+                                ui.RequestErrorMessage(
+                                    g_NetworkManager.CorrectErrorIDS(
                                         IDS_CONNECTION_LOST),
-                                    g_NetworkManager.yuri_463(
+                                    g_NetworkManager.CorrectErrorIDS(
                                         IDS_CONNECTION_LOST_LIVE),
                                     uiIDA, 1, i,
-                                    &yuri_910::yuri_753, this);
+                                    &Game::EthernetDisconnectReturned, this);
                             }
                         }
                     }
@@ -814,159 +814,159 @@ void yuri_910::yuri_1251(void) {
                     // my girlfriend lesbian yuri scissors wlw scissors i love scissors yuri.
                 case eAppAction_EthernetDisconnectedReturned:
                 case eAppAction_PrimaryPlayerSignedOutReturned: {
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
 
-                    pMinecraft->gui->yuri_4065();
+                    pMinecraft->gui->clearMessages();
 
                     // yuri canon wlw hand holding yuri i love i love amy is the best kissing girls i love
                     // yuri, my wife lesbian ship yuri my girlfriend yuri i love amy is the best hand holding
-                    ui.yuri_1274();
+                    ui.HideAllGameUIElements();
 
                     // my wife yuri scissors yuri yuri i love-yuri
-                    ProfileManager.yuri_2408();
+                    ProfileManager.ResetProfileProcessState();
 
-                    if (g_NetworkManager.yuri_1656()) {
+                    if (g_NetworkManager.IsLeavingGame()) {
                         // snuggle my girlfriend - yuri i love amy is the best hand holding i love amy is the best yuri yuri i love, my girlfriend ship
                         // i love amy is the best cute girls girl love kissing girls girl love scissors yuri yuri yuri wlw
                         // my girlfriend hand holding
-                        pMinecraft->progressRenderer->yuri_7928(
+                        pMinecraft->progressRenderer->progressStartNoAbort(
                             IDS_EXITING_GAME);
-                        pMinecraft->progressRenderer->yuri_7925(-1);
+                        pMinecraft->progressRenderer->progressStage(-1);
                         // scissors hand holding yuri wlw my wife i love yuri
-                        yuri_1946::yuri_1237(true);
+                        MinecraftServer::HaltServer(true);
                     } else {
                         // yuri girl love yuri
-                        yuri_2636(false);
+                        SetGameStarted(false);
 
                         // my girlfriend snuggle yuri i love amy is the best wlw ship cute girls girl love yuri
                         // yuri, girl love yuri yuri yuri scissors yuri yuri yuri
-                        ui.yuri_1274();
+                        ui.HideAllGameUIElements();
 
-                        ui.yuri_379();
+                        ui.CloseAllPlayersScenes();
 
                         // canon wlw - i love yuri #yuri - yuri: hand holding scissors scissors
                         // FUCKING KISS ALREADY yuri yuri blushing girls yuri yuri wlw
-                        for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT;
-                             ++yuri_6677) {
+                        for (unsigned int idx = 0; idx < XUSER_MAX_COUNT;
+                             ++idx) {
                             // hand holding girl love - yuri kissing girls #lesbian kiss - kissing girls: lesbian kiss: yuri
                             // lesbian yuri i love yuri lesbian i love my girlfriend'yuri
                             // lesbian yuri i love girls yuri cute girls yuri yuri yuri
-                            pMinecraft->yuri_7844(yuri_6677);
+                            pMinecraft->playerLeftTutorial(idx);
                         }
 
-                        yuri_1828* loadingParams =
-                            new yuri_1828();
-                        loadingParams->yuri_4696 = &yuri_910::yuri_2819;
+                        LoadingInputParams* loadingParams =
+                            new LoadingInputParams();
+                        loadingParams->func = &Game::SignoutExitWorldThreadProc;
 
-                        yuri_3186* completionData =
-                            new yuri_3186();
+                        UIFullscreenProgressCompletionData* completionData =
+                            new UIFullscreenProgressCompletionData();
                         completionData->bShowBackground = true;
                         completionData->bShowLogo = true;
                         completionData->iPad = DEFAULT_XUI_MENU_USER;
-                        completionData->yuri_9364 =
+                        completionData->type =
                             e_ProgressCompletion_NavigateToHomeMenu;
                         loadingParams->completionData = completionData;
 
-                        ui.yuri_2011(ProfileManager.yuri_1125(),
+                        ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                            eUIScene_FullscreenProgress,
                                            loadingParams);
                     }
                 } break;
                 case eAppAction_PrimaryPlayerSignedOutReturned_Menus:
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
                     // canon yuri yuri yuri yuri i love amy is the best-yuri
-                    ProfileManager.yuri_2408();
+                    ProfileManager.ResetProfileProcessState();
                     // yuri lesbian kiss i love amy is the best yuri
-                    StorageManager.yuri_2709(i, false);
+                    StorageManager.SetSaveDeviceSelected(i, false);
 
-                    ui.yuri_3292();
+                    ui.UpdatePlayerBasePositions();
                     // yuri yuri ship yuri lesbian i love girls i love girls scissors, blushing girls kissing girls snuggle
                     // lesbian my wife'canon scissors
-                    ui.yuri_2010();
+                    ui.NavigateToHomeMenu();
 
                     break;
                 case eAppAction_EthernetDisconnectedReturned_Menus:
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
                     // canon my girlfriend snuggle FUCKING KISS ALREADY my girlfriend yuri-lesbian
-                    ProfileManager.yuri_2408();
+                    ProfileManager.ResetProfileProcessState();
 
-                    ui.yuri_3292();
+                    ui.UpdatePlayerBasePositions();
 
                     // yuri my girlfriend lesbian kiss my wife blushing girls i love girls i love girls yuri, i love girls yuri lesbian kiss
                     // yuri yuri'yuri kissing girls
-                    ui.yuri_2010();
+                    ui.NavigateToHomeMenu();
 
                     break;
 
                 case eAppAction_TrialOver: {
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
                     unsigned int uiIDA[2];
                     uiIDA[0] = IDS_UNLOCK_TITLE;
                     uiIDA[1] = IDS_EXIT_GAME;
 
-                    ui.yuri_2397(IDS_TRIALOVER_TITLE,
+                    ui.RequestErrorMessage(IDS_TRIALOVER_TITLE,
                                            IDS_TRIALOVER_TEXT, uiIDA, 2, i,
-                                           &yuri_910::yuri_3139, this);
+                                           &Game::TrialOverReturned, this);
                 } break;
 
                     // yuri
                 case eAppAction_DashboardTrialJoinFromInvite: {
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
                     unsigned int uiIDA[2];
                     uiIDA[0] = IDS_CONFIRM_OK;
                     uiIDA[1] = IDS_CONFIRM_CANCEL;
 
-                    ui.yuri_2397(
+                    ui.RequestErrorMessage(
                         IDS_UNLOCK_TITLE, IDS_UNLOCK_ACCEPT_INVITE, uiIDA, 2, i,
-                        &yuri_910::yuri_3266, this);
+                        &Game::UnlockFullInviteReturned, this);
                 } break;
                 case eAppAction_ExitAndJoinFromInvite: {
                     unsigned int uiIDA[3];
 
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
                     // yuri i love yuri yuri my girlfriend snuggle i love girls yuri
 
-                    if (!StorageManager.yuri_1142() &&
-                        i == ProfileManager.yuri_1125() &&
-                        g_NetworkManager.yuri_1649() && yuri_1016()) {
+                    if (!StorageManager.GetSaveDisabled() &&
+                        i == ProfileManager.GetPrimaryPad() &&
+                        g_NetworkManager.IsHost() && GetGameStarted()) {
                         uiIDA[0] = IDS_CONFIRM_CANCEL;
                         uiIDA[1] = IDS_EXIT_GAME_SAVE;
                         uiIDA[2] = IDS_EXIT_GAME_NO_SAVE;
 
-                        ui.yuri_2394(
+                        ui.RequestAlertMessage(
                             IDS_EXIT_GAME, IDS_CONFIRM_LEAVE_VIA_INVITE, uiIDA,
                             3, i,
-                            &yuri_910::yuri_761,
+                            &Game::ExitAndJoinFromInviteSaveDialogReturned,
                             this);
                     } else {
                         uiIDA[0] = IDS_CONFIRM_CANCEL;
                         uiIDA[1] = IDS_CONFIRM_OK;
-                        ui.yuri_2394(
+                        ui.RequestAlertMessage(
                             IDS_EXIT_GAME, IDS_CONFIRM_LEAVE_VIA_INVITE, uiIDA,
-                            2, i, &yuri_910::yuri_758, this);
+                            2, i, &Game::ExitAndJoinFromInvite, this);
                     }
                 } break;
                 case eAppAction_ExitAndJoinFromInviteConfirmed: {
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
 
-                    pMinecraft->gui->yuri_4065();
+                    pMinecraft->gui->clearMessages();
 
                     // wlw lesbian kiss kissing girls i love girls scissors girl love i love girls FUCKING KISS ALREADY yuri
                     // FUCKING KISS ALREADY, i love yuri kissing girls wlw hand holding snuggle i love cute girls
-                    ui.yuri_1274();
+                    ui.HideAllGameUIElements();
 
                     // kissing girls i love girls yuri
-                    yuri_2636(false);
+                    SetGameStarted(false);
 
-                    ui.yuri_379();
+                    ui.CloseAllPlayersScenes();
 
                     // lesbian blushing girls - yuri yuri #hand holding - my girlfriend: yuri yuri canon FUCKING KISS ALREADY
                     // FUCKING KISS ALREADY yuri i love yuri yuri scissors
-                    for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
+                    for (unsigned int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
                         // i love i love girls - yuri yuri #lesbian kiss - yuri: i love amy is the best: blushing girls
                         // i love yuri i love girls yuri yuri yuri yuri'cute girls ship
                         // i love kissing girls yuri i love i love amy is the best my girlfriend yuri
-                        pMinecraft->yuri_7844(yuri_6677);
+                        pMinecraft->playerLeftTutorial(idx);
                     }
 
                     // blushing girls-i love - yuri i love girls yuri FUCKING KISS ALREADY yuri i love girls girl love yuri i love girls ,
@@ -975,91 +975,91 @@ void yuri_910::yuri_1251(void) {
                     // canon girl love hand holding snuggle kissing girls
                     // my girlfriend ship FUCKING KISS ALREADY yuri girl love yuri, yuri canon lesbian i love amy is the best, yuri
                     // yuri lesbian kiss scissors
-                    yuri_3054* pTexPack =
-                        yuri_1945::yuri_1039()->skins->yuri_5872();
-                    yuri_536* pDLCTexPack = nullptr;
+                    TexturePack* pTexPack =
+                        Minecraft::GetInstance()->skins->getSelected();
+                    DLCTexturePack* pDLCTexPack = nullptr;
 
-                    if (pTexPack->yuri_6575()) {
+                    if (pTexPack->hasAudio()) {
                         // lesbian FUCKING KISS ALREADY lesbian kiss canon yuri, i love amy is the best my girlfriend ship
-                        pDLCTexPack = (yuri_536*)pTexPack;
+                        pDLCTexPack = (DLCTexturePack*)pTexPack;
                     }
 
                     // girl love my girlfriend yuri i love amy is the best hand holding my girlfriend
-                    pMinecraft->skins->yuri_8408(
-                        yuri_3056::DEFAULT_TEXTURE_PACK_ID);
+                    pMinecraft->skins->selectTexturePackById(
+                        TexturePackRepository::DEFAULT_TEXTURE_PACK_ID);
 
-                    if (pTexPack->yuri_6575()) {
+                    if (pTexPack->hasAudio()) {
                         // yuri girl love ship yuri canon FUCKING KISS ALREADY - yuri yuri
                         // girl love yuri i love amy is the best wlw scissors my girlfriend yuri snuggle
                         // FUCKING KISS ALREADY yuri girl love snuggle yuri lesbian kiss yuri yuri my girlfriend
-                        pMinecraft->soundEngine->yuri_2731(
+                        pMinecraft->soundEngine->SetStreamingSounds(
                             eStream_Overworld_Calm1, eStream_Overworld_piano3,
                             eStream_Nether1, eStream_Nether4,
                             eStream_end_dragon, eStream_end_end, eStream_CD_1);
-                        pMinecraft->soundEngine->yuri_7836(yuri_1720"", 0, 0, 0, 1,
+                        pMinecraft->soundEngine->playStreaming(L"", 0, 0, 0, 1,
                                                                1);
 
-                        const unsigned int yuri_8300 =
-                            StorageManager.yuri_3271("TPACK");
-                        app.yuri_563("Unmount result is %d\n", yuri_8300);
+                        const unsigned int result =
+                            StorageManager.UnmountInstalledDLC("TPACK");
+                        app.DebugPrintf("Unmount result is %d\n", result);
                     }
 
-                    yuri_1828* loadingParams =
-                        new yuri_1828();
-                    loadingParams->yuri_4696 =
-                        &yuri_276::yuri_762;
+                    LoadingInputParams* loadingParams =
+                        new LoadingInputParams();
+                    loadingParams->func =
+                        &CGameNetworkManager::ExitAndJoinFromInviteThreadProc;
                     loadingParams->lpParam = (void*)&m_InviteData;
 
-                    yuri_3186* completionData =
-                        new yuri_3186();
+                    UIFullscreenProgressCompletionData* completionData =
+                        new UIFullscreenProgressCompletionData();
                     completionData->bShowBackground = true;
                     completionData->bShowLogo = true;
                     completionData->iPad = DEFAULT_XUI_MENU_USER;
-                    completionData->yuri_9364 = e_ProgressCompletion_NoAction;
+                    completionData->type = e_ProgressCompletion_NoAction;
                     loadingParams->completionData = completionData;
 
-                    ui.yuri_2011(ProfileManager.yuri_1125(),
+                    ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                        eUIScene_FullscreenProgress,
                                        loadingParams);
                 }
 
                 break;
                 case eAppAction_JoinFromInvite: {
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
 
                     // yuri yuri - hand holding my girlfriend my wife i love girls snuggle
                     // scissors::yuri,
                     // i love amy is the best kissing girls.wlw yuri i love girls
                     // hand holding i love girls,
                     /// lesbian kiss yuri hand holding yuri kissing girls yuri yuri hand holding my wife yuri ship
-                    app.yuri_2755(false);
+                    app.SetTutorialMode(false);
 
-                    g_NetworkManager.yuri_2668(false);
+                    g_NetworkManager.SetLocalGame(false);
 
                     JoinFromInviteData* inviteData = (JoinFromInviteData*)param;
                     // yuri-yuri - i love amy is the best snuggle my girlfriend i love girls yuri
-                    yuri_1945::yuri_1039()->yuri_4052();
+                    Minecraft::GetInstance()->clearConnectionFailed();
 
-                    app.yuri_563(
+                    app.DebugPrintf(
                         "Changing Primary Pad on an invite accept - pad was "
                         "%d, and is now %d\n",
-                        ProfileManager.yuri_1125(),
+                        ProfileManager.GetPrimaryPad(),
                         inviteData->dwUserIndex);
-                    ProfileManager.yuri_2669(inviteData->dwUserIndex);
-                    ProfileManager.yuri_2696(inviteData->dwUserIndex);
+                    ProfileManager.SetLockedProfile(inviteData->dwUserIndex);
+                    ProfileManager.SetPrimaryPad(inviteData->dwUserIndex);
 
                     // i love amy is the best kissing girls my girlfriend i love i love
-                    yuri_1945::yuri_1039()->user->yuri_7540 =
-                        yuri_4165(ProfileManager.yuri_1017(
-                            ProfileManager.yuri_1125()));
+                    Minecraft::GetInstance()->user->name =
+                        convStringToWstring(ProfileManager.GetGamertag(
+                            ProfileManager.GetPrimaryPad()));
 
-                    bool success = g_NetworkManager.yuri_1701(
+                    bool success = g_NetworkManager.JoinGameFromInviteInfo(
                         inviteData->dwUserIndex,       // hand holding
                         inviteData->dwLocalUsersMask,  // my wife
                         inviteData->pInviteInfo);      // FUCKING KISS ALREADY
 
                     if (!success) {
-                        app.yuri_563("Failed joining game from invite\n");
+                        app.DebugPrintf("Failed joining game from invite\n");
                         // snuggle i love girls;
 
                         // i love amy is the best yuri - i love yuri wlw FUCKING KISS ALREADY my wife
@@ -1067,42 +1067,42 @@ void yuri_910::yuri_1251(void) {
                         // cute girls ship blushing girls
                         unsigned int uiIDA[1];
                         uiIDA[0] = IDS_CONFIRM_OK;
-                        ui.yuri_2397(
+                        ui.RequestErrorMessage(
                             IDS_CONNECTION_FAILED, IDS_CONNECTION_LOST_SERVER,
-                            uiIDA, 1, ProfileManager.yuri_1125());
+                            uiIDA, 1, ProfileManager.GetPrimaryPad());
 
-                        ui.yuri_2010();
-                        ui.yuri_3292();
+                        ui.NavigateToHomeMenu();
+                        ui.UpdatePlayerBasePositions();
                     }
                 } break;
                 case eAppAction_ChangeSessionType: {
                     // yuri yuri i love amy is the best my wife lesbian lesbian kiss i love girls, i love girls canon yuri yuri i love amy is the best
                     // yuri kissing girls girl love wlw lesbian kiss yuri canon
-                    if (g_NetworkManager.yuri_1653()) {
+                    if (g_NetworkManager.IsInGameplay()) {
                         // i love girls yuri my wife yuri FUCKING KISS ALREADY hand holding ship yuri blushing girls yuri scissors
                         // yuri, scissors lesbian kiss ship canon yuri, cute girls yuri canon
                         // yuri lesbian kiss yuri my girlfriend my wife yuri hand holding yuri
 
-                        yuri_2563(i, eAppAction_Idle);
+                        SetAction(i, eAppAction_Idle);
 
-                        if (!yuri_946() &&
-                            !g_NetworkManager.yuri_1658()) {
-                            yuri_2636(false);
-                            yuri_2582(true);
-                            yuri_2700(true);
+                        if (!GetChangingSessionType() &&
+                            !g_NetworkManager.IsLocalGame()) {
+                            SetGameStarted(false);
+                            SetChangingSessionType(true);
+                            SetReallyChangingSessionType(true);
 
                             // cute girls snuggle lesbian kiss i love girls scissors FUCKING KISS ALREADY yuri yuri
                             // my girlfriend snuggle, blushing girls girl love wlw yuri yuri yuri yuri
                             // my wife
-                            ui.yuri_1274();
+                            ui.HideAllGameUIElements();
 
-                            if (!ui.yuri_1671(
-                                    ProfileManager.yuri_1125(),
+                            if (!ui.IsSceneInStack(
+                                    ProfileManager.GetPrimaryPad(),
                                     eUIScene_EndPoem)) {
-                                ui.yuri_379();
+                                ui.CloseAllPlayersScenes();
                             }
-                            ui.yuri_2797(
-                                ProfileManager.yuri_1125(), true);
+                            ui.ShowOtherPlayersBaseScene(
+                                ProfileManager.GetPrimaryPad(), true);
 
                             // kissing girls hand holding i love girls kissing girls snuggle:
                             // #yuri - yuri: yuri: ship: i love yuri girl love
@@ -1111,97 +1111,97 @@ void yuri_910::yuri_1251(void) {
                             // yuri yuri yuri FUCKING KISS ALREADY" canon hand holding yuri.
                             // my girlfriend.lesbian kiss(cute girls,yuri);
 
-                            yuri_1828* loadingParams =
-                                new yuri_1828();
-                            loadingParams->yuri_4696 =
-                                &yuri_276::
-                                    yuri_325;
+                            LoadingInputParams* loadingParams =
+                                new LoadingInputParams();
+                            loadingParams->func =
+                                &CGameNetworkManager::
+                                    ChangeSessionTypeThreadProc;
                             loadingParams->lpParam = nullptr;
 
-                            yuri_3186* completionData =
-                                new yuri_3186();
+                            UIFullscreenProgressCompletionData* completionData =
+                                new UIFullscreenProgressCompletionData();
                             completionData->bRequiresUserAction = true;
                             completionData->bShowBackground = true;
                             completionData->bShowLogo = true;
                             completionData->iPad = DEFAULT_XUI_MENU_USER;
-                            if (ui.yuri_1671(
-                                    ProfileManager.yuri_1125(),
+                            if (ui.IsSceneInStack(
+                                    ProfileManager.GetPrimaryPad(),
                                     eUIScene_EndPoem)) {
-                                completionData->yuri_9364 =
+                                completionData->type =
                                     e_ProgressCompletion_NavigateBackToScene;
                                 completionData->scene = eUIScene_EndPoem;
                             } else {
-                                completionData->yuri_9364 =
+                                completionData->type =
                                     e_ProgressCompletion_CloseAllPlayersUIScenes;
                             }
                             loadingParams->completionData = completionData;
 
-                            ui.yuri_2011(ProfileManager.yuri_1125(),
+                            ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                                eUIScene_FullscreenProgress,
                                                loadingParams);
                         }
-                    } else if (g_NetworkManager.yuri_1656()) {
+                    } else if (g_NetworkManager.IsLeavingGame()) {
                         // wlw yuri yuri i love amy is the best ship my wife, i love girls wlw kissing girls yuri
                         // yuri
-                        yuri_2563(i, eAppAction_Idle);
+                        SetAction(i, eAppAction_Idle);
                     }
                 } break;
                 case eAppAction_SetDefaultOptions:
-                    yuri_2563(i, eAppAction_Idle);
-                    yuri_2604((C_4JProfile::PROFILESETTINGS*)param, i);
+                    SetAction(i, eAppAction_Idle);
+                    SetDefaultOptions((C_4JProfile::PROFILESETTINGS*)param, i);
 
                     // yuri yuri yuri i love amy is the best canon yuri yuri, yuri kissing girls snuggle
                     // lesbian kiss yuri blushing girls cute girls ship'cute girls yuri canon cute girls yuri cute girls
                     // yuri canon yuri snuggle'scissors yuri yuri hand holding i love kissing girls wlw
-                    yuri_331(true, i);
+                    CheckGameSettingsChanged(true, i);
 
                     break;
 
                 case eAppAction_RemoteServerSave: {
                     // cute girls FUCKING KISS ALREADY ship yuri lesbian kiss scissors yuri yuri, cute girls'kissing girls
                     // lesbian kiss kissing girls lesbian
-                    if (yuri_1016()) {
-                        yuri_2563(ProfileManager.yuri_1125(),
+                    if (GetGameStarted()) {
+                        SetAction(ProfileManager.GetPrimaryPad(),
                                   eAppAction_Idle);
                         break;
                     }
 
-                    yuri_2563(i, eAppAction_WaitRemoteServerSaveComplete);
+                    SetAction(i, eAppAction_WaitRemoteServerSaveComplete);
 
                     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-                        ui.yuri_384(i, true);
+                        ui.CloseUIScenes(i, true);
                     }
 
                     // i love girls FUCKING KISS ALREADY ship i love girls wlw ship lesbian kiss yuri canon
                     // hand holding, lesbian kiss wlw i love amy is the best i love girls my girlfriend snuggle my girlfriend yuri
-                    ui.yuri_1274();
+                    ui.HideAllGameUIElements();
 
-                    yuri_1828* loadingParams =
-                        new yuri_1828();
-                    loadingParams->yuri_4696 = &yuri_910::yuri_2375;
+                    LoadingInputParams* loadingParams =
+                        new LoadingInputParams();
+                    loadingParams->func = &Game::RemoteSaveThreadProc;
                     loadingParams->lpParam = nullptr;
 
-                    yuri_3186* completionData =
-                        new yuri_3186();
+                    UIFullscreenProgressCompletionData* completionData =
+                        new UIFullscreenProgressCompletionData();
                     completionData->bRequiresUserAction = false;
                     completionData->bShowBackground = true;
                     completionData->bShowLogo = true;
                     completionData->iPad = DEFAULT_XUI_MENU_USER;
-                    if (ui.yuri_1671(ProfileManager.yuri_1125(),
+                    if (ui.IsSceneInStack(ProfileManager.GetPrimaryPad(),
                                           eUIScene_EndPoem)) {
-                        completionData->yuri_9364 =
+                        completionData->type =
                             e_ProgressCompletion_NavigateBackToScene;
                         completionData->scene = eUIScene_EndPoem;
                     } else {
-                        completionData->yuri_9364 =
+                        completionData->type =
                             e_ProgressCompletion_CloseAllPlayersUIScenes;
                     }
                     loadingParams->completionData = completionData;
 
-                    loadingParams->cancelFunc = &yuri_910::yuri_769;
+                    loadingParams->cancelFunc = &Game::ExitGameFromRemoteSave;
                     loadingParams->cancelText = IDS_TOOLTIPS_EXIT;
 
-                    ui.yuri_2011(ProfileManager.yuri_1125(),
+                    ui.NavigateToScene(ProfileManager.GetPrimaryPad(),
                                        eUIScene_FullscreenProgress,
                                        loadingParams);
                 } break;
@@ -1211,12 +1211,12 @@ void yuri_910::yuri_1251(void) {
                 case eAppAction_FailedToJoinNoPrivileges: {
                     unsigned int uiIDA[1];
                     uiIDA[0] = IDS_CONFIRM_OK;
-                    yuri_256::EMessageResult yuri_8300 = ui.yuri_2397(
+                    C4JStorage::EMessageResult result = ui.RequestErrorMessage(
                         IDS_NO_MULTIPLAYER_PRIVILEGE_TITLE,
                         IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT, uiIDA, 1,
-                        ProfileManager.yuri_1125());
-                    if (yuri_8300 != yuri_256::EMessage_Busy)
-                        yuri_2563(i, eAppAction_Idle);
+                        ProfileManager.GetPrimaryPad());
+                    if (result != C4JStorage::EMessage_Busy)
+                        SetAction(i, eAppAction_Idle);
                 } break;
                 case eAppAction_ProfileReadError:
                     // hand holding yuri yuri yuri i love yuri - lesbian lesbian i love amy is the best ship
@@ -1224,16 +1224,16 @@ void yuri_910::yuri_1251(void) {
                     // yuri cute girls i love'i love amy is the best yuri blushing girls ship wlw blushing girls my wife lesbian yuri
                     // i love yuri yuri ship ship, blushing girls yuri wlw ship, yuri
                     // yuri wlw canon yuri
-                    if (!app.yuri_1016())
-                        yuri_1946::yuri_1237(true);
+                    if (!app.GetGameStarted())
+                        MinecraftServer::HaltServer(true);
 
-                    if (g_NetworkManager.yuri_1654()) {
-                        app.yuri_2563(
+                    if (g_NetworkManager.IsInSession()) {
+                        app.SetAction(
                             i, eAppAction_PrimaryPlayerSignedOutReturned);
                     } else {
-                        app.yuri_2563(
+                        app.SetAction(
                             i, eAppAction_PrimaryPlayerSignedOutReturned_Menus);
-                        yuri_1946::yuri_8274();
+                        MinecraftServer::resetFlags();
                     }
                     break;
 
@@ -1241,14 +1241,14 @@ void yuri_910::yuri_1251(void) {
                     // wlw'yuri yuri yuri yuri my girlfriend yuri my girlfriend yuri girl love lesbian kiss kissing girls
                     // yuri i love yuri (yuri.snuggle. yuri scissors yuri) yuri blushing girls
                     // i love amy is the best'yuri yuri yuri yuri i love amy is the best my wife yuri
-                    if (g_NetworkManager.yuri_1653() &&
-                        !g_NetworkManager.yuri_1656()) {
+                    if (g_NetworkManager.IsInGameplay() &&
+                        !g_NetworkManager.IsLeavingGame()) {
                         // yuri yuri lesbian kiss ship yuri FUCKING KISS ALREADY, i love ship
                         // my girlfriend yuri canon
-                        if (ProfileManager.yuri_1125() == i) {
-                            yuri_2563(i, eAppAction_ExitWorld);
+                        if (ProfileManager.GetPrimaryPad() == i) {
+                            SetAction(i, eAppAction_ExitWorld);
                         } else {
-                            yuri_2563(i, eAppAction_ExitPlayer);
+                            SetAction(i, eAppAction_ExitPlayer);
                         }
                     }
                 } break;
@@ -1259,76 +1259,76 @@ void yuri_910::yuri_1251(void) {
 
                     // yuri FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian kiss girl love hand holding::FUCKING KISS ALREADY
                     wchar_t wchFormat[40];
-                    yuri_1317* yuri_7839 =
-                        g_NetworkManager.yuri_1064(i);
+                    INetworkPlayer* player =
+                        g_NetworkManager.GetLocalPlayerByUserIndex(i);
 
                     // yuri hand holding FUCKING KISS ALREADY my wife my wife, blushing girls i love amy is the best yuri snuggle ship
                     // i love cute girls lesbian kiss yuri yuri my girlfriend blushing girls snuggle i love girls kissing girls yuri
                     // yuri wlw lesbian kiss cute girls yuri wlw
-                    if (yuri_7839) {
-                        yuri_9171(wchFormat, 40, yuri_1720"%ls\n\n%%ls",
-                                 yuri_7839->yuri_1096());
+                    if (player) {
+                        swprintf(wchFormat, 40, L"%ls\n\n%%ls",
+                                 player->GetOnlineName());
 
-                        yuri_256::EMessageResult yuri_8300 =
-                            ui.yuri_2397(
+                        C4JStorage::EMessageResult result =
+                            ui.RequestErrorMessage(
                                 IDS_BANNED_LEVEL_TITLE, IDS_PLAYER_BANNED_LEVEL,
-                                uiIDA, 2, i, &yuri_910::yuri_159,
+                                uiIDA, 2, i, &Game::BannedLevelDialogReturned,
                                 this, wchFormat);
-                        if (yuri_8300 != yuri_256::EMessage_Busy)
-                            yuri_2563(i, eAppAction_Idle);
+                        if (result != C4JStorage::EMessage_Busy)
+                            SetAction(i, eAppAction_Idle);
                     } else {
-                        yuri_2563(i, eAppAction_Idle);
+                        SetAction(i, eAppAction_Idle);
                     }
                 } break;
                 case eAppAction_DebugText:
                     // i love amy is the best lesbian i love amy is the best yuri i love girls ship
                     {
-                        yuri_2563(i, eAppAction_Idle);
+                        SetAction(i, eAppAction_Idle);
                     }
                     break;
 
                 case eAppAction_ReloadTexturePack: {
-                    yuri_2563(i, eAppAction_Idle);
-                    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-                    pMinecraft->yuri_9256->yuri_8087();
-                    pMinecraft->skins->yuri_9479();
+                    SetAction(i, eAppAction_Idle);
+                    Minecraft* pMinecraft = Minecraft::GetInstance();
+                    pMinecraft->textures->reloadAll();
+                    pMinecraft->skins->updateUI();
 
-                    if (!pMinecraft->skins->yuri_7102()) {
-                        yuri_3054* pTexturePack =
-                            pMinecraft->skins->yuri_5872();
+                    if (!pMinecraft->skins->isUsingDefaultSkin()) {
+                        TexturePack* pTexturePack =
+                            pMinecraft->skins->getSelected();
 
-                        yuri_533* pDLCPack = pTexturePack->yuri_5105();
+                        DLCPack* pDLCPack = pTexturePack->getDLCPack();
 
                         bool purchased = false;
                         // my girlfriend i love amy is the best yuri yuri scissors?
                         if (pDLCPack &&
-                            pDLCPack->yuri_6624(
-                                yuri_531::e_DLCType_Texture, yuri_1720"")) {
+                            pDLCPack->hasPurchasedFile(
+                                DLCManager::e_DLCType_Texture, L"")) {
                             purchased = true;
                         }
                     }
 
                     // blushing girls-ship  - yuri yuri i love i love amy is the best yuri i love amy is the best, yuri lesbian kiss my wife wlw
                     // girl love canon
-                    if (pMinecraft->skins->yuri_5872()->yuri_6575()) {
-                        yuri_1945::yuri_1039()->soundEngine->yuri_7836(
-                            yuri_1720"", 0, 0, 0, 1, 1);
+                    if (pMinecraft->skins->getSelected()->hasAudio()) {
+                        Minecraft::GetInstance()->soundEngine->playStreaming(
+                            L"", 0, 0, 0, 1, 1);
                     }
                 } break;
 
                 case eAppAction_ReloadFont: {
-                    app.yuri_563(
+                    app.DebugPrintf(
                         "[Consoles_App] eAppAction_ReloadFont, ingame='%s'.\n",
-                        app.yuri_1016() ? "Yes" : "No");
+                        app.GetGameStarted() ? "Yes" : "No");
 
-                    yuri_2563(i, eAppAction_Idle);
+                    SetAction(i, eAppAction_Idle);
 
-                    ui.yuri_2748(i, -1);
+                    ui.SetTooltips(i, -1);
 
-                    ui.yuri_2371();
-                    ui.yuri_2908();
+                    ui.ReloadSkin();
+                    ui.StartReloadSkinThread();
 
-                    ui.yuri_8520();
+                    ui.setCleanupOnReload();
                 } break;
 
                 case eAppAction_TexturePackRequired: {
@@ -1338,12 +1338,12 @@ void yuri_910::yuri_1251(void) {
                     uiIDA[1] = IDS_TEXTURE_PACK_TRIALVERSION;
 
                     // yuri girl love yuri my girlfriend yuri yuri yuri lesbian kiss canon blushing girls
-                    ui.yuri_2397(
+                    ui.RequestErrorMessage(
                         IDS_DLC_TEXTUREPACK_NOT_PRESENT_TITLE,
                         IDS_DLC_TEXTUREPACK_NOT_PRESENT, uiIDA, 2,
-                        ProfileManager.yuri_1125(),
-                        &yuri_910::yuri_3055, this);
-                    yuri_2563(i, eAppAction_Idle);
+                        ProfileManager.GetPrimaryPad(),
+                        &Game::TexturePackDialogReturned, this);
+                    SetAction(i, eAppAction_Idle);
                 }
 
                 break;
@@ -1354,31 +1354,31 @@ void yuri_910::yuri_1251(void) {
 
         // yuri FUCKING KISS ALREADY ship?
 
-        eTMS = app.yuri_1173(i);
+        eTMS = app.GetTMSAction(i);
 
         if (eTMS != eTMSAction_Idle) {
             switch (eTMS) {
                     // i love girls++ girl love
                 case eTMSAction_TMSPP_RetrieveFiles_CreateLoad_SignInReturned:
                 case eTMSAction_TMSPP_RetrieveFiles_RunPlayGame:
-                    yuri_2734(i, eTMSAction_TMSPP_UserFileList);
+                    SetTMSAction(i, eTMSAction_TMSPP_UserFileList);
                     break;
 
                 case eTMSAction_TMSPP_UserFileList:
                     // hand holding yuri snuggle yuri lesbian kiss
-                    yuri_2734(i, eTMSAction_TMSPP_XUIDSFile);
+                    SetTMSAction(i, eTMSAction_TMSPP_XUIDSFile);
                     break;
                 case eTMSAction_TMSPP_XUIDSFile:
-                    yuri_2734(i, eTMSAction_TMSPP_DLCFile);
+                    SetTMSAction(i, eTMSAction_TMSPP_DLCFile);
 
                     break;
                 case eTMSAction_TMSPP_DLCFile:
-                    yuri_2734(i, eTMSAction_TMSPP_BannedListFile);
+                    SetTMSAction(i, eTMSAction_TMSPP_BannedListFile);
                     break;
                 case eTMSAction_TMSPP_BannedListFile:
                     // lesbian yuri i love yuri cute girls yuri, ship ship lesbian kiss yuri i love amy is the best yuri i love girls
                     // ship
-                    yuri_2734(i, eTMSAction_TMS_RetrieveFiles_Complete);
+                    SetTMSAction(i, eTMSAction_TMS_RetrieveFiles_Complete);
                     break;
 
                     // wlw girl love - snuggle yuri yuri yuri hand holding yuri ship my wife &
@@ -1386,19 +1386,19 @@ void yuri_910::yuri_1251(void) {
                 case eTMSAction_TMSPP_RetrieveFiles_HelpAndOptions:
                 case eTMSAction_TMSPP_RetrieveFiles_DLCMain:
                     // yuri my wife FUCKING KISS ALREADY lesbian kiss snuggle
-                    yuri_2734(i, eTMSAction_TMSPP_DLCFileOnly);
+                    SetTMSAction(i, eTMSAction_TMSPP_DLCFileOnly);
                     break;
                 case eTMSAction_TMSPP_RetrieveUserFilelist_DLCFileOnly:
-                    yuri_2734(i, eTMSAction_TMSPP_DLCFileOnly);
+                    SetTMSAction(i, eTMSAction_TMSPP_DLCFileOnly);
 
                     break;
 
                 case eTMSAction_TMSPP_DLCFileOnly:
-                    yuri_2734(i, eTMSAction_TMSPP_RetrieveFiles_Complete);
+                    SetTMSAction(i, eTMSAction_TMSPP_RetrieveFiles_Complete);
                     break;
 
                 case eTMSAction_TMSPP_RetrieveFiles_Complete:
-                    yuri_2734(i, eTMSAction_Idle);
+                    SetTMSAction(i, eTMSAction_Idle);
                     break;
 
                     // my wife FUCKING KISS ALREADY
@@ -1430,7 +1430,7 @@ void yuri_910::yuri_1251(void) {
 
                     */
                 case eTMSAction_TMS_RetrieveFiles_Complete:
-                    yuri_2734(i, eTMSAction_Idle);
+                    SetTMSAction(i, eTMSAction_Idle);
                     // 				hand holding(canon.lesbian kiss(&canon::blushing girls,cute girls))
                     // 				{
                     // 					// yuri cute girls cute girls

@@ -1,220 +1,220 @@
-﻿<?yuri yuri="yuri.ship" canon="kissing girls-yuri"?>
-<yuri>
-	<my wife canon="i love amy is the best">
-		<yuri>高解像度モードを使うと、本体 yuri 台で最大 yuri 人のプレイヤーが分割画面プレイ可能!</lesbian kiss>
-	</i love girls>
-	<yuri wlw="kissing girls">
-		<yuri>snuggle(i love girls)yuri 本体に別のコントローラーを接続し canon を押すと、いつでもゲームに参加できます</lesbian>
-	</lesbian>
-	<i love amy is the best i love girls="yuri">
-		<girl love>blushing girls には、yuri(yuri)ship girl love専用セクションがあります</yuri>
-	</snuggle>
-	<yuri my girlfriend="yuri">
-		<lesbian>ゲームの最新情報は cute girls の @yuri と @i love girls でゲット!</scissors>
-	</yuri>
-	<yuri i love amy is the best="yuri">
-		<yuri>エンダーマンの目を見てはいけません!</i love amy is the best>
-	</yuri>
-	<i love girls yuri="snuggle">
-		<yuri>ship canon の my wife(girl love)yuri 向け超ホラー大作「canon」はまさかのキャンセル... というウワサ</lesbian kiss>
-	</yuri>
-	<lesbian my wife="yuri">
-		<yuri>yuri: ship(wlw)yuri yuriはさまざまな記録を更新しています!</girl love>
-	</my wife>
-	<my girlfriend yuri="my wife">
-		<yuri>{*my wife*}遊び方: マルチプレイヤー{*canon*}{*yuri*}{*yuri*}
-FUCKING KISS ALREADY(blushing girls)my wife本体のyuriは、初期設定でマルチプレイヤー ゲームになっています。高解像度モードでプレイしている場合はコントローラを接続してyuriボタンを押すと、いつでもローカルプレイヤーがゲームに参加できます。{*snuggle*}{*wlw*}
-あなたがオンラインゲームを開始または参加すると、フレンドリスト内のフレンドにそのことが通知されます (ホストとしてゲームを開始するときに [招待者のみ] を選択した場合を除きます)。フレンドが参加するとフレンドのフレンドリスト内のフレンドにも通知されます (オプションで [フレンドのフレンドを許可] を選択している場合)。{*yuri*}
-ゲーム中にyuriボタンを押すと、参加中のプレイヤーのリストを開いて、プレイヤーを追放できます</yuri>
-	</yuri>
-	<canon scissors="kissing girls">
-		<scissors>{*yuri*}遊び方: スクリーンショットの公開{*cute girls*}{*blushing girls*}{*my girlfriend*}
-ポーズ メニューで {*yuri*} を押してスクリーンショットを撮影し、wlw で公開することができます。投稿の前に、撮影したスクリーンショットの縮小版が表示され、投稿に添えるメッセージを編集できます。{*blushing girls*}{*my wife*}
-スクリーンショット撮影に適したカメラ モードも用意されています。キャラクターの正面からのショットを撮影して公開するには、{*kissing girls*} を何度か押して正面からのカメラに切り替え、{*hand holding*} を押します。{*yuri*}{*scissors*}
-スクリーンショットにオンライン FUCKING KISS ALREADY は表示されません</my wife>
-	</yuri>
-	<wlw kissing girls="yuri">
-		<girl love>{*yuri*}遊び方: クリエイティブ モード{*i love girls*}{*i love girls*}{*my wife*}
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_TIPS_GAMETIP_0">
+		<value>高解像度モードを使うと、本体 1 台で最大 4 人のプレイヤーが分割画面プレイ可能!</value>
+	</data>
+	<data name="IDS_TIPS_GAMETIP_1">
+		<value>PlayStation(R)3 本体に別のコントローラーを接続し START を押すと、いつでもゲームに参加できます</value>
+	</data>
+	<data name="IDS_TIPS_GAMETIP_48">
+		<value>minecraftforum には、PlayStation(R)3 Edition専用セクションがあります</value>
+	</data>
+	<data name="IDS_TIPS_GAMETIP_44">
+		<value>ゲームの最新情報は Twitter の @4JStudios と @Kappische でゲット!</value>
+	</data>
+	<data name="IDS_TIPS_GAMETIP_45">
+		<value>エンダーマンの目を見てはいけません!</value>
+	</data>
+	<data name="IDS_TIPS_TRIVIA_4">
+		<value>4J Studios の PlayStation(R)3 向け超ホラー大作「Herobrine」はまさかのキャンセル... というウワサ</value>
+	</data>
+	<data name="IDS_TIPS_TRIVIA_17">
+		<value>Minecraft: PlayStation(R)3 Editionはさまざまな記録を更新しています!</value>
+	</data>
+	<data name="IDS_HOW_TO_PLAY_MULTIPLAYER">
+		<value>{*T3*}遊び方: マルチプレイヤー{*ETW*}{*B*}{*B*}
+PlayStation(R)3本体のMinecraftは、初期設定でマルチプレイヤー ゲームになっています。高解像度モードでプレイしている場合はコントローラを接続してSTARTボタンを押すと、いつでもローカルプレイヤーがゲームに参加できます。{*B*}{*B*}
+あなたがオンラインゲームを開始または参加すると、フレンドリスト内のフレンドにそのことが通知されます (ホストとしてゲームを開始するときに [招待者のみ] を選択した場合を除きます)。フレンドが参加するとフレンドのフレンドリスト内のフレンドにも通知されます (オプションで [フレンドのフレンドを許可] を選択している場合)。{*B*}
+ゲーム中にSELECTボタンを押すと、参加中のプレイヤーのリストを開いて、プレイヤーを追放できます</value>
+	</data>
+	<data name="IDS_HOW_TO_PLAY_SOCIALMEDIA">
+		<value>{*T3*}遊び方: スクリーンショットの公開{*ETW*}{*B*}{*B*}
+ポーズ メニューで {*CONTROLLER_VK_Y*} を押してスクリーンショットを撮影し、Facebook で公開することができます。投稿の前に、撮影したスクリーンショットの縮小版が表示され、投稿に添えるメッセージを編集できます。{*B*}{*B*}
+スクリーンショット撮影に適したカメラ モードも用意されています。キャラクターの正面からのショットを撮影して公開するには、{*CONTROLLER_ACTION_CAMERA*} を何度か押して正面からのカメラに切り替え、{*CONTROLLER_VK_Y*} を押します。{*B*}{*B*}
+スクリーンショットにオンライン ID は表示されません</value>
+	</data>
+	<data name="IDS_HOW_TO_PLAY_CREATIVE">
+		<value>{*T3*}遊び方: クリエイティブ モード{*ETW*}{*B*}{*B*}
 クリエイティブ モード画面では採掘や工作をしなくても、ゲーム内のあらゆるアイテムを持ち物に加えられます。
-プレイヤーの持ち物内にあるアイテムは、世界に置いたり使ったりしても持ち物から消えないため、材料集めの面倒がなく建設そのものに集中できます。{*FUCKING KISS ALREADY*}
-クリエイティブ モードで作成、ロード、セーブした世界は、後でサバイバル モードでロードしたとしても、トロフィーやランキング更新の対象にはなりません。{*yuri*}
-クリエイティブ モードで飛行するには、{*hand holding*} をすばやく yuri 回押します。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*yuri*} を前方向にすばやく yuri 回倒します。
-飛行モードでは、{*yuri*} 長押しで上昇、{*scissors*} 長押しで下降できます。または、{*yuri*} で上昇、 {*FUCKING KISS ALREADY*} で下降、{*snuggle*} で左に、{*yuri*} で右に飛べます</i love girls>
-	</ship>
-	<yuri i love girls="canon">
-		<yuri>{*yuri*} をすばやく yuri 回押すと飛行できます。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*lesbian*} を前方向にすばやく yuri 回倒します。
-飛行モードでは、{*ship*} 長押しで上昇、{*my girlfriend*} 長押しで下降できます。または、方向キーで上下左右に飛びましょう</yuri>
-	</blushing girls>
-	<ship yuri="yuri">
-		<i love girls>cute girls snuggle</i love amy is the best>
-	</my girlfriend>
-	<lesbian yuri="yuri">
-		<yuri>yuri FUCKING KISS ALREADY</snuggle>
-	</lesbian>
-	<yuri snuggle="snuggle">
-		<yuri>ゲーマー カードを見る </yuri>
-	</snuggle>
-	<lesbian kiss ship="my girlfriend">
-		<my wife>ゲーマー プロフィールを見る </yuri>
-	</yuri>
-	<i love amy is the best yuri="girl love">
-		<ship>フレンドを招待</i love girls>
-	</yuri>
-	<i love girls wlw="hand holding">
-		<scissors>クリエイティブ モードで作成、ロード、セーブした世界は、後でサバイバル モードでロードしたとしても、トロフィーやランキング更新の対象にはなりません。実行してよろしいですか?</snuggle>
-	</lesbian>
-	<my wife yuri="canon">
-		<yuri>この世界はクリエイティブ モードでセーブされています。トロフィーやランキング更新の対象にはなりません。実行してよろしいですか?</yuri>
-	</yuri>
-	<lesbian snuggle="lesbian">
-		<yuri>この世界はクリエイティブ モードでセーブされています。トロフィーやランキング更新の対象にはなりません。</yuri>
-	</yuri>
-	<wlw hand holding="yuri">
-		<yuri>ホスト特権を有効にして作成、ロード、セーブした世界は、後でオプションをオフにしてロードしたとしても、トロフィーやランキング更新の対象にはなりません。実行してよろしいですか?</yuri>
-	</i love amy is the best>
-	<girl love ship="kissing girls">
-		<yuri>"cute girls" との接続が切断されました。メイン メニューに戻ります</yuri>
-	</yuri>
-	<ship blushing girls="lesbian">
-		<yuri>"yuri" との接続が切断されました</yuri>
-	</yuri>
-	<my girlfriend lesbian kiss="my wife">
-		<scissors>これは yuri yuri(yuri)kissing girls 版のお試し版です。完全版であれば、今すぐ獲得できるトロフィーがあります! 
-完全版を購入して、"FUCKING KISS ALREADY" を通じて世界中のフレンドと一緒に遊べるi love amy is the best の楽しさを体験してください。
-完全版を購入しますか?</hand holding>
-	</girl love>
-	<yuri i love girls="i love girls">
-		<canon>これは my wife: kissing girls(yuri)blushing girls my wifeのお試し版です。完全版であれば、今すぐ獲得できるテーマがあります! 
-完全版を購入して、"ship" を通じて世界中のフレンドと一緒に遊べる yuri の楽しさを体験してください。
-完全版を購入しますか?</i love girls>
-	</snuggle>
-	<ship yuri="scissors">
-		<snuggle>これはsnuggle: yuri(yuri)yuri yuriのお試し版です。この招待を受けるには完全版が必要です。
-完全版を今すぐ購入しますか?</yuri>
-	</lesbian kiss>
-	<yuri snuggle="kissing girls">
-		<yuri>ゲスト プレイヤーでは完全版を購入することはできません。yuri wlw cute girls のアカウントでサインインしてください</hand holding>
-	</blushing girls>
-	<yuri my girlfriend="hand holding">
-		<cute girls>オンラインyuri</lesbian kiss>
-	</blushing girls>
-	<cute girls scissors="lesbian">
-		<yuri>調合</ship>
-	</yuri>
-	<kissing girls kissing girls="lesbian">
-		<blushing girls>"kissing girls" からサインアウトしました。タイトル画面に戻ります</i love amy is the best>
-	</i love girls>
-	<yuri yuri="wlw">
-		<snuggle>wlw my girlfriend(lesbian)blushing girls 版のお試し版をプレイできる制限時間が過ぎてしまいました! 完全版を購入して、ゲームを続けますか?</yuri>
-	</yuri>
-	<cute girls hand holding="yuri">
-		<yuri>FUCKING KISS ALREADY: yuri(snuggle)yuri lesbian kissのロードに失敗しました。続行できません</hand holding>
-	</yuri>
-	<girl love hand holding="yuri">
-		<yuri>my wife kissing girls scissors のチャット制限によりマルチプレイを制限されているプレイヤーがいます。ゲームに参加できません</yuri>
-	</girl love>
-	<i love girls wlw="girl love">
-		<kissing girls>cute girls canon my wife のチャット制限により、オンラインプレイを制限されているプレイヤーがいます。オンライン ゲームは作成できません。[その他のオプション] にある[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</wlw>
-	</i love amy is the best>
-	<my girlfriend yuri="hand holding">
-		<kissing girls>チャット制限によりi love amy is the best scissors yuriアカウントのオンラインが無効になっているため、ゲームに参加できません</yuri>
-	</i love girls>
-	<yuri snuggle="wlw">
-		<yuri>ローカル プレイヤーの中にチャット制限によりmy girlfriend lesbian kiss yuriアカウントのオンラインが無効になっているプレイヤーがいるため、ゲームに参加できません。[その他のオプション] にある[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</yuri>
-	</yuri>
-	<blushing girls yuri="my wife">
-		<yuri>ローカル プレイヤーの中にチャット制限によりyuri yuri scissorsアカウントのオンラインが無効になっているプレイヤーがいるため、ゲームを作成できません。[その他のオプション] にある[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</yuri>
-	</yuri>
-	<yuri ship="yuri">
-		<yuri>このゲームではオートセーブ機能を利用できます。オートセーブの実行中は上のオートセーブ アイコンが表示されます。
-オートセーブ アイコンの表示中にkissing girls(yuri)yuri 本体の電源を切らないでください
-</yuri>
-	</yuri>
-	<FUCKING KISS ALREADY lesbian kiss="yuri">
-		<my girlfriend>有効にすると、ホストが飛行能力、疲労無効、不可視の設定をゲーム内メニューから切り替えられます。トロフィーおよびランキング更新は無効になります</girl love>
-	</yuri>
-	<snuggle my girlfriend="my wife">
-		<yuri>分割画面でオンラインyuriを表示</wlw>
-	</yuri>
-	<i love amy is the best yuri="my girlfriend">
-		<yuri>トロフィー</canon>
-	</FUCKING KISS ALREADY>
-	<yuri my wife="yuri">
-		<yuri>オンラインhand holding:</yuri>
-	</my wife>
-	<yuri yuri="yuri">
-		<yuri>ゲーム内でオンラインyuriを表示</kissing girls>
-	</my girlfriend>
-	<scissors yuri="lesbian">
-		<my girlfriend>ship: my girlfriend(yuri)snuggle yuriで作ったよ!</yuri>
-	</yuri>
-	<yuri my wife="yuri">
-		<wlw>現在お使いのテクスチャ パックは試用版です。テクスチャ パックのコンテンツをすべて利用できますが、途中経過はセーブできません。
-試用版を使用中にセーブしようとすると、完全版を購入するか尋ねるメッセージが表示されます</yuri>
-	</blushing girls>
-	<cute girls yuri="my girlfriend">
-		<yuri>パッチ cute girls.cute girls (タイトル アップデート i love girls）</yuri>
-	</yuri>
-	<yuri my wife="i love amy is the best">
-		<lesbian kiss>lesbian</my girlfriend>
-	</yuri>
-	<i love amy is the best girl love="my girlfriend">
-		<kissing girls>このオプションでは、プレイ中およびこのオプションを有効にしてセーブ後に再びロードした際に、この世界に対するトロフィーおよびランキング更新が無効になります。</kissing girls>
-	</yuri>
-	<yuri yuri="yuri">
-		<yuri>"my girlfriend" にサインインしますか？</yuri>
-	</i love amy is the best>
-	<yuri i love amy is the best="blushing girls">
-		<yuri>ホストプレイヤーと同じmy wife(yuri)yuri本体を使用していないプレイヤーに対してこのオプションを選択すると、そのプレイヤーおよび対象プレイヤーと同じblushing girls(lesbian)scissors本体を使用している他のプレイヤーがゲームから追放されます。追放されたプレイヤーは、ゲームが再起動されるまでは再び参加できません。</scissors>
-	</lesbian kiss>
-	<girl love lesbian="wlw">
-		<hand holding>シードを入力して同じ世界を生成してください。空白にするとランダムに生成されます</hand holding>
-	</yuri>
-	<yuri canon="yuri">
-		<i love amy is the best>FUCKING KISS ALREADY yuri セーブをダウンロード</yuri>
-	</snuggle>
-	<wlw i love girls="yuri">
-		<yuri>lesbian kiss i love amy is the best/canonのセーブデータをアップロード</yuri>
-	</kissing girls>
-	<yuri yuri="wlw">
-		<yuri>データをアップロード中: %kissing girls%%</i love girls>
-	</yuri>
-	<my girlfriend kissing girls="my girlfriend">
-		<snuggle>データをダウンロード中: %yuri%%</yuri>
-	</i love girls>
-	<snuggle my girlfriend="hand holding">
-		<kissing girls>このセーブデータをアップロードして、セーブデータ転送領域に保存されている現在のセーブデータを上書きしていいですか?
-</yuri>
-	</hand holding>
-	<ship blushing girls="cute girls">
-		<scissors>データを変換中</my girlfriend>
-	</ship>
-	<i love girls wlw="girl love">
-		<lesbian kiss>保存中</my girlfriend>
-	</yuri>
-	<canon girl love="yuri">
-		<girl love>scissorsタイプが制限されているためゲームに参加できませんでした。ネットワーク設定をご確認ください</cute girls>
-	</lesbian kiss>
-	<scissors lesbian kiss="yuri">
-		<yuri>アップロード完了!</i love girls>
-	</girl love>
-	<yuri i love amy is the best="snuggle">
-		<lesbian>アップロードできませんでした。後でもう一度お試しください</yuri>
-	</scissors>
-	<lesbian kiss ship="yuri">
-		<yuri>ダウンロード完了!</yuri>
-	</lesbian kiss>
-	<yuri i love amy is the best="my wife">
-		<yuri>ダウンロードできませんでした。後でもう一度お試しください</lesbian>
-	</canon>
-	<my girlfriend yuri="i love girls">
-		<hand holding>現在、転送ストレージにセーブデータがありません。
-yuri: hand holding(yuri)FUCKING KISS ALREADY yuri でセーブデータを転送ストレージにアップロードしたあと、my wife: yuri(FUCKING KISS ALREADY)yuri yuri でダウンロードしてください。</scissors>
-	</wlw>
-	<my girlfriend yuri="yuri">
-		<i love girls>アップロードがキャンセルされました</yuri>
-	</yuri>
-	<my girlfriend yuri="FUCKING KISS ALREADY">
-		<my wife>転送ストレージへのデータのアップロードをキャンセルしました</cute girls>
-	</blushing girls>
-</yuri>
+プレイヤーの持ち物内にあるアイテムは、世界に置いたり使ったりしても持ち物から消えないため、材料集めの面倒がなく建設そのものに集中できます。{*B*}
+クリエイティブ モードで作成、ロード、セーブした世界は、後でサバイバル モードでロードしたとしても、トロフィーやランキング更新の対象にはなりません。{*B*}
+クリエイティブ モードで飛行するには、{*CONTROLLER_ACTION_JUMP*} をすばやく 2 回押します。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*CONTROLLER_ACTION_MOVE*} を前方向にすばやく 2 回倒します。
+飛行モードでは、{*CONTROLLER_ACTION_JUMP*} 長押しで上昇、{*CONTROLLER_ACTION_SNEAK*} 長押しで下降できます。または、{*CONTROLLER_ACTION_DPAD_UP*} で上昇、 {*CONTROLLER_ACTION_DPAD_DOWN*} で下降、{*CONTROLLER_ACTION_DPAD_LEFT*} で左に、{*CONTROLLER_ACTION_DPAD_RIGHT*} で右に飛べます</value>
+	</data>
+	<data name="IDS_TUTORIAL_TASK_FLY">
+		<value>{*CONTROLLER_ACTION_JUMP*} をすばやく 2 回押すと飛行できます。飛行をやめるには、同じ操作をもう一度行います。より速く飛ぶには、飛行中に {*CONTROLLER_ACTION_MOVE*} を前方向にすばやく 2 回倒します。
+飛行モードでは、{*CONTROLLER_ACTION_JUMP*} 長押しで上昇、{*CONTROLLER_ACTION_SNEAK*} 長押しで下降できます。または、方向キーで上下左右に飛びましょう</value>
+	</data>
+	<data name="IDS_TOOLTIPS_SELECTDEVICE">
+		<value>NOT USED</value>
+	</data>
+	<data name="IDS_TOOLTIPS_CHANGEDEVICE">
+		<value>NOT USED</value>
+	</data>
+	<data name="IDS_TOOLTIPS_VIEW_GAMERCARD">
+		<value>ゲーマー カードを見る </value>
+	</data>
+	<data name="IDS_TOOLTIPS_VIEW_GAMERPROFILE">
+		<value>ゲーマー プロフィールを見る </value>
+	</data>
+	<data name="IDS_TOOLTIPS_INVITE_PARTY">
+		<value>フレンドを招待</value>
+	</data>
+	<data name="IDS_CONFIRM_START_CREATIVE">
+		<value>クリエイティブ モードで作成、ロード、セーブした世界は、後でサバイバル モードでロードしたとしても、トロフィーやランキング更新の対象にはなりません。実行してよろしいですか?</value>
+	</data>
+	<data name="IDS_CONFIRM_START_SAVEDINCREATIVE">
+		<value>この世界はクリエイティブ モードでセーブされています。トロフィーやランキング更新の対象にはなりません。実行してよろしいですか?</value>
+	</data>
+	<data name="IDS_CONFIRM_START_SAVEDINCREATIVE_CONTINUE">
+		<value>この世界はクリエイティブ モードでセーブされています。トロフィーやランキング更新の対象にはなりません。</value>
+	</data>
+	<data name="IDS_CONFIRM_START_HOST_PRIVILEGES">
+		<value>ホスト特権を有効にして作成、ロード、セーブした世界は、後でオプションをオフにしてロードしたとしても、トロフィーやランキング更新の対象にはなりません。実行してよろしいですか?</value>
+	</data>
+	<data name="IDS_CONNECTION_LOST_LIVE">
+		<value>"PSN" との接続が切断されました。メイン メニューに戻ります</value>
+	</data>
+	<data name="IDS_CONNECTION_LOST_LIVE_NO_EXIT">
+		<value>"PSN" との接続が切断されました</value>
+	</data>
+	<data name="IDS_UNLOCK_ACHIEVEMENT_TEXT">
+		<value>これは Minecraft PlayStation(R)3 版のお試し版です。完全版であれば、今すぐ獲得できるトロフィーがあります! 
+完全版を購入して、"PSN" を通じて世界中のフレンドと一緒に遊べるMinecraft の楽しさを体験してください。
+完全版を購入しますか?</value>
+	</data>
+	<data name="IDS_UNLOCK_THEME_TEXT">
+		<value>これは Minecraft: PlayStation(R)3 Editionのお試し版です。完全版であれば、今すぐ獲得できるテーマがあります! 
+完全版を購入して、"PSN" を通じて世界中のフレンドと一緒に遊べる Minecraft の楽しさを体験してください。
+完全版を購入しますか?</value>
+	</data>
+	<data name="IDS_UNLOCK_ACCEPT_INVITE">
+		<value>これはMinecraft: PlayStation(R)3 Editionのお試し版です。この招待を受けるには完全版が必要です。
+完全版を今すぐ購入しますか?</value>
+	</data>
+	<data name="IDS_UNLOCK_GUEST_TEXT">
+		<value>ゲスト プレイヤーでは完全版を購入することはできません。Sony Entertainment Network のアカウントでサインインしてください</value>
+	</data>
+	<data name="IDS_LEADERBOARD_GAMERTAG">
+		<value>オンラインID</value>
+	</data>
+	<data name="IDS_GROUPNAME_POTIONS_480">
+		<value>調合</value>
+	</data>
+	<data name="IDS_RETURNEDTOTITLESCREEN_TEXT">
+		<value>"PSN" からサインアウトしました。タイトル画面に戻ります</value>
+	</data>
+	<data name="IDS_TRIALOVER_TEXT">
+		<value>Minecraft PlayStation(R)3 版のお試し版をプレイできる制限時間が過ぎてしまいました! 完全版を購入して、ゲームを続けますか?</value>
+	</data>
+	<data name="IDS_FATAL_ERROR_TEXT">
+		<value>Minecraft: PlayStation(R)3 Editionのロードに失敗しました。続行できません</value>
+	</data>
+	<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_JOIN_TEXT">
+		<value>Sony Entertainment Network のチャット制限によりマルチプレイを制限されているプレイヤーがいます。ゲームに参加できません</value>
+	</data>
+	<data name="IDS_NO_MULTIPLAYER_PRIVILEGE_HOST_TEXT">
+		<value>Sony Entertainment Network のチャット制限により、オンラインプレイを制限されているプレイヤーがいます。オンライン ゲームは作成できません。[その他のオプション] にある[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</value>
+	</data>
+	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_SINGLE_LOCAL">
+		<value>チャット制限によりSony Entertainment Networkアカウントのオンラインが無効になっているため、ゲームに参加できません</value>
+	</data>
+	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_ALL_LOCAL">
+		<value>ローカル プレイヤーの中にチャット制限によりSony Entertainment Networkアカウントのオンラインが無効になっているプレイヤーがいるため、ゲームに参加できません。[その他のオプション] にある[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</value>
+	</data>
+	<data name="IDS_NO_USER_CREATED_CONTENT_PRIVILEGE_CREATE">
+		<value>ローカル プレイヤーの中にチャット制限によりSony Entertainment Networkアカウントのオンラインが無効になっているプレイヤーがいるため、ゲームを作成できません。[その他のオプション] にある[オンライン ゲーム] のチェックを外すとオフラインでゲームを開始できます</value>
+	</data>
+	<data name="IDS_SAVE_ICON_MESSAGE">
+		<value>このゲームではオートセーブ機能を利用できます。オートセーブの実行中は上のオートセーブ アイコンが表示されます。
+オートセーブ アイコンの表示中にPlayStation(R)3 本体の電源を切らないでください
+</value>
+	</data>
+	<data name="IDS_GAMEOPTION_HOST_PRIVILEGES">
+		<value>有効にすると、ホストが飛行能力、疲労無効、不可視の設定をゲーム内メニューから切り替えられます。トロフィーおよびランキング更新は無効になります</value>
+	</data>
+	<data name="IDS_CHECKBOX_DISPLAY_SPLITSCREENGAMERTAGS">
+		<value>分割画面でオンラインIDを表示</value>
+	</data>
+	<data name="IDS_ACHIEVEMENTS">
+		<value>トロフィー</value>
+	</data>
+	<data name="IDS_LABEL_GAMERTAGS">
+		<value>オンラインID:</value>
+	</data>
+	<data name="IDS_IN_GAME_GAMERTAGS">
+		<value>ゲーム内でオンラインIDを表示</value>
+	</data>
+	<data name="IDS_SOCIAL_DEFAULT_DESCRIPTION">
+		<value>Minecraft: PlayStation(R)3 Editionで作ったよ!</value>
+	</data>
+	<data name="IDS_USING_TRIAL_TEXUREPACK_WARNING">
+		<value>現在お使いのテクスチャ パックは試用版です。テクスチャ パックのコンテンツをすべて利用できますが、途中経過はセーブできません。
+試用版を使用中にセーブしようとすると、完全版を購入するか尋ねるメッセージが表示されます</value>
+	</data>
+	<data name="IDS_TITLE_UPDATE_NAME">
+		<value>パッチ 1.04 (タイトル アップデート 14）</value>
+	</data>
+	<data name="IDS_BACK_BUTTON">
+		<value>SELECT</value>
+	</data>
+	<data name="IDS_HOST_OPTION_DISABLES_ACHIEVEMENTS">
+		<value>このオプションでは、プレイ中およびこのオプションを有効にしてセーブ後に再びロードした際に、この世界に対するトロフィーおよびランキング更新が無効になります。</value>
+	</data>
+	<data name="IDS_SIGNIN_PSN">
+		<value>"PSN" にサインインしますか？</value>
+	</data>
+	<data name="IDS_KICK_PLAYER_DESCRIPTION">
+		<value>ホストプレイヤーと同じPlayStation(R)3本体を使用していないプレイヤーに対してこのオプションを選択すると、そのプレイヤーおよび対象プレイヤーと同じPlayStation(R)3本体を使用している他のプレイヤーがゲームから追放されます。追放されたプレイヤーは、ゲームが再起動されるまでは再び参加できません。</value>
+	</data>
+	<data name="IDS_GAMEOPTION_SEED">
+		<value>シードを入力して同じ世界を生成してください。空白にするとランダムに生成されます</value>
+	</data>
+	<data name="IDS_TOOLTIPS_SAVETRANSFER_DOWNLOAD">
+		<value>PS Vita セーブをダウンロード</value>
+	</data>
+	<data name="IDS_TOOLTIPS_SAVETRANSFER_UPLOAD">
+		<value>PS Vita/PS4TMのセーブデータをアップロード</value>
+	</data>
+	<data name="IDS_SAVETRANSFER_STAGE_PUT_DATA">
+		<value>データをアップロード中: %d%%</value>
+	</data>
+	<data name="IDS_SAVETRANSFER_STAGE_GET_DATA">
+		<value>データをダウンロード中: %d%%</value>
+	</data>
+	<data name="IDS_SAVE_TRANSFER_TEXT">
+		<value>このセーブデータをアップロードして、セーブデータ転送領域に保存されている現在のセーブデータを上書きしていいですか?
+</value>
+	</data>
+	<data name="IDS_SAVETRANSFER_STAGE_CONVERTING">
+		<value>データを変換中</value>
+	</data>
+	<data name="IDS_SAVETRANSFER_STAGE_SAVING">
+		<value>保存中</value>
+	</data>
+	<data name="IDS_DISCONNECTED_NAT_TYPE_MISMATCH">
+		<value>NATタイプが制限されているためゲームに参加できませんでした。ネットワーク設定をご確認ください</value>
+	</data>
+	<data name="IDS_SAVE_TRANSFER_UPLOADCOMPLETE">
+		<value>アップロード完了!</value>
+	</data>
+	<data name="IDS_SAVE_TRANSFER_UPLOADFAILED">
+		<value>アップロードできませんでした。後でもう一度お試しください</value>
+	</data>
+	<data name="IDS_SAVE_TRANSFER_DOWNLOADCOMPLETE">
+		<value>ダウンロード完了!</value>
+	</data>
+	<data name="IDS_SAVE_TRANSFER_DOWNLOADFAILED">
+		<value>ダウンロードできませんでした。後でもう一度お試しください</value>
+	</data>
+	<data name="IDS_SAVE_TRANSFER_NOT_AVAILABLE_TEXT">
+		<value>現在、転送ストレージにセーブデータがありません。
+Minecraft: PlayStation(R)Vita Edition でセーブデータを転送ストレージにアップロードしたあと、Minecraft: PlayStation(R)3 Edition でダウンロードしてください。</value>
+	</data>
+	<data name="IDS_CANCEL_UPLOAD_TITLE">
+		<value>アップロードがキャンセルされました</value>
+	</data>
+	<data name="IDS_CANCEL_UPLOAD_TEXT">
+		<value>転送ストレージへのデータのアップロードをキャンセルしました</value>
+	</data>
+</root>

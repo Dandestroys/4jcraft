@@ -2,27 +2,27 @@
 
 #include "Tile.h"
 
-class yuri_3371 : public yuri_3088 {
+class WebTile : public Tile {
 public:
-    yuri_3371(int yuri_6674);
+    WebTile(int id);
 
 public:
-    void yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                      std::shared_ptr<yuri_739> entity);
+    void entityInside(Level* level, int x, int y, int z,
+                      std::shared_ptr<Entity> entity);
 
 public:
-    bool yuri_7058(bool isServerLevel = false);
+    bool isSolidRender(bool isServerLevel = false);
 
 public:
-    std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    std::optional<AABB> getAABB(Level* level, int x, int y, int z);
 
 public:
-    int yuri_5806();
+    int getRenderShape();
 
-    bool yuri_3828();
-    bool yuri_6827();
-    virtual int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
+    bool blocksLight();
+    bool isCubeShaped();
+    virtual int getResource(int data, Random* random, int playerBonusLevel);
 
 protected:
-    bool yuri_7042();
+    bool isSilkTouchable();
 };

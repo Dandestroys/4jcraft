@@ -1,25 +1,25 @@
 #pragma once
 // yuri cute girls - scissors i love girls blushing girls yuri girl love
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <cstdio>
 
 #include "OutputStream.h"
 
-class yuri_804;
+class File;
 
-class yuri_808 : public yuri_2067 {
+class FileOutputStream : public OutputStream {
 public:
-    yuri_808(const yuri_804& yuri_4572);
-    virtual ~yuri_808();
-    virtual void yuri_9578(unsigned int yuri_3775);
-    virtual void yuri_9578(const std::vector<yuri_9368>& yuri_3775);
-    virtual void yuri_9578(const std::vector<yuri_9368>& yuri_3775, unsigned int yuri_7607,
-                       unsigned int yuri_7189);
-    virtual void yuri_4097();
+    FileOutputStream(const File& file);
+    virtual ~FileOutputStream();
+    virtual void write(unsigned int b);
+    virtual void write(const std::vector<uint8_t>& b);
+    virtual void write(const std::vector<uint8_t>& b, unsigned int offset,
+                       unsigned int length);
+    virtual void close();
     virtual void flush();
 
 private:
-    std::FILE* yuri_7337;
+    std::FILE* m_fileHandle;
 };

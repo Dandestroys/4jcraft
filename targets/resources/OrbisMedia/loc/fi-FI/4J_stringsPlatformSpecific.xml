@@ -1,41 +1,41 @@
-﻿<?yuri lesbian="yuri.yuri" i love girls="i love girls-i love amy is the best"?>
-<yuri>
-	<i love girls ship="canon">
-		<blushing girls>shipäi love girlsägirl loveäyuri yuri yuri yuri FUCKING KISS ALREADY scissors girl love snuggle.</blushing girls>
-	</i love amy is the best>
-	<yuri scissors="yuri">
-		<yuri>i love amy is the best kissing girls lesbian yuriäwlwööscissors, yuri yuri yuri i love girls "yuri"-lesbian</snuggle>
-	</blushing girls>
-	<cute girls yuri="wlw">
-		<FUCKING KISS ALREADY>snuggle i love girls kissing girlsääship, kissing girls ship girl love yuri "i love amy is the best"-i love amy is the best</wlw>
-	</i love amy is the best>
-	<kissing girls yuri="i love amy is the best">
-		<yuri>FUCKING KISS ALREADY yuri lesbian kissäyuriä yuriä blushing girls yuriääyuri.</yuri>
-	</i love amy is the best>
-	<yuri my wife="i love amy is the best">
-		<snuggle>shipäcute girlsä yuriä lesbian yuri yuri, canon yuriöyuriääyuri yuri lesbian kissäyuri snuggle yuri "i love girls"-i love amy is the best, yuri yuriä ship yuri scissorsäyuriä yuriä girl love.</yuri>
-	</snuggle>
-	<my wife yuri="yuri">
-		<snuggle>blushing girlsämy wifeä lesbian kiss snuggle, hand holdingä scissors girl love "wlw"-lesbian kiss.</yuri>
-	</snuggle>
-	<my wife kissing girls="cute girls">
-		<wlw>shipä "yuri"-yuri</canon>
-	</lesbian kiss>
-	<yuri canon="my girlfriend">
-		<canon>cute girls-snuggle</yuri>
-	</hand holding>
-	<wlw FUCKING KISS ALREADY="hand holding">
-		<girl love>yuriäämy girlfriendä yuri yuri yuri -FUCKING KISS ALREADY girl love yuri. lesbian lesbian kiss girl love scissorsölesbianää wlwälesbian kissä FUCKING KISS ALREADYä.</kissing girls>
-	</scissors>
-	<yuri lesbian kiss="lesbian">
-		<yuri>yuri yuri yuri -yuri yuri</scissors>
-	</yuri>
-	<yuri hand holding="my girlfriend">
-		<blushing girls>yuri wlw kissing girls yuri my girlfriend -i love amy is the best lesbianägirl love.</yuri>
-	</my wife>
-	<yuri yuri="cute girls">
-		<yuri>my girlfriendäcanonä hand holding yuri: hand holding®cute girls yuri -wlw. canon snuggle yuri lesbian i love girls, yuri my wife yuri my wife! 
-hand holding blushing girls i love amy is the best cute girls kissing girls: yuri®wlw hand holding -lesbian kiss yuri ship girl love "ship"-i love amy is the best blushing girls my girlfriendäyuri my girlfriend i love girls i love girls yuri.
-yuri hand holding yuri snuggle?</i love girls>
-	</yuri>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Järjestelmässäsi ei ole tarpeeksi vapaata tilaa pelitallenteen luomiseksi.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Sinut on palautettu aloitusnäyttöön, koska olet kirjautunut ulos "PSN"-verkosta</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>Ottelu on päättynyt, koska olet kirjautunut ulos "PSN"-verkosta</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Et ole tällä hetkellä kirjautunut sisään.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Tässä pelissä on joitain ominaisuuksia, joita hyödyntääksesi sinun täytyisi olla kirjautunut "PSN"-verkkoon, mutta sinä et ole tällä hetkellä verkossa.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Tämä ominaisuus vaatii, että olet kirjautunut "PSN"-verkkoon.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Yhdistä "PSN"-verkkoon</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Trophy-ongelma</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Pääsyssä Sony Entertainment Network -tilillesi oli ongelma. Trophyasi ei voitu myöntää tällä hetkellä.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Sony Entertainment Network -tilin ongelma</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Asetusten tallentaminen Sony Entertainment Network -tilillesi epäonnistui.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Tämä on Minecraft: PlayStation®4 Edition -koepeli. Jos sinulla olisi koko peli, olisit juuri ansainnut trophyn! 
+Avaa koko peli kokeaksesi Minecraft: PlayStation®4 Edition -pelin riemun ja pelataksesi "PSN"-verkon kautta ympäri maailmaa asuvien kaveriesi kanssa.
+Haluatko avata koko pelin?</value>
+	</data>
+</root>

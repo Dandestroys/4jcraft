@@ -15,40 +15,40 @@
 #include "minecraft/world/level/tile/entity/HopperTileEntity.h"
 #include "nbt/CompoundTag.h"
 
-class yuri_1346;
+class Icon;
 
-const std::yuri_9616 yuri_1284::TEXTURE_OUTSIDE = yuri_1720"hopper_outside";
-const std::yuri_9616 yuri_1284::TEXTURE_INSIDE = yuri_1720"hopper_inside";
+const std::wstring HopperTile::TEXTURE_OUTSIDE = L"hopper_outside";
+const std::wstring HopperTile::TEXTURE_INSIDE = L"hopper_inside";
 
-yuri_1284::yuri_1284(int yuri_6674) : yuri_163(yuri_6674, yuri_1886::metal, false) {
-    yuri_8855(0, 0, 0, 1, 1, 1);
+HopperTile::HopperTile(int id) : BaseEntityTile(id, Material::metal, false) {
+    setShape(0, 0, 0, 1, 1, 1);
 }
 
-void yuri_1284::yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+void HopperTile::updateShape(LevelSource* level, int x, int y, int z,
                              int forceData,
-                             std::shared_ptr<yuri_3091> forceEntity) {
-    yuri_8855(0, 0, 0, 1, 1, 1);
+                             std::shared_ptr<TileEntity> forceEntity) {
+    setShape(0, 0, 0, 1, 1, 1);
 }
 
-void yuri_1284::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
-                          std::vector<yuri_0>* boxes,
-                          std::shared_ptr<yuri_739> yuri_9075) {
-    yuri_8855(0, 0, 0, 1, 10.0f / 16.0f, 1);
-    yuri_163::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+void HopperTile::addAABBs(Level* level, int x, int y, int z, AABB* box,
+                          std::vector<AABB>* boxes,
+                          std::shared_ptr<Entity> source) {
+    setShape(0, 0, 0, 1, 10.0f / 16.0f, 1);
+    BaseEntityTile::addAABBs(level, x, y, z, box, boxes, source);
     float thickness = 2.0f / 16.0f;
-    yuri_8855(0, 0, 0, thickness, 1, 1);
-    yuri_163::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
-    yuri_8855(0, 0, 0, 1, 1, thickness);
-    yuri_163::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
-    yuri_8855(1 - thickness, 0, 0, 1, 1, 1);
-    yuri_163::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
-    yuri_8855(0, 0, 1 - thickness, 1, 1, 1);
-    yuri_163::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+    setShape(0, 0, 0, thickness, 1, 1);
+    BaseEntityTile::addAABBs(level, x, y, z, box, boxes, source);
+    setShape(0, 0, 0, 1, 1, thickness);
+    BaseEntityTile::addAABBs(level, x, y, z, box, boxes, source);
+    setShape(1 - thickness, 0, 0, 1, 1, 1);
+    BaseEntityTile::addAABBs(level, x, y, z, box, boxes, source);
+    setShape(0, 0, 1 - thickness, 1, 1, 1);
+    BaseEntityTile::addAABBs(level, x, y, z, box, boxes, source);
 
-    yuri_8855(0, 0, 0, 1, 1, 1);
+    setShape(0, 0, 0, 1, 1, 1);
 }
 
-int yuri_1284::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+int HopperTile::getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue) {
     int attached = Facing::OPPOSITE_FACING[face];
@@ -56,143 +56,143 @@ int yuri_1284::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     return attached;
 }
 
-std::shared_ptr<yuri_3091> yuri_1284::yuri_7569(yuri_1758* yuri_7194) {
-    return std::make_shared<yuri_1285>();
+std::shared_ptr<TileEntity> HopperTile::newTileEntity(Level* level) {
+    return std::make_shared<HopperTileEntity>();
 }
 
-void yuri_1284::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                             std::shared_ptr<yuri_1793> by,
-                             std::shared_ptr<yuri_1693> itemInstance) {
-    yuri_163::yuri_8766(yuri_7194, yuri_9621, yuri_9625, yuri_9630, by, itemInstance);
+void HopperTile::setPlacedBy(Level* level, int x, int y, int z,
+                             std::shared_ptr<LivingEntity> by,
+                             std::shared_ptr<ItemInstance> itemInstance) {
+    BaseEntityTile::setPlacedBy(level, x, y, z, by, itemInstance);
 
-    if (itemInstance->yuri_6589()) {
-        std::shared_ptr<yuri_1285> hopper = yuri_5375(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        hopper->yuri_8548(itemInstance->yuri_5379());
+    if (itemInstance->hasCustomHoverName()) {
+        std::shared_ptr<HopperTileEntity> hopper = getHopper(level, x, y, z);
+        hopper->setCustomName(itemInstance->getHoverName());
     }
 }
 
-void yuri_1284::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_163::yuri_7637(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    yuri_4022(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void HopperTile::onPlace(Level* level, int x, int y, int z) {
+    BaseEntityTile::onPlace(level, x, y, z);
+    checkPoweredState(level, x, y, z);
 }
 
-bool yuri_1284::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                     std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+bool HopperTile::use(Level* level, int x, int y, int z,
+                     std::shared_ptr<Player> player, int clickedFace,
                      float clickX, float clickY, float clickZ, bool soundOnly) {
-    if (yuri_7194->yuri_6802) {
+    if (level->isClientSide) {
         return true;
     }
-    std::shared_ptr<yuri_1285> hopper = yuri_5375(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    if (hopper != nullptr) yuri_7839->yuri_7665(hopper);
+    std::shared_ptr<HopperTileEntity> hopper = getHopper(level, x, y, z);
+    if (hopper != nullptr) player->openHopper(hopper);
     return true;
 }
 
-void yuri_1284::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    yuri_4022(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void HopperTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    checkPoweredState(level, x, y, z);
 }
 
-void yuri_1284::yuri_4022(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int attachedFace = yuri_4907(yuri_4295);
-    bool shouldBeOn = !yuri_7194->yuri_6618(yuri_9621, yuri_9625, yuri_9630);
-    bool yuri_6976 = yuri_7092(yuri_4295);
+void HopperTile::checkPoweredState(Level* level, int x, int y, int z) {
+    int data = level->getData(x, y, z);
+    int attachedFace = getAttachedFace(data);
+    bool shouldBeOn = !level->hasNeighborSignal(x, y, z);
+    bool isOn = isTurnedOn(data);
 
-    if (shouldBeOn != yuri_6976) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, attachedFace | (shouldBeOn ? 0 : MASK_TOGGLE),
+    if (shouldBeOn != isOn) {
+        level->setData(x, y, z, attachedFace | (shouldBeOn ? 0 : MASK_TOGGLE),
                        UPDATE_NONE);
     }
 }
 
-void yuri_1284::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295) {
-    std::shared_ptr<yuri_436> yuri_4145 =
-        std::dynamic_pointer_cast<yuri_1285>(
-            yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
-    if (yuri_4145 != nullptr) {
-        for (int i = 0; i < yuri_4145->yuri_5058(); i++) {
-            std::shared_ptr<yuri_1693> item = yuri_4145->yuri_5416(i);
+void HopperTile::onRemove(Level* level, int x, int y, int z, int id, int data) {
+    std::shared_ptr<Container> container =
+        std::dynamic_pointer_cast<HopperTileEntity>(
+            level->getTileEntity(x, y, z));
+    if (container != nullptr) {
+        for (int i = 0; i < container->getContainerSize(); i++) {
+            std::shared_ptr<ItemInstance> item = container->getItem(i);
             if (item != nullptr) {
-                float xo = yuri_7981.yuri_7576() * 0.8f + 0.1f;
-                float yo = yuri_7981.yuri_7576() * 0.8f + 0.1f;
-                float zo = yuri_7981.yuri_7576() * 0.8f + 0.1f;
+                float xo = random.nextFloat() * 0.8f + 0.1f;
+                float yo = random.nextFloat() * 0.8f + 0.1f;
+                float zo = random.nextFloat() * 0.8f + 0.1f;
 
-                while (item->yuri_4184 > 0) {
-                    int yuri_4184 = yuri_7981.yuri_7578(21) + 10;
-                    if (yuri_4184 > item->yuri_4184) yuri_4184 = item->yuri_4184;
-                    item->yuri_4184 -= yuri_4184;
+                while (item->count > 0) {
+                    int count = random.nextInt(21) + 10;
+                    if (count > item->count) count = item->count;
+                    item->count -= count;
 
-                    std::shared_ptr<yuri_1689> itemEntity =
-                        std::make_shared<yuri_1689>(
-                            yuri_7194, yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo,
-                            std::make_shared<yuri_1693>(
-                                item->yuri_6674, yuri_4184, item->yuri_4919()));
+                    std::shared_ptr<ItemEntity> itemEntity =
+                        std::make_shared<ItemEntity>(
+                            level, x + xo, y + yo, z + zo,
+                            std::make_shared<ItemInstance>(
+                                item->id, count, item->getAuxValue()));
 
-                    if (item->yuri_6640()) {
-                        itemEntity->yuri_5416()->yuri_8898(
-                            (yuri_409*)item->yuri_5992()->yuri_4179());
+                    if (item->hasTag()) {
+                        itemEntity->getItem()->setTag(
+                            (CompoundTag*)item->getTag()->copy());
                     }
 
                     float pow = 0.05f;
-                    itemEntity->xd = (float)yuri_7981.yuri_7577() * pow;
-                    itemEntity->yd = (float)yuri_7981.yuri_7577() * pow + 0.2f;
-                    itemEntity->zd = (float)yuri_7981.yuri_7577() * pow;
-                    yuri_7194->yuri_3611(itemEntity);
+                    itemEntity->xd = (float)random.nextGaussian() * pow;
+                    itemEntity->yd = (float)random.nextGaussian() * pow + 0.2f;
+                    itemEntity->zd = (float)random.nextGaussian() * pow;
+                    level->addEntity(itemEntity);
                 }
             }
         }
-        yuri_7194->yuri_9437(yuri_9621, yuri_9625, yuri_9630, yuri_6674);
+        level->updateNeighbourForOutputSignal(x, y, z, id);
     }
 
-    yuri_163::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
+    BaseEntityTile::onRemove(level, x, y, z, id, data);
 }
 
-int yuri_1284::yuri_5806() { return SHAPE_HOPPER; }
+int HopperTile::getRenderShape() { return SHAPE_HOPPER; }
 
-bool yuri_1284::yuri_6827() { return false; }
+bool HopperTile::isCubeShaped() { return false; }
 
-bool yuri_1284::yuri_7058(bool isServerLevel /*= yuri*/) { return false; }
+bool HopperTile::isSolidRender(bool isServerLevel /*= yuri*/) { return false; }
 
-bool yuri_1284::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool HopperTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
                                   int face) {
     return true;
 }
 
-yuri_1346* yuri_1284::yuri_6007(int face, int yuri_4295) {
+Icon* HopperTile::getTexture(int face, int data) {
     if (face == Facing::UP) {
         return hopperTopIcon;
     }
     return hopperIcon;
 }
 
-int yuri_1284::yuri_4907(int yuri_4295) { return yuri_4295 & MASK_ATTACHED; }
+int HopperTile::getAttachedFace(int data) { return data & MASK_ATTACHED; }
 
-bool yuri_1284::yuri_7092(int yuri_4295) {
-    return (yuri_4295 & MASK_TOGGLE) != MASK_TOGGLE;
+bool HopperTile::isTurnedOn(int data) {
+    return (data & MASK_TOGGLE) != MASK_TOGGLE;
 }
 
-bool yuri_1284::yuri_6573() { return true; }
+bool HopperTile::hasAnalogOutputSignal() { return true; }
 
-int yuri_1284::yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                      int yuri_4361) {
-    return yuri_47::yuri_5795(
-        yuri_5375(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
+int HopperTile::getAnalogOutputSignal(Level* level, int x, int y, int z,
+                                      int dir) {
+    return AbstractContainerMenu::getRedstoneSignalFromContainer(
+        getHopper(level, x, y, z));
 }
 
-void yuri_1284::yuri_8072(IconRegister* iconRegister) {
-    hopperIcon = iconRegister->yuri_8071(TEXTURE_OUTSIDE);
-    hopperTopIcon = iconRegister->yuri_8071(yuri_1720"hopper_top");
-    hopperInnerIcon = iconRegister->yuri_8071(TEXTURE_INSIDE);
+void HopperTile::registerIcons(IconRegister* iconRegister) {
+    hopperIcon = iconRegister->registerIcon(TEXTURE_OUTSIDE);
+    hopperTopIcon = iconRegister->registerIcon(L"hopper_top");
+    hopperInnerIcon = iconRegister->registerIcon(TEXTURE_INSIDE);
 }
 
-yuri_1346* yuri_1284::yuri_6007(const std::yuri_9616& yuri_7540) {
-    if (yuri_7540.yuri_4117(TEXTURE_OUTSIDE) == 0) return yuri_3088::hopper->hopperIcon;
-    if (yuri_7540.yuri_4117(TEXTURE_INSIDE) == 0) return yuri_3088::hopper->hopperInnerIcon;
+Icon* HopperTile::getTexture(const std::wstring& name) {
+    if (name.compare(TEXTURE_OUTSIDE) == 0) return Tile::hopper->hopperIcon;
+    if (name.compare(TEXTURE_INSIDE) == 0) return Tile::hopper->hopperInnerIcon;
     return nullptr;
 }
 
-std::yuri_9616 yuri_1284::yuri_6038() { return yuri_1720"hopper"; }
+std::wstring HopperTile::getTileItemIconName() { return L"hopper"; }
 
-std::shared_ptr<yuri_1285> yuri_1284::yuri_5375(yuri_1771* yuri_7194,
-                                                        int yuri_9621, int yuri_9625, int yuri_9630) {
-    return std::dynamic_pointer_cast<yuri_1285>(
-        yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
+std::shared_ptr<HopperTileEntity> HopperTile::getHopper(LevelSource* level,
+                                                        int x, int y, int z) {
+    return std::dynamic_pointer_cast<HopperTileEntity>(
+        level->getTileEntity(x, y, z));
 }

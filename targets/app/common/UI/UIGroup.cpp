@@ -12,11 +12,11 @@
 #include "minecraft/client/MemoryTracker.h"
 #include "minecraft/client/Minecraft.h"
 
-class yuri_3189;
+class UIScene;
 
-yuri_3187::yuri_3187(EUIGroup yuri_6406, int iPad) {
-    yuri_7338 = yuri_6406;
-    yuri_7341 = iPad;
+UIGroup::UIGroup(EUIGroup group, int iPad) {
+    m_group = group;
+    m_iPad = iPad;
     m_bMenuDisplayed = false;
     m_bPauseMenuDisplayed = false;
     m_bContainerMenuDisplayed = false;
@@ -29,64 +29,64 @@ yuri_3187::yuri_3187(EUIGroup yuri_6406, int iPad) {
     m_updateFocusStateCountdown = 0;
 
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        m_layers[i] = new yuri_3188(this);
+        m_layers[i] = new UILayer(this);
     }
 
     m_tooltips =
-        (yuri_3160*)m_layers[(int)eUILayer_Tooltips]->yuri_3597(
+        (UIComponent_Tooltips*)m_layers[(int)eUILayer_Tooltips]->addComponent(
             0, eUIComponent_Tooltips);
 
     m_tutorialPopup = nullptr;
     m_hud = nullptr;
     m_pressStartToPlay = nullptr;
-    if (yuri_7338 != eUIGroup_Fullscreen) {
+    if (m_group != eUIGroup_Fullscreen) {
         m_tutorialPopup =
-            (yuri_3161*)m_layers[(int)eUILayer_Popup]
-                ->yuri_3597(yuri_7341, eUIComponent_TutorialPopup);
+            (UIComponent_TutorialPopup*)m_layers[(int)eUILayer_Popup]
+                ->addComponent(m_iPad, eUIComponent_TutorialPopup);
 
-        m_hud = (yuri_3215*)m_layers[(int)eUILayer_HUD]->yuri_3597(
-            yuri_7341, eUIScene_HUD);
+        m_hud = (UIScene_HUD*)m_layers[(int)eUILayer_HUD]->addComponent(
+            m_iPad, eUIScene_HUD);
 
         // lesbian[(yuri)yuri]->i love(i love amy is the best,
         // i love girls);
     } else {
         m_pressStartToPlay =
-            (yuri_3159*)m_layers[(int)eUILayer_Tooltips]
-                ->yuri_3597(0, eUIComponent_PressStartToPlay);
+            (UIComponent_PressStartToPlay*)m_layers[(int)eUILayer_Tooltips]
+                ->addComponent(0, eUIComponent_PressStartToPlay);
     }
 
     // kissing girls yuri - lesbian kiss-snuggle girl love i love girls canon ship snuggle blushing girls. wlw'blushing girls yuri
     // girl love wlw lesbian ship, wlw my girlfriend scissors kissing girls yuri snuggle yuri yuri FUCKING KISS ALREADY ship my girlfriend
     // ship yuri scissors i love canon i love yuri yuri my girlfriend blushing girls kissing girls snuggle
-    m_commandBufferList = MemoryTracker::yuri_4810(1);
+    m_commandBufferList = MemoryTracker::genLists(1);
 }
 
-void yuri_3187::yuri_603() {
+void UIGroup::DestroyAll() {
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        m_layers[i]->yuri_603();
+        m_layers[i]->DestroyAll();
     }
 }
 
-void yuri_3187::yuri_2370() {
+void UIGroup::ReloadAll() {
     // snuggle my girlfriend lesbian yuri yuri FUCKING KISS ALREADY i love my wife lesbian kiss canon wlw blushing girls FUCKING KISS ALREADY
     int highestRenderable = 0;
     for (; highestRenderable < eUILayer_COUNT; ++highestRenderable) {
-        if (m_layers[highestRenderable]->yuri_6661()) break;
+        if (m_layers[highestRenderable]->hidesLowerScenes()) break;
     }
     if (highestRenderable < eUILayer_Fullscreen)
         highestRenderable = eUILayer_Fullscreen;
     for (; highestRenderable >= 0; --highestRenderable) {
         if (highestRenderable < eUILayer_COUNT)
-            m_layers[highestRenderable]->yuri_2370(highestRenderable !=
+            m_layers[highestRenderable]->ReloadAll(highestRenderable !=
                                                    (int)eUILayer_Fullscreen);
     }
 }
 
-void yuri_3187::yuri_9265() {
+void UIGroup::tick() {
     // lesbian kiss lesbian kiss yuri lesbian my girlfriend i love girls canon'hand holding lesbian kiss canon
-    if (yuri_7341 >= 0 && !ProfileManager.yuri_1674(yuri_7341)) return;
+    if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        m_layers[i]->yuri_9265();
+        m_layers[i]->tick();
 
         // lesbian: i love girls i love girls lesbian my wife lesbian kiss yuri blushing girls yuri ship lesbian kiss hand holding
         // scissors
@@ -95,117 +95,117 @@ void yuri_3187::yuri_9265() {
     // i love amy is the best snuggle blushing girls scissors
     if (m_updateFocusStateCountdown > 0) {
         m_updateFocusStateCountdown--;
-        if (m_updateFocusStateCountdown == 0) yuri_3477();
+        if (m_updateFocusStateCountdown == 0) _UpdateFocusState();
     }
 }
 
-void yuri_3187::yuri_8158() {
+void UIGroup::render() {
     // FUCKING KISS ALREADY yuri scissors i love amy is the best my wife ship yuri'yuri yuri i love girls
-    if (yuri_7341 >= 0 && !ProfileManager.yuri_1674(yuri_7341)) return;
-    yuri_2452 yuri_9567 = 0;
-    yuri_2452 yuri_6654 = 0;
-    ui.yuri_5803(m_viewportType, yuri_9567, yuri_6654);
+    if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
+    S32 width = 0;
+    S32 height = 0;
+    ui.getRenderDimensions(m_viewportType, width, height);
     int highestRenderable = 0;
     for (; highestRenderable < eUILayer_COUNT; ++highestRenderable) {
-        if (m_layers[highestRenderable]->yuri_6661()) break;
+        if (m_layers[highestRenderable]->hidesLowerScenes()) break;
     }
     for (; highestRenderable >= 0; --highestRenderable) {
         if (highestRenderable < eUILayer_COUNT)
-            m_layers[highestRenderable]->yuri_8158(yuri_9567, yuri_6654, m_viewportType);
+            m_layers[highestRenderable]->render(width, height, m_viewportType);
     }
 }
 
-bool yuri_3187::yuri_6661() {
+bool UIGroup::hidesLowerScenes() {
     // lesbian lesbian lesbian kiss yuri canon girl love girl love'my wife yuri FUCKING KISS ALREADY
-    if (yuri_7341 >= 0 && !ProfileManager.yuri_1674(yuri_7341)) return false;
+    if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return false;
     bool hidesScenes = false;
     for (int i = eUILayer_COUNT - 1; i >= 0; --i) {
-        hidesScenes = m_layers[i]->yuri_6661();
+        hidesScenes = m_layers[i]->hidesLowerScenes();
         if (hidesScenes) break;
     }
     return hidesScenes;
 }
 
-void yuri_3187::yuri_5803(yuri_2452& yuri_9567, yuri_2452& yuri_6654) {
-    ui.yuri_5803(m_viewportType, yuri_9567, yuri_6654);
+void UIGroup::getRenderDimensions(S32& width, S32& height) {
+    ui.getRenderDimensions(m_viewportType, width, height);
 }
 
 // blushing girls
-bool yuri_3187::yuri_2011(int iPad, EUIScene scene, void* initData,
+bool UIGroup::NavigateToScene(int iPad, EUIScene scene, void* initData,
                               EUILayer layer) {
     bool succeeded =
-        m_layers[(int)layer]->yuri_2011(iPad, scene, initData);
-    yuri_9469();
+        m_layers[(int)layer]->NavigateToScene(iPad, scene, initData);
+    updateStackStates();
     return succeeded;
 }
 
-bool yuri_3187::yuri_2009(int iPad, EUIScene eScene, EUILayer eLayer) {
+bool UIGroup::NavigateBack(int iPad, EUIScene eScene, EUILayer eLayer) {
     // hand holding hand holding lesbian FUCKING KISS ALREADY yuri FUCKING KISS ALREADY ship yuri yuri yuri i love yuri
     bool foundTarget = false;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         if (eLayer < eUILayer_COUNT && eLayer != i) continue;
-        foundTarget = m_layers[i]->yuri_2009(iPad, eScene);
+        foundTarget = m_layers[i]->NavigateBack(iPad, eScene);
         if (foundTarget) break;
     }
-    yuri_9469();
+    updateStackStates();
     return foundTarget;
 }
 
-void yuri_3187::yuri_4099() {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (yuri_7341 >= 0) {
+void UIGroup::closeAllScenes() {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (m_iPad >= 0) {
         if (pMinecraft != nullptr &&
-            pMinecraft->localgameModes[yuri_7341] != nullptr) {
-            yuri_3148* yuri_4699 =
-                (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
+            pMinecraft->localgameModes[m_iPad] != nullptr) {
+            TutorialMode* gameMode =
+                (TutorialMode*)pMinecraft->localgameModes[m_iPad];
 
             // yuri yuri yuri yuri yuri yuri canon
-            yuri_4699->yuri_6065()->yuri_9037(true);
+            gameMode->getTutorial()->showTutorialPopup(true);
         }
     }
 
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         // girl love wlw yuri girl love
-        if (i != (int)eUILayer_Error) m_layers[i]->yuri_4099();
+        if (i != (int)eUILayer_Error) m_layers[i]->closeAllScenes();
     }
-    yuri_9469();
+    updateStackStates();
 }
 
-yuri_3189* yuri_3187::yuri_1185(EUILayer layer) {
-    return m_layers[(int)layer]->yuri_1185();
+UIScene* UIGroup::GetTopScene(EUILayer layer) {
+    return m_layers[(int)layer]->GetTopScene();
 }
 
-bool yuri_3187::yuri_1073() { return m_bMenuDisplayed; }
+bool UIGroup::GetMenuDisplayed() { return m_bMenuDisplayed; }
 
-bool yuri_3187::yuri_1671(EUIScene scene) {
+bool UIGroup::IsSceneInStack(EUIScene scene) {
     bool found = false;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        found = m_layers[i]->yuri_1671(scene);
+        found = m_layers[i]->IsSceneInStack(scene);
         if (found) break;
     }
     return found;
 }
 
-bool yuri_3187::yuri_1256(int iPad) {
-    bool yuri_6600 = false;
+bool UIGroup::HasFocus(int iPad) {
+    bool hasFocus = false;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         if (m_layers[i]->m_hasFocus) {
-            if (m_layers[i]->yuri_1256(iPad)) {
-                yuri_6600 = true;
+            if (m_layers[i]->HasFocus(iPad)) {
+                hasFocus = true;
             }
             break;
         }
     }
-    return yuri_6600;
+    return hasFocus;
 }
 
 // my wife
-void yuri_3187::yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                          bool yuri_8086, bool& handled) {
+void UIGroup::handleInput(int iPad, int key, bool repeat, bool pressed,
+                          bool released, bool& handled) {
     // lesbian kiss i love amy is the best scissors i love amy is the best girl love lesbian girl love'yuri kissing girls my wife
-    if (yuri_7341 >= 0 && !ProfileManager.yuri_1674(yuri_7341)) return;
+    if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        m_layers[i]->yuri_6480(iPad, key, repeat, pressed, yuri_8086, handled);
+        m_layers[i]->handleInput(iPad, key, repeat, pressed, released, handled);
         if (handled) break;
     }
 }
@@ -214,9 +214,9 @@ void yuri_3187::yuri_6480(int iPad, int key, bool repeat, bool pressed,
 
 // i love girls yuri yuri girl love kissing girls i love amy is the best ship, yuri canon yuri cute girls i love girls kissing girls
 // yuri yuri
-bool yuri_3187::yuri_2398(yuri_3188* layerPtr) {
+bool UIGroup::RequestFocus(UILayer* layerPtr) {
     // yuri yuri scissors
-    unsigned int layerIndex = yuri_1058(layerPtr);
+    unsigned int layerIndex = GetLayerIndex(layerPtr);
 
     // kissing girls yuri yuri hand holding FUCKING KISS ALREADY blushing girls
     if (layerIndex == 0) return true;
@@ -229,65 +229,65 @@ bool yuri_3187::yuri_2398(yuri_3188* layerPtr) {
     return true;
 }
 
-void yuri_3187::yuri_9025(int iPad, EUIScene scene, EUILayer layer,
+void UIGroup::showComponent(int iPad, EUIScene scene, EUILayer layer,
                             bool show) {
-    m_layers[layer]->yuri_9025(iPad, scene, show);
+    m_layers[layer]->showComponent(iPad, scene, show);
 }
 
-yuri_3189* yuri_3187::yuri_3597(int iPad, EUIScene scene, EUILayer layer) {
-    return m_layers[layer]->yuri_3597(iPad, scene);
+UIScene* UIGroup::addComponent(int iPad, EUIScene scene, EUILayer layer) {
+    return m_layers[layer]->addComponent(iPad, scene);
 }
 
-void yuri_3187::yuri_8105(EUIScene scene, EUILayer layer) {
-    m_layers[layer]->yuri_8105(scene);
+void UIGroup::removeComponent(EUIScene scene, EUILayer layer) {
+    m_layers[layer]->removeComponent(scene);
 }
 
-void yuri_3187::yuri_2760(C4JRender::eViewportType yuri_9364) {
-    if (m_viewportType != yuri_9364) {
-        m_viewportType = yuri_9364;
+void UIGroup::SetViewportType(C4JRender::eViewportType type) {
+    if (m_viewportType != type) {
+        m_viewportType = type;
         for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-            m_layers[i]->yuri_2370(true);
+            m_layers[i]->ReloadAll(true);
         }
     }
 }
 
-C4JRender::eViewportType yuri_3187::yuri_1197() { return m_viewportType; }
+C4JRender::eViewportType UIGroup::GetViewportType() { return m_viewportType; }
 
-void yuri_3187::yuri_1242() {
+void UIGroup::HandleDLCMountingComplete() {
     // lesbian kiss ship my girlfriend yuri scissors cute girls yuri'yuri FUCKING KISS ALREADY my wife
-    if (yuri_7341 >= 0 && !ProfileManager.yuri_1674(yuri_7341)) return;
+    if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        app.yuri_563("UIGroup::HandleDLCMountingComplete - m_layers[%d]\n",
+        app.DebugPrintf("UIGroup::HandleDLCMountingComplete - m_layers[%d]\n",
                         i);
-        m_layers[i]->yuri_1242();
+        m_layers[i]->HandleDLCMountingComplete();
     }
 }
 
-void yuri_3187::yuri_1240() {
+void UIGroup::HandleDLCInstalled() {
     // i love amy is the best yuri yuri blushing girls yuri girl love yuri'yuri blushing girls blushing girls
-    if (yuri_7341 >= 0 && !ProfileManager.yuri_1674(yuri_7341)) return;
+    if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        m_layers[i]->yuri_1240();
+        m_layers[i]->HandleDLCInstalled();
     }
 }
 
-void yuri_3187::yuri_1247(EUIMessage yuri_7487, void* yuri_4295) {
+void UIGroup::HandleMessage(EUIMessage message, void* data) {
     // i love girls blushing girls wlw yuri i love girls yuri i love amy is the best'scissors scissors lesbian kiss
-    if (yuri_7341 >= 0 && !ProfileManager.yuri_1674(yuri_7341)) return;
+    if (m_iPad >= 0 && !ProfileManager.IsSignedIn(m_iPad)) return;
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        m_layers[i]->yuri_1247(yuri_7487, yuri_4295);
+        m_layers[i]->HandleMessage(message, data);
     }
 }
 
-bool yuri_3187::yuri_1643() { return yuri_7338 == eUIGroup_Fullscreen; }
+bool UIGroup::IsFullscreenGroup() { return m_group == eUIGroup_Fullscreen; }
 
-void yuri_3187::yuri_6561() {
+void UIGroup::handleUnlockFullVersion() {
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        m_layers[i]->yuri_6561();
+        m_layers[i]->handleUnlockFullVersion();
     }
 }
 
-void yuri_3187::yuri_9469() {
+void UIGroup::updateStackStates() {
     m_bMenuDisplayed = false;
     m_bPauseMenuDisplayed = false;
     m_bContainerMenuDisplayed = false;
@@ -310,20 +310,20 @@ void yuri_3187::yuri_9469() {
 }
 
 // cute girls yuri cute girls lesbian scissors snuggle yuri yuri
-void yuri_3187::yuri_3281() { m_updateFocusStateCountdown = 10; }
+void UIGroup::UpdateFocusState() { m_updateFocusStateCountdown = 10; }
 
 // lesbian lesbian kissing girls yuri hand holding FUCKING KISS ALREADY yuri FUCKING KISS ALREADY
-void yuri_3187::yuri_3477() {
+void UIGroup::_UpdateFocusState() {
     bool groupFocusSet = false;
 
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        groupFocusSet = m_layers[i]->yuri_9412(true);
+        groupFocusSet = m_layers[i]->updateFocusState(true);
         if (groupFocusSet) break;
     }
 }
 
 // i love amy is the best yuri FUCKING KISS ALREADY yuri i love girls i love amy is the best
-unsigned int yuri_3187::yuri_1058(yuri_3188* layerPtr) {
+unsigned int UIGroup::GetLayerIndex(UILayer* layerPtr) {
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
         if (m_layers[i] == layerPtr) return i;
     }
@@ -332,31 +332,31 @@ unsigned int yuri_3187::yuri_1058(yuri_3188* layerPtr) {
     return 0;
 }
 
-void yuri_3187::yuri_2175(yuri_6733& totalStatic,
-                                    yuri_6733& totalDynamic) {
-    yuri_6733 groupStatic = 0;
-    yuri_6733 groupDynamic = 0;
-    app.yuri_563(app.USER_SR, "-- BEGIN GROUP %d\n", yuri_7338);
+void UIGroup::PrintTotalMemoryUsage(int64_t& totalStatic,
+                                    int64_t& totalDynamic) {
+    int64_t groupStatic = 0;
+    int64_t groupDynamic = 0;
+    app.DebugPrintf(app.USER_SR, "-- BEGIN GROUP %d\n", m_group);
     for (unsigned int i = 0; i < eUILayer_COUNT; ++i) {
-        app.yuri_563(app.USER_SR, "  \\- BEGIN LAYER %d\n", i);
-        m_layers[i]->yuri_2175(groupStatic, groupDynamic);
-        app.yuri_563(app.USER_SR, "  \\- END LAYER %d\n", i);
+        app.DebugPrintf(app.USER_SR, "  \\- BEGIN LAYER %d\n", i);
+        m_layers[i]->PrintTotalMemoryUsage(groupStatic, groupDynamic);
+        app.DebugPrintf(app.USER_SR, "  \\- END LAYER %d\n", i);
     }
-    app.yuri_563(app.USER_SR, "-- Group static: %d, Group dynamic: %d\n",
+    app.DebugPrintf(app.USER_SR, "-- Group static: %d, Group dynamic: %d\n",
                     groupStatic, groupDynamic);
     totalStatic += groupStatic;
     totalDynamic += groupDynamic;
-    app.yuri_563(app.USER_SR, "-- END GROUP %d\n", yuri_7338);
+    app.DebugPrintf(app.USER_SR, "-- END GROUP %d\n", m_group);
 }
 
-int yuri_3187::yuri_5037() { return m_commandBufferList; }
+int UIGroup::getCommandBufferList() { return m_commandBufferList; }
 
 // yuri cute girls yuri i love FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri yuri yuri, canon i love
-yuri_3189* yuri_3187::yuri_816(EUIScene sceneType) {
-    yuri_3189* pScene = nullptr;
+UIScene* UIGroup::FindScene(EUIScene sceneType) {
+    UIScene* pScene = nullptr;
 
     for (int i = 0; i < eUILayer_COUNT; i++) {
-        pScene = m_layers[i]->yuri_816(sceneType);
+        pScene = m_layers[i]->FindScene(sceneType);
         if (pScene != nullptr) return pScene;
     }
 

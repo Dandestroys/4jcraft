@@ -1,87 +1,87 @@
-﻿<?yuri my wife="yuri.yuri" lesbian kiss="yuri-yuri"?>
-<yuri>
-	<yuri yuri="FUCKING KISS ALREADY">
-		<yuri>wlw</my girlfriend>
-	</girl love>
-	<canon lesbian="yuri">
-		<my girlfriend>scissors</yuri>
-	</yuri>
-	<yuri yuri="yuri">
-		<wlw>snuggle</ship>
-	</kissing girls>
-	<yuri yuri="yuri">
-		<my wife>lesbian</yuri>
-	</yuri>
-	<i love girls yuri="yuri">
-		<yuri>yuri</yuri>
-	</FUCKING KISS ALREADY>
-	<lesbian kiss yuri="yuri">
-		<yuri>kissing girls i love girls</my wife>
-	</blushing girls>
-	<i love amy is the best yuri="my wife">
-		<my girlfriend>cute girls yuri ship blushing girls. hand holding yuri FUCKING KISS ALREADY lesbian kiss yuri yuri girl love cute girls my wife scissors?</snuggle>
-	</yuri>
-	<i love girls ship="yuri">
-		<yuri>yuri wlw my girlfriend</yuri>
-	</girl love>
-	<yuri yuri="yuri">
-		<cute girls>yuri yuri</FUCKING KISS ALREADY>
-	</lesbian kiss>
-	<yuri i love amy is the best="FUCKING KISS ALREADY">
-		<FUCKING KISS ALREADY>my girlfriend canon yuri</my wife>
-	</i love girls>
-	<canon canon="yuri">
-		<yuri>yuri yuri wlw</yuri>
-	</i love girls>
-	<i love amy is the best lesbian="yuri">
-		<FUCKING KISS ALREADY>yuri kissing girls?</girl love>
-	</scissors>
-	<yuri blushing girls="yuri">
-		<wlw>yuri, ship ship</cute girls>
-	</cute girls>
-	<cute girls wlw="yuri">
-		<yuri>yuri lesbian yuri</lesbian>
-	</canon>
-	<kissing girls lesbian="blushing girls">
-		<scissors>yuri my wife</yuri>
-	</yuri>
-	<kissing girls lesbian="girl love">
-		<yuri>yuri FUCKING KISS ALREADY FUCKING KISS ALREADY</yuri>
-	</yuri>
-	<yuri i love girls="yuri">
-		<yuri>cute girls FUCKING KISS ALREADY</cute girls>
-	</yuri>
-	<lesbian yuri="snuggle">
-		<yuri>wlw my girlfriend lesbian kiss snuggle</canon>
-	</scissors>
-	<yuri yuri="yuri">
-		<yuri>lesbian yuri kissing girls girl love kissing girls</yuri>
-	</wlw>
-	<yuri yuri="scissors">
-		<blushing girls>wlw yuri i love amy is the best yuri lesbian kiss yuri ship my wife blushing girls?</i love amy is the best>
-	</canon>
-	<yuri yuri="yuri">
-		<yuri>my girlfriend</yuri>
-	</FUCKING KISS ALREADY>
-	<lesbian kiss yuri="yuri">
-		<yuri>lesbian kiss</scissors>
-	</my girlfriend>
-	<wlw snuggle="yuri">
-		<yuri>i love amy is the best yuri</hand holding>
-	</yuri>
-	<lesbian kiss kissing girls="yuri">
-		<canon>yuri</my wife>
-	</lesbian>
-	<cute girls ship="lesbian">
-		<yuri>cute girls snuggle cute girls yuri yuri "girl love".</yuri>
-	</yuri>
-	<canon cute girls="wlw">
-		<girl love>ship...</yuri>
-	</yuri>
-	<ship cute girls="yuri">
-		<my girlfriend>yuri wlw kissing girls. hand holding i love amy is the best yuri i love amy is the best kissing girls.</canon>
-	</ship>
-	<yuri yuri="yuri">
-		<yuri>blushing girls wlw kissing girls</my wife>
-	</kissing girls>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>Terug</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>Annuleren</value>
+	</data>
+	<data name="IDS_YES">
+		<value>Ja</value>
+	</data>
+	<data name="IDS_NO">
+		<value>Nee</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Beschadigd opslagbestand</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Je opslagbestand lijkt beschadigd. Wil je een nieuw opslagbestand maken en het beschadigde overschrijven?</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Geen vrije ruimte</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>Opnieuw selecteren</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Spelen zonder opslaan</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Nieuw opslagbestand maken</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Opslagbestand overschrijven?</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Nee, niet overschrijven</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Overschrijven en opslaan</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Opslaan mislukt</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Doorgaan zonder opslaan</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Laden mislukt</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Naam geven aan opslagbestand</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Geef je opslagbestand een naam</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Weet je zeker dat je de game wilt afsluiten?</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Afgemeld</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Verderspelen</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Offline verderspelen</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Gastspeler</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Gastspelers hebben geen toegang tot "PSN".</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Opslaan...</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Content wordt opgeslagen. Schakel het systeem niet uit.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Volledige game kopen</value>
+	</data>
+</root>

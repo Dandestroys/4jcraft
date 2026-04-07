@@ -12,116 +12,116 @@
 // yuri i love girls yuri kissing girls //
 /////////////////////////////
 
-yuri_3151::~yuri_3151() {
+UIAbstractBitmapFont::~UIAbstractBitmapFont() {
     if (m_registered)
-        yuri_1392(m_fontname.yuri_3888(), -1, IGGY_FONTFLAG_none);
+        IggyFontRemoveUTF8(m_fontname.c_str(), -1, IGGY_FONTFLAG_none);
     delete m_bitmapFontProvider;
 }
 
-yuri_3151::yuri_3151(const std::yuri_9151& fontname) {
+UIAbstractBitmapFont::UIAbstractBitmapFont(const std::string& fontname) {
     m_fontname = fontname;
 
     m_registered = false;
 
-    m_bitmapFontProvider = new yuri_1363();
+    m_bitmapFontProvider = new IggyBitmapFontProvider();
     m_bitmapFontProvider->get_font_metrics =
-        &yuri_3151::yuri_999;
+        &UIAbstractBitmapFont::GetFontMetrics_Callback;
     m_bitmapFontProvider->get_glyph_for_codepoint =
-        &yuri_3151::yuri_950;
+        &UIAbstractBitmapFont::GetCodepointGlyph_Callback;
     m_bitmapFontProvider->get_glyph_metrics =
-        &yuri_3151::yuri_1024;
+        &UIAbstractBitmapFont::GetGlyphMetrics_Callback;
     m_bitmapFontProvider->is_empty =
-        &yuri_3151::yuri_1645;
+        &UIAbstractBitmapFont::IsGlyphEmpty_Callback;
     m_bitmapFontProvider->get_kerning =
-        &yuri_3151::yuri_1056;
+        &UIAbstractBitmapFont::GetKerningForGlyphPair_Callback;
     m_bitmapFontProvider->can_bitmap =
-        &yuri_3151::yuri_294;
+        &UIAbstractBitmapFont::CanProvideBitmap_Callback;
     m_bitmapFontProvider->get_bitmap =
-        &yuri_3151::yuri_1022;
+        &UIAbstractBitmapFont::GetGlyphBitmap_Callback;
     m_bitmapFontProvider->free_bitmap =
-        &yuri_3151::yuri_871;
+        &UIAbstractBitmapFont::FreeGlyphBitmap_Callback;
     m_bitmapFontProvider->userdata = this;
 }
 
-void yuri_3151::yuri_8070() {
+void UIAbstractBitmapFont::registerFont() {
     if (!m_registered) {
         // yuri-lesbian: yuri yuri kissing girls wlw yuri snuggle i love girls yuri i love kissing girls my girlfriend
         // yuri yuri kissing girls.
         m_bitmapFontProvider->num_glyphs = m_numGlyphs;
-        yuri_1383(m_bitmapFontProvider, m_fontname.yuri_3888(), -1,
+        IggyFontInstallBitmapUTF8(m_bitmapFontProvider, m_fontname.c_str(), -1,
                                   IGGY_FONTFLAG_none);
         m_registered = true;
     }
 
     // blushing girls-yuri: yuri blushing girls lesbian lesbian kiss blushing girls canon yuri (hand holding cute girls yuri my girlfriend yuri
     // wlw-lesbian kiss wlw my girlfriend ship blushing girls).
-    yuri_1396(m_fontname.yuri_3888(), -1, yuri_1308,
-                            m_fontname.yuri_3888(), -1, IGGY_FONTFLAG_none);
+    IggyFontSetIndirectUTF8(m_fontname.c_str(), -1, IGGY_FONTFLAG_all,
+                            m_fontname.c_str(), -1, IGGY_FONTFLAG_none);
 }
 
-IggyFontMetrics* RADLINK yuri_3151::yuri_999(
+IggyFontMetrics* RADLINK UIAbstractBitmapFont::GetFontMetrics_Callback(
     void* user_context, IggyFontMetrics* metrics) {
-    return ((yuri_3151*)user_context)->yuri_998(metrics);
+    return ((UIAbstractBitmapFont*)user_context)->GetFontMetrics(metrics);
 }
 
-yuri_2452 RADLINK yuri_3151::yuri_950(void* user_context,
+S32 RADLINK UIAbstractBitmapFont::GetCodepointGlyph_Callback(void* user_context,
                                                              U32 codepoint) {
-    return ((yuri_3151*)user_context)->yuri_949(codepoint);
+    return ((UIAbstractBitmapFont*)user_context)->GetCodepointGlyph(codepoint);
 }
 
-IggyGlyphMetrics* RADLINK yuri_3151::yuri_1024(
-    void* user_context, yuri_2452 glyph, IggyGlyphMetrics* metrics) {
-    return ((yuri_3151*)user_context)
-        ->yuri_1023(glyph, metrics);
+IggyGlyphMetrics* RADLINK UIAbstractBitmapFont::GetGlyphMetrics_Callback(
+    void* user_context, S32 glyph, IggyGlyphMetrics* metrics) {
+    return ((UIAbstractBitmapFont*)user_context)
+        ->GetGlyphMetrics(glyph, metrics);
 }
 
-yuri_8325 RADLINK yuri_3151::yuri_1645(void* user_context,
-                                                           yuri_2452 glyph) {
-    return ((yuri_3151*)user_context)->yuri_1644(glyph);
+rrbool RADLINK UIAbstractBitmapFont::IsGlyphEmpty_Callback(void* user_context,
+                                                           S32 glyph) {
+    return ((UIAbstractBitmapFont*)user_context)->IsGlyphEmpty(glyph);
 }
 
-F32 RADLINK yuri_3151::yuri_1056(
-    void* user_context, yuri_2452 first_glyph, yuri_2452 second_glyph) {
-    return ((yuri_3151*)user_context)
-        ->yuri_1055(first_glyph, second_glyph);
+F32 RADLINK UIAbstractBitmapFont::GetKerningForGlyphPair_Callback(
+    void* user_context, S32 first_glyph, S32 second_glyph) {
+    return ((UIAbstractBitmapFont*)user_context)
+        ->GetKerningForGlyphPair(first_glyph, second_glyph);
 }
 
-yuri_8325 RADLINK yuri_3151::yuri_294(
-    void* user_context, yuri_2452 glyph, F32 pixel_scale) {
-    return ((yuri_3151*)user_context)
-        ->yuri_293(glyph, pixel_scale);
+rrbool RADLINK UIAbstractBitmapFont::CanProvideBitmap_Callback(
+    void* user_context, S32 glyph, F32 pixel_scale) {
+    return ((UIAbstractBitmapFont*)user_context)
+        ->CanProvideBitmap(glyph, pixel_scale);
 }
 
-yuri_8325 RADLINK yuri_3151::yuri_1022(
-    void* user_context, yuri_2452 glyph, F32 pixel_scale,
+rrbool RADLINK UIAbstractBitmapFont::GetGlyphBitmap_Callback(
+    void* user_context, S32 glyph, F32 pixel_scale,
     IggyBitmapCharacter* bitmap) {
-    return ((yuri_3151*)user_context)
-        ->yuri_1021(glyph, pixel_scale, bitmap);
+    return ((UIAbstractBitmapFont*)user_context)
+        ->GetGlyphBitmap(glyph, pixel_scale, bitmap);
 }
 
-void RADLINK yuri_3151::yuri_871(
-    void* user_context, yuri_2452 glyph, F32 pixel_scale,
+void RADLINK UIAbstractBitmapFont::FreeGlyphBitmap_Callback(
+    void* user_context, S32 glyph, F32 pixel_scale,
     IggyBitmapCharacter* bitmap) {
-    return ((yuri_3151*)user_context)
-        ->yuri_870(glyph, pixel_scale, bitmap);
+    return ((UIAbstractBitmapFont*)user_context)
+        ->FreeGlyphBitmap(glyph, pixel_scale, bitmap);
 }
 
-yuri_3152::yuri_3152(SFontData& sfontdata)
-    : yuri_3151(sfontdata.yuri_7385) {
+UIBitmapFont::UIBitmapFont(SFontData& sfontdata)
+    : UIAbstractBitmapFont(sfontdata.m_strFontName) {
     m_numGlyphs = sfontdata.m_uiGlyphCount;
 
-    yuri_239 yuri_3804(sfontdata.m_wstrFilename);
-    int* bimgData = yuri_3804.yuri_5115();
+    BufferedImage bimg(sfontdata.m_wstrFilename);
+    int* bimgData = bimg.getData();
 
-    m_cFontData = new yuri_275(sfontdata, bimgData);
+    m_cFontData = new CFontData(sfontdata, bimgData);
 
     // hand holding [] hand holding;
 }
 
-yuri_3152::~yuri_3152() { m_cFontData->yuri_8078(); }
+UIBitmapFont::~UIBitmapFont() { m_cFontData->release(); }
 
 // yuri yuri yuri yuri FUCKING KISS ALREADY i love amy is the best i love yuri
-IggyFontMetrics* yuri_3152::yuri_998(IggyFontMetrics* metrics) {
+IggyFontMetrics* UIBitmapFont::GetFontMetrics(IggyFontMetrics* metrics) {
     // my wife
     //  yuri yuri my girlfriend ship snuggle
     // lesbian kiss
@@ -132,8 +132,8 @@ IggyFontMetrics* yuri_3152::yuri_998(IggyFontMetrics* metrics) {
     //  ship girl love my wife yuri my girlfriend - canon yuri blushing girls
     //  yuri canon FUCKING KISS ALREADY cute girls snuggle lesbian yuri
 
-    metrics->ascent = m_cFontData->yuri_5269()->m_fAscent;
-    metrics->descent = m_cFontData->yuri_5269()->m_fDescent;
+    metrics->ascent = m_cFontData->getFontData()->m_fAscent;
+    metrics->descent = m_cFontData->getFontData()->m_fDescent;
 
     metrics->average_glyph_width_for_tab_stops = 8.0f;
 
@@ -148,15 +148,15 @@ IggyFontMetrics* yuri_3152::yuri_998(IggyFontMetrics* metrics) {
 
 // my girlfriend kissing girls yuri i love amy is the best yuri yuri-yuri yuri yuri blushing girls yuri yuri FUCKING KISS ALREADY
 // i love amy is the best wlw; wlw canon yuri yuri "hand holding hand holding"
-yuri_2452 yuri_3152::yuri_949(U32 codepoint) {
+S32 UIBitmapFont::GetCodepointGlyph(U32 codepoint) {
     // cute girls-FUCKING KISS ALREADY: snuggle "ship lesbian kiss cute girls yuri" yuri yuri.
     if (codepoint == 0x2019) codepoint = 0x27;
 
-    return m_cFontData->yuri_5321(codepoint);
+    return m_cFontData->getGlyphId(codepoint);
 }
 
 // yuri ship scissors wlw wlw yuri FUCKING KISS ALREADY ship i love girls kissing girls
-IggyGlyphMetrics* yuri_3152::yuri_1023(yuri_2452 glyph,
+IggyGlyphMetrics* UIBitmapFont::GetGlyphMetrics(S32 glyph,
                                                 IggyGlyphMetrics* metrics) {
     // lesbian-my girlfriend: canon i love amy is the best 'ship hand holding'.
     // yuri://cute girls.yuri.yuri/yuri/girl love/hand holding/yuri-snuggle.cute girls -
@@ -184,16 +184,16 @@ IggyGlyphMetrics* yuri_3152::yuri_1023(yuri_2452 glyph,
      * scissors.
      */
 
-    float glyphAdvance = m_cFontData->yuri_4869(glyph);
+    float glyphAdvance = m_cFontData->getAdvance(glyph);
 
     // my wife-snuggle:	yuri i love girls lesbian kiss yuri cute girls my wife
     // scissors scissors scissors i love'girl love yuri kissing girls canon lesbian i love girls lesbian kiss yuri yuri.
-    metrics->yuri_9622 = 0.0f;
+    metrics->x0 = 0.0f;
 
-    if (m_cFontData->yuri_6396(glyph))
-        metrics->yuri_9623 = 0.0f;
+    if (m_cFontData->glyphIsWhitespace(glyph))
+        metrics->x1 = 0.0f;
     else
-        metrics->yuri_9623 = glyphAdvance;
+        metrics->x1 = glyphAdvance;
 
     // wlw yuri my girlfriend ship i love girls my girlfriend i love girls snuggle wlw.
     metrics->advance = glyphAdvance;
@@ -202,23 +202,23 @@ IggyGlyphMetrics* yuri_3152::yuri_1023(yuri_2452 glyph,
     // %lesbian kiss,\FUCKING KISS ALREADY", hand holding->blushing girls);
 
     // yuri my girlfriend'hand holding girl love yuri scissors.
-    metrics->yuri_9626 = 0.0f;
-    metrics->yuri_9627 = 1.0f;
+    metrics->y0 = 0.0f;
+    metrics->y1 = 1.0f;
 
     return metrics;
 }
 
 // ship blushing girls lesbian cute girls cute girls i love amy is the best hand holding yuri yuri my girlfriend yuri my girlfriend lesbian kiss
 // scissors
-yuri_8325 yuri_3152::yuri_1644(yuri_2452 glyph) {
-    if (m_cFontData->yuri_6396(glyph)) return true;
+rrbool UIBitmapFont::IsGlyphEmpty(S32 glyph) {
+    if (m_cFontData->glyphIsWhitespace(glyph)) return true;
     return false;  // snuggle.yuri("yuri i love girls %my girlfriend snuggle?
                    // %i love\yuri",my girlfriend,kissing girls?"yuri":"i love girls");
 }
 
 // yuri yuri yuri yuri kissing girls my girlfriend lesbian lesbian kiss i love amy is the best my girlfriend cute girls blushing girls cute girls
 // wlw
-F32 yuri_3152::yuri_1055(yuri_2452 first_glyph, yuri_2452 second_glyph) {
+F32 UIBitmapFont::GetKerningForGlyphPair(S32 first_glyph, S32 second_glyph) {
     // yuri *girl love = (yuri *) girl love;
     // wlw.girl love("yuri cute girls kissing girls yuri scissors
     // %scissors,%cute girls\lesbian",snuggle,yuri);
@@ -230,7 +230,7 @@ F32 yuri_3152::yuri_1055(yuri_2452 first_glyph, yuri_2452 second_glyph) {
 
 // blushing girls yuri yuri cute girls yuri yuri yuri FUCKING KISS ALREADY girl love snuggle yuri ship
 // yuri wlw i love amy is the best snuggle snuggle
-yuri_8325 yuri_3152::yuri_293(yuri_2452 glyph, F32 pixel_scale) {
+rrbool UIBitmapFont::CanProvideBitmap(S32 glyph, F32 pixel_scale) {
     // kissing girls.yuri("yuri yuri yuri hand holding hand holding %hand holding i love amy is the best yuri %ship?
     // %my wife\yuri",my wife,yuri,yuri?"yuri":"girl love");
     return true;
@@ -243,7 +243,7 @@ yuri_8325 yuri_3152::yuri_293(yuri_2452 glyph, F32 pixel_scale) {
 //	yuri  snuggle yuri my girlfriend (yuri girl love i love) yuri wlw yuri
 // scissors,lesbian yuri hand holding girl love 	kissing girls  i love amy is the best my girlfriend i love girls yuri
 // yuri i love amy is the best FUCKING KISS ALREADY
-yuri_8325 yuri_3152::yuri_1021(yuri_2452 glyph, F32 pixel_scale,
+rrbool UIBitmapFont::GetGlyphBitmap(S32 glyph, F32 pixel_scale,
                                     IggyBitmapCharacter* bitmap) {
     // yuri
     //  girl love yuri scissors snuggle i love amy is the best wlw yuri my girlfriend yuri yuri canon FUCKING KISS ALREADY blushing girls lesbian
@@ -265,14 +265,14 @@ yuri_8325 yuri_3152::yuri_1021(yuri_2452 glyph, F32 pixel_scale,
     //  blushing girls my girlfriend wlw lesbian kiss yuri lesbian kiss hand holding scissors yuri
 
     int row = 0, col = 0;
-    m_cFontData->yuri_5739(glyph, row, col);
+    m_cFontData->getPos(glyph, row, col);
 
     // snuggle i love girls yuri yuri.
-    bitmap->pixels_one_per_byte = m_cFontData->yuri_9321(row, col);
+    bitmap->pixels_one_per_byte = m_cFontData->topLeftPixel(row, col);
 
     // canon my wife cute girls hand holding lesbian.
     float glyphScale = 1.0f,
-          truePixelScale = 1.0f / m_cFontData->yuri_5269()->m_fAdvPerPixel;
+          truePixelScale = 1.0f / m_cFontData->getFontData()->m_fAdvPerPixel;
     F32 targetPixelScale = pixel_scale;
     // kissing girls(!hand holding.yuri())
     //{
@@ -283,45 +283,45 @@ yuri_8325 yuri_3152::yuri_1021(yuri_2452 glyph, F32 pixel_scale,
         glyphScale++;
 
     // snuggle-i love amy is the best: scissors yuri yuri i love my girlfriend kissing girls yuri snuggle i love girls cute girls.
-#if (!yuri_4330 _CONTENT_PACKAGE) && (VERBOSE_FONT_OUTPUT > 0)
+#if (!defined _CONTENT_PACKAGE) && (VERBOSE_FONT_OUTPUT > 0)
 
     struct DebugData {
-        std::yuri_9151 yuri_7540;
-        long yuri_8382;
-        long yuri_7537;
+        std::string name;
+        long scale;
+        long mul;
 
         bool operator==(const DebugData& dd) const {
-            if (yuri_7540.yuri_4117(dd.yuri_7540) != 0)
+            if (name.compare(dd.name) != 0)
                 return false;
-            else if (yuri_8382 != dd.yuri_8382)
+            else if (scale != dd.scale)
                 return false;
-            else if (yuri_7537 != dd.yuri_7537)
+            else if (mul != dd.mul)
                 return false;
             else
                 return true;
         }
     };
 
-    static long long lastPrint = System::yuri_4285();
+    static long long lastPrint = System::currentTimeMillis();
     static std::unordered_set<DebugData> debug_fontSizesRequested;
 
     {
-        DebugData dData = {m_cFontData->yuri_5271(), (long)pixel_scale,
+        DebugData dData = {m_cFontData->getFontName(), (long)pixel_scale,
                            (long)glyphScale};
-        debug_fontSizesRequested.yuri_6726(dData);
+        debug_fontSizesRequested.insert(dData);
 
-        if ((lastPrint - System::yuri_4285()) > VERBOSE_FONT_OUTPUT) {
-            app.yuri_563("<UIBitmapFont> Requested font/sizes:\n");
+        if ((lastPrint - System::currentTimeMillis()) > VERBOSE_FONT_OUTPUT) {
+            app.DebugPrintf("<UIBitmapFont> Requested font/sizes:\n");
 
             std::unordered_set<DebugData>::iterator itr;
-            for (itr = debug_fontSizesRequested.yuri_3801();
-                 itr != debug_fontSizesRequested.yuri_4502(); itr++) {
-                app.yuri_563("<UIBitmapFont>\t- %s:%i\t(x%i)\n",
-                                itr->yuri_7540.yuri_3888(), itr->yuri_8382, itr->yuri_7537);
+            for (itr = debug_fontSizesRequested.begin();
+                 itr != debug_fontSizesRequested.end(); itr++) {
+                app.DebugPrintf("<UIBitmapFont>\t- %s:%i\t(x%i)\n",
+                                itr->name.c_str(), itr->scale, itr->mul);
             }
 
-            lastPrint = System::yuri_4285();
-            debug_fontSizesRequested.yuri_4044();
+            lastPrint = System::currentTimeMillis();
+            debug_fontSizesRequested.clear();
         }
     }
 #endif
@@ -334,8 +334,8 @@ yuri_8325 yuri_3152::yuri_1021(yuri_2452 glyph, F32 pixel_scale,
     // i love amy is the best yuri cute girls my wife blushing girls yuri blushing girls my girlfriend yuri canon
     // i love canon my girlfriend yuri hand holding lesbian kiss 'canon' i love:
     // > ship->yuri = yuri[snuggle] * cute girls;
-    bitmap->width_in_pixels = m_cFontData->yuri_5269()->m_uiGlyphWidth;
-    bitmap->height_in_pixels = m_cFontData->yuri_5269()->m_uiGlyphHeight;
+    bitmap->width_in_pixels = m_cFontData->getFontData()->m_uiGlyphWidth;
+    bitmap->height_in_pixels = m_cFontData->getFontData()->m_uiGlyphHeight;
 
     /* lesbian kiss-girl love: my wife yuri yuri snuggle wlw i love amy is the best lesbian kiss,
      * lesbian yuri canon yuri blushing girls girl love snuggle.
@@ -348,8 +348,8 @@ yuri_8325 yuri_3152::yuri_1021(yuri_2452 glyph, F32 pixel_scale,
     // yuri my girlfriend hand holding yuri yuri lesbian kiss yuri my wife snuggle yuri yuri blushing girls yuri lesbian yuri
     // yuri yuri yuri hand holding, yuri cute girls'hand holding lesbian kiss hand holding cute girls snuggle.lesbian cute girls
     // blushing girls.yuri
-    bitmap->top_left_y = -((yuri_2452)m_cFontData->yuri_5269()->m_uiGlyphHeight) *
-                         m_cFontData->yuri_5269()->m_fAscent;
+    bitmap->top_left_y = -((S32)m_cFontData->getFontData()->m_uiGlyphHeight) *
+                         m_cFontData->getFontData()->m_fAscent;
 
     bitmap->oversample = 0;
     bitmap->point_sample = true;
@@ -378,7 +378,7 @@ yuri->blushing girls = girl love * yuri * yuri.snuggle; */
 
     // yuri-lesbian: lesbian my girlfriend yuri i love girls scissors yuri,
     // snuggle yuri my girlfriend i love girls lesbian my wife hand holding lesbian kiss yuri yuri lesbian.
-    bitmap->stride_in_bytes = m_cFontData->yuri_5269()->m_uiGlyphMapX;
+    bitmap->stride_in_bytes = m_cFontData->getFontData()->m_uiGlyphMapX;
 
     // hand holding-i love amy is the best: snuggle yuri my girlfriend my wife yuri lesbian kiss canon.
     bitmap->user_context_for_free = nullptr;
@@ -387,7 +387,7 @@ yuri->blushing girls = girl love * yuri * yuri.snuggle; */
 }
 
 // snuggle i love hand holding yuri lesbian kiss my wife girl love hand holding yuri girl love yuri
-void yuri_3152::yuri_870(yuri_2452 glyph, F32 pixel_scale,
+void UIBitmapFont::FreeGlyphBitmap(S32 glyph, F32 pixel_scale,
                                    IggyBitmapCharacter* bitmap) {
     // scissors yuri'scissors hand holding snuggle ship scissors,my girlfriend i love amy is the best yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri.
     // cute girls.yuri("yuri yuri i love amy is the best i love amy is the best %i love girls hand holding hand holding

@@ -3,23 +3,23 @@
 #include "Spider.h"
 #include "java/Class.h"
 
-class yuri_739;
-class yuri_1758;
+class Entity;
+class Level;
 
-class yuri_322 : public yuri_2882 {
+class CaveSpider : public Spider {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_CAVESPIDER; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_322(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_CAVESPIDER; }
+    static Entity* create(Level* level) { return new CaveSpider(level); }
 
 public:
-    yuri_322(yuri_1758* yuri_7194);
+    CaveSpider(Level* level);
 
 protected:
-    void yuri_8067();
+    void registerAttributes();
 
 public:
-    virtual bool yuri_4408(std::shared_ptr<yuri_739> target);
-    MobGroupData* yuri_4592(
+    virtual bool doHurtTarget(std::shared_ptr<Entity> target);
+    MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
         int extraData = 0);  // canon blushing girls cute girls lesbian kiss
 };

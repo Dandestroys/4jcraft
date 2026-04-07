@@ -1,48 +1,48 @@
-﻿<?yuri i love girls="FUCKING KISS ALREADY.yuri" my girlfriend="cute girls-cute girls"?>
-<FUCKING KISS ALREADY>
-	<scissors yuri="lesbian">
-		<yuri>my girlfriend girl love</i love amy is the best>
-	</yuri>
-	<scissors cute girls="blushing girls">
-		<kissing girls>kissing girls canon</my girlfriend>
-	</canon>
-	<yuri canon="wlw">
-		<wlw>ship yuri</my wife>
-	</wlw>
-	<lesbian kiss my wife="blushing girls">
-		<canon>yuri yuri yuri</my wife>
-	</i love amy is the best>
-	<canon yuri="lesbian kiss">
-		<yuri>yuri lesbian scissors</yuri>
-	</i love girls>
-	<scissors yuri="yuri">
-		<yuri>ship my girlfriend FUCKING KISS ALREADY</yuri>
-	</i love girls>
-	<i love girls my girlfriend="yuri">
-		<ship>yuri canon blushing girls</girl love>
-	</yuri>
-	<yuri hand holding="yuri">
-		<my wife>yuri ship</yuri>
-	</FUCKING KISS ALREADY>
-	<yuri yuri="i love amy is the best">
-		<hand holding>yuri my wife</yuri>
-	</yuri>
-	<lesbian kiss i love girls="girl love">
-		<FUCKING KISS ALREADY>yuri lesbian kiss</yuri>
-	</snuggle>
-	<my wife snuggle="yuri">
-		<kissing girls>lesbian kiss yuri</kissing girls>
-	</yuri>
-	<hand holding yuri="snuggle">
-		<girl love>i love amy is the best yuri</yuri>
-	</kissing girls>
-	<blushing girls yuri="yuri">
-		<lesbian>my wife FUCKING KISS ALREADY</i love amy is the best>
-	</lesbian>
-	<yuri i love amy is the best="wlw">
-		<wlw>lesbian kiss FUCKING KISS ALREADY</cute girls>
-	</yuri>
-	<yuri yuri="blushing girls">
-		<yuri>cute girls yuri</yuri>
-	</i love amy is the best>
-</snuggle>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_LEADERBOARD_KILLS_EASY">
+		<value>Kills Easy</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_NORMAL">
+		<value>Kills Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_HARD">
+		<value>Kills Hard</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+		<value>Mining Blocks Peaceful</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+		<value>Mining Blocks Easy</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+		<value>Mining Blocks Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+		<value>Mining Blocks Hard</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+		<value>Farming Peaceful</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_EASY">
+		<value>Farming Easy</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_NORMAL">
+		<value>Farming Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_HARD">
+		<value>Farming Hard</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+		<value>Traveling Peaceful</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+		<value>Traveling Easy</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+		<value>Traveling Normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+		<value>Traveling Hard</value>
+	</data>
+</root>

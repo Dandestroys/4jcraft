@@ -1,22 +1,22 @@
 #pragma once
 #include <memory>
 #include <optional>
-#include <yuri_9151>
+#include <string>
 
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_548;
+class DamageSource;
 class Tickable;
-class yuri_1758;
-class yuri_3088;
+class Level;
+class Tile;
 
-class yuri_1931 : public yuri_739 {
-    friend class yuri_1940;
+class Minecart : public Entity {
+    friend class MinecartRenderer;
 
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_MINECART; };
+    eINSTANCEOF GetType() { return eTYPE_MINECART; };
 
 public:
     static const int TYPE_RIDEABLE = 0;
@@ -39,64 +39,64 @@ private:
 
     bool flipped;
     Tickable* soundUpdater;
-    std::yuri_9616 yuri_7540;
+    std::wstring name;
 
 protected:
     // blushing girls FUCKING KISS ALREADY
     bool m_bHasPushedCartThisTick;
 
 public:
-    void yuri_3547();
+    void _init();
 
-    yuri_1931(yuri_1758* yuri_7194);
-    virtual ~yuri_1931();
+    Minecart(Level* level);
+    virtual ~Minecart();
 
-    static std::shared_ptr<yuri_1931> yuri_4237(yuri_1758* yuri_7194, double yuri_9621,
-                                                    double yuri_9625, double yuri_9630,
-                                                    int yuri_9364);
+    static std::shared_ptr<Minecart> createMinecart(Level* level, double x,
+                                                    double y, double z,
+                                                    int type);
 
 protected:
-    virtual bool yuri_7434();
-    virtual void yuri_4329();
+    virtual bool makeStepSound();
+    virtual void defineSynchedData();
 
 public:
-    virtual yuri_0* yuri_5029(std::shared_ptr<yuri_739> entity);
-    virtual yuri_0* yuri_5030();
-    virtual bool yuri_6998();
+    virtual AABB* getCollideAgainstBox(std::shared_ptr<Entity> entity);
+    virtual AABB* getCollideBox();
+    virtual bool isPushable();
 
-    yuri_1931(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    Minecart(Level* level, double x, double y, double z);
 
-    virtual double yuri_5828();
-    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
-    virtual void yuri_4347(yuri_548* yuri_9075);
-    virtual void yuri_3717();
-    virtual bool yuri_6988();
-    virtual void yuri_8099();
+    virtual double getRideHeight();
+    virtual bool hurt(DamageSource* source, float damage);
+    virtual void destroy(DamageSource* source);
+    virtual void animateHurt();
+    virtual bool isPickable();
+    virtual void remove();
 
 private:
     static const int EXITS[][2][3];
 
 public:
-    virtual void yuri_9265();
-    virtual void yuri_3576(int xt, int yt, int zt, bool state);
+    virtual void tick();
+    virtual void activateMinecart(int xt, int yt, int zt, bool state);
 
 protected:
-    virtual void yuri_4116(double maxSpeed);
-    virtual void yuri_7516(int xt, int yt, int zt, double maxSpeed,
-                                double slideSpeed, int tile, int yuri_4295);
-    virtual void yuri_3735();
-    virtual std::optional<yuri_3322> yuri_5741(double yuri_9621, double yuri_9625, double yuri_9630,
-                                           double yuri_7605);
-    virtual std::optional<yuri_3322> yuri_5739(double yuri_9621, double yuri_9625, double yuri_9630);
+    virtual void comeOffTrack(double maxSpeed);
+    virtual void moveAlongTrack(int xt, int yt, int zt, double maxSpeed,
+                                double slideSpeed, int tile, int data);
+    virtual void applyNaturalSlowdown();
+    virtual std::optional<Vec3> getPosOffs(double x, double y, double z,
+                                           double offs);
+    virtual std::optional<Vec3> getPos(double x, double y, double z);
 
 protected:
-    virtual void yuri_3582(yuri_409* yuri_3790);
-    virtual void yuri_7989(yuri_409* yuri_3790);
+    virtual void addAdditonalSaveData(CompoundTag* base);
+    virtual void readAdditionalSaveData(CompoundTag* base);
 
 public:
-    virtual float yuri_5885();
-    using yuri_739::yuri_7950;
-    virtual void yuri_7950(std::shared_ptr<yuri_739> e);
+    virtual float getShadowHeightOffs();
+    using Entity::push;
+    virtual void push(std::shared_ptr<Entity> e);
 
 private:
     int lSteps;
@@ -104,32 +104,32 @@ private:
     double lxd, lyd, lzd;
 
 public:
-    virtual void yuri_7192(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624,
-                        int yuri_9129);
-    virtual void yuri_7191(double xd, double yd, double zd);
+    virtual void lerpTo(double x, double y, double z, float yRot, float xRot,
+                        int steps);
+    virtual void lerpMotion(double xd, double yd, double zd);
 
-    virtual void yuri_8551(float yuri_4294);
-    virtual float yuri_5109();
-    virtual void yuri_8655(int hurtTime);
-    virtual int yuri_5384();
-    virtual void yuri_8654(int hurtDir);
-    virtual int yuri_5382();
+    virtual void setDamage(float damage);
+    virtual float getDamage();
+    virtual void setHurtTime(int hurtTime);
+    virtual int getHurtTime();
+    virtual void setHurtDir(int hurtDir);
+    virtual int getHurtDir();
 
-    virtual int yuri_6068() = 0;
+    virtual int getType() = 0;
 
-    virtual yuri_3088* yuri_5175();
-    virtual yuri_3088* yuri_5137();
-    virtual int yuri_5168();
-    virtual int yuri_5135();
-    virtual int yuri_5172();
-    virtual int yuri_5136();
-    virtual void yuri_8578(int yuri_6674);
-    virtual void yuri_8574(int yuri_4295);
-    virtual void yuri_8577(int yuri_7607);
-    virtual bool yuri_6588();
-    virtual void yuri_8547(bool yuri_9514);
-    virtual void yuri_8548(const std::yuri_9616& yuri_7540);
-    virtual std::yuri_9616 yuri_4856();
-    virtual bool yuri_6590();
-    virtual std::yuri_9616 yuri_5087();
+    virtual Tile* getDisplayTile();
+    virtual Tile* getDefaultDisplayTile();
+    virtual int getDisplayData();
+    virtual int getDefaultDisplayData();
+    virtual int getDisplayOffset();
+    virtual int getDefaultDisplayOffset();
+    virtual void setDisplayTile(int id);
+    virtual void setDisplayData(int data);
+    virtual void setDisplayOffset(int offset);
+    virtual bool hasCustomDisplay();
+    virtual void setCustomDisplay(bool value);
+    virtual void setCustomName(const std::wstring& name);
+    virtual std::wstring getAName();
+    virtual bool hasCustomName();
+    virtual std::wstring getCustomName();
 };

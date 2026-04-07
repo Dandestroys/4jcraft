@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-enum class EDefaultSkins : std::yuri_9368 {
+enum class EDefaultSkins : std::uint8_t {
     ServerSelected,
     Skin0,
     Skin1,

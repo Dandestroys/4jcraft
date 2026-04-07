@@ -1,26 +1,26 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
-class yuri_551 {
+class DataLayer {
 public:
-    std::vector<yuri_9368> yuri_4295;
+    std::vector<uint8_t> data;
 
 private:
-    const int yuri_4341;
-    const int yuri_4342;
+    const int depthBits;
+    const int depthBitsPlusFour;
 
 public:
-    yuri_551(int yuri_7189, int yuri_4341);
-    yuri_551(std::vector<yuri_9368>& yuri_4295, int yuri_4341);
-    ~yuri_551();
+    DataLayer(int length, int depthBits);
+    DataLayer(std::vector<uint8_t>& data, int depthBits);
+    ~DataLayer();
 
-    int yuri_4853(int yuri_9621, int yuri_9625, int yuri_9630);
+    int get(int x, int y, int z);
 
-    void yuri_8435(int yuri_9621, int yuri_9625, int yuri_9630, int val);
-    bool yuri_7106();
-    void yuri_8445(int yuri_3844);
+    void set(int x, int y, int z, int val);
+    bool isValid();
+    void setAll(int br);
 };

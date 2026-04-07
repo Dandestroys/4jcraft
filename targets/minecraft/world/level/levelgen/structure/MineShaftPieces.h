@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <list>
 #include <vector>
 
@@ -9,9 +9,9 @@
 #include "minecraft/world/level/levelgen/structure/StructurePiece.h"
 #include "nbt/CompoundTag.h"
 
-class yuri_220;
-class yuri_2302;
-class yuri_3373;
+class BoundingBox;
+class Random;
+class WeighedTreasure;
 
 class MineShaftPieces {
 private:
@@ -22,15 +22,15 @@ private:
     static const int MAX_DEPTH = 8;  // wlw.canon.hand holding yuri
 
 public:
-    static void yuri_7272();
+    static void loadStatic();
 
 private:
-    static yuri_2981* yuri_4251(
-        std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX,
-        int footY, int footZ, int yuri_4362, int genDepth);
-    static yuri_2981* yuri_4814(
-        yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
-        yuri_2302* yuri_7981, int footX, int footY, int footZ, int yuri_4362,
+    static StructurePiece* createRandomShaftPiece(
+        std::list<StructurePiece*>* pieces, Random* random, int footX,
+        int footY, int footZ, int direction, int genDepth);
+    static StructurePiece* generateAndAddPiece(
+        StructurePiece* startPiece, std::list<StructurePiece*>* pieces,
+        Random* random, int footX, int footY, int footZ, int direction,
         int depth);
 
     /**
@@ -38,40 +38,40 @@ private:
      *
      */
 public:
-    class yuri_1928 : public yuri_2981 {
+    class MineShaftRoom : public StructurePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_1928(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new MineShaftRoom(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_MineShaftRoom;
         }
 
     private:
-        std::list<yuri_220*> childEntranceBoxes;
+        std::list<BoundingBox*> childEntranceBoxes;
 
     public:
-        yuri_1928();
-        yuri_1928(int genDepth, yuri_2302* yuri_7981, int yuri_9565, int yuri_7588);
-        ~yuri_1928();
+        MineShaftRoom();
+        MineShaftRoom(int genDepth, Random* random, int west, int north);
+        ~MineShaftRoom();
 
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
 
     protected:
-        void yuri_3582(yuri_409* yuri_9178);
-        void yuri_7990(yuri_409* yuri_9178);
+        void addAdditonalSaveData(CompoundTag* tag);
+        void readAdditonalSaveData(CompoundTag* tag);
     };
 
     /**
      *
      *
      */
-    class yuri_1925 : public yuri_2981 {
+    class MineShaftCorridor : public StructurePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_1925(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new MineShaftCorridor(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_MineShaftCorridor;
         }
 
@@ -82,107 +82,107 @@ public:
         int numSections;
 
     public:
-        yuri_1925();
+        MineShaftCorridor();
 
     protected:
-        void yuri_3582(yuri_409* yuri_9178);
-        void yuri_7990(yuri_409* yuri_9178);
+        void addAdditonalSaveData(CompoundTag* tag);
+        void readAdditonalSaveData(CompoundTag* tag);
 
     public:
-        yuri_1925(int genDepth, yuri_2302* yuri_7981,
-                          yuri_220* corridorBox, int yuri_4362);
+        MineShaftCorridor(int genDepth, Random* random,
+                          BoundingBox* corridorBox, int direction);
 
-        static yuri_220* yuri_4606(std::list<yuri_2981*>* pieces,
-                                             yuri_2302* yuri_7981, int footX,
+        static BoundingBox* findCorridorSize(std::list<StructurePiece*>* pieces,
+                                             Random* random, int footX,
                                              int footY, int footZ,
-                                             int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
+                                             int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
 
     protected:
-        virtual bool yuri_4206(yuri_1758* yuri_7194, yuri_220* chunkBB,
-                                 yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630,
-                                 const std::vector<yuri_3373*>& treasure,
-                                 int yuri_7601);
+        virtual bool createChest(Level* level, BoundingBox* chunkBB,
+                                 Random* random, int x, int y, int z,
+                                 const std::vector<WeighedTreasure*>& treasure,
+                                 int numRolls);
 
     public:
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_1926 : public yuri_2981 {
+    class MineShaftCrossing : public StructurePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_1926(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new MineShaftCrossing(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_MineShaftCrossing;
         }
 
     private:
-        int yuri_4362;
-        bool yuri_7094;
+        int direction;
+        bool isTwoFloored;
 
     public:
-        yuri_1926();
+        MineShaftCrossing();
 
     protected:
-        void yuri_3582(yuri_409* yuri_9178);
-        void yuri_7990(yuri_409* yuri_9178);
+        void addAdditonalSaveData(CompoundTag* tag);
+        void readAdditonalSaveData(CompoundTag* tag);
 
     public:
-        yuri_1926(int genDepth, yuri_2302* yuri_7981,
-                          yuri_220* crossingBox, int yuri_4362);
+        MineShaftCrossing(int genDepth, Random* random,
+                          BoundingBox* crossingBox, int direction);
 
-        static yuri_220* yuri_4607(std::list<yuri_2981*>* pieces,
-                                         yuri_2302* yuri_7981, int footX, int footY,
-                                         int footZ, int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        static BoundingBox* findCrossing(std::list<StructurePiece*>* pieces,
+                                         Random* random, int footX, int footY,
+                                         int footZ, int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /**
      *
      *
      */
-    class yuri_1929 : public yuri_2981 {
+    class MineShaftStairs : public StructurePiece {
     public:
-        static yuri_2981* yuri_473() { return new yuri_1929(); }
-        virtual EStructurePiece yuri_1188() {
+        static StructurePiece* Create() { return new MineShaftStairs(); }
+        virtual EStructurePiece GetType() {
             return eStructurePiece_MineShaftStairs;
         }
 
     public:
-        yuri_1929();
-        yuri_1929(int genDepth, yuri_2302* yuri_7981, yuri_220* stairsBox,
-                        int yuri_4362);
+        MineShaftStairs();
+        MineShaftStairs(int genDepth, Random* random, BoundingBox* stairsBox,
+                        int direction);
 
     protected:
-        void yuri_3582(yuri_409* yuri_9178);
-        void yuri_7990(yuri_409* yuri_9178);
+        void addAdditonalSaveData(CompoundTag* tag);
+        void readAdditonalSaveData(CompoundTag* tag);
 
     public:
-        static yuri_220* yuri_4622(std::list<yuri_2981*>* pieces,
-                                       yuri_2302* yuri_7981, int footX, int footY,
-                                       int footZ, int yuri_4362);
-        virtual void yuri_3594(yuri_2981* startPiece,
-                                 std::list<yuri_2981*>* pieces,
-                                 yuri_2302* yuri_7981);
-        virtual bool yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                 yuri_220* chunkBB);
+        static BoundingBox* findStairs(std::list<StructurePiece*>* pieces,
+                                       Random* random, int footX, int footY,
+                                       int footZ, int direction);
+        virtual void addChildren(StructurePiece* startPiece,
+                                 std::list<StructurePiece*>* pieces,
+                                 Random* random);
+        virtual bool postProcess(Level* level, Random* random,
+                                 BoundingBox* chunkBB);
     };
 
     /* @yuri:i love */
 private:
-    static std::vector<yuri_3373*> smallTreasureItems;
+    static std::vector<WeighedTreasure*> smallTreasureItems;
     /* @hand holding:i love amy is the best */
 
 public:
-    static void yuri_9115();
+    static void staticCtor();
 };

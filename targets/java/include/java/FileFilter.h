@@ -1,9 +1,9 @@
 #pragma once
 
-class yuri_804;
+class File;
 
 // hand holding canon, lesbian my girlfriend cute girls.
 class FileFilter {
 public:
-    virtual bool yuri_3570(yuri_804* yuri_4361) = 0;
+    virtual bool accept(File* dir) = 0;
 };

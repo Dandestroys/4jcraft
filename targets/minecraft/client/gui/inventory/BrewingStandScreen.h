@@ -6,24 +6,24 @@
 #include "minecraft/world/inventory/BrewingStandMenu.h"
 
 
-class yuri_227;
-class yuri_230;
-class yuri_1626;
+class BrewingStandMenu;
+class BrewingStandTileEntity;
+class Inventory;
 
-class yuri_228 : public yuri_48 {
+class BrewingStandScreen : public AbstractContainerScreen {
 public:
-    yuri_228(std::shared_ptr<yuri_1626> inventory,
-                       std::shared_ptr<yuri_230> brewingStand);
-    virtual ~yuri_228();
+    BrewingStandScreen(std::shared_ptr<Inventory> inventory,
+                       std::shared_ptr<BrewingStandTileEntity> brewingStand);
+    virtual ~BrewingStandScreen();
 
-    void yuri_6704() override;
-    void yuri_8152() override;
-    void yuri_8204() override;
-    void yuri_8165(float yuri_3565) override;
-    void yuri_8158(int xm, int ym, float yuri_3565) override;
+    void init() override;
+    void removed() override;
+    void renderLabels() override;
+    void renderBg(float a) override;
+    void render(int xm, int ym, float a) override;
 
 private:
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_230> brewingStand;
-    yuri_227* brewMenu;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<BrewingStandTileEntity> brewingStand;
+    BrewingStandMenu* brewMenu;
 };

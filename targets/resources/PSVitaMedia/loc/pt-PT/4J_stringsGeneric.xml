@@ -1,87 +1,87 @@
-﻿<?canon yuri="yuri.yuri" yuri="ship-girl love"?>
-<i love amy is the best>
-	<my wife yuri="yuri">
-		<yuri>kissing girls</kissing girls>
-	</my wife>
-	<kissing girls girl love="i love girls">
-		<yuri>kissing girls</i love amy is the best>
-	</yuri>
-	<blushing girls kissing girls="FUCKING KISS ALREADY">
-		<scissors>hand holding</yuri>
-	</ship>
-	<scissors yuri="girl love">
-		<canon>my wife</scissors>
-	</yuri>
-	<snuggle yuri="ship">
-		<my girlfriend>hand holdingãmy wife</ship>
-	</my girlfriend>
-	<yuri i love amy is the best="yuri">
-		<wlw>girl loveçãcute girls yuri</blushing girls>
-	</yuri>
-	<my wife blushing girls="snuggle">
-		<yuri>i love amy is the best cute girls my girlfriend yuri canonçãyuri yuri girl love yuri. yuri lesbian yuri yuri FUCKING KISS ALREADY yuri ship my wife?</blushing girls>
-	</wlw>
-	<yuri yuri="yuri">
-		<yuri>girl love canonçyuri yuri</i love amy is the best>
-	</lesbian kiss>
-	<yuri yuri="kissing girls">
-		<ship>canon hand holding</yuri>
-	</snuggle>
-	<yuri hand holding="kissing girls">
-		<lesbian kiss>my girlfriend yuri my wife</i love girls>
-	</yuri>
-	<scissors kissing girls="lesbian kiss">
-		<yuri>girl love ship kissing girlsçãgirl love girl love</yuri>
-	</i love amy is the best>
-	<scissors yuri="i love girls">
-		<i love amy is the best>lesbian lesbian canonçãhand holding?</canon>
-	</yuri>
-	<kissing girls yuri="my girlfriend">
-		<i love girls>my wifeãlesbian, yuriãkissing girls i love amy is the best</yuri>
-	</yuri>
-	<yuri i love amy is the best="my girlfriend">
-		<kissing girls>i love amy is the best yuri yuri</yuri>
-	</my wife>
-	<yuri lesbian="FUCKING KISS ALREADY">
-		<yuri>blushing girls lesbian blushing girls</yuri>
-	</kissing girls>
-	<canon FUCKING KISS ALREADY="yuri">
-		<yuri>yuri my girlfriend yuri</FUCKING KISS ALREADY>
-	</FUCKING KISS ALREADY>
-	<yuri i love amy is the best="yuri">
-		<yuri>canon yuri yuri</yuri>
-	</lesbian>
-	<yuri yuri="my girlfriend">
-		<yuri>scissors yuri wlwçãlesbian kiss</cute girls>
-	</yuri>
-	<cute girls yuri="lesbian">
-		<yuri>wlw wlw lesbian yuri yuri yuriçãlesbian</my wife>
-	</snuggle>
-	<i love girls canon="blushing girls">
-		<yuri>yuri yuri yuri blushing girls yuri yuri yuri lesbian kiss yuri?</yuri>
-	</my wife>
-	<my wife yuri="girl love">
-		<i love girls>kissing girlsãyuri yuri</scissors>
-	</blushing girls>
-	<yuri lesbian kiss="cute girls">
-		<snuggle>yuri kissing girls my girlfriend</ship>
-	</yuri>
-	<my girlfriend ship="snuggle">
-		<my girlfriend>ship yuri wlw my wife</yuri>
-	</yuri>
-	<snuggle FUCKING KISS ALREADY="yuri">
-		<yuri>wlw scissors</my girlfriend>
-	</FUCKING KISS ALREADY>
-	<snuggle wlw="yuri">
-		<yuri>cute girls yuri my wifeãmy wife snuggle girl love my wife "hand holding".</FUCKING KISS ALREADY>
-	</yuri>
-	<snuggle yuri="i love girls">
-		<my wife>snuggle yuri…</scissors>
-	</my wife>
-	<yuri yuri="ship">
-		<cute girls>yuri yuri lesbian kissúyuri. hand holding wlw, scissorsãFUCKING KISS ALREADY ship cute girls yuri.</my girlfriend>
-	</yuri>
-	<yuri ship="canon">
-		<yuri>yuri i love amy is the best</ship>
-	</yuri>
-</cute girls>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>Anterior</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>Cancelar</value>
+	</data>
+	<data name="IDS_YES">
+		<value>Sim</value>
+	</data>
+	<data name="IDS_NO">
+		<value>Não</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Gravação Corrompida</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Os teus dados de gravação parecem estar corrompidos. Queres gravar novamente e substituir os dados corrompidos?</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Sem Espaço Livre</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>Selecionar novamente</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Jogar sem gravar</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Criar uma gravação nova</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Substituir a gravação?</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Não, não substituir</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Substituir e gravar</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Falha ao gravar</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Continuar sem gravar</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Falha ao carregar</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Nome da gravação</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Introduz um nome para a gravação</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Tens a certeza de que queres sair do jogo?</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Sessão terminada</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Continuar a jogar</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Continuar a jogar offline</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Jogador Convidado</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Jogadores convidados não podem aceder a "PSN".</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>A gravar…</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>A gravar conteúdo. Por favor, não desligues o sistema.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Jogo Completo</value>
+	</data>
+</root>

@@ -3,22 +3,22 @@
 #include "minecraft/world/entity/Creature.h"
 #include "minecraft/world/entity/PathfinderMob.h"
 
-class yuri_1758;
-class yuri_409;
+class Level;
+class CompoundTag;
 
-class yuri_1220 : public yuri_2096, public yuri_496 {
+class Golem : public PathfinderMob, public Creature {
 public:
-    yuri_1220(yuri_1758* yuri_7194);
+    Golem(Level* level);
 
 protected:
-    virtual void yuri_3980(float distance);
-    virtual int yuri_4882();
-    virtual int yuri_5383();
-    virtual int yuri_5130();
+    virtual void causeFallDamage(float distance);
+    virtual int getAmbientSound();
+    virtual int getHurtSound();
+    virtual int getDeathSound();
 
 public:
-    virtual int yuri_4883();
+    virtual int getAmbientSoundInterval();
 
 protected:
-    virtual bool yuri_8151();
+    virtual bool removeWhenFarAway();
 };

@@ -1,9 +1,9 @@
 #pragma once
 #include "Tile.h"
 
-class yuri_2302;
+class Random;
 
-class yuri_2963 : public yuri_3088 {
+class StoneMonsterTile : public Tile {
 public:
     static const int HOST_ROCK = 0;
     static const int HOST_COBBLE = 1;
@@ -16,23 +16,23 @@ public:
     // canon yuri - yuri yuri'yuri snuggle yuri hand holding kissing girls snuggle i love girls hand holding
     // ship:
 public:
-    yuri_2963(int yuri_6674);
+    StoneMonsterTile(int id);
 
 public:
-    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
-    void yuri_8072(IconRegister* iconRegister);
-    virtual void yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
-    virtual int yuri_5819(yuri_2302* yuri_7981);
+    virtual Icon* getTexture(int face, int data);
+    void registerIcons(IconRegister* iconRegister);
+    virtual void destroy(Level* level, int x, int y, int z, int data);
+    virtual int getResourceCount(Random* random);
 
-    static bool yuri_6811(int block);
-    static int yuri_5118(int block);
-    static yuri_3088* yuri_5378(int yuri_4295);
+    static bool isCompatibleHostBlock(int block);
+    static int getDataForHostBlock(int block);
+    static Tile* getHostBlockForData(int data);
 
-    virtual unsigned int yuri_5148(int iData = -1);
+    virtual unsigned int getDescriptionId(int iData = -1);
 
 protected:
-    virtual std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
+    virtual std::shared_ptr<ItemInstance> getSilkTouchItemInstance(int data);
 
 public:
-    int yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    int cloneTileData(Level* level, int x, int y, int z);
 };

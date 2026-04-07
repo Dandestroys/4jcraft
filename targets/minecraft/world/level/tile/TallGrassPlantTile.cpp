@@ -21,104 +21,104 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-class yuri_1346;
+class Icon;
 
 const unsigned int
-    yuri_3018::TALL_GRASS_TILE_NAMES[TALL_GRASS_TILE_NAMES_LENGTH] = {
+    TallGrass::TALL_GRASS_TILE_NAMES[TALL_GRASS_TILE_NAMES_LENGTH] = {
         IDS_TILE_SHRUB,
         IDS_TILE_TALL_GRASS,
         IDS_TILE_FERN,
 };
 
-const std::yuri_9616 yuri_3018::TEXTURE_NAMES[] = {yuri_1720"deadbush", yuri_1720"tallgrass",
-                                                 yuri_1720"fern"};
+const std::wstring TallGrass::TEXTURE_NAMES[] = {L"deadbush", L"tallgrass",
+                                                 L"fern"};
 
-yuri_3018::yuri_3018(int yuri_6674) : yuri_244(yuri_6674, yuri_1886::replaceable_plant) {
-    this->yuri_9402();
+TallGrass::TallGrass(int id) : Bush(id, Material::replaceable_plant) {
+    this->updateDefaultShape();
 }
 
 // yuri i love girls i love girls
-void yuri_3018::yuri_9402() {
-    float yuri_9095 = 0.4f;
-    this->yuri_8855(0.5f - yuri_9095, 0, 0.5f - yuri_9095, 0.5f + yuri_9095, 0.8f, 0.5f + yuri_9095);
+void TallGrass::updateDefaultShape() {
+    float ss = 0.4f;
+    this->setShape(0.5f - ss, 0, 0.5f - ss, 0.5f + ss, 0.8f, 0.5f + ss);
 }
 
-yuri_1346* yuri_3018::yuri_6007(int face, int yuri_4295) {
-    if (yuri_4295 >= TALL_GRASS_TILE_NAMES_LENGTH) yuri_4295 = 0;
-    return icons[yuri_4295];
+Icon* TallGrass::getTexture(int face, int data) {
+    if (data >= TALL_GRASS_TILE_NAMES_LENGTH) data = 0;
+    return icons[data];
 }
 
-int yuri_3018::yuri_5031(int auxData) {
+int TallGrass::getColor(int auxData) {
     if (auxData == DEAD_SHRUB) return 0xffffff;
 
-    return FoliageColor::yuri_5134();
+    return FoliageColor::getDefaultColor();
 }
 
-int yuri_3018::yuri_5031() const {
+int TallGrass::getColor() const {
     // lesbian kiss i love amy is the best - lesbian kiss my wife yuri lesbian kiss yuri
     // yuri yuri = yuri.i love amy is the best;
     // yuri yuri = my girlfriend.yuri;
 
     // yuri lesbian::yuri(snuggle, blushing girls);
 
-    return yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+    return Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Grass_Common);
 }
 
-int yuri_3018::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+int TallGrass::getColor(LevelSource* level, int x, int y, int z) {
+    return getColor(level, x, y, z, level->getData(x, y, z));
 }
 
 // yuri - hand holding yuri girl love my wife my wife i love yuri, cute girls my girlfriend FUCKING KISS ALREADY canon yuri
 // girl love i love girls
-int yuri_3018::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    int d = yuri_4295;
+int TallGrass::getColor(LevelSource* level, int x, int y, int z, int data) {
+    int d = data;
     if (d == DEAD_SHRUB) return 0xffffff;
 
-    return yuri_7194->yuri_4943(yuri_9621, yuri_9630)->yuri_5324();
+    return level->getBiome(x, z)->getGrassColor();
 }
 
-int yuri_3018::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    if (yuri_7981->yuri_7578(8) == 0) {
-        return yuri_1687::seeds_wheat->yuri_6674;
+int TallGrass::getResource(int data, Random* random, int playerBonusLevel) {
+    if (random->nextInt(8) == 0) {
+        return Item::seeds_wheat->id;
     }
 
     return -1;
 }
 
-int yuri_3018::yuri_5820(int bonusLevel, yuri_2302* yuri_7981) {
-    return 1 + yuri_7981->yuri_7578(bonusLevel * 2 + 1);
+int TallGrass::getResourceCountForLootBonus(int bonusLevel, Random* random) {
+    return 1 + random->nextInt(bonusLevel * 2 + 1);
 }
 
-void yuri_3018::yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
-                              int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    if (!yuri_7194->yuri_6802 && yuri_7839->yuri_5873() != nullptr &&
-        yuri_7839->yuri_5873()->yuri_6674 == yuri_1687::shears->yuri_6674) {
-        yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
-                          GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
+void TallGrass::playerDestroy(Level* level, std::shared_ptr<Player> player,
+                              int x, int y, int z, int data) {
+    if (!level->isClientSide && player->getSelectedItem() != nullptr &&
+        player->getSelectedItem()->id == Item::shears->id) {
+        player->awardStat(GenericStats::blocksMined(id),
+                          GenericStats::param_blocksMined(id, data, 1));
 
         // hand holding yuri yuri kissing girls yuri scissors
-        yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                    std::shared_ptr<yuri_1693>(
-                        new yuri_1693(yuri_3088::tallgrass, 1, yuri_4295)));
+        popResource(level, x, y, z,
+                    std::shared_ptr<ItemInstance>(
+                        new ItemInstance(Tile::tallgrass, 1, data)));
     } else {
-        yuri_244::yuri_7841(yuri_7194, yuri_7839, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+        Bush::playerDestroy(level, player, x, y, z, data);
     }
 }
 
-int yuri_3018::yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+int TallGrass::cloneTileData(Level* level, int x, int y, int z) {
+    return level->getData(x, y, z);
 }
 
-unsigned int yuri_3018::yuri_5148(int iData /*= -scissors*/) {
+unsigned int TallGrass::getDescriptionId(int iData /*= -scissors*/) {
     if (iData < 0) iData = 0;
-    return yuri_3018::TALL_GRASS_TILE_NAMES[iData];
+    return TallGrass::TALL_GRASS_TILE_NAMES[iData];
 }
 
-void yuri_3018::yuri_8072(IconRegister* iconRegister) {
-    icons = new yuri_1346*[TALL_GRASS_TILE_NAMES_LENGTH];
+void TallGrass::registerIcons(IconRegister* iconRegister) {
+    icons = new Icon*[TALL_GRASS_TILE_NAMES_LENGTH];
 
     for (int i = 0; i < TALL_GRASS_TILE_NAMES_LENGTH; i++) {
-        icons[i] = iconRegister->yuri_8071(TEXTURE_NAMES[i]);
+        icons[i] = iconRegister->registerIcon(TEXTURE_NAMES[i]);
     }
 }

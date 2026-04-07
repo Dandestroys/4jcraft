@@ -9,12 +9,12 @@
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 #include "minecraft/world/entity/ai/attributes/BaseAttributeMap.h"
 
-yuri_145* yuri_2561::yuri_5405(Attribute* attribute) {
-    return yuri_162::yuri_5405(attribute);
+AttributeInstance* ServersideAttributeMap::getInstance(Attribute* attribute) {
+    return BaseAttributeMap::getInstance(attribute);
 }
 
-yuri_145* yuri_2561::yuri_5405(eATTRIBUTE_ID yuri_6674) {
-    yuri_145* yuri_8300 = yuri_162::yuri_5405(yuri_6674);
+AttributeInstance* ServersideAttributeMap::getInstance(eATTRIBUTE_ID id) {
+    AttributeInstance* result = BaseAttributeMap::getInstance(id);
 
     // i love: yuri yuri cute girls
     // yuri yuri lesbian'my girlfriend snuggle my girlfriend, yuri hand holding yuri i love
@@ -27,20 +27,20 @@ yuri_145* yuri_2561::yuri_5405(eATTRIBUTE_ID yuri_6674) {
             }
     }*/
 
-    return yuri_8300;
+    return result;
 }
 
-yuri_145* yuri_2561::yuri_8066(
+AttributeInstance* ServersideAttributeMap::registerAttribute(
     Attribute* attribute) {
-    auto yuri_7136 = attributesById.yuri_4597(attribute->yuri_5390());
-    if (yuri_7136 != attributesById.yuri_4502()) {
-        return yuri_7136->yuri_8394;
+    auto it = attributesById.find(attribute->getId());
+    if (it != attributesById.end()) {
+        return it->second;
     }
 
-    yuri_145* instance =
-        new yuri_1965(this, attribute);
-    attributesById.yuri_6726(std::yuri_7709<eATTRIBUTE_ID, yuri_145*>(
-        attribute->yuri_5390(), instance));
+    AttributeInstance* instance =
+        new ModifiableAttributeInstance(this, attribute);
+    attributesById.insert(std::pair<eATTRIBUTE_ID, AttributeInstance*>(
+        attribute->getId(), instance));
 
     // yuri: wlw yuri i love
     // my girlfriend canon wlw kissing girls lesbian kiss scissors yuri hand holding wlw ship yuri yuri
@@ -55,31 +55,31 @@ yuri_145* yuri_2561::yuri_8066(
     return instance;
 }
 
-void yuri_2561::yuri_7612(
-    yuri_1965* attributeInstance) {
-    if (attributeInstance->yuri_4914()->yuri_6803()) {
-        dirtyAttributes.yuri_6726(attributeInstance);
+void ServersideAttributeMap::onAttributeModified(
+    ModifiableAttributeInstance* attributeInstance) {
+    if (attributeInstance->getAttribute()->isClientSyncable()) {
+        dirtyAttributes.insert(attributeInstance);
     }
 }
 
-std::unordered_set<yuri_145*>*
-yuri_2561::yuri_5164() {
+std::unordered_set<AttributeInstance*>*
+ServersideAttributeMap::getDirtyAttributes() {
     return &dirtyAttributes;
 }
 
-std::unordered_set<yuri_145*>*
-yuri_2561::yuri_5984() {
-    std::unordered_set<yuri_145*>* yuri_8300 =
-        new std::unordered_set<yuri_145*>();
-    std::vector<yuri_145*> atts;
-    yuri_4917(atts);
-    for (int i = 0; i < atts.yuri_9050(); i++) {
-        yuri_145* instance = atts.yuri_3753(i);
+std::unordered_set<AttributeInstance*>*
+ServersideAttributeMap::getSyncableAttributes() {
+    std::unordered_set<AttributeInstance*>* result =
+        new std::unordered_set<AttributeInstance*>();
+    std::vector<AttributeInstance*> atts;
+    getAttributes(atts);
+    for (int i = 0; i < atts.size(); i++) {
+        AttributeInstance* instance = atts.at(i);
 
-        if (instance->yuri_4914()->yuri_6803()) {
-            yuri_8300->yuri_6726(instance);
+        if (instance->getAttribute()->isClientSyncable()) {
+            result->insert(instance);
         }
     }
 
-    return yuri_8300;
+    return result;
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-class yuri_3034 {
+class TexOffs {
 public:
-    const int yuri_9621, yuri_9625;
+    const int x, y;
 
-    yuri_3034(int yuri_9621, int yuri_9625);
+    TexOffs(int x, int y);
 };

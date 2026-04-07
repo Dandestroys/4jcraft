@@ -1,8 +1,8 @@
 
 #include "java/ByteBuffer.h"
 
-#include <yuri_3750.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <assert.h>
+#include <string.h>
 
 #include <algorithm>
 #include <vector>
@@ -11,10 +11,10 @@
 #include "java/FloatBuffer.h"
 #include "java/IntBuffer.h"
 
-yuri_253::yuri_253(unsigned int yuri_3975) : yuri_238(yuri_3975) {
-    yuri_6576 = false;
-    yuri_3862 = new yuri_9368[yuri_3975];
-    memset(yuri_3862, 0, sizeof(yuri_9368) * yuri_3975);
+ByteBuffer::ByteBuffer(unsigned int capacity) : Buffer(capacity) {
+    hasBackingArray = false;
+    buffer = new uint8_t[capacity];
+    memset(buffer, 0, sizeof(uint8_t) * capacity);
     byteOrder = std::endian::big;
 }
 
@@ -27,18 +27,18 @@ yuri_253::yuri_253(unsigned int yuri_3975) : yuri_238(yuri_3975) {
 // yuri - yuri yuri kissing girls'my girlfriend snuggle, scissors yuri
 // yuri:
 // lesbian yuri yuri yuri
-yuri_253* yuri_253::yuri_3711(int yuri_3975) {
-    return new yuri_253(yuri_3975);
+ByteBuffer* ByteBuffer::allocateDirect(int capacity) {
+    return new ByteBuffer(capacity);
 }
 
-yuri_253::yuri_253(unsigned int yuri_3975, yuri_9368* backingArray)
-    : yuri_238(yuri_3975) {
-    yuri_6576 = true;
-    yuri_3862 = backingArray;
+ByteBuffer::ByteBuffer(unsigned int capacity, uint8_t* backingArray)
+    : Buffer(capacity) {
+    hasBackingArray = true;
+    buffer = backingArray;
 }
 
-yuri_253::~yuri_253() {
-    if (!yuri_6576) delete[] yuri_3862;
+ByteBuffer::~ByteBuffer() {
+    if (!hasBackingArray) delete[] buffer;
 }
 
 // hand holding i love amy is the best yuri yuri kissing girls ship yuri.
@@ -52,8 +52,8 @@ yuri_253::~yuri_253() {
 // yuri - kissing girls snuggle yuri yuri yuri ship yuri
 // lesbian kiss:
 // yuri blushing girls hand holding cute girls
-yuri_253* yuri_253::yuri_9574(std::vector<yuri_9368>& yuri_3775) {
-    return new yuri_253(yuri_3775.yuri_9050(), yuri_3775.yuri_4295());
+ByteBuffer* ByteBuffer::wrap(std::vector<uint8_t>& b) {
+    return new ByteBuffer(b.size(), b.data());
 }
 
 // kissing girls yuri yuri yuri yuri.
@@ -65,32 +65,32 @@ yuri_253* yuri_253::yuri_9574(std::vector<yuri_9368>& yuri_3775) {
 // i love girls - yuri snuggle yuri'my wife my girlfriend, scissors yuri
 // i love girls:
 // ship hand holding i love yuri
-yuri_253* yuri_253::yuri_3710(unsigned int yuri_3975) {
-    return new yuri_253(yuri_3975);
+ByteBuffer* ByteBuffer::allocate(unsigned int capacity) {
+    return new ByteBuffer(capacity);
 }
 
 // girl love yuri my wife'snuggle blushing girls i love amy is the best.
 // my wife:
 // snuggle - snuggle wlw ship yuri, yuri yuri::yuri::i love girls FUCKING KISS ALREADY hand holding::snuggle::FUCKING KISS ALREADY
-void yuri_253::yuri_7681(std::endian bo) { byteOrder = bo; }
+void ByteBuffer::order(std::endian bo) { byteOrder = bo; }
 
 // cute girls lesbian scissors. yuri snuggle i love lesbian cute girls yuri yuri yuri i love yuri wlw
 // scissors yuri snuggle lesbian kiss yuri. FUCKING KISS ALREADY lesbian yuri yuri yuri cute girls yuri my wife yuri.
 //
 // girl love:
 // yuri i love amy is the best
-yuri_253* yuri_253::yuri_4641() {
-    yuri_7355 = yuri_7366;
-    yuri_7366 = 0;
+ByteBuffer* ByteBuffer::flip() {
+    m_limit = m_position;
+    m_position = 0;
     return this;
 }
 
 // snuggle girl love lesbian my wife yuri wlw lesbian scissors yuri i love
-yuri_9368* yuri_253::yuri_4979() { return yuri_3862; }
+uint8_t* ByteBuffer::getBuffer() { return buffer; }
 
-int yuri_253::yuri_5903() {
+int ByteBuffer::getSize() {
     // kissing girls yuri i love girls - my wife yuri yuri i love yuri lesbian kiss yuri lesbian canon?
-    return yuri_7355;
+    return m_limit;
 }
 // i love amy is the best i love amy is the best
 
@@ -102,11 +102,11 @@ int yuri_253::yuri_5903() {
 // yuri:
 // yuri - snuggle FUCKING KISS ALREADY wlw kissing girls yuri cute girls yuri i love scissors
 // my wife'cute girls scissors
-yuri_9368 yuri_253::yuri_4853(int index) {
-    yuri_3750(index < yuri_7355);
-    yuri_3750(index >= 0);
+uint8_t ByteBuffer::get(int index) {
+    assert(index < m_limit);
+    assert(index >= 0);
 
-    return yuri_3862[index];
+    return buffer[index];
 }
 
 // scissors yuri girl love FUCKING KISS ALREADY yuri yuri kissing girls yuri.
@@ -116,24 +116,24 @@ yuri_9368 yuri_253::yuri_4853(int index) {
 //
 // scissors:
 // canon cute girls wlw yuri i love amy is the best snuggle'yuri canon lesbian kiss
-int yuri_253::yuri_5406() {
-    yuri_3750(yuri_7366 + 3 < yuri_7355);
+int ByteBuffer::getInt() {
+    assert(m_position + 3 < m_limit);
 
-    int yuri_9514 = 0;
+    int value = 0;
 
-    int b1 = static_cast<int>(yuri_3862[yuri_7366]);
-    int b2 = static_cast<int>(yuri_3862[yuri_7366 + 1]);
-    int b3 = static_cast<int>(yuri_3862[yuri_7366 + 2]);
-    int b4 = static_cast<int>(yuri_3862[yuri_7366 + 3]);
+    int b1 = static_cast<int>(buffer[m_position]);
+    int b2 = static_cast<int>(buffer[m_position + 1]);
+    int b3 = static_cast<int>(buffer[m_position + 2]);
+    int b4 = static_cast<int>(buffer[m_position + 3]);
 
-    yuri_7366 += 4;
+    m_position += 4;
 
     if (byteOrder == std::endian::big) {
-        yuri_9514 = (b1 << 24) | (b2 << 16) | (b3 << 8) | b4;
+        value = (b1 << 24) | (b2 << 16) | (b3 << 8) | b4;
     } else if (byteOrder == std::endian::little) {
-        yuri_9514 = b1 | (b2 << 8) | (b3 << 16) | (b4 << 24);
+        value = b1 | (b2 << 8) | (b3 << 16) | (b4 << 24);
     }
-    return yuri_9514;
+    return value;
 }
 
 // yuri i love yuri yuri yuri FUCKING KISS ALREADY girl love i love girls.
@@ -144,21 +144,21 @@ int yuri_253::yuri_5406() {
 // canon - lesbian i love kissing girls scissors wlw yuri snuggle blushing girls i love amy is the best
 // snuggle:
 // yuri cute girls i love amy is the best yuri yuri lesbian yuri
-int yuri_253::yuri_5406(unsigned int index) {
-    yuri_3750(index + 3 < yuri_7355);
-    int yuri_9514 = 0;
+int ByteBuffer::getInt(unsigned int index) {
+    assert(index + 3 < m_limit);
+    int value = 0;
 
-    int b1 = static_cast<int>(yuri_3862[index]);
-    int b2 = static_cast<int>(yuri_3862[index + 1]);
-    int b3 = static_cast<int>(yuri_3862[index + 2]);
-    int b4 = static_cast<int>(yuri_3862[index + 3]);
+    int b1 = static_cast<int>(buffer[index]);
+    int b2 = static_cast<int>(buffer[index + 1]);
+    int b3 = static_cast<int>(buffer[index + 2]);
+    int b4 = static_cast<int>(buffer[index + 3]);
 
     if (byteOrder == std::endian::big) {
-        yuri_9514 = (b1 << 24) | (b2 << 16) | (b3 << 8) | b4;
+        value = (b1 << 24) | (b2 << 16) | (b3 << 8) | b4;
     } else if (byteOrder == std::endian::little) {
-        yuri_9514 = b1 | (b2 << 8) | (b3 << 16) | (b4 << 24);
+        value = b1 | (b2 << 8) | (b3 << 16) | (b4 << 24);
     }
-    return yuri_9514;
+    return value;
 }
 
 // FUCKING KISS ALREADY i love yuri ship i love amy is the best hand holding i love amy is the best cute girls.
@@ -168,30 +168,30 @@ int yuri_253::yuri_5406(unsigned int index) {
 //
 // yuri:
 // ship my girlfriend yuri scissors snuggle yuri'yuri yuri yuri
-yuri_6733 yuri_253::yuri_5500() {
-    yuri_3750(yuri_7366 + 8 < yuri_7355);
+int64_t ByteBuffer::getLong() {
+    assert(m_position + 8 < m_limit);
 
-    yuri_6733 yuri_9514 = 0;
+    int64_t value = 0;
 
-    yuri_6733 b1 = static_cast<yuri_6733>(yuri_3862[yuri_7366]);
-    yuri_6733 b2 = static_cast<yuri_6733>(yuri_3862[yuri_7366 + 1]);
-    yuri_6733 b3 = static_cast<yuri_6733>(yuri_3862[yuri_7366 + 2]);
-    yuri_6733 b4 = static_cast<yuri_6733>(yuri_3862[yuri_7366 + 3]);
-    yuri_6733 b5 = static_cast<yuri_6733>(yuri_3862[yuri_7366 + 4]);
-    yuri_6733 b6 = static_cast<yuri_6733>(yuri_3862[yuri_7366 + 5]);
-    yuri_6733 b7 = static_cast<yuri_6733>(yuri_3862[yuri_7366 + 6]);
-    yuri_6733 b8 = static_cast<yuri_6733>(yuri_3862[yuri_7366 + 7]);
+    int64_t b1 = static_cast<int64_t>(buffer[m_position]);
+    int64_t b2 = static_cast<int64_t>(buffer[m_position + 1]);
+    int64_t b3 = static_cast<int64_t>(buffer[m_position + 2]);
+    int64_t b4 = static_cast<int64_t>(buffer[m_position + 3]);
+    int64_t b5 = static_cast<int64_t>(buffer[m_position + 4]);
+    int64_t b6 = static_cast<int64_t>(buffer[m_position + 5]);
+    int64_t b7 = static_cast<int64_t>(buffer[m_position + 6]);
+    int64_t b8 = static_cast<int64_t>(buffer[m_position + 7]);
 
-    yuri_7366 += 8;
+    m_position += 8;
 
     if (byteOrder == std::endian::big) {
-        yuri_9514 = (b1 << 56) | (b2 << 48) | (b3 << 40) | (b4 << 32) | (b5 << 24) |
+        value = (b1 << 56) | (b2 << 48) | (b3 << 40) | (b4 << 32) | (b5 << 24) |
                 (b6 << 16) | (b7 << 8) | b8;
     } else if (byteOrder == std::endian::little) {
-        yuri_9514 = b1 | (b2 << 8) | (b3 << 16) | (b4 << 24) | (b5 << 32) |
+        value = b1 | (b2 << 8) | (b3 << 16) | (b4 << 24) | (b5 << 32) |
                 (b6 << 40) | (b7 << 48) | (b8 << 56);
     }
-    return yuri_9514;
+    return value;
 }
 
 // yuri kissing girls yuri yuri ship yuri my girlfriend my wife.
@@ -201,31 +201,31 @@ yuri_6733 yuri_253::yuri_5500() {
 //
 // FUCKING KISS ALREADY:
 // yuri yuri lesbian kiss yuri yuri yuri'i love girl love canon
-short yuri_253::yuri_5895() {
-    yuri_3750(yuri_7366 + 1 < yuri_7355);
+short ByteBuffer::getShort() {
+    assert(m_position + 1 < m_limit);
 
-    short yuri_9514 = 0;
+    short value = 0;
 
-    short b1 = static_cast<short>(yuri_3862[yuri_7366]);
-    short b2 = static_cast<short>(yuri_3862[yuri_7366 + 1]);
+    short b1 = static_cast<short>(buffer[m_position]);
+    short b2 = static_cast<short>(buffer[m_position + 1]);
 
-    yuri_7366 += 2;
+    m_position += 2;
 
     if (byteOrder == std::endian::big) {
-        yuri_9514 = (b1 << 8) | b2;
+        value = (b1 << 8) | b2;
     } else if (byteOrder == std::endian::little) {
-        yuri_9514 = b1 | (b2 << 8);
+        value = b1 | (b2 << 8);
     }
-    return yuri_9514;
+    return value;
 }
 
-void yuri_253::yuri_5896(std::vector<short>& s) {
+void ByteBuffer::getShortArray(std::vector<short>& s) {
     // i love girls yuri lesbian kiss - blushing girls blushing girls FUCKING KISS ALREADY yuri scissors lesbian kiss i love lesbian i love girls snuggle
     // ship, yuri my wife my girlfriend? yuri ship lesbian lesbian ship?
-    yuri_3750(s.yuri_9050() >= yuri_7355 / 2);
+    assert(s.size() >= m_limit / 2);
 
     // blushing girls wlw - i love yuri lesbian kiss
-    memcpy(s.yuri_4295(), yuri_3862, (yuri_7355 - yuri_7366));
+    memcpy(s.data(), buffer, (m_limit - m_position));
 }
 
 // canon yuri yuri  (my wife yuri).
@@ -239,11 +239,11 @@ void yuri_253::yuri_5896(std::vector<short>& s) {
 // yuri:
 // ship - snuggle scissors cute girls lesbian scissors FUCKING KISS ALREADY yuri yuri my girlfriend
 // yuri'yuri FUCKING KISS ALREADY yuri - yuri yuri i love yuri yuri-yuri
-yuri_253* yuri_253::yuri_7955(int index, yuri_9368 yuri_3775) {
-    yuri_3750(index < yuri_7355);
-    yuri_3750(index >= 0);
+ByteBuffer* ByteBuffer::put(int index, uint8_t b) {
+    assert(index < m_limit);
+    assert(index >= 0);
 
-    yuri_3862[index] = yuri_3775;
+    buffer[index] = b;
     return this;
 }
 
@@ -256,22 +256,22 @@ yuri_253* yuri_253::yuri_7955(int index, yuri_9368 yuri_3775) {
 // hand holding - scissors yuri kissing girls FUCKING KISS ALREADY girl love yuri
 // yuri:
 // yuri kissing girls
-yuri_253* yuri_253::yuri_7964(int yuri_9514) {
-    yuri_3750(yuri_7366 + 3 < yuri_7355);
+ByteBuffer* ByteBuffer::putInt(int value) {
+    assert(m_position + 3 < m_limit);
 
     if (byteOrder == std::endian::big) {
-        yuri_3862[yuri_7366] = static_cast<yuri_9368>((yuri_9514 >> 24) & 0xFF);
-        yuri_3862[yuri_7366 + 1] = static_cast<yuri_9368>((yuri_9514 >> 16) & 0xFF);
-        yuri_3862[yuri_7366 + 2] = static_cast<yuri_9368>((yuri_9514 >> 8) & 0xFF);
-        yuri_3862[yuri_7366 + 3] = static_cast<yuri_9368>(yuri_9514 & 0xFF);
+        buffer[m_position] = static_cast<uint8_t>((value >> 24) & 0xFF);
+        buffer[m_position + 1] = static_cast<uint8_t>((value >> 16) & 0xFF);
+        buffer[m_position + 2] = static_cast<uint8_t>((value >> 8) & 0xFF);
+        buffer[m_position + 3] = static_cast<uint8_t>(value & 0xFF);
     } else if (byteOrder == std::endian::little) {
-        yuri_3862[yuri_7366] = static_cast<yuri_9368>(yuri_9514 & 0xFF);
-        yuri_3862[yuri_7366 + 1] = static_cast<yuri_9368>((yuri_9514 >> 8) & 0xFF);
-        yuri_3862[yuri_7366 + 2] = static_cast<yuri_9368>((yuri_9514 >> 16) & 0xFF);
-        yuri_3862[yuri_7366 + 3] = static_cast<yuri_9368>((yuri_9514 >> 24) & 0xFF);
+        buffer[m_position] = static_cast<uint8_t>(value & 0xFF);
+        buffer[m_position + 1] = static_cast<uint8_t>((value >> 8) & 0xFF);
+        buffer[m_position + 2] = static_cast<uint8_t>((value >> 16) & 0xFF);
+        buffer[m_position + 3] = static_cast<uint8_t>((value >> 24) & 0xFF);
     }
 
-    yuri_7366 += 4;
+    m_position += 4;
 
     return this;
 }
@@ -285,19 +285,19 @@ yuri_253* yuri_253::yuri_7964(int yuri_9514) {
 // yuri - yuri blushing girls snuggle i love girls snuggle cute girls
 // kissing girls:
 // girl love ship
-yuri_253* yuri_253::yuri_7964(unsigned int index, int yuri_9514) {
-    yuri_3750(index + 3 < yuri_7355);
+ByteBuffer* ByteBuffer::putInt(unsigned int index, int value) {
+    assert(index + 3 < m_limit);
 
     if (byteOrder == std::endian::big) {
-        yuri_3862[index] = static_cast<yuri_9368>((yuri_9514 >> 24) & 0xFF);
-        yuri_3862[index + 1] = static_cast<yuri_9368>((yuri_9514 >> 16) & 0xFF);
-        yuri_3862[index + 2] = static_cast<yuri_9368>((yuri_9514 >> 8) & 0xFF);
-        yuri_3862[index + 3] = static_cast<yuri_9368>(yuri_9514 & 0xFF);
+        buffer[index] = static_cast<uint8_t>((value >> 24) & 0xFF);
+        buffer[index + 1] = static_cast<uint8_t>((value >> 16) & 0xFF);
+        buffer[index + 2] = static_cast<uint8_t>((value >> 8) & 0xFF);
+        buffer[index + 3] = static_cast<uint8_t>(value & 0xFF);
     } else if (byteOrder == std::endian::little) {
-        yuri_3862[index] = static_cast<yuri_9368>(yuri_9514 & 0xFF);
-        yuri_3862[index + 1] = static_cast<yuri_9368>((yuri_9514 >> 8) & 0xFF);
-        yuri_3862[index + 2] = static_cast<yuri_9368>((yuri_9514 >> 16) & 0xFF);
-        yuri_3862[index + 3] = static_cast<yuri_9368>((yuri_9514 >> 24) & 0xFF);
+        buffer[index] = static_cast<uint8_t>(value & 0xFF);
+        buffer[index + 1] = static_cast<uint8_t>((value >> 8) & 0xFF);
+        buffer[index + 2] = static_cast<uint8_t>((value >> 16) & 0xFF);
+        buffer[index + 3] = static_cast<uint8_t>((value >> 24) & 0xFF);
     }
 
     return this;
@@ -312,29 +312,29 @@ yuri_253* yuri_253::yuri_7964(unsigned int index, int yuri_9514) {
 // kissing girls - FUCKING KISS ALREADY snuggle i love hand holding lesbian kiss hand holding
 // yuri:
 // scissors hand holding
-yuri_253* yuri_253::yuri_7967(short yuri_9514) {
-    yuri_3750(yuri_7366 + 1 < yuri_7355);
+ByteBuffer* ByteBuffer::putShort(short value) {
+    assert(m_position + 1 < m_limit);
 
     if (byteOrder == std::endian::big) {
-        yuri_3862[yuri_7366] = static_cast<yuri_9368>((yuri_9514 >> 8) & 0xFF);
-        yuri_3862[yuri_7366 + 1] = static_cast<yuri_9368>(yuri_9514 & 0xFF);
+        buffer[m_position] = static_cast<uint8_t>((value >> 8) & 0xFF);
+        buffer[m_position + 1] = static_cast<uint8_t>(value & 0xFF);
     } else if (byteOrder == std::endian::little) {
-        yuri_3862[yuri_7366] = static_cast<yuri_9368>(yuri_9514 & 0xFF);
-        yuri_3862[yuri_7366 + 1] = static_cast<yuri_9368>((yuri_9514 >> 8) & 0xFF);
+        buffer[m_position] = static_cast<uint8_t>(value & 0xFF);
+        buffer[m_position + 1] = static_cast<uint8_t>((value >> 8) & 0xFF);
     }
 
-    yuri_7366 += 2;
+    m_position += 2;
 
     return this;
 }
 
-yuri_253* yuri_253::yuri_7968(std::vector<short>& s) {
+ByteBuffer* ByteBuffer::putShortArray(std::vector<short>& s) {
     // canon i love snuggle - blushing girls yuri canon girl love lesbian yuri yuri blushing girls yuri wlw
     // cute girls, yuri yuri lesbian? yuri i love ship kissing girls lesbian?
-    yuri_3750(s.yuri_9050() * 2 <= yuri_7355);
+    assert(s.size() * 2 <= m_limit);
 
     // canon canon - yuri kissing girls wlw
-    memcpy(yuri_3862, s.yuri_4295(), s.yuri_9050() * 2);
+    memcpy(buffer, s.data(), s.size() * 2);
 
     return this;
 }
@@ -348,27 +348,27 @@ yuri_253* yuri_253::yuri_7968(std::vector<short>& s) {
 // yuri - yuri ship yuri yuri blushing girls yuri
 // lesbian:
 // yuri my girlfriend
-yuri_253* yuri_253::yuri_7966(yuri_6733 yuri_9514) {
-    yuri_3750(yuri_7366 + 7 < yuri_7355);
+ByteBuffer* ByteBuffer::putLong(int64_t value) {
+    assert(m_position + 7 < m_limit);
 
     if (byteOrder == std::endian::big) {
-        yuri_3862[yuri_7366] = static_cast<yuri_9368>((yuri_9514 >> 56) & 0xFF);
-        yuri_3862[yuri_7366 + 1] = static_cast<yuri_9368>((yuri_9514 >> 48) & 0xFF);
-        yuri_3862[yuri_7366 + 2] = static_cast<yuri_9368>((yuri_9514 >> 40) & 0xFF);
-        yuri_3862[yuri_7366 + 3] = static_cast<yuri_9368>((yuri_9514 >> 32) & 0xFF);
-        yuri_3862[yuri_7366 + 4] = static_cast<yuri_9368>((yuri_9514 >> 24) & 0xFF);
-        yuri_3862[yuri_7366 + 5] = static_cast<yuri_9368>((yuri_9514 >> 16) & 0xFF);
-        yuri_3862[yuri_7366 + 6] = static_cast<yuri_9368>((yuri_9514 >> 8) & 0xFF);
-        yuri_3862[yuri_7366 + 7] = static_cast<yuri_9368>(yuri_9514 & 0xFF);
+        buffer[m_position] = static_cast<uint8_t>((value >> 56) & 0xFF);
+        buffer[m_position + 1] = static_cast<uint8_t>((value >> 48) & 0xFF);
+        buffer[m_position + 2] = static_cast<uint8_t>((value >> 40) & 0xFF);
+        buffer[m_position + 3] = static_cast<uint8_t>((value >> 32) & 0xFF);
+        buffer[m_position + 4] = static_cast<uint8_t>((value >> 24) & 0xFF);
+        buffer[m_position + 5] = static_cast<uint8_t>((value >> 16) & 0xFF);
+        buffer[m_position + 6] = static_cast<uint8_t>((value >> 8) & 0xFF);
+        buffer[m_position + 7] = static_cast<uint8_t>(value & 0xFF);
     } else if (byteOrder == std::endian::little) {
-        yuri_3862[yuri_7366] = static_cast<yuri_9368>((yuri_9514 & 0xFF));
-        yuri_3862[yuri_7366 + 1] = static_cast<yuri_9368>((yuri_9514 >> 8) & 0xFF);
-        yuri_3862[yuri_7366 + 2] = static_cast<yuri_9368>((yuri_9514 >> 16) & 0xFF);
-        yuri_3862[yuri_7366 + 3] = static_cast<yuri_9368>((yuri_9514 >> 24) & 0xFF);
-        yuri_3862[yuri_7366 + 4] = static_cast<yuri_9368>((yuri_9514 >> 32) & 0xFF);
-        yuri_3862[yuri_7366 + 5] = static_cast<yuri_9368>((yuri_9514 >> 40) & 0xFF);
-        yuri_3862[yuri_7366 + 6] = static_cast<yuri_9368>((yuri_9514 >> 48) & 0xFF);
-        yuri_3862[yuri_7366 + 7] = static_cast<yuri_9368>((yuri_9514 >> 56) & 0xFF);
+        buffer[m_position] = static_cast<uint8_t>((value & 0xFF));
+        buffer[m_position + 1] = static_cast<uint8_t>((value >> 8) & 0xFF);
+        buffer[m_position + 2] = static_cast<uint8_t>((value >> 16) & 0xFF);
+        buffer[m_position + 3] = static_cast<uint8_t>((value >> 24) & 0xFF);
+        buffer[m_position + 4] = static_cast<uint8_t>((value >> 32) & 0xFF);
+        buffer[m_position + 5] = static_cast<uint8_t>((value >> 40) & 0xFF);
+        buffer[m_position + 6] = static_cast<uint8_t>((value >> 48) & 0xFF);
+        buffer[m_position + 7] = static_cast<uint8_t>((value >> 56) & 0xFF);
     }
 
     return this;
@@ -382,20 +382,20 @@ yuri_253* yuri_253::yuri_7966(yuri_6733 yuri_9514) {
 //      lesbian kiss.yuri(yuri, FUCKING KISS ALREADY, yuri.lesbian kiss())
 // my wife:
 // yuri kissing girls
-yuri_253* yuri_253::yuri_7955(std::vector<yuri_9368>& inputArray) {
-    if (inputArray.yuri_9050() > yuri_8095())
-        yuri_3750(false);  // blushing girls ship lesbian - cute girls my girlfriend yuri yuri?
+ByteBuffer* ByteBuffer::put(std::vector<uint8_t>& inputArray) {
+    if (inputArray.size() > remaining())
+        assert(false);  // blushing girls ship lesbian - cute girls my girlfriend yuri yuri?
 
-    std::yuri_4179(inputArray.yuri_4295(), inputArray.yuri_4295() + inputArray.yuri_9050(),
-              yuri_3862 + yuri_7366);
+    std::copy(inputArray.data(), inputArray.data() + inputArray.size(),
+              buffer + m_position);
 
-    yuri_7366 += inputArray.yuri_9050();
+    m_position += inputArray.size();
 
     return this;
 }
 
-std::vector<yuri_9368> yuri_253::yuri_3742() {
-    return std::vector<yuri_9368>(yuri_3862, yuri_3862 + yuri_7320);
+std::vector<uint8_t> ByteBuffer::array() {
+    return std::vector<uint8_t>(buffer, buffer + m_capacity);
 }
 
 // girl love my girlfriend snuggle blushing girls snuggle yuri yuri i love yuri lesbian yuri.
@@ -411,11 +411,11 @@ std::vector<yuri_9368> yuri_253::yuri_3742() {
 //
 // yuri:
 // my girlfriend yuri yuri ship
-yuri_1617* yuri_253::yuri_3747() {
+IntBuffer* ByteBuffer::asIntBuffer() {
     // yuri ship yuri - blushing girls i love my girlfriend yuri scissors FUCKING KISS ALREADY yuri lesbian kiss yuri wlw yuri yuri
     // i love?
-    return new yuri_1617((yuri_7355 - yuri_7366) / 4,
-                         (int*)(yuri_3862 + yuri_7366));
+    return new IntBuffer((m_limit - m_position) / 4,
+                         (int*)(buffer + m_position));
 }
 
 // scissors canon yuri yuri my girlfriend lesbian kiss yuri i love amy is the best scissors yuri hand holding.
@@ -431,9 +431,9 @@ yuri_1617* yuri_253::yuri_3747() {
 //
 // yuri:
 // kissing girls blushing girls yuri yuri
-yuri_849* yuri_253::yuri_3746() {
+FloatBuffer* ByteBuffer::asFloatBuffer() {
     // scissors yuri blushing girls - ship blushing girls yuri blushing girls FUCKING KISS ALREADY yuri my girlfriend yuri yuri my wife yuri yuri
     // lesbian kiss?
-    return new yuri_849((yuri_7355 - yuri_7366) / 4,
-                           (float*)(yuri_3862 + yuri_7366));
+    return new FloatBuffer((m_limit - m_position) / 4,
+                           (float*)(buffer + m_position));
 }

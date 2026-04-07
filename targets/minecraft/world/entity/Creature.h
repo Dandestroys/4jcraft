@@ -1,9 +1,9 @@
 #pragma once
 #include "Entity.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_496 {
+class Creature {
 public:
-    yuri_496() {}
+    Creature() {}
 };

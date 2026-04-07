@@ -2,19 +2,19 @@
 #include <memory>
 
 #include "AbstractContainerScreen.h"
-class yuri_626;
-class yuri_1626;
+class DispenserTileEntity;
+class Inventory;
 
-class yuri_3134 : public yuri_48 {
+class TrapScreen : public AbstractContainerScreen {
 public:
-    yuri_3134(std::shared_ptr<yuri_1626> inventory,
-               std::shared_ptr<yuri_626> trap);
+    TrapScreen(std::shared_ptr<Inventory> inventory,
+               std::shared_ptr<DispenserTileEntity> trap);
 
 protected:
-    virtual void yuri_8204();
-    virtual void yuri_8165(float yuri_3565);
+    virtual void renderLabels();
+    virtual void renderBg(float a);
 
 private:
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_626> trap;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<DispenserTileEntity> trap;
 };

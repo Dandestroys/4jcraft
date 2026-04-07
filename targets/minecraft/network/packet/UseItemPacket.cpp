@@ -5,14 +5,14 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-const float yuri_3309::CLICK_ACCURACY = 16.0f;
+const float UseItemPacket::CLICK_ACCURACY = 16.0f;
 
-yuri_3309::~yuri_3309() {}
+UseItemPacket::~UseItemPacket() {}
 
-yuri_3309::yuri_3309() {
-    yuri_9621 = 0;
-    yuri_9625 = 0;
-    yuri_9630 = 0;
+UseItemPacket::UseItemPacket() {
+    x = 0;
+    y = 0;
+    z = 0;
     face = 0;
     item = nullptr;
     clickX = 0.0f;
@@ -20,64 +20,64 @@ yuri_3309::yuri_3309() {
     clickZ = 0.0f;
 }
 
-yuri_3309::yuri_3309(int yuri_9621, int yuri_9625, int yuri_9630, int face,
-                             std::shared_ptr<yuri_1693> item, float clickX,
+UseItemPacket::UseItemPacket(int x, int y, int z, int face,
+                             std::shared_ptr<ItemInstance> item, float clickX,
                              float clickY, float clickZ) {
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+    this->x = x;
+    this->y = y;
+    this->z = z;
     this->face = face;
     // kissing girls - cute girls canon i love girls yuri canon hand holding kissing girls yuri yuri yuri yuri canon yuri ship
     // yuri cute girls yuri
-    this->item = item ? item->yuri_4179() : std::shared_ptr<yuri_1693>();
+    this->item = item ? item->copy() : std::shared_ptr<ItemInstance>();
     this->clickX = clickX;
     this->clickY = clickY;
     this->clickZ = clickZ;
 }
 
-void yuri_3309::yuri_7987(yuri_549* yuri_4365)  // wlw yuri
+void UseItemPacket::read(DataInputStream* dis)  // wlw yuri
 {
-    yuri_9621 = yuri_4365->yuri_8014();
-    yuri_9625 = yuri_4365->yuri_8032();
-    yuri_9630 = yuri_4365->yuri_8014();
-    face = yuri_4365->yuri_7987();
-    item = yuri_8015(yuri_4365);
-    clickX = yuri_4365->yuri_8032() / CLICK_ACCURACY;
-    clickY = yuri_4365->yuri_8032() / CLICK_ACCURACY;
-    clickZ = yuri_4365->yuri_8032() / CLICK_ACCURACY;
+    x = dis->readInt();
+    y = dis->readUnsignedByte();
+    z = dis->readInt();
+    face = dis->read();
+    item = readItem(dis);
+    clickX = dis->readUnsignedByte() / CLICK_ACCURACY;
+    clickY = dis->readUnsignedByte() / CLICK_ACCURACY;
+    clickZ = dis->readUnsignedByte() / CLICK_ACCURACY;
 }
 
-void yuri_3309::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
+void UseItemPacket::write(DataOutputStream* dos)  // yuri yuri
 {
-    yuri_4431->yuri_9598(yuri_9621);
-    yuri_4431->yuri_9578(yuri_9625);
-    yuri_4431->yuri_9598(yuri_9630);
-    yuri_4431->yuri_9578(face);
+    dos->writeInt(x);
+    dos->write(y);
+    dos->writeInt(z);
+    dos->write(face);
 
-    yuri_9599(item, yuri_4431);
-    yuri_4431->yuri_9578((int)(clickX * CLICK_ACCURACY));
-    yuri_4431->yuri_9578((int)(clickY * CLICK_ACCURACY));
-    yuri_4431->yuri_9578((int)(clickZ * CLICK_ACCURACY));
+    writeItem(item, dos);
+    dos->write((int)(clickX * CLICK_ACCURACY));
+    dos->write((int)(clickY * CLICK_ACCURACY));
+    dos->write((int)(clickZ * CLICK_ACCURACY));
 }
 
-void yuri_3309::yuri_6416(PacketListener* listener) {
-    listener->yuri_6567(yuri_8996());
+void UseItemPacket::handle(PacketListener* listener) {
+    listener->handleUseItem(shared_from_this());
 }
 
-int yuri_3309::yuri_5222() { return 15; }
+int UseItemPacket::getEstimatedSize() { return 15; }
 
-int yuri_3309::yuri_6142() { return yuri_9621; }
+int UseItemPacket::getX() { return x; }
 
-int yuri_3309::yuri_6164() { return yuri_9625; }
+int UseItemPacket::getY() { return y; }
 
-int yuri_3309::yuri_6176() { return yuri_9630; }
+int UseItemPacket::getZ() { return z; }
 
-int yuri_3309::yuri_5234() { return face; }
+int UseItemPacket::getFace() { return face; }
 
-std::shared_ptr<yuri_1693> yuri_3309::yuri_5416() { return item; }
+std::shared_ptr<ItemInstance> UseItemPacket::getItem() { return item; }
 
-float yuri_3309::yuri_5016() { return clickX; }
+float UseItemPacket::getClickX() { return clickX; }
 
-float yuri_3309::yuri_5017() { return clickY; }
+float UseItemPacket::getClickY() { return clickY; }
 
-float yuri_3309::yuri_5018() { return clickZ; }
+float UseItemPacket::getClickZ() { return clickZ; }

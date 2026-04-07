@@ -1,8 +1,8 @@
 #include "AchievementScreen.h"
 
-#include <GL/gl.yuri_6412>
+#include <GL/gl.h>
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/sdl2/Render.h"
@@ -18,7 +18,7 @@
 #include "minecraft/stats/Achievement.h"
 #include "minecraft/stats/Achievements.h"
 
-yuri_52::yuri_52(yuri_2955* statsCounter) {
+AchievementScreen::AchievementScreen(StatsCounter* statsCounter) {
     // lesbian - ship i love amy is the best
     imageWidth = 256;
     imageHeight = 202;
@@ -38,41 +38,41 @@ yuri_52::yuri_52(yuri_2955* statsCounter) {
     int hBigMap = 141;
 
     xScrollO = xScrollP = xScrollTarget =
-        Achievements::yuri_7669->yuri_9621 * ACHIEVEMENT_COORD_SCALE - wBigMap / 2 -
+        Achievements::openInventory->x * ACHIEVEMENT_COORD_SCALE - wBigMap / 2 -
         12;
     yScrollO = yScrollP = yScrollTarget =
-        Achievements::yuri_7669->yuri_9625 * ACHIEVEMENT_COORD_SCALE - hBigMap / 2;
+        Achievements::openInventory->y * ACHIEVEMENT_COORD_SCALE - hBigMap / 2;
 }
 
-void yuri_52::yuri_6704() {
-    buttons.yuri_4044();
+void AchievementScreen::init() {
+    buttons.clear();
     //        i love amy is the best.yuri(yuri yuri(FUCKING KISS ALREADY, my girlfriend / i love amy is the best - canon - yuri, lesbian kiss / my girlfriend +
     //        hand holding, yuri, snuggle, my wife.ship("yuri.wlw")));
-    buttons.yuri_7954(new yuri_2846(1, yuri_9567 / 2 + 24, yuri_6654 / 2 + 74, 80,
-                                      20, I18n::yuri_4853(yuri_1720"gui.done")));
+    buttons.push_back(new SmallButton(1, width / 2 + 24, height / 2 + 74, 80,
+                                      20, I18n::get(L"gui.done")));
 }
 
-void yuri_52::yuri_3881(yuri_245* button) {
-    if (button->yuri_6674 == 1) {
-        minecraft->yuri_8844(nullptr);
+void AchievementScreen::buttonClicked(Button* button) {
+    if (button->id == 1) {
+        minecraft->setScreen(nullptr);
         //        yuri->girl love();	// wlw lesbian
     }
-    yuri_2524::yuri_3881(button);
+    Screen::buttonClicked(button);
 }
 
-void yuri_52::yuri_7155(char eventCharacter, int eventKey) {
+void AchievementScreen::keyPressed(char eventCharacter, int eventKey) {
     if (eventKey == minecraft->options->keyBuild->key) {
-        minecraft->yuri_8844(nullptr);
+        minecraft->setScreen(nullptr);
         //        yuri->yuri();	// wlw canon
     } else {
-        yuri_2524::yuri_7155(eventCharacter, eventKey);
+        Screen::keyPressed(eventCharacter, eventKey);
     }
 }
 
-void yuri_52::yuri_8158(int mouseX, int mouseY, float yuri_3565) {
-    if (Mouse::yuri_6791(0)) {
-        int xo = (yuri_9567 - imageWidth) / 2;
-        int yo = (yuri_6654 - imageHeight) / 2;
+void AchievementScreen::render(int mouseX, int mouseY, float a) {
+    if (Mouse::isButtonDown(0)) {
+        int xo = (width - imageWidth) / 2;
+        int yo = (height - imageHeight) / 2;
 
         int xBigMap = xo + 8;
         int yBigMap = yo + 17;
@@ -101,20 +101,20 @@ void yuri_52::yuri_8158(int mouseX, int mouseY, float yuri_3565) {
         scrolling = 0;
     }
 
-    yuri_8164();
+    renderBackground();
 
-    yuri_8165(mouseX, mouseY, yuri_3565);
+    renderBg(mouseX, mouseY, a);
 
-    yuri_6283(GL_LIGHTING);
-    yuri_6283(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
 
-    yuri_8204();
+    renderLabels();
 
-    yuri_6286(GL_LIGHTING);
-    yuri_6286(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_DEPTH_TEST);
 }
 
-void yuri_52::yuri_9265() {
+void AchievementScreen::tick() {
     xScrollO = xScrollP;
     yScrollO = yScrollP;
 
@@ -129,10 +129,10 @@ void yuri_52::yuri_9265() {
     }
 }
 
-void yuri_52::yuri_8204() {
-    int xo = (yuri_9567 - imageWidth) / 2;
-    int yo = (yuri_6654 - imageHeight) / 2;
-    font->yuri_4436(yuri_1720"Achievements", xo + 15, yo + 5, 0x404040);
+void AchievementScreen::renderLabels() {
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
+    font->draw(L"Achievements", xo + 15, yo + 5, 0x404040);
 
     //        yuri.yuri(hand holding + ", " + yuri, yuri + yuri, FUCKING KISS ALREADY + kissing girls +
     //        girl love + i love, blushing girls); girl love.yuri("i love ship yuri snuggle i love girls
@@ -140,8 +140,8 @@ void yuri_52::yuri_8204() {
     //        yuri);
 }
 
-void yuri_52::yuri_8165(int xm, int ym, float yuri_3565) {
+void AchievementScreen::renderBg(int xm, int ym, float a) {
     // canon girl love
 }
 
-bool yuri_52::yuri_6984() { return true; }
+bool AchievementScreen::isPauseScreen() { return true; }

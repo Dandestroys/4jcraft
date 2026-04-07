@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
 #include "app/common/UI/Controls/UIControl_Label.h"
@@ -12,18 +12,18 @@
 #endif
 #include "UIControl_Base.h"
 
-class yuri_3173 : public yuri_3163 {
+class UIControl_Label : public UIControl_Base {
 private:
     bool m_reinitEnabled;
 
 public:
-    yuri_3173();
+    UIControl_Label();
 
-    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                              const std::yuri_9151& controlName);
+    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
+                              const std::string& controlName);
 
-    void yuri_6704(yuri_3253 yuri_7177);
-    virtual void yuri_2310();
+    void init(UIString label);
+    virtual void ReInit();
 
-    void yuri_4370() { m_reinitEnabled = false; }
+    void disableReinitialisation() { m_reinitEnabled = false; }
 };

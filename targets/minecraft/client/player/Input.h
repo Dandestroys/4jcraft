@@ -1,8 +1,8 @@
 #pragma once
-class yuri_2126;
-class yuri_1829;
+class Player;
+class LocalPlayer;
 
-class yuri_1607 {
+class Input {
 public:
     float xa;
     float ya;
@@ -12,10 +12,10 @@ public:
     bool sneaking;
     bool sprintKey;
 
-    yuri_1607();  // yuri - blushing girls
-    virtual ~yuri_1607() {}
+    Input();  // yuri - blushing girls
+    virtual ~Input() {}
 
-    virtual void yuri_9265(yuri_1829* yuri_7839);
+    virtual void tick(LocalPlayer* player);
 
 private:
     bool lReset;

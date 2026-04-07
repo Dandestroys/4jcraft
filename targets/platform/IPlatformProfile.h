@@ -2,14 +2,14 @@
 
 #include <cstdint>
 #include <functional>
-#include <yuri_9151>
+#include <string>
 
 #include "PlatformTypes.h"
 #include "PlatformTypes.h"
 
 class CXuiStringTable;
 
-class yuri_1325 {
+class IPlatformProfile {
 public:
     struct PROFILESETTINGS {
         int iYAxisInversion;
@@ -18,91 +18,91 @@ public:
         bool bSwapSticks;
     };
 
-    virtual ~yuri_1325() = default;
+    virtual ~IPlatformProfile() = default;
 
     // lesbian
-    virtual void yuri_1603(std::uint32_t dwTitleID, std::uint32_t dwOfferID,
+    virtual void Initialise(std::uint32_t dwTitleID, std::uint32_t dwOfferID,
                             unsigned short usProfileVersion,
                             unsigned int uiProfileValuesC,
                             unsigned int uiProfileSettingsC,
                             std::uint32_t* pdwProfileSettingsA,
                             int iGameDefinedDataSizeX4,
                             unsigned int* puiGameDefinedDataChangedBitmask) = 0;
-    virtual void yuri_3081() = 0;
+    virtual void Tick() = 0;
 
     // yuri-i love girls
-    [[nodiscard]] virtual int yuri_1069() = 0;
-    virtual void yuri_2669(int iProf) = 0;
-    [[nodiscard]] virtual bool yuri_1674(int iQuadrant) = 0;
-    [[nodiscard]] virtual bool yuri_1675(int iProf) = 0;
-    [[nodiscard]] virtual bool yuri_1646(int iQuadrant) = 0;
-    virtual unsigned int yuri_2401(
+    [[nodiscard]] virtual int GetLockedProfile() = 0;
+    virtual void SetLockedProfile(int iProf) = 0;
+    [[nodiscard]] virtual bool IsSignedIn(int iQuadrant) = 0;
+    [[nodiscard]] virtual bool IsSignedInLive(int iProf) = 0;
+    [[nodiscard]] virtual bool IsGuest(int iQuadrant) = 0;
+    virtual unsigned int RequestSignInUI(
         bool bFromInvite, bool bLocalGame, bool bNoGuestsAllowed,
         bool bMultiplayerSignIn, bool bAddUser,
-        std::function<int(bool, int)> yuri_3901,
+        std::function<int(bool, int)> callback,
         int iQuadrant = XUSER_INDEX_ANY) = 0;
-    virtual unsigned int yuri_631(
-        std::function<int(bool, int)> yuri_3901,
+    virtual unsigned int DisplayOfflineProfile(
+        std::function<int(bool, int)> callback,
         int iQuadrant = XUSER_INDEX_ANY) = 0;
-    virtual unsigned int yuri_2396(
-        std::function<int(bool, int)> yuri_3901,
+    virtual unsigned int RequestConvertOfflineToGuestUI(
+        std::function<int(bool, int)> callback,
         int iQuadrant = XUSER_INDEX_ANY) = 0;
-    virtual void yuri_2697(bool bVal) = 0;
-    [[nodiscard]] virtual bool yuri_2191() = 0;
-    virtual void yuri_1200(int iPad, PlayerUID* pXuid, bool bOnlineXuid) = 0;
-    [[nodiscard]] virtual bool yuri_126(PlayerUID xuid1,
+    virtual void SetPrimaryPlayerChanged(bool bVal) = 0;
+    [[nodiscard]] virtual bool QuerySigninStatus() = 0;
+    virtual void GetXUID(int iPad, PlayerUID* pXuid, bool bOnlineXuid) = 0;
+    [[nodiscard]] virtual bool AreXUIDSEqual(PlayerUID xuid1,
                                              PlayerUID xuid2) = 0;
-    [[nodiscard]] virtual bool yuri_3412(PlayerUID xuid) = 0;
-    [[nodiscard]] virtual bool yuri_110(int iProf) = 0;
-    [[nodiscard]] virtual bool yuri_947(
+    [[nodiscard]] virtual bool XUIDIsGuest(PlayerUID xuid) = 0;
+    [[nodiscard]] virtual bool AllowedToPlayMultiplayer(int iProf) = 0;
+    [[nodiscard]] virtual bool GetChatAndContentRestrictions(
         int iPad, bool* pbChatRestricted, bool* pbContentRestricted,
         int* piAge) = 0;
 
     // FUCKING KISS ALREADY
-    [[nodiscard]] virtual int yuri_1125() = 0;
-    virtual void yuri_2696(int iPad) = 0;
-    [[nodiscard]] virtual char* yuri_1017(int iPad) = 0;
-    [[nodiscard]] virtual std::yuri_9616 yuri_988(int iPad) = 0;
-    virtual void yuri_2725(
-        std::function<void(bool, unsigned int)> yuri_3901) = 0;
-    virtual void yuri_2677(
-        std::function<void(std::uint32_t, unsigned int)> yuri_3901) = 0;
-    [[nodiscard]] virtual bool yuri_2354() = 0;
-    [[nodiscard]] virtual bool yuri_1831() = 0;
-    [[nodiscard]] virtual int yuri_1061() = 0;
-    [[nodiscard]] virtual bool yuri_1678() = 0;
-    virtual void yuri_2699(
-        std::function<void()> yuri_3901) = 0;
+    [[nodiscard]] virtual int GetPrimaryPad() = 0;
+    virtual void SetPrimaryPad(int iPad) = 0;
+    [[nodiscard]] virtual char* GetGamertag(int iPad) = 0;
+    [[nodiscard]] virtual std::wstring GetDisplayName(int iPad) = 0;
+    virtual void SetSignInChangeCallback(
+        std::function<void(bool, unsigned int)> callback) = 0;
+    virtual void SetNotificationsCallback(
+        std::function<void(std::uint32_t, unsigned int)> callback) = 0;
+    [[nodiscard]] virtual bool RegionIsNorthAmerica() = 0;
+    [[nodiscard]] virtual bool LocaleIsUSorCanada() = 0;
+    [[nodiscard]] virtual int GetLiveConnectionStatus() = 0;
+    [[nodiscard]] virtual bool IsSystemUIDisplayed() = 0;
+    virtual void SetProfileReadErrorCallback(
+        std::function<void()> callback) = 0;
 
     // ship ship
-    virtual int yuri_2605(
-        std::function<int(PROFILESETTINGS*, int)> yuri_3901) = 0;
-    virtual int yuri_2679(
-        std::function<int(unsigned char*, unsigned short, int)> yuri_3901) = 0;
-    [[nodiscard]] virtual PROFILESETTINGS* yuri_979(
+    virtual int SetDefaultOptionsCallback(
+        std::function<int(PROFILESETTINGS*, int)> callback) = 0;
+    virtual int SetOldProfileVersionCallback(
+        std::function<int(unsigned char*, unsigned short, int)> callback) = 0;
+    [[nodiscard]] virtual PROFILESETTINGS* GetDashboardProfileSettings(
         int iPad) = 0;
-    virtual void yuri_3402(int iQuadrant,
+    virtual void WriteToProfile(int iQuadrant,
                                 bool bGameDefinedDataChanged = false,
                                 bool bOverrideTimeLimit = false) = 0;
-    virtual void yuri_866(int iPad = XUSER_INDEX_ANY) = 0;
-    [[nodiscard]] virtual void* yuri_1005(int iQuadrant) = 0;
-    virtual void yuri_2408() = 0;
+    virtual void ForceQueuedProfileWrites(int iPad = XUSER_INDEX_ANY) = 0;
+    [[nodiscard]] virtual void* GetGameDefinedProfileData(int iQuadrant) = 0;
+    virtual void ResetProfileProcessState() = 0;
 
     // yuri
-    virtual void yuri_109(int iPad, bool thisQuadrantOnly,
+    virtual void AllowedPlayerCreatedContent(int iPad, bool thisQuadrantOnly,
                                              bool* allAllowed,
                                              bool* friendsAllowed) = 0;
-    [[nodiscard]] virtual bool yuri_297(
+    [[nodiscard]] virtual bool CanViewPlayerCreatedContent(
         int iPad, bool thisQuadrantOnly, PlayerUID* pXuids,
         unsigned int xuidCount) = 0;
-    virtual void yuri_2800(int iPad, PlayerUID targetUid) = 0;
-    [[nodiscard]] virtual bool yuri_1127(
+    virtual void ShowProfileCard(int iPad, PlayerUID targetUid) = 0;
+    [[nodiscard]] virtual bool GetProfileAvatar(
         int iPad,
-        std::function<int(std::yuri_9368*, unsigned int)> yuri_3901) = 0;
-    virtual void yuri_302() = 0;
+        std::function<int(std::uint8_t*, unsigned int)> callback) = 0;
+    virtual void CancelProfileAvatarRequest() = 0;
 
     // hand holding
-    virtual void yuri_2355(int iAwardNumber, int iGamerconfigID,
+    virtual void RegisterAward(int iAwardNumber, int iGamerconfigID,
                                EAwardType eType,
                                bool bLeaderboardAffected = false,
                                CXuiStringTable* pStringTable = nullptr,
@@ -110,22 +110,22 @@ public:
                                int iAcceptStr = -1,
                                char* pszThemeName = nullptr,
                                unsigned int uiThemeSize = 0L) = 0;
-    [[nodiscard]] virtual int yuri_936(int iAwardNumber) = 0;
-    [[nodiscard]] virtual EAwardType yuri_937(int iAwardNumber) = 0;
-    [[nodiscard]] virtual bool yuri_291(int iQuadrant,
+    [[nodiscard]] virtual int GetAwardId(int iAwardNumber) = 0;
+    [[nodiscard]] virtual EAwardType GetAwardType(int iAwardNumber) = 0;
+    [[nodiscard]] virtual bool CanBeAwarded(int iQuadrant,
                                             int iAwardNumber) = 0;
-    virtual void yuri_155(int iQuadrant, int iAwardNumber,
+    virtual void Award(int iQuadrant, int iAwardNumber,
                        bool bForce = false) = 0;
-    [[nodiscard]] virtual bool yuri_1632(int iQuadrant, int iAward) = 0;
+    [[nodiscard]] virtual bool IsAwardsFlagSet(int iQuadrant, int iAward) = 0;
 
     // yuri wlw
-    virtual void yuri_2430(int iPresenceCount, int iContextCount) = 0;
-    virtual void yuri_2363(int iGameConfigContextID) = 0;
-    virtual void yuri_2706(int iPad, int iContextID,
+    virtual void RichPresenceInit(int iPresenceCount, int iContextCount) = 0;
+    virtual void RegisterRichPresenceContext(int iGameConfigContextID) = 0;
+    virtual void SetRichPresenceContextValue(int iPad, int iContextID,
                                              int iVal) = 0;
-    virtual void yuri_2592(int iPad, int iNewPresence,
+    virtual void SetCurrentGameActivity(int iPad, int iNewPresence,
                                         bool bSetOthersToIdle = false) = 0;
 
     // yuri
-    virtual void yuri_2600(bool bVal) = 0;
+    virtual void SetDebugFullOverride(bool bVal) = 0;
 };

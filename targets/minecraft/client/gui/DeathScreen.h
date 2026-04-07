@@ -1,15 +1,15 @@
 #pragma once
 #include "Screen.h"
 
-class yuri_558 : public yuri_2524 {
+class DeathScreen : public Screen {
 public:
-    virtual void yuri_6704() override;
+    virtual void init() override;
 
 protected:
-    virtual void yuri_7155(char eventCharacter, int eventKey);
-    virtual void yuri_3881(yuri_245* button) override;
+    virtual void keyPressed(char eventCharacter, int eventKey);
+    virtual void buttonClicked(Button* button) override;
 
 public:
-    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
-    virtual bool yuri_6984() override;
+    virtual void render(int xm, int ym, float a) override;
+    virtual bool isPauseScreen() override;
 };

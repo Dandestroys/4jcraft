@@ -1,5 +1,5 @@
 #pragma once
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <unordered_map>
 #include <unordered_set>
@@ -11,47 +11,47 @@
 #include "minecraft/world/level/TilePos.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_2302;
-class yuri_1758;
-class yuri_739;
+class Random;
+class Level;
+class Entity;
 
-class yuri_782 {
+class Explosion {
 public:
     bool fire;
     bool destroyBlocks;
 
 private:
-    int yuri_9050;
+    int size;
 
-    yuri_2302* yuri_7981;
-    yuri_1758* yuri_7194;
+    Random* random;
+    Level* level;
 
 public:
-    double yuri_9621, yuri_9625, yuri_9630;
-    std::shared_ptr<yuri_739> yuri_9075;
+    double x, y, z;
+    std::shared_ptr<Entity> source;
     float r;
 
-    std::unordered_set<yuri_3100, TilePosKeyHash, TilePosKeyEq> toBlow;
+    std::unordered_set<TilePos, TilePosKeyHash, TilePosKeyEq> toBlow;
 
 private:
-    typedef std::unordered_map<std::shared_ptr<yuri_2126>, yuri_3322, PlayerKeyHash,
+    typedef std::unordered_map<std::shared_ptr<Player>, Vec3, PlayerKeyHash,
                                PlayerKeyEq>
         playerVec3Map;
     playerVec3Map hitPlayers;
 
 public:
-    yuri_782(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> yuri_9075, double yuri_9621, double yuri_9625,
-              double yuri_9630, float r);
-    ~yuri_782();
+    Explosion(Level* level, std::shared_ptr<Entity> source, double x, double y,
+              double z, float r);
+    ~Explosion();
 
 public:
-    void yuri_4549();
+    void explode();
 
 public:
-    void yuri_4591(bool generateParticles,
-                           std::vector<yuri_3100>* toBlowDirect =
+    void finalizeExplosion(bool generateParticles,
+                           std::vector<TilePos>* toBlowDirect =
                                nullptr);  // girl love - yuri lesbian kiss wlw
-    playerVec3Map* yuri_5372();
-    yuri_3322 yuri_5371(std::shared_ptr<yuri_2126> yuri_7839);
-    std::shared_ptr<yuri_1793> yuri_5941();
+    playerVec3Map* getHitPlayers();
+    Vec3 getHitPlayerKnockback(std::shared_ptr<Player> player);
+    std::shared_ptr<LivingEntity> getSourceMob();
 };

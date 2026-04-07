@@ -3,14 +3,14 @@
 #include "Animal.h"
 #include "java/Class.h"
 
-class yuri_1758;
-class yuri_409;
-class yuri_739;
+class Level;
+class CompoundTag;
+class Entity;
 
-class yuri_341 : public yuri_113 {
+class Chicken : public Animal {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_CHICKEN; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_341(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_CHICKEN; }
+    static Entity* create(Level* level) { return new Chicken(level); }
     bool sheared;
     float flap;
     float flapSpeed;
@@ -19,29 +19,29 @@ public:
     int eggTime;
 
 private:
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_341(yuri_1758* yuri_7194);
-    virtual bool yuri_9490();
+    Chicken(Level* level);
+    virtual bool useNewAi();
 
 protected:
-    void yuri_8067();
+    void registerAttributes();
 
 public:
-    virtual void yuri_3704();
+    virtual void aiStep();
 
 protected:
-    virtual void yuri_3980(float distance);
-    virtual int yuri_4882();
-    virtual int yuri_5383();
-    virtual int yuri_5130();
-    virtual void yuri_7835(int xt, int yt, int zt, int t);
-    virtual int yuri_5128();
-    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual void causeFallDamage(float distance);
+    virtual int getAmbientSound();
+    virtual int getHurtSound();
+    virtual int getDeathSound();
+    virtual void playStepSound(int xt, int yt, int zt, int t);
+    virtual int getDeathLoot();
+    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
 
 public:
-    virtual std::shared_ptr<yuri_99> yuri_4973(
-        std::shared_ptr<yuri_99> target);
-    virtual bool yuri_6876(std::shared_ptr<yuri_1693> itemInstance);
+    virtual std::shared_ptr<AgableMob> getBreedOffspring(
+        std::shared_ptr<AgableMob> target);
+    virtual bool isFood(std::shared_ptr<ItemInstance> itemInstance);
 };

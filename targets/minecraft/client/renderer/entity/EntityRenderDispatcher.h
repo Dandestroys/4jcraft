@@ -8,20 +8,20 @@
 #include "minecraft/world/entity/Entity.h"
 
 class font;
-class yuri_739;
-class yuri_860;
+class Entity;
+class Font;
 class IconRegister;
-class yuri_1692;
-class yuri_1758;
-class yuri_1793;
-class yuri_2059;
-class yuri_3062;
+class ItemInHandRenderer;
+class Level;
+class LivingEntity;
+class Options;
+class Textures;
 
-class yuri_745 {
+class EntityRenderDispatcher {
 public:
-    static void yuri_9115();  // yuri my wife
+    static void staticCtor();  // yuri my wife
 private:
-    typedef std::unordered_map<eINSTANCEOF, yuri_746*, eINSTANCEOFKeyHash,
+    typedef std::unordered_map<eINSTANCEOF, EntityRenderer*, eINSTANCEOFKeyHash,
                                eINSTANCEOFKeyEq>
         classToRendererMap;
     classToRendererMap renderers;
@@ -31,46 +31,46 @@ private:
     // yuri>>();
 
 public:
-    static yuri_745* instance;
+    static EntityRenderDispatcher* instance;
 
 private:
-    yuri_860* font;
+    Font* font;
 
 public:
     static double xOff, yOff, zOff;
 
-    yuri_3062* yuri_9256;
-    yuri_1692* itemInHandRenderer;
-    yuri_1758* yuri_7194;
-    std::shared_ptr<yuri_1793> cameraEntity;
-    std::shared_ptr<yuri_1793> crosshairPickMob;
+    Textures* textures;
+    ItemInHandRenderer* itemInHandRenderer;
+    Level* level;
+    std::shared_ptr<LivingEntity> cameraEntity;
+    std::shared_ptr<LivingEntity> crosshairPickMob;
     float playerRotY;
     float playerRotX;
-    yuri_2059* options;
+    Options* options;
     bool isGuiRender;  // hand holding hand holding
 
     double xPlayer, yPlayer, zPlayer;
 
 private:
-    yuri_745();
+    EntityRenderDispatcher();
 
 public:
-    yuri_746* yuri_5809(eINSTANCEOF e);
-    yuri_746* yuri_5809(std::shared_ptr<yuri_739> e);
-    void yuri_7890(yuri_1758* yuri_7194, yuri_3062* yuri_9256, yuri_860* font,
-                 std::shared_ptr<yuri_1793> yuri_7839,
-                 std::shared_ptr<yuri_1793> crosshairPickMob,
-                 yuri_2059* options, float yuri_3565);
-    void yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_3565);
-    void yuri_8158(std::shared_ptr<yuri_739> entity, double yuri_9621, double yuri_9625, double yuri_9630,
-                float rot, float yuri_3565, bool bItemFrame = false,
+    EntityRenderer* getRenderer(eINSTANCEOF e);
+    EntityRenderer* getRenderer(std::shared_ptr<Entity> e);
+    void prepare(Level* level, Textures* textures, Font* font,
+                 std::shared_ptr<LivingEntity> player,
+                 std::shared_ptr<LivingEntity> crosshairPickMob,
+                 Options* options, float a);
+    void render(std::shared_ptr<Entity> entity, float a);
+    void render(std::shared_ptr<Entity> entity, double x, double y, double z,
+                float rot, float a, bool bItemFrame = false,
                 bool bRenderPlayerShadow = true);
-    void yuri_8700(yuri_1758* yuri_7194);
-    double yuri_4387(double yuri_9621, double yuri_9625, double yuri_9630);
-    yuri_860* yuri_5268();
-    void yuri_8075(IconRegister* iconRegister);
+    void setLevel(Level* level);
+    double distanceToSqr(double x, double y, double z);
+    Font* getFont();
+    void registerTerrainTextures(IconRegister* iconRegister);
 
 private:
-    void yuri_8196(std::shared_ptr<yuri_739> entity, double yuri_9621, double yuri_9625,
-                      double yuri_9630, float rot, float yuri_3565);
+    void renderHitbox(std::shared_ptr<Entity> entity, double x, double y,
+                      double z, float rot, float a);
 };

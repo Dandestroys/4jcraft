@@ -1,49 +1,49 @@
 #include "MaterialColor.h"
 
-yuri_1887** yuri_1887::colors;
+MaterialColor** MaterialColor::colors;
 
-yuri_1887* yuri_1887::none = nullptr;
-yuri_1887* yuri_1887::grass = nullptr;
-yuri_1887* yuri_1887::sand = nullptr;
-yuri_1887* yuri_1887::cloth = nullptr;
-yuri_1887* yuri_1887::fire = nullptr;
-yuri_1887* yuri_1887::ice = nullptr;
-yuri_1887* yuri_1887::metal = nullptr;
-yuri_1887* yuri_1887::plant = nullptr;
-yuri_1887* yuri_1887::snow = nullptr;
-yuri_1887* yuri_1887::clay = nullptr;
-yuri_1887* yuri_1887::dirt = nullptr;
-yuri_1887* yuri_1887::stone = nullptr;
-yuri_1887* yuri_1887::water = nullptr;
-yuri_1887* yuri_1887::wood = nullptr;
+MaterialColor* MaterialColor::none = nullptr;
+MaterialColor* MaterialColor::grass = nullptr;
+MaterialColor* MaterialColor::sand = nullptr;
+MaterialColor* MaterialColor::cloth = nullptr;
+MaterialColor* MaterialColor::fire = nullptr;
+MaterialColor* MaterialColor::ice = nullptr;
+MaterialColor* MaterialColor::metal = nullptr;
+MaterialColor* MaterialColor::plant = nullptr;
+MaterialColor* MaterialColor::snow = nullptr;
+MaterialColor* MaterialColor::clay = nullptr;
+MaterialColor* MaterialColor::dirt = nullptr;
+MaterialColor* MaterialColor::stone = nullptr;
+MaterialColor* MaterialColor::water = nullptr;
+MaterialColor* MaterialColor::wood = nullptr;
 
-void yuri_1887::yuri_9115() {
-    yuri_1887::colors = new yuri_1887*[16];
+void MaterialColor::staticCtor() {
+    MaterialColor::colors = new MaterialColor*[16];
 
-    yuri_1887::none = new yuri_1887(0, eMinecraftColour_Material_None);
-    yuri_1887::grass =
-        new yuri_1887(1, eMinecraftColour_Material_Grass);
-    yuri_1887::sand = new yuri_1887(2, eMinecraftColour_Material_Sand);
-    yuri_1887::cloth =
-        new yuri_1887(3, eMinecraftColour_Material_Cloth);
-    yuri_1887::fire = new yuri_1887(4, eMinecraftColour_Material_Fire);
-    yuri_1887::ice = new yuri_1887(5, eMinecraftColour_Material_Ice);
-    yuri_1887::metal =
-        new yuri_1887(6, eMinecraftColour_Material_Metal);
-    yuri_1887::plant =
-        new yuri_1887(7, eMinecraftColour_Material_Plant);
-    yuri_1887::snow = new yuri_1887(8, eMinecraftColour_Material_Snow);
-    yuri_1887::clay = new yuri_1887(9, eMinecraftColour_Material_Clay);
-    yuri_1887::dirt = new yuri_1887(10, eMinecraftColour_Material_Dirt);
-    yuri_1887::stone =
-        new yuri_1887(11, eMinecraftColour_Material_Stone);
-    yuri_1887::water =
-        new yuri_1887(12, eMinecraftColour_Material_Water);
-    yuri_1887::wood = new yuri_1887(13, eMinecraftColour_Material_Wood);
+    MaterialColor::none = new MaterialColor(0, eMinecraftColour_Material_None);
+    MaterialColor::grass =
+        new MaterialColor(1, eMinecraftColour_Material_Grass);
+    MaterialColor::sand = new MaterialColor(2, eMinecraftColour_Material_Sand);
+    MaterialColor::cloth =
+        new MaterialColor(3, eMinecraftColour_Material_Cloth);
+    MaterialColor::fire = new MaterialColor(4, eMinecraftColour_Material_Fire);
+    MaterialColor::ice = new MaterialColor(5, eMinecraftColour_Material_Ice);
+    MaterialColor::metal =
+        new MaterialColor(6, eMinecraftColour_Material_Metal);
+    MaterialColor::plant =
+        new MaterialColor(7, eMinecraftColour_Material_Plant);
+    MaterialColor::snow = new MaterialColor(8, eMinecraftColour_Material_Snow);
+    MaterialColor::clay = new MaterialColor(9, eMinecraftColour_Material_Clay);
+    MaterialColor::dirt = new MaterialColor(10, eMinecraftColour_Material_Dirt);
+    MaterialColor::stone =
+        new MaterialColor(11, eMinecraftColour_Material_Stone);
+    MaterialColor::water =
+        new MaterialColor(12, eMinecraftColour_Material_Water);
+    MaterialColor::wood = new MaterialColor(13, eMinecraftColour_Material_Wood);
 }
 
-yuri_1887::yuri_1887(int yuri_6674, eMinecraftColour col) {
-    this->yuri_6674 = yuri_6674;
+MaterialColor::MaterialColor(int id, eMinecraftColour col) {
+    this->id = id;
     this->col = col;
-    colors[yuri_6674] = this;
+    colors[id] = this;
 }

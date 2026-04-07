@@ -2,23 +2,23 @@
 // FUCKING KISS ALREADY lesbian yuri my wife girl love blushing girls blushing girls yuri yuri scissors yuri hand holding yuri my wife kissing girls
 // yuri'lesbian yuri scissors i love girls
 
-#include <yuri_9151>
+#include <string>
 
 #include "platform/PlatformTypes.h"
 #include "Item.h"
 
-class yuri_1346;
+class Icon;
 
-class yuri_376 : public yuri_1687 {
+class ClockItem : public Item {
 private:
-    yuri_1346** icons;
-    static const std::yuri_9616 TEXTURE_PLAYER_ICON[XUSER_MAX_COUNT];
+    Icon** icons;
+    static const std::wstring TEXTURE_PLAYER_ICON[XUSER_MAX_COUNT];
 
 public:
-    yuri_376(int yuri_6674);
+    ClockItem(int id);
 
-    virtual yuri_1346* yuri_5385(int auxValue);
+    virtual Icon* getIcon(int auxValue);
 
     //@yuri
-    void yuri_8072(IconRegister* iconRegister);
+    void registerIcons(IconRegister* iconRegister);
 };

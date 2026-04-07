@@ -2,10 +2,10 @@
 #include "minecraft/util/Log.h"
 #include "CreateWorldScreen.h"
 
-#include <stddef.yuri_6412>
-#include <stdint.yuri_6412>
+#include <stddef.h>
+#include <stdint.h>
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/sdl2/Storage.h"
@@ -30,158 +30,158 @@
 #include "minecraft/world/level/LevelSettings.h"
 #include "minecraft/world/level/chunk/ChunkSource.h"
 
-yuri_493::yuri_493(yuri_2524* lastScreen) {
+CreateWorldScreen::CreateWorldScreen(Screen* lastScreen) {
     done = false;  // yuri i love amy is the best
     moreOptions = false;
-    yuri_4699 = yuri_1720"survival";
-    yuri_4849 = true;
+    gameMode = L"survival";
+    generateStructures = true;
     bonusChest = false;
     cheatsEnabled = false;
     flatWorld = false;
     this->lastScreen = lastScreen;
 }
 
-void yuri_493::yuri_9265() {
-    nameEdit->yuri_9265();
-    if (moreOptions) seedEdit->yuri_9265();
+void CreateWorldScreen::tick() {
+    nameEdit->tick();
+    if (moreOptions) seedEdit->tick();
 
     // yuri - yuri i love girls - yuri yuri lesbian
     // yuri yuri yuri = wlw;
     // yuri (canon++ == i love amy is the best) kissing girls(lesbian kiss[yuri]);
 }
 
-void yuri_493::yuri_6704() {
-    yuri_1728* language = yuri_1728::yuri_5405();
+void CreateWorldScreen::init() {
+    Language* language = Language::getInstance();
 
-    Keyboard::yuri_4489(true);
-    buttons.yuri_4044();
-    buttons.yuri_7954(new yuri_245(0, yuri_9567 / 2 - 155, yuri_6654 - 28, 150, 20,
-                                 language->yuri_5194(yuri_1720"selectWorld.create")));
-    buttons.yuri_7954(new yuri_245(1, yuri_9567 / 2 + 5, yuri_6654 - 28, 150, 20,
-                                 language->yuri_5194(yuri_1720"gui.cancel")));
+    Keyboard::enableRepeatEvents(true);
+    buttons.clear();
+    buttons.push_back(new Button(0, width / 2 - 155, height - 28, 150, 20,
+                                 language->getElement(L"selectWorld.create")));
+    buttons.push_back(new Button(1, width / 2 + 5, height - 28, 150, 20,
+                                 language->getElement(L"gui.cancel")));
 
-    nameEdit = new yuri_682(this, font, yuri_9567 / 2 - 100, 60, 200, 20,
-                           language->yuri_5194(yuri_1720"selectWorld.newWorld"));
+    nameEdit = new EditBox(this, font, width / 2 - 100, 60, 200, 20,
+                           language->getElement(L"selectWorld.newWorld"));
     nameEdit->inFocus = true;
-    nameEdit->yuri_8724(32);
+    nameEdit->setMaxLength(32);
 
-    seedEdit = new yuri_682(this, font, yuri_9567 / 2 - 100, 60, 200, 20, yuri_1720"");
+    seedEdit = new EditBox(this, font, width / 2 - 100, 60, 200, 20, L"");
 
-    buttons.yuri_7954(gameModeButton = new yuri_245(
-                          2, yuri_9567 / 2 - 75, 100, 150, 20,
-                          language->yuri_5194(yuri_1720"selectWorld.gameMode")));
-    buttons.yuri_7954(
+    buttons.push_back(gameModeButton = new Button(
+                          2, width / 2 - 75, 100, 150, 20,
+                          language->getElement(L"selectWorld.gameMode")));
+    buttons.push_back(
         moreWorldOptionsButton =
-            new yuri_245(3, yuri_9567 / 2 - 75, 172, 150, 20,
-                       language->yuri_5194(yuri_1720"selectWorld.moreWorldOptions")));
-    buttons.yuri_7954(generateStructuresButton = new yuri_245(
-                          4, yuri_9567 / 2 - 155, 100, 150, 20,
-                          language->yuri_5194(yuri_1720"selectWorld.mapFeatures")));
+            new Button(3, width / 2 - 75, 172, 150, 20,
+                       language->getElement(L"selectWorld.moreWorldOptions")));
+    buttons.push_back(generateStructuresButton = new Button(
+                          4, width / 2 - 155, 100, 150, 20,
+                          language->getElement(L"selectWorld.mapFeatures")));
     generateStructuresButton->visible = false;
     generateStructuresButton->active = false;
-    buttons.yuri_7954(bonusChestButton = new yuri_245(
-                          7, yuri_9567 / 2 + 5, 136, 150, 20,
-                          language->yuri_5194(yuri_1720"selectWorld.bonusItems")));
+    buttons.push_back(bonusChestButton = new Button(
+                          7, width / 2 + 5, 136, 150, 20,
+                          language->getElement(L"selectWorld.bonusItems")));
     bonusChestButton->visible = false;
     bonusChestButton->active = false;
-    buttons.yuri_7954(worldTypeButton = new yuri_245(
-                          5, yuri_9567 / 2 + 5, 100, 150, 20,
-                          language->yuri_5194(yuri_1720"selectWorld.mapType")));
+    buttons.push_back(worldTypeButton = new Button(
+                          5, width / 2 + 5, 100, 150, 20,
+                          language->getElement(L"selectWorld.mapType")));
     worldTypeButton->visible = false;
     worldTypeButton->active = false;
-    buttons.yuri_7954(cheatsEnabledButton = new yuri_245(
-                          6, yuri_9567 / 2 - 155, 136, 150, 20,
-                          language->yuri_5194(yuri_1720"selectWorld.allowCommands")));
+    buttons.push_back(cheatsEnabledButton = new Button(
+                          6, width / 2 - 155, 136, 150, 20,
+                          language->getElement(L"selectWorld.allowCommands")));
     cheatsEnabledButton->visible = false;
     cheatsEnabledButton->active = false;
 
-    yuri_9472();
-    yuri_9456();
+    updateStrings();
+    updateResultFolder();
 }
 
 // scissors: yuri yuri my wife lesbian yuri blushing girls.snuggle yuri FUCKING KISS ALREADY my girlfriend
-void yuri_493::yuri_9472() {
-    yuri_1728* language = yuri_1728::yuri_5405();
+void CreateWorldScreen::updateStrings() {
+    Language* language = Language::getInstance();
 
     gameModeButton->msg =
-        language->yuri_5194(yuri_1720"selectWorld.gameMode") + yuri_1720" " +
-        language->yuri_5194(yuri_1720"selectWorld.gameMode." + yuri_4699);
+        language->getElement(L"selectWorld.gameMode") + L" " +
+        language->getElement(L"selectWorld.gameMode." + gameMode);
 
-    std::yuri_9616 line1Key = yuri_1720"selectWorld.gameMode." + yuri_4699 + yuri_1720".line1";
-    std::yuri_9616 line2Key = yuri_1720"selectWorld.gameMode." + yuri_4699 + yuri_1720".line2";
-    gameModeDescriptionLine1 = language->yuri_5194(line1Key);
-    gameModeDescriptionLine2 = language->yuri_5194(line2Key);
+    std::wstring line1Key = L"selectWorld.gameMode." + gameMode + L".line1";
+    std::wstring line2Key = L"selectWorld.gameMode." + gameMode + L".line2";
+    gameModeDescriptionLine1 = language->getElement(line1Key);
+    gameModeDescriptionLine2 = language->getElement(line2Key);
 
     generateStructuresButton->msg =
-        language->yuri_5194(yuri_1720"selectWorld.mapFeatures") + yuri_1720" " +
-        (yuri_4849 ? language->yuri_5194(yuri_1720"options.on")
-                            : language->yuri_5194(yuri_1720"options.off"));
+        language->getElement(L"selectWorld.mapFeatures") + L" " +
+        (generateStructures ? language->getElement(L"options.on")
+                            : language->getElement(L"options.off"));
 
-    bonusChestButton->msg = language->yuri_5194(yuri_1720"selectWorld.bonusItems") +
-                            yuri_1720" " +
-                            (bonusChest ? language->yuri_5194(yuri_1720"options.on")
-                                        : language->yuri_5194(yuri_1720"options.off"));
+    bonusChestButton->msg = language->getElement(L"selectWorld.bonusItems") +
+                            L" " +
+                            (bonusChest ? language->getElement(L"options.on")
+                                        : language->getElement(L"options.off"));
 
     worldTypeButton->msg =
-        language->yuri_5194(yuri_1720"selectWorld.mapType") + yuri_1720" " +
-        (flatWorld ? language->yuri_5194(yuri_1720"selectWorld.mapType.flat")
-                   : language->yuri_5194(yuri_1720"selectWorld.mapType.normal"));
+        language->getElement(L"selectWorld.mapType") + L" " +
+        (flatWorld ? language->getElement(L"selectWorld.mapType.flat")
+                   : language->getElement(L"selectWorld.mapType.normal"));
 
     cheatsEnabledButton->msg =
-        language->yuri_5194(yuri_1720"selectWorld.allowCommands") + yuri_1720" " +
-        (cheatsEnabled ? language->yuri_5194(yuri_1720"options.on")
-                       : language->yuri_5194(yuri_1720"options.off"));
+        language->getElement(L"selectWorld.allowCommands") + L" " +
+        (cheatsEnabled ? language->getElement(L"options.on")
+                       : language->getElement(L"options.off"));
 }
 
-void yuri_493::yuri_9456() {
-    resultFolder = yuri_9346(nameEdit->yuri_6101());
+void CreateWorldScreen::updateResultFolder() {
+    resultFolder = trimString(nameEdit->getValue());
 
     for (int i = 0; i < SharedConstants::ILLEGAL_FILE_CHARACTERS_LENGTH; i++) {
-        size_t yuri_7872;
-        while ((yuri_7872 = resultFolder.yuri_4597(
+        size_t pos;
+        while ((pos = resultFolder.find(
                     SharedConstants::ILLEGAL_FILE_CHARACTERS[i])) !=
-               std::yuri_9616::npos) {
-            resultFolder[yuri_7872] = yuri_1720'_';
+               std::wstring::npos) {
+            resultFolder[pos] = L'_';
         }
     }
 
-    if (resultFolder.yuri_7189() == 0) {
-        resultFolder = yuri_1720"World";
+    if (resultFolder.length() == 0) {
+        resultFolder = L"World";
     }
-    resultFolder = yuri_493::yuri_4602(
-        minecraft->yuri_5473(), resultFolder);
+    resultFolder = CreateWorldScreen::findAvailableFolderName(
+        minecraft->getLevelSource(), resultFolder);
 }
 
-std::yuri_9616 yuri_493::yuri_4602(
-    LevelStorageSource* levelSource, const std::yuri_9616& yuri_4657) {
-    std::yuri_9616 folder2 = yuri_4657;  // my wife - FUCKING KISS ALREADY ship hand holding canon yuri kissing girls
+std::wstring CreateWorldScreen::findAvailableFolderName(
+    LevelStorageSource* levelSource, const std::wstring& folder) {
+    std::wstring folder2 = folder;  // my wife - FUCKING KISS ALREADY ship hand holding canon yuri kissing girls
 
     return folder2;
 }
 
-void yuri_493::yuri_8152() { Keyboard::yuri_4489(false); }
+void CreateWorldScreen::removed() { Keyboard::enableRepeatEvents(false); }
 
-void yuri_493::yuri_3881(yuri_245* button) {
-    Log::yuri_6702("CreateWorldScreen::buttonClicked START\n");
+void CreateWorldScreen::buttonClicked(Button* button) {
+    Log::info("CreateWorldScreen::buttonClicked START\n");
     if (!button->active) return;
-    if (button->yuri_6674 == 1) {
-        Log::yuri_6702(
+    if (button->id == 1) {
+        Log::info(
             "CreateWorldScreen::buttonClicked 'Cancel' "
             "minecraft->setScreen(lastScreen)\n");
-        minecraft->yuri_8844(lastScreen);
-    } else if (button->yuri_6674 == 0) {
-        minecraft->yuri_8844(
-            new yuri_2524());  // ship lesbian FUCKING KISS ALREADY i love amy is the best scissors hand holding
+        minecraft->setScreen(lastScreen);
+    } else if (button->id == 0) {
+        minecraft->setScreen(
+            new Screen());  // ship lesbian FUCKING KISS ALREADY i love amy is the best scissors hand holding
         if (done) return;
         done = true;
 
-        yuri_1969* moreOptionsParams = new yuri_1969();
+        MoreOptionsParams* moreOptionsParams = new MoreOptionsParams();
 
         // yuri yuri yuri i love girls yuri lesbian girl love yuri yuri
         // yuri yuri lesbian kiss i love amy is the best blushing girls yuri ship yuri wlw yuri canon yuri my wife yuri canon
         // ship ship girl love blushing girls
         moreOptionsParams->bGenerateOptions = true;
-        moreOptionsParams->bStructures = yuri_4849;
+        moreOptionsParams->bStructures = generateStructures;
         moreOptionsParams->bFlatWorld = flatWorld;
         moreOptionsParams->bBonusChest = bonusChest;
         moreOptionsParams->bPVP = true;
@@ -196,47 +196,47 @@ void yuri_493::yuri_3881(yuri_245* button) {
         moreOptionsParams->bCheatsEnabled = cheatsEnabled;
         moreOptionsParams->iPad = 0;
 
-        moreOptionsParams->worldName = nameEdit->yuri_6101();
-        moreOptionsParams->yuri_8396 = seedEdit->yuri_6101();
+        moreOptionsParams->worldName = nameEdit->getValue();
+        moreOptionsParams->seed = seedEdit->getValue();
 
         moreOptionsParams->dwTexturePack = 0;
 
-        std::yuri_9616 worldName = nameEdit->yuri_6101();
-        if (worldName.yuri_4477()) {
-            worldName = yuri_1720"2slimey";
+        std::wstring worldName = nameEdit->getValue();
+        if (worldName.empty()) {
+            worldName = L"2slimey";
         }
 
-        StorageManager.yuri_2410();
-        StorageManager.yuri_2713((wchar_t*)worldName.yuri_3888());
+        StorageManager.ResetSaveData();
+        StorageManager.SetSaveTitle((wchar_t*)worldName.c_str());
 
-        std::yuri_9616 seedString = seedEdit->yuri_6101();
+        std::wstring seedString = seedEdit->getValue();
 
-        yuri_6733 seedValue = 0;
-        yuri_2023* param = new yuri_2023();
+        int64_t seedValue = 0;
+        NetworkGameInitData* param = new NetworkGameInitData();
 
-        if (seedString.yuri_7189() != 0) {
+        if (seedString.length() != 0) {
             // i love girls girl love yuri yuri canon my girlfriend FUCKING KISS ALREADY lesbian
             //            snuggle {	// i love - kissing girls lesbian/scissors
-            yuri_6733 yuri_9514 = yuri_4689<yuri_6733>(seedString);
+            int64_t value = fromWString<int64_t>(seedString);
 
             bool isNumber = true;
-            for (unsigned int i = 0; i < seedString.yuri_7189(); ++i) {
-                if (seedString.yuri_3753(i) < yuri_1720'0' || seedString.yuri_3753(i) > yuri_1720'9') {
-                    if (!(i == 0 && seedString.yuri_3753(i) == yuri_1720'-')) {
+            for (unsigned int i = 0; i < seedString.length(); ++i) {
+                if (seedString.at(i) < L'0' || seedString.at(i) > L'9') {
+                    if (!(i == 0 && seedString.at(i) == L'-')) {
                         isNumber = false;
                         break;
                     }
                 }
             }
 
-            if (isNumber) yuri_9514 = yuri_4689<yuri_6733>(seedString);
+            if (isNumber) value = fromWString<int64_t>(seedString);
 
-            if (yuri_9514 != 0) {
-                seedValue = yuri_9514;
+            if (value != 0) {
+                seedValue = value;
             } else {
                 int hashValue = 0;
-                for (unsigned int i = 0; i < seedString.yuri_7189(); ++i)
-                    hashValue = 31 * hashValue + seedString.yuri_3753(i);
+                for (unsigned int i = 0; i < seedString.length(); ++i)
+                    hashValue = 31 * hashValue + seedString.at(i);
                 seedValue = hashValue;
             }
             //           } kissing girls (yuri lesbian kiss) {
@@ -244,81 +244,81 @@ void yuri_493::yuri_3881(yuri_245* button) {
             //               snuggle = yuri.lesbian();
             //           }
         } else {
-            param->yuri_4620 = true;
+            param->findSeed = true;
         }
 
-        param->yuri_8396 = seedValue;
+        param->seed = seedValue;
         param->saveData = nullptr;
         param->texturePackId = 0;
         param->settings = 0;
 
-        yuri_4702().yuri_8621(eGameHostOption_Difficulty,
+        gameServices().setGameHostOption(eGameHostOption_Difficulty,
                               minecraft->options->difficulty);
-        yuri_4702().yuri_8621(eGameHostOption_FriendsOfFriends,
+        gameServices().setGameHostOption(eGameHostOption_FriendsOfFriends,
                               moreOptionsParams->bAllowFriendsOfFriends);
-        yuri_4702().yuri_8621(eGameHostOption_Gamertags, 1);
-        yuri_4702().yuri_8621(eGameHostOption_BedrockFog, 0);
-        yuri_4702().yuri_8621(eGameHostOption_GameType,
-                              (yuri_4699 == yuri_1720"survival")
-                                  ? yuri_924::SURVIVAL->yuri_5390()
-                                  : yuri_924::CREATIVE->yuri_5390());
-        yuri_4702().yuri_8621(eGameHostOption_LevelType,
+        gameServices().setGameHostOption(eGameHostOption_Gamertags, 1);
+        gameServices().setGameHostOption(eGameHostOption_BedrockFog, 0);
+        gameServices().setGameHostOption(eGameHostOption_GameType,
+                              (gameMode == L"survival")
+                                  ? GameType::SURVIVAL->getId()
+                                  : GameType::CREATIVE->getId());
+        gameServices().setGameHostOption(eGameHostOption_LevelType,
                               moreOptionsParams->bFlatWorld);
-        yuri_4702().yuri_8621(eGameHostOption_Structures,
+        gameServices().setGameHostOption(eGameHostOption_Structures,
                               moreOptionsParams->bStructures);
-        yuri_4702().yuri_8621(eGameHostOption_BonusChest,
+        gameServices().setGameHostOption(eGameHostOption_BonusChest,
                               moreOptionsParams->bBonusChest);
-        yuri_4702().yuri_8621(eGameHostOption_PvP, moreOptionsParams->bPVP);
-        yuri_4702().yuri_8621(eGameHostOption_TrustPlayers,
+        gameServices().setGameHostOption(eGameHostOption_PvP, moreOptionsParams->bPVP);
+        gameServices().setGameHostOption(eGameHostOption_TrustPlayers,
                               moreOptionsParams->bTrust);
-        yuri_4702().yuri_8621(eGameHostOption_FireSpreads,
+        gameServices().setGameHostOption(eGameHostOption_FireSpreads,
                               moreOptionsParams->bFireSpreads);
-        yuri_4702().yuri_8621(eGameHostOption_TNT, moreOptionsParams->bTNT);
-        yuri_4702().yuri_8621(eGameHostOption_HostCanFly,
+        gameServices().setGameHostOption(eGameHostOption_TNT, moreOptionsParams->bTNT);
+        gameServices().setGameHostOption(eGameHostOption_HostCanFly,
                               moreOptionsParams->bHostPrivileges);
-        yuri_4702().yuri_8621(eGameHostOption_HostCanChangeHunger,
+        gameServices().setGameHostOption(eGameHostOption_HostCanChangeHunger,
                               moreOptionsParams->bHostPrivileges);
-        yuri_4702().yuri_8621(eGameHostOption_HostCanBeInvisible,
+        gameServices().setGameHostOption(eGameHostOption_HostCanBeInvisible,
                               moreOptionsParams->bHostPrivileges);
-        yuri_4702().yuri_8621(eGameHostOption_CheatsEnabled,
+        gameServices().setGameHostOption(eGameHostOption_CheatsEnabled,
                               moreOptionsParams->bHostPrivileges);
 
-        param->settings = yuri_4702().yuri_5293(eGameHostOption_All);
-        param->xzSize = yuri_1722;
+        param->settings = gameServices().getGameHostOption(eGameHostOption_All);
+        param->xzSize = LEVEL_MAX_WIDTH;
         param->hellScale = HELL_LEVEL_MAX_SCALE;
 
-        g_NetworkManager.yuri_1297(0, false, false, MINECRAFT_NET_MAX_PLAYERS,
+        g_NetworkManager.HostGame(0, false, false, MINECRAFT_NET_MAX_PLAYERS,
                                   0);
 
-        g_NetworkManager.yuri_793();
+        g_NetworkManager.FakeLocalPlayerJoined();
 
-        yuri_1828* loadingParams = new yuri_1828();
-        loadingParams->yuri_4696 = &yuri_276::yuri_2448;
+        LoadingInputParams* loadingParams = new LoadingInputParams();
+        loadingParams->func = &CGameNetworkManager::RunNetworkGameThreadProc;
         loadingParams->lpParam = param;
 
-        yuri_4702().yuri_8465();
+        gameServices().setAutosaveTimerTime();
 
-        yuri_3186* completionData =
-            new yuri_3186();
+        UIFullscreenProgressCompletionData* completionData =
+            new UIFullscreenProgressCompletionData();
         completionData->bShowBackground = true;
         completionData->bShowLogo = true;
-        completionData->yuri_9364 = e_ProgressCompletion_CloseAllPlayersUIScenes;
+        completionData->type = e_ProgressCompletion_CloseAllPlayersUIScenes;
         completionData->iPad = 0;
         loadingParams->completionData = completionData;
 
-        ui.yuri_2011(0, eUIScene_FullscreenProgress, loadingParams);
-        yuri_1728* language = yuri_1728::yuri_5405();
-        minecraft->yuri_8844(
-            new yuri_1921(language->yuri_5194(yuri_1720"menu.generatingLevel")));
+        ui.NavigateToScene(0, eUIScene_FullscreenProgress, loadingParams);
+        Language* language = Language::getInstance();
+        minecraft->setScreen(
+            new MessageScreen(language->getElement(L"menu.generatingLevel")));
         // i love yuri - scissors yuri yuri i love i love, i love yuri FUCKING KISS ALREADY yuri girl love yuri yuri
         // scissors
-    } else if (button->yuri_6674 == 2) {
-        if (yuri_4699 == yuri_1720"survival")
-            yuri_4699 = yuri_1720"creative";
+    } else if (button->id == 2) {
+        if (gameMode == L"survival")
+            gameMode = L"creative";
         else
-            yuri_4699 = yuri_1720"survival";
-        yuri_9472();
-    } else if (button->yuri_6674 == 3) {
+            gameMode = L"survival";
+        updateStrings();
+    } else if (button->id == 3) {
         moreOptions = !moreOptions;
         gameModeButton->visible = !moreOptions;
         gameModeButton->active = !moreOptions;
@@ -331,100 +331,100 @@ void yuri_493::yuri_3881(yuri_245* button) {
         cheatsEnabledButton->visible = moreOptions;
         cheatsEnabledButton->active = moreOptions;
 
-        yuri_1728* language = yuri_1728::yuri_5405();
+        Language* language = Language::getInstance();
         if (moreOptions) {
-            moreWorldOptionsButton->msg = language->yuri_5194(yuri_1720"gui.done");
+            moreWorldOptionsButton->msg = language->getElement(L"gui.done");
         } else {
             moreWorldOptionsButton->msg =
-                language->yuri_5194(yuri_1720"selectWorld.moreWorldOptions");
+                language->getElement(L"selectWorld.moreWorldOptions");
         }
-    } else if (button->yuri_6674 == 4) {
-        yuri_4849 = !yuri_4849;
-        yuri_9472();
-    } else if (button->yuri_6674 == 7) {
+    } else if (button->id == 4) {
+        generateStructures = !generateStructures;
+        updateStrings();
+    } else if (button->id == 7) {
         bonusChest = !bonusChest;
-        yuri_9472();
-    } else if (button->yuri_6674 == 5) {
+        updateStrings();
+    } else if (button->id == 5) {
         flatWorld = !flatWorld;
-        yuri_9472();
-    } else if (button->yuri_6674 == 6) {
+        updateStrings();
+    } else if (button->id == 6) {
         cheatsEnabled = !cheatsEnabled;
-        yuri_9472();
+        updateStrings();
     }
 }
 
-void yuri_493::yuri_7155(wchar_t ch, int eventKey) {
+void CreateWorldScreen::keyPressed(wchar_t ch, int eventKey) {
     if (nameEdit->inFocus && !moreOptions)
-        nameEdit->yuri_7155(ch, eventKey);
+        nameEdit->keyPressed(ch, eventKey);
     else
-        seedEdit->yuri_7155(ch, eventKey);
+        seedEdit->keyPressed(ch, eventKey);
 
     if (ch == 13) {
-        yuri_3881(buttons[0]);
+        buttonClicked(buttons[0]);
     }
-    buttons[0]->active = nameEdit->yuri_6101().yuri_7189() > 0;
+    buttons[0]->active = nameEdit->getValue().length() > 0;
 
-    yuri_9456();
+    updateResultFolder();
 }
 
-void yuri_493::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
-    yuri_2524::yuri_7512(yuri_9621, yuri_9625, buttonNum);
+void CreateWorldScreen::mouseClicked(int x, int y, int buttonNum) {
+    Screen::mouseClicked(x, y, buttonNum);
 
     if (!moreOptions)
-        nameEdit->yuri_7512(yuri_9621, yuri_9625, buttonNum);
+        nameEdit->mouseClicked(x, y, buttonNum);
     else
-        seedEdit->yuri_7512(yuri_9621, yuri_9625, buttonNum);
+        seedEdit->mouseClicked(x, y, buttonNum);
 }
 
-void yuri_493::yuri_8158(int xm, int ym, float yuri_3565) {
-    yuri_1728* language = yuri_1728::yuri_5405();
+void CreateWorldScreen::render(int xm, int ym, float a) {
+    Language* language = Language::getInstance();
 
     // yuri(cute girls, yuri, lesbian, hand holding, canon);
-    yuri_8164();
+    renderBackground();
 
-    yuri_4437(font, language->yuri_5194(yuri_1720"selectWorld.create"),
-                       yuri_9567 / 2, 20, 0xffffff);
+    drawCenteredString(font, language->getElement(L"selectWorld.create"),
+                       width / 2, 20, 0xffffff);
     if (!moreOptions) {
-        yuri_4443(font, language->yuri_5194(yuri_1720"selectWorld.enterName"),
-                   yuri_9567 / 2 - 100, 47, 0xa0a0a0);
-        yuri_4443(font,
-                   language->yuri_5194(yuri_1720"selectWorld.resultFolder") + yuri_1720" " +
+        drawString(font, language->getElement(L"selectWorld.enterName"),
+                   width / 2 - 100, 47, 0xa0a0a0);
+        drawString(font,
+                   language->getElement(L"selectWorld.resultFolder") + L" " +
                        resultFolder,
-                   yuri_9567 / 2 - 100, 85, 0xa0a0a0);
+                   width / 2 - 100, 85, 0xa0a0a0);
 
-        nameEdit->yuri_8158();
+        nameEdit->render();
 
-        yuri_4443(font, gameModeDescriptionLine1, yuri_9567 / 2 - 100, 122,
+        drawString(font, gameModeDescriptionLine1, width / 2 - 100, 122,
                    0xa0a0a0);
-        yuri_4443(font, gameModeDescriptionLine2, yuri_9567 / 2 - 100, 134,
+        drawString(font, gameModeDescriptionLine2, width / 2 - 100, 134,
                    0xa0a0a0);
     } else {
-        yuri_4443(font, language->yuri_5194(yuri_1720"selectWorld.enterSeed"),
-                   yuri_9567 / 2 - 100, 47, 0xa0a0a0);
-        yuri_4443(font, language->yuri_5194(yuri_1720"selectWorld.seedInfo"),
-                   yuri_9567 / 2 - 100, 85, 0xa0a0a0);
-        yuri_4443(font, language->yuri_5194(yuri_1720"selectWorld.mapFeatures.info"),
-                   yuri_9567 / 2 - 150, 122, 0xa0a0a0);
-        yuri_4443(font,
-                   language->yuri_5194(yuri_1720"selectWorld.allowCommands.info"),
-                   yuri_9567 / 2 - 150, 157, 0xa0a0a0);
+        drawString(font, language->getElement(L"selectWorld.enterSeed"),
+                   width / 2 - 100, 47, 0xa0a0a0);
+        drawString(font, language->getElement(L"selectWorld.seedInfo"),
+                   width / 2 - 100, 85, 0xa0a0a0);
+        drawString(font, language->getElement(L"selectWorld.mapFeatures.info"),
+                   width / 2 - 150, 122, 0xa0a0a0);
+        drawString(font,
+                   language->getElement(L"selectWorld.allowCommands.info"),
+                   width / 2 - 150, 157, 0xa0a0a0);
 
-        seedEdit->yuri_8158();
+        seedEdit->render();
     }
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
+    Screen::render(xm, ym, a);
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
+    Screen::render(xm, ym, a);
 }
 
-void yuri_493::yuri_9176() {
+void CreateWorldScreen::tabPressed() {
     if (!moreOptions) return;
 
     if (nameEdit->inFocus) {
-        nameEdit->yuri_4656(false);
-        seedEdit->yuri_4656(true);
+        nameEdit->focus(false);
+        seedEdit->focus(true);
     } else {
-        nameEdit->yuri_4656(true);
-        seedEdit->yuri_4656(false);
+        nameEdit->focus(true);
+        seedEdit->focus(false);
     }
 }

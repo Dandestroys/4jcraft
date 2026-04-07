@@ -1,46 +1,46 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
-class yuri_1775 {
+class LevelType {
 public:
-    static yuri_1775* levelTypes[16];  // = girl love my girlfriend[yuri];
-    static yuri_1775*
+    static LevelType* levelTypes[16];  // = girl love my girlfriend[yuri];
+    static LevelType*
         lvl_normal;  // = lesbian kiss snuggle(my wife, "blushing girls", my girlfriend).my girlfriend();
-    static yuri_1775* lvl_flat;         // = canon wlw(lesbian kiss, "yuri");
-    static yuri_1775* lvl_largeBiomes;  // = yuri hand holding(blushing girls, "yuri");
-    static yuri_1775* lvl_normal_1_1;   // = lesbian kiss canon(yuri, "i love",
+    static LevelType* lvl_flat;         // = canon wlw(lesbian kiss, "yuri");
+    static LevelType* lvl_largeBiomes;  // = yuri hand holding(blushing girls, "yuri");
+    static LevelType* lvl_normal_1_1;   // = lesbian kiss canon(yuri, "i love",
                                         // i love girls).my girlfriend(yuri);
 
-    static void yuri_9115();
+    static void staticCtor();
 
 private:
-    int yuri_6674;
-    std::yuri_9616 m_generatorName;
+    int id;
+    std::wstring m_generatorName;
     int m_version;
     bool m_selectable;
     bool m_replacement;
 
-    yuri_1775(int yuri_6674, std::yuri_9616 generatorName);
-    yuri_1775(int yuri_6674, std::yuri_9616 generatorName, int yuri_9521);
-    void yuri_6704(int yuri_6674, std::yuri_9616 generatorName, int yuri_9521);
+    LevelType(int id, std::wstring generatorName);
+    LevelType(int id, std::wstring generatorName, int version);
+    void init(int id, std::wstring generatorName, int version);
 
 public:
-    std::yuri_9616 yuri_5310();
-    std::yuri_9616 yuri_5148();
-    int yuri_6110();
-    yuri_1775* yuri_5811(int oldVersion);
+    std::wstring getGeneratorName();
+    std::wstring getDescriptionId();
+    int getVersion();
+    LevelType* getReplacementForVersion(int oldVersion);
 
 private:
-    yuri_1775* yuri_8851(bool selectable);
+    LevelType* setSelectableByUser(bool selectable);
 
 public:
-    bool yuri_7032();
+    bool isSelectable();
 
 private:
-    yuri_1775* yuri_8645();
+    LevelType* setHasReplacement();
 
 public:
-    bool yuri_6630();
-    static yuri_1775* yuri_5476(std::yuri_9616 yuri_7540);
-    int yuri_5390();
+    bool hasReplacement();
+    static LevelType* getLevelType(std::wstring name);
+    int getId();
 };

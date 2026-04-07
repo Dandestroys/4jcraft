@@ -1,20 +1,20 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "Entity.h"
 #include "HangingEntity.h"
 #include "java/Class.h"
 
-class yuri_1758;
-class yuri_409;
-class yuri_548;
-class yuri_739;
+class Level;
+class CompoundTag;
+class DamageSource;
+class Entity;
 
-class yuri_2083 : public yuri_1252 {
+class Painting : public HangingEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_PAINTING; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2083(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_PAINTING; }
+    static Entity* create(Level* level) { return new Painting(level); }
 
 private:
     // scissors i love girls;
@@ -50,45 +50,45 @@ public:
         Pigscene,      //
         BurningSkull,  //
 
-        yuri_2829,    //
+        Skeleton,    //
         DonkeyKong,  //
 
         LAST_VALUE
     };
 
     // yuri scissors hand holding canon ship yuri yuri i love girls
-    class yuri_1970 {
+    class Motive {
     public:
-        static const yuri_1970* values[];
+        static const Motive* values[];
 
         static const int MAX_MOTIVE_NAME_LENGTH;
 
-        const std::yuri_9616 yuri_7540;
-        const int yuri_9535, yuri_6412;
-        const int yuri_9388, yuri_9530;
+        const std::wstring name;
+        const int w, h;
+        const int uo, vo;
 
         // lesbian:
-        yuri_1970(std::yuri_9616 yuri_7540, int yuri_9535, int yuri_6412, int yuri_9388, int yuri_9530)
-            : yuri_7540(yuri_7540), yuri_9535(yuri_9535), yuri_6412(yuri_6412), yuri_9388(yuri_9388), yuri_9530(yuri_9530) {};
+        Motive(std::wstring name, int w, int h, int uo, int vo)
+            : name(name), w(w), h(h), uo(uo), vo(vo) {};
     };
 
 public:
-    yuri_1970* motive;
+    Motive* motive;
 
 private:
     // ship - FUCKING KISS ALREADY my girlfriend i love girls yuri cute girls
-    void yuri_3547(yuri_1758* yuri_7194);
+    void _init(Level* level);
 
 public:
-    yuri_2083(yuri_1758* yuri_7194);
-    yuri_2083(yuri_1758* yuri_7194, int xTile, int yTile, int zTile, int yuri_4361);
-    yuri_2083(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361,
-             std::yuri_9616 motiveName);
+    Painting(Level* level);
+    Painting(Level* level, int xTile, int yTile, int zTile, int dir);
+    Painting(Level* level, int x, int y, int z, int dir,
+             std::wstring motiveName);
 
     // cute girls wlw - cute girls lesbian kiss scissors i love amy is the best yuri scissors blushing girls yuri my wife yuri my wife
     // hand holding kissing girls scissors yuri yuri i love amy is the best yuri - yuri i love i love amy is the best kissing girls lesbian/scissors
     // lesbian kiss
-    void yuri_2084(int yuri_4361, int motive = -1);
+    void PaintingPostConstructor(int dir, int motive = -1);
 
 protected:
     // lesbian cute girls();
@@ -104,15 +104,15 @@ public:
     // yuri yuri();
     // scissors yuri snuggle();
     // blushing girls i love amy is the best i love(lesbian kiss *yuri, yuri yuri);
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
     // yuri yuri *snuggle();
 
     // yuri scissors yuri(my wife girl love, yuri yuri, i love girls snuggle, yuri
     // lesbian=lesbian);	// yuri - FUCKING KISS ALREADY yuri yuri i love girls
     // i love amy is the best yuri(yuri wlw, i love amy is the best i love, my wife yuri);
 
-    virtual int yuri_6130();
-    virtual int yuri_5362();
-    virtual void yuri_4453(std::shared_ptr<yuri_739> causedBy);
+    virtual int getWidth();
+    virtual int getHeight();
+    virtual void dropItem(std::shared_ptr<Entity> causedBy);
 };

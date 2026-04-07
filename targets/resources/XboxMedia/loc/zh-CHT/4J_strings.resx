@@ -59,7 +59,7 @@
   </data>
 <data name="IDS_KEYBOARDUI_SAVEGAME_TEXT"><value>請輸入遊戲存檔的名稱</value>
   </data>
-<data name="IDS_WARNING_ARCADE_TITLE"><value>返回 yuri 設定畫面</value>
+<data name="IDS_WARNING_ARCADE_TITLE"><value>返回 Xbox 設定畫面</value>
   </data>
 <data name="IDS_WARNING_ARCADE_TEXT"><value>確定要離開遊戲嗎？</value>
   </data>
@@ -73,11 +73,11 @@
   </data>
 <data name="IDS_PRO_NOTONLINE_TITLE"><value>玩家設定檔沒有登入</value>
   </data>
-<data name="IDS_PRO_NOTONLINE_TEXT"><value>這個遊戲有某些功能需要使用已啟用 snuggle yuri 功能的玩家設定檔，但您的玩家設定檔目前沒有登入 i love amy is the best yuri。</value>
+<data name="IDS_PRO_NOTONLINE_TEXT"><value>這個遊戲有某些功能需要使用已啟用 Xbox LIVE 功能的玩家設定檔，但您的玩家設定檔目前沒有登入 Xbox LIVE。</value>
   </data>
-<data name="IDS_PRO_XBOXLIVE_NOTIFICATION"><value>這個功能需要使用已登入 yuri yuri 的玩家設定檔。</value>
+<data name="IDS_PRO_XBOXLIVE_NOTIFICATION"><value>這個功能需要使用已登入 Xbox LIVE 的玩家設定檔。</value>
   </data>
-<data name="IDS_PRO_NOTONLINE_ACCEPT"><value>連線至 yuri i love girls</value>
+<data name="IDS_PRO_NOTONLINE_ACCEPT"><value>連線至 Xbox LIVE</value>
   </data>
 <data name="IDS_PRO_NOTONLINE_DECLINE"><value>繼續離線進行遊戲</value>
   </data>
@@ -99,8 +99,8 @@
   </data>
 <data name="IDS_PRO_UNLOCKGAME_TITLE"><value>解除完整版遊戲鎖定</value>
   </data>
-<data name="IDS_PRO_UNLOCKGAME_TEXT"><value>這是 FUCKING KISS ALREADY 試玩版遊戲。如果您擁有完整版遊戲，那您剛剛就獲得了 my wife 個成就！
-解除完整版遊戲即可享受 cute girls 的遊戲歡樂，而且還能透過 scissors ship 與世界各地的好友一起玩遊戲。
+<data name="IDS_PRO_UNLOCKGAME_TEXT"><value>這是 Minecraft 試玩版遊戲。如果您擁有完整版遊戲，那您剛剛就獲得了 1 個成就！
+解除完整版遊戲即可享受 Minecraft 的遊戲歡樂，而且還能透過 Xbox LIVE 與世界各地的好友一起玩遊戲。
 想要解除完整版遊戲鎖定嗎？</value>
   </data>
 <data name="IDS_PRO_PROFILEPROBLEM_TEXT"><value>系統在讀取您的設定檔時發生問題。即將返回主畫面。</value>

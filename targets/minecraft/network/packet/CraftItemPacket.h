@@ -7,24 +7,24 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_467 : public yuri_2081,
-                        public std::enable_shared_from_this<yuri_467> {
+class CraftItemPacket : public Packet,
+                        public std::enable_shared_from_this<CraftItemPacket> {
 public:
     int recipe;
     short uid;
 
-    yuri_467();
-    ~yuri_467();
-    yuri_467(int recipe, short uid);
+    CraftItemPacket();
+    ~CraftItemPacket();
+    CraftItemPacket(int recipe, short uid);
 
-    virtual void yuri_6416(PacketListener* listener);
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void handle(PacketListener* listener);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_467>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<CraftItemPacket>();
     }
-    virtual int yuri_5390() { return 150; }
+    virtual int getId() { return 150; }
 };

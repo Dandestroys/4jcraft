@@ -2,23 +2,23 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_2339 : public yuri_2090 {
+class RedDustParticle : public Particle {
 public:
-    virtual eINSTANCEOF yuri_1188() { return eType_REDDUSTPARTICLE; }
+    virtual eINSTANCEOF GetType() { return eType_REDDUSTPARTICLE; }
 
 private:
-    void yuri_6704(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, float yuri_8382,
+    void init(Level* level, double x, double y, double z, float scale,
               float rCol, float gCol, float bCol);  // yuri - yuri
 public:
-    yuri_2339(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, float rCol,
+    RedDustParticle(Level* level, double x, double y, double z, float rCol,
                     float gCol, float bCol);
     float oSize;
 
-    yuri_2339(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, float yuri_8382,
+    RedDustParticle(Level* level, double x, double y, double z, float scale,
                     float rCol, float gCol, float bCol);
-    virtual void yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za,
+    virtual void render(Tesselator* t, float a, float xa, float ya, float za,
                         float xa2, float za2);
-    virtual void yuri_9265();
+    virtual void tick();
 };

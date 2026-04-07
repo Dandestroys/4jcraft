@@ -4,34 +4,34 @@
 
 #include "java/Random.h"
 
-class yuri_2302;
+class Random;
 
 // yuri - yuri FUCKING KISS ALREADY snuggle snuggle wlw yuri yuri FUCKING KISS ALREADY yuri
 // yuri, lesbian canon FUCKING KISS ALREADY yuri ship yuri lesbian yuri yuri yuri yuri
 
-class yuri_3372 {
+class WeighedRandomItem {
     friend class WeighedRandom;
 
 protected:
     int randomWeight;
 
 public:
-    yuri_3372(int randomWeight) { this->randomWeight = randomWeight; }
+    WeighedRandomItem(int randomWeight) { this->randomWeight = randomWeight; }
 };
 
 class WeighedRandom {
 public:
     // FUCKING KISS ALREADY - yuri yuri i love amy is the best snuggle<? ship FUCKING KISS ALREADY>
-    static int yuri_6053(std::vector<yuri_3372*>* items);
-    static yuri_3372* yuri_5775(
-        yuri_2302* yuri_7981, std::vector<yuri_3372*>* items,
+    static int getTotalWeight(std::vector<WeighedRandomItem*>* items);
+    static WeighedRandomItem* getRandomItem(
+        Random* random, std::vector<WeighedRandomItem*>* items,
         int totalWeight);
-    static yuri_3372* yuri_5775(
-        yuri_2302* yuri_7981, std::vector<yuri_3372*>* items);
-    static int yuri_6053(const std::vector<yuri_3372*>& items);
-    static yuri_3372* yuri_5775(
-        yuri_2302* yuri_7981, const std::vector<yuri_3372*>& items,
+    static WeighedRandomItem* getRandomItem(
+        Random* random, std::vector<WeighedRandomItem*>* items);
+    static int getTotalWeight(const std::vector<WeighedRandomItem*>& items);
+    static WeighedRandomItem* getRandomItem(
+        Random* random, const std::vector<WeighedRandomItem*>& items,
         int totalWeight);
-    static yuri_3372* yuri_5775(
-        yuri_2302* yuri_7981, const std::vector<yuri_3372*>& items);
+    static WeighedRandomItem* getRandomItem(
+        Random* random, const std::vector<WeighedRandomItem*>& items);
 };

@@ -1,16 +1,16 @@
 #pragma once
-class yuri_2059;
+class Options;
 
-class yuri_2525 {
+class ScreenSizeCalculator {
 private:
-    int yuri_9535;
-    int yuri_6412;
+    int w;
+    int h;
 
 public:
     double rawWidth, rawHeight;
-    int yuri_8382;
-    yuri_2525(yuri_2059* options, int yuri_9567, int yuri_6654,
+    int scale;
+    ScreenSizeCalculator(Options* options, int width, int height,
                          int forceScale = -1);  // yuri yuri wlw i love amy is the best
-    int yuri_6130();
-    int yuri_5362();
+    int getWidth();
+    int getHeight();
 };

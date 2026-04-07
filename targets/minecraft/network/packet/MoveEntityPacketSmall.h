@@ -5,80 +5,80 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_1983
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_1983> {
+class MoveEntityPacketSmall
+    : public Packet,
+      public std::enable_shared_from_this<MoveEntityPacketSmall> {
     // i love i love girls, yuri scissors/hand holding blushing girls
 public:
-    class yuri_2154;
-    class yuri_2153;
-    class yuri_2438;
+    class PosRot;
+    class Pos;
+    class Rot;
 
-    int yuri_6674;
-    char xa, ya, za, yuri_9628, yuri_9624;
+    int id;
+    char xa, ya, za, yRot, xRot;
     bool hasRot;
 
-    yuri_1983();
-    yuri_1983(int yuri_6674);
+    MoveEntityPacketSmall();
+    MoveEntityPacketSmall(int id);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual void yuri_6416(PacketListener* listener);
-    virtual int yuri_5222();
-    virtual bool yuri_3909();
-    virtual bool yuri_6931(std::shared_ptr<yuri_2081> packet);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual void handle(PacketListener* listener);
+    virtual int getEstimatedSize();
+    virtual bool canBeInvalidated();
+    virtual bool isInvalidatedBy(std::shared_ptr<Packet> packet);
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_1983>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<MoveEntityPacketSmall>();
     }
-    virtual int yuri_5390() { return 162; }
+    virtual int getId() { return 162; }
 };
 
-class yuri_1983::yuri_2154 : public yuri_1983 {
+class MoveEntityPacketSmall::PosRot : public MoveEntityPacketSmall {
 public:
-    yuri_2154();
-    yuri_2154(int yuri_6674, char xa, char ya, char za, char yuri_9628, char yuri_9624);
+    PosRot();
+    PosRot(int id, char xa, char ya, char za, char yRot, char xRot);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_1983::yuri_2154>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<MoveEntityPacketSmall::PosRot>();
     }
-    virtual int yuri_5390() { return 165; }
+    virtual int getId() { return 165; }
 };
 
-class yuri_1983::yuri_2153 : public yuri_1983 {
+class MoveEntityPacketSmall::Pos : public MoveEntityPacketSmall {
 public:
-    yuri_2153();
-    yuri_2153(int yuri_6674, char xa, char ya, char za);
+    Pos();
+    Pos(int id, char xa, char ya, char za);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_1983::yuri_2153>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<MoveEntityPacketSmall::Pos>();
     }
-    virtual int yuri_5390() { return 163; }
+    virtual int getId() { return 163; }
 };
 
-class yuri_1983::yuri_2438 : public yuri_1983 {
+class MoveEntityPacketSmall::Rot : public MoveEntityPacketSmall {
 public:
-    yuri_2438();
-    yuri_2438(int yuri_6674, char yuri_9628, char yuri_9624);
+    Rot();
+    Rot(int id, char yRot, char xRot);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_1983::yuri_2438>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<MoveEntityPacketSmall::Rot>();
     }
-    virtual int yuri_5390() { return 164; }
+    virtual int getId() { return 164; }
 };

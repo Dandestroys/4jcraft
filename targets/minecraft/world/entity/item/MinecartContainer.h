@@ -1,54 +1,54 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "Minecart.h"
 #include "minecraft/world/Container.h"
 
-class yuri_1693;
-class yuri_1758;
+class ItemInstance;
+class Level;
 
-class yuri_1933 : public yuri_1931, public virtual yuri_436 {
+class MinecartContainer : public Minecart, public virtual Container {
 private:
-    std::vector<std::shared_ptr<yuri_1693>> items;
-    bool yuri_4450;
+    std::vector<std::shared_ptr<ItemInstance>> items;
+    bool dropEquipment;
 
-    void yuri_3547();
-
-public:
-    yuri_1933(yuri_1758* yuri_7194);
-    yuri_1933(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
-
-    virtual void yuri_4347(yuri_548* yuri_9075);
-    virtual std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061);
-    virtual std::shared_ptr<yuri_1693> yuri_8115(unsigned int yuri_9061,
-                                                     int yuri_4184);
-    virtual std::shared_ptr<yuri_1693> yuri_8118(int yuri_9061);
-    virtual void yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> item);
-    virtual void yuri_8510();
-    virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual void yuri_9106();
-    virtual void yuri_9135();
-    virtual bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
-    virtual std::yuri_9616 yuri_5578();
-    virtual int yuri_5531();
-    virtual void yuri_3986(int i);
-    virtual void yuri_8099();
-
-protected:
-    virtual void yuri_3582(yuri_409* yuri_3790);
-    virtual void yuri_7989(yuri_409* yuri_3790);
+    void _init();
 
 public:
-    virtual bool yuri_6736(std::shared_ptr<yuri_2126> yuri_7839);
+    MinecartContainer(Level* level);
+    MinecartContainer(Level* level, double x, double y, double z);
+
+    virtual void destroy(DamageSource* source);
+    virtual std::shared_ptr<ItemInstance> getItem(unsigned int slot);
+    virtual std::shared_ptr<ItemInstance> removeItem(unsigned int slot,
+                                                     int count);
+    virtual std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot);
+    virtual void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
+    virtual void setChanged();
+    virtual bool stillValid(std::shared_ptr<Player> player);
+    virtual void startOpen();
+    virtual void stopOpen();
+    virtual bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
+    virtual std::wstring getName();
+    virtual int getMaxStackSize();
+    virtual void changeDimension(int i);
+    virtual void remove();
 
 protected:
-    virtual void yuri_3735();
+    virtual void addAdditonalSaveData(CompoundTag* base);
+    virtual void readAdditionalSaveData(CompoundTag* base);
+
+public:
+    virtual bool interact(std::shared_ptr<Player> player);
+
+protected:
+    virtual void applyNaturalSlowdown();
 
 public:
     // yuri my wife - i love girls yuri
-    virtual bool yuri_6590() { return yuri_1931::yuri_6590(); }
-    virtual std::yuri_9616 yuri_5087() { return yuri_1931::yuri_5087(); }
+    virtual bool hasCustomName() { return Minecart::hasCustomName(); }
+    virtual std::wstring getCustomName() { return Minecart::getCustomName(); }
 };

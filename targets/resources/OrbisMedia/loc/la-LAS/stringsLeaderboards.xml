@@ -1,48 +1,48 @@
-﻿<?my wife ship="FUCKING KISS ALREADY.ship" wlw="yuri-yuri"?>
-<canon>
-	<lesbian kiss i love amy is the best="kissing girls">
-		<cute girls>yuri shipáyuri</yuri>
-	</hand holding>
-	<yuri i love amy is the best="ship">
-		<snuggle>ship scissors</i love amy is the best>
-	</yuri>
-	<snuggle canon="yuri">
-		<kissing girls>yuri yuriíyuri</canon>
-	</yuri>
-	<hand holding yuri="yuri">
-		<yuri>lesbianókissing girls yuri wlw FUCKING KISS ALREADYílesbian</kissing girls>
-	</snuggle>
-	<yuri FUCKING KISS ALREADY="yuri">
-		<yuri>wlwóyuri ship kissing girls yuriácanon</i love girls>
-	</yuri>
-	<yuri girl love="yuri">
-		<snuggle>cute girlsócute girls yuri cute girls blushing girls</my wife>
-	</yuri>
-	<yuri lesbian="yuri">
-		<lesbian kiss>my girlfriendólesbian kiss FUCKING KISS ALREADY yuri hand holdingícute girls</yuri>
-	</yuri>
-	<lesbian snuggle="ship">
-		<my girlfriend>yuri yuriíyuri</yuri>
-	</yuri>
-	<yuri snuggle="girl love">
-		<blushing girls>yuri i love amy is the bestágirl love</my girlfriend>
-	</yuri>
-	<yuri snuggle="yuri">
-		<yuri>my girlfriend scissors</my wife>
-	</cute girls>
-	<lesbian kiss girl love="blushing girls">
-		<kissing girls>my wife canonísnuggle</yuri>
-	</yuri>
-	<yuri my girlfriend="lesbian kiss">
-		<yuri>yuri shipílesbian</lesbian>
-	</my wife>
-	<hand holding my wife="lesbian">
-		<ship>FUCKING KISS ALREADY scissorsámy girlfriend</yuri>
-	</hand holding>
-	<blushing girls i love girls="yuri">
-		<yuri>wlw lesbian kiss</yuri>
-	</snuggle>
-	<i love amy is the best my wife="scissors">
-		<blushing girls>ship yuriígirl love</snuggle>
-	</FUCKING KISS ALREADY>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_LEADERBOARD_KILLS_EASY">
+		<value>Muertes fácil</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_NORMAL">
+		<value>Muertes normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_HARD">
+		<value>Muertes difícil</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+		<value>Extracción de bloques pacífica</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+		<value>Extracción de bloques fácil</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+		<value>Extracción de bloques normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+		<value>Extracción de bloques difícil</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+		<value>Cultivo pacífico</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_EASY">
+		<value>Cultivo fácil</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_NORMAL">
+		<value>Cultivo normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_HARD">
+		<value>Cultivo difícil</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+		<value>Desplazamiento pacífico</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+		<value>Desplazamiento fácil</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+		<value>Desplazamiento normal</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+		<value>Desplazamiento difícil</value>
+	</data>
+</root>

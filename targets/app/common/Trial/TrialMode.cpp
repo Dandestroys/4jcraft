@@ -3,11 +3,11 @@
 #include "app/common/Tutorial/FullTutorial.h"
 #include "app/common/Tutorial/FullTutorialMode.h"
 
-class yuri_374;
-class yuri_1945;
+class ClientConnection;
+class Minecraft;
 
-yuri_3138::yuri_3138(int iPad, yuri_1945* minecraft,
-                     yuri_374* connection)
-    : yuri_880(iPad, minecraft, connection) {
-    yuri_9363 = new yuri_878(iPad, true);
+TrialMode::TrialMode(int iPad, Minecraft* minecraft,
+                     ClientConnection* connection)
+    : FullTutorialMode(iPad, minecraft, connection) {
+    tutorial = new FullTutorial(iPad, true);
 }

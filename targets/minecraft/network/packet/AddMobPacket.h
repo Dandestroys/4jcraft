@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <vector>
 
@@ -10,38 +10,38 @@
 #include "minecraft/network/packet/Packet.h"
 #include "minecraft/world/entity/SyncedEntityData.h"
 
-class yuri_1793;
+class LivingEntity;
 
-class yuri_77 : public yuri_2081,
-                     public std::enable_shared_from_this<yuri_77> {
+class AddMobPacket : public Packet,
+                     public std::enable_shared_from_this<AddMobPacket> {
 public:
-    int yuri_6674;
-    int yuri_9364;
-    int yuri_9621, yuri_9625, yuri_9630;
+    int id;
+    int type;
+    int x, y, z;
     int xd, yd, zd;
-    yuri_9368 yuri_9628, yuri_9624, yHeadRot;
+    uint8_t yRot, xRot, yHeadRot;
 
 private:
-    std::shared_ptr<yuri_2995> entityData;
-    std::vector<std::shared_ptr<yuri_2995::yuri_550> >* yuri_9383;
+    std::shared_ptr<SynchedEntityData> entityData;
+    std::vector<std::shared_ptr<SynchedEntityData::DataItem> >* unpack;
 
 public:
-    yuri_77();
-    ~yuri_77();
-    yuri_77(std::shared_ptr<yuri_1793> mob, int yRotp, int xRotp,
+    AddMobPacket();
+    ~AddMobPacket();
+    AddMobPacket(std::shared_ptr<LivingEntity> mob, int yRotp, int xRotp,
                  int xp, int yp, int zp, int yHeadRotp);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual void yuri_6416(PacketListener* listener);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual void handle(PacketListener* listener);
+    virtual int getEstimatedSize();
 
-    std::vector<std::shared_ptr<yuri_2995::yuri_550> >*
-    yuri_6082();
+    std::vector<std::shared_ptr<SynchedEntityData::DataItem> >*
+    getUnpackedData();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_77>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<AddMobPacket>();
     }
-    virtual int yuri_5390() { return 24; }
+    virtual int getId() { return 24; }
 };

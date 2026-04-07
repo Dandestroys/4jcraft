@@ -14,132 +14,132 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_802::yuri_802(int yuri_6674)
-    : yuri_614(yuri_6674, yuri_1886::wood, false) {}
+FenceGateTile::FenceGateTile(int id)
+    : DirectionalTile(id, Material::wood, false) {}
 
-yuri_1346* yuri_802::yuri_6007(int face, int yuri_4295) {
-    return yuri_3088::wood->yuri_6007(face);
+Icon* FenceGateTile::getTexture(int face, int data) {
+    return Tile::wood->getTexture(face);
 }
 
-bool yuri_802::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (!yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 1, yuri_9630)->yuri_7052()) return false;
-    return yuri_3088::yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+bool FenceGateTile::mayPlace(Level* level, int x, int y, int z) {
+    if (!level->getMaterial(x, y - 1, z)->isSolid()) return false;
+    return Tile::mayPlace(level, x, y, z);
 }
 
-std::optional<yuri_0> yuri_802::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_6980(yuri_4295)) {
+std::optional<AABB> FenceGateTile::getAABB(Level* level, int x, int y, int z) {
+    int data = level->getData(x, y, z);
+    if (isOpen(data)) {
         return std::nullopt;
     }
 
-    switch (yuri_4295) {
+    switch (data) {
         case Direction::NORTH:
         case Direction::SOUTH:
-            return yuri_0{static_cast<double>(yuri_9621),
-                        static_cast<double>(yuri_9625),
-                        yuri_9630 + 6.0 / 16.0,
-                        yuri_9621 + 1.0,
-                        yuri_9625 + 1.5,
-                        yuri_9630 + 10.0 / 16.0};
+            return AABB{static_cast<double>(x),
+                        static_cast<double>(y),
+                        z + 6.0 / 16.0,
+                        x + 1.0,
+                        y + 1.5,
+                        z + 10.0 / 16.0};
         default:
-            return yuri_0{yuri_9621 + 6.0 / 16.0,
-                        static_cast<double>(yuri_9625),
-                        static_cast<double>(yuri_9630),
-                        yuri_9621 + 10.0 / 16.0,
-                        yuri_9625 + 1.5,
-                        yuri_9630 + 1.0};
+            return AABB{x + 6.0 / 16.0,
+                        static_cast<double>(y),
+                        static_cast<double>(z),
+                        x + 10.0 / 16.0,
+                        y + 1.5,
+                        z + 1.0};
     }
 }
 
 // i love girls - yuri my wife i love girls yuri.lesbian.scissors yuri lesbian kiss yuri yuri canon
-void yuri_802::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void FenceGateTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // blushing girls my wife yuri, kissing girls yuri
 {
-    int yuri_4295 = yuri_5163(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
-    if (yuri_4295 == Direction::NORTH || yuri_4295 == Direction::SOUTH) {
-        yuri_8855(0, 0, 6.0f / 16.0f, 1, 1.0f, 10.0f / 16.0f);
+    int data = getDirection(level->getData(x, y, z));
+    if (data == Direction::NORTH || data == Direction::SOUTH) {
+        setShape(0, 0, 6.0f / 16.0f, 1, 1.0f, 10.0f / 16.0f);
     } else {
-        yuri_8855(6.0f / 16.0f, 0, 0, 10.0f / 16.0f, 1.0f, 1);
+        setShape(6.0f / 16.0f, 0, 0, 10.0f / 16.0f, 1.0f, 1);
     }
 }
 
-bool yuri_802::yuri_3828() { return false; }
+bool FenceGateTile::blocksLight() { return false; }
 
-bool yuri_802::yuri_7058(bool isServerLevel) { return false; }
+bool FenceGateTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_802::yuri_6827() { return false; }
+bool FenceGateTile::isCubeShaped() { return false; }
 
-bool yuri_802::yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_6980(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+bool FenceGateTile::isPathfindable(LevelSource* level, int x, int y, int z) {
+    return isOpen(level->getData(x, y, z));
 }
 
-int yuri_802::yuri_5806() { return yuri_3088::SHAPE_FENCE_GATE; }
+int FenceGateTile::getRenderShape() { return Tile::SHAPE_FENCE_GATE; }
 
-void yuri_802::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                std::shared_ptr<yuri_1793> by,
-                                std::shared_ptr<yuri_1693> itemInstance) {
-    int yuri_4361 = (((Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 0.5)) & 3)) % 4;
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361, yuri_3088::UPDATE_CLIENTS);
+void FenceGateTile::setPlacedBy(Level* level, int x, int y, int z,
+                                std::shared_ptr<LivingEntity> by,
+                                std::shared_ptr<ItemInstance> itemInstance) {
+    int dir = (((Mth::floor(by->yRot * 4 / (360) + 0.5)) & 3)) % 4;
+    level->setData(x, y, z, dir, Tile::UPDATE_CLIENTS);
 }
 
-bool yuri_802::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+bool FenceGateTile::use(Level* level, int x, int y, int z,
+                        std::shared_ptr<Player> player, int clickedFace,
                         float clickX, float clickY, float clickZ,
                         bool soundOnly /*=kissing girls*/)  // yuri i love girls i love girls my girlfriend
 {
     if (soundOnly) {
         // scissors - my girlfriend - yuri kissing girls yuri yuri i love amy is the best yuri FUCKING KISS ALREADY
-        yuri_7194->yuri_7195(
-            yuri_7839, LevelEvent::SOUND_OPEN_DOOR, yuri_9621, yuri_9625, yuri_9630,
+        level->levelEvent(
+            player, LevelEvent::SOUND_OPEN_DOOR, x, y, z,
             0);  // lesbian kiss - hand holding my girlfriend kissing girls lesbian yuri yuri i love amy is the best canon blushing girls yuri
                  // yuri yuri i love girls yuri lesbian kiss yuri scissors kissing girls yuri yuri yuri
         return false;
     }
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_6980(yuri_4295)) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 & ~OPEN_BIT, yuri_3088::UPDATE_CLIENTS);
+    int data = level->getData(x, y, z);
+    if (isOpen(data)) {
+        level->setData(x, y, z, data & ~OPEN_BIT, Tile::UPDATE_CLIENTS);
     } else {
         // kissing girls canon yuri canon scissors girl love
-        int yuri_4361 = (((Mth::yuri_4644(yuri_7839->yuri_9628 * 4 / (360) + 0.5)) & 3)) % 4;
-        int yuri_4282 = yuri_5163(yuri_4295);
-        if (yuri_4282 == ((yuri_4361 + 2) % 4)) {
-            yuri_4295 = yuri_4361;
+        int dir = (((Mth::floor(player->yRot * 4 / (360) + 0.5)) & 3)) % 4;
+        int current = getDirection(data);
+        if (current == ((dir + 2) % 4)) {
+            data = dir;
         }
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 | OPEN_BIT, yuri_3088::UPDATE_CLIENTS);
+        level->setData(x, y, z, data | OPEN_BIT, Tile::UPDATE_CLIENTS);
     }
-    yuri_7194->yuri_7195(yuri_7839, LevelEvent::SOUND_OPEN_DOOR, yuri_9621, yuri_9625, yuri_9630, 0);
+    level->levelEvent(player, LevelEvent::SOUND_OPEN_DOOR, x, y, z, 0);
     return true;
 }
 
-void yuri_802::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                    int yuri_9364) {
-    if (yuri_7194->yuri_6802) return;
+void FenceGateTile::neighborChanged(Level* level, int x, int y, int z,
+                                    int type) {
+    if (level->isClientSide) return;
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int data = level->getData(x, y, z);
 
-    bool signal = yuri_7194->yuri_6618(yuri_9621, yuri_9625, yuri_9630);
+    bool signal = level->hasNeighborSignal(x, y, z);
     if (signal ||
-        ((yuri_9364 > 0 && yuri_3088::tiles[yuri_9364]->yuri_7041()) || yuri_9364 == 0)) {
-        if (signal && !yuri_6980(yuri_4295)) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 | OPEN_BIT, yuri_3088::UPDATE_CLIENTS);
-            yuri_7194->yuri_7195(nullptr, LevelEvent::SOUND_OPEN_DOOR, yuri_9621, yuri_9625, yuri_9630, 0);
-        } else if (!signal && yuri_6980(yuri_4295)) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 & ~OPEN_BIT, yuri_3088::UPDATE_CLIENTS);
-            yuri_7194->yuri_7195(nullptr, LevelEvent::SOUND_OPEN_DOOR, yuri_9621, yuri_9625, yuri_9630, 0);
+        ((type > 0 && Tile::tiles[type]->isSignalSource()) || type == 0)) {
+        if (signal && !isOpen(data)) {
+            level->setData(x, y, z, data | OPEN_BIT, Tile::UPDATE_CLIENTS);
+            level->levelEvent(nullptr, LevelEvent::SOUND_OPEN_DOOR, x, y, z, 0);
+        } else if (!signal && isOpen(data)) {
+            level->setData(x, y, z, data & ~OPEN_BIT, Tile::UPDATE_CLIENTS);
+            level->levelEvent(nullptr, LevelEvent::SOUND_OPEN_DOOR, x, y, z, 0);
         }
     }
 }
 
-bool yuri_802::yuri_6980(int yuri_4295) { return (yuri_4295 & OPEN_BIT) != 0; }
+bool FenceGateTile::isOpen(int data) { return (data & OPEN_BIT) != 0; }
 
-void yuri_802::yuri_8072(IconRegister* iconRegister) {
+void FenceGateTile::registerIcons(IconRegister* iconRegister) {
     // my girlfriend
 }
 
-bool yuri_802::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool FenceGateTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
                                      int face) {
     return true;
 }

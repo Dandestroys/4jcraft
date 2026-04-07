@@ -1,66 +1,66 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "Screen.h"
 
-class yuri_682;
+class EditBox;
 class LevelStorageSource;
-class yuri_245;
+class Button;
 
-class yuri_493 : public yuri_2524 {
+class CreateWorldScreen : public Screen {
 private:
-    yuri_2524* lastScreen;
-    yuri_682* nameEdit;
-    yuri_682* seedEdit;
-    std::yuri_9616 resultFolder;
+    Screen* lastScreen;
+    EditBox* nameEdit;
+    EditBox* seedEdit;
+    std::wstring resultFolder;
     bool done;
 
     bool moreOptions;
-    std::yuri_9616 yuri_4699;
-    bool yuri_4849;
+    std::wstring gameMode;
+    bool generateStructures;
     bool bonusChest;
     bool cheatsEnabled;
     bool flatWorld;
 
-    yuri_245* gameModeButton;
-    yuri_245* moreWorldOptionsButton;
-    yuri_245* generateStructuresButton;
-    yuri_245* bonusChestButton;
-    yuri_245* worldTypeButton;
-    yuri_245* cheatsEnabledButton;
+    Button* gameModeButton;
+    Button* moreWorldOptionsButton;
+    Button* generateStructuresButton;
+    Button* bonusChestButton;
+    Button* worldTypeButton;
+    Button* cheatsEnabledButton;
 
-    std::yuri_9616 gameModeDescriptionLine1;
-    std::yuri_9616 gameModeDescriptionLine2;
-    std::yuri_9616 yuri_8396;
+    std::wstring gameModeDescriptionLine1;
+    std::wstring gameModeDescriptionLine2;
+    std::wstring seed;
 
 public:
-    yuri_493(yuri_2524* lastScreen);
-    virtual void yuri_9265() override;
-    virtual void yuri_6704() override;
+    CreateWorldScreen(Screen* lastScreen);
+    virtual void tick() override;
+    virtual void init() override;
 
 private:
-    void yuri_9456();
-    void yuri_9472();
+    void updateResultFolder();
+    void updateStrings();
 
 public:
-    static std::yuri_9616 yuri_4602(LevelStorageSource* levelSource,
-                                                const std::yuri_9616& yuri_4657);
-    virtual void yuri_8152() override;
+    static std::wstring findAvailableFolderName(LevelStorageSource* levelSource,
+                                                const std::wstring& folder);
+    virtual void removed() override;
 
 protected:
-    virtual void yuri_3881(yuri_245* button) override;
-    virtual void yuri_7155(wchar_t ch, int eventKey) override;
-    virtual void yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) override;
+    virtual void buttonClicked(Button* button) override;
+    virtual void keyPressed(wchar_t ch, int eventKey) override;
+    virtual void mouseClicked(int x, int y, int buttonNum) override;
 
 public:
-    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
-    virtual void yuri_9176() override;
+    virtual void render(int xm, int ym, float a) override;
+    virtual void tabPressed() override;
 
 private:
     int m_iGameModeId;
     bool m_bGameModeCreative;
 
-    struct yuri_1969 {
+    struct MoreOptionsParams {
         bool bGenerateOptions;
         bool bStructures;
         bool bFlatWorld;
@@ -84,7 +84,7 @@ private:
         bool bCheatsEnabled;
         int dwTexturePack;
         int iPad;
-        std::yuri_9616 worldName;
-        std::yuri_9616 yuri_8396;
+        std::wstring worldName;
+        std::wstring seed;
     } m_MoreOptionsParams;
 };

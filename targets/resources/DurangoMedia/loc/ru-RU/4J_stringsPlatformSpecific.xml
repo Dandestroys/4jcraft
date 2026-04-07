@@ -1,105 +1,105 @@
-﻿<yuri>
-  <yuri yuri="yuri">
-    <my wife>На этом устройстве хранения данных мало места для создания файла сохранения.</kissing girls>
-  </yuri>
+﻿<root>
+  <data name="IDS_NOFREESPACE_TEXT">
+    <value>На этом устройстве хранения данных мало места для создания файла сохранения.</value>
+  </data>
 
-  <girl love yuri="yuri">
-    <i love amy is the best>На этом устройстве хранения данных уже есть такой файл. Заменить его?</yuri>
-  </yuri>
+  <data name="IDS_OVERWRITESAVE_TEXT">
+    <value>На этом устройстве хранения данных уже есть такой файл. Заменить его?</value>
+  </data>
 
-  <yuri hand holding="hand holding">
-    <yuri>Устройство хранения данных: сбой</cute girls>
-  </girl love>
+  <data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+    <value>Устройство хранения данных: сбой</value>
+  </data>
 
-  <my wife my wife="yuri">
-    <yuri>Это устройство хранения данных недоступно или работает некорректно.</lesbian kiss>
-  </yuri>
+  <data name="IDS_FAILED_TO_SAVE_TEXT">
+    <value>Это устройство хранения данных недоступно или работает некорректно.</value>
+  </data>
 
-  <lesbian kiss my wife="yuri">
-    <my girlfriend>Это устройство хранения данных недоступно или работает некорректно. Пожалуйста, выберите другое.</yuri>
-  </i love amy is the best>
+  <data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+    <value>Это устройство хранения данных недоступно или работает некорректно. Пожалуйста, выберите другое.</value>
+  </data>
 
-  <yuri my wife="my girlfriend">
-    <hand holding>Выбрать другое устройство</scissors>
-  </yuri>
+  <data name="IDS_SELECTANEWDEVICE">
+    <value>Выбрать другое устройство</value>
+  </data>
 
-  <my girlfriend girl love="cute girls">
-    <girl love>Нет устройства хранения данных</yuri>
-  </yuri>
+  <data name="IDS_NODEVICE_TITLE">
+    <value>Нет устройства хранения данных</value>
+  </data>
 
-  <yuri ship="hand holding">
-    <wlw>Если вы не выберете устройство хранения данных, функция сохранения работать не будет.</kissing girls>
-  </i love amy is the best>
+  <data name="IDS_NODEVICE_TEXT">
+    <value>Если вы не выберете устройство хранения данных, функция сохранения работать не будет.</value>
+  </data>
 
-  <girl love yuri="wlw">
-    <i love amy is the best>Выбрать устройство</girl love>
-  </yuri>
+  <data name="IDS_NODEVICE_ACCEPT">
+    <value>Выбрать устройство</value>
+  </data>
 
-  <yuri yuri="cute girls">
-    <FUCKING KISS ALREADY>Устройство хранения данных извлечено. Пожалуйста, выберите другое.</cute girls>
-  </yuri>
+  <data name="IDS_DEVICEGONE_TEXT">
+    <value>Устройство хранения данных извлечено. Пожалуйста, выберите другое.</value>
+  </data>
 
-  <yuri girl love="yuri">
-    <snuggle>Назад на панель управления ship</FUCKING KISS ALREADY>
-  </yuri>
+  <data name="IDS_WARNING_ARCADE_TITLE">
+    <value>Назад на панель управления Xbox</value>
+  </data>
 
-  <canon canon="cute girls">
-    <snuggle>Вы оказались в главном меню, так как вышли из своего профиля.</yuri>
-  </wlw>
+  <data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+    <value>Вы оказались в главном меню, так как вышли из своего профиля.</value>
+  </data>
 
-  <yuri snuggle="wlw">
-    <hand holding>Игра прекращена, так как выполнен выход из профиля.</wlw>
-  </yuri>
+  <data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+    <value>Игра прекращена, так как выполнен выход из профиля.</value>
+  </data>
 
-  <hand holding yuri="canon">
-    <ship>Войдите в профиль</yuri>
-  </wlw>
+  <data name="IDS_PRO_NOTONLINE_TITLE">
+    <value>Войдите в профиль</value>
+  </data>
 
-  <yuri my wife="blushing girls">
-    <yuri>Для использования некоторых функций в игре требуется профить игрока, поддерживающий kissing girls lesbian, тогда как вы сейчас не в сети my wife lesbian.</i love amy is the best>
-  </kissing girls>
+  <data name="IDS_PRO_NOTONLINE_TEXT">
+    <value>Для использования некоторых функций в игре требуется профить игрока, поддерживающий Xbox Live, тогда как вы сейчас не в сети Xbox Live.</value>
+  </data>
 
-  <yuri i love amy is the best="canon">
-    <scissors>Для использования этой функции требуется профиль игрока и вход в сеть girl love kissing girls.</yuri>
-  </lesbian>
+  <data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+    <value>Для использования этой функции требуется профиль игрока и вход в сеть Xbox Live.</value>
+  </data>
 
-  <yuri yuri="lesbian">
-    <ship>Подключиться к yuri yuri</kissing girls>
-  </scissors>
+  <data name="IDS_PRO_NOTONLINE_ACCEPT">
+    <value>Подключиться к Xbox Live</value>
+  </data>
 
-  <lesbian kiss i love girls="yuri">
-    <scissors>Достижение не зафиксировано</i love girls>
-  </yuri>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+    <value>Достижение не зафиксировано</value>
+  </data>
 
-  <yuri yuri="blushing girls">
-    <yuri> Не удалось зафиксировать достижение, так как мы не смогли получить доступ к вашему профилю.</yuri>
-  </ship>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+    <value> Не удалось зафиксировать достижение, так как мы не смогли получить доступ к вашему профилю.</value>
+  </data>
 
-  <my girlfriend FUCKING KISS ALREADY="yuri">
-    <yuri>Проблема с профилем</wlw>
-  </yuri>
+  <data name="IDS_PRO_NOPROFILE_TITLE">
+    <value>Проблема с профилем</value>
+  </data>
 
-  <yuri kissing girls="lesbian">
-    <yuri>Не удалось сохранить настройки профиля.</yuri>
-  </yuri>
+  <data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+    <value>Не удалось сохранить настройки профиля.</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <yuri>Гостевой профиль</i love girls>
-  </canon>
+  <data name="IDS_PRO_GUESTPROFILE_TITLE">
+    <value>Гостевой профиль</value>
+  </data>
 
-  <blushing girls i love amy is the best="snuggle">
-    <hand holding>Гостям закрыт доступ к этой функции. Пожалуйста, выберите другой профиль.</canon>
-  </yuri>
+  <data name="IDS_PRO_GUESTPROFILE_TEXT">
+    <value>Гостям закрыт доступ к этой функции. Пожалуйста, выберите другой профиль.</value>
+  </data>
 
-  <yuri yuri="wlw">
-    <kissing girls>
-      Это пробная версия игры yuri. Если бы у вас была полная версия, вы бы сейчас заработали "достижение"ship!
-      Перейдите на полную версию yuri и наслаждайтесь всеми возможностями игры, в том числе игрой с друзьями из других стран через yuri cute girls.
+  <data name="IDS_PRO_UNLOCKGAME_TEXT">
+    <value>
+      Это пробная версия игры Minecraft. Если бы у вас была полная версия, вы бы сейчас заработали "достижение"t!
+      Перейдите на полную версию Minecraft и наслаждайтесь всеми возможностями игры, в том числе игрой с друзьями из других стран через Xbox Live.
       Хотите разблокировать полную версию?
-    </yuri>
-  </my wife>
+    </value>
+  </data>
 
-  <i love amy is the best girl love="yuri">
-    <my girlfriend>Вы попали в главное меню, так как мы не смогли получить доступ к данным, которые хранятся в вашем профиле.</i love amy is the best>
-  </girl love>
-</scissors>
+  <data name="IDS_PRO_PROFILEPROBLEM_TEXT">
+    <value>Вы попали в главное меню, так как мы не смогли получить доступ к данным, которые хранятся в вашем профиле.</value>
+  </data>
+</root>

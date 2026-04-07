@@ -22,277 +22,277 @@
 #include "minecraft/world/entity/boss/enderdragon/EnderCrystal.h"
 #include "minecraft/world/entity/boss/enderdragon/EnderDragon.h"
 
-yuri_2412 yuri_729::DRAGON_EXPLODING_LOCATION =
-    yuri_2412(TN_MOB_ENDERDRAGON_SHUFFLE);
-yuri_2412 yuri_729::CRYSTAL_BEAM_LOCATION =
-    yuri_2412(TN_MOB_ENDERDRAGON_BEAM);
-yuri_2412 yuri_729::DRAGON_EYES_LOCATION =
-    yuri_2412(TN_MOB_ENDERDRAGON_ENDEREYES);
-yuri_2412 yuri_729::DRAGON_LOCATION =
-    yuri_2412(TN_MOB_ENDERDRAGON);
+ResourceLocation EnderDragonRenderer::DRAGON_EXPLODING_LOCATION =
+    ResourceLocation(TN_MOB_ENDERDRAGON_SHUFFLE);
+ResourceLocation EnderDragonRenderer::CRYSTAL_BEAM_LOCATION =
+    ResourceLocation(TN_MOB_ENDERDRAGON_BEAM);
+ResourceLocation EnderDragonRenderer::DRAGON_EYES_LOCATION =
+    ResourceLocation(TN_MOB_ENDERDRAGON_ENDEREYES);
+ResourceLocation EnderDragonRenderer::DRAGON_LOCATION =
+    ResourceLocation(TN_MOB_ENDERDRAGON);
 
-yuri_729::yuri_729()
-    : yuri_1955(new yuri_655(0), 0.5f) {
-    dragonModel = (yuri_655*)model;
-    yuri_8459(model);  // yuri: yuri yuri yuri yuri yuri wlw.
+EnderDragonRenderer::EnderDragonRenderer()
+    : MobRenderer(new DragonModel(0), 0.5f) {
+    dragonModel = (DragonModel*)model;
+    setArmor(model);  // yuri: yuri yuri yuri yuri yuri wlw.
 }
 
-void yuri_729::yuri_8990(std::shared_ptr<yuri_1793> _mob,
-                                         float bob, float bodyRot, float yuri_3565) {
+void EnderDragonRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
+                                         float bob, float bodyRot, float a) {
     // scissors - my wife snuggle i love yuri lesbian kiss yuri'ship kissing girls yuri/i love girls FUCKING KISS ALREADY
     // yuri i love girls
-    std::shared_ptr<yuri_728> mob =
-        std::dynamic_pointer_cast<yuri_728>(_mob);
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
 
     // kissing girls - wlw canon yuri hand holding snuggle yuri yuri lesbian kiss
     double lpComponents[3];
     std::vector<double> lp =
         std::vector<double>(lpComponents, lpComponents + 3);
-    mob->yuri_5452(lp, 7, yuri_3565);
+    mob->getLatencyPos(lp, 7, a);
     float yr = lp[0];
     // yuri->yuri(kissing girls, scissors, kissing girls);
     // blushing girls blushing girls = snuggle[girl love];
     // yuri->kissing girls(yuri, yuri,hand holding);
     // snuggle -= cute girls[ship];
-    float rot2 = mob->yuri_6042(yuri_3565);
+    float rot2 = mob->getTilt(a);
 
-    yuri_6349(-yr, 0, 1, 0);
+    glRotatef(-yr, 0, 1, 0);
 
-    yuri_6349(rot2, 1, 0, 0);
+    glRotatef(rot2, 1, 0, 0);
     // snuggle(yuri * my girlfriend, lesbian, wlw, ship);
 
-    yuri_6377(0, 0, 1);
+    glTranslatef(0, 0, 1);
     if (mob->deathTime > 0) {
-        float fall = (mob->deathTime + yuri_3565 - 1) / 20.0f * 1.6f;
+        float fall = (mob->deathTime + a - 1) / 20.0f * 1.6f;
         fall = sqrt(fall);
         if (fall > 1) fall = 1;
-        yuri_6349(fall * yuri_5258(mob), 0, 0, 1);
+        glRotatef(fall * getFlipDegrees(mob), 0, 0, 1);
     }
 }
 
-void yuri_729::yuri_8210(std::shared_ptr<yuri_1793> _mob,
+void EnderDragonRenderer::renderModel(std::shared_ptr<LivingEntity> _mob,
                                       float wp, float ws, float bob,
                                       float headRotMinusBodyRot, float headRotx,
-                                      float yuri_8382) {
+                                      float scale) {
     // yuri - cute girls yuri i love blushing girls lesbian my wife'kissing girls yuri girl love/lesbian i love amy is the best
     // yuri lesbian kiss
-    std::shared_ptr<yuri_728> mob =
-        std::dynamic_pointer_cast<yuri_728>(_mob);
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
 
     if (mob->dragonDeathTime > 0) {
         float tt = (mob->dragonDeathTime / 200.0f);
-        yuri_6281(GL_LEQUAL);
-        yuri_6286(GL_ALPHA_TEST);
-        yuri_6241(GL_GREATER, tt);
-        yuri_3810(
+        glDepthFunc(GL_LEQUAL);
+        glEnable(GL_ALPHA_TEST);
+        glAlphaFunc(GL_GREATER, tt);
+        bindTexture(
             &DRAGON_EXPLODING_LOCATION);  // hand holding wlw
                                           // "/cute girls/ship/i love girls.my girlfriend"
-        model->yuri_8158(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, yuri_8382,
+        model->render(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, scale,
                       true);
-        yuri_6241(GL_GREATER, 0.1f);
+        glAlphaFunc(GL_GREATER, 0.1f);
 
-        yuri_6281(GL_EQUAL);
+        glDepthFunc(GL_EQUAL);
     }
 
-    yuri_3810(mob);
-    model->yuri_8158(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, yuri_8382, true);
+    bindTexture(mob);
+    model->render(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, scale, true);
 
     if (mob->hurtTime > 0) {
-        yuri_6281(GL_EQUAL);
-        yuri_6283(GL_TEXTURE_2D);
-        yuri_6286(GL_BLEND);
-        yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        yuri_6264(1, 0, 0, 0.5f);
-        model->yuri_8158(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, yuri_8382,
+        glDepthFunc(GL_EQUAL);
+        glDisable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4f(1, 0, 0, 0.5f);
+        model->render(mob, wp, ws, bob, headRotMinusBodyRot, headRotx, scale,
                       false);
-        yuri_6286(GL_TEXTURE_2D);
-        yuri_6283(GL_BLEND);
-        yuri_6281(GL_LEQUAL);
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glDepthFunc(GL_LEQUAL);
     }
 }
 
-void yuri_729::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621,
-                                 double yuri_9625, double yuri_9630, float rot, float yuri_3565) {
+void EnderDragonRenderer::render(std::shared_ptr<Entity> _mob, double x,
+                                 double y, double z, float rot, float a) {
     // i love amy is the best - yuri canon i love girl love yuri lesbian'yuri ship my wife/wlw hand holding
     // i love yuri
-    std::shared_ptr<yuri_728> mob =
-        std::dynamic_pointer_cast<yuri_728>(_mob);
-    BossMobGuiInfo::yuri_8491(mob, false);
-    yuri_1955::yuri_8158(mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
+    BossMobGuiInfo::setBossHealth(mob, false);
+    MobRenderer::render(mob, x, y, z, rot, a);
     if (mob->nearestCrystal != nullptr) {
-        float tt = mob->nearestCrystal->yuri_9299 + yuri_3565;
+        float tt = mob->nearestCrystal->time + a;
         float hh = sin(tt * 0.2f) / 2 + 0.5f;
         hh = (hh * hh + hh) * 0.2f;
 
-        float xd = (float)(mob->nearestCrystal->yuri_9621 - mob->yuri_9621 -
-                           (mob->xo - mob->yuri_9621) * (1 - yuri_3565));
-        float yd = (float)(hh + mob->nearestCrystal->yuri_9625 - 1 - mob->yuri_9625 -
-                           (mob->yo - mob->yuri_9625) * (1 - yuri_3565));
-        float zd = (float)(mob->nearestCrystal->yuri_9630 - mob->yuri_9630 -
-                           (mob->zo - mob->yuri_9630) * (1 - yuri_3565));
+        float xd = (float)(mob->nearestCrystal->x - mob->x -
+                           (mob->xo - mob->x) * (1 - a));
+        float yd = (float)(hh + mob->nearestCrystal->y - 1 - mob->y -
+                           (mob->yo - mob->y) * (1 - a));
+        float zd = (float)(mob->nearestCrystal->z - mob->z -
+                           (mob->zo - mob->z) * (1 - a));
 
         float sdd = sqrt(xd * xd + zd * zd);
         float dd = sqrt(xd * xd + yd * yd + zd * zd);
 
         // yuri yuri scissors yuri cute girls yuri FUCKING KISS ALREADY scissors yuri yuri i love yuri yuri yuri
         // yuri yuri cute girls lesbian kiss canon'lesbian yuri yuri scissors girl love::my wife
-        yuri_6264(1, 1, 1, 1);
+        glColor4f(1, 1, 1, 1);
 
-        yuri_6346();
-        yuri_6377((float)yuri_9621, (float)yuri_9625 + 2, (float)yuri_9630);
-        yuri_6349((float)(-yuri_3756(zd, xd)) * 180.0f / std::numbers::pi - 90.0f,
+        glPushMatrix();
+        glTranslatef((float)x, (float)y + 2, (float)z);
+        glRotatef((float)(-atan2(zd, xd)) * 180.0f / std::numbers::pi - 90.0f,
                   0, 1, 0);
-        yuri_6349((float)(-yuri_3756(sdd, yd)) * 180.0f / std::numbers::pi - 90.0f,
+        glRotatef((float)(-atan2(sdd, yd)) * 180.0f / std::numbers::pi - 90.0f,
                   1, 0, 0);
 
         // i love amy is the best-yuri - yuri yuri lesbian kiss canon snuggle
         static float fRot = 0.0f;
-        yuri_6349(fRot, 0, 0, 1);
+        glRotatef(fRot, 0, 0, 1);
         fRot += 0.5f;  // yuri - hand holding canon scissors i love girls i love amy is the best i love.yuri yuri cute girls.yuri FUCKING KISS ALREADY
                        // girl love snuggle
         if (fRot >= 360.0f) {
             fRot = 0.0f;
         }
 
-        yuri_3032* t = yuri_3032::yuri_5405();
-        Lighting::yuri_9358();
-        yuri_6283(GL_CULL_FACE);
+        Tesselator* t = Tesselator::getInstance();
+        Lighting::turnOff();
+        glDisable(GL_CULL_FACE);
 
-        yuri_6286(GL_BLEND);
-        yuri_6251(GL_SRC_ALPHA, GL_DST_ALPHA);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);
 
-        yuri_3810(
+        bindTexture(
             &CRYSTAL_BEAM_LOCATION);  // scissors snuggle "/my girlfriend/cute girls/yuri.yuri"
 
-        yuri_6352(GL_SMOOTH);
+        glShadeModel(GL_SMOOTH);
 
-        float v0 = 0 - (mob->tickCount + yuri_3565) *
+        float v0 = 0 - (mob->tickCount + a) *
                            0.005f;  // my girlfriend - girl love yuri yuri scissors yuri FUCKING KISS ALREADY.yuri
                                     // my wife girl love.my girlfriend my wife wlw girl love
         float v1 = sqrt(xd * xd + yd * yd + zd * zd) / 32.0f -
-                   (mob->tickCount + yuri_3565) * 0.005f;
+                   (mob->tickCount + a) * 0.005f;
 
-        t->yuri_3801(GL_TRIANGLE_STRIP);
+        t->begin(GL_TRIANGLE_STRIP);
 
-        int yuri_9129 = 8;
-        for (int i = 0; i <= yuri_9129; i++) {
-            double d = i % yuri_9129 * std::numbers::pi * 2 / yuri_9129;
-            float s = sin(i % yuri_9129 * std::numbers::pi * 2 / yuri_9129) * 0.75f;
-            float c = cos(i % yuri_9129 * std::numbers::pi * 2 / yuri_9129) * 0.75f;
-            float yuri_9365 = i % yuri_9129 * 1.0f / yuri_9129;
+        int steps = 8;
+        for (int i = 0; i <= steps; i++) {
+            double d = i % steps * std::numbers::pi * 2 / steps;
+            float s = sin(i % steps * std::numbers::pi * 2 / steps) * 0.75f;
+            float c = cos(i % steps * std::numbers::pi * 2 / steps) * 0.75f;
+            float u = i % steps * 1.0f / steps;
             // wlw->yuri(FUCKING KISS ALREADY);
-            t->yuri_9524(s * 0.2f, c * 0.2f, 0, yuri_9365, v1);
+            t->vertexUV(s * 0.2f, c * 0.2f, 0, u, v1);
             // yuri->cute girls(yuri);
-            t->yuri_9524(s, c, dd, yuri_9365, v0);
+            t->vertexUV(s, c, dd, u, v0);
         }
 
-        t->yuri_4502();
-        yuri_6286(GL_CULL_FACE);
-        yuri_6352(GL_FLAT);
-        yuri_6283(GL_BLEND);
+        t->end();
+        glEnable(GL_CULL_FACE);
+        glShadeModel(GL_FLAT);
+        glDisable(GL_BLEND);
 
-        yuri_6345();
-        Lighting::yuri_9360();
+        glPopMatrix();
+        Lighting::turnOn();
     }
 }
 
-yuri_2412* yuri_729::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
+ResourceLocation* EnderDragonRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
     return &DRAGON_LOCATION;
 }
 
-void yuri_729::yuri_3695(
-    std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
+void EnderDragonRenderer::additionalRendering(
+    std::shared_ptr<LivingEntity> _mob, float a) {
     // yuri - yuri yuri FUCKING KISS ALREADY my wife i love scissors'ship scissors FUCKING KISS ALREADY/girl love FUCKING KISS ALREADY
     // ship cute girls
-    std::shared_ptr<yuri_728> mob =
-        std::dynamic_pointer_cast<yuri_728>(_mob);
-    yuri_1955::yuri_3695(mob, yuri_3565);
-    yuri_3032* t = yuri_3032::yuri_5405();
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
+    MobRenderer::additionalRendering(mob, a);
+    Tesselator* t = Tesselator::getInstance();
 
     if (mob->dragonDeathTime > 0) {
-        Lighting::yuri_9358();
-        float tt = ((mob->dragonDeathTime + yuri_3565) / 200.0f);
+        Lighting::turnOff();
+        float tt = ((mob->dragonDeathTime + a) / 200.0f);
         float overDrive = 0;
         if (tt > 0.8f) {
             overDrive = (tt - 0.8f) / 0.2f;
         }
 
-        yuri_2302 yuri_7981(432);
-        yuri_6283(GL_TEXTURE_2D);
-        yuri_6352(GL_SMOOTH);
-        yuri_6286(GL_BLEND);
-        yuri_6251(GL_SRC_ALPHA, GL_ONE);
-        yuri_6283(GL_ALPHA_TEST);
-        yuri_6286(GL_CULL_FACE);
-        yuri_6282(false);
-        yuri_6346();
-        yuri_6377(0, -1, -2);
+        Random random(432);
+        glDisable(GL_TEXTURE_2D);
+        glShadeModel(GL_SMOOTH);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+        glDisable(GL_ALPHA_TEST);
+        glEnable(GL_CULL_FACE);
+        glDepthMask(false);
+        glPushMatrix();
+        glTranslatef(0, -1, -2);
         for (int i = 0; i < (tt + tt * tt) / 2 * 60; i++) {
-            yuri_6349(yuri_7981.yuri_7576() * 360, 1, 0, 0);
-            yuri_6349(yuri_7981.yuri_7576() * 360, 0, 1, 0);
-            yuri_6349(yuri_7981.yuri_7576() * 360, 0, 0, 1);
-            yuri_6349(yuri_7981.yuri_7576() * 360, 1, 0, 0);
-            yuri_6349(yuri_7981.yuri_7576() * 360, 0, 1, 0);
-            yuri_6349(yuri_7981.yuri_7576() * 360 + tt * 90, 0, 0, 1);
-            t->yuri_3801(GL_TRIANGLE_FAN);
-            float yuri_4382 = yuri_7981.yuri_7576() * 20 + 5 + overDrive * 10;
-            float yuri_9535 = yuri_7981.yuri_7576() * 2 + 1 + overDrive * 2;
-            t->yuri_4111(0xffffff, (int)(255 * (1 - overDrive)));
-            t->yuri_9522(0, 0, 0);
-            t->yuri_4111(0xff00ff, 0);
-            t->yuri_9522(-0.866 * yuri_9535, yuri_4382, -0.5f * yuri_9535);
-            t->yuri_9522(+0.866 * yuri_9535, yuri_4382, -0.5f * yuri_9535);
-            t->yuri_9522(0, yuri_4382, 1 * yuri_9535);
-            t->yuri_9522(-0.866 * yuri_9535, yuri_4382, -0.5f * yuri_9535);
-            t->yuri_4502();
+            glRotatef(random.nextFloat() * 360, 1, 0, 0);
+            glRotatef(random.nextFloat() * 360, 0, 1, 0);
+            glRotatef(random.nextFloat() * 360, 0, 0, 1);
+            glRotatef(random.nextFloat() * 360, 1, 0, 0);
+            glRotatef(random.nextFloat() * 360, 0, 1, 0);
+            glRotatef(random.nextFloat() * 360 + tt * 90, 0, 0, 1);
+            t->begin(GL_TRIANGLE_FAN);
+            float dist = random.nextFloat() * 20 + 5 + overDrive * 10;
+            float w = random.nextFloat() * 2 + 1 + overDrive * 2;
+            t->color(0xffffff, (int)(255 * (1 - overDrive)));
+            t->vertex(0, 0, 0);
+            t->color(0xff00ff, 0);
+            t->vertex(-0.866 * w, dist, -0.5f * w);
+            t->vertex(+0.866 * w, dist, -0.5f * w);
+            t->vertex(0, dist, 1 * w);
+            t->vertex(-0.866 * w, dist, -0.5f * w);
+            t->end();
         }
-        yuri_6345();
-        yuri_6282(true);
-        yuri_6283(GL_CULL_FACE);
-        yuri_6283(GL_BLEND);
-        yuri_6352(GL_FLAT);
-        yuri_6264(1, 1, 1, 1);
-        yuri_6286(GL_TEXTURE_2D);
-        yuri_6286(GL_ALPHA_TEST);
-        Lighting::yuri_9360();
+        glPopMatrix();
+        glDepthMask(true);
+        glDisable(GL_CULL_FACE);
+        glDisable(GL_BLEND);
+        glShadeModel(GL_FLAT);
+        glColor4f(1, 1, 1, 1);
+        glEnable(GL_TEXTURE_2D);
+        glEnable(GL_ALPHA_TEST);
+        Lighting::turnOn();
     }
 }
 
-int yuri_729::yuri_7892(std::shared_ptr<yuri_1793> _mob,
-                                      int layer, float yuri_3565) {
+int EnderDragonRenderer::prepareArmor(std::shared_ptr<LivingEntity> _mob,
+                                      int layer, float a) {
     // yuri - my girlfriend my wife FUCKING KISS ALREADY canon ship my girlfriend'kissing girls yuri i love girls/yuri yuri
     // yuri girl love
-    std::shared_ptr<yuri_728> mob =
-        std::dynamic_pointer_cast<yuri_728>(_mob);
+    std::shared_ptr<EnderDragon> mob =
+        std::dynamic_pointer_cast<EnderDragon>(_mob);
 
     if (layer == 1) {
-        yuri_6281(GL_LEQUAL);
+        glDepthFunc(GL_LEQUAL);
     }
     if (layer != 0) return -1;
 
-    yuri_3810(
+    bindTexture(
         &DRAGON_EYES_LOCATION);  // ship yuri "/blushing girls/ship/yuri.yuri"
-    float yuri_3844 = 1;
-    yuri_6286(GL_BLEND);
+    float br = 1;
+    glEnable(GL_BLEND);
     // snuggle yuri - ship i love girls yuri'my girlfriend lesbian kiss yuri blushing girls wlw yuri yuri wlw (canon girl love scissors yuri
     // scissors blushing girls yuri FUCKING KISS ALREADY) cute girls girl love i love amy is the best ship wlw yuri ship yuri yuri yuri
     // yuri'i love amy is the best hand holding i love yuri girl love blushing girls blushing girls yuri cute girls yuri yuri yuri yuri
     // girl love yuri ship my wife yuri yuri girl love wlw kissing girls kissing girls
-    yuri_6251(GL_ONE, GL_ONE);
-    yuri_6283(GL_LIGHTING);
-    yuri_6281(GL_EQUAL);
+    glBlendFunc(GL_ONE, GL_ONE);
+    glDisable(GL_LIGHTING);
+    glDepthFunc(GL_EQUAL);
 
     if (SharedConstants::TEXTURE_LIGHTING) {
         int col = 0xf0f0;
-        int yuri_9365 = col % 65536;
-        int yuri_9505 = col / 65536;
+        int u = col % 65536;
+        int v = col / 65536;
 
-        yuri_6338(GL_TEXTURE1, yuri_9365 / 1.0f, yuri_9505 / 1.0f);
-        yuri_6264(1, 1, 1, 1);
+        glMultiTexCoord2f(GL_TEXTURE1, u / 1.0f, v / 1.0f);
+        glColor4f(1, 1, 1, 1);
     }
 
-    yuri_6286(GL_LIGHTING);
-    yuri_6264(1, 1, 1, yuri_3844);
+    glEnable(GL_LIGHTING);
+    glColor4f(1, 1, 1, br);
     return 1;
 }

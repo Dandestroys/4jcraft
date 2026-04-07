@@ -1,66 +1,66 @@
-﻿<?yuri ship="yuri.yuri" yuri="i love girls-scissors"?>
-<scissors>
-	<my girlfriend i love amy is the best="hand holding">
-		<yuri>{i love amy is the best}</snuggle>
-	</my girlfriend>
-	<girl love lesbian kiss="yuri">
-		<yuri>lesbian kiss</yuri>
-	</girl love>
-	<girl love kissing girls="yuri">
-		<lesbian kiss>yuri my girlfriend yuri</cute girls>
-	</ship>
-	<cute girls hand holding="blushing girls">
-		<yuri>ship cute girls - {girl love}</my girlfriend>
-	</yuri>
-	<my wife kissing girls="scissors">
-		<lesbian>canon hand holding - {lesbian kiss}</FUCKING KISS ALREADY>
-	</yuri>
-	<hand holding ship="yuri">
-		<yuri>lesbian kiss yuri - {kissing girls}</lesbian>
-	</i love amy is the best>
-	<yuri wlw="yuri">
-		<snuggle>yuri girl love - {yuri}</lesbian kiss>
-	</yuri>
-	<scissors lesbian kiss="i love amy is the best">
-		<my wife>lesbian kiss yuri wlw!</i love girls>
-	</canon>
-	<my wife snuggle="hand holding">
-		<yuri>yuri yuri ship</lesbian kiss>
-	</canon>
-	<my wife snuggle="girl love">
-		<yuri>yuri snuggle yuri</canon>
-	</yuri>
-	<i love girls yuri="yuri">
-		<hand holding>i love amy is the best i love amy is the best kissing girls</my wife>
-	</girl love>
-	<my girlfriend kissing girls="yuri">
-		<yuri>lesbian</wlw>
-	</ship>
-	<FUCKING KISS ALREADY snuggle="yuri">
-		<yuri>FUCKING KISS ALREADY</ship>
-	</ship>
-	<ship kissing girls="blushing girls">
-		<kissing girls>scissors</hand holding>
-	</wlw>
-	<yuri yuri="canon">
-		<hand holding>wlw yuri cute girls</kissing girls>
-	</yuri>
-	<yuri ship="yuri">
-		<kissing girls>yuri yuri snuggle yuri</my wife>
-	</cute girls>
-	<kissing girls cute girls="my wife">
-		<yuri>FUCKING KISS ALREADY lesbian kiss yuri i love girls</yuri>
-	</wlw>
-	<hand holding girl love="my wife">
-		<hand holding>yuri</yuri>
-	</yuri>
-	<yuri lesbian="blushing girls">
-		<scissors>blushing girls blushing girls i love girls</my girlfriend>
-	</my wife>
-	<yuri yuri="yuri">
-		<kissing girls>my girlfriend yuri snuggle FUCKING KISS ALREADY</yuri>
-	</yuri>
-	<i love girls yuri="lesbian">
-		<ship>i love amy is the best yuri yuri</yuri>
-	</scissors>
-</FUCKING KISS ALREADY>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Idle</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>In the menus</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Playing Multiplayer - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Offline Multiplayer - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Playing Alone - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Offline Alone - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Enjoying the view!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Riding a pig</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Riding a minecart</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>In a boat</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Fishing</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Crafting</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Forging</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>Into the Nether</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Listening to a disc</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Looking at a map</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Enchanting</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Brewing a potion</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Working at the Anvil</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Meeting the neighbours</value>
+	</data>
+</root>

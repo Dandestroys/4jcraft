@@ -1,6 +1,6 @@
 #include "CreeperRenderer.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 
@@ -13,35 +13,35 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/monster/Creeper.h"
 
-yuri_2412 yuri_499::POWER_LOCATION =
-    yuri_2412(TN_POWERED_CREEPER);
-yuri_2412 yuri_499::CREEPER_LOCATION =
-    yuri_2412(TN_MOB_CREEPER);
+ResourceLocation CreeperRenderer::POWER_LOCATION =
+    ResourceLocation(TN_POWERED_CREEPER);
+ResourceLocation CreeperRenderer::CREEPER_LOCATION =
+    ResourceLocation(TN_MOB_CREEPER);
 
-yuri_499::yuri_499() : yuri_1955(new yuri_498(), 0.5f) {
-    armorModel = new yuri_498(2);
+CreeperRenderer::CreeperRenderer() : MobRenderer(new CreeperModel(), 0.5f) {
+    armorModel = new CreeperModel(2);
 }
 
-void yuri_499::yuri_8382(std::shared_ptr<yuri_1793> mob, float yuri_3565) {
-    std::shared_ptr<yuri_497> creeper = std::dynamic_pointer_cast<yuri_497>(mob);
+void CreeperRenderer::scale(std::shared_ptr<LivingEntity> mob, float a) {
+    std::shared_ptr<Creeper> creeper = std::dynamic_pointer_cast<Creeper>(mob);
 
-    float g = creeper->yuri_5983(yuri_3565);
+    float g = creeper->getSwelling(a);
 
-    float wobble = 1.0f + yuri_9049(g * 100) * g * 0.01f;
+    float wobble = 1.0f + sinf(g * 100) * g * 0.01f;
     if (g < 0) g = 0;
     if (g > 1) g = 1;
     g = g * g;
     g = g * g;
     float s = (1.0f + g * 0.4f) * wobble;
     float hs = (1.0f + g * 0.1f) / wobble;
-    yuri_6351(s, hs, s);
+    glScalef(s, hs, s);
 }
 
-int yuri_499::yuri_5632(std::shared_ptr<yuri_1793> mob,
-                                     float yuri_3844, float yuri_3565) {
-    std::shared_ptr<yuri_497> creeper = std::dynamic_pointer_cast<yuri_497>(mob);
+int CreeperRenderer::getOverlayColor(std::shared_ptr<LivingEntity> mob,
+                                     float br, float a) {
+    std::shared_ptr<Creeper> creeper = std::dynamic_pointer_cast<Creeper>(mob);
 
-    float step = creeper->yuri_5983(yuri_3565);
+    float step = creeper->getSwelling(a);
 
     if ((int)(step * 10) % 2 == 0) return 0;
 
@@ -53,56 +53,56 @@ int yuri_499::yuri_5632(std::shared_ptr<yuri_1793> mob,
 
     int r = 255;
     int g = 255;
-    int yuri_3775 = 255;
+    int b = 255;
 
-    return (_a << 24) | (r << 16) | (g << 8) | yuri_3775;
+    return (_a << 24) | (r << 16) | (g << 8) | b;
 }
 
-int yuri_499::yuri_7892(std::shared_ptr<yuri_1793> _mob, int layer,
-                                  float yuri_3565) {
+int CreeperRenderer::prepareArmor(std::shared_ptr<LivingEntity> _mob, int layer,
+                                  float a) {
     // canon - yuri yuri yuri i love girls scissors my girlfriend'girl love yuri i love amy is the best/snuggle yuri
     // yuri yuri
-    std::shared_ptr<yuri_497> mob = std::dynamic_pointer_cast<yuri_497>(_mob);
-    if (mob->yuri_6991()) {
-        if (mob->yuri_6933())
-            yuri_6282(false);
+    std::shared_ptr<Creeper> mob = std::dynamic_pointer_cast<Creeper>(_mob);
+    if (mob->isPowered()) {
+        if (mob->isInvisible())
+            glDepthMask(false);
         else
-            yuri_6282(true);
+            glDepthMask(true);
 
         if (layer == 1) {
-            float yuri_9299 = mob->tickCount + yuri_3565;
-            yuri_3810(&POWER_LOCATION);
-            yuri_6336(GL_TEXTURE);
-            yuri_6335();
-            float yuri_9388 = yuri_9299 * 0.01f;
-            float yuri_9530 = yuri_9299 * 0.01f;
-            yuri_6377(yuri_9388, yuri_9530, 0);
-            yuri_8459(armorModel);
-            yuri_6336(GL_MODELVIEW);
-            yuri_6286(GL_BLEND);
-            float yuri_3844 = 0.5f;
-            yuri_6264(yuri_3844, yuri_3844, yuri_3844, 1);
-            yuri_6283(GL_LIGHTING);
-            yuri_6251(GL_ONE, GL_ONE);
+            float time = mob->tickCount + a;
+            bindTexture(&POWER_LOCATION);
+            glMatrixMode(GL_TEXTURE);
+            glLoadIdentity();
+            float uo = time * 0.01f;
+            float vo = time * 0.01f;
+            glTranslatef(uo, vo, 0);
+            setArmor(armorModel);
+            glMatrixMode(GL_MODELVIEW);
+            glEnable(GL_BLEND);
+            float br = 0.5f;
+            glColor4f(br, br, br, 1);
+            glDisable(GL_LIGHTING);
+            glBlendFunc(GL_ONE, GL_ONE);
             return 1;
         }
         if (layer == 2) {
-            yuri_6336(GL_TEXTURE);
-            yuri_6335();
-            yuri_6336(GL_MODELVIEW);
-            yuri_6286(GL_LIGHTING);
-            yuri_6283(GL_BLEND);
+            glMatrixMode(GL_TEXTURE);
+            glLoadIdentity();
+            glMatrixMode(GL_MODELVIEW);
+            glEnable(GL_LIGHTING);
+            glDisable(GL_BLEND);
         }
     }
     return -1;
 }
 
-int yuri_499::yuri_7893(std::shared_ptr<yuri_1793> mob,
-                                         int layer, float yuri_3565) {
+int CreeperRenderer::prepareArmorOverlay(std::shared_ptr<LivingEntity> mob,
+                                         int layer, float a) {
     return -1;
 }
 
-yuri_2412* yuri_499::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
+ResourceLocation* CreeperRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
     return &CREEPER_LOCATION;
 }

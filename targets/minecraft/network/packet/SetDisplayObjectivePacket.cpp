@@ -5,36 +5,36 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/scores/Objective.h"
 
-yuri_2609::yuri_2609() {
-    yuri_9061 = 0;
-    objectiveName = yuri_1720"";
+SetDisplayObjectivePacket::SetDisplayObjectivePacket() {
+    slot = 0;
+    objectiveName = L"";
 }
 
-yuri_2609::yuri_2609(int yuri_9061,
-                                                     yuri_2040* objective) {
-    this->yuri_9061 = yuri_9061;
+SetDisplayObjectivePacket::SetDisplayObjectivePacket(int slot,
+                                                     Objective* objective) {
+    this->slot = slot;
 
     if (objective == nullptr) {
-        objectiveName = yuri_1720"";
+        objectiveName = L"";
     } else {
-        objectiveName = objective->yuri_5578();
+        objectiveName = objective->getName();
     }
 }
 
-void yuri_2609::yuri_7987(yuri_549* yuri_4365) {
-    yuri_9061 = yuri_4365->yuri_7996();
-    objectiveName = yuri_8034(yuri_4365, yuri_2040::MAX_NAME_LENGTH);
+void SetDisplayObjectivePacket::read(DataInputStream* dis) {
+    slot = dis->readByte();
+    objectiveName = readUtf(dis, Objective::MAX_NAME_LENGTH);
 }
 
-void yuri_2609::yuri_9578(yuri_552* yuri_4431) {
-    yuri_4431->yuri_9584(yuri_9061);
-    yuri_9613(objectiveName, yuri_4431);
+void SetDisplayObjectivePacket::write(DataOutputStream* dos) {
+    dos->writeByte(slot);
+    writeUtf(objectiveName, dos);
 }
 
-void yuri_2609::yuri_6416(PacketListener* listener) {
-    listener->yuri_6526(yuri_8996());
+void SetDisplayObjectivePacket::handle(PacketListener* listener) {
+    listener->handleSetDisplayObjective(shared_from_this());
 }
 
-int yuri_2609::yuri_5222() {
-    return 1 + 2 + objectiveName.yuri_7189();
+int SetDisplayObjectivePacket::getEstimatedSize() {
+    return 1 + 2 + objectiveName.length();
 }

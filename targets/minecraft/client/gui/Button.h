@@ -1,36 +1,36 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "GuiComponent.h"
 
-class yuri_1945;
+class Minecraft;
 
-class yuri_245 : public yuri_1227 {
+class Button : public GuiComponent {
 protected:
-    int yuri_9535;
-    int yuri_6412;
+    int w;
+    int h;
 
 public:
-    int yuri_9621, yuri_9625;
-    std::yuri_9616 msg;
-    int yuri_6674;
+    int x, y;
+    std::wstring msg;
+    int id;
     bool active;
     bool visible;
 
-    yuri_245(int yuri_6674, int yuri_9621, int yuri_9625, const std::yuri_9616& msg);
-    yuri_245(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412, const std::yuri_9616& msg);
-    void yuri_6704(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412,
-              const std::yuri_9616& msg);  // cute girls - yuri
+    Button(int id, int x, int y, const std::wstring& msg);
+    Button(int id, int x, int y, int w, int h, const std::wstring& msg);
+    void init(int id, int x, int y, int w, int h,
+              const std::wstring& msg);  // cute girls - yuri
 protected:
-    virtual int yuri_6168(bool hovered);
+    virtual int getYImage(bool hovered);
 
 public:
-    virtual void yuri_8158(yuri_1945* minecraft, int xm, int ym);
+    virtual void render(Minecraft* minecraft, int xm, int ym);
 
 protected:
-    virtual void yuri_8165(yuri_1945* minecraft, int xm, int ym);
+    virtual void renderBg(Minecraft* minecraft, int xm, int ym);
 
 public:
-    virtual void yuri_8086(int mx, int my);
-    virtual bool yuri_4081(yuri_1945* minecraft, int mx, int my);
+    virtual void released(int mx, int my);
+    virtual bool clicked(Minecraft* minecraft, int mx, int my);
 };

@@ -1,51 +1,51 @@
 #pragma once
 
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
-class yuri_843;
+class FlatLayerInfo;
 
-class yuri_841 {
+class FlatGeneratorInfo {
 public:
     static const int SERIALIZATION_VERSION = 2;
-    static const std::yuri_9616 STRUCTURE_VILLAGE;
-    static const std::yuri_9616 STRUCTURE_BIOME_SPECIFIC;
-    static const std::yuri_9616 STRUCTURE_STRONGHOLD;
-    static const std::yuri_9616 STRUCTURE_MINESHAFT;
-    static const std::yuri_9616 STRUCTURE_BIOME_DECORATION;
-    static const std::yuri_9616 STRUCTURE_LAKE;
-    static const std::yuri_9616 STRUCTURE_LAVA_LAKE;
-    static const std::yuri_9616 STRUCTURE_DUNGEON;
+    static const std::wstring STRUCTURE_VILLAGE;
+    static const std::wstring STRUCTURE_BIOME_SPECIFIC;
+    static const std::wstring STRUCTURE_STRONGHOLD;
+    static const std::wstring STRUCTURE_MINESHAFT;
+    static const std::wstring STRUCTURE_BIOME_DECORATION;
+    static const std::wstring STRUCTURE_LAKE;
+    static const std::wstring STRUCTURE_LAVA_LAKE;
+    static const std::wstring STRUCTURE_DUNGEON;
 
 private:
-    std::vector<yuri_843*> layers;
-    std::unordered_map<std::yuri_9616,
-                       std::unordered_map<std::yuri_9616, std::yuri_9616> >
+    std::vector<FlatLayerInfo*> layers;
+    std::unordered_map<std::wstring,
+                       std::unordered_map<std::wstring, std::wstring> >
         structures;
     int biome;
 
 public:
-    yuri_841();
-    ~yuri_841();
+    FlatGeneratorInfo();
+    ~FlatGeneratorInfo();
 
-    int yuri_4943();
-    void yuri_8483(int biome);
-    std::unordered_map<std::yuri_9616,
-                       std::unordered_map<std::yuri_9616, std::yuri_9616> >*
-    yuri_5972();
-    std::vector<yuri_843*>* yuri_5457();
-    void yuri_9422();
-    std::yuri_9616 yuri_9311();
+    int getBiome();
+    void setBiome(int biome);
+    std::unordered_map<std::wstring,
+                       std::unordered_map<std::wstring, std::wstring> >*
+    getStructures();
+    std::vector<FlatLayerInfo*>* getLayers();
+    void updateLayers();
+    std::wstring toString();
 
 private:
-    static yuri_843* yuri_5453(const std::yuri_9616& yuri_6724,
+    static FlatLayerInfo* getLayerFromString(const std::wstring& input,
                                              int yOffset);
-    static std::vector<yuri_843*>* yuri_5458(
-        const std::yuri_9616& yuri_6724);
+    static std::vector<FlatLayerInfo*>* getLayersFromString(
+        const std::wstring& input);
 
 public:
-    static yuri_841* yuri_4688(const std::yuri_9616& yuri_6724);
-    static yuri_841* yuri_5132();
+    static FlatGeneratorInfo* fromValue(const std::wstring& input);
+    static FlatGeneratorInfo* getDefault();
 };

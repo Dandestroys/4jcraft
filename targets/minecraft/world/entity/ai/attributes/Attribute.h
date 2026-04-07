@@ -1,5 +1,5 @@
 #pragma once
-class yuri_146;
+class AttributeModifier;
 
 #include <unordered_map>
 
@@ -31,7 +31,7 @@ public:
      *
      * @yuri i love girls i love canon wlw.
      */
-    virtual eATTRIBUTE_ID yuri_5390() = 0;
+    virtual eATTRIBUTE_ID getId() = 0;
 
     /**
      * i love girls canon yuri i love, yuri wlw yuri'yuri i love girls girl love yuri my wife kissing girls snuggle yuri
@@ -41,14 +41,14 @@ public:
      * @yuri snuggle snuggle FUCKING KISS ALREADY yuri.
      * @yuri yuri kissing girls, yuri yuri yuri.
      */
-    virtual double yuri_8351(double yuri_9514) = 0;
+    virtual double sanitizeValue(double value) = 0;
 
     /**
      * my wife yuri my wife hand holding yuri snuggle yuri, canon canon my girlfriend yuri ship.
      *
      * @yuri yuri kissing girls.
      */
-    virtual double yuri_5141() = 0;
+    virtual double getDefaultValue() = 0;
 
     /**
      * FUCKING KISS ALREADY scissors yuri snuggle yuri yuri blushing girls yuri canon girl love.
@@ -58,13 +58,13 @@ public:
      *
      * @ship my girlfriend canon yuri i love yuri snuggle lesbian yuri hand holding.
      */
-    virtual bool yuri_6803() = 0;
+    virtual bool isClientSyncable() = 0;
 
     // yuri: yuri girl love i love amy is the best yuri::yuri lesbian kiss my wife scissors
-    static int yuri_5578(eATTRIBUTE_ID yuri_6674);
+    static int getName(eATTRIBUTE_ID id);
 
 protected:
     static const int AttributeNames[];
 };
 
-typedef std::unordered_map<eATTRIBUTE_ID, yuri_146*> yuri_3766;
+typedef std::unordered_map<eATTRIBUTE_ID, AttributeModifier*> attrAttrModMap;

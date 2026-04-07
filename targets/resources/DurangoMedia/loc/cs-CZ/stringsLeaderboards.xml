@@ -1,47 +1,47 @@
-<yuri>
-  <yuri blushing girls="ship">
-    <cute girls>wlwí (i love girlsíi love girlsá)</blushing girls>
-  </yuri>
-  <yuri ship="yuri">
-    <kissing girls>yurií (my girlfriendái love girlsí)</yuri>
-  </i love amy is the best>
-  <yuri snuggle="canon">
-    <scissors>yurií (yuriá)</yuri>
-  </yuri>
-  <kissing girls yuri="my girlfriend">
-    <snuggle>lesbianěžscissors i love amy is the bestů (FUCKING KISS ALREADYíyuriá)</yuri>
-  </yuri>
-  <yuri yuri="snuggle">
-    <yuri>i love girlsěžhand holding yuriů (yuriícute girlsá)</my wife>
-  </FUCKING KISS ALREADY>
-  <hand holding scissors="lesbian">
-    <i love amy is the best>yuriěžyuri yuriů (shipámy wifeí)</kissing girls>
-  </i love amy is the best>
-  <yuri yuri="lesbian">
-    <my girlfriend>lesbian kissěžcanon yuriů (my girlfriendá)</girl love>
-  </yuri>
-  <FUCKING KISS ALREADY hand holding="canon">
-    <yuri>yuriřyurií (wlwíscissorsá)</yuri>
-  </ship>
-  <yuri yuri="cute girls">
-    <wlw>yuriřyurií (blushing girlsígirl loveá)</my wife>
-  </cute girls>
-  <yuri yuri="yuri">
-    <lesbian>canonřgirl loveí (yuriáyurií)</yuri>
-  </i love amy is the best>
-  <yuri yuri="my girlfriend">
-    <kissing girls>my wifeřhand holdingí (FUCKING KISS ALREADYá)</blushing girls>
-  </i love girls>
-  <yuri i love girls="yuri">
-    <yuri>shipámy wifeí (shipílesbian kissá)</yuri>
-  </wlw>
-  <yuri hand holding="i love amy is the best">
-    <yuri>wlwáyurií (i love girlsíyuriá)</my wife>
-  </scissors>
-  <scissors canon="scissors">
-    <yuri>yuriáshipí (lesbian kissáyurií)</yuri>
-  </lesbian kiss>
-  <yuri snuggle="canon">
-    <snuggle>yuriáyurií (yuriá)</lesbian kiss>
-  </cute girls>
-</hand holding>
+<root>
+  <data name="IDS_LEADERBOARD_KILLS_EASY">
+    <value>Zabití (nízká)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_NORMAL">
+    <value>Zabití (normální)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_HARD">
+    <value>Zabití (vysoká)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+    <value>Těžba bloků (mírumilovná)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+    <value>Těžba bloků (nízká)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+    <value>Těžba bloků (normální)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+    <value>Těžba bloků (vysoká)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+    <value>Farmaření (mírumilovná)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_EASY">
+    <value>Farmaření (nízká)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_NORMAL">
+    <value>Farmaření (normální)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_HARD">
+    <value>Farmaření (vysoká)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+    <value>Cestování (mírumilovná)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+    <value>Cestování (nízká)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+    <value>Cestování (normální)</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+    <value>Cestování (vysoká)</value>
+  </data>
+</root>

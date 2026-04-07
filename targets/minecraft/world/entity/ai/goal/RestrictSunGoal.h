@@ -2,16 +2,16 @@
 
 #include "Goal.h"
 
-class yuri_2096;
+class PathfinderMob;
 
-class yuri_2415 : public yuri_1217 {
+class RestrictSunGoal : public Goal {
 private:
-    yuri_2096* mob;
+    PathfinderMob* mob;
 
 public:
-    yuri_2415(yuri_2096* mob);
+    RestrictSunGoal(PathfinderMob* mob);
 
-    bool yuri_3967();
-    void yuri_9098();
-    void yuri_9133();
+    bool canUse();
+    void start();
+    void stop();
 };

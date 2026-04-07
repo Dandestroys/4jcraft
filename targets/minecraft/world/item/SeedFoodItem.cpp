@@ -8,28 +8,28 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/Level.h"
 
-yuri_2533::yuri_2533(int yuri_6674, int yuri_7602, float saturationMod,
-                           int yuri_8301, int targetLand)
-    : yuri_862(yuri_6674, yuri_7602, saturationMod, false) {
-    this->yuri_8301 = yuri_8301;
+SeedFoodItem::SeedFoodItem(int id, int nutrition, float saturationMod,
+                           int resultId, int targetLand)
+    : FoodItem(id, nutrition, saturationMod, false) {
+    this->resultId = resultId;
     this->targetLand = targetLand;
 }
 
-bool yuri_2533::yuri_9492(std::shared_ptr<yuri_1693> instance,
-                         std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
-                         int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
+bool SeedFoodItem::useOn(std::shared_ptr<ItemInstance> instance,
+                         std::shared_ptr<Player> player, Level* level, int x,
+                         int y, int z, int face, float clickX, float clickY,
                          float clickZ, bool bTestUseOnOnly) {
     if (face != Facing::UP) return false;
 
-    if (!yuri_7839->yuri_7474(yuri_9621, yuri_9625, yuri_9630, face, instance) ||
-        !yuri_7839->yuri_7474(yuri_9621, yuri_9625 + 1, yuri_9630, face, instance))
+    if (!player->mayUseItemAt(x, y, z, face, instance) ||
+        !player->mayUseItemAt(x, y + 1, z, face, instance))
         return false;
-    int yuri_9188 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    int targetType = level->getTile(x, y, z);
 
-    if (yuri_9188 == targetLand && yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630)) {
+    if (targetType == targetLand && level->isEmptyTile(x, y + 1, z)) {
         if (!bTestUseOnOnly) {
-            yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_8301);
-            instance->yuri_4184--;
+            level->setTileAndUpdate(x, y + 1, z, resultId);
+            instance->count--;
         }
         return true;
     }

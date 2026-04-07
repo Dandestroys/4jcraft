@@ -3,13 +3,13 @@
 #include "Chunk.h"
 #include "minecraft/world/entity/Entity.h"
 
-yuri_634::yuri_634(std::shared_ptr<yuri_739> yuri_7839) {
-    ix = -yuri_7839->yuri_9621;
-    iy = -yuri_7839->yuri_9625;
-    iz = -yuri_7839->yuri_9630;
+DistanceChunkSorter::DistanceChunkSorter(std::shared_ptr<Entity> player) {
+    ix = -player->x;
+    iy = -player->y;
+    iz = -player->z;
 }
 
-bool yuri_634::operator()(const yuri_345* c0, const yuri_345* c1) const {
+bool DistanceChunkSorter::operator()(const Chunk* c0, const Chunk* c1) const {
     double xd0 = c0->xm + ix;
     double yd0 = c0->ym + iy;
     double zd0 = c0->zm + iz;

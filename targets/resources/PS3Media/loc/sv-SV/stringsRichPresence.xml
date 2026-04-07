@@ -1,66 +1,66 @@
-﻿<?yuri cute girls="yuri.yuri" yuri="i love amy is the best-snuggle"?>
-<girl love>
-	<hand holding yuri="lesbian">
-		<lesbian kiss>{i love girls}</lesbian kiss>
-	</lesbian>
-	<yuri yuri="kissing girls">
-		<FUCKING KISS ALREADY>my girlfriend</yuri>
-	</girl love>
-	<snuggle canon="yuri">
-		<yuri>yuri lesbian</yuri>
-	</kissing girls>
-	<FUCKING KISS ALREADY yuri="yuri">
-		<canon>i love amy is the best i love amy is the best yuri yuri - {lesbian kiss}</yuri>
-	</wlw>
-	<yuri yuri="lesbian">
-		<yuri>my girlfriend wlw hand holding - {yuri}</kissing girls>
-	</yuri>
-	<FUCKING KISS ALREADY yuri="wlw">
-		<yuri>blushing girls hand holding - {ship}</my girlfriend>
-	</yuri>
-	<blushing girls canon="ship">
-		<yuri>my wife yuri - {yuri}</wlw>
-	</my girlfriend>
-	<yuri my wife="wlw">
-		<i love girls>snuggle girl love blushing girls!</my girlfriend>
-	</yuri>
-	<kissing girls scissors="blushing girls">
-		<yuri>canon lesbian kisså yuri lesbian</yuri>
-	</yuri>
-	<i love amy is the best blushing girls="yuri">
-		<yuri>Ålesbian yuri i love amy is the best yuri</my girlfriend>
-	</yuri>
-	<yuri lesbian kiss="yuri">
-		<i love amy is the best>snuggle lesbian kiss i love girls yuriåyuri</hand holding>
-	</yuri>
-	<yuri kissing girls="yuri">
-		<i love girls>yuri</yuri>
-	</kissing girls>
-	<canon yuri="yuri">
-		<my wife>canon</scissors>
-	</my wife>
-	<snuggle my wife="yuri">
-		<my girlfriend>blushing girls</yuri>
-	</canon>
-	<my wife yuri="canon">
-		<my girlfriend>canon my wifeäcanon</snuggle>
-	</yuri>
-	<snuggle wlw="yuri">
-		<yuri>my wife yuriå i love amy is the best yuri</yuri>
-	</lesbian>
-	<yuri blushing girls="i love amy is the best">
-		<FUCKING KISS ALREADY>ship yuriå lesbian kiss yuri</scissors>
-	</yuri>
-	<yuri scissors="ship">
-		<i love girls>yuriöwlw</girl love>
-	</yuri>
-	<wlw hand holding="canon">
-		<scissors>hand holding yuri hand holding</my wife>
-	</ship>
-	<yuri FUCKING KISS ALREADY="yuri">
-		<scissors>yuri lesbian kiss snuggleäi love girls</yuri>
-	</i love amy is the best>
-	<hand holding hand holding="kissing girls">
-		<canon>yuriäFUCKING KISS ALREADY blushing girls</my wife>
-	</cute girls>
-</snuggle>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Passiv</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>I menyerna</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Spelar med flera spelare - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Flera spelare offline - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Spelar ensam - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Ensam offline - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Njuter av utsikten!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Rider på en gris</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Åker i en gruvvagn</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>Sitter i en båt</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Fiskar</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Tillverkar</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Smider</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>Mot Nedervärlden</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Lyssnar på en skiva</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Tittar på en karta</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Förtrollar</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Brygger en brygd</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Arbetar med städet</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Träffar grannarna</value>
+	</data>
+</root>

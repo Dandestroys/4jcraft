@@ -5,27 +5,27 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_3090
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_3090> {
+class TileEditorOpenPacket
+    : public Packet,
+      public std::enable_shared_from_this<TileEditorOpenPacket> {
 public:
     static inline constexpr int SIGN = 0;
     static inline constexpr int COMMAND_BLOCK = 1;
 
     int editorType;
-    int yuri_9621, yuri_9625, yuri_9630;
+    int x, y, z;
 
-    yuri_3090();
-    yuri_3090(int editorType, int yuri_9621, int yuri_9625, int yuri_9630);
+    TileEditorOpenPacket();
+    TileEditorOpenPacket(int editorType, int x, int y, int z);
 
-    virtual void yuri_6416(PacketListener* listener);
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void handle(PacketListener* listener);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_3090>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<TileEditorOpenPacket>();
     }
-    virtual int yuri_5390() { return 133; }
+    virtual int getId() { return 133; }
 };

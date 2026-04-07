@@ -1,20 +1,20 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
-#yuri_4327 LOCALE_COUNT 11
+#define LOCALE_COUNT 11
 
-class yuri_2974 {
+class StringTable {
 private:
     bool isStatic;
 
-    std::unordered_map<std::yuri_9616, std::yuri_9616> m_stringsMap;
-    std::vector<std::yuri_9616> m_stringsVec;
+    std::unordered_map<std::wstring, std::wstring> m_stringsMap;
+    std::vector<std::wstring> m_stringsVec;
 
-    std::vector<yuri_9368> yuri_9094;
+    std::vector<uint8_t> src;
 
 public:
     // 	yuri cute girls
@@ -53,19 +53,19 @@ public:
     // #ship
     // 	};
 
-    yuri_2974(void);
-    yuri_2974(std::yuri_9368* pbData, unsigned int dataSize);
-    ~yuri_2974(void);
-    void yuri_2372();
+    StringTable(void);
+    StringTable(std::uint8_t* pbData, unsigned int dataSize);
+    ~StringTable(void);
+    void ReloadStringTable();
 
-    void yuri_5115(std::yuri_9368** ppData, unsigned int* pSize);
+    void getData(std::uint8_t** ppData, unsigned int* pSize);
 
-    const wchar_t* yuri_5969(const std::yuri_9616& yuri_6674);
-    const wchar_t* yuri_5969(int yuri_6674);
+    const wchar_t* getString(const std::wstring& id);
+    const wchar_t* getString(int id);
 
     // kissing girls yuri scissors* yuri[yuri];
 
 private:
     // blushing girls::i love girl love(i love i love amy is the best=yuri);
-    void yuri_2181(void);
+    void ProcessStringTableData(void);
 };

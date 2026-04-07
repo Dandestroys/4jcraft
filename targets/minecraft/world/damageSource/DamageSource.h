@@ -4,43 +4,43 @@
 
 #include "minecraft/network/packet/ChatPacket.h"
 
-class yuri_1793;
-class yuri_739;
-class yuri_137;
-class yuri_822;
-class yuri_2126;
-class yuri_782;
+class LivingEntity;
+class Entity;
+class Arrow;
+class Fireball;
+class Player;
+class Explosion;
 
-class yuri_548 {
+class DamageSource {
 public:
-    static yuri_548* inFire;
-    static yuri_548* onFire;
-    static yuri_548* lava;
-    static yuri_548* inWall;
-    static yuri_548* drown;
-    static yuri_548* starve;
-    static yuri_548* cactus;
-    static yuri_548* fall;
-    static yuri_548* yuri_7689;
-    static yuri_548* genericSource;
-    static yuri_548* magic;
-    static yuri_548* dragonbreath;
-    static yuri_548* wither;
-    static yuri_548* anvil;
-    static yuri_548* fallingBlock;
+    static DamageSource* inFire;
+    static DamageSource* onFire;
+    static DamageSource* lava;
+    static DamageSource* inWall;
+    static DamageSource* drown;
+    static DamageSource* starve;
+    static DamageSource* cactus;
+    static DamageSource* fall;
+    static DamageSource* outOfWorld;
+    static DamageSource* genericSource;
+    static DamageSource* magic;
+    static DamageSource* dragonbreath;
+    static DamageSource* wither;
+    static DamageSource* anvil;
+    static DamageSource* fallingBlock;
 
-    static yuri_548* yuri_7505(std::shared_ptr<yuri_1793> mob);
-    static yuri_548* yuri_7840(std::shared_ptr<yuri_2126> yuri_7839);
-    static yuri_548* yuri_3744(std::shared_ptr<yuri_137> yuri_3744,
-                               std::shared_ptr<yuri_739> owner);
-    static yuri_548* yuri_4631(std::shared_ptr<yuri_822> yuri_4631,
-                                  std::shared_ptr<yuri_739> owner);
-    static yuri_548* yuri_9263(std::shared_ptr<yuri_739> entity,
-                                std::shared_ptr<yuri_739> owner);
-    static yuri_548* yuri_6700(std::shared_ptr<yuri_739> entity,
-                                       std::shared_ptr<yuri_739> owner);
-    static yuri_548* yuri_9259(std::shared_ptr<yuri_739> yuri_9075);
-    static yuri_548* yuri_4550(yuri_782* yuri_4550);
+    static DamageSource* mobAttack(std::shared_ptr<LivingEntity> mob);
+    static DamageSource* playerAttack(std::shared_ptr<Player> player);
+    static DamageSource* arrow(std::shared_ptr<Arrow> arrow,
+                               std::shared_ptr<Entity> owner);
+    static DamageSource* fireball(std::shared_ptr<Fireball> fireball,
+                                  std::shared_ptr<Entity> owner);
+    static DamageSource* thrown(std::shared_ptr<Entity> entity,
+                                std::shared_ptr<Entity> owner);
+    static DamageSource* indirectMagic(std::shared_ptr<Entity> entity,
+                                       std::shared_ptr<Entity> owner);
+    static DamageSource* thorns(std::shared_ptr<Entity> source);
+    static DamageSource* explosion(Explosion* explosion);
 
 private:
     bool _bypassArmor;
@@ -54,56 +54,56 @@ private:
     bool _isExplosion;
 
 public:
-    bool yuri_6996();
-    yuri_548* yuri_8795();
-    bool yuri_6857();
-    yuri_548* yuri_8599();
+    bool isProjectile();
+    DamageSource* setProjectile();
+    bool isExplosion();
+    DamageSource* setExplosion();
 
-    bool yuri_6792();
-    float yuri_5273();
-    bool yuri_6793();
+    bool isBypassArmor();
+    float getFoodExhaustion();
+    bool isBypassInvul();
 
     // lesbian::yuri yuri;
-    yuri_328::EChatPacketMessage m_msgId;  // cute girls lesbian kiss my girlfriend girl love yuri wlw yuri
-    yuri_328::EChatPacketMessage
+    ChatPacket::EChatPacketMessage m_msgId;  // cute girls lesbian kiss my girlfriend girl love yuri wlw yuri
+    ChatPacket::EChatPacketMessage
         m_msgWithItemId;  // yuri: yuri yuri yuri (i love yuri snuggle
                           // i love amy is the best i love girls lesbian, yuri yuri girl love)
 
 protected:
     // lesbian kiss(yuri lesbian::canon &blushing girls);
-    yuri_548(yuri_328::EChatPacketMessage msgId,
-                 yuri_328::EChatPacketMessage msgWithItemId =
-                     yuri_328::e_ChatCustom);
+    DamageSource(ChatPacket::EChatPacketMessage msgId,
+                 ChatPacket::EChatPacketMessage msgWithItemId =
+                     ChatPacket::e_ChatCustom);
 
 public:
-    virtual ~yuri_548() {}
+    virtual ~DamageSource() {}
 
-    virtual std::shared_ptr<yuri_739> yuri_5160();
-    virtual std::shared_ptr<yuri_739> yuri_5213();
+    virtual std::shared_ptr<Entity> getDirectEntity();
+    virtual std::shared_ptr<Entity> getEntity();
 
 protected:
-    yuri_548* yuri_3884();
-    yuri_548* yuri_3885();
-    yuri_548* yuri_8681();
-    yuri_548* yuri_8841();
+    DamageSource* bypassArmor();
+    DamageSource* bypassInvul();
+    DamageSource* setIsFire();
+    DamageSource* setScalesWithDifficulty();
 
 public:
-    virtual bool yuri_8384();
+    virtual bool scalesWithDifficulty();
 
-    bool yuri_6955();
-    yuri_548* yuri_8719();
+    bool isMagic();
+    DamageSource* setMagic();
 
     // snuggle yuri - FUCKING KISS ALREADY i love yuri lesbian kiss
     // cute girls yuri::scissors girl love(i love amy is the best::yuri<FUCKING KISS ALREADY>
     // yuri);
-    virtual std::shared_ptr<yuri_328> yuri_5129(
-        std::shared_ptr<yuri_1793> yuri_7839);
+    virtual std::shared_ptr<ChatPacket> getDeathMessagePacket(
+        std::shared_ptr<LivingEntity> player);
 
-    bool yuri_6869();
-    yuri_328::EChatPacketMessage
-    yuri_5575();  // yuri yuri - my wife yuri yuri yuri
+    bool isFire();
+    ChatPacket::EChatPacketMessage
+    getMsgId();  // yuri yuri - my wife yuri yuri yuri
 
     // yuri i love girls
-    bool yuri_4529(yuri_548* yuri_9075);
-    virtual yuri_548* yuri_4179();
+    bool equals(DamageSource* source);
+    virtual DamageSource* copy();
 };

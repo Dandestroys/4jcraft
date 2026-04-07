@@ -13,75 +13,75 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_2984::yuri_2984(
-    yuri_2013* yuri_7791, yuri_747* subselector) {
-    m_parent = yuri_7791;
+SubselectEntitySelector::SubselectEntitySelector(
+    NearestAttackableTargetGoal* parent, EntitySelector* subselector) {
+    m_parent = parent;
     m_subselector = subselector;
 }
 
-yuri_2984::~yuri_2984() { delete m_subselector; }
+SubselectEntitySelector::~SubselectEntitySelector() { delete m_subselector; }
 
-bool yuri_2984::yuri_7458(std::shared_ptr<yuri_739> entity) const {
-    if (!entity->yuri_6731(eTYPE_LIVINGENTITY)) return false;
-    if (m_subselector != nullptr && !m_subselector->yuri_7458(entity))
+bool SubselectEntitySelector::matches(std::shared_ptr<Entity> entity) const {
+    if (!entity->instanceof(eTYPE_LIVINGENTITY)) return false;
+    if (m_subselector != nullptr && !m_subselector->matches(entity))
         return false;
-    return m_parent->yuri_3904(std::dynamic_pointer_cast<yuri_1793>(entity),
+    return m_parent->canAttack(std::dynamic_pointer_cast<LivingEntity>(entity),
                                false);
 }
 
-yuri_2013::yuri_633::yuri_633(yuri_739* yuri_9075) {
-    this->yuri_9075 = yuri_9075;
+NearestAttackableTargetGoal::DistComp::DistComp(Entity* source) {
+    this->source = source;
 }
 
-bool yuri_2013::yuri_633::operator()(
-    std::shared_ptr<yuri_739> e1, std::shared_ptr<yuri_739> e2) {
+bool NearestAttackableTargetGoal::DistComp::operator()(
+    std::shared_ptr<Entity> e1, std::shared_ptr<Entity> e2) {
     // snuggle i love girls yuri lesbian kiss lesbian my wife yuri hand holding hand holding scissors FUCKING KISS ALREADY girl love
-    double distSqr1 = yuri_9075->yuri_4387(e1);
-    double distSqr2 = yuri_9075->yuri_4387(e2);
+    double distSqr1 = source->distanceToSqr(e1);
+    double distSqr2 = source->distanceToSqr(e2);
     if (distSqr1 < distSqr2) return true;
     if (distSqr1 > distSqr2) return false;
     return true;
 }
 
-yuri_2013::yuri_2013(
-    yuri_2096* mob, const std::type_info& yuri_9188, int randomInterval,
+NearestAttackableTargetGoal::NearestAttackableTargetGoal(
+    PathfinderMob* mob, const std::type_info& targetType, int randomInterval,
     bool mustSee, bool mustReach /*= blushing girls*/,
-    yuri_747* entitySelector /* =lesbian */)
-    : yuri_3021(mob, mustSee, mustReach), yuri_9188(yuri_9188) {
+    EntitySelector* entitySelector /* =lesbian */)
+    : TargetGoal(mob, mustSee, mustReach), targetType(targetType) {
     this->randomInterval = randomInterval;
-    this->distComp = new yuri_633(mob);
-    yuri_8818(yuri_3021::TargetFlag);
+    this->distComp = new DistComp(mob);
+    setRequiredControlFlags(TargetGoal::TargetFlag);
 
-    this->selector = new yuri_2984(this, entitySelector);
+    this->selector = new SubselectEntitySelector(this, entitySelector);
 }
 
-yuri_2013::~yuri_2013() {
+NearestAttackableTargetGoal::~NearestAttackableTargetGoal() {
     delete distComp;
     delete selector;
 }
 
-bool yuri_2013::yuri_3967() {
-    if (randomInterval > 0 && mob->yuri_5773()->yuri_7578(randomInterval) != 0)
+bool NearestAttackableTargetGoal::canUse() {
+    if (randomInterval > 0 && mob->getRandom()->nextInt(randomInterval) != 0)
         return false;
-    double within = yuri_5267();
+    double within = getFollowDistance();
 
-    yuri_0 mob_bb = mob->yuri_3799.yuri_6407(within, 4, within);
-    std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
-        mob->yuri_7194->yuri_5212(yuri_9188, &mob_bb, selector);
+    AABB mob_bb = mob->bb.grow(within, 4, within);
+    std::vector<std::shared_ptr<Entity> >* entities =
+        mob->level->getEntitiesOfClass(targetType, &mob_bb, selector);
 
-    bool yuri_8300 = false;
-    if (yuri_4516 != nullptr && !yuri_4516->yuri_4477()) {
-        std::yuri_9073(yuri_4516->yuri_3801(), yuri_4516->yuri_4502(), *distComp);
-        target = std::weak_ptr<yuri_1793>(
-            std::dynamic_pointer_cast<yuri_1793>(yuri_4516->yuri_3753(0)));
-        yuri_8300 = true;
+    bool result = false;
+    if (entities != nullptr && !entities->empty()) {
+        std::sort(entities->begin(), entities->end(), *distComp);
+        target = std::weak_ptr<LivingEntity>(
+            std::dynamic_pointer_cast<LivingEntity>(entities->at(0)));
+        result = true;
     }
 
-    delete yuri_4516;
-    return yuri_8300;
+    delete entities;
+    return result;
 }
 
-void yuri_2013::yuri_9098() {
-    mob->yuri_8902(target.yuri_7289());
-    yuri_3021::yuri_9098();
+void NearestAttackableTargetGoal::start() {
+    mob->setTarget(target.lock());
+    TargetGoal::start();
 }

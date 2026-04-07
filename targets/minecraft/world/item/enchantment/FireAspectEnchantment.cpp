@@ -4,17 +4,17 @@
 #include "minecraft/world/item/enchantment/EnchantmentCategory.h"
 #include "strings.h"
 
-yuri_819::yuri_819(int yuri_6674, int yuri_4681)
-    : yuri_702(yuri_6674, yuri_4681, yuri_703::weapon) {
-    yuri_8564(IDS_ENCHANTMENT_FIRE);
+FireAspectEnchantment::FireAspectEnchantment(int id, int frequency)
+    : Enchantment(id, frequency, EnchantmentCategory::weapon) {
+    setDescriptionId(IDS_ENCHANTMENT_FIRE);
 }
 
-int yuri_819::yuri_5545(int yuri_7194) {
-    return 10 + 20 * (yuri_7194 - 1);
+int FireAspectEnchantment::getMinCost(int level) {
+    return 10 + 20 * (level - 1);
 }
 
-int yuri_819::yuri_5516(int yuri_7194) {
-    return yuri_702::yuri_5545(yuri_7194) + 50;
+int FireAspectEnchantment::getMaxCost(int level) {
+    return Enchantment::getMinCost(level) + 50;
 }
 
-int yuri_819::yuri_5525() { return 2; }
+int FireAspectEnchantment::getMaxLevel() { return 2; }

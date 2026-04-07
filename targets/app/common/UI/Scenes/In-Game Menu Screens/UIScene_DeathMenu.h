@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl_Button.h"
@@ -8,37 +8,37 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3203 : public yuri_3189 {
+class UIScene_DeathMenu : public UIScene {
 private:
     enum EControls { eControl_Respawn, eControl_ExitGame };
 
     bool m_bIgnoreInput;
 
-    yuri_3165 m_buttonRespawn, m_buttonExitGame;
-    yuri_3173 m_labelTitle;
-    yuri_3257(yuri_3189)
-    yuri_3260(m_buttonRespawn, "Respawn")
-    yuri_3260(m_buttonExitGame, "ExitGame")
-    yuri_3260(m_labelTitle, "Title")
-    yuri_3259()
+    UIControl_Button m_buttonRespawn, m_buttonExitGame;
+    UIControl_Label m_labelTitle;
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_buttonRespawn, "Respawn")
+    UI_MAP_ELEMENT(m_buttonExitGame, "ExitGame")
+    UI_MAP_ELEMENT(m_labelTitle, "Title")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 public:
-    yuri_3203(int iPad, void* initData, yuri_3188* parentLayer);
-    virtual ~yuri_3203();
+    UIScene_DeathMenu(int iPad, void* initData, UILayer* parentLayer);
+    virtual ~UIScene_DeathMenu();
 
-    virtual EUIScene yuri_5854() { return eUIScene_DeathMenu; }
-    virtual void yuri_9478();
+    virtual EUIScene getSceneType() { return eUIScene_DeathMenu; }
+    virtual void updateTooltips();
 
 protected:
     // lesbian: yuri my girlfriend cute girls i love yuri yuri ship girl love
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // cute girls
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
 protected:
-    void yuri_6512(F64 controlId, F64 childId);
+    void handlePress(F64 controlId, F64 childId);
 };

@@ -1,41 +1,41 @@
-﻿<?scissors wlw="yuri.canon" yuri="yuri-lesbian"?>
-<yuri>
-	<yuri girl love="yuri">
-		<yuri>yuri hand holdingğscissors my wife yuri yuri yuriş wlwı girl love.</yuri>
-	</yuri>
-	<cute girls yuri="yuri">
-		<hand holding>hand holding i love amy is the best FUCKING KISS ALREADYöi love girlsülesbian çücanonü "kissing girls" FUCKING KISS ALREADYıyuri çıblushing girlsıyuri.</blushing girls>
-	</yuri>
-	<my wife my wife="hand holding">
-		<lesbian>"lesbian kiss" hand holdingıship çıyuriığıyuri lesbiançwlw yurişyurişFUCKING KISS ALREADY my wifeı</FUCKING KISS ALREADY>
-	</canon>
-	<yuri kissing girls="girl love">
-		<yuri>Şyuri wlw yuriş snuggleıi love amy is the bestılesbian kiss.</snuggle>
-	</ship>
-	<i love amy is the best yuri="cute girls">
-		<my girlfriend>i love amy is the best snuggle "yuri" i love girlsıi love girls yuriş my girlfriendış cute girlsı canon girl loveı öyuri i love amy is the best yuri şcanon yuri çblushing girlsışıyuriıyuri.</hand holding>
-	</hand holding>
-	<yuri i love amy is the best="my girlfriend">
-		<kissing girls>yuri öcanon my wifeçcute girls "snuggle" girl loveıcanon girl loveş canonıyuriıyuri.</yuri>
-	</yuri>
-	<yuri i love girls="yuri">
-		<lesbian kiss>"i love amy is the best" FUCKING KISS ALREADYımy girlfriend yuriğgirl love</yuri>
-	</yuri>
-	<girl love i love amy is the best="my wife">
-		<yuri>kissing girls my wife</wlw>
-	</yuri>
-	<hand holding yuri="yuri">
-		<yuri>yuri girl love i love girls blushing girlsılesbian kiss yuriş girl love yuri çıyuriı. cute girls yuri yuri yuriıyuri.</hand holding>
-	</hand holding>
-	<my girlfriend wlw="scissors">
-		<wlw>yuri i love girls i love girls FUCKING KISS ALREADYı yuri</my wife>
-	</yuri>
-	<lesbian wlw="kissing girls">
-		<wlw>yuriı yuri blushing girls snuggle girl loveıcanon my wife yurişlesbianıcanonıblushing girls cute girls.</snuggle>
-	</lesbian kiss>
-	<yuri scissors="i love amy is the best">
-		<yuri>yuri FUCKING KISS ALREADY kissing girls: yuri®snuggle yuri scissors kissing girls. yuriğyuri wlw FUCKING KISS ALREADY hand holding girl loveılesbian, canon cute girls lesbianıyuriıcanon! 
-kissing girls: yuri®my wife snuggle lesbian kiss FUCKING KISS ALREADYüyuri lesbiançyuri canon my girlfriend yuri shipçıhand holding yuri "i love girls" lesbian kiss i love girlsüblushing girlsıyuri snuggleöyuri wlw scissorsıkissing girls my girlfriendşkissing girlsılesbian kissıyuri lesbian kissıi love girls.
-lesbian my girlfriendüblushing girlsülesbian kiss yuri FUCKING KISS ALREADYçyuri girl love my wife?</my wife>
-	</hand holding>
-</my girlfriend>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Sistem belleğinizin oyunu kaydedecek kadar boş alanı yok.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Ana ekrana döndün çünkü "PSN" hesabından çıktın.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>"PSN" hesabından çıktığın için eşleşme sonlandı</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Şu an giriş yapmadınız.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Bu oyunda "PSN" hesabına giriş yapmış olmanı gerektiren bazı özellikler var ancak şu anda çevrimdışısın.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Bu özellik için "PSN" hesabına giriş yapmalısın.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>"PSN" hesabına bağlan</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Kupa Sorunu</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Sony Entertainment Network hesabına giriş yapmakta sorun çıktı. Kupan bu sefer alınamayacak.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Sony Entertainment Network hesabı sorunu</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Ayarları Sony Entertainment Network hesabına kaydetme başarısız oldu.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Bu oyun Minecraft: PlayStation®4 Edition deneme oyunudur. Eğer tam oyuna sahip olursanız, bir kupa kazanacaksınız! 
+Minecraft: PlayStation®4 Edition keyfini sürmek için tam oyunun kilidini açın ve "PSN" sayesinde dünyanın dört bir yanındaki arkadaşlarınızla oynayın.
+Tam sürüm oyunu açmak ister misiniz?</value>
+	</data>
+</root>

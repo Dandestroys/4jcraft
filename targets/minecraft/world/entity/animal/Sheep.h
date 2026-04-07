@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 
@@ -9,23 +9,23 @@
 #include "minecraft/SharedConstants.h"
 #include "minecraft/world/inventory/AbstractContainerMenu.h"
 
-class yuri_2302;
-class yuri_680;
-class yuri_469;
-class yuri_739;
-class yuri_1758;
+class Random;
+class EatTileGoal;
+class CraftingContainer;
+class Entity;
+class Level;
 
-class yuri_2775 : public yuri_113 {
+class Sheep : public Animal {
 private:
-    class yuri_2776 : public yuri_47 {
-        bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) { return false; }
+    class SheepContainer : public AbstractContainerMenu {
+        bool stillValid(std::shared_ptr<Player> player) { return false; }
     };
 
-    std::shared_ptr<yuri_469> yuri_4145;
+    std::shared_ptr<CraftingContainer> container;
 
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_SHEEP; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2775(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_SHEEP; }
+    static Entity* create(Level* level) { return new Sheep(level); }
 
 private:
     static const int EAT_ANIMATION_TICKS =
@@ -33,65 +33,65 @@ private:
     static const int DATA_WOOL_ID = 16;
 
     int eatAnimationTick;
-    yuri_680* eatTileGoal;
+    EatTileGoal* eatTileGoal;
 
 public:
     static const int COLOR_LENGTH = 16;
     static const float COLOR[COLOR_LENGTH][3];
 
 public:
-    yuri_2775(yuri_1758* yuri_7194);
+    Sheep(Level* level);
 
 protected:
-    virtual bool yuri_9490();
-    virtual void yuri_7567();
+    virtual bool useNewAi();
+    virtual void newServerAiStep();
 
 public:
-    void yuri_3704();
+    void aiStep();
 
 protected:
-    virtual void yuri_8067();
-    virtual void yuri_4329();
+    virtual void registerAttributes();
+    virtual void defineSynchedData();
 
 public:
-    virtual void yuri_4449(bool wasKilledByPlayer, int playerBonusLevel);
-    virtual int yuri_5128();
+    virtual void dropDeathLoot(bool wasKilledByPlayer, int playerBonusLevel);
+    virtual int getDeathLoot();
 
 public:
-    virtual void yuri_6469(yuri_9368 yuri_6674);
+    virtual void handleEntityEvent(uint8_t id);
 
 public:
-    float yuri_5343(float yuri_3565);
-    float yuri_5342(float yuri_3565);
+    float getHeadEatPositionScale(float a);
+    float getHeadEatAngleScale(float a);
 
-    virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual bool mobInteract(std::shared_ptr<Player> player);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
 
 protected:
-    virtual int yuri_4882();
-    virtual int yuri_5383();
-    virtual int yuri_5130();
-    virtual void yuri_7835(int xt, int yt, int zt, int t);
+    virtual int getAmbientSound();
+    virtual int getHurtSound();
+    virtual int getDeathSound();
+    virtual void playStepSound(int xt, int yt, int zt, int t);
 
 public:
-    int yuri_5031();
-    void yuri_8524(int yuri_4111);
-    bool yuri_7039();
-    void yuri_8857(bool yuri_9514);
+    int getColor();
+    void setColor(int color);
+    bool isSheared();
+    void setSheared(bool value);
 
-    static int yuri_5894(yuri_2302* yuri_7981);
-    virtual std::shared_ptr<yuri_99> yuri_4973(
-        std::shared_ptr<yuri_99> target);
+    static int getSheepColor(Random* random);
+    virtual std::shared_ptr<AgableMob> getBreedOffspring(
+        std::shared_ptr<AgableMob> target);
 
-    virtual void yuri_3758();
+    virtual void ate();
 
-    MobGroupData* yuri_4592(
+    MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
         int extraData = 0);  // snuggle kissing girls wlw scissors
 
 private:
-    int yuri_5617(std::shared_ptr<yuri_113> animal,
-                          std::shared_ptr<yuri_113> partner);
-    int yuri_5188(std::shared_ptr<yuri_113> animal);
+    int getOffspringColor(std::shared_ptr<Animal> animal,
+                          std::shared_ptr<Animal> partner);
+    int getDyeColor(std::shared_ptr<Animal> animal);
 };

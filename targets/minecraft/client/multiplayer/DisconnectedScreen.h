@@ -1,28 +1,28 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/client/gui/Screen.h"
 
-class yuri_622 : public yuri_2524 {
+class DisconnectedScreen : public Screen {
 private:
-    std::yuri_9616 title, reason;
+    std::wstring title, reason;
 
 public:
-    yuri_622(const std::yuri_9616& title, const std::yuri_9616 reason,
+    DisconnectedScreen(const std::wstring& title, const std::wstring reason,
                        void* reasonObjects, ...);
-    virtual void yuri_9265() override;
+    virtual void tick() override;
 
 protected:
-    using yuri_2524::yuri_7155;
+    using Screen::keyPressed;
 
-    virtual void yuri_7155(char eventCharacter, int eventKey);
+    virtual void keyPressed(char eventCharacter, int eventKey);
 
 public:
-    virtual void yuri_6704() override;
+    virtual void init() override;
 
 protected:
-    virtual void yuri_3881(yuri_245* button) override;
+    virtual void buttonClicked(Button* button) override;
 
 public:
-    virtual void yuri_8158(int xm, int ym, float yuri_3565) override;
+    virtual void render(int xm, int ym, float a) override;
 };

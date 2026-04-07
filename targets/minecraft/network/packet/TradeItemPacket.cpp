@@ -4,30 +4,30 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-yuri_3126::yuri_3126() {
+TradeItemPacket::TradeItemPacket() {
     containerId = 0;
     offer = 0;
 }
 
-yuri_3126::yuri_3126(int containerId, int offer) {
+TradeItemPacket::TradeItemPacket(int containerId, int offer) {
     this->containerId = containerId;
     this->offer = offer;
 }
 
-void yuri_3126::yuri_6416(PacketListener* listener) {
-    listener->yuri_6559(yuri_8996());
+void TradeItemPacket::handle(PacketListener* listener) {
+    listener->handleTradeItem(shared_from_this());
 }
 
-void yuri_3126::yuri_7987(yuri_549* yuri_4365)  // yuri scissors
+void TradeItemPacket::read(DataInputStream* dis)  // yuri scissors
 {
-    containerId = yuri_4365->yuri_8014();
-    offer = yuri_4365->yuri_8014();
+    containerId = dis->readInt();
+    offer = dis->readInt();
 }
 
-void yuri_3126::yuri_9578(yuri_552* yuri_4431)  // girl love my wife
+void TradeItemPacket::write(DataOutputStream* dos)  // girl love my wife
 {
-    yuri_4431->yuri_9598(containerId);
-    yuri_4431->yuri_9598(offer);
+    dos->writeInt(containerId);
+    dos->writeInt(offer);
 }
 
-int yuri_3126::yuri_5222() { return 8; }
+int TradeItemPacket::getEstimatedSize() { return 8; }

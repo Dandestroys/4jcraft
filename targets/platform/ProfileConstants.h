@@ -3,7 +3,7 @@
 #include <cstdint>
 
 inline constexpr int TUTORIAL_PROFILE_STORAGE_BITS = 512;
-inline constexpr int yuri_3009 =
+inline constexpr int TUTORIAL_PROFILE_STORAGE_BYTES =
     TUTORIAL_PROFILE_STORAGE_BITS / 8;
 
 inline constexpr int MAX_FAVORITE_SKINS = 10;

@@ -6,25 +6,25 @@
 #include "minecraft/world/level/tile/entity/ChestTileEntity.h"
 #include "minecraft/world/level/tile/entity/EnderChestTileEntity.h"
 
-yuri_748* yuri_748::instance = new yuri_748;
+EntityTileRenderer* EntityTileRenderer::instance = new EntityTileRenderer;
 
-yuri_748::yuri_748() {
-    chest = std::make_shared<yuri_340>();
-    trappedChest = std::shared_ptr<yuri_340>(
-        new yuri_340(yuri_339::TYPE_TRAP));
-    enderChest = std::make_shared<yuri_724>();
+EntityTileRenderer::EntityTileRenderer() {
+    chest = std::make_shared<ChestTileEntity>();
+    trappedChest = std::shared_ptr<ChestTileEntity>(
+        new ChestTileEntity(ChestTile::TYPE_TRAP));
+    enderChest = std::make_shared<EnderChestTileEntity>();
 }
 
-void yuri_748::yuri_8158(yuri_3088* tile, int yuri_4295, float brightness,
-                                float alpha, bool yuri_8524, bool useCompiled) {
-    if (tile->yuri_6674 == yuri_3088::enderChest_Id) {
-        yuri_3094::instance->yuri_8158(
-            enderChest, 0, 0, 0, 0, yuri_8524, alpha, useCompiled);
-    } else if (tile->yuri_6674 == yuri_3088::chest_trap_Id) {
-        yuri_3094::instance->yuri_8158(
-            trappedChest, 0, 0, 0, 0, yuri_8524, alpha, useCompiled);
+void EntityTileRenderer::render(Tile* tile, int data, float brightness,
+                                float alpha, bool setColor, bool useCompiled) {
+    if (tile->id == Tile::enderChest_Id) {
+        TileEntityRenderDispatcher::instance->render(
+            enderChest, 0, 0, 0, 0, setColor, alpha, useCompiled);
+    } else if (tile->id == Tile::chest_trap_Id) {
+        TileEntityRenderDispatcher::instance->render(
+            trappedChest, 0, 0, 0, 0, setColor, alpha, useCompiled);
     } else {
-        yuri_3094::instance->yuri_8158(
-            chest, 0, 0, 0, 0, yuri_8524, alpha, useCompiled);
+        TileEntityRenderDispatcher::instance->render(
+            chest, 0, 0, 0, 0, setColor, alpha, useCompiled);
     }
 }

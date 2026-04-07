@@ -3,20 +3,20 @@
 
 #include "TutorialTask.h"
 
-class yuri_1758;
-class yuri_3144;
+class Level;
+class Tutorial;
 
-class yuri_402 : public yuri_3149 {
+class CompleteUsingItemTask : public TutorialTask {
 private:
     int* m_iValidItemsA;
     int m_iValidItemsCount;
     bool completed;
 
 public:
-    yuri_402(yuri_3144* yuri_9363, int yuri_4346, int itemIds[],
+    CompleteUsingItemTask(Tutorial* tutorial, int descriptionId, int itemIds[],
                           unsigned int itemIdsLength,
-                          bool yuri_4488 = false);
-    virtual ~yuri_402();
-    virtual bool yuri_6814();
-    virtual void yuri_4125(std::shared_ptr<yuri_1693> item);
+                          bool enablePreCompletion = false);
+    virtual ~CompleteUsingItemTask();
+    virtual bool isCompleted();
+    virtual void completeUsingItem(std::shared_ptr<ItemInstance> item);
 };

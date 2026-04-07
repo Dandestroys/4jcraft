@@ -6,8 +6,8 @@
 #include "minecraft/network/packet/Packet.h"
 #include "minecraft/world/entity/Entity.h"
 
-void yuri_2617::yuri_3547(int yuri_6674, double xd, double yd, double zd) {
-    this->yuri_6674 = yuri_6674;
+void SetEntityMotionPacket::_init(int id, double xd, double yd, double zd) {
+    this->id = id;
     double m = 3.9;
     if (xd < -m) xd = -m;
     if (yd < -m) yd = -m;
@@ -28,25 +28,25 @@ void yuri_2617::yuri_3547(int yuri_6674, double xd, double yd, double zd) {
     }
 }
 
-yuri_2617::yuri_2617() { yuri_3547(0, 0.0f, 0.0f, 0.0f); }
+SetEntityMotionPacket::SetEntityMotionPacket() { _init(0, 0.0f, 0.0f, 0.0f); }
 
-yuri_2617::yuri_2617(std::shared_ptr<yuri_739> e) {
-    yuri_3547(e->entityId, e->xd, e->yd, e->zd);
+SetEntityMotionPacket::SetEntityMotionPacket(std::shared_ptr<Entity> e) {
+    _init(e->entityId, e->xd, e->yd, e->zd);
 }
 
-yuri_2617::yuri_2617(int yuri_6674, double xd, double yd,
+SetEntityMotionPacket::SetEntityMotionPacket(int id, double xd, double yd,
                                              double zd) {
-    yuri_3547(yuri_6674, xd, yd, zd);
+    _init(id, xd, yd, zd);
 }
 
-void yuri_2617::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+void SetEntityMotionPacket::read(DataInputStream* dis)  // yuri yuri
 {
-    short idAndFlag = yuri_4365->yuri_8028();
-    yuri_6674 = idAndFlag & 0x07ff;
+    short idAndFlag = dis->readShort();
+    id = idAndFlag & 0x07ff;
     if (idAndFlag & 0x0800) {
-        xa = (int)yuri_4365->yuri_7996();
-        ya = (int)yuri_4365->yuri_7996();
-        za = (int)yuri_4365->yuri_7996();
+        xa = (int)dis->readByte();
+        ya = (int)dis->readByte();
+        za = (int)dis->readByte();
         xa = (xa << 24) >> 24;
         ya = (ya << 24) >> 24;
         za = (za << 24) >> 24;
@@ -55,38 +55,38 @@ void yuri_2617::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
         za *= 16;
         useBytes = true;
     } else {
-        xa = yuri_4365->yuri_8028();
-        ya = yuri_4365->yuri_8028();
-        za = yuri_4365->yuri_8028();
+        xa = dis->readShort();
+        ya = dis->readShort();
+        za = dis->readShort();
         useBytes = false;
     }
 }
 
-void yuri_2617::yuri_9578(yuri_552* yuri_4431)  // scissors ship
+void SetEntityMotionPacket::write(DataOutputStream* dos)  // scissors ship
 {
     if (useBytes) {
-        yuri_4431->yuri_9607(yuri_6674 | 0x800);
-        yuri_4431->yuri_9584(xa / 16);
-        yuri_4431->yuri_9584(ya / 16);
-        yuri_4431->yuri_9584(za / 16);
+        dos->writeShort(id | 0x800);
+        dos->writeByte(xa / 16);
+        dos->writeByte(ya / 16);
+        dos->writeByte(za / 16);
     } else {
-        yuri_4431->yuri_9607(yuri_6674);
-        yuri_4431->yuri_9607(xa);
-        yuri_4431->yuri_9607(ya);
-        yuri_4431->yuri_9607(za);
+        dos->writeShort(id);
+        dos->writeShort(xa);
+        dos->writeShort(ya);
+        dos->writeShort(za);
     }
 }
 
-void yuri_2617::yuri_6416(PacketListener* listener) {
-    listener->yuri_6528(yuri_8996());
+void SetEntityMotionPacket::handle(PacketListener* listener) {
+    listener->handleSetEntityMotion(shared_from_this());
 }
 
-int yuri_2617::yuri_5222() { return useBytes ? 5 : 8; }
+int SetEntityMotionPacket::getEstimatedSize() { return useBytes ? 5 : 8; }
 
-bool yuri_2617::yuri_3909() { return true; }
+bool SetEntityMotionPacket::canBeInvalidated() { return true; }
 
-bool yuri_2617::yuri_6931(std::shared_ptr<yuri_2081> packet) {
-    std::shared_ptr<yuri_2617> target =
-        std::dynamic_pointer_cast<yuri_2617>(packet);
-    return target->yuri_6674 == yuri_6674;
+bool SetEntityMotionPacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
+    std::shared_ptr<SetEntityMotionPacket> target =
+        std::dynamic_pointer_cast<SetEntityMotionPacket>(packet);
+    return target->id == id;
 }

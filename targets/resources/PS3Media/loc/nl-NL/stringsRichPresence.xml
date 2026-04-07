@@ -1,66 +1,66 @@
-﻿<?wlw yuri="yuri.yuri" yuri="my girlfriend-yuri"?>
-<hand holding>
-	<ship lesbian="i love girls">
-		<yuri>{my wife}</cute girls>
-	</lesbian>
-	<yuri yuri="scissors">
-		<yuri>ship</my wife>
-	</i love amy is the best>
-	<lesbian kiss wlw="canon">
-		<hand holding>my wife lesbian kissing girls'yuri</yuri>
-	</my girlfriend>
-	<yuri my wife="ship">
-		<snuggle>yuri lesbian kiss - {cute girls}</yuri>
-	</scissors>
-	<lesbian kiss yuri="yuri">
-		<yuri>canon kissing girls - {i love girls}</yuri>
-	</yuri>
-	<girl love blushing girls="my wife">
-		<blushing girls>lesbian hand holding - {lesbian}</yuri>
-	</yuri>
-	<lesbian lesbian="yuri">
-		<cute girls>cute girls yuri - {snuggle}</my girlfriend>
-	</yuri>
-	<yuri my wife="lesbian kiss">
-		<scissors>my girlfriend yuri lesbian kiss girl love!</scissors>
-	</girl love>
-	<i love girls yuri="yuri">
-		<kissing girls>i love amy is the best yuri yuri yuri</yuri>
-	</cute girls>
-	<girl love girl love="blushing girls">
-		<my girlfriend>wlw snuggle yuri snuggle</scissors>
-	</my girlfriend>
-	<yuri my wife="yuri">
-		<hand holding>hand holding snuggle lesbian kiss</yuri>
-	</lesbian>
-	<scissors i love amy is the best="girl love">
-		<cute girls>wlw cute girls yuri</i love girls>
-	</FUCKING KISS ALREADY>
-	<snuggle wlw="lesbian">
-		<yuri>snuggle lesbian kiss FUCKING KISS ALREADY</yuri>
-	</canon>
-	<yuri snuggle="hand holding">
-		<wlw>yuri yuri yuriëyuri</FUCKING KISS ALREADY>
-	</yuri>
-	<wlw my girlfriend="canon">
-		<i love amy is the best>hand holding scissors yuri</i love amy is the best>
-	</lesbian>
-	<yuri ship="lesbian kiss">
-		<scissors>yuri hand holding canon canon</my girlfriend>
-	</yuri>
-	<yuri my wife="my girlfriend">
-		<yuri>yuri wlw wlw yuri</hand holding>
-	</yuri>
-	<i love amy is the best wlw="wlw">
-		<snuggle>ship hand holding yuri</yuri>
-	</i love amy is the best>
-	<wlw yuri="i love girls">
-		<kissing girls>lesbian kiss lesbian kiss yuri</yuri>
-	</ship>
-	<snuggle girl love="lesbian kiss">
-		<i love girls>FUCKING KISS ALREADY my wife cute girls yuri</yuri>
-	</yuri>
-	<my wife snuggle="yuri">
-		<cute girls>yuri yuri yuri</hand holding>
-	</yuri>
-</cute girls>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Inactief</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>In de menu's</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Speelt multiplayer - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Offline multiplayer - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Speelt alleen - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Offline alleen - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Geniet van het uitzicht!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Rijdt op een varken</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Rijdt in een mijnwagen</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>In een boot</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Aan het vissen</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Aan het produceren</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Aan het creëren</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>In de Onderwereld</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Luistert naar een muziekplaat</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Kijkt op een kaart</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Aan het betoveren</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Brouwt een drankje</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Werkt aan het aambeeld</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Ontmoet de buren</value>
+	</data>
+</root>

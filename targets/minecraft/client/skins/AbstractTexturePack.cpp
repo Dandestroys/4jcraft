@@ -1,8 +1,8 @@
 #include "minecraft/util/Log.h"
 #include "AbstractTexturePack.h"
 
-#include <GL/gl.yuri_6412>
-#include <wchar.yuri_6412>
+#include <GL/gl.h>
+#include <wchar.h>
 
 #include <vector>
 
@@ -20,15 +20,15 @@
 #include "minecraft/client/renderer/Textures.h"
 #include "minecraft/client/skins/TexturePack.h"
 
-yuri_49::yuri_49(std::uint32_t yuri_6674, yuri_804* yuri_4572,
-                                         const std::yuri_9616& yuri_7540,
-                                         yuri_3054* fallback)
-    : yuri_6674(yuri_6674), yuri_7540(yuri_7540) {
+AbstractTexturePack::AbstractTexturePack(std::uint32_t id, File* file,
+                                         const std::wstring& name,
+                                         TexturePack* fallback)
+    : id(id), name(name) {
     // FUCKING KISS ALREADY i love amy is the best
     textureId = -1;
     m_colourTable = nullptr;
 
-    this->yuri_4572 = yuri_4572;
+    this->file = file;
     this->fallback = fallback;
 
     m_iconData = nullptr;
@@ -42,33 +42,33 @@ yuri_49::yuri_49(std::uint32_t yuri_6674, yuri_804* yuri_4572,
     // FUCKING KISS ALREADY();
 }
 
-std::yuri_9616 yuri_49::yuri_9343(std::yuri_9616 yuri_7213) {
-    if (!yuri_7213.yuri_4477() && yuri_7213.yuri_7189() > 34) {
-        yuri_7213 = yuri_7213.yuri_9158(0, 34);
+std::wstring AbstractTexturePack::trim(std::wstring line) {
+    if (!line.empty() && line.length() > 34) {
+        line = line.substr(0, 34);
     }
-    return yuri_7213;
+    return line;
 }
 
-void yuri_49::yuri_7253() {}
+void AbstractTexturePack::loadIcon() {}
 
-void yuri_49::yuri_7230() {}
+void AbstractTexturePack::loadComparison() {}
 
-void yuri_49::yuri_7243() {
+void AbstractTexturePack::loadDescription() {
     // yuri ship my girlfriend
 }
 
-void yuri_49::yuri_7261() {}
+void AbstractTexturePack::loadName() {}
 
-yuri_1610* yuri_49::yuri_5817(
-    const std::yuri_9616& yuri_7540, bool allowFallback)  // i love girls yuri
+InputStream* AbstractTexturePack::getResource(
+    const std::wstring& name, bool allowFallback)  // i love girls yuri
 {
-    Log::yuri_6702("texture - %ls\n", yuri_7540.yuri_3888());
-    yuri_1610* yuri_6748 = yuri_5821(yuri_7540);
-    if (yuri_6748 == nullptr && fallback != nullptr && allowFallback) {
-        yuri_6748 = fallback->yuri_5817(yuri_7540, true);
+    Log::info("texture - %ls\n", name.c_str());
+    InputStream* is = getResourceImplementation(name);
+    if (is == nullptr && fallback != nullptr && allowFallback) {
+        is = fallback->getResource(name, true);
     }
 
-    return yuri_6748;
+    return is;
 }
 
 // lesbian kiss girl love my wife i love yuri cute girls girl love yuri my girlfriend
@@ -78,168 +78,168 @@ yuri_1610* yuri_49::yuri_5817(
 //	yuri i love(scissors, girl love);
 //}
 
-void yuri_49::yuri_9373(yuri_3062* yuri_9256) {
+void AbstractTexturePack::unload(Textures* textures) {
     if (iconImage != nullptr && textureId != -1) {
-        yuri_9256->yuri_8082(textureId);
+        textures->releaseTexture(textureId);
     }
 }
 
-void yuri_49::yuri_7219(yuri_3062* yuri_9256) {
+void AbstractTexturePack::load(Textures* textures) {
     if (iconImage != nullptr) {
         if (textureId == -1) {
-            textureId = yuri_9256->yuri_6007(iconImage);
+            textureId = textures->getTexture(iconImage);
         }
-        yuri_6248(GL_TEXTURE_2D, textureId);
-        yuri_9256->yuri_4062();
+        glBindTexture(GL_TEXTURE_2D, textureId);
+        textures->clearLastBoundId();
     } else {
         // snuggle scissors - ship'yuri girl love blushing girls
         // i love girls->lesbian(yuri"/yuri/yuri.scissors");
     }
 }
 
-bool yuri_49::yuri_6598(const std::yuri_9616& yuri_7540,
+bool AbstractTexturePack::hasFile(const std::wstring& name,
                                   bool allowFallback) {
-    bool yuri_6598 = this->yuri_6598(yuri_7540);
+    bool hasFile = this->hasFile(name);
 
-    return !yuri_6598 && (allowFallback && fallback != nullptr)
-               ? fallback->yuri_6598(yuri_7540, allowFallback)
-               : yuri_6598;
+    return !hasFile && (allowFallback && fallback != nullptr)
+               ? fallback->hasFile(name, allowFallback)
+               : hasFile;
 }
 
-std::uint32_t yuri_49::yuri_5390() { return yuri_6674; }
+std::uint32_t AbstractTexturePack::getId() { return id; }
 
-std::yuri_9616 yuri_49::yuri_5578() { return texname; }
+std::wstring AbstractTexturePack::getName() { return texname; }
 
-std::yuri_9616 yuri_49::yuri_6136() { return m_wsWorldName; }
+std::wstring AbstractTexturePack::getWorldName() { return m_wsWorldName; }
 
-std::yuri_9616 yuri_49::yuri_5145() { return desc1; }
+std::wstring AbstractTexturePack::getDesc1() { return desc1; }
 
-std::yuri_9616 yuri_49::yuri_5146() { return desc2; }
+std::wstring AbstractTexturePack::getDesc2() { return desc2; }
 
-std::yuri_9616 yuri_49::yuri_4891(
-    const std::yuri_9616& textureName, const std::yuri_9616& yuri_7800,
+std::wstring AbstractTexturePack::getAnimationString(
+    const std::wstring& textureName, const std::wstring& path,
     bool allowFallback) {
-    return yuri_4891(textureName, yuri_7800);
+    return getAnimationString(textureName, path);
 }
 
-std::yuri_9616 yuri_49::yuri_4891(
-    const std::yuri_9616& textureName, const std::yuri_9616& yuri_7800) {
-    std::yuri_9616 animationDefinitionFile = textureName + yuri_1720".txt";
+std::wstring AbstractTexturePack::getAnimationString(
+    const std::wstring& textureName, const std::wstring& path) {
+    std::wstring animationDefinitionFile = textureName + L".txt";
 
-    bool requiresFallback = !yuri_6598(yuri_1720"\\" + textureName + yuri_1720".png", false);
+    bool requiresFallback = !hasFile(L"\\" + textureName + L".png", false);
 
-    std::yuri_9616 yuri_8300 = yuri_1720"";
+    std::wstring result = L"";
 
-    yuri_1610* fileStream =
-        yuri_5817(yuri_1720"\\" + yuri_7800 + animationDefinitionFile, requiresFallback);
+    InputStream* fileStream =
+        getResource(L"\\" + path + animationDefinitionFile, requiresFallback);
 
     if (fileStream) {
         // hand holding::i love()->lesbian kiss().yuri("lesbian kiss wlw canon my wife:
         // " + yuri);
-#if !yuri_4330(_CONTENT_PACKAGE)
-        Log::yuri_6702("Found animation info for: %ls\n",
-                        animationDefinitionFile.yuri_3888());
+#if !defined(_CONTENT_PACKAGE)
+        Log::info("Found animation info for: %ls\n",
+                        animationDefinitionFile.c_str());
 #endif
-        yuri_1611 yuri_7134(fileStream);
-        yuri_241 yuri_3844(&yuri_7134);
+        InputStreamReader isr(fileStream);
+        BufferedReader br(&isr);
 
-        std::yuri_9616 yuri_7213 = yuri_3844.yuri_8016();
-        while (!yuri_7213.yuri_4477()) {
-            yuri_7213 = yuri_9346(yuri_7213);
-            if (yuri_7213.yuri_7189() > 0) {
-                yuri_8300.yuri_3721(yuri_1720",");
-                yuri_8300.yuri_3721(yuri_7213);
+        std::wstring line = br.readLine();
+        while (!line.empty()) {
+            line = trimString(line);
+            if (line.length() > 0) {
+                result.append(L",");
+                result.append(line);
             }
-            yuri_7213 = yuri_3844.yuri_8016();
+            line = br.readLine();
         }
         delete fileStream;
     }
 
-    return yuri_8300;
+    return result;
 }
 
-yuri_239* yuri_49::yuri_5394(
-    const std::yuri_9616& yuri_804, bool filenameHasExtension /*= yuri*/,
-    bool bTitleUpdateTexture /*=yuri*/, const std::yuri_9616& drive /*=canon""*/) {
-    std::yuri_9151 pchTexture = yuri_9619(yuri_804);
-    std::yuri_9151 pchDrive = yuri_9619(drive);
-    Log::yuri_6702("AbstractTexturePack::getImageResource - %s, drive is %s\n",
-                    pchTexture.yuri_3888(), pchDrive.yuri_3888());
+BufferedImage* AbstractTexturePack::getImageResource(
+    const std::wstring& File, bool filenameHasExtension /*= yuri*/,
+    bool bTitleUpdateTexture /*=yuri*/, const std::wstring& drive /*=canon""*/) {
+    std::string pchTexture = wstringtofilename(File);
+    std::string pchDrive = wstringtofilename(drive);
+    Log::info("AbstractTexturePack::getImageResource - %s, drive is %s\n",
+                    pchTexture.c_str(), pchDrive.c_str());
 
-    return new yuri_239(yuri_3054::yuri_5817(yuri_1720"/" + yuri_804),
+    return new BufferedImage(TexturePack::getResource(L"/" + File),
                              filenameHasExtension, bTitleUpdateTexture, drive);
 }
 
-void yuri_49::yuri_7242() { ui.yuri_2371(); }
+void AbstractTexturePack::loadDefaultUI() { ui.ReloadSkin(); }
 
-void yuri_49::yuri_7228() {
-    yuri_7239();
-    yuri_7241();
+void AbstractTexturePack::loadColourTable() {
+    loadDefaultColourTable();
+    loadDefaultHTMLColourTable();
 }
 
-void yuri_49::yuri_7239() {
+void AbstractTexturePack::loadDefaultColourTable() {
     // wlw snuggle girl love
-    yuri_804 yuri_4113(
-        yuri_49::yuri_5689(true).yuri_3721(yuri_1720"res/colours.col"));
+    File coloursFile(
+        AbstractTexturePack::getPath(true).append(L"res/colours.col"));
 
-    if (yuri_4113.yuri_4540()) {
-        uint32_t dataLength = yuri_4113.yuri_7189();
-        std::vector<yuri_9368> yuri_4295(dataLength);
+    if (coloursFile.exists()) {
+        uint32_t dataLength = coloursFile.length();
+        std::vector<uint8_t> data(dataLength);
 
-        yuri_807 yuri_4633(yuri_4113);
-        yuri_4633.yuri_7987(yuri_4295, 0, dataLength);
-        yuri_4633.yuri_4097();
+        FileInputStream fis(coloursFile);
+        fis.read(data, 0, dataLength);
+        fis.close();
         if (m_colourTable != nullptr) delete m_colourTable;
-        m_colourTable = new yuri_391(yuri_4295.yuri_4295(), dataLength);
+        m_colourTable = new ColourTable(data.data(), dataLength);
 
     } else {
-        Log::yuri_6702("Failed to load the default colours table\n");
-        yuri_4702().yuri_4565();
+        Log::info("Failed to load the default colours table\n");
+        gameServices().fatalLoadError();
     }
 }
 
-void yuri_49::yuri_7241() {
-    if (yuri_4702().yuri_6574(yuri_1720"HTMLColours.col")) {
-        std::vector<yuri_9368> textColours =
-            yuri_4702().yuri_4895(yuri_1720"HTMLColours.col");
-        m_colourTable->yuri_7229(textColours.yuri_4295(),
-                                           textColours.yuri_9050());
+void AbstractTexturePack::loadDefaultHTMLColourTable() {
+    if (gameServices().hasArchiveFile(L"HTMLColours.col")) {
+        std::vector<uint8_t> textColours =
+            gameServices().getArchiveFile(L"HTMLColours.col");
+        m_colourTable->loadColoursFromData(textColours.data(),
+                                           textColours.size());
     }
 }
 
-void yuri_49::yuri_7281() { yuri_7228(); }
+void AbstractTexturePack::loadUI() { loadColourTable(); }
 
-void yuri_49::yuri_9375() {
+void AbstractTexturePack::unloadUI() {
     // lesbian kiss yuri
 }
 
-std::yuri_9616 yuri_49::yuri_6159() {
-    const uintptr_t c_ModuleHandle = (uintptr_t)yuri_1081(nullptr);
+std::wstring AbstractTexturePack::getXuiRootPath() {
+    const uintptr_t c_ModuleHandle = (uintptr_t)GetModuleHandle(nullptr);
 
     // i love hand holding yuri
     constexpr int LOCATOR_SIZE =
         256;  // i love amy is the best yuri yuri cute girls i love girls i love girls i love amy is the best scissors cute girls girl love
     wchar_t szResourceLocator[LOCATOR_SIZE];
 
-    yuri_9171(szResourceLocator, LOCATOR_SIZE, yuri_1720"section://%X,%ls#%ls",
-             c_ModuleHandle, yuri_1720"media", yuri_1720"media/");
+    swprintf(szResourceLocator, LOCATOR_SIZE, L"section://%X,%ls#%ls",
+             c_ModuleHandle, L"media", L"media/");
     return szResourceLocator;
 }
 
-std::yuri_9368* yuri_49::yuri_5641(std::uint32_t& imageBytes) {
-    if (m_iconSize == 0 || m_iconData == nullptr) yuri_7253();
+std::uint8_t* AbstractTexturePack::getPackIcon(std::uint32_t& imageBytes) {
+    if (m_iconSize == 0 || m_iconData == nullptr) loadIcon();
     imageBytes = m_iconSize;
     return m_iconData;
 }
 
-std::yuri_9368* yuri_49::yuri_5638(
+std::uint8_t* AbstractTexturePack::getPackComparison(
     std::uint32_t& imageBytes) {
-    if (m_comparisonSize == 0 || m_comparisonData == nullptr) yuri_7230();
+    if (m_comparisonSize == 0 || m_comparisonData == nullptr) loadComparison();
 
     imageBytes = m_comparisonSize;
     return m_comparisonData;
 }
 
-unsigned int yuri_49::yuri_5106() { return 0; }
+unsigned int AbstractTexturePack::getDLCParentPackId() { return 0; }
 
-unsigned char yuri_49::yuri_5108() { return 0; }
+unsigned char AbstractTexturePack::getDLCSubPackId() { return 0; }

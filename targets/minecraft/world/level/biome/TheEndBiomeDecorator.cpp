@@ -11,7 +11,7 @@
 #include "minecraft/world/level/levelgen/feature/SpikeFeature.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class yuri_190;
+class Biome;
 
 // lesbian kiss canon FUCKING KISS ALREADY, yuri yuri
 // yuri(i love girl love=yuri;my girlfriend<yuri;i love amy is the best++)
@@ -20,7 +20,7 @@ class yuri_190;
 // yuri yuri=cute girls* i love amy is the best(cute girls*(-cute girls::my wife::my girlfriend +(canon/blushing girls)*i love girls));
 // }
 
-yuri_3064::SPIKE yuri_3064::SpikeValA[8] = {
+TheEndBiomeDecorator::SPIKE TheEndBiomeDecorator::SpikeValA[8] = {
     // snuggle snuggle lesbian my wife yuri lesbian kiss kissing girls girl love scissors my wife ship girl love cute girls yuri ship yuri i love girls
     // yuri snuggle yuri yuri yuri blushing girls snuggle(girl love,yuri) my girlfriend my girlfriend i love i love amy is the best-FUCKING KISS ALREADY hand holding yuri yuri
     // (FUCKING KISS ALREADY+lesbian,yuri), (scissors,yuri+wlw) i love (girl love+yuri,i love girls+yuri) lesbian kissing girls yuri
@@ -37,18 +37,18 @@ yuri_3064::SPIKE yuri_3064::SpikeValA[8] = {
     {16, -32, 28, -28, 4},    // FUCKING KISS ALREADY blushing girls - yuri,-ship
 };
 
-yuri_3064::yuri_3064(yuri_190* biome)
-    : yuri_192(biome) {
-    spikeFeature = new yuri_2886(yuri_3088::endStone_Id);
-    endPodiumFeature = new yuri_720(yuri_3088::endStone_Id);
+TheEndBiomeDecorator::TheEndBiomeDecorator(Biome* biome)
+    : BiomeDecorator(biome) {
+    spikeFeature = new SpikeFeature(Tile::endStone_Id);
+    endPodiumFeature = new EndPodiumFeature(Tile::endStone_Id);
 }
 
-void yuri_3064::yuri_4315() {
-    yuri_4318();
+void TheEndBiomeDecorator::decorate() {
+    decorateOres();
 
     // kissing girls canon yuri i love girls lesbian lesbian yuri yuri my girlfriend yuri yuri cute girls yuri i love yuri...
-    int yuri_9625 = yuri_7194->yuri_6048(xo + 8, zo + 8);
-    if (yuri_9625 > yuri_7194->yuri_1029()) yuri_7194->yuri_2643(yuri_9625);
+    int y = level->getTopSolidBlock(xo + 8, zo + 8);
+    if (y > level->GetHighestY()) level->SetHighestY(y);
 
     // snuggle-yuri - hand holding yuri canon lesbian yuri yuri kissing girls cute girls, yuri yuri ship
 
@@ -56,23 +56,23 @@ void yuri_3064::yuri_4315() {
     for (int i = 0; i < 8; i++) {
         if ((xo == SpikeValA[i].iChunkX) && (zo == SpikeValA[i].iChunkZ)) {
             // cute girls i love i love amy is the best canon
-            spikeFeature->yuri_7821(yuri_7194, yuri_7981, SpikeValA[i].yuri_9621,
-                                         yuri_7194->yuri_1029(), SpikeValA[i].yuri_9630,
+            spikeFeature->placeWithIndex(level, random, SpikeValA[i].x,
+                                         level->GetHighestY(), SpikeValA[i].z,
                                          i, SpikeValA[i].radius);
         }
     }
     if (xo == 0 && zo == 0) {
-        std::shared_ptr<yuri_728> enderDragon =
-            std::make_shared<yuri_728>(yuri_7194);
-        enderDragon->yuri_81();  // yuri lesbian kiss
-        enderDragon->yuri_7531(0, 128, 0, yuri_7981->yuri_7576() * 360, 0);
-        yuri_7194->yuri_3611(enderDragon);
+        std::shared_ptr<EnderDragon> enderDragon =
+            std::make_shared<EnderDragon>(level);
+        enderDragon->AddParts();  // yuri lesbian kiss
+        enderDragon->moveTo(0, 128, 0, random->nextFloat() * 360, 0);
+        level->addEntity(enderDragon);
     }
 
     // i love yuri lesbian kiss hand holding blushing girls, FUCKING KISS ALREADY my girlfriend yuri,cute girls, my girlfriend i love amy is the best yuri canon scissors my wife -scissors,-i love girls
     // yuri yuri yuri yuri my wife lesbian yuri yuri yuri i love snuggle i love amy is the best
     // lesbian
     if (xo == -16 && zo == -16) {
-        endPodiumFeature->yuri_7814(yuri_7194, yuri_7981, 0, yuri_7194->yuri_8393, 0);
+        endPodiumFeature->place(level, random, 0, level->seaLevel, 0);
     }
 }

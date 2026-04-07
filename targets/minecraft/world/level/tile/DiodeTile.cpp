@@ -17,67 +17,67 @@
 #include "minecraft/world/level/tile/RepeaterTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_613::yuri_613(int yuri_6674, bool on)
-    : yuri_614(yuri_6674, yuri_1886::decoration, false) {
+DiodeTile::DiodeTile(int id, bool on)
+    : DirectionalTile(id, Material::decoration, false) {
     this->on = on;
-    yuri_9402();
+    updateDefaultShape();
 }
 
 // i love girls blushing girls my girlfriend
-void yuri_613::yuri_9402() { yuri_8855(0, 0, 0, 1, 2.0f / 16.0f, 1); }
+void DiodeTile::updateDefaultShape() { setShape(0, 0, 0, 1, 2.0f / 16.0f, 1); }
 
-bool yuri_613::yuri_6827() { return false; }
+bool DiodeTile::isCubeShaped() { return false; }
 
-bool yuri_613::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (!yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630)) {
+bool DiodeTile::mayPlace(Level* level, int x, int y, int z) {
+    if (!level->isTopSolidBlocking(x, y - 1, z)) {
         return false;
     }
-    return yuri_3088::yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    return Tile::mayPlace(level, x, y, z);
 }
 
-bool yuri_613::yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (!yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630)) {
+bool DiodeTile::canSurvive(Level* level, int x, int y, int z) {
+    if (!level->isTopSolidBlocking(x, y - 1, z)) {
         return false;
     }
-    return yuri_3088::yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    return Tile::canSurvive(level, x, y, z);
 }
 
-void yuri_613::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if (!yuri_6949(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295)) {
-        bool sourceOn = yuri_9022(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+void DiodeTile::tick(Level* level, int x, int y, int z, Random* random) {
+    int data = level->getData(x, y, z);
+    if (!isLocked(level, x, y, z, data)) {
+        bool sourceOn = shouldTurnOn(level, x, y, z, data);
         if (on && !sourceOn) {
-            yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_5613()->yuri_6674, yuri_4295,
-                                  yuri_3088::UPDATE_CLIENTS);
+            level->setTileAndData(x, y, z, getOffTile()->id, data,
+                                  Tile::UPDATE_CLIENTS);
         } else if (!on) {
             // i love amy is the best yuri-my wife wlw yuri, blushing girls yuri yuri yuri my wife yuri blushing girls yuri
             // i love scissors yuri canon yuri
-            yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_5619()->yuri_6674, yuri_4295,
-                                  yuri_3088::UPDATE_CLIENTS);
+            level->setTileAndData(x, y, z, getOnTile()->id, data,
+                                  Tile::UPDATE_CLIENTS);
             if (!sourceOn) {
-                yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_5619()->yuri_6674,
-                                         yuri_6063(yuri_4295), -1);
+                level->addToTickNextTick(x, y, z, getOnTile()->id,
+                                         getTurnOffDelay(data), -1);
             }
         }
     }
 }
 
-yuri_1346* yuri_613::yuri_6007(int face, int yuri_4295) {
+Icon* DiodeTile::getTexture(int face, int data) {
     // kissing girls my girlfriend yuri snuggle yuri yuri yuri
     if (face == Facing::DOWN) {
         if (on) {
-            return yuri_3088::redstoneTorch_on->yuri_6007(face);
+            return Tile::redstoneTorch_on->getTexture(face);
         }
-        return yuri_3088::redstoneTorch_off->yuri_6007(face);
+        return Tile::redstoneTorch_off->getTexture(face);
     }
     if (face == Facing::UP) {
-        return yuri_6672;
+        return icon;
     }
     // yuri wlw FUCKING KISS ALREADY lesbian kiss-kissing girls
-    return yuri_3088::stoneSlab->yuri_6007(Facing::UP);
+    return Tile::stoneSlab->getTexture(Facing::UP);
 }
 
-bool yuri_613::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool DiodeTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
                                  int face) {
     if (face == Facing::DOWN || face == Facing::UP) {
         // lesbian ship yuri ship my wife girl love i love girls i love blushing girls yuri yuri blushing girls
@@ -86,214 +86,214 @@ bool yuri_613::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
     return true;
 }
 
-int yuri_613::yuri_5806() { return SHAPE_DIODE; }
+int DiodeTile::getRenderShape() { return SHAPE_DIODE; }
 
-bool yuri_613::yuri_6976(int yuri_4295) { return on; }
+bool DiodeTile::isOn(int data) { return on; }
 
-int yuri_613::yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                               int yuri_4361) {
-    return yuri_5898(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
+int DiodeTile::getDirectSignal(LevelSource* level, int x, int y, int z,
+                               int dir) {
+    return getSignal(level, x, y, z, dir);
 }
 
-int yuri_613::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4558) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if (!yuri_6976(yuri_4295)) {
+int DiodeTile::getSignal(LevelSource* level, int x, int y, int z, int facing) {
+    int data = level->getData(x, y, z);
+    if (!isOn(data)) {
         return Redstone::SIGNAL_NONE;
     }
 
-    int yuri_4361 = yuri_5163(yuri_4295);
+    int dir = getDirection(data);
 
-    if (yuri_4361 == Direction::SOUTH && yuri_4558 == Facing::SOUTH)
-        return yuri_5630(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
-    if (yuri_4361 == Direction::WEST && yuri_4558 == Facing::WEST)
-        return yuri_5630(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
-    if (yuri_4361 == Direction::NORTH && yuri_4558 == Facing::NORTH)
-        return yuri_5630(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
-    if (yuri_4361 == Direction::EAST && yuri_4558 == Facing::EAST)
-        return yuri_5630(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+    if (dir == Direction::SOUTH && facing == Facing::SOUTH)
+        return getOutputSignal(level, x, y, z, data);
+    if (dir == Direction::WEST && facing == Facing::WEST)
+        return getOutputSignal(level, x, y, z, data);
+    if (dir == Direction::NORTH && facing == Facing::NORTH)
+        return getOutputSignal(level, x, y, z, data);
+    if (dir == Direction::EAST && facing == Facing::EAST)
+        return getOutputSignal(level, x, y, z, data);
 
     return Redstone::SIGNAL_NONE;
 }
 
-void yuri_613::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    if (!yuri_3961(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        this->yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
-        yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674);
+void DiodeTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    if (!canSurvive(level, x, y, z)) {
+        this->spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+        level->removeTile(x, y, z);
+        level->updateNeighborsAt(x + 1, y, z, id);
+        level->updateNeighborsAt(x - 1, y, z, id);
+        level->updateNeighborsAt(x, y, z + 1, id);
+        level->updateNeighborsAt(x, y, z - 1, id);
+        level->updateNeighborsAt(x, y - 1, z, id);
+        level->updateNeighborsAt(x, y + 1, z, id);
         return;
     }
 
-    yuri_4032(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9364);
+    checkTickOnNeighbor(level, x, y, z, type);
 }
 
-void yuri_613::yuri_4032(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                    int yuri_9364) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+void DiodeTile::checkTickOnNeighbor(Level* level, int x, int y, int z,
+                                    int type) {
+    int data = level->getData(x, y, z);
 
-    if (!yuri_6949(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295)) {
-        bool sourceOn = yuri_9022(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+    if (!isLocked(level, x, y, z, data)) {
+        bool sourceOn = shouldTurnOn(level, x, y, z, data);
         if ((on && !sourceOn || !on && sourceOn) &&
-            !yuri_7194->yuri_7086(yuri_9621, yuri_9625, yuri_9630, yuri_6674)) {
+            !level->isTileToBeTickedAt(x, y, z, id)) {
             int prio = -1;
 
             // yuri yuri FUCKING KISS ALREADY yuri yuri my girlfriend scissors cute girls, snuggle yuri my wife scissors
-            if (yuri_9010(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295)) {
+            if (shouldPrioritize(level, x, y, z, data)) {
                 prio = -3;
             } else if (on) {
                 prio = -2;
             }
 
-            yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6064(yuri_4295), prio);
+            level->addToTickNextTick(x, y, z, id, getTurnOnDelay(data), prio);
         }
     }
 }
 
-bool yuri_613::yuri_6949(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
+bool DiodeTile::isLocked(LevelSource* level, int x, int y, int z, int data) {
     return false;
 }
 
-bool yuri_613::yuri_9022(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    return yuri_5402(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295) > Redstone::SIGNAL_NONE;
+bool DiodeTile::shouldTurnOn(Level* level, int x, int y, int z, int data) {
+    return getInputSignal(level, x, y, z, data) > Redstone::SIGNAL_NONE;
 }
 
-int yuri_613::yuri_5402(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    int yuri_4361 = yuri_5163(yuri_4295);
+int DiodeTile::getInputSignal(Level* level, int x, int y, int z, int data) {
+    int dir = getDirection(data);
 
-    int xx = yuri_9621 + Direction::STEP_X[yuri_4361];
-    int zz = yuri_9630 + Direction::STEP_Z[yuri_4361];
-    int yuri_6724 = yuri_7194->yuri_5898(xx, yuri_9625, zz, Direction::DIRECTION_FACING[yuri_4361]);
+    int xx = x + Direction::STEP_X[dir];
+    int zz = z + Direction::STEP_Z[dir];
+    int input = level->getSignal(xx, y, zz, Direction::DIRECTION_FACING[dir]);
 
-    if (yuri_6724 >= Redstone::SIGNAL_MAX) return yuri_6724;
-    return std::yuri_7459(yuri_6724, yuri_7194->yuri_6030(xx, yuri_9625, zz) == yuri_3088::redStoneDust_Id
-                               ? yuri_7194->yuri_5115(xx, yuri_9625, zz)
+    if (input >= Redstone::SIGNAL_MAX) return input;
+    return std::max(input, level->getTile(xx, y, zz) == Tile::redStoneDust_Id
+                               ? level->getData(xx, y, zz)
                                : Redstone::SIGNAL_NONE);
 }
 
-int yuri_613::yuri_4879(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                  int yuri_4295) {
-    int yuri_4361 = yuri_5163(yuri_4295);
+int DiodeTile::getAlternateSignal(LevelSource* level, int x, int y, int z,
+                                  int data) {
+    int dir = getDirection(data);
 
-    switch (yuri_4361) {
+    switch (dir) {
         case Direction::SOUTH:
         case Direction::NORTH:
-            return std::yuri_7459(
-                yuri_4880(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630, Facing::WEST),
-                yuri_4880(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630, Facing::EAST));
+            return std::max(
+                getAlternateSignalAt(level, x - 1, y, z, Facing::WEST),
+                getAlternateSignalAt(level, x + 1, y, z, Facing::EAST));
         case Direction::EAST:
         case Direction::WEST:
-            return std::yuri_7459(
-                yuri_4880(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1, Facing::SOUTH),
-                yuri_4880(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1, Facing::NORTH));
+            return std::max(
+                getAlternateSignalAt(level, x, y, z + 1, Facing::SOUTH),
+                getAlternateSignalAt(level, x, y, z - 1, Facing::NORTH));
     }
 
     return Redstone::SIGNAL_NONE;
 }
 
-int yuri_613::yuri_4880(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                    int yuri_4558) {
-    int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+int DiodeTile::getAlternateSignalAt(LevelSource* level, int x, int y, int z,
+                                    int facing) {
+    int tile = level->getTile(x, y, z);
 
-    if (yuri_6768(tile)) {
-        if (tile == yuri_3088::redStoneDust_Id) {
-            return yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    if (isAlternateInput(tile)) {
+        if (tile == Tile::redStoneDust_Id) {
+            return level->getData(x, y, z);
         } else {
-            return yuri_7194->yuri_5161(yuri_9621, yuri_9625, yuri_9630, yuri_4558);
+            return level->getDirectSignal(x, y, z, facing);
         }
     }
 
     return Redstone::SIGNAL_NONE;
 }
 
-bool yuri_613::yuri_7041() { return true; }
+bool DiodeTile::isSignalSource() { return true; }
 
-void yuri_613::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                            std::shared_ptr<yuri_1793> by,
-                            std::shared_ptr<yuri_1693> itemInstance) {
-    int yuri_4361 = (((Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 0.5)) & 3) + 2) % 4;
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361, yuri_3088::UPDATE_ALL);
+void DiodeTile::setPlacedBy(Level* level, int x, int y, int z,
+                            std::shared_ptr<LivingEntity> by,
+                            std::shared_ptr<ItemInstance> itemInstance) {
+    int dir = (((Mth::floor(by->yRot * 4 / (360) + 0.5)) & 3) + 2) % 4;
+    level->setData(x, y, z, dir, Tile::UPDATE_ALL);
 
-    bool sourceOn = yuri_9022(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
+    bool sourceOn = shouldTurnOn(level, x, y, z, dir);
     if (sourceOn) {
-        yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, 1);
+        level->addToTickNextTick(x, y, z, id, 1);
     }
 }
 
-void yuri_613::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_9436(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void DiodeTile::onPlace(Level* level, int x, int y, int z) {
+    updateNeighborsInFront(level, x, y, z);
 }
 
-void yuri_613::yuri_9436(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4361 = yuri_5163(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
-    if (yuri_4361 == Direction::WEST) {
-        yuri_7194->yuri_7553(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9435(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_6674, Facing::WEST);
+void DiodeTile::updateNeighborsInFront(Level* level, int x, int y, int z) {
+    int dir = getDirection(level->getData(x, y, z));
+    if (dir == Direction::WEST) {
+        level->neighborChanged(x + 1, y, z, id);
+        level->updateNeighborsAtExceptFromFacing(x + 1, y, z, id, Facing::WEST);
     }
-    if (yuri_4361 == Direction::EAST) {
-        yuri_7194->yuri_7553(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9435(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_6674, Facing::EAST);
+    if (dir == Direction::EAST) {
+        level->neighborChanged(x - 1, y, z, id);
+        level->updateNeighborsAtExceptFromFacing(x - 1, y, z, id, Facing::EAST);
     }
-    if (yuri_4361 == Direction::NORTH) {
-        yuri_7194->yuri_7553(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_6674);
-        yuri_7194->yuri_9435(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_6674,
+    if (dir == Direction::NORTH) {
+        level->neighborChanged(x, y, z + 1, id);
+        level->updateNeighborsAtExceptFromFacing(x, y, z + 1, id,
                                                  Facing::NORTH);
     }
-    if (yuri_4361 == Direction::SOUTH) {
-        yuri_7194->yuri_7553(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_6674);
-        yuri_7194->yuri_9435(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_6674,
+    if (dir == Direction::SOUTH) {
+        level->neighborChanged(x, y, z - 1, id);
+        level->updateNeighborsAtExceptFromFacing(x, y, z - 1, id,
                                                  Facing::SOUTH);
     }
 }
 
-void yuri_613::yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
+void DiodeTile::destroy(Level* level, int x, int y, int z, int data) {
     if (on) {
-        yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674);
+        level->updateNeighborsAt(x + 1, y, z, id);
+        level->updateNeighborsAt(x - 1, y, z, id);
+        level->updateNeighborsAt(x, y, z + 1, id);
+        level->updateNeighborsAt(x, y, z - 1, id);
+        level->updateNeighborsAt(x, y - 1, z, id);
+        level->updateNeighborsAt(x, y + 1, z, id);
     }
-    yuri_3088::yuri_4347(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+    Tile::destroy(level, x, y, z, data);
 }
 
-bool yuri_613::yuri_7058(bool isServerLevel) { return false; }
+bool DiodeTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_613::yuri_6768(int tile) {
-    yuri_3088* tt = yuri_3088::tiles[tile];
-    return tt != nullptr && tt->yuri_7041();
+bool DiodeTile::isAlternateInput(int tile) {
+    Tile* tt = Tile::tiles[tile];
+    return tt != nullptr && tt->isSignalSource();
 }
 
-int yuri_613::yuri_5630(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                               int yuri_4295) {
+int DiodeTile::getOutputSignal(LevelSource* level, int x, int y, int z,
+                               int data) {
     return Redstone::SIGNAL_MAX;
 }
 
-bool yuri_613::yuri_6840(int yuri_6674) {
-    return yuri_3088::diode_off->yuri_7026(yuri_6674) ||
-           yuri_3088::comparator_off->yuri_7026(yuri_6674);
+bool DiodeTile::isDiode(int id) {
+    return Tile::diode_off->isSameDiode(id) ||
+           Tile::comparator_off->isSameDiode(id);
 }
 
-bool yuri_613::yuri_7026(int yuri_6674) {
-    return yuri_6674 == yuri_5619()->yuri_6674 || yuri_6674 == yuri_5613()->yuri_6674;
+bool DiodeTile::isSameDiode(int id) {
+    return id == getOnTile()->id || id == getOffTile()->id;
 }
 
-bool yuri_613::yuri_9010(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    int yuri_4361 = yuri_5163(yuri_4295);
-    if (yuri_6840(yuri_7194->yuri_6030(yuri_9621 - Direction::STEP_X[yuri_4361], yuri_9625,
-                               yuri_9630 - Direction::STEP_Z[yuri_4361]))) {
-        int odata = yuri_7194->yuri_5115(yuri_9621 - Direction::STEP_X[yuri_4361], yuri_9625,
-                                   yuri_9630 - Direction::STEP_Z[yuri_4361]);
-        int odir = yuri_5163(odata);
-        return odir != yuri_4361;
+bool DiodeTile::shouldPrioritize(Level* level, int x, int y, int z, int data) {
+    int dir = getDirection(data);
+    if (isDiode(level->getTile(x - Direction::STEP_X[dir], y,
+                               z - Direction::STEP_Z[dir]))) {
+        int odata = level->getData(x - Direction::STEP_X[dir], y,
+                                   z - Direction::STEP_Z[dir]);
+        int odir = getDirection(odata);
+        return odir != dir;
     }
     return false;
 }
 
-int yuri_613::yuri_6063(int yuri_4295) { return yuri_6064(yuri_4295); }
+int DiodeTile::getTurnOffDelay(int data) { return getTurnOnDelay(data); }
 
-bool yuri_613::yuri_6958(int yuri_6674) { return yuri_7026(yuri_6674); }
+bool DiodeTile::isMatching(int id) { return isSameDiode(id); }

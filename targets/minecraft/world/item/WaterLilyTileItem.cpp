@@ -11,30 +11,30 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/HitResult.h"
 
-yuri_3364::yuri_3364(int yuri_6674) : yuri_390(yuri_6674, false) {}
+WaterLilyTileItem::WaterLilyTileItem(int id) : ColoredTileItem(id, false) {}
 
-bool yuri_3364::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
-                                yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_1278* hr = yuri_5720(yuri_7194, yuri_7839, true);
+bool WaterLilyTileItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
+                                Level* level, std::shared_ptr<Player> player) {
+    HitResult* hr = getPlayerPOVHitResult(level, player, true);
     if (hr == nullptr) return false;
 
-    if (hr->yuri_9364 == yuri_1278::TILE) {
-        int xt = hr->yuri_9621;
-        int yt = hr->yuri_9625;
-        int zt = hr->yuri_9630;
-        if (!yuri_7194->yuri_7465(yuri_7839, xt, yt, zt, 0)) {
+    if (hr->type == HitResult::TILE) {
+        int xt = hr->x;
+        int yt = hr->y;
+        int zt = hr->z;
+        if (!level->mayInteract(player, xt, yt, zt, 0)) {
             delete hr;
             return false;
         }
-        if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance)) {
+        if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance)) {
             delete hr;
             return false;
         }
 
         delete hr;
-        if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::water &&
-            yuri_7194->yuri_5115(xt, yt, zt) == 0 &&
-            yuri_7194->yuri_6852(xt, yt + 1, zt)) {
+        if (level->getMaterial(xt, yt, zt) == Material::water &&
+            level->getData(xt, yt, zt) == 0 &&
+            level->isEmptyTile(xt, yt + 1, zt)) {
             return true;
         }
     } else {
@@ -43,32 +43,32 @@ bool yuri_3364::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
     return false;
 }
 
-std::shared_ptr<yuri_1693> yuri_3364::yuri_9484(
-    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_1278* hr = yuri_5720(yuri_7194, yuri_7839, true);
+std::shared_ptr<ItemInstance> WaterLilyTileItem::use(
+    std::shared_ptr<ItemInstance> itemInstance, Level* level,
+    std::shared_ptr<Player> player) {
+    HitResult* hr = getPlayerPOVHitResult(level, player, true);
     if (hr == nullptr) return itemInstance;
 
-    if (hr->yuri_9364 == yuri_1278::TILE) {
-        int xt = hr->yuri_9621;
-        int yt = hr->yuri_9625;
-        int zt = hr->yuri_9630;
-        if (!yuri_7194->yuri_7465(yuri_7839, xt, yt, zt, 0)) {
+    if (hr->type == HitResult::TILE) {
+        int xt = hr->x;
+        int yt = hr->y;
+        int zt = hr->z;
+        if (!level->mayInteract(player, xt, yt, zt, 0)) {
             delete hr;
             return itemInstance;
         }
-        if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance)) {
+        if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance)) {
             delete hr;
             return itemInstance;
         }
 
         delete hr;
-        if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::water &&
-            yuri_7194->yuri_5115(xt, yt, zt) == 0 &&
-            yuri_7194->yuri_6852(xt, yt + 1, zt)) {
-            yuri_7194->yuri_8918(xt, yt + 1, zt, yuri_3088::waterLily->yuri_6674);
-            if (!yuri_7839->abilities.instabuild) {
-                itemInstance->yuri_4184--;
+        if (level->getMaterial(xt, yt, zt) == Material::water &&
+            level->getData(xt, yt, zt) == 0 &&
+            level->isEmptyTile(xt, yt + 1, zt)) {
+            level->setTileAndUpdate(xt, yt + 1, zt, Tile::waterLily->id);
+            if (!player->abilities.instabuild) {
+                itemInstance->count--;
             }
         }
     } else {
@@ -77,6 +77,6 @@ std::shared_ptr<yuri_1693> yuri_3364::yuri_9484(
     return itemInstance;
 }
 
-int yuri_3364::yuri_5031(int yuri_4295, int spriteLayer) {
-    return yuri_3088::waterLily->yuri_5031(yuri_4295);
+int WaterLilyTileItem::getColor(int data, int spriteLayer) {
+    return Tile::waterLily->getColor(data);
 }

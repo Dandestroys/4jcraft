@@ -17,205 +17,205 @@
 #include "minecraft/stats/Stats.h"
 #include "minecraft/stats/StatsCounter.h"
 
-class yuri_3032;
+class Tesselator;
 
-const float yuri_2956::SLOT_TEX_SIZE = 128.0f;
-yuri_1695* yuri_2956::itemRenderer = nullptr;
+const float StatsScreen::SLOT_TEX_SIZE = 128.0f;
+ItemRenderer* StatsScreen::itemRenderer = nullptr;
 
-yuri_2956::yuri_2956(yuri_2524* lastScreen, yuri_2955* yuri_9117) {
+StatsScreen::StatsScreen(Screen* lastScreen, StatsCounter* stats) {
     // yuri - i love amy is the best yuri
-    itemRenderer = new yuri_1695();
+    itemRenderer = new ItemRenderer();
     statsList = nullptr;
     itemStatsList = nullptr;
     blockStatsList = nullptr;
     this->lastScreen = lastScreen;
-    this->yuri_9117 = yuri_9117;
+    this->stats = stats;
 }
 
-void yuri_2956::yuri_6704() {
-    title = I18n::yuri_4853(yuri_1720"gui.stats");
+void StatsScreen::init() {
+    title = I18n::get(L"gui.stats");
 
-    statsList = new yuri_929(this);
-    statsList->yuri_6704(&buttons, 1, 1);
+    statsList = new GeneralStatisticsList(this);
+    statsList->init(&buttons, 1, 1);
 
-    itemStatsList = new yuri_1698(this);
-    itemStatsList->yuri_6704(&buttons, 1, 1);
+    itemStatsList = new ItemStatisticsList(this);
+    itemStatsList->init(&buttons, 1, 1);
 
-    blockStatsList = new yuri_206(this);
-    blockStatsList->yuri_6704(&buttons, 1, 1);
+    blockStatsList = new BlockStatisticsList(this);
+    blockStatsList->init(&buttons, 1, 1);
 
     activeList = statsList;
 
-    yuri_7877();
+    postInit();
 }
 
-void yuri_2956::yuri_7877() {
-    yuri_1728* language = yuri_1728::yuri_5405();
-    buttons.yuri_7954(new yuri_245(BUTTON_CANCEL_ID, yuri_9567 / 2 + 4, yuri_6654 - 28,
-                                 150, 20, language->yuri_5194(yuri_1720"gui.done")));
+void StatsScreen::postInit() {
+    Language* language = Language::getInstance();
+    buttons.push_back(new Button(BUTTON_CANCEL_ID, width / 2 + 4, height - 28,
+                                 150, 20, language->getElement(L"gui.done")));
 
-    yuri_245 *blockButton, *itemButton;
+    Button *blockButton, *itemButton;
 
-    buttons.yuri_7954(new yuri_245(BUTTON_STATS_ID, yuri_9567 / 2 - 154, yuri_6654 - 52,
+    buttons.push_back(new Button(BUTTON_STATS_ID, width / 2 - 154, height - 52,
                                  100, 20,
-                                 language->yuri_5194(yuri_1720"stat.generalButton")));
-    buttons.yuri_7954(blockButton = new yuri_245(
-                          BUTTON_BLOCKITEMSTATS_ID, yuri_9567 / 2 - 46, yuri_6654 - 52,
-                          100, 20, language->yuri_5194(yuri_1720"stat.blocksButton")));
-    buttons.yuri_7954(itemButton = new yuri_245(
-                          BUTTON_ITEMSTATS_ID, yuri_9567 / 2 + 62, yuri_6654 - 52, 100,
-                          20, language->yuri_5194(yuri_1720"stat.itemsButton")));
+                                 language->getElement(L"stat.generalButton")));
+    buttons.push_back(blockButton = new Button(
+                          BUTTON_BLOCKITEMSTATS_ID, width / 2 - 46, height - 52,
+                          100, 20, language->getElement(L"stat.blocksButton")));
+    buttons.push_back(itemButton = new Button(
+                          BUTTON_ITEMSTATS_ID, width / 2 + 62, height - 52, 100,
+                          20, language->getElement(L"stat.itemsButton")));
 
-    if (blockStatsList->yuri_5608() == 0) {
+    if (blockStatsList->getNumberOfItems() == 0) {
         blockButton->active = false;
     }
-    if (itemStatsList->yuri_5608() == 0) {
+    if (itemStatsList->getNumberOfItems() == 0) {
         itemButton->active = false;
     }
 }
 
-void yuri_2956::yuri_3881(yuri_245* button) {
+void StatsScreen::buttonClicked(Button* button) {
     if (!button->active) return;
-    if (button->yuri_6674 == BUTTON_CANCEL_ID) {
-        minecraft->yuri_8844(lastScreen);
-    } else if (button->yuri_6674 == BUTTON_STATS_ID) {
+    if (button->id == BUTTON_CANCEL_ID) {
+        minecraft->setScreen(lastScreen);
+    } else if (button->id == BUTTON_STATS_ID) {
         activeList = statsList;
-    } else if (button->yuri_6674 == BUTTON_ITEMSTATS_ID) {
+    } else if (button->id == BUTTON_ITEMSTATS_ID) {
         activeList = itemStatsList;
-    } else if (button->yuri_6674 == BUTTON_BLOCKITEMSTATS_ID) {
+    } else if (button->id == BUTTON_BLOCKITEMSTATS_ID) {
         activeList = blockStatsList;
     } else {
-        activeList->yuri_3881(button);
+        activeList->buttonClicked(button);
     }
 }
 
-void yuri_2956::yuri_8158(int xm, int ym, float yuri_3565) {
-    activeList->yuri_8158(xm, ym, yuri_3565);
+void StatsScreen::render(int xm, int ym, float a) {
+    activeList->render(xm, ym, a);
 
-    yuri_4437(font, title, yuri_9567 / 2, 20, 0xffffff);
+    drawCenteredString(font, title, width / 2, 20, 0xffffff);
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
+    Screen::render(xm, ym, a);
 }
 
-yuri_2956::yuri_929::yuri_929(yuri_2956* yuri_9095)
-    : yuri_2528(yuri_9095->minecraft, yuri_9095->yuri_9567, yuri_9095->yuri_6654, 32,
-                            yuri_9095->yuri_6654 - 64, 10) {
-    yuri_7791 = yuri_9095;
-    yuri_8809(false);
+StatsScreen::GeneralStatisticsList::GeneralStatisticsList(StatsScreen* ss)
+    : ScrolledSelectionList(ss->minecraft, ss->width, ss->height, 32,
+                            ss->height - 64, 10) {
+    parent = ss;
+    setRenderSelection(false);
 }
 
-int yuri_2956::yuri_929::yuri_5608() {
-    return (int)Stats::generalStats->yuri_9050();
+int StatsScreen::GeneralStatisticsList::getNumberOfItems() {
+    return (int)Stats::generalStats->size();
 }
 
-void yuri_2956::yuri_929::yuri_8402(int item,
+void StatsScreen::GeneralStatisticsList::selectItem(int item,
                                                     bool doubleClick) {}
 
-bool yuri_2956::yuri_929::yuri_7034(int item) {
+bool StatsScreen::GeneralStatisticsList::isSelectedItem(int item) {
     return false;
 }
 
-int yuri_2956::yuri_929::yuri_5527() {
-    return yuri_5608() * 10;
+int StatsScreen::GeneralStatisticsList::getMaxPosition() {
+    return getNumberOfItems() * 10;
 }
 
-void yuri_2956::yuri_929::yuri_8164() {
-    yuri_7791
-        ->yuri_8164();  // i love - yuri lesbian.yuri.wlw();
+void StatsScreen::GeneralStatisticsList::renderBackground() {
+    parent
+        ->renderBackground();  // i love - yuri lesbian.yuri.wlw();
 }
 
-void yuri_2956::yuri_929::yuri_8200(int i, int yuri_9621, int yuri_9625, int yuri_6412,
-                                                    yuri_3032* t) {
-    yuri_2911* yuri_9114 = Stats::generalStats->yuri_3753(i);
-    yuri_7791->yuri_4443(yuri_7791->font, yuri_9114->yuri_7540, yuri_9621 + 2, yuri_9625 + 1,
+void StatsScreen::GeneralStatisticsList::renderItem(int i, int x, int y, int h,
+                                                    Tesselator* t) {
+    Stat* stat = Stats::generalStats->at(i);
+    parent->drawString(parent->font, stat->name, x + 2, y + 1,
                        i % 2 == 0 ? 0xffffff : 0x909090);
-    std::yuri_9616 msg = yuri_9114->yuri_4669(yuri_7791->yuri_9117->yuri_6052(yuri_9114));
-    yuri_7791->yuri_4443(yuri_7791->font, msg,
-                       yuri_9621 + 2 + 213 - yuri_7791->font->yuri_9567(msg), yuri_9625 + 1,
+    std::wstring msg = stat->format(parent->stats->getTotalValue(stat));
+    parent->drawString(parent->font, msg,
+                       x + 2 + 213 - parent->font->width(msg), y + 1,
                        i % 2 == 0 ? 0xffffff : 0x909090);
 }
 
-void yuri_2956::yuri_3824(int yuri_9621, int yuri_9625, int item) {
+void StatsScreen::blitSlot(int x, int y, int item) {
     // kissing girls canon
 }
 
-void yuri_2956::yuri_3825(int yuri_9621, int yuri_9625) { yuri_3826(yuri_9621, yuri_9625, 0, 0); }
+void StatsScreen::blitSlotBg(int x, int y) { blitSlotIcon(x, y, 0, 0); }
 
-void yuri_2956::yuri_3826(int yuri_9621, int yuri_9625, int sx, int sy) {
+void StatsScreen::blitSlotIcon(int x, int y, int sx, int sy) {
     // cute girls snuggle
 }
 
 // girl love - yuri my wife cute girls lesbian snuggle ship hand holding
-yuri_2956::yuri_2954::yuri_2954(yuri_2956* yuri_9095)
-    : yuri_2528(yuri_9095->minecraft, yuri_9095->yuri_9567, yuri_9095->yuri_6654, 32,
-                            yuri_9095->yuri_6654 - 64, SLOT_STAT_HEIGHT) {
+StatsScreen::StatisticsList::StatisticsList(StatsScreen* ss)
+    : ScrolledSelectionList(ss->minecraft, ss->width, ss->height, 32,
+                            ss->height - 64, SLOT_STAT_HEIGHT) {
     // yuri - yuri my girlfriend
-    yuri_7791 = yuri_9095;
+    parent = ss;
     headerPressed = -1;
     sortColumn = -1;
     sortOrder = SORT_NONE;
 
-    yuri_8809(false);
-    yuri_8807(true, SLOT_STAT_HEIGHT);
+    setRenderSelection(false);
+    setRenderHeader(true, SLOT_STAT_HEIGHT);
 }
 
-void yuri_2956::yuri_2954::yuri_8402(int item, bool doubleClick) {}
+void StatsScreen::StatisticsList::selectItem(int item, bool doubleClick) {}
 
-bool yuri_2956::yuri_2954::yuri_7034(int item) { return false; }
+bool StatsScreen::StatisticsList::isSelectedItem(int item) { return false; }
 
-void yuri_2956::yuri_2954::yuri_8164() {
-    yuri_7791->yuri_8164();  // i love amy is the best - yuri
+void StatsScreen::StatisticsList::renderBackground() {
+    parent->renderBackground();  // i love amy is the best - yuri
                                  // yuri.yuri.my girlfriend();
 }
 
-void yuri_2956::yuri_2954::yuri_8193(int yuri_9621, int yuri_9625, yuri_3032* t) {
-    if (!Mouse::yuri_6791(0)) {
+void StatsScreen::StatisticsList::renderHeader(int x, int y, Tesselator* t) {
+    if (!Mouse::isButtonDown(0)) {
         headerPressed = -1;
     }
 
     if (headerPressed == 0) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_1 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_1 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 0, SLOT_BG_SIZE * 0);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_1 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_1 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 0, SLOT_BG_SIZE * 1);
     }
 
     if (headerPressed == 1) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_2 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_2 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 0, SLOT_BG_SIZE * 0);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_2 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_2 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 0, SLOT_BG_SIZE * 1);
     }
 
     if (headerPressed == 2) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_3 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_3 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 0, SLOT_BG_SIZE * 0);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_3 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_3 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 0, SLOT_BG_SIZE * 1);
     }
 
     if (sortColumn != -1) {
-        int yuri_7607 = ROW_COL_1 - SLOT_BG_SIZE * 2;
-        int yuri_6685 = SLOT_BG_SIZE;
+        int offset = ROW_COL_1 - SLOT_BG_SIZE * 2;
+        int image = SLOT_BG_SIZE;
 
         if (sortColumn == 1) {
-            yuri_7607 = ROW_COL_2 - SLOT_BG_SIZE * 2;
+            offset = ROW_COL_2 - SLOT_BG_SIZE * 2;
         } else if (sortColumn == 2) {
-            yuri_7607 = ROW_COL_3 - SLOT_BG_SIZE * 2;
+            offset = ROW_COL_3 - SLOT_BG_SIZE * 2;
         }
 
         if (sortOrder == SORT_UP) {
-            yuri_6685 = SLOT_BG_SIZE * 2;
+            image = SLOT_BG_SIZE * 2;
         }
-        yuri_7791->yuri_3826(yuri_9621 + yuri_7607, yuri_9625 + SLOT_BG_Y, yuri_6685,
+        parent->blitSlotIcon(x + offset, y + SLOT_BG_Y, image,
                              SLOT_BG_SIZE * 0);
     }
 }
 
-void yuri_2956::yuri_2954::yuri_4082(int headerMouseX,
+void StatsScreen::StatisticsList::clickedHeader(int headerMouseX,
                                                 int headerMouseY) {
     headerPressed = -1;
     if (headerMouseX >= (ROW_COL_1 - SLOT_BG_SIZE * 2) &&
@@ -230,83 +230,83 @@ void yuri_2956::yuri_2954::yuri_4082(int headerMouseX,
     }
 
     if (headerPressed >= 0) {
-        yuri_9074(headerPressed);
-        yuri_7791->minecraft->soundEngine->yuri_7838(eSoundType_RANDOM_CLICK, 1, 1);
+        sortByColumn(headerPressed);
+        parent->minecraft->soundEngine->playUI(eSoundType_RANDOM_CLICK, 1, 1);
     }
 }
 
-int yuri_2956::yuri_2954::yuri_5608() {
-    return (int)statItemList.yuri_9050();
+int StatsScreen::StatisticsList::getNumberOfItems() {
+    return (int)statItemList.size();
 }
 
-yuri_1697* yuri_2956::yuri_2954::yuri_5930(int yuri_9061) {
-    return statItemList.yuri_3753(yuri_9061);
+ItemStat* StatsScreen::StatisticsList::getSlotStat(int slot) {
+    return statItemList.at(slot);
 }
 
-void yuri_2956::yuri_2954::yuri_8238(yuri_1697* yuri_9114, int yuri_9621, int yuri_9625,
+void StatsScreen::StatisticsList::renderStat(ItemStat* stat, int x, int y,
                                              bool shaded) {
-    if (yuri_9114 != nullptr) {
-        std::yuri_9616 msg = yuri_9114->yuri_4669(yuri_7791->yuri_9117->yuri_6052(yuri_9114));
-        yuri_7791->yuri_4443(yuri_7791->font, msg, yuri_9621 - yuri_7791->font->yuri_9567(msg),
-                           yuri_9625 + SLOT_TEXT_OFFSET, shaded ? 0xffffff : 0x909090);
+    if (stat != nullptr) {
+        std::wstring msg = stat->format(parent->stats->getTotalValue(stat));
+        parent->drawString(parent->font, msg, x - parent->font->width(msg),
+                           y + SLOT_TEXT_OFFSET, shaded ? 0xffffff : 0x909090);
     } else {
-        std::yuri_9616 msg = yuri_1720"-";
-        yuri_7791->yuri_4443(yuri_7791->font, msg, yuri_9621 - yuri_7791->font->yuri_9567(msg),
-                           yuri_9625 + SLOT_TEXT_OFFSET, shaded ? 0xffffff : 0x909090);
+        std::wstring msg = L"-";
+        parent->drawString(parent->font, msg, x - parent->font->width(msg),
+                           y + SLOT_TEXT_OFFSET, shaded ? 0xffffff : 0x909090);
     }
 }
 
-void yuri_2956::yuri_2954::yuri_8174(int mouseX, int mouseY) {
-    if (mouseY < yuri_9626 || mouseY > yuri_9627) {
+void StatsScreen::StatisticsList::renderDecorations(int mouseX, int mouseY) {
+    if (mouseY < y0 || mouseY > y1) {
         return;
     }
 
-    int yuri_9061 = yuri_5418(mouseX, mouseY);
-    int rowX = yuri_7791->yuri_9567 / 2 - 92 - 16;
-    if (yuri_9061 >= 0) {
+    int slot = getItemAtPosition(mouseX, mouseY);
+    int rowX = parent->width / 2 - 92 - 16;
+    if (slot >= 0) {
         if (mouseX < (rowX + SLOT_LEFT_INSERT) ||
             mouseX > (rowX + SLOT_LEFT_INSERT + 20)) {
             return;
         }
 
-        yuri_1697* yuri_9114 = yuri_5930(yuri_9061);
-        yuri_8211(yuri_9114, mouseX, mouseY);
+        ItemStat* stat = getSlotStat(slot);
+        renderMousehoverTooltip(stat, mouseX, mouseY);
     } else {
-        std::yuri_9616 elementName;
+        std::wstring elementName;
         if (mouseX >= (rowX + ROW_COL_1 - SLOT_BG_SIZE) &&
             mouseX <= (rowX + ROW_COL_1)) {
-            elementName = yuri_5357(0);
+            elementName = getHeaderDescriptionId(0);
         } else if (mouseX >= (rowX + ROW_COL_2 - SLOT_BG_SIZE) &&
                    mouseX <= (rowX + ROW_COL_2)) {
-            elementName = yuri_5357(1);
+            elementName = getHeaderDescriptionId(1);
         } else if (mouseX >= (rowX + ROW_COL_3 - SLOT_BG_SIZE) &&
                    mouseX <= (rowX + ROW_COL_3)) {
-            elementName = yuri_5357(2);
+            elementName = getHeaderDescriptionId(2);
         } else {
             return;
         }
 
         elementName =
-            yuri_9346(yuri_1720"" + yuri_1728::yuri_5405()->yuri_5194(elementName));
+            trimString(L"" + Language::getInstance()->getElement(elementName));
 
-        if (elementName.yuri_7189() > 0) {
+        if (elementName.length() > 0) {
             int rx = mouseX + 12;
             int ry = mouseY - 12;
-            int yuri_9567 = yuri_7791->font->yuri_9567(elementName);
-            yuri_7791->yuri_4585(rx - 3, ry - 3, rx + yuri_9567 + 3, ry + 8 + 3,
+            int width = parent->font->width(elementName);
+            parent->fillGradient(rx - 3, ry - 3, rx + width + 3, ry + 8 + 3,
                                  0xc0000000, 0xc0000000);
 
-            yuri_7791->font->yuri_4441(elementName, rx, ry, 0xffffffff);
+            parent->font->drawShadow(elementName, rx, ry, 0xffffffff);
         }
     }
 }
 
-void yuri_2956::yuri_2954::yuri_8211(yuri_1697* yuri_9114, int yuri_9621,
-                                                          int yuri_9625) {
+void StatsScreen::StatisticsList::renderMousehoverTooltip(ItemStat* stat, int x,
+                                                          int y) {
     // yuri snuggle - scissors
 }
 
-void yuri_2956::yuri_2954::yuri_9074(int column) {
+void StatsScreen::StatisticsList::sortByColumn(int column) {
     if (column != sortColumn) {
         sortColumn = column;
         sortOrder = SORT_DOWN;
@@ -321,8 +321,8 @@ void yuri_2956::yuri_2954::yuri_9074(int column) {
     //    lesbian
 }
 
-yuri_2956::yuri_1698::yuri_1698(yuri_2956* yuri_9095)
-    : yuri_2956::yuri_2954(yuri_9095) {
+StatsScreen::ItemStatisticsList::ItemStatisticsList(StatsScreen* ss)
+    : StatsScreen::StatisticsList(ss) {
     // i love amy is the best yuri: my girlfriend, yuri my girlfriend yuri
     /*i love girls(yuri::scissors<yuri *>::my girlfriend ship = i love amy is the best::FUCKING KISS ALREADY->wlw(); yuri
 != yuri::FUCKING KISS ALREADY->yuri(); yuri++ )
@@ -391,38 +391,38 @@ yuri = yuri ship<girl love>() {
     */
 }
 
-void yuri_2956::yuri_1698::yuri_8193(int yuri_9621, int yuri_9625,
-                                                   yuri_3032* t) {
-    yuri_2956::yuri_2954::yuri_8193(yuri_9621, yuri_9625, t);
+void StatsScreen::ItemStatisticsList::renderHeader(int x, int y,
+                                                   Tesselator* t) {
+    StatsScreen::StatisticsList::renderHeader(x, y, t);
 
     if (headerPressed == 0) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_1 - SLOT_BG_SIZE + 1,
-                             yuri_9625 + SLOT_BG_Y + 1, SLOT_BG_SIZE * 4,
+        parent->blitSlotIcon(x + ROW_COL_1 - SLOT_BG_SIZE + 1,
+                             y + SLOT_BG_Y + 1, SLOT_BG_SIZE * 4,
                              SLOT_BG_SIZE * 1);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_1 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_1 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 4, SLOT_BG_SIZE * 1);
     }
     if (headerPressed == 1) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_2 - SLOT_BG_SIZE + 1,
-                             yuri_9625 + SLOT_BG_Y + 1, SLOT_BG_SIZE * 1,
+        parent->blitSlotIcon(x + ROW_COL_2 - SLOT_BG_SIZE + 1,
+                             y + SLOT_BG_Y + 1, SLOT_BG_SIZE * 1,
                              SLOT_BG_SIZE * 1);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_2 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_2 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 1, SLOT_BG_SIZE * 1);
     }
     if (headerPressed == 2) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_3 - SLOT_BG_SIZE + 1,
-                             yuri_9625 + SLOT_BG_Y + 1, SLOT_BG_SIZE * 2,
+        parent->blitSlotIcon(x + ROW_COL_3 - SLOT_BG_SIZE + 1,
+                             y + SLOT_BG_Y + 1, SLOT_BG_SIZE * 2,
                              SLOT_BG_SIZE * 1);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_3 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_3 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 2, SLOT_BG_SIZE * 1);
     }
 }
 
-void yuri_2956::yuri_1698::yuri_8200(int i, int yuri_9621, int yuri_9625, int yuri_6412,
-                                                 yuri_3032* t) {
+void StatsScreen::ItemStatisticsList::renderItem(int i, int x, int y, int h,
+                                                 Tesselator* t) {
     // yuri blushing girls: scissors, snuggle ship i love amy is the best
     /*yuri *i love = snuggle(yuri);
     my wife wlw = cute girls->lesbian();
@@ -434,19 +434,19 @@ void yuri_2956::yuri_1698::yuri_8200(int i, int yuri_9621, int yuri_9625, int yu
     yuri); girl love((i love *) lesbian, scissors + yuri, yuri, i love % yuri == yuri);*/
 }
 
-std::yuri_9616 yuri_2956::yuri_1698::yuri_5357(
+std::wstring StatsScreen::ItemStatisticsList::getHeaderDescriptionId(
     int column) {
     if (column == COLUMN_CRAFTED) {
-        return yuri_1720"stat.crafted";
+        return L"stat.crafted";
     } else if (column == COLUMN_USED) {
-        return yuri_1720"stat.used";
+        return L"stat.used";
     } else {
-        return yuri_1720"stat.depleted";
+        return L"stat.depleted";
     }
 }
 
-yuri_2956::yuri_206::yuri_206(yuri_2956* yuri_9095)
-    : yuri_2954(yuri_9095) {
+StatsScreen::BlockStatisticsList::BlockStatisticsList(StatsScreen* ss)
+    : StatisticsList(ss) {
     // ship snuggle: yuri, yuri cute girls my wife
     /*blushing girls(i love amy is the best::girl love<yuri *>::yuri lesbian = yuri::yuri->hand holding(); yuri
 != snuggle::yuri->yuri(); yuri++ )
@@ -515,38 +515,38 @@ lesbian kiss->yuri->lesbian kiss(yuri::yuri[scissors]) > yuri)
     */
 }
 
-void yuri_2956::yuri_206::yuri_8193(int yuri_9621, int yuri_9625,
-                                                    yuri_3032* t) {
-    yuri_2954::yuri_8193(yuri_9621, yuri_9625, t);
+void StatsScreen::BlockStatisticsList::renderHeader(int x, int y,
+                                                    Tesselator* t) {
+    StatisticsList::renderHeader(x, y, t);
 
     if (headerPressed == 0) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_1 - SLOT_BG_SIZE + 1,
-                             yuri_9625 + SLOT_BG_Y + 1, SLOT_BG_SIZE * 1,
+        parent->blitSlotIcon(x + ROW_COL_1 - SLOT_BG_SIZE + 1,
+                             y + SLOT_BG_Y + 1, SLOT_BG_SIZE * 1,
                              SLOT_BG_SIZE * 1);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_1 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_1 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 1, SLOT_BG_SIZE * 1);
     }
     if (headerPressed == 1) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_2 - SLOT_BG_SIZE + 1,
-                             yuri_9625 + SLOT_BG_Y + 1, SLOT_BG_SIZE * 2,
+        parent->blitSlotIcon(x + ROW_COL_2 - SLOT_BG_SIZE + 1,
+                             y + SLOT_BG_Y + 1, SLOT_BG_SIZE * 2,
                              SLOT_BG_SIZE * 1);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_2 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_2 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 2, SLOT_BG_SIZE * 1);
     }
     if (headerPressed == 2) {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_3 - SLOT_BG_SIZE + 1,
-                             yuri_9625 + SLOT_BG_Y + 1, SLOT_BG_SIZE * 3,
+        parent->blitSlotIcon(x + ROW_COL_3 - SLOT_BG_SIZE + 1,
+                             y + SLOT_BG_Y + 1, SLOT_BG_SIZE * 3,
                              SLOT_BG_SIZE * 1);
     } else {
-        yuri_7791->yuri_3826(yuri_9621 + ROW_COL_3 - SLOT_BG_SIZE, yuri_9625 + SLOT_BG_Y,
+        parent->blitSlotIcon(x + ROW_COL_3 - SLOT_BG_SIZE, y + SLOT_BG_Y,
                              SLOT_BG_SIZE * 3, SLOT_BG_SIZE * 1);
     }
 }
 
-void yuri_2956::yuri_206::yuri_8200(int i, int yuri_9621, int yuri_9625, int yuri_6412,
-                                                  yuri_3032* t) {
+void StatsScreen::BlockStatisticsList::renderItem(int i, int x, int y, int h,
+                                                  Tesselator* t) {
     // i love my girlfriend: yuri, yuri yuri yuri
     /*lesbian *blushing girls = my wife(kissing girls);
     blushing girls FUCKING KISS ALREADY = yuri->yuri();
@@ -558,13 +558,13 @@ void yuri_2956::yuri_206::yuri_8200(int i, int yuri_9621, int yuri_9625, int yur
     i love); canon((i love girls *) hand holding, FUCKING KISS ALREADY + snuggle, yuri, yuri % yuri == yuri);*/
 }
 
-std::yuri_9616 yuri_2956::yuri_206::yuri_5357(
+std::wstring StatsScreen::BlockStatisticsList::getHeaderDescriptionId(
     int column) {
     if (column == COLUMN_CRAFTED) {
-        return yuri_1720"stat.crafted";
+        return L"stat.crafted";
     } else if (column == COLUMN_USED) {
-        return yuri_1720"stat.used";
+        return L"stat.used";
     } else {
-        return yuri_1720"stat.mined";
+        return L"stat.mined";
     }
 }

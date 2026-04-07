@@ -6,13 +6,13 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_1758;
-class yuri_2126;
+class Level;
+class Player;
 
-class yuri_778 : public yuri_739 {
+class ExperienceOrb : public Entity {
 public:
-    virtual eINSTANCEOF yuri_1188() { return eTYPE_EXPERIENCEORB; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_778(yuri_7194); }
+    virtual eINSTANCEOF GetType() { return eTYPE_EXPERIENCEORB; }
+    static Entity* create(Level* level) { return new ExperienceOrb(level); }
 
 private:
     static const int LIFETIME;
@@ -25,42 +25,42 @@ public:
 
 private:
     int health;
-    int yuri_9514;
-    std::shared_ptr<yuri_2126> followingPlayer;
+    int value;
+    std::shared_ptr<Player> followingPlayer;
     int followingTime;
 
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_778(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, int yuri_4184);
+    ExperienceOrb(Level* level, double x, double y, double z, int count);
 
 protected:
-    virtual bool yuri_7434();
+    virtual bool makeStepSound();
 
 public:
-    yuri_778(yuri_1758* yuri_7194);
+    ExperienceOrb(Level* level);
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual int yuri_5484(float yuri_3565);
-    virtual void yuri_9265();
-    virtual bool yuri_9418();
+    virtual int getLightColor(float a);
+    virtual void tick();
+    virtual bool updateInWaterState();
 
 protected:
-    virtual void yuri_3880(int dmg);
+    virtual void burn(int dmg);
 
 public:
-    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
-    virtual void yuri_3582(yuri_409* entityTag);
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual void yuri_7852(std::shared_ptr<yuri_2126> yuri_7839);
-    int yuri_6101();
-    int yuri_5385();
+    virtual bool hurt(DamageSource* source, float damage);
+    virtual void addAdditonalSaveData(CompoundTag* entityTag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void playerTouch(std::shared_ptr<Player> player);
+    int getValue();
+    int getIcon();
 
-    static int yuri_5228(int maxValue);
-    virtual bool yuri_6779();
+    static int getExperienceValue(int maxValue);
+    virtual bool isAttackable();
 
-    virtual bool yuri_9014(yuri_3322* c);  // kissing girls hand holding
+    virtual bool shouldRender(Vec3* c);  // kissing girls hand holding
 };

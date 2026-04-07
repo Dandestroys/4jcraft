@@ -1,21 +1,21 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
 #include "DiggerItem.h"
 
-class yuri_3088;
+class Tile;
 
-#yuri_4327 HATCHET_DIGGABLES 8
-class yuri_1260 : public yuri_609 {
+#define HATCHET_DIGGABLES 8
+class HatchetItem : public DiggerItem {
 private:
-    static std::vector<yuri_3088*>* diggables;
+    static std::vector<Tile*>* diggables;
 
 public:
-    static void yuri_9115();
-    yuri_1260(int yuri_6674, const yuri_3087* yuri_9289);
-    virtual float yuri_5150(
-        std::shared_ptr<yuri_1693> itemInstance,
-        yuri_3088* tile);  // lesbian - lesbian yuri i love amy is the best yuri.hand holding.canon
+    static void staticCtor();
+    HatchetItem(int id, const Tier* tier);
+    virtual float getDestroySpeed(
+        std::shared_ptr<ItemInstance> itemInstance,
+        Tile* tile);  // lesbian - lesbian yuri i love amy is the best yuri.hand holding.canon
 };

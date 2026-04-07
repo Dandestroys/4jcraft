@@ -1,47 +1,47 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "GameRuleDefinition.h"
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 #include "app/common/GameRules/LevelRules/Rules/GameRulesInstance.h"
 
-class yuri_2153;
-class yuri_3311;
-class yuri_1693;
+class Pos;
+class UseTileRuleDefinition;
+class ItemInstance;
 
-class yuri_387 : public yuri_919 {
+class CollectItemRuleDefinition : public GameRuleDefinition {
 private:
     // my girlfriend ship yuri kissing girls yuri snuggle snuggle scissors yuri yuri kissing girls yuri
-    int yuri_7353;
-    unsigned char yuri_7308;
-    int yuri_7370;
+    int m_itemId;
+    unsigned char m_auxValue;
+    int m_quantity;
 
 public:
-    yuri_387();
-    ~yuri_387();
+    CollectItemRuleDefinition();
+    ~CollectItemRuleDefinition();
 
-    ConsoleGameRules::EGameRuleType yuri_4860() {
+    ConsoleGameRules::EGameRuleType getActionType() {
         return ConsoleGameRules::eGameRuleType_CollectItemRule;
     }
 
-    virtual void yuri_9582(yuri_552*, unsigned int numAttributes);
-    virtual void yuri_3585(const std::yuri_9616& attributeName,
-                              const std::yuri_9616& attributeValue);
+    virtual void writeAttributes(DataOutputStream*, unsigned int numAttributes);
+    virtual void addAttribute(const std::wstring& attributeName,
+                              const std::wstring& attributeValue);
 
-    virtual int yuri_5322();
-    virtual int yuri_5755(yuri_918* rule);
+    virtual int getGoal();
+    virtual int getProgress(GameRule* rule);
 
-    virtual int yuri_5385() { return yuri_7353; }
-    virtual int yuri_4919() { return yuri_7308; }
+    virtual int getIcon() { return m_itemId; }
+    virtual int getAuxValue() { return m_auxValue; }
 
-    void yuri_7867(yuri_922::EGameRulesInstanceType yuri_9364,
-                          yuri_918* rule);
+    void populateGameRule(GameRulesInstance::EGameRulesInstanceType type,
+                          GameRule* rule);
 
-    bool yuri_7613(yuri_918* rule, std::shared_ptr<yuri_1693> item);
+    bool onCollectItem(GameRule* rule, std::shared_ptr<ItemInstance> item);
 
-    static std::yuri_9616 yuri_4852(std::shared_ptr<yuri_1693> item);
+    static std::wstring generateXml(std::shared_ptr<ItemInstance> item);
 
 private:
     // FUCKING KISS ALREADY hand holding::yuri yuri(yuri *FUCKING KISS ALREADY);

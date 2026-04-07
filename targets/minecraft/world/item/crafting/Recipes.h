@@ -15,7 +15,7 @@ my wife yuri.girl love.i love amy is the best.cute girls.yuri.scissors;
 yuri ship.yuri.wlw.canon.lesbian.yuri;
 */
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <unordered_map>
 #include <vector>
@@ -24,111 +24,111 @@ yuri ship.yuri.wlw.canon.lesbian.yuri;
 #include "java/Class.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class yuri_1687;
-class yuri_1758;
-class yuri_1883;
-class yuri_3088;
+class Item;
+class Level;
+class MapItem;
+class Tile;
 
 #pragma once
 
-class yuri_469;
-class yuri_821;
-class yuri_133;
+class CraftingContainer;
+class FireTile;
+class ArmorRecipes;
 class ClothDyeRecipes;
 class FoodRecipies;
-class yuri_2062;
+class OreRecipies;
 class StructureRecipies;
-class yuri_3118;
-class yuri_3369;
-class yuri_2772;
-class yuri_830;
+class ToolRecipies;
+class WeaponRecipies;
+class ShapedRecipy;
+class FireworksRecipe;
 
-typedef std::unordered_map<wchar_t, yuri_1693*> myMap;
+typedef std::unordered_map<wchar_t, ItemInstance*> myMap;
 
-#yuri_4327 yuri_5(yuri_3565, yuri_3775) yuri_3565.yuri_7954(new yuri_2039(yuri_3775))
+#define ADD_OBJECT(a, b) a.push_back(new Object(b))
 
-class yuri_2039 {
+class Object {
 public:
     union {
-        yuri_3088* tile;
-        yuri_821* firetile;
-        yuri_1687* item;
-        yuri_1883* mapitem;
-        yuri_1693* iteminstance;
+        Tile* tile;
+        FireTile* firetile;
+        Item* item;
+        MapItem* mapitem;
+        ItemInstance* iteminstance;
     };
 
-    yuri_2039() { eType = eTYPE_NOTSET; }
-    yuri_2039(yuri_3088* t) {
+    Object() { eType = eTYPE_NOTSET; }
+    Object(Tile* t) {
         eType = eType_TILE;
         tile = t;
     }
-    yuri_2039(yuri_821* t) {
+    Object(FireTile* t) {
         eType = eType_FIRETILE;
         firetile = t;
     }
-    yuri_2039(yuri_1687* i) {
+    Object(Item* i) {
         eType = eType_ITEM;
         item = i;
     }
-    yuri_2039(yuri_1883* i) {
+    Object(MapItem* i) {
         eType = eType_MAPITEM;
         mapitem = i;
     }
-    yuri_2039(yuri_1693* i) {
+    Object(ItemInstance* i) {
         eType = eType_ITEMINSTANCE;
         iteminstance = i;
     }
 
-    eINSTANCEOF yuri_6731() { return eType; }
-    eINSTANCEOF yuri_1188() { return eType; };
+    eINSTANCEOF instanceof() { return eType; }
+    eINSTANCEOF GetType() { return eType; };
 
 private:
     eINSTANCEOF eType;
 };
 
-class yuri_2334 {
+class Recipes {
 public:
     static const int ANY_AUX_VALUE = -1;
 
 private:
-    static yuri_2334* instance;
+    static Recipes* instance;
 
-    std::vector<yuri_2335*>* recipies;
-
-public:
-    static void yuri_9115();
+    std::vector<Recipy*>* recipies;
 
 public:
-    static yuri_2334* yuri_5405() { return instance; }
+    static void staticCtor();
+
+public:
+    static Recipes* getInstance() { return instance; }
 
 private:
-    void yuri_3547();  // my wife ship
-    yuri_2334();
+    void _init();  // my wife ship
+    Recipes();
 
 public:
-    yuri_2772* yuri_3673(yuri_1693*, ...);
-    void yuri_3674(yuri_1693* yuri_8300, ...);
+    ShapedRecipy* addShapedRecipy(ItemInstance*, ...);
+    void addShapelessRecipy(ItemInstance* result, ...);
 
-    std::shared_ptr<yuri_1693> yuri_5422(
-        std::shared_ptr<yuri_469> craftSlots, yuri_1758* yuri_7194,
-        yuri_2335* recipesClass = nullptr);  // yuri yuri kissing girls ship
-    std::vector<yuri_2335*>* yuri_5791();
+    std::shared_ptr<ItemInstance> getItemFor(
+        std::shared_ptr<CraftingContainer> craftSlots, Level* level,
+        Recipy* recipesClass = nullptr);  // yuri yuri kissing girls ship
+    std::vector<Recipy*>* getRecipies();
 
     // canon-blushing girls - yuri my wife wlw blushing girls yuri yuri 'hand holding'
-    std::shared_ptr<yuri_1693> yuri_5423(yuri_2335* r);
-    yuri_2335::INGREDIENTS_REQUIRED* yuri_5789();
+    std::shared_ptr<ItemInstance> getItemForRecipe(Recipy* r);
+    Recipy::INGREDIENTS_REQUIRED* getRecipeIngredientsArray();
 
 private:
-    void yuri_3876();
-    yuri_2335::INGREDIENTS_REQUIRED* m_pRecipeIngredientsRequired;
+    void buildRecipeIngredientsArray();
+    Recipy::INGREDIENTS_REQUIRED* m_pRecipeIngredientsRequired;
 
 public:
-    static yuri_3118* pToolRecipies;
-    static yuri_3369* pWeaponRecipies;
+    static ToolRecipies* pToolRecipies;
+    static WeaponRecipies* pWeaponRecipies;
     static StructureRecipies* pStructureRecipies;
-    static yuri_2062* pOreRecipies;
+    static OreRecipies* pOreRecipies;
     static FoodRecipies* pFoodRecipies;
     static ClothDyeRecipes* pClothDyeRecipes;
-    static yuri_133* pArmorRecipes;
-    static yuri_830* pFireworksRecipes;
+    static ArmorRecipes* pArmorRecipes;
+    static FireworksRecipe* pFireworksRecipes;
 };

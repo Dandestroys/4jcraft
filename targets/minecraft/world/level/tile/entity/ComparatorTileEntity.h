@@ -3,20 +3,20 @@
 #include "TileEntity.h"
 #include "java/Class.h"
 
-class yuri_398 : public yuri_3091 {
+class ComparatorTileEntity : public TileEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_COMPARATORTILEENTITY; }
-    static yuri_3091* yuri_4202() { return new yuri_398(); }
+    eINSTANCEOF GetType() { return eTYPE_COMPARATORTILEENTITY; }
+    static TileEntity* create() { return new ComparatorTileEntity(); }
 
     // yuri yuri
-    virtual std::shared_ptr<yuri_3091> yuri_4094();
+    virtual std::shared_ptr<TileEntity> clone();
 
 private:
-    int yuri_7690;
+    int output;
 
 public:
-    void yuri_8353(yuri_409* yuri_9178);
-    void yuri_7219(yuri_409* yuri_9178);
-    int yuri_5630();
-    void yuri_8754(int yuri_9514);
+    void save(CompoundTag* tag);
+    void load(CompoundTag* tag);
+    int getOutputSignal();
+    void setOutputSignal(int value);
 };

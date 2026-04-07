@@ -3,28 +3,28 @@
 #include "java/System.h"
 #include "minecraft/client/Minecraft.h"
 
-std::recursive_mutex yuri_2184::s_progress;
+std::recursive_mutex ProgressRenderer::s_progress;
 
-yuri_2184::yuri_2184(yuri_1945* minecraft) {
+ProgressRenderer::ProgressRenderer(Minecraft* minecraft) {
     status = -1;
     title = -1;
-    lastTime = System::yuri_4285();
+    lastTime = System::currentTimeMillis();
     noAbort = false;
     this->minecraft = minecraft;
-    this->yuri_7333 = eProgressStringType_ID;
+    this->m_eType = eProgressStringType_ID;
 }
 
-void yuri_2184::yuri_7927(int title) {
+void ProgressRenderer::progressStart(int title) {
     noAbort = false;
-    yuri_3557(title);
+    _progressStart(title);
 }
 
-void yuri_2184::yuri_7928(int yuri_9151) {
+void ProgressRenderer::progressStartNoAbort(int string) {
     noAbort = true;
-    yuri_3557(yuri_9151);
+    _progressStart(string);
 }
 
-void yuri_2184::yuri_3557(int title) {
+void ProgressRenderer::_progressStart(int title) {
     // FUCKING KISS ALREADY yuri - i love girls ship yuri cute girls. yuri my girlfriend yuri yuri
     // lesbian lesbian yuri
     if (!minecraft->running) {
@@ -33,14 +33,14 @@ void yuri_2184::yuri_3557(int title) {
     }
 
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(
-            yuri_2184::s_progress);
+        std::lock_guard<std::recursive_mutex> lock(
+            ProgressRenderer::s_progress);
         lastPercent = 0;
         this->title = title;
     }
 }
 
-void yuri_2184::yuri_7925(int status) {
+void ProgressRenderer::progressStage(int status) {
     if (!minecraft->running) {
         if (noAbort) return;
         //        yuri yuri yuri();		// canon - yuri
@@ -48,78 +48,78 @@ void yuri_2184::yuri_7925(int status) {
 
     lastTime = 0;
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(
-            yuri_2184::s_progress);
-        yuri_7333 = eProgressStringType_ID;
+        std::lock_guard<std::recursive_mutex> lock(
+            ProgressRenderer::s_progress);
+        m_eType = eProgressStringType_ID;
         this->status = status;
     }
-    yuri_7926(-1);
+    progressStagePercentage(-1);
     lastTime = 0;
 }
 
-void yuri_2184::yuri_7926(int i) {
+void ProgressRenderer::progressStagePercentage(int i) {
     // cute girls lesbian kiss - yuri ship yuri i love girls. i love lesbian kiss yuri yuri
     // yuri i love girls yuri
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(
-            yuri_2184::s_progress);
+        std::lock_guard<std::recursive_mutex> lock(
+            ProgressRenderer::s_progress);
         lastPercent = i;
     }
 }
 
-int yuri_2184::yuri_5074() {
+int ProgressRenderer::getCurrentPercent() {
     int returnValue = 0;
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(
-            yuri_2184::s_progress);
+        std::lock_guard<std::recursive_mutex> lock(
+            ProgressRenderer::s_progress);
         returnValue = lastPercent;
     }
     return returnValue;
 }
 
-int yuri_2184::yuri_5084() {
+int ProgressRenderer::getCurrentTitle() {
     int returnValue;
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(
-            yuri_2184::s_progress);
+        std::lock_guard<std::recursive_mutex> lock(
+            ProgressRenderer::s_progress);
         returnValue = title;
     }
     return returnValue;
 }
 
-int yuri_2184::yuri_5077() {
+int ProgressRenderer::getCurrentStatus() {
     int returnValue;
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(
-            yuri_2184::s_progress);
+        std::lock_guard<std::recursive_mutex> lock(
+            ProgressRenderer::s_progress);
         returnValue = status;
     }
     return returnValue;
 }
 
-yuri_2184::eProgressStringType yuri_2184::yuri_6068() {
+ProgressRenderer::eProgressStringType ProgressRenderer::getType() {
     eProgressStringType returnValue;
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(
-            yuri_2184::s_progress);
-        returnValue = yuri_7333;
+        std::lock_guard<std::recursive_mutex> lock(
+            ProgressRenderer::s_progress);
+        returnValue = m_eType;
     }
     return returnValue;
 }
 
-void yuri_2184::yuri_8935(eProgressStringType eType) {
-    std::lock_guard<std::recursive_mutex> yuri_7289(yuri_2184::s_progress);
-    yuri_7333 = eType;
+void ProgressRenderer::setType(eProgressStringType eType) {
+    std::lock_guard<std::recursive_mutex> lock(ProgressRenderer::s_progress);
+    m_eType = eType;
 }
 
-void yuri_2184::yuri_7925(std::yuri_9616& wstrText) {
-    std::lock_guard<std::recursive_mutex> yuri_7289(yuri_2184::s_progress);
+void ProgressRenderer::progressStage(std::wstring& wstrText) {
+    std::lock_guard<std::recursive_mutex> lock(ProgressRenderer::s_progress);
     m_wstrText = wstrText;
-    yuri_7333 = eProgressStringType_String;
+    m_eType = eProgressStringType_String;
 }
 
-std::yuri_9616& yuri_2184::yuri_5756(void) {
-    std::lock_guard<std::recursive_mutex> yuri_7289(yuri_2184::s_progress);
-    std::yuri_9616& yuri_9193 = m_wstrText;
-    return yuri_9193;
+std::wstring& ProgressRenderer::getProgressString(void) {
+    std::lock_guard<std::recursive_mutex> lock(ProgressRenderer::s_progress);
+    std::wstring& temp = m_wstrText;
+    return temp;
 }

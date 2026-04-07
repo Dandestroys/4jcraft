@@ -1,16 +1,16 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 
 #include "Layer.h"
 
-class yuri_2856 : public yuri_1742 {
+class SmoothZoomLayer : public Layer {
 public:
-    yuri_2856(yuri_6733 seedMixup, std::shared_ptr<yuri_1742> yuri_7791);
+    SmoothZoomLayer(int64_t seedMixup, std::shared_ptr<Layer> parent);
 
-    virtual std::vector<int> yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412);
-    static std::shared_ptr<yuri_1742> yuri_9638(yuri_6733 yuri_8396, std::shared_ptr<yuri_1742> sup,
-                                       int yuri_4184);
+    virtual std::vector<int> getArea(int xo, int yo, int w, int h);
+    static std::shared_ptr<Layer> zoom(int64_t seed, std::shared_ptr<Layer> sup,
+                                       int count);
 };

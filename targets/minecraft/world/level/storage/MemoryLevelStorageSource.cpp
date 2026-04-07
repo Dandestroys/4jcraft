@@ -4,45 +4,45 @@
 #include "MemoryLevelStorage.h"
 
 
-yuri_1910::yuri_1910() {}
+MemoryLevelStorageSource::MemoryLevelStorageSource() {}
 
-std::yuri_9616 yuri_1910::yuri_5578() { return yuri_1720"Memory Storage"; }
+std::wstring MemoryLevelStorageSource::getName() { return L"Memory Storage"; }
 
-std::shared_ptr<yuri_1772> yuri_1910::yuri_8403(
-    const std::yuri_9616& yuri_7196, bool createPlayerDir) {
-        return std::shared_ptr<yuri_1772> () new yuri_1909());
+std::shared_ptr<LevelStorage> MemoryLevelStorageSource::selectLevel(
+    const std::wstring& levelId, bool createPlayerDir) {
+        return std::shared_ptr<LevelStorage> () new MemoryLevelStorage());
 }
 
-std::vector<yuri_1774*>* yuri_1910::yuri_5470() {
-    return new std::vector<yuri_1774*>;
+std::vector<LevelSummary*>* MemoryLevelStorageSource::getLevelList() {
+    return new std::vector<LevelSummary*>;
 }
 
-void yuri_1910::yuri_4045() {}
+void MemoryLevelStorageSource::clearAll() {}
 
-yuri_1761* yuri_1910::yuri_5123(
-    const std::yuri_9616& yuri_7196) {
+LevelData* MemoryLevelStorageSource::getDataTagFor(
+    const std::wstring& levelId) {
     return nullptr;
 }
 
-bool yuri_1910::yuri_6969(
-    const std::yuri_9616& yuri_7196) {
+bool MemoryLevelStorageSource::isNewLevelIdAcceptable(
+    const std::wstring& levelId) {
     return true;
 }
 
-void yuri_1910::yuri_4337(const std::yuri_9616& yuri_7196) {}
+void MemoryLevelStorageSource::deleteLevel(const std::wstring& levelId) {}
 
-void yuri_1910::yuri_8154(const std::yuri_9616& yuri_7196,
-                                           const std::yuri_9616& newLevelName) {}
+void MemoryLevelStorageSource::renameLevel(const std::wstring& levelId,
+                                           const std::wstring& newLevelName) {}
 
-bool yuri_1910::yuri_6821(const std::yuri_9616& yuri_7196) {
+bool MemoryLevelStorageSource::isConvertible(const std::wstring& levelId) {
     return false;
 }
 
-bool yuri_1910::yuri_8265(const std::yuri_9616& yuri_7196) {
+bool MemoryLevelStorageSource::requiresConversion(const std::wstring& levelId) {
     return false;
 }
 
-bool yuri_1910::yuri_4170(const std::yuri_9616& yuri_7196,
+bool MemoryLevelStorageSource::convertLevel(const std::wstring& levelId,
                                             ProgressListener* progress) {
     return false;
 }

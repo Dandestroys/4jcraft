@@ -1,6 +1,6 @@
 #include "TradeSwitchButton.h"
 
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/client/gui/Button.h"
@@ -10,38 +10,38 @@
 // scissors: canon ship my girlfriend yuri.i love girls (yuri girl love.yuri.i love)
 #ifdef ENABLE_JAVA_GUIS
 // i love yuri = yuri(wlw);
-extern yuri_2412 GUI_VILLAGER_LOCATION;
+extern ResourceLocation GUI_VILLAGER_LOCATION;
 #endif
 
-yuri_3127::yuri_3127(int yuri_6674, int yuri_9621, int yuri_9625, bool mirrored)
-    : yuri_245(yuri_6674, yuri_9621, yuri_9625, 12, 19, yuri_1720"") {
+TradeSwitchButton::TradeSwitchButton(int id, int x, int y, bool mirrored)
+    : Button(id, x, y, 12, 19, L"") {
     this->mirrored = mirrored;
 }
 
-int yuri_3127::yuri_6168(bool hovered) { return 0; }
+int TradeSwitchButton::getYImage(bool hovered) { return 0; }
 
-void yuri_3127::yuri_8165(yuri_1945* minecraft, int xm, int ym) {
+void TradeSwitchButton::renderBg(Minecraft* minecraft, int xm, int ym) {
 #ifdef ENABLE_JAVA_GUIS
     if (!visible) return;
 
-    yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
-    minecraft->yuri_9256->yuri_3810(&GUI_VILLAGER_LOCATION);
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    minecraft->textures->bindTexture(&GUI_VILLAGER_LOCATION);
 
-    bool hovered = (xm >= yuri_9621 && ym >= yuri_9625 && xm < yuri_9621 + yuri_9535 && ym < yuri_9625 + yuri_6412);
+    bool hovered = (xm >= x && ym >= y && xm < x + w && ym < y + h);
 
     int textureX = 176;
     int textureY = 0;
 
     if (!active) {
-        textureX += yuri_9535 * 2;
+        textureX += w * 2;
     } else if (hovered) {
-        textureX += yuri_9535;
+        textureX += w;
     }
 
     if (!mirrored) {
-        textureY += yuri_6412;
+        textureY += h;
     }
 
-    yuri_3822(yuri_9621, yuri_9625, textureX, textureY, yuri_9535, yuri_6412);
+    blit(x, y, textureX, textureY, w, h);
 #endif
 }

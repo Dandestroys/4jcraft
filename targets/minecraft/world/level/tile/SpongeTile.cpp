@@ -5,4 +5,4 @@
 
 const int RANGE = 2;
 
-yuri_2888::yuri_2888(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::sponge) {}
+Sponge::Sponge(int id) : Tile(id, Material::sponge) {}

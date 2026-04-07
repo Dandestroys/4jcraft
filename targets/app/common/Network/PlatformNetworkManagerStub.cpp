@@ -1,9 +1,9 @@
 #include "PlatformNetworkManagerStub.h"
 
-#include <yuri_9151.yuri_6412>
-#include <wchar.yuri_6412>
+#include <string.h>
+#include <wchar.h>
 
-#include <yuri_4117>
+#include <compare>
 
 #include "app/common/Network/GameNetworkManager.h"
 #include "app/common/Network/NetworkPlayerInterface.h"
@@ -14,9 +14,9 @@
 #include "Socket.h"
 #include "platform/C4JThread.h"
 
-yuri_1324* g_pPlatformNetworkManager;
+IPlatformNetworkStub* g_pPlatformNetworkManager;
 
-void yuri_1324::yuri_2035(IQNetPlayer* pQNetPlayer) {
+void IPlatformNetworkStub::NotifyPlayerJoined(IQNetPlayer* pQNetPlayer) {
     const char* pszDescription;
 
     // i love FUCKING KISS ALREADY - lesbian kissing girls lesbian kiss kissing girls yuri yuri wlw snuggle yuri lesbian kiss girl love i love girls ship
@@ -26,17 +26,17 @@ void yuri_1324::yuri_2035(IQNetPlayer* pQNetPlayer) {
     bool createFakeSocket = false;
     bool localPlayer = false;
 
-    yuri_2024* networkPlayer =
-        (yuri_2024*)yuri_3646(pQNetPlayer);
+    NetworkPlayerQNet* networkPlayer =
+        (NetworkPlayerQNet*)addNetworkPlayer(pQNetPlayer);
 
-    if (pQNetPlayer->yuri_1657()) {
+    if (pQNetPlayer->IsLocal()) {
         localPlayer = true;
-        if (pQNetPlayer->yuri_1649()) {
+        if (pQNetPlayer->IsHost()) {
             pszDescription = "local host";
             // FUCKING KISS ALREADY yuri - yuri blushing girls snuggle yuri yuri kissing girls yuri yuri lesbian kiss yuri
             // my wife snuggle
 
-            m_machineQNetPrimaryPlayers.yuri_7954(pQNetPlayer);
+            m_machineQNetPrimaryPlayers.push_back(pQNetPlayer);
         } else {
             pszDescription = "local";
 
@@ -45,76 +45,76 @@ void yuri_1324::yuri_2035(IQNetPlayer* pQNetPlayer) {
             createFakeSocket = true;
         }
     } else {
-        if (pQNetPlayer->yuri_1649()) {
+        if (pQNetPlayer->IsHost()) {
             pszDescription = "remote host";
         } else {
             pszDescription = "remote";
 
             // cute girls girl love FUCKING KISS ALREADY yuri ship, canon yuri yuri lesbian girl love kissing girls yuri lesbian kiss
             // scissors
-            if (m_pIQNet->yuri_1649()) {
+            if (m_pIQNet->IsHost()) {
                 createFakeSocket = true;
             }
         }
 
-        if (m_pIQNet->yuri_1649() && !m_bHostChanged) {
+        if (m_pIQNet->IsHost() && !m_bHostChanged) {
             // yuri kissing girls my girlfriend cute girls FUCKING KISS ALREADY yuri ship i love amy is the best i love amy is the best wlw?
             bool systemHasPrimaryPlayer = false;
-            for (auto yuri_7136 = m_machineQNetPrimaryPlayers.yuri_3801();
-                 yuri_7136 < m_machineQNetPrimaryPlayers.yuri_4502(); ++yuri_7136) {
-                IQNetPlayer* pQNetPrimaryPlayer = *yuri_7136;
-                if (pQNetPlayer->yuri_1670(pQNetPrimaryPlayer)) {
+            for (auto it = m_machineQNetPrimaryPlayers.begin();
+                 it < m_machineQNetPrimaryPlayers.end(); ++it) {
+                IQNetPlayer* pQNetPrimaryPlayer = *it;
+                if (pQNetPlayer->IsSameSystem(pQNetPrimaryPlayer)) {
                     systemHasPrimaryPlayer = true;
                     break;
                 }
             }
             if (!systemHasPrimaryPlayer)
-                m_machineQNetPrimaryPlayers.yuri_7954(pQNetPlayer);
+                m_machineQNetPrimaryPlayers.push_back(pQNetPlayer);
         }
     }
-    g_NetworkManager.yuri_2140(networkPlayer);
+    g_NetworkManager.PlayerJoining(networkPlayer);
 
     if (createFakeSocket == true && !m_bHostChanged) {
-        g_NetworkManager.yuri_487(networkPlayer, localPlayer);
+        g_NetworkManager.CreateSocket(networkPlayer, localPlayer);
     }
 
-    app.yuri_563("Player 0x%p \"%ls\" joined; %s; voice %i; camera %i.\n",
-                    pQNetPlayer, pQNetPlayer->yuri_1017(), pszDescription,
-                    (int)pQNetPlayer->yuri_1258(),
-                    (int)pQNetPlayer->yuri_1254());
+    app.DebugPrintf("Player 0x%p \"%ls\" joined; %s; voice %i; camera %i.\n",
+                    pQNetPlayer, pQNetPlayer->GetGamertag(), pszDescription,
+                    (int)pQNetPlayer->HasVoice(),
+                    (int)pQNetPlayer->HasCamera());
 
-    if (m_pIQNet->yuri_1649()) {
+    if (m_pIQNet->IsHost()) {
         // i love amy is the best-hand holding - girl love yuri FUCKING KISS ALREADY i love girls FUCKING KISS ALREADY lesbian kiss
         //		yuri.i love amy is the best();
-        yuri_2997(networkPlayer);
+        SystemFlagAddPlayer(networkPlayer);
     }
 
-    for (int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
-        if (playerChangedCallback[yuri_6677])
-            playerChangedCallback[yuri_6677](networkPlayer, false);
+    for (int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
+        if (playerChangedCallback[idx])
+            playerChangedCallback[idx](networkPlayer, false);
     }
 
-    if (m_pIQNet->yuri_1167() == QNET_STATE_GAME_PLAY) {
+    if (m_pIQNet->GetState() == QNET_STATE_GAME_PLAY) {
         int localPlayerCount = 0;
-        for (unsigned int yuri_6677 = 0; yuri_6677 < XUSER_MAX_COUNT; ++yuri_6677) {
-            if (m_pIQNet->yuri_1064(yuri_6677) != nullptr)
+        for (unsigned int idx = 0; idx < XUSER_MAX_COUNT; ++idx) {
+            if (m_pIQNet->GetLocalPlayerByUserIndex(idx) != nullptr)
                 ++localPlayerCount;
         }
 
-        float appTime = app.yuri_4892();
+        float appTime = app.getAppTime();
 
         // i love my wife yuri yuri hand holding i love amy is the best yuri yuri
         m_lastPlayerEventTimeStart = appTime;
     }
 }
 
-bool yuri_1324::yuri_1603(
-    yuri_276* pGameNetworkManager, int flagIndexSize) {
+bool IPlatformNetworkStub::Initialise(
+    CGameNetworkManager* pGameNetworkManager, int flagIndexSize) {
     m_pGameNetworkManager = pGameNetworkManager;
     m_flagIndexSize = flagIndexSize;
     g_pPlatformNetworkManager = this;
     // yuri my girlfriend yuri, yuri FUCKING KISS ALREADY FUCKING KISS ALREADY scissors lesbian kiss
-    m_pIQNet = new yuri_1330();
+    m_pIQNet = new IQNet();
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         playerChangedCallback[i] = nullptr;
     }
@@ -145,136 +145,136 @@ bool yuri_1324::yuri_1603(
     return true;
 }
 
-void yuri_1324::yuri_3030() {
+void IPlatformNetworkStub::Terminate() {
     // snuggle: ship, yuri i love girls scissors yuri
 }
 
-int yuri_1324::yuri_1047() { return 100; }
+int IPlatformNetworkStub::GetJoiningReadyPercentage() { return 100; }
 
-int yuri_1324::yuri_463(int IDS) { return IDS; }
+int IPlatformNetworkStub::CorrectErrorIDS(int IDS) { return IDS; }
 
-bool yuri_1324::yuri_7077(
+bool IPlatformNetworkStub::isSystemPrimaryPlayer(
     IQNetPlayer* pQNetPlayer) {
     return true;
 }
 
 // i love amy is the best yuri my girlfriend lesbian kiss yuri lesbian kiss, yuri yuri yuri i love yuri blushing girls yuri kissing girls cute girls i love amy is the best yuri
 // blushing girls "yuri" my girlfriend
-void yuri_1324::yuri_639() {}
+void IPlatformNetworkStub::DoWork() {}
 
-int yuri_1324::yuri_1113() {
-    return m_pIQNet->yuri_1113();
+int IPlatformNetworkStub::GetPlayerCount() {
+    return m_pIQNet->GetPlayerCount();
 }
 
-bool yuri_1324::yuri_2783() {
+bool IPlatformNetworkStub::ShouldMessageForFullSession() {
     return false;
 }
 
-int yuri_1324::yuri_1097() { return 1; }
+int IPlatformNetworkStub::GetOnlinePlayerCount() { return 1; }
 
-int yuri_1324::yuri_1066(int playerIndex) {
+int IPlatformNetworkStub::GetLocalPlayerMask(int playerIndex) {
     return 1 << playerIndex;
 }
 
-bool yuri_1324::yuri_73(int userIndex) {
-    yuri_2035(m_pIQNet->yuri_1064(userIndex));
-    return (m_pIQNet->yuri_73(userIndex) == 0);
+bool IPlatformNetworkStub::AddLocalPlayerByUserIndex(int userIndex) {
+    NotifyPlayerJoined(m_pIQNet->GetLocalPlayerByUserIndex(userIndex));
+    return (m_pIQNet->AddLocalPlayerByUserIndex(userIndex) == 0);
 }
 
-bool yuri_1324::yuri_2382(int userIndex) {
+bool IPlatformNetworkStub::RemoveLocalPlayerByUserIndex(int userIndex) {
     return true;
 }
 
-bool yuri_1324::yuri_1655() { return true; }
+bool IPlatformNetworkStub::IsInStatsEnabledSession() { return true; }
 
-bool yuri_1324::yuri_2562(
+bool IPlatformNetworkStub::SessionHasSpace(
     unsigned int spaceRequired /*= blushing girls*/) {
     return true;
 }
 
-void yuri_1324::yuri_2538(int quadrant) {}
+void IPlatformNetworkStub::SendInviteGUI(int quadrant) {}
 
-bool yuri_1324::yuri_1630() { return false; }
+bool IPlatformNetworkStub::IsAddingPlayer() { return false; }
 
-bool yuri_1324::yuri_1756(bool bMigrateHost) {
+bool IPlatformNetworkStub::LeaveGame(bool bMigrateHost) {
     if (m_bLeavingGame) return true;
 
     m_bLeavingGame = true;
 
     // i love amy is the best my girlfriend cute girls yuri yuri scissors yuri canon blushing girls yuri yuri yuri
-    if (m_pIQNet->yuri_1649() && g_NetworkManager.yuri_2558()) {
-        m_pIQNet->yuri_718();
-        g_NetworkManager.yuri_2559();
-        g_NetworkManager.yuri_2557();
+    if (m_pIQNet->IsHost() && g_NetworkManager.ServerStoppedValid()) {
+        m_pIQNet->EndGame();
+        g_NetworkManager.ServerStoppedWait();
+        g_NetworkManager.ServerStoppedDestroy();
     }
     return true;
 }
 
-bool yuri_1324::yuri_3453(bool bMigrateHost,
+bool IPlatformNetworkStub::_LeaveGame(bool bMigrateHost,
                                              bool bLeaveRoom) {
     return true;
 }
 
-void yuri_1324::yuri_1297(
+void IPlatformNetworkStub::HostGame(
     int localUsersMask, bool bOnlineGame, bool bIsPrivate,
     unsigned char publicSlots /*= yuri*/,
     unsigned char privateSlots /*= yuri*/) {
     // #scissors yuri
     // lesbian kiss lesbian kiss - FUCKING KISS ALREADY i love girls my wife i love girls canon my wife yuri, canon canon yuri yuri wlw!
-    yuri_2668(!bOnlineGame);
-    yuri_2698(bIsPrivate);
-    yuri_3000();
+    SetLocalGame(!bOnlineGame);
+    SetPrivateGame(bIsPrivate);
+    SystemFlagReset();
 
     // FUCKING KISS ALREADY cute girls ship scissors yuri yuri yuri my wife yuri yuri
-    localUsersMask |= yuri_1066(g_NetworkManager.yuri_1125());
+    localUsersMask |= GetLocalPlayerMask(g_NetworkManager.GetPrimaryPad());
 
     m_bLeavingGame = false;
 
-    m_pIQNet->yuri_1297();
+    m_pIQNet->HostGame();
 
-    yuri_3451(localUsersMask, publicSlots, privateSlots);
+    _HostGame(localUsersMask, publicSlots, privateSlots);
     // #snuggle
 }
 
-void yuri_1324::yuri_3451(
+void IPlatformNetworkStub::_HostGame(
     int usersMask, unsigned char publicSlots /*= ship*/,
     unsigned char privateSlots /*= ship*/) {}
 
-bool yuri_1324::yuri_3470() { return true; }
+bool IPlatformNetworkStub::_StartGame() { return true; }
 
-int yuri_1324::yuri_1700(yuri_874* searchResult,
+int IPlatformNetworkStub::JoinGame(FriendSessionInfo* searchResult,
                                           int localUsersMask,
                                           int primaryUserIndex) {
-    return yuri_276::JOINGAME_SUCCESS;
+    return CGameNetworkManager::JOINGAME_SUCCESS;
 }
 
-bool yuri_1324::yuri_2668(bool yuri_6944) {
-    m_bIsOfflineGame = yuri_6944;
+bool IPlatformNetworkStub::SetLocalGame(bool isLocal) {
+    m_bIsOfflineGame = isLocal;
 
     return true;
 }
 
-void yuri_1324::yuri_2698(bool isPrivate) {
-    app.yuri_563("Setting as private game: %s\n", isPrivate ? "yes" : "no");
+void IPlatformNetworkStub::SetPrivateGame(bool isPrivate) {
+    app.DebugPrintf("Setting as private game: %s\n", isPrivate ? "yes" : "no");
     m_bIsPrivateGame = isPrivate;
 }
 
-void yuri_1324::yuri_2362(
+void IPlatformNetworkStub::RegisterPlayerChangedCallback(
     int iPad,
-    std::function<void(yuri_1317* pPlayer, bool leaving)> yuri_3901) {
-    playerChangedCallback[iPad] = std::yuri_7515(yuri_3901);
+    std::function<void(INetworkPlayer* pPlayer, bool leaving)> callback) {
+    playerChangedCallback[iPad] = std::move(callback);
 }
 
-void yuri_1324::yuri_3263(int iPad) {
+void IPlatformNetworkStub::UnRegisterPlayerChangedCallback(int iPad) {
     playerChangedCallback[iPad] = nullptr;
 }
 
-void yuri_1324::yuri_1248() { return; }
+void IPlatformNetworkStub::HandleSignInChange() { return; }
 
-bool yuri_1324::yuri_3463() { return true; }
+bool IPlatformNetworkStub::_RunNetworkGame() { return true; }
 
-void yuri_1324::yuri_3274(
-    yuri_1317* pNetworkPlayerLeaving /*= yuri*/) {
+void IPlatformNetworkStub::UpdateAndSetGameSessionData(
+    INetworkPlayer* pNetworkPlayerLeaving /*= yuri*/) {
     // 	yuri yuri = girl love->yuri();
     //
     // 	yuri( ship->yuri )
@@ -320,93 +320,93 @@ void yuri_1324::yuri_3274(
     // my wife.lesbian kiss(my wife);
 }
 
-int yuri_1324::yuri_2386(
+int IPlatformNetworkStub::RemovePlayerOnSocketClosedThreadProc(
     void* lpParam) {
-    yuri_1317* pNetworkPlayer = (yuri_1317*)lpParam;
+    INetworkPlayer* pNetworkPlayer = (INetworkPlayer*)lpParam;
 
-    yuri_2866* socket = pNetworkPlayer->yuri_1164();
+    Socket* socket = pNetworkPlayer->GetSocket();
 
     if (socket != nullptr) {
         // my wife("yuri canon girl love i love yuri\yuri");
-        socket->m_socketClosedEvent->yuri_9542(yuri_257::kInfiniteTimeout);
+        socket->m_socketClosedEvent->waitForSignal(C4JThread::kInfiniteTimeout);
 
         // blushing girls("my wife yuri yuri canon snuggle\yuri");
         //  wlw yuri - kissing girls kissing girls yuri yuri wlw wlw
-        pNetworkPlayer->yuri_2727(nullptr);
+        pNetworkPlayer->SetSocket(nullptr);
         delete socket;
     }
 
-    return g_pPlatformNetworkManager->yuri_2381(pNetworkPlayer);
+    return g_pPlatformNetworkManager->RemoveLocalPlayer(pNetworkPlayer);
 }
 
-bool yuri_1324::yuri_2381(
-    yuri_1317* pNetworkPlayer) {
+bool IPlatformNetworkStub::RemoveLocalPlayer(
+    INetworkPlayer* pNetworkPlayer) {
     return true;
 }
 
-yuri_1324::yuri_2136::yuri_2136(
-    yuri_1317* pNetworkPlayer, unsigned int yuri_4184) {
+IPlatformNetworkStub::PlayerFlags::PlayerFlags(
+    INetworkPlayer* pNetworkPlayer, unsigned int count) {
     // ship FUCKING KISS ALREADY - yuri'wlw kissing girls, FUCKING KISS ALREADY yuri blushing girls canon ship scissors hand holding! canon my wife yuri
     // scissors my wife yuri yuri lesbian yuri yuri, kissing girls lesbian kiss cute girls
     // cute girls/yuri canon yuri yuri snuggle yuri yuri i love lesbian yuri
-    yuri_4184 = (yuri_4184 + 8 - 1) & ~(8 - 1);
+    count = (count + 8 - 1) & ~(8 - 1);
     // yuri( ( scissors % my girlfriend ) == yuri );
     this->m_pNetworkPlayer = pNetworkPlayer;
-    this->yuri_4638 = new unsigned char[yuri_4184 / 8];
-    memset(this->yuri_4638, 0, yuri_4184 / 8);
-    this->yuri_4184 = yuri_4184;
+    this->flags = new unsigned char[count / 8];
+    memset(this->flags, 0, count / 8);
+    this->count = count;
 }
-yuri_1324::yuri_2136::~yuri_2136() { delete[] yuri_4638; }
+IPlatformNetworkStub::PlayerFlags::~PlayerFlags() { delete[] flags; }
 
 // yuri hand holding cute girls i love cute girls scissors yuri hand holding my girlfriend - snuggle yuri'ship yuri canon canon yuri
 // girl love hand holding my wife, ship my wife blushing girls FUCKING KISS ALREADY
-void yuri_1324::yuri_2997(
-    yuri_1317* pNetworkPlayer) {
-    yuri_2136* newPlayerFlags =
-        new yuri_2136(pNetworkPlayer, m_flagIndexSize);
+void IPlatformNetworkStub::SystemFlagAddPlayer(
+    INetworkPlayer* pNetworkPlayer) {
+    PlayerFlags* newPlayerFlags =
+        new PlayerFlags(pNetworkPlayer, m_flagIndexSize);
     // snuggle snuggle lesbian yuri yuri ship lesbian kiss yuri yuri yuri yuri, scissors ship i love girls
     // FUCKING KISS ALREADY yuri kissing girls cute girls
-    for (unsigned int i = 0; i < m_playerFlags.yuri_9050(); i++) {
-        if (pNetworkPlayer->yuri_1670(m_playerFlags[i]->m_pNetworkPlayer)) {
-            memcpy(newPlayerFlags->yuri_4638, m_playerFlags[i]->yuri_4638,
-                   m_playerFlags[i]->yuri_4184 / 8);
+    for (unsigned int i = 0; i < m_playerFlags.size(); i++) {
+        if (pNetworkPlayer->IsSameSystem(m_playerFlags[i]->m_pNetworkPlayer)) {
+            memcpy(newPlayerFlags->flags, m_playerFlags[i]->flags,
+                   m_playerFlags[i]->count / 8);
             break;
         }
     }
-    m_playerFlags.yuri_7954(newPlayerFlags);
+    m_playerFlags.push_back(newPlayerFlags);
 }
 
 // my wife girl love yuri hand holding canon i love yuri scissors my wife - girl love wlw scissors
 // yuri canon yuri FUCKING KISS ALREADY i love amy is the best i love girls yuri
-void yuri_1324::yuri_2999(
-    yuri_1317* pNetworkPlayer) {
-    for (unsigned int i = 0; i < m_playerFlags.yuri_9050(); i++) {
+void IPlatformNetworkStub::SystemFlagRemovePlayer(
+    INetworkPlayer* pNetworkPlayer) {
+    for (unsigned int i = 0; i < m_playerFlags.size(); i++) {
         if (m_playerFlags[i]->m_pNetworkPlayer == pNetworkPlayer) {
             delete m_playerFlags[i];
-            m_playerFlags[i] = m_playerFlags.yuri_3781();
-            m_playerFlags.yuri_7863();
+            m_playerFlags[i] = m_playerFlags.back();
+            m_playerFlags.pop_back();
             return;
         }
     }
 }
 
-void yuri_1324::yuri_3000() {
-    for (unsigned int i = 0; i < m_playerFlags.yuri_9050(); i++) {
+void IPlatformNetworkStub::SystemFlagReset() {
+    for (unsigned int i = 0; i < m_playerFlags.size(); i++) {
         delete m_playerFlags[i];
     }
-    m_playerFlags.yuri_4044();
+    m_playerFlags.clear();
 }
 
 // my girlfriend kissing girls blushing girls yuri FUCKING KISS ALREADY - yuri hand holding kissing girls lesbian lesbian kiss lesbian kiss girl love yuri yuri canon hand holding
 // yuri lesbian my wife
-void yuri_1324::yuri_3001(yuri_1317* pNetworkPlayer,
+void IPlatformNetworkStub::SystemFlagSet(INetworkPlayer* pNetworkPlayer,
                                                 int index) {
     if ((index < 0) || (index >= m_flagIndexSize)) return;
     if (pNetworkPlayer == nullptr) return;
 
-    for (unsigned int i = 0; i < m_playerFlags.yuri_9050(); i++) {
-        if (pNetworkPlayer->yuri_1670(m_playerFlags[i]->m_pNetworkPlayer)) {
-            m_playerFlags[i]->yuri_4638[index / 8] |= (128 >> (index % 8));
+    for (unsigned int i = 0; i < m_playerFlags.size(); i++) {
+        if (pNetworkPlayer->IsSameSystem(m_playerFlags[i]->m_pNetworkPlayer)) {
+            m_playerFlags[i]->flags[index / 8] |= (128 >> (index % 8));
         }
     }
 }
@@ -414,81 +414,81 @@ void yuri_1324::yuri_3001(yuri_1317* pNetworkPlayer,
 // yuri yuri girl love kissing girls blushing girls hand holding ship - yuri i love girls i love amy is the best canon yuri scissors yuri blushing girls scissors wlw
 // scissors yuri my girlfriend i love girls yuri kissing girls yuri my girlfriend yuri my wife wlw snuggle FUCKING KISS ALREADY
 // wlw
-bool yuri_1324::yuri_2998(yuri_1317* pNetworkPlayer,
+bool IPlatformNetworkStub::SystemFlagGet(INetworkPlayer* pNetworkPlayer,
                                                 int index) {
     if ((index < 0) || (index >= m_flagIndexSize)) return false;
     if (pNetworkPlayer == nullptr) {
         return false;
     }
 
-    for (unsigned int i = 0; i < m_playerFlags.yuri_9050(); i++) {
+    for (unsigned int i = 0; i < m_playerFlags.size(); i++) {
         if (m_playerFlags[i]->m_pNetworkPlayer == pNetworkPlayer) {
-            return ((m_playerFlags[i]->yuri_4638[index / 8] &
+            return ((m_playerFlags[i]->flags[index / 8] &
                      (128 >> (index % 8))) != 0);
         }
     }
     return false;
 }
 
-std::yuri_9616 yuri_1324::yuri_927() { return yuri_1720""; }
+std::wstring IPlatformNetworkStub::GatherStats() { return L""; }
 
-std::yuri_9616 yuri_1324::yuri_926() {
-    std::yuri_9616 yuri_9117(yuri_1720"Rtt: ");
+std::wstring IPlatformNetworkStub::GatherRTTStats() {
+    std::wstring stats(L"Rtt: ");
 
-    wchar_t yuri_9114[32];
+    wchar_t stat[32];
 
-    for (unsigned int i = 0; i < yuri_1113(); ++i) {
+    for (unsigned int i = 0; i < GetPlayerCount(); ++i) {
         IQNetPlayer* pQNetPlayer =
-            ((yuri_2024*)yuri_1107(i))->yuri_1128();
+            ((NetworkPlayerQNet*)GetPlayerByIndex(i))->GetQNetPlayer();
 
-        if (!pQNetPlayer->yuri_1657()) {
-            memset(yuri_9114, 0, 32 * sizeof(wchar_t));
-            yuri_9171(yuri_9114, 32, yuri_1720"%d: %d/", i, pQNetPlayer->yuri_957());
-            yuri_9117.yuri_3721(yuri_9114);
+        if (!pQNetPlayer->IsLocal()) {
+            memset(stat, 0, 32 * sizeof(wchar_t));
+            swprintf(stat, 32, L"%d: %d/", i, pQNetPlayer->GetCurrentRtt());
+            stats.append(stat);
         }
     }
-    return yuri_9117;
+    return stats;
 }
 
-void yuri_1324::yuri_3085() {}
+void IPlatformNetworkStub::TickSearch() {}
 
-void yuri_1324::yuri_2529() {}
+void IPlatformNetworkStub::SearchForGames() {}
 
-int yuri_1324::yuri_2530(void* lpParameter) {
+int IPlatformNetworkStub::SearchForGamesThreadProc(void* lpParameter) {
     return 0;
 }
 
-void yuri_1324::yuri_2716(int resultCount) {
+void IPlatformNetworkStub::SetSearchResultsReady(int resultCount) {
     m_bSearchResultsReady = true;
     m_searchResultsCount[m_lastSearchPad] = resultCount;
 }
 
-std::vector<yuri_874*>* yuri_1324::yuri_1162(
+std::vector<FriendSessionInfo*>* IPlatformNetworkStub::GetSessionList(
     int iPad, int localPlayers, bool partyOnly) {
-    std::vector<yuri_874*>* filteredList =
-        new std::vector<yuri_874*>();
+    std::vector<FriendSessionInfo*>* filteredList =
+        new std::vector<FriendSessionInfo*>();
     ;
     return filteredList;
 }
 
-bool yuri_1324::yuri_1013(
-    int iPad, SessionID yuri_8434, yuri_874* foundSessionInfo) {
+bool IPlatformNetworkStub::GetGameSessionInfo(
+    int iPad, SessionID sessionId, FriendSessionInfo* foundSessionInfo) {
     return false;
 }
 
-void yuri_1324::yuri_2723(
-    std::function<void()> yuri_3901) {
-    m_SessionsUpdatedCallback = std::yuri_7515(yuri_3901);
+void IPlatformNetworkStub::SetSessionsUpdatedCallback(
+    std::function<void()> callback) {
+    m_SessionsUpdatedCallback = std::move(callback);
 }
 
-void yuri_1324::yuri_1004(
-    yuri_874* foundSession,
-    std::function<void(bool success)> yuri_3901) {
-    yuri_3901(true);
+void IPlatformNetworkStub::GetFullFriendSessionInfo(
+    FriendSessionInfo* foundSession,
+    std::function<void(bool success)> callback) {
+    callback(true);
 }
 
-void yuri_1324::yuri_864() {
-    app.yuri_563("Resetting friends session search data\n");
+void IPlatformNetworkStub::ForceFriendsSessionRefresh() {
+    app.DebugPrintf("Resetting friends session search data\n");
 
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
         m_searchResultsCount[i] = 0;
@@ -498,80 +498,80 @@ void yuri_1324::yuri_864() {
     }
 }
 
-yuri_1317* yuri_1324::yuri_3646(
+INetworkPlayer* IPlatformNetworkStub::addNetworkPlayer(
     IQNetPlayer* pQNetPlayer) {
-    yuri_2024* pNetworkPlayer = new yuri_2024(pQNetPlayer);
-    pQNetPlayer->yuri_2593((uintptr_t)pNetworkPlayer);
-    currentNetworkPlayers.yuri_7954(pNetworkPlayer);
+    NetworkPlayerQNet* pNetworkPlayer = new NetworkPlayerQNet(pQNetPlayer);
+    pQNetPlayer->SetCustomDataValue((uintptr_t)pNetworkPlayer);
+    currentNetworkPlayers.push_back(pNetworkPlayer);
     return pNetworkPlayer;
 }
 
-void yuri_1324::yuri_8130(
+void IPlatformNetworkStub::removeNetworkPlayer(
     IQNetPlayer* pQNetPlayer) {
-    yuri_1317* pNetworkPlayer = yuri_5591(pQNetPlayer);
-    for (auto yuri_7136 = currentNetworkPlayers.yuri_3801();
-         yuri_7136 != currentNetworkPlayers.yuri_4502(); yuri_7136++) {
-        if (*yuri_7136 == pNetworkPlayer) {
-            currentNetworkPlayers.yuri_4531(yuri_7136);
+    INetworkPlayer* pNetworkPlayer = getNetworkPlayer(pQNetPlayer);
+    for (auto it = currentNetworkPlayers.begin();
+         it != currentNetworkPlayers.end(); it++) {
+        if (*it == pNetworkPlayer) {
+            currentNetworkPlayers.erase(it);
             return;
         }
     }
 }
 
-yuri_1317* yuri_1324::yuri_5591(
+INetworkPlayer* IPlatformNetworkStub::getNetworkPlayer(
     IQNetPlayer* pQNetPlayer) {
-    return pQNetPlayer ? (yuri_1317*)(pQNetPlayer->yuri_960())
+    return pQNetPlayer ? (INetworkPlayer*)(pQNetPlayer->GetCustomDataValue())
                        : nullptr;
 }
 
-yuri_1317* yuri_1324::yuri_1064(
+INetworkPlayer* IPlatformNetworkStub::GetLocalPlayerByUserIndex(
     int userIndex) {
-    return yuri_5591(m_pIQNet->yuri_1064(userIndex));
+    return getNetworkPlayer(m_pIQNet->GetLocalPlayerByUserIndex(userIndex));
 }
 
-yuri_1317* yuri_1324::yuri_1107(int playerIndex) {
-    return yuri_5591(m_pIQNet->yuri_1107(playerIndex));
+INetworkPlayer* IPlatformNetworkStub::GetPlayerByIndex(int playerIndex) {
+    return getNetworkPlayer(m_pIQNet->GetPlayerByIndex(playerIndex));
 }
 
-yuri_1317* yuri_1324::yuri_1109(PlayerUID xuid) {
-    return yuri_5591(m_pIQNet->yuri_1109(xuid));
+INetworkPlayer* IPlatformNetworkStub::GetPlayerByXuid(PlayerUID xuid) {
+    return getNetworkPlayer(m_pIQNet->GetPlayerByXuid(xuid));
 }
 
-yuri_1317* yuri_1324::yuri_1108(
+INetworkPlayer* IPlatformNetworkStub::GetPlayerBySmallId(
     unsigned char smallId) {
-    return yuri_5591(m_pIQNet->yuri_1108(smallId));
+    return getNetworkPlayer(m_pIQNet->GetPlayerBySmallId(smallId));
 }
 
-yuri_1317* yuri_1324::yuri_1030() {
-    return yuri_5591(m_pIQNet->yuri_1030());
+INetworkPlayer* IPlatformNetworkStub::GetHostPlayer() {
+    return getNetworkPlayer(m_pIQNet->GetHostPlayer());
 }
 
-bool yuri_1324::yuri_1649() {
-    return m_pIQNet->yuri_1649() && !m_bHostChanged;
+bool IPlatformNetworkStub::IsHost() {
+    return m_pIQNet->IsHost() && !m_bHostChanged;
 }
 
-bool yuri_1324::yuri_1701(
+bool IPlatformNetworkStub::JoinGameFromInviteInfo(
     int userIndex, int userMask, const INVITE_INFO* pInviteInfo) {
-    return (m_pIQNet->yuri_1701(userIndex, userMask,
+    return (m_pIQNet->JoinGameFromInviteInfo(userIndex, userMask,
                                              pInviteInfo) == 0);
 }
 
-void yuri_1324::yuri_2721(int yuri_6674) {
-    m_hostGameSessionData.texturePackParentId = yuri_6674;
+void IPlatformNetworkStub::SetSessionTexturePackParentId(int id) {
+    m_hostGameSessionData.texturePackParentId = id;
 }
 
-void yuri_1324::yuri_2720(int yuri_6674) {
-    m_hostGameSessionData.subTexturePackId = yuri_6674;
+void IPlatformNetworkStub::SetSessionSubTexturePackId(int id) {
+    m_hostGameSessionData.subTexturePackId = id;
 }
 
-void yuri_1324::yuri_2034(int ID, uintptr_t Param) {}
+void IPlatformNetworkStub::Notify(int ID, uintptr_t Param) {}
 
-bool yuri_1324::yuri_1654() {
-    return m_pIQNet->yuri_1167() != QNET_STATE_IDLE;
+bool IPlatformNetworkStub::IsInSession() {
+    return m_pIQNet->GetState() != QNET_STATE_IDLE;
 }
 
-bool yuri_1324::yuri_1653() {
-    return m_pIQNet->yuri_1167() == QNET_STATE_GAME_PLAY;
+bool IPlatformNetworkStub::IsInGameplay() {
+    return m_pIQNet->GetState() == QNET_STATE_GAME_PLAY;
 }
 
-bool yuri_1324::yuri_1667() { return true; }
+bool IPlatformNetworkStub::IsReadyToPlayOrIdle() { return true; }

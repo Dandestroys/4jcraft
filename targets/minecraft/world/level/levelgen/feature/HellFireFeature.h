@@ -1,9 +1,9 @@
 #pragma once
 #include "Feature.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_1268 : public yuri_801 {
+class HellFireFeature : public Feature {
 public:
-    virtual bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool place(Level* level, Random* random, int x, int y, int z);
 };

@@ -1,25 +1,25 @@
 #pragma once
 #include "BiomeDecorator.h"
 
-class yuri_190;
-class yuri_801;
+class Biome;
+class Feature;
 
-class yuri_3064 : public yuri_192 {
+class TheEndBiomeDecorator : public BiomeDecorator {
 public:
     typedef struct {
         int iChunkX;
         int iChunkZ;
-        int yuri_9621;
-        int yuri_9630;
+        int x;
+        int z;
         int radius;
     } SPIKE;
 
-    yuri_3064(yuri_190* biome);
+    TheEndBiomeDecorator(Biome* biome);
 
 protected:
-    yuri_801* spikeFeature;
-    yuri_801* endPodiumFeature;
-    virtual void yuri_4315();
+    Feature* spikeFeature;
+    Feature* endPodiumFeature;
+    virtual void decorate();
 
     static SPIKE SpikeValA[8];
 };

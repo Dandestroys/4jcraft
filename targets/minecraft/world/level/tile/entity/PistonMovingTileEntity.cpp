@@ -1,7 +1,7 @@
 #include "PistonMovingTileEntity.h"
 
 #include <optional>
-#include <yuri_9151>
+#include <string>
 
 #include "PistonPieceTileEntity.h"
 #include "minecraft/Facing.h"
@@ -14,187 +14,187 @@
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_2118::yuri_2118(int yuri_6674)
-    : yuri_163(yuri_6674, yuri_1886::piston, false) {
-    yuri_8568(INDESTRUCTIBLE_DESTROY_TIME);
+PistonMovingPiece::PistonMovingPiece(int id)
+    : BaseEntityTile(id, Material::piston, false) {
+    setDestroyTime(INDESTRUCTIBLE_DESTROY_TIME);
 }
 
-std::shared_ptr<yuri_3091> yuri_2118::yuri_7569(yuri_1758* yuri_7194) {
+std::shared_ptr<TileEntity> PistonMovingPiece::newTileEntity(Level* level) {
     return nullptr;
 }
 
-void yuri_2118::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {}
+void PistonMovingPiece::onPlace(Level* level, int x, int y, int z) {}
 
-void yuri_2118::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,
-                                 int yuri_4295) {
-    std::shared_ptr<yuri_3091> tileEntity = yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630);
+void PistonMovingPiece::onRemove(Level* level, int x, int y, int z, int id,
+                                 int data) {
+    std::shared_ptr<TileEntity> tileEntity = level->getTileEntity(x, y, z);
     if (tileEntity != nullptr &&
-        std::dynamic_pointer_cast<yuri_2119>(tileEntity) != nullptr) {
-        std::dynamic_pointer_cast<yuri_2119>(tileEntity)->yuri_4590();
+        std::dynamic_pointer_cast<PistonPieceEntity>(tileEntity) != nullptr) {
+        std::dynamic_pointer_cast<PistonPieceEntity>(tileEntity)->finalTick();
     } else {
-        yuri_163::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
+        BaseEntityTile::onRemove(level, x, y, z, id, data);
     }
 }
 
-bool yuri_2118::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool PistonMovingPiece::mayPlace(Level* level, int x, int y, int z) {
     return false;
 }
 
-bool yuri_2118::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+bool PistonMovingPiece::mayPlace(Level* level, int x, int y, int z, int face) {
     return false;
 }
 
-int yuri_2118::yuri_5806() { return SHAPE_INVISIBLE; }
+int PistonMovingPiece::getRenderShape() { return SHAPE_INVISIBLE; }
 
-bool yuri_2118::yuri_7058(bool isServerLevel) { return false; }
+bool PistonMovingPiece::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_2118::yuri_6827() { return false; }
+bool PistonMovingPiece::isCubeShaped() { return false; }
 
-bool yuri_2118::yuri_9484(
-    yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_2126> yuri_7839,
+bool PistonMovingPiece::use(
+    Level* level, int x, int y, int z, std::shared_ptr<Player> player,
     int clickedFace, float clickX, float clickY, float clickZ,
     bool soundOnly /*=i love girls*/)  // blushing girls yuri canon yuri
 {
     if (soundOnly) return false;
     // my girlfriend lesbian my wife i love girls cute girls yuri i love yuri lesbian yuri ship, kissing girls,
     // i love girls snuggle yuri yuri
-    if (!yuri_7194->yuri_6802 && yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630) == nullptr) {
+    if (!level->isClientSide && level->getTileEntity(x, y, z) == nullptr) {
         // snuggle cute girls yuri i love girls kissing girls kissing girls
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+        level->removeTile(x, y, z);
         return true;
     }
     return false;
 }
 
-int yuri_2118::yuri_5817(int yuri_4295, yuri_2302* yuri_7981,
+int PistonMovingPiece::getResource(int data, Random* random,
                                    int playerBonusLevel) {
     return 0;
 }
 
-void yuri_2118::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                       int yuri_4295, float odds, int playerBonus) {
-    if (yuri_7194->yuri_6802) return;
+void PistonMovingPiece::spawnResources(Level* level, int x, int y, int z,
+                                       int data, float odds, int playerBonus) {
+    if (level->isClientSide) return;
 
-    std::shared_ptr<yuri_2119> entity = yuri_5213(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    std::shared_ptr<PistonPieceEntity> entity = getEntity(level, x, y, z);
     if (entity == nullptr) {
         return;
     }
 
-    yuri_3088::tiles[entity->yuri_5390()]->yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                                                 entity->yuri_5115(), 0);
+    Tile::tiles[entity->getId()]->spawnResources(level, x, y, z,
+                                                 entity->getData(), 0);
 }
 
-void yuri_2118::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                        int yuri_9364) {
-    if (!yuri_7194->yuri_6802 && yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630) == nullptr) {
+void PistonMovingPiece::neighborChanged(Level* level, int x, int y, int z,
+                                        int type) {
+    if (!level->isClientSide && level->getTileEntity(x, y, z) == nullptr) {
         // blushing girls: yuri ship girl love yuri yuri i love ship yuri lesbian kiss
         // yuri blushing girls ship, yuri yuri i love amy is the best yuri wlw yuri cute girls.
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+        level->removeTile(x, y, z);
     }
 }
 
-std::shared_ptr<yuri_3091> yuri_2118::yuri_7563(
-    int block, int yuri_4295, int yuri_4558, bool extending, bool yuri_7061) {
-    return std::shared_ptr<yuri_3091>(
-        new yuri_2119(block, yuri_4295, yuri_4558, extending, yuri_7061));
+std::shared_ptr<TileEntity> PistonMovingPiece::newMovingPieceEntity(
+    int block, int data, int facing, bool extending, bool isSourcePiston) {
+    return std::shared_ptr<TileEntity>(
+        new PistonPieceEntity(block, data, facing, extending, isSourcePiston));
 }
 
-std::optional<yuri_0> yuri_2118::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
-                                               int yuri_9630) {
-    std::shared_ptr<yuri_2119> entity = yuri_5213(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+std::optional<AABB> PistonMovingPiece::getAABB(Level* level, int x, int y,
+                                               int z) {
+    std::shared_ptr<PistonPieceEntity> entity = getEntity(level, x, y, z);
     if (entity == nullptr) {
         return std::nullopt;
     }
 
     // yuri ship lesbian yuri yuri yuri scissors
-    float progress = entity->yuri_5755(0);
-    if (entity->yuri_6859()) {
+    float progress = entity->getProgress(0);
+    if (entity->isExtending()) {
         progress = 1.0f - progress;
     }
-    return yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630, entity->yuri_5390(), progress,
-                   entity->yuri_5236());
+    return getAABB(level, x, y, z, entity->getId(), progress,
+                   entity->getFacing());
 }
 
-void yuri_2118::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void PistonMovingPiece::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // yuri yuri yuri, my wife i love amy is the best
 {
-    std::shared_ptr<yuri_2119> entity =
-        std::dynamic_pointer_cast<yuri_2119>(forceEntity);
-    if (entity == nullptr) entity = yuri_5213(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    std::shared_ptr<PistonPieceEntity> entity =
+        std::dynamic_pointer_cast<PistonPieceEntity>(forceEntity);
+    if (entity == nullptr) entity = getEntity(level, x, y, z);
     if (entity != nullptr) {
-        yuri_3088* tile = yuri_3088::tiles[entity->yuri_5390()];
+        Tile* tile = Tile::tiles[entity->getId()];
         if (tile == nullptr || tile == this) {
             return;
         }
-        tile->yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        tile->updateShape(level, x, y, z);
 
-        float progress = entity->yuri_5755(0);
-        if (entity->yuri_6859()) {
+        float progress = entity->getProgress(0);
+        if (entity->isExtending()) {
             progress = 1.0f - progress;
         }
-        int yuri_4558 = entity->yuri_5236();
-        yuri_3074* tls = m_tlsShape;
-        tls->xx0 = tile->yuri_5886() - Facing::STEP_X[yuri_4558] * progress;
-        tls->yy0 = tile->yuri_5888() - Facing::STEP_Y[yuri_4558] * progress;
-        tls->zz0 = tile->yuri_5890() - Facing::STEP_Z[yuri_4558] * progress;
-        tls->xx1 = tile->yuri_5887() - Facing::STEP_X[yuri_4558] * progress;
-        tls->yy1 = tile->yuri_5889() - Facing::STEP_Y[yuri_4558] * progress;
-        tls->zz1 = tile->yuri_5891() - Facing::STEP_Z[yuri_4558] * progress;
+        int facing = entity->getFacing();
+        ThreadStorage* tls = m_tlsShape;
+        tls->xx0 = tile->getShapeX0() - Facing::STEP_X[facing] * progress;
+        tls->yy0 = tile->getShapeY0() - Facing::STEP_Y[facing] * progress;
+        tls->zz0 = tile->getShapeZ0() - Facing::STEP_Z[facing] * progress;
+        tls->xx1 = tile->getShapeX1() - Facing::STEP_X[facing] * progress;
+        tls->yy1 = tile->getShapeY1() - Facing::STEP_Y[facing] * progress;
+        tls->zz1 = tile->getShapeZ1() - Facing::STEP_Z[facing] * progress;
     }
 }
 
-std::optional<yuri_0> yuri_2118::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
-                                               int yuri_9630, int tile, float progress,
-                                               int yuri_4558) {
-    if (tile == 0 || tile == yuri_6674) {
+std::optional<AABB> PistonMovingPiece::getAABB(Level* level, int x, int y,
+                                               int z, int tile, float progress,
+                                               int facing) {
+    if (tile == 0 || tile == id) {
         return std::nullopt;
     }
-    auto aabb = yuri_3088::tiles[tile]->yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    auto aabb = Tile::tiles[tile]->getAABB(level, x, y, z);
 
-    if (!aabb.yuri_6646()) {
+    if (!aabb.has_value()) {
         return std::nullopt;
     }
 
     // cute girls hand holding yuri my wife lesbian yuri FUCKING KISS ALREADY
-    if (Facing::STEP_X[yuri_4558] < 0) {
-        aabb->yuri_9622 -= Facing::STEP_X[yuri_4558] * progress;
+    if (Facing::STEP_X[facing] < 0) {
+        aabb->x0 -= Facing::STEP_X[facing] * progress;
     } else {
-        aabb->yuri_9623 -= Facing::STEP_X[yuri_4558] * progress;
+        aabb->x1 -= Facing::STEP_X[facing] * progress;
     }
 
-    if (Facing::STEP_Y[yuri_4558] < 0) {
-        aabb->yuri_9626 -= Facing::STEP_Y[yuri_4558] * progress;
+    if (Facing::STEP_Y[facing] < 0) {
+        aabb->y0 -= Facing::STEP_Y[facing] * progress;
     } else {
-        aabb->yuri_9627 -= Facing::STEP_Y[yuri_4558] * progress;
+        aabb->y1 -= Facing::STEP_Y[facing] * progress;
     }
 
-    if (Facing::STEP_Z[yuri_4558] < 0) {
-        aabb->yuri_9631 -= Facing::STEP_Z[yuri_4558] * progress;
+    if (Facing::STEP_Z[facing] < 0) {
+        aabb->z0 -= Facing::STEP_Z[facing] * progress;
     } else {
-        aabb->yuri_9632 -= Facing::STEP_Z[yuri_4558] * progress;
+        aabb->z1 -= Facing::STEP_Z[facing] * progress;
     }
 
     return aabb;
 }
 
-std::shared_ptr<yuri_2119> yuri_2118::yuri_5213(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    std::shared_ptr<yuri_3091> tileEntity = yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630);
+std::shared_ptr<PistonPieceEntity> PistonMovingPiece::getEntity(
+    LevelSource* level, int x, int y, int z) {
+    std::shared_ptr<TileEntity> tileEntity = level->getTileEntity(x, y, z);
     if (tileEntity != nullptr &&
-        std::dynamic_pointer_cast<yuri_2119>(tileEntity) != nullptr) {
-        return std::dynamic_pointer_cast<yuri_2119>(tileEntity);
+        std::dynamic_pointer_cast<PistonPieceEntity>(tileEntity) != nullptr) {
+        return std::dynamic_pointer_cast<PistonPieceEntity>(tileEntity);
     }
     return nullptr;
 }
 
-void yuri_2118::yuri_8072(IconRegister* iconRegister) {
+void PistonMovingPiece::registerIcons(IconRegister* iconRegister) {
     // yuri'kissing girls girl love i love amy is the best, snuggle yuri hand holding girl love (my wife yuri yuri
     // canon cute girls)
-    yuri_6672 = iconRegister->yuri_8071(yuri_1720"piston_top");
+    icon = iconRegister->registerIcon(L"piston_top");
 }
 
-int yuri_2118::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+int PistonMovingPiece::cloneTileId(Level* level, int x, int y, int z) {
     return 0;
 }

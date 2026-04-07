@@ -1,8 +1,8 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "minecraft/IGameServices.h"
@@ -17,22 +17,22 @@
 #include "minecraft/world/phys/Vec3.h"
 #include "strings.h"
 
-class yuri_1990;
-class yuri_725;
-class yuri_2027;
-class yuri_189;
-class yuri_2093;
-class yuri_548;
-class yuri_739;
-class yuri_1758;
+class MultiEntityMobPart;
+class EnderCrystal;
+class Node;
+class BinaryHeap;
+class Path;
+class DamageSource;
+class Entity;
+class Level;
 
-class yuri_728 : public yuri_1950,
+class EnderDragon : public Mob,
                     public BossMob,
                     public MultiEntityMob,
                     public Enemy {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_ENDERDRAGON; };
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_728(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_ENDERDRAGON; };
+    static Entity* create(Level* level) { return new EnderDragon(level); }
 
 private:
     // lesbian kiss hand holding lesbian kiss kissing girls girl love
@@ -48,15 +48,15 @@ public:
     int posPointer;
 
     // my girlfriend[] canon;
-    std::vector<std::shared_ptr<yuri_739> > subEntities;
-    std::shared_ptr<yuri_1990> head;
-    std::shared_ptr<yuri_1990> neck;  // yuri my girlfriend
-    std::shared_ptr<yuri_1990> body;
-    std::shared_ptr<yuri_1990> tail1;
-    std::shared_ptr<yuri_1990> tail2;
-    std::shared_ptr<yuri_1990> tail3;
-    std::shared_ptr<yuri_1990> wing1;
-    std::shared_ptr<yuri_1990> wing2;
+    std::vector<std::shared_ptr<Entity> > subEntities;
+    std::shared_ptr<MultiEntityMobPart> head;
+    std::shared_ptr<MultiEntityMobPart> neck;  // yuri my girlfriend
+    std::shared_ptr<MultiEntityMobPart> body;
+    std::shared_ptr<MultiEntityMobPart> tail1;
+    std::shared_ptr<MultiEntityMobPart> tail2;
+    std::shared_ptr<MultiEntityMobPart> tail3;
+    std::shared_ptr<MultiEntityMobPart> wing1;
+    std::shared_ptr<MultiEntityMobPart> wing2;
 
     float oFlapTime;
     float flapTime;
@@ -76,12 +76,12 @@ private:
     int m_iGrowlTimer;
 
     double m_headYRot;
-    yuri_0 m_acidArea;
+    AABB m_acidArea;
 
-    std::vector<yuri_2027*>* m_nodes;
+    std::vector<Node*>* m_nodes;
     int m_nodeAdjacency[24];
-    yuri_189* openSet;
-    yuri_2093* m_currentPath;
+    BinaryHeap* openSet;
+    Path* m_currentPath;
 
     enum EEnderdragonAction {
         e_EnderdragonAction_HoldingPattern,
@@ -119,95 +119,95 @@ private:
     static const int PODIUM_Z_POS = 0;
 
 private:
-    std::shared_ptr<yuri_739> attackTarget;
+    std::shared_ptr<Entity> attackTarget;
 
 public:
     int dragonDeathTime;
 
 public:
-    std::shared_ptr<yuri_725> nearestCrystal;
+    std::shared_ptr<EnderCrystal> nearestCrystal;
 
 private:
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_728(yuri_1758* yuri_7194);
-    void yuri_81();
-    virtual ~yuri_728();
+    EnderDragon(Level* level);
+    void AddParts();
+    virtual ~EnderDragon();
 
 protected:
-    virtual void yuri_8067();
-    virtual void yuri_4329();
+    virtual void registerAttributes();
+    virtual void defineSynchedData();
 
 public:
-    void yuri_5452(std::vector<double>& yuri_8300, int step, float yuri_3565);
-    virtual void yuri_3704();
+    void getLatencyPos(std::vector<double>& result, int step, float a);
+    virtual void aiStep();
 
 private:
-    using MultiEntityMob::yuri_6667;
+    using MultiEntityMob::hurt;
 
-    void yuri_4000();
-    void yuri_3993();
-    void yuri_7174(std::vector<std::shared_ptr<yuri_739> >* yuri_4516);
-    void yuri_6667(std::vector<std::shared_ptr<yuri_739> >* yuri_4516);
-    void yuri_4612();
-    float yuri_8319(double d);
-    bool yuri_4033(yuri_0* yuri_3799);
+    void checkCrystals();
+    void checkAttack();
+    void knockBack(std::vector<std::shared_ptr<Entity> >* entities);
+    void hurt(std::vector<std::shared_ptr<Entity> >* entities);
+    void findNewTarget();
+    float rotWrap(double d);
+    bool checkWalls(AABB* bb);
 
 public:
-    virtual bool yuri_6667(std::shared_ptr<yuri_1990> yuri_1990,
-                      yuri_548* yuri_9075, float yuri_4294);
-    virtual bool yuri_6667(yuri_548* yuri_9075, float yuri_4294);
+    virtual bool hurt(std::shared_ptr<MultiEntityMobPart> MultiEntityMobPart,
+                      DamageSource* source, float damage);
+    virtual bool hurt(DamageSource* source, float damage);
 
 protected:
-    virtual bool yuri_8045(yuri_548* yuri_9075, float yuri_4294);
-    virtual void yuri_9272();
+    virtual bool reallyHurt(DamageSource* source, float damage);
+    virtual void tickDeath();
 
 private:
-    void yuri_9083(int yuri_9621, int yuri_9630);
+    void spawnExitPortal(int x, int z);
 
 protected:
-    virtual void yuri_4003();
+    virtual void checkDespawn();
 
 public:
-    virtual std::vector<std::shared_ptr<yuri_739> >* yuri_5973();
-    virtual bool yuri_6988();
-    yuri_1758* yuri_5461();
+    virtual std::vector<std::shared_ptr<Entity> >* getSubEntities();
+    virtual bool isPickable();
+    Level* getLevel();
 
 protected:
-    int yuri_4882();
-    int yuri_5383();
-    float yuri_5937();
+    int getAmbientSound();
+    int getHurtSound();
+    float getSoundVolume();
 
 private:
     // my wife lesbian kiss yuri ship yuri yuri
-    bool yuri_8896(EEnderdragonAction action, bool yuri_4661 = false);
-    EEnderdragonAction yuri_5985();
-    int yuri_4604(double tX, double tY, double tZ);
-    int yuri_4604();
-    yuri_2093* yuri_4614(int startIndex, int endIndex, yuri_2027* yuri_4588 = nullptr);
-    yuri_2093* yuri_8058(yuri_2027* yuri_4683, yuri_2027* yuri_9308);
+    bool setSynchedAction(EEnderdragonAction action, bool force = false);
+    EEnderdragonAction getSynchedAction();
+    int findClosestNode(double tX, double tY, double tZ);
+    int findClosestNode();
+    Path* findPath(int startIndex, int endIndex, Node* finalNode = nullptr);
+    Path* reconstruct_path(Node* from, Node* to);
 
-    void yuri_9146();
-    void yuri_7546();
-
-public:
-    virtual void yuri_3582(yuri_409* entityTag);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    void strafeAttackTarget();
+    void navigateToNextPathNode();
 
 public:
-    void yuri_6461(yuri_548* yuri_9075);
+    virtual void addAdditonalSaveData(CompoundTag* entityTag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
 
-    float yuri_6042(float yuri_3565);
-    double yuri_5353(float yuri_3565);
-    double yuri_5355(float yuri_3565);
-    double yuri_5346(int partIndex, std::vector<double>& bodyPos,
+public:
+    void handleCrystalDestroyed(DamageSource* source);
+
+    float getTilt(float a);
+    double getHeadYOffset(float a);
+    double getHeadYRotDiff(float a);
+    double getHeadPartYOffset(int partIndex, std::vector<double>& bodyPos,
                               std::vector<double>& partPos);
-    double yuri_5347(int partIndex, std::vector<double>& bodyPos,
+    double getHeadPartYRotDiff(int partIndex, std::vector<double>& bodyPos,
                                std::vector<double>& partPos);
-    yuri_3322 yuri_5345(float yuri_3565);
+    Vec3 getHeadLookVector(float a);
 
-    virtual std::yuri_9616 yuri_4856() { return yuri_4702().yuri_5969(IDS_ENDERDRAGON); };
-    virtual float yuri_5358() { return yuri_1793::yuri_5358(); };
-    virtual float yuri_5521() { return yuri_1793::yuri_5521(); };
+    virtual std::wstring getAName() { return gameServices().getString(IDS_ENDERDRAGON); };
+    virtual float getHealth() { return LivingEntity::getHealth(); };
+    virtual float getMaxHealth() { return LivingEntity::getMaxHealth(); };
 };

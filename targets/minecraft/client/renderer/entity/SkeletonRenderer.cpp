@@ -11,31 +11,31 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/monster/Skeleton.h"
 
-yuri_2412 yuri_2832::SKELETON_LOCATION =
-    yuri_2412(TN_MOB_SKELETON);
-yuri_2412 yuri_2832::WITHER_SKELETON_LOCATION =
-    yuri_2412(TN_MOB_WITHER_SKELETON);
+ResourceLocation SkeletonRenderer::SKELETON_LOCATION =
+    ResourceLocation(TN_MOB_SKELETON);
+ResourceLocation SkeletonRenderer::WITHER_SKELETON_LOCATION =
+    ResourceLocation(TN_MOB_WITHER_SKELETON);
 
-yuri_2832::yuri_2832()
-    : yuri_1304(new yuri_2831(), .5f) {}
+SkeletonRenderer::SkeletonRenderer()
+    : HumanoidMobRenderer(new SkeletonModel(), .5f) {}
 
-void yuri_2832::yuri_8382(std::shared_ptr<yuri_1793> mob, float yuri_3565) {
-    if (std::dynamic_pointer_cast<yuri_2829>(mob)->yuri_5908() ==
-        yuri_2829::TYPE_WITHER) {
-        yuri_6351(1.2f, 1.2f, 1.2f);
+void SkeletonRenderer::scale(std::shared_ptr<LivingEntity> mob, float a) {
+    if (std::dynamic_pointer_cast<Skeleton>(mob)->getSkeletonType() ==
+        Skeleton::TYPE_WITHER) {
+        glScalef(1.2f, 1.2f, 1.2f);
     }
 }
 
-void yuri_2832::yuri_9335() {
-    yuri_6377(1.5f / 16.0f, 3 / 16.0f, 0);
+void SkeletonRenderer::translateWeaponItem() {
+    glTranslatef(1.5f / 16.0f, 3 / 16.0f, 0);
 }
 
-yuri_2412* yuri_2832::yuri_6012(
-    std::shared_ptr<yuri_739> entity) {
-    std::shared_ptr<yuri_2829> skeleton =
-        std::dynamic_pointer_cast<yuri_2829>(entity);
+ResourceLocation* SkeletonRenderer::getTextureLocation(
+    std::shared_ptr<Entity> entity) {
+    std::shared_ptr<Skeleton> skeleton =
+        std::dynamic_pointer_cast<Skeleton>(entity);
 
-    if (skeleton->yuri_5908() == yuri_2829::TYPE_WITHER) {
+    if (skeleton->getSkeletonType() == Skeleton::TYPE_WITHER) {
         return &WITHER_SKELETON_LOCATION;
     }
     return &SKELETON_LOCATION;

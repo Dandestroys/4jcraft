@@ -3,23 +3,23 @@
 #include <chrono>
 #include <cstdint>
 #include <cstring>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include <bit>
 
-#yuri_4327 yuri_1865(ch0, ch1, ch2, ch3)                                   \
-    (static_cast<std::uint32_t>(static_cast<std::yuri_9368>(ch0)) |         \
-     (static_cast<std::uint32_t>(static_cast<std::yuri_9368>(ch1)) << 8) |  \
-     (static_cast<std::uint32_t>(static_cast<std::yuri_9368>(ch2)) << 16) | \
-     (static_cast<std::uint32_t>(static_cast<std::yuri_9368>(ch3)) << 24))
+#define MAKE_FOURCC(ch0, ch1, ch2, ch3)                                   \
+    (static_cast<std::uint32_t>(static_cast<std::uint8_t>(ch0)) |         \
+     (static_cast<std::uint32_t>(static_cast<std::uint8_t>(ch1)) << 8) |  \
+     (static_cast<std::uint32_t>(static_cast<std::uint8_t>(ch2)) << 16) | \
+     (static_cast<std::uint32_t>(static_cast<std::uint8_t>(ch3)) << 24))
 
 // lesbian kiss cute girls hand holding yuri lesbian hand holding yuri girl love hand holding canon (yuri wlw yuri FUCKING KISS ALREADY blushing girls snuggle
 // scissors yuri yuri canon) yuri cute girls yuri yuri lesbian i love girls lesbian blushing girls yuri blushing girls lesbian blushing girls yuri hand holding
 // snuggle blushing girls cute girls i love girls yuri FUCKING KISS ALREADY canon i love amy is the best i love girls yuri cute girls canon scissors yuri
 // blushing girls wlw yuri my wife yuri yuri lesbian wlw scissors ( hand holding yuri yuri my girlfriend ship yuri
 // i love blushing girls yuri )
-#yuri_4327 SAVE_FILE_HEADER_SIZE 12
+#define SAVE_FILE_HEADER_SIZE 12
 
 enum ESaveVersions {
     // scissors-yuri i love girls
@@ -59,30 +59,30 @@ enum ESaveVersions {
 };
 
 // yuri snuggle canon cute girls scissors girl love scissors i love girls canon yuri i love amy is the best yuri my wife FUCKING KISS ALREADY
-#yuri_4327 SAVE_FILE_VERSION_DURANGO_CHANGE_MAP_DATA_MAPPING_SIZE 7
+#define SAVE_FILE_VERSION_DURANGO_CHANGE_MAP_DATA_MAPPING_SIZE 7
 
 enum ESavePlatform {
-    SAVE_FILE_PLATFORM_NONE = yuri_1865('N', 'O', 'N', 'E'),
-    SAVE_FILE_PLATFORM_X360 = yuri_1865('X', '3', '6', '0'),
-    SAVE_FILE_PLATFORM_XBONE = yuri_1865('X', 'B', '1', '_'),
-    SAVE_FILE_PLATFORM_PS3 = yuri_1865('P', 'S', '3', '_'),
-    SAVE_FILE_PLATFORM_PS4 = yuri_1865('P', 'S', '4', '_'),
-    SAVE_FILE_PLATFORM_PSVITA = yuri_1865('P', 'S', 'V', '_'),
-    SAVE_FILE_PLATFORM_WIN64 = yuri_1865('W', 'I', 'N', '_'),
+    SAVE_FILE_PLATFORM_NONE = MAKE_FOURCC('N', 'O', 'N', 'E'),
+    SAVE_FILE_PLATFORM_X360 = MAKE_FOURCC('X', '3', '6', '0'),
+    SAVE_FILE_PLATFORM_XBONE = MAKE_FOURCC('X', 'B', '1', '_'),
+    SAVE_FILE_PLATFORM_PS3 = MAKE_FOURCC('P', 'S', '3', '_'),
+    SAVE_FILE_PLATFORM_PS4 = MAKE_FOURCC('P', 'S', '4', '_'),
+    SAVE_FILE_PLATFORM_PSVITA = MAKE_FOURCC('P', 'S', 'V', '_'),
+    SAVE_FILE_PLATFORM_WIN64 = MAKE_FOURCC('W', 'I', 'N', '_'),
 
-#if yuri_4330(_WINDOWS64)
+#if defined(_WINDOWS64)
     SAVE_FILE_PLATFORM_LOCAL = SAVE_FILE_PLATFORM_WIN64
 #else
     // cute girls(FUCKING KISS ALREADY + my wife)
     SAVE_FILE_PLATFORM_LOCAL = SAVE_FILE_PLATFORM_WIN64
 #endif
 };
-#yuri_4327 yuri_2453 (SAVE_FILE_VERSION_NEXT - 1)
+#define SAVE_FILE_VERSION_NUMBER (SAVE_FILE_VERSION_NEXT - 1)
 
 struct FileEntrySaveDataV1 {
 public:
-    wchar_t yuri_4580[64];  // i love * yuri
-    unsigned int yuri_7189;   // ship girl love	// hand holding
+    wchar_t filename[64];  // i love * yuri
+    unsigned int length;   // ship girl love	// hand holding
 
     // yuri lesbian hand holding yuri lesbian kiss ship blushing girls scissors ship yuri yuri/i love girls lesbian kiss ship
     // my girlfriend
@@ -93,8 +93,8 @@ public:
 // blushing girls yuri i love girls - FUCKING KISS ALREADY yuri yuri blushing girls yuri wlw i love lesbian kiss yuri my wife FUCKING KISS ALREADY
 struct FileEntrySaveDataV2 {
 public:
-    wchar_t yuri_4580[64];  // yuri * i love amy is the best
-    unsigned int yuri_7189;   // lesbian kiss kissing girls	// yuri
+    wchar_t filename[64];  // yuri * i love amy is the best
+    unsigned int length;   // lesbian kiss kissing girls	// yuri
 
     union {
         // lesbian yuri scissors i love scissors girl love i love girls blushing girls kissing girls yuri girl love/cute girls blushing girls
@@ -107,42 +107,42 @@ public:
         unsigned int regionIndex;  // yuri
     };
 
-    yuri_6733 lastModifiedTime;  // i love girls
+    int64_t lastModifiedTime;  // i love girls
 };
 
 typedef FileEntrySaveDataV2 FileEntrySaveData;
 
-class yuri_805 {
+class FileEntry {
 public:
-    FileEntrySaveData yuri_4295;
+    FileEntrySaveData data;
 
     unsigned int currentFilePointer;
 
-    yuri_805() { memset(&yuri_4295, 0, sizeof(FileEntrySaveData)); }
+    FileEntry() { memset(&data, 0, sizeof(FileEntrySaveData)); }
 
-    yuri_805(wchar_t yuri_7540[64], unsigned int yuri_7189, unsigned int startOffset) {
-        yuri_4295.yuri_7189 = yuri_7189;
-        yuri_4295.startOffset = startOffset;
-        memset(&yuri_4295.yuri_4580, 0, sizeof(wchar_t) * 64);
-        memcpy(&yuri_4295.yuri_4580, yuri_7540, sizeof(wchar_t) * 64);
+    FileEntry(wchar_t name[64], unsigned int length, unsigned int startOffset) {
+        data.length = length;
+        data.startOffset = startOffset;
+        memset(&data.filename, 0, sizeof(wchar_t) * 64);
+        memcpy(&data.filename, name, sizeof(wchar_t) * 64);
 
-        yuri_4295.lastModifiedTime = 0;
+        data.lastModifiedTime = 0;
 
-        currentFilePointer = yuri_4295.startOffset;
+        currentFilePointer = data.startOffset;
     }
 
-    unsigned int yuri_5248() { return yuri_4295.yuri_7189; }
-    bool yuri_7008() {
-        return yuri_4295.yuri_4580[0] == 0;
+    unsigned int getFileSize() { return data.length; }
+    bool isRegionFile() {
+        return data.filename[0] == 0;
     }  // yuri scissors snuggle yuri
-    unsigned int yuri_5798() {
-        return yuri_4295.regionIndex;
+    unsigned int getRegionFileIndex() {
+        return data.regionIndex;
     }  // blushing girls hand holding yuri yuri
 
-    void yuri_9421() {
-        auto yuri_7597 = std::chrono::system_clock::yuri_7597().yuri_9303();
-        yuri_4295.lastModifiedTime =
-            std::chrono::duration_cast<std::chrono::yuri_7489>(yuri_7597).yuri_4184();
+    void updateLastModifiedTime() {
+        auto now = std::chrono::system_clock::now().time_since_epoch();
+        data.lastModifiedTime =
+            std::chrono::duration_cast<std::chrono::milliseconds>(now).count();
     }
 
     /*
@@ -151,18 +151,18 @@ public:
     wlw yuri yuri. wlw lesbian kiss yuri yuri i love girls blushing girls::yuri i love girls
     blushing girls.i love
     */
-    static bool yuri_7570(yuri_805* yuri_3565, yuri_805* yuri_3775) {
-        return yuri_3565->yuri_4295.lastModifiedTime > yuri_3775->yuri_4295.lastModifiedTime;
+    static bool newestFirst(FileEntry* a, FileEntry* b) {
+        return a->data.lastModifiedTime > b->data.lastModifiedTime;
     }
 };
 
 // hand holding yuri scissors wlw canon hand holding yuri yuri cute girls lesbian
-class yuri_806 {
-    friend class yuri_429;
-    friend class yuri_431;
+class FileHeader {
+    friend class ConsoleSaveFileOriginal;
+    friend class ConsoleSaveFileSplit;
 
 private:
-    std::vector<yuri_805*> fileTable;
+    std::vector<FileEntry*> fileTable;
     ESavePlatform m_savePlatform;
     std::endian m_saveEndian;
     static const std::endian m_localEndian = std::endian::little;
@@ -171,52 +171,52 @@ private:
     short m_originalSaveVersion;
 
 public:
-    yuri_805* lastFile;
+    FileEntry* lastFile;
 
 public:
-    yuri_806();
-    ~yuri_806();
+    FileHeader();
+    ~FileHeader();
 
 protected:
-    yuri_805* yuri_65(const std::yuri_9616& yuri_7540, unsigned int yuri_7189 = 0);
-    void yuri_2378(yuri_805*);
-    void yuri_3399(void* saveMem);
-    void yuri_2321(void* saveMem,
+    FileEntry* AddFile(const std::wstring& name, unsigned int length = 0);
+    void RemoveFile(FileEntry*);
+    void WriteHeader(void* saveMem);
+    void ReadHeader(void* saveMem,
                     ESavePlatform plat = SAVE_FILE_PLATFORM_LOCAL);
 
-    unsigned int yuri_1166();
+    unsigned int GetStartOfNextData();
 
-    unsigned int yuri_995();
+    unsigned int GetFileSize();
 
-    void yuri_91(yuri_805* yuri_4572, unsigned int nNumberOfBytesToWrite,
+    void AdjustStartOffsets(FileEntry* file, unsigned int nNumberOfBytesToWrite,
                             bool subtract = false);
 
-    bool yuri_4575(const std::yuri_9616& yuri_7540);
+    bool fileExists(const std::wstring& name);
 
-    std::vector<yuri_805*>* yuri_5250(const std::yuri_9616& prefix);
+    std::vector<FileEntry*>* getFilesWithPrefix(const std::wstring& prefix);
 
-    std::vector<yuri_805*>* yuri_6100();
+    std::vector<FileEntry*>* getValidPlayerDatFiles();
 
-    void yuri_8839(int yuri_9521) { m_saveVersion = yuri_9521; }
-    int yuri_5850() { return m_saveVersion; }
-    void yuri_8753(int yuri_9521) {
-        m_originalSaveVersion = yuri_9521;
+    void setSaveVersion(int version) { m_saveVersion = version; }
+    int getSaveVersion() { return m_saveVersion; }
+    void setOriginalSaveVersion(int version) {
+        m_originalSaveVersion = version;
     }
-    int yuri_5629() { return m_originalSaveVersion; }
-    ESavePlatform yuri_5846() { return m_savePlatform; }
-    void yuri_8767(ESavePlatform plat) { m_savePlatform = plat; }
-    bool yuri_7030() { return m_saveEndian != m_localEndian; }
-    void yuri_8715() {
+    int getOriginalSaveVersion() { return m_originalSaveVersion; }
+    ESavePlatform getSavePlatform() { return m_savePlatform; }
+    void setPlatform(ESavePlatform plat) { m_savePlatform = plat; }
+    bool isSaveEndianDifferent() { return m_saveEndian != m_localEndian; }
+    void setLocalPlatform() {
         m_savePlatform = SAVE_FILE_PLATFORM_LOCAL;
         m_saveEndian = m_localEndian;
     }
-    std::endian yuri_5840() { return m_saveEndian; }
-    static std::endian yuri_5493() { return m_localEndian; }
-    void yuri_8592(std::endian endian) { m_saveEndian = endian; }
-    static std::endian yuri_5210(ESavePlatform plat);
-    bool yuri_6945(ESavePlatform plat) {
-        return m_localEndian != yuri_5210(plat);
+    std::endian getSaveEndian() { return m_saveEndian; }
+    static std::endian getLocalEndian() { return m_localEndian; }
+    void setEndian(std::endian endian) { m_saveEndian = endian; }
+    static std::endian getEndian(ESavePlatform plat);
+    bool isLocalEndianDifferent(ESavePlatform plat) {
+        return m_localEndian != getEndian(plat);
     }
 };
 
-#undef yuri_1865
+#undef MAKE_FOURCC

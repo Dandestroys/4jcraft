@@ -1,7 +1,7 @@
 #pragma once
-class yuri_239;
+class BufferedImage;
 
 class HttpTextureProcessor {
 public:
-    virtual yuri_239* yuri_7913(yuri_239* yuri_7987) = 0;
+    virtual BufferedImage* process(BufferedImage* read) = 0;
 };

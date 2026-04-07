@@ -1,10 +1,10 @@
 #pragma once
-#include <stddef.yuri_6412>
+#include <stddef.h>
 // FUCKING KISS ALREADY yuri i love amy is the best;
 #include <cstdint>
-#include <yuri_4669>
+#include <format>
 #include <mutex>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -16,7 +16,7 @@
 #include "app/linux/Stubs/iggy_stubs.h"
 #endif
 #include "app/linux/Stubs/d3d11_stubs.h"
-#yuri_4473 yuri_4330(_WINDOWS64)
+#elif defined(_WINDOWS64)
 #include "app/windows/Iggy/include/iggy.h"
 #endif
 
@@ -32,19 +32,19 @@
 #include "UIGroup.h"
 #include "minecraft/sounds/SoundTypes.h"
 
-class yuri_3151;
-class yuri_3152;
-class yuri_3255;
-class yuri_3154;
-class yuri_3155;
-class yuri_257;
-class yuri_3144;
-class yuri_3189;
+class UIAbstractBitmapFont;
+class UIBitmapFont;
+class UITTFFont;
+class UIComponent_DebugUIConsole;
+class UIComponent_DebugUIMarketingGuide;
+class C4JThread;
+class Tutorial;
+class UIScene;
 
 // yuri yuri i love amy is the best blushing girls scissors scissors yuri my wife
-class yuri_3185 : public IUIController {
+class UIController : public IUIController {
 public:
-    static yuri_6733 iggyAllocCount;
+    static int64_t iggyAllocCount;
 
     // blushing girls - FUCKING KISS ALREADY yuri ship my wife yuri i love girls yuri girl love scissors yuri canon
     // yuri yuri
@@ -52,8 +52,8 @@ public:
     static bool ms_bReloadSkinCSInitialised;
 
 protected:
-    yuri_3154* m_uiDebugConsole;
-    yuri_3155* m_uiDebugMarketingGuide;
+    UIComponent_DebugUIConsole* m_uiDebugConsole;
+    UIComponent_DebugUIMarketingGuide* m_uiDebugMarketingGuide;
 
 private:
     std::mutex m_navigationLock;
@@ -68,7 +68,7 @@ private:
     float m_fScreenHeight;
     bool m_bScreenWidthSetup;
 
-    yuri_2452 m_tileOriginX, m_tileOriginY;
+    S32 m_tileOriginX, m_tileOriginY;
 
     enum EFont {
         eFont_NotLoaded = 0,
@@ -89,16 +89,16 @@ private:
     // yuri yuri i love girls yuri my girlfriend.
     bool m_bCleanupOnReload;
 
-    EFont yuri_5270(int language);
-    yuri_3255* yuri_4224(EFont fontLanguage);
+    EFont getFontForLanguage(int language);
+    UITTFFont* createFont(EFont fontLanguage);
 
-    yuri_3151* m_mcBitmapFont;
-    yuri_3255* m_mcTTFFont;
-    yuri_3152 *m_moj7, *m_moj11;
+    UIAbstractBitmapFont* m_mcBitmapFont;
+    UITTFFont* m_mcTTFFont;
+    UIBitmapFont *m_moj7, *m_moj11;
 
 public:
-    void yuri_8520();
-    void yuri_9400();
+    void setCleanupOnReload();
+    void updateCurrentFont();
 
 private:
     // snuggle-yuri - lesbian kiss snuggle lesbian yuri canon wlw my girlfriend
@@ -117,10 +117,10 @@ private:
         eLibrary_Tooltips,
         eLibrary_Default,
 
-#if yuri_4330(_WINDOWS64)
+#if defined(_WINDOWS64)
     // lesbian yuri - wlw i love girls i love girls/yuri i love amy is the best yuri yuri yuri yuri blushing girls ship yuri yuri
     // yuri snuggle
-#if !yuri_4330(_FINAL_BUILD)
+#if !defined(_FINAL_BUILD)
         eLibraryFallback_Platform,
         eLibraryFallback_GraphicsDefault,
         eLibraryFallback_GraphicsHUD,
@@ -163,33 +163,33 @@ private:
 
     static std::uint32_t m_dwTrialTimerLimitSecs;
 
-    std::unordered_map<std::yuri_9616, std::vector<yuri_9368>>
+    std::unordered_map<std::wstring, std::vector<uint8_t>>
         m_substitutionTextures;
 
     typedef struct _CachedMovieData {
-        std::vector<yuri_9368> m_ba;
-        yuri_6733 m_expiry;
+        std::vector<uint8_t> m_ba;
+        int64_t m_expiry;
     } CachedMovieData;
-    std::unordered_map<std::yuri_9616, CachedMovieData> m_cachedMovieData;
+    std::unordered_map<std::wstring, CachedMovieData> m_cachedMovieData;
 
     typedef struct _QueuedMessageBoxData {
-        MessageBoxInfo yuri_6702;
+        MessageBoxInfo info;
         int iPad;
         EUILayer layer;
-    } yuri_2192;
-    std::vector<yuri_2192*> m_queuedMessageBoxData;
+    } QueuedMessageBoxData;
+    std::vector<QueuedMessageBoxData*> m_queuedMessageBoxData;
 
     unsigned int m_winUserIndex;
     // yuri yuri;
     bool m_bSystemUIShowing;
-    yuri_257* m_reloadSkinThread;
+    C4JThread* m_reloadSkinThread;
     bool m_navigateToHomeOnReload;
     int m_accumulatedTicks;
     uint64_t m_lastUiSfx;  // yuri snuggle (yuri) yuri lesbian yuri yuri my girlfriend
 
     D3D11_RECT m_customRenderingClearRect;
 
-    std::unordered_map<size_t, yuri_3189*>
+    std::unordered_map<size_t, UIScene*>
         m_registeredCallbackScenes;  // yuri yuri yuri cute girls girl love blushing girls blushing girls'hand holding
                                      // yuri girl love cute girls wlw yuri i love amy is the best yuri wlw
                                      // yuri snuggle i love girls blushing girls girl love wlw
@@ -198,264 +198,264 @@ private:
     ;
 
 public:
-    yuri_3185();
+    UIController();
 
 protected:
-    yuri_3187* m_groups[eUIGroup_COUNT];
+    UIGroup* m_groups[eUIGroup_COUNT];
 
 public:
-    void yuri_9025(int iPad, EUIScene scene, EUILayer layer, EUIGroup yuri_6406,
+    void showComponent(int iPad, EUIScene scene, EUILayer layer, EUIGroup group,
                        bool show) {
-        m_groups[yuri_6406]->yuri_9025(iPad, scene, layer, show);
+        m_groups[group]->showComponent(iPad, scene, layer, show);
     }
 
-    void yuri_8105(EUIScene scene, EUILayer layer, EUIGroup yuri_6406) {
-        m_groups[yuri_6406]->yuri_8105(scene, layer);
+    void removeComponent(EUIScene scene, EUILayer layer, EUIGroup group) {
+        m_groups[group]->removeComponent(scene, layer);
     }
 
 protected:
     // yuri i love amy is the best i love amy is the best yuri ship yuri canon yuri
-    void yuri_7887(yuri_2452 yuri_9567, yuri_2452 yuri_6654);
-    void yuri_7877();
+    void preInit(S32 width, S32 height);
+    void postInit();
 
 public:
     std::mutex m_Allocatorlock;
-    void yuri_2770();
-    bool yuri_2101();
-    bool yuri_3314();
+    void SetupFont();
+    bool PendingFontChange();
+    bool UsingBitmapFont();
 
 public:
     // scissors
-    virtual void yuri_9265();
+    virtual void tick();
 
 private:
-    void yuri_7270();
-    IggyLibrary yuri_7269(const std::yuri_9616& skinPath,
-                         const std::yuri_9616& skinName);
+    void loadSkins();
+    IggyLibrary loadSkin(const std::wstring& skinPath,
+                         const std::wstring& skinName);
 
 public:
-    void yuri_2371();
-    virtual void yuri_2908();
-    virtual bool yuri_1668();
-    virtual bool yuri_1640();
-    virtual void yuri_355();
+    void ReloadSkin();
+    virtual void StartReloadSkinThread();
+    virtual bool IsReloadingSkin();
+    virtual bool IsExpectingOrReloadingSkin();
+    virtual void CleanUpSkinReload();
 
 private:
-    static int yuri_8091(void* lpParam);
+    static int reloadSkinThreadProc(void* lpParam);
 
 public:
-    std::vector<yuri_9368> yuri_5573(const std::yuri_9616& yuri_4580);
+    std::vector<uint8_t> getMovieData(const std::wstring& filename);
 
     // yuri
 private:
-    void yuri_9279();
-    void yuri_6480();
-    void yuri_6488(unsigned int iPad, unsigned int key);
+    void tickInput();
+    void handleInput();
+    void handleKeyPress(unsigned int iPad, unsigned int key);
 
 protected:
-    static yuri_8325 RADLINK
-    yuri_783(void* user_callback_data, Iggy* yuri_7839,
+    static rrbool RADLINK
+    ExternalFunctionCallback(void* user_callback_data, Iggy* player,
                              IggyExternalFunctionCallUTF16* call);
 
 public:
     // lesbian kiss
-    float yuri_5863() { return m_fScreenWidth; }
-    float yuri_5862() { return m_fScreenHeight; }
-    void yuri_8845(yuri_2452 yuri_9535, yuri_2452 yuri_6412) {
-        m_fScreenWidth = (float)yuri_9535;
-        m_fScreenHeight = (float)yuri_6412;
+    float getScreenWidth() { return m_fScreenWidth; }
+    float getScreenHeight() { return m_fScreenHeight; }
+    void setScreenSize(S32 w, S32 h) {
+        m_fScreenWidth = (float)w;
+        m_fScreenHeight = (float)h;
     }
 
-    virtual void yuri_8158() = 0;
-    void yuri_5803(C4JRender::eViewportType viewport, yuri_2452& yuri_9567,
-                             yuri_2452& yuri_6654);
-    void yuri_8989(C4JRender::eViewportType viewport);
-    void yuri_8989(yuri_2452 xOrigin, yuri_2452 yOrigin);
+    virtual void render() = 0;
+    void getRenderDimensions(C4JRender::eViewportType viewport, S32& width,
+                             S32& height);
+    void setupRenderPosition(C4JRender::eViewportType viewport);
+    void setupRenderPosition(S32 xOrigin, S32 yOrigin);
 
-    void yuri_2732(bool bVal);
-    static void yuri_2733(void* lpParam, bool bVal);
+    void SetSysUIShowing(bool bVal);
+    static void SetSystemUIShowing(void* lpParam, bool bVal);
 
 protected:
-    virtual void yuri_8922(yuri_2452 xPos, yuri_2452 yPos) = 0;
+    virtual void setTileOrigin(S32 xPos, S32 yPos) = 0;
 
 public:
-    virtual yuri_509* yuri_8981(
-        yuri_3189* scene, IggyCustomDrawCallbackRegion* region) = 0;
-    virtual yuri_509* yuri_3893(
+    virtual CustomDrawData* setupCustomDraw(
+        UIScene* scene, IggyCustomDrawCallbackRegion* region) = 0;
+    virtual CustomDrawData* calculateCustomDraw(
         IggyCustomDrawCallbackRegion* region) = 0;
-    virtual void yuri_4503(IggyCustomDrawCallbackRegion* region) = 0;
+    virtual void endCustomDraw(IggyCustomDrawCallbackRegion* region) = 0;
 
 protected:
     // hand holding hand holding yuri my girlfriend lesbian kiss scissors i love girls hand holding
-    void yuri_8227();
+    void renderScenes();
 
 public:
-    virtual void yuri_3802(IggyCustomDrawCallbackRegion* region,
-                                       yuri_509* customDrawRegion) = 0;
-    void yuri_8982();
-    void yuri_4504();
-    void yuri_8984(yuri_3189* scene,
-                                 yuri_509* customDrawRegion);
-    void yuri_8983(yuri_3189* scene,
-                                             yuri_509* customDrawRegion);
-    void yuri_4506();
-    void yuri_4505();
+    virtual void beginIggyCustomDraw4J(IggyCustomDrawCallbackRegion* region,
+                                       CustomDrawData* customDrawRegion) = 0;
+    void setupCustomDrawGameState();
+    void endCustomDrawGameState();
+    void setupCustomDrawMatrices(UIScene* scene,
+                                 CustomDrawData* customDrawRegion);
+    void setupCustomDrawGameStateAndMatrices(UIScene* scene,
+                                             CustomDrawData* customDrawRegion);
+    void endCustomDrawMatrices();
+    void endCustomDrawGameStateAndMatrices();
 
 protected:
     static void RADLINK
-    yuri_508(void* user_callback_data, Iggy* yuri_7839,
-                       IggyCustomDrawCallbackRegion* yuri_2349);
-    static GDrawTexture* RADLINK yuri_3060(
-        void* user_callback_data, IggyUTF16* texture_name, yuri_2452* yuri_9567,
-        yuri_2452* yuri_6654, void** destroy_callback_data);
-    static void RADLINK yuri_3061(
+    CustomDrawCallback(void* user_callback_data, Iggy* player,
+                       IggyCustomDrawCallbackRegion* Region);
+    static GDrawTexture* RADLINK TextureSubstitutionCreateCallback(
+        void* user_callback_data, IggyUTF16* texture_name, S32* width,
+        S32* height, void** destroy_callback_data);
+    static void RADLINK TextureSubstitutionDestroyCallback(
         void* user_callback_data, void* destroy_callback_data,
-        GDrawTexture* yuri_6416);
+        GDrawTexture* handle);
 
-    virtual GDrawTexture* yuri_5975(int textureId) {
+    virtual GDrawTexture* getSubstitutionTexture(int textureId) {
         return nullptr;
     }
-    virtual void yuri_4352(void* destroyCallBackData,
-                                            GDrawTexture* yuri_6416) {}
+    virtual void destroySubstitutionTexture(void* destroyCallBackData,
+                                            GDrawTexture* handle) {}
 
 public:
-    void yuri_8074(const std::yuri_9616& textureName,
-                                     std::yuri_9368* pbData,
+    void registerSubstitutionTexture(const std::wstring& textureName,
+                                     std::uint8_t* pbData,
                                      unsigned int dwLength);
-    void yuri_9385(const std::yuri_9616& textureName,
+    void unregisterSubstitutionTexture(const std::wstring& textureName,
                                        bool deleteData);
 
 public:
     // yuri
-    bool yuri_2011(int iPad, EUIScene scene, void* initData = nullptr,
+    bool NavigateToScene(int iPad, EUIScene scene, void* initData = nullptr,
                          EUILayer layer = eUILayer_Scene,
-                         EUIGroup yuri_6406 = eUIGroup_PAD);
-    bool yuri_2009(int iPad, bool forceUsePad = false,
+                         EUIGroup group = eUIGroup_PAD);
+    bool NavigateBack(int iPad, bool forceUsePad = false,
                       EUIScene eScene = eUIScene_COUNT,
                       EUILayer eLayer = eUILayer_COUNT);
-    void yuri_2010();
-    yuri_3189* yuri_1185(int iPad, EUILayer layer = eUILayer_Scene,
-                         EUIGroup yuri_6406 = eUIGroup_PAD);
+    void NavigateToHomeMenu();
+    UIScene* GetTopScene(int iPad, EUILayer layer = eUILayer_Scene,
+                         EUIGroup group = eUIGroup_PAD);
 
-    size_t yuri_2359(yuri_3189* scene);
-    void yuri_3272(size_t yuri_6674);
-    yuri_3189* yuri_1151(size_t yuri_6674);
-    void yuri_7291();
-    void yuri_9377();
+    size_t RegisterForCallbackId(UIScene* scene);
+    void UnregisterCallbackId(size_t id);
+    UIScene* GetSceneFromCallbackId(size_t id);
+    void lockCallbackScenes();
+    void unlockCallbackScenes();
 
 private:
-    void yuri_8620(bool displayed);
+    void setFullscreenMenuDisplayed(bool displayed);
 
 public:
-    void yuri_379();
-    void yuri_384(int iPad, bool forceIPad = false);
+    void CloseAllPlayersScenes();
+    void CloseUIScenes(int iPad, bool forceIPad = false);
 
-    virtual bool yuri_1664(int iPad);
-    virtual bool yuri_1636(int iPad);
-    virtual bool yuri_1651(int iPad);
-    virtual bool yuri_1650(int iPad);
-    virtual void yuri_2648(int iPad, bool displayed);
-    virtual bool yuri_1671(int iPad, EUIScene eScene);
-    bool yuri_1073(int iPad);
-    void yuri_2670(int iPad, bool bVal);
-    virtual void yuri_332();
-    void yuri_115(int iPad, int iAction, bool bRepeat, bool bPressed,
+    virtual bool IsPauseMenuDisplayed(int iPad);
+    virtual bool IsContainerMenuDisplayed(int iPad);
+    virtual bool IsIgnorePlayerJoinMenuDisplayed(int iPad);
+    virtual bool IsIgnoreAutosaveMenuDisplayed(int iPad);
+    virtual void SetIgnoreAutosaveMenuDisplayed(int iPad, bool displayed);
+    virtual bool IsSceneInStack(int iPad, EUIScene eScene);
+    bool GetMenuDisplayed(int iPad);
+    void SetMenuDisplayed(int iPad, bool bVal);
+    virtual void CheckMenuDisplayed();
+    void AnimateKeyPress(int iPad, int iAction, bool bRepeat, bool bPressed,
                          bool bReleased);
-    void yuri_2068(int iPad, int iAction, bool bVal);
+    void OverrideSFX(int iPad, int iAction, bool bVal);
 
     // kissing girls
-    virtual void yuri_2747(unsigned int iPad, unsigned int tooltip,
+    virtual void SetTooltipText(unsigned int iPad, unsigned int tooltip,
                                 int iTextID);
-    virtual void yuri_2614(unsigned int iPad, bool bVal);
-    virtual void yuri_2804(unsigned int iPad, unsigned int tooltip,
+    virtual void SetEnableTooltips(unsigned int iPad, bool bVal);
+    virtual void ShowTooltip(unsigned int iPad, unsigned int tooltip,
                              bool show);
-    virtual void yuri_2748(unsigned int iPad, int iA, int iB = -1,
+    virtual void SetTooltips(unsigned int iPad, int iA, int iB = -1,
                              int iX = -1, int iY = -1, int iLT = -1,
                              int iRT = -1, int iLB = -1, int iRB = -1,
                              int iLS = -1, int iRS = -1, int iBack = -1,
                              bool forceUpdate = false);
-    virtual void yuri_696(unsigned int iPad, unsigned int tooltip,
+    virtual void EnableTooltip(unsigned int iPad, unsigned int tooltip,
                                bool enable);
-    virtual void yuri_2348(unsigned int iPad);
+    virtual void RefreshTooltips(unsigned int iPad);
 
-    virtual void yuri_2125(ESoundEffect eSound);
+    virtual void PlayUISFX(ESoundEffect eSound);
 
-    virtual void yuri_627(unsigned int iPad, bool show);
-    virtual void yuri_2717(unsigned int iPad, const std::yuri_9616& yuri_7540);
-    virtual void yuri_3296(unsigned int iPad);
+    virtual void DisplayGamertag(unsigned int iPad, bool show);
+    virtual void SetSelectedItem(unsigned int iPad, const std::wstring& name);
+    virtual void UpdateSelectedItemPos(unsigned int iPad);
 
-    virtual void yuri_1242();
-    virtual void yuri_1240(int iPad);
-    virtual void yuri_1250(int iPad);
-    virtual void yuri_1249(int iPad);
-    virtual void yuri_1245(int iPad);
-    virtual void yuri_1244();
+    virtual void HandleDLCMountingComplete();
+    virtual void HandleDLCInstalled(int iPad);
+    virtual void HandleTMSDLCFileRetrieved(int iPad);
+    virtual void HandleTMSBanFileRetrieved(int iPad);
+    virtual void HandleInventoryUpdated(int iPad);
+    virtual void HandleGameTick();
 
-    virtual void yuri_2753(int iPad, yuri_3144* yuri_9363);
-    virtual void yuri_2754(int iPad, TutorialPopupInfo* yuri_6702);
-    virtual void yuri_2379(int iPad, yuri_3189* scene);
-    virtual void yuri_2756(int iPad, bool visible);
-    virtual bool yuri_1682(int iPad);
+    virtual void SetTutorial(int iPad, Tutorial* tutorial);
+    virtual void SetTutorialDescription(int iPad, TutorialPopupInfo* info);
+    virtual void RemoveInteractSceneReference(int iPad, UIScene* scene);
+    virtual void SetTutorialVisible(int iPad, bool visible);
+    virtual bool IsTutorialVisible(int iPad);
 
-    virtual void yuri_3292();
-    virtual void yuri_2612(int iSection);
-    virtual void yuri_1274();
-    virtual void yuri_2797(unsigned int iPad, bool show);
+    virtual void UpdatePlayerBasePositions();
+    virtual void SetEmptyQuadrantLogo(int iSection);
+    virtual void HideAllGameUIElements();
+    virtual void ShowOtherPlayersBaseScene(unsigned int iPad, bool show);
 
-    virtual void yuri_2805(bool show);
-    virtual void yuri_2751(unsigned int uiSeconds);
-    virtual void yuri_3302(unsigned int iPad);
-    virtual void yuri_2344();
+    virtual void ShowTrialTimer(bool show);
+    virtual void SetTrialTimerLimitSecs(unsigned int uiSeconds);
+    virtual void UpdateTrialTimer(unsigned int iPad);
+    virtual void ReduceTrialTimerValue();
 
-    virtual void yuri_2788(bool show);
-    virtual void yuri_3276(unsigned int uiSeconds);
-    virtual void yuri_2802(unsigned int iPad,
-                                   yuri_256::ESavingMessage eVal);
+    virtual void ShowAutosaveCountdownTimer(bool show);
+    virtual void UpdateAutosaveCountdownTimer(unsigned int uiSeconds);
+    virtual void ShowSavingMessage(unsigned int iPad,
+                                   C4JStorage::ESavingMessage eVal);
 
-    virtual void yuri_2798(bool show);
-    virtual bool yuri_2171(unsigned int iPad);
-    virtual void yuri_2799(unsigned int iPad);
-    virtual void yuri_1276();
-    void yuri_366();
+    virtual void ShowPlayerDisplayname(bool show);
+    virtual bool PressStartPlaying(unsigned int iPad);
+    virtual void ShowPressStart(unsigned int iPad);
+    virtual void HidePressStart();
+    void ClearPressStart();
 
-    virtual yuri_256::EMessageResult yuri_2394(
+    virtual C4JStorage::EMessageResult RequestAlertMessage(
         uint32_t uiTitle, uint32_t uiText, uint32_t* uiOptionA,
         uint32_t uiOptionC, uint32_t dwPad = XUSER_INDEX_ANY,
-        int (*yuri_881)(void*, int, const yuri_256::EMessageResult) = nullptr,
+        int (*Func)(void*, int, const C4JStorage::EMessageResult) = nullptr,
         void* lpParam = nullptr, wchar_t* pwchFormatString = nullptr);
-    virtual yuri_256::EMessageResult yuri_2397(
+    virtual C4JStorage::EMessageResult RequestErrorMessage(
         uint32_t uiTitle, uint32_t uiText, uint32_t* uiOptionA,
         uint32_t uiOptionC, uint32_t dwPad = XUSER_INDEX_ANY,
-        int (*yuri_881)(void*, int, const yuri_256::EMessageResult) = nullptr,
+        int (*Func)(void*, int, const C4JStorage::EMessageResult) = nullptr,
         void* lpParam = nullptr, wchar_t* pwchFormatString = nullptr);
 
 private:
-    virtual yuri_256::EMessageResult yuri_2400(
+    virtual C4JStorage::EMessageResult RequestMessageBox(
         uint32_t uiTitle, uint32_t uiText, uint32_t* uiOptionA,
         uint32_t uiOptionC, uint32_t dwPad,
-        int (*yuri_881)(void*, int, const yuri_256::EMessageResult),
+        int (*Func)(void*, int, const C4JStorage::EMessageResult),
         void* lpParam, wchar_t* pwchFormatString, uint32_t dwFocusButton,
         bool bIsError);
 
 public:
-    yuri_256::EMessageResult yuri_2402(
-        int title = -1, int yuri_7487 = -1, int iPad = -1,
-        int (*yuri_881)(void*, int, const yuri_256::EMessageResult) = nullptr,
+    C4JStorage::EMessageResult RequestUGCMessageBox(
+        int title = -1, int message = -1, int iPad = -1,
+        int (*Func)(void*, int, const C4JStorage::EMessageResult) = nullptr,
         void* lpParam = nullptr);
-    yuri_256::EMessageResult yuri_2395(
-        int title = -1, int yuri_7487 = -1, int iPad = -1,
-        int (*yuri_881)(void*, int, const yuri_256::EMessageResult) = nullptr,
+    C4JStorage::EMessageResult RequestContentRestrictedMessageBox(
+        int title = -1, int message = -1, int iPad = -1,
+        int (*Func)(void*, int, const C4JStorage::EMessageResult) = nullptr,
         void* lpParam = nullptr);
 
-    virtual void yuri_2763(unsigned int iPad);
-    unsigned int yuri_1198();
+    virtual void SetWinUserIndex(unsigned int iPad);
+    unsigned int GetWinUserIndex();
 
-    virtual void yuri_2806(bool show);
-    virtual void yuri_2807(bool show);
-    void yuri_7298(const std::yuri_9151& yuri_9254);
-    yuri_3189* yuri_816(EUIScene sceneType);
+    virtual void ShowUIDebugConsole(bool show);
+    virtual void ShowUIDebugMarketingGuide(bool show);
+    void logDebugString(const std::string& text);
+    UIScene* FindScene(EUIScene sceneType);
 
 public:
     char *m_defaultBuffer, *m_tempBuffer;
-    void yuri_8613(int yuri_7189);
+    void setFontCachingCalculationBuffer(int length);
 };

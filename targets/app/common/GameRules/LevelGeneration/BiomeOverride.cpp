@@ -6,48 +6,48 @@
 #include "util/StringHelpers.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-yuri_194::yuri_194() {
+BiomeOverride::BiomeOverride() {
     m_tile = 0;
     m_topTile = 0;
     m_biomeId = 0;
 }
 
-void yuri_194::yuri_9582(yuri_552* yuri_4431,
+void BiomeOverride::writeAttributes(DataOutputStream* dos,
                                     unsigned int numAttrs) {
-    yuri_919::yuri_9582(yuri_4431, numAttrs + 3);
+    GameRuleDefinition::writeAttributes(dos, numAttrs + 3);
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_biomeId);
-    yuri_4431->yuri_9611(yuri_9312(m_biomeId));
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_tileId);
-    yuri_4431->yuri_9611(yuri_9312(m_tile));
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_topTileId);
-    yuri_4431->yuri_9611(yuri_9312(m_topTile));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_biomeId);
+    dos->writeUTF(toWString(m_biomeId));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_tileId);
+    dos->writeUTF(toWString(m_tile));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_topTileId);
+    dos->writeUTF(toWString(m_topTile));
 }
 
-void yuri_194::yuri_3585(const std::yuri_9616& attributeName,
-                                 const std::yuri_9616& attributeValue) {
-    if (attributeName.yuri_4117(yuri_1720"tileId") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_tile = yuri_9514;
-        app.yuri_563("BiomeOverride: Adding parameter tileId=%d\n", m_tile);
-    } else if (attributeName.yuri_4117(yuri_1720"topTileId") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_topTile = yuri_9514;
-        app.yuri_563("BiomeOverride: Adding parameter topTileId=%d\n",
+void BiomeOverride::addAttribute(const std::wstring& attributeName,
+                                 const std::wstring& attributeValue) {
+    if (attributeName.compare(L"tileId") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_tile = value;
+        app.DebugPrintf("BiomeOverride: Adding parameter tileId=%d\n", m_tile);
+    } else if (attributeName.compare(L"topTileId") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_topTile = value;
+        app.DebugPrintf("BiomeOverride: Adding parameter topTileId=%d\n",
                         m_topTile);
-    } else if (attributeName.yuri_4117(yuri_1720"biomeId") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_biomeId = yuri_9514;
-        app.yuri_563("BiomeOverride: Adding parameter biomeId=%d\n",
+    } else if (attributeName.compare(L"biomeId") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_biomeId = value;
+        app.DebugPrintf("BiomeOverride: Adding parameter biomeId=%d\n",
                         m_biomeId);
     } else {
-        yuri_919::yuri_3585(attributeName, attributeValue);
+        GameRuleDefinition::addAttribute(attributeName, attributeValue);
     }
 }
 
-bool yuri_194::yuri_6783(int yuri_6674) { return m_biomeId == yuri_6674; }
+bool BiomeOverride::isBiome(int id) { return m_biomeId == id; }
 
-void yuri_194::yuri_6041(std::yuri_9368& tile, std::yuri_9368& topTile) {
+void BiomeOverride::getTileValues(std::uint8_t& tile, std::uint8_t& topTile) {
     if (m_tile != 0) tile = m_tile;
     if (m_topTile != 0) topTile = m_topTile;
 }

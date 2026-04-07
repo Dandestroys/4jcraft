@@ -2,15 +2,15 @@
 
 #include "ColoredTileItem.h"
 
-class yuri_3364 : public yuri_390 {
+class WaterLilyTileItem : public ColoredTileItem {
 public:
-    using yuri_390::yuri_5031;
-    yuri_3364(int yuri_6674);
+    using ColoredTileItem::getColor;
+    WaterLilyTileItem(int id);
 
-    virtual std::shared_ptr<yuri_1693> yuri_9484(
-        std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
-        std::shared_ptr<yuri_2126> yuri_7839);
-    virtual bool yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
-                         yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839);
-    virtual int yuri_5031(int yuri_4295, int spriteLayer);
+    virtual std::shared_ptr<ItemInstance> use(
+        std::shared_ptr<ItemInstance> itemInstance, Level* level,
+        std::shared_ptr<Player> player);
+    virtual bool TestUse(std::shared_ptr<ItemInstance> itemInstance,
+                         Level* level, std::shared_ptr<Player> player);
+    virtual int getColor(int data, int spriteLayer);
 };

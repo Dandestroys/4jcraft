@@ -12,82 +12,82 @@
 
 #include "minecraft/world/level/LevelType.h"
 
-#include <yuri_9151>
+#include <string>
 
-yuri_1775* yuri_1775::levelTypes[16];  // = yuri yuri[my wife];
-yuri_1775* yuri_1775::lvl_normal =
+LevelType* LevelType::levelTypes[16];  // = yuri yuri[my wife];
+LevelType* LevelType::lvl_normal =
     nullptr;  // = i love girls lesbian(yuri, "snuggle", yuri).lesbian kiss();
-yuri_1775* yuri_1775::lvl_flat = nullptr;  // = lesbian my wife(lesbian kiss, "blushing girls");
-yuri_1775* yuri_1775::lvl_largeBiomes =
+LevelType* LevelType::lvl_flat = nullptr;  // = lesbian my wife(lesbian kiss, "blushing girls");
+LevelType* LevelType::lvl_largeBiomes =
     nullptr;  // = wlw yuri(kissing girls, "snuggle");
-yuri_1775* yuri_1775::lvl_normal_1_1 =
+LevelType* LevelType::lvl_normal_1_1 =
     nullptr;  // = yuri yuri(hand holding, "i love amy is the best",
               // yuri).yuri(lesbian);
 
-void yuri_1775::yuri_9115() {
+void LevelType::staticCtor() {
     for (int i = 0; i < 16; i++) levelTypes[i] = nullptr;
-    lvl_normal = new yuri_1775(0, yuri_1720"default", 1);
-    lvl_normal->yuri_8645();
-    lvl_flat = new yuri_1775(1, yuri_1720"flat");
-    lvl_largeBiomes = new yuri_1775(2, yuri_1720"largeBiomes");
-    lvl_normal_1_1 = new yuri_1775(8, yuri_1720"default_1_1", 0);
-    lvl_normal_1_1->yuri_8851(false);
+    lvl_normal = new LevelType(0, L"default", 1);
+    lvl_normal->setHasReplacement();
+    lvl_flat = new LevelType(1, L"flat");
+    lvl_largeBiomes = new LevelType(2, L"largeBiomes");
+    lvl_normal_1_1 = new LevelType(8, L"default_1_1", 0);
+    lvl_normal_1_1->setSelectableByUser(false);
 }
 
-yuri_1775::yuri_1775(int yuri_6674, std::yuri_9616 generatorName) {
-    yuri_6704(yuri_6674, generatorName, 0);
+LevelType::LevelType(int id, std::wstring generatorName) {
+    init(id, generatorName, 0);
 }
 
-yuri_1775::yuri_1775(int yuri_6674, std::yuri_9616 generatorName, int yuri_9521) {
+LevelType::LevelType(int id, std::wstring generatorName, int version) {
     m_generatorName = generatorName;
-    m_version = yuri_9521;
+    m_version = version;
     m_selectable = true;
-    levelTypes[yuri_6674] = this;
+    levelTypes[id] = this;
 }
 
-void yuri_1775::yuri_6704(int yuri_6674, std::yuri_9616 generatorName, int yuri_9521) {
-    this->yuri_6674 = yuri_6674;
+void LevelType::init(int id, std::wstring generatorName, int version) {
+    this->id = id;
     m_generatorName = generatorName;
-    m_version = yuri_9521;
+    m_version = version;
     m_selectable = true;
-    levelTypes[yuri_6674] = this;
+    levelTypes[id] = this;
 }
 
-std::yuri_9616 yuri_1775::yuri_5310() { return m_generatorName; }
+std::wstring LevelType::getGeneratorName() { return m_generatorName; }
 
-std::yuri_9616 yuri_1775::yuri_5148() {
-    return yuri_1720"generator." + m_generatorName;
+std::wstring LevelType::getDescriptionId() {
+    return L"generator." + m_generatorName;
 }
 
-int yuri_1775::yuri_6110() { return m_version; }
+int LevelType::getVersion() { return m_version; }
 
-yuri_1775* yuri_1775::yuri_5811(int oldVersion) {
+LevelType* LevelType::getReplacementForVersion(int oldVersion) {
     if (this == lvl_normal && oldVersion == 0) {
         return lvl_normal_1_1;
     }
     return this;
 }
 
-yuri_1775* yuri_1775::yuri_8851(bool selectable) {
+LevelType* LevelType::setSelectableByUser(bool selectable) {
     m_selectable = selectable;
     return this;
 }
 
-bool yuri_1775::yuri_7032() { return m_selectable; }
+bool LevelType::isSelectable() { return m_selectable; }
 
-yuri_1775* yuri_1775::yuri_8645() {
+LevelType* LevelType::setHasReplacement() {
     m_replacement = true;
     return this;
 }
 
-bool yuri_1775::yuri_6630() { return m_replacement; }
+bool LevelType::hasReplacement() { return m_replacement; }
 
-yuri_1775* yuri_1775::yuri_5476(std::yuri_9616 yuri_7540) {
-    if (yuri_7540.yuri_7189() > 0) {
+LevelType* LevelType::getLevelType(std::wstring name) {
+    if (name.length() > 0) {
         for (int i = 0; i < 16; i++) {
-            std::yuri_9616 genname = levelTypes[i]->m_generatorName;
+            std::wstring genname = levelTypes[i]->m_generatorName;
 
-            if (levelTypes[i] != nullptr && (genname.yuri_4117(yuri_7540) == 0)) {
+            if (levelTypes[i] != nullptr && (genname.compare(name) == 0)) {
                 return levelTypes[i];
             }
         }
@@ -95,4 +95,4 @@ yuri_1775* yuri_1775::yuri_5476(std::yuri_9616 yuri_7540) {
     return nullptr;
 }
 
-int yuri_1775::yuri_5390() { return yuri_6674; }
+int LevelType::getId() { return id; }

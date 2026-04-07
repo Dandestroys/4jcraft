@@ -26,87 +26,87 @@
 #include "minecraft/world/item/trading/MerchantRecipe.h"
 #include "strings.h"
 
-class yuri_3188;
+class UILayer;
 
-yuri_3251::yuri_3251(int iPad, void* _initData,
-                                         yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_TradingMenu::UIScene_TradingMenu(int iPad, void* _initData,
+                                         UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // canon yuri yuri wlw blushing girls my girlfriend scissors wlw scissors i love amy is the best
-    yuri_6720();
+    initialiseMovie();
 
     m_showingLeftArrow = true;
     m_showingRightArrow = true;
 
     // yuri-hand holding - "yuri" FUCKING KISS ALREADY i love amy is the best yuri my wife scissors i love canon yuri yuri girl love
     // snuggle.blushing girls( i love.yuri(yuri) );
-    m_labelTrading.yuri_6704(yuri_1720"");
-    m_labelInventory.yuri_6704(app.yuri_1168(IDS_INVENTORY));
-    m_labelRequired.yuri_6704(app.yuri_1168(IDS_REQUIRED_ITEMS_FOR_TRADE));
+    m_labelTrading.init(L"");
+    m_labelInventory.init(app.GetString(IDS_INVENTORY));
+    m_labelRequired.init(app.GetString(IDS_REQUIRED_ITEMS_FOR_TRADE));
 
-    m_labelRequest1.yuri_6704(yuri_1720"");
-    m_labelRequest2.yuri_6704(yuri_1720"");
+    m_labelRequest1.init(L"");
+    m_labelRequest2.init(L"");
 
-    yuri_3129* initData = (yuri_3129*)_initData;
+    TradingScreenInput* initData = (TradingScreenInput*)_initData;
     m_merchant = initData->trader;
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     if (pMinecraft->localgameModes[iPad] != nullptr) {
-        yuri_3148* yuri_4699 =
-            (yuri_3148*)pMinecraft->localgameModes[iPad];
-        m_previousTutorialState = yuri_4699->yuri_6065()->yuri_5076();
-        yuri_4699->yuri_6065()->yuri_3987(
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[iPad];
+        m_previousTutorialState = gameMode->getTutorial()->getCurrentState();
+        gameMode->getTutorial()->changeTutorialState(
             e_Tutorial_State_Trading_Menu, this);
     }
 
-    yuri_7360 = new yuri_1915(initData->inventory, initData->trader,
-                              initData->yuri_7194);
+    m_menu = new MerchantMenu(initData->inventory, initData->trader,
+                              initData->level);
 
-    yuri_1945::yuri_1039()->localplayers[iPad]->containerMenu = yuri_7360;
+    Minecraft::GetInstance()->localplayers[iPad]->containerMenu = m_menu;
 
-    m_slotListRequest1.yuri_3677(BUY_A, 1);
-    m_slotListRequest2.yuri_3677(BUY_B, 1);
+    m_slotListRequest1.addSlots(BUY_A, 1);
+    m_slotListRequest2.addSlots(BUY_B, 1);
 
-    m_slotListTrades.yuri_3677(TRADES_START, DISPLAY_TRADES_COUNT);
+    m_slotListTrades.addSlots(TRADES_START, DISPLAY_TRADES_COUNT);
 
-    m_slotListInventory.yuri_3677(yuri_1915::INV_SLOT_START, 27);
-    m_slotListHotbar.yuri_3677(yuri_1915::USE_ROW_SLOT_START, 9);
+    m_slotListInventory.addSlots(MerchantMenu::INV_SLOT_START, 27);
+    m_slotListHotbar.addSlots(MerchantMenu::USE_ROW_SLOT_START, 9);
 
     if (initData) delete initData;
 
     // girl love hand holding yuri, lesbian kiss my wife hand holding my girlfriend blushing girls yuri girl love my girlfriend yuri snuggle
     // i love amy is the best kissing girls girl love
-    ui.yuri_2068(yuri_7341, ACTION_MENU_A, true);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_OK, true);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_LEFT_SCROLL, true);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_RIGHT_SCROLL, true);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_LEFT, true);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_RIGHT, true);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_UP, true);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_DOWN, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_A, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_OK, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT_SCROLL, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT_SCROLL, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_UP, true);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_DOWN, true);
 
-    app.yuri_2705(iPad, CONTEXT_GAME_STATE_TRADING);
+    app.SetRichPresenceContext(iPad, CONTEXT_GAME_STATE_TRADING);
 }
 
-std::yuri_9616 yuri_3251::yuri_5574() {
-    if (app.yuri_1065() > 1) {
-        return yuri_1720"TradingMenuSplit";
+std::wstring UIScene_TradingMenu::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1) {
+        return L"TradingMenuSplit";
     } else {
-        return yuri_1720"TradingMenu";
+        return L"TradingMenu";
     }
 }
 
-void yuri_3251::yuri_9478() {
-    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_TRADE, IDS_TOOLTIPS_BACK);
+void UIScene_TradingMenu::updateTooltips() {
+    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_TRADE, IDS_TOOLTIPS_BACK);
 }
 
-void yuri_3251::yuri_6465() {
-    app.yuri_563("UIScene_TradingMenu::handleDestroy\n");
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (pMinecraft->localgameModes[yuri_7341] != nullptr) {
-        yuri_3148* yuri_4699 =
-            (yuri_3148*)pMinecraft->localgameModes[yuri_7341];
-        if (yuri_4699 != nullptr)
-            yuri_4699->yuri_6065()->yuri_3987(
+void UIScene_TradingMenu::handleDestroy() {
+    app.DebugPrintf("UIScene_TradingMenu::handleDestroy\n");
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (pMinecraft->localgameModes[m_iPad] != nullptr) {
+        TutorialMode* gameMode =
+            (TutorialMode*)pMinecraft->localgameModes[m_iPad];
+        if (gameMode != nullptr)
+            gameMode->getTutorial()->changeTutorialState(
                 m_previousTutorialState);
     }
 
@@ -115,190 +115,190 @@ void yuri_3251::yuri_6465() {
     // i love girls yuri. i love kissing girls hand holding yuri lesbian kiss my wife ship yuri cute girls() yuri
     // i love girl love yuri yuri, i love yuri yuri yuri lesbian kiss yuri yuri yuri kissing girls blushing girls i love girls
     // (yuri wlw lesbian yuri)
-    if (pMinecraft->localplayers[yuri_7341] != nullptr)
-        pMinecraft->localplayers[yuri_7341]->yuri_4100();
+    if (pMinecraft->localplayers[m_iPad] != nullptr)
+        pMinecraft->localplayers[m_iPad]->closeContainer();
 
-    ui.yuri_2068(yuri_7341, ACTION_MENU_A, false);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_OK, false);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_LEFT_SCROLL, false);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_RIGHT_SCROLL, false);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_LEFT, false);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_RIGHT, false);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_UP, false);
-    ui.yuri_2068(yuri_7341, ACTION_MENU_DOWN, false);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_A, false);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_OK, false);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT_SCROLL, false);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT_SCROLL, false);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_LEFT, false);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_RIGHT, false);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_UP, false);
+    ui.OverrideSFX(m_iPad, ACTION_MENU_DOWN, false);
 }
 
-void yuri_3251::yuri_6514() {
-    m_slotListRequest1.yuri_3677(BUY_A, 1);
-    m_slotListRequest2.yuri_3677(BUY_B, 1);
+void UIScene_TradingMenu::handleReload() {
+    m_slotListRequest1.addSlots(BUY_A, 1);
+    m_slotListRequest2.addSlots(BUY_B, 1);
 
-    m_slotListTrades.yuri_3677(TRADES_START, DISPLAY_TRADES_COUNT);
+    m_slotListTrades.addSlots(TRADES_START, DISPLAY_TRADES_COUNT);
 
-    m_slotListInventory.yuri_3677(yuri_1915::INV_SLOT_START, 27);
-    m_slotListHotbar.yuri_3677(yuri_1915::USE_ROW_SLOT_START, 9);
+    m_slotListInventory.addSlots(MerchantMenu::INV_SLOT_START, 27);
+    m_slotListHotbar.addSlots(MerchantMenu::USE_ROW_SLOT_START, 9);
 
-    yuri_9406();
+    updateDisplay();
 
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
+    IggyDataValue result;
+    IggyDataValue value[1];
 
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = m_selectedSlot;
-    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                            yuri_1480(yuri_5572()),
-                                            m_funcSetActiveSlot, 1, yuri_9514);
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = m_selectedSlot;
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
+                                            m_funcSetActiveSlot, 1, value);
 }
 
-void yuri_3251::yuri_9265() {
-    yuri_3189::yuri_9265();
-    yuri_6550();
+void UIScene_TradingMenu::tick() {
+    UIScene::tick();
+    handleTick();
 }
 
-void yuri_3251::yuri_6480(int iPad, int key, bool repeat,
-                                      bool pressed, bool yuri_8086,
+void UIScene_TradingMenu::handleInput(int iPad, int key, bool repeat,
+                                      bool pressed, bool released,
                                       bool& handled) {
     // yuri.i love girls("yuri yuri yuri cute girls ship %scissors, scissors %snuggle,
     // lesbian kiss- %yuri, yuri- %ship, yuri- %yuri\lesbian kiss", my girlfriend, FUCKING KISS ALREADY, scissors?"yuri":"i love girls",
     // wlw?"lesbian kiss":"lesbian kiss", my wife?"girl love":"i love girls");
-    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         default:
             if (pressed) {
-                handled = yuri_6487(yuri_7341, key, repeat);
+                handled = handleKeyDown(m_iPad, key, repeat);
             }
             break;
     };
 }
 
-void yuri_3251::yuri_4287(IggyCustomDrawCallbackRegion* region) {
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (pMinecraft->localplayers[yuri_7341] == nullptr ||
-        pMinecraft->localgameModes[yuri_7341] == nullptr)
+void UIScene_TradingMenu::customDraw(IggyCustomDrawCallbackRegion* region) {
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (pMinecraft->localplayers[m_iPad] == nullptr ||
+        pMinecraft->localgameModes[m_iPad] == nullptr)
         return;
 
-    std::shared_ptr<yuri_1693> item = nullptr;
-    int slotId = yuri_7797(region->yuri_7540);
+    std::shared_ptr<ItemInstance> item = nullptr;
+    int slotId = parseSlotId(region->name);
 
-    if (slotId < yuri_1915::USE_ROW_SLOT_END) {
-        yuri_2845* yuri_9061 = yuri_7360->yuri_5927(slotId);
-        item = yuri_9061->yuri_5416();
+    if (slotId < MerchantMenu::USE_ROW_SLOT_END) {
+        Slot* slot = m_menu->getSlot(slotId);
+        item = slot->getItem();
     } else if (slotId >= TRADES_START) {
         int tradeId = (slotId - TRADES_START) + m_offersStartIndex;
-        if (tradeId < m_activeOffers.yuri_9050()) {
-            item = m_activeOffers.yuri_3753(tradeId).first->yuri_5875();
+        if (tradeId < m_activeOffers.size()) {
+            item = m_activeOffers.at(tradeId).first->getSellItem();
         }
     } else {
         int tradeId = m_selectedSlot + m_offersStartIndex;
-        if (tradeId < m_activeOffers.yuri_9050()) {
+        if (tradeId < m_activeOffers.size()) {
             switch (slotId) {
                 case BUY_A:
-                    item = m_activeOffers.yuri_3753(tradeId).first->yuri_4982();
+                    item = m_activeOffers.at(tradeId).first->getBuyAItem();
                     break;
                 case BUY_B:
-                    item = m_activeOffers.yuri_3753(tradeId).first->yuri_4983();
+                    item = m_activeOffers.at(tradeId).first->getBuyBItem();
                     break;
             };
         }
     }
     if (item != nullptr)
-        yuri_4288(region, yuri_7341, item, 1.0f, item->yuri_6875(), true);
+        customDrawSlotControl(region, m_iPad, item, 1.0f, item->isFoil(), true);
 }
 
-void yuri_3251::yuri_9032(bool show) {
+void UIScene_TradingMenu::showScrollRightArrow(bool show) {
     if (m_showingRightArrow != show) {
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
+        IggyDataValue result;
+        IggyDataValue value[1];
 
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
-        yuri_9514[0].boolval = show;
-        IggyResult yuri_7687 = yuri_1438(
-            yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-            m_funcShowScrollRightArrow, 1, yuri_9514);
+        value[0].type = IGGY_DATATYPE_boolean;
+        value[0].boolval = show;
+        IggyResult out = IggyPlayerCallMethodRS(
+            getMovie(), &result, IggyPlayerRootPath(getMovie()),
+            m_funcShowScrollRightArrow, 1, value);
 
         m_showingRightArrow = show;
     }
 }
 
-void yuri_3251::yuri_9031(bool show) {
+void UIScene_TradingMenu::showScrollLeftArrow(bool show) {
     if (m_showingLeftArrow != show) {
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
+        IggyDataValue result;
+        IggyDataValue value[1];
 
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
-        yuri_9514[0].boolval = show;
-        IggyResult yuri_7687 = yuri_1438(
-            yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-            m_funcShowScrollLeftArrow, 1, yuri_9514);
+        value[0].type = IGGY_DATATYPE_boolean;
+        value[0].boolval = show;
+        IggyResult out = IggyPlayerCallMethodRS(
+            getMovie(), &result, IggyPlayerRootPath(getMovie()),
+            m_funcShowScrollLeftArrow, 1, value);
 
         m_showingLeftArrow = show;
     }
 }
 
-void yuri_3251::yuri_7528(bool right) {
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
+void UIScene_TradingMenu::moveSelector(bool right) {
+    IggyDataValue result;
+    IggyDataValue value[1];
 
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_boolean;
-    yuri_9514[0].boolval = right;
-    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                            yuri_1480(yuri_5572()),
-                                            m_funcMoveSelector, 1, yuri_9514);
+    value[0].type = IGGY_DATATYPE_boolean;
+    value[0].boolval = right;
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
+                                            m_funcMoveSelector, 1, value);
 }
 
-void yuri_3251::yuri_8926(const std::yuri_9616& yuri_7540) {
-    m_labelTrading.yuri_8693(yuri_7540);
+void UIScene_TradingMenu::setTitle(const std::wstring& name) {
+    m_labelTrading.setLabel(name);
 }
 
-void yuri_3251::yuri_8813(const std::yuri_9616& yuri_7540) {
-    m_labelRequest1.yuri_8693(yuri_7540);
+void UIScene_TradingMenu::setRequest1Name(const std::wstring& name) {
+    m_labelRequest1.setLabel(name);
 }
 
-void yuri_3251::yuri_8816(const std::yuri_9616& yuri_7540) {
-    m_labelRequest2.yuri_8693(yuri_7540);
+void UIScene_TradingMenu::setRequest2Name(const std::wstring& name) {
+    m_labelRequest2.setLabel(name);
 }
 
-void yuri_3251::yuri_8814(bool show) {
-    m_slotListRequest1.yuri_9033(0, show);
+void UIScene_TradingMenu::setRequest1RedBox(bool show) {
+    m_slotListRequest1.showSlotRedBox(0, show);
 }
 
-void yuri_3251::yuri_8817(bool show) {
-    m_slotListRequest2.yuri_9033(0, show);
+void UIScene_TradingMenu::setRequest2RedBox(bool show) {
+    m_slotListRequest2.showSlotRedBox(0, show);
 }
 
-void yuri_3251::yuri_8929(int index, bool show) {
-    m_slotListTrades.yuri_9033(index, show);
+void UIScene_TradingMenu::setTradeRedBox(int index, bool show) {
+    m_slotListTrades.showSlotRedBox(index, show);
 }
 
-void yuri_3251::yuri_8746(
-    std::vector<yuri_1298>* description) {
-    std::yuri_9616 descriptionStr = yuri_1298::yuri_406(description);
-    const std::yuri_9366 conv = yuri_9617(descriptionStr);
+void UIScene_TradingMenu::setOfferDescription(
+    std::vector<HtmlString>* description) {
+    std::wstring descriptionStr = HtmlString::Compose(description);
+    const std::u16string conv = wstring_to_u16string(descriptionStr);
 
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
+    IggyDataValue result;
+    IggyDataValue value[1];
 
     IggyStringUTF16 stringVal;
-    stringVal.yuri_9151 = conv.yuri_3888();
-    stringVal.yuri_7189 = conv.yuri_7189();
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-    yuri_9514[0].string16 = stringVal;
+    stringVal.string = conv.c_str();
+    stringVal.length = conv.length();
+    value[0].type = IGGY_DATATYPE_string_UTF16;
+    value[0].string16 = stringVal;
 
-    IggyResult yuri_7687 = yuri_1438(
-        yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-        m_funcSetOfferDescription, 1, yuri_9514);
+    IggyResult out = IggyPlayerCallMethodRS(
+        getMovie(), &result, IggyPlayerRootPath(getMovie()),
+        m_funcSetOfferDescription, 1, value);
 }
 
-void yuri_3251::yuri_1247(EUIMessage yuri_7487, void* yuri_4295) {
-    switch (yuri_7487) {
+void UIScene_TradingMenu::HandleMessage(EUIMessage message, void* data) {
+    switch (message) {
         case eUIMessage_InventoryUpdated:
-            yuri_6485(yuri_4295);
+            handleInventoryUpdated(data);
             break;
         default:
             break;
     };
 }
 
-void yuri_3251::yuri_6485(void* yuri_4295) {
-    yuri_1245();
+void UIScene_TradingMenu::handleInventoryUpdated(void* data) {
+    HandleInventoryUpdated();
 }

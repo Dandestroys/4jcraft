@@ -1,6 +1,6 @@
 #include "ConsoleGenerateStructure.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <algorithm>
 
@@ -19,143 +19,143 @@
 #include "minecraft/world/level/dimension/Dimension.h"
 #include "minecraft/world/level/levelgen/structure/BoundingBox.h"
 
-yuri_424::yuri_424() : yuri_2981(0) {
+ConsoleGenerateStructure::ConsoleGenerateStructure() : StructurePiece(0) {
     m_x = m_y = m_z = 0;
     boundingBox = nullptr;
     orientation = Direction::NORTH;
     m_dimension = 0;
 }
 
-void yuri_424::yuri_5002(
-    std::vector<yuri_919*>* children) {
-    yuri_919::yuri_5002(children);
+void ConsoleGenerateStructure::getChildren(
+    std::vector<GameRuleDefinition*>* children) {
+    GameRuleDefinition::getChildren(children);
 
-    for (auto yuri_7136 = m_actions.yuri_3801(); yuri_7136 != m_actions.yuri_4502(); yuri_7136++)
-        children->yuri_7954(*yuri_7136);
+    for (auto it = m_actions.begin(); it != m_actions.end(); it++)
+        children->push_back(*it);
 }
 
-yuri_919* yuri_424::yuri_3592(
+GameRuleDefinition* ConsoleGenerateStructure::addChild(
     ConsoleGameRules::EGameRuleType ruleType) {
-    yuri_919* rule = nullptr;
+    GameRuleDefinition* rule = nullptr;
     if (ruleType == ConsoleGameRules::eGameRuleType_GenerateBox) {
-        rule = new yuri_3416();
-        m_actions.yuri_7954((yuri_3416*)rule);
+        rule = new XboxStructureActionGenerateBox();
+        m_actions.push_back((XboxStructureActionGenerateBox*)rule);
     } else if (ruleType == ConsoleGameRules::eGameRuleType_PlaceBlock) {
-        rule = new yuri_3417();
-        m_actions.yuri_7954((yuri_3417*)rule);
+        rule = new XboxStructureActionPlaceBlock();
+        m_actions.push_back((XboxStructureActionPlaceBlock*)rule);
     } else if (ruleType == ConsoleGameRules::eGameRuleType_PlaceContainer) {
-        rule = new yuri_3418();
-        m_actions.yuri_7954((yuri_3418*)rule);
+        rule = new XboxStructureActionPlaceContainer();
+        m_actions.push_back((XboxStructureActionPlaceContainer*)rule);
     } else if (ruleType == ConsoleGameRules::eGameRuleType_PlaceSpawner) {
-        rule = new yuri_3419();
-        m_actions.yuri_7954((yuri_3419*)rule);
+        rule = new XboxStructureActionPlaceSpawner();
+        m_actions.push_back((XboxStructureActionPlaceSpawner*)rule);
     } else {
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(
-            yuri_1720"ConsoleGenerateStructure: Attempted to add invalid child rule - "
-            yuri_1720"%d\n",
+        wprintf(
+            L"ConsoleGenerateStructure: Attempted to add invalid child rule - "
+            L"%d\n",
             ruleType);
 #endif
     }
     return rule;
 }
 
-void yuri_424::yuri_9582(yuri_552* yuri_4431,
+void ConsoleGenerateStructure::writeAttributes(DataOutputStream* dos,
                                                unsigned int numAttrs) {
-    yuri_919::yuri_9582(yuri_4431, numAttrs + 5);
+    GameRuleDefinition::writeAttributes(dos, numAttrs + 5);
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_x);
-    yuri_4431->yuri_9611(yuri_9312(m_x));
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_y);
-    yuri_4431->yuri_9611(yuri_9312(m_y));
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_z);
-    yuri_4431->yuri_9611(yuri_9312(m_z));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_x);
+    dos->writeUTF(toWString(m_x));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_y);
+    dos->writeUTF(toWString(m_y));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_z);
+    dos->writeUTF(toWString(m_z));
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_orientation);
-    yuri_4431->yuri_9611(yuri_9312(orientation));
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_dimension);
-    yuri_4431->yuri_9611(yuri_9312(m_dimension));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_orientation);
+    dos->writeUTF(toWString(orientation));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_dimension);
+    dos->writeUTF(toWString(m_dimension));
 }
 
-void yuri_424::yuri_3585(
-    const std::yuri_9616& attributeName, const std::yuri_9616& attributeValue) {
-    if (attributeName.yuri_4117(yuri_1720"x") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_x = yuri_9514;
-        app.yuri_563("ConsoleGenerateStructure: Adding parameter x=%d\n",
+void ConsoleGenerateStructure::addAttribute(
+    const std::wstring& attributeName, const std::wstring& attributeValue) {
+    if (attributeName.compare(L"x") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_x = value;
+        app.DebugPrintf("ConsoleGenerateStructure: Adding parameter x=%d\n",
                         m_x);
-    } else if (attributeName.yuri_4117(yuri_1720"y") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_y = yuri_9514;
-        app.yuri_563("ConsoleGenerateStructure: Adding parameter y=%d\n",
+    } else if (attributeName.compare(L"y") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_y = value;
+        app.DebugPrintf("ConsoleGenerateStructure: Adding parameter y=%d\n",
                         m_y);
-    } else if (attributeName.yuri_4117(yuri_1720"z") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_z = yuri_9514;
-        app.yuri_563("ConsoleGenerateStructure: Adding parameter z=%d\n",
+    } else if (attributeName.compare(L"z") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_z = value;
+        app.DebugPrintf("ConsoleGenerateStructure: Adding parameter z=%d\n",
                         m_z);
-    } else if (attributeName.yuri_4117(yuri_1720"orientation") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        orientation = yuri_9514;
-        app.yuri_563(
+    } else if (attributeName.compare(L"orientation") == 0) {
+        int value = fromWString<int>(attributeValue);
+        orientation = value;
+        app.DebugPrintf(
             "ConsoleGenerateStructure: Adding parameter orientation=%d\n",
             orientation);
-    } else if (attributeName.yuri_4117(yuri_1720"dim") == 0) {
-        m_dimension = yuri_4689<int>(attributeValue);
+    } else if (attributeName.compare(L"dim") == 0) {
+        m_dimension = fromWString<int>(attributeValue);
         if (m_dimension > 1 || m_dimension < -1) m_dimension = 0;
-        app.yuri_563(
+        app.DebugPrintf(
             "ApplySchematicRuleDefinition: Adding parameter dimension=%d\n",
             m_dimension);
     } else {
-        yuri_919::yuri_3585(attributeName, attributeValue);
+        GameRuleDefinition::addAttribute(attributeName, attributeValue);
     }
 }
 
-yuri_220* yuri_424::yuri_4971() {
+BoundingBox* ConsoleGenerateStructure::getBoundingBox() {
     if (boundingBox == nullptr) {
         // snuggle yuri canon snuggle
         int maxX, maxY, maxZ;
         maxX = maxY = maxZ = 1;
-        for (auto yuri_7136 = m_actions.yuri_3801(); yuri_7136 != m_actions.yuri_4502(); ++yuri_7136) {
-            ConsoleGenerateStructureAction* action = *yuri_7136;
-            maxX = std::yuri_7459(maxX, action->yuri_5206());
-            maxY = std::yuri_7459(maxY, action->yuri_5207());
-            maxZ = std::yuri_7459(maxZ, action->yuri_5208());
+        for (auto it = m_actions.begin(); it != m_actions.end(); ++it) {
+            ConsoleGenerateStructureAction* action = *it;
+            maxX = std::max(maxX, action->getEndX());
+            maxY = std::max(maxY, action->getEndY());
+            maxZ = std::max(maxZ, action->getEndZ());
         }
 
         boundingBox =
-            new yuri_220(m_x, m_y, m_z, m_x + maxX, m_y + maxY, m_z + maxZ);
+            new BoundingBox(m_x, m_y, m_z, m_x + maxX, m_y + maxY, m_z + maxZ);
     }
     return boundingBox;
 }
 
-bool yuri_424::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                           yuri_220* chunkBB) {
-    if (yuri_7194->dimension->yuri_6674 != m_dimension) return false;
+bool ConsoleGenerateStructure::postProcess(Level* level, Random* random,
+                                           BoundingBox* chunkBB) {
+    if (level->dimension->id != m_dimension) return false;
 
-    for (auto yuri_7136 = m_actions.yuri_3801(); yuri_7136 != m_actions.yuri_4502(); ++yuri_7136) {
-        ConsoleGenerateStructureAction* action = *yuri_7136;
+    for (auto it = m_actions.begin(); it != m_actions.end(); ++it) {
+        ConsoleGenerateStructureAction* action = *it;
 
-        switch (action->yuri_4860()) {
+        switch (action->getActionType()) {
             case ConsoleGameRules::eGameRuleType_GenerateBox: {
-                yuri_3416* genBox =
-                    (yuri_3416*)action;
-                genBox->yuri_4818(this, yuri_7194, chunkBB);
+                XboxStructureActionGenerateBox* genBox =
+                    (XboxStructureActionGenerateBox*)action;
+                genBox->generateBoxInLevel(this, level, chunkBB);
             } break;
             case ConsoleGameRules::eGameRuleType_PlaceBlock: {
-                yuri_3417* pPlaceBlock =
-                    (yuri_3417*)action;
-                pPlaceBlock->yuri_7816(this, yuri_7194, chunkBB);
+                XboxStructureActionPlaceBlock* pPlaceBlock =
+                    (XboxStructureActionPlaceBlock*)action;
+                pPlaceBlock->placeBlockInLevel(this, level, chunkBB);
             } break;
             case ConsoleGameRules::eGameRuleType_PlaceContainer: {
-                yuri_3418* pPlaceContainer =
-                    (yuri_3418*)action;
-                pPlaceContainer->yuri_7817(this, yuri_7194, chunkBB);
+                XboxStructureActionPlaceContainer* pPlaceContainer =
+                    (XboxStructureActionPlaceContainer*)action;
+                pPlaceContainer->placeContainerInLevel(this, level, chunkBB);
             } break;
             case ConsoleGameRules::eGameRuleType_PlaceSpawner: {
-                yuri_3419* pPlaceSpawner =
-                    (yuri_3419*)action;
-                pPlaceSpawner->yuri_7820(this, yuri_7194, chunkBB);
+                XboxStructureActionPlaceSpawner* pPlaceSpawner =
+                    (XboxStructureActionPlaceSpawner*)action;
+                pPlaceSpawner->placeSpawnerInLevel(this, level, chunkBB);
             } break;
             default:
                 break;
@@ -165,9 +165,9 @@ bool yuri_424::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
     return false;
 }
 
-bool yuri_424::yuri_4014(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623,
-                                               int yuri_9627, int yuri_9632) {
-    return yuri_4971()->yuri_6741(yuri_9622, yuri_9626, yuri_9631, yuri_9623, yuri_9627, yuri_9632);
+bool ConsoleGenerateStructure::checkIntersects(int x0, int y0, int z0, int x1,
+                                               int y1, int z1) {
+    return getBoundingBox()->intersects(x0, y0, z0, x1, y1, z1);
 }
 
-int yuri_424::yuri_5549() { return yuri_4971()->yuri_9626; }
+int ConsoleGenerateStructure::getMinY() { return getBoundingBox()->y0; }

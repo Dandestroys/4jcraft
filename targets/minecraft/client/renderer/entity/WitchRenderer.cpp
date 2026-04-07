@@ -22,101 +22,101 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_2412 yuri_3381::WITCH_LOCATION = yuri_2412(TN_MOB_WITCH);
+ResourceLocation WitchRenderer::WITCH_LOCATION = ResourceLocation(TN_MOB_WITCH);
 
-yuri_3381::yuri_3381() : yuri_1955(new yuri_3380(0), 0.5f) {
-    witchModel = dynamic_cast<yuri_3380*>(model);
+WitchRenderer::WitchRenderer() : MobRenderer(new WitchModel(0), 0.5f) {
+    witchModel = dynamic_cast<WitchModel*>(model);
 }
 
-void yuri_3381::yuri_8158(std::shared_ptr<yuri_739> entity, double yuri_9621, double yuri_9625,
-                           double yuri_9630, float rot, float yuri_3565) {
-    std::shared_ptr<yuri_1950> mob = std::dynamic_pointer_cast<yuri_1950>(entity);
+void WitchRenderer::render(std::shared_ptr<Entity> entity, double x, double y,
+                           double z, float rot, float a) {
+    std::shared_ptr<Mob> mob = std::dynamic_pointer_cast<Mob>(entity);
 
-    std::shared_ptr<yuri_1693> item = mob->yuri_4996();
+    std::shared_ptr<ItemInstance> item = mob->getCarriedItem();
 
     witchModel->holdingItem = item != nullptr;
-    yuri_1955::yuri_8158(mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
+    MobRenderer::render(mob, x, y, z, rot, a);
 }
 
-yuri_2412* yuri_3381::yuri_6012(
-    std::shared_ptr<yuri_739> entity) {
+ResourceLocation* WitchRenderer::getTextureLocation(
+    std::shared_ptr<Entity> entity) {
     return &WITCH_LOCATION;
 }
 
-void yuri_3381::yuri_3695(std::shared_ptr<yuri_1793> entity,
-                                        float yuri_3565) {
-    std::shared_ptr<yuri_1950> mob = std::dynamic_pointer_cast<yuri_1950>(entity);
+void WitchRenderer::additionalRendering(std::shared_ptr<LivingEntity> entity,
+                                        float a) {
+    std::shared_ptr<Mob> mob = std::dynamic_pointer_cast<Mob>(entity);
 
     float brightness =
-        SharedConstants::TEXTURE_LIGHTING ? 1 : mob->yuri_4976(yuri_3565);
-    yuri_6263(brightness, brightness, brightness);
+        SharedConstants::TEXTURE_LIGHTING ? 1 : mob->getBrightness(a);
+    glColor3f(brightness, brightness, brightness);
 
-    yuri_1955::yuri_3695(mob, yuri_3565);
+    MobRenderer::additionalRendering(mob, a);
 
-    std::shared_ptr<yuri_1693> item = mob->yuri_4996();
+    std::shared_ptr<ItemInstance> item = mob->getCarriedItem();
 
     if (item != nullptr) {
-        yuri_6346();
+        glPushMatrix();
 
         if (model->young) {
             float s = 0.5f;
-            yuri_6377(0 / 16.0f, 10 / 16.0f, 0 / 16.0f);
-            yuri_6349(-20, -1, 0, 0);
-            yuri_6351(s, s, s);
+            glTranslatef(0 / 16.0f, 10 / 16.0f, 0 / 16.0f);
+            glRotatef(-20, -1, 0, 0);
+            glScalef(s, s, s);
         }
 
-        witchModel->nose->yuri_9333(1 / 16.0f);
-        yuri_6377(-1 / 16.0f, 8.5f / 16.0f, 3.5f / 16.0f);
+        witchModel->nose->translateTo(1 / 16.0f);
+        glTranslatef(-1 / 16.0f, 8.5f / 16.0f, 3.5f / 16.0f);
 
-        if (item->yuri_6674 < 256 &&
-            yuri_3101::yuri_3951(yuri_3088::tiles[item->yuri_6674]->yuri_5806())) {
+        if (item->id < 256 &&
+            TileRenderer::canRender(Tile::tiles[item->id]->getRenderShape())) {
             float s = 8 / 16.0f;
-            yuri_6377(-0 / 16.0f, 3 / 16.0f, -5 / 16.0f);
+            glTranslatef(-0 / 16.0f, 3 / 16.0f, -5 / 16.0f);
             s *= 0.75f;
-            yuri_6349(20, 1, 0, 0);
-            yuri_6349(45, 0, 1, 0);
-            yuri_6351(s, -s, s);
-        } else if (item->yuri_6674 == yuri_1687::bow->yuri_6674) {
+            glRotatef(20, 1, 0, 0);
+            glRotatef(45, 0, 1, 0);
+            glScalef(s, -s, s);
+        } else if (item->id == Item::bow->id) {
             float s = 10 / 16.0f;
-            yuri_6377(0 / 16.0f, 2 / 16.0f, 5 / 16.0f);
-            yuri_6349(-20, 0, 1, 0);
-            yuri_6351(s, -s, s);
-            yuri_6349(-100, 1, 0, 0);
-            yuri_6349(45, 0, 1, 0);
-        } else if (yuri_1687::items[item->yuri_6674]->yuri_6894()) {
+            glTranslatef(0 / 16.0f, 2 / 16.0f, 5 / 16.0f);
+            glRotatef(-20, 0, 1, 0);
+            glScalef(s, -s, s);
+            glRotatef(-100, 1, 0, 0);
+            glRotatef(45, 0, 1, 0);
+        } else if (Item::items[item->id]->isHandEquipped()) {
             float s = 10 / 16.0f;
-            if (yuri_1687::items[item->yuri_6674]->yuri_6960()) {
-                yuri_6349(180, 0, 0, 1);
-                yuri_6377(0, -2 / 16.0f, 0);
+            if (Item::items[item->id]->isMirroredArt()) {
+                glRotatef(180, 0, 0, 1);
+                glTranslatef(0, -2 / 16.0f, 0);
             }
-            yuri_9335();
-            yuri_6351(s, -s, s);
-            yuri_6349(-100, 1, 0, 0);
-            yuri_6349(45, 0, 1, 0);
+            translateWeaponItem();
+            glScalef(s, -s, s);
+            glRotatef(-100, 1, 0, 0);
+            glRotatef(45, 0, 1, 0);
         } else {
             float s = 6 / 16.0f;
-            yuri_6377(+4 / 16.0f, +3 / 16.0f, -3 / 16.0f);
-            yuri_6351(s, s, s);
-            yuri_6349(60, 0, 0, 1);
-            yuri_6349(-90, 1, 0, 0);
-            yuri_6349(20, 0, 0, 1);
+            glTranslatef(+4 / 16.0f, +3 / 16.0f, -3 / 16.0f);
+            glScalef(s, s, s);
+            glRotatef(60, 0, 0, 1);
+            glRotatef(-90, 1, 0, 0);
+            glRotatef(20, 0, 0, 1);
         }
 
-        yuri_6349(-15, 1, 0, 0);
-        yuri_6349(40, 0, 0, 1);
+        glRotatef(-15, 1, 0, 0);
+        glRotatef(40, 0, 0, 1);
 
-        entityRenderDispatcher->itemInHandRenderer->yuri_8200(mob, item, 0);
-        if (item->yuri_5416()->yuri_6616()) {
-            entityRenderDispatcher->itemInHandRenderer->yuri_8200(mob, item,
+        entityRenderDispatcher->itemInHandRenderer->renderItem(mob, item, 0);
+        if (item->getItem()->hasMultipleSpriteLayers()) {
+            entityRenderDispatcher->itemInHandRenderer->renderItem(mob, item,
                                                                    1);
         }
-        yuri_6345();
+        glPopMatrix();
     }
 }
 
-void yuri_3381::yuri_9335() { yuri_6377(0, 3 / 16.0f, 0); }
+void WitchRenderer::translateWeaponItem() { glTranslatef(0, 3 / 16.0f, 0); }
 
-void yuri_3381::yuri_8382(std::shared_ptr<yuri_1793> mob, float yuri_3565) {
+void WitchRenderer::scale(std::shared_ptr<LivingEntity> mob, float a) {
     float s = 15 / 16.0f;
-    yuri_6351(s, s, s);
+    glScalef(s, s, s);
 }

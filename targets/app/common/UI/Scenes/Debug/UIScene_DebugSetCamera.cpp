@@ -1,7 +1,7 @@
 
 #include "app/common/UI/Scenes/Debug/UIScene_DebugSetCamera.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <memory>
 
@@ -20,78 +20,78 @@
 #include "app/linux/Linux_UIController.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_3188;
+class UILayer;
 #ifdef _DEBUG_MENUS_ENABLED
 #include "util/StringHelpers.h"
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 
-yuri_3207::yuri_3207(int iPad, void* initData,
-                                               yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_DebugSetCamera::UIScene_DebugSetCamera(int iPad, void* initData,
+                                               UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // FUCKING KISS ALREADY i love amy is the best yuri yuri lesbian i love amy is the best yuri i love girls ship yuri
-    yuri_6720();
+    initialiseMovie();
 
     int playerNo = 0;
-    currentPosition = new yuri_566();
-    currentPosition->yuri_7839 = playerNo;
+    currentPosition = new DebugSetCameraPosition();
+    currentPosition->player = playerNo;
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     if (pMinecraft != nullptr) {
-        yuri_3322 vec = pMinecraft->localplayers[playerNo]->yuri_5739(1.0);
+        Vec3 vec = pMinecraft->localplayers[playerNo]->getPos(1.0);
 
-        currentPosition->m_camX = vec.yuri_9621;
+        currentPosition->m_camX = vec.x;
         currentPosition->m_camY =
-            vec.yuri_9625 -
+            vec.y -
             1.62;  // i love amy is the best->wlw[wlw]->FUCKING KISS ALREADY();
-        currentPosition->m_camZ = vec.yuri_9630;
+        currentPosition->m_camZ = vec.z;
 
-        currentPosition->m_yRot = pMinecraft->localplayers[playerNo]->yuri_9628;
-        currentPosition->m_elev = pMinecraft->localplayers[playerNo]->yuri_9624;
+        currentPosition->m_yRot = pMinecraft->localplayers[playerNo]->yRot;
+        currentPosition->m_elev = pMinecraft->localplayers[playerNo]->xRot;
     }
 
     wchar_t TempString[256];
 
-    yuri_9171(TempString, 256, yuri_1720"%f", currentPosition->m_camX);
-    m_textInputX.yuri_6704(TempString, eControl_CamX);
+    swprintf(TempString, 256, L"%f", currentPosition->m_camX);
+    m_textInputX.init(TempString, eControl_CamX);
 
-    yuri_9171(TempString, 256, yuri_1720"%f", currentPosition->m_camY);
-    m_textInputY.yuri_6704(TempString, eControl_CamY);
+    swprintf(TempString, 256, L"%f", currentPosition->m_camY);
+    m_textInputY.init(TempString, eControl_CamY);
 
-    yuri_9171(TempString, 256, yuri_1720"%f", currentPosition->m_camZ);
-    m_textInputZ.yuri_6704(TempString, eControl_CamZ);
+    swprintf(TempString, 256, L"%f", currentPosition->m_camZ);
+    m_textInputZ.init(TempString, eControl_CamZ);
 
-    yuri_9171(TempString, 256, yuri_1720"%f", currentPosition->m_yRot);
-    m_textInputYRot.yuri_6704(TempString, eControl_YRot);
+    swprintf(TempString, 256, L"%f", currentPosition->m_yRot);
+    m_textInputYRot.init(TempString, eControl_YRot);
 
-    yuri_9171(TempString, 256, yuri_1720"%f", currentPosition->m_elev);
-    m_textInputElevation.yuri_6704(TempString, eControl_Elevation);
+    swprintf(TempString, 256, L"%f", currentPosition->m_elev);
+    m_textInputElevation.init(TempString, eControl_Elevation);
 
-    m_checkboxLockPlayer.yuri_6704(yuri_1720"Lock Player", eControl_LockPlayer,
-                              app.yuri_1003());
+    m_checkboxLockPlayer.init(L"Lock Player", eControl_LockPlayer,
+                              app.GetFreezePlayers());
 
-    m_buttonTeleport.yuri_6704(yuri_1720"Teleport", eControl_Teleport);
+    m_buttonTeleport.init(L"Teleport", eControl_Teleport);
 
-    m_labelTitle.yuri_6704(yuri_1720"Set Camera Position");
-    m_labelCamX.yuri_6704(yuri_1720"CamX");
-    m_labelCamY.yuri_6704(yuri_1720"CamY");
-    m_labelCamZ.yuri_6704(yuri_1720"CamZ");
-    m_labelYRotElev.yuri_6704(yuri_1720"Y-Rot & Elevation (Degs)");
+    m_labelTitle.init(L"Set Camera Position");
+    m_labelCamX.init(L"CamX");
+    m_labelCamY.init(L"CamY");
+    m_labelCamZ.init(L"CamZ");
+    m_labelYRotElev.init(L"Y-Rot & Elevation (Degs)");
 }
 
-std::yuri_9616 yuri_3207::yuri_5574() {
-    return yuri_1720"DebugSetCamera";
+std::wstring UIScene_DebugSetCamera::getMoviePath() {
+    return L"DebugSetCamera";
 }
 
-void yuri_3207::yuri_6480(int iPad, int key, bool repeat,
-                                         bool pressed, bool yuri_8086,
+void UIScene_DebugSetCamera::handleInput(int iPad, int key, bool repeat,
+                                         bool pressed, bool released,
                                          bool& handled) {
-    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                yuri_7545();
+                navigateBack();
             }
             break;
         case ACTION_MENU_OK:
@@ -101,15 +101,15 @@ void yuri_3207::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_PAGEDOWN:
         case ACTION_MENU_LEFT:
         case ACTION_MENU_RIGHT:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
     }
 }
 
-void yuri_3207::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_DebugSetCamera::handlePress(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Teleport:
-            app.yuri_2767(ProfileManager.yuri_1125(),
+            app.SetXuiServerAction(ProfileManager.GetPrimaryPad(),
                                    eXuiServerAction_SetCameraLocation,
                                    (void*)currentPosition);
             break;
@@ -119,50 +119,50 @@ void yuri_3207::yuri_6512(F64 controlId, F64 childId) {
         case eControl_YRot:
         case eControl_Elevation:
             m_keyboardCallbackControl = (eControls)((int)controlId);
-            InputManager.yuri_2399(
-                yuri_1720"Enter something", yuri_1720"", 0, 25,
+            InputManager.RequestKeyboard(
+                L"Enter something", L"", 0, 25,
                 [this](bool bRes) -> int {
-                    return yuri_6489(bRes);
+                    return handleKeyboardComplete(bRes);
                 },
                 C_4JInput::EKeyboardMode_Default);
             break;
     };
 }
 
-void yuri_3207::yuri_6433(F64 controlId,
+void UIScene_DebugSetCamera::handleCheckboxToggled(F64 controlId,
                                                    bool selected) {
     switch ((int)controlId) {
         case eControl_LockPlayer:
-            app.yuri_2627(selected);
+            app.SetFreezePlayers(selected);
             break;
     }
 }
 
-int yuri_3207::yuri_6489(bool bRes) {
-    const char* yuri_9254 = InputManager.yuri_1182();
-    if (yuri_9254[0] != '\0') {
-        std::yuri_9616 yuri_9514 = yuri_4165(yuri_9254);
+int UIScene_DebugSetCamera::handleKeyboardComplete(bool bRes) {
+    const char* text = InputManager.GetText();
+    if (text[0] != '\0') {
+        std::wstring value = convStringToWstring(text);
         double val = 0;
-        if (!yuri_9514.yuri_4477()) val = yuri_4689<double>(yuri_9514);
+        if (!value.empty()) val = fromWString<double>(value);
         switch (m_keyboardCallbackControl) {
             case eControl_CamX:
-                m_textInputX.yuri_8693(yuri_9514);
+                m_textInputX.setLabel(value);
                 currentPosition->m_camX = val;
                 break;
             case eControl_CamY:
-                m_textInputY.yuri_8693(yuri_9514);
+                m_textInputY.setLabel(value);
                 currentPosition->m_camY = val;
                 break;
             case eControl_CamZ:
-                m_textInputZ.yuri_8693(yuri_9514);
+                m_textInputZ.setLabel(value);
                 currentPosition->m_camZ = val;
                 break;
             case eControl_YRot:
-                m_textInputYRot.yuri_8693(yuri_9514);
+                m_textInputYRot.setLabel(value);
                 currentPosition->m_yRot = val;
                 break;
             case eControl_Elevation:
-                m_textInputElevation.yuri_8693(yuri_9514);
+                m_textInputElevation.setLabel(value);
                 currentPosition->m_elev = val;
                 break;
             default:

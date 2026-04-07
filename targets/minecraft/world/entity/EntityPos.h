@@ -2,17 +2,17 @@
 
 #include <memory>
 
-class yuri_739;
+class Entity;
 
-class yuri_744 {
+class EntityPos {
 public:
-    double yuri_9621, yuri_9625, yuri_9630;
-    float yuri_9628, yuri_9624;
+    double x, y, z;
+    float yRot, xRot;
     bool rot;
-    bool yuri_7515;
+    bool move;
 
-    yuri_744(double yuri_9621, double yuri_9625, double yuri_9630, float yuri_9628, float yuri_9624);
-    yuri_744(double yuri_9621, double yuri_9625, double yuri_9630);
-    yuri_744(float yuri_9628, float yuri_9624);
-    yuri_744* yuri_7190(std::shared_ptr<yuri_739> e, float yuri_4554);
+    EntityPos(double x, double y, double z, float yRot, float xRot);
+    EntityPos(double x, double y, double z);
+    EntityPos(float yRot, float xRot);
+    EntityPos* lerp(std::shared_ptr<Entity> e, float f);
 };

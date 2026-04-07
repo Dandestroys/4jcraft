@@ -3,11 +3,11 @@
 
 #include "MinecartRenderer.h"
 
-class yuri_1942;
-class yuri_3088;
+class MinecartSpawner;
+class Tile;
 
-class yuri_1943 : public yuri_1940 {
+class MinecartSpawnerRenderer : public MinecartRenderer {
 protected:
-    void yuri_8209(std::shared_ptr<yuri_1942> cart, float yuri_3565,
-                                yuri_3088* tile, int tileData);
+    void renderMinecartContents(std::shared_ptr<MinecartSpawner> cart, float a,
+                                Tile* tile, int tileData);
 };

@@ -5,12 +5,12 @@
 #include "minecraft/world/entity/item/MinecartSpawner.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-void yuri_1943::yuri_8209(
-    std::shared_ptr<yuri_1942> cart, float yuri_3565, yuri_3088* tile, int tileData) {
-    yuri_1940::yuri_8209(cart, yuri_3565, tile, tileData);
+void MinecartSpawnerRenderer::renderMinecartContents(
+    std::shared_ptr<MinecartSpawner> cart, float a, Tile* tile, int tileData) {
+    MinecartRenderer::renderMinecartContents(cart, a, tile, tileData);
 
-    if (tile == yuri_3088::mobSpawner) {
-        yuri_1959::yuri_8158(cart->yuri_5949(), cart->yuri_9621, cart->yuri_9625,
-                                   cart->yuri_9630, yuri_3565);
+    if (tile == Tile::mobSpawner) {
+        MobSpawnerRenderer::render(cart->getSpawner(), cart->x, cart->y,
+                                   cart->z, a);
     }
 }

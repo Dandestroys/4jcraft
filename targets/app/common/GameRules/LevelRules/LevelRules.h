@@ -1,17 +1,17 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
-class yuri_1768;
+class LevelRuleset;
 
-class yuri_1767 {
+class LevelRules {
 public:
-    yuri_1767();
+    LevelRules();
 
-    void yuri_3634(const std::yuri_9616& displayName, std::yuri_9368* pbData,
+    void addLevelRule(const std::wstring& displayName, std::uint8_t* pbData,
                       unsigned int dataLength);
-    void yuri_3634(const std::yuri_9616& displayName, yuri_1768* rootRule);
+    void addLevelRule(const std::wstring& displayName, LevelRuleset* rootRule);
 
-    void yuri_8122(yuri_1768* removing);
+    void removeLevelRule(LevelRuleset* removing);
 };

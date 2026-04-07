@@ -7,49 +7,49 @@
 #include "minecraft/network/packet/Packet.h"
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 
-class yuri_146;
-class yuri_145;
+class AttributeModifier;
+class AttributeInstance;
 
-class yuri_3275
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_3275> {
+class UpdateAttributesPacket
+    : public Packet,
+      public std::enable_shared_from_this<UpdateAttributesPacket> {
 public:
-    class yuri_147 {
+    class AttributeSnapshot {
     private:
-        eATTRIBUTE_ID yuri_6674;
-        double yuri_3790;
-        std::unordered_set<yuri_146*> modifiers;
+        eATTRIBUTE_ID id;
+        double base;
+        std::unordered_set<AttributeModifier*> modifiers;
 
     public:
-        yuri_147(eATTRIBUTE_ID yuri_6674, double yuri_3790,
-                          std::unordered_set<yuri_146*>* modifiers);
-        ~yuri_147();
+        AttributeSnapshot(eATTRIBUTE_ID id, double base,
+                          std::unordered_set<AttributeModifier*>* modifiers);
+        ~AttributeSnapshot();
 
-        eATTRIBUTE_ID yuri_5390();
-        double yuri_4928();
-        std::unordered_set<yuri_146*>* yuri_5564();
+        eATTRIBUTE_ID getId();
+        double getBase();
+        std::unordered_set<AttributeModifier*>* getModifiers();
     };
 
 private:
     int entityId;
-    std::unordered_set<yuri_147*> attributes;
+    std::unordered_set<AttributeSnapshot*> attributes;
 
 public:
-    yuri_3275();
-    yuri_3275(int entityId,
-                           std::unordered_set<yuri_145*>* values);
-    ~yuri_3275();
+    UpdateAttributesPacket();
+    UpdateAttributesPacket(int entityId,
+                           std::unordered_set<AttributeInstance*>* values);
+    ~UpdateAttributesPacket();
 
-    void yuri_7987(yuri_549* yuri_4365);
-    void yuri_9578(yuri_552* yuri_4431);
-    void yuri_6416(PacketListener* listener);
-    int yuri_5222();
-    int yuri_5215();
-    std::unordered_set<yuri_147*> yuri_6108();
+    void read(DataInputStream* dis);
+    void write(DataOutputStream* dos);
+    void handle(PacketListener* listener);
+    int getEstimatedSize();
+    int getEntityId();
+    std::unordered_set<AttributeSnapshot*> getValues();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_3275>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<UpdateAttributesPacket>();
     }
-    virtual int yuri_5390() { return 44; }
+    virtual int getId() { return 44; }
 };

@@ -4,16 +4,16 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_1834::yuri_1834(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::wood) {}
+LockedChestTile::LockedChestTile(int id) : Tile(id, Material::wood) {}
 
-bool yuri_1834::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool LockedChestTile::mayPlace(Level* level, int x, int y, int z) {
     return true;
 }
 
-void yuri_1834::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+void LockedChestTile::tick(Level* level, int x, int y, int z, Random* random) {
+    level->removeTile(x, y, z);
 }
 
-void yuri_1834::yuri_8072(IconRegister* iconRegister) {
+void LockedChestTile::registerIcons(IconRegister* iconRegister) {
     // my girlfriend
 }

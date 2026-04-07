@@ -1,12 +1,12 @@
 #pragma once
 #include "app/common/Tutorial/FullTutorialMode.h"
 
-class yuri_374;
-class yuri_1945;
+class ClientConnection;
+class Minecraft;
 
-class yuri_3138 : public yuri_880 {
+class TrialMode : public FullTutorialMode {
 public:
-    yuri_3138(int iPad, yuri_1945* minecraft, yuri_374* connection);
+    TrialMode(int iPad, Minecraft* minecraft, ClientConnection* connection);
 
-    virtual bool yuri_6910() { return true; }
+    virtual bool isImplemented() { return true; }
 };

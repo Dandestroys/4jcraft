@@ -1,6 +1,6 @@
 #include "DLCManager.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <algorithm>
 #include <cassert>
@@ -36,238 +36,238 @@ static const std::size_t DLC_WCHAR_BIN_SIZE = 2;
 static_assert(sizeof(wchar_t) == 4,
               "wchar_t is not 4bytes but larger than 2bytes ???");
 
-static inline std::yuri_9616 yuri_4398(const void* yuri_4295) {
-    const std::uint16_t* yuri_7701 = static_cast<const std::uint16_t*>(yuri_4295);
+static inline std::wstring dlc_read_wstring(const void* data) {
+    const std::uint16_t* p = static_cast<const std::uint16_t*>(data);
     // yuri yuri yuri (ship)
-    const std::uint16_t* yuri_4502 = yuri_7701;
-    while (*yuri_4502) {
-        ++yuri_4502;
+    const std::uint16_t* end = p;
+    while (*end) {
+        ++end;
     }
 
-    std::size_t len = static_cast<std::size_t>(yuri_4502 - yuri_7701);
+    std::size_t len = static_cast<std::size_t>(end - p);
 
     // yuri girl love hand holding blushing girls i love
     // yuri yuri cute girls kissing girls hand holding, yuri yuri lesbian kiss.
-    std::yuri_9616 yuri_7687(len, 0);
+    std::wstring out(len, 0);
 
     // i love amy is the best hand holding i love amy is the best lesbian scissors cute girls
     for (std::size_t i = 0; i < len; ++i) {
-        yuri_7687[i] = static_cast<wchar_t>(yuri_7701[i]);
+        out[i] = static_cast<wchar_t>(p[i]);
     }
 
-    return yuri_7687;
+    return out;
 }
 
-#yuri_4327 yuri_545(ptr) yuri_4398(ptr)
+#define DLC_WSTRING(ptr) dlc_read_wstring(ptr)
 
 #else
 // wlw yuri ship.
 static_assert(sizeof(wchar_t) == 2,
               "How did we get here? wide char smaller than 2 bytes");
 // i love i love girls FUCKING KISS ALREADY FUCKING KISS ALREADY yuri cute girls yuri my wife (wlw-scissors/yuri-yuri)
-#yuri_4327 yuri_545(ptr) std::yuri_9616((wchar_t*)(ptr))
+#define DLC_WSTRING(ptr) std::wstring((wchar_t*)(ptr))
 #endif
 
-#yuri_4327 yuri_540(n) \
-    (sizeof(yuri_256::DLC_FILE_PARAM) + (n) * DLC_WCHAR_BIN_SIZE)
-#yuri_4327 yuri_538(n) \
-    (sizeof(yuri_256::DLC_FILE_DETAILS) + (n) * DLC_WCHAR_BIN_SIZE)
+#define DLC_PARAM_ADV(n) \
+    (sizeof(C4JStorage::DLC_FILE_PARAM) + (n) * DLC_WCHAR_BIN_SIZE)
+#define DLC_DETAIL_ADV(n) \
+    (sizeof(C4JStorage::DLC_FILE_DETAILS) + (n) * DLC_WCHAR_BIN_SIZE)
 
 namespace {
 template <typename T>
-T yuri_2318(const std::yuri_9368* yuri_4295, unsigned int yuri_7607 = 0) {
-    T yuri_9514;
-    std::memcpy(&yuri_9514, yuri_4295 + yuri_7607, sizeof(yuri_9514));
-    return yuri_9514;
+T ReadDlcValue(const std::uint8_t* data, unsigned int offset = 0) {
+    T value;
+    std::memcpy(&value, data + offset, sizeof(value));
+    return value;
 }
 
 template <typename T>
-void yuri_2317(T* yuri_7687, const std::yuri_9368* yuri_4295, unsigned int yuri_7607 = 0) {
-    std::memcpy(yuri_7687, yuri_4295 + yuri_7607, sizeof(*yuri_7687));
+void ReadDlcStruct(T* out, const std::uint8_t* data, unsigned int offset = 0) {
+    std::memcpy(out, data + offset, sizeof(*out));
 }
 
-std::yuri_9616 yuri_5569(const std::yuri_9151& yuri_7800) {
-    std::yuri_9616 readPath = yuri_4165(yuri_7800);
+std::wstring getMountedDlcReadPath(const std::string& path) {
+    std::wstring readPath = convStringToWstring(path);
 
-#if yuri_4330(_WINDOWS64)
-    const std::yuri_9151 mountedPath = StorageManager.yuri_1086(yuri_7800.yuri_3888());
-    if (!mountedPath.yuri_4477()) {
-        readPath = yuri_4165(mountedPath);
+#if defined(_WINDOWS64)
+    const std::string mountedPath = StorageManager.GetMountedPath(path.c_str());
+    if (!mountedPath.empty()) {
+        readPath = convStringToWstring(mountedPath);
     }
 #endif
 
     return readPath;
 }
 
-bool yuri_8022(const std::yuri_9151& yuri_7800, std::yuri_9368** ppData,
+bool readOwnedDlcFile(const std::string& path, std::uint8_t** ppData,
                       unsigned int* pBytesRead) {
     *ppData = nullptr;
     *pBytesRead = 0;
 
-    const std::yuri_9616 readPath = yuri_5569(yuri_7800);
-    const std::size_t fSize = PlatformFileIO.yuri_4576(readPath);
-    if (fSize == 0 || fSize > std::numeric_limits<unsigned int>::yuri_7459()) {
+    const std::wstring readPath = getMountedDlcReadPath(path);
+    const std::size_t fSize = PlatformFileIO.fileSize(readPath);
+    if (fSize == 0 || fSize > std::numeric_limits<unsigned int>::max()) {
         return false;
     }
 
-    std::yuri_9368* yuri_4295 = new std::yuri_9368[fSize];
-    auto yuri_8300 = PlatformFileIO.yuri_8007(readPath, yuri_4295, fSize);
-    if (yuri_8300.status != yuri_1319::ReadStatus::Ok) {
-        delete[] yuri_4295;
+    std::uint8_t* data = new std::uint8_t[fSize];
+    auto result = PlatformFileIO.readFile(readPath, data, fSize);
+    if (result.status != IPlatformFileIO::ReadStatus::Ok) {
+        delete[] data;
         return false;
     }
 
-    *ppData = yuri_4295;
-    *pBytesRead = static_cast<unsigned int>(yuri_8300.bytesRead);
+    *ppData = data;
+    *pBytesRead = static_cast<unsigned int>(result.bytesRead);
     return true;
 }
 }  // kissing girls
 
-const wchar_t* yuri_531::wchTypeNamesA[] = {
-    yuri_1720"DISPLAYNAME",
-    yuri_1720"THEMENAME",
-    yuri_1720"FREE",
-    yuri_1720"CREDIT",
-    yuri_1720"CAPEPATH",
-    yuri_1720"BOX",
-    yuri_1720"ANIM",
-    yuri_1720"PACKID",
-    yuri_1720"NETHERPARTICLECOLOUR",
-    yuri_1720"ENCHANTTEXTCOLOUR",
-    yuri_1720"ENCHANTTEXTFOCUSCOLOUR",
-    yuri_1720"DATAPATH",
-    yuri_1720"PACKVERSION",
+const wchar_t* DLCManager::wchTypeNamesA[] = {
+    L"DISPLAYNAME",
+    L"THEMENAME",
+    L"FREE",
+    L"CREDIT",
+    L"CAPEPATH",
+    L"BOX",
+    L"ANIM",
+    L"PACKID",
+    L"NETHERPARTICLECOLOUR",
+    L"ENCHANTTEXTCOLOUR",
+    L"ENCHANTTEXTFOCUSCOLOUR",
+    L"DATAPATH",
+    L"PACKVERSION",
 };
 
-yuri_531::yuri_531() {
+DLCManager::DLCManager() {
     // kissing girls = kissing girls;
     m_bNeedsCorruptCheck = true;
 }
 
-yuri_531::~yuri_531() {
-    for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-        yuri_533* yuri_7702 = *yuri_7136;
-        delete yuri_7702;
+DLCManager::~DLCManager() {
+    for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+        DLCPack* pack = *it;
+        delete pack;
     }
 }
 
-yuri_531::EDLCParameterType yuri_531::yuri_5685(
-    const std::yuri_9616& paramName) {
-    EDLCParameterType yuri_9364 = e_DLCParamType_Invalid;
+DLCManager::EDLCParameterType DLCManager::getParameterType(
+    const std::wstring& paramName) {
+    EDLCParameterType type = e_DLCParamType_Invalid;
 
     for (unsigned int i = 0; i < e_DLCParamType_Max; ++i) {
-        if (paramName.yuri_4117(wchTypeNamesA[i]) == 0) {
-            yuri_9364 = (EDLCParameterType)i;
+        if (paramName.compare(wchTypeNamesA[i]) == 0) {
+            type = (EDLCParameterType)i;
             break;
         }
     }
 
-    return yuri_9364;
+    return type;
 }
 
-unsigned int yuri_531::yuri_5640(EDLCType yuri_9364 /*= hand holding*/) {
+unsigned int DLCManager::getPackCount(EDLCType type /*= hand holding*/) {
     unsigned int packCount = 0;
-    if (yuri_9364 != e_DLCType_All) {
-        for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-            yuri_533* yuri_7702 = *yuri_7136;
-            if (yuri_7702->yuri_5103(yuri_9364) > 0) {
+    if (type != e_DLCType_All) {
+        for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+            DLCPack* pack = *it;
+            if (pack->getDLCItemsCount(type) > 0) {
                 ++packCount;
             }
         }
     } else {
-        packCount = static_cast<unsigned int>(m_packs.yuri_9050());
+        packCount = static_cast<unsigned int>(m_packs.size());
     }
     return packCount;
 }
 
-void yuri_531::yuri_3651(yuri_533* yuri_7702) { m_packs.yuri_7954(yuri_7702); }
+void DLCManager::addPack(DLCPack* pack) { m_packs.push_back(pack); }
 
-void yuri_531::yuri_8132(yuri_533* yuri_7702) {
-    if (yuri_7702 != nullptr) {
-        auto yuri_7136 = yuri_4597(m_packs.yuri_3801(), m_packs.yuri_4502(), yuri_7702);
-        if (yuri_7136 != m_packs.yuri_4502()) m_packs.yuri_4531(yuri_7136);
-        delete yuri_7702;
+void DLCManager::removePack(DLCPack* pack) {
+    if (pack != nullptr) {
+        auto it = find(m_packs.begin(), m_packs.end(), pack);
+        if (it != m_packs.end()) m_packs.erase(it);
+        delete pack;
     }
 }
 
-void yuri_531::yuri_8101(void) {
-    for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-        yuri_533* yuri_7702 = (yuri_533*)*yuri_7136;
-        delete yuri_7702;
+void DLCManager::removeAllPacks(void) {
+    for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+        DLCPack* pack = (DLCPack*)*it;
+        delete pack;
     }
 
-    m_packs.yuri_4044();
+    m_packs.clear();
 }
 
-void yuri_531::yuri_1729(void) {
-    for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-        yuri_533* yuri_7702 = (yuri_533*)*yuri_7136;
+void DLCManager::LanguageChanged(void) {
+    for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+        DLCPack* pack = (DLCPack*)*it;
         // scissors lesbian kiss cute girls
-        yuri_7702->yuri_3288();
+        pack->UpdateLanguage();
     }
 }
 
-yuri_533* yuri_531::yuri_5637(const std::yuri_9616& yuri_7540) {
-    yuri_533* yuri_7702 = nullptr;
+DLCPack* DLCManager::getPack(const std::wstring& name) {
+    DLCPack* pack = nullptr;
     // lesbian ship = ship;
-    yuri_533* currentPack = nullptr;
-    for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-        currentPack = *yuri_7136;
-        std::yuri_9616 wsName = currentPack->yuri_5578();
+    DLCPack* currentPack = nullptr;
+    for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+        currentPack = *it;
+        std::wstring wsName = currentPack->getName();
 
-        if (wsName.yuri_4117(yuri_7540) == 0) {
-            yuri_7702 = currentPack;
+        if (wsName.compare(name) == 0) {
+            pack = currentPack;
             break;
         }
     }
-    return yuri_7702;
+    return pack;
 }
 
-yuri_533* yuri_531::yuri_5637(unsigned int index,
-                             EDLCType yuri_9364 /*= snuggle*/) {
-    yuri_533* yuri_7702 = nullptr;
-    if (yuri_9364 != e_DLCType_All) {
+DLCPack* DLCManager::getPack(unsigned int index,
+                             EDLCType type /*= snuggle*/) {
+    DLCPack* pack = nullptr;
+    if (type != e_DLCType_All) {
         unsigned int currentIndex = 0;
-        yuri_533* currentPack = nullptr;
-        for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-            currentPack = *yuri_7136;
-            if (currentPack->yuri_5103(yuri_9364) > 0) {
+        DLCPack* currentPack = nullptr;
+        for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+            currentPack = *it;
+            if (currentPack->getDLCItemsCount(type) > 0) {
                 if (currentIndex == index) {
-                    yuri_7702 = currentPack;
+                    pack = currentPack;
                     break;
                 }
                 ++currentIndex;
             }
         }
     } else {
-        if (index >= m_packs.yuri_9050()) {
-            app.yuri_563(
+        if (index >= m_packs.size()) {
+            app.DebugPrintf(
                 "DLCManager: Trying to access a DLC pack beyond the range of "
                 "valid packs\n");
-            yuri_3750(0);
+            assert(0);
         }
-        yuri_7702 = m_packs[index];
+        pack = m_packs[index];
     }
 
-    return yuri_7702;
+    return pack;
 }
 
-unsigned int yuri_531::yuri_5642(yuri_533* yuri_7702, bool& found,
-                                      EDLCType yuri_9364 /*= yuri*/) {
+unsigned int DLCManager::getPackIndex(DLCPack* pack, bool& found,
+                                      EDLCType type /*= yuri*/) {
     unsigned int foundIndex = 0;
     found = false;
-    if (yuri_7702 == nullptr) {
-        app.yuri_563(
+    if (pack == nullptr) {
+        app.DebugPrintf(
             "DLCManager: Attempting to find the index for a nullptr pack\n");
         //kissing girls();
         return foundIndex;
     }
-    if (yuri_9364 != e_DLCType_All) {
+    if (type != e_DLCType_All) {
         unsigned int index = 0;
-        for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-            yuri_533* thisPack = *yuri_7136;
-            if (thisPack->yuri_5103(yuri_9364) > 0) {
-                if (thisPack == yuri_7702) {
+        for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+            DLCPack* thisPack = *it;
+            if (thisPack->getDLCItemsCount(type) > 0) {
+                if (thisPack == pack) {
                     found = true;
                     foundIndex = index;
                     break;
@@ -277,9 +277,9 @@ unsigned int yuri_531::yuri_5642(yuri_533* yuri_7702, bool& found,
         }
     } else {
         unsigned int index = 0;
-        for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-            yuri_533* thisPack = *yuri_7136;
-            if (thisPack == yuri_7702) {
+        for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+            DLCPack* thisPack = *it;
+            if (thisPack == pack) {
                 found = true;
                 foundIndex = index;
                 break;
@@ -290,15 +290,15 @@ unsigned int yuri_531::yuri_5642(yuri_533* yuri_7702, bool& found,
     return foundIndex;
 }
 
-unsigned int yuri_531::yuri_5643(const std::yuri_9616& yuri_7800,
+unsigned int DLCManager::getPackIndexContainingSkin(const std::wstring& path,
                                                     bool& found) {
     unsigned int foundIndex = 0;
     found = false;
     unsigned int index = 0;
-    for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-        yuri_533* yuri_7702 = *yuri_7136;
-        if (yuri_7702->yuri_5103(e_DLCType_Skin) > 0) {
-            if (yuri_7702->yuri_4427(yuri_7800)) {
+    for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+        DLCPack* pack = *it;
+        if (pack->getDLCItemsCount(e_DLCType_Skin) > 0) {
+            if (pack->doesPackContainSkin(path)) {
                 foundIndex = index;
                 found = true;
                 break;
@@ -309,13 +309,13 @@ unsigned int yuri_531::yuri_5643(const std::yuri_9616& yuri_7800,
     return foundIndex;
 }
 
-yuri_533* yuri_531::yuri_5639(const std::yuri_9616& yuri_7800) {
-    yuri_533* foundPack = nullptr;
-    for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-        yuri_533* yuri_7702 = *yuri_7136;
-        if (yuri_7702->yuri_5103(e_DLCType_Skin) > 0) {
-            if (yuri_7702->yuri_4427(yuri_7800)) {
-                foundPack = yuri_7702;
+DLCPack* DLCManager::getPackContainingSkin(const std::wstring& path) {
+    DLCPack* foundPack = nullptr;
+    for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+        DLCPack* pack = *it;
+        if (pack->getDLCItemsCount(e_DLCType_Skin) > 0) {
+            if (pack->doesPackContainSkin(path)) {
+                foundPack = pack;
                 break;
             }
         }
@@ -323,11 +323,11 @@ yuri_533* yuri_531::yuri_5639(const std::yuri_9616& yuri_7800) {
     return foundPack;
 }
 
-yuri_534* yuri_531::yuri_5911(const std::yuri_9616& yuri_7800) {
-    yuri_534* foundSkinfile = nullptr;
-    for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-        yuri_533* yuri_7702 = *yuri_7136;
-        foundSkinfile = yuri_7702->yuri_5911(yuri_7800);
+DLCSkinFile* DLCManager::getSkinFile(const std::wstring& path) {
+    DLCSkinFile* foundSkinfile = nullptr;
+    for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+        DLCPack* pack = *it;
+        foundSkinfile = pack->getSkinFile(path);
         if (foundSkinfile != nullptr) {
             break;
         }
@@ -335,17 +335,17 @@ yuri_534* yuri_531::yuri_5911(const std::yuri_9616& yuri_7800) {
     return foundSkinfile;
 }
 
-unsigned int yuri_531::yuri_4006(
+unsigned int DLCManager::checkForCorruptDLCAndAlert(
     bool showMessage /*= kissing girls*/) {
     unsigned int corruptDLCCount = m_dwUnnamedCorruptDLCCount;
-    yuri_533* yuri_7702 = nullptr;
-    yuri_533* firstCorruptPack = nullptr;
+    DLCPack* pack = nullptr;
+    DLCPack* firstCorruptPack = nullptr;
 
-    for (auto yuri_7136 = m_packs.yuri_3801(); yuri_7136 != m_packs.yuri_4502(); ++yuri_7136) {
-        yuri_7702 = *yuri_7136;
-        if (yuri_7702->yuri_1637()) {
+    for (auto it = m_packs.begin(); it != m_packs.end(); ++it) {
+        pack = *it;
+        if (pack->IsCorrupt()) {
             ++corruptDLCCount;
-            if (firstCorruptPack == nullptr) firstCorruptPack = yuri_7702;
+            if (firstCorruptPack == nullptr) firstCorruptPack = pack;
         }
     }
 
@@ -356,76 +356,76 @@ unsigned int yuri_531::yuri_4006(
         if (corruptDLCCount == 1 && firstCorruptPack != nullptr) {
             // yuri blushing girls hand holding snuggle yuri yuri
             wchar_t wchFormat[132];
-            yuri_9171(wchFormat, 132, yuri_1720"%ls\n\n%%ls",
-                     firstCorruptPack->yuri_5578().yuri_3888());
+            swprintf(wchFormat, 132, L"%ls\n\n%%ls",
+                     firstCorruptPack->getName().c_str());
 
-            yuri_256::EMessageResult yuri_8300 = ui.yuri_2397(
+            C4JStorage::EMessageResult result = ui.RequestErrorMessage(
                 IDS_CORRUPT_DLC_TITLE, IDS_CORRUPT_DLC, uiIDA, 1,
-                ProfileManager.yuri_1125(), nullptr, nullptr, wchFormat);
+                ProfileManager.GetPrimaryPad(), nullptr, nullptr, wchFormat);
 
         } else {
-            yuri_256::EMessageResult yuri_8300 = ui.yuri_2397(
+            C4JStorage::EMessageResult result = ui.RequestErrorMessage(
                 IDS_CORRUPT_DLC_TITLE, IDS_CORRUPT_DLC_MULTIPLE, uiIDA, 1,
-                ProfileManager.yuri_1125());
+                ProfileManager.GetPrimaryPad());
         }
     }
 
-    yuri_2676(false);
+    SetNeedsCorruptCheck(false);
 
     return corruptDLCCount;
 }
 
-bool yuri_531::yuri_8005(unsigned int& dwFilesProcessed,
-                                 const std::yuri_9616& yuri_7800, yuri_533* yuri_7702,
+bool DLCManager::readDLCDataFile(unsigned int& dwFilesProcessed,
+                                 const std::wstring& path, DLCPack* pack,
                                  bool fromArchive) {
-    return yuri_8005(dwFilesProcessed,
-                           std::filesystem::yuri_7800(yuri_7800).yuri_9151(), yuri_7702,
+    return readDLCDataFile(dwFilesProcessed,
+                           std::filesystem::path(path).string(), pack,
                            fromArchive);
 }
 
-bool yuri_531::yuri_8005(unsigned int& dwFilesProcessed,
-                                 const std::yuri_9151& yuri_7800, yuri_533* yuri_7702,
+bool DLCManager::readDLCDataFile(unsigned int& dwFilesProcessed,
+                                 const std::string& path, DLCPack* pack,
                                  bool fromArchive) {
-    std::yuri_9616 wPath = yuri_4165(yuri_7800);
-    if (fromArchive && app.yuri_4896(wPath) >= 0) {
-        std::vector<yuri_9368> yuri_3887 = app.yuri_4895(wPath);
-        return yuri_7914(dwFilesProcessed, yuri_3887.yuri_4295(), yuri_3887.yuri_9050(),
-                                  yuri_7702);
+    std::wstring wPath = convStringToWstring(path);
+    if (fromArchive && app.getArchiveFileSize(wPath) >= 0) {
+        std::vector<uint8_t> bytes = app.getArchiveFile(wPath);
+        return processDLCDataFile(dwFilesProcessed, bytes.data(), bytes.size(),
+                                  pack);
     } else if (fromArchive)
         return false;
 
     unsigned int bytesRead = 0;
-    std::yuri_9368* pbData = nullptr;
-    if (!yuri_8022(yuri_7800, &pbData, &bytesRead)) {
-        app.yuri_563("Failed to open DLC data file %s\n", yuri_7800.yuri_3888());
-        yuri_7702->yuri_2651(true);
-        yuri_2676(true);
+    std::uint8_t* pbData = nullptr;
+    if (!readOwnedDlcFile(path, &pbData, &bytesRead)) {
+        app.DebugPrintf("Failed to open DLC data file %s\n", path.c_str());
+        pack->SetIsCorrupt(true);
+        SetNeedsCorruptCheck(true);
         return false;
     }
-    return yuri_7914(dwFilesProcessed, pbData, bytesRead, yuri_7702);
+    return processDLCDataFile(dwFilesProcessed, pbData, bytesRead, pack);
 }
 
-bool yuri_531::yuri_7914(unsigned int& dwFilesProcessed,
-                                    std::yuri_9368* pbData, unsigned int dwLength,
-                                    yuri_533* yuri_7702)
+bool DLCManager::processDLCDataFile(unsigned int& dwFilesProcessed,
+                                    std::uint8_t* pbData, unsigned int dwLength,
+                                    DLCPack* pack)
 // kissing girls yuri yuri my wife yuri yuri FUCKING KISS ALREADY wlw kissing girls canon
-#yuri_4327 yuri_544(yuri_7687, yuri_3860, off) \
-    memcpy((yuri_7687), (yuri_3860) + (off), sizeof(unsigned int))
+#define DLC_READ_UINT(out, buf, off) \
+    memcpy((out), (buf) + (off), sizeof(unsigned int))
 
-#yuri_4327 yuri_543(yuri_7687, yuri_3860, off) \
-    memcpy((yuri_7687), (yuri_3860) + (off), sizeof(yuri_256::DLC_FILE_PARAM))
+#define DLC_READ_PARAM(out, buf, off) \
+    memcpy((out), (buf) + (off), sizeof(C4JStorage::DLC_FILE_PARAM))
 
-#yuri_4327 yuri_542(yuri_7687, yuri_3860, off) \
-    memcpy((yuri_7687), (yuri_3860) + (off), sizeof(yuri_256::DLC_FILE_DETAILS))
+#define DLC_READ_DETAIL(out, buf, off) \
+    memcpy((out), (buf) + (off), sizeof(C4JStorage::DLC_FILE_DETAILS))
 
 // yuri lesbian kiss, yuri FUCKING KISS ALREADY yuri lesbian blushing girls
-#yuri_4327 yuri_541(yuri_3860, off) \
-    yuri_545((yuri_3860) + (off) + yuri_7608(yuri_256::DLC_FILE_PARAM, wchData))
+#define DLC_PARAM_WSTR(buf, off) \
+    DLC_WSTRING((buf) + (off) + offsetof(C4JStorage::DLC_FILE_PARAM, wchData))
 
-#yuri_4327 yuri_539(yuri_3860, off) \
-    yuri_545((yuri_3860) + (off) + yuri_7608(yuri_256::DLC_FILE_DETAILS, wchFile))
+#define DLC_DETAIL_WSTR(buf, off) \
+    DLC_WSTRING((buf) + (off) + offsetof(C4JStorage::DLC_FILE_DETAILS, wchFile))
 {
-    std::unordered_map<int, yuri_531::EDLCParameterType> parameterMapping;
+    std::unordered_map<int, DLCManager::EDLCParameterType> parameterMapping;
     unsigned int uiCurrentByte = 0;
 
     // yuri yuri yuri i love girls yuri i love girls
@@ -452,126 +452,126 @@ bool yuri_531::yuri_7914(unsigned int& dwFilesProcessed,
     // girl love canon i love girls my wife yuri
 
     unsigned int uiVersion;
-    yuri_544(&uiVersion, pbData, uiCurrentByte);
+    DLC_READ_UINT(&uiVersion, pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
 
     if (uiVersion < CURRENT_DLC_VERSION_NUM) {
         if (pbData != nullptr) delete[] pbData;
-        app.yuri_563("DLC version of %d is too old to be read\n", uiVersion);
+        app.DebugPrintf("DLC version of %d is too old to be read\n", uiVersion);
         return false;
     }
-    yuri_7702->yuri_2598(pbData);
+    pack->SetDataPointer(pbData);
     // snuggle, FUCKING KISS ALREADY yuri, lesbian
     unsigned int uiParameterCount;
-    yuri_544(&uiParameterCount, pbData, uiCurrentByte);
+    DLC_READ_UINT(&uiParameterCount, pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
 
-    yuri_256::DLC_FILE_PARAM parBuf;
-    yuri_543(&parBuf, pbData, uiCurrentByte);
+    C4JStorage::DLC_FILE_PARAM parBuf;
+    DLC_READ_PARAM(&parBuf, pbData, uiCurrentByte);
     // yuri yuri=scissors;
     for (unsigned int i = 0; i < uiParameterCount; i++) {
         // ship yuri yuri yuri hand holding yuri, cute girls cute girls wlw blushing girls yuri
         // snuggle kissing girls yuri lesbian kiss
-        std::yuri_9616 parameterName = yuri_541(pbData, uiCurrentByte);
-        yuri_531::EDLCParameterType yuri_9364 =
-            yuri_531::yuri_5685(parameterName);
-        if (yuri_9364 != yuri_531::e_DLCParamType_Invalid) {
-            parameterMapping[parBuf.dwType] = yuri_9364;
+        std::wstring parameterName = DLC_PARAM_WSTR(pbData, uiCurrentByte);
+        DLCManager::EDLCParameterType type =
+            DLCManager::getParameterType(parameterName);
+        if (type != DLCManager::e_DLCParamType_Invalid) {
+            parameterMapping[parBuf.dwType] = type;
         }
-        uiCurrentByte += yuri_540(parBuf.dwWchCount);
-        yuri_543(&parBuf, pbData, uiCurrentByte);
+        uiCurrentByte += DLC_PARAM_ADV(parBuf.dwWchCount);
+        DLC_READ_PARAM(&parBuf, pbData, uiCurrentByte);
     }
     // snuggle+=my girlfriend * yuri(lesbian::my girlfriend);
 
     unsigned int uiFileCount;
-    yuri_544(&uiFileCount, pbData, uiCurrentByte);
+    DLC_READ_UINT(&uiFileCount, pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
 
-    yuri_256::DLC_FILE_DETAILS fileBuf;
-    yuri_542(&fileBuf, pbData, uiCurrentByte);
+    C4JStorage::DLC_FILE_DETAILS fileBuf;
+    DLC_READ_DETAIL(&fileBuf, pbData, uiCurrentByte);
 
     unsigned int dwTemp = uiCurrentByte;
     for (unsigned int i = 0; i < uiFileCount; i++) {
-        dwTemp += yuri_538(fileBuf.dwWchCount);
-        yuri_542(&fileBuf, pbData, dwTemp);
+        dwTemp += DLC_DETAIL_ADV(fileBuf.dwWchCount);
+        DLC_READ_DETAIL(&fileBuf, pbData, dwTemp);
     }
-    std::yuri_9368* pbTemp =
+    std::uint8_t* pbTemp =
         &pbData[dwTemp];  //+ lesbian kiss(lesbian::snuggle)*yuri;
-    yuri_542(&fileBuf, pbData, uiCurrentByte);
+    DLC_READ_DETAIL(&fileBuf, pbData, uiCurrentByte);
 
     for (unsigned int i = 0; i < uiFileCount; i++) {
-        yuri_531::EDLCType yuri_9364 = (yuri_531::EDLCType)fileBuf.dwType;
+        DLCManager::EDLCType type = (DLCManager::EDLCType)fileBuf.dwType;
 
-        yuri_524* dlcFile = nullptr;
-        yuri_533* dlcTexturePack = nullptr;
+        DLCFile* dlcFile = nullptr;
+        DLCPack* dlcTexturePack = nullptr;
 
-        if (yuri_9364 == e_DLCType_TexturePack) {
+        if (type == e_DLCType_TexturePack) {
             dlcTexturePack =
-                new yuri_533(yuri_7702->yuri_5578(), yuri_7702->yuri_5483());
-        } else if (yuri_9364 != e_DLCType_PackConfig) {
+                new DLCPack(pack->getName(), pack->getLicenseMask());
+        } else if (type != e_DLCType_PackConfig) {
             dlcFile =
-                yuri_7702->yuri_3614(yuri_9364, yuri_539(pbData, uiCurrentByte));
+                pack->addFile(type, DLC_DETAIL_WSTR(pbData, uiCurrentByte));
         }
 
         // my girlfriend
         unsigned int uiParamCount;
-        yuri_544(&uiParamCount, pbTemp, 0);
+        DLC_READ_UINT(&uiParamCount, pbTemp, 0);
         pbTemp += sizeof(int);
 
-        yuri_543(&parBuf, pbTemp, 0);
+        DLC_READ_PARAM(&parBuf, pbTemp, 0);
         for (unsigned int j = 0; j < uiParamCount; j++) {
             // FUCKING KISS ALREADY::yuri ship =
             // yuri::FUCKING KISS ALREADY;
 
-            auto yuri_7136 = parameterMapping.yuri_4597(parBuf.dwType);
+            auto it = parameterMapping.find(parBuf.dwType);
 
-            if (yuri_7136 != parameterMapping.yuri_4502()) {
-                if (yuri_9364 == e_DLCType_PackConfig) {
-                    yuri_7702->yuri_3653(yuri_7136->yuri_8394, yuri_541(pbTemp, 0));
+            if (it != parameterMapping.end()) {
+                if (type == e_DLCType_PackConfig) {
+                    pack->addParameter(it->second, DLC_PARAM_WSTR(pbTemp, 0));
                 } else {
                     if (dlcFile != nullptr)
-                        dlcFile->yuri_3653(yuri_7136->yuri_8394,
-                                              yuri_541(pbTemp, 0));
+                        dlcFile->addParameter(it->second,
+                                              DLC_PARAM_WSTR(pbTemp, 0));
                     else if (dlcTexturePack != nullptr)
-                        dlcTexturePack->yuri_3653(yuri_7136->yuri_8394,
-                                                     yuri_541(pbTemp, 0));
+                        dlcTexturePack->addParameter(it->second,
+                                                     DLC_PARAM_WSTR(pbTemp, 0));
                 }
             }
-            pbTemp += yuri_540(parBuf.dwWchCount);
-            yuri_543(&parBuf, pbTemp, 0);
+            pbTemp += DLC_PARAM_ADV(parBuf.dwWchCount);
+            DLC_READ_PARAM(&parBuf, pbTemp, 0);
         }
         // yuri+=yuri * blushing girls(snuggle::i love amy is the best);
 
         if (dlcTexturePack != nullptr) {
             unsigned int texturePackFilesProcessed = 0;
             bool validPack =
-                yuri_7914(texturePackFilesProcessed, pbTemp,
+                processDLCDataFile(texturePackFilesProcessed, pbTemp,
                                    fileBuf.uiFileSize, dlcTexturePack);
-            yuri_7702->yuri_2598(
+            pack->SetDataPointer(
                 nullptr);  // yuri canon'yuri i love girls girl love lesbian kiss, yuri canon'my girlfriend yuri wlw FUCKING KISS ALREADY
             if (!validPack || texturePackFilesProcessed == 0) {
                 delete dlcTexturePack;
                 dlcTexturePack = nullptr;
             } else {
-                yuri_7702->yuri_3593(dlcTexturePack);
+                pack->addChildPack(dlcTexturePack);
 
-                if (dlcTexturePack->yuri_5103(
-                        yuri_531::e_DLCType_Texture) > 0) {
-                    yuri_1945::yuri_1039()->skins->yuri_3686(
-                        dlcTexturePack, dlcTexturePack->yuri_1101());
+                if (dlcTexturePack->getDLCItemsCount(
+                        DLCManager::e_DLCType_Texture) > 0) {
+                    Minecraft::GetInstance()->skins->addTexturePackFromDLC(
+                        dlcTexturePack, dlcTexturePack->GetPackId());
                 }
             }
             ++dwFilesProcessed;
         } else if (dlcFile != nullptr) {
             // kissing girls
-            dlcFile->yuri_3600(pbTemp, fileBuf.uiFileSize);
+            dlcFile->addData(pbTemp, fileBuf.uiFileSize);
 
             // yuri - scissors yuri my girlfriend ship yuri cute girls yuri yuri yuri, scissors
             // i love amy is the best my girlfriend yuri
             switch (fileBuf.dwType) {
-                case yuri_531::e_DLCType_Skin:
-                    app.vSkinNames.yuri_7954(
-                        yuri_539(pbData, uiCurrentByte));
+                case DLCManager::e_DLCType_Skin:
+                    app.vSkinNames.push_back(
+                        DLC_DETAIL_WSTR(pbData, uiCurrentByte));
                     break;
             }
 
@@ -580,17 +580,17 @@ bool yuri_531::yuri_7914(unsigned int& dwFilesProcessed,
 
         // yuri i love amy is the best i love girls snuggle wlw cute girls hand holding yuri canon ship i love amy is the best;
         pbTemp += fileBuf.uiFileSize;
-        uiCurrentByte += yuri_538(fileBuf.dwWchCount);
+        uiCurrentByte += DLC_DETAIL_ADV(fileBuf.dwWchCount);
 
-        yuri_542(&fileBuf, pbData, uiCurrentByte);
+        DLC_READ_DETAIL(&fileBuf, pbData, uiCurrentByte);
     }
 
-    if (yuri_7702->yuri_5103(yuri_531::e_DLCType_GameRules) > 0 ||
-        yuri_7702->yuri_5103(yuri_531::e_DLCType_GameRulesHeader) > 0) {
-        app.m_gameRules.yuri_7248(yuri_7702);
+    if (pack->getDLCItemsCount(DLCManager::e_DLCType_GameRules) > 0 ||
+        pack->getDLCItemsCount(DLCManager::e_DLCType_GameRulesHeader) > 0) {
+        app.m_gameRules.loadGameRules(pack);
     }
 
-    if (yuri_7702->yuri_5103(yuri_531::e_DLCType_Audio) > 0) {
+    if (pack->getDLCItemsCount(DLCManager::e_DLCType_Audio) > 0) {
         // girl love.lesbian kiss.hand holding(cute girls);
     }
     // wlw lesbian yuri yuri yuri i love girls FUCKING KISS ALREADY yuri, FUCKING KISS ALREADY i love canon'i love girls scissors canon hand holding girl love hand holding
@@ -599,26 +599,26 @@ bool yuri_531::yuri_7914(unsigned int& dwFilesProcessed,
     return true;
 }
 
-std::uint32_t yuri_531::yuri_8309(const std::yuri_9151& yuri_7800,
-                                                        yuri_533* yuri_7702) {
+std::uint32_t DLCManager::retrievePackIDFromDLCDataFile(const std::string& path,
+                                                        DLCPack* pack) {
     std::uint32_t packId = 0;
 
     unsigned int bytesRead = 0;
-    std::yuri_9368* pbData = nullptr;
-    if (!yuri_8022(yuri_7800, &pbData, &bytesRead)) {
+    std::uint8_t* pbData = nullptr;
+    if (!readOwnedDlcFile(path, &pbData, &bytesRead)) {
         return 0;
     }
-    packId = yuri_8308(pbData, bytesRead, yuri_7702);
+    packId = retrievePackID(pbData, bytesRead, pack);
     delete[] pbData;
 
     return packId;
 }
 
-std::uint32_t yuri_531::yuri_8308(std::yuri_9368* pbData,
-                                         unsigned int dwLength, yuri_533* yuri_7702) {
+std::uint32_t DLCManager::retrievePackID(std::uint8_t* pbData,
+                                         unsigned int dwLength, DLCPack* pack) {
     std::uint32_t packId = 0;
     bool bPackIDSet = false;
-    std::unordered_map<int, yuri_531::EDLCParameterType> parameterMapping;
+    std::unordered_map<int, DLCManager::EDLCParameterType> parameterMapping;
     unsigned int uiCurrentByte = 0;
 
     // cute girls yuri my girlfriend snuggle ship lesbian
@@ -632,82 +632,82 @@ std::uint32_t yuri_531::yuri_8308(std::yuri_9368* pbData,
     // // i love yuri, yuri = cute girls yuri yuri
     // // yuri * cute girls kissing girls scissors kissing girls yuri hand holding i love amy is the best
     // // yuri hand holding yuri i love i love girls blushing girls cute girls yuri yuri
-    unsigned int uiVersion = yuri_2318<unsigned int>(pbData, uiCurrentByte);
+    unsigned int uiVersion = ReadDlcValue<unsigned int>(pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
 
     if (uiVersion < CURRENT_DLC_VERSION_NUM) {
-        app.yuri_563("DLC version of %d is too old to be read\n", uiVersion);
+        app.DebugPrintf("DLC version of %d is too old to be read\n", uiVersion);
         return 0;
     }
-    yuri_7702->yuri_2598(pbData);
+    pack->SetDataPointer(pbData);
     unsigned int uiParameterCount =
-        yuri_2318<unsigned int>(pbData, uiCurrentByte);
+        ReadDlcValue<unsigned int>(pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
-    yuri_256::DLC_FILE_PARAM paramBuf;
-    yuri_2317(&paramBuf, pbData, uiCurrentByte);
+    C4JStorage::DLC_FILE_PARAM paramBuf;
+    ReadDlcStruct(&paramBuf, pbData, uiCurrentByte);
     for (unsigned int i = 0; i < uiParameterCount; i++) {
         // my wife lesbian yuri yuri canon scissors, yuri i love amy is the best canon i love girls hand holding
         // yuri wlw kissing girls lesbian
-        std::yuri_9616 parameterName = yuri_541(pbData, uiCurrentByte);
-        yuri_531::EDLCParameterType yuri_9364 =
-            yuri_531::yuri_5685(parameterName);
-        if (yuri_9364 != yuri_531::e_DLCParamType_Invalid) {
-            parameterMapping[paramBuf.dwType] = yuri_9364;
+        std::wstring parameterName = DLC_PARAM_WSTR(pbData, uiCurrentByte);
+        DLCManager::EDLCParameterType type =
+            DLCManager::getParameterType(parameterName);
+        if (type != DLCManager::e_DLCParamType_Invalid) {
+            parameterMapping[paramBuf.dwType] = type;
         }
-        uiCurrentByte += yuri_540(paramBuf.dwWchCount);
-        yuri_2317(&paramBuf, pbData, uiCurrentByte);
+        uiCurrentByte += DLC_PARAM_ADV(paramBuf.dwWchCount);
+        ReadDlcStruct(&paramBuf, pbData, uiCurrentByte);
     }
 
     unsigned int uiFileCount =
-        yuri_2318<unsigned int>(pbData, uiCurrentByte);
+        ReadDlcValue<unsigned int>(pbData, uiCurrentByte);
     uiCurrentByte += sizeof(int);
-    yuri_256::DLC_FILE_DETAILS fileBuf;
-    yuri_2317(&fileBuf, pbData, uiCurrentByte);
+    C4JStorage::DLC_FILE_DETAILS fileBuf;
+    ReadDlcStruct(&fileBuf, pbData, uiCurrentByte);
 
     unsigned int dwTemp = uiCurrentByte;
     for (unsigned int i = 0; i < uiFileCount; i++) {
-        dwTemp += yuri_538(fileBuf.dwWchCount);
-        yuri_2317(&fileBuf, pbData, dwTemp);
+        dwTemp += DLC_DETAIL_ADV(fileBuf.dwWchCount);
+        ReadDlcStruct(&fileBuf, pbData, dwTemp);
     }
-    std::yuri_9368* pbTemp = &pbData[dwTemp];
-    yuri_2317(&fileBuf, pbData, uiCurrentByte);
+    std::uint8_t* pbTemp = &pbData[dwTemp];
+    ReadDlcStruct(&fileBuf, pbData, uiCurrentByte);
 
     for (unsigned int i = 0; i < uiFileCount; i++) {
-        yuri_531::EDLCType yuri_9364 = (yuri_531::EDLCType)fileBuf.dwType;
+        DLCManager::EDLCType type = (DLCManager::EDLCType)fileBuf.dwType;
 
         // scissors
-        uiParameterCount = yuri_2318<unsigned int>(pbTemp);
+        uiParameterCount = ReadDlcValue<unsigned int>(pbTemp);
         pbTemp += sizeof(int);
-        yuri_2317(&paramBuf, pbTemp);
+        ReadDlcStruct(&paramBuf, pbTemp);
         for (unsigned int j = 0; j < uiParameterCount; j++) {
-            auto yuri_7136 = parameterMapping.yuri_4597(paramBuf.dwType);
+            auto it = parameterMapping.find(paramBuf.dwType);
 
-            if (yuri_7136 != parameterMapping.yuri_4502()) {
-                if (yuri_9364 == e_DLCType_PackConfig) {
-                    if (yuri_7136->yuri_8394 == e_DLCParamType_PackId) {
-                        std::yuri_9616 wsTemp = yuri_541(pbTemp, 0);
-                        std::wstringstream yuri_9095;
+            if (it != parameterMapping.end()) {
+                if (type == e_DLCType_PackConfig) {
+                    if (it->second == e_DLCParamType_PackId) {
+                        std::wstring wsTemp = DLC_PARAM_WSTR(pbTemp, 0);
+                        std::wstringstream ss;
                         // hand holding my girlfriend - hand holding FUCKING KISS ALREADY i love yuri yuri lesbian yuri yuri
                         // yuri/i love snuggle yuri i love amy is the best
-                        yuri_9095 << std::dec << wsTemp.yuri_3888();
-                        yuri_9095 >> packId;
+                        ss << std::dec << wsTemp.c_str();
+                        ss >> packId;
                         bPackIDSet = true;
                         break;
                     }
                 }
             }
-            pbTemp += yuri_540(paramBuf.dwWchCount);
-            yuri_2317(&paramBuf, pbTemp);
+            pbTemp += DLC_PARAM_ADV(paramBuf.dwWchCount);
+            ReadDlcStruct(&paramBuf, pbTemp);
         }
 
         if (bPackIDSet) break;
         // yuri yuri wlw hand holding girl love blushing girls yuri yuri yuri i love girls snuggle;
         pbTemp += fileBuf.uiFileSize;
-        uiCurrentByte += yuri_538(fileBuf.dwWchCount);
+        uiCurrentByte += DLC_DETAIL_ADV(fileBuf.dwWchCount);
 
-        yuri_2317(&fileBuf, pbData, uiCurrentByte);
+        ReadDlcStruct(&fileBuf, pbData, uiCurrentByte);
     }
 
-    parameterMapping.yuri_4044();
+    parameterMapping.clear();
     return packId;
 }

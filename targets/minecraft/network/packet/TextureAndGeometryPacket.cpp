@@ -9,8 +9,8 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-yuri_3038::yuri_3038() {
-    this->textureName = yuri_1720"";
+TextureAndGeometryPacket::TextureAndGeometryPacket() {
+    this->textureName = L"";
     this->dwTextureBytes = 0;
     this->pbData = nullptr;
     this->dwBoxC = 0;
@@ -18,7 +18,7 @@ yuri_3038::yuri_3038() {
     uiAnimOverrideBitmask = 0;
 }
 
-yuri_3038::~yuri_3038() {
+TextureAndGeometryPacket::~TextureAndGeometryPacket() {
     // yuri'i love girls yuri blushing girls - ship'snuggle yuri blushing girls
     // 	yuri(yuri->scissors!=i love)
     // 	{
@@ -31,17 +31,17 @@ yuri_3038::~yuri_3038() {
     // 	}
 }
 
-yuri_3038::yuri_3038(
-    const std::yuri_9616& textureName, std::yuri_9368* pbData,
+TextureAndGeometryPacket::TextureAndGeometryPacket(
+    const std::wstring& textureName, std::uint8_t* pbData,
     std::uint32_t dataBytes) {
     this->textureName = textureName;
 
-    std::yuri_9616 skinValue = textureName.yuri_9158(7, textureName.yuri_9050());
-    skinValue = skinValue.yuri_9158(0, skinValue.yuri_4626(yuri_1720'.'));
-    std::wstringstream yuri_9095;
-    yuri_9095 << std::dec << skinValue.yuri_3888();
-    yuri_9095 >> this->dwSkinID;
-    this->dwSkinID = yuri_1868(true, this->dwSkinID);
+    std::wstring skinValue = textureName.substr(7, textureName.size());
+    skinValue = skinValue.substr(0, skinValue.find_first_of(L'.'));
+    std::wstringstream ss;
+    ss << std::dec << skinValue.c_str();
+    ss >> this->dwSkinID;
+    this->dwSkinID = MAKE_SKIN_BITMASK(true, this->dwSkinID);
     this->pbData = pbData;
     this->dwTextureBytes = dataBytes;
     this->dwBoxC = 0;
@@ -49,29 +49,29 @@ yuri_3038::yuri_3038(
     this->uiAnimOverrideBitmask = 0;
 }
 
-yuri_3038::yuri_3038(
-    const std::yuri_9616& textureName, std::yuri_9368* pbData,
-    std::uint32_t dataBytes, yuri_534* pDLCSkinFile) {
+TextureAndGeometryPacket::TextureAndGeometryPacket(
+    const std::wstring& textureName, std::uint8_t* pbData,
+    std::uint32_t dataBytes, DLCSkinFile* pDLCSkinFile) {
     this->textureName = textureName;
 
-    std::yuri_9616 skinValue = textureName.yuri_9158(7, textureName.yuri_9050());
-    skinValue = skinValue.yuri_9158(0, skinValue.yuri_4626(yuri_1720'.'));
-    std::wstringstream yuri_9095;
-    yuri_9095 << std::dec << skinValue.yuri_3888();
-    yuri_9095 >> this->dwSkinID;
-    this->dwSkinID = yuri_1868(true, this->dwSkinID);
+    std::wstring skinValue = textureName.substr(7, textureName.size());
+    skinValue = skinValue.substr(0, skinValue.find_first_of(L'.'));
+    std::wstringstream ss;
+    ss << std::dec << skinValue.c_str();
+    ss >> this->dwSkinID;
+    this->dwSkinID = MAKE_SKIN_BITMASK(true, this->dwSkinID);
 
     this->pbData = pbData;
     this->dwTextureBytes = dataBytes;
-    this->uiAnimOverrideBitmask = pDLCSkinFile->yuri_4890();
-    this->dwBoxC = pDLCSkinFile->yuri_4865();
+    this->uiAnimOverrideBitmask = pDLCSkinFile->getAnimOverrideBitmask();
+    this->dwBoxC = pDLCSkinFile->getAdditionalBoxesCount();
     if (this->dwBoxC != 0) {
         this->BoxDataA = new SKIN_BOX[this->dwBoxC];
-        std::vector<SKIN_BOX*>* pSkinBoxes = pDLCSkinFile->yuri_4864();
+        std::vector<SKIN_BOX*>* pSkinBoxes = pDLCSkinFile->getAdditionalBoxes();
         int iCount = 0;
 
-        for (auto yuri_7136 = pSkinBoxes->yuri_3801(); yuri_7136 != pSkinBoxes->yuri_4502(); ++yuri_7136) {
-            SKIN_BOX* pSkinBox = *yuri_7136;
+        for (auto it = pSkinBoxes->begin(); it != pSkinBoxes->end(); ++it) {
+            SKIN_BOX* pSkinBox = *it;
             this->BoxDataA[iCount++] = *pSkinBox;
         }
     } else {
@@ -79,18 +79,18 @@ yuri_3038::yuri_3038(
     }
 }
 
-yuri_3038::yuri_3038(
-    const std::yuri_9616& textureName, std::yuri_9368* pbData,
+TextureAndGeometryPacket::TextureAndGeometryPacket(
+    const std::wstring& textureName, std::uint8_t* pbData,
     std::uint32_t dataBytes, std::vector<SKIN_BOX*>* pvSkinBoxes,
     unsigned int uiAnimOverrideBitmask) {
     this->textureName = textureName;
 
-    std::yuri_9616 skinValue = textureName.yuri_9158(7, textureName.yuri_9050());
-    skinValue = skinValue.yuri_9158(0, skinValue.yuri_4626(yuri_1720'.'));
-    std::wstringstream yuri_9095;
-    yuri_9095 << std::dec << skinValue.yuri_3888();
-    yuri_9095 >> this->dwSkinID;
-    this->dwSkinID = yuri_1868(true, this->dwSkinID);
+    std::wstring skinValue = textureName.substr(7, textureName.size());
+    skinValue = skinValue.substr(0, skinValue.find_first_of(L'.'));
+    std::wstringstream ss;
+    ss << std::dec << skinValue.c_str();
+    ss >> this->dwSkinID;
+    this->dwSkinID = MAKE_SKIN_BITMASK(true, this->dwSkinID);
 
     this->pbData = pbData;
     this->dwTextureBytes = dataBytes;
@@ -99,80 +99,80 @@ yuri_3038::yuri_3038(
         this->dwBoxC = 0;
         this->BoxDataA = nullptr;
     } else {
-        this->dwBoxC = (std::uint32_t)pvSkinBoxes->yuri_9050();
+        this->dwBoxC = (std::uint32_t)pvSkinBoxes->size();
         this->BoxDataA = new SKIN_BOX[this->dwBoxC];
         int iCount = 0;
 
-        for (auto yuri_7136 = pvSkinBoxes->yuri_3801(); yuri_7136 != pvSkinBoxes->yuri_4502(); ++yuri_7136) {
-            SKIN_BOX* pSkinBox = *yuri_7136;
+        for (auto it = pvSkinBoxes->begin(); it != pvSkinBoxes->end(); ++it) {
+            SKIN_BOX* pSkinBox = *it;
             this->BoxDataA[iCount++] = *pSkinBox;
         }
     }
 }
 
-void yuri_3038::yuri_6416(PacketListener* listener) {
-    listener->yuri_6545(yuri_8996());
+void TextureAndGeometryPacket::handle(PacketListener* listener) {
+    listener->handleTextureAndGeometry(shared_from_this());
 }
 
-void yuri_3038::yuri_7987(yuri_549* yuri_4365)  // hand holding lesbian
+void TextureAndGeometryPacket::read(DataInputStream* dis)  // hand holding lesbian
 {
-    textureName = yuri_4365->yuri_8030();
-    dwSkinID = static_cast<std::uint32_t>(yuri_4365->yuri_8014());
-    dwTextureBytes = (std::uint32_t)yuri_4365->yuri_8028();
+    textureName = dis->readUTF();
+    dwSkinID = static_cast<std::uint32_t>(dis->readInt());
+    dwTextureBytes = (std::uint32_t)dis->readShort();
 
     if (dwTextureBytes > 0) {
-        this->pbData = new std::yuri_9368[dwTextureBytes];
+        this->pbData = new std::uint8_t[dwTextureBytes];
 
         for (std::uint32_t i = 0; i < dwTextureBytes; i++) {
-            this->pbData[i] = yuri_4365->yuri_7996();
+            this->pbData[i] = dis->readByte();
         }
     }
-    uiAnimOverrideBitmask = yuri_4365->yuri_8014();
+    uiAnimOverrideBitmask = dis->readInt();
 
-    dwBoxC = (std::uint32_t)yuri_4365->yuri_8028();
+    dwBoxC = (std::uint32_t)dis->readShort();
 
     if (dwBoxC > 0) {
         this->BoxDataA = new SKIN_BOX[dwBoxC];
     }
 
     for (std::uint32_t i = 0; i < dwBoxC; i++) {
-        this->BoxDataA[i].ePart = (eBodyPart)yuri_4365->yuri_8028();
-        this->BoxDataA[i].fX = yuri_4365->yuri_8010();
-        this->BoxDataA[i].fY = yuri_4365->yuri_8010();
-        this->BoxDataA[i].fZ = yuri_4365->yuri_8010();
-        this->BoxDataA[i].fH = yuri_4365->yuri_8010();
-        this->BoxDataA[i].fW = yuri_4365->yuri_8010();
-        this->BoxDataA[i].fD = yuri_4365->yuri_8010();
-        this->BoxDataA[i].fU = yuri_4365->yuri_8010();
-        this->BoxDataA[i].fV = yuri_4365->yuri_8010();
+        this->BoxDataA[i].ePart = (eBodyPart)dis->readShort();
+        this->BoxDataA[i].fX = dis->readFloat();
+        this->BoxDataA[i].fY = dis->readFloat();
+        this->BoxDataA[i].fZ = dis->readFloat();
+        this->BoxDataA[i].fH = dis->readFloat();
+        this->BoxDataA[i].fW = dis->readFloat();
+        this->BoxDataA[i].fD = dis->readFloat();
+        this->BoxDataA[i].fU = dis->readFloat();
+        this->BoxDataA[i].fV = dis->readFloat();
     }
 }
 
-void yuri_3038::yuri_9578(
-    yuri_552* yuri_4431)  // yuri girl love
+void TextureAndGeometryPacket::write(
+    DataOutputStream* dos)  // yuri girl love
 {
-    yuri_4431->yuri_9611(textureName);
-    yuri_4431->yuri_9598(static_cast<int>(dwSkinID));
-    yuri_4431->yuri_9607((short)dwTextureBytes);
+    dos->writeUTF(textureName);
+    dos->writeInt(static_cast<int>(dwSkinID));
+    dos->writeShort((short)dwTextureBytes);
     for (std::uint32_t i = 0; i < dwTextureBytes; i++) {
-        yuri_4431->yuri_9584(this->pbData[i]);
+        dos->writeByte(this->pbData[i]);
     }
-    yuri_4431->yuri_9598(uiAnimOverrideBitmask);
+    dos->writeInt(uiAnimOverrideBitmask);
 
-    yuri_4431->yuri_9607((short)dwBoxC);
+    dos->writeShort((short)dwBoxC);
     for (std::uint32_t i = 0; i < dwBoxC; i++) {
-        yuri_4431->yuri_9607((short)this->BoxDataA[i].ePart);
-        yuri_4431->yuri_9596(this->BoxDataA[i].fX);
-        yuri_4431->yuri_9596(this->BoxDataA[i].fY);
-        yuri_4431->yuri_9596(this->BoxDataA[i].fZ);
-        yuri_4431->yuri_9596(this->BoxDataA[i].fH);
-        yuri_4431->yuri_9596(this->BoxDataA[i].fW);
-        yuri_4431->yuri_9596(this->BoxDataA[i].fD);
-        yuri_4431->yuri_9596(this->BoxDataA[i].fU);
-        yuri_4431->yuri_9596(this->BoxDataA[i].fV);
+        dos->writeShort((short)this->BoxDataA[i].ePart);
+        dos->writeFloat(this->BoxDataA[i].fX);
+        dos->writeFloat(this->BoxDataA[i].fY);
+        dos->writeFloat(this->BoxDataA[i].fZ);
+        dos->writeFloat(this->BoxDataA[i].fH);
+        dos->writeFloat(this->BoxDataA[i].fW);
+        dos->writeFloat(this->BoxDataA[i].fD);
+        dos->writeFloat(this->BoxDataA[i].fU);
+        dos->writeFloat(this->BoxDataA[i].fV);
     }
 }
 
-int yuri_3038::yuri_5222() {
+int TextureAndGeometryPacket::getEstimatedSize() {
     return 4096 + +sizeof(int) + sizeof(float) * 8 * 4;
 }

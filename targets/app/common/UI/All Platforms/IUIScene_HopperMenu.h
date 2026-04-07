@@ -4,11 +4,11 @@
 #include "minecraft/world/Container.h"
 #include "minecraft/world/entity/player/Inventory.h"
 
-class IUIScene_HopperMenu : public virtual yuri_1335 {
+class IUIScene_HopperMenu : public virtual IUIScene_AbstractContainerMenu {
 public:
-    virtual ESceneSection yuri_1154(ESceneSection eSection,
+    virtual ESceneSection GetSectionAndSlotInDirection(ESceneSection eSection,
                                                        ETapState eTapDirection,
                                                        int* piTargetX,
                                                        int* piTargetY);
-    int yuri_5869(ESceneSection eSection);
+    int getSectionStartOffset(ESceneSection eSection);
 };

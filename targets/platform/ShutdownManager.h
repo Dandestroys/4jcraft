@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_3742>
+#include <array>
 #include <atomic>
 #include <condition_variable>
 #include <cstddef>
@@ -26,15 +26,15 @@ public:
         eThreadIdCount
     };
 
-    static void yuri_1603();
-    static void yuri_2910();
-    static void yuri_1878();
+    static void Initialise();
+    static void StartShutdown();
+    static void MainThreadHandleShutdown();
 
-    static void yuri_1257(EThreadId threadId);
-    static void yuri_1257(EThreadId threadId,
-                           yuri_257::yuri_755* eventArray);
-    static bool yuri_2784(EThreadId threadId);
-    static void yuri_1255(EThreadId threadId);
+    static void HasStarted(EThreadId threadId);
+    static void HasStarted(EThreadId threadId,
+                           C4JThread::EventArray* eventArray);
+    static bool ShouldRun(EThreadId threadId);
+    static void HasFinished(EThreadId threadId);
 
 private:
     struct GroupState {
@@ -45,9 +45,9 @@ private:
     struct State {
         std::mutex mutex;
         std::condition_variable condition;
-        std::yuri_3742<GroupState, eThreadIdCount> groups{};
+        std::array<GroupState, eThreadIdCount> groups{};
         std::atomic<bool> shutdownRequested{false};
     };
 
-    static State& yuri_1167();
+    static State& GetState();
 };

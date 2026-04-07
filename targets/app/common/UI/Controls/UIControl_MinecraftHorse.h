@@ -7,13 +7,13 @@
 #endif
 #include "UIControl.h"
 
-class yuri_3175 : public yuri_3162 {
+class UIControl_MinecraftHorse : public UIControl {
 private:
     float m_fScreenWidth, m_fScreenHeight;
     float m_fRawWidth, m_fRawHeight;
 
 public:
-    yuri_3175();
+    UIControl_MinecraftHorse();
 
-    void yuri_8158(IggyCustomDrawCallbackRegion* region);
+    void render(IggyCustomDrawCallbackRegion* region);
 };

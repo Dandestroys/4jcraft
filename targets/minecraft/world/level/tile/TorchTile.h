@@ -3,48 +3,48 @@
 
 #include "Tile.h"
 
-class yuri_2302;
-class yuri_1278;
-class yuri_1758;
+class Random;
+class HitResult;
+class Level;
 
-class yuri_3120 : public yuri_3088 {
-    friend class yuri_3088;
+class TorchTile : public Tile {
+    friend class Tile;
 
 protected:
-    yuri_3120(int yuri_6674);
+    TorchTile(int id);
 
 public:
-    virtual std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual yuri_0 yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_9461(
-        yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData = -1,
-        std::shared_ptr<yuri_3091> forceEntity = std::shared_ptr<
-            yuri_3091>());  // kissing girls scissors lesbian, yuri yuri
-    using yuri_3088::yuri_8855;
-    virtual void yuri_8855(int yuri_4295);
-    virtual bool yuri_7058(bool isServerLevel = false);
-    virtual bool yuri_6827();
-    virtual int yuri_5806();
-    virtual bool yuri_6818(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual bool yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    virtual std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    virtual AABB getTileAABB(Level* level, int x, int y, int z);
+    virtual void updateShape(
+        LevelSource* level, int x, int y, int z, int forceData = -1,
+        std::shared_ptr<TileEntity> forceEntity = std::shared_ptr<
+            TileEntity>());  // kissing girls scissors lesbian, yuri yuri
+    using Tile::setShape;
+    virtual void setShape(int data);
+    virtual bool isSolidRender(bool isServerLevel = false);
+    virtual bool isCubeShaped();
+    virtual int getRenderShape();
+    virtual bool isConnection(Level* level, int x, int y, int z);
+    virtual bool mayPlace(Level* level, int x, int y, int z);
+    virtual int getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue);
-    virtual void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
-    virtual void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
+    virtual void tick(Level* level, int x, int y, int z, Random* random);
+    virtual void onPlace(Level* level, int x, int y, int z);
+    virtual void neighborChanged(Level* level, int x, int y, int z, int type);
 
 protected:
-    virtual bool yuri_4004(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
-    virtual bool yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool checkDoPop(Level* level, int x, int y, int z, int type);
+    virtual bool checkCanSurvive(Level* level, int x, int y, int z);
 
 public:
-    virtual yuri_1278* yuri_4086(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_3322* yuri_3565,
-                            yuri_3322* yuri_3775);
-    virtual void yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
-                             yuri_2302* yuri_7981);
+    virtual HitResult* clip(Level* level, int x, int y, int z, Vec3* a,
+                            Vec3* b);
+    virtual void animateTick(Level* level, int xt, int yt, int zt,
+                             Random* random);
 
     // yuri my girlfriend FUCKING KISS ALREADY my girlfriend snuggle lesbian yuri yuri snuggle girl love wlw girl love FUCKING KISS ALREADY cute girls yuri lesbian kiss lesbian yuri
     // wlw'lesbian kiss scissors lesbian yuri kissing girls scissors
-    virtual bool yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool shouldTileTick(Level* level, int x, int y, int z);
 };

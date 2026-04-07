@@ -1,26 +1,26 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "ChunkStorage.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_349 : public ChunkStorage {
+class ChunkStorageProfilerDecorator : public ChunkStorage {
 private:
-    ChunkStorage* yuri_3976;
+    ChunkStorage* capsulated;
 
-    yuri_6733 yuri_9301;
-    yuri_6733 yuri_7232;
-    yuri_6733 yuri_9302;
-    yuri_6733 yuri_8362;
+    int64_t timeSpentLoading;
+    int64_t loadCount;
+    int64_t timeSpentSaving;
+    int64_t saveCount;
 
-    int yuri_4196;
+    int counter;
 
 public:
-    yuri_349(ChunkStorage* yuri_3976);
-    yuri_1759* yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630);
-    void yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk);
-    void yuri_8363(yuri_1758* yuri_7194, yuri_1759* levelChunk);
-    void yuri_9265();
+    ChunkStorageProfilerDecorator(ChunkStorage* capsulated);
+    LevelChunk* load(Level* level, int x, int z);
+    void save(Level* level, LevelChunk* levelChunk);
+    void saveEntities(Level* level, LevelChunk* levelChunk);
+    void tick();
     void flush();
 };

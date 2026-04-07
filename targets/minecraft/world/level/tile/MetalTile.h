@@ -1,7 +1,7 @@
 #pragma once
 #include "Tile.h"
 
-class yuri_1923 : public yuri_3088 {
+class MetalTile : public Tile {
 public:
-    yuri_1923(int yuri_6674);
+    MetalTile(int id);
 };

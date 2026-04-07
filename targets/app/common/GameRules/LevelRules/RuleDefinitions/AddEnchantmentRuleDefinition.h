@@ -1,29 +1,29 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "GameRuleDefinition.h"
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 
-class yuri_1693;
+class ItemInstance;
 
-class yuri_61 : public yuri_919 {
+class AddEnchantmentRuleDefinition : public GameRuleDefinition {
 private:
     int m_enchantmentId;
     int m_enchantmentLevel;
 
 public:
-    yuri_61();
+    AddEnchantmentRuleDefinition();
 
-    virtual ConsoleGameRules::EGameRuleType yuri_4860() {
+    virtual ConsoleGameRules::EGameRuleType getActionType() {
         return ConsoleGameRules::eGameRuleType_AddEnchantment;
     }
 
-    virtual void yuri_9582(yuri_552*, unsigned int numAttrs);
+    virtual void writeAttributes(DataOutputStream*, unsigned int numAttrs);
 
-    virtual void yuri_3585(const std::yuri_9616& attributeName,
-                              const std::yuri_9616& attributeValue);
+    virtual void addAttribute(const std::wstring& attributeName,
+                              const std::wstring& attributeValue);
 
-    bool yuri_4494(std::shared_ptr<yuri_1693> item);
+    bool enchantItem(std::shared_ptr<ItemInstance> item);
 };

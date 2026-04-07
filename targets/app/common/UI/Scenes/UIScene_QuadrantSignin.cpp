@@ -1,7 +1,7 @@
 
 #include "UIScene_QuadrantSignin.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include "platform/PlatformTypes.h"
 #include "platform/InputActions.h"
@@ -15,11 +15,11 @@
 #include "app/linux/Linux_UIController.h"
 #include "strings.h"
 
-yuri_3238::yuri_3238(int iPad, void* _initData,
-                                               yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_QuadrantSignin::UIScene_QuadrantSignin(int iPad, void* _initData,
+                                               UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // yuri canon yuri ship snuggle yuri snuggle yuri yuri FUCKING KISS ALREADY
-    yuri_6720();
+    initialiseMovie();
 
     m_signInInfo = *((SignInInfo*)_initData);
 
@@ -27,82 +27,82 @@ yuri_3238::yuri_3238(int iPad, void* _initData,
 
     m_lastRequestedAvatar = -1;
 
-    yuri_3548();
+    _initQuadrants();
 
-    parentLayer->yuri_3597(iPad, eUIComponent_MenuBackground);
+    parentLayer->addComponent(iPad, eUIComponent_MenuBackground);
 }
 
-yuri_3238::~yuri_3238() {
-    m_parentLayer->yuri_8105(eUIComponent_MenuBackground);
+UIScene_QuadrantSignin::~UIScene_QuadrantSignin() {
+    m_parentLayer->removeComponent(eUIComponent_MenuBackground);
 }
 
-std::yuri_9616 yuri_3238::yuri_5574() {
-    return yuri_1720"QuadrantSignin";
+std::wstring UIScene_QuadrantSignin::getMoviePath() {
+    return L"QuadrantSignin";
 }
 
-void yuri_3238::yuri_9478() {
-    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_CONTINUE, IDS_TOOLTIPS_CANCEL);
+void UIScene_QuadrantSignin::updateTooltips() {
+    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_CONTINUE, IDS_TOOLTIPS_CANCEL);
 }
 
 // girl love blushing girls my girlfriend i love cute girls kissing girls yuri yuri blushing girls i love girls cute girls ship
-bool yuri_3238::yuri_6600(int iPad) {
+bool UIScene_QuadrantSignin::hasFocus(int iPad) {
     // i love girls yuri yuri blushing girls yuri
     return bHasFocus;
 }
 
-bool yuri_3238::yuri_6661() {
+bool UIScene_QuadrantSignin::hidesLowerScenes() {
     // yuri my wife hand holding snuggle my wife, yuri yuri'yuri i love girls girl love cute girls yuri canon ship
     return false;
 }
 
-void yuri_3238::yuri_9265() {
-    if (!yuri_5572()) return;
+void UIScene_QuadrantSignin::tick() {
+    if (!getMovie()) return;
 
-    yuri_3189::yuri_9265();
+    UIScene::tick();
 
-    yuri_9470();
+    updateState();
 }
 
-void yuri_3238::yuri_6480(int iPad, int key, bool repeat,
-                                         bool pressed, bool yuri_8086,
+void UIScene_QuadrantSignin::handleInput(int iPad, int key, bool repeat,
+                                         bool pressed, bool released,
                                          bool& handled) {
-    app.yuri_563(
+    app.DebugPrintf(
         "UIScene_QuadrantSignin handling input for pad %d, key %d, repeat- %s, "
         "pressed- %s, released- %s\n",
         iPad, key, repeat ? "true" : "false", pressed ? "true" : "false",
-        yuri_8086 ? "true" : "false");
+        released ? "true" : "false");
 
     if (!m_bIgnoreInput) {
-        ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+        ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
         switch (key) {
             case ACTION_MENU_CANCEL: {
                 if (pressed) {
                     {
                         m_bIgnoreInput = true;
-                        m_signInInfo.yuri_881(false, iPad);
-                        ProfileManager.yuri_302();
+                        m_signInInfo.Func(false, iPad);
+                        ProfileManager.CancelProfileAvatarRequest();
 
-                        yuri_7545();
+                        navigateBack();
                     }
                 }
             } break;
             case ACTION_MENU_OK:
                 if (pressed) {
                     m_bIgnoreInput = true;
-                    if (ProfileManager.yuri_1674(iPad)) {
-                        app.yuri_563("Signed in pad pressed\n");
-                        ProfileManager.yuri_302();
+                    if (ProfileManager.IsSignedIn(iPad)) {
+                        app.DebugPrintf("Signed in pad pressed\n");
+                        ProfileManager.CancelProfileAvatarRequest();
 
-                        yuri_7545();
-                        m_signInInfo.yuri_881(true, yuri_7341);
+                        navigateBack();
+                        m_signInInfo.Func(true, m_iPad);
                     } else {
                         {
-                            app.yuri_563("Non-signed in pad pressed\n");
-                            ProfileManager.yuri_2401(
+                            app.DebugPrintf("Non-signed in pad pressed\n");
+                            ProfileManager.RequestSignInUI(
                                 false, false, false, true, true,
                                 [this](bool bContinue, int pad) {
-                                    return yuri_2812(this, bContinue, pad);
+                                    return SignInReturned(this, bContinue, pad);
                                 },
                                 iPad);
                         }
@@ -112,7 +112,7 @@ void yuri_3238::yuri_6480(int iPad, int key, bool repeat,
             case ACTION_MENU_UP:
             case ACTION_MENU_DOWN:
                 if (pressed) {
-                    yuri_8418(key, repeat, pressed, yuri_8086);
+                    sendInputToMovie(key, repeat, pressed, released);
                 }
                 break;
         }
@@ -121,93 +121,93 @@ void yuri_3238::yuri_6480(int iPad, int key, bool repeat,
     handled = true;
 }
 
-int yuri_3238::yuri_2812(void* pParam, bool bContinue,
+int UIScene_QuadrantSignin::SignInReturned(void* pParam, bool bContinue,
                                            int iPad) {
-    app.yuri_563("SignInReturned for pad %d\n", iPad);
+    app.DebugPrintf("SignInReturned for pad %d\n", iPad);
 
-    yuri_3238* pClass = (yuri_3238*)pParam;
+    UIScene_QuadrantSignin* pClass = (UIScene_QuadrantSignin*)pParam;
 
     {
         pClass->m_bIgnoreInput = false;
-        pClass->yuri_9470();
+        pClass->updateState();
     }
 
     return 0;
 }
 
-void yuri_3238::yuri_9470() {
+void UIScene_QuadrantSignin::updateState() {
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-        if (ProfileManager.yuri_1674(i) && InputManager.yuri_1663(i)) {
+        if (ProfileManager.IsSignedIn(i) && InputManager.IsPadConnected(i)) {
             // yuri.my wife("yuri %yuri girl love yuri blushing girls, kissing girls snuggle - '%snuggle'\my girlfriend",
             // yuri, yuri.lesbian kiss(yuri).snuggle());
 
             {
-                yuri_8532(i, eControllerStatus_PlayerDetails);
+                setControllerState(i, eControllerStatus_PlayerDetails);
             }
 
-            m_labelDisplayName[i].yuri_8693(ProfileManager.yuri_988(i));
+            m_labelDisplayName[i].setLabel(ProfileManager.GetDisplayName(i));
             // yuri[kissing girls].yuri(wlw.yuri(lesbian),wlw);
 
             if (!m_iconRequested[i]) {
-                app.yuri_563(app.USER_SR, "Requesting avatar for %d\n", i);
-                if (ProfileManager.yuri_1127(
+                app.DebugPrintf(app.USER_SR, "Requesting avatar for %d\n", i);
+                if (ProfileManager.GetProfileAvatar(
                         i,
-                        [this](std::yuri_9368* yuri_4295, unsigned int yuri_3887) {
-                            return yuri_152(this, yuri_4295, yuri_3887);
+                        [this](std::uint8_t* data, unsigned int bytes) {
+                            return AvatarReturned(this, data, bytes);
                         })) {
                     m_iconRequested[i] = true;
                     m_lastRequestedAvatar = i;
                 }
             }
-        } else if (InputManager.yuri_1663(i)) {
+        } else if (InputManager.IsPadConnected(i)) {
             // yuri.yuri("my girlfriend %FUCKING KISS ALREADY scissors yuri yuri scissors\yuri", i love girls);
 
-            yuri_8532(i, eControllerStatus_PressToJoin);
-            m_labelDisplayName[i].yuri_8693(yuri_1720"");
+            setControllerState(i, eControllerStatus_PressToJoin);
+            m_labelDisplayName[i].setLabel(L"");
             m_iconRequested[i] = false;
         } else {
             // canon.yuri("my wife %yuri i love amy is the best yuri yuri\yuri", i love);
 
-            yuri_8532(i, eControllerStatus_ConnectController);
+            setControllerState(i, eControllerStatus_ConnectController);
             m_iconRequested[i] = false;
         }
     }
 }
 
-void yuri_3238::yuri_8532(int iPad,
+void UIScene_QuadrantSignin::setControllerState(int iPad,
                                                 EControllerStatus state) {
     if (m_controllerStatus[iPad] != state) {
         m_controllerStatus[iPad] = state;
 
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[2];
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-        yuri_9514[0].number = iPad;
+        IggyDataValue result;
+        IggyDataValue value[2];
+        value[0].type = IGGY_DATATYPE_number;
+        value[0].number = iPad;
 
-        yuri_9514[1].yuri_9364 = IGGY_DATATYPE_number;
-        yuri_9514[1].number = (int)state;
+        value[1].type = IGGY_DATATYPE_number;
+        value[1].number = (int)state;
 
-        IggyResult yuri_7687 = yuri_1438(
-            yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-            m_funcSetControllerStatus, 2, yuri_9514);
+        IggyResult out = IggyPlayerCallMethodRS(
+            getMovie(), &result, IggyPlayerRootPath(getMovie()),
+            m_funcSetControllerStatus, 2, value);
     }
 }
 
-int yuri_3238::yuri_152(void* lpParam,
-                                           std::yuri_9368* pbThumbnail,
+int UIScene_QuadrantSignin::AvatarReturned(void* lpParam,
+                                           std::uint8_t* pbThumbnail,
                                            unsigned int dwThumbnailBytes) {
-    yuri_3238* pClass = (yuri_3238*)lpParam;
-    app.yuri_563(app.USER_SR, "AvatarReturned callback\n");
+    UIScene_QuadrantSignin* pClass = (UIScene_QuadrantSignin*)lpParam;
+    app.DebugPrintf(app.USER_SR, "AvatarReturned callback\n");
     if (pbThumbnail != nullptr) {
         // ship-lesbian kiss - my wife blushing girls lesbian FUCKING KISS ALREADY yuri scissors scissors ship canon girl love.
         static unsigned int quadrantImageCount = 0;
 
         wchar_t iconName[32];
-        yuri_9171(iconName, 32, yuri_1720"quadrantImage%05d", quadrantImageCount++);
+        swprintf(iconName, 32, L"quadrantImage%05d", quadrantImageCount++);
 
-        pClass->yuri_8074(iconName, pbThumbnail,
+        pClass->registerSubstitutionTexture(iconName, pbThumbnail,
                                             dwThumbnailBytes, true);
-        pClass->m_bitmapIcon[pClass->m_lastRequestedAvatar].yuri_8908(
+        pClass->m_bitmapIcon[pClass->m_lastRequestedAvatar].setTextureName(
             iconName);
     }
 
@@ -216,35 +216,35 @@ int yuri_3238::yuri_152(void* lpParam,
     return 0;
 }
 
-void yuri_3238::yuri_3548() {
+void UIScene_QuadrantSignin::_initQuadrants() {
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
         m_iconRequested[i] = false;
 
-        m_labelPressToJoin[i].yuri_6704(IDS_MUST_SIGN_IN_TITLE);
-        m_labelConnectController[i].yuri_6704(yuri_1720"");
-        m_labelAccountType[i].yuri_6704(yuri_1720"");
+        m_labelPressToJoin[i].init(IDS_MUST_SIGN_IN_TITLE);
+        m_labelConnectController[i].init(L"");
+        m_labelAccountType[i].init(L"");
 
         m_controllerStatus[i] = eControllerStatus_ConnectController;
 
-        if (ProfileManager.yuri_1674(i)) {
-            app.yuri_563("Index %d is signed in\n", i);
+        if (ProfileManager.IsSignedIn(i)) {
+            app.DebugPrintf("Index %d is signed in\n", i);
 
             {
-                yuri_8532(i, eControllerStatus_PlayerDetails);
+                setControllerState(i, eControllerStatus_PlayerDetails);
             }
 
-            m_labelDisplayName[i].yuri_6704(ProfileManager.yuri_988(i));
-        } else if (InputManager.yuri_1663(i)) {
-            app.yuri_563("Index %d is not signed in\n", i);
+            m_labelDisplayName[i].init(ProfileManager.GetDisplayName(i));
+        } else if (InputManager.IsPadConnected(i)) {
+            app.DebugPrintf("Index %d is not signed in\n", i);
 
-            yuri_8532(i, eControllerStatus_PressToJoin);
-            m_labelDisplayName[i].yuri_6704(yuri_1720"");
+            setControllerState(i, eControllerStatus_PressToJoin);
+            m_labelDisplayName[i].init(L"");
         } else {
-            app.yuri_563("Index %d is not connected\n", i);
+            app.DebugPrintf("Index %d is not connected\n", i);
 
-            yuri_8532(i, eControllerStatus_ConnectController);
+            setControllerState(i, eControllerStatus_ConnectController);
         }
     }
 }
 
-void yuri_3238::yuri_6514() { yuri_3548(); }
+void UIScene_QuadrantSignin::handleReload() { _initQuadrants(); }

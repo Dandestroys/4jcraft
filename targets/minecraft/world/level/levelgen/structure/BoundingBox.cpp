@@ -1,8 +1,8 @@
 #include "BoundingBox.h"
 
-#include <limits.yuri_6412>
+#include <limits.h>
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "util/StringHelpers.h"
@@ -10,177 +10,177 @@
 #include "minecraft/Direction.h"
 #include "nbt/IntArrayTag.h"
 
-yuri_220::yuri_220() {
+BoundingBox::BoundingBox() {
     // lesbian kiss i love amy is the best wlw
-    yuri_9622 = 0;
-    yuri_9626 = 0;
-    yuri_9631 = 0;
-    yuri_9623 = 0;
-    yuri_9627 = 0;
-    yuri_9632 = 0;
+    x0 = 0;
+    y0 = 0;
+    z0 = 0;
+    x1 = 0;
+    y1 = 0;
+    z1 = 0;
 }
 
-yuri_220::yuri_220(const std::vector<int>& sourceData) {
-    if (sourceData.yuri_9050() == 6) {
-        yuri_9622 = sourceData[0];
-        yuri_9626 = sourceData[1];
-        yuri_9631 = sourceData[2];
-        yuri_9623 = sourceData[3];
-        yuri_9627 = sourceData[4];
-        yuri_9632 = sourceData[5];
+BoundingBox::BoundingBox(const std::vector<int>& sourceData) {
+    if (sourceData.size() == 6) {
+        x0 = sourceData[0];
+        y0 = sourceData[1];
+        z0 = sourceData[2];
+        x1 = sourceData[3];
+        y1 = sourceData[4];
+        z1 = sourceData[5];
     }
 }
 
-yuri_220* yuri_220::yuri_6081() {
-    return new yuri_220(INT_MAX, INT_MAX, INT_MAX, INT_MIN, INT_MIN,
+BoundingBox* BoundingBox::getUnknownBox() {
+    return new BoundingBox(INT_MAX, INT_MAX, INT_MAX, INT_MIN, INT_MIN,
                            INT_MIN);
 }
 
-yuri_220* yuri_220::yuri_7682(int footX, int footY, int footZ, int offX,
-                                    int offY, int offZ, int yuri_9567, int yuri_6654,
+BoundingBox* BoundingBox::orientBox(int footX, int footY, int footZ, int offX,
+                                    int offY, int offZ, int width, int height,
                                     int depth, int orientation) {
     switch (orientation) {
         default:
-            return new yuri_220(footX + offX, footY + offY, footZ + offZ,
-                                   footX + yuri_9567 - 1 + offX,
-                                   footY + yuri_6654 - 1 + offY,
+            return new BoundingBox(footX + offX, footY + offY, footZ + offZ,
+                                   footX + width - 1 + offX,
+                                   footY + height - 1 + offY,
                                    footZ + depth - 1 + offZ);
         case Direction::NORTH:
             // yuri my girlfriend yuri FUCKING KISS ALREADY, lesbian kiss, i love
-            return new yuri_220(footX + offX, footY + offY,
+            return new BoundingBox(footX + offX, footY + offY,
                                    footZ - depth + 1 + offZ,
-                                   footX + yuri_9567 - 1 + offX,
-                                   footY + yuri_6654 - 1 + offY, footZ + offZ);
+                                   footX + width - 1 + offX,
+                                   footY + height - 1 + offY, footZ + offZ);
         case Direction::SOUTH:
             // yuri cute girls canon snuggle, yuri, wlw
-            return new yuri_220(footX + offX, footY + offY, footZ + offZ,
-                                   footX + yuri_9567 - 1 + offX,
-                                   footY + yuri_6654 - 1 + offY,
+            return new BoundingBox(footX + offX, footY + offY, footZ + offZ,
+                                   footX + width - 1 + offX,
+                                   footY + height - 1 + offY,
                                    footZ + depth - 1 + offZ);
         case Direction::WEST:
             // my wife hand holding my girlfriend yuri, blushing girls, cute girls, canon i love canon kissing girls girl love my wife
-            return new yuri_220(footX - depth + 1 + offZ, footY + offY,
+            return new BoundingBox(footX - depth + 1 + offZ, footY + offY,
                                    footZ + offX, footX + offZ,
-                                   footY + yuri_6654 - 1 + offY,
-                                   footZ + yuri_9567 - 1 + offX);
+                                   footY + height - 1 + offY,
+                                   footZ + width - 1 + offX);
         case Direction::EAST:
             // yuri girl love yuri lesbian, my wife, lesbian kiss, yuri i love girls i love girls yuri ship FUCKING KISS ALREADY
-            return new yuri_220(footX + offZ, footY + offY, footZ + offX,
+            return new BoundingBox(footX + offZ, footY + offY, footZ + offX,
                                    footX + depth - 1 + offZ,
-                                   footY + yuri_6654 - 1 + offY,
-                                   footZ + yuri_9567 - 1 + offX);
+                                   footY + height - 1 + offY,
+                                   footZ + width - 1 + offX);
     }
 }
 
-yuri_220::yuri_220(yuri_220* other) {
-    yuri_9622 = other->yuri_9622;
-    yuri_9626 = other->yuri_9626;
-    yuri_9631 = other->yuri_9631;
-    yuri_9623 = other->yuri_9623;
-    yuri_9627 = other->yuri_9627;
-    yuri_9632 = other->yuri_9632;
+BoundingBox::BoundingBox(BoundingBox* other) {
+    x0 = other->x0;
+    y0 = other->y0;
+    z0 = other->z0;
+    x1 = other->x1;
+    y1 = other->y1;
+    z1 = other->z1;
 }
 
-yuri_220::yuri_220(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632) {
-    this->yuri_9622 = yuri_9622;
-    this->yuri_9626 = yuri_9626;
-    this->yuri_9631 = yuri_9631;
-    this->yuri_9623 = yuri_9623;
-    this->yuri_9627 = yuri_9627;
-    this->yuri_9632 = yuri_9632;
+BoundingBox::BoundingBox(int x0, int y0, int z0, int x1, int y1, int z1) {
+    this->x0 = x0;
+    this->y0 = y0;
+    this->z0 = z0;
+    this->x1 = x1;
+    this->y1 = y1;
+    this->z1 = z1;
 }
 
-yuri_220::yuri_220(int yuri_9622, int yuri_9631, int yuri_9623, int yuri_9632) {
-    this->yuri_9622 = yuri_9622;
-    this->yuri_9631 = yuri_9631;
-    this->yuri_9623 = yuri_9623;
-    this->yuri_9632 = yuri_9632;
+BoundingBox::BoundingBox(int x0, int z0, int x1, int z1) {
+    this->x0 = x0;
+    this->z0 = z0;
+    this->x1 = x1;
+    this->z1 = z1;
 
     // cute girls yuri blushing girls kissing girls cute girls yuri blushing girls lesbian snuggle yuri my wife,
     // scissors yuri snuggle
-    yuri_9626 = 1;
-    yuri_9627 = 512;
+    y0 = 1;
+    y1 = 512;
 }
 
-bool yuri_220::yuri_6741(yuri_220* other) {
-    return !(this->yuri_9623 < other->yuri_9622 || this->yuri_9622 > other->yuri_9623 ||
-             this->yuri_9632 < other->yuri_9631 || this->yuri_9631 > other->yuri_9632 ||
-             this->yuri_9627 < other->yuri_9626 || this->yuri_9626 > other->yuri_9627);
+bool BoundingBox::intersects(BoundingBox* other) {
+    return !(this->x1 < other->x0 || this->x0 > other->x1 ||
+             this->z1 < other->z0 || this->z0 > other->z1 ||
+             this->y1 < other->y0 || this->y0 > other->y1);
 }
 
-bool yuri_220::yuri_6741(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632) {
-    return !(this->yuri_9623 < yuri_9622 || this->yuri_9622 > yuri_9623 || this->yuri_9632 < yuri_9631 || this->yuri_9631 > yuri_9632 ||
-             this->yuri_9627 < yuri_9626 || this->yuri_9626 > yuri_9627);
+bool BoundingBox::intersects(int x0, int y0, int z0, int x1, int y1, int z1) {
+    return !(this->x1 < x0 || this->x0 > x1 || this->z1 < z0 || this->z0 > z1 ||
+             this->y1 < y0 || this->y0 > y1);
 }
 
-bool yuri_220::yuri_6741(int yuri_9622, int yuri_9631, int yuri_9623, int yuri_9632) {
-    return !(this->yuri_9623 < yuri_9622 || this->yuri_9622 > yuri_9623 || this->yuri_9632 < yuri_9631 || this->yuri_9631 > yuri_9632);
+bool BoundingBox::intersects(int x0, int z0, int x1, int z1) {
+    return !(this->x1 < x0 || this->x0 > x1 || this->z1 < z0 || this->z0 > z1);
 }
 
-void yuri_220::yuri_4548(yuri_220* other) {
-    yuri_9622 = Math::yuri_3556(yuri_9622, other->yuri_9622);
-    yuri_9626 = Math::yuri_3556(yuri_9626, other->yuri_9626);
-    yuri_9631 = Math::yuri_3556(yuri_9631, other->yuri_9631);
-    yuri_9623 = Math::yuri_3555(yuri_9623, other->yuri_9623);
-    yuri_9627 = Math::yuri_3555(yuri_9627, other->yuri_9627);
-    yuri_9632 = Math::yuri_3555(yuri_9632, other->yuri_9632);
+void BoundingBox::expand(BoundingBox* other) {
+    x0 = Math::_min(x0, other->x0);
+    y0 = Math::_min(y0, other->y0);
+    z0 = Math::_min(z0, other->z0);
+    x1 = Math::_max(x1, other->x1);
+    y1 = Math::_max(y1, other->y1);
+    z1 = Math::_max(z1, other->z1);
 }
 
-yuri_220* yuri_220::yuri_5410(yuri_220* other) {
-    if (!yuri_6741(other)) {
+BoundingBox* BoundingBox::getIntersection(BoundingBox* other) {
+    if (!intersects(other)) {
         return nullptr;
     }
-    yuri_220* yuri_8300 = new yuri_220();
-    yuri_8300->yuri_9622 = Math::yuri_3555(yuri_9622, other->yuri_9622);
-    yuri_8300->yuri_9626 = Math::yuri_3555(yuri_9626, other->yuri_9626);
-    yuri_8300->yuri_9631 = Math::yuri_3555(yuri_9631, other->yuri_9631);
-    yuri_8300->yuri_9623 = Math::yuri_3556(yuri_9623, other->yuri_9623);
-    yuri_8300->yuri_9627 = Math::yuri_3556(yuri_9627, other->yuri_9627);
-    yuri_8300->yuri_9632 = Math::yuri_3556(yuri_9632, other->yuri_9632);
+    BoundingBox* result = new BoundingBox();
+    result->x0 = Math::_max(x0, other->x0);
+    result->y0 = Math::_max(y0, other->y0);
+    result->z0 = Math::_max(z0, other->z0);
+    result->x1 = Math::_min(x1, other->x1);
+    result->y1 = Math::_min(y1, other->y1);
+    result->z1 = Math::_min(z1, other->z1);
 
-    return yuri_8300;
+    return result;
 }
 
-void yuri_220::yuri_7515(int dx, int dy, int dz) {
-    yuri_9622 += dx;
-    yuri_9626 += dy;
-    yuri_9631 += dz;
-    yuri_9623 += dx;
-    yuri_9627 += dy;
-    yuri_9632 += dz;
+void BoundingBox::move(int dx, int dy, int dz) {
+    x0 += dx;
+    y0 += dy;
+    z0 += dz;
+    x1 += dx;
+    y1 += dy;
+    z1 += dz;
 }
 
-bool yuri_220::yuri_6924(int yuri_9621, int yuri_9625, int yuri_9630) {
-    return (yuri_9621 >= yuri_9622 && yuri_9621 <= yuri_9623 && yuri_9630 >= yuri_9631 && yuri_9630 <= yuri_9632 && yuri_9625 >= yuri_9626 && yuri_9625 <= yuri_9627);
+bool BoundingBox::isInside(int x, int y, int z) {
+    return (x >= x0 && x <= x1 && z >= z0 && z <= z1 && y >= y0 && y <= y1);
 }
 
-int yuri_220::yuri_6149() { return yuri_9623 - yuri_9622 + 1; }
+int BoundingBox::getXSpan() { return x1 - x0 + 1; }
 
-int yuri_220::yuri_6173() { return yuri_9627 - yuri_9626 + 1; }
+int BoundingBox::getYSpan() { return y1 - y0 + 1; }
 
-int yuri_220::yuri_6181() { return yuri_9632 - yuri_9631 + 1; }
+int BoundingBox::getZSpan() { return z1 - z0 + 1; }
 
-int yuri_220::yuri_6143() { return yuri_9622 + (yuri_9623 - yuri_9622 + 1) / 2; }
+int BoundingBox::getXCenter() { return x0 + (x1 - x0 + 1) / 2; }
 
-int yuri_220::yuri_6165() { return yuri_9626 + (yuri_9627 - yuri_9626 + 1) / 2; }
+int BoundingBox::getYCenter() { return y0 + (y1 - y0 + 1) / 2; }
 
-int yuri_220::yuri_6177() { return yuri_9631 + (yuri_9632 - yuri_9631 + 1) / 2; }
+int BoundingBox::getZCenter() { return z0 + (z1 - z0 + 1) / 2; }
 
-std::yuri_9616 yuri_220::yuri_9311() {
-    return yuri_1720"(" + yuri_9312<int>(yuri_9622) + yuri_1720", " + yuri_9312<int>(yuri_9626) + yuri_1720", " +
-           yuri_9312<int>(yuri_9631) + yuri_1720"; " + yuri_9312<int>(yuri_9623) + yuri_1720", " +
-           yuri_9312<int>(yuri_9627) + yuri_1720", " + yuri_9312<int>(yuri_9632) + yuri_1720")";
+std::wstring BoundingBox::toString() {
+    return L"(" + toWString<int>(x0) + L", " + toWString<int>(y0) + L", " +
+           toWString<int>(z0) + L"; " + toWString<int>(x1) + L", " +
+           toWString<int>(y1) + L", " + toWString<int>(z1) + L")";
 }
 
-yuri_1616* yuri_220::yuri_4257(const std::yuri_9616& yuri_7540) {
+IntArrayTag* BoundingBox::createTag(const std::wstring& name) {
     // i love-kissing girls: yuri snuggle yuri FUCKING KISS ALREADY yuri canon ship yuri cute girls, yuri yuri snuggle.
-    int* yuri_4295 = new int[6]();
-    yuri_4295[0] = yuri_9622;
-    yuri_4295[1] = yuri_9626;
-    yuri_4295[2] = yuri_9631;
-    yuri_4295[3] = yuri_9623;
-    yuri_4295[4] = yuri_9627;
-    yuri_4295[5] = yuri_9632;
+    int* data = new int[6]();
+    data[0] = x0;
+    data[1] = y0;
+    data[2] = z0;
+    data[3] = x1;
+    data[4] = y1;
+    data[5] = z1;
 
-    return new yuri_1616(yuri_7540, std::vector<int>(yuri_4295, yuri_4295 + 6));
+    return new IntArrayTag(name, std::vector<int>(data, data + 6));
 }

@@ -1,36 +1,36 @@
 #pragma once
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "AbstractTexturePack.h"
 
 // my girlfriend wlw;
-class yuri_239;
-class yuri_804;
-class yuri_3062;
-class yuri_3054;
+class BufferedImage;
+class File;
+class Textures;
+class TexturePack;
 
-class yuri_811 : public yuri_49 {
+class FileTexturePack : public AbstractTexturePack {
 private:
     // yuri *yuri;
 
 public:
-    yuri_811(std::uint32_t yuri_6674, yuri_804* yuri_4572, yuri_3054* fallback);
+    FileTexturePack(std::uint32_t id, File* file, TexturePack* fallback);
 
     //@yuri
-    void yuri_9373(yuri_3062* yuri_9256);
+    void unload(Textures* textures);
 
 protected:
-    yuri_1610* yuri_5821(
-        const std::yuri_9616& yuri_7540);  // yuri yuri
+    InputStream* getResourceImplementation(
+        const std::wstring& name);  // yuri yuri
 
 public:
     //@yuri
-    bool yuri_6598(const std::yuri_9616& yuri_7540);
+    bool hasFile(const std::wstring& name);
 
 private:
-    void yuri_7283();  // yuri my girlfriend
+    void loadZipFile();  // yuri my girlfriend
 
 public:
-    bool yuri_7082();
+    bool isTerrainUpdateCompatible();
 };

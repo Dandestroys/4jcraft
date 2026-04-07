@@ -1,7 +1,7 @@
 #include "minecraft/IGameServices.h"
 #include "MinecartContainer.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "app/linux/LinuxGame.h"
 #include "java/Random.h"
@@ -17,204 +17,204 @@
 #include "nbt/ListTag.h"
 #include "strings.h"
 
-void yuri_1933::yuri_3547() {
-    items = std::vector<std::shared_ptr<yuri_1693>>(9 * 4);
-    yuri_4450 = true;
+void MinecartContainer::_init() {
+    items = std::vector<std::shared_ptr<ItemInstance>>(9 * 4);
+    dropEquipment = true;
 
     // yuri i love amy is the best - yuri yuri scissors my wife i love yuri snuggle wlw yuri yuri yuri snuggle scissors
     // my wife snuggle my wife i love girls yuri canon yuri lesbian kiss lesbian kiss yuri
-    this->yuri_4329();
+    this->defineSynchedData();
 }
 
-yuri_1933::yuri_1933(yuri_1758* yuri_7194) : yuri_1931(yuri_7194) {
-    yuri_3547();
+MinecartContainer::MinecartContainer(Level* level) : Minecart(level) {
+    _init();
 }
 
-yuri_1933::yuri_1933(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
-    : yuri_1931(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
-    yuri_3547();
+MinecartContainer::MinecartContainer(Level* level, double x, double y, double z)
+    : Minecart(level, x, y, z) {
+    _init();
 }
 
-void yuri_1933::yuri_4347(yuri_548* yuri_9075) {
-    yuri_1931::yuri_4347(yuri_9075);
+void MinecartContainer::destroy(DamageSource* source) {
+    Minecart::destroy(source);
 
-    for (int i = 0; i < yuri_5058(); i++) {
-        std::shared_ptr<yuri_1693> item = yuri_5416(i);
+    for (int i = 0; i < getContainerSize(); i++) {
+        std::shared_ptr<ItemInstance> item = getItem(i);
         if (item != nullptr) {
-            float xo = yuri_7981->yuri_7576() * 0.8f + 0.1f;
-            float yo = yuri_7981->yuri_7576() * 0.8f + 0.1f;
-            float zo = yuri_7981->yuri_7576() * 0.8f + 0.1f;
+            float xo = random->nextFloat() * 0.8f + 0.1f;
+            float yo = random->nextFloat() * 0.8f + 0.1f;
+            float zo = random->nextFloat() * 0.8f + 0.1f;
 
-            while (item->yuri_4184 > 0) {
-                int yuri_4184 = yuri_7981->yuri_7578(21) + 10;
-                if (yuri_4184 > item->yuri_4184) yuri_4184 = item->yuri_4184;
-                item->yuri_4184 -= yuri_4184;
+            while (item->count > 0) {
+                int count = random->nextInt(21) + 10;
+                if (count > item->count) count = item->count;
+                item->count -= count;
 
-                std::shared_ptr<yuri_1689> itemEntity =
-                    std::make_shared<yuri_1689>(
-                        yuri_7194, yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo,
-                        std::make_shared<yuri_1693>(item->yuri_6674, yuri_4184,
-                                                       item->yuri_4919()));
+                std::shared_ptr<ItemEntity> itemEntity =
+                    std::make_shared<ItemEntity>(
+                        level, x + xo, y + yo, z + zo,
+                        std::make_shared<ItemInstance>(item->id, count,
+                                                       item->getAuxValue()));
                 float pow = 0.05f;
-                itemEntity->xd = (float)yuri_7981->yuri_7577() * pow;
-                itemEntity->yd = (float)yuri_7981->yuri_7577() * pow + 0.2f;
-                itemEntity->zd = (float)yuri_7981->yuri_7577() * pow;
-                yuri_7194->yuri_3611(itemEntity);
+                itemEntity->xd = (float)random->nextGaussian() * pow;
+                itemEntity->yd = (float)random->nextGaussian() * pow + 0.2f;
+                itemEntity->zd = (float)random->nextGaussian() * pow;
+                level->addEntity(itemEntity);
             }
         }
     }
 }
 
-std::shared_ptr<yuri_1693> yuri_1933::yuri_5416(unsigned int yuri_9061) {
-    return items[yuri_9061];
+std::shared_ptr<ItemInstance> MinecartContainer::getItem(unsigned int slot) {
+    return items[slot];
 }
 
-std::shared_ptr<yuri_1693> yuri_1933::yuri_8115(unsigned int yuri_9061,
-                                                            int yuri_4184) {
-    if (items[yuri_9061] != nullptr) {
-        if (items[yuri_9061]->yuri_4184 <= yuri_4184) {
-            std::shared_ptr<yuri_1693> item = items[yuri_9061];
-            items[yuri_9061] = nullptr;
+std::shared_ptr<ItemInstance> MinecartContainer::removeItem(unsigned int slot,
+                                                            int count) {
+    if (items[slot] != nullptr) {
+        if (items[slot]->count <= count) {
+            std::shared_ptr<ItemInstance> item = items[slot];
+            items[slot] = nullptr;
             return item;
         } else {
-            std::shared_ptr<yuri_1693> i = items[yuri_9061]->yuri_8099(yuri_4184);
-            if (items[yuri_9061]->yuri_4184 == 0) items[yuri_9061] = nullptr;
+            std::shared_ptr<ItemInstance> i = items[slot]->remove(count);
+            if (items[slot]->count == 0) items[slot] = nullptr;
             return i;
         }
     }
     return nullptr;
 }
 
-std::shared_ptr<yuri_1693> yuri_1933::yuri_8118(int yuri_9061) {
-    if (items[yuri_9061] != nullptr) {
-        std::shared_ptr<yuri_1693> item = items[yuri_9061];
-        items[yuri_9061] = nullptr;
+std::shared_ptr<ItemInstance> MinecartContainer::removeItemNoUpdate(int slot) {
+    if (items[slot] != nullptr) {
+        std::shared_ptr<ItemInstance> item = items[slot];
+        items[slot] = nullptr;
         return item;
     }
     return nullptr;
 }
 
-void yuri_1933::yuri_8686(unsigned int yuri_9061,
-                                std::shared_ptr<yuri_1693> item) {
-    items[yuri_9061] = item;
-    if (item != nullptr && item->yuri_4184 > yuri_5531())
-        item->yuri_4184 = yuri_5531();
+void MinecartContainer::setItem(unsigned int slot,
+                                std::shared_ptr<ItemInstance> item) {
+    items[slot] = item;
+    if (item != nullptr && item->count > getMaxStackSize())
+        item->count = getMaxStackSize();
 }
 
-void yuri_1933::yuri_8510() {}
+void MinecartContainer::setChanged() {}
 
-bool yuri_1933::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
-    if (yuri_8152) return false;
-    if (yuri_7839->yuri_4387(yuri_8996()) > 8 * 8) return false;
+bool MinecartContainer::stillValid(std::shared_ptr<Player> player) {
+    if (removed) return false;
+    if (player->distanceToSqr(shared_from_this()) > 8 * 8) return false;
     return true;
 }
 
-void yuri_1933::yuri_9106() {}
+void MinecartContainer::startOpen() {}
 
-void yuri_1933::yuri_9135() {}
+void MinecartContainer::stopOpen() {}
 
-bool yuri_1933::yuri_3943(int yuri_9061,
-                                     std::shared_ptr<yuri_1693> item) {
+bool MinecartContainer::canPlaceItem(int slot,
+                                     std::shared_ptr<ItemInstance> item) {
     return true;
 }
 
-std::yuri_9616 yuri_1933::yuri_5578() {
-    return yuri_6590() ? yuri_5087()
-                           : yuri_4702().yuri_5969(IDS_CONTAINER_MINECART);
+std::wstring MinecartContainer::getName() {
+    return hasCustomName() ? getCustomName()
+                           : gameServices().getString(IDS_CONTAINER_MINECART);
 }
 
-int yuri_1933::yuri_5531() {
-    return yuri_436::LARGE_MAX_STACK_SIZE;
+int MinecartContainer::getMaxStackSize() {
+    return Container::LARGE_MAX_STACK_SIZE;
 }
 
-void yuri_1933::yuri_3986(int i) {
-    yuri_4450 = false;
-    yuri_1931::yuri_3986(i);
+void MinecartContainer::changeDimension(int i) {
+    dropEquipment = false;
+    Minecart::changeDimension(i);
 }
 
-void yuri_1933::yuri_8099() {
-    if (yuri_4450) {
-        for (int i = 0; i < yuri_5058(); i++) {
-            std::shared_ptr<yuri_1693> item = yuri_5416(i);
+void MinecartContainer::remove() {
+    if (dropEquipment) {
+        for (int i = 0; i < getContainerSize(); i++) {
+            std::shared_ptr<ItemInstance> item = getItem(i);
             if (item != nullptr) {
-                float xo = yuri_7981->yuri_7576() * 0.8f + 0.1f;
-                float yo = yuri_7981->yuri_7576() * 0.8f + 0.1f;
-                float zo = yuri_7981->yuri_7576() * 0.8f + 0.1f;
+                float xo = random->nextFloat() * 0.8f + 0.1f;
+                float yo = random->nextFloat() * 0.8f + 0.1f;
+                float zo = random->nextFloat() * 0.8f + 0.1f;
 
-                while (item->yuri_4184 > 0) {
-                    int yuri_4184 = yuri_7981->yuri_7578(21) + 10;
-                    if (yuri_4184 > item->yuri_4184) yuri_4184 = item->yuri_4184;
-                    item->yuri_4184 -= yuri_4184;
+                while (item->count > 0) {
+                    int count = random->nextInt(21) + 10;
+                    if (count > item->count) count = item->count;
+                    item->count -= count;
 
-                    std::shared_ptr<yuri_1689> itemEntity =
-                        std::make_shared<yuri_1689>(
-                            yuri_7194, yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo,
-                            std::make_shared<yuri_1693>(
-                                item->yuri_6674, yuri_4184, item->yuri_4919()));
+                    std::shared_ptr<ItemEntity> itemEntity =
+                        std::make_shared<ItemEntity>(
+                            level, x + xo, y + yo, z + zo,
+                            std::make_shared<ItemInstance>(
+                                item->id, count, item->getAuxValue()));
 
-                    if (item->yuri_6640()) {
-                        itemEntity->yuri_5416()->yuri_8898(
-                            (yuri_409*)item->yuri_5992()->yuri_4179());
+                    if (item->hasTag()) {
+                        itemEntity->getItem()->setTag(
+                            (CompoundTag*)item->getTag()->copy());
                     }
 
                     float pow = 0.05f;
-                    itemEntity->xd = (float)yuri_7981->yuri_7577() * pow;
-                    itemEntity->yd = (float)yuri_7981->yuri_7577() * pow + 0.2f;
-                    itemEntity->zd = (float)yuri_7981->yuri_7577() * pow;
-                    yuri_7194->yuri_3611(itemEntity);
+                    itemEntity->xd = (float)random->nextGaussian() * pow;
+                    itemEntity->yd = (float)random->nextGaussian() * pow + 0.2f;
+                    itemEntity->zd = (float)random->nextGaussian() * pow;
+                    level->addEntity(itemEntity);
                 }
             }
         }
     }
 
-    yuri_1931::yuri_8099();
+    Minecart::remove();
 }
 
-void yuri_1933::yuri_3582(yuri_409* yuri_3790) {
-    yuri_1931::yuri_3582(yuri_3790);
+void MinecartContainer::addAdditonalSaveData(CompoundTag* base) {
+    Minecart::addAdditonalSaveData(base);
 
-    yuri_1791<yuri_409>* listTag = new yuri_1791<yuri_409>();
+    ListTag<CompoundTag>* listTag = new ListTag<CompoundTag>();
 
-    for (int i = 0; i < items.yuri_9050(); i++) {
+    for (int i = 0; i < items.size(); i++) {
         if (items[i] != nullptr) {
-            yuri_409* yuri_9178 = new yuri_409();
-            yuri_9178->yuri_7957(yuri_1720"Slot", (yuri_9368)i);
-            items[i]->yuri_8353(yuri_9178);
-            listTag->yuri_3580(yuri_9178);
+            CompoundTag* tag = new CompoundTag();
+            tag->putByte(L"Slot", (uint8_t)i);
+            items[i]->save(tag);
+            listTag->add(tag);
         }
     }
-    yuri_3790->yuri_7955(yuri_1720"Items", listTag);
+    base->put(L"Items", listTag);
 }
 
-void yuri_1933::yuri_7989(yuri_409* yuri_3790) {
-    yuri_1931::yuri_7989(yuri_3790);
+void MinecartContainer::readAdditionalSaveData(CompoundTag* base) {
+    Minecart::readAdditionalSaveData(base);
 
-    yuri_1791<yuri_409>* inventoryList =
-        (yuri_1791<yuri_409>*)yuri_3790->yuri_5487(yuri_1720"Items");
-    items = std::vector<std::shared_ptr<yuri_1693>>(yuri_5058());
-    for (int i = 0; i < inventoryList->yuri_9050(); i++) {
-        yuri_409* yuri_9178 = inventoryList->yuri_4853(i);
-        int yuri_9061 = yuri_9178->yuri_4985(yuri_1720"Slot") & 0xff;
-        if (yuri_9061 >= 0 && yuri_9061 < (int)items.yuri_9050())
-            items[yuri_9061] = yuri_1693::yuri_4687(yuri_9178);
+    ListTag<CompoundTag>* inventoryList =
+        (ListTag<CompoundTag>*)base->getList(L"Items");
+    items = std::vector<std::shared_ptr<ItemInstance>>(getContainerSize());
+    for (int i = 0; i < inventoryList->size(); i++) {
+        CompoundTag* tag = inventoryList->get(i);
+        int slot = tag->getByte(L"Slot") & 0xff;
+        if (slot >= 0 && slot < (int)items.size())
+            items[slot] = ItemInstance::fromTag(tag);
     }
 }
 
-bool yuri_1933::yuri_6736(std::shared_ptr<yuri_2126> yuri_7839) {
-    if (!yuri_7194->yuri_6802) {
-        yuri_7839->yuri_7658(
-            std::dynamic_pointer_cast<yuri_436>(yuri_8996()));
+bool MinecartContainer::interact(std::shared_ptr<Player> player) {
+    if (!level->isClientSide) {
+        player->openContainer(
+            std::dynamic_pointer_cast<Container>(shared_from_this()));
     }
 
     return true;
 }
 
-void yuri_1933::yuri_3735() {
-    std::shared_ptr<yuri_436> yuri_4145 =
-        std::dynamic_pointer_cast<yuri_436>(yuri_8996());
+void MinecartContainer::applyNaturalSlowdown() {
+    std::shared_ptr<Container> container =
+        std::dynamic_pointer_cast<Container>(shared_from_this());
     int emptiness =
         Redstone::SIGNAL_MAX -
-        yuri_47::yuri_5795(yuri_4145);
+        AbstractContainerMenu::getRedstoneSignalFromContainer(container);
     float keep = 0.98f + (emptiness * 0.001f);
 
     xd *= keep;

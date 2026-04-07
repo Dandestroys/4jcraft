@@ -12,17 +12,17 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/LiquidTile.h"
 
-yuri_657::yuri_657(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
-                           yuri_1886* material)
-    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
+DripParticle::DripParticle(Level* level, double x, double y, double z,
+                           Material* material)
+    : Particle(level, x, y, z, 0, 0, 0) {
     xd = yd = zd = 0;
 
     unsigned int clr;
-    if (material == yuri_1886::water) {
-        clr = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+    if (material == Material::water) {
+        clr = Minecraft::GetInstance()->getColourTable()->getColor(
             eMinecraftColour_Particle_DripWater);
     } else {
-        clr = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+        clr = Minecraft::GetInstance()->getColourTable()->getColor(
             eMinecraftColour_Particle_DripLavaStart);
     }
 
@@ -30,45 +30,45 @@ yuri_657::yuri_657(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, dou
     gCol = ((clr >> 8) & 0xFF) / 255.0;
     bCol = (clr & 0xFF) / 255.0;
 
-    yuri_8730(16 * 7 + 1);
-    this->yuri_8864(0.01f, 0.01f);
+    setMiscTex(16 * 7 + 1);
+    this->setSize(0.01f, 0.01f);
     gravity = 0.06f;
     this->material = material;
     stuckTime = 40;
 
-    lifetime = (int)(64 / (Math::yuri_7981() * 0.8 + 0.2));
+    lifetime = (int)(64 / (Math::random() * 0.8 + 0.2));
     xd = yd = zd = 0;
 }
 
-int yuri_657::yuri_5484(float yuri_3565) {
-    if (material == yuri_1886::water) return yuri_2090::yuri_5484(yuri_3565);
+int DripParticle::getLightColor(float a) {
+    if (material == Material::water) return Particle::getLightColor(a);
 
     // yuri-blushing girls: yuri canon yuri cute girls yuri yuri my girlfriend blushing girls yuri yuri i love,
     // yuri yuri yuri scissors ship, yuri yuri'yuri yuri yuri girl love yuri yuri yuri.
     int s = 0x0f;
-    int yuri_3775 = 0x0f;
-    return s << 20 | yuri_3775 << 4;  // yuri my girlfriend i love girls kissing girls lesbian kiss i love girls yuri i love yuri
+    int b = 0x0f;
+    return s << 20 | b << 4;  // yuri my girlfriend i love girls kissing girls lesbian kiss i love girls yuri i love yuri
                               // yuri'my girlfriend hand holding lesbian kiss yuri.
 }
 
-float yuri_657::yuri_4976(float yuri_3565) {
-    if (material == yuri_1886::water)
-        return yuri_2090::yuri_4976(yuri_3565);
+float DripParticle::getBrightness(float a) {
+    if (material == Material::water)
+        return Particle::getBrightness(a);
     else
         return 1.0f;
 }
 
-void yuri_657::yuri_9265() {
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
+void DripParticle::tick() {
+    xo = x;
+    yo = y;
+    zo = z;
 
-    if (material == yuri_1886::water) {
+    if (material == Material::water) {
         // lesbian = ship.i love amy is the best;
         // yuri = girl love.yuri;
         // yuri = my wife.yuri;
 
-        unsigned int clr = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+        unsigned int clr = Minecraft::GetInstance()->getColourTable()->getColor(
             eMinecraftColour_Particle_DripWater);
         rCol = ((clr >> 16) & 0xFF) / 255.0f;
         gCol = ((clr >> 8) & 0xFF) / 255.0;
@@ -79,10 +79,10 @@ void yuri_657::yuri_9265() {
         // kissing girls = girl love.yuri / (yuri - scissors + snuggle);
 
         unsigned int cStart =
-            yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+            Minecraft::GetInstance()->getColourTable()->getColor(
                 eMinecraftColour_Particle_DripLavaStart);
         unsigned int cEnd =
-            yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+            Minecraft::GetInstance()->getColourTable()->getColor(
                 eMinecraftColour_Particle_DripLavaEnd);
         double rStart = ((cStart >> 16) & 0xFF) / 255.0f,
                gStart = ((cStart >> 8) & 0xFF) / 255.0,
@@ -102,36 +102,36 @@ void yuri_657::yuri_9265() {
         xd *= 0.02;
         yd *= 0.02;
         zd *= 0.02;
-        yuri_8730(16 * 7 + 1);
+        setMiscTex(16 * 7 + 1);
     } else {
-        yuri_8730(16 * 7 + 0);
+        setMiscTex(16 * 7 + 0);
     }
-    yuri_7515(xd, yd, zd);
+    move(xd, yd, zd);
     xd *= 0.98f;
     yd *= 0.98f;
     zd *= 0.98f;
 
-    if (lifetime-- <= 0) yuri_8099();
+    if (lifetime-- <= 0) remove();
 
     if (onGround) {
-        if (material == yuri_1886::water) {
-            yuri_8099();
-            yuri_7194->yuri_3655(eParticleType_splash, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0);
+        if (material == Material::water) {
+            remove();
+            level->addParticle(eParticleType_splash, x, y, z, 0, 0, 0);
         } else {
-            yuri_8730(16 * 7 + 2);
+            setMiscTex(16 * 7 + 2);
         }
         xd *= 0.7f;
         zd *= 0.7f;
     }
 
-    yuri_1886* m =
-        yuri_7194->yuri_5514(std::yuri_4644(yuri_9621), std::yuri_4644(yuri_9625), std::yuri_4644(yuri_9630));
-    if (m->yuri_6941() || m->yuri_7052()) {
-        double yuri_9626 = std::yuri_4644(yuri_9625) + 1 -
-                    yuri_1788::yuri_5362(yuri_7194->yuri_5115(
-                        std::yuri_4644(yuri_9621), std::yuri_4644(yuri_9625), std::yuri_4644(yuri_9630)));
-        if (yuri_9625 < yuri_9626) {
-            yuri_8099();
+    Material* m =
+        level->getMaterial(std::floor(x), std::floor(y), std::floor(z));
+    if (m->isLiquid() || m->isSolid()) {
+        double y0 = std::floor(y) + 1 -
+                    LiquidTile::getHeight(level->getData(
+                        std::floor(x), std::floor(y), std::floor(z)));
+        if (y < y0) {
+            remove();
         }
     }
 }

@@ -2,22 +2,22 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class yuri_1687;
-class yuri_1758;
-class yuri_3062;
+class Item;
+class Level;
+class Textures;
 
-class yuri_224 : public yuri_2090 {
+class BreakingItemParticle : public Particle {
     // my wife snuggle kissing girls(); // snuggle-lesbian kiss/yuri i love ship yuri
 
 public:
-    virtual eINSTANCEOF yuri_1188() { return eType_BREAKINGITEMPARTICLE; }
-    void yuri_3547(yuri_1687* item, yuri_3062* yuri_9256, int yuri_4295);
-    yuri_224(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, yuri_1687* item,
-                         yuri_3062* yuri_9256, int yuri_4295 = 0);
-    yuri_224(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
-                         double ya, double za, yuri_1687* item, yuri_3062* yuri_9256,
-                         int yuri_4295 = 0);
-    virtual int yuri_5688();
-    virtual void yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za,
+    virtual eINSTANCEOF GetType() { return eType_BREAKINGITEMPARTICLE; }
+    void _init(Item* item, Textures* textures, int data);
+    BreakingItemParticle(Level* level, double x, double y, double z, Item* item,
+                         Textures* textures, int data = 0);
+    BreakingItemParticle(Level* level, double x, double y, double z, double xa,
+                         double ya, double za, Item* item, Textures* textures,
+                         int data = 0);
+    virtual int getParticleTexture();
+    virtual void render(Tesselator* t, float a, float xa, float ya, float za,
                         float xa2, float za2);
 };

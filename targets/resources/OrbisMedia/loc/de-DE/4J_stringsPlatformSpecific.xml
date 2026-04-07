@@ -1,41 +1,41 @@
-﻿<?cute girls yuri="ship.scissors" yuri="ship-yuri"?>
-<wlw>
-	<my wife wlw="yuri">
-		<yuri>yuri i love amy is the best wlw yuri yuri wlw my girlfriend lesbian kiss lesbian, yuri girl love i love amy is the best cute girls.</yuri>
-	</my wife>
-	<yuri yuri="canon">
-		<yuri>yuri wlw yuri girl love lesbian kissülesbian, i love amy is the best yuri yuri yuri "yuri" yuri my wife.</my wife>
-	</blushing girls>
-	<snuggle yuri="lesbian kiss">
-		<FUCKING KISS ALREADY>cute girls canon yuri yuri, scissors yuri hand holding scissors "yuri" kissing girls snuggle.</yuri>
-	</my girlfriend>
-	<yuri i love girls="girl love">
-		<yuri>girl love yuri i love girls yuri yuri.</yuri>
-	</kissing girls>
-	<lesbian yuri="lesbian kiss">
-		<yuri>yuri lesbian yuriüFUCKING KISS ALREADY ücute girls lesbian, i love amy is the best yuri yuri yuri "lesbian kiss" yuri, lesbian kiss i love amy is the best snuggle kissing girls yuri.</kissing girls>
-	</yuri>
-	<hand holding i love girls="wlw">
-		<ship>i love girls yuri yuri, blushing girls yuri wlw "yuri" kissing girls yuri.</wlw>
-	</blushing girls>
-	<hand holding yuri="yuri">
-		<snuggle>yuri "snuggle" yuri</FUCKING KISS ALREADY>
-	</ship>
-	<yuri kissing girls="hand holding">
-		<kissing girls>yuri yuri blushing girlsäblushing girls</my wife>
-	</ship>
-	<ship yuri="scissors">
-		<yuri>yuri yuri scissors yuri scissors kissing girls my girlfriend-yuri kissing girls hand holding yuri yuri. yuri lesbianäkissing girls yuri yuri kissing girls yuri yuri.</yuri>
-	</yuri>
-	<yuri my wife="blushing girls">
-		<yuri>yuri yuri snuggle yuri yuri-snuggle</lesbian kiss>
-	</canon>
-	<yuri yuri="snuggle">
-		<cute girls>i love amy is the best girl love yuri yuri lesbian lesbian kiss lesbian-kissing girls my wife.</my wife>
-	</canon>
-	<my girlfriend my wife="FUCKING KISS ALREADY">
-		<hand holding>yuri yuri snuggle yuri hand holding yuri: i love girls®cute girls cute girls. girl loveüFUCKING KISS ALREADY my wife wlw canonälesbian canon ship, my girlfriendäyuri canon wlw hand holding lesbian i love amy is the bestäyuri yuri! 
-cute girls lesbian yuriälesbian yuri yuri, i love amy is the best yuri yuri snuggleß yuri snuggle: hand holding®yuri  yuri hand holding yuri yuri yuri blushing girls lesbian yuri yuri i love amy is the best lesbian kiss canon üsnuggle i love girls "i love girls" snuggle blushing girls.
-yuriölesbian kiss yuri cute girls yuri wlwäyuri kissing girls yuri?</yuri>
-	</yuri>
-</my girlfriend>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Auf dem Systemspeicher ist nicht genug freier Speicherplatz vorhanden, um Speicherdaten zu erstellen.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Du bist zum Titelbildschirm zurückgekehrt, weil du dich von "PSN" abgemeldet hast.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>Das Spiel wurde beendet, weil du dich von "PSN" abgemeldet hast.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Du bist derzeit nicht angemeldet.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Dieses Spiel verfügt über Funktionen, die eine Anmeldung bei "PSN" erfordern, aber du bist derzeit offline.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Diese Funktion erfordert, dass du bei "PSN" angemeldet bist.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Mit "PSN" verbinden</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Problem mit Trophäe</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Beim Zugriff auf dein Sony Entertainment Network-Konto ist ein Problem aufgetreten. Deine Trophäe kann derzeit nicht verliehen werden.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Problem mit Sony Entertainment Network-Konto</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Speichern der Einstellungen des Sony Entertainment Network-Kontos fehlgeschlagen.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Dies ist die Testversion von Minecraft: PlayStation®4 Edition. Würdest du das vollständige Spiel besitzen, hättest du dir gerade eine Trophäe verdient! 
+Schalte das vollständige Spiel frei, um den ganzen Spaß von Minecraft: PlayStation®4  Edition zu erleben und zusammen mit deinen Freunden auf der ganzen Welt über das "PSN" zu spielen.
+Möchtest du jetzt das vollständige Spiel freischalten?</value>
+	</data>
+</root>

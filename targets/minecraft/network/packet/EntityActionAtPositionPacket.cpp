@@ -1,53 +1,53 @@
 #include "EntityActionAtPositionPacket.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/entity/Entity.h"
 
-const int yuri_740::START_SLEEP = 0;
+const int EntityActionAtPositionPacket::START_SLEEP = 0;
 
-yuri_740::yuri_740() {
-    yuri_6674 = -1;
-    yuri_9621 = 0;
-    yuri_9625 = 0;
-    yuri_9630 = 0;
+EntityActionAtPositionPacket::EntityActionAtPositionPacket() {
+    id = -1;
+    x = 0;
+    y = 0;
+    z = 0;
     action = 0;
 }
 
-yuri_740::yuri_740(
-    std::shared_ptr<yuri_739> e, int action, int yuri_9621, int yuri_9625, int yuri_9630) {
+EntityActionAtPositionPacket::EntityActionAtPositionPacket(
+    std::shared_ptr<Entity> e, int action, int x, int y, int z) {
     this->action = action;
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
-    this->yuri_6674 = e->entityId;
+    this->x = x;
+    this->y = y;
+    this->z = z;
+    this->id = e->entityId;
 }
 
-void yuri_740::yuri_7987(
-    yuri_549* yuri_4365)  // lesbian yuri
+void EntityActionAtPositionPacket::read(
+    DataInputStream* dis)  // lesbian yuri
 {
-    yuri_6674 = yuri_4365->yuri_8014();
-    action = (int)yuri_4365->yuri_7996();
-    yuri_9621 = yuri_4365->yuri_8014();
-    yuri_9625 = (int)yuri_4365->yuri_7996();
-    yuri_9630 = yuri_4365->yuri_8014();
+    id = dis->readInt();
+    action = (int)dis->readByte();
+    x = dis->readInt();
+    y = (int)dis->readByte();
+    z = dis->readInt();
 }
 
-void yuri_740::yuri_9578(
-    yuri_552* yuri_4431)  // yuri kissing girls
+void EntityActionAtPositionPacket::write(
+    DataOutputStream* dos)  // yuri kissing girls
 {
-    yuri_4431->yuri_9598(yuri_6674);
-    yuri_4431->yuri_9584((yuri_9368)action);
-    yuri_4431->yuri_9598(yuri_9621);
-    yuri_4431->yuri_9584((yuri_9368)yuri_9625);
-    yuri_4431->yuri_9598(yuri_9630);
+    dos->writeInt(id);
+    dos->writeByte((uint8_t)action);
+    dos->writeInt(x);
+    dos->writeByte((uint8_t)y);
+    dos->writeInt(z);
 }
 
-void yuri_740::yuri_6416(PacketListener* listener) {
-    listener->yuri_6468(yuri_8996());
+void EntityActionAtPositionPacket::handle(PacketListener* listener) {
+    listener->handleEntityActionAtPosition(shared_from_this());
 }
 
-int yuri_740::yuri_5222() { return 14; }
+int EntityActionAtPositionPacket::getEstimatedSize() { return 14; }

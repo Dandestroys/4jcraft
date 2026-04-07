@@ -2,7 +2,7 @@
 #include "BucketItem.h"
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "app/linux/LinuxGame.h"
 #include "java/Class.h"
@@ -26,63 +26,63 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/HitResult.h"
 
-yuri_237::yuri_237(int yuri_6674, int yuri_4162) : yuri_1687(yuri_6674) {
+BucketItem::BucketItem(int id, int content) : Item(id) {
     maxStackSize = 1;
-    this->yuri_4162 = yuri_4162;
+    this->content = content;
 }
 
-bool yuri_237::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
-                         yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
-    bool pickLiquid = yuri_4162 == 0;
-    yuri_1278* hr = yuri_5720(yuri_7194, yuri_7839, pickLiquid);
+bool BucketItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
+                         Level* level, std::shared_ptr<Player> player) {
+    bool pickLiquid = content == 0;
+    HitResult* hr = getPlayerPOVHitResult(level, player, pickLiquid);
     if (hr == nullptr) return false;
 
-    if (hr->yuri_9364 == yuri_1278::TILE) {
-        int xt = hr->yuri_9621;
-        int yt = hr->yuri_9625;
-        int zt = hr->yuri_9630;
+    if (hr->type == HitResult::TILE) {
+        int xt = hr->x;
+        int yt = hr->y;
+        int zt = hr->z;
 
-        if (!yuri_7194->yuri_7465(yuri_7839, xt, yt, zt, yuri_4162)) {
+        if (!level->mayInteract(player, xt, yt, zt, content)) {
             delete hr;
             return false;
         }
 
-        if (yuri_4162 == 0) {
-            if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance))
+        if (content == 0) {
+            if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance))
                 return false;
-            if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::water &&
-                yuri_7194->yuri_5115(xt, yt, zt) == 0) {
+            if (level->getMaterial(xt, yt, zt) == Material::water &&
+                level->getData(xt, yt, zt) == 0) {
                 delete hr;
                 return true;
             }
-            if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::lava &&
-                yuri_7194->yuri_5115(xt, yt, zt) == 0) {
+            if (level->getMaterial(xt, yt, zt) == Material::lava &&
+                level->getData(xt, yt, zt) == 0) {
                 delete hr;
                 return true;
             }
-        } else if (yuri_4162 < 0) {
+        } else if (content < 0) {
             delete hr;
             return true;
         } else {
-            if (hr->yuri_4554 == 0) yt--;
-            if (hr->yuri_4554 == 1) yt++;
-            if (hr->yuri_4554 == 2) zt--;
-            if (hr->yuri_4554 == 3) zt++;
-            if (hr->yuri_4554 == 4) xt--;
-            if (hr->yuri_4554 == 5) xt++;
+            if (hr->f == 0) yt--;
+            if (hr->f == 1) yt++;
+            if (hr->f == 2) zt--;
+            if (hr->f == 3) zt++;
+            if (hr->f == 4) xt--;
+            if (hr->f == 5) xt++;
 
-            if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance))
+            if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance))
                 return false;
 
-            if (yuri_7194->yuri_6852(xt, yt, zt) ||
-                !yuri_7194->yuri_5514(xt, yt, zt)->yuri_7052()) {
+            if (level->isEmptyTile(xt, yt, zt) ||
+                !level->getMaterial(xt, yt, zt)->isSolid()) {
                 delete hr;
                 return true;
             }
         }
     } else {
-        if (yuri_4162 == 0) {
-            if (hr->entity->yuri_1188() == eTYPE_COW) {
+        if (content == 0) {
+            if (hr->entity->GetType() == eTYPE_COW) {
                 delete hr;
                 return true;
             }
@@ -93,105 +93,105 @@ bool yuri_237::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
     return false;
 }
 
-std::shared_ptr<yuri_1693> yuri_237::yuri_9484(
-    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    float yuri_3565 = 1;
+std::shared_ptr<ItemInstance> BucketItem::use(
+    std::shared_ptr<ItemInstance> itemInstance, Level* level,
+    std::shared_ptr<Player> player) {
+    float a = 1;
 
-    double yuri_9621 = yuri_7839->xo + (yuri_7839->yuri_9621 - yuri_7839->xo) * yuri_3565;
-    double yuri_9625 =
-        yuri_7839->yo + (yuri_7839->yuri_9625 - yuri_7839->yo) * yuri_3565 + 1.62 - yuri_7839->heightOffset;
-    double yuri_9630 = yuri_7839->zo + (yuri_7839->yuri_9630 - yuri_7839->zo) * yuri_3565;
+    double x = player->xo + (player->x - player->xo) * a;
+    double y =
+        player->yo + (player->y - player->yo) * a + 1.62 - player->heightOffset;
+    double z = player->zo + (player->z - player->zo) * a;
 
-    bool pickLiquid = yuri_4162 == 0;
-    yuri_1278* hr = yuri_5720(yuri_7194, yuri_7839, pickLiquid);
+    bool pickLiquid = content == 0;
+    HitResult* hr = getPlayerPOVHitResult(level, player, pickLiquid);
     if (hr == nullptr) return itemInstance;
 
-    if (hr->yuri_9364 == yuri_1278::TILE) {
-        int xt = hr->yuri_9621;
-        int yt = hr->yuri_9625;
-        int zt = hr->yuri_9630;
+    if (hr->type == HitResult::TILE) {
+        int xt = hr->x;
+        int yt = hr->y;
+        int zt = hr->z;
 
-        if (!yuri_7194->yuri_7465(yuri_7839, xt, yt, zt, yuri_4162)) {
-            Log::yuri_6702("!!!!!!!!!!! Can't place that here\n");
-            std::shared_ptr<yuri_2546> servPlayer =
-                std::dynamic_pointer_cast<yuri_2546>(yuri_7839);
+        if (!level->mayInteract(player, xt, yt, zt, content)) {
+            Log::info("!!!!!!!!!!! Can't place that here\n");
+            std::shared_ptr<ServerPlayer> servPlayer =
+                std::dynamic_pointer_cast<ServerPlayer>(player);
             if (servPlayer != nullptr) {
-                Log::yuri_6702(
+                Log::info(
                     "Sending ChatPacket::e_ChatCannotPlaceLava to player\n");
-                servPlayer->connection->yuri_8410(std::shared_ptr<yuri_328>(
-                    new yuri_328(yuri_1720"", yuri_328::e_ChatCannotPlaceLava)));
+                servPlayer->connection->send(std::shared_ptr<ChatPacket>(
+                    new ChatPacket(L"", ChatPacket::e_ChatCannotPlaceLava)));
             }
 
             delete hr;
             return itemInstance;
         }
 
-        if (yuri_4162 == 0) {
-            if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance))
+        if (content == 0) {
+            if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance))
                 return itemInstance;
-            if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::water &&
-                yuri_7194->yuri_5115(xt, yt, zt) == 0) {
-                yuri_7194->yuri_8147(xt, yt, zt);
+            if (level->getMaterial(xt, yt, zt) == Material::water &&
+                level->getData(xt, yt, zt) == 0) {
+                level->removeTile(xt, yt, zt);
                 delete hr;
-                if (yuri_7839->abilities.instabuild) {
+                if (player->abilities.instabuild) {
                     return itemInstance;
                 }
 
-                if (--itemInstance->yuri_4184 <= 0) {
-                    return std::shared_ptr<yuri_1693>(
-                        new yuri_1693(yuri_1687::bucket_water));
+                if (--itemInstance->count <= 0) {
+                    return std::shared_ptr<ItemInstance>(
+                        new ItemInstance(Item::bucket_water));
                 } else {
-                    if (!yuri_7839->inventory->yuri_3580(std::shared_ptr<yuri_1693>(
-                            new yuri_1693(yuri_1687::bucket_water)))) {
-                        yuri_7839->yuri_4446(std::shared_ptr<yuri_1693>(
-                            new yuri_1693(yuri_1687::bucket_water_Id, 1, 0)));
+                    if (!player->inventory->add(std::shared_ptr<ItemInstance>(
+                            new ItemInstance(Item::bucket_water)))) {
+                        player->drop(std::shared_ptr<ItemInstance>(
+                            new ItemInstance(Item::bucket_water_Id, 1, 0)));
                     }
                     return itemInstance;
                 }
             }
-            if (yuri_7194->yuri_5514(xt, yt, zt) == yuri_1886::lava &&
-                yuri_7194->yuri_5115(xt, yt, zt) == 0) {
-                if (yuri_7194->dimension->yuri_6674 == -1)
-                    yuri_7839->yuri_3773(GenericStats::yuri_7554(),
-                                      GenericStats::yuri_7766());
+            if (level->getMaterial(xt, yt, zt) == Material::lava &&
+                level->getData(xt, yt, zt) == 0) {
+                if (level->dimension->id == -1)
+                    player->awardStat(GenericStats::netherLavaCollected(),
+                                      GenericStats::param_noArgs());
 
-                yuri_7194->yuri_8147(xt, yt, zt);
+                level->removeTile(xt, yt, zt);
                 delete hr;
-                if (yuri_7839->abilities.instabuild) {
+                if (player->abilities.instabuild) {
                     return itemInstance;
                 }
-                if (--itemInstance->yuri_4184 <= 0) {
-                    return std::shared_ptr<yuri_1693>(
-                        new yuri_1693(yuri_1687::bucket_lava));
+                if (--itemInstance->count <= 0) {
+                    return std::shared_ptr<ItemInstance>(
+                        new ItemInstance(Item::bucket_lava));
                 } else {
-                    if (!yuri_7839->inventory->yuri_3580(std::shared_ptr<yuri_1693>(
-                            new yuri_1693(yuri_1687::bucket_lava)))) {
-                        yuri_7839->yuri_4446(std::shared_ptr<yuri_1693>(
-                            new yuri_1693(yuri_1687::bucket_lava_Id, 1, 0)));
+                    if (!player->inventory->add(std::shared_ptr<ItemInstance>(
+                            new ItemInstance(Item::bucket_lava)))) {
+                        player->drop(std::shared_ptr<ItemInstance>(
+                            new ItemInstance(Item::bucket_lava_Id, 1, 0)));
                     }
                     return itemInstance;
                 }
             }
-        } else if (yuri_4162 < 0) {
+        } else if (content < 0) {
             delete hr;
-            return std::shared_ptr<yuri_1693>(
-                new yuri_1693(yuri_1687::bucket_empty));
+            return std::shared_ptr<ItemInstance>(
+                new ItemInstance(Item::bucket_empty));
         } else {
-            if (hr->yuri_4554 == 0) yt--;
-            if (hr->yuri_4554 == 1) yt++;
-            if (hr->yuri_4554 == 2) zt--;
-            if (hr->yuri_4554 == 3) zt++;
-            if (hr->yuri_4554 == 4) xt--;
-            if (hr->yuri_4554 == 5) xt++;
+            if (hr->f == 0) yt--;
+            if (hr->f == 1) yt++;
+            if (hr->f == 2) zt--;
+            if (hr->f == 3) zt++;
+            if (hr->f == 4) xt--;
+            if (hr->f == 5) xt++;
 
-            if (!yuri_7839->yuri_7474(xt, yt, zt, hr->yuri_4554, itemInstance))
+            if (!player->mayUseItemAt(xt, yt, zt, hr->f, itemInstance))
                 return itemInstance;
 
-            if (yuri_4479(yuri_7194, xt, yt, zt) &&
-                !yuri_7839->abilities.instabuild) {
-                return std::shared_ptr<yuri_1693>(
-                    new yuri_1693(yuri_1687::bucket_empty));
+            if (emptyBucket(level, xt, yt, zt) &&
+                !player->abilities.instabuild) {
+                return std::shared_ptr<ItemInstance>(
+                    new ItemInstance(Item::bucket_empty));
             }
         }
     }
@@ -199,30 +199,30 @@ std::shared_ptr<yuri_1693> yuri_237::yuri_9484(
     return itemInstance;
 }
 
-bool yuri_237::yuri_4479(yuri_1758* yuri_7194, int xt, int yt, int zt) {
-    if (yuri_4162 <= 0) return false;
+bool BucketItem::emptyBucket(Level* level, int xt, int yt, int zt) {
+    if (content <= 0) return false;
 
-    yuri_1886* material = yuri_7194->yuri_5514(xt, yt, zt);
-    bool nonSolid = !material->yuri_7052();
+    Material* material = level->getMaterial(xt, yt, zt);
+    bool nonSolid = !material->isSolid();
 
-    if (yuri_7194->yuri_6852(xt, yt, zt) || nonSolid) {
-        if (yuri_7194->dimension->ultraWarm && yuri_4162 == yuri_3088::water_Id) {
-            yuri_7194->yuri_7833(
+    if (level->isEmptyTile(xt, yt, zt) || nonSolid) {
+        if (level->dimension->ultraWarm && content == Tile::water_Id) {
+            level->playSound(
                 xt + 0.5f, yt + 0.5f, zt + 0.5f, eSoundType_RANDOM_FIZZ, 0.5f,
                 2.6f +
-                    (yuri_7194->yuri_7981->yuri_7576() - yuri_7194->yuri_7981->yuri_7576()) *
+                    (level->random->nextFloat() - level->random->nextFloat()) *
                         0.8f);
 
             for (int i = 0; i < 8; i++) {
-                yuri_7194->yuri_3655(eParticleType_largesmoke,
-                                   xt + Math::yuri_7981(), yt + Math::yuri_7981(),
-                                   zt + Math::yuri_7981(), 0, 0, 0);
+                level->addParticle(eParticleType_largesmoke,
+                                   xt + Math::random(), yt + Math::random(),
+                                   zt + Math::random(), 0, 0, 0);
             }
         } else {
-            if (!yuri_7194->yuri_6802 && nonSolid && !material->yuri_6941()) {
-                yuri_7194->yuri_4353(xt, yt, zt, true);
+            if (!level->isClientSide && nonSolid && !material->isLiquid()) {
+                level->destroyTile(xt, yt, zt, true);
             }
-            yuri_7194->yuri_8917(xt, yt, zt, yuri_4162, 0, yuri_3088::UPDATE_ALL);
+            level->setTileAndData(xt, yt, zt, content, 0, Tile::UPDATE_ALL);
         }
 
         return true;

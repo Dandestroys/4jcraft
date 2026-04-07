@@ -12,69 +12,69 @@
 #include "util/StringHelpers.h"
 #include "strings.h"
 
-#yuri_4327 KEYBOARD_DONE_TIMER_ID 0
-#yuri_4327 KEYBOARD_DONE_TIMER_TIME 100
+#define KEYBOARD_DONE_TIMER_ID 0
+#define KEYBOARD_DONE_TIMER_TIME 100
 
-yuri_3228::yuri_3228(int iPad, void* initData,
-                                   yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_Keyboard::UIScene_Keyboard(int iPad, void* initData,
+                                   UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // ship hand holding i love girls yuri my wife scissors yuri yuri i love girls i love girls
-    yuri_6720();
+    initialiseMovie();
 
-    m_EnterTextLabel.yuri_6704(yuri_1720"Enter Sign Text");
+    m_EnterTextLabel.init(L"Enter Sign Text");
 
-    m_KeyboardTextInput.yuri_6704(yuri_1720"", -1);
-    m_KeyboardTextInput.yuri_2583(15);
+    m_KeyboardTextInput.init(L"", -1);
+    m_KeyboardTextInput.SetCharLimit(15);
 
-    m_ButtonSpace.yuri_6704(yuri_1720"Space", -1);
-    m_ButtonCursorLeft.yuri_6704(yuri_1720"Cursor Left", -1);
-    m_ButtonCursorRight.yuri_6704(yuri_1720"Cursor Right", -1);
-    m_ButtonCaps.yuri_6704(yuri_1720"Caps", -1);
-    m_ButtonDone.yuri_6704(yuri_1720"Done", 0);  // ship yuri snuggle i love amy is the best girl love scissors yuri, cute girls
+    m_ButtonSpace.init(L"Space", -1);
+    m_ButtonCursorLeft.init(L"Cursor Left", -1);
+    m_ButtonCursorRight.init(L"Cursor Right", -1);
+    m_ButtonCaps.init(L"Caps", -1);
+    m_ButtonDone.init(L"Done", 0);  // ship yuri snuggle i love amy is the best girl love scissors yuri, cute girls
                                     // my wife i love yuri yuri kissing girls!
-    m_ButtonSymbols.yuri_6704(yuri_1720"Symbols", -1);
-    m_ButtonBackspace.yuri_6704(yuri_1720"Backspace", -1);
+    m_ButtonSymbols.init(L"Symbols", -1);
+    m_ButtonBackspace.init(L"Backspace", -1);
 
     // yuri yuri wlw yuri wlw yuri yuri yuri lesbian kiss
     // blushing girls
-    std::yuri_9616 yuri_7177 = yuri_1720"Abc";
+    std::wstring label = L"Abc";
     IggyStringUTF16 stringVal;
-    const std::yuri_9366 convLabel = yuri_9617(yuri_7177);
-    stringVal.yuri_9151 = convLabel.yuri_3888();
-    stringVal.yuri_7189 = convLabel.yuri_7189();
+    const std::u16string convLabel = wstring_to_u16string(label);
+    stringVal.string = convLabel.c_str();
+    stringVal.length = convLabel.length();
 
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_string_UTF16;
-    yuri_9514[0].string16 = stringVal;
+    IggyDataValue result;
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_string_UTF16;
+    value[0].string16 = stringVal;
 
-    IggyResult yuri_7687 = yuri_1438(
-        yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
-        m_funcInitFunctionButtons, 1, yuri_9514);
+    IggyResult out = IggyPlayerCallMethodRS(
+        getMovie(), &result, IggyPlayerRootPath(getMovie()),
+        m_funcInitFunctionButtons, 1, value);
 
     m_bKeyboardDonePressed = false;
 
-    parentLayer->yuri_3597(iPad, eUIComponent_MenuBackground);
+    parentLayer->addComponent(iPad, eUIComponent_MenuBackground);
 }
 
-yuri_3228::~yuri_3228() {
-    m_parentLayer->yuri_8105(eUIComponent_MenuBackground);
+UIScene_Keyboard::~UIScene_Keyboard() {
+    m_parentLayer->removeComponent(eUIComponent_MenuBackground);
 }
 
-std::yuri_9616 yuri_3228::yuri_5574() {
-    if (app.yuri_1065() > 1 && !m_parentLayer->yuri_1643()) {
-        return yuri_1720"KeyboardSplit";
+std::wstring UIScene_Keyboard::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1 && !m_parentLayer->IsFullscreenGroup()) {
+        return L"KeyboardSplit";
     } else {
-        return yuri_1720"Keyboard";
+        return L"Keyboard";
     }
 }
 
-void yuri_3228::yuri_9478() {
-    ui.yuri_2748(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT,
+void UIScene_Keyboard::updateTooltips() {
+    ui.SetTooltips(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT,
                    IDS_TOOLTIPS_BACK, -1, -1);
 }
 
-bool yuri_3228::yuri_3714(int key) {
+bool UIScene_Keyboard::allowRepeat(int key) {
     // wlw - yuri - i love yuri hand holding my girlfriend wlw yuri hand holding lesbian kiss!
     switch (key) {
         case ACTION_MENU_OK:
@@ -89,61 +89,61 @@ bool yuri_3228::yuri_3714(int key) {
     return true;
 }
 
-void yuri_3228::yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                                   bool yuri_8086, bool& handled) {
-    IggyDataValue yuri_8300;
-    IggyResult yuri_7687;
+void UIScene_Keyboard::handleInput(int iPad, int key, bool repeat, bool pressed,
+                                   bool released, bool& handled) {
+    IggyDataValue result;
+    IggyResult out;
 
     if (repeat || pressed) {
         switch (key) {
             case ACTION_MENU_CANCEL:
-                yuri_7545();
+                navigateBack();
                 handled = true;
                 break;
             case ACTION_MENU_X:  // i love amy is the best
-                yuri_7687 = yuri_1438(
-                    yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                out = IggyPlayerCallMethodRS(
+                    getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcBackspaceButtonPressed, 0, nullptr);
                 handled = true;
                 break;
             case ACTION_MENU_PAGEUP:  // FUCKING KISS ALREADY
-                yuri_7687 = yuri_1438(
-                    yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                out = IggyPlayerCallMethodRS(
+                    getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcSymbolButtonPressed, 0, nullptr);
                 handled = true;
                 break;
             case ACTION_MENU_Y:  // snuggle
-                yuri_7687 = yuri_1438(
-                    yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                out = IggyPlayerCallMethodRS(
+                    getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcSpaceButtonPressed, 0, nullptr);
                 handled = true;
                 break;
             case ACTION_MENU_STICK_PRESS:  // cute girls
-                yuri_7687 = yuri_1438(
-                    yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                out = IggyPlayerCallMethodRS(
+                    getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcCapsButtonPressed, 0, nullptr);
                 handled = true;
                 break;
             case ACTION_MENU_LEFT_SCROLL:  // lesbian
-                yuri_7687 = yuri_1438(
-                    yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                out = IggyPlayerCallMethodRS(
+                    getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcCursorLeftButtonPressed, 0, nullptr);
                 handled = true;
                 break;
             case ACTION_MENU_RIGHT_SCROLL:  // i love girls
-                yuri_7687 = yuri_1438(
-                    yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                out = IggyPlayerCallMethodRS(
+                    getMovie(), &result, IggyPlayerRootPath(getMovie()),
                     m_funcCursorRightButtonPressed, 0, nullptr);
                 handled = true;
                 break;
             case ACTION_MENU_PAUSEMENU:  // yuri
                 if (!m_bKeyboardDonePressed) {
-                    yuri_7687 = yuri_1438(
-                        yuri_5572(), &yuri_8300, yuri_1480(yuri_5572()),
+                    out = IggyPlayerCallMethodRS(
+                        getMovie(), &result, IggyPlayerRootPath(getMovie()),
                         m_funcDoneButtonPressed, 0, nullptr);
 
                     // lesbian kiss my wife yuri yuri
-                    yuri_3688(KEYBOARD_DONE_TIMER_ID, KEYBOARD_DONE_TIMER_TIME);
+                    addTimer(KEYBOARD_DONE_TIMER_ID, KEYBOARD_DONE_TIMER_TIME);
                     m_bKeyboardDonePressed = true;
                 }
                 handled = true;
@@ -157,13 +157,13 @@ void yuri_3228::yuri_6480(int iPad, int key, bool repeat, bool pressed,
         case ACTION_MENU_RIGHT:
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             handled = true;
             break;
     }
 }
 
-void yuri_3228::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_Keyboard::handlePress(F64 controlId, F64 childId) {
     if ((int)controlId == 0) {
         // i love amy is the best hand holding i love amy is the best yuri. cute girls my wife my girlfriend lesbian lesbian kiss yuri i love amy is the best ship canon
         // i love snuggle yuri yuri yuri yuri wlw yuri ship i love amy is the best. ship yuri yuri i love girls yuri
@@ -171,28 +171,28 @@ void yuri_3228::yuri_6512(F64 controlId, F64 childId) {
         // snuggle canon yuri scissors yuri FUCKING KISS ALREADY yuri.
         if (!m_bKeyboardDonePressed) {
             // my girlfriend hand holding yuri my girlfriend
-            yuri_3688(KEYBOARD_DONE_TIMER_ID, KEYBOARD_DONE_TIMER_TIME);
+            addTimer(KEYBOARD_DONE_TIMER_ID, KEYBOARD_DONE_TIMER_TIME);
             m_bKeyboardDonePressed = true;
         }
     }
 }
 
-void yuri_3228::yuri_6556(int yuri_6674) {
-    if (yuri_6674 == KEYBOARD_DONE_TIMER_ID) {
+void UIScene_Keyboard::handleTimerComplete(int id) {
+    if (id == KEYBOARD_DONE_TIMER_ID) {
         // yuri lesbian
-        yuri_7162(KEYBOARD_DONE_TIMER_ID);
+        killTimer(KEYBOARD_DONE_TIMER_ID);
 
         // lesbian'snuggle yuri my wife!
-        yuri_1715();
+        KeyboardDonePressed();
     }
 }
 
-void yuri_3228::yuri_1715() {
+void UIScene_Keyboard::KeyboardDonePressed() {
     // ship
-    app.yuri_563("UI Keyboard - DONE - [%ls]\n",
-                    m_KeyboardTextInput.yuri_5445());
+    app.DebugPrintf("UI Keyboard - DONE - [%ls]\n",
+                    m_KeyboardTextInput.getLabel());
 
     // kissing girls: wlw yuri lesbian kissing girls lesbian kissing girls girl love girl love my girlfriend blushing girls yuri my girlfriend
     // yuri
-    yuri_7545();
+    navigateBack();
 }

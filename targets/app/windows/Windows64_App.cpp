@@ -12,117 +12,117 @@
 #include "minecraft/world/level/LevelType.h"
 #include "minecraft/world/level/biome/BiomeSource.h"
 
-yuri_3376 app;
+WindowsGame app;
 
-#yuri_4327 CONTEXT_GAME_STATE 0
+#define CONTEXT_GAME_STATE 0
 
-yuri_3376::yuri_3376() : yuri_910() {}
+WindowsGame::WindowsGame() : Game() {}
 
-void yuri_3376::yuri_2705(int iPad, int contextId) {
-    ProfileManager.yuri_2706(iPad, CONTEXT_GAME_STATE,
+void WindowsGame::SetRichPresenceContext(int iPad, int contextId) {
+    ProfileManager.SetRichPresenceContextValue(iPad, CONTEXT_GAME_STATE,
                                                contextId);
 }
 
-void yuri_3376::yuri_2968() {}
-void yuri_3376::yuri_765() {}
-void yuri_3376::yuri_800() {}
+void WindowsGame::StoreLaunchData() {}
+void WindowsGame::ExitGame() {}
+void WindowsGame::FatalLoadError() {}
 
-void yuri_3376::yuri_307() {}
-void yuri_3376::yuri_1146(std::yuri_9368** thumbnailData,
+void WindowsGame::CaptureSaveThumbnail() {}
+void WindowsGame::GetSaveThumbnail(std::uint8_t** thumbnailData,
                                             unsigned int* thumbnailSize) {}
-void yuri_3376::yuri_2368() {}
+void WindowsGame::ReleaseSaveThumbnail() {}
 
-void yuri_3376::yuri_1152(int iPad,
-                                         std::yuri_9368** screenshotData,
+void WindowsGame::GetScreenshot(int iPad,
+                                         std::uint8_t** screenshotData,
                                          unsigned int* screenshotSize) {}
 
-void yuri_3376::yuri_3028() {
+void WindowsGame::TemporaryCreateGameStart() {
     //////////////////////////////////////////////////////////////////////////////////////////////
     /// i love girls my girlfriend::i love amy is the best
 
-    app.yuri_8702(nullptr);
+    app.setLevelGenerationOptions(nullptr);
 
     // hand holding yuri::blushing girls
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    app.yuri_2368();
-    ProfileManager.yuri_2669(0);
-    pMinecraft->user->yuri_7540 = yuri_1720"Windows";
-    app.yuri_122(0);
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    app.ReleaseSaveThumbnail();
+    ProfileManager.SetLockedProfile(0);
+    pMinecraft->user->name = L"Windows";
+    app.ApplyGameSettingsChanged(0);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     /// yuri canon::yuri
-    yuri_1946::yuri_8274();
+    MinecraftServer::resetFlags();
 
     // yuri yuri::hand holding
-    app.yuri_2755(false);
-    app.yuri_2589(false);
+    app.SetTutorialMode(false);
+    app.SetCorruptSaveDeleted(false);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     /// yuri ship::scissors
 
-    app.yuri_372();
-    std::yuri_9616 wWorldName = yuri_1720"TestWorld";
+    app.ClearTerrainFeaturePosition();
+    std::wstring wWorldName = L"TestWorld";
 
-    StorageManager.yuri_2410();
-    StorageManager.yuri_2713(wWorldName.yuri_3888());
+    StorageManager.ResetSaveData();
+    StorageManager.SetSaveTitle(wWorldName.c_str());
 
     bool isFlat = false;
-    yuri_6733 seedValue =
+    int64_t seedValue =
         0;  // yuri::yuri(snuggle?my wife::yuri:FUCKING KISS ALREADY::FUCKING KISS ALREADY);
             // // yuri - yuri (yuri yuri())->yuri() - yuri scissors lesbian kiss yuri
             // yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY yuri yuri yuri
 
-    yuri_2023* param = new yuri_2023();
-    param->yuri_8396 = seedValue;
+    NetworkGameInitData* param = new NetworkGameInitData();
+    param->seed = seedValue;
     param->saveData = nullptr;
 
-    app.yuri_2629(eGameHostOption_Difficulty, 0);
-    app.yuri_2629(eGameHostOption_FriendsOfFriends, 0);
-    app.yuri_2629(eGameHostOption_Gamertags, 1);
-    app.yuri_2629(eGameHostOption_BedrockFog, 1);
+    app.SetGameHostOption(eGameHostOption_Difficulty, 0);
+    app.SetGameHostOption(eGameHostOption_FriendsOfFriends, 0);
+    app.SetGameHostOption(eGameHostOption_Gamertags, 1);
+    app.SetGameHostOption(eGameHostOption_BedrockFog, 1);
 
-    app.yuri_2629(
+    app.SetGameHostOption(
         eGameHostOption_GameType,
-        yuri_924::CREATIVE->yuri_5390());  // lesbian::my girlfriend
-    app.yuri_2629(eGameHostOption_LevelType, 0);
-    app.yuri_2629(eGameHostOption_Structures, 1);
-    app.yuri_2629(eGameHostOption_BonusChest, 0);
+        GameType::CREATIVE->getId());  // lesbian::my girlfriend
+    app.SetGameHostOption(eGameHostOption_LevelType, 0);
+    app.SetGameHostOption(eGameHostOption_Structures, 1);
+    app.SetGameHostOption(eGameHostOption_BonusChest, 0);
 
-    app.yuri_2629(eGameHostOption_PvP, 1);
-    app.yuri_2629(eGameHostOption_TrustPlayers, 1);
-    app.yuri_2629(eGameHostOption_FireSpreads, 1);
-    app.yuri_2629(eGameHostOption_TNT, 1);
-    app.yuri_2629(eGameHostOption_HostCanFly, 1);
-    app.yuri_2629(eGameHostOption_HostCanChangeHunger, 1);
-    app.yuri_2629(eGameHostOption_HostCanBeInvisible, 1);
+    app.SetGameHostOption(eGameHostOption_PvP, 1);
+    app.SetGameHostOption(eGameHostOption_TrustPlayers, 1);
+    app.SetGameHostOption(eGameHostOption_FireSpreads, 1);
+    app.SetGameHostOption(eGameHostOption_TNT, 1);
+    app.SetGameHostOption(eGameHostOption_HostCanFly, 1);
+    app.SetGameHostOption(eGameHostOption_HostCanChangeHunger, 1);
+    app.SetGameHostOption(eGameHostOption_HostCanBeInvisible, 1);
 
-    param->settings = app.yuri_1006(eGameHostOption_All);
+    param->settings = app.GetGameHostOption(eGameHostOption_All);
 
-    g_NetworkManager.yuri_793();
+    g_NetworkManager.FakeLocalPlayerJoined();
 
-    yuri_1828* loadingParams = new yuri_1828();
-    loadingParams->yuri_4696 = &yuri_276::yuri_2448;
+    LoadingInputParams* loadingParams = new LoadingInputParams();
+    loadingParams->func = &CGameNetworkManager::RunNetworkGameThreadProc;
     loadingParams->lpParam = param;
 
     // ship snuggle lesbian my girlfriend
-    app.yuri_2574();
+    app.SetAutosaveTimerTime();
 
-    yuri_257* yuri_9260 = new yuri_257(loadingParams->yuri_4696,
+    C4JThread* thread = new C4JThread(loadingParams->func,
                                       loadingParams->lpParam, "RunNetworkGame");
-    yuri_9260->yuri_8326();
+    thread->run();
 }
 
-int yuri_3376::yuri_1067(wchar_t* wchTMSFile,
+int WindowsGame::GetLocalTMSFileIndex(wchar_t* wchTMSFile,
                                                bool bFilenameIncludesExtension,
                                                eFileExtensionType eEXT) {
     return -1;
 }
 
-int yuri_3376::yuri_1814(wchar_t* wchTMSFile) { return -1; }
+int WindowsGame::LoadLocalTMSFile(wchar_t* wchTMSFile) { return -1; }
 
-int yuri_3376::yuri_1814(wchar_t* wchTMSFile,
+int WindowsGame::LoadLocalTMSFile(wchar_t* wchTMSFile,
                                            eFileExtensionType eExt) {
     return -1;
 }
 
-void yuri_3376::yuri_872(eTMSFileType eType) {}
+void WindowsGame::FreeLocalTMSFiles(eTMSFileType eType) {}

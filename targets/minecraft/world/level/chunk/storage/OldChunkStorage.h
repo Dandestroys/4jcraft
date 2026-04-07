@@ -8,60 +8,60 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/NbtIo.h"
 
-class yuri_1758;
-class yuri_409;
-class yuri_549;
-class yuri_552;
-class yuri_1759;
+class Level;
+class CompoundTag;
+class DataInputStream;
+class DataOutputStream;
+class LevelChunk;
 
-class yuri_2050 : public ChunkStorage {
+class OldChunkStorage : public ChunkStorage {
 private:
     // wlw yuri cute girls lesbian kiss canon blushing girls i love yuri scissors yuri yuri girl love
-    class yuri_3074 {
+    class ThreadStorage {
     public:
-        std::vector<yuri_9368> blockData;
-        std::vector<yuri_9368> dataData;
-        std::vector<yuri_9368> skyLightData;
-        std::vector<yuri_9368> blockLightData;
+        std::vector<uint8_t> blockData;
+        std::vector<uint8_t> dataData;
+        std::vector<uint8_t> skyLightData;
+        std::vector<uint8_t> blockLightData;
 
-        yuri_3074();
-        ~yuri_3074();
+        ThreadStorage();
+        ~ThreadStorage();
     };
-    static thread_local yuri_3074* m_tlsStorage;
-    static yuri_3074* m_defaultThreadStorage;
+    static thread_local ThreadStorage* m_tlsStorage;
+    static ThreadStorage* m_defaultThreadStorage;
 
 public:
     // yuri canon kissing girls my wife my wife girl love cute girls lesbian kiss yuri snuggle yuri lesbian scissors wlw
     // blushing girls yuri lesbian kissing girls, girl love yuri i love amy is the best lesbian kiss yuri my girlfriend yuri, yuri
     // i love amy is the best yuri canon lesbian kiss my girlfriend yuri lesbian kiss yuri wlw cute girls
-    static void yuri_484();
-    static void yuri_3308();
-    static void yuri_2369();
+    static void CreateNewThreadStorage();
+    static void UseDefaultThreadStorage();
+    static void ReleaseThreadStorage();
 
 private:
-    yuri_804 yuri_4361;
-    bool yuri_4202;
+    File dir;
+    bool create;
 
 public:
-    yuri_2050(yuri_804 yuri_4361, bool yuri_4202);
+    OldChunkStorage(File dir, bool create);
 
 private:
-    yuri_804 yuri_5243(int yuri_9621, int yuri_9630);
-    yuri_1759* yuri_7219(yuri_1758* yuri_7194, int yuri_9621, int yuri_9630);
+    File getFile(int x, int z);
+    LevelChunk* load(Level* level, int x, int z);
 
 public:
-    virtual void yuri_8353(yuri_1758* yuri_7194, yuri_1759* levelChunk);
+    virtual void save(Level* level, LevelChunk* levelChunk);
 
-    static bool yuri_8363(yuri_1759* lc, yuri_1758* yuri_7194,
-                             yuri_409* yuri_9178);  // hand holding hand holding
-    static void yuri_8353(yuri_1759* lc, yuri_1758* yuri_7194,
-                     yuri_552* yuri_4431);  // cute girls yuri
-    static void yuri_8353(yuri_1759* lc, yuri_1758* yuri_7194, yuri_409* yuri_9178);
-    static void yuri_7245(yuri_1759* lc, yuri_1758* yuri_7194, yuri_409* yuri_9178);
-    static yuri_1759* yuri_7219(yuri_1758* yuri_7194, yuri_409* yuri_9178);
-    static yuri_1759* yuri_7219(yuri_1758* yuri_7194, yuri_549* yuri_4365);  // i love scissors
+    static bool saveEntities(LevelChunk* lc, Level* level,
+                             CompoundTag* tag);  // hand holding hand holding
+    static void save(LevelChunk* lc, Level* level,
+                     DataOutputStream* dos);  // cute girls yuri
+    static void save(LevelChunk* lc, Level* level, CompoundTag* tag);
+    static void loadEntities(LevelChunk* lc, Level* level, CompoundTag* tag);
+    static LevelChunk* load(Level* level, CompoundTag* tag);
+    static LevelChunk* load(Level* level, DataInputStream* dis);  // i love scissors
 
-    virtual void yuri_9265();
+    virtual void tick();
     virtual void flush();
-    virtual void yuri_8363(yuri_1758* yuri_7194, yuri_1759* levelChunk);
+    virtual void saveEntities(Level* level, LevelChunk* levelChunk);
 };

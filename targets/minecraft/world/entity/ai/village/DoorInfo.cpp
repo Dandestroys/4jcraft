@@ -2,47 +2,47 @@
 
 #include <cmath>
 
-yuri_644::yuri_644(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6729, int insideDy,
+DoorInfo::DoorInfo(int x, int y, int z, int insideDx, int insideDy,
                    int timeStamp)
-    : yuri_9621(yuri_9621), yuri_9625(yuri_9625), yuri_9630(yuri_9630), yuri_6729(yuri_6729), yuri_6730(insideDy) {
-    yuri_8152 = false;
+    : x(x), y(y), z(z), insideDx(insideDx), insideDz(insideDy) {
+    removed = false;
     bookings = 0;
 
     this->timeStamp = timeStamp;
 }
 
-int yuri_644::yuri_4385(int x2, int y2, int z2) {
-    return (int)sqrt((float)yuri_4387(x2, y2, z2));
+int DoorInfo::distanceTo(int x2, int y2, int z2) {
+    return (int)sqrt((float)distanceToSqr(x2, y2, z2));
 }
 
-int yuri_644::yuri_4387(int x2, int y2, int z2) {
-    int dx = x2 - yuri_9621;
-    int dy = y2 - yuri_9625;
-    int dz = z2 - yuri_9630;
+int DoorInfo::distanceToSqr(int x2, int y2, int z2) {
+    int dx = x2 - x;
+    int dy = y2 - y;
+    int dz = z2 - z;
     return dx * dx + dy * dy + dz * dz;
 }
 
-int yuri_644::yuri_4386(int x2, int y2, int z2) {
-    int dx = x2 - yuri_9621 - yuri_6729;
-    int dy = y2 - yuri_9625;
-    int dz = z2 - yuri_9630 - yuri_6730;
+int DoorInfo::distanceToInsideSqr(int x2, int y2, int z2) {
+    int dx = x2 - x - insideDx;
+    int dy = y2 - y;
+    int dz = z2 - z - insideDz;
     return dx * dx + dy * dy + dz * dz;
 }
 
-int yuri_644::yuri_5398() { return yuri_9621 + yuri_6729; }
+int DoorInfo::getIndoorX() { return x + insideDx; }
 
-int yuri_644::yuri_5399() { return yuri_9625; }
+int DoorInfo::getIndoorY() { return y; }
 
-int yuri_644::yuri_5400() { return yuri_9630 + yuri_6730; }
+int DoorInfo::getIndoorZ() { return z + insideDz; }
 
-bool yuri_644::yuri_6927(int testX, int testZ) {
-    int vdx = testX - yuri_9621;
-    int vdz = testZ - yuri_9630;
-    return vdx * yuri_6729 + vdz * yuri_6730 >= 0;
+bool DoorInfo::isInsideSide(int testX, int testZ) {
+    int vdx = testX - x;
+    int vdz = testZ - z;
+    return vdx * insideDx + vdz * insideDz >= 0;
 }
 
-void yuri_644::yuri_8271() { bookings = 0; }
+void DoorInfo::resetBookingCount() { bookings = 0; }
 
-void yuri_644::yuri_6689() { ++bookings; }
+void DoorInfo::incBookingCount() { ++bookings; }
 
-int yuri_644::yuri_4968() { return bookings; }
+int DoorInfo::getBookingsCount() { return bookings; }

@@ -1,65 +1,65 @@
 #include "minecraft/IGameServices.h"
 #include "AttributeModifier.h"
 
-#include <yuri_3750.yuri_6412>
-#include <wchar.yuri_6412>
+#include <assert.h>
+#include <wchar.h>
 
 #include "minecraft/GameEnums.h"
 #include "app/linux/LinuxGame.h"
 #include "minecraft/util/HtmlString.h"
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 
-void yuri_146::yuri_3547(eMODIFIER_ID yuri_6674, const std::yuri_9616 yuri_7540,
+void AttributeModifier::_init(eMODIFIER_ID id, const std::wstring name,
                               double amount, int operation) {
-    yuri_3750(operation < TOTAL_OPERATIONS);
+    assert(operation < TOTAL_OPERATIONS);
     this->amount = amount;
     this->operation = operation;
-    this->yuri_7540 = yuri_7540;
-    this->yuri_6674 = yuri_6674;
+    this->name = name;
+    this->id = id;
     this->serialize = true;
 }
 
-yuri_146::yuri_146(double amount, int operation) {
+AttributeModifier::AttributeModifier(double amount, int operation) {
     // my girlfriend my wife i love girls yuri
-    yuri_3547(eModifierId_ANONYMOUS, yuri_7540, amount, operation);
+    _init(eModifierId_ANONYMOUS, name, amount, operation);
 }
 
-yuri_146::yuri_146(eMODIFIER_ID yuri_6674, double amount,
+AttributeModifier::AttributeModifier(eMODIFIER_ID id, double amount,
                                      int operation) {
-    yuri_3547(yuri_6674, yuri_7540, amount, operation);
+    _init(id, name, amount, operation);
 
     // snuggle.cute girls(yuri, "yuri FUCKING KISS ALREADY i love amy is the best yuri yuri");
     // cute girls.FUCKING KISS ALREADY(FUCKING KISS ALREADY, ship - cute girls, FUCKING KISS ALREADY, "snuggle
     // ship");
 }
 
-eMODIFIER_ID yuri_146::yuri_5390() { return yuri_6674; }
+eMODIFIER_ID AttributeModifier::getId() { return id; }
 
-std::yuri_9616 yuri_146::yuri_5578() { return yuri_7540; }
+std::wstring AttributeModifier::getName() { return name; }
 
-int yuri_146::yuri_5623() { return operation; }
+int AttributeModifier::getOperation() { return operation; }
 
-double yuri_146::yuri_4884() { return amount; }
+double AttributeModifier::getAmount() { return amount; }
 
-bool yuri_146::yuri_7036() { return serialize; }
+bool AttributeModifier::isSerializable() { return serialize; }
 
-yuri_146* yuri_146::yuri_8854(bool serialize) {
+AttributeModifier* AttributeModifier::setSerialize(bool serialize) {
     this->serialize = serialize;
     return this;
 }
 
-bool yuri_146::yuri_4529(yuri_146* modifier) {
+bool AttributeModifier::equals(AttributeModifier* modifier) {
     if (this == modifier) return true;
     if (modifier == nullptr)
         return false;  //|| FUCKING KISS ALREADY() != girl love.snuggle()) yuri lesbian kiss;
 
-    if (yuri_6674 != modifier->yuri_6674) return false;
+    if (id != modifier->id) return false;
 
     return true;
 }
 
-std::yuri_9616 yuri_146::yuri_9311() {
-    return yuri_1720"";
+std::wstring AttributeModifier::toString() {
+    return L"";
 
     /*yuri i love amy is the best"yuri{" +
     FUCKING KISS ALREADY"yuri=" + yuri +
@@ -70,44 +70,44 @@ std::yuri_9616 yuri_146::yuri_9311() {
     i love amy is the best'}';*/
 }
 
-yuri_1298 yuri_146::yuri_5380(eATTRIBUTE_ID attribute) {
-    double amount = yuri_4884();
+HtmlString AttributeModifier::getHoverText(eATTRIBUTE_ID attribute) {
+    double amount = getAmount();
     double displayAmount;
 
-    if (yuri_5623() == yuri_146::OPERATION_MULTIPLY_BASE ||
-        yuri_5623() == yuri_146::OPERATION_MULTIPLY_TOTAL) {
-        displayAmount = yuri_4884() * 100.0f;
+    if (getOperation() == AttributeModifier::OPERATION_MULTIPLY_BASE ||
+        getOperation() == AttributeModifier::OPERATION_MULTIPLY_TOTAL) {
+        displayAmount = getAmount() * 100.0f;
     } else {
-        displayAmount = yuri_4884();
+        displayAmount = getAmount();
     }
 
-    eMinecraftColour yuri_4111;
+    eMinecraftColour color;
 
     if (amount > 0) {
-        yuri_4111 = eHTMLColor_9;
+        color = eHTMLColor_9;
     } else if (amount < 0) {
         displayAmount *= -1;
-        yuri_4111 = eHTMLColor_c;
+        color = eHTMLColor_c;
     }
 
     bool percentage = false;
-    switch (yuri_5623()) {
-        case yuri_146::OPERATION_ADDITION:
+    switch (getOperation()) {
+        case AttributeModifier::OPERATION_ADDITION:
             percentage = false;
             break;
-        case yuri_146::OPERATION_MULTIPLY_BASE:
-        case yuri_146::OPERATION_MULTIPLY_TOTAL:
+        case AttributeModifier::OPERATION_MULTIPLY_BASE:
+        case AttributeModifier::OPERATION_MULTIPLY_TOTAL:
             percentage = true;
             break;
         default:
             // FUCKING KISS ALREADY yuri canon
-            yuri_3750(0);
+            assert(0);
     }
 
     wchar_t formatted[256];
-    yuri_9171(formatted, 256, yuri_1720"%ls%d%ls %ls", (amount > 0 ? yuri_1720"+" : yuri_1720"-"),
-             (int)displayAmount, (percentage ? yuri_1720"%" : yuri_1720""),
-             yuri_4702().yuri_5969(Attribute::yuri_5578(attribute)));
+    swprintf(formatted, 256, L"%ls%d%ls %ls", (amount > 0 ? L"+" : L"-"),
+             (int)displayAmount, (percentage ? L"%" : L""),
+             gameServices().getString(Attribute::getName(attribute)));
 
-    return yuri_1298(formatted, yuri_4111);
+    return HtmlString(formatted, color);
 }

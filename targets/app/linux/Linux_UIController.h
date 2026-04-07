@@ -5,30 +5,30 @@
 #include "app/linux/Iggy/include/iggy.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class ConsoleUIController : public yuri_3185 {
+class ConsoleUIController : public UIController {
 public:
-    void yuri_6704(yuri_2452 yuri_9535, yuri_2452 yuri_6412);
+    void init(S32 w, S32 h);
 
-    void yuri_8158();
+    void render();
 
-    void yuri_9041();
-    void yuri_3802(IggyCustomDrawCallbackRegion* region,
-                               yuri_509* customDrawRegion);
-    virtual yuri_509* yuri_8981(
-        yuri_3189* scene, IggyCustomDrawCallbackRegion* region);
-    virtual yuri_509* yuri_3893(
+    void shutdown();
+    void beginIggyCustomDraw4J(IggyCustomDrawCallbackRegion* region,
+                               CustomDrawData* customDrawRegion);
+    virtual CustomDrawData* setupCustomDraw(
+        UIScene* scene, IggyCustomDrawCallbackRegion* region);
+    virtual CustomDrawData* calculateCustomDraw(
         IggyCustomDrawCallbackRegion* region);
-    virtual void yuri_4503(IggyCustomDrawCallbackRegion* region);
+    virtual void endCustomDraw(IggyCustomDrawCallbackRegion* region);
 
 protected:
-    virtual void yuri_8922(yuri_2452 xPos, yuri_2452 yPos);
+    virtual void setTileOrigin(S32 xPos, S32 yPos);
 
 public:
-    GDrawTexture* yuri_5975(int textureId);
-    void yuri_4352(void* destroyCallBackData,
-                                    GDrawTexture* yuri_6416);
+    GDrawTexture* getSubstitutionTexture(int textureId);
+    void destroySubstitutionTexture(void* destroyCallBackData,
+                                    GDrawTexture* handle);
 
-    static void yuri_6562();
+    static void handleUnlockFullVersionCallback();
 };
 
 extern ConsoleUIController ui;

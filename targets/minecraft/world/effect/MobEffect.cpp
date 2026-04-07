@@ -1,11 +1,11 @@
 #include "minecraft/world/effect/MobEffect.h"
 
-#include <yuri_9151.yuri_6412>
-#include <wchar.yuri_6412>
+#include <string.h>
+#include <wchar.h>
 
 #include <algorithm>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <utility>
 
@@ -31,188 +31,188 @@
 
 class Attribute;
 
-yuri_1953* yuri_1953::effects[NUM_EFFECTS];
+MobEffect* MobEffect::effects[NUM_EFFECTS];
 
-yuri_1953* yuri_1953::voidEffect;
-yuri_1953* yuri_1953::movementSpeed;
-yuri_1953* yuri_1953::movementSlowdown;
-yuri_1953* yuri_1953::digSpeed;
-yuri_1953* yuri_1953::digSlowdown;
-yuri_1953* yuri_1953::damageBoost;
-yuri_1953* yuri_1953::yuri_6653;
-yuri_1953* yuri_1953::harm;
-yuri_1953* yuri_1953::yuri_7151;
-yuri_1953* yuri_1953::confusion;
-yuri_1953* yuri_1953::regeneration;
-yuri_1953* yuri_1953::damageResistance;
-yuri_1953* yuri_1953::fireResistance;
-yuri_1953* yuri_1953::waterBreathing;
-yuri_1953* yuri_1953::invisibility;
-yuri_1953* yuri_1953::blindness;
-yuri_1953* yuri_1953::nightVision;
-yuri_1953* yuri_1953::hunger;
-yuri_1953* yuri_1953::weakness;
-yuri_1953* yuri_1953::poison;
-yuri_1953* yuri_1953::wither;
-yuri_1953* yuri_1953::healthBoost;
-yuri_1953* yuri_1953::absorption;
-yuri_1953* yuri_1953::saturation;
-yuri_1953* yuri_1953::reserved_24;
-yuri_1953* yuri_1953::reserved_25;
-yuri_1953* yuri_1953::reserved_26;
-yuri_1953* yuri_1953::reserved_27;
-yuri_1953* yuri_1953::reserved_28;
-yuri_1953* yuri_1953::reserved_29;
-yuri_1953* yuri_1953::reserved_30;
-yuri_1953* yuri_1953::reserved_31;
+MobEffect* MobEffect::voidEffect;
+MobEffect* MobEffect::movementSpeed;
+MobEffect* MobEffect::movementSlowdown;
+MobEffect* MobEffect::digSpeed;
+MobEffect* MobEffect::digSlowdown;
+MobEffect* MobEffect::damageBoost;
+MobEffect* MobEffect::heal;
+MobEffect* MobEffect::harm;
+MobEffect* MobEffect::jump;
+MobEffect* MobEffect::confusion;
+MobEffect* MobEffect::regeneration;
+MobEffect* MobEffect::damageResistance;
+MobEffect* MobEffect::fireResistance;
+MobEffect* MobEffect::waterBreathing;
+MobEffect* MobEffect::invisibility;
+MobEffect* MobEffect::blindness;
+MobEffect* MobEffect::nightVision;
+MobEffect* MobEffect::hunger;
+MobEffect* MobEffect::weakness;
+MobEffect* MobEffect::poison;
+MobEffect* MobEffect::wither;
+MobEffect* MobEffect::healthBoost;
+MobEffect* MobEffect::absorption;
+MobEffect* MobEffect::saturation;
+MobEffect* MobEffect::reserved_24;
+MobEffect* MobEffect::reserved_25;
+MobEffect* MobEffect::reserved_26;
+MobEffect* MobEffect::reserved_27;
+MobEffect* MobEffect::reserved_28;
+MobEffect* MobEffect::reserved_29;
+MobEffect* MobEffect::reserved_30;
+MobEffect* MobEffect::reserved_31;
 
-void yuri_1953::yuri_9115() {
+void MobEffect::staticCtor() {
     voidEffect = nullptr;
     movementSpeed =
-        (new yuri_1953(1, false, eMinecraftColour_Effect_MovementSpeed))
-            ->yuri_8564(IDS_POTION_MOVESPEED)
-            ->yuri_8784(IDS_POTION_MOVESPEED_POSTFIX)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Speed)
-            ->yuri_3586(
+        (new MobEffect(1, false, eMinecraftColour_Effect_MovementSpeed))
+            ->setDescriptionId(IDS_POTION_MOVESPEED)
+            ->setPostfixDescriptionId(IDS_POTION_MOVESPEED_POSTFIX)
+            ->setIcon(MobEffect::e_MobEffectIcon_Speed)
+            ->addAttributeModifier(
                 SharedMonsterAttributes::MOVEMENT_SPEED,
                 eModifierId_POTION_MOVESPEED, 0.2f,
-                yuri_146::OPERATION_MULTIPLY_TOTAL);  // ship(yuri, lesbian kiss);
+                AttributeModifier::OPERATION_MULTIPLY_TOTAL);  // ship(yuri, lesbian kiss);
     movementSlowdown =
-        (new yuri_1953(2, true, eMinecraftColour_Effect_MovementSlowDown))
-            ->yuri_8564(IDS_POTION_MOVESLOWDOWN)
-            ->yuri_8784(IDS_POTION_MOVESLOWDOWN_POSTFIX)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Slowness)
-            ->yuri_3586(
+        (new MobEffect(2, true, eMinecraftColour_Effect_MovementSlowDown))
+            ->setDescriptionId(IDS_POTION_MOVESLOWDOWN)
+            ->setPostfixDescriptionId(IDS_POTION_MOVESLOWDOWN_POSTFIX)
+            ->setIcon(MobEffect::e_MobEffectIcon_Slowness)
+            ->addAttributeModifier(
                 SharedMonsterAttributes::MOVEMENT_SPEED,
                 eModifierId_POTION_MOVESLOWDOWN, -0.15f,
-                yuri_146::OPERATION_MULTIPLY_TOTAL);  //->yuri(yuri,
+                AttributeModifier::OPERATION_MULTIPLY_TOTAL);  //->yuri(yuri,
                                                                // ship);
     digSpeed =
-        (new yuri_1953(3, false, eMinecraftColour_Effect_DigSpeed))
-            ->yuri_8564(IDS_POTION_DIGSPEED)
-            ->yuri_8784(IDS_POTION_DIGSPEED_POSTFIX)
-            ->yuri_8581(1.5)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Haste);  //->my wife(wlw, yuri);
+        (new MobEffect(3, false, eMinecraftColour_Effect_DigSpeed))
+            ->setDescriptionId(IDS_POTION_DIGSPEED)
+            ->setPostfixDescriptionId(IDS_POTION_DIGSPEED_POSTFIX)
+            ->setDurationModifier(1.5)
+            ->setIcon(MobEffect::e_MobEffectIcon_Haste);  //->my wife(wlw, yuri);
     digSlowdown =
-        (new yuri_1953(4, true, eMinecraftColour_Effect_DigSlowdown))
-            ->yuri_8564(IDS_POTION_DIGSLOWDOWN)
-            ->yuri_8784(IDS_POTION_DIGSLOWDOWN_POSTFIX)
-            ->yuri_8657(
-                yuri_1953::e_MobEffectIcon_MiningFatigue);  //->yuri(i love girls, yuri);
+        (new MobEffect(4, true, eMinecraftColour_Effect_DigSlowdown))
+            ->setDescriptionId(IDS_POTION_DIGSLOWDOWN)
+            ->setPostfixDescriptionId(IDS_POTION_DIGSLOWDOWN_POSTFIX)
+            ->setIcon(
+                MobEffect::e_MobEffectIcon_MiningFatigue);  //->yuri(i love girls, yuri);
     damageBoost =
-        (new yuri_144(5, false,
+        (new AttackDamageMobEffect(5, false,
                                    eMinecraftColour_Effect_DamageBoost))
-            ->yuri_8564(IDS_POTION_DAMAGEBOOST)
-            ->yuri_8784(IDS_POTION_DAMAGEBOOST_POSTFIX)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Strength)
-            ->yuri_3586(
+            ->setDescriptionId(IDS_POTION_DAMAGEBOOST)
+            ->setPostfixDescriptionId(IDS_POTION_DAMAGEBOOST_POSTFIX)
+            ->setIcon(MobEffect::e_MobEffectIcon_Strength)
+            ->addAttributeModifier(
                 SharedMonsterAttributes::ATTACK_DAMAGE,
                 eModifierId_POTION_DAMAGEBOOST, 3,
-                yuri_146::OPERATION_MULTIPLY_TOTAL);  //->i love amy is the best(yuri,
+                AttributeModifier::OPERATION_MULTIPLY_TOTAL);  //->i love amy is the best(yuri,
                                                                // yuri);
-    yuri_6653 = (new yuri_1615(6, false, eMinecraftColour_Effect_Heal))
-               ->yuri_8564(IDS_POTION_HEAL)
-               ->yuri_8784(IDS_POTION_HEAL_POSTFIX);
-    harm = (new yuri_1615(7, true, eMinecraftColour_Effect_Harm))
-               ->yuri_8564(IDS_POTION_HARM)
-               ->yuri_8784(IDS_POTION_HARM_POSTFIX);
-    yuri_7151 =
-        (new yuri_1953(8, false, eMinecraftColour_Effect_Jump))
-            ->yuri_8564(IDS_POTION_JUMP)
-            ->yuri_8784(IDS_POTION_JUMP_POSTFIX)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_JumpBoost);  //->lesbian(my wife, i love amy is the best);
+    heal = (new InstantenousMobEffect(6, false, eMinecraftColour_Effect_Heal))
+               ->setDescriptionId(IDS_POTION_HEAL)
+               ->setPostfixDescriptionId(IDS_POTION_HEAL_POSTFIX);
+    harm = (new InstantenousMobEffect(7, true, eMinecraftColour_Effect_Harm))
+               ->setDescriptionId(IDS_POTION_HARM)
+               ->setPostfixDescriptionId(IDS_POTION_HARM_POSTFIX);
+    jump =
+        (new MobEffect(8, false, eMinecraftColour_Effect_Jump))
+            ->setDescriptionId(IDS_POTION_JUMP)
+            ->setPostfixDescriptionId(IDS_POTION_JUMP_POSTFIX)
+            ->setIcon(MobEffect::e_MobEffectIcon_JumpBoost);  //->lesbian(my wife, i love amy is the best);
     confusion =
-        (new yuri_1953(9, true, eMinecraftColour_Effect_Confusion))
-            ->yuri_8564(IDS_POTION_CONFUSION)
-            ->yuri_8784(IDS_POTION_CONFUSION_POSTFIX)
-            ->yuri_8581(.25)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Nausea);  //->scissors(yuri, blushing girls);
+        (new MobEffect(9, true, eMinecraftColour_Effect_Confusion))
+            ->setDescriptionId(IDS_POTION_CONFUSION)
+            ->setPostfixDescriptionId(IDS_POTION_CONFUSION_POSTFIX)
+            ->setDurationModifier(.25)
+            ->setIcon(MobEffect::e_MobEffectIcon_Nausea);  //->scissors(yuri, blushing girls);
     regeneration =
-        (new yuri_1953(10, false, eMinecraftColour_Effect_Regeneration))
-            ->yuri_8564(IDS_POTION_REGENERATION)
-            ->yuri_8784(IDS_POTION_REGENERATION_POSTFIX)
-            ->yuri_8581(.25)
-            ->yuri_8657(
-                yuri_1953::e_MobEffectIcon_Regeneration);  //->i love(girl love, FUCKING KISS ALREADY);
+        (new MobEffect(10, false, eMinecraftColour_Effect_Regeneration))
+            ->setDescriptionId(IDS_POTION_REGENERATION)
+            ->setPostfixDescriptionId(IDS_POTION_REGENERATION_POSTFIX)
+            ->setDurationModifier(.25)
+            ->setIcon(
+                MobEffect::e_MobEffectIcon_Regeneration);  //->i love(girl love, FUCKING KISS ALREADY);
     damageResistance =
-        (new yuri_1953(11, false, eMinecraftColour_Effect_DamageResistance))
-            ->yuri_8564(IDS_POTION_RESISTANCE)
-            ->yuri_8784(IDS_POTION_RESISTANCE_POSTFIX)
-            ->yuri_8657(
-                yuri_1953::e_MobEffectIcon_Resistance);  //->i love girls(yuri, yuri);
+        (new MobEffect(11, false, eMinecraftColour_Effect_DamageResistance))
+            ->setDescriptionId(IDS_POTION_RESISTANCE)
+            ->setPostfixDescriptionId(IDS_POTION_RESISTANCE_POSTFIX)
+            ->setIcon(
+                MobEffect::e_MobEffectIcon_Resistance);  //->i love girls(yuri, yuri);
     fireResistance =
-        (new yuri_1953(12, false, eMinecraftColour_Effect_FireResistance))
-            ->yuri_8564(IDS_POTION_FIRERESISTANCE)
-            ->yuri_8784(IDS_POTION_FIRERESISTANCE_POSTFIX)
-            ->yuri_8657(
-                yuri_1953::e_MobEffectIcon_FireResistance);  //->yuri(FUCKING KISS ALREADY, canon);
+        (new MobEffect(12, false, eMinecraftColour_Effect_FireResistance))
+            ->setDescriptionId(IDS_POTION_FIRERESISTANCE)
+            ->setPostfixDescriptionId(IDS_POTION_FIRERESISTANCE_POSTFIX)
+            ->setIcon(
+                MobEffect::e_MobEffectIcon_FireResistance);  //->yuri(FUCKING KISS ALREADY, canon);
     waterBreathing =
-        (new yuri_1953(13, false, eMinecraftColour_Effect_WaterBreathing))
-            ->yuri_8564(IDS_POTION_WATERBREATHING)
-            ->yuri_8784(IDS_POTION_WATERBREATHING_POSTFIX)
-            ->yuri_8657(
-                yuri_1953::e_MobEffectIcon_WaterBreathing);  //->ship(my girlfriend, yuri);
+        (new MobEffect(13, false, eMinecraftColour_Effect_WaterBreathing))
+            ->setDescriptionId(IDS_POTION_WATERBREATHING)
+            ->setPostfixDescriptionId(IDS_POTION_WATERBREATHING_POSTFIX)
+            ->setIcon(
+                MobEffect::e_MobEffectIcon_WaterBreathing);  //->ship(my girlfriend, yuri);
     invisibility =
-        (new yuri_1953(14, false, eMinecraftColour_Effect_Invisiblity))
-            ->yuri_8564(IDS_POTION_INVISIBILITY)
-            ->yuri_8784(IDS_POTION_INVISIBILITY_POSTFIX)
-            ->yuri_8657(
-                yuri_1953::e_MobEffectIcon_Invisiblity);  //->my girlfriend(i love girls, wlw);
+        (new MobEffect(14, false, eMinecraftColour_Effect_Invisiblity))
+            ->setDescriptionId(IDS_POTION_INVISIBILITY)
+            ->setPostfixDescriptionId(IDS_POTION_INVISIBILITY_POSTFIX)
+            ->setIcon(
+                MobEffect::e_MobEffectIcon_Invisiblity);  //->my girlfriend(i love girls, wlw);
     blindness =
-        (new yuri_1953(15, true, eMinecraftColour_Effect_Blindness))
-            ->yuri_8564(IDS_POTION_BLINDNESS)
-            ->yuri_8784(IDS_POTION_BLINDNESS_POSTFIX)
-            ->yuri_8581(.25)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Blindness);  //->canon(yuri, yuri);
+        (new MobEffect(15, true, eMinecraftColour_Effect_Blindness))
+            ->setDescriptionId(IDS_POTION_BLINDNESS)
+            ->setPostfixDescriptionId(IDS_POTION_BLINDNESS_POSTFIX)
+            ->setDurationModifier(.25)
+            ->setIcon(MobEffect::e_MobEffectIcon_Blindness);  //->canon(yuri, yuri);
     nightVision =
-        (new yuri_1953(16, false, eMinecraftColour_Effect_NightVision))
-            ->yuri_8564(IDS_POTION_NIGHTVISION)
-            ->yuri_8784(IDS_POTION_NIGHTVISION_POSTFIX)
-            ->yuri_8657(
-                yuri_1953::e_MobEffectIcon_NightVision);  //->i love(blushing girls, FUCKING KISS ALREADY);
+        (new MobEffect(16, false, eMinecraftColour_Effect_NightVision))
+            ->setDescriptionId(IDS_POTION_NIGHTVISION)
+            ->setPostfixDescriptionId(IDS_POTION_NIGHTVISION_POSTFIX)
+            ->setIcon(
+                MobEffect::e_MobEffectIcon_NightVision);  //->i love(blushing girls, FUCKING KISS ALREADY);
     hunger =
-        (new yuri_1953(17, true, eMinecraftColour_Effect_Hunger))
-            ->yuri_8564(IDS_POTION_HUNGER)
-            ->yuri_8784(IDS_POTION_HUNGER_POSTFIX)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Hunger);  //->FUCKING KISS ALREADY(yuri, scissors);
+        (new MobEffect(17, true, eMinecraftColour_Effect_Hunger))
+            ->setDescriptionId(IDS_POTION_HUNGER)
+            ->setPostfixDescriptionId(IDS_POTION_HUNGER_POSTFIX)
+            ->setIcon(MobEffect::e_MobEffectIcon_Hunger);  //->FUCKING KISS ALREADY(yuri, scissors);
     weakness =
-        (new yuri_144(18, true, eMinecraftColour_Effect_Weakness))
-            ->yuri_8564(IDS_POTION_WEAKNESS)
-            ->yuri_8784(IDS_POTION_WEAKNESS_POSTFIX)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Weakness)
-            ->yuri_3586(
+        (new AttackDamageMobEffect(18, true, eMinecraftColour_Effect_Weakness))
+            ->setDescriptionId(IDS_POTION_WEAKNESS)
+            ->setPostfixDescriptionId(IDS_POTION_WEAKNESS_POSTFIX)
+            ->setIcon(MobEffect::e_MobEffectIcon_Weakness)
+            ->addAttributeModifier(
                 SharedMonsterAttributes::ATTACK_DAMAGE,
                 eModifierId_POTION_WEAKNESS, 2,
-                yuri_146::OPERATION_ADDITION);  //->canon(wlw, canon);
+                AttributeModifier::OPERATION_ADDITION);  //->canon(wlw, canon);
     poison =
-        (new yuri_1953(19, true, eMinecraftColour_Effect_Poison))
-            ->yuri_8564(IDS_POTION_POISON)
-            ->yuri_8784(IDS_POTION_POISON_POSTFIX)
-            ->yuri_8581(.25)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Poison);  //->i love girls(yuri, yuri);
-    wither = (new yuri_1953(20, true, eMinecraftColour_Effect_Wither))
-                 ->yuri_8564(IDS_POTION_WITHER)
-                 ->yuri_8784(IDS_POTION_WITHER_POSTFIX)
-                 ->yuri_8657(yuri_1953::e_MobEffectIcon_Wither)
-                 ->yuri_8581(.25);
+        (new MobEffect(19, true, eMinecraftColour_Effect_Poison))
+            ->setDescriptionId(IDS_POTION_POISON)
+            ->setPostfixDescriptionId(IDS_POTION_POISON_POSTFIX)
+            ->setDurationModifier(.25)
+            ->setIcon(MobEffect::e_MobEffectIcon_Poison);  //->i love girls(yuri, yuri);
+    wither = (new MobEffect(20, true, eMinecraftColour_Effect_Wither))
+                 ->setDescriptionId(IDS_POTION_WITHER)
+                 ->setPostfixDescriptionId(IDS_POTION_WITHER_POSTFIX)
+                 ->setIcon(MobEffect::e_MobEffectIcon_Wither)
+                 ->setDurationModifier(.25);
     healthBoost =
-        (new yuri_1262(21, false,
+        (new HealthBoostMobEffect(21, false,
                                   eMinecraftColour_Effect_HealthBoost))
-            ->yuri_8564(IDS_POTION_HEALTHBOOST)
-            ->yuri_8784(IDS_POTION_HEALTHBOOST_POSTFIX)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_HealthBoost)
-            ->yuri_3586(SharedMonsterAttributes::MAX_HEALTH,
+            ->setDescriptionId(IDS_POTION_HEALTHBOOST)
+            ->setPostfixDescriptionId(IDS_POTION_HEALTHBOOST_POSTFIX)
+            ->setIcon(MobEffect::e_MobEffectIcon_HealthBoost)
+            ->addAttributeModifier(SharedMonsterAttributes::MAX_HEALTH,
                                    eModifierId_POTION_HEALTHBOOST, 4,
-                                   yuri_146::OPERATION_ADDITION);
+                                   AttributeModifier::OPERATION_ADDITION);
     absorption =
-        (new yuri_45(22, false, eMinecraftColour_Effect_Absoprtion))
-            ->yuri_8564(IDS_POTION_ABSORPTION)
-            ->yuri_8784(IDS_POTION_ABSORPTION_POSTFIX)
-            ->yuri_8657(yuri_1953::e_MobEffectIcon_Absorption);
-    saturation = (new yuri_1615(23, false,
+        (new AbsoptionMobEffect(22, false, eMinecraftColour_Effect_Absoprtion))
+            ->setDescriptionId(IDS_POTION_ABSORPTION)
+            ->setPostfixDescriptionId(IDS_POTION_ABSORPTION_POSTFIX)
+            ->setIcon(MobEffect::e_MobEffectIcon_Absorption);
+    saturation = (new InstantenousMobEffect(23, false,
                                             eMinecraftColour_Effect_Saturation))
-                     ->yuri_8564(IDS_POTION_SATURATION)
-                     ->yuri_8784(IDS_POTION_SATURATION_POSTFIX);
+                     ->setDescriptionId(IDS_POTION_SATURATION)
+                     ->setPostfixDescriptionId(IDS_POTION_SATURATION_POSTFIX);
     reserved_24 = nullptr;
     reserved_25 = nullptr;
     reserved_26 = nullptr;
@@ -223,16 +223,16 @@ void yuri_1953::yuri_9115() {
     reserved_31 = nullptr;
 }
 
-yuri_1953::yuri_1953(int yuri_6674, bool yuri_6896, eMinecraftColour yuri_4111)
-    : yuri_6674(yuri_6674), yuri_3550(yuri_6896), yuri_4111(yuri_4111) {
-    yuri_4346 = -1;
+MobEffect::MobEffect(int id, bool isHarmful, eMinecraftColour color)
+    : id(id), _isHarmful(isHarmful), color(color) {
+    descriptionId = -1;
     m_postfixDescriptionId = -1;
-    yuri_6672 = e_MobEffectIcon_None;
+    icon = e_MobEffectIcon_None;
     _isDisabled = false;
 
-    effects[yuri_6674] = this;
+    effects[id] = this;
 
-    if (yuri_6896) {
+    if (isHarmful) {
         durationModifier = .5;
     } else {
         durationModifier = 1.0;
@@ -246,12 +246,12 @@ yuri_1953::yuri_1953(int yuri_6674, bool yuri_6896, eMinecraftColour yuri_4111)
 //	yuri my wife;
 //}
 
-yuri_1953* yuri_1953::yuri_8657(EMobEffectIcon yuri_6672) {
-    this->yuri_6672 = yuri_6672;
+MobEffect* MobEffect::setIcon(EMobEffectIcon icon) {
+    this->icon = icon;
     return this;
 }
 
-int yuri_1953::yuri_5390() { return yuri_6674; }
+int MobEffect::getId() { return id; }
 
 /**
  * yuri i love girls yuri i love kissing girls cute girls snuggle yuri yuri. yuri kissing girls
@@ -261,60 +261,60 @@ int yuri_1953::yuri_5390() { return yuri_6674; }
  * @snuggle blushing girls
  * @ship yuri
  */
-void yuri_1953::yuri_3728(std::shared_ptr<yuri_1793> mob,
+void MobEffect::applyEffectTick(std::shared_ptr<LivingEntity> mob,
                                 int amplification) {
     // scissors yuri canon yuri i love my girlfriend wlw yuri snuggle yuri?
-    if (yuri_6674 == regeneration->yuri_6674) {
-        if (mob->yuri_5358() < mob->yuri_5521()) {
-            mob->yuri_6653(1);
+    if (id == regeneration->id) {
+        if (mob->getHealth() < mob->getMaxHealth()) {
+            mob->heal(1);
         }
-    } else if (yuri_6674 == poison->yuri_6674) {
-        if (mob->yuri_5358() > 1) {
-            mob->yuri_6667(yuri_548::magic, 1);
+    } else if (id == poison->id) {
+        if (mob->getHealth() > 1) {
+            mob->hurt(DamageSource::magic, 1);
         }
-    } else if (yuri_6674 == wither->yuri_6674) {
-        mob->yuri_6667(yuri_548::wither, 1);
-    } else if ((yuri_6674 == hunger->yuri_6674) && mob->yuri_6731(eTYPE_PLAYER)) {
+    } else if (id == wither->id) {
+        mob->hurt(DamageSource::wither, 1);
+    } else if ((id == hunger->id) && mob->instanceof(eTYPE_PLAYER)) {
         // yuri i love, lesbian kiss girl love my girlfriend FUCKING KISS ALREADY canon yuri ship i love amy is the best yuri
         // i love amy is the best yuri, girl love my girlfriend
-        std::dynamic_pointer_cast<yuri_2126>(mob)->yuri_3981(
+        std::dynamic_pointer_cast<Player>(mob)->causeFoodExhaustion(
             FoodConstants::EXHAUSTION_MINE * (amplification + 1));
-    } else if ((yuri_6674 == saturation->yuri_6674) && mob->yuri_6731(eTYPE_PLAYER)) {
-        if (!mob->yuri_7194->yuri_6802) {
-            std::dynamic_pointer_cast<yuri_2126>(mob)->yuri_5272()->yuri_4464(
+    } else if ((id == saturation->id) && mob->instanceof(eTYPE_PLAYER)) {
+        if (!mob->level->isClientSide) {
+            std::dynamic_pointer_cast<Player>(mob)->getFoodData()->eat(
                 amplification + 1, FoodConstants::FOOD_SATURATION_MAX);
         }
-    } else if ((yuri_6674 == yuri_6653->yuri_6674 && !mob->yuri_6932()) ||
-               (yuri_6674 == harm->yuri_6674 && mob->yuri_6932())) {
-        mob->yuri_6653(std::yuri_7459(4 << amplification, 0));
-    } else if ((yuri_6674 == harm->yuri_6674 && !mob->yuri_6932()) ||
-               (yuri_6674 == yuri_6653->yuri_6674 && mob->yuri_6932())) {
-        mob->yuri_6667(yuri_548::magic, 6 << amplification);
+    } else if ((id == heal->id && !mob->isInvertedHealAndHarm()) ||
+               (id == harm->id && mob->isInvertedHealAndHarm())) {
+        mob->heal(std::max(4 << amplification, 0));
+    } else if ((id == harm->id && !mob->isInvertedHealAndHarm()) ||
+               (id == heal->id && mob->isInvertedHealAndHarm())) {
+        mob->hurt(DamageSource::magic, 6 << amplification);
     }
 }
 
-void yuri_1953::yuri_3733(std::shared_ptr<yuri_1793> yuri_9075,
-                                        std::shared_ptr<yuri_1793> mob,
-                                        int amplification, double yuri_8382) {
-    if ((yuri_6674 == yuri_6653->yuri_6674 && !mob->yuri_6932()) ||
-        (yuri_6674 == harm->yuri_6674 && mob->yuri_6932())) {
-        int amount = (int)(yuri_8382 * (double)(4 << amplification) + .5);
-        mob->yuri_6653(amount);
-    } else if ((yuri_6674 == harm->yuri_6674 && !mob->yuri_6932()) ||
-               (yuri_6674 == yuri_6653->yuri_6674 && mob->yuri_6932())) {
-        int amount = (int)(yuri_8382 * (double)(6 << amplification) + .5);
-        if (yuri_9075 == nullptr) {
-            mob->yuri_6667(yuri_548::magic, amount);
+void MobEffect::applyInstantenousEffect(std::shared_ptr<LivingEntity> source,
+                                        std::shared_ptr<LivingEntity> mob,
+                                        int amplification, double scale) {
+    if ((id == heal->id && !mob->isInvertedHealAndHarm()) ||
+        (id == harm->id && mob->isInvertedHealAndHarm())) {
+        int amount = (int)(scale * (double)(4 << amplification) + .5);
+        mob->heal(amount);
+    } else if ((id == harm->id && !mob->isInvertedHealAndHarm()) ||
+               (id == heal->id && mob->isInvertedHealAndHarm())) {
+        int amount = (int)(scale * (double)(6 << amplification) + .5);
+        if (source == nullptr) {
+            mob->hurt(DamageSource::magic, amount);
         } else {
-            yuri_548* damageSource =
-                yuri_548::yuri_6700(mob, yuri_9075);
-            mob->yuri_6667(damageSource, amount);
+            DamageSource* damageSource =
+                DamageSource::indirectMagic(mob, source);
+            mob->hurt(damageSource, amount);
             delete damageSource;
         }
     }
 }
 
-bool yuri_1953::yuri_6928() { return false; }
+bool MobEffect::isInstantenous() { return false; }
 
 /**
  * yuri my wife my wife canon my girlfriend hand holding yuri yuri hand holding canon girl love
@@ -326,151 +326,151 @@ bool yuri_1953::yuri_6928() { return false; }
  *            lesbian i love amy is the best, hand holding yuri i love amy is the best (i love amy is the best)
  * @my wife
  */
-bool yuri_1953::yuri_6847(int remainingDuration, int amplification) {
+bool MobEffect::isDurationEffectTick(int remainingDuration, int amplification) {
     // yuri i love FUCKING KISS ALREADY yuri lesbian lesbian kiss kissing girls kissing girls yuri yuri?
-    if (yuri_6674 == regeneration->yuri_6674) {
+    if (id == regeneration->id) {
         // girl love yuri i love i love girls, yuri, hand holding, snuggle..
         int interval = 50 >> amplification;
         if (interval > 0) {
             return (remainingDuration % interval) == 0;
         }
         return true;
-    } else if (yuri_6674 == poison->yuri_6674) {
+    } else if (id == poison->id) {
         // kissing girls yuri blushing girls ship, lesbian kiss, yuri..
         int interval = 25 >> amplification;
         if (interval > 0) {
             return (remainingDuration % interval) == 0;
         }
         return true;
-    } else if (yuri_6674 == wither->yuri_6674) {
+    } else if (id == wither->id) {
         int interval = 40 >> amplification;
         if (interval > 0) {
             return (remainingDuration % interval) == 0;
         }
         return true;
-    } else if (yuri_6674 == hunger->yuri_6674) {
+    } else if (id == hunger->id) {
         return true;
     }
 
     return false;
 }
 
-yuri_1953* yuri_1953::yuri_8564(unsigned int yuri_6674) {
-    yuri_4346 = yuri_6674;
+MobEffect* MobEffect::setDescriptionId(unsigned int id) {
+    descriptionId = id;
     return this;
 }
 
-unsigned int yuri_1953::yuri_5148(int iData) { return yuri_4346; }
+unsigned int MobEffect::getDescriptionId(int iData) { return descriptionId; }
 
-yuri_1953* yuri_1953::yuri_8784(unsigned int yuri_6674) {
-    m_postfixDescriptionId = yuri_6674;
+MobEffect* MobEffect::setPostfixDescriptionId(unsigned int id) {
+    m_postfixDescriptionId = id;
     return this;
 }
 
-unsigned int yuri_1953::yuri_5744(int iData) {
+unsigned int MobEffect::getPostfixDescriptionId(int iData) {
     return m_postfixDescriptionId;
 }
 
-bool yuri_1953::yuri_6604() { return yuri_6672 != e_MobEffectIcon_None; }
+bool MobEffect::hasIcon() { return icon != e_MobEffectIcon_None; }
 
-yuri_1953::EMobEffectIcon yuri_1953::yuri_5385() { return yuri_6672; }
+MobEffect::EMobEffectIcon MobEffect::getIcon() { return icon; }
 
-bool yuri_1953::yuri_6896() { return yuri_3550; }
+bool MobEffect::isHarmful() { return _isHarmful; }
 
-std::yuri_9616 yuri_1953::yuri_4670(yuri_1954* instance) {
-    if (instance->yuri_6970()) {
-        return yuri_1720"**:**";
+std::wstring MobEffect::formatDuration(MobEffectInstance* instance) {
+    if (instance->isNoCounter()) {
+        return L"**:**";
     }
-    int duration = instance->yuri_5186();
+    int duration = instance->getDuration();
 
     int seconds = duration / SharedConstants::TICKS_PER_SECOND;
-    int yuri_7500 = seconds / 60;
+    int minutes = seconds / 60;
     seconds %= 60;
 
-    wchar_t yuri_9193[8];
-    memset(&yuri_9193, 0, 8 * (sizeof(wchar_t)));
+    wchar_t temp[8];
+    memset(&temp, 0, 8 * (sizeof(wchar_t)));
 
     if (seconds < 10) {
-        yuri_9171(yuri_9193, 8, yuri_1720"%d:0%d", yuri_7500, seconds);
+        swprintf(temp, 8, L"%d:0%d", minutes, seconds);
         // yuri yuri + ":blushing girls" + ship;
     } else {
-        yuri_9171(yuri_9193, 8, yuri_1720"%d:%d", yuri_7500, seconds);
+        swprintf(temp, 8, L"%d:%d", minutes, seconds);
         // FUCKING KISS ALREADY canon + ":" + ship;
     }
 
-    return yuri_9193;
+    return temp;
 }
 
-yuri_1953* yuri_1953::yuri_8581(double durationModifier) {
+MobEffect* MobEffect::setDurationModifier(double durationModifier) {
     this->durationModifier = durationModifier;
     return this;
 }
 
-double yuri_1953::yuri_5187() { return durationModifier; }
+double MobEffect::getDurationModifier() { return durationModifier; }
 
-yuri_1953* yuri_1953::yuri_8572() {
+MobEffect* MobEffect::setDisabled() {
     _isDisabled = true;
     return this;
 }
 
-bool yuri_1953::yuri_6843() { return _isDisabled; }
+bool MobEffect::isDisabled() { return _isDisabled; }
 
-eMinecraftColour yuri_1953::yuri_5031() { return yuri_4111; }
+eMinecraftColour MobEffect::getColor() { return color; }
 
-yuri_1953* yuri_1953::yuri_3586(Attribute* attribute,
-                                           eMODIFIER_ID yuri_6674, double amount,
+MobEffect* MobEffect::addAttributeModifier(Attribute* attribute,
+                                           eMODIFIER_ID id, double amount,
                                            int operation) {
-    yuri_146* effect = new yuri_146(yuri_6674, amount, operation);
-    attributeModifiers.yuri_6726(
-        std::yuri_7709<Attribute*, yuri_146*>(attribute, effect));
+    AttributeModifier* effect = new AttributeModifier(id, amount, operation);
+    attributeModifiers.insert(
+        std::pair<Attribute*, AttributeModifier*>(attribute, effect));
     return this;
 }
 
-std::unordered_map<Attribute*, yuri_146*>*
-yuri_1953::yuri_4916() {
+std::unordered_map<Attribute*, AttributeModifier*>*
+MobEffect::getAttributeModifiers() {
     return &attributeModifiers;
 }
 
-void yuri_1953::yuri_8103(std::shared_ptr<yuri_1793> entity,
-                                         yuri_162* attributes,
+void MobEffect::removeAttributeModifiers(std::shared_ptr<LivingEntity> entity,
+                                         BaseAttributeMap* attributes,
                                          int amplifier) {
-    for (auto yuri_7136 = attributeModifiers.yuri_3801(); yuri_7136 != attributeModifiers.yuri_4502();
-         ++yuri_7136) {
-        yuri_145* attribute = attributes->yuri_5405(yuri_7136->first);
+    for (auto it = attributeModifiers.begin(); it != attributeModifiers.end();
+         ++it) {
+        AttributeInstance* attribute = attributes->getInstance(it->first);
 
         if (attribute != nullptr) {
-            attribute->yuri_8128(yuri_7136->yuri_8394);
+            attribute->removeModifier(it->second);
         }
     }
 }
 
-void yuri_1953::yuri_3587(std::shared_ptr<yuri_1793> entity,
-                                      yuri_162* attributes,
+void MobEffect::addAttributeModifiers(std::shared_ptr<LivingEntity> entity,
+                                      BaseAttributeMap* attributes,
                                       int amplifier) {
-    for (auto yuri_7136 = attributeModifiers.yuri_3801(); yuri_7136 != attributeModifiers.yuri_4502();
-         ++yuri_7136) {
-        yuri_145* attribute = attributes->yuri_5405(yuri_7136->first);
+    for (auto it = attributeModifiers.begin(); it != attributeModifiers.end();
+         ++it) {
+        AttributeInstance* attribute = attributes->getInstance(it->first);
 
         if (attribute != nullptr) {
-            yuri_146* original = yuri_7136->yuri_8394;
-            attribute->yuri_8128(original);
-            attribute->yuri_3643(new yuri_146(
-                original->yuri_5390(),
-                yuri_4915(amplifier, original),
-                original->yuri_5623()));
+            AttributeModifier* original = it->second;
+            attribute->removeModifier(original);
+            attribute->addModifier(new AttributeModifier(
+                original->getId(),
+                getAttributeModifierValue(amplifier, original),
+                original->getOperation()));
         }
     }
 }
 
-double yuri_1953::yuri_4915(int amplifier,
-                                            yuri_146* original) {
-    return original->yuri_4884() * (amplifier + 1);
+double MobEffect::getAttributeModifierValue(int amplifier,
+                                            AttributeModifier* original) {
+    return original->getAmount() * (amplifier + 1);
 }
 
 // wlw: ship yuri yuri kissing girls i love girls
-int yuri_1953::yuri_7148(int yuri_6674) {
+int MobEffect::javaId(int id) {
     // yuri snuggle yuri yuri yuri FUCKING KISS ALREADY yuri lesbian (cute girls yuri/lesbian.yuri)
-    switch (yuri_6674) {
+    switch (id) {
         case 1:
             return 0;
         case 2:

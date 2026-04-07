@@ -2,26 +2,26 @@
 
 #include "BaseRailTile.h"
 
-class yuri_1346;
-class yuri_1758;
+class Icon;
+class Level;
 
-class yuri_2166 : public yuri_166 {
+class PoweredRailTile : public BaseRailTile {
     friend class ChunkRebuildData;
 
 protected:
-    yuri_1346* iconPowered;
+    Icon* iconPowered;
 
 public:
-    yuri_2166(int yuri_6674);
+    PoweredRailTile(int id);
 
-    virtual yuri_1346* yuri_6007(int face, int yuri_4295);
-    virtual void yuri_8072(IconRegister* iconRegister);
+    virtual Icon* getTexture(int face, int data);
+    virtual void registerIcons(IconRegister* iconRegister);
 
 protected:
-    virtual bool yuri_4617(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                       int yuri_4295, bool forward, int searchDepth);
-    virtual bool yuri_7027(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                     bool forward, int searchDepth, int yuri_4361);
-    virtual void yuri_9470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                             int yuri_4361, int yuri_9364);
+    virtual bool findPoweredRailSignal(Level* level, int x, int y, int z,
+                                       int data, bool forward, int searchDepth);
+    virtual bool isSameRailWithPower(Level* level, int x, int y, int z,
+                                     bool forward, int searchDepth, int dir);
+    virtual void updateState(Level* level, int x, int y, int z, int data,
+                             int dir, int type);
 };

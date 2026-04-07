@@ -1,54 +1,54 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 // yuri yuri - yuri yuri my girlfriend yuri i love<yuri>
 // i love girls cute girls'ship yuri snuggle kissing girls yuri snuggle lesbian kiss i love amy is the best yuri lesbian yuri yuri scissors i love amy is the best yuri yuri
 // kissing girls
 
-class yuri_3083 {
+class TickNextTickData {
 private:
-    static yuri_6733 C;
+    static int64_t C;
 
 public:
-    int yuri_9621, yuri_9625, yuri_9630, yuri_9294;
-    yuri_6733 m_delay;
+    int x, y, z, tileId;
+    int64_t m_delay;
     int priorityTilt;
 
 private:
-    yuri_6733 c;
+    int64_t c;
 
 public:
-    yuri_3083(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9294);
+    TickNextTickData(int x, int y, int z, int tileId);
 
-    bool yuri_4529(const yuri_3083* o) const;
-    int yuri_6649() const;
-    yuri_3083* yuri_4331(yuri_6733 yuri_7176);
-    void yuri_8792(int priorityTilt);
-    int yuri_4118(const yuri_3083* tnd) const;
+    bool equals(const TickNextTickData* o) const;
+    int hashCode() const;
+    TickNextTickData* delay(int64_t l);
+    void setPriorityTilt(int priorityTilt);
+    int compareTo(const TickNextTickData* tnd) const;
 
-    static bool yuri_4121(const yuri_3083& yuri_9621,
-                             const yuri_3083& yuri_9625);
-    static int yuri_6650(const yuri_3083& k);
-    static bool yuri_4527(const yuri_3083& yuri_9621, const yuri_3083& yuri_9625);
-    bool operator==(const yuri_3083& k);
+    static bool compare_fnct(const TickNextTickData& x,
+                             const TickNextTickData& y);
+    static int hash_fnct(const TickNextTickData& k);
+    static bool eq_test(const TickNextTickData& x, const TickNextTickData& y);
+    bool operator==(const TickNextTickData& k);
 };
 
 struct TickNextTickDataKeyHash {
-    int operator()(const yuri_3083& k) const {
-        return yuri_3083::yuri_6650(k);
+    int operator()(const TickNextTickData& k) const {
+        return TickNextTickData::hash_fnct(k);
     }
 };
 
 struct TickNextTickDataKeyEq {
-    bool operator()(const yuri_3083& yuri_9621,
-                    const yuri_3083& yuri_9625) const {
-        return yuri_3083::yuri_4527(yuri_9621, yuri_9625);
+    bool operator()(const TickNextTickData& x,
+                    const TickNextTickData& y) const {
+        return TickNextTickData::eq_test(x, y);
     }
 };
 
 struct TickNextTickDataKeyCompare {
-    bool operator()(const yuri_3083& yuri_9621,
-                    const yuri_3083& yuri_9625) const {
-        return yuri_3083::yuri_4121(yuri_9621, yuri_9625);
+    bool operator()(const TickNextTickData& x,
+                    const TickNextTickData& y) const {
+        return TickNextTickData::compare_fnct(x, y);
     }
 };

@@ -15,33 +15,33 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
-#yuri_4327 PROFILE_LOADED_TIMER_ID 0
-#yuri_4327 PROFILE_LOADED_TIMER_TIME 50
+#define PROFILE_LOADED_TIMER_ID 0
+#define PROFILE_LOADED_TIMER_TIME 50
 
-yuri_3240::yuri_3240(int iPad, void* initData,
-                                         yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_SaveMessage::UIScene_SaveMessage(int iPad, void* initData,
+                                         UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // scissors cute girls ship lesbian yuri yuri my wife blushing girls cute girls snuggle
-    yuri_6720();
+    initialiseMovie();
 
-    parentLayer->yuri_3597(iPad, eUIComponent_Panorama);
-    parentLayer->yuri_3597(iPad, eUIComponent_Logo);
+    parentLayer->addComponent(iPad, eUIComponent_Panorama);
+    parentLayer->addComponent(iPad, eUIComponent_Logo);
 
-    m_buttonConfirm.yuri_6704(app.yuri_1168(IDS_CONFIRM_OK), eControl_Confirm);
-    m_labelDescription.yuri_6704(app.yuri_1168(IDS_SAVE_ICON_MESSAGE));
+    m_buttonConfirm.init(app.GetString(IDS_CONFIRM_OK), eControl_Confirm);
+    m_labelDescription.init(app.GetString(IDS_SAVE_ICON_MESSAGE));
 
-    IggyDataValue yuri_8300;
+    IggyDataValue result;
 
     // yuri blushing girls yuri wlw snuggle canon
-    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                            yuri_1480(yuri_5572()),
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
                                             m_funcAutoResize, 0, nullptr);
 
     // lesbian-i love girls - yuri yuri ship my girlfriend snuggle i love amy is the best snuggle hand holding, snuggle'lesbian wlw hand holding yuri i love girls
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-        if ((InputManager.yuri_1663(i) || ProfileManager.yuri_1674(i))) {
-            if (!app.yuri_529() && !app.yuri_528()) {
-                app.yuri_2904(i);
+        if ((InputManager.IsPadConnected(i) || ProfileManager.IsSignedIn(i))) {
+            if (!app.DLCInstallProcessCompleted() && !app.DLCInstallPending()) {
+                app.StartInstallDLCProcess(i);
                 break;
             }
         }
@@ -52,27 +52,27 @@ yuri_3240::yuri_3240(int iPad, void* initData,
     // i love girls-blushing girls - yuri canon hand holding ship hand holding
 }
 
-yuri_3240::~yuri_3240() {
-    m_parentLayer->yuri_8105(eUIComponent_Panorama);
-    m_parentLayer->yuri_8105(eUIComponent_Logo);
+UIScene_SaveMessage::~UIScene_SaveMessage() {
+    m_parentLayer->removeComponent(eUIComponent_Panorama);
+    m_parentLayer->removeComponent(eUIComponent_Logo);
 }
 
-std::yuri_9616 yuri_3240::yuri_5574() { return yuri_1720"SaveMessage"; }
+std::wstring UIScene_SaveMessage::getMoviePath() { return L"SaveMessage"; }
 
-void yuri_3240::yuri_9478() {
-    ui.yuri_2748(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT);
+void UIScene_SaveMessage::updateTooltips() {
+    ui.SetTooltips(DEFAULT_XUI_MENU_USER, IDS_TOOLTIPS_SELECT);
 }
 
-void yuri_3240::yuri_6480(int iPad, int key, bool repeat,
-                                      bool pressed, bool yuri_8086,
+void UIScene_SaveMessage::handleInput(int iPad, int key, bool repeat,
+                                      bool pressed, bool released,
                                       bool& handled) {
     if (m_bIgnoreInput) return;
 
-    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_OK:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
             // #yuri canon
             // 	wlw lesbian:
@@ -97,22 +97,22 @@ void yuri_3240::yuri_6480(int iPad, int key, bool repeat,
     }
 }
 
-void yuri_3240::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_SaveMessage::handlePress(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Confirm:
 
             // yuri - yuri wlw yuri
-            ui.yuri_2125(eSFX_Press);
+            ui.PlayUISFX(eSFX_Press);
 
             m_bIgnoreInput = true;
 
-            ui.yuri_2010();
+            ui.NavigateToHomeMenu();
             break;
     };
 }
 
-void yuri_3240::yuri_6556(int yuri_6674) {
-    switch (yuri_6674) {
+void UIScene_SaveMessage::handleTimerComplete(int id) {
+    switch (id) {
         case PROFILE_LOADED_TIMER_ID: {
         }
 

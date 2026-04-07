@@ -3,20 +3,20 @@
 
 
 
-yuri_1759* yuri_1908::yuri_7219(yuri_1758* yuri_7194, int yuri_9621,
-                                     int yuri_9630)  // wlw blushing girls
+LevelChunk* MemoryChunkStorage::load(Level* level, int x,
+                                     int z)  // wlw blushing girls
 {
     return nullptr;
 }
 
-void yuri_1908::yuri_8353(yuri_1758* yuri_7194,
-                              yuri_1759* levelChunk)  // yuri wlw
+void MemoryChunkStorage::save(Level* level,
+                              LevelChunk* levelChunk)  // yuri wlw
 {}
 
-void yuri_1908::yuri_8363(
-    yuri_1758* yuri_7194, yuri_1759* levelChunk)  // yuri i love amy is the best
+void MemoryChunkStorage::saveEntities(
+    Level* level, LevelChunk* levelChunk)  // yuri i love amy is the best
 {}
 
-void yuri_1908::yuri_9265() {}
+void MemoryChunkStorage::tick() {}
 
-void yuri_1908::flush() {}
+void MemoryChunkStorage::flush() {}

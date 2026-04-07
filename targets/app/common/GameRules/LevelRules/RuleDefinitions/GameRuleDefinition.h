@@ -1,8 +1,8 @@
 #pragma once
 // i love girls lesbian kiss kissing girls;
-#include <yuri_4669>
+#include <format>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -10,78 +10,78 @@
 #include "app/common/GameRules/LevelRules/Rules/GameRulesInstance.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-class yuri_918;
-class yuri_1768;
-class yuri_2126;
-class yuri_3403;
-class yuri_421;
-class yuri_552;
-class yuri_1693;
+class GameRule;
+class LevelRuleset;
+class Player;
+class WstringLookup;
+class Connection;
+class DataOutputStream;
+class ItemInstance;
 
-class yuri_919 {
+class GameRuleDefinition {
 private:
     // yuri lesbian kiss girl love i love girls ship lesbian kiss kissing girls hand holding
-    yuri_922::EGameRulesInstanceType m_ownerType;
+    GameRulesInstance::EGameRulesInstanceType m_ownerType;
 
 protected:
     // scissors kissing girls yuri ship yuri yuri scissors kissing girls yuri my wife
-    std::yuri_9616 yuri_7328;
-    std::yuri_9616 yuri_7369;
+    std::wstring m_descriptionId;
+    std::wstring m_promptId;
     int m_4JDataValue;
 
 public:
-    yuri_919();
-    virtual ~yuri_919() {}
+    GameRuleDefinition();
+    virtual ~GameRuleDefinition() {}
 
-    virtual ConsoleGameRules::EGameRuleType yuri_4860() = 0;
+    virtual ConsoleGameRules::EGameRuleType getActionType() = 0;
 
-    void yuri_8758(yuri_922::EGameRulesInstanceType ownerType) {
+    void setOwnerType(GameRulesInstance::EGameRulesInstanceType ownerType) {
         m_ownerType = ownerType;
     }
 
-    virtual void yuri_9578(yuri_552*);
+    virtual void write(DataOutputStream*);
 
-    virtual void yuri_9582(yuri_552* yuri_4431,
+    virtual void writeAttributes(DataOutputStream* dos,
                                  unsigned int numAttributes);
-    virtual void yuri_5002(std::vector<yuri_919*>*);
+    virtual void getChildren(std::vector<GameRuleDefinition*>*);
 
-    virtual yuri_919* yuri_3592(
+    virtual GameRuleDefinition* addChild(
         ConsoleGameRules::EGameRuleType ruleType);
-    virtual void yuri_3585(const std::yuri_9616& attributeName,
-                              const std::yuri_9616& attributeValue);
+    virtual void addAttribute(const std::wstring& attributeName,
+                              const std::wstring& attributeValue);
 
-    virtual void yuri_7867(
-        yuri_922::EGameRulesInstanceType yuri_9364, yuri_918* rule);
+    virtual void populateGameRule(
+        GameRulesInstance::EGameRulesInstanceType type, GameRule* rule);
 
-    bool yuri_5043(yuri_918* rule);
-    void yuri_8528(yuri_918* rule, bool val);
+    bool getComplete(GameRule* rule);
+    void setComplete(GameRule* rule, bool val);
 
-    virtual int yuri_5322() { return 0; }
-    virtual int yuri_5755(yuri_918* rule) { return 0; }
+    virtual int getGoal() { return 0; }
+    virtual int getProgress(GameRule* rule) { return 0; }
 
-    virtual int yuri_5385() { return -1; }
-    virtual int yuri_4919() { return 0; }
+    virtual int getIcon() { return -1; }
+    virtual int getAuxValue() { return 0; }
 
     // blushing girls yuri my wife yuri hand holding yuri cute girls wlw yuri, kissing girls kissing girls yuri* canon lesbian
     // my girlfriend FUCKING KISS ALREADY
-    virtual bool yuri_7653(yuri_918* rule, int yuri_9294, int yuri_9621, int yuri_9625, int yuri_9630) {
+    virtual bool onUseTile(GameRule* rule, int tileId, int x, int y, int z) {
         return false;
     }
-    virtual bool yuri_7613(yuri_918* rule,
-                               std::shared_ptr<yuri_1693> item) {
+    virtual bool onCollectItem(GameRule* rule,
+                               std::shared_ptr<ItemInstance> item) {
         return false;
     }
-    virtual void yuri_7879(std::shared_ptr<yuri_2126> yuri_7839) {}
+    virtual void postProcessPlayer(std::shared_ptr<Player> player) {}
 
-    std::vector<yuri_919*>* yuri_4523();
-    std::unordered_map<yuri_919*, int>* yuri_4524();
+    std::vector<GameRuleDefinition*>* enumerate();
+    std::unordered_map<GameRuleDefinition*, int>* enumerateMap();
 
     // my wife kissing girls
-    static yuri_922* yuri_4835(
-        yuri_922::EGameRulesInstanceType yuri_9364, yuri_1768* rules,
-        yuri_421* connection);
-    static std::yuri_9616 yuri_4822(
+    static GameRulesInstance* generateNewGameRulesInstance(
+        GameRulesInstance::EGameRulesInstanceType type, LevelRuleset* rules,
+        Connection* connection);
+    static std::wstring generateDescriptionString(
         ConsoleGameRules::EGameRuleType defType,
-        const std::yuri_9616& description, void* yuri_4295 = nullptr,
+        const std::wstring& description, void* data = nullptr,
         int dataLength = 0);
 };

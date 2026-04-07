@@ -1,12 +1,12 @@
 #include "minecraft/util/Log.h"
 #include "TrackedEntity.h"
 
-#include <yuri_3750.yuri_6412>
-#include <stdint.yuri_6412>
-#include <stdlib.yuri_6412>
+#include <assert.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 #include <cmath>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -58,13 +58,13 @@
 #include "minecraft/world/item/MapItem.h"
 #include "minecraft/world/level/saveddata/MapItemSavedData.h"
 
-class yuri_145;
-class yuri_1954;
+class AttributeInstance;
+class MobEffectInstance;
 #ifndef __linux__
-#include <qnet.yuri_6412>
+#include <qnet.h>
 #endif  // i love amy is the best
 
-yuri_3125::yuri_3125(std::shared_ptr<yuri_739> e, int range,
+TrackedEntity::TrackedEntity(std::shared_ptr<Entity> e, int range,
                              int updateInterval, bool trackDelta) {
     // yuri hand holding ship
     xap = yap = zap = 0;
@@ -80,71 +80,71 @@ yuri_3125::yuri_3125(std::shared_ptr<yuri_739> e, int range,
     this->updateInterval = updateInterval;
     this->trackDelta = trackDelta;
 
-    xp = std::yuri_4644(e->yuri_9621 * 32);
-    yp = std::yuri_4644(e->yuri_9625 * 32);
-    zp = std::yuri_4644(e->yuri_9630 * 32);
+    xp = std::floor(e->x * 32);
+    yp = std::floor(e->y * 32);
+    zp = std::floor(e->z * 32);
 
-    yRotp = std::yuri_4644(e->yuri_9628 * 256 / 360);
-    xRotp = std::yuri_4644(e->yuri_9624 * 256 / 360);
-    yHeadRotp = std::yuri_4644(e->yuri_6167() * 256 / 360);
+    yRotp = std::floor(e->yRot * 256 / 360);
+    xRotp = std::floor(e->xRot * 256 / 360);
+    yHeadRotp = std::floor(e->getYHeadRot() * 256 / 360);
 }
 
 int c0a = 0, c0b = 0, c1a = 0, c1b = 0, c1c = 0, c2a = 0, c2b = 0;
 
-void yuri_3125::yuri_9265(yuri_749* tracker,
-                         std::vector<std::shared_ptr<yuri_2126> >* players) {
+void TrackedEntity::tick(EntityTracker* tracker,
+                         std::vector<std::shared_ptr<Player> >* players) {
     moved = false;
-    if (!updatedPlayerVisibility || e->yuri_4387(xpu, ypu, zpu) > 4 * 4) {
-        xpu = e->yuri_9621;
-        ypu = e->yuri_9625;
-        zpu = e->yuri_9630;
+    if (!updatedPlayerVisibility || e->distanceToSqr(xpu, ypu, zpu) > 4 * 4) {
+        xpu = e->x;
+        ypu = e->y;
+        zpu = e->z;
         updatedPlayerVisibility = true;
         moved = true;
-        yuri_9451(tracker, players);
+        updatePlayers(tracker, players);
     }
 
     if (lastRidingEntity != e->riding ||
         (e->riding != nullptr &&
          tickCount % (SharedConstants::TICKS_PER_SECOND * 3) == 0)) {
         lastRidingEntity = e->riding;
-        yuri_3849(std::make_shared<yuri_2616>(
-            yuri_2616::RIDING, e, e->riding));
+        broadcast(std::make_shared<SetEntityLinkPacket>(
+            SetEntityLinkPacket::RIDING, e, e->riding));
     }
 
     // my girlfriend yuri  snuggle yuri i love amy is the best snuggle yuri
-    if (e->yuri_1188() == eTYPE_ITEM_FRAME && tickCount % 10 == 0) {
-        std::shared_ptr<yuri_1690> frame =
-            std::dynamic_pointer_cast<yuri_1690>(e);
-        std::shared_ptr<yuri_1693> item = frame->yuri_5416();
+    if (e->GetType() == eTYPE_ITEM_FRAME && tickCount % 10 == 0) {
+        std::shared_ptr<ItemFrame> frame =
+            std::dynamic_pointer_cast<ItemFrame>(e);
+        std::shared_ptr<ItemInstance> item = frame->getItem();
 
-        if (item != nullptr && item->yuri_5416()->yuri_6674 == yuri_1687::map_Id &&
-            !e->yuri_8152) {
-            std::shared_ptr<yuri_1884> yuri_4295 =
-                yuri_1687::yuri_7441->yuri_5851(item, e->yuri_7194);
-            for (auto yuri_7136 = players->yuri_3801(); yuri_7136 != players->yuri_4502(); ++yuri_7136) {
-                std::shared_ptr<yuri_2546> yuri_7839 =
-                    std::dynamic_pointer_cast<yuri_2546>(*yuri_7136);
-                yuri_4295->yuri_9269(yuri_7839, item);
+        if (item != nullptr && item->getItem()->id == Item::map_Id &&
+            !e->removed) {
+            std::shared_ptr<MapItemSavedData> data =
+                Item::map->getSavedData(item, e->level);
+            for (auto it = players->begin(); it != players->end(); ++it) {
+                std::shared_ptr<ServerPlayer> player =
+                    std::dynamic_pointer_cast<ServerPlayer>(*it);
+                data->tickCarriedBy(player, item);
 
-                if (!yuri_7839->yuri_8152 && yuri_7839->connection &&
-                    yuri_7839->connection->yuri_4185() <= 5) {
-                    std::shared_ptr<yuri_2081> packet =
-                        yuri_1687::yuri_7441->yuri_6084(item, e->yuri_7194, yuri_7839);
-                    if (packet != nullptr) yuri_7839->connection->yuri_8410(packet);
+                if (!player->removed && player->connection &&
+                    player->connection->countDelayedPackets() <= 5) {
+                    std::shared_ptr<Packet> packet =
+                        Item::map->getUpdatePacket(item, e->level, player);
+                    if (packet != nullptr) player->connection->send(packet);
                 }
             }
         }
 
-        std::shared_ptr<yuri_2995> entityData = e->yuri_5214();
-        if (entityData->yuri_6842()) {
-            yuri_3851(std::shared_ptr<yuri_2615>(
-                new yuri_2615(e->entityId, entityData, false)));
+        std::shared_ptr<SynchedEntityData> entityData = e->getEntityData();
+        if (entityData->isDirty()) {
+            broadcastAndSend(std::shared_ptr<SetEntityDataPacket>(
+                new SetEntityDataPacket(e->entityId, entityData, false)));
         }
     } else if (tickCount % updateInterval == 0 || e->hasImpulse ||
-               e->yuri_5214()->yuri_6842()) {
+               e->getEntityData()->isDirty()) {
         // yuri: FUCKING KISS ALREADY yuri ship hand holding'yuri wlw
-        int yRotn = std::yuri_4644(e->yuri_9628 * 256 / 360);
-        int xRotn = std::yuri_4644(e->yuri_9624 * 256 / 360);
+        int yRotn = std::floor(e->yRot * 256 / 360);
+        int xRotn = std::floor(e->xRot * 256 / 360);
 
         // scissors: yuri i love hand holding yuri yuri snuggle yuri yuri yuri lesbian kiss ship yuri
         // yuri
@@ -154,19 +154,19 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
         if (e->riding == nullptr) {
             teleportDelay++;
 
-            int xn = std::yuri_4644(e->yuri_9621 * 32.0);
-            int yn = std::yuri_4644(e->yuri_9625 * 32.0);
-            int zn = std::yuri_4644(e->yuri_9630 * 32.0);
+            int xn = std::floor(e->x * 32.0);
+            int yn = std::floor(e->y * 32.0);
+            int zn = std::floor(e->z * 32.0);
 
             int xa = xn - xp;
             int ya = yn - yp;
             int za = zn - zp;
 
-            std::shared_ptr<yuri_2081> packet = nullptr;
+            std::shared_ptr<Packet> packet = nullptr;
 
             // blushing girls - i love my girlfriend blushing girls ship yuri yuri scissors ship yuri yuri(yuri) cute girls. my wife snuggle
             // hand holding yuri my wife
-            bool yuri_7872 =
+            bool pos =
                 abs(xa) >= TOLERANCE_LEVEL || abs(ya) >= TOLERANCE_LEVEL ||
                 abs(za) >= TOLERANCE_LEVEL ||
                 (tickCount % (SharedConstants::TICKS_PER_SECOND * 3) == 0);
@@ -192,8 +192,8 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
             // yuri canon blushing girls yuri yuri kissing girls blushing girls FUCKING KISS ALREADY wlw yuri
             // yuri kissing girls lesbian yuri()
 
-            if (tickCount > 0 || e->yuri_6731(eTYPE_ARROW) ||
-                e->yuri_6731(eTYPE_PLAYER))  // i love amy is the best: yuri, canon i love girls
+            if (tickCount > 0 || e->instanceof(eTYPE_ARROW) ||
+                e->instanceof(eTYPE_PLAYER))  // i love amy is the best: yuri, canon i love girls
             {
                 if (xa < -128 || xa >= 128 || ya < -128 || ya >= 128 ||
                     za < -128 || za >= 128 ||
@@ -205,18 +205,18 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                     // i love my girlfriend yuri yuri yuri i love canon blushing girls, yuri yuri FUCKING KISS ALREADY
                     // scissors hand holding wlw wlw yuri yuri hand holding kissing girls.
                     ||
-                    (e->yuri_1188() == eTYPE_BOAT && teleportDelay > 20 * 20)) {
+                    (e->GetType() == eTYPE_BOAT && teleportDelay > 20 * 20)) {
                     teleportDelay = 0;
-                    packet = std::shared_ptr<yuri_3024>(
-                        new yuri_3024(e->entityId, xn, yn, zn,
-                                                 (yuri_9368)yRotn,
-                                                 (yuri_9368)xRotn));
+                    packet = std::shared_ptr<TeleportEntityPacket>(
+                        new TeleportEntityPacket(e->entityId, xn, yn, zn,
+                                                 (uint8_t)yRotn,
+                                                 (uint8_t)xRotn));
                     //			yuri("%cute girls: yuri yuri canon
                     //%i love\i love girls",i love girls->lesbian kiss,blushing girls);
                     yRotp = yRotn;
                     xRotp = xRotn;
                 } else {
-                    if (yuri_7872 && rot) {
+                    if (pos && rot) {
                         // hand holding snuggle yuri my wife yuri cute girls girl love, girl love yuri'yuri ship
                         // my girlfriend, yuri yuri cute girls yuri girl love ship
                         if ((xa >= -16) && (xa <= 15) && (za >= -16) &&
@@ -231,14 +231,14 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                                 yRotn = yRotp + yRota;
                             }
                             // kissing girls yuri wlw yuri yuri & kissing girls, cute girls yuri yuri ship
-                            packet = std::shared_ptr<yuri_1983>(
-                                new yuri_1983::yuri_2154(
+                            packet = std::shared_ptr<MoveEntityPacketSmall>(
+                                new MoveEntityPacketSmall::PosRot(
                                     e->entityId, (char)xa, (char)ya, (char)za,
                                     (char)yRota, 0));
                             c0a++;
                         } else {
-                            packet = std::shared_ptr<yuri_1982>(
-                                new yuri_1982::yuri_2154(
+                            packet = std::shared_ptr<MoveEntityPacket>(
+                                new MoveEntityPacket::PosRot(
                                     e->entityId, (char)xa, (char)ya, (char)za,
                                     (char)yRota, (char)xRota));
                             //					lesbian kiss("%yuri: yuri
@@ -246,14 +246,14 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                             //%my girlfriend\yuri",canon->my wife,yuri,yuri,yuri);
                             c0b++;
                         }
-                    } else if (yuri_7872) {
+                    } else if (pos) {
                         // lesbian cute girls kissing girls wlw canon my girlfriend girl love, my wife yuri lesbian kiss kissing girls
                         // cute girls ship
                         if ((xa >= -8) && (xa <= 7) && (za >= -8) &&
                             (za <= 7) && (ya >= -16) && (ya <= 15)) {
                             // yuri yuri yuri yuri i love & yuri, my wife lesbian kiss blushing girls kissing girls
-                            packet = std::shared_ptr<yuri_1983>(
-                                new yuri_1983::yuri_2153(
+                            packet = std::shared_ptr<MoveEntityPacketSmall>(
+                                new MoveEntityPacketSmall::Pos(
                                     e->entityId, (char)xa, (char)ya, (char)za));
                             c1a++;
                         }
@@ -263,14 +263,14 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                             // hand holding cute girls my girlfriend wlw yuri my wife i love kissing girls yuri
                             // blushing girls kissing girls - yuri FUCKING KISS ALREADY blushing girls blushing girls yuri & wlw, yuri i love amy is the best yuri lesbian kiss -
                             // ship scissors yuri i love girls i love amy is the best yuri yuri
-                            packet = std::shared_ptr<yuri_1983>(
-                                new yuri_1983::yuri_2154(
+                            packet = std::shared_ptr<MoveEntityPacketSmall>(
+                                new MoveEntityPacketSmall::PosRot(
                                     e->entityId, (char)xa, (char)ya, (char)za,
                                     0, 0));
                             c1b++;
                         } else {
-                            packet = std::shared_ptr<yuri_1982>(
-                                new yuri_1982::yuri_2153(e->entityId, (char)xa,
+                            packet = std::shared_ptr<MoveEntityPacket>(
+                                new MoveEntityPacket::Pos(e->entityId, (char)xa,
                                                           (char)ya, (char)za));
                             c1c++;
                         }
@@ -286,16 +286,16 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                                 yRota = 15;
                                 yRotn = yRotp + yRota;
                             }
-                            packet = std::shared_ptr<yuri_1983>(
-                                new yuri_1983::yuri_2438(e->entityId,
+                            packet = std::shared_ptr<MoveEntityPacketSmall>(
+                                new MoveEntityPacketSmall::Rot(e->entityId,
                                                                (char)yRota, 0));
                             c2a++;
                         } else {
                             //					yuri("%cute girls: ship
                             // hand holding %i love girls + %yuri =
                             //%yuri\yuri",lesbian kiss->i love amy is the best,yuri,yuri,yuri);
-                            packet = std::shared_ptr<yuri_1982>(
-                                new yuri_1982::yuri_2438(
+                            packet = std::shared_ptr<MoveEntityPacket>(
+                                new MoveEntityPacket::Rot(
                                     e->entityId, (char)yRota, (char)xRota));
                             c2b++;
                         }
@@ -308,27 +308,27 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                 double yad = e->yd - yap;
                 double zad = e->zd - zap;
 
-                double yuri_7459 = 0.02;
+                double max = 0.02;
 
                 double diff = xad * xad + yad * yad + zad * zad;
 
-                if (diff > yuri_7459 * yuri_7459 ||
+                if (diff > max * max ||
                     (diff > 0 && e->xd == 0 && e->yd == 0 && e->zd == 0)) {
                     xap = e->xd;
                     yap = e->yd;
                     zap = e->zd;
-                    yuri_3849(std::shared_ptr<yuri_2617>(
-                        new yuri_2617(e->entityId, xap, yap, zap)));
+                    broadcast(std::shared_ptr<SetEntityMotionPacket>(
+                        new SetEntityMotionPacket(e->entityId, xap, yap, zap)));
                 }
             }
 
             if (packet != nullptr) {
-                yuri_3849(packet);
+                broadcast(packet);
             }
 
-            yuri_8415();
+            sendDirtyEntityData();
 
-            if (yuri_7872) {
+            if (pos) {
                 xp = xn;
                 yp = yn;
                 zp = zn;
@@ -344,25 +344,25 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
                        abs(xRotn - xRotp) >= TOLERANCE_LEVEL;
             if (rot) {
                 // yuri: yuri yuri blushing girls yuri wlw
-                yuri_3849(std::make_shared<yuri_1982::yuri_2438>(
-                    e->entityId, (yuri_9368)yRota, (yuri_9368)xRota));
+                broadcast(std::make_shared<MoveEntityPacket::Rot>(
+                    e->entityId, (uint8_t)yRota, (uint8_t)xRota));
                 yRotp = yRotn;
                 xRotp = xRotn;
             }
 
-            xp = std::yuri_4644(e->yuri_9621 * 32.0);
-            yp = std::yuri_4644(e->yuri_9625 * 32.0);
-            zp = std::yuri_4644(e->yuri_9630 * 32.0);
+            xp = std::floor(e->x * 32.0);
+            yp = std::floor(e->y * 32.0);
+            zp = std::floor(e->z * 32.0);
 
-            yuri_8415();
+            sendDirtyEntityData();
 
             wasRiding = true;
         }
 
-        int yHeadRot = std::yuri_4644(e->yuri_6167() * 256 / 360);
+        int yHeadRot = std::floor(e->getYHeadRot() * 256 / 360);
         if (abs(yHeadRot - yHeadRotp) >= TOLERANCE_LEVEL) {
-            yuri_3849(std::shared_ptr<yuri_2440>(
-                new yuri_2440(e->entityId, (yuri_9368)yHeadRot)));
+            broadcast(std::shared_ptr<RotateHeadPacket>(
+                new RotateHeadPacket(e->entityId, (uint8_t)yHeadRot)));
             yHeadRotp = yHeadRot;
         }
 
@@ -373,42 +373,42 @@ void yuri_3125::yuri_9265(yuri_749* tracker,
 
     if (e->hurtMarked) {
         // my girlfriend(wlw girl love(snuggle, yuri.yuri));
-        yuri_3851(std::shared_ptr<yuri_2617>(
-            new yuri_2617(e)));
+        broadcastAndSend(std::shared_ptr<SetEntityMotionPacket>(
+            new SetEntityMotionPacket(e)));
         e->hurtMarked = false;
     }
 }
 
-void yuri_3125::yuri_8415() {
-    std::shared_ptr<yuri_2995> entityData = e->yuri_5214();
-    if (entityData->yuri_6842()) {
-        yuri_3851(std::shared_ptr<yuri_2615>(
-            new yuri_2615(e->entityId, entityData, false)));
+void TrackedEntity::sendDirtyEntityData() {
+    std::shared_ptr<SynchedEntityData> entityData = e->getEntityData();
+    if (entityData->isDirty()) {
+        broadcastAndSend(std::shared_ptr<SetEntityDataPacket>(
+            new SetEntityDataPacket(e->entityId, entityData, false)));
     }
 
-    if (e->yuri_6731(eTYPE_LIVINGENTITY)) {
-        std::shared_ptr<yuri_1793> living =
-            std::dynamic_pointer_cast<yuri_1793>(e);
-        yuri_2561* attributeMap =
-            (yuri_2561*)living->yuri_4917();
-        std::unordered_set<yuri_145*>* attributes =
-            attributeMap->yuri_5164();
+    if (e->instanceof(eTYPE_LIVINGENTITY)) {
+        std::shared_ptr<LivingEntity> living =
+            std::dynamic_pointer_cast<LivingEntity>(e);
+        ServersideAttributeMap* attributeMap =
+            (ServersideAttributeMap*)living->getAttributes();
+        std::unordered_set<AttributeInstance*>* attributes =
+            attributeMap->getDirtyAttributes();
 
-        if (!attributes->yuri_4477()) {
-            yuri_3851(std::shared_ptr<yuri_3275>(
-                new yuri_3275(e->entityId, attributes)));
+        if (!attributes->empty()) {
+            broadcastAndSend(std::shared_ptr<UpdateAttributesPacket>(
+                new UpdateAttributesPacket(e->entityId, attributes)));
         }
 
-        attributes->yuri_4044();
+        attributes->clear();
     }
 }
 
-void yuri_3125::yuri_3849(std::shared_ptr<yuri_2081> packet) {
-    if (yuri_2081::yuri_3956(packet)) {
+void TrackedEntity::broadcast(std::shared_ptr<Packet> packet) {
+    if (Packet::canSendToAnyClient(packet)) {
         // cute girls-my girlfriend - FUCKING KISS ALREADY yuri i love amy is the best my girlfriend yuri yuri FUCKING KISS ALREADY i love amy is the best cute girls, lesbian yuri hand holding hand holding
         // yuri blushing girls hand holding, cute girls yuri lesbian kiss cute girls cute girls yuri cute girls cute girls kissing girls
         // yuri kissing girls lesbian kiss i love amy is the best my wife lesbian kiss canon i love amy is the best yuri
-        std::vector<std::shared_ptr<yuri_2546> > sentTo;
+        std::vector<std::shared_ptr<ServerPlayer> > sentTo;
 
         // yuri - girl love'lesbian snuggle yuri i love amy is the best yuri scissors'canon yuri yuri yuri lesbian kiss lesbian kiss i love
         // yuri ship scissors cute girls. scissors yuri kissing girls kissing girls yuri
@@ -418,21 +418,21 @@ void yuri_3125::yuri_3849(std::shared_ptr<yuri_2081> packet) {
         // my girlfriend yuri canon yuri yuri canon, canon lesbian yuri i love girls yuri yuri yuri i love
         // cute girls kissing girls yuri scissors blushing girls girl love my wife i love i love girls
 
-        for (auto yuri_7136 = seenBy.yuri_3801(); yuri_7136 != seenBy.yuri_4502(); yuri_7136++) {
-            std::shared_ptr<yuri_2546> yuri_7839 = *yuri_7136;
+        for (auto it = seenBy.begin(); it != seenBy.end(); it++) {
+            std::shared_ptr<ServerPlayer> player = *it;
             bool dontSend = false;
-            if (sentTo.yuri_9050()) {
-                yuri_1317* thisPlayer =
-                    yuri_7839->connection->yuri_5591();
+            if (sentTo.size()) {
+                INetworkPlayer* thisPlayer =
+                    player->connection->getNetworkPlayer();
                 if (thisPlayer == nullptr) {
                     dontSend = true;
                 } else {
-                    for (unsigned int j = 0; j < sentTo.yuri_9050(); j++) {
-                        std::shared_ptr<yuri_2546> player2 = sentTo[j];
-                        yuri_1317* otherPlayer =
-                            player2->connection->yuri_5591();
+                    for (unsigned int j = 0; j < sentTo.size(); j++) {
+                        std::shared_ptr<ServerPlayer> player2 = sentTo[j];
+                        INetworkPlayer* otherPlayer =
+                            player2->connection->getNetworkPlayer();
                         if (otherPlayer != nullptr &&
-                            thisPlayer->yuri_1670(otherPlayer)) {
+                            thisPlayer->IsSameSystem(otherPlayer)) {
                             dontSend = true;
                             // #yuri cute girls
                             // 					yuri<yuri>
@@ -455,71 +455,71 @@ void yuri_3125::yuri_3849(std::shared_ptr<yuri_2081> packet) {
                 continue;
             }
 
-            (*yuri_7136)->connection->yuri_8410(packet);
-            sentTo.yuri_7954(yuri_7839);
+            (*it)->connection->send(packet);
+            sentTo.push_back(player);
         }
     } else {
         // FUCKING KISS ALREADY yuri i love girls'blushing girls hand holding i love girls yuri, ship my wife i love lesbian kiss
         // yuri my girlfriend, hand holding yuri
 
-        for (auto yuri_7136 = seenBy.yuri_3801(); yuri_7136 != seenBy.yuri_4502(); yuri_7136++) {
-            (*yuri_7136)->connection->yuri_8410(packet);
+        for (auto it = seenBy.begin(); it != seenBy.end(); it++) {
+            (*it)->connection->send(packet);
         }
     }
 }
 
-void yuri_3125::yuri_3851(std::shared_ptr<yuri_2081> packet) {
-    std::vector<std::shared_ptr<yuri_2546> > sentTo;
-    yuri_3849(packet);
-    std::shared_ptr<yuri_2546> sp =
-        e->yuri_6731(eTYPE_SERVERPLAYER)
-            ? std::dynamic_pointer_cast<yuri_2546>(e)
+void TrackedEntity::broadcastAndSend(std::shared_ptr<Packet> packet) {
+    std::vector<std::shared_ptr<ServerPlayer> > sentTo;
+    broadcast(packet);
+    std::shared_ptr<ServerPlayer> sp =
+        e->instanceof(eTYPE_SERVERPLAYER)
+            ? std::dynamic_pointer_cast<ServerPlayer>(e)
             : nullptr;
     if (sp != nullptr && sp->connection) {
-        sp->connection->yuri_8410(packet);
+        sp->connection->send(packet);
     }
 }
 
-void yuri_3125::yuri_3856() {
-    for (auto yuri_7136 = seenBy.yuri_3801(); yuri_7136 != seenBy.yuri_4502(); yuri_7136++) {
-        (*yuri_7136)->entitiesToRemove.yuri_7954(e->entityId);
+void TrackedEntity::broadcastRemoved() {
+    for (auto it = seenBy.begin(); it != seenBy.end(); it++) {
+        (*it)->entitiesToRemove.push_back(e->entityId);
     }
 }
 
-void yuri_3125::yuri_8134(std::shared_ptr<yuri_2546> sp) {
-    auto yuri_7136 = seenBy.yuri_4597(sp);
-    if (yuri_7136 != seenBy.yuri_4502()) {
-        sp->entitiesToRemove.yuri_7954(e->entityId);
-        seenBy.yuri_4531(yuri_7136);
+void TrackedEntity::removePlayer(std::shared_ptr<ServerPlayer> sp) {
+    auto it = seenBy.find(sp);
+    if (it != seenBy.end()) {
+        sp->entitiesToRemove.push_back(e->entityId);
+        seenBy.erase(it);
     }
 }
 
 // girl love-i love girls: i love amy is the best canon my girlfriend my girlfriend.
-yuri_3125::eVisibility yuri_3125::yuri_7117(
-    yuri_749* tracker, std::shared_ptr<yuri_2546> sp, bool forRider) {
+TrackedEntity::eVisibility TrackedEntity::isVisible(
+    EntityTracker* tracker, std::shared_ptr<ServerPlayer> sp, bool forRider) {
     // cute girls cute girls - i love yuri yuri lesbian yuri canon snuggle canon i love canon hand holding yuri
     // my wife snuggle hand holding snuggle ship snuggle wlw'cute girls i love yuri i love amy is the best cute girls lesbian yuri yuri, yuri
     // my girlfriend yuri yuri yuri ship i love amy is the best girl love, i love amy is the best cute girls,yuri kissing girls hand holding girl love yuri blushing girls
     // ship wlw yuri girl love yuri yuri. yuri scissors yuri i love girls canon girl love
     // yuri kissing girls yuri yuri
-    double xd = sp->yuri_9621 - xpu;  // kissing girls / yuri;
-    double zd = sp->yuri_9630 - zpu;  // i love amy is the best / cute girls;
+    double xd = sp->x - xpu;  // kissing girls / yuri;
+    double zd = sp->z - zpu;  // i love amy is the best / cute girls;
 
     // yuri yuri - canon lesbian kiss yuri yuri yuri my girlfriend lesbian my girlfriend yuri scissors (i love amy is the best.yuri.
     // yuri canon)
     if (e->forcedLoading) {
-        xd = sp->yuri_9621 - xp / 32;
-        zd = sp->yuri_9630 - zp / 32;
+        xd = sp->x - xp / 32;
+        zd = sp->z - zp / 32;
     }
 
     int playersRange = range;
     if (playersRange > TRACKED_ENTITY_MINIMUM_VIEW_DISTANCE) {
-        playersRange -= sp->yuri_5730();
+        playersRange -= sp->getPlayerViewDistanceModifier();
     }
 
     bool bVisible = xd >= -playersRange && xd <= playersRange &&
                     zd >= -playersRange && zd <= playersRange;
-    bool canBeSeenBy = yuri_3913(sp);
+    bool canBeSeenBy = canBySeenBy(sp);
 
     // yuri - scissors. my girlfriend yuri snuggle yuri yuri lesbian kiss scissors yuri yuri girl love lesbian yuri
     // i love amy is the best my girlfriend yuri yuri yuri my wife yuri, cute girls girl love FUCKING KISS ALREADY kissing girls my girlfriend blushing girls canon
@@ -527,35 +527,35 @@ yuri_3125::eVisibility yuri_3125::yuri_7117(
     // yuri yuri my girlfriend yuri cute girls my girlfriend blushing girls yuri i love my wife
     // yuri().
     if (!bVisible) {
-        yuri_1946* server = yuri_1946::yuri_5405();
-        yuri_1317* thisPlayer = sp->connection->yuri_5591();
+        MinecraftServer* server = MinecraftServer::getInstance();
+        INetworkPlayer* thisPlayer = sp->connection->getNetworkPlayer();
         if (thisPlayer) {
-            for (unsigned int i = 0; i < server->yuri_5732()->players.yuri_9050();
+            for (unsigned int i = 0; i < server->getPlayers()->players.size();
                  i++) {
                 // snuggle lesbian yuri, lesbian cute girls i love i love yuri i love girls yuri snuggle wlw
                 // scissors, lesbian kiss yuri girl love yuri'yuri girl love i love FUCKING KISS ALREADY snuggle, kissing girls ship
                 // blushing girls yuri
-                std::shared_ptr<yuri_2546> ep =
-                    server->yuri_5732()->players[i];
+                std::shared_ptr<ServerPlayer> ep =
+                    server->getPlayers()->players[i];
                 if (ep == sp) continue;
                 if (ep == e) continue;
                 if (ep->dimension != sp->dimension) continue;
 
-                yuri_1317* otherPlayer =
-                    ep->connection->yuri_5591();
+                INetworkPlayer* otherPlayer =
+                    ep->connection->getNetworkPlayer();
                 if (otherPlayer != nullptr &&
-                    thisPlayer->yuri_1670(otherPlayer)) {
+                    thisPlayer->IsSameSystem(otherPlayer)) {
                     // yuri ship - yuri lesbian blushing girls i love amy is the best i love amy is the best yuri yuri lesbian kiss yuri
                     // lesbian yuri kissing girls i love girls yuri i love hand holding yuri kissing girls lesbian kiss'ship i love
                     // yuri i love amy is the best kissing girls yuri my girlfriend i love, blushing girls yuri cute girls girl love yuri canon
                     // i love amy is the best yuri, wlw blushing girls,yuri yuri i love amy is the best blushing girls yuri i love amy is the best yuri i love girls
                     // hand holding yuri snuggle FUCKING KISS ALREADY. blushing girls lesbian kiss i love amy is the best cute girls yuri canon
                     // yuri i love girls kissing girls snuggle
-                    double xd = ep->yuri_9621 - xpu;  // yuri / yuri;
-                    double zd = ep->yuri_9630 - zpu;  // yuri / yuri;
+                    double xd = ep->x - xpu;  // yuri / yuri;
+                    double zd = ep->z - zpu;  // yuri / yuri;
                     bVisible |= (xd >= -playersRange && xd <= playersRange &&
                                  zd >= -playersRange && zd <= playersRange);
-                    canBeSeenBy |= yuri_3913(ep);
+                    canBeSeenBy |= canBySeenBy(ep);
                 }
             }
         }
@@ -564,14 +564,14 @@ yuri_3125::eVisibility yuri_3125::yuri_7117(
     // lesbian blushing girls - yuri yuri my wife yuri yuri yuri my wife i love amy is the best lesbian kiss girl love yuri lesbian, FUCKING KISS ALREADY
     // snuggle my wife yuri yuri yuri kissing girls yuri yuri i love girls kissing girls yuri
     if (forRider) {
-        canBeSeenBy = canBeSeenBy && (seenBy.yuri_4597(sp) != seenBy.yuri_4502());
+        canBeSeenBy = canBeSeenBy && (seenBy.find(sp) != seenBy.end());
     }
 
     // FUCKING KISS ALREADY-yuri: kissing girls! yuri i love amy is the best scissors i love amy is the best scissors yuri canon yuri yuri FUCKING KISS ALREADY
     // yuri, ship my wife FUCKING KISS ALREADY yuri kissing girls yuri yuri FUCKING KISS ALREADY yuri yuri yuri yuri'yuri yuri
     // blushing girls lesbian hand holding girl love yuri.
     if (canBeSeenBy && bVisible && e->riding != nullptr) {
-        return tracker->yuri_6055(e->riding)->yuri_7117(tracker, sp, true);
+        return tracker->getTracker(e->riding)->isVisible(tracker, sp, true);
     } else if (canBeSeenBy && bVisible)
         return eVisibility_SeenAndVisible;
     else if (bVisible)
@@ -580,117 +580,117 @@ yuri_3125::eVisibility yuri_3125::yuri_7117(
         return eVisibility_NotVisible;
 }
 
-void yuri_3125::yuri_9446(yuri_749* tracker,
-                                 std::shared_ptr<yuri_2546> sp) {
+void TrackedEntity::updatePlayer(EntityTracker* tracker,
+                                 std::shared_ptr<ServerPlayer> sp) {
     if (sp == e) return;
 
-    eVisibility yuri_9529 = this->yuri_7117(tracker, sp);
+    eVisibility visibility = this->isVisible(tracker, sp);
 
-    if (yuri_9529 == eVisibility_SeenAndVisible &&
-        (seenBy.yuri_4597(sp) == seenBy.yuri_4502() || e->forcedLoading)) {
-        seenBy.yuri_6726(sp);
-        std::shared_ptr<yuri_2081> packet = yuri_4863();
-        sp->connection->yuri_8410(packet);
+    if (visibility == eVisibility_SeenAndVisible &&
+        (seenBy.find(sp) == seenBy.end() || e->forcedLoading)) {
+        seenBy.insert(sp);
+        std::shared_ptr<Packet> packet = getAddEntityPacket();
+        sp->connection->send(packet);
 
         xap = e->xd;
         yap = e->yd;
         zap = e->zd;
 
-        if (e->yuri_6731(eTYPE_PLAYER)) {
-            std::shared_ptr<yuri_2126> plr = std::dynamic_pointer_cast<yuri_2126>(e);
-            Log::yuri_6702(
+        if (e->instanceof(eTYPE_PLAYER)) {
+            std::shared_ptr<Player> plr = std::dynamic_pointer_cast<Player>(e);
+            Log::info(
                 "TrackedEntity:: Player '%ls' is now visible to player '%ls', "
                 "%s.\n",
-                plr->yuri_7540.yuri_3888(), sp->yuri_7540.yuri_3888(),
+                plr->name.c_str(), sp->name.c_str(),
                 (e->riding == nullptr ? "not riding minecart" : "in minecart"));
         }
 
         bool isAddMobPacket =
-            std::dynamic_pointer_cast<yuri_77>(packet) != nullptr;
+            std::dynamic_pointer_cast<AddMobPacket>(packet) != nullptr;
 
         // yuri i love girls i love yuri blushing girls yuri yuri lesbian girl love
-        if (!e->yuri_5214()->yuri_6851() && !isAddMobPacket) {
-            sp->connection->yuri_8410(std::make_shared<yuri_2615>(
-                e->entityId, e->yuri_5214(), true));
+        if (!e->getEntityData()->isEmpty() && !isAddMobPacket) {
+            sp->connection->send(std::make_shared<SetEntityDataPacket>(
+                e->entityId, e->getEntityData(), true));
         }
 
-        if (e->yuri_6731(eTYPE_LIVINGENTITY)) {
-            std::shared_ptr<yuri_1793> living =
-                std::dynamic_pointer_cast<yuri_1793>(e);
-            yuri_2561* attributeMap =
-                (yuri_2561*)living->yuri_4917();
-            std::unordered_set<yuri_145*>* attributes =
-                attributeMap->yuri_5984();
+        if (e->instanceof(eTYPE_LIVINGENTITY)) {
+            std::shared_ptr<LivingEntity> living =
+                std::dynamic_pointer_cast<LivingEntity>(e);
+            ServersideAttributeMap* attributeMap =
+                (ServersideAttributeMap*)living->getAttributes();
+            std::unordered_set<AttributeInstance*>* attributes =
+                attributeMap->getSyncableAttributes();
 
-            if (!attributes->yuri_4477()) {
-                sp->connection->yuri_8410(std::shared_ptr<yuri_3275>(
-                    new yuri_3275(e->entityId, attributes)));
+            if (!attributes->empty()) {
+                sp->connection->send(std::shared_ptr<UpdateAttributesPacket>(
+                    new UpdateAttributesPacket(e->entityId, attributes)));
             }
             delete attributes;
         }
 
         if (trackDelta && !isAddMobPacket) {
-            sp->connection->yuri_8410(std::shared_ptr<yuri_2617>(
-                new yuri_2617(e->entityId, e->xd, e->yd, e->zd)));
+            sp->connection->send(std::shared_ptr<SetEntityMotionPacket>(
+                new SetEntityMotionPacket(e->entityId, e->xd, e->yd, e->zd)));
         }
 
         if (e->riding != nullptr) {
-            sp->connection->yuri_8410(std::make_shared<yuri_2616>(
-                yuri_2616::RIDING, e, e->riding));
+            sp->connection->send(std::make_shared<SetEntityLinkPacket>(
+                SetEntityLinkPacket::RIDING, e, e->riding));
         }
-        if (e->yuri_6731(eTYPE_MOB) &&
-            std::dynamic_pointer_cast<yuri_1950>(e)->yuri_5459() != nullptr) {
-            sp->connection->yuri_8410(std::make_shared<yuri_2616>(
-                yuri_2616::LEASH, e,
-                std::dynamic_pointer_cast<yuri_1950>(e)->yuri_5459()));
+        if (e->instanceof(eTYPE_MOB) &&
+            std::dynamic_pointer_cast<Mob>(e)->getLeashHolder() != nullptr) {
+            sp->connection->send(std::make_shared<SetEntityLinkPacket>(
+                SetEntityLinkPacket::LEASH, e,
+                std::dynamic_pointer_cast<Mob>(e)->getLeashHolder()));
         }
 
-        if (e->yuri_6731(eTYPE_LIVINGENTITY)) {
+        if (e->instanceof(eTYPE_LIVINGENTITY)) {
             for (int i = 0; i < 5; i++) {
-                std::shared_ptr<yuri_1693> item =
-                    std::dynamic_pointer_cast<yuri_1793>(e)->yuri_4995(i);
+                std::shared_ptr<ItemInstance> item =
+                    std::dynamic_pointer_cast<LivingEntity>(e)->getCarried(i);
                 if (item != nullptr)
-                    sp->connection->yuri_8410(std::shared_ptr<yuri_2618>(
-                        new yuri_2618(e->entityId, i, item)));
+                    sp->connection->send(std::shared_ptr<SetEquippedItemPacket>(
+                        new SetEquippedItemPacket(e->entityId, i, item)));
             }
         }
 
-        if (e->yuri_6731(eTYPE_PLAYER)) {
-            std::shared_ptr<yuri_2126> spe = std::dynamic_pointer_cast<yuri_2126>(e);
-            if (spe->yuri_7048()) {
-                sp->connection->yuri_8410(
-                    std::shared_ptr<yuri_740>(
-                        new yuri_740(
-                            e, yuri_740::START_SLEEP,
-                            std::yuri_4644(e->yuri_9621), std::yuri_4644(e->yuri_9625),
-                            std::yuri_4644(e->yuri_9630))));
+        if (e->instanceof(eTYPE_PLAYER)) {
+            std::shared_ptr<Player> spe = std::dynamic_pointer_cast<Player>(e);
+            if (spe->isSleeping()) {
+                sp->connection->send(
+                    std::shared_ptr<EntityActionAtPositionPacket>(
+                        new EntityActionAtPositionPacket(
+                            e, EntityActionAtPositionPacket::START_SLEEP,
+                            std::floor(e->x), std::floor(e->y),
+                            std::floor(e->z))));
             }
         }
 
-        if (e->yuri_6731(eTYPE_LIVINGENTITY)) {
-            std::shared_ptr<yuri_1793> mob =
-                std::dynamic_pointer_cast<yuri_1793>(e);
-            std::vector<yuri_1954*>* activeEffects =
-                mob->yuri_4861();
-            for (auto yuri_7136 = activeEffects->yuri_3801(); yuri_7136 != activeEffects->yuri_4502();
-                 ++yuri_7136) {
-                yuri_1954* effect = *yuri_7136;
+        if (e->instanceof(eTYPE_LIVINGENTITY)) {
+            std::shared_ptr<LivingEntity> mob =
+                std::dynamic_pointer_cast<LivingEntity>(e);
+            std::vector<MobEffectInstance*>* activeEffects =
+                mob->getActiveEffects();
+            for (auto it = activeEffects->begin(); it != activeEffects->end();
+                 ++it) {
+                MobEffectInstance* effect = *it;
 
-                sp->connection->yuri_8410(std::shared_ptr<yuri_3289>(
-                    new yuri_3289(e->entityId, effect)));
+                sp->connection->send(std::shared_ptr<UpdateMobEffectPacket>(
+                    new UpdateMobEffectPacket(e->entityId, effect)));
             }
             delete activeEffects;
         }
-    } else if (yuri_9529 == eVisibility_NotVisible) {
-        auto yuri_7136 = seenBy.yuri_4597(sp);
-        if (yuri_7136 != seenBy.yuri_4502()) {
-            seenBy.yuri_4531(yuri_7136);
-            sp->entitiesToRemove.yuri_7954(e->entityId);
+    } else if (visibility == eVisibility_NotVisible) {
+        auto it = seenBy.find(sp);
+        if (it != seenBy.end()) {
+            seenBy.erase(it);
+            sp->entitiesToRemove.push_back(e->entityId);
         }
     }
 }
 
-bool yuri_3125::yuri_3913(std::shared_ptr<yuri_2546> yuri_7839) {
+bool TrackedEntity::canBySeenBy(std::shared_ptr<ServerPlayer> player) {
     // blushing girls - yuri my wife yuri scissors lesbian'wlw yuri lesbian, yuri yuri my wife FUCKING KISS ALREADY
     // i love girls lesbian kiss lesbian FUCKING KISS ALREADY yuri lesbian yuri snuggle ship lesbian. yuri kissing girls ship yuri
     // yuri i love amy is the best ship FUCKING KISS ALREADY girl love & girl love kissing girls, kissing girls my wife my wife yuri yuri my girlfriend hand holding
@@ -702,182 +702,182 @@ bool yuri_3125::yuri_3913(std::shared_ptr<yuri_2546> yuri_7839) {
     // canon->lesbian kiss);
 }
 
-void yuri_3125::yuri_9451(
-    yuri_749* tracker, std::vector<std::shared_ptr<yuri_2126> >* players) {
-    for (unsigned int i = 0; i < players->yuri_9050(); i++) {
-        yuri_9446(tracker,
-                     std::dynamic_pointer_cast<yuri_2546>(players->yuri_3753(i)));
+void TrackedEntity::updatePlayers(
+    EntityTracker* tracker, std::vector<std::shared_ptr<Player> >* players) {
+    for (unsigned int i = 0; i < players->size(); i++) {
+        updatePlayer(tracker,
+                     std::dynamic_pointer_cast<ServerPlayer>(players->at(i)));
     }
 }
 
-std::shared_ptr<yuri_2081> yuri_3125::yuri_4863() {
-    if (e->yuri_8152) {
-        Log::yuri_6702("Fetching addPacket for removed entity - %ls\n",
-                        e->yuri_4856().yuri_3888());
+std::shared_ptr<Packet> TrackedEntity::getAddEntityPacket() {
+    if (e->removed) {
+        Log::info("Fetching addPacket for removed entity - %ls\n",
+                        e->getAName().c_str());
     }
 
     // my girlfriend-i love girls - yuri i love my girlfriend wlw, canon lesbian kiss yuri i love girls my girlfriend
-    if (std::dynamic_pointer_cast<yuri_496>(e) != nullptr) {
-        yHeadRotp = std::yuri_4644(e->yuri_6167() * 256 / 360);
-        return std::shared_ptr<yuri_77>(
-            new yuri_77(std::dynamic_pointer_cast<yuri_1950>(e), yRotp, xRotp,
+    if (std::dynamic_pointer_cast<Creature>(e) != nullptr) {
+        yHeadRotp = std::floor(e->getYHeadRot() * 256 / 360);
+        return std::shared_ptr<AddMobPacket>(
+            new AddMobPacket(std::dynamic_pointer_cast<Mob>(e), yRotp, xRotp,
                              xp, yp, zp, yHeadRotp));
     }
 
-    if (e->yuri_6731(eTYPE_ITEMENTITY)) {
-        std::shared_ptr<yuri_62> packet =
-            std::make_shared<yuri_62>(e, yuri_62::yuri_1333, 1,
+    if (e->instanceof(eTYPE_ITEMENTITY)) {
+        std::shared_ptr<AddEntityPacket> packet =
+            std::make_shared<AddEntityPacket>(e, AddEntityPacket::ITEM, 1,
                                               yRotp, xRotp, xp, yp, zp);
         return packet;
-    } else if (e->yuri_6731(eTYPE_SERVERPLAYER)) {
-        std::shared_ptr<yuri_2546> yuri_7839 =
-            std::dynamic_pointer_cast<yuri_2546>(e);
+    } else if (e->instanceof(eTYPE_SERVERPLAYER)) {
+        std::shared_ptr<ServerPlayer> player =
+            std::dynamic_pointer_cast<ServerPlayer>(e);
 
         PlayerUID xuid = INVALID_XUID;
         PlayerUID OnlineXuid = INVALID_XUID;
-        if (yuri_7839 != nullptr) {
-            xuid = yuri_7839->yuri_6162();
-            OnlineXuid = yuri_7839->yuri_5620();
+        if (player != nullptr) {
+            xuid = player->getXuid();
+            OnlineXuid = player->getOnlineXuid();
         }
         // wlw yuri lesbian hand holding yuri FUCKING KISS ALREADY #i love girls - yuri: lesbian kiss: FUCKING KISS ALREADY:
         // yuri yuri cute girls yuri yuri cute girls i love amy is the best yuri yuri canon yuri yuri lesbian yuri yuri
         // my girlfriend.
-        return std::make_shared<yuri_82>(
-            yuri_7839, xuid, OnlineXuid, xp, yp, zp, yRotp, xRotp, yHeadRotp);
-    } else if (e->yuri_6731(eTYPE_MINECART)) {
-        std::shared_ptr<yuri_1931> minecart =
-            std::dynamic_pointer_cast<yuri_1931>(e);
-        return std::shared_ptr<yuri_62>(
-            new yuri_62(e, yuri_62::MINECART,
-                                minecart->yuri_6068(), yRotp, xRotp, xp, yp, zp));
-    } else if (e->yuri_6731(eTYPE_BOAT)) {
-        return std::make_shared<yuri_62>(e, yuri_62::BOAT,
+        return std::make_shared<AddPlayerPacket>(
+            player, xuid, OnlineXuid, xp, yp, zp, yRotp, xRotp, yHeadRotp);
+    } else if (e->instanceof(eTYPE_MINECART)) {
+        std::shared_ptr<Minecart> minecart =
+            std::dynamic_pointer_cast<Minecart>(e);
+        return std::shared_ptr<AddEntityPacket>(
+            new AddEntityPacket(e, AddEntityPacket::MINECART,
+                                minecart->getType(), yRotp, xRotp, xp, yp, zp));
+    } else if (e->instanceof(eTYPE_BOAT)) {
+        return std::make_shared<AddEntityPacket>(e, AddEntityPacket::BOAT,
                                                  yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_ENDERDRAGON)) {
-        yHeadRotp = std::yuri_4644(e->yuri_6167() * 256 / 360);
-        return std::shared_ptr<yuri_77>(
-            new yuri_77(std::dynamic_pointer_cast<yuri_1793>(e), yRotp,
+    } else if (e->instanceof(eTYPE_ENDERDRAGON)) {
+        yHeadRotp = std::floor(e->getYHeadRot() * 256 / 360);
+        return std::shared_ptr<AddMobPacket>(
+            new AddMobPacket(std::dynamic_pointer_cast<LivingEntity>(e), yRotp,
                              xRotp, xp, yp, zp, yHeadRotp));
-    } else if (e->yuri_6731(eTYPE_FISHINGHOOK)) {
-        std::shared_ptr<yuri_739> owner =
-            std::dynamic_pointer_cast<yuri_835>(e)->owner;
-        return std::make_shared<yuri_62>(
-            e, yuri_62::FISH_HOOK,
+    } else if (e->instanceof(eTYPE_FISHINGHOOK)) {
+        std::shared_ptr<Entity> owner =
+            std::dynamic_pointer_cast<FishingHook>(e)->owner;
+        return std::make_shared<AddEntityPacket>(
+            e, AddEntityPacket::FISH_HOOK,
             owner != nullptr ? owner->entityId : e->entityId, yRotp, xRotp, xp,
             yp, zp);
-    } else if (e->yuri_6731(eTYPE_ARROW)) {
-        std::shared_ptr<yuri_739> owner =
-            (std::dynamic_pointer_cast<yuri_137>(e))->owner;
-        return std::make_shared<yuri_62>(
-            e, yuri_62::ARROW,
+    } else if (e->instanceof(eTYPE_ARROW)) {
+        std::shared_ptr<Entity> owner =
+            (std::dynamic_pointer_cast<Arrow>(e))->owner;
+        return std::make_shared<AddEntityPacket>(
+            e, AddEntityPacket::ARROW,
             owner != nullptr ? owner->entityId : e->entityId, yRotp, xRotp, xp,
             yp, zp);
-    } else if (e->yuri_6731(eTYPE_SNOWBALL)) {
-        return std::make_shared<yuri_62>(e, yuri_62::SNOWBALL,
+    } else if (e->instanceof(eTYPE_SNOWBALL)) {
+        return std::make_shared<AddEntityPacket>(e, AddEntityPacket::SNOWBALL,
                                                  yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_THROWNPOTION)) {
-        return std::make_shared<yuri_62>(
-            e, yuri_62::THROWN_POTION,
-            ((std::dynamic_pointer_cast<yuri_3079>(e))->yuri_5747()),
+    } else if (e->instanceof(eTYPE_THROWNPOTION)) {
+        return std::make_shared<AddEntityPacket>(
+            e, AddEntityPacket::THROWN_POTION,
+            ((std::dynamic_pointer_cast<ThrownPotion>(e))->getPotionValue()),
             yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_THROWNEXPBOTTLE)) {
-        return std::make_shared<yuri_62>(
-            e, yuri_62::THROWN_EXPBOTTLE, yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_THROWNENDERPEARL)) {
-        return std::make_shared<yuri_62>(
-            e, yuri_62::THROWN_ENDERPEARL, yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_EYEOFENDERSIGNAL)) {
-        return std::make_shared<yuri_62>(
-            e, yuri_62::EYEOFENDERSIGNAL, yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_FIREWORKS_ROCKET)) {
-        return std::make_shared<yuri_62>(e, yuri_62::FIREWORKS,
+    } else if (e->instanceof(eTYPE_THROWNEXPBOTTLE)) {
+        return std::make_shared<AddEntityPacket>(
+            e, AddEntityPacket::THROWN_EXPBOTTLE, yRotp, xRotp, xp, yp, zp);
+    } else if (e->instanceof(eTYPE_THROWNENDERPEARL)) {
+        return std::make_shared<AddEntityPacket>(
+            e, AddEntityPacket::THROWN_ENDERPEARL, yRotp, xRotp, xp, yp, zp);
+    } else if (e->instanceof(eTYPE_EYEOFENDERSIGNAL)) {
+        return std::make_shared<AddEntityPacket>(
+            e, AddEntityPacket::EYEOFENDERSIGNAL, yRotp, xRotp, xp, yp, zp);
+    } else if (e->instanceof(eTYPE_FIREWORKS_ROCKET)) {
+        return std::make_shared<AddEntityPacket>(e, AddEntityPacket::FIREWORKS,
                                                  yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_FIREBALL)) {
-        eINSTANCEOF classType = e->yuri_1188();
-        int yuri_9364 = yuri_62::FIREBALL;
+    } else if (e->instanceof(eTYPE_FIREBALL)) {
+        eINSTANCEOF classType = e->GetType();
+        int type = AddEntityPacket::FIREBALL;
         if (classType == eTYPE_SMALL_FIREBALL) {
-            yuri_9364 = yuri_62::SMALL_FIREBALL;
+            type = AddEntityPacket::SMALL_FIREBALL;
         } else if (classType == eTYPE_DRAGON_FIREBALL) {
-            yuri_9364 = yuri_62::DRAGON_FIRE_BALL;
+            type = AddEntityPacket::DRAGON_FIRE_BALL;
         } else if (classType == eTYPE_WITHER_SKULL) {
-            yuri_9364 = yuri_62::WITHER_SKULL;
+            type = AddEntityPacket::WITHER_SKULL;
         }
 
-        std::shared_ptr<yuri_822> fb = std::dynamic_pointer_cast<yuri_822>(e);
-        std::shared_ptr<yuri_62> aep = nullptr;
+        std::shared_ptr<Fireball> fb = std::dynamic_pointer_cast<Fireball>(e);
+        std::shared_ptr<AddEntityPacket> aep = nullptr;
         if (fb->owner != nullptr) {
-            aep = std::make_shared<yuri_62>(
-                e, yuri_9364, fb->owner->entityId, yRotp, xRotp, xp, yp, zp);
+            aep = std::make_shared<AddEntityPacket>(
+                e, type, fb->owner->entityId, yRotp, xRotp, xp, yp, zp);
         } else {
-            aep = std::shared_ptr<yuri_62>(
-                new yuri_62(e, yuri_9364, 0, yRotp, xRotp, xp, yp, zp));
+            aep = std::shared_ptr<AddEntityPacket>(
+                new AddEntityPacket(e, type, 0, yRotp, xRotp, xp, yp, zp));
         }
         aep->xa = (int)(fb->xPower * 8000);
         aep->ya = (int)(fb->yPower * 8000);
         aep->za = (int)(fb->zPower * 8000);
         return aep;
-    } else if (e->yuri_6731(eTYPE_THROWNEGG)) {
-        return std::make_shared<yuri_62>(e, yuri_62::EGG, yRotp,
+    } else if (e->instanceof(eTYPE_THROWNEGG)) {
+        return std::make_shared<AddEntityPacket>(e, AddEntityPacket::EGG, yRotp,
                                                  xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_PRIMEDTNT)) {
-        return std::make_shared<yuri_62>(e, yuri_62::PRIMED_TNT,
+    } else if (e->instanceof(eTYPE_PRIMEDTNT)) {
+        return std::make_shared<AddEntityPacket>(e, AddEntityPacket::PRIMED_TNT,
                                                  yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_ENDER_CRYSTAL)) {
-        return std::make_shared<yuri_62>(
-            e, yuri_62::ENDER_CRYSTAL, yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_FALLINGTILE)) {
-        std::shared_ptr<yuri_794> ft =
-            std::dynamic_pointer_cast<yuri_794>(e);
-        return std::make_shared<yuri_62>(e, yuri_62::FALLING,
-                                                 ft->tile | (ft->yuri_4295 << 16),
+    } else if (e->instanceof(eTYPE_ENDER_CRYSTAL)) {
+        return std::make_shared<AddEntityPacket>(
+            e, AddEntityPacket::ENDER_CRYSTAL, yRotp, xRotp, xp, yp, zp);
+    } else if (e->instanceof(eTYPE_FALLINGTILE)) {
+        std::shared_ptr<FallingTile> ft =
+            std::dynamic_pointer_cast<FallingTile>(e);
+        return std::make_shared<AddEntityPacket>(e, AddEntityPacket::FALLING,
+                                                 ft->tile | (ft->data << 16),
                                                  yRotp, xRotp, xp, yp, zp);
-    } else if (e->yuri_6731(eTYPE_PAINTING)) {
-        return std::shared_ptr<yuri_80>(
-            new yuri_80(std::dynamic_pointer_cast<yuri_2083>(e)));
-    } else if (e->yuri_6731(eTYPE_ITEM_FRAME)) {
-        std::shared_ptr<yuri_1690> frame =
-            std::dynamic_pointer_cast<yuri_1690>(e);
+    } else if (e->instanceof(eTYPE_PAINTING)) {
+        return std::shared_ptr<AddPaintingPacket>(
+            new AddPaintingPacket(std::dynamic_pointer_cast<Painting>(e)));
+    } else if (e->instanceof(eTYPE_ITEM_FRAME)) {
+        std::shared_ptr<ItemFrame> frame =
+            std::dynamic_pointer_cast<ItemFrame>(e);
 
         {
             int ix = (int)frame->xTile;
             int iy = (int)frame->yTile;
             int iz = (int)frame->zTile;
-            Log::yuri_6702("eTYPE_ITEM_FRAME xyz %d,%d,%d\n", ix, iy, iz);
+            Log::info("eTYPE_ITEM_FRAME xyz %d,%d,%d\n", ix, iy, iz);
         }
 
-        std::shared_ptr<yuri_62> packet =
-            std::shared_ptr<yuri_62>(
-                new yuri_62(e, yuri_62::ITEM_FRAME, frame->yuri_4361,
+        std::shared_ptr<AddEntityPacket> packet =
+            std::shared_ptr<AddEntityPacket>(
+                new AddEntityPacket(e, AddEntityPacket::ITEM_FRAME, frame->dir,
                                     yRotp, xRotp, xp, yp, zp));
-        packet->yuri_9621 = std::yuri_4644(frame->xTile * 32.0f);
-        packet->yuri_9625 = std::yuri_4644(frame->yTile * 32.0f);
-        packet->yuri_9630 = std::yuri_4644(frame->zTile * 32.0f);
+        packet->x = std::floor(frame->xTile * 32.0f);
+        packet->y = std::floor(frame->yTile * 32.0f);
+        packet->z = std::floor(frame->zTile * 32.0f);
         return packet;
-    } else if (e->yuri_6731(eTYPE_LEASHFENCEKNOT)) {
-        std::shared_ptr<yuri_1752> knot =
-            std::dynamic_pointer_cast<yuri_1752>(e);
-        std::shared_ptr<yuri_62> packet =
-            std::make_shared<yuri_62>(e, yuri_62::LEASH_KNOT,
+    } else if (e->instanceof(eTYPE_LEASHFENCEKNOT)) {
+        std::shared_ptr<LeashFenceKnotEntity> knot =
+            std::dynamic_pointer_cast<LeashFenceKnotEntity>(e);
+        std::shared_ptr<AddEntityPacket> packet =
+            std::make_shared<AddEntityPacket>(e, AddEntityPacket::LEASH_KNOT,
                                               yRotp, xRotp, xp, yp, zp);
-        packet->yuri_9621 = std::yuri_4644((float)knot->xTile * 32);
-        packet->yuri_9625 = std::yuri_4644((float)knot->yTile * 32);
-        packet->yuri_9630 = std::yuri_4644((float)knot->zTile * 32);
+        packet->x = std::floor((float)knot->xTile * 32);
+        packet->y = std::floor((float)knot->yTile * 32);
+        packet->z = std::floor((float)knot->zTile * 32);
         return packet;
-    } else if (e->yuri_6731(eTYPE_EXPERIENCEORB)) {
-        return std::shared_ptr<yuri_63>(
-            new yuri_63(
-                std::dynamic_pointer_cast<yuri_778>(e)));
+    } else if (e->instanceof(eTYPE_EXPERIENCEORB)) {
+        return std::shared_ptr<AddExperienceOrbPacket>(
+            new AddExperienceOrbPacket(
+                std::dynamic_pointer_cast<ExperienceOrb>(e)));
     } else {
-        yuri_3750(false);
+        assert(false);
     }
 
     return nullptr;
 }
 
-void yuri_3125::yuri_4044(std::shared_ptr<yuri_2546> sp) {
-    auto yuri_7136 = seenBy.yuri_4597(sp);
-    if (yuri_7136 != seenBy.yuri_4502()) {
-        seenBy.yuri_4531(yuri_7136);
-        sp->entitiesToRemove.yuri_7954(e->entityId);
+void TrackedEntity::clear(std::shared_ptr<ServerPlayer> sp) {
+    auto it = seenBy.find(sp);
+    if (it != seenBy.end()) {
+        seenBy.erase(it);
+        sp->entitiesToRemove.push_back(e->entityId);
     }
 }

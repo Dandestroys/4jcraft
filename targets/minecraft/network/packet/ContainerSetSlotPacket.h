@@ -5,32 +5,32 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_1693;
+class ItemInstance;
 
-class yuri_449
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_449> {
+class ContainerSetSlotPacket
+    : public Packet,
+      public std::enable_shared_from_this<ContainerSetSlotPacket> {
 public:
     static const int CONTAINER;
     static const int WORKBENCH;
     static const int FURNACE;
 
     int containerId;
-    int yuri_9061;
-    std::shared_ptr<yuri_1693> item;
+    int slot;
+    std::shared_ptr<ItemInstance> item;
 
-    yuri_449();
-    yuri_449(int containerId, int yuri_9061,
-                           std::shared_ptr<yuri_1693> item);
+    ContainerSetSlotPacket();
+    ContainerSetSlotPacket(int containerId, int slot,
+                           std::shared_ptr<ItemInstance> item);
 
-    virtual void yuri_6416(PacketListener* listener);
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void handle(PacketListener* listener);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_449>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<ContainerSetSlotPacket>();
     }
-    virtual int yuri_5390() { return 103; }
+    virtual int getId() { return 103; }
 };

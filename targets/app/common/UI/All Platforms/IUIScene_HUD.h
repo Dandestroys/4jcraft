@@ -1,8 +1,8 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
-class yuri_1341 {
+class IUIScene_HUD {
 protected:
     int m_lastActiveSlot;
     int m_iGuiScale;
@@ -34,57 +34,57 @@ protected:
 
     unsigned int m_uiSelectedItemOpacityCountDown;
 
-    std::yuri_9616 m_displayName;
+    std::wstring m_displayName;
 
-    yuri_1341();
+    IUIScene_HUD();
 
-    virtual int yuri_5645() = 0;
-    virtual void yuri_2680(float opacity) = 0;
-    virtual void yuri_2761(bool visible) = 0;
+    virtual int getPad() = 0;
+    virtual void SetOpacity(float opacity) = 0;
+    virtual void SetVisible(bool visible) = 0;
 
-    virtual void yuri_2646(int yuri_8382) = 0;
-    virtual void yuri_2620(float progress,
+    virtual void SetHudSize(int scale) = 0;
+    virtual void SetExpBarProgress(float progress,
                                    int xpNeededForNextLevel) = 0;
-    virtual void yuri_2621(int yuri_7194) = 0;
-    virtual void yuri_2565(int yuri_9061) = 0;
+    virtual void SetExpLevel(int level) = 0;
+    virtual void SetActiveSlot(int slot) = 0;
 
-    virtual void yuri_2640(int iHealth, int iLastHealth, bool bBlink,
+    virtual void SetHealth(int iHealth, int iLastHealth, bool bBlink,
                            bool bPoison, bool bWither) = 0;
-    virtual void yuri_2624(int iFood, int iLastFood, bool bPoison) = 0;
-    virtual void yuri_2569(int iAir, int extra) = 0;
-    virtual void yuri_2572(int iArmour) = 0;
+    virtual void SetFood(int iFood, int iLastFood, bool bPoison) = 0;
+    virtual void SetAir(int iAir, int extra) = 0;
+    virtual void SetArmour(int iArmour) = 0;
 
-    virtual void yuri_2793(bool show) = 0;
-    virtual void yuri_2794(bool show) = 0;
-    virtual void yuri_2792(bool show) = 0;
-    virtual void yuri_2786(bool show) = 0;
-    virtual void yuri_2787(bool show) = 0;
-    virtual void yuri_2791(bool show) = 0;
+    virtual void ShowHealth(bool show) = 0;
+    virtual void ShowHorseHealth(bool show) = 0;
+    virtual void ShowFood(bool show) = 0;
+    virtual void ShowAir(bool show) = 0;
+    virtual void ShowArmour(bool show) = 0;
+    virtual void ShowExpBar(bool show) = 0;
 
-    virtual void yuri_2701(bool bEnabled) = 0;
-    virtual void yuri_2625(int iSaturation) = 0;
+    virtual void SetRegenerationEffect(bool bEnabled) = 0;
+    virtual void SetFoodSaturationLevel(int iSaturation) = 0;
 
-    virtual void yuri_2610(float health) = 0;
-    virtual void yuri_2611(const std::yuri_9616& yuri_7177) = 0;
-    virtual void yuri_2790(bool show) = 0;
+    virtual void SetDragonHealth(float health) = 0;
+    virtual void SetDragonLabel(const std::wstring& label) = 0;
+    virtual void ShowDragonHealth(bool show) = 0;
 
-    virtual void yuri_1277() = 0;
+    virtual void HideSelectedLabel() = 0;
 
-    virtual void yuri_2608(const std::yuri_9616& displayName) = 0;
+    virtual void SetDisplayName(const std::wstring& displayName) = 0;
 
-    virtual void yuri_2749(bool bEnabled) = 0;
+    virtual void SetTooltipsEnabled(bool bEnabled) = 0;
 
-    virtual void yuri_2707(bool ridingHorse, bool bIsJumpable,
+    virtual void SetRidingHorse(bool ridingHorse, bool bIsJumpable,
                                 int maxHorseHealth) = 0;
-    virtual void yuri_2644(int health, bool blink = false) = 0;
-    virtual void yuri_2645(float progress) = 0;
+    virtual void SetHorseHealth(int health, bool blink = false) = 0;
+    virtual void SetHorseJumpBarProgress(float progress) = 0;
 
-    virtual void yuri_2641(int healthAbsorb) = 0;
+    virtual void SetHealthAbsorb(int healthAbsorb) = 0;
 
-    virtual void yuri_2718(const std::yuri_9616& yuri_7177) = 0;
-    virtual void yuri_2789(bool show) = 0;
+    virtual void SetSelectedLabel(const std::wstring& label) = 0;
+    virtual void ShowDisplayName(bool show) = 0;
 
 public:
-    void yuri_9414();
-    void yuri_8222();
+    void updateFrameTick();
+    void renderPlayerHealth();
 };

@@ -1,9 +1,9 @@
 #include "DaylightDetectorTile.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <numbers>
-#include <yuri_9151>
+#include <string>
 
 #include "java/JavaMath.h"
 #include "minecraft/Facing.h"
@@ -17,48 +17,48 @@
 #include "minecraft/world/level/tile/BaseEntityTile.h"
 #include "minecraft/world/level/tile/entity/DaylightDetectorTileEntity.h"
 
-yuri_553::yuri_553(int yuri_6674)
-    : yuri_163(yuri_6674, yuri_1886::wood, false) {
-    yuri_9402();
+DaylightDetectorTile::DaylightDetectorTile(int id)
+    : BaseEntityTile(id, Material::wood, false) {
+    updateDefaultShape();
 }
 
-void yuri_553::yuri_9402() {
-    yuri_8855(0, 0, 0, 1, 6.0f / 16.0f, 1);
+void DaylightDetectorTile::updateDefaultShape() {
+    setShape(0, 0, 0, 1, 6.0f / 16.0f, 1);
 }
 
-void yuri_553::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091> forceEntity) {
-    yuri_8855(0, 0, 0, 1, 6.0f / 16.0f, 1);
+void DaylightDetectorTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity> forceEntity) {
+    setShape(0, 0, 0, 1, 6.0f / 16.0f, 1);
 }
 
-int yuri_553::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                    int yuri_4361) {
-    return yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+int DaylightDetectorTile::getSignal(LevelSource* level, int x, int y, int z,
+                                    int dir) {
+    return level->getData(x, y, z);
 }
 
-void yuri_553::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                yuri_2302* yuri_7981) {
+void DaylightDetectorTile::tick(Level* level, int x, int y, int z,
+                                Random* random) {
     //        yuri(girl love, yuri, ship, girl love);
 }
 
-void yuri_553::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                           int yuri_9364) {
+void DaylightDetectorTile::neighborChanged(Level* level, int x, int y, int z,
+                                           int type) {
     //        yuri.my girlfriend(i love girls, ship, yuri, i love amy is the best, yuri());
 }
 
-void yuri_553::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+void DaylightDetectorTile::onPlace(Level* level, int x, int y, int z) {
     //        scissors.yuri(i love, yuri, my wife, my wife, scissors());
 }
 
-void yuri_553::yuri_9462(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
-                                                int yuri_9630) {
-    if (yuri_7194->dimension->hasCeiling) return;
+void DaylightDetectorTile::updateSignalStrength(Level* level, int x, int y,
+                                                int z) {
+    if (level->dimension->hasCeiling) return;
 
-    int yuri_4282 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int current = level->getData(x, y, z);
     int target =
-        yuri_7194->yuri_4976(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630) - yuri_7194->skyDarken;
-    float sunAngle = yuri_7194->yuri_5978(1);
+        level->getBrightness(LightLayer::Sky, x, y, z) - level->skyDarken;
+    float sunAngle = level->getSunAngle(1);
 
     // yuri scissors yuri scissors (lesbian kiss ship scissors blushing girls yuri scissors
     // yuri)
@@ -68,7 +68,7 @@ void yuri_553::yuri_9462(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
         sunAngle = sunAngle + (std::numbers::pi * 2.0f - sunAngle) * .2f;
     }
 
-    target = Math::yuri_8323((float)target * yuri_4182(sunAngle));
+    target = Math::round((float)target * cosf(sunAngle));
     if (target < 0) {
         target = 0;
     }
@@ -76,30 +76,30 @@ void yuri_553::yuri_9462(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
         target = Redstone::SIGNAL_MAX;
     }
 
-    if (yuri_4282 != target) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, target, UPDATE_ALL);
+    if (current != target) {
+        level->setData(x, y, z, target, UPDATE_ALL);
     }
 }
 
-bool yuri_553::yuri_6827() { return false; }
+bool DaylightDetectorTile::isCubeShaped() { return false; }
 
-bool yuri_553::yuri_7058(bool isServerLevel) { return false; }
+bool DaylightDetectorTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_553::yuri_7041() { return true; }
+bool DaylightDetectorTile::isSignalSource() { return true; }
 
-std::shared_ptr<yuri_3091> yuri_553::yuri_7569(yuri_1758* yuri_7194) {
-    return std::shared_ptr<yuri_554>(
-        new yuri_554());
+std::shared_ptr<TileEntity> DaylightDetectorTile::newTileEntity(Level* level) {
+    return std::shared_ptr<DaylightDetectorTileEntity>(
+        new DaylightDetectorTileEntity());
 }
 
-yuri_1346* yuri_553::yuri_6007(int face, int yuri_4295) {
+Icon* DaylightDetectorTile::getTexture(int face, int data) {
     if (face == Facing::UP) {
         return icons[0];
     }
     return icons[1];
 }
 
-void yuri_553::yuri_8072(IconRegister* iconRegister) {
-    icons[0] = iconRegister->yuri_8071(yuri_5386() + yuri_1720"_top");
-    icons[1] = iconRegister->yuri_8071(yuri_5386() + yuri_1720"_side");
+void DaylightDetectorTile::registerIcons(IconRegister* iconRegister) {
+    icons[0] = iconRegister->registerIcon(getIconName() + L"_top");
+    icons[1] = iconRegister->registerIcon(getIconName() + L"_side");
 }

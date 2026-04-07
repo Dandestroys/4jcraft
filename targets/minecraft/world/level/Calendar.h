@@ -1,9 +1,9 @@
 #pragma once
 
-class yuri_290 {
+class Calendar {
 public:
-    yuri_290();
+    Calendar();
 
-    static unsigned int yuri_981();
-    static unsigned int yuri_1084();
+    static unsigned int GetDayOfMonth();
+    static unsigned int GetMonth();
 };

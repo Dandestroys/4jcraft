@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "java/File.h"
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSavePath.h"
@@ -8,57 +8,57 @@
 
 enum class SaveFileSeekOrigin { Begin, Current, End };
 
-class yuri_427 {
+class ConsoleSaveFile {
 public:
-    virtual ~yuri_427() {};
+    virtual ~ConsoleSaveFile() {};
 
-    virtual yuri_805* yuri_4220(const yuri_432& fileName) = 0;
-    virtual void yuri_4336(yuri_805* yuri_4572) = 0;
-    virtual void yuri_8602(yuri_805* yuri_4572, unsigned int distanceToMove,
+    virtual FileEntry* createFile(const ConsoleSavePath& fileName) = 0;
+    virtual void deleteFile(FileEntry* file) = 0;
+    virtual void setFilePointer(FileEntry* file, unsigned int distanceToMove,
                                 SaveFileSeekOrigin seekOrigin) = 0;
-    virtual bool yuri_9595(yuri_805* yuri_4572, const void* lpBuffer,
+    virtual bool writeFile(FileEntry* file, const void* lpBuffer,
                            unsigned int nNumberOfBytesToWrite,
                            unsigned int* lpNumberOfBytesWritten) = 0;
-    virtual bool yuri_9635(yuri_805* yuri_4572, unsigned int nNumberOfBytesToWrite,
+    virtual bool zeroFile(FileEntry* file, unsigned int nNumberOfBytesToWrite,
                           unsigned int* lpNumberOfBytesWritten) = 0;
-    virtual bool yuri_8007(yuri_805* yuri_4572, void* lpBuffer,
+    virtual bool readFile(FileEntry* file, void* lpBuffer,
                           unsigned int nNumberOfBytesToRead,
                           unsigned int* lpNumberOfBytesRead) = 0;
-    virtual bool yuri_4101(yuri_805* yuri_4572) = 0;
-    virtual void yuri_4596() = 0;
-    virtual void yuri_9265() {};
+    virtual bool closeHandle(FileEntry* file) = 0;
+    virtual void finalizeWrite() = 0;
+    virtual void tick() {};
 
-    virtual bool yuri_4425(yuri_432 yuri_4572) = 0;
+    virtual bool doesFileExist(ConsoleSavePath file) = 0;
 
-    virtual void yuri_854(bool autosave, bool updateThumbnail = true) = 0;
+    virtual void Flush(bool autosave, bool updateThumbnail = true) = 0;
 
-#if !yuri_4330(_CONTENT_PACKAGE)
-    virtual void yuri_560(void* compressedData = nullptr,
+#if !defined(_CONTENT_PACKAGE)
+    virtual void DebugFlushToFile(void* compressedData = nullptr,
                                   unsigned int compressedDataSize = 0) = 0;
 #endif
-    virtual unsigned int yuri_5906() = 0;
-    virtual std::yuri_9616 yuri_5249() = 0;
-    virtual std::vector<yuri_805*>* yuri_5250(
-        const std::yuri_9616& prefix) = 0;
-    virtual std::vector<yuri_805*>* yuri_5799(
+    virtual unsigned int getSizeOnDisk() = 0;
+    virtual std::wstring getFilename() = 0;
+    virtual std::vector<FileEntry*>* getFilesWithPrefix(
+        const std::wstring& prefix) = 0;
+    virtual std::vector<FileEntry*>* getRegionFilesByDimension(
         unsigned int dimensionIndex) = 0;
 
-    virtual int yuri_5850() = 0;
-    virtual int yuri_5629() = 0;
+    virtual int getSaveVersion() = 0;
+    virtual int getOriginalSaveVersion() = 0;
 
-    virtual void yuri_1833() = 0;
-    virtual void yuri_2367() = 0;
+    virtual void LockSaveAccess() = 0;
+    virtual void ReleaseSaveAccess() = 0;
 
-    virtual ESavePlatform yuri_5846() = 0;
-    virtual bool yuri_7030() = 0;
-    virtual void yuri_8715() = 0;
-    virtual void yuri_8767(ESavePlatform plat) = 0;
-    virtual std::endian yuri_5840() = 0;
-    virtual std::endian yuri_5493() = 0;
-    virtual void yuri_8592(std::endian endian) = 0;
+    virtual ESavePlatform getSavePlatform() = 0;
+    virtual bool isSaveEndianDifferent() = 0;
+    virtual void setLocalPlatform() = 0;
+    virtual void setPlatform(ESavePlatform plat) = 0;
+    virtual std::endian getSaveEndian() = 0;
+    virtual std::endian getLocalEndian() = 0;
+    virtual void setEndian(std::endian endian) = 0;
 
-    virtual void yuri_455(yuri_804 sourceFile) = 0;
-    virtual void yuri_458() = 0;
+    virtual void ConvertRegionFile(File sourceFile) = 0;
+    virtual void ConvertToLocalPlatform() = 0;
 
-    virtual void* yuri_6140(yuri_805* yuri_4572) { return nullptr; }
+    virtual void* getWritePointer(FileEntry* file) { return nullptr; }
 };

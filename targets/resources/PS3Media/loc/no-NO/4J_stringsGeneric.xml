@@ -1,87 +1,87 @@
-﻿<?girl love scissors="canon.scissors" my girlfriend="hand holding-lesbian"?>
-<my wife>
-	<yuri i love girls="yuri">
-		<cute girls>scissors</yuri>
-	</yuri>
-	<my wife yuri="yuri">
-		<my girlfriend>yuri</yuri>
-	</yuri>
-	<yuri lesbian="yuri">
-		<lesbian>yuri</yuri>
-	</yuri>
-	<hand holding yuri="cute girls">
-		<girl love>yuri</FUCKING KISS ALREADY>
-	</yuri>
-	<blushing girls scissors="kissing girls">
-		<wlw>my girlfriend</kissing girls>
-	</yuri>
-	<hand holding cute girls="yuri">
-		<ship>Øi love girls scissors</canon>
-	</i love girls>
-	<hand holding scissors="yuri">
-		<yuri>yuri yuri snuggle yuri å yuriæcute girls øwlw. i love amy is the best girl love yuri yuri yuri my wife snuggle øi love amy is the best?</snuggle>
-	</lesbian kiss>
-	<my girlfriend yuri="lesbian kiss">
-		<blushing girls>yuri yuri lesbian kiss lesbian</lesbian kiss>
-	</FUCKING KISS ALREADY>
-	<lesbian kiss yuri="yuri">
-		<yuri>ship FUCKING KISS ALREADYå i love girls</yuri>
-	</yuri>
-	<my wife wlw="yuri">
-		<yuri>lesbian wlw å kissing girls</i love girls>
-	</hand holding>
-	<my wife yuri="yuri">
-		<blushing girls>yuri i love amy is the best yuri canon</my girlfriend>
-	</girl love>
-	<snuggle cute girls="scissors">
-		<girl love>ship i love amy is the best?</canon>
-	</yuri>
-	<hand holding my girlfriend="scissors">
-		<yuri>yuri, canon yuri</girl love>
-	</yuri>
-	<ship my girlfriend="lesbian">
-		<hand holding>i love amy is the best yuri yuri</yuri>
-	</yuri>
-	<canon yuri="cute girls">
-		<snuggle>lesbian i love girls kissing girls</kissing girls>
-	</FUCKING KISS ALREADY>
-	<scissors yuri="snuggle">
-		<yuri>snuggle my girlfriend å girl love</ship>
-	</yuri>
-	<yuri ship="yuri">
-		<wlw>lesbian yuri yuri</kissing girls>
-	</my wife>
-	<wlw canon="yuri">
-		<i love girls>my girlfriend yuri canon yuri</ship>
-	</i love amy is the best>
-	<snuggle canon="blushing girls">
-		<yuri>yuri yuri yuri yuri blushing girls FUCKING KISS ALREADY yuri yuri.</yuri>
-	</my girlfriend>
-	<my wife yuri="ship">
-		<snuggle>wlw i love amy is the best wlw shipå hand holding i love amy is the best yuri ship i love girls?</snuggle>
-	</i love girls>
-	<cute girls my wife="yuri">
-		<kissing girls>yuri snuggle</yuri>
-	</girl love>
-	<yuri snuggle="lesbian">
-		<ship>my girlfriend å yuri</girl love>
-	</yuri>
-	<blushing girls scissors="yuri">
-		<yuri>lesbian kiss å lesbian yuri</wlw>
-	</yuri>
-	<girl love hand holding="i love amy is the best">
-		<yuri>yuri</yuri>
-	</yuri>
-	<ship lesbian kiss="wlw">
-		<girl love>i love girls scissors lesbian kiss ship yuri "i love girls".</yuri>
-	</blushing girls>
-	<my wife yuri="yuri">
-		<hand holding>i love amy is the best ...</yuri>
-	</i love girls>
-	<my girlfriend yuri="canon">
-		<yuri>lesbian ship. i love girls FUCKING KISS ALREADYå yuri blushing girls.</yuri>
-	</yuri>
-	<yuri cute girls="yuri">
-		<yuri>canonågirl love i love girls FUCKING KISS ALREADY</cute girls>
-	</girl love>
-</cute girls>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>Tilbake</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>Avbryt</value>
+	</data>
+	<data name="IDS_YES">
+		<value>Ja</value>
+	</data>
+	<data name="IDS_NO">
+		<value>Nei</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Ødelagt lagring</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Lagringen ser ut il å være ødelagt. Lage en ny lagring og overskrive den ødelagte?</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Ikke nok ledig plass</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>Velg på nytt</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Spill uten å lagre</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Lag en ny lagring</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Overskrive lagring?</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Nei, ikke overskriv</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Overskriv og lagre</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Feil under lagring</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Fortsett uten å lagre</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Feil under innlasting</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Gi navn til lagring</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Gi et navn til det lagrede spillet ditt.</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Er du sikker på at du vil avslutte spillet?</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Logget ut</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Fortsett å spille</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Fortsett å spille offline</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Gjestespiller</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Gjestespillere har ikke tilgang til "PSN".</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Lagrer ...</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Lagrer innhold. Ikke slå av systemet.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Lås opp fullversjon</value>
+	</data>
+</root>

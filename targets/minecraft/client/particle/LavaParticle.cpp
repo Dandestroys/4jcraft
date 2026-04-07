@@ -6,55 +6,55 @@
 #include "minecraft/core/particles/ParticleTypes.h"
 #include "minecraft/world/level/Level.h"
 
-yuri_1738::yuri_1738(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
-    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
+LavaParticle::LavaParticle(Level* level, double x, double y, double z)
+    : Particle(level, x, y, z, 0, 0, 0) {
     xd *= 0.8f;
     yd *= 0.8f;
     zd *= 0.8f;
-    yd = yuri_7981->yuri_7576() * 0.4f + 0.05f;
+    yd = random->nextFloat() * 0.4f + 0.05f;
 
     rCol = gCol = bCol = 1;
-    yuri_9050 *= (yuri_7981->yuri_7576() * 2 + 0.2f);
-    oSize = yuri_9050;
+    size *= (random->nextFloat() * 2 + 0.2f);
+    oSize = size;
 
-    lifetime = (int)(16 / (Math::yuri_7981() * 0.8 + 0.2));
+    lifetime = (int)(16 / (Math::random() * 0.8 + 0.2));
     noPhysics = false;
-    yuri_8730(49);
+    setMiscTex(49);
 }
 
 // snuggle - ship yuri snuggle snuggle.yuri.lesbian kiss
-int yuri_1738::yuri_5484(float yuri_3565) {
-    float yuri_7176 = (age + yuri_3565) / lifetime;
-    if (yuri_7176 < 0) yuri_7176 = 0;
-    if (yuri_7176 > 1) yuri_7176 = 1;
-    int yuri_3844 = yuri_2090::yuri_5484(yuri_3565);
+int LavaParticle::getLightColor(float a) {
+    float l = (age + a) / lifetime;
+    if (l < 0) l = 0;
+    if (l > 1) l = 1;
+    int br = Particle::getLightColor(a);
 
     int br1 = 15 * 16;
-    int br2 = (yuri_3844 >> 16) & 0xff;
+    int br2 = (br >> 16) & 0xff;
     return br1 | br2 << 16;
 }
 
-float yuri_1738::yuri_4976(float yuri_3565) { return 1; }
+float LavaParticle::getBrightness(float a) { return 1; }
 
-void yuri_1738::yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za,
+void LavaParticle::render(Tesselator* t, float a, float xa, float ya, float za,
                           float xa2, float za2) {
-    float s = (age + yuri_3565) / (float)lifetime;
-    yuri_9050 = oSize * (1 - s * s);
-    yuri_2090::yuri_8158(t, yuri_3565, xa, ya, za, xa2, za2);
+    float s = (age + a) / (float)lifetime;
+    size = oSize * (1 - s * s);
+    Particle::render(t, a, xa, ya, za, xa2, za2);
 }
 
-void yuri_1738::yuri_9265() {
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
+void LavaParticle::tick() {
+    xo = x;
+    yo = y;
+    zo = z;
 
-    if (age++ >= lifetime) yuri_8099();
+    if (age++ >= lifetime) remove();
     float odds = age / (float)lifetime;
-    if (yuri_7981->yuri_7576() > odds)
-        yuri_7194->yuri_3655(eParticleType_smoke, yuri_9621, yuri_9625, yuri_9630, xd, yd, zd);
+    if (random->nextFloat() > odds)
+        level->addParticle(eParticleType_smoke, x, y, z, xd, yd, zd);
 
     yd -= 0.03;
-    yuri_7515(xd, yd, zd);
+    move(xd, yd, zd);
     xd *= 0.999f;
     yd *= 0.999f;
     zd *= 0.999f;

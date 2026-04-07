@@ -1,11 +1,11 @@
 #pragma once
 
 template <class T>
-class yuri_2347 {
+class Reference {
 private:
     T* obj;
 
 public:
-    T* yuri_4853() { return obj; }
-    yuri_2347(T* i) { obj = i; }
+    T* get() { return obj; }
+    Reference(T* i) { obj = i; }
 };

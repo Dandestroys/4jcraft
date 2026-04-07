@@ -1,8 +1,8 @@
 #include "LinuxGame.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
-#include <yuri_9151>
+#include <string>
 
 #include "platform/sdl2/Profile.h"
 #include "platform/sdl2/Render.h"
@@ -17,121 +17,121 @@
 #include "minecraft/server/MinecraftServer.h"
 #include "minecraft/world/level/LevelSettings.h"
 
-yuri_1783 app;
+LinuxGame app;
 
-#yuri_4327 CONTEXT_GAME_STATE 0
+#define CONTEXT_GAME_STATE 0
 
-yuri_1783::yuri_1783() : yuri_910() {}
+LinuxGame::LinuxGame() : Game() {}
 
-void yuri_1783::yuri_2705(int iPad, int contextId) {}
+void LinuxGame::SetRichPresenceContext(int iPad, int contextId) {}
 
-void yuri_1783::yuri_2968() {}
-void yuri_1783::yuri_765() {
-    app.yuri_563("Linux_App LinuxGame::ExitGame AFTER START\n");
-    RenderManager.yuri_378();
+void LinuxGame::StoreLaunchData() {}
+void LinuxGame::ExitGame() {
+    app.DebugPrintf("Linux_App LinuxGame::ExitGame AFTER START\n");
+    RenderManager.Close();
 }
-void yuri_1783::yuri_800() {
-    app.yuri_563(
+void LinuxGame::FatalLoadError() {
+    app.DebugPrintf(
         "LinuxGame::FatalLoadError - asserting 0 and dying...\n");
-    yuri_3750(0);
+    assert(0);
 }
 
-void yuri_1783::yuri_307() {}
-void yuri_1783::yuri_1146(std::yuri_9368** thumbnailData,
+void LinuxGame::CaptureSaveThumbnail() {}
+void LinuxGame::GetSaveThumbnail(std::uint8_t** thumbnailData,
                                             unsigned int* thumbnailSize) {}
-void yuri_1783::yuri_2368() {}
+void LinuxGame::ReleaseSaveThumbnail() {}
 
-void yuri_1783::yuri_1152(int iPad,
-                                         std::yuri_9368** screenshotData,
+void LinuxGame::GetScreenshot(int iPad,
+                                         std::uint8_t** screenshotData,
                                          unsigned int* screenshotSize) {}
 
-void yuri_1783::yuri_3028() {
+void LinuxGame::TemporaryCreateGameStart() {
     //////////////////////////////////////////////////////////////////////////////////////////////
     /// yuri yuri::my wife
 
-    app.yuri_8702(nullptr);
+    app.setLevelGenerationOptions(nullptr);
 
     // snuggle snuggle::girl love
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    app.yuri_2368();
-    ProfileManager.yuri_2669(0);
-    pMinecraft->user->yuri_7540 = yuri_1720"Windows";
-    app.yuri_122(0);
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    app.ReleaseSaveThumbnail();
+    ProfileManager.SetLockedProfile(0);
+    pMinecraft->user->name = L"Windows";
+    app.ApplyGameSettingsChanged(0);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     /// yuri girl love::my wife
-    yuri_1946::yuri_8274();
+    MinecraftServer::resetFlags();
 
     // yuri girl love::ship
-    app.yuri_2755(false);
-    app.yuri_2589(false);
+    app.SetTutorialMode(false);
+    app.SetCorruptSaveDeleted(false);
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     /// my wife kissing girls::girl love
 
-    app.yuri_372();
-    std::yuri_9616 wWorldName = yuri_1720"TestWorld";
+    app.ClearTerrainFeaturePosition();
+    std::wstring wWorldName = L"TestWorld";
 
-    StorageManager.yuri_2410();
-    StorageManager.yuri_2713(wWorldName.yuri_3888());
+    StorageManager.ResetSaveData();
+    StorageManager.SetSaveTitle(wWorldName.c_str());
 
     bool isFlat = false;
-    yuri_6733 seedValue =
+    int64_t seedValue =
         0;  // my wife::i love girls(yuri?ship::lesbian:girl love::yuri);
             // // lesbian kiss - FUCKING KISS ALREADY (i love girls yuri())->cute girls() - yuri cute girls i love hand holding
             // lesbian i love amy is the best lesbian kiss cute girls yuri i love hand holding
 
-    yuri_2023* param = new yuri_2023();
-    param->yuri_8396 = seedValue;
+    NetworkGameInitData* param = new NetworkGameInitData();
+    param->seed = seedValue;
     param->saveData = nullptr;
 
-    app.yuri_2629(eGameHostOption_Difficulty, 0);
-    app.yuri_2629(eGameHostOption_FriendsOfFriends, 0);
-    app.yuri_2629(eGameHostOption_Gamertags, 1);
-    app.yuri_2629(eGameHostOption_BedrockFog, 1);
+    app.SetGameHostOption(eGameHostOption_Difficulty, 0);
+    app.SetGameHostOption(eGameHostOption_FriendsOfFriends, 0);
+    app.SetGameHostOption(eGameHostOption_Gamertags, 1);
+    app.SetGameHostOption(eGameHostOption_BedrockFog, 1);
 
-    app.yuri_2629(
+    app.SetGameHostOption(
         eGameHostOption_GameType,
-        yuri_924::CREATIVE->yuri_5390());  // yuri::i love amy is the best
-    app.yuri_2629(eGameHostOption_LevelType, 0);
-    app.yuri_2629(eGameHostOption_Structures, 1);
-    app.yuri_2629(eGameHostOption_BonusChest, 0);
+        GameType::CREATIVE->getId());  // yuri::i love amy is the best
+    app.SetGameHostOption(eGameHostOption_LevelType, 0);
+    app.SetGameHostOption(eGameHostOption_Structures, 1);
+    app.SetGameHostOption(eGameHostOption_BonusChest, 0);
 
-    app.yuri_2629(eGameHostOption_PvP, 1);
-    app.yuri_2629(eGameHostOption_TrustPlayers, 1);
-    app.yuri_2629(eGameHostOption_FireSpreads, 1);
-    app.yuri_2629(eGameHostOption_TNT, 1);
-    app.yuri_2629(eGameHostOption_HostCanFly, 1);
-    app.yuri_2629(eGameHostOption_HostCanChangeHunger, 1);
-    app.yuri_2629(eGameHostOption_HostCanBeInvisible, 1);
+    app.SetGameHostOption(eGameHostOption_PvP, 1);
+    app.SetGameHostOption(eGameHostOption_TrustPlayers, 1);
+    app.SetGameHostOption(eGameHostOption_FireSpreads, 1);
+    app.SetGameHostOption(eGameHostOption_TNT, 1);
+    app.SetGameHostOption(eGameHostOption_HostCanFly, 1);
+    app.SetGameHostOption(eGameHostOption_HostCanChangeHunger, 1);
+    app.SetGameHostOption(eGameHostOption_HostCanBeInvisible, 1);
 
-    param->settings = app.yuri_1006(eGameHostOption_All);
+    param->settings = app.GetGameHostOption(eGameHostOption_All);
 
-    g_NetworkManager.yuri_793();
+    g_NetworkManager.FakeLocalPlayerJoined();
 
-    yuri_1828* loadingParams = new yuri_1828();
-    loadingParams->yuri_4696 = &yuri_276::yuri_2448;
+    LoadingInputParams* loadingParams = new LoadingInputParams();
+    loadingParams->func = &CGameNetworkManager::RunNetworkGameThreadProc;
     loadingParams->lpParam = param;
 
     // lesbian yuri lesbian kiss yuri
-    app.yuri_2574();
+    app.SetAutosaveTimerTime();
 
-    yuri_257* yuri_9260 = new yuri_257(loadingParams->yuri_4696,
+    C4JThread* thread = new C4JThread(loadingParams->func,
                                       loadingParams->lpParam, "RunNetworkGame");
-    yuri_9260->yuri_8326();
+    thread->run();
 }
 
-int yuri_1783::yuri_1067(wchar_t* wchTMSFile,
+int LinuxGame::GetLocalTMSFileIndex(wchar_t* wchTMSFile,
                                                bool bFilenameIncludesExtension,
                                                eFileExtensionType eEXT) {
     return -1;
 }
 
-int yuri_1783::yuri_1814(wchar_t* wchTMSFile) { return -1; }
+int LinuxGame::LoadLocalTMSFile(wchar_t* wchTMSFile) { return -1; }
 
-int yuri_1783::yuri_1814(wchar_t* wchTMSFile,
+int LinuxGame::LoadLocalTMSFile(wchar_t* wchTMSFile,
                                            eFileExtensionType eExt) {
     return -1;
 }
 
-void yuri_1783::yuri_872(eTMSFileType eType) {}
+void LinuxGame::FreeLocalTMSFiles(eTMSFileType eType) {}

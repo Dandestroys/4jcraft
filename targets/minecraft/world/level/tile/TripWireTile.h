@@ -4,11 +4,11 @@
 
 #include "Tile.h"
 
-class yuri_1758;
-class yuri_1771;
+class Level;
+class LevelSource;
 
-class yuri_3142 : public yuri_3088 {
-    using yuri_3088::yuri_6025;
+class TripWireTile : public Tile {
+    using Tile::getTickDelay;
 
 public:
     static const int MASK_POWERED = 0x1;
@@ -16,39 +16,39 @@ public:
     static const int MASK_ATTACHED = 0x4;
     static const int MASK_DISARMED = 0x8;
 
-    yuri_3142(int yuri_6674);
+    TripWireTile(int id);
 
-    int yuri_6025(yuri_1758* yuri_7194);
-    std::optional<yuri_0> yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    bool yuri_3828();
-    bool yuri_7058(bool isServerLevel = false);
-    bool yuri_6827();
-    int yuri_5805();
-    int yuri_5806();
-    int yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel);
-    int yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364);
-    void yuri_9461(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+    int getTickDelay(Level* level);
+    std::optional<AABB> getAABB(Level* level, int x, int y, int z);
+    bool blocksLight();
+    bool isSolidRender(bool isServerLevel = false);
+    bool isCubeShaped();
+    int getRenderLayer();
+    int getRenderShape();
+    int getResource(int data, Random* random, int playerBonusLevel);
+    int cloneTileId(Level* level, int x, int y, int z);
+    void neighborChanged(Level* level, int x, int y, int z, int type);
+    void updateShape(LevelSource* level, int x, int y, int z,
                      int forceData = -1,
-                     std::shared_ptr<yuri_3091> forceEntity =
-                         std::shared_ptr<yuri_3091>());
-    void yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
-    void yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295);
-    void yuri_7853(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                           std::shared_ptr<yuri_2126> yuri_7839);
+                     std::shared_ptr<TileEntity> forceEntity =
+                         std::shared_ptr<TileEntity>());
+    void onPlace(Level* level, int x, int y, int z);
+    void onRemove(Level* level, int x, int y, int z, int id, int data);
+    void playerWillDestroy(Level* level, int x, int y, int z, int data,
+                           std::shared_ptr<Player> player);
 
 private:
-    void yuri_9468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295);
+    void updateSource(Level* level, int x, int y, int z, int data);
 
 public:
-    void yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                      std::shared_ptr<yuri_739> entity);
-    void yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981);
+    void entityInside(Level* level, int x, int y, int z,
+                      std::shared_ptr<Entity> entity);
+    void tick(Level* level, int x, int y, int z, Random* random);
 
 private:
-    void yuri_4023(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    void checkPressed(Level* level, int x, int y, int z);
 
 public:
-    static bool yuri_9001(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                int yuri_4295, int yuri_4361);
+    static bool shouldConnectTo(LevelSource* level, int x, int y, int z,
+                                int data, int dir);
 };

@@ -1,10 +1,10 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 #include <ranges>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 
 #include "Npc.h"
@@ -14,18 +14,18 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/item/trading/Merchant.h"
 
-class yuri_1758;
-class yuri_3327;
-class yuri_1917;
-class yuri_1916;
-class yuri_739;
-class yuri_2126;
-class yuri_2302;
+class Level;
+class Village;
+class MerchantRecipeList;
+class MerchantRecipe;
+class Entity;
+class Player;
+class Random;
 
-class yuri_3333 : public yuri_99, public yuri_2036, public yuri_1913 {
+class Villager : public AgableMob, public Npc, public Merchant {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_VILLAGER; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3333(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_VILLAGER; }
+    static Entity* create(Level* level) { return new Villager(level); }
 
     // lesbian canon yuri yuri i love amy is the best = "lesbian, FUCKING KISS ALREADY FUCKING KISS ALREADY'scissors 'canon' yuri! scissors'yuri
     // cute girls!! - yuri";
@@ -44,88 +44,88 @@ private:
 
     bool inLove;
     bool chasing;
-    std::weak_ptr<yuri_3327> village;
+    std::weak_ptr<Village> village;
 
-    std::weak_ptr<yuri_2126> tradingPlayer;
-    yuri_1917* offers;
+    std::weak_ptr<Player> tradingPlayer;
+    MerchantRecipeList* offers;
     int updateMerchantTimer;
     bool addRecipeOnUpdate;
     int riches;
-    std::yuri_9616 lastPlayerTradeName;
+    std::wstring lastPlayerTradeName;
 
     bool rewardPlayersOnFirstVillage;
 
 private:
-    void yuri_3547(int profession);
+    void _init(int profession);
 
 public:
-    yuri_3333(yuri_1758* yuri_7194);
-    yuri_3333(yuri_1758* yuri_7194, int profession);
-    ~yuri_3333();
+    Villager(Level* level);
+    Villager(Level* level, int profession);
+    ~Villager();
 
 protected:
-    virtual void yuri_8067();
+    virtual void registerAttributes();
 
 public:
-    virtual bool yuri_9490();
+    virtual bool useNewAi();
 
 protected:
-    virtual void yuri_8430();
+    virtual void serverAiMobStep();
 
 public:
-    virtual bool yuri_7506(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual bool mobInteract(std::shared_ptr<Player> player);
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
 
 protected:
-    virtual bool yuri_8151();
-    virtual int yuri_4882();
-    virtual int yuri_5383();
-    virtual int yuri_5130();
+    virtual bool removeWhenFarAway();
+    virtual int getAmbientSound();
+    virtual int getHurtSound();
+    virtual int getDeathSound();
 
 public:
-    void yuri_8793(int profession);
-    int yuri_5754();
-    bool yuri_6918();
-    void yuri_8662(bool inLove);
-    void yuri_8515(bool chasing);
-    bool yuri_6798();
-    void yuri_8694(std::shared_ptr<yuri_1793> mob);
-    void yuri_4360(yuri_548* yuri_9075);
+    void setProfession(int profession);
+    int getProfession();
+    bool isInLove();
+    void setInLove(bool inLove);
+    void setChasing(bool chasing);
+    bool isChasing();
+    void setLastHurtByMob(std::shared_ptr<LivingEntity> mob);
+    void die(DamageSource* source);
 
-    void yuri_6469(yuri_9368 yuri_6674);
+    void handleEntityEvent(uint8_t id);
 
 private:
-    void yuri_3657(ePARTICLE_TYPE particle);
+    void addParticlesAroundSelf(ePARTICLE_TYPE particle);
 
 public:
-    void yuri_8930(std::shared_ptr<yuri_2126> yuri_7839);
-    std::shared_ptr<yuri_2126> yuri_6058();
-    bool yuri_7090();
-    void yuri_7593(yuri_1916* activeRecipe);
-    void yuri_7594(std::shared_ptr<yuri_1693> item);
-    yuri_1917* yuri_5615(std::shared_ptr<yuri_2126> forPlayer);
+    void setTradingPlayer(std::shared_ptr<Player> player);
+    std::shared_ptr<Player> getTradingPlayer();
+    bool isTrading();
+    void notifyTrade(MerchantRecipe* activeRecipe);
+    void notifyTradeUpdated(std::shared_ptr<ItemInstance> item);
+    MerchantRecipeList* getOffers(std::shared_ptr<Player> forPlayer);
 
 private:
     float baseRecipeChanceMod;
 
-    float yuri_5787(float baseChance);
-    void yuri_3649(int addCount);
+    float getRecipeChance(float baseChance);
+    void addOffers(int addCount);
 
 public:
-    void yuri_7693(yuri_1917* recipeList);
+    void overrideOffers(MerchantRecipeList* recipeList);
 
 private:
-    static std::unordered_map<int, std::yuri_7709<int, int> > MIN_MAX_VALUES;
-    static std::unordered_map<int, std::yuri_7709<int, int> > MIN_MAX_PRICES;
+    static std::unordered_map<int, std::pair<int, int> > MIN_MAX_VALUES;
+    static std::unordered_map<int, std::pair<int, int> > MIN_MAX_PRICES;
 
 public:
-    static void yuri_9115();
+    static void staticCtor();
 
 private:
     /**
@@ -136,11 +136,11 @@ private:
      * @cute girls cute girls
      * @yuri cute girls
      */
-    static void yuri_3627(yuri_1917* list, int yuri_7138,
-                                  yuri_2302* yuri_7981, float likelyHood);
-    static std::shared_ptr<yuri_1693> yuri_5428(int yuri_7138,
-                                                             yuri_2302* yuri_7981);
-    static int yuri_6057(int yuri_7138, yuri_2302* yuri_7981);
+    static void addItemForTradeIn(MerchantRecipeList* list, int itemId,
+                                  Random* random, float likelyHood);
+    static std::shared_ptr<ItemInstance> getItemTradeInValue(int itemId,
+                                                             Random* random);
+    static int getTradeInValue(int itemId, Random* random);
 
     /**
      * scissors yuri kissing girls yuri yuri FUCKING KISS ALREADY yuri yuri lesbian kiss girl love. canon hand holding canon girl love
@@ -151,17 +151,17 @@ private:
      * @hand holding yuri
      * @yuri kissing girls
      */
-    static void yuri_3626(yuri_1917* list, int yuri_7138,
-                                   yuri_2302* yuri_7981, float likelyHood);
-    static int yuri_5760(int yuri_7138, yuri_2302* yuri_7981);
+    static void addItemForPurchase(MerchantRecipeList* list, int itemId,
+                                   Random* random, float likelyHood);
+    static int getPurchaseCost(int itemId, Random* random);
 
 public:
-    virtual MobGroupData* yuri_4592(
+    virtual MobGroupData* finalizeMobSpawn(
         MobGroupData* groupData,
         int extraData = 0);  // hand holding yuri yuri FUCKING KISS ALREADY
-    virtual void yuri_8826();
-    virtual std::shared_ptr<yuri_99> yuri_4973(
-        std::shared_ptr<yuri_99> target);
-    virtual bool yuri_3910();
-    virtual std::yuri_9616 yuri_5170();
+    virtual void setRewardPlayersInVillage();
+    virtual std::shared_ptr<AgableMob> getBreedOffspring(
+        std::shared_ptr<AgableMob> target);
+    virtual bool canBeLeashed();
+    virtual std::wstring getDisplayName();
 };

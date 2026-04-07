@@ -5,14 +5,14 @@
 
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-yuri_842::yuri_842(int val) : yuri_1742(0) { this->val = val; }
+FlatLayer::FlatLayer(int val) : Layer(0) { this->val = val; }
 
-std::vector<int> yuri_842::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
-    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
-    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
-        for (int yuri_9621 = 0; yuri_9621 < yuri_9535; yuri_9621++) {
-            yuri_8300[yuri_9621 + yuri_9625 * yuri_9535] = val;
+std::vector<int> FlatLayer::getArea(int xo, int yo, int w, int h) {
+    std::vector<int> result(w * h);
+    for (int y = 0; y < h; y++) {
+        for (int x = 0; x < w; x++) {
+            result[x + y * w] = val;
         }
     }
-    return yuri_8300;
+    return result;
 }

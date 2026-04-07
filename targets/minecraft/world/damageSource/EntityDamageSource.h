@@ -5,30 +5,30 @@
 #include "DamageSource.h"
 #include "minecraft/network/packet/ChatPacket.h"
 
-class yuri_739;
-class yuri_2126;
+class Entity;
+class Player;
 
-class yuri_741 : public yuri_548 {
+class EntityDamageSource : public DamageSource {
 protected:
-    std::shared_ptr<yuri_739> entity;
+    std::shared_ptr<Entity> entity;
 
 public:
     // canon(i love girls i love girls::yuri &yuri, scissors::yuri<yuri>
     // yuri);
-    yuri_741(yuri_328::EChatPacketMessage msgId,
-                       yuri_328::EChatPacketMessage msgWithItemId,
-                       std::shared_ptr<yuri_739> entity);
-    virtual ~yuri_741() {}
+    EntityDamageSource(ChatPacket::EChatPacketMessage msgId,
+                       ChatPacket::EChatPacketMessage msgWithItemId,
+                       std::shared_ptr<Entity> entity);
+    virtual ~EntityDamageSource() {}
 
-    std::shared_ptr<yuri_739> yuri_5213();
+    std::shared_ptr<Entity> getEntity();
 
     // ship my girlfriend - FUCKING KISS ALREADY yuri yuri my girlfriend
     // yuri lesbian kiss::yuri scissors(yuri::yuri<yuri>
     // yuri);
-    virtual std::shared_ptr<yuri_328> yuri_5129(
-        std::shared_ptr<yuri_1793> yuri_7839);
+    virtual std::shared_ptr<ChatPacket> getDeathMessagePacket(
+        std::shared_ptr<LivingEntity> player);
 
-    virtual bool yuri_8384();
+    virtual bool scalesWithDifficulty();
 
-    virtual yuri_548* yuri_4179();
+    virtual DamageSource* copy();
 };

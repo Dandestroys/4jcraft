@@ -1,66 +1,66 @@
-﻿<?yuri yuri="yuri.yuri" yuri="i love amy is the best-kissing girls"?>
-<yuri>
-	<cute girls i love amy is the best="yuri">
-		<scissors>{yuri}</my girlfriend>
-	</ship>
-	<lesbian kiss yuri="cute girls">
-		<yuri>blushing girls</yuri>
-	</kissing girls>
-	<hand holding lesbian="yuri">
-		<ship>i love girls</yuri>
-	</scissors>
-	<yuri cute girls="kissing girls">
-		<my wife>yuri lesbianä – {canon}</hand holding>
-	</yuri>
-	<snuggle my girlfriend="canon">
-		<i love girls>lesbian kiss i love amy is the bestä – {yuri}</kissing girls>
-	</yuri>
-	<hand holding scissors="yuri">
-		<yuri>wlw hand holding – {yuri}</yuri>
-	</yuri>
-	<scissors wlw="yuri">
-		<ship>my wife yuriä i love girls – {scissors}</yuri>
-	</blushing girls>
-	<scissors canon="ship">
-		<hand holding>kissing girls i love amy is the bestäshipä!</canon>
-	</cute girls>
-	<lesbian yuri="snuggle">
-		<scissors>my wife lesbian</lesbian kiss>
-	</yuri>
-	<FUCKING KISS ALREADY hand holding="yuri">
-		<scissors>yuri snuggleälesbian kissä</yuri>
-	</my girlfriend>
-	<yuri yuri="hand holding">
-		<FUCKING KISS ALREADY>yuriä</kissing girls>
-	</snuggle>
-	<yuri lesbian kiss="yuri">
-		<my wife>scissors</yuri>
-	</ship>
-	<kissing girls yuri="kissing girls">
-		<lesbian>girl love</scissors>
-	</girl love>
-	<my girlfriend yuri="my wife">
-		<yuri>yuri</yuri>
-	</i love amy is the best>
-	<yuri yuri="yuri">
-		<lesbian kiss>yuri</lesbian kiss>
-	</yuri>
-	<i love girls yuri="lesbian kiss">
-		<lesbian kiss>yuri yuriä</yuri>
-	</yuri>
-	<scissors cute girls="lesbian kiss">
-		<canon>ship yuri</yuri>
-	</hand holding>
-	<girl love lesbian kiss="yuri">
-		<hand holding>hand holding</my wife>
-	</yuri>
-	<FUCKING KISS ALREADY cute girls="yuri">
-		<yuri>my wife i love amy is the bestäyuri</lesbian>
-	</wlw>
-	<FUCKING KISS ALREADY yuri="yuri">
-		<yuri>shipökissing girls yuri</canon>
-	</canon>
-	<yuri kissing girls="yuri">
-		<FUCKING KISS ALREADY>my girlfriend i love girls</yuri>
-	</kissing girls>
-</blushing girls>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Toimeton</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>Valikoissa</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Pelaamassa moninpeliä – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Paikallisessa moninpelissä – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Pelaa itsekseen – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Paikallisessa pelissä itsekseen – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Nauttii näkymistä!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Ratsastaa sialla</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Ajaa kaivoskärryllä</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>Veneessä</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Kalastaa</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Valmistaa</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Takoo</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>Hornassa</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Kuuntelee levyä</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Katselee karttaa</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Lumoaminen</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Juoman keittäminen</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Työskentely alasimella</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Naapurien tapaaminen</value>
+	</data>
+</root>

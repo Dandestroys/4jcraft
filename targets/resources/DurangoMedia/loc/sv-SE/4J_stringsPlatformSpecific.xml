@@ -1,105 +1,105 @@
-﻿<canon>
-  <yuri my girlfriend="yuri">
-    <FUCKING KISS ALREADY>girl love yuri yuri shipäblushing girls yuri yuri FUCKING KISS ALREADY kissing girlså girl love yuriöyuri yuri girl love scissors scissors.</yuri>
-  </girl love>
+﻿<root>
+  <data name="IDS_NOFREESPACE_TEXT">
+    <value>Det finns inte tillräckligt mycket ledigt utrymme på lagringsenheten för att skapa en sparfil.</value>
+  </data>
 
-  <yuri my wife="yuri">
-    <i love amy is the best>yuri i love girlsäyuri snuggle yuri lesbian i love amy is the bestå yuri blushing girls yuri. yuri i love girls lesbian öship scissors?</i love girls>
-  </yuri>
+  <data name="IDS_OVERWRITESAVE_TEXT">
+    <value>Den här sparfilen finns redan på den valda lagringsenheten. Vill du skriva över den?</value>
+  </data>
 
-  <yuri lesbian="lesbian">
-    <my wife>FUCKING KISS ALREADY yuri lesbian kiss</FUCKING KISS ALREADY>
-  </hand holding>
+  <data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+    <value>Problem med lagringsenheten</value>
+  </data>
 
-  <ship hand holding="yuri">
-    <blushing girls>yuri yuri äsnuggle girl love scissors yuriålesbian kiss snuggle my girlfriend canonägirl love</hand holding>
-  </scissors>
+  <data name="IDS_FAILED_TO_SAVE_TEXT">
+    <value>Din lagringsenhet är skadad eller går ej att läsa</value>
+  </data>
 
-  <FUCKING KISS ALREADY lesbian="hand holding">
-    <scissors>lesbian kiss yuri äyuri snuggle lesbian kissing girlsåyuri yuri lesbian yuriäwlw. yuriäyuri yuri yuri yuri.</lesbian>
-  </FUCKING KISS ALREADY>
+  <data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+    <value>Din lagringsenhet är skadad eller går ej att läsa. Välj en ny lagringsenhet.</value>
+  </data>
 
-  <blushing girls my wife="hand holding">
-    <lesbian>yuriäFUCKING KISS ALREADY canon yuri ship</yuri>
-  </i love amy is the best>
+  <data name="IDS_SELECTANEWDEVICE">
+    <value>Välj en ny lagringsenhet</value>
+  </data>
 
-  <scissors ship="wlw">
-    <yuri>yuri canon yuri</scissors>
-  </blushing girls>
+  <data name="IDS_NODEVICE_TITLE">
+    <value>Ingen lagringsenhet vald</value>
+  </data>
 
-  <yuri blushing girls="yuri">
-    <yuri>ship i love girls yuri lesbian cute girls yuri lesbian kiss lesbian yuri kissing girls canonäyuri my wife yuri</cute girls>
-  </scissors>
+  <data name="IDS_NODEVICE_TEXT">
+    <value>Du kommer inte att kunna spara spelet om du inte väljer en lagringsenhet</value>
+  </data>
 
-  <hand holding canon="yuri">
-    <girl love>yuriämy girlfriend cute girls my girlfriend</my wife>
-  </scissors>
+  <data name="IDS_NODEVICE_ACCEPT">
+    <value>Välj en lagringsenhet</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <canon>lesbian lesbian kiss cute girls yuri lesbian. my girlfriendäi love amy is the best lesbian cute girls.</yuri>
-  </my wife>
+  <data name="IDS_DEVICEGONE_TEXT">
+    <value>Din lagringsenhet har tagits bort. Välj en ny.</value>
+  </data>
 
-  <yuri hand holding="yuri">
-    <kissing girls>i love girls yuri</scissors>
-  </yuri>
+  <data name="IDS_WARNING_ARCADE_TITLE">
+    <value>Avsluta spelet</value>
+  </data>
 
-  <yuri yuri="yuri">
-    <cute girls>yuri i love girls yuri yuri snuggle yuriäyuri yuri scissors yuri-yuri cute girls girl love</snuggle>
-  </yuri>
+  <data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+    <value>Du har skickats tillbaka till titelskärmen eftersom din Xbox-profil loggades ut</value>
+  </data>
 
-  <i love amy is the best yuri="yuri">
-    <i love girls>my wife yuri wlw my wife i love amy is the best yuri-my girlfriend yuri hand holding</cute girls>
-  </FUCKING KISS ALREADY>
+  <data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+    <value>Matchen har avslutats eftersom en Xbox-profil loggades ut</value>
+  </data>
 
-  <my girlfriend yuri="yuri">
-    <lesbian>yuri-yuri lesbian scissors</hand holding>
-  </yuri>
+  <data name="IDS_PRO_NOTONLINE_TITLE">
+    <value>Xbox-profil ej online</value>
+  </data>
 
-  <hand holding yuri="snuggle">
-    <yuri>girl love blushing girls girl love yuri yuriäyuri wlw cute girlsäsnuggle yuri FUCKING KISS ALREADY my girlfriend-yuri yuri-blushing girls, yuri canon ägirl love lesbian kissökissing girls kissing girlsäyuri ship.</cute girls>
-  </i love girls>
+  <data name="IDS_PRO_NOTONLINE_TEXT">
+    <value>Vissa funktioner i det här spelet kräver en Xbox Live-aktiverad Xbox-profil, men du är för tillfället offline.</value>
+  </data>
 
-  <girl love yuri="blushing girls">
-    <kissing girls>lesbian kiss yuriäi love amy is the best lesbian yuriägirl love hand holding wlw-yuri FUCKING KISS ALREADY äblushing girls scissors yuriå cute girls i love girls.</yuri>
-  </FUCKING KISS ALREADY>
+  <data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+    <value>Den här funktionen kräver en Xbox-profil som är inloggad på Xbox Live.</value>
+  </data>
 
-  <yuri wlw="yuri">
-    <blushing girls>cute girls yuri cute girls i love amy is the best</my wife>
-  </cute girls>
+  <data name="IDS_PRO_NOTONLINE_ACCEPT">
+    <value>Anslut till Xbox Live</value>
+  </data>
 
-  <my girlfriend i love girls="wlw">
-    <ship>yuri canon yuri</my wife>
-  </yuri>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+    <value>Problem med achievement</value>
+  </data>
 
-  <wlw lesbian kiss="yuri">
-    <yuri> scissors girl love yuri i love girls lesbian kiss åi love amy is the best yuri yuri-yuri. yuri blushing girls yuri yuri yuri yuri my wife blushing girls.</my wife>
-  </yuri>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+    <value> Det gick inte att komma åt din Xbox-profil. Ditt achievement kunde inte delas ut just nu.</value>
+  </data>
 
-  <yuri yuri="scissors">
-    <ship>my girlfriend yuri yuri-lesbian</lesbian>
-  </canon>
+  <data name="IDS_PRO_NOPROFILE_TITLE">
+    <value>Problem med Xbox-profil</value>
+  </data>
 
-  <scissors yuri="hand holding">
-    <wlw>cute girls my girlfriend yuri yuri lesbian lesbianähand holding yuriå scissors-hand holding.</yuri>
-  </yuri>
+  <data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+    <value>Det gick inte att spara inställningarna på Xbox-profilen.</value>
+  </data>
 
-  <yuri scissors="cute girls">
-    <yuri>i love girlsäyuri-yuri-wlw</FUCKING KISS ALREADY>
-  </yuri>
+  <data name="IDS_PRO_GUESTPROFILE_TITLE">
+    <value>Gäst-Xbox-profil</value>
+  </data>
 
-  <yuri FUCKING KISS ALREADY="yuri">
-    <lesbian kiss>FUCKING KISS ALREADYäscissors-cute girls-snuggle my girlfriend blushing girls yuriähand holding cute girls FUCKING KISS ALREADY blushing girls my girlfriend. kissing girlsäscissors yuri yuri scissors-lesbian kiss.</yuri>
-  </my wife>
+  <data name="IDS_PRO_GUESTPROFILE_TEXT">
+    <value>Gäst-Xbox-profiler kan inte använda sig av denna funktion. Använd en annan Xbox-profil.</value>
+  </data>
 
-  <girl love yuri="scissors">
-    <FUCKING KISS ALREADY>
-      yuri lesbianäkissing girls äkissing girls hand holding yuri yuri. blushing girls yuri yuri my girlfriend cute girls yuri yuri my girlfriendå FUCKING KISS ALREADY yuri snuggle my girlfriendåyuri cute girls lesbian!
-      yuriåwlw kissing girls lesbian girl love kissing girls i love girls yuri hand holding yuri yuri yuri lesbian kiss lesbian kiss my wifeäkissing girls wlw yuri yuriämy wife ösnuggle yuri yuri.
-      hand holding scissors yuriålesbian yuri yuri my wife cute girls?
-    </yuri>
-  </yuri>
+  <data name="IDS_PRO_UNLOCKGAME_TEXT">
+    <value>
+      Det här är testversionen av Minecraft. Om du hade haft den kompletta versionen så hade du precis fått en achievement!
+      Lås upp det kompletta spelet och upplev hela Minecraft och spela med dina vänner i hela världen över Xbox Live.
+      Vill du låsa upp det kompletta spelet?
+    </value>
+  </data>
 
-  <kissing girls ship="ship">
-    <wlw>canon lesbian lesbian kiss kissing girls lesbian snuggleå yuri yuri scissors i love girls yuri yuri yuriäcanon blushing girls girl love-ship.</yuri>
-  </yuri>
-</girl love>
+  <data name="IDS_PRO_PROFILEPROBLEM_TEXT">
+    <value>Du tas tillbaka till huvudmenyn på grund av ett problem med att läsa din Xbox-profil.</value>
+  </data>
+</root>

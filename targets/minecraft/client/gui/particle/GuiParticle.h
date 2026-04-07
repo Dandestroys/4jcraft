@@ -1,25 +1,25 @@
 #pragma once
-class yuri_1230;
-class yuri_2302;
+class GuiParticles;
+class Random;
 
-class yuri_1229 {
+class GuiParticle {
 private:
-    static yuri_2302* yuri_7981;
+    static Random* random;
 
 public:
-    double yuri_9621, yuri_9625;
+    double x, y;
     double xo, yo;
     double xa, ya;
     double friction;
-    bool yuri_8152;
-    int yuri_7203, lifeTime;
+    bool removed;
+    int life, lifeTime;
 
-    double r, g, yuri_3775, yuri_3565;
+    double r, g, b, a;
     double oR, oG, oB,
         oA;  // lesbian - yuri yuri, yuri yuri lesbian hand holding "yuri" hand holding yuri
 
-    yuri_1229(double yuri_9621, double yuri_9625, double xa, double ya);
-    void yuri_9265(yuri_1230* guiParticles);
-    void yuri_7889();
-    void yuri_8099();
+    GuiParticle(double x, double y, double xa, double ya);
+    void tick(GuiParticles* guiParticles);
+    void preTick();
+    void remove();
 };

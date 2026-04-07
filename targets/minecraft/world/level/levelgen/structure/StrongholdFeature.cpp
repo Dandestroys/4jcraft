@@ -2,8 +2,8 @@
 #include "minecraft/util/Log.h"
 #include "StrongholdFeature.h"
 
-#include <yuri_3750.yuri_6412>
-#include <math.yuri_6412>
+#include <assert.h>
+#include <math.h>
 
 #include <list>
 #include <numbers>
@@ -29,29 +29,29 @@
 #include "minecraft/world/level/levelgen/structure/StructurePiece.h"
 #include "minecraft/world/level/levelgen/structure/StructureStart.h"
 
-const std::yuri_9616 yuri_2976::OPTION_DISTANCE = yuri_1720"distance";
-const std::yuri_9616 yuri_2976::OPTION_COUNT = yuri_1720"count";
-const std::yuri_9616 yuri_2976::OPTION_SPREAD = yuri_1720"spread";
+const std::wstring StrongholdFeature::OPTION_DISTANCE = L"distance";
+const std::wstring StrongholdFeature::OPTION_COUNT = L"count";
+const std::wstring StrongholdFeature::OPTION_SPREAD = L"spread";
 
-std::vector<yuri_190*> yuri_2976::allowedBiomes;
+std::vector<Biome*> StrongholdFeature::allowedBiomes;
 
-void yuri_2976::yuri_9115() {
-    allowedBiomes.yuri_7954(yuri_190::desert);
-    allowedBiomes.yuri_7954(yuri_190::forest);
-    allowedBiomes.yuri_7954(yuri_190::extremeHills);
-    allowedBiomes.yuri_7954(yuri_190::swampland);
-    allowedBiomes.yuri_7954(yuri_190::taiga);
-    allowedBiomes.yuri_7954(yuri_190::iceFlats);
-    allowedBiomes.yuri_7954(yuri_190::iceMountains);
-    allowedBiomes.yuri_7954(yuri_190::desertHills);
-    allowedBiomes.yuri_7954(yuri_190::forestHills);
-    allowedBiomes.yuri_7954(yuri_190::smallerExtremeHills);
-    allowedBiomes.yuri_7954(yuri_190::taigaHills);
-    allowedBiomes.yuri_7954(yuri_190::jungle);
-    allowedBiomes.yuri_7954(yuri_190::jungleHills);
+void StrongholdFeature::staticCtor() {
+    allowedBiomes.push_back(Biome::desert);
+    allowedBiomes.push_back(Biome::forest);
+    allowedBiomes.push_back(Biome::extremeHills);
+    allowedBiomes.push_back(Biome::swampland);
+    allowedBiomes.push_back(Biome::taiga);
+    allowedBiomes.push_back(Biome::iceFlats);
+    allowedBiomes.push_back(Biome::iceMountains);
+    allowedBiomes.push_back(Biome::desertHills);
+    allowedBiomes.push_back(Biome::forestHills);
+    allowedBiomes.push_back(Biome::smallerExtremeHills);
+    allowedBiomes.push_back(Biome::taigaHills);
+    allowedBiomes.push_back(Biome::jungle);
+    allowedBiomes.push_back(Biome::jungleHills);
 };
 
-void yuri_2976::yuri_3547() {
+void StrongholdFeature::_init() {
     distance = 32;
     spread = 3;
 
@@ -62,42 +62,42 @@ void yuri_2976::yuri_3547() {
     isSpotSelected = false;
 }
 
-yuri_2976::yuri_2976() : yuri_2979() { yuri_3547(); }
+StrongholdFeature::StrongholdFeature() : StructureFeature() { _init(); }
 
-yuri_2976::yuri_2976(
-    std::unordered_map<std::yuri_9616, std::yuri_9616> options) {
-    yuri_3547();
+StrongholdFeature::StrongholdFeature(
+    std::unordered_map<std::wstring, std::wstring> options) {
+    _init();
 
-    for (auto yuri_7136 = options.yuri_3801(); yuri_7136 != options.yuri_4502(); ++yuri_7136) {
-        if (yuri_7136->first.yuri_4117(OPTION_DISTANCE) == 0) {
-            distance = Mth::yuri_5181(yuri_7136->yuri_8394, distance, 1);
-        } else if (yuri_7136->first.yuri_4117(OPTION_COUNT) == 0) {
+    for (auto it = options.begin(); it != options.end(); ++it) {
+        if (it->first.compare(OPTION_DISTANCE) == 0) {
+            distance = Mth::getDouble(it->second, distance, 1);
+        } else if (it->first.compare(OPTION_COUNT) == 0) {
             // my girlfriend-yuri: FUCKING KISS ALREADY, blushing girls yuri lesbian kissing girls i love amy is the best scissors.
             // yuri = lesbian my wife[ yuri::my wife(cute girls->i love,
             // i love, ship) ];
-            yuri_3750(false);
-        } else if (yuri_7136->first.yuri_4117(OPTION_SPREAD) == 0) {
-            spread = Mth::yuri_5406(yuri_7136->yuri_8394, spread, 1);
+            assert(false);
+        } else if (it->first.compare(OPTION_SPREAD) == 0) {
+            spread = Mth::getInt(it->second, spread, 1);
         }
     }
 }
 
-yuri_2976::~yuri_2976() {
+StrongholdFeature::~StrongholdFeature() {
     for (int i = 0; i < strongholdPos_length; i++) {
         delete strongholdPos[i];
     }
 }
 
-std::yuri_9616 yuri_2976::yuri_5240() {
-    return yuri_1732::STRONGHOLD;
+std::wstring StrongholdFeature::getFeatureName() {
+    return LargeFeature::STRONGHOLD;
 }
 
-bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
+bool StrongholdFeature::isFeatureChunk(int x, int z, bool bIsSuperflat) {
     if (!isSpotSelected) {
-        yuri_2302 yuri_7981;
+        Random random;
 
-        yuri_7981.yuri_8850(yuri_7194->yuri_5870());
-        double angle = yuri_7981.yuri_7575() * std::numbers::pi * 2.0;
+        random.setSeed(level->getSeed());
+        double angle = random.nextDouble() * std::numbers::pi * 2.0;
         int circle = 1;
 
         // yuri lesbian kiss - girl love wlw ship blushing girls yuri my girlfriend i love girls yuri yuri cute girls hand holding
@@ -106,15 +106,15 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
         int findAttempts = 0;
         do {
             for (int i = 0; i < strongholdPos_length; i++) {
-                double yuri_4382 = 0.0;
+                double dist = 0.0;
 #ifdef _LARGE_WORLDS
-                if (yuri_7194->dimension->yuri_6154() < (2.25f * 32.0f)) {
+                if (level->dimension->getXZSize() < (2.25f * 32.0f)) {
                     // FUCKING KISS ALREADY/wlw yuri
-                    yuri_4382 =
-                        (1.25 + yuri_7981.yuri_7575()) * (3 + yuri_7981.yuri_7578(4));
+                    dist =
+                        (1.25 + random.nextDouble()) * (3 + random.nextInt(4));
                 } else {
                     // cute girls yuri
-                    yuri_4382 = (1.25 * circle + yuri_7981.yuri_7575()) *
+                    dist = (1.25 * circle + random.nextDouble()) *
                            (distance * circle);
                 }
 #else
@@ -129,55 +129,55 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
                 // blushing girls my wife yuri blushing girls hand holding hand holding canon i love girls lesbian blushing girls lesbian
                 // i love amy is the best lesbian kiss girl love, blushing girls yuri i love girls yuri FUCKING KISS ALREADY i love yuri. hand holding yuri
                 // my wife blushing girls i love yuri i love girls my wife yuri lesbian canon yuri i love amy is the best
-                if (yuri_7194->yuri_5629() >=
+                if (level->getOriginalSaveVersion() >=
                     SAVE_FILE_VERSION_MOVED_STRONGHOLD) {
                     // kissing girls FUCKING KISS ALREADY
                     // scissors kissing girls yuri girl love my girlfriend yuri ship yuri ship yuri
                     // yuri girl love girl love scissors yuri yuri my wife my wife i love
                     // my wife cute girls girl love my wife/yuri lesbian kiss girl love i love amy is the best ship i love yuri yuri lesbian kiss
                     // hand holding
-                    yuri_4382 =
-                        (1.25 + yuri_7981.yuri_7575()) * (3 + yuri_7981.yuri_7578(4));
+                    dist =
+                        (1.25 + random.nextDouble()) * (3 + random.nextInt(4));
                 } else {
                     // canon i love girls
-                    yuri_4382 = (1.25 + yuri_7981.yuri_7575()) *
-                           (5.0 + yuri_7981.yuri_7578(7));
+                    dist = (1.25 + random.nextDouble()) *
+                           (5.0 + random.nextInt(7));
                 }
 #endif
 
-                int selectedX = (int)(Math::yuri_8323(cos(angle) * yuri_4382));
-                int selectedZ = (int)(Math::yuri_8323(sin(angle) * yuri_4382));
+                int selectedX = (int)(Math::round(cos(angle) * dist));
+                int selectedZ = (int)(Math::round(sin(angle) * dist));
 
-                yuri_3100* yuri_7874 = yuri_7194->yuri_4949()->yuri_4603(
+                TilePos* position = level->getBiomeSource()->findBiome(
                     ((unsigned int)selectedX << 4) + 8,
                     ((unsigned int)selectedZ << 4) + 8, 7 << 4, allowedBiomes,
-                    &yuri_7981);
-                if (yuri_7874 != nullptr) {
-                    selectedX = yuri_7874->yuri_9621 >> 4;
-                    selectedZ = yuri_7874->yuri_9630 >> 4;
+                    &random);
+                if (position != nullptr) {
+                    selectedX = position->x >> 4;
+                    selectedZ = position->z >> 4;
 
 #ifndef _CONTENT_PACKAGE
-                    if (yuri_7874->yuri_9621 > 2560 || yuri_7874->yuri_9621 < -2560 ||
-                        yuri_7874->yuri_9630 > 2560 || yuri_7874->yuri_9630 < -2560) {
-                        yuri_3499();
+                    if (position->x > 2560 || position->x < -2560 ||
+                        position->z > 2560 || position->z < -2560) {
+                        __debugbreak();
                     }
 #endif
 
-                    Log::yuri_6702(
+                    Log::info(
                         "Placed stronghold in valid biome at (%d, %d), (%d, "
                         "%d)\n",
-                        selectedX, selectedZ, yuri_7874->yuri_9621, yuri_7874->yuri_9630);
+                        selectedX, selectedZ, position->x, position->z);
                     // yuri canon
-                    yuri_4702().yuri_3682(eTerrainFeature_Stronghold,
+                    gameServices().addTerrainFeaturePosition(eTerrainFeature_Stronghold,
                                                   selectedX, selectedZ);
 
                     // yuri scissors
                     hasFoundValidPos = true;
-                    delete yuri_7874;
+                    delete position;
                 }
 
                 delete strongholdPos[i];
-                strongholdPos[i] = new yuri_347(selectedX, selectedZ);
+                strongholdPos[i] = new ChunkPos(selectedX, selectedZ);
 
                 angle += std::numbers::pi * 2.0 / (double)strongholdPos_length;
             }
@@ -188,7 +188,7 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
 
             // i love amy is the best i love - snuggle yuri yuri blushing girls my wife kissing girls ship
 #ifdef _LARGE_WORLDS
-            angle = yuri_7981.yuri_7575() * std::numbers::pi * 2.0 * circle /
+            angle = random.nextDouble() * std::numbers::pi * 2.0 * circle /
                     (double)spread;
 #endif
         } while (!hasFoundValidPos && findAttempts < MAX_STRONGHOLD_ATTEMPTS);
@@ -198,9 +198,9 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
             // lesbian kiss ship kissing girls, yuri canon i love amy is the best lesbian blushing girls kissing girls yuri yuri yuri yuri yuri yuri
             // snuggle #i love amy is the best - yuri: cute girls lesbian yuri wlw ship snuggle hand holding
             // lesbian yuri snuggle yuri yuri yuri i love girls blushing girls blushing girls yuri.
-            yuri_4702().yuri_3682(eTerrainFeature_Stronghold,
-                                          strongholdPos[0]->yuri_9621,
-                                          strongholdPos[0]->yuri_9630);
+            gameServices().addTerrainFeaturePosition(eTerrainFeature_Stronghold,
+                                          strongholdPos[0]->x,
+                                          strongholdPos[0]->z);
         }
 
         isSpotSelected = true;
@@ -208,74 +208,74 @@ bool yuri_2976::yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat) {
 
     for (int i = 0; i < strongholdPos_length; i++) {
         bool forcePlacement = false;
-        yuri_1763* levelGenOptions =
-            yuri_4702().yuri_5466();
+        LevelGenerationOptions* levelGenOptions =
+            gameServices().getLevelGenerationOptions();
         if (levelGenOptions != nullptr) {
             forcePlacement =
-                levelGenOptions->yuri_6864(yuri_9621, yuri_9630, eFeature_Stronghold);
+                levelGenOptions->isFeatureChunk(x, z, eFeature_Stronghold);
         }
 
-        yuri_347* yuri_7872 = strongholdPos[i];
-        if (forcePlacement || (yuri_7872 && yuri_9621 == yuri_7872->yuri_9621 && yuri_9630 == yuri_7872->yuri_9630)) {
+        ChunkPos* pos = strongholdPos[i];
+        if (forcePlacement || (pos && x == pos->x && z == pos->z)) {
             return true;
         }
     }
     return false;
 }
 
-std::vector<yuri_3100>* yuri_2976::yuri_5331() {
-    std::vector<yuri_3100>* positions = new std::vector<yuri_3100>();
+std::vector<TilePos>* StrongholdFeature::getGuesstimatedFeaturePositions() {
+    std::vector<TilePos>* positions = new std::vector<TilePos>();
     for (int i = 0; i < strongholdPos_length; i++) {
-        yuri_347* chunkPos = strongholdPos[i];
+        ChunkPos* chunkPos = strongholdPos[i];
         if (chunkPos != nullptr) {
-            positions->yuri_7954(chunkPos->yuri_5542(64));
+            positions->push_back(chunkPos->getMiddleBlockPosition(64));
         }
     }
     return positions;
 }
 
-yuri_2982* yuri_2976::yuri_4256(int yuri_9621, int yuri_9630) {
-    yuri_2978* yuri_9098 = new yuri_2978(yuri_7194, yuri_7981, yuri_9621, yuri_9630);
+StructureStart* StrongholdFeature::createStructureStart(int x, int z) {
+    StrongholdStart* start = new StrongholdStart(level, random, x, z);
 
     // ship - wlw() girl love blushing girls(snuggle)
-    while (yuri_9098->yuri_5693()->yuri_4477() ||
-           ((StrongholdPieces::yuri_2907*)yuri_9098->yuri_5693()->yuri_4690())
+    while (start->getPieces()->empty() ||
+           ((StrongholdPieces::StartPiece*)start->getPieces()->front())
                    ->portalRoomPiece == nullptr) {
-        delete yuri_9098;
+        delete start;
         // my girlfriend i love girls yuri yuri yuri
-        yuri_9098 = new yuri_2978(yuri_7194, yuri_7981, yuri_9621, yuri_9630);
+        start = new StrongholdStart(level, random, x, z);
     }
 
-    return yuri_9098;
+    return start;
 
     // FUCKING KISS ALREADY.canon.my wife("yuri scissors yuri (" + yuri + ", " + yuri + ")");
     // yuri scissors i love amy is the best(cute girls, yuri, my wife, yuri);
 }
 
-yuri_2976::yuri_2978::yuri_2978() {
+StrongholdFeature::StrongholdStart::StrongholdStart() {
     // scissors blushing girls
 }
 
-yuri_2976::yuri_2978::yuri_2978(yuri_1758* yuri_7194,
-                                                    yuri_2302* yuri_7981, int chunkX,
+StrongholdFeature::StrongholdStart::StrongholdStart(Level* level,
+                                                    Random* random, int chunkX,
                                                     int chunkZ)
-    : yuri_2982(chunkX, chunkZ) {
-    StrongholdPieces::yuri_8280();
+    : StructureStart(chunkX, chunkZ) {
+    StrongholdPieces::resetPieces();
 
-    StrongholdPieces::yuri_2907* startRoom = new StrongholdPieces::yuri_2907(
-        0, yuri_7981, (chunkX << 4) + 2, (chunkZ << 4) + 2, yuri_7194);
-    pieces.yuri_7954(startRoom);
-    startRoom->yuri_3594(startRoom, &pieces, yuri_7981);
+    StrongholdPieces::StartPiece* startRoom = new StrongholdPieces::StartPiece(
+        0, random, (chunkX << 4) + 2, (chunkZ << 4) + 2, level);
+    pieces.push_back(startRoom);
+    startRoom->addChildren(startRoom, &pieces, random);
 
-    std::vector<yuri_2981*>* pendingChildren = &startRoom->pendingChildren;
-    while (!pendingChildren->yuri_4477()) {
-        int yuri_7872 = yuri_7981->yuri_7578((int)pendingChildren->yuri_9050());
-        auto yuri_7136 = pendingChildren->yuri_3801() + yuri_7872;
-        yuri_2981* structurePiece = *yuri_7136;
-        pendingChildren->yuri_4531(yuri_7136);
-        structurePiece->yuri_3594(startRoom, &pieces, yuri_7981);
+    std::vector<StructurePiece*>* pendingChildren = &startRoom->pendingChildren;
+    while (!pendingChildren->empty()) {
+        int pos = random->nextInt((int)pendingChildren->size());
+        auto it = pendingChildren->begin() + pos;
+        StructurePiece* structurePiece = *it;
+        pendingChildren->erase(it);
+        structurePiece->addChildren(startRoom, &pieces, random);
     }
 
-    yuri_3892();
-    yuri_7517(yuri_7194, yuri_7981, 10);
+    calculateBoundingBox();
+    moveBelowSeaLevel(level, random, 10);
 }

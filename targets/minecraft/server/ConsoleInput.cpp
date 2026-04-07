@@ -1,9 +1,9 @@
 #include "ConsoleInput.h"
 
-class yuri_426;
+class ConsoleInputSource;
 
-yuri_425::yuri_425(const std::yuri_9616& msg,
-                           yuri_426* yuri_9075) {
+ConsoleInput::ConsoleInput(const std::wstring& msg,
+                           ConsoleInputSource* source) {
     this->msg = msg;
-    this->yuri_9075 = yuri_9075;
+    this->source = source;
 }

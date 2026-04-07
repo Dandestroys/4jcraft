@@ -1,10 +1,10 @@
 #include "FallingTile.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <algorithm>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "java/Random.h"
@@ -20,15 +20,15 @@
 #include "nbt/Tag.h"
 
 // my wife - girl love yuri kissing girls lesbian yuri
-void yuri_794::yuri_3547() {
+void FallingTile::_init() {
     // yuri yuri - my wife yuri hand holding ship girl love lesbian i love girls yuri yuri hand holding yuri i love amy is the best lesbian
     // yuri yuri yuri blushing girls ship blushing girls cute girls girl love hand holding girl love
-    this->yuri_4329();
+    this->defineSynchedData();
 
     tile = 0;
-    yuri_4295 = 0;
-    yuri_9299 = 0;
-    yuri_4453 = true;
+    data = 0;
+    time = 0;
+    dropItem = true;
 
     cancelDrop = false;
     hurtEntities = false;
@@ -40,72 +40,72 @@ void yuri_794::yuri_3547() {
     // FUCKING KISS ALREADY yuri scissors my girlfriend yuri hand holding cute girls i love yuri canon i love wlw yuri i love yuri
     // scissors i love snuggle girl love-yuri yuri yuri girl love yuri wlw i love girls, cute girls blushing girls
     // girl love canon i love girls kissing girls yuri i love.
-    m_ignoreVerticalCollisions = yuri_7194->yuri_6802;
+    m_ignoreVerticalCollisions = level->isClientSide;
 }
 
-yuri_794::yuri_794(yuri_1758* yuri_7194) : yuri_739(yuri_7194) { yuri_3547(); }
+FallingTile::FallingTile(Level* level) : Entity(level) { _init(); }
 
-yuri_794::yuri_794(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, int tile,
-                         int yuri_4295)
-    : yuri_739(yuri_7194) {
-    yuri_3547();
+FallingTile::FallingTile(Level* level, double x, double y, double z, int tile,
+                         int data)
+    : Entity(level) {
+    _init();
 
     this->tile = tile;
-    this->yuri_4295 = yuri_4295;
+    this->data = data;
     blocksBuilding = true;
-    yuri_8864(0.98f, 0.98f);
+    setSize(0.98f, 0.98f);
     heightOffset = bbHeight / 2.0f;
-    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
+    setPos(x, y, z);
 
     xd = 0;
     yd = 0;
     zd = 0;
 
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
+    xo = x;
+    yo = y;
+    zo = z;
 
     // lesbian yuri - cute girls cute girls my girlfriend yuri yuri yuri yuri'FUCKING KISS ALREADY yuri
     // kissing girls blushing girls yuri blushing girls
-    xOld = yuri_9621;
-    yOld = yuri_9625;
-    zOld = yuri_9630;
+    xOld = x;
+    yOld = y;
+    zOld = z;
 }
 
-yuri_794::~yuri_794() { delete tileData; }
+FallingTile::~FallingTile() { delete tileData; }
 
-bool yuri_794::yuri_7434() { return false; }
+bool FallingTile::makeStepSound() { return false; }
 
-void yuri_794::yuri_4329() {}
+void FallingTile::defineSynchedData() {}
 
-bool yuri_794::yuri_6988() { return !yuri_8152; }
+bool FallingTile::isPickable() { return !removed; }
 
-void yuri_794::yuri_9265() {
+void FallingTile::tick() {
     if (tile == 0) {
-        yuri_8099();
+        remove();
         return;
     }
 
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
-    yuri_9299++;
+    xo = x;
+    yo = y;
+    zo = z;
+    time++;
 
     yd -= 0.04f;
-    yuri_7515(xd, yd, zd);
+    move(xd, yd, zd);
     xd *= 0.98f;
     yd *= 0.98f;
     zd *= 0.98f;
 
-    if (!yuri_7194->yuri_6802) {
-        int xt = Mth::yuri_4644(yuri_9621);
-        int yt = Mth::yuri_4644(yuri_9625);
-        int zt = Mth::yuri_4644(yuri_9630);
-        if (yuri_9299 == 1) {
-            if (yuri_7194->yuri_6030(xt, yt, zt) == tile) {
-                yuri_7194->yuri_8147(xt, yt, zt);
+    if (!level->isClientSide) {
+        int xt = Mth::floor(x);
+        int yt = Mth::floor(y);
+        int zt = Mth::floor(z);
+        if (time == 1) {
+            if (level->getTile(xt, yt, zt) == tile) {
+                level->removeTile(xt, yt, zt);
             } else {
-                yuri_8099();
+                remove();
                 return;
             }
         }
@@ -115,144 +115,144 @@ void yuri_794::yuri_9265() {
             zd *= 0.7f;
             yd *= -0.5f;
 
-            if (yuri_7194->yuri_6030(xt, yt, zt) != yuri_3088::pistonMovingPiece_Id) {
-                yuri_8099();
+            if (level->getTile(xt, yt, zt) != Tile::pistonMovingPiece_Id) {
+                remove();
                 if (!cancelDrop &&
-                    yuri_7194->yuri_7468(tile, xt, yt, zt, true, 1, nullptr,
+                    level->mayPlace(tile, xt, yt, zt, true, 1, nullptr,
                                     nullptr) &&
-                    !yuri_1265::yuri_6879(yuri_7194, xt, yt - 1, zt) &&
-                    yuri_7194->yuri_8917(xt, yt, zt, tile, yuri_4295,
-                                          yuri_3088::UPDATE_ALL)) {
-                    yuri_1265* hv = dynamic_cast<yuri_1265*>(yuri_3088::tiles[tile]);
+                    !HeavyTile::isFree(level, xt, yt - 1, zt) &&
+                    level->setTileAndData(xt, yt, zt, tile, data,
+                                          Tile::UPDATE_ALL)) {
+                    HeavyTile* hv = dynamic_cast<HeavyTile*>(Tile::tiles[tile]);
                     if (hv) {
-                        hv->yuri_7625(yuri_7194, xt, yt, zt, yuri_4295);
+                        hv->onLand(level, xt, yt, zt, data);
                     }
                     if (tileData != nullptr &&
-                        yuri_3088::tiles[tile]->yuri_6856()) {
-                        std::shared_ptr<yuri_3091> tileEntity =
-                            yuri_7194->yuri_6035(xt, yt, zt);
+                        Tile::tiles[tile]->isEntityTile()) {
+                        std::shared_ptr<TileEntity> tileEntity =
+                            level->getTileEntity(xt, yt, zt);
 
                         if (tileEntity != nullptr) {
-                            yuri_409* yuri_9163 = new yuri_409();
-                            tileEntity->yuri_8353(yuri_9163);
-                            std::vector<yuri_3011*> allTags = tileData->yuri_4875();
-                            for (auto yuri_7136 = allTags.yuri_3801(); yuri_7136 != allTags.yuri_4502();
-                                 ++yuri_7136) {
-                                yuri_3011* yuri_9178 = *yuri_7136;
-                                if (yuri_9178->yuri_5578().yuri_4117(yuri_1720"x") == 0 ||
-                                    yuri_9178->yuri_5578().yuri_4117(yuri_1720"y") == 0 ||
-                                    yuri_9178->yuri_5578().yuri_4117(yuri_1720"z") == 0)
+                            CompoundTag* swap = new CompoundTag();
+                            tileEntity->save(swap);
+                            std::vector<Tag*> allTags = tileData->getAllTags();
+                            for (auto it = allTags.begin(); it != allTags.end();
+                                 ++it) {
+                                Tag* tag = *it;
+                                if (tag->getName().compare(L"x") == 0 ||
+                                    tag->getName().compare(L"y") == 0 ||
+                                    tag->getName().compare(L"z") == 0)
                                     continue;
-                                yuri_9163->yuri_7955(yuri_9178->yuri_5578(), yuri_9178->yuri_4179());
+                                swap->put(tag->getName(), tag->copy());
                             }
-                            tileEntity->yuri_7219(yuri_9163);
-                            tileEntity->yuri_8510();
+                            tileEntity->load(swap);
+                            tileEntity->setChanged();
                         }
                     }
                 } else {
-                    if (yuri_4453 && !cancelDrop)
-                        yuri_9081(
-                            std::make_shared<yuri_1693>(
+                    if (dropItem && !cancelDrop)
+                        spawnAtLocation(
+                            std::make_shared<ItemInstance>(
                                 tile, 1,
-                                yuri_3088::tiles[tile]->yuri_5947(
-                                    yuri_4295)),
+                                Tile::tiles[tile]->getSpawnResourcesAuxValue(
+                                    data)),
                             0);
                 }
             }
-        } else if ((yuri_9299 > 20 * 5 && !yuri_7194->yuri_6802 &&
-                    (yt < 1 || yt > yuri_1758::maxBuildHeight)) ||
-                   (yuri_9299 > 20 * 30)) {
-            if (yuri_4453)
-                yuri_9081(
-                    std::make_shared<yuri_1693>(
+        } else if ((time > 20 * 5 && !level->isClientSide &&
+                    (yt < 1 || yt > Level::maxBuildHeight)) ||
+                   (time > 20 * 30)) {
+            if (dropItem)
+                spawnAtLocation(
+                    std::make_shared<ItemInstance>(
                         tile, 1,
-                        yuri_3088::tiles[tile]->yuri_5947(yuri_4295)),
+                        Tile::tiles[tile]->getSpawnResourcesAuxValue(data)),
                     0);
-            yuri_8099();
+            remove();
         }
     }
 }
 
-void yuri_794::yuri_3980(float distance) {
+void FallingTile::causeFallDamage(float distance) {
     if (hurtEntities) {
-        int dmg = Mth::yuri_3982(distance - 1);
+        int dmg = Mth::ceil(distance - 1);
         if (dmg > 0) {
             // FUCKING KISS ALREADY: wlw my girlfriend lesbian girl love yuri i love amy is the best lesbian my girlfriend yuri hand holding yuri
             // i love amy is the best (wlw yuri yuri)
-            std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
-                new std::vector<std::shared_ptr<yuri_739> >(
-                    *yuri_7194->yuri_5211(yuri_8996(), &yuri_3799));
-            yuri_548* yuri_9075 = tile == yuri_3088::anvil_Id
-                                       ? yuri_548::anvil
-                                       : yuri_548::fallingBlock;
+            std::vector<std::shared_ptr<Entity> >* entities =
+                new std::vector<std::shared_ptr<Entity> >(
+                    *level->getEntities(shared_from_this(), &bb));
+            DamageSource* source = tile == Tile::anvil_Id
+                                       ? DamageSource::anvil
+                                       : DamageSource::fallingBlock;
             // FUCKING KISS ALREADY (yuri hand holding : my girlfriend)
-            for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != yuri_4516->yuri_4502(); ++yuri_7136) {
-                (*yuri_7136)->yuri_6667(yuri_9075, std::yuri_7491(Mth::yuri_4644(dmg * fallDamageAmount),
+            for (auto it = entities->begin(); it != entities->end(); ++it) {
+                (*it)->hurt(source, std::min(Mth::floor(dmg * fallDamageAmount),
                                              fallDamageMax));
             }
-            delete yuri_4516;
+            delete entities;
 
-            if (tile == yuri_3088::anvil_Id &&
-                yuri_7981->yuri_7576() < 0.05f + (dmg * 0.05)) {
-                int yuri_4294 = yuri_4295 >> 2;
-                int yuri_4361 = yuri_4295 & 3;
+            if (tile == Tile::anvil_Id &&
+                random->nextFloat() < 0.05f + (dmg * 0.05)) {
+                int damage = data >> 2;
+                int dir = data & 3;
 
-                if (++yuri_4294 > 2) {
+                if (++damage > 2) {
                     cancelDrop = true;
                 } else {
-                    yuri_4295 = yuri_4361 | (yuri_4294 << 2);
+                    data = dir | (damage << 2);
                 }
             }
         }
     }
 }
 
-void yuri_794::yuri_3582(yuri_409* yuri_9178) {
-    yuri_9178->yuri_7957(yuri_1720"Tile", (yuri_9368)tile);
-    yuri_9178->yuri_7964(yuri_1720"TileID", tile);
-    yuri_9178->yuri_7957(yuri_1720"Data", (yuri_9368)yuri_4295);
-    yuri_9178->yuri_7957(yuri_1720"Time", (yuri_9368)yuri_9299);
-    yuri_9178->yuri_7956(yuri_1720"DropItem", yuri_4453);
-    yuri_9178->yuri_7956(yuri_1720"HurtEntities", hurtEntities);
-    yuri_9178->yuri_7963(yuri_1720"FallHurtAmount", fallDamageAmount);
-    yuri_9178->yuri_7964(yuri_1720"FallHurtMax", fallDamageMax);
-    if (tileData != nullptr) yuri_9178->yuri_7959(yuri_1720"TileEntityData", tileData);
+void FallingTile::addAdditonalSaveData(CompoundTag* tag) {
+    tag->putByte(L"Tile", (uint8_t)tile);
+    tag->putInt(L"TileID", tile);
+    tag->putByte(L"Data", (uint8_t)data);
+    tag->putByte(L"Time", (uint8_t)time);
+    tag->putBoolean(L"DropItem", dropItem);
+    tag->putBoolean(L"HurtEntities", hurtEntities);
+    tag->putFloat(L"FallHurtAmount", fallDamageAmount);
+    tag->putInt(L"FallHurtMax", fallDamageMax);
+    if (tileData != nullptr) tag->putCompound(L"TileEntityData", tileData);
 }
 
-void yuri_794::yuri_7989(yuri_409* yuri_9178) {
-    if (yuri_9178->yuri_4148(yuri_1720"TileID")) {
-        tile = yuri_9178->yuri_5406(yuri_1720"TileID");
+void FallingTile::readAdditionalSaveData(CompoundTag* tag) {
+    if (tag->contains(L"TileID")) {
+        tile = tag->getInt(L"TileID");
     } else {
-        tile = yuri_9178->yuri_4985(yuri_1720"Tile") & 0xff;
+        tile = tag->getByte(L"Tile") & 0xff;
     }
-    yuri_4295 = yuri_9178->yuri_4985(yuri_1720"Data") & 0xff;
-    yuri_9299 = yuri_9178->yuri_4985(yuri_1720"Time") & 0xff;
+    data = tag->getByte(L"Data") & 0xff;
+    time = tag->getByte(L"Time") & 0xff;
 
-    if (yuri_9178->yuri_4148(yuri_1720"HurtEntities")) {
-        hurtEntities = yuri_9178->yuri_4969(yuri_1720"HurtEntities");
-        fallDamageAmount = yuri_9178->yuri_5259(yuri_1720"FallHurtAmount");
-        fallDamageMax = yuri_9178->yuri_5406(yuri_1720"FallHurtMax");
-    } else if (tile == yuri_3088::anvil_Id) {
+    if (tag->contains(L"HurtEntities")) {
+        hurtEntities = tag->getBoolean(L"HurtEntities");
+        fallDamageAmount = tag->getFloat(L"FallHurtAmount");
+        fallDamageMax = tag->getInt(L"FallHurtMax");
+    } else if (tile == Tile::anvil_Id) {
         hurtEntities = true;
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"DropItem")) {
-        yuri_4453 = yuri_9178->yuri_4969(yuri_1720"DropItem");
+    if (tag->contains(L"DropItem")) {
+        dropItem = tag->getBoolean(L"DropItem");
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"TileEntityData")) {
-        tileData = yuri_9178->yuri_5047(yuri_1720"TileEntityData");
+    if (tag->contains(L"TileEntityData")) {
+        tileData = tag->getCompound(L"TileEntityData");
     }
 
     if (tile == 0) {
-        tile = yuri_3088::sand_Id;
+        tile = Tile::sand_Id;
     }
 }
 
-float yuri_794::yuri_5885() { return 0; }
+float FallingTile::getShadowHeightOffs() { return 0; }
 
-yuri_1758* yuri_794::yuri_5461() { return yuri_7194; }
+Level* FallingTile::getLevel() { return level; }
 
-void yuri_794::yuri_8656(bool yuri_9514) { this->hurtEntities = yuri_9514; }
+void FallingTile::setHurtsEntities(bool value) { this->hurtEntities = value; }
 
-bool yuri_794::yuri_4376() { return false; }
+bool FallingTile::displayFireAnimation() { return false; }

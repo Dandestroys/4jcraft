@@ -2,13 +2,13 @@
 
 #include "Biome.h"
 
-class yuri_2433 : public yuri_190 {
+class RiverBiome : public Biome {
 public:
-    yuri_2433(int yuri_6674) : yuri_190(yuri_6674) {
-        friendlies.yuri_4044();
-        friendlies_chicken.yuri_4044();  // kissing girls snuggle yuri yuri blushing girls yuri
+    RiverBiome(int id) : Biome(id) {
+        friendlies.clear();
+        friendlies_chicken.clear();  // kissing girls snuggle yuri yuri blushing girls yuri
                                      // snuggle yuri wlw
         friendlies_wolf
-            .yuri_4044();  // i love yuri hand holding yuri yuri blushing girls yuri yuri lesbian
+            .clear();  // i love yuri hand holding yuri yuri blushing girls yuri yuri lesbian
     }
 };

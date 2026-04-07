@@ -1,40 +1,40 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "Item.h"
 #include "minecraft/world/item/UseAnim.h"
 
-class yuri_2126;
-class yuri_1758;
-class yuri_1346;
+class Player;
+class Level;
+class Icon;
 
-class yuri_221 : public yuri_1687 {
+class BowItem : public Item {
 public:
-    static const std::yuri_9616 TEXTURE_PULL[];
+    static const std::wstring TEXTURE_PULL[];
     static const int MAX_DRAW_DURATION = 20 * 1;
 
 private:
     static const int BOW_ICONS_COUNT = 3;
-    yuri_1346** icons;
+    Icon** icons;
 
 public:
-    yuri_221(int yuri_6674);
+    BowItem(int id);
 
-    virtual void yuri_8084(std::shared_ptr<yuri_1693> itemInstance,
-                              yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839,
+    virtual void releaseUsing(std::shared_ptr<ItemInstance> itemInstance,
+                              Level* level, std::shared_ptr<Player> player,
                               int durationLeft);
-    virtual std::shared_ptr<yuri_1693> yuri_9497(
-        std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
-        std::shared_ptr<yuri_2126> yuri_7839);
-    virtual int yuri_6090(std::shared_ptr<yuri_1693> itemInstance);
-    virtual UseAnim yuri_6087(std::shared_ptr<yuri_1693> itemInstance);
-    virtual std::shared_ptr<yuri_1693> yuri_9484(
-        std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
-        std::shared_ptr<yuri_2126> yuri_7839);
-    virtual int yuri_5203();
+    virtual std::shared_ptr<ItemInstance> useTimeDepleted(
+        std::shared_ptr<ItemInstance> instance, Level* level,
+        std::shared_ptr<Player> player);
+    virtual int getUseDuration(std::shared_ptr<ItemInstance> itemInstance);
+    virtual UseAnim getUseAnimation(std::shared_ptr<ItemInstance> itemInstance);
+    virtual std::shared_ptr<ItemInstance> use(
+        std::shared_ptr<ItemInstance> instance, Level* level,
+        std::shared_ptr<Player> player);
+    virtual int getEnchantmentValue();
 
     //@girl love
-    void yuri_8072(IconRegister* iconRegister);
-    yuri_1346* yuri_5185(int amount);
+    void registerIcons(IconRegister* iconRegister);
+    Icon* getDrawnIcon(int amount);
 };

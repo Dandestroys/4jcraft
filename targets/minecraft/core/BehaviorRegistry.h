@@ -4,18 +4,18 @@
 
 #include "DispenseItemBehavior.h"
 
-class yuri_624;
-class yuri_1687;
+class DispenseItemBehavior;
+class Item;
 
-class yuri_188 {
+class BehaviorRegistry {
 private:
-    std::unordered_map<yuri_1687*, yuri_624*> storage;
-    yuri_624* defaultBehavior;
+    std::unordered_map<Item*, DispenseItemBehavior*> storage;
+    DispenseItemBehavior* defaultBehavior;
 
 public:
-    yuri_188(yuri_624* defaultValue);
-    ~yuri_188();
+    BehaviorRegistry(DispenseItemBehavior* defaultValue);
+    ~BehaviorRegistry();
 
-    yuri_624* yuri_4853(yuri_1687* key);
-    void yuri_3580(yuri_1687* key, yuri_624* yuri_9514);
+    DispenseItemBehavior* get(Item* key);
+    void add(Item* key, DispenseItemBehavior* value);
 };

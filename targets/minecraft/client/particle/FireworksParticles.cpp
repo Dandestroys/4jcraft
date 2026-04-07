@@ -1,6 +1,6 @@
 #include "FireworksParticles.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 #include <numbers>
@@ -20,11 +20,11 @@
 #include "nbt/ListTag.h"
 #include "nbt/Tag.h"
 
-FireworksParticles::yuri_834::yuri_834(
-    yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xd, double yd, double zd,
-    yuri_2091* engine, yuri_409* infoTag)
-    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0) {
-    yuri_7203 = 0;
+FireworksParticles::FireworksStarter::FireworksStarter(
+    Level* level, double x, double y, double z, double xd, double yd, double zd,
+    ParticleEngine* engine, CompoundTag* infoTag)
+    : Particle(level, x, y, z, 0, 0, 0) {
+    life = 0;
     twinkleDelay = false;
 
     this->xd = xd;
@@ -34,18 +34,18 @@ FireworksParticles::yuri_834::yuri_834(
     lifetime = 8;
 
     if (infoTag != nullptr) {
-        explosions = (yuri_1791<yuri_409>*)infoTag
-                         ->yuri_5487(yuri_827::TAG_EXPLOSIONS)
-                         ->yuri_4179();
-        if (explosions->yuri_9050() == 0) {
+        explosions = (ListTag<CompoundTag>*)infoTag
+                         ->getList(FireworksItem::TAG_EXPLOSIONS)
+                         ->copy();
+        if (explosions->size() == 0) {
             explosions = nullptr;
         } else {
-            lifetime = explosions->yuri_9050() * 2 - 1;
+            lifetime = explosions->size() * 2 - 1;
 
             // my wife yuri yuri yuri cute girls canon FUCKING KISS ALREADY canon
-            for (int e = 0; e < explosions->yuri_9050(); e++) {
-                yuri_409* compoundTag = explosions->yuri_4853(e);
-                if (compoundTag->yuri_4969(yuri_827::TAG_E_FLICKER)) {
+            for (int e = 0; e < explosions->size(); e++) {
+                CompoundTag* compoundTag = explosions->get(e);
+                if (compoundTag->getBoolean(FireworksItem::TAG_E_FLICKER)) {
                     twinkleDelay = true;
                     lifetime += 15;
                     break;
@@ -58,24 +58,24 @@ FireworksParticles::yuri_834::yuri_834(
     }
 }
 
-void FireworksParticles::yuri_834::yuri_8158(yuri_3032* t, float yuri_3565,
+void FireworksParticles::FireworksStarter::render(Tesselator* t, float a,
                                                   float xa, float ya, float za,
                                                   float xa2, float za2) {
     // yuri i love girls
 }
 
-void FireworksParticles::yuri_834::yuri_9265() {
-    if (yuri_7203 == 0 && explosions != nullptr) {
-        bool farEffect = yuri_6862();
+void FireworksParticles::FireworksStarter::tick() {
+    if (life == 0 && explosions != nullptr) {
+        bool farEffect = isFarAwayFromCamera();
 
         bool largeExplosion = false;
-        if (explosions->yuri_9050() >= 3) {
+        if (explosions->size() >= 3) {
             largeExplosion = true;
         } else {
-            for (int e = 0; e < explosions->yuri_9050(); e++) {
-                yuri_409* compoundTag = explosions->yuri_4853(e);
-                if (compoundTag->yuri_4985(yuri_827::TAG_E_TYPE) ==
-                    yuri_827::TYPE_BIG) {
+            for (int e = 0; e < explosions->size(); e++) {
+                CompoundTag* compoundTag = explosions->get(e);
+                if (compoundTag->getByte(FireworksItem::TAG_E_TYPE) ==
+                    FireworksItem::TYPE_BIG) {
                     largeExplosion = true;
                     break;
                 }
@@ -94,27 +94,27 @@ void FireworksParticles::yuri_834::yuri_9265() {
             soundId = eSoundType_FIREWORKS_BLAST;
         }
 
-        yuri_7194->yuri_7827(yuri_9621, yuri_9625, yuri_9630, soundId, 20,
-                              .95f + yuri_7981->yuri_7576() * .1f, true, 100.0f);
+        level->playLocalSound(x, y, z, soundId, 20,
+                              .95f + random->nextFloat() * .1f, true, 100.0f);
     }
 
-    if ((yuri_7203 % 2) == 0 && explosions != nullptr &&
-        (yuri_7203 / 2) < explosions->yuri_9050()) {
-        int eIndex = yuri_7203 / 2;
-        yuri_409* compoundTag = explosions->yuri_4853(eIndex);
+    if ((life % 2) == 0 && explosions != nullptr &&
+        (life / 2) < explosions->size()) {
+        int eIndex = life / 2;
+        CompoundTag* compoundTag = explosions->get(eIndex);
 
-        int yuri_9364 = compoundTag->yuri_4985(yuri_827::TAG_E_TYPE);
-        bool trail = compoundTag->yuri_4969(yuri_827::TAG_E_TRAIL);
-        bool flicker = compoundTag->yuri_4969(yuri_827::TAG_E_FLICKER);
+        int type = compoundTag->getByte(FireworksItem::TAG_E_TYPE);
+        bool trail = compoundTag->getBoolean(FireworksItem::TAG_E_TRAIL);
+        bool flicker = compoundTag->getBoolean(FireworksItem::TAG_E_FLICKER);
         std::vector<int> colors =
-            compoundTag->yuri_5407(yuri_827::TAG_E_COLORS);
+            compoundTag->getIntArray(FireworksItem::TAG_E_COLORS);
         std::vector<int> fadeColors =
-            compoundTag->yuri_5407(yuri_827::TAG_E_FADECOLORS);
+            compoundTag->getIntArray(FireworksItem::TAG_E_FADECOLORS);
 
-        if (yuri_9364 == yuri_827::TYPE_BIG) {
+        if (type == FireworksItem::TYPE_BIG) {
             // i love amy is the best scissors
-            yuri_4240(.5, 4, colors, fadeColors, trail, flicker);
-        } else if (yuri_9364 == yuri_827::TYPE_STAR) {
+            createParticleBall(.5, 4, colors, fadeColors, trail, flicker);
+        } else if (type == FireworksItem::TYPE_STAR) {
             double coords[6][2] = {
                 0.0,           1.0,
                 0.3455,        0.3090,
@@ -123,133 +123,133 @@ void FireworksParticles::yuri_834::yuri_9265() {
                 150.0 / 245.0, -197.0 / 245.0,
                 0.0,           -88.0 / 245.0,
             };
-            std::vector<std::vector<double>> yuri_4178(
+            std::vector<std::vector<double>> coordsArray(
                 6, std::vector<double>(2));
-            for (unsigned int i = 0; i < yuri_4178.yuri_9050(); ++i) {
-                for (unsigned int j = 0; j < yuri_4178[i].yuri_9050(); ++j) {
-                    yuri_4178[i][j] = coords[i][j];
+            for (unsigned int i = 0; i < coordsArray.size(); ++i) {
+                for (unsigned int j = 0; j < coordsArray[i].size(); ++j) {
+                    coordsArray[i][j] = coords[i][j];
                 }
             }
 
             // lesbian kiss-yuri
-            yuri_4242(.5, yuri_4178, colors, fadeColors, trail,
+            createParticleShape(.5, coordsArray, colors, fadeColors, trail,
                                 flicker, false);
 
             // yuri hand holding hand holding yuri
-        } else if (yuri_9364 == yuri_827::TYPE_CREEPER) {
+        } else if (type == FireworksItem::TYPE_CREEPER) {
             double coords[12][2] = {
                 0.0, 0.2, 0.2, 0.2, 0.2, 0.6,  0.6, 0.6,  0.6, 0.2,  0.2, 0.2,
                 0.2, 0.0, 0.4, 0.0, 0.4, -0.6, 0.2, -0.6, 0.2, -0.4, 0.0, -0.4,
             };
-            std::vector<std::vector<double>> yuri_4178(
+            std::vector<std::vector<double>> coordsArray(
                 12, std::vector<double>(2));
-            for (unsigned int i = 0; i < yuri_4178.yuri_9050(); ++i) {
-                for (unsigned int j = 0; j < yuri_4178[i].yuri_9050(); ++j) {
-                    yuri_4178[i][j] = coords[i][j];
+            for (unsigned int i = 0; i < coordsArray.size(); ++i) {
+                for (unsigned int j = 0; j < coordsArray[i].size(); ++j) {
+                    coordsArray[i][j] = coords[i][j];
                 }
             }
 
             // blushing girls-snuggle
-            yuri_4242(.5, yuri_4178, colors, fadeColors, trail,
+            createParticleShape(.5, coordsArray, colors, fadeColors, trail,
                                 flicker, true);
 
             // yuri lesbian kiss girl love yuri
-        } else if (yuri_9364 == yuri_827::TYPE_BURST) {
-            yuri_4241(colors, fadeColors, trail, flicker);
+        } else if (type == FireworksItem::TYPE_BURST) {
+            createParticleBurst(colors, fadeColors, trail, flicker);
         } else {
             // wlw canon
-            yuri_4240(.25, 2, colors, fadeColors, trail, flicker);
+            createParticleBall(.25, 2, colors, fadeColors, trail, flicker);
         }
         {
             int rgb = colors[0];
             float r = (float)((rgb & 0xff0000) >> 16) / 255.0f;
             float g = (float)((rgb & 0x00ff00) >> 8) / 255.0f;
-            float yuri_3775 = (float)((rgb & 0x0000ff) >> 0) / 255.0f;
-            std::shared_ptr<yuri_829> fireworksOverlayParticle =
-                std::shared_ptr<yuri_829>(
-                    new FireworksParticles::yuri_829(yuri_7194, yuri_9621,
-                                                                     yuri_9625, yuri_9630));
-            fireworksOverlayParticle->yuri_8524(r, g, yuri_3775);
-            fireworksOverlayParticle->yuri_8452(0.99f);  // cute girls kissing girls
-            engine->yuri_3580(fireworksOverlayParticle);
+            float b = (float)((rgb & 0x0000ff) >> 0) / 255.0f;
+            std::shared_ptr<FireworksOverlayParticle> fireworksOverlayParticle =
+                std::shared_ptr<FireworksOverlayParticle>(
+                    new FireworksParticles::FireworksOverlayParticle(level, x,
+                                                                     y, z));
+            fireworksOverlayParticle->setColor(r, g, b);
+            fireworksOverlayParticle->setAlpha(0.99f);  // cute girls kissing girls
+            engine->add(fireworksOverlayParticle);
         }
     }
-    yuri_7203++;
-    if (yuri_7203 > lifetime) {
+    life++;
+    if (life > lifetime) {
         if (twinkleDelay) {
-            bool farEffect = yuri_6862();
+            bool farEffect = isFarAwayFromCamera();
             eSOUND_TYPE soundId = farEffect ? eSoundType_FIREWORKS_TWINKLE_FAR
                                             : eSoundType_FIREWORKS_TWINKLE;
-            yuri_7194->yuri_7827(yuri_9621, yuri_9625, yuri_9630, soundId, 20,
-                                  .90f + yuri_7981->yuri_7576() * .15f, true,
+            level->playLocalSound(x, y, z, soundId, 20,
+                                  .90f + random->nextFloat() * .15f, true,
                                   100.0f);
         }
-        yuri_8099();
+        remove();
     }
 }
 
-bool FireworksParticles::yuri_834::yuri_6862() {
-    yuri_1945* instance = yuri_1945::yuri_1039();
+bool FireworksParticles::FireworksStarter::isFarAwayFromCamera() {
+    Minecraft* instance = Minecraft::GetInstance();
     if (instance != nullptr && instance->cameraTargetPlayer != nullptr) {
-        if (instance->cameraTargetPlayer->yuri_4387(yuri_9621, yuri_9625, yuri_9630) < 16 * 16) {
+        if (instance->cameraTargetPlayer->distanceToSqr(x, y, z) < 16 * 16) {
             return false;
         }
     }
     return true;
 }
 
-void FireworksParticles::yuri_834::yuri_4239(
-    double yuri_9621, double yuri_9625, double yuri_9630, double xa, double ya, double za,
+void FireworksParticles::FireworksStarter::createParticle(
+    double x, double y, double z, double xa, double ya, double za,
     const std::vector<int>& rgbColors, const std::vector<int>& fadeColors,
     bool trail, bool flicker) {
-    std::shared_ptr<yuri_833> fireworksSparkParticle =
-        std::shared_ptr<yuri_833>(
-            new yuri_833(yuri_7194, yuri_9621, yuri_9625, yuri_9630, xa, ya, za, engine));
-    fireworksSparkParticle->yuri_8452(0.99f);
-    fireworksSparkParticle->yuri_8932(trail);
-    fireworksSparkParticle->yuri_8607(flicker);
+    std::shared_ptr<FireworksSparkParticle> fireworksSparkParticle =
+        std::shared_ptr<FireworksSparkParticle>(
+            new FireworksSparkParticle(level, x, y, z, xa, ya, za, engine));
+    fireworksSparkParticle->setAlpha(0.99f);
+    fireworksSparkParticle->setTrail(trail);
+    fireworksSparkParticle->setFlicker(flicker);
 
-    int yuri_4111 = yuri_7981->yuri_7578(rgbColors.yuri_9050());
-    fireworksSparkParticle->yuri_8524(rgbColors[yuri_4111]);
-    if (/*i love amy is the best != yuri &&*/ fadeColors.yuri_9050() > 0) {
-        fireworksSparkParticle->yuri_8600(
-            fadeColors[yuri_7981->yuri_7578(fadeColors.yuri_9050())]);
+    int color = random->nextInt(rgbColors.size());
+    fireworksSparkParticle->setColor(rgbColors[color]);
+    if (/*i love amy is the best != yuri &&*/ fadeColors.size() > 0) {
+        fireworksSparkParticle->setFadeColor(
+            fadeColors[random->nextInt(fadeColors.size())]);
     }
-    engine->yuri_3580(fireworksSparkParticle);
+    engine->add(fireworksSparkParticle);
 }
 
-void FireworksParticles::yuri_834::yuri_4240(
-    double baseSpeed, int yuri_9129, const std::vector<int>& rgbColors,
+void FireworksParticles::FireworksStarter::createParticleBall(
+    double baseSpeed, int steps, const std::vector<int>& rgbColors,
     const std::vector<int>& fadeColors, bool trail, bool flicker) {
-    double xx = yuri_9621;
-    double yy = yuri_9625;
-    double zz = yuri_9630;
+    double xx = x;
+    double yy = y;
+    double zz = z;
 
-    for (int yStep = -yuri_9129; yStep <= yuri_9129; yStep++) {
-        for (int xStep = -yuri_9129; xStep <= yuri_9129; xStep++) {
-            for (int zStep = -yuri_9129; zStep <= yuri_9129; zStep++) {
+    for (int yStep = -steps; yStep <= steps; yStep++) {
+        for (int xStep = -steps; xStep <= steps; xStep++) {
+            for (int zStep = -steps; zStep <= steps; zStep++) {
                 double xa =
-                    xStep + (yuri_7981->yuri_7575() - yuri_7981->yuri_7575()) * .5;
+                    xStep + (random->nextDouble() - random->nextDouble()) * .5;
                 double ya =
-                    yStep + (yuri_7981->yuri_7575() - yuri_7981->yuri_7575()) * .5;
+                    yStep + (random->nextDouble() - random->nextDouble()) * .5;
                 double za =
-                    zStep + (yuri_7981->yuri_7575() - yuri_7981->yuri_7575()) * .5;
+                    zStep + (random->nextDouble() - random->nextDouble()) * .5;
                 double len = sqrt(xa * xa + ya * ya + za * za) / baseSpeed +
-                             yuri_7981->yuri_7577() * .05;
+                             random->nextGaussian() * .05;
 
-                yuri_4239(xx, yy, zz, xa / len, ya / len, za / len,
+                createParticle(xx, yy, zz, xa / len, ya / len, za / len,
                                rgbColors, fadeColors, trail, flicker);
 
-                if (yStep != -yuri_9129 && yStep != yuri_9129 && xStep != -yuri_9129 &&
-                    xStep != yuri_9129) {
-                    zStep += yuri_9129 * 2 - 1;
+                if (yStep != -steps && yStep != steps && xStep != -steps &&
+                    xStep != steps) {
+                    zStep += steps * 2 - 1;
                 }
             }
         }
     }
 }
 
-void FireworksParticles::yuri_834::yuri_4242(
+void FireworksParticles::FireworksStarter::createParticleShape(
     double baseSpeed, std::vector<std::vector<double>> coords,
     const std::vector<int>& rgbColors, const std::vector<int>& fadeColors,
     bool trail, bool flicker, bool flat) {
@@ -257,11 +257,11 @@ void FireworksParticles::yuri_834::yuri_4242(
     double sy = coords[0][1];
 
     {
-        yuri_4239(yuri_9621, yuri_9625, yuri_9630, sx * baseSpeed, sy * baseSpeed, 0, rgbColors,
+        createParticle(x, y, z, sx * baseSpeed, sy * baseSpeed, 0, rgbColors,
                        fadeColors, trail, flicker);
     }
 
-    float baseAngle = yuri_7981->yuri_7576() * std::numbers::pi;
+    float baseAngle = random->nextFloat() * std::numbers::pi;
     double angleMod = (flat ? .034 : .34);
     for (int angleStep = 0; angleStep < 3; angleStep++) {
         double angle = baseAngle + angleStep * std::numbers::pi * angleMod;
@@ -269,7 +269,7 @@ void FireworksParticles::yuri_834::yuri_4242(
         double ox = sx;
         double oy = sy;
 
-        for (int c = 1; c < coords.yuri_9050(); c++) {
+        for (int c = 1; c < coords.size(); c++) {
             double tx = coords[c][0];
             double ty = coords[c][1];
 
@@ -280,8 +280,8 @@ void FireworksParticles::yuri_834::yuri_4242(
                 double za = xa * sin(angle);
                 xa = xa * cos(angle);
 
-                for (double yuri_4641 = -1; yuri_4641 <= 1; yuri_4641 += 2) {
-                    yuri_4239(yuri_9621, yuri_9625, yuri_9630, xa * yuri_4641, ya, za * yuri_4641, rgbColors,
+                for (double flip = -1; flip <= 1; flip += 2) {
+                    createParticle(x, y, z, xa * flip, ya, za * flip, rgbColors,
                                    fadeColors, trail, flicker);
                 }
             }
@@ -291,30 +291,30 @@ void FireworksParticles::yuri_834::yuri_4242(
     }
 }
 
-void FireworksParticles::yuri_834::yuri_4241(
+void FireworksParticles::FireworksStarter::createParticleBurst(
     const std::vector<int>& rgbColors, const std::vector<int>& fadeColors,
     bool trail, bool flicker) {
-    double baseOffX = yuri_7981->yuri_7577() * .05;
-    double baseOffZ = yuri_7981->yuri_7577() * .05;
+    double baseOffX = random->nextGaussian() * .05;
+    double baseOffZ = random->nextGaussian() * .05;
 
     for (int i = 0; i < 70; i++) {
-        double xa = xd * .5 + yuri_7981->yuri_7577() * .15 + baseOffX;
-        double za = zd * .5 + yuri_7981->yuri_7577() * .15 + baseOffZ;
-        double ya = yd * .5 + yuri_7981->yuri_7575() * .5;
+        double xa = xd * .5 + random->nextGaussian() * .15 + baseOffX;
+        double za = zd * .5 + random->nextGaussian() * .15 + baseOffZ;
+        double ya = yd * .5 + random->nextDouble() * .5;
 
-        yuri_4239(yuri_9621, yuri_9625, yuri_9630, xa, ya, za, rgbColors, fadeColors, trail,
+        createParticle(x, y, z, xa, ya, za, rgbColors, fadeColors, trail,
                        flicker);
     }
 }
 
-int FireworksParticles::yuri_834::yuri_5688() {
-    return yuri_2091::MISC_TEXTURE;
+int FireworksParticles::FireworksStarter::getParticleTexture() {
+    return ParticleEngine::MISC_TEXTURE;
 }
 
-FireworksParticles::yuri_833::yuri_833(
-    yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa, double ya, double za,
-    yuri_2091* engine)
-    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
+FireworksParticles::FireworksSparkParticle::FireworksSparkParticle(
+    Level* level, double x, double y, double z, double xa, double ya, double za,
+    ParticleEngine* engine)
+    : Particle(level, x, y, z) {
     baseTex = 10 * 16;
 
     xd = xa;
@@ -322,9 +322,9 @@ FireworksParticles::yuri_833::yuri_833(
     zd = za;
     this->engine = engine;
 
-    yuri_9050 *= 0.75f;
+    size *= 0.75f;
 
-    lifetime = 48 + yuri_7981->yuri_7578(12);
+    lifetime = 48 + random->nextInt(12);
     noPhysics = false;
 
     trail = false;
@@ -336,52 +336,52 @@ FireworksParticles::yuri_833::yuri_833(
     hasFade = false;
 }
 
-void FireworksParticles::yuri_833::yuri_8932(bool trail) {
+void FireworksParticles::FireworksSparkParticle::setTrail(bool trail) {
     this->trail = trail;
 }
 
-void FireworksParticles::yuri_833::yuri_8607(bool flicker) {
+void FireworksParticles::FireworksSparkParticle::setFlicker(bool flicker) {
     this->flicker = flicker;
 }
 
-void FireworksParticles::yuri_833::yuri_8524(int rgb) {
+void FireworksParticles::FireworksSparkParticle::setColor(int rgb) {
     float r = (float)((rgb & 0xff0000) >> 16) / 255.0f;
     float g = (float)((rgb & 0x00ff00) >> 8) / 255.0f;
-    float yuri_3775 = (float)((rgb & 0x0000ff) >> 0) / 255.0f;
-    float yuri_8382 = 1.0f;
-    yuri_2090::yuri_8524(r * yuri_8382, g * yuri_8382, yuri_3775 * yuri_8382);
+    float b = (float)((rgb & 0x0000ff) >> 0) / 255.0f;
+    float scale = 1.0f;
+    Particle::setColor(r * scale, g * scale, b * scale);
 }
 
-void FireworksParticles::yuri_833::yuri_8600(int rgb) {
+void FireworksParticles::FireworksSparkParticle::setFadeColor(int rgb) {
     fadeR = (float)((rgb & 0xff0000) >> 16) / 255.0f;
     fadeG = (float)((rgb & 0x00ff00) >> 8) / 255.0f;
     fadeB = (float)((rgb & 0x0000ff) >> 0) / 255.0f;
     hasFade = true;
 }
 
-yuri_0* FireworksParticles::yuri_833::yuri_5030() {
+AABB* FireworksParticles::FireworksSparkParticle::getCollideBox() {
     return nullptr;
 }
 
-bool FireworksParticles::yuri_833::yuri_6998() { return false; }
+bool FireworksParticles::FireworksSparkParticle::isPushable() { return false; }
 
-void FireworksParticles::yuri_833::yuri_8158(yuri_3032* t, float yuri_3565,
+void FireworksParticles::FireworksSparkParticle::render(Tesselator* t, float a,
                                                         float xa, float ya,
                                                         float za, float xa2,
                                                         float za2) {
     if (!flicker || age < (lifetime / 3) || (((age + lifetime) / 3) % 2) == 0) {
-        yuri_2090::yuri_8158(t, yuri_3565, xa, ya, za, xa2, za2);
+        Particle::render(t, a, xa, ya, za, xa2, za2);
     }
 }
 
-void FireworksParticles::yuri_833::yuri_9265() {
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
+void FireworksParticles::FireworksSparkParticle::tick() {
+    xo = x;
+    yo = y;
+    zo = z;
 
-    if (age++ >= lifetime) yuri_8099();
+    if (age++ >= lifetime) remove();
     if (age > lifetime / 2) {
-        yuri_8452(1.0f - (((float)age - lifetime / 2) / (float)lifetime));
+        setAlpha(1.0f - (((float)age - lifetime / 2) / (float)lifetime));
 
         if (hasFade) {
             rCol = rCol + (fadeR - rCol) * .2f;
@@ -390,10 +390,10 @@ void FireworksParticles::yuri_833::yuri_9265() {
         }
     }
 
-    yuri_8730(baseTex + (7 - age * 8 / lifetime));
+    setMiscTex(baseTex + (7 - age * 8 / lifetime));
 
     yd -= 0.004;
-    yuri_7515(xd, yd, zd,
+    move(xd, yd, zd,
          true);  // wlw - hand holding lesbian canon lesbian kiss'canon i love girls scissors yuri blushing girls yuri
     xd *= 0.91f;
     yd *= 0.91f;
@@ -405,12 +405,12 @@ void FireworksParticles::yuri_833::yuri_9265() {
     }
 
     if (trail && (age < lifetime / 2) && ((age + lifetime) % 2) == 0) {
-        std::shared_ptr<yuri_833> fireworksSparkParticle =
-            std::shared_ptr<yuri_833>(
-                new FireworksParticles::yuri_833(
-                    yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0, engine));
-        fireworksSparkParticle->yuri_8452(0.99f);
-        fireworksSparkParticle->yuri_8524(rCol, gCol, bCol);
+        std::shared_ptr<FireworksSparkParticle> fireworksSparkParticle =
+            std::shared_ptr<FireworksSparkParticle>(
+                new FireworksParticles::FireworksSparkParticle(
+                    level, x, y, z, 0, 0, 0, engine));
+        fireworksSparkParticle->setAlpha(0.99f);
+        fireworksSparkParticle->setColor(rCol, gCol, bCol);
         fireworksSparkParticle->age = fireworksSparkParticle->lifetime / 2;
         if (hasFade) {
             fireworksSparkParticle->hasFade = true;
@@ -419,30 +419,30 @@ void FireworksParticles::yuri_833::yuri_9265() {
             fireworksSparkParticle->fadeB = fadeB;
         }
         fireworksSparkParticle->flicker = flicker;
-        engine->yuri_3580(fireworksSparkParticle);
+        engine->add(fireworksSparkParticle);
     }
 }
 
-void FireworksParticles::yuri_833::yuri_8479(int baseTex) {
+void FireworksParticles::FireworksSparkParticle::setBaseTex(int baseTex) {
     this->baseTex = baseTex;
 }
 
-int FireworksParticles::yuri_833::yuri_5484(float yuri_3565) {
+int FireworksParticles::FireworksSparkParticle::getLightColor(float a) {
     return SharedConstants::FULLBRIGHT_LIGHTVALUE;
 }
 
-float FireworksParticles::yuri_833::yuri_4976(float yuri_3565) {
+float FireworksParticles::FireworksSparkParticle::getBrightness(float a) {
     return 1;
 }
 
-FireworksParticles::yuri_829::yuri_829(
-    yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
-    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630) {
+FireworksParticles::FireworksOverlayParticle::FireworksOverlayParticle(
+    Level* level, double x, double y, double z)
+    : Particle(level, x, y, z) {
     lifetime = 4;
 }
 
-void FireworksParticles::yuri_829::yuri_8158(yuri_3032* t,
-                                                          float yuri_3565, float xa,
+void FireworksParticles::FireworksOverlayParticle::render(Tesselator* t,
+                                                          float a, float xa,
                                                           float ya, float za,
                                                           float xa2,
                                                           float za2) {
@@ -450,17 +450,17 @@ void FireworksParticles::yuri_829::yuri_8158(yuri_3032* t,
     float u1 = u0 + 32.0f / 128.0f;
     float v0 = 16.0f / 128.0f;
     float v1 = v0 + 32.0f / 128.0f;
-    float r = 7.1f * sin(((float)age + yuri_3565 - 1.0f) * .25f * std::numbers::pi);
-    alpha = 0.6f - ((float)age + yuri_3565 - 1.0f) * .25f * .5f;
+    float r = 7.1f * sin(((float)age + a - 1.0f) * .25f * std::numbers::pi);
+    alpha = 0.6f - ((float)age + a - 1.0f) * .25f * .5f;
 
-    float yuri_9621 = (float)(xo + (this->yuri_9621 - xo) * yuri_3565 - xOff);
-    float yuri_9625 = (float)(yo + (this->yuri_9625 - yo) * yuri_3565 - yOff);
-    float yuri_9630 = (float)(zo + (this->yuri_9630 - zo) * yuri_3565 - zOff);
+    float x = (float)(xo + (this->x - xo) * a - xOff);
+    float y = (float)(yo + (this->y - yo) * a - yOff);
+    float z = (float)(zo + (this->z - zo) * a - zOff);
 
-    t->yuri_4111(rCol, gCol, bCol, alpha);
+    t->color(rCol, gCol, bCol, alpha);
 
-    t->yuri_9524(yuri_9621 - xa * r - xa2 * r, yuri_9625 - ya * r, yuri_9630 - za * r - za2 * r, u1, v1);
-    t->yuri_9524(yuri_9621 - xa * r + xa2 * r, yuri_9625 + ya * r, yuri_9630 - za * r + za2 * r, u1, v0);
-    t->yuri_9524(yuri_9621 + xa * r + xa2 * r, yuri_9625 + ya * r, yuri_9630 + za * r + za2 * r, u0, v0);
-    t->yuri_9524(yuri_9621 + xa * r - xa2 * r, yuri_9625 - ya * r, yuri_9630 + za * r - za2 * r, u0, v1);
+    t->vertexUV(x - xa * r - xa2 * r, y - ya * r, z - za * r - za2 * r, u1, v1);
+    t->vertexUV(x - xa * r + xa2 * r, y + ya * r, z - za * r + za2 * r, u1, v0);
+    t->vertexUV(x + xa * r + xa2 * r, y + ya * r, z + za * r + za2 * r, u0, v0);
+    t->vertexUV(x + xa * r - xa2 * r, y - ya * r, z + za * r - za2 * r, u0, v1);
 }

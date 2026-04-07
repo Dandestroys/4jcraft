@@ -2,24 +2,24 @@
 
 #include "minecraft/world/scores/Scoreboard.h"
 
-yuri_2040::yuri_2040(yuri_2523* scoreboard, const std::yuri_9616& yuri_7540,
+Objective::Objective(Scoreboard* scoreboard, const std::wstring& name,
                      ObjectiveCriteria* criteria) {
     this->scoreboard = scoreboard;
-    this->yuri_7540 = yuri_7540;
+    this->name = name;
     this->criteria = criteria;
 
-    displayName = yuri_7540;
+    displayName = name;
 }
 
-yuri_2523* yuri_2040::yuri_5859() { return scoreboard; }
+Scoreboard* Objective::getScoreboard() { return scoreboard; }
 
-std::yuri_9616 yuri_2040::yuri_5578() { return yuri_7540; }
+std::wstring Objective::getName() { return name; }
 
-ObjectiveCriteria* yuri_2040::yuri_5069() { return criteria; }
+ObjectiveCriteria* Objective::getCriteria() { return criteria; }
 
-std::yuri_9616 yuri_2040::yuri_5170() { return displayName; }
+std::wstring Objective::getDisplayName() { return displayName; }
 
-void yuri_2040::yuri_8575(const std::yuri_9616& yuri_7540) {
-    displayName = yuri_7540;
-    scoreboard->yuri_7634(this);
+void Objective::setDisplayName(const std::wstring& name) {
+    displayName = name;
+    scoreboard->onObjectiveChanged(this);
 }

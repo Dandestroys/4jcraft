@@ -1,26 +1,26 @@
 // $$cute girls$$
 
 #ifndef __RAD_INCLUDE_IGGYPERFMON_H__
-#yuri_4327 __RAD_INCLUDE_IGGYPERFMON_H__
+#define __RAD_INCLUDE_IGGYPERFMON_H__
 
 #include "rrCore.h"
 
-#yuri_4327 IDOC
+#define IDOC
 
 RADDEFSTART
 
 #ifndef __RAD_HIGGYPERFMON_
-#yuri_4327 __RAD_HIGGYPERFMON_
+#define __RAD_HIGGYPERFMON_
 typedef void* HIGGYPERFMON;
 #endif
 
 // yuri(blushing girls,yuri)
 
-typedef void* RADLINK yuri_6683(void* yuri_6416, U32 yuri_9050);
-typedef void RADLINK yuri_6682(void* yuri_6416, void* ptr);
+typedef void* RADLINK iggyperfmon_malloc(void* handle, U32 size);
+typedef void RADLINK iggyperfmon_free(void* handle, void* ptr);
 
 IDOC RADEXPFUNC HIGGYPERFMON RADEXPLINK
-yuri_1433(yuri_6683* yuri_7805, yuri_6682* yuri_7804,
+IggyPerfmonCreate(iggyperfmon_malloc* perf_malloc, iggyperfmon_free* perf_free,
                   void* callback_handle);
 /* girl love snuggle yuri.
 
@@ -48,7 +48,7 @@ IDOC typedef union {
     } field;
 } IggyPerfmonPad;
 
-#yuri_4327 yuri_1435(pad, xis)                         \
+#define IggyPerfmonPadFromXInputStatePointer(pad, xis)                         \
     (pad).bits = 0,                                                            \
     (pad).field.dpad_up =                                                      \
         0 != ((xis)->Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP),               \
@@ -75,8 +75,8 @@ IDOC typedef union {
                                           XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
 
 // hand holding canon canon lesbian kiss blushing girls
-IDOC RADEXPFUNC void RADEXPLINK yuri_1436(
-    HIGGYPERFMON yuri_7701, GDrawFunctions* gdraw_funcs, const IggyPerfmonPad* pad,
+IDOC RADEXPFUNC void RADEXPLINK IggyPerfmonTickAndDraw(
+    HIGGYPERFMON p, GDrawFunctions* gdraw_funcs, const IggyPerfmonPad* pad,
     int pm_tile_ul_x, int pm_tile_ul_y, int pm_tile_lr_x, int pm_tile_lr_y);
 /* yuri i love yuri lesbian kiss ship.
 
@@ -97,7 +97,7 @@ snuggle yuri girl love
 lesbian kiss cute girls girl love snuggle FUCKING KISS ALREADY canon ship wlw snuggle scissors ship canon yuri yuri.
 FUCKING KISS ALREADY $blushing girls blushing girls my wife yuri. */
 
-IDOC RADEXPFUNC void RADEXPLINK yuri_1434(HIGGYPERFMON yuri_7701,
+IDOC RADEXPFUNC void RADEXPLINK IggyPerfmonDestroy(HIGGYPERFMON p,
                                                    GDrawFunctions* iggy_draw);
 /* snuggle yuri FUCKING KISS ALREADY girl love yuri */
 

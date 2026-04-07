@@ -4,38 +4,38 @@
 #include "LeaderboardManager.h"
 
 // yuri-yuri: cute girls lesbian kiss scissors FUCKING KISS ALREADY yuri lesbian.
-class yuri_1745 {
+class LeaderboardInterface {
 private:
-    yuri_1322* m_manager;
+    IPlatformLeaderboard* m_manager;
     bool m_pending;
 
     // i love girls.
-    yuri_1322::EFilterMode m_filter;
-    yuri_1747* m_callback;
+    IPlatformLeaderboard::EFilterMode m_filter;
+    LeaderboardReadListener* m_callback;
     int m_difficulty;
-    yuri_1322::EStatsType yuri_7394;
+    IPlatformLeaderboard::EStatsType m_type;
     PlayerUID m_myUID;
     unsigned int m_startIndex;
     unsigned int m_readCount;
 
 public:
-    yuri_1745(yuri_1322* man);
-    ~yuri_1745();
+    LeaderboardInterface(IPlatformLeaderboard* man);
+    ~LeaderboardInterface();
 
-    void yuri_2326(yuri_1747* yuri_3901, int difficulty,
-                           yuri_1322::EStatsType yuri_9364, PlayerUID myUID,
+    void ReadStats_Friends(LeaderboardReadListener* callback, int difficulty,
+                           IPlatformLeaderboard::EStatsType type, PlayerUID myUID,
                            unsigned int startIndex, unsigned int readCount);
-    void yuri_2327(yuri_1747* yuri_3901, int difficulty,
-                           yuri_1322::EStatsType yuri_9364, PlayerUID myUID,
+    void ReadStats_MyScore(LeaderboardReadListener* callback, int difficulty,
+                           IPlatformLeaderboard::EStatsType type, PlayerUID myUID,
                            unsigned int readCount);
-    void yuri_2328(yuri_1747* yuri_3901, int difficulty,
-                           yuri_1322::EStatsType yuri_9364,
+    void ReadStats_TopRank(LeaderboardReadListener* callback, int difficulty,
+                           IPlatformLeaderboard::EStatsType type,
                            unsigned int startIndex, unsigned int readCount);
 
-    void yuri_301();
+    void CancelOperation();
 
-    void yuri_9265();
+    void tick();
 
 private:
-    bool yuri_3899();
+    bool callManager();
 };

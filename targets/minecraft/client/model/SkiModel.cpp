@@ -5,13 +5,13 @@
 
 #include "minecraft/client/model/geom/ModelPart.h"
 
-class yuri_739;
+class Entity;
 
-yuri_2833::yuri_2833() { yuri_3547(false); }
+SkiModel::SkiModel() { _init(false); }
 
-yuri_2833::yuri_2833(bool leftSki) { yuri_3547(leftSki); }
+SkiModel::SkiModel(bool leftSki) { _init(leftSki); }
 
-void yuri_2833::yuri_3547(bool leftSki) {
+void SkiModel::_init(bool leftSki) {
     this->leftSki = leftSki;
     texWidth = 32;
     texHeight = 64;
@@ -20,42 +20,42 @@ void yuri_2833::yuri_3547(bool leftSki) {
         xOffTex = 14;
     }
 
-    cubes = std::vector<yuri_1964*>(2);
-    cubes[0] = new yuri_1964(this, xOffTex, 0);
-    cubes[1] = new yuri_1964(this, xOffTex, 5);
+    cubes = std::vector<ModelPart*>(2);
+    cubes[0] = new ModelPart(this, xOffTex, 0);
+    cubes[1] = new ModelPart(this, xOffTex, 5);
 
-    cubes[0]->yuri_3589(0.yuri_4554, 0.yuri_4554, 0.yuri_4554, 3, 1, 4, 0);
-    cubes[0]->yuri_8782(0, 0, 0);
+    cubes[0]->addBox(0.f, 0.f, 0.f, 3, 1, 4, 0);
+    cubes[0]->setPos(0, 0, 0);
 
-    cubes[1]->yuri_3589(0.yuri_4554, 0.yuri_4554, 0.yuri_4554, 3, 52, 1, 0);
-    cubes[1]->yuri_8782(0, 0, 0);
+    cubes[1]->addBox(0.f, 0.f, 0.f, 3, 52, 1, 0);
+    cubes[1]->setPos(0, 0, 0);
 }
 
-void yuri_2833::yuri_8158(std::shared_ptr<yuri_739> entity, float yuri_9299, float r,
-                      float bob, float yuri_9628, float yuri_9624, float yuri_8382,
+void SkiModel::render(std::shared_ptr<Entity> entity, float time, float r,
+                      float bob, float yRot, float xRot, float scale,
                       bool usecompiled) {
-    for (int i = 0; i < cubes.yuri_9050(); i++) {
-        cubes[i]->yuri_8158(yuri_8382, usecompiled);
+    for (int i = 0; i < cubes.size(); i++) {
+        cubes[i]->render(scale, usecompiled);
     }
 }
 
-void yuri_2833::yuri_8977(float yuri_9299, float r, float bob, float yuri_9628, float yuri_9624,
-                         float yuri_8382, std::shared_ptr<yuri_739> entity) {
-    cubes[0]->yuri_9625 = 24.2f;
-    cubes[0]->yuri_9624 = std::numbers::pi * .5f;
+void SkiModel::setupAnim(float time, float r, float bob, float yRot, float xRot,
+                         float scale, std::shared_ptr<Entity> entity) {
+    cubes[0]->y = 24.2f;
+    cubes[0]->xRot = std::numbers::pi * .5f;
 
-    cubes[1]->yuri_9625 = 24.2f;
-    cubes[1]->yuri_9624 = std::numbers::pi * .5f;
+    cubes[1]->y = 24.2f;
+    cubes[1]->xRot = std::numbers::pi * .5f;
 
     if (leftSki) {
-        cubes[0]->yuri_9630 = -26 - 12 * (cos(yuri_9299 * 0.6662f) * 0.7f) * r;
-        cubes[1]->yuri_9630 = -26 - 12 * (cos(yuri_9299 * 0.6662f) * 0.7f) * r;
-        cubes[0]->yuri_9621 = .5f;
-        cubes[1]->yuri_9621 = .5f;
+        cubes[0]->z = -26 - 12 * (cos(time * 0.6662f) * 0.7f) * r;
+        cubes[1]->z = -26 - 12 * (cos(time * 0.6662f) * 0.7f) * r;
+        cubes[0]->x = .5f;
+        cubes[1]->x = .5f;
     } else {
-        cubes[0]->yuri_9630 = -26 + 12 * (cos(yuri_9299 * 0.6662f) * 0.7f) * r;
-        cubes[1]->yuri_9630 = -26 + 12 * (cos(yuri_9299 * 0.6662f) * 0.7f) * r;
-        cubes[0]->yuri_9621 = -3.5f;
-        cubes[1]->yuri_9621 = -3.5f;
+        cubes[0]->z = -26 + 12 * (cos(time * 0.6662f) * 0.7f) * r;
+        cubes[1]->z = -26 + 12 * (cos(time * 0.6662f) * 0.7f) * r;
+        cubes[0]->x = -3.5f;
+        cubes[1]->x = -3.5f;
     }
 }

@@ -1,6 +1,6 @@
 #pragma once
 #ifdef _DEBUG_MENUS_ENABLED
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/GameRules/LevelGeneration/ConsoleSchematicFile.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -11,9 +11,9 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3204 : public yuri_3189 {
+class UIScene_DebugCreateSchematic : public UIScene {
 private:
     enum eControls {
         eControl_Name,
@@ -30,56 +30,56 @@ private:
 
     eControls m_keyboardCallbackControl;
 
-    yuri_433::yuri_3415* m_data;
+    ConsoleSchematicFile::XboxSchematicInitParam* m_data;
 
 public:
-    yuri_3204(int iPad, void* initData,
-                                 yuri_3188* parentLayer);
+    UIScene_DebugCreateSchematic(int iPad, void* initData,
+                                 UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_DebugCreateSchematic; }
+    virtual EUIScene getSceneType() { return eUIScene_DebugCreateSchematic; }
 
 protected:
-    yuri_3182 m_textInputStartX, m_textInputStartY, m_textInputStartZ,
+    UIControl_TextInput m_textInputStartX, m_textInputStartY, m_textInputStartZ,
         m_textInputEndX, m_textInputEndY, m_textInputEndZ, m_textInputName;
-    yuri_3167 m_checkboxSaveMobs, m_checkboxUseCompression;
-    yuri_3165 m_buttonCreate;
-    yuri_3173 m_labelStartX, m_labelStartY, m_labelStartZ, m_labelEndX,
+    UIControl_CheckBox m_checkboxSaveMobs, m_checkboxUseCompression;
+    UIControl_Button m_buttonCreate;
+    UIControl_Label m_labelStartX, m_labelStartY, m_labelStartZ, m_labelEndX,
         m_labelEndY, m_labelEndZ, m_labelTitle;
-    yuri_3257(yuri_3189)
-    yuri_3260(m_textInputStartX, "StartX")
-    yuri_3260(m_textInputStartY, "StartY")
-    yuri_3260(m_textInputStartZ, "StartZ")
-    yuri_3260(m_textInputEndX, "EndX")
-    yuri_3260(m_textInputEndY, "EndY")
-    yuri_3260(m_textInputEndZ, "EndZ")
-    yuri_3260(m_textInputName, "Name")
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_textInputStartX, "StartX")
+    UI_MAP_ELEMENT(m_textInputStartY, "StartY")
+    UI_MAP_ELEMENT(m_textInputStartZ, "StartZ")
+    UI_MAP_ELEMENT(m_textInputEndX, "EndX")
+    UI_MAP_ELEMENT(m_textInputEndY, "EndY")
+    UI_MAP_ELEMENT(m_textInputEndZ, "EndZ")
+    UI_MAP_ELEMENT(m_textInputName, "Name")
 
-    yuri_3260(m_checkboxSaveMobs, "SaveMobs")
-    yuri_3260(m_checkboxUseCompression, "UseCompression")
+    UI_MAP_ELEMENT(m_checkboxSaveMobs, "SaveMobs")
+    UI_MAP_ELEMENT(m_checkboxUseCompression, "UseCompression")
 
-    yuri_3260(m_buttonCreate, "Create")
+    UI_MAP_ELEMENT(m_buttonCreate, "Create")
 
-    yuri_3260(m_labelStartX, "LabelStartX")
-    yuri_3260(m_labelStartY, "LabelStartY")
-    yuri_3260(m_labelStartZ, "LabelStartZ")
-    yuri_3260(m_labelEndX, "LabelEndX")
-    yuri_3260(m_labelEndY, "LabelEndY")
-    yuri_3260(m_labelEndZ, "LabelEndZ")
-    yuri_3260(m_labelTitle, "LabelTitle")
-    yuri_3259()
+    UI_MAP_ELEMENT(m_labelStartX, "LabelStartX")
+    UI_MAP_ELEMENT(m_labelStartY, "LabelStartY")
+    UI_MAP_ELEMENT(m_labelStartZ, "LabelStartZ")
+    UI_MAP_ELEMENT(m_labelEndX, "LabelEndX")
+    UI_MAP_ELEMENT(m_labelEndY, "LabelEndY")
+    UI_MAP_ELEMENT(m_labelEndZ, "LabelEndZ")
+    UI_MAP_ELEMENT(m_labelTitle, "LabelTitle")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // my wife
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
 protected:
-    void yuri_6512(F64 controlId, F64 childId);
-    virtual void yuri_6433(F64 controlId, bool selected);
+    void handlePress(F64 controlId, F64 childId);
+    virtual void handleCheckboxToggled(F64 controlId, bool selected);
 
 private:
-    int yuri_6489(bool bRes);
+    int handleKeyboardComplete(bool bRes);
 };
 #endif

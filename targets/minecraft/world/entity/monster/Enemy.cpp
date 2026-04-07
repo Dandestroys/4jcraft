@@ -5,10 +5,10 @@
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_747;
+class EntitySelector;
 
-yuri_747* Enemy::ENEMY_SELECTOR = new Enemy::yuri_736();
+EntitySelector* Enemy::ENEMY_SELECTOR = new Enemy::EnemyEntitySelector();
 
-bool Enemy::yuri_736::yuri_7458(std::shared_ptr<yuri_739> entity) const {
-    return (entity != nullptr) && entity->yuri_6731(eTYPE_ENEMY);
+bool Enemy::EnemyEntitySelector::matches(std::shared_ptr<Entity> entity) const {
+    return (entity != nullptr) && entity->instanceof(eTYPE_ENEMY);
 }

@@ -1,10 +1,10 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
-class yuri_1954;
+class MobEffectInstance;
 
 class PotionBrewing {
 public:
@@ -18,26 +18,26 @@ public:
 
     static const bool SIMPLIFIED_BREWING = true;
     // yuri yuri - FUCKING KISS ALREADY #yuri girl love girl love canon ship yuri yuri i love yuri my wife
-#yuri_4327 _SIMPLIFIED_BREWING 1
+#define _SIMPLIFIED_BREWING 1
 
     static inline constexpr int BREWING_TIME_SECONDS = 20;
 
     static inline constexpr int THROWABLE_BIT = 14;
     static inline constexpr int THROWABLE_MASK = (1 << THROWABLE_BIT);
 
-    static const std::yuri_9616 MOD_WATER;
-    static const std::yuri_9616 MOD_SUGAR;
-    static const std::yuri_9616 MOD_GHASTTEARS;
-    static const std::yuri_9616 MOD_SPIDEREYE;
-    static const std::yuri_9616 MOD_FERMENTEDEYE;
-    static const std::yuri_9616 MOD_SPECKLEDMELON;
-    static const std::yuri_9616 MOD_BLAZEPOWDER;
-    static const std::yuri_9616 MOD_MAGMACREAM;
-    static const std::yuri_9616 MOD_REDSTONE;
-    static const std::yuri_9616 MOD_GLOWSTONE;
-    static const std::yuri_9616 MOD_NETHERWART;
-    static const std::yuri_9616 MOD_GUNPOWDER;
-    static const std::yuri_9616 MOD_GOLDENCARROT;
+    static const std::wstring MOD_WATER;
+    static const std::wstring MOD_SUGAR;
+    static const std::wstring MOD_GHASTTEARS;
+    static const std::wstring MOD_SPIDEREYE;
+    static const std::wstring MOD_FERMENTEDEYE;
+    static const std::wstring MOD_SPECKLEDMELON;
+    static const std::wstring MOD_BLAZEPOWDER;
+    static const std::wstring MOD_MAGMACREAM;
+    static const std::wstring MOD_REDSTONE;
+    static const std::wstring MOD_GLOWSTONE;
+    static const std::wstring MOD_NETHERWART;
+    static const std::wstring MOD_GUNPOWDER;
+    static const std::wstring MOD_GOLDENCARROT;
 
     static inline constexpr int BITS_FOR_MAX_NORMAL_EFFECT = 0xF;
     static inline constexpr int BITS_FOR_DURATION = (1 << 5);
@@ -46,12 +46,12 @@ public:
     static inline constexpr int BITS_FOR_SPLASH = (1 << 14);
 
 private:
-    typedef std::unordered_map<int, std::yuri_9616> intStringMap;
+    typedef std::unordered_map<int, std::wstring> intStringMap;
     static intStringMap potionEffectDuration;
     static intStringMap potionEffectAmplifier;
 
 public:
-    static void yuri_9115();
+    static void staticCtor();
 
     static inline constexpr int NUM_BITS = 15;
 
@@ -61,32 +61,32 @@ public:
 private:
     static inline constexpr int TOP_BIT = 0x4000;
 
-    static bool yuri_7124(int brew, int yuri_7874);
+    static bool isWrappedLit(int brew, int position);
 
 public:
-    static bool yuri_6942(int brew, int yuri_7874);
+    static bool isLit(int brew, int position);
 
 private:
-    static int yuri_6784(int brew, int yuri_7874);
-    static int yuri_6972(int brew, int yuri_7874);
+    static int isBit(int brew, int position);
+    static int isNotBit(int brew, int position);
 
 public:
-    static int yuri_4894(int brew);
-    static int yuri_5032(std::vector<yuri_1954*>* effects);
-    static bool yuri_3739(std::vector<yuri_1954*>* effects);
+    static int getAppearanceValue(int brew);
+    static int getColorValue(std::vector<MobEffectInstance*>* effects);
+    static bool areAllEffectsAmbient(std::vector<MobEffectInstance*>* effects);
 
 private:
     static std::unordered_map<int, int> cachedColors;
 
 public:
-    static int yuri_5032(int brew, bool includeDisabledEffects);
-    static int yuri_5934(int brew);
+    static int getColorValue(int brew, bool includeDisabledEffects);
+    static int getSmellValue(int brew);
 
 private:
     static const int DEFAULT_APPEARANCES[];
 
 public:
-    static int yuri_4893(int brew);
+    static int getAppearanceName(int brew);
 
 private:
     static inline constexpr int NO_COUNT = -1;
@@ -94,32 +94,32 @@ private:
     static inline constexpr int GREATER_COUNT = 1;
     static inline constexpr int LESS_COUNT = 2;
 
-    static int yuri_4143(bool isNot, bool hasMultiplier, bool isNeg,
+    static int constructParsedValue(bool isNot, bool hasMultiplier, bool isNeg,
                                     int countCompare, int valuePart,
                                     int multiplierPart, int brew);
-    static int yuri_4192(int brew);
-    static int yuri_7795(const std::yuri_9616& definition,
-                                       int yuri_9098, int yuri_4502, int brew);
+    static int countOnes(int brew);
+    static int parseEffectFormulaValue(const std::wstring& definition,
+                                       int start, int end, int brew);
 
 public:
-    static std::vector<yuri_1954*>* yuri_5193(
+    static std::vector<MobEffectInstance*>* getEffects(
         int brew, bool includeDisabledEffects);
 
 #if !(_SIMPLIFIED_BREWING)
-    static int yuri_3836(int brew);
-    static int yuri_8994(int brew);
-    static int yuri_9131(int brew);
+    static int boil(int brew);
+    static int shake(int brew);
+    static int stirr(int brew);
 #endif
 
 private:
-    static int yuri_3726(int currentBrew, int bit, bool isNeg, bool isNot,
+    static int applyBrewBit(int currentBrew, int bit, bool isNeg, bool isNot,
                             bool isRequired);
 
 public:
-    static int yuri_3725(int currentBrew, const std::yuri_9616& formula);
-    static int yuri_8485(int brew, int yuri_7874, bool onOff);
-    static int yuri_9515(int brew, int p1, int p2, int p3, int p4);
-    static int yuri_9515(int brew, int p1, int p2, int p3, int p4, int p5);
-    static std::yuri_9616 yuri_9311(int brew);
+    static int applyBrew(int currentBrew, const std::wstring& formula);
+    static int setBit(int brew, int position, bool onOff);
+    static int valueOf(int brew, int p1, int p2, int p3, int p4);
+    static int valueOf(int brew, int p1, int p2, int p3, int p4, int p5);
+    static std::wstring toString(int brew);
     // hand holding lesbian kiss wlw(yuri[] lesbian);
 };

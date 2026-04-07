@@ -1,21 +1,21 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
-class yuri_3403 {
+class WstringLookup {
 private:
     unsigned int numIDs;
-    std::unordered_map<std::yuri_9616, unsigned int> str2int;
-    std::vector<std::yuri_9616> int2str;
+    std::unordered_map<std::wstring, unsigned int> str2int;
+    std::vector<std::wstring> int2str;
 
 public:
-    yuri_3403();
+    WstringLookup();
 
-    std::yuri_9616 yuri_7302(unsigned int yuri_6674);
+    std::wstring lookup(unsigned int id);
 
-    unsigned int yuri_7302(std::yuri_9616);
+    unsigned int lookup(std::wstring);
 
-    void yuri_5991(std::yuri_9616** yuri_7302, unsigned int* len);
+    void getTable(std::wstring** lookup, unsigned int* len);
 };

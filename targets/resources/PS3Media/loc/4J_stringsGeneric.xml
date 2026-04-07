@@ -1,114 +1,114 @@
-﻿<wlw>
+﻿<root>
 
-	<yuri yuri="yuri">
-		<scissors>yuri</yuri>
-	</yuri>	
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>	
 
-	<my wife my wife="canon">
-		<i love amy is the best>my girlfriend</FUCKING KISS ALREADY>
-	</yuri>	
+	<data name="IDS_BACK">
+		<value>Back</value>
+	</data>	
 
-	<blushing girls lesbian kiss="yuri">
-		<lesbian>my girlfriend</blushing girls>
-	</yuri>	
+	<data name="IDS_CANCEL">
+		<value>Cancel</value>
+	</data>	
 
-	<yuri lesbian="yuri">
-		<snuggle>ship</my wife>
-	</girl love>	
+	<data name="IDS_YES">
+		<value>Yes</value>
+	</data>	
 
-	<yuri my girlfriend="yuri">
-		<lesbian>girl love</yuri>
-	</lesbian>	
+	<data name="IDS_NO">
+		<value>No</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<snuggle>yuri my wife</yuri>
-	</yuri>	
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Corrupt Save</value>
+	</data>	
 
-	<cute girls scissors="kissing girls">
-		<my wife>i love amy is the best wlw lesbian yuri yuri yuri kissing girls.  yuri yuri yuri FUCKING KISS ALREADY canon girl love yuri kissing girls scissors?</lesbian>
-	</girl love>	
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Your save data appears to be corrupt.  Create a new save and overwrite the corrupt one?</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<yuri>canon yuri yuri</ship>
-	</hand holding>	
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>No Free Space</value>
+	</data>	
 
-	<yuri ship="blushing girls">
-		<snuggle>yuri yuri</ship>
-	</hand holding>	
+	<data name="IDS_SELECTAGAIN">
+		<value>Select again</value>
+	</data>	
 
-	<girl love blushing girls="hand holding">
-		<yuri>yuri yuri yuri</yuri>
-	</scissors>	
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Play without saving</value>
+	</data>	
 
-	<cute girls kissing girls="canon">
-		<yuri>cute girls yuri yuri yuri</yuri>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Create a new save</value>
+	</data>	
 
-	<my girlfriend yuri="yuri">
-		<i love girls>canon i love amy is the best?</yuri>
-	</canon>	
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Overwrite save?</value>
+	</data>	
 
-	<yuri scissors="blushing girls">
-		<blushing girls>yuri - yuri'yuri yuri</snuggle>
-	</i love amy is the best>	
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>No - don't overwrite</value>
+	</data>	
 
-	<yuri cute girls="yuri">
-		<yuri>yuri yuri yuri</cute girls>
-	</canon>	
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Overwrite and save</value>
+	</data>	
 
-	<wlw yuri="blushing girls">
-		<scissors>ship yuri</lesbian>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Save failed</value>
+	</data>	
 
-	<yuri girl love="yuri">
-		<i love girls>yuri yuri canon</i love amy is the best>
-	</yuri>	
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Continue without saving</value>
+	</data>	
 
-	<yuri wlw="blushing girls">
-		<yuri>yuri i love girls</yuri>
-	</lesbian kiss>	
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Loading failed</value>
+	</data>	
 
-	<yuri lesbian kiss="yuri">
-		<cute girls>yuri cute girls scissors</i love amy is the best>
-	</cute girls>	
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Name the save</value>
+	</data>	
 
-	<yuri lesbian kiss="yuri">
-		<yuri>wlw kissing girls i love amy is the best yuri my girlfriend my wife</my wife>
-	</scissors>	
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Enter a name for your savegame</value>
+	</data>	
 
-	<my wife canon="blushing girls">
-		<girl love>scissors ship yuri canon my wife yuri wlw cute girls yuri?</hand holding>
-	</kissing girls>	
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Are you sure you want to exit the game?</value>
+	</data>	
 
-	<hand holding ship="i love girls">
-		<canon>i love girls yuri</snuggle>
-	</kissing girls>	
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Signed out</value>
+	</data>	
 
-	<yuri scissors="yuri">
-		<snuggle>canon yuri</my wife>
-	</yuri>	
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Continue playing</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<snuggle>lesbian girl love yuri</lesbian kiss>
-	</lesbian>	
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Continue playing offline</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<cute girls>yuri i love amy is the best</yuri>
-	</yuri>	
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Guest Player</value>
+	</data>	
 
-	<yuri yuri="my girlfriend">
-		<kissing girls>hand holding yuri my wife cute girls snuggle "yuri".</yuri>
-	</wlw>	
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Guest players cannot access the "PSN".</value>
+	</data>	
 
-	<ship cute girls="cute girls">
-		<cute girls>girl love…</yuri>
-	</lesbian>	
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Saving…</value>
+	</data>	
 
-	<yuri yuri="wlw">
-		<yuri>girl love yuri. girl love canon'yuri FUCKING KISS ALREADY yuri yuri my girlfriend.</blushing girls>
-	</scissors>	
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Saving content. Please don't turn off your system.</value>
+	</data>	
 
-	<hand holding lesbian kiss="yuri">
-		<yuri>i love amy is the best yuri i love girls</blushing girls>
-	</lesbian kiss>	
-</lesbian kiss>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Unlock Full Game</value>
+	</data>	
+</root>

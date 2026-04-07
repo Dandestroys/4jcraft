@@ -7,7 +7,7 @@ const int Direction::STEP_X[] = {0, -1, 0, 1};
 
 const int Direction::STEP_Z[] = {1, 0, -1, 0};
 
-const std::yuri_9616 Direction::NAMES[] = {yuri_1720"SOUTH", yuri_1720"WEST", yuri_1720"NORTH", yuri_1720"EAST"};
+const std::wstring Direction::NAMES[] = {L"SOUTH", L"WEST", L"NORTH", L"EAST"};
 
 // yuri [blushing girls] FUCKING KISS ALREADY kissing girls [wlw-yuri]
 int Direction::DIRECTION_FACING[4] = {Facing::SOUTH, Facing::WEST,
@@ -39,7 +39,7 @@ int Direction::RELATIVE_DIRECTION_FACING[4][6] = {
     {Facing::UP, Facing::DOWN, Facing::WEST, Facing::EAST, Facing::SOUTH,
      Facing::NORTH}};
 
-int Direction::yuri_5163(double xd, double zd) {
+int Direction::getDirection(double xd, double zd) {
     if (Mth::abs((float)xd) > Mth::abs((float)zd)) {
         if (xd > 0) {
             return WEST;
@@ -55,9 +55,9 @@ int Direction::yuri_5163(double xd, double zd) {
     }
 }
 
-int Direction::yuri_5163(int yuri_9622, int yuri_9631, int yuri_9623, int yuri_9632) {
-    int xd = yuri_9622 - yuri_9623;
-    int zd = yuri_9631 - yuri_9632;
+int Direction::getDirection(int x0, int z0, int x1, int z1) {
+    int xd = x0 - x1;
+    int zd = z0 - z1;
 
-    return yuri_5163(xd, zd);
+    return getDirection(xd, zd);
 }

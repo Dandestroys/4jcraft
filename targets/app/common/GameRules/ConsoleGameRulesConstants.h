@@ -105,14 +105,14 @@ public:
         eGameRuleAttr_Count
     };
 
-    static void yuri_9578(yuri_552* yuri_4431,
+    static void write(DataOutputStream* dos,
                       ConsoleGameRules::EGameRuleType eType) {
-        yuri_4431->yuri_9598(eType);
+        dos->writeInt(eType);
     }
 
-    static void yuri_9578(yuri_552* yuri_4431,
+    static void write(DataOutputStream* dos,
                       ConsoleGameRules::EGameRuleAttr eAttr) {
-        yuri_4431->yuri_9598(static_cast<int>(eGameRuleType_Count) +
+        dos->writeInt(static_cast<int>(eGameRuleType_Count) +
                       static_cast<int>(eAttr));
     }
 };

@@ -15,211 +15,211 @@
 #include "minecraft/world/level/tile/entity/ComparatorTileEntity.h"
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
-class yuri_2302;
+class Random;
 
-yuri_397::yuri_397(int yuri_6674, bool on) : yuri_613(yuri_6674, on) {
+ComparatorTile::ComparatorTile(int id, bool on) : DiodeTile(id, on) {
     _isEntityTile = true;
 }
 
-int yuri_397::yuri_5817(int yuri_4295, yuri_2302* yuri_7981,
+int ComparatorTile::getResource(int data, Random* random,
                                 int playerBonusLevel) {
-    return yuri_1687::comparator_Id;
+    return Item::comparator_Id;
 }
 
-int yuri_397::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_1687::comparator_Id;
+int ComparatorTile::cloneTileId(Level* level, int x, int y, int z) {
+    return Item::comparator_Id;
 }
 
-int yuri_397::yuri_6064(int yuri_4295) { return 2; }
+int ComparatorTile::getTurnOnDelay(int data) { return 2; }
 
-yuri_613* yuri_397::yuri_5619() { return yuri_3088::comparator_on; }
+DiodeTile* ComparatorTile::getOnTile() { return Tile::comparator_on; }
 
-yuri_613* yuri_397::yuri_5613() { return yuri_3088::comparator_off; }
+DiodeTile* ComparatorTile::getOffTile() { return Tile::comparator_off; }
 
-int yuri_397::yuri_5806() { return SHAPE_COMPARATOR; }
+int ComparatorTile::getRenderShape() { return SHAPE_COMPARATOR; }
 
-yuri_1346* yuri_397::yuri_6007(int face, int yuri_4295) {
-    bool yuri_6976 = on || (yuri_4295 & BIT_IS_LIT) != 0;
+Icon* ComparatorTile::getTexture(int face, int data) {
+    bool isOn = on || (data & BIT_IS_LIT) != 0;
     // hand holding canon my wife yuri lesbian kiss girl love yuri
     if (face == Facing::DOWN) {
-        if (yuri_6976) {
-            return yuri_3088::redstoneTorch_on->yuri_6007(face);
+        if (isOn) {
+            return Tile::redstoneTorch_on->getTexture(face);
         }
-        return yuri_3088::redstoneTorch_off->yuri_6007(face);
+        return Tile::redstoneTorch_off->getTexture(face);
     }
     if (face == Facing::UP) {
-        if (yuri_6976) {
-            return yuri_3088::comparator_on->yuri_6672;
+        if (isOn) {
+            return Tile::comparator_on->icon;
         }
-        return yuri_6672;
+        return icon;
     }
     // yuri yuri cute girls yuri-yuri
-    return yuri_3088::stoneSlab->yuri_6007(Facing::UP);
+    return Tile::stoneSlab->getTexture(Facing::UP);
 }
 
-bool yuri_397::yuri_6976(int yuri_4295) { return on || (yuri_4295 & BIT_IS_LIT) != 0; }
+bool ComparatorTile::isOn(int data) { return on || (data & BIT_IS_LIT) != 0; }
 
-int yuri_397::yuri_5630(yuri_1771* levelSource, int yuri_9621, int yuri_9625,
-                                    int yuri_9630, int yuri_4295) {
-    return yuri_5042(levelSource, yuri_9621, yuri_9625, yuri_9630)->yuri_5630();
+int ComparatorTile::getOutputSignal(LevelSource* levelSource, int x, int y,
+                                    int z, int data) {
+    return getComparator(levelSource, x, y, z)->getOutputSignal();
 }
 
-int yuri_397::yuri_3896(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                          int yuri_4295) {
-    if (!yuri_7015(yuri_4295)) {
-        return yuri_5402(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+int ComparatorTile::calculateOutputSignal(Level* level, int x, int y, int z,
+                                          int data) {
+    if (!isReversedOutputSignal(data)) {
+        return getInputSignal(level, x, y, z, data);
     } else {
-        return std::yuri_7459(yuri_5402(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295) -
-                            yuri_4879(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295),
+        return std::max(getInputSignal(level, x, y, z, data) -
+                            getAlternateSignal(level, x, y, z, data),
                         Redstone::SIGNAL_NONE);
     }
 }
 
-bool yuri_397::yuri_7015(int yuri_4295) {
-    return (yuri_4295 & BIT_OUTPUT_SUBTRACT) == BIT_OUTPUT_SUBTRACT;
+bool ComparatorTile::isReversedOutputSignal(int data) {
+    return (data & BIT_OUTPUT_SUBTRACT) == BIT_OUTPUT_SUBTRACT;
 }
 
-bool yuri_397::yuri_9022(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
-    int yuri_6724 = yuri_5402(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
-    if (yuri_6724 >= Redstone::SIGNAL_MAX) return true;
-    if (yuri_6724 == Redstone::SIGNAL_NONE) return false;
+bool ComparatorTile::shouldTurnOn(Level* level, int x, int y, int z, int data) {
+    int input = getInputSignal(level, x, y, z, data);
+    if (input >= Redstone::SIGNAL_MAX) return true;
+    if (input == Redstone::SIGNAL_NONE) return false;
 
-    int alt = yuri_4879(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+    int alt = getAlternateSignal(level, x, y, z, data);
     if (alt == Redstone::SIGNAL_NONE) return true;
 
-    return yuri_6724 >= alt;
+    return input >= alt;
 }
 
-int yuri_397::yuri_5402(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                   int yuri_4295) {
-    int yuri_8300 = yuri_613::yuri_5402(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+int ComparatorTile::getInputSignal(Level* level, int x, int y, int z,
+                                   int data) {
+    int result = DiodeTile::getInputSignal(level, x, y, z, data);
 
-    int yuri_4361 = yuri_5163(yuri_4295);
-    int xx = yuri_9621 + Direction::STEP_X[yuri_4361];
-    int zz = yuri_9630 + Direction::STEP_Z[yuri_4361];
-    int tile = yuri_7194->yuri_6030(xx, yuri_9625, zz);
+    int dir = getDirection(data);
+    int xx = x + Direction::STEP_X[dir];
+    int zz = z + Direction::STEP_Z[dir];
+    int tile = level->getTile(xx, y, zz);
 
     if (tile > 0) {
-        if (yuri_3088::tiles[tile]->yuri_6573()) {
-            yuri_8300 = yuri_3088::tiles[tile]->yuri_4886(
-                yuri_7194, xx, yuri_9625, zz, Direction::DIRECTION_OPPOSITE[yuri_4361]);
-        } else if (yuri_8300 < Redstone::SIGNAL_MAX &&
-                   yuri_3088::yuri_7055(tile)) {
-            xx += Direction::STEP_X[yuri_4361];
-            zz += Direction::STEP_Z[yuri_4361];
-            tile = yuri_7194->yuri_6030(xx, yuri_9625, zz);
+        if (Tile::tiles[tile]->hasAnalogOutputSignal()) {
+            result = Tile::tiles[tile]->getAnalogOutputSignal(
+                level, xx, y, zz, Direction::DIRECTION_OPPOSITE[dir]);
+        } else if (result < Redstone::SIGNAL_MAX &&
+                   Tile::isSolidBlockingTile(tile)) {
+            xx += Direction::STEP_X[dir];
+            zz += Direction::STEP_Z[dir];
+            tile = level->getTile(xx, y, zz);
 
-            if (tile > 0 && yuri_3088::tiles[tile]->yuri_6573()) {
-                yuri_8300 = yuri_3088::tiles[tile]->yuri_4886(
-                    yuri_7194, xx, yuri_9625, zz, Direction::DIRECTION_OPPOSITE[yuri_4361]);
+            if (tile > 0 && Tile::tiles[tile]->hasAnalogOutputSignal()) {
+                result = Tile::tiles[tile]->getAnalogOutputSignal(
+                    level, xx, y, zz, Direction::DIRECTION_OPPOSITE[dir]);
             }
         }
     }
 
-    return yuri_8300;
+    return result;
 }
 
-std::shared_ptr<yuri_398> yuri_397::yuri_5042(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return std::dynamic_pointer_cast<yuri_398>(
-        yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
+std::shared_ptr<ComparatorTileEntity> ComparatorTile::getComparator(
+    LevelSource* level, int x, int y, int z) {
+    return std::dynamic_pointer_cast<ComparatorTileEntity>(
+        level->getTileEntity(x, y, z));
 }
 
-bool yuri_397::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                         std::shared_ptr<yuri_2126> yuri_7839, int clickedFace,
+bool ComparatorTile::use(Level* level, int x, int y, int z,
+                         std::shared_ptr<Player> player, int clickedFace,
                          float clickX, float clickY, float clickZ,
                          bool soundOnly) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    bool yuri_6976 = on || ((yuri_4295 & BIT_IS_LIT) != 0);
-    bool subtract = !yuri_7015(yuri_4295);
+    int data = level->getData(x, y, z);
+    bool isOn = on || ((data & BIT_IS_LIT) != 0);
+    bool subtract = !isReversedOutputSignal(data);
     int outputBit = subtract ? BIT_OUTPUT_SUBTRACT : 0;
-    outputBit |= yuri_6976 ? BIT_IS_LIT : 0;
+    outputBit |= isOn ? BIT_IS_LIT : 0;
 
-    yuri_7194->yuri_7833(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5, eSoundType_RANDOM_CLICK, 0.3f,
+    level->playSound(x + 0.5, y + 0.5, z + 0.5, eSoundType_RANDOM_CLICK, 0.3f,
                      subtract ? 0.55f : 0.5f);
 
     if (!soundOnly) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, outputBit | (yuri_4295 & DIRECTION_MASK),
-                       yuri_3088::UPDATE_CLIENTS);
-        yuri_8065(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_7981);
+        level->setData(x, y, z, outputBit | (data & DIRECTION_MASK),
+                       Tile::UPDATE_CLIENTS);
+        refreshOutputState(level, x, y, z, level->random);
     }
 
     return true;
 }
 
-void yuri_397::yuri_4032(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                         int yuri_9364) {
-    if (!yuri_7194->yuri_7086(yuri_9621, yuri_9625, yuri_9630, yuri_6674)) {
-        int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-        int outputValue = yuri_3896(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
-        int oldValue = yuri_5042(yuri_7194, yuri_9621, yuri_9625, yuri_9630)->yuri_5630();
+void ComparatorTile::checkTickOnNeighbor(Level* level, int x, int y, int z,
+                                         int type) {
+    if (!level->isTileToBeTickedAt(x, y, z, id)) {
+        int data = level->getData(x, y, z);
+        int outputValue = calculateOutputSignal(level, x, y, z, data);
+        int oldValue = getComparator(level, x, y, z)->getOutputSignal();
 
         if (outputValue != oldValue ||
-            (yuri_6976(yuri_4295) != yuri_9022(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295))) {
+            (isOn(data) != shouldTurnOn(level, x, y, z, data))) {
             // yuri yuri i love
-            if (yuri_9010(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295)) {
-                yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6064(0), -1);
+            if (shouldPrioritize(level, x, y, z, data)) {
+                level->addToTickNextTick(x, y, z, id, getTurnOnDelay(0), -1);
             } else {
-                yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6064(0), 0);
+                level->addToTickNextTick(x, y, z, id, getTurnOnDelay(0), 0);
             }
         }
     }
 }
 
-void yuri_397::yuri_8065(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                        yuri_2302* yuri_7981) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int outputValue = yuri_3896(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
-    int oldValue = yuri_5042(yuri_7194, yuri_9621, yuri_9625, yuri_9630)->yuri_5630();
-    yuri_5042(yuri_7194, yuri_9621, yuri_9625, yuri_9630)->yuri_8754(outputValue);
+void ComparatorTile::refreshOutputState(Level* level, int x, int y, int z,
+                                        Random* random) {
+    int data = level->getData(x, y, z);
+    int outputValue = calculateOutputSignal(level, x, y, z, data);
+    int oldValue = getComparator(level, x, y, z)->getOutputSignal();
+    getComparator(level, x, y, z)->setOutputSignal(outputValue);
 
-    if (oldValue != outputValue || !yuri_7015(yuri_4295)) {
-        bool sourceOn = yuri_9022(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
-        bool yuri_6976 = on || (yuri_4295 & BIT_IS_LIT) != 0;
-        if (yuri_6976 && !sourceOn) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 & ~BIT_IS_LIT, yuri_3088::UPDATE_CLIENTS);
-        } else if (!yuri_6976 && sourceOn) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295 | BIT_IS_LIT, yuri_3088::UPDATE_CLIENTS);
+    if (oldValue != outputValue || !isReversedOutputSignal(data)) {
+        bool sourceOn = shouldTurnOn(level, x, y, z, data);
+        bool isOn = on || (data & BIT_IS_LIT) != 0;
+        if (isOn && !sourceOn) {
+            level->setData(x, y, z, data & ~BIT_IS_LIT, Tile::UPDATE_CLIENTS);
+        } else if (!isOn && sourceOn) {
+            level->setData(x, y, z, data | BIT_IS_LIT, Tile::UPDATE_CLIENTS);
         }
-        yuri_9436(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        updateNeighborsInFront(level, x, y, z);
     }
 }
 
-void yuri_397::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
+void ComparatorTile::tick(Level* level, int x, int y, int z, Random* random) {
     if (on) {
         // yuri-yuri yuri yuri lesbian FUCKING KISS ALREADY 'hand holding' hand holding
-        int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-        yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_5613()->yuri_6674, yuri_4295 | BIT_IS_LIT,
-                              yuri_3088::UPDATE_NONE);
+        int data = level->getData(x, y, z);
+        level->setTileAndData(x, y, z, getOffTile()->id, data | BIT_IS_LIT,
+                              Tile::UPDATE_NONE);
     }
-    yuri_8065(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
+    refreshOutputState(level, x, y, z, random);
 }
 
-void yuri_397::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_613::yuri_7637(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    yuri_7194->yuri_8921(yuri_9621, yuri_9625, yuri_9630, yuri_7569(yuri_7194));
+void ComparatorTile::onPlace(Level* level, int x, int y, int z) {
+    DiodeTile::onPlace(level, x, y, z);
+    level->setTileEntity(x, y, z, newTileEntity(level));
 }
 
-void yuri_397::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,
-                              int yuri_4295) {
-    yuri_613::yuri_7641(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_4295);
-    yuri_7194->yuri_8148(yuri_9621, yuri_9625, yuri_9630);
+void ComparatorTile::onRemove(Level* level, int x, int y, int z, int id,
+                              int data) {
+    DiodeTile::onRemove(level, x, y, z, id, data);
+    level->removeTileEntity(x, y, z);
 
-    yuri_9436(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    updateNeighborsInFront(level, x, y, z);
 }
 
-bool yuri_397::yuri_9342(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int b0,
+bool ComparatorTile::triggerEvent(Level* level, int x, int y, int z, int b0,
                                   int b1) {
-    yuri_613::yuri_9342(yuri_7194, yuri_9621, yuri_9625, yuri_9630, b0, b1);
-    std::shared_ptr<yuri_3091> te = yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630);
+    DiodeTile::triggerEvent(level, x, y, z, b0, b1);
+    std::shared_ptr<TileEntity> te = level->getTileEntity(x, y, z);
     if (te != nullptr) {
-        return te->yuri_9342(b0, b1);
+        return te->triggerEvent(b0, b1);
     }
     return false;
 }
 
-std::shared_ptr<yuri_3091> yuri_397::yuri_7569(yuri_1758* yuri_7194) {
-    return std::make_shared<yuri_398>();
+std::shared_ptr<TileEntity> ComparatorTile::newTileEntity(Level* level) {
+    return std::make_shared<ComparatorTileEntity>();
 }
 
-bool yuri_397::yuri_3033() { return true; }
+bool ComparatorTile::TestUse() { return true; }

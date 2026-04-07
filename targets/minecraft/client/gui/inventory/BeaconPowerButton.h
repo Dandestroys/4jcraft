@@ -2,17 +2,17 @@
 #include "AbstractBeaconButton.h"
 
 
-class yuri_177;
+class BeaconScreen;
 
-class yuri_175 : public yuri_46 {
+class BeaconPowerButton : public AbstractBeaconButton {
 public:
-    yuri_175(yuri_177* screen, int yuri_6674, int yuri_9621, int yuri_9625, int effectId,
-                      int yuri_9289);
-    void yuri_8243(int xm, int ym) override;
-    bool yuri_7033() const { return selected; }
+    BeaconPowerButton(BeaconScreen* screen, int id, int x, int y, int effectId,
+                      int tier);
+    void renderTooltip(int xm, int ym) override;
+    bool isSelected() const { return selected; }
 
 private:
-    yuri_177* screen;
+    BeaconScreen* screen;
     int effectId;
-    int yuri_9289;
+    int tier;
 };

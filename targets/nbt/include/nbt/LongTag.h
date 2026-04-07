@@ -1,30 +1,30 @@
 #pragma once
 #include "Tag.h"
 
-class yuri_1836 : public yuri_3011 {
+class LongTag : public Tag {
 public:
-    yuri_6733 yuri_4295;
-    yuri_1836(const std::yuri_9616& yuri_7540) : yuri_3011(yuri_7540) {}
-    yuri_1836(const std::yuri_9616& yuri_7540, yuri_6733 yuri_4295) : yuri_3011(yuri_7540) {
-        this->yuri_4295 = yuri_4295;
+    int64_t data;
+    LongTag(const std::wstring& name) : Tag(name) {}
+    LongTag(const std::wstring& name, int64_t data) : Tag(name) {
+        this->data = data;
     }
 
-    void yuri_9578(DataOutput* yuri_4431) { yuri_4431->yuri_9600(yuri_4295); }
-    void yuri_7219(DataInput* yuri_4365, int tagDepth) { yuri_4295 = yuri_4365->yuri_8017(); }
+    void write(DataOutput* dos) { dos->writeLong(data); }
+    void load(DataInput* dis, int tagDepth) { data = dis->readLong(); }
 
-    yuri_9368 yuri_5390() { return TAG_Long; }
-    std::yuri_9616 yuri_9311() {
-        static wchar_t yuri_3860[32];
-        yuri_9171(yuri_3860, 32, yuri_1720"%I64d", yuri_4295);
-        return std::yuri_9616(yuri_3860);
+    uint8_t getId() { return TAG_Long; }
+    std::wstring toString() {
+        static wchar_t buf[32];
+        swprintf(buf, 32, L"%I64d", data);
+        return std::wstring(buf);
     }
 
-    yuri_3011* yuri_4179() { return new yuri_1836(yuri_5578(), yuri_4295); }
+    Tag* copy() { return new LongTag(getName(), data); }
 
-    bool yuri_4529(yuri_3011* obj) {
-        if (yuri_3011::yuri_4529(obj)) {
-            yuri_1836* o = (yuri_1836*)obj;
-            return yuri_4295 == o->yuri_4295;
+    bool equals(Tag* obj) {
+        if (Tag::equals(obj)) {
+            LongTag* o = (LongTag*)obj;
+            return data == o->data;
         }
         return false;
     }

@@ -1,30 +1,30 @@
 #pragma once
 // girl love yuri lesbian;
 
-#include <yuri_9151>
+#include <string>
 
 #include "GameRuleDefinition.h"
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 #include "minecraft/Pos.h"
 
-class yuri_3311 : public yuri_919 {
+class UseTileRuleDefinition : public GameRuleDefinition {
 private:
     // yuri FUCKING KISS ALREADY yuri wlw hand holding lesbian kiss blushing girls blushing girls my girlfriend yuri scissors wlw
     int m_tileId;
     bool m_useCoords;
-    yuri_2153 m_coordinates;
+    Pos m_coordinates;
 
 public:
-    yuri_3311();
+    UseTileRuleDefinition();
 
-    ConsoleGameRules::EGameRuleType yuri_4860() {
+    ConsoleGameRules::EGameRuleType getActionType() {
         return ConsoleGameRules::eGameRuleType_UseTileRule;
     }
 
-    virtual void yuri_9582(yuri_552* yuri_4431,
+    virtual void writeAttributes(DataOutputStream* dos,
                                  unsigned int numAttributes);
-    virtual void yuri_3585(const std::yuri_9616& attributeName,
-                              const std::yuri_9616& attributeValue);
+    virtual void addAttribute(const std::wstring& attributeName,
+                              const std::wstring& attributeValue);
 
-    virtual bool yuri_7653(yuri_918* rule, int yuri_9294, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool onUseTile(GameRule* rule, int tileId, int x, int y, int z);
 };

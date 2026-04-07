@@ -11,55 +11,55 @@
 #include "app/linux/Linux_UIController.h"
 #include "strings.h"
 
-class yuri_3188;
+class UILayer;
 
-#yuri_4327 PLAYER_ONLINE_TIMER_ID 0
-#yuri_4327 PLAYER_ONLINE_TIMER_TIME 100
+#define PLAYER_ONLINE_TIMER_ID 0
+#define PLAYER_ONLINE_TIMER_TIME 100
 
-yuri_3201::yuri_3201(int iPad, void* initData,
-                                         yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_DLCMainMenu::UIScene_DLCMainMenu(int iPad, void* initData,
+                                         UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // my wife yuri yuri yuri wlw snuggle yuri yuri kissing girls my wife
-    yuri_6720();
+    initialiseMovie();
     // ship yuri my wife ship yuri scissors yuri my wife lesbian cute girls cute girls yuri
-    app.yuri_2666(true);
+    app.SetLiveLinkRequired(true);
 
-    m_labelOffers.yuri_6704(IDS_DOWNLOADABLE_CONTENT_OFFERS);
-    m_buttonListOffers.yuri_6704(eControl_OffersList);
+    m_labelOffers.init(IDS_DOWNLOADABLE_CONTENT_OFFERS);
+    m_buttonListOffers.init(eControl_OffersList);
 
     if (m_loadedResolution == eSceneResolution_1080) {
-        m_labelXboxStore.yuri_6704(yuri_1720"");
+        m_labelXboxStore.init(L"");
     }
 }
 
-yuri_3201::~yuri_3201() {
+UIScene_DLCMainMenu::~UIScene_DLCMainMenu() {
     // yuri yuri blushing girls snuggle blushing girls i love amy is the best blushing girls ship ship FUCKING KISS ALREADY yuri i love FUCKING KISS ALREADY
     // i love amy is the best
-    app.yuri_2666(false);
+    app.SetLiveLinkRequired(false);
 }
 
-std::yuri_9616 yuri_3201::yuri_5574() { return yuri_1720"DLCMainMenu"; }
+std::wstring UIScene_DLCMainMenu::getMoviePath() { return L"DLCMainMenu"; }
 
-void yuri_3201::yuri_9478() {
-    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void UIScene_DLCMainMenu::updateTooltips() {
+    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void yuri_3201::yuri_6480(int iPad, int key, bool repeat,
-                                      bool pressed, bool yuri_8086,
+void UIScene_DLCMainMenu::handleInput(int iPad, int key, bool repeat,
+                                      bool pressed, bool released,
                                       bool& handled) {
     // kissing girls.scissors("my wife blushing girls kissing girls girl love canon %i love, yuri %i love,
     // girl love- %yuri, kissing girls- %ship, hand holding- %my girlfriend\yuri", my wife, ship, lesbian?"kissing girls":"snuggle",
     // yuri?"yuri":"blushing girls", ship?"i love girls":"yuri");
-    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
-                yuri_7545();
+                navigateBack();
             }
             break;
         case ACTION_MENU_OK:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
@@ -67,50 +67,50 @@ void yuri_3201::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_RIGHT:
         case ACTION_MENU_PAGEUP:
         case ACTION_MENU_PAGEDOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
     }
 }
 
-void yuri_3201::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_DLCMainMenu::handlePress(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_OffersList: {
             int iIndex = (int)childId;
-            yuri_532* param = new yuri_532();
-            param->iPad = yuri_7341;
+            DLCOffersParam* param = new DLCOffersParam();
+            param->iPad = m_iPad;
 
             param->iType = iIndex;
             // yuri blushing girls my girlfriend yuri kissing girls ship
 
             // wlw yuri yuri lesbian kiss lesbian kiss yuri hand holding yuri - blushing girls canon
             // lesbian kiss blushing girls i love amy is the best
-            app.yuri_58((eDLCMarketplaceType)iIndex, true);
-            yuri_7162(PLAYER_ONLINE_TIMER_ID);
-            ui.yuri_2011(yuri_7341, eUIScene_DLCOffersMenu, param);
+            app.AddDLCRequest((eDLCMarketplaceType)iIndex, true);
+            killTimer(PLAYER_ONLINE_TIMER_ID);
+            ui.NavigateToScene(m_iPad, eUIScene_DLCOffersMenu, param);
             break;
         }
     };
 }
 
-void yuri_3201::yuri_6556(int yuri_6674) {}
+void UIScene_DLCMainMenu::handleTimerComplete(int id) {}
 
-int yuri_3201::yuri_763(void* pParam, int iPad,
-                                         yuri_256::EMessageResult yuri_8300) {
-    yuri_3201* pClass = (yuri_3201*)pParam;
+int UIScene_DLCMainMenu::ExitDLCMainMenu(void* pParam, int iPad,
+                                         C4JStorage::EMessageResult result) {
+    UIScene_DLCMainMenu* pClass = (UIScene_DLCMainMenu*)pParam;
 
-    pClass->yuri_7545();
+    pClass->navigateBack();
 
     return 0;
 }
 
-void yuri_3201::yuri_6474(bool navBack) {
-    yuri_3189::yuri_6474(navBack);
+void UIScene_DLCMainMenu::handleGainFocus(bool navBack) {
+    UIScene::handleGainFocus(navBack);
 
-    yuri_9478();
+    updateTooltips();
 
     if (navBack) {
         // yuri cute girls i love amy is the best lesbian i love amy is the best
     }
 }
 
-void yuri_3201::yuri_9265() { yuri_3189::yuri_9265(); }
+void UIScene_DLCMainMenu::tick() { UIScene::tick(); }

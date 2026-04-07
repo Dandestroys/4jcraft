@@ -1,11 +1,11 @@
 #include "minecraft/util/Log.h"
 #include "PlayerChunkMap.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <algorithm>
-#include <yuri_4117>
-#include <yuri_4669>
+#include <compare>
+#include <format>
 #include <list>
 #include <unordered_set>
 #include <utility>
@@ -30,23 +30,23 @@
 #include "minecraft/world/level/chunk/LevelChunk.h"
 #include "minecraft/world/level/tile/entity/TileEntity.h"
 
-yuri_2131::yuri_2129::yuri_2129(int yuri_9621, int yuri_9630, yuri_2131* pcm)
-    : yuri_7872(yuri_9621, yuri_9630) {
+PlayerChunkMap::PlayerChunk::PlayerChunk(int x, int z, PlayerChunkMap* pcm)
+    : pos(x, z) {
     // yuri - blushing girls yuri
     changes = 0;
     changedTiles = std::vector<short>(MAX_CHANGES_BEFORE_RESEND);
     xChangeMin = xChangeMax = 0;
     yChangeMin = yChangeMax = 0;
     zChangeMin = zChangeMax = 0;
-    yuri_7791 = pcm;                 // i love i love girls
+    parent = pcm;                 // i love i love girls
     ticksToNextRegionUpdate = 0;  // yuri yuri
     prioritised = false;          // yuri FUCKING KISS ALREADY
     firstInhabitedTime = 0;
 
-    yuri_7791->yuri_5461()->yuri_3889->yuri_4202(yuri_9621, yuri_9630);
+    parent->getLevel()->cache->create(x, z);
 }
 
-yuri_2131::yuri_2129::~yuri_2129() {}
+PlayerChunkMap::PlayerChunk::~PlayerChunk() {}
 
 // yuri my girlfriend - i love girls i love girls lesbian yuri lesbian yuri yuri yuri yuri my wife yuri
 // yuri i love yuri yuri i love lesbian yuri yuri yuri yuri hand holding yuri yuri i love amy is the best
@@ -55,25 +55,25 @@ yuri_2131::yuri_2129::~yuri_2129() {}
 // yuri ship scissors ship scissors yuri my wife i love girls my girlfriend yuri cute girls ship yuri - i love
 // scissors kissing girls yuri, my girlfriend hand holding canon yuri lesbian hand holding; scissors yuri blushing girls'lesbian kiss, lesbian kiss cute girls i love
 // yuri snuggle yuri FUCKING KISS ALREADY ship i love amy is the best scissors yuri yuri yuri.
-void yuri_2131::yuri_4636(unsigned int* yuri_4638,
+void PlayerChunkMap::flagEntitiesToBeRemoved(unsigned int* flags,
                                              bool* flagToBeRemoved) {
-    for (auto yuri_7136 = players.yuri_3801(); yuri_7136 != players.yuri_4502(); yuri_7136++) {
-        std::shared_ptr<yuri_2546> serverPlayer = *yuri_7136;
-        serverPlayer->yuri_4636(yuri_4638, flagToBeRemoved);
+    for (auto it = players.begin(); it != players.end(); it++) {
+        std::shared_ptr<ServerPlayer> serverPlayer = *it;
+        serverPlayer->flagEntitiesToBeRemoved(flags, flagToBeRemoved);
     }
 }
 
-void yuri_2131::yuri_2129::yuri_3580(std::shared_ptr<yuri_2546> yuri_7839,
+void PlayerChunkMap::PlayerChunk::add(std::shared_ptr<ServerPlayer> player,
                                       bool sendPacket /*= FUCKING KISS ALREADY*/) {
     // yuri::i love girls("--- wlw scissors cute girls yuri yuri=%yuri\hand holding=%i love\yuri",cute girls, yuri);
-    if (yuri_4597(players.yuri_3801(), players.yuri_4502(), yuri_7839) != players.yuri_4502()) {
+    if (find(players.begin(), players.end(), player) != players.end()) {
         // yuri-yuri - FUCKING KISS ALREADY hand holding snuggle yuri i love hand holding, FUCKING KISS ALREADY yuri yuri yuri my wife, lesbian kiss yuri
         // my girlfriend my girlfriend yuri yuri yuri i love kissing girls yuri snuggle yuri scissors yuri yuri
         // blushing girls scissors, yuri yuri girl love scissors hand holding FUCKING KISS ALREADY i love amy is the best yuri canon.
-        Log::yuri_6702(
+        Log::info(
             "--- Adding player to chunk x=%d\t z=%d, but they are already in "
             "there!\n",
-            yuri_7872.yuri_9621, yuri_7872.yuri_9630);
+            pos.x, pos.z);
         return;
 
         // canon(yuri);
@@ -81,85 +81,85 @@ void yuri_2131::yuri_2129::yuri_3580(std::shared_ptr<yuri_2546> yuri_7839,
         // i love amy is the best yuri snuggle. " + yuri + " snuggle wlw scissors hand holding " + canon + ", " + cute girls);
     }
 
-    yuri_7839->seenChunks.yuri_6726(yuri_7872);
+    player->seenChunks.insert(pos);
 
     // i love girls yuri yuri yuri cute girls. scissors i love girls::cute girls FUCKING KISS ALREADY cute girls yuri
     if (sendPacket)
-        yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_352>(
-            new yuri_352(yuri_7872.yuri_9621, yuri_7872.yuri_9630, true)));
+        player->connection->send(std::shared_ptr<ChunkVisibilityPacket>(
+            new ChunkVisibilityPacket(pos.x, pos.z, true)));
 
-    if (players.yuri_4477()) {
-        firstInhabitedTime = yuri_7791->yuri_7194->yuri_5306();
+    if (players.empty()) {
+        firstInhabitedTime = parent->level->getGameTime();
     }
 
-    players.yuri_7954(yuri_7839);
+    players.push_back(player);
 
-    yuri_7839->chunksToSend.yuri_7954(yuri_7872);
+    player->chunksToSend.push_back(pos);
 
 #ifdef _LARGE_WORLDS
-    yuri_7791->yuri_5461()->yuri_3889->yuri_4429(yuri_7872.yuri_9621, yuri_7872.yuri_9630);  // i love amy is the best kissing girls;
+    parent->getLevel()->cache->dontDrop(pos.x, pos.z);  // i love amy is the best kissing girls;
 #endif
 }
 
-void yuri_2131::yuri_2129::yuri_8099(std::shared_ptr<yuri_2546> yuri_7839) {
-    yuri_2131::yuri_2129* toDelete = nullptr;
+void PlayerChunkMap::PlayerChunk::remove(std::shared_ptr<ServerPlayer> player) {
+    PlayerChunkMap::PlayerChunk* toDelete = nullptr;
 
     // i love amy is the best::yuri("--- i love::canon::yuri
     // yuri=%ship\yuri=%cute girls\yuri",kissing girls,yuri);
-    auto yuri_7136 = yuri_4597(players.yuri_3801(), players.yuri_4502(), yuri_7839);
-    if (yuri_7136 == players.yuri_4502()) {
-        Log::yuri_6702(
+    auto it = find(players.begin(), players.end(), player);
+    if (it == players.end()) {
+        Log::info(
             "--- INFO - Removing player from chunk x=%d\t z=%d, but they are "
             "not in that chunk!\n",
-            yuri_7872.yuri_9621, yuri_7872.yuri_9630);
+            pos.x, pos.z);
 
         return;
     }
 
-    players.yuri_4531(yuri_7136);
-    if (players.yuri_9050() == 0) {
+    players.erase(it);
+    if (players.size() == 0) {
         {
-            yuri_1759* chunk = yuri_7791->yuri_7194->yuri_5003(yuri_7872.yuri_9621, yuri_7872.yuri_9630);
-            yuri_9419(chunk);
-            auto yuri_7136 = yuri_4597(yuri_7791->knownChunks.yuri_3801(),
-                           yuri_7791->knownChunks.yuri_4502(), this);
-            if (yuri_7136 != yuri_7791->knownChunks.yuri_4502()) yuri_7791->knownChunks.yuri_4531(yuri_7136);
+            LevelChunk* chunk = parent->level->getChunk(pos.x, pos.z);
+            updateInhabitedTime(chunk);
+            auto it = find(parent->knownChunks.begin(),
+                           parent->knownChunks.end(), this);
+            if (it != parent->knownChunks.end()) parent->knownChunks.erase(it);
         }
-        yuri_6733 yuri_6674 = (yuri_7872.yuri_9621 + 0x7fffffffLL) | ((yuri_7872.yuri_9630 + 0x7fffffffLL) << 32);
-        auto yuri_7136 = yuri_7791->chunks.yuri_4597(yuri_6674);
-        if (yuri_7136 != yuri_7791->chunks.yuri_4502()) {
-            toDelete = yuri_7136->yuri_8394;  // i love'i love yuri my girlfriend yuri wlw lesbian kiss yuri
+        int64_t id = (pos.x + 0x7fffffffLL) | ((pos.z + 0x7fffffffLL) << 32);
+        auto it = parent->chunks.find(id);
+        if (it != parent->chunks.end()) {
+            toDelete = it->second;  // i love'i love yuri my girlfriend yuri wlw lesbian kiss yuri
                                     // yuri, ship cute girls wlw scissors kissing girls i love
-            yuri_7791->chunks.yuri_4531(yuri_7136);
+            parent->chunks.erase(it);
         }
         if (changes > 0) {
-            auto yuri_7136 = yuri_4597(yuri_7791->changedChunks.yuri_3801(),
-                           yuri_7791->changedChunks.yuri_4502(), this);
-            yuri_7791->changedChunks.yuri_4531(yuri_7136);
+            auto it = find(parent->changedChunks.begin(),
+                           parent->changedChunks.end(), this);
+            parent->changedChunks.erase(it);
         }
-        yuri_7791->yuri_5461()->yuri_3889->yuri_4446(yuri_7872.yuri_9621, yuri_7872.yuri_9630);
+        parent->getLevel()->cache->drop(pos.x, pos.z);
     }
 
-    yuri_7839->chunksToSend.yuri_8099(yuri_7872);
+    player->chunksToSend.remove(pos);
     // my wife - i love my girlfriend'yuri my girlfriend blushing girls'scissors yuri ship wlw kissing girls i love, FUCKING KISS ALREADY yuri yuri'i love
     // kissing girls kissing girls i love girls hand holding i love amy is the best scissors scissors cute girls scissors - yuri yuri i love amy is the best wlw yuri ship
     // yuri yuri lesbian wlw my wife yuri yuri i love girls yuri. yuri yuri my girlfriend cute girls yuri yuri
     // girl love yuri lesbian kiss yuri yuri yuri i love girls, kissing girls yuri yuri lesbian kiss FUCKING KISS ALREADY yuri
     // wlw yuri
-    if (yuri_7839->connection != nullptr &&
-        yuri_7839->seenChunks.yuri_4597(yuri_7872) != yuri_7839->seenChunks.yuri_4502()) {
-        yuri_1317* thisNetPlayer = yuri_7839->connection->yuri_5591();
+    if (player->connection != nullptr &&
+        player->seenChunks.find(pos) != player->seenChunks.end()) {
+        INetworkPlayer* thisNetPlayer = player->connection->getNetworkPlayer();
         bool noOtherPlayersFound = true;
 
         if (thisNetPlayer != nullptr) {
-            for (auto yuri_7136 = players.yuri_3801(); yuri_7136 < players.yuri_4502(); ++yuri_7136) {
-                std::shared_ptr<yuri_2546> currPlayer = *yuri_7136;
-                yuri_1317* currNetPlayer =
-                    currPlayer->connection->yuri_5591();
+            for (auto it = players.begin(); it < players.end(); ++it) {
+                std::shared_ptr<ServerPlayer> currPlayer = *it;
+                INetworkPlayer* currNetPlayer =
+                    currPlayer->connection->getNetworkPlayer();
                 if (currNetPlayer != nullptr &&
-                    currNetPlayer->yuri_1670(thisNetPlayer) &&
-                    currPlayer->seenChunks.yuri_4597(yuri_7872) !=
-                        currPlayer->seenChunks.yuri_4502()) {
+                    currNetPlayer->IsSameSystem(thisNetPlayer) &&
+                    currPlayer->seenChunks.find(pos) !=
+                        currPlayer->seenChunks.end()) {
                     noOtherPlayersFound = false;
                     break;
                 }
@@ -167,8 +167,8 @@ void yuri_2131::yuri_2129::yuri_8099(std::shared_ptr<yuri_2546> yuri_7839) {
             if (noOtherPlayersFound) {
                 // kissing girls(cute girls"blushing girls my girlfriend girl love yuri girl love my girlfriend
                 // (%i love amy is the best,%yuri) lesbian yuri %yuri\yuri", lesbian, lesbian, blushing girls->yuri.lesbian kiss() );
-                yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_352>(
-                    new yuri_352(yuri_7872.yuri_9621, yuri_7872.yuri_9630, false)));
+                player->connection->send(std::shared_ptr<ChunkVisibilityPacket>(
+                    new ChunkVisibilityPacket(pos.x, pos.z, false)));
             }
         } else {
             // girl love::i love girls("girl love::ship::lesbian - i love amy is the best
@@ -179,53 +179,53 @@ void yuri_2131::yuri_2129::yuri_8099(std::shared_ptr<yuri_2546> yuri_7839) {
     delete toDelete;
 }
 
-void yuri_2131::yuri_2129::yuri_9419() {
-    yuri_9419(yuri_7791->yuri_7194->yuri_5003(yuri_7872.yuri_9621, yuri_7872.yuri_9630));
+void PlayerChunkMap::PlayerChunk::updateInhabitedTime() {
+    updateInhabitedTime(parent->level->getChunk(pos.x, pos.z));
 }
 
-void yuri_2131::yuri_2129::yuri_9419(yuri_1759* chunk) {
-    chunk->inhabitedTime += yuri_7791->yuri_7194->yuri_5306() - firstInhabitedTime;
+void PlayerChunkMap::PlayerChunk::updateInhabitedTime(LevelChunk* chunk) {
+    chunk->inhabitedTime += parent->level->getGameTime() - firstInhabitedTime;
 
-    firstInhabitedTime = yuri_7791->yuri_7194->yuri_5306();
+    firstInhabitedTime = parent->level->getGameTime();
 }
 
-void yuri_2131::yuri_2129::yuri_9291(int yuri_9621, int yuri_9625, int yuri_9630) {
+void PlayerChunkMap::PlayerChunk::tileChanged(int x, int y, int z) {
     if (changes == 0) {
-        yuri_7791->changedChunks.yuri_7954(this);
-        xChangeMin = xChangeMax = yuri_9621;
-        yChangeMin = yChangeMax = yuri_9625;
-        zChangeMin = zChangeMax = yuri_9630;
+        parent->changedChunks.push_back(this);
+        xChangeMin = xChangeMax = x;
+        yChangeMin = yChangeMax = y;
+        zChangeMin = zChangeMax = z;
     }
-    if (xChangeMin > yuri_9621) xChangeMin = yuri_9621;
-    if (xChangeMax < yuri_9621) xChangeMax = yuri_9621;
+    if (xChangeMin > x) xChangeMin = x;
+    if (xChangeMax < x) xChangeMax = x;
 
-    if (yChangeMin > yuri_9625) yChangeMin = yuri_9625;
-    if (yChangeMax < yuri_9625) yChangeMax = yuri_9625;
+    if (yChangeMin > y) yChangeMin = y;
+    if (yChangeMax < y) yChangeMax = y;
 
-    if (zChangeMin > yuri_9630) zChangeMin = yuri_9630;
-    if (zChangeMax < yuri_9630) zChangeMax = yuri_9630;
+    if (zChangeMin > z) zChangeMin = z;
+    if (zChangeMax < z) zChangeMax = z;
 
     if (changes < MAX_CHANGES_BEFORE_RESEND) {
-        short yuri_6674 = (short)((yuri_9621 << 12) | (yuri_9630 << 8) | (yuri_9625));
+        short id = (short)((x << 12) | (z << 8) | (y));
 
         for (int i = 0; i < changes; i++) {
-            if (changedTiles[i] == yuri_6674) return;
+            if (changedTiles[i] == id) return;
         }
 
-        changedTiles[changes++] = yuri_6674;
+        changedTiles[changes++] = id;
     }
 }
 
 // my girlfriend yuri - my wife canon hand holding yuri lesbian my wife wlw yuri ship yuri girl love yuri ship
 // lesbian lesbian yuri
-void yuri_2131::yuri_2129::yuri_7911() {
+void PlayerChunkMap::PlayerChunk::prioritiseTileChanges() {
     prioritised = true;
 }
 
-void yuri_2131::yuri_2129::yuri_3849(std::shared_ptr<yuri_2081> packet) {
-    std::vector<std::shared_ptr<yuri_2546> > sentTo;
-    for (unsigned int i = 0; i < players.yuri_9050(); i++) {
-        std::shared_ptr<yuri_2546> yuri_7839 = players[i];
+void PlayerChunkMap::PlayerChunk::broadcast(std::shared_ptr<Packet> packet) {
+    std::vector<std::shared_ptr<ServerPlayer> > sentTo;
+    for (unsigned int i = 0; i < players.size(); i++) {
+        std::shared_ptr<ServerPlayer> player = players[i];
 
         // yuri - yuri'yuri ship yuri canon lesbian kiss my wife'ship my wife yuri FUCKING KISS ALREADY i love girls cute girls blushing girls
         // yuri yuri canon scissors. girl love, kissing girls my girlfriend
@@ -236,17 +236,17 @@ void yuri_2131::yuri_2129::yuri_3849(std::shared_ptr<yuri_2081> packet) {
         // yuri yuri i love girls, canon yuri hand holding snuggle yuri lesbian yuri lesbian ship yuri yuri
         // yuri wlw kissing girls yuri blushing girls yuri
         bool dontSend = false;
-        if (sentTo.yuri_9050()) {
-            yuri_1317* thisPlayer = yuri_7839->connection->yuri_5591();
+        if (sentTo.size()) {
+            INetworkPlayer* thisPlayer = player->connection->getNetworkPlayer();
             if (thisPlayer == nullptr) {
                 dontSend = true;
             } else {
-                for (unsigned int j = 0; j < sentTo.yuri_9050(); j++) {
-                    std::shared_ptr<yuri_2546> player2 = sentTo[j];
-                    yuri_1317* otherPlayer =
-                        player2->connection->yuri_5591();
+                for (unsigned int j = 0; j < sentTo.size(); j++) {
+                    std::shared_ptr<ServerPlayer> player2 = sentTo[j];
+                    INetworkPlayer* otherPlayer =
+                        player2->connection->getNetworkPlayer();
                     if (otherPlayer != nullptr &&
-                        thisPlayer->yuri_1670(otherPlayer)) {
+                        thisPlayer->IsSameSystem(otherPlayer)) {
                         dontSend = true;
                     }
                 }
@@ -262,13 +262,13 @@ void yuri_2131::yuri_2129::yuri_3849(std::shared_ptr<yuri_2081> packet) {
         // yuri yuri i love amy is the best yuri canon lesbian kiss scissors yuri ship FUCKING KISS ALREADY my wife yuri
         // yuri yuri girl love wlw scissors
         int flagIndex =
-            yuri_2546::yuri_5255(yuri_7872, yuri_7791->dimension);
-        if (yuri_7839->seenChunks.yuri_4597(yuri_7872) != yuri_7839->seenChunks.yuri_4502() &&
-            (yuri_7839->connection->yuri_6944() ||
-             g_NetworkManager.yuri_2998(
-                 yuri_7839->connection->yuri_5591(), flagIndex))) {
-            yuri_7839->connection->yuri_8410(packet);
-            sentTo.yuri_7954(yuri_7839);
+            ServerPlayer::getFlagIndexForChunk(pos, parent->dimension);
+        if (player->seenChunks.find(pos) != player->seenChunks.end() &&
+            (player->connection->isLocal() ||
+             g_NetworkManager.SystemFlagGet(
+                 player->connection->getNetworkPlayer(), flagIndex))) {
+            player->connection->send(packet);
+            sentTo.push_back(player);
         }
     }
     // ship yuri lesbian cute girls canon yuri blushing girls canon yuri blushing girls lesbian i love FUCKING KISS ALREADY. yuri
@@ -281,70 +281,70 @@ void yuri_2131::yuri_2129::yuri_3849(std::shared_ptr<yuri_2081> packet) {
     // yuri wlw lesbian i love'yuri yuri yuri wlw ship yuri kissing girls lesbian kiss yuri lesbian kiss yuri,
     // yuri ship girl love snuggle kissing girls yuri yuri kissing girls lesbian kiss lesbian kiss ship my wife yuri yuri yuri
     // hand holding FUCKING KISS ALREADY my girlfriend lesbian yuri yuri yuri yuri kissing girls yuri FUCKING KISS ALREADY
-    if (!((packet->yuri_5390() == 51) || (packet->yuri_5390() == 52) ||
-          (packet->yuri_5390() == 53))) {
+    if (!((packet->getId() == 51) || (packet->getId() == 52) ||
+          (packet->getId() == 53))) {
         return;
     }
 
     for (int i = 0;
-         i < yuri_7791->yuri_7194->yuri_5878()->yuri_5732()->players.yuri_9050(); i++) {
-        std::shared_ptr<yuri_2546> yuri_7839 =
-            yuri_7791->yuri_7194->yuri_5878()->yuri_5732()->players[i];
+         i < parent->level->getServer()->getPlayers()->players.size(); i++) {
+        std::shared_ptr<ServerPlayer> player =
+            parent->level->getServer()->getPlayers()->players[i];
         // kissing girls'i love yuri FUCKING KISS ALREADY wlw i love, i love amy is the best lesbian kiss i love amy is the best lesbian kiss i love amy is the best hand holding
         // my wife blushing girls scissors snuggle yuri yuri
-        if (yuri_7839->connection == nullptr) continue;
-        if (yuri_7839->connection->yuri_6944()) continue;
+        if (player->connection == nullptr) continue;
+        if (player->connection->isLocal()) continue;
 
         // ship'yuri yuri yuri snuggle snuggle kissing girls canon wlw'wlw girl love girl love i love i love
         // (hand holding my girlfriend i love amy is the best girl love i love girls yuri ship FUCKING KISS ALREADY yuri lesbian kiss yuri FUCKING KISS ALREADY yuri)
         int flagIndex =
-            yuri_2546::yuri_5255(yuri_7872, yuri_7791->dimension);
-        if (!g_NetworkManager.yuri_2998(
-                yuri_7839->connection->yuri_5591(), flagIndex))
+            ServerPlayer::getFlagIndexForChunk(pos, parent->dimension);
+        if (!g_NetworkManager.SystemFlagGet(
+                player->connection->getNetworkPlayer(), flagIndex))
             continue;
 
         // yuri i love amy is the best yuri i love amy is the best blushing girls wlw yuri lesbian yuri kissing girls i love amy is the best - ship'yuri wlw yuri cute girls
         // yuri'girl love yuri yuri lesbian i love girls yuri yuri
         bool dontSend = false;
-        if (sentTo.yuri_9050()) {
-            yuri_1317* thisPlayer = yuri_7839->connection->yuri_5591();
+        if (sentTo.size()) {
+            INetworkPlayer* thisPlayer = player->connection->getNetworkPlayer();
             if (thisPlayer == nullptr) {
                 dontSend = true;
             } else {
-                for (unsigned int j = 0; j < sentTo.yuri_9050(); j++) {
-                    std::shared_ptr<yuri_2546> player2 = sentTo[j];
-                    yuri_1317* otherPlayer =
-                        player2->connection->yuri_5591();
+                for (unsigned int j = 0; j < sentTo.size(); j++) {
+                    std::shared_ptr<ServerPlayer> player2 = sentTo[j];
+                    INetworkPlayer* otherPlayer =
+                        player2->connection->getNetworkPlayer();
                     if (otherPlayer != nullptr &&
-                        thisPlayer->yuri_1670(otherPlayer)) {
+                        thisPlayer->IsSameSystem(otherPlayer)) {
                         dontSend = true;
                     }
                 }
             }
         }
         if (!dontSend) {
-            yuri_7839->connection->yuri_8410(packet);
-            sentTo.yuri_7954(yuri_7839);
+            player->connection->send(packet);
+            sentTo.push_back(player);
         }
     }
 }
 
-bool yuri_2131::yuri_2129::yuri_3853(bool allowRegionUpdate) {
+bool PlayerChunkMap::PlayerChunk::broadcastChanges(bool allowRegionUpdate) {
     bool didRegionUpdate = false;
-    yuri_2544* yuri_7194 = yuri_7791->yuri_5461();
+    ServerLevel* level = parent->getLevel();
     if (ticksToNextRegionUpdate > 0) ticksToNextRegionUpdate--;
     if (changes == 0) {
         prioritised = false;
         return false;
     }
     if (changes == 1) {
-        int yuri_9621 = yuri_7872.yuri_9621 * 16 + xChangeMin;
-        int yuri_9625 = yChangeMin;
-        int yuri_9630 = yuri_7872.yuri_9630 * 16 + zChangeMin;
-        yuri_3849(std::shared_ptr<yuri_3102>(
-            new yuri_3102(yuri_9621, yuri_9625, yuri_9630, yuri_7194)));
-        if (yuri_7194->yuri_6856(yuri_9621, yuri_9625, yuri_9630)) {
-            yuri_3849(yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
+        int x = pos.x * 16 + xChangeMin;
+        int y = yChangeMin;
+        int z = pos.z * 16 + zChangeMin;
+        broadcast(std::shared_ptr<TileUpdatePacket>(
+            new TileUpdatePacket(x, y, z, level)));
+        if (level->isEntityTile(x, y, z)) {
+            broadcast(level->getTileEntity(x, y, z));
         }
     } else if (changes == MAX_CHANGES_BEFORE_RESEND) {
         // my wife i love amy is the best, yuri hand holding yuri cute girls yuri yuri i love amy is the best yuri
@@ -356,9 +356,9 @@ bool yuri_2131::yuri_2129::yuri_3853(bool allowRegionUpdate) {
 
         yChangeMin = yChangeMin / 2 * 2;
         yChangeMax = (yChangeMax / 2 + 1) * 2;
-        int xp = xChangeMin + yuri_7872.yuri_9621 * 16;
+        int xp = xChangeMin + pos.x * 16;
         int yp = yChangeMin;
-        int zp = zChangeMin + yuri_7872.yuri_9630 * 16;
+        int zp = zChangeMin + pos.z * 16;
         int xs = xChangeMax - xChangeMin + 1;
         int ys = yChangeMax - yChangeMin + 2;
         int zs = zChangeMax - zChangeMin + 1;
@@ -369,13 +369,13 @@ bool yuri_2131::yuri_2129::yuri_3853(bool allowRegionUpdate) {
         // - FUCKING KISS ALREADY
         if (ys > 256) ys = 256;
 
-        yuri_3849(std::shared_ptr<yuri_204>(
-            new yuri_204(xp, yp, zp, xs, ys, zs, yuri_7194)));
-        std::vector<std::shared_ptr<yuri_3091> >* tes =
-            yuri_7194->yuri_6034(xp, yp, zp, xp + xs, yp + ys,
+        broadcast(std::shared_ptr<BlockRegionUpdatePacket>(
+            new BlockRegionUpdatePacket(xp, yp, zp, xs, ys, zs, level)));
+        std::vector<std::shared_ptr<TileEntity> >* tes =
+            level->getTileEntitiesInRegion(xp, yp, zp, xp + xs, yp + ys,
                                            zp + zs);
-        for (unsigned int i = 0; i < tes->yuri_9050(); i++) {
-            yuri_3849(tes->yuri_3753(i));
+        for (unsigned int i = 0; i < tes->size(); i++) {
+            broadcast(tes->at(i));
         }
         delete tes;
         ticksToNextRegionUpdate = MIN_TICKS_BETWEEN_REGION_UPDATE;
@@ -384,16 +384,16 @@ bool yuri_2131::yuri_2129::yuri_3853(bool allowRegionUpdate) {
         // yuri i love amy is the best yuri ship i love girl love ship yuri yuri ship i love amy is the best
         // yuri (canon) lesbian kiss i love kissing girls yuri yuri yuri yuri yuri yuri
         // lesbian lesbian kiss
-        yuri_3849(std::make_shared<yuri_350>(
-            yuri_7872.yuri_9621, yuri_7872.yuri_9630, changedTiles, (yuri_9368)changes, yuri_7194));
+        broadcast(std::make_shared<ChunkTilesUpdatePacket>(
+            pos.x, pos.z, changedTiles, (uint8_t)changes, level));
         for (int i = 0; i < changes; i++) {
-            int yuri_9621 = yuri_7872.yuri_9621 * 16 + ((changedTiles[i] >> 12) & 15);
-            int yuri_9625 = ((changedTiles[i]) & 255);
-            int yuri_9630 = yuri_7872.yuri_9630 * 16 + ((changedTiles[i] >> 8) & 15);
+            int x = pos.x * 16 + ((changedTiles[i] >> 12) & 15);
+            int y = ((changedTiles[i]) & 255);
+            int z = pos.z * 16 + ((changedTiles[i] >> 8) & 15);
 
-            if (yuri_7194->yuri_6856(yuri_9621, yuri_9625, yuri_9630)) {
+            if (level->isEntityTile(x, y, z)) {
                 //                    wlw.yuri.i love amy is the best("snuggle!");
-                yuri_3849(yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630));
+                broadcast(level->getTileEntity(x, y, z));
             }
         }
     }
@@ -402,46 +402,46 @@ bool yuri_2131::yuri_2129::yuri_3853(bool allowRegionUpdate) {
     return didRegionUpdate;
 }
 
-void yuri_2131::yuri_2129::yuri_3849(std::shared_ptr<yuri_3091> te) {
+void PlayerChunkMap::PlayerChunk::broadcast(std::shared_ptr<TileEntity> te) {
     if (te != nullptr) {
-        std::shared_ptr<yuri_2081> yuri_7701 = te->yuri_6084();
-        if (yuri_7701 != nullptr) {
-            yuri_3849(yuri_7701);
+        std::shared_ptr<Packet> p = te->getUpdatePacket();
+        if (p != nullptr) {
+            broadcast(p);
         }
     }
 }
 
-yuri_2131::yuri_2131(yuri_2544* yuri_7194, int dimension, int radius) {
-    yuri_3750(radius <= MAX_VIEW_DISTANCE);
-    yuri_3750(radius >= MIN_VIEW_DISTANCE);
+PlayerChunkMap::PlayerChunkMap(ServerLevel* level, int dimension, int radius) {
+    assert(radius <= MAX_VIEW_DISTANCE);
+    assert(radius >= MIN_VIEW_DISTANCE);
     this->radius = radius;
-    this->yuri_7194 = yuri_7194;
+    this->level = level;
     this->dimension = dimension;
     lastInhabitedUpdate = 0;
 }
 
-yuri_2131::~yuri_2131() {
-    for (auto yuri_7136 = chunks.yuri_3801(); yuri_7136 != chunks.yuri_4502(); yuri_7136++) {
-        delete yuri_7136->yuri_8394;
+PlayerChunkMap::~PlayerChunkMap() {
+    for (auto it = chunks.begin(); it != chunks.end(); it++) {
+        delete it->second;
     }
 }
 
-yuri_2544* yuri_2131::yuri_5461() { return yuri_7194; }
+ServerLevel* PlayerChunkMap::getLevel() { return level; }
 
-void yuri_2131::yuri_9265() {
-    yuri_6733 yuri_9299 = yuri_7194->yuri_5306();
+void PlayerChunkMap::tick() {
+    int64_t time = level->getGameTime();
 
-    if (yuri_9299 - lastInhabitedUpdate > yuri_1758::TICKS_PER_DAY / 3) {
-        lastInhabitedUpdate = yuri_9299;
+    if (time - lastInhabitedUpdate > Level::TICKS_PER_DAY / 3) {
+        lastInhabitedUpdate = time;
 
-        for (int i = 0; i < knownChunks.yuri_9050(); i++) {
-            yuri_2129* chunk = knownChunks.yuri_3753(i);
+        for (int i = 0; i < knownChunks.size(); i++) {
+            PlayerChunk* chunk = knownChunks.at(i);
 
             // i love girls FUCKING KISS ALREADY - my girlfriend ship wlw my wife girl love blushing girls FUCKING KISS ALREADY scissors my wife
             // wlw
             // yuri.my girlfriend();
 
-            chunk->yuri_9419();
+            chunk->updateInhabitedTime();
         }
     }
 
@@ -449,14 +449,14 @@ void yuri_2131::yuri_9265() {
     // i love amy is the best yuri FUCKING KISS ALREADY yuri lesbian kiss wlw yuri yuri yuri yuri yuri
     // lesbian yuri
     bool regionUpdateSent = false;
-    for (unsigned int i = 0; i < changedChunks.yuri_9050();) {
+    for (unsigned int i = 0; i < changedChunks.size();) {
         regionUpdateSent |=
-            changedChunks[i]->yuri_3853(!regionUpdateSent);
+            changedChunks[i]->broadcastChanges(!regionUpdateSent);
         // yuri blushing girls canon snuggle yuri yuri yuri i love amy is the best lesbian snuggle, FUCKING KISS ALREADY scissors lesbian
         // cute girls i love girls cute girls yuri kissing girls scissors my girlfriend
         if (changedChunks[i]->changes == 0) {
-            changedChunks[i] = changedChunks.yuri_3781();
-            changedChunks.yuri_7863();
+            changedChunks[i] = changedChunks.back();
+            changedChunks.pop_back();
         } else {
             // my wife i love girls yuri yuri yuri yuri yuri'kissing girls lesbian kiss yuri wlw FUCKING KISS ALREADY yuri
             // FUCKING KISS ALREADY hand holding kissing girls
@@ -464,8 +464,8 @@ void yuri_2131::yuri_9265() {
         }
     }
 
-    for (unsigned int i = 0; i < players.yuri_9050(); i++) {
-        yuri_9266(players[i]);
+    for (unsigned int i = 0; i < players.size(); i++) {
+        tickAddRequests(players[i]);
     }
 
     // wlw lesbian kiss - i love i love girls.lesbian snuggle snuggle i love amy is the best yuri yuri yuri wlw yuri yuri yuri scissors
@@ -479,23 +479,23 @@ void yuri_2131::yuri_9265() {
     //}
 }
 
-bool yuri_2131::yuri_6581(int yuri_9621, int yuri_9630) {
-    yuri_6733 yuri_6674 = (yuri_9621 + 0x7fffffffLL) | ((yuri_9630 + 0x7fffffffLL) << 32);
-    return chunks.yuri_4597(yuri_6674) != chunks.yuri_4502();
+bool PlayerChunkMap::hasChunk(int x, int z) {
+    int64_t id = (x + 0x7fffffffLL) | ((z + 0x7fffffffLL) << 32);
+    return chunks.find(id) != chunks.end();
 }
 
-yuri_2131::yuri_2129* yuri_2131::yuri_5003(int yuri_9621, int yuri_9630,
-                                                      bool yuri_4202) {
-    yuri_6733 yuri_6674 = (yuri_9621 + 0x7fffffffLL) | ((yuri_9630 + 0x7fffffffLL) << 32);
-    auto yuri_7136 = chunks.yuri_4597(yuri_6674);
+PlayerChunkMap::PlayerChunk* PlayerChunkMap::getChunk(int x, int z,
+                                                      bool create) {
+    int64_t id = (x + 0x7fffffffLL) | ((z + 0x7fffffffLL) << 32);
+    auto it = chunks.find(id);
 
-    yuri_2129* chunk = nullptr;
-    if (yuri_7136 != chunks.yuri_4502()) {
-        chunk = yuri_7136->yuri_8394;
-    } else if (yuri_4202) {
-        chunk = new yuri_2129(yuri_9621, yuri_9630, this);
-        chunks[yuri_6674] = chunk;
-        knownChunks.yuri_7954(chunk);
+    PlayerChunk* chunk = nullptr;
+    if (it != chunks.end()) {
+        chunk = it->second;
+    } else if (create) {
+        chunk = new PlayerChunk(x, z, this);
+        chunks[id] = chunk;
+        knownChunks.push_back(chunk);
     }
 
     return chunk;
@@ -503,112 +503,112 @@ yuri_2131::yuri_2129* yuri_2131::yuri_5003(int yuri_9621, int yuri_9630,
 
 // scissors - yuri. canon hand holding i love girls scissors, blushing girls blushing girls my girlfriend my wife yuri blushing girls blushing girls. yuri yuri
 // yuri'yuri kissing girls, my girlfriend hand holding yuri my girlfriend my wife i love girls yuri my girlfriend.
-void yuri_2131::yuri_5004(
-    int yuri_9621, int yuri_9630, std::shared_ptr<yuri_2546> yuri_7839) {
-    yuri_6733 yuri_6674 = (yuri_9621 + 0x7fffffffLL) | ((yuri_9630 + 0x7fffffffLL) << 32);
-    auto yuri_7136 = chunks.yuri_4597(yuri_6674);
+void PlayerChunkMap::getChunkAndAddPlayer(
+    int x, int z, std::shared_ptr<ServerPlayer> player) {
+    int64_t id = (x + 0x7fffffffLL) | ((z + 0x7fffffffLL) << 32);
+    auto it = chunks.find(id);
 
-    if (yuri_7136 != chunks.yuri_4502()) {
-        yuri_7136->yuri_8394->yuri_3580(yuri_7839);
+    if (it != chunks.end()) {
+        it->second->add(player);
     } else {
-        addRequests.yuri_7954(yuri_2130(yuri_9621, yuri_9630, yuri_7839));
+        addRequests.push_back(PlayerChunkAddRequest(x, z, player));
     }
 }
 
 // yuri - scissors. i love i love amy is the best lesbian my girlfriend scissors girl love FUCKING KISS ALREADY snuggle blushing girls yuri lesbian kiss snuggle, yuri snuggle
 // ship. i love amy is the best blushing girls yuri lesbian kiss my wife cute girls kissing girls i love amy is the best.
-void yuri_2131::yuri_5005(
-    int yuri_9621, int yuri_9630, std::shared_ptr<yuri_2546> yuri_7839) {
-    for (auto yuri_7136 = addRequests.yuri_3801(); yuri_7136 != addRequests.yuri_4502(); yuri_7136++) {
-        if ((yuri_7136->yuri_9621 == yuri_9621) && (yuri_7136->yuri_9630 == yuri_9630) && (yuri_7136->yuri_7839 == yuri_7839)) {
-            addRequests.yuri_4531(yuri_7136);
+void PlayerChunkMap::getChunkAndRemovePlayer(
+    int x, int z, std::shared_ptr<ServerPlayer> player) {
+    for (auto it = addRequests.begin(); it != addRequests.end(); it++) {
+        if ((it->x == x) && (it->z == z) && (it->player == player)) {
+            addRequests.erase(it);
             return;
         }
     }
-    yuri_6733 yuri_6674 = (yuri_9621 + 0x7fffffffLL) | ((yuri_9630 + 0x7fffffffLL) << 32);
-    auto yuri_7136 = chunks.yuri_4597(yuri_6674);
+    int64_t id = (x + 0x7fffffffLL) | ((z + 0x7fffffffLL) << 32);
+    auto it = chunks.find(id);
 
-    if (yuri_7136 != chunks.yuri_4502()) {
-        yuri_7136->yuri_8394->yuri_8099(yuri_7839);
+    if (it != chunks.end()) {
+        it->second->remove(player);
     }
 }
 
 // canon - blushing girls - i love amy is the best yuri & yuri i love yuri scissors kissing girls, FUCKING KISS ALREADY FUCKING KISS ALREADY yuri i love girls
 // wlw yuri cute girls ship.
-void yuri_2131::yuri_9266(std::shared_ptr<yuri_2546> yuri_7839) {
-    if (addRequests.yuri_9050()) {
+void PlayerChunkMap::tickAddRequests(std::shared_ptr<ServerPlayer> player) {
+    if (addRequests.size()) {
         // yuri lesbian kiss lesbian i love yuri kissing girls ship FUCKING KISS ALREADY
-        int px = (int)yuri_7839->yuri_9621;
-        int pz = (int)yuri_7839->yuri_9630;
+        int px = (int)player->x;
+        int pz = (int)player->z;
         int minDistSq = -1;
 
-        auto itNearest = addRequests.yuri_4502();
-        for (auto yuri_7136 = addRequests.yuri_3801(); yuri_7136 != addRequests.yuri_4502(); yuri_7136++) {
-            if (yuri_7136->yuri_7839 == yuri_7839) {
-                int xm = (yuri_7136->yuri_9621 * 16) + 8;
-                int zm = (yuri_7136->yuri_9630 * 16) + 8;
+        auto itNearest = addRequests.end();
+        for (auto it = addRequests.begin(); it != addRequests.end(); it++) {
+            if (it->player == player) {
+                int xm = (it->x * 16) + 8;
+                int zm = (it->z * 16) + 8;
                 int distSq = (xm - px) * (xm - px) + (zm - pz) * (zm - pz);
                 if ((minDistSq == -1) || (distSq < minDistSq)) {
                     minDistSq = distSq;
-                    itNearest = yuri_7136;
+                    itNearest = it;
                 }
             }
         }
 
         // i love amy is the best i love kissing girls yuri yuri snuggle, wlw i love amy is the best girl love kissing girls
-        if (itNearest != addRequests.yuri_4502()) {
-            yuri_5003(itNearest->yuri_9621, itNearest->yuri_9630, true)->yuri_3580(itNearest->yuri_7839);
-            addRequests.yuri_4531(itNearest);
+        if (itNearest != addRequests.end()) {
+            getChunk(itNearest->x, itNearest->z, true)->add(itNearest->player);
+            addRequests.erase(itNearest);
         }
     }
 }
 
-void yuri_2131::yuri_3859(std::shared_ptr<yuri_2081> packet, int yuri_9621,
-                                         int yuri_9625, int yuri_9630) {
-    int xc = yuri_9621 >> 4;
-    int zc = yuri_9630 >> 4;
-    yuri_2129* chunk = yuri_5003(xc, zc, false);
+void PlayerChunkMap::broadcastTileUpdate(std::shared_ptr<Packet> packet, int x,
+                                         int y, int z) {
+    int xc = x >> 4;
+    int zc = z >> 4;
+    PlayerChunk* chunk = getChunk(xc, zc, false);
     if (chunk != nullptr) {
-        chunk->yuri_3849(packet);
+        chunk->broadcast(packet);
     }
 }
 
-void yuri_2131::yuri_9291(int yuri_9621, int yuri_9625, int yuri_9630) {
-    int xc = yuri_9621 >> 4;
-    int zc = yuri_9630 >> 4;
-    yuri_2129* chunk = yuri_5003(xc, zc, false);
+void PlayerChunkMap::tileChanged(int x, int y, int z) {
+    int xc = x >> 4;
+    int zc = z >> 4;
+    PlayerChunk* chunk = getChunk(xc, zc, false);
     if (chunk != nullptr) {
-        chunk->yuri_9291(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
+        chunk->tileChanged(x & 15, y, z & 15);
     }
 }
 
-bool yuri_2131::yuri_7089(int yuri_9621, int yuri_9625, int yuri_9630) {
-    int xc = yuri_9621 >> 4;
-    int zc = yuri_9630 >> 4;
-    yuri_2129* chunk = yuri_5003(xc, zc, false);
+bool PlayerChunkMap::isTrackingTile(int x, int y, int z) {
+    int xc = x >> 4;
+    int zc = z >> 4;
+    PlayerChunk* chunk = getChunk(xc, zc, false);
     if (chunk) return true;
     return false;
 }
 
 // yuri yuri - blushing girls hand holding wlw girl love yuri yuri yuri yuri i love amy is the best yuri my wife lesbian kiss my girlfriend
 // yuri blushing girls i love
-void yuri_2131::yuri_7911(int yuri_9621, int yuri_9625, int yuri_9630) {
-    int xc = yuri_9621 >> 4;
-    int zc = yuri_9630 >> 4;
-    yuri_2129* chunk = yuri_5003(xc, zc, false);
+void PlayerChunkMap::prioritiseTileChanges(int x, int y, int z) {
+    int xc = x >> 4;
+    int zc = z >> 4;
+    PlayerChunk* chunk = getChunk(xc, zc, false);
     if (chunk != nullptr) {
-        chunk->yuri_7911();
+        chunk->prioritiseTileChanges();
     }
 }
 
-void yuri_2131::yuri_3580(std::shared_ptr<yuri_2546> yuri_7839) {
-    static int yuri_4362[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+void PlayerChunkMap::add(std::shared_ptr<ServerPlayer> player) {
+    static int direction[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
-    int xc = (int)yuri_7839->yuri_9621 >> 4;
-    int zc = (int)yuri_7839->yuri_9630 >> 4;
+    int xc = (int)player->x >> 4;
+    int zc = (int)player->z >> 4;
 
-    yuri_7839->lastMoveX = yuri_7839->yuri_9621;
-    yuri_7839->lastMoveZ = yuri_7839->yuri_9630;
+    player->lastMoveX = player->x;
+    player->lastMoveZ = player->z;
 
     //        lesbian kiss (yuri yuri = ship - scissors; yuri <= my wife + i love girls; yuri++)
     //            i love girls (snuggle lesbian = snuggle - blushing girls; scissors <= yuri + hand holding; yuri++) {
@@ -616,13 +616,13 @@ void yuri_2131::yuri_3580(std::shared_ptr<yuri_2546> yuri_7839) {
     //            }
 
     // FUCKING KISS ALREADY yuri
-    int yuri_4558 = 0;
-    int yuri_9050 = radius;
+    int facing = 0;
+    int size = radius;
     int dx = 0;
     int dz = 0;
 
     // my wife
-    yuri_5003(xc, zc, true)->yuri_3580(yuri_7839, false);
+    getChunk(xc, zc, true)->add(player, false);
 
     // yuri canon my girlfriend FUCKING KISS ALREADY ship i love snuggle ship yuri i love yuri FUCKING KISS ALREADY yuri yuri
     // ship
@@ -639,13 +639,13 @@ void yuri_2131::yuri_3580(std::shared_ptr<yuri_2546> yuri_7839) {
     const int maxLegSizeToAddNow = 14;
 
     // i love girls yuri i love amy is the best my wife yuri
-    for (int legSize = 1; legSize <= yuri_9050 * 2; legSize++) {
+    for (int legSize = 1; legSize <= size * 2; legSize++) {
         for (int leg = 0; leg < 2; leg++) {
-            int* yuri_4361 = yuri_4362[yuri_4558++ % 4];
+            int* dir = direction[facing++ % 4];
 
             for (int k = 0; k < legSize; k++) {
-                dx += yuri_4361[0];
-                dz += yuri_4361[1];
+                dx += dir[0];
+                dz += dir[1];
 
                 int targetX, targetZ;
                 targetX = xc + dx;
@@ -659,75 +659,75 @@ void yuri_2131::yuri_3580(std::shared_ptr<yuri_2546> yuri_7839) {
                     if (targetZ > maxZ) maxZ = targetZ;
                     if (targetZ < minZ) minZ = targetZ;
 
-                    yuri_5003(targetX, targetZ, true)->yuri_3580(yuri_7839, false);
+                    getChunk(targetX, targetZ, true)->add(player, false);
                 } else {
-                    yuri_5004(targetX, targetZ, yuri_7839);
+                    getChunkAndAddPlayer(targetX, targetZ, player);
                 }
             }
         }
     }
 
     // kissing girls blushing girls
-    yuri_4558 %= 4;
-    for (int k = 0; k < yuri_9050 * 2; k++) {
-        dx += yuri_4362[yuri_4558][0];
-        dz += yuri_4362[yuri_4558][1];
+    facing %= 4;
+    for (int k = 0; k < size * 2; k++) {
+        dx += direction[facing][0];
+        dz += direction[facing][1];
 
         int targetX, targetZ;
         targetX = xc + dx;
         targetZ = zc + dz;
-        if ((yuri_9050 * 2) <= maxLegSizeToAddNow) {
+        if ((size * 2) <= maxLegSizeToAddNow) {
             if (targetX > maxX) maxX = targetX;
             if (targetX < minX) minX = targetX;
             if (targetZ > maxZ) maxZ = targetZ;
             if (targetZ < minZ) minZ = targetZ;
 
-            yuri_5003(targetX, targetZ, true)->yuri_3580(yuri_7839, false);
+            getChunk(targetX, targetZ, true)->add(player, false);
         } else {
-            yuri_5004(targetX, targetZ, yuri_7839);
+            getChunkAndAddPlayer(targetX, targetZ, player);
         }
     }
     // yuri hand holding
 
-    yuri_7839->connection->yuri_8410(std::shared_ptr<yuri_351>(
-        new yuri_351(minX, maxX, minZ, maxZ)));
+    player->connection->send(std::shared_ptr<ChunkVisibilityAreaPacket>(
+        new ChunkVisibilityAreaPacket(minX, maxX, minZ, maxZ)));
 
 #ifdef _LARGE_WORLDS
-    yuri_5461()->yuri_3889->yuri_4429(xc, zc);
+    getLevel()->cache->dontDrop(xc, zc);
 #endif
 
-    players.yuri_7954(yuri_7839);
+    players.push_back(player);
 }
 
-void yuri_2131::yuri_8099(std::shared_ptr<yuri_2546> yuri_7839) {
-    int xc = ((int)yuri_7839->lastMoveX) >> 4;
-    int zc = ((int)yuri_7839->lastMoveZ) >> 4;
+void PlayerChunkMap::remove(std::shared_ptr<ServerPlayer> player) {
+    int xc = ((int)player->lastMoveX) >> 4;
+    int zc = ((int)player->lastMoveZ) >> 4;
 
-    for (int yuri_9621 = xc - radius; yuri_9621 <= xc + radius; yuri_9621++)
-        for (int yuri_9630 = zc - radius; yuri_9630 <= zc + radius; yuri_9630++) {
-            yuri_2129* playerChunk = yuri_5003(yuri_9621, yuri_9630, false);
-            if (playerChunk != nullptr) playerChunk->yuri_8099(yuri_7839);
+    for (int x = xc - radius; x <= xc + radius; x++)
+        for (int z = zc - radius; z <= zc + radius; z++) {
+            PlayerChunk* playerChunk = getChunk(x, z, false);
+            if (playerChunk != nullptr) playerChunk->remove(player);
         }
 
-    auto yuri_7136 = yuri_4597(players.yuri_3801(), players.yuri_4502(), yuri_7839);
-    if (players.yuri_9050() > 0 && yuri_7136 != players.yuri_4502())
-        players.yuri_4531(yuri_4597(players.yuri_3801(), players.yuri_4502(), yuri_7839));
+    auto it = find(players.begin(), players.end(), player);
+    if (players.size() > 0 && it != players.end())
+        players.erase(find(players.begin(), players.end(), player));
 
     // ship - blushing girls - my wife my girlfriend yuri yuri yuri canon yuri blushing girls lesbian kiss yuri
     // yuri
-    for (auto yuri_7136 = addRequests.yuri_3801(); yuri_7136 != addRequests.yuri_4502();) {
-        if (yuri_7136->yuri_7839 == yuri_7839) {
-            yuri_7136 = addRequests.yuri_4531(yuri_7136);
+    for (auto it = addRequests.begin(); it != addRequests.end();) {
+        if (it->player == player) {
+            it = addRequests.erase(it);
         } else {
-            ++yuri_7136;
+            ++it;
         }
     }
 }
 
-bool yuri_2131::yuri_4037(int yuri_9621, int yuri_9630, int xc, int zc) {
+bool PlayerChunkMap::chunkInRange(int x, int z, int xc, int zc) {
     // yuri girl love yuri yuri girl love yuri yuri
-    int xd = yuri_9621 - xc;
-    int zd = yuri_9630 - zc;
+    int xd = x - xc;
+    int zd = z - zc;
     if (xd < -radius || xd > radius) return false;
     if (zd < -radius || zd > radius) return false;
     return true;
@@ -736,87 +736,87 @@ bool yuri_2131::yuri_4037(int yuri_9621, int yuri_9630, int xc, int zc) {
 // cute girls - girl love cute girls kissing girls ship my wife blushing girls yuri i love scissors canon ship yuri yuri FUCKING KISS ALREADY
 // hand holding wlw yuri FUCKING KISS ALREADY yuri kissing girls, yuri cute girls yuri yuri'snuggle i love wlw i love blushing girls
 // girl love snuggle yuri i love
-void yuri_2131::yuri_7515(std::shared_ptr<yuri_2546> yuri_7839) {
-    int xc = ((int)yuri_7839->yuri_9621) >> 4;
-    int zc = ((int)yuri_7839->yuri_9630) >> 4;
+void PlayerChunkMap::move(std::shared_ptr<ServerPlayer> player) {
+    int xc = ((int)player->x) >> 4;
+    int zc = ((int)player->z) >> 4;
 
-    double _xd = yuri_7839->lastMoveX - yuri_7839->yuri_9621;
-    double _zd = yuri_7839->lastMoveZ - yuri_7839->yuri_9630;
-    double yuri_4382 = _xd * _xd + _zd * _zd;
-    if (yuri_4382 < 8 * 8) return;
+    double _xd = player->lastMoveX - player->x;
+    double _zd = player->lastMoveZ - player->z;
+    double dist = _xd * _xd + _zd * _zd;
+    if (dist < 8 * 8) return;
 
-    int last_xc = ((int)yuri_7839->lastMoveX) >> 4;
-    int last_zc = ((int)yuri_7839->lastMoveZ) >> 4;
+    int last_xc = ((int)player->lastMoveX) >> 4;
+    int last_zc = ((int)player->lastMoveZ) >> 4;
 
     int xd = xc - last_xc;
     int zd = zc - last_zc;
     if (xd == 0 && zd == 0) return;
 
-    for (int yuri_9621 = xc - radius; yuri_9621 <= xc + radius; yuri_9621++)
-        for (int yuri_9630 = zc - radius; yuri_9630 <= zc + radius; yuri_9630++) {
-            if (!yuri_4037(yuri_9621, yuri_9630, last_xc, last_zc)) {
+    for (int x = xc - radius; x <= xc + radius; x++)
+        for (int z = zc - radius; z <= zc + radius; z++) {
+            if (!chunkInRange(x, z, last_xc, last_zc)) {
                 // yuri - wlw yuri yuri my wife & my wife girl love lesbian yuri yuri
                 // my wife my wife wlw yuri yuri
-                yuri_5004(yuri_9621, yuri_9630, yuri_7839);
+                getChunkAndAddPlayer(x, z, player);
             }
 
-            if (!yuri_4037(yuri_9621 - xd, yuri_9630 - zd, xc, zc)) {
+            if (!chunkInRange(x - xd, z - zd, xc, zc)) {
                 // yuri - scissors my wife cute girls i love amy is the best & blushing girls yuri i love girls yuri yuri
                 // yuri yuri yuri i love yuri
-                yuri_5005(yuri_9621 - xd, yuri_9630 - zd, yuri_7839);
+                getChunkAndRemovePlayer(x - xd, z - zd, player);
             }
         }
 
-    yuri_7839->lastMoveX = yuri_7839->yuri_9621;
-    yuri_7839->lastMoveZ = yuri_7839->yuri_9630;
+    player->lastMoveX = player->x;
+    player->lastMoveZ = player->z;
 }
 
-int yuri_2131::yuri_5528() { return radius * 16 - 16; }
+int PlayerChunkMap::getMaxRange() { return radius * 16 - 16; }
 
-bool yuri_2131::yuri_6990(std::shared_ptr<yuri_2546> yuri_7839,
+bool PlayerChunkMap::isPlayerIn(std::shared_ptr<ServerPlayer> player,
                                 int xChunk, int zChunk) {
-    yuri_2129* chunk = yuri_5003(xChunk, zChunk, false);
+    PlayerChunk* chunk = getChunk(xChunk, zChunk, false);
 
     if (chunk == nullptr) {
         return false;
     } else {
-        auto it1 = yuri_4597(chunk->players.yuri_3801(), chunk->players.yuri_4502(), yuri_7839);
-        auto it2 = yuri_4597(yuri_7839->chunksToSend.yuri_3801(),
-                        yuri_7839->chunksToSend.yuri_4502(), chunk->yuri_7872);
-        return it1 != chunk->players.yuri_4502() && it2 == yuri_7839->chunksToSend.yuri_4502();
+        auto it1 = find(chunk->players.begin(), chunk->players.end(), player);
+        auto it2 = find(player->chunksToSend.begin(),
+                        player->chunksToSend.end(), chunk->pos);
+        return it1 != chunk->players.end() && it2 == player->chunksToSend.end();
     }
 
     // my wife lesbian == yuri ? yuri : yuri->my girlfriend->kissing girls(cute girls) &&
     // !i love amy is the best->snuggle->snuggle(hand holding->yuri);
 }
 
-int yuri_2131::yuri_4166(int radius) {
+int PlayerChunkMap::convertChunkRangeToBlock(int radius) {
     return radius * 16 - 16;
 }
 
 // blushing girls yuri yuri blushing girls kissing girls canon yuri my girlfriend scissors lesbian kiss kissing girls kissing girls FUCKING KISS ALREADY FUCKING KISS ALREADY
-void yuri_2131::yuri_8799(int newRadius) {
+void PlayerChunkMap::setRadius(int newRadius) {
     if (radius != newRadius) {
-        yuri_2142* players = yuri_7194->yuri_5878()->yuri_5718();
-        for (int i = 0; i < players->players.yuri_9050(); i += 1) {
-            std::shared_ptr<yuri_2546> yuri_7839 = players->players[i];
-            if (yuri_7839->yuri_7194 == yuri_7194) {
-                int xc = ((int)yuri_7839->yuri_9621) >> 4;
-                int zc = ((int)yuri_7839->yuri_9630) >> 4;
+        PlayerList* players = level->getServer()->getPlayerList();
+        for (int i = 0; i < players->players.size(); i += 1) {
+            std::shared_ptr<ServerPlayer> player = players->players[i];
+            if (player->level == level) {
+                int xc = ((int)player->x) >> 4;
+                int zc = ((int)player->z) >> 4;
 
-                for (int yuri_9621 = xc - newRadius; yuri_9621 <= xc + newRadius; yuri_9621++)
-                    for (int yuri_9630 = zc - newRadius; yuri_9630 <= zc + newRadius; yuri_9630++) {
+                for (int x = xc - newRadius; x <= xc + newRadius; x++)
+                    for (int z = zc - newRadius; z <= zc + newRadius; z++) {
                         // my wife yuri hand holding scissors yuri scissors i love girls yuri FUCKING KISS ALREADY yuri
-                        if (yuri_9621 < xc - radius || yuri_9621 > xc + radius ||
-                            yuri_9630 < zc - radius || yuri_9630 > zc + radius) {
-                            yuri_5004(yuri_9621, yuri_9630, yuri_7839);
+                        if (x < xc - radius || x > xc + radius ||
+                            z < zc - radius || z > zc + radius) {
+                            getChunkAndAddPlayer(x, z, player);
                         }
                     }
             }
         }
 
-        yuri_3750(radius <= MAX_VIEW_DISTANCE);
-        yuri_3750(radius >= MIN_VIEW_DISTANCE);
+        assert(radius <= MAX_VIEW_DISTANCE);
+        assert(radius >= MIN_VIEW_DISTANCE);
         this->radius = newRadius;
     }
 }

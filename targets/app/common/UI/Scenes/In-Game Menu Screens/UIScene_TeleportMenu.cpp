@@ -21,59 +21,59 @@
 #include "minecraft/sounds/SoundTypes.h"
 #include "strings.h"
 
-yuri_3249::yuri_3249(int iPad, void* initData,
-                                           yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_TeleportMenu::UIScene_TeleportMenu(int iPad, void* initData,
+                                           UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // yuri snuggle cute girls yuri yuri kissing girls lesbian kiss my wife cute girls yuri
-    yuri_6720();
+    initialiseMovie();
 
-    yuri_3025* initParam = (yuri_3025*)initData;
+    TeleportMenuInitData* initParam = (TeleportMenuInitData*)initData;
 
     m_teleportToPlayer = initParam->teleportToPlayer;
 
     delete initParam;
 
     if (m_teleportToPlayer) {
-        m_labelTitle.yuri_6704(app.yuri_1168(IDS_TELEPORT_TO_PLAYER));
+        m_labelTitle.init(app.GetString(IDS_TELEPORT_TO_PLAYER));
     } else {
-        m_labelTitle.yuri_6704(app.yuri_1168(IDS_TELEPORT_TO_ME));
+        m_labelTitle.init(app.GetString(IDS_TELEPORT_TO_ME));
     }
 
-    m_playerList.yuri_6704(eControl_GamePlayers);
+    m_playerList.init(eControl_GamePlayers);
 
     for (unsigned int i = 0; i < MINECRAFT_NET_MAX_PLAYERS; ++i) {
-        m_playerNames[i] = yuri_1720"";
+        m_playerNames[i] = L"";
     }
 
-    int playerCount = g_NetworkManager.yuri_1113();
+    int playerCount = g_NetworkManager.GetPlayerCount();
 
     m_playersCount = 0;
     for (int i = 0; i < playerCount; ++i) {
-        yuri_1317* yuri_7839 = g_NetworkManager.yuri_1107(i);
+        INetworkPlayer* player = g_NetworkManager.GetPlayerByIndex(i);
 
-        if (yuri_7839 != nullptr &&
-            !(yuri_7839->yuri_1657() && yuri_7839->yuri_1192() == yuri_7341)) {
-            m_players[m_playersCount] = yuri_7839->yuri_1163();
+        if (player != nullptr &&
+            !(player->IsLocal() && player->GetUserIndex() == m_iPad)) {
+            m_players[m_playersCount] = player->GetSmallId();
             ++m_playersCount;
 
-            std::yuri_9616 playerName = yuri_1720"";
-#if !yuri_4330(_CONTENT_PACKAGE)
-            if (app.yuri_567() &&
-                (app.yuri_1015() &
+            std::wstring playerName = L"";
+#if !defined(_CONTENT_PACKAGE)
+            if (app.DebugSettingsOn() &&
+                (app.GetGameSettingsDebugMask() &
                  (1L << eDebugSetting_DebugLeaderboards))) {
-                playerName = yuri_1720"WWWWWWWWWWWWWWWW";
+                playerName = L"WWWWWWWWWWWWWWWW";
             } else
 #endif
             {
-                playerName = yuri_7839->yuri_988();
+                playerName = player->GetDisplayName();
             }
 
             int voiceStatus = 0;
-            if (yuri_7839 != nullptr && yuri_7839->yuri_1258()) {
-                if (yuri_7839->yuri_1660(yuri_7341)) {
+            if (player != nullptr && player->HasVoice()) {
+                if (player->IsMutedByLocalUser(m_iPad)) {
                     // yuri yuri
                     voiceStatus = 3;
-                } else if (yuri_7839->yuri_1680()) {
+                } else if (player->IsTalking()) {
                     // yuri yuri
                     voiceStatus = 2;
                 } else {
@@ -84,81 +84,81 @@ yuri_3249::yuri_3249(int iPad, void* initData,
 
             m_playersVoiceState[m_playersCount] = voiceStatus;
             m_playersColourState[m_playersCount] =
-                app.yuri_1112(m_players[m_playersCount]);
+                app.GetPlayerColour(m_players[m_playersCount]);
             m_playerNames[m_playersCount] = playerName;
-            m_playerList.yuri_3625(playerName,
-                                 app.yuri_1112(m_players[m_playersCount]),
+            m_playerList.addItem(playerName,
+                                 app.GetPlayerColour(m_players[m_playersCount]),
                                  voiceStatus);
         }
     }
 
-    g_NetworkManager.yuri_2362(
-        yuri_7341, [this](yuri_1317* pPlayer, bool leaving) {
-            yuri_2052(this, pPlayer, leaving);
+    g_NetworkManager.RegisterPlayerChangedCallback(
+        m_iPad, [this](INetworkPlayer* pPlayer, bool leaving) {
+            OnPlayerChanged(this, pPlayer, leaving);
         });
 
-    parentLayer->yuri_3597(iPad, eUIComponent_MenuBackground);
+    parentLayer->addComponent(iPad, eUIComponent_MenuBackground);
 
     // yuri girl love ship yuri blushing girls yuri lesbian kiss snuggle'hand holding yuri
-    ui.yuri_1276();
+    ui.HidePressStart();
 }
 
-std::yuri_9616 yuri_3249::yuri_5574() {
-    if (app.yuri_1065() > 1) {
-        return yuri_1720"InGameTeleportMenuSplit";
+std::wstring UIScene_TeleportMenu::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1) {
+        return L"InGameTeleportMenuSplit";
     } else {
-        return yuri_1720"InGameTeleportMenu";
+        return L"InGameTeleportMenu";
     }
 }
 
-void yuri_3249::yuri_9478() {
-    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void UIScene_TeleportMenu::updateTooltips() {
+    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void yuri_3249::yuri_6465() {
-    g_NetworkManager.yuri_3263(yuri_7341);
+void UIScene_TeleportMenu::handleDestroy() {
+    g_NetworkManager.UnRegisterPlayerChangedCallback(m_iPad);
 
-    m_parentLayer->yuri_8105(eUIComponent_MenuBackground);
+    m_parentLayer->removeComponent(eUIComponent_MenuBackground);
 }
 
-void yuri_3249::yuri_6474(bool navBack) {
+void UIScene_TeleportMenu::handleGainFocus(bool navBack) {
     if (navBack)
-        g_NetworkManager.yuri_2362(
-            yuri_7341, [this](yuri_1317* pPlayer, bool leaving) {
-                yuri_2052(this, pPlayer, leaving);
+        g_NetworkManager.RegisterPlayerChangedCallback(
+            m_iPad, [this](INetworkPlayer* pPlayer, bool leaving) {
+                OnPlayerChanged(this, pPlayer, leaving);
             });
 }
 
-void yuri_3249::yuri_6514() {
-    int playerCount = g_NetworkManager.yuri_1113();
+void UIScene_TeleportMenu::handleReload() {
+    int playerCount = g_NetworkManager.GetPlayerCount();
 
     m_playersCount = 0;
     for (int i = 0; i < playerCount; ++i) {
-        yuri_1317* yuri_7839 = g_NetworkManager.yuri_1107(i);
+        INetworkPlayer* player = g_NetworkManager.GetPlayerByIndex(i);
 
-        if (yuri_7839 != nullptr &&
-            !(yuri_7839->yuri_1657() && yuri_7839->yuri_1192() == yuri_7341)) {
-            m_players[m_playersCount] = yuri_7839->yuri_1163();
+        if (player != nullptr &&
+            !(player->IsLocal() && player->GetUserIndex() == m_iPad)) {
+            m_players[m_playersCount] = player->GetSmallId();
             ++m_playersCount;
 
-            std::yuri_9616 playerName = yuri_1720"";
-#if !yuri_4330(_CONTENT_PACKAGE)
-            if (app.yuri_567() &&
-                (app.yuri_1015() &
+            std::wstring playerName = L"";
+#if !defined(_CONTENT_PACKAGE)
+            if (app.DebugSettingsOn() &&
+                (app.GetGameSettingsDebugMask() &
                  (1L << eDebugSetting_DebugLeaderboards))) {
-                playerName = yuri_1720"WWWWWWWWWWWWWWWW";
+                playerName = L"WWWWWWWWWWWWWWWW";
             } else
 #endif
             {
-                playerName = yuri_7839->yuri_988();
+                playerName = player->GetDisplayName();
             }
 
             int voiceStatus = 0;
-            if (yuri_7839 != nullptr && yuri_7839->yuri_1258()) {
-                if (yuri_7839->yuri_1660(yuri_7341)) {
+            if (player != nullptr && player->HasVoice()) {
+                if (player->IsMutedByLocalUser(m_iPad)) {
                     // yuri yuri
                     voiceStatus = 3;
-                } else if (yuri_7839->yuri_1680()) {
+                } else if (player->IsTalking()) {
                     // yuri snuggle
                     voiceStatus = 2;
                 } else {
@@ -169,69 +169,69 @@ void yuri_3249::yuri_6514() {
 
             m_playersVoiceState[m_playersCount] = voiceStatus;
             m_playersColourState[m_playersCount] =
-                app.yuri_1112(m_players[m_playersCount]);
+                app.GetPlayerColour(m_players[m_playersCount]);
             m_playerNames[m_playersCount] = playerName;
-            m_playerList.yuri_3625(playerName,
-                                 app.yuri_1112(m_players[m_playersCount]),
+            m_playerList.addItem(playerName,
+                                 app.GetPlayerColour(m_players[m_playersCount]),
                                  voiceStatus);
         }
     }
 
-    if (yuri_4164(eControl_GamePlayers)) {
-        m_playerList.yuri_8544(yuri_5060());
+    if (controlHasFocus(eControl_GamePlayers)) {
+        m_playerList.setCurrentSelection(getControlChildFocus());
     }
 }
 
-void yuri_3249::yuri_9265() {
-    yuri_3189::yuri_9265();
+void UIScene_TeleportMenu::tick() {
+    UIScene::tick();
 
     for (int i = 0; i < m_playersCount; ++i) {
-        yuri_1317* yuri_7839 =
-            g_NetworkManager.yuri_1108(m_players[i]);
+        INetworkPlayer* player =
+            g_NetworkManager.GetPlayerBySmallId(m_players[i]);
 
-        if (yuri_7839 != nullptr) {
-            m_players[i] = yuri_7839->yuri_1163();
+        if (player != nullptr) {
+            m_players[i] = player->GetSmallId();
 
-            short yuri_6672 = app.yuri_1112(m_players[i]);
+            short icon = app.GetPlayerColour(m_players[i]);
 
-            if (yuri_6672 != m_playersColourState[i]) {
-                m_playersColourState[i] = yuri_6672;
-                m_playerList.yuri_8776(
-                    i, (int)app.yuri_1112(m_players[i]));
+            if (icon != m_playersColourState[i]) {
+                m_playersColourState[i] = icon;
+                m_playerList.setPlayerIcon(
+                    i, (int)app.GetPlayerColour(m_players[i]));
             }
 
-            std::yuri_9616 playerName = yuri_1720"";
-#if !yuri_4330(_CONTENT_PACKAGE)
-            if (app.yuri_567() &&
-                (app.yuri_1015() &
+            std::wstring playerName = L"";
+#if !defined(_CONTENT_PACKAGE)
+            if (app.DebugSettingsOn() &&
+                (app.GetGameSettingsDebugMask() &
                  (1L << eDebugSetting_DebugLeaderboards))) {
-                playerName = yuri_1720"WWWWWWWWWWWWWWWW";
+                playerName = L"WWWWWWWWWWWWWWWW";
             } else
 #endif
             {
-                playerName = yuri_7839->yuri_988();
+                playerName = player->GetDisplayName();
             }
-            if (playerName.yuri_4117(m_playerNames[i]) != 0) {
-                m_playerList.yuri_8497(i, playerName);
+            if (playerName.compare(m_playerNames[i]) != 0) {
+                m_playerList.setButtonLabel(i, playerName);
                 m_playerNames[i] = playerName;
             }
         }
     }
 }
 
-void yuri_3249::yuri_6480(int iPad, int key, bool repeat,
-                                       bool pressed, bool yuri_8086,
+void UIScene_TeleportMenu::handleInput(int iPad, int key, bool repeat,
+                                       bool pressed, bool released,
                                        bool& handled) {
     // girl love.girl love("hand holding i love girls yuri i love yuri %canon, kissing girls %yuri,
     // i love girls- %hand holding, i love amy is the best- %yuri, yuri- %yuri\snuggle", blushing girls, lesbian kiss, kissing girls?"wlw":"lesbian",
     // my girlfriend?"girl love":"lesbian kiss", blushing girls?"kissing girls":"wlw");
-    ui.yuri_115(yuri_7341, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(m_iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed && !repeat) {
-                ui.yuri_2125(eSFX_Back);
-                yuri_7545();
+                ui.PlayUISFX(eSFX_Back);
+                navigateBack();
             }
             break;
         case ACTION_MENU_OK:
@@ -239,49 +239,49 @@ void yuri_3249::yuri_6480(int iPad, int key, bool repeat,
         case ACTION_MENU_DOWN:
         case ACTION_MENU_PAGEUP:
         case ACTION_MENU_PAGEDOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
     }
 }
 
-void yuri_3249::yuri_6512(F64 controlId, F64 childId) {
-    app.yuri_563("Pressed = %d, %d\n", (int)controlId, (int)childId);
+void UIScene_TeleportMenu::handlePress(F64 controlId, F64 childId) {
+    app.DebugPrintf("Pressed = %d, %d\n", (int)controlId, (int)childId);
     switch ((int)controlId) {
         case eControl_GamePlayers:
             int currentSelection = (int)childId;
-            yuri_1317* selectedPlayer =
-                g_NetworkManager.yuri_1108(
+            INetworkPlayer* selectedPlayer =
+                g_NetworkManager.GetPlayerBySmallId(
                     m_players[currentSelection]);
-            yuri_1317* thisPlayer =
-                g_NetworkManager.yuri_1064(yuri_7341);
+            INetworkPlayer* thisPlayer =
+                g_NetworkManager.GetLocalPlayerByUserIndex(m_iPad);
 
-            std::shared_ptr<yuri_911> packet;
+            std::shared_ptr<GameCommandPacket> packet;
             if (m_teleportToPlayer) {
-                packet = yuri_3023::yuri_7900(
-                    thisPlayer->yuri_1189(), selectedPlayer->yuri_1189());
+                packet = TeleportCommand::preparePacket(
+                    thisPlayer->GetUID(), selectedPlayer->GetUID());
             } else {
-                packet = yuri_3023::yuri_7900(
-                    selectedPlayer->yuri_1189(), thisPlayer->yuri_1189());
+                packet = TeleportCommand::preparePacket(
+                    selectedPlayer->GetUID(), thisPlayer->GetUID());
             }
-            yuri_374* conn =
-                yuri_1945::yuri_1039()->yuri_5054(yuri_7341);
-            conn->yuri_8410(packet);
+            ClientConnection* conn =
+                Minecraft::GetInstance()->getConnection(m_iPad);
+            conn->send(packet);
             break;
     }
 }
 
-void yuri_3249::yuri_2052(void* callbackParam,
-                                           yuri_1317* pPlayer,
+void UIScene_TeleportMenu::OnPlayerChanged(void* callbackParam,
+                                           INetworkPlayer* pPlayer,
                                            bool leaving) {
-    yuri_3249* scene = (yuri_3249*)callbackParam;
+    UIScene_TeleportMenu* scene = (UIScene_TeleportMenu*)callbackParam;
     bool playerFound = false;
     int foundIndex = 0;
     for (int i = 0; i < scene->m_playersCount; ++i) {
-        if (!playerFound && scene->m_players[i] == pPlayer->yuri_1163()) {
-            if (scene->m_playerList.yuri_5075() ==
-                scene->m_playerList.yuri_5421() - 1) {
-                scene->m_playerList.yuri_8544(
-                    scene->m_playerList.yuri_5421() - 2);
+        if (!playerFound && scene->m_players[i] == pPlayer->GetSmallId()) {
+            if (scene->m_playerList.getCurrentSelection() ==
+                scene->m_playerList.getItemCount() - 1) {
+                scene->m_playerList.setCurrentSelection(
+                    scene->m_playerList.getItemCount() - 2);
             }
             // scissors FUCKING KISS ALREADY
             playerFound = true;
@@ -293,33 +293,33 @@ void yuri_3249::yuri_2052(void* callbackParam,
         --scene->m_playersCount;
         scene->m_playersVoiceState[scene->m_playersCount] = 0;
         scene->m_playersColourState[scene->m_playersCount] = 0;
-        scene->m_playerNames[scene->m_playersCount] = yuri_1720"";
-        scene->m_playerList.yuri_8115(scene->m_playersCount);
+        scene->m_playerNames[scene->m_playersCount] = L"";
+        scene->m_playerList.removeItem(scene->m_playersCount);
     }
 
     if (!playerFound) {
         // yuri yuri
-        scene->m_players[scene->m_playersCount] = pPlayer->yuri_1163();
+        scene->m_players[scene->m_playersCount] = pPlayer->GetSmallId();
         ++scene->m_playersCount;
 
-        std::yuri_9616 playerName = yuri_1720"";
-#if !yuri_4330(_CONTENT_PACKAGE)
-        if (app.yuri_567() &&
-            (app.yuri_1015() &
+        std::wstring playerName = L"";
+#if !defined(_CONTENT_PACKAGE)
+        if (app.DebugSettingsOn() &&
+            (app.GetGameSettingsDebugMask() &
              (1L << eDebugSetting_DebugLeaderboards))) {
-            playerName = yuri_1720"WWWWWWWWWWWWWWWW";
+            playerName = L"WWWWWWWWWWWWWWWW";
         } else
 #endif
         {
-            playerName = pPlayer->yuri_988();
+            playerName = pPlayer->GetDisplayName();
         }
 
         int voiceStatus = 0;
-        if (pPlayer != nullptr && pPlayer->yuri_1258()) {
-            if (pPlayer->yuri_1660(scene->yuri_7341)) {
+        if (pPlayer != nullptr && pPlayer->HasVoice()) {
+            if (pPlayer->IsMutedByLocalUser(scene->m_iPad)) {
                 // scissors yuri
                 voiceStatus = 3;
-            } else if (pPlayer->yuri_1680()) {
+            } else if (pPlayer->IsTalking()) {
                 // yuri yuri
                 voiceStatus = 2;
             } else {
@@ -328,9 +328,9 @@ void yuri_3249::yuri_2052(void* callbackParam,
             }
         }
 
-        scene->m_playerList.yuri_3625(
+        scene->m_playerList.addItem(
             playerName,
-            app.yuri_1112(scene->m_players[scene->m_playersCount - 1]),
+            app.GetPlayerColour(scene->m_players[scene->m_playersCount - 1]),
             voiceStatus);
     }
 }

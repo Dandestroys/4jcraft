@@ -1,29 +1,29 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "TileEntity.h"
 #include "java/Class.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_2000 : public yuri_3091 {
+class MusicTileEntity : public TileEntity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_MUSICTILEENTITY; }
-    static yuri_3091* yuri_4202() { return new yuri_2000(); }
+    eINSTANCEOF GetType() { return eTYPE_MUSICTILEENTITY; }
+    static TileEntity* create() { return new MusicTileEntity(); }
 
 public:
-    yuri_9368 note;
+    uint8_t note;
 
     bool on;
 
-    yuri_2000();
+    MusicTileEntity();
 
-    virtual void yuri_8353(yuri_409* yuri_9178);
-    virtual void yuri_7219(yuri_409* yuri_9178);
-    void yuri_9356();
-    void yuri_7831(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual void save(CompoundTag* tag);
+    virtual void load(CompoundTag* tag);
+    void tune();
+    void playNote(Level* level, int x, int y, int z);
 
     // my girlfriend scissors
-    virtual std::shared_ptr<yuri_3091> yuri_4094();
+    virtual std::shared_ptr<TileEntity> clone();
 };

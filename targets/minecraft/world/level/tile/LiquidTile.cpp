@@ -1,6 +1,6 @@
 #include "LiquidTile.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 #include <numbers>
@@ -21,33 +21,33 @@
 #include "minecraft/world/phys/AABB.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_1346;
+class Icon;
 
-const std::yuri_9616 yuri_1788::TEXTURE_LAVA_STILL = yuri_1720"lava";
-const std::yuri_9616 yuri_1788::TEXTURE_WATER_STILL = yuri_1720"water";
-const std::yuri_9616 yuri_1788::TEXTURE_WATER_FLOW = yuri_1720"water_flow";
-const std::yuri_9616 yuri_1788::TEXTURE_LAVA_FLOW = yuri_1720"lava_flow";
+const std::wstring LiquidTile::TEXTURE_LAVA_STILL = L"lava";
+const std::wstring LiquidTile::TEXTURE_WATER_STILL = L"water";
+const std::wstring LiquidTile::TEXTURE_WATER_FLOW = L"water_flow";
+const std::wstring LiquidTile::TEXTURE_LAVA_FLOW = L"lava_flow";
 
-yuri_1788::yuri_1788(int yuri_6674, yuri_1886* material) : yuri_3088(yuri_6674, material, false) {
+LiquidTile::LiquidTile(int id, Material* material) : Tile(id, material, false) {
     float yo = 0;
     float e = 0;
 
-    yuri_8855(0 + e, 0 + yo, 0 + e, 1 + e, 1 + yo, 1 + e);
-    yuri_8915(true);
+    setShape(0 + e, 0 + yo, 0 + e, 1 + e, 1 + yo, 1 + e);
+    setTicking(true);
 }
 
-bool yuri_1788::yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return material != yuri_1886::lava;
+bool LiquidTile::isPathfindable(LevelSource* level, int x, int y, int z) {
+    return material != Material::lava;
 }
 
-int yuri_1788::yuri_5031() const { return 0xffffff; }
+int LiquidTile::getColor() const { return 0xffffff; }
 
-int yuri_1788::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0);
+int LiquidTile::getColor(LevelSource* level, int x, int y, int z) {
+    return getColor(level, x, y, z, 0);
 }
 
-int yuri_1788::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int d) {
-    if (material == yuri_1886::water) {
+int LiquidTile::getColor(LevelSource* level, int x, int y, int z, int d) {
+    if (material == Material::water) {
         int totalRed = 0;
         int totalGreen = 0;
         int totalBlue = 0;
@@ -55,7 +55,7 @@ int yuri_1788::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
         for (int oz = -1; oz <= 1; oz++) {
             for (int ox = -1; ox <= 1; ox++) {
                 int waterColor =
-                    yuri_7194->yuri_4943(yuri_9621 + ox, yuri_9630 + oz)->yuri_6127();
+                    level->getBiome(x + ox, z + oz)->getWaterColor();
 
                 totalRed += (waterColor & 0xff0000) >> 16;
                 totalGreen += (waterColor & 0xff00) >> 8;
@@ -69,12 +69,12 @@ int yuri_1788::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int
     return 0xffffff;
 }
 
-float yuri_1788::yuri_5362(int d) {
+float LiquidTile::getHeight(int d) {
     if (d >= 8) d = 0;
     return (d + 1) / 9.0f;
 }
 
-yuri_1346* yuri_1788::yuri_6007(int face, int yuri_4295) {
+Icon* LiquidTile::getTexture(int face, int data) {
     if (face == Facing::DOWN || face == Facing::UP) {
         return icons[0];
     } else {
@@ -82,116 +82,116 @@ yuri_1346* yuri_1788::yuri_6007(int face, int yuri_4295) {
     }
 }
 
-int yuri_1788::yuri_5144(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630) == material)
-        return yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+int LiquidTile::getDepth(Level* level, int x, int y, int z) {
+    if (level->getMaterial(x, y, z) == material)
+        return level->getData(x, y, z);
     else
         return -1;
 }
 
-int yuri_1788::yuri_5808(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630) != material) return -1;
-    int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+int LiquidTile::getRenderedDepth(LevelSource* level, int x, int y, int z) {
+    if (level->getMaterial(x, y, z) != material) return -1;
+    int d = level->getData(x, y, z);
     if (d >= 8) d = 0;
     return d;
 }
 
-bool yuri_1788::yuri_6827() { return false; }
+bool LiquidTile::isCubeShaped() { return false; }
 
-bool yuri_1788::yuri_7058(bool isServerLevel) { return false; }
+bool LiquidTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_1788::yuri_7466(int yuri_4295, bool liquid) { return liquid && yuri_4295 == 0; }
+bool LiquidTile::mayPick(int data, bool liquid) { return liquid && data == 0; }
 
-bool yuri_1788::yuri_7057(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool LiquidTile::isSolidFace(LevelSource* level, int x, int y, int z,
                              int face) {
-    yuri_1886* m = yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630);
+    Material* m = level->getMaterial(x, y, z);
     if (m == material) return false;
     if (face == Facing::UP) return true;
-    if (m == yuri_1886::ice) return false;
+    if (m == Material::ice) return false;
 
-    return yuri_3088::yuri_7057(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
+    return Tile::isSolidFace(level, x, y, z, face);
 }
 
-bool yuri_1788::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool LiquidTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
                                   int face) {
-    yuri_1886* m = yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630);
+    Material* m = level->getMaterial(x, y, z);
     if (m == material) return false;
     if (face == Facing::UP) return true;
-    if (m == yuri_1886::ice) return false;
-    return yuri_3088::yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
+    if (m == Material::ice) return false;
+    return Tile::shouldRenderFace(level, x, y, z, face);
 }
 
-std::optional<yuri_0> yuri_1788::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+std::optional<AABB> LiquidTile::getAABB(Level* level, int x, int y, int z) {
     return std::nullopt;
 }
 
-int yuri_1788::yuri_5806() { return yuri_3088::SHAPE_WATER; }
+int LiquidTile::getRenderShape() { return Tile::SHAPE_WATER; }
 
-int yuri_1788::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
+int LiquidTile::getResource(int data, Random* random, int playerBonusLevel) {
     return 0;
 }
 
-int yuri_1788::yuri_5819(yuri_2302* yuri_7981) { return 0; }
+int LiquidTile::getResourceCount(Random* random) { return 0; }
 
-yuri_3322 yuri_1788::yuri_5260(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3322 yuri_4646(0, 0, 0);
-    int mid = yuri_5808(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+Vec3 LiquidTile::getFlow(LevelSource* level, int x, int y, int z) {
+    Vec3 flow(0, 0, 0);
+    int mid = getRenderedDepth(level, x, y, z);
     for (int d = 0; d < 4; d++) {
-        int xt = yuri_9621;
-        int yt = yuri_9625;
-        int zt = yuri_9630;
+        int xt = x;
+        int yt = y;
+        int zt = z;
 
         if (d == 0) xt--;
         if (d == 1) zt--;
         if (d == 2) xt++;
         if (d == 3) zt++;
 
-        int t = yuri_5808(yuri_7194, xt, yt, zt);
+        int t = getRenderedDepth(level, xt, yt, zt);
         if (t < 0) {
-            if (!yuri_7194->yuri_5514(xt, yt, zt)->yuri_3830()) {
-                t = yuri_5808(yuri_7194, xt, yt - 1, zt);
+            if (!level->getMaterial(xt, yt, zt)->blocksMotion()) {
+                t = getRenderedDepth(level, xt, yt - 1, zt);
                 if (t >= 0) {
-                    int yuri_4361 = t - (mid - 8);
-                    yuri_4646 = yuri_4646.yuri_3580((xt - yuri_9621) * yuri_4361, (yt - yuri_9625) * yuri_4361,
-                                    (zt - yuri_9630) * yuri_4361);
+                    int dir = t - (mid - 8);
+                    flow = flow.add((xt - x) * dir, (yt - y) * dir,
+                                    (zt - z) * dir);
                 }
             }
         } else {
             if (t >= 0) {
-                int yuri_4361 = t - mid;
-                yuri_4646 = yuri_4646.yuri_3580((xt - yuri_9621) * yuri_4361, (yt - yuri_9625) * yuri_4361, (zt - yuri_9630) * yuri_4361);
+                int dir = t - mid;
+                flow = flow.add((xt - x) * dir, (yt - y) * dir, (zt - z) * dir);
             }
         }
     }
-    if (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) >= 8) {
+    if (level->getData(x, y, z) >= 8) {
         bool ok = false;
-        if (ok || yuri_7057(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1, 2)) ok = true;
-        if (ok || yuri_7057(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1, 3)) ok = true;
-        if (ok || yuri_7057(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630, 4)) ok = true;
-        if (ok || yuri_7057(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630, 5)) ok = true;
-        if (ok || yuri_7057(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630 - 1, 2)) ok = true;
-        if (ok || yuri_7057(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630 + 1, 3)) ok = true;
-        if (ok || yuri_7057(yuri_7194, yuri_9621 - 1, yuri_9625 + 1, yuri_9630, 4)) ok = true;
-        if (ok || yuri_7057(yuri_7194, yuri_9621 + 1, yuri_9625 + 1, yuri_9630, 5)) ok = true;
-        if (ok) yuri_4646 = yuri_4646.yuri_7586().yuri_3580(0, -6, 0);
+        if (ok || isSolidFace(level, x, y, z - 1, 2)) ok = true;
+        if (ok || isSolidFace(level, x, y, z + 1, 3)) ok = true;
+        if (ok || isSolidFace(level, x - 1, y, z, 4)) ok = true;
+        if (ok || isSolidFace(level, x + 1, y, z, 5)) ok = true;
+        if (ok || isSolidFace(level, x, y + 1, z - 1, 2)) ok = true;
+        if (ok || isSolidFace(level, x, y + 1, z + 1, 3)) ok = true;
+        if (ok || isSolidFace(level, x - 1, y + 1, z, 4)) ok = true;
+        if (ok || isSolidFace(level, x + 1, y + 1, z, 5)) ok = true;
+        if (ok) flow = flow.normalize().add(0, -6, 0);
     }
-    yuri_4646 = yuri_4646.yuri_7586();
+    flow = flow.normalize();
 
-    return yuri_4646;
+    return flow;
 }
 
-void yuri_1788::yuri_6470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                    std::shared_ptr<yuri_739> e, yuri_3322* yuri_4282) {
-    yuri_3322 yuri_4646 = yuri_5260(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    yuri_4282->yuri_9621 += yuri_4646.yuri_9621;
-    yuri_4282->yuri_9625 += yuri_4646.yuri_9625;
-    yuri_4282->yuri_9630 += yuri_4646.yuri_9630;
+void LiquidTile::handleEntityInside(Level* level, int x, int y, int z,
+                                    std::shared_ptr<Entity> e, Vec3* current) {
+    Vec3 flow = getFlow(level, x, y, z);
+    current->x += flow.x;
+    current->y += flow.y;
+    current->z += flow.z;
 }
 
-int yuri_1788::yuri_6025(yuri_1758* yuri_7194) {
-    if (material == yuri_1886::water) return 5;
-    if (material == yuri_1886::lava) {
-        if (yuri_7194->dimension->hasCeiling) {
+int LiquidTile::getTickDelay(Level* level) {
+    if (material == Material::water) return 5;
+    if (material == Material::lava) {
+        if (level->dimension->hasCeiling) {
             return 10;
         } else {
             return 30;
@@ -201,193 +201,193 @@ int yuri_1788::yuri_6025(yuri_1758* yuri_7194) {
 }
 
 // i love girls - hand holding yuri canon ship yuri.snuggle.yuri
-int yuri_1788::yuri_5484(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                              int yuri_9294 /*=-yuri*/) {
+int LiquidTile::getLightColor(LevelSource* level, int x, int y, int z,
+                              int tileId /*=-yuri*/) {
     // canon - blushing girls ship lesbian my girlfriend yuri yuri yuri i love my wife my girlfriend canon yuri lesbian kiss yuri
     // yuri snuggle-hand holding lesbian kiss my wife yuri FUCKING KISS ALREADY'yuri cute girls scissors yuri
-    int yuri_3565 = yuri_7194->yuri_5484(yuri_9621, yuri_9625, yuri_9630, 0, yuri_9294);
-    int yuri_3775 = yuri_7194->yuri_5484(yuri_9621, yuri_9625 + 1, yuri_9630, 0, yuri_9294);
+    int a = level->getLightColor(x, y, z, 0, tileId);
+    int b = level->getLightColor(x, y + 1, z, 0, tileId);
 
-    int aa = yuri_3565 & 0xff;
-    int yuri_3780 = yuri_3775 & 0xff;
-    int ab = (yuri_3565 >> 16) & 0xff;
-    int yuri_3799 = (yuri_3775 >> 16) & 0xff;
+    int aa = a & 0xff;
+    int ba = b & 0xff;
+    int ab = (a >> 16) & 0xff;
+    int bb = (b >> 16) & 0xff;
 
-    return (aa > yuri_3780 ? aa : yuri_3780) | ((ab > yuri_3799 ? ab : yuri_3799) << 16);
+    return (aa > ba ? aa : ba) | ((ab > bb ? ab : bb) << 16);
 }
 
-float yuri_1788::yuri_4976(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    float yuri_3565 = yuri_7194->yuri_4976(yuri_9621, yuri_9625, yuri_9630);
-    float yuri_3775 = yuri_7194->yuri_4976(yuri_9621, yuri_9625 + 1, yuri_9630);
-    return yuri_3565 > yuri_3775 ? yuri_3565 : yuri_3775;
+float LiquidTile::getBrightness(LevelSource* level, int x, int y, int z) {
+    float a = level->getBrightness(x, y, z);
+    float b = level->getBrightness(x, y + 1, z);
+    return a > b ? a : b;
 }
 
-int yuri_1788::yuri_5805() { return material == yuri_1886::water ? 1 : 0; }
+int LiquidTile::getRenderLayer() { return material == Material::water ? 1 : 0; }
 
-void yuri_1788::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                             yuri_2302* yuri_7981) {
-    if (material == yuri_1886::water) {
-        if (yuri_7981->yuri_7578(10) == 0) {
-            int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+void LiquidTile::animateTick(Level* level, int x, int y, int z,
+                             Random* random) {
+    if (material == Material::water) {
+        if (random->nextInt(10) == 0) {
+            int d = level->getData(x, y, z);
             if (d <= 0 || d >= 8) {
-                yuri_7194->yuri_3655(
-                    eParticleType_suspended, yuri_9621 + yuri_7981->yuri_7576(),
-                    yuri_9625 + yuri_7981->yuri_7576(), yuri_9630 + yuri_7981->yuri_7576(), 0, 0, 0);
+                level->addParticle(
+                    eParticleType_suspended, x + random->nextFloat(),
+                    y + random->nextFloat(), z + random->nextFloat(), 0, 0, 0);
             }
         }
         // scissors-yuri - i love my wife yuri'yuri ship!
         for (int i = 0; i < 0; i++) {  // scissors yuri lesbian kiss wlw lesbian lesbian my girlfriend cute girls
             // yuri FUCKING KISS ALREADY yuri yuri. yuri
             // kissing girls'yuri lesbian kiss i love girls.
-            int yuri_4361 = yuri_7981->yuri_7578(4);
-            int xt = yuri_9621;
-            int zt = yuri_9630;
-            if (yuri_4361 == 0) xt--;
-            if (yuri_4361 == 1) xt++;
-            if (yuri_4361 == 2) zt--;
-            if (yuri_4361 == 3) zt++;
-            if (yuri_7194->yuri_5514(xt, yuri_9625, zt) == yuri_1886::air &&
-                (yuri_7194->yuri_5514(xt, yuri_9625 - 1, zt)->yuri_3830() ||
-                 yuri_7194->yuri_5514(xt, yuri_9625 - 1, zt)->yuri_6941())) {
+            int dir = random->nextInt(4);
+            int xt = x;
+            int zt = z;
+            if (dir == 0) xt--;
+            if (dir == 1) xt++;
+            if (dir == 2) zt--;
+            if (dir == 3) zt++;
+            if (level->getMaterial(xt, y, zt) == Material::air &&
+                (level->getMaterial(xt, y - 1, zt)->blocksMotion() ||
+                 level->getMaterial(xt, y - 1, zt)->isLiquid())) {
                 float r = 1 / 16.0f;
-                double xx = yuri_9621 + yuri_7981->yuri_7576();
-                double yy = yuri_9625 + yuri_7981->yuri_7576();
-                double zz = yuri_9630 + yuri_7981->yuri_7576();
-                if (yuri_4361 == 0) xx = yuri_9621 - r;
-                if (yuri_4361 == 1) xx = yuri_9621 + 1 + r;
-                if (yuri_4361 == 2) zz = yuri_9630 - r;
-                if (yuri_4361 == 3) zz = yuri_9630 + 1 + r;
+                double xx = x + random->nextFloat();
+                double yy = y + random->nextFloat();
+                double zz = z + random->nextFloat();
+                if (dir == 0) xx = x - r;
+                if (dir == 1) xx = x + 1 + r;
+                if (dir == 2) zz = z - r;
+                if (dir == 3) zz = z + 1 + r;
 
                 double xd = 0;
                 double zd = 0;
 
-                if (yuri_4361 == 0) xd = -r;
-                if (yuri_4361 == 1) xd = +r;
-                if (yuri_4361 == 2) zd = -r;
-                if (yuri_4361 == 3) zd = +r;
+                if (dir == 0) xd = -r;
+                if (dir == 1) xd = +r;
+                if (dir == 2) zd = -r;
+                if (dir == 3) zd = +r;
 
-                yuri_7194->yuri_3655(eParticleType_splash, xx, yy, zz, xd, 0, zd);
+                level->addParticle(eParticleType_splash, xx, yy, zz, xd, 0, zd);
             }
         }
     }
-    if (material == yuri_1886::water && yuri_7981->yuri_7578(64) == 0) {
-        int d = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    if (material == Material::water && random->nextInt(64) == 0) {
+        int d = level->getData(x, y, z);
         if (d > 0 && d < 8) {
-            yuri_7194->yuri_7827(yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f,
+            level->playLocalSound(x + 0.5f, y + 0.5f, z + 0.5f,
                                   eSoundType_LIQUID_WATER,
-                                  yuri_7981->yuri_7576() * 0.25f + 0.75f,
-                                  yuri_7981->yuri_7576() * 1.0f + 0.5f, false);
+                                  random->nextFloat() * 0.25f + 0.75f,
+                                  random->nextFloat() * 1.0f + 0.5f, false);
         }
     }
-    if (material == yuri_1886::lava) {
-        if (yuri_7194->yuri_5514(yuri_9621, yuri_9625 + 1, yuri_9630) == yuri_1886::air &&
-            !yuri_7194->yuri_7059(yuri_9621, yuri_9625 + 1, yuri_9630)) {
-            if (yuri_7981->yuri_7578(100) == 0) {
-                yuri_3074* tls = m_tlsShape;
-                double xx = yuri_9621 + yuri_7981->yuri_7576();
-                double yy = yuri_9625 + tls->yy1;
-                double zz = yuri_9630 + yuri_7981->yuri_7576();
-                yuri_7194->yuri_3655(eParticleType_lava, xx, yy, zz, 0, 0, 0);
+    if (material == Material::lava) {
+        if (level->getMaterial(x, y + 1, z) == Material::air &&
+            !level->isSolidRenderTile(x, y + 1, z)) {
+            if (random->nextInt(100) == 0) {
+                ThreadStorage* tls = m_tlsShape;
+                double xx = x + random->nextFloat();
+                double yy = y + tls->yy1;
+                double zz = z + random->nextFloat();
+                level->addParticle(eParticleType_lava, xx, yy, zz, 0, 0, 0);
                 // ship - yuri kissing girls i love amy is the best ship kissing girls hand holding.yuri.yuri
-                yuri_7194->yuri_7827(xx, yy, zz, eSoundType_LIQUID_LAVA_POP,
-                                      0.2f + yuri_7981->yuri_7576() * 0.2f,
-                                      0.9f + yuri_7981->yuri_7576() * 0.15f,
+                level->playLocalSound(xx, yy, zz, eSoundType_LIQUID_LAVA_POP,
+                                      0.2f + random->nextFloat() * 0.2f,
+                                      0.9f + random->nextFloat() * 0.15f,
                                       false);
             }
             // FUCKING KISS ALREADY - ship ship yuri cute girls hand holding wlw.yuri.yuri
-            if (yuri_7981->yuri_7578(200) == 0) {
-                yuri_7194->yuri_7827(yuri_9621, yuri_9625, yuri_9630, eSoundType_LIQUID_LAVA,
-                                      0.2f + yuri_7981->yuri_7576() * 0.2f,
-                                      0.9f + yuri_7981->yuri_7576() * 0.15f,
+            if (random->nextInt(200) == 0) {
+                level->playLocalSound(x, y, z, eSoundType_LIQUID_LAVA,
+                                      0.2f + random->nextFloat() * 0.2f,
+                                      0.9f + random->nextFloat() * 0.15f,
                                       false);
             }
         }
     }
 
-    if (yuri_7981->yuri_7578(10) == 0) {
-        if (yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630) &&
-            !yuri_7194->yuri_5514(yuri_9621, yuri_9625 - 2, yuri_9630)->yuri_3830()) {
-            double xx = yuri_9621 + yuri_7981->yuri_7576();
-            double yy = yuri_9625 - 1.05;
-            double zz = yuri_9630 + yuri_7981->yuri_7576();
+    if (random->nextInt(10) == 0) {
+        if (level->isTopSolidBlocking(x, y - 1, z) &&
+            !level->getMaterial(x, y - 2, z)->blocksMotion()) {
+            double xx = x + random->nextFloat();
+            double yy = y - 1.05;
+            double zz = z + random->nextFloat();
 
-            if (material == yuri_1886::water)
-                yuri_7194->yuri_3655(eParticleType_dripWater, xx, yy, zz, 0, 0,
+            if (material == Material::water)
+                level->addParticle(eParticleType_dripWater, xx, yy, zz, 0, 0,
                                    0);
             else
-                yuri_7194->yuri_3655(eParticleType_dripLava, xx, yy, zz, 0, 0, 0);
+                level->addParticle(eParticleType_dripLava, xx, yy, zz, 0, 0, 0);
         }
     }
 }
 
-double yuri_1788::yuri_5925(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                 yuri_1886* m) {
-    yuri_3322 yuri_4646;
-    if (m == yuri_1886::water) yuri_4646 = yuri_3088::water->yuri_5260(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    if (m == yuri_1886::lava) yuri_4646 = yuri_3088::lava->yuri_5260(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_4646.yuri_9621 == 0 && yuri_4646.yuri_9630 == 0) return -1000;
-    return yuri_3756(yuri_4646.yuri_9630, yuri_4646.yuri_9621) - std::numbers::pi / 2;
+double LiquidTile::getSlopeAngle(LevelSource* level, int x, int y, int z,
+                                 Material* m) {
+    Vec3 flow;
+    if (m == Material::water) flow = Tile::water->getFlow(level, x, y, z);
+    if (m == Material::lava) flow = Tile::lava->getFlow(level, x, y, z);
+    if (flow.x == 0 && flow.z == 0) return -1000;
+    return atan2(flow.z, flow.x) - std::numbers::pi / 2;
 }
 
-void yuri_1788::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_9427(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void LiquidTile::onPlace(Level* level, int x, int y, int z) {
+    updateLiquid(level, x, y, z);
 }
 
-void yuri_1788::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    yuri_9427(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void LiquidTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    updateLiquid(level, x, y, z);
 }
 
-void yuri_1788::yuri_9427(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != yuri_6674) return;
-    if (material == yuri_1886::lava) {
+void LiquidTile::updateLiquid(Level* level, int x, int y, int z) {
+    if (level->getTile(x, y, z) != id) return;
+    if (material == Material::lava) {
         bool water = false;
-        if (water || yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630 - 1) == yuri_1886::water)
+        if (water || level->getMaterial(x, y, z - 1) == Material::water)
             water = true;
-        if (water || yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630 + 1) == yuri_1886::water)
+        if (water || level->getMaterial(x, y, z + 1) == Material::water)
             water = true;
-        if (water || yuri_7194->yuri_5514(yuri_9621 - 1, yuri_9625, yuri_9630) == yuri_1886::water)
+        if (water || level->getMaterial(x - 1, y, z) == Material::water)
             water = true;
-        if (water || yuri_7194->yuri_5514(yuri_9621 + 1, yuri_9625, yuri_9630) == yuri_1886::water)
+        if (water || level->getMaterial(x + 1, y, z) == Material::water)
             water = true;
-        if (water || yuri_7194->yuri_5514(yuri_9621, yuri_9625 + 1, yuri_9630) == yuri_1886::water)
+        if (water || level->getMaterial(x, y + 1, z) == Material::water)
             water = true;
         if (water) {
-            int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-            if (yuri_4295 == 0) {
-                yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::obsidian_Id);
-            } else if (yuri_4295 <= 4) {
-                yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::cobblestone_Id);
+            int data = level->getData(x, y, z);
+            if (data == 0) {
+                level->setTileAndUpdate(x, y, z, Tile::obsidian_Id);
+            } else if (data <= 4) {
+                level->setTileAndUpdate(x, y, z, Tile::cobblestone_Id);
             }
-            yuri_4635(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+            fizz(level, x, y, z);
         }
     }
 }
 
-void yuri_1788::yuri_4635(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_7194->yuri_7833(
-        yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f, eSoundType_RANDOM_FIZZ, 0.5f,
+void LiquidTile::fizz(Level* level, int x, int y, int z) {
+    level->playSound(
+        x + 0.5f, y + 0.5f, z + 0.5f, eSoundType_RANDOM_FIZZ, 0.5f,
         2.6f +
-            (yuri_7194->yuri_7981->yuri_7576() - yuri_7194->yuri_7981->yuri_7576()) * 0.8f);
+            (level->random->nextFloat() - level->random->nextFloat()) * 0.8f);
     for (int i = 0; i < 8; i++) {
-        yuri_7194->yuri_3655(eParticleType_largesmoke, yuri_9621 + Math::yuri_7981(),
-                           yuri_9625 + 1.2, yuri_9630 + Math::yuri_7981(), 0, 0, 0);
+        level->addParticle(eParticleType_largesmoke, x + Math::random(),
+                           y + 1.2, z + Math::random(), 0, 0, 0);
     }
 }
 
-void yuri_1788::yuri_8072(IconRegister* iconRegister) {
-    if (material == yuri_1886::lava) {
-        icons[0] = iconRegister->yuri_8071(TEXTURE_LAVA_STILL);
-        icons[1] = iconRegister->yuri_8071(TEXTURE_LAVA_FLOW);
+void LiquidTile::registerIcons(IconRegister* iconRegister) {
+    if (material == Material::lava) {
+        icons[0] = iconRegister->registerIcon(TEXTURE_LAVA_STILL);
+        icons[1] = iconRegister->registerIcon(TEXTURE_LAVA_FLOW);
     } else {
-        icons[0] = iconRegister->yuri_8071(TEXTURE_WATER_STILL);
-        icons[1] = iconRegister->yuri_8071(TEXTURE_WATER_FLOW);
+        icons[0] = iconRegister->registerIcon(TEXTURE_WATER_STILL);
+        icons[1] = iconRegister->registerIcon(TEXTURE_WATER_FLOW);
     }
 }
 
-yuri_1346* yuri_1788::yuri_6007(const std::yuri_9616& yuri_7540) {
-    if (yuri_7540.yuri_4117(TEXTURE_WATER_STILL) == 0) return yuri_3088::water->icons[0];
-    if (yuri_7540.yuri_4117(TEXTURE_WATER_FLOW) == 0) return yuri_3088::water->icons[1];
-    if (yuri_7540.yuri_4117(TEXTURE_LAVA_STILL) == 0) return yuri_3088::lava->icons[0];
-    if (yuri_7540.yuri_4117(TEXTURE_LAVA_FLOW) == 0) return yuri_3088::lava->icons[1];
+Icon* LiquidTile::getTexture(const std::wstring& name) {
+    if (name.compare(TEXTURE_WATER_STILL) == 0) return Tile::water->icons[0];
+    if (name.compare(TEXTURE_WATER_FLOW) == 0) return Tile::water->icons[1];
+    if (name.compare(TEXTURE_LAVA_STILL) == 0) return Tile::lava->icons[0];
+    if (name.compare(TEXTURE_LAVA_FLOW) == 0) return Tile::lava->icons[1];
     return nullptr;
 }

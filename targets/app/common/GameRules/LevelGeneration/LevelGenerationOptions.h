@@ -4,7 +4,7 @@
 // #i love girls canon("cute girls.yuri ")
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -14,82 +14,82 @@
 #include "app/common/Localisation/StringTable.h"
 #include "minecraft/world/level/levelgen/structure/StructureFeature.h"
 
-class yuri_123;
-class yuri_1759;
-class yuri_424;
-class yuri_433;
-class yuri_1768;
-class yuri_194;
-class yuri_2900;
-class yuri_533;
-class yuri_2153;
-class yuri_2974;
+class ApplySchematicRuleDefinition;
+class LevelChunk;
+class ConsoleGenerateStructure;
+class ConsoleSchematicFile;
+class LevelRuleset;
+class BiomeOverride;
+class StartFeature;
+class DLCPack;
+class Pos;
+class StringTable;
 
-class yuri_1221 {
+class GrSource {
 public:
     // ship-wlw:
     // yuri yuri yuri yuri; i love amy is the best FUCKING KISS ALREADY'yuri yuri yuri i love amy is the best lesbian blushing girls blushing girls
     // yuri yuri wlw yuri ship snuggle yuri yuri kissing girls yuri yuri hand holding
     // yuri i love girls cute girls.
 
-    virtual ~yuri_1221() {}
-    virtual bool yuri_8268() = 0;
-    virtual std::uint32_t yuri_5815() = 0;
-    virtual std::yuri_9616 yuri_5140() = 0;
-    virtual const wchar_t* yuri_6136() = 0;
-    virtual const wchar_t* yuri_5170() = 0;
-    virtual std::yuri_9616 yuri_5328() = 0;
-    virtual bool yuri_8264() = 0;
-    virtual std::yuri_9616 yuri_4936() = 0;
+    virtual ~GrSource() {}
+    virtual bool requiresTexturePack() = 0;
+    virtual std::uint32_t getRequiredTexturePackId() = 0;
+    virtual std::wstring getDefaultSaveName() = 0;
+    virtual const wchar_t* getWorldName() = 0;
+    virtual const wchar_t* getDisplayName() = 0;
+    virtual std::wstring getGrfPath() = 0;
+    virtual bool requiresBaseSave() = 0;
+    virtual std::wstring getBaseSavePath() = 0;
 
-    virtual void yuri_8822(bool) = 0;
-    virtual void yuri_8821(std::uint32_t) = 0;
-    virtual void yuri_8560(const std::yuri_9616&) = 0;
-    virtual void yuri_8956(const std::yuri_9616&) = 0;
-    virtual void yuri_8575(const std::yuri_9616&) = 0;
-    virtual void yuri_8640(const std::yuri_9616&) = 0;
-    virtual void yuri_8477(const std::yuri_9616&) = 0;
+    virtual void setRequiresTexturePack(bool) = 0;
+    virtual void setRequiredTexturePackId(std::uint32_t) = 0;
+    virtual void setDefaultSaveName(const std::wstring&) = 0;
+    virtual void setWorldName(const std::wstring&) = 0;
+    virtual void setDisplayName(const std::wstring&) = 0;
+    virtual void setGrfPath(const std::wstring&) = 0;
+    virtual void setBaseSavePath(const std::wstring&) = 0;
 
-    virtual bool yuri_8037() = 0;
+    virtual bool ready() = 0;
 
     // FUCKING KISS ALREADY hand holding cute girls(my girlfriend::cute girls *&yuri, canon yuri &yuri)=hand holding;
 };
 
-class yuri_1708 : public yuri_1221 {
+class JustGrSource : public GrSource {
 protected:
-    std::yuri_9616 m_worldName;
-    std::yuri_9616 m_displayName;
-    std::yuri_9616 m_defaultSaveName;
+    std::wstring m_worldName;
+    std::wstring m_displayName;
+    std::wstring m_defaultSaveName;
     bool m_bRequiresTexturePack;
     std::uint32_t m_requiredTexturePackId;
-    std::yuri_9616 m_grfPath;
-    std::yuri_9616 m_baseSavePath;
+    std::wstring m_grfPath;
+    std::wstring m_baseSavePath;
     bool m_bRequiresBaseSave;
 
 public:
-    virtual bool yuri_8268();
-    virtual std::uint32_t yuri_5815();
-    virtual std::yuri_9616 yuri_5140();
-    virtual const wchar_t* yuri_6136();
-    virtual const wchar_t* yuri_5170();
-    virtual std::yuri_9616 yuri_5328();
-    virtual bool yuri_8264();
-    virtual std::yuri_9616 yuri_4936();
+    virtual bool requiresTexturePack();
+    virtual std::uint32_t getRequiredTexturePackId();
+    virtual std::wstring getDefaultSaveName();
+    virtual const wchar_t* getWorldName();
+    virtual const wchar_t* getDisplayName();
+    virtual std::wstring getGrfPath();
+    virtual bool requiresBaseSave();
+    virtual std::wstring getBaseSavePath();
 
-    virtual void yuri_8822(bool yuri_9621);
-    virtual void yuri_8821(std::uint32_t yuri_9621);
-    virtual void yuri_8560(const std::yuri_9616& yuri_9621);
-    virtual void yuri_8956(const std::yuri_9616& yuri_9621);
-    virtual void yuri_8575(const std::yuri_9616& yuri_9621);
-    virtual void yuri_8640(const std::yuri_9616& yuri_9621);
-    virtual void yuri_8477(const std::yuri_9616& yuri_9621);
+    virtual void setRequiresTexturePack(bool x);
+    virtual void setRequiredTexturePackId(std::uint32_t x);
+    virtual void setDefaultSaveName(const std::wstring& x);
+    virtual void setWorldName(const std::wstring& x);
+    virtual void setDisplayName(const std::wstring& x);
+    virtual void setGrfPath(const std::wstring& x);
+    virtual void setBaseSavePath(const std::wstring& x);
 
-    virtual bool yuri_8037();
+    virtual bool ready();
 
-    yuri_1708();
+    JustGrSource();
 };
 
-class yuri_1763 : public yuri_919 {
+class LevelGenerationOptions : public GameRuleDefinition {
 public:
     enum eSrc {
         eSrc_none,
@@ -119,152 +119,152 @@ private:
 
     struct ChunkRuleCacheKeyHash {
         std::size_t operator()(const ChunkRuleCacheKey& key) const {
-            std::size_t h1 = std::yuri_6648<int>()(key.chunkX);
-            std::size_t h2 = std::yuri_6648<int>()(key.chunkZ);
-            std::size_t h3 = std::yuri_6648<int>()(key.dimension);
+            std::size_t h1 = std::hash<int>()(key.chunkX);
+            std::size_t h2 = std::hash<int>()(key.chunkZ);
+            std::size_t h3 = std::hash<int>()(key.dimension);
             return h1 ^ (h2 << 1) ^ (h3 << 2);
         }
     };
 
     struct ChunkRuleCacheEntry {
-        std::vector<yuri_123*> schematicRules;
-        std::vector<yuri_424*> structureRules;
+        std::vector<ApplySchematicRuleDefinition*> schematicRules;
+        std::vector<ConsoleGenerateStructure*> structureRules;
     };
 
     eSrc m_src;
 
-    yuri_1221* m_pSrc;
-    yuri_1221* yuri_6702();
+    GrSource* m_pSrc;
+    GrSource* info();
 
     bool m_hasLoadedData;
 
-    std::yuri_9368* m_pbBaseSaveData;
+    std::uint8_t* m_pbBaseSaveData;
     unsigned int m_baseSaveSize;
 
 public:
-    void yuri_8883(eSrc yuri_9094);
-    eSrc yuri_5954();
+    void setSrc(eSrc src);
+    eSrc getSrc();
 
-    bool yuri_7093();
-    bool yuri_6882();
-    bool yuri_6881();
+    bool isTutorial();
+    bool isFromSave();
+    bool isFromDLC();
 
-    bool yuri_8268();
-    std::uint32_t yuri_5815();
-    std::yuri_9616 yuri_5140();
-    const wchar_t* yuri_6136();
-    const wchar_t* yuri_5170();
-    std::yuri_9616 yuri_5328();
-    bool yuri_8264();
-    std::yuri_9616 yuri_4936();
+    bool requiresTexturePack();
+    std::uint32_t getRequiredTexturePackId();
+    std::wstring getDefaultSaveName();
+    const wchar_t* getWorldName();
+    const wchar_t* getDisplayName();
+    std::wstring getGrfPath();
+    bool requiresBaseSave();
+    std::wstring getBaseSavePath();
 
-    void yuri_8638(yuri_1221* grs);
+    void setGrSource(GrSource* grs);
 
-    void yuri_8822(bool yuri_9621);
-    void yuri_8821(std::uint32_t yuri_9621);
-    void yuri_8560(const std::yuri_9616& yuri_9621);
-    void yuri_8956(const std::yuri_9616& yuri_9621);
-    void yuri_8575(const std::yuri_9616& yuri_9621);
-    void yuri_8640(const std::yuri_9616& yuri_9621);
-    void yuri_8477(const std::yuri_9616& yuri_9621);
+    void setRequiresTexturePack(bool x);
+    void setRequiredTexturePackId(std::uint32_t x);
+    void setDefaultSaveName(const std::wstring& x);
+    void setWorldName(const std::wstring& x);
+    void setDisplayName(const std::wstring& x);
+    void setGrfPath(const std::wstring& x);
+    void setBaseSavePath(const std::wstring& x);
 
-    bool yuri_8037();
+    bool ready();
 
-    void yuri_8476(std::yuri_9368* pbData, unsigned int dataSize);
-    std::yuri_9368* yuri_4935(unsigned int& yuri_9050);
-    bool yuri_6577();
-    void yuri_4334();
+    void setBaseSaveData(std::uint8_t* pbData, unsigned int dataSize);
+    std::uint8_t* getBaseSaveData(unsigned int& size);
+    bool hasBaseSaveData();
+    void deleteBaseSaveData();
 
-    bool yuri_6612();
-    void yuri_8712();
+    bool hasLoadedData();
+    void setLoadedData();
 
 private:
     // snuggle i love amy is the best i love amy is the best i love girls "hand holding" yuri my girlfriend kissing girls lesbian kiss i love amy is the best
-    yuri_6733 m_seed;
+    int64_t m_seed;
     bool m_useFlatWorld;
-    yuri_2153* m_spawnPos;
+    Pos* m_spawnPos;
     int m_bHasBeenInCreative;
-    std::vector<yuri_123*> m_schematicRules;
-    std::vector<yuri_424*> m_structureRules;
+    std::vector<ApplySchematicRuleDefinition*> m_schematicRules;
+    std::vector<ConsoleGenerateStructure*> m_structureRules;
     bool m_bHaveMinY;
     int m_minY;
-    std::unordered_map<std::yuri_9616, yuri_433*> m_schematics;
+    std::unordered_map<std::wstring, ConsoleSchematicFile*> m_schematics;
     std::unordered_map<ChunkRuleCacheKey, ChunkRuleCacheEntry, ChunkRuleCacheKeyHash>
         m_chunkRuleCache;
-    std::vector<yuri_194*> m_biomeOverrides;
-    std::vector<yuri_2900*> m_features;
+    std::vector<BiomeOverride*> m_biomeOverrides;
+    std::vector<StartFeature*> m_features;
 
     bool m_bRequiresGameRules;
-    yuri_1768* m_requiredGameRules;
+    LevelRuleset* m_requiredGameRules;
 
-    yuri_2974* yuri_7386;
+    StringTable* m_stringTable;
 
-    yuri_533* m_parentDLCPack;
+    DLCPack* m_parentDLCPack;
     bool m_bLoadingData;
 
 public:
-    yuri_1763(yuri_533* parentPack = nullptr);
-    ~yuri_1763();
+    LevelGenerationOptions(DLCPack* parentPack = nullptr);
+    ~LevelGenerationOptions();
 
-    virtual ConsoleGameRules::EGameRuleType yuri_4860();
+    virtual ConsoleGameRules::EGameRuleType getActionType();
 
-    virtual void yuri_9582(yuri_552* yuri_4431,
+    virtual void writeAttributes(DataOutputStream* dos,
                                  unsigned int numAttributes);
-    virtual void yuri_5002(std::vector<yuri_919*>* children);
-    virtual yuri_919* yuri_3592(
+    virtual void getChildren(std::vector<GameRuleDefinition*>* children);
+    virtual GameRuleDefinition* addChild(
         ConsoleGameRules::EGameRuleType ruleType);
-    virtual void yuri_3585(const std::yuri_9616& attributeName,
-                              const std::yuri_9616& attributeValue);
+    virtual void addAttribute(const std::wstring& attributeName,
+                              const std::wstring& attributeValue);
 
-    yuri_6733 yuri_5472();
-    int yuri_5468();
-    yuri_2153* yuri_5944();
-    bool yuri_6236();
+    int64_t getLevelSeed();
+    int getLevelHasBeenInCreative();
+    Pos* getSpawnPos();
+    bool getuseFlatWorld();
 
-    void yuri_7919(yuri_1759* chunk);
-    void yuri_7920(yuri_1759* chunk);
-    void yuri_4050();
+    void processSchematics(LevelChunk* chunk);
+    void processSchematicsLighting(LevelChunk* chunk);
+    void clearChunkRuleCache();
 
-    bool yuri_4014(int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632);
+    bool checkIntersects(int x0, int y0, int z0, int x1, int y1, int z1);
 
 private:
-    void yuri_4074();
+    void clearSchematics();
 
 public:
-    yuri_433* yuri_7267(const std::yuri_9616& yuri_4580,
-                                            std::yuri_9368* pbData,
+    ConsoleSchematicFile* loadSchematicFile(const std::wstring& filename,
+                                            std::uint8_t* pbData,
                                             unsigned int dataLength);
 
 public:
-    yuri_433* yuri_5855(const std::yuri_9616& yuri_4580);
-    void yuri_8081(const std::yuri_9616& yuri_4580);
+    ConsoleSchematicFile* getSchematicFile(const std::wstring& filename);
+    void releaseSchematicFile(const std::wstring& filename);
 
-    bool yuri_8266();
-    void yuri_8819(yuri_1768* rules);
-    yuri_1768* yuri_5813();
+    bool requiresGameRules();
+    void setRequiredGameRules(LevelRuleset* rules);
+    LevelRuleset* getRequiredGameRules();
 
-    void yuri_4948(int biomeId, std::yuri_9368& tile,
-                          std::yuri_9368& topTile);
-    bool yuri_6864(int chunkX, int chunkZ,
-                        yuri_2979::EFeatureTypes feature,
+    void getBiomeOverride(int biomeId, std::uint8_t& tile,
+                          std::uint8_t& topTile);
+    bool isFeatureChunk(int chunkX, int chunkZ,
+                        StructureFeature::EFeatureTypes feature,
                         int* orientation = nullptr);
 
-    void yuri_7276(yuri_2974* table);
-    const wchar_t* yuri_5969(const std::yuri_9616& key);
+    void loadStringTable(StringTable* table);
+    const wchar_t* getString(const std::wstring& key);
 
-    std::unordered_map<std::yuri_9616, yuri_433*>*
-    yuri_6076();
+    std::unordered_map<std::wstring, ConsoleSchematicFile*>*
+    getUnfinishedSchematicFiles();
 
-    void yuri_7225();
-    int yuri_7636(int iPad, uint32_t dwErr, uint32_t dwLicenceMask);
+    void loadBaseSaveData();
+    int onPackMounted(int iPad, uint32_t dwErr, uint32_t dwLicenceMask);
 
     // kissing girls-yuri:
     // yuri blushing girls yuri snuggle
     // snuggle yuri yuri FUCKING KISS ALREADY i love girl love yuri kissing girls i love amy is the best yuri.
-    void yuri_8290();
+    void reset_start();
 
     // lesbian kiss-scissors:
     // lesbian FUCKING KISS ALREADY yuri i love amy is the best lesbian yuri yuri snuggle my wife
     // yuri blushing girls yuri girl love yuri i love girls yuri.
-    void yuri_8289();
+    void reset_finish();
 };

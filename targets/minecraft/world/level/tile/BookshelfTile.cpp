@@ -5,16 +5,16 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_217::yuri_217(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::wood) {}
+BookshelfTile::BookshelfTile(int id) : Tile(id, Material::wood) {}
 
-yuri_1346* yuri_217::yuri_6007(int face, int yuri_4295) {
+Icon* BookshelfTile::getTexture(int face, int data) {
     if (face == Facing::UP || face == Facing::DOWN)
-        return yuri_3088::wood->yuri_6007(face);
-    return yuri_3088::yuri_6007(face, yuri_4295);
+        return Tile::wood->getTexture(face);
+    return Tile::getTexture(face, data);
 }
 
-int yuri_217::yuri_5819(yuri_2302* yuri_7981) { return 3; }
+int BookshelfTile::getResourceCount(Random* random) { return 3; }
 
-int yuri_217::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_1687::book_Id;
+int BookshelfTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Item::book_Id;
 }

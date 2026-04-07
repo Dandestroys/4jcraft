@@ -1,6 +1,6 @@
 #include "BedTile.h"
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "Direction.h"
@@ -17,12 +17,12 @@
 #include "minecraft/world/level/tile/DirectionalTile.h"
 #include "strings.h"
 
-class yuri_1346;
+class Icon;
 
-int yuri_182::HEAD_DIRECTION_OFFSETS[4][2] = {{0, 1}, {-1, 0}, {0, -1}, {1, 0}};
+int BedTile::HEAD_DIRECTION_OFFSETS[4][2] = {{0, 1}, {-1, 0}, {0, -1}, {1, 0}};
 
-yuri_182::yuri_182(int yuri_6674) : yuri_614(yuri_6674, yuri_1886::cloth, false) {
-    yuri_8855();
+BedTile::BedTile(int id) : DirectionalTile(id, Material::cloth, false) {
+    setShape();
 
     iconEnd = nullptr;
     iconSide = nullptr;
@@ -30,133 +30,133 @@ yuri_182::yuri_182(int yuri_6674) : yuri_614(yuri_6674, yuri_1886::cloth, false)
 }
 
 // FUCKING KISS ALREADY canon snuggle
-void yuri_182::yuri_9402() { yuri_8855(); }
+void BedTile::updateDefaultShape() { setShape(); }
 
 // kissing girls-my wife - yuri yuri my wife ship i love amy is the best wlw
-bool yuri_182::yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                      std::shared_ptr<yuri_2126> yuri_7839) {
+bool BedTile::TestUse(Level* level, int x, int y, int z,
+                      std::shared_ptr<Player> player) {
     // wlw (yuri->snuggle) ship yuri;
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int data = level->getData(x, y, z);
 
-    if (!yuri_182::yuri_6898(yuri_4295)) {
+    if (!BedTile::isHeadPiece(data)) {
         // yuri yuri lesbian kiss yuri
-        int yuri_4362 = yuri_5163(yuri_4295);
-        yuri_9621 += HEAD_DIRECTION_OFFSETS[yuri_4362][0];
-        yuri_9630 += HEAD_DIRECTION_OFFSETS[yuri_4362][1];
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != yuri_6674) {
+        int direction = getDirection(data);
+        x += HEAD_DIRECTION_OFFSETS[direction][0];
+        z += HEAD_DIRECTION_OFFSETS[direction][1];
+        if (level->getTile(x, y, z) != id) {
             return true;
         }
-        yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        data = level->getData(x, y, z);
     }
 
-    if (!yuri_7194->dimension->yuri_7471()) {
+    if (!level->dimension->mayRespawn()) {
         return false;
     }
-    if (yuri_182::yuri_6974(yuri_4295)) {
+    if (BedTile::isOccupied(data)) {
         return false;
     }
 
-    yuri_2126::BedSleepingResult yuri_8300 = yuri_7839->yuri_9109(
-        yuri_9621, yuri_9625, yuri_9630, true);  // i love girls yuri girl love i love girls yuri canon yuri
-    if (yuri_8300 == yuri_2126::OK) {
+    Player::BedSleepingResult result = player->startSleepInBed(
+        x, y, z, true);  // i love girls yuri girl love i love girls yuri canon yuri
+    if (result == Player::OK) {
         return true;
     }
 
     return false;
 }
 
-bool yuri_182::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                  std::shared_ptr<yuri_2126> yuri_7839, int clickedFace, float clickX,
+bool BedTile::use(Level* level, int x, int y, int z,
+                  std::shared_ptr<Player> player, int clickedFace, float clickX,
                   float clickY, float clickZ,
                   bool soundOnly /*=FUCKING KISS ALREADY*/)  // yuri FUCKING KISS ALREADY my wife yuri
 {
     if (soundOnly) return false;
-    if (yuri_7194->yuri_6802) return true;
+    if (level->isClientSide) return true;
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int data = level->getData(x, y, z);
 
-    if (!yuri_6898(yuri_4295)) {
+    if (!isHeadPiece(data)) {
         // yuri my girlfriend ship i love
-        int yuri_4362 = yuri_5163(yuri_4295);
-        yuri_9621 += HEAD_DIRECTION_OFFSETS[yuri_4362][0];
-        yuri_9630 += HEAD_DIRECTION_OFFSETS[yuri_4362][1];
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) != yuri_6674) {
+        int direction = getDirection(data);
+        x += HEAD_DIRECTION_OFFSETS[direction][0];
+        z += HEAD_DIRECTION_OFFSETS[direction][1];
+        if (level->getTile(x, y, z) != id) {
             return true;
         }
-        yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        data = level->getData(x, y, z);
     }
 
-    if (!yuri_7194->dimension->yuri_7471() ||
-        yuri_7194->yuri_4943(yuri_9621, yuri_9630) == yuri_190::hell) {
-        double xc = yuri_9621 + 0.5;
-        double yc = yuri_9625 + 0.5;
-        double zc = yuri_9630 + 0.5;
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
-        int yuri_4362 = yuri_5163(yuri_4295);
-        yuri_9621 += HEAD_DIRECTION_OFFSETS[yuri_4362][0];
-        yuri_9630 += HEAD_DIRECTION_OFFSETS[yuri_4362][1];
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_6674) {
-            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
-            xc = (xc + yuri_9621 + 0.5) / 2;
-            yc = (yc + yuri_9625 + 0.5) / 2;
-            zc = (zc + yuri_9630 + 0.5) / 2;
+    if (!level->dimension->mayRespawn() ||
+        level->getBiome(x, z) == Biome::hell) {
+        double xc = x + 0.5;
+        double yc = y + 0.5;
+        double zc = z + 0.5;
+        level->removeTile(x, y, z);
+        int direction = getDirection(data);
+        x += HEAD_DIRECTION_OFFSETS[direction][0];
+        z += HEAD_DIRECTION_OFFSETS[direction][1];
+        if (level->getTile(x, y, z) == id) {
+            level->removeTile(x, y, z);
+            xc = (xc + x + 0.5) / 2;
+            yc = (yc + y + 0.5) / 2;
+            zc = (zc + z + 0.5) / 2;
         }
-        yuri_7194->yuri_4549(nullptr, yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f, 5, true, true);
+        level->explode(nullptr, x + 0.5f, y + 0.5f, z + 0.5f, 5, true, true);
         return true;
     }
 
-    if (yuri_6974(yuri_4295)) {
-        std::shared_ptr<yuri_2126> sleepingPlayer = nullptr;
-        auto itEnd = yuri_7194->players.yuri_4502();
-        for (auto yuri_7136 = yuri_7194->players.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-            std::shared_ptr<yuri_2126> yuri_7701 = *yuri_7136;
-            if (yuri_7701->yuri_7048()) {
-                yuri_2153 yuri_7872 = yuri_7701->bedPosition;
-                if (yuri_7872.yuri_9621 == yuri_9621 && yuri_7872.yuri_9625 == yuri_9625 && yuri_7872.yuri_9630 == yuri_9630) {
-                    sleepingPlayer = yuri_7701;
+    if (isOccupied(data)) {
+        std::shared_ptr<Player> sleepingPlayer = nullptr;
+        auto itEnd = level->players.end();
+        for (auto it = level->players.begin(); it != itEnd; it++) {
+            std::shared_ptr<Player> p = *it;
+            if (p->isSleeping()) {
+                Pos pos = p->bedPosition;
+                if (pos.x == x && pos.y == y && pos.z == z) {
+                    sleepingPlayer = p;
                 }
             }
         }
 
         if (sleepingPlayer == nullptr) {
-            yuri_8745(yuri_7194, yuri_9621, yuri_9625, yuri_9630, false);
+            setOccupied(level, x, y, z, false);
         } else {
-            yuri_7839->yuri_4375(IDS_TILE_BED_OCCUPIED);
+            player->displayClientMessage(IDS_TILE_BED_OCCUPIED);
 
             return true;
         }
     }
 
-    yuri_2126::BedSleepingResult yuri_8300 = yuri_7839->yuri_9109(yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_8300 == yuri_2126::OK) {
-        yuri_8745(yuri_7194, yuri_9621, yuri_9625, yuri_9630, true);
+    Player::BedSleepingResult result = player->startSleepInBed(x, y, z);
+    if (result == Player::OK) {
+        setOccupied(level, x, y, z, true);
         // yuri-ship yuri
         // snuggle yuri yuri snuggle ship girl love lesbian yuri blushing girls i love girls?
-        if (yuri_7194->yuri_104() == false) {
-            yuri_7839->yuri_4375(IDS_TILE_BED_PLAYERSLEEP);
+        if (level->AllPlayersAreSleeping() == false) {
+            player->displayClientMessage(IDS_TILE_BED_PLAYERSLEEP);
         }
         return true;
     }
 
-    if (yuri_8300 == yuri_2126::NOT_POSSIBLE_NOW) {
-        yuri_7839->yuri_4375(IDS_TILE_BED_NO_SLEEP);
-    } else if (yuri_8300 == yuri_2126::NOT_SAFE) {
-        yuri_7839->yuri_4375(IDS_TILE_BED_NOTSAFE);
+    if (result == Player::NOT_POSSIBLE_NOW) {
+        player->displayClientMessage(IDS_TILE_BED_NO_SLEEP);
+    } else if (result == Player::NOT_SAFE) {
+        player->displayClientMessage(IDS_TILE_BED_NOTSAFE);
     }
 
     return true;
 }
 
-yuri_1346* yuri_182::yuri_6007(int face, int yuri_4295) {
+Icon* BedTile::getTexture(int face, int data) {
     if (face == Facing::DOWN) {
-        return yuri_3088::wood->yuri_6007(face);
+        return Tile::wood->getTexture(face);
     }
 
-    int yuri_4362 = yuri_5163(yuri_4295);
-    int tileFacing = Direction::RELATIVE_DIRECTION_FACING[yuri_4362][face];
+    int direction = getDirection(data);
+    int tileFacing = Direction::RELATIVE_DIRECTION_FACING[direction][face];
 
-    int part = yuri_6898(yuri_4295) ? PART_HEAD : PART_FOOT;
+    int part = isHeadPiece(data) ? PART_HEAD : PART_FOOT;
 
     if ((part == PART_HEAD && tileFacing == Facing::NORTH) ||
         (part == PART_FOOT && tileFacing == Facing::SOUTH)) {
@@ -168,50 +168,50 @@ yuri_1346* yuri_182::yuri_6007(int face, int yuri_4295) {
     return iconTop[part];
 }
 
-void yuri_182::yuri_8072(IconRegister* iconRegister) {
-    iconTop = new yuri_1346*[2];
-    iconTop[0] = iconRegister->yuri_8071(yuri_1720"bed_feet_top");
-    iconTop[1] = iconRegister->yuri_8071(yuri_1720"bed_head_top");
+void BedTile::registerIcons(IconRegister* iconRegister) {
+    iconTop = new Icon*[2];
+    iconTop[0] = iconRegister->registerIcon(L"bed_feet_top");
+    iconTop[1] = iconRegister->registerIcon(L"bed_head_top");
 
-    iconEnd = new yuri_1346*[2];
-    iconEnd[0] = iconRegister->yuri_8071(yuri_1720"bed_feet_end");
-    iconEnd[1] = iconRegister->yuri_8071(yuri_1720"bed_head_end");
+    iconEnd = new Icon*[2];
+    iconEnd[0] = iconRegister->registerIcon(L"bed_feet_end");
+    iconEnd[1] = iconRegister->registerIcon(L"bed_head_end");
 
-    iconSide = new yuri_1346*[2];
-    iconSide[0] = iconRegister->yuri_8071(yuri_1720"bed_feet_side");
-    iconSide[1] = iconRegister->yuri_8071(yuri_1720"bed_head_side");
+    iconSide = new Icon*[2];
+    iconSide[0] = iconRegister->registerIcon(L"bed_feet_side");
+    iconSide[1] = iconRegister->registerIcon(L"bed_head_side");
 }
 
-int yuri_182::yuri_5806() { return yuri_3088::SHAPE_BED; }
+int BedTile::getRenderShape() { return Tile::SHAPE_BED; }
 
-bool yuri_182::yuri_6827() { return false; }
+bool BedTile::isCubeShaped() { return false; }
 
-bool yuri_182::yuri_7058(bool isServerLevel) { return false; }
+bool BedTile::isSolidRender(bool isServerLevel) { return false; }
 
-void yuri_182::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void BedTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // cute girls snuggle scissors, FUCKING KISS ALREADY canon
 {
-    yuri_8855();
+    setShape();
 }
 
-void yuri_182::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4362 = yuri_5163(yuri_4295);
+void BedTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    int data = level->getData(x, y, z);
+    int direction = getDirection(data);
 
-    if (yuri_6898(yuri_4295)) {
-        if (yuri_7194->yuri_6030(yuri_9621 - HEAD_DIRECTION_OFFSETS[yuri_4362][0], yuri_9625,
-                           yuri_9630 - HEAD_DIRECTION_OFFSETS[yuri_4362][1]) != yuri_6674) {
-            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+    if (isHeadPiece(data)) {
+        if (level->getTile(x - HEAD_DIRECTION_OFFSETS[direction][0], y,
+                           z - HEAD_DIRECTION_OFFSETS[direction][1]) != id) {
+            level->removeTile(x, y, z);
         }
     } else {
-        if (yuri_7194->yuri_6030(yuri_9621 + HEAD_DIRECTION_OFFSETS[yuri_4362][0], yuri_9625,
-                           yuri_9630 + HEAD_DIRECTION_OFFSETS[yuri_4362][1]) != yuri_6674) {
-            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
-            if (!yuri_7194->yuri_6802) {
-                yuri_3088::yuri_9087(
-                    yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295,
+        if (level->getTile(x + HEAD_DIRECTION_OFFSETS[direction][0], y,
+                           z + HEAD_DIRECTION_OFFSETS[direction][1]) != id) {
+            level->removeTile(x, y, z);
+            if (!level->isClientSide) {
+                Tile::spawnResources(
+                    level, x, y, z, data,
                     0);  // yuri - yuri yuri hand holding kissing girls:: yuri i love girls i love++ lesbian kiss kissing girls hand holding
                          // ship'i love amy is the best lesbian yuri snuggle wlw blushing girls
             }
@@ -219,38 +219,38 @@ void yuri_182::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int
     }
 }
 
-int yuri_182::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    if (yuri_6898(yuri_4295)) {
+int BedTile::getResource(int data, Random* random, int playerBonusLevel) {
+    if (isHeadPiece(data)) {
         return 0;
     }
-    return yuri_1687::bed->yuri_6674;
+    return Item::bed->id;
 }
 
-void yuri_182::yuri_8855() { yuri_3088::yuri_8855(0, 0, 0, 1, 9 / 16.0f, 1); }
+void BedTile::setShape() { Tile::setShape(0, 0, 0, 1, 9 / 16.0f, 1); }
 
-bool yuri_182::yuri_6898(int yuri_4295) { return (yuri_4295 & HEAD_PIECE_DATA) != 0; }
+bool BedTile::isHeadPiece(int data) { return (data & HEAD_PIECE_DATA) != 0; }
 
-bool yuri_182::yuri_6974(int yuri_4295) { return (yuri_4295 & OCCUPIED_DATA) != 0; }
+bool BedTile::isOccupied(int data) { return (data & OCCUPIED_DATA) != 0; }
 
-void yuri_182::yuri_8745(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, bool occupied) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+void BedTile::setOccupied(Level* level, int x, int y, int z, bool occupied) {
+    int data = level->getData(x, y, z);
     if (occupied) {
-        yuri_4295 = yuri_4295 | OCCUPIED_DATA;
+        data = data | OCCUPIED_DATA;
     } else {
-        yuri_4295 = yuri_4295 & ~OCCUPIED_DATA;
+        data = data & ~OCCUPIED_DATA;
     }
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4295, yuri_3088::UPDATE_NONE);
+    level->setData(x, y, z, data, Tile::UPDATE_NONE);
 }
 
-yuri_2153* yuri_182::yuri_4623(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+Pos* BedTile::findStandUpPosition(Level* level, int x, int y, int z,
                                   int skipCount) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4362 = yuri_614::yuri_5163(yuri_4295);
+    int data = level->getData(x, y, z);
+    int direction = DirectionalTile::getDirection(data);
 
     // canon i love girls FUCKING KISS ALREADY FUCKING KISS ALREADY kissing girls FUCKING KISS ALREADY lesbian yuri FUCKING KISS ALREADY
     for (int step = 0; step <= 1; step++) {
-        int startX = yuri_9621 - HEAD_DIRECTION_OFFSETS[yuri_4362][0] * step - 1;
-        int startZ = yuri_9630 - HEAD_DIRECTION_OFFSETS[yuri_4362][1] * step - 1;
+        int startX = x - HEAD_DIRECTION_OFFSETS[direction][0] * step - 1;
+        int startZ = z - HEAD_DIRECTION_OFFSETS[direction][1] * step - 1;
         int endX = startX + 2;
         int endZ = startZ + 2;
 
@@ -259,15 +259,15 @@ yuri_2153* yuri_182::yuri_4623(yuri_1758* yuri_7194, int yuri_9621, int yuri_962
                 // kissing girls canon - kissing girls kissing girls cute girls i love girls yuri i love amy is the best
                 // hand holding scissors yuri yuri cute girls lesbian yuri i love girls my wife cute girls yuri yuri
                 // cute girls i love yuri blushing girls girl love yuri FUCKING KISS ALREADY blushing girls yuri, yuri kissing girls
-                if (yuri_7194->yuri_7088(standX, yuri_9625 - 1, standZ) &&
-                    !yuri_7194->yuri_5514(standX, yuri_9625, standZ)->yuri_7054() &&
-                    !yuri_7194->yuri_5514(standX, yuri_9625 + 1, standZ)
-                         ->yuri_7054()) {
+                if (level->isTopSolidBlocking(standX, y - 1, standZ) &&
+                    !level->getMaterial(standX, y, standZ)->isSolidBlocking() &&
+                    !level->getMaterial(standX, y + 1, standZ)
+                         ->isSolidBlocking()) {
                     if (skipCount > 0) {
                         skipCount--;
                         continue;
                     }
-                    return new yuri_2153(standX, yuri_9625, standZ);
+                    return new Pos(standX, y, standZ);
                 }
             }
         }
@@ -276,28 +276,28 @@ yuri_2153* yuri_182::yuri_4623(yuri_1758* yuri_7194, int yuri_9621, int yuri_962
     return nullptr;
 }
 
-void yuri_182::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void BedTile::spawnResources(Level* level, int x, int y, int z, int data,
                              float odds, int playerBonus) {
-    if (!yuri_6898(yuri_4295)) {
-        yuri_3088::yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, odds, 0);
+    if (!isHeadPiece(data)) {
+        Tile::spawnResources(level, x, y, z, data, odds, 0);
     }
 }
 
-int yuri_182::yuri_5694() { return yuri_1886::PUSH_DESTROY; }
+int BedTile::getPistonPushReaction() { return Material::PUSH_DESTROY; }
 
-int yuri_182::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_1687::bed_Id;
+int BedTile::cloneTileId(Level* level, int x, int y, int z) {
+    return Item::bed_Id;
 }
 
-void yuri_182::yuri_7853(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                                std::shared_ptr<yuri_2126> yuri_7839) {
-    if (yuri_7839->abilities.instabuild) {
-        if (yuri_6898(yuri_4295)) {
-            int yuri_4362 = yuri_5163(yuri_4295);
-            yuri_9621 -= HEAD_DIRECTION_OFFSETS[yuri_4362][0];
-            yuri_9630 -= HEAD_DIRECTION_OFFSETS[yuri_4362][1];
-            if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_6674) {
-                yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+void BedTile::playerWillDestroy(Level* level, int x, int y, int z, int data,
+                                std::shared_ptr<Player> player) {
+    if (player->abilities.instabuild) {
+        if (isHeadPiece(data)) {
+            int direction = getDirection(data);
+            x -= HEAD_DIRECTION_OFFSETS[direction][0];
+            z -= HEAD_DIRECTION_OFFSETS[direction][1];
+            if (level->getTile(x, y, z) == id) {
+                level->removeTile(x, y, z);
             }
         }
     }

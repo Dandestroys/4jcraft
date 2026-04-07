@@ -1,17 +1,17 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "Projectile.h"
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/LivingEntity.h"
 
-class yuri_1950;
-class yuri_1278;
-class yuri_1758;
+class Mob;
+class HitResult;
+class Level;
 
-class yuri_3075 : public yuri_739, public Projectile {
+class Throwable : public Entity, public Projectile {
 private:
     int xTile;
     int yTile;
@@ -24,44 +24,44 @@ protected:
 public:
     int shakeTime;
 
-    std::shared_ptr<yuri_1793> owner;
+    std::shared_ptr<LivingEntity> owner;
 
 private:
-    std::yuri_9616 ownerName;
-    int yuri_7203;
+    std::wstring ownerName;
+    int life;
     int flightTime;
 
-    void yuri_3561();
+    void _throwableInit();
 
 public:
-    yuri_3075(yuri_1758* yuri_7194);
+    Throwable(Level* level);
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual bool yuri_9015(double distance);
+    virtual bool shouldRenderAtSqrDistance(double distance);
 
-    yuri_3075(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob);
-    yuri_3075(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    Throwable(Level* level, std::shared_ptr<LivingEntity> mob);
+    Throwable(Level* level, double x, double y, double z);
 
 protected:
-    virtual float yuri_6020();
-    virtual float yuri_6021();
+    virtual float getThrowPower();
+    virtual float getThrowUpAngleOffset();
 
 public:
-    virtual void yuri_8998(double xd, double yd, double zd, float pow,
+    virtual void shoot(double xd, double yd, double zd, float pow,
                        float uncertainty);
-    virtual void yuri_7191(double xd, double yd, double zd);
-    virtual void yuri_9265();
+    virtual void lerpMotion(double xd, double yd, double zd);
+    virtual void tick();
 
 protected:
-    virtual float yuri_5326();
-    virtual void yuri_7623(yuri_1278* res) = 0;
+    virtual float getGravity();
+    virtual void onHit(HitResult* res) = 0;
 
 public:
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual float yuri_5885();
-    virtual std::shared_ptr<yuri_1793> yuri_5633();
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual float getShadowHeightOffs();
+    virtual std::shared_ptr<LivingEntity> getOwner();
 };

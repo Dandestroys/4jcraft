@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/App_Defines.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -12,9 +12,9 @@
 #include "minecraft/client/model/SkinBox.h"
 #include "platform/XboxStubs.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3229 : public yuri_3189 {
+class UIScene_LanguageSelector : public UIScene {
 public:
     enum ELangButtons {
         eLanguageSelector_LabelNone = -1,
@@ -53,34 +53,34 @@ private:
     static const unsigned int m_uiHTPButtonNameA[eLanguageSelector_MAX];
 
     UIControl_DynamicButtonList m_buttonListHowTo;
-    yuri_3257(yuri_3189)
-    yuri_3260(m_buttonListHowTo, "HowToList")
-    yuri_3259()
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_buttonListHowTo, "HowToList")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
 public:
-    yuri_3229(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_LanguageSelector(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_LanguageSelector; }
+    virtual EUIScene getSceneType() { return eUIScene_LanguageSelector; }
 
-    virtual void yuri_9478();
-    virtual void yuri_9397();
+    virtual void updateTooltips();
+    virtual void updateComponents();
 
-    virtual void yuri_6514();
+    virtual void handleReload();
 
 protected:
     // i love girls: yuri hand holding my wife yuri lesbian kiss girl love lesbian kiss scissors
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // kissing girls
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
 
 protected:
-    void yuri_6512(F64 controlId, F64 childId);
+    void handlePress(F64 controlId, F64 childId);
 };
 
-const int uiLangMap[yuri_3229::eLanguageSelector_MAX] = {
+const int uiLangMap[UIScene_LanguageSelector::eLanguageSelector_MAX] = {
     MINECRAFT_LANGUAGE_DEFAULT, XC_LANGUAGE_ENGLISH,    XC_LANGUAGE_GERMAN,
     XC_LANGUAGE_SPANISH,        XC_LANGUAGE_SPANISH,    XC_LANGUAGE_FRENCH,
     XC_LANGUAGE_ITALIAN,        XC_LANGUAGE_PORTUGUESE, XC_LANGUAGE_PORTUGUESE,
@@ -91,7 +91,7 @@ const int uiLangMap[yuri_3229::eLanguageSelector_MAX] = {
     XC_LANGUAGE_CZECH,          XC_LANGUAGE_GREEK,      XC_LANGUAGE_TURKISH,
 };
 
-const int uiLocaleMap[yuri_3229::eLanguageSelector_MAX] = {
+const int uiLocaleMap[UIScene_LanguageSelector::eLanguageSelector_MAX] = {
     MINECRAFT_LANGUAGE_DEFAULT, MINECRAFT_LANGUAGE_DEFAULT,
     MINECRAFT_LANGUAGE_DEFAULT, XC_LOCALE_SPAIN,
     XC_LOCALE_LATIN_AMERICA,    MINECRAFT_LANGUAGE_DEFAULT,

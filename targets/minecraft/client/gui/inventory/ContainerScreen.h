@@ -3,20 +3,20 @@
 
 #include "AbstractContainerScreen.h"
 
-class yuri_436;
+class Container;
 
-class yuri_445 : public yuri_48 {
+class ContainerScreen : public AbstractContainerScreen {
 private:
-    std::shared_ptr<yuri_436> inventory;
-    std::shared_ptr<yuri_436> yuri_4145;
+    std::shared_ptr<Container> inventory;
+    std::shared_ptr<Container> container;
 
     int containerRows;
 
 public:
-    yuri_445(std::shared_ptr<yuri_436> inventory,
-                    std::shared_ptr<yuri_436> yuri_4145);
+    ContainerScreen(std::shared_ptr<Container> inventory,
+                    std::shared_ptr<Container> container);
 
 protected:
-    virtual void yuri_8204() override;
-    virtual void yuri_8165(float yuri_3565) override;
+    virtual void renderLabels() override;
+    virtual void renderBg(float a) override;
 };

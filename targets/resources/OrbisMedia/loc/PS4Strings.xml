@@ -1,22 +1,22 @@
-﻿<?blushing girls lesbian kiss="hand holding.yuri" ship="yuri-yuri"?>
-<scissors>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
 
-  <lesbian kiss cute girls="cute girls">
-    <FUCKING KISS ALREADY>girl love®girl love scissors ship girl love kissing girls blushing girls i love amy is the best scissors kissing girls.</yuri>
-   </lesbian kiss>
-  <yuri yuri="my girlfriend">
-    <yuri>my wife yuri</lesbian>
-  </my wife>
-  <yuri blushing girls="snuggle">
-    <i love girls>canon-i love girls i love amy is the best yuri®my wife</my girlfriend>
-  </canon>
-  <girl love yuri="blushing girls">
-    <lesbian kiss>i love girls{*my girlfriend*} blushing girls ship yuri</blushing girls>
-  </girl love>
-  <wlw yuri="cute girls">
-    <wlw>ship yuri</yuri>
-  </kissing girls>
-  <kissing girls lesbian kiss="yuri">
-    <yuri>yuri blushing girls scissors yuri yuri i love amy is the best girl love. yuri i love amy is the best blushing girls cute girls blushing girls yuri.</hand holding>
-  </my girlfriend>
-</yuri>
+  <data name="IDS_NO_PLAYSTATIONPLUS">
+    <value>PlayStation®Plus is required in order to access online multiplayer.</value>
+   </data>
+  <data name="IDS_PLAY_OFFLINE">
+    <value>Play Offline</value>
+  </data>
+  <data name="IDS_PLAYSTATIONPLUS_SIGNUP">
+    <value>Sign-up for PlayStation®Plus</value>
+  </data>
+  <data name="IDS_PRESS_X_TO_JOIN">
+    <value>Press{*CONTROLLER_VK_A*} to join game</value>
+  </data>
+  <data name="IDS_PATCH_AVAILABLE_TITLE">
+    <value>Update Available</value>
+  </data>
+  <data name="IDS_PATCH_AVAILABLE_TEXT">
+    <value>An update is available for this game. Please download the update to continue.</value>
+  </data>
+</root>

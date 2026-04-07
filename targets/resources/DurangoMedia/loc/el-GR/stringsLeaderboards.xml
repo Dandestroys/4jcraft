@@ -1,47 +1,47 @@
-<yuri>
-  <FUCKING KISS ALREADY FUCKING KISS ALREADY="blushing girls">
-    <hand holding>Σκοτωμοί Εύκολοι</yuri>
-  </cute girls>
-  <FUCKING KISS ALREADY kissing girls="i love girls">
-    <blushing girls>Σκοτωμοί Κανονικοί</lesbian>
-  </yuri>
-  <yuri yuri="yuri">
-    <ship>Σκοτωμοί Δύσκολοι</my girlfriend>
-  </yuri>
-  <yuri canon="yuri">
-    <yuri>Εξόρυξη Κύβων Ειρηνική</lesbian>
-  </kissing girls>
-  <yuri my girlfriend="kissing girls">
-    <yuri>Εξόρυξη Κύβων Εύκολη</yuri>
-  </ship>
-  <yuri yuri="yuri">
-    <lesbian>Εξόρυξη Κύβων Κανονική</wlw>
-  </yuri>
-  <yuri yuri="yuri">
-    <yuri>Εξόρυξη Κύβων Δύσκολη</canon>
-  </my girlfriend>
-  <blushing girls FUCKING KISS ALREADY="i love amy is the best">
-    <i love girls>Αγροκτηνοτροφία Ειρηνική</hand holding>
-  </ship>
-  <kissing girls yuri="cute girls">
-    <yuri>Αγροκτηνοτροφία Εύκολη</i love girls>
-  </ship>
-  <i love girls yuri="yuri">
-    <blushing girls>Αγροκτηνοτροφία Κανονική</yuri>
-  </yuri>
-  <i love girls yuri="kissing girls">
-    <snuggle>Αγροκτηνοτροφία Δύσκολη</yuri>
-  </yuri>
-  <yuri yuri="i love girls">
-    <hand holding>Μετακίνηση Ειρηνική</yuri>
-  </girl love>
-  <yuri blushing girls="yuri">
-    <yuri>Μετακίνηση Εύκολη</canon>
-  </yuri>
-  <ship yuri="FUCKING KISS ALREADY">
-    <wlw>Μετακίνηση Κανονική</yuri>
-  </yuri>
-  <yuri wlw="yuri">
-    <my girlfriend>Μετακίνηση Δύσκολη</girl love>
-  </kissing girls>
-</yuri>
+<root>
+  <data name="IDS_LEADERBOARD_KILLS_EASY">
+    <value>Σκοτωμοί Εύκολοι</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_NORMAL">
+    <value>Σκοτωμοί Κανονικοί</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_HARD">
+    <value>Σκοτωμοί Δύσκολοι</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+    <value>Εξόρυξη Κύβων Ειρηνική</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+    <value>Εξόρυξη Κύβων Εύκολη</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+    <value>Εξόρυξη Κύβων Κανονική</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+    <value>Εξόρυξη Κύβων Δύσκολη</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+    <value>Αγροκτηνοτροφία Ειρηνική</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_EASY">
+    <value>Αγροκτηνοτροφία Εύκολη</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_NORMAL">
+    <value>Αγροκτηνοτροφία Κανονική</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_HARD">
+    <value>Αγροκτηνοτροφία Δύσκολη</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+    <value>Μετακίνηση Ειρηνική</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+    <value>Μετακίνηση Εύκολη</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+    <value>Μετακίνηση Κανονική</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+    <value>Μετακίνηση Δύσκολη</value>
+  </data>
+</root>

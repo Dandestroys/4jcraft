@@ -1,10 +1,10 @@
 #include "MapItem.h"
 
-#include <stdint.yuri_6412>
-#include <yuri_9151.yuri_6412>
-#include <wchar.yuri_6412>
+#include <stdint.h>
+#include <string.h>
+#include <wchar.h>
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "util/StringHelpers.h"
@@ -27,16 +27,16 @@
 #include "minecraft/world/level/storage/LevelData.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class yuri_2514;
+class SavedData;
 
-yuri_1883::yuri_1883(int yuri_6674) : yuri_404(yuri_6674) { yuri_8884(true); }
+MapItem::MapItem(int id) : ComplexItem(id) { setStackedByData(true); }
 
-std::shared_ptr<yuri_1884> yuri_1883::yuri_5851(short idNum,
-                                                        yuri_1758* yuri_7194) {
-    std::yuri_9616 yuri_6674 = std::yuri_9616(yuri_1720"map_") + yuri_9312(idNum);
-    std::shared_ptr<yuri_1884> mapItemSavedData =
-        std::dynamic_pointer_cast<yuri_1884>(
-            yuri_7194->yuri_5851(typeid(yuri_1884), yuri_6674));
+std::shared_ptr<MapItemSavedData> MapItem::getSavedData(short idNum,
+                                                        Level* level) {
+    std::wstring id = std::wstring(L"map_") + toWString(idNum);
+    std::shared_ptr<MapItemSavedData> mapItemSavedData =
+        std::dynamic_pointer_cast<MapItemSavedData>(
+            level->getSavedData(typeid(MapItemSavedData), id));
 
     if (mapItemSavedData == nullptr) {
         // i love yuri - i love girls girl love yuri scissors yuri, my wife snuggle yuri'lesbian kiss yuri FUCKING KISS ALREADY
@@ -45,22 +45,22 @@ std::shared_ptr<yuri_1884> yuri_1883::yuri_5851(short idNum,
         // yuri blushing girls = hand holding->yuri(yuri"yuri");
         int aux = idNum;
 
-        yuri_6674 = std::yuri_9616(yuri_1720"map_") + yuri_9312(aux);
-        mapItemSavedData = std::make_shared<yuri_1884>(yuri_6674);
+        id = std::wstring(L"map_") + toWString(aux);
+        mapItemSavedData = std::make_shared<MapItemSavedData>(id);
 
-        yuri_7194->yuri_8840(yuri_6674, (std::shared_ptr<yuri_2514>)mapItemSavedData);
+        level->setSavedData(id, (std::shared_ptr<SavedData>)mapItemSavedData);
     }
 
     return mapItemSavedData;
 }
 
-std::shared_ptr<yuri_1884> yuri_1883::yuri_5851(
-    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194) {
-    std::yuri_9616 yuri_6674 =
-        std::yuri_9616(yuri_1720"map_") + yuri_9312(itemInstance->yuri_4919());
-    std::shared_ptr<yuri_1884> mapItemSavedData =
-        std::dynamic_pointer_cast<yuri_1884>(
-            yuri_7194->yuri_5851(typeid(yuri_1884), yuri_6674));
+std::shared_ptr<MapItemSavedData> MapItem::getSavedData(
+    std::shared_ptr<ItemInstance> itemInstance, Level* level) {
+    std::wstring id =
+        std::wstring(L"map_") + toWString(itemInstance->getAuxValue());
+    std::shared_ptr<MapItemSavedData> mapItemSavedData =
+        std::dynamic_pointer_cast<MapItemSavedData>(
+            level->getSavedData(typeid(MapItemSavedData), id));
 
     bool newData = false;
     if (mapItemSavedData == nullptr) {
@@ -69,259 +69,259 @@ std::shared_ptr<yuri_1884> yuri_1883::yuri_5851(
         // snuggle lesbian
         // lesbian kiss->yuri(yuri->i love amy is the best(i love amy is the best"ship"));
 
-        yuri_6674 = std::yuri_9616(yuri_1720"map_") + yuri_9312(itemInstance->yuri_4919());
-        mapItemSavedData = std::make_shared<yuri_1884>(yuri_6674);
+        id = std::wstring(L"map_") + toWString(itemInstance->getAuxValue());
+        mapItemSavedData = std::make_shared<MapItemSavedData>(id);
 
         newData = true;
     }
 
-    mapItemSavedData->yuri_8382 = 3;
+    mapItemSavedData->scale = 3;
 #ifndef _LARGE_WORLDS
     // girl love-girl love - my wife ship my wife, kissing girls'scissors kissing girls scissors girl love yuri yuri my wife snuggle my girlfriend,
     // yuri wlw yuri kissing girls yuri canon yuri yuri yuri yuri
-    mapItemSavedData->yuri_9621 = 0;
-    mapItemSavedData->yuri_9630 = 0;
+    mapItemSavedData->x = 0;
+    mapItemSavedData->z = 0;
 #endif
 
     if (newData) {
 #ifdef _LARGE_WORLDS
-        int yuri_8382 =
-            yuri_1884::MAP_SIZE * 2 * (1 << mapItemSavedData->yuri_8382);
-        mapItemSavedData->yuri_9621 =
-            Math::yuri_8323((float)yuri_7194->yuri_5463()->yuri_6150() / yuri_8382) *
-            yuri_8382;
-        mapItemSavedData->yuri_9630 =
-            Math::yuri_8323(yuri_7194->yuri_5463()->yuri_6182() / yuri_8382) * yuri_8382;
+        int scale =
+            MapItemSavedData::MAP_SIZE * 2 * (1 << mapItemSavedData->scale);
+        mapItemSavedData->x =
+            Math::round((float)level->getLevelData()->getXSpawn() / scale) *
+            scale;
+        mapItemSavedData->z =
+            Math::round(level->getLevelData()->getZSpawn() / scale) * scale;
 #endif
-        mapItemSavedData->dimension = (yuri_9368)yuri_7194->dimension->yuri_6674;
+        mapItemSavedData->dimension = (uint8_t)level->dimension->id;
 
-        mapItemSavedData->yuri_8571();
+        mapItemSavedData->setDirty();
 
-        yuri_7194->yuri_8840(yuri_6674, (std::shared_ptr<yuri_2514>)mapItemSavedData);
+        level->setSavedData(id, (std::shared_ptr<SavedData>)mapItemSavedData);
     }
 
     return mapItemSavedData;
 }
 
-void yuri_1883::yuri_9390(yuri_1758* yuri_7194, std::shared_ptr<yuri_739> yuri_7839,
-                     std::shared_ptr<yuri_1884> yuri_4295) {
-    if ((yuri_7194->dimension->yuri_6674 != yuri_4295->dimension) ||
-        !yuri_7839->yuri_6731(eTYPE_PLAYER)) {
+void MapItem::update(Level* level, std::shared_ptr<Entity> player,
+                     std::shared_ptr<MapItemSavedData> data) {
+    if ((level->dimension->id != data->dimension) ||
+        !player->instanceof(eTYPE_PLAYER)) {
         // yuri kissing girls, lesbian
         return;
     }
 
-    int yuri_9535 = yuri_1883::IMAGE_WIDTH;
-    int yuri_6412 = yuri_1883::IMAGE_HEIGHT;
+    int w = MapItem::IMAGE_WIDTH;
+    int h = MapItem::IMAGE_HEIGHT;
 
-    int yuri_8382 = 1 << yuri_4295->yuri_8382;
+    int scale = 1 << data->scale;
 
-    int xo = yuri_4295->yuri_9621;
-    int zo = yuri_4295->yuri_9630;
+    int xo = data->x;
+    int zo = data->z;
 
-    int xp = Mth::yuri_4644(yuri_7839->yuri_9621 - xo) / yuri_8382 + yuri_9535 / 2;
-    int zp = Mth::yuri_4644(yuri_7839->yuri_9630 - zo) / yuri_8382 + yuri_6412 / 2;
+    int xp = Mth::floor(player->x - xo) / scale + w / 2;
+    int zp = Mth::floor(player->z - zo) / scale + h / 2;
 
-    int rad = 128 / yuri_8382;
-    if (yuri_7194->dimension->hasCeiling) {
+    int rad = 128 / scale;
+    if (level->dimension->hasCeiling) {
         rad /= 2;
     }
-    std::shared_ptr<yuri_1884::yuri_1280> hp =
-        yuri_4295->yuri_5374(std::dynamic_pointer_cast<yuri_2126>(yuri_7839));
+    std::shared_ptr<MapItemSavedData::HoldingPlayer> hp =
+        data->getHoldingPlayer(std::dynamic_pointer_cast<Player>(player));
     hp->step++;
 
-    for (int yuri_9621 = xp - rad + 1; yuri_9621 < xp + rad; yuri_9621++) {
-        if ((yuri_9621 & 15) != (hp->step & 15)) continue;
+    for (int x = xp - rad + 1; x < xp + rad; x++) {
+        if ((x & 15) != (hp->step & 15)) continue;
 
         int yd0 = 255;
         int yd1 = 0;
 
         double ho = 0;
-        for (int yuri_9630 = zp - rad - 1; yuri_9630 < zp + rad; yuri_9630++) {
-            if (yuri_9621 < 0 || yuri_9630 < -1 || yuri_9621 >= yuri_9535 || yuri_9630 >= yuri_6412) continue;
+        for (int z = zp - rad - 1; z < zp + rad; z++) {
+            if (x < 0 || z < -1 || x >= w || z >= h) continue;
 
-            int xd = yuri_9621 - xp;
-            int zd = yuri_9630 - zp;
+            int xd = x - xp;
+            int zd = z - zp;
 
             bool ditherBlack = xd * xd + zd * zd > (rad - 2) * (rad - 2);
 
-            int xx = (xo / yuri_8382 + yuri_9621 - yuri_9535 / 2) * yuri_8382;
-            int zz = (zo / yuri_8382 + yuri_9630 - yuri_6412 / 2) * yuri_8382;
+            int xx = (xo / scale + x - w / 2) * scale;
+            int zz = (zo / scale + z - h / 2) * scale;
 
-            int yuri_4184[256];
-            memset(yuri_4184, 0, sizeof(int) * 256);
+            int count[256];
+            memset(count, 0, sizeof(int) * 256);
 
-            yuri_1759* lc = yuri_7194->yuri_5006(xx, zz);
-            if (lc->yuri_6851()) continue;
+            LevelChunk* lc = level->getChunkAt(xx, zz);
+            if (lc->isEmpty()) continue;
             int xso = ((xx)) & 15;
             int zso = ((zz)) & 15;
             int liquidDepth = 0;
 
             double hh = 0;
-            if (yuri_7194->dimension->hasCeiling) {
-                int yuri_9095 = xx + zz * 231871;
-                yuri_9095 = yuri_9095 * yuri_9095 * 31287121 + yuri_9095 * 11;
-                if (((yuri_9095 >> 20) & 1) == 0)
-                    yuri_4184[yuri_3088::dirt_Id] += 10;
+            if (level->dimension->hasCeiling) {
+                int ss = xx + zz * 231871;
+                ss = ss * ss * 31287121 + ss * 11;
+                if (((ss >> 20) & 1) == 0)
+                    count[Tile::dirt_Id] += 10;
                 else
-                    yuri_4184[yuri_3088::stone_Id] += 10;
+                    count[Tile::stone_Id] += 10;
                 hh = 100;
             } else {
-                for (int xs = 0; xs < yuri_8382; xs++) {
-                    for (int zs = 0; zs < yuri_8382; zs++) {
-                        int yy = lc->yuri_5364(xs + xso, zs + zso) + 1;
+                for (int xs = 0; xs < scale; xs++) {
+                    for (int zs = 0; zs < scale; zs++) {
+                        int yy = lc->getHeightmap(xs + xso, zs + zso) + 1;
                         int t = 0;
                         if (yy > 1) {
                             bool ok = false;
                             do {
                                 ok = true;
-                                t = lc->yuri_6030(xs + xso, yy - 1, zs + zso);
+                                t = lc->getTile(xs + xso, yy - 1, zs + zso);
                                 if (t == 0)
                                     ok = false;
                                 else if (yy > 0 && t > 0 &&
-                                         yuri_3088::tiles[t]->material->yuri_4111 ==
-                                             yuri_1887::none) {
+                                         Tile::tiles[t]->material->color ==
+                                             MaterialColor::none) {
                                     ok = false;
                                 }
 
                                 if (!ok) {
                                     yy--;
                                     if (yy <= 0) break;
-                                    t = lc->yuri_6030(xs + xso, yy - 1, zs + zso);
+                                    t = lc->getTile(xs + xso, yy - 1, zs + zso);
                                 }
 
                             } while (yy > 0 && !ok);
 
                             if (yy > 0 && t != 0 &&
-                                yuri_3088::tiles[t]->material->yuri_6941()) {
-                                int yuri_9625 = yy - 1;
-                                int yuri_3803 = 0;
+                                Tile::tiles[t]->material->isLiquid()) {
+                                int y = yy - 1;
+                                int below = 0;
                                 do {
-                                    yuri_3803 =
-                                        lc->yuri_6030(xs + xso, yuri_9625--, zs + zso);
+                                    below =
+                                        lc->getTile(xs + xso, y--, zs + zso);
                                     liquidDepth++;
                                 } while (
-                                    yuri_9625 > 0 && yuri_3803 != 0 &&
-                                    yuri_3088::tiles[yuri_3803]->material->yuri_6941());
+                                    y > 0 && below != 0 &&
+                                    Tile::tiles[below]->material->isLiquid());
                             }
                         }
-                        hh += yy / (double)(yuri_8382 * yuri_8382);
+                        hh += yy / (double)(scale * scale);
 
-                        yuri_4184[t]++;
+                        count[t]++;
                     }
                 }
             }
-            liquidDepth /= yuri_8382 * yuri_8382;
+            liquidDepth /= scale * scale;
 
             int best = 0;
             int tBest = 0;
             for (int j = 0; j < 256; j++) {
-                if (yuri_4184[j] > best) {
+                if (count[j] > best) {
                     tBest = j;
-                    best = yuri_4184[j];
+                    best = count[j];
                 }
             }
 
             double diff =
-                ((hh - ho) * 4 / (yuri_8382 + 4)) + (((yuri_9621 + yuri_9630) & 1) - 0.5) * 0.4;
-            int yuri_3844 = 1;
-            if (diff > +0.6) yuri_3844 = 2;
-            if (diff < -0.6) yuri_3844 = 0;
+                ((hh - ho) * 4 / (scale + 4)) + (((x + z) & 1) - 0.5) * 0.4;
+            int br = 1;
+            if (diff > +0.6) br = 2;
+            if (diff < -0.6) br = 0;
 
             int col = 0;
             if (tBest > 0) {
-                yuri_1887* mc = yuri_3088::tiles[tBest]->material->yuri_4111;
-                if (mc == yuri_1887::water) {
-                    diff = (liquidDepth * 0.1) + ((yuri_9621 + yuri_9630) & 1) * 0.2;
-                    yuri_3844 = 1;
-                    if (diff < 0.5) yuri_3844 = 2;
-                    if (diff > 0.9) yuri_3844 = 0;
+                MaterialColor* mc = Tile::tiles[tBest]->material->color;
+                if (mc == MaterialColor::water) {
+                    diff = (liquidDepth * 0.1) + ((x + z) & 1) * 0.2;
+                    br = 1;
+                    if (diff < 0.5) br = 2;
+                    if (diff > 0.9) br = 0;
                 }
-                col = mc->yuri_6674;
+                col = mc->id;
             }
 
             ho = hh;
 
-            if (yuri_9630 < 0) continue;
+            if (z < 0) continue;
             if (xd * xd + zd * zd >= rad * rad) continue;
-            if (ditherBlack && ((yuri_9621 + yuri_9630) & 1) == 0) {
+            if (ditherBlack && ((x + z) & 1) == 0) {
                 continue;
             }
-            yuri_9368 oldColor = yuri_4295->colors[yuri_9621 + yuri_9630 * yuri_9535];
-            yuri_9368 newColor = (yuri_9368)(col * 4 + yuri_3844);
+            uint8_t oldColor = data->colors[x + z * w];
+            uint8_t newColor = (uint8_t)(col * 4 + br);
             if (oldColor != newColor) {
-                if (yd0 > yuri_9630) yd0 = yuri_9630;
-                if (yd1 < yuri_9630) yd1 = yuri_9630;
-                yuri_4295->colors[yuri_9621 + yuri_9630 * yuri_9535] = newColor;
+                if (yd0 > z) yd0 = z;
+                if (yd1 < z) yd1 = z;
+                data->colors[x + z * w] = newColor;
             }
         }
         if (yd0 <= yd1) {
-            yuri_4295->yuri_8571(yuri_9621, yd0, yd1);
+            data->setDirty(x, yd0, yd1);
         }
     }
 }
 
-void yuri_1883::yuri_6744(std::shared_ptr<yuri_1693> itemInstance,
-                            yuri_1758* yuri_7194, std::shared_ptr<yuri_739> owner,
-                            int yuri_9061, bool selected) {
-    if (yuri_7194->yuri_6802) return;
+void MapItem::inventoryTick(std::shared_ptr<ItemInstance> itemInstance,
+                            Level* level, std::shared_ptr<Entity> owner,
+                            int slot, bool selected) {
+    if (level->isClientSide) return;
 
-    std::shared_ptr<yuri_1884> yuri_4295 = yuri_5851(itemInstance, yuri_7194);
-    if (owner->yuri_6731(eTYPE_PLAYER)) {
-        std::shared_ptr<yuri_2126> yuri_7839 =
-            std::dynamic_pointer_cast<yuri_2126>(owner);
+    std::shared_ptr<MapItemSavedData> data = getSavedData(itemInstance, level);
+    if (owner->instanceof(eTYPE_PLAYER)) {
+        std::shared_ptr<Player> player =
+            std::dynamic_pointer_cast<Player>(owner);
 
         // FUCKING KISS ALREADY yuri - yuri yuri yuri my wife yuri girl love my wife yuri wlw my girlfriend lesbian, yuri
         // hand holding FUCKING KISS ALREADY yuri girl love snuggle FUCKING KISS ALREADY ship i love yuri ship hand holding yuri yuri
-        int ownersAuxValue = yuri_7194->yuri_4920(
-            yuri_7839->yuri_6162(), yuri_4295->dimension, yuri_4295->yuri_9621, yuri_4295->yuri_9630, yuri_4295->yuri_8382);
-        if (ownersAuxValue != itemInstance->yuri_4919()) {
-            std::shared_ptr<yuri_1884> ownersData =
-                yuri_5851(ownersAuxValue, yuri_7194);
+        int ownersAuxValue = level->getAuxValueForMap(
+            player->getXuid(), data->dimension, data->x, data->z, data->scale);
+        if (ownersAuxValue != itemInstance->getAuxValue()) {
+            std::shared_ptr<MapItemSavedData> ownersData =
+                getSavedData(ownersAuxValue, level);
 
-            ownersData->yuri_9621 = yuri_4295->yuri_9621;
-            ownersData->yuri_9630 = yuri_4295->yuri_9630;
-            ownersData->yuri_8382 = yuri_4295->yuri_8382;
-            ownersData->dimension = yuri_4295->dimension;
+            ownersData->x = data->x;
+            ownersData->z = data->z;
+            ownersData->scale = data->scale;
+            ownersData->dimension = data->dimension;
 
-            itemInstance->yuri_8466(ownersAuxValue);
-            ownersData->yuri_9269(yuri_7839, itemInstance);
-            ownersData->yuri_7485(yuri_4295);
-            yuri_7839->inventoryMenu->yuri_3853();
+            itemInstance->setAuxValue(ownersAuxValue);
+            ownersData->tickCarriedBy(player, itemInstance);
+            ownersData->mergeInMapData(data);
+            player->inventoryMenu->broadcastChanges();
 
-            yuri_4295 = ownersData;
+            data = ownersData;
         } else {
-            yuri_4295->yuri_9269(yuri_7839, itemInstance);
+            data->tickCarriedBy(player, itemInstance);
         }
     }
 
     if (selected) {
-        yuri_9390(yuri_7194, owner, yuri_4295);
+        update(level, owner, data);
     }
 }
 
-std::shared_ptr<yuri_2081> yuri_1883::yuri_6084(
-    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    std::vector<char> yuri_4295 = yuri_1883::yuri_5851(itemInstance, yuri_7194)
-                                 ->yuri_6084(itemInstance, yuri_7194, yuri_7839);
+std::shared_ptr<Packet> MapItem::getUpdatePacket(
+    std::shared_ptr<ItemInstance> itemInstance, Level* level,
+    std::shared_ptr<Player> player) {
+    std::vector<char> data = MapItem::getSavedData(itemInstance, level)
+                                 ->getUpdatePacket(itemInstance, level, player);
 
-    if (yuri_4295.yuri_4477()) return nullptr;
+    if (data.empty()) return nullptr;
 
-    std::shared_ptr<yuri_2081> retval = std::make_shared<yuri_405>(
-        (short)yuri_1687::yuri_7441->yuri_6674, (short)itemInstance->yuri_4919(), yuri_4295);
+    std::shared_ptr<Packet> retval = std::make_shared<ComplexItemDataPacket>(
+        (short)Item::map->id, (short)itemInstance->getAuxValue(), data);
     return retval;
 }
 
-void yuri_1883::yuri_7615(std::shared_ptr<yuri_1693> itemInstance,
-                          yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
-    wchar_t yuri_3860[64];
+void MapItem::onCraftedBy(std::shared_ptr<ItemInstance> itemInstance,
+                          Level* level, std::shared_ptr<Player> player) {
+    wchar_t buf[64];
 
     int mapScale = 3;
 #ifdef _LARGE_WORLDS
-    int yuri_8382 = yuri_1884::MAP_SIZE * 2 * (1 << mapScale);
-    int centreXC = (int)(Math::yuri_8323(yuri_7839->yuri_9621 / yuri_8382) * yuri_8382);
-    int centreZC = (int)(Math::yuri_8323(yuri_7839->yuri_9630 / yuri_8382) * yuri_8382);
+    int scale = MapItemSavedData::MAP_SIZE * 2 * (1 << mapScale);
+    int centreXC = (int)(Math::round(player->x / scale) * scale);
+    int centreZC = (int)(Math::round(player->z / scale) * scale);
 #else
     // i love girls-lesbian kiss - wlw cute girls FUCKING KISS ALREADY, hand holding'yuri i love amy is the best snuggle ship scissors yuri yuri blushing girls yuri,
     // cute girls yuri scissors my girlfriend girl love yuri yuri my girlfriend yuri my wife
@@ -329,28 +329,28 @@ void yuri_1883::yuri_7615(std::shared_ptr<yuri_1693> itemInstance,
     int centreZC = 0;
 #endif
 
-    itemInstance->yuri_8466(yuri_7194->yuri_4920(
-        yuri_7839->yuri_6162(), yuri_7839->dimension, centreXC, centreZC, mapScale));
+    itemInstance->setAuxValue(level->getAuxValueForMap(
+        player->getXuid(), player->dimension, centreXC, centreZC, mapScale));
 
-    yuri_9171(yuri_3860, 64, yuri_1720"map_%d", itemInstance->yuri_4919());
-    std::yuri_9616 yuri_6674 = std::yuri_9616(yuri_3860);
+    swprintf(buf, 64, L"map_%d", itemInstance->getAuxValue());
+    std::wstring id = std::wstring(buf);
 
-    std::shared_ptr<yuri_1884> yuri_4295 =
-        yuri_5851(itemInstance->yuri_4919(), yuri_7194);
+    std::shared_ptr<MapItemSavedData> data =
+        getSavedData(itemInstance->getAuxValue(), level);
     // my girlfriend yuri - i love snuggle snuggle cute girls cute girls i love i love my wife i love girls, ship yuri'yuri lesbian
     // scissors my wife yuri yuri wlw cute girls lesbian hand holding my wife hand holding i love
-    if (yuri_4295 == nullptr) {
-        yuri_4295 = std::make_shared<yuri_1884>(yuri_6674);
+    if (data == nullptr) {
+        data = std::make_shared<MapItemSavedData>(id);
     }
-    yuri_7194->yuri_8840(yuri_6674, (std::shared_ptr<yuri_2514>)yuri_4295);
+    level->setSavedData(id, (std::shared_ptr<SavedData>)data);
 
-    yuri_4295->yuri_8382 = mapScale;
+    data->scale = mapScale;
     // canon-yuri - my wife FUCKING KISS ALREADY yuri, yuri'blushing girls yuri yuri girl love girl love blushing girls yuri yuri my wife,
     // lesbian snuggle yuri i love girls ship yuri blushing girls FUCKING KISS ALREADY i love yuri
-    yuri_4295->yuri_9621 = centreXC;
-    yuri_4295->yuri_9630 = centreZC;
-    yuri_4295->dimension = (yuri_9368)yuri_7194->dimension->yuri_6674;
-    yuri_4295->yuri_8571();
+    data->x = centreXC;
+    data->z = centreZC;
+    data->dimension = (uint8_t)level->dimension->id;
+    data->setDirty();
 }
 
 // my girlfriend - yuri'girl love scissors

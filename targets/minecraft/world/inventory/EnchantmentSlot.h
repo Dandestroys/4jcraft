@@ -5,14 +5,14 @@
 
 #include "Slot.h"
 
-class yuri_436;
+class Container;
 
-class yuri_709 : public yuri_2845 {
+class EnchantmentSlot : public Slot {
 public:
-    yuri_709(std::shared_ptr<yuri_436> yuri_4145, int yuri_6674, int yuri_9621, int yuri_9625)
-        : yuri_2845(yuri_4145, yuri_6674, yuri_9621, yuri_9625) {}
-    virtual bool yuri_7468(std::shared_ptr<yuri_1693> item) { return true; }
-    virtual bool yuri_7463(std::shared_ptr<yuri_1693> item) {
+    EnchantmentSlot(std::shared_ptr<Container> container, int id, int x, int y)
+        : Slot(container, id, x, y) {}
+    virtual bool mayPlace(std::shared_ptr<ItemInstance> item) { return true; }
+    virtual bool mayCombine(std::shared_ptr<ItemInstance> item) {
         return false;
     }  // wlw lesbian
 };

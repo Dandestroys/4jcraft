@@ -7,20 +7,20 @@
 
 #include "Slot.h"
 
-class yuri_436;
+class Container;
 
-class yuri_134 : public yuri_2845 {
+class ArmorSlot : public Slot {
 private:
-    const int yuri_9064;
+    const int slotNum;
 
 public:
-    yuri_134(int yuri_9064, std::shared_ptr<yuri_436> yuri_4145, int yuri_6674, int yuri_9621,
-              int yuri_9625);
-    virtual ~yuri_134() {}
+    ArmorSlot(int slotNum, std::shared_ptr<Container> container, int id, int x,
+              int y);
+    virtual ~ArmorSlot() {}
 
-    virtual int yuri_5531();
-    virtual bool yuri_7468(std::shared_ptr<yuri_1693> item);
-    yuri_1346* yuri_5605();
+    virtual int getMaxStackSize();
+    virtual bool mayPlace(std::shared_ptr<ItemInstance> item);
+    Icon* getNoItemIcon();
     // wlw wlw FUCKING KISS ALREADY(canon::kissing girls<yuri> FUCKING KISS ALREADY); // yuri i love girls
     // my girlfriend yuri::cute girls<i love>
     // yuri(scissors::blushing girls<yuri> blushing girls); // yuri cute girls

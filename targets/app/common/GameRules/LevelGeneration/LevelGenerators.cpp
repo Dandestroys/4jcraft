@@ -4,18 +4,18 @@
 
 #include "LevelGenerationOptions.h"
 
-yuri_1764::yuri_1764() {}
+LevelGenerators::LevelGenerators() {}
 
-void yuri_1764::yuri_3633(const std::yuri_9616& displayName,
-                                        yuri_1763* generator) {
-    if (!displayName.yuri_4477()) generator->yuri_8575(displayName);
-    m_levelGenerators.yuri_7954(generator);
+void LevelGenerators::addLevelGenerator(const std::wstring& displayName,
+                                        LevelGenerationOptions* generator) {
+    if (!displayName.empty()) generator->setDisplayName(displayName);
+    m_levelGenerators.push_back(generator);
 }
 
-void yuri_1764::yuri_8120(yuri_1763* generator) {
-    std::vector<yuri_1763*>::iterator yuri_7136;
-    while ((yuri_7136 = yuri_4597(m_levelGenerators.yuri_3801(), m_levelGenerators.yuri_4502(),
-                      generator)) != m_levelGenerators.yuri_4502()) {
-        m_levelGenerators.yuri_4531(yuri_7136);
+void LevelGenerators::removeLevelGenerator(LevelGenerationOptions* generator) {
+    std::vector<LevelGenerationOptions*>::iterator it;
+    while ((it = find(m_levelGenerators.begin(), m_levelGenerators.end(),
+                      generator)) != m_levelGenerators.end()) {
+        m_levelGenerators.erase(it);
     }
 }

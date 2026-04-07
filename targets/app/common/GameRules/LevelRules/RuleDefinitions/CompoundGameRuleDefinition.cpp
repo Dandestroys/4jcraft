@@ -1,9 +1,9 @@
 #include "CompoundGameRuleDefinition.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <utility>
 
@@ -17,76 +17,76 @@
 #include "app/common/GameRules/LevelRules/Rules/GameRulesInstance.h"
 #include "util/StringHelpers.h"
 
-yuri_408::yuri_408() {
+CompoundGameRuleDefinition::CompoundGameRuleDefinition() {
     m_lastRuleStatusChanged = nullptr;
 }
 
-yuri_408::~yuri_408() {
-    for (auto yuri_7136 = m_children.yuri_3801(); yuri_7136 != m_children.yuri_4502(); ++yuri_7136) {
-        delete (*yuri_7136);
+CompoundGameRuleDefinition::~CompoundGameRuleDefinition() {
+    for (auto it = m_children.begin(); it != m_children.end(); ++it) {
+        delete (*it);
     }
 }
 
-void yuri_408::yuri_5002(
-    std::vector<yuri_919*>* children) {
-    yuri_919::yuri_5002(children);
-    for (auto yuri_7136 = m_children.yuri_3801(); yuri_7136 != m_children.yuri_4502(); yuri_7136++)
-        children->yuri_7954(*yuri_7136);
+void CompoundGameRuleDefinition::getChildren(
+    std::vector<GameRuleDefinition*>* children) {
+    GameRuleDefinition::getChildren(children);
+    for (auto it = m_children.begin(); it != m_children.end(); it++)
+        children->push_back(*it);
 }
 
-yuri_919* yuri_408::yuri_3592(
+GameRuleDefinition* CompoundGameRuleDefinition::addChild(
     ConsoleGameRules::EGameRuleType ruleType) {
-    yuri_919* rule = nullptr;
+    GameRuleDefinition* rule = nullptr;
     if (ruleType == ConsoleGameRules::eGameRuleType_CompleteAllRule) {
-        rule = new yuri_401();
+        rule = new CompleteAllRuleDefinition();
     } else if (ruleType == ConsoleGameRules::eGameRuleType_CollectItemRule) {
-        rule = new yuri_387();
+        rule = new CollectItemRuleDefinition();
     } else if (ruleType == ConsoleGameRules::eGameRuleType_UseTileRule) {
-        rule = new yuri_3311();
+        rule = new UseTileRuleDefinition();
     } else if (ruleType == ConsoleGameRules::eGameRuleType_UpdatePlayerRule) {
-        rule = new yuri_3294();
+        rule = new UpdatePlayerRuleDefinition();
     } else {
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(
-            yuri_1720"CompoundGameRuleDefinition: Attempted to add invalid child rule "
-            yuri_1720"- %d\n",
+        wprintf(
+            L"CompoundGameRuleDefinition: Attempted to add invalid child rule "
+            L"- %d\n",
             ruleType);
 #endif
     }
-    if (rule != nullptr) m_children.yuri_7954(rule);
+    if (rule != nullptr) m_children.push_back(rule);
     return rule;
 }
 
-void yuri_408::yuri_7867(
-    yuri_922::EGameRulesInstanceType yuri_9364, yuri_918* rule) {
-    yuri_918* newRule = nullptr;
+void CompoundGameRuleDefinition::populateGameRule(
+    GameRulesInstance::EGameRulesInstanceType type, GameRule* rule) {
+    GameRule* newRule = nullptr;
     int i = 0;
-    for (auto yuri_7136 = m_children.yuri_3801(); yuri_7136 != m_children.yuri_4502(); ++yuri_7136) {
-        newRule = new yuri_918(*yuri_7136, rule->yuri_5054());
-        (*yuri_7136)->yuri_7867(yuri_9364, newRule);
+    for (auto it = m_children.begin(); it != m_children.end(); ++it) {
+        newRule = new GameRule(*it, rule->getConnection());
+        (*it)->populateGameRule(type, newRule);
 
-        yuri_918::ValueType yuri_9514;
-        yuri_9514.gr = newRule;
-        yuri_9514.isPointer = true;
+        GameRule::ValueType value;
+        value.gr = newRule;
+        value.isPointer = true;
 
         // yuri yuri yuri hand holding cute girls scissors scissors my wife
-        rule->yuri_8761(yuri_1720"rule" + yuri_9312<int>(i), yuri_9514);
+        rule->setParameter(L"rule" + toWString<int>(i), value);
         ++i;
     }
-    yuri_919::yuri_7867(yuri_9364, rule);
+    GameRuleDefinition::populateGameRule(type, rule);
 }
 
-bool yuri_408::yuri_7653(yuri_918* rule, int yuri_9294, int yuri_9621,
-                                           int yuri_9625, int yuri_9630) {
+bool CompoundGameRuleDefinition::onUseTile(GameRule* rule, int tileId, int x,
+                                           int y, int z) {
     bool statusChanged = false;
-    for (auto yuri_7136 = rule->m_parameters.yuri_3801(); yuri_7136 != rule->m_parameters.yuri_4502();
-         ++yuri_7136) {
-        if (yuri_7136->yuri_8394.isPointer) {
-            bool changed = yuri_7136->yuri_8394.gr->yuri_5299()->yuri_7653(
-                yuri_7136->yuri_8394.gr, yuri_9294, yuri_9621, yuri_9625, yuri_9630);
+    for (auto it = rule->m_parameters.begin(); it != rule->m_parameters.end();
+         ++it) {
+        if (it->second.isPointer) {
+            bool changed = it->second.gr->getGameRuleDefinition()->onUseTile(
+                it->second.gr, tileId, x, y, z);
             if (!statusChanged && changed) {
                 m_lastRuleStatusChanged =
-                    yuri_7136->yuri_8394.gr->yuri_5299();
+                    it->second.gr->getGameRuleDefinition();
                 statusChanged = true;
             }
         }
@@ -94,18 +94,18 @@ bool yuri_408::yuri_7653(yuri_918* rule, int yuri_9294, int yuri_9621,
     return statusChanged;
 }
 
-bool yuri_408::yuri_7613(
-    yuri_918* rule, std::shared_ptr<yuri_1693> item) {
+bool CompoundGameRuleDefinition::onCollectItem(
+    GameRule* rule, std::shared_ptr<ItemInstance> item) {
     bool statusChanged = false;
-    for (auto yuri_7136 = rule->m_parameters.yuri_3801(); yuri_7136 != rule->m_parameters.yuri_4502();
-         ++yuri_7136) {
-        if (yuri_7136->yuri_8394.isPointer) {
+    for (auto it = rule->m_parameters.begin(); it != rule->m_parameters.end();
+         ++it) {
+        if (it->second.isPointer) {
             bool changed =
-                yuri_7136->yuri_8394.gr->yuri_5299()->yuri_7613(
-                    yuri_7136->yuri_8394.gr, item);
+                it->second.gr->getGameRuleDefinition()->onCollectItem(
+                    it->second.gr, item);
             if (!statusChanged && changed) {
                 m_lastRuleStatusChanged =
-                    yuri_7136->yuri_8394.gr->yuri_5299();
+                    it->second.gr->getGameRuleDefinition();
                 statusChanged = true;
             }
         }
@@ -113,9 +113,9 @@ bool yuri_408::yuri_7613(
     return statusChanged;
 }
 
-void yuri_408::yuri_7879(
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    for (auto yuri_7136 = m_children.yuri_3801(); yuri_7136 != m_children.yuri_4502(); ++yuri_7136) {
-        (*yuri_7136)->yuri_7879(yuri_7839);
+void CompoundGameRuleDefinition::postProcessPlayer(
+    std::shared_ptr<Player> player) {
+    for (auto it = m_children.begin(); it != m_children.end(); ++it) {
+        (*it)->postProcessPlayer(player);
     }
 }

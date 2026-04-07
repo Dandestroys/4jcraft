@@ -11,78 +11,78 @@
 #include "minecraft/world/level/redstone/Redstone.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class yuri_1346;
+class Icon;
 
-const std::yuri_9616 yuri_3068::TEXTURE_EYE = yuri_1720"endframe_eye";
+const std::wstring TheEndPortalFrameTile::TEXTURE_EYE = L"endframe_eye";
 
-yuri_3068::yuri_3068(int yuri_6674)
-    : yuri_3088(yuri_6674, yuri_1886::glass, false) {
+TheEndPortalFrameTile::TheEndPortalFrameTile(int id)
+    : Tile(id, Material::glass, false) {
     iconTop = nullptr;
     iconEye = nullptr;
 }
 
-yuri_1346* yuri_3068::yuri_6007(int face, int yuri_4295) {
+Icon* TheEndPortalFrameTile::getTexture(int face, int data) {
     if (face == Facing::UP) {
         return iconTop;
     }
     if (face == Facing::DOWN) {
-        return yuri_3088::endStone->yuri_6007(face);
+        return Tile::endStone->getTexture(face);
     }
-    return yuri_6672;
+    return icon;
 }
 
-void yuri_3068::yuri_8072(IconRegister* iconRegister) {
-    yuri_6672 = iconRegister->yuri_8071(yuri_1720"endframe_side");
-    iconTop = iconRegister->yuri_8071(yuri_1720"endframe_top");
-    iconEye = iconRegister->yuri_8071(yuri_1720"endframe_eye");
+void TheEndPortalFrameTile::registerIcons(IconRegister* iconRegister) {
+    icon = iconRegister->registerIcon(L"endframe_side");
+    iconTop = iconRegister->registerIcon(L"endframe_top");
+    iconEye = iconRegister->registerIcon(L"endframe_eye");
 }
 
-yuri_1346* yuri_3068::yuri_5233() { return iconEye; }
+Icon* TheEndPortalFrameTile::getEye() { return iconEye; }
 
-bool yuri_3068::yuri_7058(bool isServerLevel) { return false; }
+bool TheEndPortalFrameTile::isSolidRender(bool isServerLevel) { return false; }
 
-int yuri_3068::yuri_5806() { return SHAPE_PORTAL_FRAME; }
+int TheEndPortalFrameTile::getRenderShape() { return SHAPE_PORTAL_FRAME; }
 
-void yuri_3068::yuri_9402() {
-    yuri_8855(0, 0, 0, 1, 13.0f / 16.0f, 1);
+void TheEndPortalFrameTile::updateDefaultShape() {
+    setShape(0, 0, 0, 1, 13.0f / 16.0f, 1);
 }
 
-void yuri_3068::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                     yuri_0* yuri_3843, std::vector<yuri_0>* boxes,
-                                     std::shared_ptr<yuri_739> yuri_9075) {
-    yuri_8855(0, 0, 0, 1, 13.0f / 16.0f, 1);
-    yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+void TheEndPortalFrameTile::addAABBs(Level* level, int x, int y, int z,
+                                     AABB* box, std::vector<AABB>* boxes,
+                                     std::shared_ptr<Entity> source) {
+    setShape(0, 0, 0, 1, 13.0f / 16.0f, 1);
+    Tile::addAABBs(level, x, y, z, box, boxes, source);
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_6596(yuri_4295)) {
-        yuri_8855(5.0f / 16.0f, 13.0f / 16.0f, 5.0f / 16.0f, 11.0f / 16.0f, 1,
+    int data = level->getData(x, y, z);
+    if (hasEye(data)) {
+        setShape(5.0f / 16.0f, 13.0f / 16.0f, 5.0f / 16.0f, 11.0f / 16.0f, 1,
                  11.0f / 16.0f);
-        yuri_3088::yuri_3581(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3843, boxes, yuri_9075);
+        Tile::addAABBs(level, x, y, z, box, boxes, source);
     }
-    yuri_9402();
+    updateDefaultShape();
 }
 
-bool yuri_3068::yuri_6596(int yuri_4295) { return (yuri_4295 & EYE_BIT) != 0; }
+bool TheEndPortalFrameTile::hasEye(int data) { return (data & EYE_BIT) != 0; }
 
-int yuri_3068::yuri_5817(int yuri_4295, yuri_2302* yuri_7981,
+int TheEndPortalFrameTile::getResource(int data, Random* random,
                                        int playerBonusLevel) {
     return 0;
 }
 
-void yuri_3068::yuri_8766(
-    yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, std::shared_ptr<yuri_1793> by,
-    std::shared_ptr<yuri_1693> itemInstance) {
-    int yuri_4361 = (((Mth::yuri_4644(by->yuri_9628 * 4 / (360) + 0.5)) & 3) + 2) % 4;
-    yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361, yuri_3088::UPDATE_CLIENTS);
+void TheEndPortalFrameTile::setPlacedBy(
+    Level* level, int x, int y, int z, std::shared_ptr<LivingEntity> by,
+    std::shared_ptr<ItemInstance> itemInstance) {
+    int dir = (((Mth::floor(by->yRot * 4 / (360) + 0.5)) & 3) + 2) % 4;
+    level->setData(x, y, z, dir, Tile::UPDATE_CLIENTS);
 }
 
-bool yuri_3068::yuri_6573() { return true; }
+bool TheEndPortalFrameTile::hasAnalogOutputSignal() { return true; }
 
-int yuri_3068::yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625,
-                                                 int yuri_9630, int yuri_4361) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+int TheEndPortalFrameTile::getAnalogOutputSignal(Level* level, int x, int y,
+                                                 int z, int dir) {
+    int data = level->getData(x, y, z);
 
-    if (yuri_6596(yuri_4295)) {
+    if (hasEye(data)) {
         return Redstone::SIGNAL_MAX;
     } else {
         return Redstone::SIGNAL_NONE;

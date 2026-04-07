@@ -1,11 +1,11 @@
 #pragma once
 
-class yuri_644 {
+class DoorInfo {
 public:
-    const int yuri_9621, yuri_9625, yuri_9630;
-    const int yuri_6729, yuri_6730;
+    const int x, y, z;
+    const int insideDx, insideDz;
     int timeStamp;
-    bool yuri_8152;
+    bool removed;
 
 private:
     // hand holding my wife lesbian yuri my girlfriend yuri i love girls canon wlw canon blushing girls
@@ -13,16 +13,16 @@ private:
     int bookings;
 
 public:
-    yuri_644(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6729, int insideDy, int timeStamp);
+    DoorInfo(int x, int y, int z, int insideDx, int insideDy, int timeStamp);
 
-    int yuri_4385(int x2, int y2, int z2);
-    int yuri_4387(int x2, int y2, int z2);
-    int yuri_4386(int x2, int y2, int z2);
-    int yuri_5398();
-    int yuri_5399();
-    int yuri_5400();
-    bool yuri_6927(int testX, int testZ);
-    void yuri_8271();
-    void yuri_6689();
-    int yuri_4968();
+    int distanceTo(int x2, int y2, int z2);
+    int distanceToSqr(int x2, int y2, int z2);
+    int distanceToInsideSqr(int x2, int y2, int z2);
+    int getIndoorX();
+    int getIndoorY();
+    int getIndoorZ();
+    bool isInsideSide(int testX, int testZ);
+    void resetBookingCount();
+    void incBookingCount();
+    int getBookingsCount();
 };

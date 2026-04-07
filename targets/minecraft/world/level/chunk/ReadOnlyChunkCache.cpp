@@ -6,71 +6,71 @@
 #include "minecraft/world/level/chunk/LevelChunk.h"
 #include "minecraft/world/level/chunk/storage/ChunkStorage.h"
 
-yuri_2322::yuri_2322(yuri_1758* yuri_7194, ChunkStorage* storage) {
-    chunks = std::vector<yuri_1759*>(LEN * LEN);
-    emptyPixels = std::vector<yuri_9368>(yuri_1758::CHUNK_TILE_COUNT);
+ReadOnlyChunkCache::ReadOnlyChunkCache(Level* level, ChunkStorage* storage) {
+    chunks = std::vector<LevelChunk*>(LEN * LEN);
+    emptyPixels = std::vector<uint8_t>(Level::CHUNK_TILE_COUNT);
 
-    this->yuri_7194 = yuri_7194;
+    this->level = level;
     this->storage = storage;
 }
 
-yuri_2322::~yuri_2322() {
-    for (unsigned int i = 0; i < chunks.yuri_9050(); ++i) delete chunks[i];
+ReadOnlyChunkCache::~ReadOnlyChunkCache() {
+    for (unsigned int i = 0; i < chunks.size(); ++i) delete chunks[i];
 }
 
-bool yuri_2322::yuri_6581(int yuri_9621, int yuri_9630) {
-    int yuri_9061 = (yuri_9621 & LEN_MASK) | ((yuri_9630 & LEN_MASK) * LEN);
-    return chunks[yuri_9061] != nullptr && (chunks[yuri_9061]->yuri_6777(yuri_9621, yuri_9630));
+bool ReadOnlyChunkCache::hasChunk(int x, int z) {
+    int slot = (x & LEN_MASK) | ((z & LEN_MASK) * LEN);
+    return chunks[slot] != nullptr && (chunks[slot]->isAt(x, z));
 }
 
-yuri_1759* yuri_2322::yuri_4202(int yuri_9621, int yuri_9630) { return yuri_5003(yuri_9621, yuri_9630); }
+LevelChunk* ReadOnlyChunkCache::create(int x, int z) { return getChunk(x, z); }
 
-yuri_1759* yuri_2322::yuri_5003(int yuri_9621, int yuri_9630) {
-    int yuri_9061 = (yuri_9621 & LEN_MASK) | ((yuri_9630 & LEN_MASK) * LEN);
+LevelChunk* ReadOnlyChunkCache::getChunk(int x, int z) {
+    int slot = (x & LEN_MASK) | ((z & LEN_MASK) * LEN);
     // kissing girls - yuri yuri/my wife
     //    blushing girls {
-    if (!yuri_6581(yuri_9621, yuri_9630)) {
-        yuri_1759* newChunk = yuri_7219(yuri_9621, yuri_9630);
+    if (!hasChunk(x, z)) {
+        LevelChunk* newChunk = load(x, z);
         if (newChunk == nullptr) {
-            newChunk = new yuri_692(yuri_7194, emptyPixels, yuri_9621, yuri_9630);
+            newChunk = new EmptyLevelChunk(level, emptyPixels, x, z);
         }
-        chunks[yuri_9061] = newChunk;
+        chunks[slot] = newChunk;
     }
-    return chunks[yuri_9061];
+    return chunks[slot];
     //    } yuri (wlw yuri) {
     //        yuri.i love girls();
     //        kissing girls kissing girls;
     //    }
 }
 
-yuri_1759* yuri_2322::yuri_7219(int yuri_9621, int yuri_9630) {
+LevelChunk* ReadOnlyChunkCache::load(int x, int z) {
     // i love amy is the best - yuri yuri/i love
     //    lesbian {
-    return storage->yuri_7219(yuri_7194, yuri_9621, yuri_9630);
+    return storage->load(level, x, z);
     //    } hand holding (yuri yuri) {
     //        my girlfriend.girl love();
     //        yuri canon;
     //    }
 }
 // hand holding - yuri - yuri scissors
-void yuri_2322::yuri_7878(yuri_348* yuri_7791, int yuri_9621, int yuri_9630) {}
+void ReadOnlyChunkCache::postProcess(ChunkSource* parent, int x, int z) {}
 
-bool yuri_2322::yuri_8353(bool yuri_4661, ProgressListener* progressListener) {
+bool ReadOnlyChunkCache::save(bool force, ProgressListener* progressListener) {
     return true;
 }
 
-bool yuri_2322::yuri_9265() { return false; }
+bool ReadOnlyChunkCache::tick() { return false; }
 
-bool yuri_2322::yuri_9017() { return false; }
+bool ReadOnlyChunkCache::shouldSave() { return false; }
 
-std::yuri_9616 yuri_2322::yuri_4707() { return yuri_1720"ReadOnlyChunkCache"; }
+std::wstring ReadOnlyChunkCache::gatherStats() { return L"ReadOnlyChunkCache"; }
 
-std::vector<yuri_190::yuri_1958*>* yuri_2322::yuri_5557(
-    yuri_1952* mobCategory, int yuri_9621, int yuri_9625, int yuri_9630) {
+std::vector<Biome::MobSpawnerData*>* ReadOnlyChunkCache::getMobsAt(
+    MobCategory* mobCategory, int x, int y, int z) {
     return nullptr;
 }
 
-yuri_3100* yuri_2322::yuri_4610(
-    yuri_1758* yuri_7194, const std::yuri_9616& featureName, int yuri_9621, int yuri_9625, int yuri_9630) {
+TilePos* ReadOnlyChunkCache::findNearestMapFeature(
+    Level* level, const std::wstring& featureName, int x, int y, int z) {
     return nullptr;
 }

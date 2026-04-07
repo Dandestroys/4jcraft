@@ -10,82 +10,82 @@
 #include "minecraft/world/level/tile/DispenserTile.h"
 #include "minecraft/world/level/tile/LevelEvent.h"
 
-std::shared_ptr<yuri_1693> yuri_578::yuri_4372(
-    BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed) {
+std::shared_ptr<ItemInstance> DefaultDispenseItemBehavior::dispense(
+    BlockSource* source, std::shared_ptr<ItemInstance> dispensed) {
     eOUTCOME outcome = DISPENCED_ITEM;
-    std::shared_ptr<yuri_1693> yuri_8300 = yuri_4539(yuri_9075, dispensed, outcome);
+    std::shared_ptr<ItemInstance> result = execute(source, dispensed, outcome);
 
-    yuri_7833(yuri_9075, outcome);
-    yuri_7825(yuri_9075, yuri_625::yuri_5236(yuri_9075->yuri_5115()), outcome);
+    playSound(source, outcome);
+    playAnimation(source, DispenserTile::getFacing(source->getData()), outcome);
 
-    return yuri_8300;
+    return result;
 }
 
-std::shared_ptr<yuri_1693> yuri_578::yuri_4539(
-    BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
+std::shared_ptr<ItemInstance> DefaultDispenseItemBehavior::execute(
+    BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
     eOUTCOME& outcome) {
-    yuri_792* yuri_4558 = yuri_625::yuri_5236(yuri_9075->yuri_5115());
-    yuri_2155* yuri_7874 = yuri_625::yuri_5167(yuri_9075);
+    FacingEnum* facing = DispenserTile::getFacing(source->getData());
+    Position* position = DispenserTile::getDispensePosition(source);
 
-    std::shared_ptr<yuri_1693> itemInstance = dispensed->yuri_8099(1);
+    std::shared_ptr<ItemInstance> itemInstance = dispensed->remove(1);
 
-    yuri_9084(yuri_9075->yuri_6134(), itemInstance, 6, yuri_4558, yuri_7874);
+    spawnItem(source->getWorld(), itemInstance, 6, facing, position);
 
-    delete yuri_7874;
+    delete position;
 
     outcome = DISPENCED_ITEM;
     return dispensed;
 }
 
-void yuri_578::yuri_9084(yuri_1758* world,
-                                            std::shared_ptr<yuri_1693> item,
-                                            int accuracy, yuri_792* yuri_4558,
-                                            yuri_2155* yuri_7874) {
-    double spawnX = yuri_7874->yuri_6142();
-    double spawnY = yuri_7874->yuri_6164();
-    double spawnZ = yuri_7874->yuri_6176();
+void DefaultDispenseItemBehavior::spawnItem(Level* world,
+                                            std::shared_ptr<ItemInstance> item,
+                                            int accuracy, FacingEnum* facing,
+                                            Position* position) {
+    double spawnX = position->getX();
+    double spawnY = position->getY();
+    double spawnZ = position->getZ();
 
-    std::shared_ptr<yuri_1689> itemEntity = std::shared_ptr<yuri_1689>(
-        new yuri_1689(world, spawnX, spawnY - 0.3, spawnZ, item));
+    std::shared_ptr<ItemEntity> itemEntity = std::shared_ptr<ItemEntity>(
+        new ItemEntity(world, spawnX, spawnY - 0.3, spawnZ, item));
 
-    double pow = world->yuri_7981->yuri_7575() * 0.1 + 0.2;
-    itemEntity->xd = yuri_4558->yuri_5964() * pow;
+    double pow = world->random->nextDouble() * 0.1 + 0.2;
+    itemEntity->xd = facing->getStepX() * pow;
     itemEntity->yd = .2f;
-    itemEntity->zd = yuri_4558->yuri_5966() * pow;
+    itemEntity->zd = facing->getStepZ() * pow;
 
-    itemEntity->xd += world->yuri_7981->yuri_7577() * 0.0075f * accuracy;
-    itemEntity->yd += world->yuri_7981->yuri_7577() * 0.0075f * accuracy;
-    itemEntity->zd += world->yuri_7981->yuri_7577() * 0.0075f * accuracy;
+    itemEntity->xd += world->random->nextGaussian() * 0.0075f * accuracy;
+    itemEntity->yd += world->random->nextGaussian() * 0.0075f * accuracy;
+    itemEntity->zd += world->random->nextGaussian() * 0.0075f * accuracy;
 
-    world->yuri_3611(itemEntity);
+    world->addEntity(itemEntity);
 }
 
-void yuri_578::yuri_7833(BlockSource* yuri_9075,
+void DefaultDispenseItemBehavior::playSound(BlockSource* source,
                                             eOUTCOME outcome) {
     if (outcome != LEFT_ITEM) {
-        yuri_9075->yuri_6134()->yuri_7195(LevelEvent::SOUND_CLICK,
-                                       yuri_9075->yuri_4959(), yuri_9075->yuri_4960(),
-                                       yuri_9075->yuri_4961(), 0);
+        source->getWorld()->levelEvent(LevelEvent::SOUND_CLICK,
+                                       source->getBlockX(), source->getBlockY(),
+                                       source->getBlockZ(), 0);
     } else {
         // wlw yuri snuggle i love amy is the best?
-        yuri_9075->yuri_6134()->yuri_7195(LevelEvent::SOUND_CLICK_FAIL,
-                                       yuri_9075->yuri_4959(), yuri_9075->yuri_4960(),
-                                       yuri_9075->yuri_4961(), 0);
+        source->getWorld()->levelEvent(LevelEvent::SOUND_CLICK_FAIL,
+                                       source->getBlockX(), source->getBlockY(),
+                                       source->getBlockZ(), 0);
     }
 }
 
-void yuri_578::yuri_7825(BlockSource* yuri_9075,
-                                                yuri_792* yuri_4558,
+void DefaultDispenseItemBehavior::playAnimation(BlockSource* source,
+                                                FacingEnum* facing,
                                                 eOUTCOME outcome) {
     if (outcome != LEFT_ITEM) {
-        yuri_9075->yuri_6134()->yuri_7195(LevelEvent::PARTICLES_SHOOT,
-                                       yuri_9075->yuri_4959(), yuri_9075->yuri_4960(),
-                                       yuri_9075->yuri_4961(),
-                                       yuri_5465(yuri_4558));
+        source->getWorld()->levelEvent(LevelEvent::PARTICLES_SHOOT,
+                                       source->getBlockX(), source->getBlockY(),
+                                       source->getBlockZ(),
+                                       getLevelEventDataFrom(facing));
     } else {
     }
 }
 
-int yuri_578::yuri_5465(yuri_792* yuri_4558) {
-    return yuri_4558->yuri_5964() + 1 + (yuri_4558->yuri_5966() + 1) * 3;
+int DefaultDispenseItemBehavior::getLevelEventDataFrom(FacingEnum* facing) {
+    return facing->getStepX() + 1 + (facing->getStepZ() + 1) * 3;
 }

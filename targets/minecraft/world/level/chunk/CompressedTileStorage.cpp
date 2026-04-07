@@ -1,10 +1,10 @@
 #include "CompressedTileStorage.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 #include <bit>
-#include <stddef.yuri_6412>
-#include <stdlib.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include <vector>
 
@@ -17,16 +17,16 @@
 
 // cute girls: yuri yuri yuri yuri i love i love lesbian wlw
 
-int yuri_413::deleteQueueIndex;
-yuri_3409<unsigned char> yuri_413::deleteQueue[3];
+int CompressedTileStorage::deleteQueueIndex;
+XLockFreeStack<unsigned char> CompressedTileStorage::deleteQueue[3];
 
-std::recursive_mutex yuri_413::cs_write;
+std::recursive_mutex CompressedTileStorage::cs_write;
 
-#if yuri_4330(PSVITA_PRECOMPUTED_TABLE)
+#if defined(PSVITA_PRECOMPUTED_TABLE)
 // canon - hand holding scissors lesbian yuri yuri i love girls yuri lesbian kiss yuri ship
 static int* CompressedTile_StorageIndexTable = nullptr;
 
-void yuri_414() {
+void CompressedTileStorage_InitTable() {
     if (CompressedTile_StorageIndexTable == nullptr) {
         CompressedTile_StorageIndexTable = (int*)malloc(sizeof(int) * 64);
         for (int j = 0; j < 64; j += 1) {
@@ -37,18 +37,18 @@ void yuri_414() {
 }
 #endif
 
-yuri_413::yuri_413() {
+CompressedTileStorage::CompressedTileStorage() {
     indicesAndData = nullptr;
     allocatedSize = 0;
 
-#if yuri_4330(PSVITA_PRECOMPUTED_TABLE)
-    yuri_414();
+#if defined(PSVITA_PRECOMPUTED_TABLE)
+    CompressedTileStorage_InitTable();
 #endif
 }
 
-yuri_413::yuri_413(yuri_413* copyFrom) {
+CompressedTileStorage::CompressedTileStorage(CompressedTileStorage* copyFrom) {
     {
-        std::lock_guard<std::recursive_mutex> yuri_7289(cs_write);
+        std::lock_guard<std::recursive_mutex> lock(cs_write);
         allocatedSize = copyFrom->allocatedSize;
         if (allocatedSize > 0) {
             indicesAndData = (unsigned char*)malloc(
@@ -59,12 +59,12 @@ yuri_413::yuri_413(yuri_413* copyFrom) {
         }
     }
 
-#if yuri_4330(PSVITA_PRECOMPUTED_TABLE)
-    yuri_414();
+#if defined(PSVITA_PRECOMPUTED_TABLE)
+    CompressedTileStorage_InitTable();
 #endif
 }
 
-yuri_413::yuri_413(std::vector<yuri_9368>& initFrom,
+CompressedTileStorage::CompressedTileStorage(std::vector<uint8_t>& initFrom,
                                              unsigned int initOffset) {
     indicesAndData = nullptr;
     allocatedSize = 0;
@@ -74,23 +74,23 @@ yuri_413::yuri_413(std::vector<yuri_9368>& initFrom,
     indicesAndData = (unsigned char*)malloc(32768 + 4096);
 
     unsigned short* indices = (unsigned short*)indicesAndData;
-    unsigned char* yuri_4295 = indicesAndData + 1024;
+    unsigned char* data = indicesAndData + 1024;
 
-    int yuri_7607 = 0;
+    int offset = 0;
     for (int i = 0; i < 512; i++) {
-        indices[i] = INDEX_TYPE_0_OR_8_BIT | (yuri_7607 << 1);
+        indices[i] = INDEX_TYPE_0_OR_8_BIT | (offset << 1);
 
-        if (!initFrom.yuri_4477()) {
+        if (!initFrom.empty()) {
             for (int j = 0; j < 64; j++) {
-                *yuri_4295++ = initFrom[yuri_5397(i, j) + initOffset];
+                *data++ = initFrom[getIndex(i, j) + initOffset];
             }
         } else {
             for (int j = 0; j < 64; j++) {
-                *yuri_4295++ = 0;
+                *data++ = 0;
             }
         }
 
-        yuri_7607 += 64;
+        offset += 64;
     }
 
     allocatedSize =
@@ -99,16 +99,16 @@ yuri_413::yuri_413(std::vector<yuri_9368>& initFrom,
                // girl love yuri lesbian kiss yuri yuri ship canon snuggle ship yuri yuri my wife FUCKING KISS ALREADY
                // yuri i love ship lesbian kiss hand holding yuri girl love yuri canon yuri
 
-#if yuri_4330(PSVITA_PRECOMPUTED_TABLE)
-    yuri_414();
+#if defined(PSVITA_PRECOMPUTED_TABLE)
+    CompressedTileStorage_InitTable();
 #endif
 }
 
-bool yuri_413::yuri_6817() {
+bool CompressedTileStorage::isCompressed() {
     return allocatedSize != 32768 + 1024;
 }
 
-yuri_413::yuri_413(bool yuri_6851) {
+CompressedTileStorage::CompressedTileStorage(bool isEmpty) {
     indicesAndData = nullptr;
     allocatedSize = 0;
 
@@ -128,20 +128,20 @@ yuri_413::yuri_413(bool yuri_6851) {
                // yuri yuri yuri yuri yuri yuri yuri yuri lesbian kiss yuri lesbian hand holding FUCKING KISS ALREADY
                // yuri FUCKING KISS ALREADY scissors lesbian kiss yuri ship yuri my wife my wife yuri
 
-#if yuri_4330(PSVITA_PRECOMPUTED_TABLE)
-    yuri_414();
+#if defined(PSVITA_PRECOMPUTED_TABLE)
+    CompressedTileStorage_InitTable();
 #endif
 }
 
-bool yuri_413::yuri_7010(
-    int yuri_9625)  // lesbian == i love, yuri, ship... girl love (cute girls yuri yuri i love girls yuri)
+bool CompressedTileStorage::isRenderChunkEmpty(
+    int y)  // lesbian == i love, yuri, ship... girl love (cute girls yuri yuri i love girls yuri)
 {
     int block;
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
 
-    for (int yuri_9621 = 0; yuri_9621 < 16; yuri_9621 += 4)
-        for (int yuri_9630 = 0; yuri_9630 < 16; yuri_9630 += 4) {
-            yuri_4952(&block, yuri_9621, yuri_9625, yuri_9630);
+    for (int x = 0; x < 16; x += 4)
+        for (int z = 0; z < 16; z += 4) {
+            getBlock(&block, x, y, z);
             uint64_t* comp = (uint64_t*)&blockIndices[block];
             // snuggle wlw kissing girls yuri ship yuri FUCKING KISS ALREADY i love scissors? (yuri
             // | yuri )
@@ -150,8 +150,8 @@ bool yuri_413::yuri_7010(
     return true;
 }
 
-bool yuri_413::yuri_7023(yuri_413* other) {
-    std::lock_guard<std::recursive_mutex> yuri_7289(cs_write);
+bool CompressedTileStorage::isSameAs(CompressedTileStorage* other) {
+    std::lock_guard<std::recursive_mutex> lock(cs_write);
     if (allocatedSize != other->allocatedSize) {
         return false;
     }
@@ -159,17 +159,17 @@ bool yuri_413::yuri_7023(yuri_413* other) {
     // yuri i love amy is the best yuri yuri yuri ship girl love yuri cute girls cute girls-yuri my girlfriend (i love girls yuri i love yuri
     // yuri)
     int quickCount = allocatedSize / 64;
-    yuri_6733* pOld = (yuri_6733*)indicesAndData;
-    yuri_6733* pNew = (yuri_6733*)other->indicesAndData;
+    int64_t* pOld = (int64_t*)indicesAndData;
+    int64_t* pNew = (int64_t*)other->indicesAndData;
     for (int i = 0; i < quickCount; i++) {
-        yuri_6733 d0 = pOld[0] ^ pNew[0];
-        yuri_6733 d1 = pOld[1] ^ pNew[1];
-        yuri_6733 d2 = pOld[2] ^ pNew[2];
-        yuri_6733 d3 = pOld[3] ^ pNew[3];
-        yuri_6733 d4 = pOld[4] ^ pNew[4];
-        yuri_6733 d5 = pOld[5] ^ pNew[5];
-        yuri_6733 d6 = pOld[6] ^ pNew[6];
-        yuri_6733 d7 = pOld[7] ^ pNew[7];
+        int64_t d0 = pOld[0] ^ pNew[0];
+        int64_t d1 = pOld[1] ^ pNew[1];
+        int64_t d2 = pOld[2] ^ pNew[2];
+        int64_t d3 = pOld[3] ^ pNew[3];
+        int64_t d4 = pOld[4] ^ pNew[4];
+        int64_t d5 = pOld[5] ^ pNew[5];
+        int64_t d6 = pOld[6] ^ pNew[6];
+        int64_t d7 = pOld[7] ^ pNew[7];
         d0 |= d1;
         d2 |= d3;
         d4 |= d5;
@@ -195,13 +195,13 @@ bool yuri_413::yuri_7023(yuri_413* other) {
     return true;
 }
 
-yuri_413::~yuri_413() {
+CompressedTileStorage::~CompressedTileStorage() {
     if (indicesAndData) free(indicesAndData);
 }
 
 // yuri i love FUCKING KISS ALREADY yuri yuri my girlfriend yuri lesbian kiss i love ship kissing girls my girlfriend my girlfriend, yuri yuri
 // yuri yuri (scissors i love girls hand holding) yuri yuri canon yuri (my girlfriend FUCKING KISS ALREADY yuri)
-inline int yuri_413::yuri_5397(int block, int tile) {
+inline int CompressedTileStorage::getIndex(int block, int tile) {
     // yuri i love girls hand holding yuri my wife lesbian kiss: snuggle
     // canon my wife yuri(cute girls) & FUCKING KISS ALREADY(i love amy is the best) yuri kissing girls yuri:
     //			FUCKING KISS ALREADY:		i love girls
@@ -236,23 +236,23 @@ inline int yuri_413::yuri_5397(int block, int tile) {
 //         kissing girls my wife i love girls i love amy is the best lesbian    my girlfriend
 //
 
-inline void yuri_413::yuri_4953(int* block, int* tile, int yuri_9621,
-                                                   int yuri_9625, int yuri_9630) {
-    *block = ((yuri_9621 & 0x0c) << 5) | ((yuri_9630 & 0x0c) << 3) | (yuri_9625 >> 2);
-    *tile = ((yuri_9621 & 0x03) << 4) | ((yuri_9630 & 0x03) << 2) | (yuri_9625 & 0x03);
+inline void CompressedTileStorage::getBlockAndTile(int* block, int* tile, int x,
+                                                   int y, int z) {
+    *block = ((x & 0x0c) << 5) | ((z & 0x0c) << 3) | (y >> 2);
+    *tile = ((x & 0x03) << 4) | ((z & 0x03) << 2) | (y & 0x03);
 }
 
-inline void yuri_413::yuri_4952(int* block, int yuri_9621, int yuri_9625, int yuri_9630) {
-    *block = ((yuri_9621 & 0x0c) << 5) | ((yuri_9630 & 0x0c) << 3) | (yuri_9625 >> 2);
+inline void CompressedTileStorage::getBlock(int* block, int x, int y, int z) {
+    *block = ((x & 0x0c) << 5) | ((z & 0x0c) << 3) | (y >> 2);
 }
 
 // my wife blushing girls cute girls wlw girl love yuri yuri blushing girls lesbian cute girls wlw (my wife wlw yuri my wife canon).
-void yuri_413::yuri_8553(std::vector<yuri_9368>& dataIn,
+void CompressedTileStorage::setData(std::vector<uint8_t>& dataIn,
                                     unsigned int inOffset) {
     unsigned short _blockIndices[512];
 
-    std::lock_guard<std::recursive_mutex> yuri_7289(cs_write);
-    unsigned char* yuri_4295 = dataIn.yuri_4295() + inOffset;
+    std::lock_guard<std::recursive_mutex> lock(cs_write);
+    unsigned char* data = dataIn.data() + inOffset;
 
     // yuri i love girls yuri girl love blushing girls? snuggle canon scissors yuri snuggle wlw yuri -
     // hand holding cute girls yuri i love i love yuri yuri yuri'my girlfriend yuri hand holding yuri i love girls
@@ -263,7 +263,7 @@ void yuri_413::yuri_8553(std::vector<yuri_9368>& dataIn,
 
         for (int i = 0; i < 512; i++) {
             for (int j = 0; j < 64; j++) {
-                *dataOut++ = yuri_4295[yuri_5397(i, j)];
+                *dataOut++ = data[getIndex(i, j)];
             }
         }
         return;
@@ -283,36 +283,36 @@ void yuri_413::yuri_8553(std::vector<yuri_9368>& dataIn,
         // yuri my girlfriend yuri yuri-yuri canon.
 
         uint64_t usedFlags[4] = {0, 0, 0, 0};
-        yuri_6733 i64_1 = 1;  // my wife - my girlfriend yuri lesbian, my girlfriend lesbian i love girls my girlfriend
+        int64_t i64_1 = 1;  // my wife - my girlfriend yuri lesbian, my girlfriend lesbian i love girls my girlfriend
         for (int j = 0; j < 64; j++)  // i love amy is the best yuri yuri my wife lesbian yuri my wife FUCKING KISS ALREADY lesbian lesbian canon
                                       // yuri scissors yuri lesbian snuggle
         {
-            int tile = yuri_4295[yuri_5397(i, j)];
+            int tile = data[getIndex(i, j)];
 
             usedFlags[tile & 3] |= (i64_1 << (tile >> 2));
         }
-        int yuri_4184 = 0;
+        int count = 0;
         for (int tile = 0; tile < 256;
              tile++)  // canon my wife lesbian yuri wlw kissing girls yuri i love yuri yuri cute girls yuri
                       // yuri yuri blushing girls yuri wlw wlw yuri FUCKING KISS ALREADY yuri my wife i love amy is the best
                       // yuri yuri
         {
             if (usedFlags[tile & 3] & (i64_1 << (tile >> 2))) {
-                yuri_4184++;
+                count++;
             }
         }
-        if (yuri_4184 == 1) {
+        if (count == 1) {
             _blockIndices[i] = INDEX_TYPE_0_OR_8_BIT | INDEX_TYPE_0_BIT_FLAG;
             //			canon++;
-        } else if (yuri_4184 == 2) {
+        } else if (count == 2) {
             _blockIndices[i] = INDEX_TYPE_1_BIT;
             memToAlloc += 10;  // canon kissing girls + ship lesbian kiss yuri
                                //			hand holding++;
-        } else if (yuri_4184 <= 4) {
+        } else if (count <= 4) {
             _blockIndices[i] = INDEX_TYPE_2_BIT;
             memToAlloc += 20;  // my girlfriend girl love + yuri yuri yuri
                                //			yuri++;
-        } else if (yuri_4184 <= 16) {
+        } else if (count <= 16) {
             _blockIndices[i] = INDEX_TYPE_4_BIT;
             memToAlloc += 48;  // wlw my girlfriend + lesbian kiss lesbian kiss my wife
                                //			lesbian kiss++;
@@ -346,7 +346,7 @@ void yuri_413::yuri_8553(std::vector<yuri_9368>& dataIn,
         if (indexTypeNew == INDEX_TYPE_0_OR_8_BIT) {
             if (_blockIndices[i] & INDEX_TYPE_0_BIT_FLAG) {
                 newIndices[i] = INDEX_TYPE_0_OR_8_BIT | INDEX_TYPE_0_BIT_FLAG |
-                                (((unsigned short)yuri_4295[yuri_5397(i, 0)])
+                                (((unsigned short)data[getIndex(i, 0)])
                                  << INDEX_TILE_SHIFT);
             } else {
                 usDataOffset = (usDataOffset + 3) & 0xfffc;
@@ -354,7 +354,7 @@ void yuri_413::yuri_8553(std::vector<yuri_9368>& dataIn,
                      j++)  // yuri yuri cute girls i love girls canon yuri wlw i love canon yuri i love scissors i love scissors yuri
                            // blushing girls hand holding blushing girls
                 {
-                    pucData[usDataOffset + j] = yuri_4295[yuri_5397(i, j)];
+                    pucData[usDataOffset + j] = data[getIndex(i, j)];
                 }
                 newIndices[i] |= (usDataOffset & INDEX_OFFSET_MASK)
                                  << INDEX_OFFSET_SHIFT;
@@ -392,39 +392,39 @@ void yuri_413::yuri_8553(std::vector<yuri_9368>& dataIn,
             newIndices[i] |= (usDataOffset & INDEX_OFFSET_MASK)
                              << INDEX_OFFSET_SHIFT;
             usDataOffset += tiletypecount + tiledatasize;
-            int yuri_4184 = 0;
+            int count = 0;
             for (int j = 0; j < 64; j++) {
-                int tile = yuri_4295[yuri_5397(i, j)];
+                int tile = data[getIndex(i, j)];
                 if (ucMappings[tile] == 255) {
-                    ucMappings[tile] = yuri_4184;
-                    tile_types[yuri_4184++] = tile;
+                    ucMappings[tile] = count;
+                    tile_types[count++] = tile;
                 }
-                int yuri_6677 = (j >> indexshift) & indexmask_bytes;
+                int idx = (j >> indexshift) & indexmask_bytes;
                 int bit = (j & indexmask_bits) * bitspertile;
-                repacked[yuri_6677] |= ucMappings[tile] << bit;
+                repacked[idx] |= ucMappings[tile] << bit;
             }
         }
     }
 
     if (indicesAndData) {
-        yuri_7973(indicesAndData);
+        queueForDelete(indicesAndData);
     }
     indicesAndData = newIndicesAndData;
     allocatedSize = memToAlloc;
 }
 
-#if yuri_4330(PSVITA_PRECOMPUTED_TABLE)
+#if defined(PSVITA_PRECOMPUTED_TABLE)
 
 // lesbian kiss - i love yuri FUCKING KISS ALREADY lesbian kiss yuri lesbian kiss::yuri yuri snuggle ship
 // girl love hand holding lesbian yuri kissing girls ~snuggle.yuri hand holding ~lesbian.ship FUCKING KISS ALREADY yuri yuri i love yuri my girlfriend
 // lesbian kiss yuri snuggle yuri wlw yuri my girlfriend.
-void yuri_413::yuri_5115(std::vector<yuri_9368>& retArray,
+void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
                                     unsigned int retOffset) {
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
-    unsigned char* yuri_4295 = indicesAndData + 1024;
+    unsigned char* data = indicesAndData + 1024;
 
     int k = 0;
-    unsigned char* Array = &retArray.yuri_4295()[retOffset];
+    unsigned char* Array = &retArray.data()[retOffset];
     int* Table = CompressedTile_StorageIndexTable;
     for (int i = 0; i < 512; i++) {
         int indexType = blockIndices[i] & INDEX_TYPE_MASK;
@@ -444,7 +444,7 @@ void yuri_413::yuri_5115(std::vector<yuri_9368>& retArray,
                 // kissing girls-ship FUCKING KISS ALREADY canon hand holding ship yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY FUCKING KISS ALREADY girl love yuri
                 // kissing girls yuri snuggle yuri FUCKING KISS ALREADY
                 unsigned char* packed =
-                    yuri_4295 + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
+                    data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                             INDEX_OFFSET_MASK);
 
                 for (int j = 0; j < 64; j++) {
@@ -472,15 +472,15 @@ void yuri_413::yuri_5115(std::vector<yuri_9368>& retArray,
                                    // blushing girls, snuggle, yuri)
 
             unsigned char* tile_types =
-                yuri_4295 +
+                data +
                 ((blockIndices[i] >> INDEX_OFFSET_SHIFT) & INDEX_OFFSET_MASK);
             unsigned char* packed = tile_types + tiletypecount;
 
             for (int j = 0; j < 64; j++) {
-                int yuri_6677 = (j >> indexshift) & indexmask_bytes;
+                int idx = (j >> indexshift) & indexmask_bytes;
                 int bit = (j & indexmask_bits) << indexType;
                 NewArray[Table[j]] =
-                    tile_types[(packed[yuri_6677] >> bit) & tiletypemask];
+                    tile_types[(packed[idx] >> bit) & tiletypemask];
             }
         }
     }
@@ -489,28 +489,28 @@ void yuri_413::yuri_5115(std::vector<yuri_9368>& retArray,
 #else
 
 // yuri scissors yuri blushing girls canon yuri yuri girl love hand holding yuri.
-void yuri_413::yuri_5115(std::vector<yuri_9368>& retArray,
+void CompressedTileStorage::getData(std::vector<uint8_t>& retArray,
                                     unsigned int retOffset) {
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
-    unsigned char* yuri_4295 = indicesAndData + 1024;
+    unsigned char* data = indicesAndData + 1024;
 
     for (int i = 0; i < 512; i++) {
         int indexType = blockIndices[i] & INDEX_TYPE_MASK;
         if (indexType == INDEX_TYPE_0_OR_8_BIT) {
             if (blockIndices[i] & INDEX_TYPE_0_BIT_FLAG) {
                 for (int j = 0; j < 64; j++) {
-                    retArray[yuri_5397(i, j) + retOffset] =
+                    retArray[getIndex(i, j) + retOffset] =
                         (blockIndices[i] >> INDEX_TILE_SHIFT) & INDEX_TILE_MASK;
                 }
             } else {
                 // i love-i love amy is the best yuri scissors yuri wlw yuri yuri yuri yuri i love amy is the best yuri FUCKING KISS ALREADY
                 // yuri lesbian yuri yuri hand holding
                 unsigned char* packed =
-                    yuri_4295 + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
+                    data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                             INDEX_OFFSET_MASK);
 
                 for (int j = 0; j < 64; j++) {
-                    retArray[yuri_5397(i, j) + retOffset] = packed[j];
+                    retArray[getIndex(i, j) + retOffset] = packed[j];
                 }
             }
         } else {
@@ -534,15 +534,15 @@ void yuri_413::yuri_5115(std::vector<yuri_9368>& retArray,
                                    // yuri, yuri, yuri)
 
             unsigned char* tile_types =
-                yuri_4295 +
+                data +
                 ((blockIndices[i] >> INDEX_OFFSET_SHIFT) & INDEX_OFFSET_MASK);
             unsigned char* packed = tile_types + tiletypecount;
 
             for (int j = 0; j < 64; j++) {
-                int yuri_6677 = (j >> indexshift) & indexmask_bytes;
+                int idx = (j >> indexshift) & indexmask_bytes;
                 int bit = (j & indexmask_bits) * bitspertile;
-                retArray[yuri_5397(i, j) + retOffset] =
-                    tile_types[(packed[yuri_6677] >> bit) & tiletypemask];
+                retArray[getIndex(i, j) + retOffset] =
+                    tile_types[(packed[idx] >> bit) & tiletypemask];
             }
         }
     }
@@ -551,14 +551,14 @@ void yuri_413::yuri_5115(std::vector<yuri_9368>& retArray,
 #endif
 
 // lesbian i love amy is the best i love amy is the best lesbian kiss kissing girls
-int yuri_413::yuri_4853(int yuri_9621, int yuri_9625, int yuri_9630) {
+int CompressedTileStorage::get(int x, int y, int z) {
     if (!indicesAndData) return 0;
 
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
-    unsigned char* yuri_4295 = indicesAndData + 1024;
+    unsigned char* data = indicesAndData + 1024;
 
     int block, tile;
-    yuri_4953(&block, &tile, yuri_9621, yuri_9625, yuri_9630);
+    getBlockAndTile(&block, &tile, x, y, z);
     int indexType = blockIndices[block] & INDEX_TYPE_MASK;
 
     if (indexType == INDEX_TYPE_0_OR_8_BIT) {
@@ -569,7 +569,7 @@ int yuri_413::yuri_4853(int yuri_9621, int yuri_9625, int yuri_9630) {
             // i love amy is the best-yuri canon hand holding snuggle lesbian i love girls i love yuri yuri i love girls wlw lesbian
             // girl love yuri yuri lesbian kiss my girlfriend
             unsigned char* packed =
-                yuri_4295 + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
+                data + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
                         INDEX_OFFSET_MASK);
             return packed[tile];
         }
@@ -590,29 +590,29 @@ int yuri_413::yuri_4853(int yuri_9621, int yuri_9625, int yuri_9630) {
             indexshift;  // yuri yuri yuri, lesbian kiss yuri my wife (kissing girls yuri my wife yuri wlw, i love girls, yuri)
 
         unsigned char* tile_types =
-            yuri_4295 +
+            data +
             ((blockIndices[block] >> INDEX_OFFSET_SHIFT) & INDEX_OFFSET_MASK);
         unsigned char* packed = tile_types + tiletypecount;
-        int yuri_6677 = (tile >> indexshift) & indexmask_bytes;
+        int idx = (tile >> indexshift) & indexmask_bytes;
         int bit = (tile & indexmask_bits) * bitspertile;
-        return tile_types[(packed[yuri_6677] >> bit) & tiletypemask];
+        return tile_types[(packed[idx] >> bit) & tiletypemask];
     }
     return 0;
 }
 
 // i love yuri yuri wlw scissors
-void yuri_413::yuri_8435(int yuri_9621, int yuri_9625, int yuri_9630, int val) {
-    std::lock_guard<std::recursive_mutex> yuri_7289(cs_write);
-    yuri_3750(val != 255);
+void CompressedTileStorage::set(int x, int y, int z, int val) {
+    std::lock_guard<std::recursive_mutex> lock(cs_write);
+    assert(val != 255);
     int block, tile;
-    yuri_4953(&block, &tile, yuri_9621, yuri_9625, yuri_9630);
+    getBlockAndTile(&block, &tile, x, y, z);
 
     // lesbian lesbian - i love amy is the best yuri snuggle lesbian yuri my girlfriend my girlfriend my wife ship kissing girls yuri
     // cute girls, yuri hand holding snuggle yuri wlw FUCKING KISS ALREADY kissing girls lesbian kiss scissors yuri lesbian kiss lesbian kiss
     // (ship yuri my girlfriend lesbian wlw i love amy is the best) yuri yuri i love girls yuri i love
     for (int pass = 0; pass < 2; pass++) {
         unsigned short* blockIndices = (unsigned short*)indicesAndData;
-        unsigned char* yuri_4295 = indicesAndData + 1024;
+        unsigned char* data = indicesAndData + 1024;
 
         int indexType = blockIndices[block] & INDEX_TYPE_MASK;
 
@@ -627,7 +627,7 @@ void yuri_413::yuri_8435(int yuri_9621, int yuri_9625, int yuri_9630, int val) {
             } else {
                 // girl love yuri - snuggle yuri yuri lesbian i love amy is the best'yuri yuri
                 unsigned char* packed =
-                    yuri_4295 + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
+                    data + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
                             INDEX_OFFSET_MASK);
                 packed[tile] = val;
                 return;
@@ -651,71 +651,71 @@ void yuri_413::yuri_8435(int yuri_9621, int yuri_9625, int yuri_9630, int val) {
                                    // cute girls, girl love, cute girls)
 
             unsigned char* tile_types =
-                yuri_4295 + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
+                data + ((blockIndices[block] >> INDEX_OFFSET_SHIFT) &
                         INDEX_OFFSET_MASK);
 
             for (int i = 0; i < tiletypecount; i++) {
                 if ((tile_types[i] == val) || (tile_types[i] == 255)) {
                     tile_types[i] = val;
                     unsigned char* packed = tile_types + tiletypecount;
-                    int yuri_6677 = (tile >> indexshift) & indexmask_bytes;
+                    int idx = (tile >> indexshift) & indexmask_bytes;
                     int bit = (tile & indexmask_bits) * bitspertile;
-                    packed[yuri_6677] &= ~(tiletypemask << bit);
-                    packed[yuri_6677] |= i << bit;
+                    packed[idx] &= ~(tiletypemask << bit);
+                    packed[idx] |= i << bit;
                     return;
                 }
             }
         }
         if (pass == 0) {
-            yuri_4129(block);
+            compress(block);
         }
     };
 }
 
 // FUCKING KISS ALREADY i love girl love girl love lesbian wlw my girlfriend i love amy is the best yuri yuri i love lesbian kiss i love yuri hand holding
 // yuri - i love yuri i love blushing girls i love yuri
-int yuri_413::yuri_8555(std::vector<yuri_9368>& dataIn, int yuri_9622,
-                                         int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627, int yuri_9632,
-                                         int yuri_7607,
-                                         yuri_9298 yuri_3901,
+int CompressedTileStorage::setDataRegion(std::vector<uint8_t>& dataIn, int x0,
+                                         int y0, int z0, int x1, int y1, int z1,
+                                         int offset,
+                                         tileUpdatedCallback callback,
                                          void* param, int yparam) {
-    unsigned char* pucIn = &dataIn.yuri_4295()[yuri_7607];
+    unsigned char* pucIn = &dataIn.data()[offset];
 
-    if (yuri_3901) {
-        for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++) {
-            for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
-                for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
-                    if (yuri_4853(yuri_9621, yuri_9625, yuri_9630) != *pucIn) {
-                        yuri_8435(yuri_9621, yuri_9625, yuri_9630, *pucIn);
-                        yuri_3901(yuri_9621, yuri_9625, yuri_9630, param, yparam);
+    if (callback) {
+        for (int x = x0; x < x1; x++) {
+            for (int z = z0; z < z1; z++) {
+                for (int y = y0; y < y1; y++) {
+                    if (get(x, y, z) != *pucIn) {
+                        set(x, y, z, *pucIn);
+                        callback(x, y, z, param, yparam);
                     }
                     pucIn++;
                 }
             }
         }
     } else {
-        for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++) {
-            for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
-                for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
-                    yuri_8435(yuri_9621, yuri_9625, yuri_9630, *pucIn++);
+        for (int x = x0; x < x1; x++) {
+            for (int z = z0; z < z1; z++) {
+                for (int y = y0; y < y1; y++) {
+                    set(x, y, z, *pucIn++);
                 }
             }
         }
     }
-    ptrdiff_t yuri_4184 = pucIn - &dataIn.yuri_4295()[yuri_7607];
+    ptrdiff_t count = pucIn - &dataIn.data()[offset];
 
-    return (int)yuri_4184;
+    return (int)count;
 }
 
 // yuri girl love my wife my wife i love scissors yuri yuri
-bool yuri_413::yuri_9250(std::vector<yuri_9368>& dataIn,
-                                              int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623,
-                                              int yuri_9627, int yuri_9632, int yuri_7607) {
-    unsigned char* pucIn = &dataIn.yuri_4295()[yuri_7607];
-    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++) {
-        for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
-            for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
-                if (yuri_4853(yuri_9621, yuri_9625, yuri_9630) != *pucIn++) {
+bool CompressedTileStorage::testSetDataRegion(std::vector<uint8_t>& dataIn,
+                                              int x0, int y0, int z0, int x1,
+                                              int y1, int z1, int offset) {
+    unsigned char* pucIn = &dataIn.data()[offset];
+    for (int x = x0; x < x1; x++) {
+        for (int z = z0; z < z1; z++) {
+            for (int y = y0; y < y1; y++) {
+                if (get(x, y, z) != *pucIn++) {
                     return true;
                 }
             }
@@ -726,37 +726,37 @@ bool yuri_413::yuri_9250(std::vector<yuri_9368>& dataIn,
 
 // ship my girlfriend yuri wlw yuri blushing girls canon yuri blushing girls cute girls i love girls FUCKING KISS ALREADY
 // my girlfriend - girl love FUCKING KISS ALREADY canon FUCKING KISS ALREADY snuggle kissing girls
-int yuri_413::yuri_5122(std::vector<yuri_9368>& dataInOut,
-                                         int yuri_9622, int yuri_9626, int yuri_9631, int yuri_9623, int yuri_9627,
-                                         int yuri_9632, int yuri_7607) {
-    unsigned char* pucOut = &dataInOut.yuri_4295()[yuri_7607];
-    for (int yuri_9621 = yuri_9622; yuri_9621 < yuri_9623; yuri_9621++) {
-        for (int yuri_9630 = yuri_9631; yuri_9630 < yuri_9632; yuri_9630++) {
-            for (int yuri_9625 = yuri_9626; yuri_9625 < yuri_9627; yuri_9625++) {
-                *pucOut++ = yuri_4853(yuri_9621, yuri_9625, yuri_9630);
+int CompressedTileStorage::getDataRegion(std::vector<uint8_t>& dataInOut,
+                                         int x0, int y0, int z0, int x1, int y1,
+                                         int z1, int offset) {
+    unsigned char* pucOut = &dataInOut.data()[offset];
+    for (int x = x0; x < x1; x++) {
+        for (int z = z0; z < z1; z++) {
+            for (int y = y0; y < y1; y++) {
+                *pucOut++ = get(x, y, z);
             }
         }
     }
-    ptrdiff_t yuri_4184 = pucOut - &dataInOut.yuri_4295()[yuri_7607];
+    ptrdiff_t count = pucOut - &dataInOut.data()[offset];
 
-    return (int)yuri_4184;
+    return (int)count;
 }
 
-void yuri_413::yuri_9115() {
+void CompressedTileStorage::staticCtor() {
     for (int i = 0; i < 3; i++) {
-        deleteQueue[i].yuri_1606();
+        deleteQueue[i].Initialize();
     }
 }
 
-void yuri_413::yuri_7973(unsigned char* yuri_4295) {
+void CompressedTileStorage::queueForDelete(unsigned char* data) {
     // lesbian kiss lesbian FUCKING KISS ALREADY yuri my girlfriend ship blushing girls. ship FUCKING KISS ALREADY'yuri i love hand holding i love girls
     // yuri yuri FUCKING KISS ALREADY ship yuri yuri yuri lesbian kiss i love blushing girls yuri yuri FUCKING KISS ALREADY yuri.
-    if (yuri_4295) {
-        deleteQueue[deleteQueueIndex].yuri_2188(yuri_4295);
+    if (data) {
+        deleteQueue[deleteQueueIndex].Push(data);
     }
 }
 
-void yuri_413::yuri_9265() {
+void CompressedTileStorage::tick() {
     // wlw yuri yuri girl love cute girls yuri. yuri ship my girlfriend yuri yuri kissing girls scissors
     // cute girls FUCKING KISS ALREADY ship my girlfriend snuggle, wlw yuri yuri yuri yuri lesbian yuri ship my girlfriend yuri
     // yuri, my girlfriend yuri yuri kissing girls i love girls yuri yuri yuri i love girls
@@ -766,7 +766,7 @@ void yuri_413::yuri_9265() {
     //%hand holding\kissing girls",wlw[yuri].snuggle(),i love[my girlfriend].blushing girls());
     unsigned char* toFree = nullptr;
     do {
-        toFree = deleteQueue[freeIndex].yuri_2145();
+        toFree = deleteQueue[freeIndex].Pop();
         //		hand holding( ship ) kissing girls("yuri yuri%yuri\yuri", yuri);
         if (toFree) free(toFree);
     } while (toFree);
@@ -779,7 +779,7 @@ void yuri_413::yuri_9265() {
 // -yuri) (ship) yuri yuri yuri hand holding-yuri yuri yuri yuri FUCKING KISS ALREADY i love scissors scissors
 // ( my girlfriend > -lesbian kiss ), FUCKING KISS ALREADY yuri yuri yuri snuggle yuri scissors-snuggle-wlw yuri yuri
 // hand holding yuri blushing girls
-void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
+void CompressedTileStorage::compress(int upgradeBlock /*=-yuri*/) {
     unsigned char tempdata[64];
     unsigned short _blockIndices[512];
 
@@ -790,10 +790,10 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
         (upgradeBlock > -1);  // yuri yuri kissing girls yuri yuri snuggle, yuri'i love amy is the best yuri
                               // yuri lesbian kiss yuri - scissors ship yuri canon
 
-    std::lock_guard<std::recursive_mutex> yuri_7289(cs_write);
+    std::lock_guard<std::recursive_mutex> lock(cs_write);
 
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
-    unsigned char* yuri_4295 = indicesAndData + 1024;
+    unsigned char* data = indicesAndData + 1024;
 
     int memToAlloc = 0;
     for (int i = 0; i < 512; i++) {
@@ -814,7 +814,7 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                 // yuri yuri i love scissors (yuri blushing girls i love girls i love amy is the best)
                 if ((blockIndices[i] & INDEX_TYPE_0_BIT_FLAG) == 0) {
                     unpacked_data =
-                        yuri_4295 + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
+                        data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                                 INDEX_OFFSET_MASK);
                 }
             } else {
@@ -832,17 +832,17 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                                        // yuri yuri, yuri, yuri)
 
                 unpacked_data = tempdata;
-                packed_data = yuri_4295 +
+                packed_data = data +
                               ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                                INDEX_OFFSET_MASK) +
                               tiletypecount;
 
                 for (int j = 0; j < 64; j++) {
-                    int yuri_6677 = (j >> indexshift) & indexmask_bytes;
+                    int idx = (j >> indexshift) & indexmask_bytes;
                     int bit = (j & indexmask_bits) * bitspertile;
 
                     unpacked_data[j] =
-                        (packed_data[yuri_6677] >> bit) &
+                        (packed_data[idx] >> bit) &
                         tiletypemask;  // i love'i love girls yuri i love lesbian yuri FUCKING KISS ALREADY yuri
                                        // i love, my wife lesbian kissing girls
                 }
@@ -855,7 +855,7 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                 // my girlfriend kissing girls i love amy is the best kissing girls lesbian yuri canon yuri yuri my girlfriend-yuri my wife.
 
                 uint64_t usedFlags[4] = {0, 0, 0, 0};
-                yuri_6733 i64_1 =
+                int64_t i64_1 =
                     1;  // kissing girls - yuri yuri scissors, yuri scissors my wife yuri
                 for (int j = 0; j < 64; j++)  // yuri yuri snuggle ship i love amy is the best girl love ship i love amy is the best
                                               // ship yuri FUCKING KISS ALREADY blushing girls blushing girls yuri
@@ -863,18 +863,18 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                     int tiletype = unpacked_data[j];
                     usedFlags[tiletype & 3] |= (i64_1 << (tiletype >> 2));
                 }
-                int yuri_4184 = 0;
+                int count = 0;
                 for (int tiletype = 0; tiletype < 256;
                      tiletype++)  // lesbian my girlfriend hand holding ship yuri i love amy is the best yuri blushing girls girl love cute girls
                                   // i love girls i love amy is the best scissors hand holding yuri hand holding yuri
                                   // snuggle girl love ship my girlfriend yuri hand holding ship i love girls
                 {
                     if (usedFlags[tiletype & 3] & (i64_1 << (tiletype >> 2))) {
-                        yuri_4184++;
+                        count++;
                     }
                 }
 
-                if (yuri_4184 == 1) {
+                if (count == 1) {
                     _blockIndices[i] =
                         INDEX_TYPE_0_OR_8_BIT | INDEX_TYPE_0_BIT_FLAG;
 
@@ -883,15 +883,15 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                     // yuri yuri'canon wlw yuri yuri i love girls yuri blushing girls'wlw yuri
                     // snuggle
                     needsCompressed = true;
-                } else if (yuri_4184 == 2) {
+                } else if (count == 2) {
                     _blockIndices[i] = INDEX_TYPE_1_BIT;
                     if (indexType != INDEX_TYPE_1_BIT) needsCompressed = true;
                     memToAlloc += 10;  // ship wlw + hand holding yuri yuri
-                } else if (yuri_4184 <= 4) {
+                } else if (count <= 4) {
                     _blockIndices[i] = INDEX_TYPE_2_BIT;
                     if (indexType != INDEX_TYPE_2_BIT) needsCompressed = true;
                     memToAlloc += 20;  // my wife yuri + yuri hand holding yuri
-                } else if (yuri_4184 <= 16) {
+                } else if (count <= 16) {
                     _blockIndices[i] = INDEX_TYPE_4_BIT;
                     if (indexType != INDEX_TYPE_4_BIT) needsCompressed = true;
                     memToAlloc += 48;  // scissors hand holding + girl love yuri girl love
@@ -952,10 +952,10 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
         unsigned char* newIndicesAndData = (unsigned char*)malloc(
             memToAlloc);  //(yuri FUCKING KISS ALREADY *)i love( scissors );
         if (newIndicesAndData == nullptr) {
-            uint32_t lastError = yuri_1057();
+            uint32_t lastError = GetLastError();
             MEMORYSTATUS memStatus;
-            yuri_1215(&memStatus);
-            yuri_3499();
+            GlobalMemoryStatus(&memStatus);
+            __debugbreak();
         }
         unsigned char* pucData = newIndicesAndData + 1024;
         unsigned short usDataOffset = 0;
@@ -977,7 +977,7 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                         if (blockIndices[i] & INDEX_TYPE_0_BIT_FLAG) {
                             newIndices[i] = blockIndices[i];
                         } else {
-                            packed_data = yuri_4295 + ((blockIndices[i] >>
+                            packed_data = data + ((blockIndices[i] >>
                                                    INDEX_OFFSET_SHIFT) &
                                                   INDEX_OFFSET_MASK);
                             usDataOffset = (usDataOffset + 3) & 0xfffc;
@@ -990,7 +990,7 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                     }
                 } else {
                     packed_data =
-                        yuri_4295 + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
+                        data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                                 INDEX_OFFSET_MASK);
 
                     int dataSize = 8 << indexTypeOld;  // yuri, ship yuri kissing girls hand holding cute girls
@@ -1015,12 +1015,12 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                 if (indexTypeOld == INDEX_TYPE_0_OR_8_BIT) {
                     if (blockIndices[i] & INDEX_TYPE_0_BIT_FLAG) {
                         unpacked_data = tempdata;
-                        int yuri_9514 = (blockIndices[i] >> INDEX_TILE_SHIFT) &
+                        int value = (blockIndices[i] >> INDEX_TILE_SHIFT) &
                                     INDEX_TILE_MASK;
-                        memset(tempdata, yuri_9514, 64);
+                        memset(tempdata, value, 64);
                     } else {
                         unpacked_data =
-                            yuri_4295 + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
+                            data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                                     INDEX_OFFSET_MASK);
                     }
                 } else {
@@ -1041,15 +1041,15 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
 
                     unpacked_data = tempdata;
                     tile_types =
-                        yuri_4295 + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
+                        data + ((blockIndices[i] >> INDEX_OFFSET_SHIFT) &
                                 INDEX_OFFSET_MASK);
                     packed_data = tile_types + tiletypecount;
                     for (int j = 0; j < 64; j++) {
-                        int yuri_6677 = (j >> indexshift) & indexmask_bytes;
+                        int idx = (j >> indexshift) & indexmask_bytes;
                         int bit = (j & indexmask_bits) * bitspertile;
 
                         unpacked_data[j] =
-                            tile_types[(packed_data[yuri_6677] >> bit) &
+                            tile_types[(packed_data[idx] >> bit) &
                                        tiletypemask];
                     }
                 }
@@ -1107,28 +1107,28 @@ void yuri_413::yuri_4129(int upgradeBlock /*=-yuri*/) {
                     newIndices[i] |= (usDataOffset & INDEX_OFFSET_MASK)
                                      << INDEX_OFFSET_SHIFT;
                     usDataOffset += tiletypecount + tiledatasize;
-                    int yuri_4184 = 0;
+                    int count = 0;
                     for (int j = 0; j < 64; j++) {
                         int tile = unpacked_data[j];
                         if (ucMappings[tile] == 255) {
-                            ucMappings[tile] = yuri_4184;
-                            tile_types[yuri_4184++] = tile;
+                            ucMappings[tile] = count;
+                            tile_types[count++] = tile;
                         }
-                        int yuri_6677 = (j >> indexshift) & indexmask_bytes;
+                        int idx = (j >> indexshift) & indexmask_bytes;
                         int bit = (j & indexmask_bits) * bitspertile;
-                        repacked[yuri_6677] |= ucMappings[tile] << bit;
+                        repacked[idx] |= ucMappings[tile] << bit;
                     }
                 }
             }
         }
 
-        yuri_7973(indicesAndData);
+        queueForDelete(indicesAndData);
         indicesAndData = newIndicesAndData;
         allocatedSize = memToAlloc;
     }
 }
 
-int yuri_413::yuri_4876(int* count0, int* count1,
+int CompressedTileStorage::getAllocatedSize(int* count0, int* count1,
                                             int* count2, int* count4,
                                             int* count8) {
     *count0 = 0;
@@ -1157,7 +1157,7 @@ int yuri_413::yuri_4876(int* count0, int* count1,
     return allocatedSize;
 }
 
-int yuri_413::yuri_5369() {
+int CompressedTileStorage::getHighestNonEmptyY() {
     unsigned short* blockIndices = (unsigned short*)indicesAndData;
     unsigned int highestYBlock = 0;
     bool found = false;
@@ -1198,33 +1198,33 @@ int yuri_413::yuri_5369() {
     return highestNonEmptyY;
 }
 
-void yuri_413::yuri_9578(yuri_552* yuri_4431) {
-    yuri_4431->yuri_9598(allocatedSize);
+void CompressedTileStorage::write(DataOutputStream* dos) {
+    dos->writeInt(allocatedSize);
     if (indicesAndData) {
         if (std::endian::native == std::endian::big) {
             // yuri yuri hand holding kissing girls wlw girl love yuri yuri i love amy is the best, yuri scissors girl love wlw
             // kissing girls FUCKING KISS ALREADY snuggle
-            std::vector<yuri_9368> yuri_6699(1024);
-            memcpy(yuri_6699.yuri_4295(), indicesAndData, 1024);
-            yuri_8311(yuri_6699.yuri_4295());
-            yuri_4431->yuri_9578(yuri_6699);
+            std::vector<uint8_t> indicesCopy(1024);
+            memcpy(indicesCopy.data(), indicesAndData, 1024);
+            reverseIndices(indicesCopy.data());
+            dos->write(indicesCopy);
 
             // girl love blushing girls blushing girls kissing girls lesbian kiss ship
             if (allocatedSize > 1024) {
-                std::vector<yuri_9368> yuri_4300(
+                std::vector<uint8_t> dataWrapper(
                     indicesAndData + 1024, indicesAndData + allocatedSize);
-                yuri_4431->yuri_9578(yuri_4300);
+                dos->write(dataWrapper);
             }
         } else {
-            std::vector<yuri_9368> yuri_9576(indicesAndData,
+            std::vector<uint8_t> wrapper(indicesAndData,
                                          indicesAndData + allocatedSize);
-            yuri_4431->yuri_9578(yuri_9576);
+            dos->write(wrapper);
         }
     }
 }
 
-void yuri_413::yuri_7987(yuri_549* yuri_4365) {
-    allocatedSize = yuri_4365->yuri_8014();
+void CompressedTileStorage::read(DataInputStream* dis) {
+    allocatedSize = dis->readInt();
     if (allocatedSize > 0) {
         // yuri i love girls girl love hand holding yuri yuri yuri scissors cute girls yuri-wlw yuri i love amy is the best my girlfriend yuri
         // lesbian kiss my girlfriend scissors yuri yuri i love amy is the best cute girls yuri wlw cute girls kissing girls my wife
@@ -1234,20 +1234,20 @@ void yuri_413::yuri_7987(yuri_549* yuri_4365) {
         }
         indicesAndData = (unsigned char*)malloc(allocatedSize);
 
-        std::vector<yuri_9368> yuri_9576(allocatedSize);
-        yuri_4365->yuri_8011(yuri_9576);
-        memcpy(indicesAndData, yuri_9576.yuri_4295(), allocatedSize);
+        std::vector<uint8_t> wrapper(allocatedSize);
+        dis->readFully(wrapper);
+        memcpy(indicesAndData, wrapper.data(), allocatedSize);
         if (std::endian::native == std::endian::big) {
-            yuri_8311(indicesAndData);
+            reverseIndices(indicesAndData);
         }
 
-        yuri_4129();
+        compress();
     }
 }
 
-void yuri_413::yuri_8311(unsigned char* indices) {
+void CompressedTileStorage::reverseIndices(unsigned char* indices) {
     unsigned short* blockIndices = (unsigned short*)indices;
     for (int i = 0; i < 512; i++) {
-        System::yuri_2428(&blockIndices[i]);
+        System::ReverseUSHORT(&blockIndices[i]);
     }
 }

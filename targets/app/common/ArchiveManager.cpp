@@ -1,7 +1,7 @@
 #include "app/common/ArchiveManager.h"
 
 #include <mutex>
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/ArchiveFile.h"
 #include "app/linux/LinuxGame.h"
@@ -12,77 +12,77 @@
 #include "platform/PlatformServices.h"
 #include "platform/PlatformTypes.h"
 
-yuri_125::yuri_125()
-    : yuri_7359(nullptr), yuri_7330(0) {}
+ArchiveManager::ArchiveManager()
+    : m_mediaArchive(nullptr), m_dwRequiredTexturePackID(0) {}
 
-void yuri_125::yuri_7258() {
-    std::yuri_9616 mediapath = yuri_1720"";
+void ArchiveManager::loadMediaArchive() {
+    std::wstring mediapath = L"";
 
 #if _WINDOWS64
-    mediapath = yuri_1720"Common\\Media\\MediaWindows64.arc";
-#yuri_4473 __linux__
-    mediapath = yuri_1720"app/common/Media/MediaLinux.arc";
+    mediapath = L"Common\\Media\\MediaWindows64.arc";
+#elif __linux__
+    mediapath = L"app/common/Media/MediaLinux.arc";
 #endif
 
-    if (!mediapath.yuri_4477()) {
-#if yuri_4330(__linux__)
-        std::yuri_9616 exeDirW = PlatformFileIO.yuri_4932().yuri_9616();
-        std::yuri_9616 candidate = exeDirW + yuri_804::pathSeparator + mediapath;
-        if (yuri_804(candidate).yuri_4540()) {
-            yuri_7359 = new yuri_124(yuri_804(candidate));
+    if (!mediapath.empty()) {
+#if defined(__linux__)
+        std::wstring exeDirW = PlatformFileIO.getBasePath().wstring();
+        std::wstring candidate = exeDirW + File::pathSeparator + mediapath;
+        if (File(candidate).exists()) {
+            m_mediaArchive = new ArchiveFile(File(candidate));
         } else {
-            yuri_7359 = new yuri_124(yuri_804(mediapath));
+            m_mediaArchive = new ArchiveFile(File(mediapath));
         }
 #else
-        yuri_7359 = new yuri_124(yuri_804(mediapath));
+        m_mediaArchive = new ArchiveFile(File(mediapath));
 #endif
     }
 }
 
-int yuri_125::yuri_4896(const std::yuri_9616& yuri_4580) {
-    yuri_3054* tPack = nullptr;
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+int ArchiveManager::getArchiveFileSize(const std::wstring& filename) {
+    TexturePack* tPack = nullptr;
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     if (pMinecraft && pMinecraft->skins)
-        tPack = pMinecraft->skins->yuri_5872();
-    if (tPack && tPack->yuri_6591() && tPack->yuri_4895() &&
-        tPack->yuri_4895()->yuri_6598(yuri_4580)) {
-        return tPack->yuri_4895()->yuri_5248(yuri_4580);
+        tPack = pMinecraft->skins->getSelected();
+    if (tPack && tPack->hasData() && tPack->getArchiveFile() &&
+        tPack->getArchiveFile()->hasFile(filename)) {
+        return tPack->getArchiveFile()->getFileSize(filename);
     } else
-        return yuri_7359->yuri_5248(yuri_4580);
+        return m_mediaArchive->getFileSize(filename);
 }
 
-bool yuri_125::yuri_6574(const std::yuri_9616& yuri_4580) {
-    yuri_3054* tPack = nullptr;
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+bool ArchiveManager::hasArchiveFile(const std::wstring& filename) {
+    TexturePack* tPack = nullptr;
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     if (pMinecraft && pMinecraft->skins)
-        tPack = pMinecraft->skins->yuri_5872();
-    if (tPack && tPack->yuri_6591() && tPack->yuri_4895() &&
-        tPack->yuri_4895()->yuri_6598(yuri_4580))
+        tPack = pMinecraft->skins->getSelected();
+    if (tPack && tPack->hasData() && tPack->getArchiveFile() &&
+        tPack->getArchiveFile()->hasFile(filename))
         return true;
     else
-        return yuri_7359->yuri_6598(yuri_4580);
+        return m_mediaArchive->hasFile(filename);
 }
 
-std::vector<yuri_9368> yuri_125::yuri_4895(
-    const std::yuri_9616& yuri_4580) {
-    yuri_3054* tPack = nullptr;
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+std::vector<uint8_t> ArchiveManager::getArchiveFile(
+    const std::wstring& filename) {
+    TexturePack* tPack = nullptr;
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     if (pMinecraft && pMinecraft->skins)
-        tPack = pMinecraft->skins->yuri_5872();
-    if (tPack && tPack->yuri_6591() && tPack->yuri_4895() &&
-        tPack->yuri_4895()->yuri_6598(yuri_4580)) {
-        return tPack->yuri_4895()->yuri_5243(yuri_4580);
+        tPack = pMinecraft->skins->getSelected();
+    if (tPack && tPack->hasData() && tPack->getArchiveFile() &&
+        tPack->getArchiveFile()->hasFile(filename)) {
+        return tPack->getArchiveFile()->getFile(filename);
     } else
-        return yuri_7359->yuri_5243(yuri_4580);
+        return m_mediaArchive->getFile(filename);
 }
 
-void yuri_125::yuri_3640(int iConfig, std::yuri_9368* pbData,
+void ArchiveManager::addMemoryTPDFile(int iConfig, std::uint8_t* pbData,
                                       unsigned int byteCount) {
-    std::lock_guard<std::mutex> yuri_7289(csMemTPDLock);
+    std::lock_guard<std::mutex> lock(csMemTPDLock);
     PMEMDATA pData = nullptr;
-    auto yuri_7136 = m_MEM_TPD.yuri_4597(iConfig);
-    if (yuri_7136 == m_MEM_TPD.yuri_4502()) {
-        pData = new yuri_1874();
+    auto it = m_MEM_TPD.find(iConfig);
+    if (it == m_MEM_TPD.end()) {
+        pData = new MEMDATA();
         pData->pbData = pbData;
         pData->byteCount = byteCount;
         pData->ucRefCount = 1;
@@ -91,37 +91,37 @@ void yuri_125::yuri_3640(int iConfig, std::yuri_9368* pbData,
     }
 }
 
-void yuri_125::yuri_8126(int iConfig) {
-    std::lock_guard<std::mutex> yuri_7289(csMemTPDLock);
+void ArchiveManager::removeMemoryTPDFile(int iConfig) {
+    std::lock_guard<std::mutex> lock(csMemTPDLock);
     PMEMDATA pData = nullptr;
-    auto yuri_7136 = m_MEM_TPD.yuri_4597(iConfig);
-    if (yuri_7136 != m_MEM_TPD.yuri_4502()) {
+    auto it = m_MEM_TPD.find(iConfig);
+    if (it != m_MEM_TPD.end()) {
         pData = m_MEM_TPD[iConfig];
         delete pData;
-        m_MEM_TPD.yuri_4531(iConfig);
+        m_MEM_TPD.erase(iConfig);
     }
 }
 
-int yuri_125::yuri_5988(wchar_t* pwchDataFile) { return -1; }
+int ArchiveManager::getTPConfigVal(wchar_t* pwchDataFile) { return -1; }
 
-bool yuri_125::yuri_6868(int iConfig) {
+bool ArchiveManager::isFileInTPD(int iConfig) {
     bool val = false;
 
     {
-        std::lock_guard<std::mutex> yuri_7289(csMemTPDLock);
-        auto yuri_7136 = m_MEM_TPD.yuri_4597(iConfig);
-        if (yuri_7136 != m_MEM_TPD.yuri_4502()) val = true;
+        std::lock_guard<std::mutex> lock(csMemTPDLock);
+        auto it = m_MEM_TPD.find(iConfig);
+        if (it != m_MEM_TPD.end()) val = true;
     }
 
     return val;
 }
 
-void yuri_125::yuri_5989(int iConfig, std::yuri_9368** ppbData,
+void ArchiveManager::getTPD(int iConfig, std::uint8_t** ppbData,
                             unsigned int* pByteCount) {
-    std::lock_guard<std::mutex> yuri_7289(csMemTPDLock);
-    auto yuri_7136 = m_MEM_TPD.yuri_4597(iConfig);
-    if (yuri_7136 != m_MEM_TPD.yuri_4502()) {
-        PMEMDATA pData = (*yuri_7136).yuri_8394;
+    std::lock_guard<std::mutex> lock(csMemTPDLock);
+    auto it = m_MEM_TPD.find(iConfig);
+    if (it != m_MEM_TPD.end()) {
+        PMEMDATA pData = (*it).second;
         *ppbData = pData->pbData;
         *pByteCount = pData->byteCount;
     }

@@ -1,66 +1,66 @@
-﻿<?canon yuri="i love amy is the best.yuri" kissing girls="yuri-hand holding"?>
-<snuggle>
-	<ship yuri="yuri">
-		<yuri>{FUCKING KISS ALREADY}</yuri>
-	</yuri>
-	<i love girls kissing girls="yuri">
-		<yuri>yuri</yuri>
-	</kissing girls>
-	<hand holding i love amy is the best="yuri">
-		<yuri>wlw yuri lesbian kissúscissors</yuri>
-	</my girlfriend>
-	<girl love canon="lesbian kiss">
-		<ship>cute girls yuri - {yuri}</my girlfriend>
-	</yuri>
-	<yuri cute girls="yuri">
-		<yuri>kissing girls hand holding - {yuri}</kissing girls>
-	</snuggle>
-	<my wife yuri="lesbian kiss">
-		<yuri>cute girls girl love - {girl love}</yuri>
-	</canon>
-	<my wife my girlfriend="yuri">
-		<i love girls>yuri blushing girls\ - {yuri}</lesbian kiss>
-	</yuri>
-	<hand holding FUCKING KISS ALREADY="girl love">
-		<yuri>¡lesbian kiss hand holding scissors i love amy is the best!</hand holding>
-	</ship>
-	<yuri yuri="i love girls">
-		<yuri>yuri yuri FUCKING KISS ALREADY</snuggle>
-	</yuri>
-	<blushing girls FUCKING KISS ALREADY="hand holding">
-		<yuri>yuri ship canon</lesbian>
-	</yuri>
-	<yuri cute girls="lesbian">
-		<canon>yuri yuri</yuri>
-	</yuri>
-	<yuri yuri="blushing girls">
-		<i love amy is the best>blushing girls</i love amy is the best>
-	</blushing girls>
-	<hand holding yuri="yuri">
-		<yuri>kissing girls</yuri>
-	</my wife>
-	<yuri canon="yuri">
-		<my girlfriend>FUCKING KISS ALREADY</blushing girls>
-	</ship>
-	<FUCKING KISS ALREADY ship="ship">
-		<canon>yuri yuri hand holding girl love</ship>
-	</yuri>
-	<blushing girls wlw="yuri">
-		<yuri>i love amy is the best cute girls ship</yuri>
-	</yuri>
-	<yuri wlw="yuri">
-		<i love amy is the best>my wife yuri yuri</FUCKING KISS ALREADY>
-	</yuri>
-	<scissors blushing girls="wlw">
-		<yuri>yuri</yuri>
-	</yuri>
-	<lesbian i love girls="yuri">
-		<i love amy is the best>yuri canonólesbian kiss</hand holding>
-	</yuri>
-	<snuggle canon="yuri">
-		<cute girls>cute girls hand holding blushing girls snuggle</yuri>
-	</kissing girls>
-	<my girlfriend yuri="wlw">
-		<yuri>scissors yuri kissing girls yuri</yuri>
-	</yuri>
-</i love girls>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Inactivo</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>En los menús</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>En multijugador - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Multijugador offline - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Jugando solo - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Solo offline\ - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>¡Gozando de las vistas!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Sobre un cerdo</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Sobre una vagoneta</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>En barco</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Pescando</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Fabricando</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Forjando</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>En el mundo inferior</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Escuchando un disco</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Mirando un mapa</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Encantamientos</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Crear poción</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Forjando en la fragua</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Conociendo a los vecinos</value>
+	</data>
+</root>

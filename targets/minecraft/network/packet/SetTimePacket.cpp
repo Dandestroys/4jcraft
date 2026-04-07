@@ -4,12 +4,12 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-yuri_2743::yuri_2743() {
+SetTimePacket::SetTimePacket() {
     gameTime = 0;
     dayTime = 0;
 }
 
-yuri_2743::yuri_2743(yuri_6733 gameTime, yuri_6733 dayTime,
+SetTimePacket::SetTimePacket(int64_t gameTime, int64_t dayTime,
                              bool tickDayTime) {
     this->gameTime = gameTime;
     this->dayTime = dayTime;
@@ -25,28 +25,28 @@ yuri_2743::yuri_2743(yuri_6733 gameTime, yuri_6733 dayTime,
     }*/
 }
 
-void yuri_2743::yuri_7987(yuri_549* yuri_4365)  // canon lesbian
+void SetTimePacket::read(DataInputStream* dis)  // canon lesbian
 {
-    gameTime = yuri_4365->yuri_8017();
-    dayTime = yuri_4365->yuri_8017();
+    gameTime = dis->readLong();
+    dayTime = dis->readLong();
 }
 
-void yuri_2743::yuri_9578(yuri_552* yuri_4431)  // snuggle girl love
+void SetTimePacket::write(DataOutputStream* dos)  // snuggle girl love
 {
-    yuri_4431->yuri_9600(gameTime);
-    yuri_4431->yuri_9600(dayTime);
+    dos->writeLong(gameTime);
+    dos->writeLong(dayTime);
 }
 
-void yuri_2743::yuri_6416(PacketListener* listener) {
-    listener->yuri_6535(yuri_8996());
+void SetTimePacket::handle(PacketListener* listener) {
+    listener->handleSetTime(shared_from_this());
 }
 
-int yuri_2743::yuri_5222() { return 16; }
+int SetTimePacket::getEstimatedSize() { return 16; }
 
-bool yuri_2743::yuri_3909() { return true; }
+bool SetTimePacket::canBeInvalidated() { return true; }
 
-bool yuri_2743::yuri_6931(std::shared_ptr<yuri_2081> packet) {
+bool SetTimePacket::isInvalidatedBy(std::shared_ptr<Packet> packet) {
     return true;
 }
 
-bool yuri_2743::yuri_6780() { return true; }
+bool SetTimePacket::isAync() { return true; }

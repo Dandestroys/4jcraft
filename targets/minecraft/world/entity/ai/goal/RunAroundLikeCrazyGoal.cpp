@@ -17,53 +17,53 @@
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/phys/Vec3.h"
 
-yuri_2444::yuri_2444(yuri_743* mob,
+RunAroundLikeCrazyGoal::RunAroundLikeCrazyGoal(EntityHorse* mob,
                                                double speedModifier) {
     horse = mob;
     this->speedModifier = speedModifier;
-    yuri_8818(Control::MoveControlFlag);
+    setRequiredControlFlags(Control::MoveControlFlag);
 }
 
-bool yuri_2444::yuri_3967() {
-    if (horse->yuri_7081() || horse->rider.yuri_7289() == nullptr) return false;
-    auto yuri_7872 = RandomPos::yuri_5739(
-        std::dynamic_pointer_cast<yuri_2096>(horse->yuri_8996()), 5,
+bool RunAroundLikeCrazyGoal::canUse() {
+    if (horse->isTamed() || horse->rider.lock() == nullptr) return false;
+    auto pos = RandomPos::getPos(
+        std::dynamic_pointer_cast<PathfinderMob>(horse->shared_from_this()), 5,
         4);
-    if (!yuri_7872.yuri_6646()) return false;
-    posX = yuri_7872->yuri_9621;
-    posY = yuri_7872->yuri_9625;
-    posZ = yuri_7872->yuri_9630;
+    if (!pos.has_value()) return false;
+    posX = pos->x;
+    posY = pos->y;
+    posZ = pos->z;
     return true;
 }
 
-void yuri_2444::yuri_9098() {
-    horse->yuri_5583()->yuri_7531(posX, posY, posZ, speedModifier);
+void RunAroundLikeCrazyGoal::start() {
+    horse->getNavigation()->moveTo(posX, posY, posZ, speedModifier);
 }
 
-bool yuri_2444::yuri_3916() {
-    return !horse->yuri_5583()->yuri_6845() && horse->rider.yuri_7289() != nullptr;
+bool RunAroundLikeCrazyGoal::canContinueToUse() {
+    return !horse->getNavigation()->isDone() && horse->rider.lock() != nullptr;
 }
 
-void yuri_2444::yuri_9265() {
-    if (horse->yuri_5773()->yuri_7578(50) == 0) {
-        if (horse->rider.yuri_7289()->yuri_6731(eTYPE_PLAYER)) {
-            int temper = horse->yuri_6001();
-            int maxTemper = horse->yuri_5532();
+void RunAroundLikeCrazyGoal::tick() {
+    if (horse->getRandom()->nextInt(50) == 0) {
+        if (horse->rider.lock()->instanceof(eTYPE_PLAYER)) {
+            int temper = horse->getTemper();
+            int maxTemper = horse->getMaxTemper();
             if (maxTemper > 0 &&
-                horse->yuri_5773()->yuri_7578(maxTemper) < temper) {
-                horse->yuri_9182(
-                    std::dynamic_pointer_cast<yuri_2126>(horse->rider.yuri_7289()));
-                horse->yuri_7194->yuri_3854(
-                    horse->yuri_8996(), EntityEvent::TAMING_SUCCEEDED);
+                horse->getRandom()->nextInt(maxTemper) < temper) {
+                horse->tameWithName(
+                    std::dynamic_pointer_cast<Player>(horse->rider.lock()));
+                horse->level->broadcastEntityEvent(
+                    horse->shared_from_this(), EntityEvent::TAMING_SUCCEEDED);
                 return;
             }
-            horse->yuri_7510(5);
+            horse->modifyTemper(5);
         }
 
-        horse->rider.yuri_7289()->yuri_8313(nullptr);
-        horse->rider = std::weak_ptr<yuri_1793>();
-        horse->yuri_7430();
-        horse->yuri_7194->yuri_3854(horse->yuri_8996(),
+        horse->rider.lock()->ride(nullptr);
+        horse->rider = std::weak_ptr<LivingEntity>();
+        horse->makeMad();
+        horse->level->broadcastEntityEvent(horse->shared_from_this(),
                                            EntityEvent::TAMING_FAILED);
     }
 }

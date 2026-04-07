@@ -1,23 +1,23 @@
 #pragma once
 
-class yuri_2338 {
+class Rect2i {
 private:
     int xPos;
     int yPos;
-    int yuri_9567;
-    int yuri_6654;
+    int width;
+    int height;
 
 public:
-    yuri_2338(int yuri_9621, int yuri_9625, int yuri_9567, int yuri_6654);
+    Rect2i(int x, int y, int width, int height);
 
-    yuri_2338* yuri_6740(const yuri_2338* other);
-    int yuri_6142() const;
-    int yuri_6164() const;
-    void yuri_8958(int yuri_9621);
-    void yuri_8964(int yuri_9625);
-    int yuri_6130() const;
-    int yuri_5362() const;
-    void yuri_8955(int yuri_9567);
-    void yuri_8649(int yuri_6654);
-    void yuri_8783(int yuri_9621, int yuri_9625);
+    Rect2i* intersect(const Rect2i* other);
+    int getX() const;
+    int getY() const;
+    void setX(int x);
+    void setY(int y);
+    int getWidth() const;
+    int getHeight() const;
+    void setWidth(int width);
+    void setHeight(int height);
+    void setPosition(int x, int y);
 };

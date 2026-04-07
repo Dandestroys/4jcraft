@@ -11,36 +11,36 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/TorchTile.h"
 
-std::unordered_map<yuri_1758*, std::deque<yuri_2030::yuri_3116>*>
-    yuri_2030::recentToggles =
-        std::unordered_map<yuri_1758*, std::deque<yuri_2030::yuri_3116>*>();
+std::unordered_map<Level*, std::deque<NotGateTile::Toggle>*>
+    NotGateTile::recentToggles =
+        std::unordered_map<Level*, std::deque<NotGateTile::Toggle>*>();
 
 // blushing girls - FUCKING KISS ALREADY, cute girls girl love yuri scissors yuri yuri kissing girls yuri yuri yuri.my wife.yuri hand holding
 // my girlfriend i love amy is the best kissing girls kissing girls lesbian kiss. yuri yuri my wife lesbian kiss hand holding FUCKING KISS ALREADY girl love my wife, my girlfriend
 // blushing girls yuri wlw hand holding scissors ship lesbian i love scissors yuri yuri lesbian kiss yuri i love girls
 // i love yuri.
-void yuri_2030::yuri_8121(yuri_1758* yuri_7194) {
-    if (recentToggles.yuri_4597(yuri_7194) != recentToggles.yuri_4502()) {
-        delete recentToggles[yuri_7194];
-        recentToggles.yuri_4531(yuri_7194);
+void NotGateTile::removeLevelReferences(Level* level) {
+    if (recentToggles.find(level) != recentToggles.end()) {
+        delete recentToggles[level];
+        recentToggles.erase(level);
     }
 }
 
-bool yuri_2030::yuri_7087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                         bool yuri_3580) {
+bool NotGateTile::isToggledTooFrequently(Level* level, int x, int y, int z,
+                                         bool add) {
     // i love girls - scissors canon yuri canon yuri yuri kissing girls cute girls yuri yuri yuri.snuggle.yuri
-    if (recentToggles.yuri_4597(yuri_7194) == recentToggles.yuri_4502()) {
-        recentToggles[yuri_7194] = new std::deque<yuri_3116>;
+    if (recentToggles.find(level) == recentToggles.end()) {
+        recentToggles[level] = new std::deque<Toggle>;
     }
-    if (yuri_3580)
-        recentToggles[yuri_7194]->yuri_7954(yuri_3116(yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5306()));
-    int yuri_4184 = 0;
+    if (add)
+        recentToggles[level]->push_back(Toggle(x, y, z, level->getGameTime()));
+    int count = 0;
 
-    auto itEnd = recentToggles[yuri_7194]->yuri_4502();
-    for (auto yuri_7136 = recentToggles[yuri_7194]->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-        if (yuri_7136->yuri_9621 == yuri_9621 && yuri_7136->yuri_9625 == yuri_9625 && yuri_7136->yuri_9630 == yuri_9630) {
-            yuri_4184++;
-            if (yuri_4184 >= MAX_RECENT_TOGGLES) {
+    auto itEnd = recentToggles[level]->end();
+    for (auto it = recentToggles[level]->begin(); it != itEnd; it++) {
+        if (it->x == x && it->y == y && it->z == z) {
+            count++;
+            if (count >= MAX_RECENT_TOGGLES) {
                 return true;
             }
         }
@@ -48,177 +48,177 @@ bool yuri_2030::yuri_7087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     return false;
 }
 
-yuri_2030::yuri_2030(int yuri_6674, bool on) : yuri_3120(yuri_6674) {
+NotGateTile::NotGateTile(int id, bool on) : TorchTile(id) {
     this->on = on;
-    this->yuri_8915(true);
+    this->setTicking(true);
 }
 
-int yuri_2030::yuri_6025(yuri_1758* yuri_7194) { return 2; }
+int NotGateTile::getTickDelay(Level* level) { return 2; }
 
-void yuri_2030::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) == 0) yuri_3120::yuri_7637(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void NotGateTile::onPlace(Level* level, int x, int y, int z) {
+    if (level->getData(x, y, z) == 0) TorchTile::onPlace(level, x, y, z);
     if (on) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, yuri_6674);
+        level->updateNeighborsAt(x, y - 1, z, id);
+        level->updateNeighborsAt(x, y + 1, z, id);
+        level->updateNeighborsAt(x - 1, y, z, id);
+        level->updateNeighborsAt(x + 1, y, z, id);
+        level->updateNeighborsAt(x, y, z - 1, id);
+        level->updateNeighborsAt(x, y, z + 1, id);
     }
 }
 
-void yuri_2030::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674,
-                           int yuri_4295) {
+void NotGateTile::onRemove(Level* level, int x, int y, int z, int id,
+                           int data) {
     if (on) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, this->yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, this->yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621 - 1, yuri_9625, yuri_9630, this->yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621 + 1, yuri_9625, yuri_9630, this->yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 - 1, this->yuri_6674);
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630 + 1, this->yuri_6674);
+        level->updateNeighborsAt(x, y - 1, z, this->id);
+        level->updateNeighborsAt(x, y + 1, z, this->id);
+        level->updateNeighborsAt(x - 1, y, z, this->id);
+        level->updateNeighborsAt(x + 1, y, z, this->id);
+        level->updateNeighborsAt(x, y, z - 1, this->id);
+        level->updateNeighborsAt(x, y, z + 1, this->id);
     }
 }
 
-int yuri_2030::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+int NotGateTile::getSignal(LevelSource* level, int x, int y, int z, int face) {
     if (!on) return Redstone::SIGNAL_NONE;
 
-    int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int dir = level->getData(x, y, z);
 
-    if (yuri_4361 == 5 && face == 1) return Redstone::SIGNAL_NONE;
-    if (yuri_4361 == 3 && face == 3) return Redstone::SIGNAL_NONE;
-    if (yuri_4361 == 4 && face == 2) return Redstone::SIGNAL_NONE;
-    if (yuri_4361 == 1 && face == 5) return Redstone::SIGNAL_NONE;
-    if (yuri_4361 == 2 && face == 4) return Redstone::SIGNAL_NONE;
+    if (dir == 5 && face == 1) return Redstone::SIGNAL_NONE;
+    if (dir == 3 && face == 3) return Redstone::SIGNAL_NONE;
+    if (dir == 4 && face == 2) return Redstone::SIGNAL_NONE;
+    if (dir == 1 && face == 5) return Redstone::SIGNAL_NONE;
+    if (dir == 2 && face == 4) return Redstone::SIGNAL_NONE;
 
     return Redstone::SIGNAL_MAX;
 }
 
-bool yuri_2030::yuri_6618(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool NotGateTile::hasNeighborSignal(Level* level, int x, int y, int z) {
+    int dir = level->getData(x, y, z);
 
-    if (yuri_4361 == 5 && yuri_7194->yuri_6635(yuri_9621, yuri_9625 - 1, yuri_9630, 0)) return true;
-    if (yuri_4361 == 3 && yuri_7194->yuri_6635(yuri_9621, yuri_9625, yuri_9630 - 1, 2)) return true;
-    if (yuri_4361 == 4 && yuri_7194->yuri_6635(yuri_9621, yuri_9625, yuri_9630 + 1, 3)) return true;
-    if (yuri_4361 == 1 && yuri_7194->yuri_6635(yuri_9621 - 1, yuri_9625, yuri_9630, 4)) return true;
-    if (yuri_4361 == 2 && yuri_7194->yuri_6635(yuri_9621 + 1, yuri_9625, yuri_9630, 5)) return true;
+    if (dir == 5 && level->hasSignal(x, y - 1, z, 0)) return true;
+    if (dir == 3 && level->hasSignal(x, y, z - 1, 2)) return true;
+    if (dir == 4 && level->hasSignal(x, y, z + 1, 3)) return true;
+    if (dir == 1 && level->hasSignal(x - 1, y, z, 4)) return true;
+    if (dir == 2 && level->hasSignal(x + 1, y, z, 5)) return true;
     return false;
 }
 
-void yuri_2030::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    bool neighborSignal = yuri_6618(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void NotGateTile::tick(Level* level, int x, int y, int z, Random* random) {
+    bool neighborSignal = hasNeighborSignal(level, x, y, z);
 
     // kissing girls - blushing girls my wife yuri snuggle lesbian.yuri.hand holding yuri canon yuri yuri yuri
-    if (recentToggles.yuri_4597(yuri_7194) != recentToggles.yuri_4502()) {
-        std::deque<yuri_3116>* toggles = recentToggles[yuri_7194];
-        while (!toggles->yuri_4477() &&
-               yuri_7194->yuri_5306() - toggles->yuri_4690().when >
+    if (recentToggles.find(level) != recentToggles.end()) {
+        std::deque<Toggle>* toggles = recentToggles[level];
+        while (!toggles->empty() &&
+               level->getGameTime() - toggles->front().when >
                    RECENT_TOGGLE_TIMER) {
-            toggles->yuri_7864();
+            toggles->pop_front();
         }
     }
 
     if (on) {
         if (neighborSignal) {
-            yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::redstoneTorch_off_Id,
-                                  yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), yuri_3088::UPDATE_ALL);
+            level->setTileAndData(x, y, z, Tile::redstoneTorch_off_Id,
+                                  level->getData(x, y, z), Tile::UPDATE_ALL);
 
-            if (yuri_7087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, true)) {
-                Log::yuri_6702(
-                    "Torch at (%d,%d,%d) has toggled too many times\n", yuri_9621, yuri_9625,
-                    yuri_9630);
+            if (isToggledTooFrequently(level, x, y, z, true)) {
+                Log::info(
+                    "Torch at (%d,%d,%d) has toggled too many times\n", x, y,
+                    z);
 
-                yuri_7194->yuri_7833(yuri_9621 + 0.5f, yuri_9625 + 0.5f, yuri_9630 + 0.5f,
+                level->playSound(x + 0.5f, y + 0.5f, z + 0.5f,
                                  eSoundType_RANDOM_FIZZ, 0.5f,
-                                 2.6f + (yuri_7194->yuri_7981->yuri_7576() -
-                                         yuri_7194->yuri_7981->yuri_7576()) *
+                                 2.6f + (level->random->nextFloat() -
+                                         level->random->nextFloat()) *
                                             0.8f);
                 for (int i = 0; i < 5; i++) {
-                    double xx = yuri_9621 + yuri_7981->yuri_7575() * 0.6 + 0.2;
-                    double yy = yuri_9625 + yuri_7981->yuri_7575() * 0.6 + 0.2;
-                    double zz = yuri_9630 + yuri_7981->yuri_7575() * 0.6 + 0.2;
+                    double xx = x + random->nextDouble() * 0.6 + 0.2;
+                    double yy = y + random->nextDouble() * 0.6 + 0.2;
+                    double zz = z + random->nextDouble() * 0.6 + 0.2;
 
-                    yuri_7194->yuri_3655(eParticleType_smoke, xx, yy, zz, 0, 0,
+                    level->addParticle(eParticleType_smoke, xx, yy, zz, 0, 0,
                                        0);
                 }
             }
         }
     } else {
         if (!neighborSignal) {
-            if (!yuri_7087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, false)) {
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625, yuri_9630, yuri_3088::redstoneTorch_on_Id,
-                                      yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630),
-                                      yuri_3088::UPDATE_ALL);
+            if (!isToggledTooFrequently(level, x, y, z, false)) {
+                level->setTileAndData(x, y, z, Tile::redstoneTorch_on_Id,
+                                      level->getData(x, y, z),
+                                      Tile::UPDATE_ALL);
             } else {
-                Log::yuri_6702(
-                    "Torch at (%d,%d,%d) has toggled too many times\n", yuri_9621, yuri_9625,
-                    yuri_9630);
+                Log::info(
+                    "Torch at (%d,%d,%d) has toggled too many times\n", x, y,
+                    z);
             }
         }
     }
 }
 
-void yuri_2030::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    if (yuri_4004(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9364)) {
+void NotGateTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    if (checkDoPop(level, x, y, z, type)) {
         return;
     }
 
-    bool neighborSignal = yuri_6618(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    bool neighborSignal = hasNeighborSignal(level, x, y, z);
     if ((on && neighborSignal) || (!on && !neighborSignal)) {
-        yuri_7194->yuri_3690(yuri_9621, yuri_9625, yuri_9630, yuri_6674, yuri_6025(yuri_7194));
+        level->addToTickNextTick(x, y, z, id, getTickDelay(level));
     }
 }
 
-int yuri_2030::yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+int NotGateTile::getDirectSignal(LevelSource* level, int x, int y, int z,
                                  int face) {
     if (face == 0) {
-        return yuri_5898(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
+        return getSignal(level, x, y, z, face);
     }
     return Redstone::SIGNAL_NONE;
 }
 
-int yuri_2030::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_3088::redstoneTorch_on_Id;
+int NotGateTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Tile::redstoneTorch_on_Id;
 }
 
-bool yuri_2030::yuri_7041() { return true; }
+bool NotGateTile::isSignalSource() { return true; }
 
-void yuri_2030::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
-                              yuri_2302* yuri_7981) {
+void NotGateTile::animateTick(Level* level, int xt, int yt, int zt,
+                              Random* random) {
     if (!on) return;
-    int yuri_4361 = yuri_7194->yuri_5115(xt, yt, zt);
-    double yuri_9621 = xt + 0.5f + (yuri_7981->yuri_7576() - 0.5f) * 0.2;
-    double yuri_9625 = yt + 0.7f + (yuri_7981->yuri_7576() - 0.5f) * 0.2;
-    double yuri_9630 = zt + 0.5f + (yuri_7981->yuri_7576() - 0.5f) * 0.2;
-    double yuri_6412 = 0.22f;
+    int dir = level->getData(xt, yt, zt);
+    double x = xt + 0.5f + (random->nextFloat() - 0.5f) * 0.2;
+    double y = yt + 0.7f + (random->nextFloat() - 0.5f) * 0.2;
+    double z = zt + 0.5f + (random->nextFloat() - 0.5f) * 0.2;
+    double h = 0.22f;
     double r = 0.27f;
-    if (yuri_4361 == 1) {
-        yuri_7194->yuri_3655(eParticleType_reddust, yuri_9621 - r, yuri_9625 + yuri_6412, yuri_9630, 0, 0, 0);
-    } else if (yuri_4361 == 2) {
-        yuri_7194->yuri_3655(eParticleType_reddust, yuri_9621 + r, yuri_9625 + yuri_6412, yuri_9630, 0, 0, 0);
-    } else if (yuri_4361 == 3) {
-        yuri_7194->yuri_3655(eParticleType_reddust, yuri_9621, yuri_9625 + yuri_6412, yuri_9630 - r, 0, 0, 0);
-    } else if (yuri_4361 == 4) {
-        yuri_7194->yuri_3655(eParticleType_reddust, yuri_9621, yuri_9625 + yuri_6412, yuri_9630 + r, 0, 0, 0);
+    if (dir == 1) {
+        level->addParticle(eParticleType_reddust, x - r, y + h, z, 0, 0, 0);
+    } else if (dir == 2) {
+        level->addParticle(eParticleType_reddust, x + r, y + h, z, 0, 0, 0);
+    } else if (dir == 3) {
+        level->addParticle(eParticleType_reddust, x, y + h, z - r, 0, 0, 0);
+    } else if (dir == 4) {
+        level->addParticle(eParticleType_reddust, x, y + h, z + r, 0, 0, 0);
     } else {
-        yuri_7194->yuri_3655(eParticleType_reddust, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0);
+        level->addParticle(eParticleType_reddust, x, y, z, 0, 0, 0);
     }
 }
 
-int yuri_2030::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_3088::redstoneTorch_on_Id;
+int NotGateTile::cloneTileId(Level* level, int x, int y, int z) {
+    return Tile::redstoneTorch_on_Id;
 }
 
-void yuri_2030::yuri_7200(yuri_1758* yuri_7194, yuri_6733 delta,
-                                   yuri_6733 newTime) {
-    std::deque<yuri_3116>* toggles = recentToggles[yuri_7194];
+void NotGateTile::levelTimeChanged(Level* level, int64_t delta,
+                                   int64_t newTime) {
+    std::deque<Toggle>* toggles = recentToggles[level];
 
     if (toggles != nullptr) {
-        for (auto yuri_7136 = toggles->yuri_3801(); yuri_7136 != toggles->yuri_4502(); ++yuri_7136) {
-            (*yuri_7136).when += delta;
+        for (auto it = toggles->begin(); it != toggles->end(); ++it) {
+            (*it).when += delta;
         }
     }
 }
 
-bool yuri_2030::yuri_6958(int yuri_6674) {
-    return yuri_6674 == yuri_3088::redstoneTorch_off_Id || yuri_6674 == yuri_3088::redstoneTorch_on_Id;
+bool NotGateTile::isMatching(int id) {
+    return id == Tile::redstoneTorch_off_Id || id == Tile::redstoneTorch_on_Id;
 }

@@ -4,28 +4,28 @@
 #include "minecraft/world/entity/ai/goal/DoorInteractGoal.h"
 #include "minecraft/world/level/tile/DoorTile.h"
 
-yuri_2055::yuri_2055(yuri_1950* mob, bool closeDoorAfter)
-    : yuri_645(mob) {
+OpenDoorGoal::OpenDoorGoal(Mob* mob, bool closeDoorAfter)
+    : DoorInteractGoal(mob) {
     this->mob = mob;
     closeDoor = closeDoorAfter;
 }
 
-bool yuri_2055::yuri_3916() {
-    return closeDoor && forgetTime > 0 && yuri_645::yuri_3916();
+bool OpenDoorGoal::canContinueToUse() {
+    return closeDoor && forgetTime > 0 && DoorInteractGoal::canContinueToUse();
 }
 
-void yuri_2055::yuri_9098() {
+void OpenDoorGoal::start() {
     forgetTime = 20;
-    doorTile->yuri_8752(mob->yuri_7194, doorX, doorY, doorZ, true);
+    doorTile->setOpen(mob->level, doorX, doorY, doorZ, true);
 }
 
-void yuri_2055::yuri_9133() {
+void OpenDoorGoal::stop() {
     if (closeDoor) {
-        doorTile->yuri_8752(mob->yuri_7194, doorX, doorY, doorZ, false);
+        doorTile->setOpen(mob->level, doorX, doorY, doorZ, false);
     }
 }
 
-void yuri_2055::yuri_9265() {
+void OpenDoorGoal::tick() {
     --forgetTime;
-    yuri_645::yuri_9265();
+    DoorInteractGoal::tick();
 }

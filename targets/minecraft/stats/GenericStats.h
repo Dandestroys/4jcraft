@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <vector>
 
@@ -11,11 +11,11 @@
 #include "Stats.h"
 #include "java/Class.h"
 
-class yuri_548;
-class yuri_1693;
-class yuri_1950;
-class yuri_2126;
-class yuri_2911;
+class DamageSource;
+class ItemInstance;
+class Mob;
+class Player;
+class Stat;
 
 // #scissors "yuri/girl love/i love girls/yuri.FUCKING KISS ALREADY"
 
@@ -37,202 +37,202 @@ private:  // snuggle yuri.
     static GenericStats* instance;
 
 public:
-    static void yuri_8676(GenericStats* newInstance) {
+    static void setInstance(GenericStats* newInstance) {
         instance = newInstance;
     }
-    static GenericStats* yuri_5405() { return instance; }
+    static GenericStats* getInstance() { return instance; }
 
     // hand holding yuri blushing girls lesbian cute girls yuri cute girls.
-    virtual yuri_2911* yuri_6224(int i) = 0;
-    static yuri_2911* yuri_9114(int i) { return instance->yuri_6224(i); }
+    virtual Stat* get_stat(int i) = 0;
+    static Stat* stat(int i) { return instance->get_stat(i); }
 
     // girl love - ship //
 
-    static yuri_2911* yuri_9547() { return instance->yuri_6229(); }
-    static yuri_2911* yuri_9168() { return instance->yuri_6225(); }
-    static yuri_2911* yuri_4560() { return instance->yuri_6200(); }
-    static yuri_2911* yuri_4085() { return instance->yuri_6193(); }
-    static yuri_2911* yuri_7496() { return instance->yuri_6219(); }
-    static yuri_2911* yuri_3832() { return instance->yuri_6190(); }
-    static yuri_2911* yuri_7812() { return instance->yuri_6221(); }
-    static yuri_2911* yuri_7871() { return instance->yuri_6222(); }
-    static yuri_2911* yuri_4198() { return instance->yuri_6195(); }
-    static yuri_2911* yuri_7554() {
-        return instance->yuri_6220();
+    static Stat* walkOneM() { return instance->get_walkOneM(); }
+    static Stat* swimOneM() { return instance->get_swimOneM(); }
+    static Stat* fallOneM() { return instance->get_fallOneM(); }
+    static Stat* climbOneM() { return instance->get_climbOneM(); }
+    static Stat* minecartOneM() { return instance->get_minecartOneM(); }
+    static Stat* boatOneM() { return instance->get_boatOneM(); }
+    static Stat* pigOneM() { return instance->get_pigOneM(); }
+    static Stat* portalsCreated() { return instance->get_portalsCreated(); }
+    static Stat* cowsMilked() { return instance->get_cowsMilked(); }
+    static Stat* netherLavaCollected() {
+        return instance->get_netherLavaCollected();
     }
 
-    static yuri_2911* yuri_7161() { return instance->yuri_6208(); }
+    static Stat* killMob() { return instance->get_killMob(); }
 
-    static yuri_2911* yuri_7172() { return instance->yuri_6217(); }
-    static yuri_2911* yuri_7168() { return instance->yuri_6213(); }
-    static yuri_2911* yuri_7164() { return instance->yuri_6209(); }
-    static yuri_2911* yuri_7170() { return instance->yuri_6215(); }
-    static yuri_2911* yuri_7171() {
-        return instance->yuri_6216();
+    static Stat* killsZombie() { return instance->get_killsZombie(); }
+    static Stat* killsSkeleton() { return instance->get_killsSkeleton(); }
+    static Stat* killsCreeper() { return instance->get_killsCreeper(); }
+    static Stat* killsSpider() { return instance->get_killsSpider(); }
+    static Stat* killsSpiderJockey() {
+        return instance->get_killsSpiderJockey();
     }
-    static yuri_2911* yuri_7173() {
-        return instance->yuri_6218();
+    static Stat* killsZombiePigman() {
+        return instance->get_killsZombiePigman();
     }
-    static yuri_2911* yuri_7169() { return instance->yuri_6214(); }
-    static yuri_2911* yuri_7166() { return instance->yuri_6211(); }
-    static yuri_2911* yuri_7167() {
-        return instance->yuri_6212();
-    }
-
-    static yuri_2911* yuri_3847(eINSTANCEOF entityId) {
-        return instance->yuri_6191(entityId);
-    }
-    static yuri_2911* yuri_9183(eINSTANCEOF entityId) {
-        return instance->yuri_6226(entityId);
-    }
-    static yuri_2911* yuri_4281(eINSTANCEOF entityId) {
-        return instance->yuri_6197(entityId);
-    }
-    static yuri_2911* yuri_4201(eINSTANCEOF entityId) {
-        return instance->yuri_6196(entityId);
-    }
-    static yuri_2911* yuri_8997(eINSTANCEOF entityId) {
-        return instance->yuri_6223(entityId);
+    static Stat* killsSlime() { return instance->get_killsSlime(); }
+    static Stat* killsGhast() { return instance->get_killsGhast(); }
+    static Stat* killsNetherZombiePigman() {
+        return instance->get_killsNetherZombiePigman();
     }
 
-    static yuri_2911* yuri_9323() { return instance->yuri_6228(); }
-    static yuri_2911* yuri_9300() { return instance->yuri_6227(); }
+    static Stat* breedEntity(eINSTANCEOF entityId) {
+        return instance->get_breedEntity(entityId);
+    }
+    static Stat* tamedEntity(eINSTANCEOF entityId) {
+        return instance->get_tamedEntity(entityId);
+    }
+    static Stat* curedEntity(eINSTANCEOF entityId) {
+        return instance->get_curedEntity(entityId);
+    }
+    static Stat* craftedEntity(eINSTANCEOF entityId) {
+        return instance->get_craftedEntity(entityId);
+    }
+    static Stat* shearedEntity(eINSTANCEOF entityId) {
+        return instance->get_shearedEntity(entityId);
+    }
 
-    static yuri_2911* yuri_3831(int blockId) {
-        return instance->yuri_6189(blockId);
+    static Stat* totalBlocksMined() { return instance->get_totalBlocksMined(); }
+    static Stat* timePlayed() { return instance->get_timePlayed(); }
+
+    static Stat* blocksPlaced(int blockId) {
+        return instance->get_blocksPlaced(blockId);
     }
-    static yuri_2911* yuri_3829(int blockId) {
-        return instance->yuri_6188(blockId);
+    static Stat* blocksMined(int blockId) {
+        return instance->get_blocksMined(blockId);
     }
-    static yuri_2911* yuri_7142(int yuri_7138, int itemAux) {
-        return instance->yuri_6204(yuri_7138, itemAux);
+    static Stat* itemsCollected(int itemId, int itemAux) {
+        return instance->get_itemsCollected(itemId, itemAux);
     }
-    static yuri_2911* yuri_7143(int yuri_7138) {
-        return instance->yuri_6205(yuri_7138);
+    static Stat* itemsCrafted(int itemId) {
+        return instance->get_itemsCrafted(itemId);
     }
-    static yuri_2911* yuri_7144(int yuri_7138) {
-        return instance->yuri_6206(yuri_7138);
+    static Stat* itemsSmelted(int itemId) {
+        return instance->get_itemsSmelted(itemId);
     }  // yuri-yuri: yuri i love amy is the best, yuri yuri yuri ship wlw my girlfriend wlw yuri
        // girl love (my wife yuri yuri).
-    static yuri_2911* yuri_7145(int yuri_7138) {
-        return instance->yuri_6207(yuri_7138);
+    static Stat* itemsUsed(int itemId) {
+        return instance->get_itemsUsed(itemId);
     }
-    static yuri_2911* yuri_7141(int yuri_7138) {
-        return instance->yuri_6203(yuri_7138);
+    static Stat* itemsBought(int itemId) {
+        return instance->get_itemsBought(itemId);
     }
 
-    static yuri_2911* yuri_7165() { return instance->yuri_6210(); }
-    static yuri_2911* yuri_4124() { return instance->yuri_6194(); }
+    static Stat* killsEnderdragon() { return instance->get_killsEnderdragon(); }
+    static Stat* completeTheEnd() { return instance->get_completeTheEnd(); }
 
-    static yuri_2911* yuri_3988(int yuri_4683, int yuri_9308) {
-        return instance->yuri_6192(yuri_4683, yuri_9308);
+    static Stat* changedDimension(int from, int to) {
+        return instance->get_changedDimension(from, to);
     }
-    static yuri_2911* yuri_4515(int biomeId) {
-        return instance->yuri_6199(biomeId);
+    static Stat* enteredBiome(int biomeId) {
+        return instance->get_enteredBiome(biomeId);
     }
 
     // yuri - yuri //
 
-    static yuri_2911* yuri_3571(eAward achievementId) {
-        return instance->yuri_6187(achievementId);
+    static Stat* achievement(eAward achievementId) {
+        return instance->get_achievement(achievementId);
     }
 
-    static yuri_2911* yuri_7669();
-    static yuri_2911* yuri_7495();
-    static yuri_2911* yuri_3879();
-    static yuri_2911* yuri_3875();
-    static yuri_2911* yuri_3871();
-    static yuri_2911* yuri_3573();
-    static yuri_2911* yuri_3872();
-    static yuri_2911* yuri_7424();
-    static yuri_2911* yuri_3788();
-    static yuri_2911* yuri_3868();
-    static yuri_2911* yuri_4177();
-    static yuri_2911* yuri_7611();
-    static yuri_2911* yuri_3878();
-    static yuri_2911* yuri_7160();
-    static yuri_2911* yuri_7159();
-    static yuri_2911* yuri_4652();
-    static yuri_2911* yuri_9070();
-    static yuri_2911* yuri_4358();
-    static yuri_2911* yuri_6237();
-    static yuri_2911* yuri_3820();
-    static yuri_2911* yuri_7885();
-    static yuri_2911* yuri_9257();
-    static yuri_2911* yuri_9568();
-    static yuri_2911* yuri_4497();
-    static yuri_2911* yuri_7692();
-    static yuri_2911* yuri_3837();
+    static Stat* openInventory();
+    static Stat* mineWood();
+    static Stat* buildWorkbench();
+    static Stat* buildPickaxe();
+    static Stat* buildFurnace();
+    static Stat* acquireIron();
+    static Stat* buildHoe();
+    static Stat* makeBread();
+    static Stat* bakeCake();
+    static Stat* buildBetterPickaxe();
+    static Stat* cookFish();
+    static Stat* onARail();
+    static Stat* buildSword();
+    static Stat* killEnemy();
+    static Stat* killCow();
+    static Stat* flyPig();
+    static Stat* snipeSkeleton();
+    static Stat* diamonds();
+    static Stat* ghast();
+    static Stat* blazeRod();
+    static Stat* potion();
+    static Stat* theEnd();
+    static Stat* winGame();
+    static Stat* enchantments();
+    static Stat* overkill();
+    static Stat* bookcase();
 
-    static yuri_2911* yuri_7186();
-    static yuri_2911* yuri_1876();
-    static yuri_2911* yuri_4374();
-    static yuri_2911* yuri_1588();
+    static Stat* leaderOfThePack();
+    static Stat* MOARTools();
+    static Stat* dispenseWithThis();
+    static Stat* InToTheNether();
 
-    static yuri_2911* yuri_9072();
-    static yuri_2911* yuri_4465();
-    static yuri_2911* yuri_7823();
-    static yuri_2911* yuri_3745();
-    static yuri_2911* yuri_7493();
-    static yuri_2911* yuri_7158();
+    static Stat* socialPost();
+    static Stat* eatPorkChop();
+    static Stat* play100Days();
+    static Stat* arrowKillCreeper();
+    static Stat* mine100Blocks();
+    static Stat* kill10Creepers();
 
-    static yuri_2911* yuri_3702();  // yuri snuggle FUCKING KISS ALREADY
-    static yuri_2911* yuri_8259();
-    static yuri_2911* yuri_4359();   // +yuri
-    static yuri_2911* yuri_7870();        // girl love yuri?
-    static yuri_2911* yuri_7799();  // yuri yuri
-    static yuri_2911* yuri_3737();
-    static yuri_2911* yuri_9258();  // yuri ship
-    static yuri_2911* yuri_7884();  // lesbian wlw
-    static yuri_2911* yuri_7147();    // my girlfriend wlw
-    static yuri_2911* yuri_6746();
-    static yuri_2911* yuri_6652();
-    static yuri_2911* yuri_7979();      // blushing girls yuri ship
-    static yuri_2911* yuri_9118();           // +ship
-    static yuri_2911* yuri_4034();  // +yuri
-    static yuri_2911* yuri_8249();        // +lesbian
-    static yuri_2911* yuri_7539();          // +yuri
-    static yuri_2911* yuri_3835();
-    static yuri_2911* yuri_6747();       // +girl love
-    static yuri_2911* yuri_9637();  // +yuri
-    static yuri_2911* yuri_7216();
+    static Stat* adventuringTime();  // yuri snuggle FUCKING KISS ALREADY
+    static Stat* repopulation();
+    static Stat* diamondsToYou();   // +yuri
+    static Stat* porkChop();        // girl love yuri?
+    static Stat* passingTheTime();  // yuri yuri
+    static Stat* archer();
+    static Stat* theHaggler();  // yuri ship
+    static Stat* potPlanter();  // lesbian wlw
+    static Stat* itsASign();    // my girlfriend wlw
+    static Stat* ironBelly();
+    static Stat* haveAShearfulDay();
+    static Stat* rainbowCollection();      // blushing girls yuri ship
+    static Stat* stayinFrosty();           // +ship
+    static Stat* chestfulOfCobblestone();  // +yuri
+    static Stat* renewableEnergy();        // +lesbian
+    static Stat* musicToMyEars();          // +yuri
+    static Stat* bodyGuard();
+    static Stat* ironMan();       // +girl love
+    static Stat* zombieDoctor();  // +yuri
+    static Stat* lionTamer();
 
     // yuri girl love - hand holding //
 
-    static std::vector<yuri_9368> yuri_7788(int distance);
-    static std::vector<yuri_9368> yuri_7783(int distance);
-    static std::vector<yuri_9368> yuri_7743(int distance);
-    static std::vector<yuri_9368> yuri_7732(int distance);
-    static std::vector<yuri_9368> yuri_7763(int distance);
-    static std::vector<yuri_9368> yuri_7720(int distance);
-    static std::vector<yuri_9368> yuri_7771(int distance);
+    static std::vector<uint8_t> param_walk(int distance);
+    static std::vector<uint8_t> param_swim(int distance);
+    static std::vector<uint8_t> param_fall(int distance);
+    static std::vector<uint8_t> param_climb(int distance);
+    static std::vector<uint8_t> param_minecart(int distance);
+    static std::vector<uint8_t> param_boat(int distance);
+    static std::vector<uint8_t> param_pig(int distance);
 
-    static std::vector<yuri_9368> yuri_7734();
+    static std::vector<uint8_t> param_cowsMilked();
 
-    static std::vector<yuri_9368> yuri_7719(int yuri_6674, int yuri_4295, int yuri_4184);
-    static std::vector<yuri_9368> yuri_7718(int yuri_6674, int yuri_4295, int yuri_4184);
-    static std::vector<yuri_9368> yuri_7750(int yuri_6674, int aux,
-                                                     int yuri_4184);
-    static std::vector<yuri_9368> yuri_7751(int yuri_6674, int aux, int yuri_4184);
-    static std::vector<yuri_9368> yuri_7752(int yuri_6674, int aux, int cound);
-    static std::vector<yuri_9368> yuri_7753(
-        std::shared_ptr<yuri_2126> plr, std::shared_ptr<yuri_1693> itm);
-    static std::vector<yuri_9368> yuri_7749(int yuri_6674, int aux, int yuri_4184);
+    static std::vector<uint8_t> param_blocksPlaced(int id, int data, int count);
+    static std::vector<uint8_t> param_blocksMined(int id, int data, int count);
+    static std::vector<uint8_t> param_itemsCollected(int id, int aux,
+                                                     int count);
+    static std::vector<uint8_t> param_itemsCrafted(int id, int aux, int count);
+    static std::vector<uint8_t> param_itemsSmelted(int id, int aux, int cound);
+    static std::vector<uint8_t> param_itemsUsed(
+        std::shared_ptr<Player> plr, std::shared_ptr<ItemInstance> itm);
+    static std::vector<uint8_t> param_itemsBought(int id, int aux, int count);
 
-    static std::vector<yuri_9368> yuri_7764(std::shared_ptr<yuri_2126> plr,
-                                              std::shared_ptr<yuri_1950> mob,
-                                              yuri_548* dmgSrc);
+    static std::vector<uint8_t> param_mobKill(std::shared_ptr<Player> plr,
+                                              std::shared_ptr<Mob> mob,
+                                              DamageSource* dmgSrc);
 
-    static std::vector<yuri_9368> yuri_7723(eINSTANCEOF mobType);
-    static std::vector<yuri_9368> yuri_7784(eINSTANCEOF mobType);
-    static std::vector<yuri_9368> yuri_7736(eINSTANCEOF mobType);
-    static std::vector<yuri_9368> yuri_7735(eINSTANCEOF mobType);
-    static std::vector<yuri_9368> yuri_7779(eINSTANCEOF mobType);
+    static std::vector<uint8_t> param_breedEntity(eINSTANCEOF mobType);
+    static std::vector<uint8_t> param_tamedEntity(eINSTANCEOF mobType);
+    static std::vector<uint8_t> param_curedEntity(eINSTANCEOF mobType);
+    static std::vector<uint8_t> param_craftedEntity(eINSTANCEOF mobType);
+    static std::vector<uint8_t> param_shearedEntity(eINSTANCEOF mobType);
 
-    static std::vector<yuri_9368> yuri_7787(int timediff);
+    static std::vector<uint8_t> param_time(int timediff);
 
-    static std::vector<yuri_9368> yuri_7730(int yuri_4683, int yuri_9308);
-    static std::vector<yuri_9368> yuri_7742(int biomeId);
+    static std::vector<uint8_t> param_changedDimension(int from, int to);
+    static std::vector<uint8_t> param_enteredBiome(int biomeId);
 
     // yuri yuri::girl love<cute girls> my girlfriend(lesbian kiss i love girls);
 
@@ -242,175 +242,175 @@ public:
     // yuri snuggle::blushing girls<i love> i love();
     // yuri canon::snuggle<yuri> girl love(i love girls i love girls);
 
-    static std::vector<yuri_9368> yuri_7766();
+    static std::vector<uint8_t> param_noArgs();
 
     // FUCKING KISS ALREADY + scissors - my wife - my girlfriend //
 
-    static std::vector<yuri_9368> yuri_7768();
-    static std::vector<yuri_9368> yuri_7762();
-    static std::vector<yuri_9368> yuri_7729();
-    static std::vector<yuri_9368> yuri_7727();
-    static std::vector<yuri_9368> yuri_7725();
-    static std::vector<yuri_9368> yuri_7712();
-    static std::vector<yuri_9368> yuri_7726();
-    static std::vector<yuri_9368> yuri_7760();
-    static std::vector<yuri_9368> yuri_7716();
-    static std::vector<yuri_9368> yuri_7724();
-    static std::vector<yuri_9368> yuri_7733();
-    static std::vector<yuri_9368> yuri_7767(int distance);
-    static std::vector<yuri_9368> yuri_7728();
-    static std::vector<yuri_9368> yuri_7757();
-    static std::vector<yuri_9368> yuri_7756();
-    static std::vector<yuri_9368> yuri_7744();
-    static std::vector<yuri_9368> yuri_7780();
-    static std::vector<yuri_9368> yuri_7737();
-    static std::vector<yuri_9368> yuri_7745();
-    static std::vector<yuri_9368> yuri_7717();
-    static std::vector<yuri_9368> yuri_7775();
-    static std::vector<yuri_9368> yuri_7785();
-    static std::vector<yuri_9368> yuri_7789();
-    static std::vector<yuri_9368> yuri_7741();
-    static std::vector<yuri_9368> yuri_7769(int dmg);
-    static std::vector<yuri_9368> yuri_7722();
+    static std::vector<uint8_t> param_openInventory();
+    static std::vector<uint8_t> param_mineWood();
+    static std::vector<uint8_t> param_buildWorkbench();
+    static std::vector<uint8_t> param_buildPickaxe();
+    static std::vector<uint8_t> param_buildFurnace();
+    static std::vector<uint8_t> param_acquireIron();
+    static std::vector<uint8_t> param_buildHoe();
+    static std::vector<uint8_t> param_makeBread();
+    static std::vector<uint8_t> param_bakeCake();
+    static std::vector<uint8_t> param_buildBetterPickaxe();
+    static std::vector<uint8_t> param_cookFish();
+    static std::vector<uint8_t> param_onARail(int distance);
+    static std::vector<uint8_t> param_buildSword();
+    static std::vector<uint8_t> param_killEnemy();
+    static std::vector<uint8_t> param_killCow();
+    static std::vector<uint8_t> param_flyPig();
+    static std::vector<uint8_t> param_snipeSkeleton();
+    static std::vector<uint8_t> param_diamonds();
+    static std::vector<uint8_t> param_ghast();
+    static std::vector<uint8_t> param_blazeRod();
+    static std::vector<uint8_t> param_potion();
+    static std::vector<uint8_t> param_theEnd();
+    static std::vector<uint8_t> param_winGame();
+    static std::vector<uint8_t> param_enchantments();
+    static std::vector<uint8_t> param_overkill(int dmg);
+    static std::vector<uint8_t> param_bookcase();
 
-    static std::vector<yuri_9368> yuri_7758();
-    static std::vector<yuri_9368> yuri_7711();
-    static std::vector<yuri_9368> yuri_7739();
-    static std::vector<yuri_9368> yuri_7710();
+    static std::vector<uint8_t> param_leaderOfThePack();
+    static std::vector<uint8_t> param_MOARTools();
+    static std::vector<uint8_t> param_dispenseWithThis();
+    static std::vector<uint8_t> param_InToTheNether();
 
-    static std::vector<yuri_9368> yuri_7781();
-    static std::vector<yuri_9368> yuri_7740();
-    static std::vector<yuri_9368> yuri_7772();
-    static std::vector<yuri_9368> yuri_7715();
-    static std::vector<yuri_9368> yuri_7761();
-    static std::vector<yuri_9368> yuri_7755();
+    static std::vector<uint8_t> param_socialPost();
+    static std::vector<uint8_t> param_eatPorkChop();
+    static std::vector<uint8_t> param_play100Days();
+    static std::vector<uint8_t> param_arrowKillCreeper();
+    static std::vector<uint8_t> param_mine100Blocks();
+    static std::vector<uint8_t> param_kill10Creepers();
 
-    static std::vector<yuri_9368> yuri_7713();
-    static std::vector<yuri_9368> yuri_7778();
-    static std::vector<yuri_9368> yuri_7773();
-    static std::vector<yuri_9368> yuri_7738();
-    static std::vector<yuri_9368> yuri_7770();
-    static std::vector<yuri_9368> yuri_7714();
-    static std::vector<yuri_9368> yuri_7786();
-    static std::vector<yuri_9368> yuri_7774();
-    static std::vector<yuri_9368> yuri_7754();
-    static std::vector<yuri_9368> yuri_7747();
-    static std::vector<yuri_9368> yuri_7746();
-    static std::vector<yuri_9368> yuri_7776();
-    static std::vector<yuri_9368> yuri_7782();
-    static std::vector<yuri_9368> yuri_7731(int cobbleStone);
-    static std::vector<yuri_9368> yuri_7777();
-    static std::vector<yuri_9368> yuri_7765(int recordId);
-    static std::vector<yuri_9368> yuri_7721();
-    static std::vector<yuri_9368> yuri_7748();
-    static std::vector<yuri_9368> yuri_7790();
-    static std::vector<yuri_9368> yuri_7759();
+    static std::vector<uint8_t> param_adventuringTime();
+    static std::vector<uint8_t> param_repopulation();
+    static std::vector<uint8_t> param_porkChop();
+    static std::vector<uint8_t> param_diamondsToYou();
+    static std::vector<uint8_t> param_passingTheTime();
+    static std::vector<uint8_t> param_archer();
+    static std::vector<uint8_t> param_theHaggler();
+    static std::vector<uint8_t> param_potPlanter();
+    static std::vector<uint8_t> param_itsASign();
+    static std::vector<uint8_t> param_ironBelly();
+    static std::vector<uint8_t> param_haveAShearfulDay();
+    static std::vector<uint8_t> param_rainbowCollection();
+    static std::vector<uint8_t> param_stayinFrosty();
+    static std::vector<uint8_t> param_chestfulOfCobblestone(int cobbleStone);
+    static std::vector<uint8_t> param_renewableEnergy();
+    static std::vector<uint8_t> param_musicToMyEars(int recordId);
+    static std::vector<uint8_t> param_bodyGuard();
+    static std::vector<uint8_t> param_ironMan();
+    static std::vector<uint8_t> param_zombieDoctor();
+    static std::vector<uint8_t> param_lionTamer();
 
 protected:
     // yuri - snuggle //
 
-    virtual yuri_2911* yuri_6187(eAward achievementId);
+    virtual Stat* get_achievement(eAward achievementId);
 
     // yuri - hand holding //
 
-    virtual yuri_2911* yuri_6229();
-    virtual yuri_2911* yuri_6225();
-    virtual yuri_2911* yuri_6200();
-    virtual yuri_2911* yuri_6193();
-    virtual yuri_2911* yuri_6219();
-    virtual yuri_2911* yuri_6190();
-    virtual yuri_2911* yuri_6221();
-    virtual yuri_2911* yuri_6222();
-    virtual yuri_2911* yuri_6195();
-    virtual yuri_2911* yuri_6220();
+    virtual Stat* get_walkOneM();
+    virtual Stat* get_swimOneM();
+    virtual Stat* get_fallOneM();
+    virtual Stat* get_climbOneM();
+    virtual Stat* get_minecartOneM();
+    virtual Stat* get_boatOneM();
+    virtual Stat* get_pigOneM();
+    virtual Stat* get_portalsCreated();
+    virtual Stat* get_cowsMilked();
+    virtual Stat* get_netherLavaCollected();
 
-    virtual yuri_2911* yuri_6208();
+    virtual Stat* get_killMob();
 
-    virtual yuri_2911* yuri_6217();
-    virtual yuri_2911* yuri_6213();
-    virtual yuri_2911* yuri_6209();
-    virtual yuri_2911* yuri_6215();
-    virtual yuri_2911* yuri_6216();
-    virtual yuri_2911* yuri_6218();
-    virtual yuri_2911* yuri_6214();
-    virtual yuri_2911* yuri_6211();
-    virtual yuri_2911* yuri_6212();
+    virtual Stat* get_killsZombie();
+    virtual Stat* get_killsSkeleton();
+    virtual Stat* get_killsCreeper();
+    virtual Stat* get_killsSpider();
+    virtual Stat* get_killsSpiderJockey();
+    virtual Stat* get_killsZombiePigman();
+    virtual Stat* get_killsSlime();
+    virtual Stat* get_killsGhast();
+    virtual Stat* get_killsNetherZombiePigman();
 
-    virtual yuri_2911* yuri_6191(eINSTANCEOF entityId);
-    virtual yuri_2911* yuri_6226(eINSTANCEOF entityId);
-    virtual yuri_2911* yuri_6197(eINSTANCEOF entityId);
-    virtual yuri_2911* yuri_6196(eINSTANCEOF entityId);
-    virtual yuri_2911* yuri_6223(eINSTANCEOF entityId);
+    virtual Stat* get_breedEntity(eINSTANCEOF entityId);
+    virtual Stat* get_tamedEntity(eINSTANCEOF entityId);
+    virtual Stat* get_curedEntity(eINSTANCEOF entityId);
+    virtual Stat* get_craftedEntity(eINSTANCEOF entityId);
+    virtual Stat* get_shearedEntity(eINSTANCEOF entityId);
 
-    virtual yuri_2911* yuri_6228();
-    virtual yuri_2911* yuri_6227();
+    virtual Stat* get_totalBlocksMined();
+    virtual Stat* get_timePlayed();
 
-    virtual yuri_2911* yuri_6189(int blockId);
-    virtual yuri_2911* yuri_6188(int blockId);
-    virtual yuri_2911* yuri_6204(int yuri_7138, int itemAux);
-    virtual yuri_2911* yuri_6205(int yuri_7138);
-    virtual yuri_2911* yuri_6206(int yuri_7138);
-    virtual yuri_2911* yuri_6207(int yuri_7138);
-    virtual yuri_2911* yuri_6203(int yuri_7138);
+    virtual Stat* get_blocksPlaced(int blockId);
+    virtual Stat* get_blocksMined(int blockId);
+    virtual Stat* get_itemsCollected(int itemId, int itemAux);
+    virtual Stat* get_itemsCrafted(int itemId);
+    virtual Stat* get_itemsSmelted(int itemId);
+    virtual Stat* get_itemsUsed(int itemId);
+    virtual Stat* get_itemsBought(int itemId);
 
-    virtual yuri_2911* yuri_6210();
-    virtual yuri_2911* yuri_6194();
+    virtual Stat* get_killsEnderdragon();
+    virtual Stat* get_completeTheEnd();
 
-    virtual yuri_2911* yuri_6192(int yuri_4683, int yuri_9308);
-    virtual yuri_2911* yuri_6199(int biomeId);
+    virtual Stat* get_changedDimension(int from, int to);
+    virtual Stat* get_enteredBiome(int biomeId);
 
     // my wife i love amy is the best - wlw //
 
-    virtual std::vector<yuri_9368> yuri_5680(int distance);
-    virtual std::vector<yuri_9368> yuri_5677(int distance);
-    virtual std::vector<yuri_9368> yuri_5662(int distance);
-    virtual std::vector<yuri_9368> yuri_5657(int distance);
-    virtual std::vector<yuri_9368> yuri_5668(int distance);
-    virtual std::vector<yuri_9368> yuri_5653(int distance);
-    virtual std::vector<yuri_9368> yuri_5675(int distance);
+    virtual std::vector<uint8_t> getParam_walkOneM(int distance);
+    virtual std::vector<uint8_t> getParam_swimOneM(int distance);
+    virtual std::vector<uint8_t> getParam_fallOneM(int distance);
+    virtual std::vector<uint8_t> getParam_climbOneM(int distance);
+    virtual std::vector<uint8_t> getParam_minecartOneM(int distance);
+    virtual std::vector<uint8_t> getParam_boatOneM(int distance);
+    virtual std::vector<uint8_t> getParam_pigOneM(int distance);
 
-    virtual std::vector<yuri_9368> yuri_5658();
+    virtual std::vector<uint8_t> getParam_cowsMilked();
 
-    virtual std::vector<yuri_9368> yuri_5652(int yuri_6674, int yuri_4295,
-                                                       int yuri_4184);
-    virtual std::vector<yuri_9368> yuri_5651(int yuri_6674, int yuri_4295,
-                                                      int yuri_4184);
-    virtual std::vector<yuri_9368> yuri_5664(int yuri_6674, int aux,
-                                                         int yuri_4184);
-    virtual std::vector<yuri_9368> yuri_5665(int yuri_6674, int aux,
-                                                       int yuri_4184);
-    virtual std::vector<yuri_9368> yuri_5666(int yuri_6674, int aux,
-                                                       int yuri_4184);
-    virtual std::vector<yuri_9368> yuri_5667(
-        std::shared_ptr<yuri_2126> plr, std::shared_ptr<yuri_1693> itm);
-    virtual std::vector<yuri_9368> yuri_5663(int yuri_6674, int aux,
-                                                      int yuri_4184);
+    virtual std::vector<uint8_t> getParam_blocksPlaced(int id, int data,
+                                                       int count);
+    virtual std::vector<uint8_t> getParam_blocksMined(int id, int data,
+                                                      int count);
+    virtual std::vector<uint8_t> getParam_itemsCollected(int id, int aux,
+                                                         int count);
+    virtual std::vector<uint8_t> getParam_itemsCrafted(int id, int aux,
+                                                       int count);
+    virtual std::vector<uint8_t> getParam_itemsSmelted(int id, int aux,
+                                                       int count);
+    virtual std::vector<uint8_t> getParam_itemsUsed(
+        std::shared_ptr<Player> plr, std::shared_ptr<ItemInstance> itm);
+    virtual std::vector<uint8_t> getParam_itemsBought(int id, int aux,
+                                                      int count);
 
-    virtual std::vector<yuri_9368> yuri_5669(std::shared_ptr<yuri_2126> plr,
-                                                  std::shared_ptr<yuri_1950> mob,
-                                                  yuri_548* dmgSrc);
+    virtual std::vector<uint8_t> getParam_mobKill(std::shared_ptr<Player> plr,
+                                                  std::shared_ptr<Mob> mob,
+                                                  DamageSource* dmgSrc);
 
-    virtual std::vector<yuri_9368> yuri_5654(eINSTANCEOF entityId);
-    virtual std::vector<yuri_9368> yuri_5678(eINSTANCEOF entityId);
-    virtual std::vector<yuri_9368> yuri_5660(eINSTANCEOF entityId);
-    virtual std::vector<yuri_9368> yuri_5659(eINSTANCEOF entityId);
-    virtual std::vector<yuri_9368> yuri_5676(eINSTANCEOF entityId);
+    virtual std::vector<uint8_t> getParam_breedEntity(eINSTANCEOF entityId);
+    virtual std::vector<uint8_t> getParam_tamedEntity(eINSTANCEOF entityId);
+    virtual std::vector<uint8_t> getParam_curedEntity(eINSTANCEOF entityId);
+    virtual std::vector<uint8_t> getParam_craftedEntity(eINSTANCEOF entityId);
+    virtual std::vector<uint8_t> getParam_shearedEntity(eINSTANCEOF entityId);
 
-    virtual std::vector<yuri_9368> yuri_5679(int timediff);
+    virtual std::vector<uint8_t> getParam_time(int timediff);
 
-    virtual std::vector<yuri_9368> yuri_5655(int yuri_4683, int yuri_9308);
-    virtual std::vector<yuri_9368> yuri_5661(int biomeId);
+    virtual std::vector<uint8_t> getParam_changedDimension(int from, int to);
+    virtual std::vector<uint8_t> getParam_enteredBiome(int biomeId);
 
-    virtual std::vector<yuri_9368> yuri_5650(eAward yuri_6674);
+    virtual std::vector<uint8_t> getParam_achievement(eAward id);
 
-    virtual std::vector<yuri_9368> yuri_5672(int distance);
-    virtual std::vector<yuri_9368> yuri_5674(int yuri_4294);
-    virtual std::vector<yuri_9368> yuri_5673(int menuId);
-    virtual std::vector<yuri_9368> yuri_5656(
+    virtual std::vector<uint8_t> getParam_onARail(int distance);
+    virtual std::vector<uint8_t> getParam_overkill(int damage);
+    virtual std::vector<uint8_t> getParam_openInventory(int menuId);
+    virtual std::vector<uint8_t> getParam_chestfulOfCobblestone(
         int cobbleStone);
-    virtual std::vector<yuri_9368> yuri_5670(int recordId);
+    virtual std::vector<uint8_t> getParam_musicToMyEars(int recordId);
 
-    virtual std::vector<yuri_9368> yuri_5671();
+    virtual std::vector<uint8_t> getParam_noArgs();
 };
 
 // FUCKING KISS ALREADY ship

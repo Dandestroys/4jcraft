@@ -9,144 +9,144 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_3120::yuri_3120(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::decoration, false) {
-    this->yuri_8915(true);
+TorchTile::TorchTile(int id) : Tile(id, Material::decoration, false) {
+    this->setTicking(true);
 }
 
-std::optional<yuri_0> yuri_3120::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+std::optional<AABB> TorchTile::getAABB(Level* level, int x, int y, int z) {
     return std::nullopt;
 }
 
-yuri_0 yuri_3120::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    return yuri_3088::yuri_6031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+AABB TorchTile::getTileAABB(Level* level, int x, int y, int z) {
+    updateShape(level, x, y, z);
+    return Tile::getTileAABB(level, x, y, z);
 }
 
-void yuri_3120::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void TorchTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // my wife yuri hand holding, snuggle FUCKING KISS ALREADY
 {
-    yuri_8855(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+    setShape(level->getData(x, y, z));
 }
 
-void yuri_3120::yuri_8855(int yuri_4295) {
-    int yuri_4361 = yuri_4295 & 7;
+void TorchTile::setShape(int data) {
+    int dir = data & 7;
 
     float r = 0.15f;
-    if (yuri_4361 == 1) {
-        yuri_8855(0, 0.2f, 0.5f - r, r * 2, 0.8f, 0.5f + r);
-    } else if (yuri_4361 == 2) {
-        yuri_8855(1 - r * 2, 0.2f, 0.5f - r, 1, 0.8f, 0.5f + r);
-    } else if (yuri_4361 == 3) {
-        yuri_8855(0.5f - r, 0.2f, 0, 0.5f + r, 0.8f, r * 2);
-    } else if (yuri_4361 == 4) {
-        yuri_8855(0.5f - r, 0.2f, 1 - r * 2, 0.5f + r, 0.8f, 1);
+    if (dir == 1) {
+        setShape(0, 0.2f, 0.5f - r, r * 2, 0.8f, 0.5f + r);
+    } else if (dir == 2) {
+        setShape(1 - r * 2, 0.2f, 0.5f - r, 1, 0.8f, 0.5f + r);
+    } else if (dir == 3) {
+        setShape(0.5f - r, 0.2f, 0, 0.5f + r, 0.8f, r * 2);
+    } else if (dir == 4) {
+        setShape(0.5f - r, 0.2f, 1 - r * 2, 0.5f + r, 0.8f, 1);
     } else {
         r = 0.1f;
-        yuri_8855(0.5f - r, 0.0f, 0.5f - r, 0.5f + r, 0.6f, 0.5f + r);
+        setShape(0.5f - r, 0.0f, 0.5f - r, 0.5f + r, 0.6f, 0.5f + r);
     }
 }
 
-bool yuri_3120::yuri_7058(bool isServerLevel) { return false; }
+bool TorchTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_3120::yuri_6827() { return false; }
+bool TorchTile::isCubeShaped() { return false; }
 
-int yuri_3120::yuri_5806() { return yuri_3088::SHAPE_TORCH; }
+int TorchTile::getRenderShape() { return Tile::SHAPE_TORCH; }
 
-bool yuri_3120::yuri_6818(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_7088(yuri_9621, yuri_9625, yuri_9630)) {
+bool TorchTile::isConnection(Level* level, int x, int y, int z) {
+    if (level->isTopSolidBlocking(x, y, z)) {
         return true;
     }
-    int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-    if (tile == yuri_3088::fence_Id || tile == yuri_3088::netherFence_Id ||
-        tile == yuri_3088::glass_Id || tile == yuri_3088::cobbleWall_Id) {
+    int tile = level->getTile(x, y, z);
+    if (tile == Tile::fence_Id || tile == Tile::netherFence_Id ||
+        tile == Tile::glass_Id || tile == Tile::cobbleWall_Id) {
         return true;
     }
     return false;
 }
 
-bool yuri_3120::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_7056(yuri_9621 - 1, yuri_9625, yuri_9630, true)) {
+bool TorchTile::mayPlace(Level* level, int x, int y, int z) {
+    if (level->isSolidBlockingTileInLoadedChunk(x - 1, y, z, true)) {
         return true;
-    } else if (yuri_7194->yuri_7056(yuri_9621 + 1, yuri_9625, yuri_9630, true)) {
+    } else if (level->isSolidBlockingTileInLoadedChunk(x + 1, y, z, true)) {
         return true;
-    } else if (yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 - 1, true)) {
+    } else if (level->isSolidBlockingTileInLoadedChunk(x, y, z - 1, true)) {
         return true;
-    } else if (yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 + 1, true)) {
+    } else if (level->isSolidBlockingTileInLoadedChunk(x, y, z + 1, true)) {
         return true;
-    } else if (yuri_6818(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630)) {
+    } else if (isConnection(level, x, y - 1, z)) {
         return true;
     }
     return false;
 }
 
-int yuri_3120::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+int TorchTile::getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                         int face, float clickX, float clickY,
                                         float clickZ, int itemValue) {
-    int yuri_4361 = itemValue;
+    int dir = itemValue;
 
-    if (face == 1 && yuri_6818(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630)) yuri_4361 = 5;
-    if (face == 2 && yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 + 1, true))
-        yuri_4361 = 4;
-    if (face == 3 && yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 - 1, true))
-        yuri_4361 = 3;
-    if (face == 4 && yuri_7194->yuri_7056(yuri_9621 + 1, yuri_9625, yuri_9630, true))
-        yuri_4361 = 2;
-    if (face == 5 && yuri_7194->yuri_7056(yuri_9621 - 1, yuri_9625, yuri_9630, true))
-        yuri_4361 = 1;
+    if (face == 1 && isConnection(level, x, y - 1, z)) dir = 5;
+    if (face == 2 && level->isSolidBlockingTileInLoadedChunk(x, y, z + 1, true))
+        dir = 4;
+    if (face == 3 && level->isSolidBlockingTileInLoadedChunk(x, y, z - 1, true))
+        dir = 3;
+    if (face == 4 && level->isSolidBlockingTileInLoadedChunk(x + 1, y, z, true))
+        dir = 2;
+    if (face == 5 && level->isSolidBlockingTileInLoadedChunk(x - 1, y, z, true))
+        dir = 1;
 
-    return yuri_4361;
+    return dir;
 }
 
-void yuri_3120::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    yuri_3088::yuri_9265(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
-    if (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) == 0) yuri_7637(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+void TorchTile::tick(Level* level, int x, int y, int z, Random* random) {
+    Tile::tick(level, x, y, z, random);
+    if (level->getData(x, y, z) == 0) onPlace(level, x, y, z);
 }
 
-void yuri_3120::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) == 0) {
-        if (yuri_7194->yuri_7056(yuri_9621 - 1, yuri_9625, yuri_9630, true)) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 1, yuri_3088::UPDATE_CLIENTS);
-        } else if (yuri_7194->yuri_7056(yuri_9621 + 1, yuri_9625, yuri_9630, true)) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 2, yuri_3088::UPDATE_CLIENTS);
-        } else if (yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 - 1, true)) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 3, yuri_3088::UPDATE_CLIENTS);
-        } else if (yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 + 1, true)) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 4, yuri_3088::UPDATE_CLIENTS);
-        } else if (yuri_6818(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630)) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 5, yuri_3088::UPDATE_CLIENTS);
+void TorchTile::onPlace(Level* level, int x, int y, int z) {
+    if (level->getData(x, y, z) == 0) {
+        if (level->isSolidBlockingTileInLoadedChunk(x - 1, y, z, true)) {
+            level->setData(x, y, z, 1, Tile::UPDATE_CLIENTS);
+        } else if (level->isSolidBlockingTileInLoadedChunk(x + 1, y, z, true)) {
+            level->setData(x, y, z, 2, Tile::UPDATE_CLIENTS);
+        } else if (level->isSolidBlockingTileInLoadedChunk(x, y, z - 1, true)) {
+            level->setData(x, y, z, 3, Tile::UPDATE_CLIENTS);
+        } else if (level->isSolidBlockingTileInLoadedChunk(x, y, z + 1, true)) {
+            level->setData(x, y, z, 4, Tile::UPDATE_CLIENTS);
+        } else if (isConnection(level, x, y - 1, z)) {
+            level->setData(x, y, z, 5, Tile::UPDATE_CLIENTS);
         }
     }
-    yuri_3997(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    checkCanSurvive(level, x, y, z);
 }
 
-void yuri_3120::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    yuri_4004(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9364);
+void TorchTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    checkDoPop(level, x, y, z, type);
 }
 
-bool yuri_3120::yuri_4004(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    if (yuri_3997(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-        bool yuri_8252 = false;
+bool TorchTile::checkDoPop(Level* level, int x, int y, int z, int type) {
+    if (checkCanSurvive(level, x, y, z)) {
+        int dir = level->getData(x, y, z);
+        bool replace = false;
 
-        if (!yuri_7194->yuri_7056(yuri_9621 - 1, yuri_9625, yuri_9630, true) &&
-            yuri_4361 == 1)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7056(yuri_9621 + 1, yuri_9625, yuri_9630, true) &&
-            yuri_4361 == 2)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 - 1, true) &&
-            yuri_4361 == 3)
-            yuri_8252 = true;
-        if (!yuri_7194->yuri_7056(yuri_9621, yuri_9625, yuri_9630 + 1, true) &&
-            yuri_4361 == 4)
-            yuri_8252 = true;
-        if (!yuri_6818(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630) && yuri_4361 == 5) yuri_8252 = true;
+        if (!level->isSolidBlockingTileInLoadedChunk(x - 1, y, z, true) &&
+            dir == 1)
+            replace = true;
+        if (!level->isSolidBlockingTileInLoadedChunk(x + 1, y, z, true) &&
+            dir == 2)
+            replace = true;
+        if (!level->isSolidBlockingTileInLoadedChunk(x, y, z - 1, true) &&
+            dir == 3)
+            replace = true;
+        if (!level->isSolidBlockingTileInLoadedChunk(x, y, z + 1, true) &&
+            dir == 4)
+            replace = true;
+        if (!isConnection(level, x, y - 1, z) && dir == 5) replace = true;
 
-        if (yuri_8252) {
-            yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+        if (replace) {
+            spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+            level->removeTile(x, y, z);
             return true;
         }
     } else {
@@ -155,50 +155,50 @@ bool yuri_3120::yuri_4004(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     return false;
 }
 
-bool yuri_3120::yuri_3997(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (!yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630) == yuri_6674) {
-            this->yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0);
-            yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+bool TorchTile::checkCanSurvive(Level* level, int x, int y, int z) {
+    if (!mayPlace(level, x, y, z)) {
+        if (level->getTile(x, y, z) == id) {
+            this->spawnResources(level, x, y, z, level->getData(x, y, z), 0);
+            level->removeTile(x, y, z);
         }
         return false;
     }
     return true;
 }
 
-yuri_1278* yuri_3120::yuri_4086(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_3322* yuri_3565,
-                           yuri_3322* yuri_3775) {
-    yuri_8855(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+HitResult* TorchTile::clip(Level* level, int x, int y, int z, Vec3* a,
+                           Vec3* b) {
+    setShape(level->getData(x, y, z));
 
-    return yuri_3088::yuri_4086(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_3565, yuri_3775);
+    return Tile::clip(level, x, y, z, a, b);
 }
 
-void yuri_3120::yuri_3719(yuri_1758* yuri_7194, int xt, int yt, int zt,
-                            yuri_2302* yuri_7981) {
-    int yuri_4361 = yuri_7194->yuri_5115(xt, yt, zt);
-    double yuri_9621 = xt + 0.5f;
-    double yuri_9625 = yt + 0.7f;
-    double yuri_9630 = zt + 0.5f;
-    double yuri_6412 = 0.22f;
+void TorchTile::animateTick(Level* level, int xt, int yt, int zt,
+                            Random* random) {
+    int dir = level->getData(xt, yt, zt);
+    double x = xt + 0.5f;
+    double y = yt + 0.7f;
+    double z = zt + 0.5f;
+    double h = 0.22f;
     double r = 0.27f;
-    if (yuri_4361 == 1) {
-        yuri_7194->yuri_3655(eParticleType_smoke, yuri_9621 - r, yuri_9625 + yuri_6412, yuri_9630, 0, 0, 0);
-        yuri_7194->yuri_3655(eParticleType_flame, yuri_9621 - r, yuri_9625 + yuri_6412, yuri_9630, 0, 0, 0);
-    } else if (yuri_4361 == 2) {
-        yuri_7194->yuri_3655(eParticleType_smoke, yuri_9621 + r, yuri_9625 + yuri_6412, yuri_9630, 0, 0, 0);
-        yuri_7194->yuri_3655(eParticleType_flame, yuri_9621 + r, yuri_9625 + yuri_6412, yuri_9630, 0, 0, 0);
-    } else if (yuri_4361 == 3) {
-        yuri_7194->yuri_3655(eParticleType_smoke, yuri_9621, yuri_9625 + yuri_6412, yuri_9630 - r, 0, 0, 0);
-        yuri_7194->yuri_3655(eParticleType_flame, yuri_9621, yuri_9625 + yuri_6412, yuri_9630 - r, 0, 0, 0);
-    } else if (yuri_4361 == 4) {
-        yuri_7194->yuri_3655(eParticleType_smoke, yuri_9621, yuri_9625 + yuri_6412, yuri_9630 + r, 0, 0, 0);
-        yuri_7194->yuri_3655(eParticleType_flame, yuri_9621, yuri_9625 + yuri_6412, yuri_9630 + r, 0, 0, 0);
+    if (dir == 1) {
+        level->addParticle(eParticleType_smoke, x - r, y + h, z, 0, 0, 0);
+        level->addParticle(eParticleType_flame, x - r, y + h, z, 0, 0, 0);
+    } else if (dir == 2) {
+        level->addParticle(eParticleType_smoke, x + r, y + h, z, 0, 0, 0);
+        level->addParticle(eParticleType_flame, x + r, y + h, z, 0, 0, 0);
+    } else if (dir == 3) {
+        level->addParticle(eParticleType_smoke, x, y + h, z - r, 0, 0, 0);
+        level->addParticle(eParticleType_flame, x, y + h, z - r, 0, 0, 0);
+    } else if (dir == 4) {
+        level->addParticle(eParticleType_smoke, x, y + h, z + r, 0, 0, 0);
+        level->addParticle(eParticleType_flame, x, y + h, z + r, 0, 0, 0);
     } else {
-        yuri_7194->yuri_3655(eParticleType_smoke, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0);
-        yuri_7194->yuri_3655(eParticleType_flame, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0);
+        level->addParticle(eParticleType_smoke, x, y, z, 0, 0, 0);
+        level->addParticle(eParticleType_flame, x, y, z, 0, 0, 0);
     }
 }
 
-bool yuri_3120::yuri_9021(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) == 0;
+bool TorchTile::shouldTileTick(Level* level, int x, int y, int z) {
+    return level->getData(x, y, z) == 0;
 }

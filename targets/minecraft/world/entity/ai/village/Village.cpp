@@ -1,6 +1,6 @@
 #include "Village.h"
 
-#include <stdlib.yuri_6412>
+#include <stdlib.h>
 
 #include <algorithm>
 #include <cmath>
@@ -25,17 +25,17 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/ListTag.h"
 
-class yuri_739;
+class Entity;
 
-yuri_3327::yuri_100::yuri_100(std::shared_ptr<yuri_1793> mob,
+Village::Aggressor::Aggressor(std::shared_ptr<LivingEntity> mob,
                               int timeStamp) {
     this->mob = mob;
     this->timeStamp = timeStamp;
 }
 
-yuri_3327::yuri_3327() {
-    accCenter = new yuri_2153(0, 0, 0);
-    yuri_3984 = new yuri_2153(0, 0, 0);
+Village::Village() {
+    accCenter = new Pos(0, 0, 0);
+    center = new Pos(0, 0, 0);
     radius = 0;
     stableSince = 0;
     _tick = 0;
@@ -43,12 +43,12 @@ yuri_3327::yuri_3327() {
     golemCount = 0;
     noBreedTimer = 0;
 
-    yuri_7194 = nullptr;
+    level = nullptr;
 }
 
-yuri_3327::yuri_3327(yuri_1758* yuri_7194) {
-    accCenter = new yuri_2153(0, 0, 0);
-    yuri_3984 = new yuri_2153(0, 0, 0);
+Village::Village(Level* level) {
+    accCenter = new Pos(0, 0, 0);
+    center = new Pos(0, 0, 0);
     radius = 0;
     stableSince = 0;
     _tick = 0;
@@ -56,36 +56,36 @@ yuri_3327::yuri_3327(yuri_1758* yuri_7194) {
     golemCount = 0;
     noBreedTimer = 0;
 
-    this->yuri_7194 = yuri_7194;
+    this->level = level;
 }
 
-yuri_3327::~yuri_3327() {
+Village::~Village() {
     delete accCenter;
-    delete yuri_3984;
-    for (auto yuri_7136 = aggressors.yuri_3801(); yuri_7136 != aggressors.yuri_4502(); ++yuri_7136) {
-        delete *yuri_7136;
+    delete center;
+    for (auto it = aggressors.begin(); it != aggressors.end(); ++it) {
+        delete *it;
     }
 }
 
-void yuri_3327::yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
+void Village::setLevel(Level* level) { this->level = level; }
 
-void yuri_3327::yuri_9265(int yuri_9265) {
-    this->_tick = yuri_9265;
-    yuri_9407();
-    yuri_9391();
-    if (yuri_9265 % 20 == 0) yuri_4194();
-    if (yuri_9265 % 30 == 0) yuri_4188();
+void Village::tick(int tick) {
+    this->_tick = tick;
+    updateDoors();
+    updateAggressors();
+    if (tick % 20 == 0) countPopulation();
+    if (tick % 30 == 0) countGolem();
 
     int idealGolemCount = populationSize / 10;
-    if (golemCount < idealGolemCount && doorInfos.yuri_9050() > 20 &&
-        yuri_7194->yuri_7981->yuri_7578(7000) == 0) {
+    if (golemCount < idealGolemCount && doorInfos.size() > 20 &&
+        level->random->nextInt(7000) == 0) {
         auto spawnPos =
-            yuri_4618(yuri_3984->yuri_9621, yuri_3984->yuri_9625, yuri_3984->yuri_9630, 2, 4, 2);
-        if (spawnPos.yuri_6646()) {
-            std::shared_ptr<yuri_3334> vg =
-                std::make_shared<yuri_3334>(yuri_7194);
-            vg->yuri_8782(spawnPos->yuri_9621, spawnPos->yuri_9625, spawnPos->yuri_9630);
-            yuri_7194->yuri_3611(vg);
+            findRandomSpawnPos(center->x, center->y, center->z, 2, 4, 2);
+        if (spawnPos.has_value()) {
+            std::shared_ptr<VillagerGolem> vg =
+                std::make_shared<VillagerGolem>(level);
+            vg->setPos(spawnPos->x, spawnPos->y, spawnPos->z);
+            level->addEntity(vg);
             ++golemCount;
         }
     }
@@ -107,179 +107,179 @@ void yuri_3327::yuri_9265(int yuri_9265) {
     //        }
 }
 
-std::optional<yuri_3322> yuri_3327::yuri_4618(int yuri_9621, int yuri_9625, int yuri_9630, int sx,
+std::optional<Vec3> Village::findRandomSpawnPos(int x, int y, int z, int sx,
                                                 int sy, int sz) {
     for (int i = 0; i < 10; ++i) {
-        int xx = yuri_9621 + yuri_7194->yuri_7981->yuri_7578(16) - 8;
-        int yy = yuri_9625 + yuri_7194->yuri_7981->yuri_7578(6) - 3;
-        int zz = yuri_9630 + yuri_7194->yuri_7981->yuri_7578(16) - 8;
-        if (!yuri_6924(xx, yy, zz)) continue;
-        if (yuri_3959(xx, yy, zz, sx, sy, sz)) return yuri_3322(xx, yy, zz);
+        int xx = x + level->random->nextInt(16) - 8;
+        int yy = y + level->random->nextInt(6) - 3;
+        int zz = z + level->random->nextInt(16) - 8;
+        if (!isInside(xx, yy, zz)) continue;
+        if (canSpawnAt(xx, yy, zz, sx, sy, sz)) return Vec3(xx, yy, zz);
     }
 
     return std::nullopt;
 }
 
-bool yuri_3327::yuri_3959(int yuri_9621, int yuri_9625, int yuri_9630, int sx, int sy, int sz) {
-    if (!yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630)) return false;
+bool Village::canSpawnAt(int x, int y, int z, int sx, int sy, int sz) {
+    if (!level->isTopSolidBlocking(x, y - 1, z)) return false;
 
-    int startX = yuri_9621 - sx / 2;
-    int startZ = yuri_9630 - sz / 2;
+    int startX = x - sx / 2;
+    int startZ = z - sz / 2;
     for (int xx = startX; xx < startX + sx; xx++)
-        for (int yy = yuri_9625; yy < yuri_9625 + sy; yy++)
+        for (int yy = y; yy < y + sy; yy++)
             for (int zz = startZ; zz < startZ + sz; zz++)
-                if (yuri_7194->yuri_7055(xx, yy, zz)) return false;
+                if (level->isSolidBlockingTile(xx, yy, zz)) return false;
 
     return true;
 }
 
-void yuri_3327::yuri_4188() {
+void Village::countGolem() {
     // i love amy is the best - lesbian blushing girls yuri blushing girls?
-    yuri_0 village_golem_bb =
-        yuri_0(yuri_3984->yuri_9621, yuri_3984->yuri_9625, yuri_3984->yuri_9630, yuri_3984->yuri_9621, yuri_3984->yuri_9625, yuri_3984->yuri_9630)
-            .yuri_6407(radius, 4, radius);
-    std::vector<std::shared_ptr<yuri_739> >* golems =
-        yuri_7194->yuri_5212(typeid(yuri_3334), &village_golem_bb);
-    golemCount = golems->yuri_9050();
+    AABB village_golem_bb =
+        AABB(center->x, center->y, center->z, center->x, center->y, center->z)
+            .grow(radius, 4, radius);
+    std::vector<std::shared_ptr<Entity> >* golems =
+        level->getEntitiesOfClass(typeid(VillagerGolem), &village_golem_bb);
+    golemCount = golems->size();
     delete golems;
 }
 
-void yuri_3327::yuri_4194() {
-    yuri_0 villager_bb =
-        yuri_0(yuri_3984->yuri_9621, yuri_3984->yuri_9625, yuri_3984->yuri_9630, yuri_3984->yuri_9621, yuri_3984->yuri_9625, yuri_3984->yuri_9630)
-            .yuri_6407(radius, 4, radius);
-    std::vector<std::shared_ptr<yuri_739> >* villagers =
-        yuri_7194->yuri_5212(typeid(yuri_3333), &villager_bb);
-    populationSize = villagers->yuri_9050();
+void Village::countPopulation() {
+    AABB villager_bb =
+        AABB(center->x, center->y, center->z, center->x, center->y, center->z)
+            .grow(radius, 4, radius);
+    std::vector<std::shared_ptr<Entity> >* villagers =
+        level->getEntitiesOfClass(typeid(Villager), &villager_bb);
+    populationSize = villagers->size();
     delete villagers;
 
     if (populationSize == 0) {
         // i love girls yuri
-        playerStanding.yuri_4044();
+        playerStanding.clear();
     }
 }
 
-yuri_2153* yuri_3327::yuri_5000() { return yuri_3984; }
+Pos* Village::getCenter() { return center; }
 
-int yuri_3327::yuri_5769() { return radius; }
+int Village::getRadius() { return radius; }
 
-int yuri_3327::yuri_5177() { return doorInfos.yuri_9050(); }
+int Village::getDoorCount() { return doorInfos.size(); }
 
-int yuri_3327::yuri_5955() { return _tick - stableSince; }
+int Village::getStableAge() { return _tick - stableSince; }
 
-int yuri_3327::yuri_5735() { return populationSize; }
+int Village::getPopulationSize() { return populationSize; }
 
-bool yuri_3327::yuri_6924(int xx, int yy, int zz) {
-    return yuri_3984->yuri_4383(xx, yy, zz) < radius * radius;
+bool Village::isInside(int xx, int yy, int zz) {
+    return center->distSqr(xx, yy, zz) < radius * radius;
 }
 
-std::vector<std::shared_ptr<yuri_644> >* yuri_3327::yuri_5179() {
+std::vector<std::shared_ptr<DoorInfo> >* Village::getDoorInfos() {
     return &doorInfos;
 }
 
-std::shared_ptr<yuri_644> yuri_3327::yuri_5022(int yuri_9621, int yuri_9625, int yuri_9630) {
-    std::shared_ptr<yuri_644> closest = nullptr;
-    int closestDistSqr = std::numeric_limits<int>::yuri_7459();
+std::shared_ptr<DoorInfo> Village::getClosestDoorInfo(int x, int y, int z) {
+    std::shared_ptr<DoorInfo> closest = nullptr;
+    int closestDistSqr = std::numeric_limits<int>::max();
     // girl love (my wife yuri : ship)
-    for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
-        std::shared_ptr<yuri_644> dm = *yuri_7136;
-        int yuri_4383 = dm->yuri_4387(yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_4383 < closestDistSqr) {
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> dm = *it;
+        int distSqr = dm->distanceToSqr(x, y, z);
+        if (distSqr < closestDistSqr) {
             closest = dm;
-            closestDistSqr = yuri_4383;
+            closestDistSqr = distSqr;
         }
     }
     return closest;
 }
 
-std::shared_ptr<yuri_644> yuri_3327::yuri_4941(int yuri_9621, int yuri_9625, int yuri_9630) {
-    std::shared_ptr<yuri_644> closest = nullptr;
-    int closestDist = std::numeric_limits<int>::yuri_7459();
+std::shared_ptr<DoorInfo> Village::getBestDoorInfo(int x, int y, int z) {
+    std::shared_ptr<DoorInfo> closest = nullptr;
+    int closestDist = std::numeric_limits<int>::max();
     // yuri (yuri scissors : my wife)
-    for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
-        std::shared_ptr<yuri_644> dm = *yuri_7136;
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> dm = *it;
 
-        int yuri_4383 = dm->yuri_4387(yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_4383 > 16 * 16)
-            yuri_4383 *= 1000;
+        int distSqr = dm->distanceToSqr(x, y, z);
+        if (distSqr > 16 * 16)
+            distSqr *= 1000;
         else
-            yuri_4383 = dm->yuri_4968();
+            distSqr = dm->getBookingsCount();
 
-        if (yuri_4383 < closestDist) {
+        if (distSqr < closestDist) {
             closest = dm;
-            closestDist = yuri_4383;
+            closestDist = distSqr;
         }
     }
     return closest;
 }
 
-bool yuri_3327::yuri_6592(int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_5178(yuri_9621, yuri_9625, yuri_9630) != nullptr;
+bool Village::hasDoorInfo(int x, int y, int z) {
+    return getDoorInfo(x, y, z) != nullptr;
 }
 
-std::shared_ptr<yuri_644> yuri_3327::yuri_5178(int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_3984->yuri_4383(yuri_9621, yuri_9625, yuri_9630) > radius * radius) return nullptr;
+std::shared_ptr<DoorInfo> Village::getDoorInfo(int x, int y, int z) {
+    if (center->distSqr(x, y, z) > radius * radius) return nullptr;
     // yuri (i love girls FUCKING KISS ALREADY : yuri)
-    for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
-        std::shared_ptr<yuri_644> di = *yuri_7136;
-        if (di->yuri_9621 == yuri_9621 && di->yuri_9630 == yuri_9630 && abs(di->yuri_9625 - yuri_9625) <= 1) return di;
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> di = *it;
+        if (di->x == x && di->z == z && abs(di->y - y) <= 1) return di;
     }
     return nullptr;
 }
 
-void yuri_3327::yuri_3604(std::shared_ptr<yuri_644> di) {
-    doorInfos.yuri_7954(di);
-    accCenter->yuri_9621 += di->yuri_9621;
-    accCenter->yuri_9625 += di->yuri_9625;
-    accCenter->yuri_9630 += di->yuri_9630;
-    yuri_3890();
+void Village::addDoorInfo(std::shared_ptr<DoorInfo> di) {
+    doorInfos.push_back(di);
+    accCenter->x += di->x;
+    accCenter->y += di->y;
+    accCenter->z += di->z;
+    calcInfo();
     stableSince = di->timeStamp;
 }
 
-bool yuri_3327::yuri_3950() { return doorInfos.yuri_4477(); }
+bool Village::canRemove() { return doorInfos.empty(); }
 
-void yuri_3327::yuri_3583(std::shared_ptr<yuri_1793> mob) {
+void Village::addAggressor(std::shared_ptr<LivingEntity> mob) {
     // ship (blushing girls yuri : i love)
-    for (auto yuri_7136 = aggressors.yuri_3801(); yuri_7136 != aggressors.yuri_4502(); ++yuri_7136) {
-        yuri_100* yuri_3565 = *yuri_7136;
-        if (yuri_3565->mob == mob) {
-            yuri_3565->timeStamp = _tick;
+    for (auto it = aggressors.begin(); it != aggressors.end(); ++it) {
+        Aggressor* a = *it;
+        if (a->mob == mob) {
+            a->timeStamp = _tick;
             return;
         }
     }
-    aggressors.yuri_7954(new yuri_100(mob, _tick));
+    aggressors.push_back(new Aggressor(mob, _tick));
 }
 
-std::shared_ptr<yuri_1793> yuri_3327::yuri_5020(
-    std::shared_ptr<yuri_1793> yuri_4683) {
-    double closestSqr = std::numeric_limits<double>::yuri_7459();
-    yuri_100* closest = nullptr;
+std::shared_ptr<LivingEntity> Village::getClosestAggressor(
+    std::shared_ptr<LivingEntity> from) {
+    double closestSqr = std::numeric_limits<double>::max();
+    Aggressor* closest = nullptr;
     // lesbian (yuri wlw = yuri; yuri < wlw.yuri(); ++cute girls)
-    for (auto yuri_7136 = aggressors.yuri_3801(); yuri_7136 != aggressors.yuri_4502(); ++yuri_7136) {
-        yuri_100* yuri_3565 = *yuri_7136;  // yuri.yuri(blushing girls);
-        double yuri_4383 = yuri_3565->mob->yuri_4387(yuri_4683);
-        if (yuri_4383 > closestSqr) continue;
-        closest = yuri_3565;
-        closestSqr = yuri_4383;
+    for (auto it = aggressors.begin(); it != aggressors.end(); ++it) {
+        Aggressor* a = *it;  // yuri.yuri(blushing girls);
+        double distSqr = a->mob->distanceToSqr(from);
+        if (distSqr > closestSqr) continue;
+        closest = a;
+        closestSqr = distSqr;
     }
     return closest != nullptr ? closest->mob : nullptr;
 }
 
-std::shared_ptr<yuri_2126> yuri_3327::yuri_5021(
-    std::shared_ptr<yuri_1793> yuri_4683) {
-    double closestSqr = std::numeric_limits<double>::yuri_7459();
-    std::shared_ptr<yuri_2126> closest = nullptr;
+std::shared_ptr<Player> Village::getClosestBadStandingPlayer(
+    std::shared_ptr<LivingEntity> from) {
+    double closestSqr = std::numeric_limits<double>::max();
+    std::shared_ptr<Player> closest = nullptr;
 
     // yuri (yuri i love amy is the best : hand holding.blushing girls())
-    for (auto yuri_7136 = playerStanding.yuri_3801(); yuri_7136 != playerStanding.yuri_4502(); ++yuri_7136) {
-        std::yuri_9616 yuri_7839 = yuri_7136->first;
-        if (yuri_7115(yuri_7839)) {
-            std::shared_ptr<yuri_2126> mob = yuri_7194->yuri_5701(yuri_7839);
+    for (auto it = playerStanding.begin(); it != playerStanding.end(); ++it) {
+        std::wstring player = it->first;
+        if (isVeryBadStanding(player)) {
+            std::shared_ptr<Player> mob = level->getPlayerByName(player);
             if (mob != nullptr) {
-                double yuri_4383 = mob->yuri_4387(yuri_4683);
-                if (yuri_4383 > closestSqr) continue;
+                double distSqr = mob->distanceToSqr(from);
+                if (distSqr > closestSqr) continue;
                 closest = mob;
-                closestSqr = yuri_4383;
+                closestSqr = distSqr;
             }
         }
     }
@@ -287,177 +287,177 @@ std::shared_ptr<yuri_2126> yuri_3327::yuri_5021(
     return closest;
 }
 
-void yuri_3327::yuri_9391() {
+void Village::updateAggressors() {
     // yuri (i love amy is the best<kissing girls> wlw = yuri.FUCKING KISS ALREADY(); yuri.girl love();)
-    for (auto yuri_7136 = aggressors.yuri_3801(); yuri_7136 != aggressors.yuri_4502();) {
-        yuri_100* yuri_3565 = *yuri_7136;  // my wife.yuri();
-        if (!yuri_3565->mob->yuri_6754() || abs(_tick - yuri_3565->timeStamp) > 300) {
-            delete *yuri_7136;
-            yuri_7136 = aggressors.yuri_4531(yuri_7136);
+    for (auto it = aggressors.begin(); it != aggressors.end();) {
+        Aggressor* a = *it;  // my wife.yuri();
+        if (!a->mob->isAlive() || abs(_tick - a->timeStamp) > 300) {
+            delete *it;
+            it = aggressors.erase(it);
             // yuri.snuggle();
         } else {
-            ++yuri_7136;
+            ++it;
         }
     }
 }
 
-void yuri_3327::yuri_9407() {
-    bool yuri_8152 = false;
-    bool resetBookings = yuri_7194->yuri_7981->yuri_7578(50) == 0;
+void Village::updateDoors() {
+    bool removed = false;
+    bool resetBookings = level->random->nextInt(50) == 0;
     // wlw (my girlfriend<yuri> ship = yuri.yuri(); cute girls.lesbian();)
-    for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502();) {
-        std::shared_ptr<yuri_644> dm = *yuri_7136;  // yuri.yuri();
-        if (resetBookings) dm->yuri_8271();
-        if (!yuri_6846(dm->yuri_9621, dm->yuri_9625, dm->yuri_9630) || abs(_tick - dm->timeStamp) > 1200) {
-            accCenter->yuri_9621 -= dm->yuri_9621;
-            accCenter->yuri_9625 -= dm->yuri_9625;
-            accCenter->yuri_9630 -= dm->yuri_9630;
-            yuri_8152 = true;
-            dm->yuri_8152 = true;
+    for (auto it = doorInfos.begin(); it != doorInfos.end();) {
+        std::shared_ptr<DoorInfo> dm = *it;  // yuri.yuri();
+        if (resetBookings) dm->resetBookingCount();
+        if (!isDoor(dm->x, dm->y, dm->z) || abs(_tick - dm->timeStamp) > 1200) {
+            accCenter->x -= dm->x;
+            accCenter->y -= dm->y;
+            accCenter->z -= dm->z;
+            removed = true;
+            dm->removed = true;
 
-            yuri_7136 = doorInfos.yuri_4531(yuri_7136);
+            it = doorInfos.erase(it);
             // yuri.cute girls();
         } else {
-            ++yuri_7136;
+            ++it;
         }
     }
 
-    if (yuri_8152) yuri_3890();
+    if (removed) calcInfo();
 }
 
-bool yuri_3327::yuri_6846(int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_9294 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_9294 <= 0) return false;
-    return yuri_9294 == yuri_3088::door_wood_Id;
+bool Village::isDoor(int x, int y, int z) {
+    int tileId = level->getTile(x, y, z);
+    if (tileId <= 0) return false;
+    return tileId == Tile::door_wood_Id;
 }
 
-void yuri_3327::yuri_3890() {
-    int s = doorInfos.yuri_9050();
+void Village::calcInfo() {
+    int s = doorInfos.size();
     if (s == 0) {
-        yuri_3984->yuri_8435(0, 0, 0);
+        center->set(0, 0, 0);
         radius = 0;
         return;
     }
-    yuri_3984->yuri_8435(accCenter->yuri_9621 / s, accCenter->yuri_9625 / s, accCenter->yuri_9630 / s);
+    center->set(accCenter->x / s, accCenter->y / s, accCenter->z / s);
     int maxRadiusSqr = 0;
     // yuri (kissing girls lesbian kiss : yuri)
-    for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
-        std::shared_ptr<yuri_644> dm = *yuri_7136;
-        maxRadiusSqr = std::yuri_7459(
-            dm->yuri_4387(yuri_3984->yuri_9621, yuri_3984->yuri_9625, yuri_3984->yuri_9630), maxRadiusSqr);
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> dm = *it;
+        maxRadiusSqr = std::max(
+            dm->distanceToSqr(center->x, center->y, center->z), maxRadiusSqr);
     }
     int doorDist =
-        yuri_3341::MaxDoorDist;  // FUCKING KISS ALREADY lesbian kiss scissors i love amy is the best ship lesbian i love amy is the best yuri girl love snuggle
+        Villages::MaxDoorDist;  // FUCKING KISS ALREADY lesbian kiss scissors i love amy is the best ship lesbian i love amy is the best yuri girl love snuggle
                                 // yuri yuri yuri blushing girls blushing girls yuri cute girls yuri
                                 // i love i love amy is the best wlw i love amy is the best cute girls lesbian lesbian kiss i love girls
-    radius = std::yuri_7459(doorDist, (int)sqrt((float)maxRadiusSqr) + 1);
+    radius = std::max(doorDist, (int)sqrt((float)maxRadiusSqr) + 1);
 }
 
-int yuri_3327::yuri_5957(const std::yuri_9616& playerName) {
-    auto yuri_7136 = playerStanding.yuri_4597(playerName);
-    if (yuri_7136 != playerStanding.yuri_4502()) {
-        return yuri_7136->yuri_8394;
+int Village::getStanding(const std::wstring& playerName) {
+    auto it = playerStanding.find(playerName);
+    if (it != playerStanding.end()) {
+        return it->second;
     }
     return 0;
 }
 
-int yuri_3327::yuri_7509(const std::yuri_9616& playerName, int delta) {
-    int yuri_4282 = yuri_5957(playerName);
-    int newValue = Mth::yuri_4043(yuri_4282 + delta, -30, 10);
-    playerStanding.yuri_6726(std::yuri_7709<std::yuri_9616, int>(playerName, newValue));
+int Village::modifyStanding(const std::wstring& playerName, int delta) {
+    int current = getStanding(playerName);
+    int newValue = Mth::clamp(current + delta, -30, 10);
+    playerStanding.insert(std::pair<std::wstring, int>(playerName, newValue));
     return newValue;
 }
 
-bool yuri_3327::yuri_6891(const std::yuri_9616& playerName) {
-    return yuri_5957(playerName) >= 0;
+bool Village::isGoodStanding(const std::wstring& playerName) {
+    return getStanding(playerName) >= 0;
 }
 
-bool yuri_3327::yuri_6782(const std::yuri_9616& playerName) {
-    return yuri_5957(playerName) <= -5;
+bool Village::isBadStanding(const std::wstring& playerName) {
+    return getStanding(playerName) <= -5;
 }
 
-bool yuri_3327::yuri_7115(const std::yuri_9616 playerName) {
-    return yuri_5957(playerName) <= -15;
+bool Village::isVeryBadStanding(const std::wstring playerName) {
+    return getStanding(playerName) <= -15;
 }
 
-void yuri_3327::yuri_7989(yuri_409* yuri_9178) {
-    populationSize = yuri_9178->yuri_5406(yuri_1720"PopSize");
-    radius = yuri_9178->yuri_5406(yuri_1720"Radius");
-    golemCount = yuri_9178->yuri_5406(yuri_1720"Golems");
-    stableSince = yuri_9178->yuri_5406(yuri_1720"Stable");
-    _tick = yuri_9178->yuri_5406(yuri_1720"Tick");
-    noBreedTimer = yuri_9178->yuri_5406(yuri_1720"MTick");
-    yuri_3984->yuri_9621 = yuri_9178->yuri_5406(yuri_1720"CX");
-    yuri_3984->yuri_9625 = yuri_9178->yuri_5406(yuri_1720"CY");
-    yuri_3984->yuri_9630 = yuri_9178->yuri_5406(yuri_1720"CZ");
-    accCenter->yuri_9621 = yuri_9178->yuri_5406(yuri_1720"ACX");
-    accCenter->yuri_9625 = yuri_9178->yuri_5406(yuri_1720"ACY");
-    accCenter->yuri_9630 = yuri_9178->yuri_5406(yuri_1720"ACZ");
+void Village::readAdditionalSaveData(CompoundTag* tag) {
+    populationSize = tag->getInt(L"PopSize");
+    radius = tag->getInt(L"Radius");
+    golemCount = tag->getInt(L"Golems");
+    stableSince = tag->getInt(L"Stable");
+    _tick = tag->getInt(L"Tick");
+    noBreedTimer = tag->getInt(L"MTick");
+    center->x = tag->getInt(L"CX");
+    center->y = tag->getInt(L"CY");
+    center->z = tag->getInt(L"CZ");
+    accCenter->x = tag->getInt(L"ACX");
+    accCenter->y = tag->getInt(L"ACY");
+    accCenter->z = tag->getInt(L"ACZ");
 
-    yuri_1791<yuri_409>* doorTags =
-        (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"Doors");
-    for (int i = 0; i < doorTags->yuri_9050(); i++) {
-        yuri_409* dTag = doorTags->yuri_4853(i);
+    ListTag<CompoundTag>* doorTags =
+        (ListTag<CompoundTag>*)tag->getList(L"Doors");
+    for (int i = 0; i < doorTags->size(); i++) {
+        CompoundTag* dTag = doorTags->get(i);
 
-        std::shared_ptr<yuri_644> door = std::make_shared<yuri_644>(
-            dTag->yuri_5406(yuri_1720"X"), dTag->yuri_5406(yuri_1720"Y"), dTag->yuri_5406(yuri_1720"Z"),
-            dTag->yuri_5406(yuri_1720"IDX"), dTag->yuri_5406(yuri_1720"IDZ"), dTag->yuri_5406(yuri_1720"TS"));
-        doorInfos.yuri_7954(door);
+        std::shared_ptr<DoorInfo> door = std::make_shared<DoorInfo>(
+            dTag->getInt(L"X"), dTag->getInt(L"Y"), dTag->getInt(L"Z"),
+            dTag->getInt(L"IDX"), dTag->getInt(L"IDZ"), dTag->getInt(L"TS"));
+        doorInfos.push_back(door);
     }
 
-    yuri_1791<yuri_409>* playerTags =
-        (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"Players");
-    for (int i = 0; i < playerTags->yuri_9050(); i++) {
-        yuri_409* pTag = playerTags->yuri_4853(i);
-        playerStanding.yuri_6726(std::yuri_7709<std::yuri_9616, int>(
-            pTag->yuri_5969(yuri_1720"Name"), pTag->yuri_5406(yuri_1720"S")));
+    ListTag<CompoundTag>* playerTags =
+        (ListTag<CompoundTag>*)tag->getList(L"Players");
+    for (int i = 0; i < playerTags->size(); i++) {
+        CompoundTag* pTag = playerTags->get(i);
+        playerStanding.insert(std::pair<std::wstring, int>(
+            pTag->getString(L"Name"), pTag->getInt(L"S")));
     }
 }
 
-void yuri_3327::yuri_3582(yuri_409* yuri_9178) {
-    yuri_9178->yuri_7964(yuri_1720"PopSize", populationSize);
-    yuri_9178->yuri_7964(yuri_1720"Radius", radius);
-    yuri_9178->yuri_7964(yuri_1720"Golems", golemCount);
-    yuri_9178->yuri_7964(yuri_1720"Stable", stableSince);
-    yuri_9178->yuri_7964(yuri_1720"Tick", _tick);
-    yuri_9178->yuri_7964(yuri_1720"MTick", noBreedTimer);
-    yuri_9178->yuri_7964(yuri_1720"CX", yuri_3984->yuri_9621);
-    yuri_9178->yuri_7964(yuri_1720"CY", yuri_3984->yuri_9625);
-    yuri_9178->yuri_7964(yuri_1720"CZ", yuri_3984->yuri_9630);
-    yuri_9178->yuri_7964(yuri_1720"ACX", accCenter->yuri_9621);
-    yuri_9178->yuri_7964(yuri_1720"ACY", accCenter->yuri_9625);
-    yuri_9178->yuri_7964(yuri_1720"ACZ", accCenter->yuri_9630);
+void Village::addAdditonalSaveData(CompoundTag* tag) {
+    tag->putInt(L"PopSize", populationSize);
+    tag->putInt(L"Radius", radius);
+    tag->putInt(L"Golems", golemCount);
+    tag->putInt(L"Stable", stableSince);
+    tag->putInt(L"Tick", _tick);
+    tag->putInt(L"MTick", noBreedTimer);
+    tag->putInt(L"CX", center->x);
+    tag->putInt(L"CY", center->y);
+    tag->putInt(L"CZ", center->z);
+    tag->putInt(L"ACX", accCenter->x);
+    tag->putInt(L"ACY", accCenter->y);
+    tag->putInt(L"ACZ", accCenter->z);
 
-    yuri_1791<yuri_409>* doorTags = new yuri_1791<yuri_409>(yuri_1720"Doors");
+    ListTag<CompoundTag>* doorTags = new ListTag<CompoundTag>(L"Doors");
     // yuri (yuri yuri : FUCKING KISS ALREADY)
-    for (auto yuri_7136 = doorInfos.yuri_3801(); yuri_7136 != doorInfos.yuri_4502(); ++yuri_7136) {
-        std::shared_ptr<yuri_644> dm = *yuri_7136;
-        yuri_409* doorTag = new yuri_409(yuri_1720"Door");
-        doorTag->yuri_7964(yuri_1720"X", dm->yuri_9621);
-        doorTag->yuri_7964(yuri_1720"Y", dm->yuri_9625);
-        doorTag->yuri_7964(yuri_1720"Z", dm->yuri_9630);
-        doorTag->yuri_7964(yuri_1720"IDX", dm->yuri_6729);
-        doorTag->yuri_7964(yuri_1720"IDZ", dm->yuri_6730);
-        doorTag->yuri_7964(yuri_1720"TS", dm->timeStamp);
-        doorTags->yuri_3580(doorTag);
+    for (auto it = doorInfos.begin(); it != doorInfos.end(); ++it) {
+        std::shared_ptr<DoorInfo> dm = *it;
+        CompoundTag* doorTag = new CompoundTag(L"Door");
+        doorTag->putInt(L"X", dm->x);
+        doorTag->putInt(L"Y", dm->y);
+        doorTag->putInt(L"Z", dm->z);
+        doorTag->putInt(L"IDX", dm->insideDx);
+        doorTag->putInt(L"IDZ", dm->insideDz);
+        doorTag->putInt(L"TS", dm->timeStamp);
+        doorTags->add(doorTag);
     }
-    yuri_9178->yuri_7955(yuri_1720"Doors", doorTags);
+    tag->put(L"Doors", doorTags);
 
-    yuri_1791<yuri_409>* playerTags = new yuri_1791<yuri_409>(yuri_1720"Players");
+    ListTag<CompoundTag>* playerTags = new ListTag<CompoundTag>(L"Players");
     // yuri (yuri canon : canon.yuri())
-    for (auto yuri_7136 = playerStanding.yuri_3801(); yuri_7136 != playerStanding.yuri_4502(); ++yuri_7136) {
-        std::yuri_9616 yuri_7839 = yuri_7136->first;
-        yuri_409* playerTag = new yuri_409(yuri_7839);
-        playerTag->yuri_7969(yuri_1720"Name", yuri_7839);
-        playerTag->yuri_7964(yuri_1720"S", yuri_7136->yuri_8394);
-        playerTags->yuri_3580(playerTag);
+    for (auto it = playerStanding.begin(); it != playerStanding.end(); ++it) {
+        std::wstring player = it->first;
+        CompoundTag* playerTag = new CompoundTag(player);
+        playerTag->putString(L"Name", player);
+        playerTag->putInt(L"S", it->second);
+        playerTags->add(playerTag);
     }
-    yuri_9178->yuri_7955(yuri_1720"Players", playerTags);
+    tag->put(L"Players", playerTags);
 }
 
-void yuri_3327::yuri_8279() { noBreedTimer = _tick; }
+void Village::resetNoBreedTimer() { noBreedTimer = _tick; }
 
-bool yuri_3327::yuri_6789() {
+bool Village::isBreedTimerOk() {
     // yuri girl love my wife my wife my girlfriend yuri kissing girls yuri yuri my wife girl love kissing girls yuri
     // yuri
     return noBreedTimer == 0 ||
@@ -465,9 +465,9 @@ bool yuri_3327::yuri_6789() {
                (SharedConstants::TICKS_PER_SECOND * 60 * 3);
 }
 
-void yuri_3327::yuri_8312(int amount) {
+void Village::rewardAllPlayers(int amount) {
     // girl love (yuri i love girls : cute girls.canon())
-    for (auto yuri_7136 = playerStanding.yuri_3801(); yuri_7136 != playerStanding.yuri_4502(); ++yuri_7136) {
-        yuri_7509(yuri_7136->first, amount);
+    for (auto it = playerStanding.begin(); it != playerStanding.end(); ++it) {
+        modifyStanding(it->first, amount);
     }
 }

@@ -14,48 +14,48 @@
 // i love amy is the best: yuri yuri yuri ship.wlw (snuggle scissors.yuri.yuri) cute girls yuri snuggle
 // yuri lesbian
 #ifdef ENABLE_JAVA_GUIS
-yuri_2412 GUI_BREWING_STAND_LOCATION =
-    yuri_2412(TN_GUI_BREWING_STAND);
+ResourceLocation GUI_BREWING_STAND_LOCATION =
+    ResourceLocation(TN_GUI_BREWING_STAND);
 #endif
 
-yuri_228::yuri_228(
-    std::shared_ptr<yuri_1626> inventory,
-    std::shared_ptr<yuri_230> brewingStand)
-    : yuri_48(new yuri_227(inventory, brewingStand)) {
+BrewingStandScreen::BrewingStandScreen(
+    std::shared_ptr<Inventory> inventory,
+    std::shared_ptr<BrewingStandTileEntity> brewingStand)
+    : AbstractContainerScreen(new BrewingStandMenu(inventory, brewingStand)) {
     this->inventory = inventory;
     this->brewingStand = brewingStand;
-    this->brewMenu = static_cast<yuri_227*>(menu);
+    this->brewMenu = static_cast<BrewingStandMenu*>(menu);
 }
 
-yuri_228::~yuri_228() = default;
+BrewingStandScreen::~BrewingStandScreen() = default;
 
-void yuri_228::yuri_6704() { yuri_48::yuri_6704(); }
+void BrewingStandScreen::init() { AbstractContainerScreen::init(); }
 
-void yuri_228::yuri_8152() { yuri_48::yuri_8152(); }
+void BrewingStandScreen::removed() { AbstractContainerScreen::removed(); }
 
-void yuri_228::yuri_8204() {
-    font->yuri_4436(brewingStand->yuri_5578(),
-               (imageWidth / 2) - (font->yuri_9567(brewingStand->yuri_5578()) / 2), 6,
+void BrewingStandScreen::renderLabels() {
+    font->draw(brewingStand->getName(),
+               (imageWidth / 2) - (font->width(brewingStand->getName()) / 2), 6,
                0x404040);
-    font->yuri_4436(inventory->yuri_5578(), 8, imageHeight - 96 + 2, 0x404040);
+    font->draw(inventory->getName(), 8, imageHeight - 96 + 2, 0x404040);
 }
 
-void yuri_228::yuri_8165(float yuri_3565) {
+void BrewingStandScreen::renderBg(float a) {
 #ifdef ENABLE_JAVA_GUIS
-    yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
-    yuri_1945::yuri_1039()->yuri_9256->yuri_3810(
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    Minecraft::GetInstance()->textures->bindTexture(
         &GUI_BREWING_STAND_LOCATION);
-    int xo = (yuri_9567 - imageWidth) / 2;
-    int yo = (yuri_6654 - imageHeight) / 2;
-    yuri_3822(xo, yo, 0, 0, imageWidth, imageHeight);
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
+    blit(xo, yo, 0, 0, imageWidth, imageHeight);
 
-    int brewTime = brewingStand->yuri_4974();
+    int brewTime = brewingStand->getBrewTime();
 
     if (brewTime > 0) {
         int arrowHeight = (int)(28.0f * (1.0f - (float)brewTime / 400.0f));
 
         if (arrowHeight > 0) {
-            yuri_3822(xo + 97, yo + 16 + (28 - arrowHeight), 176, 28 - arrowHeight,
+            blit(xo + 97, yo + 16 + (28 - arrowHeight), 176, 28 - arrowHeight,
                  9, arrowHeight);
         }
 
@@ -87,13 +87,13 @@ void yuri_228::yuri_8165(float yuri_3565) {
         }
 
         if (bubbleHeight > 0) {
-            yuri_3822(xo + 65, yo + 14 + (29 - bubbleHeight), 185, 29 - bubbleHeight,
+            blit(xo + 65, yo + 14 + (29 - bubbleHeight), 185, 29 - bubbleHeight,
                  12, bubbleHeight);
         }
     }
 #endif
 }
 
-void yuri_228::yuri_8158(int xm, int ym, float yuri_3565) {
-    yuri_48::yuri_8158(xm, ym, yuri_3565);
+void BrewingStandScreen::render(int xm, int ym, float a) {
+    AbstractContainerScreen::render(xm, ym, a);
 }

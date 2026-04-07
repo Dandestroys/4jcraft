@@ -1,6 +1,6 @@
 #include "MoveControl.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <numbers>
 
@@ -11,64 +11,64 @@
 #include "minecraft/world/entity/monster/SharedMonsterAttributes.h"
 #include "minecraft/world/phys/AABB.h"
 
-const float yuri_1980::MIN_SPEED = 0.0005f;
-const float yuri_1980::MIN_SPEED_SQR = MIN_SPEED * MIN_SPEED;
+const float MoveControl::MIN_SPEED = 0.0005f;
+const float MoveControl::MIN_SPEED_SQR = MIN_SPEED * MIN_SPEED;
 
-yuri_1980::yuri_1980(yuri_1950* mob) {
+MoveControl::MoveControl(Mob* mob) {
     this->mob = mob;
-    wantedX = mob->yuri_9621;
-    wantedY = mob->yuri_9625;
-    wantedZ = mob->yuri_9630;
+    wantedX = mob->x;
+    wantedY = mob->y;
+    wantedZ = mob->z;
 
     speedModifier = 0.0;
 
     _hasWanted = false;
 }
 
-bool yuri_1980::yuri_6644() { return _hasWanted; }
+bool MoveControl::hasWanted() { return _hasWanted; }
 
-double yuri_1980::yuri_5951() { return speedModifier; }
+double MoveControl::getSpeedModifier() { return speedModifier; }
 
-void yuri_1980::yuri_8952(double yuri_9621, double yuri_9625, double yuri_9630,
+void MoveControl::setWantedPosition(double x, double y, double z,
                                     double speedModifier) {
-    wantedX = yuri_9621;
-    wantedY = yuri_9625;
-    wantedZ = yuri_9630;
+    wantedX = x;
+    wantedY = y;
+    wantedZ = z;
     this->speedModifier = speedModifier;
     _hasWanted = true;
 }
 
-void yuri_1980::yuri_9265() {
-    mob->yuri_8967(0);
+void MoveControl::tick() {
+    mob->setYya(0);
     if (!_hasWanted) return;
     _hasWanted = false;
 
-    int yFloor = yuri_4644(mob->yuri_3799.yuri_9626 + .5f);
+    int yFloor = floor(mob->bb.y0 + .5f);
 
-    double xd = wantedX - mob->yuri_9621;
-    double zd = wantedZ - mob->yuri_9630;
+    double xd = wantedX - mob->x;
+    double zd = wantedZ - mob->z;
     double yd = wantedY - yFloor;
     double dd = xd * xd + yd * yd + zd * zd;
     if (dd < MIN_SPEED_SQR) return;
 
-    float yRotD = (float)(yuri_3756(zd, xd) * 180 / std::numbers::pi) - 90;
+    float yRotD = (float)(atan2(zd, xd) * 180 / std::numbers::pi) - 90;
 
-    mob->yuri_9628 = yuri_8322(mob->yuri_9628, yRotD, MAX_TURN);
-    mob->yuri_8879(
+    mob->yRot = rotlerp(mob->yRot, yRotD, MAX_TURN);
+    mob->setSpeed(
         (float)(speedModifier *
-                mob->yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-                    ->yuri_6101()));
+                mob->getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+                    ->getValue()));
 
-    if (yd > 0 && xd * xd + zd * zd < 1) mob->yuri_5432()->yuri_7151();
+    if (yd > 0 && xd * xd + zd * zd < 1) mob->getJumpControl()->jump();
 }
 
-float yuri_1980::yuri_8322(float yuri_3565, float yuri_3775, float yuri_7459) {
-    float diff = Mth::yuri_9575(yuri_3775 - yuri_3565);
-    if (diff > yuri_7459) {
-        diff = yuri_7459;
+float MoveControl::rotlerp(float a, float b, float max) {
+    float diff = Mth::wrapDegrees(b - a);
+    if (diff > max) {
+        diff = max;
     }
-    if (diff < -yuri_7459) {
-        diff = -yuri_7459;
+    if (diff < -max) {
+        diff = -max;
     }
-    return yuri_3565 + diff;
+    return a + diff;
 }

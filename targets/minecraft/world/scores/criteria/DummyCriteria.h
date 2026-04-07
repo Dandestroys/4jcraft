@@ -1,18 +1,18 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "ObjectiveCriteria.h"
 
-class yuri_668 : public ObjectiveCriteria {
+class DummyCriteria : public ObjectiveCriteria {
 private:
-    std::yuri_9616 yuri_7540;
+    std::wstring name;
 
 public:
-    yuri_668(const std::yuri_9616& yuri_7540);
+    DummyCriteria(const std::wstring& name);
 
-    virtual std::yuri_9616 yuri_5578();
-    virtual int yuri_5858(
-        std::vector<std::shared_ptr<yuri_2126> >* players);
-    virtual bool yuri_7005();
+    virtual std::wstring getName();
+    virtual int getScoreModifier(
+        std::vector<std::shared_ptr<Player> >* players);
+    virtual bool isReadOnly();
 };

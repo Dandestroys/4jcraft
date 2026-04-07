@@ -5,17 +5,17 @@
 #include "Enchantment.h"
 #include "java/Random.h"
 
-class yuri_1693;
-class yuri_2302;
+class ItemInstance;
+class Random;
 
-class yuri_608 : public yuri_702 {
+class DigDurabilityEnchantment : public Enchantment {
 public:
-    yuri_608(int yuri_6674, int yuri_4681);
+    DigDurabilityEnchantment(int id, int frequency);
 
-    virtual int yuri_5545(int yuri_7194);
-    virtual int yuri_5516(int yuri_7194);
-    virtual int yuri_5525();
-    virtual bool yuri_3924(std::shared_ptr<yuri_1693> item);
-    static bool yuri_9007(std::shared_ptr<yuri_1693> item,
-                                           int yuri_7194, yuri_2302* yuri_7981);
+    virtual int getMinCost(int level);
+    virtual int getMaxCost(int level);
+    virtual int getMaxLevel();
+    virtual bool canEnchant(std::shared_ptr<ItemInstance> item);
+    static bool shouldIgnoreDurabilityDrop(std::shared_ptr<ItemInstance> item,
+                                           int level, Random* random);
 };

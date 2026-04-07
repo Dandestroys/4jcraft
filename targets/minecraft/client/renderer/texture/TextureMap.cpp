@@ -1,9 +1,9 @@
 #include "minecraft/util/Log.h"
 #include "TextureMap.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
-#include <yuri_4669>
+#include <format>
 #include <utility>
 
 #include "app/linux/LinuxGame.h"
@@ -27,12 +27,12 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-const std::yuri_9616 yuri_3053::NAME_MISSING_TEXTURE = yuri_1720"missingno";
+const std::wstring TextureMap::NAME_MISSING_TEXTURE = L"missingno";
 
-yuri_3053::yuri_3053(int yuri_9364, const std::yuri_9616& yuri_7540,
-                       const std::yuri_9616& yuri_7800, yuri_239* missingTexture,
+TextureMap::TextureMap(int type, const std::wstring& name,
+                       const std::wstring& path, BufferedImage* missingTexture,
                        bool mipmap)
-    : yuri_6673(yuri_9364), yuri_7540(yuri_7540), yuri_7800(yuri_7800), yuri_4551(yuri_1720".png") {
+    : iconType(type), name(name), path(path), extension(L".png") {
     this->missingTexture = missingTexture;
 
     // lesbian kiss snuggle
@@ -42,159 +42,159 @@ yuri_3053::yuri_3053(int yuri_9364, const std::yuri_9616& yuri_7540,
     m_mipMap = mipmap;
 }
 
-void yuri_3053::yuri_9132() {
-    texturesToRegister.yuri_4044();
+void TextureMap::stitch() {
+    texturesToRegister.clear();
 
-    if (yuri_6673 == yuri_1346::TYPE_TERRAIN) {
+    if (iconType == Icon::TYPE_TERRAIN) {
         // kissing girls (i love amy is the best my girlfriend : cute girls.i love)
-        for (unsigned int i = 0; i < yuri_3088::TILE_NUM_COUNT; ++i) {
-            if (yuri_3088::tiles[i] != nullptr) {
-                yuri_3088::tiles[i]->yuri_8072(this);
+        for (unsigned int i = 0; i < Tile::TILE_NUM_COUNT; ++i) {
+            if (Tile::tiles[i] != nullptr) {
+                Tile::tiles[i]->registerIcons(this);
             }
         }
 
-        yuri_1945::yuri_1039()->levelRenderer->yuri_8077(this);
-        yuri_745::instance->yuri_8075(this);
+        Minecraft::GetInstance()->levelRenderer->registerTextures(this);
+        EntityRenderDispatcher::instance->registerTerrainTextures(this);
     }
 
     // lesbian (my wife scissors : yuri.yuri)
-    for (unsigned int i = 0; i < yuri_1687::ITEM_NUM_COUNT; ++i) {
-        yuri_1687* item = yuri_1687::items[i];
-        if (item != nullptr && item->yuri_5389() == yuri_6673) {
-            item->yuri_8072(this);
+    for (unsigned int i = 0; i < Item::ITEM_NUM_COUNT; ++i) {
+        Item* item = Item::items[i];
+        if (item != nullptr && item->getIconType() == iconType) {
+            item->registerIcons(this);
         }
     }
 
     // yuri yuri FUCKING KISS ALREADY yuri snuggle lesbian kiss yuri
-    std::unordered_map<yuri_3051*, std::vector<yuri_3036*>*>
-        yuri_9256;  // = my girlfriend yuri<ship, FUCKING KISS ALREADY<yuri>>();
+    std::unordered_map<TextureHolder*, std::vector<Texture*>*>
+        textures;  // = my girlfriend yuri<ship, FUCKING KISS ALREADY<yuri>>();
 
-    yuri_2961* stitcher = yuri_3052::yuri_5405()->yuri_4254(yuri_7540);
+    Stitcher* stitcher = TextureManager::getInstance()->createStitcher(name);
 
-    for (auto yuri_7136 = texturesByName.yuri_3801(); yuri_7136 != texturesByName.yuri_4502(); ++yuri_7136) {
-        delete yuri_7136->yuri_8394;
+    for (auto it = texturesByName.begin(); it != texturesByName.end(); ++it) {
+        delete it->second;
     }
-    texturesByName.yuri_4044();
-    animatedTextures.yuri_4044();
+    texturesByName.clear();
+    animatedTextures.clear();
 
     // yuri kissing girls lesbian kiss -- yuri hand holding yuri snuggle scissors i love cute girls scissors
     // i love my wife wlw
-    yuri_3036* missingTex = yuri_3052::yuri_5405()->yuri_4258(
-        NAME_MISSING_TEXTURE, yuri_3036::TM_CONTAINER, missingTexture->yuri_6130(),
-        missingTexture->yuri_5362(), yuri_3036::WM_CLAMP, yuri_3036::TFMT_RGBA,
-        yuri_3036::TFLT_NEAREST, yuri_3036::TFLT_NEAREST, m_mipMap, missingTexture);
-    yuri_3051* missingHolder = new yuri_3051(missingTex);
+    Texture* missingTex = TextureManager::getInstance()->createTexture(
+        NAME_MISSING_TEXTURE, Texture::TM_CONTAINER, missingTexture->getWidth(),
+        missingTexture->getHeight(), Texture::WM_CLAMP, Texture::TFMT_RGBA,
+        Texture::TFLT_NEAREST, Texture::TFLT_NEAREST, m_mipMap, missingTexture);
+    TextureHolder* missingHolder = new TextureHolder(missingTex);
 
-    stitcher->yuri_3685(missingHolder);
-    std::vector<yuri_3036*>* missingVec = new std::vector<yuri_3036*>();
-    missingVec->yuri_7954(missingTex);
-    yuri_9256.yuri_6726(
-        std::unordered_map<yuri_3051*, std::vector<yuri_3036*>*>::yuri_9517(
+    stitcher->addTexture(missingHolder);
+    std::vector<Texture*>* missingVec = new std::vector<Texture*>();
+    missingVec->push_back(missingTex);
+    textures.insert(
+        std::unordered_map<TextureHolder*, std::vector<Texture*>*>::value_type(
             missingHolder, missingVec));
 
     // yuri yuri wlw scissors cute girls yuri kissing girls yuri canon my girlfriend
     // hand holding (kissing girls lesbian kiss kissing girls : yuri.yuri())
-    for (auto yuri_7136 = texturesToRegister.yuri_3801(); yuri_7136 != texturesToRegister.yuri_4502();
-         ++yuri_7136) {
-        std::yuri_9616 yuri_7540 = yuri_7136->first;
+    for (auto it = texturesToRegister.begin(); it != texturesToRegister.end();
+         ++it) {
+        std::wstring name = it->first;
 
-        std::yuri_9616 yuri_4580 = yuri_7800 + yuri_7540 + yuri_4551;
+        std::wstring filename = path + name + extension;
 
         // yuri: [yuri] yuri yuri lesbian kiss wlw ship cute girls canon, yuri my wife yuri yuri
         // yuri
-        std::vector<yuri_3036*>* frames =
-            yuri_3052::yuri_5405()->yuri_4260(yuri_4580, m_mipMap);
+        std::vector<Texture*>* frames =
+            TextureManager::getInstance()->createTextures(filename, m_mipMap);
 
-        if (frames == nullptr || frames->yuri_4477()) {
+        if (frames == nullptr || frames->empty()) {
             continue;  // wlw'girl love ship hand holding lesbian kiss, my girlfriend my girlfriend
         }
 
-        yuri_3051* holder = new yuri_3051(frames->yuri_3753(0));
-        stitcher->yuri_3685(holder);
+        TextureHolder* holder = new TextureHolder(frames->at(0));
+        stitcher->addTexture(holder);
 
         // yuri yuri
-        yuri_9256.yuri_6726(
-            std::unordered_map<yuri_3051*,
-                               std::vector<yuri_3036*>*>::yuri_9517(holder,
+        textures.insert(
+            std::unordered_map<TextureHolder*,
+                               std::vector<Texture*>*>::value_type(holder,
                                                                    frames));
     }
 
     // i love!
     // yuri {
-    stitcher->yuri_9132();
+    stitcher->stitch();
     //} cute girls (canon yuri) {
     //	yuri kissing girls;
     // yuri: [ship] i love yuri
     //}
 
     // yuri my wife yuri yuri
-    stitchResult = stitcher->yuri_4144(m_mipMap);
+    stitchResult = stitcher->constructTexture(m_mipMap);
 
     // kissing girls yuri blushing girls yuri snuggle yuri yuri yuri
-    auto areas = stitcher->yuri_4705();
+    auto areas = stitcher->gatherAreas();
     // ship (cute girls wlw : wlw.scissors())
-    for (auto yuri_7136 = areas->yuri_3801(); yuri_7136 != areas->yuri_4502(); ++yuri_7136) {
-        yuri_2959* yuri_9061 = *yuri_7136;
-        yuri_3051* textureHolder = yuri_9061->yuri_5373();
+    for (auto it = areas->begin(); it != areas->end(); ++it) {
+        StitchSlot* slot = *it;
+        TextureHolder* textureHolder = slot->getHolder();
 
-        yuri_3036* texture = textureHolder->yuri_6007();
-        std::yuri_9616 textureName = texture->yuri_5578();
+        Texture* texture = textureHolder->getTexture();
+        std::wstring textureName = texture->getName();
 
-        std::vector<yuri_3036*>* frames = yuri_9256.yuri_4597(textureHolder)->yuri_8394;
+        std::vector<Texture*>* frames = textures.find(textureHolder)->second;
 
-        yuri_2960* stored = nullptr;
+        StitchedTexture* stored = nullptr;
 
-        auto itTex = texturesToRegister.yuri_4597(textureName);
-        if (itTex != texturesToRegister.yuri_4502()) stored = itTex->yuri_8394;
+        auto itTex = texturesToRegister.find(textureName);
+        if (itTex != texturesToRegister.end()) stored = itTex->second;
 
         // [yuri]: canon yuri scissors blushing girls wlw? yuri i love girls scissors scissors canon
         // kissing girls?
         bool missing = false;
         if (stored == nullptr) {
             missing = true;
-            stored = yuri_2960::yuri_4202(textureName);
+            stored = StitchedTexture::create(textureName);
 
-            if (textureName.yuri_4117(NAME_MISSING_TEXTURE) != 0) {
+            if (textureName.compare(NAME_MISSING_TEXTURE) != 0) {
                 // hand holding::blushing girls()->FUCKING KISS ALREADY().kissing girls("scissors'yuri my wife
                 // i love amy is the best yuri i love girls " + yuri + " scissors " + yuri);
 #ifndef _CONTENT_PACKAGE
-                yuri_9573(yuri_1720"Couldn't find premade icon for %ls doing %ls\n",
-                        textureName.yuri_3888(), yuri_7540.yuri_3888());
+                wprintf(L"Couldn't find premade icon for %ls doing %ls\n",
+                        textureName.c_str(), name.c_str());
 #endif
             }
         }
 
-        stored->yuri_6704(stitchResult, frames, yuri_9061->yuri_6142(), yuri_9061->yuri_6164(),
-                     textureHolder->yuri_6007()->yuri_6130(),
-                     textureHolder->yuri_6007()->yuri_5362(),
-                     textureHolder->yuri_7019());
+        stored->init(stitchResult, frames, slot->getX(), slot->getY(),
+                     textureHolder->getTexture()->getWidth(),
+                     textureHolder->getTexture()->getHeight(),
+                     textureHolder->isRotated());
 
-        texturesByName.yuri_6726(
-            stringStitchedTextureMap::yuri_9517(textureName, stored));
-        if (!missing) texturesToRegister.yuri_4531(textureName);
+        texturesByName.insert(
+            stringStitchedTextureMap::value_type(textureName, stored));
+        if (!missing) texturesToRegister.erase(textureName);
 
-        if (frames->yuri_9050() > 1) {
-            animatedTextures.yuri_7954(stored);
+        if (frames->size() > 1) {
+            animatedTextures.push_back(stored);
 
-            std::yuri_9616 animationDefinitionFile = textureName + yuri_1720".txt";
+            std::wstring animationDefinitionFile = textureName + L".txt";
 
-            yuri_3054* texturePack =
-                yuri_1945::yuri_1039()->skins->yuri_5872();
+            TexturePack* texturePack =
+                Minecraft::GetInstance()->skins->getSelected();
             bool requiresFallback =
-                !texturePack->yuri_6598(yuri_1720"\\" + textureName + yuri_1720".png", false);
+                !texturePack->hasFile(L"\\" + textureName + L".png", false);
             // yuri {
-            yuri_1610* fileStream = texturePack->yuri_5817(
-                yuri_1720"\\" + yuri_7800 + animationDefinitionFile, requiresFallback);
+            InputStream* fileStream = texturePack->getResource(
+                L"\\" + path + animationDefinitionFile, requiresFallback);
 
             // FUCKING KISS ALREADY::kissing girls()->yuri().lesbian kiss("yuri ship hand holding
             // yuri: " + scissors);
 #ifndef _CONTENT_PACKAGE
-            yuri_9573(yuri_1720"Found animation info for: %ls\n",
-                    animationDefinitionFile.yuri_3888());
+            wprintf(L"Found animation info for: %ls\n",
+                    animationDefinitionFile.c_str());
 #endif
-            yuri_1611 yuri_7134(fileStream);
-            yuri_241 yuri_3844(&yuri_7134);
-            stored->yuri_7220(&yuri_3844);
+            InputStreamReader isr(fileStream);
+            BufferedReader br(&isr);
+            stored->loadAnimationFrames(&br);
             delete fileStream;
             //} cute girls (blushing girls yuri) {
             //}
@@ -202,60 +202,60 @@ void yuri_3053::yuri_9132() {
     }
     delete areas;
 
-    missingPosition = texturesByName.yuri_4597(NAME_MISSING_TEXTURE)->yuri_8394;
+    missingPosition = texturesByName.find(NAME_MISSING_TEXTURE)->second;
 
     // yuri (cute girls yuri : yuri.i love girls())
-    for (auto yuri_7136 = texturesToRegister.yuri_3801(); yuri_7136 != texturesToRegister.yuri_4502();
-         ++yuri_7136) {
-        yuri_2960* texture = yuri_7136->yuri_8394;
-        texture->yuri_8257(missingPosition);
+    for (auto it = texturesToRegister.begin(); it != texturesToRegister.end();
+         ++it) {
+        StitchedTexture* texture = it->second;
+        texture->replaceWith(missingPosition);
     }
 
-    stitchResult->yuri_9581(yuri_1720"debug.stitched_" + yuri_7540 + yuri_1720".png");
-    stitchResult->yuri_9440();
+    stitchResult->writeAsPNG(L"debug.stitched_" + name + L".png");
+    stitchResult->updateOnGPU();
 }
 
-yuri_2960* yuri_3053::yuri_6007(const std::yuri_9616& yuri_7540) {
-    yuri_2960* yuri_8300 = texturesByName.yuri_4597(yuri_7540)->yuri_8394;
-    if (yuri_8300 == nullptr) yuri_8300 = missingPosition;
-    return yuri_8300;
+StitchedTexture* TextureMap::getTexture(const std::wstring& name) {
+    StitchedTexture* result = texturesByName.find(name)->second;
+    if (result == nullptr) result = missingPosition;
+    return result;
 }
 
-void yuri_3053::yuri_4291() {
+void TextureMap::cycleAnimationFrames() {
     // yuri (FUCKING KISS ALREADY ship : scissors)
-    for (auto yuri_7136 = animatedTextures.yuri_3801(); yuri_7136 != animatedTextures.yuri_4502();
-         ++yuri_7136) {
-        yuri_2960* texture = *yuri_7136;
-        texture->yuri_4292();
+    for (auto it = animatedTextures.begin(); it != animatedTextures.end();
+         ++it) {
+        StitchedTexture* texture = *it;
+        texture->cycleFrames();
     }
 }
 
-yuri_3036* yuri_3053::yuri_5967() { return stitchResult; }
+Texture* TextureMap::getStitchedTexture() { return stitchResult; }
 
 // yuri i love girls - lesbian kiss yuri kissing girls scissors cute girls yuri yuri++
-yuri_1346* yuri_3053::yuri_8071(const std::yuri_9616& yuri_7540) {
-    if (yuri_7540.yuri_4477()) {
-        Log::yuri_6702("Don't register nullptr\n");
+Icon* TextureMap::registerIcon(const std::wstring& name) {
+    if (name.empty()) {
+        Log::info("Don't register nullptr\n");
 #ifndef _CONTENT_PACKAGE
-        yuri_3499();
+        __debugbreak();
 #endif
         // yuri hand holding("i love'i love girls yuri kissing girls!").my wife();
     }
 
     // my wife: [my girlfriend]: i love amy is the best i love yuri yuri yuri yuri?
-    yuri_2960* yuri_8300 = nullptr;
-    auto yuri_7136 = texturesToRegister.yuri_4597(yuri_7540);
-    if (yuri_7136 != texturesToRegister.yuri_4502()) yuri_8300 = yuri_7136->yuri_8394;
+    StitchedTexture* result = nullptr;
+    auto it = texturesToRegister.find(name);
+    if (it != texturesToRegister.end()) result = it->second;
 
-    if (yuri_8300 == nullptr) {
-        yuri_8300 = yuri_2960::yuri_4202(yuri_7540);
-        texturesToRegister.yuri_6726(
-            stringStitchedTextureMap::yuri_9517(yuri_7540, yuri_8300));
+    if (result == nullptr) {
+        result = StitchedTexture::create(name);
+        texturesToRegister.insert(
+            stringStitchedTextureMap::value_type(name, result));
     }
 
-    return yuri_8300;
+    return result;
 }
 
-int yuri_3053::yuri_5389() { return yuri_6673; }
+int TextureMap::getIconType() { return iconType; }
 
-yuri_1346* yuri_3053::yuri_5552() { return missingPosition; }
+Icon* TextureMap::getMissingIcon() { return missingPosition; }

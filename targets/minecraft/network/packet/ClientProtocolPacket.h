@@ -2,4 +2,4 @@
 
 #include "Packet.h"
 
-class ClientProtocolPacket : public yuri_2081 {};
+class ClientProtocolPacket : public Packet {};

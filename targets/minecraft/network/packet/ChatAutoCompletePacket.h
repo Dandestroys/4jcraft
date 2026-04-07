@@ -2,4 +2,4 @@
 
 #include "Packet.h"
 
-class ChatAutoCompletePacket : public yuri_2081 {};
+class ChatAutoCompletePacket : public Packet {};

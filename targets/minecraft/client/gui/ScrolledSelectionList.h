@@ -1,29 +1,29 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
-class yuri_245;
-class yuri_3032;
-class yuri_1945;
+class Button;
+class Tesselator;
+class Minecraft;
 
-class yuri_2528 {
+class ScrolledSelectionList {
 private:
     static const int NO_DRAG = -1;
     static const int DRAG_OUTSIDE = -2;
 
-    yuri_1945* minecraft;
-    int yuri_9567;
-    int yuri_6654;
+    Minecraft* minecraft;
+    int width;
+    int height;
 
 protected:
-    int yuri_9626;
-    int yuri_9627;
+    int y0;
+    int y1;
 
 private:
-    int yuri_9623;
-    int yuri_9622;
+    int x1;
+    int x0;
 
 protected:
     int itemHeight;
@@ -37,40 +37,40 @@ private:
     float yo;
 
     int lastSelection;
-    yuri_6733 lastSelectionTime;
+    int64_t lastSelectionTime;
 
     bool renderSelection;
     bool _renderHeader;
     int headerHeight;
 
 public:
-    yuri_2528(yuri_1945* minecraft, int yuri_9567, int yuri_6654, int yuri_9626,
-                          int yuri_9627, int itemHeight);
-    void yuri_8809(bool renderSelection);
+    ScrolledSelectionList(Minecraft* minecraft, int width, int height, int y0,
+                          int y1, int itemHeight);
+    void setRenderSelection(bool renderSelection);
 
 protected:
-    void yuri_8807(bool yuri_8193, int headerHeight);
-    virtual int yuri_5608() = 0;
-    virtual void yuri_8402(int item, bool doubleClick) = 0;
-    virtual bool yuri_7034(int item) = 0;
-    virtual int yuri_5527();
-    virtual void yuri_8164() = 0;
-    virtual void yuri_8200(int i, int yuri_9621, int yuri_9625, int yuri_6412, yuri_3032* t) = 0;
-    void yuri_8193(int yuri_9621, int yuri_9625, yuri_3032* t);
-    void yuri_4082(int headerMouseX, int headerMouseY);
-    void yuri_8174(int mouseX, int mouseY);
+    void setRenderHeader(bool renderHeader, int headerHeight);
+    virtual int getNumberOfItems() = 0;
+    virtual void selectItem(int item, bool doubleClick) = 0;
+    virtual bool isSelectedItem(int item) = 0;
+    virtual int getMaxPosition();
+    virtual void renderBackground() = 0;
+    virtual void renderItem(int i, int x, int y, int h, Tesselator* t) = 0;
+    void renderHeader(int x, int y, Tesselator* t);
+    void clickedHeader(int headerMouseX, int headerMouseY);
+    void renderDecorations(int mouseX, int mouseY);
 
 public:
-    int yuri_5418(int yuri_9621, int yuri_9625);
-    void yuri_6704(std::vector<yuri_245*>* buttons, int upButtonId, int downButtonId);
+    int getItemAtPosition(int x, int y);
+    void init(std::vector<Button*>* buttons, int upButtonId, int downButtonId);
 
 private:
-    void yuri_3974();
+    void capYPosition();
 
 public:
-    void yuri_3881(yuri_245* button);
-    void yuri_8158(int xm, int ym, float yuri_3565);
+    void buttonClicked(Button* button);
+    void render(int xm, int ym, float a);
 
 private:
-    void yuri_8197(int yuri_9626, int yuri_9627, int a0, int a1);
+    void renderHoleBackground(int y0, int y1, int a0, int a1);
 };

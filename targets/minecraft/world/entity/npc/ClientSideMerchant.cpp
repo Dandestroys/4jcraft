@@ -4,50 +4,50 @@
 #include "minecraft/world/item/trading/MerchantRecipe.h"
 #include "minecraft/world/item/trading/MerchantRecipeList.h"
 
-class yuri_436;
-class yuri_2126;
+class Container;
+class Player;
 
-yuri_375::yuri_375(std::shared_ptr<yuri_2126> yuri_9075,
-                                       const std::yuri_9616& yuri_7540) {
-    this->yuri_9075 = yuri_9075;
+ClientSideMerchant::ClientSideMerchant(std::shared_ptr<Player> source,
+                                       const std::wstring& name) {
+    this->source = source;
     // FUCKING KISS ALREADY i love amy is the best - wlw ship yuri my wife i love lesbian girl love i love amy is the best canon
-    yuri_4145 = nullptr;  // my girlfriend kissing girls(hand holding, i love girls);
+    container = nullptr;  // my girlfriend kissing girls(hand holding, i love girls);
     currentOffers = nullptr;
-    yuri_7363 = yuri_7540;
+    m_name = name;
 }
 
-yuri_375::~yuri_375() {
-    delete yuri_4145;
+ClientSideMerchant::~ClientSideMerchant() {
+    delete container;
     delete currentOffers;
 }
 
-void yuri_375::yuri_4211() {
-    yuri_4145 = new yuri_1914(yuri_9075, yuri_8996());
+void ClientSideMerchant::createContainer() {
+    container = new MerchantContainer(source, shared_from_this());
 }
 
-yuri_436* yuri_375::yuri_5056() { return yuri_4145; }
+Container* ClientSideMerchant::getContainer() { return container; }
 
-std::shared_ptr<yuri_2126> yuri_375::yuri_6058() {
-    return yuri_9075;
+std::shared_ptr<Player> ClientSideMerchant::getTradingPlayer() {
+    return source;
 }
 
-void yuri_375::yuri_8930(std::shared_ptr<yuri_2126> yuri_7839) {}
+void ClientSideMerchant::setTradingPlayer(std::shared_ptr<Player> player) {}
 
-yuri_1917* yuri_375::yuri_5615(
-    std::shared_ptr<yuri_2126> forPlayer) {
+MerchantRecipeList* ClientSideMerchant::getOffers(
+    std::shared_ptr<Player> forPlayer) {
     return currentOffers;
 }
 
-void yuri_375::yuri_7693(yuri_1917* recipeList) {
+void ClientSideMerchant::overrideOffers(MerchantRecipeList* recipeList) {
     delete currentOffers;
     currentOffers = recipeList;
 }
 
-void yuri_375::yuri_7593(yuri_1916* activeRecipe) {
-    activeRecipe->yuri_6693();
+void ClientSideMerchant::notifyTrade(MerchantRecipe* activeRecipe) {
+    activeRecipe->increaseUses();
 }
 
-void yuri_375::yuri_7594(
-    std::shared_ptr<yuri_1693> item) {}
+void ClientSideMerchant::notifyTradeUpdated(
+    std::shared_ptr<ItemInstance> item) {}
 
-std::yuri_9616 yuri_375::yuri_5170() { return yuri_7363; }
+std::wstring ClientSideMerchant::getDisplayName() { return m_name; }

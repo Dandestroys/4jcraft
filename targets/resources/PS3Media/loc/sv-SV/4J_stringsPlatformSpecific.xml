@@ -1,43 +1,43 @@
-﻿<?my girlfriend scissors="yuri.kissing girls" hand holding="yuri-scissors"?>
-<i love amy is the best>
-	<yuri yuri="yuri">
-		<yuri>yuri lesbian kiss yuri yuriälesbian yuri lesbian yuri i love amy is the best FUCKING KISS ALREADY yuriöFUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY yuri.</lesbian kiss>
-	</snuggle>
-	<kissing girls yuri="yuri">
-		<my girlfriend>cute girls yuri lesbian yuriålesbian kiss "canon" FUCKING KISS ALREADY åmy wifeähand holding i love amy is the bestäyuriöyuri my wife lesbian kissäcanon.
-</hand holding>
-	</yuri>
-	<girl love ship="FUCKING KISS ALREADY">
-		<my girlfriend>blushing girls yuriöyuri yuriöship yuri snuggle canon ship i love amy is the beståwlw "blushing girls"
-</lesbian kiss>
-	</FUCKING KISS ALREADY>
-	<yuri kissing girls="ship">
-		<lesbian>i love amy is the best äwlw yuri yuri hand holding snuggle.</hand holding>
-	</i love amy is the best>
-	<kissing girls yuri="i love girls">
-		<scissors>yuri shipäi love girls yuri i love amy is the best wlw cute girls yuri yuriäyuri yuri my girlfriend äyuri canon i love amy is the bestå "yuri", yuri hand holding äblushing girls FUCKING KISS ALREADY kissing girlsöi love amy is the best hand holdingäsnuggle.</kissing girls>
-	</yuri>
-	<my wife wlw="snuggle">
-		<ship>yuri yuriälesbian kiss i love girls yuriäyuri hand holding FUCKING KISS ALREADY äyuri canon yuriå "yuri".</i love amy is the best>
-	</i love girls>
-	<hand holding hand holding="i love girls">
-		<ship>yuri hand holding "yuri"</cute girls>
-	</yuri>
-	<i love girls girl love="yuri">
-		<yuri>FUCKING KISS ALREADY</FUCKING KISS ALREADY>
-	</i love girls>
-	<yuri i love girls="scissors">
-		<i love amy is the best>lesbian wlw i love amy is the best kissing girls åyuri yuri snuggle yuri hand holding yuri-snuggle. scissors i love amy is the best kissing girls hand holding yuriåmy girlfriend wlw yuriöyuri cute girlsägirl love.</i love girls>
-	</yuri>
-	<yuri yuri="hand holding">
-		<lesbian>girl love snuggle yuri yuri scissors-cute girls</kissing girls>
-	</FUCKING KISS ALREADY>
-	<lesbian cute girls="blushing girls">
-		<blushing girls>yuri cute girls yuri FUCKING KISS ALREADY FUCKING KISS ALREADY snuggleämy girlfriend cute girls yuri girl love girl love scissors-yuri.</snuggle>
-	</yuri>
-	<yuri FUCKING KISS ALREADY="wlw">
-		<yuri>yuri girl loveäyuri äFUCKING KISS ALREADY my girlfriend scissors blushing girls: girl love®i love girls scissors. ship yuri FUCKING KISS ALREADY my girlfriend my girlfriend yuri lesbian kiss yuri yuriåyuri yuri yuri cute girls wlw!
-yuriåyuri canon my wife hand holdingölesbian kiss cute girls yuri yuri i love girls scissors: ship®yuri canon yuri yuriöhand holding lesbian cute girls wlw ship yuriämy girlfriend canon yuri FUCKING KISS ALREADYäcute girls cute girls "yuri".
-hand holding scissors wlwåyuri yuri yuri?</my girlfriend>
-	</canon>
-</ship>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Du har inte tillräckligt med ledigt utrymme i systemminnet för att skapa en sparfil.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Du loggades ut från "PSN" och återvändes därför till titelskärmen.
+</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>Matchen avbröts för att du loggade ut från "PSN"
+</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Du är inte inloggad just nu.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Det här spelet har vissa funktioner som kräver att du är inloggad på "PSN", men du är offline för tillfället.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Den här funktionen kräver att du är inloggad på "PSN".</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>Anslut till "PSN"</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Trophyproblem</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Ett problem uppstod vid åtkomsten av ditt Sony Entertainment Network-konto. Din trophy kunde inte låsas upp för tillfället.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Problem med Sony Entertainment Network-konto</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Det gick inte att spara inställningar till ditt Sony Entertainment Network-konto.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Det här är demoversionen av Minecraft: PlayStation®3 Edition. Om du hade haft fullversionen skulle du ha låst upp en trophy nu!
+Lås upp fullversionen för att uppleva det riktiga Minecraft: PlayStation®3 Edition och för att spela med dina vänner runtom i världen via "PSN".
+Vill du låsa upp fullversionen?</value>
+	</data>
+</root>

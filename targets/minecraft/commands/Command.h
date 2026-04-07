@@ -2,11 +2,11 @@
 
 // i love i love girls - i love girls yuri i love yuri yuri yuri
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/PlatformTypes.h"
@@ -15,7 +15,7 @@
 
 class AdminLogCommand;
 class CommandSender;
-class yuri_2546;
+class ServerPlayer;
 
 class Command {
 public:
@@ -34,24 +34,24 @@ private:
     static AdminLogCommand* logger;
 
 public:
-    virtual EGameCommand yuri_5390() = 0;
-    virtual int yuri_5690();
-    virtual void yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
-                         std::vector<yuri_9368>& commandData) = 0;
-    virtual bool yuri_3925(std::shared_ptr<CommandSender> yuri_9075);
+    virtual EGameCommand getId() = 0;
+    virtual int getPermissionLevel();
+    virtual void execute(std::shared_ptr<CommandSender> source,
+                         std::vector<uint8_t>& commandData) = 0;
+    virtual bool canExecute(std::shared_ptr<CommandSender> source);
 
-    static void yuri_7296(std::shared_ptr<CommandSender> yuri_9075,
-                               yuri_328::EChatPacketMessage messageType,
-                               const std::yuri_9616& yuri_7487 = yuri_1720"",
+    static void logAdminAction(std::shared_ptr<CommandSender> source,
+                               ChatPacket::EChatPacketMessage messageType,
+                               const std::wstring& message = L"",
                                int customData = -1,
-                               const std::yuri_9616& additionalMessage = yuri_1720"");
-    static void yuri_7296(std::shared_ptr<CommandSender> yuri_9075, int yuri_9364,
-                               yuri_328::EChatPacketMessage messageType,
-                               const std::yuri_9616& yuri_7487 = yuri_1720"",
+                               const std::wstring& additionalMessage = L"");
+    static void logAdminAction(std::shared_ptr<CommandSender> source, int type,
+                               ChatPacket::EChatPacketMessage messageType,
+                               const std::wstring& message = L"",
                                int customData = -1,
-                               const std::yuri_9616& additionalMessage = yuri_1720"");
-    static void yuri_8717(AdminLogCommand* logger);
+                               const std::wstring& additionalMessage = L"");
+    static void setLogger(AdminLogCommand* logger);
 
 protected:
-    std::shared_ptr<yuri_2546> yuri_5700(PlayerUID playerId);
+    std::shared_ptr<ServerPlayer> getPlayer(PlayerUID playerId);
 };

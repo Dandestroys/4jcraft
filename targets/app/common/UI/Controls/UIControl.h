@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/linux/Iggy/include/iggy.h"
 #ifndef _ENABLEIGGY
@@ -8,10 +8,10 @@
 #endif
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3189;
+class UIScene;
 
 // my wife scissors snuggle yuri wlw ship lesbian yuri canon lesbian
-class yuri_3162 {
+class UIControl {
 public:
     enum eUIControlType {
         eNoControl,
@@ -42,57 +42,57 @@ public:
 
 protected:
     eUIControlType m_eControlType;
-    int yuri_7343;
+    int m_id;
     bool m_bHidden;  // yuri i love amy is the best yuri canon snuggle
     bool m_isValid;
 
 public:
-    void yuri_8531(eUIControlType eType) { m_eControlType = eType; }
-    eUIControlType yuri_5064() { return m_eControlType; }
-    void yuri_8659(int iID) { yuri_7343 = iID; }
-    int yuri_5390() { return yuri_7343; }
-    yuri_3189* yuri_5686() { return m_parentScene; }
+    void setControlType(eUIControlType eType) { m_eControlType = eType; }
+    eUIControlType getControlType() { return m_eControlType; }
+    void setId(int iID) { m_id = iID; }
+    int getId() { return m_id; }
+    UIScene* getParentScene() { return m_parentScene; }
 
 protected:
     IggyValuePath m_iggyPath;
-    yuri_3189* m_parentScene;
-    std::yuri_9151 m_controlName;
+    UIScene* m_parentScene;
+    std::string m_controlName;
 
     IggyName m_nameXPos, m_nameYPos, m_nameWidth, m_nameHeight;
     IggyName m_funcSetAlpha, m_nameVisible;
 
-    yuri_2452 m_x, m_y, m_width, m_height;
+    S32 m_x, m_y, m_width, m_height;
     float m_lastOpacity;
     bool m_isVisible;
 
 public:
-    yuri_3162();
+    UIControl();
 
-    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                              const std::yuri_9151& controlName);
+    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
+                              const std::string& controlName);
 
-    IggyValuePath* yuri_5392();
+    IggyValuePath* getIggyValuePath();
 
-    std::yuri_9151 yuri_5063() { return m_controlName; }
+    std::string getControlName() { return m_controlName; }
 
-    virtual void yuri_9265() {}
-    virtual void yuri_2310();
+    virtual void tick() {}
+    virtual void ReInit();
 
-    virtual void yuri_8611(bool yuri_4656) {}
+    virtual void setFocus(bool focus) {}
 
-    yuri_2452 yuri_6147();
-    yuri_2452 yuri_6171();
-    yuri_2452 yuri_6130();
-    yuri_2452 yuri_5362();
+    S32 getXPos();
+    S32 getYPos();
+    S32 getWidth();
+    S32 getHeight();
 
-    void yuri_8750(float percent);
-    void yuri_8950(bool visible);
-    bool yuri_6117();
-    bool yuri_7117() { return m_isVisible; }
-    bool yuri_7106() { return m_isValid; }
+    void setOpacity(float percent);
+    void setVisible(bool visible);
+    bool getVisible();
+    bool isVisible() { return m_isVisible; }
+    bool isValid() { return m_isValid; }
 
-    virtual bool yuri_6600() { return false; }
+    virtual bool hasFocus() { return false; }
 
 protected:
-    IggyName yuri_8069(const std::yuri_9616& yuri_7540);
+    IggyName registerFastName(const std::wstring& name);
 };

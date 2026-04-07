@@ -6,110 +6,110 @@
 #include "minecraft/util/Mth.h"
 #include "minecraft/world/level/Level.h"
 
-void BlockGenMethods::yuri_4817(yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks,
+void BlockGenMethods::generateBox(Level* level, std::vector<uint8_t>& blocks,
                                   int sx, int sy, int sz, int ex, int ey,
-                                  int ez, std::yuri_9368 edge,
-                                  std::yuri_9368 filling) {
-    sx = Mth::yuri_4043(sx, 0, 15);
-    sy = Mth::yuri_4043(sy, 0, yuri_1758::genDepthMinusOne);
-    sz = Mth::yuri_4043(sz, 0, 15);
-    ex = Mth::yuri_4043(ex, 0, 15);
-    ey = Mth::yuri_4043(ey, 0, yuri_1758::genDepthMinusOne);
-    ez = Mth::yuri_4043(ez, 0, 15);
+                                  int ez, std::uint8_t edge,
+                                  std::uint8_t filling) {
+    sx = Mth::clamp(sx, 0, 15);
+    sy = Mth::clamp(sy, 0, Level::genDepthMinusOne);
+    sz = Mth::clamp(sz, 0, 15);
+    ex = Mth::clamp(ex, 0, 15);
+    ey = Mth::clamp(ey, 0, Level::genDepthMinusOne);
+    ez = Mth::clamp(ez, 0, 15);
 
-    for (int yuri_9621 = sx; yuri_9621 <= ex; yuri_9621++) {
-        for (int yuri_9625 = sy; yuri_9625 <= ey; yuri_9625++) {
-            for (int yuri_9630 = sz; yuri_9630 <= ez; yuri_9630++) {
-                int yuri_7701 = (yuri_9621 * 16 + yuri_9630) * yuri_1758::genDepth + yuri_9625;
+    for (int x = sx; x <= ex; x++) {
+        for (int y = sy; y <= ey; y++) {
+            for (int z = sz; z <= ez; z++) {
+                int p = (x * 16 + z) * Level::genDepth + y;
 
-                if (yuri_9621 == sx || yuri_9621 == ex || yuri_9625 == sy || yuri_9625 == ey || yuri_9630 == sz ||
-                    yuri_9630 == ez) {
-                    blocks[yuri_7701] = edge;
+                if (x == sx || x == ex || y == sy || y == ey || z == sz ||
+                    z == ez) {
+                    blocks[p] = edge;
                 } else {
-                    blocks[yuri_7701] = filling;
+                    blocks[p] = filling;
                 }
             }
         }
     }
 }
 
-void BlockGenMethods::yuri_4824(yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks,
+void BlockGenMethods::generateFrame(Level* level, std::vector<uint8_t>& blocks,
                                     int sx, int sy, int ex, int ey, int flatZ,
-                                    int yuri_4362, std::yuri_9368 edge,
-                                    std::yuri_9368 filling) {
-    sx = Mth::yuri_4043(sx, 0, 15);
-    sy = Mth::yuri_4043(sy, 0, yuri_1758::genDepthMinusOne);
-    ex = Mth::yuri_4043(ex, 0, 15);
-    ey = Mth::yuri_4043(ey, 0, yuri_1758::genDepthMinusOne);
-    int sz = Mth::yuri_4043(flatZ, 0, 15);
+                                    int direction, std::uint8_t edge,
+                                    std::uint8_t filling) {
+    sx = Mth::clamp(sx, 0, 15);
+    sy = Mth::clamp(sy, 0, Level::genDepthMinusOne);
+    ex = Mth::clamp(ex, 0, 15);
+    ey = Mth::clamp(ey, 0, Level::genDepthMinusOne);
+    int sz = Mth::clamp(flatZ, 0, 15);
     int ez = sz;
 
     bool alongX = true;
 
-    switch (yuri_4362) {
+    switch (direction) {
         case Direction::WEST: {
             // i love ship-yuri
-            int yuri_9193 = sz;
+            int temp = sz;
             sz = 15 - ex;
             ez = 15 - sx;
-            sx = ex = yuri_9193;
+            sx = ex = temp;
             alongX = false;
         } break;
         case Direction::EAST: {
             // ship FUCKING KISS ALREADY
-            int yuri_9193 = sz;
+            int temp = sz;
             sz = sx;
             ez = ex;
-            sx = ex = 15 - yuri_9193;
+            sx = ex = 15 - temp;
             alongX = false;
         } break;
         case Direction::SOUTH: {
             // lesbian kissing girls
             sz = ez = 15 - sz;
-            int yuri_9193 = sx;
+            int temp = sx;
             sx = 15 - ex;
-            ex = 15 - yuri_9193;
+            ex = 15 - temp;
         } break;
     }
 
-    for (int yuri_9621 = sx; yuri_9621 <= ex; yuri_9621++) {
-        for (int yuri_9625 = sy; yuri_9625 <= ey; yuri_9625++) {
-            for (int yuri_9630 = sz; yuri_9630 <= ez; yuri_9630++) {
-                int yuri_7701 = (yuri_9621 * 16 + yuri_9630) * yuri_1758::genDepth + yuri_9625;
+    for (int x = sx; x <= ex; x++) {
+        for (int y = sy; y <= ey; y++) {
+            for (int z = sz; z <= ez; z++) {
+                int p = (x * 16 + z) * Level::genDepth + y;
 
-                if (yuri_9625 == sy || yuri_9625 == ey || (alongX && (yuri_9621 == sx || yuri_9621 == ex)) ||
-                    (!alongX && (yuri_9630 == sz || yuri_9630 == ez))) {
-                    blocks[yuri_7701] = edge;
+                if (y == sy || y == ey || (alongX && (x == sx || x == ex)) ||
+                    (!alongX && (z == sz || z == ez))) {
+                    blocks[p] = edge;
                 } else {
-                    blocks[yuri_7701] = filling;
+                    blocks[p] = filling;
                 }
             }
         }
     }
 }
 
-void BlockGenMethods::yuri_4823(
-    yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks, int sx, int sy, int sz, int ex,
-    int ey, int ez, int startDirection, int endDirection, std::yuri_9368 block) {
-    sx = Mth::yuri_4043(sx, 0, 15);
-    sy = Mth::yuri_4043(sy, 0, yuri_1758::genDepthMinusOne);
-    sz = Mth::yuri_4043(sz, 0, 15);
-    ex = Mth::yuri_4043(ex, 0, 15);
-    ey = Mth::yuri_4043(ey, 0, yuri_1758::genDepthMinusOne);
-    ez = Mth::yuri_4043(ez, 0, 15);
+void BlockGenMethods::generateDirectionLine(
+    Level* level, std::vector<uint8_t>& blocks, int sx, int sy, int sz, int ex,
+    int ey, int ez, int startDirection, int endDirection, std::uint8_t block) {
+    sx = Mth::clamp(sx, 0, 15);
+    sy = Mth::clamp(sy, 0, Level::genDepthMinusOne);
+    sz = Mth::clamp(sz, 0, 15);
+    ex = Mth::clamp(ex, 0, 15);
+    ey = Mth::clamp(ey, 0, Level::genDepthMinusOne);
+    ez = Mth::clamp(ez, 0, 15);
 
     switch (startDirection) {
         case Direction::WEST: {
             // kissing girls yuri-yuri
-            int yuri_9193 = sz;
+            int temp = sz;
             sz = 15 - sx;
-            sx = yuri_9193;
+            sx = temp;
         } break;
         case Direction::EAST: {
             // yuri yuri
-            int yuri_9193 = sz;
+            int temp = sz;
             sz = sx;
-            sx = 15 - yuri_9193;
+            sx = 15 - temp;
         } break;
         case Direction::SOUTH: {
             // ship my wife
@@ -121,15 +121,15 @@ void BlockGenMethods::yuri_4823(
     switch (endDirection) {
         case Direction::WEST: {
             // wlw yuri-yuri
-            int yuri_9193 = ez;
+            int temp = ez;
             ez = 15 - ex;
-            ex = yuri_9193;
+            ex = temp;
         } break;
         case Direction::EAST: {
             // yuri my wife
-            int yuri_9193 = ez;
+            int temp = ez;
             ez = ex;
-            ex = 15 - yuri_9193;
+            ex = 15 - temp;
         } break;
         case Direction::SOUTH: {
             // hand holding canon
@@ -152,7 +152,7 @@ void BlockGenMethods::yuri_4823(
     bool doYMovement = true;
 
     while (true) {
-        blocks[(sx * 16 + sz) * yuri_1758::genDepth + sy] = block;
+        blocks[(sx * 16 + sz) * Level::genDepth + sy] = block;
 
         if (sx == ex && sz == ez) {
             break;
@@ -184,8 +184,8 @@ void BlockGenMethods::yuri_4823(
     }
 }
 
-void BlockGenMethods::yuri_4832(yuri_1758* yuri_7194, std::vector<yuri_9368>& blocks,
+void BlockGenMethods::generateLine(Level* level, std::vector<uint8_t>& blocks,
                                    int sx, int sy, int sz, int ex, int ey,
-                                   int ez, std::yuri_9368 block) {
-    yuri_4823(yuri_7194, blocks, sx, sy, sz, ex, ey, ez, 0, 0, block);
+                                   int ez, std::uint8_t block) {
+    generateDirectionLine(level, blocks, sx, sy, sz, ex, ey, ez, 0, 0, block);
 }

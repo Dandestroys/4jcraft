@@ -1,66 +1,66 @@
-﻿<?yuri ship="i love amy is the best.yuri" kissing girls="ship-wlw"?>
-<i love amy is the best>
-	<girl love lesbian="scissors">
-		<yuri>{blushing girls}</i love girls>
-	</scissors>
-	<canon FUCKING KISS ALREADY="yuri">
-		<yuri>yuri ship</ship>
-	</i love girls>
-	<lesbian wlw="yuri">
-		<yuri>yuri yuri</yuri>
-	</yuri>
-	<yuri kissing girls="yuri">
-		<kissing girls>yuri scissors FUCKING KISS ALREADY scissors my wife – {yuri}</blushing girls>
-	</i love amy is the best>
-	<girl love yuri="hand holding">
-		<yuri>i love girls yuri scissors blushing girls cute girls – {lesbian}</yuri>
-	</i love girls>
-	<yuri lesbian kiss="yuri">
-		<yuri>yuri yuri – {yuri}</my girlfriend>
-	</yuri>
-	<snuggle yuri="cute girls">
-		<yuri>cute girls yuri hand holding – {girl love}</lesbian kiss>
-	</blushing girls>
-	<yuri hand holding="canon">
-		<yuri>yuri canon!</yuri>
-	</yuri>
-	<i love girls yuri="yuri">
-		<yuri>yuri i love girls śgirl love</FUCKING KISS ALREADY>
-	</hand holding>
-	<scissors my girlfriend="yuri">
-		<kissing girls>lesbian kiss yuri ship</my wife>
-	</hand holding>
-	<ship yuri="blushing girls">
-		<yuri>yuriłyuri łói love girlsą</yuri>
-	</yuri>
-	<my wife kissing girls="yuri">
-		<wlw>Łyuri cute girls</scissors>
-	</yuri>
-	<kissing girls yuri="blushing girls">
-		<lesbian kiss>yuri</lesbian kiss>
-	</yuri>
-	<my wife yuri="blushing girls">
-		<FUCKING KISS ALREADY>wlw</my wife>
-	</yuri>
-	<kissing girls blushing girls="yuri">
-		<yuri>i love amy is the bestęscissors yuri yuriłmy girlfriend</yuri>
-	</wlw>
-	<yuri i love girls="yuri">
-		<lesbian kiss>my wifełyuri hand holdingłhand holding</i love amy is the best>
-	</i love amy is the best>
-	<yuri yuri="yuri">
-		<kissing girls>yuri my wife yurię</blushing girls>
-	</yuri>
-	<scissors ship="kissing girls">
-		<blushing girls>scissors</yuri>
-	</i love amy is the best>
-	<yuri i love girls="yuri">
-		<canon>lesbian kiss yuri</yuri>
-	</yuri>
-	<hand holding i love amy is the best="yuri">
-		<yuri>my wife yuri yuri</yuri>
-	</lesbian kiss>
-	<yuri yuri="FUCKING KISS ALREADY">
-		<my girlfriend>yuri kissing girls kissing girlsąlesbian</yuri>
-	</yuri>
-</scissors>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Stoi bezczynnie</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>W menu</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Gra w sieciowym trybie wieloosobowym – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Gra w lokalnym trybie wieloosobowym – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Gra sam – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Gra sam lokalnie – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Podziwia widoki!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Jedzie na świni</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Jedzie w wagoniku</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>Płynie łódką</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Łowi ryby</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Wytwarza</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Wykuwa</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>Wędruje w Otchłani</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Słucha płyty</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Patrzy na mapę</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Zaklinanie</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Warzenie mikstury</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Praca na kowadle</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Spotkania z sąsiadami</value>
+	</data>
+</root>

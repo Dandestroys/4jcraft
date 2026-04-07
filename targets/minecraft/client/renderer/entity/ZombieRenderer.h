@@ -3,51 +3,51 @@
 
 #include "HumanoidMobRenderer.h"
 
-class yuri_3340;
-class yuri_3435;
-class yuri_1305;
-class yuri_2412;
+class VillagerZombieModel;
+class Zombie;
+class HumanoidModel;
+class ResourceLocation;
 
-class yuri_3438 : public yuri_1304 {
+class ZombieRenderer : public HumanoidMobRenderer {
 private:
-    static yuri_2412 yuri_3432;
-    static yuri_2412 yuri_3431;
-    static yuri_2412 yuri_3433;
+    static ResourceLocation ZOMBIE_PIGMAN_LOCATION;
+    static ResourceLocation ZOMBIE_LOCATION;
+    static ResourceLocation ZOMBIE_VILLAGER_LOCATION;
 
-    yuri_1305* defaultModel;
-    yuri_3340* villagerModel;
+    HumanoidModel* defaultModel;
+    VillagerZombieModel* villagerModel;
 
 protected:
-    yuri_1305* defaultArmorParts1;
-    yuri_1305* defaultArmorParts2;
-    yuri_1305* villagerArmorParts1;
-    yuri_1305* villagerArmorParts2;
+    HumanoidModel* defaultArmorParts1;
+    HumanoidModel* defaultArmorParts2;
+    HumanoidModel* villagerArmorParts1;
+    HumanoidModel* villagerArmorParts2;
 
 private:
-    int yuri_7508;
+    int modelVersion;
 
 public:
-    yuri_3438();
+    ZombieRenderer();
 
 protected:
-    virtual void yuri_4204();
-    virtual int yuri_7892(std::shared_ptr<yuri_1793> _mob, int layer,
-                             float yuri_3565);
+    virtual void createArmorParts();
+    virtual int prepareArmor(std::shared_ptr<LivingEntity> _mob, int layer,
+                             float a);
 
 public:
-    virtual void yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
-                        double yuri_9630, float rot, float yuri_3565);
-    virtual yuri_2412* yuri_6012(
-        std::shared_ptr<yuri_739> entity);
+    virtual void render(std::shared_ptr<Entity> _mob, double x, double y,
+                        double z, float rot, float a);
+    virtual ResourceLocation* getTextureLocation(
+        std::shared_ptr<Entity> entity);
 
 protected:
-    virtual void yuri_3695(std::shared_ptr<yuri_1793> _mob,
-                                     float yuri_3565);
+    virtual void additionalRendering(std::shared_ptr<LivingEntity> _mob,
+                                     float a);
 
 private:
-    virtual void yuri_9164(std::shared_ptr<yuri_3435> mob);
+    virtual void swapArmor(std::shared_ptr<Zombie> mob);
 
 protected:
-    virtual void yuri_8990(std::shared_ptr<yuri_1793> _mob, float bob,
-                                float bodyRot, float yuri_3565);
+    virtual void setupRotations(std::shared_ptr<LivingEntity> _mob, float bob,
+                                float bodyRot, float a);
 };

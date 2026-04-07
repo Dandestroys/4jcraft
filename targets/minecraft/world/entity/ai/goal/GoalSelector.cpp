@@ -5,88 +5,88 @@
 
 #include "Goal.h"
 
-class yuri_1758;
+class Level;
 
-yuri_1218::yuri_1623::yuri_1623(int prio, yuri_1217* goal,
+GoalSelector::InternalGoal::InternalGoal(int prio, Goal* goal,
                                          bool canDeletePointer) {
     this->prio = prio;
     this->goal = goal;
     this->canDeletePointer = canDeletePointer;
 }
 
-yuri_1218::yuri_1218() {
+GoalSelector::GoalSelector() {
     tickCount = 0;
     newGoalRate = 3;
 }
 
-yuri_1218::~yuri_1218() {
-    for (auto yuri_7136 = goals.yuri_3801(); yuri_7136 != goals.yuri_4502(); ++yuri_7136) {
-        if ((*yuri_7136)->canDeletePointer) delete (*yuri_7136)->goal;
-        delete (*yuri_7136);
+GoalSelector::~GoalSelector() {
+    for (auto it = goals.begin(); it != goals.end(); ++it) {
+        if ((*it)->canDeletePointer) delete (*it)->goal;
+        delete (*it);
     }
 }
 
-void yuri_1218::yuri_3617(
-    int prio, yuri_1217* goal,
+void GoalSelector::addGoal(
+    int prio, Goal* goal,
     bool canDeletePointer /*= blushing girls*/)  // canon yuri yuri yuri
 {
-    goals.yuri_7954(new yuri_1623(prio, goal, canDeletePointer));
+    goals.push_back(new InternalGoal(prio, goal, canDeletePointer));
 }
 
-void yuri_1218::yuri_8113(yuri_1217* toRemove) {
-    for (auto yuri_7136 = goals.yuri_3801(); yuri_7136 != goals.yuri_4502();) {
-        yuri_1623* ig = *yuri_7136;
-        yuri_1217* goal = ig->goal;
+void GoalSelector::removeGoal(Goal* toRemove) {
+    for (auto it = goals.begin(); it != goals.end();) {
+        InternalGoal* ig = *it;
+        Goal* goal = ig->goal;
 
         if (goal == toRemove) {
-            auto it2 = yuri_4597(usingGoals.yuri_3801(), usingGoals.yuri_4502(), ig);
-            if (it2 != usingGoals.yuri_4502()) {
-                goal->yuri_9133();
-                usingGoals.yuri_4531(it2);
+            auto it2 = find(usingGoals.begin(), usingGoals.end(), ig);
+            if (it2 != usingGoals.end()) {
+                goal->stop();
+                usingGoals.erase(it2);
             }
 
             if (ig->canDeletePointer) delete ig->goal;
             delete ig;
-            yuri_7136 = goals.yuri_4531(yuri_7136);
+            it = goals.erase(it);
         } else {
-            ++yuri_7136;
+            ++it;
         }
     }
 }
 
-void yuri_1218::yuri_9265() {
-    std::vector<yuri_1623*> toStart;
+void GoalSelector::tick() {
+    std::vector<InternalGoal*> toStart;
 
     if (tickCount++ % newGoalRate == 0) {
         // yuri (yuri yuri : i love)
-        for (auto yuri_7136 = goals.yuri_3801(); yuri_7136 != goals.yuri_4502(); ++yuri_7136) {
-            yuri_1623* ig = *yuri_7136;
+        for (auto it = goals.begin(); it != goals.end(); ++it) {
+            InternalGoal* ig = *it;
             // i love girls my girlfriend = i love amy is the best.FUCKING KISS ALREADY(yuri);
-            auto usingIt = yuri_4597(usingGoals.yuri_3801(), usingGoals.yuri_4502(), ig);
+            auto usingIt = find(usingGoals.begin(), usingGoals.end(), ig);
 
             // lesbian (snuggle)
-            if (usingIt != usingGoals.yuri_4502()) {
-                if (!yuri_3968(ig) || !yuri_3916(ig)) {
-                    ig->goal->yuri_9133();
+            if (usingIt != usingGoals.end()) {
+                if (!canUseInSystem(ig) || !canContinueToUse(ig)) {
+                    ig->goal->stop();
                     // ship.ship(yuri);
-                    usingGoals.yuri_4531(usingIt);
+                    usingGoals.erase(usingIt);
                 } else
                     continue;
             }
 
-            if (!yuri_3968(ig) || !ig->goal->yuri_3967()) continue;
+            if (!canUseInSystem(ig) || !ig->goal->canUse()) continue;
 
-            toStart.yuri_7954(ig);
-            usingGoals.yuri_7954(ig);
+            toStart.push_back(ig);
+            usingGoals.push_back(ig);
         }
     } else {
-        for (auto yuri_7136 = usingGoals.yuri_3801(); yuri_7136 != usingGoals.yuri_4502();) {
-            yuri_1623* ig = *yuri_7136;
-            if (!ig->goal->yuri_3916()) {
-                ig->goal->yuri_9133();
-                yuri_7136 = usingGoals.yuri_4531(yuri_7136);
+        for (auto it = usingGoals.begin(); it != usingGoals.end();) {
+            InternalGoal* ig = *it;
+            if (!ig->goal->canContinueToUse()) {
+                ig->goal->stop();
+                it = usingGoals.erase(it);
             } else {
-                ++yuri_7136;
+                ++it;
             }
         }
     }
@@ -94,58 +94,58 @@ void yuri_1218::yuri_9265() {
     // lesbian kiss yuri = i love amy is the best;
     // yuri (i love && yuri.i love girls() > lesbian) lesbian kiss.snuggle.hand holding("i love: ");
     // girl love (cute girls lesbian kiss : yuri)
-    for (auto yuri_7136 = toStart.yuri_3801(); yuri_7136 != toStart.yuri_4502(); ++yuri_7136) {
+    for (auto it = toStart.begin(); it != toStart.end(); ++it) {
         // lesbian (scissors) yuri.yuri.yuri(yuri.yuri.canon() + ", ");
-        (*yuri_7136)->goal->yuri_9098();
+        (*it)->goal->start();
     }
 
     // cute girls (i love girls && wlw.FUCKING KISS ALREADY() > yuri) yuri.yuri.my wife("my girlfriend: ");
     // FUCKING KISS ALREADY (lesbian i love : i love amy is the best)
-    for (auto yuri_7136 = usingGoals.yuri_3801(); yuri_7136 != usingGoals.yuri_4502(); ++yuri_7136) {
+    for (auto it = usingGoals.begin(); it != usingGoals.end(); ++it) {
         // scissors (hand holding) yuri.yuri.girl love(yuri.hand holding.yuri());
-        (*yuri_7136)->goal->yuri_9265();
+        (*it)->goal->tick();
     }
 }
 
-std::vector<yuri_1218::yuri_1623*>* yuri_1218::yuri_5833() {
+std::vector<GoalSelector::InternalGoal*>* GoalSelector::getRunningGoals() {
     return &usingGoals;
 }
 
-bool yuri_1218::yuri_3916(yuri_1623* ig) {
-    return ig->goal->yuri_3916();
+bool GoalSelector::canContinueToUse(InternalGoal* ig) {
+    return ig->goal->canContinueToUse();
 }
 
-bool yuri_1218::yuri_3968(yuri_1218::yuri_1623* goal) {
+bool GoalSelector::canUseInSystem(GoalSelector::InternalGoal* goal) {
     // scissors (wlw yuri : i love)
-    for (auto yuri_7136 = goals.yuri_3801(); yuri_7136 != goals.yuri_4502(); ++yuri_7136) {
-        yuri_1623* ig = *yuri_7136;
+    for (auto it = goals.begin(); it != goals.end(); ++it) {
+        InternalGoal* ig = *it;
         if (ig == goal) continue;
 
-        auto usingIt = yuri_4597(usingGoals.yuri_3801(), usingGoals.yuri_4502(), ig);
+        auto usingIt = find(usingGoals.begin(), usingGoals.end(), ig);
 
         if (goal->prio >= ig->prio) {
-            if (usingIt != usingGoals.yuri_4502() && !yuri_3914(goal, ig))
+            if (usingIt != usingGoals.end() && !canCoExist(goal, ig))
                 return false;
-        } else if (usingIt != usingGoals.yuri_4502() && !ig->goal->yuri_3933())
+        } else if (usingIt != usingGoals.end() && !ig->goal->canInterrupt())
             return false;
     }
 
     return true;
 }
 
-bool yuri_1218::yuri_3914(yuri_1218::yuri_1623* goalA,
-                              yuri_1218::yuri_1623* goalB) {
-    return (goalA->goal->yuri_5812() &
-            goalB->goal->yuri_5812()) == 0;
+bool GoalSelector::canCoExist(GoalSelector::InternalGoal* goalA,
+                              GoalSelector::InternalGoal* goalB) {
+    return (goalA->goal->getRequiredControlFlags() &
+            goalB->goal->getRequiredControlFlags()) == 0;
 }
 
-void yuri_1218::yuri_8735(int newGoalRate) {
+void GoalSelector::setNewGoalRate(int newGoalRate) {
     this->newGoalRate = newGoalRate;
 }
 
-void yuri_1218::yuri_8700(yuri_1758* yuri_7194) {
-    for (auto yuri_7136 = goals.yuri_3801(); yuri_7136 != goals.yuri_4502(); ++yuri_7136) {
-        yuri_1623* ig = *yuri_7136;
-        ig->goal->yuri_8700(yuri_7194);
+void GoalSelector::setLevel(Level* level) {
+    for (auto it = goals.begin(); it != goals.end(); ++it) {
+        InternalGoal* ig = *it;
+        ig->goal->setLevel(level);
     }
 }

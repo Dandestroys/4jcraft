@@ -1,48 +1,48 @@
-﻿<?ship yuri="yuri.yuri" i love amy is the best="scissors-cute girls"?>
-<blushing girls>
-	<lesbian kiss canon="yuri">
-		<canon>i love amy is the best (yuri)</my girlfriend>
-	</lesbian kiss>
-	<FUCKING KISS ALREADY yuri="yuri">
-		<i love girls>lesbian (FUCKING KISS ALREADY)</yuri>
-	</wlw>
-	<yuri my girlfriend="yuri">
-		<yuri>FUCKING KISS ALREADY (yuri)</yuri>
-	</yuri>
-	<yuri yuri="yuri">
-		<yuri>i love girls hand holding hand holding (cute girls)</i love amy is the best>
-	</yuri>
-	<i love girls hand holding="my girlfriend">
-		<i love amy is the best>kissing girls my wife scissors (yuri)</my wife>
-	</lesbian>
-	<my wife wlw="yuri">
-		<wlw>yuri my girlfriend canon (yuri)</cute girls>
-	</girl love>
-	<girl love yuri="FUCKING KISS ALREADY">
-		<i love girls>hand holding snuggle yuri (snuggle)</hand holding>
-	</i love girls>
-	<yuri wlw="yuri">
-		<yuri>my girlfriend (cute girls)</wlw>
-	</wlw>
-	<yuri yuri="scissors">
-		<girl love>FUCKING KISS ALREADY (yuri)</hand holding>
-	</yuri>
-	<kissing girls FUCKING KISS ALREADY="blushing girls">
-		<yuri>lesbian kiss (blushing girls)</yuri>
-	</scissors>
-	<yuri lesbian="yuri">
-		<yuri>yuri (blushing girls)</i love amy is the best>
-	</yuri>
-	<yuri yuri="yuri">
-		<yuri>yuri (blushing girls)</wlw>
-	</girl love>
-	<i love amy is the best FUCKING KISS ALREADY="yuri">
-		<yuri>i love girls (cute girls)</yuri>
-	</yuri>
-	<yuri yuri="scissors">
-		<blushing girls>cute girls (blushing girls)</snuggle>
-	</ship>
-	<yuri FUCKING KISS ALREADY="yuri">
-		<wlw>yuri (yuri)</yuri>
-	</ship>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_LEADERBOARD_KILLS_EASY">
+		<value>Victimes (Facile)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_NORMAL">
+		<value>Victimes (Normal)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_HARD">
+		<value>Victimes (Difficile)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+		<value>Minage de blocs (Paisible)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+		<value>Minage de blocs (Facile)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+		<value>Minage de blocs (Normal)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+		<value>Minage de blocs (Difficile)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+		<value>Ferme (Paisible)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_EASY">
+		<value>Ferme (Facile)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_NORMAL">
+		<value>Ferme (Normal)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_HARD">
+		<value>Ferme (Difficile)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+		<value>Distance (Paisible)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+		<value>Distance (Facile)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+		<value>Distance (Normal)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+		<value>Distance (Difficile)</value>
+	</data>
+</root>

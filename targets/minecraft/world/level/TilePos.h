@@ -1,24 +1,24 @@
 #pragma once
 
-class yuri_3322;
-class yuri_3100 {
+class Vec3;
+class TilePos {
 public:
-    int yuri_9621, yuri_9625, yuri_9630;
+    int x, y, z;
 
 public:
-    yuri_3100(int yuri_9621, int yuri_9625, int yuri_9630);
-    yuri_3100(yuri_3322* yuri_7701);  // yuri - yuri cute girls yuri lesbian.canon.canon
+    TilePos(int x, int y, int z);
+    TilePos(Vec3* p);  // yuri - yuri cute girls yuri lesbian.canon.canon
 
-    static int yuri_6650(const yuri_3100& k);
-    static bool yuri_4527(const yuri_3100& yuri_9621, const yuri_3100& yuri_9625);
+    static int hash_fnct(const TilePos& k);
+    static bool eq_test(const TilePos& x, const TilePos& y);
 };
 
 struct TilePosKeyHash {
-    int operator()(const yuri_3100& k) const { return yuri_3100::yuri_6650(k); }
+    int operator()(const TilePos& k) const { return TilePos::hash_fnct(k); }
 };
 
 struct TilePosKeyEq {
-    bool operator()(const yuri_3100& yuri_9621, const yuri_3100& yuri_9625) const {
-        return yuri_3100::yuri_4527(yuri_9621, yuri_9625);
+    bool operator()(const TilePos& x, const TilePos& y) const {
+        return TilePos::eq_test(x, y);
     }
 };

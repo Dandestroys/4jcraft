@@ -11,27 +11,27 @@
 #include "minecraft/world/item/ItemInstance.h"
 #include "minecraft/world/level/Level.h"
 
-yuri_777::yuri_777(int yuri_6674) : yuri_1687(yuri_6674) {}
+ExperienceItem::ExperienceItem(int id) : Item(id) {}
 
-bool yuri_777::yuri_6875(std::shared_ptr<yuri_1693> itemInstance) {
+bool ExperienceItem::isFoil(std::shared_ptr<ItemInstance> itemInstance) {
     return true;
 }
 
-bool yuri_777::yuri_3033(std::shared_ptr<yuri_1693> itemInstance,
-                             yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839) {
+bool ExperienceItem::TestUse(std::shared_ptr<ItemInstance> itemInstance,
+                             Level* level, std::shared_ptr<Player> player) {
     return true;
 }
 
-std::shared_ptr<yuri_1693> yuri_777::yuri_9484(
-    std::shared_ptr<yuri_1693> itemInstance, yuri_1758* yuri_7194,
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    if (!yuri_7839->abilities.instabuild) {
-        itemInstance->yuri_4184--;
+std::shared_ptr<ItemInstance> ExperienceItem::use(
+    std::shared_ptr<ItemInstance> itemInstance, Level* level,
+    std::shared_ptr<Player> player) {
+    if (!player->abilities.instabuild) {
+        itemInstance->count--;
     }
-    yuri_7194->yuri_7826(yuri_7839, eSoundType_RANDOM_BOW, 0.5f,
-                           0.4f / (yuri_7981->yuri_7576() * 0.4f + 0.8f));
-    if (!yuri_7194->yuri_6802)
-        yuri_7194->yuri_3611(std::shared_ptr<yuri_3078>(
-            new yuri_3078(yuri_7194, yuri_7839)));
+    level->playEntitySound(player, eSoundType_RANDOM_BOW, 0.5f,
+                           0.4f / (random->nextFloat() * 0.4f + 0.8f));
+    if (!level->isClientSide)
+        level->addEntity(std::shared_ptr<ThrownExpBottle>(
+            new ThrownExpBottle(level, player)));
     return itemInstance;
 }

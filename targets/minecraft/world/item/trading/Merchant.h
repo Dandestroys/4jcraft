@@ -1,22 +1,22 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
-class yuri_1917;
-class yuri_1916;
-class yuri_2126;
-class yuri_1693;
+class MerchantRecipeList;
+class MerchantRecipe;
+class Player;
+class ItemInstance;
 
-class yuri_1913 {
+class Merchant {
 public:
-    virtual ~yuri_1913() {}
-    virtual void yuri_8930(std::shared_ptr<yuri_2126> yuri_7839) = 0;
-    virtual std::shared_ptr<yuri_2126> yuri_6058() = 0;
-    virtual yuri_1917* yuri_5615(
-        std::shared_ptr<yuri_2126> forPlayer) = 0;
-    virtual void yuri_7693(yuri_1917* recipeList) = 0;
-    virtual void yuri_7593(yuri_1916* activeRecipe) = 0;
-    virtual void yuri_7594(std::shared_ptr<yuri_1693> item) = 0;
-    virtual std::yuri_9616 yuri_5170() = 0;
+    virtual ~Merchant() {}
+    virtual void setTradingPlayer(std::shared_ptr<Player> player) = 0;
+    virtual std::shared_ptr<Player> getTradingPlayer() = 0;
+    virtual MerchantRecipeList* getOffers(
+        std::shared_ptr<Player> forPlayer) = 0;
+    virtual void overrideOffers(MerchantRecipeList* recipeList) = 0;
+    virtual void notifyTrade(MerchantRecipe* activeRecipe) = 0;
+    virtual void notifyTradeUpdated(std::shared_ptr<ItemInstance> item) = 0;
+    virtual std::wstring getDisplayName() = 0;
 };

@@ -6,70 +6,70 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/Mob.h"
 
-class yuri_1758;
-class yuri_2093;
-class yuri_146;
-class yuri_1217;
-class yuri_2153;
+class Level;
+class Path;
+class AttributeModifier;
+class Goal;
+class Pos;
 
-class yuri_2096 : public yuri_1950 {
+class PathfinderMob : public Mob {
 public:
-    static yuri_146* SPEED_MODIFIER_FLEEING;
+    static AttributeModifier* SPEED_MODIFIER_FLEEING;
 
 private:
     static const int MAX_TURN = 30;
 
 public:
-    yuri_2096(yuri_1758* yuri_7194);
-    virtual ~yuri_2096();
+    PathfinderMob(Level* level);
+    virtual ~PathfinderMob();
 
 private:
-    yuri_2093* yuri_7800;
+    Path* path;
 
 protected:
-    std::shared_ptr<yuri_739> attackTarget;
+    std::shared_ptr<Entity> attackTarget;
     bool holdGround;
     int fleeTime;
 
 private:
-    yuri_2153* restrictCenter;
+    Pos* restrictCenter;
     float restrictRadius;
-    yuri_1217* leashRestrictionGoal;
+    Goal* leashRestrictionGoal;
     bool addedLeashRestrictionGoal;
 
 protected:
-    virtual bool yuri_9006();
-    virtual void yuri_8431();
-    virtual void yuri_4619(int quadrant = -1);
-    virtual void yuri_4009(std::shared_ptr<yuri_739> target, float d);
+    virtual bool shouldHoldGround();
+    virtual void serverAiStep();
+    virtual void findRandomStrollLocation(int quadrant = -1);
+    virtual void checkHurtTarget(std::shared_ptr<Entity> target, float d);
 
 public:
-    virtual float yuri_6120(int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual float getWalkTargetValue(int x, int y, int z);
 
 protected:
-    virtual std::shared_ptr<yuri_739> yuri_4601();
+    virtual std::shared_ptr<Entity> findAttackTarget();
 
 public:
-    virtual bool yuri_3958();
-    virtual bool yuri_6982();
-    virtual void yuri_8763(yuri_2093* yuri_7800);
-    virtual std::shared_ptr<yuri_739> yuri_4912();
-    virtual void yuri_8463(std::shared_ptr<yuri_739> attacker);
+    virtual bool canSpawn();
+    virtual bool isPathFinding();
+    virtual void setPath(Path* path);
+    virtual std::shared_ptr<Entity> getAttackTarget();
+    virtual void setAttackTarget(std::shared_ptr<Entity> attacker);
 
     // snuggle yuri my wife yuri, yuri i love my girlfriend
-    virtual bool yuri_7123();
-    virtual bool yuri_7123(int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual void yuri_8299(int yuri_9621, int yuri_9625, int yuri_9630, int radius);
-    virtual yuri_2153* yuri_5824();
-    virtual float yuri_5825();
-    virtual void yuri_4073();
-    virtual bool yuri_6632();
+    virtual bool isWithinRestriction();
+    virtual bool isWithinRestriction(int x, int y, int z);
+    virtual void restrictTo(int x, int y, int z, int radius);
+    virtual Pos* getRestrictCenter();
+    virtual float getRestrictRadius();
+    virtual void clearRestriction();
+    virtual bool hasRestriction();
 
 protected:
-    void yuri_9280();
-    void yuri_7627(float distanceToLeashHolder);
+    void tickLeash();
+    void onLeashDistance(float distanceToLeashHolder);
 
     // yuri yuri
 public:
-    virtual bool yuri_4183();
+    virtual bool couldWander();
 };

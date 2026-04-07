@@ -5,41 +5,41 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/LivingEntity.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_2174 : public yuri_739 {
+class PrimedTnt : public Entity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_PRIMEDTNT; };
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2174(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_PRIMEDTNT; };
+    static Entity* create(Level* level) { return new PrimedTnt(level); }
 
 public:
     static const int serialVersionUID = 0;
 
-    int yuri_7203;
-    std::weak_ptr<yuri_1793> owner;
+    int life;
+    std::weak_ptr<LivingEntity> owner;
 
-    void yuri_3547();
+    void _init();
 
-    yuri_2174(yuri_1758* yuri_7194);
-    yuri_2174(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
-              std::shared_ptr<yuri_1793> owner);
+    PrimedTnt(Level* level);
+    PrimedTnt(Level* level, double x, double y, double z,
+              std::shared_ptr<LivingEntity> owner);
 
 protected:
-    virtual void yuri_4329();
-    virtual bool yuri_7434();
+    virtual void defineSynchedData();
+    virtual bool makeStepSound();
 
 public:
-    virtual bool yuri_6988();
-    virtual void yuri_9265();
+    virtual bool isPickable();
+    virtual void tick();
 
 private:
-    void yuri_4549();
+    void explode();
 
 protected:
-    virtual void yuri_3582(yuri_409* entityTag);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void addAdditonalSaveData(CompoundTag* entityTag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
 
 public:
-    virtual float yuri_5885();
-    virtual std::shared_ptr<yuri_1793> yuri_5633();
+    virtual float getShadowHeightOffs();
+    virtual std::shared_ptr<LivingEntity> getOwner();
 };

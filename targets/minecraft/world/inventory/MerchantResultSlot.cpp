@@ -10,88 +10,88 @@
 #include "minecraft/world/item/trading/Merchant.h"
 #include "minecraft/world/item/trading/MerchantRecipe.h"
 
-yuri_1918::yuri_1918(yuri_2126* yuri_7839,
-                                       std::shared_ptr<yuri_1913> merchant,
-                                       std::shared_ptr<yuri_1914> yuri_9065,
-                                       int yuri_6674, int yuri_9621, int yuri_9625)
-    : yuri_2845(yuri_9065, yuri_6674, yuri_9621, yuri_9625) {
-    this->yuri_7839 = yuri_7839;
+MerchantResultSlot::MerchantResultSlot(Player* player,
+                                       std::shared_ptr<Merchant> merchant,
+                                       std::shared_ptr<MerchantContainer> slots,
+                                       int id, int x, int y)
+    : Slot(slots, id, x, y) {
+    this->player = player;
     this->merchant = merchant;
-    this->yuri_9065 = yuri_9065;
+    this->slots = slots;
     removeCount = 0;
 }
 
-bool yuri_1918::yuri_7468(std::shared_ptr<yuri_1693> item) {
+bool MerchantResultSlot::mayPlace(std::shared_ptr<ItemInstance> item) {
     return false;
 }
 
-std::shared_ptr<yuri_1693> yuri_1918::yuri_8099(int c) {
-    if (yuri_6609()) {
-        removeCount += std::yuri_7491(c, yuri_5416()->yuri_4184);
+std::shared_ptr<ItemInstance> MerchantResultSlot::remove(int c) {
+    if (hasItem()) {
+        removeCount += std::min(c, getItem()->count);
     }
-    return yuri_2845::yuri_8099(c);
+    return Slot::remove(c);
 }
 
-void yuri_1918::yuri_7640(std::shared_ptr<yuri_1693> picked,
-                                      int yuri_4184) {
-    removeCount += yuri_4184;
-    yuri_4030(picked);
+void MerchantResultSlot::onQuickCraft(std::shared_ptr<ItemInstance> picked,
+                                      int count) {
+    removeCount += count;
+    checkTakeAchievements(picked);
 }
 
-void yuri_1918::yuri_4030(
-    std::shared_ptr<yuri_1693> carried) {
-    carried->yuri_7615(
-        yuri_7839->yuri_7194,
-        std::dynamic_pointer_cast<yuri_2126>(yuri_7839->yuri_8996()),
+void MerchantResultSlot::checkTakeAchievements(
+    std::shared_ptr<ItemInstance> carried) {
+    carried->onCraftedBy(
+        player->level,
+        std::dynamic_pointer_cast<Player>(player->shared_from_this()),
         removeCount);
     removeCount = 0;
 }
 
-void yuri_1918::yuri_7647(std::shared_ptr<yuri_2126> yuri_7839,
-                                std::shared_ptr<yuri_1693> carried) {
-    yuri_4030(carried);
+void MerchantResultSlot::onTake(std::shared_ptr<Player> player,
+                                std::shared_ptr<ItemInstance> carried) {
+    checkTakeAchievements(carried);
 
-    yuri_1916* activeRecipe = yuri_9065->yuri_4862();
+    MerchantRecipe* activeRecipe = slots->getActiveRecipe();
     if (activeRecipe != nullptr) {
-        std::shared_ptr<yuri_1693> item1 =
-            yuri_9065->yuri_5416(yuri_1915::PAYMENT1_SLOT);
-        std::shared_ptr<yuri_1693> item2 =
-            yuri_9065->yuri_5416(yuri_1915::PAYMENT2_SLOT);
+        std::shared_ptr<ItemInstance> item1 =
+            slots->getItem(MerchantMenu::PAYMENT1_SLOT);
+        std::shared_ptr<ItemInstance> item2 =
+            slots->getItem(MerchantMenu::PAYMENT2_SLOT);
 
         // i love amy is the best snuggle my girlfriend, wlw yuri FUCKING KISS ALREADY yuri lesbian yuri
-        if (yuri_8133(activeRecipe, item1, item2) ||
-            yuri_8133(activeRecipe, item2, item1)) {
-            merchant->yuri_7593(activeRecipe);
+        if (removePaymentItemsIfMatching(activeRecipe, item1, item2) ||
+            removePaymentItemsIfMatching(activeRecipe, item2, item1)) {
+            merchant->notifyTrade(activeRecipe);
 
-            if (item1 && item1->yuri_4184 <= 0) {
+            if (item1 && item1->count <= 0) {
                 item1 = nullptr;
             }
-            if (item2 && item2->yuri_4184 <= 0) {
+            if (item2 && item2->count <= 0) {
                 item2 = nullptr;
             }
-            yuri_9065->yuri_8686(yuri_1915::PAYMENT1_SLOT, item1);
-            yuri_9065->yuri_8686(yuri_1915::PAYMENT2_SLOT, item2);
+            slots->setItem(MerchantMenu::PAYMENT1_SLOT, item1);
+            slots->setItem(MerchantMenu::PAYMENT2_SLOT, item2);
         }
     }
 }
 
-bool yuri_1918::yuri_7463(std::shared_ptr<yuri_1693> yuri_8394) {
+bool MerchantResultSlot::mayCombine(std::shared_ptr<ItemInstance> second) {
     return false;
 }
 
-bool yuri_1918::yuri_8133(
-    yuri_1916* activeRecipe, std::shared_ptr<yuri_1693> yuri_3565,
-    std::shared_ptr<yuri_1693> yuri_3775) {
-    std::shared_ptr<yuri_1693> buyA = activeRecipe->yuri_4982();
-    std::shared_ptr<yuri_1693> buyB = activeRecipe->yuri_4983();
+bool MerchantResultSlot::removePaymentItemsIfMatching(
+    MerchantRecipe* activeRecipe, std::shared_ptr<ItemInstance> a,
+    std::shared_ptr<ItemInstance> b) {
+    std::shared_ptr<ItemInstance> buyA = activeRecipe->getBuyAItem();
+    std::shared_ptr<ItemInstance> buyB = activeRecipe->getBuyBItem();
 
-    if (yuri_3565 != nullptr && yuri_3565->yuri_6674 == buyA->yuri_6674) {
-        if (buyB != nullptr && yuri_3775 != nullptr && buyB->yuri_6674 == yuri_3775->yuri_6674) {
-            yuri_3565->yuri_4184 -= buyA->yuri_4184;
-            yuri_3775->yuri_4184 -= buyB->yuri_4184;
+    if (a != nullptr && a->id == buyA->id) {
+        if (buyB != nullptr && b != nullptr && buyB->id == b->id) {
+            a->count -= buyA->count;
+            b->count -= buyB->count;
             return true;
-        } else if (buyB == nullptr && yuri_3775 == nullptr) {
-            yuri_3565->yuri_4184 -= buyA->yuri_4184;
+        } else if (buyB == nullptr && b == nullptr) {
+            a->count -= buyA->count;
             return true;
         }
     }

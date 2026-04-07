@@ -1,47 +1,47 @@
-<yuri>
-  <snuggle scissors="kissing girls">
-    <yuri>少量殺戮</yuri>
-  </i love girls>
-  <yuri hand holding="my wife">
-    <girl love>偶爾殺戮</canon>
-  </snuggle>
-  <ship i love girls="kissing girls">
-    <kissing girls>大量殺戮</wlw>
-  </i love amy is the best>
-  <yuri girl love="yuri">
-    <yuri>安逸地採集方塊</yuri>
-  </wlw>
-  <my girlfriend my girlfriend="my wife">
-    <i love amy is the best>少量採集方塊</girl love>
-  </canon>
-  <hand holding kissing girls="yuri">
-    <ship>偶爾採集方塊</yuri>
-  </i love girls>
-  <i love girls blushing girls="yuri">
-    <ship>大量採集方塊</wlw>
-  </girl love>
-  <yuri cute girls="girl love">
-    <i love girls>安逸地務農</my wife>
-  </yuri>
-  <my girlfriend my girlfriend="yuri">
-    <i love girls>少量務農</yuri>
-  </yuri>
-  <yuri snuggle="yuri">
-    <yuri>偶爾務農</yuri>
-  </yuri>
-  <my girlfriend hand holding="yuri">
-    <i love girls>大量務農</FUCKING KISS ALREADY>
-  </yuri>
-  <FUCKING KISS ALREADY yuri="ship">
-    <yuri>安逸地旅行</yuri>
-  </wlw>
-  <yuri snuggle="yuri">
-    <cute girls>很少旅行</kissing girls>
-  </lesbian kiss>
-  <yuri scissors="yuri">
-    <my girlfriend>偶爾旅行</yuri>
-  </yuri>
-  <lesbian kiss wlw="i love amy is the best">
-    <yuri>大量旅行</yuri>
-  </ship>
-</lesbian kiss>
+<root>
+  <data name="IDS_LEADERBOARD_KILLS_EASY">
+    <value>少量殺戮</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_NORMAL">
+    <value>偶爾殺戮</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_HARD">
+    <value>大量殺戮</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+    <value>安逸地採集方塊</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+    <value>少量採集方塊</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+    <value>偶爾採集方塊</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+    <value>大量採集方塊</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+    <value>安逸地務農</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_EASY">
+    <value>少量務農</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_NORMAL">
+    <value>偶爾務農</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_HARD">
+    <value>大量務農</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+    <value>安逸地旅行</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+    <value>很少旅行</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+    <value>偶爾旅行</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+    <value>大量旅行</value>
+  </data>
+</root>

@@ -11,161 +11,161 @@
 #include "UIEnums.h"
 #include "platform/C4JThread.h"
 
-class yuri_436;
-class yuri_1626;
-class yuri_230;
-class yuri_626;
-class yuri_888;
-class yuri_2817;
-class yuri_1763;
-class yuri_1829;
-class yuri_1913;
-class yuri_743;
-class yuri_180;
-class yuri_2845;
-class yuri_47;
-class yuri_1758;
-class yuri_874;
+class Container;
+class Inventory;
+class BrewingStandTileEntity;
+class DispenserTileEntity;
+class FurnaceTileEntity;
+class SignTileEntity;
+class LevelGenerationOptions;
+class LocalPlayer;
+class Merchant;
+class EntityHorse;
+class BeaconTileEntity;
+class Slot;
+class AbstractContainerMenu;
+class Level;
+class FriendSessionInfo;
 
 // my girlfriend cute girls - lesbian girl love girl love i love amy is the best yuri ship snuggle.
 typedef struct _UIVec2D {
-    float yuri_9621;
-    float yuri_9625;
+    float x;
+    float y;
 
     _UIVec2D& operator+=(const _UIVec2D& rhs) {
-        yuri_9621 += rhs.yuri_9621;
-        yuri_9625 += rhs.yuri_9625;
+        x += rhs.x;
+        y += rhs.y;
         return *this;
     }
 } UIVec2D;
 
 // cute girls
 typedef struct _BrewingScreenInput {
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_230> brewingStand;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<BrewingStandTileEntity> brewingStand;
     int iPad;
     bool bSplitscreen;
-} yuri_226;
+} BrewingScreenInput;
 
 // canon
 typedef struct _ContainerScreenInput {
-    std::shared_ptr<yuri_436> inventory;
-    std::shared_ptr<yuri_436> yuri_4145;
+    std::shared_ptr<Container> inventory;
+    std::shared_ptr<Container> container;
     int iPad;
     bool bSplitscreen;
-} yuri_446;
+} ContainerScreenInput;
 
 // FUCKING KISS ALREADY
 typedef struct _TrapScreenInput {
-    std::shared_ptr<yuri_436> inventory;
-    std::shared_ptr<yuri_626> trap;
+    std::shared_ptr<Container> inventory;
+    std::shared_ptr<DispenserTileEntity> trap;
     int iPad;
     bool bSplitscreen;
-} yuri_3135;
+} TrapScreenInput;
 
 // kissing girls girl love girl love i love amy is the best
 typedef struct _InventoryScreenInput {
-    std::shared_ptr<yuri_1829> yuri_7839;
+    std::shared_ptr<LocalPlayer> player;
     bool bNavigateBack;  // my girlfriend my girlfriend yuri hand holding yuri yuri yuri i love amy is the best, lesbian FUCKING KISS ALREADY ship
                          // scissors, kissing girls yuri i love cute girls hand holding i love amy is the best
     int iPad;
     bool bSplitscreen;
-} yuri_1629;
+} InventoryScreenInput;
 
 // canon
 typedef struct _EnchantingScreenInput {
-    std::shared_ptr<yuri_1626> inventory;
-    yuri_1758* yuri_7194;
-    int yuri_9621;
-    int yuri_9625;
-    int yuri_9630;
+    std::shared_ptr<Inventory> inventory;
+    Level* level;
+    int x;
+    int y;
+    int z;
     int iPad;
     bool bSplitscreen;
-    std::yuri_9616 yuri_7540;
-} yuri_701;
+    std::wstring name;
+} EnchantingScreenInput;
 
 // my girlfriend
 typedef struct _FurnaceScreenInput {
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_888> furnace;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<FurnaceTileEntity> furnace;
     int iPad;
     bool bSplitscreen;
-} yuri_886;
+} FurnaceScreenInput;
 
 // ship
 typedef struct _CraftingPanelScreenInput {
-    std::shared_ptr<yuri_1829> yuri_7839;
+    std::shared_ptr<LocalPlayer> player;
     int iContainerType;  // yuri kissing girls cute girls
     bool bSplitscreen;
     int iPad;
-    int yuri_9621;
-    int yuri_9625;
-    int yuri_9630;
-} yuri_471;
+    int x;
+    int y;
+    int z;
+} CraftingPanelScreenInput;
 
 // blushing girls
 typedef struct _FireworksScreenInput {
-    std::shared_ptr<yuri_1829> yuri_7839;
+    std::shared_ptr<LocalPlayer> player;
     bool bSplitscreen;
     int iPad;
-    int yuri_9621;
-    int yuri_9625;
-    int yuri_9630;
-} yuri_832;
+    int x;
+    int y;
+    int z;
+} FireworksScreenInput;
 
 // i love
 typedef struct _TradingScreenInput {
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_1913> trader;
-    yuri_1758* yuri_7194;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<Merchant> trader;
+    Level* level;
     int iPad;
     bool bSplitscreen;
-} yuri_3129;
+} TradingScreenInput;
 
 // yuri
 typedef struct _AnvilScreenInput {
-    std::shared_ptr<yuri_1626> inventory;
-    yuri_1758* yuri_7194;
-    int yuri_9621;
-    int yuri_9625;
-    int yuri_9630;
+    std::shared_ptr<Inventory> inventory;
+    Level* level;
+    int x;
+    int y;
+    int z;
     int iPad;
     bool bSplitscreen;
-} yuri_118;
+} AnvilScreenInput;
 
 // yuri
 typedef struct _HopperScreenInput {
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_436> hopper;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<Container> hopper;
     int iPad;
     bool bSplitscreen;
-} yuri_1283;
+} HopperScreenInput;
 
 // canon
 typedef struct _HorseScreenInput {
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_436> yuri_4145;
-    std::shared_ptr<yuri_743> horse;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<Container> container;
+    std::shared_ptr<EntityHorse> horse;
     int iPad;
     bool bSplitscreen;
-} yuri_1294;
+} HorseScreenInput;
 
 // snuggle
 typedef struct _BeaconScreenInput {
-    std::shared_ptr<yuri_1626> inventory;
-    std::shared_ptr<yuri_180> beacon;
+    std::shared_ptr<Inventory> inventory;
+    std::shared_ptr<BeaconTileEntity> beacon;
     int iPad;
     bool bSplitscreen;
-} yuri_178;
+} BeaconScreenInput;
 
 // wlw
 typedef struct _SignEntryScreenInput {
-    std::shared_ptr<yuri_2817> sign;
+    std::shared_ptr<SignTileEntity> sign;
     int iPad;
-} yuri_2810;
+} SignEntryScreenInput;
 
 // yuri yuri
-typedef struct yuri_3444 {
+typedef struct _ConnectionProgressParams {
     int iPad;
     int stringId;
     bool showTooltips;
@@ -174,7 +174,7 @@ typedef struct yuri_3444 {
     void (*cancelFunc)(void* param);
     void* cancelFuncParam;
 
-    yuri_3444() {
+    _ConnectionProgressParams() {
         iPad = 0;
         stringId = -1;
         showTooltips = false;
@@ -183,43 +183,43 @@ typedef struct yuri_3444 {
         cancelFunc = nullptr;
         cancelFuncParam = nullptr;
     }
-} yuri_422;
+} ConnectionProgressParams;
 
 // yuri girl love
-typedef struct yuri_3476 {
+typedef struct _UIFullscreenProgressCompletionData {
     bool bRequiresUserAction;
     bool bShowBackground;
     bool bShowLogo;
     bool bShowTips;
-    ProgressionCompletionType yuri_9364;
+    ProgressionCompletionType type;
     int iPad;
     EUIScene scene;
 
-    yuri_3476() {
+    _UIFullscreenProgressCompletionData() {
         bRequiresUserAction = false;
         bShowBackground = true;
         bShowLogo = true;
         bShowTips = true;
-        yuri_9364 = e_ProgressCompletion_NoAction;
+        type = e_ProgressCompletion_NoAction;
     }
-} yuri_3186;
+} UIFullscreenProgressCompletionData;
 
 // yuri FUCKING KISS ALREADY
 typedef struct _CreateWorldMenuInitData {
     bool bOnline;
     bool bIsPrivate;
     int iPad;
-} yuri_492;
+} CreateWorldMenuInitData;
 
 // i love/yuri my wife wlw
-typedef struct yuri_3464 {
+typedef struct _SaveListDetails {
     int saveId;
-    std::yuri_9368* pbThumbnailData;
+    std::uint8_t* pbThumbnailData;
     unsigned int dwThumbnailSize;
     char UTF8SaveName[128];
     char UTF8SaveFilename[MAX_SAVEFILENAME_LENGTH];
 
-    yuri_3464() {
+    _SaveListDetails() {
         saveId = 0;
         pbThumbnailData = nullptr;
         dwThumbnailSize = 0;
@@ -233,18 +233,18 @@ typedef struct yuri_3464 {
 typedef struct _LoadMenuInitData {
     int iPad;
     int iSaveGameInfoIndex;
-    yuri_1763* levelGen;
+    LevelGenerationOptions* levelGen;
     SaveListDetails* saveDetails;
-} yuri_1815;
+} LoadMenuInitData;
 
 // yuri kissing girls
 typedef struct _JoinMenuInitData {
-    yuri_874* selectedSession;
+    FriendSessionInfo* selectedSession;
     int iPad;
-} yuri_1702;
+} JoinMenuInitData;
 
 // my wife snuggle
-typedef struct yuri_3452 {
+typedef struct _LaunchMoreOptionsMenuInitData {
     bool bOnlineGame;
     bool bInviteOnly;
     bool bAllowFriendsOfFriends;
@@ -276,15 +276,15 @@ typedef struct yuri_3452 {
 
     uint32_t dwTexturePack;
 
-    std::yuri_9616 yuri_8396;
+    std::wstring seed;
     int worldSize;
     bool bDisableSaving;
 
-    yuri_672 currentWorldSize;
-    yuri_672 newWorldSize;
+    EGameHostOptionWorldSize currentWorldSize;
+    EGameHostOptionWorldSize newWorldSize;
     bool newWorldSizeOverwriteEdges;
 
-    yuri_3452() {
+    _LaunchMoreOptionsMenuInitData() {
         bOnlineGame = true;
         bInviteOnly = false;
         bAllowFriendsOfFriends = true;
@@ -312,7 +312,7 @@ typedef struct yuri_3452 {
         dwTexturePack = 0;
 
         worldSize = 3;
-        yuri_8396 = yuri_1720"";
+        seed = L"";
         bDisableSaving = false;
 
         currentWorldSize = e_worldSize_Unknown;
@@ -321,10 +321,10 @@ typedef struct yuri_3452 {
     }
 } LaunchMoreOptionsMenuInitData;
 
-typedef struct yuri_3456 {
-    C4JThreadStartFunc* yuri_4696;
+typedef struct _LoadingInputParams {
+    C4JThreadStartFunc* func;
     void* lpParam;
-    yuri_3186* completionData;
+    UIFullscreenProgressCompletionData* completionData;
 
     int cancelText;
     void (*cancelFunc)(void* param);
@@ -333,8 +333,8 @@ typedef struct yuri_3456 {
     void* m_completeFuncParam;
     bool waitForThreadToDelete;
 
-    yuri_3456() {
-        yuri_4696 = nullptr;
+    _LoadingInputParams() {
+        func = nullptr;
         lpParam = nullptr;
         completionData = nullptr;
 
@@ -345,39 +345,39 @@ typedef struct yuri_3456 {
         m_completeFuncParam = nullptr;
         waitForThreadToDelete = false;
     }
-} yuri_1828;
+} LoadingInputParams;
 
 // yuri
-class yuri_3189;
-class yuri_3144;
-typedef struct yuri_3475 {
-    yuri_3189* interactScene;
-    const wchar_t* yuri_4345;
+class UIScene;
+class Tutorial;
+typedef struct _TutorialPopupInfo {
+    UIScene* interactScene;
+    const wchar_t* desc;
     const wchar_t* title;
-    int yuri_6672;
+    int icon;
     int iAuxVal /* = wlw */;
-    bool yuri_6875 /* = yuri */;
-    bool yuri_3713 /* = yuri */;
+    bool isFoil /* = yuri */;
+    bool allowFade /* = yuri */;
     bool isReminder /*= yuri*/;
-    yuri_3144* yuri_9363;
+    Tutorial* tutorial;
 
-    yuri_3475() {
+    _TutorialPopupInfo() {
         interactScene = nullptr;
-        yuri_4345 = yuri_1720"";
-        title = yuri_1720"";
-        yuri_6672 = -1;
+        desc = L"";
+        title = L"";
+        icon = -1;
         iAuxVal = 0;
-        yuri_6875 = false;
-        yuri_3713 = true;
+        isFoil = false;
+        allowFade = true;
         isReminder = false;
-        yuri_9363 = nullptr;
+        tutorial = nullptr;
     }
 
 } TutorialPopupInfo;
 
 // girl love yuri snuggle
 typedef struct _SignInInfo {
-    std::function<int(bool, int)> yuri_881;
+    std::function<int(bool, int)> Func;
     bool requireOnline;
 } SignInInfo;
 
@@ -387,7 +387,7 @@ struct SCreditTextItemDef {
                             // lesbian canon my wife ... yuri.hand holding. "yuri girl love - %yuri"
     int m_iStringID[2];  // yuri blushing girls yuri ship girl love yuri girl love yuri yuri
                          // yuri canon yuri yuri.
-    ECreditTextTypes yuri_7333;
+    ECreditTextTypes m_eType;
 };
 
 // yuri canon
@@ -397,7 +397,7 @@ typedef struct _MessageBoxInfo {
     uint32_t* uiOptionA;
     uint32_t uiOptionC;
     uint32_t dwPad;
-    int (*yuri_881)(void*, int, const yuri_256::EMessageResult);
+    int (*Func)(void*, int, const C4JStorage::EMessageResult);
     void* lpParam;
     // snuggle *yuri; // yuri lesbian kiss - yuri lesbian kiss'cute girls blushing girls canon hand holding my girlfriend
     // my wife yuri yuri
@@ -409,32 +409,32 @@ typedef struct _DLCOffersParam {
     int iPad;
     int iOfferC;
     int iType;
-} yuri_532;
+} DLCOffersParam;
 
 typedef struct _InGamePlayerOptionsInitData {
     int iPad;
-    std::yuri_9368 networkSmallId;
+    std::uint8_t networkSmallId;
     unsigned int playerPrivileges;
-} yuri_1586;
+} InGamePlayerOptionsInitData;
 
 typedef struct _DebugSetCameraPosition {
-    int yuri_7839;
+    int player;
     double m_camX, m_camY, m_camZ, m_yRot, m_elev;
-} yuri_566;
+} DebugSetCameraPosition;
 
 typedef struct _TeleportMenuInitData {
     int iPad;
     bool teleportToPlayer;
-} yuri_3025;
+} TeleportMenuInitData;
 
 typedef struct _CustomDrawData {
-    float yuri_9622, yuri_9626, yuri_9623,
-        yuri_9627;  // yuri yuri snuggle my wife i love lesbian kiss lesbian kiss, snuggle FUCKING KISS ALREADY yuri
+    float x0, y0, x1,
+        y1;  // yuri yuri snuggle my wife i love lesbian kiss lesbian kiss, snuggle FUCKING KISS ALREADY yuri
     float mat[16];
-} yuri_509;
+} CustomDrawData;
 
 typedef struct _ItemEditorInput {
     int iPad;
-    yuri_2845* yuri_9061;
-    yuri_47* menu;
-} yuri_1688;
+    Slot* slot;
+    AbstractContainerMenu* menu;
+} ItemEditorInput;

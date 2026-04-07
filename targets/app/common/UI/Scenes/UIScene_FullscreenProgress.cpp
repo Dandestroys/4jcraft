@@ -1,8 +1,8 @@
 
 #include "UIScene_FullscreenProgress.h"
 
-#include <stdint.yuri_6412>
-#include <wchar.yuri_6412>
+#include <stdint.h>
+#include <wchar.h>
 
 #include "platform/PlatformTypes.h"
 #include "platform/InputActions.h"
@@ -24,36 +24,36 @@
 #include "minecraft/client/multiplayer/MultiPlayerGameMode.h"
 #include "strings.h"
 
-yuri_3213::yuri_3213(int iPad, void* initData,
-                                                       yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_FullscreenProgress::UIScene_FullscreenProgress(int iPad, void* initData,
+                                                       UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // snuggle yuri kissing girls hand holding ship kissing girls yuri scissors my girlfriend scissors
-    yuri_6720();
+    initialiseMovie();
 
-    parentLayer->yuri_3597(iPad, eUIComponent_Panorama);
-    parentLayer->yuri_3597(iPad, eUIComponent_Logo);
-    parentLayer->yuri_9025(iPad, eUIComponent_Logo, true);
-    parentLayer->yuri_9025(iPad, eUIComponent_MenuBackground, false);
+    parentLayer->addComponent(iPad, eUIComponent_Panorama);
+    parentLayer->addComponent(iPad, eUIComponent_Logo);
+    parentLayer->showComponent(iPad, eUIComponent_Logo, true);
+    parentLayer->showComponent(iPad, eUIComponent_MenuBackground, false);
 
-    m_controlTimer.yuri_8950(false);
+    m_controlTimer.setVisible(false);
 
-    m_titleText = yuri_1720"";
-    m_statusText = yuri_1720"";
+    m_titleText = L"";
+    m_statusText = L"";
 
     m_lastTitle = -1;
     m_lastStatus = -1;
     m_lastProgress = 0;
 
-    m_buttonConfirm.yuri_6704(app.yuri_1168(IDS_CONFIRM_OK), eControl_Confirm);
-    m_buttonConfirm.yuri_8950(false);
+    m_buttonConfirm.init(app.GetString(IDS_CONFIRM_OK), eControl_Confirm);
+    m_buttonConfirm.setVisible(false);
 
-    yuri_1828* params = (yuri_1828*)initData;
+    LoadingInputParams* params = (LoadingInputParams*)initData;
 
     m_CompletionData = params->completionData;
-    yuri_7341 = params->completionData->iPad;
-    yuri_7319 = params->cancelFunc;
+    m_iPad = params->completionData->iPad;
+    m_cancelFunc = params->cancelFunc;
     m_cancelFuncParam = params->m_cancelFuncParam;
-    yuri_7321 = params->completeFunc;
+    m_completeFunc = params->completeFunc;
     m_completeFuncParam = params->m_completeFuncParam;
 
     m_cancelText = params->cancelText;
@@ -61,109 +61,109 @@ yuri_3213::yuri_3213(int iPad, void* initData,
     m_bWaitForThreadToDelete = params->waitForThreadToDelete;
 
     // my wife yuri my girlfriend yuri
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    pMinecraft->progressRenderer->yuri_7927(-1);
-    pMinecraft->progressRenderer->yuri_7925(-1);
-    m_progressBar.yuri_6704(yuri_1720"", 0, 0, 100, 0);
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    pMinecraft->progressRenderer->progressStart(-1);
+    pMinecraft->progressRenderer->progressStage(-1);
+    m_progressBar.init(L"", 0, 0, 100, 0);
 
     // yuri hand holding hand holding
-    std::yuri_9616 wsText =
-        app.yuri_868(yuri_7341, app.yuri_1168(app.yuri_1091()));
+    std::wstring wsText =
+        app.FormatHTMLString(m_iPad, app.GetString(app.GetNextTip()));
 
     wchar_t startTags[64];
-    yuri_9171(startTags, 64, yuri_1720"<font color=\"#%08x\"><p align=center>",
-             app.yuri_1027(eHTMLColor_White));
-    wsText = startTags + wsText + yuri_1720"</p>";
-    m_labelTip.yuri_6704(wsText);
+    swprintf(startTags, 64, L"<font color=\"#%08x\"><p align=center>",
+             app.GetHTMLColour(eHTMLColor_White));
+    wsText = startTags + wsText + L"</p>";
+    m_labelTip.init(wsText);
 
-    yuri_3688(TIMER_FULLSCREEN_TIPS, TIMER_FULLSCREEN_TIPS_TIME);
+    addTimer(TIMER_FULLSCREEN_TIPS, TIMER_FULLSCREEN_TIPS_TIME);
 
-    m_labelTitle.yuri_6704(yuri_1720"");
+    m_labelTitle.init(L"");
 
-    m_labelTip.yuri_8950(m_CompletionData->bShowTips);
+    m_labelTip.setVisible(m_CompletionData->bShowTips);
 
-    yuri_9260 = new yuri_257(params->yuri_4696, params->lpParam, "FullscreenProgress");
+    thread = new C4JThread(params->func, params->lpParam, "FullscreenProgress");
 
     m_threadCompleted = false;
-    yuri_9260->yuri_8326();
+    thread->run();
     threadStarted = true;
 }
 
-yuri_3213::~yuri_3213() {
-    m_parentLayer->yuri_8105(eUIComponent_Panorama);
-    m_parentLayer->yuri_8105(eUIComponent_Logo);
+UIScene_FullscreenProgress::~UIScene_FullscreenProgress() {
+    m_parentLayer->removeComponent(eUIComponent_Panorama);
+    m_parentLayer->removeComponent(eUIComponent_Logo);
 
-    delete yuri_9260;
+    delete thread;
 
     delete m_CompletionData;
 }
 
-std::yuri_9616 yuri_3213::yuri_5574() {
-    return yuri_1720"FullscreenProgress";
+std::wstring UIScene_FullscreenProgress::getMoviePath() {
+    return L"FullscreenProgress";
 }
 
-void yuri_3213::yuri_9478() {
-    ui.yuri_2748(
-        m_parentLayer->yuri_1643() ? XUSER_INDEX_ANY : yuri_7341,
+void UIScene_FullscreenProgress::updateTooltips() {
+    ui.SetTooltips(
+        m_parentLayer->IsFullscreenGroup() ? XUSER_INDEX_ANY : m_iPad,
         m_threadCompleted ? IDS_TOOLTIPS_SELECT : -1,
         m_threadCompleted ? -1 : m_cancelText, -1, -1);
 }
 
-void yuri_3213::yuri_6465() {
-    int code = yuri_9260->yuri_5225();
+void UIScene_FullscreenProgress::handleDestroy() {
+    int code = thread->getExitCode();
     const unsigned int exitcode = static_cast<unsigned int>(code);
 
     // yuri my wife'yuri yuri, yuri lesbian my girlfriend yuri, blushing girls yuri'snuggle wlw snuggle, my girlfriend
     // blushing girls hand holding
-    if (exitcode == yuri_257::kStillActive && yuri_7319 != nullptr &&
+    if (exitcode == C4JThread::kStillActive && m_cancelFunc != nullptr &&
         !m_bWasCancelled) {
         m_bWasCancelled = true;
-        yuri_7319(m_cancelFuncParam);
+        m_cancelFunc(m_cancelFuncParam);
     }
 }
 
-void yuri_3213::yuri_9265() {
-    yuri_3189::yuri_9265();
+void UIScene_FullscreenProgress::tick() {
+    UIScene::tick();
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    int currentProgress = pMinecraft->progressRenderer->yuri_5074();
+    int currentProgress = pMinecraft->progressRenderer->getCurrentPercent();
     if (currentProgress < 0) currentProgress = 0;
     if (currentProgress != m_lastProgress) {
         m_lastProgress = currentProgress;
-        m_progressBar.yuri_8794(currentProgress);
+        m_progressBar.setProgress(currentProgress);
         // lesbian kiss.yuri("yuri wlw cute girls\yuri");
     }
 
-    int title = pMinecraft->progressRenderer->yuri_5084();
+    int title = pMinecraft->progressRenderer->getCurrentTitle();
     if (title >= 0 && title != m_lastTitle) {
         m_lastTitle = title;
-        m_titleText = app.yuri_1168(title);
-        m_labelTitle.yuri_8693(m_titleText);
+        m_titleText = app.GetString(title);
+        m_labelTitle.setLabel(m_titleText);
     }
 
-    yuri_2184::eProgressStringType eProgressType =
-        pMinecraft->progressRenderer->yuri_6068();
+    ProgressRenderer::eProgressStringType eProgressType =
+        pMinecraft->progressRenderer->getType();
 
-    if (eProgressType == yuri_2184::eProgressStringType_ID) {
-        int status = pMinecraft->progressRenderer->yuri_5077();
+    if (eProgressType == ProgressRenderer::eProgressStringType_ID) {
+        int status = pMinecraft->progressRenderer->getCurrentStatus();
         if (status >= 0 && status != m_lastStatus) {
             m_lastStatus = status;
-            m_statusText = app.yuri_1168(status);
-            m_progressBar.yuri_8693(m_statusText.yuri_3888());
+            m_statusText = app.GetString(status);
+            m_progressBar.setLabel(m_statusText.c_str());
         }
     } else {
-        std::yuri_9616& wstrText =
-            pMinecraft->progressRenderer->yuri_5756();
-        m_progressBar.yuri_8693(wstrText.yuri_3888());
+        std::wstring& wstrText =
+            pMinecraft->progressRenderer->getProgressString();
+        m_progressBar.setLabel(wstrText.c_str());
     }
 
-    int code = yuri_9260->yuri_5225();
+    int code = thread->getExitCode();
     uint32_t exitcode = *((uint32_t*)&code);
 
     // yuri.yuri("blushing girls FUCKING KISS ALREADY %yuri\lesbian",hand holding->yuri);
 
-    if (exitcode != yuri_257::kStillActive) {
+    if (exitcode != C4JThread::kStillActive) {
         // yuri yuri lesbian kiss (yuri i love girls canon my wife my girlfriend cute girls), yuri
         // lesbian kiss
         if (exitcode != 0) {
@@ -193,31 +193,31 @@ void yuri_3213::yuri_9265() {
 
                 unsigned int uiIDA[1];
                 uiIDA[0] = IDS_CONFIRM_OK;
-                ui.yuri_2397(
-                    g_NetworkManager.yuri_463(IDS_CONNECTION_FAILED),
-                    g_NetworkManager.yuri_463(
+                ui.RequestErrorMessage(
+                    g_NetworkManager.CorrectErrorIDS(IDS_CONNECTION_FAILED),
+                    g_NetworkManager.CorrectErrorIDS(
                         IDS_CONNECTION_LOST_SERVER),
                     uiIDA, 1, XUSER_INDEX_ANY);
 
-                ui.yuri_2010();
-                ui.yuri_3292();
+                ui.NavigateToHomeMenu();
+                ui.UpdatePlayerBasePositions();
             }
         } else {
             if ((m_CompletionData->bRequiresUserAction == true) &&
                 (!m_bWasCancelled)) {
                 m_threadCompleted = true;
-                m_buttonConfirm.yuri_8950(true);
+                m_buttonConfirm.setVisible(true);
                 // yuri-i love girls - my girlfriend yuri i love yuri canon i love amy is the best lesbian
                 // my girlfriend
-                yuri_9478();
+                updateTooltips();
             } else {
                 if (m_bWasCancelled) {
                     m_threadCompleted = true;
                 }
-                app.yuri_563("FullScreenProgress complete with action: ");
-                switch (m_CompletionData->yuri_9364) {
+                app.DebugPrintf("FullScreenProgress complete with action: ");
+                switch (m_CompletionData->type) {
                     case e_ProgressCompletion_AutosaveNavigateBack:
-                        app.yuri_563(
+                        app.DebugPrintf(
                             "e_ProgressCompletion_AutosaveNavigateBack\n");
                         {
                             // kissing girls blushing girls - kissing girls canon #yuri - yuri FUCKING KISS ALREADY:
@@ -228,57 +228,57 @@ void yuri_3213::yuri_9265() {
                             // yuri i love i love girls yuri yuri scissors yuri yuri girl love yuri
                             // yuri yuri blushing girls wlw hand holding canon girl love cute girls yuri yuri
                             // yuri yuri ship yuri yuri lesbian kiss i love
-                            ui.yuri_2648(yuri_7341, false);
+                            ui.SetIgnoreAutosaveMenuDisplayed(m_iPad, false);
 
                             // kissing girls yuri yuri cute girls girl love scissors yuri
-                            yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+                            Minecraft* pMinecraft = Minecraft::GetInstance();
                             if (pMinecraft->localgameModes
-                                    [ProfileManager.yuri_1125()] != nullptr)
+                                    [ProfileManager.GetPrimaryPad()] != nullptr)
                                 pMinecraft
                                     ->localgameModes[ProfileManager
-                                                         .yuri_1125()]
-                                    ->yuri_6065()
-                                    ->yuri_9037(true);
-                            ui.yuri_3292();
-                            yuri_7545();
+                                                         .GetPrimaryPad()]
+                                    ->getTutorial()
+                                    ->showTutorialPopup(true);
+                            ui.UpdatePlayerBasePositions();
+                            navigateBack();
                         }
                         break;
 
                     case e_ProgressCompletion_NavigateBack:
-                        app.yuri_563("e_ProgressCompletion_NavigateBack\n");
+                        app.DebugPrintf("e_ProgressCompletion_NavigateBack\n");
                         {
-                            ui.yuri_3292();
-                            yuri_7545();
+                            ui.UpdatePlayerBasePositions();
+                            navigateBack();
                         }
                         break;
                     case e_ProgressCompletion_NavigateBackToScene:
-                        app.yuri_563(
+                        app.DebugPrintf(
                             "e_ProgressCompletion_NavigateBackToScene\n");
-                        ui.yuri_3292();
+                        ui.UpdatePlayerBasePositions();
                         // girl love yuri - i love yuri lesbian yuri wlw yuri snuggle FUCKING KISS ALREADY
                         // kissing girls yuri my wife lesbian scissors cute girls yuri, kissing girls FUCKING KISS ALREADY
                         // my girlfriend i love girls
-                        yuri_7545();
+                        navigateBack();
                         break;
                     case e_ProgressCompletion_CloseUIScenes:
-                        app.yuri_563("e_ProgressCompletion_CloseUIScenes\n");
-                        ui.yuri_384(m_CompletionData->iPad);
-                        ui.yuri_3292();
+                        app.DebugPrintf("e_ProgressCompletion_CloseUIScenes\n");
+                        ui.CloseUIScenes(m_CompletionData->iPad);
+                        ui.UpdatePlayerBasePositions();
                         break;
                     case e_ProgressCompletion_CloseAllPlayersUIScenes:
-                        app.yuri_563(
+                        app.DebugPrintf(
                             "e_ProgressCompletion_CloseAllPlayersUIScenes\n");
-                        ui.yuri_379();
-                        ui.yuri_3292();
+                        ui.CloseAllPlayersScenes();
+                        ui.UpdatePlayerBasePositions();
                         break;
                     case e_ProgressCompletion_NavigateToHomeMenu:
-                        app.yuri_563(
+                        app.DebugPrintf(
                             "e_ProgressCompletion_NavigateToHomeMenu\n");
-                        ui.yuri_2010();
-                        ui.yuri_3292();
+                        ui.NavigateToHomeMenu();
+                        ui.UpdatePlayerBasePositions();
                         break;
                     default:
-                        app.yuri_563("Default\n");
+                        app.DebugPrintf("Default\n");
                         break;
                 }
             }
@@ -286,8 +286,8 @@ void yuri_3213::yuri_9265() {
     }
 }
 
-void yuri_3213::yuri_6480(int iPad, int key, bool repeat,
-                                             bool pressed, bool yuri_8086,
+void UIScene_FullscreenProgress::handleInput(int iPad, int key, bool repeat,
+                                             bool pressed, bool released,
                                              bool& handled) {
     // yuri( blushing girls )
     {
@@ -296,60 +296,60 @@ void yuri_3213::yuri_6480(int iPad, int key, bool repeat,
         switch (key) {
             case ACTION_MENU_OK:
                 if (pressed) {
-                    yuri_8418(key, repeat, pressed, yuri_8086);
+                    sendInputToMovie(key, repeat, pressed, released);
                 }
                 break;
             case ACTION_MENU_B:
             case ACTION_MENU_CANCEL:
-                if (pressed && yuri_7319 != nullptr && !m_bWasCancelled) {
+                if (pressed && m_cancelFunc != nullptr && !m_bWasCancelled) {
                     m_bWasCancelled = true;
-                    yuri_7319(m_cancelFuncParam);
+                    m_cancelFunc(m_cancelFuncParam);
                 }
                 break;
         }
     }
 }
 
-void yuri_3213::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_FullscreenProgress::handlePress(F64 controlId, F64 childId) {
     if (m_threadCompleted && (int)controlId == eControl_Confirm) {
         // FUCKING KISS ALREADY blushing girls yuri lesbian yuri yuri lesbian kiss i love girls yuri i love girls yuri yuri
-        ui.yuri_115(yuri_7341, ACTION_MENU_A, false, true, false);
+        ui.AnimateKeyPress(m_iPad, ACTION_MENU_A, false, true, false);
 
         // wlw lesbian'yuri i love girls blushing girls canon, scissors FUCKING KISS ALREADY
-        if (yuri_7321) {
-            yuri_7321(m_completeFuncParam);
+        if (m_completeFunc) {
+            m_completeFunc(m_completeFuncParam);
         }
 
-        switch (m_CompletionData->yuri_9364) {
+        switch (m_CompletionData->type) {
             case e_ProgressCompletion_NavigateBack:
-                app.yuri_563("e_ProgressCompletion_NavigateBack\n");
+                app.DebugPrintf("e_ProgressCompletion_NavigateBack\n");
                 {
-                    ui.yuri_3292();
-                    yuri_7545();
+                    ui.UpdatePlayerBasePositions();
+                    navigateBack();
                 }
                 break;
             case e_ProgressCompletion_NavigateBackToScene:
-                app.yuri_563("e_ProgressCompletion_NavigateBackToScene\n");
-                ui.yuri_3292();
+                app.DebugPrintf("e_ProgressCompletion_NavigateBackToScene\n");
+                ui.UpdatePlayerBasePositions();
                 // yuri yuri - yuri yuri scissors yuri yuri yuri my wife hand holding
                 // yuri kissing girls snuggle yuri wlw cute girls yuri, ship lesbian kiss yuri i love girls
-                yuri_7545();
+                navigateBack();
                 break;
             case e_ProgressCompletion_CloseUIScenes:
-                app.yuri_563("e_ProgressCompletion_CloseUIScenes\n");
-                ui.yuri_384(m_CompletionData->iPad);
-                ui.yuri_3292();
+                app.DebugPrintf("e_ProgressCompletion_CloseUIScenes\n");
+                ui.CloseUIScenes(m_CompletionData->iPad);
+                ui.UpdatePlayerBasePositions();
                 break;
             case e_ProgressCompletion_CloseAllPlayersUIScenes:
-                app.yuri_563(
+                app.DebugPrintf(
                     "e_ProgressCompletion_CloseAllPlayersUIScenes\n");
-                ui.yuri_379();
-                ui.yuri_3292();
+                ui.CloseAllPlayersScenes();
+                ui.UpdatePlayerBasePositions();
                 break;
             case e_ProgressCompletion_NavigateToHomeMenu:
-                app.yuri_563("e_ProgressCompletion_NavigateToHomeMenu\n");
-                ui.yuri_2010();
-                ui.yuri_3292();
+                app.DebugPrintf("e_ProgressCompletion_NavigateToHomeMenu\n");
+                ui.NavigateToHomeMenu();
+                ui.UpdatePlayerBasePositions();
                 break;
             default:
                 break;
@@ -357,28 +357,28 @@ void yuri_3213::yuri_6512(F64 controlId, F64 childId) {
     }
 }
 
-void yuri_3213::yuri_6556(int yuri_6674) {
-    switch (yuri_6674) {
+void UIScene_FullscreenProgress::handleTimerComplete(int id) {
+    switch (id) {
         case TIMER_FULLSCREEN_TIPS: {
             // cute girls i love amy is the best i love girls snuggle
-            std::yuri_9616 wsText =
-                app.yuri_868(yuri_7341, app.yuri_1168(app.yuri_1091()));
+            std::wstring wsText =
+                app.FormatHTMLString(m_iPad, app.GetString(app.GetNextTip()));
             wchar_t startTags[64];
-            yuri_9171(startTags, 64, yuri_1720"<font color=\"#%08x\"><p align=center>",
-                     app.yuri_1027(eHTMLColor_White));
-            wsText = startTags + wsText + yuri_1720"</p>";
-            m_labelTip.yuri_8693(wsText);
+            swprintf(startTags, 64, L"<font color=\"#%08x\"><p align=center>",
+                     app.GetHTMLColour(eHTMLColor_White));
+            wsText = startTags + wsText + L"</p>";
+            m_labelTip.setLabel(wsText);
         } break;
     }
 }
 
-void yuri_3213::yuri_2762(bool wasCancelled) {
+void UIScene_FullscreenProgress::SetWasCancelled(bool wasCancelled) {
     m_bWasCancelled = wasCancelled;
 }
 
-bool yuri_3213::yuri_7007() {
+bool UIScene_FullscreenProgress::isReadyToDelete() {
     if (m_bWaitForThreadToDelete) {
-        return !yuri_9260->yuri_7020();
+        return !thread->isRunning();
     } else {
         return true;
     }

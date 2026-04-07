@@ -1,28 +1,28 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
-class yuri_2523;
+class Scoreboard;
 class ObjectiveCriteria;
 
-class yuri_2040 {
+class Objective {
 public:
     static const int MAX_NAME_LENGTH = 16;
     static const int MAX_DISPLAY_NAME_LENGTH = 32;
 
 private:
-    yuri_2523* scoreboard;
-    std::yuri_9616 yuri_7540;
+    Scoreboard* scoreboard;
+    std::wstring name;
     ObjectiveCriteria* criteria;
-    std::yuri_9616 displayName;
+    std::wstring displayName;
 
 public:
-    yuri_2040(yuri_2523* scoreboard, const std::yuri_9616& yuri_7540,
+    Objective(Scoreboard* scoreboard, const std::wstring& name,
               ObjectiveCriteria* criteria);
 
-    yuri_2523* yuri_5859();
-    std::yuri_9616 yuri_5578();
-    ObjectiveCriteria* yuri_5069();
-    std::yuri_9616 yuri_5170();
-    void yuri_8575(const std::yuri_9616& yuri_7540);
+    Scoreboard* getScoreboard();
+    std::wstring getName();
+    ObjectiveCriteria* getCriteria();
+    std::wstring getDisplayName();
+    void setDisplayName(const std::wstring& name);
 };

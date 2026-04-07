@@ -6,15 +6,15 @@
 #include "minecraft/world/item/Item.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-yuri_222::yuri_222(int yuri_6674, int yuri_7602)
-    : yuri_862(yuri_6674, yuri_7602, false) {
-    yuri_8725(1);
+BowlFoodItem::BowlFoodItem(int id, int nutrition)
+    : FoodItem(id, nutrition, false) {
+    setMaxStackSize(1);
 }
 
-std::shared_ptr<yuri_1693> yuri_222::yuri_9497(
-    std::shared_ptr<yuri_1693> instance, yuri_1758* yuri_7194,
-    std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_862::yuri_9497(instance, yuri_7194, yuri_7839);
+std::shared_ptr<ItemInstance> BowlFoodItem::useTimeDepleted(
+    std::shared_ptr<ItemInstance> instance, Level* level,
+    std::shared_ptr<Player> player) {
+    FoodItem::useTimeDepleted(instance, level, player);
 
-    return std::make_shared<yuri_1693>(yuri_1687::bowl);
+    return std::make_shared<ItemInstance>(Item::bowl);
 }

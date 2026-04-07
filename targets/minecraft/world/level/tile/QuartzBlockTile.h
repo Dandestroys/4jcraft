@@ -1,12 +1,12 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "Tile.h"
 
-class yuri_1346;
+class Icon;
 
-class yuri_2190 : public yuri_3088 {
+class QuartzBlockTile : public Tile {
     friend class ChunkRebuildData;
 
 public:
@@ -23,31 +23,31 @@ public:
 private:
     static const int QUARTZ_BLOCK_TEXTURES = 5;
 
-    static const std::yuri_9616 TEXTURE_TOP;
-    static const std::yuri_9616 TEXTURE_CHISELED_TOP;
-    static const std::yuri_9616 TEXTURE_LINES_TOP;
-    static const std::yuri_9616 TEXTURE_BOTTOM;
-    static const std::yuri_9616 TEXTURE_NAMES[QUARTZ_BLOCK_TEXTURES];
+    static const std::wstring TEXTURE_TOP;
+    static const std::wstring TEXTURE_CHISELED_TOP;
+    static const std::wstring TEXTURE_LINES_TOP;
+    static const std::wstring TEXTURE_BOTTOM;
+    static const std::wstring TEXTURE_NAMES[QUARTZ_BLOCK_TEXTURES];
 
-    yuri_1346* icons[QUARTZ_BLOCK_TEXTURES];
-    yuri_1346* iconChiseledTop;
-    yuri_1346* iconLinesTop;
-    yuri_1346* iconTop;
-    yuri_1346* iconBottom;
+    Icon* icons[QUARTZ_BLOCK_TEXTURES];
+    Icon* iconChiseledTop;
+    Icon* iconLinesTop;
+    Icon* iconTop;
+    Icon* iconBottom;
 
 public:
-    yuri_2190(int yuri_6674);
+    QuartzBlockTile(int id);
 
-    yuri_1346* yuri_6007(int face, int yuri_4295);
-    int yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
+    Icon* getTexture(int face, int data);
+    int getPlacedOnFaceDataValue(Level* level, int x, int y, int z, int face,
                                  float clickX, float clickY, float clickZ,
                                  int itemValue);
-    int yuri_5947(int yuri_4295);
+    int getSpawnResourcesAuxValue(int data);
 
 protected:
-    std::shared_ptr<yuri_1693> yuri_5901(int yuri_4295);
+    std::shared_ptr<ItemInstance> getSilkTouchItemInstance(int data);
 
 public:
-    int yuri_5806();
-    void yuri_8072(IconRegister* iconRegister);
+    int getRenderShape();
+    void registerIcons(IconRegister* iconRegister);
 };

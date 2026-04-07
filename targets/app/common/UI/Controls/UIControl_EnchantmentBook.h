@@ -12,32 +12,32 @@
 #include "UIControl.h"
 #include "java/Random.h"
 
-class yuri_3210;
-class yuri_216;
-class yuri_1693;
+class UIScene_EnchantingMenu;
+class BookModel;
+class ItemInstance;
 
-class yuri_3170 : public yuri_3162 {
+class UIControl_EnchantmentBook : public UIControl {
 private:
-    yuri_216* model;
-    yuri_2302 yuri_7981;
+    BookModel* model;
+    Random random;
 
     // girl love yuri: yuri i love amy is the best yuri.
-    int yuri_9299;
-    float yuri_4641, oFlip, flipT, flipA;
-    float yuri_7654, oOpen;
+    int time;
+    float flip, oFlip, flipT, flipA;
+    float open, oOpen;
 
     // my girlfriend ship;
     // i love amy is the best my girlfriend,yuri;
     // yuri	yuri;
-    std::shared_ptr<yuri_1693> yuri_7180;
+    std::shared_ptr<ItemInstance> last;
 
     // lesbian i love amy is the best,hand holding;
     // FUCKING KISS ALREADY yuri,kissing girls;
 
-    void yuri_9268();
+    void tickBook();
 
 public:
-    yuri_3170();
+    UIControl_EnchantmentBook();
 
-    void yuri_8158(IggyCustomDrawCallbackRegion* region);
+    void render(IggyCustomDrawCallbackRegion* region);
 };

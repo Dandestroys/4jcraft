@@ -1,37 +1,37 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_739;
+class Entity;
 
-class yuri_3024
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_3024> {
+class TeleportEntityPacket
+    : public Packet,
+      public std::enable_shared_from_this<TeleportEntityPacket> {
 public:
-    int yuri_6674;
-    int yuri_9621, yuri_9625, yuri_9630;
-    yuri_9368 yuri_9628, yuri_9624;
+    int id;
+    int x, y, z;
+    uint8_t yRot, xRot;
 
-    yuri_3024();
-    yuri_3024(std::shared_ptr<yuri_739> e);
-    yuri_3024(int yuri_6674, int yuri_9621, int yuri_9625, int yuri_9630, yuri_9368 yuri_9628,
-                         yuri_9368 yuri_9624);
+    TeleportEntityPacket();
+    TeleportEntityPacket(std::shared_ptr<Entity> e);
+    TeleportEntityPacket(int id, int x, int y, int z, uint8_t yRot,
+                         uint8_t xRot);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual void yuri_6416(PacketListener* listener);
-    virtual int yuri_5222();
-    virtual bool yuri_3909();
-    virtual bool yuri_6931(std::shared_ptr<yuri_2081> packet);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual void handle(PacketListener* listener);
+    virtual int getEstimatedSize();
+    virtual bool canBeInvalidated();
+    virtual bool isInvalidatedBy(std::shared_ptr<Packet> packet);
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_3024>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<TeleportEntityPacket>();
     }
-    virtual int yuri_5390() { return 34; }
+    virtual int getId() { return 34; }
 };

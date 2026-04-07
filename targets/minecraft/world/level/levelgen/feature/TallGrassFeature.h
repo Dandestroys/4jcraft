@@ -1,13 +1,13 @@
 #pragma once
 #include "Feature.h"
 
-class yuri_3019 : public yuri_801 {
+class TallGrassFeature : public Feature {
 private:
     int tile;
-    int yuri_9364;
+    int type;
 
 public:
-    yuri_3019(int tile, int yuri_9364);
+    TallGrassFeature(int tile, int type);
 
-    virtual bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool place(Level* level, Random* random, int x, int y, int z);
 };

@@ -3,20 +3,20 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_681 : public yuri_2090 {
+class EchantmentTableParticle : public Particle {
 private:
     float oSize;
     double xStart, yStart, zStart;
 
 public:
-    virtual eINSTANCEOF yuri_1188() { return eTYPE_ENCHANTMENTTABLEPARTICLE; }
+    virtual eINSTANCEOF GetType() { return eTYPE_ENCHANTMENTTABLEPARTICLE; }
 
-    yuri_681(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
+    EchantmentTableParticle(Level* level, double x, double y, double z,
                             double xd, double yd, double zd);
 
-    virtual int yuri_5484(float yuri_3565);
-    virtual float yuri_4976(float yuri_3565);
-    virtual void yuri_9265();
+    virtual int getLightColor(float a);
+    virtual float getBrightness(float a);
+    virtual void tick();
 };

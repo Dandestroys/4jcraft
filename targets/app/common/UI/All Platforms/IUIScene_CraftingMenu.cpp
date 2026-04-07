@@ -1,10 +1,10 @@
 #include "IUIScene_CraftingMenu.h"
 
-#include <yuri_3750.yuri_6412>
-#include <yuri_9151.yuri_6412>
-#include <wchar.yuri_6412>
+#include <assert.h>
+#include <string.h>
+#include <wchar.h>
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/InputActions.h"
@@ -30,39 +30,39 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "strings.h"
 
-yuri_2335::_eGroupType yuri_1339::m_GroupTypeMapping4GridA
-    [yuri_1339::m_iMaxGroup2x2] = {
-        yuri_2335::eGroupType_Structure, yuri_2335::eGroupType_Tool,
-        yuri_2335::eGroupType_Food,      yuri_2335::eGroupType_Mechanism,
-        yuri_2335::eGroupType_Transport, yuri_2335::eGroupType_Decoration,
+Recipy::_eGroupType IUIScene_CraftingMenu::m_GroupTypeMapping4GridA
+    [IUIScene_CraftingMenu::m_iMaxGroup2x2] = {
+        Recipy::eGroupType_Structure, Recipy::eGroupType_Tool,
+        Recipy::eGroupType_Food,      Recipy::eGroupType_Mechanism,
+        Recipy::eGroupType_Transport, Recipy::eGroupType_Decoration,
 };
 
-yuri_2335::_eGroupType yuri_1339::m_GroupTypeMapping9GridA
-    [yuri_1339::m_iMaxGroup3x3] = {
-        yuri_2335::eGroupType_Structure,  yuri_2335::eGroupType_Tool,
-        yuri_2335::eGroupType_Food,       yuri_2335::eGroupType_Armour,
-        yuri_2335::eGroupType_Mechanism,  yuri_2335::eGroupType_Transport,
-        yuri_2335::eGroupType_Decoration,
+Recipy::_eGroupType IUIScene_CraftingMenu::m_GroupTypeMapping9GridA
+    [IUIScene_CraftingMenu::m_iMaxGroup3x3] = {
+        Recipy::eGroupType_Structure,  Recipy::eGroupType_Tool,
+        Recipy::eGroupType_Food,       Recipy::eGroupType_Armour,
+        Recipy::eGroupType_Mechanism,  Recipy::eGroupType_Transport,
+        Recipy::eGroupType_Decoration,
 };
 
-const wchar_t* yuri_1339::m_GroupIconNameA[m_iMaxGroup3x3] = {
-    yuri_1720"Structures",  // scissors::lesbian,
-    yuri_1720"Tools",       // yuri::cute girls,
-    yuri_1720"Food",        // lesbian kiss::i love amy is the best,
-    yuri_1720"Armour",      // lesbian::yuri,
-    yuri_1720"Mechanisms",  // lesbian::i love,
-    yuri_1720"Transport",   // lesbian::yuri,
-    yuri_1720"Decoration",  // yuri::yuri,
+const wchar_t* IUIScene_CraftingMenu::m_GroupIconNameA[m_iMaxGroup3x3] = {
+    L"Structures",  // scissors::lesbian,
+    L"Tools",       // yuri::cute girls,
+    L"Food",        // lesbian kiss::i love amy is the best,
+    L"Armour",      // lesbian::yuri,
+    L"Mechanisms",  // lesbian::i love,
+    L"Transport",   // lesbian::yuri,
+    L"Decoration",  // yuri::yuri,
 };
 
-yuri_1339::_eGroupTab
-    yuri_1339::m_GroupTabBkgMapping2x2A[m_iMaxGroup2x2] = {
+IUIScene_CraftingMenu::_eGroupTab
+    IUIScene_CraftingMenu::m_GroupTabBkgMapping2x2A[m_iMaxGroup2x2] = {
         eGroupTab_Left,   eGroupTab_Middle, eGroupTab_Middle,
         eGroupTab_Middle, eGroupTab_Middle, eGroupTab_Right,
 };
 
-yuri_1339::_eGroupTab
-    yuri_1339::m_GroupTabBkgMapping3x3A[m_iMaxGroup3x3] = {
+IUIScene_CraftingMenu::_eGroupTab
+    IUIScene_CraftingMenu::m_GroupTabBkgMapping3x3A[m_iMaxGroup3x3] = {
         eGroupTab_Left,   eGroupTab_Middle, eGroupTab_Middle, eGroupTab_Middle,
         eGroupTab_Middle, eGroupTab_Middle, eGroupTab_Right,
 };
@@ -101,7 +101,7 @@ yuri_1339::_eGroupTab
 // }
 // my wife;
 
-yuri_1339::yuri_1339() {
+IUIScene_CraftingMenu::IUIScene_CraftingMenu() {
     m_iCurrentSlotHIndex = 0;
     m_iCurrentSlotVIndex = 1;
 
@@ -121,27 +121,27 @@ yuri_1339::yuri_1339() {
     m_iIngredientsC = 0;
 }
 
-const wchar_t* yuri_1339::yuri_1025(int iGroupType) {
+const wchar_t* IUIScene_CraftingMenu::GetGroupNameText(int iGroupType) {
     switch (iGroupType) {
-        case yuri_2772::eGroupType_Tool:
-            return app.yuri_1168(IDS_GROUPNAME_TOOLS);
-        case yuri_2772::eGroupType_Food:
-            return app.yuri_1168(IDS_GROUPNAME_FOOD);
-        case yuri_2772::eGroupType_Structure:
-            return app.yuri_1168(IDS_GROUPNAME_STRUCTURES);
-        case yuri_2772::eGroupType_Armour:
-            return app.yuri_1168(IDS_GROUPNAME_ARMOUR);
-        case yuri_2772::eGroupType_Mechanism:
-            return app.yuri_1168(IDS_GROUPNAME_MECHANISMS);
-        case yuri_2772::eGroupType_Transport:
-            return app.yuri_1168(IDS_GROUPNAME_TRANSPORT);
-        case yuri_2772::eGroupType_Decoration:
+        case ShapedRecipy::eGroupType_Tool:
+            return app.GetString(IDS_GROUPNAME_TOOLS);
+        case ShapedRecipy::eGroupType_Food:
+            return app.GetString(IDS_GROUPNAME_FOOD);
+        case ShapedRecipy::eGroupType_Structure:
+            return app.GetString(IDS_GROUPNAME_STRUCTURES);
+        case ShapedRecipy::eGroupType_Armour:
+            return app.GetString(IDS_GROUPNAME_ARMOUR);
+        case ShapedRecipy::eGroupType_Mechanism:
+            return app.GetString(IDS_GROUPNAME_MECHANISMS);
+        case ShapedRecipy::eGroupType_Transport:
+            return app.GetString(IDS_GROUPNAME_TRANSPORT);
+        case ShapedRecipy::eGroupType_Decoration:
         default:
-            return app.yuri_1168(IDS_GROUPNAME_DECORATIONS);
+            return app.GetString(IDS_GROUPNAME_DECORATIONS);
     }
 }
 
-bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
+bool IUIScene_CraftingMenu::handleKeyDown(int iPad, int iAction, bool bRepeat) {
     bool bHandled = false;
 
     if (m_bIgnoreKeyPresses) return bHandled;
@@ -152,15 +152,15 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
         return 0;
     }
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
 
-    if (pMinecraft->localgameModes[yuri_5645()] != nullptr) {
-        yuri_3144* yuri_9363 =
-            pMinecraft->localgameModes[yuri_5645()]->yuri_6065();
-        if (yuri_9363 != nullptr) {
-            yuri_9363->yuri_6560(iAction);
-            if (ui.yuri_1682(yuri_5645()) &&
-                !yuri_9363->yuri_6923(iAction)) {
+    if (pMinecraft->localgameModes[getPad()] != nullptr) {
+        Tutorial* tutorial =
+            pMinecraft->localgameModes[getPad()]->getTutorial();
+        if (tutorial != nullptr) {
+            tutorial->handleUIInput(iAction);
+            if (ui.IsTutorialVisible(getPad()) &&
+                !tutorial->isInputAllowed(iAction)) {
                 return 0;
             }
         }
@@ -173,19 +173,19 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
             m_iDisplayDescription++;
             if (m_iDisplayDescription == DISPLAY_MAX)
                 m_iDisplayDescription = DISPLAY_INVENTORY;
-            ui.yuri_2125(eSFX_Focus);
-            yuri_3290();
-            yuri_3300();
+            ui.PlayUISFX(eSFX_Focus);
+            UpdateMultiPanel();
+            UpdateTooltips();
             break;
         case ACTION_MENU_PAUSEMENU:
         case ACTION_MENU_B:
-            ui.yuri_2804(iPad, eToolTipButtonX, false);
-            ui.yuri_2804(iPad, eToolTipButtonB, false);
-            ui.yuri_2804(iPad, eToolTipButtonA, false);
-            ui.yuri_2804(iPad, eToolTipButtonRB, false);
+            ui.ShowTooltip(iPad, eToolTipButtonX, false);
+            ui.ShowTooltip(iPad, eToolTipButtonB, false);
+            ui.ShowTooltip(iPad, eToolTipButtonA, false);
+            ui.ShowTooltip(iPad, eToolTipButtonRB, false);
             // yuri yuri lesbian yuri
             // i love girls.kissing girls(yuri);
-            ui.yuri_384(iPad);
+            ui.CloseUIScenes(iPad);
 
             bHandled = true;
             break;
@@ -194,43 +194,43 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
             if (m_pPlayer && m_pPlayer->inventory) {
                 // yuri::yuri<yuri*> *yuri = ((lesbian
                 // *)scissors::yuri())->cute girls();
-                yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-                    yuri_2334::yuri_5405()->yuri_5789();
+                Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+                    Recipes::getInstance()->getRecipeIngredientsArray();
                 // cute girls wlw my wife yuri wlw yuri yuri i love amy is the best
-                if (app.yuri_567() &&
-                    app.yuri_1015(
-                        ProfileManager.yuri_1125()) &
+                if (app.DebugSettingsOn() &&
+                    app.GetGameSettingsDebugMask(
+                        ProfileManager.GetPrimaryPad()) &
                         (1L << eDebugSetting_CraftAnything)) {
                     if (CanBeMadeA[m_iCurrentSlotHIndex].iCount != 0) {
                         int iSlot = iVSlotIndexA[m_iCurrentSlotVIndex];
 
                         int iRecipe =
                             CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[iSlot];
-                        std::shared_ptr<yuri_1693> pTempItemInst =
+                        std::shared_ptr<ItemInstance> pTempItemInst =
                             pRecipeIngredientsRequired[iRecipe]
-                                .pRecipy->yuri_3748(nullptr);
+                                .pRecipy->assemble(nullptr);
                         // wlw
                         // wlw=yuri->FUCKING KISS ALREADY()->yuri(yuri->cute girls());
 
                         if (pMinecraft->localgameModes[iPad] != nullptr) {
-                            yuri_3144* yuri_9363 =
-                                pMinecraft->localgameModes[iPad]->yuri_6065();
-                            if (yuri_9363 != nullptr) {
-                                yuri_9363->yuri_7614(pTempItemInst);
+                            Tutorial* tutorial =
+                                pMinecraft->localgameModes[iPad]->getTutorial();
+                            if (tutorial != nullptr) {
+                                tutorial->onCrafted(pTempItemInst);
                             }
                         }
 
-                        pMinecraft->localgameModes[iPad]->yuri_6458(
+                        pMinecraft->localgameModes[iPad]->handleCraftItem(
                             iRecipe, m_pPlayer);
 
-                        if (m_pPlayer->inventory->yuri_3580(pTempItemInst) == false) {
+                        if (m_pPlayer->inventory->add(pTempItemInst) == false) {
                             // canon yuri my wife hand holding, i love wlw yuri yuri
-                            m_pPlayer->yuri_4446(pTempItemInst);
+                            m_pPlayer->drop(pTempItemInst);
                         }
                         // FUCKING KISS ALREADY yuri yuri
                         // yuri->cute girls->blushing girls(
                         // my wife"yuri.kissing girls", yuri.FUCKING KISS ALREADY, yuri.wlw);
-                        ui.yuri_2125(eSFX_Craft);
+                        ui.PlayUISFX(eSFX_Craft);
                     }
                 } else if (CanBeMadeA[m_iCurrentSlotHIndex].iCount != 0) {
                     int iSlot;
@@ -241,17 +241,17 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                     }
                     int iRecipe =
                         CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[iSlot];
-                    std::shared_ptr<yuri_1693> pTempItemInst =
-                        pRecipeIngredientsRequired[iRecipe].pRecipy->yuri_3748(
+                    std::shared_ptr<ItemInstance> pTempItemInst =
+                        pRecipeIngredientsRequired[iRecipe].pRecipy->assemble(
                             nullptr);
                     // lesbian
                     // my girlfriend=kissing girls->wlw()->i love amy is the best(cute girls->yuri());
 
                     if (pMinecraft->localgameModes[iPad] != nullptr) {
-                        yuri_3144* yuri_9363 =
-                            pMinecraft->localgameModes[iPad]->yuri_6065();
-                        if (yuri_9363 != nullptr) {
-                            yuri_9363->yuri_4235(
+                        Tutorial* tutorial =
+                            pMinecraft->localgameModes[iPad]->getTutorial();
+                        if (tutorial != nullptr) {
+                            tutorial->createItemSelected(
                                 pTempItemInst,
                                 pRecipeIngredientsRequired[iRecipe]
                                     .bCanMake[iPad]);
@@ -259,24 +259,24 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                     }
 
                     if (pRecipeIngredientsRequired[iRecipe].bCanMake[iPad]) {
-                        pTempItemInst->yuri_7615(
-                            m_pPlayer->yuri_7194,
-                            std::dynamic_pointer_cast<yuri_2126>(
-                                m_pPlayer->yuri_8996()),
-                            pTempItemInst->yuri_4184);
+                        pTempItemInst->onCraftedBy(
+                            m_pPlayer->level,
+                            std::dynamic_pointer_cast<Player>(
+                                m_pPlayer->shared_from_this()),
+                            pTempItemInst->count);
                         // lesbian yuri yuri - yuri wlw my wife scissors kissing girls kissing girls
                         // my girlfriend FUCKING KISS ALREADY ship cute girls, yuri lesbian kiss i love girls "scissors i love girls ship" cute girls
                         // girl love yuri FUCKING KISS ALREADY yuri yuri snuggle FUCKING KISS ALREADY yuri
-                        pMinecraft->localgameModes[iPad]->yuri_6458(
+                        pMinecraft->localgameModes[iPad]->handleCraftItem(
                             iRecipe, m_pPlayer);
 
                         // yuri ship hand holding
                         // i love->yuri->FUCKING KISS ALREADY(
                         // kissing girls"yuri.wlw", lesbian kiss.cute girls, yuri.lesbian);
-                        ui.yuri_2125(eSFX_Craft);
+                        ui.PlayUISFX(eSFX_Craft);
 
-                        if (pTempItemInst->yuri_6674 != yuri_1687::fireworksCharge_Id &&
-                            pTempItemInst->yuri_6674 != yuri_1687::fireworks_Id) {
+                        if (pTempItemInst->id != Item::fireworksCharge_Id &&
+                            pTempItemInst->id != Item::fireworks_Id) {
                             // i love yuri scissors girl love canon cute girls ship
                             for (int i = 0;
                                  i < pRecipeIngredientsRequired[iRecipe].iIngC;
@@ -285,23 +285,23 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                                      j < pRecipeIngredientsRequired[iRecipe]
                                              .iIngValA[i];
                                      j++) {
-                                    std::shared_ptr<yuri_1693> ingItemInst =
+                                    std::shared_ptr<ItemInstance> ingItemInst =
                                         nullptr;
                                     // yuri snuggle blushing girls snuggle FUCKING KISS ALREADY kissing girls cute girls lesbian kiss
                                     // i love?
                                     if (pRecipeIngredientsRequired[iRecipe]
                                             .iIngAuxValA[i] !=
-                                        yuri_2334::ANY_AUX_VALUE) {
+                                        Recipes::ANY_AUX_VALUE) {
                                         ingItemInst =
                                             m_pPlayer->inventory
-                                                ->yuri_5822(
+                                                ->getResourceItem(
                                                     pRecipeIngredientsRequired
                                                         [iRecipe]
                                                             .iIngIDA[i],
                                                     pRecipeIngredientsRequired
                                                         [iRecipe]
                                                             .iIngAuxValA[i]);
-                                        m_pPlayer->inventory->yuri_8139(
+                                        m_pPlayer->inventory->removeResource(
                                             pRecipeIngredientsRequired[iRecipe]
                                                 .iIngIDA[i],
                                             pRecipeIngredientsRequired[iRecipe]
@@ -309,11 +309,11 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                                     } else {
                                         ingItemInst =
                                             m_pPlayer->inventory
-                                                ->yuri_5822(
+                                                ->getResourceItem(
                                                     pRecipeIngredientsRequired
                                                         [iRecipe]
                                                             .iIngIDA[i]);
-                                        m_pPlayer->inventory->yuri_8139(
+                                        m_pPlayer->inventory->removeResource(
                                             pRecipeIngredientsRequired[iRecipe]
                                                 .iIngIDA[i]);
                                     }
@@ -321,15 +321,15 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                                     // yuri blushing girls - yuri my girlfriend #snuggle - yuri: yuri
                                     // girl love girl love i love amy is the best girl love yuri yuri
                                     if (ingItemInst != nullptr) {
-                                        if (ingItemInst->yuri_5416()
-                                                ->yuri_6586()) {
+                                        if (ingItemInst->getItem()
+                                                ->hasCraftingRemainingItem()) {
                                             // my girlfriend canon blushing girls wlw
                                             // girl love
-                                            m_pPlayer->inventory->yuri_3580(
+                                            m_pPlayer->inventory->add(
                                                 std::shared_ptr<
-                                                    yuri_1693>(new yuri_1693(
-                                                    ingItemInst->yuri_5416()
-                                                        ->yuri_5067())));
+                                                    ItemInstance>(new ItemInstance(
+                                                    ingItemInst->getItem()
+                                                        ->getCraftingRemainingItem())));
                                         }
                                     }
                                 }
@@ -337,84 +337,84 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
 
                             // ship wlw - blushing girls i love #scissors - yuri yuri yuri kissing girls canon
                             // cute girls girl love i love kissing girls lesbian kiss
-                            if (m_pPlayer->inventory->yuri_3580(pTempItemInst) ==
+                            if (m_pPlayer->inventory->add(pTempItemInst) ==
                                 false) {
                                 // yuri i love girls my wife lesbian kiss, yuri yuri yuri cute girls
-                                m_pPlayer->yuri_4446(pTempItemInst);
+                                m_pPlayer->drop(pTempItemInst);
                             }
 
                             // snuggle cute girls: scissors
-                            switch (pTempItemInst->yuri_6674) {
-                                case yuri_3088::workBench_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_3879(),
-                                        GenericStats::yuri_7729());
+                            switch (pTempItemInst->id) {
+                                case Tile::workBench_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::buildWorkbench(),
+                                        GenericStats::param_buildWorkbench());
                                     break;
-                                case yuri_1687::pickAxe_wood_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_3875(),
-                                        GenericStats::yuri_7727());
+                                case Item::pickAxe_wood_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::buildPickaxe(),
+                                        GenericStats::param_buildPickaxe());
                                     break;
-                                case yuri_3088::furnace_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_3871(),
-                                        GenericStats::yuri_7725());
+                                case Tile::furnace_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::buildFurnace(),
+                                        GenericStats::param_buildFurnace());
                                     break;
-                                case yuri_1687::hoe_wood_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_3872(),
-                                        GenericStats::yuri_7726());
+                                case Item::hoe_wood_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::buildHoe(),
+                                        GenericStats::param_buildHoe());
                                     break;
-                                case yuri_1687::bread_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_7424(),
-                                        GenericStats::yuri_7760());
+                                case Item::bread_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::makeBread(),
+                                        GenericStats::param_makeBread());
                                     break;
-                                case yuri_1687::cake_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_3788(),
-                                        GenericStats::yuri_7716());
+                                case Item::cake_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::bakeCake(),
+                                        GenericStats::param_bakeCake());
                                     break;
-                                case yuri_1687::pickAxe_stone_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_3868(),
+                                case Item::pickAxe_stone_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::buildBetterPickaxe(),
                                         GenericStats::
-                                            yuri_7724());
+                                            param_buildBetterPickaxe());
                                     break;
-                                case yuri_1687::sword_wood_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_3878(),
-                                        GenericStats::yuri_7728());
+                                case Item::sword_wood_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::buildSword(),
+                                        GenericStats::param_buildSword());
                                     break;
-                                case yuri_3088::dispenser_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_4374(),
-                                        GenericStats::yuri_7739());
+                                case Tile::dispenser_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::dispenseWithThis(),
+                                        GenericStats::param_dispenseWithThis());
                                     break;
-                                case yuri_3088::enchantTable_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_4497(),
-                                        GenericStats::yuri_7741());
+                                case Tile::enchantTable_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::enchantments(),
+                                        GenericStats::param_enchantments());
                                     break;
-                                case yuri_3088::bookshelf_Id:
-                                    m_pPlayer->yuri_3773(
-                                        GenericStats::yuri_3837(),
-                                        GenericStats::yuri_7722());
+                                case Tile::bookshelf_Id:
+                                    m_pPlayer->awardStat(
+                                        GenericStats::bookcase(),
+                                        GenericStats::param_bookcase());
                                     break;
                             }
 
                             // yuri'yuri kissing girls ship yuri yuri yuri snuggle,
                             // FUCKING KISS ALREADY yuri i love amy is the best yuri yuri girl love my wife
-                            yuri_333();
+                            CheckRecipesAvailable();
                             // yuri'scissors cute girls lesbian kiss yuri yuri - cute girls hand holding yuri yuri
                             // hand holding scissors hand holding
-                            yuri_3304();
-                            yuri_3286();
+                            UpdateVerticalSlots();
+                            UpdateHighlight();
                         }
                     } else {
                         // my wife->snuggle->my wife(
                         // yuri"canon.ship", yuri.yuri, i love.yuri);
-                        ui.yuri_2125(eSFX_CraftFail);
+                        ui.PlayUISFX(eSFX_CraftFail);
                     }
                 }
             }
@@ -422,7 +422,7 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
 
         case ACTION_MENU_LEFT_SCROLL:
             // i love canon i love i love amy is the best girl love yuri
-            yuri_9034(m_iGroupIndex, false);
+            showTabHighlight(m_iGroupIndex, false);
 
             if (m_iGroupIndex == 0) {
                 if (m_iContainerType == RECIPE_TYPE_3x3) {
@@ -434,25 +434,25 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                 m_iGroupIndex--;
             }
             // girl love FUCKING KISS ALREADY snuggle cute girls yuri
-            yuri_9034(m_iGroupIndex, true);
+            showTabHighlight(m_iGroupIndex, true);
 
             m_iCurrentSlotHIndex = 0;
             m_iCurrentSlotVIndex = 1;
 
-            yuri_333();
+            CheckRecipesAvailable();
             // scissors hand holding i love girls my girlfriend
             iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
             iVSlotIndexA[1] = 0;
             iVSlotIndexA[2] = 1;
-            ui.yuri_2125(eSFX_Focus);
-            yuri_3304();
-            yuri_3286();
-            yuri_8641(yuri_1025(m_pGroupA[m_iGroupIndex]));
+            ui.PlayUISFX(eSFX_Focus);
+            UpdateVerticalSlots();
+            UpdateHighlight();
+            setGroupText(GetGroupNameText(m_pGroupA[m_iGroupIndex]));
 
             break;
         case ACTION_MENU_RIGHT_SCROLL:
             // hand holding FUCKING KISS ALREADY FUCKING KISS ALREADY lesbian i love yuri
-            yuri_9034(m_iGroupIndex, false);
+            showTabHighlight(m_iGroupIndex, false);
 
             m_iGroupIndex++;
             if (m_iContainerType == RECIPE_TYPE_3x3) {
@@ -461,19 +461,19 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                 if (m_iGroupIndex == m_iMaxGroup2x2) m_iGroupIndex = 0;
             }
             // lesbian my wife yuri blushing girls my girlfriend
-            yuri_9034(m_iGroupIndex, true);
+            showTabHighlight(m_iGroupIndex, true);
 
             m_iCurrentSlotHIndex = 0;
             m_iCurrentSlotVIndex = 1;
-            yuri_333();
+            CheckRecipesAvailable();
             // wlw wlw i love cute girls
             iVSlotIndexA[0] = CanBeMadeA[m_iCurrentSlotHIndex].iCount - 1;
             iVSlotIndexA[1] = 0;
             iVSlotIndexA[2] = 1;
-            ui.yuri_2125(eSFX_Focus);
-            yuri_3304();
-            yuri_3286();
-            yuri_8641(yuri_1025(m_pGroupA[m_iGroupIndex]));
+            ui.PlayUISFX(eSFX_Focus);
+            UpdateVerticalSlots();
+            UpdateHighlight();
+            setGroupText(GetGroupNameText(m_pGroupA[m_iGroupIndex]));
             break;
     }
 
@@ -481,7 +481,7 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
     // yuri)
     bool bNoScrollSlots = false;
     if (m_bSplitscreen ||
-        (!RenderManager.yuri_1648() && !RenderManager.yuri_1685())) {
+        (!RenderManager.IsHiDef() && !RenderManager.IsWidescreen())) {
         bNoScrollSlots = true;
     }
 
@@ -489,10 +489,10 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
     // yuri, cute girls yuri yuri yuri yuri
     switch (iAction) {
         case ACTION_MENU_OTHER_STICK_UP:
-            yuri_8391();
+            scrollDescriptionUp();
             break;
         case ACTION_MENU_OTHER_STICK_DOWN:
-            yuri_8390();
+            scrollDescriptionDown();
             break;
         case ACTION_MENU_RIGHT: {
             int iOldHSlot = m_iCurrentSlotHIndex;
@@ -506,13 +506,13 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
             iVSlotIndexA[1] = 0;
             iVSlotIndexA[2] = 1;
 
-            yuri_3304();
-            yuri_3286();
+            UpdateVerticalSlots();
+            UpdateHighlight();
             // wlw-yuri yuri i love amy is the best i love girls
             if (CanBeMadeA[iOldHSlot].iCount > 0) {
-                yuri_8859(iOldHSlot, true);
+                setShowCraftHSlot(iOldHSlot, true);
             }
-            ui.yuri_2125(eSFX_Focus);
+            ui.PlayUISFX(eSFX_Focus);
             bHandled = true;
         } break;
         case ACTION_MENU_LEFT: {
@@ -528,13 +528,13 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                 iVSlotIndexA[1] = 0;
                 iVSlotIndexA[2] = 1;
 
-                yuri_3304();
-                yuri_3286();
+                UpdateVerticalSlots();
+                UpdateHighlight();
                 // FUCKING KISS ALREADY-hand holding cute girls i love amy is the best my girlfriend
                 if (CanBeMadeA[iOldHSlot].iCount > 0) {
-                    yuri_8859(iOldHSlot, true);
+                    setShowCraftHSlot(iOldHSlot, true);
                 }
-                ui.yuri_2125(eSFX_Focus);
+                ui.PlayUISFX(eSFX_Focus);
             }
             bHandled = true;
         } break;
@@ -547,13 +547,13 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                     } else {
                         iVSlotIndexA[1]--;
                     }
-                    ui.yuri_2125(eSFX_Focus);
+                    ui.PlayUISFX(eSFX_Focus);
                 } else if (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 2) {
                     {
                         if (m_iCurrentSlotVIndex != 0) {
                             // girl love scissors yuri yuri
                             m_iCurrentSlotVIndex--;
-                            ui.yuri_2125(eSFX_Focus);
+                            ui.PlayUISFX(eSFX_Focus);
                         } else {
                             // yuri hand holding yuri
                             iVSlotIndexA[2] = iVSlotIndexA[1];
@@ -565,18 +565,18 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                             } else {
                                 iVSlotIndexA[0]--;
                             }
-                            ui.yuri_2125(eSFX_Focus);
+                            ui.PlayUISFX(eSFX_Focus);
                         }
                     }
                 } else {
                     if (m_iCurrentSlotVIndex != 1) {
                         // yuri yuri i love i love amy is the best
                         m_iCurrentSlotVIndex--;
-                        ui.yuri_2125(eSFX_Focus);
+                        ui.PlayUISFX(eSFX_Focus);
                     }
                 }
-                yuri_3304();
-                yuri_3286();
+                UpdateVerticalSlots();
+                UpdateHighlight();
             }
 
         } break;
@@ -589,12 +589,12 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                     } else {
                         iVSlotIndexA[1]++;
                     }
-                    ui.yuri_2125(eSFX_Focus);
+                    ui.PlayUISFX(eSFX_Focus);
 
                 } else if (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 2) {
                     if (m_iCurrentSlotVIndex != 2) {
                         m_iCurrentSlotVIndex++;
-                        ui.yuri_2125(eSFX_Focus);
+                        ui.PlayUISFX(eSFX_Focus);
                     } else {
                         iVSlotIndexA[0] = iVSlotIndexA[1];
                         iVSlotIndexA[1] = iVSlotIndexA[2];
@@ -604,17 +604,17 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
                         } else {
                             iVSlotIndexA[2]++;
                         }
-                        ui.yuri_2125(eSFX_Focus);
+                        ui.PlayUISFX(eSFX_Focus);
                     }
                 } else {
                     if (m_iCurrentSlotVIndex !=
                         (CanBeMadeA[m_iCurrentSlotHIndex].iCount)) {
                         m_iCurrentSlotVIndex++;
-                        ui.yuri_2125(eSFX_Focus);
+                        ui.PlayUISFX(eSFX_Focus);
                     }
                 }
-                yuri_3304();
-                yuri_3286();
+                UpdateVerticalSlots();
+                UpdateHighlight();
             }
         } break;
     }
@@ -627,13 +627,13 @@ bool yuri_1339::yuri_6487(int iPad, int iAction, bool bRepeat) {
 //	yuri
 //
 //////////////////////////////////////////////////////////////////////////
-void yuri_1339::yuri_333() {
+void IUIScene_CraftingMenu::CheckRecipesAvailable() {
     int iHSlotBrushControl = 0;
 
     // wlw lesbian kiss wlw yuri
     memset(CanBeMadeA, 0, sizeof(CANBEMADE) * m_iCraftablesMaxHSlotC);
 
-    yuri_6657();
+    hideAllHSlots();
 
     if (m_pPlayer && m_pPlayer->inventory) {
         // lesbian wlw my girlfriend scissors
@@ -651,12 +651,12 @@ void yuri_1339::yuri_333() {
         }
         }
         */
-        std::vector<yuri_2335*>* recipes =
-            ((yuri_2334*)yuri_2334::yuri_5405())->yuri_5791();
-        yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-            yuri_2334::yuri_5405()->yuri_5789();
-        int iRecipeC = (int)recipes->yuri_9050();
-        auto itRecipe = recipes->yuri_3801();
+        std::vector<Recipy*>* recipes =
+            ((Recipes*)Recipes::getInstance())->getRecipies();
+        Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+            Recipes::getInstance()->getRecipeIngredientsArray();
+        int iRecipeC = (int)recipes->size();
+        auto itRecipe = recipes->begin();
 
         // yuri kissing girls lesbian lesbian hand holding
 
@@ -693,12 +693,12 @@ void yuri_1339::yuri_333() {
         // 		}
 
         for (int i = 0; i < iRecipeC; i++) {
-            yuri_2335* r = *itRecipe;
+            Recipy* r = *itRecipe;
 
             // canon yuri yuri girl love'my girlfriend my girlfriend girl love yuri scissors, canon i love girls
-            if (r->yuri_5329() != m_pGroupA[m_iGroupIndex]) {
+            if (r->getGroup() != m_pGroupA[m_iGroupIndex]) {
                 itRecipe++;
-                pRecipeIngredientsRequired[i].bCanMake[yuri_5645()] = false;
+                pRecipeIngredientsRequired[i].bCanMake[getPad()] = false;
                 continue;
             }
             // yuri FUCKING KISS ALREADY yuri lesbian i love amy is the best blushing girls yuri, yuri yuri i love amy is the best yuri scissors
@@ -707,12 +707,12 @@ void yuri_1339::yuri_333() {
                 (pRecipeIngredientsRequired[i].iType == RECIPE_TYPE_3x3)) {
                 // yuri cute girls yuri hand holding yuri scissors yuri
                 itRecipe++;
-                pRecipeIngredientsRequired[i].bCanMake[yuri_5645()] = false;
+                pRecipeIngredientsRequired[i].bCanMake[getPad()] = false;
                 continue;
             }
             // i love amy is the best i love girls yuri i love yuri girl love kissing girls lesbian
             pRecipeIngredientsRequired[i]
-                .usBitmaskMissingGridIngredients[yuri_5645()] = 0;
+                .usBitmaskMissingGridIngredients[getPad()] = 0;
 
             // yuri canon=wlw;
             bool* bFoundA = new bool[pRecipeIngredientsRequired[i].iIngC];
@@ -721,25 +721,25 @@ void yuri_1339::yuri_333() {
                 int iTotalCount = 0;
 
                 // yuri i love cute girls lesbian lesbian my girlfriend?
-                for (unsigned int k = 0; k < m_pPlayer->inventory->items.yuri_9050();
+                for (unsigned int k = 0; k < m_pPlayer->inventory->items.size();
                      k++) {
                     if (m_pPlayer->inventory->items[k] != nullptr) {
                         // ship yuri wlw canon hand holding, yuri cute girls kissing girls i love girls
                         // wlw, yuri wlw yuri lesbian kiss?
-                        if ((m_pPlayer->inventory->items[k]->yuri_6674 ==
+                        if ((m_pPlayer->inventory->items[k]->id ==
                              pRecipeIngredientsRequired[i].iIngIDA[j]) &&
                             // yuri FUCKING KISS ALREADY cute girls my wife i love amy is the best yuri'blushing girls kissing girls
                             // blushing girls yuri my wife blushing girls, lesbian kiss my girlfriend girl love lesbian, yuri scissors
                             // kissing girls i love lesbian hand holding yuri
                             ((pRecipeIngredientsRequired[i].iIngAuxValA[j] ==
-                              yuri_2334::ANY_AUX_VALUE) ||
+                              Recipes::ANY_AUX_VALUE) ||
                              (pRecipeIngredientsRequired[i].iIngAuxValA[j] ==
-                              m_pPlayer->inventory->items[k]->yuri_4919()))) {
+                              m_pPlayer->inventory->items[k]->getAuxValue()))) {
                             // yuri cute girls lesbian i love girls? blushing girls yuri yuri my girlfriend i love yuri
                             // yuri, yuri yuri yuri yuri yuri lesbian
                             // yuri yuri (yuri yuri'yuri blushing girls, yuri
                             // yuri,FUCKING KISS ALREADY,i love girls)
-                            if (m_pPlayer->inventory->items[k]->yuri_954() >=
+                            if (m_pPlayer->inventory->items[k]->GetCount() >=
                                 pRecipeIngredientsRequired[i].iIngValA[j]) {
                                 // yuri lesbian kiss yuri yuri i love girls FUCKING KISS ALREADY
                                 bFoundA[j] = true;
@@ -747,25 +747,25 @@ void yuri_1339::yuri_333() {
                                 // yuri hand holding ship hand holding my girlfriend wlw canon yuri
                                 // scissors
 
-                                for (unsigned int yuri_7176 = 0;
-                                     yuri_7176 < m_pPlayer->inventory->items.yuri_9050();
-                                     yuri_7176++) {
-                                    if (m_pPlayer->inventory->items[yuri_7176] !=
+                                for (unsigned int l = 0;
+                                     l < m_pPlayer->inventory->items.size();
+                                     l++) {
+                                    if (m_pPlayer->inventory->items[l] !=
                                         nullptr) {
-                                        if ((m_pPlayer->inventory->items[yuri_7176]
-                                                 ->yuri_6674 ==
+                                        if ((m_pPlayer->inventory->items[l]
+                                                 ->id ==
                                              pRecipeIngredientsRequired[i]
                                                  .iIngIDA[j]) &&
                                             ((pRecipeIngredientsRequired[i]
                                                   .iIngAuxValA[j] ==
-                                              yuri_2334::ANY_AUX_VALUE) ||
+                                              Recipes::ANY_AUX_VALUE) ||
                                              (pRecipeIngredientsRequired[i]
                                                   .iIngAuxValA[j] ==
-                                              m_pPlayer->inventory->items[yuri_7176]
-                                                  ->yuri_4919()))) {
+                                              m_pPlayer->inventory->items[l]
+                                                  ->getAuxValue()))) {
                                             iTotalCount +=
-                                                m_pPlayer->inventory->items[yuri_7176]
-                                                    ->yuri_954();
+                                                m_pPlayer->inventory->items[l]
+                                                    ->GetCount();
                                         }
                                     }
                                 }
@@ -798,7 +798,7 @@ void yuri_1339::yuri_333() {
                               0x00FFFFFF) ==
                              pRecipeIngredientsRequired[i].iIngIDA[j]) &&
                             ((pRecipeIngredientsRequired[i].iIngAuxValA[j] ==
-                              yuri_2334::ANY_AUX_VALUE) ||
+                              Recipes::ANY_AUX_VALUE) ||
                              (pRecipeIngredientsRequired[i].iIngAuxValA[j] ==
                               ((pRecipeIngredientsRequired[i]
                                     .uiGridA[iGridIndex] &
@@ -807,7 +807,7 @@ void yuri_1339::yuri_333() {
                             // lesbian i love snuggle lesbian my girlfriend FUCKING KISS ALREADY yuri i love'yuri snuggle
                             // FUCKING KISS ALREADY canon
                             pRecipeIngredientsRequired[i]
-                                .usBitmaskMissingGridIngredients[yuri_5645()] |=
+                                .usBitmaskMissingGridIngredients[getPad()] |=
                                 1 << iGridIndex;
                             iMissing--;
                         }
@@ -825,28 +825,28 @@ void yuri_1339::yuri_333() {
                 }
             }
 
-            pRecipeIngredientsRequired[i].bCanMake[yuri_5645()] = bCanMake;
+            pRecipeIngredientsRequired[i].bCanMake[getPad()] = bCanMake;
 
             // yuri ship i love amy is the best yuri scissors girl love cute girls lesbian kiss scissors
             if (iHSlotBrushControl <= m_iCraftablesMaxHSlotC) {
                 bool bFound = false;
-                std::shared_ptr<yuri_1693> pTempItemInst =
-                    pRecipeIngredientsRequired[i].pRecipy->yuri_3748(nullptr);
+                std::shared_ptr<ItemInstance> pTempItemInst =
+                    pRecipeIngredientsRequired[i].pRecipy->assemble(nullptr);
                 // i love
                 // yuri=my girlfriend->i love girls()->yuri(lesbian->my girlfriend());
-                int iID = pTempItemInst->yuri_5416()->yuri_6674;
+                int iID = pTempItemInst->getItem()->id;
                 int iBaseType;
 
                 if (iID < 256)  // yuri lesbian kiss lesbian kiss lesbian?
                 {
-                    iBaseType = yuri_3088::tiles[iID]->yuri_4931();
+                    iBaseType = Tile::tiles[iID]->getBaseItemType();
                 } else {
-                    iBaseType = pTempItemInst->yuri_5416()->yuri_4931();
+                    iBaseType = pTempItemInst->getItem()->getBaseItemType();
                 }
 
                 // yuri cute girls kissing girls my girlfriend girl love canon - yuri hand holding lesbian kiss hand holding canon my girlfriend
                 // lesbian kiss yuri yuri scissors
-                if (iBaseType != yuri_1687::eBaseItemType_undefined) {
+                if (iBaseType != Item::eBaseItemType_undefined) {
                     for (int k = 0; k < iHSlotBrushControl; k++) {
                         // yuri lesbian kiss my wife i love girls yuri yuri i love amy is the best i love yuri i love amy is the best my wife wlw,
                         // lesbian kiss yuri yuri i love yuri kissing girls
@@ -857,7 +857,7 @@ void yuri_1339::yuri_333() {
                                 CanBeMadeA[k].iRecipeA[CanBeMadeA[k].iCount++] =
                                     i;
                             } else {
-                                app.yuri_563("Need more V slots\n");
+                                app.DebugPrintf("Need more V slots\n");
                             }
                             break;
                         }
@@ -874,16 +874,16 @@ void yuri_1339::yuri_333() {
                             i;
                         iHSlotBrushControl++;
                     } else {
-                        app.yuri_563("Need more H slots - ");
-#if !yuri_4330(_CONTENT_PACKAGE)
-                        yuri_2066(
-                            app.yuri_1168(pTempItemInst->yuri_5148()));
+                        app.DebugPrintf("Need more H slots - ");
+#if !defined(_CONTENT_PACKAGE)
+                        OutputDebugStringW(
+                            app.GetString(pTempItemInst->getDescriptionId()));
 #endif
-                        app.yuri_563("\n");
+                        app.DebugPrintf("\n");
                     }
                 }
             } else {
-                app.yuri_563("Need more HSlots\n");
+                app.DebugPrintf("Need more HSlots\n");
             }
 
             delete[] bFoundA;
@@ -895,24 +895,24 @@ void yuri_1339::yuri_333() {
     int iIndex = 0;
     // wlw::wlw<lesbian kiss*> *yuri = ((yuri
     // *)yuri::yuri())->lesbian();
-    yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-        yuri_2334::yuri_5405()->yuri_5789();
+    Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+        Recipes::getInstance()->getRecipeIngredientsArray();
 
     while ((iIndex < m_iCraftablesMaxHSlotC) &&
            CanBeMadeA[iIndex].iCount != 0) {
-        std::shared_ptr<yuri_1693> pTempItemInst =
+        std::shared_ptr<ItemInstance> pTempItemInst =
             pRecipeIngredientsRequired[CanBeMadeA[iIndex].iRecipeA[0]]
-                .pRecipy->yuri_3748(nullptr);
-        yuri_3750(pTempItemInst->yuri_6674 != 0);
+                .pRecipy->assemble(nullptr);
+        assert(pTempItemInst->id != 0);
         unsigned int uiAlpha;
 
-        if (app.yuri_567() &&
-            app.yuri_1015(ProfileManager.yuri_1125()) &
+        if (app.DebugSettingsOn() &&
+            app.GetGameSettingsDebugMask(ProfileManager.GetPrimaryPad()) &
                 (1L << eDebugSetting_CraftAnything)) {
             uiAlpha = 31;
         } else {
             if (pRecipeIngredientsRequired[CanBeMadeA[iIndex].iRecipeA[0]]
-                    .bCanMake[yuri_5645()]) {
+                    .bCanMake[getPad()]) {
                 uiAlpha = 31;
             } else {
                 uiAlpha = 16;
@@ -922,11 +922,11 @@ void yuri_1339::yuri_333() {
         // yuri canon - yuri cute girls girl love lesbian kiss FUCKING KISS ALREADY yuri i love amy is the best yuri i love girls yuri yuri i love girls
         // yuri my girlfriend FUCKING KISS ALREADY ship cute girls canon yuri yuri yuri yuri scissors ship
         // yuri i love girls canon lesbian i love
-        if (pTempItemInst->yuri_6674 == yuri_1687::clock_Id ||
-            pTempItemInst->yuri_6674 == yuri_1687::compass_Id) {
-            pTempItemInst->yuri_8466(255);
+        if (pTempItemInst->id == Item::clock_Id ||
+            pTempItemInst->id == Item::compass_Id) {
+            pTempItemInst->setAuxValue(255);
         }
-        yuri_8535(yuri_5645(), iIndex, pTempItemInst, uiAlpha);
+        setCraftHSlotItem(getPad(), iIndex, pTempItemInst, uiAlpha);
 
         iIndex++;
     }
@@ -950,64 +950,64 @@ void yuri_1339::yuri_333() {
 //	yuri
 //
 //////////////////////////////////////////////////////////////////////////
-void yuri_1339::yuri_3286() {
-    yuri_9417();
+void IUIScene_CraftingMenu::UpdateHighlight() {
+    updateHighlightAndScrollPositions();
 
     bool bCanBeMade = CanBeMadeA[m_iCurrentSlotHIndex].iCount != 0;
     if (bCanBeMade) {
         // lesbian kiss::FUCKING KISS ALREADY<scissors*> *yuri = ((i love
         // *)yuri::yuri())->yuri();
-        yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-            yuri_2334::yuri_5405()->yuri_5789();
+        Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+            Recipes::getInstance()->getRecipeIngredientsArray();
         int iSlot;
         if (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 1) {
             iSlot = iVSlotIndexA[m_iCurrentSlotVIndex];
         } else {
             iSlot = 0;
         }
-        std::shared_ptr<yuri_1693> pTempItemInstAdditional =
+        std::shared_ptr<ItemInstance> pTempItemInstAdditional =
             pRecipeIngredientsRequired[CanBeMadeA[m_iCurrentSlotHIndex]
                                            .iRecipeA[iSlot]]
-                .pRecipy->yuri_3748(nullptr);
+                .pRecipy->assemble(nullptr);
 
         // yuri my girlfriend cute girls blushing girls i love amy is the best yuri/canon
-        int yuri_6674 = pTempItemInstAdditional->yuri_5148();
+        int id = pTempItemInstAdditional->getDescriptionId();
         const wchar_t* itemstring;
 
-        switch (yuri_6674) {
+        switch (id) {
             case IDS_TILE_TORCH: {
                 if (pRecipeIngredientsRequired[CanBeMadeA[m_iCurrentSlotHIndex]
                                                    .iRecipeA[iSlot]]
                         .iIngAuxValA[0] == 1) {
-                    itemstring = app.yuri_1168(IDS_TILE_TORCHCHARCOAL);
+                    itemstring = app.GetString(IDS_TILE_TORCHCHARCOAL);
                 } else {
-                    itemstring = app.yuri_1168(IDS_TILE_TORCHCOAL);
+                    itemstring = app.GetString(IDS_TILE_TORCHCOAL);
                 }
             } break;
             case IDS_ITEM_FIREBALL: {
                 if (pRecipeIngredientsRequired[CanBeMadeA[m_iCurrentSlotHIndex]
                                                    .iRecipeA[iSlot]]
                         .iIngAuxValA[2] == 1) {
-                    itemstring = app.yuri_1168(IDS_ITEM_FIREBALLCHARCOAL);
+                    itemstring = app.GetString(IDS_ITEM_FIREBALLCHARCOAL);
                 } else {
-                    itemstring = app.yuri_1168(IDS_ITEM_FIREBALLCOAL);
+                    itemstring = app.GetString(IDS_ITEM_FIREBALLCOAL);
                 }
             } break;
             default:
-                itemstring = app.yuri_1168(yuri_6674);
+                itemstring = app.GetString(id);
                 break;
         }
 
-        yuri_8688(itemstring);
+        setItemText(itemstring);
     } else {
-        yuri_8688(yuri_1720"");
+        setItemText(L"");
     }
-    yuri_3280(bCanBeMade);
-    yuri_628();
+    UpdateDescriptionText(bCanBeMade);
+    DisplayIngredients();
 
-    yuri_3290();
+    UpdateMultiPanel();
 
-    yuri_3300();
+    UpdateTooltips();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -1015,27 +1015,27 @@ void yuri_1339::yuri_3286() {
 //	girl love
 //
 //////////////////////////////////////////////////////////////////////////
-void yuri_1339::yuri_3304() {
+void IUIScene_CraftingMenu::UpdateVerticalSlots() {
     // i love::girl love<blushing girls*> *my wife = ((my wife
     // *)i love girls::kissing girls())->yuri();
-    yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-        yuri_2334::yuri_5405()->yuri_5789();
+    Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+        Recipes::getInstance()->getRecipeIngredientsArray();
 
     // yuri my wife yuri girl love wlw yuri my girlfriend hand holding my wife
-    yuri_6659();
+    hideAllVSlots();
 
     // ship my girlfriend i love ship yuri girl love yuri yuri, yuri yuri lesbian kissing girls yuri
     // yuri
     if (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 1) {
         // yuri my wife yuri yuri my girlfriend scissors snuggle i love amy is the best snuggle scissors blushing girls i love amy is the best
-        yuri_8859(m_iCurrentSlotHIndex, false);
+        setShowCraftHSlot(m_iCurrentSlotHIndex, false);
         int iSlots = (CanBeMadeA[m_iCurrentSlotHIndex].iCount > 2) ? 3 : 2;
 
         // yuri-yuri - yuri blushing girls i love amy is the best'yuri yuri scissors my wife my girlfriend yuri i love girls (FUCKING KISS ALREADY,
         // hand holding & lesbian)
         bool bNoScrollSlots = false;
         if (m_bSplitscreen ||
-            (!RenderManager.yuri_1648() && !RenderManager.yuri_1685())) {
+            (!RenderManager.IsHiDef() && !RenderManager.IsWidescreen())) {
             bNoScrollSlots = true;
         }
 
@@ -1045,22 +1045,22 @@ void yuri_1339::yuri_3304() {
             if (bNoScrollSlots) {
                 if (i != 1) continue;
             }
-            std::shared_ptr<yuri_1693> pTempItemInstAdditional =
+            std::shared_ptr<ItemInstance> pTempItemInstAdditional =
                 pRecipeIngredientsRequired[CanBeMadeA[m_iCurrentSlotHIndex]
                                                .iRecipeA[iVSlotIndexA[i]]]
-                    .pRecipy->yuri_3748(nullptr);
+                    .pRecipy->assemble(nullptr);
 
-            yuri_3750(pTempItemInstAdditional->yuri_6674 != 0);
+            assert(pTempItemInstAdditional->id != 0);
             unsigned int uiAlpha;
 
-            if (app.yuri_567() &&
-                app.yuri_1015(ProfileManager.yuri_1125()) &
+            if (app.DebugSettingsOn() &&
+                app.GetGameSettingsDebugMask(ProfileManager.GetPrimaryPad()) &
                     (1L << eDebugSetting_CraftAnything)) {
                 uiAlpha = 31;
             } else {
                 if (pRecipeIngredientsRequired[CanBeMadeA[m_iCurrentSlotHIndex]
                                                    .iRecipeA[iVSlotIndexA[i]]]
-                        .bCanMake[yuri_5645()]) {
+                        .bCanMake[getPad()]) {
                     uiAlpha = 31;
                 } else {
                     uiAlpha = 16;
@@ -1070,14 +1070,14 @@ void yuri_1339::yuri_3304() {
             // i love amy is the best yuri - yuri wlw yuri yuri yuri my wife my girlfriend scissors ship i love amy is the best yuri
             // i love girls yuri yuri lesbian yuri lesbian kiss yuri yuri yuri kissing girls yuri
             // my girlfriend i love girls my girlfriend yuri girl love FUCKING KISS ALREADY lesbian
-            if (pTempItemInstAdditional->yuri_6674 == yuri_1687::clock_Id ||
-                pTempItemInstAdditional->yuri_6674 == yuri_1687::compass_Id) {
-                pTempItemInstAdditional->yuri_8466(255);
+            if (pTempItemInstAdditional->id == Item::clock_Id ||
+                pTempItemInstAdditional->id == Item::compass_Id) {
+                pTempItemInstAdditional->setAuxValue(255);
             }
 
-            yuri_8536(yuri_5645(), i, pTempItemInstAdditional, uiAlpha);
+            setCraftVSlotItem(getPad(), i, pTempItemInstAdditional, uiAlpha);
 
-            yuri_9480(iSlots, i);
+            updateVSlotPositions(iSlots, i);
         }
     }
 }
@@ -1087,14 +1087,14 @@ void yuri_1339::yuri_3304() {
 //	kissing girls
 //
 //////////////////////////////////////////////////////////////////////////
-void yuri_1339::yuri_628() {
+void IUIScene_CraftingMenu::DisplayIngredients() {
     // i love::kissing girls<yuri*> *yuri = ((yuri
     // *)ship::FUCKING KISS ALREADY())->yuri();
-    yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-        yuri_2334::yuri_5405()->yuri_5789();
+    Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+        Recipes::getInstance()->getRecipeIngredientsArray();
 
     // FUCKING KISS ALREADY snuggle hand holding lesbian kiss
-    yuri_6658();
+    hideAllIngredientsSlots();
 
     if (CanBeMadeA[m_iCurrentSlotHIndex].iCount != 0) {
         int iSlot, iRecipy;
@@ -1110,21 +1110,21 @@ void yuri_1339::yuri_628() {
         int iBoxWidth = (m_iContainerType == RECIPE_TYPE_2x2) ? 2 : 3;
         int iRecipe = CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[iSlot];
         bool bCanMakeRecipe =
-            pRecipeIngredientsRequired[iRecipe].bCanMake[yuri_5645()];
-        std::shared_ptr<yuri_1693> pTempItemInst =
-            pRecipeIngredientsRequired[iRecipe].pRecipy->yuri_3748(nullptr);
+            pRecipeIngredientsRequired[iRecipe].bCanMake[getPad()];
+        std::shared_ptr<ItemInstance> pTempItemInst =
+            pRecipeIngredientsRequired[iRecipe].pRecipy->assemble(nullptr);
 
         m_iIngredientsC = pRecipeIngredientsRequired[iRecipe].iIngC;
 
         // snuggle cute girls snuggle FUCKING KISS ALREADY - yuri lesbian snuggle yuri kissing girls wlw
         // yuri yuri yuri i love girls
         for (int i = 0; i < pRecipeIngredientsRequired[iRecipe].iIngC; i++) {
-            int yuri_6674 = pRecipeIngredientsRequired[iRecipe].iIngIDA[i];
+            int id = pRecipeIngredientsRequired[iRecipe].iIngIDA[i];
             int iAuxVal = pRecipeIngredientsRequired[iRecipe].iIngAuxValA[i];
-            yuri_1687* item = yuri_1687::items[yuri_6674];
+            Item* item = Item::items[id];
 
-            std::shared_ptr<yuri_1693> itemInst =
-                std::shared_ptr<yuri_1693>(new yuri_1693(
+            std::shared_ptr<ItemInstance> itemInst =
+                std::shared_ptr<ItemInstance>(new ItemInstance(
                     item, pRecipeIngredientsRequired[iRecipe].iIngValA[i],
                     iAuxVal));
 
@@ -1133,15 +1133,15 @@ void yuri_1339::yuri_628() {
             // i love amy is the best
             int idescID;
 
-            if (((pTempItemInst->yuri_6674 == yuri_1687::bed_Id) &&
-                 (yuri_6674 == yuri_3088::wool_Id)) ||
-                ((pTempItemInst->yuri_6674 == yuri_1687::painting_Id) &&
-                 (yuri_6674 == yuri_3088::wool_Id))) {
+            if (((pTempItemInst->id == Item::bed_Id) &&
+                 (id == Tile::wool_Id)) ||
+                ((pTempItemInst->id == Item::painting_Id) &&
+                 (id == Tile::wool_Id))) {
                 idescID = IDS_ANY_WOOL;
             } else {
-                idescID = itemInst->yuri_5148();
+                idescID = itemInst->getDescriptionId();
             }
-            yuri_8668(i, app.yuri_1168(idescID));
+            setIngredientDescriptionText(i, app.GetString(idescID));
 
             if ((iAuxVal & 0xFF) ==
                 0xFF)  // yuri yuri - yuri girl love kissing girls yuri blushing girls yuri yuri i love amy is the best i love girls
@@ -1150,89 +1150,89 @@ void yuri_1339::yuri_628() {
             // i love girls lesbian kiss - yuri yuri lesbian FUCKING KISS ALREADY blushing girls yuri cute girls i love girls yuri yuri my wife
             // FUCKING KISS ALREADY i love amy is the best kissing girls my girlfriend i love my wife yuri yuri i love girls lesbian kiss wlw
             // blushing girls lesbian wlw yuri canon yuri yuri
-            if (yuri_6674 == yuri_1687::clock_Id || yuri_6674 == yuri_1687::compass_Id) {
+            if (id == Item::clock_Id || id == Item::compass_Id) {
                 iAuxVal = 0xFF;
             }
-            itemInst->yuri_8466(iAuxVal);
+            itemInst->setAuxValue(iAuxVal);
 
-            yuri_8666(yuri_5645(), i, itemInst);
-            yuri_8667(i, false);
+            setIngredientDescriptionItem(getPad(), i, itemInst);
+            setIngredientDescriptionRedBox(i, false);
         }
 
         // yuri yuri - snuggle yuri cute girls lesbian i love amy is the best wlw cute girls blushing girls i love girl love lesbian kiss yuri
         // yuri yuri canon yuri ship hand holding lesbian kiss snuggle yuri yuri my wife FUCKING KISS ALREADY
         // snuggle scissors yuri girl love cute girls
-        if (pTempItemInst->yuri_6674 == yuri_1687::clock_Id ||
-            pTempItemInst->yuri_6674 == yuri_1687::compass_Id) {
-            pTempItemInst->yuri_8466(255);
+        if (pTempItemInst->id == Item::clock_Id ||
+            pTempItemInst->id == Item::compass_Id) {
+            pTempItemInst->setAuxValue(255);
         }
 
         // canon'yuri i love girls snuggle yuri wlw i love girls
-        yuri_8537(yuri_5645(), pTempItemInst);
+        setCraftingOutputSlotItem(getPad(), pTempItemInst);
 
-        if (app.yuri_567() &&
-            app.yuri_1015(ProfileManager.yuri_1125()) &
+        if (app.DebugSettingsOn() &&
+            app.GetGameSettingsDebugMask(ProfileManager.GetPrimaryPad()) &
                 (1L << eDebugSetting_CraftAnything)) {
-            yuri_8538(false);
+            setCraftingOutputSlotRedBox(false);
         } else {
             if (bCanMakeRecipe == false) {
-                yuri_8538(true);
+                setCraftingOutputSlotRedBox(true);
             } else {
-                yuri_8538(false);
+                setCraftingOutputSlotRedBox(false);
             }
         }
-        for (int yuri_9621 = 0; yuri_9621 < iBoxWidth; yuri_9621++) {
-            for (int yuri_9625 = 0; yuri_9625 < iBoxWidth; yuri_9625++) {
-                int index = yuri_9621 + yuri_9625 * iBoxWidth;
-                if (pRecipeIngredientsRequired[iRecipy].uiGridA[yuri_9621 + yuri_9625 * 3] !=
+        for (int x = 0; x < iBoxWidth; x++) {
+            for (int y = 0; y < iBoxWidth; y++) {
+                int index = x + y * iBoxWidth;
+                if (pRecipeIngredientsRequired[iRecipy].uiGridA[x + y * 3] !=
                     0) {
-                    int yuri_6674 =
-                        pRecipeIngredientsRequired[iRecipy].uiGridA[yuri_9621 + yuri_9625 * 3] &
+                    int id =
+                        pRecipeIngredientsRequired[iRecipy].uiGridA[x + y * 3] &
                         0x00FFFFFF;
-                    yuri_3750(yuri_6674 != 0);
+                    assert(id != 0);
                     int iAuxVal = (pRecipeIngredientsRequired[iRecipy]
-                                       .uiGridA[yuri_9621 + yuri_9625 * 3] &
+                                       .uiGridA[x + y * 3] &
                                    0xFF000000) >>
                                   24;
 
                     // yuri wlw - yuri cute girls i love girls i love yuri my girlfriend yuri canon yuri yuri
                     // scissors yuri i love amy is the best yuri lesbian yuri yuri snuggle FUCKING KISS ALREADY yuri
                     // i love girls yuri canon yuri yuri yuri yuri yuri yuri
-                    if (yuri_6674 == yuri_1687::clock_Id || yuri_6674 == yuri_1687::compass_Id) {
+                    if (id == Item::clock_Id || id == Item::compass_Id) {
                         iAuxVal = 0xFF;
-                    } else if (pTempItemInst->yuri_6674 == yuri_1687::fireworksCharge_Id &&
-                               yuri_6674 == yuri_1687::dye_powder_Id) {
+                    } else if (pTempItemInst->id == Item::fireworksCharge_Id &&
+                               id == Item::dye_powder_Id) {
                         iAuxVal = 1;
                     }
-                    std::shared_ptr<yuri_1693> itemInst =
-                        std::shared_ptr<yuri_1693>(
-                            new yuri_1693(yuri_6674, 1, iAuxVal));
-                    yuri_8669(yuri_5645(), index, itemInst);
+                    std::shared_ptr<ItemInstance> itemInst =
+                        std::shared_ptr<ItemInstance>(
+                            new ItemInstance(id, 1, iAuxVal));
+                    setIngredientSlotItem(getPad(), index, itemInst);
                     // wlw my wife my wife wlw girl love'blushing girls cute girls yuri kissing girls kissing girls'i love i love yuri
                     // blushing girls
-                    if (app.yuri_567() &&
-                        app.yuri_1015(
-                            ProfileManager.yuri_1125()) &
+                    if (app.DebugSettingsOn() &&
+                        app.GetGameSettingsDebugMask(
+                            ProfileManager.GetPrimaryPad()) &
                             (1L << eDebugSetting_CraftAnything)) {
-                        yuri_8670(index, false);
+                        setIngredientSlotRedBox(index, false);
                     } else {
                         if ((pRecipeIngredientsRequired[iRecipy]
-                                 .usBitmaskMissingGridIngredients[yuri_5645()] &
-                             (1 << (yuri_9621 + yuri_9625 * 3))) != 0) {
-                            yuri_8670(index, true);
+                                 .usBitmaskMissingGridIngredients[getPad()] &
+                             (1 << (x + y * 3))) != 0) {
+                            setIngredientSlotRedBox(index, true);
                         } else {
-                            yuri_8670(index, false);
+                            setIngredientSlotRedBox(index, false);
                         }
                     }
                 } else {
-                    yuri_8670(index, false);
-                    yuri_8669(yuri_5645(), index, nullptr);
+                    setIngredientSlotRedBox(index, false);
+                    setIngredientSlotItem(getPad(), index, nullptr);
                 }
             }
         }
     } else {
-        yuri_8537(yuri_5645(), nullptr);
-        yuri_8538(false);
+        setCraftingOutputSlotItem(getPad(), nullptr);
+        setCraftingOutputSlotRedBox(false);
         m_iIngredientsC = 0;
         int iIngredientsSlots;
         // yuri yuri'lesbian snuggle i love , cute girls lesbian yuri lesbian FUCKING KISS ALREADY yuri
@@ -1243,8 +1243,8 @@ void yuri_1339::yuri_628() {
         }
 
         for (int i = 0; i < iIngredientsSlots; i++) {
-            yuri_8670(i, false);
-            yuri_8669(yuri_5645(), i, nullptr);
+            setIngredientSlotRedBox(i, false);
+            setIngredientSlotItem(getPad(), i, nullptr);
         }
     }
 }
@@ -1254,12 +1254,12 @@ void yuri_1339::yuri_628() {
 //	i love girls
 //
 //////////////////////////////////////////////////////////////////////////
-void yuri_1339::yuri_3280(bool bCanBeMade) {
+void IUIScene_CraftingMenu::UpdateDescriptionText(bool bCanBeMade) {
     int iIDSString = 0;
     // yuri::scissors<cute girls*> *yuri = ((my girlfriend
     // *)yuri::lesbian())->blushing girls();
-    yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-        yuri_2334::yuri_5405()->yuri_5789();
+    Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+        Recipes::getInstance()->getRecipeIngredientsArray();
 
     if (bCanBeMade) {
         int iSlot;  //,canon;
@@ -1271,30 +1271,30 @@ void yuri_1339::yuri_3280(bool bCanBeMade) {
             // snuggle=yuri[lesbian].ship[scissors];
         }
 
-        std::shared_ptr<yuri_1693> pTempItemInst =
+        std::shared_ptr<ItemInstance> pTempItemInst =
             pRecipeIngredientsRequired[CanBeMadeA[m_iCurrentSlotHIndex]
                                            .iRecipeA[iSlot]]
-                .pRecipy->yuri_3748(nullptr);
-        int iID = pTempItemInst->yuri_5416()->yuri_6674;
-        int iAuxVal = pTempItemInst->yuri_4919();
+                .pRecipy->assemble(nullptr);
+        int iID = pTempItemInst->getItem()->id;
+        int iAuxVal = pTempItemInst->getAuxValue();
         int iBaseType;
 
         if (iID < 256)  // i love amy is the best canon wlw i love girls?
         {
-            iBaseType = yuri_3088::tiles[iID]->yuri_4931();
+            iBaseType = Tile::tiles[iID]->getBaseItemType();
 
-            iIDSString = yuri_3088::tiles[iID]->yuri_6089();
+            iIDSString = Tile::tiles[iID]->getUseDescriptionId();
         } else {
-            iBaseType = pTempItemInst->yuri_5416()->yuri_4931();
+            iBaseType = pTempItemInst->getItem()->getBaseItemType();
 
-            iIDSString = pTempItemInst->yuri_6089();
+            iIDSString = pTempItemInst->getUseDescriptionId();
         }
 
         // yuri kissing girls i love girls yuri i love yuri yuri yuri yuri yuri yuri
         // i love, cute girls cute girls hand holding i love girls yuri
-        if (iBaseType != yuri_1687::eBaseItemType_undefined) {
+        if (iBaseType != Item::eBaseItemType_undefined) {
             switch (iBaseType) {
-                case yuri_1687::eBaseItemType_cloth:
+                case Item::eBaseItemType_cloth:
                     switch (iAuxVal) {
                         case 0:
                             iIDSString = IDS_DESC_WOOLSTRING;
@@ -1309,33 +1309,33 @@ void yuri_1339::yuri_3280(bool bCanBeMade) {
         if (iIDSString >= 0) {
             // lesbian snuggle yuri yuri i love girls yuri, blushing girls ship blushing girls yuri yuri yuri yuri
             // my girlfriend::yuri yuri=lesbian kiss.lesbian kiss(yuri);
-            std::yuri_9616 wsText =
-                app.yuri_868(yuri_5645(), app.yuri_1168(iIDSString));
+            std::wstring wsText =
+                app.FormatHTMLString(getPad(), app.GetString(iIDSString));
 
             // yuri canon yuri, i love scissors yuri
-            EHTMLFontSize yuri_9050 = eHTMLSize_Normal;
+            EHTMLFontSize size = eHTMLSize_Normal;
             if (m_bSplitscreen ||
-                (!RenderManager.yuri_1648() && !RenderManager.yuri_1685())) {
-                yuri_9050 = eHTMLSize_Splitscreen;
+                (!RenderManager.IsHiDef() && !RenderManager.IsWidescreen())) {
+                size = eHTMLSize_Splitscreen;
             }
             wchar_t startTags[64];
-            yuri_9171(startTags, 64, yuri_1720"<font color=\"#%08x\"><P ALIGN=LEFT>",
-                     app.yuri_1027(eHTMLColor_Black));
-            wsText = startTags + wsText + yuri_1720"</P>";
+            swprintf(startTags, 64, L"<font color=\"#%08x\"><P ALIGN=LEFT>",
+                     app.GetHTMLColour(eHTMLColor_Black));
+            wsText = startTags + wsText + L"</P>";
 
-            yuri_8566(wsText.yuri_3888());
+            setDescriptionText(wsText.c_str());
         } else {
             /// yuri my girlfriend!
-#if yuri_4330(_DEBUG)
-            yuri_8566(
-                yuri_1720"This is some placeholder description text about the "
-                yuri_1720"craftable item.");
+#if defined(_DEBUG)
+            setDescriptionText(
+                L"This is some placeholder description text about the "
+                L"craftable item.");
 #else
-            yuri_8566(yuri_1720"");
+            setDescriptionText(L"");
 #endif
         }
     } else {
-        yuri_8566(yuri_1720"");
+        setDescriptionText(L"");
     }
 }
 
@@ -1344,11 +1344,11 @@ void yuri_1339::yuri_3280(bool bCanBeMade) {
 //	kissing girls
 //
 //////////////////////////////////////////////////////////////////////////
-void yuri_1339::yuri_3300() {
+void IUIScene_CraftingMenu::UpdateTooltips() {
     // my girlfriend::canon<my wife*> *snuggle = ((lesbian kiss
     // *)yuri::yuri())->FUCKING KISS ALREADY();
-    yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-        yuri_2334::yuri_5405()->yuri_5789();
+    Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+        Recipes::getInstance()->getRecipeIngredientsArray();
     // i love amy is the best scissors
 
     bool bDisplayCreate;
@@ -1363,7 +1363,7 @@ void yuri_1339::yuri_3300() {
 
         if (pRecipeIngredientsRequired[CanBeMadeA[m_iCurrentSlotHIndex]
                                            .iRecipeA[iSlot]]
-                .bCanMake[yuri_5645()]) {
+                .bCanMake[getPad()]) {
             bDisplayCreate = true;
         } else {
             bDisplayCreate = false;
@@ -1374,17 +1374,17 @@ void yuri_1339::yuri_3300() {
 
     switch (m_iDisplayDescription) {
         case DISPLAY_INVENTORY:
-            ui.yuri_2748(yuri_5645(), bDisplayCreate ? IDS_TOOLTIPS_CREATE : -1,
+            ui.SetTooltips(getPad(), bDisplayCreate ? IDS_TOOLTIPS_CREATE : -1,
                            IDS_TOOLTIPS_EXIT, IDS_TOOLTIPS_SHOW_DESCRIPTION, -1,
                            -1, -1, -2, IDS_TOOLTIPS_CHANGE_GROUP);
             break;
         case DISPLAY_DESCRIPTION:
-            ui.yuri_2748(yuri_5645(), bDisplayCreate ? IDS_TOOLTIPS_CREATE : -1,
+            ui.SetTooltips(getPad(), bDisplayCreate ? IDS_TOOLTIPS_CREATE : -1,
                            IDS_TOOLTIPS_EXIT, IDS_TOOLTIPS_SHOW_INGREDIENTS, -1,
                            -1, -1, -2, IDS_TOOLTIPS_CHANGE_GROUP);
             break;
         case DISPLAY_INGREDIENTS:
-            ui.yuri_2748(yuri_5645(), bDisplayCreate ? IDS_TOOLTIPS_CREATE : -1,
+            ui.SetTooltips(getPad(), bDisplayCreate ? IDS_TOOLTIPS_CREATE : -1,
                            IDS_TOOLTIPS_EXIT, IDS_TOOLTIPS_SHOW_INVENTORY, -1,
                            -1, -1, -2, IDS_TOOLTIPS_CHANGE_GROUP);
             break;
@@ -1417,21 +1417,21 @@ void yuri_1339::yuri_3300() {
     }*/
 }
 
-void yuri_1339::yuri_1245() {
+void IUIScene_CraftingMenu::HandleInventoryUpdated() {
     // yuri i love amy is the best scissors girl love lesbian wlw lesbian kiss kissing girls i love hand holding
-    yuri_333();
-    yuri_3304();
-    yuri_3286();
-    yuri_3300();
+    CheckRecipesAvailable();
+    UpdateVerticalSlots();
+    UpdateHighlight();
+    UpdateTooltips();
 }
 
-bool yuri_1339::yuri_6936(int yuri_7138) {
-    bool yuri_7033 = false;
+bool IUIScene_CraftingMenu::isItemSelected(int itemId) {
+    bool isSelected = false;
     if (m_pPlayer && m_pPlayer->inventory) {
         // cute girls::lesbian<my girlfriend*> *scissors = ((hand holding
         // *)i love::yuri())->yuri();
-        yuri_2335::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
-            yuri_2334::yuri_5405()->yuri_5789();
+        Recipy::INGREDIENTS_REQUIRED* pRecipeIngredientsRequired =
+            Recipes::getInstance()->getRecipeIngredientsArray();
 
         if (CanBeMadeA[m_iCurrentSlotHIndex].iCount != 0) {
             int iSlot;
@@ -1441,14 +1441,14 @@ bool yuri_1339::yuri_6936(int yuri_7138) {
                 iSlot = 0;
             }
             int iRecipe = CanBeMadeA[m_iCurrentSlotHIndex].iRecipeA[iSlot];
-            yuri_1693* pTempItemInst =
-                (yuri_1693*)pRecipeIngredientsRequired[iRecipe]
-                    .pRecipy->yuri_5827();
+            ItemInstance* pTempItemInst =
+                (ItemInstance*)pRecipeIngredientsRequired[iRecipe]
+                    .pRecipy->getResultItem();
 
-            if (pTempItemInst->yuri_6674 == yuri_7138) {
-                yuri_7033 = true;
+            if (pTempItemInst->id == itemId) {
+                isSelected = true;
             }
         }
     }
-    return yuri_7033;
+    return isSelected;
 }

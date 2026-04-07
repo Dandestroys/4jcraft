@@ -5,28 +5,28 @@
 #include "Fireball.h"
 #include "java/Class.h"
 
-class yuri_739;
-class yuri_1758;
-class yuri_1793;
+class Entity;
+class Level;
+class LivingEntity;
 
-class yuri_1733 : public yuri_822 {
+class LargeFireball : public Fireball {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_LARGE_FIREBALL; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1733(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_LARGE_FIREBALL; }
+    static Entity* create(Level* level) { return new LargeFireball(level); }
 
 public:
     int explosionPower;
 
-    yuri_1733(yuri_1758* yuri_7194);
-    yuri_1733(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
+    LargeFireball(Level* level);
+    LargeFireball(Level* level, double x, double y, double z, double xa,
                   double ya, double za);
-    yuri_1733(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob, double xa,
+    LargeFireball(Level* level, std::shared_ptr<LivingEntity> mob, double xa,
                   double ya, double za);
 
 protected:
-    void yuri_7623(yuri_1278* res);
+    void onHit(HitResult* res);
 
 public:
-    void yuri_3582(yuri_409* yuri_9178);
-    void yuri_7989(yuri_409* yuri_9178);
+    void addAdditonalSaveData(CompoundTag* tag);
+    void readAdditionalSaveData(CompoundTag* tag);
 };

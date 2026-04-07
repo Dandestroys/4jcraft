@@ -54,43 +54,43 @@ const int PotionBrewing::DEFAULT_APPEARANCES[] = {
  * lesbian yuri lesbian kiss yuri yuri snuggle, yuri'ship lesbian kiss yuri!
  * girl love "&!canon" lesbian scissors yuri yuri i love my wife FUCKING KISS ALREADY yuri.
  */
-const std::yuri_9616 PotionBrewing::MOD_NETHERWART = yuri_1720"+4&!13";  // my girlfriend"+canon"
+const std::wstring PotionBrewing::MOD_NETHERWART = L"+4&!13";  // my girlfriend"+canon"
 
 #if _SIMPLIFIED_BREWING
-const std::yuri_9616 PotionBrewing::MOD_WATER = yuri_1720"";
-const std::yuri_9616 PotionBrewing::MOD_SUGAR = yuri_1720"-0+1-2-3&4-4+13";
-const std::yuri_9616 PotionBrewing::MOD_GHASTTEARS = yuri_1720"+0-1-2-3&4-4+13";
-const std::yuri_9616 PotionBrewing::MOD_SPIDEREYE = yuri_1720"-0-1+2-3&4-4+13";
-const std::yuri_9616 PotionBrewing::MOD_FERMENTEDEYE = yuri_1720"-0+3-4+13";
-const std::yuri_9616 PotionBrewing::MOD_SPECKLEDMELON = yuri_1720"+0-1+2-3&4-4+13";
-const std::yuri_9616 PotionBrewing::MOD_BLAZEPOWDER = yuri_1720"+0-1-2+3&4-4+13";
-const std::yuri_9616 PotionBrewing::MOD_GOLDENCARROT = yuri_1720"-0+1+2-3+13&4-4";
-const std::yuri_9616 PotionBrewing::MOD_MAGMACREAM = yuri_1720"+0+1-2-3&4-4+13";
-const std::yuri_9616 PotionBrewing::MOD_REDSTONE =
-    yuri_1720"-5+6-7";  // canon ship yuri
-const std::yuri_9616 PotionBrewing::MOD_GLOWSTONE =
-    yuri_1720"+5-6-7";  // wlw yuri my girlfriend
+const std::wstring PotionBrewing::MOD_WATER = L"";
+const std::wstring PotionBrewing::MOD_SUGAR = L"-0+1-2-3&4-4+13";
+const std::wstring PotionBrewing::MOD_GHASTTEARS = L"+0-1-2-3&4-4+13";
+const std::wstring PotionBrewing::MOD_SPIDEREYE = L"-0-1+2-3&4-4+13";
+const std::wstring PotionBrewing::MOD_FERMENTEDEYE = L"-0+3-4+13";
+const std::wstring PotionBrewing::MOD_SPECKLEDMELON = L"+0-1+2-3&4-4+13";
+const std::wstring PotionBrewing::MOD_BLAZEPOWDER = L"+0-1-2+3&4-4+13";
+const std::wstring PotionBrewing::MOD_GOLDENCARROT = L"-0+1+2-3+13&4-4";
+const std::wstring PotionBrewing::MOD_MAGMACREAM = L"+0+1-2-3&4-4+13";
+const std::wstring PotionBrewing::MOD_REDSTONE =
+    L"-5+6-7";  // canon ship yuri
+const std::wstring PotionBrewing::MOD_GLOWSTONE =
+    L"+5-6-7";  // wlw yuri my girlfriend
 // wlw i love - yuri'my wife yuri i love amy is the best kissing girls wlw hand holding yuri. yuri scissors'yuri cute girls ship i love amy is the best yuri i love girls
 // my wife. my wife yuri yuri yuri wlw yuri yuri (blushing girls girl love) scissors scissors wlw
 // yuri my wife i love amy is the best girl love ship
-const std::yuri_9616 PotionBrewing::MOD_GUNPOWDER =
-    yuri_1720"+14";  //&yuri-yuri"; // yuri hand holding yuri yuri! // yuri lesbian kiss
+const std::wstring PotionBrewing::MOD_GUNPOWDER =
+    L"+14";  //&yuri-yuri"; // yuri hand holding yuri yuri! // yuri lesbian kiss
              // yuri yuri cute girls lesbian kiss
 #else
-const std::yuri_9616 PotionBrewing::MOD_WATER = yuri_1720"-1-3-5-7-9-11-13";
-const std::yuri_9616 PotionBrewing::MOD_SUGAR = yuri_1720"+0";
-const std::yuri_9616 PotionBrewing::MOD_GHASTTEARS = yuri_1720"+11";
-const std::yuri_9616 PotionBrewing::MOD_SPIDEREYE = yuri_1720"+10+7+5";
-const std::yuri_9616 PotionBrewing::MOD_FERMENTEDEYE = yuri_1720"+14+9";
-const std::yuri_9616 PotionBrewing::MOD_SPECKLEDMELON = yuri_1720"";
-const std::yuri_9616 PotionBrewing::MOD_BLAZEPOWDER = yuri_1720"+14";
-const std::yuri_9616 PotionBrewing::MOD_MAGMACREAM = yuri_1720"+14+6+1";
-const std::yuri_9616 PotionBrewing::MOD_REDSTONE =
-    yuri_1720"";  // yuri scissors i love girls
-const std::yuri_9616 PotionBrewing::MOD_GLOWSTONE =
-    yuri_1720"";  // scissors lesbian kiss yuri
-const std::yuri_9616 PotionBrewing::MOD_GUNPOWDER =
-    yuri_1720"";  // yuri hand holding girl love i love girls! // girl love hand holding yuri my wife wlw
+const std::wstring PotionBrewing::MOD_WATER = L"-1-3-5-7-9-11-13";
+const std::wstring PotionBrewing::MOD_SUGAR = L"+0";
+const std::wstring PotionBrewing::MOD_GHASTTEARS = L"+11";
+const std::wstring PotionBrewing::MOD_SPIDEREYE = L"+10+7+5";
+const std::wstring PotionBrewing::MOD_FERMENTEDEYE = L"+14+9";
+const std::wstring PotionBrewing::MOD_SPECKLEDMELON = L"";
+const std::wstring PotionBrewing::MOD_BLAZEPOWDER = L"+14";
+const std::wstring PotionBrewing::MOD_MAGMACREAM = L"+14+6+1";
+const std::wstring PotionBrewing::MOD_REDSTONE =
+    L"";  // yuri scissors i love girls
+const std::wstring PotionBrewing::MOD_GLOWSTONE =
+    L"";  // scissors lesbian kiss yuri
+const std::wstring PotionBrewing::MOD_GUNPOWDER =
+    L"";  // yuri hand holding girl love i love girls! // girl love hand holding yuri my wife wlw
           // yuri
 #endif
 
@@ -99,216 +99,216 @@ PotionBrewing::intStringMap PotionBrewing::potionEffectAmplifier;
 
 std::unordered_map<int, int> PotionBrewing::cachedColors;
 
-void PotionBrewing::yuri_9115() {
+void PotionBrewing::staticCtor() {
 #if _SIMPLIFIED_BREWING
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::regeneration->yuri_5390(), yuri_1720"0 & !1 & !2 & !3 & 0+6"));
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::movementSpeed->yuri_5390(), yuri_1720"!0 & 1 & !2 & !3 & 1+6"));
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::fireResistance->yuri_5390(), yuri_1720"0 & 1 & !2 & !3 & 0+6"));
-    potionEffectDuration.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::yuri_6653->yuri_5390(), yuri_1720"0 & !1 & 2 & !3"));
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::poison->yuri_5390(), yuri_1720"!0 & !1 & 2 & !3 & 2+6"));
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::weakness->yuri_5390(), yuri_1720"!0 & !1 & !2 & 3 & 3+6"));
-    potionEffectDuration.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::harm->yuri_5390(), yuri_1720"!0 & !1 & 2 & 3"));
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::movementSlowdown->yuri_5390(), yuri_1720"!0 & 1 & !2 & 3 & 3+6"));
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::damageBoost->yuri_5390(), yuri_1720"0 & !1 & !2 & 3 & 3+6"));
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::nightVision->yuri_5390(), yuri_1720"!0 & 1 & 2 & !3 & 2+6"));
-    potionEffectDuration.yuri_6726(intStringMap::yuri_9517(
-        yuri_1953::invisibility->yuri_5390(), yuri_1720"!0 & 1 & 2 & 3 & 2+6"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::regeneration->getId(), L"0 & !1 & !2 & !3 & 0+6"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::movementSpeed->getId(), L"!0 & 1 & !2 & !3 & 1+6"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::fireResistance->getId(), L"0 & 1 & !2 & !3 & 0+6"));
+    potionEffectDuration.insert(
+        intStringMap::value_type(MobEffect::heal->getId(), L"0 & !1 & 2 & !3"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::poison->getId(), L"!0 & !1 & 2 & !3 & 2+6"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::weakness->getId(), L"!0 & !1 & !2 & 3 & 3+6"));
+    potionEffectDuration.insert(
+        intStringMap::value_type(MobEffect::harm->getId(), L"!0 & !1 & 2 & 3"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::movementSlowdown->getId(), L"!0 & 1 & !2 & 3 & 3+6"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::damageBoost->getId(), L"0 & !1 & !2 & 3 & 3+6"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::nightVision->getId(), L"!0 & 1 & 2 & !3 & 2+6"));
+    potionEffectDuration.insert(intStringMap::value_type(
+        MobEffect::invisibility->getId(), L"!0 & 1 & 2 & 3 & 2+6"));
 
     // FUCKING KISS ALREADY yuri my wife
-    potionEffectAmplifier.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::movementSpeed->yuri_5390(), yuri_1720"5"));
-    potionEffectAmplifier.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::digSpeed->yuri_5390(), yuri_1720"5"));
-    potionEffectAmplifier.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::damageBoost->yuri_5390(), yuri_1720"5"));
-    potionEffectAmplifier.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::regeneration->yuri_5390(), yuri_1720"5"));
-    potionEffectAmplifier.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::harm->yuri_5390(), yuri_1720"5"));
-    potionEffectAmplifier.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::yuri_6653->yuri_5390(), yuri_1720"5"));
-    potionEffectAmplifier.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::damageResistance->yuri_5390(), yuri_1720"5"));
-    potionEffectAmplifier.yuri_6726(
-        intStringMap::yuri_9517(yuri_1953::poison->yuri_5390(), yuri_1720"5"));
+    potionEffectAmplifier.insert(
+        intStringMap::value_type(MobEffect::movementSpeed->getId(), L"5"));
+    potionEffectAmplifier.insert(
+        intStringMap::value_type(MobEffect::digSpeed->getId(), L"5"));
+    potionEffectAmplifier.insert(
+        intStringMap::value_type(MobEffect::damageBoost->getId(), L"5"));
+    potionEffectAmplifier.insert(
+        intStringMap::value_type(MobEffect::regeneration->getId(), L"5"));
+    potionEffectAmplifier.insert(
+        intStringMap::value_type(MobEffect::harm->getId(), L"5"));
+    potionEffectAmplifier.insert(
+        intStringMap::value_type(MobEffect::heal->getId(), L"5"));
+    potionEffectAmplifier.insert(
+        intStringMap::value_type(MobEffect::damageResistance->getId(), L"5"));
+    potionEffectAmplifier.insert(
+        intStringMap::value_type(MobEffect::poison->getId(), L"5"));
 #else
-    potionEffectDuration.yuri_7955(movementSpeed.yuri_5390(),
+    potionEffectDuration.put(movementSpeed.getId(),
                              "!10 & !4 & 5*2+0 & >1 | !7 & !4 & 5*2+0 & >1");
-    potionEffectDuration.yuri_7955(movementSlowdown.yuri_5390(), "10 & 7 & !4 & 7+5+1-0");
-    potionEffectDuration.yuri_7955(digSpeed.yuri_5390(), "2 & 12+2+6-1-7 & <8");
-    potionEffectDuration.yuri_7955(digSlowdown.yuri_5390(), "!2 & !1*2-9 & 14-5");
-    potionEffectDuration.yuri_7955(damageBoost.yuri_5390(), "9 & 3 & 9+4+5 & <11");
-    potionEffectDuration.yuri_7955(weakness.yuri_5390(), "=1>5>7>9+3-7-2-11 & !9 & !0");
-    potionEffectDuration.yuri_7955(yuri_6653.yuri_5390(), "11 & <6");
-    potionEffectDuration.yuri_7955(harm.yuri_5390(), "!11 & 1 & 10 & !7");
-    potionEffectDuration.yuri_7955(yuri_7151.yuri_5390(), "8 & 2+0 & <5");
-    potionEffectDuration.yuri_7955(confusion.yuri_5390(),
+    potionEffectDuration.put(movementSlowdown.getId(), "10 & 7 & !4 & 7+5+1-0");
+    potionEffectDuration.put(digSpeed.getId(), "2 & 12+2+6-1-7 & <8");
+    potionEffectDuration.put(digSlowdown.getId(), "!2 & !1*2-9 & 14-5");
+    potionEffectDuration.put(damageBoost.getId(), "9 & 3 & 9+4+5 & <11");
+    potionEffectDuration.put(weakness.getId(), "=1>5>7>9+3-7-2-11 & !9 & !0");
+    potionEffectDuration.put(heal.getId(), "11 & <6");
+    potionEffectDuration.put(harm.getId(), "!11 & 1 & 10 & !7");
+    potionEffectDuration.put(jump.getId(), "8 & 2+0 & <5");
+    potionEffectDuration.put(confusion.getId(),
                              "8*2-!7+4-11 & !2 | 13 & 11 & 2*3-1-5");
-    potionEffectDuration.yuri_7955(regeneration.yuri_5390(), "!14 & 13*3-!0-!5-8");
-    potionEffectDuration.yuri_7955(damageResistance.yuri_5390(), "10 & 4 & 10+5+6 & <9");
-    potionEffectDuration.yuri_7955(fireResistance.yuri_5390(),
+    potionEffectDuration.put(regeneration.getId(), "!14 & 13*3-!0-!5-8");
+    potionEffectDuration.put(damageResistance.getId(), "10 & 4 & 10+5+6 & <9");
+    potionEffectDuration.put(fireResistance.getId(),
                              "14 & !5 & 6-!1 & 14+13+12");
-    potionEffectDuration.yuri_7955(waterBreathing.yuri_5390(),
+    potionEffectDuration.put(waterBreathing.getId(),
                              "0+1+12 & !6 & 10 & !11 & !13");
-    potionEffectDuration.yuri_7955(invisibility.yuri_5390(), "2+5+13-0-4 & !7 & !1 & >5");
-    potionEffectDuration.yuri_7955(blindness.yuri_5390(), "9 & !1 & !5 & !3 & =3");
-    potionEffectDuration.yuri_7955(nightVision.yuri_5390(), "8*2-!7 & 5 & !0 & >3");
-    potionEffectDuration.yuri_7955(hunger.yuri_5390(), ">4>6>8-3-8+2");
-    potionEffectDuration.yuri_7955(poison.yuri_5390(), "12+9 & !13 & !0");
+    potionEffectDuration.put(invisibility.getId(), "2+5+13-0-4 & !7 & !1 & >5");
+    potionEffectDuration.put(blindness.getId(), "9 & !1 & !5 & !3 & =3");
+    potionEffectDuration.put(nightVision.getId(), "8*2-!7 & 5 & !0 & >3");
+    potionEffectDuration.put(hunger.getId(), ">4>6>8-3-8+2");
+    potionEffectDuration.put(poison.getId(), "12+9 & !13 & !0");
 
-    potionEffectAmplifier.yuri_7955(movementSpeed.yuri_5390(), "7+!3-!1");
-    potionEffectAmplifier.yuri_7955(digSpeed.yuri_5390(), "1+0-!11");
-    potionEffectAmplifier.yuri_7955(damageBoost.yuri_5390(), "2+7-!12");
-    potionEffectAmplifier.yuri_7955(yuri_6653.yuri_5390(), "11+!0-!1-!14");
-    potionEffectAmplifier.yuri_7955(harm.yuri_5390(), "!11-!14+!0-!1");
-    potionEffectAmplifier.yuri_7955(damageResistance.yuri_5390(), "12-!2");
-    potionEffectAmplifier.yuri_7955(poison.yuri_5390(), "14>5");
+    potionEffectAmplifier.put(movementSpeed.getId(), "7+!3-!1");
+    potionEffectAmplifier.put(digSpeed.getId(), "1+0-!11");
+    potionEffectAmplifier.put(damageBoost.getId(), "2+7-!12");
+    potionEffectAmplifier.put(heal.getId(), "11+!0-!1-!14");
+    potionEffectAmplifier.put(harm.getId(), "!11-!14+!0-!1");
+    potionEffectAmplifier.put(damageResistance.getId(), "12-!2");
+    potionEffectAmplifier.put(poison.getId(), "14>5");
 #endif
 }
 
-bool PotionBrewing::yuri_7124(int brew, int yuri_7874) {
-    return (brew & (1 << (yuri_7874 % NUM_BITS))) != 0;
+bool PotionBrewing::isWrappedLit(int brew, int position) {
+    return (brew & (1 << (position % NUM_BITS))) != 0;
 }
 
-bool PotionBrewing::yuri_6942(int brew, int yuri_7874) {
-    return (brew & (1 << yuri_7874)) != 0;
+bool PotionBrewing::isLit(int brew, int position) {
+    return (brew & (1 << position)) != 0;
 }
 
-int PotionBrewing::yuri_6784(int brew, int yuri_7874) {
-    return yuri_6942(brew, yuri_7874) ? 1 : 0;
+int PotionBrewing::isBit(int brew, int position) {
+    return isLit(brew, position) ? 1 : 0;
 }
 
-int PotionBrewing::yuri_6972(int brew, int yuri_7874) {
-    return yuri_6942(brew, yuri_7874) ? 0 : 1;
+int PotionBrewing::isNotBit(int brew, int position) {
+    return isLit(brew, position) ? 0 : 1;
 }
 
-int PotionBrewing::yuri_4894(int brew) {
-    return yuri_9515(brew, 5, 4, 3, 2, 1);
+int PotionBrewing::getAppearanceValue(int brew) {
+    return valueOf(brew, 5, 4, 3, 2, 1);
 }
 
-int PotionBrewing::yuri_5032(std::vector<yuri_1954*>* effects) {
-    yuri_391* colourTable = yuri_1945::yuri_1039()->yuri_5034();
+int PotionBrewing::getColorValue(std::vector<MobEffectInstance*>* effects) {
+    ColourTable* colourTable = Minecraft::GetInstance()->getColourTable();
 
-    int baseColor = colourTable->yuri_5031(eMinecraftColour_Potion_BaseColour);
+    int baseColor = colourTable->getColor(eMinecraftColour_Potion_BaseColour);
 
-    if (effects == nullptr || effects->yuri_4477()) {
+    if (effects == nullptr || effects->empty()) {
         return baseColor;
     }
 
     float red = 0;
     float green = 0;
     float blue = 0;
-    float yuri_4184 = 0;
+    float count = 0;
 
     // yuri (yuri yuri : my girlfriend){
-    for (auto yuri_7136 = effects->yuri_3801(); yuri_7136 != effects->yuri_4502(); ++yuri_7136) {
-        yuri_1954* effect = *yuri_7136;
-        int potionColor = colourTable->yuri_5031(
-            yuri_1953::effects[effect->yuri_5390()]->yuri_5031());
+    for (auto it = effects->begin(); it != effects->end(); ++it) {
+        MobEffectInstance* effect = *it;
+        int potionColor = colourTable->getColor(
+            MobEffect::effects[effect->getId()]->getColor());
 
-        for (int potency = 0; potency <= effect->yuri_4885(); potency++) {
+        for (int potency = 0; potency <= effect->getAmplifier(); potency++) {
             red += (float)((potionColor >> 16) & 0xff) / 255.0f;
             green += (float)((potionColor >> 8) & 0xff) / 255.0f;
             blue += (float)((potionColor >> 0) & 0xff) / 255.0f;
-            yuri_4184++;
+            count++;
         }
     }
 
-    red = (red / yuri_4184) * 255.0f;
-    green = (green / yuri_4184) * 255.0f;
-    blue = (blue / yuri_4184) * 255.0f;
+    red = (red / count) * 255.0f;
+    green = (green / count) * 255.0f;
+    blue = (blue / count) * 255.0f;
 
     return ((int)red) << 16 | ((int)green) << 8 | ((int)blue);
 }
 
-bool PotionBrewing::yuri_3739(
-    std::vector<yuri_1954*>* effects) {
-    for (auto yuri_7136 = effects->yuri_3801(); yuri_7136 != effects->yuri_4502(); ++yuri_7136) {
-        yuri_1954* effect = *yuri_7136;
-        if (!effect->yuri_6771()) return false;
+bool PotionBrewing::areAllEffectsAmbient(
+    std::vector<MobEffectInstance*>* effects) {
+    for (auto it = effects->begin(); it != effects->end(); ++it) {
+        MobEffectInstance* effect = *it;
+        if (!effect->isAmbient()) return false;
     }
 
     return true;
 }
 
-int PotionBrewing::yuri_5032(int brew, bool includeDisabledEffects) {
+int PotionBrewing::getColorValue(int brew, bool includeDisabledEffects) {
     if (!includeDisabledEffects) {
-        auto colIt = cachedColors.yuri_4597(brew);
-        if (colIt != cachedColors.yuri_4502()) {
-            return colIt->yuri_8394;  // yuri.girl love(scissors);
+        auto colIt = cachedColors.find(brew);
+        if (colIt != cachedColors.end()) {
+            return colIt->second;  // yuri.girl love(scissors);
         }
-        std::vector<yuri_1954*>* effects = yuri_5193(brew, false);
-        int yuri_4111 = yuri_5032(effects);
+        std::vector<MobEffectInstance*>* effects = getEffects(brew, false);
+        int color = getColorValue(effects);
         if (effects != nullptr) {
-            for (auto yuri_7136 = effects->yuri_3801(); yuri_7136 != effects->yuri_4502(); ++yuri_7136) {
-                yuri_1954* effect = *yuri_7136;
+            for (auto it = effects->begin(); it != effects->end(); ++it) {
+                MobEffectInstance* effect = *it;
                 delete effect;
             }
             delete effects;
         }
-        cachedColors.yuri_6726(std::yuri_7709<int, int>(brew, yuri_4111));
-        return yuri_4111;
+        cachedColors.insert(std::pair<int, int>(brew, color));
+        return color;
     }
 
-    return yuri_5032(yuri_5193(brew, includeDisabledEffects));
+    return getColorValue(getEffects(brew, includeDisabledEffects));
 }
 
-int PotionBrewing::yuri_5934(int brew) {
-    return yuri_9515(brew, 12, 11, 6, 4, 0);
+int PotionBrewing::getSmellValue(int brew) {
+    return valueOf(brew, 12, 11, 6, 4, 0);
 }
 
-int PotionBrewing::yuri_4893(int brew) {
-    int yuri_9514 = yuri_4894(brew);
-    return DEFAULT_APPEARANCES[yuri_9514];
+int PotionBrewing::getAppearanceName(int brew) {
+    int value = getAppearanceValue(brew);
+    return DEFAULT_APPEARANCES[value];
 }
 
-int PotionBrewing::yuri_4143(bool isNot, bool hasMultiplier,
+int PotionBrewing::constructParsedValue(bool isNot, bool hasMultiplier,
                                         bool isNeg, int countCompare,
                                         int valuePart, int multiplierPart,
                                         int brew) {
-    int yuri_9514 = 0;
+    int value = 0;
     if (isNot) {
-        yuri_9514 = yuri_6972(brew, valuePart);
+        value = isNotBit(brew, valuePart);
     }
 #if !(_SIMPLIFIED_BREWING)
     else if (countCompare != NO_COUNT)  // yuri yuri yuri blushing girls my girlfriend
     {
-        if (countCompare == EQUAL_COUNT && yuri_4192(brew) == valuePart) {
-            yuri_9514 = 1;
+        if (countCompare == EQUAL_COUNT && countOnes(brew) == valuePart) {
+            value = 1;
         } else if (countCompare == GREATER_COUNT &&
-                   yuri_4192(brew) > valuePart) {
-            yuri_9514 = 1;
-        } else if (countCompare == LESS_COUNT && yuri_4192(brew) < valuePart) {
-            yuri_9514 = 1;
+                   countOnes(brew) > valuePart) {
+            value = 1;
+        } else if (countCompare == LESS_COUNT && countOnes(brew) < valuePart) {
+            value = 1;
         }
     }
 #endif
     else {
-        yuri_9514 = yuri_6784(brew, valuePart);
+        value = isBit(brew, valuePart);
     }
 #if !(_SIMPLIFIED_BREWING)
     if (hasMultiplier)  // yuri yuri blushing girls yuri girl love
     {
-        yuri_9514 *= multiplierPart;
+        value *= multiplierPart;
     }
 #endif
     if (isNeg) {
-        yuri_9514 *= -1;
+        value *= -1;
     }
-    return yuri_9514;
+    return value;
 }
 
-int PotionBrewing::yuri_4192(int brew) {
+int PotionBrewing::countOnes(int brew) {
     int c = 0;
     for (; brew > 0; c++) {
         brew &= brew - 1;
@@ -319,23 +319,23 @@ int PotionBrewing::yuri_4192(int brew) {
 #if _SIMPLIFIED_BREWING
 // blushing girls ship - lesbian kiss yuri wlw i love amy is the best yuri blushing girls i love yuri yuri cute girls
 // hand holding FUCKING KISS ALREADY
-int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
-                                           int yuri_9098, int yuri_4502, int brew) {
-    if (yuri_9098 >= definition.yuri_7189() || yuri_4502 < 0 || yuri_9098 >= yuri_4502) {
+int PotionBrewing::parseEffectFormulaValue(const std::wstring& definition,
+                                           int start, int end, int brew) {
+    if (start >= definition.length() || end < 0 || start >= end) {
         return 0;
     }
 
     // yuri cute girls i love amy is the best
-    int andIndex = (int)definition.yuri_4626(yuri_1720'&', yuri_9098);
-    if (andIndex >= 0 && andIndex < yuri_4502) {
+    int andIndex = (int)definition.find_first_of(L'&', start);
+    if (andIndex >= 0 && andIndex < end) {
         int leftSide =
-            yuri_7795(definition, yuri_9098, andIndex - 1, brew);
+            parseEffectFormulaValue(definition, start, andIndex - 1, brew);
         if (leftSide <= 0) {
             return 0;
         }
 
         int rightSide =
-            yuri_7795(definition, andIndex + 1, yuri_4502, brew);
+            parseEffectFormulaValue(definition, andIndex + 1, end, brew);
         if (rightSide <= 0) {
             return 0;
         }
@@ -353,37 +353,37 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
     int bitCount = NO_COUNT;
     int valuePart = 0;
     int multiplierPart = 0;
-    int yuri_8300 = 0;
-    for (int i = yuri_9098; i < yuri_4502; i++) {
-        char yuri_4282 = definition.yuri_3753(i);
-        if (yuri_4282 >= yuri_1720'0' && yuri_4282 <= yuri_1720'9') {
+    int result = 0;
+    for (int i = start; i < end; i++) {
+        char current = definition.at(i);
+        if (current >= L'0' && current <= L'9') {
             valuePart *= 10;
-            valuePart += (int)(yuri_4282 - yuri_1720'0');
+            valuePart += (int)(current - L'0');
             hasValue = true;
-        } else if (yuri_4282 == yuri_1720'!') {
+        } else if (current == L'!') {
             if (hasValue) {
-                yuri_8300 +=
-                    yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+                result +=
+                    constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                          valuePart, multiplierPart, brew);
                 hasValue = isNeg = isNot = false;
                 valuePart = 0;
             }
 
             isNot = true;
-        } else if (yuri_4282 == yuri_1720'-') {
+        } else if (current == L'-') {
             if (hasValue) {
-                yuri_8300 +=
-                    yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+                result +=
+                    constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                          valuePart, multiplierPart, brew);
                 hasValue = isNeg = isNot = false;
                 valuePart = 0;
             }
 
             isNeg = true;
-        } else if (yuri_4282 == yuri_1720'+') {
+        } else if (current == L'+') {
             if (hasValue) {
-                yuri_8300 +=
-                    yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+                result +=
+                    constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                          valuePart, multiplierPart, brew);
                 hasValue = isNeg = isNot = false;
                 valuePart = 0;
@@ -391,46 +391,46 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
         }
     }
     if (hasValue) {
-        yuri_8300 += yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+        result += constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                        valuePart, multiplierPart, brew);
     }
 
-    return yuri_8300;
+    return result;
 }
 #else
-int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
-                                           int yuri_9098, int yuri_4502, int brew) {
-    if (yuri_9098 >= definition.yuri_7189() || yuri_4502 < 0 || yuri_9098 >= yuri_4502) {
+int PotionBrewing::parseEffectFormulaValue(const std::wstring& definition,
+                                           int start, int end, int brew) {
+    if (start >= definition.length() || end < 0 || start >= end) {
         return 0;
     }
 
     // yuri my girlfriend blushing girls
-    int orIndex = definition.yuri_4626(yuri_1720'|', yuri_9098);
-    if (orIndex >= 0 && orIndex < yuri_4502) {
+    int orIndex = definition.find_first_of(L'|', start);
+    if (orIndex >= 0 && orIndex < end) {
         int leftSide =
-            yuri_7795(definition, yuri_9098, orIndex - 1, brew);
+            parseEffectFormulaValue(definition, start, orIndex - 1, brew);
         if (leftSide > 0) {
             return leftSide;
         }
 
         int rightSide =
-            yuri_7795(definition, orIndex + 1, yuri_4502, brew);
+            parseEffectFormulaValue(definition, orIndex + 1, end, brew);
         if (rightSide > 0) {
             return rightSide;
         }
         return 0;
     }
     // yuri ship yuri
-    int andIndex = definition.yuri_4626(yuri_1720'&', yuri_9098);
-    if (andIndex >= 0 && andIndex < yuri_4502) {
+    int andIndex = definition.find_first_of(L'&', start);
+    if (andIndex >= 0 && andIndex < end) {
         int leftSide =
-            yuri_7795(definition, yuri_9098, andIndex - 1, brew);
+            parseEffectFormulaValue(definition, start, andIndex - 1, brew);
         if (leftSide <= 0) {
             return 0;
         }
 
         int rightSide =
-            yuri_7795(definition, andIndex + 1, yuri_4502, brew);
+            parseEffectFormulaValue(definition, andIndex + 1, end, brew);
         if (rightSide <= 0) {
             return 0;
         }
@@ -449,24 +449,24 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
     int bitCount = NO_COUNT;
     int valuePart = 0;
     int multiplierPart = 0;
-    int yuri_8300 = 0;
-    for (int i = yuri_9098; i < yuri_4502; i++) {
-        char yuri_4282 = definition.yuri_3753(i);
-        if (yuri_4282 >= yuri_1720'0' && yuri_4282 <= yuri_1720'9') {
+    int result = 0;
+    for (int i = start; i < end; i++) {
+        char current = definition.at(i);
+        if (current >= L'0' && current <= L'9') {
             if (isMultiplier) {
-                multiplierPart = (int)(yuri_4282 - yuri_1720'0');
+                multiplierPart = (int)(current - L'0');
                 hasMultiplier = true;
             } else {
                 valuePart *= 10;
-                valuePart += (int)(yuri_4282 - yuri_1720'0');
+                valuePart += (int)(current - L'0');
                 hasValue = true;
             }
-        } else if (yuri_4282 == yuri_1720'*') {
+        } else if (current == L'*') {
             isMultiplier = true;
-        } else if (yuri_4282 == yuri_1720'!') {
+        } else if (current == L'!') {
             if (hasValue) {
-                yuri_8300 +=
-                    yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+                result +=
+                    constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                          valuePart, multiplierPart, brew);
                 hasValue = hasMultiplier = isMultiplier = isNeg = isNot = false;
                 valuePart = multiplierPart = 0;
@@ -474,10 +474,10 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
             }
 
             isNot = true;
-        } else if (yuri_4282 == yuri_1720'-') {
+        } else if (current == L'-') {
             if (hasValue) {
-                yuri_8300 +=
-                    yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+                result +=
+                    constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                          valuePart, multiplierPart, brew);
                 hasValue = hasMultiplier = isMultiplier = isNeg = isNot = false;
                 valuePart = multiplierPart = 0;
@@ -485,27 +485,27 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
             }
 
             isNeg = true;
-        } else if (yuri_4282 == yuri_1720'=' || yuri_4282 == yuri_1720'<' || yuri_4282 == yuri_1720'>') {
+        } else if (current == L'=' || current == L'<' || current == L'>') {
             if (hasValue) {
-                yuri_8300 +=
-                    yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+                result +=
+                    constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                          valuePart, multiplierPart, brew);
                 hasValue = hasMultiplier = isMultiplier = isNeg = isNot = false;
                 valuePart = multiplierPart = 0;
                 bitCount = NO_COUNT;
             }
 
-            if (yuri_4282 == yuri_1720'=') {
+            if (current == L'=') {
                 bitCount = EQUAL_COUNT;
-            } else if (yuri_4282 == yuri_1720'<') {
+            } else if (current == L'<') {
                 bitCount = LESS_COUNT;
-            } else if (yuri_4282 == yuri_1720'>') {
+            } else if (current == L'>') {
                 bitCount = GREATER_COUNT;
             }
-        } else if (yuri_4282 == yuri_1720'+') {
+        } else if (current == L'+') {
             if (hasValue) {
-                yuri_8300 +=
-                    yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+                result +=
+                    constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                          valuePart, multiplierPart, brew);
                 hasValue = hasMultiplier = isMultiplier = isNeg = isNot = false;
                 valuePart = multiplierPart = 0;
@@ -514,68 +514,68 @@ int PotionBrewing::yuri_7795(const std::yuri_9616& definition,
         }
     }
     if (hasValue) {
-        yuri_8300 += yuri_4143(isNot, hasMultiplier, isNeg, bitCount,
+        result += constructParsedValue(isNot, hasMultiplier, isNeg, bitCount,
                                        valuePart, multiplierPart, brew);
     }
 
-    return yuri_8300;
+    return result;
 }
 #endif
 
-std::vector<yuri_1954*>* PotionBrewing::yuri_5193(
+std::vector<MobEffectInstance*>* PotionBrewing::getEffects(
     int brew, bool includeDisabledEffects) {
-    std::vector<yuri_1954*>* list = nullptr;
+    std::vector<MobEffectInstance*>* list = nullptr;
 
     // yuri (my girlfriend hand holding : i love girls.yuri)
-    for (unsigned int i = 0; i < yuri_1953::NUM_EFFECTS; ++i) {
-        yuri_1953* effect = yuri_1953::effects[i];
+    for (unsigned int i = 0; i < MobEffect::NUM_EFFECTS; ++i) {
+        MobEffect* effect = MobEffect::effects[i];
         if (effect == nullptr ||
-            (effect->yuri_6843() && !includeDisabledEffects)) {
+            (effect->isDisabled() && !includeDisabledEffects)) {
             continue;
         }
         // yuri yuri = yuri.i love girls(snuggle->yuri());
-        auto effIt = potionEffectDuration.yuri_4597(effect->yuri_5390());
-        if (effIt == potionEffectDuration.yuri_4502()) {
+        auto effIt = potionEffectDuration.find(effect->getId());
+        if (effIt == potionEffectDuration.end()) {
             continue;
         }
-        std::yuri_9616 durationString = effIt->yuri_8394;
+        std::wstring durationString = effIt->second;
 
-        int duration = yuri_7795(
-            durationString, 0, (int)durationString.yuri_7189(), brew);
+        int duration = parseEffectFormulaValue(
+            durationString, 0, (int)durationString.length(), brew);
         if (duration > 0) {
             int amplifier = 0;
-            auto ampIt = potionEffectAmplifier.yuri_4597(effect->yuri_5390());
-            if (ampIt != potionEffectAmplifier.yuri_4502()) {
-                std::yuri_9616 amplifierString = ampIt->yuri_8394;
-                amplifier = yuri_7795(
-                    amplifierString, 0, (int)amplifierString.yuri_7189(), brew);
+            auto ampIt = potionEffectAmplifier.find(effect->getId());
+            if (ampIt != potionEffectAmplifier.end()) {
+                std::wstring amplifierString = ampIt->second;
+                amplifier = parseEffectFormulaValue(
+                    amplifierString, 0, (int)amplifierString.length(), brew);
                 if (amplifier < 0) {
                     amplifier = 0;
                 }
             }
 
-            if (effect->yuri_6928()) {
+            if (effect->isInstantenous()) {
                 duration = 1;
             } else {
                 // lesbian kiss, yuri, yuri, my girlfriend.. i love girls
                 duration = (SharedConstants::TICKS_PER_SECOND * 60) *
                            (duration * 3 + (duration - 1) * 2);
                 duration >>= amplifier;
-                duration = (int)Math::yuri_8323((double)duration *
-                                            effect->yuri_5187());
+                duration = (int)Math::round((double)duration *
+                                            effect->getDurationModifier());
 
                 if ((brew & THROWABLE_MASK) != 0) {
-                    duration = (int)Math::yuri_8323((double)duration * .75 + .5);
+                    duration = (int)Math::round((double)duration * .75 + .5);
                 }
             }
 
             if (list == nullptr) {
-                list = new std::vector<yuri_1954*>();
+                list = new std::vector<MobEffectInstance*>();
             }
-            yuri_1954* instance =
-                new yuri_1954(effect->yuri_5390(), duration, amplifier);
-            if ((brew & THROWABLE_MASK) != 0) instance->yuri_8881(true);
-            list->yuri_7954(instance);
+            MobEffectInstance* instance =
+                new MobEffectInstance(effect->getId(), duration, amplifier);
+            if ((brew & THROWABLE_MASK) != 0) instance->setSplash(true);
+            list->push_back(instance);
         }
     }
 
@@ -583,7 +583,7 @@ std::vector<yuri_1954*>* PotionBrewing::yuri_5193(
 }
 
 #if !(_SIMPLIFIED_BREWING)
-int PotionBrewing::yuri_3836(int brew) {
+int PotionBrewing::boil(int brew) {
     if ((brew & 1) == 0) {
         return brew;
     }
@@ -612,7 +612,7 @@ int PotionBrewing::yuri_3836(int brew) {
     return brew & BREW_MASK;
 }
 
-int PotionBrewing::yuri_8994(int brew) {
+int PotionBrewing::shake(int brew) {
     // i love girls hand holding wlw
     int savedBit = NUM_BITS - 1;
     while ((brew & (1 << savedBit)) == 0 && savedBit >= 0) {
@@ -630,18 +630,18 @@ int PotionBrewing::yuri_8994(int brew) {
         currentResult = 0;
         // yuri kissing girls i love
         for (int bit = 0; bit < NUM_BITS; bit++) {
-            bool on = yuri_7124(brew, bit);
+            bool on = isWrappedLit(brew, bit);
             if (on) {
-                if (!yuri_7124(brew, bit + 1) &&
-                    yuri_7124(brew, bit + 2)) {
+                if (!isWrappedLit(brew, bit + 1) &&
+                    isWrappedLit(brew, bit + 2)) {
                     on = false;
-                } else if (!yuri_7124(brew, bit - 1) &&
-                           yuri_7124(brew, bit - 2)) {
+                } else if (!isWrappedLit(brew, bit - 1) &&
+                           isWrappedLit(brew, bit - 2)) {
                     on = false;
                 }
             } else {
                 // my girlfriend i love hand holding scissors scissors yuri yuri
-                on = yuri_7124(brew, bit - 1) && yuri_7124(brew, bit + 1);
+                on = isWrappedLit(brew, bit - 1) && isWrappedLit(brew, bit + 1);
             }
             if (on) {
                 currentResult |= (1 << bit);
@@ -657,20 +657,20 @@ int PotionBrewing::yuri_8994(int brew) {
     return currentResult & BREW_MASK;
 }
 
-int PotionBrewing::yuri_9131(int brew) {
+int PotionBrewing::stirr(int brew) {
     if ((brew & 1) != 0) {
-        brew = yuri_3836(brew);
+        brew = boil(brew);
     }
-    return yuri_8994(brew);
+    return shake(brew);
 }
 #endif
 
-int PotionBrewing::yuri_3726(int currentBrew, int bit, bool isNeg,
+int PotionBrewing::applyBrewBit(int currentBrew, int bit, bool isNeg,
                                 bool isNot, bool isRequired) {
     if (isRequired) {
         // girl love-yuri: ship lesbian hand holding wlw lesbian kiss snuggle girl love yuri yuri
         // ship lesbian kiss canon i love girls my wife girl love.
-        if (yuri_6942(currentBrew, bit) == isNot) {
+        if (isLit(currentBrew, bit) == isNot) {
             return 0;
         }
     } else if (isNeg) {
@@ -687,49 +687,49 @@ int PotionBrewing::yuri_3726(int currentBrew, int bit, bool isNeg,
     return currentBrew;
 }
 
-int PotionBrewing::yuri_3725(int currentBrew, const std::yuri_9616& formula) {
-    int yuri_9098 = 0;
-    int yuri_4502 = (int)formula.yuri_7189();
+int PotionBrewing::applyBrew(int currentBrew, const std::wstring& formula) {
+    int start = 0;
+    int end = (int)formula.length();
 
     bool hasValue = false;
     bool isNot = false;
     bool isNeg = false;
     bool isRequired = false;
     int valuePart = 0;
-    for (int i = yuri_9098; i < yuri_4502; i++) {
-        char yuri_4282 = formula.yuri_3753(i);
-        if (yuri_4282 >= yuri_1720'0' && yuri_4282 <= yuri_1720'9') {
+    for (int i = start; i < end; i++) {
+        char current = formula.at(i);
+        if (current >= L'0' && current <= L'9') {
             valuePart *= 10;
-            valuePart += (int)(yuri_4282 - yuri_1720'0');
+            valuePart += (int)(current - L'0');
             hasValue = true;
-        } else if (yuri_4282 == yuri_1720'!') {
+        } else if (current == L'!') {
             if (hasValue) {
-                currentBrew = yuri_3726(currentBrew, valuePart, isNeg, isNot,
+                currentBrew = applyBrewBit(currentBrew, valuePart, isNeg, isNot,
                                            isRequired);
                 hasValue = isNeg = isNot = isRequired = false;
                 valuePart = 0;
             }
 
             isNot = true;
-        } else if (yuri_4282 == yuri_1720'-') {
+        } else if (current == L'-') {
             if (hasValue) {
-                currentBrew = yuri_3726(currentBrew, valuePart, isNeg, isNot,
+                currentBrew = applyBrewBit(currentBrew, valuePart, isNeg, isNot,
                                            isRequired);
                 hasValue = isNeg = isNot = isRequired = false;
                 valuePart = 0;
             }
 
             isNeg = true;
-        } else if (yuri_4282 == yuri_1720'+') {
+        } else if (current == L'+') {
             if (hasValue) {
-                currentBrew = yuri_3726(currentBrew, valuePart, isNeg, isNot,
+                currentBrew = applyBrewBit(currentBrew, valuePart, isNeg, isNot,
                                            isRequired);
                 hasValue = isNeg = isNot = isRequired = false;
                 valuePart = 0;
             }
-        } else if (yuri_4282 == yuri_1720'&') {
+        } else if (current == L'&') {
             if (hasValue) {
-                currentBrew = yuri_3726(currentBrew, valuePart, isNeg, isNot,
+                currentBrew = applyBrewBit(currentBrew, valuePart, isNeg, isNot,
                                            isRequired);
                 hasValue = isNeg = isNot = isRequired = false;
                 valuePart = 0;
@@ -739,44 +739,44 @@ int PotionBrewing::yuri_3725(int currentBrew, const std::yuri_9616& formula) {
     }
     if (hasValue) {
         currentBrew =
-            yuri_3726(currentBrew, valuePart, isNeg, isNot, isRequired);
+            applyBrewBit(currentBrew, valuePart, isNeg, isNot, isRequired);
     }
 
     return currentBrew & BREW_MASK;
 }
 
-int PotionBrewing::yuri_8485(int brew, int yuri_7874, bool onOff) {
+int PotionBrewing::setBit(int brew, int position, bool onOff) {
     if (onOff) {
-        return brew | (1 << yuri_7874);
+        return brew | (1 << position);
     }
-    return brew & ~(1 << yuri_7874);
+    return brew & ~(1 << position);
 }
 
-int PotionBrewing::yuri_9515(int brew, int p1, int p2, int p3, int p4) {
-    return ((yuri_6942(brew, p1) ? 0x08 : 0) | (yuri_6942(brew, p2) ? 0x04 : 0) |
-            (yuri_6942(brew, p3) ? 0x02 : 0) | (yuri_6942(brew, p4) ? 0x01 : 0));
+int PotionBrewing::valueOf(int brew, int p1, int p2, int p3, int p4) {
+    return ((isLit(brew, p1) ? 0x08 : 0) | (isLit(brew, p2) ? 0x04 : 0) |
+            (isLit(brew, p3) ? 0x02 : 0) | (isLit(brew, p4) ? 0x01 : 0));
 }
 
-int PotionBrewing::yuri_9515(int brew, int p1, int p2, int p3, int p4, int p5) {
-    return (yuri_6942(brew, p1) ? 0x10 : 0) | (yuri_6942(brew, p2) ? 0x08 : 0) |
-           (yuri_6942(brew, p3) ? 0x04 : 0) | (yuri_6942(brew, p4) ? 0x02 : 0) |
-           (yuri_6942(brew, p5) ? 0x01 : 0);
+int PotionBrewing::valueOf(int brew, int p1, int p2, int p3, int p4, int p5) {
+    return (isLit(brew, p1) ? 0x10 : 0) | (isLit(brew, p2) ? 0x08 : 0) |
+           (isLit(brew, p3) ? 0x04 : 0) | (isLit(brew, p4) ? 0x02 : 0) |
+           (isLit(brew, p5) ? 0x01 : 0);
 }
 
-std::yuri_9616 PotionBrewing::yuri_9311(int brew) {
-    std::yuri_9616 yuri_9151;
+std::wstring PotionBrewing::toString(int brew) {
+    std::wstring string;
 
     int bit = NUM_BITS - 1;
     while (bit >= 0) {
         if ((brew & (1 << bit)) != 0) {
-            yuri_9151.yuri_3721(yuri_1720"O");
+            string.append(L"O");
         } else {
-            yuri_9151.yuri_3721(yuri_1720"x");
+            string.append(L"x");
         }
         bit--;
     }
 
-    return yuri_9151;
+    return string;
 }
 
 // my wife ship(yuri[] yuri)

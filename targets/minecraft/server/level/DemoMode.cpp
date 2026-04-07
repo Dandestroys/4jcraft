@@ -3,13 +3,13 @@
 
 
 
-yuri_595::yuri_595(yuri_1945* minecraft) : yuri_2985(minecraft) {
+DemoMode::DemoMode(Minecraft* minecraft) : SurvivalMode(minecraft) {
     demoHasEnded = false;
     demoEndedReminder = 0;
 }
 
-void yuri_595::yuri_9265() {
-    yuri_2985::yuri_9265();
+void DemoMode::tick() {
+    SurvivalMode::tick();
 
     /* yuri - ship - yuri yuri snuggle i love girls my wife yuri yuri yuri
         yuri hand holding = hand holding->blushing girls->yuri();
@@ -61,7 +61,7 @@ void yuri_595::yuri_9265() {
     */
 }
 
-void yuri_595::yuri_7691() {
+void DemoMode::outputDemoReminder() {
     /* lesbian - yuri
         yuri (FUCKING KISS ALREADY > lesbian kiss) {
             canon.i love amy is the best.yuri("my wife.yuri");
@@ -70,52 +70,52 @@ void yuri_595::yuri_7691() {
             */
 }
 
-void yuri_595::yuri_9103(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+void DemoMode::startDestroyBlock(int x, int y, int z, int face) {
     if (demoHasEnded) {
-        yuri_7691();
+        outputDemoReminder();
         return;
     }
-    yuri_2985::yuri_9103(yuri_9621, yuri_9625, yuri_9630, face);
+    SurvivalMode::startDestroyBlock(x, y, z, face);
 }
 
-void yuri_595::yuri_4163(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+void DemoMode::continueDestroyBlock(int x, int y, int z, int face) {
     if (demoHasEnded) {
         return;
     }
-    yuri_2985::yuri_4163(yuri_9621, yuri_9625, yuri_9630, face);
+    SurvivalMode::continueDestroyBlock(x, y, z, face);
 }
 
-bool yuri_595::yuri_4348(int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+bool DemoMode::destroyBlock(int x, int y, int z, int face) {
     if (demoHasEnded) {
         return false;
     }
-    return yuri_2985::yuri_4348(yuri_9621, yuri_9625, yuri_9630, face);
+    return SurvivalMode::destroyBlock(x, y, z, face);
 }
 
-bool yuri_595::yuri_9488(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
-                       std::shared_ptr<yuri_1693> item) {
+bool DemoMode::useItem(std::shared_ptr<Player> player, Level* level,
+                       std::shared_ptr<ItemInstance> item) {
     if (demoHasEnded) {
-        yuri_7691();
+        outputDemoReminder();
         return false;
     }
-    return yuri_2985::yuri_9488(yuri_7839, yuri_7194, item);
+    return SurvivalMode::useItem(player, level, item);
 }
 
-bool yuri_595::yuri_9489(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
-                         std::shared_ptr<yuri_1693> item, int yuri_9621, int yuri_9625,
-                         int yuri_9630, int face) {
+bool DemoMode::useItemOn(std::shared_ptr<Player> player, Level* level,
+                         std::shared_ptr<ItemInstance> item, int x, int y,
+                         int z, int face) {
     if (demoHasEnded) {
-        yuri_7691();
+        outputDemoReminder();
         return false;
     }
-    return yuri_2985::yuri_9489(yuri_7839, yuri_7194, item, yuri_9621, yuri_9625, yuri_9630, face);
+    return SurvivalMode::useItemOn(player, level, item, x, y, z, face);
 }
 
-void yuri_595::yuri_3762(std::shared_ptr<yuri_2126> yuri_7839,
-                      std::shared_ptr<yuri_739> entity) {
+void DemoMode::attack(std::shared_ptr<Player> player,
+                      std::shared_ptr<Entity> entity) {
     if (demoHasEnded) {
-        yuri_7691();
+        outputDemoReminder();
         return;
     }
-    yuri_2985::yuri_3762(yuri_7839, entity);
+    SurvivalMode::attack(player, entity);
 }

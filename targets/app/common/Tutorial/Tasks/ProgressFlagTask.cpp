@@ -1,14 +1,14 @@
 #include "ProgressFlagTask.h"
 
-bool yuri_2183::yuri_6814() {
-    switch (yuri_7394) {
+bool ProgressFlagTask::isCompleted() {
+    switch (m_type) {
         case e_Progress_Set_Flag:
-            (*yuri_4638) |= yuri_7356;
-            yuri_3777 = true;
+            (*flags) |= m_mask;
+            bIsCompleted = true;
             break;
         case e_Progress_Flag_On:
-            yuri_3777 = ((*yuri_4638) & yuri_7356) == yuri_7356;
+            bIsCompleted = ((*flags) & m_mask) == m_mask;
             break;
     }
-    return yuri_3777;
+    return bIsCompleted;
 }

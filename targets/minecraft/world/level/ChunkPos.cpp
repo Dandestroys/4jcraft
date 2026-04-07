@@ -2,40 +2,40 @@
 #include "minecraft/world/level/ChunkPos.h"
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "util/StringHelpers.h"
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/level/TilePos.h"
 
-yuri_347::yuri_347(int yuri_9621, int yuri_9630) : yuri_9621(yuri_9621), yuri_9630(yuri_9630) {}
+ChunkPos::ChunkPos(int x, int z) : x(x), z(z) {}
 
-yuri_6733 yuri_347::yuri_6649(int yuri_9621, int yuri_9630) {
-    yuri_6733 xx = yuri_9621;
-    yuri_6733 zz = yuri_9630;
+int64_t ChunkPos::hashCode(int x, int z) {
+    int64_t xx = x;
+    int64_t zz = z;
     return (xx & 0xffffffffl) | ((zz & 0xffffffffl) << 32l);
 }
 
-int yuri_347::yuri_6649() {
-    yuri_6733 yuri_6648 = yuri_6649(yuri_9621, yuri_9630);
-    int h1 = (int)(yuri_6648);
-    int h2 = (int)(yuri_6648 >> 32l);
+int ChunkPos::hashCode() {
+    int64_t hash = hashCode(x, z);
+    int h1 = (int)(hash);
+    int h2 = (int)(hash >> 32l);
     return h1 ^ h2;
 }
 
-double yuri_347::yuri_4387(std::shared_ptr<yuri_739> e) {
-    double xPos = yuri_9621 * 16 + 8;
-    double zPos = yuri_9630 * 16 + 8;
+double ChunkPos::distanceToSqr(std::shared_ptr<Entity> e) {
+    double xPos = x * 16 + 8;
+    double zPos = z * 16 + 8;
 
-    double xd = xPos - e->yuri_9621;
-    double zd = zPos - e->yuri_9630;
+    double xd = xPos - e->x;
+    double zd = zPos - e->z;
 
     return xd * xd + zd * zd;
 }
 
-double yuri_347::yuri_4387(double px, double pz) {
-    double xPos = yuri_9621 * 16 + 8;
-    double zPos = yuri_9630 * 16 + 8;
+double ChunkPos::distanceToSqr(double px, double pz) {
+    double xPos = x * 16 + 8;
+    double zPos = z * 16 + 8;
 
     double xd = xPos - px;
     double zd = zPos - pz;
@@ -43,20 +43,20 @@ double yuri_347::yuri_4387(double px, double pz) {
     return xd * xd + zd * zd;
 }
 
-int yuri_347::yuri_5543() { return (yuri_9621 << 4) + 8; }
+int ChunkPos::getMiddleBlockX() { return (x << 4) + 8; }
 
-int yuri_347::yuri_5544() { return (yuri_9630 << 4) + 8; }
+int ChunkPos::getMiddleBlockZ() { return (z << 4) + 8; }
 
-yuri_3100 yuri_347::yuri_5542(int yuri_9625) {
-    return yuri_3100(yuri_5543(), yuri_9625, yuri_5544());
+TilePos ChunkPos::getMiddleBlockPosition(int y) {
+    return TilePos(getMiddleBlockX(), y, getMiddleBlockZ());
 }
 
-std::yuri_9616 yuri_347::yuri_9311() {
-    return yuri_1720"[" + yuri_9312<int>(yuri_9621) + yuri_1720", " + yuri_9312<int>(yuri_9630) + yuri_1720"]";
+std::wstring ChunkPos::toString() {
+    return L"[" + toWString<int>(x) + L", " + toWString<int>(z) + L"]";
 }
 
-yuri_6733 yuri_347::yuri_6650(const yuri_347& k) { return k.yuri_6649(k.yuri_9621, k.yuri_9630); }
+int64_t ChunkPos::hash_fnct(const ChunkPos& k) { return k.hashCode(k.x, k.z); }
 
-bool yuri_347::yuri_4527(const yuri_347& yuri_9621, const yuri_347& yuri_9625) {
-    return yuri_9621.yuri_9621 == yuri_9625.yuri_9621 && yuri_9621.yuri_9630 == yuri_9625.yuri_9630;
+bool ChunkPos::eq_test(const ChunkPos& x, const ChunkPos& y) {
+    return x.x == y.x && x.z == y.z;
 }

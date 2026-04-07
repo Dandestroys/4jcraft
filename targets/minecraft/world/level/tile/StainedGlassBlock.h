@@ -2,29 +2,29 @@
 
 #include "HalfTransparentTile.h"
 
-class yuri_1346;
-class yuri_1886;
+class Icon;
+class Material;
 
-class yuri_2894 : public yuri_1236 {
+class StainedGlassBlock : public HalfTransparentTile {
     friend class ChunkRebuildData;
 
 private:
     static const int ICONS_LENGTH = 16;
-    static yuri_1346* ICONS[ICONS_LENGTH];
+    static Icon* ICONS[ICONS_LENGTH];
 
 public:
-    yuri_2894(int yuri_6674, yuri_1886* material);
+    StainedGlassBlock(int id, Material* material);
 
-    yuri_1346* yuri_6007(int face, int yuri_4295);
-    int yuri_5947(int yuri_4295);
-    static int yuri_5419(int yuri_4295);
-    int yuri_5805();
-    void yuri_8072(IconRegister* iconRegister);
-    int yuri_5819(yuri_2302* yuri_7981);
+    Icon* getTexture(int face, int data);
+    int getSpawnResourcesAuxValue(int data);
+    static int getItemAuxValueForBlockData(int data);
+    int getRenderLayer();
+    void registerIcons(IconRegister* iconRegister);
+    int getResourceCount(Random* random);
 
 protected:
-    bool yuri_7042();
+    bool isSilkTouchable();
 
 public:
-    bool yuri_6827();
+    bool isCubeShaped();
 };

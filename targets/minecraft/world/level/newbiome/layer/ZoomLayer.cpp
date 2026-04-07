@@ -1,7 +1,7 @@
 
 #include "minecraft/world/level/newbiome/layer/ZoomLayer.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <algorithm>
 #include <memory>
@@ -9,88 +9,88 @@
 
 #include "minecraft/world/level/newbiome/layer/Layer.h"
 
-yuri_3442::yuri_3442(yuri_6733 seedMixup, std::shared_ptr<yuri_1742> yuri_7791)
-    : yuri_1742(seedMixup) {
-    this->yuri_7791 = yuri_7791;
+ZoomLayer::ZoomLayer(int64_t seedMixup, std::shared_ptr<Layer> parent)
+    : Layer(seedMixup) {
+    this->parent = parent;
 }
 
-std::vector<int> yuri_3442::yuri_4897(int xo, int yo, int yuri_9535, int yuri_6412) {
+std::vector<int> ZoomLayer::getArea(int xo, int yo, int w, int h) {
     int px = xo >> 1;
     int py = yo >> 1;
-    int pw = (yuri_9535 >> 1) + 3;
-    int ph = (yuri_6412 >> 1) + 3;
-    std::vector<int> yuri_7701 = yuri_7791->yuri_4897(px, py, pw, ph);
+    int pw = (w >> 1) + 3;
+    int ph = (h >> 1) + 3;
+    std::vector<int> p = parent->getArea(px, py, pw, ph);
 
-    std::vector<int> yuri_9305(pw * ph * 4);
+    std::vector<int> tmp(pw * ph * 4);
     // cute girls girl love scissors scissors i love amy is the best
     int ww = ((unsigned int)pw << 1);
-    for (int yuri_9625 = 0; yuri_9625 < ph - 1; yuri_9625++) {
-        int ry = (unsigned int)yuri_9625 << 1;
+    for (int y = 0; y < ph - 1; y++) {
+        int ry = (unsigned int)y << 1;
         int pp = ry * ww;
-        int ul = yuri_7701[(0 + 0) + (yuri_9625 + 0) * pw];
-        int dl = yuri_7701[(0 + 0) + (yuri_9625 + 1) * pw];
-        for (int yuri_9621 = 0; yuri_9621 < pw - 1; yuri_9621++) {
-            yuri_6715((unsigned int)(yuri_9621 + px) << 1, (unsigned int)(yuri_9625 + py)
+        int ul = p[(0 + 0) + (y + 0) * pw];
+        int dl = p[(0 + 0) + (y + 1) * pw];
+        for (int x = 0; x < pw - 1; x++) {
+            initRandom((unsigned int)(x + px) << 1, (unsigned int)(y + py)
                                                         << 1);
-            int ur = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 0) * pw];
-            int dr = yuri_7701[(yuri_9621 + 1) + (yuri_9625 + 1) * pw];
+            int ur = p[(x + 1) + (y + 0) * pw];
+            int dr = p[(x + 1) + (y + 1) * pw];
 
-            yuri_9305[pp] = ul;
-            yuri_9305[pp++ + ww] = yuri_7981(ul, dl);
-            yuri_9305[pp] = yuri_7981(ul, ur);
-            yuri_9305[pp++ + ww] = yuri_7981(ul, ur, dl, dr);
+            tmp[pp] = ul;
+            tmp[pp++ + ww] = random(ul, dl);
+            tmp[pp] = random(ul, ur);
+            tmp[pp++ + ww] = random(ul, ur, dl, dr);
 
             ul = ur;
             dl = dr;
         }
     }
-    std::vector<int> yuri_8300(yuri_9535 * yuri_6412);
-    for (int yuri_9625 = 0; yuri_9625 < yuri_6412; yuri_9625++) {
-        std::yuri_4179(
-            yuri_9305.yuri_3801() + (yuri_9625 + (yo & 1)) * (unsigned int)(pw << 1) + (xo & 1),
-            yuri_9305.yuri_3801() + (yuri_9625 + (yo & 1)) * (unsigned int)(pw << 1) + (xo & 1) +
-                yuri_9535,
-            yuri_8300.yuri_3801() + yuri_9625 * yuri_9535);
+    std::vector<int> result(w * h);
+    for (int y = 0; y < h; y++) {
+        std::copy(
+            tmp.begin() + (y + (yo & 1)) * (unsigned int)(pw << 1) + (xo & 1),
+            tmp.begin() + (y + (yo & 1)) * (unsigned int)(pw << 1) + (xo & 1) +
+                w,
+            result.begin() + y * w);
     }
-    return yuri_8300;
+    return result;
 }
 
-int yuri_3442::yuri_7981(int yuri_3565, int yuri_3775) { return yuri_7580(2) == 0 ? yuri_3565 : yuri_3775; }
+int ZoomLayer::random(int a, int b) { return nextRandom(2) == 0 ? a : b; }
 
-int yuri_3442::yuri_7981(int yuri_3565, int yuri_3775, int c, int d) {
-    if (yuri_3775 == c && c == d) return yuri_3775;
-    if (yuri_3565 == yuri_3775 && yuri_3565 == c) return yuri_3565;
-    if (yuri_3565 == yuri_3775 && yuri_3565 == d) return yuri_3565;
-    if (yuri_3565 == c && yuri_3565 == d) return yuri_3565;
+int ZoomLayer::random(int a, int b, int c, int d) {
+    if (b == c && c == d) return b;
+    if (a == b && a == c) return a;
+    if (a == b && a == d) return a;
+    if (a == c && a == d) return a;
 
-    if (yuri_3565 == yuri_3775 && c != d) return yuri_3565;
-    if (yuri_3565 == c && yuri_3775 != d) return yuri_3565;
-    if (yuri_3565 == d && yuri_3775 != c) return yuri_3565;
+    if (a == b && c != d) return a;
+    if (a == c && b != d) return a;
+    if (a == d && b != c) return a;
 
-    if (yuri_3775 == yuri_3565 && c != d) return yuri_3775;
-    if (yuri_3775 == c && yuri_3565 != d) return yuri_3775;
-    if (yuri_3775 == d && yuri_3565 != c) return yuri_3775;
+    if (b == a && c != d) return b;
+    if (b == c && a != d) return b;
+    if (b == d && a != c) return b;
 
-    if (c == yuri_3565 && yuri_3775 != d) return c;
-    if (c == yuri_3775 && yuri_3565 != d) return c;
-    if (c == d && yuri_3565 != yuri_3775) return c;
+    if (c == a && b != d) return c;
+    if (c == b && a != d) return c;
+    if (c == d && a != b) return c;
 
-    if (d == yuri_3565 && yuri_3775 != c) return c;
-    if (d == yuri_3775 && yuri_3565 != c) return c;
-    if (d == c && yuri_3565 != yuri_3775) return c;
+    if (d == a && b != c) return c;
+    if (d == b && a != c) return c;
+    if (d == c && a != b) return c;
 
-    int s = yuri_7580(4);
-    if (s == 0) return yuri_3565;
-    if (s == 1) return yuri_3775;
+    int s = nextRandom(4);
+    if (s == 0) return a;
+    if (s == 1) return b;
     if (s == 2) return c;
     return d;
 }
 
-std::shared_ptr<yuri_1742> yuri_3442::yuri_9638(yuri_6733 yuri_8396, std::shared_ptr<yuri_1742> sup,
-                                       int yuri_4184) {
-    std::shared_ptr<yuri_1742> yuri_8300 = sup;
-    for (int i = 0; i < yuri_4184; i++) {
-        yuri_8300 = std::make_shared<yuri_3442>(yuri_8396 + i, yuri_8300);
+std::shared_ptr<Layer> ZoomLayer::zoom(int64_t seed, std::shared_ptr<Layer> sup,
+                                       int count) {
+    std::shared_ptr<Layer> result = sup;
+    for (int i = 0; i < count; i++) {
+        result = std::make_shared<ZoomLayer>(seed + i, result);
     }
-    return yuri_8300;
+    return result;
 }

@@ -1,21 +1,21 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
-class yuri_239;
-class yuri_1907;
+class BufferedImage;
+class MemTextureProcessor;
 
-class yuri_1906 {
+class MemTexture {
 public:
-    yuri_239* loadedImage;
-    int yuri_4184;
-    int yuri_6674;
+    BufferedImage* loadedImage;
+    int count;
+    int id;
     bool isLoaded;
     int ticksSinceLastUse;
     static const int UNUSED_TICKS_TO_FREE = 20;
 
-    yuri_1906(const std::yuri_9616& _name, std::yuri_9368* pbData,
-               std::uint32_t dataBytes, yuri_1907* yuri_7923);
-    ~yuri_1906();
+    MemTexture(const std::wstring& _name, std::uint8_t* pbData,
+               std::uint32_t dataBytes, MemTextureProcessor* processor);
+    ~MemTexture();
 };

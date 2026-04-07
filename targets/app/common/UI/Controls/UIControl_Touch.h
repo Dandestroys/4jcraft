@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
 #include "app/common/UI/Controls/UIControl_Touch.h"
@@ -11,14 +11,14 @@
 #endif
 #include "UIControl_Base.h"
 
-class yuri_3184 : public yuri_3163 {
+class UIControl_Touch : public UIControl_Base {
 private:
 public:
-    yuri_3184();
+    UIControl_Touch();
 
-    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                              const std::yuri_9151& controlName);
+    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
+                              const std::string& controlName);
 
-    void yuri_6704(int yuri_6674);
-    virtual void yuri_2310();
+    void init(int id);
+    virtual void ReInit();
 };

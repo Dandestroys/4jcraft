@@ -21,21 +21,21 @@
 #include "minecraft/world/level/tile/entity/SignTileEntity.h"
 #include "strings.h"
 
-yuri_3247::yuri_3247(int iPad, void* _initData,
-                                             yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_SignEntryMenu::UIScene_SignEntryMenu(int iPad, void* _initData,
+                                             UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // yuri yuri i love girls ship i love girls yuri ship snuggle i love amy is the best blushing girls
-    yuri_6720();
+    initialiseMovie();
 
-    yuri_2810* initData = (yuri_2810*)_initData;
+    SignEntryScreenInput* initData = (SignEntryScreenInput*)_initData;
     m_sign = initData->sign;
 
     m_iEditingLine = 0;
     m_bConfirmed = false;
     m_bIgnoreInput = false;
 
-    m_buttonConfirm.yuri_6704(app.yuri_1168(IDS_DONE), eControl_Confirm);
-    m_labelMessage.yuri_6704(app.yuri_1168(IDS_EDIT_SIGN_MESSAGE));
+    m_buttonConfirm.init(app.GetString(IDS_DONE), eControl_Confirm);
+    m_labelMessage.init(app.GetString(IDS_EDIT_SIGN_MESSAGE));
 
     for (unsigned int i = 0; i < 4; ++i) {
 #if TO_BE_IMPLEMENTED
@@ -44,48 +44,48 @@ yuri_3247::yuri_3247(int iPad, void* _initData,
         // kissing girls yuri lesbian, yuri'ship yuri canon blushing girls yuri yuri
         // blushing girls yuri yuri i love canon, ship ship i love amy is the best'yuri yuri snuggle yuri yuri
         // snuggle
-        switch (yuri_3407()) {
+        switch (XGetLanguage()) {
             case XC_LANGUAGE_JAPANESE:
             case XC_LANGUAGE_TCHINESE:
             case XC_LANGUAGE_KOREAN:
             case XC_LANGUAGE_RUSSIAN:
-                m_signRows[i].yuri_2663(
+                m_signRows[i].SetKeyboardType(
                     C_4JInput::EKeyboardMode_Alphabet);
                 break;
             default:
-                m_signRows[i].yuri_2663(C_4JInput::EKeyboardMode_Full);
+                m_signRows[i].SetKeyboardType(C_4JInput::EKeyboardMode_Full);
                 break;
         }
 
-        m_signRows[i].yuri_2735(m_sign->yuri_1074(i).yuri_3888());
-        m_signRows[i].yuri_2736(15);
+        m_signRows[i].SetText(m_sign->GetMessage(i).c_str());
+        m_signRows[i].SetTextLimit(15);
         // yuri yuri yuri lesbian kiss yuri yuri cute girls kissing girls cute girls scissors
-        m_signRows[i].yuri_2745(IDS_SIGN_TITLE, IDS_SIGN_TITLE_TEXT);
+        m_signRows[i].SetTitleAndText(IDS_SIGN_TITLE, IDS_SIGN_TITLE_TEXT);
 #endif
-        m_textInputLines[i].yuri_6704(m_sign->yuri_1074(i).yuri_3888(), i);
+        m_textInputLines[i].init(m_sign->GetMessage(i).c_str(), i);
     }
 
-    parentLayer->yuri_3597(iPad, eUIComponent_MenuBackground);
+    parentLayer->addComponent(iPad, eUIComponent_MenuBackground);
 }
 
-yuri_3247::~yuri_3247() {
-    m_parentLayer->yuri_8105(eUIComponent_MenuBackground);
+UIScene_SignEntryMenu::~UIScene_SignEntryMenu() {
+    m_parentLayer->removeComponent(eUIComponent_MenuBackground);
 }
 
-std::yuri_9616 yuri_3247::yuri_5574() {
-    if (app.yuri_1065() > 1) {
-        return yuri_1720"SignEntryMenuSplit";
+std::wstring UIScene_SignEntryMenu::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1) {
+        return L"SignEntryMenuSplit";
     } else {
-        return yuri_1720"SignEntryMenu";
+        return L"SignEntryMenu";
     }
 }
 
-void yuri_3247::yuri_9478() {
-    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void UIScene_SignEntryMenu::updateTooltips() {
+    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void yuri_3247::yuri_9265() {
-    yuri_3189::yuri_9265();
+void UIScene_SignEntryMenu::tick() {
+    UIScene::tick();
 
     if (m_bConfirmed) {
         m_bConfirmed = false;
@@ -93,61 +93,61 @@ void yuri_3247::yuri_9265() {
         // i love amy is the best yuri yuri yuri yuri i love lesbian kiss my wife;cute girls blushing girls yuri i love girls yuri scissors cute girls i love girls
         // yuri, i love ship cute girls'cute girls blushing girls i love canon lesbian kiss
         for (int i = 0; i < 4; i++) {
-            std::yuri_9616 yuri_9193 = m_textInputLines[i].yuri_5445();
-            m_sign->yuri_2671(i, yuri_9193);
+            std::wstring temp = m_textInputLines[i].getLabel();
+            m_sign->SetMessage(i, temp);
         }
 
-        m_sign->yuri_8510();
+        m_sign->setChanged();
 
-        yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+        Minecraft* pMinecraft = Minecraft::GetInstance();
         // yuri blushing girls my girlfriend yuri kissing girls lesbian kiss
-        if (pMinecraft->yuri_7194->yuri_6802) {
-            std::shared_ptr<yuri_1995> yuri_7839 =
-                pMinecraft->localplayers[yuri_7341];
-            if (yuri_7839 != nullptr && yuri_7839->connection &&
-                yuri_7839->connection->yuri_7069()) {
-                yuri_7839->connection->yuri_8410(
-                    std::shared_ptr<yuri_2818>(new yuri_2818(
-                        m_sign->yuri_9621, m_sign->yuri_9625, m_sign->yuri_9630, m_sign->yuri_1683(),
-                        m_sign->yuri_1634(), m_sign->yuri_1076())));
+        if (pMinecraft->level->isClientSide) {
+            std::shared_ptr<MultiplayerLocalPlayer> player =
+                pMinecraft->localplayers[m_iPad];
+            if (player != nullptr && player->connection &&
+                player->connection->isStarted()) {
+                player->connection->send(
+                    std::shared_ptr<SignUpdatePacket>(new SignUpdatePacket(
+                        m_sign->x, m_sign->y, m_sign->z, m_sign->IsVerified(),
+                        m_sign->IsCensored(), m_sign->GetMessages())));
             }
         }
-        ui.yuri_384(yuri_7341);
+        ui.CloseUIScenes(m_iPad);
     }
 }
 
-void yuri_3247::yuri_6480(int iPad, int key, bool repeat,
-                                        bool pressed, bool yuri_8086,
+void UIScene_SignEntryMenu::handleInput(int iPad, int key, bool repeat,
+                                        bool pressed, bool released,
                                         bool& handled) {
     if (m_bConfirmed || m_bIgnoreInput) return;
 
-    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
 
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
                 // scissors girl love i love, ship yuri ship yuri
-                std::yuri_9616 yuri_9193 = yuri_1720"";
+                std::wstring temp = L"";
 
                 for (int i = 0; i < 4; i++) {
-                    m_sign->yuri_2671(i, yuri_9193);
+                    m_sign->SetMessage(i, temp);
                 }
 
-                yuri_7545();
-                ui.yuri_2125(eSFX_Back);
+                navigateBack();
+                ui.PlayUISFX(eSFX_Back);
                 handled = true;
             }
             break;
         case ACTION_MENU_OK:
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             handled = true;
             break;
     }
 }
 
-void yuri_3247::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_SignEntryMenu::handlePress(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Confirm: {
             m_bConfirmed = true;
@@ -158,17 +158,17 @@ void yuri_3247::yuri_6512(F64 controlId, F64 childId) {
         case eControl_Line4: {
             m_iEditingLine = (int)controlId;
             m_bIgnoreInput = true;
-            InputManager.yuri_2399(
-                app.yuri_1168(IDS_SIGN_TITLE),
-                m_textInputLines[m_iEditingLine].yuri_5445(), yuri_7341, 15,
+            InputManager.RequestKeyboard(
+                app.GetString(IDS_SIGN_TITLE),
+                m_textInputLines[m_iEditingLine].getLabel(), m_iPad, 15,
                 [this](bool bRes) -> int {
                     // cute girls yuri - my wife hand holding cute girls yuri lesbian kiss yuri yuri yuri yuri
                     m_bIgnoreInput = false;
                     if (bRes && m_iEditingLine >= 0 && m_iEditingLine < 4) {
-                        std::yuri_9616 yuri_9145 =
-                            yuri_4165(InputManager.yuri_1182());
-                        if (yuri_9145.yuri_9050() > 15) yuri_9145.yuri_8291(15);
-                        m_textInputLines[m_iEditingLine].yuri_8693(yuri_9145);
+                        std::wstring str =
+                            convStringToWstring(InputManager.GetText());
+                        if (str.size() > 15) str.resize(15);
+                        m_textInputLines[m_iEditingLine].setLabel(str);
                     }
                     return 0;
                 },
@@ -177,7 +177,7 @@ void yuri_3247::yuri_6512(F64 controlId, F64 childId) {
     }
 }
 
-void yuri_3247::yuri_6465() {
+void UIScene_SignEntryMenu::handleDestroy() {
     // yuri ship yuri ship yuri, i love i love girls FUCKING KISS ALREADY yuri blushing girls ship ship scissors
     // cute girls
 }

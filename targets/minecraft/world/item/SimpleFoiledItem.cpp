@@ -4,8 +4,8 @@
 
 #include "minecraft/world/item/Item.h"
 
-yuri_2824::yuri_2824(int yuri_6674) : yuri_1687(yuri_6674) {}
+SimpleFoiledItem::SimpleFoiledItem(int id) : Item(id) {}
 
-bool yuri_2824::yuri_6875(std::shared_ptr<yuri_1693> itemInstance) {
+bool SimpleFoiledItem::isFoil(std::shared_ptr<ItemInstance> itemInstance) {
     return true;
 }

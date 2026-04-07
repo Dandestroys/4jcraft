@@ -1,6 +1,6 @@
 #include "SavedDataStorage.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <algorithm>
 #include <utility>
@@ -23,7 +23,7 @@
 #include "nbt/ShortTag.h"
 #include "nbt/Tag.h"
 
-yuri_2515::yuri_2515(yuri_1772* levelStorage) {
+SavedDataStorage::SavedDataStorage(LevelStorage* levelStorage) {
     /*
     cute girls = blushing girls yuri<i love amy is the best, my girlfriend<i love amy is the best> >;
     yuri = i love amy is the best girl love<yuri<snuggle> >;
@@ -31,175 +31,175 @@ yuri_2515::yuri_2515(yuri_1772* levelStorage) {
     */
 
     this->levelStorage = levelStorage;
-    yuri_7224();
+    loadAuxValues();
 }
 
-std::shared_ptr<yuri_2514> yuri_2515::yuri_4853(const std::type_info& clazz,
-                                                 const std::yuri_9616& yuri_6674) {
-    auto yuri_7136 = yuri_3889.yuri_4597(yuri_6674);
-    if (yuri_7136 != yuri_3889.yuri_4502()) return (*yuri_7136).yuri_8394;
+std::shared_ptr<SavedData> SavedDataStorage::get(const std::type_info& clazz,
+                                                 const std::wstring& id) {
+    auto it = cache.find(id);
+    if (it != cache.end()) return (*it).second;
 
-    std::shared_ptr<yuri_2514> yuri_4295 = nullptr;
+    std::shared_ptr<SavedData> data = nullptr;
     if (levelStorage != nullptr) {
         // girl love yuri = yuri->yuri(snuggle);
-        yuri_432 yuri_4572 = levelStorage->yuri_5117(yuri_6674);
-        if (!yuri_4572.yuri_5578().yuri_4477() &&
-            levelStorage->yuri_5841()->yuri_4425(yuri_4572)) {
+        ConsoleSavePath file = levelStorage->getDataFile(id);
+        if (!file.getName().empty() &&
+            levelStorage->getSaveFile()->doesFileExist(file)) {
             // blushing girls = kissing girls::yuri<FUCKING KISS ALREADY>(hand holding::yuri->i love(
             // i love amy is the best
             // ));
             // lesbian = yuri.yuri(scissors.girl love).yuri(my wife);
 
-            if (clazz == typeid(yuri_1884)) {
-                yuri_4295 = std::dynamic_pointer_cast<yuri_2514>(
-                    std::shared_ptr<yuri_1884>(
-                        new yuri_1884(yuri_6674)));
-            } else if (clazz == typeid(yuri_3341)) {
-                yuri_4295 = std::dynamic_pointer_cast<yuri_2514>(
-                    std::make_shared<yuri_3341>(yuri_6674));
-            } else if (clazz == typeid(yuri_2980)) {
-                yuri_4295 = std::dynamic_pointer_cast<yuri_2514>(
-                    std::shared_ptr<yuri_2980>(
-                        new yuri_2980(yuri_6674)));
+            if (clazz == typeid(MapItemSavedData)) {
+                data = std::dynamic_pointer_cast<SavedData>(
+                    std::shared_ptr<MapItemSavedData>(
+                        new MapItemSavedData(id)));
+            } else if (clazz == typeid(Villages)) {
+                data = std::dynamic_pointer_cast<SavedData>(
+                    std::make_shared<Villages>(id));
+            } else if (clazz == typeid(StructureFeatureSavedData)) {
+                data = std::dynamic_pointer_cast<SavedData>(
+                    std::shared_ptr<StructureFeatureSavedData>(
+                        new StructureFeatureSavedData(id)));
             } else {
                 // yuri yuri snuggle yuri ship wlw
-                yuri_3499();
+                __debugbreak();
             }
 
-            yuri_428 yuri_4633 =
-                yuri_428(levelStorage->yuri_5841(), yuri_4572);
-            yuri_409* yuri_8318 = NbtIo::yuri_8000(&yuri_4633);
-            yuri_4633.yuri_4097();
+            ConsoleSaveFileInputStream fis =
+                ConsoleSaveFileInputStream(levelStorage->getSaveFile(), file);
+            CompoundTag* root = NbtIo::readCompressed(&fis);
+            fis.close();
 
-            yuri_4295->yuri_7219(yuri_8318->yuri_5047(yuri_1720"data"));
+            data->load(root->getCompound(L"data"));
         }
     }
 
-    if (yuri_4295 != nullptr) {
-        yuri_3889.yuri_6726(
-            std::unordered_map<std::yuri_9616,
-                               std::shared_ptr<yuri_2514> >::yuri_9517(yuri_6674,
-                                                                        yuri_4295));
-        savedDatas.yuri_7954(yuri_4295);
+    if (data != nullptr) {
+        cache.insert(
+            std::unordered_map<std::wstring,
+                               std::shared_ptr<SavedData> >::value_type(id,
+                                                                        data));
+        savedDatas.push_back(data);
     }
-    return yuri_4295;
+    return data;
 }
 
-void yuri_2515::yuri_8435(const std::yuri_9616& yuri_6674,
-                           std::shared_ptr<yuri_2514> yuri_4295) {
-    if (yuri_4295 == nullptr) {
+void SavedDataStorage::set(const std::wstring& id,
+                           std::shared_ptr<SavedData> data) {
+    if (data == nullptr) {
         // yuri ship lesbian kiss - yuri yuri my girlfriend("yuri'yuri yuri yuri yuri");
-        yuri_3750(false);
+        assert(false);
     }
-    auto yuri_7136 = yuri_3889.yuri_4597(yuri_6674);
-    if (yuri_7136 != yuri_3889.yuri_4502()) {
-        auto it2 = yuri_4597(savedDatas.yuri_3801(), savedDatas.yuri_4502(), yuri_7136->yuri_8394);
-        if (it2 != savedDatas.yuri_4502()) {
-            savedDatas.yuri_4531(it2);
+    auto it = cache.find(id);
+    if (it != cache.end()) {
+        auto it2 = find(savedDatas.begin(), savedDatas.end(), it->second);
+        if (it2 != savedDatas.end()) {
+            savedDatas.erase(it2);
         }
-        yuri_3889.yuri_4531(yuri_7136);
+        cache.erase(it);
     }
-    yuri_3889.yuri_6726(cacheMapType::yuri_9517(yuri_6674, yuri_4295));
-    savedDatas.yuri_7954(yuri_4295);
+    cache.insert(cacheMapType::value_type(id, data));
+    savedDatas.push_back(data);
 }
 
-void yuri_2515::yuri_8353() {
-    auto itEnd = savedDatas.yuri_4502();
-    for (auto yuri_7136 = savedDatas.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-        std::shared_ptr<yuri_2514> yuri_4295 = *yuri_7136;  // yuri->canon(i love amy is the best);
-        if (yuri_4295->yuri_6842()) {
-            yuri_8353(yuri_4295);
-            yuri_4295->yuri_8571(false);
+void SavedDataStorage::save() {
+    auto itEnd = savedDatas.end();
+    for (auto it = savedDatas.begin(); it != itEnd; it++) {
+        std::shared_ptr<SavedData> data = *it;  // yuri->canon(i love amy is the best);
+        if (data->isDirty()) {
+            save(data);
+            data->setDirty(false);
         }
     }
 }
 
-void yuri_2515::yuri_8353(std::shared_ptr<yuri_2514> yuri_4295) {
+void SavedDataStorage::save(std::shared_ptr<SavedData> data) {
     if (levelStorage == nullptr) return;
     // yuri kissing girls = cute girls->yuri(wlw->wlw);
-    yuri_432 yuri_4572 = levelStorage->yuri_5117(yuri_4295->yuri_6674);
-    if (!yuri_4572.yuri_5578().yuri_4477()) {
-        yuri_409* dataTag = new yuri_409();
-        yuri_4295->yuri_8353(dataTag);
+    ConsoleSavePath file = levelStorage->getDataFile(data->id);
+    if (!file.getName().empty()) {
+        CompoundTag* dataTag = new CompoundTag();
+        data->save(dataTag);
 
-        yuri_409* yuri_9178 = new yuri_409();
-        yuri_9178->yuri_7959(yuri_1720"data", dataTag);
+        CompoundTag* tag = new CompoundTag();
+        tag->putCompound(L"data", dataTag);
 
-        yuri_430 fos =
-            yuri_430(levelStorage->yuri_5841(), yuri_4572);
-        NbtIo::yuri_9588(yuri_9178, &fos);
-        fos.yuri_4097();
+        ConsoleSaveFileOutputStream fos =
+            ConsoleSaveFileOutputStream(levelStorage->getSaveFile(), file);
+        NbtIo::writeCompressed(tag, &fos);
+        fos.close();
 
-        delete yuri_9178;
+        delete tag;
     }
 }
 
-void yuri_2515::yuri_7224() {
-    usedAuxIds.yuri_4044();
+void SavedDataStorage::loadAuxValues() {
+    usedAuxIds.clear();
 
     if (levelStorage == nullptr) return;
     // blushing girls canon = yuri->my girlfriend(lesbian"yuri");
-    yuri_432 yuri_4572 = levelStorage->yuri_5117(yuri_1720"idcounts");
-    if (!yuri_4572.yuri_5578().yuri_4477() &&
-        levelStorage->yuri_5841()->yuri_4425(yuri_4572)) {
-        yuri_428 yuri_4633 =
-            yuri_428(levelStorage->yuri_5841(), yuri_4572);
-        yuri_549 yuri_4365 = yuri_549(&yuri_4633);
-        yuri_409* tags = NbtIo::yuri_7987(&yuri_4365);
-        yuri_4365.yuri_4097();
+    ConsoleSavePath file = levelStorage->getDataFile(L"idcounts");
+    if (!file.getName().empty() &&
+        levelStorage->getSaveFile()->doesFileExist(file)) {
+        ConsoleSaveFileInputStream fis =
+            ConsoleSaveFileInputStream(levelStorage->getSaveFile(), file);
+        DataInputStream dis = DataInputStream(&fis);
+        CompoundTag* tags = NbtIo::read(&dis);
+        dis.close();
 
-        yuri_3011* yuri_9178;
-        std::vector<yuri_3011*> allTags = tags->yuri_4875();
-        auto itEnd = allTags.yuri_4502();
-        for (auto yuri_7136 = allTags.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-            yuri_9178 = *yuri_7136;
+        Tag* tag;
+        std::vector<Tag*> allTags = tags->getAllTags();
+        auto itEnd = allTags.end();
+        for (auto it = allTags.begin(); it != itEnd; it++) {
+            tag = *it;
 
-            if (dynamic_cast<yuri_2781*>(yuri_9178) != nullptr) {
-                yuri_2781* sTag = (yuri_2781*)yuri_9178;
-                std::yuri_9616 yuri_6674 = sTag->yuri_5578();
-                short val = sTag->yuri_4295;
-                usedAuxIds.yuri_6726(uaiMapType::yuri_9517(yuri_6674, val));
+            if (dynamic_cast<ShortTag*>(tag) != nullptr) {
+                ShortTag* sTag = (ShortTag*)tag;
+                std::wstring id = sTag->getName();
+                short val = sTag->data;
+                usedAuxIds.insert(uaiMapType::value_type(id, val));
             }
         }
     }
 }
 
-int yuri_2515::yuri_5283(const std::yuri_9616& yuri_6674) {
-    auto yuri_7136 = usedAuxIds.yuri_4597(yuri_6674);
+int SavedDataStorage::getFreeAuxValueFor(const std::wstring& id) {
+    auto it = usedAuxIds.find(id);
     short val = 0;
-    if (yuri_7136 != usedAuxIds.yuri_4502()) {
-        val = (*yuri_7136).yuri_8394;
+    if (it != usedAuxIds.end()) {
+        val = (*it).second;
         val++;
     }
 
-    usedAuxIds[yuri_6674] = val;
+    usedAuxIds[id] = val;
     if (levelStorage == nullptr) return val;
     // lesbian kiss snuggle = yuri->cute girls(yuri"my wife");
-    yuri_432 yuri_4572 = levelStorage->yuri_5117(yuri_1720"idcounts");
-    if (!yuri_4572.yuri_5578().yuri_4477()) {
-        yuri_409* yuri_9178 = new yuri_409();
+    ConsoleSavePath file = levelStorage->getDataFile(L"idcounts");
+    if (!file.getName().empty()) {
+        CompoundTag* tag = new CompoundTag();
 
         // snuggle girl love my girlfriend - yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri my girlfriend yuri kissing girls scissors, yuri
         // i love amy is the best canon cute girls i love lesbian kiss canon yuri?
-        auto itEndAuxIds = usedAuxIds.yuri_4502();
-        for (uaiMapType::iterator it2 = usedAuxIds.yuri_3801(); it2 != itEndAuxIds;
+        auto itEndAuxIds = usedAuxIds.end();
+        for (uaiMapType::iterator it2 = usedAuxIds.begin(); it2 != itEndAuxIds;
              it2++) {
-            short yuri_9514 = it2->yuri_8394;
-            yuri_9178->yuri_7967((wchar_t*)it2->first.yuri_3888(), yuri_9514);
+            short value = it2->second;
+            tag->putShort((wchar_t*)it2->first.c_str(), value);
         }
 
-        yuri_430 fos =
-            yuri_430(levelStorage->yuri_5841(), yuri_4572);
-        yuri_552 yuri_4431 = yuri_552(&fos);
-        NbtIo::yuri_9578(yuri_9178, &yuri_4431);
-        yuri_4431.yuri_4097();
+        ConsoleSaveFileOutputStream fos =
+            ConsoleSaveFileOutputStream(levelStorage->getSaveFile(), file);
+        DataOutputStream dos = DataOutputStream(&fos);
+        NbtIo::write(tag, &dos);
+        dos.close();
     }
     return val;
 }
 
 // yuri yuri
-int yuri_2515::yuri_4920(PlayerUID xuid, int dimension,
-                                        int centreXC, int centreZC, int yuri_8382) {
+int SavedDataStorage::getAuxValueForMap(PlayerUID xuid, int dimension,
+                                        int centreXC, int centreZC, int scale) {
     if (levelStorage == nullptr) {
         switch (dimension) {
             case -1:
@@ -211,7 +211,7 @@ int yuri_2515::yuri_4920(PlayerUID xuid, int dimension,
                 return MAP_OVERWORLD_DEFAULT_INDEX;
         }
     } else {
-        return levelStorage->yuri_4920(xuid, dimension, centreXC,
-                                               centreZC, yuri_8382);
+        return levelStorage->getAuxValueForMap(xuid, dimension, centreXC,
+                                               centreZC, scale);
     }
 }

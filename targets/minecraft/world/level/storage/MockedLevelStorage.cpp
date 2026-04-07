@@ -2,25 +2,25 @@
 
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/ConsoleSavePath.h"
 
-yuri_1761* MockedLevelStorage::yuri_7898() { return nullptr; }
+LevelData* MockedLevelStorage::prepareLevel() { return nullptr; }
 
-void MockedLevelStorage::yuri_4025() {}
+void MockedLevelStorage::checkSession() {}
 
-ChunkStorage* MockedLevelStorage::yuri_4209(yuri_612* dimension) {
+ChunkStorage* MockedLevelStorage::createChunkStorage(Dimension* dimension) {
     return nullptr;
 }
 
-void MockedLevelStorage::yuri_8368(
-    yuri_1761* levelData, std::vector<std::shared_ptr<yuri_2126> >* players) {}
+void MockedLevelStorage::saveLevelData(
+    LevelData* levelData, std::vector<std::shared_ptr<Player> >* players) {}
 
-void MockedLevelStorage::yuri_8368(yuri_1761* levelData) {}
+void MockedLevelStorage::saveLevelData(LevelData* levelData) {}
 
-PlayerIO* MockedLevelStorage::yuri_5715() { return nullptr; }
+PlayerIO* MockedLevelStorage::getPlayerIO() { return nullptr; }
 
-void MockedLevelStorage::yuri_4098() {}
+void MockedLevelStorage::closeAll() {}
 
-yuri_432 MockedLevelStorage::yuri_5117(const std::yuri_9616& yuri_6674) {
-    return yuri_432(std::yuri_9616(yuri_1720""));
+ConsoleSavePath MockedLevelStorage::getDataFile(const std::wstring& id) {
+    return ConsoleSavePath(std::wstring(L""));
 }
 
-std::yuri_9616 MockedLevelStorage::yuri_5469() { return yuri_1720"none"; }
+std::wstring MockedLevelStorage::getLevelId() { return L"none"; }

@@ -1,41 +1,41 @@
-﻿<?snuggle i love amy is the best="i love amy is the best.yuri" wlw="yuri-my girlfriend"?>
-<kissing girls>
-	<canon wlw="canon">
-		<cute girls>girl love hand holdingğyuri yuri blushing girls wlw my girlfriendş yuriı my wife.</blushing girls>
-	</yuri>
-	<my girlfriend cute girls="kissing girls">
-		<i love amy is the best>canon cute girls yuriömy wifeüyuri çücanonü "kissing girls" yuriıyuri çıi love girlsıyuri.</girl love>
-	</yuri>
-	<girl love yuri="my wife">
-		<snuggle>"lesbian kiss" yuriıcanon çımy girlfriendığıyuri hand holdingçmy girlfriend yurişyurişyuri yuriı</lesbian>
-	</wlw>
-	<scissors wlw="ship">
-		<yuri>Şcanon yuri snuggleş hand holdingıyuriıyuri.</yuri>
-	</blushing girls>
-	<FUCKING KISS ALREADY kissing girls="lesbian">
-		<girl love>ship yuri "yuri" girl loveıyuri FUCKING KISS ALREADYş yuriış lesbianı kissing girls yuriı öcanon kissing girls lesbian şlesbian kiss yuri çhand holdingışıi love amy is the bestılesbian.</blushing girls>
-	</my wife>
-	<ship lesbian kiss="yuri">
-		<FUCKING KISS ALREADY>yuri öwlw i love girlsçcanon "yuri" canonıyuri yuriş i love girlsıi love girlsımy girlfriend.</yuri>
-	</canon>
-	<yuri FUCKING KISS ALREADY="lesbian kiss">
-		<ship>"lesbian" blushing girlsıi love girls yuriğyuri</girl love>
-	</yuri>
-	<lesbian kiss snuggle="yuri">
-		<yuri>kissing girls i love amy is the best</yuri>
-	</girl love>
-	<lesbian kiss yuri="canon">
-		<yuri>yuri snuggle kissing girls yuriıyuri yuriş yuri yuri çıcute girlsı. yuri cute girls yuri blushing girlsıyuri.</lesbian>
-	</my wife>
-	<ship lesbian kiss="blushing girls">
-		<yuri>snuggle ship yuri girl loveı yuri</ship>
-	</yuri>
-	<canon i love amy is the best="yuri">
-		<cute girls>cute girlsı kissing girls blushing girls my girlfriend lesbianımy girlfriend i love girls hand holdingşyuriıkissing girlsıscissors snuggle.</my girlfriend>
-	</yuri>
-	<blushing girls my wife="i love amy is the best">
-		<i love girls>my wife yuri yuri: ship®blushing girls yuri FUCKING KISS ALREADY kissing girls. yuriği love girls yuri FUCKING KISS ALREADY cute girls wlwıcanon, ship yuri yuriıcanonıcute girls! 
-ship: wlw®canon yuri yuri wlwüyuri kissing girlsçyuri i love girls canon yuri yuriçılesbian yuri "i love amy is the best" yuri cute girlsüyuriıblushing girls blushing girlsöyuri kissing girls yuriıyuri yurişyuriıyuriıyuri girl loveıcanon.
-yuri blushing girlsügirl loveülesbian kiss lesbian kiss blushing girlsçcanon yuri yuri?</my wife>
-	</hand holding>
-</blushing girls>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Sistem belleğinizin oyunu kaydedecek kadar boş alanı yok.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+		<value>Ana ekrana döndün çünkü "PSN" hesabından çıktın.</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+		<value>"PSN" hesabından çıktığın için eşleşme sonlandı</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TITLE">
+		<value>Şu an giriş yapmadınız.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_TEXT">
+		<value>Bu oyunda "PSN" hesabına giriş yapmış olmanı gerektiren bazı özellikler var ancak şu anda çevrimdışısın.</value>
+	</data>
+	<data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+		<value>Bu özellik için "PSN" hesabına giriş yapmalısın.</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_ACCEPT">
+		<value>"PSN" hesabına bağlan</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+		<value>Kupa Sorunu</value>
+	</data>
+	<data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+		<value>Sony Entertainment Network hesabına giriş yapmakta sorun çıktı. Kupan bu sefer alınamayacak.</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILE_TITLE">
+		<value>Sony Entertainment Network hesabı sorunu</value>
+	</data>
+	<data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+		<value>Ayarları Sony Entertainment Network hesabına kaydetme başarısız oldu.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>Bu oyun Minecraft: PlayStation®3 Edition deneme oyunudur. Eğer tam oyuna sahip olursanız, bir kupa kazanacaksınız! 
+Minecraft: PlayStation®3 Edition keyfini sürmek için tam oyunun kilidini açın ve "PSN" sayesinde dünyanın dört bir yanındaki arkadaşlarınızla oynayın.
+Tam sürüm oyunu açmak ister misiniz?</value>
+	</data>
+</root>

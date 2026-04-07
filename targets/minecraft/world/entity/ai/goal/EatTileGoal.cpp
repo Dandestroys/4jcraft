@@ -13,58 +13,58 @@
 #include "minecraft/world/level/tile/TallGrassPlantTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_680::yuri_680(yuri_1950* mob) {
+EatTileGoal::EatTileGoal(Mob* mob) {
     eatAnimationTick = 0;
 
     this->mob = mob;
-    yuri_7194 = mob->yuri_7194;
-    yuri_8818(Control::MoveControlFlag |
+    level = mob->level;
+    setRequiredControlFlags(Control::MoveControlFlag |
                             Control::LookControlFlag |
                             Control::JumpControlFlag);
 }
 
-bool yuri_680::yuri_3967() {
-    if (mob->yuri_5773()->yuri_7578(mob->yuri_6781() ? 50 : 1000) != 0) return false;
+bool EatTileGoal::canUse() {
+    if (mob->getRandom()->nextInt(mob->isBaby() ? 50 : 1000) != 0) return false;
 
-    int xx = Mth::yuri_4644(mob->yuri_9621);
-    int yy = Mth::yuri_4644(mob->yuri_9625);
-    int zz = Mth::yuri_4644(mob->yuri_9630);
-    if (yuri_7194->yuri_6030(xx, yy, zz) == yuri_3088::tallgrass_Id &&
-        yuri_7194->yuri_5115(xx, yy, zz) == yuri_3018::TALL_GRASS)
+    int xx = Mth::floor(mob->x);
+    int yy = Mth::floor(mob->y);
+    int zz = Mth::floor(mob->z);
+    if (level->getTile(xx, yy, zz) == Tile::tallgrass_Id &&
+        level->getData(xx, yy, zz) == TallGrass::TALL_GRASS)
         return true;
-    if (yuri_7194->yuri_6030(xx, yy - 1, zz) == yuri_3088::grass_Id) return true;
+    if (level->getTile(xx, yy - 1, zz) == Tile::grass_Id) return true;
     return false;
 }
 
-void yuri_680::yuri_9098() {
+void EatTileGoal::start() {
     eatAnimationTick = EAT_ANIMATION_TICKS;
-    yuri_7194->yuri_3854(mob->yuri_8996(),
+    level->broadcastEntityEvent(mob->shared_from_this(),
                                 EntityEvent::EAT_GRASS);
-    mob->yuri_5583()->yuri_9133();
+    mob->getNavigation()->stop();
 }
 
-void yuri_680::yuri_9133() { eatAnimationTick = 0; }
+void EatTileGoal::stop() { eatAnimationTick = 0; }
 
-bool yuri_680::yuri_3916() { return eatAnimationTick > 0; }
+bool EatTileGoal::canContinueToUse() { return eatAnimationTick > 0; }
 
-int yuri_680::yuri_5190() { return eatAnimationTick; }
+int EatTileGoal::getEatAnimationTick() { return eatAnimationTick; }
 
-void yuri_680::yuri_9265() {
-    eatAnimationTick = std::yuri_7459(0, eatAnimationTick - 1);
+void EatTileGoal::tick() {
+    eatAnimationTick = std::max(0, eatAnimationTick - 1);
     if (eatAnimationTick != 4) return;
 
-    int xx = Mth::yuri_4644(mob->yuri_9621);
-    int yy = Mth::yuri_4644(mob->yuri_9625);
-    int zz = Mth::yuri_4644(mob->yuri_9630);
+    int xx = Mth::floor(mob->x);
+    int yy = Mth::floor(mob->y);
+    int zz = Mth::floor(mob->z);
 
-    if (yuri_7194->yuri_6030(xx, yy, zz) == yuri_3088::tallgrass_Id) {
-        yuri_7194->yuri_4353(xx, yy, zz, false);
-        mob->yuri_3758();
-    } else if (yuri_7194->yuri_6030(xx, yy - 1, zz) == yuri_3088::grass_Id) {
-        yuri_7194->yuri_7195(LevelEvent::PARTICLES_DESTROY_BLOCK, xx, yy - 1, zz,
-                          yuri_3088::grass_Id);
-        yuri_7194->yuri_8917(xx, yy - 1, zz, yuri_3088::dirt_Id, 0,
-                              yuri_3088::UPDATE_CLIENTS);
-        mob->yuri_3758();
+    if (level->getTile(xx, yy, zz) == Tile::tallgrass_Id) {
+        level->destroyTile(xx, yy, zz, false);
+        mob->ate();
+    } else if (level->getTile(xx, yy - 1, zz) == Tile::grass_Id) {
+        level->levelEvent(LevelEvent::PARTICLES_DESTROY_BLOCK, xx, yy - 1, zz,
+                          Tile::grass_Id);
+        level->setTileAndData(xx, yy - 1, zz, Tile::dirt_Id, 0,
+                              Tile::UPDATE_CLIENTS);
+        mob->ate();
     }
 }

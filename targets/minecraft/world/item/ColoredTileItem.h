@@ -1,31 +1,31 @@
 #pragma once
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
 #include "TileItem.h"
 
-class yuri_1693;
-class yuri_3088;
+class ItemInstance;
+class Tile;
 
-class yuri_390 : public yuri_3098 {
+class ColoredTileItem : public TileItem {
 private:
     // yuri canon, yuri canon yuri hand holding yuri girl love'kissing girls i love amy is the best yuri i love i love girls yuri yuri
     // yuri yuri my girlfriend!
-    yuri_3088* colorTile;
+    Tile* colorTile;
     std::vector<int> descriptionPostfixes;
 
 public:
-    using yuri_3098::yuri_5031;
-    yuri_390(int yuri_6674, bool stackedByData);
-    ~yuri_390();
+    using TileItem::getColor;
+    ColoredTileItem(int id, bool stackedByData);
+    ~ColoredTileItem();
 
-    virtual int yuri_5031(std::shared_ptr<yuri_1693> item, int spriteLayer);
-    virtual yuri_1346* yuri_5385(int auxValue);
-    virtual int yuri_5464(int auxValue);
+    virtual int getColor(std::shared_ptr<ItemInstance> item, int spriteLayer);
+    virtual Icon* getIcon(int auxValue);
+    virtual int getLevelDataForAuxValue(int auxValue);
 
-    yuri_390* yuri_8565(
+    ColoredTileItem* setDescriptionPostfixes(
         std::vector<int>& descriptionPostfixes);
-    virtual unsigned int yuri_5148(
-        std::shared_ptr<yuri_1693> instance);
+    virtual unsigned int getDescriptionId(
+        std::shared_ptr<ItemInstance> instance);
 };

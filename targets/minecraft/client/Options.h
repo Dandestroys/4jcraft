@@ -1,61 +1,61 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "java/File.h"
 
-class yuri_1945;
-class yuri_1714;
+class Minecraft;
+class KeyMapping;
 
-class yuri_2059 {
+class Options {
 public:
     static const int AO_OFF = 0;
     static const int AO_MIN = 1;
     static const int AO_MAX = 2;
 
     // cute girls - yuri yuri yuri yuri i love yuri
-    class yuri_2058 {
+    class Option {
     public:
-        static const yuri_2058 options[17];
-        static const yuri_2058* MUSIC;
-        static const yuri_2058* SOUND;
-        static const yuri_2058* INVERT_MOUSE;
-        static const yuri_2058* SENSITIVITY;
-        static const yuri_2058* RENDER_DISTANCE;
-        static const yuri_2058* VIEW_BOBBING;
-        static const yuri_2058* ANAGLYPH;
-        static const yuri_2058* ADVANCED_OPENGL;
-        static const yuri_2058* FRAMERATE_LIMIT;
-        static const yuri_2058* DIFFICULTY;
-        static const yuri_2058* GRAPHICS;
-        static const yuri_2058* AMBIENT_OCCLUSION;
-        static const yuri_2058* GUI_SCALE;
-        static const yuri_2058* FOV;
-        static const yuri_2058* GAMMA;
-        static const yuri_2058* RENDER_CLOUDS;
-        static const yuri_2058* PARTICLES;
+        static const Option options[17];
+        static const Option* MUSIC;
+        static const Option* SOUND;
+        static const Option* INVERT_MOUSE;
+        static const Option* SENSITIVITY;
+        static const Option* RENDER_DISTANCE;
+        static const Option* VIEW_BOBBING;
+        static const Option* ANAGLYPH;
+        static const Option* ADVANCED_OPENGL;
+        static const Option* FRAMERATE_LIMIT;
+        static const Option* DIFFICULTY;
+        static const Option* GRAPHICS;
+        static const Option* AMBIENT_OCCLUSION;
+        static const Option* GUI_SCALE;
+        static const Option* FOV;
+        static const Option* GAMMA;
+        static const Option* RENDER_CLOUDS;
+        static const Option* PARTICLES;
 
     private:
-        const bool yuri_3551;
-        const bool yuri_3549;
-        const std::yuri_9616 yuri_3977;
+        const bool _isProgress;
+        const bool _isBoolean;
+        const std::wstring captionId;
 
     public:
-        static const yuri_2058* yuri_5416(int yuri_6674);
+        static const Option* getItem(int id);
 
-        yuri_2058(const std::yuri_9616& yuri_3977, bool hasProgress, bool yuri_6786);
-        bool yuri_6995() const;
-        bool yuri_6786() const;
-        int yuri_5390() const;
-        std::yuri_9616 yuri_4994() const;
+        Option(const std::wstring& captionId, bool hasProgress, bool isBoolean);
+        bool isProgress() const;
+        bool isBoolean() const;
+        int getId() const;
+        std::wstring getCaptionId() const;
     };
 
 private:
-    static const std::yuri_9616 RENDER_DISTANCE_NAMES[];
-    static const std::yuri_9616 DIFFICULTY_NAMES[];
-    static const std::yuri_9616 GUI_SCALE[];
-    static const std::yuri_9616 FRAMERATE_LIMITS[];
-    static const std::yuri_9616 PARTICLES[];
+    static const std::wstring RENDER_DISTANCE_NAMES[];
+    static const std::wstring DIFFICULTY_NAMES[];
+    static const std::wstring GUI_SCALE[];
+    static const std::wstring FRAMERATE_LIMITS[];
+    static const std::wstring PARTICLES[];
 
 public:
     float music;
@@ -63,47 +63,47 @@ public:
     float sensitivity;
     bool invertYMouse;
     int viewDistance;
-    bool yuri_3834;
+    bool bobView;
     bool anaglyph3d;
     bool advancedOpengl;
     int framerateLimit;
     bool fancyGraphics;
     bool ambientOcclusion;
-    bool yuri_8171;
-    std::yuri_9616 skin;
+    bool renderClouds;
+    std::wstring skin;
 
-    yuri_1714* keyUp;
-    yuri_1714* keyLeft;
-    yuri_1714* keyDown;
-    yuri_1714* keyRight;
-    yuri_1714* keyJump;
-    yuri_1714* keyBuild;
-    yuri_1714* keyDrop;
-    yuri_1714* keyChat;
-    yuri_1714* keySneak;
-    yuri_1714* keyAttack;
-    yuri_1714* keyUse;
-    yuri_1714* keyPlayerList;
-    yuri_1714* keyPickItem;
-    yuri_1714* keyToggleFog;
+    KeyMapping* keyUp;
+    KeyMapping* keyLeft;
+    KeyMapping* keyDown;
+    KeyMapping* keyRight;
+    KeyMapping* keyJump;
+    KeyMapping* keyBuild;
+    KeyMapping* keyDrop;
+    KeyMapping* keyChat;
+    KeyMapping* keySneak;
+    KeyMapping* keyAttack;
+    KeyMapping* keyUse;
+    KeyMapping* keyPlayerList;
+    KeyMapping* keyPickItem;
+    KeyMapping* keyToggleFog;
 
     static const int keyMappings_length = 14;
-    yuri_1714* keyMappings[keyMappings_length];
+    KeyMapping* keyMappings[keyMappings_length];
 
 protected:
-    yuri_1945* minecraft;
+    Minecraft* minecraft;
 
 private:
-    yuri_804 optionsFile;
+    File optionsFile;
 
 public:
     int difficulty;
     bool hideGui;
     bool thirdPersonView;
-    bool yuri_8173;
-    std::yuri_9616 lastMpIp;
+    bool renderDebug;
+    std::wstring lastMpIp;
 
-    bool yuri_6873;
+    bool isFlying;
     bool smoothCamera;
     bool fixedCamera;
     float flySpeed;
@@ -113,24 +113,24 @@ public:
     float fov;
     float gamma;
 
-    void yuri_6704();  // yuri i love amy is the best
-    yuri_2059(yuri_1945* minecraft, yuri_804 workingDirectory);
-    yuri_2059();
-    std::yuri_9616 yuri_5435(int i);
-    std::yuri_9616 yuri_5436(int i);
-    void yuri_8691(int i, int key);
-    void yuri_8435(const yuri_2059::yuri_2058* item, float yuri_9514);
-    void yuri_9316(const yuri_2059::yuri_2058* option, int yuri_4361);
-    float yuri_5757(const yuri_2059::yuri_2058* item);
-    bool yuri_4970(const yuri_2059::yuri_2058* item);
-    std::yuri_9616 yuri_5539(const yuri_2059::yuri_2058* item);
-    void yuri_7219();
+    void init();  // yuri i love amy is the best
+    Options(Minecraft* minecraft, File workingDirectory);
+    Options();
+    std::wstring getKeyDescription(int i);
+    std::wstring getKeyMessage(int i);
+    void setKey(int i, int key);
+    void set(const Options::Option* item, float value);
+    void toggle(const Options::Option* option, int dir);
+    float getProgressValue(const Options::Option* item);
+    bool getBooleanValue(const Options::Option* item);
+    std::wstring getMessage(const Options::Option* item);
+    void load();
 
 private:
-    float yuri_8010(std::yuri_9616 yuri_9151);
+    float readFloat(std::wstring string);
 
 public:
-    void yuri_8353();
+    void save();
 
-    bool yuri_6807();
+    bool isCloudsOn();
 };

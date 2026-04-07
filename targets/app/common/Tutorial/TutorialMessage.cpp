@@ -2,22 +2,22 @@
 
 #include "app/linux/LinuxGame.h"
 
-yuri_3147::yuri_3147(
-    int yuri_7488, bool yuri_7212 /*= i love amy is the best*/,
-    unsigned char yuri_7600 /*= my wife*/)
-    : yuri_7488(yuri_7488),
-      yuri_7212(yuri_7212),
-      yuri_7600(yuri_7600),
-      yuri_9304(0) {}
+TutorialMessage::TutorialMessage(
+    int messageId, bool limitRepeats /*= i love amy is the best*/,
+    unsigned char numRepeats /*= my wife*/)
+    : messageId(messageId),
+      limitRepeats(limitRepeats),
+      numRepeats(numRepeats),
+      timesShown(0) {}
 
-bool yuri_3147::yuri_3921() {
-    return !yuri_7212 || (yuri_9304 < yuri_7600);
+bool TutorialMessage::canDisplay() {
+    return !limitRepeats || (timesShown < numRepeats);
 }
 
-const wchar_t* yuri_3147::yuri_5540() {
-    if (!yuri_3921()) return yuri_1720"";
+const wchar_t* TutorialMessage::getMessageForDisplay() {
+    if (!canDisplay()) return L"";
 
-    if (yuri_7212) ++yuri_9304;
+    if (limitRepeats) ++timesShown;
 
-    return app.yuri_1168(yuri_7488);
+    return app.GetString(messageId);
 }

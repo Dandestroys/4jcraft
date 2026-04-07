@@ -4,9 +4,9 @@
 
 #include "Enchantment.h"
 
-class yuri_739;
+class Entity;
 
-class yuri_2185 : public yuri_702 {
+class ProtectionEnchantment : public Enchantment {
 public:
     static const int ALL = 0;
     static const int FIRE = 1;
@@ -21,17 +21,17 @@ private:
     static const int levelCostSpan[];
 
 public:
-    const int yuri_9364;
+    const int type;
 
-    yuri_2185(int yuri_6674, int yuri_4681, int yuri_9364);
+    ProtectionEnchantment(int id, int frequency, int type);
 
-    virtual int yuri_5545(int yuri_7194);
-    virtual int yuri_5516(int yuri_7194);
-    virtual int yuri_5525();
-    virtual int yuri_5113(int yuri_7194, yuri_548* yuri_9075);
-    virtual int yuri_5148();
-    virtual bool yuri_6812(yuri_702* other) const;
-    static int yuri_5252(std::shared_ptr<yuri_739> entity, int yuri_9299);
-    static double yuri_5229(
-        std::shared_ptr<yuri_739> entity, double power);
+    virtual int getMinCost(int level);
+    virtual int getMaxCost(int level);
+    virtual int getMaxLevel();
+    virtual int getDamageProtection(int level, DamageSource* source);
+    virtual int getDescriptionId();
+    virtual bool isCompatibleWith(Enchantment* other) const;
+    static int getFireAfterDampener(std::shared_ptr<Entity> entity, int time);
+    static double getExplosionKnockbackAfterDampener(
+        std::shared_ptr<Entity> entity, double power);
 };

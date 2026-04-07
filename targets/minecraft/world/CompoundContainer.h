@@ -1,37 +1,37 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "Container.h"
 #include "minecraft/world/Container.h"
 
-class yuri_2126;
+class Player;
 
-class yuri_407 : public yuri_436 {
+class CompoundContainer : public Container {
 private:
-    int yuri_7540;
-    std::shared_ptr<yuri_436> c1, c2;
+    int name;
+    std::shared_ptr<Container> c1, c2;
 
 public:
-    yuri_407(int yuri_7540, std::shared_ptr<yuri_436> c1,
-                      std::shared_ptr<yuri_436> c2);
+    CompoundContainer(int name, std::shared_ptr<Container> c1,
+                      std::shared_ptr<Container> c2);
 
-    virtual int yuri_5059();
-    virtual unsigned int yuri_5058();
-    virtual bool yuri_4148(std::shared_ptr<yuri_436> c);
-    virtual std::yuri_9616 yuri_5578();
-    virtual std::yuri_9616 yuri_5087();
-    virtual bool yuri_6590();
-    virtual std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061);
-    virtual std::shared_ptr<yuri_1693> yuri_8115(unsigned int yuri_9061, int i);
-    virtual std::shared_ptr<yuri_1693> yuri_8118(int yuri_9061);
-    virtual void yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> item);
-    virtual int yuri_5531();
-    virtual void yuri_8510();
-    virtual bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual int getContainerType();
+    virtual unsigned int getContainerSize();
+    virtual bool contains(std::shared_ptr<Container> c);
+    virtual std::wstring getName();
+    virtual std::wstring getCustomName();
+    virtual bool hasCustomName();
+    virtual std::shared_ptr<ItemInstance> getItem(unsigned int slot);
+    virtual std::shared_ptr<ItemInstance> removeItem(unsigned int slot, int i);
+    virtual std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot);
+    virtual void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
+    virtual int getMaxStackSize();
+    virtual void setChanged();
+    virtual bool stillValid(std::shared_ptr<Player> player);
 
-    virtual void yuri_9106();
-    virtual void yuri_9135();
-    virtual bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
+    virtual void startOpen();
+    virtual void stopOpen();
+    virtual bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
 };

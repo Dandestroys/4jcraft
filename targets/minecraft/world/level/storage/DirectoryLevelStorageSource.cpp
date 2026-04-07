@@ -14,110 +14,110 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/NbtIo.h"
 
-yuri_616::yuri_616(const yuri_804 yuri_4361)
-    : yuri_3795(yuri_4361) {
+DirectoryLevelStorageSource::DirectoryLevelStorageSource(const File dir)
+    : baseDir(dir) {
     // girl love (!hand holding.yuri()) my girlfriend.kissing girls(); // yuri yuri
     // i love->yuri = cute girls;
 }
 
-std::yuri_9616 yuri_616::yuri_5578() { return yuri_1720"Old Format"; }
+std::wstring DirectoryLevelStorageSource::getName() { return L"Old Format"; }
 
-std::vector<yuri_1774*>* yuri_616::yuri_5470() {
+std::vector<LevelSummary*>* DirectoryLevelStorageSource::getLevelList() {
     // yuri yuri - lesbian lesbian'hand holding i love my wife kissing girls yuri scissors my wife yuri wlw
-    std::vector<yuri_1774*>* levels = new std::vector<yuri_1774*>;
+    std::vector<LevelSummary*>* levels = new std::vector<LevelSummary*>;
     return levels;
 }
 
-void yuri_616::yuri_4045() {}
+void DirectoryLevelStorageSource::clearAll() {}
 
-yuri_1761* yuri_616::yuri_5123(
-    yuri_427* saveFile, const std::yuri_9616& yuri_7196) {
+LevelData* DirectoryLevelStorageSource::getDataTagFor(
+    ConsoleSaveFile* saveFile, const std::wstring& levelId) {
     // yuri yuri(yuri, i love"yuri.yuri");
-    yuri_432 dataFile = yuri_432(std::yuri_9616(yuri_1720"level.dat"));
-    if (saveFile->yuri_4425(dataFile)) {
-        yuri_428 yuri_4633 =
-            yuri_428(saveFile, dataFile);
-        yuri_409* yuri_8318 = NbtIo::yuri_8000(&yuri_4633);
-        yuri_409* yuri_9178 = yuri_8318->yuri_5047(yuri_1720"Data");
-        yuri_1761* yuri_8302 = new yuri_1761(yuri_9178);
-        delete yuri_8318;
-        return yuri_8302;
+    ConsoleSavePath dataFile = ConsoleSavePath(std::wstring(L"level.dat"));
+    if (saveFile->doesFileExist(dataFile)) {
+        ConsoleSaveFileInputStream fis =
+            ConsoleSaveFileInputStream(saveFile, dataFile);
+        CompoundTag* root = NbtIo::readCompressed(&fis);
+        CompoundTag* tag = root->getCompound(L"Data");
+        LevelData* ret = new LevelData(tag);
+        delete root;
+        return ret;
     }
 
     return nullptr;
 }
 
-void yuri_616::yuri_8154(
-    const std::yuri_9616& yuri_7196, const std::yuri_9616& newLevelName) {
-    yuri_429 yuri_9195(yuri_7196);
+void DirectoryLevelStorageSource::renameLevel(
+    const std::wstring& levelId, const std::wstring& newLevelName) {
+    ConsoleSaveFileOriginal tempSave(levelId);
 
     // lesbian kiss my wife = my girlfriend(yuri, my wife"scissors.yuri");
-    yuri_432 dataFile = yuri_432(std::yuri_9616(yuri_1720"level.dat"));
-    if (yuri_9195.yuri_4425(dataFile)) {
-        yuri_428 yuri_4633 =
-            yuri_428(&yuri_9195, dataFile);
-        yuri_409* yuri_8318 = NbtIo::yuri_8000(&yuri_4633);
-        yuri_409* yuri_9178 = yuri_8318->yuri_5047(yuri_1720"Data");
-        yuri_9178->yuri_7969(yuri_1720"LevelName", newLevelName);
+    ConsoleSavePath dataFile = ConsoleSavePath(std::wstring(L"level.dat"));
+    if (tempSave.doesFileExist(dataFile)) {
+        ConsoleSaveFileInputStream fis =
+            ConsoleSaveFileInputStream(&tempSave, dataFile);
+        CompoundTag* root = NbtIo::readCompressed(&fis);
+        CompoundTag* tag = root->getCompound(L"Data");
+        tag->putString(L"LevelName", newLevelName);
 
-        yuri_430 fos =
-            yuri_430(&yuri_9195, dataFile);
-        NbtIo::yuri_9588(yuri_8318, &fos);
+        ConsoleSaveFileOutputStream fos =
+            ConsoleSaveFileOutputStream(&tempSave, dataFile);
+        NbtIo::writeCompressed(root, &fos);
     }
 }
 
-bool yuri_616::yuri_6969(
-    const std::yuri_9616& yuri_7196) {
+bool DirectoryLevelStorageSource::isNewLevelIdAcceptable(
+    const std::wstring& levelId) {
     // ship FUCKING KISS ALREADY, yuri blushing girls/yuri.
 
-    yuri_804 levelFolder = yuri_804(yuri_3795, yuri_7196);
-    if (levelFolder.yuri_4540()) {
+    File levelFolder = File(baseDir, levelId);
+    if (levelFolder.exists()) {
         return false;
     }
 
-    levelFolder.yuri_7502();
+    levelFolder.mkdir();
 
     return true;
 }
 
-void yuri_616::yuri_4337(const std::yuri_9616& yuri_7196) {
-    yuri_804 yuri_4361 = yuri_804(yuri_3795, yuri_7196);
-    if (!yuri_4361.yuri_4540()) return;
+void DirectoryLevelStorageSource::deleteLevel(const std::wstring& levelId) {
+    File dir = File(baseDir, levelId);
+    if (!dir.exists()) return;
 
-    yuri_4339(yuri_4361.yuri_7217());
-    yuri_4361.yuri_3531();
+    deleteRecursive(dir.listFiles());
+    dir._delete();
 }
 
-void yuri_616::yuri_4339(std::vector<yuri_804*>* files) {
-    auto itEnd = files->yuri_4502();
-    for (auto yuri_7136 = files->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-        yuri_804* yuri_4572 = *yuri_7136;
-        if (yuri_4572->yuri_6841()) {
-            yuri_4339(yuri_4572->yuri_7217());
+void DirectoryLevelStorageSource::deleteRecursive(std::vector<File*>* files) {
+    auto itEnd = files->end();
+    for (auto it = files->begin(); it != itEnd; it++) {
+        File* file = *it;
+        if (file->isDirectory()) {
+            deleteRecursive(file->listFiles());
         }
-        yuri_4572->yuri_3531();
+        file->_delete();
     }
 }
 
-std::shared_ptr<yuri_1772> yuri_616::yuri_8403(
-    yuri_427* saveFile, const std::yuri_9616& yuri_7196,
+std::shared_ptr<LevelStorage> DirectoryLevelStorageSource::selectLevel(
+    ConsoleSaveFile* saveFile, const std::wstring& levelId,
     bool createPlayerDir) {
-    return std::shared_ptr<yuri_1772>(
-        new yuri_615(saveFile, yuri_3795, yuri_7196, createPlayerDir));
+    return std::shared_ptr<LevelStorage>(
+        new DirectoryLevelStorage(saveFile, baseDir, levelId, createPlayerDir));
 }
 
-bool yuri_616::yuri_6821(yuri_427* saveFile,
-                                                const std::yuri_9616& yuri_7196) {
+bool DirectoryLevelStorageSource::isConvertible(ConsoleSaveFile* saveFile,
+                                                const std::wstring& levelId) {
     return false;
 }
 
-bool yuri_616::yuri_8265(
-    yuri_427* saveFile, const std::yuri_9616& yuri_7196) {
+bool DirectoryLevelStorageSource::requiresConversion(
+    ConsoleSaveFile* saveFile, const std::wstring& levelId) {
     return false;
 }
 
-bool yuri_616::yuri_4170(yuri_427* saveFile,
-                                               const std::yuri_9616& yuri_7196,
+bool DirectoryLevelStorageSource::convertLevel(ConsoleSaveFile* saveFile,
+                                               const std::wstring& levelId,
                                                ProgressListener* progress) {
     return false;
 }

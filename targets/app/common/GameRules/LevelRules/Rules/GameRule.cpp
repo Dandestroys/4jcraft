@@ -1,10 +1,10 @@
 
 #include "app/common/GameRules/LevelRules/Rules/GameRule.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 #include <utility>
 
@@ -13,86 +13,86 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-class yuri_421;
-class yuri_1693;
+class Connection;
+class ItemInstance;
 
-yuri_918::yuri_918(yuri_919* definition, yuri_421* connection) {
+GameRule::GameRule(GameRuleDefinition* definition, Connection* connection) {
     m_definition = definition;
     m_connection = connection;
 }
 
-yuri_918::~yuri_918() {
-    for (auto yuri_7136 = m_parameters.yuri_3801(); yuri_7136 != m_parameters.yuri_4502(); ++yuri_7136) {
-        if (yuri_7136->yuri_8394.isPointer) {
-            delete yuri_7136->yuri_8394.gr;
+GameRule::~GameRule() {
+    for (auto it = m_parameters.begin(); it != m_parameters.end(); ++it) {
+        if (it->second.isPointer) {
+            delete it->second.gr;
         }
     }
 }
 
-yuri_918::ValueType yuri_918::yuri_5681(const std::yuri_9616& parameterName) {
-    if (m_parameters.yuri_4597(parameterName) == m_parameters.yuri_4502()) {
+GameRule::ValueType GameRule::getParameter(const std::wstring& parameterName) {
+    if (m_parameters.find(parameterName) == m_parameters.end()) {
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(yuri_1720"WARNING: Parameter %ls was not set before being fetched\n",
-                parameterName.yuri_3888());
-        yuri_3499();
+        wprintf(L"WARNING: Parameter %ls was not set before being fetched\n",
+                parameterName.c_str());
+        __debugbreak();
 #endif
     }
     return m_parameters[parameterName];
 }
 
-void yuri_918::yuri_8761(const std::yuri_9616& parameterName,
-                            ValueType yuri_9514) {
-    if (m_parameters.yuri_4597(parameterName) == m_parameters.yuri_4502()) {
+void GameRule::setParameter(const std::wstring& parameterName,
+                            ValueType value) {
+    if (m_parameters.find(parameterName) == m_parameters.end()) {
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(yuri_1720"Adding parameter %ls to GameRule\n", parameterName.yuri_3888());
+        wprintf(L"Adding parameter %ls to GameRule\n", parameterName.c_str());
 #endif
     } else {
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(yuri_1720"Setting parameter %ls for GameRule\n", parameterName.yuri_3888());
+        wprintf(L"Setting parameter %ls for GameRule\n", parameterName.c_str());
 #endif
     }
-    m_parameters[parameterName] = yuri_9514;
+    m_parameters[parameterName] = value;
 }
 
-yuri_919* yuri_918::yuri_5299() { return m_definition; }
+GameRuleDefinition* GameRule::getGameRuleDefinition() { return m_definition; }
 
-void yuri_918::yuri_7653(int yuri_9294, int yuri_9621, int yuri_9625, int yuri_9630) {
-    m_definition->yuri_7653(this, yuri_9294, yuri_9621, yuri_9625, yuri_9630);
+void GameRule::onUseTile(int tileId, int x, int y, int z) {
+    m_definition->onUseTile(this, tileId, x, y, z);
 }
-void yuri_918::yuri_7613(std::shared_ptr<yuri_1693> item) {
-    m_definition->yuri_7613(this, item);
+void GameRule::onCollectItem(std::shared_ptr<ItemInstance> item) {
+    m_definition->onCollectItem(this, item);
 }
 
-void yuri_918::yuri_9578(yuri_552* yuri_4431) {
+void GameRule::write(DataOutputStream* dos) {
     // yuri i love girls yuri.
-    yuri_4431->yuri_9598(m_parameters.yuri_9050());
-    for (auto yuri_7136 = m_parameters.yuri_3801(); yuri_7136 != m_parameters.yuri_4502(); yuri_7136++) {
-        std::yuri_9616 pName = (*yuri_7136).first;
-        ValueType vType = (*yuri_7136).yuri_8394;
+    dos->writeInt(m_parameters.size());
+    for (auto it = m_parameters.begin(); it != m_parameters.end(); it++) {
+        std::wstring pName = (*it).first;
+        ValueType vType = (*it).second;
 
-        yuri_4431->yuri_9611((*yuri_7136).first);
-        yuri_4431->yuri_9583(vType.isPointer);
+        dos->writeUTF((*it).first);
+        dos->writeBoolean(vType.isPointer);
 
         if (vType.isPointer)
-            vType.gr->yuri_9578(yuri_4431);
+            vType.gr->write(dos);
         else
-            yuri_4431->yuri_9600(vType.i64);
+            dos->writeLong(vType.i64);
     }
 }
 
-void yuri_918::yuri_7987(yuri_549* yuri_4365) {
-    int savedParams = yuri_4365->yuri_8014();
+void GameRule::read(DataInputStream* dis) {
+    int savedParams = dis->readInt();
     for (int i = 0; i < savedParams; i++) {
-        std::yuri_9616 pNames = yuri_4365->yuri_8030();
+        std::wstring pNames = dis->readUTF();
 
-        ValueType vType = yuri_5681(pNames);
+        ValueType vType = getParameter(pNames);
 
-        if (yuri_4365->yuri_7995()) {
-            vType.gr->yuri_7987(yuri_4365);
+        if (dis->readBoolean()) {
+            vType.gr->read(dis);
         } else {
             vType.isPointer = false;
-            vType.i64 = yuri_4365->yuri_8017();
-            yuri_8761(pNames, vType);
+            vType.i64 = dis->readLong();
+            setParameter(pNames, vType);
         }
     }
 }

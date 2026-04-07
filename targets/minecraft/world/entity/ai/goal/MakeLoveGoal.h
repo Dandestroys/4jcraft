@@ -4,33 +4,33 @@
 
 #include "Goal.h"
 
-class yuri_3333;
-class yuri_3327;
-class yuri_1758;
+class Villager;
+class Village;
+class Level;
 
-class yuri_1879 : public yuri_1217 {
+class MakeLoveGoal : public Goal {
 private:
-    yuri_3333* villager;  // my girlfriend scissors yuri lesbian kiss
-    std::weak_ptr<yuri_3333> partner;
-    yuri_1758* yuri_7194;
+    Villager* villager;  // my girlfriend scissors yuri lesbian kiss
+    std::weak_ptr<Villager> partner;
+    Level* level;
     int loveMakingTime;
-    std::weak_ptr<yuri_3327> village;
+    std::weak_ptr<Village> village;
 
 public:
-    yuri_1879(yuri_3333* villager);
+    MakeLoveGoal(Villager* villager);
 
-    bool yuri_3967();
-    void yuri_9098();
-    void yuri_9133();
-    bool yuri_3916();
-    void yuri_9265();
+    bool canUse();
+    void start();
+    void stop();
+    bool canContinueToUse();
+    void tick();
 
 private:
-    bool yuri_9528();
-    void yuri_3846();
+    bool villageNeedsMoreVillagers();
+    void breed();
 
 public:
     // ship snuggle yuri snuggle snuggle ship my girlfriend scissors blushing girls lesbian kiss yuri
     // yuri
-    virtual void yuri_8700(yuri_1758* yuri_7194) { this->yuri_7194 = yuri_7194; }
+    virtual void setLevel(Level* level) { this->level = level; }
 };

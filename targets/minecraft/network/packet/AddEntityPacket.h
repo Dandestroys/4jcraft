@@ -1,19 +1,19 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_739;
+class Entity;
 
-class yuri_62 : public yuri_2081,
-                        public std::enable_shared_from_this<yuri_62> {
+class AddEntityPacket : public Packet,
+                        public std::enable_shared_from_this<AddEntityPacket> {
 public:
     static inline constexpr int BOAT = 1;
-    static inline constexpr int yuri_1333 = 2;
+    static inline constexpr int ITEM = 2;
     static inline constexpr int MINECART = 10;
     static inline constexpr int PRIMED_TNT = 50;
     static inline constexpr int ENDER_CRYSTAL = 51;
@@ -37,32 +37,32 @@ public:
     // hand holding yuri i love
     static inline constexpr int DRAGON_FIRE_BALL = 200;
 
-    int yuri_6674;
-    int yuri_9621, yuri_9625, yuri_9630;
+    int id;
+    int x, y, z;
     int xa, ya, za;
-    int yuri_9364;
-    int yuri_4295;
-    yuri_9368 yuri_9628, yuri_9624;  // cute girls i love amy is the best
+    int type;
+    int data;
+    uint8_t yRot, xRot;  // cute girls i love amy is the best
 
 private:
-    void yuri_3547(std::shared_ptr<yuri_739> e, int yuri_9364, int yuri_4295, int xp, int yp,
+    void _init(std::shared_ptr<Entity> e, int type, int data, int xp, int yp,
                int zp, int yRotp, int xRotp);
 
 public:
-    yuri_62();
-    yuri_62(std::shared_ptr<yuri_739> e, int yuri_9364, int yRotp, int xRotp,
+    AddEntityPacket();
+    AddEntityPacket(std::shared_ptr<Entity> e, int type, int yRotp, int xRotp,
                     int xp, int yp, int zp);
-    yuri_62(std::shared_ptr<yuri_739> e, int yuri_9364, int yuri_4295, int yRotp,
+    AddEntityPacket(std::shared_ptr<Entity> e, int type, int data, int yRotp,
                     int xRotp, int xp, int yp, int zp);
 
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual void yuri_6416(PacketListener* listener);
-    virtual int yuri_5222();
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual void handle(PacketListener* listener);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_62>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<AddEntityPacket>();
     }
-    virtual int yuri_5390() { return 23; }
+    virtual int getId() { return 23; }
 };

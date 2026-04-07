@@ -1,6 +1,6 @@
 #include "MycelTile.h"
 
-#include <yuri_9151>
+#include <string>
 
 #include "java/Random.h"
 #include "minecraft/Facing.h"
@@ -11,64 +11,64 @@
 #include "minecraft/world/level/material/Material.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_2004::yuri_2004(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::grass) {
+MycelTile::MycelTile(int id) : Tile(id, Material::grass) {
     iconTop = nullptr;
     iconSnowSide = nullptr;
-    yuri_8915(true);
+    setTicking(true);
 }
 
-yuri_1346* yuri_2004::yuri_6007(int face, int yuri_4295) {
+Icon* MycelTile::getTexture(int face, int data) {
     if (face == Facing::UP) return iconTop;
-    if (face == Facing::DOWN) return yuri_3088::dirt->yuri_6007(face);
-    return yuri_6672;
+    if (face == Facing::DOWN) return Tile::dirt->getTexture(face);
+    return icon;
 }
 
-yuri_1346* yuri_2004::yuri_6007(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+Icon* MycelTile::getTexture(LevelSource* level, int x, int y, int z, int face) {
     if (face == Facing::UP) return iconTop;
-    if (face == Facing::DOWN) return yuri_3088::dirt->yuri_6007(face);
-    yuri_1886* yuri_3568 = yuri_7194->yuri_5514(yuri_9621, yuri_9625 + 1, yuri_9630);
-    if (yuri_3568 == yuri_1886::topSnow || yuri_3568 == yuri_1886::snow)
+    if (face == Facing::DOWN) return Tile::dirt->getTexture(face);
+    Material* above = level->getMaterial(x, y + 1, z);
+    if (above == Material::topSnow || above == Material::snow)
         return iconSnowSide;
     else
-        return yuri_6672;
+        return icon;
 }
 
-void yuri_2004::yuri_8072(IconRegister* iconRegister) {
-    yuri_6672 = iconRegister->yuri_8071(yuri_1720"mycel_side");
-    iconTop = iconRegister->yuri_8071(yuri_1720"mycel_top");
-    iconSnowSide = iconRegister->yuri_8071(yuri_1720"snow_side");
+void MycelTile::registerIcons(IconRegister* iconRegister) {
+    icon = iconRegister->registerIcon(L"mycel_side");
+    iconTop = iconRegister->registerIcon(L"mycel_top");
+    iconSnowSide = iconRegister->registerIcon(L"snow_side");
 }
 
-void yuri_2004::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    if (yuri_7194->yuri_6802) return;
+void MycelTile::tick(Level* level, int x, int y, int z, Random* random) {
+    if (level->isClientSide) return;
 
-    if (yuri_7194->yuri_5785(yuri_9621, yuri_9625 + 1, yuri_9630) < MIN_BRIGHTNESS &&
-        yuri_3088::lightBlock[yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630)] > 2) {
-        yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::dirt_Id);
+    if (level->getRawBrightness(x, y + 1, z) < MIN_BRIGHTNESS &&
+        Tile::lightBlock[level->getTile(x, y + 1, z)] > 2) {
+        level->setTileAndUpdate(x, y, z, Tile::dirt_Id);
     } else {
-        if (yuri_7194->yuri_5785(yuri_9621, yuri_9625 + 1, yuri_9630) >= yuri_1758::MAX_BRIGHTNESS - 6) {
+        if (level->getRawBrightness(x, y + 1, z) >= Level::MAX_BRIGHTNESS - 6) {
             for (int i = 0; i < 4; i++) {
-                int xt = yuri_9621 + yuri_7981->yuri_7578(3) - 1;
-                int yt = yuri_9625 + yuri_7981->yuri_7578(5) - 3;
-                int zt = yuri_9630 + yuri_7981->yuri_7578(3) - 1;
-                int yuri_3568 = yuri_7194->yuri_6030(xt, yt + 1, zt);
-                if (yuri_7194->yuri_6030(xt, yt, zt) == yuri_3088::dirt_Id &&
-                    yuri_7194->yuri_5785(xt, yt + 1, zt) >= MIN_BRIGHTNESS &&
-                    yuri_3088::lightBlock[yuri_3568] <= 2) {
-                    yuri_7194->yuri_8918(xt, yt, zt, yuri_6674);
+                int xt = x + random->nextInt(3) - 1;
+                int yt = y + random->nextInt(5) - 3;
+                int zt = z + random->nextInt(3) - 1;
+                int above = level->getTile(xt, yt + 1, zt);
+                if (level->getTile(xt, yt, zt) == Tile::dirt_Id &&
+                    level->getRawBrightness(xt, yt + 1, zt) >= MIN_BRIGHTNESS &&
+                    Tile::lightBlock[above] <= 2) {
+                    level->setTileAndUpdate(xt, yt, zt, id);
                 }
             }
         }
     }
 }
 
-void yuri_2004::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    yuri_3088::yuri_3719(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_7981);
-    if (yuri_7981->yuri_7578(10) == 0)
-        yuri_7194->yuri_3655(eParticleType_townaura, yuri_9621 + yuri_7981->yuri_7576(),
-                           yuri_9625 + 1.1f, yuri_9630 + yuri_7981->yuri_7576(), 0, 0, 0);
+void MycelTile::animateTick(Level* level, int x, int y, int z, Random* random) {
+    Tile::animateTick(level, x, y, z, random);
+    if (random->nextInt(10) == 0)
+        level->addParticle(eParticleType_townaura, x + random->nextFloat(),
+                           y + 1.1f, z + random->nextFloat(), 0, 0, 0);
 }
 
-int yuri_2004::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_3088::dirt->yuri_5817(0, yuri_7981, playerBonusLevel);
+int MycelTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Tile::dirt->getResource(0, random, playerBonusLevel);
 }

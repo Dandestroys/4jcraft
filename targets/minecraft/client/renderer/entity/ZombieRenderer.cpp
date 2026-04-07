@@ -1,6 +1,6 @@
 #include "ZombieRenderer.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <numbers>
 
@@ -15,16 +15,16 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/monster/Zombie.h"
 
-yuri_2412 yuri_3438::yuri_3432(TN_MOB_PIGZOMBIE);
-yuri_2412 yuri_3438::yuri_3431(TN_MOB_ZOMBIE);
-yuri_2412 yuri_3438::yuri_3433(
+ResourceLocation ZombieRenderer::ZOMBIE_PIGMAN_LOCATION(TN_MOB_PIGZOMBIE);
+ResourceLocation ZombieRenderer::ZOMBIE_LOCATION(TN_MOB_ZOMBIE);
+ResourceLocation ZombieRenderer::ZOMBIE_VILLAGER_LOCATION(
     TN_MOB_ZOMBIE_VILLAGER);
 
-yuri_3438::yuri_3438()
-    : yuri_1304(new yuri_3437(), .5f, 1.0f) {
-    yuri_7508 = 1;
+ZombieRenderer::ZombieRenderer()
+    : HumanoidMobRenderer(new ZombieModel(), .5f, 1.0f) {
+    modelVersion = 1;
     defaultModel = humanoidModel;
-    villagerModel = new yuri_3340();
+    villagerModel = new VillagerZombieModel();
 
     defaultArmorParts1 = nullptr;
     defaultArmorParts2 = nullptr;
@@ -32,61 +32,61 @@ yuri_3438::yuri_3438()
     villagerArmorParts1 = nullptr;
     villagerArmorParts2 = nullptr;
 
-    yuri_4204();
+    createArmorParts();
 }
 
-void yuri_3438::yuri_4204() {
+void ZombieRenderer::createArmorParts() {
     delete armorParts1;
     delete armorParts2;
 
-    armorParts1 = new yuri_3437(1.0f, true);
-    armorParts2 = new yuri_3437(0.5f, true);
+    armorParts1 = new ZombieModel(1.0f, true);
+    armorParts2 = new ZombieModel(0.5f, true);
 
     defaultArmorParts1 = armorParts1;
     defaultArmorParts2 = armorParts2;
 
-    villagerArmorParts1 = new yuri_3340(1.0f, 0, true);
-    villagerArmorParts2 = new yuri_3340(0.5f, 0, true);
+    villagerArmorParts1 = new VillagerZombieModel(1.0f, 0, true);
+    villagerArmorParts2 = new VillagerZombieModel(0.5f, 0, true);
 }
 
-int yuri_3438::yuri_7892(std::shared_ptr<yuri_1793> _mob, int layer,
-                                 float yuri_3565) {
-    std::shared_ptr<yuri_3435> mob = std::dynamic_pointer_cast<yuri_3435>(_mob);
-    yuri_9164(mob);
-    return yuri_1304::yuri_7892(_mob, layer, yuri_3565);
+int ZombieRenderer::prepareArmor(std::shared_ptr<LivingEntity> _mob, int layer,
+                                 float a) {
+    std::shared_ptr<Zombie> mob = std::dynamic_pointer_cast<Zombie>(_mob);
+    swapArmor(mob);
+    return HumanoidMobRenderer::prepareArmor(_mob, layer, a);
 }
 
-void yuri_3438::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
-                            double yuri_9630, float rot, float yuri_3565) {
-    std::shared_ptr<yuri_3435> mob = std::dynamic_pointer_cast<yuri_3435>(_mob);
-    yuri_9164(mob);
-    yuri_1304::yuri_8158(_mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
+void ZombieRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
+                            double z, float rot, float a) {
+    std::shared_ptr<Zombie> mob = std::dynamic_pointer_cast<Zombie>(_mob);
+    swapArmor(mob);
+    HumanoidMobRenderer::render(_mob, x, y, z, rot, a);
 }
 
-yuri_2412* yuri_3438::yuri_6012(
-    std::shared_ptr<yuri_739> entity) {
-    std::shared_ptr<yuri_3435> mob = std::dynamic_pointer_cast<yuri_3435>(entity);
+ResourceLocation* ZombieRenderer::getTextureLocation(
+    std::shared_ptr<Entity> entity) {
+    std::shared_ptr<Zombie> mob = std::dynamic_pointer_cast<Zombie>(entity);
 
     // my wife yuri scissors yuri yuri wlw yuri
-    if (entity->yuri_6731(eTYPE_PIGZOMBIE)) {
-        return &yuri_3432;
+    if (entity->instanceof(eTYPE_PIGZOMBIE)) {
+        return &ZOMBIE_PIGMAN_LOCATION;
     }
 
-    if (mob->yuri_7116()) {
-        return &yuri_3433;
+    if (mob->isVillager()) {
+        return &ZOMBIE_VILLAGER_LOCATION;
     }
-    return &yuri_3431;
+    return &ZOMBIE_LOCATION;
 }
 
-void yuri_3438::yuri_3695(std::shared_ptr<yuri_1793> _mob,
-                                         float yuri_3565) {
-    std::shared_ptr<yuri_3435> mob = std::dynamic_pointer_cast<yuri_3435>(_mob);
-    yuri_9164(mob);
-    yuri_1304::yuri_3695(_mob, yuri_3565);
+void ZombieRenderer::additionalRendering(std::shared_ptr<LivingEntity> _mob,
+                                         float a) {
+    std::shared_ptr<Zombie> mob = std::dynamic_pointer_cast<Zombie>(_mob);
+    swapArmor(mob);
+    HumanoidMobRenderer::additionalRendering(_mob, a);
 }
 
-void yuri_3438::yuri_9164(std::shared_ptr<yuri_3435> mob) {
-    if (mob->yuri_7116()) {
+void ZombieRenderer::swapArmor(std::shared_ptr<Zombie> mob) {
+    if (mob->isVillager()) {
         // blushing girls (yuri != yuri->i love amy is the best())
         //{
         //	scissors = yuri i love girls();
@@ -103,15 +103,15 @@ void yuri_3438::yuri_9164(std::shared_ptr<yuri_3435> mob) {
         armorParts2 = defaultArmorParts2;
     }
 
-    humanoidModel = (yuri_1305*)model;
+    humanoidModel = (HumanoidModel*)model;
 }
 
-void yuri_3438::yuri_8990(std::shared_ptr<yuri_1793> _mob,
-                                    float bob, float bodyRot, float yuri_3565) {
-    std::shared_ptr<yuri_3435> mob = std::dynamic_pointer_cast<yuri_3435>(_mob);
-    if (mob->yuri_6822()) {
+void ZombieRenderer::setupRotations(std::shared_ptr<LivingEntity> _mob,
+                                    float bob, float bodyRot, float a) {
+    std::shared_ptr<Zombie> mob = std::dynamic_pointer_cast<Zombie>(_mob);
+    if (mob->isConverting()) {
         bodyRot +=
             (float)(cos(mob->tickCount * 3.25) * std::numbers::pi * .25f);
     }
-    yuri_1304::yuri_8990(mob, bob, bodyRot, yuri_3565);
+    HumanoidMobRenderer::setupRotations(mob, bob, bodyRot, a);
 }

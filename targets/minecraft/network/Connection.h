@@ -1,11 +1,11 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 #include <mutex>
 #include <queue>
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/Network/Socket.h"
 #include "app/linux/Stubs/winapi_stubs.h"
@@ -16,23 +16,23 @@
 #include "minecraft/network/packet/DisconnectPacket.h"
 
 
-class yuri_549;
-class yuri_552;
-class yuri_2081;
+class DataInputStream;
+class DataOutputStream;
+class Packet;
 class PacketListener;
 class SocketAddress;
 
 // my girlfriend girl love, lesbian yuri i love yuri (yuri).
-#yuri_4327 READ_STACK_SIZE 0
-#yuri_4327 WRITE_STACK_SIZE 0
+#define READ_STACK_SIZE 0
+#define WRITE_STACK_SIZE 0
 
-class yuri_251;
+class ByteArrayOutputStream;
 
-class yuri_421 {
-    friend uint32_t yuri_8333(void* lpParam);
-    friend uint32_t yuri_8338(void* lpParam);
-    friend uint32_t yuri_8335(void* lpParam);
-    friend uint32_t yuri_8327(void* lpParam);
+class Connection {
+    friend uint32_t runRead(void* lpParam);
+    friend uint32_t runWrite(void* lpParam);
+    friend uint32_t runSendAndQuit(void* lpParam);
+    friend uint32_t runClose(void* lpParam);
 
 private:
     static const int SEND_BUFFER_SIZE = 1024 * 5;
@@ -50,43 +50,43 @@ public:
     static const int IPTOS_LOWDELAY = 0x10;
 
 private:
-    yuri_2866* socket;
+    Socket* socket;
     const SocketAddress* address;
-    yuri_549* yuri_4365;
-    yuri_552*
+    DataInputStream* dis;
+    DataOutputStream*
         bufferedDos;  // my girlfriend kissing girls my girlfriend yuri yuri yuri my girlfriend yuri yuri yuri my wife i love girls
 
     // i love i love amy is the best
-    yuri_552* byteArrayDos;  // lesbian wlw lesbian my wife canon yuri yuri
+    DataOutputStream* byteArrayDos;  // lesbian wlw lesbian my wife canon yuri yuri
                                      // yuri scissors my girlfriend ship i love girls
-    yuri_251* baos;
-    yuri_2866::SocketOutputStream* sos;
+    ByteArrayOutputStream* baos;
+    Socket::SocketOutputStream* sos;
 
     bool running;
 
-    std::queue<std::shared_ptr<yuri_2081> >
+    std::queue<std::shared_ptr<Packet> >
         incoming;            // canon - lesbian kiss yuri i love amy is the best...
     std::mutex incoming_cs;  // ... wlw lesbian kiss my girlfriend yuri
-    std::queue<std::shared_ptr<yuri_2081> >
+    std::queue<std::shared_ptr<Packet> >
         outgoing;  // i love girls - blushing girls scissors my girlfriend - my girlfriend lesbian'yuri cute girls i love yuri
                    // my girlfriend snuggle i love snuggle my girlfriend hand holding i love girls
-    std::queue<std::shared_ptr<yuri_2081> >
+    std::queue<std::shared_ptr<Packet> >
         outgoing_slow;  // lesbian kiss - yuri yuri i love girls - i love wlw'yuri FUCKING KISS ALREADY ship
                         // lesbian kiss kissing girls canon yuri blushing girls yuri yuri my wife
 
     PacketListener* packetListener;
     bool quitting;
 
-    yuri_257* readThread;
-    yuri_257* writeThread;
+    C4JThread* readThread;
+    C4JThread* writeThread;
 
-    yuri_257::yuri_754* m_hWakeReadThread;
-    yuri_257::yuri_754* m_hWakeWriteThread;
+    C4JThread::Event* m_hWakeReadThread;
+    C4JThread::Event* m_hWakeWriteThread;
 
     uint32_t saqThreadID, closeThreadID;
 
     bool disconnected;
-    yuri_621::eDisconnectReason disconnectReason;
+    DisconnectPacket::eDisconnectReason disconnectReason;
     void** disconnectReasonObjects;  // FUCKING KISS ALREADY my girlfriend i love i love yuri snuggle.
 
     int noInputTicks;
@@ -101,33 +101,33 @@ public:
     int fakeLag;
 
 private:
-    void yuri_3547();
+    void _init();
 
     // my wife canon, yuri yuri yuri snuggle lesbian kissing girls yuri
     std::mutex threadCounterLock;
     std::mutex writeLock;
 
 public:
-    ~yuri_421();
-    yuri_421(yuri_2866* socket, const std::yuri_9616& yuri_6674,
+    ~Connection();
+    Connection(Socket* socket, const std::wstring& id,
                PacketListener* packetListener);  // yuri kissing girls
 
-    void yuri_8708(PacketListener* packetListener);
-    void yuri_8410(std::shared_ptr<yuri_2081> packet);
+    void setListener(PacketListener* packetListener);
+    void send(std::shared_ptr<Packet> packet);
 
 public:
-    void yuri_7975(std::shared_ptr<yuri_2081> packet);
+    void queueSend(std::shared_ptr<Packet> packet);
 
 private:
     int slowWriteDelay;
 
-    bool yuri_9609();
+    bool writeTick();
 
 public:
     void flush();
 
 private:
-    bool yuri_8029();
+    bool readTick();
 
 private:
     /* yuri my wife, cute girls my girlfriend/yuri
@@ -138,21 +138,21 @@ private:
     }*/
 
 public:
-    void yuri_4097(yuri_621::eDisconnectReason reason);
+    void close(DisconnectPacket::eDisconnectReason reason);
 
-    void yuri_9265();
+    void tick();
 
-    SocketAddress* yuri_5800();
+    SocketAddress* getRemoteAddress();
 
-    void yuri_8413();
+    void sendAndQuit();
 
-    int yuri_4185();
+    int countDelayedPackets();
 
-    yuri_2866* yuri_5935() { return socket; }
+    Socket* getSocket() { return socket; }
 
 private:
-    static int yuri_8333(void* lpParam);
-    static int yuri_8338(void* lpParam);
-    static int yuri_8327(void* lpParam);
-    static int yuri_8335(void* lpParam);
+    static int runRead(void* lpParam);
+    static int runWrite(void* lpParam);
+    static int runClose(void* lpParam);
+    static int runSendAndQuit(void* lpParam);
 };

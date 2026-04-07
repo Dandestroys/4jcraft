@@ -5,16 +5,16 @@
 #include "Throwable.h"
 #include "java/Class.h"
 
-class yuri_1278;
-class yuri_739;
-class yuri_1693;
-class yuri_1758;
-class yuri_1793;
+class HitResult;
+class Entity;
+class ItemInstance;
+class Level;
+class LivingEntity;
 
-class yuri_3079 : public yuri_3075 {
+class ThrownPotion : public Throwable {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_THROWNPOTION; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_3079(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_THROWNPOTION; }
+    static Entity* create(Level* level) { return new ThrownPotion(level); }
 
 public:
     static const double SPLASH_RANGE;
@@ -22,33 +22,33 @@ public:
 private:
     static const double SPLASH_RANGE_SQ;
 
-    std::shared_ptr<yuri_1693> potionItem;
+    std::shared_ptr<ItemInstance> potionItem;
 
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_3079(yuri_1758* yuri_7194);
-    yuri_3079(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob,
+    ThrownPotion(Level* level);
+    ThrownPotion(Level* level, std::shared_ptr<LivingEntity> mob,
                  int potionValue);
-    yuri_3079(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob,
-                 std::shared_ptr<yuri_1693> yuri_7885);
-    yuri_3079(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, int potionValue);
-    yuri_3079(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
-                 std::shared_ptr<yuri_1693> yuri_7885);
+    ThrownPotion(Level* level, std::shared_ptr<LivingEntity> mob,
+                 std::shared_ptr<ItemInstance> potion);
+    ThrownPotion(Level* level, double x, double y, double z, int potionValue);
+    ThrownPotion(Level* level, double x, double y, double z,
+                 std::shared_ptr<ItemInstance> potion);
 
 protected:
-    virtual float yuri_5326();
-    virtual float yuri_6020();
-    virtual float yuri_6021();
+    virtual float getGravity();
+    virtual float getThrowPower();
+    virtual float getThrowUpAngleOffset();
 
 public:
-    void yuri_8786(int potionValue);
-    int yuri_5747();
+    void setPotionValue(int potionValue);
+    int getPotionValue();
 
 protected:
-    virtual void yuri_7623(yuri_1278* res);
+    virtual void onHit(HitResult* res);
 
 public:
-    void yuri_7989(yuri_409* yuri_9178);
-    void yuri_3582(yuri_409* yuri_9178);
+    void readAdditionalSaveData(CompoundTag* tag);
+    void addAdditonalSaveData(CompoundTag* tag);
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/IUIScene_BeaconMenu.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -16,10 +16,10 @@
 #endif
 #include "UIScene_AbstractContainerMenu.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3192 : public yuri_3190,
-                           public yuri_1337 {
+class UIScene_BeaconMenu : public UIScene_AbstractContainerMenu,
+                           public IUIScene_BeaconMenu {
 private:
     enum EControls {
         eControl_Primary1,
@@ -34,55 +34,55 @@ private:
     };
 
 public:
-    yuri_3192(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_BeaconMenu(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_BeaconMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_BeaconMenu; }
 
 protected:
-    yuri_3180 m_slotListActivator;
-    yuri_3180 m_slotListActivatorIcons;
-    yuri_3173 m_labelPrimary, m_labelSecondary;
-    yuri_3164 m_buttonsPowers[eControl_EFFECT_COUNT];
-    yuri_3164 m_buttonConfirm;
+    UIControl_SlotList m_slotListActivator;
+    UIControl_SlotList m_slotListActivatorIcons;
+    UIControl_Label m_labelPrimary, m_labelSecondary;
+    UIControl_BeaconEffectButton m_buttonsPowers[eControl_EFFECT_COUNT];
+    UIControl_BeaconEffectButton m_buttonConfirm;
 
-    yuri_3257(yuri_3190)
-    yuri_3256(m_controlMainPanel)
-    yuri_3260(m_slotListActivator, "ActivatorSlot")
-    yuri_3260(m_slotListActivatorIcons, "ActivatorList")
-    yuri_3260(m_buttonsPowers[eControl_Primary1], "Primary_Slot_01")
-    yuri_3260(m_buttonsPowers[eControl_Primary2], "Primary_Slot_02")
-    yuri_3260(m_buttonsPowers[eControl_Primary3], "Primary_Slot_03")
-    yuri_3260(m_buttonsPowers[eControl_Primary4], "Primary_Slot_04")
-    yuri_3260(m_buttonsPowers[eControl_Primary5], "Primary_Slot_05")
-    yuri_3260(m_buttonsPowers[eControl_Secondary1], "Secondary_Slot_01")
-    yuri_3260(m_buttonsPowers[eControl_Secondary2], "Secondary_Slot_02")
-    yuri_3260(m_buttonConfirm, "ConfirmButton")
-    yuri_3260(m_labelPrimary, "PrimaryPowerLabel")
-    yuri_3260(m_labelSecondary, "SecondaryPowerLabel")
-    yuri_3258()
-    yuri_3259()
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene_AbstractContainerMenu)
+    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
+    UI_MAP_ELEMENT(m_slotListActivator, "ActivatorSlot")
+    UI_MAP_ELEMENT(m_slotListActivatorIcons, "ActivatorList")
+    UI_MAP_ELEMENT(m_buttonsPowers[eControl_Primary1], "Primary_Slot_01")
+    UI_MAP_ELEMENT(m_buttonsPowers[eControl_Primary2], "Primary_Slot_02")
+    UI_MAP_ELEMENT(m_buttonsPowers[eControl_Primary3], "Primary_Slot_03")
+    UI_MAP_ELEMENT(m_buttonsPowers[eControl_Primary4], "Primary_Slot_04")
+    UI_MAP_ELEMENT(m_buttonsPowers[eControl_Primary5], "Primary_Slot_05")
+    UI_MAP_ELEMENT(m_buttonsPowers[eControl_Secondary1], "Secondary_Slot_01")
+    UI_MAP_ELEMENT(m_buttonsPowers[eControl_Secondary2], "Secondary_Slot_02")
+    UI_MAP_ELEMENT(m_buttonConfirm, "ConfirmButton")
+    UI_MAP_ELEMENT(m_labelPrimary, "PrimaryPowerLabel")
+    UI_MAP_ELEMENT(m_labelSecondary, "SecondaryPowerLabel")
+    UI_END_MAP_CHILD_ELEMENTS()
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
-    virtual void yuri_6514();
-    virtual void yuri_9265();
-    virtual int yuri_940() { return 4; }
+    virtual std::wstring getMoviePath();
+    virtual void handleReload();
+    virtual void tick();
+    virtual int GetBaseSlotCount() { return 4; }
 
-    virtual int yuri_5867(ESceneSection eSection);
-    virtual int yuri_5868(ESceneSection eSection);
-    virtual void yuri_1122(ESceneSection eSection,
+    virtual int getSectionColumns(ESceneSection eSection);
+    virtual int getSectionRows(ESceneSection eSection);
+    virtual void GetPositionOfSection(ESceneSection eSection,
                                       UIVec2D* pPosition);
-    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
+    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize);
-    virtual void yuri_6520(ESceneSection eSection) {}
-    virtual void yuri_8848(ESceneSection eSection, int yuri_9621, int yuri_9625);
+    virtual void handleSectionClick(ESceneSection eSection) {}
+    virtual void setSectionSelectedSlot(ESceneSection eSection, int x, int y);
 
-    virtual yuri_3162* yuri_5866(ESceneSection eSection);
-    virtual void yuri_4287(IggyCustomDrawCallbackRegion* region);
+    virtual UIControl* getSection(ESceneSection eSection);
+    virtual void customDraw(IggyCustomDrawCallbackRegion* region);
 
-    virtual void yuri_2587(bool enabled);
-    virtual void yuri_83(int yuri_6674, int yuri_6672, int yuri_9289, int yuri_4184,
+    virtual void SetConfirmButtonEnabled(bool enabled);
+    virtual void AddPowerButton(int id, int icon, int tier, int count,
                                 bool active, bool selected);
-    virtual int yuri_1124(ESceneSection eSection);
-    virtual bool yuri_1665(ESceneSection eSection);
-    virtual void yuri_2695(ESceneSection eSection);
+    virtual int GetPowerButtonId(ESceneSection eSection);
+    virtual bool IsPowerButtonSelected(ESceneSection eSection);
+    virtual void SetPowerButtonSelected(ESceneSection eSection);
 };

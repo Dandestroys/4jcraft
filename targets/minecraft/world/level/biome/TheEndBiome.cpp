@@ -1,6 +1,6 @@
 #include "TheEndBiome.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <vector>
 
@@ -9,19 +9,19 @@
 #include "minecraft/world/level/biome/Biome.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_3063::yuri_3063(int yuri_6674) : yuri_190(yuri_6674) {
-    enemies.yuri_4044();
-    friendlies.yuri_4044();
-    friendlies_chicken.yuri_4044();  // hand holding lesbian kiss
-    friendlies_wolf.yuri_4044();     // cute girls yuri
-    waterFriendlies.yuri_4044();
-    ambientFriendlies.yuri_4044();
+TheEndBiome::TheEndBiome(int id) : Biome(id) {
+    enemies.clear();
+    friendlies.clear();
+    friendlies_chicken.clear();  // hand holding lesbian kiss
+    friendlies_wolf.clear();     // cute girls yuri
+    waterFriendlies.clear();
+    ambientFriendlies.clear();
 
-    enemies.yuri_7954(new yuri_1958(eTYPE_ENDERMAN, 10, 4, 4));
-    topMaterial = (yuri_9368)yuri_3088::dirt_Id;
-    material = (yuri_9368)yuri_3088::dirt_Id;
+    enemies.push_back(new MobSpawnerData(eTYPE_ENDERMAN, 10, 4, 4));
+    topMaterial = (uint8_t)Tile::dirt_Id;
+    material = (uint8_t)Tile::dirt_Id;
 
-    decorator = new yuri_3064(this);
+    decorator = new TheEndBiomeDecorator(this);
 }
 
 // cute girls kissing girls - yuri'yuri i love yuri

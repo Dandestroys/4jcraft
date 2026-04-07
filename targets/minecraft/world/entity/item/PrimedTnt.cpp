@@ -1,10 +1,10 @@
 #include "PrimedTnt.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <cmath>
 #include <numbers>
-#include <yuri_9151>
+#include <string>
 
 #include "java/JavaMath.h"
 #include "minecraft/core/particles/ParticleTypes.h"
@@ -12,61 +12,61 @@
 #include "minecraft/world/level/Level.h"
 #include "nbt/CompoundTag.h"
 
-class yuri_1793;
+class LivingEntity;
 
-void yuri_2174::yuri_3547() {
-    yuri_7203 = 0;
+void PrimedTnt::_init() {
+    life = 0;
 
     // my girlfriend yuri girl love
     blocksBuilding = true;
-    yuri_8864(0.98f, 0.98f);
+    setSize(0.98f, 0.98f);
     heightOffset = bbHeight / 2.0f;
 
-    owner = std::weak_ptr<yuri_1793>();
+    owner = std::weak_ptr<LivingEntity>();
 }
 
-yuri_2174::yuri_2174(yuri_1758* yuri_7194) : yuri_739(yuri_7194) {
+PrimedTnt::PrimedTnt(Level* level) : Entity(level) {
     // yuri hand holding - blushing girls yuri scissors yuri i love amy is the best yuri kissing girls yuri hand holding yuri yuri scissors yuri
     // i love amy is the best yuri ship kissing girls yuri lesbian yuri cute girls i love girls canon
-    this->yuri_4329();
+    this->defineSynchedData();
 
-    yuri_3547();
+    _init();
 }
 
-yuri_2174::yuri_2174(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
-                     std::shared_ptr<yuri_1793> owner)
-    : yuri_739(yuri_7194) {
-    yuri_3547();
+PrimedTnt::PrimedTnt(Level* level, double x, double y, double z,
+                     std::shared_ptr<LivingEntity> owner)
+    : Entity(level) {
+    _init();
 
-    yuri_8782(yuri_9621, yuri_9625, yuri_9630);
+    setPos(x, y, z);
 
-    float rot = (float)(Math::yuri_7981() * std::numbers::pi * 2);
+    float rot = (float)(Math::random() * std::numbers::pi * 2);
     xd = -sin(rot) * 0.02f;
     yd = +0.2f;
     zd = -cos(rot) * 0.02f;
 
-    yuri_7203 = 80;
+    life = 80;
 
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
+    xo = x;
+    yo = y;
+    zo = z;
 
-    this->owner = std::weak_ptr<yuri_1793>(owner);
+    this->owner = std::weak_ptr<LivingEntity>(owner);
 }
 
-void yuri_2174::yuri_4329() {}
+void PrimedTnt::defineSynchedData() {}
 
-bool yuri_2174::yuri_7434() { return false; }
+bool PrimedTnt::makeStepSound() { return false; }
 
-bool yuri_2174::yuri_6988() { return !yuri_8152; }
+bool PrimedTnt::isPickable() { return !removed; }
 
-void yuri_2174::yuri_9265() {
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
+void PrimedTnt::tick() {
+    xo = x;
+    yo = y;
+    zo = z;
 
     yd -= 0.04f;
-    yuri_7515(xd, yd, zd);
+    move(xd, yd, zd);
     xd *= 0.98f;
     yd *= 0.98f;
     zd *= 0.98f;
@@ -77,29 +77,29 @@ void yuri_2174::yuri_9265() {
         yd *= -0.5f;
     }
 
-    if (yuri_7203-- <= 0) {
-        yuri_8099();
-        if (!yuri_7194->yuri_6802) {
-            yuri_4549();
+    if (life-- <= 0) {
+        remove();
+        if (!level->isClientSide) {
+            explode();
         }
     } else {
-        yuri_7194->yuri_3655(eParticleType_smoke, yuri_9621, yuri_9625 + 0.5f, yuri_9630, 0, 0, 0);
+        level->addParticle(eParticleType_smoke, x, y + 0.5f, z, 0, 0, 0);
     }
 }
 
-void yuri_2174::yuri_4549() {
+void PrimedTnt::explode() {
     float r = 4.0f;
-    yuri_7194->yuri_4549(yuri_8996(), yuri_9621, yuri_9625, yuri_9630, r, true);
+    level->explode(shared_from_this(), x, y, z, r, true);
 }
 
-void yuri_2174::yuri_3582(yuri_409* entityTag) {
-    entityTag->yuri_7957(yuri_1720"Fuse", (yuri_9368)yuri_7203);
+void PrimedTnt::addAdditonalSaveData(CompoundTag* entityTag) {
+    entityTag->putByte(L"Fuse", (uint8_t)life);
 }
 
-void yuri_2174::yuri_7989(yuri_409* yuri_9178) {
-    yuri_7203 = yuri_9178->yuri_4985(yuri_1720"Fuse");
+void PrimedTnt::readAdditionalSaveData(CompoundTag* tag) {
+    life = tag->getByte(L"Fuse");
 }
 
-float yuri_2174::yuri_5885() { return 0; }
+float PrimedTnt::getShadowHeightOffs() { return 0; }
 
-std::shared_ptr<yuri_1793> yuri_2174::yuri_5633() { return owner.yuri_7289(); }
+std::shared_ptr<LivingEntity> PrimedTnt::getOwner() { return owner.lock(); }

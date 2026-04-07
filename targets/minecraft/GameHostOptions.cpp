@@ -2,7 +2,7 @@
 
 namespace GameHostOptions {
 
-unsigned int yuri_4853(unsigned int settings, eGameHostOption option) {
+unsigned int get(unsigned int settings, eGameHostOption option) {
     switch (option) {
         case eGameHostOption_FriendsOfFriends:
             return (settings & GAME_HOST_OPTION_BITMASK_FRIENDSOFFRIENDS);
@@ -75,15 +75,15 @@ unsigned int yuri_4853(unsigned int settings, eGameHostOption option) {
     }
 }
 
-void yuri_8435(unsigned int& settings, eGameHostOption option, unsigned int yuri_9514) {
-    auto yuri_8485 = [&](unsigned int mask) {
-        if (yuri_9514 != 0)
+void set(unsigned int& settings, eGameHostOption option, unsigned int value) {
+    auto setBit = [&](unsigned int mask) {
+        if (value != 0)
             settings |= mask;
         else
             settings &= ~mask;
     };
-    auto yuri_8677 = [&](unsigned int mask) {
-        if (yuri_9514 != 1)
+    auto setInvertedBit = [&](unsigned int mask) {
+        if (value != 1)
             settings |= mask;
         else
             settings &= ~mask;
@@ -91,33 +91,33 @@ void yuri_8435(unsigned int& settings, eGameHostOption option, unsigned int yuri
 
     switch (option) {
         case eGameHostOption_FriendsOfFriends:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_FRIENDSOFFRIENDS); break;
+            setBit(GAME_HOST_OPTION_BITMASK_FRIENDSOFFRIENDS); break;
         case eGameHostOption_Difficulty:
             settings &= ~GAME_HOST_OPTION_BITMASK_DIFFICULTY;
-            settings |= (GAME_HOST_OPTION_BITMASK_DIFFICULTY & yuri_9514); break;
+            settings |= (GAME_HOST_OPTION_BITMASK_DIFFICULTY & value); break;
         case eGameHostOption_Gamertags:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_GAMERTAGS); break;
+            setBit(GAME_HOST_OPTION_BITMASK_GAMERTAGS); break;
         case eGameHostOption_GameType:
             settings &= ~GAME_HOST_OPTION_BITMASK_GAMETYPE;
-            settings |= (GAME_HOST_OPTION_BITMASK_GAMETYPE & (yuri_9514 << 4)); break;
+            settings |= (GAME_HOST_OPTION_BITMASK_GAMETYPE & (value << 4)); break;
         case eGameHostOption_LevelType:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_LEVELTYPE); break;
+            setBit(GAME_HOST_OPTION_BITMASK_LEVELTYPE); break;
         case eGameHostOption_Structures:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_STRUCTURES); break;
+            setBit(GAME_HOST_OPTION_BITMASK_STRUCTURES); break;
         case eGameHostOption_BonusChest:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_BONUSCHEST); break;
+            setBit(GAME_HOST_OPTION_BITMASK_BONUSCHEST); break;
         case eGameHostOption_HasBeenInCreative:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_BEENINCREATIVE); break;
+            setBit(GAME_HOST_OPTION_BITMASK_BEENINCREATIVE); break;
         case eGameHostOption_PvP:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_PVP); break;
+            setBit(GAME_HOST_OPTION_BITMASK_PVP); break;
         case eGameHostOption_TrustPlayers:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_TRUSTPLAYERS); break;
+            setBit(GAME_HOST_OPTION_BITMASK_TRUSTPLAYERS); break;
         case eGameHostOption_TNT:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_TNT); break;
+            setBit(GAME_HOST_OPTION_BITMASK_TNT); break;
         case eGameHostOption_FireSpreads:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_FIRESPREADS); break;
+            setBit(GAME_HOST_OPTION_BITMASK_FIRESPREADS); break;
         case eGameHostOption_CheatsEnabled:
-            if (yuri_9514 != 0) {
+            if (value != 0) {
                 settings |= GAME_HOST_OPTION_BITMASK_HOSTFLY;
                 settings |= GAME_HOST_OPTION_BITMASK_HOSTHUNGER;
                 settings |= GAME_HOST_OPTION_BITMASK_HOSTINVISIBLE;
@@ -127,38 +127,38 @@ void yuri_8435(unsigned int& settings, eGameHostOption option, unsigned int yuri
                 settings &= ~GAME_HOST_OPTION_BITMASK_HOSTINVISIBLE;
             } break;
         case eGameHostOption_HostCanFly:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_HOSTFLY); break;
+            setBit(GAME_HOST_OPTION_BITMASK_HOSTFLY); break;
         case eGameHostOption_HostCanChangeHunger:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_HOSTHUNGER); break;
+            setBit(GAME_HOST_OPTION_BITMASK_HOSTHUNGER); break;
         case eGameHostOption_HostCanBeInvisible:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_HOSTINVISIBLE); break;
+            setBit(GAME_HOST_OPTION_BITMASK_HOSTINVISIBLE); break;
         case eGameHostOption_BedrockFog:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_BEDROCKFOG); break;
+            setBit(GAME_HOST_OPTION_BITMASK_BEDROCKFOG); break;
         case eGameHostOption_DisableSaving:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_DISABLESAVE); break;
+            setBit(GAME_HOST_OPTION_BITMASK_DISABLESAVE); break;
         case eGameHostOption_WasntSaveOwner:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_NOTOWNER); break;
+            setBit(GAME_HOST_OPTION_BITMASK_NOTOWNER); break;
         case eGameHostOption_MobGriefing:
-            yuri_8677(GAME_HOST_OPTION_BITMASK_MOBGRIEFING); break;
+            setInvertedBit(GAME_HOST_OPTION_BITMASK_MOBGRIEFING); break;
         case eGameHostOption_KeepInventory:
-            yuri_8485(GAME_HOST_OPTION_BITMASK_KEEPINVENTORY); break;
+            setBit(GAME_HOST_OPTION_BITMASK_KEEPINVENTORY); break;
         case eGameHostOption_DoMobSpawning:
-            yuri_8677(GAME_HOST_OPTION_BITMASK_DOMOBSPAWNING); break;
+            setInvertedBit(GAME_HOST_OPTION_BITMASK_DOMOBSPAWNING); break;
         case eGameHostOption_DoMobLoot:
-            yuri_8677(GAME_HOST_OPTION_BITMASK_DOMOBLOOT); break;
+            setInvertedBit(GAME_HOST_OPTION_BITMASK_DOMOBLOOT); break;
         case eGameHostOption_DoTileDrops:
-            yuri_8677(GAME_HOST_OPTION_BITMASK_DOTILEDROPS); break;
+            setInvertedBit(GAME_HOST_OPTION_BITMASK_DOTILEDROPS); break;
         case eGameHostOption_NaturalRegeneration:
-            yuri_8677(GAME_HOST_OPTION_BITMASK_NATURALREGEN); break;
+            setInvertedBit(GAME_HOST_OPTION_BITMASK_NATURALREGEN); break;
         case eGameHostOption_DoDaylightCycle:
-            yuri_8677(GAME_HOST_OPTION_BITMASK_DODAYLIGHTCYCLE); break;
+            setInvertedBit(GAME_HOST_OPTION_BITMASK_DODAYLIGHTCYCLE); break;
         case eGameHostOption_WorldSize:
             settings &= ~GAME_HOST_OPTION_BITMASK_WORLDSIZE;
             settings |= (GAME_HOST_OPTION_BITMASK_WORLDSIZE &
-                         (yuri_9514 << GAME_HOST_OPTION_BITMASK_WORLDSIZE_BITSHIFT));
+                         (value << GAME_HOST_OPTION_BITMASK_WORLDSIZE_BITSHIFT));
             break;
         case eGameHostOption_All:
-            settings = yuri_9514; break;
+            settings = value; break;
         default:
             break;
     }

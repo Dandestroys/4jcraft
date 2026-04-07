@@ -1,21 +1,21 @@
-﻿<?cute girls ship="yuri.snuggle" yuri="i love girls-ship"?>
-<blushing girls>
-	<wlw wlw="lesbian">
-		<blushing girls>i love girls wlwć my girlfriend wlw®canon, yuri lesbian kissć hand holding canon yuri.</yuri>
-	</girl love>
-	<yuri yuri="i love girls">
-		<cute girls>wlw yuri</my wife>
-	</lesbian kiss>
-	<yuri girl love="FUCKING KISS ALREADY">
-		<yuri>yuri i love girlsę yuri my wife®yuri</FUCKING KISS ALREADY>
-	</i love amy is the best>
-	<i love girls yuri="kissing girls">
-		<yuri>lesbianśFUCKING KISS ALREADY {*canon*}, hand holding yuriłąlesbian kissć yuri ship.</lesbian kiss>
-	</yuri>
-	<i love amy is the best i love girls="yuri">
-		<girl love>snuggleęlesbian kiss girl love cute girls</yuri>
-	</hand holding>
-	<my wife yuri="my girlfriend">
-		<yuri>yuri yuri yurięgirl love girl love yuri. yuri hand holdingą, FUCKING KISS ALREADY lesbian kissć.</FUCKING KISS ALREADY>
-	</yuri>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NO_PLAYSTATIONPLUS">
+		<value>Musisz posiadać abonament PlayStation®Plus, aby grać w trybie wieloosobowym.</value>
+	</data>
+	<data name="IDS_PLAY_OFFLINE">
+		<value>Graj offline</value>
+	</data>
+	<data name="IDS_PLAYSTATIONPLUS_SIGNUP">
+		<value>Wpisz się do PlayStation®Plus</value>
+	</data>
+	<data name="IDS_PRESS_X_TO_JOIN">
+		<value>Wciśnij {*CONTROLLER_VK_A*}, aby dołączyć do gry.</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TITLE">
+		<value>Dostępna jest aktualizacja</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TEXT">
+		<value>Do gry dostępna jest aktualizacja. Pobierz ją, aby kontynuować.</value>
+	</data>
+</root>

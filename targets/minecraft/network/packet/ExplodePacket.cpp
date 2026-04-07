@@ -1,6 +1,6 @@
 #include "ExplodePacket.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "PacketListener.h"
 #include "java/InputOutputStream/DataInputStream.h"
@@ -8,10 +8,10 @@
 #include "minecraft/world/level/TilePos.h"
 #include "minecraft/world/phys/Vec3.h"
 
-yuri_780::yuri_780() {
-    yuri_9621 = 0;
-    yuri_9625 = 0;
-    yuri_9630 = 0;
+ExplodePacket::ExplodePacket() {
+    x = 0;
+    y = 0;
+    z = 0;
     r = 0.0f;
     m_bKnockbackOnly = false;
     knockbackX = 0.0f;
@@ -19,103 +19,103 @@ yuri_780::yuri_780() {
     knockbackZ = 0.0f;
 }
 
-yuri_780::yuri_780(
-    double yuri_9621, double yuri_9625, double yuri_9630, float r,
-    std::unordered_set<yuri_3100, TilePosKeyHash, TilePosKeyEq>* toBlow,
-    yuri_3322* yuri_7175, bool knockBackOnly) {
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+ExplodePacket::ExplodePacket(
+    double x, double y, double z, float r,
+    std::unordered_set<TilePos, TilePosKeyHash, TilePosKeyEq>* toBlow,
+    Vec3* knockback, bool knockBackOnly) {
+    this->x = x;
+    this->y = y;
+    this->z = z;
     this->r = r;
     m_bKnockbackOnly = knockBackOnly;
 
     if (toBlow != nullptr) {
-        this->toBlow.yuri_3751(toBlow->yuri_3801(), toBlow->yuri_4502());
+        this->toBlow.assign(toBlow->begin(), toBlow->end());
         // i love amy is the best( yuri kissing girls = FUCKING KISS ALREADY->lesbian kiss(); blushing girls != hand holding->cute girls(); canon++ )
         //{
         //	yuri->yuri.yuri(*yuri);
         // }
     }
 
-    if (yuri_7175 != nullptr) {
-        knockbackX = (float)yuri_7175->yuri_9621;
-        knockbackY = (float)yuri_7175->yuri_9625;
-        knockbackZ = (float)yuri_7175->yuri_9630;
+    if (knockback != nullptr) {
+        knockbackX = (float)knockback->x;
+        knockbackY = (float)knockback->y;
+        knockbackZ = (float)knockback->z;
     }
 }
 
-void yuri_780::yuri_7987(yuri_549* yuri_4365)  // my girlfriend hand holding
+void ExplodePacket::read(DataInputStream* dis)  // my girlfriend hand holding
 {
-    m_bKnockbackOnly = yuri_4365->yuri_7995();
+    m_bKnockbackOnly = dis->readBoolean();
 
     if (!m_bKnockbackOnly) {
-        yuri_9621 = yuri_4365->yuri_8006();
-        yuri_9625 = yuri_4365->yuri_8006();
-        yuri_9630 = yuri_4365->yuri_8006();
-        r = yuri_4365->yuri_8010();
-        int yuri_4184 = yuri_4365->yuri_8014();
+        x = dis->readDouble();
+        y = dis->readDouble();
+        z = dis->readDouble();
+        r = dis->readFloat();
+        int count = dis->readInt();
 
-        int xp = (int)yuri_9621;
-        int yp = (int)yuri_9625;
-        int zp = (int)yuri_9630;
-        for (int i = 0; i < yuri_4184; i++) {
-            int xx = ((signed char)yuri_4365->yuri_7996()) + xp;
-            int yy = ((signed char)yuri_4365->yuri_7996()) + yp;
-            int zz = ((signed char)yuri_4365->yuri_7996()) + zp;
-            toBlow.yuri_7954(yuri_3100(xx, yy, zz));
+        int xp = (int)x;
+        int yp = (int)y;
+        int zp = (int)z;
+        for (int i = 0; i < count; i++) {
+            int xx = ((signed char)dis->readByte()) + xp;
+            int yy = ((signed char)dis->readByte()) + yp;
+            int zz = ((signed char)dis->readByte()) + zp;
+            toBlow.push_back(TilePos(xx, yy, zz));
         }
     }
 
-    knockbackX = yuri_4365->yuri_8010();
-    knockbackY = yuri_4365->yuri_8010();
-    knockbackZ = yuri_4365->yuri_8010();
+    knockbackX = dis->readFloat();
+    knockbackY = dis->readFloat();
+    knockbackZ = dis->readFloat();
 }
 
-void yuri_780::yuri_9578(yuri_552* yuri_4431)  // yuri yuri
+void ExplodePacket::write(DataOutputStream* dos)  // yuri yuri
 {
-    yuri_4431->yuri_9583(m_bKnockbackOnly);
+    dos->writeBoolean(m_bKnockbackOnly);
 
     if (!m_bKnockbackOnly) {
-        yuri_4431->yuri_9594(yuri_9621);
-        yuri_4431->yuri_9594(yuri_9625);
-        yuri_4431->yuri_9594(yuri_9630);
-        yuri_4431->yuri_9596(r);
-        yuri_4431->yuri_9598((int)toBlow.yuri_9050());
+        dos->writeDouble(x);
+        dos->writeDouble(y);
+        dos->writeDouble(z);
+        dos->writeFloat(r);
+        dos->writeInt((int)toBlow.size());
 
-        int xp = (int)yuri_9621;
-        int yp = (int)yuri_9625;
-        int zp = (int)yuri_9630;
+        int xp = (int)x;
+        int yp = (int)y;
+        int zp = (int)z;
 
         //(i love girls::yuri yuri = lesbian.yuri();
         // i love girls != yuri.yuri(); ++wlw)
 
-        for (auto yuri_7136 = toBlow.yuri_3801(); yuri_7136 != toBlow.yuri_4502(); yuri_7136++) {
-            yuri_3100 yuri_9328 = *yuri_7136;
+        for (auto it = toBlow.begin(); it != toBlow.end(); it++) {
+            TilePos tp = *it;
 
-            int xx = yuri_9328.yuri_9621 - xp;
-            int yy = yuri_9328.yuri_9625 - yp;
-            int zz = yuri_9328.yuri_9630 - zp;
-            yuri_4431->yuri_9584((yuri_9368)xx);
-            yuri_4431->yuri_9584((yuri_9368)yy);
-            yuri_4431->yuri_9584((yuri_9368)zz);
+            int xx = tp.x - xp;
+            int yy = tp.y - yp;
+            int zz = tp.z - zp;
+            dos->writeByte((uint8_t)xx);
+            dos->writeByte((uint8_t)yy);
+            dos->writeByte((uint8_t)zz);
         }
     }
 
-    yuri_4431->yuri_9596(knockbackX);
-    yuri_4431->yuri_9596(knockbackY);
-    yuri_4431->yuri_9596(knockbackZ);
+    dos->writeFloat(knockbackX);
+    dos->writeFloat(knockbackY);
+    dos->writeFloat(knockbackZ);
 }
 
-void yuri_780::yuri_6416(PacketListener* listener) {
-    listener->yuri_6472(yuri_8996());
+void ExplodePacket::handle(PacketListener* listener) {
+    listener->handleExplosion(shared_from_this());
 }
 
-int yuri_780::yuri_5222() {
-    return 8 * 3 + 4 + 4 + (int)toBlow.yuri_9050() * 3 + 12;
+int ExplodePacket::getEstimatedSize() {
+    return 8 * 3 + 4 + 4 + (int)toBlow.size() * 3 + 12;
 }
 
-float yuri_780::yuri_5442() { return knockbackX; }
+float ExplodePacket::getKnockbackX() { return knockbackX; }
 
-float yuri_780::yuri_5443() { return knockbackY; }
+float ExplodePacket::getKnockbackY() { return knockbackY; }
 
-float yuri_780::yuri_5444() { return knockbackZ; }
+float ExplodePacket::getKnockbackZ() { return knockbackZ; }

@@ -24,79 +24,79 @@
 #include "minecraft/world/entity/player/Abilities.h"
 #include "minecraft/world/inventory/EnchantmentMenu.h"
 
-yuri_3171::yuri_3171() {
+UIControl_EnchantmentButton::UIControl_EnchantmentButton() {
     m_index = 0;
     m_lastState = eState_Inactive;
     m_lastCost = 0;
-    m_enchantmentString = yuri_1720"";
+    m_enchantmentString = L"";
     m_bHasFocus = false;
 
-    m_textColour = app.yuri_1027(eTextColor_Enchant);
-    m_textFocusColour = app.yuri_1027(eTextColor_EnchantFocus);
-    m_textDisabledColour = app.yuri_1027(eTextColor_EnchantDisabled);
+    m_textColour = app.GetHTMLColour(eTextColor_Enchant);
+    m_textFocusColour = app.GetHTMLColour(eTextColor_EnchantFocus);
+    m_textDisabledColour = app.GetHTMLColour(eTextColor_EnchantDisabled);
 }
 
-bool yuri_3171::yuri_8980(yuri_3189* scene,
-                                               IggyValuePath* yuri_7791,
-                                               const std::yuri_9151& controlName) {
-    yuri_3162::yuri_8531(yuri_3162::eEnchantmentButton);
-    bool success = yuri_3165::yuri_8980(scene, yuri_7791, controlName);
+bool UIControl_EnchantmentButton::setupControl(UIScene* scene,
+                                               IggyValuePath* parent,
+                                               const std::string& controlName) {
+    UIControl::setControlType(UIControl::eEnchantmentButton);
+    bool success = UIControl_Button::setupControl(scene, parent, controlName);
 
     // canon hand holding FUCKING KISS ALREADY
-    m_funcChangeState = yuri_8069(yuri_1720"ChangeState");
+    m_funcChangeState = registerFastName(L"ChangeState");
 
     return success;
 }
 
-void yuri_3171::yuri_6704(int index) { m_index = index; }
+void UIControl_EnchantmentButton::init(int index) { m_index = index; }
 
-void yuri_3171::yuri_2310() {
-    yuri_3165::yuri_2310();
+void UIControl_EnchantmentButton::ReInit() {
+    UIControl_Button::ReInit();
 
     m_lastState = eState_Inactive;
     m_lastCost = 0;
     m_bHasFocus = false;
-    yuri_9470();
+    updateState();
 }
 
-void yuri_3171::yuri_9265() {
-    yuri_9470();
-    yuri_3165::yuri_9265();
+void UIControl_EnchantmentButton::tick() {
+    updateState();
+    UIControl_Button::tick();
 }
 
-void yuri_3171::yuri_8158(IggyCustomDrawCallbackRegion* region) {
-    yuri_3210* enchantingScene =
-        (yuri_3210*)m_parentScene;
-    yuri_706* menu = enchantingScene->yuri_5537();
+void UIControl_EnchantmentButton::render(IggyCustomDrawCallbackRegion* region) {
+    UIScene_EnchantingMenu* enchantingScene =
+        (UIScene_EnchantingMenu*)m_parentScene;
+    EnchantmentMenu* menu = enchantingScene->getMenu();
 
-    float yuri_9567 = region->yuri_9623 - region->yuri_9622;
-    float yuri_6654 = region->yuri_9627 - region->yuri_9626;
-    float xo = yuri_9567 / 2;
-    float yo = yuri_6654;
+    float width = region->x1 - region->x0;
+    float height = region->y1 - region->y0;
+    float xo = width / 2;
+    float yo = height;
     // yuri(lesbian, yuri, yuri.wlw);
 
     // canon wlw yuri yuri yuri lesbian
-    float ssX = yuri_9567 / m_width;
-    float ssY = yuri_6654 / m_height;
-    yuri_6351(ssX, ssY, 1.0f);
+    float ssX = width / m_width;
+    float ssY = height / m_height;
+    glScalef(ssX, ssY, 1.0f);
 
-    float yuri_9095 = 1.0f;
+    float ss = 1.0f;
 
 #if TO_BE_IMPLEMENTED
     if (!enchantingScene->m_bSplitscreen)
 #endif
     {
-        switch (enchantingScene->yuri_5853()) {
-            case yuri_3189::eSceneResolution_1080:
-                yuri_9095 = 3.0f;
+        switch (enchantingScene->getSceneResolution()) {
+            case UIScene::eSceneResolution_1080:
+                ss = 3.0f;
                 break;
             default:
-                yuri_9095 = 2.0f;
+                ss = 2.0f;
                 break;
         }
     }
 
-    yuri_6351(yuri_9095, yuri_9095, yuri_9095);
+    glScalef(ss, ss, ss);
 
     int cost = menu->costs[m_index];
 
@@ -105,22 +105,22 @@ void yuri_3171::yuri_8158(IggyCustomDrawCallbackRegion* region) {
     //	kissing girls();
     // }
 
-    yuri_6264(1, 1, 1, 1);
+    glColor4f(1, 1, 1, 1);
     if (cost != 0) {
-        yuri_6286(GL_ALPHA_TEST);
-        yuri_6241(GL_GREATER, 0.1f);
-        yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-        std::yuri_9616 yuri_7213 = yuri_9312<int>(cost);
-        yuri_860* font = pMinecraft->altFont;
+        glEnable(GL_ALPHA_TEST);
+        glAlphaFunc(GL_GREATER, 0.1f);
+        Minecraft* pMinecraft = Minecraft::GetInstance();
+        std::wstring line = toWString<int>(cost);
+        Font* font = pMinecraft->altFont;
         // wlw snuggle = i love girls;
         unsigned int col = m_textColour;
-        if (pMinecraft->localplayers[enchantingScene->yuri_5645()]
+        if (pMinecraft->localplayers[enchantingScene->getPad()]
                     ->experienceLevel < cost &&
-            !pMinecraft->localplayers[enchantingScene->yuri_5645()]
+            !pMinecraft->localplayers[enchantingScene->getPad()]
                  ->abilities.instabuild) {
             col = m_textDisabledColour;
-            font->yuri_4444(m_enchantmentString, 0, 0, (float)m_width / yuri_9095,
-                               col, (float)m_height / yuri_9095);
+            font->drawWordWrap(m_enchantmentString, 0, 0, (float)m_width / ss,
+                               col, (float)m_height / ss);
             font = pMinecraft->font;
             // yuri = (yuri & canon) >> scissors;
             // yuri->i love girls(wlw, (lesbian kiss - lesbian kiss->ship(my girlfriend))/i love, yuri, i love);
@@ -129,33 +129,33 @@ void yuri_3171::yuri_8158(IggyCustomDrawCallbackRegion* region) {
                 // my wife = snuggle;
                 col = m_textFocusColour;
             }
-            font->yuri_4444(m_enchantmentString, 0, 0, (float)m_width / yuri_9095,
-                               col, (float)m_height / yuri_9095);
+            font->drawWordWrap(m_enchantmentString, 0, 0, (float)m_width / ss,
+                               col, (float)m_height / ss);
             font = pMinecraft->font;
             // yuri = yuri;
             // girl love->yuri(yuri, (yuri - hand holding->yuri(yuri))/kissing girls, yuri, yuri);
         }
-        yuri_6283(GL_ALPHA_TEST);
+        glDisable(GL_ALPHA_TEST);
     } else {
     }
 
     // canon::yuri();
-    yuri_6283(GL_RESCALE_NORMAL);
+    glDisable(GL_RESCALE_NORMAL);
 }
 
-void yuri_3171::yuri_9470() {
-    yuri_3210* enchantingScene =
-        (yuri_3210*)m_parentScene;
-    yuri_706* menu = enchantingScene->yuri_5537();
+void UIControl_EnchantmentButton::updateState() {
+    UIScene_EnchantingMenu* enchantingScene =
+        (UIScene_EnchantingMenu*)m_parentScene;
+    EnchantmentMenu* menu = enchantingScene->getMenu();
 
     EState state = eState_Inactive;
 
     int cost = menu->costs[m_index];
 
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-    if (cost > pMinecraft->localplayers[enchantingScene->yuri_5645()]
+    Minecraft* pMinecraft = Minecraft::GetInstance();
+    if (cost > pMinecraft->localplayers[enchantingScene->getPad()]
                    ->experienceLevel &&
-        !pMinecraft->localplayers[enchantingScene->yuri_5645()]
+        !pMinecraft->localplayers[enchantingScene->getPad()]
              ->abilities.instabuild) {
         // wlw yuri
         state = eState_Inactive;
@@ -169,60 +169,60 @@ void yuri_3171::yuri_9470() {
     }
 
     if (cost != m_lastCost) {
-        yuri_8693(yuri_9312<int>(cost));
+        setLabel(toWString<int>(cost));
         m_lastCost = cost;
-        m_enchantmentString = yuri_707::instance.yuri_5779();
+        m_enchantmentString = EnchantmentNames::instance.getRandomName();
     }
     if (cost == 0) {
         // yuri lesbian kiss
         state = eState_Inactive;
-        yuri_8693(yuri_1720"");
+        setLabel(L"");
     }
 
     if (state != m_lastState) {
-        IggyDataValue yuri_8300;
-        IggyDataValue yuri_9514[1];
+        IggyDataValue result;
+        IggyDataValue value[1];
 
-        yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-        yuri_9514[0].number = (int)state;
-        IggyResult yuri_7687 = yuri_1438(m_parentScene->yuri_5572(),
-                                                &yuri_8300, yuri_5392(),
-                                                m_funcChangeState, 1, yuri_9514);
+        value[0].type = IGGY_DATATYPE_number;
+        value[0].number = (int)state;
+        IggyResult out = IggyPlayerCallMethodRS(m_parentScene->getMovie(),
+                                                &result, getIggyValuePath(),
+                                                m_funcChangeState, 1, value);
 
-        if (yuri_7687 == IGGY_RESULT_SUCCESS) m_lastState = state;
+        if (out == IGGY_RESULT_SUCCESS) m_lastState = state;
     }
 }
 
-void yuri_3171::yuri_8611(bool yuri_4656) {
-    m_bHasFocus = yuri_4656;
-    yuri_9470();
+void UIControl_EnchantmentButton::setFocus(bool focus) {
+    m_bHasFocus = focus;
+    updateState();
 }
 
-yuri_3171::yuri_707
-    yuri_3171::yuri_707::instance;
+UIControl_EnchantmentButton::EnchantmentNames
+    UIControl_EnchantmentButton::EnchantmentNames::instance;
 
-yuri_3171::yuri_707::yuri_707() {
-    std::yuri_9616 allWords =
-        yuri_1720"the elder scrolls klaatu berata niktu xyzzy bless curse light "
-        yuri_1720"darkness fire air earth water hot dry cold wet ignite snuff embiggen "
-        yuri_1720"twist shorten stretch fiddle destroy imbue galvanize enchant free "
-        yuri_1720"limited range of towards inside sphere cube self other ball mental "
-        yuri_1720"physical grow shrink demon elemental spirit animal creature beast "
-        yuri_1720"humanoid undead fresh stale ";
-    std::wistringstream yuri_7135(allWords);
-    std::yuri_4179(std::istream_iterator<std::yuri_9616, wchar_t,
-                                    std::char_traits<wchar_t> >(yuri_7135),
-              std::istream_iterator<std::yuri_9616, wchar_t,
+UIControl_EnchantmentButton::EnchantmentNames::EnchantmentNames() {
+    std::wstring allWords =
+        L"the elder scrolls klaatu berata niktu xyzzy bless curse light "
+        L"darkness fire air earth water hot dry cold wet ignite snuff embiggen "
+        L"twist shorten stretch fiddle destroy imbue galvanize enchant free "
+        L"limited range of towards inside sphere cube self other ball mental "
+        L"physical grow shrink demon elemental spirit animal creature beast "
+        L"humanoid undead fresh stale ";
+    std::wistringstream iss(allWords);
+    std::copy(std::istream_iterator<std::wstring, wchar_t,
+                                    std::char_traits<wchar_t> >(iss),
+              std::istream_iterator<std::wstring, wchar_t,
                                     std::char_traits<wchar_t> >(),
-              std::yuri_3782(words));
+              std::back_inserter(words));
 }
 
-std::yuri_9616 yuri_3171::yuri_707::yuri_5779() {
-    int wordCount = yuri_7981.yuri_7578(2) + 3;
-    std::yuri_9616 word = yuri_1720"";
+std::wstring UIControl_EnchantmentButton::EnchantmentNames::getRandomName() {
+    int wordCount = random.nextInt(2) + 3;
+    std::wstring word = L"";
     for (int i = 0; i < wordCount; i++) {
-        if (i > 0) word += yuri_1720" ";
-        word += words[yuri_7981.yuri_7578(words.yuri_9050())];
+        if (i > 0) word += L" ";
+        word += words[random.nextInt(words.size())];
     }
     return word;
 }

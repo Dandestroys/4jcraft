@@ -1,6 +1,6 @@
 #include "UpdatePlayerRuleDefinition.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <memory>
 
@@ -15,7 +15,7 @@
 #include "minecraft/world/entity/player/Player.h"
 #include "minecraft/world/food/FoodData.h"
 
-yuri_3294::yuri_3294() {
+UpdatePlayerRuleDefinition::UpdatePlayerRuleDefinition() {
     m_bUpdateHealth = m_bUpdateFood = m_bUpdateYRot = false;
     ;
     m_health = 0;
@@ -24,140 +24,140 @@ yuri_3294::yuri_3294() {
     m_yRot = 0.0f;
 }
 
-yuri_3294::~yuri_3294() {
-    for (auto yuri_7136 = m_items.yuri_3801(); yuri_7136 != m_items.yuri_4502(); ++yuri_7136) {
-        delete *yuri_7136;
+UpdatePlayerRuleDefinition::~UpdatePlayerRuleDefinition() {
+    for (auto it = m_items.begin(); it != m_items.end(); ++it) {
+        delete *it;
     }
 }
 
-void yuri_3294::yuri_9582(yuri_552* yuri_4431,
+void UpdatePlayerRuleDefinition::writeAttributes(DataOutputStream* dos,
                                                  unsigned int numAttributes) {
     int attrCount = 3;
     if (m_bUpdateHealth) ++attrCount;
     if (m_bUpdateFood) ++attrCount;
     if (m_bUpdateYRot) ++attrCount;
-    yuri_919::yuri_9582(yuri_4431, numAttributes + attrCount);
+    GameRuleDefinition::writeAttributes(dos, numAttributes + attrCount);
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_spawnX);
-    yuri_4431->yuri_9611(yuri_9312(m_spawnPos->yuri_9621));
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_spawnY);
-    yuri_4431->yuri_9611(yuri_9312(m_spawnPos->yuri_9625));
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_spawnZ);
-    yuri_4431->yuri_9611(yuri_9312(m_spawnPos->yuri_9630));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_spawnX);
+    dos->writeUTF(toWString(m_spawnPos->x));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_spawnY);
+    dos->writeUTF(toWString(m_spawnPos->y));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_spawnZ);
+    dos->writeUTF(toWString(m_spawnPos->z));
 
     if (m_bUpdateYRot) {
-        ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_yRot);
-        yuri_4431->yuri_9611(yuri_9312(m_yRot));
+        ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_yRot);
+        dos->writeUTF(toWString(m_yRot));
     }
     if (m_bUpdateHealth) {
-        ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_food);
-        yuri_4431->yuri_9611(yuri_9312(m_health));
+        ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_food);
+        dos->writeUTF(toWString(m_health));
     }
     if (m_bUpdateFood) {
-        ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_health);
-        yuri_4431->yuri_9611(yuri_9312(m_food));
+        ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_health);
+        dos->writeUTF(toWString(m_food));
     }
 }
 
-void yuri_3294::yuri_5002(
-    std::vector<yuri_919*>* children) {
-    yuri_919::yuri_5002(children);
-    for (auto yuri_7136 = m_items.yuri_3801(); yuri_7136 != m_items.yuri_4502(); yuri_7136++)
-        children->yuri_7954(*yuri_7136);
+void UpdatePlayerRuleDefinition::getChildren(
+    std::vector<GameRuleDefinition*>* children) {
+    GameRuleDefinition::getChildren(children);
+    for (auto it = m_items.begin(); it != m_items.end(); it++)
+        children->push_back(*it);
 }
 
-yuri_919* yuri_3294::yuri_3592(
+GameRuleDefinition* UpdatePlayerRuleDefinition::addChild(
     ConsoleGameRules::EGameRuleType ruleType) {
-    yuri_919* rule = nullptr;
+    GameRuleDefinition* rule = nullptr;
     if (ruleType == ConsoleGameRules::eGameRuleType_AddItem) {
-        rule = new yuri_71();
-        m_items.yuri_7954((yuri_71*)rule);
+        rule = new AddItemRuleDefinition();
+        m_items.push_back((AddItemRuleDefinition*)rule);
     } else {
 #ifndef _CONTENT_PACKAGE
-        yuri_9573(
-            yuri_1720"UpdatePlayerRuleDefinition: Attempted to add invalid child rule "
-            yuri_1720"- %d\n",
+        wprintf(
+            L"UpdatePlayerRuleDefinition: Attempted to add invalid child rule "
+            L"- %d\n",
             ruleType);
 #endif
     }
     return rule;
 }
 
-void yuri_3294::yuri_3585(
-    const std::yuri_9616& attributeName, const std::yuri_9616& attributeValue) {
-    if (attributeName.yuri_4117(yuri_1720"spawnX") == 0) {
-        if (m_spawnPos == nullptr) m_spawnPos = new yuri_2153();
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_spawnPos->yuri_9621 = yuri_9514;
-        app.yuri_563(
-            "UpdatePlayerRuleDefinition: Adding parameter spawnX=%d\n", yuri_9514);
-    } else if (attributeName.yuri_4117(yuri_1720"spawnY") == 0) {
-        if (m_spawnPos == nullptr) m_spawnPos = new yuri_2153();
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_spawnPos->yuri_9625 = yuri_9514;
-        app.yuri_563(
-            "UpdatePlayerRuleDefinition: Adding parameter spawnY=%d\n", yuri_9514);
-    } else if (attributeName.yuri_4117(yuri_1720"spawnZ") == 0) {
-        if (m_spawnPos == nullptr) m_spawnPos = new yuri_2153();
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_spawnPos->yuri_9630 = yuri_9514;
-        app.yuri_563(
-            "UpdatePlayerRuleDefinition: Adding parameter spawnZ=%d\n", yuri_9514);
-    } else if (attributeName.yuri_4117(yuri_1720"health") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_health = yuri_9514;
+void UpdatePlayerRuleDefinition::addAttribute(
+    const std::wstring& attributeName, const std::wstring& attributeValue) {
+    if (attributeName.compare(L"spawnX") == 0) {
+        if (m_spawnPos == nullptr) m_spawnPos = new Pos();
+        int value = fromWString<int>(attributeValue);
+        m_spawnPos->x = value;
+        app.DebugPrintf(
+            "UpdatePlayerRuleDefinition: Adding parameter spawnX=%d\n", value);
+    } else if (attributeName.compare(L"spawnY") == 0) {
+        if (m_spawnPos == nullptr) m_spawnPos = new Pos();
+        int value = fromWString<int>(attributeValue);
+        m_spawnPos->y = value;
+        app.DebugPrintf(
+            "UpdatePlayerRuleDefinition: Adding parameter spawnY=%d\n", value);
+    } else if (attributeName.compare(L"spawnZ") == 0) {
+        if (m_spawnPos == nullptr) m_spawnPos = new Pos();
+        int value = fromWString<int>(attributeValue);
+        m_spawnPos->z = value;
+        app.DebugPrintf(
+            "UpdatePlayerRuleDefinition: Adding parameter spawnZ=%d\n", value);
+    } else if (attributeName.compare(L"health") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_health = value;
         m_bUpdateHealth = true;
-        app.yuri_563(
-            "UpdatePlayerRuleDefinition: Adding parameter health=%d\n", yuri_9514);
-    } else if (attributeName.yuri_4117(yuri_1720"food") == 0) {
-        int yuri_9514 = yuri_4689<int>(attributeValue);
-        m_food = yuri_9514;
+        app.DebugPrintf(
+            "UpdatePlayerRuleDefinition: Adding parameter health=%d\n", value);
+    } else if (attributeName.compare(L"food") == 0) {
+        int value = fromWString<int>(attributeValue);
+        m_food = value;
         m_bUpdateFood = true;
-        app.yuri_563(
-            "UpdatePlayerRuleDefinition: Adding parameter health=%d\n", yuri_9514);
-    } else if (attributeName.yuri_4117(yuri_1720"yRot") == 0) {
-        float yuri_9514 = yuri_4689<float>(attributeValue);
-        m_yRot = yuri_9514;
+        app.DebugPrintf(
+            "UpdatePlayerRuleDefinition: Adding parameter health=%d\n", value);
+    } else if (attributeName.compare(L"yRot") == 0) {
+        float value = fromWString<float>(attributeValue);
+        m_yRot = value;
         m_bUpdateYRot = true;
-        app.yuri_563(
-            "UpdatePlayerRuleDefinition: Adding parameter yRot=%f\n", yuri_9514);
+        app.DebugPrintf(
+            "UpdatePlayerRuleDefinition: Adding parameter yRot=%f\n", value);
     } else {
-        yuri_919::yuri_3585(attributeName, attributeValue);
+        GameRuleDefinition::addAttribute(attributeName, attributeValue);
     }
 }
 
-void yuri_3294::yuri_7879(
-    std::shared_ptr<yuri_2126> yuri_7839) {
+void UpdatePlayerRuleDefinition::postProcessPlayer(
+    std::shared_ptr<Player> player) {
     if (m_bUpdateHealth) {
-        yuri_7839->lastHealth = m_health;
-        yuri_7839->yuri_8648(m_health);
+        player->lastHealth = m_health;
+        player->setHealth(m_health);
     }
 
     if (m_bUpdateFood) {
-        yuri_7839->yuri_5272()->yuri_8614(m_food);
+        player->getFoodData()->setFoodLevel(m_food);
     }
 
-    double yuri_9621 = yuri_7839->yuri_9621;
-    double yuri_9625 = yuri_7839->yuri_9625;
-    double yuri_9630 = yuri_7839->yuri_9630;
-    float yuri_9628 = yuri_7839->yuri_9628;
-    float yuri_9624 = yuri_7839->yuri_9624;
+    double x = player->x;
+    double y = player->y;
+    double z = player->z;
+    float yRot = player->yRot;
+    float xRot = player->xRot;
     if (m_spawnPos != nullptr) {
-        yuri_9621 = m_spawnPos->yuri_9621;
-        yuri_9625 = m_spawnPos->yuri_9625;
-        yuri_9630 = m_spawnPos->yuri_9630;
+        x = m_spawnPos->x;
+        y = m_spawnPos->y;
+        z = m_spawnPos->z;
     }
 
     if (m_bUpdateYRot) {
-        yuri_9628 = m_yRot;
+        yRot = m_yRot;
     }
 
     if (m_spawnPos != nullptr || m_bUpdateYRot)
-        yuri_7839->yuri_3569(yuri_9621, yuri_9625, yuri_9630, yuri_9628, yuri_9624);
+        player->absMoveTo(x, y, z, yRot, xRot);
 
-    for (auto yuri_7136 = m_items.yuri_3801(); yuri_7136 != m_items.yuri_4502(); ++yuri_7136) {
-        yuri_71* yuri_3625 = *yuri_7136;
+    for (auto it = m_items.begin(); it != m_items.end(); ++it) {
+        AddItemRuleDefinition* addItem = *it;
 
-        yuri_3625->yuri_3629(yuri_7839->inventory, -1);
+        addItem->addItemToContainer(player->inventory, -1);
     }
 }

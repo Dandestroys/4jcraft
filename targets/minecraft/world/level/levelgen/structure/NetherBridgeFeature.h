@@ -1,6 +1,6 @@
 #pragma once
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <vector>
 
 #include "StructureFeature.h"
@@ -9,38 +9,38 @@
 #include "minecraft/world/level/levelgen/structure/StructureFeature.h"
 #include "minecraft/world/level/levelgen/structure/StructureFeatureIO.h"
 
-class yuri_2302;
-class yuri_347;
-class yuri_1758;
+class Random;
+class ChunkPos;
+class Level;
 
-class yuri_2015 : public yuri_2979 {
+class NetherBridgeFeature : public StructureFeature {
 private:
-    std::vector<yuri_190::yuri_1958*> bridgeEnemies;
+    std::vector<Biome::MobSpawnerData*> bridgeEnemies;
     bool isSpotSelected;
-    yuri_347* netherFortressPos;
+    ChunkPos* netherFortressPos;
 
 public:
-    yuri_2015();
-    ~yuri_2015();
-    std::yuri_9616 yuri_5240();
-    std::vector<yuri_190::yuri_1958*>* yuri_4975();
+    NetherBridgeFeature();
+    ~NetherBridgeFeature();
+    std::wstring getFeatureName();
+    std::vector<Biome::MobSpawnerData*>* getBridgeEnemies();
 
 protected:
-    virtual bool yuri_6864(int yuri_9621, int yuri_9630, bool bIsSuperflat);
-    virtual yuri_2982* yuri_4256(int yuri_9621, int yuri_9630);
+    virtual bool isFeatureChunk(int x, int z, bool bIsSuperflat);
+    virtual StructureStart* createStructureStart(int x, int z);
 
 public:
-    void yuri_4049();
+    void clearCachedBuildings();
 
-    class yuri_2017 : public yuri_2982 {
+    class NetherBridgeStart : public StructureStart {
     public:
-        static yuri_2982* yuri_473() { return new yuri_2017(); }
-        virtual EStructureStart yuri_1188() {
+        static StructureStart* Create() { return new NetherBridgeStart(); }
+        virtual EStructureStart GetType() {
             return eStructureStart_NetherBridgeStart;
         }
 
     public:
-        yuri_2017();
-        yuri_2017(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int chunkX, int chunkZ);
+        NetherBridgeStart();
+        NetherBridgeStart(Level* level, Random* random, int chunkX, int chunkZ);
     };
 };

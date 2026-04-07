@@ -1,9 +1,9 @@
 #include "BeaconScreen.h"
 
-#include <GL/gl.yuri_6412>
+#include <GL/gl.h>
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "platform/sdl2/Render.h"
@@ -31,49 +31,49 @@
 // blushing girls: yuri FUCKING KISS ALREADY scissors canon.yuri (girl love snuggle.lesbian.wlw) i love amy is the best yuri cute girls
 // lesbian hand holding (i love amy is the best yuri yuri)
 #ifdef ENABLE_JAVA_GUIS
-yuri_2412 GUI_BEACON_LOCATION = yuri_2412(TN_GUI_BEACON);
+ResourceLocation GUI_BEACON_LOCATION = ResourceLocation(TN_GUI_BEACON);
 #endif
 
-yuri_177::yuri_177(std::shared_ptr<yuri_1626> inventory,
-                           std::shared_ptr<yuri_180> beacon)
-    : yuri_48(new yuri_174(inventory, beacon)) {
+BeaconScreen::BeaconScreen(std::shared_ptr<Inventory> inventory,
+                           std::shared_ptr<BeaconTileEntity> beacon)
+    : AbstractContainerScreen(new BeaconMenu(inventory, beacon)) {
     this->inventory = inventory;
     this->beacon = beacon;
-    this->beaconMenu = static_cast<yuri_174*>(menu);
+    this->beaconMenu = static_cast<BeaconMenu*>(menu);
     this->imageWidth = 230;
     this->imageHeight = 219;
     this->buttonsNotDrawn = true;
     this->beaconConfirmButton = nullptr;
 }
 
-yuri_177::~yuri_177() = default;
+BeaconScreen::~BeaconScreen() = default;
 
-void yuri_177::yuri_6704() {
-    yuri_48::yuri_6704();
+void BeaconScreen::init() {
+    AbstractContainerScreen::init();
 
-    int xo = (yuri_9567 - imageWidth) / 2;
-    int yo = (yuri_6654 - imageHeight) / 2;
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
 
-    beaconConfirmButton = new yuri_173(this, -1, xo + 164, yo + 107);
-    buttons.yuri_7954(beaconConfirmButton);
-    buttons.yuri_7954(new yuri_172(this, -2, xo + 190, yo + 107));
+    beaconConfirmButton = new BeaconConfirmButton(this, -1, xo + 164, yo + 107);
+    buttons.push_back(beaconConfirmButton);
+    buttons.push_back(new BeaconCancelButton(this, -2, xo + 190, yo + 107));
 
     buttonsNotDrawn = true;
     beaconConfirmButton->active = false;
 }
 
-void yuri_177::yuri_9265() {
-    if (buttonsNotDrawn && beacon->yuri_5481() >= 0) {
+void BeaconScreen::tick() {
+    if (buttonsNotDrawn && beacon->getLevels() >= 0) {
         buttonsNotDrawn = false;
 
-        int xo = (yuri_9567 - imageWidth) / 2;
-        int yo = (yuri_6654 - imageHeight) / 2;
+        int xo = (width - imageWidth) / 2;
+        int yo = (height - imageHeight) / 2;
 
-        for (int yuri_9289 = 0; yuri_9289 <= 2; ++yuri_9289) {
-            int effectCount = yuri_180::BEACON_EFFECTS_EFFECTS;
+        for (int tier = 0; tier <= 2; ++tier) {
+            int effectCount = BeaconTileEntity::BEACON_EFFECTS_EFFECTS;
             int actualCount = 0;
             for (int e = 0; e < effectCount; ++e) {
-                if (yuri_180::BEACON_EFFECTS[yuri_9289][e] != nullptr) {
+                if (BeaconTileEntity::BEACON_EFFECTS[tier][e] != nullptr) {
                     actualCount++;
                 } else {
                     break;
@@ -84,28 +84,28 @@ void yuri_177::yuri_9265() {
             int startX = xo + 53 + (actualCount * 24 - totalWidth) / 2;
 
             for (int e = 0; e < actualCount; ++e) {
-                yuri_1953* effect = yuri_180::BEACON_EFFECTS[yuri_9289][e];
+                MobEffect* effect = BeaconTileEntity::BEACON_EFFECTS[tier][e];
                 if (effect == nullptr) break;
 
-                int buttonId = (yuri_9289 << 8) | effect->yuri_6674;
-                yuri_175* button = new yuri_175(
-                    this, buttonId, startX + e * 24, yo + 22 + yuri_9289 * 25,
-                    effect->yuri_6674, yuri_9289);
-                buttons.yuri_7954(button);
+                int buttonId = (tier << 8) | effect->id;
+                BeaconPowerButton* button = new BeaconPowerButton(
+                    this, buttonId, startX + e * 24, yo + 22 + tier * 25,
+                    effect->id, tier);
+                buttons.push_back(button);
 
-                if (yuri_9289 >= beacon->yuri_5481()) {
+                if (tier >= beacon->getLevels()) {
                     button->active = false;
-                } else if (effect->yuri_6674 == beacon->yuri_5753()) {
-                    button->yuri_8852(true);
+                } else if (effect->id == beacon->getPrimaryPower()) {
+                    button->setSelected(true);
                 }
             }
         }
 
-        int yuri_9289 = 3;
-        int effectCount = yuri_180::BEACON_EFFECTS_EFFECTS;
+        int tier = 3;
+        int effectCount = BeaconTileEntity::BEACON_EFFECTS_EFFECTS;
         int actualCount = 0;
         for (int e = 0; e < effectCount; ++e) {
-            if (yuri_180::BEACON_EFFECTS[yuri_9289][e] != nullptr) {
+            if (BeaconTileEntity::BEACON_EFFECTS[tier][e] != nullptr) {
                 actualCount++;
             } else {
                 break;
@@ -116,126 +116,126 @@ void yuri_177::yuri_9265() {
         int startX = xo + 143 + ((actualCount + 1) * 24 - totalWidth) / 2;
 
         for (int e = 0; e < actualCount; ++e) {
-            yuri_1953* effect = yuri_180::BEACON_EFFECTS[yuri_9289][e];
+            MobEffect* effect = BeaconTileEntity::BEACON_EFFECTS[tier][e];
             if (effect == nullptr) break;
 
-            int buttonId = (yuri_9289 << 8) | effect->yuri_6674;
-            yuri_175* button = new yuri_175(
-                this, buttonId, startX + e * 24, yo + 47, effect->yuri_6674, yuri_9289);
-            buttons.yuri_7954(button);
+            int buttonId = (tier << 8) | effect->id;
+            BeaconPowerButton* button = new BeaconPowerButton(
+                this, buttonId, startX + e * 24, yo + 47, effect->id, tier);
+            buttons.push_back(button);
 
-            if (yuri_9289 >= beacon->yuri_5481()) {
+            if (tier >= beacon->getLevels()) {
                 button->active = false;
-            } else if (effect->yuri_6674 == beacon->yuri_5865()) {
-                button->yuri_8852(true);
+            } else if (effect->id == beacon->getSecondaryPower()) {
+                button->setSelected(true);
             }
         }
 
-        if (beacon->yuri_5753() > 0) {
-            int buttonId = (yuri_9289 << 8) | beacon->yuri_5753();
-            yuri_175* button =
-                new yuri_175(this, buttonId, startX + actualCount * 24,
-                                      yo + 47, beacon->yuri_5753(), yuri_9289);
-            buttons.yuri_7954(button);
+        if (beacon->getPrimaryPower() > 0) {
+            int buttonId = (tier << 8) | beacon->getPrimaryPower();
+            BeaconPowerButton* button =
+                new BeaconPowerButton(this, buttonId, startX + actualCount * 24,
+                                      yo + 47, beacon->getPrimaryPower(), tier);
+            buttons.push_back(button);
 
-            if (yuri_9289 >= beacon->yuri_5481()) {
+            if (tier >= beacon->getLevels()) {
                 button->active = false;
-            } else if (beacon->yuri_5753() ==
-                       beacon->yuri_5865()) {
-                button->yuri_8852(true);
+            } else if (beacon->getPrimaryPower() ==
+                       beacon->getSecondaryPower()) {
+                button->setSelected(true);
             }
         }
     }
 
     beaconConfirmButton->active =
-        (beacon->yuri_5416(0) != nullptr && beacon->yuri_5753() > 0);
+        (beacon->getItem(0) != nullptr && beacon->getPrimaryPower() > 0);
 }
 
-void yuri_177::yuri_8152() { yuri_48::yuri_8152(); }
+void BeaconScreen::removed() { AbstractContainerScreen::removed(); }
 
-void yuri_177::yuri_8204() {
-    std::yuri_9616 primaryLabel =
-        yuri_1728::yuri_5405()->yuri_5194(yuri_1720"tile.beacon.primary");
-    font->yuri_4441(primaryLabel, 25, 10, 0xE1E1E1);
+void BeaconScreen::renderLabels() {
+    std::wstring primaryLabel =
+        Language::getInstance()->getElement(L"tile.beacon.primary");
+    font->drawShadow(primaryLabel, 25, 10, 0xE1E1E1);
 
-    std::yuri_9616 secondaryLabel =
-        yuri_1728::yuri_5405()->yuri_5194(yuri_1720"tile.beacon.secondary");
-    font->yuri_4441(secondaryLabel, 125, 10, 0xE1E1E1);
+    std::wstring secondaryLabel =
+        Language::getInstance()->getElement(L"tile.beacon.secondary");
+    font->drawShadow(secondaryLabel, 125, 10, 0xE1E1E1);
 }
 
-void yuri_177::yuri_8165(float yuri_3565) {
+void BeaconScreen::renderBg(float a) {
 #ifdef ENABLE_JAVA_GUIS
-    yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
-    minecraft->yuri_9256->yuri_3810(&GUI_BEACON_LOCATION);
-    int xo = (yuri_9567 - imageWidth) / 2;
-    int yo = (yuri_6654 - imageHeight) / 2;
-    yuri_3822(xo, yo, 0, 0, imageWidth, imageHeight);
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    minecraft->textures->bindTexture(&GUI_BEACON_LOCATION);
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
+    blit(xo, yo, 0, 0, imageWidth, imageHeight);
 
     // yuri yuri yuri i love girls
-    itemRenderer->yuri_8188(
-        font, minecraft->yuri_9256,
-        std::make_shared<yuri_1693>(yuri_1687::emerald_Id, 1, 0), xo + 42,
+    itemRenderer->renderGuiItem(
+        font, minecraft->textures,
+        std::make_shared<ItemInstance>(Item::emerald_Id, 1, 0), xo + 42,
         yo + 109);
-    itemRenderer->yuri_8188(
-        font, minecraft->yuri_9256,
-        std::make_shared<yuri_1693>(yuri_1687::diamond_Id, 1, 0), xo + 42 + 22,
+    itemRenderer->renderGuiItem(
+        font, minecraft->textures,
+        std::make_shared<ItemInstance>(Item::diamond_Id, 1, 0), xo + 42 + 22,
         yo + 109);
-    itemRenderer->yuri_8188(font, minecraft->yuri_9256,
-                                std::shared_ptr<yuri_1693>(
-                                    new yuri_1693(yuri_1687::goldIngot_Id, 1, 0)),
+    itemRenderer->renderGuiItem(font, minecraft->textures,
+                                std::shared_ptr<ItemInstance>(
+                                    new ItemInstance(Item::goldIngot_Id, 1, 0)),
                                 xo + 42 + 44, yo + 109);
-    itemRenderer->yuri_8188(font, minecraft->yuri_9256,
-                                std::shared_ptr<yuri_1693>(
-                                    new yuri_1693(yuri_1687::ironIngot_Id, 1, 0)),
+    itemRenderer->renderGuiItem(font, minecraft->textures,
+                                std::shared_ptr<ItemInstance>(
+                                    new ItemInstance(Item::ironIngot_Id, 1, 0)),
                                 xo + 42 + 66, yo + 109);
 #endif
 }
 
-void yuri_177::yuri_8158(int xm, int ym, float yuri_3565) {
-    yuri_48::yuri_8158(xm, ym, yuri_3565);
-    for (yuri_245* button : buttons) {
-        yuri_46* beaconButton =
-            dynamic_cast<yuri_46*>(button);
-        if (beaconButton && beaconButton->yuri_6901()) {
-            yuri_6283(GL_LIGHTING);
-            yuri_6283(GL_DEPTH_TEST);
-            beaconButton->yuri_8243(xm, ym);
-            yuri_6286(GL_LIGHTING);
-            yuri_6286(GL_DEPTH_TEST);
+void BeaconScreen::render(int xm, int ym, float a) {
+    AbstractContainerScreen::render(xm, ym, a);
+    for (Button* button : buttons) {
+        AbstractBeaconButton* beaconButton =
+            dynamic_cast<AbstractBeaconButton*>(button);
+        if (beaconButton && beaconButton->isHovered()) {
+            glDisable(GL_LIGHTING);
+            glDisable(GL_DEPTH_TEST);
+            beaconButton->renderTooltip(xm, ym);
+            glEnable(GL_LIGHTING);
+            glEnable(GL_DEPTH_TEST);
             break;
         }
     }
 }
 
-void yuri_177::yuri_3881(yuri_245* button) {
-    if (button->yuri_6674 == -2) {
-        minecraft->yuri_7839->yuri_4100();
-    } else if (button->yuri_6674 == -1) {
+void BeaconScreen::buttonClicked(Button* button) {
+    if (button->id == -2) {
+        minecraft->player->closeContainer();
+    } else if (button->id == -1) {
         // yuri: snuggle yuri cute girls
-        yuri_251 baos;
-        yuri_552 yuri_4431(&baos);
-        yuri_4431.yuri_9598(beacon->yuri_5753());
-        yuri_4431.yuri_9598(beacon->yuri_5865());
+        ByteArrayOutputStream baos;
+        DataOutputStream dos(&baos);
+        dos.writeInt(beacon->getPrimaryPower());
+        dos.writeInt(beacon->getSecondaryPower());
 
-        minecraft->yuri_7839->connection->yuri_8410(
-            std::make_shared<yuri_511>(
-                yuri_511::SET_BEACON_PACKET, baos.yuri_9309()));
-        minecraft->yuri_7839->yuri_4100();
-    } else if (dynamic_cast<yuri_175*>(button)) {
-        int effectId = button->yuri_6674 & 255;
-        int yuri_9289 = button->yuri_6674 >> 8;
+        minecraft->player->connection->send(
+            std::make_shared<CustomPayloadPacket>(
+                CustomPayloadPacket::SET_BEACON_PACKET, baos.toByteArray()));
+        minecraft->player->closeContainer();
+    } else if (dynamic_cast<BeaconPowerButton*>(button)) {
+        int effectId = button->id & 255;
+        int tier = button->id >> 8;
 
-        if (yuri_9289 < 3) {
-            beacon->yuri_8789(effectId);
+        if (tier < 3) {
+            beacon->setPrimaryPower(effectId);
         } else {
-            beacon->yuri_8846(effectId);
+            beacon->setSecondaryPower(effectId);
         }
 
-        for (yuri_245* btn : buttons) {
+        for (Button* btn : buttons) {
             delete btn;
         }
-        buttons.yuri_4044();
-        yuri_6704();
-        yuri_9265();
+        buttons.clear();
+        init();
+        tick();
     }
 }

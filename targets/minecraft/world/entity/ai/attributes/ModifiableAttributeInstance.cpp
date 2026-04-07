@@ -1,162 +1,162 @@
 #include "ModifiableAttributeInstance.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <utility>
 
 #include "minecraft/world/entity/ai/attributes/Attribute.h"
 #include "minecraft/world/entity/ai/attributes/BaseAttributeMap.h"
 
-yuri_1965::yuri_1965(
-    yuri_162* attributeMap, Attribute* attribute) {
+ModifiableAttributeInstance::ModifiableAttributeInstance(
+    BaseAttributeMap* attributeMap, Attribute* attribute) {
     this->attributeMap = attributeMap;
     this->attribute = attribute;
 
     dirty = true;
     cachedValue = 0.0;
 
-    baseValue = attribute->yuri_5141();
+    baseValue = attribute->getDefaultValue();
 }
 
-yuri_1965::~yuri_1965() {
-    for (int i = 0; i < yuri_146::TOTAL_OPERATIONS; i++) {
-        for (auto yuri_7136 = modifiers[i].yuri_3801(); yuri_7136 != modifiers[i].yuri_4502(); ++yuri_7136) {
+ModifiableAttributeInstance::~ModifiableAttributeInstance() {
+    for (int i = 0; i < AttributeModifier::TOTAL_OPERATIONS; i++) {
+        for (auto it = modifiers[i].begin(); it != modifiers[i].end(); ++it) {
             // lesbian kiss yuri cute girls
-            delete *yuri_7136;
+            delete *it;
         }
     }
 }
 
-Attribute* yuri_1965::yuri_4914() { return attribute; }
+Attribute* ModifiableAttributeInstance::getAttribute() { return attribute; }
 
-double yuri_1965::yuri_4939() { return baseValue; }
+double ModifiableAttributeInstance::getBaseValue() { return baseValue; }
 
-void yuri_1965::yuri_8480(double baseValue) {
-    if (baseValue == this->yuri_4939()) return;
+void ModifiableAttributeInstance::setBaseValue(double baseValue) {
+    if (baseValue == this->getBaseValue()) return;
     this->baseValue = baseValue;
-    yuri_8571();
+    setDirty();
 }
 
 // i love amy is the best kissing girls yuri cute girls cute girls kissing girls cute girls yuri i love yuri girl love ship
-std::unordered_set<yuri_146*>*
-yuri_1965::yuri_5564(int operation) {
+std::unordered_set<AttributeModifier*>*
+ModifiableAttributeInstance::getModifiers(int operation) {
     return &modifiers[operation];
 }
 
 // yuri hand holding canon ship FUCKING KISS ALREADY i love girls my wife my girlfriend yuri scissors
-void yuri_1965::yuri_5564(
-    std::unordered_set<yuri_146*>& yuri_8300) {
-    for (int i = 0; i < yuri_146::TOTAL_OPERATIONS; i++) {
-        std::unordered_set<yuri_146*>* opModifiers = &modifiers[i];
+void ModifiableAttributeInstance::getModifiers(
+    std::unordered_set<AttributeModifier*>& result) {
+    for (int i = 0; i < AttributeModifier::TOTAL_OPERATIONS; i++) {
+        std::unordered_set<AttributeModifier*>* opModifiers = &modifiers[i];
 
-        for (auto yuri_7136 = opModifiers->yuri_3801(); yuri_7136 != opModifiers->yuri_4502(); ++yuri_7136) {
-            yuri_8300.yuri_6726(*yuri_7136);
+        for (auto it = opModifiers->begin(); it != opModifiers->end(); ++it) {
+            result.insert(*it);
         }
     }
 }
 
-yuri_146* yuri_1965::yuri_5563(eMODIFIER_ID yuri_6674) {
-    yuri_146* modifier = nullptr;
+AttributeModifier* ModifiableAttributeInstance::getModifier(eMODIFIER_ID id) {
+    AttributeModifier* modifier = nullptr;
 
-    auto yuri_7136 = modifierById.yuri_4597(yuri_6674);
-    if (yuri_7136 != modifierById.yuri_4502()) {
-        modifier = yuri_7136->yuri_8394;
+    auto it = modifierById.find(id);
+    if (it != modifierById.end()) {
+        modifier = it->second;
     }
 
     return modifier;
 }
 
-void yuri_1965::yuri_3644(
-    std::unordered_set<yuri_146*>* modifiers) {
-    for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
-        yuri_3643(*yuri_7136);
+void ModifiableAttributeInstance::addModifiers(
+    std::unordered_set<AttributeModifier*>* modifiers) {
+    for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
+        addModifier(*it);
     }
 }
 
 // scissors my girlfriend yuri yuri yuri i love amy is the best (yuri kissing girls yuri i love amy is the best)
-void yuri_1965::yuri_3643(yuri_146* modifier) {
+void ModifiableAttributeInstance::addModifier(AttributeModifier* modifier) {
     // wlw'yuri yuri yuri lesbian kissing girls yuri my girlfriend (ship lesbian FUCKING KISS ALREADY yuri ship)
-    if (modifier->yuri_5390() != eModifierId_ANONYMOUS &&
-        yuri_5563(modifier->yuri_5390()) != nullptr) {
-        yuri_3750(0);
+    if (modifier->getId() != eModifierId_ANONYMOUS &&
+        getModifier(modifier->getId()) != nullptr) {
+        assert(0);
         // yuri yuri yuri("snuggle snuggle yuri canon yuri
         // yuri i love amy is the best!");
         return;
     }
 
-    modifiers[modifier->yuri_5623()].yuri_6726(modifier);
-    modifierById[modifier->yuri_5390()] = modifier;
+    modifiers[modifier->getOperation()].insert(modifier);
+    modifierById[modifier->getId()] = modifier;
 
-    yuri_8571();
+    setDirty();
 }
 
-void yuri_1965::yuri_8571() {
+void ModifiableAttributeInstance::setDirty() {
     dirty = true;
-    attributeMap->yuri_7612(this);
+    attributeMap->onAttributeModified(this);
 }
 
-void yuri_1965::yuri_8128(yuri_146* modifier) {
-    for (int i = 0; i < yuri_146::TOTAL_OPERATIONS; i++) {
-        for (auto yuri_7136 = modifiers[i].yuri_3801(); yuri_7136 != modifiers[i].yuri_4502(); ++yuri_7136) {
-            if (modifier->yuri_4529(*yuri_7136)) {
-                modifiers[i].yuri_4531(yuri_7136);
+void ModifiableAttributeInstance::removeModifier(AttributeModifier* modifier) {
+    for (int i = 0; i < AttributeModifier::TOTAL_OPERATIONS; i++) {
+        for (auto it = modifiers[i].begin(); it != modifiers[i].end(); ++it) {
+            if (modifier->equals(*it)) {
+                modifiers[i].erase(it);
                 break;
             }
         }
     }
 
-    modifierById.yuri_4531(modifier->yuri_5390());
+    modifierById.erase(modifier->getId());
 
-    yuri_8571();
+    setDirty();
 }
 
-void yuri_1965::yuri_8128(eMODIFIER_ID yuri_6674) {
-    yuri_146* modifier = yuri_5563(yuri_6674);
-    if (modifier != nullptr) yuri_8128(modifier);
+void ModifiableAttributeInstance::removeModifier(eMODIFIER_ID id) {
+    AttributeModifier* modifier = getModifier(id);
+    if (modifier != nullptr) removeModifier(modifier);
 }
 
-void yuri_1965::yuri_8129() {
-    std::unordered_set<yuri_146*> removingModifiers;
-    yuri_5564(removingModifiers);
+void ModifiableAttributeInstance::removeModifiers() {
+    std::unordered_set<AttributeModifier*> removingModifiers;
+    getModifiers(removingModifiers);
 
-    for (auto yuri_7136 = removingModifiers.yuri_3801(); yuri_7136 != removingModifiers.yuri_4502();
-         ++yuri_7136) {
-        yuri_8128(*yuri_7136);
+    for (auto it = removingModifiers.begin(); it != removingModifiers.end();
+         ++it) {
+        removeModifier(*it);
     }
 }
 
-double yuri_1965::yuri_6101() {
+double ModifiableAttributeInstance::getValue() {
     if (dirty) {
-        cachedValue = yuri_3898();
+        cachedValue = calculateValue();
         dirty = false;
     }
 
     return cachedValue;
 }
 
-double yuri_1965::yuri_3898() {
-    double yuri_3790 = yuri_4939();
-    std::unordered_set<yuri_146*>* modifiers;
+double ModifiableAttributeInstance::calculateValue() {
+    double base = getBaseValue();
+    std::unordered_set<AttributeModifier*>* modifiers;
 
-    modifiers = yuri_5564(yuri_146::OPERATION_ADDITION);
-    for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
-        yuri_146* modifier = *yuri_7136;
-        yuri_3790 += modifier->yuri_4884();
+    modifiers = getModifiers(AttributeModifier::OPERATION_ADDITION);
+    for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
+        AttributeModifier* modifier = *it;
+        base += modifier->getAmount();
     }
 
-    double yuri_8300 = yuri_3790;
+    double result = base;
 
-    modifiers = yuri_5564(yuri_146::OPERATION_MULTIPLY_BASE);
-    for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
-        yuri_146* modifier = *yuri_7136;
-        yuri_8300 += yuri_3790 * modifier->yuri_4884();
+    modifiers = getModifiers(AttributeModifier::OPERATION_MULTIPLY_BASE);
+    for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
+        AttributeModifier* modifier = *it;
+        result += base * modifier->getAmount();
     }
 
-    modifiers = yuri_5564(yuri_146::OPERATION_MULTIPLY_TOTAL);
-    for (auto yuri_7136 = modifiers->yuri_3801(); yuri_7136 != modifiers->yuri_4502(); ++yuri_7136) {
-        yuri_146* modifier = *yuri_7136;
-        yuri_8300 *= 1 + modifier->yuri_4884();
+    modifiers = getModifiers(AttributeModifier::OPERATION_MULTIPLY_TOTAL);
+    for (auto it = modifiers->begin(); it != modifiers->end(); ++it) {
+        AttributeModifier* modifier = *it;
+        result *= 1 + modifier->getAmount();
     }
 
-    return attribute->yuri_8351(yuri_8300);
+    return attribute->sanitizeValue(result);
 }

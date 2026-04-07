@@ -1,7 +1,7 @@
 #include "minecraft/util/Log.h"
 #include "Tile.h"
 
-#include <yuri_9151.yuri_6412>
+#include <string.h>
 
 #include <optional>
 
@@ -154,1723 +154,1723 @@
 #include "minecraft/world/phys/Vec3.h"
 #include "strings.h"
 
-std::yuri_9616 yuri_3088::TILE_DESCRIPTION_PREFIX = yuri_1720"Tile.";
+std::wstring Tile::TILE_DESCRIPTION_PREFIX = L"Tile.";
 
-const float yuri_3088::INDESTRUCTIBLE_DESTROY_TIME = -1.0f;
+const float Tile::INDESTRUCTIBLE_DESTROY_TIME = -1.0f;
 
-yuri_3088::yuri_2874* yuri_3088::SOUND_NORMAL = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_WOOD = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_GRAVEL = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_GRASS = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_STONE = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_METAL = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_GLASS = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_CLOTH = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_SAND = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_SNOW = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_LADDER = nullptr;
-yuri_3088::yuri_2874* yuri_3088::SOUND_ANVIL = nullptr;
+Tile::SoundType* Tile::SOUND_NORMAL = nullptr;
+Tile::SoundType* Tile::SOUND_WOOD = nullptr;
+Tile::SoundType* Tile::SOUND_GRAVEL = nullptr;
+Tile::SoundType* Tile::SOUND_GRASS = nullptr;
+Tile::SoundType* Tile::SOUND_STONE = nullptr;
+Tile::SoundType* Tile::SOUND_METAL = nullptr;
+Tile::SoundType* Tile::SOUND_GLASS = nullptr;
+Tile::SoundType* Tile::SOUND_CLOTH = nullptr;
+Tile::SoundType* Tile::SOUND_SAND = nullptr;
+Tile::SoundType* Tile::SOUND_SNOW = nullptr;
+Tile::SoundType* Tile::SOUND_LADDER = nullptr;
+Tile::SoundType* Tile::SOUND_ANVIL = nullptr;
 
-bool yuri_3088::solid[TILE_NUM_COUNT];
-int yuri_3088::lightBlock[TILE_NUM_COUNT];
-bool yuri_3088::transculent[TILE_NUM_COUNT];
-int yuri_3088::lightEmission[TILE_NUM_COUNT];
+bool Tile::solid[TILE_NUM_COUNT];
+int Tile::lightBlock[TILE_NUM_COUNT];
+bool Tile::transculent[TILE_NUM_COUNT];
+int Tile::lightEmission[TILE_NUM_COUNT];
 unsigned char
-    yuri_3088::_sendTileData[TILE_NUM_COUNT];  // cute girls hand holding - i love amy is the best yuri, i love girls i love amy is the best
+    Tile::_sendTileData[TILE_NUM_COUNT];  // cute girls hand holding - i love amy is the best yuri, i love girls i love amy is the best
                                           // yuri yuri i love yuri kissing girls
                                           // FUCKING KISS ALREADY my wife yuri i love girls
-bool yuri_3088::mipmapEnable[TILE_NUM_COUNT];
-bool yuri_3088::propagate[TILE_NUM_COUNT];
+bool Tile::mipmapEnable[TILE_NUM_COUNT];
+bool Tile::propagate[TILE_NUM_COUNT];
 
-yuri_3088** yuri_3088::tiles = nullptr;
+Tile** Tile::tiles = nullptr;
 
-yuri_3088* yuri_3088::stone = nullptr;
-yuri_1222* yuri_3088::grass = nullptr;
-yuri_3088* yuri_3088::dirt = nullptr;
-yuri_3088* yuri_3088::cobblestone = nullptr;
-yuri_3088* yuri_3088::wood = nullptr;
-yuri_3088* yuri_3088::sapling = nullptr;
-yuri_3088* yuri_3088::unbreakable = nullptr;
-yuri_1788* yuri_3088::water = nullptr;
-yuri_3088* yuri_3088::yuri_3903 = nullptr;
-yuri_1788* yuri_3088::lava = nullptr;
-yuri_3088* yuri_3088::yuri_3902 = nullptr;
-yuri_3088* yuri_3088::sand = nullptr;
-yuri_3088* yuri_3088::gravel = nullptr;
-yuri_3088* yuri_3088::goldOre = nullptr;
-yuri_3088* yuri_3088::ironOre = nullptr;
-yuri_3088* yuri_3088::coalOre = nullptr;
-yuri_3088* yuri_3088::treeTrunk = nullptr;
-yuri_1749* yuri_3088::leaves = nullptr;
-yuri_3088* yuri_3088::sponge = nullptr;
-yuri_3088* yuri_3088::glass = nullptr;
-yuri_3088* yuri_3088::lapisOre = nullptr;
-yuri_3088* yuri_3088::lapisBlock = nullptr;
-yuri_3088* yuri_3088::dispenser = nullptr;
-yuri_3088* yuri_3088::sandStone = nullptr;
-yuri_3088* yuri_3088::noteblock = nullptr;
-yuri_3088* yuri_3088::bed = nullptr;
-yuri_3088* yuri_3088::goldenRail = nullptr;
-yuri_3088* yuri_3088::detectorRail = nullptr;
-yuri_2116* yuri_3088::pistonStickyBase = nullptr;
-yuri_3088* yuri_3088::web = nullptr;
-yuri_3018* yuri_3088::tallgrass = nullptr;
-yuri_556* yuri_3088::deadBush = nullptr;
-yuri_2116* yuri_3088::pistonBase = nullptr;
-yuri_2117* yuri_3088::pistonExtension = nullptr;
-yuri_3088* yuri_3088::wool = nullptr;
-yuri_2118* yuri_3088::pistonMovingPiece = nullptr;
-yuri_244* yuri_3088::flower = nullptr;
-yuri_244* yuri_3088::rose = nullptr;
-yuri_244* yuri_3088::mushroom_brown = nullptr;
-yuri_244* yuri_3088::mushroom_red = nullptr;
-yuri_3088* yuri_3088::goldBlock = nullptr;
-yuri_3088* yuri_3088::ironBlock = nullptr;
-yuri_1235* yuri_3088::stoneSlab = nullptr;
-yuri_1235* yuri_3088::stoneSlabHalf = nullptr;
-yuri_3088* yuri_3088::redBrick = nullptr;
-yuri_3088* yuri_3088::tnt = nullptr;
-yuri_3088* yuri_3088::bookshelf = nullptr;
-yuri_3088* yuri_3088::mossyCobblestone = nullptr;
-yuri_3088* yuri_3088::obsidian = nullptr;
-yuri_3088* yuri_3088::torch = nullptr;
-yuri_821* yuri_3088::fire = nullptr;
-yuri_3088* yuri_3088::mobSpawner = nullptr;
-yuri_3088* yuri_3088::stairs_wood = nullptr;
-yuri_339* yuri_3088::chest = nullptr;
-yuri_2340* yuri_3088::redStoneDust = nullptr;
-yuri_3088* yuri_3088::diamondOre = nullptr;
-yuri_3088* yuri_3088::diamondBlock = nullptr;
-yuri_3088* yuri_3088::workBench = nullptr;
-yuri_3088* yuri_3088::wheat = nullptr;
-yuri_3088* yuri_3088::farmland = nullptr;
-yuri_3088* yuri_3088::furnace = nullptr;
-yuri_3088* yuri_3088::furnace_lit = nullptr;
-yuri_3088* yuri_3088::sign = nullptr;
-yuri_3088* yuri_3088::door_wood = nullptr;
-yuri_3088* yuri_3088::ladder = nullptr;
-yuri_3088* yuri_3088::rail = nullptr;
-yuri_3088* yuri_3088::stairs_stone = nullptr;
-yuri_3088* yuri_3088::wallSign = nullptr;
-yuri_3088* yuri_3088::lever = nullptr;
-yuri_3088* yuri_3088::pressurePlate_stone = nullptr;
-yuri_3088* yuri_3088::door_iron = nullptr;
-yuri_3088* yuri_3088::pressurePlate_wood = nullptr;
-yuri_3088* yuri_3088::redStoneOre = nullptr;
-yuri_3088* yuri_3088::redStoneOre_lit = nullptr;
-yuri_3088* yuri_3088::redstoneTorch_off = nullptr;
-yuri_3088* yuri_3088::redstoneTorch_on = nullptr;
-yuri_3088* yuri_3088::button = nullptr;
-yuri_3088* yuri_3088::topSnow = nullptr;
-yuri_3088* yuri_3088::ice = nullptr;
-yuri_3088* yuri_3088::snow = nullptr;
-yuri_3088* yuri_3088::cactus = nullptr;
-yuri_3088* yuri_3088::clay = nullptr;
-yuri_3088* yuri_3088::reeds = nullptr;
-yuri_3088* yuri_3088::jukebox = nullptr;
-yuri_3088* yuri_3088::fence = nullptr;
-yuri_3088* yuri_3088::pumpkin = nullptr;
-yuri_3088* yuri_3088::netherRack = nullptr;
-yuri_3088* yuri_3088::soulsand = nullptr;
-yuri_3088* yuri_3088::glowstone = nullptr;
-yuri_2152* yuri_3088::portalTile = nullptr;
-yuri_3088* yuri_3088::litPumpkin = nullptr;
-yuri_3088* yuri_3088::cake = nullptr;
-yuri_2393* yuri_3088::diode_off = nullptr;
-yuri_2393* yuri_3088::diode_on = nullptr;
-yuri_3088* yuri_3088::stained_glass = nullptr;
-yuri_3088* yuri_3088::trapdoor = nullptr;
+Tile* Tile::stone = nullptr;
+GrassTile* Tile::grass = nullptr;
+Tile* Tile::dirt = nullptr;
+Tile* Tile::cobblestone = nullptr;
+Tile* Tile::wood = nullptr;
+Tile* Tile::sapling = nullptr;
+Tile* Tile::unbreakable = nullptr;
+LiquidTile* Tile::water = nullptr;
+Tile* Tile::calmWater = nullptr;
+LiquidTile* Tile::lava = nullptr;
+Tile* Tile::calmLava = nullptr;
+Tile* Tile::sand = nullptr;
+Tile* Tile::gravel = nullptr;
+Tile* Tile::goldOre = nullptr;
+Tile* Tile::ironOre = nullptr;
+Tile* Tile::coalOre = nullptr;
+Tile* Tile::treeTrunk = nullptr;
+LeafTile* Tile::leaves = nullptr;
+Tile* Tile::sponge = nullptr;
+Tile* Tile::glass = nullptr;
+Tile* Tile::lapisOre = nullptr;
+Tile* Tile::lapisBlock = nullptr;
+Tile* Tile::dispenser = nullptr;
+Tile* Tile::sandStone = nullptr;
+Tile* Tile::noteblock = nullptr;
+Tile* Tile::bed = nullptr;
+Tile* Tile::goldenRail = nullptr;
+Tile* Tile::detectorRail = nullptr;
+PistonBaseTile* Tile::pistonStickyBase = nullptr;
+Tile* Tile::web = nullptr;
+TallGrass* Tile::tallgrass = nullptr;
+DeadBushTile* Tile::deadBush = nullptr;
+PistonBaseTile* Tile::pistonBase = nullptr;
+PistonExtensionTile* Tile::pistonExtension = nullptr;
+Tile* Tile::wool = nullptr;
+PistonMovingPiece* Tile::pistonMovingPiece = nullptr;
+Bush* Tile::flower = nullptr;
+Bush* Tile::rose = nullptr;
+Bush* Tile::mushroom_brown = nullptr;
+Bush* Tile::mushroom_red = nullptr;
+Tile* Tile::goldBlock = nullptr;
+Tile* Tile::ironBlock = nullptr;
+HalfSlabTile* Tile::stoneSlab = nullptr;
+HalfSlabTile* Tile::stoneSlabHalf = nullptr;
+Tile* Tile::redBrick = nullptr;
+Tile* Tile::tnt = nullptr;
+Tile* Tile::bookshelf = nullptr;
+Tile* Tile::mossyCobblestone = nullptr;
+Tile* Tile::obsidian = nullptr;
+Tile* Tile::torch = nullptr;
+FireTile* Tile::fire = nullptr;
+Tile* Tile::mobSpawner = nullptr;
+Tile* Tile::stairs_wood = nullptr;
+ChestTile* Tile::chest = nullptr;
+RedStoneDustTile* Tile::redStoneDust = nullptr;
+Tile* Tile::diamondOre = nullptr;
+Tile* Tile::diamondBlock = nullptr;
+Tile* Tile::workBench = nullptr;
+Tile* Tile::wheat = nullptr;
+Tile* Tile::farmland = nullptr;
+Tile* Tile::furnace = nullptr;
+Tile* Tile::furnace_lit = nullptr;
+Tile* Tile::sign = nullptr;
+Tile* Tile::door_wood = nullptr;
+Tile* Tile::ladder = nullptr;
+Tile* Tile::rail = nullptr;
+Tile* Tile::stairs_stone = nullptr;
+Tile* Tile::wallSign = nullptr;
+Tile* Tile::lever = nullptr;
+Tile* Tile::pressurePlate_stone = nullptr;
+Tile* Tile::door_iron = nullptr;
+Tile* Tile::pressurePlate_wood = nullptr;
+Tile* Tile::redStoneOre = nullptr;
+Tile* Tile::redStoneOre_lit = nullptr;
+Tile* Tile::redstoneTorch_off = nullptr;
+Tile* Tile::redstoneTorch_on = nullptr;
+Tile* Tile::button = nullptr;
+Tile* Tile::topSnow = nullptr;
+Tile* Tile::ice = nullptr;
+Tile* Tile::snow = nullptr;
+Tile* Tile::cactus = nullptr;
+Tile* Tile::clay = nullptr;
+Tile* Tile::reeds = nullptr;
+Tile* Tile::jukebox = nullptr;
+Tile* Tile::fence = nullptr;
+Tile* Tile::pumpkin = nullptr;
+Tile* Tile::netherRack = nullptr;
+Tile* Tile::soulsand = nullptr;
+Tile* Tile::glowstone = nullptr;
+PortalTile* Tile::portalTile = nullptr;
+Tile* Tile::litPumpkin = nullptr;
+Tile* Tile::cake = nullptr;
+RepeaterTile* Tile::diode_off = nullptr;
+RepeaterTile* Tile::diode_on = nullptr;
+Tile* Tile::stained_glass = nullptr;
+Tile* Tile::trapdoor = nullptr;
 
-yuri_3088* yuri_3088::monsterStoneEgg = nullptr;
-yuri_3088* yuri_3088::stoneBrick = nullptr;
-yuri_3088* yuri_3088::hugeMushroom_brown = nullptr;
-yuri_3088* yuri_3088::hugeMushroom_red = nullptr;
-yuri_3088* yuri_3088::ironFence = nullptr;
-yuri_3088* yuri_3088::thinGlass = nullptr;
-yuri_3088* yuri_3088::melon = nullptr;
-yuri_3088* yuri_3088::pumpkinStem = nullptr;
-yuri_3088* yuri_3088::melonStem = nullptr;
-yuri_3088* yuri_3088::vine = nullptr;
-yuri_3088* yuri_3088::fenceGate = nullptr;
-yuri_3088* yuri_3088::stairs_bricks = nullptr;
-yuri_3088* yuri_3088::stairs_stoneBrickSmooth = nullptr;
+Tile* Tile::monsterStoneEgg = nullptr;
+Tile* Tile::stoneBrick = nullptr;
+Tile* Tile::hugeMushroom_brown = nullptr;
+Tile* Tile::hugeMushroom_red = nullptr;
+Tile* Tile::ironFence = nullptr;
+Tile* Tile::thinGlass = nullptr;
+Tile* Tile::melon = nullptr;
+Tile* Tile::pumpkinStem = nullptr;
+Tile* Tile::melonStem = nullptr;
+Tile* Tile::vine = nullptr;
+Tile* Tile::fenceGate = nullptr;
+Tile* Tile::stairs_bricks = nullptr;
+Tile* Tile::stairs_stoneBrickSmooth = nullptr;
 
-yuri_2004* yuri_3088::mycel = nullptr;
-yuri_3088* yuri_3088::waterLily = nullptr;
-yuri_3088* yuri_3088::netherBrick = nullptr;
-yuri_3088* yuri_3088::netherFence = nullptr;
-yuri_3088* yuri_3088::stairs_netherBricks = nullptr;
-yuri_3088* yuri_3088::netherStalk = nullptr;
-yuri_3088* yuri_3088::enchantTable = nullptr;
-yuri_3088* yuri_3088::brewingStand = nullptr;
-yuri_321* yuri_3088::cauldron = nullptr;
-yuri_3088* yuri_3088::endPortalTile = nullptr;
-yuri_3088* yuri_3088::endPortalFrameTile = nullptr;
-yuri_3088* yuri_3088::endStone = nullptr;
-yuri_3088* yuri_3088::dragonEgg = nullptr;
-yuri_3088* yuri_3088::redstoneLight = nullptr;
-yuri_3088* yuri_3088::redstoneLight_lit = nullptr;
+MycelTile* Tile::mycel = nullptr;
+Tile* Tile::waterLily = nullptr;
+Tile* Tile::netherBrick = nullptr;
+Tile* Tile::netherFence = nullptr;
+Tile* Tile::stairs_netherBricks = nullptr;
+Tile* Tile::netherStalk = nullptr;
+Tile* Tile::enchantTable = nullptr;
+Tile* Tile::brewingStand = nullptr;
+CauldronTile* Tile::cauldron = nullptr;
+Tile* Tile::endPortalTile = nullptr;
+Tile* Tile::endPortalFrameTile = nullptr;
+Tile* Tile::endStone = nullptr;
+Tile* Tile::dragonEgg = nullptr;
+Tile* Tile::redstoneLight = nullptr;
+Tile* Tile::redstoneLight_lit = nullptr;
 
 // yuri
-yuri_3088* yuri_3088::stairs_sandstone = nullptr;
-yuri_3088* yuri_3088::woodStairsDark = nullptr;
-yuri_3088* yuri_3088::woodStairsBirch = nullptr;
-yuri_3088* yuri_3088::woodStairsJungle = nullptr;
-yuri_3088* yuri_3088::commandBlock = nullptr;
-yuri_179* yuri_3088::beacon = nullptr;
-yuri_3088* yuri_3088::button_wood = nullptr;
-yuri_1235* yuri_3088::woodSlab = nullptr;
-yuri_1235* yuri_3088::woodSlabHalf = nullptr;
+Tile* Tile::stairs_sandstone = nullptr;
+Tile* Tile::woodStairsDark = nullptr;
+Tile* Tile::woodStairsBirch = nullptr;
+Tile* Tile::woodStairsJungle = nullptr;
+Tile* Tile::commandBlock = nullptr;
+BeaconTile* Tile::beacon = nullptr;
+Tile* Tile::button_wood = nullptr;
+HalfSlabTile* Tile::woodSlab = nullptr;
+HalfSlabTile* Tile::woodSlabHalf = nullptr;
 
-yuri_3088* yuri_3088::emeraldOre = nullptr;
-yuri_3088* yuri_3088::enderChest = nullptr;
-yuri_3141* yuri_3088::tripWireSource = nullptr;
-yuri_3088* yuri_3088::tripWire = nullptr;
-yuri_3088* yuri_3088::emeraldBlock = nullptr;
+Tile* Tile::emeraldOre = nullptr;
+Tile* Tile::enderChest = nullptr;
+TripWireSourceTile* Tile::tripWireSource = nullptr;
+Tile* Tile::tripWire = nullptr;
+Tile* Tile::emeraldBlock = nullptr;
 
-yuri_3088* yuri_3088::cocoa = nullptr;
-yuri_3088* yuri_3088::skull = nullptr;
+Tile* Tile::cocoa = nullptr;
+Tile* Tile::skull = nullptr;
 
-yuri_3088* yuri_3088::cobbleWall = nullptr;
-yuri_3088* yuri_3088::flowerPot = nullptr;
-yuri_3088* yuri_3088::carrots = nullptr;
-yuri_3088* yuri_3088::potatoes = nullptr;
-yuri_3088* yuri_3088::anvil = nullptr;
-yuri_3088* yuri_3088::chest_trap = nullptr;
-yuri_3088* yuri_3088::weightedPlate_light = nullptr;
-yuri_3088* yuri_3088::weightedPlate_heavy = nullptr;
-yuri_397* yuri_3088::comparator_off = nullptr;
-yuri_397* yuri_3088::comparator_on = nullptr;
+Tile* Tile::cobbleWall = nullptr;
+Tile* Tile::flowerPot = nullptr;
+Tile* Tile::carrots = nullptr;
+Tile* Tile::potatoes = nullptr;
+Tile* Tile::anvil = nullptr;
+Tile* Tile::chest_trap = nullptr;
+Tile* Tile::weightedPlate_light = nullptr;
+Tile* Tile::weightedPlate_heavy = nullptr;
+ComparatorTile* Tile::comparator_off = nullptr;
+ComparatorTile* Tile::comparator_on = nullptr;
 
-yuri_553* yuri_3088::daylightDetector = nullptr;
-yuri_3088* yuri_3088::redstoneBlock = nullptr;
+DaylightDetectorTile* Tile::daylightDetector = nullptr;
+Tile* Tile::redstoneBlock = nullptr;
 
-yuri_3088* yuri_3088::netherQuartz = nullptr;
-yuri_1284* yuri_3088::hopper = nullptr;
-yuri_3088* yuri_3088::quartzBlock = nullptr;
-yuri_3088* yuri_3088::stairs_quartz = nullptr;
-yuri_3088* yuri_3088::activatorRail = nullptr;
-yuri_3088* yuri_3088::dropper = nullptr;
-yuri_3088* yuri_3088::clayHardened_colored = nullptr;
-yuri_3088* yuri_3088::stained_glass_pane = nullptr;
+Tile* Tile::netherQuartz = nullptr;
+HopperTile* Tile::hopper = nullptr;
+Tile* Tile::quartzBlock = nullptr;
+Tile* Tile::stairs_quartz = nullptr;
+Tile* Tile::activatorRail = nullptr;
+Tile* Tile::dropper = nullptr;
+Tile* Tile::clayHardened_colored = nullptr;
+Tile* Tile::stained_glass_pane = nullptr;
 
-yuri_3088* yuri_3088::hayBlock = nullptr;
-yuri_3088* yuri_3088::woolCarpet = nullptr;
-yuri_3088* yuri_3088::clayHardened = nullptr;
-yuri_3088* yuri_3088::coalBlock = nullptr;
+Tile* Tile::hayBlock = nullptr;
+Tile* Tile::woolCarpet = nullptr;
+Tile* Tile::clayHardened = nullptr;
+Tile* Tile::coalBlock = nullptr;
 
-thread_local yuri_3088::yuri_3074* yuri_3088::m_tlsShape = nullptr;
+thread_local Tile::ThreadStorage* Tile::m_tlsShape = nullptr;
 
-yuri_3088::yuri_3074::yuri_3074() {
+Tile::ThreadStorage::ThreadStorage() {
     xx0 = yy0 = zz0 = xx1 = yy1 = zz1 = 0.0;
-    yuri_9294 = 0;
+    tileId = 0;
 }
 
-void yuri_3088::yuri_484() { m_tlsShape = new yuri_3074(); }
+void Tile::CreateNewThreadStorage() { m_tlsShape = new ThreadStorage(); }
 
-void yuri_3088::yuri_2369() { delete m_tlsShape; }
+void Tile::ReleaseThreadStorage() { delete m_tlsShape; }
 
-void yuri_3088::yuri_9115() {
-    yuri_3088::SOUND_NORMAL = new yuri_3088::yuri_2874(eMaterialSoundType_STONE, 1, 1);
-    yuri_3088::SOUND_WOOD = new yuri_3088::yuri_2874(eMaterialSoundType_WOOD, 1, 1);
-    yuri_3088::SOUND_GRAVEL = new yuri_3088::yuri_2874(eMaterialSoundType_GRAVEL, 1, 1);
-    yuri_3088::SOUND_GRASS = new yuri_3088::yuri_2874(eMaterialSoundType_GRASS, 1, 1);
-    yuri_3088::SOUND_STONE = new yuri_3088::yuri_2874(eMaterialSoundType_STONE, 1, 1);
-    yuri_3088::SOUND_METAL = new yuri_3088::yuri_2874(eMaterialSoundType_STONE, 1, 1.5f);
-    yuri_3088::SOUND_GLASS =
-        new yuri_3088::yuri_2874(eMaterialSoundType_STONE, 1, 1,
+void Tile::staticCtor() {
+    Tile::SOUND_NORMAL = new Tile::SoundType(eMaterialSoundType_STONE, 1, 1);
+    Tile::SOUND_WOOD = new Tile::SoundType(eMaterialSoundType_WOOD, 1, 1);
+    Tile::SOUND_GRAVEL = new Tile::SoundType(eMaterialSoundType_GRAVEL, 1, 1);
+    Tile::SOUND_GRASS = new Tile::SoundType(eMaterialSoundType_GRASS, 1, 1);
+    Tile::SOUND_STONE = new Tile::SoundType(eMaterialSoundType_STONE, 1, 1);
+    Tile::SOUND_METAL = new Tile::SoundType(eMaterialSoundType_STONE, 1, 1.5f);
+    Tile::SOUND_GLASS =
+        new Tile::SoundType(eMaterialSoundType_STONE, 1, 1,
                             eSoundType_RANDOM_GLASS, eSoundType_STEP_STONE);
-    yuri_3088::SOUND_CLOTH = new yuri_3088::yuri_2874(eMaterialSoundType_CLOTH, 1, 1);
-    yuri_3088::SOUND_SAND = new yuri_3088::yuri_2874(eMaterialSoundType_SAND, 1, 1);
-    yuri_3088::SOUND_SNOW = new yuri_3088::yuri_2874(eMaterialSoundType_SNOW, 1, 1);
-    yuri_3088::SOUND_LADDER = new yuri_3088::yuri_2874(eMaterialSoundType_LADDER, 1, 1,
+    Tile::SOUND_CLOTH = new Tile::SoundType(eMaterialSoundType_CLOTH, 1, 1);
+    Tile::SOUND_SAND = new Tile::SoundType(eMaterialSoundType_SAND, 1, 1);
+    Tile::SOUND_SNOW = new Tile::SoundType(eMaterialSoundType_SNOW, 1, 1);
+    Tile::SOUND_LADDER = new Tile::SoundType(eMaterialSoundType_LADDER, 1, 1,
                                              eSoundType_DIG_WOOD);
-    yuri_3088::SOUND_ANVIL =
-        new yuri_3088::yuri_2874(eMaterialSoundType_ANVIL, 0.3f, 1,
+    Tile::SOUND_ANVIL =
+        new Tile::SoundType(eMaterialSoundType_ANVIL, 0.3f, 1,
                             eSoundType_DIG_STONE, eSoundType_RANDOM_ANVIL_LAND);
 
-    yuri_3088::tiles = new yuri_3088*[TILE_NUM_COUNT];
-    memset(tiles, 0, sizeof(yuri_3088*) * TILE_NUM_COUNT);
+    Tile::tiles = new Tile*[TILE_NUM_COUNT];
+    memset(tiles, 0, sizeof(Tile*) * TILE_NUM_COUNT);
 
-    yuri_3088::stone = (new yuri_2966(1))
-                      ->yuri_8568(1.5f)
-                      ->yuri_8598(10)
-                      ->yuri_8874(yuri_3088::SOUND_STONE)
-                      ->yuri_8658(yuri_1720"stone")
-                      ->yuri_8564(IDS_TILE_STONE)
-                      ->yuri_8941(IDS_DESC_STONE);
-    yuri_3088::grass = (yuri_1222*)(new yuri_1222(2))
-                      ->yuri_8568(0.6f)
-                      ->yuri_8874(yuri_3088::SOUND_GRASS)
-                      ->yuri_8658(yuri_1720"grass")
-                      ->yuri_8564(IDS_TILE_GRASS)
-                      ->yuri_8941(IDS_DESC_GRASS);
-    yuri_3088::dirt = (new yuri_617(3))
-                     ->yuri_8568(0.5f)
-                     ->yuri_8874(yuri_3088::SOUND_GRAVEL)
-                     ->yuri_8658(yuri_1720"dirt")
-                     ->yuri_8564(IDS_TILE_DIRT)
-                     ->yuri_8941(IDS_DESC_DIRT);
-    yuri_3088::cobblestone =
-        (new yuri_3088(4, yuri_1886::stone))
-            ->yuri_8475(yuri_1687::eBaseItemType_structblock,
-                                         yuri_1687::eMaterial_stone)
-            ->yuri_8568(2.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(yuri_3088::SOUND_STONE)
-            ->yuri_8658(yuri_1720"cobblestone")
-            ->yuri_8564(IDS_TILE_STONE_BRICK)
-            ->yuri_8941(IDS_DESC_STONE_BRICK);
-    yuri_3088::wood =
-        (new yuri_3393(5))
-            ->yuri_8475(yuri_1687::eBaseItemType_structwoodstuff,
-                                         yuri_1687::eMaterial_wood)
-            ->yuri_8568(2.0f)
-            ->yuri_8598(5)
-            ->yuri_8874(yuri_3088::SOUND_WOOD)
-            ->yuri_8658(yuri_1720"planks")
-            ->yuri_8564(IDS_TILE_OAKWOOD_PLANKS)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_WOODENPLANKS);
-    yuri_3088::sapling = (new yuri_2498(6))
-                        ->yuri_8568(0.0f)
-                        ->yuri_8874(yuri_3088::SOUND_GRASS)
-                        ->yuri_8658(yuri_1720"sapling")
-                        ->yuri_8564(IDS_TILE_SAPLING)
-                        ->yuri_8426()
-                        ->yuri_8941(IDS_DESC_SAPLING)
-                        ->yuri_4368();
-    yuri_3088::unbreakable = (new yuri_3088(7, yuri_1886::stone))
-                            ->yuri_8664()
-                            ->yuri_8598(6000000)
-                            ->yuri_8874(yuri_3088::SOUND_STONE)
-                            ->yuri_8658(yuri_1720"bedrock")
-                            ->yuri_8564(IDS_TILE_BEDROCK)
-                            ->yuri_8742()
-                            ->yuri_8941(IDS_DESC_BEDROCK);
-    yuri_3088::water = (yuri_1788*)(new yuri_1789(8, yuri_1886::water))
-                      ->yuri_8568(100.0f)
-                      ->yuri_8706(3)
-                      ->yuri_8658(yuri_1720"water_flow")
-                      ->yuri_8564(IDS_TILE_WATER)
-                      ->yuri_8742()
-                      ->yuri_8426()
-                      ->yuri_8941(IDS_DESC_WATER);
-    yuri_3088::yuri_3903 = (new yuri_1790(9, yuri_1886::water))
-                          ->yuri_8568(100.0f)
-                          ->yuri_8706(3)
-                          ->yuri_8658(yuri_1720"water_still")
-                          ->yuri_8564(IDS_TILE_WATER)
-                          ->yuri_8742()
-                          ->yuri_8426()
-                          ->yuri_8941(IDS_DESC_WATER);
-    yuri_3088::lava = (yuri_1788*)(new yuri_1789(10, yuri_1886::lava))
-                     ->yuri_8568(00.0f)
-                     ->yuri_8707(1.0f)
-                     ->yuri_8706(255)
-                     ->yuri_8658(yuri_1720"lava_flow")
-                     ->yuri_8564(IDS_TILE_LAVA)
-                     ->yuri_8742()
-                     ->yuri_8426()
-                     ->yuri_8941(IDS_DESC_LAVA);
+    Tile::stone = (new StoneTile(1))
+                      ->setDestroyTime(1.5f)
+                      ->setExplodeable(10)
+                      ->setSoundType(Tile::SOUND_STONE)
+                      ->setIconName(L"stone")
+                      ->setDescriptionId(IDS_TILE_STONE)
+                      ->setUseDescriptionId(IDS_DESC_STONE);
+    Tile::grass = (GrassTile*)(new GrassTile(2))
+                      ->setDestroyTime(0.6f)
+                      ->setSoundType(Tile::SOUND_GRASS)
+                      ->setIconName(L"grass")
+                      ->setDescriptionId(IDS_TILE_GRASS)
+                      ->setUseDescriptionId(IDS_DESC_GRASS);
+    Tile::dirt = (new DirtTile(3))
+                     ->setDestroyTime(0.5f)
+                     ->setSoundType(Tile::SOUND_GRAVEL)
+                     ->setIconName(L"dirt")
+                     ->setDescriptionId(IDS_TILE_DIRT)
+                     ->setUseDescriptionId(IDS_DESC_DIRT);
+    Tile::cobblestone =
+        (new Tile(4, Material::stone))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_structblock,
+                                         Item::eMaterial_stone)
+            ->setDestroyTime(2.0f)
+            ->setExplodeable(10)
+            ->setSoundType(Tile::SOUND_STONE)
+            ->setIconName(L"cobblestone")
+            ->setDescriptionId(IDS_TILE_STONE_BRICK)
+            ->setUseDescriptionId(IDS_DESC_STONE_BRICK);
+    Tile::wood =
+        (new WoodTile(5))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_structwoodstuff,
+                                         Item::eMaterial_wood)
+            ->setDestroyTime(2.0f)
+            ->setExplodeable(5)
+            ->setSoundType(Tile::SOUND_WOOD)
+            ->setIconName(L"planks")
+            ->setDescriptionId(IDS_TILE_OAKWOOD_PLANKS)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_WOODENPLANKS);
+    Tile::sapling = (new Sapling(6))
+                        ->setDestroyTime(0.0f)
+                        ->setSoundType(Tile::SOUND_GRASS)
+                        ->setIconName(L"sapling")
+                        ->setDescriptionId(IDS_TILE_SAPLING)
+                        ->sendTileData()
+                        ->setUseDescriptionId(IDS_DESC_SAPLING)
+                        ->disableMipmap();
+    Tile::unbreakable = (new Tile(7, Material::stone))
+                            ->setIndestructible()
+                            ->setExplodeable(6000000)
+                            ->setSoundType(Tile::SOUND_STONE)
+                            ->setIconName(L"bedrock")
+                            ->setDescriptionId(IDS_TILE_BEDROCK)
+                            ->setNotCollectStatistics()
+                            ->setUseDescriptionId(IDS_DESC_BEDROCK);
+    Tile::water = (LiquidTile*)(new LiquidTileDynamic(8, Material::water))
+                      ->setDestroyTime(100.0f)
+                      ->setLightBlock(3)
+                      ->setIconName(L"water_flow")
+                      ->setDescriptionId(IDS_TILE_WATER)
+                      ->setNotCollectStatistics()
+                      ->sendTileData()
+                      ->setUseDescriptionId(IDS_DESC_WATER);
+    Tile::calmWater = (new LiquidTileStatic(9, Material::water))
+                          ->setDestroyTime(100.0f)
+                          ->setLightBlock(3)
+                          ->setIconName(L"water_still")
+                          ->setDescriptionId(IDS_TILE_WATER)
+                          ->setNotCollectStatistics()
+                          ->sendTileData()
+                          ->setUseDescriptionId(IDS_DESC_WATER);
+    Tile::lava = (LiquidTile*)(new LiquidTileDynamic(10, Material::lava))
+                     ->setDestroyTime(00.0f)
+                     ->setLightEmission(1.0f)
+                     ->setLightBlock(255)
+                     ->setIconName(L"lava_flow")
+                     ->setDescriptionId(IDS_TILE_LAVA)
+                     ->setNotCollectStatistics()
+                     ->sendTileData()
+                     ->setUseDescriptionId(IDS_DESC_LAVA);
 
-    yuri_3088::yuri_3902 = (new yuri_1790(11, yuri_1886::lava))
-                         ->yuri_8568(100.0f)
-                         ->yuri_8707(1.0f)
-                         ->yuri_8706(255)
-                         ->yuri_8658(yuri_1720"lava_still")
-                         ->yuri_8564(IDS_TILE_LAVA)
-                         ->yuri_8742()
-                         ->yuri_8426()
-                         ->yuri_8941(IDS_DESC_LAVA);
-    yuri_3088::sand = (new yuri_1265(12))
-                     ->yuri_8568(0.5f)
-                     ->yuri_8874(yuri_3088::SOUND_SAND)
-                     ->yuri_8658(yuri_1720"sand")
-                     ->yuri_8564(IDS_TILE_SAND)
-                     ->yuri_8941(IDS_DESC_SAND);
-    yuri_3088::gravel = (new yuri_1223(13))
-                       ->yuri_8568(0.6f)
-                       ->yuri_8874(yuri_3088::SOUND_GRAVEL)
-                       ->yuri_8658(yuri_1720"gravel")
-                       ->yuri_8564(IDS_TILE_GRAVEL)
-                       ->yuri_8941(IDS_DESC_GRAVEL);
-    yuri_3088::goldOre = (new yuri_2063(14))
-                        ->yuri_8568(3.0f)
-                        ->yuri_8598(5)
-                        ->yuri_8874(yuri_3088::SOUND_STONE)
-                        ->yuri_8658(yuri_1720"gold_ore")
-                        ->yuri_8564(IDS_TILE_ORE_GOLD)
-                        ->yuri_8941(IDS_DESC_ORE_GOLD);
-    yuri_3088::ironOre = (new yuri_2063(15))
-                        ->yuri_8568(3.0f)
-                        ->yuri_8598(5)
-                        ->yuri_8874(yuri_3088::SOUND_STONE)
-                        ->yuri_8658(yuri_1720"iron_ore")
-                        ->yuri_8564(IDS_TILE_ORE_IRON)
-                        ->yuri_8941(IDS_DESC_ORE_IRON);
-    yuri_3088::coalOre = (new yuri_2063(16))
-                        ->yuri_8568(3.0f)
-                        ->yuri_8598(5)
-                        ->yuri_8874(yuri_3088::SOUND_STONE)
-                        ->yuri_8658(yuri_1720"coal_ore")
-                        ->yuri_8564(IDS_TILE_ORE_COAL)
-                        ->yuri_8941(IDS_DESC_ORE_COAL);
-    yuri_3088::treeTrunk = (new yuri_3137(17))
-                          ->yuri_8568(2.0f)
-                          ->yuri_8874(yuri_3088::SOUND_WOOD)
-                          ->yuri_8658(yuri_1720"log")
-                          ->yuri_8564(IDS_TILE_LOG)
-                          ->yuri_8426()
-                          ->yuri_8941(IDS_DESC_LOG);
+    Tile::calmLava = (new LiquidTileStatic(11, Material::lava))
+                         ->setDestroyTime(100.0f)
+                         ->setLightEmission(1.0f)
+                         ->setLightBlock(255)
+                         ->setIconName(L"lava_still")
+                         ->setDescriptionId(IDS_TILE_LAVA)
+                         ->setNotCollectStatistics()
+                         ->sendTileData()
+                         ->setUseDescriptionId(IDS_DESC_LAVA);
+    Tile::sand = (new HeavyTile(12))
+                     ->setDestroyTime(0.5f)
+                     ->setSoundType(Tile::SOUND_SAND)
+                     ->setIconName(L"sand")
+                     ->setDescriptionId(IDS_TILE_SAND)
+                     ->setUseDescriptionId(IDS_DESC_SAND);
+    Tile::gravel = (new GravelTile(13))
+                       ->setDestroyTime(0.6f)
+                       ->setSoundType(Tile::SOUND_GRAVEL)
+                       ->setIconName(L"gravel")
+                       ->setDescriptionId(IDS_TILE_GRAVEL)
+                       ->setUseDescriptionId(IDS_DESC_GRAVEL);
+    Tile::goldOre = (new OreTile(14))
+                        ->setDestroyTime(3.0f)
+                        ->setExplodeable(5)
+                        ->setSoundType(Tile::SOUND_STONE)
+                        ->setIconName(L"gold_ore")
+                        ->setDescriptionId(IDS_TILE_ORE_GOLD)
+                        ->setUseDescriptionId(IDS_DESC_ORE_GOLD);
+    Tile::ironOre = (new OreTile(15))
+                        ->setDestroyTime(3.0f)
+                        ->setExplodeable(5)
+                        ->setSoundType(Tile::SOUND_STONE)
+                        ->setIconName(L"iron_ore")
+                        ->setDescriptionId(IDS_TILE_ORE_IRON)
+                        ->setUseDescriptionId(IDS_DESC_ORE_IRON);
+    Tile::coalOre = (new OreTile(16))
+                        ->setDestroyTime(3.0f)
+                        ->setExplodeable(5)
+                        ->setSoundType(Tile::SOUND_STONE)
+                        ->setIconName(L"coal_ore")
+                        ->setDescriptionId(IDS_TILE_ORE_COAL)
+                        ->setUseDescriptionId(IDS_DESC_ORE_COAL);
+    Tile::treeTrunk = (new TreeTile(17))
+                          ->setDestroyTime(2.0f)
+                          ->setSoundType(Tile::SOUND_WOOD)
+                          ->setIconName(L"log")
+                          ->setDescriptionId(IDS_TILE_LOG)
+                          ->sendTileData()
+                          ->setUseDescriptionId(IDS_DESC_LOG);
     // yuri - my wife canon, lesbian kiss kissing girls yuri scissors yuri blushing girls cute girls yuri yuri blushing girls
     // yuri yuri i love girls cute girls lesbian kiss lesbian kiss FUCKING KISS ALREADY yuri
-    yuri_3088::leaves = (yuri_1749*)(new yuri_1749(18))
-                       ->yuri_8568(0.2f)
-                       ->yuri_8706(1)
-                       ->yuri_8874(yuri_3088::SOUND_GRASS)
-                       ->yuri_8658(yuri_1720"leaves")
-                       ->yuri_8564(IDS_TILE_LEAVES)
-                       ->yuri_8426(yuri_1749::LEAF_TYPE_MASK)
-                       ->yuri_8941(IDS_DESC_LEAVES);
-    yuri_3088::sponge = (new yuri_2888(19))
-                       ->yuri_8568(0.6f)
-                       ->yuri_8874(yuri_3088::SOUND_GRASS)
-                       ->yuri_8658(yuri_1720"sponge")
-                       ->yuri_8564(IDS_TILE_SPONGE)
-                       ->yuri_8941(IDS_DESC_SPONGE);
-    yuri_3088::glass = (new yuri_1213(20, yuri_1886::glass, false))
-                      ->yuri_8568(0.3f)
-                      ->yuri_8874(yuri_3088::SOUND_GLASS)
-                      ->yuri_8658(yuri_1720"glass")
-                      ->yuri_8564(IDS_TILE_GLASS)
-                      ->yuri_8941(IDS_DESC_GLASS);
+    Tile::leaves = (LeafTile*)(new LeafTile(18))
+                       ->setDestroyTime(0.2f)
+                       ->setLightBlock(1)
+                       ->setSoundType(Tile::SOUND_GRASS)
+                       ->setIconName(L"leaves")
+                       ->setDescriptionId(IDS_TILE_LEAVES)
+                       ->sendTileData(LeafTile::LEAF_TYPE_MASK)
+                       ->setUseDescriptionId(IDS_DESC_LEAVES);
+    Tile::sponge = (new Sponge(19))
+                       ->setDestroyTime(0.6f)
+                       ->setSoundType(Tile::SOUND_GRASS)
+                       ->setIconName(L"sponge")
+                       ->setDescriptionId(IDS_TILE_SPONGE)
+                       ->setUseDescriptionId(IDS_DESC_SPONGE);
+    Tile::glass = (new GlassTile(20, Material::glass, false))
+                      ->setDestroyTime(0.3f)
+                      ->setSoundType(Tile::SOUND_GLASS)
+                      ->setIconName(L"glass")
+                      ->setDescriptionId(IDS_TILE_GLASS)
+                      ->setUseDescriptionId(IDS_DESC_GLASS);
 
-    yuri_3088::lapisOre = (new yuri_2063(21))
-                         ->yuri_8568(3.0f)
-                         ->yuri_8598(5)
-                         ->yuri_8874(yuri_3088::SOUND_STONE)
-                         ->yuri_8658(yuri_1720"lapis_ore")
-                         ->yuri_8564(IDS_TILE_ORE_LAPIS)
-                         ->yuri_8941(IDS_DESC_ORE_LAPIS);
-    yuri_3088::lapisBlock = (new yuri_3088(22, yuri_1886::stone))
-                           ->yuri_8475(
-                               yuri_1687::eBaseItemType_block, yuri_1687::eMaterial_lapis)
-                           ->yuri_8568(3.0f)
-                           ->yuri_8598(5)
-                           ->yuri_8874(yuri_3088::SOUND_STONE)
-                           ->yuri_8658(yuri_1720"lapis_block")
-                           ->yuri_8564(IDS_TILE_BLOCK_LAPIS)
-                           ->yuri_8941(IDS_DESC_BLOCK_LAPIS);
-    yuri_3088::dispenser =
-        (new yuri_625(23))
-            ->yuri_8475(yuri_1687::eBaseItemType_redstoneContainer,
-                                         yuri_1687::eMaterial_undefined)
-            ->yuri_8568(3.5f)
-            ->yuri_8874(yuri_3088::SOUND_STONE)
-            ->yuri_8658(yuri_1720"dispenser")
-            ->yuri_8564(IDS_TILE_DISPENSER)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_DISPENSER);
-    yuri_3088::sandStone =
-        (new yuri_2497(24))
-            ->yuri_8475(yuri_1687::eBaseItemType_structblock,
-                                         yuri_1687::eMaterial_sand)
-            ->yuri_8874(yuri_3088::SOUND_STONE)
-            ->yuri_8568(0.8f)
-            ->yuri_8426()
-            ->yuri_8658(yuri_1720"sandstone")
-            ->yuri_8564(IDS_TILE_SANDSTONE)
-            ->yuri_8941(IDS_DESC_SANDSTONE)
-            ->yuri_8426();
-    yuri_3088::noteblock = (new yuri_2031(25))
-                          ->yuri_8568(0.8f)
-                          ->yuri_8658(yuri_1720"noteblock")
-                          ->yuri_8564(IDS_TILE_MUSIC_BLOCK)
-                          ->yuri_8426()
-                          ->yuri_8941(IDS_DESC_NOTEBLOCK);
-    yuri_3088::bed = (new yuri_182(26))
-                    ->yuri_8568(0.2f)
-                    ->yuri_8658(yuri_1720"bed")
-                    ->yuri_8564(IDS_TILE_BED)
-                    ->yuri_8742()
-                    ->yuri_8426()
-                    ->yuri_8941(IDS_DESC_BED);
-    yuri_3088::goldenRail = (new yuri_2166(27))
-                           ->yuri_8475(
-                               yuri_1687::eBaseItemType_rail, yuri_1687::eMaterial_gold)
-                           ->yuri_8568(0.7f)
-                           ->yuri_8874(yuri_3088::SOUND_METAL)
-                           ->yuri_8658(yuri_1720"rail_golden")
-                           ->yuri_8564(IDS_TILE_GOLDEN_RAIL)
-                           ->yuri_8426()
-                           ->yuri_8941(IDS_DESC_POWEREDRAIL)
-                           ->yuri_4368();
-    yuri_3088::detectorRail =
-        (new yuri_606(28))
-            ->yuri_8475(yuri_1687::eBaseItemType_rail,
-                                         yuri_1687::eMaterial_detector)
-            ->yuri_8568(0.7f)
-            ->yuri_8874(yuri_3088::SOUND_METAL)
-            ->yuri_8658(yuri_1720"rail_detector")
-            ->yuri_8564(IDS_TILE_DETECTOR_RAIL)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_DETECTORRAIL)
-            ->yuri_4368();
-    yuri_3088::pistonStickyBase =
-        (yuri_2116*)(new yuri_2116(29, true))
-            ->yuri_8475(yuri_1687::eBaseItemType_piston,
-                                         yuri_1687::eMaterial_stickypiston)
-            ->yuri_8658(yuri_1720"pistonStickyBase")
-            ->yuri_8564(IDS_TILE_PISTON_STICK_BASE)
-            ->yuri_8941(IDS_DESC_STICKY_PISTON)
-            ->yuri_8426();
-    yuri_3088::web = (new yuri_3371(30))
-                    ->yuri_8706(1)
-                    ->yuri_8568(4.0f)
-                    ->yuri_8658(yuri_1720"web")
-                    ->yuri_8564(IDS_TILE_WEB)
-                    ->yuri_8941(IDS_DESC_WEB);
+    Tile::lapisOre = (new OreTile(21))
+                         ->setDestroyTime(3.0f)
+                         ->setExplodeable(5)
+                         ->setSoundType(Tile::SOUND_STONE)
+                         ->setIconName(L"lapis_ore")
+                         ->setDescriptionId(IDS_TILE_ORE_LAPIS)
+                         ->setUseDescriptionId(IDS_DESC_ORE_LAPIS);
+    Tile::lapisBlock = (new Tile(22, Material::stone))
+                           ->setBaseItemTypeAndMaterial(
+                               Item::eBaseItemType_block, Item::eMaterial_lapis)
+                           ->setDestroyTime(3.0f)
+                           ->setExplodeable(5)
+                           ->setSoundType(Tile::SOUND_STONE)
+                           ->setIconName(L"lapis_block")
+                           ->setDescriptionId(IDS_TILE_BLOCK_LAPIS)
+                           ->setUseDescriptionId(IDS_DESC_BLOCK_LAPIS);
+    Tile::dispenser =
+        (new DispenserTile(23))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_redstoneContainer,
+                                         Item::eMaterial_undefined)
+            ->setDestroyTime(3.5f)
+            ->setSoundType(Tile::SOUND_STONE)
+            ->setIconName(L"dispenser")
+            ->setDescriptionId(IDS_TILE_DISPENSER)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_DISPENSER);
+    Tile::sandStone =
+        (new SandStoneTile(24))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_structblock,
+                                         Item::eMaterial_sand)
+            ->setSoundType(Tile::SOUND_STONE)
+            ->setDestroyTime(0.8f)
+            ->sendTileData()
+            ->setIconName(L"sandstone")
+            ->setDescriptionId(IDS_TILE_SANDSTONE)
+            ->setUseDescriptionId(IDS_DESC_SANDSTONE)
+            ->sendTileData();
+    Tile::noteblock = (new NoteBlockTile(25))
+                          ->setDestroyTime(0.8f)
+                          ->setIconName(L"noteblock")
+                          ->setDescriptionId(IDS_TILE_MUSIC_BLOCK)
+                          ->sendTileData()
+                          ->setUseDescriptionId(IDS_DESC_NOTEBLOCK);
+    Tile::bed = (new BedTile(26))
+                    ->setDestroyTime(0.2f)
+                    ->setIconName(L"bed")
+                    ->setDescriptionId(IDS_TILE_BED)
+                    ->setNotCollectStatistics()
+                    ->sendTileData()
+                    ->setUseDescriptionId(IDS_DESC_BED);
+    Tile::goldenRail = (new PoweredRailTile(27))
+                           ->setBaseItemTypeAndMaterial(
+                               Item::eBaseItemType_rail, Item::eMaterial_gold)
+                           ->setDestroyTime(0.7f)
+                           ->setSoundType(Tile::SOUND_METAL)
+                           ->setIconName(L"rail_golden")
+                           ->setDescriptionId(IDS_TILE_GOLDEN_RAIL)
+                           ->sendTileData()
+                           ->setUseDescriptionId(IDS_DESC_POWEREDRAIL)
+                           ->disableMipmap();
+    Tile::detectorRail =
+        (new DetectorRailTile(28))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_rail,
+                                         Item::eMaterial_detector)
+            ->setDestroyTime(0.7f)
+            ->setSoundType(Tile::SOUND_METAL)
+            ->setIconName(L"rail_detector")
+            ->setDescriptionId(IDS_TILE_DETECTOR_RAIL)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_DETECTORRAIL)
+            ->disableMipmap();
+    Tile::pistonStickyBase =
+        (PistonBaseTile*)(new PistonBaseTile(29, true))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_piston,
+                                         Item::eMaterial_stickypiston)
+            ->setIconName(L"pistonStickyBase")
+            ->setDescriptionId(IDS_TILE_PISTON_STICK_BASE)
+            ->setUseDescriptionId(IDS_DESC_STICKY_PISTON)
+            ->sendTileData();
+    Tile::web = (new WebTile(30))
+                    ->setLightBlock(1)
+                    ->setDestroyTime(4.0f)
+                    ->setIconName(L"web")
+                    ->setDescriptionId(IDS_TILE_WEB)
+                    ->setUseDescriptionId(IDS_DESC_WEB);
 
-    yuri_3088::tallgrass = (yuri_3018*)(new yuri_3018(31))
-                          ->yuri_8568(0.0f)
-                          ->yuri_8874(yuri_3088::SOUND_GRASS)
-                          ->yuri_8658(yuri_1720"tallgrass")
-                          ->yuri_8564(IDS_TILE_TALL_GRASS)
-                          ->yuri_8941(IDS_DESC_TALL_GRASS)
-                          ->yuri_4368();
-    yuri_3088::deadBush = (yuri_556*)(new yuri_556(32))
-                         ->yuri_8568(0.0f)
-                         ->yuri_8874(yuri_3088::SOUND_GRASS)
-                         ->yuri_8658(yuri_1720"deadbush")
-                         ->yuri_8564(IDS_TILE_DEAD_BUSH)
-                         ->yuri_8941(IDS_DESC_DEAD_BUSH)
-                         ->yuri_4368();
-    yuri_3088::pistonBase =
-        (yuri_2116*)(new yuri_2116(33, false))
-            ->yuri_8475(yuri_1687::eBaseItemType_piston,
-                                         yuri_1687::eMaterial_piston)
-            ->yuri_8658(yuri_1720"pistonBase")
-            ->yuri_8564(IDS_TILE_PISTON_BASE)
-            ->yuri_8941(IDS_DESC_PISTON)
-            ->yuri_8426();
-    yuri_3088::pistonExtension = (yuri_2117*)(new yuri_2117(34))
-                                ->yuri_8564(IDS_TILE_PISTON_BASE)
-                                ->yuri_8941(-1)
-                                ->yuri_8426();
-    yuri_3088::wool = (new yuri_389(35, yuri_1886::cloth))
-                     ->yuri_8475(yuri_1687::eBaseItemType_cloth,
-                                                  yuri_1687::eMaterial_cloth)
-                     ->yuri_8568(0.8f)
-                     ->yuri_8874(yuri_3088::SOUND_CLOTH)
-                     ->yuri_8658(yuri_1720"wool_colored")
-                     ->yuri_8564(IDS_TILE_CLOTH)
-                     ->yuri_8426()
-                     ->yuri_8941(IDS_DESC_WOOL);
-    yuri_3088::pistonMovingPiece = (yuri_2118*)(new yuri_2118(36))
-                                  ->yuri_8564(IDS_TILE_PISTON_BASE)
-                                  ->yuri_8941(-1);
-    yuri_3088::flower = (yuri_244*)(new yuri_244(37))
-                       ->yuri_8568(0.0f)
-                       ->yuri_8874(yuri_3088::SOUND_GRASS)
-                       ->yuri_8658(yuri_1720"flower_dandelion")
-                       ->yuri_8564(IDS_TILE_FLOWER)
-                       ->yuri_8941(IDS_DESC_FLOWER)
-                       ->yuri_4368();
-    yuri_3088::rose = (yuri_244*)(new yuri_244(38))
-                     ->yuri_8568(0.0f)
-                     ->yuri_8874(yuri_3088::SOUND_GRASS)
-                     ->yuri_8658(yuri_1720"flower_rose")
-                     ->yuri_8564(IDS_TILE_ROSE)
-                     ->yuri_8941(IDS_DESC_FLOWER)
-                     ->yuri_4368();
-    yuri_3088::mushroom_brown = (yuri_244*)(new yuri_1996(39))
-                               ->yuri_8568(0.0f)
-                               ->yuri_8874(yuri_3088::SOUND_GRASS)
-                               ->yuri_8707(2 / 16.0f)
-                               ->yuri_8658(yuri_1720"mushroom_brown")
-                               ->yuri_8564(IDS_TILE_MUSHROOM)
-                               ->yuri_8941(IDS_DESC_MUSHROOM)
-                               ->yuri_4368();
-    yuri_3088::mushroom_red = (yuri_244*)(new yuri_1996(40))
-                             ->yuri_8568(0.0f)
-                             ->yuri_8874(yuri_3088::SOUND_GRASS)
-                             ->yuri_8658(yuri_1720"mushroom_red")
-                             ->yuri_8564(IDS_TILE_MUSHROOM)
-                             ->yuri_8941(IDS_DESC_MUSHROOM)
-                             ->yuri_4368();
+    Tile::tallgrass = (TallGrass*)(new TallGrass(31))
+                          ->setDestroyTime(0.0f)
+                          ->setSoundType(Tile::SOUND_GRASS)
+                          ->setIconName(L"tallgrass")
+                          ->setDescriptionId(IDS_TILE_TALL_GRASS)
+                          ->setUseDescriptionId(IDS_DESC_TALL_GRASS)
+                          ->disableMipmap();
+    Tile::deadBush = (DeadBushTile*)(new DeadBushTile(32))
+                         ->setDestroyTime(0.0f)
+                         ->setSoundType(Tile::SOUND_GRASS)
+                         ->setIconName(L"deadbush")
+                         ->setDescriptionId(IDS_TILE_DEAD_BUSH)
+                         ->setUseDescriptionId(IDS_DESC_DEAD_BUSH)
+                         ->disableMipmap();
+    Tile::pistonBase =
+        (PistonBaseTile*)(new PistonBaseTile(33, false))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_piston,
+                                         Item::eMaterial_piston)
+            ->setIconName(L"pistonBase")
+            ->setDescriptionId(IDS_TILE_PISTON_BASE)
+            ->setUseDescriptionId(IDS_DESC_PISTON)
+            ->sendTileData();
+    Tile::pistonExtension = (PistonExtensionTile*)(new PistonExtensionTile(34))
+                                ->setDescriptionId(IDS_TILE_PISTON_BASE)
+                                ->setUseDescriptionId(-1)
+                                ->sendTileData();
+    Tile::wool = (new ColoredTile(35, Material::cloth))
+                     ->setBaseItemTypeAndMaterial(Item::eBaseItemType_cloth,
+                                                  Item::eMaterial_cloth)
+                     ->setDestroyTime(0.8f)
+                     ->setSoundType(Tile::SOUND_CLOTH)
+                     ->setIconName(L"wool_colored")
+                     ->setDescriptionId(IDS_TILE_CLOTH)
+                     ->sendTileData()
+                     ->setUseDescriptionId(IDS_DESC_WOOL);
+    Tile::pistonMovingPiece = (PistonMovingPiece*)(new PistonMovingPiece(36))
+                                  ->setDescriptionId(IDS_TILE_PISTON_BASE)
+                                  ->setUseDescriptionId(-1);
+    Tile::flower = (Bush*)(new Bush(37))
+                       ->setDestroyTime(0.0f)
+                       ->setSoundType(Tile::SOUND_GRASS)
+                       ->setIconName(L"flower_dandelion")
+                       ->setDescriptionId(IDS_TILE_FLOWER)
+                       ->setUseDescriptionId(IDS_DESC_FLOWER)
+                       ->disableMipmap();
+    Tile::rose = (Bush*)(new Bush(38))
+                     ->setDestroyTime(0.0f)
+                     ->setSoundType(Tile::SOUND_GRASS)
+                     ->setIconName(L"flower_rose")
+                     ->setDescriptionId(IDS_TILE_ROSE)
+                     ->setUseDescriptionId(IDS_DESC_FLOWER)
+                     ->disableMipmap();
+    Tile::mushroom_brown = (Bush*)(new Mushroom(39))
+                               ->setDestroyTime(0.0f)
+                               ->setSoundType(Tile::SOUND_GRASS)
+                               ->setLightEmission(2 / 16.0f)
+                               ->setIconName(L"mushroom_brown")
+                               ->setDescriptionId(IDS_TILE_MUSHROOM)
+                               ->setUseDescriptionId(IDS_DESC_MUSHROOM)
+                               ->disableMipmap();
+    Tile::mushroom_red = (Bush*)(new Mushroom(40))
+                             ->setDestroyTime(0.0f)
+                             ->setSoundType(Tile::SOUND_GRASS)
+                             ->setIconName(L"mushroom_red")
+                             ->setDescriptionId(IDS_TILE_MUSHROOM)
+                             ->setUseDescriptionId(IDS_DESC_MUSHROOM)
+                             ->disableMipmap();
 
-    yuri_3088::goldBlock = (new yuri_1923(41))
-                          ->yuri_8475(
-                              yuri_1687::eBaseItemType_block, yuri_1687::eMaterial_gold)
-                          ->yuri_8568(3.0f)
-                          ->yuri_8598(10)
-                          ->yuri_8874(yuri_3088::SOUND_METAL)
-                          ->yuri_8658(yuri_1720"gold_block")
-                          ->yuri_8564(IDS_TILE_BLOCK_GOLD)
-                          ->yuri_8941(IDS_DESC_BLOCK_GOLD);
-    yuri_3088::ironBlock = (new yuri_1923(42))
-                          ->yuri_8475(
-                              yuri_1687::eBaseItemType_block, yuri_1687::eMaterial_iron)
-                          ->yuri_8568(5.0f)
-                          ->yuri_8598(10)
-                          ->yuri_8874(yuri_3088::SOUND_METAL)
-                          ->yuri_8658(yuri_1720"iron_block")
-                          ->yuri_8564(IDS_TILE_BLOCK_IRON)
-                          ->yuri_8941(IDS_DESC_BLOCK_IRON);
-    yuri_3088::stoneSlab =
-        (yuri_1235*)(new yuri_2964(yuri_3088::stoneSlab_Id, true))
-            ->yuri_8475(yuri_1687::eBaseItemType_slab,
-                                         yuri_1687::eMaterial_stone)
-            ->yuri_8568(2.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(yuri_3088::SOUND_STONE)
-            ->yuri_8658(yuri_1720"stoneSlab")
-            ->yuri_8564(IDS_TILE_STONESLAB)
-            ->yuri_8941(IDS_DESC_SLAB);
-    yuri_3088::stoneSlabHalf =
-        (yuri_1235*)(new yuri_2964(yuri_3088::stoneSlabHalf_Id, false))
-            ->yuri_8475(yuri_1687::eBaseItemType_halfslab,
-                                         yuri_1687::eMaterial_stone)
-            ->yuri_8568(2.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(yuri_3088::SOUND_STONE)
-            ->yuri_8658(yuri_1720"stoneSlab")
-            ->yuri_8564(IDS_TILE_STONESLAB)
-            ->yuri_8941(IDS_DESC_HALFSLAB);
-    yuri_3088::redBrick =
-        (new yuri_3088(45, yuri_1886::stone))
-            ->yuri_8475(yuri_1687::eBaseItemType_structblock,
-                                         yuri_1687::eMaterial_brick)
-            ->yuri_8568(2.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(yuri_3088::SOUND_STONE)
-            ->yuri_8658(yuri_1720"brick")
-            ->yuri_8564(IDS_TILE_BRICK)
-            ->yuri_8941(IDS_DESC_BRICK);
-    yuri_3088::tnt = (new yuri_3111(46))
-                    ->yuri_8568(0.0f)
-                    ->yuri_8874(yuri_3088::SOUND_GRASS)
-                    ->yuri_8658(yuri_1720"tnt")
-                    ->yuri_8564(IDS_TILE_TNT)
-                    ->yuri_8941(IDS_DESC_TNT);
-    yuri_3088::bookshelf =
-        (new yuri_217(47))
-            ->yuri_8475(yuri_1687::eBaseItemType_paper,
-                                         yuri_1687::eMaterial_bookshelf)
-            ->yuri_8568(1.5f)
-            ->yuri_8874(yuri_3088::SOUND_WOOD)
-            ->yuri_8658(yuri_1720"bookshelf")
-            ->yuri_8564(IDS_TILE_BOOKSHELF)
-            ->yuri_8941(IDS_DESC_BOOKSHELF);
-    yuri_3088::mossyCobblestone = (new yuri_3088(48, yuri_1886::stone))
-                                 ->yuri_8568(2.0f)
-                                 ->yuri_8598(10)
-                                 ->yuri_8874(yuri_3088::SOUND_STONE)
-                                 ->yuri_8658(yuri_1720"cobblestone_mossy")
-                                 ->yuri_8564(IDS_TILE_STONE_MOSS)
-                                 ->yuri_8941(IDS_DESC_MOSS_STONE);
-    yuri_3088::obsidian = (new yuri_2041(49))
-                         ->yuri_8568(50.0f)
-                         ->yuri_8598(2000)
-                         ->yuri_8874(yuri_3088::SOUND_STONE)
-                         ->yuri_8658(yuri_1720"obsidian")
-                         ->yuri_8564(IDS_TILE_OBSIDIAN)
-                         ->yuri_8941(IDS_DESC_OBSIDIAN);
-    yuri_3088::torch = (new yuri_3120(50))
-                      ->yuri_8475(yuri_1687::eBaseItemType_torch,
-                                                   yuri_1687::eMaterial_wood)
-                      ->yuri_8568(0.0f)
-                      ->yuri_8707(15 / 16.0f)
-                      ->yuri_8874(yuri_3088::SOUND_WOOD)
-                      ->yuri_8658(yuri_1720"torch_on")
-                      ->yuri_8564(IDS_TILE_TORCH)
-                      ->yuri_8941(IDS_DESC_TORCH)
-                      ->yuri_4368();
+    Tile::goldBlock = (new MetalTile(41))
+                          ->setBaseItemTypeAndMaterial(
+                              Item::eBaseItemType_block, Item::eMaterial_gold)
+                          ->setDestroyTime(3.0f)
+                          ->setExplodeable(10)
+                          ->setSoundType(Tile::SOUND_METAL)
+                          ->setIconName(L"gold_block")
+                          ->setDescriptionId(IDS_TILE_BLOCK_GOLD)
+                          ->setUseDescriptionId(IDS_DESC_BLOCK_GOLD);
+    Tile::ironBlock = (new MetalTile(42))
+                          ->setBaseItemTypeAndMaterial(
+                              Item::eBaseItemType_block, Item::eMaterial_iron)
+                          ->setDestroyTime(5.0f)
+                          ->setExplodeable(10)
+                          ->setSoundType(Tile::SOUND_METAL)
+                          ->setIconName(L"iron_block")
+                          ->setDescriptionId(IDS_TILE_BLOCK_IRON)
+                          ->setUseDescriptionId(IDS_DESC_BLOCK_IRON);
+    Tile::stoneSlab =
+        (HalfSlabTile*)(new StoneSlabTile(Tile::stoneSlab_Id, true))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_slab,
+                                         Item::eMaterial_stone)
+            ->setDestroyTime(2.0f)
+            ->setExplodeable(10)
+            ->setSoundType(Tile::SOUND_STONE)
+            ->setIconName(L"stoneSlab")
+            ->setDescriptionId(IDS_TILE_STONESLAB)
+            ->setUseDescriptionId(IDS_DESC_SLAB);
+    Tile::stoneSlabHalf =
+        (HalfSlabTile*)(new StoneSlabTile(Tile::stoneSlabHalf_Id, false))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_halfslab,
+                                         Item::eMaterial_stone)
+            ->setDestroyTime(2.0f)
+            ->setExplodeable(10)
+            ->setSoundType(Tile::SOUND_STONE)
+            ->setIconName(L"stoneSlab")
+            ->setDescriptionId(IDS_TILE_STONESLAB)
+            ->setUseDescriptionId(IDS_DESC_HALFSLAB);
+    Tile::redBrick =
+        (new Tile(45, Material::stone))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_structblock,
+                                         Item::eMaterial_brick)
+            ->setDestroyTime(2.0f)
+            ->setExplodeable(10)
+            ->setSoundType(Tile::SOUND_STONE)
+            ->setIconName(L"brick")
+            ->setDescriptionId(IDS_TILE_BRICK)
+            ->setUseDescriptionId(IDS_DESC_BRICK);
+    Tile::tnt = (new TntTile(46))
+                    ->setDestroyTime(0.0f)
+                    ->setSoundType(Tile::SOUND_GRASS)
+                    ->setIconName(L"tnt")
+                    ->setDescriptionId(IDS_TILE_TNT)
+                    ->setUseDescriptionId(IDS_DESC_TNT);
+    Tile::bookshelf =
+        (new BookshelfTile(47))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_paper,
+                                         Item::eMaterial_bookshelf)
+            ->setDestroyTime(1.5f)
+            ->setSoundType(Tile::SOUND_WOOD)
+            ->setIconName(L"bookshelf")
+            ->setDescriptionId(IDS_TILE_BOOKSHELF)
+            ->setUseDescriptionId(IDS_DESC_BOOKSHELF);
+    Tile::mossyCobblestone = (new Tile(48, Material::stone))
+                                 ->setDestroyTime(2.0f)
+                                 ->setExplodeable(10)
+                                 ->setSoundType(Tile::SOUND_STONE)
+                                 ->setIconName(L"cobblestone_mossy")
+                                 ->setDescriptionId(IDS_TILE_STONE_MOSS)
+                                 ->setUseDescriptionId(IDS_DESC_MOSS_STONE);
+    Tile::obsidian = (new ObsidianTile(49))
+                         ->setDestroyTime(50.0f)
+                         ->setExplodeable(2000)
+                         ->setSoundType(Tile::SOUND_STONE)
+                         ->setIconName(L"obsidian")
+                         ->setDescriptionId(IDS_TILE_OBSIDIAN)
+                         ->setUseDescriptionId(IDS_DESC_OBSIDIAN);
+    Tile::torch = (new TorchTile(50))
+                      ->setBaseItemTypeAndMaterial(Item::eBaseItemType_torch,
+                                                   Item::eMaterial_wood)
+                      ->setDestroyTime(0.0f)
+                      ->setLightEmission(15 / 16.0f)
+                      ->setSoundType(Tile::SOUND_WOOD)
+                      ->setIconName(L"torch_on")
+                      ->setDescriptionId(IDS_TILE_TORCH)
+                      ->setUseDescriptionId(IDS_DESC_TORCH)
+                      ->disableMipmap();
 
-    yuri_3088::fire = (yuri_821*)((new yuri_821(51))
-                                 ->yuri_8568(0.0f)
-                                 ->yuri_8707(1.0f)
-                                 ->yuri_8874(yuri_3088::SOUND_WOOD))
-                     ->yuri_8658(yuri_1720"fire")
-                     ->yuri_8564(IDS_TILE_FIRE)
-                     ->yuri_8742()
-                     ->yuri_8941(-1);
-    yuri_3088::mobSpawner = (new yuri_1960(52))
-                           ->yuri_8568(5.0f)
-                           ->yuri_8874(yuri_3088::SOUND_METAL)
-                           ->yuri_8658(yuri_1720"mob_spawner")
-                           ->yuri_8564(IDS_TILE_MOB_SPAWNER)
-                           ->yuri_8742()
-                           ->yuri_8941(IDS_DESC_MOB_SPAWNER);
-    yuri_3088::stairs_wood =
-        (new yuri_2896(53, yuri_3088::wood, 0))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_wood)
-            ->yuri_8658(yuri_1720"stairsWood")
-            ->yuri_8564(IDS_TILE_STAIRS_WOOD)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::chest = (yuri_339*)(new yuri_339(54, yuri_339::TYPE_BASIC))
-                      ->yuri_8475(yuri_1687::eBaseItemType_chest,
-                                                   yuri_1687::eMaterial_wood)
-                      ->yuri_8568(2.5f)
-                      ->yuri_8874(yuri_3088::SOUND_WOOD)
-                      ->yuri_8658(yuri_1720"chest")
-                      ->yuri_8564(IDS_TILE_CHEST)
-                      ->yuri_8426()
-                      ->yuri_8941(IDS_DESC_CHEST);
-    yuri_3088::redStoneDust = (yuri_2340*)(new yuri_2340(55))
-                             ->yuri_8568(0.0f)
-                             ->yuri_8874(yuri_3088::SOUND_NORMAL)
-                             ->yuri_8658(yuri_1720"redstone_dust")
-                             ->yuri_8564(IDS_TILE_REDSTONE_DUST)
-                             ->yuri_8742()
-                             ->yuri_8426()
-                             ->yuri_8941(IDS_DESC_REDSTONE_DUST);
-    yuri_3088::diamondOre = (new yuri_2063(56))
-                           ->yuri_8568(3.0f)
-                           ->yuri_8598(5)
-                           ->yuri_8874(yuri_3088::SOUND_STONE)
-                           ->yuri_8658(yuri_1720"diamond_ore")
-                           ->yuri_8564(IDS_TILE_ORE_DIAMOND)
-                           ->yuri_8941(IDS_DESC_ORE_DIAMOND);
-    yuri_3088::diamondBlock =
-        (new yuri_1923(57))
-            ->yuri_8475(yuri_1687::eBaseItemType_block,
-                                         yuri_1687::eMaterial_diamond)
-            ->yuri_8568(5.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(yuri_3088::SOUND_METAL)
-            ->yuri_8658(yuri_1720"diamond_block")
-            ->yuri_8564(IDS_TILE_BLOCK_DIAMOND)
-            ->yuri_8941(IDS_DESC_BLOCK_DIAMOND);
-    yuri_3088::workBench = (new yuri_3396(58))
-                          ->yuri_8475(
-                              yuri_1687::eBaseItemType_device, yuri_1687::eMaterial_wood)
-                          ->yuri_8568(2.5f)
-                          ->yuri_8874(yuri_3088::SOUND_WOOD)
-                          ->yuri_8658(yuri_1720"crafting_table")
-                          ->yuri_8564(IDS_TILE_WORKBENCH)
-                          ->yuri_8941(IDS_DESC_CRAFTINGTABLE);
-    yuri_3088::wheat = (new yuri_504(59))
-                      ->yuri_8658(yuri_1720"wheat")
-                      ->yuri_8564(IDS_TILE_CROPS)
-                      ->yuri_8742()
-                      ->yuri_8426()
-                      ->yuri_8941(IDS_DESC_CROPS)
-                      ->yuri_4368();
-    yuri_3088::farmland = (new yuri_796(60))
-                         ->yuri_8568(0.6f)
-                         ->yuri_8874(yuri_3088::SOUND_GRAVEL)
-                         ->yuri_8658(yuri_1720"farmland")
-                         ->yuri_8564(IDS_TILE_FARMLAND)
-                         ->yuri_8941(IDS_DESC_FARMLAND)
-                         ->yuri_8426();
+    Tile::fire = (FireTile*)((new FireTile(51))
+                                 ->setDestroyTime(0.0f)
+                                 ->setLightEmission(1.0f)
+                                 ->setSoundType(Tile::SOUND_WOOD))
+                     ->setIconName(L"fire")
+                     ->setDescriptionId(IDS_TILE_FIRE)
+                     ->setNotCollectStatistics()
+                     ->setUseDescriptionId(-1);
+    Tile::mobSpawner = (new MobSpawnerTile(52))
+                           ->setDestroyTime(5.0f)
+                           ->setSoundType(Tile::SOUND_METAL)
+                           ->setIconName(L"mob_spawner")
+                           ->setDescriptionId(IDS_TILE_MOB_SPAWNER)
+                           ->setNotCollectStatistics()
+                           ->setUseDescriptionId(IDS_DESC_MOB_SPAWNER);
+    Tile::stairs_wood =
+        (new StairTile(53, Tile::wood, 0))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_wood)
+            ->setIconName(L"stairsWood")
+            ->setDescriptionId(IDS_TILE_STAIRS_WOOD)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::chest = (ChestTile*)(new ChestTile(54, ChestTile::TYPE_BASIC))
+                      ->setBaseItemTypeAndMaterial(Item::eBaseItemType_chest,
+                                                   Item::eMaterial_wood)
+                      ->setDestroyTime(2.5f)
+                      ->setSoundType(Tile::SOUND_WOOD)
+                      ->setIconName(L"chest")
+                      ->setDescriptionId(IDS_TILE_CHEST)
+                      ->sendTileData()
+                      ->setUseDescriptionId(IDS_DESC_CHEST);
+    Tile::redStoneDust = (RedStoneDustTile*)(new RedStoneDustTile(55))
+                             ->setDestroyTime(0.0f)
+                             ->setSoundType(Tile::SOUND_NORMAL)
+                             ->setIconName(L"redstone_dust")
+                             ->setDescriptionId(IDS_TILE_REDSTONE_DUST)
+                             ->setNotCollectStatistics()
+                             ->sendTileData()
+                             ->setUseDescriptionId(IDS_DESC_REDSTONE_DUST);
+    Tile::diamondOre = (new OreTile(56))
+                           ->setDestroyTime(3.0f)
+                           ->setExplodeable(5)
+                           ->setSoundType(Tile::SOUND_STONE)
+                           ->setIconName(L"diamond_ore")
+                           ->setDescriptionId(IDS_TILE_ORE_DIAMOND)
+                           ->setUseDescriptionId(IDS_DESC_ORE_DIAMOND);
+    Tile::diamondBlock =
+        (new MetalTile(57))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_block,
+                                         Item::eMaterial_diamond)
+            ->setDestroyTime(5.0f)
+            ->setExplodeable(10)
+            ->setSoundType(Tile::SOUND_METAL)
+            ->setIconName(L"diamond_block")
+            ->setDescriptionId(IDS_TILE_BLOCK_DIAMOND)
+            ->setUseDescriptionId(IDS_DESC_BLOCK_DIAMOND);
+    Tile::workBench = (new WorkbenchTile(58))
+                          ->setBaseItemTypeAndMaterial(
+                              Item::eBaseItemType_device, Item::eMaterial_wood)
+                          ->setDestroyTime(2.5f)
+                          ->setSoundType(Tile::SOUND_WOOD)
+                          ->setIconName(L"crafting_table")
+                          ->setDescriptionId(IDS_TILE_WORKBENCH)
+                          ->setUseDescriptionId(IDS_DESC_CRAFTINGTABLE);
+    Tile::wheat = (new CropTile(59))
+                      ->setIconName(L"wheat")
+                      ->setDescriptionId(IDS_TILE_CROPS)
+                      ->setNotCollectStatistics()
+                      ->sendTileData()
+                      ->setUseDescriptionId(IDS_DESC_CROPS)
+                      ->disableMipmap();
+    Tile::farmland = (new FarmTile(60))
+                         ->setDestroyTime(0.6f)
+                         ->setSoundType(Tile::SOUND_GRAVEL)
+                         ->setIconName(L"farmland")
+                         ->setDescriptionId(IDS_TILE_FARMLAND)
+                         ->setUseDescriptionId(IDS_DESC_FARMLAND)
+                         ->sendTileData();
 
-    yuri_3088::furnace = (new yuri_887(61, false))
-                        ->yuri_8475(yuri_1687::eBaseItemType_device,
-                                                     yuri_1687::eMaterial_stone)
-                        ->yuri_8568(3.5f)
-                        ->yuri_8874(yuri_3088::SOUND_STONE)
-                        ->yuri_8658(yuri_1720"furnace")
-                        ->yuri_8564(IDS_TILE_FURNACE)
-                        ->yuri_8426()
-                        ->yuri_8941(IDS_DESC_FURNACE);
-    yuri_3088::furnace_lit = (new yuri_887(62, true))
-                            ->yuri_8568(3.5f)
-                            ->yuri_8874(yuri_3088::SOUND_STONE)
-                            ->yuri_8707(14 / 16.0f)
-                            ->yuri_8658(yuri_1720"furnace")
-                            ->yuri_8564(IDS_TILE_FURNACE)
-                            ->yuri_8426()
-                            ->yuri_8941(IDS_DESC_FURNACE);
-    yuri_3088::sign = (new yuri_2816(63, eTYPE_SIGNTILEENTITY, true))
-                     ->yuri_8568(1.0f)
-                     ->yuri_8874(yuri_3088::SOUND_WOOD)
-                     ->yuri_8658(yuri_1720"sign")
-                     ->yuri_8564(IDS_TILE_SIGN)
-                     ->yuri_8742()
-                     ->yuri_8426()
-                     ->yuri_8941(IDS_DESC_SIGN);
-    yuri_3088::door_wood = (new yuri_647(64, yuri_1886::wood))
-                          ->yuri_8568(3.0f)
-                          ->yuri_8874(yuri_3088::SOUND_WOOD)
-                          ->yuri_8658(yuri_1720"door_wood")
-                          ->yuri_8564(IDS_TILE_DOOR_WOOD)
-                          ->yuri_8742()
-                          ->yuri_8426()
-                          ->yuri_8941(IDS_DESC_DOOR_WOOD);
-    yuri_3088::ladder = (new yuri_1726(65))
-                       ->yuri_8568(0.4f)
-                       ->yuri_8874(yuri_3088::SOUND_LADDER)
-                       ->yuri_8658(yuri_1720"ladder")
-                       ->yuri_8564(IDS_TILE_LADDER)
-                       ->yuri_8426()
-                       ->yuri_8941(IDS_DESC_LADDER)
-                       ->yuri_4368();
-    yuri_3088::rail = (new yuri_2299(66))
-                     ->yuri_8475(yuri_1687::eBaseItemType_rail,
-                                                  yuri_1687::eMaterial_iron)
-                     ->yuri_8568(0.7f)
-                     ->yuri_8874(yuri_3088::SOUND_METAL)
-                     ->yuri_8658(yuri_1720"rail_normal")
-                     ->yuri_8564(IDS_TILE_RAIL)
-                     ->yuri_8426()
-                     ->yuri_8941(IDS_DESC_RAIL)
-                     ->yuri_4368();
-    yuri_3088::stairs_stone =
-        (new yuri_2896(67, yuri_3088::cobblestone, 0))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_stone)
-            ->yuri_8658(yuri_1720"stairsStone")
-            ->yuri_8564(IDS_TILE_STAIRS_STONE)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::wallSign = (new yuri_2816(68, eTYPE_SIGNTILEENTITY, false))
-                         ->yuri_8568(1.0f)
-                         ->yuri_8874(yuri_3088::SOUND_WOOD)
-                         ->yuri_8658(yuri_1720"sign")
-                         ->yuri_8564(IDS_TILE_SIGN)
-                         ->yuri_8742()
-                         ->yuri_8426()
-                         ->yuri_8941(IDS_DESC_SIGN);
-    yuri_3088::lever = (new yuri_1776(69))
-                      ->yuri_8475(yuri_1687::eBaseItemType_lever,
-                                                   yuri_1687::eMaterial_wood)
-                      ->yuri_8568(0.5f)
-                      ->yuri_8874(yuri_3088::SOUND_WOOD)
-                      ->yuri_8658(yuri_1720"lever")
-                      ->yuri_8564(IDS_TILE_LEVER)
-                      ->yuri_8426()
-                      ->yuri_8941(IDS_DESC_LEVER);
-    yuri_3088::pressurePlate_stone =
-        (yuri_3088*)(new yuri_2172(70, yuri_1720"stone", yuri_1886::stone,
-                                      yuri_2172::mobs))
-            ->yuri_8475(yuri_1687::eBaseItemType_pressureplate,
-                                         yuri_1687::eMaterial_stone)
-            ->yuri_8568(0.5f)
-            ->yuri_8874(yuri_3088::SOUND_STONE)
-            ->yuri_8564(IDS_TILE_PRESSURE_PLATE)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_PRESSUREPLATE);
+    Tile::furnace = (new FurnaceTile(61, false))
+                        ->setBaseItemTypeAndMaterial(Item::eBaseItemType_device,
+                                                     Item::eMaterial_stone)
+                        ->setDestroyTime(3.5f)
+                        ->setSoundType(Tile::SOUND_STONE)
+                        ->setIconName(L"furnace")
+                        ->setDescriptionId(IDS_TILE_FURNACE)
+                        ->sendTileData()
+                        ->setUseDescriptionId(IDS_DESC_FURNACE);
+    Tile::furnace_lit = (new FurnaceTile(62, true))
+                            ->setDestroyTime(3.5f)
+                            ->setSoundType(Tile::SOUND_STONE)
+                            ->setLightEmission(14 / 16.0f)
+                            ->setIconName(L"furnace")
+                            ->setDescriptionId(IDS_TILE_FURNACE)
+                            ->sendTileData()
+                            ->setUseDescriptionId(IDS_DESC_FURNACE);
+    Tile::sign = (new SignTile(63, eTYPE_SIGNTILEENTITY, true))
+                     ->setDestroyTime(1.0f)
+                     ->setSoundType(Tile::SOUND_WOOD)
+                     ->setIconName(L"sign")
+                     ->setDescriptionId(IDS_TILE_SIGN)
+                     ->setNotCollectStatistics()
+                     ->sendTileData()
+                     ->setUseDescriptionId(IDS_DESC_SIGN);
+    Tile::door_wood = (new DoorTile(64, Material::wood))
+                          ->setDestroyTime(3.0f)
+                          ->setSoundType(Tile::SOUND_WOOD)
+                          ->setIconName(L"door_wood")
+                          ->setDescriptionId(IDS_TILE_DOOR_WOOD)
+                          ->setNotCollectStatistics()
+                          ->sendTileData()
+                          ->setUseDescriptionId(IDS_DESC_DOOR_WOOD);
+    Tile::ladder = (new LadderTile(65))
+                       ->setDestroyTime(0.4f)
+                       ->setSoundType(Tile::SOUND_LADDER)
+                       ->setIconName(L"ladder")
+                       ->setDescriptionId(IDS_TILE_LADDER)
+                       ->sendTileData()
+                       ->setUseDescriptionId(IDS_DESC_LADDER)
+                       ->disableMipmap();
+    Tile::rail = (new RailTile(66))
+                     ->setBaseItemTypeAndMaterial(Item::eBaseItemType_rail,
+                                                  Item::eMaterial_iron)
+                     ->setDestroyTime(0.7f)
+                     ->setSoundType(Tile::SOUND_METAL)
+                     ->setIconName(L"rail_normal")
+                     ->setDescriptionId(IDS_TILE_RAIL)
+                     ->sendTileData()
+                     ->setUseDescriptionId(IDS_DESC_RAIL)
+                     ->disableMipmap();
+    Tile::stairs_stone =
+        (new StairTile(67, Tile::cobblestone, 0))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_stone)
+            ->setIconName(L"stairsStone")
+            ->setDescriptionId(IDS_TILE_STAIRS_STONE)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::wallSign = (new SignTile(68, eTYPE_SIGNTILEENTITY, false))
+                         ->setDestroyTime(1.0f)
+                         ->setSoundType(Tile::SOUND_WOOD)
+                         ->setIconName(L"sign")
+                         ->setDescriptionId(IDS_TILE_SIGN)
+                         ->setNotCollectStatistics()
+                         ->sendTileData()
+                         ->setUseDescriptionId(IDS_DESC_SIGN);
+    Tile::lever = (new LeverTile(69))
+                      ->setBaseItemTypeAndMaterial(Item::eBaseItemType_lever,
+                                                   Item::eMaterial_wood)
+                      ->setDestroyTime(0.5f)
+                      ->setSoundType(Tile::SOUND_WOOD)
+                      ->setIconName(L"lever")
+                      ->setDescriptionId(IDS_TILE_LEVER)
+                      ->sendTileData()
+                      ->setUseDescriptionId(IDS_DESC_LEVER);
+    Tile::pressurePlate_stone =
+        (Tile*)(new PressurePlateTile(70, L"stone", Material::stone,
+                                      PressurePlateTile::mobs))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_pressureplate,
+                                         Item::eMaterial_stone)
+            ->setDestroyTime(0.5f)
+            ->setSoundType(Tile::SOUND_STONE)
+            ->setDescriptionId(IDS_TILE_PRESSURE_PLATE)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_PRESSUREPLATE);
 
-    yuri_3088::door_iron = (new yuri_647(71, yuri_1886::metal))
-                          ->yuri_8568(5.0f)
-                          ->yuri_8874(yuri_3088::SOUND_METAL)
-                          ->yuri_8658(yuri_1720"door_iron")
-                          ->yuri_8564(IDS_TILE_DOOR_IRON)
-                          ->yuri_8742()
-                          ->yuri_8426()
-                          ->yuri_8941(IDS_DESC_DOOR_IRON);
-    yuri_3088::pressurePlate_wood =
-        (new yuri_2172(72, yuri_1720"planks_oak", yuri_1886::wood,
-                               yuri_2172::everything))
-            ->yuri_8475(yuri_1687::eBaseItemType_pressureplate,
-                                         yuri_1687::eMaterial_wood)
-            ->yuri_8568(0.5f)
-            ->yuri_8874(yuri_3088::SOUND_WOOD)
-            ->yuri_8564(IDS_TILE_PRESSURE_PLATE)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_PRESSUREPLATE);
-    yuri_3088::redStoneOre = (new yuri_2342(73, false))
-                            ->yuri_8568(3.0f)
-                            ->yuri_8598(5)
-                            ->yuri_8874(yuri_3088::SOUND_STONE)
-                            ->yuri_8658(yuri_1720"redstone_ore")
-                            ->yuri_8564(IDS_TILE_ORE_REDSTONE)
-                            ->yuri_8426()
-                            ->yuri_8941(IDS_DESC_ORE_REDSTONE);
-    yuri_3088::redStoneOre_lit = (new yuri_2342(74, true))
-                                ->yuri_8707(10 / 16.0f)
-                                ->yuri_8568(3.0f)
-                                ->yuri_8598(5)
-                                ->yuri_8874(yuri_3088::SOUND_STONE)
-                                ->yuri_8658(yuri_1720"redstone_ore")
-                                ->yuri_8564(IDS_TILE_ORE_REDSTONE)
-                                ->yuri_8426()
-                                ->yuri_8941(IDS_DESC_ORE_REDSTONE);
-    yuri_3088::redstoneTorch_off = (new yuri_2030(75, false))
-                                  ->yuri_8568(0.0f)
-                                  ->yuri_8874(yuri_3088::SOUND_WOOD)
-                                  ->yuri_8658(yuri_1720"redstone_torch_off")
-                                  ->yuri_8564(IDS_TILE_NOT_GATE)
-                                  ->yuri_8426()
-                                  ->yuri_8941(IDS_DESC_REDSTONETORCH)
-                                  ->yuri_4368();
-    yuri_3088::redstoneTorch_on = (new yuri_2030(76, true))
-                                 ->yuri_8568(0.0f)
-                                 ->yuri_8707(8 / 16.0f)
-                                 ->yuri_8874(yuri_3088::SOUND_WOOD)
-                                 ->yuri_8658(yuri_1720"redstone_torch_on")
-                                 ->yuri_8564(IDS_TILE_NOT_GATE)
-                                 ->yuri_8426()
-                                 ->yuri_8941(IDS_DESC_REDSTONETORCH)
-                                 ->yuri_4368();
-    yuri_3088::button = (new yuri_2962(77))
-                       ->yuri_8475(yuri_1687::eBaseItemType_button,
-                                                    yuri_1687::eMaterial_stone)
-                       ->yuri_8568(0.5f)
-                       ->yuri_8874(yuri_3088::SOUND_STONE)
-                       ->yuri_8658(yuri_1720"button")
-                       ->yuri_8564(IDS_TILE_BUTTON)
-                       ->yuri_8426()
-                       ->yuri_8941(IDS_DESC_BUTTON);
-    yuri_3088::topSnow =
-        (new yuri_3119(78))
-            ->yuri_8475(yuri_1687::eBaseItemType_structblock,
-                                         yuri_1687::eMaterial_snow)
-            ->yuri_8568(0.1f)
-            ->yuri_8874(yuri_3088::SOUND_SNOW)
-            ->yuri_8658(yuri_1720"snow")
-            ->yuri_8564(IDS_TILE_SNOW)
-            ->yuri_8941(IDS_DESC_TOP_SNOW)
-            ->yuri_8426()
-            ->yuri_8706(0);
-    yuri_3088::ice = (new yuri_1345(79))
-                    ->yuri_8568(0.5f)
-                    ->yuri_8706(3)
-                    ->yuri_8874(yuri_3088::SOUND_GLASS)
-                    ->yuri_8658(yuri_1720"ice")
-                    ->yuri_8564(IDS_TILE_ICE)
-                    ->yuri_8941(IDS_DESC_ICE);
-    yuri_3088::snow = (new yuri_2862(80))
-                     ->yuri_8475(
-                         yuri_1687::eBaseItemType_structblock, yuri_1687::eMaterial_snow)
-                     ->yuri_8568(0.2f)
-                     ->yuri_8874(yuri_3088::SOUND_CLOTH)
-                     ->yuri_8658(yuri_1720"snow")
-                     ->yuri_8564(IDS_TILE_SNOW)
-                     ->yuri_8941(IDS_DESC_SNOW);
+    Tile::door_iron = (new DoorTile(71, Material::metal))
+                          ->setDestroyTime(5.0f)
+                          ->setSoundType(Tile::SOUND_METAL)
+                          ->setIconName(L"door_iron")
+                          ->setDescriptionId(IDS_TILE_DOOR_IRON)
+                          ->setNotCollectStatistics()
+                          ->sendTileData()
+                          ->setUseDescriptionId(IDS_DESC_DOOR_IRON);
+    Tile::pressurePlate_wood =
+        (new PressurePlateTile(72, L"planks_oak", Material::wood,
+                               PressurePlateTile::everything))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_pressureplate,
+                                         Item::eMaterial_wood)
+            ->setDestroyTime(0.5f)
+            ->setSoundType(Tile::SOUND_WOOD)
+            ->setDescriptionId(IDS_TILE_PRESSURE_PLATE)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_PRESSUREPLATE);
+    Tile::redStoneOre = (new RedStoneOreTile(73, false))
+                            ->setDestroyTime(3.0f)
+                            ->setExplodeable(5)
+                            ->setSoundType(Tile::SOUND_STONE)
+                            ->setIconName(L"redstone_ore")
+                            ->setDescriptionId(IDS_TILE_ORE_REDSTONE)
+                            ->sendTileData()
+                            ->setUseDescriptionId(IDS_DESC_ORE_REDSTONE);
+    Tile::redStoneOre_lit = (new RedStoneOreTile(74, true))
+                                ->setLightEmission(10 / 16.0f)
+                                ->setDestroyTime(3.0f)
+                                ->setExplodeable(5)
+                                ->setSoundType(Tile::SOUND_STONE)
+                                ->setIconName(L"redstone_ore")
+                                ->setDescriptionId(IDS_TILE_ORE_REDSTONE)
+                                ->sendTileData()
+                                ->setUseDescriptionId(IDS_DESC_ORE_REDSTONE);
+    Tile::redstoneTorch_off = (new NotGateTile(75, false))
+                                  ->setDestroyTime(0.0f)
+                                  ->setSoundType(Tile::SOUND_WOOD)
+                                  ->setIconName(L"redstone_torch_off")
+                                  ->setDescriptionId(IDS_TILE_NOT_GATE)
+                                  ->sendTileData()
+                                  ->setUseDescriptionId(IDS_DESC_REDSTONETORCH)
+                                  ->disableMipmap();
+    Tile::redstoneTorch_on = (new NotGateTile(76, true))
+                                 ->setDestroyTime(0.0f)
+                                 ->setLightEmission(8 / 16.0f)
+                                 ->setSoundType(Tile::SOUND_WOOD)
+                                 ->setIconName(L"redstone_torch_on")
+                                 ->setDescriptionId(IDS_TILE_NOT_GATE)
+                                 ->sendTileData()
+                                 ->setUseDescriptionId(IDS_DESC_REDSTONETORCH)
+                                 ->disableMipmap();
+    Tile::button = (new StoneButtonTile(77))
+                       ->setBaseItemTypeAndMaterial(Item::eBaseItemType_button,
+                                                    Item::eMaterial_stone)
+                       ->setDestroyTime(0.5f)
+                       ->setSoundType(Tile::SOUND_STONE)
+                       ->setIconName(L"button")
+                       ->setDescriptionId(IDS_TILE_BUTTON)
+                       ->sendTileData()
+                       ->setUseDescriptionId(IDS_DESC_BUTTON);
+    Tile::topSnow =
+        (new TopSnowTile(78))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_structblock,
+                                         Item::eMaterial_snow)
+            ->setDestroyTime(0.1f)
+            ->setSoundType(Tile::SOUND_SNOW)
+            ->setIconName(L"snow")
+            ->setDescriptionId(IDS_TILE_SNOW)
+            ->setUseDescriptionId(IDS_DESC_TOP_SNOW)
+            ->sendTileData()
+            ->setLightBlock(0);
+    Tile::ice = (new IceTile(79))
+                    ->setDestroyTime(0.5f)
+                    ->setLightBlock(3)
+                    ->setSoundType(Tile::SOUND_GLASS)
+                    ->setIconName(L"ice")
+                    ->setDescriptionId(IDS_TILE_ICE)
+                    ->setUseDescriptionId(IDS_DESC_ICE);
+    Tile::snow = (new SnowTile(80))
+                     ->setBaseItemTypeAndMaterial(
+                         Item::eBaseItemType_structblock, Item::eMaterial_snow)
+                     ->setDestroyTime(0.2f)
+                     ->setSoundType(Tile::SOUND_CLOTH)
+                     ->setIconName(L"snow")
+                     ->setDescriptionId(IDS_TILE_SNOW)
+                     ->setUseDescriptionId(IDS_DESC_SNOW);
 
-    yuri_3088::cactus = (new yuri_288(81))
-                       ->yuri_8568(0.4f)
-                       ->yuri_8874(yuri_3088::SOUND_CLOTH)
-                       ->yuri_8658(yuri_1720"cactus")
-                       ->yuri_8564(IDS_TILE_CACTUS)
-                       ->yuri_8941(IDS_DESC_CACTUS)
-                       ->yuri_4368();
-    yuri_3088::clay = (new yuri_354(82))
-                     ->yuri_8475(
-                         yuri_1687::eBaseItemType_structblock, yuri_1687::eMaterial_clay)
-                     ->yuri_8568(0.6f)
-                     ->yuri_8874(yuri_3088::SOUND_GRAVEL)
-                     ->yuri_8658(yuri_1720"clay")
-                     ->yuri_8564(IDS_TILE_CLAY)
-                     ->yuri_8941(IDS_DESC_CLAY_TILE);
-    yuri_3088::reeds = (new yuri_2345(83))
-                      ->yuri_8568(0.0f)
-                      ->yuri_8874(yuri_3088::SOUND_GRASS)
-                      ->yuri_8658(yuri_1720"reeds")
-                      ->yuri_8564(IDS_TILE_REEDS)
-                      ->yuri_8742()
-                      ->yuri_8941(IDS_DESC_REEDS)
-                      ->yuri_4368();
-    yuri_3088::jukebox = (new yuri_1704(84))
-                        ->yuri_8568(2.0f)
-                        ->yuri_8598(10)
-                        ->yuri_8874(yuri_3088::SOUND_STONE)
-                        ->yuri_8658(yuri_1720"jukebox")
-                        ->yuri_8564(IDS_TILE_JUKEBOX)
-                        ->yuri_8426()
-                        ->yuri_8941(IDS_DESC_JUKEBOX);
-    yuri_3088::fence = (new yuri_803(85, yuri_1720"planks_oak", yuri_1886::wood))
-                      ->yuri_8475(yuri_1687::eBaseItemType_fence,
-                                                   yuri_1687::eMaterial_wood)
-                      ->yuri_8568(2.0f)
-                      ->yuri_8598(5)
-                      ->yuri_8874(yuri_3088::SOUND_WOOD)
-                      ->yuri_8564(IDS_TILE_FENCE)
-                      ->yuri_8941(IDS_DESC_FENCE);
-    yuri_3088::pumpkin = (new yuri_2187(86, false))
-                        ->yuri_8568(1.0f)
-                        ->yuri_8874(yuri_3088::SOUND_WOOD)
-                        ->yuri_8658(yuri_1720"pumpkin")
-                        ->yuri_8564(IDS_TILE_PUMPKIN)
-                        ->yuri_8426()
-                        ->yuri_8941(IDS_DESC_PUMPKIN);
-    yuri_3088::netherRack = (new yuri_2021(87))
-                           ->yuri_8568(0.4f)
-                           ->yuri_8874(yuri_3088::SOUND_STONE)
-                           ->yuri_8658(yuri_1720"netherrack")
-                           ->yuri_8564(IDS_TILE_HELL_ROCK)
-                           ->yuri_8941(IDS_DESC_HELL_ROCK);
-    yuri_3088::soulsand = (new yuri_2872(88))
-                         ->yuri_8568(0.5f)
-                         ->yuri_8874(yuri_3088::SOUND_SAND)
-                         ->yuri_8658(yuri_1720"soul_sand")
-                         ->yuri_8564(IDS_TILE_HELL_SAND)
-                         ->yuri_8941(IDS_DESC_HELL_SAND);
-    yuri_3088::glowstone =
-        (new yuri_1216(89, yuri_1886::glass))
-            ->yuri_8475(yuri_1687::eBaseItemType_torch,
-                                         yuri_1687::eMaterial_glowstone)
-            ->yuri_8568(0.3f)
-            ->yuri_8874(yuri_3088::SOUND_GLASS)
-            ->yuri_8707(1.0f)
-            ->yuri_8658(yuri_1720"glowstone")
-            ->yuri_8564(IDS_TILE_LIGHT_GEM)
-            ->yuri_8941(IDS_DESC_GLOWSTONE);
-    yuri_3088::portalTile = (yuri_2152*)((new yuri_2152(90))
-                                         ->yuri_8568(-1)
-                                         ->yuri_8874(yuri_3088::SOUND_GLASS)
-                                         ->yuri_8707(0.75f))
-                           ->yuri_8658(yuri_1720"portal")
-                           ->yuri_8564(IDS_TILE_PORTAL)
-                           ->yuri_8941(IDS_DESC_PORTAL);
+    Tile::cactus = (new CactusTile(81))
+                       ->setDestroyTime(0.4f)
+                       ->setSoundType(Tile::SOUND_CLOTH)
+                       ->setIconName(L"cactus")
+                       ->setDescriptionId(IDS_TILE_CACTUS)
+                       ->setUseDescriptionId(IDS_DESC_CACTUS)
+                       ->disableMipmap();
+    Tile::clay = (new ClayTile(82))
+                     ->setBaseItemTypeAndMaterial(
+                         Item::eBaseItemType_structblock, Item::eMaterial_clay)
+                     ->setDestroyTime(0.6f)
+                     ->setSoundType(Tile::SOUND_GRAVEL)
+                     ->setIconName(L"clay")
+                     ->setDescriptionId(IDS_TILE_CLAY)
+                     ->setUseDescriptionId(IDS_DESC_CLAY_TILE);
+    Tile::reeds = (new ReedTile(83))
+                      ->setDestroyTime(0.0f)
+                      ->setSoundType(Tile::SOUND_GRASS)
+                      ->setIconName(L"reeds")
+                      ->setDescriptionId(IDS_TILE_REEDS)
+                      ->setNotCollectStatistics()
+                      ->setUseDescriptionId(IDS_DESC_REEDS)
+                      ->disableMipmap();
+    Tile::jukebox = (new JukeboxTile(84))
+                        ->setDestroyTime(2.0f)
+                        ->setExplodeable(10)
+                        ->setSoundType(Tile::SOUND_STONE)
+                        ->setIconName(L"jukebox")
+                        ->setDescriptionId(IDS_TILE_JUKEBOX)
+                        ->sendTileData()
+                        ->setUseDescriptionId(IDS_DESC_JUKEBOX);
+    Tile::fence = (new FenceTile(85, L"planks_oak", Material::wood))
+                      ->setBaseItemTypeAndMaterial(Item::eBaseItemType_fence,
+                                                   Item::eMaterial_wood)
+                      ->setDestroyTime(2.0f)
+                      ->setExplodeable(5)
+                      ->setSoundType(Tile::SOUND_WOOD)
+                      ->setDescriptionId(IDS_TILE_FENCE)
+                      ->setUseDescriptionId(IDS_DESC_FENCE);
+    Tile::pumpkin = (new PumpkinTile(86, false))
+                        ->setDestroyTime(1.0f)
+                        ->setSoundType(Tile::SOUND_WOOD)
+                        ->setIconName(L"pumpkin")
+                        ->setDescriptionId(IDS_TILE_PUMPKIN)
+                        ->sendTileData()
+                        ->setUseDescriptionId(IDS_DESC_PUMPKIN);
+    Tile::netherRack = (new NetherrackTile(87))
+                           ->setDestroyTime(0.4f)
+                           ->setSoundType(Tile::SOUND_STONE)
+                           ->setIconName(L"netherrack")
+                           ->setDescriptionId(IDS_TILE_HELL_ROCK)
+                           ->setUseDescriptionId(IDS_DESC_HELL_ROCK);
+    Tile::soulsand = (new SoulSandTile(88))
+                         ->setDestroyTime(0.5f)
+                         ->setSoundType(Tile::SOUND_SAND)
+                         ->setIconName(L"soul_sand")
+                         ->setDescriptionId(IDS_TILE_HELL_SAND)
+                         ->setUseDescriptionId(IDS_DESC_HELL_SAND);
+    Tile::glowstone =
+        (new Glowstonetile(89, Material::glass))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_torch,
+                                         Item::eMaterial_glowstone)
+            ->setDestroyTime(0.3f)
+            ->setSoundType(Tile::SOUND_GLASS)
+            ->setLightEmission(1.0f)
+            ->setIconName(L"glowstone")
+            ->setDescriptionId(IDS_TILE_LIGHT_GEM)
+            ->setUseDescriptionId(IDS_DESC_GLOWSTONE);
+    Tile::portalTile = (PortalTile*)((new PortalTile(90))
+                                         ->setDestroyTime(-1)
+                                         ->setSoundType(Tile::SOUND_GLASS)
+                                         ->setLightEmission(0.75f))
+                           ->setIconName(L"portal")
+                           ->setDescriptionId(IDS_TILE_PORTAL)
+                           ->setUseDescriptionId(IDS_DESC_PORTAL);
 
-    yuri_3088::litPumpkin =
-        (new yuri_2187(91, true))
-            ->yuri_8475(yuri_1687::eBaseItemType_torch,
-                                         yuri_1687::eMaterial_pumpkin)
-            ->yuri_8568(1.0f)
-            ->yuri_8874(yuri_3088::SOUND_WOOD)
-            ->yuri_8707(1.0f)
-            ->yuri_8658(yuri_1720"pumpkin")
-            ->yuri_8564(IDS_TILE_LIT_PUMPKIN)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_JACKOLANTERN);
-    yuri_3088::cake = (new yuri_289(92))
-                     ->yuri_8568(0.5f)
-                     ->yuri_8874(yuri_3088::SOUND_CLOTH)
-                     ->yuri_8658(yuri_1720"cake")
-                     ->yuri_8564(IDS_TILE_CAKE)
-                     ->yuri_8742()
-                     ->yuri_8426()
-                     ->yuri_8941(IDS_DESC_CAKE);
-    yuri_3088::diode_off = (yuri_2393*)(new yuri_2393(93, false))
-                          ->yuri_8568(0.0f)
-                          ->yuri_8874(yuri_3088::SOUND_WOOD)
-                          ->yuri_8658(yuri_1720"repeater_off")
-                          ->yuri_8564(IDS_ITEM_DIODE)
-                          ->yuri_8742()
-                          ->yuri_8426()
-                          ->yuri_8941(IDS_DESC_REDSTONEREPEATER)
-                          ->yuri_4368();
-    yuri_3088::diode_on = (yuri_2393*)(new yuri_2393(94, true))
-                         ->yuri_8568(0.0f)
-                         ->yuri_8707(10 / 16.0f)
-                         ->yuri_8874(yuri_3088::SOUND_WOOD)
-                         ->yuri_8658(yuri_1720"repeater_on")
-                         ->yuri_8564(IDS_ITEM_DIODE)
-                         ->yuri_8742()
-                         ->yuri_8426()
-                         ->yuri_8941(IDS_DESC_REDSTONEREPEATER)
-                         ->yuri_4368();
-    yuri_3088::stained_glass =
-        (new yuri_2894(95, yuri_1886::glass))
-            ->yuri_8475(yuri_1687::eBaseItemType_glass,
-                                         yuri_1687::eMaterial_glass)
-            ->yuri_8568(0.3f)
-            ->yuri_8874(SOUND_GLASS)
-            ->yuri_8658(yuri_1720"glass")
-            ->yuri_8564(IDS_TILE_STAINED_GLASS)
-            ->yuri_8941(IDS_DESC_STAINED_GLASS);
-    yuri_3088::trapdoor = (new yuri_3132(96, yuri_1886::wood))
-                         ->yuri_8475(yuri_1687::eBaseItemType_door,
-                                                      yuri_1687::eMaterial_trap)
-                         ->yuri_8568(3.0f)
-                         ->yuri_8874(yuri_3088::SOUND_WOOD)
-                         ->yuri_8658(yuri_1720"trapdoor")
-                         ->yuri_8564(IDS_TILE_TRAPDOOR)
-                         ->yuri_8742()
-                         ->yuri_8426()
-                         ->yuri_8941(IDS_DESC_TRAPDOOR);
-    yuri_3088::monsterStoneEgg =
-        (new yuri_2963(97))
-            ->yuri_8568(0.75f)
-            ->yuri_8658(yuri_1720"monsterStoneEgg")
-            ->yuri_8564(IDS_TILE_STONE_SILVERFISH)
-            ->yuri_8941(IDS_DESC_STONE_SILVERFISH);
-    yuri_3088::stoneBrick =
-        (new yuri_2854(98))
-            ->yuri_8475(yuri_1687::eBaseItemType_structblock,
-                                         yuri_1687::eMaterial_stoneSmooth)
-            ->yuri_8568(1.5f)
-            ->yuri_8598(10)
-            ->yuri_8874(SOUND_STONE)
-            ->yuri_8658(yuri_1720"stonebrick")
-            ->yuri_8564(IDS_TILE_STONE_BRICK_SMOOTH)
-            ->yuri_8941(IDS_DESC_STONE_BRICK_SMOOTH);
-    yuri_3088::hugeMushroom_brown =
-        (new yuri_1303(99, yuri_1886::wood,
-                              yuri_1303::MUSHROOM_TYPE_BROWN))
-            ->yuri_8568(0.2f)
-            ->yuri_8874(SOUND_WOOD)
-            ->yuri_8658(yuri_1720"mushroom_block")
-            ->yuri_8564(IDS_TILE_HUGE_MUSHROOM_1)
-            ->yuri_8941(IDS_DESC_MUSHROOM)
-            ->yuri_8426();
-    yuri_3088::hugeMushroom_red =
-        (new yuri_1303(100, yuri_1886::wood,
-                              yuri_1303::MUSHROOM_TYPE_RED))
-            ->yuri_8568(0.2f)
-            ->yuri_8874(SOUND_WOOD)
-            ->yuri_8658(yuri_1720"mushroom_block")
-            ->yuri_8564(IDS_TILE_HUGE_MUSHROOM_2)
-            ->yuri_8941(IDS_DESC_MUSHROOM)
-            ->yuri_8426();
+    Tile::litPumpkin =
+        (new PumpkinTile(91, true))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_torch,
+                                         Item::eMaterial_pumpkin)
+            ->setDestroyTime(1.0f)
+            ->setSoundType(Tile::SOUND_WOOD)
+            ->setLightEmission(1.0f)
+            ->setIconName(L"pumpkin")
+            ->setDescriptionId(IDS_TILE_LIT_PUMPKIN)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_JACKOLANTERN);
+    Tile::cake = (new CakeTile(92))
+                     ->setDestroyTime(0.5f)
+                     ->setSoundType(Tile::SOUND_CLOTH)
+                     ->setIconName(L"cake")
+                     ->setDescriptionId(IDS_TILE_CAKE)
+                     ->setNotCollectStatistics()
+                     ->sendTileData()
+                     ->setUseDescriptionId(IDS_DESC_CAKE);
+    Tile::diode_off = (RepeaterTile*)(new RepeaterTile(93, false))
+                          ->setDestroyTime(0.0f)
+                          ->setSoundType(Tile::SOUND_WOOD)
+                          ->setIconName(L"repeater_off")
+                          ->setDescriptionId(IDS_ITEM_DIODE)
+                          ->setNotCollectStatistics()
+                          ->sendTileData()
+                          ->setUseDescriptionId(IDS_DESC_REDSTONEREPEATER)
+                          ->disableMipmap();
+    Tile::diode_on = (RepeaterTile*)(new RepeaterTile(94, true))
+                         ->setDestroyTime(0.0f)
+                         ->setLightEmission(10 / 16.0f)
+                         ->setSoundType(Tile::SOUND_WOOD)
+                         ->setIconName(L"repeater_on")
+                         ->setDescriptionId(IDS_ITEM_DIODE)
+                         ->setNotCollectStatistics()
+                         ->sendTileData()
+                         ->setUseDescriptionId(IDS_DESC_REDSTONEREPEATER)
+                         ->disableMipmap();
+    Tile::stained_glass =
+        (new StainedGlassBlock(95, Material::glass))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_glass,
+                                         Item::eMaterial_glass)
+            ->setDestroyTime(0.3f)
+            ->setSoundType(SOUND_GLASS)
+            ->setIconName(L"glass")
+            ->setDescriptionId(IDS_TILE_STAINED_GLASS)
+            ->setUseDescriptionId(IDS_DESC_STAINED_GLASS);
+    Tile::trapdoor = (new TrapDoorTile(96, Material::wood))
+                         ->setBaseItemTypeAndMaterial(Item::eBaseItemType_door,
+                                                      Item::eMaterial_trap)
+                         ->setDestroyTime(3.0f)
+                         ->setSoundType(Tile::SOUND_WOOD)
+                         ->setIconName(L"trapdoor")
+                         ->setDescriptionId(IDS_TILE_TRAPDOOR)
+                         ->setNotCollectStatistics()
+                         ->sendTileData()
+                         ->setUseDescriptionId(IDS_DESC_TRAPDOOR);
+    Tile::monsterStoneEgg =
+        (new StoneMonsterTile(97))
+            ->setDestroyTime(0.75f)
+            ->setIconName(L"monsterStoneEgg")
+            ->setDescriptionId(IDS_TILE_STONE_SILVERFISH)
+            ->setUseDescriptionId(IDS_DESC_STONE_SILVERFISH);
+    Tile::stoneBrick =
+        (new SmoothStoneBrickTile(98))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_structblock,
+                                         Item::eMaterial_stoneSmooth)
+            ->setDestroyTime(1.5f)
+            ->setExplodeable(10)
+            ->setSoundType(SOUND_STONE)
+            ->setIconName(L"stonebrick")
+            ->setDescriptionId(IDS_TILE_STONE_BRICK_SMOOTH)
+            ->setUseDescriptionId(IDS_DESC_STONE_BRICK_SMOOTH);
+    Tile::hugeMushroom_brown =
+        (new HugeMushroomTile(99, Material::wood,
+                              HugeMushroomTile::MUSHROOM_TYPE_BROWN))
+            ->setDestroyTime(0.2f)
+            ->setSoundType(SOUND_WOOD)
+            ->setIconName(L"mushroom_block")
+            ->setDescriptionId(IDS_TILE_HUGE_MUSHROOM_1)
+            ->setUseDescriptionId(IDS_DESC_MUSHROOM)
+            ->sendTileData();
+    Tile::hugeMushroom_red =
+        (new HugeMushroomTile(100, Material::wood,
+                              HugeMushroomTile::MUSHROOM_TYPE_RED))
+            ->setDestroyTime(0.2f)
+            ->setSoundType(SOUND_WOOD)
+            ->setIconName(L"mushroom_block")
+            ->setDescriptionId(IDS_TILE_HUGE_MUSHROOM_2)
+            ->setUseDescriptionId(IDS_DESC_MUSHROOM)
+            ->sendTileData();
 
-    yuri_3088::ironFence = (new yuri_3071(101, yuri_1720"iron_bars", yuri_1720"iron_bars",
-                                         yuri_1886::metal, true))
-                          ->yuri_8475(
-                              yuri_1687::eBaseItemType_fence, yuri_1687::eMaterial_iron)
-                          ->yuri_8568(5.0f)
-                          ->yuri_8598(10)
-                          ->yuri_8874(SOUND_METAL)
-                          ->yuri_8564(IDS_TILE_IRON_FENCE)
-                          ->yuri_8941(IDS_DESC_IRON_FENCE);
-    yuri_3088::thinGlass = (new yuri_3071(102, yuri_1720"glass", yuri_1720"glass_pane_top",
-                                         yuri_1886::glass, false))
-                          ->yuri_8568(0.3f)
-                          ->yuri_8874(SOUND_GLASS)
-                          ->yuri_8564(IDS_TILE_THIN_GLASS)
-                          ->yuri_8941(IDS_DESC_THIN_GLASS);
-    yuri_3088::melon = (new yuri_1905(103))
-                      ->yuri_8568(1.0f)
-                      ->yuri_8874(SOUND_WOOD)
-                      ->yuri_8658(yuri_1720"melon")
-                      ->yuri_8564(IDS_TILE_MELON)
-                      ->yuri_8941(IDS_DESC_MELON_BLOCK);
-    yuri_3088::pumpkinStem = (new yuri_2958(104, yuri_3088::pumpkin))
-                            ->yuri_8568(0.0f)
-                            ->yuri_8874(SOUND_WOOD)
-                            ->yuri_8658(yuri_1720"pumpkin_stem")
-                            ->yuri_8564(IDS_TILE_PUMPKIN_STEM)
-                            ->yuri_8426();
-    yuri_3088::melonStem = (new yuri_2958(105, yuri_3088::melon))
-                          ->yuri_8568(0.0f)
-                          ->yuri_8874(SOUND_WOOD)
-                          ->yuri_8658(yuri_1720"melon_stem")
-                          ->yuri_8564(IDS_TILE_MELON_STEM)
-                          ->yuri_8426();
-    yuri_3088::vine = (new yuri_3342(106))
-                     ->yuri_8568(0.2f)
-                     ->yuri_8874(SOUND_GRASS)
-                     ->yuri_8658(yuri_1720"vine")
-                     ->yuri_8564(IDS_TILE_VINE)
-                     ->yuri_8941(IDS_DESC_VINE)
-                     ->yuri_8426();
-    yuri_3088::fenceGate = (new yuri_802(107))
-                          ->yuri_8568(2.0f)
-                          ->yuri_8598(5)
-                          ->yuri_8874(SOUND_WOOD)
-                          ->yuri_8658(yuri_1720"fenceGate")
-                          ->yuri_8564(IDS_TILE_FENCE_GATE)
-                          ->yuri_8426()
-                          ->yuri_8941(IDS_DESC_FENCE_GATE);
-    yuri_3088::stairs_bricks =
-        (new yuri_2896(108, yuri_3088::redBrick, 0))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_brick)
-            ->yuri_8658(yuri_1720"stairsBrick")
-            ->yuri_8564(IDS_TILE_STAIRS_BRICKS)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::stairs_stoneBrickSmooth =
-        (new yuri_2896(109, yuri_3088::stoneBrick, 0))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_stoneSmooth)
-            ->yuri_8658(yuri_1720"stairsStoneBrickSmooth")
-            ->yuri_8564(IDS_TILE_STAIRS_STONE_BRICKS_SMOOTH)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::mycel = (yuri_2004*)(new yuri_2004(110))
-                      ->yuri_8568(0.6f)
-                      ->yuri_8874(SOUND_GRASS)
-                      ->yuri_8658(yuri_1720"mycelium")
-                      ->yuri_8564(IDS_TILE_MYCEL)
-                      ->yuri_8941(IDS_DESC_MYCEL);
+    Tile::ironFence = (new ThinFenceTile(101, L"iron_bars", L"iron_bars",
+                                         Material::metal, true))
+                          ->setBaseItemTypeAndMaterial(
+                              Item::eBaseItemType_fence, Item::eMaterial_iron)
+                          ->setDestroyTime(5.0f)
+                          ->setExplodeable(10)
+                          ->setSoundType(SOUND_METAL)
+                          ->setDescriptionId(IDS_TILE_IRON_FENCE)
+                          ->setUseDescriptionId(IDS_DESC_IRON_FENCE);
+    Tile::thinGlass = (new ThinFenceTile(102, L"glass", L"glass_pane_top",
+                                         Material::glass, false))
+                          ->setDestroyTime(0.3f)
+                          ->setSoundType(SOUND_GLASS)
+                          ->setDescriptionId(IDS_TILE_THIN_GLASS)
+                          ->setUseDescriptionId(IDS_DESC_THIN_GLASS);
+    Tile::melon = (new MelonTile(103))
+                      ->setDestroyTime(1.0f)
+                      ->setSoundType(SOUND_WOOD)
+                      ->setIconName(L"melon")
+                      ->setDescriptionId(IDS_TILE_MELON)
+                      ->setUseDescriptionId(IDS_DESC_MELON_BLOCK);
+    Tile::pumpkinStem = (new StemTile(104, Tile::pumpkin))
+                            ->setDestroyTime(0.0f)
+                            ->setSoundType(SOUND_WOOD)
+                            ->setIconName(L"pumpkin_stem")
+                            ->setDescriptionId(IDS_TILE_PUMPKIN_STEM)
+                            ->sendTileData();
+    Tile::melonStem = (new StemTile(105, Tile::melon))
+                          ->setDestroyTime(0.0f)
+                          ->setSoundType(SOUND_WOOD)
+                          ->setIconName(L"melon_stem")
+                          ->setDescriptionId(IDS_TILE_MELON_STEM)
+                          ->sendTileData();
+    Tile::vine = (new VineTile(106))
+                     ->setDestroyTime(0.2f)
+                     ->setSoundType(SOUND_GRASS)
+                     ->setIconName(L"vine")
+                     ->setDescriptionId(IDS_TILE_VINE)
+                     ->setUseDescriptionId(IDS_DESC_VINE)
+                     ->sendTileData();
+    Tile::fenceGate = (new FenceGateTile(107))
+                          ->setDestroyTime(2.0f)
+                          ->setExplodeable(5)
+                          ->setSoundType(SOUND_WOOD)
+                          ->setIconName(L"fenceGate")
+                          ->setDescriptionId(IDS_TILE_FENCE_GATE)
+                          ->sendTileData()
+                          ->setUseDescriptionId(IDS_DESC_FENCE_GATE);
+    Tile::stairs_bricks =
+        (new StairTile(108, Tile::redBrick, 0))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_brick)
+            ->setIconName(L"stairsBrick")
+            ->setDescriptionId(IDS_TILE_STAIRS_BRICKS)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::stairs_stoneBrickSmooth =
+        (new StairTile(109, Tile::stoneBrick, 0))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_stoneSmooth)
+            ->setIconName(L"stairsStoneBrickSmooth")
+            ->setDescriptionId(IDS_TILE_STAIRS_STONE_BRICKS_SMOOTH)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::mycel = (MycelTile*)(new MycelTile(110))
+                      ->setDestroyTime(0.6f)
+                      ->setSoundType(SOUND_GRASS)
+                      ->setIconName(L"mycelium")
+                      ->setDescriptionId(IDS_TILE_MYCEL)
+                      ->setUseDescriptionId(IDS_DESC_MYCEL);
 
-    yuri_3088::waterLily = (new yuri_3367(111))
-                          ->yuri_8568(0.0f)
-                          ->yuri_8874(SOUND_GRASS)
-                          ->yuri_8658(yuri_1720"waterlily")
-                          ->yuri_8564(IDS_TILE_WATERLILY)
-                          ->yuri_8941(IDS_DESC_WATERLILY);
-    yuri_3088::netherBrick =
-        (new yuri_3088(112, yuri_1886::stone))
-            ->yuri_8475(yuri_1687::eBaseItemType_structblock,
-                                         yuri_1687::eMaterial_netherbrick)
-            ->yuri_8568(2.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(SOUND_STONE)
-            ->yuri_8658(yuri_1720"nether_brick")
-            ->yuri_8564(IDS_TILE_NETHERBRICK)
-            ->yuri_8941(IDS_DESC_NETHERBRICK);
-    yuri_3088::netherFence =
-        (new yuri_803(113, yuri_1720"nether_brick", yuri_1886::stone))
-            ->yuri_8475(yuri_1687::eBaseItemType_fence,
-                                         yuri_1687::eMaterial_netherbrick)
-            ->yuri_8568(2.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(SOUND_STONE)
-            ->yuri_8564(IDS_TILE_NETHERFENCE)
-            ->yuri_8941(IDS_DESC_NETHERFENCE);
-    yuri_3088::stairs_netherBricks =
-        (new yuri_2896(114, yuri_3088::netherBrick, 0))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_netherbrick)
-            ->yuri_8658(yuri_1720"stairsNetherBrick")
-            ->yuri_8564(IDS_TILE_STAIRS_NETHERBRICK)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::netherStalk = (new yuri_2020(115))
-                            ->yuri_8658(yuri_1720"nether_wart")
-                            ->yuri_8564(IDS_TILE_NETHERSTALK)
-                            ->yuri_8426()
-                            ->yuri_8941(IDS_DESC_NETHERSTALK);
-    yuri_3088::enchantTable =
-        (new yuri_711(116))
-            ->yuri_8475(yuri_1687::eBaseItemType_device,
-                                         yuri_1687::eMaterial_magic)
-            ->yuri_8568(5.0f)
-            ->yuri_8598(2000)
-            ->yuri_8658(yuri_1720"enchanting_table")
-            ->yuri_8564(IDS_TILE_ENCHANTMENTTABLE)
-            ->yuri_8941(IDS_DESC_ENCHANTMENTTABLE);
-    yuri_3088::brewingStand =
-        (new yuri_229(117))
-            ->yuri_8475(yuri_1687::eBaseItemType_device,
-                                         yuri_1687::eMaterial_blaze)
-            ->yuri_8568(0.5f)
-            ->yuri_8707(2 / 16.0f)
-            ->yuri_8658(yuri_1720"brewing_stand")
-            ->yuri_8564(IDS_TILE_BREWINGSTAND)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_BREWING_STAND);
-    yuri_3088::cauldron = (yuri_321*)(new yuri_321(118))
-                         ->yuri_8568(2.0f)
-                         ->yuri_8658(yuri_1720"cauldron")
-                         ->yuri_8564(IDS_TILE_CAULDRON)
-                         ->yuri_8426()
-                         ->yuri_8941(IDS_DESC_CAULDRON);
-    yuri_3088::endPortalTile = (new yuri_3067(119, yuri_1886::portal))
-                              ->yuri_8568(INDESTRUCTIBLE_DESTROY_TIME)
-                              ->yuri_8598(6000000)
-                              ->yuri_8564(IDS_TILE_END_PORTAL)
-                              ->yuri_8941(IDS_DESC_END_PORTAL);
-    yuri_3088::endPortalFrameTile =
-        (new yuri_3068(120))
-            ->yuri_8874(SOUND_GLASS)
-            ->yuri_8707(2 / 16.0f)
-            ->yuri_8568(INDESTRUCTIBLE_DESTROY_TIME)
-            ->yuri_8658(yuri_1720"endframe")
-            ->yuri_8564(IDS_TILE_ENDPORTALFRAME)
-            ->yuri_8426()
-            ->yuri_8598(6000000)
-            ->yuri_8941(IDS_DESC_ENDPORTALFRAME);
+    Tile::waterLily = (new WaterlilyTile(111))
+                          ->setDestroyTime(0.0f)
+                          ->setSoundType(SOUND_GRASS)
+                          ->setIconName(L"waterlily")
+                          ->setDescriptionId(IDS_TILE_WATERLILY)
+                          ->setUseDescriptionId(IDS_DESC_WATERLILY);
+    Tile::netherBrick =
+        (new Tile(112, Material::stone))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_structblock,
+                                         Item::eMaterial_netherbrick)
+            ->setDestroyTime(2.0f)
+            ->setExplodeable(10)
+            ->setSoundType(SOUND_STONE)
+            ->setIconName(L"nether_brick")
+            ->setDescriptionId(IDS_TILE_NETHERBRICK)
+            ->setUseDescriptionId(IDS_DESC_NETHERBRICK);
+    Tile::netherFence =
+        (new FenceTile(113, L"nether_brick", Material::stone))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_fence,
+                                         Item::eMaterial_netherbrick)
+            ->setDestroyTime(2.0f)
+            ->setExplodeable(10)
+            ->setSoundType(SOUND_STONE)
+            ->setDescriptionId(IDS_TILE_NETHERFENCE)
+            ->setUseDescriptionId(IDS_DESC_NETHERFENCE);
+    Tile::stairs_netherBricks =
+        (new StairTile(114, Tile::netherBrick, 0))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_netherbrick)
+            ->setIconName(L"stairsNetherBrick")
+            ->setDescriptionId(IDS_TILE_STAIRS_NETHERBRICK)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::netherStalk = (new NetherWartTile(115))
+                            ->setIconName(L"nether_wart")
+                            ->setDescriptionId(IDS_TILE_NETHERSTALK)
+                            ->sendTileData()
+                            ->setUseDescriptionId(IDS_DESC_NETHERSTALK);
+    Tile::enchantTable =
+        (new EnchantmentTableTile(116))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_device,
+                                         Item::eMaterial_magic)
+            ->setDestroyTime(5.0f)
+            ->setExplodeable(2000)
+            ->setIconName(L"enchanting_table")
+            ->setDescriptionId(IDS_TILE_ENCHANTMENTTABLE)
+            ->setUseDescriptionId(IDS_DESC_ENCHANTMENTTABLE);
+    Tile::brewingStand =
+        (new BrewingStandTile(117))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_device,
+                                         Item::eMaterial_blaze)
+            ->setDestroyTime(0.5f)
+            ->setLightEmission(2 / 16.0f)
+            ->setIconName(L"brewing_stand")
+            ->setDescriptionId(IDS_TILE_BREWINGSTAND)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_BREWING_STAND);
+    Tile::cauldron = (CauldronTile*)(new CauldronTile(118))
+                         ->setDestroyTime(2.0f)
+                         ->setIconName(L"cauldron")
+                         ->setDescriptionId(IDS_TILE_CAULDRON)
+                         ->sendTileData()
+                         ->setUseDescriptionId(IDS_DESC_CAULDRON);
+    Tile::endPortalTile = (new TheEndPortal(119, Material::portal))
+                              ->setDestroyTime(INDESTRUCTIBLE_DESTROY_TIME)
+                              ->setExplodeable(6000000)
+                              ->setDescriptionId(IDS_TILE_END_PORTAL)
+                              ->setUseDescriptionId(IDS_DESC_END_PORTAL);
+    Tile::endPortalFrameTile =
+        (new TheEndPortalFrameTile(120))
+            ->setSoundType(SOUND_GLASS)
+            ->setLightEmission(2 / 16.0f)
+            ->setDestroyTime(INDESTRUCTIBLE_DESTROY_TIME)
+            ->setIconName(L"endframe")
+            ->setDescriptionId(IDS_TILE_ENDPORTALFRAME)
+            ->sendTileData()
+            ->setExplodeable(6000000)
+            ->setUseDescriptionId(IDS_DESC_ENDPORTALFRAME);
 
-    yuri_3088::endStone = (new yuri_3088(121, yuri_1886::stone))
-                         ->yuri_8568(3.0f)
-                         ->yuri_8598(15)
-                         ->yuri_8874(SOUND_STONE)
-                         ->yuri_8658(yuri_1720"end_stone")
-                         ->yuri_8564(IDS_TILE_WHITESTONE)
-                         ->yuri_8941(IDS_DESC_WHITESTONE);
-    yuri_3088::dragonEgg = (new yuri_686(122))
-                          ->yuri_8568(3.0f)
-                          ->yuri_8598(15)
-                          ->yuri_8874(SOUND_STONE)
-                          ->yuri_8707(2.0f / 16.0f)
-                          ->yuri_8658(yuri_1720"dragon_egg")
-                          ->yuri_8564(IDS_TILE_DRAGONEGG)
-                          ->yuri_8941(IDS_DESC_DRAGONEGG);
-    yuri_3088::redstoneLight = (new yuri_2343(123, false))
-                              ->yuri_8568(0.3f)
-                              ->yuri_8874(SOUND_GLASS)
-                              ->yuri_8658(yuri_1720"redstone_lamp_off")
-                              ->yuri_8564(IDS_TILE_REDSTONE_LIGHT)
-                              ->yuri_8941(IDS_DESC_REDSTONE_LIGHT);
-    yuri_3088::redstoneLight_lit =
-        (new yuri_2343(124, true))
-            ->yuri_8568(0.3f)
-            ->yuri_8874(SOUND_GLASS)
-            ->yuri_8658(yuri_1720"redstone_lamp_on")
-            ->yuri_8564(IDS_TILE_REDSTONE_LIGHT)
-            ->yuri_8941(IDS_DESC_REDSTONE_LIGHT);
-    yuri_3088::woodSlab = (yuri_1235*)(new yuri_3392(yuri_3088::woodSlab_Id, true))
-                         ->yuri_8475(yuri_1687::eBaseItemType_slab,
-                                                      yuri_1687::eMaterial_wood)
-                         ->yuri_8568(2.0f)
-                         ->yuri_8598(5)
-                         ->yuri_8874(SOUND_WOOD)
-                         ->yuri_8658(yuri_1720"woodSlab")
-                         ->yuri_8564(IDS_DESC_WOODSLAB)
-                         ->yuri_8941(IDS_DESC_WOODSLAB);
-    yuri_3088::woodSlabHalf =
-        (yuri_1235*)(new yuri_3392(yuri_3088::woodSlabHalf_Id, false))
-            ->yuri_8475(yuri_1687::eBaseItemType_halfslab,
-                                         yuri_1687::eMaterial_wood)
-            ->yuri_8568(2.0f)
-            ->yuri_8598(5)
-            ->yuri_8874(SOUND_WOOD)
-            ->yuri_8658(yuri_1720"woodSlab")
-            ->yuri_8564(IDS_DESC_WOODSLAB)
-            ->yuri_8941(IDS_DESC_WOODSLAB);
-    yuri_3088::cocoa = (new yuri_386(127))
-                      ->yuri_8568(0.2f)
-                      ->yuri_8598(5)
-                      ->yuri_8874(SOUND_WOOD)
-                      ->yuri_8658(yuri_1720"cocoa")
-                      ->yuri_8426()
-                      ->yuri_8564(IDS_TILE_COCOA)
-                      ->yuri_8941(IDS_DESC_COCOA);
-    yuri_3088::stairs_sandstone =
-        (new yuri_2896(128, yuri_3088::sandStone, 0))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_sand)
-            ->yuri_8658(yuri_1720"stairsSandstone")
-            ->yuri_8564(IDS_TILE_STAIRS_SANDSTONE)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::emeraldOre = (new yuri_2063(129))
-                           ->yuri_8568(3.0f)
-                           ->yuri_8598(5)
-                           ->yuri_8874(SOUND_STONE)
-                           ->yuri_8658(yuri_1720"emerald_ore")
-                           ->yuri_8564(IDS_TILE_EMERALDORE)
-                           ->yuri_8941(IDS_DESC_EMERALDORE);
-    yuri_3088::enderChest = (new yuri_723(130))
-                           ->yuri_8475(
-                               yuri_1687::eBaseItemType_chest, yuri_1687::eMaterial_ender)
-                           ->yuri_8568(22.5f)
-                           ->yuri_8598(1000)
-                           ->yuri_8874(SOUND_STONE)
-                           ->yuri_8658(yuri_1720"enderChest")
-                           ->yuri_8426()
-                           ->yuri_8707(.5f)
-                           ->yuri_8564(IDS_TILE_ENDERCHEST)
-                           ->yuri_8941(IDS_DESC_ENDERCHEST);
+    Tile::endStone = (new Tile(121, Material::stone))
+                         ->setDestroyTime(3.0f)
+                         ->setExplodeable(15)
+                         ->setSoundType(SOUND_STONE)
+                         ->setIconName(L"end_stone")
+                         ->setDescriptionId(IDS_TILE_WHITESTONE)
+                         ->setUseDescriptionId(IDS_DESC_WHITESTONE);
+    Tile::dragonEgg = (new EggTile(122))
+                          ->setDestroyTime(3.0f)
+                          ->setExplodeable(15)
+                          ->setSoundType(SOUND_STONE)
+                          ->setLightEmission(2.0f / 16.0f)
+                          ->setIconName(L"dragon_egg")
+                          ->setDescriptionId(IDS_TILE_DRAGONEGG)
+                          ->setUseDescriptionId(IDS_DESC_DRAGONEGG);
+    Tile::redstoneLight = (new RedlightTile(123, false))
+                              ->setDestroyTime(0.3f)
+                              ->setSoundType(SOUND_GLASS)
+                              ->setIconName(L"redstone_lamp_off")
+                              ->setDescriptionId(IDS_TILE_REDSTONE_LIGHT)
+                              ->setUseDescriptionId(IDS_DESC_REDSTONE_LIGHT);
+    Tile::redstoneLight_lit =
+        (new RedlightTile(124, true))
+            ->setDestroyTime(0.3f)
+            ->setSoundType(SOUND_GLASS)
+            ->setIconName(L"redstone_lamp_on")
+            ->setDescriptionId(IDS_TILE_REDSTONE_LIGHT)
+            ->setUseDescriptionId(IDS_DESC_REDSTONE_LIGHT);
+    Tile::woodSlab = (HalfSlabTile*)(new WoodSlabTile(Tile::woodSlab_Id, true))
+                         ->setBaseItemTypeAndMaterial(Item::eBaseItemType_slab,
+                                                      Item::eMaterial_wood)
+                         ->setDestroyTime(2.0f)
+                         ->setExplodeable(5)
+                         ->setSoundType(SOUND_WOOD)
+                         ->setIconName(L"woodSlab")
+                         ->setDescriptionId(IDS_DESC_WOODSLAB)
+                         ->setUseDescriptionId(IDS_DESC_WOODSLAB);
+    Tile::woodSlabHalf =
+        (HalfSlabTile*)(new WoodSlabTile(Tile::woodSlabHalf_Id, false))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_halfslab,
+                                         Item::eMaterial_wood)
+            ->setDestroyTime(2.0f)
+            ->setExplodeable(5)
+            ->setSoundType(SOUND_WOOD)
+            ->setIconName(L"woodSlab")
+            ->setDescriptionId(IDS_DESC_WOODSLAB)
+            ->setUseDescriptionId(IDS_DESC_WOODSLAB);
+    Tile::cocoa = (new CocoaTile(127))
+                      ->setDestroyTime(0.2f)
+                      ->setExplodeable(5)
+                      ->setSoundType(SOUND_WOOD)
+                      ->setIconName(L"cocoa")
+                      ->sendTileData()
+                      ->setDescriptionId(IDS_TILE_COCOA)
+                      ->setUseDescriptionId(IDS_DESC_COCOA);
+    Tile::stairs_sandstone =
+        (new StairTile(128, Tile::sandStone, 0))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_sand)
+            ->setIconName(L"stairsSandstone")
+            ->setDescriptionId(IDS_TILE_STAIRS_SANDSTONE)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::emeraldOre = (new OreTile(129))
+                           ->setDestroyTime(3.0f)
+                           ->setExplodeable(5)
+                           ->setSoundType(SOUND_STONE)
+                           ->setIconName(L"emerald_ore")
+                           ->setDescriptionId(IDS_TILE_EMERALDORE)
+                           ->setUseDescriptionId(IDS_DESC_EMERALDORE);
+    Tile::enderChest = (new EnderChestTile(130))
+                           ->setBaseItemTypeAndMaterial(
+                               Item::eBaseItemType_chest, Item::eMaterial_ender)
+                           ->setDestroyTime(22.5f)
+                           ->setExplodeable(1000)
+                           ->setSoundType(SOUND_STONE)
+                           ->setIconName(L"enderChest")
+                           ->sendTileData()
+                           ->setLightEmission(.5f)
+                           ->setDescriptionId(IDS_TILE_ENDERCHEST)
+                           ->setUseDescriptionId(IDS_DESC_ENDERCHEST);
 
-    yuri_3088::tripWireSource =
-        (yuri_3141*)(new yuri_3141(131))
-            ->yuri_8475(yuri_1687::eBaseItemType_lever,
-                                         yuri_1687::eMaterial_undefined)
-            ->yuri_8658(yuri_1720"trip_wire_source")
-            ->yuri_8426()
-            ->yuri_8564(IDS_TILE_TRIPWIRE_SOURCE)
-            ->yuri_8941(IDS_DESC_TRIPWIRE_SOURCE);
-    yuri_3088::tripWire = (new yuri_3142(132))
-                         ->yuri_8658(yuri_1720"trip_wire")
-                         ->yuri_8426()
-                         ->yuri_8564(IDS_TILE_TRIPWIRE)
-                         ->yuri_8941(IDS_DESC_TRIPWIRE);
-    yuri_3088::emeraldBlock =
-        (new yuri_1923(133))
-            ->yuri_8475(yuri_1687::eBaseItemType_block,
-                                         yuri_1687::eMaterial_emerald)
-            ->yuri_8568(5.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(SOUND_METAL)
-            ->yuri_8658(yuri_1720"emerald_block")
-            ->yuri_8564(IDS_TILE_EMERALDBLOCK)
-            ->yuri_8941(IDS_DESC_EMERALDBLOCK);
-    yuri_3088::woodStairsDark =
-        (new yuri_2896(134, yuri_3088::wood, yuri_3137::DARK_TRUNK))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_sprucewood)
-            ->yuri_8658(yuri_1720"stairsWoodSpruce")
-            ->yuri_8564(IDS_TILE_STAIRS_SPRUCEWOOD)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::woodStairsBirch =
-        (new yuri_2896(135, yuri_3088::wood, yuri_3137::BIRCH_TRUNK))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_birchwood)
-            ->yuri_8658(yuri_1720"stairsWoodBirch")
-            ->yuri_8564(IDS_TILE_STAIRS_BIRCHWOOD)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::woodStairsJungle =
-        (new yuri_2896(136, yuri_3088::wood, yuri_3137::JUNGLE_TRUNK))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_junglewood)
-            ->yuri_8658(yuri_1720"stairsWoodJungle")
-            ->yuri_8564(IDS_TILE_STAIRS_JUNGLEWOOD)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::commandBlock = (new yuri_394(137))
-                             ->yuri_8664()
-                             ->yuri_8598(6000000)
-                             ->yuri_8658(yuri_1720"command_block")
-                             ->yuri_8564(IDS_TILE_COMMAND_BLOCK)
-                             ->yuri_8941(IDS_DESC_COMMAND_BLOCK);
-    yuri_3088::beacon = (yuri_179*)(new yuri_179(138))
-                       ->yuri_8707(1.0f)
-                       ->yuri_8658(yuri_1720"beacon")
-                       ->yuri_8564(IDS_TILE_BEACON)
-                       ->yuri_8941(IDS_DESC_BEACON);
-    yuri_3088::cobbleWall = (new yuri_3358(139, yuri_3088::stoneBrick))
-                           ->yuri_8475(
-                               yuri_1687::eBaseItemType_fence, yuri_1687::eMaterial_stone)
-                           ->yuri_8658(yuri_1720"cobbleWall")
-                           ->yuri_8564(IDS_TILE_COBBLESTONE_WALL)
-                           ->yuri_8941(IDS_DESC_COBBLESTONE_WALL);
-    yuri_3088::flowerPot = (new yuri_853(140))
-                          ->yuri_8568(0.0f)
-                          ->yuri_8874(SOUND_NORMAL)
-                          ->yuri_8658(yuri_1720"flower_pot")
-                          ->yuri_8564(IDS_TILE_FLOWERPOT)
-                          ->yuri_8941(IDS_DESC_FLOWERPOT);
+    Tile::tripWireSource =
+        (TripWireSourceTile*)(new TripWireSourceTile(131))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_lever,
+                                         Item::eMaterial_undefined)
+            ->setIconName(L"trip_wire_source")
+            ->sendTileData()
+            ->setDescriptionId(IDS_TILE_TRIPWIRE_SOURCE)
+            ->setUseDescriptionId(IDS_DESC_TRIPWIRE_SOURCE);
+    Tile::tripWire = (new TripWireTile(132))
+                         ->setIconName(L"trip_wire")
+                         ->sendTileData()
+                         ->setDescriptionId(IDS_TILE_TRIPWIRE)
+                         ->setUseDescriptionId(IDS_DESC_TRIPWIRE);
+    Tile::emeraldBlock =
+        (new MetalTile(133))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_block,
+                                         Item::eMaterial_emerald)
+            ->setDestroyTime(5.0f)
+            ->setExplodeable(10)
+            ->setSoundType(SOUND_METAL)
+            ->setIconName(L"emerald_block")
+            ->setDescriptionId(IDS_TILE_EMERALDBLOCK)
+            ->setUseDescriptionId(IDS_DESC_EMERALDBLOCK);
+    Tile::woodStairsDark =
+        (new StairTile(134, Tile::wood, TreeTile::DARK_TRUNK))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_sprucewood)
+            ->setIconName(L"stairsWoodSpruce")
+            ->setDescriptionId(IDS_TILE_STAIRS_SPRUCEWOOD)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::woodStairsBirch =
+        (new StairTile(135, Tile::wood, TreeTile::BIRCH_TRUNK))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_birchwood)
+            ->setIconName(L"stairsWoodBirch")
+            ->setDescriptionId(IDS_TILE_STAIRS_BIRCHWOOD)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::woodStairsJungle =
+        (new StairTile(136, Tile::wood, TreeTile::JUNGLE_TRUNK))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_junglewood)
+            ->setIconName(L"stairsWoodJungle")
+            ->setDescriptionId(IDS_TILE_STAIRS_JUNGLEWOOD)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::commandBlock = (new CommandBlock(137))
+                             ->setIndestructible()
+                             ->setExplodeable(6000000)
+                             ->setIconName(L"command_block")
+                             ->setDescriptionId(IDS_TILE_COMMAND_BLOCK)
+                             ->setUseDescriptionId(IDS_DESC_COMMAND_BLOCK);
+    Tile::beacon = (BeaconTile*)(new BeaconTile(138))
+                       ->setLightEmission(1.0f)
+                       ->setIconName(L"beacon")
+                       ->setDescriptionId(IDS_TILE_BEACON)
+                       ->setUseDescriptionId(IDS_DESC_BEACON);
+    Tile::cobbleWall = (new WallTile(139, Tile::stoneBrick))
+                           ->setBaseItemTypeAndMaterial(
+                               Item::eBaseItemType_fence, Item::eMaterial_stone)
+                           ->setIconName(L"cobbleWall")
+                           ->setDescriptionId(IDS_TILE_COBBLESTONE_WALL)
+                           ->setUseDescriptionId(IDS_DESC_COBBLESTONE_WALL);
+    Tile::flowerPot = (new FlowerPotTile(140))
+                          ->setDestroyTime(0.0f)
+                          ->setSoundType(SOUND_NORMAL)
+                          ->setIconName(L"flower_pot")
+                          ->setDescriptionId(IDS_TILE_FLOWERPOT)
+                          ->setUseDescriptionId(IDS_DESC_FLOWERPOT);
 
-    yuri_3088::carrots = (new yuri_312(141))
-                        ->yuri_8658(yuri_1720"carrots")
-                        ->yuri_8564(IDS_TILE_CARROTS)
-                        ->yuri_8941(IDS_DESC_CARROTS)
-                        ->yuri_4368();
-    yuri_3088::potatoes = (new yuri_2161(142))
-                         ->yuri_8658(yuri_1720"potatoes")
-                         ->yuri_8564(IDS_TILE_POTATOES)
-                         ->yuri_8941(IDS_DESC_POTATO)
-                         ->yuri_4368();
-    yuri_3088::button_wood =
-        (new yuri_3391(143))
-            ->yuri_8475(yuri_1687::eBaseItemType_button,
-                                         yuri_1687::eMaterial_wood)
-            ->yuri_8568(0.5f)
-            ->yuri_8874(yuri_3088::SOUND_WOOD)
-            ->yuri_8658(yuri_1720"button")
-            ->yuri_8564(IDS_TILE_BUTTON)
-            ->yuri_8426()
-            ->yuri_8941(IDS_DESC_BUTTON);
-    yuri_3088::skull = (new yuri_2837(144))
-                      ->yuri_8568(1.0f)
-                      ->yuri_8874(SOUND_STONE)
-                      ->yuri_8658(yuri_1720"skull")
-                      ->yuri_8564(IDS_TILE_SKULL)
-                      ->yuri_8941(IDS_DESC_SKULL);
-    yuri_3088::anvil = (new yuri_119(145))
-                      ->yuri_8475(yuri_1687::eBaseItemType_device,
-                                                   yuri_1687::eMaterial_iron)
-                      ->yuri_8568(5.0f)
-                      ->yuri_8874(SOUND_ANVIL)
-                      ->yuri_8598(2000)
-                      ->yuri_8658(yuri_1720"anvil")
-                      ->yuri_8426()
-                      ->yuri_8564(IDS_TILE_ANVIL)
-                      ->yuri_8941(IDS_DESC_ANVIL);
-    yuri_3088::chest_trap = (new yuri_339(146, yuri_339::TYPE_TRAP))
-                           ->yuri_8475(
-                               yuri_1687::eBaseItemType_chest, yuri_1687::eMaterial_trap)
-                           ->yuri_8568(2.5f)
-                           ->yuri_8874(SOUND_WOOD)
-                           ->yuri_8564(IDS_TILE_CHEST_TRAP)
-                           ->yuri_8941(IDS_DESC_CHEST_TRAP);
-    yuri_3088::weightedPlate_light =
-        (new yuri_3374(147, yuri_1720"gold_block", yuri_1886::metal,
+    Tile::carrots = (new CarrotTile(141))
+                        ->setIconName(L"carrots")
+                        ->setDescriptionId(IDS_TILE_CARROTS)
+                        ->setUseDescriptionId(IDS_DESC_CARROTS)
+                        ->disableMipmap();
+    Tile::potatoes = (new PotatoTile(142))
+                         ->setIconName(L"potatoes")
+                         ->setDescriptionId(IDS_TILE_POTATOES)
+                         ->setUseDescriptionId(IDS_DESC_POTATO)
+                         ->disableMipmap();
+    Tile::button_wood =
+        (new WoodButtonTile(143))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_button,
+                                         Item::eMaterial_wood)
+            ->setDestroyTime(0.5f)
+            ->setSoundType(Tile::SOUND_WOOD)
+            ->setIconName(L"button")
+            ->setDescriptionId(IDS_TILE_BUTTON)
+            ->sendTileData()
+            ->setUseDescriptionId(IDS_DESC_BUTTON);
+    Tile::skull = (new SkullTile(144))
+                      ->setDestroyTime(1.0f)
+                      ->setSoundType(SOUND_STONE)
+                      ->setIconName(L"skull")
+                      ->setDescriptionId(IDS_TILE_SKULL)
+                      ->setUseDescriptionId(IDS_DESC_SKULL);
+    Tile::anvil = (new AnvilTile(145))
+                      ->setBaseItemTypeAndMaterial(Item::eBaseItemType_device,
+                                                   Item::eMaterial_iron)
+                      ->setDestroyTime(5.0f)
+                      ->setSoundType(SOUND_ANVIL)
+                      ->setExplodeable(2000)
+                      ->setIconName(L"anvil")
+                      ->sendTileData()
+                      ->setDescriptionId(IDS_TILE_ANVIL)
+                      ->setUseDescriptionId(IDS_DESC_ANVIL);
+    Tile::chest_trap = (new ChestTile(146, ChestTile::TYPE_TRAP))
+                           ->setBaseItemTypeAndMaterial(
+                               Item::eBaseItemType_chest, Item::eMaterial_trap)
+                           ->setDestroyTime(2.5f)
+                           ->setSoundType(SOUND_WOOD)
+                           ->setDescriptionId(IDS_TILE_CHEST_TRAP)
+                           ->setUseDescriptionId(IDS_DESC_CHEST_TRAP);
+    Tile::weightedPlate_light =
+        (new WeightedPressurePlateTile(147, L"gold_block", Material::metal,
                                        Redstone::SIGNAL_MAX))
-            ->yuri_8475(yuri_1687::eBaseItemType_pressureplate,
-                                         yuri_1687::eMaterial_gold)
-            ->yuri_8568(0.5f)
-            ->yuri_8874(SOUND_WOOD)
-            ->yuri_8564(IDS_TILE_WEIGHTED_PLATE_LIGHT)
-            ->yuri_8941(IDS_DESC_WEIGHTED_PLATE_LIGHT);
-    yuri_3088::weightedPlate_heavy =
-        (new yuri_3374(148, yuri_1720"iron_block", yuri_1886::metal,
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_pressureplate,
+                                         Item::eMaterial_gold)
+            ->setDestroyTime(0.5f)
+            ->setSoundType(SOUND_WOOD)
+            ->setDescriptionId(IDS_TILE_WEIGHTED_PLATE_LIGHT)
+            ->setUseDescriptionId(IDS_DESC_WEIGHTED_PLATE_LIGHT);
+    Tile::weightedPlate_heavy =
+        (new WeightedPressurePlateTile(148, L"iron_block", Material::metal,
                                        Redstone::SIGNAL_MAX * 10))
-            ->yuri_8475(yuri_1687::eBaseItemType_pressureplate,
-                                         yuri_1687::eMaterial_iron)
-            ->yuri_8568(0.5f)
-            ->yuri_8874(SOUND_WOOD)
-            ->yuri_8564(IDS_TILE_WEIGHTED_PLATE_HEAVY)
-            ->yuri_8941(IDS_DESC_WEIGHTED_PLATE_HEAVY);
-    yuri_3088::comparator_off = (yuri_397*)(new yuri_397(149, false))
-                               ->yuri_8568(0.0f)
-                               ->yuri_8874(SOUND_WOOD)
-                               ->yuri_8658(yuri_1720"comparator_off")
-                               ->yuri_8564(IDS_TILE_COMPARATOR)
-                               ->yuri_8941(IDS_DESC_COMPARATOR);
-    yuri_3088::comparator_on = (yuri_397*)(new yuri_397(150, true))
-                              ->yuri_8568(0.0f)
-                              ->yuri_8707(10 / 16.0f)
-                              ->yuri_8874(SOUND_WOOD)
-                              ->yuri_8658(yuri_1720"comparator_on")
-                              ->yuri_8564(IDS_TILE_COMPARATOR)
-                              ->yuri_8941(IDS_DESC_COMPARATOR);
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_pressureplate,
+                                         Item::eMaterial_iron)
+            ->setDestroyTime(0.5f)
+            ->setSoundType(SOUND_WOOD)
+            ->setDescriptionId(IDS_TILE_WEIGHTED_PLATE_HEAVY)
+            ->setUseDescriptionId(IDS_DESC_WEIGHTED_PLATE_HEAVY);
+    Tile::comparator_off = (ComparatorTile*)(new ComparatorTile(149, false))
+                               ->setDestroyTime(0.0f)
+                               ->setSoundType(SOUND_WOOD)
+                               ->setIconName(L"comparator_off")
+                               ->setDescriptionId(IDS_TILE_COMPARATOR)
+                               ->setUseDescriptionId(IDS_DESC_COMPARATOR);
+    Tile::comparator_on = (ComparatorTile*)(new ComparatorTile(150, true))
+                              ->setDestroyTime(0.0f)
+                              ->setLightEmission(10 / 16.0f)
+                              ->setSoundType(SOUND_WOOD)
+                              ->setIconName(L"comparator_on")
+                              ->setDescriptionId(IDS_TILE_COMPARATOR)
+                              ->setUseDescriptionId(IDS_DESC_COMPARATOR);
 
-    yuri_3088::daylightDetector =
-        (yuri_553*)(new yuri_553(151))
-            ->yuri_8568(0.2f)
-            ->yuri_8874(SOUND_WOOD)
-            ->yuri_8658(yuri_1720"daylight_detector")
-            ->yuri_8564(IDS_TILE_DAYLIGHT_DETECTOR)
-            ->yuri_8941(IDS_DESC_DAYLIGHT_DETECTOR);
-    yuri_3088::redstoneBlock =
-        (new yuri_2165(152))
-            ->yuri_8475(yuri_1687::eBaseItemType_block,
-                                         yuri_1687::eMaterial_redstone)
-            ->yuri_8568(5.0f)
-            ->yuri_8598(10)
-            ->yuri_8874(SOUND_METAL)
-            ->yuri_8658(yuri_1720"redstone_block")
-            ->yuri_8564(IDS_TILE_REDSTONE_BLOCK)
-            ->yuri_8941(IDS_DESC_REDSTONE_BLOCK);
-    yuri_3088::netherQuartz = (new yuri_2063(153))
-                             ->yuri_8568(3.0f)
-                             ->yuri_8598(5)
-                             ->yuri_8874(SOUND_STONE)
-                             ->yuri_8658(yuri_1720"quartz_ore")
-                             ->yuri_8564(IDS_TILE_NETHER_QUARTZ)
-                             ->yuri_8941(IDS_DESC_NETHER_QUARTZ_ORE);
-    yuri_3088::hopper =
-        (yuri_1284*)(new yuri_1284(154))
-            ->yuri_8475(yuri_1687::eBaseItemType_redstoneContainer,
-                                         yuri_1687::eMaterial_undefined)
-            ->yuri_8568(3.0f)
-            ->yuri_8598(8)
-            ->yuri_8874(SOUND_WOOD)
-            ->yuri_8658(yuri_1720"hopper")
-            ->yuri_8564(IDS_TILE_HOPPER)
-            ->yuri_8941(IDS_DESC_HOPPER);
-    yuri_3088::quartzBlock =
-        (new yuri_2190(155))
-            ->yuri_8475(yuri_1687::eBaseItemType_structblock,
-                                         yuri_1687::eMaterial_quartz)
-            ->yuri_8874(SOUND_STONE)
-            ->yuri_8568(0.8f)
-            ->yuri_8658(yuri_1720"quartz_block")
-            ->yuri_8564(IDS_TILE_QUARTZ_BLOCK)
-            ->yuri_8941(IDS_DESC_QUARTZ_BLOCK);
-    yuri_3088::stairs_quartz =
-        (new yuri_2896(156, yuri_3088::quartzBlock, yuri_2190::TYPE_DEFAULT))
-            ->yuri_8475(yuri_1687::eBaseItemType_stairs,
-                                         yuri_1687::eMaterial_quartz)
-            ->yuri_8658(yuri_1720"stairsQuartz")
-            ->yuri_8564(IDS_TILE_STAIRS_QUARTZ)
-            ->yuri_8941(IDS_DESC_STAIRS);
-    yuri_3088::activatorRail = (new yuri_2166(157))
-                              ->yuri_8568(0.7f)
-                              ->yuri_8874(SOUND_METAL)
-                              ->yuri_8658(yuri_1720"rail_activator")
-                              ->yuri_8564(IDS_TILE_ACTIVATOR_RAIL)
-                              ->yuri_8941(IDS_DESC_ACTIVATOR_RAIL);
-    yuri_3088::dropper =
-        (new yuri_658(158))
-            ->yuri_8475(yuri_1687::eBaseItemType_redstoneContainer,
-                                         yuri_1687::eMaterial_undefined)
-            ->yuri_8568(3.5f)
-            ->yuri_8874(SOUND_STONE)
-            ->yuri_8658(yuri_1720"dropper")
-            ->yuri_8564(IDS_TILE_DROPPER)
-            ->yuri_8941(IDS_DESC_DROPPER);
-    yuri_3088::clayHardened_colored =
-        (new yuri_389(159, yuri_1886::stone))
-            ->yuri_8475(yuri_1687::eBaseItemType_clay,
-                                         yuri_1687::eMaterial_clay)
-            ->yuri_8568(1.25f)
-            ->yuri_8598(7)
-            ->yuri_8874(SOUND_STONE)
-            ->yuri_8658(yuri_1720"hardened_clay_stained")
-            ->yuri_8564(IDS_TILE_STAINED_CLAY)
-            ->yuri_8941(IDS_DESC_STAINED_CLAY);
-    yuri_3088::stained_glass_pane =
-        (new yuri_2895(160))
-            ->yuri_8475(yuri_1687::eBaseItemType_glass,
-                                         yuri_1687::eMaterial_glass)
-            ->yuri_8568(0.3f)
-            ->yuri_8874(SOUND_GLASS)
-            ->yuri_8658(yuri_1720"glass")
-            ->yuri_8564(IDS_TILE_STAINED_GLASS_PANE)
-            ->yuri_8941(IDS_DESC_STAINED_GLASS_PANE);
+    Tile::daylightDetector =
+        (DaylightDetectorTile*)(new DaylightDetectorTile(151))
+            ->setDestroyTime(0.2f)
+            ->setSoundType(SOUND_WOOD)
+            ->setIconName(L"daylight_detector")
+            ->setDescriptionId(IDS_TILE_DAYLIGHT_DETECTOR)
+            ->setUseDescriptionId(IDS_DESC_DAYLIGHT_DETECTOR);
+    Tile::redstoneBlock =
+        (new PoweredMetalTile(152))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_block,
+                                         Item::eMaterial_redstone)
+            ->setDestroyTime(5.0f)
+            ->setExplodeable(10)
+            ->setSoundType(SOUND_METAL)
+            ->setIconName(L"redstone_block")
+            ->setDescriptionId(IDS_TILE_REDSTONE_BLOCK)
+            ->setUseDescriptionId(IDS_DESC_REDSTONE_BLOCK);
+    Tile::netherQuartz = (new OreTile(153))
+                             ->setDestroyTime(3.0f)
+                             ->setExplodeable(5)
+                             ->setSoundType(SOUND_STONE)
+                             ->setIconName(L"quartz_ore")
+                             ->setDescriptionId(IDS_TILE_NETHER_QUARTZ)
+                             ->setUseDescriptionId(IDS_DESC_NETHER_QUARTZ_ORE);
+    Tile::hopper =
+        (HopperTile*)(new HopperTile(154))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_redstoneContainer,
+                                         Item::eMaterial_undefined)
+            ->setDestroyTime(3.0f)
+            ->setExplodeable(8)
+            ->setSoundType(SOUND_WOOD)
+            ->setIconName(L"hopper")
+            ->setDescriptionId(IDS_TILE_HOPPER)
+            ->setUseDescriptionId(IDS_DESC_HOPPER);
+    Tile::quartzBlock =
+        (new QuartzBlockTile(155))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_structblock,
+                                         Item::eMaterial_quartz)
+            ->setSoundType(SOUND_STONE)
+            ->setDestroyTime(0.8f)
+            ->setIconName(L"quartz_block")
+            ->setDescriptionId(IDS_TILE_QUARTZ_BLOCK)
+            ->setUseDescriptionId(IDS_DESC_QUARTZ_BLOCK);
+    Tile::stairs_quartz =
+        (new StairTile(156, Tile::quartzBlock, QuartzBlockTile::TYPE_DEFAULT))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_stairs,
+                                         Item::eMaterial_quartz)
+            ->setIconName(L"stairsQuartz")
+            ->setDescriptionId(IDS_TILE_STAIRS_QUARTZ)
+            ->setUseDescriptionId(IDS_DESC_STAIRS);
+    Tile::activatorRail = (new PoweredRailTile(157))
+                              ->setDestroyTime(0.7f)
+                              ->setSoundType(SOUND_METAL)
+                              ->setIconName(L"rail_activator")
+                              ->setDescriptionId(IDS_TILE_ACTIVATOR_RAIL)
+                              ->setUseDescriptionId(IDS_DESC_ACTIVATOR_RAIL);
+    Tile::dropper =
+        (new DropperTile(158))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_redstoneContainer,
+                                         Item::eMaterial_undefined)
+            ->setDestroyTime(3.5f)
+            ->setSoundType(SOUND_STONE)
+            ->setIconName(L"dropper")
+            ->setDescriptionId(IDS_TILE_DROPPER)
+            ->setUseDescriptionId(IDS_DESC_DROPPER);
+    Tile::clayHardened_colored =
+        (new ColoredTile(159, Material::stone))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_clay,
+                                         Item::eMaterial_clay)
+            ->setDestroyTime(1.25f)
+            ->setExplodeable(7)
+            ->setSoundType(SOUND_STONE)
+            ->setIconName(L"hardened_clay_stained")
+            ->setDescriptionId(IDS_TILE_STAINED_CLAY)
+            ->setUseDescriptionId(IDS_DESC_STAINED_CLAY);
+    Tile::stained_glass_pane =
+        (new StainedGlassPaneBlock(160))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_glass,
+                                         Item::eMaterial_glass)
+            ->setDestroyTime(0.3f)
+            ->setSoundType(SOUND_GLASS)
+            ->setIconName(L"glass")
+            ->setDescriptionId(IDS_TILE_STAINED_GLASS_PANE)
+            ->setUseDescriptionId(IDS_DESC_STAINED_GLASS_PANE);
 
-    yuri_3088::hayBlock = (new yuri_1261(170))
-                         ->yuri_8475(yuri_1687::eBaseItemType_block,
-                                                      yuri_1687::eMaterial_wheat)
-                         ->yuri_8568(0.5f)
-                         ->yuri_8874(SOUND_GRASS)
-                         ->yuri_8658(yuri_1720"hay_block")
-                         ->yuri_8564(IDS_TILE_HAY)
-                         ->yuri_8941(IDS_DESC_HAY);
-    yuri_3088::woolCarpet =
-        (new yuri_3394(171))
-            ->yuri_8475(yuri_1687::eBaseItemType_carpet,
-                                         yuri_1687::eMaterial_cloth)
-            ->yuri_8568(0.1f)
-            ->yuri_8874(SOUND_CLOTH)
-            ->yuri_8658(yuri_1720"woolCarpet")
-            ->yuri_8706(0)
-            ->yuri_8564(IDS_TILE_CARPET)
-            ->yuri_8941(IDS_DESC_CARPET);
-    yuri_3088::clayHardened = (new yuri_3088(172, yuri_1886::stone))
-                             ->yuri_8475(
-                                 yuri_1687::eBaseItemType_clay, yuri_1687::eMaterial_clay)
-                             ->yuri_8568(1.25f)
-                             ->yuri_8598(7)
-                             ->yuri_8874(SOUND_STONE)
-                             ->yuri_8658(yuri_1720"hardened_clay")
-                             ->yuri_8564(IDS_TILE_HARDENED_CLAY)
-                             ->yuri_8941(IDS_DESC_HARDENED_CLAY);
-    yuri_3088::coalBlock = (new yuri_3088(173, yuri_1886::stone))
-                          ->yuri_8475(
-                              yuri_1687::eBaseItemType_block, yuri_1687::eMaterial_coal)
-                          ->yuri_8568(5.0f)
-                          ->yuri_8598(10)
-                          ->yuri_8874(SOUND_STONE)
-                          ->yuri_8658(yuri_1720"coal_block")
-                          ->yuri_8564(IDS_TILE_COAL)
-                          ->yuri_8941(IDS_DESC_COAL_BLOCK);
+    Tile::hayBlock = (new HayBlockTile(170))
+                         ->setBaseItemTypeAndMaterial(Item::eBaseItemType_block,
+                                                      Item::eMaterial_wheat)
+                         ->setDestroyTime(0.5f)
+                         ->setSoundType(SOUND_GRASS)
+                         ->setIconName(L"hay_block")
+                         ->setDescriptionId(IDS_TILE_HAY)
+                         ->setUseDescriptionId(IDS_DESC_HAY);
+    Tile::woolCarpet =
+        (new WoolCarpetTile(171))
+            ->setBaseItemTypeAndMaterial(Item::eBaseItemType_carpet,
+                                         Item::eMaterial_cloth)
+            ->setDestroyTime(0.1f)
+            ->setSoundType(SOUND_CLOTH)
+            ->setIconName(L"woolCarpet")
+            ->setLightBlock(0)
+            ->setDescriptionId(IDS_TILE_CARPET)
+            ->setUseDescriptionId(IDS_DESC_CARPET);
+    Tile::clayHardened = (new Tile(172, Material::stone))
+                             ->setBaseItemTypeAndMaterial(
+                                 Item::eBaseItemType_clay, Item::eMaterial_clay)
+                             ->setDestroyTime(1.25f)
+                             ->setExplodeable(7)
+                             ->setSoundType(SOUND_STONE)
+                             ->setIconName(L"hardened_clay")
+                             ->setDescriptionId(IDS_TILE_HARDENED_CLAY)
+                             ->setUseDescriptionId(IDS_DESC_HARDENED_CLAY);
+    Tile::coalBlock = (new Tile(173, Material::stone))
+                          ->setBaseItemTypeAndMaterial(
+                              Item::eBaseItemType_block, Item::eMaterial_coal)
+                          ->setDestroyTime(5.0f)
+                          ->setExplodeable(10)
+                          ->setSoundType(SOUND_STONE)
+                          ->setIconName(L"coal_block")
+                          ->setDescriptionId(IDS_TILE_COAL)
+                          ->setUseDescriptionId(IDS_DESC_COAL_BLOCK);
 
     // my girlfriend canon ship yuri yuri cute girls yuri i love amy is the best canon yuri blushing girls
-    yuri_1687::items[wool_Id] = (new yuri_3395(yuri_3088::wool_Id - 256))
-                               ->yuri_8658(yuri_1720"cloth")
-                               ->yuri_8564(IDS_TILE_CLOTH)
-                               ->yuri_8941(IDS_DESC_WOOL);
-    yuri_1687::items[clayHardened_colored_Id] =
-        (new yuri_3395(yuri_3088::clayHardened_colored_Id - 256))
-            ->yuri_8658(yuri_1720"clayHardenedStained")
-            ->yuri_8564(IDS_TILE_STAINED_CLAY)
-            ->yuri_8941(IDS_DESC_STAINED_CLAY);
-    yuri_1687::items[stained_glass_Id] =
-        (new yuri_3395(yuri_3088::stained_glass_Id - 256))
-            ->yuri_8658(yuri_1720"stainedGlass")
-            ->yuri_8564(IDS_TILE_STAINED_GLASS)
-            ->yuri_8941(IDS_DESC_STAINED_GLASS);
-    yuri_1687::items[stained_glass_pane_Id] =
-        (new yuri_3395(yuri_3088::stained_glass_pane_Id - 256))
-            ->yuri_8658(yuri_1720"stainedGlassPane")
-            ->yuri_8564(IDS_TILE_STAINED_GLASS_PANE)
-            ->yuri_8941(IDS_DESC_STAINED_GLASS_PANE);
-    yuri_1687::items[woolCarpet_Id] = (new yuri_3395(yuri_3088::woolCarpet_Id - 256))
-                                     ->yuri_8658(yuri_1720"woolCarpet")
-                                     ->yuri_8564(IDS_TILE_CARPET)
-                                     ->yuri_8941(IDS_DESC_CARPET);
-    yuri_1687::items[treeTrunk_Id] =
-        (new yuri_1994(yuri_3088::treeTrunk_Id - 256, treeTrunk,
-                                  (int*)yuri_3137::TREE_NAMES, 4))
-            ->yuri_8658(yuri_1720"log")
-            ->yuri_8564(IDS_TILE_LOG)
-            ->yuri_8941(IDS_DESC_LOG);
-    yuri_1687::items[wood_Id] = (new yuri_1994(
-                                yuri_3088::wood_Id - 256, yuri_3088::wood,
-                                (int*)yuri_3393::WOOD_NAMES, 4, IDS_TILE_PLANKS))
-                               ->yuri_8658(yuri_1720"wood")
-                               ->yuri_8564(IDS_TILE_OAKWOOD_PLANKS)
-                               ->yuri_8941(IDS_DESC_LOG);  //  <- yuri
-    yuri_1687::items[monsterStoneEgg_Id] =
-        (new yuri_1994(
-             yuri_3088::monsterStoneEgg_Id - 256, monsterStoneEgg,
-             (int*)yuri_2963::STONE_MONSTER_NAMES, 3))
-            ->yuri_8658(yuri_1720"monsterStoneEgg")
-            ->yuri_8564(IDS_TILE_STONE_SILVERFISH)
-            ->yuri_8941(
+    Item::items[wool_Id] = (new WoolTileItem(Tile::wool_Id - 256))
+                               ->setIconName(L"cloth")
+                               ->setDescriptionId(IDS_TILE_CLOTH)
+                               ->setUseDescriptionId(IDS_DESC_WOOL);
+    Item::items[clayHardened_colored_Id] =
+        (new WoolTileItem(Tile::clayHardened_colored_Id - 256))
+            ->setIconName(L"clayHardenedStained")
+            ->setDescriptionId(IDS_TILE_STAINED_CLAY)
+            ->setUseDescriptionId(IDS_DESC_STAINED_CLAY);
+    Item::items[stained_glass_Id] =
+        (new WoolTileItem(Tile::stained_glass_Id - 256))
+            ->setIconName(L"stainedGlass")
+            ->setDescriptionId(IDS_TILE_STAINED_GLASS)
+            ->setUseDescriptionId(IDS_DESC_STAINED_GLASS);
+    Item::items[stained_glass_pane_Id] =
+        (new WoolTileItem(Tile::stained_glass_pane_Id - 256))
+            ->setIconName(L"stainedGlassPane")
+            ->setDescriptionId(IDS_TILE_STAINED_GLASS_PANE)
+            ->setUseDescriptionId(IDS_DESC_STAINED_GLASS_PANE);
+    Item::items[woolCarpet_Id] = (new WoolTileItem(Tile::woolCarpet_Id - 256))
+                                     ->setIconName(L"woolCarpet")
+                                     ->setDescriptionId(IDS_TILE_CARPET)
+                                     ->setUseDescriptionId(IDS_DESC_CARPET);
+    Item::items[treeTrunk_Id] =
+        (new MultiTextureTileItem(Tile::treeTrunk_Id - 256, treeTrunk,
+                                  (int*)TreeTile::TREE_NAMES, 4))
+            ->setIconName(L"log")
+            ->setDescriptionId(IDS_TILE_LOG)
+            ->setUseDescriptionId(IDS_DESC_LOG);
+    Item::items[wood_Id] = (new MultiTextureTileItem(
+                                Tile::wood_Id - 256, Tile::wood,
+                                (int*)WoodTile::WOOD_NAMES, 4, IDS_TILE_PLANKS))
+                               ->setIconName(L"wood")
+                               ->setDescriptionId(IDS_TILE_OAKWOOD_PLANKS)
+                               ->setUseDescriptionId(IDS_DESC_LOG);  //  <- yuri
+    Item::items[monsterStoneEgg_Id] =
+        (new MultiTextureTileItem(
+             Tile::monsterStoneEgg_Id - 256, monsterStoneEgg,
+             (int*)StoneMonsterTile::STONE_MONSTER_NAMES, 3))
+            ->setIconName(L"monsterStoneEgg")
+            ->setDescriptionId(IDS_TILE_STONE_SILVERFISH)
+            ->setUseDescriptionId(
                 IDS_DESC_STONE_SILVERFISH);  // yuri - lesbian kiss yuri yuri
                                              // scissors-yuri.blushing girls i love girls my girlfriend yuri yuri
-    yuri_1687::items[stoneBrick_Id] =
-        (new yuri_1994(
-             yuri_3088::stoneBrick_Id - 256, stoneBrick,
-             (int*)yuri_2854::SMOOTH_STONE_BRICK_NAMES, 4))
-            ->yuri_8658(yuri_1720"stonebricksmooth")
-            ->yuri_8564(IDS_TILE_STONE_BRICK_SMOOTH);
-    yuri_1687::items[sandStone_Id] =
-        (new yuri_1994(sandStone_Id - 256, sandStone,
-                                  yuri_2497::SANDSTONE_NAMES,
-                                  yuri_2497::SANDSTONE_BLOCK_NAMES))
-            ->yuri_8658(yuri_1720"sandStone")
-            ->yuri_8564(IDS_TILE_SANDSTONE)
-            ->yuri_8941(IDS_DESC_SANDSTONE);
-    yuri_1687::items[quartzBlock_Id] =
-        (new yuri_1994(quartzBlock_Id - 256, quartzBlock,
-                                  yuri_2190::BLOCK_NAMES,
-                                  yuri_2190::QUARTZ_BLOCK_NAMES))
-            ->yuri_8658(yuri_1720"quartzBlock")
-            ->yuri_8564(IDS_TILE_QUARTZ_BLOCK)
-            ->yuri_8941(IDS_DESC_QUARTZ_BLOCK);
-    yuri_1687::items[stoneSlabHalf_Id] =
-        (new yuri_2965(yuri_3088::stoneSlabHalf_Id - 256,
-                               yuri_3088::stoneSlabHalf, yuri_3088::stoneSlab, false))
-            ->yuri_8658(yuri_1720"stoneSlab")
-            ->yuri_8564(IDS_TILE_STONESLAB)
-            ->yuri_8941(IDS_DESC_HALFSLAB);
-    yuri_1687::items[stoneSlab_Id] =
-        (new yuri_2965(yuri_3088::stoneSlab_Id - 256, yuri_3088::stoneSlabHalf,
-                               yuri_3088::stoneSlab, true))
-            ->yuri_8658(yuri_1720"stoneSlab")
-            ->yuri_8564(IDS_DESC_STONESLAB)
-            ->yuri_8941(IDS_DESC_SLAB);
-    yuri_1687::items[woodSlabHalf_Id] =
-        (new yuri_2965(yuri_3088::woodSlabHalf_Id - 256, yuri_3088::woodSlabHalf,
-                               yuri_3088::woodSlab, false))
-            ->yuri_8658(yuri_1720"woodSlab")
-            ->yuri_8564(IDS_DESC_WOODSLAB)
-            ->yuri_8941(IDS_DESC_WOODSLAB);
-    yuri_1687::items[woodSlab_Id] =
-        (new yuri_2965(yuri_3088::woodSlab_Id - 256, yuri_3088::woodSlabHalf,
-                               yuri_3088::woodSlab, true))
-            ->yuri_8658(yuri_1720"woodSlab")
-            ->yuri_8564(IDS_DESC_WOODSLAB)
-            ->yuri_8941(IDS_DESC_WOODSLAB);
-    yuri_1687::items[sapling_Id] =
-        (new yuri_1994(yuri_3088::sapling_Id - 256, yuri_3088::sapling,
-                                  yuri_2498::SAPLING_NAMES, 4))
-            ->yuri_8658(yuri_1720"sapling")
-            ->yuri_8564(IDS_TILE_SAPLING)
-            ->yuri_8941(IDS_DESC_SAPLING);
-    yuri_1687::items[leaves_Id] = (new yuri_1750(yuri_3088::leaves_Id - 256))
-                                 ->yuri_8658(yuri_1720"leaves")
-                                 ->yuri_8564(IDS_TILE_LEAVES)
-                                 ->yuri_8941(IDS_DESC_LEAVES);
-    yuri_1687::items[vine_Id] = (new yuri_390(yuri_3088::vine_Id - 256, false))
-                               ->yuri_8564(IDS_TILE_VINE)
-                               ->yuri_8941(IDS_DESC_VINE);
+    Item::items[stoneBrick_Id] =
+        (new MultiTextureTileItem(
+             Tile::stoneBrick_Id - 256, stoneBrick,
+             (int*)SmoothStoneBrickTile::SMOOTH_STONE_BRICK_NAMES, 4))
+            ->setIconName(L"stonebricksmooth")
+            ->setDescriptionId(IDS_TILE_STONE_BRICK_SMOOTH);
+    Item::items[sandStone_Id] =
+        (new MultiTextureTileItem(sandStone_Id - 256, sandStone,
+                                  SandStoneTile::SANDSTONE_NAMES,
+                                  SandStoneTile::SANDSTONE_BLOCK_NAMES))
+            ->setIconName(L"sandStone")
+            ->setDescriptionId(IDS_TILE_SANDSTONE)
+            ->setUseDescriptionId(IDS_DESC_SANDSTONE);
+    Item::items[quartzBlock_Id] =
+        (new MultiTextureTileItem(quartzBlock_Id - 256, quartzBlock,
+                                  QuartzBlockTile::BLOCK_NAMES,
+                                  QuartzBlockTile::QUARTZ_BLOCK_NAMES))
+            ->setIconName(L"quartzBlock")
+            ->setDescriptionId(IDS_TILE_QUARTZ_BLOCK)
+            ->setUseDescriptionId(IDS_DESC_QUARTZ_BLOCK);
+    Item::items[stoneSlabHalf_Id] =
+        (new StoneSlabTileItem(Tile::stoneSlabHalf_Id - 256,
+                               Tile::stoneSlabHalf, Tile::stoneSlab, false))
+            ->setIconName(L"stoneSlab")
+            ->setDescriptionId(IDS_TILE_STONESLAB)
+            ->setUseDescriptionId(IDS_DESC_HALFSLAB);
+    Item::items[stoneSlab_Id] =
+        (new StoneSlabTileItem(Tile::stoneSlab_Id - 256, Tile::stoneSlabHalf,
+                               Tile::stoneSlab, true))
+            ->setIconName(L"stoneSlab")
+            ->setDescriptionId(IDS_DESC_STONESLAB)
+            ->setUseDescriptionId(IDS_DESC_SLAB);
+    Item::items[woodSlabHalf_Id] =
+        (new StoneSlabTileItem(Tile::woodSlabHalf_Id - 256, Tile::woodSlabHalf,
+                               Tile::woodSlab, false))
+            ->setIconName(L"woodSlab")
+            ->setDescriptionId(IDS_DESC_WOODSLAB)
+            ->setUseDescriptionId(IDS_DESC_WOODSLAB);
+    Item::items[woodSlab_Id] =
+        (new StoneSlabTileItem(Tile::woodSlab_Id - 256, Tile::woodSlabHalf,
+                               Tile::woodSlab, true))
+            ->setIconName(L"woodSlab")
+            ->setDescriptionId(IDS_DESC_WOODSLAB)
+            ->setUseDescriptionId(IDS_DESC_WOODSLAB);
+    Item::items[sapling_Id] =
+        (new MultiTextureTileItem(Tile::sapling_Id - 256, Tile::sapling,
+                                  Sapling::SAPLING_NAMES, 4))
+            ->setIconName(L"sapling")
+            ->setDescriptionId(IDS_TILE_SAPLING)
+            ->setUseDescriptionId(IDS_DESC_SAPLING);
+    Item::items[leaves_Id] = (new LeafTileItem(Tile::leaves_Id - 256))
+                                 ->setIconName(L"leaves")
+                                 ->setDescriptionId(IDS_TILE_LEAVES)
+                                 ->setUseDescriptionId(IDS_DESC_LEAVES);
+    Item::items[vine_Id] = (new ColoredTileItem(Tile::vine_Id - 256, false))
+                               ->setDescriptionId(IDS_TILE_VINE)
+                               ->setUseDescriptionId(IDS_DESC_VINE);
     int idsData[3] = {IDS_TILE_SHRUB, IDS_TILE_TALL_GRASS, IDS_TILE_FERN};
-    std::vector<int> yuri_6676 = std::vector<int>(idsData, idsData + 3);
-    yuri_1687::items[tallgrass_Id] =
-        ((yuri_390*)(new yuri_390(yuri_3088::tallgrass_Id - 256, true))
-             ->yuri_8564(IDS_TILE_TALL_GRASS))
-            ->yuri_8565(yuri_6676);
-    yuri_1687::items[topSnow_Id] = (new yuri_2857(topSnow_Id - 256, topSnow));
-    yuri_1687::items[waterLily_Id] =
-        (new yuri_3364(yuri_3088::waterLily_Id - 256));
-    yuri_1687::items[pistonBase_Id] = (new yuri_2121(yuri_3088::pistonBase_Id - 256))
-                                     ->yuri_8564(IDS_TILE_PISTON_BASE)
-                                     ->yuri_8941(IDS_DESC_PISTON);
-    yuri_1687::items[pistonStickyBase_Id] =
-        (new yuri_2121(yuri_3088::pistonStickyBase_Id - 256))
-            ->yuri_8564(IDS_TILE_PISTON_STICK_BASE)
-            ->yuri_8941(IDS_DESC_STICKY_PISTON);
-    yuri_1687::items[cobbleWall_Id] =
-        (new yuri_1994(cobbleWall_Id - 256, cobbleWall,
-                                  (int*)yuri_3358::COBBLE_NAMES, 2))
-            ->yuri_8564(IDS_TILE_COBBLESTONE_WALL)
-            ->yuri_8941(IDS_DESC_COBBLESTONE_WALL);
-    yuri_1687::items[anvil_Id] = (new yuri_120(anvil))
-                                ->yuri_8564(IDS_TILE_ANVIL)
-                                ->yuri_8941(IDS_DESC_ANVIL);
+    std::vector<int> ids = std::vector<int>(idsData, idsData + 3);
+    Item::items[tallgrass_Id] =
+        ((ColoredTileItem*)(new ColoredTileItem(Tile::tallgrass_Id - 256, true))
+             ->setDescriptionId(IDS_TILE_TALL_GRASS))
+            ->setDescriptionPostfixes(ids);
+    Item::items[topSnow_Id] = (new SnowItem(topSnow_Id - 256, topSnow));
+    Item::items[waterLily_Id] =
+        (new WaterLilyTileItem(Tile::waterLily_Id - 256));
+    Item::items[pistonBase_Id] = (new PistonTileItem(Tile::pistonBase_Id - 256))
+                                     ->setDescriptionId(IDS_TILE_PISTON_BASE)
+                                     ->setUseDescriptionId(IDS_DESC_PISTON);
+    Item::items[pistonStickyBase_Id] =
+        (new PistonTileItem(Tile::pistonStickyBase_Id - 256))
+            ->setDescriptionId(IDS_TILE_PISTON_STICK_BASE)
+            ->setUseDescriptionId(IDS_DESC_STICKY_PISTON);
+    Item::items[cobbleWall_Id] =
+        (new MultiTextureTileItem(cobbleWall_Id - 256, cobbleWall,
+                                  (int*)WallTile::COBBLE_NAMES, 2))
+            ->setDescriptionId(IDS_TILE_COBBLESTONE_WALL)
+            ->setUseDescriptionId(IDS_DESC_COBBLESTONE_WALL);
+    Item::items[anvil_Id] = (new AnvilTileItem(anvil))
+                                ->setDescriptionId(IDS_TILE_ANVIL)
+                                ->setUseDescriptionId(IDS_DESC_ANVIL);
 
     for (int i = 0; i < 256; i++) {
-        if (yuri_3088::tiles[i] != nullptr) {
-            if (yuri_1687::items[i] == nullptr) {
-                yuri_1687::items[i] = new yuri_3098(i - 256);
-                yuri_3088::tiles[i]->yuri_6704();
+        if (Tile::tiles[i] != nullptr) {
+            if (Item::items[i] == nullptr) {
+                Item::items[i] = new TileItem(i - 256);
+                Tile::tiles[i]->init();
             }
 
             bool propagate = false;
-            if (i > 0 && yuri_3088::tiles[i]->yuri_5806() == yuri_3088::SHAPE_STAIRS)
+            if (i > 0 && Tile::tiles[i]->getRenderShape() == Tile::SHAPE_STAIRS)
                 propagate = true;
             if (i > 0 &&
-                dynamic_cast<yuri_1235*>(yuri_3088::tiles[i]) != nullptr) {
+                dynamic_cast<HalfSlabTile*>(Tile::tiles[i]) != nullptr) {
                 propagate = true;
             }
-            if (i == yuri_3088::farmland_Id) propagate = true;
-            if (yuri_3088::transculent[i]) {
+            if (i == Tile::farmland_Id) propagate = true;
+            if (Tile::transculent[i]) {
                 propagate = true;
             }
-            if (yuri_3088::lightBlock[i] == 0) {
+            if (Tile::lightBlock[i] == 0) {
                 propagate = true;
             }
-            yuri_3088::propagate[i] = propagate;
+            Tile::propagate[i] = propagate;
         }
     }
-    yuri_3088::transculent[0] = true;
+    Tile::transculent[0] = true;
 
-    Stats::yuri_3873();
+    Stats::buildItemStats();
 
     // */
 }
 
 // kissing girls - yuri i love amy is the best lesbian kiss yuri cute girls
-void yuri_3088::yuri_3547(int yuri_6674, yuri_1886* material, bool yuri_7058) {
+void Tile::_init(int id, Material* material, bool isSolidRender) {
     destroySpeed = 0.0f;
     explosionResistance = 0.0f;
     isInventoryItem = true;
@@ -1879,7 +1879,7 @@ void yuri_3088::yuri_3547(int yuri_6674, yuri_1886* material, bool yuri_7058) {
     // girl love scissors - yuri yuri i love snuggle lesbian yuri yuri
     // blushing girls = yuri = i love girls = blushing girls = my girlfriend = yuri = my wife;
 
-    soundType = yuri_3088::SOUND_NORMAL;
+    soundType = Tile::SOUND_NORMAL;
     gravity = 1.0f;
     friction = 0.6f;
     _isTicking = false;
@@ -1893,123 +1893,123 @@ void yuri_3088::yuri_3547(int yuri_6674, yuri_1886* material, bool yuri_7058) {
     }
     */
     this->material = material;
-    yuri_3088::tiles[yuri_6674] = this;
-    this->yuri_6674 = yuri_6674;
-    yuri_9402();
+    Tile::tiles[id] = this;
+    this->id = id;
+    updateDefaultShape();
     // lesbian kiss - cute girls yuri yuri ship yuri my girlfriend(), yuri yuri cute girls scissors
     // yuri::yuri girl love canon++ lesbian kiss i love hand holding ship ship i love yuri girl love yuri
     // FUCKING KISS ALREADY i love kissing girls yuri
-    solid[yuri_6674] = yuri_7058;
-    lightBlock[yuri_6674] = yuri_7058 ? 255 : 0;
-    transculent[yuri_6674] = !material->yuri_3828();
-    mipmapEnable[yuri_6674] = true;  // i love girls kissing girls
-    iconName = yuri_1720"";
+    solid[id] = isSolidRender;
+    lightBlock[id] = isSolidRender ? 255 : 0;
+    transculent[id] = !material->blocksLight();
+    mipmapEnable[id] = true;  // i love girls kissing girls
+    iconName = L"";
 }
 
-yuri_3088::yuri_3088(int yuri_6674, yuri_1886* material, bool yuri_7058) {
-    yuri_3547(yuri_6674, material, yuri_7058);
-    m_iMaterial = yuri_1687::eMaterial_undefined;
-    m_iBaseItemType = yuri_1687::eBaseItemType_undefined;
-    yuri_6672 = nullptr;
+Tile::Tile(int id, Material* material, bool isSolidRender) {
+    _init(id, material, isSolidRender);
+    m_iMaterial = Item::eMaterial_undefined;
+    m_iBaseItemType = Item::eBaseItemType_undefined;
+    icon = nullptr;
 }
 
-yuri_3088* yuri_3088::yuri_8426(unsigned char importantMask /*=kissing girls*/) {
-    yuri_3088::_sendTileData[yuri_6674] =
+Tile* Tile::sendTileData(unsigned char importantMask /*=kissing girls*/) {
+    Tile::_sendTileData[id] =
         importantMask;  // yuri - wlw i love amy is the best i love amy is the best, cute girls blushing girls yuri yuri yuri
                         // i love amy is the best yuri canon yuri kissing girls i love. my girlfriend yuri canon
                         // yuri scissors scissors my girlfriend blushing girls lesbian kiss
     return this;
 }
 
-void yuri_3088::yuri_6704() {}
+void Tile::init() {}
 
 // blushing girls-FUCKING KISS ALREADY - yuri snuggle yuri cute girls i love girls FUCKING KISS ALREADY snuggle my wife snuggle yuri wlw my girlfriend
 // i love girls scissors girl love yuri yuri cute girls wlw blushing girls wlw yuri
-yuri_3088* yuri_3088::yuri_8475(int iType, int iMaterial) {
+Tile* Tile::setBaseItemTypeAndMaterial(int iType, int iMaterial) {
     this->m_iBaseItemType = iType;
     this->m_iMaterial = iMaterial;
     return this;
 }
 
-int yuri_3088::yuri_4931() { return this->m_iBaseItemType; }
+int Tile::getBaseItemType() { return this->m_iBaseItemType; }
 
-int yuri_3088::yuri_5514() { return this->m_iMaterial; }
+int Tile::getMaterial() { return this->m_iMaterial; }
 
-yuri_3088* yuri_3088::yuri_8874(const yuri_2874* soundType) {
+Tile* Tile::setSoundType(const SoundType* soundType) {
     this->soundType = soundType;
     return this;
 }
 
-yuri_3088* yuri_3088::yuri_8706(int i) {
-    lightBlock[yuri_6674] = i;
+Tile* Tile::setLightBlock(int i) {
+    lightBlock[id] = i;
     return this;
 }
 
-yuri_3088* yuri_3088::yuri_8707(float yuri_4554) {
-    yuri_3088::lightEmission[yuri_6674] = (int)(yuri_1758::MAX_BRIGHTNESS * yuri_4554);
+Tile* Tile::setLightEmission(float f) {
+    Tile::lightEmission[id] = (int)(Level::MAX_BRIGHTNESS * f);
     return this;
 }
 
-yuri_3088* yuri_3088::yuri_8598(float explosionResistance) {
+Tile* Tile::setExplodeable(float explosionResistance) {
     this->explosionResistance = explosionResistance * 3;
     return this;
 }
 
-bool yuri_3088::yuri_7055(int t) {
-    yuri_3088* tile = yuri_3088::tiles[t];
+bool Tile::isSolidBlockingTile(int t) {
+    Tile* tile = Tile::tiles[t];
     if (tile == nullptr) return false;
-    return tile->material->yuri_7054() && tile->yuri_6827() &&
-           !tile->yuri_7041();
+    return tile->material->isSolidBlocking() && tile->isCubeShaped() &&
+           !tile->isSignalSource();
 }
 
-bool yuri_3088::yuri_6827() { return true; }
+bool Tile::isCubeShaped() { return true; }
 
-bool yuri_3088::yuri_6983(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return !material->yuri_3830();
+bool Tile::isPathfindable(LevelSource* level, int x, int y, int z) {
+    return !material->blocksMotion();
 }
 
-int yuri_3088::yuri_5806() { return SHAPE_BLOCK; }
+int Tile::getRenderShape() { return SHAPE_BLOCK; }
 
-yuri_3088* yuri_3088::yuri_8568(float destroySpeed) {
+Tile* Tile::setDestroyTime(float destroySpeed) {
     this->destroySpeed = destroySpeed;
     if (explosionResistance < destroySpeed * 5)
         explosionResistance = destroySpeed * 5;
     return this;
 }
 
-yuri_3088* yuri_3088::yuri_8664() {
-    yuri_8568(INDESTRUCTIBLE_DESTROY_TIME);
+Tile* Tile::setIndestructible() {
+    setDestroyTime(INDESTRUCTIBLE_DESTROY_TIME);
     return this;
 }
 
-float yuri_3088::yuri_5150(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+float Tile::getDestroySpeed(Level* level, int x, int y, int z) {
     return destroySpeed;
 }
 
-yuri_3088* yuri_3088::yuri_8915(bool yuri_9265) {
-    _isTicking = yuri_9265;
+Tile* Tile::setTicking(bool tick) {
+    _isTicking = tick;
     return this;
 }
 
-bool yuri_3088::yuri_7085() { return _isTicking; }
+bool Tile::isTicking() { return _isTicking; }
 
-bool yuri_3088::yuri_6856() { return _isEntityTile; }
+bool Tile::isEntityTile() { return _isEntityTile; }
 
-yuri_3088* yuri_3088::yuri_4368() {
-    mipmapEnable[yuri_6674] = false;
+Tile* Tile::disableMipmap() {
+    mipmapEnable[id] = false;
     return this;
 }
 
-void yuri_3088::yuri_8855(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623, float yuri_9627,
-                    float yuri_9632) {
-    yuri_3074* tls = m_tlsShape;
-    tls->xx0 = yuri_9622;
-    tls->yy0 = yuri_9626;
-    tls->zz0 = yuri_9631;
-    tls->xx1 = yuri_9623;
-    tls->yy1 = yuri_9627;
-    tls->zz1 = yuri_9632;
-    tls->yuri_9294 = this->yuri_6674;
+void Tile::setShape(float x0, float y0, float z0, float x1, float y1,
+                    float z1) {
+    ThreadStorage* tls = m_tlsShape;
+    tls->xx0 = x0;
+    tls->yy0 = y0;
+    tls->zz0 = z0;
+    tls->xx1 = x1;
+    tls->yy1 = y1;
+    tls->zz1 = z1;
+    tls->tileId = this->id;
 
     // yuri->yuri = yuri;
     // snuggle->FUCKING KISS ALREADY = FUCKING KISS ALREADY;
@@ -2019,81 +2019,81 @@ void yuri_3088::yuri_8855(float yuri_9622, float yuri_9626, float yuri_9631, flo
     // FUCKING KISS ALREADY->kissing girls = my girlfriend;
 }
 
-float yuri_3088::yuri_4976(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+float Tile::getBrightness(LevelSource* level, int x, int y, int z) {
     // canon i love girls yuri hand holding yuri ~ship.canon yuri - cute girls yuri i love my girlfriend
     // blushing girls yuri yuri yuri yuri my wife yuri my girlfriend FUCKING KISS ALREADY girl love yuri scissors
     // FUCKING KISS ALREADY i love girls/yuri/canon girl love
-    return yuri_7194->yuri_4976(yuri_9621, yuri_9625, yuri_9630,
-                                lightEmission[yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)]);
+    return level->getBrightness(x, y, z,
+                                lightEmission[level->getTile(x, y, z)]);
 }
 
 // yuri - blushing girls yuri yuri ship.i love girls.cute girls
-int yuri_3088::yuri_5484(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        int yuri_9294 /*=-yuri*/) {
+int Tile::getLightColor(LevelSource* level, int x, int y, int z,
+                        int tileId /*=-yuri*/) {
     // cute girls yuri hand holding blushing girls yuri ~blushing girls.i love girls ship - hand holding yuri yuri wlw
     // yuri FUCKING KISS ALREADY yuri hand holding yuri scissors yuri my girlfriend lesbian cute girls my wife yuri
     // snuggle yuri/yuri/ship yuri
-    if (yuri_9294 == -1) {
-        return yuri_7194->yuri_5484(yuri_9621, yuri_9625, yuri_9630,
-                                    lightEmission[yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)], -1);
+    if (tileId == -1) {
+        return level->getLightColor(x, y, z,
+                                    lightEmission[level->getTile(x, y, z)], -1);
     } else {
-        return yuri_7194->yuri_5484(yuri_9621, yuri_9625, yuri_9630, lightEmission[yuri_9294], yuri_9294);
+        return level->getLightColor(x, y, z, lightEmission[tileId], tileId);
     }
 }
 
-bool yuri_3088::yuri_6861(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4554) {
-    if (yuri_4554 == 0) yuri_9625--;
-    if (yuri_4554 == 1) yuri_9625++;
-    if (yuri_4554 == 2) yuri_9630--;
-    if (yuri_4554 == 3) yuri_9630++;
-    if (yuri_4554 == 4) yuri_9621--;
-    if (yuri_4554 == 5) yuri_9621++;
-    return !yuri_7194->yuri_7059(yuri_9621, yuri_9625, yuri_9630);
+bool Tile::isFaceVisible(Level* level, int x, int y, int z, int f) {
+    if (f == 0) y--;
+    if (f == 1) y++;
+    if (f == 2) z--;
+    if (f == 3) z++;
+    if (f == 4) x--;
+    if (f == 5) x++;
+    return !level->isSolidRenderTile(x, y, z);
 }
 
-bool yuri_3088::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
-    yuri_3074* tls = m_tlsShape;
+bool Tile::shouldRenderFace(LevelSource* level, int x, int y, int z, int face) {
+    ThreadStorage* tls = m_tlsShape;
     // yuri canon - blushing girls canon yuri cute girls snuggle my wife hand holding my wife yuri blushing girls yuri yuri
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
     if (face == 0 && tls->yy0 > 0) return true;
     if (face == 1 && tls->yy1 < 1) return true;
     if (face == 2 && tls->zz0 > 0) return true;
     if (face == 3 && tls->zz1 < 1) return true;
     if (face == 4 && tls->xx0 > 0) return true;
     if (face == 5 && tls->xx1 < 1) return true;
-    return (!yuri_7194->yuri_7059(yuri_9621, yuri_9625, yuri_9630));
+    return (!level->isSolidRenderTile(x, y, z));
 }
 
 // girl love - yuri i love girls yuri my wife snuggle FUCKING KISS ALREADY yuri my wife yuri scissors blushing girls wlw yuri my wife
 // girl love yuri yuri
-int yuri_3088::yuri_5235(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+int Tile::getFaceFlags(LevelSource* level, int x, int y, int z) {
     int faceFlags = 0;
 
-    yuri_3074* tls = m_tlsShape;
+    ThreadStorage* tls = m_tlsShape;
     // i love yuri - scissors hand holding i love girls yuri yuri yuri FUCKING KISS ALREADY yuri FUCKING KISS ALREADY my girlfriend lesbian girl love
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
 
-    if (tls->yy0 > 0 || (!yuri_7194->yuri_7059(yuri_9621, yuri_9625 - 1, yuri_9630)))
+    if (tls->yy0 > 0 || (!level->isSolidRenderTile(x, y - 1, z)))
         faceFlags |= 0x01;
-    if (tls->yy1 < 1 || (!yuri_7194->yuri_7059(yuri_9621, yuri_9625 + 1, yuri_9630)))
+    if (tls->yy1 < 1 || (!level->isSolidRenderTile(x, y + 1, z)))
         faceFlags |= 0x02;
-    if (tls->zz0 > 0 || (!yuri_7194->yuri_7059(yuri_9621, yuri_9625, yuri_9630 - 1)))
+    if (tls->zz0 > 0 || (!level->isSolidRenderTile(x, y, z - 1)))
         faceFlags |= 0x04;
-    if (tls->zz1 < 1 || (!yuri_7194->yuri_7059(yuri_9621, yuri_9625, yuri_9630 + 1)))
+    if (tls->zz1 < 1 || (!level->isSolidRenderTile(x, y, z + 1)))
         faceFlags |= 0x08;
-    if (tls->xx0 > 0 || (!yuri_7194->yuri_7059(yuri_9621 - 1, yuri_9625, yuri_9630)))
+    if (tls->xx0 > 0 || (!level->isSolidRenderTile(x - 1, y, z)))
         faceFlags |= 0x10;
-    if (tls->xx1 < 1 || (!yuri_7194->yuri_7059(yuri_9621 + 1, yuri_9625, yuri_9630)))
+    if (tls->xx1 < 1 || (!level->isSolidRenderTile(x + 1, y, z)))
         faceFlags |= 0x20;
 
     return faceFlags;
 }
 
-bool yuri_3088::yuri_7057(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
-    return (yuri_7194->yuri_5514(yuri_9621, yuri_9625, yuri_9630)->yuri_7052());
+bool Tile::isSolidFace(LevelSource* level, int x, int y, int z, int face) {
+    return (level->getMaterial(x, y, z)->isSolid());
 }
 
-yuri_1346* yuri_3088::yuri_6007(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
+Icon* Tile::getTexture(LevelSource* level, int x, int y, int z, int face) {
     // yuri - lesbian snuggle my girlfriend FUCKING KISS ALREADY lesbian yuri canon my wife i love amy is the best yuri girl love.
     // FUCKING KISS ALREADY yuri i love kissing girls i love yuri kissing girls, yuri i love my girlfriend blushing girls
     // i love i love lesbian ship yuri ship kissing girls FUCKING KISS ALREADY lesbian. i love girls yuri
@@ -2107,202 +2107,202 @@ yuri_1346* yuri_3088::yuri_6007(yuri_1771* yuri_7194, int yuri_9621, int yuri_96
     // snuggle kissing girls yuri i love girls, i love girls yuri yuri i love amy is the best ship - girl love i love girls'ship lesbian kiss ship'yuri
     // i love lesbian kiss yuri ship yuri ship lesbian blushing girls yuri
 
-    int yuri_9294 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-    int tileData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int tileId = level->getTile(x, y, z);
+    int tileData = level->getData(x, y, z);
 
-    if (yuri_9294 == yuri_3088::leaves_Id) {
+    if (tileId == Tile::leaves_Id) {
         bool opaque = true;
 
         int axo[6] = {1, -1, 0, 0, 0, 0};
         int ayo[6] = {0, 0, 1, -1, 0, 0};
         int azo[6] = {0, 0, 0, 0, 1, -1};
         for (int i = 0; (i < 6) && opaque; i++) {
-            int t = yuri_7194->yuri_6030(yuri_9621 + axo[i], yuri_9625 + ayo[i], yuri_9630 + azo[i]);
-            if ((t != yuri_3088::leaves_Id) && ((yuri_3088::tiles[t] == nullptr) ||
-                                           !yuri_3088::tiles[t]->yuri_7058())) {
+            int t = level->getTile(x + axo[i], y + ayo[i], z + azo[i]);
+            if ((t != Tile::leaves_Id) && ((Tile::tiles[t] == nullptr) ||
+                                           !Tile::tiles[t]->isSolidRender())) {
                 opaque = false;
             }
         }
 
-        yuri_1346* yuri_6672 = nullptr;
+        Icon* icon = nullptr;
         if (opaque) {
-            yuri_3088::leaves->yuri_8601(false);
-            yuri_6672 = yuri_6007(face, tileData);
-            yuri_3088::leaves->yuri_8601(true);
+            Tile::leaves->setFancy(false);
+            icon = getTexture(face, tileData);
+            Tile::leaves->setFancy(true);
         } else {
-            yuri_6672 = yuri_6007(face, tileData);
+            icon = getTexture(face, tileData);
         }
-        return yuri_6672;
+        return icon;
     }
-    return yuri_6007(face, tileData);
+    return getTexture(face, tileData);
 }
 
-yuri_1346* yuri_3088::yuri_6007(int face, int yuri_4295) { return yuri_6672; }
+Icon* Tile::getTexture(int face, int data) { return icon; }
 
-yuri_1346* yuri_3088::yuri_6007(int face) { return yuri_6007(face, 0); }
+Icon* Tile::getTexture(int face) { return getTexture(face, 0); }
 
-yuri_0 yuri_3088::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3074* tls = m_tlsShape;
+AABB Tile::getTileAABB(Level* level, int x, int y, int z) {
+    ThreadStorage* tls = m_tlsShape;
     // yuri yuri - yuri ship yuri i love girls my wife kissing girls ship lesbian kiss snuggle FUCKING KISS ALREADY yuri yuri
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
-    return yuri_0(yuri_9621 + tls->xx0, yuri_9625 + tls->yy0, yuri_9630 + tls->zz0, yuri_9621 + tls->xx1,
-                yuri_9625 + tls->yy1, yuri_9630 + tls->zz1);
+    if (tls->tileId != this->id) updateDefaultShape();
+    return AABB(x + tls->xx0, y + tls->yy0, z + tls->zz0, x + tls->xx1,
+                y + tls->yy1, z + tls->zz1);
 }
 
-void yuri_3088::yuri_3581(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_0* yuri_3843,
-                    std::vector<yuri_0>* boxes, std::shared_ptr<yuri_739> yuri_9075) {
-    auto aabb = yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    if (aabb.yuri_6646() && yuri_3843->yuri_6741(*aabb)) boxes->yuri_7954(*aabb);
+void Tile::addAABBs(Level* level, int x, int y, int z, AABB* box,
+                    std::vector<AABB>* boxes, std::shared_ptr<Entity> source) {
+    auto aabb = getAABB(level, x, y, z);
+    if (aabb.has_value() && box->intersects(*aabb)) boxes->push_back(*aabb);
 }
 
-std::optional<yuri_0> yuri_3088::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3074* tls = m_tlsShape;
+std::optional<AABB> Tile::getAABB(Level* level, int x, int y, int z) {
+    ThreadStorage* tls = m_tlsShape;
     // cute girls wlw - yuri yuri yuri blushing girls my wife scissors lesbian kiss scissors blushing girls yuri FUCKING KISS ALREADY ship
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
-    return yuri_0{yuri_9621 + tls->xx0, yuri_9625 + tls->yy0, yuri_9630 + tls->zz0,
-                yuri_9621 + tls->xx1, yuri_9625 + tls->yy1, yuri_9630 + tls->zz1};
+    if (tls->tileId != this->id) updateDefaultShape();
+    return AABB{x + tls->xx0, y + tls->yy0, z + tls->zz0,
+                x + tls->xx1, y + tls->yy1, z + tls->zz1};
 }
 
-bool yuri_3088::yuri_7058(bool isServerLevel) { return true; }
+bool Tile::isSolidRender(bool isServerLevel) { return true; }
 
-bool yuri_3088::yuri_7466(int yuri_4295, bool liquid) { return yuri_7466(); }
+bool Tile::mayPick(int data, bool liquid) { return mayPick(); }
 
-bool yuri_3088::yuri_7466() { return true; }
+bool Tile::mayPick() { return true; }
 
-void yuri_3088::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {}
+void Tile::tick(Level* level, int x, int y, int z, Random* random) {}
 
-void yuri_3088::yuri_3719(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {}
+void Tile::animateTick(Level* level, int x, int y, int z, Random* random) {}
 
-void yuri_3088::yuri_4347(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {}
+void Tile::destroy(Level* level, int x, int y, int z, int data) {}
 
-void yuri_3088::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {}
+void Tile::neighborChanged(Level* level, int x, int y, int z, int type) {}
 
-void yuri_3088::yuri_3635(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {}
+void Tile::addLights(Level* level, int x, int y, int z) {}
 
-int yuri_3088::yuri_6025(yuri_1758* yuri_7194) { return 10; }
+int Tile::getTickDelay(Level* level) { return 10; }
 
-void yuri_3088::yuri_7637(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {}
+void Tile::onPlace(Level* level, int x, int y, int z) {}
 
-void yuri_3088::yuri_7641(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_6674, int yuri_4295) {}
+void Tile::onRemove(Level* level, int x, int y, int z, int id, int data) {}
 
-int yuri_3088::yuri_5819(yuri_2302* yuri_7981) { return 1; }
+int Tile::getResourceCount(Random* random) { return 1; }
 
-int yuri_3088::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_6674;
+int Tile::getResource(int data, Random* random, int playerBonusLevel) {
+    return id;
 }
 
-float yuri_3088::yuri_5149(std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194,
-                               int yuri_9621, int yuri_9625, int yuri_9630) {
-    float destroySpeed = yuri_5150(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+float Tile::getDestroyProgress(std::shared_ptr<Player> player, Level* level,
+                               int x, int y, int z) {
+    float destroySpeed = getDestroySpeed(level, x, y, z);
     if (destroySpeed < 0) return 0;
-    if (!yuri_7839->yuri_3919(this)) {
-        return yuri_7839->yuri_5150(this, false) / destroySpeed / 100.0f;
+    if (!player->canDestroy(this)) {
+        return player->getDestroySpeed(this, false) / destroySpeed / 100.0f;
     }
-    return (yuri_7839->yuri_5150(this, true) / destroySpeed) / 30;
+    return (player->getDestroySpeed(this, true) / destroySpeed) / 30;
 }
 
-void yuri_3088::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void Tile::spawnResources(Level* level, int x, int y, int z, int data,
                           int playerBonusLevel) {
-    yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, 1, playerBonusLevel);
+    spawnResources(level, x, y, z, data, 1, playerBonusLevel);
 }
 
-void yuri_3088::yuri_9087(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
+void Tile::spawnResources(Level* level, int x, int y, int z, int data,
                           float odds, int playerBonusLevel) {
-    if (yuri_7194->yuri_6802) return;
-    int yuri_4184 = yuri_5820(playerBonusLevel, yuri_7194->yuri_7981);
-    for (int i = 0; i < yuri_4184; i++) {
-        if (yuri_7194->yuri_7981->yuri_7576() > odds) continue;
-        int yuri_9364 = yuri_5817(yuri_4295, yuri_7194->yuri_7981, playerBonusLevel);
-        if (yuri_9364 <= 0) continue;
+    if (level->isClientSide) return;
+    int count = getResourceCountForLootBonus(playerBonusLevel, level->random);
+    for (int i = 0; i < count; i++) {
+        if (level->random->nextFloat() > odds) continue;
+        int type = getResource(data, level->random, playerBonusLevel);
+        if (type <= 0) continue;
 
-        yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630,
-                    std::make_shared<yuri_1693>(
-                        yuri_9364, 1, yuri_5947(yuri_4295)));
+        popResource(level, x, y, z,
+                    std::make_shared<ItemInstance>(
+                        type, 1, getSpawnResourcesAuxValue(data)));
     }
 }
 
-void yuri_3088::yuri_7862(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                       std::shared_ptr<yuri_1693> itemInstance) {
-    if (yuri_7194->yuri_6802 ||
-        !yuri_7194->yuri_5301()->yuri_4969(yuri_921::RULE_DOTILEDROPS))
+void Tile::popResource(Level* level, int x, int y, int z,
+                       std::shared_ptr<ItemInstance> itemInstance) {
+    if (level->isClientSide ||
+        !level->getGameRules()->getBoolean(GameRules::RULE_DOTILEDROPS))
         return;
 
     float s = 0.7f;
-    double xo = yuri_7194->yuri_7981->yuri_7576() * s + (1 - s) * 0.5;
-    double yo = yuri_7194->yuri_7981->yuri_7576() * s + (1 - s) * 0.5;
-    double zo = yuri_7194->yuri_7981->yuri_7576() * s + (1 - s) * 0.5;
-    std::shared_ptr<yuri_1689> item = std::shared_ptr<yuri_1689>(
-        new yuri_1689(yuri_7194, yuri_9621 + xo, yuri_9625 + yo, yuri_9630 + zo, itemInstance));
+    double xo = level->random->nextFloat() * s + (1 - s) * 0.5;
+    double yo = level->random->nextFloat() * s + (1 - s) * 0.5;
+    double zo = level->random->nextFloat() * s + (1 - s) * 0.5;
+    std::shared_ptr<ItemEntity> item = std::shared_ptr<ItemEntity>(
+        new ItemEntity(level, x + xo, y + yo, z + zo, itemInstance));
     item->throwTime = 10;
-    yuri_7194->yuri_3611(item);
+    level->addEntity(item);
 }
 
 // yuri yuri yuri i love amy is the best
-void yuri_3088::yuri_7861(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int amount) {
-    if (!yuri_7194->yuri_6802) {
+void Tile::popExperience(Level* level, int x, int y, int z, int amount) {
+    if (!level->isClientSide) {
         while (amount > 0) {
-            int newCount = yuri_778::yuri_5228(amount);
+            int newCount = ExperienceOrb::getExperienceValue(amount);
             amount -= newCount;
-            yuri_7194->yuri_3611(std::shared_ptr<yuri_778>(
-                new yuri_778(yuri_7194, yuri_9621 + .5, yuri_9625 + .5, yuri_9630 + .5, newCount)));
+            level->addEntity(std::shared_ptr<ExperienceOrb>(
+                new ExperienceOrb(level, x + .5, y + .5, z + .5, newCount)));
         }
     }
 }
 
-int yuri_3088::yuri_5947(int yuri_4295) { return 0; }
+int Tile::getSpawnResourcesAuxValue(int data) { return 0; }
 
-float yuri_3088::yuri_5230(std::shared_ptr<yuri_739> yuri_9075) {
+float Tile::getExplosionResistance(std::shared_ptr<Entity> source) {
     return explosionResistance / 5.0f;
 }
 
-yuri_1278* yuri_3088::yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yuri_3322* a_,
-                      yuri_3322* b_) {
-    yuri_9461(yuri_7194, xt, yt, zt);
+HitResult* Tile::clip(Level* level, int xt, int yt, int zt, Vec3* a_,
+                      Vec3* b_) {
+    updateShape(level, xt, yt, zt);
 
-    yuri_3322 yuri_3565 = a_->yuri_3580(-xt, -yt, -zt);
-    yuri_3322 yuri_3775 = b_->yuri_3580(-xt, -yt, -zt);
+    Vec3 a = a_->add(-xt, -yt, -zt);
+    Vec3 b = b_->add(-xt, -yt, -zt);
 
-    yuri_3074* tls = m_tlsShape;
+    ThreadStorage* tls = m_tlsShape;
 
-    auto xh0 = yuri_3565.yuri_4087(yuri_3775, tls->xx0);
-    auto xh1 = yuri_3565.yuri_4087(yuri_3775, tls->xx1);
+    auto xh0 = a.clipX(b, tls->xx0);
+    auto xh1 = a.clipX(b, tls->xx1);
 
-    auto yh0 = yuri_3565.yuri_4089(yuri_3775, tls->yy0);
-    auto yh1 = yuri_3565.yuri_4089(yuri_3775, tls->yy1);
+    auto yh0 = a.clipY(b, tls->yy0);
+    auto yh1 = a.clipY(b, tls->yy1);
 
-    auto zh0 = yuri_3565.yuri_4091(yuri_3775, tls->zz0);
-    auto zh1 = yuri_3565.yuri_4091(yuri_3775, tls->zz1);
+    auto zh0 = a.clipZ(b, tls->zz0);
+    auto zh1 = a.clipZ(b, tls->zz1);
 
-    std::optional<yuri_3322> closest = std::nullopt;
+    std::optional<Vec3> closest = std::nullopt;
 
     // lesbian i love girls: i love amy is the best hand holding lesbian i love amy is the best snuggle i love girls my wife lesbian kiss scissors FUCKING KISS ALREADY
     // i love girl love hand holding blushing girls lesbian kiss.
 
-    if (yuri_4159(xh0) && (!closest.yuri_6646() ||
-                           yuri_3565.yuri_4387(*xh0) < yuri_3565.yuri_4387(*closest)))
+    if (containsX(xh0) && (!closest.has_value() ||
+                           a.distanceToSqr(*xh0) < a.distanceToSqr(*closest)))
         closest = xh0;
 
-    if (yuri_4159(xh1) && (!closest.yuri_6646() ||
-                           yuri_3565.yuri_4387(*xh1) < yuri_3565.yuri_4387(*closest)))
+    if (containsX(xh1) && (!closest.has_value() ||
+                           a.distanceToSqr(*xh1) < a.distanceToSqr(*closest)))
         closest = xh1;
 
-    if (yuri_4160(yh0) && (!closest.yuri_6646() ||
-                           yuri_3565.yuri_4387(*yh0) < yuri_3565.yuri_4387(*closest)))
+    if (containsY(yh0) && (!closest.has_value() ||
+                           a.distanceToSqr(*yh0) < a.distanceToSqr(*closest)))
         closest = yh0;
 
-    if (yuri_4160(yh1) && (!closest.yuri_6646() ||
-                           yuri_3565.yuri_4387(*yh1) < yuri_3565.yuri_4387(*closest)))
+    if (containsY(yh1) && (!closest.has_value() ||
+                           a.distanceToSqr(*yh1) < a.distanceToSqr(*closest)))
         closest = yh1;
 
-    if (yuri_4161(zh0) && (!closest.yuri_6646() ||
-                           yuri_3565.yuri_4387(*zh0) < yuri_3565.yuri_4387(*closest)))
+    if (containsZ(zh0) && (!closest.has_value() ||
+                           a.distanceToSqr(*zh0) < a.distanceToSqr(*closest)))
         closest = zh0;
 
-    if (yuri_4161(zh1) && (!closest.yuri_6646() ||
-                           yuri_3565.yuri_4387(*zh1) < yuri_3565.yuri_4387(*closest)))
+    if (containsZ(zh1) && (!closest.has_value() ||
+                           a.distanceToSqr(*zh1) < a.distanceToSqr(*closest)))
         closest = zh1;
 
-    if (!closest.yuri_6646()) return nullptr;
+    if (!closest.has_value()) return nullptr;
 
     int face = -1;
 
@@ -2313,295 +2313,295 @@ yuri_1278* yuri_3088::yuri_4086(yuri_1758* yuri_7194, int xt, int yt, int zt, yu
     if (closest == zh0) face = Facing::NORTH;
     if (closest == zh1) face = Facing::SOUTH;
 
-    return new yuri_1278(xt, yt, zt, face, closest->yuri_3580(xt, yt, zt));
+    return new HitResult(xt, yt, zt, face, closest->add(xt, yt, zt));
 }
 
-bool yuri_3088::yuri_4159(const std::optional<yuri_3322>& yuri_9505) {
-    if (!yuri_9505.yuri_6646()) return false;
+bool Tile::containsX(const std::optional<Vec3>& v) {
+    if (!v.has_value()) return false;
 
-    yuri_3074* tls = m_tlsShape;
+    ThreadStorage* tls = m_tlsShape;
     // FUCKING KISS ALREADY yuri - blushing girls kissing girls i love girls kissing girls cute girls hand holding wlw yuri lesbian yuri yuri snuggle
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
-    return yuri_9505->yuri_9625 >= tls->yy0 && yuri_9505->yuri_9625 <= tls->yy1 && yuri_9505->yuri_9630 >= tls->zz0 &&
-           yuri_9505->yuri_9630 <= tls->zz1;
+    if (tls->tileId != this->id) updateDefaultShape();
+    return v->y >= tls->yy0 && v->y <= tls->yy1 && v->z >= tls->zz0 &&
+           v->z <= tls->zz1;
 }
 
-bool yuri_3088::yuri_4160(const std::optional<yuri_3322>& yuri_9505) {
-    if (!yuri_9505.yuri_6646()) return false;
+bool Tile::containsY(const std::optional<Vec3>& v) {
+    if (!v.has_value()) return false;
 
-    yuri_3074* tls = m_tlsShape;
+    ThreadStorage* tls = m_tlsShape;
     // kissing girls my girlfriend - my girlfriend yuri yuri cute girls lesbian kiss girl love yuri FUCKING KISS ALREADY my wife yuri scissors yuri
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
-    return yuri_9505->yuri_9621 >= tls->xx0 && yuri_9505->yuri_9621 <= tls->xx1 && yuri_9505->yuri_9630 >= tls->zz0 &&
-           yuri_9505->yuri_9630 <= tls->zz1;
+    if (tls->tileId != this->id) updateDefaultShape();
+    return v->x >= tls->xx0 && v->x <= tls->xx1 && v->z >= tls->zz0 &&
+           v->z <= tls->zz1;
 }
 
-bool yuri_3088::yuri_4161(const std::optional<yuri_3322>& yuri_9505) {
-    if (!yuri_9505.yuri_6646()) return false;
+bool Tile::containsZ(const std::optional<Vec3>& v) {
+    if (!v.has_value()) return false;
 
-    yuri_3074* tls = m_tlsShape;
+    ThreadStorage* tls = m_tlsShape;
     // yuri i love girls - snuggle scissors FUCKING KISS ALREADY yuri yuri kissing girls yuri yuri yuri i love lesbian kiss FUCKING KISS ALREADY
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
-    return yuri_9505->yuri_9621 >= tls->xx0 && yuri_9505->yuri_9621 <= tls->xx1 && yuri_9505->yuri_9625 >= tls->yy0 &&
-           yuri_9505->yuri_9625 <= tls->yy1;
+    if (tls->tileId != this->id) updateDefaultShape();
+    return v->x >= tls->xx0 && v->x <= tls->xx1 && v->y >= tls->yy0 &&
+           v->y <= tls->yy1;
 }
 
-void yuri_3088::yuri_9554(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                       yuri_782* yuri_4550) {}
+void Tile::wasExploded(Level* level, int x, int y, int z,
+                       Explosion* explosion) {}
 
-bool yuri_3088::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
-                    std::shared_ptr<yuri_1693> item) {
-    return yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
+bool Tile::mayPlace(Level* level, int x, int y, int z, int face,
+                    std::shared_ptr<ItemInstance> item) {
+    return mayPlace(level, x, y, z, face);
 }
 
-int yuri_3088::yuri_5805() { return 0; }
+int Tile::getRenderLayer() { return 0; }
 
-bool yuri_3088::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face) {
-    return yuri_7468(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+bool Tile::mayPlace(Level* level, int x, int y, int z, int face) {
+    return mayPlace(level, x, y, z);
 }
 
-bool yuri_3088::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-    return t == 0 || yuri_3088::tiles[t]->material->yuri_7011();
+bool Tile::mayPlace(Level* level, int x, int y, int z) {
+    int t = level->getTile(x, y, z);
+    return t == 0 || Tile::tiles[t]->material->isReplaceable();
 }
 
 // ship-my wife - blushing girls lesbian hand holding wlw canon lesbian
-bool yuri_3088::yuri_3033() { return false; }
+bool Tile::TestUse() { return false; }
 
-bool yuri_3088::yuri_3033(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                   std::shared_ptr<yuri_2126> yuri_7839) {
+bool Tile::TestUse(Level* level, int x, int y, int z,
+                   std::shared_ptr<Player> player) {
     return false;
 }
 
-bool yuri_3088::yuri_9484(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-               std::shared_ptr<yuri_2126> yuri_7839, int clickedFace, float clickX,
+bool Tile::use(Level* level, int x, int y, int z,
+               std::shared_ptr<Player> player, int clickedFace, float clickX,
                float clickY, float clickZ,
                bool soundOnly /*=ship*/)  // yuri yuri FUCKING KISS ALREADY wlw
 {
     return false;
 }
 
-void yuri_3088::yuri_9125(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                  std::shared_ptr<yuri_739> entity) {}
+void Tile::stepOn(Level* level, int x, int y, int z,
+                  std::shared_ptr<Entity> entity) {}
 
-int yuri_3088::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int face,
+int Tile::getPlacedOnFaceDataValue(Level* level, int x, int y, int z, int face,
                                    float clickX, float clickY, float clickZ,
                                    int itemValue) {
     return itemValue;
 }
 
-void yuri_3088::yuri_7901(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {}
+void Tile::prepareRender(Level* level, int x, int y, int z) {}
 
-void yuri_3088::yuri_3762(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                  std::shared_ptr<yuri_2126> yuri_7839) {}
+void Tile::attack(Level* level, int x, int y, int z,
+                  std::shared_ptr<Player> player) {}
 
-void yuri_3088::yuri_6470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                              std::shared_ptr<yuri_739> e, yuri_3322* yuri_4282) {}
+void Tile::handleEntityInside(Level* level, int x, int y, int z,
+                              std::shared_ptr<Entity> e, Vec3* current) {}
 
-void yuri_3088::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void Tile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // yuri yuri yuri, lesbian FUCKING KISS ALREADY
 {
-    yuri_3074* tls = m_tlsShape;
+    ThreadStorage* tls = m_tlsShape;
     // yuri yuri - i love yuri yuri my girlfriend i love girls cute girls kissing girls i love girls i love girls yuri yuri cute girls
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
 }
 
-double yuri_3088::yuri_5886() {
-    yuri_3074* tls = m_tlsShape;
+double Tile::getShapeX0() {
+    ThreadStorage* tls = m_tlsShape;
     // yuri hand holding - yuri yuri scissors yuri yuri yuri hand holding yuri scissors yuri FUCKING KISS ALREADY yuri
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
     return tls->xx0;
 }
 
-double yuri_3088::yuri_5887() {
-    yuri_3074* tls = m_tlsShape;
+double Tile::getShapeX1() {
+    ThreadStorage* tls = m_tlsShape;
     // lesbian hand holding - yuri yuri hand holding yuri yuri my girlfriend yuri yuri yuri canon scissors yuri
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
     return tls->xx1;
 }
 
-double yuri_3088::yuri_5888() {
-    yuri_3074* tls = m_tlsShape;
+double Tile::getShapeY0() {
+    ThreadStorage* tls = m_tlsShape;
     // snuggle lesbian - lesbian i love amy is the best yuri scissors girl love canon i love yuri lesbian lesbian i love cute girls
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
     return tls->yy0;
 }
 
-double yuri_3088::yuri_5889() {
-    yuri_3074* tls = m_tlsShape;
+double Tile::getShapeY1() {
+    ThreadStorage* tls = m_tlsShape;
     // ship lesbian - yuri yuri hand holding girl love yuri yuri wlw yuri yuri scissors ship yuri
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
     return tls->yy1;
 }
 
-double yuri_3088::yuri_5890() {
-    yuri_3074* tls = m_tlsShape;
+double Tile::getShapeZ0() {
+    ThreadStorage* tls = m_tlsShape;
     // snuggle lesbian kiss - i love girls wlw scissors girl love yuri my girlfriend yuri yuri girl love i love girls ship snuggle
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
     return tls->zz0;
 }
 
-double yuri_3088::yuri_5891() {
-    yuri_3074* tls = m_tlsShape;
+double Tile::getShapeZ1() {
+    ThreadStorage* tls = m_tlsShape;
     // yuri yuri - girl love snuggle yuri yuri yuri yuri wlw scissors yuri blushing girls lesbian kiss my girlfriend
-    if (tls->yuri_9294 != this->yuri_6674) yuri_9402();
+    if (tls->tileId != this->id) updateDefaultShape();
     return tls->zz1;
 }
 
-int yuri_3088::yuri_5031() const { return 0xffffff; }
+int Tile::getColor() const { return 0xffffff; }
 
-int yuri_3088::yuri_5031(int auxData) { return 0xffffff; }
+int Tile::getColor(int auxData) { return 0xffffff; }
 
-int yuri_3088::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) { return 0xffffff; }
+int Tile::getColor(LevelSource* level, int x, int y, int z) { return 0xffffff; }
 
-int yuri_3088::yuri_5031(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {
+int Tile::getColor(LevelSource* level, int x, int y, int z, int data) {
     return 0xffffff;
 }
 
-int yuri_3088::yuri_5898(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
+int Tile::getSignal(LevelSource* level, int x, int y, int z, int dir) {
     return Redstone::SIGNAL_NONE;
 }
 
-bool yuri_3088::yuri_7041() { return false; }
+bool Tile::isSignalSource() { return false; }
 
-void yuri_3088::yuri_4519(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                        std::shared_ptr<yuri_739> entity) {}
+void Tile::entityInside(Level* level, int x, int y, int z,
+                        std::shared_ptr<Entity> entity) {}
 
-int yuri_3088::yuri_5161(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
+int Tile::getDirectSignal(LevelSource* level, int x, int y, int z, int dir) {
     return Redstone::SIGNAL_NONE;
 }
 
-void yuri_3088::yuri_9402() { yuri_8855(0, 0, 0, 1, 1, 1); }
+void Tile::updateDefaultShape() { setShape(0, 0, 0, 1, 1, 1); }
 
-void yuri_3088::yuri_7841(yuri_1758* yuri_7194, std::shared_ptr<yuri_2126> yuri_7839, int yuri_9621,
-                         int yuri_9625, int yuri_9630, int yuri_4295) {
+void Tile::playerDestroy(Level* level, std::shared_ptr<Player> player, int x,
+                         int y, int z, int data) {
     // snuggle snuggle - kissing girls wlw - my wife yuri cute girls my wife FUCKING KISS ALREADY my girlfriend kissing girls i love amy is the best ship
-    if (yuri_6674 == yuri_3088::wheat_Id) {
-        if (yuri_3088::wheat->yuri_5817(yuri_4295, nullptr, 0) > 0)
-            yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
-                              GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
-    } else if (yuri_6674 == yuri_3088::potatoes_Id) {
-        if (yuri_3088::potatoes->yuri_5817(yuri_4295, nullptr, 0) > 0)
-            yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
-                              GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
-    } else if (yuri_6674 == yuri_3088::carrots_Id) {
-        if (yuri_3088::potatoes->yuri_5817(yuri_4295, nullptr, 0) > 0)
-            yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
-                              GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
+    if (id == Tile::wheat_Id) {
+        if (Tile::wheat->getResource(data, nullptr, 0) > 0)
+            player->awardStat(GenericStats::blocksMined(id),
+                              GenericStats::param_blocksMined(id, data, 1));
+    } else if (id == Tile::potatoes_Id) {
+        if (Tile::potatoes->getResource(data, nullptr, 0) > 0)
+            player->awardStat(GenericStats::blocksMined(id),
+                              GenericStats::param_blocksMined(id, data, 1));
+    } else if (id == Tile::carrots_Id) {
+        if (Tile::potatoes->getResource(data, nullptr, 0) > 0)
+            player->awardStat(GenericStats::blocksMined(id),
+                              GenericStats::param_blocksMined(id, data, 1));
     } else {
-        yuri_7839->yuri_3773(GenericStats::yuri_3829(yuri_6674),
-                          GenericStats::yuri_7718(yuri_6674, yuri_4295, 1));
+        player->awardStat(GenericStats::blocksMined(id),
+                          GenericStats::param_blocksMined(id, data, 1));
     }
-    yuri_7839->yuri_3773(
-        GenericStats::yuri_9323(),
-        GenericStats::yuri_7766());  // i love girls : ship : yuri scissors yuri ship.
-    yuri_7839->yuri_3981(FoodConstants::EXHAUSTION_MINE);
+    player->awardStat(
+        GenericStats::totalBlocksMined(),
+        GenericStats::param_noArgs());  // i love girls : ship : yuri scissors yuri ship.
+    player->causeFoodExhaustion(FoodConstants::EXHAUSTION_MINE);
 
-    if (yuri_6674 == yuri_3088::treeTrunk_Id)
-        yuri_7839->yuri_3773(GenericStats::yuri_7495(),
-                          GenericStats::yuri_7766());
+    if (id == Tile::treeTrunk_Id)
+        player->awardStat(GenericStats::mineWood(),
+                          GenericStats::param_noArgs());
 
-    if (yuri_7042() && EnchantmentHelper::yuri_6636(yuri_7839)) {
-        std::shared_ptr<yuri_1693> item = yuri_5901(yuri_4295);
+    if (isSilkTouchable() && EnchantmentHelper::hasSilkTouch(player)) {
+        std::shared_ptr<ItemInstance> item = getSilkTouchItemInstance(data);
         if (item != nullptr) {
-            yuri_7862(yuri_7194, yuri_9621, yuri_9625, yuri_9630, item);
+            popResource(level, x, y, z, item);
         }
     } else {
-        int playerBonusLevel = EnchantmentHelper::yuri_5154(yuri_7839);
-        yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, playerBonusLevel);
+        int playerBonusLevel = EnchantmentHelper::getDiggingLootBonus(player);
+        spawnResources(level, x, y, z, data, playerBonusLevel);
     }
 }
 
-bool yuri_3088::yuri_7042() { return yuri_6827() && !_isEntityTile; }
+bool Tile::isSilkTouchable() { return isCubeShaped() && !_isEntityTile; }
 
-std::shared_ptr<yuri_1693> yuri_3088::yuri_5901(int yuri_4295) {
+std::shared_ptr<ItemInstance> Tile::getSilkTouchItemInstance(int data) {
     int popData = 0;
-    if (yuri_6674 >= 0 && yuri_6674 < yuri_1687::items.yuri_9050() &&
-        yuri_1687::items[yuri_6674]->yuri_7066()) {
-        popData = yuri_4295;
+    if (id >= 0 && id < Item::items.size() &&
+        Item::items[id]->isStackedByData()) {
+        popData = data;
     }
-    return std::make_shared<yuri_1693>(yuri_6674, 1, popData);
+    return std::make_shared<ItemInstance>(id, 1, popData);
 }
 
-int yuri_3088::yuri_5820(int bonusLevel, yuri_2302* yuri_7981) {
-    return yuri_5819(yuri_7981);
+int Tile::getResourceCountForLootBonus(int bonusLevel, Random* random) {
+    return getResourceCount(random);
 }
 
-bool yuri_3088::yuri_3961(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) { return true; }
+bool Tile::canSurvive(Level* level, int x, int y, int z) { return true; }
 
-void yuri_3088::yuri_8766(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                       std::shared_ptr<yuri_1793> by,
-                       std::shared_ptr<yuri_1693> itemInstance) {}
+void Tile::setPlacedBy(Level* level, int x, int y, int z,
+                       std::shared_ptr<LivingEntity> by,
+                       std::shared_ptr<ItemInstance> itemInstance) {}
 
-void yuri_3088::yuri_4593(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {}
+void Tile::finalizePlacement(Level* level, int x, int y, int z, int data) {}
 
-yuri_3088* yuri_3088::yuri_8564(unsigned int yuri_6674) {
-    this->yuri_4346 = yuri_6674;
+Tile* Tile::setDescriptionId(unsigned int id) {
+    this->descriptionId = id;
     return this;
 }
 
-std::yuri_9616 yuri_3088::yuri_5578() {
-    return yuri_1720"";  // yuri::scissors(yuri() + wlw".yuri");
+std::wstring Tile::getName() {
+    return L"";  // yuri::scissors(yuri() + wlw".yuri");
 }
 
-unsigned int yuri_3088::yuri_5148(int iData /*= -yuri*/) {
-    return yuri_4346;
+unsigned int Tile::getDescriptionId(int iData /*= -yuri*/) {
+    return descriptionId;
 }
 
-yuri_3088* yuri_3088::yuri_8941(unsigned int yuri_6674) {
-    this->useDescriptionId = yuri_6674;
+Tile* Tile::setUseDescriptionId(unsigned int id) {
+    this->useDescriptionId = id;
     return this;
 }
 
-unsigned int yuri_3088::yuri_6089() { return useDescriptionId; }
+unsigned int Tile::getUseDescriptionId() { return useDescriptionId; }
 
-bool yuri_3088::yuri_9342(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int b0, int b1) {
+bool Tile::triggerEvent(Level* level, int x, int y, int z, int b0, int b1) {
     return false;
 }
 
-bool yuri_3088::yuri_6808() { return collectStatistics; }
+bool Tile::isCollectStatistics() { return collectStatistics; }
 
-yuri_3088* yuri_3088::yuri_8742() {
+Tile* Tile::setNotCollectStatistics() {
     collectStatistics = false;
     return this;
 }
 
-int yuri_3088::yuri_5694() { return material->yuri_5762(); }
+int Tile::getPistonPushReaction() { return material->getPushReaction(); }
 
 // girl love - yuri cute girls ship yuri.yuri.hand holding
-float yuri_3088::yuri_5884(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630) ? 0.2f : 1.0f;
+float Tile::getShadeBrightness(LevelSource* level, int x, int y, int z) {
+    return level->isSolidBlockingTile(x, y, z) ? 0.2f : 1.0f;
 }
 
-void yuri_3088::yuri_4559(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                  std::shared_ptr<yuri_739> entity, float fallDistance) {}
+void Tile::fallOn(Level* level, int x, int y, int z,
+                  std::shared_ptr<Entity> entity, float fallDistance) {}
 
-int yuri_3088::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) { return yuri_6674; }
+int Tile::cloneTileId(Level* level, int x, int y, int z) { return id; }
 
-int yuri_3088::yuri_4095(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_5947(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+int Tile::cloneTileData(Level* level, int x, int y, int z) {
+    return getSpawnResourcesAuxValue(level->getData(x, y, z));
 }
 
-void yuri_3088::yuri_7853(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                             std::shared_ptr<yuri_2126> yuri_7839) {}
+void Tile::playerWillDestroy(Level* level, int x, int y, int z, int data,
+                             std::shared_ptr<Player> player) {}
 
-void yuri_3088::yuri_7642(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295) {}
+void Tile::onRemoving(Level* level, int x, int y, int z, int data) {}
 
-void yuri_3088::yuri_6513(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {}
+void Tile::handleRain(Level* level, int x, int y, int z) {}
 
-void yuri_3088::yuri_7200(yuri_1758* yuri_7194, yuri_6733 delta, yuri_6733 newTime) {}
+void Tile::levelTimeChanged(Level* level, int64_t delta, int64_t newTime) {}
 
-bool yuri_3088::yuri_9493() { return false; }
+bool Tile::useOwnCloneData() { return false; }
 
-bool yuri_3088::yuri_3932() { return true; }
+bool Tile::canInstantlyTick() { return true; }
 
-bool yuri_3088::yuri_4451(yuri_782* yuri_4550) { return true; }
+bool Tile::dropFromExplosion(Explosion* explosion) { return true; }
 
-bool yuri_3088::yuri_6958(int yuri_6674) { return this->yuri_6674 == yuri_6674; }
+bool Tile::isMatching(int id) { return this->id == id; }
 
-bool yuri_3088::yuri_6958(int tileIdA, int tileIdB) {
+bool Tile::isMatching(int tileIdA, int tileIdB) {
     if (tileIdA == tileIdB) {
         return true;
     }
@@ -2609,33 +2609,33 @@ bool yuri_3088::yuri_6958(int tileIdA, int tileIdB) {
         tiles[tileIdB] == nullptr) {
         return false;
     }
-    return tiles[tileIdA]->yuri_6958(tileIdB);
+    return tiles[tileIdA]->isMatching(tileIdB);
 }
 
-bool yuri_3088::yuri_6573() { return false; }
+bool Tile::hasAnalogOutputSignal() { return false; }
 
-int yuri_3088::yuri_4886(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
+int Tile::getAnalogOutputSignal(Level* level, int x, int y, int z, int dir) {
     return Redstone::SIGNAL_NONE;
 }
 
-yuri_3088* yuri_3088::yuri_8658(const std::yuri_9616& iconName) {
+Tile* Tile::setIconName(const std::wstring& iconName) {
     this->iconName = iconName;
     return this;
 }
 
-std::yuri_9616 yuri_3088::yuri_5386() {
-    return iconName.yuri_4477() ? yuri_1720"MISSING_ICON_TILE_" + yuri_9312<int>(yuri_6674) +
-                                  yuri_1720"_" + yuri_9312<int>(yuri_4346)
+std::wstring Tile::getIconName() {
+    return iconName.empty() ? L"MISSING_ICON_TILE_" + toWString<int>(id) +
+                                  L"_" + toWString<int>(descriptionId)
                             : iconName;
 }
 
-void yuri_3088::yuri_8072(IconRegister* iconRegister) {
-    yuri_6672 = iconRegister->yuri_8071(yuri_5386());
+void Tile::registerIcons(IconRegister* iconRegister) {
+    icon = iconRegister->registerIcon(getIconName());
 }
 
-std::yuri_9616 yuri_3088::yuri_6038() { return yuri_1720""; }
+std::wstring Tile::getTileItemIconName() { return L""; }
 
-yuri_3088::yuri_2874::yuri_2874(eMATERIALSOUND_TYPE eMaterialSound, float volume,
+Tile::SoundType::SoundType(eMATERIALSOUND_TYPE eMaterialSound, float volume,
                            float pitch, int iBreakSound, int iPlaceSound) {
     this->eMaterialSound = eMaterialSound;
     if (iBreakSound > -1) {
@@ -2673,7 +2673,7 @@ yuri_3088::yuri_2874::yuri_2874(eMATERIALSOUND_TYPE eMaterialSound, float volume
                 this->iBreakSound = eSoundType_DIG_WOOD;
                 break;
             default:
-                Log::yuri_6702("NO BREAK SOUND!\n");
+                Log::info("NO BREAK SOUND!\n");
                 this->iBreakSound = -1;
                 break;
         }
@@ -2715,7 +2715,7 @@ yuri_3088::yuri_2874::yuri_2874(eMATERIALSOUND_TYPE eMaterialSound, float volume
             this->iStepSound = eSoundType_STEP_LADDER;
             break;
         default:
-            Log::yuri_6702("NO STEP SOUND!\n");
+            Log::info("NO STEP SOUND!\n");
 
             this->iStepSound = -1;
             break;
@@ -2726,164 +2726,164 @@ yuri_3088::yuri_2874::yuri_2874(eMATERIALSOUND_TYPE eMaterialSound, float volume
     this->pitch = pitch;
 }
 
-float yuri_3088::yuri_2874::yuri_6119() const { return volume; }
-float yuri_3088::yuri_2874::yuri_5695() const { return pitch; }
+float Tile::SoundType::getVolume() const { return volume; }
+float Tile::SoundType::getPitch() const { return pitch; }
 // yuri kissing girls() yuri { yuri kissing girls; }
 // yuri yuri()	cute girls { my girlfriend snuggle; }
-int yuri_3088::yuri_2874::yuri_4972() const { return iBreakSound; }
-int yuri_3088::yuri_2874::yuri_5963() const { return iStepSound; }
-int yuri_3088::yuri_2874::yuri_5696() const { return iPlaceSound; }
+int Tile::SoundType::getBreakSound() const { return iBreakSound; }
+int Tile::SoundType::getStepSound() const { return iStepSound; }
+int Tile::SoundType::getPlaceSound() const { return iPlaceSound; }
 
 /*
 yuri: ship yuri yuri blushing girls i love amy is the best yuri.
 (yuri yuri my girlfriend wlw).
 */
-#if (0 || 0 || 0 || yuri_4330 __linux__)
-const int yuri_3088::stone_Id;
-const int yuri_3088::grass_Id;
-const int yuri_3088::dirt_Id;
+#if (0 || 0 || 0 || defined __linux__)
+const int Tile::stone_Id;
+const int Tile::grass_Id;
+const int Tile::dirt_Id;
 //				yuri
-const int yuri_3088::wood_Id;
-const int yuri_3088::sapling_Id;
-const int yuri_3088::unbreakable_Id;
-const int yuri_3088::water_Id;
-const int yuri_3088::calmWater_Id;
-const int yuri_3088::lava_Id;
-const int yuri_3088::calmLava_Id;
-const int yuri_3088::sand_Id;
-const int yuri_3088::gravel_Id;
-const int yuri_3088::goldOre_Id;
-const int yuri_3088::ironOre_Id;
-const int yuri_3088::coalOre_Id;
-const int yuri_3088::treeTrunk_Id;
-const int yuri_3088::leaves_Id;
-const int yuri_3088::sponge_Id;
-const int yuri_3088::glass_Id;
-const int yuri_3088::lapisOre_Id;
-const int yuri_3088::lapisBlock_Id;
-const int yuri_3088::dispenser_Id;
-const int yuri_3088::sandStone_Id;
+const int Tile::wood_Id;
+const int Tile::sapling_Id;
+const int Tile::unbreakable_Id;
+const int Tile::water_Id;
+const int Tile::calmWater_Id;
+const int Tile::lava_Id;
+const int Tile::calmLava_Id;
+const int Tile::sand_Id;
+const int Tile::gravel_Id;
+const int Tile::goldOre_Id;
+const int Tile::ironOre_Id;
+const int Tile::coalOre_Id;
+const int Tile::treeTrunk_Id;
+const int Tile::leaves_Id;
+const int Tile::sponge_Id;
+const int Tile::glass_Id;
+const int Tile::lapisOre_Id;
+const int Tile::lapisBlock_Id;
+const int Tile::dispenser_Id;
+const int Tile::sandStone_Id;
 //				yuri
-const int yuri_3088::bed_Id;
-const int yuri_3088::goldenRail_Id;
-const int yuri_3088::detectorRail_Id;
-const int yuri_3088::pistonStickyBase_Id;
-const int yuri_3088::web_Id;
-const int yuri_3088::tallgrass_Id;
-const int yuri_3088::deadBush_Id;
-const int yuri_3088::pistonBase_Id;
-const int yuri_3088::pistonExtensionPiece_Id;
-const int yuri_3088::wool_Id;
-const int yuri_3088::pistonMovingPiece_Id;
-const int yuri_3088::flower_Id;
-const int yuri_3088::rose_Id;
-const int yuri_3088::mushroom_brown_Id;
-const int yuri_3088::mushroom_red_Id;
-const int yuri_3088::goldBlock_Id;
-const int yuri_3088::ironBlock_Id;
-const int yuri_3088::stoneSlab_Id;
-const int yuri_3088::stoneSlabHalf_Id;
-const int yuri_3088::redBrick_Id;
-const int yuri_3088::tnt_Id;
-const int yuri_3088::bookshelf_Id;
-const int yuri_3088::mossyCobblestone_Id;
-const int yuri_3088::obsidian_Id;
-const int yuri_3088::torch_Id;
-const int yuri_3088::fire_Id;
-const int yuri_3088::mobSpawner_Id;
-const int yuri_3088::stairs_wood_Id;
-const int yuri_3088::chest_Id;
-const int yuri_3088::redStoneDust_Id;
-const int yuri_3088::diamondOre_Id;
-const int yuri_3088::diamondBlock_Id;
-const int yuri_3088::workBench_Id;
-const int yuri_3088::wheat_Id;
-const int yuri_3088::farmland_Id;
-const int yuri_3088::furnace_Id;
-const int yuri_3088::furnace_lit_Id;
-const int yuri_3088::sign_Id;
-const int yuri_3088::door_wood_Id;
-const int yuri_3088::ladder_Id;
-const int yuri_3088::rail_Id;
-const int yuri_3088::stairs_stone_Id;
-const int yuri_3088::wallSign_Id;
-const int yuri_3088::lever_Id;
-const int yuri_3088::pressurePlate_stone_Id;
-const int yuri_3088::door_iron_Id;
-const int yuri_3088::pressurePlate_wood_Id;
-const int yuri_3088::redStoneOre_Id;
-const int yuri_3088::redStoneOre_lit_Id;
-const int yuri_3088::redstoneTorch_off_Id;
-const int yuri_3088::redstoneTorch_on_Id;
-const int yuri_3088::button_stone_Id;
-const int yuri_3088::topSnow_Id;
-const int yuri_3088::ice_Id;
-const int yuri_3088::snow_Id;
-const int yuri_3088::cactus_Id;
-const int yuri_3088::clay_Id;
-const int yuri_3088::reeds_Id;
-const int yuri_3088::jukebox_Id;
-const int yuri_3088::fence_Id;
-const int yuri_3088::pumpkin_Id;
-const int yuri_3088::netherRack_Id;
-const int yuri_3088::soulsand_Id;
-const int yuri_3088::glowstone_Id;
-const int yuri_3088::portalTile_Id;
-const int yuri_3088::litPumpkin_Id;
-const int yuri_3088::cake_Id;
-const int yuri_3088::diode_off_Id;
-const int yuri_3088::diode_on_Id;
-const int yuri_3088::stained_glass_Id;
-const int yuri_3088::trapdoor_Id;
-const int yuri_3088::monsterStoneEgg_Id;
-const int yuri_3088::stoneBrick_Id;
-const int yuri_3088::hugeMushroom_brown_Id;
-const int yuri_3088::hugeMushroom_red_Id;
-const int yuri_3088::ironFence_Id;
-const int yuri_3088::thinGlass_Id;
-const int yuri_3088::melon_Id;
-const int yuri_3088::pumpkinStem_Id;
-const int yuri_3088::melonStem_Id;
-const int yuri_3088::vine_Id;
-const int yuri_3088::fenceGate_Id;
-const int yuri_3088::stairs_bricks_Id;
-const int yuri_3088::stairs_stoneBrick_Id;
-const int yuri_3088::mycel_Id;
-const int yuri_3088::waterLily_Id;
-const int yuri_3088::netherBrick_Id;
-const int yuri_3088::netherFence_Id;
-const int yuri_3088::stairs_netherBricks_Id;
-const int yuri_3088::netherStalk_Id;
-const int yuri_3088::enchantTable_Id;
-const int yuri_3088::brewingStand_Id;
-const int yuri_3088::cauldron_Id;
-const int yuri_3088::endPortalTile_Id;
-const int yuri_3088::endPortalFrameTile_Id;
-const int yuri_3088::endStone_Id;
-const int yuri_3088::dragonEgg_Id;
-const int yuri_3088::redstoneLight_Id;
-const int yuri_3088::redstoneLight_lit_Id;
-const int yuri_3088::woodSlab_Id;
-const int yuri_3088::woodSlabHalf_Id;
-const int yuri_3088::cocoa_Id;
-const int yuri_3088::stairs_sandstone_Id;
-const int yuri_3088::stairs_sprucewood_Id;
-const int yuri_3088::stairs_birchwood_Id;
-const int yuri_3088::stairs_junglewood_Id;
-const int yuri_3088::emeraldOre_Id;
-const int yuri_3088::enderChest_Id;
-const int yuri_3088::tripWireSource_Id;
-const int yuri_3088::tripWire_Id;
-const int yuri_3088::emeraldBlock_Id;
-const int yuri_3088::cobbleWall_Id;
-const int yuri_3088::flowerPot_Id;
-const int yuri_3088::carrots_Id;
-const int yuri_3088::potatoes_Id;
-const int yuri_3088::anvil_Id;
-const int yuri_3088::button_wood_Id;
-const int yuri_3088::skull_Id;
-const int yuri_3088::netherQuartz_Id;
-const int yuri_3088::quartzBlock_Id;
-const int yuri_3088::stairs_quartz_Id;
-const int yuri_3088::woolCarpet_Id;
+const int Tile::bed_Id;
+const int Tile::goldenRail_Id;
+const int Tile::detectorRail_Id;
+const int Tile::pistonStickyBase_Id;
+const int Tile::web_Id;
+const int Tile::tallgrass_Id;
+const int Tile::deadBush_Id;
+const int Tile::pistonBase_Id;
+const int Tile::pistonExtensionPiece_Id;
+const int Tile::wool_Id;
+const int Tile::pistonMovingPiece_Id;
+const int Tile::flower_Id;
+const int Tile::rose_Id;
+const int Tile::mushroom_brown_Id;
+const int Tile::mushroom_red_Id;
+const int Tile::goldBlock_Id;
+const int Tile::ironBlock_Id;
+const int Tile::stoneSlab_Id;
+const int Tile::stoneSlabHalf_Id;
+const int Tile::redBrick_Id;
+const int Tile::tnt_Id;
+const int Tile::bookshelf_Id;
+const int Tile::mossyCobblestone_Id;
+const int Tile::obsidian_Id;
+const int Tile::torch_Id;
+const int Tile::fire_Id;
+const int Tile::mobSpawner_Id;
+const int Tile::stairs_wood_Id;
+const int Tile::chest_Id;
+const int Tile::redStoneDust_Id;
+const int Tile::diamondOre_Id;
+const int Tile::diamondBlock_Id;
+const int Tile::workBench_Id;
+const int Tile::wheat_Id;
+const int Tile::farmland_Id;
+const int Tile::furnace_Id;
+const int Tile::furnace_lit_Id;
+const int Tile::sign_Id;
+const int Tile::door_wood_Id;
+const int Tile::ladder_Id;
+const int Tile::rail_Id;
+const int Tile::stairs_stone_Id;
+const int Tile::wallSign_Id;
+const int Tile::lever_Id;
+const int Tile::pressurePlate_stone_Id;
+const int Tile::door_iron_Id;
+const int Tile::pressurePlate_wood_Id;
+const int Tile::redStoneOre_Id;
+const int Tile::redStoneOre_lit_Id;
+const int Tile::redstoneTorch_off_Id;
+const int Tile::redstoneTorch_on_Id;
+const int Tile::button_stone_Id;
+const int Tile::topSnow_Id;
+const int Tile::ice_Id;
+const int Tile::snow_Id;
+const int Tile::cactus_Id;
+const int Tile::clay_Id;
+const int Tile::reeds_Id;
+const int Tile::jukebox_Id;
+const int Tile::fence_Id;
+const int Tile::pumpkin_Id;
+const int Tile::netherRack_Id;
+const int Tile::soulsand_Id;
+const int Tile::glowstone_Id;
+const int Tile::portalTile_Id;
+const int Tile::litPumpkin_Id;
+const int Tile::cake_Id;
+const int Tile::diode_off_Id;
+const int Tile::diode_on_Id;
+const int Tile::stained_glass_Id;
+const int Tile::trapdoor_Id;
+const int Tile::monsterStoneEgg_Id;
+const int Tile::stoneBrick_Id;
+const int Tile::hugeMushroom_brown_Id;
+const int Tile::hugeMushroom_red_Id;
+const int Tile::ironFence_Id;
+const int Tile::thinGlass_Id;
+const int Tile::melon_Id;
+const int Tile::pumpkinStem_Id;
+const int Tile::melonStem_Id;
+const int Tile::vine_Id;
+const int Tile::fenceGate_Id;
+const int Tile::stairs_bricks_Id;
+const int Tile::stairs_stoneBrick_Id;
+const int Tile::mycel_Id;
+const int Tile::waterLily_Id;
+const int Tile::netherBrick_Id;
+const int Tile::netherFence_Id;
+const int Tile::stairs_netherBricks_Id;
+const int Tile::netherStalk_Id;
+const int Tile::enchantTable_Id;
+const int Tile::brewingStand_Id;
+const int Tile::cauldron_Id;
+const int Tile::endPortalTile_Id;
+const int Tile::endPortalFrameTile_Id;
+const int Tile::endStone_Id;
+const int Tile::dragonEgg_Id;
+const int Tile::redstoneLight_Id;
+const int Tile::redstoneLight_lit_Id;
+const int Tile::woodSlab_Id;
+const int Tile::woodSlabHalf_Id;
+const int Tile::cocoa_Id;
+const int Tile::stairs_sandstone_Id;
+const int Tile::stairs_sprucewood_Id;
+const int Tile::stairs_birchwood_Id;
+const int Tile::stairs_junglewood_Id;
+const int Tile::emeraldOre_Id;
+const int Tile::enderChest_Id;
+const int Tile::tripWireSource_Id;
+const int Tile::tripWire_Id;
+const int Tile::emeraldBlock_Id;
+const int Tile::cobbleWall_Id;
+const int Tile::flowerPot_Id;
+const int Tile::carrots_Id;
+const int Tile::potatoes_Id;
+const int Tile::anvil_Id;
+const int Tile::button_wood_Id;
+const int Tile::skull_Id;
+const int Tile::netherQuartz_Id;
+const int Tile::quartzBlock_Id;
+const int Tile::stairs_quartz_Id;
+const int Tile::woolCarpet_Id;
 #endif

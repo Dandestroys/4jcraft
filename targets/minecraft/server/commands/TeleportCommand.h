@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 
@@ -9,12 +9,12 @@
 #include "minecraft/commands/CommandsEnum.h"
 #include "minecraft/network/packet/GameCommandPacket.h"
 
-class yuri_3023 : public Command {
+class TeleportCommand : public Command {
 public:
-    virtual EGameCommand yuri_5390();
-    virtual void yuri_4539(std::shared_ptr<CommandSender> yuri_9075,
-                         std::vector<yuri_9368>& commandData);
+    virtual EGameCommand getId();
+    virtual void execute(std::shared_ptr<CommandSender> source,
+                         std::vector<uint8_t>& commandData);
 
-    static std::shared_ptr<yuri_911> yuri_7900(
+    static std::shared_ptr<GameCommandPacket> preparePacket(
         PlayerUID subject, PlayerUID destination);
 };

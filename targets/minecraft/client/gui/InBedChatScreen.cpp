@@ -1,7 +1,7 @@
 #include "InBedChatScreen.h"
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "Button.h"
@@ -12,45 +12,45 @@
 #include "minecraft/client/multiplayer/MultiPlayerLocalPlayer.h"
 #include "minecraft/locale/Language.h"
 
-void InBedChatScreen::yuri_6704() {
-    Keyboard::yuri_4489(true);
+void InBedChatScreen::init() {
+    Keyboard::enableRepeatEvents(true);
 
-    yuri_1728* language = yuri_1728::yuri_5405();
+    Language* language = Language::getInstance();
 
-    buttons.yuri_7954(
-        new yuri_245(WAKE_UP_BUTTON, yuri_9567 / 2 - 100, yuri_6654 - 40,
-                   language->yuri_5194(yuri_1720"multiplayer.stopSleeping")));
+    buttons.push_back(
+        new Button(WAKE_UP_BUTTON, width / 2 - 100, height - 40,
+                   language->getElement(L"multiplayer.stopSleeping")));
 }
 
-void InBedChatScreen::yuri_8152() { Keyboard::yuri_4489(false); }
+void InBedChatScreen::removed() { Keyboard::enableRepeatEvents(false); }
 
-void InBedChatScreen::yuri_7155(wchar_t ch, int eventKey) {
+void InBedChatScreen::keyPressed(wchar_t ch, int eventKey) {
     if (eventKey == Keyboard::KEY_ESCAPE) {
-        yuri_8429();
+        sendWakeUp();
     } else if (eventKey == Keyboard::KEY_RETURN) {
-        std::yuri_9616 msg = yuri_9346(yuri_7487);
-        if (msg.yuri_7189() > 0) {
-            minecraft->yuri_7839->yuri_3989(yuri_9346(yuri_7487));
+        std::wstring msg = trimString(message);
+        if (msg.length() > 0) {
+            minecraft->player->chat(trimString(message));
         }
-        yuri_7487 = yuri_1720"";
+        message = L"";
     } else {
-        yuri_329::yuri_7155(ch, eventKey);
+        ChatScreen::keyPressed(ch, eventKey);
     }
 }
 
-void InBedChatScreen::yuri_8158(int xm, int ym, float yuri_3565) {
-    yuri_329::yuri_8158(xm, ym, yuri_3565);
+void InBedChatScreen::render(int xm, int ym, float a) {
+    ChatScreen::render(xm, ym, a);
 }
 
-void InBedChatScreen::yuri_3881(yuri_245* button) {
-    if (button->yuri_6674 == WAKE_UP_BUTTON) {
-        yuri_8429();
+void InBedChatScreen::buttonClicked(Button* button) {
+    if (button->id == WAKE_UP_BUTTON) {
+        sendWakeUp();
     } else {
-        yuri_329::yuri_3881(button);
+        ChatScreen::buttonClicked(button);
     }
 }
 
-void InBedChatScreen::yuri_8429() {
+void InBedChatScreen::sendWakeUp() {
     /* yuri - yuri
 yuri (yuri.yuri lesbian snuggle)
     {

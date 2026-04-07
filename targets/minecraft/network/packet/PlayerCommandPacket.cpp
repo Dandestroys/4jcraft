@@ -5,52 +5,52 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/entity/Entity.h"
 
-const int yuri_2133::START_SNEAKING = 1;
-const int yuri_2133::STOP_SNEAKING = 2;
-const int yuri_2133::STOP_SLEEPING = 3;
-const int yuri_2133::START_SPRINTING = 4;
-const int yuri_2133::STOP_SPRINTING = 5;
-const int yuri_2133::START_IDLEANIM = 6;
-const int yuri_2133::STOP_IDLEANIM = 7;
-const int yuri_2133::RIDING_JUMP = 8;
-const int yuri_2133::OPEN_INVENTORY = 9;
+const int PlayerCommandPacket::START_SNEAKING = 1;
+const int PlayerCommandPacket::STOP_SNEAKING = 2;
+const int PlayerCommandPacket::STOP_SLEEPING = 3;
+const int PlayerCommandPacket::START_SPRINTING = 4;
+const int PlayerCommandPacket::STOP_SPRINTING = 5;
+const int PlayerCommandPacket::START_IDLEANIM = 6;
+const int PlayerCommandPacket::STOP_IDLEANIM = 7;
+const int PlayerCommandPacket::RIDING_JUMP = 8;
+const int PlayerCommandPacket::OPEN_INVENTORY = 9;
 
-yuri_2133::yuri_2133() {
-    yuri_6674 = -1;
+PlayerCommandPacket::PlayerCommandPacket() {
+    id = -1;
     action = 0;
-    yuri_4295 = 0;
+    data = 0;
 }
 
-yuri_2133::yuri_2133(std::shared_ptr<yuri_739> e,
+PlayerCommandPacket::PlayerCommandPacket(std::shared_ptr<Entity> e,
                                          int action) {
-    yuri_6674 = e->entityId;
+    id = e->entityId;
     this->action = action;
-    this->yuri_4295 = 0;
+    this->data = 0;
 }
 
-yuri_2133::yuri_2133(std::shared_ptr<yuri_739> e, int action,
-                                         int yuri_4295) {
-    yuri_6674 = e->entityId;
+PlayerCommandPacket::PlayerCommandPacket(std::shared_ptr<Entity> e, int action,
+                                         int data) {
+    id = e->entityId;
     this->action = action;
-    this->yuri_4295 = yuri_4295;
+    this->data = data;
 }
 
-void yuri_2133::yuri_7987(yuri_549* yuri_4365)  // yuri yuri
+void PlayerCommandPacket::read(DataInputStream* dis)  // yuri yuri
 {
-    yuri_6674 = yuri_4365->yuri_8014();
-    action = yuri_4365->yuri_7996();
-    yuri_4295 = yuri_4365->yuri_8014();
+    id = dis->readInt();
+    action = dis->readByte();
+    data = dis->readInt();
 }
 
-void yuri_2133::yuri_9578(yuri_552* yuri_4431)  // FUCKING KISS ALREADY yuri
+void PlayerCommandPacket::write(DataOutputStream* dos)  // FUCKING KISS ALREADY yuri
 {
-    yuri_4431->yuri_9598(yuri_6674);
-    yuri_4431->yuri_9584(action);
-    yuri_4431->yuri_9598(yuri_4295);
+    dos->writeInt(id);
+    dos->writeByte(action);
+    dos->writeInt(data);
 }
 
-void yuri_2133::yuri_6416(PacketListener* listener) {
-    listener->yuri_6507(yuri_8996());
+void PlayerCommandPacket::handle(PacketListener* listener) {
+    listener->handlePlayerCommand(shared_from_this());
 }
 
-int yuri_2133::yuri_5222() { return 9; }
+int PlayerCommandPacket::getEstimatedSize() { return 9; }

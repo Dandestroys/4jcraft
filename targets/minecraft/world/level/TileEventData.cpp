@@ -1,28 +1,28 @@
 #include "TileEventData.h"
 
-yuri_3096::yuri_3096(int yuri_9621, int yuri_9625, int yuri_9630, int tile, int paramA,
+TileEventData::TileEventData(int x, int y, int z, int tile, int paramA,
                              int paramB) {
-    this->yuri_9621 = yuri_9621;
-    this->yuri_9625 = yuri_9625;
-    this->yuri_9630 = yuri_9630;
+    this->x = x;
+    this->y = y;
+    this->z = z;
     this->paramA = paramA;
     this->paramB = paramB;
     this->tile = tile;
 }
 
-int yuri_3096::yuri_6142() { return yuri_9621; }
+int TileEventData::getX() { return x; }
 
-int yuri_3096::yuri_6164() { return yuri_9625; }
+int TileEventData::getY() { return y; }
 
-int yuri_3096::yuri_6176() { return yuri_9630; }
+int TileEventData::getZ() { return z; }
 
-int yuri_3096::yuri_5647() { return paramA; }
+int TileEventData::getParamA() { return paramA; }
 
-int yuri_3096::yuri_5648() { return paramB; }
+int TileEventData::getParamB() { return paramB; }
 
-int yuri_3096::yuri_6030() { return tile; }
+int TileEventData::getTile() { return tile; }
 
-bool yuri_3096::yuri_4529(yuri_3096& ted) {
-    return yuri_9621 == ted.yuri_9621 && yuri_9625 == ted.yuri_9625 && yuri_9630 == ted.yuri_9630 && paramA == ted.paramA &&
+bool TileEventData::equals(TileEventData& ted) {
+    return x == ted.x && y == ted.y && z == ted.z && paramA == ted.paramA &&
            paramB == ted.paramB && tile == ted.tile;
 }

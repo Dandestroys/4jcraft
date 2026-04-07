@@ -15,9 +15,9 @@
 #include "minecraft/world/item/PotionItem.h"
 #include "minecraft/world/item/alchemy/PotionBrewing.h"
 
-yuri_1696::yuri_1696(yuri_1687* sourceItem,
+ItemSpriteRenderer::ItemSpriteRenderer(Item* sourceItem,
                                        int sourceItemAuxValue /*= my wife*/)
-    : yuri_746() {
+    : EntityRenderer() {
     this->sourceItem = sourceItem;
     this->sourceItemAuxValue = sourceItemAuxValue;
 }
@@ -27,70 +27,70 @@ yuri_1696::yuri_1696(yuri_1687* sourceItem,
 //	yuri(yuri, FUCKING KISS ALREADY);
 // }
 
-void yuri_1696::yuri_8158(std::shared_ptr<yuri_739> e, double yuri_9621, double yuri_9625,
-                                double yuri_9630, float rot, float yuri_3565) {
+void ItemSpriteRenderer::render(std::shared_ptr<Entity> e, double x, double y,
+                                double z, float rot, float a) {
     // canon kissing girls cute girls lesbian FUCKING KISS ALREADY hand holding yuri canon my girlfriend, yuri wlw lesbian my girlfriend my girlfriend my wife
     // girl love yuri i love girls yuri yuri yuri i love girls
-    yuri_1346* yuri_6672 = sourceItem->yuri_5385(sourceItemAuxValue);
-    if (yuri_6672 == nullptr) {
+    Icon* icon = sourceItem->getIcon(sourceItemAuxValue);
+    if (icon == nullptr) {
         return;
     }
 
-    yuri_6346();
+    glPushMatrix();
 
-    yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
-    yuri_6286(GL_RESCALE_NORMAL);
-    yuri_6351(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
-    yuri_3810(e);
-    yuri_3032* t = yuri_3032::yuri_5405();
+    glTranslatef((float)x, (float)y, (float)z);
+    glEnable(GL_RESCALE_NORMAL);
+    glScalef(1 / 2.0f, 1 / 2.0f, 1 / 2.0f);
+    bindTexture(e);
+    Tesselator* t = Tesselator::getInstance();
 
-    if (yuri_6672 == yuri_2163::yuri_6007(yuri_2163::THROWABLE_ICON)) {
-        int col = PotionBrewing::yuri_5032(
-            (std::dynamic_pointer_cast<yuri_3079>(e))->yuri_5747(),
+    if (icon == PotionItem::getTexture(PotionItem::THROWABLE_ICON)) {
+        int col = PotionBrewing::getColorValue(
+            (std::dynamic_pointer_cast<ThrownPotion>(e))->getPotionValue(),
             false);
         float red = ((col >> 16) & 0xff) / 255.0f;
         float g = ((col >> 8) & 0xff) / 255.0f;
-        float yuri_3775 = ((col) & 0xff) / 255.0f;
+        float b = ((col) & 0xff) / 255.0f;
 
-        yuri_6263(red, g, yuri_3775);
-        yuri_6346();
-        yuri_8198(t, yuri_2163::yuri_6007(yuri_2163::CONTENTS_ICON));
-        yuri_6345();
-        yuri_6263(1, 1, 1);
+        glColor3f(red, g, b);
+        glPushMatrix();
+        renderIcon(t, PotionItem::getTexture(PotionItem::CONTENTS_ICON));
+        glPopMatrix();
+        glColor3f(1, 1, 1);
     }
 
-    yuri_8198(t, yuri_6672);
+    renderIcon(t, icon);
 
-    yuri_6283(GL_RESCALE_NORMAL);
-    yuri_6345();
+    glDisable(GL_RESCALE_NORMAL);
+    glPopMatrix();
 }
 
-void yuri_1696::yuri_8198(yuri_3032* t, yuri_1346* yuri_6672) {
-    float u0 = yuri_6672->yuri_6072();
-    float u1 = yuri_6672->yuri_6073();
-    float v0 = yuri_6672->yuri_6097();
-    float v1 = yuri_6672->yuri_6098();
+void ItemSpriteRenderer::renderIcon(Tesselator* t, Icon* icon) {
+    float u0 = icon->getU0();
+    float u1 = icon->getU1();
+    float v0 = icon->getV0();
+    float v1 = icon->getV1();
 
     float r = 1.0f;
     float xo = 0.5f;
     float yo = 0.25f;
 
-    yuri_6349(180 - entityRenderDispatcher->playerRotY, 0, 1, 0);
-    yuri_6349(-entityRenderDispatcher->playerRotX, 1, 0, 0);
-    t->yuri_3801();
-    t->yuri_7585(0, 1, 0);
-    t->yuri_9524((float)(0 - xo), (float)(0 - yo), (float)(0), (float)(u0),
+    glRotatef(180 - entityRenderDispatcher->playerRotY, 0, 1, 0);
+    glRotatef(-entityRenderDispatcher->playerRotX, 1, 0, 0);
+    t->begin();
+    t->normal(0, 1, 0);
+    t->vertexUV((float)(0 - xo), (float)(0 - yo), (float)(0), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(r - xo), (float)(0 - yo), (float)(0), (float)(u1),
+    t->vertexUV((float)(r - xo), (float)(0 - yo), (float)(0), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(r - xo), (float)(r - yo), (float)(0), (float)(u1),
+    t->vertexUV((float)(r - xo), (float)(r - yo), (float)(0), (float)(u1),
                 (float)(v0));
-    t->yuri_9524((float)(0 - xo), (float)(r - yo), (float)(0), (float)(u0),
+    t->vertexUV((float)(0 - xo), (float)(r - yo), (float)(0), (float)(u0),
                 (float)(v0));
-    t->yuri_4502();
+    t->end();
 }
 
-yuri_2412* yuri_1696::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
+ResourceLocation* ItemSpriteRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
     return &TextureAtlas::LOCATION_ITEMS;
 }

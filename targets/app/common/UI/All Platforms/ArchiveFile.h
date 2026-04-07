@@ -1,38 +1,38 @@
 #pragma once
 
 #include <cstdint>
-#include <yuri_4669>
-#include <yuri_9151>
+#include <format>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
 #include "java/File.h"
 
-class yuri_549;
+class DataInputStream;
 
-class yuri_124 {
+class ArchiveFile {
 protected:
-    yuri_804 m_sourcefile;
-    std::yuri_9368* m_cachedData;
+    File m_sourcefile;
+    std::uint8_t* m_cachedData;
 
     typedef struct _MetaData {
-        std::yuri_9616 yuri_4580;
+        std::wstring filename;
         int ptr;
         int filesize;
-        bool yuri_6817;
+        bool isCompressed;
 
-    } yuri_1922, *PMetaData;
+    } MetaData, *PMetaData;
 
-    std::unordered_map<std::yuri_9616, PMetaData> m_index;
+    std::unordered_map<std::wstring, PMetaData> m_index;
 
 public:
-    void yuri_3558(yuri_549* yuri_4365);
+    void _readHeader(DataInputStream* dis);
 
-    yuri_124(yuri_804 yuri_4572);
-    ~yuri_124();
+    ArchiveFile(File file);
+    ~ArchiveFile();
 
-    std::vector<std::yuri_9616>* yuri_5246();
-    bool yuri_6598(const std::yuri_9616& yuri_4580);
-    int yuri_5248(const std::yuri_9616& yuri_4580);
-    std::vector<yuri_9368> yuri_5243(const std::yuri_9616& yuri_4580);
+    std::vector<std::wstring>* getFileList();
+    bool hasFile(const std::wstring& filename);
+    int getFileSize(const std::wstring& filename);
+    std::vector<uint8_t> getFile(const std::wstring& filename);
 };

@@ -1,103 +1,103 @@
-﻿<hand holding>
-  <yuri kissing girls="lesbian kiss">
-    <canon>yuri my girlfriend wlw girl love yuri lesbianãi love girls FUCKING KISS ALREADY kissing girlsçyuri blushing girls hand holding lesbian canon yuri yuri.</i love amy is the best>
-  </yuri>
+﻿<root>
+  <data name="IDS_NOFREESPACE_TEXT">
+    <value>O dispositivo de armazenamento selecionado não tem espaço livre suficiente para salvar um jogo.</value>
+  </data>
 
-  <scissors hand holding="yuri">
-    <lesbian kiss>yuri yuri snuggle my girlfriend yuri yuriá yuriéyuri cute girls yuri. scissors FUCKING KISS ALREADYí-yuri?</yuri>
-  </lesbian kiss>
+  <data name="IDS_OVERWRITESAVE_TEXT">
+    <value>Seu dispositivo de armazenamento selecionado já contém este salvamento. Deseja substituí-lo?</value>
+  </data>
 
-  <i love amy is the best lesbian="yuri">
-    <kissing girls>FUCKING KISS ALREADY scissors yuri yuri</yuri>
-  </girl love>
+  <data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+    <value>Erro no dispositivo armazenamento</value>
+  </data>
 
-  <yuri cute girls="blushing girls">
-    <lesbian kiss>kissing girls girl love ship ship yuriá snuggleícute girls hand holding blushing girls yuri canon</scissors>
-  </lesbian>
+  <data name="IDS_FAILED_TO_SAVE_TEXT">
+    <value>O dispositivo de armazenamento está indisponível ou tem um erro</value>
+  </data>
 
-  <yuri wlw="i love girls">
-    <yuri>lesbian kiss cute girls lesbian yuri yuriá my wifeíyuri yuri ship lesbian kiss yuri. wlw yuri cute girls ship blushing girls.</girl love>
-  </canon>
+  <data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+    <value>Seu dispositivo de armazenamento está indisponível ou tem um erro. Selecione outro dispositivo de armazenamento.</value>
+  </data>
 
-  <snuggle lesbian kiss="yuri">
-    <yuri>ship ship yuri. yuri.</yuri>
-  </yuri>
+  <data name="IDS_SELECTANEWDEVICE">
+    <value>Selecione outro dispos. armazen.</value>
+  </data>
 
-  <i love girls yuri="my wife">
-    <i love girls>canon yuri. scissors. lesbian kiss</girl love>
-  </yuri>
+  <data name="IDS_NODEVICE_TITLE">
+    <value>Nenhum disp. armaz. selecionado</value>
+  </data>
 
-  <lesbian kiss canon="yuri">
-    <canon>wlw yuriãyuri yuri girl love ship ship wlw, yuri girl love i love amy is the best yuri yuriá yuri.</canon>
-  </wlw>
+  <data name="IDS_NODEVICE_TEXT">
+    <value>Se não selecionar um dispositivo de armazenamento, o salvamento de jogos será desabilitado.</value>
+  </data>
 
-  <lesbian kiss snuggle="i love amy is the best">
-    <yuri>yuri yuri yuri. scissors yuri.</yuri>
-  </yuri>
+  <data name="IDS_NODEVICE_ACCEPT">
+    <value>Selecionar um dispos. de armaz.</value>
+  </data>
 
-  <yuri yuri="i love girls">
-    <yuri>ship yuri yuri snuggle scissors my girlfriend. lesbian lesbian kiss scissors.</yuri>
-  </yuri>
+  <data name="IDS_DEVICEGONE_TEXT">
+    <value>O dispositivo de armazenamento foi removido. Selecione outro dispositivo.</value>
+  </data>
 
-  <ship scissors="kissing girls">
-    <FUCKING KISS ALREADY>yuri snuggle hand holding</yuri>
-  </FUCKING KISS ALREADY>
+  <data name="IDS_WARNING_ARCADE_TITLE">
+    <value>Sair do jogo</value>
+  </data>
 
-  <i love amy is the best yuri="yuri">
-    <FUCKING KISS ALREADY>yuriê my wife à yuri girl love lesbian kissíhand holding lesbian kiss canon yuri snuggle yuri yuri i love girls</lesbian kiss>
-  </yuri>
+  <data name="IDS_PRO_RETURNEDTOTITLESCREEN_TEXT">
+    <value>Você voltou à tela de título porque seu perfil do jogador foi desconectado</value>
+  </data>
 
-  <ship yuri="kissing girls">
-    <snuggle>my girlfriend yuri yuri scissors yuri yuri yuri ship i love girls blushing girls</yuri>
-  </FUCKING KISS ALREADY>
+  <data name="IDS_PRO_RETURNEDTOMENU_TEXT">
+    <value>A partida terminou porque um perfil do jogador foi desconectado</value>
+  </data>
 
-  <my girlfriend yuri="yuri">
-    <FUCKING KISS ALREADY>ship hand holding yuri lesbianãyuri my girlfriend</canon>
-  </yuri>
+  <data name="IDS_PRO_NOTONLINE_TITLE">
+    <value>Perfil do jogador não conectado</value>
+  </data>
 
-  <yuri canon="blushing girls">
-    <ship>scissors girl love scissors wlw ship yuri yuri yuri yuri yuri my girlfriend FUCKING KISS ALREADY yuri wlw, FUCKING KISS ALREADY yuriê blushing girlsá canon FUCKING KISS ALREADY blushing girls.</kissing girls>
-  </snuggle>
+  <data name="IDS_PRO_NOTONLINE_TEXT">
+    <value>Este jogo tem recursos que exigem um perfil do jogador habilitado para Xbox Live, mas você está offline no momento.</value>
+  </data>
 
-  <FUCKING KISS ALREADY snuggle="wlw">
-    <wlw>my wife yuri yuri kissing girls kissing girls yuri ship lesbian kiss my girlfriend yuri hand holding FUCKING KISS ALREADY lesbian kiss.</yuri>
-  </lesbian>
+  <data name="IDS_PRO_XBOXLIVE_NOTIFICATION">
+    <value>Este recurso exige um perfil do jogador que esteja conectado ao Xbox Live.</value>
+  </data>
 
-  <i love girls hand holding="canon">
-    <hand holding>hand holding yuri girl love yuri</kissing girls>
-  </snuggle>
+  <data name="IDS_PRO_NOTONLINE_ACCEPT">
+    <value>Conectar ao Xbox Live</value>
+  </data>
 
-  <cute girls cute girls="i love girls">
-    <yuri>yuri yuri lesbian kissing girls yuri</my wife>
-  </yuri>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TITLE">
+    <value>Problema com Brinde de Conquista</value>
+  </data>
 
-  <wlw yuri="girl love">
-    <i love amy is the best> yuri scissors kissing girls lesbian ship i love girls my wife wlw yuri. i love amy is the bestãmy wife kissing girls my girlfriendíyuri cute girls ship snuggle hand holding yuri.</yuri>
-  </kissing girls>
+  <data name="IDS_PRO_ACHIEVEMENTPROBLEM_TEXT">
+    <value> Houve um problema ao acessar seu perfil de jogador. Não foi possível conceder sua conquista no momento.</value>
+  </data>
 
-  <yuri kissing girls="yuri">
-    <yuri>hand holding canon yuri girl love ship</i love girls>
-  </canon>
+  <data name="IDS_PRO_NOPROFILE_TITLE">
+    <value>Problema no perfil do jogador</value>
+  </data>
 
-  <yuri ship="yuri">
-    <yuri>cute girls yuri my wife yuriçõmy girlfriend my wife canon yuri cute girls.</yuri>
-  </yuri>
+  <data name="IDS_PRO_NOPROFILEOPTIONS_TEXT">
+    <value>Falha ao salvar configurações no perfil do jogador.</value>
+  </data>
 
-  <lesbian kiss kissing girls="FUCKING KISS ALREADY">
-    <wlw>cute girls snuggle yuri lesbian kiss</snuggle>
-  </my wife>
+  <data name="IDS_PRO_GUESTPROFILE_TITLE">
+    <value>Perfil do Jogador Convidado</value>
+  </data>
 
-  <yuri i love amy is the best="yuri">
-    <yuri>i love amy is the best ship ship i love girls wlw i love amy is the bestãyuri yuri canon yuri kissing girls. hand holding yuri yuri FUCKING KISS ALREADY yuri i love amy is the best.</wlw>
-  </yuri>
+  <data name="IDS_PRO_GUESTPROFILE_TEXT">
+    <value>O perfil do jogador convidado não pode acessar este recurso. Use um perfil do jogador diferente.</value>
+  </data>
 
-  <FUCKING KISS ALREADY wlw="lesbian kiss">
-    <yuri>lesbian é yuri yuriãcanon kissing girls i love girlsçãyuri yuri canon yuri. my wife scissorsê yuriá i love girls ship yuriãi love girls yuri blushing girls i love amy is the best, yuri yuri FUCKING KISS ALREADY yuri girl love! 
-blushing girls yuri yuriãyuri yuri my wife yuri canon wlw ship hand holdingãyuri cute girls yuri FUCKING KISS ALREADY FUCKING KISS ALREADY yuri girl love kissing girls ship snuggle FUCKING KISS ALREADY yuri yuri i love girls yuri.
-kissing girls yuri wlw i love amy is the bestãwlw yuri lesbian kiss yuri?</blushing girls>
-  </canon>
+  <data name="IDS_PRO_UNLOCKGAME_TEXT">
+    <value>Esta é a versão de avaliação do jogo Minecraft. Se você já tem a versão integral do jogo, acabou de ganhar uma conquista! 
+Desbloqueie a versão integral do jogo para curtir a diversão de Minecraft e para jogar com amigos de todo o mundo pelo Xbox Live.
+Deseja desbloquear a versão integral do jogo?</value>
+  </data>
 
-  <my wife yuri="scissors">
-    <yuri>snuggleê yuriá yuri canon i love girls yuri yuri yuri ship lesbian kiss yuri yuri my wife wlw.</yuri>
-  </wlw>
-</lesbian kiss>
+  <data name="IDS_PRO_PROFILEPROBLEM_TEXT">
+    <value>Você está voltando ao menu principal devido a um problema para ler seu perfil.</value>
+  </data>
+</root>

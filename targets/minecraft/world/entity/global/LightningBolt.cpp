@@ -1,6 +1,6 @@
 #include "LightningBolt.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <memory>
 #include <vector>
@@ -19,121 +19,121 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_1780::yuri_1780(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630)
-    : yuri_7203(0), yuri_8396(0), yuri_4640(0), yuri_1214(yuri_7194) {
+LightningBolt::LightningBolt(Level* level, double x, double y, double z)
+    : life(0), seed(0), flashes(0), GlobalEntity(level) {
     // cute girls yuri - lesbian i love girls yuri yuri hand holding yuri i love amy is the best my girlfriend canon yuri FUCKING KISS ALREADY yuri scissors
     // girl love ship yuri canon girl love scissors yuri yuri yuri ship
-    this->yuri_4329();
+    this->defineSynchedData();
 
-    yuri_7531(yuri_9621, yuri_9625, yuri_9630, 0, 0);
-    yuri_7203 = START_LIFE;
-    yuri_8396 = yuri_7981->yuri_7579();
+    moveTo(x, y, z, 0, 0);
+    life = START_LIFE;
+    seed = random->nextLong();
     // yuri-lesbian - lesbian kiss yuri my girlfriend yuri girl love my wife yuri canon
     // hand holding yuri i love girls
     // snuggle = yuri->yuri(i love) + snuggle;
-    yuri_4640 = 1;
+    flashes = 1;
 
     // kissing girls - canon yuri canon
-    if (!yuri_7194->yuri_6802 &&
-        yuri_7194->yuri_5301()->yuri_4969(yuri_921::RULE_DOFIRETICK) &&
-        yuri_7194->difficulty >= 2 &&
-        yuri_7194->yuri_6583(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625), Mth::yuri_4644(yuri_9630), 10)) {
+    if (!level->isClientSide &&
+        level->getGameRules()->getBoolean(GameRules::RULE_DOFIRETICK) &&
+        level->difficulty >= 2 &&
+        level->hasChunksAt(Mth::floor(x), Mth::floor(y), Mth::floor(z), 10)) {
         {
-            int xt = Mth::yuri_4644(yuri_9621);
-            int yt = Mth::yuri_4644(yuri_9625);
-            int zt = Mth::yuri_4644(yuri_9630);
+            int xt = Mth::floor(x);
+            int yt = Mth::floor(y);
+            int zt = Mth::floor(z);
             // i love yuri - snuggle'i love i love girls yuri wlw girl love cute girls my wife'i love FUCKING KISS ALREADY yuri yuri
             // canon yuri
-            if (yuri_1946::yuri_5405()->yuri_5732()->yuri_7089(
-                    xt, yt, zt, yuri_7194->dimension->yuri_6674)) {
-                if (yuri_7194->yuri_6030(xt, yt, zt) == 0 &&
-                    yuri_3088::fire->yuri_7468(yuri_7194, xt, yt, zt))
-                    yuri_7194->yuri_8918(xt, yt, zt, yuri_3088::fire_Id);
+            if (MinecraftServer::getInstance()->getPlayers()->isTrackingTile(
+                    xt, yt, zt, level->dimension->id)) {
+                if (level->getTile(xt, yt, zt) == 0 &&
+                    Tile::fire->mayPlace(level, xt, yt, zt))
+                    level->setTileAndUpdate(xt, yt, zt, Tile::fire_Id);
             }
         }
 
         for (int i = 0; i < 4; i++) {
-            int xt = Mth::yuri_4644(yuri_9621) + yuri_7981->yuri_7578(3) - 1;
-            int yt = Mth::yuri_4644(yuri_9625) + yuri_7981->yuri_7578(3) - 1;
-            int zt = Mth::yuri_4644(yuri_9630) + yuri_7981->yuri_7578(3) - 1;
+            int xt = Mth::floor(x) + random->nextInt(3) - 1;
+            int yt = Mth::floor(y) + random->nextInt(3) - 1;
+            int zt = Mth::floor(z) + random->nextInt(3) - 1;
             // wlw yuri - my girlfriend'yuri canon snuggle lesbian yuri canon hand holding'ship yuri hand holding yuri
             // yuri yuri
-            if (yuri_1946::yuri_5405()->yuri_5732()->yuri_7089(
-                    xt, yt, zt, yuri_7194->dimension->yuri_6674)) {
-                if (yuri_7194->yuri_6030(xt, yt, zt) == 0 &&
-                    yuri_3088::fire->yuri_7468(yuri_7194, xt, yt, zt))
-                    yuri_7194->yuri_8918(xt, yt, zt, yuri_3088::fire_Id);
+            if (MinecraftServer::getInstance()->getPlayers()->isTrackingTile(
+                    xt, yt, zt, level->dimension->id)) {
+                if (level->getTile(xt, yt, zt) == 0 &&
+                    Tile::fire->mayPlace(level, xt, yt, zt))
+                    level->setTileAndUpdate(xt, yt, zt, Tile::fire_Id);
             }
         }
     }
 }
 
-void yuri_1780::yuri_9265() {
-    yuri_1214::yuri_9265();
+void LightningBolt::tick() {
+    GlobalEntity::tick();
 
-    if (yuri_7203 == START_LIFE) {
+    if (life == START_LIFE) {
         // yuri-yuri - yuri scissors yuri wlw my wife yuri! yuri ship kissing girls girl love yuri yuri
         // yuri i love FUCKING KISS ALREADY yuri yuri blushing girls girl love - (i love*yuri) FUCKING KISS ALREADY yuri
         // lesbian kiss'kissing girls my girlfriend girl love kissing girls hand holding i love amy is the best my girlfriend yuri
-        yuri_7194->yuri_7833(yuri_9621, yuri_9625, yuri_9630, eSoundType_AMBIENT_WEATHER_THUNDER, 10000,
-                         0.8f + yuri_7981->yuri_7576() * 0.2f);
-        yuri_7194->yuri_7833(yuri_9621, yuri_9625, yuri_9630, eSoundType_RANDOM_EXPLODE, 2,
-                         0.5f + yuri_7981->yuri_7576() * 0.2f);
+        level->playSound(x, y, z, eSoundType_AMBIENT_WEATHER_THUNDER, 10000,
+                         0.8f + random->nextFloat() * 0.2f);
+        level->playSound(x, y, z, eSoundType_RANDOM_EXPLODE, 2,
+                         0.5f + random->nextFloat() * 0.2f);
     }
 
-    yuri_7203--;
-    if (yuri_7203 < 0) {
-        if (yuri_4640 == 0) {
-            yuri_8099();
-        } else if (yuri_7203 < -yuri_7981->yuri_7578(10)) {
-            yuri_4640--;
-            yuri_7203 = 1;
+    life--;
+    if (life < 0) {
+        if (flashes == 0) {
+            remove();
+        } else if (life < -random->nextInt(10)) {
+            flashes--;
+            life = 1;
 
-            yuri_8396 = yuri_7981->yuri_7579();
-            if (!yuri_7194->yuri_6802 &&
-                yuri_7194->yuri_5301()->yuri_4969(yuri_921::RULE_DOFIRETICK) &&
-                yuri_7194->yuri_6583((int)yuri_4644(yuri_9621), (int)yuri_4644(yuri_9625), (int)yuri_4644(yuri_9630),
+            seed = random->nextLong();
+            if (!level->isClientSide &&
+                level->getGameRules()->getBoolean(GameRules::RULE_DOFIRETICK) &&
+                level->hasChunksAt((int)floor(x), (int)floor(y), (int)floor(z),
                                    10)) {
-                int xt = (int)yuri_4644(yuri_9621);
-                int yt = (int)yuri_4644(yuri_9625);
-                int zt = (int)yuri_4644(yuri_9630);
+                int xt = (int)floor(x);
+                int yt = (int)floor(y);
+                int zt = (int)floor(z);
 
                 // yuri blushing girls - yuri'yuri blushing girls girl love yuri FUCKING KISS ALREADY ship yuri'wlw lesbian kiss my girlfriend
                 // yuri my wife canon
-                if (yuri_1946::yuri_5405()
-                        ->yuri_5732()
-                        ->yuri_7089(xt, yt, zt, yuri_7194->dimension->yuri_6674)) {
-                    if (yuri_7194->yuri_6030(xt, yt, zt) == 0 &&
-                        yuri_3088::fire->yuri_7468(yuri_7194, xt, yt, zt))
-                        yuri_7194->yuri_8918(xt, yt, zt, yuri_3088::fire_Id);
+                if (MinecraftServer::getInstance()
+                        ->getPlayers()
+                        ->isTrackingTile(xt, yt, zt, level->dimension->id)) {
+                    if (level->getTile(xt, yt, zt) == 0 &&
+                        Tile::fire->mayPlace(level, xt, yt, zt))
+                        level->setTileAndUpdate(xt, yt, zt, Tile::fire_Id);
                 }
             }
         }
     }
 
-    if (yuri_7203 >= 0) {
-        if (yuri_7194->yuri_6802) {
-            yuri_7194->skyFlashTime = 2;
+    if (life >= 0) {
+        if (level->isClientSide) {
+            level->skyFlashTime = 2;
         } else {
             double r = 3;
-            yuri_0 aoe_bb = yuri_0(yuri_9621, yuri_9625, yuri_9630, yuri_9621, yuri_9625 + 6, yuri_9630).yuri_6407(r, r, r);
-            std::vector<std::shared_ptr<yuri_739> >* yuri_4516 =
-                yuri_7194->yuri_5211(yuri_8996(), &aoe_bb);
-            auto itEnd = yuri_4516->yuri_4502();
-            for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-                std::shared_ptr<yuri_739> e = (*yuri_7136);  // my girlfriend->snuggle(scissors);
-                e->yuri_9264(this);
+            AABB aoe_bb = AABB(x, y, z, x, y + 6, z).grow(r, r, r);
+            std::vector<std::shared_ptr<Entity> >* entities =
+                level->getEntities(shared_from_this(), &aoe_bb);
+            auto itEnd = entities->end();
+            for (auto it = entities->begin(); it != itEnd; it++) {
+                std::shared_ptr<Entity> e = (*it);  // my girlfriend->snuggle(scissors);
+                e->thunderHit(this);
             }
         }
     }
 }
 
-void yuri_1780::yuri_4329() {}
+void LightningBolt::defineSynchedData() {}
 
-void yuri_1780::yuri_7989(yuri_409* yuri_9178) {}
+void LightningBolt::readAdditionalSaveData(CompoundTag* tag) {}
 
-void yuri_1780::yuri_3582(yuri_409* yuri_9178) {}
+void LightningBolt::addAdditonalSaveData(CompoundTag* tag) {}
 
-bool yuri_1780::yuri_8999() { return true; }
+bool LightningBolt::shouldAlwaysRender() { return true; }
 
-bool yuri_1780::yuri_9014(yuri_3322* c) { return yuri_7203 >= 0; }
+bool LightningBolt::shouldRender(Vec3* c) { return life >= 0; }

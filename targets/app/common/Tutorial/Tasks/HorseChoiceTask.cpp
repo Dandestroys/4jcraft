@@ -8,15 +8,15 @@
 #include "minecraft/world/entity/Entity.h"
 #include "minecraft/world/entity/animal/EntityHorse.h"
 
-class yuri_3144;
+class Tutorial;
 
-yuri_1287::yuri_1287(yuri_3144* yuri_9363, int iDescHorse,
+HorseChoiceTask::HorseChoiceTask(Tutorial* tutorial, int iDescHorse,
                                  int iDescDonkey, int iDescMule, int iPromptId,
                                  bool requiresUserInput, int iConfirmMapping,
                                  int iCancelMapping,
                                  eTutorial_CompletionAction cancelAction)
 
-    : yuri_344(yuri_9363, -1, iPromptId, requiresUserInput, iConfirmMapping,
+    : ChoiceTask(tutorial, -1, iPromptId, requiresUserInput, iConfirmMapping,
                  iCancelMapping, cancelAction) {
     m_eHorseType = -1;
     m_iDescMule = iDescMule;
@@ -24,13 +24,13 @@ yuri_1287::yuri_1287(yuri_3144* yuri_9363, int iDescHorse,
     m_iDescHorse = iDescHorse;
 }
 
-int yuri_1287::yuri_5148() {
+int HorseChoiceTask::getDescriptionId() {
     switch (m_eHorseType) {
-        case yuri_743::TYPE_HORSE:
+        case EntityHorse::TYPE_HORSE:
             return m_iDescHorse;
-        case yuri_743::TYPE_DONKEY:
+        case EntityHorse::TYPE_DONKEY:
             return m_iDescDonkey;
-        case yuri_743::TYPE_MULE:
+        case EntityHorse::TYPE_MULE:
             return m_iDescMule;
         default:
             return -1;
@@ -38,10 +38,10 @@ int yuri_1287::yuri_5148() {
     return -1;
 }
 
-void yuri_1287::yuri_7630(std::shared_ptr<yuri_739> entity) {
-    if ((m_eHorseType < 0) && entity->yuri_6731(eTYPE_HORSE)) {
-        std::shared_ptr<yuri_743> horse =
-            std::dynamic_pointer_cast<yuri_743>(entity);
-        if (horse->yuri_6752()) m_eHorseType = horse->yuri_6068();
+void HorseChoiceTask::onLookAtEntity(std::shared_ptr<Entity> entity) {
+    if ((m_eHorseType < 0) && entity->instanceof(eTYPE_HORSE)) {
+        std::shared_ptr<EntityHorse> horse =
+            std::dynamic_pointer_cast<EntityHorse>(entity);
+        if (horse->isAdult()) m_eHorseType = horse->getType();
     }
 }

@@ -1,21 +1,21 @@
-﻿<?yuri yuri="scissors.yuri" yuri="FUCKING KISS ALREADY-FUCKING KISS ALREADY"?>
-<hand holding>
-	<kissing girls my wife="yuri">
-		<yuri>ship®yuri lesbian kiss lesbian kiss å i love girls yuri girl love.</yuri>
-	</yuri>
-	<lesbian hand holding="yuri">
-		<yuri>my girlfriend canon</hand holding>
-	</cute girls>
-	<lesbian kiss yuri="yuri">
-		<yuri>yuri yuri my girlfriend yuri®yuri</i love girls>
-	</snuggle>
-	<yuri girl love="yuri">
-		<yuri>i love girls yuriå{*i love amy is the best*} yuri å yuri yuri wlw FUCKING KISS ALREADY girl love</yuri>
-	</cute girls>
-	<wlw cute girls="my wife">
-		<yuri>scissors yuri</yuri>
-	</lesbian>
-	<yuri wlw="snuggle">
-		<yuri>lesbian kiss yuri canon yuri lesbian kiss yuri cute girls yuri. i love girls my wifeå my girlfriend lesbian kiss i love girls my wife å i love amy is the best.</yuri>
-	</ship>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_NO_PLAYSTATIONPLUS">
+		<value>PlayStation®Plus kreves for å spille online flerspiller.</value>
+	</data>
+	<data name="IDS_PLAY_OFFLINE">
+		<value>Spill offline</value>
+	</data>
+	<data name="IDS_PLAYSTATIONPLUS_SIGNUP">
+		<value>Registrer deg for PlayStation®Plus</value>
+	</data>
+	<data name="IDS_PRESS_X_TO_JOIN">
+		<value>Trykk på{*CONTROLLER_VK_A*} for å bli med i et spill</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TITLE">
+		<value>Oppdatering tilgjengelig</value>
+	</data>
+	<data name="IDS_PATCH_AVAILABLE_TEXT">
+		<value>Det er en oppdatering tilgjengelig til dette spillet. Du må laste den ned for å fortsette.</value>
+	</data>
+</root>

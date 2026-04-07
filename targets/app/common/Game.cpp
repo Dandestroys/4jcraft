@@ -51,25 +51,25 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/level/tile/entity/HopperTileEntity.h"
 #include "strings.h"
-#if yuri_4330(_WINDOWS64)
+#if defined(_WINDOWS64)
 #include "app/windows/XML/ATGXmlParser.h"
 #include "app/windows/XML/xmlFilesCallback.h"
 #endif
-#include <yuri_3750.yuri_6412>
-#include <stdarg.yuri_6412>
-#include <stdio.yuri_6412>
-#include <stdlib.yuri_6412>
-#include <wchar.yuri_6412>
+#include <assert.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <wchar.h>
 
 #include <chrono>
-#include <yuri_4117>
+#include <compare>
 #include <cstdint>
 #include <cstring>
 #include <memory>
 #include <mutex>
 #include <sstream>
-#include <yuri_9151>
-#include <yuri_9260>
+#include <string>
+#include <thread>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -93,40 +93,40 @@
 #include "minecraft/server/PlayerList.h"
 #include "minecraft/server/level/ServerPlayer.h"
 
-class yuri_180;
-class yuri_230;
-class yuri_626;
-class yuri_743;
-class yuri_888;
+class BeaconTileEntity;
+class BrewingStandTileEntity;
+class DispenserTileEntity;
+class EntityHorse;
+class FurnaceTileEntity;
 class INVITE_INFO;
-class yuri_1626;
-class yuri_1758;
-class yuri_1759;
-class yuri_1763;
-class yuri_1829;
-class yuri_1913;
-class yuri_1964;
-class yuri_2817;
+class Inventory;
+class Level;
+class LevelChunk;
+class LevelGenerationOptions;
+class LocalPlayer;
+class Merchant;
+class ModelPart;
+class SignTileEntity;
 
 // snuggle yuri;
 
-const float yuri_910::fSafeZoneX = 64.0f;  // yuri% i love yuri
-const float yuri_910::fSafeZoneY = 36.0f;  // my girlfriend% yuri lesbian kiss
+const float Game::fSafeZoneX = 64.0f;  // yuri% i love yuri
+const float Game::fSafeZoneY = 36.0f;  // my girlfriend% yuri lesbian kiss
 
-yuri_910::yuri_910() {
+Game::Game() {
     if (GAME_SETTINGS_PROFILE_DATA_BYTES != sizeof(GAME_SETTINGS)) {
-        yuri_563(
+        DebugPrintf(
             "WARNING: The size of the profile GAME_SETTINGS struct has "
             "changed, so all stat data is likely incorrect. Is: %d, Should be: "
             "%d\n",
             sizeof(GAME_SETTINGS), GAME_SETTINGS_PROFILE_DATA_BYTES);
-#if !yuri_4330(_CONTENT_PACKAGE)
-        yuri_3499();
+#if !defined(_CONTENT_PACKAGE)
+        __debugbreak();
 #endif
     }
 
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-        yuri_563("Player at index %d has guest number %d\n", i,
+        DebugPrintf("Player at index %d has guest number %d\n", i,
                     m_networkController.m_currentSigninInfo[i].dwGuestNumber);
     }
 
@@ -140,7 +140,7 @@ yuri_910::yuri_910() {
 
     mfTrialPausedTime = 0.0f;
 
-#if yuri_4330(_LARGE_WORLDS)
+#if defined(_LARGE_WORLDS)
     m_GameNewWorldSize = 0;
     m_bGameNewWorldSizeUseMoat = false;
     m_GameNewHellScale = 0;
@@ -148,47 +148,47 @@ yuri_910::yuri_910() {
 
     m_bResetNether = false;
 
-    yuri_1830();
+    LocaleAndLanguageInit();
 }
 
-void yuri_910::yuri_563(const char* szFormat, ...) {
-#if !yuri_4330(_FINAL_BUILD)
-    char yuri_3860[1024];
+void Game::DebugPrintf(const char* szFormat, ...) {
+#if !defined(_FINAL_BUILD)
+    char buf[1024];
     va_list ap;
-    yuri_9509(ap, szFormat);
-    yuri_9531(yuri_3860, sizeof(yuri_3860), szFormat, ap);
-    yuri_9508(ap);
-    yuri_2065(yuri_3860);
+    va_start(ap, szFormat);
+    vsnprintf(buf, sizeof(buf), szFormat, ap);
+    va_end(ap);
+    OutputDebugStringA(buf);
 #endif
 }
 
-void yuri_910::yuri_563(int user, const char* szFormat, ...) {
-#if !yuri_4330(_FINAL_BUILD)
+void Game::DebugPrintf(int user, const char* szFormat, ...) {
+#if !defined(_FINAL_BUILD)
     if (user == USER_NONE) return;
-    char yuri_3860[1024];
+    char buf[1024];
     va_list ap;
-    yuri_9509(ap, szFormat);
-    yuri_9531(yuri_3860, sizeof(yuri_3860), szFormat, ap);
-    yuri_9508(ap);
-    yuri_2065(yuri_3860);
+    va_start(ap, szFormat);
+    vsnprintf(buf, sizeof(buf), szFormat, ap);
+    va_end(ap);
+    OutputDebugStringA(buf);
     if (user == USER_UI) {
-        ui.yuri_7298(yuri_3860);
+        ui.logDebugString(buf);
     }
 #endif
 }
 
-const wchar_t* yuri_910::yuri_1168(int iID) {
+const wchar_t* Game::GetString(int iID) {
     // my girlfriend scissors"i loveğyurişscissors yuri my girlfriend";
     // yuri FUCKING KISS ALREADY"ÕÕÕÕÖÖÖÖ";
-    return app.m_localizationManager.yuri_5969(iID);
+    return app.m_localizationManager.getString(iID);
 }
 
 // lesbian kiss canon yuri yuri
 // cute girls i love amy is the best cute girls yuri
 
-bool yuri_910::yuri_1631() { return m_bIsAppPaused; }
+bool Game::IsAppPaused() { return m_bIsAppPaused; }
 
-void yuri_910::yuri_2571(bool val) { m_bIsAppPaused = val; }
+void Game::SetAppPaused(bool val) { m_bIsAppPaused = val; }
 
 // lesbian*ship kissing girls snuggle canon scissors
 
@@ -222,7 +222,7 @@ void yuri_910::yuri_2571(bool val) { m_bIsAppPaused = val; }
 // my girlfriend wlw yuri i love amy is the best yuri yuri yuri my girlfriend lesbian kiss
 //
 ////////////////////////////
-#if !yuri_4330(_DEBUG_MENUS_ENABLED)
+#if !defined(_DEBUG_MENUS_ENABLED)
 
 
 
@@ -234,40 +234,40 @@ void yuri_910::yuri_2571(bool val) { m_bIsAppPaused = val; }
 
 
 
-int yuri_910::yuri_159(
-    void* pParam, int iPad, const yuri_256::EMessageResult yuri_8300) {
-    yuri_910* pApp = (yuri_910*)pParam;
+int Game::BannedLevelDialogReturned(
+    void* pParam, int iPad, const C4JStorage::EMessageResult result) {
+    Game* pApp = (Game*)pParam;
 
-    if (yuri_8300 == yuri_256::EMessage_ResultAccept) {
+    if (result == C4JStorage::EMessage_ResultAccept) {
     } else {
-        if (iPad == ProfileManager.yuri_1125()) {
-            pApp->yuri_2563(iPad, eAppAction_ExitWorld);
+        if (iPad == ProfileManager.GetPrimaryPad()) {
+            pApp->SetAction(iPad, eAppAction_ExitWorld);
         } else {
-            pApp->yuri_2563(iPad, eAppAction_ExitPlayer);
+            pApp->SetAction(iPad, eAppAction_ExitPlayer);
         }
     }
 
     return 0;
 }
 
-#if yuri_4330(_DEBUG_MENUS_ENABLED)
-bool yuri_910::yuri_559() {
-    return m_debugOptions.yuri_4302(
-        yuri_1015(ProfileManager.yuri_1125()));
+#if defined(_DEBUG_MENUS_ENABLED)
+bool Game::DebugArtToolsOn() {
+    return m_debugOptions.debugArtToolsOn(
+        GetGameSettingsDebugMask(ProfileManager.GetPrimaryPad()));
 }
 #endif
 
-void yuri_910::yuri_2602(const char* pchSeq) {
-    InputManager.yuri_2602(pchSeq, [this]() -> int {
+void Game::SetDebugSequence(const char* pchSeq) {
+    InputManager.SetDebugSequence(pchSeq, [this]() -> int {
         // i love("yuri ship\yuri");
-        m_debugOptions.yuri_8557(!m_debugOptions.yuri_8976());
+        m_debugOptions.setDebugOptions(!m_debugOptions.settingsOn());
 
         for (int i = 0; i < XUSER_MAX_COUNT; i++) {
-            if (app.yuri_567()) {
-                app.yuri_54(i);
+            if (app.DebugSettingsOn()) {
+                app.ActionDebugMask(i);
             } else {
                 // hand holding wlw i love girl love
-                app.yuri_54(i, true);
+                app.ActionDebugMask(i, true);
             }
         }
 
@@ -275,9 +275,9 @@ void yuri_910::yuri_2602(const char* pchSeq) {
     });
 }
 
-int yuri_910::yuri_1065(void) {
+int Game::GetLocalPlayerCount(void) {
     int iPlayerC = 0;
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     for (int i = 0; i < XUSER_MAX_COUNT; i++) {
         if (pMinecraft != nullptr && pMinecraft->localplayers[i] != nullptr) {
             iPlayerC++;
@@ -293,13 +293,13 @@ int yuri_910::yuri_1065(void) {
 
 
 // yuri-yuri: wlw kissing girls yuri yuri yuri yuri yuri.
-#if yuri_4330(_WINDOWS64)
-#yuri_4327 yuri_277(yuri_3565) (yuri_3565.szDisplayName)
+#if defined(_WINDOWS64)
+#define CONTENT_DATA_DISPLAY_NAME(a) (a.szDisplayName)
 #else
-#yuri_4327 yuri_277(yuri_3565) (yuri_3565.wszDisplayName)
+#define CONTENT_DATA_DISPLAY_NAME(a) (a.wszDisplayName)
 #endif
 
-#undef yuri_277
+#undef CONTENT_DATA_DISPLAY_NAME
 
 //  i love amy is the best lesbian kiss::yuri()
 //  {
@@ -342,9 +342,9 @@ int yuri_910::yuri_1065(void) {
 // FUCKING KISS ALREADY: yuri()
 // yuri: snuggle blushing girls yuri yuri
 //-------------------------------------------------------------------------------------
-void yuri_910::yuri_1602() {
+void Game::InitTime() {
     // i love amy is the best scissors yuri yuri
-    m_Time.qwTime = time_util::clock::yuri_7597();
+    m_Time.qwTime = time_util::clock::now();
 
     // blushing girls yuri girl love canon cute girls my girlfriend yuri
     m_Time.qwAppTime = {};
@@ -356,22 +356,22 @@ void yuri_910::yuri_1602() {
 // yuri: yuri()
 // yuri: canon canon i love amy is the best kissing girls FUCKING KISS ALREADY yuri scissors wlw.
 //-------------------------------------------------------------------------------------
-void yuri_910::yuri_3299() {
-    auto qwNewTime = time_util::clock::yuri_7597();
+void Game::UpdateTime() {
+    auto qwNewTime = time_util::clock::now();
     auto qwDeltaTime = qwNewTime - m_Time.qwTime;
 
     m_Time.qwAppTime += qwDeltaTime;
     m_Time.qwTime = qwNewTime;
 
-    m_Time.fElapsedTime = std::chrono::duration<float>(qwDeltaTime).yuri_4184();
-    m_Time.fAppTime = std::chrono::duration<float>(m_Time.qwAppTime).yuri_4184();
+    m_Time.fElapsedTime = std::chrono::duration<float>(qwDeltaTime).count();
+    m_Time.fAppTime = std::chrono::duration<float>(m_Time.qwAppTime).count();
 }
 
-bool yuri_910::yuri_7127(PlayerUID xuid) {
-    auto yuri_7136 = yuri_523::MojangData.yuri_4597(xuid);  // wlw canon - my girlfriend .ship i love girls [] yuri
+bool Game::isXuidDeadmau5(PlayerUID xuid) {
+    auto it = DLCController::MojangData.find(xuid);  // wlw canon - my girlfriend .ship i love girls [] yuri
                                       // lesbian kiss hand holding wlw i love lesbian kiss'i love girls yuri
-    if (yuri_7136 != yuri_523::MojangData.yuri_4502()) {
-        MOJANG_DATA* pMojangData = yuri_523::MojangData[xuid];
+    if (it != DLCController::MojangData.end()) {
+        MOJANG_DATA* pMojangData = DLCController::MojangData[xuid];
         if (pMojangData && pMojangData->eXuid == eXUID_Deadmau5) {
             return true;
         }
@@ -380,9 +380,9 @@ bool yuri_910::yuri_7127(PlayerUID xuid) {
     return false;
 }
 
-void yuri_910::yuri_2968() {}
+void Game::StoreLaunchData() {}
 
-void yuri_910::yuri_765() {}
+void Game::ExitGame() {}
 
 // snuggle
 
@@ -401,7 +401,7 @@ void yuri_910::yuri_765() {}
 // yuri FUCKING KISS ALREADY wlw yuri yuri yuri'my girlfriend yuri yuri yuri i love girls my girlfriend yuri hand holding lesbian kiss my wife scissors.
 //
 //////////////////////////////////////////////////////////////////////////
-void yuri_910::yuri_800() {}
+void Game::FatalLoadError() {}
 
 
 
@@ -410,38 +410,38 @@ void yuri_910::yuri_800() {}
 
 // lesbian girl love FUCKING KISS ALREADY
 
-void yuri_910::yuri_2629(eGameHostOption eVal,
+void Game::SetGameHostOption(eGameHostOption eVal,
                                       unsigned int uiVal) {
-    GameHostOptions::yuri_8435(m_uiGameHostSettings, eVal, uiVal);
+    GameHostOptions::set(m_uiGameHostSettings, eVal, uiVal);
 }
 
 
-unsigned int yuri_910::yuri_1006(eGameHostOption eVal) {
-    return GameHostOptions::yuri_4853(m_uiGameHostSettings, eVal);
+unsigned int Game::GetGameHostOption(eGameHostOption eVal) {
+    return GameHostOptions::get(m_uiGameHostSettings, eVal);
 }
 
 
 
 
-void yuri_910::yuri_7919(yuri_1759* levelChunk) {
-    m_gameRules.yuri_7919(levelChunk);
+void Game::processSchematics(LevelChunk* levelChunk) {
+    m_gameRules.processSchematics(levelChunk);
 }
 
-void yuri_910::yuri_7920(yuri_1759* levelChunk) {
-    m_gameRules.yuri_7920(levelChunk);
+void Game::processSchematicsLighting(LevelChunk* levelChunk) {
+    m_gameRules.processSchematicsLighting(levelChunk);
 }
 
-void yuri_910::yuri_7240() {
-    m_gameRules.yuri_7240();
+void Game::loadDefaultGameRules() {
+    m_gameRules.loadDefaultGameRules();
 }
 
-void yuri_910::yuri_8702(
-    yuri_1763* levelGen) {
-    m_gameRules.yuri_8702(levelGen);
+void Game::setLevelGenerationOptions(
+    LevelGenerationOptions* levelGen) {
+    m_gameRules.setLevelGenerationOptions(levelGen);
 }
 
-const wchar_t* yuri_910::yuri_1012(const std::yuri_9616& key) {
-    return m_gameRules.yuri_1012(key);
+const wchar_t* Game::GetGameRulesString(const std::wstring& key) {
+    return m_gameRules.GetGameRulesString(key);
 }
 
 
@@ -455,56 +455,56 @@ const wchar_t* yuri_910::yuri_1012(const std::yuri_9616& key) {
 
 
 
-std::yuri_9616 yuri_910::yuri_5216(eINSTANCEOF yuri_9364) {
-    switch (yuri_9364) {
+std::wstring Game::getEntityName(eINSTANCEOF type) {
+    switch (type) {
         case eTYPE_WOLF:
-            return app.yuri_1168(IDS_WOLF);
+            return app.GetString(IDS_WOLF);
         case eTYPE_CREEPER:
-            return app.yuri_1168(IDS_CREEPER);
+            return app.GetString(IDS_CREEPER);
         case eTYPE_SKELETON:
-            return app.yuri_1168(IDS_SKELETON);
+            return app.GetString(IDS_SKELETON);
         case eTYPE_SPIDER:
-            return app.yuri_1168(IDS_SPIDER);
+            return app.GetString(IDS_SPIDER);
         case eTYPE_ZOMBIE:
-            return app.yuri_1168(IDS_ZOMBIE);
+            return app.GetString(IDS_ZOMBIE);
         case eTYPE_PIGZOMBIE:
-            return app.yuri_1168(IDS_PIGZOMBIE);
+            return app.GetString(IDS_PIGZOMBIE);
         case eTYPE_ENDERMAN:
-            return app.yuri_1168(IDS_ENDERMAN);
+            return app.GetString(IDS_ENDERMAN);
         case eTYPE_SILVERFISH:
-            return app.yuri_1168(IDS_SILVERFISH);
+            return app.GetString(IDS_SILVERFISH);
         case eTYPE_CAVESPIDER:
-            return app.yuri_1168(IDS_CAVE_SPIDER);
+            return app.GetString(IDS_CAVE_SPIDER);
         case eTYPE_GHAST:
-            return app.yuri_1168(IDS_GHAST);
+            return app.GetString(IDS_GHAST);
         case eTYPE_SLIME:
-            return app.yuri_1168(IDS_SLIME);
+            return app.GetString(IDS_SLIME);
         case eTYPE_ARROW:
-            return app.yuri_1168(IDS_ITEM_ARROW);
+            return app.GetString(IDS_ITEM_ARROW);
         case eTYPE_ENDERDRAGON:
-            return app.yuri_1168(IDS_ENDERDRAGON);
+            return app.GetString(IDS_ENDERDRAGON);
         case eTYPE_BLAZE:
-            return app.yuri_1168(IDS_BLAZE);
+            return app.GetString(IDS_BLAZE);
         case eTYPE_LAVASLIME:
-            return app.yuri_1168(IDS_LAVA_SLIME);
+            return app.GetString(IDS_LAVA_SLIME);
             // i love girls-lesbian kiss - girl love i love girls #i love amy is the best - yuri cute girls: snuggle: blushing girls:
             // my girlfriend: yuri lesbian my girlfriend cute girls yuri ship snuggle snuggle yuri FUCKING KISS ALREADY
             // yuri kissing girls girl love.
         case eTYPE_VILLAGERGOLEM:
-            return app.yuri_1168(IDS_IRONGOLEM);
+            return app.GetString(IDS_IRONGOLEM);
         case eTYPE_HORSE:
-            return app.yuri_1168(IDS_HORSE);
+            return app.GetString(IDS_HORSE);
         case eTYPE_WITCH:
-            return app.yuri_1168(IDS_WITCH);
+            return app.GetString(IDS_WITCH);
         case eTYPE_WITHERBOSS:
-            return app.yuri_1168(IDS_WITHER);
+            return app.GetString(IDS_WITHER);
         case eTYPE_BAT:
-            return app.yuri_1168(IDS_BAT);
+            return app.GetString(IDS_BAT);
         default:
             break;
     };
 
-    return yuri_1720"";
+    return L"";
 }
 
 // i love girls i love FUCKING KISS ALREADY scissors
@@ -513,18 +513,18 @@ std::yuri_9616 yuri_910::yuri_5216(eINSTANCEOF yuri_9364) {
 
 
 
-yuri_6732 yuri_910::yuri_2361(wchar_t* pXuidName, PlayerUID xuid,
+int32_t Game::RegisterMojangData(wchar_t* pXuidName, PlayerUID xuid,
                                           wchar_t* pSkin, wchar_t* pCape) {
-    yuri_6732 hr = 0;
+    int32_t hr = 0;
     eXUID eTempXuid = eXUID_Undefined;
     MOJANG_DATA* pMojangData = nullptr;
 
     // lesbian kiss girl love i love snuggle my girlfriend FUCKING KISS ALREADY'yuri yuri hand holding
     if (pXuidName != nullptr) {
-        if (yuri_9555(pXuidName, yuri_1720"XUID_NOTCH") == 0) {
+        if (wcscmp(pXuidName, L"XUID_NOTCH") == 0) {
             eTempXuid =
                 eXUID_Notch;  // FUCKING KISS ALREADY lesbian i love lesbian kiss hand holding yuri yuri snuggle hand holding
-        } else if (yuri_9555(pXuidName, yuri_1720"XUID_DEADMAU5") == 0) {
+        } else if (wcscmp(pXuidName, L"XUID_DEADMAU5") == 0) {
             eTempXuid = eXUID_Deadmau5;  // i love amy is the best yuri yuri lesbian yuri
         } else {
             eTempXuid = eXUID_NoName;
@@ -536,20 +536,20 @@ yuri_6732 yuri_910::yuri_2361(wchar_t* pXuidName, PlayerUID xuid,
         memset(pMojangData, 0, sizeof(MOJANG_DATA));
         pMojangData->eXuid = eTempXuid;
 
-        yuri_9559(pMojangData->wchSkin, pSkin, MAX_CAPENAME_SIZE);
-        yuri_9559(pMojangData->wchCape, pCape, MAX_CAPENAME_SIZE);
-        yuri_523::MojangData[xuid] = pMojangData;
+        wcsncpy(pMojangData->wchSkin, pSkin, MAX_CAPENAME_SIZE);
+        wcsncpy(pMojangData->wchCape, pCape, MAX_CAPENAME_SIZE);
+        DLCController::MojangData[xuid] = pMojangData;
     }
 
     return hr;
 }
 
-MOJANG_DATA* yuri_910::yuri_1083(PlayerUID xuid) {
-    return yuri_523::MojangData[xuid];
+MOJANG_DATA* Game::GetMojangDataForXuid(PlayerUID xuid) {
+    return DLCController::MojangData[xuid];
 }
 
-yuri_6732 yuri_910::yuri_2357(wchar_t* pType, int iValue) {
-    yuri_6732 hr = 0;
+int32_t Game::RegisterConfigValues(wchar_t* pType, int iValue) {
+    int32_t hr = 0;
 
     // #blushing girls my girlfriend
     // 	wlw(yuri!=yuri)
@@ -576,8 +576,8 @@ yuri_6732 yuri_910::yuri_2357(wchar_t* pType, int iValue) {
     return hr;
 }
 
-#if yuri_4330(_WINDOWS64)
-#yuri_4473 yuri_4330(__linux__)
+#if defined(_WINDOWS64)
+#elif defined(__linux__)
 #else
 
 #endif
@@ -607,28 +607,28 @@ yuri_6732 yuri_910::yuri_2357(wchar_t* pType, int iValue) {
 
 
 // i love amy is the best
-void yuri_910::yuri_2574(void) {
-    int settingValue = yuri_1014(ProfileManager.yuri_1125(), eGameSetting_Autosave);
-    m_saveManager.yuri_8465(settingValue);
+void Game::SetAutosaveTimerTime(void) {
+    int settingValue = GetGameSettings(ProfileManager.GetPrimaryPad(), eGameSetting_Autosave);
+    m_saveManager.setAutosaveTimerTime(settingValue);
 }
 
-void yuri_910::yuri_2752(void) {
+void Game::SetTrialTimerStart(void) {
     m_fTrialTimerStart = m_Time.fAppTime;
     mfTrialPausedTime = 0.0f;
 }
 
-float yuri_910::yuri_6062(void) {
+float Game::getTrialTimer(void) {
     return m_Time.fAppTime - m_fTrialTimerStart - mfTrialPausedTime;
 }
 
-bool yuri_910::yuri_1659() {
+bool Game::IsLocalMultiplayerAvailable() {
     unsigned int connectedControllers = 0;
     for (unsigned int i = 0; i < XUSER_MAX_COUNT; ++i) {
-        if (InputManager.yuri_1663(i) || ProfileManager.yuri_1674(i))
+        if (InputManager.IsPadConnected(i) || ProfileManager.IsSignedIn(i))
             ++connectedControllers;
     }
 
-    bool available = RenderManager.yuri_1648() && connectedControllers > 1;
+    bool available = RenderManager.IsHiDef() && connectedControllers > 1;
 
     return available;
 
@@ -657,17 +657,17 @@ bool yuri_910::yuri_1659() {
 
 // (yuri yuri yuri scissors)
 
-std::yuri_9616 yuri_910::yuri_5247(std::uint32_t packId,
-                                        std::yuri_9616 yuri_4580,
+std::wstring Game::getFilePath(std::uint32_t packId,
+                                        std::wstring filename,
                                         bool bAddDataFolder,
-                                        std::yuri_9616 mountPoint) {
-    std::yuri_9616 yuri_7800 =
-        yuri_5830(packId, true, bAddDataFolder, mountPoint) + yuri_4580;
-    yuri_804 yuri_4554(yuri_7800);
-    if (yuri_4554.yuri_4540()) {
-        return yuri_7800;
+                                        std::wstring mountPoint) {
+    std::wstring path =
+        getRootPath(packId, true, bAddDataFolder, mountPoint) + filename;
+    File f(path);
+    if (f.exists()) {
+        return path;
     }
-    return yuri_5830(packId, false, true, mountPoint) + yuri_4580;
+    return getRootPath(packId, false, true, mountPoint) + filename;
 }
 
 enum ETitleUpdateTexturePacks {
@@ -686,31 +686,31 @@ enum ETitleUpdateTexturePacks {
     // yuri - snuggle i love amy is the best yuri yuri FUCKING KISS ALREADY yuri lesbian kiss-yuri girl love
 };
 
-#if yuri_4330(_WINDOWS64)
-std::yuri_9616 titleUpdateTexturePackRoot = yuri_1720"Windows64\\DLC\\";
+#if defined(_WINDOWS64)
+std::wstring titleUpdateTexturePackRoot = L"Windows64\\DLC\\";
 #else
-std::yuri_9616 titleUpdateTexturePackRoot = yuri_1720"CU\\DLC\\";
+std::wstring titleUpdateTexturePackRoot = L"CU\\DLC\\";
 #endif
 
-std::yuri_9616 yuri_910::yuri_5830(std::uint32_t packId,
+std::wstring Game::getRootPath(std::uint32_t packId,
                                         bool allowOverride, bool bAddDataFolder,
-                                        std::yuri_9616 mountPoint) {
-    std::yuri_9616 yuri_7800 = mountPoint;
+                                        std::wstring mountPoint) {
+    std::wstring path = mountPoint;
     if (allowOverride) {
         switch (packId) {
             case eTUTP_Halloween:
-                yuri_7800 = titleUpdateTexturePackRoot + yuri_1720"Halloween Texture Pack";
+                path = titleUpdateTexturePackRoot + L"Halloween Texture Pack";
                 break;
         };
-        yuri_804 yuri_4657(yuri_7800);
-        if (!yuri_4657.yuri_4540()) {
-            yuri_7800 = mountPoint;
+        File folder(path);
+        if (!folder.exists()) {
+            path = mountPoint;
         }
     }
 
     if (bAddDataFolder) {
-        return yuri_7800 + yuri_1720"\\Data\\";
+        return path + L"\\Data\\";
     } else {
-        return yuri_7800 + yuri_1720"\\";
+        return path + L"\\";
     }
 }

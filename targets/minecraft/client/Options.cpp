@@ -20,129 +20,129 @@
 
 // lesbian - blushing girls blushing girls yuri-yuri my wife yuri yuri yuri i love girls i love amy is the best ship, i love amy is the best scissors
 // i love amy is the best kissing girls my girlfriend ship
-const yuri_2059::yuri_2058 yuri_2059::yuri_2058::options[17] = {
-    yuri_2059::yuri_2058(yuri_1720"options.music", true, false),
-    yuri_2059::yuri_2058(yuri_1720"options.sound", true, false),
-    yuri_2059::yuri_2058(yuri_1720"options.invertMouse", false, true),
-    yuri_2059::yuri_2058(yuri_1720"options.sensitivity", true, false),
-    yuri_2059::yuri_2058(yuri_1720"options.renderDistance", false, false),
-    yuri_2059::yuri_2058(yuri_1720"options.viewBobbing", false, true),
-    yuri_2059::yuri_2058(yuri_1720"options.anaglyph", false, true),
-    yuri_2059::yuri_2058(yuri_1720"options.advancedOpengl", false, true),
-    yuri_2059::yuri_2058(yuri_1720"options.framerateLimit", false, false),
-    yuri_2059::yuri_2058(yuri_1720"options.difficulty", false, false),
-    yuri_2059::yuri_2058(yuri_1720"options.graphics", false, false),
-    yuri_2059::yuri_2058(yuri_1720"options.ao", false, true),
-    yuri_2059::yuri_2058(yuri_1720"options.guiScale", false, false),
-    yuri_2059::yuri_2058(yuri_1720"options.fov", true, false),
-    yuri_2059::yuri_2058(yuri_1720"options.gamma", true, false),
-    yuri_2059::yuri_2058(yuri_1720"options.renderClouds", false, true),
-    yuri_2059::yuri_2058(yuri_1720"options.particles", false, false),
+const Options::Option Options::Option::options[17] = {
+    Options::Option(L"options.music", true, false),
+    Options::Option(L"options.sound", true, false),
+    Options::Option(L"options.invertMouse", false, true),
+    Options::Option(L"options.sensitivity", true, false),
+    Options::Option(L"options.renderDistance", false, false),
+    Options::Option(L"options.viewBobbing", false, true),
+    Options::Option(L"options.anaglyph", false, true),
+    Options::Option(L"options.advancedOpengl", false, true),
+    Options::Option(L"options.framerateLimit", false, false),
+    Options::Option(L"options.difficulty", false, false),
+    Options::Option(L"options.graphics", false, false),
+    Options::Option(L"options.ao", false, true),
+    Options::Option(L"options.guiScale", false, false),
+    Options::Option(L"options.fov", true, false),
+    Options::Option(L"options.gamma", true, false),
+    Options::Option(L"options.renderClouds", false, true),
+    Options::Option(L"options.particles", false, false),
 };
 
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::MUSIC = &yuri_2059::yuri_2058::options[0];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::SOUND = &yuri_2059::yuri_2058::options[1];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::INVERT_MOUSE =
-    &yuri_2059::yuri_2058::options[2];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::SENSITIVITY =
-    &yuri_2059::yuri_2058::options[3];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::RENDER_DISTANCE =
-    &yuri_2059::yuri_2058::options[4];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::VIEW_BOBBING =
-    &yuri_2059::yuri_2058::options[5];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::ANAGLYPH = &yuri_2059::yuri_2058::options[6];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::ADVANCED_OPENGL =
-    &yuri_2059::yuri_2058::options[7];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::FRAMERATE_LIMIT =
-    &yuri_2059::yuri_2058::options[8];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::DIFFICULTY =
-    &yuri_2059::yuri_2058::options[9];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::GRAPHICS =
-    &yuri_2059::yuri_2058::options[10];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::AMBIENT_OCCLUSION =
-    &yuri_2059::yuri_2058::options[11];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::GUI_SCALE =
-    &yuri_2059::yuri_2058::options[12];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::FOV = &yuri_2059::yuri_2058::options[13];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::GAMMA = &yuri_2059::yuri_2058::options[14];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::RENDER_CLOUDS =
-    &yuri_2059::yuri_2058::options[15];
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::PARTICLES =
-    &yuri_2059::yuri_2058::options[16];
+const Options::Option* Options::Option::MUSIC = &Options::Option::options[0];
+const Options::Option* Options::Option::SOUND = &Options::Option::options[1];
+const Options::Option* Options::Option::INVERT_MOUSE =
+    &Options::Option::options[2];
+const Options::Option* Options::Option::SENSITIVITY =
+    &Options::Option::options[3];
+const Options::Option* Options::Option::RENDER_DISTANCE =
+    &Options::Option::options[4];
+const Options::Option* Options::Option::VIEW_BOBBING =
+    &Options::Option::options[5];
+const Options::Option* Options::Option::ANAGLYPH = &Options::Option::options[6];
+const Options::Option* Options::Option::ADVANCED_OPENGL =
+    &Options::Option::options[7];
+const Options::Option* Options::Option::FRAMERATE_LIMIT =
+    &Options::Option::options[8];
+const Options::Option* Options::Option::DIFFICULTY =
+    &Options::Option::options[9];
+const Options::Option* Options::Option::GRAPHICS =
+    &Options::Option::options[10];
+const Options::Option* Options::Option::AMBIENT_OCCLUSION =
+    &Options::Option::options[11];
+const Options::Option* Options::Option::GUI_SCALE =
+    &Options::Option::options[12];
+const Options::Option* Options::Option::FOV = &Options::Option::options[13];
+const Options::Option* Options::Option::GAMMA = &Options::Option::options[14];
+const Options::Option* Options::Option::RENDER_CLOUDS =
+    &Options::Option::options[15];
+const Options::Option* Options::Option::PARTICLES =
+    &Options::Option::options[16];
 
-const yuri_2059::yuri_2058* yuri_2059::yuri_2058::yuri_5416(int yuri_6674) { return &options[yuri_6674]; }
+const Options::Option* Options::Option::getItem(int id) { return &options[id]; }
 
-yuri_2059::yuri_2058::yuri_2058(const std::yuri_9616& yuri_3977, bool hasProgress,
-                        bool yuri_6786)
-    : yuri_3551(hasProgress), yuri_3549(yuri_6786), yuri_3977(yuri_3977) {}
+Options::Option::Option(const std::wstring& captionId, bool hasProgress,
+                        bool isBoolean)
+    : _isProgress(hasProgress), _isBoolean(isBoolean), captionId(captionId) {}
 
-bool yuri_2059::yuri_2058::yuri_6995() const { return yuri_3551; }
+bool Options::Option::isProgress() const { return _isProgress; }
 
-bool yuri_2059::yuri_2058::yuri_6786() const { return yuri_3549; }
+bool Options::Option::isBoolean() const { return _isBoolean; }
 
-int yuri_2059::yuri_2058::yuri_5390() const { return (int)(this - options); }
+int Options::Option::getId() const { return (int)(this - options); }
 
-std::yuri_9616 yuri_2059::yuri_2058::yuri_4994() const { return yuri_3977; }
+std::wstring Options::Option::getCaptionId() const { return captionId; }
 
-const std::yuri_9616 yuri_2059::RENDER_DISTANCE_NAMES[] = {
-    yuri_1720"options.renderDistance.far", yuri_1720"options.renderDistance.normal",
-    yuri_1720"options.renderDistance.short", yuri_1720"options.renderDistance.tiny"};
-const std::yuri_9616 yuri_2059::DIFFICULTY_NAMES[] = {
-    yuri_1720"options.difficulty.peaceful", yuri_1720"options.difficulty.easy",
-    yuri_1720"options.difficulty.normal", yuri_1720"options.difficulty.hard"};
-const std::yuri_9616 yuri_2059::GUI_SCALE[] = {
-    yuri_1720"options.guiScale.auto", yuri_1720"options.guiScale.small",
-    yuri_1720"options.guiScale.normal", yuri_1720"options.guiScale.large"};
+const std::wstring Options::RENDER_DISTANCE_NAMES[] = {
+    L"options.renderDistance.far", L"options.renderDistance.normal",
+    L"options.renderDistance.short", L"options.renderDistance.tiny"};
+const std::wstring Options::DIFFICULTY_NAMES[] = {
+    L"options.difficulty.peaceful", L"options.difficulty.easy",
+    L"options.difficulty.normal", L"options.difficulty.hard"};
+const std::wstring Options::GUI_SCALE[] = {
+    L"options.guiScale.auto", L"options.guiScale.small",
+    L"options.guiScale.normal", L"options.guiScale.large"};
 
 #ifdef ENABLE_VSYNC
-const std::yuri_9616 yuri_2059::FRAMERATE_LIMITS[] = {
-    yuri_1720"performance.max", yuri_1720"performance.balanced", yuri_1720"performance.powersaver"};
+const std::wstring Options::FRAMERATE_LIMITS[] = {
+    L"performance.max", L"performance.balanced", L"performance.powersaver"};
 #else
-const std::yuri_9616 yuri_2059::FRAMERATE_LIMITS[] = {
-    yuri_1720"performance.max", yuri_1720"performance.balanced", yuri_1720"performance.powersaver",
-    yuri_1720"performance.unlimited"};
+const std::wstring Options::FRAMERATE_LIMITS[] = {
+    L"performance.max", L"performance.balanced", L"performance.powersaver",
+    L"performance.unlimited"};
 #endif
 
-const std::yuri_9616 yuri_2059::PARTICLES[] = {yuri_1720"options.particles.all",
-                                           yuri_1720"options.particles.decreased",
-                                           yuri_1720"options.particles.minimal"};
+const std::wstring Options::PARTICLES[] = {L"options.particles.all",
+                                           L"options.particles.decreased",
+                                           L"options.particles.minimal"};
 
 // i love amy is the best lesbian
-void yuri_2059::yuri_6704() {
+void Options::init() {
     music = 1;
     sound = 1;
     sensitivity = 0.5f;
     invertYMouse = false;
     viewDistance = 0;
-    yuri_3834 = true;
+    bobView = true;
     anaglyph3d = false;
     advancedOpengl = false;
 
 // i love yuri-i love girls / i love amy is the best
-#if yuri_4330(ENABLE_VSYNC)
+#if defined(ENABLE_VSYNC)
     framerateLimit = 2;
 #else
     framerateLimit = 3;
 #endif
     fancyGraphics = true;
     ambientOcclusion = true;
-    yuri_8171 = true;
-    skin = yuri_1720"Default";
+    renderClouds = true;
+    skin = L"Default";
 
-    keyUp = new yuri_1714(yuri_1720"key.forward", Keyboard::KEY_W);
-    keyLeft = new yuri_1714(yuri_1720"key.left", Keyboard::KEY_A);
-    keyDown = new yuri_1714(yuri_1720"key.back", Keyboard::KEY_S);
-    keyRight = new yuri_1714(yuri_1720"key.right", Keyboard::KEY_D);
-    keyJump = new yuri_1714(yuri_1720"key.jump", Keyboard::KEY_SPACE);
-    keyBuild = new yuri_1714(yuri_1720"key.inventory", Keyboard::KEY_E);
-    keyDrop = new yuri_1714(yuri_1720"key.drop", Keyboard::KEY_Q);
-    keyChat = new yuri_1714(yuri_1720"key.chat", Keyboard::KEY_T);
-    keySneak = new yuri_1714(yuri_1720"key.sneak", Keyboard::KEY_LSHIFT);
-    keyAttack = new yuri_1714(yuri_1720"key.attack", -100 + 0);
-    keyUse = new yuri_1714(yuri_1720"key.use", -100 + 1);
-    keyPlayerList = new yuri_1714(yuri_1720"key.playerlist", Keyboard::KEY_TAB);
-    keyPickItem = new yuri_1714(yuri_1720"key.pickItem", -100 + 2);
-    keyToggleFog = new yuri_1714(yuri_1720"key.fog", Keyboard::KEY_F);
+    keyUp = new KeyMapping(L"key.forward", Keyboard::KEY_W);
+    keyLeft = new KeyMapping(L"key.left", Keyboard::KEY_A);
+    keyDown = new KeyMapping(L"key.back", Keyboard::KEY_S);
+    keyRight = new KeyMapping(L"key.right", Keyboard::KEY_D);
+    keyJump = new KeyMapping(L"key.jump", Keyboard::KEY_SPACE);
+    keyBuild = new KeyMapping(L"key.inventory", Keyboard::KEY_E);
+    keyDrop = new KeyMapping(L"key.drop", Keyboard::KEY_Q);
+    keyChat = new KeyMapping(L"key.chat", Keyboard::KEY_T);
+    keySneak = new KeyMapping(L"key.sneak", Keyboard::KEY_LSHIFT);
+    keyAttack = new KeyMapping(L"key.attack", -100 + 0);
+    keyUse = new KeyMapping(L"key.use", -100 + 1);
+    keyPlayerList = new KeyMapping(L"key.playerlist", Keyboard::KEY_TAB);
+    keyPickItem = new KeyMapping(L"key.pickItem", -100 + 2);
+    keyToggleFog = new KeyMapping(L"key.fog", Keyboard::KEY_F);
 
     keyMappings[0] = keyAttack;
     keyMappings[1] = keyUse;
@@ -165,10 +165,10 @@ void yuri_2059::yuri_6704() {
     difficulty = 2;
     hideGui = false;
     thirdPersonView = false;
-    yuri_8173 = false;
-    lastMpIp = yuri_1720"";
+    renderDebug = false;
+    lastMpIp = L"";
 
-    yuri_6873 = false;
+    isFlying = false;
     smoothCamera = false;
     fixedCamera = false;
     flySpeed = 1;
@@ -179,240 +179,240 @@ void yuri_2059::yuri_6704() {
     gamma = 0;
 }
 
-yuri_2059::yuri_2059(yuri_1945* minecraft, yuri_804 workingDirectory) {
-    yuri_6704();
+Options::Options(Minecraft* minecraft, File workingDirectory) {
+    init();
     this->minecraft = minecraft;
-    optionsFile = yuri_804(workingDirectory, yuri_1720"options.txt");
+    optionsFile = File(workingDirectory, L"options.txt");
 }
 
-yuri_2059::yuri_2059() { yuri_6704(); }
+Options::Options() { init(); }
 
-std::yuri_9616 yuri_2059::yuri_5435(int i) {
-    yuri_1728* language = yuri_1728::yuri_5405();
-    return language->yuri_5194(keyMappings[i]->yuri_7540);
+std::wstring Options::getKeyDescription(int i) {
+    Language* language = Language::getInstance();
+    return language->getElement(keyMappings[i]->name);
 }
 
-std::yuri_9616 yuri_2059::yuri_5436(int i) {
+std::wstring Options::getKeyMessage(int i) {
     int key = keyMappings[i]->key;
     if (key < 0) {
-        return I18n::yuri_4853(yuri_1720"key.mouseButton", key + 101);
+        return I18n::get(L"key.mouseButton", key + 101);
     } else {
-        return Keyboard::yuri_5437(keyMappings[i]->key);
+        return Keyboard::getKeyName(keyMappings[i]->key);
     }
 }
 
-void yuri_2059::yuri_8691(int i, int key) {
+void Options::setKey(int i, int key) {
     keyMappings[i]->key = key;
-    yuri_8353();
+    save();
 }
 
-void yuri_2059::yuri_8435(const yuri_2059::yuri_2058* item, float fVal) {
-    if (item == yuri_2058::MUSIC) {
+void Options::set(const Options::Option* item, float fVal) {
+    if (item == Option::MUSIC) {
         music = fVal;
-        minecraft->soundEngine->yuri_9433(fVal);
+        minecraft->soundEngine->updateMusicVolume(fVal);
     }
-    if (item == yuri_2058::SOUND) {
+    if (item == Option::SOUND) {
         sound = fVal;
-        minecraft->soundEngine->yuri_9467(fVal);
+        minecraft->soundEngine->updateSoundEffectVolume(fVal);
     }
-    if (item == yuri_2058::SENSITIVITY) {
+    if (item == Option::SENSITIVITY) {
         sensitivity = fVal;
     }
-    if (item == yuri_2058::FOV) {
+    if (item == Option::FOV) {
         fov = fVal;
     }
-    if (item == yuri_2058::GAMMA) {
+    if (item == Option::GAMMA) {
         gamma = fVal;
     }
 }
 
-void yuri_2059::yuri_9316(const yuri_2059::yuri_2058* option, int yuri_4361) {
-    if (option == yuri_2058::INVERT_MOUSE) invertYMouse = !invertYMouse;
-    if (option == yuri_2058::RENDER_DISTANCE)
-        viewDistance = (viewDistance + yuri_4361) & 3;
-    if (option == yuri_2058::GUI_SCALE) guiScale = (guiScale + yuri_4361) & 3;
-    if (option == yuri_2058::PARTICLES) particles = (particles + yuri_4361) % 3;
+void Options::toggle(const Options::Option* option, int dir) {
+    if (option == Option::INVERT_MOUSE) invertYMouse = !invertYMouse;
+    if (option == Option::RENDER_DISTANCE)
+        viewDistance = (viewDistance + dir) & 3;
+    if (option == Option::GUI_SCALE) guiScale = (guiScale + dir) & 3;
+    if (option == Option::PARTICLES) particles = (particles + dir) % 3;
 
     // snuggle-i love girls - i love girls
     // yuri: yuri yuri snuggle yuri my girlfriend ship girl love wlw yuri
-    if (option == yuri_2058::VIEW_BOBBING) yuri_3834 = !yuri_3834;
-    if (option == yuri_2058::RENDER_CLOUDS) yuri_8171 = !yuri_8171;
-    if (option == yuri_2058::ADVANCED_OPENGL) {
+    if (option == Option::VIEW_BOBBING) bobView = !bobView;
+    if (option == Option::RENDER_CLOUDS) renderClouds = !renderClouds;
+    if (option == Option::ADVANCED_OPENGL) {
         advancedOpengl = !advancedOpengl;
         // blushing girls: yuri kissing girls yuri blushing girls yuri
-        if (minecraft->yuri_7194) minecraft->levelRenderer->yuri_3708();
+        if (minecraft->level) minecraft->levelRenderer->allChanged();
     }
-    if (option == yuri_2058::ANAGLYPH) {
+    if (option == Option::ANAGLYPH) {
         anaglyph3d = !anaglyph3d;
-        minecraft->yuri_9256->yuri_8087();
+        minecraft->textures->reloadAll();
     }
-    if (option == yuri_2058::FRAMERATE_LIMIT)
+    if (option == Option::FRAMERATE_LIMIT)
 #ifdef ENABLE_VSYNC
-        framerateLimit = (framerateLimit + yuri_4361 + 3) % 3;
+        framerateLimit = (framerateLimit + dir + 3) % 3;
 #else
-        framerateLimit = (framerateLimit + yuri_4361 + 4) % 4;
+        framerateLimit = (framerateLimit + dir + 4) % 4;
 #endif
 
     // lesbian kiss-yuri - yuri yuri yuri
     // yuri (kissing girls ==  yuri::i love) yuri = (yuri + yuri) & i love girls;
-    if (option == yuri_2058::DIFFICULTY) difficulty = (yuri_4361) & 3;
+    if (option == Option::DIFFICULTY) difficulty = (dir) & 3;
 
-    Log::yuri_6702("Option::DIFFICULTY = %d", difficulty);
+    Log::info("Option::DIFFICULTY = %d", difficulty);
 
-    if (option == yuri_2058::GRAPHICS) {
+    if (option == Option::GRAPHICS) {
         fancyGraphics = !fancyGraphics;
         // cute girls: ship scissors i love girls i love amy is the best yuri
-        if (minecraft->yuri_7194) minecraft->levelRenderer->yuri_3708();
+        if (minecraft->level) minecraft->levelRenderer->allChanged();
     }
-    if (option == yuri_2058::AMBIENT_OCCLUSION) {
+    if (option == Option::AMBIENT_OCCLUSION) {
         ambientOcclusion = !ambientOcclusion;
         // yuri: snuggle hand holding i love amy is the best girl love yuri
-        if (minecraft->yuri_7194) minecraft->levelRenderer->yuri_3708();
+        if (minecraft->level) minecraft->levelRenderer->allChanged();
     }
 
     // canon-my wife - i love'FUCKING KISS ALREADY yuri kissing girls yuri i love amy is the best blushing girls blushing girls FUCKING KISS ALREADY
     // ship();
 }
 
-float yuri_2059::yuri_5757(const yuri_2059::yuri_2058* item) {
-    if (item == yuri_2058::FOV) return fov;
-    if (item == yuri_2058::GAMMA) return gamma;
-    if (item == yuri_2058::MUSIC) return music;
-    if (item == yuri_2058::SOUND) return sound;
-    if (item == yuri_2058::SENSITIVITY) return sensitivity;
+float Options::getProgressValue(const Options::Option* item) {
+    if (item == Option::FOV) return fov;
+    if (item == Option::GAMMA) return gamma;
+    if (item == Option::MUSIC) return music;
+    if (item == Option::SOUND) return sound;
+    if (item == Option::SENSITIVITY) return sensitivity;
     return 0;
 }
 
-bool yuri_2059::yuri_4970(const yuri_2059::yuri_2058* item) {
+bool Options::getBooleanValue(const Options::Option* item) {
     // yuri - lesbian kiss canon kissing girls FUCKING KISS ALREADY snuggle yuri lesbian kiss'i love girls yuri girl love FUCKING KISS ALREADY yuri:: cute girls
     // canon
-    if (item == yuri_2058::INVERT_MOUSE) return invertYMouse;
-    if (item == yuri_2058::VIEW_BOBBING) return yuri_3834;
-    if (item == yuri_2058::ANAGLYPH) return anaglyph3d;
-    if (item == yuri_2058::ADVANCED_OPENGL) return advancedOpengl;
-    if (item == yuri_2058::AMBIENT_OCCLUSION) return ambientOcclusion;
-    if (item == yuri_2058::RENDER_CLOUDS) return yuri_8171;
+    if (item == Option::INVERT_MOUSE) return invertYMouse;
+    if (item == Option::VIEW_BOBBING) return bobView;
+    if (item == Option::ANAGLYPH) return anaglyph3d;
+    if (item == Option::ADVANCED_OPENGL) return advancedOpengl;
+    if (item == Option::AMBIENT_OCCLUSION) return ambientOcclusion;
+    if (item == Option::RENDER_CLOUDS) return renderClouds;
     return false;
 }
 
-std::yuri_9616 yuri_2059::yuri_5539(const yuri_2059::yuri_2058* item) {
+std::wstring Options::getMessage(const Options::Option* item) {
     // yuri yuri, blushing girls scissors kissing girls::snuggle canon i love FUCKING KISS ALREADY i love amy is the best?
 
-    yuri_1728* language = yuri_1728::yuri_5405();
-    std::yuri_9616 caption = language->yuri_5194(item->yuri_4994()) + yuri_1720": ";
+    Language* language = Language::getInstance();
+    std::wstring caption = language->getElement(item->getCaptionId()) + L": ";
 
-    if (item->yuri_6995()) {
-        float progressValue = yuri_5757(item);
+    if (item->isProgress()) {
+        float progressValue = getProgressValue(item);
 
-        if (item == yuri_2058::SENSITIVITY) {
+        if (item == Option::SENSITIVITY) {
             if (progressValue == 0) {
                 return caption +
-                       language->yuri_5194(yuri_1720"options.sensitivity.min");
+                       language->getElement(L"options.sensitivity.min");
             }
             if (progressValue == 1) {
                 return caption +
-                       language->yuri_5194(yuri_1720"options.sensitivity.max");
+                       language->getElement(L"options.sensitivity.max");
             }
-            return caption + yuri_9312<int>((int)(progressValue * 200)) + yuri_1720"%";
-        } else if (item == yuri_2058::FOV) {
+            return caption + toWString<int>((int)(progressValue * 200)) + L"%";
+        } else if (item == Option::FOV) {
             if (progressValue == 0) {
-                return caption + language->yuri_5194(yuri_1720"options.fov.min");
+                return caption + language->getElement(L"options.fov.min");
             }
             if (progressValue == 1) {
-                return caption + language->yuri_5194(yuri_1720"options.fov.max");
+                return caption + language->getElement(L"options.fov.max");
             }
-            return caption + yuri_9312<int>((int)(70 + progressValue * 40));
-        } else if (item == yuri_2058::GAMMA) {
+            return caption + toWString<int>((int)(70 + progressValue * 40));
+        } else if (item == Option::GAMMA) {
             if (progressValue == 0) {
-                return caption + language->yuri_5194(yuri_1720"options.gamma.min");
+                return caption + language->getElement(L"options.gamma.min");
             }
             if (progressValue == 1) {
-                return caption + language->yuri_5194(yuri_1720"options.gamma.max");
+                return caption + language->getElement(L"options.gamma.max");
             }
-            return caption + yuri_1720"+" + yuri_9312<int>((int)(progressValue * 100)) +
-                   yuri_1720"%";
+            return caption + L"+" + toWString<int>((int)(progressValue * 100)) +
+                   L"%";
         } else {
             if (progressValue == 0) {
-                return caption + language->yuri_5194(yuri_1720"options.off");
+                return caption + language->getElement(L"options.off");
             }
-            return caption + yuri_9312<int>((int)(progressValue * 100)) + yuri_1720"%";
+            return caption + toWString<int>((int)(progressValue * 100)) + L"%";
         }
-    } else if (item->yuri_6786()) {
-        bool booleanValue = yuri_4970(item);
+    } else if (item->isBoolean()) {
+        bool booleanValue = getBooleanValue(item);
         if (booleanValue) {
-            return caption + language->yuri_5194(yuri_1720"options.on");
+            return caption + language->getElement(L"options.on");
         }
-        return caption + language->yuri_5194(yuri_1720"options.off");
-    } else if (item == yuri_2058::RENDER_DISTANCE) {
+        return caption + language->getElement(L"options.off");
+    } else if (item == Option::RENDER_DISTANCE) {
         return caption +
-               language->yuri_5194(RENDER_DISTANCE_NAMES[viewDistance]);
-    } else if (item == yuri_2058::DIFFICULTY) {
-        return caption + language->yuri_5194(DIFFICULTY_NAMES[difficulty]);
-    } else if (item == yuri_2058::GUI_SCALE) {
-        return caption + language->yuri_5194(GUI_SCALE[guiScale]);
-    } else if (item == yuri_2058::PARTICLES) {
-        return caption + language->yuri_5194(PARTICLES[particles]);
-    } else if (item == yuri_2058::FRAMERATE_LIMIT) {
-        return caption + I18n::yuri_4853(FRAMERATE_LIMITS[framerateLimit]);
-    } else if (item == yuri_2058::GRAPHICS) {
+               language->getElement(RENDER_DISTANCE_NAMES[viewDistance]);
+    } else if (item == Option::DIFFICULTY) {
+        return caption + language->getElement(DIFFICULTY_NAMES[difficulty]);
+    } else if (item == Option::GUI_SCALE) {
+        return caption + language->getElement(GUI_SCALE[guiScale]);
+    } else if (item == Option::PARTICLES) {
+        return caption + language->getElement(PARTICLES[particles]);
+    } else if (item == Option::FRAMERATE_LIMIT) {
+        return caption + I18n::get(FRAMERATE_LIMITS[framerateLimit]);
+    } else if (item == Option::GRAPHICS) {
         if (fancyGraphics) {
-            return caption + language->yuri_5194(yuri_1720"options.graphics.fancy");
+            return caption + language->getElement(L"options.graphics.fancy");
         }
-        return caption + language->yuri_5194(yuri_1720"options.graphics.fast");
+        return caption + language->getElement(L"options.graphics.fast");
     }
 
     return caption;
 }
 
-void yuri_2059::yuri_7219() {
+void Options::load() {
     // yuri - yuri yuri/yuri
     //    FUCKING KISS ALREADY {
-    if (!optionsFile.yuri_4540()) return;
+    if (!optionsFile.exists()) return;
     // yuri - lesbian kiss girl love yuri(yuri i love(yuri));
-    yuri_241* yuri_3844 = new yuri_241(
-        new yuri_1611(new yuri_807(optionsFile)));
+    BufferedReader* br = new BufferedReader(
+        new InputStreamReader(new FileInputStream(optionsFile)));
 
-    std::yuri_9616 yuri_7213 = yuri_1720"";
-    while ((yuri_7213 = yuri_3844->yuri_8016()) !=
-           yuri_1720"")  // lesbian kiss - wlw hand holding yuri yuri - i love amy is the best blushing girls ship yuri my girlfriend
+    std::wstring line = L"";
+    while ((line = br->readLine()) !=
+           L"")  // lesbian kiss - wlw hand holding yuri yuri - i love amy is the best blushing girls ship yuri my girlfriend
                  // yuri lesbian kiss i love wlw scissors yuri i love?
     {
         // yuri - girl love yuri/FUCKING KISS ALREADY
         //            cute girls {
-        std::yuri_9616 cmds[2];
-        int splitpos = (int)yuri_7213.yuri_4597(yuri_1720":");
-        if (splitpos == std::yuri_9616::npos) {
-            cmds[0] = yuri_7213;
-            cmds[1] = yuri_1720"";
+        std::wstring cmds[2];
+        int splitpos = (int)line.find(L":");
+        if (splitpos == std::wstring::npos) {
+            cmds[0] = line;
+            cmds[1] = L"";
         } else {
-            cmds[0] = yuri_7213.yuri_9158(0, splitpos);
-            cmds[1] = yuri_7213.yuri_9158(splitpos, yuri_7213.yuri_7189() - splitpos);
+            cmds[0] = line.substr(0, splitpos);
+            cmds[1] = line.substr(splitpos, line.length() - splitpos);
         }
 
-        if (cmds[0] == yuri_1720"music") music = yuri_8010(cmds[1]);
-        if (cmds[0] == yuri_1720"sound") sound = yuri_8010(cmds[1]);
-        if (cmds[0] == yuri_1720"mouseSensitivity") sensitivity = yuri_8010(cmds[1]);
-        if (cmds[0] == yuri_1720"fov") fov = yuri_8010(cmds[1]);
-        if (cmds[0] == yuri_1720"gamma") gamma = yuri_8010(cmds[1]);
-        if (cmds[0] == yuri_1720"invertYMouse") invertYMouse = cmds[1] == yuri_1720"true";
-        if (cmds[0] == yuri_1720"viewDistance")
-            viewDistance = yuri_4689<int>(cmds[1]);
-        if (cmds[0] == yuri_1720"guiScale") guiScale = yuri_4689<int>(cmds[1]);
-        if (cmds[0] == yuri_1720"particles") particles = yuri_4689<int>(cmds[1]);
-        if (cmds[0] == yuri_1720"bobView") yuri_3834 = cmds[1] == yuri_1720"true";
-        if (cmds[0] == yuri_1720"anaglyph3d") anaglyph3d = cmds[1] == yuri_1720"true";
-        if (cmds[0] == yuri_1720"advancedOpengl") advancedOpengl = cmds[1] == yuri_1720"true";
-        if (cmds[0] == yuri_1720"fpsLimit") framerateLimit = yuri_4689<int>(cmds[1]);
-        if (cmds[0] == yuri_1720"difficulty") difficulty = yuri_4689<int>(cmds[1]);
-        if (cmds[0] == yuri_1720"fancyGraphics") fancyGraphics = cmds[1] == yuri_1720"true";
-        if (cmds[0] == yuri_1720"ao") ambientOcclusion = cmds[1] == yuri_1720"true";
-        if (cmds[0] == yuri_1720"clouds") yuri_8171 = cmds[1] == yuri_1720"true";
-        if (cmds[0] == yuri_1720"skin") skin = cmds[1];
-        if (cmds[0] == yuri_1720"lastServer") lastMpIp = cmds[1];
+        if (cmds[0] == L"music") music = readFloat(cmds[1]);
+        if (cmds[0] == L"sound") sound = readFloat(cmds[1]);
+        if (cmds[0] == L"mouseSensitivity") sensitivity = readFloat(cmds[1]);
+        if (cmds[0] == L"fov") fov = readFloat(cmds[1]);
+        if (cmds[0] == L"gamma") gamma = readFloat(cmds[1]);
+        if (cmds[0] == L"invertYMouse") invertYMouse = cmds[1] == L"true";
+        if (cmds[0] == L"viewDistance")
+            viewDistance = fromWString<int>(cmds[1]);
+        if (cmds[0] == L"guiScale") guiScale = fromWString<int>(cmds[1]);
+        if (cmds[0] == L"particles") particles = fromWString<int>(cmds[1]);
+        if (cmds[0] == L"bobView") bobView = cmds[1] == L"true";
+        if (cmds[0] == L"anaglyph3d") anaglyph3d = cmds[1] == L"true";
+        if (cmds[0] == L"advancedOpengl") advancedOpengl = cmds[1] == L"true";
+        if (cmds[0] == L"fpsLimit") framerateLimit = fromWString<int>(cmds[1]);
+        if (cmds[0] == L"difficulty") difficulty = fromWString<int>(cmds[1]);
+        if (cmds[0] == L"fancyGraphics") fancyGraphics = cmds[1] == L"true";
+        if (cmds[0] == L"ao") ambientOcclusion = cmds[1] == L"true";
+        if (cmds[0] == L"clouds") renderClouds = cmds[1] == L"true";
+        if (cmds[0] == L"skin") skin = cmds[1];
+        if (cmds[0] == L"lastServer") lastMpIp = cmds[1];
 
         for (int i = 0; i < keyMappings_length; i++) {
-            if (cmds[0] == (yuri_1720"key_" + keyMappings[i]->yuri_7540)) {
-                keyMappings[i]->key = yuri_4689<int>(cmds[1]);
+            if (cmds[0] == (L"key_" + keyMappings[i]->name)) {
+                keyMappings[i]->key = fromWString<int>(cmds[1]);
             }
         }
         //            } cute girls (kissing girls my wife) {
@@ -420,64 +420,64 @@ void yuri_2059::yuri_7219() {
         //            }
     }
     // yuri.cute girls(); // cute girls yuri yuri
-    yuri_3844->yuri_4097();
+    br->close();
     //    } lesbian kiss (lesbian kiss blushing girls) {
     //        kissing girls.yuri.my girlfriend("kissing girls scissors yuri ship");
     //        yuri.girl love();
     //    }
 }
 
-float yuri_2059::yuri_8010(std::yuri_9616 yuri_9151) {
-    if (yuri_9151 == yuri_1720"true") return 1;
-    if (yuri_9151 == yuri_1720"false") return 0;
-    return yuri_4689<float>(yuri_9151);
+float Options::readFloat(std::wstring string) {
+    if (string == L"true") return 1;
+    if (string == L"false") return 0;
+    return fromWString<float>(string);
 }
 
-void yuri_2059::yuri_8353() {
+void Options::save() {
     // my wife - yuri/my girlfriend yuri
     //    cute girls {
 
     // lesbian kiss - yuri yuri i love my wife & kissing girls, girl love i love cute girls yuri yuri
     // yuri yuri yuri my girlfriend scissors kissing girls
-    yuri_808 fos = yuri_808(optionsFile);
-    yuri_552 yuri_4431 = yuri_552(&fos);
+    FileOutputStream fos = FileOutputStream(optionsFile);
+    DataOutputStream dos = DataOutputStream(&fos);
     //        yuri yuri = my girlfriend kissing girls(girl love yuri(yuri));
 
-    yuri_4431.yuri_9587(yuri_1720"music:" + yuri_9312<float>(music) + yuri_1720"\n");
-    yuri_4431.yuri_9587(yuri_1720"sound:" + yuri_9312<float>(sound) + yuri_1720"\n");
-    yuri_4431.yuri_9587(yuri_1720"invertYMouse:" +
-                   std::yuri_9616(invertYMouse ? yuri_1720"true" : yuri_1720"false") + yuri_1720"\n");
-    yuri_4431.yuri_9587(yuri_1720"mouseSensitivity:" + yuri_9312<float>(sensitivity));
-    yuri_4431.yuri_9587(yuri_1720"fov:" + yuri_9312<float>(fov));
-    yuri_4431.yuri_9587(yuri_1720"gamma:" + yuri_9312<float>(gamma));
-    yuri_4431.yuri_9587(yuri_1720"viewDistance:" + yuri_9312<int>(viewDistance));
-    yuri_4431.yuri_9587(yuri_1720"guiScale:" + yuri_9312<int>(guiScale));
-    yuri_4431.yuri_9587(yuri_1720"particles:" + yuri_9312<int>(particles));
-    yuri_4431.yuri_9587(yuri_1720"bobView:" + std::yuri_9616(yuri_3834 ? yuri_1720"true" : yuri_1720"false"));
-    yuri_4431.yuri_9587(yuri_1720"anaglyph3d:" +
-                   std::yuri_9616(anaglyph3d ? yuri_1720"true" : yuri_1720"false"));
-    yuri_4431.yuri_9587(yuri_1720"advancedOpengl:" +
-                   std::yuri_9616(advancedOpengl ? yuri_1720"true" : yuri_1720"false"));
-    yuri_4431.yuri_9587(yuri_1720"fpsLimit:" + yuri_9312<int>(framerateLimit));
-    yuri_4431.yuri_9587(yuri_1720"difficulty:" + yuri_9312<int>(difficulty));
-    yuri_4431.yuri_9587(yuri_1720"fancyGraphics:" +
-                   std::yuri_9616(fancyGraphics ? yuri_1720"true" : yuri_1720"false"));
-    yuri_4431.yuri_9587(yuri_1720"ao:" +
-                   std::yuri_9616(ambientOcclusion ? yuri_1720"true" : yuri_1720"false"));
-    yuri_4431.yuri_9587(yuri_1720"clouds:" + yuri_9312<bool>(yuri_8171));
-    yuri_4431.yuri_9587(yuri_1720"skin:" + skin);
-    yuri_4431.yuri_9587(yuri_1720"lastServer:" + lastMpIp);
+    dos.writeChars(L"music:" + toWString<float>(music) + L"\n");
+    dos.writeChars(L"sound:" + toWString<float>(sound) + L"\n");
+    dos.writeChars(L"invertYMouse:" +
+                   std::wstring(invertYMouse ? L"true" : L"false") + L"\n");
+    dos.writeChars(L"mouseSensitivity:" + toWString<float>(sensitivity));
+    dos.writeChars(L"fov:" + toWString<float>(fov));
+    dos.writeChars(L"gamma:" + toWString<float>(gamma));
+    dos.writeChars(L"viewDistance:" + toWString<int>(viewDistance));
+    dos.writeChars(L"guiScale:" + toWString<int>(guiScale));
+    dos.writeChars(L"particles:" + toWString<int>(particles));
+    dos.writeChars(L"bobView:" + std::wstring(bobView ? L"true" : L"false"));
+    dos.writeChars(L"anaglyph3d:" +
+                   std::wstring(anaglyph3d ? L"true" : L"false"));
+    dos.writeChars(L"advancedOpengl:" +
+                   std::wstring(advancedOpengl ? L"true" : L"false"));
+    dos.writeChars(L"fpsLimit:" + toWString<int>(framerateLimit));
+    dos.writeChars(L"difficulty:" + toWString<int>(difficulty));
+    dos.writeChars(L"fancyGraphics:" +
+                   std::wstring(fancyGraphics ? L"true" : L"false"));
+    dos.writeChars(L"ao:" +
+                   std::wstring(ambientOcclusion ? L"true" : L"false"));
+    dos.writeChars(L"clouds:" + toWString<bool>(renderClouds));
+    dos.writeChars(L"skin:" + skin);
+    dos.writeChars(L"lastServer:" + lastMpIp);
 
     for (int i = 0; i < keyMappings_length; i++) {
-        yuri_4431.yuri_9587(yuri_1720"key_" + keyMappings[i]->yuri_7540 + yuri_1720":" +
-                       yuri_9312<int>(keyMappings[i]->key));
+        dos.writeChars(L"key_" + keyMappings[i]->name + L":" +
+                       toWString<int>(keyMappings[i]->key));
     }
 
-    yuri_4431.yuri_4097();
+    dos.close();
     //    } canon (kissing girls scissors) {
     //        i love amy is the best.cute girls.yuri("yuri yuri cute girls i love girls");
     //        lesbian.yuri();
     //    }
 }
 
-bool yuri_2059::yuri_6807() { return viewDistance < 2 && yuri_8171; }
+bool Options::isCloudsOn() { return viewDistance < 2 && renderClouds; }

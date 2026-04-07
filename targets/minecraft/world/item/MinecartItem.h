@@ -5,28 +5,28 @@
 
 class BlockSource;
 
-class yuri_1937 : public yuri_1687 {
+class MinecartItem : public Item {
 private:
-    class yuri_1934 : public yuri_578 {
+    class MinecartDispenseBehavior : public DefaultDispenseItemBehavior {
     private:
-        yuri_578 defaultDispenseItemBehavior;
+        DefaultDispenseItemBehavior defaultDispenseItemBehavior;
 
     public:
-        virtual std::shared_ptr<yuri_1693> yuri_4539(
-            BlockSource* yuri_9075, std::shared_ptr<yuri_1693> dispensed,
+        virtual std::shared_ptr<ItemInstance> execute(
+            BlockSource* source, std::shared_ptr<ItemInstance> dispensed,
             eOUTCOME& outcome);
 
     protected:
-        virtual void yuri_7833(BlockSource* yuri_9075);
+        virtual void playSound(BlockSource* source);
     };
 
 public:
-    int yuri_9364;
+    int type;
 
-    yuri_1937(int yuri_6674, int yuri_9364);
+    MinecartItem(int id, int type);
 
-    virtual bool yuri_9492(std::shared_ptr<yuri_1693> instance,
-                       std::shared_ptr<yuri_2126> yuri_7839, yuri_1758* yuri_7194, int yuri_9621,
-                       int yuri_9625, int yuri_9630, int face, float clickX, float clickY,
+    virtual bool useOn(std::shared_ptr<ItemInstance> instance,
+                       std::shared_ptr<Player> player, Level* level, int x,
+                       int y, int z, int face, float clickX, float clickY,
                        float clickZ, bool bTestUseOnOnly = false);
 };

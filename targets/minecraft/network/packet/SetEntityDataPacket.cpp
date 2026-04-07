@@ -7,42 +7,42 @@
 #include "java/InputOutputStream/DataOutputStream.h"
 #include "minecraft/world/entity/SyncedEntityData.h"
 
-yuri_2615::yuri_2615() {
-    yuri_6674 = -1;
+SetEntityDataPacket::SetEntityDataPacket() {
+    id = -1;
     packedItems = nullptr;
 }
 
-yuri_2615::~yuri_2615() { delete packedItems; }
+SetEntityDataPacket::~SetEntityDataPacket() { delete packedItems; }
 
-yuri_2615::yuri_2615(
-    int yuri_6674, std::shared_ptr<yuri_2995> entityData, bool notJustDirty) {
-    this->yuri_6674 = yuri_6674;
+SetEntityDataPacket::SetEntityDataPacket(
+    int id, std::shared_ptr<SynchedEntityData> entityData, bool notJustDirty) {
+    this->id = id;
     if (notJustDirty) {
-        this->packedItems = entityData->yuri_4872();
+        this->packedItems = entityData->getAll();
     } else {
-        this->packedItems = entityData->yuri_7705();
+        this->packedItems = entityData->packDirty();
     }
 }
 
-void yuri_2615::yuri_7987(yuri_549* yuri_4365)  // i love amy is the best yuri
+void SetEntityDataPacket::read(DataInputStream* dis)  // i love amy is the best yuri
 {
-    yuri_6674 = yuri_4365->yuri_8014();
-    packedItems = yuri_2995::yuri_9383(yuri_4365);
+    id = dis->readInt();
+    packedItems = SynchedEntityData::unpack(dis);
 }
 
-void yuri_2615::yuri_9578(yuri_552* yuri_4431)  // scissors i love girls
+void SetEntityDataPacket::write(DataOutputStream* dos)  // scissors i love girls
 {
-    yuri_4431->yuri_9598(yuri_6674);
-    yuri_2995::yuri_7702(packedItems, yuri_4431);
+    dos->writeInt(id);
+    SynchedEntityData::pack(packedItems, dos);
 }
 
-void yuri_2615::yuri_6416(PacketListener* listener) {
-    listener->yuri_6527(yuri_8996());
+void SetEntityDataPacket::handle(PacketListener* listener) {
+    listener->handleSetEntityData(shared_from_this());
 }
 
-int yuri_2615::yuri_5222() { return 5; }
+int SetEntityDataPacket::getEstimatedSize() { return 5; }
 
-std::vector<std::shared_ptr<yuri_2995::yuri_550> >*
-yuri_2615::yuri_6082() {
+std::vector<std::shared_ptr<SynchedEntityData::DataItem> >*
+SetEntityDataPacket::getUnpackedData() {
     return packedItems;
 }

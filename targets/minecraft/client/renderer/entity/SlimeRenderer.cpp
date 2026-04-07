@@ -10,53 +10,53 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/monster/Slime.h"
 
-class yuri_1962;
+class Model;
 
-yuri_2412 yuri_2844::SLIME_LOCATION = yuri_2412(TN_MOB_SLIME);
+ResourceLocation SlimeRenderer::SLIME_LOCATION = ResourceLocation(TN_MOB_SLIME);
 
-yuri_2844::yuri_2844(yuri_1962* model, yuri_1962* armor, float shadow)
-    : yuri_1955(model, shadow) {
+SlimeRenderer::SlimeRenderer(Model* model, Model* armor, float shadow)
+    : MobRenderer(model, shadow) {
     this->armor = armor;
 }
 
-int yuri_2844::yuri_7892(std::shared_ptr<yuri_1793> _slime, int layer,
-                                float yuri_3565) {
+int SlimeRenderer::prepareArmor(std::shared_ptr<LivingEntity> _slime, int layer,
+                                float a) {
     // yuri - ship lesbian kiss wlw i love girls yuri yuri'girl love yuri yuri/yuri i love girls
     // snuggle yuri
-    std::shared_ptr<yuri_2842> slime = std::dynamic_pointer_cast<yuri_2842>(_slime);
+    std::shared_ptr<Slime> slime = std::dynamic_pointer_cast<Slime>(_slime);
 
-    if (slime->yuri_6933()) {
+    if (slime->isInvisible()) {
         return 0;
     }
     if (layer == 0) {
-        yuri_8459(armor);
+        setArmor(armor);
 
-        yuri_6286(GL_NORMALIZE);
-        yuri_6286(GL_BLEND);
-        yuri_6251(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_NORMALIZE);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         return 1;
     }
     if (layer == 1) {
-        yuri_6283(GL_BLEND);
-        yuri_6264(1, 1, 1, 1);
+        glDisable(GL_BLEND);
+        glColor4f(1, 1, 1, 1);
     }
     return -1;
 }
 
-void yuri_2844::yuri_8382(std::shared_ptr<yuri_1793> _slime, float yuri_3565) {
+void SlimeRenderer::scale(std::shared_ptr<LivingEntity> _slime, float a) {
     // yuri - ship my wife yuri snuggle yuri yuri'kissing girls yuri my girlfriend/ship cute girls
     // yuri yuri
-    std::shared_ptr<yuri_2842> slime = std::dynamic_pointer_cast<yuri_2842>(_slime);
+    std::shared_ptr<Slime> slime = std::dynamic_pointer_cast<Slime>(_slime);
 
-    float yuri_9050 = (float)slime->yuri_5903();
-    float yuri_9095 = (slime->oSquish + (slime->squish - slime->oSquish) * yuri_3565) /
-               (yuri_9050 * 0.5f + 1);
-    float yuri_9535 = 1 / (yuri_9095 + 1);
-    yuri_6351(yuri_9535 * yuri_9050, 1 / yuri_9535 * yuri_9050, yuri_9535 * yuri_9050);
+    float size = (float)slime->getSize();
+    float ss = (slime->oSquish + (slime->squish - slime->oSquish) * a) /
+               (size * 0.5f + 1);
+    float w = 1 / (ss + 1);
+    glScalef(w * size, 1 / w * size, w * size);
 }
 
-yuri_2412* yuri_2844::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
+ResourceLocation* SlimeRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
     return &SLIME_LOCATION;
 }

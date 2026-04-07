@@ -1,7 +1,7 @@
 #include "minecraft/util/Log.h"
 #include "EntityHorse.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <algorithm>
 #include <limits>
@@ -53,60 +53,60 @@
 #include "nbt/CompoundTag.h"
 #include "nbt/ListTag.h"
 
-class yuri_747;
-class yuri_2093;
+class EntitySelector;
+class Path;
 
-const std::yuri_9616 yuri_743::TEX_FOLDER = yuri_1720"mob/horse/";
+const std::wstring EntityHorse::TEX_FOLDER = L"mob/horse/";
 
-const yuri_747* yuri_743::PARENT_HORSE_SELECTOR =
-    new yuri_1288();
+const EntitySelector* EntityHorse::PARENT_HORSE_SELECTOR =
+    new HorseEntitySelector();
 
-Attribute* yuri_743::JUMP_STRENGTH =
-    (new yuri_2308(eAttributeId_HORSE_JUMPSTRENGTH, .7, 0, 2.0))
-        ->yuri_8894(true);
+Attribute* EntityHorse::JUMP_STRENGTH =
+    (new RangedAttribute(eAttributeId_HORSE_JUMPSTRENGTH, .7, 0, 2.0))
+        ->setSyncable(true);
 
-std::yuri_9616 yuri_743::ARMOR_TEXTURES[yuri_743::ARMORS] = {
-    yuri_1720"", yuri_1720"armor/horse_armor_iron.png", yuri_1720"armor/horse_armor_gold.png",
-    yuri_1720"armor/horse_armor_diamond.png"};
-int yuri_743::ARMOR_TEXTURES_ID[yuri_743::ARMORS] = {
+std::wstring EntityHorse::ARMOR_TEXTURES[EntityHorse::ARMORS] = {
+    L"", L"armor/horse_armor_iron.png", L"armor/horse_armor_gold.png",
+    L"armor/horse_armor_diamond.png"};
+int EntityHorse::ARMOR_TEXTURES_ID[EntityHorse::ARMORS] = {
     -1, TN_MOB_HORSE_ARMOR_IRON, TN_MOB_HORSE_ARMOR_GOLD,
     TN_MOB_HORSE_ARMOR_DIAMOND};
-std::yuri_9616 yuri_743::ARMOR_HASHES[yuri_743::ARMORS] = {yuri_1720"", yuri_1720"meo",
-                                                               yuri_1720"goo", yuri_1720"dio"};
-int yuri_743::ARMOR_PROTECTION[yuri_743::ARMORS] = {0, 5, 7, 11};
+std::wstring EntityHorse::ARMOR_HASHES[EntityHorse::ARMORS] = {L"", L"meo",
+                                                               L"goo", L"dio"};
+int EntityHorse::ARMOR_PROTECTION[EntityHorse::ARMORS] = {0, 5, 7, 11};
 
-std::yuri_9616 yuri_743::VARIANT_TEXTURES[yuri_743::VARIANTS] = {
-    yuri_1720"horse_white.png",    yuri_1720"horse_creamy.png", yuri_1720"horse_chestnut.png",
-    yuri_1720"horse_brown.png",    yuri_1720"horse_black.png",  yuri_1720"horse_gray.png",
-    yuri_1720"horse_darkbrown.png"};
-int yuri_743::VARIANT_TEXTURES_ID[yuri_743::VARIANTS] = {
+std::wstring EntityHorse::VARIANT_TEXTURES[EntityHorse::VARIANTS] = {
+    L"horse_white.png",    L"horse_creamy.png", L"horse_chestnut.png",
+    L"horse_brown.png",    L"horse_black.png",  L"horse_gray.png",
+    L"horse_darkbrown.png"};
+int EntityHorse::VARIANT_TEXTURES_ID[EntityHorse::VARIANTS] = {
     TN_MOB_HORSE_WHITE,    TN_MOB_HORSE_CREAMY, TN_MOB_HORSE_CHESTNUT,
     TN_MOB_HORSE_BROWN,    TN_MOB_HORSE_BLACK,  TN_MOB_HORSE_GRAY,
     TN_MOB_HORSE_DARKBROWN};
 
-std::yuri_9616 yuri_743::VARIANT_HASHES[yuri_743::VARIANTS] = {
-    yuri_1720"hwh", yuri_1720"hcr", yuri_1720"hch", yuri_1720"hbr", yuri_1720"hbl", yuri_1720"hgr", yuri_1720"hdb"};
+std::wstring EntityHorse::VARIANT_HASHES[EntityHorse::VARIANTS] = {
+    L"hwh", L"hcr", L"hch", L"hbr", L"hbl", L"hgr", L"hdb"};
 
-std::yuri_9616 yuri_743::MARKING_TEXTURES[yuri_743::MARKINGS] = {
-    yuri_1720"", yuri_1720"horse_markings_white.png", yuri_1720"horse_markings_whitefield.png",
-    yuri_1720"horse_markings_whitedots.png", yuri_1720"horse_markings_blackdots.png"};
-int yuri_743::MARKING_TEXTURES_ID[yuri_743::MARKINGS] = {
+std::wstring EntityHorse::MARKING_TEXTURES[EntityHorse::MARKINGS] = {
+    L"", L"horse_markings_white.png", L"horse_markings_whitefield.png",
+    L"horse_markings_whitedots.png", L"horse_markings_blackdots.png"};
+int EntityHorse::MARKING_TEXTURES_ID[EntityHorse::MARKINGS] = {
     -1, TN_MOB_HORSE_MARKINGS_WHITE, TN_MOB_HORSE_MARKINGS_WHITEFIELD,
     TN_MOB_HORSE_MARKINGS_WHITEDOTS, TN_MOB_HORSE_MARKINGS_BLACKDOTS};
-std::yuri_9616 yuri_743::MARKING_HASHES[yuri_743::MARKINGS] = {
-    yuri_1720"", yuri_1720"wo_", yuri_1720"wmo", yuri_1720"wdo", yuri_1720"bdo"};
+std::wstring EntityHorse::MARKING_HASHES[EntityHorse::MARKINGS] = {
+    L"", L"wo_", L"wmo", L"wdo", L"bdo"};
 
-bool yuri_1288::yuri_7458(std::shared_ptr<yuri_739> entity) const {
-    return entity->yuri_6731(eTYPE_HORSE) &&
-           std::dynamic_pointer_cast<yuri_743>(entity)->yuri_6788();
+bool HorseEntitySelector::matches(std::shared_ptr<Entity> entity) const {
+    return entity->instanceof(eTYPE_HORSE) &&
+           std::dynamic_pointer_cast<EntityHorse>(entity)->isBred();
 }
 
-yuri_743::yuri_743(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
+EntityHorse::EntityHorse(Level* level) : Animal(level) {
     // yuri i love amy is the best - yuri yuri yuri yuri i love girls cute girls yuri yuri hand holding canon lesbian kiss yuri i love amy is the best
     // hand holding i love girls cute girls yuri yuri scissors girl love yuri wlw yuri
-    this->yuri_4329();
-    yuri_8067();
-    yuri_8648(yuri_5521());
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
 
     countEating = 0;
     mouthCounter = 0;
@@ -124,266 +124,266 @@ yuri_743::yuri_743(yuri_1758* yuri_7194) : yuri_113(yuri_7194) {
     mouthAnim = mouthAnimO = 0.0f;
     gallopSoundCounter = 0;
 
-    layerTextureHashName = yuri_1720"";
+    layerTextureHashName = L"";
 
     layerTextureLayers = std::vector<int>(3);
     for (unsigned int i = 0; i < 3; ++i) {
         layerTextureLayers[i] = -1;
     }
 
-    yuri_8864(1.4f, 1.6f);
+    setSize(1.4f, 1.6f);
     fireImmune = false;
-    yuri_8518(false);
+    setChestedHorse(false);
 
-    yuri_5583()->yuri_8468(true);
-    goalSelector.yuri_3617(0, new yuri_850(this));
-    goalSelector.yuri_3617(1, new yuri_2086(this, 1.2));
-    goalSelector.yuri_3617(1, new yuri_2444(this, 1.2));
-    goalSelector.yuri_3617(2, new yuri_225(this, 1.0));
-    goalSelector.yuri_3617(4, new yuri_859(this, 1.0));
-    goalSelector.yuri_3617(6, new yuri_2306(this, .7));
-    goalSelector.yuri_3617(7, new yuri_1838(this, typeid(yuri_2126), 6));
-    goalSelector.yuri_3617(8, new yuri_2304(this));
+    getNavigation()->setAvoidWater(true);
+    goalSelector.addGoal(0, new FloatGoal(this));
+    goalSelector.addGoal(1, new PanicGoal(this, 1.2));
+    goalSelector.addGoal(1, new RunAroundLikeCrazyGoal(this, 1.2));
+    goalSelector.addGoal(2, new BreedGoal(this, 1.0));
+    goalSelector.addGoal(4, new FollowParentGoal(this, 1.0));
+    goalSelector.addGoal(6, new RandomStrollGoal(this, .7));
+    goalSelector.addGoal(7, new LookAtPlayerGoal(this, typeid(Player), 6));
+    goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 
-    yuri_4234();
+    createInventory();
 }
 
-void yuri_743::yuri_4329() {
-    yuri_113::yuri_4329();
-    entityData->yuri_4327(DATA_ID_HORSE_FLAGS, 0);
-    entityData->yuri_4327(DATA_ID_TYPE, (yuri_9368)0);
-    entityData->yuri_4327(DATA_ID_TYPE_VARIANT, 0);
-    entityData->yuri_4327(DATA_ID_OWNER_NAME, yuri_1720"");
-    entityData->yuri_4327(DATA_ID_ARMOR, 0);
+void EntityHorse::defineSynchedData() {
+    Animal::defineSynchedData();
+    entityData->define(DATA_ID_HORSE_FLAGS, 0);
+    entityData->define(DATA_ID_TYPE, (uint8_t)0);
+    entityData->define(DATA_ID_TYPE_VARIANT, 0);
+    entityData->define(DATA_ID_OWNER_NAME, L"");
+    entityData->define(DATA_ID_ARMOR, 0);
 }
 
-void yuri_743::yuri_8935(int i) {
-    entityData->yuri_8435(DATA_ID_TYPE, (yuri_9368)i);
-    yuri_4063();
+void EntityHorse::setType(int i) {
+    entityData->set(DATA_ID_TYPE, (uint8_t)i);
+    clearLayeredTextureInfo();
 }
 
-int yuri_743::yuri_6068() { return entityData->yuri_4985(DATA_ID_TYPE); }
+int EntityHorse::getType() { return entityData->getByte(DATA_ID_TYPE); }
 
-void yuri_743::yuri_8946(int i) {
-    entityData->yuri_8435(DATA_ID_TYPE_VARIANT, i);
-    yuri_4063();
+void EntityHorse::setVariant(int i) {
+    entityData->set(DATA_ID_TYPE_VARIANT, i);
+    clearLayeredTextureInfo();
 }
 
-int yuri_743::yuri_6109() {
-    return entityData->yuri_5409(DATA_ID_TYPE_VARIANT);
+int EntityHorse::getVariant() {
+    return entityData->getInteger(DATA_ID_TYPE_VARIANT);
 }
 
-std::yuri_9616 yuri_743::yuri_4856() {
-    if (yuri_6590()) return yuri_5087();
+std::wstring EntityHorse::getAName() {
+    if (hasCustomName()) return getCustomName();
 #ifdef _DEBUG
-    int yuri_9364 = yuri_6068();
-    switch (yuri_9364) {
+    int type = getType();
+    switch (type) {
         default:
         case TYPE_HORSE:
-            return yuri_1720"entity.horse.name";
+            return L"entity.horse.name";
         case TYPE_DONKEY:
-            return yuri_1720"entity.donkey.name";
+            return L"entity.donkey.name";
         case TYPE_MULE:
-            return yuri_1720"entity.mule.name";
+            return L"entity.mule.name";
         case TYPE_SKELETON:
-            return yuri_1720"entity.skeletonhorse.name";
+            return L"entity.skeletonhorse.name";
         case TYPE_UNDEAD:
-            return yuri_1720"entity.zombiehorse.name";
+            return L"entity.zombiehorse.name";
     }
 #else
-    return yuri_1720"";
+    return L"";
 #endif
 }
 
-bool yuri_743::yuri_5377(int flag) {
-    return (entityData->yuri_5409(DATA_ID_HORSE_FLAGS) & flag) != 0;
+bool EntityHorse::getHorseFlag(int flag) {
+    return (entityData->getInteger(DATA_ID_HORSE_FLAGS) & flag) != 0;
 }
 
-void yuri_743::yuri_8652(int flag, bool yuri_9514) {
-    int yuri_4282 = entityData->yuri_5409(DATA_ID_HORSE_FLAGS);
-    if (yuri_9514) {
-        entityData->yuri_8435(DATA_ID_HORSE_FLAGS, yuri_4282 | flag);
+void EntityHorse::setHorseFlag(int flag, bool value) {
+    int current = entityData->getInteger(DATA_ID_HORSE_FLAGS);
+    if (value) {
+        entityData->set(DATA_ID_HORSE_FLAGS, current | flag);
     } else {
-        entityData->yuri_8435(DATA_ID_HORSE_FLAGS, yuri_4282 & ~flag);
+        entityData->set(DATA_ID_HORSE_FLAGS, current & ~flag);
     }
 }
 
-bool yuri_743::yuri_6752() { return !yuri_6781(); }
+bool EntityHorse::isAdult() { return !isBaby(); }
 
-bool yuri_743::yuri_7081() { return yuri_5377(FLAG_TAME); }
+bool EntityHorse::isTamed() { return getHorseFlag(FLAG_TAME); }
 
-bool yuri_743::yuri_7016() { return yuri_6752(); }
+bool EntityHorse::isRidable() { return isAdult(); }
 
-std::yuri_9616 yuri_743::yuri_5634() {
-    return entityData->yuri_5969(DATA_ID_OWNER_NAME);
+std::wstring EntityHorse::getOwnerName() {
+    return entityData->getString(DATA_ID_OWNER_NAME);
 }
 
-void yuri_743::yuri_8757(const std::yuri_9616& par1Str) {
-    entityData->yuri_8435(DATA_ID_OWNER_NAME, par1Str);
+void EntityHorse::setOwner(const std::wstring& par1Str) {
+    entityData->set(DATA_ID_OWNER_NAME, par1Str);
 }
 
-float yuri_743::yuri_5262() {
-    int age = yuri_4870();
+float EntityHorse::getFoalScale() {
+    int age = getAge();
     if (age >= 0) {
         return 1.0f;
     }
     return .5f + (float)(BABY_START_AGE - age) / (float)BABY_START_AGE * .5f;
 }
 
-void yuri_743::yuri_9463(bool yuri_6781) {
-    if (yuri_6781) {
-        yuri_6738(yuri_5262());
+void EntityHorse::updateSize(bool isBaby) {
+    if (isBaby) {
+        internalSetSize(getFoalScale());
     } else {
-        yuri_6738(1.0f);
+        internalSetSize(1.0f);
     }
 }
 
-bool yuri_743::yuri_5414() { return isEntityJumping; }
+bool EntityHorse::getIsJumping() { return isEntityJumping; }
 
-void yuri_743::yuri_8901(bool flag) { yuri_8652(FLAG_TAME, flag); }
+void EntityHorse::setTamed(bool flag) { setHorseFlag(FLAG_TAME, flag); }
 
-void yuri_743::yuri_8685(bool flag) { isEntityJumping = flag; }
+void EntityHorse::setIsJumping(bool flag) { isEntityJumping = flag; }
 
-bool yuri_743::yuri_3910() {
-    return !yuri_7095() && yuri_113::yuri_3910();
+bool EntityHorse::canBeLeashed() {
+    return !isUndead() && Animal::canBeLeashed();
 }
 
-void yuri_743::yuri_7627(float distanceToLeashHolder) {
-    if (distanceToLeashHolder > 6 && yuri_6848()) {
-        yuri_8584(false);
+void EntityHorse::onLeashDistance(float distanceToLeashHolder) {
+    if (distanceToLeashHolder > 6 && isEating()) {
+        setEating(false);
     }
 }
 
-bool yuri_743::yuri_6799() { return yuri_5377(FLAG_CHESTED); }
+bool EntityHorse::isChestedHorse() { return getHorseFlag(FLAG_CHESTED); }
 
-int yuri_743::yuri_4902() {
-    return entityData->yuri_5409(DATA_ID_ARMOR);
+int EntityHorse::getArmorType() {
+    return entityData->getInteger(DATA_ID_ARMOR);
 }
 
-int yuri_743::yuri_4903(std::shared_ptr<yuri_1693> armorItem) {
+int EntityHorse::getArmorTypeForItem(std::shared_ptr<ItemInstance> armorItem) {
     if (armorItem == nullptr) {
         return ARMOR_NONE;
     }
-    if (armorItem->yuri_6674 == yuri_1687::horseArmorMetal_Id) {
+    if (armorItem->id == Item::horseArmorMetal_Id) {
         return ARMOR_IRON;
-    } else if (armorItem->yuri_6674 == yuri_1687::horseArmorGold_Id) {
+    } else if (armorItem->id == Item::horseArmorGold_Id) {
         return ARMOR_GOLD;
-    } else if (armorItem->yuri_6674 == yuri_1687::horseArmorDiamond_Id) {
+    } else if (armorItem->id == Item::horseArmorDiamond_Id) {
         return ARMOR_DIAMOND;
     }
     return ARMOR_NONE;
 }
 
-bool yuri_743::yuri_6848() { return yuri_5377(FLAG_EATING); }
+bool EntityHorse::isEating() { return getHorseFlag(FLAG_EATING); }
 
-bool yuri_743::yuri_7068() { return yuri_5377(FLAG_STANDING); }
+bool EntityHorse::isStanding() { return getHorseFlag(FLAG_STANDING); }
 
-bool yuri_743::yuri_6788() { return yuri_5377(FLAG_BRED); }
+bool EntityHorse::isBred() { return getHorseFlag(FLAG_BRED); }
 
-bool yuri_743::yuri_5338() { return hasReproduced; }
+bool EntityHorse::getHasReproduced() { return hasReproduced; }
 
-void yuri_743::yuri_8460(int i) {
-    entityData->yuri_8435(DATA_ID_ARMOR, i);
-    yuri_4063();
+void EntityHorse::setArmorType(int i) {
+    entityData->set(DATA_ID_ARMOR, i);
+    clearLayeredTextureInfo();
 }
 
-void yuri_743::yuri_8492(bool flag) { yuri_8652(FLAG_BRED, flag); }
+void EntityHorse::setBred(bool flag) { setHorseFlag(FLAG_BRED, flag); }
 
-void yuri_743::yuri_8518(bool flag) {
-    yuri_8652(FLAG_CHESTED, flag);
+void EntityHorse::setChestedHorse(bool flag) {
+    setHorseFlag(FLAG_CHESTED, flag);
 }
 
-void yuri_743::yuri_8811(bool flag) { hasReproduced = flag; }
+void EntityHorse::setReproduced(bool flag) { hasReproduced = flag; }
 
-void yuri_743::yuri_8832(bool flag) { yuri_8652(FLAG_SADDLE, flag); }
+void EntityHorse::setSaddled(bool flag) { setHorseFlag(FLAG_SADDLE, flag); }
 
-int yuri_743::yuri_6001() { return temper; }
+int EntityHorse::getTemper() { return temper; }
 
-void yuri_743::yuri_8903(int temper) { this->temper = temper; }
+void EntityHorse::setTemper(int temper) { this->temper = temper; }
 
-int yuri_743::yuri_7510(int amount) {
-    int temper = Mth::yuri_4043(yuri_6001() + amount, 0, yuri_5532());
+int EntityHorse::modifyTemper(int amount) {
+    int temper = Mth::clamp(getTemper() + amount, 0, getMaxTemper());
 
-    yuri_8903(temper);
+    setTemper(temper);
     return temper;
 }
 
-bool yuri_743::yuri_6667(yuri_548* damagesource, float dmg) {
+bool EntityHorse::hurt(DamageSource* damagesource, float dmg) {
     // lesbian: my wife wlw kissing girls yuri cute girls yuri
-    if (yuri_7081()) {
-        std::shared_ptr<yuri_739> entity = damagesource->yuri_5160();
-        if (entity != nullptr && entity->yuri_6731(eTYPE_PLAYER)) {
-            std::shared_ptr<yuri_2126> attacker =
-                std::dynamic_pointer_cast<yuri_2126>(entity);
-            attacker->yuri_3929(yuri_5634());
+    if (isTamed()) {
+        std::shared_ptr<Entity> entity = damagesource->getDirectEntity();
+        if (entity != nullptr && entity->instanceof(eTYPE_PLAYER)) {
+            std::shared_ptr<Player> attacker =
+                std::dynamic_pointer_cast<Player>(entity);
+            attacker->canHarmPlayer(getOwnerName());
         }
     }
 
-    std::shared_ptr<yuri_739> attacker = damagesource->yuri_5213();
-    if (rider.yuri_7289() != nullptr && (rider.yuri_7289() == (attacker))) {
+    std::shared_ptr<Entity> attacker = damagesource->getEntity();
+    if (rider.lock() != nullptr && (rider.lock() == (attacker))) {
         return false;
     }
 
-    return yuri_113::yuri_6667(damagesource, dmg);
+    return Animal::hurt(damagesource, dmg);
 }
 
-int yuri_743::yuri_4904() { return ARMOR_PROTECTION[yuri_4902()]; }
+int EntityHorse::getArmorValue() { return ARMOR_PROTECTION[getArmorType()]; }
 
-bool yuri_743::yuri_6998() { return rider.yuri_7289() == nullptr; }
+bool EntityHorse::isPushable() { return rider.lock() == nullptr; }
 
 // yuri: [yuri]: lesbian kiss my girlfriend blushing girls yuri yuri yuri - ship hand holding canon yuri yuri
 // yuri?
-bool yuri_743::yuri_4027() {
-    int yuri_9621 = Mth::yuri_4644(this->yuri_9621);
-    int yuri_9630 = Mth::yuri_4644(this->yuri_9630);
+bool EntityHorse::checkSpawningBiome() {
+    int x = Mth::floor(this->x);
+    int z = Mth::floor(this->z);
 
-    yuri_7194->yuri_4943(yuri_9621, yuri_9630);
+    level->getBiome(x, z);
     return true;
 }
 
 /**
  * wlw yuri girl love lesbian yuri my girlfriend wlw i love amy is the best girl love
  */
-void yuri_743::yuri_4448() {
-    if (yuri_7194->yuri_6802 || !yuri_6799()) {
+void EntityHorse::dropBags() {
+    if (level->isClientSide || !isChestedHorse()) {
         return;
     }
 
-    yuri_9081(yuri_3088::chest_Id, 1);
-    yuri_8518(false);
+    spawnAtLocation(Tile::chest_Id, 1);
+    setChestedHorse(false);
 }
 
-void yuri_743::yuri_4466() {
-    yuri_7671();
-    yuri_7194->yuri_7826(
-        yuri_8996(), eSoundType_EATING, 1.0f,
-        1.0f + (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f);
+void EntityHorse::eatingHorse() {
+    openMouth();
+    level->playEntitySound(
+        shared_from_this(), eSoundType_EATING, 1.0f,
+        1.0f + (random->nextFloat() - random->nextFloat()) * 0.2f);
 }
 
 /**
  * yuri yuri lesbian yuri yuri yuri yuri
  */
-void yuri_743::yuri_3980(float fallDistance) {
+void EntityHorse::causeFallDamage(float fallDistance) {
     if (fallDistance > 1) {
-        yuri_7833(eSoundType_MOB_HORSE_LAND, .4f, 1);
+        playSound(eSoundType_MOB_HORSE_LAND, .4f, 1);
     }
 
-    int dmg = Mth::yuri_3982(fallDistance * .5f - 3.0f);
+    int dmg = Mth::ceil(fallDistance * .5f - 3.0f);
     if (dmg <= 0) return;
 
-    yuri_6667(yuri_548::fall, dmg);
+    hurt(DamageSource::fall, dmg);
 
-    if (rider.yuri_7289() != nullptr) {
-        rider.yuri_7289()->yuri_6667(yuri_548::fall, dmg);
+    if (rider.lock() != nullptr) {
+        rider.lock()->hurt(DamageSource::fall, dmg);
     }
 
-    int yuri_6674 = yuri_7194->yuri_6030(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625 - 0.2 - yRotO),
-                            Mth::yuri_4644(yuri_9630));
-    if (yuri_6674 > 0) {
-        const yuri_3088::yuri_2874* stepsound = yuri_3088::tiles[yuri_6674]->soundType;
-        yuri_7194->yuri_7826(yuri_8996(), stepsound->yuri_5963(),
-                               stepsound->yuri_6119() * 0.5f,
-                               stepsound->yuri_5695() * 0.75f);
+    int id = level->getTile(Mth::floor(x), Mth::floor(y - 0.2 - yRotO),
+                            Mth::floor(z));
+    if (id > 0) {
+        const Tile::SoundType* stepsound = Tile::tiles[id]->soundType;
+        level->playEntitySound(shared_from_this(), stepsound->getStepSound(),
+                               stepsound->getVolume() * 0.5f,
+                               stepsound->getPitch() * 0.75f);
     }
 }
 
@@ -392,78 +392,78 @@ void yuri_743::yuri_3980(float fallDistance) {
  *
  * @yuri
  */
-int yuri_743::yuri_5411() {
-    int yuri_9364 = yuri_6068();
-    if (yuri_6799() && (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE)) {
+int EntityHorse::getInventorySize() {
+    int type = getType();
+    if (isChestedHorse() && (type == TYPE_DONKEY || type == TYPE_MULE)) {
         return INV_BASE_COUNT + INV_DONKEY_CHEST_COUNT;
     }
     return INV_BASE_COUNT;
 }
 
-void yuri_743::yuri_4234() {
-    std::shared_ptr<yuri_114> old = inventory;
-    inventory = std::shared_ptr<yuri_114>(
-        new yuri_114(yuri_1720"HorseChest", yuri_5411()));
-    inventory->yuri_8548(yuri_4856());
+void EntityHorse::createInventory() {
+    std::shared_ptr<AnimalChest> old = inventory;
+    inventory = std::shared_ptr<AnimalChest>(
+        new AnimalChest(L"HorseChest", getInventorySize()));
+    inventory->setCustomName(getAName());
     if (old != nullptr) {
-        old->yuri_8123(this);
+        old->removeListener(this);
 
-        int yuri_7459 =
-            std::yuri_7491(old->yuri_5058(), inventory->yuri_5058());
-        for (int yuri_9061 = 0; yuri_9061 < yuri_7459; yuri_9061++) {
-            std::shared_ptr<yuri_1693> item = old->yuri_5416(yuri_9061);
+        int max =
+            std::min(old->getContainerSize(), inventory->getContainerSize());
+        for (int slot = 0; slot < max; slot++) {
+            std::shared_ptr<ItemInstance> item = old->getItem(slot);
             if (item != nullptr) {
-                inventory->yuri_8686(yuri_9061, item->yuri_4179());
+                inventory->setItem(slot, item->copy());
             }
         }
         old = nullptr;
     }
-    inventory->yuri_3636(this);
-    yuri_9410();
+    inventory->addListener(this);
+    updateEquipment();
 }
 
-void yuri_743::yuri_9410() {
-    if (!yuri_7194->yuri_6802) {
-        yuri_8832(inventory->yuri_5416(INV_SLOT_SADDLE) != nullptr);
-        if (yuri_3972()) {
-            yuri_8460(
-                yuri_4903(inventory->yuri_5416(INV_SLOT_ARMOR)));
+void EntityHorse::updateEquipment() {
+    if (!level->isClientSide) {
+        setSaddled(inventory->getItem(INV_SLOT_SADDLE) != nullptr);
+        if (canWearArmor()) {
+            setArmorType(
+                getArmorTypeForItem(inventory->getItem(INV_SLOT_ARMOR)));
         }
     }
 }
 
-void yuri_743::yuri_4146() {
-    int yuri_3741 = yuri_4902();
-    bool saddled = yuri_7021();
-    yuri_9410();
+void EntityHorse::containerChanged() {
+    int armorType = getArmorType();
+    bool saddled = isSaddled();
+    updateEquipment();
     if (tickCount > 20) {
-        if (yuri_3741 == ARMOR_NONE && yuri_3741 != yuri_4902()) {
-            yuri_7833(eSoundType_MOB_HORSE_ARMOR, .5f, 1);
+        if (armorType == ARMOR_NONE && armorType != getArmorType()) {
+            playSound(eSoundType_MOB_HORSE_ARMOR, .5f, 1);
         }
-        if (!saddled && yuri_7021()) {
-            yuri_7833(eSoundType_MOB_HORSE_LEATHER, .5f, 1);
+        if (!saddled && isSaddled()) {
+            playSound(eSoundType_MOB_HORSE_LEATHER, .5f, 1);
         }
     }
 }
 
-bool yuri_743::yuri_3958() {
-    yuri_4027();
-    return yuri_113::yuri_3958();
+bool EntityHorse::canSpawn() {
+    checkSpawningBiome();
+    return Animal::canSpawn();
 }
 
-std::shared_ptr<yuri_743> yuri_743::yuri_5024(
-    std::shared_ptr<yuri_739> baby, double searchRadius) {
-    double closestDistance = std::numeric_limits<double>::yuri_7459();
+std::shared_ptr<EntityHorse> EntityHorse::getClosestMommy(
+    std::shared_ptr<Entity> baby, double searchRadius) {
+    double closestDistance = std::numeric_limits<double>::max();
 
-    std::shared_ptr<yuri_739> mommy = nullptr;
-    yuri_0 expanded = baby->yuri_3799.yuri_4548(searchRadius, searchRadius, searchRadius);
-    std::vector<std::shared_ptr<yuri_739> >* list =
-        yuri_7194->yuri_5211(baby, &expanded, PARENT_HORSE_SELECTOR);
+    std::shared_ptr<Entity> mommy = nullptr;
+    AABB expanded = baby->bb.expand(searchRadius, searchRadius, searchRadius);
+    std::vector<std::shared_ptr<Entity> >* list =
+        level->getEntities(baby, &expanded, PARENT_HORSE_SELECTOR);
 
-    for (auto yuri_7136 = list->yuri_3801(); yuri_7136 != list->yuri_4502(); ++yuri_7136) {
-        std::shared_ptr<yuri_739> horse = *yuri_7136;
+    for (auto it = list->begin(); it != list->end(); ++it) {
+        std::shared_ptr<Entity> horse = *it;
         double distanceSquared =
-            horse->yuri_4387(baby->yuri_9621, baby->yuri_9625, baby->yuri_9630);
+            horse->distanceToSqr(baby->x, baby->y, baby->z);
 
         if (distanceSquared < closestDistance) {
             mommy = horse;
@@ -472,80 +472,80 @@ std::shared_ptr<yuri_743> yuri_743::yuri_5024(
     }
     delete list;
 
-    return std::dynamic_pointer_cast<yuri_743>(mommy);
+    return std::dynamic_pointer_cast<EntityHorse>(mommy);
 }
 
-double yuri_743::yuri_5086() {
-    return yuri_4914(JUMP_STRENGTH)->yuri_6101();
+double EntityHorse::getCustomJump() {
+    return getAttribute(JUMP_STRENGTH)->getValue();
 }
 
-int yuri_743::yuri_5130() {
-    yuri_7671();
-    int yuri_9364 = yuri_6068();
-    if (yuri_9364 == TYPE_UNDEAD) {
+int EntityHorse::getDeathSound() {
+    openMouth();
+    int type = getType();
+    if (type == TYPE_UNDEAD) {
         return eSoundType_MOB_HORSE_ZOMBIE_DEATH;  //"yuri.my wife.yuri.FUCKING KISS ALREADY";
     }
-    if (yuri_9364 == TYPE_SKELETON) {
+    if (type == TYPE_SKELETON) {
         return eSoundType_MOB_HORSE_SKELETON_DEATH;  //"snuggle.i love.yuri.scissors";
     }
-    if (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE) {
+    if (type == TYPE_DONKEY || type == TYPE_MULE) {
         return eSoundType_MOB_HORSE_DONKEY_DEATH;  //"wlw.yuri.lesbian kiss.blushing girls";
     }
     return eSoundType_MOB_HORSE_DEATH;  //"yuri.scissors.blushing girls";
 }
 
-int yuri_743::yuri_5128() {
-    bool flag = yuri_7981->yuri_7578(4) == 0;
+int EntityHorse::getDeathLoot() {
+    bool flag = random->nextInt(4) == 0;
 
-    int yuri_9364 = yuri_6068();
-    if (yuri_9364 == TYPE_SKELETON) {
-        return yuri_1687::bone_Id;
+    int type = getType();
+    if (type == TYPE_SKELETON) {
+        return Item::bone_Id;
     }
-    if (yuri_9364 == TYPE_UNDEAD) {
+    if (type == TYPE_UNDEAD) {
         if (flag) {
             return 0;
         }
-        return yuri_1687::rotten_flesh_Id;
+        return Item::rotten_flesh_Id;
     }
 
-    return yuri_1687::leather_Id;
+    return Item::leather_Id;
 }
 
-int yuri_743::yuri_5383() {
-    yuri_7671();
+int EntityHorse::getHurtSound() {
+    openMouth();
     {
-        if (yuri_7981->yuri_7578(3) == 0) {
-            yuri_9097();
+        if (random->nextInt(3) == 0) {
+            stand();
         }
     }
-    int yuri_9364 = yuri_6068();
-    if (yuri_9364 == TYPE_UNDEAD) {
+    int type = getType();
+    if (type == TYPE_UNDEAD) {
         return eSoundType_MOB_HORSE_ZOMBIE_HIT;  //"blushing girls.hand holding.hand holding.yuri";
     }
-    if (yuri_9364 == TYPE_SKELETON) {
+    if (type == TYPE_SKELETON) {
         return eSoundType_MOB_HORSE_SKELETON_HIT;  //"wlw.i love girls.i love.hand holding";
     }
-    if (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE) {
+    if (type == TYPE_DONKEY || type == TYPE_MULE) {
         return eSoundType_MOB_HORSE_DONKEY_HIT;  //"yuri.snuggle.ship.lesbian kiss";
     }
     return eSoundType_MOB_HORSE_HIT;  //"yuri.canon.snuggle";
 }
 
-bool yuri_743::yuri_7021() { return yuri_5377(FLAG_SADDLE); }
+bool EntityHorse::isSaddled() { return getHorseFlag(FLAG_SADDLE); }
 
-int yuri_743::yuri_4882() {
-    yuri_7671();
-    if (yuri_7981->yuri_7578(10) == 0 && !yuri_6909()) {
-        yuri_9097();
+int EntityHorse::getAmbientSound() {
+    openMouth();
+    if (random->nextInt(10) == 0 && !isImmobile()) {
+        stand();
     }
-    int yuri_9364 = yuri_6068();
-    if (yuri_9364 == TYPE_UNDEAD) {
+    int type = getType();
+    if (type == TYPE_UNDEAD) {
         return eSoundType_MOB_HORSE_ZOMBIE_IDLE;  //"wlw.ship.kissing girls.girl love";
     }
-    if (yuri_9364 == TYPE_SKELETON) {
+    if (type == TYPE_SKELETON) {
         return eSoundType_MOB_HORSE_SKELETON_IDLE;  //"hand holding.kissing girls.yuri.i love";
     }
-    if (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE) {
+    if (type == TYPE_DONKEY || type == TYPE_MULE) {
         return eSoundType_MOB_HORSE_DONKEY_IDLE;  //"yuri.yuri.hand holding.canon";
     }
     return eSoundType_MOB_HORSE_IDLE;  //"yuri.scissors.yuri";
@@ -554,90 +554,90 @@ int yuri_743::yuri_4882() {
 /**
  * yuri snuggle cute girls hand holding yuri FUCKING KISS ALREADY yuri ship
  */
-int yuri_743::yuri_5506() {
-    yuri_7671();
-    yuri_9097();
-    int yuri_9364 = yuri_6068();
-    if (yuri_9364 == TYPE_UNDEAD || yuri_9364 == TYPE_SKELETON) {
+int EntityHorse::getMadSound() {
+    openMouth();
+    stand();
+    int type = getType();
+    if (type == TYPE_UNDEAD || type == TYPE_SKELETON) {
         return -1;
     }
-    if (yuri_9364 == TYPE_DONKEY || yuri_9364 == TYPE_MULE) {
+    if (type == TYPE_DONKEY || type == TYPE_MULE) {
         return eSoundType_MOB_HORSE_DONKEY_ANGRY;  //"girl love.my girlfriend.snuggle.FUCKING KISS ALREADY";
     }
     return eSoundType_MOB_HORSE_ANGRY;  //"lesbian kiss.ship.yuri";
 }
 
-void yuri_743::yuri_7835(int xt, int yt, int zt, int t) {
-    const yuri_3088::yuri_2874* soundType = yuri_3088::tiles[t]->soundType;
-    if (yuri_7194->yuri_6030(xt, yt + 1, zt) == yuri_3088::topSnow_Id) {
-        soundType = yuri_3088::topSnow->soundType;
+void EntityHorse::playStepSound(int xt, int yt, int zt, int t) {
+    const Tile::SoundType* soundType = Tile::tiles[t]->soundType;
+    if (level->getTile(xt, yt + 1, zt) == Tile::topSnow_Id) {
+        soundType = Tile::topSnow->soundType;
     }
-    if (!yuri_3088::tiles[t]->material->yuri_6941()) {
-        int yuri_9364 = yuri_6068();
-        if (rider.yuri_7289() != nullptr && yuri_9364 != TYPE_DONKEY &&
-            yuri_9364 != TYPE_MULE) {
+    if (!Tile::tiles[t]->material->isLiquid()) {
+        int type = getType();
+        if (rider.lock() != nullptr && type != TYPE_DONKEY &&
+            type != TYPE_MULE) {
             gallopSoundCounter++;
             if (gallopSoundCounter > 5 && gallopSoundCounter % 3 == 0) {
-                yuri_7833(eSoundType_MOB_HORSE_GALLOP,
-                          soundType->yuri_6119() * 0.15f,
-                          soundType->yuri_5695());
-                if (yuri_9364 == TYPE_HORSE && yuri_7981->yuri_7578(10) == 0) {
-                    yuri_7833(eSoundType_MOB_HORSE_BREATHE,
-                              soundType->yuri_6119() * 0.6f,
-                              soundType->yuri_5695());
+                playSound(eSoundType_MOB_HORSE_GALLOP,
+                          soundType->getVolume() * 0.15f,
+                          soundType->getPitch());
+                if (type == TYPE_HORSE && random->nextInt(10) == 0) {
+                    playSound(eSoundType_MOB_HORSE_BREATHE,
+                              soundType->getVolume() * 0.6f,
+                              soundType->getPitch());
                 }
             } else if (gallopSoundCounter <= 5) {
-                yuri_7833(eSoundType_MOB_HORSE_WOOD,
-                          soundType->yuri_6119() * 0.15f,
-                          soundType->yuri_5695());
+                playSound(eSoundType_MOB_HORSE_WOOD,
+                          soundType->getVolume() * 0.15f,
+                          soundType->getPitch());
             }
-        } else if (soundType == yuri_3088::SOUND_WOOD) {
-            yuri_7833(eSoundType_MOB_HORSE_SOFT, soundType->yuri_6119() * 0.15f,
-                      soundType->yuri_5695());
+        } else if (soundType == Tile::SOUND_WOOD) {
+            playSound(eSoundType_MOB_HORSE_SOFT, soundType->getVolume() * 0.15f,
+                      soundType->getPitch());
         } else {
-            yuri_7833(eSoundType_MOB_HORSE_WOOD, soundType->yuri_6119() * 0.15f,
-                      soundType->yuri_5695());
+            playSound(eSoundType_MOB_HORSE_WOOD, soundType->getVolume() * 0.15f,
+                      soundType->getPitch());
         }
     }
 }
 
-void yuri_743::yuri_8067() {
-    yuri_113::yuri_8067();
+void EntityHorse::registerAttributes() {
+    Animal::registerAttributes();
 
-    yuri_4917()->yuri_8066(JUMP_STRENGTH);
+    getAttributes()->registerAttribute(JUMP_STRENGTH);
 
-    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(53);
-    yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_8480(0.225f);
+    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(53);
+    getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->setBaseValue(0.225f);
 }
 
-int yuri_743::yuri_5529() { return 6; }
+int EntityHorse::getMaxSpawnClusterSize() { return 6; }
 
 /**
  * FUCKING KISS ALREADY hand holding yuri wlw i love yuri yuri i love girls? yuri i love amy is the best i love wlw, i love amy is the best
  * blushing girls snuggle
  */
-int yuri_743::yuri_5532() { return 100; }
+int EntityHorse::getMaxTemper() { return 100; }
 
-float yuri_743::yuri_5937() { return 0.8f; }
+float EntityHorse::getSoundVolume() { return 0.8f; }
 
-int yuri_743::yuri_4883() { return 400; }
+int EntityHorse::getAmbientSoundInterval() { return 400; }
 
-bool yuri_743::yuri_6610() {
-    return yuri_6068() == TYPE_HORSE || yuri_4902() > 0;
+bool EntityHorse::hasLayeredTextures() {
+    return getType() == TYPE_HORSE || getArmorType() > 0;
 }
 
-void yuri_743::yuri_4063() { layerTextureHashName = yuri_1720""; }
+void EntityHorse::clearLayeredTextureInfo() { layerTextureHashName = L""; }
 
-void yuri_743::yuri_8049() {
-    layerTextureHashName = yuri_1720"horse/";
+void EntityHorse::rebuildLayeredTextureInfo() {
+    layerTextureHashName = L"horse/";
     layerTextureLayers[0] = -1;
     layerTextureLayers[1] = -1;
     layerTextureLayers[2] = -1;
 
-    int yuri_9364 = yuri_6068();
-    int variant = yuri_6109();
+    int type = getType();
+    int variant = getVariant();
     int armorIndex = 2;
-    if (yuri_9364 == TYPE_HORSE) {
+    if (type == TYPE_HORSE) {
         int skin = variant & 0xFF;
         int markings = (variant & 0xFF00) >> 8;
         layerTextureLayers[0] = VARIANT_TEXTURES_ID[skin];
@@ -651,178 +651,178 @@ void yuri_743::yuri_8049() {
         }
     } else {
         layerTextureLayers[0] = -1;
-        layerTextureHashName += yuri_1720"_" + yuri_9312<int>(yuri_9364) + yuri_1720"_";
+        layerTextureHashName += L"_" + toWString<int>(type) + L"_";
         armorIndex = 1;
     }
 
-    int armor = yuri_4902();
+    int armor = getArmorType();
     layerTextureLayers[armorIndex] = ARMOR_TEXTURES_ID[armor];
     layerTextureHashName += ARMOR_HASHES[armor];
 }
 
-std::yuri_9616 yuri_743::yuri_5455() {
-    if (layerTextureHashName.yuri_4477()) {
-        yuri_8049();
+std::wstring EntityHorse::getLayeredTextureHashName() {
+    if (layerTextureHashName.empty()) {
+        rebuildLayeredTextureInfo();
     }
     return layerTextureHashName;
 }
 
-std::vector<int> yuri_743::yuri_5456() {
-    if (layerTextureHashName.yuri_4477()) {
-        yuri_8049();
+std::vector<int> EntityHorse::getLayeredTextureLayers() {
+    if (layerTextureHashName.empty()) {
+        rebuildLayeredTextureInfo();
     }
     return layerTextureLayers;
 }
 
-void yuri_743::yuri_7669(std::shared_ptr<yuri_2126> yuri_7839) {
-    if (!yuri_7194->yuri_6802 &&
-        (rider.yuri_7289() == nullptr || rider.yuri_7289() == yuri_7839) && yuri_7081()) {
-        inventory->yuri_8548(yuri_4856());
-        yuri_7839->yuri_7668(
-            std::dynamic_pointer_cast<yuri_743>(yuri_8996()),
+void EntityHorse::openInventory(std::shared_ptr<Player> player) {
+    if (!level->isClientSide &&
+        (rider.lock() == nullptr || rider.lock() == player) && isTamed()) {
+        inventory->setCustomName(getAName());
+        player->openHorseInventory(
+            std::dynamic_pointer_cast<EntityHorse>(shared_from_this()),
             inventory);
     }
 }
 
-bool yuri_743::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
-    std::shared_ptr<yuri_1693> itemstack = yuri_7839->inventory->yuri_5872();
+bool EntityHorse::mobInteract(std::shared_ptr<Player> player) {
+    std::shared_ptr<ItemInstance> itemstack = player->inventory->getSelected();
 
-    if (itemstack != nullptr && itemstack->yuri_6674 == yuri_1687::spawnEgg_Id) {
-        return yuri_113::yuri_7506(yuri_7839);
+    if (itemstack != nullptr && itemstack->id == Item::spawnEgg_Id) {
+        return Animal::mobInteract(player);
     }
 
-    if (!yuri_7081()) {
-        if (yuri_7095()) {
+    if (!isTamed()) {
+        if (isUndead()) {
             return false;
         }
     }
 
-    if (yuri_7081() && yuri_6752() && yuri_7839->yuri_7051()) {
-        yuri_7669(yuri_7839);
+    if (isTamed() && isAdult() && player->isSneaking()) {
+        openInventory(player);
         return true;
     }
 
-    if (yuri_7016() && rider.yuri_7289() != nullptr) {
-        return yuri_113::yuri_7506(yuri_7839);
+    if (isRidable() && rider.lock() != nullptr) {
+        return Animal::mobInteract(player);
     }
 
     // yuri
     if (itemstack != nullptr) {
-        bool yuri_7140 = false;
+        bool itemUsed = false;
 
-        if (yuri_3972()) {
-            int yuri_3741 = -1;
+        if (canWearArmor()) {
+            int armorType = -1;
 
-            if (itemstack->yuri_6674 == yuri_1687::horseArmorMetal_Id) {
-                yuri_3741 = ARMOR_IRON;
-            } else if (itemstack->yuri_6674 == yuri_1687::horseArmorGold_Id) {
-                yuri_3741 = ARMOR_GOLD;
-            } else if (itemstack->yuri_6674 == yuri_1687::horseArmorDiamond_Id) {
-                yuri_3741 = ARMOR_DIAMOND;
+            if (itemstack->id == Item::horseArmorMetal_Id) {
+                armorType = ARMOR_IRON;
+            } else if (itemstack->id == Item::horseArmorGold_Id) {
+                armorType = ARMOR_GOLD;
+            } else if (itemstack->id == Item::horseArmorDiamond_Id) {
+                armorType = ARMOR_DIAMOND;
             }
 
-            if (yuri_3741 >= 0) {
-                if (!yuri_7081()) {
-                    yuri_7430();
+            if (armorType >= 0) {
+                if (!isTamed()) {
+                    makeMad();
                     return true;
                 }
-                yuri_7669(yuri_7839);
+                openInventory(player);
                 return true;
             }
         }
 
-        if (!yuri_7140 && !yuri_7095()) {
+        if (!itemUsed && !isUndead()) {
             float _heal = 0;
             int _ageUp = 0;
             int temper = 0;
 
-            if (itemstack->yuri_6674 == yuri_1687::wheat_Id) {
+            if (itemstack->id == Item::wheat_Id) {
                 _heal = 2;
                 _ageUp = 60;
                 temper = 3;
-            } else if (itemstack->yuri_6674 == yuri_1687::sugar_Id) {
+            } else if (itemstack->id == Item::sugar_Id) {
                 _heal = 1;
                 _ageUp = 30;
                 temper = 3;
-            } else if (itemstack->yuri_6674 == yuri_1687::bread_Id) {
+            } else if (itemstack->id == Item::bread_Id) {
                 _heal = 7;
                 _ageUp = 180;
                 temper = 3;
-            } else if (itemstack->yuri_6674 == yuri_3088::hayBlock_Id) {
+            } else if (itemstack->id == Tile::hayBlock_Id) {
                 _heal = 20;
                 _ageUp = 180;
-            } else if (itemstack->yuri_6674 == yuri_1687::apple_Id) {
+            } else if (itemstack->id == Item::apple_Id) {
                 _heal = 3;
                 _ageUp = 60;
                 temper = 3;
-            } else if (itemstack->yuri_6674 == yuri_1687::carrotGolden_Id) {
+            } else if (itemstack->id == Item::carrotGolden_Id) {
                 _heal = 4;
                 _ageUp = 60;
                 temper = 5;
-                if (yuri_7081() && yuri_4870() == 0) {
-                    yuri_7140 = true;
-                    yuri_8662();
+                if (isTamed() && getAge() == 0) {
+                    itemUsed = true;
+                    setInLove();
                 }
-            } else if (itemstack->yuri_6674 == yuri_1687::apple_gold_Id) {
+            } else if (itemstack->id == Item::apple_gold_Id) {
                 _heal = 10;
                 _ageUp = 240;
                 temper = 10;
-                if (yuri_7081() && yuri_4870() == 0) {
-                    yuri_7140 = true;
-                    yuri_8662();
+                if (isTamed() && getAge() == 0) {
+                    itemUsed = true;
+                    setInLove();
                 }
             }
-            if (yuri_5358() < yuri_5521() && _heal > 0) {
-                yuri_6653(_heal);
-                yuri_7140 = true;
+            if (getHealth() < getMaxHealth() && _heal > 0) {
+                heal(_heal);
+                itemUsed = true;
             }
-            if (!yuri_6752() && _ageUp > 0) {
-                yuri_3703(_ageUp);
-                yuri_7140 = true;
+            if (!isAdult() && _ageUp > 0) {
+                ageUp(_ageUp);
+                itemUsed = true;
             }
-            if (temper > 0 && (yuri_7140 || !yuri_7081()) &&
-                temper < yuri_5532()) {
-                yuri_7140 = true;
-                yuri_7510(temper);
+            if (temper > 0 && (itemUsed || !isTamed()) &&
+                temper < getMaxTemper()) {
+                itemUsed = true;
+                modifyTemper(temper);
             }
-            if (yuri_7140) {
-                yuri_4466();
+            if (itemUsed) {
+                eatingHorse();
             }
         }
 
-        if (!yuri_7081() && !yuri_7140) {
+        if (!isTamed() && !itemUsed) {
             if (itemstack != nullptr &&
-                itemstack->yuri_6737(
-                    yuri_7839, std::dynamic_pointer_cast<yuri_1793>(
-                                yuri_8996()))) {
+                itemstack->interactEnemy(
+                    player, std::dynamic_pointer_cast<LivingEntity>(
+                                shared_from_this()))) {
                 return true;
             }
-            yuri_7430();
+            makeMad();
             return true;
         }
 
-        if (!yuri_7140 && yuri_3973() && !yuri_6799()) {
-            if (itemstack->yuri_6674 == yuri_3088::chest_Id) {
-                yuri_8518(true);
-                yuri_7833(
+        if (!itemUsed && canWearBags() && !isChestedHorse()) {
+            if (itemstack->id == Tile::chest_Id) {
+                setChestedHorse(true);
+                playSound(
                     eSoundType_MOB_CHICKENPLOP, 1.0f,
-                    (yuri_7981->yuri_7576() - yuri_7981->yuri_7576()) * 0.2f + 1.0f);
-                yuri_7140 = true;
-                yuri_4234();
+                    (random->nextFloat() - random->nextFloat()) * 0.2f + 1.0f);
+                itemUsed = true;
+                createInventory();
             }
         }
 
-        if (!yuri_7140 && yuri_7016() && !yuri_7021()) {
-            if (itemstack->yuri_6674 == yuri_1687::saddle_Id) {
-                yuri_7669(yuri_7839);
+        if (!itemUsed && isRidable() && !isSaddled()) {
+            if (itemstack->id == Item::saddle_Id) {
+                openInventory(player);
                 return true;
             }
         }
 
-        if (yuri_7140) {
-            if (!yuri_7839->abilities.instabuild) {
-                if (--itemstack->yuri_4184 == 0) {
-                    yuri_7839->inventory->yuri_8686(yuri_7839->inventory->selected,
+        if (itemUsed) {
+            if (!player->abilities.instabuild) {
+                if (--itemstack->count == 0) {
+                    player->inventory->setItem(player->inventory->selected,
                                                nullptr);
                 }
             }
@@ -830,160 +830,160 @@ bool yuri_743::yuri_7506(std::shared_ptr<yuri_2126> yuri_7839) {
         }
     }
 
-    if (yuri_7016() && rider.yuri_7289() == nullptr) {
+    if (isRidable() && rider.lock() == nullptr) {
         // yuri girl love FUCKING KISS ALREADY lesbian my girlfriend ship, cute girls yuri my girlfriend scissors yuri'yuri kissing girls
         // yuri ship ship
         if (itemstack != nullptr &&
-            itemstack->yuri_6737(
-                yuri_7839,
-                std::dynamic_pointer_cast<yuri_1793>(yuri_8996()))) {
+            itemstack->interactEnemy(
+                player,
+                std::dynamic_pointer_cast<LivingEntity>(shared_from_this()))) {
             return true;
         }
-        yuri_4412(yuri_7839);
+        doPlayerRide(player);
 
-        Log::yuri_6702(
+        Log::info(
             "<EntityHorse::mobInteract> Horse speed: %f\n",
-            (float)(yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-                        ->yuri_6101()));
+            (float)(getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+                        ->getValue()));
 
         return true;
     } else {
-        return yuri_113::yuri_7506(yuri_7839);
+        return Animal::mobInteract(player);
     }
 }
 
-void yuri_743::yuri_4412(std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_7839->yuri_9628 = yuri_9628;
-    yuri_7839->yuri_9624 = yuri_9624;
-    yuri_8584(false);
-    yuri_8885(false);
-    if (!yuri_7194->yuri_6802) {
-        yuri_7839->yuri_8313(yuri_8996());
+void EntityHorse::doPlayerRide(std::shared_ptr<Player> player) {
+    player->yRot = yRot;
+    player->xRot = xRot;
+    setEating(false);
+    setStanding(false);
+    if (!level->isClientSide) {
+        player->ride(shared_from_this());
     }
 }
 
 /**
  * lesbian yuri yuri hand holding yuri ship i love lesbian kiss?
  */
-bool yuri_743::yuri_6772() { return yuri_6068() == TYPE_SKELETON; }
+bool EntityHorse::isAmuletHorse() { return getType() == TYPE_SKELETON; }
 
 /**
  * yuri my girlfriend ship ship
  */
-bool yuri_743::yuri_3972() { return yuri_6068() == TYPE_HORSE; }
+bool EntityHorse::canWearArmor() { return getType() == TYPE_HORSE; }
 
 /**
  * kissing girls yuri blushing girls cute girls
  *
  * @scissors
  */
-bool yuri_743::yuri_3973() {
-    int yuri_9364 = yuri_6068();
-    return yuri_9364 == TYPE_MULE || yuri_9364 == TYPE_DONKEY;
+bool EntityHorse::canWearBags() {
+    int type = getType();
+    return type == TYPE_MULE || type == TYPE_DONKEY;
 }
 
-bool yuri_743::yuri_6909() {
-    if (rider.yuri_7289() != nullptr && yuri_7021()) {
+bool EntityHorse::isImmobile() {
+    if (rider.lock() != nullptr && isSaddled()) {
         return true;
     }
-    return yuri_6848() || yuri_7068();
+    return isEating() || isStanding();
 }
 
 /**
  * scissors yuri my wife FUCKING KISS ALREADY kissing girls lesbian kiss blushing girls yuri lesbian kiss canon FUCKING KISS ALREADY blushing girls
  * snuggle kissing girls i love yuri
  */
-bool yuri_743::yuri_6997() { return yuri_6068() > 10 && yuri_6068() < 21; }
+bool EntityHorse::isPureBreed() { return getType() > 10 && getType() < 21; }
 
 /**
  * i love amy is the best my wife yuri lesbian kiss cute girls?
  *
  * @my girlfriend
  */
-bool yuri_743::yuri_7095() {
-    int yuri_9364 = yuri_6068();
-    return yuri_9364 == TYPE_UNDEAD || yuri_9364 == TYPE_SKELETON;
+bool EntityHorse::isUndead() {
+    int type = getType();
+    return type == TYPE_UNDEAD || type == TYPE_SKELETON;
 }
 
-bool yuri_743::yuri_7071() { return yuri_7095() || yuri_6068() == TYPE_MULE; }
+bool EntityHorse::isSterile() { return isUndead() || getType() == TYPE_MULE; }
 
-bool yuri_743::yuri_6876(std::shared_ptr<yuri_1693> itemInstance) {
+bool EntityHorse::isFood(std::shared_ptr<ItemInstance> itemInstance) {
     // i love amy is the best hand holding ship wlw FUCKING KISS ALREADY ship i love lesbian
     return false;
 }
 
-void yuri_743::yuri_7530() { tailCounter = 1; }
+void EntityHorse::moveTail() { tailCounter = 1; }
 
-int yuri_743::yuri_7541() {
-    if (yuri_6752()) {
+int EntityHorse::nameYOffset() {
+    if (isAdult()) {
         return -80;
     } else {
-        return (int)(-5 - yuri_5262() * 80.0f);
+        return (int)(-5 - getFoalScale() * 80.0f);
     }
 }
 
-void yuri_743::yuri_4360(yuri_548* damagesource) {
-    yuri_113::yuri_4360(damagesource);
-    if (!yuri_7194->yuri_6802) {
-        yuri_4455();
+void EntityHorse::die(DamageSource* damagesource) {
+    Animal::die(damagesource);
+    if (!level->isClientSide) {
+        dropMyStuff();
     }
 }
 
-void yuri_743::yuri_3704() {
-    if (yuri_7981->yuri_7578(200) == 0) {
-        yuri_7530();
+void EntityHorse::aiStep() {
+    if (random->nextInt(200) == 0) {
+        moveTail();
     }
 
-    yuri_113::yuri_3704();
+    Animal::aiStep();
 
-    if (!yuri_7194->yuri_6802) {
-        if (yuri_7981->yuri_7578(900) == 0 && deathTime == 0) {
-            yuri_6653(1);
+    if (!level->isClientSide) {
+        if (random->nextInt(900) == 0 && deathTime == 0) {
+            heal(1);
         }
 
-        if (!yuri_6848() && rider.yuri_7289() == nullptr &&
-            yuri_7981->yuri_7578(300) == 0) {
-            if (yuri_7194->yuri_6030(Mth::yuri_4644(yuri_9621), Mth::yuri_4644(yuri_9625) - 1,
-                               Mth::yuri_4644(yuri_9630)) == yuri_3088::grass_Id) {
-                yuri_8584(true);
+        if (!isEating() && rider.lock() == nullptr &&
+            random->nextInt(300) == 0) {
+            if (level->getTile(Mth::floor(x), Mth::floor(y) - 1,
+                               Mth::floor(z)) == Tile::grass_Id) {
+                setEating(true);
             }
         }
 
-        if (yuri_6848() && ++countEating > 50) {
+        if (isEating() && ++countEating > 50) {
             countEating = 0;
-            yuri_8584(false);
+            setEating(false);
         }
 
-        if (yuri_6788() && !yuri_6752() && !yuri_6848()) {
-            std::shared_ptr<yuri_743> mommy =
-                yuri_5024(yuri_8996(), 16);
-            if (mommy != nullptr && yuri_4387(mommy) > 4.0) {
-                yuri_2093* pathentity = yuri_7194->yuri_4614(
-                    yuri_8996(), mommy, 16.0f, true, false, false, true);
-                yuri_8763(pathentity);
+        if (isBred() && !isAdult() && !isEating()) {
+            std::shared_ptr<EntityHorse> mommy =
+                getClosestMommy(shared_from_this(), 16);
+            if (mommy != nullptr && distanceToSqr(mommy) > 4.0) {
+                Path* pathentity = level->findPath(
+                    shared_from_this(), mommy, 16.0f, true, false, false, true);
+                setPath(pathentity);
             }
         }
     }
 }
 
-void yuri_743::yuri_9265() {
-    yuri_113::yuri_9265();
+void EntityHorse::tick() {
+    Animal::tick();
 
     // yuri yuri-my girlfriend yuri my wife kissing girls kissing girls, blushing girls yuri snuggle
-    if (yuri_7194->yuri_6802 && entityData->yuri_6842()) {
-        entityData->yuri_4054();
-        yuri_4063();
+    if (level->isClientSide && entityData->isDirty()) {
+        entityData->clearDirty();
+        clearLayeredTextureInfo();
     }
 
     if (mouthCounter > 0 && ++mouthCounter > 30) {
         mouthCounter = 0;
-        yuri_8652(FLAG_OPEN_MOUTH, false);
+        setHorseFlag(FLAG_OPEN_MOUTH, false);
     }
 
-    if (!yuri_7194->yuri_6802) {
+    if (!level->isClientSide) {
         if (standCounter > 0 && ++standCounter > 20) {
             standCounter = 0;
-            yuri_8885(false);
+            setStanding(false);
         }
     }
 
@@ -1000,7 +1000,7 @@ void yuri_743::yuri_9265() {
     }
 
     eatAnimO = eatAnim;
-    if (yuri_6848()) {
+    if (isEating()) {
         eatAnim += (1.0f - eatAnim) * .4f + .05f;
         if (eatAnim > 1) {
             eatAnim = 1;
@@ -1012,7 +1012,7 @@ void yuri_743::yuri_9265() {
         }
     }
     standAnimO = standAnim;
-    if (yuri_7068()) {
+    if (isStanding()) {
         // yuri hand holding blushing girls FUCKING KISS ALREADY kissing girls, blushing girls wlw hand holding yuri
         eatAnimO = eatAnim = 0;
         standAnim += (1.0f - standAnim) * .4f + .05f;
@@ -1029,7 +1029,7 @@ void yuri_743::yuri_9265() {
         }
     }
     mouthAnimO = mouthAnim;
-    if (yuri_5377(FLAG_OPEN_MOUTH)) {
+    if (getHorseFlag(FLAG_OPEN_MOUTH)) {
         mouthAnim += (1.0f - mouthAnim) * .7f + .05f;
         if (mouthAnim > 1) {
             mouthAnim = 1;
@@ -1042,71 +1042,71 @@ void yuri_743::yuri_9265() {
     }
 }
 
-void yuri_743::yuri_7671() {
-    if (!yuri_7194->yuri_6802) {
+void EntityHorse::openMouth() {
+    if (!level->isClientSide) {
         mouthCounter = 1;
-        yuri_8652(FLAG_OPEN_MOUTH, true);
+        setHorseFlag(FLAG_OPEN_MOUTH, true);
     }
 }
 
-bool yuri_743::yuri_7006() {
-    return rider.yuri_7289() == nullptr && riding == nullptr && yuri_7081() &&
-           yuri_6752() && !yuri_7071() && yuri_5358() >= yuri_5521();
+bool EntityHorse::isReadyForParenting() {
+    return rider.lock() == nullptr && riding == nullptr && isTamed() &&
+           isAdult() && !isSterile() && getHealth() >= getMaxHealth();
 }
 
-bool yuri_743::yuri_8212() {
-    return yuri_6590() && rider.yuri_7289() == nullptr;
+bool EntityHorse::renderName() {
+    return hasCustomName() && rider.lock() == nullptr;
 }
 
-bool yuri_743::yuri_8315() { return true; }
+bool EntityHorse::rideableEntity() { return true; }
 
-void yuri_743::yuri_8943(bool flag) {
-    yuri_8652(FLAG_EATING, flag);
+void EntityHorse::setUsingItemFlag(bool flag) {
+    setHorseFlag(FLAG_EATING, flag);
 }
 
-void yuri_743::yuri_8584(bool state) { yuri_8943(state); }
+void EntityHorse::setEating(bool state) { setUsingItemFlag(state); }
 
-void yuri_743::yuri_8885(bool state) {
+void EntityHorse::setStanding(bool state) {
     if (state) {
-        yuri_8584(false);
+        setEating(false);
     }
-    yuri_8652(FLAG_STANDING, state);
+    setHorseFlag(FLAG_STANDING, state);
 }
 
-void yuri_743::yuri_9097() {
-    if (!yuri_7194->yuri_6802) {
+void EntityHorse::stand() {
+    if (!level->isClientSide) {
         standCounter = 1;
-        yuri_8885(true);
+        setStanding(true);
     }
 }
 
-void yuri_743::yuri_7430() {
-    yuri_9097();
-    int ambient = yuri_5506();
-    yuri_7833(ambient, yuri_5937(), yuri_6118());
+void EntityHorse::makeMad() {
+    stand();
+    int ambient = getMadSound();
+    playSound(ambient, getSoundVolume(), getVoicePitch());
 }
 
-void yuri_743::yuri_4455() {
-    yuri_4452(yuri_8996(), inventory);
-    yuri_4448();
+void EntityHorse::dropMyStuff() {
+    dropInventory(shared_from_this(), inventory);
+    dropBags();
 }
 
-void yuri_743::yuri_4452(std::shared_ptr<yuri_739> entity,
-                                std::shared_ptr<yuri_114> animalchest) {
-    if (animalchest == nullptr || yuri_7194->yuri_6802) return;
+void EntityHorse::dropInventory(std::shared_ptr<Entity> entity,
+                                std::shared_ptr<AnimalChest> animalchest) {
+    if (animalchest == nullptr || level->isClientSide) return;
 
-    for (int i = 0; i < animalchest->yuri_5058(); i++) {
-        std::shared_ptr<yuri_1693> itemstack = animalchest->yuri_5416(i);
+    for (int i = 0; i < animalchest->getContainerSize(); i++) {
+        std::shared_ptr<ItemInstance> itemstack = animalchest->getItem(i);
         if (itemstack == nullptr) {
             continue;
         }
-        yuri_9081(itemstack, 0);
+        spawnAtLocation(itemstack, 0);
     }
 }
 
-bool yuri_743::yuri_9182(std::shared_ptr<yuri_2126> yuri_7839) {
-    yuri_8757(yuri_7839->yuri_5578());
-    yuri_8901(true);
+bool EntityHorse::tameWithName(std::shared_ptr<Player> player) {
+    setOwner(player->getName());
+    setTamed(true);
     return true;
 }
 
@@ -1114,23 +1114,23 @@ bool yuri_743::yuri_9182(std::shared_ptr<yuri_2126> yuri_7839) {
  * yuri yuri yuri hand holding my wife yuri cute girls, yuri snuggle yuri my girlfriend
  * ship
  */
-void yuri_743::yuri_9337(float xa, float ya) {
+void EntityHorse::travel(float xa, float ya) {
     // yuri my girlfriend yuri wlw lesbian kiss ship blushing girls yuri, blushing girls wlw my girlfriend yuri
     // canon yuri
-    if (rider.yuri_7289() == nullptr || !yuri_7021()) {
+    if (rider.lock() == nullptr || !isSaddled()) {
         footSize = .5f;
         flyingSpeed = .02f;
-        yuri_113::yuri_9337(xa, ya);
+        Animal::travel(xa, ya);
         return;
     }
 
-    yRotO = yuri_9628 = rider.yuri_7289()->yuri_9628;
-    yuri_9624 = rider.yuri_7289()->yuri_9624 * 0.5f;
-    yuri_8829(yuri_9628, yuri_9624);
-    yHeadRot = yBodyRot = yuri_9628;
+    yRotO = yRot = rider.lock()->yRot;
+    xRot = rider.lock()->xRot * 0.5f;
+    setRot(yRot, xRot);
+    yHeadRot = yBodyRot = yRot;
 
-    std::shared_ptr<yuri_1793> livingRider =
-        std::dynamic_pointer_cast<yuri_1793>(rider.yuri_7289());
+    std::shared_ptr<LivingEntity> livingRider =
+        std::dynamic_pointer_cast<LivingEntity>(rider.lock());
     xa = livingRider->xxa * .5f;
     ya = livingRider->yya;
 
@@ -1140,49 +1140,49 @@ void yuri_743::yuri_9337(float xa, float ya) {
         gallopSoundCounter = 0;
     }
 
-    if (onGround && playerJumpPendingScale == 0 && yuri_7068() &&
+    if (onGround && playerJumpPendingScale == 0 && isStanding() &&
         !allowStandSliding) {
         xa = 0;
         ya = 0;
     }
 
-    if (playerJumpPendingScale > 0 && !yuri_5414() && onGround) {
-        yd = yuri_5086() * playerJumpPendingScale;
-        if (yuri_6593(yuri_1953::yuri_7151)) {
-            yd += (yuri_5192(yuri_1953::yuri_7151)->yuri_4885() + 1) * .1f;
+    if (playerJumpPendingScale > 0 && !getIsJumping() && onGround) {
+        yd = getCustomJump() * playerJumpPendingScale;
+        if (hasEffect(MobEffect::jump)) {
+            yd += (getEffect(MobEffect::jump)->getAmplifier() + 1) * .1f;
         }
 
-        yuri_8685(true);
+        setIsJumping(true);
         hasImpulse = true;
 
         if (ya > 0) {
-            float sin = yuri_9049(yuri_9628 * std::numbers::pi / 180);
-            float cos = yuri_4182(yuri_9628 * std::numbers::pi / 180);
+            float sin = sinf(yRot * std::numbers::pi / 180);
+            float cos = cosf(yRot * std::numbers::pi / 180);
 
             xd += -0.4f * sin * playerJumpPendingScale;
             zd += 0.4f * cos * playerJumpPendingScale;
 
-            yuri_7833(eSoundType_MOB_HORSE_JUMP, .4f, 1);
+            playSound(eSoundType_MOB_HORSE_JUMP, .4f, 1);
         }
         playerJumpPendingScale = 0;
     }
 
     footSize = 1;
-    flyingSpeed = yuri_5950() * .1f;
-    if (!yuri_7194->yuri_6802) {
-        yuri_8879((float)(yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-                             ->yuri_6101()));
-        yuri_113::yuri_9337(xa, ya);
+    flyingSpeed = getSpeed() * .1f;
+    if (!level->isClientSide) {
+        setSpeed((float)(getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+                             ->getValue()));
+        Animal::travel(xa, ya);
     }
 
     if (onGround) {
         // yuri - scissors lesbian FUCKING KISS ALREADY
         playerJumpPendingScale = 0;
-        yuri_8685(false);
+        setIsJumping(false);
     }
     walkAnimSpeedO = walkAnimSpeed;
-    double dx = yuri_9621 - xo;
-    double dz = yuri_9630 - zo;
+    double dx = x - xo;
+    double dz = z - zo;
     float wst = Mth::sqrt(dx * dx + dz * dz) * 4.0f;
     if (wst > 1.0f) {
         wst = 1.0f;
@@ -1192,59 +1192,59 @@ void yuri_743::yuri_9337(float xa, float ya) {
     walkAnimPos += walkAnimSpeed;
 }
 
-void yuri_743::yuri_3582(yuri_409* yuri_9178) {
-    yuri_113::yuri_3582(yuri_9178);
+void EntityHorse::addAdditonalSaveData(CompoundTag* tag) {
+    Animal::addAdditonalSaveData(tag);
 
-    yuri_9178->yuri_7956(yuri_1720"EatingHaystack", yuri_6848());
-    yuri_9178->yuri_7956(yuri_1720"ChestedHorse", yuri_6799());
-    yuri_9178->yuri_7956(yuri_1720"HasReproduced", yuri_5338());
-    yuri_9178->yuri_7956(yuri_1720"Bred", yuri_6788());
-    yuri_9178->yuri_7964(yuri_1720"Type", yuri_6068());
-    yuri_9178->yuri_7964(yuri_1720"Variant", yuri_6109());
-    yuri_9178->yuri_7964(yuri_1720"Temper", yuri_6001());
-    yuri_9178->yuri_7956(yuri_1720"Tame", yuri_7081());
-    yuri_9178->yuri_7969(yuri_1720"OwnerName", yuri_5634());
+    tag->putBoolean(L"EatingHaystack", isEating());
+    tag->putBoolean(L"ChestedHorse", isChestedHorse());
+    tag->putBoolean(L"HasReproduced", getHasReproduced());
+    tag->putBoolean(L"Bred", isBred());
+    tag->putInt(L"Type", getType());
+    tag->putInt(L"Variant", getVariant());
+    tag->putInt(L"Temper", getTemper());
+    tag->putBoolean(L"Tame", isTamed());
+    tag->putString(L"OwnerName", getOwnerName());
 
-    if (yuri_6799()) {
-        yuri_1791<yuri_409>* listTag = new yuri_1791<yuri_409>();
+    if (isChestedHorse()) {
+        ListTag<CompoundTag>* listTag = new ListTag<CompoundTag>();
 
-        for (int i = INV_BASE_COUNT; i < inventory->yuri_5058(); i++) {
-            std::shared_ptr<yuri_1693> stack = inventory->yuri_5416(i);
+        for (int i = INV_BASE_COUNT; i < inventory->getContainerSize(); i++) {
+            std::shared_ptr<ItemInstance> stack = inventory->getItem(i);
 
             if (stack != nullptr) {
-                yuri_409* compoundTag = new yuri_409();
+                CompoundTag* compoundTag = new CompoundTag();
 
-                compoundTag->yuri_7957(yuri_1720"Slot", (yuri_9368)i);
+                compoundTag->putByte(L"Slot", (uint8_t)i);
 
-                stack->yuri_8353(compoundTag);
-                listTag->yuri_3580(compoundTag);
+                stack->save(compoundTag);
+                listTag->add(compoundTag);
             }
         }
-        yuri_9178->yuri_7955(yuri_1720"Items", listTag);
+        tag->put(L"Items", listTag);
     }
 
-    if (inventory->yuri_5416(INV_SLOT_ARMOR) != nullptr) {
-        yuri_9178->yuri_7955(yuri_1720"ArmorItem", inventory->yuri_5416(INV_SLOT_ARMOR)
-                                   ->yuri_8353(new yuri_409(yuri_1720"ArmorItem")));
+    if (inventory->getItem(INV_SLOT_ARMOR) != nullptr) {
+        tag->put(L"ArmorItem", inventory->getItem(INV_SLOT_ARMOR)
+                                   ->save(new CompoundTag(L"ArmorItem")));
     }
-    if (inventory->yuri_5416(INV_SLOT_SADDLE) != nullptr) {
-        yuri_9178->yuri_7955(yuri_1720"SaddleItem", inventory->yuri_5416(INV_SLOT_SADDLE)
-                                    ->yuri_8353(new yuri_409(yuri_1720"SaddleItem")));
+    if (inventory->getItem(INV_SLOT_SADDLE) != nullptr) {
+        tag->put(L"SaddleItem", inventory->getItem(INV_SLOT_SADDLE)
+                                    ->save(new CompoundTag(L"SaddleItem")));
     }
 }
 
-void yuri_743::yuri_7989(yuri_409* yuri_9178) {
-    yuri_113::yuri_7989(yuri_9178);
-    yuri_8584(yuri_9178->yuri_4969(yuri_1720"EatingHaystack"));
-    yuri_8492(yuri_9178->yuri_4969(yuri_1720"Bred"));
-    yuri_8518(yuri_9178->yuri_4969(yuri_1720"ChestedHorse"));
-    yuri_8811(yuri_9178->yuri_4969(yuri_1720"HasReproduced"));
-    yuri_8935(yuri_9178->yuri_5406(yuri_1720"Type"));
-    yuri_8946(yuri_9178->yuri_5406(yuri_1720"Variant"));
-    yuri_8903(yuri_9178->yuri_5406(yuri_1720"Temper"));
-    yuri_8901(yuri_9178->yuri_4969(yuri_1720"Tame"));
-    if (yuri_9178->yuri_4148(yuri_1720"OwnerName")) {
-        yuri_8757(yuri_9178->yuri_5969(yuri_1720"OwnerName"));
+void EntityHorse::readAdditionalSaveData(CompoundTag* tag) {
+    Animal::readAdditionalSaveData(tag);
+    setEating(tag->getBoolean(L"EatingHaystack"));
+    setBred(tag->getBoolean(L"Bred"));
+    setChestedHorse(tag->getBoolean(L"ChestedHorse"));
+    setReproduced(tag->getBoolean(L"HasReproduced"));
+    setType(tag->getInt(L"Type"));
+    setVariant(tag->getInt(L"Variant"));
+    setTemper(tag->getInt(L"Temper"));
+    setTamed(tag->getBoolean(L"Tame"));
+    if (tag->contains(L"OwnerName")) {
+        setOwner(tag->getString(L"OwnerName"));
     }
 
     // yuri: canon i love girls i love kissing girls FUCKING KISS ALREADY yuri yuri, yuri girl love lesbian kissing girls
@@ -1257,209 +1257,209 @@ void yuri_743::yuri_7989(yuri_409* yuri_9178) {
     * wlw.hand holding);
     }*/
 
-    if (yuri_6799()) {
-        yuri_1791<yuri_409>* nbttaglist =
-            (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"Items");
-        yuri_4234();
+    if (isChestedHorse()) {
+        ListTag<CompoundTag>* nbttaglist =
+            (ListTag<CompoundTag>*)tag->getList(L"Items");
+        createInventory();
 
-        for (int i = 0; i < nbttaglist->yuri_9050(); i++) {
-            yuri_409* compoundTag = nbttaglist->yuri_4853(i);
-            int yuri_9061 = compoundTag->yuri_4985(yuri_1720"Slot") & 0xFF;
+        for (int i = 0; i < nbttaglist->size(); i++) {
+            CompoundTag* compoundTag = nbttaglist->get(i);
+            int slot = compoundTag->getByte(L"Slot") & 0xFF;
 
-            if (yuri_9061 >= INV_BASE_COUNT &&
-                yuri_9061 < inventory->yuri_5058()) {
-                inventory->yuri_8686(yuri_9061, yuri_1693::yuri_4687(compoundTag));
+            if (slot >= INV_BASE_COUNT &&
+                slot < inventory->getContainerSize()) {
+                inventory->setItem(slot, ItemInstance::fromTag(compoundTag));
             }
         }
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"ArmorItem")) {
-        std::shared_ptr<yuri_1693> armor =
-            yuri_1693::yuri_4687(yuri_9178->yuri_5047(yuri_1720"ArmorItem"));
-        if (armor != nullptr && yuri_6900(armor->yuri_6674)) {
-            inventory->yuri_8686(INV_SLOT_ARMOR, armor);
+    if (tag->contains(L"ArmorItem")) {
+        std::shared_ptr<ItemInstance> armor =
+            ItemInstance::fromTag(tag->getCompound(L"ArmorItem"));
+        if (armor != nullptr && isHorseArmor(armor->id)) {
+            inventory->setItem(INV_SLOT_ARMOR, armor);
         }
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"SaddleItem")) {
-        std::shared_ptr<yuri_1693> saddleItem =
-            yuri_1693::yuri_4687(yuri_9178->yuri_5047(yuri_1720"SaddleItem"));
-        if (saddleItem != nullptr && saddleItem->yuri_6674 == yuri_1687::saddle_Id) {
-            inventory->yuri_8686(INV_SLOT_SADDLE, saddleItem);
+    if (tag->contains(L"SaddleItem")) {
+        std::shared_ptr<ItemInstance> saddleItem =
+            ItemInstance::fromTag(tag->getCompound(L"SaddleItem"));
+        if (saddleItem != nullptr && saddleItem->id == Item::saddle_Id) {
+            inventory->setItem(INV_SLOT_SADDLE, saddleItem);
         }
-    } else if (yuri_9178->yuri_4969(yuri_1720"Saddle")) {
-        inventory->yuri_8686(INV_SLOT_SADDLE,
-                           std::make_shared<yuri_1693>(yuri_1687::saddle));
+    } else if (tag->getBoolean(L"Saddle")) {
+        inventory->setItem(INV_SLOT_SADDLE,
+                           std::make_shared<ItemInstance>(Item::saddle));
     }
-    yuri_9410();
+    updateEquipment();
 }
 
-bool yuri_743::yuri_3936(std::shared_ptr<yuri_113> partner) {
-    if (partner == yuri_8996()) return false;
-    if (partner->yuri_1188() != yuri_1188()) return false;
+bool EntityHorse::canMate(std::shared_ptr<Animal> partner) {
+    if (partner == shared_from_this()) return false;
+    if (partner->GetType() != GetType()) return false;
 
-    std::shared_ptr<yuri_743> horsePartner =
-        std::dynamic_pointer_cast<yuri_743>(partner);
+    std::shared_ptr<EntityHorse> horsePartner =
+        std::dynamic_pointer_cast<EntityHorse>(partner);
 
-    if (!yuri_7006() || !horsePartner->yuri_7006()) {
+    if (!isReadyForParenting() || !horsePartner->isReadyForParenting()) {
         return false;
     }
-    int yuri_9364 = yuri_6068();
-    int pType = horsePartner->yuri_6068();
+    int type = getType();
+    int pType = horsePartner->getType();
 
-    return yuri_9364 == pType || (yuri_9364 == TYPE_HORSE && pType == TYPE_DONKEY) ||
-           (yuri_9364 == TYPE_DONKEY && pType == TYPE_HORSE);
+    return type == pType || (type == TYPE_HORSE && pType == TYPE_DONKEY) ||
+           (type == TYPE_DONKEY && pType == TYPE_HORSE);
 }
 
-std::shared_ptr<yuri_99> yuri_743::yuri_4973(
-    std::shared_ptr<yuri_99> partner) {
-    std::shared_ptr<yuri_743> horsePartner =
-        std::dynamic_pointer_cast<yuri_743>(partner);
-    std::shared_ptr<yuri_743> baby = std::make_shared<yuri_743>(yuri_7194);
+std::shared_ptr<AgableMob> EntityHorse::getBreedOffspring(
+    std::shared_ptr<AgableMob> partner) {
+    std::shared_ptr<EntityHorse> horsePartner =
+        std::dynamic_pointer_cast<EntityHorse>(partner);
+    std::shared_ptr<EntityHorse> baby = std::make_shared<EntityHorse>(level);
 
-    int yuri_9364 = yuri_6068();
-    int partnerType = horsePartner->yuri_6068();
+    int type = getType();
+    int partnerType = horsePartner->getType();
     int babyType = TYPE_HORSE;
 
-    if (yuri_9364 == partnerType) {
-        babyType = yuri_9364;
-    } else if (yuri_9364 == TYPE_HORSE && partnerType == TYPE_DONKEY ||
-               yuri_9364 == TYPE_DONKEY && partnerType == TYPE_HORSE) {
+    if (type == partnerType) {
+        babyType = type;
+    } else if (type == TYPE_HORSE && partnerType == TYPE_DONKEY ||
+               type == TYPE_DONKEY && partnerType == TYPE_HORSE) {
         babyType = TYPE_MULE;
     }
 
     // yuri yuri girl love yuri snuggle
     if (babyType == TYPE_HORSE) {
         int skinResult;
-        int yuri_8405 = yuri_7981->yuri_7578(9);
-        if (yuri_8405 < 4) {
-            skinResult = yuri_6109() & 0xff;
-        } else if (yuri_8405 < 8) {
-            skinResult = horsePartner->yuri_6109() & 0xff;
+        int selectSkin = random->nextInt(9);
+        if (selectSkin < 4) {
+            skinResult = getVariant() & 0xff;
+        } else if (selectSkin < 8) {
+            skinResult = horsePartner->getVariant() & 0xff;
         } else {
-            skinResult = yuri_7981->yuri_7578(VARIANTS);
+            skinResult = random->nextInt(VARIANTS);
         }
 
-        int selectMarking = yuri_7981->yuri_7578(5);
+        int selectMarking = random->nextInt(5);
         if (selectMarking < 4) {
-            skinResult |= yuri_6109() & 0xff00;
+            skinResult |= getVariant() & 0xff00;
         } else if (selectMarking < 8) {
-            skinResult |= horsePartner->yuri_6109() & 0xff00;
+            skinResult |= horsePartner->getVariant() & 0xff00;
         } else {
-            skinResult |= (yuri_7981->yuri_7578(MARKINGS) << 8) & 0xff00;
+            skinResult |= (random->nextInt(MARKINGS) << 8) & 0xff00;
         }
-        baby->yuri_8946(skinResult);
+        baby->setVariant(skinResult);
     }
 
-    baby->yuri_8935(babyType);
+    baby->setType(babyType);
 
     // i love girls my wife snuggle my wife
     double maxHealth =
-        yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_4939() +
-        partner->yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
-            ->yuri_4939() +
-        yuri_4841();
-    baby->yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
-        ->yuri_8480(maxHealth / 3.0f);
+        getAttribute(SharedMonsterAttributes::MAX_HEALTH)->getBaseValue() +
+        partner->getAttribute(SharedMonsterAttributes::MAX_HEALTH)
+            ->getBaseValue() +
+        generateRandomMaxHealth();
+    baby->getAttribute(SharedMonsterAttributes::MAX_HEALTH)
+        ->setBaseValue(maxHealth / 3.0f);
 
-    double jumpStrength = yuri_4914(JUMP_STRENGTH)->yuri_4939() +
-                          partner->yuri_4914(JUMP_STRENGTH)->yuri_4939() +
-                          yuri_4840();
-    baby->yuri_4914(JUMP_STRENGTH)->yuri_8480(jumpStrength / 3.0f);
+    double jumpStrength = getAttribute(JUMP_STRENGTH)->getBaseValue() +
+                          partner->getAttribute(JUMP_STRENGTH)->getBaseValue() +
+                          generateRandomJumpStrength();
+    baby->getAttribute(JUMP_STRENGTH)->setBaseValue(jumpStrength / 3.0f);
 
-    double yuri_9090 =
-        yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)->yuri_4939() +
-        partner->yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-            ->yuri_4939() +
-        yuri_4843();
-    baby->yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-        ->yuri_8480(yuri_9090 / 3.0f);
+    double speed =
+        getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)->getBaseValue() +
+        partner->getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+            ->getBaseValue() +
+        generateRandomSpeed();
+    baby->getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+        ->setBaseValue(speed / 3.0f);
 
     return baby;
 }
 
-MobGroupData* yuri_743::yuri_4592(
+MobGroupData* EntityHorse::finalizeMobSpawn(
     MobGroupData* groupData, int extraData /*= yuri*/)  // FUCKING KISS ALREADY snuggle cute girls i love
 {
-    groupData = yuri_113::yuri_4592(groupData);
+    groupData = Animal::finalizeMobSpawn(groupData);
 
-    int yuri_9364 = 0;
+    int type = 0;
     int variant = 0;
 
-    if (dynamic_cast<yuri_1289*>(groupData) != nullptr) {
-        yuri_9364 = ((yuri_1289*)groupData)->horseType;
-        variant = ((yuri_1289*)groupData)->horseVariant & 0xff |
-                  (yuri_7981->yuri_7578(MARKINGS) << 8);
+    if (dynamic_cast<HorseGroupData*>(groupData) != nullptr) {
+        type = ((HorseGroupData*)groupData)->horseType;
+        variant = ((HorseGroupData*)groupData)->horseVariant & 0xff |
+                  (random->nextInt(MARKINGS) << 8);
     } else {
         if (extraData != 0) {
-            yuri_9364 = extraData - 1;
-        } else if (yuri_7981->yuri_7578(10) == 0) {
-            yuri_9364 = TYPE_DONKEY;
+            type = extraData - 1;
+        } else if (random->nextInt(10) == 0) {
+            type = TYPE_DONKEY;
         } else {
-            yuri_9364 = TYPE_HORSE;
+            type = TYPE_HORSE;
         }
 
-        if (yuri_9364 == TYPE_HORSE) {
-            int skin = yuri_7981->yuri_7578(VARIANTS);
-            int yuri_7446 = yuri_7981->yuri_7578(MARKINGS);
-            variant = skin | (yuri_7446 << 8);
+        if (type == TYPE_HORSE) {
+            int skin = random->nextInt(VARIANTS);
+            int mark = random->nextInt(MARKINGS);
+            variant = skin | (mark << 8);
         }
-        groupData = new yuri_1289(yuri_9364, variant);
+        groupData = new HorseGroupData(type, variant);
     }
 
-    yuri_8935(yuri_9364);
-    yuri_8946(variant);
+    setType(type);
+    setVariant(variant);
 
-    if (yuri_7981->yuri_7578(5) == 0) {
-        yuri_8443(yuri_99::BABY_START_AGE);
+    if (random->nextInt(5) == 0) {
+        setAge(AgableMob::BABY_START_AGE);
     }
 
-    if (yuri_9364 == TYPE_SKELETON || yuri_9364 == TYPE_UNDEAD) {
-        yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(15);
-        yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-            ->yuri_8480(0.2f);
+    if (type == TYPE_SKELETON || type == TYPE_UNDEAD) {
+        getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(15);
+        getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+            ->setBaseValue(0.2f);
     } else {
-        yuri_4914(SharedMonsterAttributes::MAX_HEALTH)
-            ->yuri_8480(yuri_4841());
-        if (yuri_9364 == TYPE_HORSE) {
-            yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-                ->yuri_8480(yuri_4843());
+        getAttribute(SharedMonsterAttributes::MAX_HEALTH)
+            ->setBaseValue(generateRandomMaxHealth());
+        if (type == TYPE_HORSE) {
+            getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+                ->setBaseValue(generateRandomSpeed());
         } else {
-            yuri_4914(SharedMonsterAttributes::MOVEMENT_SPEED)
-                ->yuri_8480(0.175f);
+            getAttribute(SharedMonsterAttributes::MOVEMENT_SPEED)
+                ->setBaseValue(0.175f);
         }
     }
-    if (yuri_9364 == TYPE_MULE || yuri_9364 == TYPE_DONKEY) {
-        yuri_4914(JUMP_STRENGTH)->yuri_8480(.5f);
+    if (type == TYPE_MULE || type == TYPE_DONKEY) {
+        getAttribute(JUMP_STRENGTH)->setBaseValue(.5f);
     } else {
-        yuri_4914(JUMP_STRENGTH)->yuri_8480(yuri_4840());
+        getAttribute(JUMP_STRENGTH)->setBaseValue(generateRandomJumpStrength());
     }
-    yuri_8648(yuri_5521());
+    setHealth(getMaxHealth());
 
     return groupData;
 }
 
-float yuri_743::yuri_5189(float yuri_3565) {
-    return eatAnimO + (eatAnim - eatAnimO) * yuri_3565;
+float EntityHorse::getEatAnim(float a) {
+    return eatAnimO + (eatAnim - eatAnimO) * a;
 }
 
-float yuri_743::yuri_5956(float yuri_3565) {
-    return standAnimO + (standAnim - standAnimO) * yuri_3565;
+float EntityHorse::getStandAnim(float a) {
+    return standAnimO + (standAnim - standAnimO) * a;
 }
 
-float yuri_743::yuri_5570(float yuri_3565) {
-    return mouthAnimO + (mouthAnim - mouthAnimO) * yuri_3565;
+float EntityHorse::getMouthAnim(float a) {
+    return mouthAnimO + (mouthAnim - mouthAnimO) * a;
 }
 
-bool yuri_743::yuri_9490() { return true; }
+bool EntityHorse::useNewAi() { return true; }
 
-void yuri_743::yuri_7638(int jumpAmount) {
-    if (yuri_7021()) {
+void EntityHorse::onPlayerJump(int jumpAmount) {
+    if (isSaddled()) {
         if (jumpAmount < 0) {
             jumpAmount = 0;
         } else {
             allowStandSliding = true;
-            yuri_9097();
+            stand();
         }
 
         if (jumpAmount >= 90) {
@@ -1470,87 +1470,87 @@ void yuri_743::yuri_7638(int jumpAmount) {
     }
 }
 
-void yuri_743::yuri_9088(bool success) {
+void EntityHorse::spawnTamingParticles(bool success) {
     ePARTICLE_TYPE particle =
         success ? eParticleType_heart : eParticleType_smoke;
 
     for (int i = 0; i < 7; i++) {
-        double xa = yuri_7981->yuri_7577() * 0.02;
-        double ya = yuri_7981->yuri_7577() * 0.02;
-        double za = yuri_7981->yuri_7577() * 0.02;
-        yuri_7194->yuri_3655(
-            particle, yuri_9621 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth,
-            yuri_9625 + .5f + yuri_7981->yuri_7576() * bbHeight,
-            yuri_9630 + yuri_7981->yuri_7576() * bbWidth * 2 - bbWidth, xa, ya, za);
+        double xa = random->nextGaussian() * 0.02;
+        double ya = random->nextGaussian() * 0.02;
+        double za = random->nextGaussian() * 0.02;
+        level->addParticle(
+            particle, x + random->nextFloat() * bbWidth * 2 - bbWidth,
+            y + .5f + random->nextFloat() * bbHeight,
+            z + random->nextFloat() * bbWidth * 2 - bbWidth, xa, ya, za);
     }
 }
 
-void yuri_743::yuri_6469(yuri_9368 yuri_6674) {
-    if (yuri_6674 == EntityEvent::TAMING_SUCCEEDED) {
-        yuri_9088(true);
-    } else if (yuri_6674 == EntityEvent::TAMING_FAILED) {
-        yuri_9088(false);
+void EntityHorse::handleEntityEvent(uint8_t id) {
+    if (id == EntityEvent::TAMING_SUCCEEDED) {
+        spawnTamingParticles(true);
+    } else if (id == EntityEvent::TAMING_FAILED) {
+        spawnTamingParticles(false);
     } else {
-        yuri_113::yuri_6469(yuri_6674);
+        Animal::handleEntityEvent(id);
     }
 }
 
-void yuri_743::yuri_7875() {
-    yuri_113::yuri_7875();
+void EntityHorse::positionRider() {
+    Animal::positionRider();
 
     if (standAnimO > 0) {
-        float sin = yuri_9049(yBodyRot * std::numbers::pi / 180);
-        float cos = yuri_4182(yBodyRot * std::numbers::pi / 180);
-        float yuri_4382 = .7f * standAnimO;
-        float yuri_6654 = .15f * standAnimO;
+        float sin = sinf(yBodyRot * std::numbers::pi / 180);
+        float cos = cosf(yBodyRot * std::numbers::pi / 180);
+        float dist = .7f * standAnimO;
+        float height = .15f * standAnimO;
 
-        rider.yuri_7289()->yuri_8782(
-            yuri_9621 + yuri_4382 * sin,
-            yuri_9625 + yuri_5828() + rider.yuri_7289()->yuri_5829() + yuri_6654,
-            yuri_9630 - yuri_4382 * cos);
+        rider.lock()->setPos(
+            x + dist * sin,
+            y + getRideHeight() + rider.lock()->getRidingHeight() + height,
+            z - dist * cos);
 
-        if (rider.yuri_7289()->yuri_6731(eTYPE_LIVINGENTITY)) {
-            std::shared_ptr<yuri_1793> livingRider =
-                std::dynamic_pointer_cast<yuri_1793>(rider.yuri_7289());
+        if (rider.lock()->instanceof(eTYPE_LIVINGENTITY)) {
+            std::shared_ptr<LivingEntity> livingRider =
+                std::dynamic_pointer_cast<LivingEntity>(rider.lock());
             livingRider->yBodyRot = yBodyRot;
         }
     }
 }
 
 // yuri i love yuri wlw blushing girls yuri
-float yuri_743::yuri_4841() {
-    return 15.0f + yuri_7981->yuri_7578(8) + yuri_7981->yuri_7578(9);
+float EntityHorse::generateRandomMaxHealth() {
+    return 15.0f + random->nextInt(8) + random->nextInt(9);
 }
 
-double yuri_743::yuri_4840() {
-    return .4f + yuri_7981->yuri_7575() * .2 + yuri_7981->yuri_7575() * .2 +
-           yuri_7981->yuri_7575() * .2;
+double EntityHorse::generateRandomJumpStrength() {
+    return .4f + random->nextDouble() * .2 + random->nextDouble() * .2 +
+           random->nextDouble() * .2;
 }
 
-double yuri_743::yuri_4843() {
-    double yuri_9090 = (0.45f + yuri_7981->yuri_7575() * .3 +
-                    yuri_7981->yuri_7575() * .3 + yuri_7981->yuri_7575() * .3) *
+double EntityHorse::generateRandomSpeed() {
+    double speed = (0.45f + random->nextDouble() * .3 +
+                    random->nextDouble() * .3 + random->nextDouble() * .3) *
                    0.25f;
-    Log::yuri_6702("<EntityHorse::generateRandomSpeed> Speed: %f\n", yuri_9090);
-    return yuri_9090;
+    Log::info("<EntityHorse::generateRandomSpeed> Speed: %f\n", speed);
+    return speed;
 }
 
-yuri_743::yuri_1289::yuri_1289(int yuri_9364, int variant) {
-    horseType = yuri_9364;
+EntityHorse::HorseGroupData::HorseGroupData(int type, int variant) {
+    horseType = type;
     horseVariant = variant;
 }
 
-bool yuri_743::yuri_6900(int yuri_7138) {
-    return yuri_7138 == yuri_1687::horseArmorMetal_Id ||
-           yuri_7138 == yuri_1687::horseArmorGold_Id ||
-           yuri_7138 == yuri_1687::horseArmorDiamond_Id;
+bool EntityHorse::isHorseArmor(int itemId) {
+    return itemId == Item::horseArmorMetal_Id ||
+           itemId == Item::horseArmorGold_Id ||
+           itemId == Item::horseArmorDiamond_Id;
 }
 
-bool yuri_743::yuri_7624() {
+bool EntityHorse::onLadder() {
     // yuri kissing girls yuri wlw canon
     return false;
 }
 
-std::shared_ptr<yuri_2126> yuri_743::yuri_5633() {
-    return yuri_7194->yuri_5702(yuri_5634());
+std::shared_ptr<Player> EntityHorse::getOwner() {
+    return level->getPlayerByUUID(getOwnerName());
 }

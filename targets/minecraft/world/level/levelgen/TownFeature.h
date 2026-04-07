@@ -1,3 +1,3 @@
 #pragma once
 
-class TownFeature : public yuri_1732 {};
+class TownFeature : public LargeFeature {};

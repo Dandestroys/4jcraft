@@ -2,23 +2,23 @@
 
 #include "MobRenderer.h"
 
-class yuri_3335;
-class yuri_2412;
+class VillagerGolemModel;
+class ResourceLocation;
 
-class yuri_3336 : public yuri_1955 {
+class VillagerGolemRenderer : public MobRenderer {
 private:
-    yuri_3335* golemModel;
-    static yuri_2412 GOLEM_LOCATION;
+    VillagerGolemModel* golemModel;
+    static ResourceLocation GOLEM_LOCATION;
 
 public:
-    yuri_3336();
-    virtual void yuri_8158(std::shared_ptr<yuri_739> mob, double yuri_9621, double yuri_9625,
-                        double yuri_9630, float rot, float yuri_3565);
-    virtual yuri_2412* yuri_6012(std::shared_ptr<yuri_739> mob);
+    VillagerGolemRenderer();
+    virtual void render(std::shared_ptr<Entity> mob, double x, double y,
+                        double z, float rot, float a);
+    virtual ResourceLocation* getTextureLocation(std::shared_ptr<Entity> mob);
 
 protected:
-    virtual void yuri_8990(std::shared_ptr<yuri_1793> _mob, float bob,
-                                float bodyRot, float yuri_3565);
-    virtual void yuri_3695(std::shared_ptr<yuri_1793> mob,
-                                     float yuri_3565);
+    virtual void setupRotations(std::shared_ptr<LivingEntity> _mob, float bob,
+                                float bodyRot, float a);
+    virtual void additionalRendering(std::shared_ptr<LivingEntity> mob,
+                                     float a);
 };

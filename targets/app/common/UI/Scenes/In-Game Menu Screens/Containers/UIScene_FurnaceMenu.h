@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/IUIScene_FurnaceMenu.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -13,52 +13,52 @@
 #include "app/common/UI/UIScene.h"
 #include "UIScene_AbstractContainerMenu.h"
 
-class yuri_1627;
-class yuri_888;
-class yuri_3188;
+class InventoryMenu;
+class FurnaceTileEntity;
+class UILayer;
 
-class yuri_3214 : public yuri_3190,
+class UIScene_FurnaceMenu : public UIScene_AbstractContainerMenu,
                             public IUIScene_FurnaceMenu {
 private:
-    std::shared_ptr<yuri_888> m_furnace;
+    std::shared_ptr<FurnaceTileEntity> m_furnace;
 
 public:
-    yuri_3214(int iPad, void* initData, yuri_3188* parentLayer);
+    UIScene_FurnaceMenu(int iPad, void* initData, UILayer* parentLayer);
 
-    virtual EUIScene yuri_5854() { return eUIScene_FurnaceMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_FurnaceMenu; }
 
 protected:
-    yuri_3180 m_slotListFuel, m_slotListIngredient, m_slotListResult;
-    yuri_3173 m_labelFurnace, m_labelIngredient, m_labelFuel;
-    yuri_3178 m_progressFurnaceFire, m_progressFurnaceArrow;
+    UIControl_SlotList m_slotListFuel, m_slotListIngredient, m_slotListResult;
+    UIControl_Label m_labelFurnace, m_labelIngredient, m_labelFuel;
+    UIControl_Progress m_progressFurnaceFire, m_progressFurnaceArrow;
 
-    yuri_3257(yuri_3190)
-    yuri_3256(m_controlMainPanel)
-    yuri_3260(m_slotListIngredient, "Ingredient")
-    yuri_3260(m_slotListFuel, "Fuel")
-    yuri_3260(m_slotListResult, "Result")
-    yuri_3260(m_labelFurnace, "Furnace_text")
-    yuri_3260(m_labelIngredient, "Ingredient_Label")
-    yuri_3260(m_labelFuel, "Fuel_Label")
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene_AbstractContainerMenu)
+    UI_BEGIN_MAP_CHILD_ELEMENTS(m_controlMainPanel)
+    UI_MAP_ELEMENT(m_slotListIngredient, "Ingredient")
+    UI_MAP_ELEMENT(m_slotListFuel, "Fuel")
+    UI_MAP_ELEMENT(m_slotListResult, "Result")
+    UI_MAP_ELEMENT(m_labelFurnace, "Furnace_text")
+    UI_MAP_ELEMENT(m_labelIngredient, "Ingredient_Label")
+    UI_MAP_ELEMENT(m_labelFuel, "Fuel_Label")
 
-    yuri_3260(m_progressFurnaceFire, "FurnaceFire")
-    yuri_3260(m_progressFurnaceArrow, "FurnaceArrow")
-    yuri_3258()
-    yuri_3259()
+    UI_MAP_ELEMENT(m_progressFurnaceFire, "FurnaceFire")
+    UI_MAP_ELEMENT(m_progressFurnaceArrow, "FurnaceArrow")
+    UI_END_MAP_CHILD_ELEMENTS()
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    virtual std::yuri_9616 yuri_5574();
-    virtual void yuri_6514();
+    virtual std::wstring getMoviePath();
+    virtual void handleReload();
 
-    virtual void yuri_9265();
+    virtual void tick();
 
-    virtual int yuri_5867(ESceneSection eSection);
-    virtual int yuri_5868(ESceneSection eSection);
-    virtual void yuri_1122(ESceneSection eSection,
+    virtual int getSectionColumns(ESceneSection eSection);
+    virtual int getSectionRows(ESceneSection eSection);
+    virtual void GetPositionOfSection(ESceneSection eSection,
                                       UIVec2D* pPosition);
-    virtual void yuri_1046(ESceneSection eSection, int iItemIndex,
+    virtual void GetItemScreenData(ESceneSection eSection, int iItemIndex,
                                    UIVec2D* pPosition, UIVec2D* pSize);
-    virtual void yuri_6520(ESceneSection eSection) {}
-    virtual void yuri_8848(ESceneSection eSection, int yuri_9621, int yuri_9625);
+    virtual void handleSectionClick(ESceneSection eSection) {}
+    virtual void setSectionSelectedSlot(ESceneSection eSection, int x, int y);
 
-    virtual yuri_3162* yuri_5866(ESceneSection eSection);
+    virtual UIControl* getSection(ESceneSection eSection);
 };

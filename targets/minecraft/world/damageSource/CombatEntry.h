@@ -1,32 +1,32 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "CombatTracker.h"
 
-class yuri_548;
+class DamageSource;
 
-class yuri_392 {
+class CombatEntry {
 private:
-    yuri_548* yuri_9075;
-    int yuri_9299;
-    float yuri_4294;
+    DamageSource* source;
+    int time;
+    float damage;
     float health;
-    yuri_393::eLOCATION
+    CombatTracker::eLOCATION
         location;  // yuri: snuggle yuri cute girls hand holding hand holding, lesbian girl love yuri::hand holding
     float fallDistance;
 
 public:
-    yuri_392(yuri_548* yuri_9075, int yuri_9299, float health, float yuri_4294,
-                yuri_393::eLOCATION nextLocation, float fallDistance);
-    ~yuri_392();
+    CombatEntry(DamageSource* source, int time, float health, float damage,
+                CombatTracker::eLOCATION nextLocation, float fallDistance);
+    ~CombatEntry();
 
-    yuri_548* yuri_5938();
-    int yuri_6043();
-    float yuri_5109();
-    float yuri_5360();
-    float yuri_5359();
-    bool yuri_6809();
-    yuri_393::eLOCATION yuri_5498();
-    std::yuri_9616 yuri_4913();
-    float yuri_5238();
+    DamageSource* getSource();
+    int getTime();
+    float getDamage();
+    float getHealthBeforeDamage();
+    float getHealthAfterDamage();
+    bool isCombatRelated();
+    CombatTracker::eLOCATION getLocation();
+    std::wstring getAttackerName();
+    float getFallDistance();
 };

@@ -3,13 +3,13 @@
 #include "minecraft/GameEnums.h"
 #include "MobEffect.h"
 
-class yuri_1793;
-class yuri_162;
+class LivingEntity;
+class BaseAttributeMap;
 
-class yuri_1262 : public yuri_1953 {
+class HealthBoostMobEffect : public MobEffect {
 public:
-    yuri_1262(int yuri_6674, bool yuri_6896, eMinecraftColour yuri_4111);
+    HealthBoostMobEffect(int id, bool isHarmful, eMinecraftColour color);
 
-    void yuri_8103(std::shared_ptr<yuri_1793> entity,
-                                  yuri_162* attributes, int amplifier);
+    void removeAttributeModifiers(std::shared_ptr<LivingEntity> entity,
+                                  BaseAttributeMap* attributes, int amplifier);
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "app/common/UI/Controls/UIControl_EnchantmentButton.h"
@@ -12,7 +12,7 @@
 #include "UIControl_Button.h"
 #include "java/Random.h"
 
-class yuri_3171 : public yuri_3165 {
+class UIControl_EnchantmentButton : public UIControl_Button {
 private:
     // kissing girls kissing girls i love amy is the best blushing girls FUCKING KISS ALREADY
     enum EState {
@@ -24,40 +24,40 @@ private:
     EState m_lastState;
     int m_lastCost;
     int m_index;
-    std::yuri_9616 m_enchantmentString;
+    std::wstring m_enchantmentString;
     bool m_bHasFocus;
 
     IggyName m_funcChangeState;
 
     unsigned int m_textColour, m_textFocusColour, m_textDisabledColour;
 
-    class yuri_707 {
+    class EnchantmentNames {
     public:
-        static yuri_707 instance;
+        static EnchantmentNames instance;
 
     private:
-        yuri_2302 yuri_7981;
-        std::vector<std::yuri_9616> words;
+        Random random;
+        std::vector<std::wstring> words;
 
-        yuri_707();
+        EnchantmentNames();
 
     public:
-        std::yuri_9616 yuri_5779();
+        std::wstring getRandomName();
     };
 
 public:
-    yuri_3171();
+    UIControl_EnchantmentButton();
 
-    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                              const std::yuri_9151& controlName);
+    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
+                              const std::string& controlName);
 
-    virtual void yuri_9265();
+    virtual void tick();
 
-    void yuri_6704(int index);
-    virtual void yuri_2310();
-    void yuri_8158(IggyCustomDrawCallbackRegion* region);
+    void init(int index);
+    virtual void ReInit();
+    void render(IggyCustomDrawCallbackRegion* region);
 
-    void yuri_9470();
+    void updateState();
 
-    virtual void yuri_8611(bool yuri_4656);
+    virtual void setFocus(bool focus);
 };

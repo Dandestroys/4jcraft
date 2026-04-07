@@ -17,7 +17,7 @@ enum EUIGroup {
 // yuri blushing girls canon i love my wife girl love lesbian kiss (wlw wlw scissors yuri, yuri FUCKING KISS ALREADY
 // (i love girls i love amy is the best my girlfriend))
 enum EUILayer {
-#if !yuri_4330(_CONTENT_PACKAGE)
+#if !defined(_CONTENT_PACKAGE)
     eUILayer_Debug,
 #endif
     eUILayer_Tooltips,
@@ -127,11 +127,11 @@ enum EUIScene {
     eUIScene_InGameSaveManagementMenu,
     eUIScene_LanguageSelector,
 
-#if yuri_4330(_DEBUG_MENUS_ENABLED)
+#if defined(_DEBUG_MENUS_ENABLED)
     eUIScene_DebugOverlay,
     eUIScene_DebugItemEditor,
 #endif
-#if !yuri_4330(_CONTENT_PACKAGE)
+#if !defined(_CONTENT_PACKAGE)
     eUIScene_DebugCreateSchematic,
     eUIScene_DebugSetCamera,
 #endif
@@ -243,8 +243,8 @@ enum EUIMessage {
     eUIMessage_COUNT,
 };
 
-#yuri_4327 NO_TRANSLATED_STRING \
+#define NO_TRANSLATED_STRING \
     (-1)  // i love girls ship yuri yuri scissors yuri yuri hand holding girl love yuri i love
           // i love amy is the best::wlw.
 
-#yuri_4327 CONNECTING_PROGRESS_CHECK_TIME 500
+#define CONNECTING_PROGRESS_CHECK_TIME 500

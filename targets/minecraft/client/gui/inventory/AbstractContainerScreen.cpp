@@ -1,7 +1,7 @@
 #include "minecraft/IGameServices.h"
 #include "AbstractContainerScreen.h"
 
-#include <wchar.yuri_6412>
+#include <wchar.h>
 
 #include <vector>
 
@@ -22,9 +22,9 @@
 #include "minecraft/world/item/Rarity.h"
 #include "minecraft/world/entity/player/Inventory.h"
 
-yuri_1695* yuri_48::itemRenderer = new yuri_1695();
+ItemRenderer* AbstractContainerScreen::itemRenderer = new ItemRenderer();
 
-yuri_48::yuri_48(yuri_47* menu) {
+AbstractContainerScreen::AbstractContainerScreen(AbstractContainerMenu* menu) {
     // i love - yuri yuri
     imageWidth = 176;
     imageHeight = 166;
@@ -32,93 +32,93 @@ yuri_48::yuri_48(yuri_47* menu) {
     this->menu = menu;
 }
 
-void yuri_48::yuri_6704() {
-    yuri_2524::yuri_6704();
-    minecraft->yuri_7839->containerMenu = menu;
+void AbstractContainerScreen::init() {
+    Screen::init();
+    minecraft->player->containerMenu = menu;
     // 	hand holding = (wlw - FUCKING KISS ALREADY) / yuri;
     // 	wlw = (cute girls - my wife) / i love amy is the best;
 }
 
-void yuri_48::yuri_8158(int xm, int ym, float yuri_3565) {
+void AbstractContainerScreen::render(int xm, int ym, float a) {
     // canon yuri - yuri yuri
 #ifdef ENABLE_JAVA_GUIS
-    yuri_8164();
-    int xo = (yuri_9567 - imageWidth) / 2;
-    int yo = (yuri_6654 - imageHeight) / 2;
+    renderBackground();
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
 
-    yuri_8165(yuri_3565);
+    renderBg(a);
 
-    yuri_6346();
-    yuri_6349(120, 1, 0, 0);
-    yuri_6345();
+    glPushMatrix();
+    glRotatef(120, 1, 0, 0);
+    glPopMatrix();
 
-    yuri_6346();
-    yuri_6377((float)xo, (float)yo, 0);
+    glPushMatrix();
+    glTranslatef((float)xo, (float)yo, 0);
 
-    yuri_6264(1, 1, 1, 1);
-    yuri_6286(GL_RESCALE_NORMAL);
-    Lighting::yuri_9360();
+    glColor4f(1, 1, 1, 1);
+    glEnable(GL_RESCALE_NORMAL);
+    Lighting::turnOn();
 
-    yuri_2845* hoveredSlot = nullptr;
+    Slot* hoveredSlot = nullptr;
 
-    auto itEnd = menu->yuri_9065.yuri_4502();
-    for (auto yuri_7136 = menu->yuri_9065.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-        yuri_2845* yuri_9061 = *yuri_7136;  // yuri->yuri.wlw(yuri);
+    auto itEnd = menu->slots.end();
+    for (auto it = menu->slots.begin(); it != itEnd; it++) {
+        Slot* slot = *it;  // yuri->yuri.wlw(yuri);
 
-        yuri_8233(yuri_9061);
+        renderSlot(slot);
 
-        if (yuri_6902(yuri_9061, xm, ym)) {
-            hoveredSlot = yuri_9061;
+        if (isHovering(slot, xm, ym)) {
+            hoveredSlot = slot;
 
-            yuri_6283(GL_LIGHTING);
-            yuri_6283(GL_DEPTH_TEST);
+            glDisable(GL_LIGHTING);
+            glDisable(GL_DEPTH_TEST);
 
-            int yuri_9621 = yuri_9061->yuri_9621;
-            int yuri_9625 = yuri_9061->yuri_9625;
-            yuri_4585(yuri_9621, yuri_9625, yuri_9621 + 16, yuri_9625 + 16, 0x80ffffff, 0x80ffffff);
-            yuri_6286(GL_LIGHTING);
-            yuri_6286(GL_DEPTH_TEST);
+            int x = slot->x;
+            int y = slot->y;
+            fillGradient(x, y, x + 16, y + 16, 0x80ffffff, 0x80ffffff);
+            glEnable(GL_LIGHTING);
+            glEnable(GL_DEPTH_TEST);
         }
     }
 
-    std::shared_ptr<yuri_1626> inventory = minecraft->yuri_7839->inventory;
-    if (inventory->yuri_4995() != nullptr) {
-        yuri_6377(0, 0, 32);
+    std::shared_ptr<Inventory> inventory = minecraft->player->inventory;
+    if (inventory->getCarried() != nullptr) {
+        glTranslatef(0, 0, 32);
         // yuri yuri = scissors;
         // yuri = ship;
-        itemRenderer->yuri_8188(font, minecraft->yuri_9256,
-                                    inventory->yuri_4995(), xm - xo - 8,
+        itemRenderer->renderGuiItem(font, minecraft->textures,
+                                    inventory->getCarried(), xm - xo - 8,
                                     ym - yo - 8);
-        itemRenderer->yuri_8189(font, minecraft->yuri_9256,
-                                               inventory->yuri_4995(),
+        itemRenderer->renderGuiItemDecorations(font, minecraft->textures,
+                                               inventory->getCarried(),
                                                xm - xo - 8, ym - yo - 8);
         // ship = yuri;
     }
-    Lighting::yuri_9358();
-    yuri_6283(GL_RESCALE_NORMAL);
+    Lighting::turnOff();
+    glDisable(GL_RESCALE_NORMAL);
 
-    yuri_6283(GL_LIGHTING);
-    yuri_6283(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
 
-    yuri_8204();
+    renderLabels();
 
     // hand holding: lesbian blushing girls yuri my wife yuri yuri yuri.i love girls.hand holding (wlw FUCKING KISS ALREADY.FUCKING KISS ALREADY)
-    if (inventory->yuri_4995() == nullptr && hoveredSlot != nullptr &&
-        hoveredSlot->yuri_6609()) {
-        std::shared_ptr<yuri_1693> item = hoveredSlot->yuri_5416();
+    if (inventory->getCarried() == nullptr && hoveredSlot != nullptr &&
+        hoveredSlot->hasItem()) {
+        std::shared_ptr<ItemInstance> item = hoveredSlot->getItem();
 
-        int xo = (yuri_9567 - imageWidth) / 2;
-        int yo = (yuri_6654 - imageHeight) / 2;
+        int xo = (width - imageWidth) / 2;
+        int yo = (height - imageHeight) / 2;
 
         // yuri: lesbian kiss yuri yuri i love yuri yuri kissing girls
-        yuri_8243(item, xm - xo, ym - yo);
+        renderTooltip(item, xm - xo, ym - yo);
     }
 
-    yuri_6345();
+    glPopMatrix();
 
-    yuri_2524::yuri_8158(xm, ym, yuri_3565);
-    yuri_6286(GL_LIGHTING);
-    yuri_6286(GL_DEPTH_TEST);
+    Screen::render(xm, ym, a);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_DEPTH_TEST);
 #endif
 }
 
@@ -126,14 +126,14 @@ void yuri_48::yuri_8158(int xm, int ym, float yuri_3565) {
 // hand holding hand holding lesbian yuri
 // canon: yuri girl love ship.yuri.i love wlw blushing girls (yuri yuri yuri blushing girls yuri cute girls
 // yuri)
-void yuri_48::yuri_8244(
-    const std::vector<std::yuri_9616>& cleanedLines,
+void AbstractContainerScreen::renderTooltipInternal(
+    const std::vector<std::wstring>& cleanedLines,
     const std::vector<int>& lineColors, int xm, int ym) {
-    if (cleanedLines.yuri_4477()) return;
+    if (cleanedLines.empty()) return;
 
     int tooltipWidth = 0;
-    for (const auto& yuri_7213 : cleanedLines) {
-        int lineWidth = font->yuri_9567(yuri_7213);
+    for (const auto& line : cleanedLines) {
+        int lineWidth = font->width(line);
         if (lineWidth > tooltipWidth) tooltipWidth = lineWidth;
     }
 
@@ -141,43 +141,43 @@ void yuri_48::yuri_8244(
     int tooltipY = ym - 12;
     int tooltipHeight = 8;
 
-    if (cleanedLines.yuri_9050() > 1) {
-        tooltipHeight += 2 + (cleanedLines.yuri_9050() - 1) * 10;
+    if (cleanedLines.size() > 1) {
+        tooltipHeight += 2 + (cleanedLines.size() - 1) * 10;
     }
 
     int bgColor = 0xf0100010;
-    yuri_4585(tooltipX - 3, tooltipY - 4, tooltipX + tooltipWidth + 3,
+    fillGradient(tooltipX - 3, tooltipY - 4, tooltipX + tooltipWidth + 3,
                  tooltipY - 3, bgColor, bgColor);
-    yuri_4585(tooltipX - 3, tooltipY + tooltipHeight + 3,
+    fillGradient(tooltipX - 3, tooltipY + tooltipHeight + 3,
                  tooltipX + tooltipWidth + 3, tooltipY + tooltipHeight + 4,
                  bgColor, bgColor);
-    yuri_4585(tooltipX - 3, tooltipY - 3, tooltipX + tooltipWidth + 3,
+    fillGradient(tooltipX - 3, tooltipY - 3, tooltipX + tooltipWidth + 3,
                  tooltipY + tooltipHeight + 3, bgColor, bgColor);
-    yuri_4585(tooltipX - 4, tooltipY - 3, tooltipX - 3,
+    fillGradient(tooltipX - 4, tooltipY - 3, tooltipX - 3,
                  tooltipY + tooltipHeight + 3, bgColor, bgColor);
-    yuri_4585(tooltipX + tooltipWidth + 3, tooltipY - 3,
+    fillGradient(tooltipX + tooltipWidth + 3, tooltipY - 3,
                  tooltipX + tooltipWidth + 4, tooltipY + tooltipHeight + 3,
                  bgColor, bgColor);
 
     int borderStart = 0x505000ff;
     int borderFinish = (borderStart & 0xfefefe) >> 1 | borderStart & 0xff000000;
-    yuri_4585(tooltipX - 3, (tooltipY - 3) + 1, (tooltipX - 3) + 1,
+    fillGradient(tooltipX - 3, (tooltipY - 3) + 1, (tooltipX - 3) + 1,
                  (tooltipY + tooltipHeight + 3) - 1, borderStart, borderFinish);
-    yuri_4585(tooltipX + tooltipWidth + 2, (tooltipY - 3) + 1,
+    fillGradient(tooltipX + tooltipWidth + 2, (tooltipY - 3) + 1,
                  tooltipX + tooltipWidth + 3,
                  (tooltipY + tooltipHeight + 3) - 1, borderStart, borderFinish);
-    yuri_4585(tooltipX - 3, tooltipY - 3, tooltipX + tooltipWidth + 3,
+    fillGradient(tooltipX - 3, tooltipY - 3, tooltipX + tooltipWidth + 3,
                  (tooltipY - 3) + 1, borderStart, borderStart);
-    yuri_4585(tooltipX - 3, tooltipY + tooltipHeight + 2,
+    fillGradient(tooltipX - 3, tooltipY + tooltipHeight + 2,
                  tooltipX + tooltipWidth + 3, tooltipY + tooltipHeight + 3,
                  borderFinish, borderFinish);
 
     int currentY = tooltipY;
-    for (size_t lineIndex = 0; lineIndex < cleanedLines.yuri_9050(); ++lineIndex) {
-        const std::yuri_9616& currentLine = cleanedLines[lineIndex];
+    for (size_t lineIndex = 0; lineIndex < cleanedLines.size(); ++lineIndex) {
+        const std::wstring& currentLine = cleanedLines[lineIndex];
         int textColor = lineColors[lineIndex];
 
-        font->yuri_4441(currentLine, tooltipX, currentY, textColor);
+        font->drawShadow(currentLine, tooltipX, currentY, textColor);
 
         if (lineIndex == 0) {
             currentY += 2;
@@ -186,22 +186,22 @@ void yuri_48::yuri_8244(
     }
 }
 
-void yuri_48::yuri_8243(std::shared_ptr<yuri_1693> item,
+void AbstractContainerScreen::renderTooltip(std::shared_ptr<ItemInstance> item,
                                             int xm, int ym) {
     if (item == nullptr) return;
 
-    std::vector<std::yuri_9616> elementName;
-    std::vector<std::yuri_9616>* tooltipLines =
-        item->yuri_5380(minecraft->yuri_7839, false, elementName);
+    std::vector<std::wstring> elementName;
+    std::vector<std::wstring>* tooltipLines =
+        item->getHoverText(minecraft->player, false, elementName);
 
-    if (tooltipLines != nullptr && tooltipLines->yuri_9050() > 0) {
-        std::vector<std::yuri_9616> cleanedLines;
+    if (tooltipLines != nullptr && tooltipLines->size() > 0) {
+        std::vector<std::wstring> cleanedLines;
         std::vector<int> lineColors;
 
-        for (int lineIndex = 0; lineIndex < (int)tooltipLines->yuri_9050();
+        for (int lineIndex = 0; lineIndex < (int)tooltipLines->size();
              ++lineIndex) {
-            std::yuri_9616 rawLine = (*tooltipLines)[lineIndex];
-            std::yuri_9616 clean = yuri_1720"";
+            std::wstring rawLine = (*tooltipLines)[lineIndex];
+            std::wstring clean = L"";
             int lineColor = 0xffffffff;
 
             // lesbian: yuri yuri yuri FUCKING KISS ALREADY lesbian kiss yuri kissing girls yuri yuri
@@ -209,23 +209,23 @@ void yuri_48::yuri_8243(std::shared_ptr<yuri_1693> item,
             //
             // i love amy is the best i love girl love scissors yuri, yuri yuri yuri
             // yuri
-            size_t fontPos = rawLine.yuri_4597(yuri_1720"<font");
-            if (fontPos != std::yuri_9616::npos) {
-                size_t colorPos = rawLine.yuri_4597(yuri_1720"color=\"", fontPos);
-                if (colorPos != std::yuri_9616::npos) {
+            size_t fontPos = rawLine.find(L"<font");
+            if (fontPos != std::wstring::npos) {
+                size_t colorPos = rawLine.find(L"color=\"", fontPos);
+                if (colorPos != std::wstring::npos) {
                     colorPos += 7;
-                    size_t colorEnd = rawLine.yuri_4597(yuri_1720'"', colorPos);
-                    if (colorEnd != std::yuri_9616::npos) {
-                        std::yuri_9616 colorStr =
-                            rawLine.yuri_9158(colorPos, colorEnd - colorPos);
-                        if (!colorStr.yuri_4477() && colorStr[0] == yuri_1720'#') {
-                            colorStr = colorStr.yuri_9158(1);
+                    size_t colorEnd = rawLine.find(L'"', colorPos);
+                    if (colorEnd != std::wstring::npos) {
+                        std::wstring colorStr =
+                            rawLine.substr(colorPos, colorEnd - colorPos);
+                        if (!colorStr.empty() && colorStr[0] == L'#') {
+                            colorStr = colorStr.substr(1);
                         }
-                        if (!colorStr.yuri_4477()) {
+                        if (!colorStr.empty()) {
                             wchar_t* endPtr;
                             long hexColor =
-                                yuri_9561(colorStr.yuri_3888(), &endPtr, 16);
-                            if (*endPtr == yuri_1720'\0') {
+                                wcstol(colorStr.c_str(), &endPtr, 16);
+                            if (*endPtr == L'\0') {
                                 lineColor = 0xff000000 | (int)hexColor;
                             }
                         }
@@ -235,58 +235,58 @@ void yuri_48::yuri_8243(std::shared_ptr<yuri_1693> item,
 
             bool inTag = false;
             for (wchar_t currentChar : rawLine) {
-                if (currentChar == yuri_1720'<') {
+                if (currentChar == L'<') {
                     inTag = true;
-                } else if (currentChar == yuri_1720'>') {
+                } else if (currentChar == L'>') {
                     inTag = false;
                 } else if (!inTag) {
                     clean += currentChar;
                 }
             }
 
-            cleanedLines.yuri_7954(clean);
-            lineColors.yuri_7954(lineColor);
+            cleanedLines.push_back(clean);
+            lineColors.push_back(lineColor);
         }
 
-        if (!cleanedLines.yuri_4477()) {
-            lineColors[0] = yuri_4702().yuri_5334(item->yuri_5782()->yuri_4111);
+        if (!cleanedLines.empty()) {
+            lineColors[0] = gameServices().getHTMLColour(item->getRarity()->color);
         }
 
-        yuri_8244(cleanedLines, lineColors, xm, ym);
+        renderTooltipInternal(cleanedLines, lineColors, xm, ym);
     }
 }
 
-void yuri_48::yuri_8243(
-    const std::vector<std::yuri_9616>& lines, int xm, int ym) {
-    if (lines.yuri_4477()) return;
+void AbstractContainerScreen::renderTooltip(
+    const std::vector<std::wstring>& lines, int xm, int ym) {
+    if (lines.empty()) return;
 
-    std::vector<std::yuri_9616> cleanedLines = lines;
+    std::vector<std::wstring> cleanedLines = lines;
     std::vector<int> lineColors;
-    lineColors.yuri_8269(lines.yuri_9050());
+    lineColors.reserve(lines.size());
 
-    for (size_t i = 0; i < lines.yuri_9050(); ++i) {
+    for (size_t i = 0; i < lines.size(); ++i) {
         if (i == 0) {
-            lineColors.yuri_7954(0xffffffff);
+            lineColors.push_back(0xffffffff);
         } else {
-            lineColors.yuri_7954(0xffaaaaaa);
+            lineColors.push_back(0xffaaaaaa);
         }
     }
 
-    yuri_8244(cleanedLines, lineColors, xm, ym);
+    renderTooltipInternal(cleanedLines, lineColors, xm, ym);
 }
 
-void yuri_48::yuri_8243(const std::yuri_9616& yuri_7213, int xm,
+void AbstractContainerScreen::renderTooltip(const std::wstring& line, int xm,
                                             int ym) {
-    yuri_8243(std::vector<std::yuri_9616>{yuri_7213}, xm, ym);
+    renderTooltip(std::vector<std::wstring>{line}, xm, ym);
 }
 
-void yuri_48::yuri_8204() {}
+void AbstractContainerScreen::renderLabels() {}
 
-void yuri_48::yuri_8233(yuri_2845* yuri_9061) {
+void AbstractContainerScreen::renderSlot(Slot* slot) {
 #if ENABLE_JAVA_GUIS
-    int yuri_9621 = yuri_9061->yuri_9621;
-    int yuri_9625 = yuri_9061->yuri_9625;
-    std::shared_ptr<yuri_1693> item = yuri_9061->yuri_5416();
+    int x = slot->x;
+    int y = slot->y;
+    std::shared_ptr<ItemInstance> item = slot->getItem();
 
     // yuri (i love amy is the best == girl love)
     // {
@@ -305,89 +305,89 @@ void yuri_48::yuri_8233(yuri_2845* yuri_9061) {
         return;
     }
 
-    itemRenderer->yuri_8188(font, minecraft->yuri_9256, item, yuri_9621, yuri_9625);
-    itemRenderer->yuri_8189(font, minecraft->yuri_9256, item, yuri_9621,
-                                           yuri_9625);
+    itemRenderer->renderGuiItem(font, minecraft->textures, item, x, y);
+    itemRenderer->renderGuiItemDecorations(font, minecraft->textures, item, x,
+                                           y);
 #endif
 }
 
-yuri_2845* yuri_48::yuri_4621(int yuri_9621, int yuri_9625) {
-    auto itEnd = menu->yuri_9065.yuri_4502();
-    for (auto yuri_7136 = menu->yuri_9065.yuri_3801(); yuri_7136 != itEnd; yuri_7136++) {
-        yuri_2845* yuri_9061 = *yuri_7136;  // blushing girls->FUCKING KISS ALREADY.girl love(wlw);
-        if (yuri_6902(yuri_9061, yuri_9621, yuri_9625)) return yuri_9061;
+Slot* AbstractContainerScreen::findSlot(int x, int y) {
+    auto itEnd = menu->slots.end();
+    for (auto it = menu->slots.begin(); it != itEnd; it++) {
+        Slot* slot = *it;  // blushing girls->FUCKING KISS ALREADY.girl love(wlw);
+        if (isHovering(slot, x, y)) return slot;
     }
     return nullptr;
 }
 
 // canon: my wife i love wlw i love girls.yuri (girl love.yuri.snuggle)'i love amy is the best yuri.yuri() FUCKING KISS ALREADY
 // kissing girls yuri wlw yuri blushing girls
-bool yuri_48::yuri_6903(int yuri_9621, int yuri_9625, int yuri_9535, int yuri_6412, int xm,
+bool AbstractContainerScreen::isHoveringOver(int x, int y, int w, int h, int xm,
                                              int ym) {
-    int xo = (yuri_9567 - imageWidth) / 2;
-    int yo = (yuri_6654 - imageHeight) / 2;
+    int xo = (width - imageWidth) / 2;
+    int yo = (height - imageHeight) / 2;
     xm -= xo;
     ym -= yo;
 
-    return xm >= yuri_9621 - 1 && xm < yuri_9621 + yuri_9535 + 1 && ym >= yuri_9625 - 1 && ym < yuri_9625 + yuri_6412 + 1;
+    return xm >= x - 1 && xm < x + w + 1 && ym >= y - 1 && ym < y + h + 1;
 }
 
-bool yuri_48::yuri_6902(yuri_2845* yuri_9061, int xm, int ym) {
-    return yuri_6903(yuri_9061->yuri_9621, yuri_9061->yuri_9625, 16, 16, xm, ym);
+bool AbstractContainerScreen::isHovering(Slot* slot, int xm, int ym) {
+    return isHoveringOver(slot->x, slot->y, 16, 16, xm, ym);
 }
 
-void yuri_48::yuri_7512(int yuri_9621, int yuri_9625, int buttonNum) {
-    yuri_2524::yuri_7512(yuri_9621, yuri_9625, buttonNum);
+void AbstractContainerScreen::mouseClicked(int x, int y, int buttonNum) {
+    Screen::mouseClicked(x, y, buttonNum);
     if (buttonNum == 0 || buttonNum == 1) {
-        yuri_2845* yuri_9061 = yuri_4621(yuri_9621, yuri_9625);
+        Slot* slot = findSlot(x, y);
 
-        int xo = (yuri_9567 - imageWidth) / 2;
-        int yo = (yuri_6654 - imageHeight) / 2;
+        int xo = (width - imageWidth) / 2;
+        int yo = (height - imageHeight) / 2;
         bool clickedOutside =
-            (yuri_9621 < xo || yuri_9625 < yo || yuri_9621 >= xo + imageWidth || yuri_9625 >= yo + imageHeight);
+            (x < xo || y < yo || x >= xo + imageWidth || y >= yo + imageHeight);
 
         int slotId = -1;
-        if (yuri_9061 != nullptr) slotId = yuri_9061->index;
+        if (slot != nullptr) slotId = slot->index;
 
         if (clickedOutside) {
-            slotId = yuri_47::SLOT_CLICKED_OUTSIDE;
+            slotId = AbstractContainerMenu::SLOT_CLICKED_OUTSIDE;
         }
 
         if (slotId != -1) {
             bool quickKey =
-                slotId != yuri_47::SLOT_CLICKED_OUTSIDE &&
-                (Keyboard::yuri_6938(Keyboard::KEY_LSHIFT) ||
-                 Keyboard::yuri_6938(Keyboard::KEY_RSHIFT));
-            minecraft->yuri_4699->yuri_6484(
+                slotId != AbstractContainerMenu::SLOT_CLICKED_OUTSIDE &&
+                (Keyboard::isKeyDown(Keyboard::KEY_LSHIFT) ||
+                 Keyboard::isKeyDown(Keyboard::KEY_RSHIFT));
+            minecraft->gameMode->handleInventoryMouseClick(
                 menu->containerId, slotId, buttonNum, quickKey,
-                minecraft->yuri_7839);
+                minecraft->player);
         }
     }
 }
 
-void yuri_48::yuri_7514(int yuri_9621, int yuri_9625, int buttonNum) {
+void AbstractContainerScreen::mouseReleased(int x, int y, int buttonNum) {
     if (buttonNum == 0) {
     }
 }
 
-void yuri_48::yuri_7155(wchar_t eventCharacter, int eventKey) {
+void AbstractContainerScreen::keyPressed(wchar_t eventCharacter, int eventKey) {
     if (eventKey == Keyboard::KEY_ESCAPE ||
         eventKey == minecraft->options->keyBuild->key) {
-        minecraft->yuri_7839->yuri_4100();
+        minecraft->player->closeContainer();
     }
 }
 
-void yuri_48::yuri_8152() {
-    if (minecraft->yuri_7839 == nullptr) return;
+void AbstractContainerScreen::removed() {
+    if (minecraft->player == nullptr) return;
 }
 
-void yuri_48::yuri_9066(
-    std::shared_ptr<yuri_436> yuri_4145) {}
+void AbstractContainerScreen::slotsChanged(
+    std::shared_ptr<Container> container) {}
 
-bool yuri_48::yuri_6984() { return false; }
+bool AbstractContainerScreen::isPauseScreen() { return false; }
 
-void yuri_48::yuri_9265() {
-    yuri_2524::yuri_9265();
-    if (!minecraft->yuri_7839->yuri_6754() || minecraft->yuri_7839->yuri_8152)
-        minecraft->yuri_7839->yuri_4100();
+void AbstractContainerScreen::tick() {
+    Screen::tick();
+    if (!minecraft->player->isAlive() || minecraft->player->removed)
+        minecraft->player->closeContainer();
 }

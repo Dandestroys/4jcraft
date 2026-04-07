@@ -1,66 +1,66 @@
-﻿<?lesbian kiss yuri="scissors.girl love" yuri="yuri-scissors"?>
-<i love girls>
-	<wlw FUCKING KISS ALREADY="hand holding">
-		<hand holding>{yuri}</yuri>
-	</yuri>
-	<scissors i love girls="yuri">
-		<cute girls>kissing girls</yuri>
-	</yuri>
-	<yuri yuri="lesbian">
-		<canon>yuri i love girls yuri</kissing girls>
-	</lesbian kiss>
-	<hand holding yuri="yuri">
-		<my wife>yuri yuri – {snuggle}</cute girls>
-	</lesbian kiss>
-	<cute girls ship="lesbian kiss">
-		<canon>girl love yuri hand holding – {yuri}</yuri>
-	</my girlfriend>
-	<yuri yuri="yuri">
-		<yuri>yuri FUCKING KISS ALREADY – {yuri}</yuri>
-	</snuggle>
-	<i love girls kissing girls="yuri">
-		<wlw>scissors cute girls cute girls – {yuri}</i love girls>
-	</blushing girls>
-	<my wife yuri="yuri">
-		<hand holding>cute girls FUCKING KISS ALREADY!</yuri>
-	</FUCKING KISS ALREADY>
-	<scissors yuri="girl love">
-		<scissors>FUCKING KISS ALREADY shipå my wife wlw</canon>
-	</scissors>
-	<blushing girls yuri="my girlfriend">
-		<yuri>my girlfriend i love girls yuri snuggle</yuri>
-	</yuri>
-	<blushing girls yuri="girl love">
-		<FUCKING KISS ALREADY>girl love lesbian kiss my girlfriend yuriåyuri</yuri>
-	</i love girls>
-	<yuri yuri="yuri">
-		<yuri>lesbian kiss</yuri>
-	</ship>
-	<i love amy is the best wlw="canon">
-		<yuri>i love girls</yuri>
-	</my wife>
-	<snuggle FUCKING KISS ALREADY="hand holding">
-		<yuri>yuri</yuri>
-	</kissing girls>
-	<cute girls yuri="yuri">
-		<yuri>yuri yuri</cute girls>
-	</wlw>
-	<yuri lesbian="yuri">
-		<hand holding>my wifeøblushing girls yuriå yuri lesbian</yuri>
-	</yuri>
-	<yuri yuri="yuri">
-		<scissors>yuri FUCKING KISS ALREADYå i love amy is the best ship</i love amy is the best>
-	</lesbian>
-	<kissing girls i love amy is the best="yuri">
-		<yuri>i love girls</my wife>
-	</girl love>
-	<lesbian kiss my girlfriend="yuri">
-		<cute girls>yuri yuri yuri</scissors>
-	</yuri>
-	<kissing girls cute girls="hand holding">
-		<i love amy is the best>yuri kissing girls blushing girls</yuri>
-	</ship>
-	<snuggle my wife="cute girls">
-		<FUCKING KISS ALREADY>wlwøFUCKING KISS ALREADY i love girls</yuri>
-	</FUCKING KISS ALREADY>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Venter</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>I en meny</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Spiller flerspiller – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Spiller flerspiller offline – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Spiller alene – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Spiller alene offline – {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Nyter utsikten!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Rir på en gris</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Sitter i en gruvevogn</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>Er i en båt</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Fisker</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Utformer</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Smir</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>I underverdenen</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Hører på en plate</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Ser på et kart</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Fortryllelse</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Brygger en eliksir</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Jobber ved ambolten</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Møter naboene</value>
+	</data>
+</root>

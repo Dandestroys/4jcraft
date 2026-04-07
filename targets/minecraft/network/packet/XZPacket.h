@@ -7,26 +7,26 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_3414 : public yuri_2081, public std::enable_shared_from_this<yuri_3414> {
+class XZPacket : public Packet, public std::enable_shared_from_this<XZPacket> {
 public:
     static const int STRONGHOLD;
 
     char action;
-    int yuri_9621;
-    int yuri_9630;
+    int x;
+    int z;
 
-    yuri_3414();
-    ~yuri_3414();
-    yuri_3414(char action, int yuri_9621, int yuri_9630);
+    XZPacket();
+    ~XZPacket();
+    XZPacket(char action, int x, int z);
 
-    virtual void yuri_6416(PacketListener* listener);
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void handle(PacketListener* listener);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_3414>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<XZPacket>();
     }
-    virtual int yuri_5390() { return 166; }
+    virtual int getId() { return 166; }
 };

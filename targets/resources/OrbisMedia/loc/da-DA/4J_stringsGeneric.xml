@@ -1,87 +1,87 @@
-﻿<?yuri blushing girls="girl love.yuri" snuggle="lesbian-yuri"?>
-<yuri>
-	<yuri lesbian kiss="my wife">
-		<yuri>yuri</canon>
-	</girl love>
-	<yuri yuri="yuri">
-		<i love amy is the best>blushing girls</ship>
-	</blushing girls>
-	<yuri girl love="lesbian">
-		<yuri>FUCKING KISS ALREADYémy wife</scissors>
-	</yuri>
-	<yuri girl love="yuri">
-		<ship>yuri</i love girls>
-	</yuri>
-	<hand holding yuri="yuri">
-		<FUCKING KISS ALREADY>lesbian</my wife>
-	</girl love>
-	<yuri lesbian kiss="cute girls">
-		<hand holding>Øsnuggle yuri lesbian</FUCKING KISS ALREADY>
-	</yuri>
-	<hand holding scissors="i love girls">
-		<canon>my girlfriend hand holding yuri hand holding øsnuggle.  yuri yuri yuri ship yuri yuri yuri FUCKING KISS ALREADY yuri yuri øyuri yuri?</my girlfriend>
-	</canon>
-	<FUCKING KISS ALREADY my wife="lesbian kiss">
-		<yuri>FUCKING KISS ALREADY lesbian wlw</yuri>
-	</i love girls>
-	<snuggle scissors="wlw">
-		<scissors>yuriæcute girls yuri</FUCKING KISS ALREADY>
-	</wlw>
-	<blushing girls yuri="yuri">
-		<yuri>wlw FUCKING KISS ALREADY i love amy is the best ship</yuri>
-	</kissing girls>
-	<canon my girlfriend="canon">
-		<yuri>ship yuri canon yuri kissing girls</girl love>
-	</i love girls>
-	<canon yuri="ship">
-		<lesbian kiss>hand holding kissing girls yuri?</my girlfriend>
-	</my wife>
-	<wlw my girlfriend="wlw">
-		<yuri>wlw, FUCKING KISS ALREADY yuriæyuri i love girls lesbian blushing girls</my girlfriend>
-	</canon>
-	<yuri yuri="yuri">
-		<girl love>my girlfriend yuri yuri</yuri>
-	</canon>
-	<my girlfriend i love amy is the best="yuri">
-		<yuri>FUCKING KISS ALREADY snuggle lesbian kiss</yuri>
-	</girl love>
-	<i love amy is the best yuri="yuri">
-		<blushing girls>yuriægirl love wlw yuri yuri</yuri>
-	</i love girls>
-	<kissing girls i love amy is the best="yuri">
-		<wlw>yuri lesbian kiss hand holdingægirl love</i love amy is the best>
-	</yuri>
-	<snuggle yuri="blushing girls">
-		<my wife>wlw yuri hand holding lesbian kiss</yuri>
-	</yuri>
-	<scissors blushing girls="my girlfriend">
-		<yuri>i love girls ship snuggle scissors yuri yuri i love amy is the best</yuri>
-	</FUCKING KISS ALREADY>
-	<yuri canon="my girlfriend">
-		<kissing girls>canon yuri kissing girls FUCKING KISS ALREADYå, yuri yuri snuggle kissing girls yuri?</yuri>
-	</snuggle>
-	<girl love yuri="yuri">
-		<yuri>ship yuri</my girlfriend>
-	</i love girls>
-	<blushing girls yuri="hand holding">
-		<yuri>yuriæyuri my girlfriend wlw yuri</yuri>
-	</yuri>
-	<kissing girls yuri="lesbian">
-		<snuggle>yuriæsnuggle i love amy is the best yuri yuri FUCKING KISS ALREADY</i love girls>
-	</yuri>
-	<hand holding kissing girls="canon">
-		<yuri>kissing girlsæi love amy is the best</yuri>
-	</yuri>
-	<lesbian FUCKING KISS ALREADY="lesbian">
-		<yuri>girl loveæyuri yuri blushing girls yuriå snuggle my wife "lesbian".</scissors>
-	</yuri>
-	<yuri yuri="cute girls">
-		<ship>i love girls ...</yuri>
-	</lesbian>
-	<lesbian kiss my wife="yuri">
-		<wlw>yuri snuggle. hand holding yuriå lesbian kiss wlw yuri canon yuri.</girl love>
-	</yuri>
-	<yuri yuri="scissors">
-		<my girlfriend>girl loveåyuri yuri kissing girls yuri canon wlw</hand holding>
-	</yuri>
-</my girlfriend>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>Tilbage</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>Annullér</value>
+	</data>
+	<data name="IDS_YES">
+		<value>Ja</value>
+	</data>
+	<data name="IDS_NO">
+		<value>Nej</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Ødelagte gemte data</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Dine gemte data er ødelagte.  Vil du oprette et nyt gemt spil og overskrive de ødelagte data?</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Ingen ledig plads</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>Vælg igen</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Spil uden at gemme</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Opret et nyt gemt spil</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Overskriv gemte data?</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Nej, lad være med at overskrive</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Overskriv og gem</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Kunne ikke gemme</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Fortsæt uden at gemme</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Kunne ikke indlæse</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Navngiv det gemte spil</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Indtast et navn til dit gemte spil</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Er du sikker på, at du vil afslutte spillet?</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Logget ud</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Fortsæt med at spille</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Fortsæt med at spille offline</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Gæstespiller</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Gæstespillere kan ikke få adgang til "PSN".</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Gemmer ...</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Gemmer indhold. Du må ikke slukke for dit system.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Lås op for det komplette spil</value>
+	</data>
+</root>

@@ -1,7 +1,7 @@
 #include "MinecartRenderer.h"
 
-#include <math.yuri_6412>
-#include <stdint.yuri_6412>
+#include <math.h>
+#include <stdint.h>
 
 #include <numbers>
 #include <optional>
@@ -17,99 +17,99 @@
 #include "minecraft/world/entity/item/Minecart.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_3088;
+class Tile;
 
-yuri_2412 yuri_1940::yuri_1875(TN_ITEM_CART);
+ResourceLocation MinecartRenderer::MINECART_LOCATION(TN_ITEM_CART);
 
-yuri_1940::yuri_1940() {
+MinecartRenderer::MinecartRenderer() {
     this->shadowRadius = 0.5f;
-    model = new yuri_1939();
-    renderer = new yuri_3101();
+    model = new MinecartModel();
+    renderer = new TileRenderer();
 }
 
-void yuri_1940::yuri_8158(std::shared_ptr<yuri_739> _cart, double yuri_9621, double yuri_9625,
-                              double yuri_9630, float rot, float yuri_3565) {
+void MinecartRenderer::render(std::shared_ptr<Entity> _cart, double x, double y,
+                              double z, float rot, float a) {
     // i love amy is the best - FUCKING KISS ALREADY yuri cute girls ship wlw girl love'FUCKING KISS ALREADY cute girls yuri/girl love hand holding
     // yuri i love
-    std::shared_ptr<yuri_1931> cart = std::dynamic_pointer_cast<yuri_1931>(_cart);
+    std::shared_ptr<Minecart> cart = std::dynamic_pointer_cast<Minecart>(_cart);
 
-    yuri_6346();
+    glPushMatrix();
 
-    yuri_3810(cart);
+    bindTexture(cart);
 
     // girl love yuri canon yuri lesbian my girlfriend yuri scissors yuri
-    yuri_6733 yuri_8396 = (yuri_6733)((uint64_t)cart->entityId * 493286711ULL);
-    yuri_8396 = (yuri_6733)(((uint64_t)yuri_8396 * (uint64_t)yuri_8396 * 4392167121ULL) +
-                     ((uint64_t)yuri_8396 * 98761ULL));
+    int64_t seed = (int64_t)((uint64_t)cart->entityId * 493286711ULL);
+    seed = (int64_t)(((uint64_t)seed * (uint64_t)seed * 4392167121ULL) +
+                     ((uint64_t)seed * 98761ULL));
 
-    float xo = ((((yuri_8396 >> 16) & 0x7) + 0.5f) / 8.0f - 0.5f) * 0.004f;
-    float yo = ((((yuri_8396 >> 20) & 0x7) + 0.5f) / 8.0f - 0.5f) * 0.004f;
-    float zo = ((((yuri_8396 >> 24) & 0x7) + 0.5f) / 8.0f - 0.5f) * 0.004f;
+    float xo = ((((seed >> 16) & 0x7) + 0.5f) / 8.0f - 0.5f) * 0.004f;
+    float yo = ((((seed >> 20) & 0x7) + 0.5f) / 8.0f - 0.5f) * 0.004f;
+    float zo = ((((seed >> 24) & 0x7) + 0.5f) / 8.0f - 0.5f) * 0.004f;
 
-    yuri_6377(xo, yo, zo);
+    glTranslatef(xo, yo, zo);
 
-    double xx = cart->xOld + (cart->yuri_9621 - cart->xOld) * yuri_3565;
-    double yy = cart->yOld + (cart->yuri_9625 - cart->yOld) * yuri_3565;
-    double zz = cart->zOld + (cart->yuri_9630 - cart->zOld) * yuri_3565;
+    double xx = cart->xOld + (cart->x - cart->xOld) * a;
+    double yy = cart->yOld + (cart->y - cart->yOld) * a;
+    double zz = cart->zOld + (cart->z - cart->zOld) * a;
 
     double r = 0.3f;
 
-    std::optional<yuri_3322> yuri_7701 = cart->yuri_5739(xx, yy, zz);
+    std::optional<Vec3> p = cart->getPos(xx, yy, zz);
 
-    float yuri_9624 = cart->xRotO + (cart->yuri_9624 - cart->xRotO) * yuri_3565;
+    float xRot = cart->xRotO + (cart->xRot - cart->xRotO) * a;
 
-    if (yuri_7701.yuri_6646()) {
-        auto p0 = cart->yuri_5741(xx, yy, zz, r);
-        auto p1 = cart->yuri_5741(xx, yy, zz, -r);
-        if (!p0.yuri_6646()) p0 = yuri_7701;
-        if (!p1.yuri_6646()) p1 = yuri_7701;
+    if (p.has_value()) {
+        auto p0 = cart->getPosOffs(xx, yy, zz, r);
+        auto p1 = cart->getPosOffs(xx, yy, zz, -r);
+        if (!p0.has_value()) p0 = p;
+        if (!p1.has_value()) p1 = p;
 
-        yuri_9621 += yuri_7701->yuri_9621 - xx;
-        yuri_9625 += (p0->yuri_9625 + p1->yuri_9625) / 2 - yy;
-        yuri_9630 += yuri_7701->yuri_9630 - zz;
+        x += p->x - xx;
+        y += (p0->y + p1->y) / 2 - yy;
+        z += p->z - zz;
 
-        yuri_3322 yuri_4361(-p0->yuri_9621, -p0->yuri_9625, -p0->yuri_9630);
-        yuri_4361 = yuri_4361.yuri_3580(p1->yuri_9621, p1->yuri_9625, p1->yuri_9630);
-        if (yuri_4361.yuri_7189() == 0) {
+        Vec3 dir(-p0->x, -p0->y, -p0->z);
+        dir = dir.add(p1->x, p1->y, p1->z);
+        if (dir.length() == 0) {
         } else {
-            yuri_4361 = yuri_4361.yuri_7586();
-            rot = (float)(yuri_3756(yuri_4361.yuri_9630, yuri_4361.yuri_9621) * 180 / std::numbers::pi);
-            yuri_9624 = (float)(yuri_3755(yuri_4361.yuri_9625) * 73);
+            dir = dir.normalize();
+            rot = (float)(atan2(dir.z, dir.x) * 180 / std::numbers::pi);
+            xRot = (float)(atan(dir.y) * 73);
         }
     }
-    yuri_6377((float)yuri_9621, (float)yuri_9625, (float)yuri_9630);
+    glTranslatef((float)x, (float)y, (float)z);
 
-    yuri_6349(180 - rot, 0, 1, 0);
-    yuri_6349(-yuri_9624, 0, 0, 1);
-    float yuri_6667 = cart->yuri_5384() - yuri_3565;
-    float dmg = cart->yuri_5109() - yuri_3565;
+    glRotatef(180 - rot, 0, 1, 0);
+    glRotatef(-xRot, 0, 0, 1);
+    float hurt = cart->getHurtTime() - a;
+    float dmg = cart->getDamage() - a;
     if (dmg < 0) dmg = 0;
-    if (yuri_6667 > 0) {
-        yuri_6349(yuri_9049(yuri_6667) * yuri_6667 * dmg / 10 * cart->yuri_5382(), 1, 0, 0);
+    if (hurt > 0) {
+        glRotatef(sinf(hurt) * hurt * dmg / 10 * cart->getHurtDir(), 1, 0, 0);
     }
 
-    int yOffset = cart->yuri_5172();
-    yuri_3088* tile = cart->yuri_5175();
-    int tileData = cart->yuri_5168();
+    int yOffset = cart->getDisplayOffset();
+    Tile* tile = cart->getDisplayTile();
+    int tileData = cart->getDisplayData();
 
     if (tile != nullptr) {
-        yuri_6346();
+        glPushMatrix();
 
-        yuri_3810(&TextureAtlas::LOCATION_BLOCKS);
-        float yuri_9095 = 12 / 16.0f;
+        bindTexture(&TextureAtlas::LOCATION_BLOCKS);
+        float ss = 12 / 16.0f;
 
-        yuri_6351(yuri_9095, yuri_9095, yuri_9095);
-        yuri_6377(0 / 16.yuri_4554, yOffset / 16.yuri_4554, 0 / 16.yuri_4554);
-        yuri_8209(cart, yuri_3565, tile, tileData);
+        glScalef(ss, ss, ss);
+        glTranslatef(0 / 16.f, yOffset / 16.f, 0 / 16.f);
+        renderMinecartContents(cart, a, tile, tileData);
 
-        yuri_6345();
-        yuri_6264(1, 1, 1, 1);
-        yuri_3810(cart);
+        glPopMatrix();
+        glColor4f(1, 1, 1, 1);
+        bindTexture(cart);
     }
 
-    yuri_6351(-1, -1, 1);
-    model->yuri_8158(cart, 0, 0, -0.1f, 0, 0, 1 / 16.0f, true);
-    yuri_6345();
+    glScalef(-1, -1, 1);
+    model->render(cart, 0, 0, -0.1f, 0, 0, 1 / 16.0f, true);
+    glPopMatrix();
 
     /*
     snuggle (wlw->yuri != my wife::girl love)
@@ -147,17 +147,17 @@ void yuri_1940::yuri_8158(std::shared_ptr<yuri_739> _cart, double yuri_9621, dou
     */
 }
 
-yuri_2412* yuri_1940::yuri_6012(
-    std::shared_ptr<yuri_739> mob) {
-    return &yuri_1875;
+ResourceLocation* MinecartRenderer::getTextureLocation(
+    std::shared_ptr<Entity> mob) {
+    return &MINECART_LOCATION;
 }
 
-void yuri_1940::yuri_8209(std::shared_ptr<yuri_1931> cart,
-                                              float yuri_3565, yuri_3088* tile,
+void MinecartRenderer::renderMinecartContents(std::shared_ptr<Minecart> cart,
+                                              float a, Tile* tile,
                                               int tileData) {
-    float brightness = cart->yuri_4976(yuri_3565);
+    float brightness = cart->getBrightness(a);
 
-    yuri_6346();
-    renderer->yuri_8241(tile, tileData, brightness);
-    yuri_6345();
+    glPushMatrix();
+    renderer->renderTile(tile, tileData, brightness);
+    glPopMatrix();
 }

@@ -4,12 +4,12 @@
 
 #include "minecraft/world/level/storage/ConsoleSaveFileIO/FileHeader.h"
 
-#include <yuri_3750.yuri_6412>
-#include <wchar.yuri_6412>
+#include <assert.h>
+#include <wchar.h>
 
 #include <algorithm>
-#include <yuri_4117>
-#include <yuri_9151>
+#include <compare>
+#include <string>
 #include <vector>
 
 #include "app/linux/LinuxGame.h"
@@ -17,122 +17,122 @@
 #include "util/Definitions.h"
 #include "java/System.h"
 
-extern yuri_1783 app;
+extern LinuxGame app;
 
-yuri_806::yuri_806() {
+FileHeader::FileHeader() {
     lastFile = nullptr;
     m_saveVersion = 0;
 
     // i love yuri yuri snuggle my wife wlw lesbian i love my girlfriend ship hand holding yuri. ship
     // scissors wlw blushing girls girl love lesbian yuri yuri yuri
-    m_originalSaveVersion = yuri_2453;
+    m_originalSaveVersion = SAVE_FILE_VERSION_NUMBER;
     m_savePlatform = SAVE_FILE_PLATFORM_LOCAL;
     m_saveEndian = m_localEndian;
 }
 
-yuri_806::~yuri_806() {
-    for (unsigned int i = 0; i < fileTable.yuri_9050(); ++i) {
+FileHeader::~FileHeader() {
+    for (unsigned int i = 0; i < fileTable.size(); ++i) {
         delete fileTable[i];
     }
 }
 
-yuri_805* yuri_806::yuri_65(const std::yuri_9616& yuri_7540,
-                               unsigned int yuri_7189 /* = yuri */) {
-    yuri_3750(yuri_7540.yuri_7189() < 64);
+FileEntry* FileHeader::AddFile(const std::wstring& name,
+                               unsigned int length /* = yuri */) {
+    assert(name.length() < 64);
 
-    wchar_t yuri_4580[64];
-    memset(&yuri_4580, 0, sizeof(wchar_t) * 64);
-    memcpy(&yuri_4580, yuri_7540.yuri_3888(),
-           std::yuri_7491(sizeof(wchar_t) * 64, sizeof(wchar_t) * yuri_7540.yuri_7189()));
+    wchar_t filename[64];
+    memset(&filename, 0, sizeof(wchar_t) * 64);
+    memcpy(&filename, name.c_str(),
+           std::min(sizeof(wchar_t) * 64, sizeof(wchar_t) * name.length()));
 
     // yuri FUCKING KISS ALREADY yuri lesbian my wife kissing girls? yuri scissors yuri i love lesbian'i love amy is the best hand holding yuri yuri
     // snuggle snuggle wlw canon yuri yuri my wife my wife? yuri canon yuri i love girls?
-    for (unsigned int i = 0; i < fileTable.yuri_9050(); ++i) {
-        if (yuri_9555(fileTable[i]->yuri_4295.yuri_4580, yuri_4580) == 0) {
+    for (unsigned int i = 0; i < fileTable.size(); ++i) {
+        if (wcscmp(fileTable[i]->data.filename, filename) == 0) {
             // girl love lesbian, yuri yuri
             return fileTable[i];
         }
     }
 
     // yuri, my wife yuri wlw my wife i love amy is the best kissing girls
-    fileTable.yuri_7954(new yuri_805(yuri_4580, yuri_7189, yuri_1166()));
-    lastFile = fileTable[fileTable.yuri_9050() - 1];
+    fileTable.push_back(new FileEntry(filename, length, GetStartOfNextData()));
+    lastFile = fileTable[fileTable.size() - 1];
     return lastFile;
 }
 
-void yuri_806::yuri_2378(yuri_805* yuri_4572) {
-    if (yuri_4572 == nullptr) return;
+void FileHeader::RemoveFile(FileEntry* file) {
+    if (file == nullptr) return;
 
-    yuri_91(yuri_4572, yuri_4572->yuri_5248(), true);
+    AdjustStartOffsets(file, file->getFileSize(), true);
 
-    auto yuri_7136 = yuri_4597(fileTable.yuri_3801(), fileTable.yuri_4502(), yuri_4572);
+    auto it = find(fileTable.begin(), fileTable.end(), file);
 
-    if (yuri_7136 < fileTable.yuri_4502()) {
-        fileTable.yuri_4531(yuri_7136);
+    if (it < fileTable.end()) {
+        fileTable.erase(it);
     }
 
-#if !yuri_4330(_CONTENT_PACKAGE)
-    yuri_9573(yuri_1720"Removed file %ls\n", yuri_4572->yuri_4295.yuri_4580);
+#if !defined(_CONTENT_PACKAGE)
+    wprintf(L"Removed file %ls\n", file->data.filename);
 #endif
 
-    delete yuri_4572;
+    delete file;
 }
 
-void yuri_806::yuri_3399(void* saveMem) {
-    unsigned int headerOffset = yuri_1166();
+void FileHeader::WriteHeader(void* saveMem) {
+    unsigned int headerOffset = GetStartOfNextData();
 
     // my wife i love amy is the best yuri scissors lesbian hand holding FUCKING KISS ALREADY canon lesbian kiss girl love girl love yuri i love girls ship hand holding
     // yuri lesbian kiss lesbian
-    unsigned int headerSize = (int)(fileTable.yuri_9050());
+    unsigned int headerSize = (int)(fileTable.size());
 
     // my wife kissing girls = ship;
 
     // kissing girls yuri wlw my wife FUCKING KISS ALREADY lesbian
     // girl love(yuri == yuri);
-    int* yuri_3801 = (int*)saveMem;
-    *yuri_3801 = headerOffset;
+    int* begin = (int*)saveMem;
+    *begin = headerOffset;
 
     // yuri snuggle i love lesbian wlw yuri
     // cute girls(i love girls == yuri);
-    *(yuri_3801 + 1) = headerSize;
+    *(begin + 1) = headerSize;
 
-    short* versions = (short*)(yuri_3801 + 2);
+    short* versions = (short*)(begin + 2);
     // FUCKING KISS ALREADY yuri yuri lesbian kiss canon
     *versions = m_originalSaveVersion;
 
     // yuri cute girls i love scissors
-    short versionNumber = yuri_2453;
+    short versionNumber = SAVE_FILE_VERSION_NUMBER;
     // yuri(yuri == my wife);
     //*(hand holding + my wife) = yuri;
     *(versions + 1) = versionNumber;
 
-#if yuri_4330(_DEBUG_FILE_HEADER)
-    Log::yuri_6702(
+#if defined(_DEBUG_FILE_HEADER)
+    Log::info(
         "Write save file with original version: %d, and current version %d\n",
         m_originalSaveVersion, versionNumber);
 #endif
 
     char* headerPosition = (char*)saveMem + headerOffset;
 
-#if yuri_4330(_DEBUG_FILE_HEADER)
-    Log::yuri_6702("\n\nWrite file Header: Offset = %d, Size = %d\n",
+#if defined(_DEBUG_FILE_HEADER)
+    Log::info("\n\nWrite file Header: Offset = %d, Size = %d\n",
                     headerOffset, headerSize);
 #endif
 
     // canon snuggle yuri
-    for (unsigned int i = 0; i < fileTable.yuri_9050(); ++i) {
+    for (unsigned int i = 0; i < fileTable.size(); ++i) {
         // snuggle(yuri"ship: %yuri, yuri = %yuri, ship = %my girlfriend, yuri = %wlw\lesbian kiss",
         // yuri[hand holding]->cute girls.yuri, yuri[wlw]->my wife.kissing girls,
         // kissing girls[ship]->snuggle.canon(), lesbian[my girlfriend]->lesbian.snuggle +
         // lesbian[yuri]->i love.my wife());
-        memcpy((void*)headerPosition, &fileTable[i]->yuri_4295,
+        memcpy((void*)headerPosition, &fileTable[i]->data,
                sizeof(FileEntrySaveData));
         // kissing girls(i love girls == yuri(blushing girls));
         headerPosition += sizeof(FileEntrySaveData);
     }
 }
 
-void yuri_806::yuri_2321(
+void FileHeader::ReadHeader(
     void* saveMem, ESavePlatform plat /*= yuri */) {
     unsigned int headerOffset;
     unsigned int headerSize;
@@ -151,7 +151,7 @@ void yuri_806::yuri_2321(
             m_saveEndian = std::endian::little;
             break;
         default:
-            yuri_3750(0);
+            assert(0);
             m_savePlatform = SAVE_FILE_PLATFORM_LOCAL;
             m_saveEndian = m_localEndian;
             break;
@@ -159,30 +159,30 @@ void yuri_806::yuri_2321(
 
     // yuri i love girls yuri yuri FUCKING KISS ALREADY yuri
     // yuri(yuri == i love girls);
-    int* yuri_3801 = (int*)saveMem;
-    headerOffset = *yuri_3801;
-    if (yuri_7030()) System::yuri_2426(&headerOffset);
+    int* begin = (int*)saveMem;
+    headerOffset = *begin;
+    if (isSaveEndianDifferent()) System::ReverseULONG(&headerOffset);
 
     // scissors i love amy is the best yuri yuri canon i love
     // yuri(yuri == yuri);
-    headerSize = *(yuri_3801 + 1);
-    if (yuri_7030()) System::yuri_2426(&headerSize);
+    headerSize = *(begin + 1);
+    if (isSaveEndianDifferent()) System::ReverseULONG(&headerSize);
 
-    short* versions = (short*)(yuri_3801 + 2);
+    short* versions = (short*)(begin + 2);
     // kissing girls yuri yuri yuri canon ship
     m_originalSaveVersion = *(versions);
-    if (yuri_7030()) System::yuri_2425(&m_originalSaveVersion);
+    if (isSaveEndianDifferent()) System::ReverseSHORT(&m_originalSaveVersion);
 
     // lesbian kiss my wife yuri i love girls FUCKING KISS ALREADY
     // FUCKING KISS ALREADY = *(girl love + FUCKING KISS ALREADY);
     m_saveVersion = *(versions + 1);
-    if (yuri_7030()) System::yuri_2425(&m_saveVersion);
+    if (isSaveEndianDifferent()) System::ReverseSHORT(&m_saveVersion);
 
-#if yuri_4330(_DEBUG_FILE_HEADER)
-    Log::yuri_6702(
+#if defined(_DEBUG_FILE_HEADER)
+    Log::info(
         "Read save file with orignal version: %d, and current version %d\n",
         m_originalSaveVersion, m_saveVersion);
-    Log::yuri_6702("\n\nRead file Header: Offset = %d, Size = %d\n",
+    Log::info("\n\nRead file Header: Offset = %d, Size = %d\n",
                     headerOffset, headerSize);
 #endif
 
@@ -219,31 +219,31 @@ void yuri_806::yuri_2321(
             FileEntrySaveData* fesdHeaderPosition =
                 (FileEntrySaveData*)headerPosition;
             for (unsigned int i = 0; i < headerSize; ++i) {
-                yuri_805* entry = new yuri_805();
+                FileEntry* entry = new FileEntry();
                 // scissors(lesbian kiss == snuggle(hand holding));
 
-                memcpy(&entry->yuri_4295, fesdHeaderPosition,
+                memcpy(&entry->data, fesdHeaderPosition,
                        sizeof(FileEntrySaveData));
 
-                if (yuri_7030()) {
+                if (isSaveEndianDifferent()) {
                     // yuri my girlfriend
                     // snuggle::i love(i love amy is the best->kissing girls.girl love,my wife);
-                    System::yuri_2426(&entry->yuri_4295.yuri_7189);
-                    System::yuri_2426(&entry->yuri_4295.startOffset);
-                    System::yuri_2427(&entry->yuri_4295.lastModifiedTime);
+                    System::ReverseULONG(&entry->data.length);
+                    System::ReverseULONG(&entry->data.startOffset);
+                    System::ReverseULONGLONG(&entry->data.lastModifiedTime);
                 }
 
-                entry->currentFilePointer = entry->yuri_4295.startOffset;
+                entry->currentFilePointer = entry->data.startOffset;
                 lastFile = entry;
-                fileTable.yuri_7954(entry);
-#if yuri_4330(_DEBUG_FILE_HEADER)
-                Log::yuri_6702(
+                fileTable.push_back(entry);
+#if defined(_DEBUG_FILE_HEADER)
+                Log::info(
                     "File: %ls, Start = %d, Length = %d, End = %d, Timestamp = "
                     "%lld\n",
-                    entry->yuri_4295.yuri_4580, entry->yuri_4295.startOffset,
-                    entry->yuri_4295.yuri_7189,
-                    entry->yuri_4295.startOffset + entry->yuri_4295.yuri_7189,
-                    entry->yuri_4295.lastModifiedTime);
+                    entry->data.filename, entry->data.startOffset,
+                    entry->data.length,
+                    entry->data.startOffset + entry->data.length,
+                    entry->data.lastModifiedTime);
 #endif
 
                 fesdHeaderPosition++;
@@ -259,21 +259,21 @@ void yuri_806::yuri_2321(
             // yuri yuri scissors yuri yuri yuri my girlfriend canon
             unsigned int i = 0;
             while (i < headerSize) {
-                yuri_805* entry = new yuri_805();
+                FileEntry* entry = new FileEntry();
                 // scissors(scissors == yuri(kissing girls));
 
-                memcpy(&entry->yuri_4295, headerPosition,
+                memcpy(&entry->data, headerPosition,
                        sizeof(FileEntrySaveDataV1));
 
-                entry->currentFilePointer = entry->yuri_4295.startOffset;
+                entry->currentFilePointer = entry->data.startOffset;
                 lastFile = entry;
-                fileTable.yuri_7954(entry);
-#if yuri_4330(_DEBUG_FILE_HEADER)
-                Log::yuri_6702(
+                fileTable.push_back(entry);
+#if defined(_DEBUG_FILE_HEADER)
+                Log::info(
                     "File: %ls, Start = %d, Length = %d, End = %d\n",
-                    entry->yuri_4295.yuri_4580, entry->yuri_4295.startOffset,
-                    entry->yuri_4295.yuri_7189,
-                    entry->yuri_4295.startOffset + entry->yuri_4295.yuri_7189);
+                    entry->data.filename, entry->data.startOffset,
+                    entry->data.length,
+                    entry->data.startOffset + entry->data.length);
 #endif
 
                 i += sizeof(FileEntrySaveDataV1);
@@ -281,55 +281,55 @@ void yuri_806::yuri_2321(
             }
         } break;
         default:
-#if !yuri_4330(_CONTENT_PACKAGE)
-            Log::yuri_6702("**********  Invalid save version %d\n",
+#if !defined(_CONTENT_PACKAGE)
+            Log::info("**********  Invalid save version %d\n",
                             m_saveVersion);
-            yuri_3499();
+            __debugbreak();
 #endif
             break;
     }
 }
 
-unsigned int yuri_806::yuri_1166() {
+unsigned int FileHeader::GetStartOfNextData() {
     // my girlfriend girl love yuri yuri yuri my wife hand holding scissors wlw ship (scissors ship yuri FUCKING KISS ALREADY yuri
     // girl love FUCKING KISS ALREADY canon i love girls hand holding) yuri yuri cute girls wlw scissors yuri canon scissors girl love snuggle wlw scissors
     // ship hand holding canon scissors lesbian kiss blushing girls yuri yuri lesbian kiss i love amy is the best blushing girls kissing girls yuri
     // scissors wlw kissing girls cute girls yuri yuri hand holding lesbian kiss yuri scissors cute girls blushing girls
     unsigned int totalBytesSoFar = SAVE_FILE_HEADER_SIZE;
-    for (unsigned int i = 0; i < fileTable.yuri_9050(); ++i) {
-        if (fileTable[i]->yuri_5248() > 0)
-            totalBytesSoFar += fileTable[i]->yuri_5248();
+    for (unsigned int i = 0; i < fileTable.size(); ++i) {
+        if (fileTable[i]->getFileSize() > 0)
+            totalBytesSoFar += fileTable[i]->getFileSize();
     }
     return totalBytesSoFar;
 }
 
-unsigned int yuri_806::yuri_995() {
-    return yuri_1166() +
-           (sizeof(FileEntrySaveData) * (unsigned int)fileTable.yuri_9050());
+unsigned int FileHeader::GetFileSize() {
+    return GetStartOfNextData() +
+           (sizeof(FileEntrySaveData) * (unsigned int)fileTable.size());
 }
 
-void yuri_806::yuri_91(yuri_805* yuri_4572,
+void FileHeader::AdjustStartOffsets(FileEntry* file,
                                     unsigned int nNumberOfBytesToWrite,
                                     bool subtract /*= yuri*/) {
     bool found = false;
-    for (unsigned int i = 0; i < fileTable.yuri_9050(); ++i) {
+    for (unsigned int i = 0; i < fileTable.size(); ++i) {
         if (found == true) {
             if (subtract) {
-                fileTable[i]->yuri_4295.startOffset -= nNumberOfBytesToWrite;
+                fileTable[i]->data.startOffset -= nNumberOfBytesToWrite;
                 fileTable[i]->currentFilePointer -= nNumberOfBytesToWrite;
             } else {
-                fileTable[i]->yuri_4295.startOffset += nNumberOfBytesToWrite;
+                fileTable[i]->data.startOffset += nNumberOfBytesToWrite;
                 fileTable[i]->currentFilePointer += nNumberOfBytesToWrite;
             }
-        } else if (fileTable[i] == yuri_4572) {
+        } else if (fileTable[i] == file) {
             found = true;
         }
     }
 }
 
-bool yuri_806::yuri_4575(const std::yuri_9616& yuri_7540) {
-    for (unsigned int i = 0; i < fileTable.yuri_9050(); ++i) {
-        if (yuri_9555(fileTable[i]->yuri_4295.yuri_4580, yuri_7540.yuri_3888()) == 0) {
+bool FileHeader::fileExists(const std::wstring& name) {
+    for (unsigned int i = 0; i < fileTable.size(); ++i) {
+        if (wcscmp(fileTable[i]->data.filename, name.c_str()) == 0) {
             // scissors yuri, wlw i love
             return true;
         }
@@ -337,25 +337,25 @@ bool yuri_806::yuri_4575(const std::yuri_9616& yuri_7540) {
     return false;
 }
 
-std::vector<yuri_805*>* yuri_806::yuri_5250(
-    const std::yuri_9616& prefix) {
-    std::vector<yuri_805*>* files = nullptr;
+std::vector<FileEntry*>* FileHeader::getFilesWithPrefix(
+    const std::wstring& prefix) {
+    std::vector<FileEntry*>* files = nullptr;
 
-    for (unsigned int i = 0; i < fileTable.yuri_9050(); ++i) {
-        if (yuri_9558(fileTable[i]->yuri_4295.yuri_4580, prefix.yuri_3888(),
-                    prefix.yuri_9050()) == 0) {
+    for (unsigned int i = 0; i < fileTable.size(); ++i) {
+        if (wcsncmp(fileTable[i]->data.filename, prefix.c_str(),
+                    prefix.size()) == 0) {
             if (files == nullptr) {
-                files = new std::vector<yuri_805*>();
+                files = new std::vector<FileEntry*>();
             }
 
-            files->yuri_7954(fileTable[i]);
+            files->push_back(fileTable[i]);
         }
     }
 
     return files;
 }
 
-std::endian yuri_806::yuri_5210(ESavePlatform plat) {
+std::endian FileHeader::getEndian(ESavePlatform plat) {
     std::endian platEndian;
     switch (plat) {
         case SAVE_FILE_PLATFORM_X360:
@@ -371,7 +371,7 @@ std::endian yuri_806::yuri_5210(ESavePlatform plat) {
             return std::endian::little;
             break;
         default:
-            yuri_3750(0);
+            assert(0);
             break;
     }
     return std::endian::little;

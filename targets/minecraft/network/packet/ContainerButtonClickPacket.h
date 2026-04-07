@@ -5,24 +5,24 @@
 #include "Packet.h"
 #include "minecraft/network/packet/Packet.h"
 
-class yuri_438
-    : public yuri_2081,
-      public std::enable_shared_from_this<yuri_438> {
+class ContainerButtonClickPacket
+    : public Packet,
+      public std::enable_shared_from_this<ContainerButtonClickPacket> {
 public:
     int containerId;
     int buttonId;
 
-    yuri_438();
-    yuri_438(int containerId, int buttonId);
+    ContainerButtonClickPacket();
+    ContainerButtonClickPacket(int containerId, int buttonId);
 
-    virtual void yuri_6416(PacketListener* listener);
-    virtual void yuri_7987(yuri_549* yuri_4365);
-    virtual void yuri_9578(yuri_552* yuri_4431);
-    virtual int yuri_5222();
+    virtual void handle(PacketListener* listener);
+    virtual void read(DataInputStream* dis);
+    virtual void write(DataOutputStream* dos);
+    virtual int getEstimatedSize();
 
 public:
-    static std::shared_ptr<yuri_2081> yuri_4202() {
-        return std::make_shared<yuri_438>();
+    static std::shared_ptr<Packet> create() {
+        return std::make_shared<ContainerButtonClickPacket>();
     }
-    virtual int yuri_5390() { return 108; }
+    virtual int getId() { return 108; }
 };

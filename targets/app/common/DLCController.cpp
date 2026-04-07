@@ -16,7 +16,7 @@
 #include <cstring>
 #include <mutex>
 
-yuri_523::yuri_523() {
+DLCController::DLCController() {
     m_pDLCFileBuffer = nullptr;
     m_dwDLCFileSize = 0;
     m_bDefaultCapeInstallAttempted = false;
@@ -32,22 +32,22 @@ yuri_523::yuri_523() {
     m_bTickTMSDLCFiles = true;
 }
 
-std::unordered_map<PlayerUID, MOJANG_DATA*> yuri_523::MojangData;
-std::unordered_map<int, uint64_t> yuri_523::DLCTextures_PackID;
-std::unordered_map<uint64_t, DLC_INFO*> yuri_523::DLCInfo_Trial;
-std::unordered_map<uint64_t, DLC_INFO*> yuri_523::DLCInfo_Full;
-std::unordered_map<std::yuri_9616, uint64_t> yuri_523::DLCInfo_SkinName;
+std::unordered_map<PlayerUID, MOJANG_DATA*> DLCController::MojangData;
+std::unordered_map<int, uint64_t> DLCController::DLCTextures_PackID;
+std::unordered_map<uint64_t, DLC_INFO*> DLCController::DLCInfo_Trial;
+std::unordered_map<uint64_t, DLC_INFO*> DLCController::DLCInfo_Full;
+std::unordered_map<std::wstring, uint64_t> DLCController::DLCInfo_SkinName;
 
-std::uint32_t yuri_523::m_dwContentTypeA[e_Marketplace_MAX] = {
+std::uint32_t DLCController::m_dwContentTypeA[e_Marketplace_MAX] = {
     XMARKETPLACE_OFFERING_TYPE_CONTENT,
     XMARKETPLACE_OFFERING_TYPE_THEME,
     XMARKETPLACE_OFFERING_TYPE_AVATARITEM,
     XMARKETPLACE_OFFERING_TYPE_TILE,
 };
 
-int yuri_523::yuri_7455(
-    void* pParam, yuri_256::DLC_TMS_DETAILS* pTMSDetails, int iPad) {
-    app.yuri_563("Marketplace Counts= New - %d Total - %d\n",
+int DLCController::marketplaceCountsCallback(
+    void* pParam, C4JStorage::DLC_TMS_DETAILS* pTMSDetails, int iPad) {
+    app.DebugPrintf("Marketplace Counts= New - %d Total - %d\n",
                     pTMSDetails->dwNewOffers, pTMSDetails->dwTotalOffers);
 
     if (pTMSDetails->dwNewOffers > 0) {
@@ -61,181 +61,181 @@ int yuri_523::yuri_7455(
     return 0;
 }
 
-bool yuri_523::yuri_9105(int iPad) {
-    app.yuri_563("--- DLCController::startInstallDLCProcess: pad=%i.\n",
+bool DLCController::startInstallDLCProcess(int iPad) {
+    app.DebugPrintf("--- DLCController::startInstallDLCProcess: pad=%i.\n",
                     iPad);
 
-    if ((yuri_4391() == false) &&
+    if ((dlcInstallProcessCompleted() == false) &&
         (m_bDLCInstallPending == false)) {
-        app.m_dlcManager.yuri_8287();
+        app.m_dlcManager.resetUnnamedCorruptCount();
         m_bDLCInstallPending = true;
         m_iTotalDLC = 0;
         m_iTotalDLCInstalled = 0;
-        app.yuri_563(
+        app.DebugPrintf(
             "--- DLCController::startInstallDLCProcess - "
             "StorageManager.GetInstalledDLC\n");
 
-        StorageManager.yuri_1038(
+        StorageManager.GetInstalledDLC(
             iPad, [this](int iInstalledC, int pad) {
-                return yuri_4392(iInstalledC, pad);
+                return dlcInstalledCallback(iInstalledC, pad);
             });
         return true;
     } else {
-        app.yuri_563(
+        app.DebugPrintf(
             "--- DLCController::startInstallDLCProcess - nothing to do\n");
         return false;
     }
 }
 
-int yuri_523::yuri_4392(int iInstalledC, int iPad) {
-    app.yuri_563(
+int DLCController::dlcInstalledCallback(int iInstalledC, int iPad) {
+    app.DebugPrintf(
         "--- DLCController::dlcInstalledCallback: totalDLC=%i, pad=%i.\n",
         iInstalledC, iPad);
     m_iTotalDLC = iInstalledC;
-    yuri_7511(iPad);
+    mountNextDLC(iPad);
     return 0;
 }
 
-void yuri_523::yuri_7511(int iPad) {
-    app.yuri_563("--- DLCController::mountNextDLC: pad=%i.\n", iPad);
+void DLCController::mountNextDLC(int iPad) {
+    app.DebugPrintf("--- DLCController::mountNextDLC: pad=%i.\n", iPad);
     if (m_iTotalDLCInstalled < m_iTotalDLC) {
-        if (StorageManager.yuri_1971(
+        if (StorageManager.MountInstalledDLC(
                 iPad, m_iTotalDLCInstalled,
                 [this](int pad, std::uint32_t dwErr,
                        std::uint32_t dwLicenceMask) {
-                    return yuri_4393(pad, dwErr, dwLicenceMask);
+                    return dlcMountedCallback(pad, dwErr, dwLicenceMask);
                 }) != ERROR_IO_PENDING) {
-            app.yuri_563("Failed to mount DLC %d for pad %d\n",
+            app.DebugPrintf("Failed to mount DLC %d for pad %d\n",
                             m_iTotalDLCInstalled, iPad);
             ++m_iTotalDLCInstalled;
-            yuri_7511(iPad);
+            mountNextDLC(iPad);
         } else {
-            app.yuri_563("StorageManager.MountInstalledDLC ok\n");
+            app.DebugPrintf("StorageManager.MountInstalledDLC ok\n");
         }
     } else {
         m_bDLCInstallPending = false;
         m_bDLCInstallProcessCompleted = true;
-        ui.yuri_1242();
+        ui.HandleDLCMountingComplete();
     }
 }
 
-#if yuri_4330(_WINDOWS64)
-#yuri_4327 yuri_277(yuri_3565) (yuri_3565.szDisplayName)
+#if defined(_WINDOWS64)
+#define CONTENT_DATA_DISPLAY_NAME(a) (a.szDisplayName)
 #else
-#yuri_4327 yuri_277(yuri_3565) (yuri_3565.wszDisplayName)
+#define CONTENT_DATA_DISPLAY_NAME(a) (a.wszDisplayName)
 #endif
 
-int yuri_523::yuri_4393(int iPad, std::uint32_t dwErr,
+int DLCController::dlcMountedCallback(int iPad, std::uint32_t dwErr,
                                       std::uint32_t dwLicenceMask) {
-#if yuri_4330(_WINDOWS64)
-    app.yuri_563("--- DLCController::dlcMountedCallback\n");
+#if defined(_WINDOWS64)
+    app.DebugPrintf("--- DLCController::dlcMountedCallback\n");
 
     if (dwErr != ERROR_SUCCESS) {
-        app.yuri_563("Failed to mount DLC for pad %d: %u\n", iPad, dwErr);
-        app.m_dlcManager.yuri_6697();
+        app.DebugPrintf("Failed to mount DLC for pad %d: %u\n", iPad, dwErr);
+        app.m_dlcManager.incrementUnnamedCorruptCount();
     } else {
         XCONTENT_DATA ContentData =
-            StorageManager.yuri_961(m_iTotalDLCInstalled);
+            StorageManager.GetDLC(m_iTotalDLCInstalled);
 
-        yuri_533* yuri_7702 =
-            app.m_dlcManager.yuri_5637(yuri_277(ContentData));
+        DLCPack* pack =
+            app.m_dlcManager.getPack(CONTENT_DATA_DISPLAY_NAME(ContentData));
 
-        if (yuri_7702 != nullptr && yuri_7702->yuri_1637()) {
-            app.yuri_563(
+        if (pack != nullptr && pack->IsCorrupt()) {
+            app.DebugPrintf(
                 "Pack '%ls' is corrupt, removing it from the DLC Manager.\n",
-                yuri_277(ContentData));
-            app.m_dlcManager.yuri_8132(yuri_7702);
-            yuri_7702 = nullptr;
+                CONTENT_DATA_DISPLAY_NAME(ContentData));
+            app.m_dlcManager.removePack(pack);
+            pack = nullptr;
         }
 
-        if (yuri_7702 == nullptr) {
-            app.yuri_563("Pack \"%ls\" is not installed, so adding it\n",
-                            yuri_277(ContentData));
+        if (pack == nullptr) {
+            app.DebugPrintf("Pack \"%ls\" is not installed, so adding it\n",
+                            CONTENT_DATA_DISPLAY_NAME(ContentData));
 
-#if yuri_4330(_WINDOWS64)
-            yuri_7702 = new yuri_533(ContentData.szDisplayName, dwLicenceMask);
+#if defined(_WINDOWS64)
+            pack = new DLCPack(ContentData.szDisplayName, dwLicenceMask);
 #else
-            yuri_7702 = new yuri_533(ContentData.wszDisplayName, dwLicenceMask);
+            pack = new DLCPack(ContentData.wszDisplayName, dwLicenceMask);
 #endif
-            yuri_7702->yuri_2595(m_iTotalDLCInstalled);
-            yuri_7702->yuri_2594(ContentData.DeviceID);
-            app.m_dlcManager.yuri_3651(yuri_7702);
-            yuri_6463(yuri_7702);
+            pack->SetDLCMountIndex(m_iTotalDLCInstalled);
+            pack->SetDLCDeviceID(ContentData.DeviceID);
+            app.m_dlcManager.addPack(pack);
+            handleDLC(pack);
 
-            if (yuri_7702->yuri_5103(yuri_531::e_DLCType_Texture) > 0) {
-                yuri_1945::yuri_1039()->skins->yuri_3686(
-                    yuri_7702, yuri_7702->yuri_1101());
+            if (pack->getDLCItemsCount(DLCManager::e_DLCType_Texture) > 0) {
+                Minecraft::GetInstance()->skins->addTexturePackFromDLC(
+                    pack, pack->GetPackId());
             }
         } else {
-            app.yuri_563(
+            app.DebugPrintf(
                 "Pack \"%ls\" is already installed. Updating license to %u\n",
-                yuri_277(ContentData), dwLicenceMask);
+                CONTENT_DATA_DISPLAY_NAME(ContentData), dwLicenceMask);
 
-            yuri_7702->yuri_2595(m_iTotalDLCInstalled);
-            yuri_7702->yuri_2594(ContentData.DeviceID);
-            yuri_7702->yuri_9423(dwLicenceMask);
+            pack->SetDLCMountIndex(m_iTotalDLCInstalled);
+            pack->SetDLCDeviceID(ContentData.DeviceID);
+            pack->updateLicenseMask(dwLicenceMask);
         }
 
-        StorageManager.yuri_3271();
+        StorageManager.UnmountInstalledDLC();
     }
     ++m_iTotalDLCInstalled;
-    yuri_7511(iPad);
+    mountNextDLC(iPad);
 #endif
     return 0;
 }
-#undef yuri_277
+#undef CONTENT_DATA_DISPLAY_NAME
 
-void yuri_523::yuri_6463(yuri_533* yuri_7702) {
+void DLCController::handleDLC(DLCPack* pack) {
     unsigned int dwFilesProcessed = 0;
-#if yuri_4330(_WINDOWS64) || yuri_4330(__linux__)
-    std::vector<std::yuri_9151> dlcFilenames;
+#if defined(_WINDOWS64) || defined(__linux__)
+    std::vector<std::string> dlcFilenames;
 #endif
-    StorageManager.yuri_1085("DLCDrive", dlcFilenames);
-    for (int i = 0; i < dlcFilenames.yuri_9050(); i++) {
-        app.m_dlcManager.yuri_8005(dwFilesProcessed, dlcFilenames[i],
-                                          yuri_7702);
+    StorageManager.GetMountedDLCFileList("DLCDrive", dlcFilenames);
+    for (int i = 0; i < dlcFilenames.size(); i++) {
+        app.m_dlcManager.readDLCDataFile(dwFilesProcessed, dlcFilenames[i],
+                                          pack);
     }
-    if (dwFilesProcessed == 0) app.m_dlcManager.yuri_8132(yuri_7702);
+    if (dwFilesProcessed == 0) app.m_dlcManager.removePack(pack);
 }
 
-void yuri_523::yuri_3598(const wchar_t* lpStr) {
-    app.yuri_563("ADDING CREDIT - %ls\n", lpStr);
+void DLCController::addCreditText(const wchar_t* lpStr) {
+    app.DebugPrintf("ADDING CREDIT - %ls\n", lpStr);
     SCreditTextItemDef* pCreditStruct = new SCreditTextItemDef;
-    pCreditStruct->yuri_7333 = eSmallText;
+    pCreditStruct->m_eType = eSmallText;
     pCreditStruct->m_iStringID[0] = NO_TRANSLATED_STRING;
     pCreditStruct->m_iStringID[1] = NO_TRANSLATED_STRING;
-    pCreditStruct->m_Text = new wchar_t[yuri_9557(lpStr) + 1];
-    yuri_9556((wchar_t*)pCreditStruct->m_Text, lpStr);
-    vDLCCredits.yuri_7954(pCreditStruct);
+    pCreditStruct->m_Text = new wchar_t[wcslen(lpStr) + 1];
+    wcscpy((wchar_t*)pCreditStruct->m_Text, lpStr);
+    vDLCCredits.push_back(pCreditStruct);
 }
 
-bool yuri_523::yuri_3715(const std::yuri_9616& wstemp) {
-    for (unsigned int i = 0; i < m_vCreditText.yuri_9050(); i++) {
-        std::yuri_9616 yuri_9193 = m_vCreditText.yuri_3753(i);
-        if (yuri_9193.yuri_4117(wstemp) == 0) {
+bool DLCController::alreadySeenCreditText(const std::wstring& wstemp) {
+    for (unsigned int i = 0; i < m_vCreditText.size(); i++) {
+        std::wstring temp = m_vCreditText.at(i);
+        if (temp.compare(wstemp) == 0) {
             return true;
         }
     }
-    m_vCreditText.yuri_7954((wchar_t*)wstemp.yuri_3888());
+    m_vCreditText.push_back((wchar_t*)wstemp.c_str());
     return false;
 }
 
-unsigned int yuri_523::yuri_5091() {
-    return (unsigned int)vDLCCredits.yuri_9050();
+unsigned int DLCController::getDLCCreditsCount() {
+    return (unsigned int)vDLCCredits.size();
 }
 
-SCreditTextItemDef* yuri_523::yuri_5090(int iIndex) {
-    return vDLCCredits.yuri_3753(iIndex);
+SCreditTextItemDef* DLCController::getDLCCredits(int iIndex) {
+    return vDLCCredits.at(iIndex);
 }
 
-#if yuri_4330(_WINDOWS64)
-yuri_6732 yuri_523::yuri_8068(wchar_t* pType, wchar_t* pBannerName,
+#if defined(_WINDOWS64)
+int32_t DLCController::registerDLCData(wchar_t* pType, wchar_t* pBannerName,
                                        int iGender, uint64_t ullOfferID_Full,
                                        uint64_t ullOfferID_Trial,
                                        wchar_t* pFirstSkin,
                                        unsigned int uiSortIndex, int iConfig,
                                        wchar_t* pDataFile) {
-    yuri_6732 hr = 0;
+    int32_t hr = 0;
     DLC_INFO* pDLCData = new DLC_INFO;
     memset(pDLCData, 0, sizeof(DLC_INFO));
     pDLCData->ullOfferID_Full = ullOfferID_Full;
@@ -245,26 +245,26 @@ yuri_6732 yuri_523::yuri_8068(wchar_t* pType, wchar_t* pBannerName,
     pDLCData->uiSortIndex = uiSortIndex;
     pDLCData->iConfig = iConfig;
 
-    if (pBannerName != yuri_1720"") {
-        yuri_9560(pDLCData->wchBanner, pBannerName, MAX_BANNERNAME_SIZE);
+    if (pBannerName != L"") {
+        wcsncpy_s(pDLCData->wchBanner, pBannerName, MAX_BANNERNAME_SIZE);
     }
     if (pDataFile[0] != 0) {
-        yuri_9560(pDLCData->wchDataFile, pDataFile, MAX_BANNERNAME_SIZE);
+        wcsncpy_s(pDLCData->wchDataFile, pDataFile, MAX_BANNERNAME_SIZE);
     }
 
     if (pType != nullptr) {
-        if (yuri_9555(pType, yuri_1720"Skin") == 0) {
+        if (wcscmp(pType, L"Skin") == 0) {
             pDLCData->eDLCType = e_DLC_SkinPack;
-        } else if (yuri_9555(pType, yuri_1720"Gamerpic") == 0) {
+        } else if (wcscmp(pType, L"Gamerpic") == 0) {
             pDLCData->eDLCType = e_DLC_Gamerpics;
-        } else if (yuri_9555(pType, yuri_1720"Theme") == 0) {
+        } else if (wcscmp(pType, L"Theme") == 0) {
             pDLCData->eDLCType = e_DLC_Themes;
-        } else if (yuri_9555(pType, yuri_1720"Avatar") == 0) {
+        } else if (wcscmp(pType, L"Avatar") == 0) {
             pDLCData->eDLCType = e_DLC_AvatarItems;
-        } else if (yuri_9555(pType, yuri_1720"MashUpPack") == 0) {
+        } else if (wcscmp(pType, L"MashUpPack") == 0) {
             pDLCData->eDLCType = e_DLC_MashupPacks;
             DLCTextures_PackID[pDLCData->iConfig] = ullOfferID_Full;
-        } else if (yuri_9555(pType, yuri_1720"TexturePack") == 0) {
+        } else if (wcscmp(pType, L"TexturePack") == 0) {
             pDLCData->eDLCType = e_DLC_TexturePacks;
             DLCTextures_PackID[pDLCData->iConfig] = ullOfferID_Full;
         }
@@ -276,8 +276,8 @@ yuri_6732 yuri_523::yuri_8068(wchar_t* pType, wchar_t* pBannerName,
 
     return hr;
 }
-#yuri_4473 yuri_4330(__linux__)
-yuri_6732 yuri_523::yuri_8068(wchar_t* pType, wchar_t* pBannerName,
+#elif defined(__linux__)
+int32_t DLCController::registerDLCData(wchar_t* pType, wchar_t* pBannerName,
                                        int iGender, uint64_t ullOfferID_Full,
                                        uint64_t ullOfferID_Trial,
                                        wchar_t* pFirstSkin,
@@ -290,109 +290,109 @@ yuri_6732 yuri_523::yuri_8068(wchar_t* pType, wchar_t* pBannerName,
 }
 #endif
 
-bool yuri_523::yuri_5093(const std::yuri_9616& FirstSkin,
+bool DLCController::getDLCFullOfferIDForSkinID(const std::wstring& FirstSkin,
                                                uint64_t* pullVal) {
-    auto yuri_7136 = DLCInfo_SkinName.yuri_4597(FirstSkin);
-    if (yuri_7136 == DLCInfo_SkinName.yuri_4502()) {
+    auto it = DLCInfo_SkinName.find(FirstSkin);
+    if (it == DLCInfo_SkinName.end()) {
         return false;
     } else {
-        *pullVal = (uint64_t)yuri_7136->yuri_8394;
+        *pullVal = (uint64_t)it->second;
         return true;
     }
 }
 
-bool yuri_523::yuri_5092(const int iPackID,
+bool DLCController::getDLCFullOfferIDForPackID(const int iPackID,
                                                uint64_t* pullVal) {
-    auto yuri_7136 = DLCTextures_PackID.yuri_4597(iPackID);
-    if (yuri_7136 == DLCTextures_PackID.yuri_4502()) {
+    auto it = DLCTextures_PackID.find(iPackID);
+    if (it == DLCTextures_PackID.end()) {
         *pullVal = (uint64_t)0;
         return false;
     } else {
-        *pullVal = (uint64_t)yuri_7136->yuri_8394;
+        *pullVal = (uint64_t)it->second;
         return true;
     }
 }
 
-DLC_INFO* yuri_523::yuri_5095(
+DLC_INFO* DLCController::getDLCInfoForTrialOfferID(
     uint64_t ullOfferID_Trial) {
-    if (DLCInfo_Trial.yuri_9050() > 0) {
-        auto yuri_7136 = DLCInfo_Trial.yuri_4597(ullOfferID_Trial);
-        if (yuri_7136 == DLCInfo_Trial.yuri_4502()) {
+    if (DLCInfo_Trial.size() > 0) {
+        auto it = DLCInfo_Trial.find(ullOfferID_Trial);
+        if (it == DLCInfo_Trial.end()) {
             return nullptr;
         } else {
-            return yuri_7136->yuri_8394;
+            return it->second;
         }
     } else
         return nullptr;
 }
 
-DLC_INFO* yuri_523::yuri_5094(uint64_t ullOfferID_Full) {
-    if (DLCInfo_Full.yuri_9050() > 0) {
-        auto yuri_7136 = DLCInfo_Full.yuri_4597(ullOfferID_Full);
-        if (yuri_7136 == DLCInfo_Full.yuri_4502()) {
+DLC_INFO* DLCController::getDLCInfoForFullOfferID(uint64_t ullOfferID_Full) {
+    if (DLCInfo_Full.size() > 0) {
+        auto it = DLCInfo_Full.find(ullOfferID_Full);
+        if (it == DLCInfo_Full.end()) {
             return nullptr;
         } else {
-            return yuri_7136->yuri_8394;
+            return it->second;
         }
     } else
         return nullptr;
 }
 
-DLC_INFO* yuri_523::yuri_5101(int iIndex) {
-    std::unordered_map<uint64_t, DLC_INFO*>::iterator yuri_7136 =
-        DLCInfo_Trial.yuri_3801();
+DLC_INFO* DLCController::getDLCInfoTrialOffer(int iIndex) {
+    std::unordered_map<uint64_t, DLC_INFO*>::iterator it =
+        DLCInfo_Trial.begin();
     for (int i = 0; i < iIndex; i++) {
-        ++yuri_7136;
+        ++it;
     }
-    return yuri_7136->yuri_8394;
+    return it->second;
 }
 
-DLC_INFO* yuri_523::yuri_5096(int iIndex) {
-    std::unordered_map<uint64_t, DLC_INFO*>::iterator yuri_7136 = DLCInfo_Full.yuri_3801();
+DLC_INFO* DLCController::getDLCInfoFullOffer(int iIndex) {
+    std::unordered_map<uint64_t, DLC_INFO*>::iterator it = DLCInfo_Full.begin();
     for (int i = 0; i < iIndex; i++) {
-        ++yuri_7136;
+        ++it;
     }
-    return yuri_7136->yuri_8394;
+    return it->second;
 }
 
-uint64_t yuri_523::yuri_5099(int iIndex) {
-    std::unordered_map<int, uint64_t>::iterator yuri_7136 = DLCTextures_PackID.yuri_3801();
+uint64_t DLCController::getDLCInfoTexturesFullOffer(int iIndex) {
+    std::unordered_map<int, uint64_t>::iterator it = DLCTextures_PackID.begin();
     for (int i = 0; i < iIndex; i++) {
-        ++yuri_7136;
+        ++it;
     }
-    return yuri_7136->yuri_8394;
+    return it->second;
 }
 
-int yuri_523::yuri_5102() {
-    return (int)DLCInfo_Trial.yuri_9050();
+int DLCController::getDLCInfoTrialOffersCount() {
+    return (int)DLCInfo_Trial.size();
 }
 
-int yuri_523::yuri_5097() {
-    return (int)DLCInfo_Full.yuri_9050();
+int DLCController::getDLCInfoFullOffersCount() {
+    return (int)DLCInfo_Full.size();
 }
 
-int yuri_523::yuri_5100() {
-    return (int)DLCTextures_PackID.yuri_9050();
+int DLCController::getDLCInfoTexturesOffersCount() {
+    return (int)DLCTextures_PackID.size();
 }
 
-unsigned int yuri_523::yuri_3599(eDLCMarketplaceType eType,
+unsigned int DLCController::addDLCRequest(eDLCMarketplaceType eType,
                                           bool bPromote) {
     {
-        std::lock_guard<std::mutex> yuri_7289(csDLCDownloadQueue);
+        std::lock_guard<std::mutex> lock(csDLCDownloadQueue);
 
         int iPosition = 0;
-        for (auto yuri_7136 = m_DLCDownloadQueue.yuri_3801();
-             yuri_7136 != m_DLCDownloadQueue.yuri_4502(); ++yuri_7136) {
-            DLCRequest* pCurrent = *yuri_7136;
+        for (auto it = m_DLCDownloadQueue.begin();
+             it != m_DLCDownloadQueue.end(); ++it) {
+            DLCRequest* pCurrent = *it;
             if (pCurrent->dwType == m_dwContentTypeA[eType]) {
                 if (pCurrent->eState == e_DLC_ContentState_Retrieving ||
                     pCurrent->eState == e_DLC_ContentState_Retrieved) {
                     return 0;
                 } else {
                     if (bPromote) {
-                        m_DLCDownloadQueue.yuri_4531(m_DLCDownloadQueue.yuri_3801() +
+                        m_DLCDownloadQueue.erase(m_DLCDownloadQueue.begin() +
                                                  iPosition);
-                        m_DLCDownloadQueue.yuri_6726(m_DLCDownloadQueue.yuri_3801(),
+                        m_DLCDownloadQueue.insert(m_DLCDownloadQueue.begin(),
                                                   pCurrent);
                     }
                     return 0;
@@ -404,48 +404,48 @@ unsigned int yuri_523::yuri_3599(eDLCMarketplaceType eType,
         DLCRequest* pDLCreq = new DLCRequest;
         pDLCreq->dwType = m_dwContentTypeA[eType];
         pDLCreq->eState = e_DLC_ContentState_Idle;
-        m_DLCDownloadQueue.yuri_7954(pDLCreq);
+        m_DLCDownloadQueue.push_back(pDLCreq);
         m_bAllDLCContentRetrieved = false;
     }
 
-    app.yuri_563("[Consoles_App] Added DLC request.\n");
+    app.DebugPrintf("[Consoles_App] Added DLC request.\n");
     return 1;
 }
 
-bool yuri_523::yuri_8306() {
-    int primPad = ProfileManager.yuri_1125();
-    if (primPad == -1 || !ProfileManager.yuri_1675(primPad)) {
+bool DLCController::retrieveNextDLCContent() {
+    int primPad = ProfileManager.GetPrimaryPad();
+    if (primPad == -1 || !ProfileManager.IsSignedInLive(primPad)) {
         return true;
     }
 
     {
-        std::lock_guard<std::mutex> yuri_7289(csDLCDownloadQueue);
-        for (auto yuri_7136 = m_DLCDownloadQueue.yuri_3801();
-             yuri_7136 != m_DLCDownloadQueue.yuri_4502(); ++yuri_7136) {
-            DLCRequest* pCurrent = *yuri_7136;
+        std::lock_guard<std::mutex> lock(csDLCDownloadQueue);
+        for (auto it = m_DLCDownloadQueue.begin();
+             it != m_DLCDownloadQueue.end(); ++it) {
+            DLCRequest* pCurrent = *it;
             if (pCurrent->eState == e_DLC_ContentState_Retrieving) {
                 return true;
             }
         }
 
-        for (auto yuri_7136 = m_DLCDownloadQueue.yuri_3801();
-             yuri_7136 != m_DLCDownloadQueue.yuri_4502(); ++yuri_7136) {
-            DLCRequest* pCurrent = *yuri_7136;
+        for (auto it = m_DLCDownloadQueue.begin();
+             it != m_DLCDownloadQueue.end(); ++it) {
+            DLCRequest* pCurrent = *it;
             if (pCurrent->eState == e_DLC_ContentState_Idle) {
-#if yuri_4330(_DEBUG)
-                app.yuri_563("RetrieveNextDLCContent - type = %d\n",
+#if defined(_DEBUG)
+                app.DebugPrintf("RetrieveNextDLCContent - type = %d\n",
                                 pCurrent->dwType);
 #endif
-                yuri_256::EDLCStatus status = StorageManager.yuri_977(
-                    ProfileManager.yuri_1125(),
+                C4JStorage::EDLCStatus status = StorageManager.GetDLCOffers(
+                    ProfileManager.GetPrimaryPad(),
                     [this](int iOfferC, std::uint32_t dwType, int pad) {
-                        return yuri_4395(iOfferC, dwType, pad);
+                        return dlcOffersReturned(iOfferC, dwType, pad);
                     },
                     pCurrent->dwType);
-                if (status == yuri_256::EDLC_Pending) {
+                if (status == C4JStorage::EDLC_Pending) {
                     pCurrent->eState = e_DLC_ContentState_Retrieving;
                 } else {
-                    app.yuri_563("RetrieveNextDLCContent - PROBLEM\n");
+                    app.DebugPrintf("RetrieveNextDLCContent - PROBLEM\n");
                     pCurrent->eState = e_DLC_ContentState_Retrieved;
                 }
                 return true;
@@ -453,15 +453,15 @@ bool yuri_523::yuri_8306() {
         }
     }
 
-    app.yuri_563("[Consoles_App] Finished downloading dlc content.\n");
+    app.DebugPrintf("[Consoles_App] Finished downloading dlc content.\n");
     return false;
 }
 
-bool yuri_523::yuri_4029() {
-    std::lock_guard<std::mutex> yuri_7289(csTMSPPDownloadQueue);
-    for (auto yuri_7136 = m_TMSPPDownloadQueue.yuri_3801();
-         yuri_7136 != m_TMSPPDownloadQueue.yuri_4502(); ++yuri_7136) {
-        TMSPPRequest* pCurrent = *yuri_7136;
+bool DLCController::checkTMSDLCCanStop() {
+    std::lock_guard<std::mutex> lock(csTMSPPDownloadQueue);
+    for (auto it = m_TMSPPDownloadQueue.begin();
+         it != m_TMSPPDownloadQueue.end(); ++it) {
+        TMSPPRequest* pCurrent = *it;
         if (pCurrent->eState == e_TMS_ContentState_Retrieving) {
             return false;
         }
@@ -469,16 +469,16 @@ bool yuri_523::yuri_4029() {
     return true;
 }
 
-int yuri_523::yuri_4395(int iOfferC, std::uint32_t dwType,
+int DLCController::dlcOffersReturned(int iOfferC, std::uint32_t dwType,
                                      int iPad) {
     {
-        std::lock_guard<std::mutex> yuri_7289(csTMSPPDownloadQueue);
-        for (auto yuri_7136 = m_DLCDownloadQueue.yuri_3801();
-             yuri_7136 != m_DLCDownloadQueue.yuri_4502(); ++yuri_7136) {
-            DLCRequest* pCurrent = *yuri_7136;
+        std::lock_guard<std::mutex> lock(csTMSPPDownloadQueue);
+        for (auto it = m_DLCDownloadQueue.begin();
+             it != m_DLCDownloadQueue.end(); ++it) {
+            DLCRequest* pCurrent = *it;
             if (pCurrent->dwType == static_cast<std::uint32_t>(dwType)) {
                 m_iDLCOfferC = iOfferC;
-                app.yuri_563(
+                app.DebugPrintf(
                     "DLCOffersReturned - type %u, count %d - setting to "
                     "retrieved\n",
                     dwType, iOfferC);
@@ -490,7 +490,7 @@ int yuri_523::yuri_4395(int iOfferC, std::uint32_t dwType,
     return 0;
 }
 
-eDLCContentType yuri_523::yuri_4624(std::uint32_t dwType) {
+eDLCContentType DLCController::find_eDLCContentType(std::uint32_t dwType) {
     for (int i = 0; i < e_DLC_MAX; i++) {
         if (m_dwContentTypeA[i] == dwType) {
             return (eDLCContentType)i;
@@ -499,11 +499,11 @@ eDLCContentType yuri_523::yuri_4624(std::uint32_t dwType) {
     return (eDLCContentType)0;
 }
 
-bool yuri_523::yuri_4389(eDLCMarketplaceType eType) {
-    std::lock_guard<std::mutex> yuri_7289(csDLCDownloadQueue);
-    for (auto yuri_7136 = m_DLCDownloadQueue.yuri_3801(); yuri_7136 != m_DLCDownloadQueue.yuri_4502();
-         ++yuri_7136) {
-        DLCRequest* pCurrent = *yuri_7136;
+bool DLCController::dlcContentRetrieved(eDLCMarketplaceType eType) {
+    std::lock_guard<std::mutex> lock(csDLCDownloadQueue);
+    for (auto it = m_DLCDownloadQueue.begin(); it != m_DLCDownloadQueue.end();
+         ++it) {
+        DLCRequest* pCurrent = *it;
         if ((pCurrent->dwType == m_dwContentTypeA[eType]) &&
             (pCurrent->eState == e_DLC_ContentState_Retrieved)) {
             return true;
@@ -512,79 +512,79 @@ bool yuri_523::yuri_4389(eDLCMarketplaceType eType) {
     return false;
 }
 
-void yuri_523::yuri_9271() {
+void DLCController::tickDLCOffersRetrieved() {
     if (!m_bAllDLCContentRetrieved) {
-        if (!yuri_8306()) {
-            app.yuri_563("[Consoles_App] All content retrieved.\n");
+        if (!retrieveNextDLCContent()) {
+            app.DebugPrintf("[Consoles_App] All content retrieved.\n");
             m_bAllDLCContentRetrieved = true;
         }
     }
 }
 
-void yuri_523::yuri_4046() {
-    app.yuri_563("[Consoles_App] Clear and reset download queue.\n");
+void DLCController::clearAndResetDLCDownloadQueue() {
+    app.DebugPrintf("[Consoles_App] Clear and reset download queue.\n");
 
     int iPosition = 0;
     {
-        std::lock_guard<std::mutex> yuri_7289(csTMSPPDownloadQueue);
-        for (auto yuri_7136 = m_DLCDownloadQueue.yuri_3801();
-             yuri_7136 != m_DLCDownloadQueue.yuri_4502(); ++yuri_7136) {
-            DLCRequest* pCurrent = *yuri_7136;
+        std::lock_guard<std::mutex> lock(csTMSPPDownloadQueue);
+        for (auto it = m_DLCDownloadQueue.begin();
+             it != m_DLCDownloadQueue.end(); ++it) {
+            DLCRequest* pCurrent = *it;
             delete pCurrent;
             iPosition++;
         }
-        m_DLCDownloadQueue.yuri_4044();
+        m_DLCDownloadQueue.clear();
         m_bAllDLCContentRetrieved = true;
     }
 }
 
-bool yuri_523::yuri_8307() { return false; }
+bool DLCController::retrieveNextTMSPPContent() { return false; }
 
-void yuri_523::yuri_9285() {
+void DLCController::tickTMSPPFilesRetrieved() {
     if (m_bTickTMSDLCFiles && !m_bAllTMSContentRetrieved) {
-        if (yuri_8307() == false) {
+        if (retrieveNextTMSPPContent() == false) {
             m_bAllTMSContentRetrieved = true;
         }
     }
 }
 
-void yuri_523::yuri_4077() {
+void DLCController::clearTMSPPFilesRetrieved() {
     int iPosition = 0;
     {
-        std::lock_guard<std::mutex> yuri_7289(csTMSPPDownloadQueue);
-        for (auto yuri_7136 = m_TMSPPDownloadQueue.yuri_3801();
-             yuri_7136 != m_TMSPPDownloadQueue.yuri_4502(); ++yuri_7136) {
-            TMSPPRequest* pCurrent = *yuri_7136;
+        std::lock_guard<std::mutex> lock(csTMSPPDownloadQueue);
+        for (auto it = m_TMSPPDownloadQueue.begin();
+             it != m_TMSPPDownloadQueue.end(); ++it) {
+            TMSPPRequest* pCurrent = *it;
             delete pCurrent;
             iPosition++;
         }
-        m_TMSPPDownloadQueue.yuri_4044();
+        m_TMSPPDownloadQueue.clear();
         m_bAllTMSContentRetrieved = true;
     }
 }
 
-unsigned int yuri_523::yuri_3679(eDLCContentType eType,
+unsigned int DLCController::addTMSPPFileTypeRequest(eDLCContentType eType,
                                                     bool bPromote) {
-    std::lock_guard<std::mutex> yuri_7289(csTMSPPDownloadQueue);
+    std::lock_guard<std::mutex> lock(csTMSPPDownloadQueue);
 
     if (eType == e_DLC_TexturePackData) {
-        int iCount = yuri_5097();
+        int iCount = getDLCInfoFullOffersCount();
 
         for (int i = 0; i < iCount; i++) {
-            DLC_INFO* pDLC = yuri_5096(i);
+            DLC_INFO* pDLC = getDLCInfoFullOffer(i);
 
             if ((pDLC->eDLCType == e_DLC_TexturePacks) ||
                 (pDLC->eDLCType == e_DLC_MashupPacks)) {
                 if (pDLC->wchDataFile[0] != 0) {
                     {
-                        bool bPresent = app.yuri_1642(pDLC->iConfig);
+                        bool bPresent = app.IsFileInTPD(pDLC->iConfig);
 
                         if (!bPresent) {
                             bool bAlreadyInQueue = false;
-                            for (auto yuri_7136 = m_TMSPPDownloadQueue.yuri_3801();
-                                 yuri_7136 != m_TMSPPDownloadQueue.yuri_4502(); ++yuri_7136) {
-                                TMSPPRequest* pCurrent = *yuri_7136;
-                                if (yuri_9555(pDLC->wchDataFile,
+                            for (auto it = m_TMSPPDownloadQueue.begin();
+                                 it != m_TMSPPDownloadQueue.end(); ++it) {
+                                TMSPPRequest* pCurrent = *it;
+                                if (wcscmp(pDLC->wchDataFile,
                                            pCurrent->wchFilename) == 0) {
                                     bAlreadyInQueue = true;
                                     break;
@@ -594,22 +594,22 @@ unsigned int yuri_523::yuri_3679(eDLCContentType eType,
                             if (!bAlreadyInQueue) {
                                 TMSPPRequest* pTMSPPreq = new TMSPPRequest;
                                 pTMSPPreq->CallbackFunc =
-                                    &yuri_523::yuri_9307;
+                                    &DLCController::tmsPPFileReturned;
                                 pTMSPPreq->lpCallbackParam = this;
                                 pTMSPPreq->eStorageFacility =
-                                    yuri_256::eGlobalStorage_Title;
+                                    C4JStorage::eGlobalStorage_Title;
                                 pTMSPPreq->eFileTypeVal =
-                                    yuri_256::TMS_FILETYPE_BINARY;
+                                    C4JStorage::TMS_FILETYPE_BINARY;
                                 memcpy(pTMSPPreq->wchFilename,
                                        pDLC->wchDataFile,
                                        sizeof(wchar_t) * MAX_BANNERNAME_SIZE);
                                 pTMSPPreq->eType = e_DLC_TexturePackData;
                                 pTMSPPreq->eState = e_TMS_ContentState_Queued;
                                 m_bAllTMSContentRetrieved = false;
-                                m_TMSPPDownloadQueue.yuri_7954(pTMSPPreq);
+                                m_TMSPPDownloadQueue.push_back(pTMSPPreq);
                             }
                         } else {
-                            app.yuri_563(
+                            app.DebugPrintf(
                                 "Texture data already present in the TPD\n");
                         }
                     }
@@ -618,20 +618,20 @@ unsigned int yuri_523::yuri_3679(eDLCContentType eType,
         }
     } else {
         int iCount;
-        iCount = yuri_5097();
+        iCount = getDLCInfoFullOffersCount();
         for (int i = 0; i < iCount; i++) {
-            DLC_INFO* pDLC = yuri_5096(i);
+            DLC_INFO* pDLC = getDLCInfoFullOffer(i);
             if (pDLC->eDLCType == eType) {
                 wchar_t* cString = pDLC->wchBanner;
                 {
-                    bool bPresent = app.yuri_1641(cString);
+                    bool bPresent = app.IsFileInMemoryTextures(cString);
 
                     if (!bPresent) {
                         bool bAlreadyInQueue = false;
-                        for (auto yuri_7136 = m_TMSPPDownloadQueue.yuri_3801();
-                             yuri_7136 != m_TMSPPDownloadQueue.yuri_4502(); ++yuri_7136) {
-                            TMSPPRequest* pCurrent = *yuri_7136;
-                            if (yuri_9555(pDLC->wchBanner,
+                        for (auto it = m_TMSPPDownloadQueue.begin();
+                             it != m_TMSPPDownloadQueue.end(); ++it) {
+                            TMSPPRequest* pCurrent = *it;
+                            if (wcscmp(pDLC->wchBanner,
                                        pCurrent->wchFilename) == 0) {
                                 bAlreadyInQueue = true;
                                 break;
@@ -642,23 +642,23 @@ unsigned int yuri_523::yuri_3679(eDLCContentType eType,
                             TMSPPRequest* pTMSPPreq = new TMSPPRequest;
                             memset(pTMSPPreq, 0, sizeof(TMSPPRequest));
                             pTMSPPreq->CallbackFunc =
-                                &yuri_523::yuri_9307;
+                                &DLCController::tmsPPFileReturned;
                             pTMSPPreq->lpCallbackParam = this;
                             pTMSPPreq->eStorageFacility =
-                                yuri_256::eGlobalStorage_Title;
+                                C4JStorage::eGlobalStorage_Title;
                             pTMSPPreq->eFileTypeVal =
-                                yuri_256::TMS_FILETYPE_BINARY;
+                                C4JStorage::TMS_FILETYPE_BINARY;
                             memcpy(pTMSPPreq->wchFilename, pDLC->wchBanner,
                                    sizeof(wchar_t) * MAX_BANNERNAME_SIZE);
                             pTMSPPreq->eType = eType;
                             pTMSPPreq->eState = e_TMS_ContentState_Queued;
                             m_bAllTMSContentRetrieved = false;
-                            m_TMSPPDownloadQueue.yuri_7954(pTMSPPreq);
-                            app.yuri_563(
+                            m_TMSPPDownloadQueue.push_back(pTMSPPreq);
+                            app.DebugPrintf(
                                 "===m_TMSPPDownloadQueue Adding %ls, q size is "
                                 "%d\n",
                                 pTMSPPreq->wchFilename,
-                                m_TMSPPDownloadQueue.yuri_9050());
+                                m_TMSPPDownloadQueue.size());
                         }
                     }
                 }
@@ -669,19 +669,19 @@ unsigned int yuri_523::yuri_3679(eDLCContentType eType,
     return 1;
 }
 
-int yuri_523::yuri_9307(void* pParam, int iPad, int iUserData,
-                                     yuri_256::PTMSPP_FILEDATA pFileData,
+int DLCController::tmsPPFileReturned(void* pParam, int iPad, int iUserData,
+                                     C4JStorage::PTMSPP_FILEDATA pFileData,
                                      const char* szFilename) {
-    yuri_523* pClass = (yuri_523*)pParam;
+    DLCController* pClass = (DLCController*)pParam;
 
     {
-        std::lock_guard<std::mutex> yuri_7289(pClass->csTMSPPDownloadQueue);
-        for (auto yuri_7136 = pClass->m_TMSPPDownloadQueue.yuri_3801();
-             yuri_7136 != pClass->m_TMSPPDownloadQueue.yuri_4502(); ++yuri_7136) {
-            TMSPPRequest* pCurrent = *yuri_7136;
-#if yuri_4330(_WINDOWS64)
+        std::lock_guard<std::mutex> lock(pClass->csTMSPPDownloadQueue);
+        for (auto it = pClass->m_TMSPPDownloadQueue.begin();
+             it != pClass->m_TMSPPDownloadQueue.end(); ++it) {
+            TMSPPRequest* pCurrent = *it;
+#if defined(_WINDOWS64)
             char szFile[MAX_TMSFILENAME_SIZE];
-            yuri_9562(szFile, pCurrent->wchFilename, MAX_TMSFILENAME_SIZE);
+            wcstombs(szFile, pCurrent->wchFilename, MAX_TMSFILENAME_SIZE);
 
             if (strcmp(szFilename, szFile) == 0)
 #endif
@@ -691,23 +691,23 @@ int yuri_523::yuri_9307(void* pParam, int iPad, int iUserData,
                 if (pFileData != nullptr) {
                     switch (pCurrent->eType) {
                         case e_DLC_TexturePackData: {
-                            app.yuri_563("--- Got texturepack data %ls\n",
+                            app.DebugPrintf("--- Got texturepack data %ls\n",
                                             pCurrent->wchFilename);
                             int iConfig =
-                                app.yuri_1177(pCurrent->wchFilename);
-                            app.yuri_75(iConfig, pFileData->pbData,
-                                                 pFileData->yuri_9050);
+                                app.GetTPConfigVal(pCurrent->wchFilename);
+                            app.AddMemoryTPDFile(iConfig, pFileData->pbData,
+                                                 pFileData->size);
                         } break;
                         default:
-                            app.yuri_563("--- Got image data - %ls\n",
+                            app.DebugPrintf("--- Got image data - %ls\n",
                                             pCurrent->wchFilename);
-                            app.yuri_76(pCurrent->wchFilename,
+                            app.AddMemoryTextureFile(pCurrent->wchFilename,
                                                      pFileData->pbData,
-                                                     pFileData->yuri_9050);
+                                                     pFileData->size);
                             break;
                     }
                 } else {
-                    app.yuri_563("TMSImageReturned failed (%s)...\n",
+                    app.DebugPrintf("TMSImageReturned failed (%s)...\n",
                                     szFilename);
                 }
                 break;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/Controls/UIControl_Base.h"
 #include "app/common/UI/Controls/UIControl_LeaderboardList.h"
@@ -11,7 +11,7 @@
 #endif
 #include "UIControl_Base.h"
 
-class yuri_3174 : public yuri_3163 {
+class UIControl_LeaderboardList : public UIControl_Base {
 private:
     IggyName m_funcInitLeaderboard, m_funcAddDataSet;
     IggyName m_funcResetLeaderboard;
@@ -34,23 +34,23 @@ public:
         e_ICON_TYPE_SLIME = 32012,
         e_ICON_TYPE_PORTAL = 32013,
     };
-    yuri_3174();
+    UIControl_LeaderboardList();
 
-    virtual bool yuri_8980(yuri_3189* scene, IggyValuePath* yuri_7791,
-                              const std::yuri_9151& controlName);
+    virtual bool setupControl(UIScene* scene, IggyValuePath* parent,
+                              const std::string& controlName);
 
-    void yuri_6704(int yuri_6674);
-    virtual void yuri_2310();
+    void init(int id);
+    virtual void ReInit();
 
-    void yuri_4064();
+    void clearList();
 
-    void yuri_8992(const std::yuri_9616& rank, const std::yuri_9616& gamertag);
-    void yuri_6710(int iFirstFocus, int iTotalEntries, int iNumColumns);
-    void yuri_8526(int iColumn, int iType);
-    void yuri_3601(bool bLast, int iId, int iRank,
-                    const std::yuri_9616& gamertag, bool bDisplayMessage,
-                    const std::yuri_9616& col0, const std::yuri_9616& col1,
-                    const std::yuri_9616& col2, const std::yuri_9616& col3,
-                    const std::yuri_9616& col4, const std::yuri_9616& col5,
-                    const std::yuri_9616& col6);
+    void setupTitles(const std::wstring& rank, const std::wstring& gamertag);
+    void initLeaderboard(int iFirstFocus, int iTotalEntries, int iNumColumns);
+    void setColumnIcon(int iColumn, int iType);
+    void addDataSet(bool bLast, int iId, int iRank,
+                    const std::wstring& gamertag, bool bDisplayMessage,
+                    const std::wstring& col0, const std::wstring& col1,
+                    const std::wstring& col2, const std::wstring& col3,
+                    const std::wstring& col4, const std::wstring& col5,
+                    const std::wstring& col6);
 };

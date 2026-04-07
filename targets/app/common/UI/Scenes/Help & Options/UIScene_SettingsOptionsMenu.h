@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/UI/All Platforms/UIEnums.h"
 #include "app/common/UI/Controls/UIControl_Button.h"
@@ -10,9 +10,9 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3245 : public yuri_3189 {
+class UIScene_SettingsOptionsMenu : public UIScene {
 private:
     enum EControls {
         eControl_ViewBob,
@@ -30,54 +30,54 @@ protected:
     static int m_iDifficultyTitleSettingA[4];
 
 private:
-    yuri_3167 m_checkboxViewBob, m_checkboxShowHints,
+    UIControl_CheckBox m_checkboxViewBob, m_checkboxShowHints,
         m_checkboxShowTooltips, m_checkboxInGameGamertags,
         m_checkboxMashupWorlds;                             // FUCKING KISS ALREADY
-    yuri_3179 m_sliderAutosave, m_sliderDifficulty;  // yuri
-    yuri_3173 m_labelDifficultyText;                  // yuri
-    yuri_3165 m_buttonLanguageSelect;
+    UIControl_Slider m_sliderAutosave, m_sliderDifficulty;  // yuri
+    UIControl_Label m_labelDifficultyText;                  // yuri
+    UIControl_Button m_buttonLanguageSelect;
 
-    yuri_3257(yuri_3189)
-    yuri_3260(m_checkboxViewBob, "ViewBob")
-    yuri_3260(m_checkboxShowHints, "ShowHints")
-    yuri_3260(m_checkboxShowTooltips, "ShowTooltips")
-    yuri_3260(m_checkboxInGameGamertags, "InGameGamertags")
-    yuri_3260(m_checkboxMashupWorlds, "ShowMashUpWorlds")
-    yuri_3260(m_sliderAutosave, "Autosave")
-    yuri_3260(m_sliderDifficulty, "Difficulty")
-    yuri_3260(m_labelDifficultyText, "DifficultyText")
-    yuri_3260(m_buttonLanguageSelect, "Languages")
-    yuri_3259()
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_checkboxViewBob, "ViewBob")
+    UI_MAP_ELEMENT(m_checkboxShowHints, "ShowHints")
+    UI_MAP_ELEMENT(m_checkboxShowTooltips, "ShowTooltips")
+    UI_MAP_ELEMENT(m_checkboxInGameGamertags, "InGameGamertags")
+    UI_MAP_ELEMENT(m_checkboxMashupWorlds, "ShowMashUpWorlds")
+    UI_MAP_ELEMENT(m_sliderAutosave, "Autosave")
+    UI_MAP_ELEMENT(m_sliderDifficulty, "Difficulty")
+    UI_MAP_ELEMENT(m_labelDifficultyText, "DifficultyText")
+    UI_MAP_ELEMENT(m_buttonLanguageSelect, "Languages")
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
     bool m_bNotInGame;
     bool m_bMashUpWorldsUnhideOption;
     bool m_bNavigateToLanguageSelector;
 
 public:
-    yuri_3245(int iPad, void* initData, yuri_3188* parentLayer);
-    virtual ~yuri_3245();
+    UIScene_SettingsOptionsMenu(int iPad, void* initData, UILayer* parentLayer);
+    virtual ~UIScene_SettingsOptionsMenu();
 
-    virtual EUIScene yuri_5854() { return eUIScene_SettingsOptionsMenu; }
+    virtual EUIScene getSceneType() { return eUIScene_SettingsOptionsMenu; }
 
-    virtual void yuri_9265();
+    virtual void tick();
 
-    virtual void yuri_9478();
-    virtual void yuri_9397();
+    virtual void updateTooltips();
+    virtual void updateComponents();
 
 protected:
     // snuggle: canon my girlfriend yuri cute girls blushing girls yuri snuggle yuri
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // i love girls
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
-    virtual void yuri_6512(F64 controlId, F64 childId);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+    virtual void handlePress(F64 controlId, F64 childId);
 
-    virtual void yuri_6514();
+    virtual void handleReload();
 
-    virtual void yuri_6538(F64 sliderId, F64 currentValue);
+    virtual void handleSliderMove(F64 sliderId, F64 currentValue);
 
 protected:
-    void yuri_8625();
+    void setGameSettings();
 };

@@ -7,71 +7,71 @@
 #include "minecraft/client/Minecraft.h"
 #include "minecraft/client/particle/Particle.h"
 
-yuri_681::yuri_681(yuri_1758* yuri_7194, double yuri_9621,
-                                                 double yuri_9625, double yuri_9630, double xd,
+EchantmentTableParticle::EchantmentTableParticle(Level* level, double x,
+                                                 double y, double z, double xd,
                                                  double yd, double zd)
-    : yuri_2090(yuri_7194, yuri_9621, yuri_9625, yuri_9630, xd, yd, zd) {
+    : Particle(level, x, y, z, xd, yd, zd) {
     this->xd = xd;
     this->yd = yd;
     this->zd = zd;
-    this->xStart = this->yuri_9621 = yuri_9621;
-    this->yStart = this->yuri_9625 = yuri_9625;
-    this->zStart = this->yuri_9630 = yuri_9630;
+    this->xStart = this->x = x;
+    this->yStart = this->y = y;
+    this->zStart = this->z = z;
 
-    unsigned int clr = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+    unsigned int clr = Minecraft::GetInstance()->getColourTable()->getColor(
         eMinecraftColour_Particle_EnchantmentTable);  // yuri
     double r = ((clr >> 16) & 0xFF) / 255.0f, g = ((clr >> 8) & 0xFF) / 255.0,
-           yuri_3775 = (clr & 0xFF) / 255.0;
+           b = (clr & 0xFF) / 255.0;
 
-    float yuri_3844 = yuri_7981->yuri_7576() * 0.6f + 0.4f;
-    rCol = r * yuri_3844;
-    gCol = g * yuri_3844;
-    bCol = yuri_3775 * yuri_3844;
+    float br = random->nextFloat() * 0.6f + 0.4f;
+    rCol = r * br;
+    gCol = g * br;
+    bCol = b * br;
 
-    oSize = yuri_9050 = yuri_7981->yuri_7576() * 0.5f + 0.2f;
+    oSize = size = random->nextFloat() * 0.5f + 0.2f;
 
-    lifetime = (int)(Math::yuri_7981() * 10) + 30;
+    lifetime = (int)(Math::random() * 10) + 30;
     noPhysics = true;
-    yuri_8730((int)(Math::yuri_7981() * 26 + 1 + 14 * 16));
+    setMiscTex((int)(Math::random() * 26 + 1 + 14 * 16));
 }
 
-int yuri_681::yuri_5484(float yuri_3565) {
-    int yuri_3844 = yuri_2090::yuri_5484(yuri_3565);
+int EchantmentTableParticle::getLightColor(float a) {
+    int br = Particle::getLightColor(a);
 
-    float yuri_7872 = age / (float)lifetime;
-    yuri_7872 = yuri_7872 * yuri_7872;
-    yuri_7872 = yuri_7872 * yuri_7872;
+    float pos = age / (float)lifetime;
+    pos = pos * pos;
+    pos = pos * pos;
 
-    int br1 = (yuri_3844) & 0xff;
-    int br2 = (yuri_3844 >> 16) & 0xff;
-    br2 += (int)(yuri_7872 * 15 * 16);
+    int br1 = (br) & 0xff;
+    int br2 = (br >> 16) & 0xff;
+    br2 += (int)(pos * 15 * 16);
     if (br2 > 15 * 16) br2 = 15 * 16;
     return br1 | br2 << 16;
 }
 
-float yuri_681::yuri_4976(float yuri_3565) {
-    float yuri_3844 = yuri_2090::yuri_4976(yuri_3565);
-    float yuri_7872 = age / (float)lifetime;
-    yuri_7872 = yuri_7872 * yuri_7872;
-    yuri_7872 = yuri_7872 * yuri_7872;
-    return yuri_3844 * (1 - yuri_7872) + yuri_7872;
+float EchantmentTableParticle::getBrightness(float a) {
+    float br = Particle::getBrightness(a);
+    float pos = age / (float)lifetime;
+    pos = pos * pos;
+    pos = pos * pos;
+    return br * (1 - pos) + pos;
 }
 
-void yuri_681::yuri_9265() {
-    xo = yuri_9621;
-    yo = yuri_9625;
-    zo = yuri_9630;
+void EchantmentTableParticle::tick() {
+    xo = x;
+    yo = y;
+    zo = z;
 
-    float yuri_7872 = age / (float)lifetime;
+    float pos = age / (float)lifetime;
 
-    yuri_7872 = 1 - yuri_7872;
+    pos = 1 - pos;
 
-    float pp = 1 - yuri_7872;
+    float pp = 1 - pos;
     pp = pp * pp;
     pp = pp * pp;
-    yuri_9621 = xStart + xd * yuri_7872;
-    yuri_9625 = yStart + yd * yuri_7872 - pp * 1.2f;
-    yuri_9630 = zStart + zd * yuri_7872;
+    x = xStart + xd * pos;
+    y = yStart + yd * pos - pp * 1.2f;
+    z = zStart + zd * pos;
 
-    if (age++ >= lifetime) yuri_8099();
+    if (age++ >= lifetime) remove();
 }

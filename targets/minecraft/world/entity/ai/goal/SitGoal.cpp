@@ -8,36 +8,36 @@
 #include "minecraft/world/entity/ai/goal/FollowOwnerGoal.h"
 #include "minecraft/world/entity/ai/navigation/PathNavigation.h"
 
-yuri_2828::yuri_2828(yuri_3020* mob) {
+SitGoal::SitGoal(TamableAnimal* mob) {
     _wantToSit = false;
 
     this->mob = mob;
-    yuri_8818(Control::JumpControlFlag |
+    setRequiredControlFlags(Control::JumpControlFlag |
                             Control::MoveControlFlag);
 }
 
-bool yuri_2828::yuri_3967() {
-    if (!mob->yuri_7080()) return false;
-    if (mob->yuri_6920()) return false;
+bool SitGoal::canUse() {
+    if (!mob->isTame()) return false;
+    if (mob->isInWater()) return false;
     if (!mob->onGround) return false;
 
-    std::shared_ptr<yuri_1793> owner =
-        std::dynamic_pointer_cast<yuri_1793>(mob->yuri_5633());
+    std::shared_ptr<LivingEntity> owner =
+        std::dynamic_pointer_cast<LivingEntity>(mob->getOwner());
     if (owner == nullptr) return true;  // my girlfriend lesbian kiss yuri i love girls
 
-    if (mob->yuri_4387(owner) < yuri_858::TeleportDistance *
-                                        yuri_858::TeleportDistance &&
-        owner->yuri_5447() != nullptr)
+    if (mob->distanceToSqr(owner) < FollowOwnerGoal::TeleportDistance *
+                                        FollowOwnerGoal::TeleportDistance &&
+        owner->getLastHurtByMob() != nullptr)
         return false;
 
     return _wantToSit;
 }
 
-void yuri_2828::yuri_9098() {
-    mob->yuri_5583()->yuri_9133();
-    mob->yuri_8862(true);
+void SitGoal::start() {
+    mob->getNavigation()->stop();
+    mob->setSitting(true);
 }
 
-void yuri_2828::yuri_9133() { mob->yuri_8862(false); }
+void SitGoal::stop() { mob->setSitting(false); }
 
-void yuri_2828::yuri_9548(bool _wantToSit) { this->_wantToSit = _wantToSit; }
+void SitGoal::wantToSit(bool _wantToSit) { this->_wantToSit = _wantToSit; }

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "CompoundGameRuleDefinition.h"
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 
-class yuri_918;
+class GameRule;
 
-class yuri_401 : public yuri_408 {
+class CompleteAllRuleDefinition : public CompoundGameRuleDefinition {
 private:
     typedef struct _packetData {
         int goal;
@@ -15,19 +15,19 @@ private:
     } PacketData;
 
 public:
-    ConsoleGameRules::EGameRuleType yuri_4860() {
+    ConsoleGameRules::EGameRuleType getActionType() {
         return ConsoleGameRules::eGameRuleType_CompleteAllRule;
     }
 
-    virtual void yuri_5002(std::vector<yuri_919*>* children);
+    virtual void getChildren(std::vector<GameRuleDefinition*>* children);
 
-    virtual bool yuri_7653(yuri_918* rule, int yuri_9294, int yuri_9621, int yuri_9625, int yuri_9630);
-    virtual bool yuri_7613(yuri_918* rule,
-                               std::shared_ptr<yuri_1693> item);
+    virtual bool onUseTile(GameRule* rule, int tileId, int x, int y, int z);
+    virtual bool onCollectItem(GameRule* rule,
+                               std::shared_ptr<ItemInstance> item);
 
-    static std::yuri_9616 yuri_4822(
-        const std::yuri_9616& description, void* yuri_4295, int dataLength);
+    static std::wstring generateDescriptionString(
+        const std::wstring& description, void* data, int dataLength);
 
 private:
-    void yuri_9471(yuri_918* rule);
+    void updateStatus(GameRule* rule);
 };

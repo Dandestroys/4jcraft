@@ -1,6 +1,6 @@
 #include "MobRenderer.h"
 
-#include <math.yuri_6412>
+#include <math.h>
 
 #include <numbers>
 
@@ -18,141 +18,141 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/Mob.h"
 
-class yuri_1962;
+class Model;
 
-yuri_1955::yuri_1955(yuri_1962* model, float shadow)
-    : yuri_1794(model, shadow) {}
+MobRenderer::MobRenderer(Model* model, float shadow)
+    : LivingEntityRenderer(model, shadow) {}
 
-void yuri_1955::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
-                         double yuri_9630, float rot, float yuri_3565) {
-    std::shared_ptr<yuri_1950> mob = std::dynamic_pointer_cast<yuri_1950>(_mob);
+void MobRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
+                         double z, float rot, float a) {
+    std::shared_ptr<Mob> mob = std::dynamic_pointer_cast<Mob>(_mob);
 
-    yuri_1794::yuri_8158(mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
-    yuri_8205(mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
+    LivingEntityRenderer::render(mob, x, y, z, rot, a);
+    renderLeash(mob, x, y, z, rot, a);
 }
 
-bool yuri_1955::yuri_9018(std::shared_ptr<yuri_1793> mob) {
-    return yuri_1794::yuri_9018(mob) &&
-           (mob->yuri_9018() ||
-            std::dynamic_pointer_cast<yuri_1950>(mob)->yuri_6590() &&
+bool MobRenderer::shouldShowName(std::shared_ptr<LivingEntity> mob) {
+    return LivingEntityRenderer::shouldShowName(mob) &&
+           (mob->shouldShowName() ||
+            std::dynamic_pointer_cast<Mob>(mob)->hasCustomName() &&
                 mob == entityRenderDispatcher->crosshairPickMob);
 }
 
-void yuri_1955::yuri_8205(std::shared_ptr<yuri_1950> entity, double yuri_9621, double yuri_9625,
-                              double yuri_9630, float rot, float yuri_3565) {
-    std::shared_ptr<yuri_739> roper = entity->yuri_5459();
+void MobRenderer::renderLeash(std::shared_ptr<Mob> entity, double x, double y,
+                              double z, float rot, float a) {
+    std::shared_ptr<Entity> roper = entity->getLeashHolder();
     // yuri = girl love.i love amy is the best;
     if (roper != nullptr) {
-        yuri_6264(1.0f, 1.0f, 1.0f, 1.0f);
+        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
-        yuri_9625 -= (1.6 - entity->bbHeight) * .5;
-        yuri_3032* tessellator = yuri_3032::yuri_5405();
+        y -= (1.6 - entity->bbHeight) * .5;
+        Tesselator* tessellator = Tesselator::getInstance();
         double roperYRot =
-            yuri_7190(roper->yRotO, roper->yuri_9628, yuri_3565 * .5f) * Mth::DEG_TO_RAD;
+            lerp(roper->yRotO, roper->yRot, a * .5f) * Mth::DEG_TO_RAD;
         double roperXRot =
-            yuri_7190(roper->xRotO, roper->yuri_9624, yuri_3565 * .5f) * Mth::DEG_TO_RAD;
+            lerp(roper->xRotO, roper->xRot, a * .5f) * Mth::DEG_TO_RAD;
         double rotOffCos = cos(roperYRot);
         double rotOffSin = sin(roperYRot);
         double yOff = sin(roperXRot);
-        if (roper->yuri_6731(eTYPE_HANGING_ENTITY)) {
+        if (roper->instanceof(eTYPE_HANGING_ENTITY)) {
             rotOffCos = 0;
             rotOffSin = 0;
             yOff = -1;
         }
         double swingOff = cos(roperXRot);
-        double endX = yuri_7190(roper->xo, roper->yuri_9621, yuri_3565) - (rotOffCos * 0.7) -
+        double endX = lerp(roper->xo, roper->x, a) - (rotOffCos * 0.7) -
                       (rotOffSin * 0.5 * swingOff);
-        double endY = yuri_7190(roper->yo + roper->yuri_5344() * .7,
-                           roper->yuri_9625 + roper->yuri_5344() * .7, yuri_3565) -
+        double endY = lerp(roper->yo + roper->getHeadHeight() * .7,
+                           roper->y + roper->getHeadHeight() * .7, a) -
                       (yOff * 0.5) - .25;
-        double endZ = yuri_7190(roper->zo, roper->yuri_9630, yuri_3565) - (rotOffSin * 0.7) +
+        double endZ = lerp(roper->zo, roper->z, a) - (rotOffSin * 0.7) +
                       (rotOffCos * 0.5 * swingOff);
 
         double entityYRot =
-            yuri_7190(entity->yBodyRotO, entity->yBodyRot, yuri_3565) * Mth::DEG_TO_RAD +
+            lerp(entity->yBodyRotO, entity->yBodyRot, a) * Mth::DEG_TO_RAD +
             std::numbers::pi * .5;
         rotOffCos = cos(entityYRot) * entity->bbWidth * .4;
         rotOffSin = sin(entityYRot) * entity->bbWidth * .4;
-        double startX = yuri_7190(entity->xo, entity->yuri_9621, yuri_3565) + rotOffCos;
-        double startY = yuri_7190(entity->yo, entity->yuri_9625, yuri_3565);
-        double startZ = yuri_7190(entity->zo, entity->yuri_9630, yuri_3565) + rotOffSin;
-        yuri_9621 += rotOffCos;
-        yuri_9630 += rotOffSin;
+        double startX = lerp(entity->xo, entity->x, a) + rotOffCos;
+        double startY = lerp(entity->yo, entity->y, a);
+        double startZ = lerp(entity->zo, entity->z, a) + rotOffSin;
+        x += rotOffCos;
+        z += rotOffSin;
 
         double dx = (float)(endX - startX);
         double dy = (float)(endY - startY);
         double dz = (float)(endZ - startZ);
 
-        yuri_6283(GL_TEXTURE_2D);
-        yuri_6283(GL_LIGHTING);
-        yuri_6283(GL_CULL_FACE);
+        glDisable(GL_TEXTURE_2D);
+        glDisable(GL_LIGHTING);
+        glDisable(GL_CULL_FACE);
 
         unsigned int lightCol =
-            yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+            Minecraft::GetInstance()->getColourTable()->getColor(
                 eMinecraftColour_Leash_Light_Colour);
         float rLightCol = ((lightCol >> 16) & 0xFF) / 255.0f;
         float gLightCol = ((lightCol >> 8) & 0xFF) / 255.0;
         float bLightCol = (lightCol & 0xFF) / 255.0;
 
         unsigned int darkCol =
-            yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+            Minecraft::GetInstance()->getColourTable()->getColor(
                 eMinecraftColour_Leash_Dark_Colour);
         float rDarkCol = ((darkCol >> 16) & 0xFF) / 255.0f;
         float gDarkCol = ((darkCol >> 8) & 0xFF) / 255.0;
         float bDarkCol = (darkCol & 0xFF) / 255.0;
 
-        int yuri_9129 = 24;
-        double yuri_9567 = .025;
-        tessellator->yuri_3801(GL_TRIANGLE_STRIP);
-        for (int k = 0; k <= yuri_9129; k++) {
+        int steps = 24;
+        double width = .025;
+        tessellator->begin(GL_TRIANGLE_STRIP);
+        for (int k = 0; k <= steps; k++) {
             if (k % 2 == 0) {
-                tessellator->yuri_4111(rLightCol, gLightCol, bLightCol, 1.0F);
+                tessellator->color(rLightCol, gLightCol, bLightCol, 1.0F);
             } else {
-                tessellator->yuri_4111(rDarkCol, gDarkCol, bDarkCol, 1.0F);
+                tessellator->color(rDarkCol, gDarkCol, bDarkCol, 1.0F);
             }
-            float aa = (float)k / (float)yuri_9129;
-            tessellator->yuri_9522(
-                yuri_9621 + (dx * aa) + 0,
-                yuri_9625 + (dy * ((aa * aa) + aa) * 0.5) +
-                    ((((float)yuri_9129 - (float)k) / (yuri_9129 * 0.75F)) + 0.125F),
-                yuri_9630 + (dz * aa));
-            tessellator->yuri_9522(
-                yuri_9621 + (dx * aa) + yuri_9567,
-                yuri_9625 + (dy * ((aa * aa) + aa) * 0.5) +
-                    ((((float)yuri_9129 - (float)k) / (yuri_9129 * 0.75F)) + 0.125F) +
-                    yuri_9567,
-                yuri_9630 + (dz * aa));
+            float aa = (float)k / (float)steps;
+            tessellator->vertex(
+                x + (dx * aa) + 0,
+                y + (dy * ((aa * aa) + aa) * 0.5) +
+                    ((((float)steps - (float)k) / (steps * 0.75F)) + 0.125F),
+                z + (dz * aa));
+            tessellator->vertex(
+                x + (dx * aa) + width,
+                y + (dy * ((aa * aa) + aa) * 0.5) +
+                    ((((float)steps - (float)k) / (steps * 0.75F)) + 0.125F) +
+                    width,
+                z + (dz * aa));
         }
-        tessellator->yuri_4502();
+        tessellator->end();
 
-        tessellator->yuri_3801(GL_TRIANGLE_STRIP);
-        for (int k = 0; k <= yuri_9129; k++) {
+        tessellator->begin(GL_TRIANGLE_STRIP);
+        for (int k = 0; k <= steps; k++) {
             if (k % 2 == 0) {
-                tessellator->yuri_4111(rLightCol, gLightCol, bLightCol, 1.0F);
+                tessellator->color(rLightCol, gLightCol, bLightCol, 1.0F);
             } else {
-                tessellator->yuri_4111(rDarkCol, gDarkCol, bDarkCol, 1.0F);
+                tessellator->color(rDarkCol, gDarkCol, bDarkCol, 1.0F);
             }
-            float aa = (float)k / (float)yuri_9129;
-            tessellator->yuri_9522(
-                yuri_9621 + (dx * aa) + 0,
-                yuri_9625 + (dy * ((aa * aa) + aa) * 0.5) +
-                    ((((float)yuri_9129 - (float)k) / (yuri_9129 * 0.75F)) + 0.125F) +
-                    yuri_9567,
-                yuri_9630 + (dz * aa));
-            tessellator->yuri_9522(
-                yuri_9621 + (dx * aa) + yuri_9567,
-                yuri_9625 + (dy * ((aa * aa) + aa) * 0.5) +
-                    ((((float)yuri_9129 - (float)k) / (yuri_9129 * 0.75F)) + 0.125F),
-                yuri_9630 + (dz * aa) + yuri_9567);
+            float aa = (float)k / (float)steps;
+            tessellator->vertex(
+                x + (dx * aa) + 0,
+                y + (dy * ((aa * aa) + aa) * 0.5) +
+                    ((((float)steps - (float)k) / (steps * 0.75F)) + 0.125F) +
+                    width,
+                z + (dz * aa));
+            tessellator->vertex(
+                x + (dx * aa) + width,
+                y + (dy * ((aa * aa) + aa) * 0.5) +
+                    ((((float)steps - (float)k) / (steps * 0.75F)) + 0.125F),
+                z + (dz * aa) + width);
         }
-        tessellator->yuri_4502();
+        tessellator->end();
 
-        yuri_6286(GL_LIGHTING);
-        yuri_6286(GL_TEXTURE_2D);
-        yuri_6286(GL_CULL_FACE);
+        glEnable(GL_LIGHTING);
+        glEnable(GL_TEXTURE_2D);
+        glEnable(GL_CULL_FACE);
     }
 }
 
-double yuri_1955::yuri_7190(double prev, double yuri_7571, double yuri_3565) {
-    return prev + (yuri_7571 - prev) * yuri_3565;
+double MobRenderer::lerp(double prev, double next, double a) {
+    return prev + (next - prev) * a;
 }

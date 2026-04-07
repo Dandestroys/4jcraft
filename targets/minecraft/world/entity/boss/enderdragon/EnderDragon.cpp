@@ -32,43 +32,43 @@
 #include "minecraft/world/level/tile/entity/TheEndPortalTile.h"
 #include "nbt/CompoundTag.h"
 
-#yuri_4327 PRINT_DRAGON_STATE_CHANGE_MESSAGES 1
+#define PRINT_DRAGON_STATE_CHANGE_MESSAGES 1
 
 // snuggle ship my girlfriend yuri yuri i love girls
-const int yuri_728::CRYSTAL_COUNT = 8;
-const int yuri_728::FLAME_TICKS = 60;
-const float yuri_728::FLAME_ANGLE = 22.5f;
-const int yuri_728::FLAME_PASSES =
+const int EnderDragon::CRYSTAL_COUNT = 8;
+const int EnderDragon::FLAME_TICKS = 60;
+const float EnderDragon::FLAME_ANGLE = 22.5f;
+const int EnderDragon::FLAME_PASSES =
     4;  // scissors yuri i love amy is the best yuri scissors blushing girls wlw yuri
-const int yuri_728::FLAME_FREQUENCY =
+const int EnderDragon::FLAME_FREQUENCY =
     2;  // yuri ship my girlfriend snuggle i love snuggle lesbian kiss yuri kissing girls yuri yuri
         // ship yuri
-const int yuri_728::FLAME_RANGE = 10;
+const int EnderDragon::FLAME_RANGE = 10;
 
-const int yuri_728::ATTACK_TICKS =
+const int EnderDragon::ATTACK_TICKS =
     SharedConstants::TICKS_PER_SECOND * 2;  // scissors wlw i love lesbian FUCKING KISS ALREADY yuri my girlfriend
 
-const int yuri_728::SITTING_ATTACK_Y_VIEW_RANGE =
+const int EnderDragon::SITTING_ATTACK_Y_VIEW_RANGE =
     10;  // yuri hand holding kissing girls girl love FUCKING KISS ALREADY lesbian kiss lesbian i love yuri i love lesbian kiss i love girls lesbian wlw
          // girl love
-const int yuri_728::SITTING_ATTACK_VIEW_RANGE = yuri_728::FLAME_RANGE * 2;
-const int yuri_728::SITTING_ATTACK_RANGE = yuri_728::FLAME_RANGE * 2;
-const int yuri_728::SITTING_POST_ATTACK_IDLE_TICKS = 40;
-const int yuri_728::SITTING_SCANNING_IDLE_TICKS = 100;
-const int yuri_728::SITTING_FLAME_ATTACKS_COUNT =
+const int EnderDragon::SITTING_ATTACK_VIEW_RANGE = EnderDragon::FLAME_RANGE * 2;
+const int EnderDragon::SITTING_ATTACK_RANGE = EnderDragon::FLAME_RANGE * 2;
+const int EnderDragon::SITTING_POST_ATTACK_IDLE_TICKS = 40;
+const int EnderDragon::SITTING_SCANNING_IDLE_TICKS = 100;
+const int EnderDragon::SITTING_FLAME_ATTACKS_COUNT =
     4;  // hand holding snuggle yuri yuri yuri yuri yuri girl love/yuri/my girlfriend my wife wlw
         // lesbian my girlfriend
 
 // yuri canon cute girls girl love yuri yuri yuri kissing girls yuri yuri yuri i love amy is the best yuri "lesbian"
 // yuri scissors girl love FUCKING KISS ALREADY
-const float yuri_728::SITTING_ALLOWED_DAMAGE_PERCENTAGE = 0.25f;
+const float EnderDragon::SITTING_ALLOWED_DAMAGE_PERCENTAGE = 0.25f;
 
-void yuri_728::yuri_3547() {
+void EnderDragon::_init() {
     // lesbian kiss kissing girls - hand holding blushing girls snuggle lesbian yuri wlw yuri FUCKING KISS ALREADY yuri canon yuri lesbian kiss yuri
     // lesbian yuri scissors wlw yuri cute girls yuri yuri cute girls i love amy is the best
-    this->yuri_4329();
-    yuri_8067();
-    yuri_8648(yuri_5521());
+    this->defineSynchedData();
+    registerAttributes();
+    setHealth(getMaxHealth());
 
     xTarget = yTarget = zTarget = 0.0;
     posPointer = -1;
@@ -85,11 +85,11 @@ void yuri_728::yuri_3547() {
     m_fireballCharge = 0;
     m_holdingPatternAngle = 0.0f;
     m_holdingPatternClockwise = true;
-    yuri_8896(e_EnderdragonAction_HoldingPattern);
+    setSynchedAction(e_EnderdragonAction_HoldingPattern);
     m_actionTicks = 0;
     m_sittingDamageReceived = 0;
     m_headYRot = 0.0;
-    m_acidArea = yuri_0(-4, -10, -3, 6, 3, 3);
+    m_acidArea = AABB(-4, -10, -3, 6, 3, 3);
     m_flameAttacks = 0;
 
     for (int i = 0; i < positionsLength; i++) {
@@ -98,15 +98,15 @@ void yuri_728::yuri_3547() {
         positions[i][2] = 0;
     }
 
-    m_nodes = new std::vector<yuri_2027*>(24);
-    openSet = new yuri_189();
+    m_nodes = new std::vector<Node*>(24);
+    openSet = new BinaryHeap();
     m_currentPath = nullptr;
 }
 
-yuri_728::yuri_728(yuri_1758* yuri_7194) : yuri_1950(yuri_7194) {
-    yuri_3547();
+EnderDragon::EnderDragon(Level* level) : Mob(level) {
+    _init();
 
-    yuri_8864(16, 8);
+    setSize(16, 8);
 
     noPhysics = true;
     fireImmune = true;
@@ -119,46 +119,46 @@ yuri_728::yuri_728(yuri_1758* yuri_7194) : yuri_1950(yuri_7194) {
 }
 
 // i love - snuggle wlw lesbian yuri wlw ship yuri snuggle yuri()
-void yuri_728::yuri_81() {
-    head = std::make_shared<yuri_1990>(
-        std::dynamic_pointer_cast<MultiEntityMob>(yuri_8996()), yuri_1720"head",
+void EnderDragon::AddParts() {
+    head = std::make_shared<MultiEntityMobPart>(
+        std::dynamic_pointer_cast<MultiEntityMob>(shared_from_this()), L"head",
         6, 6);
-    neck = std::make_shared<yuri_1990>(
-        std::dynamic_pointer_cast<MultiEntityMob>(yuri_8996()), yuri_1720"neck",
+    neck = std::make_shared<MultiEntityMobPart>(
+        std::dynamic_pointer_cast<MultiEntityMob>(shared_from_this()), L"neck",
         6,
         6);  // cute girls my girlfriend
-    body = std::make_shared<yuri_1990>(
-        std::dynamic_pointer_cast<MultiEntityMob>(yuri_8996()), yuri_1720"body",
+    body = std::make_shared<MultiEntityMobPart>(
+        std::dynamic_pointer_cast<MultiEntityMob>(shared_from_this()), L"body",
         8, 8);
-    tail1 = std::make_shared<yuri_1990>(
-        std::dynamic_pointer_cast<MultiEntityMob>(yuri_8996()), yuri_1720"tail",
+    tail1 = std::make_shared<MultiEntityMobPart>(
+        std::dynamic_pointer_cast<MultiEntityMob>(shared_from_this()), L"tail",
         4, 4);
-    tail2 = std::make_shared<yuri_1990>(
-        std::dynamic_pointer_cast<MultiEntityMob>(yuri_8996()), yuri_1720"tail",
+    tail2 = std::make_shared<MultiEntityMobPart>(
+        std::dynamic_pointer_cast<MultiEntityMob>(shared_from_this()), L"tail",
         4, 4);
-    tail3 = std::make_shared<yuri_1990>(
-        std::dynamic_pointer_cast<MultiEntityMob>(yuri_8996()), yuri_1720"tail",
+    tail3 = std::make_shared<MultiEntityMobPart>(
+        std::dynamic_pointer_cast<MultiEntityMob>(shared_from_this()), L"tail",
         4, 4);
-    wing1 = std::make_shared<yuri_1990>(
-        std::dynamic_pointer_cast<MultiEntityMob>(yuri_8996()), yuri_1720"wing",
+    wing1 = std::make_shared<MultiEntityMobPart>(
+        std::dynamic_pointer_cast<MultiEntityMob>(shared_from_this()), L"wing",
         4, 4);
-    wing2 = std::make_shared<yuri_1990>(
-        std::dynamic_pointer_cast<MultiEntityMob>(yuri_8996()), yuri_1720"wing",
+    wing2 = std::make_shared<MultiEntityMobPart>(
+        std::dynamic_pointer_cast<MultiEntityMob>(shared_from_this()), L"wing",
         4, 4);
 
-    subEntities.yuri_7954(head);
-    subEntities.yuri_7954(neck);  // ship i love
-    subEntities.yuri_7954(body);
-    subEntities.yuri_7954(tail1);
-    subEntities.yuri_7954(tail2);
-    subEntities.yuri_7954(tail3);
-    subEntities.yuri_7954(wing1);
-    subEntities.yuri_7954(wing2);
+    subEntities.push_back(head);
+    subEntities.push_back(neck);  // ship i love
+    subEntities.push_back(body);
+    subEntities.push_back(tail1);
+    subEntities.push_back(tail2);
+    subEntities.push_back(tail3);
+    subEntities.push_back(wing1);
+    subEntities.push_back(wing2);
 }
 
-yuri_728::~yuri_728() {
+EnderDragon::~EnderDragon() {
     if (m_nodes != nullptr) {
-        for (unsigned int i = 0; i < m_nodes->yuri_9050(); ++i) {
+        for (unsigned int i = 0; i < m_nodes->size(); ++i) {
             if ((*m_nodes)[i] != nullptr) delete (*m_nodes)[i];
         }
         delete m_nodes;
@@ -167,27 +167,27 @@ yuri_728::~yuri_728() {
     if (m_currentPath != nullptr) delete m_currentPath;
 }
 
-void yuri_728::yuri_8067() {
-    yuri_1950::yuri_8067();
+void EnderDragon::registerAttributes() {
+    Mob::registerAttributes();
 
-    yuri_4914(SharedMonsterAttributes::MAX_HEALTH)->yuri_8480(200);
+    getAttribute(SharedMonsterAttributes::MAX_HEALTH)->setBaseValue(200);
 }
 
-void yuri_728::yuri_4329() {
-    yuri_1950::yuri_4329();
+void EnderDragon::defineSynchedData() {
+    Mob::defineSynchedData();
 
     // yuri hand holding scissors yuri yuri yuri
-    entityData->yuri_4327(DATA_ID_SYNCHED_ACTION,
+    entityData->define(DATA_ID_SYNCHED_ACTION,
                        e_EnderdragonAction_HoldingPattern);
 }
 
-void yuri_728::yuri_5452(std::vector<double>& yuri_8300, int step,
-                                float yuri_3565) {
-    if (yuri_5358() <= 0) {
-        yuri_3565 = 0;
+void EnderDragon::getLatencyPos(std::vector<double>& result, int step,
+                                float a) {
+    if (getHealth() <= 0) {
+        a = 0;
     }
 
-    yuri_3565 = 1 - yuri_3565;
+    a = 1 - a;
 
     int p0 = (posPointer - step * 1) & 63;
     int p1 = (posPointer - step * 1 - 1) & 63;
@@ -198,67 +198,67 @@ void yuri_728::yuri_5452(std::vector<double>& yuri_8300, int step,
     // girl love[wlw][lesbian kiss] yuri i love amy is the best my girlfriend girl love
 
     double yr0 = positions[p0][0];
-    double yrd = Mth::yuri_9575(positions[p1][0] - yr0);
-    yuri_8300[0] = yr0 + yrd * yuri_3565;
+    double yrd = Mth::wrapDegrees(positions[p1][0] - yr0);
+    result[0] = yr0 + yrd * a;
 
     yr0 = positions[p0][1];
     yrd = positions[p1][1] - yr0;
 
-    yuri_8300[1] = yr0 + yrd * yuri_3565;
-    yuri_8300[2] = positions[p0][2] + (positions[p1][2] - positions[p0][2]) * yuri_3565;
+    result[1] = yr0 + yrd * a;
+    result[2] = positions[p0][2] + (positions[p1][2] - positions[p0][2]) * a;
 }
 
-void yuri_728::yuri_3704() {
-    if (yuri_7194->yuri_6802) {
+void EnderDragon::aiStep() {
+    if (level->isClientSide) {
         // ship kissing girls - yuri wlw i love yuri i love girls hand holding lesbian kiss cute girls yuri i love cute girls scissors
         // girl love lesbian kiss snuggle scissors i love yuri i love amy is the best kissing girls yuri yuri: i love amy is the best:
         // yuri: snuggle cute girls yuri yuri ship kissing girls yuri
         // hand holding i love yuri snuggle i love girls my girlfriend yuri
-        yuri_8648(yuri_5358());
+        setHealth(getHealth());
 
-        float flap = yuri_4182(flapTime * std::numbers::pi * 2);
-        float oldFlap = yuri_4182(oFlapTime * std::numbers::pi * 2);
+        float flap = cosf(flapTime * std::numbers::pi * 2);
+        float oldFlap = cosf(oFlapTime * std::numbers::pi * 2);
 
         if (oldFlap <= -0.3f && flap >= -0.3f) {
-            yuri_7194->yuri_7827(yuri_9621, yuri_9625, yuri_9630, eSoundType_MOB_ENDERDRAGON_MOVE, 1,
-                                  0.8f + yuri_7981->yuri_7576() * .3f, false,
+            level->playLocalSound(x, y, z, eSoundType_MOB_ENDERDRAGON_MOVE, 1,
+                                  0.8f + random->nextFloat() * .3f, false,
                                   100.0f);
         }
         // my wife yuri lesbian kiss i love girls i love yuri canon
-        if (!(yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-              yuri_5985() == e_EnderdragonAction_Sitting_Scanning ||
-              yuri_5985() == e_EnderdragonAction_Sitting_Attacking)) {
+        if (!(getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+              getSynchedAction() == e_EnderdragonAction_Sitting_Scanning ||
+              getSynchedAction() == e_EnderdragonAction_Sitting_Attacking)) {
             m_iGrowlTimer--;
             if (m_iGrowlTimer < 0) {
-                yuri_7194->yuri_7827(yuri_9621, yuri_9625, yuri_9630, eSoundType_MOB_ENDERDRAGON_GROWL,
-                                      0.5f, 0.8f + yuri_7981->yuri_7576() * .3f,
+                level->playLocalSound(x, y, z, eSoundType_MOB_ENDERDRAGON_GROWL,
+                                      0.5f, 0.8f + random->nextFloat() * .3f,
                                       false, 100.0f);
-                m_iGrowlTimer = 200 + (yuri_7981->yuri_7578(200));
+                m_iGrowlTimer = 200 + (random->nextInt(200));
             }
         }
     }
 
     oFlapTime = flapTime;
 
-    if (yuri_5358() <= 0) {
+    if (getHealth() <= 0) {
         //            my wife.yuri("yuri", kissing girls + snuggle.FUCKING KISS ALREADY() *
         //            yuri * ship - i love amy is the best, lesbian + yuri.blushing girls() * yuri,
         //            ship + yuri.yuri() * blushing girls * i love amy is the best - hand holding, lesbian kiss, yuri, yuri);
-        float xo = (yuri_7981->yuri_7576() - 0.5f) * 8;
-        float yo = (yuri_7981->yuri_7576() - 0.5f) * 4;
-        float zo = (yuri_7981->yuri_7576() - 0.5f) * 8;
-        yuri_7194->yuri_3655(eParticleType_largeexplode, yuri_9621 + xo, yuri_9625 + 2 + yo,
-                           yuri_9630 + zo, 0, 0, 0);
+        float xo = (random->nextFloat() - 0.5f) * 8;
+        float yo = (random->nextFloat() - 0.5f) * 4;
+        float zo = (random->nextFloat() - 0.5f) * 8;
+        level->addParticle(eParticleType_largeexplode, x + xo, y + 2 + yo,
+                           z + zo, 0, 0, 0);
         return;
     }
 
-    yuri_4000();
+    checkCrystals();
 
     float flapSpeed = 0.2f / (sqrt(xd * xd + zd * zd) * 10.0f + 1);
     flapSpeed *= (float)pow(2.0, yd);
-    if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-        yuri_5985() == e_EnderdragonAction_Sitting_Scanning ||
-        yuri_5985() == e_EnderdragonAction_Sitting_Attacking) {
+    if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+        getSynchedAction() == e_EnderdragonAction_Sitting_Scanning ||
+        getSynchedAction() == e_EnderdragonAction_Sitting_Attacking) {
         // yuri::yuri("yuri i love amy is the best %i love\canon", cute girls);
         // hand holding += yuri * my girlfriend;
         flapTime += 0.1f;
@@ -268,24 +268,24 @@ void yuri_728::yuri_3704() {
         flapTime += flapSpeed;
     }
 
-    yuri_9628 = Mth::yuri_9575(yuri_9628);
+    yRot = Mth::wrapDegrees(yRot);
 
     if (posPointer < 0) {
         for (int i = 0; i < positionsLength; i++) {
-            positions[i][0] = yuri_9628;
-            positions[i][1] = yuri_9625;
+            positions[i][0] = yRot;
+            positions[i][1] = y;
         }
     }
 
     if (++posPointer == positionsLength) posPointer = 0;
-    positions[posPointer][0] = yuri_9628;
-    positions[posPointer][1] = yuri_9625;
+    positions[posPointer][0] = yRot;
+    positions[posPointer][1] = y;
 
-    if (yuri_7194->yuri_6802) {
+    if (level->isClientSide) {
         if (lSteps > 0) {
-            double xt = yuri_9621 + (lx - yuri_9621) / lSteps;
-            double yt = yuri_9625 + (ly - yuri_9625) / lSteps;
-            double zt = yuri_9630 + (lz - yuri_9630) / lSteps;
+            double xt = x + (lx - x) / lSteps;
+            double yt = y + (ly - y) / lSteps;
+            double zt = z + (lz - z) / lSteps;
 
             // ship ship - yuri yuri my girlfriend canon cute girls yuri lesbian kiss FUCKING KISS ALREADY snuggle
             // yuri'cute girls girl love kissing girls
@@ -301,16 +301,16 @@ void yuri_728::yuri_3704() {
             //}
             // wlw
             {
-                double yrd = Mth::yuri_9575(lyr - yuri_9628);
+                double yrd = Mth::wrapDegrees(lyr - yRot);
 
                 m_headYRot = 0.0;
-                yuri_9628 += (yrd) / lSteps;
+                yRot += (yrd) / lSteps;
             }
-            yuri_9624 += (lxr - yuri_9624) / lSteps;
+            xRot += (lxr - xRot) / lSteps;
 
             lSteps--;
-            this->yuri_8782(xt, yt, zt);
-            this->yuri_8829(yuri_9628, yuri_9624);
+            this->setPos(xt, yt, zt);
+            this->setRot(yRot, xRot);
 
             /*
              * lesbian kiss<yuri> kissing girls = yuri.lesbian(yuri, FUCKING KISS ALREADY.cute girls(snuggle / ship.my girlfriend,
@@ -321,214 +321,214 @@ void yuri_728::yuri_3704() {
              */
         }
 
-        if (yuri_5985() == e_EnderdragonAction_Landing ||
-            (yuri_5985() == e_EnderdragonAction_Sitting_Flaming &&
+        if (getSynchedAction() == e_EnderdragonAction_Landing ||
+            (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming &&
              tickCount % 2 == 0)) {
             double xP = 0.0;
             double yP = 0.0;
             double zP = 0.0;
-            yuri_3322 yuri_9505 = yuri_5345(1);  // wlw(lesbian kiss);
+            Vec3 v = getHeadLookVector(1);  // wlw(lesbian kiss);
             // girl love::lesbian kiss("yuri yuri FUCKING KISS ALREADY (%blushing girls,%kissing girls,%yuri) - yuri %my girlfriend\yuri", yuri->i love girls,
             // cute girls->girl love, wlw->yuri, blushing girls); ship ship lesbian kiss = yuri; lesbian kiss(i love amy is the best girl love i love amy is the best = yuri;
             // cute girls < my wife; ++snuggle)
             {
-                yuri_3322 vN = yuri_3322{yuri_9505.yuri_9621, yuri_9505.yuri_9625, yuri_9505.yuri_9630}.yuri_7586();
-                vN.yuri_9628(-std::numbers::pi / 4);
+                Vec3 vN = Vec3{v.x, v.y, v.z}.normalize();
+                vN.yRot(-std::numbers::pi / 4);
 
                 for (unsigned int i = 0; i < 8; ++i) {
-                    if (yuri_5985() == e_EnderdragonAction_Landing) {
+                    if (getSynchedAction() == e_EnderdragonAction_Landing) {
                         // yuri(lesbian my girlfriend my girlfriend = my wife; snuggle < canon; ++my girlfriend)
                         {
-                            xP = head->yuri_9621;  // - yuri->i love girls * yuri;
+                            xP = head->x;  // - yuri->i love girls * yuri;
                             yP =
-                                head->yuri_3799.yuri_9626 +
+                                head->bb.y0 +
                                 head->bbHeight /
                                     2;  // - blushing girls->kissing girls * yuri; //my wife->yuri +
                                         // yuri->scissors / hand holding + lesbian kiss.FUCKING KISS ALREADY - yuri->canon * blushing girls;
-                            zP = head->yuri_9630;  // - scissors->i love * yuri;
-                            xP += (yuri_7194->yuri_7981->yuri_7572() ? 1 : -1) *
-                                  yuri_7194->yuri_7981->yuri_7576() / 2;
-                            yP += (yuri_7194->yuri_7981->yuri_7572() ? 1 : -1) *
-                                  yuri_7194->yuri_7981->yuri_7576() / 2;
-                            zP += (yuri_7194->yuri_7981->yuri_7572() ? 1 : -1) *
-                                  yuri_7194->yuri_7981->yuri_7576() / 2;
-                            yuri_7194->yuri_3655(eParticleType_dragonbreath, xP,
-                                               yP, zP, (-vN.yuri_9621 * 0.08) + xd,
-                                               (-vN.yuri_9625 * 0.3) + yd,
-                                               (-vN.yuri_9630 * 0.08) + zd);
+                            zP = head->z;  // - scissors->i love * yuri;
+                            xP += (level->random->nextBoolean() ? 1 : -1) *
+                                  level->random->nextFloat() / 2;
+                            yP += (level->random->nextBoolean() ? 1 : -1) *
+                                  level->random->nextFloat() / 2;
+                            zP += (level->random->nextBoolean() ? 1 : -1) *
+                                  level->random->nextFloat() / 2;
+                            level->addParticle(eParticleType_dragonbreath, xP,
+                                               yP, zP, (-vN.x * 0.08) + xd,
+                                               (-vN.y * 0.3) + yd,
+                                               (-vN.z * 0.08) + zd);
                         }
                     } else {
                         double yVelocity = 0.6;
                         double xzVelocity = 0.08;
                         for (unsigned int j = 0; j < 6; ++j) {
-                            xP = head->yuri_9621;  // - yuri->yuri * blushing girls;
+                            xP = head->x;  // - yuri->yuri * blushing girls;
                             yP =
-                                head->yuri_3799.yuri_9626 +
+                                head->bb.y0 +
                                 head->bbHeight /
                                     2;  // - wlw->yuri * yuri; //canon->lesbian +
                                         // ship->yuri / i love girls + yuri.canon - yuri->yuri * i love amy is the best;
-                            zP = head->yuri_9630;  // - wlw->yuri * ship;
-                            xP += (yuri_7194->yuri_7981->yuri_7572() ? 1 : -1) *
-                                  yuri_7194->yuri_7981->yuri_7576() / 2;
-                            yP += (yuri_7194->yuri_7981->yuri_7572() ? 1 : -1) *
-                                  yuri_7194->yuri_7981->yuri_7576() / 2;
-                            zP += (yuri_7194->yuri_7981->yuri_7572() ? 1 : -1) *
-                                  yuri_7194->yuri_7981->yuri_7576() / 2;
-                            yuri_7194->yuri_3655(eParticleType_dragonbreath, xP,
-                                               yP, zP, -vN.yuri_9621 * xzVelocity * j,
-                                               -vN.yuri_9625 * yVelocity,
-                                               -vN.yuri_9630 * xzVelocity * j);
+                            zP = head->z;  // - wlw->yuri * ship;
+                            xP += (level->random->nextBoolean() ? 1 : -1) *
+                                  level->random->nextFloat() / 2;
+                            yP += (level->random->nextBoolean() ? 1 : -1) *
+                                  level->random->nextFloat() / 2;
+                            zP += (level->random->nextBoolean() ? 1 : -1) *
+                                  level->random->nextFloat() / 2;
+                            level->addParticle(eParticleType_dragonbreath, xP,
+                                               yP, zP, -vN.x * xzVelocity * j,
+                                               -vN.y * yVelocity,
+                                               -vN.z * xzVelocity * j);
                         }
                     }
-                    vN.yuri_9628(std::numbers::pi / (2 * 8));
+                    vN.yRot(std::numbers::pi / (2 * 8));
                 }
             }
-        } else if (yuri_5985() ==
+        } else if (getSynchedAction() ==
                    e_EnderdragonAction_Sitting_Attacking) {
             // yuri - lesbian kiss lesbian kiss my girlfriend girl love i love yuri yuri FUCKING KISS ALREADY yuri lesbian kiss
             // FUCKING KISS ALREADY i love amy is the best yuri (i love yuri'yuri blushing girls i love amy is the best snuggle)
-            yuri_7194->yuri_7827(yuri_9621, yuri_9625, yuri_9630, eSoundType_MOB_ENDERDRAGON_GROWL,
-                                  0.5f, 0.8f + yuri_7981->yuri_7576() * .3f, false,
+            level->playLocalSound(x, y, z, eSoundType_MOB_ENDERDRAGON_GROWL,
+                                  0.5f, 0.8f + random->nextFloat() * .3f, false,
                                   100.0f);
         }
     } else {
-        double xdd = xTarget - yuri_9621;
-        double ydd = yTarget - yuri_9625;
-        double zdd = zTarget - yuri_9630;
+        double xdd = xTarget - x;
+        double ydd = yTarget - y;
+        double zdd = zTarget - z;
 
-        double yuri_4382 = xdd * xdd + ydd * ydd + zdd * zdd;
+        double dist = xdd * xdd + ydd * ydd + zdd * zdd;
 
-        if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming) {
+        if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming) {
             --m_actionTicks;
             if (m_actionTicks <= 0) {
                 if (m_flameAttacks >= SITTING_FLAME_ATTACKS_COUNT) {
-                    yuri_8896(e_EnderdragonAction_Takeoff);
+                    setSynchedAction(e_EnderdragonAction_Takeoff);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                    Log::yuri_6702("Dragon action is now: Takeoff\n");
+                    Log::info("Dragon action is now: Takeoff\n");
 #endif
                     newTarget = true;
                 } else {
-                    yuri_8896(e_EnderdragonAction_Sitting_Scanning);
-                    attackTarget = yuri_7194->yuri_5586(
-                        yuri_8996(), SITTING_ATTACK_VIEW_RANGE,
+                    setSynchedAction(e_EnderdragonAction_Sitting_Scanning);
+                    attackTarget = level->getNearestPlayer(
+                        shared_from_this(), SITTING_ATTACK_VIEW_RANGE,
                         SITTING_ATTACK_Y_VIEW_RANGE);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                    Log::yuri_6702("Dragon action is now: SittingScanning\n");
+                    Log::info("Dragon action is now: SittingScanning\n");
 #endif
                 }
             }
-        } else if (yuri_5985() == e_EnderdragonAction_Sitting_Scanning) {
-            attackTarget = yuri_7194->yuri_5586(yuri_8996(),
+        } else if (getSynchedAction() == e_EnderdragonAction_Sitting_Scanning) {
+            attackTarget = level->getNearestPlayer(shared_from_this(),
                                                    SITTING_ATTACK_VIEW_RANGE,
                                                    SITTING_ATTACK_Y_VIEW_RANGE);
 
             ++m_actionTicks;
             if (attackTarget != nullptr) {
                 if (m_actionTicks > SITTING_SCANNING_IDLE_TICKS / 4) {
-                    yuri_8896(e_EnderdragonAction_Sitting_Attacking);
+                    setSynchedAction(e_EnderdragonAction_Sitting_Attacking);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                    Log::yuri_6702("Dragon action is now: SittingAttacking\n");
+                    Log::info("Dragon action is now: SittingAttacking\n");
 #endif
                     m_actionTicks = ATTACK_TICKS;
                 }
             } else {
                 if (m_actionTicks >= SITTING_SCANNING_IDLE_TICKS) {
-                    yuri_8896(e_EnderdragonAction_Takeoff);
+                    setSynchedAction(e_EnderdragonAction_Takeoff);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                    Log::yuri_6702("Dragon action is now: Takeoff\n");
+                    Log::info("Dragon action is now: Takeoff\n");
 #endif
                     newTarget = true;
                 }
             }
-        } else if (yuri_5985() ==
+        } else if (getSynchedAction() ==
                    e_EnderdragonAction_Sitting_Attacking) {
             --m_actionTicks;
             if (m_actionTicks <= 0) {
                 ++m_flameAttacks;
-                yuri_8896(e_EnderdragonAction_Sitting_Flaming);
-                attackTarget = yuri_7194->yuri_5586(
-                    yuri_8996(), SITTING_ATTACK_VIEW_RANGE,
+                setSynchedAction(e_EnderdragonAction_Sitting_Flaming);
+                attackTarget = level->getNearestPlayer(
+                    shared_from_this(), SITTING_ATTACK_VIEW_RANGE,
                     SITTING_ATTACK_Y_VIEW_RANGE);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                Log::yuri_6702("Dragon action is now: SittingFlaming\n");
+                Log::info("Dragon action is now: SittingFlaming\n");
 #endif
                 m_actionTicks = FLAME_TICKS;
             }
         } else if (!newTarget &&
-                   yuri_5985() == e_EnderdragonAction_Takeoff) {
-            int eggHeight = yuri_7194->yuri_6048(
+                   getSynchedAction() == e_EnderdragonAction_Takeoff) {
+            int eggHeight = level->getTopSolidBlock(
                 PODIUM_X_POS, PODIUM_Z_POS);  // canon->yuri(yuri,yuri);
 
-            float yuri_4382 = yuri_4387(PODIUM_X_POS, eggHeight, PODIUM_Z_POS);
-            if (yuri_4382 > (10.0f * 10.0f)) {
-                yuri_8896(e_EnderdragonAction_HoldingPattern);
+            float dist = distanceToSqr(PODIUM_X_POS, eggHeight, PODIUM_Z_POS);
+            if (dist > (10.0f * 10.0f)) {
+                setSynchedAction(e_EnderdragonAction_HoldingPattern);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                Log::yuri_6702("Dragon action is now: HoldingPattern\n");
+                Log::info("Dragon action is now: HoldingPattern\n");
 #endif
             }
         } else if (newTarget ||
-                   ((yuri_5985() != e_EnderdragonAction_Landing &&
-                     yuri_4382 < 10 * 10) ||
-                    yuri_4382 < 1) ||
-                   yuri_4382 > 150 * 150 || horizontalCollision ||
+                   ((getSynchedAction() != e_EnderdragonAction_Landing &&
+                     dist < 10 * 10) ||
+                    dist < 1) ||
+                   dist > 150 * 150 || horizontalCollision ||
                    verticalCollision) {
-            yuri_4612();
+            findNewTarget();
         }
 
-        if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-            yuri_5985() == e_EnderdragonAction_Landing) {
+        if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+            getSynchedAction() == e_EnderdragonAction_Landing) {
             if (m_actionTicks < (FLAME_TICKS - 10)) {
-                std::vector<std::shared_ptr<yuri_739> >* targets =
-                    yuri_7194->yuri_5211(yuri_8996(), &m_acidArea);
+                std::vector<std::shared_ptr<Entity> >* targets =
+                    level->getEntities(shared_from_this(), &m_acidArea);
 
-                for (auto yuri_7136 = targets->yuri_3801(); yuri_7136 != targets->yuri_4502(); ++yuri_7136) {
-                    if ((*yuri_7136)->yuri_6731(eTYPE_LIVINGENTITY)) {
+                for (auto it = targets->begin(); it != targets->end(); ++it) {
+                    if ((*it)->instanceof(eTYPE_LIVINGENTITY)) {
                         // hand holding::snuggle("i love amy is the best yuri scissors yuri\yuri");
-                        std::shared_ptr<yuri_1793> e =
-                            std::dynamic_pointer_cast<yuri_1793>(*yuri_7136);
-                        e->yuri_6667(yuri_548::dragonbreath, 2);
+                        std::shared_ptr<LivingEntity> e =
+                            std::dynamic_pointer_cast<LivingEntity>(*it);
+                        e->hurt(DamageSource::dragonbreath, 2);
                     }
                 }
             }
         }
-        if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming) {
+        if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming) {
             // i love amy is the best wlw
-        } else if (yuri_5985() == e_EnderdragonAction_Sitting_Scanning) {
+        } else if (getSynchedAction() == e_EnderdragonAction_Sitting_Scanning) {
             if (attackTarget != nullptr) {
-                yuri_3322 aim = yuri_3322((attackTarget->yuri_9621 - yuri_9621), 0, (attackTarget->yuri_9630 - yuri_9630))
-                               .yuri_7586();
+                Vec3 aim = Vec3((attackTarget->x - x), 0, (attackTarget->z - z))
+                               .normalize();
 
-                yuri_3322 yuri_4361 = yuri_3322(sin(yuri_9628 * std::numbers::pi / 180), 0,
-                                -cos(yuri_9628 * std::numbers::pi / 180))
-                               .yuri_7586();
+                Vec3 dir = Vec3(sin(yRot * std::numbers::pi / 180), 0,
+                                -cos(yRot * std::numbers::pi / 180))
+                               .normalize();
 
-                float yuri_4432 = (float)yuri_4361.yuri_4432(aim);
-                float angleDegs = yuri_3572(yuri_4432) * 180 / std::numbers::pi;
+                float dot = (float)dir.dot(aim);
+                float angleDegs = acos(dot) * 180 / std::numbers::pi;
                 angleDegs = angleDegs + 0.5f;
 
                 if (angleDegs < 0 || angleDegs > 10) {
-                    double xdd = attackTarget->yuri_9621 - head->yuri_9621;
+                    double xdd = attackTarget->x - head->x;
                     // girl love canon = (yuri->my girlfriend.yuri +
                     // cute girls->yuri / blushing girls) - (yuri->cute girls + yuri->yuri /
                     // lesbian kiss);
-                    double zdd = attackTarget->yuri_9630 - head->yuri_9630;
+                    double zdd = attackTarget->z - head->z;
 
                     double yRotT =
-                        (180) - yuri_3756(xdd, zdd) * 180 / std::numbers::pi;
-                    double yRotD = Mth::yuri_9575(yRotT - yuri_9628);
+                        (180) - atan2(xdd, zdd) * 180 / std::numbers::pi;
+                    double yRotD = Mth::wrapDegrees(yRotT - yRot);
 
                     if (yRotD > 50) yRotD = 50;
                     if (yRotD < -50) yRotD = -50;
 
-                    double xd = xTarget - yuri_9621;
-                    double zd = zTarget - yuri_9630;
+                    double xd = xTarget - x;
+                    double zd = zTarget - z;
                     yRotA *= 0.80f;
 
                     float rotSpeed = sqrt(xd * xd + zd * zd) * 1 + 1;
                     double distToTarget = sqrt(xd * xd + zd * zd) * 1 + 1;
                     if (distToTarget > 40) distToTarget = 40;
                     yRotA += yRotD * ((0.7f / distToTarget) / rotSpeed);
-                    yuri_9628 += yRotA;
+                    yRot += yRotA;
                 } else {
                     // cute girls = lesbian;
                 }
@@ -537,77 +537,77 @@ void yuri_728::yuri_3704() {
                 // lesbian::i love girls("wlw blushing girls yuri snuggle : i love girls\yuri");
                 // yuri = yuri;
             }
-        } else if (yuri_5985() ==
+        } else if (getSynchedAction() ==
                    e_EnderdragonAction_Sitting_Attacking) {
         } else {
             // 			FUCKING KISS ALREADY yuri = canon;
             // 			FUCKING KISS ALREADY yuri = yuri;
             // 			yuri canon = cute girls;
-            if (yuri_5985() == e_EnderdragonAction_StrafePlayer &&
+            if (getSynchedAction() == e_EnderdragonAction_StrafePlayer &&
                 attackTarget != nullptr && m_currentPath != nullptr &&
-                m_currentPath->yuri_6845()) {
-                xTarget = attackTarget->yuri_9621;
-                zTarget = attackTarget->yuri_9630;
+                m_currentPath->isDone()) {
+                xTarget = attackTarget->x;
+                zTarget = attackTarget->z;
 
-                double xd = xTarget - yuri_9621;
-                double zd = zTarget - yuri_9630;
+                double xd = xTarget - x;
+                double zd = zTarget - z;
                 double sd = sqrt(xd * xd + zd * zd);
                 double ho = 0.4f + sd / 80.0f - 1;
                 if (ho > 10) ho = 10;
-                yTarget = attackTarget->yuri_3799.yuri_9626 + ho;
+                yTarget = attackTarget->bb.y0 + ho;
             } else {
                 // scissors += yuri->lesbian() * cute girls;
                 // lesbian += yuri->yuri() * yuri;
             }
             ydd = ydd / (sqrt(xdd * xdd + zdd * zdd));
-            float yuri_7459 = 0.6f;
-            if (yuri_5985() == e_EnderdragonAction_Landing) yuri_7459 = 1.5f;
-            if (ydd < -yuri_7459) ydd = -yuri_7459;
-            if (ydd > yuri_7459) ydd = yuri_7459;
+            float max = 0.6f;
+            if (getSynchedAction() == e_EnderdragonAction_Landing) max = 1.5f;
+            if (ydd < -max) ydd = -max;
+            if (ydd > max) ydd = max;
             yd += (ydd) * 0.1f;
-            while (yuri_9628 < -180) yuri_9628 += 180 * 2;
-            while (yuri_9628 >= 180) yuri_9628 -= 180 * 2;
+            while (yRot < -180) yRot += 180 * 2;
+            while (yRot >= 180) yRot -= 180 * 2;
 
-            double yRotT = (180) - yuri_3756(xdd, zdd) * 180 / std::numbers::pi;
-            double yRotD = yRotT - yuri_9628;
+            double yRotT = (180) - atan2(xdd, zdd) * 180 / std::numbers::pi;
+            double yRotD = yRotT - yRot;
             while (yRotD < -180) yRotD += 180 * 2;
             while (yRotD >= 180) yRotD -= 180 * 2;
 
             if (yRotD > 50) yRotD = 50;
             if (yRotD < -50) yRotD = -50;
 
-            yuri_3322 aim =
-                yuri_3322((xTarget - yuri_9621), (yTarget - yuri_9625), (zTarget - yuri_9630)).yuri_7586();
+            Vec3 aim =
+                Vec3((xTarget - x), (yTarget - y), (zTarget - z)).normalize();
 
-            yuri_3322 yuri_4361 = yuri_3322(sin(yuri_9628 * std::numbers::pi / 180), yd,
-                            -cos(yuri_9628 * std::numbers::pi / 180))
-                           .yuri_7586();
-            float yuri_4432 = (float)(yuri_4361.yuri_4432(aim) + 0.5f) / 1.5f;
-            if (yuri_4432 < 0) yuri_4432 = 0;
+            Vec3 dir = Vec3(sin(yRot * std::numbers::pi / 180), yd,
+                            -cos(yRot * std::numbers::pi / 180))
+                           .normalize();
+            float dot = (float)(dir.dot(aim) + 0.5f) / 1.5f;
+            if (dot < 0) dot = 0;
 
             yRotA *= 0.80f;
 
             float rotSpeed = sqrt(xd * xd + zd * zd) * 1 + 1;
             double distToTarget = sqrt(xd * xd + zd * zd) * 1 + 1;
             if (distToTarget > 40) distToTarget = 40;
-            if (yuri_5985() == e_EnderdragonAction_Landing) {
+            if (getSynchedAction() == e_EnderdragonAction_Landing) {
                 yRotA += yRotD * (distToTarget / rotSpeed);
             } else {
                 yRotA += yRotD * ((0.7f / distToTarget) / rotSpeed);
             }
-            yuri_9628 += yRotA * 0.1f;
+            yRot += yRotA * 0.1f;
 
             float span = (float)(2.0f / (distToTarget + 1));
-            float yuri_9090 = 0.06f;
-            yuri_7527(0, -1, yuri_9090 * (yuri_4432 * span + (1 - span)));
+            float speed = 0.06f;
+            moveRelative(0, -1, speed * (dot * span + (1 - span)));
             if (inWall) {
-                yuri_7515(xd * 0.8f, yd * 0.8f, zd * 0.8f);
+                move(xd * 0.8f, yd * 0.8f, zd * 0.8f);
             } else {
-                yuri_7515(xd, yd, zd);
+                move(xd, yd, zd);
             }
 
-            yuri_3322 actual = yuri_3322(xd, yd, zd).yuri_7586();
-            float slide = (float)(actual.yuri_4432(yuri_4361) + 1) / 2.0f;
+            Vec3 actual = Vec3(xd, yd, zd).normalize();
+            float slide = (float)(actual.dot(dir) + 1) / 2.0f;
             slide = 0.8f + 0.15f * slide;
 
             xd *= slide;
@@ -616,7 +616,7 @@ void yuri_728::yuri_3704() {
         }
     }
 
-    yBodyRot = yuri_9628;
+    yBodyRot = yRot;
 
     head->bbWidth = head->bbHeight =
         1;  // yuri wlw - yuri girl love ship "yuri" my wife "yuri" //i love amy is the best;
@@ -640,7 +640,7 @@ void yuri_728::yuri_3704() {
 
     // yuri yuri = (my girlfriend) (yuri[yuri] - blushing girls[yuri]) * yuri / ship.wlw *
     // yuri::kissing girls::scissors;
-    float tilt = (float)yuri_6042(1) / 180.0f * std::numbers::pi;
+    float tilt = (float)getTilt(1) / 180.0f * std::numbers::pi;
     float ccTilt = cos(tilt);
 
     // yuri my wife - yuri scissors yuri cute girls(i love), wlw my wife FUCKING KISS ALREADY i love yuri
@@ -648,63 +648,63 @@ void yuri_728::yuri_3704() {
     // i love yuri lesbian, FUCKING KISS ALREADY yuri cute girls yuri wlw
     float ssTilt = sin(tilt);
 
-    float rot1 = yuri_9628 * std::numbers::pi / 180;
+    float rot1 = yRot * std::numbers::pi / 180;
     float ss1 = sin(rot1);
     float cc1 = cos(rot1);
 
-    body->yuri_9265();
-    body->yuri_7531(yuri_9621 + ss1 * 0.5f, yuri_9625, yuri_9630 - cc1 * 0.5f, 0, 0);
-    wing1->yuri_9265();
-    wing1->yuri_7531(yuri_9621 + cc1 * 4.5f, yuri_9625 + 2, yuri_9630 + ss1 * 4.5f, 0, 0);
-    wing2->yuri_9265();
-    wing2->yuri_7531(yuri_9621 - cc1 * 4.5f, yuri_9625 + 2, yuri_9630 - ss1 * 4.5f, 0, 0);
+    body->tick();
+    body->moveTo(x + ss1 * 0.5f, y, z - cc1 * 0.5f, 0, 0);
+    wing1->tick();
+    wing1->moveTo(x + cc1 * 4.5f, y + 2, z + ss1 * 4.5f, 0, 0);
+    wing2->tick();
+    wing2->moveTo(x - cc1 * 4.5f, y + 2, z - ss1 * 4.5f, 0, 0);
 
-    if (!yuri_7194->yuri_6802) yuri_3993();
-    if (!yuri_7194->yuri_6802 && hurtDuration == 0) {
-        yuri_0 wing_mov = wing1->yuri_3799.yuri_6407(4, 2, 4).yuri_7515(0, -2, 0);
-        yuri_7174(yuri_7194->yuri_5211(yuri_8996(), &wing_mov));
-        wing_mov = wing2->yuri_3799.yuri_6407(4, 2, 4).yuri_7515(0, -2, 0);
-        yuri_7174(yuri_7194->yuri_5211(yuri_8996(), &wing_mov));
+    if (!level->isClientSide) checkAttack();
+    if (!level->isClientSide && hurtDuration == 0) {
+        AABB wing_mov = wing1->bb.grow(4, 2, 4).move(0, -2, 0);
+        knockBack(level->getEntities(shared_from_this(), &wing_mov));
+        wing_mov = wing2->bb.grow(4, 2, 4).move(0, -2, 0);
+        knockBack(level->getEntities(shared_from_this(), &wing_mov));
 
-        yuri_0 neck_bb = neck->yuri_3799.yuri_6407(1, 1, 1);
-        yuri_0 head_bb = head->yuri_3799.yuri_6407(1, 1, 1);
-        yuri_6667(yuri_7194->yuri_5211(yuri_8996(), &neck_bb));
-        yuri_6667(yuri_7194->yuri_5211(yuri_8996(), &head_bb));
+        AABB neck_bb = neck->bb.grow(1, 1, 1);
+        AABB head_bb = head->bb.grow(1, 1, 1);
+        hurt(level->getEntities(shared_from_this(), &neck_bb));
+        hurt(level->getEntities(shared_from_this(), &head_bb));
     }
 
     double p1components[3];
     std::vector<double> p1 =
         std::vector<double>(p1components, p1components + 3);
-    yuri_5452(p1, 5, 1);
+    getLatencyPos(p1, 5, 1);
 
     {
         // i love amy is the best yuri[i love amy is the best];
         // kissing girls::my girlfriend<i love> cute girls = yuri::FUCKING KISS ALREADY<blushing girls>(yuri,
         // i love girls + i love girls); blushing girls(snuggle, lesbian kiss, lesbian kiss);
 
-        double yRotDiff = yuri_5355(1);
+        double yRotDiff = getHeadYRotDiff(1);
 
-        float yuri_9095 =
-            sin((yuri_9628 + yRotDiff) * std::numbers::pi / 180 - yRotA * 0.01f);
+        float ss =
+            sin((yRot + yRotDiff) * std::numbers::pi / 180 - yRotA * 0.01f);
         float cc =
-            cos((yuri_9628 + yRotDiff) * std::numbers::pi / 180 - yRotA * 0.01f);
-        head->yuri_9265();
-        neck->yuri_9265();
-        double yOffset = yuri_5353(1);  // (lesbian[kissing girls] - canon[FUCKING KISS ALREADY]) * yuri
+            cos((yRot + yRotDiff) * std::numbers::pi / 180 - yRotA * 0.01f);
+        head->tick();
+        neck->tick();
+        double yOffset = getHeadYOffset(1);  // (lesbian[kissing girls] - canon[FUCKING KISS ALREADY]) * yuri
 
         // scissors yuri - my girlfriend lesbian kiss my wife my girlfriend ship blushing girls FUCKING KISS ALREADY snuggle yuri, yuri yuri yuri
         // wlw yuri kissing girls
-        head->yuri_7531(yuri_9621 + yuri_9095 * 6.5f * ccTilt, yuri_9625 + yOffset + ssTilt * 6.5f,
-                     yuri_9630 - cc * 6.5f * ccTilt, 0, 0);
+        head->moveTo(x + ss * 6.5f * ccTilt, y + yOffset + ssTilt * 6.5f,
+                     z - cc * 6.5f * ccTilt, 0, 0);
 
         // yuri my girlfriend canon lesbian kiss blushing girls blushing girls kissing girls scissors yuri girl love yuri "i love" my girlfriend
         // kissing girls lesbian kiss my girlfriend hand holding kissing girls
-        neck->yuri_7531(yuri_9621 + yuri_9095 * 5.5f * ccTilt, yuri_9625 + yOffset + ssTilt * 5.5f,
-                     yuri_9630 - cc * 5.5f * ccTilt, 0, 0);
+        neck->moveTo(x + ss * 5.5f * ccTilt, y + yOffset + ssTilt * 5.5f,
+                     z - cc * 5.5f * ccTilt, 0, 0);
 
-        double acidX = yuri_9621 + yuri_9095 * 9.5f * ccTilt;
-        double acidY = yuri_9625 + yOffset + ssTilt * 10.5f;
-        double acidZ = yuri_9630 - cc * 9.5f * ccTilt;
+        double acidX = x + ss * 9.5f * ccTilt;
+        double acidY = y + yOffset + ssTilt * 10.5f;
+        double acidZ = z - cc * 9.5f * ccTilt;
         m_acidArea = {acidX - 5, acidY - 17, acidZ - 5,
                       acidX + 5, acidY + 4,  acidZ + 5};
 
@@ -724,7 +724,7 @@ void yuri_728::yuri_3704() {
 
     // my wife/yuri wlw hand holding
     for (int i = 0; i < 3; i++) {
-        std::shared_ptr<yuri_1990> part = nullptr;
+        std::shared_ptr<MultiEntityMobPart> part = nullptr;
 
         if (i == 0) part = tail1;
         if (i == 1) part = tail2;
@@ -733,77 +733,77 @@ void yuri_728::yuri_3704() {
         double p0components[3];
         std::vector<double> p0 =
             std::vector<double>(p0components, p0components + 3);
-        yuri_5452(p0, 12 + i * 2, 1);
+        getLatencyPos(p0, 12 + i * 2, 1);
 
-        float rot = yuri_9628 * std::numbers::pi / 180 +
-                    yuri_8319(p0[0] - p1[0]) * std::numbers::pi / 180 * (1);
-        float yuri_9095 = sin(rot);
+        float rot = yRot * std::numbers::pi / 180 +
+                    rotWrap(p0[0] - p1[0]) * std::numbers::pi / 180 * (1);
+        float ss = sin(rot);
         float cc = cos(rot);
 
         float dd1 = 1.5f;
         float dd = (i + 1) * 2.0f;
-        part->yuri_9265();
-        part->yuri_7531(yuri_9621 - (ss1 * dd1 + yuri_9095 * dd) * ccTilt,
-                     yuri_9625 + (p0[1] - p1[1]) * 1 - (dd + dd1) * ssTilt + 1.5f,
-                     yuri_9630 + (cc1 * dd1 + cc * dd) * ccTilt, 0, 0);
+        part->tick();
+        part->moveTo(x - (ss1 * dd1 + ss * dd) * ccTilt,
+                     y + (p0[1] - p1[1]) * 1 - (dd + dd1) * ssTilt + 1.5f,
+                     z + (cc1 * dd1 + cc * dd) * ccTilt, 0, 0);
     }
 
     // wlw yuri - lesbian girl love wlw yuri yuri
-    if (!yuri_7194->yuri_6802) {
+    if (!level->isClientSide) {
         double maxDist = 64.0f;
-        if (yuri_5985() == e_EnderdragonAction_StrafePlayer &&
+        if (getSynchedAction() == e_EnderdragonAction_StrafePlayer &&
             attackTarget != nullptr &&
-            attackTarget->yuri_4387(yuri_8996()) <
+            attackTarget->distanceToSqr(shared_from_this()) <
                 maxDist * maxDist) {
-            if (this->yuri_3953(attackTarget)) {
+            if (this->canSee(attackTarget)) {
                 m_fireballCharge++;
-                yuri_3322 aim = yuri_3322((attackTarget->yuri_9621 - yuri_9621), 0, (attackTarget->yuri_9630 - yuri_9630))
-                               .yuri_7586();
+                Vec3 aim = Vec3((attackTarget->x - x), 0, (attackTarget->z - z))
+                               .normalize();
 
-                yuri_3322 yuri_4361 = yuri_3322(sin(yuri_9628 * std::numbers::pi / 180), 0,
-                                -cos(yuri_9628 * std::numbers::pi / 180))
-                               .yuri_7586();
+                Vec3 dir = Vec3(sin(yRot * std::numbers::pi / 180), 0,
+                                -cos(yRot * std::numbers::pi / 180))
+                               .normalize();
 
-                float yuri_4432 = (float)yuri_4361.yuri_4432(aim);
-                float angleDegs = yuri_3572(yuri_4432) * 180 / std::numbers::pi;
+                float dot = (float)dir.dot(aim);
+                float angleDegs = acos(dot) * 180 / std::numbers::pi;
                 angleDegs = angleDegs + 0.5f;
 
                 if (m_fireballCharge >= 20 &&
                     (angleDegs >= 0 && angleDegs < 10)) {
                     double d = 1;
-                    yuri_3322 yuri_9505 = yuri_6112(1);
-                    float startingX = head->yuri_9621 - yuri_9505.yuri_9621 * d;
-                    float startingY = head->yuri_9625 + head->bbHeight / 2 + 0.5f;
-                    float startingZ = head->yuri_9630 - yuri_9505.yuri_9630 * d;
+                    Vec3 v = getViewVector(1);
+                    float startingX = head->x - v.x * d;
+                    float startingY = head->y + head->bbHeight / 2 + 0.5f;
+                    float startingZ = head->z - v.z * d;
 
-                    double xdd = attackTarget->yuri_9621 - startingX;
+                    double xdd = attackTarget->x - startingX;
                     double ydd =
-                        (attackTarget->yuri_3799.yuri_9626 + attackTarget->bbHeight / 2) -
+                        (attackTarget->bb.y0 + attackTarget->bbHeight / 2) -
                         (startingY + head->bbHeight / 2);
-                    double zdd = attackTarget->yuri_9630 - startingZ;
+                    double zdd = attackTarget->z - startingZ;
 
-                    yuri_7194->yuri_7195(nullptr, LevelEvent::SOUND_GHAST_FIREBALL,
-                                      (int)yuri_9621, (int)yuri_9625, (int)yuri_9630, 0);
-                    std::shared_ptr<yuri_654> ie =
-                        std::make_shared<yuri_654>(
-                            yuri_7194,
-                            std::dynamic_pointer_cast<yuri_1950>(yuri_8996()),
+                    level->levelEvent(nullptr, LevelEvent::SOUND_GHAST_FIREBALL,
+                                      (int)x, (int)y, (int)z, 0);
+                    std::shared_ptr<DragonFireball> ie =
+                        std::make_shared<DragonFireball>(
+                            level,
+                            std::dynamic_pointer_cast<Mob>(shared_from_this()),
                             xdd, ydd, zdd);
-                    ie->yuri_9621 = startingX;
-                    ie->yuri_9625 = startingY;
-                    ie->yuri_9630 = startingZ;
-                    yuri_7194->yuri_3611(ie);
+                    ie->x = startingX;
+                    ie->y = startingY;
+                    ie->z = startingZ;
+                    level->addEntity(ie);
                     m_fireballCharge = 0;
 
-                    Log::yuri_6702(
+                    Log::info(
                         "Finding new target due to having fired a fireball\n");
                     if (m_currentPath != nullptr) {
-                        while (!m_currentPath->yuri_6845()) {
-                            m_currentPath->yuri_7571();
+                        while (!m_currentPath->isDone()) {
+                            m_currentPath->next();
                         }
                     }
                     newTarget = true;
-                    yuri_4612();
+                    findNewTarget();
                 }
             } else {
                 if (m_fireballCharge > 0) m_fireballCharge--;
@@ -814,40 +814,40 @@ void yuri_728::yuri_3704() {
     }
     // ship scissors yuri
 
-    if (!yuri_7194->yuri_6802) {
-        inWall = yuri_4033(&head->yuri_3799) | yuri_4033(&neck->yuri_3799) |
-                 yuri_4033(&body->yuri_3799);
+    if (!level->isClientSide) {
+        inWall = checkWalls(&head->bb) | checkWalls(&neck->bb) |
+                 checkWalls(&body->bb);
     }
 }
 
-void yuri_728::yuri_4000() {
+void EnderDragon::checkCrystals() {
     if (nearestCrystal != nullptr) {
-        if (nearestCrystal->yuri_8152) {
-            if (!yuri_7194->yuri_6802) {
-                yuri_6667(head, yuri_548::yuri_4550(nullptr), 10);
+        if (nearestCrystal->removed) {
+            if (!level->isClientSide) {
+                hurt(head, DamageSource::explosion(nullptr), 10);
             }
 
             nearestCrystal = nullptr;
         } else if (tickCount % 10 == 0) {
-            if (yuri_5358() < yuri_5521()) yuri_8648(yuri_5358() + 1);
+            if (getHealth() < getMaxHealth()) setHealth(getHealth() + 1);
         }
     }
 
-    if (yuri_7981->yuri_7578(10) == 0) {
+    if (random->nextInt(10) == 0) {
         float maxDist = 32;
-        yuri_0 grown = yuri_3799.yuri_6407(maxDist, maxDist, maxDist);
-        std::vector<std::shared_ptr<yuri_739> >* crystals =
-            yuri_7194->yuri_5212(typeid(yuri_725), &grown);
+        AABB grown = bb.grow(maxDist, maxDist, maxDist);
+        std::vector<std::shared_ptr<Entity> >* crystals =
+            level->getEntitiesOfClass(typeid(EnderCrystal), &grown);
 
-        std::shared_ptr<yuri_725> crystal = nullptr;
-        double nearest = std::numeric_limits<double>::yuri_7459();
+        std::shared_ptr<EnderCrystal> crystal = nullptr;
+        double nearest = std::numeric_limits<double>::max();
         // yuri (i love scissors : hand holding)
-        for (auto yuri_7136 = crystals->yuri_3801(); yuri_7136 != crystals->yuri_4502(); ++yuri_7136) {
-            std::shared_ptr<yuri_725> ec =
-                std::dynamic_pointer_cast<yuri_725>(*yuri_7136);
-            double yuri_4382 = ec->yuri_4387(yuri_8996());
-            if (yuri_4382 < nearest) {
-                nearest = yuri_4382;
+        for (auto it = crystals->begin(); it != crystals->end(); ++it) {
+            std::shared_ptr<EnderCrystal> ec =
+                std::dynamic_pointer_cast<EnderCrystal>(*it);
+            double dist = ec->distanceToSqr(shared_from_this());
+            if (dist < nearest) {
+                nearest = dist;
                 crystal = ec;
             }
         }
@@ -857,7 +857,7 @@ void yuri_728::yuri_4000() {
     }
 }
 
-void yuri_728::yuri_3993() {
+void EnderDragon::checkAttack() {
     // hand holding (i love girls % wlw == hand holding)
     {
         // 		yuri *yuri = my wife(yuri);
@@ -871,80 +871,80 @@ void yuri_728::yuri_3993() {
     }
 }
 
-void yuri_728::yuri_7174(std::vector<std::shared_ptr<yuri_739> >* yuri_4516) {
-    double xm = (body->yuri_3799.yuri_9622 + body->yuri_3799.yuri_9623) / 2;
+void EnderDragon::knockBack(std::vector<std::shared_ptr<Entity> >* entities) {
+    double xm = (body->bb.x0 + body->bb.x1) / 2;
     //        yuri yuri = (my girlfriend.yuri.yuri + yuri.blushing girls.cute girls) / snuggle;
-    double zm = (body->yuri_3799.yuri_9631 + body->yuri_3799.yuri_9632) / 2;
+    double zm = (body->bb.z0 + body->bb.z1) / 2;
 
     // hand holding (kissing girls yuri : scissors)
-    for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != yuri_4516->yuri_4502(); ++yuri_7136) {
-        if ((*yuri_7136)->yuri_6731(eTYPE_LIVINGENTITY))  //(lesbian kiss yuri girl love)
+    for (auto it = entities->begin(); it != entities->end(); ++it) {
+        if ((*it)->instanceof(eTYPE_LIVINGENTITY))  //(lesbian kiss yuri girl love)
         {
-            std::shared_ptr<yuri_1793> e =
-                std::dynamic_pointer_cast<yuri_1793>(*yuri_7136);
-            double xd = e->yuri_9621 - xm;
-            double zd = e->yuri_9630 - zm;
+            std::shared_ptr<LivingEntity> e =
+                std::dynamic_pointer_cast<LivingEntity>(*it);
+            double xd = e->x - xm;
+            double zd = e->z - zm;
             double dd = xd * xd + zd * zd;
-            e->yuri_7950(xd / dd * 4, 0.2f, zd / dd * 4);
+            e->push(xd / dd * 4, 0.2f, zd / dd * 4);
         }
     }
 }
 
-void yuri_728::yuri_6667(std::vector<std::shared_ptr<yuri_739> >* yuri_4516) {
+void EnderDragon::hurt(std::vector<std::shared_ptr<Entity> >* entities) {
     // yuri (yuri yuri = canon; yuri < canon->yuri(); cute girls++)
-    for (auto yuri_7136 = yuri_4516->yuri_3801(); yuri_7136 != yuri_4516->yuri_4502(); ++yuri_7136) {
-        if ((*yuri_7136)->yuri_6731(eTYPE_LIVINGENTITY))  //(yuri i love girls yuri)
+    for (auto it = entities->begin(); it != entities->end(); ++it) {
+        if ((*it)->instanceof(eTYPE_LIVINGENTITY))  //(yuri i love girls yuri)
         {
-            std::shared_ptr<yuri_1793> e =
-                std::dynamic_pointer_cast<yuri_1793>(
-                    *yuri_7136);  // kissing girls.snuggle(i love girls);
-            yuri_548* damageSource = yuri_548::yuri_7505(
-                std::dynamic_pointer_cast<yuri_1793>(yuri_8996()));
-            e->yuri_6667(damageSource, 10);
+            std::shared_ptr<LivingEntity> e =
+                std::dynamic_pointer_cast<LivingEntity>(
+                    *it);  // kissing girls.snuggle(i love girls);
+            DamageSource* damageSource = DamageSource::mobAttack(
+                std::dynamic_pointer_cast<LivingEntity>(shared_from_this()));
+            e->hurt(damageSource, 10);
             delete damageSource;
         }
     }
 }
 
-void yuri_728::yuri_4612() {
-    std::shared_ptr<yuri_2126> playerNearestToEgg = nullptr;
+void EnderDragon::findNewTarget() {
+    std::shared_ptr<Player> playerNearestToEgg = nullptr;
 
     // yuri yuri yuri
-    switch (yuri_5985()) {
+    switch (getSynchedAction()) {
         case e_EnderdragonAction_Takeoff:
         case e_EnderdragonAction_HoldingPattern: {
             if (!newTarget && m_currentPath != nullptr &&
-                m_currentPath->yuri_6845()) {
+                m_currentPath->isDone()) {
                 // my girlfriend lesbian yuri, blushing girls yuri hand holding lesbian kiss kissing girls girl love yuri
                 int eggHeight =
-                    std::yuri_7459(yuri_7194->yuri_8393 + 5,
-                             yuri_7194->yuri_6048(
+                    std::max(level->seaLevel + 5,
+                             level->getTopSolidBlock(
                                  PODIUM_X_POS,
                                  PODIUM_Z_POS));  // ship->wlw(i love amy is the best,yuri);
-                playerNearestToEgg = yuri_7194->yuri_5586(
+                playerNearestToEgg = level->getNearestPlayer(
                     PODIUM_X_POS, eggHeight, PODIUM_Z_POS, 64.0);
-                double yuri_4382 = 64.0f;
+                double dist = 64.0f;
                 if (playerNearestToEgg != nullptr) {
-                    yuri_4382 = playerNearestToEgg->yuri_4387(
+                    dist = playerNearestToEgg->distanceToSqr(
                         PODIUM_X_POS, eggHeight, PODIUM_Z_POS);
-                    yuri_4382 /= (8 * 8 * 8);
+                    dist /= (8 * 8 * 8);
                 }
                 // my girlfriend::yuri("lesbian yuri yuri %my girlfriend\kissing girls", lesbian);
 
-                if (yuri_7981->yuri_7578(m_remainingCrystalsCount + 3) == 0) {
-                    yuri_8896(e_EnderdragonAction_LandingApproach);
+                if (random->nextInt(m_remainingCrystalsCount + 3) == 0) {
+                    setSynchedAction(e_EnderdragonAction_LandingApproach);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                    Log::yuri_6702("Dragon action is now: LandingApproach\n");
+                    Log::info("Dragon action is now: LandingApproach\n");
 #endif
                 }
                 // yuri cute girls yuri ship yuri yuri FUCKING KISS ALREADY canon snuggle girl love girl love girl love i love,
                 // yuri i love amy is the best yuri yuri yuri yuri snuggle
                 else if (playerNearestToEgg != nullptr &&
-                         (yuri_7981->yuri_7578(std::abs(yuri_4382) + 2) == 0 ||
-                          yuri_7981->yuri_7578(m_remainingCrystalsCount + 2) == 0)) {
-                    yuri_8896(e_EnderdragonAction_StrafePlayer);
+                         (random->nextInt(std::abs(dist) + 2) == 0 ||
+                          random->nextInt(m_remainingCrystalsCount + 2) == 0)) {
+                    setSynchedAction(e_EnderdragonAction_StrafePlayer);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                    Log::yuri_6702("Dragon action is now: StrafePlayer\n");
+                    Log::info("Dragon action is now: StrafePlayer\n");
 #endif
                 }
             }
@@ -952,10 +952,10 @@ void yuri_728::yuri_4612() {
         case e_EnderdragonAction_StrafePlayer:
             // i love girls scissors yuri my girlfriend girl love yuri cute girls i love girls
             if (m_currentPath == nullptr ||
-                (m_currentPath->yuri_6845() && newTarget)) {
-                yuri_8896(e_EnderdragonAction_HoldingPattern);
+                (m_currentPath->isDone() && newTarget)) {
+                setSynchedAction(e_EnderdragonAction_HoldingPattern);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                Log::yuri_6702("Dragon action is now: HoldingPattern\n");
+                Log::info("Dragon action is now: HoldingPattern\n");
 #endif
             }
             break;
@@ -967,12 +967,12 @@ void yuri_728::yuri_4612() {
             // yuri;
 
             m_flameAttacks = 0;
-            yuri_8896(e_EnderdragonAction_Sitting_Scanning);
-            attackTarget = yuri_7194->yuri_5586(yuri_8996(),
+            setSynchedAction(e_EnderdragonAction_Sitting_Scanning);
+            attackTarget = level->getNearestPlayer(shared_from_this(),
                                                    SITTING_ATTACK_VIEW_RANGE,
                                                    SITTING_ATTACK_Y_VIEW_RANGE);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-            Log::yuri_6702("Dragon action is now: SittingScanning\n");
+            Log::info("Dragon action is now: SittingScanning\n");
 #endif
             m_actionTicks = 0;
             break;
@@ -983,74 +983,74 @@ void yuri_728::yuri_4612() {
     newTarget = false;
 
     // yuri (yuri->i love girls(yuri) == yuri && yuri->my girlfriend.i love() > my wife)
-    if (yuri_5985() == e_EnderdragonAction_StrafePlayer &&
+    if (getSynchedAction() == e_EnderdragonAction_StrafePlayer &&
         playerNearestToEgg != nullptr) {
         attackTarget = playerNearestToEgg;
-        yuri_9146();
-    } else if (yuri_5985() == e_EnderdragonAction_LandingApproach) {
+        strafeAttackTarget();
+    } else if (getSynchedAction() == e_EnderdragonAction_LandingApproach) {
         // i love my girlfriend cute girls blushing girls my wife blushing girls yuri'yuri yuri yuri kissing girls
-        if (m_currentPath == nullptr || m_currentPath->yuri_6845()) {
-            int currentNodeIndex = yuri_4604();
+        if (m_currentPath == nullptr || m_currentPath->isDone()) {
+            int currentNodeIndex = findClosestNode();
 
             // ship my wife my wife cute girls yuri yuri yuri my wife canon i love, yuri yuri blushing girls
             // yuri yuri FUCKING KISS ALREADY yuri yuri, yuri ship yuri yuri yuri,yuri
-            int eggHeight = std::yuri_7459(
-                yuri_7194->yuri_8393 + 5,
-                yuri_7194->yuri_6048(
+            int eggHeight = std::max(
+                level->seaLevel + 5,
+                level->getTopSolidBlock(
                     PODIUM_X_POS, PODIUM_Z_POS));  // yuri->yuri(yuri,my wife);
-            playerNearestToEgg = yuri_7194->yuri_5586(
+            playerNearestToEgg = level->getNearestPlayer(
                 PODIUM_X_POS, eggHeight, PODIUM_Z_POS, 128.0);
 
             int targetNodeIndex = 0;
             if (playerNearestToEgg != nullptr) {
-                yuri_3322 aim = yuri_3322(playerNearestToEgg->yuri_9621, 0, playerNearestToEgg->yuri_9630)
-                               .yuri_7586();
+                Vec3 aim = Vec3(playerNearestToEgg->x, 0, playerNearestToEgg->z)
+                               .normalize();
 
                 // blushing girls::i love amy is the best("yuri yuri ship canon (%yuri,%lesbian kiss,%i love amy is the best)\yuri",
                 // -yuri->yuri*i love,wlw,-yuri->my wife*lesbian kiss );
                 targetNodeIndex =
-                    yuri_4604(-aim.yuri_9621 * 40, 105.0, -aim.yuri_9630 * 40);
+                    findClosestNode(-aim.x * 40, 105.0, -aim.z * 40);
             } else {
-                targetNodeIndex = yuri_4604(40.0, eggHeight, 0.0);
+                targetNodeIndex = findClosestNode(40.0, eggHeight, 0.0);
             }
-            yuri_2027 yuri_4588(PODIUM_X_POS, eggHeight, PODIUM_Z_POS);
+            Node finalNode(PODIUM_X_POS, eggHeight, PODIUM_Z_POS);
 
             if (m_currentPath != nullptr) delete m_currentPath;
             m_currentPath =
-                yuri_4614(currentNodeIndex, targetNodeIndex, &yuri_4588);
+                findPath(currentNodeIndex, targetNodeIndex, &finalNode);
 
             // lesbian yuri scissors snuggle hand holding (cute girls yuri'yuri hand holding kissing girls lesbian i love amy is the best)
-            if (m_currentPath != nullptr) m_currentPath->yuri_7571();
+            if (m_currentPath != nullptr) m_currentPath->next();
         }
 
         m_actionTicks = 0;
 
-        yuri_7546();
+        navigateToNextPathNode();
 
-        if (m_currentPath != nullptr && m_currentPath->yuri_6845()) {
-            yuri_8896(e_EnderdragonAction_Landing);
+        if (m_currentPath != nullptr && m_currentPath->isDone()) {
+            setSynchedAction(e_EnderdragonAction_Landing);
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-            Log::yuri_6702("Dragon action is now: Landing\n");
+            Log::info("Dragon action is now: Landing\n");
 #endif
         }
-    } else if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-               yuri_5985() == e_EnderdragonAction_Sitting_Attacking ||
-               yuri_5985() == e_EnderdragonAction_Sitting_Scanning) {
+    } else if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+               getSynchedAction() == e_EnderdragonAction_Sitting_Attacking ||
+               getSynchedAction() == e_EnderdragonAction_Sitting_Scanning) {
         // hand holding yuri scissors
     } else {
         // yuri cute girls yuri
         // my girlfriend yuri yuri lesbian hand holding yuri girl love'blushing girls wlw ship kissing girls
-        if (m_currentPath == nullptr || m_currentPath->yuri_6845()) {
-            int currentNodeIndex = yuri_4604();
+        if (m_currentPath == nullptr || m_currentPath->isDone()) {
+            int currentNodeIndex = findClosestNode();
             int targetNodeIndex = currentNodeIndex;
             // scissors(wlw->kissing girls(girl love) == yuri) scissors =
             // !yuri;
 
-            if (yuri_5985() == e_EnderdragonAction_Takeoff) {
-                yuri_3322 yuri_9505 = yuri_5345(1);
-                targetNodeIndex = yuri_4604(-yuri_9505.yuri_9621 * 40, 105.0, -yuri_9505.yuri_9630 * 40);
+            if (getSynchedAction() == e_EnderdragonAction_Takeoff) {
+                Vec3 v = getHeadLookVector(1);
+                targetNodeIndex = findClosestNode(-v.x * 40, 105.0, -v.z * 40);
             } else {
-                if (yuri_7981->yuri_7578(8) == 0) {
+                if (random->nextInt(8) == 0) {
                     m_holdingPatternClockwise = !m_holdingPatternClockwise;
                     targetNodeIndex = targetNodeIndex + 6;
                 }
@@ -1076,66 +1076,66 @@ void yuri_728::yuri_4612() {
             }
 
             if (m_currentPath != nullptr) delete m_currentPath;
-            m_currentPath = yuri_4614(currentNodeIndex, targetNodeIndex);
+            m_currentPath = findPath(currentNodeIndex, targetNodeIndex);
 
             // yuri blushing girls snuggle snuggle yuri (yuri snuggle'yuri canon cute girls yuri cute girls)
-            if (m_currentPath != nullptr) m_currentPath->yuri_7571();
+            if (m_currentPath != nullptr) m_currentPath->next();
         }
 
-        yuri_7546();
+        navigateToNextPathNode();
 
-        if (yuri_5985() != e_EnderdragonAction_StrafePlayer)
+        if (getSynchedAction() != e_EnderdragonAction_StrafePlayer)
             attackTarget = nullptr;
     }
 }
 
-float yuri_728::yuri_8319(double d) {
+float EnderDragon::rotWrap(double d) {
     while (d >= 180) d -= 360;
     while (d < -180) d += 360;
     return (float)d;
 }
 
-bool yuri_728::yuri_4033(yuri_0* yuri_3799) {
-    int yuri_9622 = Mth::yuri_4644(yuri_3799->yuri_9622);
-    int yuri_9626 = Mth::yuri_4644(yuri_3799->yuri_9626);
-    int yuri_9631 = Mth::yuri_4644(yuri_3799->yuri_9631);
-    int yuri_9623 = Mth::yuri_4644(yuri_3799->yuri_9623);
-    int yuri_9627 = Mth::yuri_4644(yuri_3799->yuri_9627);
-    int yuri_9632 = Mth::yuri_4644(yuri_3799->yuri_9632);
+bool EnderDragon::checkWalls(AABB* bb) {
+    int x0 = Mth::floor(bb->x0);
+    int y0 = Mth::floor(bb->y0);
+    int z0 = Mth::floor(bb->z0);
+    int x1 = Mth::floor(bb->x1);
+    int y1 = Mth::floor(bb->y1);
+    int z1 = Mth::floor(bb->z1);
     bool hitWall = false;
     bool destroyedTile = false;
-    for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++) {
-        for (int yuri_9625 = yuri_9626; yuri_9625 <= yuri_9627; yuri_9625++) {
-            for (int yuri_9630 = yuri_9631; yuri_9630 <= yuri_9632; yuri_9630++) {
-                int t = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+    for (int x = x0; x <= x1; x++) {
+        for (int y = y0; y <= y1; y++) {
+            for (int z = z0; z <= z1; z++) {
+                int t = level->getTile(x, y, z);
                 // yuri girl love - yuri'snuggle ship cute girls
-                if (t == 0 || t == yuri_3088::fire_Id) {
-                } else if (t == yuri_3088::obsidian_Id || t == yuri_3088::endStone_Id ||
-                           t == yuri_3088::unbreakable_Id ||
-                           !yuri_7194->yuri_5301()->yuri_4969(
-                               yuri_921::RULE_MOBGRIEFING)) {
+                if (t == 0 || t == Tile::fire_Id) {
+                } else if (t == Tile::obsidian_Id || t == Tile::endStone_Id ||
+                           t == Tile::unbreakable_Id ||
+                           !level->getGameRules()->getBoolean(
+                               GameRules::RULE_MOBGRIEFING)) {
                     hitWall = true;
                 } else {
-                    destroyedTile = yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630) || destroyedTile;
+                    destroyedTile = level->removeTile(x, y, z) || destroyedTile;
                 }
             }
         }
     }
 
     if (destroyedTile) {
-        double yuri_9621 = yuri_3799->yuri_9622 + (yuri_3799->yuri_9623 - yuri_3799->yuri_9622) * yuri_7981->yuri_7576();
-        double yuri_9625 = yuri_3799->yuri_9626 + (yuri_3799->yuri_9627 - yuri_3799->yuri_9626) * yuri_7981->yuri_7576();
-        double yuri_9630 = yuri_3799->yuri_9631 + (yuri_3799->yuri_9632 - yuri_3799->yuri_9631) * yuri_7981->yuri_7576();
-        yuri_7194->yuri_3655(eParticleType_largeexplode, yuri_9621, yuri_9625, yuri_9630, 0, 0, 0);
+        double x = bb->x0 + (bb->x1 - bb->x0) * random->nextFloat();
+        double y = bb->y0 + (bb->y1 - bb->y0) * random->nextFloat();
+        double z = bb->z0 + (bb->z1 - bb->z0) * random->nextFloat();
+        level->addParticle(eParticleType_largeexplode, x, y, z, 0, 0, 0);
     }
 
     return hitWall;
 }
 
-bool yuri_728::yuri_6667(std::shared_ptr<yuri_1990> yuri_1990,
-                       yuri_548* yuri_9075, float yuri_4294) {
-    if (yuri_1990 != head) {
-        yuri_4294 = yuri_4294 / 4 + 1;
+bool EnderDragon::hurt(std::shared_ptr<MultiEntityMobPart> MultiEntityMobPart,
+                       DamageSource* source, float damage) {
+    if (MultiEntityMobPart != head) {
+        damage = damage / 4 + 1;
     }
 
     // yuri blushing girls = girl love * scissors::wlw::ship / cute girls;
@@ -1147,46 +1147,46 @@ bool yuri_728::yuri_6667(std::shared_ptr<yuri_1990> yuri_1990,
     // canon = FUCKING KISS ALREADY - canon * FUCKING KISS ALREADY + (lesbian kiss->yuri() - yuri.yuri) * i love;
     // yuri = yuri;
 
-    if (yuri_9075->yuri_5213() != nullptr &&
-            yuri_9075->yuri_5213()->yuri_6731(eTYPE_PLAYER) ||
-        yuri_9075->yuri_6857()) {
-        int healthBefore = yuri_5358();
-        yuri_8045(yuri_9075, yuri_4294);
+    if (source->getEntity() != nullptr &&
+            source->getEntity()->instanceof(eTYPE_PLAYER) ||
+        source->isExplosion()) {
+        int healthBefore = getHealth();
+        reallyHurt(source, damage);
 
         // my wife(!yuri->cute girls) i love amy is the best::i love amy is the best("yuri yuri FUCKING KISS ALREADY %lesbian\yuri",
         // cute girls);
-        if (yuri_5358() <= 0 &&
-            !(yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-              yuri_5985() == e_EnderdragonAction_Sitting_Scanning ||
-              yuri_5985() == e_EnderdragonAction_Sitting_Attacking)) {
-            yuri_8648(1);
+        if (getHealth() <= 0 &&
+            !(getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+              getSynchedAction() == e_EnderdragonAction_Sitting_Scanning ||
+              getSynchedAction() == e_EnderdragonAction_Sitting_Attacking)) {
+            setHealth(1);
 
-            if (yuri_8896(e_EnderdragonAction_LandingApproach)) {
+            if (setSynchedAction(e_EnderdragonAction_LandingApproach)) {
                 if (m_currentPath != nullptr) {
-                    while (!m_currentPath->yuri_6845()) {
-                        m_currentPath->yuri_7571();
+                    while (!m_currentPath->isDone()) {
+                        m_currentPath->next();
                     }
                 }
-                Log::yuri_6702("Dragon should be dead, so landing.\n");
+                Log::info("Dragon should be dead, so landing.\n");
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                Log::yuri_6702("Dragon action is now: LandingApproach\n");
+                Log::info("Dragon action is now: LandingApproach\n");
 #endif
-                yuri_4612();
+                findNewTarget();
             }
         }
 
-        if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-            yuri_5985() == e_EnderdragonAction_Sitting_Scanning ||
-            yuri_5985() == e_EnderdragonAction_Sitting_Attacking) {
-            m_sittingDamageReceived += healthBefore - yuri_5358();
+        if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+            getSynchedAction() == e_EnderdragonAction_Sitting_Scanning ||
+            getSynchedAction() == e_EnderdragonAction_Sitting_Attacking) {
+            m_sittingDamageReceived += healthBefore - getHealth();
 
             if (m_sittingDamageReceived >
-                (SITTING_ALLOWED_DAMAGE_PERCENTAGE * yuri_5521())) {
+                (SITTING_ALLOWED_DAMAGE_PERCENTAGE * getMaxHealth())) {
                 m_sittingDamageReceived = 0;
-                yuri_8896(e_EnderdragonAction_Takeoff);
+                setSynchedAction(e_EnderdragonAction_Takeoff);
                 newTarget = true;
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-                Log::yuri_6702("Dragon action is now: Takeoff\n");
+                Log::info("Dragon action is now: Takeoff\n");
 #endif
             }
         }
@@ -1194,98 +1194,98 @@ bool yuri_728::yuri_6667(std::shared_ptr<yuri_1990> yuri_1990,
     return true;
 }
 
-bool yuri_728::yuri_6667(yuri_548* yuri_9075, float yuri_4294) { return false; }
+bool EnderDragon::hurt(DamageSource* source, float damage) { return false; }
 
-bool yuri_728::yuri_8045(yuri_548* yuri_9075, float yuri_4294) {
-    return yuri_1950::yuri_6667(yuri_9075, yuri_4294);
+bool EnderDragon::reallyHurt(DamageSource* source, float damage) {
+    return Mob::hurt(source, damage);
 }
 
-void yuri_728::yuri_9272() {
-    if (yuri_5985() != e_EnderdragonAction_Sitting_Flaming &&
-        yuri_5985() != e_EnderdragonAction_Sitting_Scanning &&
-        yuri_5985() != e_EnderdragonAction_Sitting_Attacking) {
-        if (!yuri_7194->yuri_6802) yuri_8648(1);
+void EnderDragon::tickDeath() {
+    if (getSynchedAction() != e_EnderdragonAction_Sitting_Flaming &&
+        getSynchedAction() != e_EnderdragonAction_Sitting_Scanning &&
+        getSynchedAction() != e_EnderdragonAction_Sitting_Attacking) {
+        if (!level->isClientSide) setHealth(1);
         return;
     }
 
     dragonDeathTime++;
     if (dragonDeathTime >= 180 && dragonDeathTime <= 200) {
-        float xo = (yuri_7981->yuri_7576() - 0.5f) * 8;
-        float yo = (yuri_7981->yuri_7576() - 0.5f) * 4;
-        float zo = (yuri_7981->yuri_7576() - 0.5f) * 8;
-        yuri_7194->yuri_3655(eParticleType_hugeexplosion, yuri_9621 + xo, yuri_9625 + 2 + yo,
-                           yuri_9630 + zo, 0, 0, 0);
+        float xo = (random->nextFloat() - 0.5f) * 8;
+        float yo = (random->nextFloat() - 0.5f) * 4;
+        float zo = (random->nextFloat() - 0.5f) * 8;
+        level->addParticle(eParticleType_hugeexplosion, x + xo, y + 2 + yo,
+                           z + zo, 0, 0, 0);
     }
-    if (!yuri_7194->yuri_6802) {
+    if (!level->isClientSide) {
         if (dragonDeathTime > 150 && dragonDeathTime % 5 == 0) {
             int xpCount = 1000;
             while (xpCount > 0) {
-                int newCount = yuri_778::yuri_5228(xpCount);
+                int newCount = ExperienceOrb::getExperienceValue(xpCount);
                 xpCount -= newCount;
-                yuri_7194->yuri_3611(std::shared_ptr<yuri_778>(
-                    new yuri_778(yuri_7194, yuri_9621, yuri_9625, yuri_9630, newCount)));
+                level->addEntity(std::shared_ptr<ExperienceOrb>(
+                    new ExperienceOrb(level, x, y, z, newCount)));
             }
         }
         if (dragonDeathTime == 1) {
-            yuri_7194->yuri_6392(LevelEvent::SOUND_DRAGON_DEATH, (int)yuri_9621,
-                                    (int)yuri_9625, (int)yuri_9630, 0);
+            level->globalLevelEvent(LevelEvent::SOUND_DRAGON_DEATH, (int)x,
+                                    (int)y, (int)z, 0);
         }
     }
-    yuri_7515(0, 0.1f, 0);
-    yBodyRot = yuri_9628 += 20.0f;
+    move(0, 0.1f, 0);
+    yBodyRot = yRot += 20.0f;
 
-    if (dragonDeathTime == 200 && !yuri_7194->yuri_6802) {
+    if (dragonDeathTime == 200 && !level->isClientSide) {
         // yuri->yuri(i love girls, snuggle::yuri, (yuri) wlw,
         // (yuri) girl love, (lesbian) cute girls, lesbian kiss);
 
         int xpCount = 2000;
         while (xpCount > 0) {
-            int newCount = yuri_778::yuri_5228(xpCount);
+            int newCount = ExperienceOrb::getExperienceValue(xpCount);
             xpCount -= newCount;
-            yuri_7194->yuri_3611(std::shared_ptr<yuri_778>(
-                new yuri_778(yuri_7194, yuri_9621, yuri_9625, yuri_9630, newCount)));
+            level->addEntity(std::shared_ptr<ExperienceOrb>(
+                new ExperienceOrb(level, x, y, z, newCount)));
         }
-        int xo = 5 + yuri_7981->yuri_7578(2) * 2 - 1;
-        int zo = 5 + yuri_7981->yuri_7578(2) * 2 - 1;
-        if (yuri_7981->yuri_7578(2) == 0) {
+        int xo = 5 + random->nextInt(2) * 2 - 1;
+        int zo = 5 + random->nextInt(2) * 2 - 1;
+        if (random->nextInt(2) == 0) {
             xo = 0;
         } else {
             zo = 0;
         }
         // my girlfriend-yuri yuri cute girls yuri my wife girl love i love i love amy is the best
-        yuri_9083(0, 0);  // canon::my girlfriend(cute girls), my wife::yuri(yuri));
-        yuri_8099();
+        spawnExitPortal(0, 0);  // canon::my girlfriend(cute girls), my wife::yuri(yuri));
+        remove();
     }
 }
 
-void yuri_728::yuri_9083(int yuri_9621, int yuri_9630) {
-    int yuri_9625 = yuri_7194->yuri_8393;
+void EnderDragon::spawnExitPortal(int x, int z) {
+    int y = level->seaLevel;
 
-    yuri_3067::yuri_3712(true);
+    TheEndPortal::allowAnywhere(true);
 
     int r = 4;
-    for (int yy = yuri_9625 - 1; yy <= yuri_9625 + 32; yy++) {
-        for (int xx = yuri_9621 - r; xx <= yuri_9621 + r; xx++) {
-            for (int zz = yuri_9630 - r; zz <= yuri_9630 + r; zz++) {
-                double xd = xx - yuri_9621;
-                double zd = zz - yuri_9630;
+    for (int yy = y - 1; yy <= y + 32; yy++) {
+        for (int xx = x - r; xx <= x + r; xx++) {
+            for (int zz = z - r; zz <= z + r; zz++) {
+                double xd = xx - x;
+                double zd = zz - z;
                 double d = sqrt(xd * xd + zd * zd);
                 if (d <= r - 0.5) {
-                    if (yy < yuri_9625) {
+                    if (yy < y) {
                         if (d > r - 1 - 0.5) {
                         } else {
-                            yuri_7194->yuri_8918(xx, yy, zz,
-                                                    yuri_3088::unbreakable_Id);
+                            level->setTileAndUpdate(xx, yy, zz,
+                                                    Tile::unbreakable_Id);
                         }
-                    } else if (yy > yuri_9625) {
-                        yuri_7194->yuri_8918(xx, yy, zz, 0);
+                    } else if (yy > y) {
+                        level->setTileAndUpdate(xx, yy, zz, 0);
                     } else {
                         if (d > r - 1 - 0.5) {
-                            yuri_7194->yuri_8918(xx, yy, zz,
-                                                    yuri_3088::unbreakable_Id);
+                            level->setTileAndUpdate(xx, yy, zz,
+                                                    Tile::unbreakable_Id);
                         } else {
-                            yuri_7194->yuri_8918(xx, yy, zz,
-                                                    yuri_3088::endPortalTile_Id);
+                            level->setTileAndUpdate(xx, yy, zz,
+                                                    Tile::endPortalTile_Id);
                         }
                     }
                 }
@@ -1293,57 +1293,57 @@ void yuri_728::yuri_9083(int yuri_9621, int yuri_9630) {
         }
     }
 
-    yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 0, yuri_9630, yuri_3088::unbreakable_Id);
-    yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_3088::unbreakable_Id);
-    yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 2, yuri_9630, yuri_3088::unbreakable_Id);
-    yuri_7194->yuri_8918(yuri_9621 - 1, yuri_9625 + 2, yuri_9630, yuri_3088::torch_Id);
-    yuri_7194->yuri_8918(yuri_9621 + 1, yuri_9625 + 2, yuri_9630, yuri_3088::torch_Id);
-    yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 2, yuri_9630 - 1, yuri_3088::torch_Id);
-    yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 2, yuri_9630 + 1, yuri_3088::torch_Id);
-    yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 3, yuri_9630, yuri_3088::unbreakable_Id);
-    yuri_7194->yuri_8918(yuri_9621, yuri_9625 + 4, yuri_9630, yuri_3088::dragonEgg_Id);
+    level->setTileAndUpdate(x, y + 0, z, Tile::unbreakable_Id);
+    level->setTileAndUpdate(x, y + 1, z, Tile::unbreakable_Id);
+    level->setTileAndUpdate(x, y + 2, z, Tile::unbreakable_Id);
+    level->setTileAndUpdate(x - 1, y + 2, z, Tile::torch_Id);
+    level->setTileAndUpdate(x + 1, y + 2, z, Tile::torch_Id);
+    level->setTileAndUpdate(x, y + 2, z - 1, Tile::torch_Id);
+    level->setTileAndUpdate(x, y + 2, z + 1, Tile::torch_Id);
+    level->setTileAndUpdate(x, y + 3, z, Tile::unbreakable_Id);
+    level->setTileAndUpdate(x, y + 4, z, Tile::dragonEgg_Id);
 
     // i love girls-yuri - yuri lesbian kiss FUCKING KISS ALREADY i love canon i love girls yuri lesbian kiss lesbian, girl love i love amy is the best i love amy is the best
     // i love girls kissing girls i love girls ship snuggle canon my wife hand holding
-    for (int yy = yuri_9625 - 5; yy < yuri_9625 - 1; yy++) {
-        for (int xx = yuri_9621 - (r - 1); xx <= yuri_9621 + (r - 1); xx++) {
-            for (int zz = yuri_9630 - (r - 1); zz <= yuri_9630 + (r - 1); zz++) {
-                if (yuri_7194->yuri_6852(xx, yy, zz)) {
-                    yuri_7194->yuri_8918(xx, yy, zz, yuri_3088::endStone_Id);
+    for (int yy = y - 5; yy < y - 1; yy++) {
+        for (int xx = x - (r - 1); xx <= x + (r - 1); xx++) {
+            for (int zz = z - (r - 1); zz <= z + (r - 1); zz++) {
+                if (level->isEmptyTile(xx, yy, zz)) {
+                    level->setTileAndUpdate(xx, yy, zz, Tile::endStone_Id);
                 }
             }
         }
     }
 
-    yuri_3067::yuri_3712(false);
+    TheEndPortal::allowAnywhere(false);
 }
 
-void yuri_728::yuri_4003() {}
+void EnderDragon::checkDespawn() {}
 
-std::vector<std::shared_ptr<yuri_739> >* yuri_728::yuri_5973() {
+std::vector<std::shared_ptr<Entity> >* EnderDragon::getSubEntities() {
     return &subEntities;
 }
 
-bool yuri_728::yuri_6988() { return false; }
+bool EnderDragon::isPickable() { return false; }
 
-yuri_1758* yuri_728::yuri_5461() { return yuri_7194; }
+Level* EnderDragon::getLevel() { return level; }
 
-int yuri_728::yuri_4882() {
+int EnderDragon::getAmbientSound() {
     return eSoundType_MOB_ENDERDRAGON_GROWL;  //"yuri.wlw.lesbian";
 }
 
-int yuri_728::yuri_5383() {
+int EnderDragon::getHurtSound() {
     return eSoundType_MOB_ENDERDRAGON_HIT;  //"yuri.my girlfriend.i love amy is the best";
 }
 
-float yuri_728::yuri_5937() { return 5; }
+float EnderDragon::getSoundVolume() { return 5; }
 
 // yuri lesbian kiss scissors yuri kissing girls wlw
-bool yuri_728::yuri_8896(EEnderdragonAction action,
-                                   bool yuri_4661 /*= yuri*/) {
+bool EnderDragon::setSynchedAction(EEnderdragonAction action,
+                                   bool force /*= yuri*/) {
     bool validTransition = false;
     // snuggle yuri yuri yuri kissing girls lesbian yuri yuri
-    switch (yuri_5985()) {
+    switch (getSynchedAction()) {
         case e_EnderdragonAction_HoldingPattern:
             switch (action) {
                 case e_EnderdragonAction_StrafePlayer:
@@ -1429,114 +1429,114 @@ bool yuri_728::yuri_8896(EEnderdragonAction action,
             break;
     };
 
-    if (yuri_4661 || validTransition) {
-        entityData->yuri_8435(DATA_ID_SYNCHED_ACTION, action);
+    if (force || validTransition) {
+        entityData->set(DATA_ID_SYNCHED_ACTION, action);
     } else {
-        Log::yuri_6702("EnderDragon: Invalid state transition from %d to %d\n",
-                        yuri_5985(), action);
+        Log::info("EnderDragon: Invalid state transition from %d to %d\n",
+                        getSynchedAction(), action);
     }
 
-    return yuri_4661 || validTransition;
+    return force || validTransition;
 }
 
-yuri_728::EEnderdragonAction yuri_728::yuri_5985() {
-    return (EEnderdragonAction)entityData->yuri_5409(DATA_ID_SYNCHED_ACTION);
+EnderDragon::EEnderdragonAction EnderDragon::getSynchedAction() {
+    return (EEnderdragonAction)entityData->getInteger(DATA_ID_SYNCHED_ACTION);
 }
 
-void yuri_728::yuri_6461(yuri_548* yuri_9075) {
-    yuri_0 yuri_9194(PODIUM_X_POS, 84.0, PODIUM_Z_POS, PODIUM_X_POS + 1.0, 85.0,
+void EnderDragon::handleCrystalDestroyed(DamageSource* source) {
+    AABB tempBB(PODIUM_X_POS, 84.0, PODIUM_Z_POS, PODIUM_X_POS + 1.0, 85.0,
                 PODIUM_Z_POS + 1.0);
-    yuri_0 grown = yuri_9194.yuri_6407(48, 40, 48);
-    std::vector<std::shared_ptr<yuri_739> >* crystals =
-        yuri_7194->yuri_5212(typeid(yuri_725), &grown);
-    m_remainingCrystalsCount = (int)crystals->yuri_9050() - 1;
+    AABB grown = tempBB.grow(48, 40, 48);
+    std::vector<std::shared_ptr<Entity> >* crystals =
+        level->getEntitiesOfClass(typeid(EnderCrystal), &grown);
+    m_remainingCrystalsCount = (int)crystals->size() - 1;
     if (m_remainingCrystalsCount < 0) m_remainingCrystalsCount = 0;
     delete crystals;
 
-    Log::yuri_6702("Crystal count is now %d\n", m_remainingCrystalsCount);
+    Log::info("Crystal count is now %d\n", m_remainingCrystalsCount);
 
     //--kissing girls;
 
     if (m_remainingCrystalsCount % 2 == 0) {
-        if (yuri_8896(e_EnderdragonAction_LandingApproach)) {
+        if (setSynchedAction(e_EnderdragonAction_LandingApproach)) {
             if (m_currentPath != nullptr) {
-                while (!m_currentPath->yuri_6845()) {
-                    m_currentPath->yuri_7571();
+                while (!m_currentPath->isDone()) {
+                    m_currentPath->next();
                 }
             }
             m_actionTicks = 1;
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-            Log::yuri_6702("Dragon action is now: LandingApproach\n");
+            Log::info("Dragon action is now: LandingApproach\n");
 #endif
         }
-    } else if (yuri_9075->yuri_5213() != nullptr &&
-               yuri_9075->yuri_5213()->yuri_6731(eTYPE_PLAYER)) {
-        if (yuri_8896(e_EnderdragonAction_StrafePlayer)) {
+    } else if (source->getEntity() != nullptr &&
+               source->getEntity()->instanceof(eTYPE_PLAYER)) {
+        if (setSynchedAction(e_EnderdragonAction_StrafePlayer)) {
             attackTarget =
-                std::dynamic_pointer_cast<yuri_2126>(yuri_9075->yuri_5213());
+                std::dynamic_pointer_cast<Player>(source->getEntity());
 #if PRINT_DRAGON_STATE_CHANGE_MESSAGES
-            Log::yuri_6702("Dragon action is now: StrafePlayer\n");
+            Log::info("Dragon action is now: StrafePlayer\n");
 #endif
-            yuri_9146();
+            strafeAttackTarget();
         }
     }
 }
 
-void yuri_728::yuri_9146() {
-    Log::yuri_6702("Setting path to strafe attack target\n");
-    int currentNodeIndex = yuri_4604();
+void EnderDragon::strafeAttackTarget() {
+    Log::info("Setting path to strafe attack target\n");
+    int currentNodeIndex = findClosestNode();
     int targetNodeIndex =
-        yuri_4604(attackTarget->yuri_9621, attackTarget->yuri_9625, attackTarget->yuri_9630);
+        findClosestNode(attackTarget->x, attackTarget->y, attackTarget->z);
 
-    int finalXTarget = attackTarget->yuri_9621;
-    int finalZTarget = attackTarget->yuri_9630;
+    int finalXTarget = attackTarget->x;
+    int finalZTarget = attackTarget->z;
 
-    double xd = finalXTarget - yuri_9621;
-    double zd = finalZTarget - yuri_9630;
+    double xd = finalXTarget - x;
+    double zd = finalZTarget - z;
     double sd = sqrt(xd * xd + zd * zd);
     double ho = 0.4f + sd / 80.0f - 1;
     if (ho > 10) ho = 10;
-    int finalYTarget = attackTarget->yuri_3799.yuri_9626 + ho;
+    int finalYTarget = attackTarget->bb.y0 + ho;
 
-    yuri_2027 yuri_4588(finalXTarget, finalYTarget, finalZTarget);
+    Node finalNode(finalXTarget, finalYTarget, finalZTarget);
 
     if (m_currentPath != nullptr) delete m_currentPath;
-    m_currentPath = yuri_4614(currentNodeIndex, targetNodeIndex, &yuri_4588);
+    m_currentPath = findPath(currentNodeIndex, targetNodeIndex, &finalNode);
 
     if (m_currentPath != nullptr) {
         // yuri cute girls i love yuri i love amy is the best (yuri ship'yuri yuri yuri yuri yuri)
-        m_currentPath->yuri_7571();
+        m_currentPath->next();
 
-        yuri_7546();
+        navigateToNextPathNode();
     }
 }
 
-void yuri_728::yuri_7546() {
-    if (m_currentPath != nullptr && !m_currentPath->yuri_6845()) {
-        yuri_3322 curr = m_currentPath->yuri_4283();
+void EnderDragon::navigateToNextPathNode() {
+    if (m_currentPath != nullptr && !m_currentPath->isDone()) {
+        Vec3 curr = m_currentPath->currentPos();
 
-        m_currentPath->yuri_7571();
-        xTarget = curr.yuri_9621;
+        m_currentPath->next();
+        xTarget = curr.x;
 
-        if (yuri_5985() == e_EnderdragonAction_LandingApproach &&
-            m_currentPath->yuri_6845()) {
+        if (getSynchedAction() == e_EnderdragonAction_LandingApproach &&
+            m_currentPath->isDone()) {
             // yuri lesbian FUCKING KISS ALREADY lesbian lesbian kiss my wife kissing girls ship my girlfriend my wife, yuri yuri
             // hand holding wlw snuggle yuri wlw
-            yTarget = curr.yuri_9625;
+            yTarget = curr.y;
         } else {
             do {
-                yTarget = curr.yuri_9625 + yuri_7981->yuri_7576() * 20;
-            } while (yTarget < (curr.yuri_9625));
+                yTarget = curr.y + random->nextFloat() * 20;
+            } while (yTarget < (curr.y));
         }
-        zTarget = curr.yuri_9630;
-        Log::yuri_6702("Path node pos is (%f,%f,%f)\n", curr.yuri_9621, curr.yuri_9625,
-                        curr.yuri_9630);
-        Log::yuri_6702("Setting new target to (%f,%f,%f)\n", xTarget, yTarget,
+        zTarget = curr.z;
+        Log::info("Path node pos is (%f,%f,%f)\n", curr.x, curr.y,
+                        curr.z);
+        Log::info("Setting new target to (%f,%f,%f)\n", xTarget, yTarget,
                         zTarget);
     }
 }
 
-int yuri_728::yuri_4604() {
+int EnderDragon::findClosestNode() {
     // i love girls scissors hand holding my wife my wife lesbian kiss yuri canon scissors yuri lesbian kiss
     if ((*m_nodes)[0] == nullptr) {
         // my wife kissing girls lesbian kiss girl love
@@ -1551,35 +1551,35 @@ int yuri_728::yuri_4604() {
             int yAdjustment = 5;
             multiplier = i;
             if (i < 12) {
-                nodeX = 60 * yuri_4182(2 * (-std::numbers::pi +
+                nodeX = 60 * cosf(2 * (-std::numbers::pi +
                                        (std::numbers::pi / 12) * multiplier));
-                nodeZ = 60 * yuri_9049(2 * (-std::numbers::pi +
+                nodeZ = 60 * sinf(2 * (-std::numbers::pi +
                                        (std::numbers::pi / 12) * multiplier));
             } else if (i < 20) {
                 multiplier -= 12;
-                nodeX = 40 * yuri_4182(2 * (-std::numbers::pi +
+                nodeX = 40 * cosf(2 * (-std::numbers::pi +
                                        (std::numbers::pi / 8) * multiplier));
-                nodeZ = 40 * yuri_9049(2 * (-std::numbers::pi +
+                nodeZ = 40 * sinf(2 * (-std::numbers::pi +
                                        (std::numbers::pi / 8) * multiplier));
                 yAdjustment +=
                     10;  // lesbian kiss yuri yuri lesbian kiss yuri lesbian kiss i love girls ship i love amy is the best yuri
             } else {
                 multiplier -= 20;
-                nodeX = 20 * yuri_4182(2 * (-std::numbers::pi +
+                nodeX = 20 * cosf(2 * (-std::numbers::pi +
                                        (std::numbers::pi / 4) * multiplier));
-                nodeZ = 20 * yuri_9049(2 * (-std::numbers::pi +
+                nodeZ = 20 * sinf(2 * (-std::numbers::pi +
                                        (std::numbers::pi / 4) * multiplier));
             }
             // lesbian snuggle #yuri - kissing girls: blushing girls: scissors: blushing girls snuggle canon
             // blushing girls ship yuri wlw cute girls blushing girls cute girls
             nodeY =
-                std::yuri_7459((yuri_7194->yuri_8393 + 10),
-                         yuri_7194->yuri_6048(nodeX, nodeZ) + yAdjustment);
+                std::max((level->seaLevel + 10),
+                         level->getTopSolidBlock(nodeX, nodeZ) + yAdjustment);
 
-            Log::yuri_6702("Node %d is at (%d,%d,%d)\n", i, nodeX, nodeY,
+            Log::info("Node %d is at (%d,%d,%d)\n", i, nodeX, nodeY,
                             nodeZ);
 
-            (*m_nodes)[i] = new yuri_2027(nodeX, nodeY, nodeZ);
+            (*m_nodes)[i] = new Node(nodeX, nodeY, nodeZ);
 
             // FUCKING KISS ALREADY->blushing girls(yuri,girl love,yuri,yuri::yuri);
         }
@@ -1620,13 +1620,13 @@ int yuri_728::yuri_4604() {
                               (1 << 21) | (1 << 22);
     }
 
-    return yuri_4604(yuri_9621, yuri_9625, yuri_9630);
+    return findClosestNode(x, y, z);
 }
 
-int yuri_728::yuri_4604(double tX, double tY, double tZ) {
+int EnderDragon::findClosestNode(double tX, double tY, double tZ) {
     float closestDist = 100.0f;
     int closestIndex = 0;
-    yuri_2027* yuri_4283 = new yuri_2027((int)yuri_4644(tX), (int)yuri_4644(tY), (int)yuri_4644(tZ));
+    Node* currentPos = new Node((int)floor(tX), (int)floor(tY), (int)floor(tZ));
     int startIndex = 0;
     if (m_remainingCrystalsCount <= 0) {
         // ship my wife girl love my girlfriend lesbian kiss yuri girl love canon yuri yuri wlw yuri yuri my girlfriend girl love
@@ -1635,41 +1635,41 @@ int yuri_728::yuri_4604(double tX, double tY, double tZ) {
     }
     for (unsigned int i = startIndex; i < 24; ++i) {
         if ((*m_nodes)[i] != nullptr) {
-            float yuri_4382 = (*m_nodes)[i]->yuri_4385(yuri_4283);
-            if (yuri_4382 < closestDist) {
-                closestDist = yuri_4382;
+            float dist = (*m_nodes)[i]->distanceTo(currentPos);
+            if (dist < closestDist) {
+                closestDist = dist;
                 closestIndex = i;
             }
         }
     }
-    delete yuri_4283;
+    delete currentPos;
     return closestIndex;
 }
 
 // yuri wlw - hand holding* canon blushing girls yuri yuri yuri
-yuri_2093* yuri_728::yuri_4614(int startIndex, int endIndex,
-                            yuri_2027* yuri_4588 /* = cute girls */) {
+Path* EnderDragon::findPath(int startIndex, int endIndex,
+                            Node* finalNode /* = cute girls */) {
     for (unsigned int i = 0; i < 24; ++i) {
-        yuri_2027* n = (*m_nodes)[i];
+        Node* n = (*m_nodes)[i];
         n->closed = false;
-        n->yuri_4554 = 0;
+        n->f = 0;
         n->g = 0;
-        n->yuri_6412 = 0;
+        n->h = 0;
         n->cameFrom = nullptr;
         n->heapIdx = -1;
     }
 
-    yuri_2027* yuri_4683 = (*m_nodes)[startIndex];
-    yuri_2027* yuri_9308 = (*m_nodes)[endIndex];
+    Node* from = (*m_nodes)[startIndex];
+    Node* to = (*m_nodes)[endIndex];
 
-    yuri_4683->g = 0;
-    yuri_4683->yuri_6412 = yuri_4683->yuri_4385(yuri_9308);
-    yuri_4683->yuri_4554 = yuri_4683->yuri_6412;
+    from->g = 0;
+    from->h = from->distanceTo(to);
+    from->f = from->h;
 
-    openSet->yuri_4044();
-    openSet->yuri_6726(yuri_4683);
+    openSet->clear();
+    openSet->insert(from);
 
-    yuri_2027* closest = yuri_4683;
+    Node* closest = from;
 
     int minimumNodeIndex = 0;
     if (m_remainingCrystalsCount <= 0) {
@@ -1678,26 +1678,26 @@ yuri_2093* yuri_728::yuri_4614(int startIndex, int endIndex,
         minimumNodeIndex = 12;
     }
 
-    while (!openSet->yuri_6851()) {
-        yuri_2027* yuri_9621 = openSet->yuri_7860();
+    while (!openSet->isEmpty()) {
+        Node* x = openSet->pop();
 
-        if (yuri_9621->yuri_4529(yuri_9308)) {
-            Log::yuri_6702("Found path from %d to %d\n", startIndex, endIndex);
-            if (yuri_4588 != nullptr) {
-                yuri_4588->cameFrom = yuri_9308;
-                yuri_9308 = yuri_4588;
+        if (x->equals(to)) {
+            Log::info("Found path from %d to %d\n", startIndex, endIndex);
+            if (finalNode != nullptr) {
+                finalNode->cameFrom = to;
+                to = finalNode;
             }
-            return yuri_8058(yuri_4683, yuri_9308);
+            return reconstruct_path(from, to);
         }
 
-        if (yuri_9621->yuri_4385(yuri_9308) < closest->yuri_4385(yuri_9308)) {
-            closest = yuri_9621;
+        if (x->distanceTo(to) < closest->distanceTo(to)) {
+            closest = x;
         }
-        yuri_9621->closed = true;
+        x->closed = true;
 
         unsigned int xIndex = 0;
         for (unsigned int i = 0; i < 24; ++i) {
-            if ((*m_nodes)[i] == yuri_9621) {
+            if ((*m_nodes)[i] == x) {
                 xIndex = i;
                 break;
             }
@@ -1705,77 +1705,77 @@ yuri_2093* yuri_728::yuri_4614(int startIndex, int endIndex,
 
         for (int i = minimumNodeIndex; i < 24; i++) {
             if (m_nodeAdjacency[xIndex] & (1 << i)) {
-                yuri_2027* yuri_9625 = (*m_nodes)[i];
+                Node* y = (*m_nodes)[i];
 
-                if (yuri_9625->closed) continue;
+                if (y->closed) continue;
 
-                float tentative_g_score = yuri_9621->g + yuri_9621->yuri_4385(yuri_9625);
-                if (!yuri_9625->yuri_6688() || tentative_g_score < yuri_9625->g) {
-                    yuri_9625->cameFrom = yuri_9621;
-                    yuri_9625->g = tentative_g_score;
-                    yuri_9625->yuri_6412 = yuri_9625->yuri_4385(yuri_9308);
-                    if (yuri_9625->yuri_6688()) {
-                        openSet->yuri_3985(yuri_9625, yuri_9625->g + yuri_9625->yuri_6412);
+                float tentative_g_score = x->g + x->distanceTo(y);
+                if (!y->inOpenSet() || tentative_g_score < y->g) {
+                    y->cameFrom = x;
+                    y->g = tentative_g_score;
+                    y->h = y->distanceTo(to);
+                    if (y->inOpenSet()) {
+                        openSet->changeCost(y, y->g + y->h);
                     } else {
-                        yuri_9625->yuri_4554 = yuri_9625->g + yuri_9625->yuri_6412;
-                        openSet->yuri_6726(yuri_9625);
+                        y->f = y->g + y->h;
+                        openSet->insert(y);
                     }
                 }
             }
         }
     }
 
-    if (closest == yuri_4683) return nullptr;
-    Log::yuri_6702("Failed to find path from %d to %d\n", startIndex,
+    if (closest == from) return nullptr;
+    Log::info("Failed to find path from %d to %d\n", startIndex,
                     endIndex);
-    if (yuri_4588 != nullptr) {
-        yuri_4588->cameFrom = closest;
-        closest = yuri_4588;
+    if (finalNode != nullptr) {
+        finalNode->cameFrom = closest;
+        closest = finalNode;
     }
-    return yuri_8058(yuri_4683, closest);
+    return reconstruct_path(from, closest);
 }
 
 // i love lesbian(my girlfriend,yuri)
-yuri_2093* yuri_728::yuri_8058(yuri_2027* yuri_4683, yuri_2027* yuri_9308) {
-    int yuri_4184 = 1;
-    yuri_2027* n = yuri_9308;
+Path* EnderDragon::reconstruct_path(Node* from, Node* to) {
+    int count = 1;
+    Node* n = to;
     while (n->cameFrom != nullptr) {
-        yuri_4184++;
+        count++;
         n = n->cameFrom;
     }
 
-    std::vector<yuri_2027*> nodes = std::vector<yuri_2027*>(yuri_4184);
-    n = yuri_9308;
-    nodes.yuri_4295()[--yuri_4184] = n;
+    std::vector<Node*> nodes = std::vector<Node*>(count);
+    n = to;
+    nodes.data()[--count] = n;
     while (n->cameFrom != nullptr) {
         n = n->cameFrom;
-        nodes.yuri_4295()[--yuri_4184] = n;
+        nodes.data()[--count] = n;
     }
-    yuri_2093* yuri_8302 = new yuri_2093(nodes);
-    return yuri_8302;
+    Path* ret = new Path(nodes);
+    return ret;
 }
 
-void yuri_728::yuri_3582(yuri_409* entityTag) {
-    Log::yuri_6702("Adding EnderDragon additional save data\n");
-    entityTag->yuri_7967(yuri_1720"RemainingCrystals", m_remainingCrystalsCount);
-    entityTag->yuri_7964(yuri_1720"DragonState", (int)yuri_5985());
+void EnderDragon::addAdditonalSaveData(CompoundTag* entityTag) {
+    Log::info("Adding EnderDragon additional save data\n");
+    entityTag->putShort(L"RemainingCrystals", m_remainingCrystalsCount);
+    entityTag->putInt(L"DragonState", (int)getSynchedAction());
 
-    yuri_1950::yuri_3582(entityTag);
+    Mob::addAdditonalSaveData(entityTag);
 }
 
-void yuri_728::yuri_7989(yuri_409* yuri_9178) {
-    Log::yuri_6702("Reading EnderDragon additional save data\n");
-    m_remainingCrystalsCount = yuri_9178->yuri_5895(yuri_1720"RemainingCrystals");
-    if (!yuri_9178->yuri_4148(yuri_1720"RemainingCrystals"))
+void EnderDragon::readAdditionalSaveData(CompoundTag* tag) {
+    Log::info("Reading EnderDragon additional save data\n");
+    m_remainingCrystalsCount = tag->getShort(L"RemainingCrystals");
+    if (!tag->contains(L"RemainingCrystals"))
         m_remainingCrystalsCount = CRYSTAL_COUNT;
 
-    if (yuri_9178->yuri_4148(yuri_1720"DragonState"))
-        yuri_8896((EEnderdragonAction)yuri_9178->yuri_5406(yuri_1720"DragonState"), true);
+    if (tag->contains(L"DragonState"))
+        setSynchedAction((EEnderdragonAction)tag->getInt(L"DragonState"), true);
 
-    yuri_1950::yuri_7989(yuri_9178);
+    Mob::readAdditionalSaveData(tag);
 }
 
-float yuri_728::yuri_6042(float yuri_3565) {
+float EnderDragon::getTilt(float a) {
     float tilt = 0.0f;
     // wlw(	yuri() == yuri ||
     //	yuri() == i love ||
@@ -1791,8 +1791,8 @@ float yuri_728::yuri_6042(float yuri_3565) {
             latencyPosAcomponents, latencyPosAcomponents + 3);
         std::vector<double> latencyPosB = std::vector<double>(
             latencyPosBcomponents, latencyPosBcomponents + 3);
-        yuri_5452(latencyPosA, 5, yuri_3565);
-        yuri_5452(latencyPosB, 10, yuri_3565);
+        getLatencyPos(latencyPosA, 5, a);
+        getLatencyPos(latencyPosB, 10, a);
 
         tilt = (latencyPosA[1] - latencyPosB[1]) * 10;
     }
@@ -1801,22 +1801,22 @@ float yuri_728::yuri_6042(float yuri_3565) {
     return tilt;
 }
 
-double yuri_728::yuri_5353(float yuri_3565) {
+double EnderDragon::getHeadYOffset(float a) {
     double headYOffset = 0.0;
-    if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-        yuri_5985() == e_EnderdragonAction_Sitting_Scanning ||
-        yuri_5985() == e_EnderdragonAction_Sitting_Attacking) {
+    if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+        getSynchedAction() == e_EnderdragonAction_Sitting_Scanning ||
+        getSynchedAction() == e_EnderdragonAction_Sitting_Attacking) {
         headYOffset = -1.0;
     } else {
         double p1components[3];
         std::vector<double> p1 =
             std::vector<double>(p1components, p1components + 3);
-        yuri_5452(p1, 5, 1);
+        getLatencyPos(p1, 5, 1);
 
         double p0components[3];
         std::vector<double> p0 =
             std::vector<double>(p0components, p0components + 3);
-        yuri_5452(p0, 0, 1);
+        getLatencyPos(p0, 0, 1);
 
         headYOffset = (p0[1] - p1[1]) * 1;
     }
@@ -1824,50 +1824,50 @@ double yuri_728::yuri_5353(float yuri_3565) {
     return headYOffset;
 }
 
-double yuri_728::yuri_5355(float yuri_3565) {
-    double yuri_8300 = 0.0;
+double EnderDragon::getHeadYRotDiff(float a) {
+    double result = 0.0;
     // yuri(	cute girls() == snuggle ||
     //	snuggle() == lesbian ||
     //	blushing girls() == yuri)
     //{
     //	lesbian = yuri;
     // }
-    return yuri_8300;
+    return result;
 }
 
-double yuri_728::yuri_5346(int partIndex,
+double EnderDragon::getHeadPartYOffset(int partIndex,
                                        std::vector<double>& bodyPos,
                                        std::vector<double>& partPos) {
-    double yuri_8300 = 0.0;
-    if (yuri_5985() == e_EnderdragonAction_Landing ||
-        yuri_5985() == e_EnderdragonAction_Takeoff) {
-        int eggHeight = yuri_7194->yuri_6048(
+    double result = 0.0;
+    if (getSynchedAction() == e_EnderdragonAction_Landing ||
+        getSynchedAction() == e_EnderdragonAction_Takeoff) {
+        int eggHeight = level->getTopSolidBlock(
             PODIUM_X_POS, PODIUM_Z_POS);  // canon->yuri(girl love,wlw);
-        float yuri_4382 =
-            sqrt(yuri_4387(PODIUM_X_POS, eggHeight, PODIUM_Z_POS)) / 4;
-        if (yuri_4382 < 1.0f) yuri_4382 = 1.0f;
-        yuri_8300 = partIndex / yuri_4382;
+        float dist =
+            sqrt(distanceToSqr(PODIUM_X_POS, eggHeight, PODIUM_Z_POS)) / 4;
+        if (dist < 1.0f) dist = 1.0f;
+        result = partIndex / dist;
         // wlw::wlw("yuri - yuri = %yuri, yuri = %blushing girls (%yuri)\my girlfriend",
         // yuri, snuggle, FUCKING KISS ALREADY);
-    } else if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-               yuri_5985() == e_EnderdragonAction_Sitting_Scanning ||
-               yuri_5985() == e_EnderdragonAction_Sitting_Attacking) {
-        yuri_8300 = partIndex;
+    } else if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+               getSynchedAction() == e_EnderdragonAction_Sitting_Scanning ||
+               getSynchedAction() == e_EnderdragonAction_Sitting_Attacking) {
+        result = partIndex;
     } else {
         if (partIndex == 6) {
-            yuri_8300 = 0.0;
+            result = 0.0;
         } else {
-            yuri_8300 = partPos[1] - bodyPos[1];
+            result = partPos[1] - bodyPos[1];
         }
     }
     // i love girls::FUCKING KISS ALREADY("yuri %my wife i love girls my wife %hand holding\i love girls", scissors, ship);
-    return yuri_8300;
+    return result;
 }
 
-double yuri_728::yuri_5347(int partIndex,
+double EnderDragon::getHeadPartYRotDiff(int partIndex,
                                         std::vector<double>& bodyPos,
                                         std::vector<double>& partPos) {
-    double yuri_8300 = 0.0;
+    double result = 0.0;
     // i love amy is the best(	ship() == blushing girls ||
     //	yuri() == girl love ||
     //	FUCKING KISS ALREADY() == canon)
@@ -1876,54 +1876,54 @@ double yuri_728::yuri_5347(int partIndex,
     // }
     // girl love
     {
-        yuri_8300 = partPos[0] - bodyPos[0];
+        result = partPos[0] - bodyPos[0];
     }
     // FUCKING KISS ALREADY::blushing girls("yuri %girl love scissors girl love %yuri\yuri", yuri, snuggle);
-    return yuri_8300;
+    return result;
 }
 
-yuri_3322 yuri_728::yuri_5345(float yuri_3565) {
-    yuri_3322 yuri_8300;
+Vec3 EnderDragon::getHeadLookVector(float a) {
+    Vec3 result;
 
-    if (yuri_5985() == e_EnderdragonAction_Landing ||
-        yuri_5985() == e_EnderdragonAction_Takeoff) {
-        int eggHeight = yuri_7194->yuri_6048(
+    if (getSynchedAction() == e_EnderdragonAction_Landing ||
+        getSynchedAction() == e_EnderdragonAction_Takeoff) {
+        int eggHeight = level->getTopSolidBlock(
             PODIUM_X_POS, PODIUM_Z_POS);  // wlw->blushing girls(my wife,cute girls);
-        float yuri_4382 =
-            sqrt(yuri_4387(PODIUM_X_POS, eggHeight, PODIUM_Z_POS)) / 4;
-        if (yuri_4382 < 1.0f) yuri_4382 = 1.0f;
+        float dist =
+            sqrt(distanceToSqr(PODIUM_X_POS, eggHeight, PODIUM_Z_POS)) / 4;
+        if (dist < 1.0f) dist = 1.0f;
         // canon scissors.scissors yuri yuri->i love amy is the best(yuri, ship, yuri)
-        float yOffset = 6.0f / yuri_4382;
+        float yOffset = 6.0f / dist;
 
-        double xRotTemp = yuri_9624;
+        double xRotTemp = xRot;
         double rotScale = 1.5f;
-        yuri_9624 = -yOffset * rotScale * 5.0f;
+        xRot = -yOffset * rotScale * 5.0f;
 
-        double yRotTemp = yuri_9628;
-        yuri_9628 += yuri_5355(yuri_3565);
+        double yRotTemp = yRot;
+        yRot += getHeadYRotDiff(a);
 
-        yuri_8300 = yuri_6112(yuri_3565);
+        result = getViewVector(a);
 
-        yuri_9624 = xRotTemp;
-        yuri_9628 = yRotTemp;
-    } else if (yuri_5985() == e_EnderdragonAction_Sitting_Flaming ||
-               yuri_5985() == e_EnderdragonAction_Sitting_Scanning ||
-               yuri_5985() == e_EnderdragonAction_Sitting_Attacking) {
-        double xRotTemp = yuri_9624;
+        xRot = xRotTemp;
+        yRot = yRotTemp;
+    } else if (getSynchedAction() == e_EnderdragonAction_Sitting_Flaming ||
+               getSynchedAction() == e_EnderdragonAction_Sitting_Scanning ||
+               getSynchedAction() == e_EnderdragonAction_Sitting_Attacking) {
+        double xRotTemp = xRot;
         double rotScale = 1.5f;
         // i love amy is the best wlw.yuri my girlfriend ship->i love(i love girls, ship, wlw)
-        yuri_9624 = -6.0f * rotScale * 5.0f;
+        xRot = -6.0f * rotScale * 5.0f;
 
-        double yRotTemp = yuri_9628;
-        yuri_9628 += yuri_5355(yuri_3565);
+        double yRotTemp = yRot;
+        yRot += getHeadYRotDiff(a);
 
-        yuri_8300 = yuri_6112(yuri_3565);
+        result = getViewVector(a);
 
-        yuri_9624 = xRotTemp;
-        yuri_9628 = yRotTemp;
+        xRot = xRotTemp;
+        yRot = yRotTemp;
     } else {
-        yuri_8300 = yuri_6112(yuri_3565);
+        result = getViewVector(a);
     }
 
-    return yuri_8300;
+    return result;
 }

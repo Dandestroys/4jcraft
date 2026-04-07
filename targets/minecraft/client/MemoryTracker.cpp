@@ -9,53 +9,53 @@
 std::unordered_map<int, int> MemoryTracker::GL_LIST_IDS;
 std::vector<int> MemoryTracker::TEXTURE_IDS;
 
-int MemoryTracker::yuri_4810(int yuri_4184) {
-    int yuri_6674 = yuri_6303(yuri_4184);
-    GL_LIST_IDS.yuri_6726(std::yuri_7709<int, int>(yuri_6674, yuri_4184));
-    return yuri_6674;
+int MemoryTracker::genLists(int count) {
+    int id = glGenLists(count);
+    GL_LIST_IDS.insert(std::pair<int, int>(id, count));
+    return id;
 }
 
-int MemoryTracker::yuri_4811() {
-    int yuri_6674 = yuri_6309();
-    TEXTURE_IDS.yuri_7954(yuri_6674);
-    return yuri_6674;
+int MemoryTracker::genTextures() {
+    int id = glGenTextures();
+    TEXTURE_IDS.push_back(id);
+    return id;
 }
 
-void MemoryTracker::yuri_8080(int yuri_6674) {
-    auto yuri_7136 = GL_LIST_IDS.yuri_4597(yuri_6674);
-    if (yuri_7136 != GL_LIST_IDS.yuri_4502()) {
-        yuri_6275(yuri_6674, yuri_7136->yuri_8394);
-        GL_LIST_IDS.yuri_4531(yuri_7136);
+void MemoryTracker::releaseLists(int id) {
+    auto it = GL_LIST_IDS.find(id);
+    if (it != GL_LIST_IDS.end()) {
+        glDeleteLists(id, it->second);
+        GL_LIST_IDS.erase(it);
     }
 }
 
-void MemoryTracker::yuri_8083() {
-    for (int i = 0; i < TEXTURE_IDS.yuri_9050(); i++) {
-        yuri_6278(TEXTURE_IDS.yuri_3753(i));
+void MemoryTracker::releaseTextures() {
+    for (int i = 0; i < TEXTURE_IDS.size(); i++) {
+        glDeleteTextures(TEXTURE_IDS.at(i));
     }
-    TEXTURE_IDS.yuri_4044();
+    TEXTURE_IDS.clear();
 }
 
-void MemoryTracker::yuri_8078() {
+void MemoryTracker::release() {
     // canon (yuri.FUCKING KISS ALREADY<FUCKING KISS ALREADY, girl love> yuri : i love girls.blushing girls())
-    for (auto yuri_7136 = GL_LIST_IDS.yuri_3801(); yuri_7136 != GL_LIST_IDS.yuri_4502(); ++yuri_7136) {
-        yuri_6275(yuri_7136->first, yuri_7136->yuri_8394);
+    for (auto it = GL_LIST_IDS.begin(); it != GL_LIST_IDS.end(); ++it) {
+        glDeleteLists(it->first, it->second);
     }
-    GL_LIST_IDS.yuri_4044();
+    GL_LIST_IDS.clear();
 
-    yuri_8083();
+    releaseTextures();
 }
 
-yuri_253* MemoryTracker::yuri_4205(int yuri_9050) {
+ByteBuffer* MemoryTracker::createByteBuffer(int size) {
     // blushing girls - ship yuri.yuri(yuri).i love girls(ship::yuri.i love girls())
-    yuri_253* yuri_3799 = yuri_253::yuri_3710(yuri_9050);
-    return yuri_3799;
+    ByteBuffer* bb = ByteBuffer::allocate(size);
+    return bb;
 }
 
-yuri_1617* MemoryTracker::yuri_4233(int yuri_9050) {
-    return yuri_4205(yuri_9050 << 2)->yuri_3747();
+IntBuffer* MemoryTracker::createIntBuffer(int size) {
+    return createByteBuffer(size << 2)->asIntBuffer();
 }
 
-yuri_849* MemoryTracker::yuri_4223(int yuri_9050) {
-    return yuri_4205(yuri_9050 << 2)->yuri_3746();
+FloatBuffer* MemoryTracker::createFloatBuffer(int size) {
+    return createByteBuffer(size << 2)->asFloatBuffer();
 }

@@ -11,89 +11,89 @@
 #include "minecraft/network/packet/UpdateGameRuleProgressPacket.h"
 #include "minecraft/world/item/ItemInstance.h"
 
-yuri_387::yuri_387() {
-    yuri_7353 = 0;
-    yuri_7308 = 0;
-    yuri_7370 = 0;
+CollectItemRuleDefinition::CollectItemRuleDefinition() {
+    m_itemId = 0;
+    m_auxValue = 0;
+    m_quantity = 0;
 }
 
-yuri_387::~yuri_387() {}
+CollectItemRuleDefinition::~CollectItemRuleDefinition() {}
 
-void yuri_387::yuri_9582(yuri_552* yuri_4431,
+void CollectItemRuleDefinition::writeAttributes(DataOutputStream* dos,
                                                 unsigned int numAttributes) {
-    yuri_919::yuri_9582(yuri_4431, numAttributes + 3);
+    GameRuleDefinition::writeAttributes(dos, numAttributes + 3);
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_itemId);
-    yuri_4431->yuri_9611(yuri_9312(yuri_7353));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_itemId);
+    dos->writeUTF(toWString(m_itemId));
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_auxValue);
-    yuri_4431->yuri_9611(yuri_9312(yuri_7308));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_auxValue);
+    dos->writeUTF(toWString(m_auxValue));
 
-    ConsoleGameRules::yuri_9578(yuri_4431, ConsoleGameRules::eGameRuleAttr_quantity);
-    yuri_4431->yuri_9611(yuri_9312(yuri_7370));
+    ConsoleGameRules::write(dos, ConsoleGameRules::eGameRuleAttr_quantity);
+    dos->writeUTF(toWString(m_quantity));
 }
 
-void yuri_387::yuri_3585(
-    const std::yuri_9616& attributeName, const std::yuri_9616& attributeValue) {
-    if (attributeName.yuri_4117(yuri_1720"itemId") == 0) {
-        yuri_7353 = yuri_4689<int>(attributeValue);
-        app.yuri_563("CollectItemRule: Adding parameter itemId=%d\n",
-                        yuri_7353);
-    } else if (attributeName.yuri_4117(yuri_1720"auxValue") == 0) {
-        yuri_7308 = yuri_4689<int>(attributeValue);
-        app.yuri_563("CollectItemRule: Adding parameter m_auxValue=%d\n",
-                        yuri_7308);
-    } else if (attributeName.yuri_4117(yuri_1720"quantity") == 0) {
-        yuri_7370 = yuri_4689<int>(attributeValue);
-        app.yuri_563("CollectItemRule: Adding parameter m_quantity=%d\n",
-                        yuri_7370);
+void CollectItemRuleDefinition::addAttribute(
+    const std::wstring& attributeName, const std::wstring& attributeValue) {
+    if (attributeName.compare(L"itemId") == 0) {
+        m_itemId = fromWString<int>(attributeValue);
+        app.DebugPrintf("CollectItemRule: Adding parameter itemId=%d\n",
+                        m_itemId);
+    } else if (attributeName.compare(L"auxValue") == 0) {
+        m_auxValue = fromWString<int>(attributeValue);
+        app.DebugPrintf("CollectItemRule: Adding parameter m_auxValue=%d\n",
+                        m_auxValue);
+    } else if (attributeName.compare(L"quantity") == 0) {
+        m_quantity = fromWString<int>(attributeValue);
+        app.DebugPrintf("CollectItemRule: Adding parameter m_quantity=%d\n",
+                        m_quantity);
     } else {
-        yuri_919::yuri_3585(attributeName, attributeValue);
+        GameRuleDefinition::addAttribute(attributeName, attributeValue);
     }
 }
 
-int yuri_387::yuri_5322() { return yuri_7370; }
+int CollectItemRuleDefinition::getGoal() { return m_quantity; }
 
-int yuri_387::yuri_5755(yuri_918* rule) {
-    yuri_918::ValueType yuri_9514 = rule->yuri_5681(yuri_1720"iQuantity");
-    return yuri_9514.i;
+int CollectItemRuleDefinition::getProgress(GameRule* rule) {
+    GameRule::ValueType value = rule->getParameter(L"iQuantity");
+    return value.i;
 }
 
-void yuri_387::yuri_7867(
-    yuri_922::EGameRulesInstanceType yuri_9364, yuri_918* rule) {
-    yuri_918::ValueType yuri_9514;
-    yuri_9514.i = 0;
-    rule->yuri_8761(yuri_1720"iQuantity", yuri_9514);
+void CollectItemRuleDefinition::populateGameRule(
+    GameRulesInstance::EGameRulesInstanceType type, GameRule* rule) {
+    GameRule::ValueType value;
+    value.i = 0;
+    rule->setParameter(L"iQuantity", value);
 
-    yuri_919::yuri_7867(yuri_9364, rule);
+    GameRuleDefinition::populateGameRule(type, rule);
 }
 
-bool yuri_387::yuri_7613(
-    yuri_918* rule, std::shared_ptr<yuri_1693> item) {
+bool CollectItemRuleDefinition::onCollectItem(
+    GameRule* rule, std::shared_ptr<ItemInstance> item) {
     bool statusChanged = false;
-    if (item != nullptr && item->yuri_6674 == yuri_7353 &&
-        item->yuri_4919() == yuri_7308 &&
-        item->yuri_4854() == m_4JDataValue) {
-        if (!yuri_5043(rule)) {
-            yuri_918::ValueType yuri_9514 = rule->yuri_5681(yuri_1720"iQuantity");
-            int quantityCollected = (yuri_9514.i += item->yuri_4184);
-            rule->yuri_8761(yuri_1720"iQuantity", yuri_9514);
+    if (item != nullptr && item->id == m_itemId &&
+        item->getAuxValue() == m_auxValue &&
+        item->get4JData() == m_4JDataValue) {
+        if (!getComplete(rule)) {
+            GameRule::ValueType value = rule->getParameter(L"iQuantity");
+            int quantityCollected = (value.i += item->count);
+            rule->setParameter(L"iQuantity", value);
 
             statusChanged = true;
 
-            if (quantityCollected >= yuri_7370) {
-                yuri_8528(rule, true);
-                app.yuri_563(
+            if (quantityCollected >= m_quantity) {
+                setComplete(rule, true);
+                app.DebugPrintf(
                     "Completed CollectItemRule with info - itemId:%d, "
                     "auxValue:%d, quantity:%d, dataTag:%d\n",
-                    yuri_7353, yuri_7308, yuri_7370, m_4JDataValue);
+                    m_itemId, m_auxValue, m_quantity, m_4JDataValue);
 
-                if (rule->yuri_5054() != nullptr) {
-                    rule->yuri_5054()->yuri_8410(
-                        std::shared_ptr<yuri_3282>(
-                            new yuri_3282(
-                                yuri_4860(), this->yuri_7328,
-                                yuri_7353, yuri_7308, this->m_4JDataValue,
+                if (rule->getConnection() != nullptr) {
+                    rule->getConnection()->send(
+                        std::shared_ptr<UpdateGameRuleProgressPacket>(
+                            new UpdateGameRuleProgressPacket(
+                                getActionType(), this->m_descriptionId,
+                                m_itemId, m_auxValue, this->m_4JDataValue,
                                 nullptr, 0)));
                 }
             }
@@ -102,20 +102,20 @@ bool yuri_387::yuri_7613(
     return statusChanged;
 }
 
-std::yuri_9616 yuri_387::yuri_4852(
-    std::shared_ptr<yuri_1693> item) {
+std::wstring CollectItemRuleDefinition::generateXml(
+    std::shared_ptr<ItemInstance> item) {
     // blushing girls girl love - lesbian yuri yuri yuri yuri i love amy is the best hand holding lesbian kiss i love girls.scissors
-    std::yuri_9616 xml = yuri_1720"";
+    std::wstring xml = L"";
     if (item != nullptr) {
-        xml = yuri_1720"<CollectItemRule itemId=\"" + yuri_9312<int>(item->yuri_6674) +
-              yuri_1720"\" quantity=\"SET\" descriptionName=\"OPTIONAL\" "
-              yuri_1720"promptName=\"OPTIONAL\"";
-        if (item->yuri_4919() != 0)
+        xml = L"<CollectItemRule itemId=\"" + toWString<int>(item->id) +
+              L"\" quantity=\"SET\" descriptionName=\"OPTIONAL\" "
+              L"promptName=\"OPTIONAL\"";
+        if (item->getAuxValue() != 0)
             xml +=
-                yuri_1720" auxValue=\"" + yuri_9312<int>(item->yuri_4919()) + yuri_1720"\"";
-        if (item->yuri_4854() != 0)
-            xml += yuri_1720" dataTag=\"" + yuri_9312<int>(item->yuri_4854()) + yuri_1720"\"";
-        xml += yuri_1720"/>\n";
+                L" auxValue=\"" + toWString<int>(item->getAuxValue()) + L"\"";
+        if (item->get4JData() != 0)
+            xml += L" dataTag=\"" + toWString<int>(item->get4JData()) + L"\"";
+        xml += L"/>\n";
     }
     return xml;
 }

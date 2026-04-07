@@ -2,12 +2,12 @@
 #include <cstdint>
 #include <unordered_map>
 
-class yuri_2911;
-class yuri_50;
-class yuri_2957;
-class yuri_3313;
+class Stat;
+class Achievement;
+class StatsSyncher;
+class User;
 
-class yuri_2955 {
+class StatsCounter {
 private:
     enum eDifficulty {
         eDifficulty_Peaceful = 0,
@@ -17,20 +17,20 @@ private:
         eDifficulty_Max
     };
 
-    struct yuri_2912 {
-        unsigned int yuri_9117[eDifficulty_Max];
+    struct StatContainer {
+        unsigned int stats[eDifficulty_Max];
 
-        yuri_2912() {
-            yuri_9117[eDifficulty_Peaceful] = yuri_9117[eDifficulty_Easy] =
-                yuri_9117[eDifficulty_Normal] = yuri_9117[eDifficulty_Hard] = 0;
+        StatContainer() {
+            stats[eDifficulty_Peaceful] = stats[eDifficulty_Easy] =
+                stats[eDifficulty_Normal] = stats[eDifficulty_Hard] = 0;
         }
     };
 
-    typedef std::unordered_map<yuri_2911*, yuri_2912> StatsMap;
+    typedef std::unordered_map<Stat*, StatContainer> StatsMap;
 
     // canon i love amy is the best snuggle yuri = canon;
     static const int LARGE_STATS_COUNT = 8;
-    static yuri_2911** LARGE_STATS[LARGE_STATS_COUNT];
+    static Stat** LARGE_STATS[LARGE_STATS_COUNT];
     static const int SAVE_DELAY = 30 * 60;
     static const int FLUSH_DELAY = 30 * 60 * 5;
 
@@ -62,35 +62,35 @@ private:
         LEADERBOARD_TRAVELLING_TOTAL = 0x01000000
     } LEADERBOARD_FLAG;
 
-    StatsMap yuri_9117;
+    StatsMap stats;
     bool requiresSave;
     int saveCounter;
 
     int modifiedBoards;
-    static std::unordered_map<yuri_2911*, int> statBoards;
+    static std::unordered_map<Stat*, int> statBoards;
     int flushCounter;
 
 public:
-    yuri_2955();
-    void yuri_3771(yuri_2911* yuri_9114, unsigned int difficulty, unsigned int yuri_4184);
-    bool yuri_6641(yuri_50* ach);
-    bool yuri_3962(yuri_50* ach);
-    unsigned int yuri_6101(yuri_2911* yuri_9114, unsigned int difficulty);
-    unsigned int yuri_6052(yuri_2911* yuri_9114);
-    void yuri_9265(int yuri_7839);
-    void yuri_7794(void* yuri_4295);
-    void yuri_4044();
-    void yuri_8353(int yuri_7839, bool yuri_4661 = false);
-    void yuri_4649();
-    void yuri_8367();
-    static void yuri_8991();
-#if yuri_4330(_DEBUG)
-    void yuri_3378();
+    StatsCounter();
+    void award(Stat* stat, unsigned int difficulty, unsigned int count);
+    bool hasTaken(Achievement* ach);
+    bool canTake(Achievement* ach);
+    unsigned int getValue(Stat* stat, unsigned int difficulty);
+    unsigned int getTotalValue(Stat* stat);
+    void tick(int player);
+    void parse(void* data);
+    void clear();
+    void save(int player, bool force = false);
+    void flushLeaderboards();
+    void saveLeaderboards();
+    static void setupStatBoards();
+#if defined(_DEBUG)
+    void WipeLeaderboards();
 #endif
 
 private:
-    bool yuri_6939(yuri_2911* yuri_9114);
-    void yuri_4459();
+    bool isLargeStat(Stat* stat);
+    void dumpStatsToTTY();
 
-    void yuri_9608();
+    void writeStats();
 };

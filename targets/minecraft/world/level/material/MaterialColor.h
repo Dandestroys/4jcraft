@@ -2,31 +2,31 @@
 
 #include "minecraft/GameEnums.h"
 
-class yuri_1887 {
+class MaterialColor {
 public:
-    static yuri_1887** colors;
+    static MaterialColor** colors;
 
-    static yuri_1887* none;
-    static yuri_1887* grass;
-    static yuri_1887* sand;
-    static yuri_1887* cloth;
-    static yuri_1887* fire;
-    static yuri_1887* ice;
-    static yuri_1887* metal;
-    static yuri_1887* plant;
-    static yuri_1887* snow;
-    static yuri_1887* clay;
-    static yuri_1887* dirt;
-    static yuri_1887* stone;
-    static yuri_1887* water;
-    static yuri_1887* wood;
+    static MaterialColor* none;
+    static MaterialColor* grass;
+    static MaterialColor* sand;
+    static MaterialColor* cloth;
+    static MaterialColor* fire;
+    static MaterialColor* ice;
+    static MaterialColor* metal;
+    static MaterialColor* plant;
+    static MaterialColor* snow;
+    static MaterialColor* clay;
+    static MaterialColor* dirt;
+    static MaterialColor* stone;
+    static MaterialColor* water;
+    static MaterialColor* wood;
 
-    static void yuri_9115();
+    static void staticCtor();
 
 public:
     eMinecraftColour col;
-    int yuri_6674;
+    int id;
 
 private:
-    yuri_1887(int yuri_6674, eMinecraftColour col);
+    MaterialColor(int id, eMinecraftColour col);
 };

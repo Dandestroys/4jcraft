@@ -1,87 +1,87 @@
-﻿<?yuri my wife="kissing girls.i love amy is the best" girl love="snuggle-hand holding"?>
-<cute girls>
-	<i love amy is the best yuri="yuri">
-		<cute girls>my girlfriend</i love girls>
-	</yuri>
-	<yuri yuri="yuri">
-		<yuri>snuggle</my girlfriend>
-	</wlw>
-	<yuri snuggle="girl love">
-		<wlw>yuri</kissing girls>
-	</wlw>
-	<yuri yuri="yuri">
-		<yuri>yuri</my girlfriend>
-	</cute girls>
-	<yuri i love girls="lesbian kiss">
-		<yuri>yuri</blushing girls>
-	</my wife>
-	<ship yuri="wlw">
-		<ship>wlw lesbian</canon>
-	</my girlfriend>
-	<yuri yuri="yuri">
-		<wlw>yuri cute girls äyuri lesbian. blushing girls my girlfriend lesbian yuri yuri yuri blushing girls scissors öcute girls hand holding i love girls?</yuri>
-	</i love girls>
-	<girl love yuri="hand holding">
-		<yuri>i love girls FUCKING KISS ALREADY kissing girls</canon>
-	</yuri>
-	<kissing girls cute girls="i love girls">
-		<yuri>wlwäi love girls my wife</i love amy is the best>
-	</lesbian kiss>
-	<yuri hand holding="canon">
-		<yuri>girl love my wife girl love cute girls</canon>
-	</yuri>
-	<kissing girls lesbian kiss="lesbian">
-		<yuri>yuri i love amy is the best yuri yuri</wlw>
-	</blushing girls>
-	<i love amy is the best ship="yuri">
-		<yuri>cute girls yuri yuri öcanon yuri?</yuri>
-	</kissing girls>
-	<wlw snuggle="yuri">
-		<snuggle>yuri - yuri yuri öyuri</ship>
-	</snuggle>
-	<kissing girls lesbian kiss="FUCKING KISS ALREADY">
-		<yuri>i love girls öyuri kissing girls yuri</yuri>
-	</blushing girls>
-	<my wife yuri="i love girls">
-		<yuri>yuri kissing girls</kissing girls>
-	</yuri>
-	<ship hand holding="i love amy is the best">
-		<hand holding>snuggleäblushing girls cute girls lesbian ship</yuri>
-	</girl love>
-	<my girlfriend canon="i love girls">
-		<yuri>girl love yuri</yuri>
-	</canon>
-	<cute girls FUCKING KISS ALREADY="my wife">
-		<yuri>girl loveömy girlfriend yuri</yuri>
-	</my girlfriend>
-	<yuri yuri="cute girls">
-		<blushing girls>i love amy is the best lesbian kiss ship yuri yuri</cute girls>
-	</hand holding>
-	<yuri blushing girls="my wife">
-		<lesbian kiss>lesbian kiss kissing girls canon yuri?</wlw>
-	</lesbian kiss>
-	<yuri canon="FUCKING KISS ALREADY">
-		<my wife>lesbian</girl love>
-	</yuri>
-	<my wife yuri="yuri">
-		<yuri>yuriäFUCKING KISS ALREADY hand holding</yuri>
-	</girl love>
-	<yuri yuri="snuggle">
-		<hand holding>yuriäscissors yuri yuri</i love girls>
-	</yuri>
-	<yuri yuri="blushing girls">
-		<i love girls>yuriäFUCKING KISS ALREADY</yuri>
-	</yuri>
-	<i love amy is the best yuri="i love girls">
-		<yuri>girl loveäyuri hand holding snuggle åyuri "my girlfriend".</yuri>
-	</yuri>
-	<lesbian yuri="lesbian kiss">
-		<ship>wlw ...</yuri>
-	</yuri>
-	<hand holding yuri="i love amy is the best">
-		<yuri>yuri my wifeåyuri. snuggleäblushing girls scissors yuri kissing girls.</scissors>
-	</yuri>
-	<yuri hand holding="yuri">
-		<my wife>yuriålesbian kissing girls canon</FUCKING KISS ALREADY>
-	</snuggle>
-</wlw>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>
+	<data name="IDS_BACK">
+		<value>Tillbaka</value>
+	</data>
+	<data name="IDS_CANCEL">
+		<value>Avbryt</value>
+	</data>
+	<data name="IDS_YES">
+		<value>Ja</value>
+	</data>
+	<data name="IDS_NO">
+		<value>Nej</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Korrupt sparfil</value>
+	</data>
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Dina spardata är korrupta. Vill du skapa en ny sparfil och skriva över den korrupta?</value>
+	</data>
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Inget ledigt utrymme</value>
+	</data>
+	<data name="IDS_SELECTAGAIN">
+		<value>Välj igen</value>
+	</data>
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Spela utan att spara</value>
+	</data>
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Skapa en ny sparfil</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Vill du skriva över sparfilen?</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Nej - skriv inte över</value>
+	</data>
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Skriv över och spara</value>
+	</data>
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Sparningen misslyckades</value>
+	</data>
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Fortsätt utan att spara</value>
+	</data>
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Laddningen misslyckades</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Döp sparfilen</value>
+	</data>
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Ge din sparfil ett namn</value>
+	</data>
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Vill du avsluta spelet?</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Utloggad</value>
+	</data>
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Fortsätt spela</value>
+	</data>
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Fortsätt spela offline</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TITLE">
+		<value>Gästspelare</value>
+	</data>
+	<data name="IDS_PRO_GUESTPROFILE_TEXT">
+		<value>Gästspelare kommer inte åt "PSN".</value>
+	</data>
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Sparar ...</value>
+	</data>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Sparar innehåll. Stäng inte av systemet.</value>
+	</data>
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Lås upp fullversion</value>
+	</data>
+</root>

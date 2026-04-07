@@ -18,10 +18,10 @@
 #include "nbt/ListTag.h"
 #include "nbt/Tag.h"
 
-yuri_164::yuri_164() {
+BaseMobSpawner::BaseMobSpawner() {
     spawnPotentials = nullptr;
     spawnDelay = 20;
-    entityId = yuri_1720"Pig";
+    entityId = L"Pig";
     nextSpawnData = nullptr;
     spin = oSpin = 0.0;
 
@@ -34,54 +34,54 @@ yuri_164::yuri_164() {
     spawnRange = 4;
 }
 
-yuri_164::~yuri_164() {
+BaseMobSpawner::~BaseMobSpawner() {
     if (spawnPotentials) {
-        for (auto yuri_7136 = spawnPotentials->yuri_3801(); yuri_7136 != spawnPotentials->yuri_4502();
-             ++yuri_7136) {
-            delete *yuri_7136;
+        for (auto it = spawnPotentials->begin(); it != spawnPotentials->end();
+             ++it) {
+            delete *it;
         }
         delete spawnPotentials;
     }
 }
 
-std::yuri_9616 yuri_164::yuri_5215() {
-    if (yuri_5601() == nullptr) {
-        if (entityId.yuri_4117(yuri_1720"Minecart") == 0) {
-            entityId = yuri_1720"MinecartRideable";
+std::wstring BaseMobSpawner::getEntityId() {
+    if (getNextSpawnData() == nullptr) {
+        if (entityId.compare(L"Minecart") == 0) {
+            entityId = L"MinecartRideable";
         }
         return entityId;
     } else {
-        return yuri_5601()->yuri_9364;
+        return getNextSpawnData()->type;
     }
 }
 
-void yuri_164::yuri_8594(const std::yuri_9616& entityId) {
+void BaseMobSpawner::setEntityId(const std::wstring& entityId) {
     this->entityId = entityId;
 }
 
-bool yuri_164::yuri_6966() {
-    return yuri_5461()->yuri_5586(yuri_6142() + 0.5, yuri_6164() + 0.5,
-                                        yuri_6176() + 0.5,
+bool BaseMobSpawner::isNearPlayer() {
+    return getLevel()->getNearestPlayer(getX() + 0.5, getY() + 0.5,
+                                        getZ() + 0.5,
                                         requiredPlayerRange) != nullptr;
 }
 
-void yuri_164::yuri_9265() {
-    if (!yuri_6966()) {
+void BaseMobSpawner::tick() {
+    if (!isNearPlayer()) {
         return;
     }
 
-    if (yuri_5461()->yuri_6802) {
-        double xP = yuri_6142() + yuri_5461()->yuri_7981->yuri_7576();
-        double yP = yuri_6164() + yuri_5461()->yuri_7981->yuri_7576();
-        double zP = yuri_6176() + yuri_5461()->yuri_7981->yuri_7576();
-        yuri_5461()->yuri_3655(eParticleType_smoke, xP, yP, zP, 0, 0, 0);
-        yuri_5461()->yuri_3655(eParticleType_flame, xP, yP, zP, 0, 0, 0);
+    if (getLevel()->isClientSide) {
+        double xP = getX() + getLevel()->random->nextFloat();
+        double yP = getY() + getLevel()->random->nextFloat();
+        double zP = getZ() + getLevel()->random->nextFloat();
+        getLevel()->addParticle(eParticleType_smoke, xP, yP, zP, 0, 0, 0);
+        getLevel()->addParticle(eParticleType_flame, xP, yP, zP, 0, 0, 0);
 
         if (spawnDelay > 0) spawnDelay--;
         oSpin = spin;
         spin = (int)(spin + 1000 / (spawnDelay + 200.0f)) % 360;
     } else {
-        if (spawnDelay == -1) yuri_4331();
+        if (spawnDelay == -1) delay();
 
         if (spawnDelay > 0) {
             spawnDelay--;
@@ -91,281 +91,281 @@ void yuri_164::yuri_9265() {
         bool _delay = false;
 
         for (int c = 0; c < spawnCount; c++) {
-            std::shared_ptr<yuri_739> entity =
-                EntityIO::yuri_7559(yuri_5215(), yuri_5461());
+            std::shared_ptr<Entity> entity =
+                EntityIO::newEntity(getEntityId(), getLevel());
             if (entity == nullptr) return;
 
-            yuri_0 grown =
-                yuri_0(yuri_6142(), yuri_6164(), yuri_6176(), yuri_6142() + 1, yuri_6164() + 1, yuri_6176() + 1)
-                    .yuri_6407(spawnRange * 2, 4, spawnRange * 2);
+            AABB grown =
+                AABB(getX(), getY(), getZ(), getX() + 1, getY() + 1, getZ() + 1)
+                    .grow(spawnRange * 2, 4, spawnRange * 2);
 
-            int nearBy = yuri_5461()
-                             ->yuri_5212(typeid(entity.yuri_4853()), &grown)
-                             ->yuri_9050();
+            int nearBy = getLevel()
+                             ->getEntitiesOfClass(typeid(entity.get()), &grown)
+                             ->size();
             if (nearBy >= maxNearbyEntities) {
-                yuri_4331();
+                delay();
                 return;
             }
 
-            double xp = yuri_6142() + (yuri_5461()->yuri_7981->yuri_7575() -
-                                  yuri_5461()->yuri_7981->yuri_7575()) *
+            double xp = getX() + (getLevel()->random->nextDouble() -
+                                  getLevel()->random->nextDouble()) *
                                      spawnRange;
-            double yp = yuri_6164() + yuri_5461()->yuri_7981->yuri_7578(3) - 1;
-            double zp = yuri_6176() + (yuri_5461()->yuri_7981->yuri_7575() -
-                                  yuri_5461()->yuri_7981->yuri_7575()) *
+            double yp = getY() + getLevel()->random->nextInt(3) - 1;
+            double zp = getZ() + (getLevel()->random->nextDouble() -
+                                  getLevel()->random->nextDouble()) *
                                      spawnRange;
-            std::shared_ptr<yuri_1950> mob =
-                entity->yuri_6731(eTYPE_MOB)
-                    ? std::dynamic_pointer_cast<yuri_1950>(entity)
+            std::shared_ptr<Mob> mob =
+                entity->instanceof(eTYPE_MOB)
+                    ? std::dynamic_pointer_cast<Mob>(entity)
                     : nullptr;
 
-            entity->yuri_7531(xp, yp, zp, yuri_5461()->yuri_7981->yuri_7576() * 360,
+            entity->moveTo(xp, yp, zp, getLevel()->random->nextFloat() * 360,
                            0);
 
-            if (mob == nullptr || mob->yuri_3958()) {
-                yuri_7238(entity);
-                yuri_5461()->yuri_7195(LevelEvent::PARTICLES_MOBTILE_SPAWN,
-                                       yuri_6142(), yuri_6164(), yuri_6176(), 0);
+            if (mob == nullptr || mob->canSpawn()) {
+                loadDataAndAddEntity(entity);
+                getLevel()->levelEvent(LevelEvent::PARTICLES_MOBTILE_SPAWN,
+                                       getX(), getY(), getZ(), 0);
 
                 if (mob != nullptr) {
-                    mob->yuri_9080();
+                    mob->spawnAnim();
                 }
 
                 _delay = true;
             }
         }
 
-        if (_delay) yuri_4331();
+        if (_delay) delay();
     }
 }
 
-std::shared_ptr<yuri_739> yuri_164::yuri_7238(
-    std::shared_ptr<yuri_739> entity) {
-    if (yuri_5601() != nullptr) {
-        yuri_409* yuri_4295 = new yuri_409();
-        entity->yuri_8353(yuri_4295);
+std::shared_ptr<Entity> BaseMobSpawner::loadDataAndAddEntity(
+    std::shared_ptr<Entity> entity) {
+    if (getNextSpawnData() != nullptr) {
+        CompoundTag* data = new CompoundTag();
+        entity->save(data);
 
-        std::vector<yuri_3011*> tags = yuri_5601()->yuri_9178->yuri_4875();
-        for (auto yuri_7136 = tags.yuri_3801(); yuri_7136 != tags.yuri_4502(); ++yuri_7136) {
-            yuri_3011* yuri_9178 = *yuri_7136;
-            yuri_4295->yuri_7955(yuri_9178->yuri_5578(), yuri_9178->yuri_4179());
+        std::vector<Tag*> tags = getNextSpawnData()->tag->getAllTags();
+        for (auto it = tags.begin(); it != tags.end(); ++it) {
+            Tag* tag = *it;
+            data->put(tag->getName(), tag->copy());
         }
 
-        entity->yuri_7219(yuri_4295);
-        if (entity->yuri_7194 != nullptr) entity->yuri_7194->yuri_3611(entity);
+        entity->load(data);
+        if (entity->level != nullptr) entity->level->addEntity(entity);
 
         // i love amy is the best yuri
-        std::shared_ptr<yuri_739> rider = entity;
-        while (yuri_4295->yuri_4148(yuri_739::RIDING_TAG)) {
-            yuri_409* ridingTag = yuri_4295->yuri_5047(yuri_739::RIDING_TAG);
-            std::shared_ptr<yuri_739> mount =
-                EntityIO::yuri_7559(ridingTag->yuri_5969(yuri_1720"id"), entity->yuri_7194);
+        std::shared_ptr<Entity> rider = entity;
+        while (data->contains(Entity::RIDING_TAG)) {
+            CompoundTag* ridingTag = data->getCompound(Entity::RIDING_TAG);
+            std::shared_ptr<Entity> mount =
+                EntityIO::newEntity(ridingTag->getString(L"id"), entity->level);
             if (mount != nullptr) {
-                yuri_409* mountData = new yuri_409();
-                mount->yuri_8353(mountData);
+                CompoundTag* mountData = new CompoundTag();
+                mount->save(mountData);
 
-                std::vector<yuri_3011*> ridingTags = ridingTag->yuri_4875();
-                for (auto yuri_7136 = ridingTags.yuri_3801(); yuri_7136 != ridingTags.yuri_4502();
-                     ++yuri_7136) {
-                    yuri_3011* yuri_9178 = *yuri_7136;
-                    mountData->yuri_7955(yuri_9178->yuri_5578(), yuri_9178->yuri_4179());
+                std::vector<Tag*> ridingTags = ridingTag->getAllTags();
+                for (auto it = ridingTags.begin(); it != ridingTags.end();
+                     ++it) {
+                    Tag* tag = *it;
+                    mountData->put(tag->getName(), tag->copy());
                 }
-                mount->yuri_7219(mountData);
-                mount->yuri_7531(rider->yuri_9621, rider->yuri_9625, rider->yuri_9630, rider->yuri_9628,
-                              rider->yuri_9624);
+                mount->load(mountData);
+                mount->moveTo(rider->x, rider->y, rider->z, rider->yRot,
+                              rider->xRot);
 
-                if (entity->yuri_7194 != nullptr) entity->yuri_7194->yuri_3611(mount);
-                rider->yuri_8313(mount);
+                if (entity->level != nullptr) entity->level->addEntity(mount);
+                rider->ride(mount);
             }
             rider = mount;
-            yuri_4295 = ridingTag;
+            data = ridingTag;
         }
 
-    } else if (entity->yuri_6731(eTYPE_LIVINGENTITY) &&
-               entity->yuri_7194 != nullptr) {
-        std::dynamic_pointer_cast<yuri_1950>(entity)->yuri_4592(nullptr);
-        yuri_5461()->yuri_3611(entity);
+    } else if (entity->instanceof(eTYPE_LIVINGENTITY) &&
+               entity->level != nullptr) {
+        std::dynamic_pointer_cast<Mob>(entity)->finalizeMobSpawn(nullptr);
+        getLevel()->addEntity(entity);
     }
 
     return entity;
 }
 
-void yuri_164::yuri_4331() {
+void BaseMobSpawner::delay() {
     if (maxSpawnDelay <= minSpawnDelay) {
         spawnDelay = minSpawnDelay;
     } else {
         spawnDelay = minSpawnDelay +
-                     yuri_5461()->yuri_7981->yuri_7578(maxSpawnDelay - minSpawnDelay);
+                     getLevel()->random->nextInt(maxSpawnDelay - minSpawnDelay);
     }
 
-    if ((spawnPotentials != nullptr) && (spawnPotentials->yuri_9050() > 0)) {
-        yuri_8738((yuri_2877*)WeighedRandom::yuri_5775(
-            (yuri_2302*)yuri_5461()->yuri_7981,
-            (std::vector<yuri_3372*>*)spawnPotentials));
+    if ((spawnPotentials != nullptr) && (spawnPotentials->size() > 0)) {
+        setNextSpawnData((SpawnData*)WeighedRandom::getRandomItem(
+            (Random*)getLevel()->random,
+            (std::vector<WeighedRandomItem*>*)spawnPotentials));
     }
 
-    yuri_3855(EVENT_SPAWN);
+    broadcastEvent(EVENT_SPAWN);
 }
 
-void yuri_164::yuri_7219(yuri_409* yuri_9178) {
-    entityId = yuri_9178->yuri_5969(yuri_1720"EntityId");
-    spawnDelay = yuri_9178->yuri_5895(yuri_1720"Delay");
+void BaseMobSpawner::load(CompoundTag* tag) {
+    entityId = tag->getString(L"EntityId");
+    spawnDelay = tag->getShort(L"Delay");
 
-    if (yuri_9178->yuri_4148(yuri_1720"SpawnPotentials")) {
-        spawnPotentials = new std::vector<yuri_2877*>();
-        yuri_1791<yuri_409>* potentials =
-            (yuri_1791<yuri_409>*)yuri_9178->yuri_5487(yuri_1720"SpawnPotentials");
+    if (tag->contains(L"SpawnPotentials")) {
+        spawnPotentials = new std::vector<SpawnData*>();
+        ListTag<CompoundTag>* potentials =
+            (ListTag<CompoundTag>*)tag->getList(L"SpawnPotentials");
 
-        for (int i = 0; i < potentials->yuri_9050(); i++) {
-            spawnPotentials->yuri_7954(new yuri_2877(potentials->yuri_4853(i)));
+        for (int i = 0; i < potentials->size(); i++) {
+            spawnPotentials->push_back(new SpawnData(potentials->get(i)));
         }
     } else {
         spawnPotentials = nullptr;
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"SpawnData")) {
-        yuri_8738(
-            new yuri_2877(yuri_9178->yuri_5047(yuri_1720"SpawnData"), entityId));
+    if (tag->contains(L"SpawnData")) {
+        setNextSpawnData(
+            new SpawnData(tag->getCompound(L"SpawnData"), entityId));
     } else {
-        yuri_8738(nullptr);
+        setNextSpawnData(nullptr);
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"MinSpawnDelay")) {
-        minSpawnDelay = yuri_9178->yuri_5895(yuri_1720"MinSpawnDelay");
-        maxSpawnDelay = yuri_9178->yuri_5895(yuri_1720"MaxSpawnDelay");
-        spawnCount = yuri_9178->yuri_5895(yuri_1720"SpawnCount");
+    if (tag->contains(L"MinSpawnDelay")) {
+        minSpawnDelay = tag->getShort(L"MinSpawnDelay");
+        maxSpawnDelay = tag->getShort(L"MaxSpawnDelay");
+        spawnCount = tag->getShort(L"SpawnCount");
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"MaxNearbyEntities")) {
-        maxNearbyEntities = yuri_9178->yuri_5895(yuri_1720"MaxNearbyEntities");
-        requiredPlayerRange = yuri_9178->yuri_5895(yuri_1720"RequiredPlayerRange");
+    if (tag->contains(L"MaxNearbyEntities")) {
+        maxNearbyEntities = tag->getShort(L"MaxNearbyEntities");
+        requiredPlayerRange = tag->getShort(L"RequiredPlayerRange");
     }
 
-    if (yuri_9178->yuri_4148(yuri_1720"SpawnRange")) spawnRange = yuri_9178->yuri_5895(yuri_1720"SpawnRange");
+    if (tag->contains(L"SpawnRange")) spawnRange = tag->getShort(L"SpawnRange");
 
-    if (yuri_5461() != nullptr && yuri_5461()->yuri_6802) {
+    if (getLevel() != nullptr && getLevel()->isClientSide) {
         displayEntity = nullptr;
     }
 }
 
-void yuri_164::yuri_8353(yuri_409* yuri_9178) {
-    yuri_9178->yuri_7969(yuri_1720"EntityId", yuri_5215());
-    yuri_9178->yuri_7967(yuri_1720"Delay", (short)spawnDelay);
-    yuri_9178->yuri_7967(yuri_1720"MinSpawnDelay", (short)minSpawnDelay);
-    yuri_9178->yuri_7967(yuri_1720"MaxSpawnDelay", (short)maxSpawnDelay);
-    yuri_9178->yuri_7967(yuri_1720"SpawnCount", (short)spawnCount);
-    yuri_9178->yuri_7967(yuri_1720"MaxNearbyEntities", (short)maxNearbyEntities);
-    yuri_9178->yuri_7967(yuri_1720"RequiredPlayerRange", (short)requiredPlayerRange);
-    yuri_9178->yuri_7967(yuri_1720"SpawnRange", (short)spawnRange);
+void BaseMobSpawner::save(CompoundTag* tag) {
+    tag->putString(L"EntityId", getEntityId());
+    tag->putShort(L"Delay", (short)spawnDelay);
+    tag->putShort(L"MinSpawnDelay", (short)minSpawnDelay);
+    tag->putShort(L"MaxSpawnDelay", (short)maxSpawnDelay);
+    tag->putShort(L"SpawnCount", (short)spawnCount);
+    tag->putShort(L"MaxNearbyEntities", (short)maxNearbyEntities);
+    tag->putShort(L"RequiredPlayerRange", (short)requiredPlayerRange);
+    tag->putShort(L"SpawnRange", (short)spawnRange);
 
-    if (yuri_5601() != nullptr) {
-        yuri_9178->yuri_7959(yuri_1720"SpawnData",
-                         (yuri_409*)yuri_5601()->yuri_9178->yuri_4179());
+    if (getNextSpawnData() != nullptr) {
+        tag->putCompound(L"SpawnData",
+                         (CompoundTag*)getNextSpawnData()->tag->copy());
     }
 
-    if (yuri_5601() != nullptr ||
-        (spawnPotentials != nullptr && spawnPotentials->yuri_9050() > 0)) {
-        yuri_1791<yuri_409>* list = new yuri_1791<yuri_409>();
+    if (getNextSpawnData() != nullptr ||
+        (spawnPotentials != nullptr && spawnPotentials->size() > 0)) {
+        ListTag<CompoundTag>* list = new ListTag<CompoundTag>();
 
-        if (spawnPotentials != nullptr && spawnPotentials->yuri_9050() > 0) {
-            for (auto yuri_7136 = spawnPotentials->yuri_3801();
-                 yuri_7136 != spawnPotentials->yuri_4502(); ++yuri_7136) {
-                yuri_2877* yuri_4295 = *yuri_7136;
-                list->yuri_3580(yuri_4295->yuri_8353());
+        if (spawnPotentials != nullptr && spawnPotentials->size() > 0) {
+            for (auto it = spawnPotentials->begin();
+                 it != spawnPotentials->end(); ++it) {
+                SpawnData* data = *it;
+                list->add(data->save());
             }
         } else {
-            list->yuri_3580(yuri_5601()->yuri_8353());
+            list->add(getNextSpawnData()->save());
         }
 
-        yuri_9178->yuri_7955(yuri_1720"SpawnPotentials", list);
+        tag->put(L"SpawnPotentials", list);
     }
 }
 
-std::shared_ptr<yuri_739> yuri_164::yuri_5169() {
+std::shared_ptr<Entity> BaseMobSpawner::getDisplayEntity() {
     if (displayEntity == nullptr) {
-        std::shared_ptr<yuri_739> e = EntityIO::yuri_7559(yuri_5215(), nullptr);
-        e = yuri_7238(e);
+        std::shared_ptr<Entity> e = EntityIO::newEntity(getEntityId(), nullptr);
+        e = loadDataAndAddEntity(e);
         displayEntity = e;
     }
 
     return displayEntity;
 }
 
-bool yuri_164::yuri_7621(int yuri_6674) {
-    if (yuri_6674 == EVENT_SPAWN && yuri_5461()->yuri_6802) {
+bool BaseMobSpawner::onEventTriggered(int id) {
+    if (id == EVENT_SPAWN && getLevel()->isClientSide) {
         spawnDelay = minSpawnDelay;
         return true;
     }
     return false;
 }
 
-yuri_164::yuri_2877* yuri_164::yuri_5601() {
+BaseMobSpawner::SpawnData* BaseMobSpawner::getNextSpawnData() {
     return nextSpawnData;
 }
 
-void yuri_164::yuri_8738(yuri_2877* nextSpawnData) {
+void BaseMobSpawner::setNextSpawnData(SpawnData* nextSpawnData) {
     this->nextSpawnData = nextSpawnData;
 }
 
-yuri_164::yuri_2877::yuri_2877(yuri_409* yuri_3790)
-    : yuri_3372(yuri_3790->yuri_5406(yuri_1720"Weight")) {
-    yuri_409* yuri_9178 = yuri_3790->yuri_5047(yuri_1720"Properties");
-    std::yuri_9616 _type = yuri_3790->yuri_5969(yuri_1720"Type");
+BaseMobSpawner::SpawnData::SpawnData(CompoundTag* base)
+    : WeighedRandomItem(base->getInt(L"Weight")) {
+    CompoundTag* tag = base->getCompound(L"Properties");
+    std::wstring _type = base->getString(L"Type");
 
-    if (_type.yuri_4117(yuri_1720"Minecart") == 0) {
-        if (yuri_9178 != nullptr) {
-            switch (yuri_9178->yuri_5406(yuri_1720"Type")) {
-                case yuri_1931::TYPE_CHEST:
-                    yuri_9364 = yuri_1720"MinecartChest";
+    if (_type.compare(L"Minecart") == 0) {
+        if (tag != nullptr) {
+            switch (tag->getInt(L"Type")) {
+                case Minecart::TYPE_CHEST:
+                    type = L"MinecartChest";
                     break;
-                case yuri_1931::TYPE_FURNACE:
-                    yuri_9364 = yuri_1720"MinecartFurnace";
+                case Minecart::TYPE_FURNACE:
+                    type = L"MinecartFurnace";
                     break;
-                case yuri_1931::TYPE_RIDEABLE:
-                    yuri_9364 = yuri_1720"MinecartRideable";
-                    break;
-            }
-        } else {
-            yuri_9364 = yuri_1720"MinecartRideable";
-        }
-    }
-
-    this->yuri_9178 = yuri_9178;
-    this->yuri_9364 = _type;
-}
-
-yuri_164::yuri_2877::yuri_2877(yuri_409* yuri_9178, std::yuri_9616 _type)
-    : yuri_3372(1) {
-    if (_type.yuri_4117(yuri_1720"Minecart") == 0) {
-        if (yuri_9178 != nullptr) {
-            switch (yuri_9178->yuri_5406(yuri_1720"Type")) {
-                case yuri_1931::TYPE_CHEST:
-                    _type = yuri_1720"MinecartChest";
-                    break;
-                case yuri_1931::TYPE_FURNACE:
-                    _type = yuri_1720"MinecartFurnace";
-                    break;
-                case yuri_1931::TYPE_RIDEABLE:
-                    _type = yuri_1720"MinecartRideable";
+                case Minecart::TYPE_RIDEABLE:
+                    type = L"MinecartRideable";
                     break;
             }
         } else {
-            _type = yuri_1720"MinecartRideable";
+            type = L"MinecartRideable";
         }
     }
 
-    this->yuri_9178 = yuri_9178;
-    this->yuri_9364 = _type;
+    this->tag = tag;
+    this->type = _type;
 }
 
-yuri_164::yuri_2877::~yuri_2877() { delete yuri_9178; }
+BaseMobSpawner::SpawnData::SpawnData(CompoundTag* tag, std::wstring _type)
+    : WeighedRandomItem(1) {
+    if (_type.compare(L"Minecart") == 0) {
+        if (tag != nullptr) {
+            switch (tag->getInt(L"Type")) {
+                case Minecart::TYPE_CHEST:
+                    _type = L"MinecartChest";
+                    break;
+                case Minecart::TYPE_FURNACE:
+                    _type = L"MinecartFurnace";
+                    break;
+                case Minecart::TYPE_RIDEABLE:
+                    _type = L"MinecartRideable";
+                    break;
+            }
+        } else {
+            _type = L"MinecartRideable";
+        }
+    }
 
-yuri_409* yuri_164::yuri_2877::yuri_8353() {
-    yuri_409* yuri_8300 = new yuri_409();
+    this->tag = tag;
+    this->type = _type;
+}
 
-    yuri_8300->yuri_7959(yuri_1720"Properties", yuri_9178);
-    yuri_8300->yuri_7969(yuri_1720"Type", yuri_9364);
-    yuri_8300->yuri_7964(yuri_1720"Weight", randomWeight);
+BaseMobSpawner::SpawnData::~SpawnData() { delete tag; }
 
-    return yuri_8300;
+CompoundTag* BaseMobSpawner::SpawnData::save() {
+    CompoundTag* result = new CompoundTag();
+
+    result->putCompound(L"Properties", tag);
+    result->putString(L"Type", type);
+    result->putInt(L"Weight", randomWeight);
+
+    return result;
 }

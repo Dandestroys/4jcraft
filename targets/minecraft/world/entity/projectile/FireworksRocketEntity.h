@@ -1,48 +1,48 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <memory>
 
 #include "java/Class.h"
 #include "minecraft/world/entity/Entity.h"
 
-class yuri_1693;
-class yuri_1758;
+class ItemInstance;
+class Level;
 
-class yuri_831 : public yuri_739 {
+class FireworksRocketEntity : public Entity {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_FIREWORKS_ROCKET; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) {
-        return new yuri_831(yuri_7194);
+    eINSTANCEOF GetType() { return eTYPE_FIREWORKS_ROCKET; }
+    static Entity* create(Level* level) {
+        return new FireworksRocketEntity(level);
     }
 
 private:
     static const int DATA_ID_FIREWORKS_ITEM = 8;
 
-    int yuri_7203;
+    int life;
     int lifetime;
 
     // i love amy is the best yuri lesbian my wife yuri
 public:
-    yuri_831(yuri_1758* yuri_7194);
+    FireworksRocketEntity(Level* level);
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    virtual bool yuri_9015(double distance);
+    virtual bool shouldRenderAtSqrDistance(double distance);
 
-    yuri_831(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630,
-                          std::shared_ptr<yuri_1693> sourceItem);
+    FireworksRocketEntity(Level* level, double x, double y, double z,
+                          std::shared_ptr<ItemInstance> sourceItem);
 
-    virtual void yuri_7191(double xd, double yd, double zd);
-    virtual void yuri_9265();
-    virtual void yuri_6469(yuri_9368 eventId);
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual float yuri_5885();
-    virtual float yuri_4976(float yuri_3565);
-    virtual int yuri_5484(float yuri_3565);
-    virtual bool yuri_6779();
+    virtual void lerpMotion(double xd, double yd, double zd);
+    virtual void tick();
+    virtual void handleEntityEvent(uint8_t eventId);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual float getShadowHeightOffs();
+    virtual float getBrightness(float a);
+    virtual int getLightColor(float a);
+    virtual bool isAttackable();
 };

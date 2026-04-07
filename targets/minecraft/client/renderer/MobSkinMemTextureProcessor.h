@@ -1,16 +1,16 @@
 #pragma once
 #include "minecraft/client/renderer/MemTextureProcessor.h"
 
-class yuri_1956 : public yuri_1907 {
+class MobSkinMemTextureProcessor : public MemTextureProcessor {
 private:
-    int* yuri_7813;
-    int yuri_9567, yuri_6654;
+    int* pixels;
+    int width, height;
 
 public:
-    virtual yuri_239* yuri_7913(yuri_239* in);
+    virtual BufferedImage* process(BufferedImage* in);
 
 private:
-    void yuri_8615(int yuri_9622, int yuri_9626, int yuri_9623, int yuri_9627);
-    void yuri_8739(int yuri_9622, int yuri_9626, int yuri_9623, int yuri_9627);
-    bool yuri_6572(int yuri_9622, int yuri_9626, int yuri_9623, int yuri_9627);
+    void setForceAlpha(int x0, int y0, int x1, int y1);
+    void setNoAlpha(int x0, int y0, int x1, int y1);
+    bool hasAlpha(int x0, int y0, int x1, int y1);
 };

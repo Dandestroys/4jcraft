@@ -1,127 +1,127 @@
 #include "PoweredRailTile.h"
 
-#include <yuri_9151>
+#include <string>
 
 #include "minecraft/world/IconRegister.h"
 #include "minecraft/world/level/Level.h"
 #include "minecraft/world/level/tile/BaseRailTile.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_2166::yuri_2166(int yuri_6674) : yuri_166(yuri_6674, true) {}
+PoweredRailTile::PoweredRailTile(int id) : BaseRailTile(id, true) {}
 
-yuri_1346* yuri_2166::yuri_6007(int face, int yuri_4295) {
-    if ((yuri_4295 & RAIL_DATA_BIT) == 0) {
-        return yuri_6672;
+Icon* PoweredRailTile::getTexture(int face, int data) {
+    if ((data & RAIL_DATA_BIT) == 0) {
+        return icon;
     } else {
         return iconPowered;
     }
 }
 
-void yuri_2166::yuri_8072(IconRegister* iconRegister) {
-    yuri_166::yuri_8072(iconRegister);
-    iconPowered = iconRegister->yuri_8071(yuri_5386() + yuri_1720"_powered");
+void PoweredRailTile::registerIcons(IconRegister* iconRegister) {
+    BaseRailTile::registerIcons(iconRegister);
+    iconPowered = iconRegister->registerIcon(getIconName() + L"_powered");
 }
 
-bool yuri_2166::yuri_4617(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                            int yuri_4295, bool forward,
+bool PoweredRailTile::findPoweredRailSignal(Level* level, int x, int y, int z,
+                                            int data, bool forward,
                                             int searchDepth) {
     if (searchDepth >= 8) {
         return false;
     }
 
-    int yuri_4361 = yuri_4295 & RAIL_DIRECTION_MASK;
+    int dir = data & RAIL_DIRECTION_MASK;
 
     bool checkBelow = true;
-    switch (yuri_4361) {
+    switch (dir) {
         case DIR_FLAT_Z:
             if (forward) {
-                yuri_9630++;
+                z++;
             } else {
-                yuri_9630--;
+                z--;
             }
             break;
         case DIR_FLAT_X:
             if (forward) {
-                yuri_9621--;
+                x--;
             } else {
-                yuri_9621++;
+                x++;
             }
             break;
         case 2:
             if (forward) {
-                yuri_9621--;
+                x--;
             } else {
-                yuri_9621++;
-                yuri_9625++;
+                x++;
+                y++;
                 checkBelow = false;
             }
-            yuri_4361 = DIR_FLAT_X;
+            dir = DIR_FLAT_X;
             break;
         case 3:
             if (forward) {
-                yuri_9621--;
-                yuri_9625++;
+                x--;
+                y++;
                 checkBelow = false;
             } else {
-                yuri_9621++;
+                x++;
             }
-            yuri_4361 = DIR_FLAT_X;
+            dir = DIR_FLAT_X;
             break;
         case 4:
             if (forward) {
-                yuri_9630++;
+                z++;
             } else {
-                yuri_9630--;
-                yuri_9625++;
+                z--;
+                y++;
                 checkBelow = false;
             }
-            yuri_4361 = DIR_FLAT_Z;
+            dir = DIR_FLAT_Z;
             break;
         case 5:
             if (forward) {
-                yuri_9630++;
-                yuri_9625++;
+                z++;
+                y++;
                 checkBelow = false;
             } else {
-                yuri_9630--;
+                z--;
             }
-            yuri_4361 = DIR_FLAT_Z;
+            dir = DIR_FLAT_Z;
             break;
     }
 
-    if (yuri_7027(yuri_7194, yuri_9621, yuri_9625, yuri_9630, forward, searchDepth, yuri_4361)) {
+    if (isSameRailWithPower(level, x, y, z, forward, searchDepth, dir)) {
         return true;
     }
     if (checkBelow &&
-        yuri_7027(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, forward, searchDepth, yuri_4361)) {
+        isSameRailWithPower(level, x, y - 1, z, forward, searchDepth, dir)) {
         return true;
     }
     return false;
 }
 
-bool yuri_2166::yuri_7027(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool PoweredRailTile::isSameRailWithPower(Level* level, int x, int y, int z,
                                           bool forward, int searchDepth,
-                                          int yuri_4361) {
-    int tile = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+                                          int dir) {
+    int tile = level->getTile(x, y, z);
 
-    if (tile == yuri_6674) {
-        int tileData = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    if (tile == id) {
+        int tileData = level->getData(x, y, z);
         int myDir = tileData & RAIL_DIRECTION_MASK;
 
-        if (yuri_4361 == DIR_FLAT_X &&
+        if (dir == DIR_FLAT_X &&
             (myDir == DIR_FLAT_Z || myDir == 4 || myDir == 5)) {
             return false;
         }
-        if (yuri_4361 == DIR_FLAT_Z &&
+        if (dir == DIR_FLAT_Z &&
             (myDir == DIR_FLAT_X || myDir == 2 || myDir == 3)) {
             return false;
         }
 
         if ((tileData & RAIL_DATA_BIT) != 0) {
-            if (yuri_7194->yuri_6618(yuri_9621, yuri_9625, yuri_9630)) {
+            if (level->hasNeighborSignal(x, y, z)) {
                 return true;
             } else {
-                return yuri_4617(yuri_7194, yuri_9621, yuri_9625, yuri_9630, tileData, forward,
+                return findPoweredRailSignal(level, x, y, z, tileData, forward,
                                              searchDepth + 1);
             }
         }
@@ -130,18 +130,18 @@ bool yuri_2166::yuri_7027(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     return false;
 }
 
-void yuri_2166::yuri_9470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4295,
-                                  int yuri_4361, int yuri_9364) {
-    bool signal = yuri_7194->yuri_6618(yuri_9621, yuri_9625, yuri_9630);
-    signal = signal || yuri_4617(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, true, 0) ||
-             yuri_4617(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, false, 0);
+void PoweredRailTile::updateState(Level* level, int x, int y, int z, int data,
+                                  int dir, int type) {
+    bool signal = level->hasNeighborSignal(x, y, z);
+    signal = signal || findPoweredRailSignal(level, x, y, z, data, true, 0) ||
+             findPoweredRailSignal(level, x, y, z, data, false, 0);
 
     bool changed = false;
-    if (signal && (yuri_4295 & RAIL_DATA_BIT) == 0) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361 | RAIL_DATA_BIT, yuri_3088::UPDATE_ALL);
+    if (signal && (data & RAIL_DATA_BIT) == 0) {
+        level->setData(x, y, z, dir | RAIL_DATA_BIT, Tile::UPDATE_ALL);
         changed = true;
-    } else if (!signal && (yuri_4295 & RAIL_DATA_BIT) != 0) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, yuri_4361, yuri_3088::UPDATE_ALL);
+    } else if (!signal && (data & RAIL_DATA_BIT) != 0) {
+        level->setData(x, y, z, dir, Tile::UPDATE_ALL);
         changed = true;
     }
 
@@ -149,9 +149,9 @@ void yuri_2166::yuri_9470(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, in
     // hand holding blushing girls blushing girls FUCKING KISS ALREADY i love girls canon, yuri yuri yuri i love girls girl love yuri
     // i love yuri kissing girls yuri lesbian yuri my girlfriend yuri
     if (changed) {
-        yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6674);
-        if (yuri_4361 == 2 || yuri_4361 == 3 || yuri_4361 == 4 || yuri_4361 == 5) {
-            yuri_7194->yuri_9434(yuri_9621, yuri_9625 + 1, yuri_9630, yuri_6674);
+        level->updateNeighborsAt(x, y - 1, z, id);
+        if (dir == 2 || dir == 3 || dir == 4 || dir == 5) {
+            level->updateNeighborsAt(x, y + 1, z, id);
         }
     }
 }

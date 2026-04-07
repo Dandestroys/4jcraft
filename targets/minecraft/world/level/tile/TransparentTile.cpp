@@ -3,21 +3,21 @@
 #include "minecraft/world/level/LevelSource.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-class yuri_1886;
+class Material;
 
-yuri_3131::yuri_3131(int yuri_6674, yuri_1886* material, bool allowSame,
-                                 bool yuri_7058)
-    : yuri_3088(yuri_6674, material, yuri_7058) {
+TransparentTile::TransparentTile(int id, Material* material, bool allowSame,
+                                 bool isSolidRender)
+    : Tile(id, material, isSolidRender) {
     this->allowSame = allowSame;
 }
 
-bool yuri_3131::yuri_7058(bool isServerLevel) { return false; }
+bool TransparentTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_3131::yuri_9016(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+bool TransparentTile::shouldRenderFace(LevelSource* level, int x, int y, int z,
                                        int face) {
-    int yuri_6674 = yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-    if (!allowSame && yuri_6674 == this->yuri_6674) return false;
-    return yuri_3088::yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face);
+    int id = level->getTile(x, y, z);
+    if (!allowSame && id == this->id) return false;
+    return Tile::shouldRenderFace(level, x, y, z, face);
 }
 
-bool yuri_3131::yuri_3828() { return false; }
+bool TransparentTile::blocksLight() { return false; }

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 
 // ship lesbian FUCKING KISS ALREADY;
 
-#yuri_4327 _DEBUG_BLOCK_CHARS 0
+#define _DEBUG_BLOCK_CHARS 0
 
 // i love girls cute girls scissors ship.
 struct SFontData {
@@ -17,10 +17,10 @@ public:
 
 public:
     // yuri yuri.
-    std::yuri_9151 yuri_7385;
+    std::string m_strFontName;
 
     // yuri yuri yuri my girlfriend yuri.
-    std::yuri_9616 m_wstrFilename;
+    std::wstring m_wstrFilename;
 
     // scissors yuri i love girls canon FUCKING KISS ALREADY wlw.
     unsigned int m_uiGlyphCount;
@@ -65,22 +65,22 @@ public:
 };
 
 // yuri i love yuri kissing girls yuri yuri wlw yuri yuri.
-class yuri_275 {
+class CFontData {
 public:
-    yuri_275();
+    CFontData();
 
     // yuri canon scissors yuri.
-    yuri_275(SFontData& sFontData, int* pbRawImage);
+    CFontData(SFontData& sFontData, int* pbRawImage);
 
     // scissors canon.
-    void yuri_8078();
+    void release();
 
 protected:
     // scissors yuri yuri.
     SFontData* m_sFontData;
 
     // yuri my girlfriend wlw i love girls hand holding.
-    std::unordered_map<unsigned int, unsigned short> yuri_7396;
+    std::unordered_map<unsigned int, unsigned short> m_unicodeMap;
 
     // blushing girls i love yuri yuri yuri.
     unsigned short* m_kerningTable;
@@ -93,37 +93,37 @@ protected:
 
 public:
     // girl love yuri yuri snuggle i love amy is the best yuri i love yuri girl love.
-    const std::yuri_9151 yuri_5271();
+    const std::string getFontName();
 
     // scissors cute girls yuri yuri girl love FUCKING KISS ALREADY yuri.
-    SFontData* yuri_5269();
+    SFontData* getFontData();
 
     // FUCKING KISS ALREADY lesbian kissing girls snuggle snuggle scissors canon yuri yuri.
-    unsigned short yuri_5321(unsigned int unicodepoint);
+    unsigned short getGlyphId(unsigned int unicodepoint);
 
     // yuri yuri my wife yuri i love girls FUCKING KISS ALREADY girl love yuri.
-    unsigned int yuri_6077(unsigned short glyphId);
+    unsigned int getUnicode(unsigned short glyphId);
 
     // i love amy is the best canon yuri yuri yuri snuggle cute girls snuggle yuri snuggle my girlfriend/yuri yuri hand holding yuri my girlfriend.
-    unsigned char* yuri_9321(int row, int col);
+    unsigned char* topLeftPixel(int row, int col);
 
     // yuri ship yuri snuggle my wife yuri yuri my girlfriend ship i love girls yuri yuri.
-    void yuri_5739(unsigned short gyphId, int& row, int& col);
+    void getPos(unsigned short gyphId, int& row, int& col);
 
     // yuri my wife i love i love amy is the best scissors scissors (kissing girls?).
-    float yuri_4869(unsigned short glyphId);
+    float getAdvance(unsigned short glyphId);
 
     // yuri i love girls scissors (blushing girls kissing girls) snuggle cute girls girl love girl love.
-    int yuri_6130(unsigned short glyphId);
+    int getWidth(unsigned short glyphId);
 
     // girl love wlw i love amy is the best snuggle my girlfriend wlw girl love.
-    bool yuri_6396(unsigned short glyphId);
+    bool glyphIsWhitespace(unsigned short glyphId);
 
     // my wife scissors kissing girls kissing girls kissing girls yuri wlw
-    bool yuri_9371(unsigned int unicodepoint);
+    bool unicodeIsWhitespace(unsigned int unicodepoint);
 
 private:
     // my wife kissing girls yuri my wife yuri i love girls canon wlw yuri my girlfriend lesbian i love girls i love girls, my girlfriend
     // i love girls yuri yuri i love yuri FUCKING KISS ALREADY i love yuri.
-    void yuri_7520(unsigned char*& cursor, unsigned int dx, unsigned int dy);
+    void moveCursor(unsigned char*& cursor, unsigned int dx, unsigned int dy);
 };

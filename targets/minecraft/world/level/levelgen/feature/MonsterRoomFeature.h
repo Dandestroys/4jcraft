@@ -1,20 +1,20 @@
 #pragma once
-#include <yuri_9151>
+#include <string>
 
 #include "Feature.h"
 #include "minecraft/world/level/material/Material.h"
 
-class yuri_3373;
-class yuri_2302;
+class WeighedTreasure;
+class Random;
 
-class yuri_1967 : public yuri_801 {
+class MonsterRoomFeature : public Feature {
 private:
     static const int TREASURE_ITEMS_COUNT = 15;
-    static yuri_3373* monsterRoomTreasure[TREASURE_ITEMS_COUNT];
+    static WeighedTreasure* monsterRoomTreasure[TREASURE_ITEMS_COUNT];
 
 public:
-    virtual bool yuri_7814(yuri_1758* yuri_7194, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630);
+    virtual bool place(Level* level, Random* random, int x, int y, int z);
 
 private:
-    std::yuri_9616 yuri_7982(yuri_2302* yuri_7981);
+    std::wstring randomEntityId(Random* random);
 };

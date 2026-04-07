@@ -1,49 +1,49 @@
 #pragma once
 
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "minecraft/world/Container.h"
 
-class yuri_1913;
-class yuri_2126;
-class yuri_1916;
-class yuri_1693;
+class Merchant;
+class Player;
+class MerchantRecipe;
+class ItemInstance;
 
-class yuri_1914 : public yuri_436 {
+class MerchantContainer : public Container {
 private:
-    std::shared_ptr<yuri_1913> merchant;
-    std::vector<std::shared_ptr<yuri_1693>> items;
-    std::shared_ptr<yuri_2126> yuri_7839;
-    yuri_1916* activeRecipe;
+    std::shared_ptr<Merchant> merchant;
+    std::vector<std::shared_ptr<ItemInstance>> items;
+    std::shared_ptr<Player> player;
+    MerchantRecipe* activeRecipe;
     int selectionHint;
 
 public:
-    yuri_1914(std::shared_ptr<yuri_2126> yuri_7839,
-                      std::shared_ptr<yuri_1913> villager);
-    ~yuri_1914();
+    MerchantContainer(std::shared_ptr<Player> player,
+                      std::shared_ptr<Merchant> villager);
+    ~MerchantContainer();
 
-    unsigned int yuri_5058();
-    std::shared_ptr<yuri_1693> yuri_5416(unsigned int yuri_9061);
-    std::shared_ptr<yuri_1693> yuri_8115(unsigned int yuri_9061, int yuri_4184);
+    unsigned int getContainerSize();
+    std::shared_ptr<ItemInstance> getItem(unsigned int slot);
+    std::shared_ptr<ItemInstance> removeItem(unsigned int slot, int count);
 
 private:
-    bool yuri_6985(int yuri_9061);
+    bool isPaymentSlot(int slot);
 
 public:
-    std::shared_ptr<yuri_1693> yuri_8118(int yuri_9061);
-    void yuri_8686(unsigned int yuri_9061, std::shared_ptr<yuri_1693> item);
-    std::yuri_9616 yuri_5578();
-    std::yuri_9616 yuri_5087();
-    bool yuri_6590();
-    int yuri_5531();
-    bool yuri_9130(std::shared_ptr<yuri_2126> yuri_7839);
-    void yuri_9106();
-    void yuri_9135();
-    bool yuri_3943(int yuri_9061, std::shared_ptr<yuri_1693> item);
-    void yuri_8510();
-    void yuri_9460();
-    yuri_1916* yuri_4862();
-    void yuri_8853(int selectionHint);
+    std::shared_ptr<ItemInstance> removeItemNoUpdate(int slot);
+    void setItem(unsigned int slot, std::shared_ptr<ItemInstance> item);
+    std::wstring getName();
+    std::wstring getCustomName();
+    bool hasCustomName();
+    int getMaxStackSize();
+    bool stillValid(std::shared_ptr<Player> player);
+    void startOpen();
+    void stopOpen();
+    bool canPlaceItem(int slot, std::shared_ptr<ItemInstance> item);
+    void setChanged();
+    void updateSellItem();
+    MerchantRecipe* getActiveRecipe();
+    void setSelectionHint(int selectionHint);
 };

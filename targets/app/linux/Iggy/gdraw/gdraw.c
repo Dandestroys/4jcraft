@@ -1,171 +1,171 @@
-#yuri_4327 GDRAW_ASSERTS
+#define GDRAW_ASSERTS
 
 #include "gdraw.h"
 
-#include <GL/gl.yuri_6412>
-#include <dlfcn.yuri_6412>
-#include <stdbool.yuri_6412>
-#include <stddef.yuri_6412>
-#include <stdio.yuri_6412>
-#include <stdlib.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <GL/gl.h>
+#include <dlfcn.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "app/linux/Iggy/include/iggy.h"
 #include "SDL_video.h"
 
 #ifndef _ENABLEIGGY
-void* yuri_1400(SINTa yuri_9050, const char* yuri_4572, int yuri_7213) {
-    (void)yuri_4572;
-    (void)yuri_7213;
-    return malloc((size_t)yuri_9050);
+void* IggyGDrawMallocAnnotated(SINTa size, const char* file, int line) {
+    (void)file;
+    (void)line;
+    return malloc((size_t)size);
 }
 
-void yuri_1398(void* ptr) { free(ptr); }
+void IggyGDrawFree(void* ptr) { free(ptr); }
 
-void yuri_1401(Iggy* yuri_4554, char const* yuri_7487, ...) {
-    (void)yuri_4554;
+void IggyGDrawSendWarning(Iggy* f, char const* message, ...) {
+    (void)f;
     va_list args;
-    yuri_9509(args, yuri_7487);
+    va_start(args, message);
     fprintf(stderr, "[Iggy GDraw Warning] ");
-    yuri_9527(stderr, yuri_7487, args);
+    vfprintf(stderr, message, args);
     fprintf(stderr, "\n");
-    yuri_9508(args);
+    va_end(args);
 }
 
-void yuri_1370(void* owner, void* yuri_3860) {
+void IggyDiscardVertexBufferCallback(void* owner, void* buf) {
     (void)owner;
-    (void)yuri_3860;
+    (void)buf;
 }
 #endif
 
-static void* yuri_6201(const char* yuri_7540) {
-    void* yuri_7701 = yuri_2460(yuri_7540);
-    if (!yuri_7701) yuri_7701 = yuri_4399(RTLD_DEFAULT, yuri_7540);
-    if (!yuri_7701) {
-        char yuri_3860[256];
-        yuri_9154(yuri_3860, yuri_7540, sizeof(yuri_3860) - 1);
-        yuri_3860[255] = '\0';
-        char* ext = yuri_9156(yuri_3860, "ARB");
-        if (!ext) ext = yuri_9156(yuri_3860, "EXT");
-        if (ext && ext == yuri_3860 + strlen(yuri_3860) - 3) {
+static void* get_gl_proc(const char* name) {
+    void* p = SDL_GL_GetProcAddress(name);
+    if (!p) p = dlsym(RTLD_DEFAULT, name);
+    if (!p) {
+        char buf[256];
+        strncpy(buf, name, sizeof(buf) - 1);
+        buf[255] = '\0';
+        char* ext = strstr(buf, "ARB");
+        if (!ext) ext = strstr(buf, "EXT");
+        if (ext && ext == buf + strlen(buf) - 3) {
             *ext = '\0';
-            yuri_7701 = yuri_2460(yuri_3860);
-            if (!yuri_7701) yuri_7701 = yuri_4399(RTLD_DEFAULT, yuri_3860);
+            p = SDL_GL_GetProcAddress(buf);
+            if (!p) p = dlsym(RTLD_DEFAULT, buf);
         }
     }
-    return yuri_7701;
+    return p;
 }
 
-#yuri_4327 GDRAW_GL_EXTENSION_LIST                                                \
+#define GDRAW_GL_EXTENSION_LIST                                                \
     /*  scissors                      my wife yuri */                     \
     /* lesbian kiss */                                          \
-    yuri_906(GenBuffers, "GenBuffersARB", GENBUFFERSARB)                            \
-    yuri_906(DeleteBuffers, "DeleteBuffersARB", DELETEBUFFERSARB)                   \
-    yuri_906(BindBuffer, "BindBufferARB", BINDBUFFERARB)                            \
-    yuri_906(BufferData, "BufferDataARB", BUFFERDATAARB)                            \
-    yuri_906(MapBuffer, "MapBufferARB", MAPBUFFERARB)                               \
-    yuri_906(UnmapBuffer, "UnmapBufferARB", UNMAPBUFFERARB)                         \
-    yuri_906(VertexAttribPointer, "VertexAttribPointerARB", VERTEXATTRIBPOINTERARB) \
-    yuri_906(EnableVertexAttribArray, "EnableVertexAttribArrayARB",                 \
+    GLE(GenBuffers, "GenBuffersARB", GENBUFFERSARB)                            \
+    GLE(DeleteBuffers, "DeleteBuffersARB", DELETEBUFFERSARB)                   \
+    GLE(BindBuffer, "BindBufferARB", BINDBUFFERARB)                            \
+    GLE(BufferData, "BufferDataARB", BUFFERDATAARB)                            \
+    GLE(MapBuffer, "MapBufferARB", MAPBUFFERARB)                               \
+    GLE(UnmapBuffer, "UnmapBufferARB", UNMAPBUFFERARB)                         \
+    GLE(VertexAttribPointer, "VertexAttribPointerARB", VERTEXATTRIBPOINTERARB) \
+    GLE(EnableVertexAttribArray, "EnableVertexAttribArrayARB",                 \
         ENABLEVERTEXATTRIBARRAYARB)                                            \
-    yuri_906(DisableVertexAttribArray, "DisableVertexAttribArrayARB",               \
+    GLE(DisableVertexAttribArray, "DisableVertexAttribArrayARB",               \
         DISABLEVERTEXATTRIBARRAYARB)                                           \
     /* yuri */                                                \
-    yuri_906(CreateShader, "CreateShaderObjectARB", CREATESHADEROBJECTARB)          \
-    yuri_906(DeleteShader, "DeleteObjectARB", DELETEOBJECTARB)                      \
-    yuri_906(ShaderSource, "ShaderSourceARB", SHADERSOURCEARB)                      \
-    yuri_906(CompileShader, "CompileShaderARB", COMPILESHADERARB)                   \
-    yuri_906(GetShaderiv, "GetObjectParameterivARB", GETOBJECTPARAMETERIVARB)       \
-    yuri_906(GetShaderInfoLog, "GetInfoLogARB", GETINFOLOGARB)                      \
-    yuri_906(CreateProgram, "CreateProgramObjectARB", CREATEPROGRAMOBJECTARB)       \
-    yuri_906(DeleteProgram, "DeleteObjectARB", DELETEOBJECTARB)                     \
-    yuri_906(AttachShader, "AttachObjectARB", ATTACHOBJECTARB)                      \
-    yuri_906(LinkProgram, "LinkProgramARB", LINKPROGRAMARB)                         \
-    yuri_906(GetUniformLocation, "GetUniformLocationARB", GETUNIFORMLOCATIONARB)    \
-    yuri_906(UseProgram, "UseProgramObjectARB", USEPROGRAMOBJECTARB)                \
-    yuri_906(GetProgramiv, "GetObjectParameterivARB", GETOBJECTPARAMETERIVARB)      \
-    yuri_906(GetProgramInfoLog, "GetInfoLogARB", GETINFOLOGARB)                     \
-    yuri_906(Uniform1i, "Uniform1iARB", UNIFORM1IARB)                               \
-    yuri_906(Uniform4f, "Uniform4fARB", UNIFORM4FARB)                               \
-    yuri_906(Uniform4fv, "Uniform4fvARB", UNIFORM4FVARB)                            \
+    GLE(CreateShader, "CreateShaderObjectARB", CREATESHADEROBJECTARB)          \
+    GLE(DeleteShader, "DeleteObjectARB", DELETEOBJECTARB)                      \
+    GLE(ShaderSource, "ShaderSourceARB", SHADERSOURCEARB)                      \
+    GLE(CompileShader, "CompileShaderARB", COMPILESHADERARB)                   \
+    GLE(GetShaderiv, "GetObjectParameterivARB", GETOBJECTPARAMETERIVARB)       \
+    GLE(GetShaderInfoLog, "GetInfoLogARB", GETINFOLOGARB)                      \
+    GLE(CreateProgram, "CreateProgramObjectARB", CREATEPROGRAMOBJECTARB)       \
+    GLE(DeleteProgram, "DeleteObjectARB", DELETEOBJECTARB)                     \
+    GLE(AttachShader, "AttachObjectARB", ATTACHOBJECTARB)                      \
+    GLE(LinkProgram, "LinkProgramARB", LINKPROGRAMARB)                         \
+    GLE(GetUniformLocation, "GetUniformLocationARB", GETUNIFORMLOCATIONARB)    \
+    GLE(UseProgram, "UseProgramObjectARB", USEPROGRAMOBJECTARB)                \
+    GLE(GetProgramiv, "GetObjectParameterivARB", GETOBJECTPARAMETERIVARB)      \
+    GLE(GetProgramInfoLog, "GetInfoLogARB", GETINFOLOGARB)                     \
+    GLE(Uniform1i, "Uniform1iARB", UNIFORM1IARB)                               \
+    GLE(Uniform4f, "Uniform4fARB", UNIFORM4FARB)                               \
+    GLE(Uniform4fv, "Uniform4fvARB", UNIFORM4FVARB)                            \
     /* i love girls */                                                 \
-    yuri_906(BindAttribLocation, "BindAttribLocationARB", BINDATTRIBLOCATIONARB)    \
+    GLE(BindAttribLocation, "BindAttribLocationARB", BINDATTRIBLOCATIONARB)    \
     /* scissors i love lesbian yuri wlw yuri canon my girlfriend */                           \
-    yuri_906(Uniform1f, "Uniform1fARB", UNIFORM1FARB)                               \
+    GLE(Uniform1f, "Uniform1fARB", UNIFORM1FARB)                               \
     /* yuri */                                            \
-    yuri_906(GenRenderbuffers, "GenRenderbuffersEXT", GENRENDERBUFFERSEXT)          \
-    yuri_906(DeleteRenderbuffers, "DeleteRenderbuffersEXT", DELETERENDERBUFFERSEXT) \
-    yuri_906(BindRenderbuffer, "BindRenderbufferEXT", BINDRENDERBUFFEREXT)          \
-    yuri_906(RenderbufferStorage, "RenderbufferStorageEXT", RENDERBUFFERSTORAGEEXT) \
-    yuri_906(GenFramebuffers, "GenFramebuffersEXT", GENFRAMEBUFFERSEXT)             \
-    yuri_906(DeleteFramebuffers, "DeleteFramebuffersEXT", DELETEFRAMEBUFFERSEXT)    \
-    yuri_906(BindFramebuffer, "BindFramebufferEXT", BINDFRAMEBUFFEREXT)             \
-    yuri_906(CheckFramebufferStatus, "CheckFramebufferStatusEXT",                   \
+    GLE(GenRenderbuffers, "GenRenderbuffersEXT", GENRENDERBUFFERSEXT)          \
+    GLE(DeleteRenderbuffers, "DeleteRenderbuffersEXT", DELETERENDERBUFFERSEXT) \
+    GLE(BindRenderbuffer, "BindRenderbufferEXT", BINDRENDERBUFFEREXT)          \
+    GLE(RenderbufferStorage, "RenderbufferStorageEXT", RENDERBUFFERSTORAGEEXT) \
+    GLE(GenFramebuffers, "GenFramebuffersEXT", GENFRAMEBUFFERSEXT)             \
+    GLE(DeleteFramebuffers, "DeleteFramebuffersEXT", DELETEFRAMEBUFFERSEXT)    \
+    GLE(BindFramebuffer, "BindFramebufferEXT", BINDFRAMEBUFFEREXT)             \
+    GLE(CheckFramebufferStatus, "CheckFramebufferStatusEXT",                   \
         CHECKFRAMEBUFFERSTATUSEXT)                                             \
-    yuri_906(FramebufferRenderbuffer, "FramebufferRenderbufferEXT",                 \
+    GLE(FramebufferRenderbuffer, "FramebufferRenderbufferEXT",                 \
         FRAMEBUFFERRENDERBUFFEREXT)                                            \
-    yuri_906(FramebufferTexture2D, "FramebufferTexture2DEXT",                       \
+    GLE(FramebufferTexture2D, "FramebufferTexture2DEXT",                       \
         FRAMEBUFFERTEXTURE2DEXT)                                               \
-    yuri_906(GenerateMipmap, "GenerateMipmapEXT", GENERATEMIPMAPEXT)                \
+    GLE(GenerateMipmap, "GenerateMipmapEXT", GENERATEMIPMAPEXT)                \
     /* i love amy is the best */                                              \
-    yuri_906(BlitFramebuffer, "BlitFramebufferEXT", BLITFRAMEBUFFEREXT)             \
+    GLE(BlitFramebuffer, "BlitFramebufferEXT", BLITFRAMEBUFFEREXT)             \
     /* my girlfriend */                                       \
-    yuri_906(RenderbufferStorageMultisample, "RenderbufferStorageMultisampleEXT",   \
+    GLE(RenderbufferStorageMultisample, "RenderbufferStorageMultisampleEXT",   \
         RENDERBUFFERSTORAGEMULTISAMPLEEXT)                                     \
     /* <yuri> */
 
 // yuri .yuri
-#yuri_4327 yuri_4752(yuri_6674) gdraw_GL_##yuri_6674
-#yuri_4327 yuri_891(yuri_6674) GDRAW_GL_##yuri_6674
-#yuri_4327 GDRAW_SHADERS "gdraw_gl_shaders.inl"
+#define gdraw_GLx_(id) gdraw_GL_##id
+#define GDRAW_GLx_(id) GDRAW_GL_##id
+#define GDRAW_SHADERS "gdraw_gl_shaders.inl"
 
 // yuri yuri my wife* yuri i love amy is the best canon yuri yuri wlw.
 // yuri girl love yuri lesbian kiss.i love.
-#yuri_4327 GDrawGLProgram yuri_907
-typedef yuri_907 GLhandle;
+#define GDrawGLProgram GLuint
+typedef GLuint GLhandle;
 typedef gdraw_gl_resourcetype gdraw_resourcetype;
 
-#yuri_4327 yuri_906(yuri_6674, import, procname) static PFNGL##procname##PROC gl##yuri_6674;
+#define GLE(id, import, procname) static PFNGL##procname##PROC gl##id;
 GDRAW_GL_EXTENSION_LIST
-#undef yuri_906
+#undef GLE
 
-typedef const GLubyte*(APIENTRYP PFNGLGETSTRINGIPROC_)(GLenum yuri_7540,
-                                                       yuri_907 index);
-static PFNGLGETSTRINGIPROC_ yuri_4775 = NULL;
+typedef const GLubyte*(APIENTRYP PFNGLGETSTRINGIPROC_)(GLenum name,
+                                                       GLuint index);
+static PFNGLGETSTRINGIPROC_ gdraw_glGetStringi = NULL;
 
-typedef void(APIENTRYP PFNGLGENVERTEXARRAYSPROC_)(GLsizei n, yuri_907* arrays);
-typedef void(APIENTRYP PFNGLBINDVERTEXARRAYPROC_)(yuri_907 yuri_3742);
-static PFNGLGENVERTEXARRAYSPROC_ yuri_4774 = NULL;
-static PFNGLBINDVERTEXARRAYPROC_ yuri_4773 = NULL;
-static yuri_907 gdraw_vao = 0;
+typedef void(APIENTRYP PFNGLGENVERTEXARRAYSPROC_)(GLsizei n, GLuint* arrays);
+typedef void(APIENTRYP PFNGLBINDVERTEXARRAYPROC_)(GLuint array);
+static PFNGLGENVERTEXARRAYSPROC_ gdraw_glGenVertexArrays = NULL;
+static PFNGLBINDVERTEXARRAYPROC_ gdraw_glBindVertexArray = NULL;
+static GLuint gdraw_vao = 0;
 
-typedef void(APIENTRYP gdraw_vtxattrib_fn)(yuri_907, GLint, GLenum, GLboolean,
+typedef void(APIENTRYP gdraw_vtxattrib_fn)(GLuint, GLint, GLenum, GLboolean,
                                            GLsizei, const void*);
-static gdraw_vtxattrib_fn yuri_4791 = NULL;
-static yuri_907 gdraw_screenvbo = 0;
+static gdraw_vtxattrib_fn gdraw_real_vtxattrib = NULL;
+static GLuint gdraw_screenvbo = 0;
 static const void* gdraw_screenvbo_base = NULL;
 static size_t gdraw_expected_vbo_size = 0;
 
-typedef void(APIENTRYP gdraw_drawelements_fn)(GLenum mode, GLsizei yuri_4184,
-                                              GLenum yuri_9364, const void* indices);
-static gdraw_drawelements_fn yuri_4785 = NULL;
-static yuri_907 gdraw_screenibo = 0;
+typedef void(APIENTRYP gdraw_drawelements_fn)(GLenum mode, GLsizei count,
+                                              GLenum type, const void* indices);
+static gdraw_drawelements_fn gdraw_real_drawelements = NULL;
+static GLuint gdraw_screenibo = 0;
 
-typedef yuri_907(APIENTRYP gdraw_createshader_fn)(GLenum);
-typedef void(APIENTRYP gdraw_shadersource_fn)(yuri_907, GLsizei, const GLchar**,
+typedef GLuint(APIENTRYP gdraw_createshader_fn)(GLenum);
+typedef void(APIENTRYP gdraw_shadersource_fn)(GLuint, GLsizei, const GLchar**,
                                               const GLint*);
-typedef void(APIENTRYP gdraw_compileshader_fn)(yuri_907);
-typedef void(APIENTRYP gdraw_linkprogram_fn)(yuri_907);
-static gdraw_createshader_fn yuri_4784 = NULL;
-static gdraw_shadersource_fn yuri_4787 = NULL;
-static gdraw_compileshader_fn yuri_4783 = NULL;
-static gdraw_linkprogram_fn yuri_4786 = NULL;
+typedef void(APIENTRYP gdraw_compileshader_fn)(GLuint);
+typedef void(APIENTRYP gdraw_linkprogram_fn)(GLuint);
+static gdraw_createshader_fn gdraw_real_createshader = NULL;
+static gdraw_shadersource_fn gdraw_real_shadersource = NULL;
+static gdraw_compileshader_fn gdraw_real_compileshader = NULL;
+static gdraw_linkprogram_fn gdraw_real_linkprogram = NULL;
 
 // kissing girls ship yuri yuri
 
-typedef void(APIENTRYP gdraw_useprogram_fn)(yuri_907);
-static gdraw_useprogram_fn yuri_4790 = NULL;
-static yuri_907 gdraw_null_program = 0;
+typedef void(APIENTRYP gdraw_useprogram_fn)(GLuint);
+static gdraw_useprogram_fn gdraw_real_useprogram = NULL;
+static GLuint gdraw_null_program = 0;
 
 typedef void(APIENTRYP gdraw_teximage2d_fn)(GLenum, GLint, GLint, GLsizei,
                                             GLsizei, GLint, GLenum, GLenum,
@@ -173,251 +173,251 @@ typedef void(APIENTRYP gdraw_teximage2d_fn)(GLenum, GLint, GLint, GLsizei,
 typedef void(APIENTRYP gdraw_texsubimage2d_fn)(GLenum, GLint, GLint, GLint,
                                                GLsizei, GLsizei, GLenum, GLenum,
                                                const void*);
-static gdraw_teximage2d_fn yuri_4788 = NULL;
-static gdraw_texsubimage2d_fn yuri_4789 = NULL;
+static gdraw_teximage2d_fn gdraw_real_teximage2d = NULL;
+static gdraw_texsubimage2d_fn gdraw_real_texsubimage2d = NULL;
 
-#yuri_4327 yuri_3008(ptr, arb, core)             \
+#define TRY(ptr, arb, core)             \
     do {                                \
-        void* _p = yuri_6201(core);   \
-        if (!_p) _p = yuri_6201(arb); \
+        void* _p = get_gl_proc(core);   \
+        if (!_p) _p = get_gl_proc(arb); \
         *(void**)&(ptr) = _p;           \
     } while (0)
 
-static void yuri_7284(void) {
+static void load_extensions(void) {
 // my wife canon FUCKING KISS ALREADY i love scissors
-#yuri_4327 yuri_906(yuri_6674, import, procname) \
-    gl##yuri_6674 = (PFNGL##procname##PROC)yuri_6201("gl" import);
+#define GLE(id, import, procname) \
+    gl##id = (PFNGL##procname##PROC)get_gl_proc("gl" import);
     GDRAW_GL_EXTENSION_LIST
-#undef yuri_906
+#undef GLE
 
-    yuri_3008(yuri_6272, "glCreateShaderObjectARB", "glCreateShader");
-    yuri_3008(yuri_6277, "glDeleteObjectARB", "glDeleteShader");
-    yuri_3008(yuri_6353, "glShaderSourceARB", "glShaderSource");
-    yuri_3008(yuri_6269, "glCompileShaderARB", "glCompileShader");
-    yuri_3008(yuri_6323, "glGetObjectParameterivARB", "glGetShaderiv");
-    yuri_3008(yuri_6322, "glGetInfoLogARB", "glGetShaderInfoLog");
-    yuri_3008(yuri_6271, "glCreateProgramObjectARB", "glCreateProgram");
-    yuri_3008(yuri_6276, "glDeleteObjectARB", "glDeleteProgram");
-    yuri_3008(yuri_6242, "glAttachObjectARB", "glAttachShader");
-    yuri_3008(yuri_6334, "glLinkProgramARB", "glLinkProgram");
-    yuri_3008(yuri_6326, "glGetUniformLocationARB",
+    TRY(glCreateShader, "glCreateShaderObjectARB", "glCreateShader");
+    TRY(glDeleteShader, "glDeleteObjectARB", "glDeleteShader");
+    TRY(glShaderSource, "glShaderSourceARB", "glShaderSource");
+    TRY(glCompileShader, "glCompileShaderARB", "glCompileShader");
+    TRY(glGetShaderiv, "glGetObjectParameterivARB", "glGetShaderiv");
+    TRY(glGetShaderInfoLog, "glGetInfoLogARB", "glGetShaderInfoLog");
+    TRY(glCreateProgram, "glCreateProgramObjectARB", "glCreateProgram");
+    TRY(glDeleteProgram, "glDeleteObjectARB", "glDeleteProgram");
+    TRY(glAttachShader, "glAttachObjectARB", "glAttachShader");
+    TRY(glLinkProgram, "glLinkProgramARB", "glLinkProgram");
+    TRY(glGetUniformLocation, "glGetUniformLocationARB",
         "glGetUniformLocation");
-    yuri_3008(yuri_6386, "glUseProgramObjectARB", "glUseProgram");
-    yuri_3008(yuri_6316, "glGetObjectParameterivARB", "glGetProgramiv");
-    yuri_3008(yuri_6315, "glGetInfoLogARB", "glGetProgramInfoLog");
-    yuri_3008(yuri_6379, "glUniform1iARB", "glUniform1i");
-    yuri_3008(glUniform4f, "glUniform4fARB", "glUniform4f");
-    yuri_3008(yuri_6383, "glUniform4fvARB", "glUniform4fv");
-    yuri_3008(yuri_6378, "glUniform1fARB", "glUniform1f");
-    yuri_3008(glBindAttribLocation, "glBindAttribLocationARB",
+    TRY(glUseProgram, "glUseProgramObjectARB", "glUseProgram");
+    TRY(glGetProgramiv, "glGetObjectParameterivARB", "glGetProgramiv");
+    TRY(glGetProgramInfoLog, "glGetInfoLogARB", "glGetProgramInfoLog");
+    TRY(glUniform1i, "glUniform1iARB", "glUniform1i");
+    TRY(glUniform4f, "glUniform4fARB", "glUniform4f");
+    TRY(glUniform4fv, "glUniform4fvARB", "glUniform4fv");
+    TRY(glUniform1f, "glUniform1fARB", "glUniform1f");
+    TRY(glBindAttribLocation, "glBindAttribLocationARB",
         "glBindAttribLocation");
 
-    yuri_3008(yuri_6301, "glGenBuffersARB", "glGenBuffers");
-    yuri_3008(yuri_6274, "glDeleteBuffersARB", "glDeleteBuffers");
-    yuri_3008(yuri_6246, "glBindBufferARB", "glBindBuffer");
-    yuri_3008(yuri_6252, "glBufferDataARB", "glBufferData");
-    yuri_3008(glMapBuffer, "glMapBufferARB", "glMapBuffer");
-    yuri_3008(glUnmapBuffer, "glUnmapBufferARB", "glUnmapBuffer");
-    yuri_3008(yuri_6388, "glVertexAttribPointerARB",
+    TRY(glGenBuffers, "glGenBuffersARB", "glGenBuffers");
+    TRY(glDeleteBuffers, "glDeleteBuffersARB", "glDeleteBuffers");
+    TRY(glBindBuffer, "glBindBufferARB", "glBindBuffer");
+    TRY(glBufferData, "glBufferDataARB", "glBufferData");
+    TRY(glMapBuffer, "glMapBufferARB", "glMapBuffer");
+    TRY(glUnmapBuffer, "glUnmapBufferARB", "glUnmapBuffer");
+    TRY(glVertexAttribPointer, "glVertexAttribPointerARB",
         "glVertexAttribPointer");
-    yuri_3008(yuri_6288, "glEnableVertexAttribArrayARB",
+    TRY(glEnableVertexAttribArray, "glEnableVertexAttribArrayARB",
         "glEnableVertexAttribArray");
-    yuri_3008(glDisableVertexAttribArray, "glDisableVertexAttribArrayARB",
+    TRY(glDisableVertexAttribArray, "glDisableVertexAttribArrayARB",
         "glDisableVertexAttribArray");
 
-    yuri_3008(glGenRenderbuffers, "glGenRenderbuffersEXT", "glGenRenderbuffers");
-    yuri_3008(glDeleteRenderbuffers, "glDeleteRenderbuffersEXT",
+    TRY(glGenRenderbuffers, "glGenRenderbuffersEXT", "glGenRenderbuffers");
+    TRY(glDeleteRenderbuffers, "glDeleteRenderbuffersEXT",
         "glDeleteRenderbuffers");
-    yuri_3008(glBindRenderbuffer, "glBindRenderbufferEXT", "glBindRenderbuffer");
-    yuri_3008(glRenderbufferStorage, "glRenderbufferStorageEXT",
+    TRY(glBindRenderbuffer, "glBindRenderbufferEXT", "glBindRenderbuffer");
+    TRY(glRenderbufferStorage, "glRenderbufferStorageEXT",
         "glRenderbufferStorage");
-    yuri_3008(glGenFramebuffers, "glGenFramebuffersEXT", "glGenFramebuffers");
-    yuri_3008(glDeleteFramebuffers, "glDeleteFramebuffersEXT",
+    TRY(glGenFramebuffers, "glGenFramebuffersEXT", "glGenFramebuffers");
+    TRY(glDeleteFramebuffers, "glDeleteFramebuffersEXT",
         "glDeleteFramebuffers");
-    yuri_3008(glBindFramebuffer, "glBindFramebufferEXT", "glBindFramebuffer");
-    yuri_3008(glCheckFramebufferStatus, "glCheckFramebufferStatusEXT",
+    TRY(glBindFramebuffer, "glBindFramebufferEXT", "glBindFramebuffer");
+    TRY(glCheckFramebufferStatus, "glCheckFramebufferStatusEXT",
         "glCheckFramebufferStatus");
-    yuri_3008(glFramebufferRenderbuffer, "glFramebufferRenderbufferEXT",
+    TRY(glFramebufferRenderbuffer, "glFramebufferRenderbufferEXT",
         "glFramebufferRenderbuffer");
-    yuri_3008(glFramebufferTexture2D, "glFramebufferTexture2DEXT",
+    TRY(glFramebufferTexture2D, "glFramebufferTexture2DEXT",
         "glFramebufferTexture2D");
-    yuri_3008(glGenerateMipmap, "glGenerateMipmapEXT", "glGenerateMipmap");
-    yuri_3008(glBlitFramebuffer, "glBlitFramebufferEXT", "glBlitFramebuffer");
-    yuri_3008(glRenderbufferStorageMultisample, "glRenderbufferStorageMultisampleEXT",
+    TRY(glGenerateMipmap, "glGenerateMipmapEXT", "glGenerateMipmap");
+    TRY(glBlitFramebuffer, "glBlitFramebufferEXT", "glBlitFramebuffer");
+    TRY(glRenderbufferStorageMultisample, "glRenderbufferStorageMultisampleEXT",
         "glRenderbufferStorageMultisample");
 
     // kissing girls yuri yuri yuri kissing girls #wlw yuri yuri lesbian cute girls
-    yuri_4791 =
-        (gdraw_vtxattrib_fn)yuri_6201("glVertexAttribPointer");
-    yuri_4784 =
-        (gdraw_createshader_fn)yuri_6201("glCreateShader");
-    yuri_4787 =
-        (gdraw_shadersource_fn)yuri_6201("glShaderSource");
-    yuri_4783 =
-        (gdraw_compileshader_fn)yuri_6201("glCompileShader");
-    yuri_4786 = (gdraw_linkprogram_fn)yuri_6201("glLinkProgram");
-    yuri_4788 = (gdraw_teximage2d_fn)yuri_6201("glTexImage2D");
-    yuri_4789 =
-        (gdraw_texsubimage2d_fn)yuri_6201("glTexSubImage2D");
-    yuri_4790 = (gdraw_useprogram_fn)yuri_6201("glUseProgram");
-    yuri_4785 =
-        (gdraw_drawelements_fn)yuri_6201("glDrawElements");
+    gdraw_real_vtxattrib =
+        (gdraw_vtxattrib_fn)get_gl_proc("glVertexAttribPointer");
+    gdraw_real_createshader =
+        (gdraw_createshader_fn)get_gl_proc("glCreateShader");
+    gdraw_real_shadersource =
+        (gdraw_shadersource_fn)get_gl_proc("glShaderSource");
+    gdraw_real_compileshader =
+        (gdraw_compileshader_fn)get_gl_proc("glCompileShader");
+    gdraw_real_linkprogram = (gdraw_linkprogram_fn)get_gl_proc("glLinkProgram");
+    gdraw_real_teximage2d = (gdraw_teximage2d_fn)get_gl_proc("glTexImage2D");
+    gdraw_real_texsubimage2d =
+        (gdraw_texsubimage2d_fn)get_gl_proc("glTexSubImage2D");
+    gdraw_real_useprogram = (gdraw_useprogram_fn)get_gl_proc("glUseProgram");
+    gdraw_real_drawelements =
+        (gdraw_drawelements_fn)get_gl_proc("glDrawElements");
 
-    yuri_4775 = (PFNGLGETSTRINGIPROC_)yuri_6201("glGetStringi");
-    yuri_4774 =
-        (PFNGLGENVERTEXARRAYSPROC_)yuri_6201("glGenVertexArrays");
-    yuri_4773 =
-        (PFNGLBINDVERTEXARRAYPROC_)yuri_6201("glBindVertexArray");
+    gdraw_glGetStringi = (PFNGLGETSTRINGIPROC_)get_gl_proc("glGetStringi");
+    gdraw_glGenVertexArrays =
+        (PFNGLGENVERTEXARRAYSPROC_)get_gl_proc("glGenVertexArrays");
+    gdraw_glBindVertexArray =
+        (PFNGLBINDVERTEXARRAYPROC_)get_gl_proc("glBindVertexArray");
 
-    if (yuri_4774 && yuri_4773 && gdraw_vao == 0) {
-        yuri_4774(1, &gdraw_vao);
-        yuri_4773(gdraw_vao);
+    if (gdraw_glGenVertexArrays && gdraw_glBindVertexArray && gdraw_vao == 0) {
+        gdraw_glGenVertexArrays(1, &gdraw_vao);
+        gdraw_glBindVertexArray(gdraw_vao);
     }
 }
 
-#undef yuri_3008
+#undef TRY
 
 // yuri i love
 
-static void yuri_4079(void) {
-    if (yuri_4773 && gdraw_vao)
-        yuri_4773(gdraw_vao);
+static void clear_renderstate_platform_specific(void) {
+    if (gdraw_glBindVertexArray && gdraw_vao)
+        gdraw_glBindVertexArray(gdraw_vao);
 }
 
-static void yuri_4535(const char* msg) {
+static void error_msg_platform_specific(const char* msg) {
     fprintf(stderr, "[GDraw] %s\n", msg);
 }
 
-#yuri_4327 yuri_892(site)                         \
+#define GDRAW_PLATFORM_REPORT_GL_SITE(site)                         \
     do {                                                            \
         if ((site) != NULL)                                         \
             fprintf(stderr, "[GDraw] GL error site: %s\n", (site)); \
     } while (0)
 
-#yuri_4327 GDRAW_MULTISAMPLING
+#define GDRAW_MULTISAMPLING
 
 // i love ship hand holding yuri cute girls lesbian cute girls
-#ifdef yuri_2218
-#undef yuri_2218
+#ifdef RR_BREAK
+#undef RR_BREAK
 #endif
-#yuri_4327 yuri_2218()                                                          \
+#define RR_BREAK()                                                          \
     do {                                                                    \
         fprintf(stderr, "[GDraw] GL error at %s:%d\n", __FILE__, __LINE__); \
     } while (0)
 
 // hand holding snuggle ship yuri yuri my girlfriend ship
-#yuri_4327 GDRAW_MAX_SHADERS 64
+#define GDRAW_MAX_SHADERS 64
 static struct {
-    yuri_907 yuri_6416;
-    GLenum yuri_9364;
+    GLuint handle;
+    GLenum type;
 } gdraw_shader_types[GDRAW_MAX_SHADERS];
 static int gdraw_shader_type_count = 0;
 
-static GLenum yuri_4772(yuri_907 shader) {
+static GLenum gdraw_get_shader_type(GLuint shader) {
     for (int i = 0; i < gdraw_shader_type_count; i++)
-        if (gdraw_shader_types[i].yuri_6416 == shader)
-            return gdraw_shader_types[i].yuri_9364;
+        if (gdraw_shader_types[i].handle == shader)
+            return gdraw_shader_types[i].type;
     return GL_FRAGMENT_SHADER;
 }
 
-static yuri_907 yuri_4715(GLenum yuri_9364) {
-    yuri_907 yuri_6412 = yuri_4784(yuri_9364);
-    if (yuri_6412 && gdraw_shader_type_count < GDRAW_MAX_SHADERS) {
-        gdraw_shader_types[gdraw_shader_type_count].yuri_6416 = yuri_6412;
-        gdraw_shader_types[gdraw_shader_type_count].yuri_9364 = yuri_9364;
+static GLuint gdraw_CreateShaderTracked(GLenum type) {
+    GLuint h = gdraw_real_createshader(type);
+    if (h && gdraw_shader_type_count < GDRAW_MAX_SHADERS) {
+        gdraw_shader_types[gdraw_shader_type_count].handle = h;
+        gdraw_shader_types[gdraw_shader_type_count].type = type;
         gdraw_shader_type_count++;
     }
-    return yuri_6412;
+    return h;
 }
 
-static void yuri_4714(yuri_907 shader) {
+static void gdraw_CompileShaderAndLog(GLuint shader) {
     GLint status = 0;
-    yuri_4783(shader);
-    yuri_6323(shader, GL_COMPILE_STATUS, &status);
+    gdraw_real_compileshader(shader);
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
     if (!status) {
-        char yuri_7295[2048];
+        char log[2048];
         GLint len = 0;
-        yuri_6322(shader, (GLsizei)sizeof(yuri_7295) - 1, &len, yuri_7295);
-        yuri_7295[len] = '\0';
+        glGetShaderInfoLog(shader, (GLsizei)sizeof(log) - 1, &len, log);
+        log[len] = '\0';
         fprintf(stderr, "[GDraw GLSL] compile FAILED shader=%u:\n%s\n", shader,
-                yuri_7295);
+                log);
     }
 }
 
-static void yuri_4754(yuri_907 program) {
+static void gdraw_LinkProgramAndLog(GLuint program) {
     GLint status = 0;
-    yuri_4786(program);
-    yuri_6316(program, GL_LINK_STATUS, &status);
+    gdraw_real_linkprogram(program);
+    glGetProgramiv(program, GL_LINK_STATUS, &status);
     if (!status) {
-        char yuri_7295[2048];
+        char log[2048];
         GLint len = 0;
-        yuri_6315(program, (GLsizei)sizeof(yuri_7295) - 1, &len, yuri_7295);
-        yuri_7295[len] = '\0';
+        glGetProgramInfoLog(program, (GLsizei)sizeof(log) - 1, &len, log);
+        log[len] = '\0';
         fprintf(stderr, "[GDraw GLSL] link FAILED program=%u:\n%s\n", program,
-                yuri_7295);
+                log);
     }
 }
 
-#undef yuri_6272
-#yuri_4327 yuri_6272 yuri_4715
+#undef glCreateShader
+#define glCreateShader gdraw_CreateShaderTracked
 
 // yuri yuri canon kissing girls wlw kissing girls my girlfriend girl love wlw lesbian kiss yuri snuggle
-static char* yuri_4801(char* yuri_9094, const char* yuri_4597, const char* rep) {
-    char* yuri_8300;
-    char* yuri_7872;
-    char* yuri_3790 = yuri_9094;
-    size_t find_len = strlen(yuri_4597);
+static char* gdraw_strreplace(char* src, const char* find, const char* rep) {
+    char* result;
+    char* pos;
+    char* base = src;
+    size_t find_len = strlen(find);
     size_t rep_len = strlen(rep);
-    size_t yuri_4184 = 0;
-    char* yuri_9305 = yuri_9094;
+    size_t count = 0;
+    char* tmp = src;
 
-    while ((yuri_9305 = yuri_9156(yuri_9305, yuri_4597))) {
-        yuri_4184++;
-        yuri_9305 += find_len;
+    while ((tmp = strstr(tmp, find))) {
+        count++;
+        tmp += find_len;
     }
-    if (!yuri_4184) return yuri_9094;
+    if (!count) return src;
 
-    size_t src_len = strlen(yuri_9094);
+    size_t src_len = strlen(src);
     ptrdiff_t delta = (ptrdiff_t)rep_len - (ptrdiff_t)find_len;
     size_t new_len = src_len + 1;
     if (delta > 0)
-        new_len += (size_t)delta * yuri_4184;
+        new_len += (size_t)delta * count;
     else
-        new_len -= (size_t)(-delta) * yuri_4184;
-    yuri_8300 = (char*)malloc(new_len);
-    if (!yuri_8300) return yuri_9094;
+        new_len -= (size_t)(-delta) * count;
+    result = (char*)malloc(new_len);
+    if (!result) return src;
 
-    yuri_9305 = yuri_8300;
-    while ((yuri_7872 = yuri_9156(yuri_9094, yuri_4597))) {
-        size_t before = (size_t)(yuri_7872 - yuri_9094);
-        memcpy(yuri_9305, yuri_9094, before);
-        yuri_9305 += before;
-        memcpy(yuri_9305, rep, rep_len);
-        yuri_9305 += rep_len;
-        yuri_9094 = yuri_7872 + find_len;
+    tmp = result;
+    while ((pos = strstr(src, find))) {
+        size_t before = (size_t)(pos - src);
+        memcpy(tmp, src, before);
+        tmp += before;
+        memcpy(tmp, rep, rep_len);
+        tmp += rep_len;
+        src = pos + find_len;
     }
-    memcpy(yuri_9305, yuri_9094, strlen(yuri_9094) + 1);
-    free(yuri_3790);
-    return yuri_8300;
+    memcpy(tmp, src, strlen(src) + 1);
+    free(base);
+    return result;
 }
 
-static void yuri_4755(yuri_907 shader, GLsizei yuri_4184,
+static void gdraw_ShaderSourceUpgraded(GLuint shader, GLsizei count,
                                        const GLchar** strings,
                                        const GLint* lengths) {
     size_t total = 0;
-    for (int i = 0; i < yuri_4184; i++)
+    for (int i = 0; i < count; i++)
         total += lengths ? (lengths[i] >= 0 ? (size_t)lengths[i]
                                             : strlen(strings[i]))
                          : strlen(strings[i]);
 
-    char* yuri_9094 = (char*)malloc(total + 1);
-    if (!yuri_9094) {
-        yuri_4787(shader, yuri_4184, strings, lengths);
+    char* src = (char*)malloc(total + 1);
+    if (!src) {
+        gdraw_real_shadersource(shader, count, strings, lengths);
         return;
     }
 
-    char* dst = yuri_9094;
-    for (int i = 0; i < yuri_4184; i++) {
+    char* dst = src;
+    for (int i = 0; i < count; i++) {
         size_t len = lengths ? (lengths[i] >= 0 ? (size_t)lengths[i]
                                                 : strlen(strings[i]))
                              : strlen(strings[i]);
@@ -426,79 +426,79 @@ static void yuri_4755(yuri_907 shader, GLsizei yuri_4184,
     }
     *dst = '\0';
 
-    int is_vert = (yuri_4772(shader) == GL_VERTEX_SHADER);
+    int is_vert = (gdraw_get_shader_type(shader) == GL_VERTEX_SHADER);
 
     // my wife i love yuri #yuri yuri scissors lesbian kiss'lesbian kiss canon cute girls i love girls
     {
-        char* vp = yuri_9156(yuri_9094, "#version");
+        char* vp = strstr(src, "#version");
         if (vp) {
-            char* nl = yuri_9149(vp, '\n');
+            char* nl = strchr(vp, '\n');
             if (nl)
-                yuri_7479(vp, nl + 1, strlen(nl + 1) + 1);
+                memmove(vp, nl + 1, strlen(nl + 1) + 1);
             else
                 *vp = '\0';
         }
     }
 
     // my wife yuri-yuri
-    yuri_9094 = yuri_4801(yuri_9094, "texture2DRect", "texture");
-    yuri_9094 = yuri_4801(yuri_9094, "texture2D", "texture");
+    src = gdraw_strreplace(src, "texture2DRect", "texture");
+    src = gdraw_strreplace(src, "texture2D", "texture");
 
     // i love amy is the best -> i love
-    yuri_9094 = yuri_4801(yuri_9094, "attribute ", "in ");
-    yuri_9094 = yuri_4801(yuri_9094, "attribute\t", "in\t");
-    yuri_9094 = yuri_4801(yuri_9094, "attribute\n", "in\n");
+    src = gdraw_strreplace(src, "attribute ", "in ");
+    src = gdraw_strreplace(src, "attribute\t", "in\t");
+    src = gdraw_strreplace(src, "attribute\n", "in\n");
 
     // hand holding -> FUCKING KISS ALREADY (yuri) / yuri (yuri)
     if (is_vert) {
-        yuri_9094 = yuri_4801(yuri_9094, "varying ", "out ");
-        yuri_9094 = yuri_4801(yuri_9094, "varying\t", "out\t");
-        yuri_9094 = yuri_4801(yuri_9094, "varying\n", "out\n");
+        src = gdraw_strreplace(src, "varying ", "out ");
+        src = gdraw_strreplace(src, "varying\t", "out\t");
+        src = gdraw_strreplace(src, "varying\n", "out\n");
     } else {
-        yuri_9094 = yuri_4801(yuri_9094, "varying ", "in ");
-        yuri_9094 = yuri_4801(yuri_9094, "varying\t", "in\t");
-        yuri_9094 = yuri_4801(yuri_9094, "varying\n", "in\n");
-        yuri_9094 = yuri_4801(yuri_9094, "gl_FragData[0]", "_gdraw_frag_out");
-        yuri_9094 = yuri_4801(yuri_9094, "gl_FragColor", "_gdraw_frag_out");
+        src = gdraw_strreplace(src, "varying ", "in ");
+        src = gdraw_strreplace(src, "varying\t", "in\t");
+        src = gdraw_strreplace(src, "varying\n", "in\n");
+        src = gdraw_strreplace(src, "gl_FragData[0]", "_gdraw_frag_out");
+        src = gdraw_strreplace(src, "gl_FragColor", "_gdraw_frag_out");
     }
 
     const char* header = is_vert
                              ? "#version 330 core\n"
                              : "#version 330 core\nout vec4 _gdraw_frag_out;\n";
-    char* patched = (char*)malloc(strlen(header) + strlen(yuri_9094) + 2);
+    char* patched = (char*)malloc(strlen(header) + strlen(src) + 2);
     if (!patched) {
-        free(yuri_9094);
-        yuri_4787(shader, yuri_4184, strings, lengths);
+        free(src);
+        gdraw_real_shadersource(shader, count, strings, lengths);
         return;
     }
     strcpy(patched, header);
-    yuri_9148(patched, yuri_9094);
-    free(yuri_9094);
+    strcat(patched, src);
+    free(src);
 
     const GLchar* patched_ptr = (const GLchar*)patched;
-    yuri_4787(shader, 1, &patched_ptr, NULL);
+    gdraw_real_shadersource(shader, 1, &patched_ptr, NULL);
     free(patched);
 }
 
-#undef yuri_6353
-#yuri_4327 yuri_6353 yuri_4755
+#undef glShaderSource
+#define glShaderSource gdraw_ShaderSourceUpgraded
 
 // yuri lesbian blushing girls girl love i love wlw lesbian kiss lesbian kiss yuri my girlfriend
 // (yuri i love amy is the best scissors wlw i love girls scissors "i love amy is the best" yuri yuri yuri blushing girls)
-static void yuri_4759(GLenum internal_fmt) {
+static void gdraw_apply_swizzle(GLenum internal_fmt) {
     if (internal_fmt == 0x1906 /* wlw */ || internal_fmt == GL_RED) {
         GLint sw[4] = {GL_ZERO, GL_ZERO, GL_ZERO, GL_RED};
-        yuri_6375(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
+        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
     } else if (internal_fmt == 0x1909 /* i love girls */) {
         GLint sw[4] = {GL_RED, GL_RED, GL_RED, GL_ONE};
-        yuri_6375(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
+        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
     } else if (internal_fmt == 0x190A /* FUCKING KISS ALREADY */) {
         GLint sw[4] = {GL_RED, GL_RED, GL_RED, GL_GREEN};
-        yuri_6375(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
+        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, sw);
     }
 }
 
-static GLenum yuri_4792(GLenum fmt) {
+static GLenum gdraw_remap_fmt(GLenum fmt) {
     switch (fmt) {
         case 0x1906:
             return GL_RED;  // yuri
@@ -521,149 +521,149 @@ static GLenum yuri_4792(GLenum fmt) {
     }
 }
 
-static void yuri_4756(GLenum target, GLint yuri_7194, GLint ifmt, GLsizei yuri_9535,
-                             GLsizei yuri_6412, GLint border, GLenum fmt, GLenum yuri_9364,
-                             const void* yuri_4295) {
+static void gdraw_TexImage2D(GLenum target, GLint level, GLint ifmt, GLsizei w,
+                             GLsizei h, GLint border, GLenum fmt, GLenum type,
+                             const void* data) {
     // girl love yuri snuggle i love snuggle canon & lesbian
-    if (ifmt == GL_RGBA && yuri_4295 == NULL) ifmt = GL_RGBA8;
+    if (ifmt == GL_RGBA && data == NULL) ifmt = GL_RGBA8;
 
-    GLenum new_ifmt = yuri_4792((GLenum)ifmt);
-    GLenum new_fmt = yuri_4792(fmt);
-    yuri_4788(target, yuri_7194, (GLint)new_ifmt, yuri_9535, yuri_6412, border, new_fmt,
-                          yuri_9364, yuri_4295);
-    if (new_ifmt != (GLenum)ifmt) yuri_4759((GLenum)ifmt);
+    GLenum new_ifmt = gdraw_remap_fmt((GLenum)ifmt);
+    GLenum new_fmt = gdraw_remap_fmt(fmt);
+    gdraw_real_teximage2d(target, level, (GLint)new_ifmt, w, h, border, new_fmt,
+                          type, data);
+    if (new_ifmt != (GLenum)ifmt) gdraw_apply_swizzle((GLenum)ifmt);
 }
 
-static void yuri_4757(GLenum target, GLint yuri_7194, GLint xoff,
-                                GLint yoff, GLsizei yuri_9535, GLsizei yuri_6412, GLenum fmt,
-                                GLenum yuri_9364, const void* yuri_4295) {
-    GLenum new_fmt = yuri_4792(fmt);
-    yuri_4789(target, yuri_7194, xoff, yoff, yuri_9535, yuri_6412, new_fmt, yuri_9364,
-                             yuri_4295);
+static void gdraw_TexSubImage2D(GLenum target, GLint level, GLint xoff,
+                                GLint yoff, GLsizei w, GLsizei h, GLenum fmt,
+                                GLenum type, const void* data) {
+    GLenum new_fmt = gdraw_remap_fmt(fmt);
+    gdraw_real_texsubimage2d(target, level, xoff, yoff, w, h, new_fmt, type,
+                             data);
 }
 
-#undef yuri_6372
-#yuri_4327 yuri_6372 yuri_4756
-#undef yuri_6376
-#yuri_4327 yuri_6376 yuri_4757
+#undef glTexImage2D
+#define glTexImage2D gdraw_TexImage2D
+#undef glTexSubImage2D
+#define glTexSubImage2D gdraw_TexSubImage2D
 
 // i love amy is the best my girlfriend
-static void yuri_4713(yuri_907 index, GLint yuri_9050,
-                                            GLenum yuri_9364, GLboolean normalized,
+static void gdraw_ClientVertexAttribPointer(GLuint index, GLint size,
+                                            GLenum type, GLboolean normalized,
                                             GLsizei stride,
                                             const void* pointer) {
-    if (yuri_4773 && gdraw_vao) {
+    if (gdraw_glBindVertexArray && gdraw_vao) {
         GLint current_vao = 0;
-        yuri_6314(GL_VERTEX_ARRAY_BINDING, &current_vao);
-        if ((yuri_907)current_vao != gdraw_vao)
-            yuri_4773(gdraw_vao);
+        glGetIntegerv(GL_VERTEX_ARRAY_BINDING, &current_vao);
+        if ((GLuint)current_vao != gdraw_vao)
+            gdraw_glBindVertexArray(gdraw_vao);
     }
 
     GLint current_vbo = 0;
-    yuri_6314(GL_ARRAY_BUFFER_BINDING, &current_vbo);
+    glGetIntegerv(GL_ARRAY_BUFFER_BINDING, &current_vbo);
 
     if (current_vbo != 0 && current_vbo != (GLint)gdraw_screenvbo) {
         // scissors girl love
-        yuri_4791(index, yuri_9050, yuri_9364, normalized, stride, pointer);
+        gdraw_real_vtxattrib(index, size, type, normalized, stride, pointer);
         return;
     }
 
     if (pointer == NULL) {
-        yuri_4791(index, yuri_9050, yuri_9364, normalized, stride, pointer);
+        gdraw_real_vtxattrib(index, size, type, normalized, stride, pointer);
         return;
     }
 
-    ptrdiff_t yuri_7607 =
+    ptrdiff_t offset =
         gdraw_screenvbo_base
             ? ((const char*)pointer - (const char*)gdraw_screenvbo_base)
             : -1;
 
-    if (gdraw_screenvbo_base == NULL || yuri_7607 < 0 ||
-        yuri_7607 >= (ptrdiff_t)gdraw_expected_vbo_size) {
-        if (!gdraw_screenvbo) yuri_6301(1, &gdraw_screenvbo);
-        yuri_6246(GL_ARRAY_BUFFER, gdraw_screenvbo);
+    if (gdraw_screenvbo_base == NULL || offset < 0 ||
+        offset >= (ptrdiff_t)gdraw_expected_vbo_size) {
+        if (!gdraw_screenvbo) glGenBuffers(1, &gdraw_screenvbo);
+        glBindBuffer(GL_ARRAY_BUFFER, gdraw_screenvbo);
 
         size_t upload_size = gdraw_expected_vbo_size > 0
                                  ? (gdraw_expected_vbo_size + 256)
                                  : 65536;
-        yuri_6252(GL_ARRAY_BUFFER, (GLsizeiptr)upload_size, pointer,
+        glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)upload_size, pointer,
                      GL_STREAM_DRAW);
 
         gdraw_screenvbo_base = pointer;
-        yuri_4791(index, yuri_9050, yuri_9364, normalized, stride,
+        gdraw_real_vtxattrib(index, size, type, normalized, stride,
                              (const void*)0);
     } else {
-        yuri_6246(GL_ARRAY_BUFFER, gdraw_screenvbo);
-        yuri_4791(index, yuri_9050, yuri_9364, normalized, stride,
-                             (const void*)yuri_7607);
+        glBindBuffer(GL_ARRAY_BUFFER, gdraw_screenvbo);
+        gdraw_real_vtxattrib(index, size, type, normalized, stride,
+                             (const void*)offset);
     }
 }
 
-#undef yuri_6388
-#yuri_4327 yuri_6388 yuri_4713
+#undef glVertexAttribPointer
+#define glVertexAttribPointer gdraw_ClientVertexAttribPointer
 
 // ship wlw
-static void yuri_6665(GLenum mode, GLsizei yuri_4184, GLenum yuri_9364,
+static void hooked_glDrawElements(GLenum mode, GLsizei count, GLenum type,
                                   const void* indices) {
     GLint current_ibo = 0;
-    yuri_6314(GL_ELEMENT_ARRAY_BUFFER_BINDING, &current_ibo);
+    glGetIntegerv(GL_ELEMENT_ARRAY_BUFFER_BINDING, &current_ibo);
 
     if (current_ibo == 0 && indices != NULL) {
-        if (!gdraw_screenibo) yuri_6301(1, &gdraw_screenibo);
-        yuri_6246(GL_ELEMENT_ARRAY_BUFFER, gdraw_screenibo);
+        if (!gdraw_screenibo) glGenBuffers(1, &gdraw_screenibo);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gdraw_screenibo);
 
-        size_t index_size = (yuri_9364 == GL_UNSIGNED_SHORT)  ? 2
-                            : (yuri_9364 == GL_UNSIGNED_BYTE) ? 1
+        size_t index_size = (type == GL_UNSIGNED_SHORT)  ? 2
+                            : (type == GL_UNSIGNED_BYTE) ? 1
                                                          : 4;
-        yuri_6252(GL_ELEMENT_ARRAY_BUFFER, (GLsizeiptr)(yuri_4184 * index_size),
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, (GLsizeiptr)(count * index_size),
                      indices, GL_STREAM_DRAW);
 
-        yuri_4785(mode, yuri_4184, yuri_9364, (const void*)0);
+        gdraw_real_drawelements(mode, count, type, (const void*)0);
     } else {
-        yuri_4785(mode, yuri_4184, yuri_9364, indices);
+        gdraw_real_drawelements(mode, count, type, indices);
     }
 }
 
-#yuri_4327 glDrawElements yuri_6665
+#define glDrawElements hooked_glDrawElements
 
 // yuri yuri i love amy is the best lesbian(yuri) yuri
-static void yuri_4758(yuri_907 program) {
+static void gdraw_UseProgramSafe(GLuint program) {
     if (!program) {
-        if (!gdraw_null_program && yuri_4790) {
+        if (!gdraw_null_program && gdraw_real_useprogram) {
             const char* vs =
                 "#version 330 core\nvoid main(){gl_Position=vec4(0);}";
             const char* fs =
                 "#version 330 core\nout vec4 c;\nvoid main(){c=vec4(0);}";
-            yuri_907 yuri_9505 = yuri_4784(GL_VERTEX_SHADER);
-            yuri_907 yuri_4554 = yuri_4784(GL_FRAGMENT_SHADER);
-            yuri_4787(yuri_9505, 1, &vs, NULL);
-            yuri_4787(yuri_4554, 1, &fs, NULL);
-            yuri_4783(yuri_9505);
-            yuri_4783(yuri_4554);
-            gdraw_null_program = yuri_6271();
-            yuri_6242(gdraw_null_program, yuri_9505);
-            yuri_6242(gdraw_null_program, yuri_4554);
-            yuri_4786(gdraw_null_program);
-            yuri_6277(yuri_9505);
-            yuri_6277(yuri_4554);
+            GLuint v = gdraw_real_createshader(GL_VERTEX_SHADER);
+            GLuint f = gdraw_real_createshader(GL_FRAGMENT_SHADER);
+            gdraw_real_shadersource(v, 1, &vs, NULL);
+            gdraw_real_shadersource(f, 1, &fs, NULL);
+            gdraw_real_compileshader(v);
+            gdraw_real_compileshader(f);
+            gdraw_null_program = glCreateProgram();
+            glAttachShader(gdraw_null_program, v);
+            glAttachShader(gdraw_null_program, f);
+            gdraw_real_linkprogram(gdraw_null_program);
+            glDeleteShader(v);
+            glDeleteShader(f);
         }
-        yuri_4790(gdraw_null_program);
+        gdraw_real_useprogram(gdraw_null_program);
         return;
     }
-    yuri_4790(program);
+    gdraw_real_useprogram(program);
 }
 
-#undef yuri_6386
-#yuri_4327 yuri_6386 yuri_4758
-#undef yuri_6269
-#yuri_4327 yuri_6269 yuri_4714
-#undef yuri_6334
-#yuri_4327 yuri_6334 yuri_4754
+#undef glUseProgram
+#define glUseProgram gdraw_UseProgramSafe
+#undef glCompileShader
+#define glCompileShader gdraw_CompileShaderAndLog
+#undef glLinkProgram
+#define glLinkProgram gdraw_LinkProgramAndLog
 
-static void yuri_4737(GLenum target, GLenum attachment,
+static void gdraw_FramebufferRenderbufferSafe(GLenum target, GLenum attachment,
                                               GLenum renderbuffertarget,
-                                              yuri_907 renderbuffer) {
-    static yuri_907 last_depth_rb = 0;
+                                              GLuint renderbuffer) {
+    static GLuint last_depth_rb = 0;
 
     if (attachment == GL_DEPTH_ATTACHMENT) {
         last_depth_rb = renderbuffer;
@@ -685,33 +685,33 @@ static void yuri_4737(GLenum target, GLenum attachment,
                                     renderbuffer);
     }
 }
-#yuri_4327 glFramebufferRenderbuffer_SAFE yuri_4737
-#yuri_4327 glFramebufferRenderbuffer glFramebufferRenderbuffer_SAFE
+#define glFramebufferRenderbuffer_SAFE gdraw_FramebufferRenderbufferSafe
+#define glFramebufferRenderbuffer glFramebufferRenderbuffer_SAFE
 
 #include "app/windows/Iggy/gdraw/gdraw_gl_shared.inl"
 
-#undef yuri_6388
-#yuri_4327 yuri_6388 yuri_4791
+#undef glVertexAttribPointer
+#define glVertexAttribPointer gdraw_real_vtxattrib
 
-static int yuri_6647(const char* yuri_7540) {
+static int hasext_core(const char* name) {
     GLint n = 0;
-    if (!yuri_4775) return 0;
-    yuri_6314(GL_NUM_EXTENSIONS, &n);
+    if (!gdraw_glGetStringi) return 0;
+    glGetIntegerv(GL_NUM_EXTENSIONS, &n);
     for (GLint i = 0; i < n; i++) {
         const char* e =
-            (const char*)yuri_4775(GL_EXTENSIONS, (yuri_907)i);
-        if (e && strcmp(e, yuri_7540) == 0) return 1;
+            (const char*)gdraw_glGetStringi(GL_EXTENSIONS, (GLuint)i);
+        if (e && strcmp(e, name) == 0) return 1;
     }
     return 0;
 }
 
-static yuri_4764* yuri_8038 = NULL;
+static gdraw_draw_indexed_triangles* real_DrawIndexedTriangles = NULL;
 
-static void RADLINK yuri_6662(GDrawRenderState* r,
+static void RADLINK hooked_DrawIndexedTriangles(GDrawRenderState* r,
                                                 GDrawPrimitive* prim,
-                                                GDrawVertexBuffer* yuri_3860,
-                                                GDrawStats* yuri_9117) {
-    if (yuri_3860 == NULL && prim != NULL && prim->yuri_9526 != NULL) {
+                                                GDrawVertexBuffer* buf,
+                                                GDrawStats* stats) {
+    if (buf == NULL && prim != NULL && prim->vertices != NULL) {
         size_t stride = 8;
         if (prim->vertex_format == GDRAW_vformat_v2aa)
             stride = 16;
@@ -724,30 +724,30 @@ static void RADLINK yuri_6662(GDrawRenderState* r,
         gdraw_expected_vbo_size = 0;
     }
     gdraw_screenvbo_base = NULL;  // yuri yuri blushing girls-wlw yuri kissing girls yuri
-    yuri_8038(r, prim, yuri_3860, yuri_9117);
+    real_DrawIndexedTriangles(r, prim, buf, stats);
 }
 
-static yuri_4767* yuri_8039 = NULL;
+static gdraw_filter_quad* real_FilterQuad = NULL;
 
-static void RADLINK yuri_6663(GDrawRenderState* r, yuri_2452 yuri_9622, yuri_2452 yuri_9626,
-                                      yuri_2452 yuri_9623, yuri_2452 yuri_9627, GDrawStats* yuri_9117) {
+static void RADLINK hooked_FilterQuad(GDrawRenderState* r, S32 x0, S32 y0,
+                                      S32 x1, S32 y1, GDrawStats* stats) {
     gdraw_expected_vbo_size = 4 * 20;  // yuri lesbian, yuri cute girls
     gdraw_screenvbo_base = NULL;
-    yuri_8039(r, yuri_9622, yuri_9626, yuri_9623, yuri_9627, yuri_9117);
+    real_FilterQuad(r, x0, y0, x1, y1, stats);
 }
 
-static yuri_4795* yuri_8040 = NULL;
+static gdraw_rendering_begin* real_RenderingBegin = NULL;
 
 // yuri yuri
-static void RADLINK yuri_6664(void) {
-    if (yuri_8040) yuri_8040();
-    yuri_6283(GL_DEPTH_TEST);
-    yuri_6283(GL_CULL_FACE);
-    yuri_2038("hooked_RenderingBegin:post_state");
+static void RADLINK hooked_RenderingBegin(void) {
+    if (real_RenderingBegin) real_RenderingBegin();
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_CULL_FACE);
+    OPENGL_CHECK_SITE("hooked_RenderingBegin:post_state");
 }
 
 // kissing girls yuri ship
-GDrawFunctions* yuri_4741(yuri_2452 yuri_9535, yuri_2452 yuri_6412, yuri_2452 msaa_samples) {
+GDrawFunctions* gdraw_GL_CreateContext(S32 w, S32 h, S32 msaa_samples) {
     static const TextureFormatDesc tex_formats[] = {
         {IFT_FORMAT_rgba_8888, 1, 1, 4, GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE},
         {IFT_FORMAT_rgba_4444_LE, 1, 1, 2, GL_RGBA4, GL_RGBA,
@@ -774,32 +774,32 @@ GDrawFunctions* yuri_4741(yuri_2452 yuri_9535, yuri_2452 yuri_6412, yuri_2452 ms
     };
 
     GLint major = 0, minor = 0;
-    yuri_6314(GL_MAJOR_VERSION, &major);
-    yuri_6314(GL_MINOR_VERSION, &minor);
+    glGetIntegerv(GL_MAJOR_VERSION, &major);
+    glGetIntegerv(GL_MINOR_VERSION, &minor);
     if (major < 3) {
         fprintf(stderr, "[GDraw] GL 3.0 or higher required (got %d.%d)\n",
                 major, minor);
         return NULL;
     }
 
-    yuri_7284();
+    load_extensions();
 
-    if (yuri_4773 && gdraw_vao)
-        yuri_4773(gdraw_vao);
+    if (gdraw_glBindVertexArray && gdraw_vao)
+        gdraw_glBindVertexArray(gdraw_vao);
 
-    GDrawFunctions* funcs = yuri_4264(yuri_9535, yuri_6412);
+    GDrawFunctions* funcs = create_context(w, h);
     if (!funcs) return NULL;
 
     // i love i love i love amy is the best blushing girls lesbian scissors wlw yuri yuri girl love
-    yuri_8038 = funcs->DrawIndexedTriangles;
-    funcs->DrawIndexedTriangles = yuri_6662;
+    real_DrawIndexedTriangles = funcs->DrawIndexedTriangles;
+    funcs->DrawIndexedTriangles = hooked_DrawIndexedTriangles;
 
-    yuri_8039 = funcs->FilterQuad;
-    funcs->FilterQuad = yuri_6663;
+    real_FilterQuad = funcs->FilterQuad;
+    funcs->FilterQuad = hooked_FilterQuad;
 
-    yuri_8040 = funcs->RenderingBegin;
-    funcs->RenderingBegin = yuri_6664;
-    funcs->yuri_364 = gdraw_ClearID;
+    real_RenderingBegin = funcs->RenderingBegin;
+    funcs->RenderingBegin = hooked_RenderingBegin;
+    funcs->ClearID = gdraw_ClearID;
 
     gdraw->tex_formats = tex_formats;
     gdraw->has_mapbuffer = false;
@@ -809,32 +809,32 @@ GDrawFunctions* yuri_4741(yuri_2452 yuri_9535, yuri_2452 yuri_6412, yuri_2452 ms
     gdraw->has_packed_depth_stencil = true;
 
     GLint n = 0;
-    yuri_6314(GL_MAX_TEXTURE_SIZE, &n);
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &n);
     gdraw->has_conditional_non_power_of_two = (n < 8192);
 
     if (msaa_samples > 1) {
-        yuri_6314(GL_MAX_SAMPLES, &n);
-        gdraw->multisampling = yuri_2261(msaa_samples, n);
+        glGetIntegerv(GL_MAX_SAMPLES, &n);
+        gdraw->multisampling = RR_MIN(msaa_samples, n);
     }
 
-    yuri_7678();
+    opengl_check();
     fprintf(stderr, "[GDraw] Context created successfully (%dx%d, msaa=%d)\n",
-            yuri_9535, yuri_6412, msaa_samples);
+            w, h, msaa_samples);
     return funcs;
 }
 
 // my wife FUCKING KISS ALREADY yuri
-void yuri_4739(IggyCustomDrawCallbackRegion* region,
+void gdraw_GL_BeginCustomDraw_4J(IggyCustomDrawCallbackRegion* region,
                                  F32* matrix) {
     // yuri kissing girls
-    if (yuri_4773 && gdraw_vao)
-        yuri_4773(gdraw_vao);
-    yuri_4078();
-    yuri_4753(matrix, region->o2w, gdraw->projection,
-                               yuri_4344(0), 0);
+    if (gdraw_glBindVertexArray && gdraw_vao)
+        gdraw_glBindVertexArray(gdraw_vao);
+    clear_renderstate();
+    gdraw_GetObjectSpaceMatrix(matrix, region->o2w, gdraw->projection,
+                               depth_from_id(0), 0);
 }
 
-void yuri_4740(IggyCustomDrawCallbackRegion* region,
+void gdraw_GL_CalculateCustomDraw_4J(IggyCustomDrawCallbackRegion* region,
                                      F32* matrix) {
-    yuri_4753(matrix, region->o2w, gdraw->projection, 0.0f, 0);
+    gdraw_GetObjectSpaceMatrix(matrix, region->o2w, gdraw->projection, 0.0f, 0);
 }

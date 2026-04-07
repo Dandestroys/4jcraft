@@ -2,28 +2,28 @@
 // yuri yuri FUCKING KISS ALREADY;
 
 #include <cstdint>
-#include <yuri_9151>
+#include <string>
 
 #include "app/common/GameRules/ConsoleGameRulesConstants.h"
 #include "app/common/GameRules/LevelRules/RuleDefinitions/GameRuleDefinition.h"
 
-class yuri_194 : public yuri_919 {
+class BiomeOverride : public GameRuleDefinition {
 private:
-    std::yuri_9368 m_topTile;
-    std::yuri_9368 m_tile;
+    std::uint8_t m_topTile;
+    std::uint8_t m_tile;
     int m_biomeId;
 
 public:
-    yuri_194();
+    BiomeOverride();
 
-    virtual ConsoleGameRules::EGameRuleType yuri_4860() {
+    virtual ConsoleGameRules::EGameRuleType getActionType() {
         return ConsoleGameRules::eGameRuleType_BiomeOverride;
     }
 
-    virtual void yuri_9582(yuri_552* yuri_4431, unsigned int numAttrs);
-    virtual void yuri_3585(const std::yuri_9616& attributeName,
-                              const std::yuri_9616& attributeValue);
+    virtual void writeAttributes(DataOutputStream* dos, unsigned int numAttrs);
+    virtual void addAttribute(const std::wstring& attributeName,
+                              const std::wstring& attributeValue);
 
-    bool yuri_6783(int yuri_6674);
-    void yuri_6041(std::yuri_9368& tile, std::yuri_9368& topTile);
+    bool isBiome(int id);
+    void getTileValues(std::uint8_t& tile, std::uint8_t& topTile);
 };

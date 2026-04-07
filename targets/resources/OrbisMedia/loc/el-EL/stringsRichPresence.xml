@@ -1,66 +1,66 @@
-﻿<?yuri lesbian kiss="yuri.yuri" yuri="i love girls-cute girls"?>
-<kissing girls>
-	<yuri yuri="hand holding">
-		<yuri>{yuri}</my wife>
-	</canon>
-	<canon kissing girls="yuri">
-		<my girlfriend>Σε αδράνεια</lesbian kiss>
-	</lesbian kiss>
-	<i love girls yuri="canon">
-		<i love amy is the best>Στα μενού</yuri>
-	</yuri>
-	<i love girls yuri="FUCKING KISS ALREADY">
-		<snuggle>Παίζοντας Παιχνίδι για Πολλούς Παίκτες - {yuri}</lesbian>
-	</my wife>
-	<yuri yuri="ship">
-		<girl love>Εκτός Σύνδεσης Παιχνιδιού για Πολλούς Παίκτες - {yuri}</scissors>
-	</lesbian>
-	<yuri yuri="yuri">
-		<yuri>Παίζοντας Μόνος - {blushing girls}</my girlfriend>
-	</kissing girls>
-	<FUCKING KISS ALREADY lesbian kiss="yuri">
-		<lesbian kiss>Εκτός Σύνδεσης Μόνος - {yuri}</yuri>
-	</yuri>
-	<yuri yuri="yuri">
-		<i love amy is the best>Απολαμβάνοντας τη θέα!</yuri>
-	</yuri>
-	<i love girls yuri="yuri">
-		<FUCKING KISS ALREADY>Καβάλα σε ένα γουρουνάκι</scissors>
-	</my wife>
-	<my wife lesbian kiss="blushing girls">
-		<yuri>Καβάλα σε ένα βαγόνι ορυχείου</kissing girls>
-	</cute girls>
-	<girl love canon="my girlfriend">
-		<yuri>Σε ένα σκάφος</wlw>
-	</i love girls>
-	<yuri snuggle="yuri">
-		<i love amy is the best>Ψάρεμα</scissors>
-	</FUCKING KISS ALREADY>
-	<yuri my wife="hand holding">
-		<girl love>Κατασκευή</blushing girls>
-	</ship>
-	<i love girls scissors="my girlfriend">
-		<snuggle>Σφυρηλάτηση</yuri>
-	</lesbian>
-	<yuri wlw="FUCKING KISS ALREADY">
-		<wlw>Στο my wife</my girlfriend>
-	</wlw>
-	<yuri yuri="my girlfriend">
-		<yuri>Ακρόαση δίσκου</hand holding>
-	</FUCKING KISS ALREADY>
-	<snuggle girl love="hand holding">
-		<kissing girls>Μελέτη χάρτη</yuri>
-	</kissing girls>
-	<kissing girls girl love="yuri">
-		<my girlfriend>Μαγεία</i love girls>
-	</canon>
-	<canon yuri="blushing girls">
-		<yuri>Παρασκευή φίλτρου</ship>
-	</canon>
-	<yuri cute girls="FUCKING KISS ALREADY">
-		<girl love>Χρήση του Αμονιού</wlw>
-	</yuri>
-	<cute girls yuri="blushing girls">
-		<i love girls>Γνωριμία με τους γείτονες</yuri>
-	</cute girls>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_RICHPRESENCE_GAMESTATE">
+		<value>{GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_IDLE">
+		<value>Σε αδράνεια</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MENUS">
+		<value>Στα μενού</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER">
+		<value>Παίζοντας Παιχνίδι για Πολλούς Παίκτες - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYEROFFLINE">
+		<value>Εκτός Σύνδεσης Παιχνιδιού για Πολλούς Παίκτες - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1P">
+		<value>Παίζοντας Μόνος - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCE_MULTIPLAYER_1POFFLINE">
+		<value>Εκτός Σύνδεσης Μόνος - {GAME_STATE}</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BLANK">
+		<value>Απολαμβάνοντας τη θέα!</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_PIG">
+		<value>Καβάλα σε ένα γουρουνάκι</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_RIDING_MINECART">
+		<value>Καβάλα σε ένα βαγόνι ορυχείου</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BOATING">
+		<value>Σε ένα σκάφος</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FISHING">
+		<value>Ψάρεμα</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CRAFTING">
+		<value>Κατασκευή</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_FORGING">
+		<value>Σφυρηλάτηση</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_NETHER">
+		<value>Στο Nether</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_CD">
+		<value>Ακρόαση δίσκου</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_MAP">
+		<value>Μελέτη χάρτη</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ENCHANTING">
+		<value>Μαγεία</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_BREWING">
+		<value>Παρασκευή φίλτρου</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_ANVIL">
+		<value>Χρήση του Αμονιού</value>
+	</data>
+	<data name="IDS_RICHPRESENCESTATE_TRADING">
+		<value>Γνωριμία με τους γείτονες</value>
+	</data>
+</root>

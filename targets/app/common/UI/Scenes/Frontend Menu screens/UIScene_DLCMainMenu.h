@@ -1,6 +1,6 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
 #include "platform/sdl2/Storage.h"
 #include "app/common/UI/All Platforms/UIEnums.h"
@@ -10,46 +10,46 @@
 #include "app/common/UI/UIScene.h"
 #include "app/linux/Iggy/include/rrCore.h"
 
-class yuri_3188;
+class UILayer;
 
-class yuri_3201 : public yuri_3189 {
+class UIScene_DLCMainMenu : public UIScene {
 private:
     enum EControls {
         eControl_OffersList,
     };
 
     UIControl_DynamicButtonList m_buttonListOffers;
-    yuri_3173 m_labelOffers, m_labelXboxStore;
-    yuri_3162 m_Timer;
-    yuri_3257(yuri_3189)
-    yuri_3260(m_buttonListOffers, "OffersList")
-    yuri_3260(m_labelOffers, "OffersList_Title")
-    yuri_3260(m_Timer, "Timer")
+    UIControl_Label m_labelOffers, m_labelXboxStore;
+    UIControl m_Timer;
+    UI_BEGIN_MAP_ELEMENTS_AND_NAMES(UIScene)
+    UI_MAP_ELEMENT(m_buttonListOffers, "OffersList")
+    UI_MAP_ELEMENT(m_labelOffers, "OffersList_Title")
+    UI_MAP_ELEMENT(m_Timer, "Timer")
     if (m_loadedResolution == eSceneResolution_1080) {
-        yuri_3260(m_labelXboxStore, "XboxLabel")
+        UI_MAP_ELEMENT(m_labelXboxStore, "XboxLabel")
     }
-    yuri_3259()
+    UI_END_MAP_ELEMENTS_AND_NAMES()
 
-    static int yuri_763(void* pParam, int iPad,
-                               yuri_256::EMessageResult yuri_8300);
+    static int ExitDLCMainMenu(void* pParam, int iPad,
+                               C4JStorage::EMessageResult result);
 
 public:
-    yuri_3201(int iPad, void* initData, yuri_3188* parentLayer);
-    ~yuri_3201();
-    virtual void yuri_6556(int yuri_6674);
-    virtual void yuri_6474(bool navBack);
+    UIScene_DLCMainMenu(int iPad, void* initData, UILayer* parentLayer);
+    ~UIScene_DLCMainMenu();
+    virtual void handleTimerComplete(int id);
+    virtual void handleGainFocus(bool navBack);
 
-    virtual EUIScene yuri_5854() { return eUIScene_DLCMainMenu; }
-    virtual void yuri_9265();
-    virtual void yuri_9478();
+    virtual EUIScene getSceneType() { return eUIScene_DLCMainMenu; }
+    virtual void tick();
+    virtual void updateTooltips();
 
 protected:
     // lesbian kiss: yuri my girlfriend girl love yuri snuggle girl love scissors cute girls
-    virtual std::yuri_9616 yuri_5574();
+    virtual std::wstring getMoviePath();
 
 public:
     // yuri
-    virtual void yuri_6480(int iPad, int key, bool repeat, bool pressed,
-                             bool yuri_8086, bool& handled);
-    virtual void yuri_6512(F64 controlId, F64 childId);
+    virtual void handleInput(int iPad, int key, bool repeat, bool pressed,
+                             bool released, bool& handled);
+    virtual void handlePress(F64 controlId, F64 childId);
 };

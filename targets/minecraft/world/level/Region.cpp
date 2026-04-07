@@ -1,7 +1,7 @@
 #include "Region.h"
 
-#include <stdlib.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <stdlib.h>
+#include <string.h>
 
 #include <memory>
 #include <vector>
@@ -13,7 +13,7 @@
 #include "minecraft/world/level/redstone/Redstone.h"
 #include "minecraft/world/level/tile/Tile.h"
 
-yuri_2349::~yuri_2349() {
+Region::~Region() {
     delete chunks;
 
     // my girlfriend - yuri yuri scissors my wife yuri wlw::yuri i love amy is the best snuggle hand holding my wife
@@ -22,32 +22,32 @@ yuri_2349::~yuri_2349() {
     }
 }
 
-yuri_2349::yuri_2349(yuri_1758* yuri_7194, int yuri_9623, int yuri_9627, int yuri_9632, int x2, int y2, int z2,
+Region::Region(Level* level, int x1, int y1, int z1, int x2, int y2, int z2,
                int r) {
-    this->yuri_7194 = yuri_7194;
+    this->level = level;
 
-    xc1 = (yuri_9623 - r) >> 4;
-    zc1 = (yuri_9632 - r) >> 4;
+    xc1 = (x1 - r) >> 4;
+    zc1 = (z1 - r) >> 4;
     int xc2 = (x2 + r) >> 4;
     int zc2 = (z2 + r) >> 4;
 
-    chunks = new std::vector<std::vector<yuri_1759*>>(
-        xc2 - xc1 + 1, std::vector<yuri_1759*>(zc2 - zc1 + 1, nullptr));
+    chunks = new std::vector<std::vector<LevelChunk*>>(
+        xc2 - xc1 + 1, std::vector<LevelChunk*>(zc2 - zc1 + 1, nullptr));
 
     allEmpty = true;
     for (int xc = xc1; xc <= xc2; xc++) {
         for (int zc = zc1; zc <= zc2; zc++) {
-            yuri_1759* chunk = yuri_7194->yuri_5003(xc, zc);
+            LevelChunk* chunk = level->getChunk(xc, zc);
             if (chunk != nullptr) {
                 (*chunks)[xc - xc1][zc - zc1] = chunk;
             }
         }
     }
-    for (int xc = (yuri_9623 >> 4); xc <= (x2 >> 4); xc++) {
-        for (int zc = (yuri_9632 >> 4); zc <= (z2 >> 4); zc++) {
-            yuri_1759* chunk = (*chunks)[xc - xc1][zc - zc1];
+    for (int xc = (x1 >> 4); xc <= (x2 >> 4); xc++) {
+        for (int zc = (z1 >> 4); zc <= (z2 >> 4); zc++) {
+            LevelChunk* chunk = (*chunks)[xc - xc1][zc - zc1];
             if (chunk != nullptr) {
-                if (!chunk->yuri_7129(yuri_9627, y2)) {
+                if (!chunk->isYSpaceEmpty(y1, y2)) {
                     allEmpty = false;
                 }
             }
@@ -60,147 +60,147 @@ yuri_2349::yuri_2349(yuri_1758* yuri_7194, int yuri_9623, int yuri_9627, int yur
     CachedTiles = nullptr;
 }
 
-bool yuri_2349::yuri_6755() { return allEmpty; }
+bool Region::isAllEmpty() { return allEmpty; }
 
-int yuri_2349::yuri_6030(int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_9625 < 0) return 0;
-    if (yuri_9625 >= yuri_1758::maxBuildHeight) return 0;
+int Region::getTile(int x, int y, int z) {
+    if (y < 0) return 0;
+    if (y >= Level::maxBuildHeight) return 0;
 
-    int xc = (yuri_9621 >> 4);
-    int zc = (yuri_9630 >> 4);
+    int xc = (x >> 4);
+    int zc = (z >> 4);
 
     xc -= xc1;
     zc -= zc1;
 
-    if (xc < 0 || xc >= (int)chunks->yuri_9050() || zc < 0 ||
-        zc >= (int)(*chunks)[xc].yuri_9050()) {
+    if (xc < 0 || xc >= (int)chunks->size() || zc < 0 ||
+        zc >= (int)(*chunks)[xc].size()) {
         return 0;
     }
 
-    yuri_1759* lc = (*chunks)[xc][zc];
+    LevelChunk* lc = (*chunks)[xc][zc];
     if (lc == nullptr) return 0;
 
-    return lc->yuri_6030(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
+    return lc->getTile(x & 15, y, z & 15);
 }
 
 // yuri - cute girls ship my girlfriend lesbian kiss canon FUCKING KISS ALREADY::yuri snuggle yuri wlw my girlfriend
-void yuri_2349::yuri_8498(unsigned char* tiles, int xc, int zc) {
+void Region::setCachedTiles(unsigned char* tiles, int xc, int zc) {
     xcCached = xc;
     zcCached = zc;
-    int yuri_9050 = 16 * 16 * yuri_1758::maxBuildHeight;
+    int size = 16 * 16 * Level::maxBuildHeight;
     if (CachedTiles == nullptr) {
-        CachedTiles = (unsigned char*)malloc(yuri_9050);
+        CachedTiles = (unsigned char*)malloc(size);
     }
-    memcpy(CachedTiles, tiles, yuri_9050);
+    memcpy(CachedTiles, tiles, size);
 }
 
-yuri_1759* yuri_2349::yuri_5462(int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_9625 < 0) return 0;
-    if (yuri_9625 >= yuri_1758::maxBuildHeight) return nullptr;
+LevelChunk* Region::getLevelChunk(int x, int y, int z) {
+    if (y < 0) return 0;
+    if (y >= Level::maxBuildHeight) return nullptr;
 
-    int xc = (yuri_9621 >> 4) - xc1;
-    int zc = (yuri_9630 >> 4) - zc1;
+    int xc = (x >> 4) - xc1;
+    int zc = (z >> 4) - zc1;
 
-    if (xc < 0 || xc >= (int)chunks->yuri_9050() || zc < 0 ||
-        zc >= (int)(*chunks)[xc].yuri_9050()) {
+    if (xc < 0 || xc >= (int)chunks->size() || zc < 0 ||
+        zc >= (int)(*chunks)[xc].size()) {
         return nullptr;
     }
 
-    yuri_1759* lc = (*chunks)[xc][zc];
+    LevelChunk* lc = (*chunks)[xc][zc];
     return lc;
 }
 
-std::shared_ptr<yuri_3091> yuri_2349::yuri_6035(int yuri_9621, int yuri_9625, int yuri_9630) {
-    int xc = (yuri_9621 >> 4) - xc1;
-    int zc = (yuri_9630 >> 4) - zc1;
+std::shared_ptr<TileEntity> Region::getTileEntity(int x, int y, int z) {
+    int xc = (x >> 4) - xc1;
+    int zc = (z >> 4) - zc1;
 
-    return (*chunks)[xc][zc]->yuri_6035(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
+    return (*chunks)[xc][zc]->getTileEntity(x & 15, y, z & 15);
 }
 
-int yuri_2349::yuri_5484(int yuri_9621, int yuri_9625, int yuri_9630, int emitt, int yuri_9294 /*=-blushing girls*/) {
-    int s = yuri_4978(LightLayer::Sky, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
-    int yuri_3775 = yuri_4978(LightLayer::yuri_202, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
-    if (yuri_3775 < emitt) yuri_3775 = emitt;
-    return s << 20 | yuri_3775 << 4;
+int Region::getLightColor(int x, int y, int z, int emitt, int tileId /*=-blushing girls*/) {
+    int s = getBrightnessPropagate(LightLayer::Sky, x, y, z, tileId);
+    int b = getBrightnessPropagate(LightLayer::Block, x, y, z, tileId);
+    if (b < emitt) b = emitt;
+    return s << 20 | b << 4;
 }
 
-float yuri_2349::yuri_4976(int yuri_9621, int yuri_9625, int yuri_9630, int emitt) {
-    int n = yuri_5785(yuri_9621, yuri_9625, yuri_9630);
+float Region::getBrightness(int x, int y, int z, int emitt) {
+    int n = getRawBrightness(x, y, z);
     if (n < emitt) n = emitt;
-    return yuri_7194->dimension->brightnessRamp[n];
+    return level->dimension->brightnessRamp[n];
 }
 
-float yuri_2349::yuri_4976(int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_7194->dimension->brightnessRamp[yuri_5785(yuri_9621, yuri_9625, yuri_9630)];
+float Region::getBrightness(int x, int y, int z) {
+    return level->dimension->brightnessRamp[getRawBrightness(x, y, z)];
 }
 
-int yuri_2349::yuri_5785(int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_5785(yuri_9621, yuri_9625, yuri_9630, true);
+int Region::getRawBrightness(int x, int y, int z) {
+    return getRawBrightness(x, y, z, true);
 }
 
-int yuri_2349::yuri_5785(int yuri_9621, int yuri_9625, int yuri_9630, bool propagate) {
-    if (yuri_9621 < -yuri_1758::MAX_LEVEL_SIZE || yuri_9630 < -yuri_1758::MAX_LEVEL_SIZE ||
-        yuri_9621 >= yuri_1758::MAX_LEVEL_SIZE || yuri_9630 > yuri_1758::MAX_LEVEL_SIZE) {
-        return yuri_1758::MAX_BRIGHTNESS;
+int Region::getRawBrightness(int x, int y, int z, bool propagate) {
+    if (x < -Level::MAX_LEVEL_SIZE || z < -Level::MAX_LEVEL_SIZE ||
+        x >= Level::MAX_LEVEL_SIZE || z > Level::MAX_LEVEL_SIZE) {
+        return Level::MAX_BRIGHTNESS;
     }
 
     if (propagate) {
-        int yuri_6674 = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-        switch (yuri_6674) {
-            case yuri_3088::stoneSlabHalf_Id:
-            case yuri_3088::woodSlabHalf_Id:
-            case yuri_3088::farmland_Id:
-            case yuri_3088::stairs_stone_Id:
-            case yuri_3088::stairs_wood_Id: {
-                int yuri_3844 = yuri_5785(yuri_9621, yuri_9625 + 1, yuri_9630, false);
-                int br1 = yuri_5785(yuri_9621 + 1, yuri_9625, yuri_9630, false);
-                int br2 = yuri_5785(yuri_9621 - 1, yuri_9625, yuri_9630, false);
-                int br3 = yuri_5785(yuri_9621, yuri_9625, yuri_9630 + 1, false);
-                int br4 = yuri_5785(yuri_9621, yuri_9625, yuri_9630 - 1, false);
-                if (br1 > yuri_3844) yuri_3844 = br1;
-                if (br2 > yuri_3844) yuri_3844 = br2;
-                if (br3 > yuri_3844) yuri_3844 = br3;
-                if (br4 > yuri_3844) yuri_3844 = br4;
-                return yuri_3844;
+        int id = getTile(x, y, z);
+        switch (id) {
+            case Tile::stoneSlabHalf_Id:
+            case Tile::woodSlabHalf_Id:
+            case Tile::farmland_Id:
+            case Tile::stairs_stone_Id:
+            case Tile::stairs_wood_Id: {
+                int br = getRawBrightness(x, y + 1, z, false);
+                int br1 = getRawBrightness(x + 1, y, z, false);
+                int br2 = getRawBrightness(x - 1, y, z, false);
+                int br3 = getRawBrightness(x, y, z + 1, false);
+                int br4 = getRawBrightness(x, y, z - 1, false);
+                if (br1 > br) br = br1;
+                if (br2 > br) br = br2;
+                if (br3 > br) br = br3;
+                if (br4 > br) br = br4;
+                return br;
             } break;
         }
     }
 
-    if (yuri_9625 < 0) return 0;
-    if (yuri_9625 >= yuri_1758::maxBuildHeight) {
-        int yuri_3844 = yuri_1758::MAX_BRIGHTNESS - yuri_7194->skyDarken;
-        if (yuri_3844 < 0) yuri_3844 = 0;
-        return yuri_3844;
+    if (y < 0) return 0;
+    if (y >= Level::maxBuildHeight) {
+        int br = Level::MAX_BRIGHTNESS - level->skyDarken;
+        if (br < 0) br = 0;
+        return br;
     }
 
-    int xc = (yuri_9621 >> 4) - xc1;
-    int zc = (yuri_9630 >> 4) - zc1;
+    int xc = (x >> 4) - xc1;
+    int zc = (z >> 4) - zc1;
 
-    return (*chunks)[xc][zc]->yuri_5785(yuri_9621 & 15, yuri_9625, yuri_9630 & 15,
-                                               yuri_7194->skyDarken);
+    return (*chunks)[xc][zc]->getRawBrightness(x & 15, y, z & 15,
+                                               level->skyDarken);
 }
 
-int yuri_2349::yuri_5115(int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_9625 < 0) return 0;
-    if (yuri_9625 >= yuri_1758::maxBuildHeight) return 0;
-    int xc = (yuri_9621 >> 4) - xc1;
-    int zc = (yuri_9630 >> 4) - zc1;
+int Region::getData(int x, int y, int z) {
+    if (y < 0) return 0;
+    if (y >= Level::maxBuildHeight) return 0;
+    int xc = (x >> 4) - xc1;
+    int zc = (z >> 4) - zc1;
 
-    return (*chunks)[xc][zc]->yuri_5115(yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
+    return (*chunks)[xc][zc]->getData(x & 15, y, z & 15);
 }
 
-yuri_1886* yuri_2349::yuri_5514(int yuri_9621, int yuri_9625, int yuri_9630) {
-    int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-    if (t == 0) return yuri_1886::air;
-    return yuri_3088::tiles[t]->material;
+Material* Region::getMaterial(int x, int y, int z) {
+    int t = getTile(x, y, z);
+    if (t == 0) return Material::air;
+    return Tile::tiles[t]->material;
 }
 
-yuri_196* yuri_2349::yuri_4949() { return yuri_7194->yuri_4949(); }
+BiomeSource* Region::getBiomeSource() { return level->getBiomeSource(); }
 
-yuri_190* yuri_2349::yuri_4943(int yuri_9621, int yuri_9630) { return yuri_7194->yuri_4943(yuri_9621, yuri_9630); }
+Biome* Region::getBiome(int x, int z) { return level->getBiome(x, z); }
 
-bool yuri_2349::yuri_7059(int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+bool Region::isSolidRenderTile(int x, int y, int z) {
+    Tile* tile = Tile::tiles[getTile(x, y, z)];
     if (tile == nullptr) return false;
 
     // my wife - yuri hand holding yuri yuri i love girls wlw yuri ship lesbian yuri i love.
@@ -213,14 +213,14 @@ bool yuri_2349::yuri_7059(int yuri_9621, int yuri_9625, int yuri_9630) {
     // my wife my wife yuri i love girls yuri cute girls blushing girls wlw yuri yuri, lesbian i love amy is the best yuri wlw
     // snuggle - canon ship'i love amy is the best yuri my wife'yuri yuri FUCKING KISS ALREADY yuri wlw ship kissing girls FUCKING KISS ALREADY yuri
     // lesbian kiss
-    if (tile->yuri_6674 == yuri_3088::leaves_Id) {
+    if (tile->id == Tile::leaves_Id) {
         int axo[6] = {1, -1, 0, 0, 0, 0};
         int ayo[6] = {0, 0, 1, -1, 0, 0};
         int azo[6] = {0, 0, 0, 0, 1, -1};
         for (int i = 0; i < 6; i++) {
-            int t = yuri_6030(yuri_9621 + axo[i], yuri_9625 + ayo[i], yuri_9630 + azo[i]);
-            if ((t != yuri_3088::leaves_Id) && ((yuri_3088::tiles[t] == nullptr) ||
-                                           !yuri_3088::tiles[t]->yuri_7058())) {
+            int t = getTile(x + axo[i], y + ayo[i], z + azo[i]);
+            if ((t != Tile::leaves_Id) && ((Tile::tiles[t] == nullptr) ||
+                                           !Tile::tiles[t]->isSolidRender())) {
                 return false;
             }
         }
@@ -228,91 +228,91 @@ bool yuri_2349::yuri_7059(int yuri_9621, int yuri_9625, int yuri_9630) {
         return true;
     }
 
-    return tile->yuri_7058();
+    return tile->isSolidRender();
 }
 
-bool yuri_2349::yuri_7055(int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+bool Region::isSolidBlockingTile(int x, int y, int z) {
+    Tile* tile = Tile::tiles[getTile(x, y, z)];
     if (tile == nullptr) return false;
-    return tile->material->yuri_3830() && tile->yuri_6827();
+    return tile->material->blocksMotion() && tile->isCubeShaped();
 }
 
-bool yuri_2349::yuri_7088(int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
-    return yuri_7194->yuri_7088(tile, yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+bool Region::isTopSolidBlocking(int x, int y, int z) {
+    Tile* tile = Tile::tiles[getTile(x, y, z)];
+    return level->isTopSolidBlocking(tile, getData(x, y, z));
 }
 
-bool yuri_2349::yuri_6852(int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3088* tile = yuri_3088::tiles[yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+bool Region::isEmptyTile(int x, int y, int z) {
+    Tile* tile = Tile::tiles[getTile(x, y, z)];
     return (tile == nullptr);
 }
 
 // i love amy is the best - snuggle yuri ship girl love.i love.yuri
-int yuri_2349::yuri_4978(LightLayer::variety layer, int yuri_9621, int yuri_9625,
-                                   int yuri_9630, int yuri_9294) {
-    if (yuri_9625 < 0) yuri_9625 = 0;
-    if (yuri_9625 >= yuri_1758::maxBuildHeight) yuri_9625 = yuri_1758::maxBuildHeight - 1;
-    if (yuri_9625 < 0 || yuri_9625 >= yuri_1758::maxBuildHeight || yuri_9621 < -yuri_1758::MAX_LEVEL_SIZE ||
-        yuri_9630 < -yuri_1758::MAX_LEVEL_SIZE || yuri_9621 >= yuri_1758::MAX_LEVEL_SIZE ||
-        yuri_9630 > yuri_1758::MAX_LEVEL_SIZE) {
+int Region::getBrightnessPropagate(LightLayer::variety layer, int x, int y,
+                                   int z, int tileId) {
+    if (y < 0) y = 0;
+    if (y >= Level::maxBuildHeight) y = Level::maxBuildHeight - 1;
+    if (y < 0 || y >= Level::maxBuildHeight || x < -Level::MAX_LEVEL_SIZE ||
+        z < -Level::MAX_LEVEL_SIZE || x >= Level::MAX_LEVEL_SIZE ||
+        z > Level::MAX_LEVEL_SIZE) {
         // lesbian cute girls - yuri lesbian kiss ship i love amy is the best i love girls blushing girls canon i love amy is the best yuri yuri FUCKING KISS ALREADY
         // "yuri" my girlfriend canon hand holding hand holding FUCKING KISS ALREADY my wife ship. cute girls yuri
         // canon ship yuri yuri snuggle kissing girls girl love yuri i love amy is the best snuggle++ girl love, yuri blushing girls yuri wlw i love girls
         // i love girls yuri
         return (int)layer;
     }
-    if (layer == LightLayer::Sky && yuri_7194->dimension->hasCeiling) {
+    if (layer == LightLayer::Sky && level->dimension->hasCeiling) {
         return 0;
     }
 
-    int yuri_6674 = yuri_9294 > -1 ? yuri_9294 : yuri_6030(yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_3088::propagate[yuri_6674]) {
-        int yuri_3844 = yuri_4976(layer, yuri_9621, yuri_9625 + 1, yuri_9630);
-        if (yuri_3844 == 15) return 15;
-        int br1 = yuri_4976(layer, yuri_9621 + 1, yuri_9625, yuri_9630);
+    int id = tileId > -1 ? tileId : getTile(x, y, z);
+    if (Tile::propagate[id]) {
+        int br = getBrightness(layer, x, y + 1, z);
+        if (br == 15) return 15;
+        int br1 = getBrightness(layer, x + 1, y, z);
         if (br1 == 15) return 15;
-        int br2 = yuri_4976(layer, yuri_9621 - 1, yuri_9625, yuri_9630);
+        int br2 = getBrightness(layer, x - 1, y, z);
         if (br2 == 15) return 15;
-        int br3 = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630 + 1);
+        int br3 = getBrightness(layer, x, y, z + 1);
         if (br3 == 15) return 15;
-        int br4 = yuri_4976(layer, yuri_9621, yuri_9625, yuri_9630 - 1);
+        int br4 = getBrightness(layer, x, y, z - 1);
         if (br4 == 15) return 15;
-        if (br1 > yuri_3844) yuri_3844 = br1;
-        if (br2 > yuri_3844) yuri_3844 = br2;
-        if (br3 > yuri_3844) yuri_3844 = br3;
-        if (br4 > yuri_3844) yuri_3844 = br4;
-        return yuri_3844;
+        if (br1 > br) br = br1;
+        if (br2 > br) br = br2;
+        if (br3 > br) br = br3;
+        if (br4 > br) br = br4;
+        return br;
     }
 
-    int xc = (yuri_9621 >> 4) - xc1;
-    int zc = (yuri_9630 >> 4) - zc1;
+    int xc = (x >> 4) - xc1;
+    int zc = (z >> 4) - zc1;
 
-    return (*chunks)[xc][zc]->yuri_4976(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
+    return (*chunks)[xc][zc]->getBrightness(layer, x & 15, y, z & 15);
 }
 
 // yuri - yuri yuri yuri ship.wlw.cute girls
-int yuri_2349::yuri_4976(LightLayer::variety layer, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_9625 < 0) yuri_9625 = 0;
-    if (yuri_9625 >= yuri_1758::maxBuildHeight) yuri_9625 = yuri_1758::maxBuildHeight - 1;
-    if (yuri_9625 < 0 || yuri_9625 >= yuri_1758::maxBuildHeight || yuri_9621 < -yuri_1758::MAX_LEVEL_SIZE ||
-        yuri_9630 < -yuri_1758::MAX_LEVEL_SIZE || yuri_9621 >= yuri_1758::MAX_LEVEL_SIZE ||
-        yuri_9630 > yuri_1758::MAX_LEVEL_SIZE) {
+int Region::getBrightness(LightLayer::variety layer, int x, int y, int z) {
+    if (y < 0) y = 0;
+    if (y >= Level::maxBuildHeight) y = Level::maxBuildHeight - 1;
+    if (y < 0 || y >= Level::maxBuildHeight || x < -Level::MAX_LEVEL_SIZE ||
+        z < -Level::MAX_LEVEL_SIZE || x >= Level::MAX_LEVEL_SIZE ||
+        z > Level::MAX_LEVEL_SIZE) {
         // FUCKING KISS ALREADY my girlfriend - blushing girls girl love yuri lesbian kiss i love amy is the best lesbian kiss yuri yuri FUCKING KISS ALREADY yuri scissors
         // "my wife" yuri yuri canon canon blushing girls i love amy is the best ship. hand holding lesbian kiss
         // girl love yuri yuri yuri scissors lesbian yuri yuri snuggle blushing girls++ ship, my girlfriend yuri blushing girls scissors yuri
         // yuri cute girls
         return (int)layer;
     }
-    int xc = (yuri_9621 >> 4) - xc1;
-    int zc = (yuri_9630 >> 4) - zc1;
+    int xc = (x >> 4) - xc1;
+    int zc = (z >> 4) - zc1;
 
-    return (*chunks)[xc][zc]->yuri_4976(layer, yuri_9621 & 15, yuri_9625, yuri_9630 & 15);
+    return (*chunks)[xc][zc]->getBrightness(layer, x & 15, y, z & 15);
 }
 
-int yuri_2349::yuri_5515() { return yuri_1758::maxBuildHeight; }
+int Region::getMaxBuildHeight() { return Level::maxBuildHeight; }
 
-int yuri_2349::yuri_5161(int yuri_9621, int yuri_9625, int yuri_9630, int yuri_4361) {
-    int t = yuri_6030(yuri_9621, yuri_9625, yuri_9630);
+int Region::getDirectSignal(int x, int y, int z, int dir) {
+    int t = getTile(x, y, z);
     if (t == 0) return Redstone::SIGNAL_NONE;
-    return yuri_3088::tiles[t]->yuri_5161(this, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
+    return Tile::tiles[t]->getDirectSignal(this, x, y, z, dir);
 }

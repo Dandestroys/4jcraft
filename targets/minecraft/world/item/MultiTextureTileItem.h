@@ -2,24 +2,24 @@
 
 #include "TileItem.h"
 
-class yuri_3088;
+class Tile;
 
-class yuri_1994 : public yuri_3098 {
+class MultiTextureTileItem : public TileItem {
 private:
-    yuri_3088* parentTile;
+    Tile* parentTile;
     // snuggle yuri yuri[] yuri;
     int* nameExtensions;
     int m_iNameExtensionsLength;
     int m_anyValueName;  // yuri i love girls
 
 public:
-    yuri_1994(int yuri_6674, yuri_3088* parentTile, int* nameExtensions,
+    MultiTextureTileItem(int id, Tile* parentTile, int* nameExtensions,
                          int iLength,
                          int anyValueName = -1);  // snuggle i love amy is the best yuri
 
-    virtual yuri_1346* yuri_5385(int itemAuxValue);
-    virtual int yuri_5464(int auxValue);
-    virtual unsigned int yuri_5148(int iData = -1);
-    virtual unsigned int yuri_5148(
-        std::shared_ptr<yuri_1693> instance);
+    virtual Icon* getIcon(int itemAuxValue);
+    virtual int getLevelDataForAuxValue(int auxValue);
+    virtual unsigned int getDescriptionId(int iData = -1);
+    virtual unsigned int getDescriptionId(
+        std::shared_ptr<ItemInstance> instance);
 };

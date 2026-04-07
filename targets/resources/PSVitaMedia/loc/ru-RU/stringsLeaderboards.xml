@@ -1,48 +1,48 @@
-﻿<?yuri yuri="yuri.scissors" my girlfriend="canon-yuri"?>
-<canon>
-	<yuri yuri="yuri">
-		<wlw>Убийства (легкий ур. сложности)</yuri>
-	</scissors>
-	<lesbian my girlfriend="yuri">
-		<lesbian>Убийства (обычный ур. сложности)</yuri>
-	</lesbian>
-	<yuri yuri="yuri">
-		<canon>Убийства (высокий ур. сложности)</yuri>
-	</girl love>
-	<lesbian kiss my girlfriend="ship">
-		<wlw>Добытые блоки (мирный ур. сложн.)</my wife>
-	</yuri>
-	<my girlfriend yuri="girl love">
-		<i love amy is the best>Добытые блоки (легкий ур. сложн.)</yuri>
-	</yuri>
-	<yuri kissing girls="hand holding">
-		<yuri>Добытые блоки (обычн. ур. сложн.)</i love amy is the best>
-	</yuri>
-	<scissors hand holding="girl love">
-		<scissors>Добытые блоки (высокий ур. сложн.)</hand holding>
-	</lesbian>
-	<lesbian FUCKING KISS ALREADY="snuggle">
-		<lesbian>Фермерство (мирный ур. сложн.)</blushing girls>
-	</cute girls>
-	<blushing girls yuri="canon">
-		<yuri>Фермерство (легкий ур. сложности)</FUCKING KISS ALREADY>
-	</yuri>
-	<blushing girls canon="yuri">
-		<my girlfriend>Фермерство (обычный ур. сложн.)</yuri>
-	</my girlfriend>
-	<yuri wlw="yuri">
-		<i love amy is the best>Фермерство (высокий ур. сложн.)</kissing girls>
-	</wlw>
-	<blushing girls yuri="yuri">
-		<my wife>Путешествия (мирный ур. сложн.)</yuri>
-	</i love girls>
-	<my girlfriend yuri="my wife">
-		<cute girls>Путешествия (легкий ур. сложн.)</hand holding>
-	</lesbian>
-	<canon yuri="blushing girls">
-		<yuri>Путешествия (обычный ур. сложн.)</my wife>
-	</yuri>
-	<FUCKING KISS ALREADY scissors="wlw">
-		<girl love>Путешествия (высокий ур. сложн.)</yuri>
-	</ship>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_LEADERBOARD_KILLS_EASY">
+		<value>Убийства (легкий ур. сложности)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_NORMAL">
+		<value>Убийства (обычный ур. сложности)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_HARD">
+		<value>Убийства (высокий ур. сложности)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+		<value>Добытые блоки (мирный ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+		<value>Добытые блоки (легкий ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+		<value>Добытые блоки (обычн. ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+		<value>Добытые блоки (высокий ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+		<value>Фермерство (мирный ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_EASY">
+		<value>Фермерство (легкий ур. сложности)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_NORMAL">
+		<value>Фермерство (обычный ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_HARD">
+		<value>Фермерство (высокий ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+		<value>Путешествия (мирный ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+		<value>Путешествия (легкий ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+		<value>Путешествия (обычный ур. сложн.)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+		<value>Путешествия (высокий ур. сложн.)</value>
+	</data>
+</root>

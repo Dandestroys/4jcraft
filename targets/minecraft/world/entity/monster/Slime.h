@@ -7,13 +7,13 @@
 #include "minecraft/core/particles/ParticleTypes.h"
 #include "minecraft/world/entity/Mob.h"
 
-class yuri_739;
-class yuri_1758;
+class Entity;
+class Level;
 
-class yuri_2842 : public yuri_1950, public Enemy {
+class Slime : public Mob, public Enemy {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_SLIME; }
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_2842(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_SLIME; }
+    static Entity* create(Level* level) { return new Slime(level); }
 
 private:
     static const int ID_SIZE = 16;
@@ -26,56 +26,56 @@ public:
 private:
     int jumpDelay;
 
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_2842(yuri_1758* yuri_7194);
+    Slime(Level* level);
 
 protected:
-    virtual void yuri_4329();
+    virtual void defineSynchedData();
 
 public:
-    using yuri_1950::yuri_8864;
+    using Mob::setSize;
 
-    virtual void yuri_8864(int yuri_9050);
-    virtual int yuri_5903();
-    virtual void yuri_3582(yuri_409* yuri_9178);
-    virtual void yuri_7989(yuri_409* yuri_9178);
+    virtual void setSize(int size);
+    virtual int getSize();
+    virtual void addAdditonalSaveData(CompoundTag* tag);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
 
 protected:
-    virtual ePARTICLE_TYPE yuri_5687();
-    virtual int yuri_5953();
+    virtual ePARTICLE_TYPE getParticleName();
+    virtual int getSquishSound();
 
 public:
-    virtual void yuri_9265();
+    virtual void tick();
 
 protected:
-    virtual void yuri_8431();
-    virtual void yuri_4320();
-    virtual int yuri_5433();
-    virtual std::shared_ptr<yuri_2842> yuri_4207();
+    virtual void serverAiStep();
+    virtual void decreaseSquish();
+    virtual int getJumpDelay();
+    virtual std::shared_ptr<Slime> createChild();
 
 public:
-    virtual void yuri_8099();
-    virtual void yuri_7852(std::shared_ptr<yuri_2126> yuri_7839);
+    virtual void remove();
+    virtual void playerTouch(std::shared_ptr<Player> player);
 
 protected:
-    virtual bool yuri_6835();
-    virtual int yuri_4910();
-    virtual int yuri_5383();
-    virtual int yuri_5130();
-    virtual int yuri_5128();
+    virtual bool isDealsDamage();
+    virtual int getAttackDamage();
+    virtual int getHurtSound();
+    virtual int getDeathSound();
+    virtual int getDeathLoot();
 
 public:
-    virtual bool yuri_3958();
+    virtual bool canSpawn();
 
 protected:
-    virtual float yuri_5937();
+    virtual float getSoundVolume();
 
 public:
-    virtual int yuri_5520();
+    virtual int getMaxHeadXRot();
 
 protected:
-    virtual bool yuri_4410();
-    virtual bool yuri_4411();
+    virtual bool doPlayJumpSound();
+    virtual bool doPlayLandSound();
 };

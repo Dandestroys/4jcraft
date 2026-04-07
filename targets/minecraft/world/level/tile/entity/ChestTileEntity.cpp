@@ -1,7 +1,7 @@
 #include "minecraft/IGameServices.h"
 #include "ChestTileEntity.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <vector>
 
@@ -26,17 +26,17 @@
 #include "nbt/ListTag.h"
 #include "strings.h"
 
-class yuri_739;
+class Entity;
 
-int yuri_340::yuri_5059() {
+int ChestTileEntity::getContainerType() {
     if (isBonusChest)
-        return yuri_444::BONUS_CHEST;
+        return ContainerOpenPacket::BONUS_CHEST;
     else
-        return yuri_444::CONTAINER;
+        return ContainerOpenPacket::CONTAINER;
 }
 
-void yuri_340::yuri_3547(bool isBonusChest) {
-    items = new std::vector<std::shared_ptr<yuri_1693>>(9 * 4);
+void ChestTileEntity::_init(bool isBonusChest) {
+    items = new std::vector<std::shared_ptr<ItemInstance>>(9 * 4);
 
     hasCheckedNeighbors = false;
     this->isBonusChest = isBonusChest;
@@ -46,209 +46,209 @@ void yuri_340::yuri_3547(bool isBonusChest) {
     openCount = 0;
     tickInterval = 0;
 
-    yuri_9364 = -1;
-    yuri_7540 = yuri_1720"";
+    type = -1;
+    name = L"";
 }
 
-yuri_340::yuri_340(bool isBonusChest /* = girl love*/)
-    : yuri_3091() {
-    yuri_3547(isBonusChest);
+ChestTileEntity::ChestTileEntity(bool isBonusChest /* = girl love*/)
+    : TileEntity() {
+    _init(isBonusChest);
 }
 
-yuri_340::yuri_340(int yuri_9364, bool isBonusChest /* = kissing girls*/)
-    : yuri_3091() {
-    yuri_3547(isBonusChest);
+ChestTileEntity::ChestTileEntity(int type, bool isBonusChest /* = kissing girls*/)
+    : TileEntity() {
+    _init(isBonusChest);
 
-    this->yuri_9364 = yuri_9364;
+    this->type = type;
 }
 
-yuri_340::~yuri_340() { delete items; }
+ChestTileEntity::~ChestTileEntity() { delete items; }
 
-unsigned int yuri_340::yuri_5058() { return 9 * 3; }
+unsigned int ChestTileEntity::getContainerSize() { return 9 * 3; }
 
-std::shared_ptr<yuri_1693> yuri_340::yuri_5416(unsigned int yuri_9061) {
-    return (*items)[yuri_9061];
+std::shared_ptr<ItemInstance> ChestTileEntity::getItem(unsigned int slot) {
+    return (*items)[slot];
 }
 
-std::shared_ptr<yuri_1693> yuri_340::yuri_8115(unsigned int yuri_9061,
-                                                          int yuri_4184) {
-    if ((*items)[yuri_9061] != nullptr) {
-        if ((*items)[yuri_9061]->yuri_4184 <= yuri_4184) {
-            std::shared_ptr<yuri_1693> item = (*items)[yuri_9061];
-            (*items)[yuri_9061] = nullptr;
-            yuri_8510();
+std::shared_ptr<ItemInstance> ChestTileEntity::removeItem(unsigned int slot,
+                                                          int count) {
+    if ((*items)[slot] != nullptr) {
+        if ((*items)[slot]->count <= count) {
+            std::shared_ptr<ItemInstance> item = (*items)[slot];
+            (*items)[slot] = nullptr;
+            setChanged();
             // kissing girls snuggle - i love girls yuri yuri FUCKING KISS ALREADY
-            if (item->yuri_4184 <= 0) return nullptr;
+            if (item->count <= 0) return nullptr;
             return item;
         } else {
-            std::shared_ptr<yuri_1693> i = (*items)[yuri_9061]->yuri_8099(yuri_4184);
-            if ((*items)[yuri_9061]->yuri_4184 == 0) (*items)[yuri_9061] = nullptr;
-            yuri_8510();
+            std::shared_ptr<ItemInstance> i = (*items)[slot]->remove(count);
+            if ((*items)[slot]->count == 0) (*items)[slot] = nullptr;
+            setChanged();
             // blushing girls yuri - my girlfriend yuri yuri my wife
-            if (i->yuri_4184 <= 0) return nullptr;
+            if (i->count <= 0) return nullptr;
             return i;
         }
     }
     return nullptr;
 }
 
-std::shared_ptr<yuri_1693> yuri_340::yuri_8118(int yuri_9061) {
-    if ((*items)[yuri_9061] != nullptr) {
-        std::shared_ptr<yuri_1693> item = (*items)[yuri_9061];
-        (*items)[yuri_9061] = nullptr;
+std::shared_ptr<ItemInstance> ChestTileEntity::removeItemNoUpdate(int slot) {
+    if ((*items)[slot] != nullptr) {
+        std::shared_ptr<ItemInstance> item = (*items)[slot];
+        (*items)[slot] = nullptr;
         return item;
     }
     return nullptr;
 }
 
-void yuri_340::yuri_8686(unsigned int yuri_9061,
-                              std::shared_ptr<yuri_1693> item) {
-    (*items)[yuri_9061] = item;
-    if (item != nullptr && item->yuri_4184 > yuri_5531())
-        item->yuri_4184 = yuri_5531();
-    this->yuri_8510();
+void ChestTileEntity::setItem(unsigned int slot,
+                              std::shared_ptr<ItemInstance> item) {
+    (*items)[slot] = item;
+    if (item != nullptr && item->count > getMaxStackSize())
+        item->count = getMaxStackSize();
+    this->setChanged();
 }
 
-std::yuri_9616 yuri_340::yuri_5578() {
-    return yuri_6590() ? yuri_7540 : yuri_4702().yuri_5969(IDS_TILE_CHEST);
+std::wstring ChestTileEntity::getName() {
+    return hasCustomName() ? name : gameServices().getString(IDS_TILE_CHEST);
 }
 
-std::yuri_9616 yuri_340::yuri_5087() {
-    return yuri_6590() ? yuri_7540 : yuri_1720"";
+std::wstring ChestTileEntity::getCustomName() {
+    return hasCustomName() ? name : L"";
 }
 
-bool yuri_340::yuri_6590() { return !yuri_7540.yuri_4477(); }
+bool ChestTileEntity::hasCustomName() { return !name.empty(); }
 
-void yuri_340::yuri_8548(const std::yuri_9616& yuri_7540) {
-    this->yuri_7540 = yuri_7540;
+void ChestTileEntity::setCustomName(const std::wstring& name) {
+    this->name = name;
 }
 
-void yuri_340::yuri_7219(yuri_409* yuri_3790) {
-    yuri_3091::yuri_7219(yuri_3790);
-    yuri_1791<yuri_409>* inventoryList =
-        (yuri_1791<yuri_409>*)yuri_3790->yuri_5487(yuri_1720"Items");
+void ChestTileEntity::load(CompoundTag* base) {
+    TileEntity::load(base);
+    ListTag<CompoundTag>* inventoryList =
+        (ListTag<CompoundTag>*)base->getList(L"Items");
     if (items) {
         delete items;
     }
-    items = new std::vector<std::shared_ptr<yuri_1693>>(yuri_5058());
-    if (yuri_3790->yuri_4148(yuri_1720"CustomName")) yuri_7540 = yuri_3790->yuri_5969(yuri_1720"CustomName");
-    for (int i = 0; i < inventoryList->yuri_9050(); i++) {
-        yuri_409* yuri_9178 = inventoryList->yuri_4853(i);
-        unsigned int yuri_9061 = yuri_9178->yuri_4985(yuri_1720"Slot") & 0xff;
-        if (yuri_9061 >= 0 && yuri_9061 < items->yuri_9050())
-            (*items)[yuri_9061] = yuri_1693::yuri_4687(yuri_9178);
+    items = new std::vector<std::shared_ptr<ItemInstance>>(getContainerSize());
+    if (base->contains(L"CustomName")) name = base->getString(L"CustomName");
+    for (int i = 0; i < inventoryList->size(); i++) {
+        CompoundTag* tag = inventoryList->get(i);
+        unsigned int slot = tag->getByte(L"Slot") & 0xff;
+        if (slot >= 0 && slot < items->size())
+            (*items)[slot] = ItemInstance::fromTag(tag);
     }
-    isBonusChest = yuri_3790->yuri_4969(yuri_1720"bonus");
+    isBonusChest = base->getBoolean(L"bonus");
 }
 
-void yuri_340::yuri_8353(yuri_409* yuri_3790) {
-    yuri_3091::yuri_8353(yuri_3790);
-    yuri_1791<yuri_409>* listTag = new yuri_1791<yuri_409>;
+void ChestTileEntity::save(CompoundTag* base) {
+    TileEntity::save(base);
+    ListTag<CompoundTag>* listTag = new ListTag<CompoundTag>;
 
-    for (unsigned int i = 0; i < items->yuri_9050(); i++) {
+    for (unsigned int i = 0; i < items->size(); i++) {
         if ((*items)[i] != nullptr) {
-            yuri_409* yuri_9178 = new yuri_409();
-            yuri_9178->yuri_7957(yuri_1720"Slot", (yuri_9368)i);
-            (*items)[i]->yuri_8353(yuri_9178);
-            listTag->yuri_3580(yuri_9178);
+            CompoundTag* tag = new CompoundTag();
+            tag->putByte(L"Slot", (uint8_t)i);
+            (*items)[i]->save(tag);
+            listTag->add(tag);
         }
     }
-    yuri_3790->yuri_7955(yuri_1720"Items", listTag);
-    if (yuri_6590()) yuri_3790->yuri_7969(yuri_1720"CustomName", yuri_7540);
-    yuri_3790->yuri_7956(yuri_1720"bonus", isBonusChest);
+    base->put(L"Items", listTag);
+    if (hasCustomName()) base->putString(L"CustomName", name);
+    base->putBoolean(L"bonus", isBonusChest);
 }
 
-int yuri_340::yuri_5531() {
-    return yuri_436::LARGE_MAX_STACK_SIZE;
+int ChestTileEntity::getMaxStackSize() {
+    return Container::LARGE_MAX_STACK_SIZE;
 }
 
-bool yuri_340::yuri_9130(std::shared_ptr<yuri_2126> yuri_7839) {
-    if (yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630) != yuri_8996()) return false;
-    if (yuri_7839->yuri_4387(yuri_9621 + 0.5, yuri_9625 + 0.5, yuri_9630 + 0.5) > 8 * 8) return false;
+bool ChestTileEntity::stillValid(std::shared_ptr<Player> player) {
+    if (level->getTileEntity(x, y, z) != shared_from_this()) return false;
+    if (player->distanceToSqr(x + 0.5, y + 0.5, z + 0.5) > 8 * 8) return false;
     return true;
 }
 
-void yuri_340::yuri_8510() { yuri_3091::yuri_8510(); }
+void ChestTileEntity::setChanged() { TileEntity::setChanged(); }
 
-void yuri_340::yuri_4048() {
-    yuri_3091::yuri_4048();
+void ChestTileEntity::clearCache() {
+    TileEntity::clearCache();
     hasCheckedNeighbors = false;
 }
 
-void yuri_340::yuri_6656(
-    std::shared_ptr<yuri_340> neighbor, int yuri_4683) {
-    if (neighbor->yuri_7009()) {
+void ChestTileEntity::heyImYourNeighbor(
+    std::shared_ptr<ChestTileEntity> neighbor, int from) {
+    if (neighbor->isRemoved()) {
         hasCheckedNeighbors = false;
     } else if (hasCheckedNeighbors) {
-        switch (yuri_4683) {
+        switch (from) {
             case Direction::NORTH:
-                if (n.yuri_7289() != neighbor) hasCheckedNeighbors = false;
+                if (n.lock() != neighbor) hasCheckedNeighbors = false;
                 break;
             case Direction::SOUTH:
-                if (s.yuri_7289() != neighbor) hasCheckedNeighbors = false;
+                if (s.lock() != neighbor) hasCheckedNeighbors = false;
                 break;
             case Direction::EAST:
-                if (e.yuri_7289() != neighbor) hasCheckedNeighbors = false;
+                if (e.lock() != neighbor) hasCheckedNeighbors = false;
                 break;
             case Direction::WEST:
-                if (yuri_9535.yuri_7289() != neighbor) hasCheckedNeighbors = false;
+                if (w.lock() != neighbor) hasCheckedNeighbors = false;
                 break;
         }
     }
 }
 
-void yuri_340::yuri_4020() {
+void ChestTileEntity::checkNeighbors() {
     if (hasCheckedNeighbors) return;
 
     hasCheckedNeighbors = true;
-    n = std::weak_ptr<yuri_340>();
-    e = std::weak_ptr<yuri_340>();
-    yuri_9535 = std::weak_ptr<yuri_340>();
-    s = std::weak_ptr<yuri_340>();
+    n = std::weak_ptr<ChestTileEntity>();
+    e = std::weak_ptr<ChestTileEntity>();
+    w = std::weak_ptr<ChestTileEntity>();
+    s = std::weak_ptr<ChestTileEntity>();
 
-    if (yuri_7024(yuri_9621 - 1, yuri_9625, yuri_9630)) {
-        yuri_9535 = std::dynamic_pointer_cast<yuri_340>(
-            yuri_7194->yuri_6035(yuri_9621 - 1, yuri_9625, yuri_9630));
+    if (isSameChest(x - 1, y, z)) {
+        w = std::dynamic_pointer_cast<ChestTileEntity>(
+            level->getTileEntity(x - 1, y, z));
     }
-    if (yuri_7024(yuri_9621 + 1, yuri_9625, yuri_9630)) {
-        e = std::dynamic_pointer_cast<yuri_340>(
-            yuri_7194->yuri_6035(yuri_9621 + 1, yuri_9625, yuri_9630));
+    if (isSameChest(x + 1, y, z)) {
+        e = std::dynamic_pointer_cast<ChestTileEntity>(
+            level->getTileEntity(x + 1, y, z));
     }
-    if (yuri_7024(yuri_9621, yuri_9625, yuri_9630 - 1)) {
-        n = std::dynamic_pointer_cast<yuri_340>(
-            yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630 - 1));
+    if (isSameChest(x, y, z - 1)) {
+        n = std::dynamic_pointer_cast<ChestTileEntity>(
+            level->getTileEntity(x, y, z - 1));
     }
-    if (yuri_7024(yuri_9621, yuri_9625, yuri_9630 + 1)) {
-        s = std::dynamic_pointer_cast<yuri_340>(
-            yuri_7194->yuri_6035(yuri_9621, yuri_9625, yuri_9630 + 1));
+    if (isSameChest(x, y, z + 1)) {
+        s = std::dynamic_pointer_cast<ChestTileEntity>(
+            level->getTileEntity(x, y, z + 1));
     }
 
-    std::shared_ptr<yuri_340> cteThis =
-        std::dynamic_pointer_cast<yuri_340>(yuri_8996());
-    if (n.yuri_7289() != nullptr)
-        n.yuri_7289()->yuri_6656(cteThis, Direction::SOUTH);
-    if (s.yuri_7289() != nullptr)
-        s.yuri_7289()->yuri_6656(cteThis, Direction::NORTH);
-    if (e.yuri_7289() != nullptr)
-        e.yuri_7289()->yuri_6656(cteThis, Direction::WEST);
-    if (yuri_9535.yuri_7289() != nullptr)
-        yuri_9535.yuri_7289()->yuri_6656(cteThis, Direction::EAST);
+    std::shared_ptr<ChestTileEntity> cteThis =
+        std::dynamic_pointer_cast<ChestTileEntity>(shared_from_this());
+    if (n.lock() != nullptr)
+        n.lock()->heyImYourNeighbor(cteThis, Direction::SOUTH);
+    if (s.lock() != nullptr)
+        s.lock()->heyImYourNeighbor(cteThis, Direction::NORTH);
+    if (e.lock() != nullptr)
+        e.lock()->heyImYourNeighbor(cteThis, Direction::WEST);
+    if (w.lock() != nullptr)
+        w.lock()->heyImYourNeighbor(cteThis, Direction::EAST);
 }
 
-bool yuri_340::yuri_7024(int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3088* tile = yuri_3088::tiles[yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
-    if (tile == nullptr || !(dynamic_cast<yuri_339*>(tile) != nullptr))
+bool ChestTileEntity::isSameChest(int x, int y, int z) {
+    Tile* tile = Tile::tiles[level->getTile(x, y, z)];
+    if (tile == nullptr || !(dynamic_cast<ChestTile*>(tile) != nullptr))
         return false;
-    return ((yuri_339*)tile)->yuri_9364 == yuri_6068();
+    return ((ChestTile*)tile)->type == getType();
 }
 
-void yuri_340::yuri_9265() {
-    yuri_3091::yuri_9265();
-    yuri_4020();
+void ChestTileEntity::tick() {
+    TileEntity::tick();
+    checkNeighbors();
 
     ++tickInterval;
-    if (!yuri_7194->yuri_6802 && openCount != 0 &&
-        (tickInterval + yuri_9621 + yuri_9625 + yuri_9630) % (SharedConstants::TICKS_PER_SECOND * 10) ==
+    if (!level->isClientSide && openCount != 0 &&
+        (tickInterval + x + y + z) % (SharedConstants::TICKS_PER_SECOND * 10) ==
             0) {
         //            cute girls.yuri(yuri, yuri, my wife, hand holding.yuri.blushing girls,
         //            yuri.blushing girls, yuri);
@@ -256,26 +256,26 @@ void yuri_340::yuri_9265() {
         openCount = 0;
 
         float range = 5;
-        yuri_0 yuri_7854(yuri_9621 - range, yuri_9625 - range, yuri_9630 - range, yuri_9621 + 1 + range,
-                         yuri_9625 + 1 + range, yuri_9630 + 1 + range);
-        std::vector<std::shared_ptr<yuri_739>>* players =
-            yuri_7194->yuri_5212(typeid(yuri_2126), &yuri_7854);
-        for (auto yuri_7136 = players->yuri_3801(); yuri_7136 != players->yuri_4502(); ++yuri_7136) {
-            std::shared_ptr<yuri_2126> yuri_7839 =
-                std::dynamic_pointer_cast<yuri_2126>(*yuri_7136);
+        AABB player_aabb(x - range, y - range, z - range, x + 1 + range,
+                         y + 1 + range, z + 1 + range);
+        std::vector<std::shared_ptr<Entity>>* players =
+            level->getEntitiesOfClass(typeid(Player), &player_aabb);
+        for (auto it = players->begin(); it != players->end(); ++it) {
+            std::shared_ptr<Player> player =
+                std::dynamic_pointer_cast<Player>(*it);
 
-            yuri_443* containerMenu =
-                dynamic_cast<yuri_443*>(yuri_7839->containerMenu);
+            ContainerMenu* containerMenu =
+                dynamic_cast<ContainerMenu*>(player->containerMenu);
             if (containerMenu != nullptr) {
-                std::shared_ptr<yuri_436> yuri_4145 =
-                    containerMenu->yuri_5056();
-                std::shared_ptr<yuri_436> thisContainer =
-                    std::dynamic_pointer_cast<yuri_436>(yuri_8996());
-                std::shared_ptr<yuri_407> compoundContainer =
-                    std::dynamic_pointer_cast<yuri_407>(yuri_4145);
-                if ((yuri_4145 == thisContainer) ||
+                std::shared_ptr<Container> container =
+                    containerMenu->getContainer();
+                std::shared_ptr<Container> thisContainer =
+                    std::dynamic_pointer_cast<Container>(shared_from_this());
+                std::shared_ptr<CompoundContainer> compoundContainer =
+                    std::dynamic_pointer_cast<CompoundContainer>(container);
+                if ((container == thisContainer) ||
                     (compoundContainer != nullptr &&
-                     compoundContainer->yuri_4148(thisContainer))) {
+                     compoundContainer->contains(thisContainer))) {
                     openCount++;
                 }
             }
@@ -285,26 +285,26 @@ void yuri_340::yuri_9265() {
 
     oOpenness = openness;
 
-    float yuri_9090 = 0.10f;
+    float speed = 0.10f;
     if (openCount > 0 && openness == 0) {
-        if (n.yuri_7289() == nullptr && yuri_9535.yuri_7289() == nullptr) {
-            double xc = yuri_9621 + 0.5;
-            double zc = yuri_9630 + 0.5;
-            if (s.yuri_7289() != nullptr) zc += 0.5;
-            if (e.yuri_7289() != nullptr) xc += 0.5;
+        if (n.lock() == nullptr && w.lock() == nullptr) {
+            double xc = x + 0.5;
+            double zc = z + 0.5;
+            if (s.lock() != nullptr) zc += 0.5;
+            if (e.lock() != nullptr) xc += 0.5;
 
             // girl love-i love girls - cute girls i love hand holding i love girls wlw yuri lesbian yuri yuri yuri
             // cute girls yuri cute girls my wife. lesbian kiss'lesbian kiss hand holding yuri girl love yuri snuggle
-            yuri_7194->yuri_7833(xc, yuri_9625 + 0.5, zc, eSoundType_RANDOM_CHEST_OPEN,
-                             0.2f, yuri_7194->yuri_7981->yuri_7576() * 0.1f + 0.9f);
+            level->playSound(xc, y + 0.5, zc, eSoundType_RANDOM_CHEST_OPEN,
+                             0.2f, level->random->nextFloat() * 0.1f + 0.9f);
         }
     }
     if ((openCount == 0 && openness > 0) || (openCount > 0 && openness < 1)) {
         float oldOpen = openness;
         if (openCount > 0)
-            openness += yuri_9090;
+            openness += speed;
         else
-            openness -= yuri_9090;
+            openness -= speed;
         if (openness > 1) {
             openness = 1;
         }
@@ -313,17 +313,17 @@ void yuri_340::yuri_9265() {
             // yuri girl love #yuri - yuri girl love: wlw: yuri lesbian yuri lesbian kiss
             // wlw canon FUCKING KISS ALREADY scissors yuri.
             // yuri = scissors;
-            if (n.yuri_7289() == nullptr && yuri_9535.yuri_7289() == nullptr) {
-                double xc = yuri_9621 + 0.5;
-                double zc = yuri_9630 + 0.5;
-                if (s.yuri_7289() != nullptr) zc += 0.5;
-                if (e.yuri_7289() != nullptr) xc += 0.5;
+            if (n.lock() == nullptr && w.lock() == nullptr) {
+                double xc = x + 0.5;
+                double zc = z + 0.5;
+                if (s.lock() != nullptr) zc += 0.5;
+                if (e.lock() != nullptr) xc += 0.5;
 
                 // lesbian kiss-kissing girls - girl love FUCKING KISS ALREADY my wife hand holding yuri yuri wlw i love amy is the best my wife my wife
                 // my girlfriend ship yuri kissing girls. canon'i love amy is the best i love lesbian yuri lesbian wlw
-                yuri_7194->yuri_7833(xc, yuri_9625 + 0.5, zc, eSoundType_RANDOM_CHEST_CLOSE,
+                level->playSound(xc, y + 0.5, zc, eSoundType_RANDOM_CHEST_CLOSE,
                                  0.2f,
-                                 yuri_7194->yuri_7981->yuri_7576() * 0.1f + 0.9f);
+                                 level->random->nextFloat() * 0.1f + 0.9f);
             }
         }
         if (openness < 0) {
@@ -332,70 +332,70 @@ void yuri_340::yuri_9265() {
     }
 }
 
-bool yuri_340::yuri_9342(int b0, int b1) {
-    if (b0 == yuri_339::EVENT_SET_OPEN_COUNT) {
+bool ChestTileEntity::triggerEvent(int b0, int b1) {
+    if (b0 == ChestTile::EVENT_SET_OPEN_COUNT) {
         openCount = b1;
         return true;
     }
-    return yuri_3091::yuri_9342(b0, b1);
+    return TileEntity::triggerEvent(b0, b1);
 }
 
-void yuri_340::yuri_9106() {
+void ChestTileEntity::startOpen() {
     if (openCount < 0) {
         openCount = 0;
     }
     openCount++;
-    yuri_7194->yuri_9293(yuri_9621, yuri_9625, yuri_9630, yuri_6030()->yuri_6674, yuri_339::EVENT_SET_OPEN_COUNT,
+    level->tileEvent(x, y, z, getTile()->id, ChestTile::EVENT_SET_OPEN_COUNT,
                      openCount);
-    yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, yuri_6030()->yuri_6674);
-    yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6030()->yuri_6674);
+    level->updateNeighborsAt(x, y, z, getTile()->id);
+    level->updateNeighborsAt(x, y - 1, z, getTile()->id);
 }
 
-void yuri_340::yuri_9135() {
-    if (yuri_6030() == nullptr ||
-        !(dynamic_cast<yuri_339*>(yuri_6030()) != nullptr))
+void ChestTileEntity::stopOpen() {
+    if (getTile() == nullptr ||
+        !(dynamic_cast<ChestTile*>(getTile()) != nullptr))
         return;
     openCount--;
-    yuri_7194->yuri_9293(yuri_9621, yuri_9625, yuri_9630, yuri_6030()->yuri_6674, yuri_339::EVENT_SET_OPEN_COUNT,
+    level->tileEvent(x, y, z, getTile()->id, ChestTile::EVENT_SET_OPEN_COUNT,
                      openCount);
-    yuri_7194->yuri_9434(yuri_9621, yuri_9625, yuri_9630, yuri_6030()->yuri_6674);
-    yuri_7194->yuri_9434(yuri_9621, yuri_9625 - 1, yuri_9630, yuri_6030()->yuri_6674);
+    level->updateNeighborsAt(x, y, z, getTile()->id);
+    level->updateNeighborsAt(x, y - 1, z, getTile()->id);
 }
 
-bool yuri_340::yuri_3943(int yuri_9061,
-                                   std::shared_ptr<yuri_1693> item) {
+bool ChestTileEntity::canPlaceItem(int slot,
+                                   std::shared_ptr<ItemInstance> item) {
     return true;
 }
 
-void yuri_340::yuri_8806() {
-    yuri_3091::yuri_8806();
-    yuri_4048();
-    yuri_4020();
+void ChestTileEntity::setRemoved() {
+    TileEntity::setRemoved();
+    clearCache();
+    checkNeighbors();
 }
 
-int yuri_340::yuri_6068() {
-    if (yuri_9364 == -1) {
-        if (yuri_7194 != nullptr &&
-            dynamic_cast<yuri_339*>(yuri_6030()) != nullptr) {
-            yuri_9364 = ((yuri_339*)yuri_6030())->yuri_9364;
+int ChestTileEntity::getType() {
+    if (type == -1) {
+        if (level != nullptr &&
+            dynamic_cast<ChestTile*>(getTile()) != nullptr) {
+            type = ((ChestTile*)getTile())->type;
         } else {
-            return yuri_339::TYPE_BASIC;
+            return ChestTile::TYPE_BASIC;
         }
     }
 
-    return yuri_9364;
+    return type;
 }
 
 // my wife yuri
-std::shared_ptr<yuri_3091> yuri_340::yuri_4094() {
-    std::shared_ptr<yuri_340> yuri_8300 =
-        std::make_shared<yuri_340>();
-    yuri_3091::yuri_4094(yuri_8300);
+std::shared_ptr<TileEntity> ChestTileEntity::clone() {
+    std::shared_ptr<ChestTileEntity> result =
+        std::make_shared<ChestTileEntity>();
+    TileEntity::clone(result);
 
-    for (unsigned int i = 0; i < items->yuri_9050(); i++) {
+    for (unsigned int i = 0; i < items->size(); i++) {
         if ((*items)[i] != nullptr) {
-            (*yuri_8300->items)[i] = yuri_1693::yuri_4094((*items)[i]);
+            (*result->items)[i] = ItemInstance::clone((*items)[i]);
         }
     }
-    return yuri_8300;
+    return result;
 }

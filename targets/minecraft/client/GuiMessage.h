@@ -1,10 +1,10 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 
-class yuri_1228 {
+class GuiMessage {
 public:
-    std::yuri_9616 yuri_9151;
+    std::wstring string;
     int ticks;
-    yuri_1228(const std::yuri_9616& yuri_9151);
+    GuiMessage(const std::wstring& string);
 };

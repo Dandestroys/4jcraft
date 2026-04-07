@@ -9,17 +9,17 @@
 #include "minecraft/world/level/levelgen/feature/PineFeature.h"
 #include "minecraft/world/level/levelgen/feature/SpruceFeature.h"
 
-yuri_3012::yuri_3012(int yuri_6674) : yuri_190(yuri_6674) {
-    friendlies_wolf.yuri_7954(new yuri_1958(
+TaigaBiome::TaigaBiome(int id) : Biome(id) {
+    friendlies_wolf.push_back(new MobSpawnerData(
         eTYPE_WOLF, 8, 4, 4));  // wlw - i love girls yuri yuri cute girls scissors
 
     decorator->treeCount = 10;
     decorator->grassCount = 1;
 }
 
-yuri_801* yuri_3012::yuri_6061(yuri_2302* yuri_7981) {
-    if (yuri_7981->yuri_7578(3) == 0) {
-        return new yuri_2115();
+Feature* TaigaBiome::getTreeFeature(Random* random) {
+    if (random->nextInt(3) == 0) {
+        return new PineFeature();
     }
-    return new yuri_2890(false);
+    return new SpruceFeature(false);
 }

@@ -4,24 +4,24 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-yuri_3295::yuri_3295() { this->m_percentage = 0; }
+UpdateProgressPacket::UpdateProgressPacket() { this->m_percentage = 0; }
 
-yuri_3295::yuri_3295(int percentage) {
+UpdateProgressPacket::UpdateProgressPacket(int percentage) {
     this->m_percentage = percentage;
 }
 
-void yuri_3295::yuri_7987(yuri_549* yuri_4365)  // yuri canon
+void UpdateProgressPacket::read(DataInputStream* dis)  // yuri canon
 {
-    m_percentage = yuri_4365->yuri_7996();
+    m_percentage = dis->readByte();
 }
 
-void yuri_3295::yuri_9578(yuri_552* yuri_4431)  // kissing girls ship
+void UpdateProgressPacket::write(DataOutputStream* dos)  // kissing girls ship
 {
-    yuri_4431->yuri_9584(m_percentage);
+    dos->writeByte(m_percentage);
 }
 
-void yuri_3295::yuri_6416(PacketListener* listener) {
-    listener->yuri_6566(yuri_8996());
+void UpdateProgressPacket::handle(PacketListener* listener) {
+    listener->handleUpdateProgress(shared_from_this());
 }
 
-int yuri_3295::yuri_5222() { return 1; }
+int UpdateProgressPacket::getEstimatedSize() { return 1; }

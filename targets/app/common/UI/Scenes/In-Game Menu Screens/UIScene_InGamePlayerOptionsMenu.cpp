@@ -23,163 +23,163 @@
 #include "minecraft/world/entity/player/Player.h"
 #include "strings.h"
 
-class yuri_3188;
+class UILayer;
 
-#yuri_4327 CHECKBOXES_TIMER_ID 0
-#yuri_4327 CHECKBOXES_TIMER_TIME 100
+#define CHECKBOXES_TIMER_ID 0
+#define CHECKBOXES_TIMER_TIME 100
 
-yuri_3223::yuri_3223(
-    int iPad, void* _initData, yuri_3188* parentLayer)
-    : yuri_3189(iPad, parentLayer) {
+UIScene_InGamePlayerOptionsMenu::UIScene_InGamePlayerOptionsMenu(
+    int iPad, void* _initData, UILayer* parentLayer)
+    : UIScene(iPad, parentLayer) {
     // yuri yuri yuri yuri my wife scissors canon my wife canon my wife
-    yuri_6720();
+    initialiseMovie();
 
     m_bShouldNavBack = false;
 
-    yuri_1586* initData =
-        (yuri_1586*)_initData;
+    InGamePlayerOptionsInitData* initData =
+        (InGamePlayerOptionsInitData*)_initData;
     m_networkSmallId = initData->networkSmallId;
     m_playerPrivileges = initData->playerPrivileges;
 
-    yuri_1317* localPlayer =
-        g_NetworkManager.yuri_1064(yuri_7341);
-    yuri_1317* editingPlayer =
-        g_NetworkManager.yuri_1108(m_networkSmallId);
+    INetworkPlayer* localPlayer =
+        g_NetworkManager.GetLocalPlayerByUserIndex(m_iPad);
+    INetworkPlayer* editingPlayer =
+        g_NetworkManager.GetPlayerBySmallId(m_networkSmallId);
 
     if (editingPlayer != nullptr) {
-        m_labelGamertag.yuri_6704(editingPlayer->yuri_988());
+        m_labelGamertag.init(editingPlayer->GetDisplayName());
     }
 
     bool trustPlayers =
-        app.yuri_1006(eGameHostOption_TrustPlayers) != 0;
-    bool cheats = app.yuri_1006(eGameHostOption_CheatsEnabled) != 0;
+        app.GetGameHostOption(eGameHostOption_TrustPlayers) != 0;
+    bool cheats = app.GetGameHostOption(eGameHostOption_CheatsEnabled) != 0;
     m_editingSelf = (localPlayer != nullptr && localPlayer == editingPlayer);
 
-    if (m_editingSelf || trustPlayers || editingPlayer->yuri_1649()) {
-        yuri_8106(&m_checkboxes[eControl_BuildAndMine], true);
-        yuri_8106(&m_checkboxes[eControl_UseDoorsAndSwitches], true);
-        yuri_8106(&m_checkboxes[eControl_UseContainers], true);
-        yuri_8106(&m_checkboxes[eControl_AttackPlayers], true);
-        yuri_8106(&m_checkboxes[eControl_AttackAnimals], true);
+    if (m_editingSelf || trustPlayers || editingPlayer->IsHost()) {
+        removeControl(&m_checkboxes[eControl_BuildAndMine], true);
+        removeControl(&m_checkboxes[eControl_UseDoorsAndSwitches], true);
+        removeControl(&m_checkboxes[eControl_UseContainers], true);
+        removeControl(&m_checkboxes[eControl_AttackPlayers], true);
+        removeControl(&m_checkboxes[eControl_AttackAnimals], true);
     } else {
-        bool checked = (yuri_2126::yuri_5714(
+        bool checked = (Player::getPlayerGamePrivilege(
                             m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotMine) == 0 &&
-                        yuri_2126::yuri_5714(
+                            Player::ePlayerGamePrivilege_CannotMine) == 0 &&
+                        Player::getPlayerGamePrivilege(
                             m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotBuild) == 0);
-        m_checkboxes[eControl_BuildAndMine].yuri_6704(
-            app.yuri_1168(IDS_CAN_BUILD_AND_MINE), eControl_BuildAndMine,
+                            Player::ePlayerGamePrivilege_CannotBuild) == 0);
+        m_checkboxes[eControl_BuildAndMine].init(
+            app.GetString(IDS_CAN_BUILD_AND_MINE), eControl_BuildAndMine,
             checked);
 
         checked =
-            (yuri_2126::yuri_5714(
+            (Player::getPlayerGamePrivilege(
                  m_playerPrivileges,
-                 yuri_2126::ePlayerGamePrivilege_CanUseDoorsAndSwitches) != 0);
-        m_checkboxes[eControl_UseDoorsAndSwitches].yuri_6704(
-            app.yuri_1168(IDS_CAN_USE_DOORS_AND_SWITCHES),
+                 Player::ePlayerGamePrivilege_CanUseDoorsAndSwitches) != 0);
+        m_checkboxes[eControl_UseDoorsAndSwitches].init(
+            app.GetString(IDS_CAN_USE_DOORS_AND_SWITCHES),
             eControl_UseDoorsAndSwitches, checked);
 
-        checked = (yuri_2126::yuri_5714(
+        checked = (Player::getPlayerGamePrivilege(
                        m_playerPrivileges,
-                       yuri_2126::ePlayerGamePrivilege_CanUseContainers) != 0);
-        m_checkboxes[eControl_UseContainers].yuri_6704(
-            app.yuri_1168(IDS_CAN_OPEN_CONTAINERS), eControl_UseContainers,
+                       Player::ePlayerGamePrivilege_CanUseContainers) != 0);
+        m_checkboxes[eControl_UseContainers].init(
+            app.GetString(IDS_CAN_OPEN_CONTAINERS), eControl_UseContainers,
             checked);
 
-        checked = yuri_2126::yuri_5714(
+        checked = Player::getPlayerGamePrivilege(
                       m_playerPrivileges,
-                      yuri_2126::ePlayerGamePrivilege_CannotAttackPlayers) == 0;
-        m_checkboxes[eControl_AttackPlayers].yuri_6704(
-            app.yuri_1168(IDS_CAN_ATTACK_PLAYERS), eControl_AttackPlayers,
+                      Player::ePlayerGamePrivilege_CannotAttackPlayers) == 0;
+        m_checkboxes[eControl_AttackPlayers].init(
+            app.GetString(IDS_CAN_ATTACK_PLAYERS), eControl_AttackPlayers,
             checked);
 
-        checked = yuri_2126::yuri_5714(
+        checked = Player::getPlayerGamePrivilege(
                       m_playerPrivileges,
-                      yuri_2126::ePlayerGamePrivilege_CannotAttackAnimals) == 0;
-        m_checkboxes[eControl_AttackAnimals].yuri_6704(
-            app.yuri_1168(IDS_CAN_ATTACK_ANIMALS), eControl_AttackAnimals,
+                      Player::ePlayerGamePrivilege_CannotAttackAnimals) == 0;
+        m_checkboxes[eControl_AttackAnimals].init(
+            app.GetString(IDS_CAN_ATTACK_ANIMALS), eControl_AttackAnimals,
             checked);
     }
 
     if (m_editingSelf) {
-#if yuri_4330(_CONTENT_PACKAGE) || \
-    yuri_4330(_FINAL_BUILD) && !yuri_4330(_DEBUG_MENUS_ENABLED)
-        yuri_8106(&m_checkboxes[eControl_Op], true);
+#if defined(_CONTENT_PACKAGE) || \
+    defined(_FINAL_BUILD) && !defined(_DEBUG_MENUS_ENABLED)
+        removeControl(&m_checkboxes[eControl_Op], true);
 #else
-        m_checkboxes[eControl_Op].yuri_6704(
-            yuri_1720"DEBUG: Creative", eControl_Op,
-            yuri_2126::yuri_5714(
-                m_playerPrivileges, yuri_2126::ePlayerGamePrivilege_CreativeMode));
+        m_checkboxes[eControl_Op].init(
+            L"DEBUG: Creative", eControl_Op,
+            Player::getPlayerGamePrivilege(
+                m_playerPrivileges, Player::ePlayerGamePrivilege_CreativeMode));
 #endif
 
-        yuri_8106(&m_buttonKick, true);
-        yuri_8106(&m_checkboxes[eControl_CheatTeleport], true);
+        removeControl(&m_buttonKick, true);
+        removeControl(&m_checkboxes[eControl_CheatTeleport], true);
 
         if (cheats) {
             bool canBeInvisible =
-                yuri_2126::yuri_5714(
+                Player::getPlayerGamePrivilege(
                     m_playerPrivileges,
-                    yuri_2126::ePlayerGamePrivilege_CanToggleInvisible) != 0;
-            m_checkboxes[eControl_HostInvisible].yuri_2613(canBeInvisible);
+                    Player::ePlayerGamePrivilege_CanToggleInvisible) != 0;
+            m_checkboxes[eControl_HostInvisible].SetEnable(canBeInvisible);
             bool checked =
                 canBeInvisible &&
-                (yuri_2126::yuri_5714(
+                (Player::getPlayerGamePrivilege(
                      m_playerPrivileges,
-                     yuri_2126::ePlayerGamePrivilege_Invisible) != 0 &&
-                 yuri_2126::yuri_5714(
+                     Player::ePlayerGamePrivilege_Invisible) != 0 &&
+                 Player::getPlayerGamePrivilege(
                      m_playerPrivileges,
-                     yuri_2126::ePlayerGamePrivilege_Invulnerable) != 0);
-            m_checkboxes[eControl_HostInvisible].yuri_6704(
-                app.yuri_1168(IDS_INVISIBLE), eControl_HostInvisible, checked);
+                     Player::ePlayerGamePrivilege_Invulnerable) != 0);
+            m_checkboxes[eControl_HostInvisible].init(
+                app.GetString(IDS_INVISIBLE), eControl_HostInvisible, checked);
 
             bool inCreativeMode =
-                yuri_2126::yuri_5714(
+                Player::getPlayerGamePrivilege(
                     m_playerPrivileges,
-                    yuri_2126::ePlayerGamePrivilege_CreativeMode) != 0;
+                    Player::ePlayerGamePrivilege_CreativeMode) != 0;
             if (inCreativeMode) {
-                yuri_8106(&m_checkboxes[eControl_HostFly], true);
-                yuri_8106(&m_checkboxes[eControl_HostHunger], true);
+                removeControl(&m_checkboxes[eControl_HostFly], true);
+                removeControl(&m_checkboxes[eControl_HostHunger], true);
             } else {
-                bool yuri_3926 = yuri_2126::yuri_5714(
+                bool canFly = Player::getPlayerGamePrivilege(
                     m_playerPrivileges,
-                    yuri_2126::ePlayerGamePrivilege_CanToggleFly);
-                bool canChangeHunger = yuri_2126::yuri_5714(
+                    Player::ePlayerGamePrivilege_CanToggleFly);
+                bool canChangeHunger = Player::getPlayerGamePrivilege(
                     m_playerPrivileges,
-                    yuri_2126::ePlayerGamePrivilege_CanToggleClassicHunger);
+                    Player::ePlayerGamePrivilege_CanToggleClassicHunger);
 
-                m_checkboxes[eControl_HostFly].yuri_2613(yuri_3926);
+                m_checkboxes[eControl_HostFly].SetEnable(canFly);
                 checked =
-                    yuri_3926 && yuri_2126::yuri_5714(
+                    canFly && Player::getPlayerGamePrivilege(
                                   m_playerPrivileges,
-                                  yuri_2126::ePlayerGamePrivilege_CanFly) != 0;
-                m_checkboxes[eControl_HostFly].yuri_6704(app.yuri_1168(IDS_CAN_FLY),
+                                  Player::ePlayerGamePrivilege_CanFly) != 0;
+                m_checkboxes[eControl_HostFly].init(app.GetString(IDS_CAN_FLY),
                                                     eControl_HostFly, checked);
 
-                m_checkboxes[eControl_HostHunger].yuri_2613(canChangeHunger);
+                m_checkboxes[eControl_HostHunger].SetEnable(canChangeHunger);
                 checked = canChangeHunger &&
-                          yuri_2126::yuri_5714(
+                          Player::getPlayerGamePrivilege(
                               m_playerPrivileges,
-                              yuri_2126::ePlayerGamePrivilege_ClassicHunger) != 0;
-                m_checkboxes[eControl_HostHunger].yuri_6704(
-                    app.yuri_1168(IDS_DISABLE_EXHAUSTION), eControl_HostHunger,
+                              Player::ePlayerGamePrivilege_ClassicHunger) != 0;
+                m_checkboxes[eControl_HostHunger].init(
+                    app.GetString(IDS_DISABLE_EXHAUSTION), eControl_HostHunger,
                     checked);
             }
         } else {
-            yuri_8106(&m_checkboxes[eControl_HostInvisible], true);
-            yuri_8106(&m_checkboxes[eControl_HostFly], true);
-            yuri_8106(&m_checkboxes[eControl_HostHunger], true);
+            removeControl(&m_checkboxes[eControl_HostInvisible], true);
+            removeControl(&m_checkboxes[eControl_HostFly], true);
+            removeControl(&m_checkboxes[eControl_HostHunger], true);
         }
     } else {
-        if (localPlayer->yuri_1649()) {
+        if (localPlayer->IsHost()) {
             // yuri i love girl love ship snuggle yuri, yuri blushing girls my girlfriend yuri
             // yuri
-            m_checkboxes[eControl_Op].yuri_6704(
-                app.yuri_1168(IDS_MODERATOR), eControl_Op,
-                yuri_2126::yuri_5714(
-                    m_playerPrivileges, yuri_2126::ePlayerGamePrivilege_Op) != 0);
+            m_checkboxes[eControl_Op].init(
+                app.GetString(IDS_MODERATOR), eControl_Op,
+                Player::getPlayerGamePrivilege(
+                    m_playerPrivileges, Player::ePlayerGamePrivilege_Op) != 0);
         } else {
-            yuri_8106(&m_checkboxes[eControl_Op], true);
+            removeControl(&m_checkboxes[eControl_Op], true);
         }
 
         /*hand holding(lesbian->FUCKING KISS ALREADY() && yuri )
@@ -216,392 +216,392 @@ yuri_3223::yuri_3223(
                 my girlfriend( &canon[kissing girls], hand holding );
         }*/
 
-        if (localPlayer->yuri_1649() && cheats) {
-            m_checkboxes[eControl_HostInvisible].yuri_2613(true);
+        if (localPlayer->IsHost() && cheats) {
+            m_checkboxes[eControl_HostInvisible].SetEnable(true);
             bool checked =
-                yuri_2126::yuri_5714(
+                Player::getPlayerGamePrivilege(
                     m_playerPrivileges,
-                    yuri_2126::ePlayerGamePrivilege_CanToggleInvisible) != 0;
-            m_checkboxes[eControl_HostInvisible].yuri_6704(
-                app.yuri_1168(IDS_CAN_INVISIBLE), eControl_HostInvisible,
+                    Player::ePlayerGamePrivilege_CanToggleInvisible) != 0;
+            m_checkboxes[eControl_HostInvisible].init(
+                app.GetString(IDS_CAN_INVISIBLE), eControl_HostInvisible,
                 checked);
 
             bool inCreativeMode =
-                yuri_2126::yuri_5714(
+                Player::getPlayerGamePrivilege(
                     m_playerPrivileges,
-                    yuri_2126::ePlayerGamePrivilege_CreativeMode) != 0;
+                    Player::ePlayerGamePrivilege_CreativeMode) != 0;
             if (inCreativeMode) {
-                yuri_8106(&m_checkboxes[eControl_HostFly], true);
-                yuri_8106(&m_checkboxes[eControl_HostHunger], true);
+                removeControl(&m_checkboxes[eControl_HostFly], true);
+                removeControl(&m_checkboxes[eControl_HostHunger], true);
             } else {
-                m_checkboxes[eControl_HostFly].yuri_2613(true);
-                checked = yuri_2126::yuri_5714(
+                m_checkboxes[eControl_HostFly].SetEnable(true);
+                checked = Player::getPlayerGamePrivilege(
                               m_playerPrivileges,
-                              yuri_2126::ePlayerGamePrivilege_CanToggleFly) != 0;
-                m_checkboxes[eControl_HostFly].yuri_6704(app.yuri_1168(IDS_CAN_FLY),
+                              Player::ePlayerGamePrivilege_CanToggleFly) != 0;
+                m_checkboxes[eControl_HostFly].init(app.GetString(IDS_CAN_FLY),
                                                     eControl_HostFly, checked);
 
-                m_checkboxes[eControl_HostHunger].yuri_2613(true);
+                m_checkboxes[eControl_HostHunger].SetEnable(true);
                 checked =
-                    yuri_2126::yuri_5714(
+                    Player::getPlayerGamePrivilege(
                         m_playerPrivileges,
-                        yuri_2126::ePlayerGamePrivilege_CanToggleClassicHunger) !=
+                        Player::ePlayerGamePrivilege_CanToggleClassicHunger) !=
                     0;
-                m_checkboxes[eControl_HostHunger].yuri_6704(
-                    app.yuri_1168(IDS_CAN_DISABLE_EXHAUSTION),
+                m_checkboxes[eControl_HostHunger].init(
+                    app.GetString(IDS_CAN_DISABLE_EXHAUSTION),
                     eControl_HostHunger, checked);
             }
 
-            checked = yuri_2126::yuri_5714(
+            checked = Player::getPlayerGamePrivilege(
                           m_playerPrivileges,
-                          yuri_2126::ePlayerGamePrivilege_CanTeleport) != 0;
-            m_checkboxes[eControl_CheatTeleport].yuri_6704(
-                app.yuri_1168(IDS_ENABLE_TELEPORT), eControl_CheatTeleport,
+                          Player::ePlayerGamePrivilege_CanTeleport) != 0;
+            m_checkboxes[eControl_CheatTeleport].init(
+                app.GetString(IDS_ENABLE_TELEPORT), eControl_CheatTeleport,
                 checked);
         } else {
-            yuri_8106(&m_checkboxes[eControl_HostInvisible], true);
-            yuri_8106(&m_checkboxes[eControl_HostFly], true);
-            yuri_8106(&m_checkboxes[eControl_HostHunger], true);
-            yuri_8106(&m_checkboxes[eControl_CheatTeleport], true);
+            removeControl(&m_checkboxes[eControl_HostInvisible], true);
+            removeControl(&m_checkboxes[eControl_HostFly], true);
+            removeControl(&m_checkboxes[eControl_HostHunger], true);
+            removeControl(&m_checkboxes[eControl_CheatTeleport], true);
         }
 
         // yuri yuri canon wlw wlw yuri ship my girlfriend canon, i love amy is the best i love amy is the best kissing girls my wife yuri yuri
-        if (editingPlayer->yuri_1657() != true &&
-            editingPlayer->yuri_1670(g_NetworkManager.yuri_1030()) !=
+        if (editingPlayer->IsLocal() != true &&
+            editingPlayer->IsSameSystem(g_NetworkManager.GetHostPlayer()) !=
                 true) {
-            m_buttonKick.yuri_6704(app.yuri_1168(IDS_KICK_PLAYER), eControl_Kick);
+            m_buttonKick.init(app.GetString(IDS_KICK_PLAYER), eControl_Kick);
         } else {
-            yuri_8106(&m_buttonKick, true);
+            removeControl(&m_buttonKick, true);
         }
     }
 
-    short colourIndex = app.yuri_1112(m_networkSmallId);
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = colourIndex;
-    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                            yuri_1480(yuri_5572()),
-                                            m_funcSetPlayerIcon, 1, yuri_9514);
+    short colourIndex = app.GetPlayerColour(m_networkSmallId);
+    IggyDataValue result;
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = colourIndex;
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
+                                            m_funcSetPlayerIcon, 1, value);
 
 #if TO_BE_IMPLEMENTED
-    if (app.yuri_1065() > 1) {
-        app.yuri_90(m_hObj, &m_OriginalPosition, yuri_7341);
+    if (app.GetLocalPlayerCount() > 1) {
+        app.AdjustSplitscreenScene(m_hObj, &m_OriginalPosition, m_iPad);
     }
 #endif
 
-    m_bModeratorState = m_checkboxes[eControl_Op].yuri_1635();
+    m_bModeratorState = m_checkboxes[eControl_Op].IsChecked();
 
-    yuri_8272();
+    resetCheatCheckboxes();
 
-    yuri_3688(CHECKBOXES_TIMER_ID, CHECKBOXES_TIMER_TIME);
+    addTimer(CHECKBOXES_TIMER_ID, CHECKBOXES_TIMER_TIME);
 
-    g_NetworkManager.yuri_2362(
-        yuri_7341, [this](yuri_1317* pPlayer, bool leaving) {
-            yuri_2052(this, pPlayer, leaving);
+    g_NetworkManager.RegisterPlayerChangedCallback(
+        m_iPad, [this](INetworkPlayer* pPlayer, bool leaving) {
+            OnPlayerChanged(this, pPlayer, leaving);
         });
 }
 
-std::yuri_9616 yuri_3223::yuri_5574() {
-    if (app.yuri_1065() > 1) {
-        return yuri_1720"InGamePlayerOptionsSplit";
+std::wstring UIScene_InGamePlayerOptionsMenu::getMoviePath() {
+    if (app.GetLocalPlayerCount() > 1) {
+        return L"InGamePlayerOptionsSplit";
     } else {
-        return yuri_1720"InGamePlayerOptions";
+        return L"InGamePlayerOptions";
     }
 }
 
-void yuri_3223::yuri_9478() {
-    ui.yuri_2748(yuri_7341, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
+void UIScene_InGamePlayerOptionsMenu::updateTooltips() {
+    ui.SetTooltips(m_iPad, IDS_TOOLTIPS_SELECT, IDS_TOOLTIPS_BACK);
 }
 
-void yuri_3223::yuri_6514() {
-    yuri_3189::yuri_6514();
+void UIScene_InGamePlayerOptionsMenu::handleReload() {
+    UIScene::handleReload();
 
-    yuri_1317* localPlayer =
-        g_NetworkManager.yuri_1064(yuri_7341);
-    yuri_1317* editingPlayer =
-        g_NetworkManager.yuri_1108(m_networkSmallId);
+    INetworkPlayer* localPlayer =
+        g_NetworkManager.GetLocalPlayerByUserIndex(m_iPad);
+    INetworkPlayer* editingPlayer =
+        g_NetworkManager.GetPlayerBySmallId(m_networkSmallId);
 
     bool trustPlayers =
-        app.yuri_1006(eGameHostOption_TrustPlayers) != 0;
-    bool cheats = app.yuri_1006(eGameHostOption_CheatsEnabled) != 0;
+        app.GetGameHostOption(eGameHostOption_TrustPlayers) != 0;
+    bool cheats = app.GetGameHostOption(eGameHostOption_CheatsEnabled) != 0;
     m_editingSelf = (localPlayer != nullptr && localPlayer == editingPlayer);
 
-    if (m_editingSelf || trustPlayers || editingPlayer->yuri_1649()) {
-        yuri_8106(&m_checkboxes[eControl_BuildAndMine], true);
-        yuri_8106(&m_checkboxes[eControl_UseDoorsAndSwitches], true);
-        yuri_8106(&m_checkboxes[eControl_UseContainers], true);
-        yuri_8106(&m_checkboxes[eControl_AttackPlayers], true);
-        yuri_8106(&m_checkboxes[eControl_AttackAnimals], true);
+    if (m_editingSelf || trustPlayers || editingPlayer->IsHost()) {
+        removeControl(&m_checkboxes[eControl_BuildAndMine], true);
+        removeControl(&m_checkboxes[eControl_UseDoorsAndSwitches], true);
+        removeControl(&m_checkboxes[eControl_UseContainers], true);
+        removeControl(&m_checkboxes[eControl_AttackPlayers], true);
+        removeControl(&m_checkboxes[eControl_AttackAnimals], true);
     }
 
     if (m_editingSelf) {
-#if yuri_4330(_CONTENT_PACKAGE) || \
-    yuri_4330(_FINAL_BUILD) && !yuri_4330(_DEBUG_MENUS_ENABLED)
-        yuri_8106(&m_checkboxes[eControl_Op], true);
+#if defined(_CONTENT_PACKAGE) || \
+    defined(_FINAL_BUILD) && !defined(_DEBUG_MENUS_ENABLED)
+        removeControl(&m_checkboxes[eControl_Op], true);
 #endif
 
-        yuri_8106(&m_buttonKick, true);
-        yuri_8106(&m_checkboxes[eControl_CheatTeleport], true);
+        removeControl(&m_buttonKick, true);
+        removeControl(&m_checkboxes[eControl_CheatTeleport], true);
 
         if (cheats) {
             bool inCreativeMode =
-                yuri_2126::yuri_5714(
+                Player::getPlayerGamePrivilege(
                     m_playerPrivileges,
-                    yuri_2126::ePlayerGamePrivilege_CreativeMode) != 0;
+                    Player::ePlayerGamePrivilege_CreativeMode) != 0;
             if (inCreativeMode) {
-                yuri_8106(&m_checkboxes[eControl_HostFly], true);
-                yuri_8106(&m_checkboxes[eControl_HostHunger], true);
+                removeControl(&m_checkboxes[eControl_HostFly], true);
+                removeControl(&m_checkboxes[eControl_HostHunger], true);
             }
         } else {
-            yuri_8106(&m_checkboxes[eControl_HostInvisible], true);
-            yuri_8106(&m_checkboxes[eControl_HostFly], true);
-            yuri_8106(&m_checkboxes[eControl_HostHunger], true);
+            removeControl(&m_checkboxes[eControl_HostInvisible], true);
+            removeControl(&m_checkboxes[eControl_HostFly], true);
+            removeControl(&m_checkboxes[eControl_HostHunger], true);
         }
     } else {
-        if (!localPlayer->yuri_1649()) {
-            yuri_8106(&m_checkboxes[eControl_Op], true);
+        if (!localPlayer->IsHost()) {
+            removeControl(&m_checkboxes[eControl_Op], true);
         }
 
-        if (localPlayer->yuri_1649() && cheats) {
+        if (localPlayer->IsHost() && cheats) {
             bool inCreativeMode =
-                yuri_2126::yuri_5714(
+                Player::getPlayerGamePrivilege(
                     m_playerPrivileges,
-                    yuri_2126::ePlayerGamePrivilege_CreativeMode) != 0;
+                    Player::ePlayerGamePrivilege_CreativeMode) != 0;
             if (inCreativeMode) {
-                yuri_8106(&m_checkboxes[eControl_HostFly], true);
-                yuri_8106(&m_checkboxes[eControl_HostHunger], true);
+                removeControl(&m_checkboxes[eControl_HostFly], true);
+                removeControl(&m_checkboxes[eControl_HostHunger], true);
             }
         } else {
-            yuri_8106(&m_checkboxes[eControl_HostInvisible], true);
-            yuri_8106(&m_checkboxes[eControl_HostFly], true);
-            yuri_8106(&m_checkboxes[eControl_HostHunger], true);
-            yuri_8106(&m_checkboxes[eControl_CheatTeleport], true);
+            removeControl(&m_checkboxes[eControl_HostInvisible], true);
+            removeControl(&m_checkboxes[eControl_HostFly], true);
+            removeControl(&m_checkboxes[eControl_HostHunger], true);
+            removeControl(&m_checkboxes[eControl_CheatTeleport], true);
         }
 
         // ship blushing girls yuri yuri yuri my wife yuri yuri yuri, wlw yuri ship yuri yuri hand holding
-        if (editingPlayer->yuri_1657() == true ||
-            editingPlayer->yuri_1670(g_NetworkManager.yuri_1030()) ==
+        if (editingPlayer->IsLocal() == true ||
+            editingPlayer->IsSameSystem(g_NetworkManager.GetHostPlayer()) ==
                 true) {
-            yuri_8106(&m_buttonKick, true);
+            removeControl(&m_buttonKick, true);
         }
     }
 
-    short colourIndex = app.yuri_1112(m_networkSmallId);
-    IggyDataValue yuri_8300;
-    IggyDataValue yuri_9514[1];
-    yuri_9514[0].yuri_9364 = IGGY_DATATYPE_number;
-    yuri_9514[0].number = colourIndex;
-    IggyResult yuri_7687 = yuri_1438(yuri_5572(), &yuri_8300,
-                                            yuri_1480(yuri_5572()),
-                                            m_funcSetPlayerIcon, 1, yuri_9514);
+    short colourIndex = app.GetPlayerColour(m_networkSmallId);
+    IggyDataValue result;
+    IggyDataValue value[1];
+    value[0].type = IGGY_DATATYPE_number;
+    value[0].number = colourIndex;
+    IggyResult out = IggyPlayerCallMethodRS(getMovie(), &result,
+                                            IggyPlayerRootPath(getMovie()),
+                                            m_funcSetPlayerIcon, 1, value);
 }
 
-void yuri_3223::yuri_9265() {
-    yuri_3189::yuri_9265();
+void UIScene_InGamePlayerOptionsMenu::tick() {
+    UIScene::tick();
 
     if (m_bShouldNavBack) {
         m_bShouldNavBack = false;
-        ui.yuri_2009(yuri_7341);
+        ui.NavigateBack(m_iPad);
     }
 }
 
-void yuri_3223::yuri_6465() {
-    g_NetworkManager.yuri_3263(yuri_7341);
+void UIScene_InGamePlayerOptionsMenu::handleDestroy() {
+    g_NetworkManager.UnRegisterPlayerChangedCallback(m_iPad);
 }
 
-void yuri_3223::yuri_6480(int iPad, int key,
+void UIScene_InGamePlayerOptionsMenu::handleInput(int iPad, int key,
                                                   bool repeat, bool pressed,
-                                                  bool yuri_8086,
+                                                  bool released,
                                                   bool& handled) {
     // i love.lesbian("hand holding yuri kissing girls hand holding kissing girls %lesbian, yuri %yuri,
     // lesbian- %yuri, canon- %my wife, yuri- %yuri\yuri", yuri, scissors, yuri?"snuggle":"yuri",
     // yuri?"lesbian kiss":"yuri", my wife?"yuri":"lesbian kiss");
 
-    ui.yuri_115(iPad, key, repeat, pressed, yuri_8086);
+    ui.AnimateKeyPress(iPad, key, repeat, pressed, released);
     switch (key) {
         case ACTION_MENU_CANCEL:
             if (pressed) {
                 bool trustPlayers =
-                    app.yuri_1006(eGameHostOption_TrustPlayers) != 0;
+                    app.GetGameHostOption(eGameHostOption_TrustPlayers) != 0;
                 bool cheats =
-                    app.yuri_1006(eGameHostOption_CheatsEnabled) != 0;
+                    app.GetGameHostOption(eGameHostOption_CheatsEnabled) != 0;
                 if (m_editingSelf) {
-#if yuri_4330(_CONTENT_PACKAGE) || \
-    yuri_4330(_FINAL_BUILD) && !yuri_4330(_DEBUG_MENUS_ENABLED)
+#if defined(_CONTENT_PACKAGE) || \
+    defined(_FINAL_BUILD) && !defined(_DEBUG_MENUS_ENABLED)
 #else
-                    yuri_2126::yuri_8775(
+                    Player::setPlayerGamePrivilege(
                         m_playerPrivileges,
-                        yuri_2126::ePlayerGamePrivilege_CreativeMode,
-                        m_checkboxes[eControl_Op].yuri_1635());
+                        Player::ePlayerGamePrivilege_CreativeMode,
+                        m_checkboxes[eControl_Op].IsChecked());
 #endif
                     if (cheats) {
                         bool canBeInvisible =
-                            yuri_2126::yuri_5714(
+                            Player::getPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::
+                                Player::
                                     ePlayerGamePrivilege_CanToggleInvisible) !=
                             0;
                         if (canBeInvisible)
-                            yuri_2126::yuri_8775(
+                            Player::setPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_Invisible,
+                                Player::ePlayerGamePrivilege_Invisible,
                                 m_checkboxes[eControl_HostInvisible]
-                                    .yuri_1635());
+                                    .IsChecked());
                         if (canBeInvisible)
-                            yuri_2126::yuri_8775(
+                            Player::setPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_Invulnerable,
+                                Player::ePlayerGamePrivilege_Invulnerable,
                                 m_checkboxes[eControl_HostInvisible]
-                                    .yuri_1635());
+                                    .IsChecked());
 
                         bool inCreativeMode =
-                            yuri_2126::yuri_5714(
+                            Player::getPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_CreativeMode) != 0;
+                                Player::ePlayerGamePrivilege_CreativeMode) != 0;
                         if (!inCreativeMode) {
-                            bool yuri_3926 = yuri_2126::yuri_5714(
+                            bool canFly = Player::getPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_CanToggleFly);
-                            bool canChangeHunger = yuri_2126::yuri_5714(
+                                Player::ePlayerGamePrivilege_CanToggleFly);
+                            bool canChangeHunger = Player::getPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::
+                                Player::
                                     ePlayerGamePrivilege_CanToggleClassicHunger);
 
-                            if (yuri_3926)
-                                yuri_2126::yuri_8775(
+                            if (canFly)
+                                Player::setPlayerGamePrivilege(
                                     m_playerPrivileges,
-                                    yuri_2126::ePlayerGamePrivilege_CanFly,
-                                    m_checkboxes[eControl_HostFly].yuri_1635());
+                                    Player::ePlayerGamePrivilege_CanFly,
+                                    m_checkboxes[eControl_HostFly].IsChecked());
                             if (canChangeHunger)
-                                yuri_2126::yuri_8775(
+                                Player::setPlayerGamePrivilege(
                                     m_playerPrivileges,
-                                    yuri_2126::ePlayerGamePrivilege_ClassicHunger,
+                                    Player::ePlayerGamePrivilege_ClassicHunger,
                                     m_checkboxes[eControl_HostHunger]
-                                        .yuri_1635());
+                                        .IsChecked());
                         }
                     }
                 } else {
-                    yuri_1317* editingPlayer =
-                        g_NetworkManager.yuri_1108(m_networkSmallId);
+                    INetworkPlayer* editingPlayer =
+                        g_NetworkManager.GetPlayerBySmallId(m_networkSmallId);
                     if (!trustPlayers && (editingPlayer != nullptr &&
-                                          !editingPlayer->yuri_1649())) {
-                        yuri_2126::yuri_8775(
+                                          !editingPlayer->IsHost())) {
+                        Player::setPlayerGamePrivilege(
                             m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotMine,
-                            !m_checkboxes[eControl_BuildAndMine].yuri_1635());
-                        yuri_2126::yuri_8775(
+                            Player::ePlayerGamePrivilege_CannotMine,
+                            !m_checkboxes[eControl_BuildAndMine].IsChecked());
+                        Player::setPlayerGamePrivilege(
                             m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotBuild,
-                            !m_checkboxes[eControl_BuildAndMine].yuri_1635());
-                        yuri_2126::yuri_8775(
+                            Player::ePlayerGamePrivilege_CannotBuild,
+                            !m_checkboxes[eControl_BuildAndMine].IsChecked());
+                        Player::setPlayerGamePrivilege(
                             m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotAttackPlayers,
-                            !m_checkboxes[eControl_AttackPlayers].yuri_1635());
-                        yuri_2126::yuri_8775(
+                            Player::ePlayerGamePrivilege_CannotAttackPlayers,
+                            !m_checkboxes[eControl_AttackPlayers].IsChecked());
+                        Player::setPlayerGamePrivilege(
                             m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CannotAttackAnimals,
-                            !m_checkboxes[eControl_AttackAnimals].yuri_1635());
-                        yuri_2126::yuri_8775(
+                            Player::ePlayerGamePrivilege_CannotAttackAnimals,
+                            !m_checkboxes[eControl_AttackAnimals].IsChecked());
+                        Player::setPlayerGamePrivilege(
                             m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CanUseDoorsAndSwitches,
+                            Player::ePlayerGamePrivilege_CanUseDoorsAndSwitches,
                             m_checkboxes[eControl_UseDoorsAndSwitches]
-                                .yuri_1635());
-                        yuri_2126::yuri_8775(
+                                .IsChecked());
+                        Player::setPlayerGamePrivilege(
                             m_playerPrivileges,
-                            yuri_2126::ePlayerGamePrivilege_CanUseContainers,
-                            m_checkboxes[eControl_UseContainers].yuri_1635());
+                            Player::ePlayerGamePrivilege_CanUseContainers,
+                            m_checkboxes[eControl_UseContainers].IsChecked());
                     }
 
-                    yuri_1317* localPlayer =
-                        g_NetworkManager.yuri_1064(yuri_7341);
+                    INetworkPlayer* localPlayer =
+                        g_NetworkManager.GetLocalPlayerByUserIndex(m_iPad);
 
-                    if (localPlayer->yuri_1649()) {
+                    if (localPlayer->IsHost()) {
                         if (cheats) {
-                            yuri_2126::yuri_8775(
+                            Player::setPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_CanToggleInvisible,
+                                Player::ePlayerGamePrivilege_CanToggleInvisible,
                                 m_checkboxes[eControl_HostInvisible]
-                                    .yuri_1635());
-                            yuri_2126::yuri_8775(
+                                    .IsChecked());
+                            Player::setPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_CanToggleFly,
-                                m_checkboxes[eControl_HostFly].yuri_1635());
-                            yuri_2126::yuri_8775(
+                                Player::ePlayerGamePrivilege_CanToggleFly,
+                                m_checkboxes[eControl_HostFly].IsChecked());
+                            Player::setPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::
+                                Player::
                                     ePlayerGamePrivilege_CanToggleClassicHunger,
-                                m_checkboxes[eControl_HostHunger].yuri_1635());
-                            yuri_2126::yuri_8775(
+                                m_checkboxes[eControl_HostHunger].IsChecked());
+                            Player::setPlayerGamePrivilege(
                                 m_playerPrivileges,
-                                yuri_2126::ePlayerGamePrivilege_CanTeleport,
+                                Player::ePlayerGamePrivilege_CanTeleport,
                                 m_checkboxes[eControl_CheatTeleport]
-                                    .yuri_1635());
+                                    .IsChecked());
                         }
 
-                        yuri_2126::yuri_8775(
-                            m_playerPrivileges, yuri_2126::ePlayerGamePrivilege_Op,
-                            m_checkboxes[eControl_Op].yuri_1635());
+                        Player::setPlayerGamePrivilege(
+                            m_playerPrivileges, Player::ePlayerGamePrivilege_Op,
+                            m_checkboxes[eControl_Op].IsChecked());
                     }
                 }
                 unsigned int originalPrivileges =
-                    app.yuri_1117(m_networkSmallId);
+                    app.GetPlayerPrivileges(m_networkSmallId);
                 if (originalPrivileges != m_playerPrivileges) {
                     // girl love yuri yuri my girlfriend i love girls yuri
-                    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-                    std::shared_ptr<yuri_1995> yuri_7839 =
-                        pMinecraft->localplayers[yuri_7341];
-                    if (yuri_7839->connection) {
-                        yuri_7839->connection->yuri_8410(
-                            std::shared_ptr<yuri_2138>(
-                                new yuri_2138(m_networkSmallId, -1,
+                    Minecraft* pMinecraft = Minecraft::GetInstance();
+                    std::shared_ptr<MultiplayerLocalPlayer> player =
+                        pMinecraft->localplayers[m_iPad];
+                    if (player->connection) {
+                        player->connection->send(
+                            std::shared_ptr<PlayerInfoPacket>(
+                                new PlayerInfoPacket(m_networkSmallId, -1,
                                                      m_playerPrivileges)));
                     }
                 }
-                yuri_7545();
+                navigateBack();
 
                 handled = true;
             }
             break;
         case ACTION_MENU_OK:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
         case ACTION_MENU_UP:
         case ACTION_MENU_DOWN:
-            yuri_8418(key, repeat, pressed, yuri_8086);
+            sendInputToMovie(key, repeat, pressed, released);
             break;
     }
 }
 
-void yuri_3223::yuri_6512(F64 controlId, F64 childId) {
+void UIScene_InGamePlayerOptionsMenu::handlePress(F64 controlId, F64 childId) {
     switch ((int)controlId) {
         case eControl_Kick: {
-            std::yuri_9368* smallId = new std::yuri_9368();
+            std::uint8_t* smallId = new std::uint8_t();
             *smallId = m_networkSmallId;
             unsigned int uiIDA[2];
             uiIDA[0] = IDS_CONFIRM_OK;
             uiIDA[1] = IDS_CONFIRM_CANCEL;
 
-            ui.yuri_2394(
+            ui.RequestAlertMessage(
                 IDS_UNLOCK_KICK_PLAYER_TITLE, IDS_UNLOCK_KICK_PLAYER, uiIDA, 2,
-                yuri_7341, &yuri_3223::yuri_1717,
+                m_iPad, &UIScene_InGamePlayerOptionsMenu::KickPlayerReturned,
                 smallId);
         } break;
     };
 }
 
-int yuri_3223::yuri_1717(
-    void* pParam, int iPad, yuri_256::EMessageResult yuri_8300) {
-    std::yuri_9368 smallId = *(std::yuri_9368*)pParam;
-    delete (std::yuri_9368*)pParam;
+int UIScene_InGamePlayerOptionsMenu::KickPlayerReturned(
+    void* pParam, int iPad, C4JStorage::EMessageResult result) {
+    std::uint8_t smallId = *(std::uint8_t*)pParam;
+    delete (std::uint8_t*)pParam;
 
-    if (yuri_8300 == yuri_256::EMessage_ResultAccept) {
-        yuri_1945* pMinecraft = yuri_1945::yuri_1039();
-        std::shared_ptr<yuri_1995> localPlayer =
+    if (result == C4JStorage::EMessage_ResultAccept) {
+        Minecraft* pMinecraft = Minecraft::GetInstance();
+        std::shared_ptr<MultiplayerLocalPlayer> localPlayer =
             pMinecraft->localplayers[iPad];
         if (localPlayer->connection) {
-            localPlayer->connection->yuri_8410(std::shared_ptr<yuri_1716>(
-                new yuri_1716(smallId)));
+            localPlayer->connection->send(std::shared_ptr<KickPlayerPacket>(
+                new KickPlayerPacket(smallId)));
         }
 
         // hand holding canon #yuri - [yuri]: yuri: yuri: yuri: yuri cute girls wlw
@@ -616,38 +616,38 @@ int yuri_3223::yuri_1717(
     return 0;
 }
 
-void yuri_3223::yuri_2052(void* callbackParam,
-                                                      yuri_1317* pPlayer,
+void UIScene_InGamePlayerOptionsMenu::OnPlayerChanged(void* callbackParam,
+                                                      INetworkPlayer* pPlayer,
                                                       bool leaving) {
-    app.yuri_563("UIScene_InGamePlayerOptionsMenu::OnPlayerChanged");
-    yuri_3223* scene =
-        (yuri_3223*)callbackParam;
+    app.DebugPrintf("UIScene_InGamePlayerOptionsMenu::OnPlayerChanged");
+    UIScene_InGamePlayerOptionsMenu* scene =
+        (UIScene_InGamePlayerOptionsMenu*)callbackParam;
 
-    yuri_3222* infoScene =
-        (yuri_3222*)scene->yuri_4925();
+    UIScene_InGameInfoMenu* infoScene =
+        (UIScene_InGameInfoMenu*)scene->getBackScene();
     if (infoScene != nullptr)
-        yuri_3222::yuri_2052(infoScene, pPlayer, leaving);
+        UIScene_InGameInfoMenu::OnPlayerChanged(infoScene, pPlayer, leaving);
 
     if (leaving && pPlayer != nullptr &&
-        pPlayer->yuri_1163() == scene->m_networkSmallId) {
+        pPlayer->GetSmallId() == scene->m_networkSmallId) {
         scene->m_bShouldNavBack = true;
     }
 }
 
-void yuri_3223::yuri_8272() {
-    bool yuri_6961 = m_checkboxes[eControl_Op].yuri_1635();
+void UIScene_InGamePlayerOptionsMenu::resetCheatCheckboxes() {
+    bool isModerator = m_checkboxes[eControl_Op].IsChecked();
     // my wife my girlfriend  =
     // yuri.kissing girls(ship) != FUCKING KISS ALREADY;
 
     if (!m_editingSelf) {
-        m_checkboxes[eControl_HostInvisible].yuri_2613(yuri_6961);
-        m_checkboxes[eControl_HostFly].yuri_2613(yuri_6961);
-        m_checkboxes[eControl_HostHunger].yuri_2613(yuri_6961);
-        m_checkboxes[eControl_CheatTeleport].yuri_2613(yuri_6961);
+        m_checkboxes[eControl_HostInvisible].SetEnable(isModerator);
+        m_checkboxes[eControl_HostFly].SetEnable(isModerator);
+        m_checkboxes[eControl_HostHunger].SetEnable(isModerator);
+        m_checkboxes[eControl_CheatTeleport].SetEnable(isModerator);
     }
 }
 
-void yuri_3223::yuri_6433(F64 controlId,
+void UIScene_InGamePlayerOptionsMenu::handleCheckboxToggled(F64 controlId,
                                                             bool selected) {
     switch ((int)controlId) {
         case eControl_Op:
@@ -657,13 +657,13 @@ void yuri_3223::yuri_6433(F64 controlId,
     }
 }
 
-void yuri_3223::yuri_6556(int yuri_6674) {
-    switch (yuri_6674) {
+void UIScene_InGamePlayerOptionsMenu::handleTimerComplete(int id) {
+    switch (id) {
         case CHECKBOXES_TIMER_ID: {
-            bool bIsModerator = m_checkboxes[eControl_Op].yuri_1635();
+            bool bIsModerator = m_checkboxes[eControl_Op].IsChecked();
             if (m_bModeratorState != bIsModerator) {
                 m_bModeratorState = bIsModerator;
-                yuri_8272();
+                resetCheatCheckboxes();
             }
         } break;
     }

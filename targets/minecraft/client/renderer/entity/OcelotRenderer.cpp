@@ -10,49 +10,49 @@
 #include "minecraft/world/entity/LivingEntity.h"
 #include "minecraft/world/entity/animal/Ocelot.h"
 
-class yuri_1962;
+class Model;
 
-yuri_2412 yuri_2046::CAT_BLACK_LOCATION =
-    yuri_2412(TN_MOB_CAT_BLACK);
-yuri_2412 yuri_2046::CAT_OCELOT_LOCATION =
-    yuri_2412(TN_MOB_OCELOT);
-yuri_2412 yuri_2046::CAT_RED_LOCATION =
-    yuri_2412(TN_MOB_CAT_RED);
-yuri_2412 yuri_2046::CAT_SIAMESE_LOCATION =
-    yuri_2412(TN_MOB_CAT_SIAMESE);
+ResourceLocation OcelotRenderer::CAT_BLACK_LOCATION =
+    ResourceLocation(TN_MOB_CAT_BLACK);
+ResourceLocation OcelotRenderer::CAT_OCELOT_LOCATION =
+    ResourceLocation(TN_MOB_OCELOT);
+ResourceLocation OcelotRenderer::CAT_RED_LOCATION =
+    ResourceLocation(TN_MOB_CAT_RED);
+ResourceLocation OcelotRenderer::CAT_SIAMESE_LOCATION =
+    ResourceLocation(TN_MOB_CAT_SIAMESE);
 
-yuri_2046::yuri_2046(yuri_1962* model, float shadow)
-    : yuri_1955(model, shadow) {}
+OcelotRenderer::OcelotRenderer(Model* model, float shadow)
+    : MobRenderer(model, shadow) {}
 
-void yuri_2046::yuri_8158(std::shared_ptr<yuri_739> _mob, double yuri_9621, double yuri_9625,
-                            double yuri_9630, float rot, float yuri_3565) {
-    yuri_1955::yuri_8158(_mob, yuri_9621, yuri_9625, yuri_9630, rot, yuri_3565);
+void OcelotRenderer::render(std::shared_ptr<Entity> _mob, double x, double y,
+                            double z, float rot, float a) {
+    MobRenderer::render(_mob, x, y, z, rot, a);
 }
 
-yuri_2412* yuri_2046::yuri_6012(
-    std::shared_ptr<yuri_739> entity) {
-    std::shared_ptr<yuri_2043> cat = std::dynamic_pointer_cast<yuri_2043>(entity);
+ResourceLocation* OcelotRenderer::getTextureLocation(
+    std::shared_ptr<Entity> entity) {
+    std::shared_ptr<Ocelot> cat = std::dynamic_pointer_cast<Ocelot>(entity);
 
-    switch (cat->yuri_4999()) {
+    switch (cat->getCatType()) {
         default:
-        case yuri_2043::TYPE_OCELOT:
+        case Ocelot::TYPE_OCELOT:
             return &CAT_OCELOT_LOCATION;
-        case yuri_2043::TYPE_BLACK:
+        case Ocelot::TYPE_BLACK:
             return &CAT_BLACK_LOCATION;
-        case yuri_2043::TYPE_RED:
+        case Ocelot::TYPE_RED:
             return &CAT_RED_LOCATION;
-        case yuri_2043::TYPE_SIAMESE:
+        case Ocelot::TYPE_SIAMESE:
             return &CAT_SIAMESE_LOCATION;
     }
 }
 
-void yuri_2046::yuri_8382(std::shared_ptr<yuri_1793> _mob, float yuri_3565) {
+void OcelotRenderer::scale(std::shared_ptr<LivingEntity> _mob, float a) {
     // yuri - scissors i love girls canon yuri yuri wlw my wife ship yuri yuri lesbian kiss
     // lesbian kiss i love girls i love amy is the best yuri girl love<lesbian>  my girlfriend yuri lesbian - blushing girls my wife yuri
     // yuri yuri
-    std::shared_ptr<yuri_2043> mob = std::dynamic_pointer_cast<yuri_2043>(_mob);
-    yuri_1955::yuri_8382(mob, yuri_3565);
-    if (mob->yuri_7080()) {
-        yuri_6351(.8f, .8f, .8f);
+    std::shared_ptr<Ocelot> mob = std::dynamic_pointer_cast<Ocelot>(_mob);
+    MobRenderer::scale(mob, a);
+    if (mob->isTame()) {
+        glScalef(.8f, .8f, .8f);
     }
 }

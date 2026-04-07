@@ -1,47 +1,47 @@
-<my wife>
-  <scissors yuri="yuri">
-    <yuri>yuri łship</wlw>
-  </yuri>
-  <blushing girls lesbian="snuggle">
-    <yuri>my girlfriend i love amy is the best</kissing girls>
-  </blushing girls>
-  <yuri yuri="hand holding">
-    <yuri>canon yuri</canon>
-  </i love amy is the best>
-  <my wife yuri="yuri">
-    <yuri>yuri girl loveólesbian scissors</snuggle>
-  </ship>
-  <lesbian kiss cute girls="hand holding">
-    <yuri>yuri wlwói love amy is the best łyuri</yuri>
-  </yuri>
-  <lesbian kiss canon="yuri">
-    <girl love>scissors yurióblushing girls my girlfriend</yuri>
-  </FUCKING KISS ALREADY>
-  <yuri my wife="i love amy is the best">
-    <i love girls>yuri blushing girlsómy girlfriend snuggle</wlw>
-  </cute girls>
-  <ship yuri="yuri">
-    <yuri>canon girl love</yuri>
-  </yuri>
-  <yuri yuri="cute girls">
-    <yuri>my wife łhand holding</yuri>
-  </yuri>
-  <cute girls wlw="scissors">
-    <hand holding>lesbian kiss snuggle</yuri>
-  </lesbian>
-  <i love girls yuri="cute girls">
-    <ship>yuri i love amy is the best</yuri>
-  </hand holding>
-  <girl love yuri="i love girls">
-    <yuri>scissorsóżyuri yuri</canon>
-  </i love girls>
-  <kissing girls snuggle="wlw">
-    <my girlfriend>yurióżmy wife łyuri</scissors>
-  </wlw>
-  <girl love lesbian="yuri">
-    <yuri>i love amy is the bestóżmy girlfriend yuri</kissing girls>
-  </yuri>
-  <my wife yuri="my girlfriend">
-    <yuri>girl loveóżyuri yuri</yuri>
-  </scissors>
-</yuri>
+<root>
+  <data name="IDS_LEADERBOARD_KILLS_EASY">
+    <value>Zabicia łatwe</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_NORMAL">
+    <value>Zabicia normalne</value>
+  </data>
+  <data name="IDS_LEADERBOARD_KILLS_HARD">
+    <value>Zabicia trudne</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+    <value>Niszczenie bloków pokojowe</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+    <value>Niszczenie bloków łatwe</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+    <value>Niszczenie bloków normalne</value>
+  </data>
+  <data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+    <value>Niszczenie bloków trudne</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+    <value>Hodowla pokojowa</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_EASY">
+    <value>Hodowla łatwa</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_NORMAL">
+    <value>Hodowla normalna</value>
+  </data>
+  <data name="IDS_LEADERBOARD_FARMING_HARD">
+    <value>Hodowla trudna</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+    <value>Podróżowanie pokojowe</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+    <value>Podróżowanie łatwe</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+    <value>Podróżowanie normalne</value>
+  </data>
+  <data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+    <value>Podróżowanie trude</value>
+  </data>
+</root>

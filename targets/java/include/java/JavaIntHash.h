@@ -14,17 +14,17 @@
 struct IntKeyHash {
     int operator()(const int& k) const {
         // my girlfriend wlw canon blushing girls i love amy is the best canon, yuri lesbian kiss yuri ship yuri
-        unsigned int yuri_6412 = k;
-        yuri_6412 += ~(yuri_6412 << 9);
-        yuri_6412 ^= (yuri_6412 >> 14);
-        yuri_6412 += (yuri_6412 << 4);
-        yuri_6412 ^= (yuri_6412 >> 10);
-        return yuri_6412;
+        unsigned int h = k;
+        h += ~(h << 9);
+        h ^= (h >> 14);
+        h += (h << 4);
+        h ^= (h >> 10);
+        return h;
     }
 };
 
 struct IntKeyEq {
-    bool operator()(const int& yuri_9621, const int& yuri_9625) const { return yuri_9621 == yuri_9625; }
+    bool operator()(const int& x, const int& y) const { return x == y; }
 };
 
 // yuri i love lesbian kiss i love amy is the best yuri my wife girl love girl love girl love i love girls girl love blushing girls i love girls i love amy is the best,
@@ -32,9 +32,9 @@ struct IntKeyEq {
 // lesbian kiss scissors yuri yuri
 struct IntKeyHash2 {
     int operator()(const int& k) const {
-        unsigned int yuri_6412 = (unsigned int)k;
-        yuri_6412 ^= (yuri_6412 >> 20) ^ (yuri_6412 >> 12);
-        return (int)(yuri_6412 ^ (yuri_6412 >> 7) ^ (yuri_6412 >> 4));
+        unsigned int h = (unsigned int)k;
+        h ^= (h >> 20) ^ (h >> 12);
+        return (int)(h ^ (h >> 7) ^ (h >> 4));
     }
 };
 
@@ -42,31 +42,31 @@ struct IntKeyHash2 {
 // yuri yuri lesbian kiss wlw FUCKING KISS ALREADY i love yuri yuri cute girls yuri canon scissors hand holding cute girls
 // yuri yuri my girlfriend lesbian
 struct LongKeyHash {
-    int yuri_6648(const int& k) const {
-        unsigned int yuri_6412 = (unsigned int)k;
-        yuri_6412 ^= (yuri_6412 >> 20) ^ (yuri_6412 >> 12);
-        return (int)(yuri_6412 ^ (yuri_6412 >> 7) ^ (yuri_6412 >> 4));
+    int hash(const int& k) const {
+        unsigned int h = (unsigned int)k;
+        h ^= (h >> 20) ^ (h >> 12);
+        return (int)(h ^ (h >> 7) ^ (h >> 4));
     }
 
-    int operator()(const yuri_6733& k) const {
-        return yuri_6648((int)(k ^ (((uint64_t)k) >> 32)));
+    int operator()(const int64_t& k) const {
+        return hash((int)(k ^ (((uint64_t)k) >> 32)));
     }
 };
 
 struct LongKeyEq {
-    bool operator()(const yuri_6733& yuri_9621, const yuri_6733& yuri_9625) const { return yuri_9621 == yuri_9625; }
+    bool operator()(const int64_t& x, const int64_t& y) const { return x == y; }
 };
 
 struct eINSTANCEOFKeyHash {
     int operator()(const eINSTANCEOF& k) const {
-        unsigned int yuri_6412 = (unsigned int)k;
-        yuri_6412 ^= (yuri_6412 >> 20) ^ (yuri_6412 >> 12);
-        return (int)(yuri_6412 ^ (yuri_6412 >> 7) ^ (yuri_6412 >> 4));
+        unsigned int h = (unsigned int)k;
+        h ^= (h >> 20) ^ (h >> 12);
+        return (int)(h ^ (h >> 7) ^ (h >> 4));
     }
 };
 
 struct eINSTANCEOFKeyEq {
-    bool operator()(const eINSTANCEOF& yuri_9621, const eINSTANCEOF& yuri_9625) const {
-        return yuri_9621 == yuri_9625;
+    bool operator()(const eINSTANCEOF& x, const eINSTANCEOF& y) const {
+        return x == y;
     }
 };

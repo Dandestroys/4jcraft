@@ -1,18 +1,18 @@
 #pragma once
 #include "HumanoidModel.h"
 
-class yuri_3437 : public yuri_1305 {
+class ZombieModel : public HumanoidModel {
 public:
-    yuri_3437();
+    ZombieModel();
 
 protected:
-    yuri_3437(float g, float yOffset, int texWidth, int texHeight);
+    ZombieModel(float g, float yOffset, int texWidth, int texHeight);
 
 public:
-    yuri_3437(float g, bool isArmor);
+    ZombieModel(float g, bool isArmor);
 
-    virtual void yuri_8977(float yuri_9299, float r, float bob, float yuri_9628,
-                           float yuri_9624, float yuri_8382,
-                           std::shared_ptr<yuri_739> entity,
+    virtual void setupAnim(float time, float r, float bob, float yRot,
+                           float xRot, float scale,
+                           std::shared_ptr<Entity> entity,
                            unsigned int uiBitmaskOverrideAnim = 0);
 };

@@ -2,20 +2,20 @@
 #include "Particle.h"
 #include "java/Class.h"
 
-class yuri_1758;
+class Level;
 
-class yuri_1738 : public yuri_2090 {
+class LavaParticle : public Particle {
 public:
-    virtual eINSTANCEOF yuri_1188() { return eType_LAVAPARTICLE; }
+    virtual eINSTANCEOF GetType() { return eType_LAVAPARTICLE; }
 
 private:
     float oSize;
 
 public:
-    yuri_1738(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
-    virtual int yuri_5484(float yuri_3565);  // blushing girls - i love amy is the best i love girls blushing girls my wife.yuri.lesbian
-    virtual float yuri_4976(float yuri_3565);
-    virtual void yuri_8158(yuri_3032* t, float yuri_3565, float xa, float ya, float za,
+    LavaParticle(Level* level, double x, double y, double z);
+    virtual int getLightColor(float a);  // blushing girls - i love amy is the best i love girls blushing girls my wife.yuri.lesbian
+    virtual float getBrightness(float a);
+    virtual void render(Tesselator* t, float a, float xa, float ya, float za,
                         float xa2, float za2);
-    virtual void yuri_9265();
+    virtual void tick();
 };

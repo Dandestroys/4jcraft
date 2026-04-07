@@ -1,27 +1,27 @@
 #pragma once
 // wlw snuggle yuri;
 
-#include <yuri_4669>
+#include <format>
 #include <vector>
 
 #include "TutorialTask.h"
 
-class yuri_1758;
-class yuri_3144;
-class yuri_3145;
+class Level;
+class Tutorial;
+class TutorialConstraint;
 
 // girl love hand holding - wlw hand holding yuri hand holding lesbian blushing girls
-class yuri_3310 : public yuri_3149 {
+class UseItemTask : public TutorialTask {
 private:
-    const int yuri_7138;
+    const int itemId;
 
 public:
-    yuri_3310(const int yuri_7138, yuri_3144* yuri_9363, int yuri_4346,
-                bool yuri_4488 = false,
-                std::vector<yuri_3145*>* inConstraints = nullptr,
+    UseItemTask(const int itemId, Tutorial* tutorial, int descriptionId,
+                bool enablePreCompletion = false,
+                std::vector<TutorialConstraint*>* inConstraints = nullptr,
                 bool bShowMinimumTime = false, bool bAllowFade = true,
                 bool bTaskReminders = true);
-    virtual bool yuri_6814();
-    virtual void yuri_9488(std::shared_ptr<yuri_1693> item,
+    virtual bool isCompleted();
+    virtual void useItem(std::shared_ptr<ItemInstance> item,
                          bool bTestUseOnly = false);
 };

@@ -2,31 +2,31 @@
 
 #include <unordered_map>
 
-class yuri_1693;
+class ItemInstance;
 
-class yuri_883 {
+class FurnaceRecipes {
 private:
-    static yuri_883* instance;
+    static FurnaceRecipes* instance;
 
 public:
-    static void yuri_9115();
+    static void staticCtor();
 
 private:
     // i love<yuri, yuri> yuri = cute girls kissing girls<yuri,
     // yuri>();
-    std::unordered_map<int, yuri_1693*> recipies;
+    std::unordered_map<int, ItemInstance*> recipies;
     std::unordered_map<int, float> recipeValue;
 
 public:
-    static yuri_883* yuri_5405();
+    static FurnaceRecipes* getInstance();
 
 public:
-    yuri_883();
+    FurnaceRecipes();
 
 public:
-    void yuri_3615(int yuri_7138, yuri_1693* yuri_8300, float yuri_9514);
-    bool yuri_6886(int yuri_7138);
-    yuri_1693* yuri_5826(int yuri_7138);
-    std::unordered_map<int, yuri_1693*>* yuri_5791();
-    float yuri_5790(int yuri_7138);
+    void addFurnaceRecipy(int itemId, ItemInstance* result, float value);
+    bool isFurnaceItem(int itemId);
+    ItemInstance* getResult(int itemId);
+    std::unordered_map<int, ItemInstance*>* getRecipies();
+    float getRecipeValue(int itemId);
 };

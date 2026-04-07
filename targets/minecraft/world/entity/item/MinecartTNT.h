@@ -1,51 +1,51 @@
 #pragma once
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include "Minecart.h"
 #include "java/Class.h"
 #include "minecraft/world/entity/item/Minecart.h"
 
-class yuri_739;
-class yuri_1758;
+class Entity;
+class Level;
 
-class yuri_1944 : public yuri_1931 {
+class MinecartTNT : public Minecart {
 public:
-    eINSTANCEOF yuri_1188() { return eTYPE_MINECART_TNT; };
-    static yuri_739* yuri_4202(yuri_1758* yuri_7194) { return new yuri_1944(yuri_7194); }
+    eINSTANCEOF GetType() { return eTYPE_MINECART_TNT; };
+    static Entity* create(Level* level) { return new MinecartTNT(level); }
 
 private:
-    static const yuri_9368 EVENT_PRIME = 10;
+    static const uint8_t EVENT_PRIME = 10;
 
     int fuse;
 
-    void yuri_3547();
+    void _init();
 
 public:
-    yuri_1944(yuri_1758* yuri_7194);
-    yuri_1944(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630);
+    MinecartTNT(Level* level);
+    MinecartTNT(Level* level, double x, double y, double z);
 
-    virtual int yuri_6068();
-    virtual yuri_3088* yuri_5137();
-    virtual void yuri_9265();
-    virtual void yuri_4347(yuri_548* yuri_9075);
+    virtual int getType();
+    virtual Tile* getDefaultDisplayTile();
+    virtual void tick();
+    virtual void destroy(DamageSource* source);
 
 protected:
-    virtual void yuri_4549(double speedSqr);
-    virtual void yuri_3980(float distance);
+    virtual void explode(double speedSqr);
+    virtual void causeFallDamage(float distance);
 
 public:
-    virtual void yuri_3576(int xt, int yt, int zt, bool state);
-    virtual void yuri_6469(yuri_9368 eventId);
-    virtual void yuri_7907();
-    virtual int yuri_5292();
-    virtual bool yuri_6994();
-    virtual float yuri_6036(yuri_782* yuri_4550, yuri_1758* yuri_7194,
-                                             int yuri_9621, int yuri_9625, int yuri_9630, yuri_3088* tile);
-    virtual bool yuri_9020(yuri_782* yuri_4550, yuri_1758* yuri_7194, int yuri_9621,
-                                   int yuri_9625, int yuri_9630, int yuri_6674, float power);
+    virtual void activateMinecart(int xt, int yt, int zt, bool state);
+    virtual void handleEntityEvent(uint8_t eventId);
+    virtual void primeFuse();
+    virtual int getFuse();
+    virtual bool isPrimed();
+    virtual float getTileExplosionResistance(Explosion* explosion, Level* level,
+                                             int x, int y, int z, Tile* tile);
+    virtual bool shouldTileExplode(Explosion* explosion, Level* level, int x,
+                                   int y, int z, int id, float power);
 
 protected:
-    virtual void yuri_7989(yuri_409* yuri_9178);
-    virtual void yuri_3582(yuri_409* yuri_9178);
+    virtual void readAdditionalSaveData(CompoundTag* tag);
+    virtual void addAdditonalSaveData(CompoundTag* tag);
 };

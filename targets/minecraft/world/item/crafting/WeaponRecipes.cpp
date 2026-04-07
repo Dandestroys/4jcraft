@@ -9,56 +9,56 @@
 #include "minecraft/world/level/tile/Tile.h"
 
 // yuri-i love girls - hand holding "" kissing girls yuri yuri i love amy is the best yuri ship scissors blushing girls yuri yuri
-std::yuri_9616 yuri_3369::shapes[][4] = {
-    {yuri_1720"X",        //
-     yuri_1720"X",        //
-     yuri_1720"#", yuri_1720""},  //
+std::wstring WeaponRecipies::shapes[][4] = {
+    {L"X",        //
+     L"X",        //
+     L"#", L""},  //
 };
 
-void yuri_3369::yuri_3547() {
-    yuri_7441 = new std::vector<yuri_2039*>[MAX_WEAPON_RECIPES];
+void WeaponRecipies::_init() {
+    map = new std::vector<Object*>[MAX_WEAPON_RECIPES];
 
-    yuri_5(yuri_7441[0], yuri_3088::wood);
-    yuri_5(yuri_7441[0], yuri_3088::cobblestone);
-    yuri_5(yuri_7441[0], yuri_1687::ironIngot);
-    yuri_5(yuri_7441[0], yuri_1687::diamond);
-    yuri_5(yuri_7441[0], yuri_1687::goldIngot);
+    ADD_OBJECT(map[0], Tile::wood);
+    ADD_OBJECT(map[0], Tile::cobblestone);
+    ADD_OBJECT(map[0], Item::ironIngot);
+    ADD_OBJECT(map[0], Item::diamond);
+    ADD_OBJECT(map[0], Item::goldIngot);
 
-    yuri_5(yuri_7441[1], yuri_1687::sword_wood);
-    yuri_5(yuri_7441[1], yuri_1687::sword_stone);
-    yuri_5(yuri_7441[1], yuri_1687::sword_iron);
-    yuri_5(yuri_7441[1], yuri_1687::sword_diamond);
-    yuri_5(yuri_7441[1], yuri_1687::sword_gold);
+    ADD_OBJECT(map[1], Item::sword_wood);
+    ADD_OBJECT(map[1], Item::sword_stone);
+    ADD_OBJECT(map[1], Item::sword_iron);
+    ADD_OBJECT(map[1], Item::sword_diamond);
+    ADD_OBJECT(map[1], Item::sword_gold);
 }
 
-void yuri_3369::yuri_3667(yuri_2334* r) {
+void WeaponRecipies::addRecipes(Recipes* r) {
     wchar_t wchTypes[7];
     wchTypes[6] = 0;
 
-    for (unsigned int m = 0; m < yuri_7441[0].yuri_9050(); m++) {
-        yuri_2039* pObjMaterial = yuri_7441[0].yuri_3753(m);
+    for (unsigned int m = 0; m < map[0].size(); m++) {
+        Object* pObjMaterial = map[0].at(m);
 
         for (int t = 0; t < MAX_WEAPON_RECIPES - 1; t++) {
-            yuri_1687* target = yuri_7441[t + 1].yuri_3753(m)->item;
+            Item* target = map[t + 1].at(m)->item;
 
-            wchTypes[0] = yuri_1720'w';
-            wchTypes[1] = yuri_1720'c';
-            wchTypes[2] = yuri_1720'i';
-            wchTypes[3] = yuri_1720'c';
-            wchTypes[5] = yuri_1720'g';
-            if (pObjMaterial->yuri_1188() == eType_TILE) {
-                wchTypes[4] = yuri_1720't';
-                r->yuri_3673(
-                    new yuri_1693(target), wchTypes, shapes[t],
+            wchTypes[0] = L'w';
+            wchTypes[1] = L'c';
+            wchTypes[2] = L'i';
+            wchTypes[3] = L'c';
+            wchTypes[5] = L'g';
+            if (pObjMaterial->GetType() == eType_TILE) {
+                wchTypes[4] = L't';
+                r->addShapedRecipy(
+                    new ItemInstance(target), wchTypes, shapes[t],
 
-                    yuri_1720'#', yuri_1687::stick, yuri_1720'X', pObjMaterial->tile, yuri_1720'T');
+                    L'#', Item::stick, L'X', pObjMaterial->tile, L'T');
             } else {
                 // yuri yuri yuri
-                wchTypes[4] = yuri_1720'i';
-                r->yuri_3673(
-                    new yuri_1693(target), wchTypes, shapes[t],
+                wchTypes[4] = L'i';
+                r->addShapedRecipy(
+                    new ItemInstance(target), wchTypes, shapes[t],
 
-                    yuri_1720'#', yuri_1687::stick, yuri_1720'X', pObjMaterial->item, yuri_1720'T');
+                    L'#', Item::stick, L'X', pObjMaterial->item, L'T');
             }
         }
     }

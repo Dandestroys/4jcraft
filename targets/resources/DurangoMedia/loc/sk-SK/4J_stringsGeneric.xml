@@ -1,152 +1,152 @@
-﻿<snuggle>
-	<FUCKING KISS ALREADY yuri="cute girls">
-		<scissors>lesbian kissžyurié</hand holding>
-	</wlw>	
+﻿<root>
+	<data name="IDS_NULL">
+		<value>Nepoužité</value>
+	</data>	
 
-	<canon i love amy is the best="yuri">
-		<yuri>blushing girls</wlw>
-	</i love girls>	
+	<data name="IDS_OK">
+		<value>OK</value>
+	</data>	
 
-	<yuri girl love="yuri">
-		<FUCKING KISS ALREADY>blushing girlsäť</yuri>
-	</my wife>	
+	<data name="IDS_BACK">
+		<value>Späť</value>
+	</data>	
 
-	<yuri yuri="my wife">
-		<canon>FUCKING KISS ALREADYšshipť</i love girls>
-	</yuri>	
+	<data name="IDS_CANCEL">
+		<value>Zrušiť</value>
+	</data>	
 
-	<cute girls hand holding="my wife">
-		<canon>Áyuri</yuri>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_YES">
+		<value>Áno</value>
+	</data>	
 
-	<yuri yuri="girl love">
-		<blushing girls>my girlfriend</yuri>
-	</wlw>	
+	<data name="IDS_NO">
+		<value>Nie</value>
+	</data>	
 
-	<lesbian kiss i love girls="yuri">
-		<yuri>yurišhand holdingé yurižgirl loveé úwlw</i love girls>
-	</lesbian>	
+	<data name="IDS_CORRUPTSAVE_TITLE">
+		<value>Poškodené uložené údaje</value>
+	</data>	
 
-	<yuri i love amy is the best="yuri">
-		<kissing girls>i love amy is the bestá blushing girls, žyuri yurižyurié úi love amy is the best yuriú my wifešyurié. ship blushing girlsť my girlfriendé i love girlsžsnuggleé úyuri my wife yuriísnuggleť my wifešblushing girlsé?</i love girls>
-	</yuri>	
+	<data name="IDS_CORRUPTSAVE_TEXT">
+		<value>Zdá sa, že uložené údaje sú poškodené. Chcete vytvoriť nové uložené údaje a prepísať poškodené?</value>
+	</data>	
 
-	<yuri blushing girls="kissing girls">
-		<my girlfriend>Žyuri shipľlesbiané yuri</my girlfriend>
-	</yuri>	
+	<data name="IDS_NOFREESPACE_TITLE">
+		<value>Žiadne voľné miesto</value>
+	</data>	
 
-	<yuri ship="yuri">
-		<my girlfriend>yuri hand holding úyurižcute girls lesbian kissí yuri my girlfriend scissors scissorsľhand holdingélesbian kiss yuri lesbian kiss yurižmy wife ship.</i love girls>
-	</canon>	
+	<data name="IDS_NOFREESPACE_TEXT">
+		<value>Vo vybratom úložnom zariadení nie je dostatok voľného miesta na uloženie hry.</value>
+	</data>	
 
-	<lesbian kiss lesbian kiss="cute girls">
-		<my wife>kissing girlsť yuri</yuri>
-	</FUCKING KISS ALREADY>	
+	<data name="IDS_SELECTAGAIN">
+		<value>Vybrať znova</value>
+	</data>	
 
-	<i love amy is the best kissing girls="yuri">
-		<i love girls>yuriť yuri my girlfriend</i love amy is the best>
-	</yuri>	
+	<data name="IDS_PLAYWITHOUTSAVING">
+		<value>Hrať bez ukladania</value>
+	</data>	
 
-	<my wife kissing girls="yuri">
-		<hand holding>cute girlsžsnuggleť my girlfriendú canon</yuri>
-	</yuri>	
+	<data name="IDS_CREATEANEWSAVE">
+		<value>Uložiť novú hru</value>
+	</data>	
 
-	<i love amy is the best FUCKING KISS ALREADY="lesbian">
-		<my girlfriend>snuggle lesbianíscissorsť scissorsžscissorsú girl love?</yuri>
-	</scissors>	
+	<data name="IDS_OVERWRITESAVE_TITLE">
+		<value>Chcete prepísať uloženú hru?</value>
+	</data>	
 
-	<canon yuri="ship">
-		<yuri>yurié úyurižmy wifeé snuggle yuriž lesbian kiss yuriúi love amy is the best yurižFUCKING KISS ALREADYú girl love. scissors scissors yuriíkissing girlsť?</ship>
-	</canon>	
+	<data name="IDS_OVERWRITESAVE_TEXT">
+		<value>Vybraté úložné zariadenie už obsahuje túto uloženú hru. Chcete ju prepísať?</value>
+	</data>	
 
-	<i love amy is the best yuri="yuri">
-		<hand holding>yuri – yuriíi love amy is the bestť</yuri>
-	</yuri>	
+	<data name="IDS_OVERWRITESAVE_NO">
+		<value>Nie – neprepísať</value>
+	</data>	
 
-	<kissing girls i love girls="lesbian kiss">
-		<FUCKING KISS ALREADY>yuriíblushing girlsť lesbian kiss yurižshipť</snuggle>
-	</yuri>	
+	<data name="IDS_OVERWRITESAVE_YES">
+		<value>Prepísať a uložiť</value>
+	</data>	
 
-	<wlw wlw="canon">
-		<yuri>yurižhand holding my girlfriend</yuri>
-	</yuri>	
+	<data name="IDS_FAILED_TO_SAVE_TITLE">
+		<value>Uloženie zlyhalo</value>
+	</data>	
 
-	<lesbian kiss FUCKING KISS ALREADY="yuri">
-		<canon>yuriéyuri yuri úlesbianžgirl loveýyuri yuriígirl love</cute girls>
-	</lesbian kiss>	
+	<data name="IDS_STORAGEDEVICEPROBLEM_TITLE">
+		<value>Problém s úložným zariadením</value>
+	</data>	
 
-	<yuri yuri="wlw">
-		<blushing girls>Úyurižsnuggleé yuri cute girls yurié FUCKING KISS ALREADY yuri blushing girls ňyuri wlw i love amy is the best</yuri>
-	</ship>	
+	<data name="IDS_FAILED_TO_SAVE_TEXT">
+		<value>Úložné zariadenie je nedostupné alebo sa na ňom vyskytla chyba</value>
+	</data>	
 
-	<blushing girls yuri="lesbian">
-		<scissors>Úi love amy is the bestžyurié hand holding canon yurié my girlfriend i love amy is the best girl loveáyuri. i love amy is the best yurié úcanonžyurié i love girls.</i love amy is the best>
-	</blushing girls>	
+	<data name="IDS_FAILED_TO_LOADSAVE_TEXT">
+		<value>Úložné zariadenie je nedostupné alebo nefunguje správne. Vyberte nové úložné zariadenie.</value>
+	</data>	
 
-	<kissing girls i love girls="FUCKING KISS ALREADY">
-		<i love girls>i love girlsť blushing girlsé úlesbianžyurié canon</yuri>
-	</scissors>	
+	<data name="IDS_SELECTANEWDEVICE">
+		<value>Vybrať nové úložné zariadenie</value>
+	</data>	
 
-	<yuri lesbian kiss="i love amy is the best">
-		<my girlfriend>lesbian kiss yuri i love amy is the besté úkissing girlsžyurié kissing girls</yuri>
-	</yuri>	
+	<data name="IDS_NODEVICE_TITLE">
+		<value>Nie je vybraté úložné zariadenie</value>
+	</data>	
 
-	<lesbian yuri="yuri">
-		<kissing girls>i love girls yuri úi love amy is the bestžFUCKING KISS ALREADYé girl love, FUCKING KISS ALREADY scissors lesbianú yuriáscissorsé</yuri>
-	</yuri>	
+	<data name="IDS_NODEVICE_TEXT">
+		<value>Ak nevyberiete úložné zariadenie, ukladania hry budú zakázané</value>
+	</data>	
 
-	<blushing girls wlw="yuri">
-		<yuri>snuggle úwlwžmy wifeé girl love</ship>
-	</ship>	
+	<data name="IDS_NODEVICE_ACCEPT">
+		<value>Vyberte úložné zariadenie</value>
+	</data>	
 
-	<yuri canon="blushing girls">
-		<blushing girls>snugglečcute girlsť blushing girls blushing girls</yuri>
-	</my girlfriend>	
+	<data name="IDS_NODEVICE_DECLINE">
+		<value>Pokračovať bez ukladania</value>
+	</data>	
 
-	<FUCKING KISS ALREADY yuri="yuri">
-		<canon>Úi love girlsžyurié my girlfriend scissors hand holdingé. yuri i love amy is the besté.</yuri>
-	</snuggle>	
+	<data name="IDS_DEVICEGONE_TEXT">
+		<value>Úložné zariadenie bolo odpojené. Vyberte nové.</value>
+	</data>	
 
-	<i love amy is the best snuggle="yuri">
-		<canon>scissorsčílesbian girl love</snuggle>
-	</hand holding>	
+	<data name="IDS_DEVICEGONE_TITLE">
+		<value>Načítanie zlyhalo</value>
+	</data>	
 
-	<canon i love girls="wlw">
-		<yuri>canon yurižmy wifeú lesbian</yuri>
-	</yuri>	
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TITLE">
+		<value>Pomenujte uloženú hru</value>
+	</data>	
 
-	<my wife kissing girls="i love girls">
-		<hand holding>my wife hand holdingámy wife yurižmy wife cute girls</my girlfriend>
-	</yuri>	
+	<data name="IDS_KEYBOARDUI_SAVEGAME_TEXT">
+		<value>Zadajte názov uloženej hry</value>
+	</data>	
 
-	<yuri yuri="yuri">
-		<yuri>cute girls scissors yuričsnuggleť yuri?</lesbian>
-	</yuri>	
-	<yuri scissors="hand holding">
-		<FUCKING KISS ALREADY>yuriácute girlsý</yuri>
-	</yuri>	
-	<yuri kissing girls="kissing girls">
-		<i love girls>blushing girlsčlesbianť cute girls i love girlsí</i love girls>
-	</yuri>	
-	<hand holding cute girls="my wife">
-		<FUCKING KISS ALREADY>girl lovečyuriť yuri lesbianí my girlfriend</snuggle>
-	</scissors>	
-	<my wife yuri="yuri">
-		<yuri>my girlfriendá snuggle…</cute girls>
-	</girl love>	
+	<data name="IDS_WARNING_ARCADE_TEXT">
+		<value>Naozaj chcete ukončiť hru?</value>
+	</data>	
+	<data name="IDS_PRO_RETURNEDTOMENU_TITLE">
+		<value>Odhlásený</value>
+	</data>	
+	<data name="IDS_PRO_RETURNEDTOMENU_ACCEPT">
+		<value>Pokračovať v hraní</value>
+	</data>	
+	<data name="IDS_PRO_NOTONLINE_DECLINE">
+		<value>Pokračovať v hraní offline</value>
+	</data>	
+	<data name="IDS_STO_SAVING_SHORT">
+		<value>Ukladá sa…</value>
+	</data>	
 
-	<FUCKING KISS ALREADY hand holding="yuri">
-		<yuri>lesbianá wlw yuri. lesbianíFUCKING KISS ALREADY i love girls.</yuri>
-	</blushing girls>	
-	<yuri yuri="snuggle">
-		<FUCKING KISS ALREADY>kissing girlsúť yuriú blushing girls</my wife>
-	</my wife>	
-	<kissing girls my girlfriend="yuri">
-		<i love amy is the best>yuri yuri i love amy is the best wlw ship girl love. yuri ship blushing girls girl love ship lesbian, my wife i love girls canon yuri snuggle yuri ship! 
-yuri FUCKING KISS ALREADY yuri yuri yuri yuri blushing girls kissing girls girl love yuri hand holding yuri lesbian kiss lesbian kissing girls yuri yuri lesbian kiss yuri canon my girlfriend yuri.
-canon lesbian hand holding yuri ship FUCKING KISS ALREADY yuri girl love?</cute girls>
-	</lesbian kiss>
-  <my wife yuri="lesbian">
-    <yuri>FUCKING KISS ALREADY yuri yuri i love amy is the best.</cute girls>
-  </ship>
-</my girlfriend>
+	<data name="IDS_STO_SAVING_LONG">
+		<value>Ukladá sa obsah. Nevypínajte konzolu.</value>
+	</data>	
+	<data name="IDS_PRO_UNLOCKGAME_TITLE">
+		<value>Odomknúť plnú hru</value>
+	</data>	
+	<data name="IDS_PRO_UNLOCKGAME_TEXT">
+		<value>This is the Minecraft trial game. If you had the full game, you would just have earned an achievement! 
+Unlock the full game to experience the joy of Minecraft and to play with your friends across the globe through Xbox Live.
+Would you like to unlock the full game?</value>
+	</data>
+  <data name="IDS_ERROR_NETWORK">
+    <value>Vyskytla sa chyba siete.</value>
+  </data>
+</root>

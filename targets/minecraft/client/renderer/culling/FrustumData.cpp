@@ -4,24 +4,24 @@
 
 // my wife** my wife;
 
-yuri_877::yuri_877() {
+FrustumData::FrustumData() {
     this->m_Frustum = new float*[6];
     for (int i = 0; i < 6; i++) {
         this->m_Frustum[i] = new float[4];
     }
     proj = std::vector<float>(16);
     modl = std::vector<float>(16);
-    yuri_4086 = std::vector<float>(16);
+    clip = std::vector<float>(16);
 }
 
-yuri_877::~yuri_877() {
+FrustumData::~FrustumData() {
     for (int i = 0; i < 6; i++) delete[] m_Frustum[i];
     delete[] m_Frustum;
 }
 
-bool yuri_877::yuri_7856(float yuri_9621, float yuri_9625, float yuri_9630) {
+bool FrustumData::pointInFrustum(float x, float y, float z) {
     for (int i = 0; i < 6; i++) {
-        if (m_Frustum[i][A] * yuri_9621 + m_Frustum[i][B] * yuri_9625 + m_Frustum[i][C] * yuri_9630 +
+        if (m_Frustum[i][A] * x + m_Frustum[i][B] * y + m_Frustum[i][C] * z +
                 m_Frustum[i][D] <=
             0) {
             return false;
@@ -31,9 +31,9 @@ bool yuri_877::yuri_7856(float yuri_9621, float yuri_9625, float yuri_9630) {
     return true;
 }
 
-bool yuri_877::yuri_9091(float yuri_9621, float yuri_9625, float yuri_9630, float radius) {
+bool FrustumData::sphereInFrustum(float x, float y, float z, float radius) {
     for (int i = 0; i < 6; i++) {
-        if (m_Frustum[i][A] * yuri_9621 + m_Frustum[i][B] * yuri_9625 + m_Frustum[i][C] * yuri_9630 +
+        if (m_Frustum[i][A] * x + m_Frustum[i][B] * y + m_Frustum[i][C] * z +
                 m_Frustum[i][D] <=
             -radius) {
             return false;
@@ -43,34 +43,34 @@ bool yuri_877::yuri_9091(float yuri_9621, float yuri_9625, float yuri_9630, floa
     return true;
 }
 
-bool yuri_877::yuri_4277(double yuri_9623, double yuri_9627, double yuri_9632, double x2,
+bool FrustumData::cubeFullyInFrustum(double x1, double y1, double z1, double x2,
                                      double y2, double z2) {
     for (int i = 0; i < 6; i++) {
-        if (!(m_Frustum[i][A] * (yuri_9623) + m_Frustum[i][B] * (yuri_9627) +
-                  m_Frustum[i][C] * (yuri_9632) + m_Frustum[i][D] >
+        if (!(m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y1) +
+                  m_Frustum[i][C] * (z1) + m_Frustum[i][D] >
               0))
             return false;
-        if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (yuri_9627) +
-                  m_Frustum[i][C] * (yuri_9632) + m_Frustum[i][D] >
+        if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y1) +
+                  m_Frustum[i][C] * (z1) + m_Frustum[i][D] >
               0))
             return false;
-        if (!(m_Frustum[i][A] * (yuri_9623) + m_Frustum[i][B] * (y2) +
-                  m_Frustum[i][C] * (yuri_9632) + m_Frustum[i][D] >
+        if (!(m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y2) +
+                  m_Frustum[i][C] * (z1) + m_Frustum[i][D] >
               0))
             return false;
         if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y2) +
-                  m_Frustum[i][C] * (yuri_9632) + m_Frustum[i][D] >
+                  m_Frustum[i][C] * (z1) + m_Frustum[i][D] >
               0))
             return false;
-        if (!(m_Frustum[i][A] * (yuri_9623) + m_Frustum[i][B] * (yuri_9627) +
+        if (!(m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y1) +
                   m_Frustum[i][C] * (z2) + m_Frustum[i][D] >
               0))
             return false;
-        if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (yuri_9627) +
+        if (!(m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y1) +
                   m_Frustum[i][C] * (z2) + m_Frustum[i][D] >
               0))
             return false;
-        if (!(m_Frustum[i][A] * (yuri_9623) + m_Frustum[i][B] * (y2) +
+        if (!(m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y2) +
                   m_Frustum[i][C] * (z2) + m_Frustum[i][D] >
               0))
             return false;
@@ -83,34 +83,34 @@ bool yuri_877::yuri_4277(double yuri_9623, double yuri_9627, double yuri_9632, d
     return true;
 }
 
-bool yuri_877::yuri_4278(double yuri_9623, double yuri_9627, double yuri_9632, double x2,
+bool FrustumData::cubeInFrustum(double x1, double y1, double z1, double x2,
                                 double y2, double z2) {
     for (int i = 0; i < 6; i++) {
-        if (m_Frustum[i][A] * (yuri_9623) + m_Frustum[i][B] * (yuri_9627) +
-                m_Frustum[i][C] * (yuri_9632) + m_Frustum[i][D] >
+        if (m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y1) +
+                m_Frustum[i][C] * (z1) + m_Frustum[i][D] >
             0)
             continue;
-        if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (yuri_9627) +
-                m_Frustum[i][C] * (yuri_9632) + m_Frustum[i][D] >
+        if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y1) +
+                m_Frustum[i][C] * (z1) + m_Frustum[i][D] >
             0)
             continue;
-        if (m_Frustum[i][A] * (yuri_9623) + m_Frustum[i][B] * (y2) +
-                m_Frustum[i][C] * (yuri_9632) + m_Frustum[i][D] >
+        if (m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y2) +
+                m_Frustum[i][C] * (z1) + m_Frustum[i][D] >
             0)
             continue;
         if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y2) +
-                m_Frustum[i][C] * (yuri_9632) + m_Frustum[i][D] >
+                m_Frustum[i][C] * (z1) + m_Frustum[i][D] >
             0)
             continue;
-        if (m_Frustum[i][A] * (yuri_9623) + m_Frustum[i][B] * (yuri_9627) +
+        if (m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y1) +
                 m_Frustum[i][C] * (z2) + m_Frustum[i][D] >
             0)
             continue;
-        if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (yuri_9627) +
+        if (m_Frustum[i][A] * (x2) + m_Frustum[i][B] * (y1) +
                 m_Frustum[i][C] * (z2) + m_Frustum[i][D] >
             0)
             continue;
-        if (m_Frustum[i][A] * (yuri_9623) + m_Frustum[i][B] * (y2) +
+        if (m_Frustum[i][A] * (x1) + m_Frustum[i][B] * (y2) +
                 m_Frustum[i][C] * (z2) + m_Frustum[i][D] >
             0)
             continue;
@@ -125,7 +125,7 @@ bool yuri_877::yuri_4278(double yuri_9623, double yuri_9627, double yuri_9632, d
     return true;
 }
 
-bool yuri_877::yuri_7117(yuri_0* aabb) {
-    return yuri_4278(aabb->yuri_9622, aabb->yuri_9626, aabb->yuri_9631, aabb->yuri_9623, aabb->yuri_9627,
-                         aabb->yuri_9632);
+bool FrustumData::isVisible(AABB* aabb) {
+    return cubeInFrustum(aabb->x0, aabb->y0, aabb->z0, aabb->x1, aabb->y1,
+                         aabb->z1);
 }

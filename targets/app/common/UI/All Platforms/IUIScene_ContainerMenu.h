@@ -2,11 +2,11 @@
 
 #include "IUIScene_AbstractContainerMenu.h"
 
-class IUIScene_ContainerMenu : public virtual yuri_1335 {
+class IUIScene_ContainerMenu : public virtual IUIScene_AbstractContainerMenu {
 protected:
-    virtual ESceneSection yuri_1154(ESceneSection eSection,
+    virtual ESceneSection GetSectionAndSlotInDirection(ESceneSection eSection,
                                                        ETapState eTapDirection,
                                                        int* piTargetX,
                                                        int* piTargetY);
-    int yuri_5869(ESceneSection eSection);
+    int getSectionStartOffset(ESceneSection eSection);
 };

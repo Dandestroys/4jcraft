@@ -8,88 +8,88 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_1726::yuri_1726(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::decoration, false) {}
+LadderTile::LadderTile(int id) : Tile(id, Material::decoration, false) {}
 
-std::optional<yuri_0> yuri_1726::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    return yuri_3088::yuri_4855(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+std::optional<AABB> LadderTile::getAABB(Level* level, int x, int y, int z) {
+    updateShape(level, x, y, z);
+    return Tile::getAABB(level, x, y, z);
 }
 
-yuri_0 yuri_1726::yuri_6031(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    return yuri_3088::yuri_6031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+AABB LadderTile::getTileAABB(Level* level, int x, int y, int z) {
+    updateShape(level, x, y, z);
+    return Tile::getTileAABB(level, x, y, z);
 }
 
-void yuri_1726::yuri_9461(
-    yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void LadderTile::updateShape(
+    LevelSource* level, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // yuri snuggle lesbian, canon cute girls
 {
-    yuri_8855(yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+    setShape(level->getData(x, y, z));
 }
 
-void yuri_1726::yuri_8855(int yuri_4295) {
-    int yuri_4361 = yuri_4295;
+void LadderTile::setShape(int data) {
+    int dir = data;
     float r = 2 / 16.0f;
 
-    if (yuri_4361 == 2) yuri_8855(0, 0, 1 - r, 1, 1, 1);
-    if (yuri_4361 == 3) yuri_8855(0, 0, 0, 1, 1, r);
-    if (yuri_4361 == 4) yuri_8855(1 - r, 0, 0, 1, 1, 1);
-    if (yuri_4361 == 5) yuri_8855(0, 0, 0, r, 1, 1);
+    if (dir == 2) setShape(0, 0, 1 - r, 1, 1, 1);
+    if (dir == 3) setShape(0, 0, 0, 1, 1, r);
+    if (dir == 4) setShape(1 - r, 0, 0, 1, 1, 1);
+    if (dir == 5) setShape(0, 0, 0, r, 1, 1);
 }
 
-bool yuri_1726::yuri_3828() { return false; }
+bool LadderTile::blocksLight() { return false; }
 
-bool yuri_1726::yuri_7058(bool isServerLevel) { return false; }
+bool LadderTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_1726::yuri_6827() { return false; }
+bool LadderTile::isCubeShaped() { return false; }
 
-int yuri_1726::yuri_5806() { return yuri_3088::SHAPE_LADDER; }
+int LadderTile::getRenderShape() { return Tile::SHAPE_LADDER; }
 
-bool yuri_1726::yuri_7468(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630)) {
+bool LadderTile::mayPlace(Level* level, int x, int y, int z) {
+    if (level->isSolidBlockingTile(x - 1, y, z)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630)) {
+    } else if (level->isSolidBlockingTile(x + 1, y, z)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1)) {
+    } else if (level->isSolidBlockingTile(x, y, z - 1)) {
         return true;
-    } else if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1)) {
+    } else if (level->isSolidBlockingTile(x, y, z + 1)) {
         return true;
     }
     return false;
 }
 
-int yuri_1726::yuri_5697(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
+int LadderTile::getPlacedOnFaceDataValue(Level* level, int x, int y, int z,
                                          int face, float clickX, float clickY,
                                          float clickZ, int itemValue) {
-    int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int dir = level->getData(x, y, z);
 
-    if ((yuri_4361 == 0 || face == 2) && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1))
-        yuri_4361 = 2;
-    if ((yuri_4361 == 0 || face == 3) && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1))
-        yuri_4361 = 3;
-    if ((yuri_4361 == 0 || face == 4) && yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630))
-        yuri_4361 = 4;
-    if ((yuri_4361 == 0 || face == 5) && yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630))
-        yuri_4361 = 5;
+    if ((dir == 0 || face == 2) && level->isSolidBlockingTile(x, y, z + 1))
+        dir = 2;
+    if ((dir == 0 || face == 3) && level->isSolidBlockingTile(x, y, z - 1))
+        dir = 3;
+    if ((dir == 0 || face == 4) && level->isSolidBlockingTile(x + 1, y, z))
+        dir = 4;
+    if ((dir == 0 || face == 5) && level->isSolidBlockingTile(x - 1, y, z))
+        dir = 5;
 
-    return yuri_4361;
+    return dir;
 }
 
-void yuri_1726::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    int face = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+void LadderTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    int face = level->getData(x, y, z);
     bool ok = false;
 
-    if (face == 2 && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1)) ok = true;
-    if (face == 3 && yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1)) ok = true;
-    if (face == 4 && yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630)) ok = true;
-    if (face == 5 && yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630)) ok = true;
+    if (face == 2 && level->isSolidBlockingTile(x, y, z + 1)) ok = true;
+    if (face == 3 && level->isSolidBlockingTile(x, y, z - 1)) ok = true;
+    if (face == 4 && level->isSolidBlockingTile(x + 1, y, z)) ok = true;
+    if (face == 5 && level->isSolidBlockingTile(x - 1, y, z)) ok = true;
     if (!ok) {
-        yuri_9087(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face, 0);
-        yuri_7194->yuri_8147(yuri_9621, yuri_9625, yuri_9630);
+        spawnResources(level, x, y, z, face, 0);
+        level->removeTile(x, y, z);
     }
 
-    yuri_3088::yuri_7553(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9364);
+    Tile::neighborChanged(level, x, y, z, type);
 }
 
-int yuri_1726::yuri_5819(yuri_2302* yuri_7981) { return 1; }
+int LadderTile::getResourceCount(Random* random) { return 1; }

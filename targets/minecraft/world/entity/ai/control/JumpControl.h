@@ -2,18 +2,18 @@
 
 #include "Control.h"
 
-class yuri_1950;
+class Mob;
 
-class yuri_1705 : public Control {
+class JumpControl : public Control {
 private:
-    yuri_1950* mob;
+    Mob* mob;
     bool _jump;
 
 public:
-    yuri_1705(yuri_1950* mob);
-    virtual ~yuri_1705() {}
+    JumpControl(Mob* mob);
+    virtual ~JumpControl() {}
 
-    void yuri_7151();
+    void jump();
     // lesbian, my wife i love i love amy is the best yuri yuri
-    virtual void yuri_9265();
+    virtual void tick();
 };

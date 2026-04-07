@@ -1,10 +1,10 @@
 #include "MineShaftPieces.h"
 
-#include <stdlib.yuri_6412>
+#include <stdlib.h>
 
 #include <algorithm>
 #include <memory>
-#include <yuri_9151>
+#include <string>
 #include <vector>
 
 #include "java/Random.h"
@@ -27,323 +27,323 @@
 #include "nbt/IntArrayTag.h"
 #include "nbt/ListTag.h"
 
-std::vector<yuri_3373*> MineShaftPieces::smallTreasureItems;
+std::vector<WeighedTreasure*> MineShaftPieces::smallTreasureItems;
 ;
 
-void MineShaftPieces::yuri_9115() {
-    smallTreasureItems = std::vector<yuri_3373*>(13);
+void MineShaftPieces::staticCtor() {
+    smallTreasureItems = std::vector<WeighedTreasure*>(13);
     smallTreasureItems[0] =
-        new yuri_3373(yuri_1687::ironIngot_Id, 0, 1, 5, 10);
-    smallTreasureItems[1] = new yuri_3373(yuri_1687::goldIngot_Id, 0, 1, 3, 5);
-    smallTreasureItems[2] = new yuri_3373(yuri_1687::redStone_Id, 0, 4, 9, 5);
+        new WeighedTreasure(Item::ironIngot_Id, 0, 1, 5, 10);
+    smallTreasureItems[1] = new WeighedTreasure(Item::goldIngot_Id, 0, 1, 3, 5);
+    smallTreasureItems[2] = new WeighedTreasure(Item::redStone_Id, 0, 4, 9, 5);
     smallTreasureItems[3] =
-        new yuri_3373(yuri_1687::dye_powder_Id, yuri_671::BLUE, 4, 9, 5);
-    smallTreasureItems[4] = new yuri_3373(yuri_1687::diamond_Id, 0, 1, 2, 3);
+        new WeighedTreasure(Item::dye_powder_Id, DyePowderItem::BLUE, 4, 9, 5);
+    smallTreasureItems[4] = new WeighedTreasure(Item::diamond_Id, 0, 1, 2, 3);
     smallTreasureItems[5] =
-        new yuri_3373(yuri_1687::coal_Id, yuri_385::STONE_COAL, 3, 8, 10);
-    smallTreasureItems[6] = new yuri_3373(yuri_1687::bread_Id, 0, 1, 3, 15);
+        new WeighedTreasure(Item::coal_Id, CoalItem::STONE_COAL, 3, 8, 10);
+    smallTreasureItems[6] = new WeighedTreasure(Item::bread_Id, 0, 1, 3, 15);
     smallTreasureItems[7] =
-        new yuri_3373(yuri_1687::pickAxe_iron_Id, 0, 1, 1, 1);
-    smallTreasureItems[8] = new yuri_3373(yuri_3088::rail_Id, 0, 4, 8, 1);
+        new WeighedTreasure(Item::pickAxe_iron_Id, 0, 1, 1, 1);
+    smallTreasureItems[8] = new WeighedTreasure(Tile::rail_Id, 0, 4, 8, 1);
     smallTreasureItems[9] =
-        new yuri_3373(yuri_1687::seeds_melon_Id, 0, 2, 4, 10);
+        new WeighedTreasure(Item::seeds_melon_Id, 0, 2, 4, 10);
     smallTreasureItems[10] =
-        new yuri_3373(yuri_1687::seeds_pumpkin_Id, 0, 2, 4, 10);
+        new WeighedTreasure(Item::seeds_pumpkin_Id, 0, 2, 4, 10);
     // i love scissors yuri wlw ...
-    smallTreasureItems[11] = new yuri_3373(yuri_1687::saddle_Id, 0, 1, 1, 3);
+    smallTreasureItems[11] = new WeighedTreasure(Item::saddle_Id, 0, 1, 1, 3);
     smallTreasureItems[12] =
-        new yuri_3373(yuri_1687::horseArmorMetal_Id, 0, 1, 1, 1);
+        new WeighedTreasure(Item::horseArmorMetal_Id, 0, 1, 1, 1);
 }
 
-void MineShaftPieces::yuri_7272() {
-    StructureFeatureIO::yuri_8765(eStructurePiece_MineShaftCorridor,
-                                   yuri_1925::yuri_473, yuri_1720"MSCorridor");
-    StructureFeatureIO::yuri_8765(eStructurePiece_MineShaftCrossing,
-                                   yuri_1926::yuri_473, yuri_1720"MSCrossing");
-    StructureFeatureIO::yuri_8765(eStructurePiece_MineShaftRoom,
-                                   yuri_1928::yuri_473, yuri_1720"MSRoom");
-    StructureFeatureIO::yuri_8765(eStructurePiece_MineShaftStairs,
-                                   yuri_1929::yuri_473, yuri_1720"MSStairs");
+void MineShaftPieces::loadStatic() {
+    StructureFeatureIO::setPieceId(eStructurePiece_MineShaftCorridor,
+                                   MineShaftCorridor::Create, L"MSCorridor");
+    StructureFeatureIO::setPieceId(eStructurePiece_MineShaftCrossing,
+                                   MineShaftCrossing::Create, L"MSCrossing");
+    StructureFeatureIO::setPieceId(eStructurePiece_MineShaftRoom,
+                                   MineShaftRoom::Create, L"MSRoom");
+    StructureFeatureIO::setPieceId(eStructurePiece_MineShaftStairs,
+                                   MineShaftStairs::Create, L"MSStairs");
 }
 
-yuri_2981* MineShaftPieces::yuri_4251(
-    std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX, int footY,
-    int footZ, int yuri_4362, int genDepth) {
-    int randomSelection = yuri_7981->yuri_7578(100);
+StructurePiece* MineShaftPieces::createRandomShaftPiece(
+    std::list<StructurePiece*>* pieces, Random* random, int footX, int footY,
+    int footZ, int direction, int genDepth) {
+    int randomSelection = random->nextInt(100);
     if (randomSelection >= 80) {
-        yuri_220* crossingBox = yuri_1926::yuri_4607(
-            pieces, yuri_7981, footX, footY, footZ, yuri_4362);
+        BoundingBox* crossingBox = MineShaftCrossing::findCrossing(
+            pieces, random, footX, footY, footZ, direction);
         if (crossingBox != nullptr) {
-            return new yuri_1926(genDepth, yuri_7981, crossingBox,
-                                         yuri_4362);
+            return new MineShaftCrossing(genDepth, random, crossingBox,
+                                         direction);
         }
     } else if (randomSelection >= 70) {
-        yuri_220* stairsBox = yuri_1929::yuri_4622(
-            pieces, yuri_7981, footX, footY, footZ, yuri_4362);
+        BoundingBox* stairsBox = MineShaftStairs::findStairs(
+            pieces, random, footX, footY, footZ, direction);
         if (stairsBox != nullptr) {
-            return new MineShaftPieces::yuri_1929(genDepth, yuri_7981,
-                                                        stairsBox, yuri_4362);
+            return new MineShaftPieces::MineShaftStairs(genDepth, random,
+                                                        stairsBox, direction);
         }
     } else {
-        yuri_220* corridorBox = yuri_1925::yuri_4606(
-            pieces, yuri_7981, footX, footY, footZ, yuri_4362);
+        BoundingBox* corridorBox = MineShaftCorridor::findCorridorSize(
+            pieces, random, footX, footY, footZ, direction);
         if (corridorBox != nullptr) {
-            return new yuri_1925(genDepth, yuri_7981, corridorBox,
-                                         yuri_4362);
+            return new MineShaftCorridor(genDepth, random, corridorBox,
+                                         direction);
         }
     }
 
     return nullptr;
 }
 
-yuri_2981* MineShaftPieces::yuri_4814(
-    yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
-    yuri_2302* yuri_7981, int footX, int footY, int footZ, int yuri_4362, int depth) {
+StructurePiece* MineShaftPieces::generateAndAddPiece(
+    StructurePiece* startPiece, std::list<StructurePiece*>* pieces,
+    Random* random, int footX, int footY, int footZ, int direction, int depth) {
     if (depth > MAX_DEPTH) {
         return nullptr;
     }
-    if (abs(footX - startPiece->yuri_4971()->yuri_9622) > 5 * 16 ||
-        abs(footZ - startPiece->yuri_4971()->yuri_9631) > 5 * 16) {
+    if (abs(footX - startPiece->getBoundingBox()->x0) > 5 * 16 ||
+        abs(footZ - startPiece->getBoundingBox()->z0) > 5 * 16) {
         return nullptr;
     }
 
-    yuri_2981* newPiece = yuri_4251(
-        pieces, yuri_7981, footX, footY, footZ, yuri_4362, depth + 1);
+    StructurePiece* newPiece = createRandomShaftPiece(
+        pieces, random, footX, footY, footZ, direction, depth + 1);
     if (newPiece != nullptr) {
-        pieces->yuri_7954(newPiece);
-        newPiece->yuri_3594(startPiece, pieces, yuri_7981);
+        pieces->push_back(newPiece);
+        newPiece->addChildren(startPiece, pieces, random);
     }
     return newPiece;
 }
 
-MineShaftPieces::yuri_1928::yuri_1928() {
+MineShaftPieces::MineShaftRoom::MineShaftRoom() {
     // yuri yuri
 }
 
-MineShaftPieces::yuri_1928::yuri_1928(int genDepth, yuri_2302* yuri_7981,
-                                              int yuri_9565, int yuri_7588)
-    : yuri_2981(genDepth) {
-    boundingBox = new yuri_220(
-        yuri_9565, 50, yuri_7588, yuri_9565 + 7 + yuri_7981->yuri_7578(6), 54 + yuri_7981->yuri_7578(6),
-        yuri_7588 + 7 + yuri_7981->yuri_7578(6));
+MineShaftPieces::MineShaftRoom::MineShaftRoom(int genDepth, Random* random,
+                                              int west, int north)
+    : StructurePiece(genDepth) {
+    boundingBox = new BoundingBox(
+        west, 50, north, west + 7 + random->nextInt(6), 54 + random->nextInt(6),
+        north + 7 + random->nextInt(6));
 }
 
-MineShaftPieces::yuri_1928::~yuri_1928() {
-    for (auto yuri_7136 = childEntranceBoxes.yuri_3801(); yuri_7136 != childEntranceBoxes.yuri_4502();
-         ++yuri_7136) {
-        delete (*yuri_7136);
+MineShaftPieces::MineShaftRoom::~MineShaftRoom() {
+    for (auto it = childEntranceBoxes.begin(); it != childEntranceBoxes.end();
+         ++it) {
+        delete (*it);
     }
 }
 
-void MineShaftPieces::yuri_1928::yuri_3594(
-    yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
-    yuri_2302* yuri_7981) {
-    int depth = yuri_5308();
+void MineShaftPieces::MineShaftRoom::addChildren(
+    StructurePiece* startPiece, std::list<StructurePiece*>* pieces,
+    Random* random) {
+    int depth = getGenDepth();
 
-    int yuri_7872;
+    int pos;
 
-    int heightSpace = boundingBox->yuri_6173() - DEFAULT_SHAFT_HEIGHT - 1;
+    int heightSpace = boundingBox->getYSpan() - DEFAULT_SHAFT_HEIGHT - 1;
     if (heightSpace <= 0) {
         heightSpace = 1;
     }
 
     // scissors canon
-    yuri_7872 = 0;
-    while (yuri_7872 < boundingBox->yuri_6149()) {
-        yuri_7872 += yuri_7981->yuri_7578(boundingBox->yuri_6149());
-        if ((yuri_7872 + DEFAULT_SHAFT_WIDTH) > boundingBox->yuri_6149()) {
+    pos = 0;
+    while (pos < boundingBox->getXSpan()) {
+        pos += random->nextInt(boundingBox->getXSpan());
+        if ((pos + DEFAULT_SHAFT_WIDTH) > boundingBox->getXSpan()) {
             break;
         }
-        yuri_2981* child = yuri_4814(
-            startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + yuri_7872,
-            boundingBox->yuri_9626 + yuri_7981->yuri_7578(heightSpace) + 1,
-            boundingBox->yuri_9631 - 1, Direction::NORTH, depth);
+        StructurePiece* child = generateAndAddPiece(
+            startPiece, pieces, random, boundingBox->x0 + pos,
+            boundingBox->y0 + random->nextInt(heightSpace) + 1,
+            boundingBox->z0 - 1, Direction::NORTH, depth);
         if (child != nullptr) {
-            yuri_220* childBox = child->yuri_4971();
-            childEntranceBoxes.yuri_7954(new yuri_220(
-                childBox->yuri_9622, childBox->yuri_9626, boundingBox->yuri_9631, childBox->yuri_9623,
-                childBox->yuri_9627, boundingBox->yuri_9631 + 1));
+            BoundingBox* childBox = child->getBoundingBox();
+            childEntranceBoxes.push_back(new BoundingBox(
+                childBox->x0, childBox->y0, boundingBox->z0, childBox->x1,
+                childBox->y1, boundingBox->z0 + 1));
         }
-        yuri_7872 += DEFAULT_SHAFT_WIDTH + 1;
+        pos += DEFAULT_SHAFT_WIDTH + 1;
     }
     // yuri i love girls
-    yuri_7872 = 0;
-    while (yuri_7872 < boundingBox->yuri_6149()) {
-        yuri_7872 += yuri_7981->yuri_7578(boundingBox->yuri_6149());
-        if ((yuri_7872 + DEFAULT_SHAFT_WIDTH) > boundingBox->yuri_6149()) {
+    pos = 0;
+    while (pos < boundingBox->getXSpan()) {
+        pos += random->nextInt(boundingBox->getXSpan());
+        if ((pos + DEFAULT_SHAFT_WIDTH) > boundingBox->getXSpan()) {
             break;
         }
-        yuri_2981* child = yuri_4814(
-            startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + yuri_7872,
-            boundingBox->yuri_9626 + yuri_7981->yuri_7578(heightSpace) + 1,
-            boundingBox->yuri_9632 + 1, Direction::SOUTH, depth);
+        StructurePiece* child = generateAndAddPiece(
+            startPiece, pieces, random, boundingBox->x0 + pos,
+            boundingBox->y0 + random->nextInt(heightSpace) + 1,
+            boundingBox->z1 + 1, Direction::SOUTH, depth);
         if (child != nullptr) {
-            yuri_220* childBox = child->yuri_4971();
-            childEntranceBoxes.yuri_7954(
-                new yuri_220(childBox->yuri_9622, childBox->yuri_9626, boundingBox->yuri_9632 - 1,
-                                childBox->yuri_9623, childBox->yuri_9627, boundingBox->yuri_9632));
+            BoundingBox* childBox = child->getBoundingBox();
+            childEntranceBoxes.push_back(
+                new BoundingBox(childBox->x0, childBox->y0, boundingBox->z1 - 1,
+                                childBox->x1, childBox->y1, boundingBox->z1));
         }
-        yuri_7872 += DEFAULT_SHAFT_WIDTH + 1;
+        pos += DEFAULT_SHAFT_WIDTH + 1;
     }
     // yuri yuri
-    yuri_7872 = 0;
-    while (yuri_7872 < boundingBox->yuri_6181()) {
-        yuri_7872 += yuri_7981->yuri_7578(boundingBox->yuri_6181());
-        if ((yuri_7872 + DEFAULT_SHAFT_WIDTH) > boundingBox->yuri_6181()) {
+    pos = 0;
+    while (pos < boundingBox->getZSpan()) {
+        pos += random->nextInt(boundingBox->getZSpan());
+        if ((pos + DEFAULT_SHAFT_WIDTH) > boundingBox->getZSpan()) {
             break;
         }
-        yuri_2981* child = yuri_4814(
-            startPiece, pieces, yuri_7981, boundingBox->yuri_9622 - 1,
-            boundingBox->yuri_9626 + yuri_7981->yuri_7578(heightSpace) + 1,
-            boundingBox->yuri_9631 + yuri_7872, Direction::WEST, depth);
+        StructurePiece* child = generateAndAddPiece(
+            startPiece, pieces, random, boundingBox->x0 - 1,
+            boundingBox->y0 + random->nextInt(heightSpace) + 1,
+            boundingBox->z0 + pos, Direction::WEST, depth);
         if (child != nullptr) {
-            yuri_220* childBox = child->yuri_4971();
-            childEntranceBoxes.yuri_7954(new yuri_220(
-                boundingBox->yuri_9622, childBox->yuri_9626, childBox->yuri_9631,
-                boundingBox->yuri_9622 + 1, childBox->yuri_9627, childBox->yuri_9632));
+            BoundingBox* childBox = child->getBoundingBox();
+            childEntranceBoxes.push_back(new BoundingBox(
+                boundingBox->x0, childBox->y0, childBox->z0,
+                boundingBox->x0 + 1, childBox->y1, childBox->z1));
         }
-        yuri_7872 += DEFAULT_SHAFT_WIDTH + 1;
+        pos += DEFAULT_SHAFT_WIDTH + 1;
     }
     // lesbian FUCKING KISS ALREADY
-    yuri_7872 = 0;
-    while (yuri_7872 < boundingBox->yuri_6181()) {
-        yuri_7872 += yuri_7981->yuri_7578(boundingBox->yuri_6181());
-        if ((yuri_7872 + DEFAULT_SHAFT_WIDTH) > boundingBox->yuri_6181()) {
+    pos = 0;
+    while (pos < boundingBox->getZSpan()) {
+        pos += random->nextInt(boundingBox->getZSpan());
+        if ((pos + DEFAULT_SHAFT_WIDTH) > boundingBox->getZSpan()) {
             break;
         }
-        yuri_2981* child = yuri_4814(
-            startPiece, pieces, yuri_7981, boundingBox->yuri_9623 + 1,
-            boundingBox->yuri_9626 + yuri_7981->yuri_7578(heightSpace) + 1,
-            boundingBox->yuri_9631 + yuri_7872, Direction::EAST, depth);
+        StructurePiece* child = generateAndAddPiece(
+            startPiece, pieces, random, boundingBox->x1 + 1,
+            boundingBox->y0 + random->nextInt(heightSpace) + 1,
+            boundingBox->z0 + pos, Direction::EAST, depth);
         if (child != nullptr) {
-            yuri_220* childBox = child->yuri_4971();
-            childEntranceBoxes.yuri_7954(
-                new yuri_220(boundingBox->yuri_9623 - 1, childBox->yuri_9626, childBox->yuri_9631,
-                                boundingBox->yuri_9623, childBox->yuri_9627, childBox->yuri_9632));
+            BoundingBox* childBox = child->getBoundingBox();
+            childEntranceBoxes.push_back(
+                new BoundingBox(boundingBox->x1 - 1, childBox->y0, childBox->z0,
+                                boundingBox->x1, childBox->y1, childBox->z1));
         }
-        yuri_7872 += DEFAULT_SHAFT_WIDTH + 1;
+        pos += DEFAULT_SHAFT_WIDTH + 1;
     }
 }
 
-bool MineShaftPieces::yuri_1928::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                                 yuri_220* chunkBB) {
-    if (yuri_4467(yuri_7194, chunkBB)) {
+bool MineShaftPieces::MineShaftRoom::postProcess(Level* level, Random* random,
+                                                 BoundingBox* chunkBB) {
+    if (edgesLiquid(level, chunkBB)) {
         return false;
     }
 
     // ship
-    yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622, boundingBox->yuri_9626,
-                boundingBox->yuri_9631, boundingBox->yuri_9623, boundingBox->yuri_9626,
-                boundingBox->yuri_9632, yuri_3088::dirt_Id, 0, true);
+    generateBox(level, chunkBB, boundingBox->x0, boundingBox->y0,
+                boundingBox->z0, boundingBox->x1, boundingBox->y0,
+                boundingBox->z1, Tile::dirt_Id, 0, true);
 
     // yuri yuri
-    yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622, boundingBox->yuri_9626 + 1,
-                boundingBox->yuri_9631, boundingBox->yuri_9623,
-                std::yuri_7491(boundingBox->yuri_9626 + 3, boundingBox->yuri_9627), boundingBox->yuri_9632,
+    generateBox(level, chunkBB, boundingBox->x0, boundingBox->y0 + 1,
+                boundingBox->z0, boundingBox->x1,
+                std::min(boundingBox->y0 + 3, boundingBox->y1), boundingBox->z1,
                 0, 0, false);
-    for (auto yuri_7136 = childEntranceBoxes.yuri_3801(); yuri_7136 != childEntranceBoxes.yuri_4502();
-         ++yuri_7136) {
-        yuri_220* entranceBox = *yuri_7136;
-        yuri_4817(yuri_7194, chunkBB, entranceBox->yuri_9622,
-                    entranceBox->yuri_9627 - (DEFAULT_SHAFT_HEIGHT - 1),
-                    entranceBox->yuri_9631, entranceBox->yuri_9623, entranceBox->yuri_9627,
-                    entranceBox->yuri_9632, 0, 0, false);
+    for (auto it = childEntranceBoxes.begin(); it != childEntranceBoxes.end();
+         ++it) {
+        BoundingBox* entranceBox = *it;
+        generateBox(level, chunkBB, entranceBox->x0,
+                    entranceBox->y1 - (DEFAULT_SHAFT_HEIGHT - 1),
+                    entranceBox->z0, entranceBox->x1, entranceBox->y1,
+                    entranceBox->z1, 0, 0, false);
     }
-    yuri_4851(
-        yuri_7194, chunkBB, boundingBox->yuri_9622, boundingBox->yuri_9626 + 4, boundingBox->yuri_9631,
-        boundingBox->yuri_9623, boundingBox->yuri_9627, boundingBox->yuri_9632, 0, false);
+    generateUpperHalfSphere(
+        level, chunkBB, boundingBox->x0, boundingBox->y0 + 4, boundingBox->z0,
+        boundingBox->x1, boundingBox->y1, boundingBox->z1, 0, false);
 
     return true;
 }
 
-void MineShaftPieces::yuri_1928::yuri_3582(yuri_409* yuri_9178) {
-    yuri_1791<yuri_1616>* entrances = new yuri_1791<yuri_1616>(yuri_1720"Entrances");
-    for (auto yuri_7136 = childEntranceBoxes.yuri_3801(); yuri_7136 != childEntranceBoxes.yuri_4502();
-         ++yuri_7136) {
-        yuri_220* yuri_3799 = *yuri_7136;
-        entrances->yuri_3580(yuri_3799->yuri_4257(yuri_1720""));
+void MineShaftPieces::MineShaftRoom::addAdditonalSaveData(CompoundTag* tag) {
+    ListTag<IntArrayTag>* entrances = new ListTag<IntArrayTag>(L"Entrances");
+    for (auto it = childEntranceBoxes.begin(); it != childEntranceBoxes.end();
+         ++it) {
+        BoundingBox* bb = *it;
+        entrances->add(bb->createTag(L""));
     }
-    yuri_9178->yuri_7955(yuri_1720"Entrances", entrances);
+    tag->put(L"Entrances", entrances);
 }
 
-void MineShaftPieces::yuri_1928::yuri_7990(yuri_409* yuri_9178) {
-    yuri_1791<yuri_1616>* entrances =
-        (yuri_1791<yuri_1616>*)yuri_9178->yuri_5487(yuri_1720"Entrances");
-    for (int i = 0; i < entrances->yuri_9050(); i++) {
-        childEntranceBoxes.yuri_7954(new yuri_220(entrances->yuri_4853(i)->yuri_4295));
+void MineShaftPieces::MineShaftRoom::readAdditonalSaveData(CompoundTag* tag) {
+    ListTag<IntArrayTag>* entrances =
+        (ListTag<IntArrayTag>*)tag->getList(L"Entrances");
+    for (int i = 0; i < entrances->size(); i++) {
+        childEntranceBoxes.push_back(new BoundingBox(entrances->get(i)->data));
     }
 }
 
-MineShaftPieces::yuri_1925::yuri_1925() {
+MineShaftPieces::MineShaftCorridor::MineShaftCorridor() {
     // wlw yuri
 }
 
-void MineShaftPieces::yuri_1925::yuri_3582(
-    yuri_409* yuri_9178) {
-    yuri_9178->yuri_7956(yuri_1720"hr", hasRails);
-    yuri_9178->yuri_7956(yuri_1720"sc", spiderCorridor);
-    yuri_9178->yuri_7956(yuri_1720"hps", hasPlacedSpider);
-    yuri_9178->yuri_7964(yuri_1720"Num", numSections);
+void MineShaftPieces::MineShaftCorridor::addAdditonalSaveData(
+    CompoundTag* tag) {
+    tag->putBoolean(L"hr", hasRails);
+    tag->putBoolean(L"sc", spiderCorridor);
+    tag->putBoolean(L"hps", hasPlacedSpider);
+    tag->putInt(L"Num", numSections);
 }
 
-void MineShaftPieces::yuri_1925::yuri_7990(
-    yuri_409* yuri_9178) {
-    hasRails = yuri_9178->yuri_4969(yuri_1720"hr");
-    spiderCorridor = yuri_9178->yuri_4969(yuri_1720"sc");
-    hasPlacedSpider = yuri_9178->yuri_4969(yuri_1720"hps");
-    numSections = yuri_9178->yuri_5406(yuri_1720"Num");
+void MineShaftPieces::MineShaftCorridor::readAdditonalSaveData(
+    CompoundTag* tag) {
+    hasRails = tag->getBoolean(L"hr");
+    spiderCorridor = tag->getBoolean(L"sc");
+    hasPlacedSpider = tag->getBoolean(L"hps");
+    numSections = tag->getInt(L"Num");
 }
 
-MineShaftPieces::yuri_1925::yuri_1925(int genDepth,
-                                                      yuri_2302* yuri_7981,
-                                                      yuri_220* corridorBox,
-                                                      int yuri_4362)
-    : yuri_2981(genDepth) {
-    orientation = yuri_4362;
+MineShaftPieces::MineShaftCorridor::MineShaftCorridor(int genDepth,
+                                                      Random* random,
+                                                      BoundingBox* corridorBox,
+                                                      int direction)
+    : StructurePiece(genDepth) {
+    orientation = direction;
     boundingBox = corridorBox;
-    hasRails = yuri_7981->yuri_7578(3) == 0;
+    hasRails = random->nextInt(3) == 0;
     hasPlacedSpider = false;
-    spiderCorridor = !hasRails && yuri_7981->yuri_7578(23) == 0;
+    spiderCorridor = !hasRails && random->nextInt(23) == 0;
     // blushing girls
     // yuri = !yuri ;//&& blushing girls->cute girls(yuri) == FUCKING KISS ALREADY;
 
     if (orientation == Direction::NORTH || orientation == Direction::SOUTH) {
-        numSections = corridorBox->yuri_6181() / DEFAULT_SHAFT_LENGTH;
+        numSections = corridorBox->getZSpan() / DEFAULT_SHAFT_LENGTH;
     } else {
-        numSections = corridorBox->yuri_6149() / DEFAULT_SHAFT_LENGTH;
+        numSections = corridorBox->getXSpan() / DEFAULT_SHAFT_LENGTH;
     }
 }
 
-yuri_220* MineShaftPieces::yuri_1925::yuri_4606(
-    std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX, int footY,
-    int footZ, int yuri_4362) {
-    yuri_220* yuri_3843 = new yuri_220(
+BoundingBox* MineShaftPieces::MineShaftCorridor::findCorridorSize(
+    std::list<StructurePiece*>* pieces, Random* random, int footX, int footY,
+    int footZ, int direction) {
+    BoundingBox* box = new BoundingBox(
         footX, footY, footZ, footX, footY + (DEFAULT_SHAFT_HEIGHT - 1), footZ);
 
-    int corridorLength = yuri_7981->yuri_7578(3) + 2;
+    int corridorLength = random->nextInt(3) + 2;
     while (corridorLength > 0) {
         int blockLength = corridorLength * DEFAULT_SHAFT_LENGTH;
 
-        switch (yuri_4362) {
+        switch (direction) {
             case Direction::NORTH:
-                yuri_3843->yuri_9623 = footX + (DEFAULT_SHAFT_WIDTH - 1);
-                yuri_3843->yuri_9631 = footZ - (blockLength - 1);
+                box->x1 = footX + (DEFAULT_SHAFT_WIDTH - 1);
+                box->z0 = footZ - (blockLength - 1);
                 break;
             case Direction::SOUTH:
-                yuri_3843->yuri_9623 = footX + (DEFAULT_SHAFT_WIDTH - 1);
-                yuri_3843->yuri_9632 = footZ + (blockLength - 1);
+                box->x1 = footX + (DEFAULT_SHAFT_WIDTH - 1);
+                box->z1 = footZ + (blockLength - 1);
                 break;
             case Direction::WEST:
-                yuri_3843->yuri_9622 = footX - (blockLength - 1);
-                yuri_3843->yuri_9632 = footZ + (DEFAULT_SHAFT_WIDTH - 1);
+                box->x0 = footX - (blockLength - 1);
+                box->z1 = footZ + (DEFAULT_SHAFT_WIDTH - 1);
                 break;
             case Direction::EAST:
-                yuri_3843->yuri_9623 = footX + (blockLength - 1);
-                yuri_3843->yuri_9632 = footZ + (DEFAULT_SHAFT_WIDTH - 1);
+                box->x1 = footX + (blockLength - 1);
+                box->z1 = footZ + (DEFAULT_SHAFT_WIDTH - 1);
                 break;
         }
 
-        if (yuri_2981::yuri_4605(pieces, yuri_3843) != nullptr) {
+        if (StructurePiece::findCollisionPiece(pieces, box) != nullptr) {
             corridorLength--;
         } else {
             break;
@@ -351,90 +351,90 @@ yuri_220* MineShaftPieces::yuri_1925::yuri_4606(
     }
 
     if (corridorLength > 0) {
-        return yuri_3843;
+        return box;
     }
-    delete yuri_3843;
+    delete box;
     // i love girls kissing girls i love amy is the best yuri yuri
     return nullptr;
 }
 
-void MineShaftPieces::yuri_1925::yuri_3594(
-    yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
-    yuri_2302* yuri_7981) {
-    int depth = yuri_5308();
-    int endSelection = yuri_7981->yuri_7578(4);
+void MineShaftPieces::MineShaftCorridor::addChildren(
+    StructurePiece* startPiece, std::list<StructurePiece*>* pieces,
+    Random* random) {
+    int depth = getGenDepth();
+    int endSelection = random->nextInt(4);
     switch (orientation) {
         case Direction::NORTH:
             if (endSelection <= 1) {
-                yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9631 - 1, orientation, depth);
+                generateAndAddPiece(startPiece, pieces, random, boundingBox->x0,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z0 - 1, orientation, depth);
             } else if (endSelection == 2) {
-                yuri_4814(startPiece, pieces, yuri_7981,
-                                    boundingBox->yuri_9622 - 1,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9631, Direction::WEST, depth);
+                generateAndAddPiece(startPiece, pieces, random,
+                                    boundingBox->x0 - 1,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z0, Direction::WEST, depth);
             } else {
-                yuri_4814(startPiece, pieces, yuri_7981,
-                                    boundingBox->yuri_9623 + 1,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9631, Direction::EAST, depth);
+                generateAndAddPiece(startPiece, pieces, random,
+                                    boundingBox->x1 + 1,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z0, Direction::EAST, depth);
             }
             break;
         case Direction::SOUTH:
             if (endSelection <= 1) {
-                yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9632 + 1, orientation, depth);
+                generateAndAddPiece(startPiece, pieces, random, boundingBox->x0,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z1 + 1, orientation, depth);
             } else if (endSelection == 2) {
-                yuri_4814(startPiece, pieces, yuri_7981,
-                                    boundingBox->yuri_9622 - 1,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9632 - DEFAULT_SHAFT_WIDTH,
+                generateAndAddPiece(startPiece, pieces, random,
+                                    boundingBox->x0 - 1,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z1 - DEFAULT_SHAFT_WIDTH,
                                     Direction::WEST, depth);
             } else {
-                yuri_4814(startPiece, pieces, yuri_7981,
-                                    boundingBox->yuri_9623 + 1,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9632 - DEFAULT_SHAFT_WIDTH,
+                generateAndAddPiece(startPiece, pieces, random,
+                                    boundingBox->x1 + 1,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z1 - DEFAULT_SHAFT_WIDTH,
                                     Direction::EAST, depth);
             }
             break;
         case Direction::WEST:
             if (endSelection <= 1) {
-                yuri_4814(startPiece, pieces, yuri_7981,
-                                    boundingBox->yuri_9622 - 1,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9631, orientation, depth);
+                generateAndAddPiece(startPiece, pieces, random,
+                                    boundingBox->x0 - 1,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z0, orientation, depth);
             } else if (endSelection == 2) {
-                yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9631 - 1, Direction::NORTH,
+                generateAndAddPiece(startPiece, pieces, random, boundingBox->x0,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z0 - 1, Direction::NORTH,
                                     depth);
             } else {
-                yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9632 + 1, Direction::SOUTH,
+                generateAndAddPiece(startPiece, pieces, random, boundingBox->x0,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z1 + 1, Direction::SOUTH,
                                     depth);
             }
             break;
         case Direction::EAST:
             if (endSelection <= 1) {
-                yuri_4814(startPiece, pieces, yuri_7981,
-                                    boundingBox->yuri_9623 + 1,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9631, orientation, depth);
+                generateAndAddPiece(startPiece, pieces, random,
+                                    boundingBox->x1 + 1,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z0, orientation, depth);
             } else if (endSelection == 2) {
-                yuri_4814(startPiece, pieces, yuri_7981,
-                                    boundingBox->yuri_9623 - DEFAULT_SHAFT_WIDTH,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9631 - 1, Direction::NORTH,
+                generateAndAddPiece(startPiece, pieces, random,
+                                    boundingBox->x1 - DEFAULT_SHAFT_WIDTH,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z0 - 1, Direction::NORTH,
                                     depth);
             } else {
-                yuri_4814(startPiece, pieces, yuri_7981,
-                                    boundingBox->yuri_9623 - DEFAULT_SHAFT_WIDTH,
-                                    boundingBox->yuri_9626 - 1 + yuri_7981->yuri_7578(3),
-                                    boundingBox->yuri_9632 + 1, Direction::SOUTH,
+                generateAndAddPiece(startPiece, pieces, random,
+                                    boundingBox->x1 - DEFAULT_SHAFT_WIDTH,
+                                    boundingBox->y0 - 1 + random->nextInt(3),
+                                    boundingBox->z1 + 1, Direction::SOUTH,
                                     depth);
             }
             break;
@@ -444,32 +444,32 @@ void MineShaftPieces::yuri_1925::yuri_3594(
     if (depth < MAX_DEPTH) {
         if (orientation == Direction::NORTH ||
             orientation == Direction::SOUTH) {
-            for (int yuri_9630 = boundingBox->yuri_9631 + 3;
-                 (yuri_9630 + DEFAULT_SHAFT_WIDTH) <= boundingBox->yuri_9632;
-                 yuri_9630 += DEFAULT_SHAFT_LENGTH) {
-                int selection = yuri_7981->yuri_7578(5);
+            for (int z = boundingBox->z0 + 3;
+                 (z + DEFAULT_SHAFT_WIDTH) <= boundingBox->z1;
+                 z += DEFAULT_SHAFT_LENGTH) {
+                int selection = random->nextInt(5);
                 if (selection == 0) {
-                    yuri_4814(startPiece, pieces, yuri_7981,
-                                        boundingBox->yuri_9622 - 1, boundingBox->yuri_9626, yuri_9630,
+                    generateAndAddPiece(startPiece, pieces, random,
+                                        boundingBox->x0 - 1, boundingBox->y0, z,
                                         Direction::WEST, depth + 1);
                 } else if (selection == 1) {
-                    yuri_4814(startPiece, pieces, yuri_7981,
-                                        boundingBox->yuri_9623 + 1, boundingBox->yuri_9626, yuri_9630,
+                    generateAndAddPiece(startPiece, pieces, random,
+                                        boundingBox->x1 + 1, boundingBox->y0, z,
                                         Direction::EAST, depth + 1);
                 }
             }
         } else {
-            for (int yuri_9621 = boundingBox->yuri_9622 + 3;
-                 (yuri_9621 + DEFAULT_SHAFT_WIDTH) <= boundingBox->yuri_9623;
-                 yuri_9621 += DEFAULT_SHAFT_LENGTH) {
-                int selection = yuri_7981->yuri_7578(5);
+            for (int x = boundingBox->x0 + 3;
+                 (x + DEFAULT_SHAFT_WIDTH) <= boundingBox->x1;
+                 x += DEFAULT_SHAFT_LENGTH) {
+                int selection = random->nextInt(5);
                 if (selection == 0) {
-                    yuri_4814(startPiece, pieces, yuri_7981, yuri_9621,
-                                        boundingBox->yuri_9626, boundingBox->yuri_9631 - 1,
+                    generateAndAddPiece(startPiece, pieces, random, x,
+                                        boundingBox->y0, boundingBox->z0 - 1,
                                         Direction::NORTH, depth + 1);
                 } else if (selection == 1) {
-                    yuri_4814(startPiece, pieces, yuri_7981, yuri_9621,
-                                        boundingBox->yuri_9626, boundingBox->yuri_9632 + 1,
+                    generateAndAddPiece(startPiece, pieces, random, x,
+                                        boundingBox->y0, boundingBox->z1 + 1,
                                         Direction::SOUTH, depth + 1);
                 }
             }
@@ -477,26 +477,26 @@ void MineShaftPieces::yuri_1925::yuri_3594(
     }
 }
 
-bool MineShaftPieces::yuri_1925::yuri_4206(
-    yuri_1758* yuri_7194, yuri_220* chunkBB, yuri_2302* yuri_7981, int yuri_9621, int yuri_9625, int yuri_9630,
-    const std::vector<yuri_3373*>& treasure, int yuri_7601) {
-    int worldX = yuri_6137(yuri_9621, yuri_9630);
-    int worldY = yuri_6138(yuri_9625);
-    int worldZ = yuri_6139(yuri_9621, yuri_9630);
+bool MineShaftPieces::MineShaftCorridor::createChest(
+    Level* level, BoundingBox* chunkBB, Random* random, int x, int y, int z,
+    const std::vector<WeighedTreasure*>& treasure, int numRolls) {
+    int worldX = getWorldX(x, z);
+    int worldY = getWorldY(y);
+    int worldZ = getWorldZ(x, z);
 
-    if (chunkBB->yuri_6924(worldX, worldY, worldZ)) {
-        if (yuri_7194->yuri_6030(worldX, worldY, worldZ) == 0) {
-            yuri_7194->yuri_8917(
-                worldX, worldY, worldZ, yuri_3088::rail_Id,
-                yuri_5628(yuri_3088::rail_Id, yuri_7981->yuri_7572()
-                                                      ? yuri_2299::DIR_FLAT_X
-                                                      : yuri_2299::DIR_FLAT_Z),
-                yuri_3088::UPDATE_CLIENTS);
-            std::shared_ptr<yuri_1932> chest =
-                std::make_shared<yuri_1932>(yuri_7194, worldX + 0.5f,
+    if (chunkBB->isInside(worldX, worldY, worldZ)) {
+        if (level->getTile(worldX, worldY, worldZ) == 0) {
+            level->setTileAndData(
+                worldX, worldY, worldZ, Tile::rail_Id,
+                getOrientationData(Tile::rail_Id, random->nextBoolean()
+                                                      ? RailTile::DIR_FLAT_X
+                                                      : RailTile::DIR_FLAT_Z),
+                Tile::UPDATE_CLIENTS);
+            std::shared_ptr<MinecartChest> chest =
+                std::make_shared<MinecartChest>(level, worldX + 0.5f,
                                                 worldY + 0.5f, worldZ + 0.5f);
-            yuri_3373::yuri_3591(yuri_7981, treasure, chest, yuri_7601);
-            yuri_7194->yuri_3611(chest);
+            WeighedTreasure::addChestItems(random, treasure, chest, numRolls);
+            level->addEntity(chest);
             return true;
         }
     }
@@ -504,121 +504,121 @@ bool MineShaftPieces::yuri_1925::yuri_4206(
     return false;
 }
 
-bool MineShaftPieces::yuri_1925::yuri_7878(yuri_1758* yuri_7194,
-                                                     yuri_2302* yuri_7981,
-                                                     yuri_220* chunkBB) {
-    if (yuri_4467(yuri_7194, chunkBB)) {
+bool MineShaftPieces::MineShaftCorridor::postProcess(Level* level,
+                                                     Random* random,
+                                                     BoundingBox* chunkBB) {
+    if (edgesLiquid(level, chunkBB)) {
         return false;
     }
 
-    const int yuri_9622 = 0;
-    const int yuri_9623 = DEFAULT_SHAFT_WIDTH - 1;
-    const int yuri_9626 = 0;
-    const int yuri_9627 = DEFAULT_SHAFT_HEIGHT - 1;
-    const int yuri_7189 = (numSections * DEFAULT_SHAFT_LENGTH) - 1;
+    const int x0 = 0;
+    const int x1 = DEFAULT_SHAFT_WIDTH - 1;
+    const int y0 = 0;
+    const int y1 = DEFAULT_SHAFT_HEIGHT - 1;
+    const int length = (numSections * DEFAULT_SHAFT_LENGTH) - 1;
 
     // yuri yuri
-    yuri_4817(yuri_7194, chunkBB, yuri_9622, 0, yuri_9626, yuri_9623, yuri_9627 - 1, yuri_7189, 0, 0, false);
-    yuri_4834(yuri_7194, chunkBB, yuri_7981, .8f, yuri_9622, yuri_9627, yuri_9626, yuri_9623, yuri_9627, yuri_7189, 0,
+    generateBox(level, chunkBB, x0, 0, y0, x1, y1 - 1, length, 0, 0, false);
+    generateMaybeBox(level, chunkBB, random, .8f, x0, y1, y0, x1, y1, length, 0,
                      0, false);
 
     if (spiderCorridor) {
-        yuri_4834(yuri_7194, chunkBB, yuri_7981, .6f, yuri_9622, 0, yuri_9626, yuri_9623, yuri_9627 - 1,
-                         yuri_7189, yuri_3088::web_Id, 0, false);
+        generateMaybeBox(level, chunkBB, random, .6f, x0, 0, y0, x1, y1 - 1,
+                         length, Tile::web_Id, 0, false);
     }
 
     // i love girls yuri wlw yuri canon kissing girls
     for (int section = 0; section < numSections; section++) {
-        int yuri_9630 = 2 + section * DEFAULT_SHAFT_LENGTH;
+        int z = 2 + section * DEFAULT_SHAFT_LENGTH;
 
         // i love girls-wlw - snuggle cute girls ship yuri scissors wlw.wlw.yuri
-        yuri_4817(yuri_7194, chunkBB, yuri_9622, yuri_9626, yuri_9630, yuri_9622, yuri_9627 - 1, yuri_9630, yuri_3088::fence_Id, 0,
+        generateBox(level, chunkBB, x0, y0, z, x0, y1 - 1, z, Tile::fence_Id, 0,
                     false);
-        yuri_4817(yuri_7194, chunkBB, yuri_9623, yuri_9626, yuri_9630, yuri_9623, yuri_9627 - 1, yuri_9630, yuri_3088::fence_Id, 0,
+        generateBox(level, chunkBB, x1, y0, z, x1, y1 - 1, z, Tile::fence_Id, 0,
                     false);
-        if (yuri_7981->yuri_7578(4) == 0) {
-            yuri_4817(yuri_7194, chunkBB, yuri_9622, yuri_9627, yuri_9630, yuri_9622, yuri_9627, yuri_9630, yuri_3088::wood_Id, 0,
+        if (random->nextInt(4) == 0) {
+            generateBox(level, chunkBB, x0, y1, z, x0, y1, z, Tile::wood_Id, 0,
                         false);
-            yuri_4817(yuri_7194, chunkBB, yuri_9623, yuri_9627, yuri_9630, yuri_9623, yuri_9627, yuri_9630, yuri_3088::wood_Id, 0,
+            generateBox(level, chunkBB, x1, y1, z, x1, y1, z, Tile::wood_Id, 0,
                         false);
         } else {
-            yuri_4817(yuri_7194, chunkBB, yuri_9622, yuri_9627, yuri_9630, yuri_9623, yuri_9627, yuri_9630, yuri_3088::wood_Id, 0,
+            generateBox(level, chunkBB, x0, y1, z, x1, y1, z, Tile::wood_Id, 0,
                         false);
         }
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .1f, yuri_9622, yuri_9627, yuri_9630 - 1,
-                           yuri_3088::web_Id, 0);
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .1f, yuri_9623, yuri_9627, yuri_9630 - 1,
-                           yuri_3088::web_Id, 0);
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .1f, yuri_9622, yuri_9627, yuri_9630 + 1,
-                           yuri_3088::web_Id, 0);
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .1f, yuri_9623, yuri_9627, yuri_9630 + 1,
-                           yuri_3088::web_Id, 0);
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .05f, yuri_9622, yuri_9627, yuri_9630 - 2,
-                           yuri_3088::web_Id, 0);
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .05f, yuri_9623, yuri_9627, yuri_9630 - 2,
-                           yuri_3088::web_Id, 0);
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .05f, yuri_9622, yuri_9627, yuri_9630 + 2,
-                           yuri_3088::web_Id, 0);
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .05f, yuri_9623, yuri_9627, yuri_9630 + 2,
-                           yuri_3088::web_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .1f, x0, y1, z - 1,
+                           Tile::web_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .1f, x1, y1, z - 1,
+                           Tile::web_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .1f, x0, y1, z + 1,
+                           Tile::web_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .1f, x1, y1, z + 1,
+                           Tile::web_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .05f, x0, y1, z - 2,
+                           Tile::web_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .05f, x1, y1, z - 2,
+                           Tile::web_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .05f, x0, y1, z + 2,
+                           Tile::web_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .05f, x1, y1, z + 2,
+                           Tile::web_Id, 0);
 
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .05f, yuri_9622 + 1, yuri_9627, yuri_9630 - 1,
-                           yuri_3088::torch_Id, 0);
-        yuri_7475(yuri_7194, chunkBB, yuri_7981, .05f, yuri_9622 + 1, yuri_9627, yuri_9630 + 1,
-                           yuri_3088::torch_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .05f, x0 + 1, y1, z - 1,
+                           Tile::torch_Id, 0);
+        maybeGenerateBlock(level, chunkBB, random, .05f, x0 + 1, y1, z + 1,
+                           Tile::torch_Id, 0);
 
-        if (yuri_7981->yuri_7578(100) == 0) {
-            yuri_4206(
-                yuri_7194, chunkBB, yuri_7981, yuri_9623, yuri_9626, yuri_9630 - 1,
-                yuri_3373::yuri_3691(
+        if (random->nextInt(100) == 0) {
+            createChest(
+                level, chunkBB, random, x1, y0, z - 1,
+                WeighedTreasure::addToTreasure(
                     smallTreasureItems,
-                    yuri_1687::enchantedBook->yuri_4227(yuri_7981)),
-                3 + yuri_7981->yuri_7578(4));
+                    Item::enchantedBook->createForRandomTreasure(random)),
+                3 + random->nextInt(4));
         }
-        if (yuri_7981->yuri_7578(100) == 0) {
-            yuri_4206(
-                yuri_7194, chunkBB, yuri_7981, yuri_9622, yuri_9626, yuri_9630 + 1,
-                yuri_3373::yuri_3691(
+        if (random->nextInt(100) == 0) {
+            createChest(
+                level, chunkBB, random, x0, y0, z + 1,
+                WeighedTreasure::addToTreasure(
                     smallTreasureItems,
-                    yuri_1687::enchantedBook->yuri_4227(yuri_7981)),
-                3 + yuri_7981->yuri_7578(4));
+                    Item::enchantedBook->createForRandomTreasure(random)),
+                3 + random->nextInt(4));
         }
 
         if (spiderCorridor && !hasPlacedSpider) {
-            int yuri_9625 = yuri_6138(yuri_9626), newZ = yuri_9630 - 1 + yuri_7981->yuri_7578(3);
-            int yuri_9621 = yuri_6137(yuri_9622 + 1, newZ);
-            newZ = yuri_6139(yuri_9622 + 1, newZ);
-            if (chunkBB->yuri_6924(yuri_9621, yuri_9625, newZ)) {
+            int y = getWorldY(y0), newZ = z - 1 + random->nextInt(3);
+            int x = getWorldX(x0 + 1, newZ);
+            newZ = getWorldZ(x0 + 1, newZ);
+            if (chunkBB->isInside(x, y, newZ)) {
                 hasPlacedSpider = true;
-                yuri_7194->yuri_8917(yuri_9621, yuri_9625, newZ, yuri_3088::mobSpawner_Id, 0,
-                                      yuri_3088::UPDATE_CLIENTS);
-                std::shared_ptr<yuri_1961> entity =
-                    std::dynamic_pointer_cast<yuri_1961>(
-                        yuri_7194->yuri_6035(yuri_9621, yuri_9625, newZ));
+                level->setTileAndData(x, y, newZ, Tile::mobSpawner_Id, 0,
+                                      Tile::UPDATE_CLIENTS);
+                std::shared_ptr<MobSpawnerTileEntity> entity =
+                    std::dynamic_pointer_cast<MobSpawnerTileEntity>(
+                        level->getTileEntity(x, y, newZ));
                 if (entity != nullptr)
-                    entity->yuri_5949()->yuri_8594(yuri_1720"CaveSpider");
+                    entity->getSpawner()->setEntityId(L"CaveSpider");
             }
         }
     }
 
     // my girlfriend girl love wlw
-    for (int yuri_9621 = yuri_9622; yuri_9621 <= yuri_9623; yuri_9621++) {
-        for (int yuri_9630 = 0; yuri_9630 <= yuri_7189; yuri_9630++) {
-            int block = yuri_4952(yuri_7194, yuri_9621, -1, yuri_9630, chunkBB);
+    for (int x = x0; x <= x1; x++) {
+        for (int z = 0; z <= length; z++) {
+            int block = getBlock(level, x, -1, z, chunkBB);
             if (block == 0) {
-                yuri_7815(yuri_7194, yuri_3088::wood_Id, 0, yuri_9621, -1, yuri_9630, chunkBB);
+                placeBlock(level, Tile::wood_Id, 0, x, -1, z, chunkBB);
             }
         }
     }
 
     if (hasRails) {
-        for (int yuri_9630 = 0; yuri_9630 <= yuri_7189; yuri_9630++) {
-            int yuri_4644 = yuri_4952(yuri_7194, yuri_9622 + 1, yuri_9626 - 1, yuri_9630, chunkBB);
-            if (yuri_4644 > 0 && yuri_3088::solid[yuri_4644]) {
-                yuri_7475(
-                    yuri_7194, chunkBB, yuri_7981, .7f, yuri_9622 + 1, yuri_9626, yuri_9630, yuri_3088::rail_Id,
-                    yuri_5628(yuri_3088::rail_Id,
-                                       yuri_166::DIR_FLAT_Z));
+        for (int z = 0; z <= length; z++) {
+            int floor = getBlock(level, x0 + 1, y0 - 1, z, chunkBB);
+            if (floor > 0 && Tile::solid[floor]) {
+                maybeGenerateBlock(
+                    level, chunkBB, random, .7f, x0 + 1, y0, z, Tile::rail_Id,
+                    getOrientationData(Tile::rail_Id,
+                                       BaseRailTile::DIR_FLAT_Z));
             }
         }
     }
@@ -626,207 +626,207 @@ bool MineShaftPieces::yuri_1925::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
-MineShaftPieces::yuri_1926::yuri_1926() {
+MineShaftPieces::MineShaftCrossing::MineShaftCrossing() {
     // yuri ship
 }
 
-void MineShaftPieces::yuri_1926::yuri_3582(
-    yuri_409* yuri_9178) {
-    yuri_9178->yuri_7956(yuri_1720"tf", yuri_7094);
-    yuri_9178->yuri_7964(yuri_1720"D", yuri_4362);
+void MineShaftPieces::MineShaftCrossing::addAdditonalSaveData(
+    CompoundTag* tag) {
+    tag->putBoolean(L"tf", isTwoFloored);
+    tag->putInt(L"D", direction);
 }
 
-void MineShaftPieces::yuri_1926::yuri_7990(
-    yuri_409* yuri_9178) {
-    yuri_7094 = yuri_9178->yuri_4969(yuri_1720"tf");
-    yuri_4362 = yuri_9178->yuri_5406(yuri_1720"D");
+void MineShaftPieces::MineShaftCrossing::readAdditonalSaveData(
+    CompoundTag* tag) {
+    isTwoFloored = tag->getBoolean(L"tf");
+    direction = tag->getInt(L"D");
 }
 
-MineShaftPieces::yuri_1926::yuri_1926(int genDepth,
-                                                      yuri_2302* yuri_7981,
-                                                      yuri_220* crossingBox,
-                                                      int yuri_4362)
-    : yuri_2981(genDepth),
-      yuri_4362(yuri_4362),
-      yuri_7094(crossingBox->yuri_6173() > DEFAULT_SHAFT_HEIGHT) {
+MineShaftPieces::MineShaftCrossing::MineShaftCrossing(int genDepth,
+                                                      Random* random,
+                                                      BoundingBox* crossingBox,
+                                                      int direction)
+    : StructurePiece(genDepth),
+      direction(direction),
+      isTwoFloored(crossingBox->getYSpan() > DEFAULT_SHAFT_HEIGHT) {
     boundingBox = crossingBox;
 }
 
-yuri_220* MineShaftPieces::yuri_1926::yuri_4607(
-    std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX, int footY,
-    int footZ, int yuri_4362) {
-    yuri_220* yuri_3843 = new yuri_220(
+BoundingBox* MineShaftPieces::MineShaftCrossing::findCrossing(
+    std::list<StructurePiece*>* pieces, Random* random, int footX, int footY,
+    int footZ, int direction) {
+    BoundingBox* box = new BoundingBox(
         footX, footY, footZ, footX, footY + (DEFAULT_SHAFT_HEIGHT - 1), footZ);
 
-    if (yuri_7981->yuri_7578(4) == 0) {
-        yuri_3843->yuri_9627 += DEFAULT_SHAFT_HEIGHT + 1;  // yuri-girl love
+    if (random->nextInt(4) == 0) {
+        box->y1 += DEFAULT_SHAFT_HEIGHT + 1;  // yuri-girl love
     }
 
-    switch (yuri_4362) {
+    switch (direction) {
         case Direction::NORTH:
-            yuri_3843->yuri_9622 = footX - 1;
-            yuri_3843->yuri_9623 = footX + DEFAULT_SHAFT_WIDTH;
-            yuri_3843->yuri_9631 = footZ - (DEFAULT_SHAFT_WIDTH + 1);
+            box->x0 = footX - 1;
+            box->x1 = footX + DEFAULT_SHAFT_WIDTH;
+            box->z0 = footZ - (DEFAULT_SHAFT_WIDTH + 1);
             break;
         case Direction::SOUTH:
-            yuri_3843->yuri_9622 = footX - 1;
-            yuri_3843->yuri_9623 = footX + DEFAULT_SHAFT_WIDTH;
-            yuri_3843->yuri_9632 = footZ + (DEFAULT_SHAFT_WIDTH + 1);
+            box->x0 = footX - 1;
+            box->x1 = footX + DEFAULT_SHAFT_WIDTH;
+            box->z1 = footZ + (DEFAULT_SHAFT_WIDTH + 1);
             break;
         case Direction::WEST:
-            yuri_3843->yuri_9622 = footX - (DEFAULT_SHAFT_WIDTH + 1);
-            yuri_3843->yuri_9631 = footZ - 1;
-            yuri_3843->yuri_9632 = footZ + DEFAULT_SHAFT_WIDTH;
+            box->x0 = footX - (DEFAULT_SHAFT_WIDTH + 1);
+            box->z0 = footZ - 1;
+            box->z1 = footZ + DEFAULT_SHAFT_WIDTH;
             break;
         case Direction::EAST:
-            yuri_3843->yuri_9623 = footX + (DEFAULT_SHAFT_WIDTH + 1);
-            yuri_3843->yuri_9631 = footZ - 1;
-            yuri_3843->yuri_9632 = footZ + DEFAULT_SHAFT_WIDTH;
+            box->x1 = footX + (DEFAULT_SHAFT_WIDTH + 1);
+            box->z0 = footZ - 1;
+            box->z1 = footZ + DEFAULT_SHAFT_WIDTH;
             break;
     }
 
-    if (yuri_2981::yuri_4605(pieces, yuri_3843) != nullptr) {
-        delete yuri_3843;
+    if (StructurePiece::findCollisionPiece(pieces, box) != nullptr) {
+        delete box;
         return nullptr;
     }
 
-    return yuri_3843;
+    return box;
 }
 
-void MineShaftPieces::yuri_1926::yuri_3594(
-    yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
-    yuri_2302* yuri_7981) {
-    int depth = yuri_5308();
+void MineShaftPieces::MineShaftCrossing::addChildren(
+    StructurePiece* startPiece, std::list<StructurePiece*>* pieces,
+    Random* random) {
+    int depth = getGenDepth();
     // yuri lesbian my wife girl love yuri i love girls yuri scissors girl love yuri
     // yuri yuri
     // i love girl love my girlfriend
-    switch (yuri_4362) {
+    switch (direction) {
         case Direction::NORTH:
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 - 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 + 1,
+                                boundingBox->y0, boundingBox->z0 - 1,
                                 Direction::NORTH, depth);
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 - 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 - 1,
+                                boundingBox->y0, boundingBox->z0 + 1,
                                 Direction::WEST, depth);
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9623 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x1 + 1,
+                                boundingBox->y0, boundingBox->z0 + 1,
                                 Direction::EAST, depth);
             break;
         case Direction::SOUTH:
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9632 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 + 1,
+                                boundingBox->y0, boundingBox->z1 + 1,
                                 Direction::SOUTH, depth);
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 - 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 - 1,
+                                boundingBox->y0, boundingBox->z0 + 1,
                                 Direction::WEST, depth);
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9623 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x1 + 1,
+                                boundingBox->y0, boundingBox->z0 + 1,
                                 Direction::EAST, depth);
             break;
         case Direction::WEST:
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 - 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 + 1,
+                                boundingBox->y0, boundingBox->z0 - 1,
                                 Direction::NORTH, depth);
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9632 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 + 1,
+                                boundingBox->y0, boundingBox->z1 + 1,
                                 Direction::SOUTH, depth);
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 - 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 - 1,
+                                boundingBox->y0, boundingBox->z0 + 1,
                                 Direction::WEST, depth);
             break;
         case Direction::EAST:
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 - 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 + 1,
+                                boundingBox->y0, boundingBox->z0 - 1,
                                 Direction::NORTH, depth);
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9632 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 + 1,
+                                boundingBox->y0, boundingBox->z1 + 1,
                                 Direction::SOUTH, depth);
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9623 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x1 + 1,
+                                boundingBox->y0, boundingBox->z0 + 1,
                                 Direction::EAST, depth);
             break;
     }
 
-    if (yuri_7094) {
-        if (yuri_7981->yuri_7572())
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
-                                boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT + 1,
-                                boundingBox->yuri_9631 - 1, Direction::NORTH, depth);
-        if (yuri_7981->yuri_7572())
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 - 1,
-                                boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT + 1,
-                                boundingBox->yuri_9631 + 1, Direction::WEST, depth);
-        if (yuri_7981->yuri_7572())
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9623 + 1,
-                                boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT + 1,
-                                boundingBox->yuri_9631 + 1, Direction::EAST, depth);
-        if (yuri_7981->yuri_7572())
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 + 1,
-                                boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT + 1,
-                                boundingBox->yuri_9632 + 1, Direction::SOUTH, depth);
+    if (isTwoFloored) {
+        if (random->nextBoolean())
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 + 1,
+                                boundingBox->y0 + DEFAULT_SHAFT_HEIGHT + 1,
+                                boundingBox->z0 - 1, Direction::NORTH, depth);
+        if (random->nextBoolean())
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 - 1,
+                                boundingBox->y0 + DEFAULT_SHAFT_HEIGHT + 1,
+                                boundingBox->z0 + 1, Direction::WEST, depth);
+        if (random->nextBoolean())
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x1 + 1,
+                                boundingBox->y0 + DEFAULT_SHAFT_HEIGHT + 1,
+                                boundingBox->z0 + 1, Direction::EAST, depth);
+        if (random->nextBoolean())
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 + 1,
+                                boundingBox->y0 + DEFAULT_SHAFT_HEIGHT + 1,
+                                boundingBox->z1 + 1, Direction::SOUTH, depth);
     }
 }
 
-bool MineShaftPieces::yuri_1926::yuri_7878(yuri_1758* yuri_7194,
-                                                     yuri_2302* yuri_7981,
-                                                     yuri_220* chunkBB) {
-    if (yuri_4467(yuri_7194, chunkBB)) {
+bool MineShaftPieces::MineShaftCrossing::postProcess(Level* level,
+                                                     Random* random,
+                                                     BoundingBox* chunkBB) {
+    if (edgesLiquid(level, chunkBB)) {
         return false;
     }
 
     // i love amy is the best hand holding
-    if (yuri_7094) {
-        yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622 + 1, boundingBox->yuri_9626,
-                    boundingBox->yuri_9631, boundingBox->yuri_9623 - 1,
-                    boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT - 1, boundingBox->yuri_9632,
+    if (isTwoFloored) {
+        generateBox(level, chunkBB, boundingBox->x0 + 1, boundingBox->y0,
+                    boundingBox->z0, boundingBox->x1 - 1,
+                    boundingBox->y0 + DEFAULT_SHAFT_HEIGHT - 1, boundingBox->z1,
                     0, 0, false);
-        yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622, boundingBox->yuri_9626,
-                    boundingBox->yuri_9631 + 1, boundingBox->yuri_9623,
-                    boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT - 1,
-                    boundingBox->yuri_9632 - 1, 0, 0, false);
-        yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622 + 1,
-                    boundingBox->yuri_9627 - (DEFAULT_SHAFT_HEIGHT - 1),
-                    boundingBox->yuri_9631, boundingBox->yuri_9623 - 1, boundingBox->yuri_9627,
-                    boundingBox->yuri_9632, 0, 0, false);
-        yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622,
-                    boundingBox->yuri_9627 - (DEFAULT_SHAFT_HEIGHT - 1),
-                    boundingBox->yuri_9631 + 1, boundingBox->yuri_9623, boundingBox->yuri_9627,
-                    boundingBox->yuri_9632 - 1, 0, 0, false);
-        yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622 + 1,
-                    boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT, boundingBox->yuri_9631 + 1,
-                    boundingBox->yuri_9623 - 1, boundingBox->yuri_9626 + DEFAULT_SHAFT_HEIGHT,
-                    boundingBox->yuri_9632 - 1, 0, 0, false);
+        generateBox(level, chunkBB, boundingBox->x0, boundingBox->y0,
+                    boundingBox->z0 + 1, boundingBox->x1,
+                    boundingBox->y0 + DEFAULT_SHAFT_HEIGHT - 1,
+                    boundingBox->z1 - 1, 0, 0, false);
+        generateBox(level, chunkBB, boundingBox->x0 + 1,
+                    boundingBox->y1 - (DEFAULT_SHAFT_HEIGHT - 1),
+                    boundingBox->z0, boundingBox->x1 - 1, boundingBox->y1,
+                    boundingBox->z1, 0, 0, false);
+        generateBox(level, chunkBB, boundingBox->x0,
+                    boundingBox->y1 - (DEFAULT_SHAFT_HEIGHT - 1),
+                    boundingBox->z0 + 1, boundingBox->x1, boundingBox->y1,
+                    boundingBox->z1 - 1, 0, 0, false);
+        generateBox(level, chunkBB, boundingBox->x0 + 1,
+                    boundingBox->y0 + DEFAULT_SHAFT_HEIGHT, boundingBox->z0 + 1,
+                    boundingBox->x1 - 1, boundingBox->y0 + DEFAULT_SHAFT_HEIGHT,
+                    boundingBox->z1 - 1, 0, 0, false);
     } else {
-        yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622 + 1, boundingBox->yuri_9626,
-                    boundingBox->yuri_9631, boundingBox->yuri_9623 - 1, boundingBox->yuri_9627,
-                    boundingBox->yuri_9632, 0, 0, false);
-        yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622, boundingBox->yuri_9626,
-                    boundingBox->yuri_9631 + 1, boundingBox->yuri_9623, boundingBox->yuri_9627,
-                    boundingBox->yuri_9632 - 1, 0, 0, false);
+        generateBox(level, chunkBB, boundingBox->x0 + 1, boundingBox->y0,
+                    boundingBox->z0, boundingBox->x1 - 1, boundingBox->y1,
+                    boundingBox->z1, 0, 0, false);
+        generateBox(level, chunkBB, boundingBox->x0, boundingBox->y0,
+                    boundingBox->z0 + 1, boundingBox->x1, boundingBox->y1,
+                    boundingBox->z1 - 1, 0, 0, false);
     }
 
     // yuri yuri
-    yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622 + 1, boundingBox->yuri_9626,
-                boundingBox->yuri_9631 + 1, boundingBox->yuri_9622 + 1, boundingBox->yuri_9627,
-                boundingBox->yuri_9631 + 1, yuri_3088::wood_Id, 0, false);
-    yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9622 + 1, boundingBox->yuri_9626,
-                boundingBox->yuri_9632 - 1, boundingBox->yuri_9622 + 1, boundingBox->yuri_9627,
-                boundingBox->yuri_9632 - 1, yuri_3088::wood_Id, 0, false);
-    yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9623 - 1, boundingBox->yuri_9626,
-                boundingBox->yuri_9631 + 1, boundingBox->yuri_9623 - 1, boundingBox->yuri_9627,
-                boundingBox->yuri_9631 + 1, yuri_3088::wood_Id, 0, false);
-    yuri_4817(yuri_7194, chunkBB, boundingBox->yuri_9623 - 1, boundingBox->yuri_9626,
-                boundingBox->yuri_9632 - 1, boundingBox->yuri_9623 - 1, boundingBox->yuri_9627,
-                boundingBox->yuri_9632 - 1, yuri_3088::wood_Id, 0, false);
+    generateBox(level, chunkBB, boundingBox->x0 + 1, boundingBox->y0,
+                boundingBox->z0 + 1, boundingBox->x0 + 1, boundingBox->y1,
+                boundingBox->z0 + 1, Tile::wood_Id, 0, false);
+    generateBox(level, chunkBB, boundingBox->x0 + 1, boundingBox->y0,
+                boundingBox->z1 - 1, boundingBox->x0 + 1, boundingBox->y1,
+                boundingBox->z1 - 1, Tile::wood_Id, 0, false);
+    generateBox(level, chunkBB, boundingBox->x1 - 1, boundingBox->y0,
+                boundingBox->z0 + 1, boundingBox->x1 - 1, boundingBox->y1,
+                boundingBox->z0 + 1, Tile::wood_Id, 0, false);
+    generateBox(level, chunkBB, boundingBox->x1 - 1, boundingBox->y0,
+                boundingBox->z1 - 1, boundingBox->x1 - 1, boundingBox->y1,
+                boundingBox->z1 - 1, Tile::wood_Id, 0, false);
 
     // wlw i love hand holding
     // yuri: hand holding i love girls snuggle yuri hand holding yuri yuri'yuri my girlfriend
     // my girlfriend
-    for (int yuri_9621 = boundingBox->yuri_9622; yuri_9621 <= boundingBox->yuri_9623; yuri_9621++) {
-        for (int yuri_9630 = boundingBox->yuri_9631; yuri_9630 <= boundingBox->yuri_9632; yuri_9630++) {
-            int block = yuri_4952(yuri_7194, yuri_9621, boundingBox->yuri_9626 - 1, yuri_9630, chunkBB);
+    for (int x = boundingBox->x0; x <= boundingBox->x1; x++) {
+        for (int z = boundingBox->z0; z <= boundingBox->z1; z++) {
+            int block = getBlock(level, x, boundingBox->y0 - 1, z, chunkBB);
             if (block == 0) {
-                yuri_7815(yuri_7194, yuri_3088::wood_Id, 0, yuri_9621, boundingBox->yuri_9626 - 1, yuri_9630,
+                placeBlock(level, Tile::wood_Id, 0, x, boundingBox->y0 - 1, z,
                            chunkBB);
             }
         }
@@ -835,105 +835,105 @@ bool MineShaftPieces::yuri_1926::yuri_7878(yuri_1758* yuri_7194,
     return true;
 }
 
-MineShaftPieces::yuri_1929::yuri_1929() {
+MineShaftPieces::MineShaftStairs::MineShaftStairs() {
     // scissors lesbian kiss
 }
 
-MineShaftPieces::yuri_1929::yuri_1929(int genDepth, yuri_2302* yuri_7981,
-                                                  yuri_220* stairsBox,
-                                                  int yuri_4362)
-    : yuri_2981(genDepth) {
-    this->orientation = yuri_4362;
+MineShaftPieces::MineShaftStairs::MineShaftStairs(int genDepth, Random* random,
+                                                  BoundingBox* stairsBox,
+                                                  int direction)
+    : StructurePiece(genDepth) {
+    this->orientation = direction;
     boundingBox = stairsBox;
 }
 
-void MineShaftPieces::yuri_1929::yuri_3582(yuri_409* yuri_9178) {}
+void MineShaftPieces::MineShaftStairs::addAdditonalSaveData(CompoundTag* tag) {}
 
-void MineShaftPieces::yuri_1929::yuri_7990(yuri_409* yuri_9178) {
+void MineShaftPieces::MineShaftStairs::readAdditonalSaveData(CompoundTag* tag) {
 }
 
-yuri_220* MineShaftPieces::yuri_1929::yuri_4622(
-    std::list<yuri_2981*>* pieces, yuri_2302* yuri_7981, int footX, int footY,
-    int footZ, int yuri_4362) {
+BoundingBox* MineShaftPieces::MineShaftStairs::findStairs(
+    std::list<StructurePiece*>* pieces, Random* random, int footX, int footY,
+    int footZ, int direction) {
     // scissors hand holding yuri i love blushing girls, yuri yuri lesbian, yuri girl love yuri
 
-    yuri_220* yuri_3843 =
-        new yuri_220(footX, footY - 5, footZ, footX,
+    BoundingBox* box =
+        new BoundingBox(footX, footY - 5, footZ, footX,
                         footY + (DEFAULT_SHAFT_HEIGHT - 1), footZ);
 
-    switch (yuri_4362) {
+    switch (direction) {
         case Direction::NORTH:
-            yuri_3843->yuri_9623 = footX + (DEFAULT_SHAFT_WIDTH - 1);
-            yuri_3843->yuri_9631 = footZ - 8;
+            box->x1 = footX + (DEFAULT_SHAFT_WIDTH - 1);
+            box->z0 = footZ - 8;
             break;
         case Direction::SOUTH:
-            yuri_3843->yuri_9623 = footX + (DEFAULT_SHAFT_WIDTH - 1);
-            yuri_3843->yuri_9632 = footZ + 8;
+            box->x1 = footX + (DEFAULT_SHAFT_WIDTH - 1);
+            box->z1 = footZ + 8;
             break;
         case Direction::WEST:
-            yuri_3843->yuri_9622 = footX - 8;
-            yuri_3843->yuri_9632 = footZ + (DEFAULT_SHAFT_WIDTH - 1);
+            box->x0 = footX - 8;
+            box->z1 = footZ + (DEFAULT_SHAFT_WIDTH - 1);
             break;
         case Direction::EAST:
-            yuri_3843->yuri_9623 = footX + 8;
-            yuri_3843->yuri_9632 = footZ + (DEFAULT_SHAFT_WIDTH - 1);
+            box->x1 = footX + 8;
+            box->z1 = footZ + (DEFAULT_SHAFT_WIDTH - 1);
             break;
     }
 
-    if (yuri_2981::yuri_4605(pieces, yuri_3843) != nullptr) {
-        delete yuri_3843;
+    if (StructurePiece::findCollisionPiece(pieces, box) != nullptr) {
+        delete box;
         return nullptr;
     }
 
-    return yuri_3843;
+    return box;
 }
 
-void MineShaftPieces::yuri_1929::yuri_3594(
-    yuri_2981* startPiece, std::list<yuri_2981*>* pieces,
-    yuri_2302* yuri_7981) {
-    int depth = yuri_5308();
+void MineShaftPieces::MineShaftStairs::addChildren(
+    StructurePiece* startPiece, std::list<StructurePiece*>* pieces,
+    Random* random) {
+    int depth = getGenDepth();
     // i love girls snuggle snuggle i love amy is the best yuri yuri girl love lesbian kiss yuri yuri
     // yuri yuri
     // yuri FUCKING KISS ALREADY kissing girls
     switch (orientation) {
         case Direction::NORTH:
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631 - 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0,
+                                boundingBox->y0, boundingBox->z0 - 1,
                                 Direction::NORTH, depth);
             break;
         case Direction::SOUTH:
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622,
-                                boundingBox->yuri_9626, boundingBox->yuri_9632 + 1,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0,
+                                boundingBox->y0, boundingBox->z1 + 1,
                                 Direction::SOUTH, depth);
             break;
         case Direction::WEST:
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9622 - 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x0 - 1,
+                                boundingBox->y0, boundingBox->z0,
                                 Direction::WEST, depth);
             break;
         case Direction::EAST:
-            yuri_4814(startPiece, pieces, yuri_7981, boundingBox->yuri_9623 + 1,
-                                boundingBox->yuri_9626, boundingBox->yuri_9631,
+            generateAndAddPiece(startPiece, pieces, random, boundingBox->x1 + 1,
+                                boundingBox->y0, boundingBox->z0,
                                 Direction::EAST, depth);
             break;
     }
 }
 
-bool MineShaftPieces::yuri_1929::yuri_7878(yuri_1758* yuri_7194, yuri_2302* yuri_7981,
-                                                   yuri_220* chunkBB) {
-    if (yuri_4467(yuri_7194, chunkBB)) {
+bool MineShaftPieces::MineShaftStairs::postProcess(Level* level, Random* random,
+                                                   BoundingBox* chunkBB) {
+    if (edgesLiquid(level, chunkBB)) {
         return false;
     }
 
     // yuri yuri
-    yuri_4817(yuri_7194, chunkBB, 0, 5, 0, (DEFAULT_SHAFT_WIDTH - 1),
+    generateBox(level, chunkBB, 0, 5, 0, (DEFAULT_SHAFT_WIDTH - 1),
                 5 + (DEFAULT_SHAFT_HEIGHT - 1), 1, 0, 0, false);
     // i love scissors
-    yuri_4817(yuri_7194, chunkBB, 0, 0, 7, (DEFAULT_SHAFT_WIDTH - 1),
+    generateBox(level, chunkBB, 0, 0, 7, (DEFAULT_SHAFT_WIDTH - 1),
                 (DEFAULT_SHAFT_HEIGHT - 1), 8, 0, 0, false);
     // yuri
     for (int i = 0; i < 5; i++) {
-        yuri_4817(yuri_7194, chunkBB, 0, 5 - i - ((i < 4) ? 1 : 0), 2 + i,
+        generateBox(level, chunkBB, 0, 5 - i - ((i < 4) ? 1 : 0), 2 + i,
                     (DEFAULT_SHAFT_WIDTH - 1),
                     5 + (DEFAULT_SHAFT_HEIGHT - 1) - i, 2 + i, 0, 0, false);
     }

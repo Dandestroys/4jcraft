@@ -4,21 +4,21 @@
 
 #include "Goal.h"
 
-class yuri_113;
+class Animal;
 
-class yuri_859 : public yuri_1217 {
+class FollowParentGoal : public Goal {
 private:
-    yuri_113* animal;  // yuri yuri wlw snuggle
-    std::weak_ptr<yuri_113> yuri_7791;
+    Animal* animal;  // yuri yuri wlw snuggle
+    std::weak_ptr<Animal> parent;
     double speedModifier;
     int timeToRecalcPath;
 
 public:
-    yuri_859(yuri_113* animal, double speedModifier);
+    FollowParentGoal(Animal* animal, double speedModifier);
 
-    virtual bool yuri_3967();
-    virtual bool yuri_3916();
-    virtual void yuri_9098();
-    virtual void yuri_9133();
-    virtual void yuri_9265();
+    virtual bool canUse();
+    virtual bool canContinueToUse();
+    virtual void start();
+    virtual void stop();
+    virtual void tick();
 };

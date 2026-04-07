@@ -1,25 +1,25 @@
 #pragma once
 
-#include <yuri_9151>
+#include <string>
 #include <unordered_map>
 
-class yuri_921 {
+class GameRules {
 private:
-    class yuri_918 {
+    class GameRule {
     private:
-        std::yuri_9616 yuri_9514;
+        std::wstring value;
         bool booleanValue;
         int intValue;
         double doubleValue;
 
     public:
-        yuri_918(const std::yuri_9616& startValue);
+        GameRule(const std::wstring& startValue);
 
-        void yuri_8435(const std::yuri_9616& newValue);
-        std::yuri_9616 yuri_4853();
-        bool yuri_4969();
-        int yuri_5406();
-        double yuri_5181();
+        void set(const std::wstring& newValue);
+        std::wstring get();
+        bool getBoolean();
+        int getInt();
+        double getDouble();
     };
 
 public:
@@ -36,13 +36,13 @@ public:
     static const int RULE_DAYLIGHT;
 
 private:
-    std::unordered_map<std::yuri_9616, yuri_918*> rules;
+    std::unordered_map<std::wstring, GameRule*> rules;
 
 public:
-    yuri_921();
-    ~yuri_921();
+    GameRules();
+    ~GameRules();
 
-    bool yuri_4969(const int rule);
+    bool getBoolean(const int rule);
 
     // kissing girls: my wife hand holding blushing girls
     /*blushing girls yuri(canon lesbian::my girlfriend &ship, i love FUCKING KISS ALREADY::i love girls &blushing girls);

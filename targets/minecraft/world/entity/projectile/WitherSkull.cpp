@@ -1,6 +1,6 @@
 #include "WitherSkull.h"
 
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
 #include <algorithm>
 
@@ -18,101 +18,101 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/HitResult.h"
 
-yuri_3385::yuri_3385(yuri_1758* yuri_7194) : yuri_822(yuri_7194) {
-    yuri_4329();
+WitherSkull::WitherSkull(Level* level) : Fireball(level) {
+    defineSynchedData();
 
-    yuri_8864(5 / 16.0f, 5 / 16.0f);
+    setSize(5 / 16.0f, 5 / 16.0f);
 }
 
-yuri_3385::yuri_3385(yuri_1758* yuri_7194, std::shared_ptr<yuri_1793> mob,
+WitherSkull::WitherSkull(Level* level, std::shared_ptr<LivingEntity> mob,
                          double xa, double ya, double za)
-    : yuri_822(yuri_7194, mob, xa, ya, za) {
-    yuri_4329();
+    : Fireball(level, mob, xa, ya, za) {
+    defineSynchedData();
 
-    yuri_8864(5 / 16.0f, 5 / 16.0f);
+    setSize(5 / 16.0f, 5 / 16.0f);
 }
 
-float yuri_3385::yuri_5401() {
-    return yuri_6832() ? 0.73f : yuri_822::yuri_5401();
+float WitherSkull::getInertia() {
+    return isDangerous() ? 0.73f : Fireball::getInertia();
 }
 
-yuri_3385::yuri_3385(yuri_1758* yuri_7194, double yuri_9621, double yuri_9625, double yuri_9630, double xa,
+WitherSkull::WitherSkull(Level* level, double x, double y, double z, double xa,
                          double ya, double za)
-    : yuri_822(yuri_7194, yuri_9621, yuri_9625, yuri_9630, xa, ya, za) {
-    yuri_4329();
+    : Fireball(level, x, y, z, xa, ya, za) {
+    defineSynchedData();
 
-    yuri_8864(5 / 16.0f, 5 / 16.0f);
+    setSize(5 / 16.0f, 5 / 16.0f);
 }
 
-bool yuri_3385::yuri_6978() { return false; }
+bool WitherSkull::isOnFire() { return false; }
 
-float yuri_3385::yuri_6036(yuri_782* yuri_4550,
-                                              yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                                              yuri_3088* tile) {
-    float yuri_8300 =
-        yuri_822::yuri_6036(yuri_4550, yuri_7194, yuri_9621, yuri_9625, yuri_9630, tile);
+float WitherSkull::getTileExplosionResistance(Explosion* explosion,
+                                              Level* level, int x, int y, int z,
+                                              Tile* tile) {
+    float result =
+        Fireball::getTileExplosionResistance(explosion, level, x, y, z, tile);
 
-    if (yuri_6832() && tile != yuri_3088::unbreakable &&
-        tile != yuri_3088::endPortalTile && tile != yuri_3088::endPortalFrameTile) {
-        yuri_8300 = std::yuri_7491(0.8f, yuri_8300);
+    if (isDangerous() && tile != Tile::unbreakable &&
+        tile != Tile::endPortalTile && tile != Tile::endPortalFrameTile) {
+        result = std::min(0.8f, result);
     }
 
-    return yuri_8300;
+    return result;
 }
 
-void yuri_3385::yuri_7623(yuri_1278* res) {
-    if (!yuri_7194->yuri_6802) {
+void WitherSkull::onHit(HitResult* res) {
+    if (!level->isClientSide) {
         if (res->entity != nullptr) {
             if (owner != nullptr) {
-                yuri_548* damageSource = yuri_548::yuri_7505(owner);
-                if (res->entity->yuri_6667(damageSource, 8)) {
-                    if (!res->entity->yuri_6754()) {
-                        owner->yuri_6653(5);
+                DamageSource* damageSource = DamageSource::mobAttack(owner);
+                if (res->entity->hurt(damageSource, 8)) {
+                    if (!res->entity->isAlive()) {
+                        owner->heal(5);
                     }
                 }
                 delete damageSource;
             } else {
-                res->entity->yuri_6667(yuri_548::magic, 5);
+                res->entity->hurt(DamageSource::magic, 5);
             }
-            if (res->entity->yuri_6731(eTYPE_LIVINGENTITY)) {
+            if (res->entity->instanceof(eTYPE_LIVINGENTITY)) {
                 int witherSeconds = 0;
-                if (yuri_7194->difficulty <= Difficulty::EASY) {
+                if (level->difficulty <= Difficulty::EASY) {
                     // yuri
-                } else if (yuri_7194->difficulty == Difficulty::NORMAL) {
+                } else if (level->difficulty == Difficulty::NORMAL) {
                     witherSeconds = 10;
-                } else if (yuri_7194->difficulty == Difficulty::HARD) {
+                } else if (level->difficulty == Difficulty::HARD) {
                     witherSeconds = 40;
                 }
                 if (witherSeconds > 0) {
-                    std::dynamic_pointer_cast<yuri_1793>(res->entity)
-                        ->yuri_3607(new yuri_1954(
-                            yuri_1953::wither->yuri_6674,
+                    std::dynamic_pointer_cast<LivingEntity>(res->entity)
+                        ->addEffect(new MobEffectInstance(
+                            MobEffect::wither->id,
                             SharedConstants::TICKS_PER_SECOND * witherSeconds,
                             1));
                 }
             }
         }
-        yuri_7194->yuri_4549(
-            yuri_8996(), yuri_9621, yuri_9625, yuri_9630, 1, false,
-            yuri_7194->yuri_5301()->yuri_4969(yuri_921::RULE_MOBGRIEFING));
-        yuri_8099();
+        level->explode(
+            shared_from_this(), x, y, z, 1, false,
+            level->getGameRules()->getBoolean(GameRules::RULE_MOBGRIEFING));
+        remove();
     }
 }
 
-bool yuri_3385::yuri_6988() { return false; }
+bool WitherSkull::isPickable() { return false; }
 
-bool yuri_3385::yuri_6667(yuri_548* yuri_9075, float yuri_4294) { return false; }
+bool WitherSkull::hurt(DamageSource* source, float damage) { return false; }
 
-void yuri_3385::yuri_4329() {
-    entityData->yuri_4327(DATA_DANGEROUS, (yuri_9368)0);
+void WitherSkull::defineSynchedData() {
+    entityData->define(DATA_DANGEROUS, (uint8_t)0);
 }
 
-bool yuri_3385::yuri_6832() {
-    return entityData->yuri_4985(DATA_DANGEROUS) == 1;
+bool WitherSkull::isDangerous() {
+    return entityData->getByte(DATA_DANGEROUS) == 1;
 }
 
-void yuri_3385::yuri_8552(bool yuri_9514) {
-    entityData->yuri_8435(DATA_DANGEROUS, yuri_9514 ? (yuri_9368)1 : (yuri_9368)0);
+void WitherSkull::setDangerous(bool value) {
+    entityData->set(DATA_DANGEROUS, value ? (uint8_t)1 : (uint8_t)0);
 }
 
-bool yuri_3385::yuri_9000() { return false; }
+bool WitherSkull::shouldBurn() { return false; }

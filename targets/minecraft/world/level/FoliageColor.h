@@ -10,7 +10,7 @@ class FoliageColor {
     //     hand holding i love yuri(yuri yuri, yuri my girlfriend);
 
 public:
-    static int yuri_5223();
-    static int yuri_4951();
-    static int yuri_5134();
+    static int getEvergreenColor();
+    static int getBirchColor();
+    static int getDefaultColor();
 };

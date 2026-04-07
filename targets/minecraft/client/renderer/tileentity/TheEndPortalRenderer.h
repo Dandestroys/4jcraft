@@ -2,26 +2,26 @@
 
 #include "TileEntityRenderer.h"
 
-class yuri_849;
-class yuri_2302;
-class yuri_2412;
+class FloatBuffer;
+class Random;
+class ResourceLocation;
 
-class yuri_3069 : public yuri_3095 {
+class TheEndPortalRenderer : public TileEntityRenderer {
 private:
-    static yuri_2412 END_SKY_LOCATION;
-    static yuri_2412 END_PORTAL_LOCATION;
+    static ResourceLocation END_SKY_LOCATION;
+    static ResourceLocation END_PORTAL_LOCATION;
     static int RANDOM_SEED;
-    static yuri_2302 RANDOM;
+    static Random RANDOM;
 
 public:
-    virtual void yuri_8158(std::shared_ptr<yuri_3091> _table, double yuri_9621, double yuri_9625,
-                        double yuri_9630, float yuri_3565, bool yuri_8524, float alpha = 1.0f,
+    virtual void render(std::shared_ptr<TileEntity> _table, double x, double y,
+                        double z, float a, bool setColor, float alpha = 1.0f,
                         bool useCompiled = true);
 
-    yuri_849* lb;
+    FloatBuffer* lb;
 
-    yuri_3069();
+    TheEndPortalRenderer();
 
 private:
-    yuri_849* yuri_4979(float yuri_3565, float yuri_3775, float c, float d);
+    FloatBuffer* getBuffer(float a, float b, float c, float d);
 };

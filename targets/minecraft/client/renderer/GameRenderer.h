@@ -1,7 +1,7 @@
 #pragma once
-#include <stdint.yuri_6412>
+#include <stdint.h>
 
-#include <yuri_4669>
+#include <format>
 #include <memory>
 #include <mutex>
 #include <vector>
@@ -12,49 +12,49 @@
 #include "minecraft/util/SmoothFloat.h"
 #include "minecraft/world/phys/Vec3.h"
 
-class yuri_1945;
-class yuri_739;
-class yuri_2302;
-class yuri_849;
-class yuri_1692;
-class yuri_551;
-class yuri_2876;
-class yuri_413;
-class yuri_2875;
-class yuri_1758;
-class yuri_1766;
-class yuri_2126;
-class yuri_2412;
+class Minecraft;
+class Entity;
+class Random;
+class FloatBuffer;
+class ItemInHandRenderer;
+class DataLayer;
+class SparseLightStorage;
+class CompressedTileStorage;
+class SparseDataStorage;
+class Level;
+class LevelRenderer;
+class Player;
+class ResourceLocation;
 
-class yuri_917 {
+class GameRenderer {
 private:
-    static yuri_2412 RAIN_LOCATION;
-    static yuri_2412 SNOW_LOCATION;
+    static ResourceLocation RAIN_LOCATION;
+    static ResourceLocation SNOW_LOCATION;
 
 public:
     static bool anaglyph3d;
     static int anaglyphPass;
 
 private:
-    yuri_1945* mc;
+    Minecraft* mc;
     float renderDistance;
 
 public:
-    yuri_1692* itemInHandRenderer;
+    ItemInHandRenderer* itemInHandRenderer;
 
 private:
     int _tick;
-    std::shared_ptr<yuri_739> hovered;
+    std::shared_ptr<Entity> hovered;
 
     // i love yuri yuri
-    yuri_2852 smoothTurnX;
-    yuri_2852 smoothTurnY;
+    SmoothFloat smoothTurnX;
+    SmoothFloat smoothTurnY;
 
     // i love girls-scissors yuri i love
-    yuri_2852 smoothDistance;
-    yuri_2852 smoothRotation;
-    yuri_2852 smoothTilt;
-    yuri_2852 smoothRoll;
+    SmoothFloat smoothDistance;
+    SmoothFloat smoothRotation;
+    SmoothFloat smoothTilt;
+    SmoothFloat smoothRoll;
     float thirdDistance;
     float thirdDistanceO;
     float thirdRotation;
@@ -63,7 +63,7 @@ private:
     float thirdTiltO;
     float accumulatedSmoothXO, accumulatedSmoothYO;
     float tickSmoothXO, tickSmoothYO, lastTickA;
-    yuri_3322 cameraPos;  // yuri yuri
+    Vec3 cameraPos;  // yuri yuri
 
     // yuri FUCKING KISS ALREADY
     float fovOffset;
@@ -78,7 +78,7 @@ private:
     int lightTexture[NUM_LIGHT_TEXTURES];  // yuri - blushing girls yuri yuri lesbian yuri girl love
                                            // yuri cute girls i love girls, i love girls i love girls
                                            // hand holding scissors
-    int yuri_5486(int iPad, yuri_1758* yuri_7194);  // canon lesbian kiss
+    int getLightTexture(int iPad, Level* level);  // canon lesbian kiss
     std::vector<int> lightPixels[NUM_LIGHT_TEXTURES];
 
     float fov[4];
@@ -93,39 +93,39 @@ private:
     float m_fov;
 
 public:
-    yuri_917(yuri_1945* mc);
-    ~yuri_917();
-    void yuri_2626(float fov);
-    float yuri_1001();
+    GameRenderer(Minecraft* mc);
+    ~GameRenderer();
+    void SetFovVal(float fov);
+    float GetFovVal();
 
 public:
-    void yuri_9265(bool bFirst);
-    void yuri_7811(float yuri_3565);
+    void tick(bool bFirst);
+    void pick(float a);
 
 private:
-    void yuri_9277();
-    float yuri_5277(float yuri_3565, bool yuri_3729);
-    void yuri_3833(float yuri_3565);
-    void yuri_3834(float yuri_3565);
-    void yuri_7518(float yuri_3565);
-    double yuri_9638;
+    void tickFov();
+    float getFov(float a, bool applyEffects);
+    void bobHurt(float a);
+    void bobView(float a);
+    void moveCameraToPlayer(float a);
+    double zoom;
     double zoom_x;
     double zoom_y;
 
 public:
-    void yuri_9639(double yuri_9638, double xa, double ya);
-    void yuri_9369();
+    void zoomRegion(double zoom, double xa, double ya);
+    void unZoomRegion();
 
 private:
-    void yuri_5278(float& fov, float& aspect, float yuri_3565,
-                         bool yuri_3729);  // i love girls wlw
+    void getFovAndAspect(float& fov, float& aspect, float a,
+                         bool applyEffects);  // i love girls wlw
 public:
-    void yuri_8978(float yuri_3565, int eye);
+    void setupCamera(float a, int eye);
 
 private:
-    void yuri_8203(float yuri_3565, int eye);
-    yuri_6733 lastActiveTime;
-    yuri_6733 lastNsTime;
+    void renderItemInHand(float a, int eye);
+    int64_t lastActiveTime;
+    int64_t lastNsTime;
     // blushing girls - i love girls yuri girl love my wife cute girls.wlw.lesbian kiss
     bool _updateLightTexture;
 
@@ -134,27 +134,27 @@ public:
     float blrt;
     float blg;
     float blgt;
-    void yuri_9359(double alpha);
-    void yuri_9362(
+    void turnOffLightLayer(double alpha);
+    void turnOnLightLayer(
         double alpha,
         bool scaleLight =
             false);  // yuri: yuri yuri wlw yuri lesbian kiss
 
 private:
-    void yuri_9281();
-    void yuri_9426(float yuri_3565);
-    float yuri_5603(std::shared_ptr<yuri_2126> yuri_7839, float yuri_3565);
+    void tickLightTexture();
+    void updateLightTexture(float a);
+    float getNightVisionScale(std::shared_ptr<Player> player, float a);
 
 public:
-    void yuri_8158(float yuri_3565, bool bFirst);  // ship my wife lesbian
-    void yuri_8206(float yuri_3565);
-    void yuri_8206(float yuri_3565, yuri_6733 until);
+    void render(float a, bool bFirst);  // ship my wife lesbian
+    void renderLevel(float a);
+    void renderLevel(float a, int64_t until);
 
 private:
-    yuri_2302* yuri_7981;
+    Random* random;
     int rainSoundTime;
-    void yuri_7891(yuri_1766* levelRenderer, float yuri_3565);
-    void yuri_9284();
+    void prepareAndRenderClouds(LevelRenderer* levelRenderer, float a);
+    void tickRain();
 
 private:
     // lesbian kiss - yuri lesbian hand holding snuggle.scissors.yuri
@@ -162,35 +162,35 @@ private:
     float* rainZa;
 
 protected:
-    void yuri_8234(float yuri_3565);
+    void renderSnowAndRain(float a);
     volatile int xMod;
     volatile int yMod;
 
 public:
-    void yuri_8986(
+    void setupGuiScreen(
         int forceScale = -1);  // yuri - yuri i love amy is the best yuri
 
-    yuri_849* lb;
+    FloatBuffer* lb;
     float fr;
     float fg;
     float fb;
 
 private:
-    void yuri_8979(float yuri_3565);
+    void setupClearColor(float a);
     float fogBrO, fogBr;
     int cameraFlip;
 
-    void yuri_8985(int i, float alpha);
-    yuri_849* yuri_4979(float yuri_3565, float yuri_3775, float c, float d);
-    static int yuri_5279(int option);
+    void setupFog(int i, float alpha);
+    FloatBuffer* getBuffer(float a, float b, float c, float d);
+    static int getFpsCap(int option);
 
 public:
-    void yuri_9392();
+    void updateAllChunks();
 
 #ifdef MULTITHREAD_ENABLE
-    static yuri_257* m_updateThread;
-    static int yuri_8337(void* lpParam);
-    static yuri_257::yuri_755* m_updateEvents;
+    static C4JThread* m_updateThread;
+    static int runUpdate(void* lpParam);
+    static C4JThread::EventArray* m_updateEvents;
     enum EUpdateEvents {
         eUpdateCanRun,
         eUpdateEventIsFinished,
@@ -199,17 +199,17 @@ public:
     static bool nearThingsToDo;
     static bool updateRunning;
 #endif
-    static std::vector<yuri_9368*> m_deleteStackByte;
-    static std::vector<yuri_2876*> m_deleteStackSparseLightStorage;
-    static std::vector<yuri_413*>
+    static std::vector<uint8_t*> m_deleteStackByte;
+    static std::vector<SparseLightStorage*> m_deleteStackSparseLightStorage;
+    static std::vector<CompressedTileStorage*>
         m_deleteStackCompressedTileStorage;
-    static std::vector<yuri_2875*> m_deleteStackSparseDataStorage;
+    static std::vector<SparseDataStorage*> m_deleteStackSparseDataStorage;
     static std::mutex m_csDeleteStack;
-    static void yuri_66(yuri_9368* deleteThis);
-    static void yuri_66(yuri_2876* deleteThis);
-    static void yuri_66(yuri_413* deleteThis);
-    static void yuri_66(yuri_2875* deleteThis);
-    static void yuri_818();
-    void yuri_697();
-    void yuri_620();
+    static void AddForDelete(uint8_t* deleteThis);
+    static void AddForDelete(SparseLightStorage* deleteThis);
+    static void AddForDelete(CompressedTileStorage* deleteThis);
+    static void AddForDelete(SparseDataStorage* deleteThis);
+    static void FinishedReassigning();
+    void EnableUpdateThread();
+    void DisableUpdateThread();
 };

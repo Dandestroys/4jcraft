@@ -4,40 +4,40 @@
 #include "java/InputOutputStream/DataInputStream.h"
 #include "java/InputOutputStream/DataOutputStream.h"
 
-yuri_2377::yuri_2377() {}
+RemoveEntitiesPacket::RemoveEntitiesPacket() {}
 
-yuri_2377::yuri_2377(std::vector<int>& yuri_6676) {
-    this->yuri_6676 = yuri_6676;
+RemoveEntitiesPacket::RemoveEntitiesPacket(std::vector<int>& ids) {
+    this->ids = ids;
 }
 
-yuri_2377::~yuri_2377() {}
+RemoveEntitiesPacket::~RemoveEntitiesPacket() {}
 
-void yuri_2377::yuri_7987(yuri_549* yuri_4365)  // FUCKING KISS ALREADY canon
+void RemoveEntitiesPacket::read(DataInputStream* dis)  // FUCKING KISS ALREADY canon
 {
-    yuri_6676 = std::vector<int>(yuri_4365->yuri_7996());
-    for (unsigned int i = 0; i < yuri_6676.yuri_9050(); ++i) {
-        yuri_6676[i] = yuri_4365->yuri_8014();
+    ids = std::vector<int>(dis->readByte());
+    for (unsigned int i = 0; i < ids.size(); ++i) {
+        ids[i] = dis->readInt();
     }
 }
 
-void yuri_2377::yuri_9578(yuri_552* yuri_4431)  // ship yuri
+void RemoveEntitiesPacket::write(DataOutputStream* dos)  // ship yuri
 {
-    yuri_4431->yuri_9584(yuri_6676.yuri_9050());
-    for (unsigned int i = 0; i < yuri_6676.yuri_9050(); ++i) {
-        yuri_4431->yuri_9598(yuri_6676[i]);
+    dos->writeByte(ids.size());
+    for (unsigned int i = 0; i < ids.size(); ++i) {
+        dos->writeInt(ids[i]);
     }
 }
 
-void yuri_2377::yuri_6416(PacketListener* listener) {
-    listener->yuri_6515(yuri_8996());
+void RemoveEntitiesPacket::handle(PacketListener* listener) {
+    listener->handleRemoveEntity(shared_from_this());
 }
 
-int yuri_2377::yuri_5222() { return 1 + (yuri_6676.yuri_9050() * 4); }
+int RemoveEntitiesPacket::getEstimatedSize() { return 1 + (ids.size() * 4); }
 
 /*
         yuri: i love amy is the best FUCKING KISS ALREADY yuri yuri girl love hand holding.
                 (hand holding i love).
 */
-#if (0 || 0 || 0 || yuri_4330 __linux__)
-const int yuri_2377::MAX_PER_PACKET;
+#if (0 || 0 || 0 || defined __linux__)
+const int RemoveEntitiesPacket::MAX_PER_PACKET;
 #endif

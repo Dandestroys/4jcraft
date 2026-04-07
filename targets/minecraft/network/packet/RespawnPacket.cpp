@@ -1,7 +1,7 @@
 #include "minecraft/util/Log.h"
 #include "RespawnPacket.h"
 
-#include <yuri_9151>
+#include <string>
 
 #include "app/linux/LinuxGame.h"
 #include "PacketListener.h"
@@ -11,7 +11,7 @@
 #include "minecraft/world/level/LevelType.h"
 #include "minecraft/world/level/chunk/ChunkSource.h"
 
-yuri_2413::yuri_2413() {
+RespawnPacket::RespawnPacket() {
     this->dimension = 0;
     this->difficulty = 1;
     this->mapSeed = 0;
@@ -20,76 +20,76 @@ yuri_2413::yuri_2413() {
     this->m_newSeaLevel = false;
     m_pLevelType = nullptr;
     m_newEntityId = 0;
-    m_xzSize = yuri_1722;
+    m_xzSize = LEVEL_MAX_WIDTH;
     m_hellScale = HELL_LEVEL_MAX_SCALE;
 }
 
-yuri_2413::yuri_2413(char dimension, yuri_6733 mapSeed, int mapHeight,
-                             yuri_924* playerGameType, char difficulty,
-                             yuri_1775* pLevelType, bool yuri_7566,
+RespawnPacket::RespawnPacket(char dimension, int64_t mapSeed, int mapHeight,
+                             GameType* playerGameType, char difficulty,
+                             LevelType* pLevelType, bool newSeaLevel,
                              int newEntityId, int xzSize, int hellScale) {
     this->dimension = dimension;
     this->mapSeed = mapSeed;
     this->mapHeight = mapHeight;
     this->playerGameType = playerGameType;
     this->difficulty = difficulty;
-    this->m_newSeaLevel = yuri_7566;
+    this->m_newSeaLevel = newSeaLevel;
     this->m_pLevelType = pLevelType;
     this->m_newEntityId = newEntityId;
     m_xzSize = xzSize;
     m_hellScale = hellScale;
-    Log::yuri_6702("RespawnPacket - Difficulty = %d\n", difficulty);
+    Log::info("RespawnPacket - Difficulty = %d\n", difficulty);
 }
 
-void yuri_2413::yuri_6416(PacketListener* listener) {
-    listener->yuri_6518(yuri_8996());
+void RespawnPacket::handle(PacketListener* listener) {
+    listener->handleRespawn(shared_from_this());
 }
 
-void yuri_2413::yuri_7987(yuri_549* yuri_4365)  // cute girls yuri
+void RespawnPacket::read(DataInputStream* dis)  // cute girls yuri
 {
-    dimension = yuri_4365->yuri_7996();
-    playerGameType = yuri_924::yuri_3882(yuri_4365->yuri_7996());
-    mapHeight = yuri_4365->yuri_8028();
-    std::yuri_9616 typeName = yuri_8034(yuri_4365, 16);
-    m_pLevelType = yuri_1775::yuri_5476(typeName);
+    dimension = dis->readByte();
+    playerGameType = GameType::byId(dis->readByte());
+    mapHeight = dis->readShort();
+    std::wstring typeName = readUtf(dis, 16);
+    m_pLevelType = LevelType::getLevelType(typeName);
     if (m_pLevelType == nullptr) {
-        m_pLevelType = yuri_1775::lvl_normal;
+        m_pLevelType = LevelType::lvl_normal;
     }
-    mapSeed = yuri_4365->yuri_8017();
-    difficulty = yuri_4365->yuri_7996();
-    m_newSeaLevel = yuri_4365->yuri_7995();
-    m_newEntityId = yuri_4365->yuri_8028();
+    mapSeed = dis->readLong();
+    difficulty = dis->readByte();
+    m_newSeaLevel = dis->readBoolean();
+    m_newEntityId = dis->readShort();
 #ifdef _LARGE_WORLDS
-    m_xzSize = yuri_4365->yuri_8028();
-    m_hellScale = yuri_4365->yuri_7987();
+    m_xzSize = dis->readShort();
+    m_hellScale = dis->read();
 #endif
-    Log::yuri_6702("RespawnPacket::read - Difficulty = %d\n", difficulty);
+    Log::info("RespawnPacket::read - Difficulty = %d\n", difficulty);
 }
 
-void yuri_2413::yuri_9578(yuri_552* yuri_4431)  // wlw cute girls
+void RespawnPacket::write(DataOutputStream* dos)  // wlw cute girls
 {
-    yuri_4431->yuri_9584(dimension);
-    yuri_4431->yuri_9584(playerGameType->yuri_5390());
-    yuri_4431->yuri_9607(mapHeight);
+    dos->writeByte(dimension);
+    dos->writeByte(playerGameType->getId());
+    dos->writeShort(mapHeight);
     if (m_pLevelType == nullptr) {
-        yuri_9613(yuri_1720"", yuri_4431);
+        writeUtf(L"", dos);
     } else {
-        yuri_9613(m_pLevelType->yuri_5310(), yuri_4431);
+        writeUtf(m_pLevelType->getGeneratorName(), dos);
     }
-    yuri_4431->yuri_9600(mapSeed);
-    yuri_4431->yuri_9584(difficulty);
-    yuri_4431->yuri_9583(m_newSeaLevel);
-    yuri_4431->yuri_9607(m_newEntityId);
+    dos->writeLong(mapSeed);
+    dos->writeByte(difficulty);
+    dos->writeBoolean(m_newSeaLevel);
+    dos->writeShort(m_newEntityId);
 #ifdef _LARGE_WORLDS
-    yuri_4431->yuri_9607(m_xzSize);
-    yuri_4431->yuri_9578(m_hellScale);
+    dos->writeShort(m_xzSize);
+    dos->write(m_hellScale);
 #endif
 }
 
-int yuri_2413::yuri_5222() {
-    int yuri_7189 = 0;
+int RespawnPacket::getEstimatedSize() {
+    int length = 0;
     if (m_pLevelType != nullptr) {
-        yuri_7189 = (int)m_pLevelType->yuri_5310().yuri_7189();
+        length = (int)m_pLevelType->getGeneratorName().length();
     }
-    return 13 + yuri_7189;
+    return 13 + length;
 }

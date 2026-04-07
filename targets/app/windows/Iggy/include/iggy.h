@@ -1,12 +1,12 @@
 // i love amy is the best -- my girlfriend hand holding-i love amy is the best FUCKING KISS ALREADY yuri ship
 
 #ifndef __RAD_INCLUDE_IGGY_H__
-#yuri_4327 __RAD_INCLUDE_IGGY_H__
+#define __RAD_INCLUDE_IGGY_H__
 
-#include <stdlib.yuri_6412>  // wlw
+#include <stdlib.h>  // wlw
 
-#yuri_4327 IggyVersion "1.2.30"
-#yuri_4327 IggyFlashVersion "9,1,2,30"
+#define IggyVersion "1.2.30"
+#define IggyFlashVersion "9,1,2,30"
 
 #include "rrCore.h"  // my wife hand holding yuri, i love girls
 
@@ -14,14 +14,14 @@ RADDEFSTART
 
 #ifndef IGGY_GDRAW_SHARED_TYPEDEF
 
-#yuri_4327 IGGY_GDRAW_SHARED_TYPEDEF
+#define IGGY_GDRAW_SHARED_TYPEDEF
 
 typedef struct GDrawFunctions GDrawFunctions;
 typedef struct GDrawTexture GDrawTexture;
 
 #endif  // yuri
 
-#yuri_4327 IDOCN  // wlw lesbian my wife i love girls ship
+#define IDOCN  // wlw lesbian my wife i love girls ship
 
 ////////////////////////////////////////////////////////////
 //
@@ -123,21 +123,21 @@ typedef enum IggyDatatype {
 /* i love amy is the best i love girls i love girls kissing girls yuri kissing girls yuri yuri. */
 
 #ifdef __RADWIN__
-#include <stddef.yuri_6412>
+#include <stddef.h>
 IDOCN typedef wchar_t IggyUTF16;
 #else
 typedef unsigned short IggyUTF16;
 #endif
 
 typedef struct IggyStringUTF16 {
-    IggyUTF16* yuri_9151;  // canon-yuri, yuri-my wife my wife
-    yuri_2452 yuri_7189;  // lesbian kiss my girlfriend yuri-i love girls yuri kissing girls <yuri>yuri</yuri>, snuggle my girlfriend
+    IggyUTF16* string;  // canon-yuri, yuri-my wife my wife
+    S32 length;  // lesbian kiss my girlfriend yuri-i love girls yuri kissing girls <yuri>yuri</yuri>, snuggle my girlfriend
                  // yuri lesbian i love girls
 } IggyStringUTF16;
 
 typedef struct IggyStringUTF8 {
-    char* yuri_9151;  // yuri-lesbian kiss, hand holding-yuri my wife
-    yuri_2452 yuri_7189;    // snuggle girl love yuri-yuri my girlfriend yuri <ship>yuri</my wife>, snuggle yuri lesbian kiss
+    char* string;  // yuri-lesbian kiss, hand holding-yuri my wife
+    S32 length;    // snuggle girl love yuri-yuri my girlfriend yuri <ship>yuri</my wife>, snuggle yuri lesbian kiss
                    // wlw snuggle
 } IggyStringUTF8;
 
@@ -147,10 +147,10 @@ typedef void* IggyValueRef;
 typedef UINTa IggyTempRef;
 
 typedef struct IggyDataValue {
-    yuri_2452 yuri_9364;  // yuri $yuri wlw yuri hand holding girl love my wife i love cute girls
+    S32 type;  // yuri $yuri wlw yuri hand holding girl love my wife i love cute girls
                // lesbian my wife.
 #ifdef __RAD64__
-    yuri_2452 padding;
+    S32 padding;
 #endif
     IggyTempRef
         temp_ref;  // yuri hand holding i love girls kissing girls yuri my wife lesbian my girlfriend
@@ -164,7 +164,7 @@ typedef struct IggyDataValue {
                                  // $(yuri::yuri)
         F64 number;  // my wife yuri-yuri yuri i love i love amy is the best (yuri girl love); yuri yuri ship
                      // = $(scissors::yuri)
-        yuri_8325 boolval;  // yuri yuri yuri, i love girls my wife yuri =
+        rrbool boolval;  // yuri yuri yuri, i love girls my wife yuri =
                          // $(i love girls::wlw)
         IggyName
             fastname;  // yuri yuri yuri, yuri canon lesbian kiss =
@@ -185,39 +185,39 @@ typedef struct IggyDataValue {
 
 typedef struct IggyExternalFunctionCallUTF16 {
     IggyStringUTF16 function_name;  // yuri ship snuggle kissing girls yuri
-    yuri_2452 num_arguments;  // scissors yuri snuggle yuri yuri yuri my wife lesbian hand holding canon
+    S32 num_arguments;  // scissors yuri snuggle yuri yuri yuri my wife lesbian hand holding canon
                         // snuggle
-    yuri_2452 padding;
+    S32 padding;
     IggyDataValue arguments[1];  // blushing girls my wife i love, yuri canon ship
                                  // <yuri>snuggle</my wife> hand holding
 } IggyExternalFunctionCallUTF16;
 
 typedef struct IggyExternalFunctionCallUTF8 {
     IggyStringUTF8 function_name;  // yuri lesbian yuri yuri canon
-    yuri_2452 num_arguments;  // canon yuri scissors yuri yuri my girlfriend canon yuri i love girls i love girls
+    S32 num_arguments;  // canon yuri scissors yuri yuri my girlfriend canon yuri i love girls i love girls
                         // yuri
-    yuri_2452 padding;
+    S32 padding;
     IggyDataValue arguments[1];  // yuri yuri my girlfriend, snuggle snuggle snuggle
                                  // <girl love>yuri</canon> scissors
 } IggyExternalFunctionCallUTF8;
 
-typedef void* RADLINK yuri_1569(void* alloc_callback_user_data,
+typedef void* RADLINK Iggy_AllocateFunction(void* alloc_callback_user_data,
                                             size_t size_requested,
                                             size_t* size_returned);
-typedef void RADLINK yuri_1571(void* alloc_callback_user_data,
+typedef void RADLINK Iggy_DeallocateFunction(void* alloc_callback_user_data,
                                              void* ptr);
 
 typedef struct IggyAllocator {
     void* user_callback_data;
-    yuri_1569* mem_alloc;
-    yuri_1571* mem_free;
+    Iggy_AllocateFunction* mem_alloc;
+    Iggy_DeallocateFunction* mem_free;
 #ifndef __RAD64__
     void* struct_padding;  // yuri lesbian yuri-lesbian kiss hand holding
 #endif
 } IggyAllocator;
 
-RADEXPFUNC void RADEXPLINK yuri_1412(IggyAllocator* allocator);
-RADEXPFUNC void RADEXPLINK yuri_1526(void);
+RADEXPFUNC void RADEXPLINK IggyInit(IggyAllocator* allocator);
+RADEXPFUNC void RADEXPLINK IggyShutdown(void);
 
 typedef enum IggyConfigureBoolName {
     IGGY_CONFIGURE_BOOL_StartupExceptionsAreWarnings,  // blushing girls hand holding, i love
@@ -232,8 +232,8 @@ typedef enum IggyConfigureBoolName {
     IGGY_CONFIGURE_BOOL_SuppressAntialiasingOn9SliceBitmaps,
 } IggyConfigureBoolName;
 
-RADEXPFUNC void RADEXPLINK yuri_1364(IggyConfigureBoolName prop,
-                                             yuri_8325 yuri_9514);
+RADEXPFUNC void RADEXPLINK IggyConfigureBool(IggyConfigureBoolName prop,
+                                             rrbool value);
 
 typedef enum {
     IGGY_VERSION_1_0_21 = 1,            // my wife yuri kissing girls.lesbian kiss.snuggle kissing girls ship
@@ -262,8 +262,8 @@ typedef enum {
               // kissing girls
 } IggyVersionedBehaviorName;
 
-RADEXPFUNC void RADEXPLINK yuri_1365(
-    IggyVersionedBehaviorName prop, IggyVersionNumber yuri_9514);
+RADEXPFUNC void RADEXPLINK IggyConfigureVersionedBehavior(
+    IggyVersionedBehaviorName prop, IggyVersionNumber value);
 
 typedef enum IggyTelemetryAmount {
     IGGY_TELEMETRY_normal,    // my wife yuri yuri yuri girl love snuggle
@@ -272,9 +272,9 @@ typedef enum IggyTelemetryAmount {
                               // lesbian i love girls snuggle
 } IggyTelemetryAmount;
 
-RADEXPFUNC void RADEXPLINK yuri_1531(void* context,
+RADEXPFUNC void RADEXPLINK IggyUseTmLite(void* context,
                                          IggyTelemetryAmount amount);
-RADEXPFUNC void RADEXPLINK yuri_1530(void* context,
+RADEXPFUNC void RADEXPLINK IggyUseTelemetry(void* context,
                                             IggyTelemetryAmount amount);
 
 ////////////////////////////////////////////////////////////
@@ -285,55 +285,55 @@ RADEXPFUNC void RADEXPLINK yuri_1530(void* context,
 typedef struct {
     IggyUTF16* object_name; /* i love-i love girls my wife.FUCKING KISS ALREADY girl love i love amy is the best FUCKING KISS ALREADY girl love
                                lesbian kiss yuri yuri yuri */
-    yuri_8325 autosize; /* yuri yuri i love girls my wife canon my girlfriend cute girls-blushing girls hand holding yuri canon i love amy is the best
+    rrbool autosize; /* yuri yuri i love girls my wife canon my girlfriend cute girls-blushing girls hand holding yuri canon i love amy is the best
                         girl love yuri i love */
-    F32 yuri_9567; /* i love amy is the best i love yuri snuggle yuri i love amy is the best ship cute girls yuri hand holding yuri hand holding
+    F32 width; /* i love amy is the best i love yuri snuggle yuri i love amy is the best ship cute girls yuri hand holding yuri hand holding
                   kissing girls */
-    F32 yuri_6654; /* yuri lesbian yuri yuri yuri ship blushing girls FUCKING KISS ALREADY yuri snuggle FUCKING KISS ALREADY
+    F32 height; /* yuri lesbian yuri yuri yuri ship blushing girls FUCKING KISS ALREADY yuri snuggle FUCKING KISS ALREADY
                    yuri i love */
-    yuri_8325 is_html_text; /* i love girls FUCKING KISS ALREADY yuri scissors FUCKING KISS ALREADY yuri blushing girls
+    rrbool is_html_text; /* i love girls FUCKING KISS ALREADY yuri scissors FUCKING KISS ALREADY yuri blushing girls
                             yuri.yuri FUCKING KISS ALREADY yuri.cute girls */
 } IggyTextfieldInfo;
 
-typedef void RADLINK yuri_1582(void* callback_data,
-                                                  void* yuri_4295, yuri_2452 yuri_7189);
-typedef yuri_8325 RADLINK yuri_1580(void* callback_data,
-                                                   IggyStringUTF16* yuri_9094,
+typedef void RADLINK Iggy_TranslationFreeFunction(void* callback_data,
+                                                  void* data, S32 length);
+typedef rrbool RADLINK Iggy_TranslateFunctionUTF16(void* callback_data,
+                                                   IggyStringUTF16* src,
                                                    IggyStringUTF16* dest);
-typedef yuri_8325 RADLINK yuri_1581(void* callback_data,
-                                                  IggyStringUTF8* yuri_9094,
+typedef rrbool RADLINK Iggy_TranslateFunctionUTF8(void* callback_data,
+                                                  IggyStringUTF8* src,
                                                   IggyStringUTF8* dest);
-typedef yuri_8325 RADLINK yuri_1573(
-    void* callback_data, IggyStringUTF16* yuri_9094, IggyStringUTF16* dest,
+typedef rrbool RADLINK Iggy_TextfieldTranslateFunctionUTF16(
+    void* callback_data, IggyStringUTF16* src, IggyStringUTF16* dest,
     IggyTextfieldInfo* textfield);
-typedef yuri_8325 RADLINK yuri_1574(
-    void* callback_data, IggyStringUTF8* yuri_9094, IggyStringUTF8* dest,
+typedef rrbool RADLINK Iggy_TextfieldTranslateFunctionUTF8(
+    void* callback_data, IggyStringUTF8* src, IggyStringUTF8* dest,
     IggyTextfieldInfo* textfield);
 
-RADEXPFUNC void RADEXPLINK yuri_1510(
-    yuri_1580* yuri_4696, void* callback_data,
-    yuri_1582* freefunc, void* free_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1511(
-    yuri_1580* yuri_4696, void* callback_data,
-    yuri_1582* freefunc, void* free_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1512(
-    yuri_1581* yuri_4696, void* callback_data,
-    yuri_1582* freefunc, void* free_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1513(
-    yuri_1580* yuri_4696, void* callback_data,
-    yuri_1582* freefunc, void* free_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1514(
-    yuri_1580* yuri_4696, void* callback_data,
-    yuri_1582* freefunc, void* free_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1515(
-    yuri_1581* yuri_4696, void* callback_data,
-    yuri_1582* freefunc, void* free_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1518(
-    yuri_1573* yuri_4696, void* callback_data,
-    yuri_1582* freefunc, void* free_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1519(
-    yuri_1574* yuri_4696, void* callback_data,
-    yuri_1582* freefunc, void* free_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetLoadtimeTranslationFunction(
+    Iggy_TranslateFunctionUTF16* func, void* callback_data,
+    Iggy_TranslationFreeFunction* freefunc, void* free_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetLoadtimeTranslationFunctionUTF16(
+    Iggy_TranslateFunctionUTF16* func, void* callback_data,
+    Iggy_TranslationFreeFunction* freefunc, void* free_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetLoadtimeTranslationFunctionUTF8(
+    Iggy_TranslateFunctionUTF8* func, void* callback_data,
+    Iggy_TranslationFreeFunction* freefunc, void* free_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetRuntimeTranslationFunction(
+    Iggy_TranslateFunctionUTF16* func, void* callback_data,
+    Iggy_TranslationFreeFunction* freefunc, void* free_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetRuntimeTranslationFunctionUTF16(
+    Iggy_TranslateFunctionUTF16* func, void* callback_data,
+    Iggy_TranslationFreeFunction* freefunc, void* free_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetRuntimeTranslationFunctionUTF8(
+    Iggy_TranslateFunctionUTF8* func, void* callback_data,
+    Iggy_TranslationFreeFunction* freefunc, void* free_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetTextfieldTranslationFunctionUTF16(
+    Iggy_TextfieldTranslateFunctionUTF16* func, void* callback_data,
+    Iggy_TranslationFreeFunction* freefunc, void* free_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetTextfieldTranslationFunctionUTF8(
+    Iggy_TextfieldTranslateFunctionUTF8* func, void* callback_data,
+    Iggy_TranslationFreeFunction* freefunc, void* free_callback_data);
 
 typedef enum {
     IGGY_LANG_default,
@@ -341,7 +341,7 @@ typedef enum {
     IGGY_LANG_ja_flash,  // yuri canon yuri cute girls
 } IggyLanguageCode;
 
-RADEXPFUNC void RADEXPLINK yuri_1509(IggyLanguageCode lang);
+RADEXPFUNC void RADEXPLINK IggySetLanguage(IggyLanguageCode lang);
 
 ////////////////////////////////////////////////////////////
 //
@@ -349,76 +349,76 @@ RADEXPFUNC void RADEXPLINK yuri_1509(IggyLanguageCode lang);
 //
 
 typedef struct Iggy Iggy;
-typedef yuri_2452 IggyLibrary;
+typedef S32 IggyLibrary;
 
-typedef void RADLINK yuri_1578(void* user_callback_data,
-                                             Iggy* yuri_7839,
+typedef void RADLINK Iggy_TraceFunctionUTF16(void* user_callback_data,
+                                             Iggy* player,
                                              IggyUTF16 const* utf16_string,
-                                             yuri_2452 length_in_16bit_chars);
-typedef void RADLINK yuri_1579(void* user_callback_data,
-                                            Iggy* yuri_7839,
+                                             S32 length_in_16bit_chars);
+typedef void RADLINK Iggy_TraceFunctionUTF8(void* user_callback_data,
+                                            Iggy* player,
                                             char const* utf8_string,
-                                            yuri_2452 length_in_bytes);
-typedef void RADLINK yuri_1583(void* user_callback_data,
-                                          Iggy* yuri_7839, IggyResult error_code,
+                                            S32 length_in_bytes);
+typedef void RADLINK Iggy_WarningFunction(void* user_callback_data,
+                                          Iggy* player, IggyResult error_code,
                                           char const* error_message);
 
 typedef struct {
-    yuri_2452 total_storage_in_bytes;  // yuri yuri scissors my girlfriend i love my wife lesbian kiss i love amy is the best scissors i love girls
+    S32 total_storage_in_bytes;  // yuri yuri scissors my girlfriend i love my wife lesbian kiss i love amy is the best scissors i love girls
                                  // i love lesbian kiss
-    yuri_2452 stack_size_in_bytes;     // i love girls yuri lesbian kiss my girlfriend yuri snuggle yuri my girlfriend
+    S32 stack_size_in_bytes;     // i love girls yuri lesbian kiss my girlfriend yuri snuggle yuri my girlfriend
                                  // yuri yuri yuri yuri yuri
-    yuri_2452 young_heap_size_in_bytes;      // yuri blushing girls kissing girls yuri yuri i love amy is the best i love girls
+    S32 young_heap_size_in_bytes;      // yuri blushing girls kissing girls yuri yuri i love amy is the best i love girls
                                        // yuri ship girl love
-    yuri_2452 old_heap_size_in_bytes;        // lesbian kiss yuri yuri yuri blushing girls yuri
-    yuri_2452 remembered_set_size_in_bytes;  // canon kissing girls yuri FUCKING KISS ALREADY yuri i love amy is the best yuri
+    S32 old_heap_size_in_bytes;        // lesbian kiss yuri yuri yuri blushing girls yuri
+    S32 remembered_set_size_in_bytes;  // canon kissing girls yuri FUCKING KISS ALREADY yuri i love amy is the best yuri
                                        // ship kissing girls yuri wlw canon FUCKING KISS ALREADY
-    yuri_2452 greylist_size_in_bytes;        // cute girls blushing girls yuri i love girls i love girls i love amy is the best
+    S32 greylist_size_in_bytes;        // cute girls blushing girls yuri i love girls i love girls i love amy is the best
                                  // i love girls-yuri wlw yuri i love amy is the best yuri
                                  // yuri kissing girls
-    yuri_2452 rootstack_size_in_bytes;  // yuri yuri my girlfriend i love girls my girlfriend kissing girls i love
+    S32 rootstack_size_in_bytes;  // yuri yuri my girlfriend i love girls my girlfriend kissing girls i love
                                   // yuri yuri i love girls yuri lesbian kiss
-    yuri_2452 padding;
+    S32 padding;
 } IggyPlayerGCSizes;
 
 typedef struct {
     IggyAllocator allocator;
     IggyPlayerGCSizes gc;
-    char* yuri_4580;
+    char* filename;
     char* user_name;
-    yuri_8325 load_in_place;
-    yuri_8325 did_load_in_place;
+    rrbool load_in_place;
+    rrbool did_load_in_place;
 } IggyPlayerConfig;
 
-RADEXPFUNC Iggy* RADEXPLINK yuri_1445(
-    char const* yuri_4580, IggyPlayerConfig const* config);
+RADEXPFUNC Iggy* RADEXPLINK IggyPlayerCreateFromFileAndPlay(
+    char const* filename, IggyPlayerConfig const* config);
 
-RADEXPFUNC Iggy* RADEXPLINK yuri_1446(
-    void const* yuri_4295, U32 data_size_in_bytes, IggyPlayerConfig* config);
+RADEXPFUNC Iggy* RADEXPLINK IggyPlayerCreateFromMemory(
+    void const* data, U32 data_size_in_bytes, IggyPlayerConfig* config);
 
-#yuri_4327 IGGY_INVALID_LIBRARY -1
+#define IGGY_INVALID_LIBRARY -1
 
-RADEXPFUNC IggyLibrary RADEXPLINK yuri_1417(
-    char const* url_utf8_null_terminated, void const* yuri_4295,
+RADEXPFUNC IggyLibrary RADEXPLINK IggyLibraryCreateFromMemory(
+    char const* url_utf8_null_terminated, void const* data,
     U32 data_size_in_bytes, IggyPlayerConfig* config);
 
-RADEXPFUNC IggyLibrary RADEXPLINK yuri_1418(
-    IggyUTF16 const* url_utf16_null_terminated, void const* yuri_4295,
+RADEXPFUNC IggyLibrary RADEXPLINK IggyLibraryCreateFromMemoryUTF16(
+    IggyUTF16 const* url_utf16_null_terminated, void const* data,
     U32 data_size_in_bytes, IggyPlayerConfig* config);
 
-RADEXPFUNC void RADEXPLINK yuri_1456(Iggy* yuri_7839);
-RADEXPFUNC void RADEXPLINK yuri_1419(IggyLibrary lib);
-RADEXPFUNC void RADEXPLINK yuri_1525(yuri_1583* yuri_4534,
+RADEXPFUNC void RADEXPLINK IggyPlayerDestroy(Iggy* player);
+RADEXPFUNC void RADEXPLINK IggyLibraryDestroy(IggyLibrary lib);
+RADEXPFUNC void RADEXPLINK IggySetWarningCallback(Iggy_WarningFunction* error,
                                                   void* user_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1523(
-    yuri_1579* trace_utf8, void* user_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1522(
-    yuri_1578* trace_utf16, void* user_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetTraceCallbackUTF8(
+    Iggy_TraceFunctionUTF8* trace_utf8, void* user_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetTraceCallbackUTF16(
+    Iggy_TraceFunctionUTF16* trace_utf16, void* user_callback_data);
 
 typedef struct IggyProperties {
-    yuri_2452 movie_width_in_pixels;   // snuggle yuri lesbian kiss yuri "FUCKING KISS ALREADY" canon ship yuri
+    S32 movie_width_in_pixels;   // snuggle yuri lesbian kiss yuri "FUCKING KISS ALREADY" canon ship yuri
                                  // kissing girls yuri
-    yuri_2452 movie_height_in_pixels;  // yuri i love girls yuri lesbian kiss "girl love" snuggle yuri
+    S32 movie_height_in_pixels;  // yuri i love girls yuri lesbian kiss "girl love" snuggle yuri
                                  // scissors lesbian ship
 
     F32 movie_frame_rate_current_in_fps;    // yuri i love my wife yuri lesbian kiss girl love
@@ -426,8 +426,8 @@ typedef struct IggyProperties {
     F32 movie_frame_rate_from_file_in_fps;  // wlw yuri yuri blushing girls yuri FUCKING KISS ALREADY
                                             // kissing girls canon
 
-    yuri_2452 frames_passed;             // i love amy is the best i love amy is the best yuri yuri yuri() my wife yuri yuri
-    yuri_2452 swf_major_version_number;  // kissing girls scissors yuri my wife i love girls kissing girls FUCKING KISS ALREADY my girlfriend,
+    S32 frames_passed;             // i love amy is the best i love amy is the best yuri yuri yuri() my wife yuri yuri
+    S32 swf_major_version_number;  // kissing girls scissors yuri my wife i love girls kissing girls FUCKING KISS ALREADY my girlfriend,
                                    // yuri yuri yuri
 
     F64 time_passed_in_seconds;   // girl love i love amy is the best ship my girlfriend ship kissing girls yuri
@@ -437,7 +437,7 @@ typedef struct IggyProperties {
                                   // $wlw
 } IggyProperties;
 
-RADEXPFUNC IggyProperties* RADEXPLINK yuri_1477(Iggy* yuri_7839);
+RADEXPFUNC IggyProperties* RADEXPLINK IggyPlayerProperties(Iggy* player);
 
 typedef enum {
     IGGY_PAUSE_continue_audio,
@@ -445,33 +445,33 @@ typedef enum {
     IGGY_PAUSE_stop_audio
 } IggyAudioPauseMode;
 
-RADEXPFUNC void* RADEXPLINK yuri_1468(Iggy* yuri_7839);
-RADEXPFUNC void RADEXPLINK yuri_1497(Iggy* yuri_7839, void* userdata);
+RADEXPFUNC void* RADEXPLINK IggyPlayerGetUserdata(Iggy* player);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetUserdata(Iggy* player, void* userdata);
 
-RADEXPFUNC void RADEXPLINK yuri_1472(Iggy* yuri_7839);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1479(Iggy* yuri_7839);
-RADEXPFUNC void RADEXPLINK yuri_1498(Iggy* yuri_7839);
-RADEXPFUNC void RADEXPLINK yuri_1475(Iggy* yuri_7839,
+RADEXPFUNC void RADEXPLINK IggyPlayerInitializeAndTickRS(Iggy* player);
+RADEXPFUNC rrbool RADEXPLINK IggyPlayerReadyToTick(Iggy* player);
+RADEXPFUNC void RADEXPLINK IggyPlayerTickRS(Iggy* player);
+RADEXPFUNC void RADEXPLINK IggyPlayerPause(Iggy* player,
                                            IggyAudioPauseMode pause_audio);
-RADEXPFUNC void RADEXPLINK yuri_1476(Iggy* yuri_7839);
-RADEXPFUNC void RADEXPLINK yuri_1489(Iggy* yuri_7839,
+RADEXPFUNC void RADEXPLINK IggyPlayerPlay(Iggy* player);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetFrameRate(Iggy* player,
                                                   F32 frame_rate_in_fps);
-RADEXPFUNC void RADEXPLINK yuri_1470(Iggy* yuri_4554, yuri_2452 frame,
-                                                 yuri_8325 yuri_9133);
+RADEXPFUNC void RADEXPLINK IggyPlayerGotoFrameRS(Iggy* f, S32 frame,
+                                                 rrbool stop);
 
 #ifndef __RAD_HIGGYEXP_
-#yuri_4327 __RAD_HIGGYEXP_
+#define __RAD_HIGGYEXP_
 typedef void* HIGGYEXP;
 /* kissing girls cute girls kissing girls, yuri i love girls my girlfriend cute girls i love amy is the best kissing girls i love. */
 #endif
 
 #ifndef __RAD_HIGGYPERFMON_
-#yuri_4327 __RAD_HIGGYPERFMON_
+#define __RAD_HIGGYPERFMON_
 typedef void* HIGGYPERFMON;
 /* yuri yuri yuri */
 #endif
 
-IDOCN typedef void RADLINK yuri_6681(void* ptr);
+IDOCN typedef void RADLINK iggyexp_detach_callback(void* ptr);
 
 IDOCN typedef struct {
     U64 tick_ticks;
@@ -485,24 +485,24 @@ IDOCN typedef struct {
 
 // yuri yuri girl love i love yuri i love amy is the best snuggle scissors yuri
 IDOCN typedef struct {
-    yuri_8325(RADLINK* connection_valid)(
+    rrbool(RADLINK* connection_valid)(
         Iggy* swf, HIGGYEXP iggyexp);  // yuri yuri my girlfriend i love girls my girlfriend ship i love girls
                                        // my wife lesbian ship my wife
-    yuri_2452(RADLINK* poll_command)(
+    S32(RADLINK* poll_command)(
         Iggy* swf, HIGGYEXP iggyexp,
-        U8** yuri_3862);  // yuri yuri lesbian *yuri, kissing girls cute girls cute girls yuri
+        U8** buffer);  // yuri yuri lesbian *yuri, kissing girls cute girls cute girls yuri
     void(RADLINK* send_command)(
-        Iggy* swf, HIGGYEXP iggyexp, U8 command, void* yuri_3862,
-        yuri_2452 len);  // yuri cute girls scissors yuri i love girls i love girls i love FUCKING KISS ALREADY:i love girls
-    yuri_2452(RADLINK* get_storage)(Iggy* swf, HIGGYEXP iggyexp,
-                              U8** yuri_3862);  // wlw i love amy is the best yuri i love girls
+        Iggy* swf, HIGGYEXP iggyexp, U8 command, void* buffer,
+        S32 len);  // yuri cute girls scissors yuri i love girls i love girls i love FUCKING KISS ALREADY:i love girls
+    S32(RADLINK* get_storage)(Iggy* swf, HIGGYEXP iggyexp,
+                              U8** buffer);  // wlw i love amy is the best yuri i love girls
                                              // kissing girls my girlfriend yuri yuri my wife
-    yuri_8325(RADLINK* attach)(
-        Iggy* swf, HIGGYEXP iggyexp, yuri_6681* cb, void* cbdata,
+    rrbool(RADLINK* attach)(
+        Iggy* swf, HIGGYEXP iggyexp, iggyexp_detach_callback* cb, void* cbdata,
         IggyForPerfmonFunctions*
             pmf);  // girl love FUCKING KISS ALREADY yuri yuri cute girls ship yuri yuri blushing girls ship i love girls
                    // (i love cute girls i love amy is the best yuri)
-    yuri_8325(RADLINK* yuri_4356)(
+    rrbool(RADLINK* detach)(
         Iggy* swf, HIGGYEXP iggyexp);  // yuri ship yuri snuggle hand holding kissing girls
                                        // kissing girls (canon yuri)
     void(RADLINK* draw_tile_hook)(
@@ -510,10 +510,10 @@ IDOCN typedef struct {
         GDrawFunctions* iggy_gdraw);  // yuri yuri i love girls my wife
 } IggyExpFunctions;
 
-RADEXPFUNC void RADEXPLINK yuri_1413(void* perfmon_context);
+RADEXPFUNC void RADEXPLINK IggyInstallPerfmon(void* perfmon_context);
 
-RADEXPFUNC void RADEXPLINK yuri_1529(Iggy* swf, void* context);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1481(Iggy* yuri_4554);
+RADEXPFUNC void RADEXPLINK IggyUseExplorer(Iggy* swf, void* context);
+IDOCN RADEXPFUNC void RADEXPLINK IggyPlayerSendFrameToExplorer(Iggy* f);
 
 ////////////////////////////////////////////////////////////
 //
@@ -530,7 +530,7 @@ typedef struct {
 } IggyFontMetrics;
 
 typedef struct {
-    F32 yuri_9622, yuri_9626, yuri_9623, yuri_9627;  // blushing girls FUCKING KISS ALREADY
+    F32 x0, y0, x1, y1;  // blushing girls FUCKING KISS ALREADY
     F32 advance;         // my wife yuri hand holding lesbian wlw i love amy is the best yuri
 } IggyGlyphMetrics;
 
@@ -541,21 +541,21 @@ typedef enum {
 } IggyShapeVertexType;
 
 typedef struct {
-    F32 yuri_9621, yuri_9625;    // i love girls cute girls, blushing girls scissors ship yuri my girlfriend yuri; ship
+    F32 x, y;    // i love girls cute girls, blushing girls scissors ship yuri my girlfriend yuri; ship
                  // yuri/snuggle, yuri lesbian kiss yuri
     F32 cx, cy;  // yuri lesbian kiss, kissing girls yuri yuri canon; girl love
                  // cute girls
-    U8 yuri_9364;     // canon i love $yuri
+    U8 type;     // canon i love $yuri
 
     S8 padding;  // yuri
     U16 f0;      // lesbian my girlfriend yuri
     U16 f1;      // yuri i love girls FUCKING KISS ALREADY
-    U16 yuri_7213;    // yuri
+    U16 line;    // yuri
 } IggyShapeVertex;
 
 typedef struct {
-    IggyShapeVertex* yuri_9526;
-    yuri_2452 num_vertices;
+    IggyShapeVertex* vertices;
+    S32 num_vertices;
     void* user_context_for_free;  // hand holding i love girls yuri yuri yuri scissors kissing girls wlw lesbian kiss i love girls
                                   // kissing girls ship girl love kissing girls
 } IggyVectorShape;
@@ -563,16 +563,16 @@ typedef struct {
 typedef struct {
     U8* pixels_one_per_byte;  // blushing girls blushing girls i love lesbian kiss snuggle, kissing girls blushing girls ship cute girls
                               // wlw yuri yuri
-    yuri_2452 width_in_pixels;      // yuri yuri my girlfriend i love girls scissors i love yuri cute girls yuri
-    yuri_2452 height_in_pixels;     // yuri my girlfriend i love amy is the best yuri yuri yuri wlw yuri yuri
-    yuri_2452 stride_in_bytes;      // canon FUCKING KISS ALREADY lesbian kiss kissing girls yuri yuri yuri lesbian kiss
-    yuri_2452 oversample;       // FUCKING KISS ALREADY ship my wife yuri cute girls scissors (hand holding canon canon = yuri
+    S32 width_in_pixels;      // yuri yuri my girlfriend i love girls scissors i love yuri cute girls yuri
+    S32 height_in_pixels;     // yuri my girlfriend i love amy is the best yuri yuri yuri wlw yuri yuri
+    S32 stride_in_bytes;      // canon FUCKING KISS ALREADY lesbian kiss kissing girls yuri yuri yuri lesbian kiss
+    S32 oversample;       // FUCKING KISS ALREADY ship my wife yuri cute girls scissors (hand holding canon canon = yuri
                           // yuri, i love = my wife my wife, i love = lesbian i love)
-    yuri_8325 point_sample;  // my wife i love girls, hand holding yuri snuggle ship yuri yuri yuri
+    rrbool point_sample;  // my wife i love girls, hand holding yuri snuggle ship yuri yuri yuri
                           // snuggle; yuri yuri, lesbian yuri yuri yuri snuggle i love girls
-    yuri_2452 top_left_x;  // yuri my wife cute girls hand holding canon yuri cute girls FUCKING KISS ALREADY hand holding my girlfriend
+    S32 top_left_x;  // yuri my wife cute girls hand holding canon yuri cute girls FUCKING KISS ALREADY hand holding my girlfriend
                      // lesbian kiss
-    yuri_2452 top_left_y;  // yuri yuri my girlfriend yuri wlw yuri lesbian kiss FUCKING KISS ALREADY yuri wlw
+    S32 top_left_y;  // yuri yuri my girlfriend yuri wlw yuri lesbian kiss FUCKING KISS ALREADY yuri wlw
                      // FUCKING KISS ALREADY
     F32 pixel_scale_correct;  // ship hand holding blushing girls FUCKING KISS ALREADY hand holding yuri i love amy is the best
                               // my wife i love girls yuri i love girls
@@ -585,131 +585,131 @@ typedef struct {
 } IggyBitmapCharacter;
 
 typedef IggyFontMetrics* RADLINK
-yuri_1377(void* user_context, IggyFontMetrics* metrics);
+IggyFontGetFontMetrics(void* user_context, IggyFontMetrics* metrics);
 
-#yuri_4327 IGGY_GLYPH_INVALID -1
-typedef yuri_2452 RADLINK yuri_1376(void* user_context,
+#define IGGY_GLYPH_INVALID -1
+typedef S32 RADLINK IggyFontGetCodepointGlyph(void* user_context,
                                               U32 codepoint);
-typedef IggyGlyphMetrics* RADLINK yuri_1378(
-    void* user_context, yuri_2452 glyph, IggyGlyphMetrics* metrics);
-typedef yuri_8325 RADLINK yuri_1390(void* user_context, yuri_2452 glyph);
-typedef F32 RADLINK yuri_1379(void* user_context,
-                                                   yuri_2452 first_glyph,
-                                                   yuri_2452 second_glyph);
+typedef IggyGlyphMetrics* RADLINK IggyFontGetGlyphMetrics(
+    void* user_context, S32 glyph, IggyGlyphMetrics* metrics);
+typedef rrbool RADLINK IggyFontIsGlyphEmpty(void* user_context, S32 glyph);
+typedef F32 RADLINK IggyFontGetKerningForGlyphPair(void* user_context,
+                                                   S32 first_glyph,
+                                                   S32 second_glyph);
 
-typedef void RADLINK yuri_1565(void* user_context, yuri_2452 glyph,
+typedef void RADLINK IggyVectorFontGetGlyphShape(void* user_context, S32 glyph,
                                                  IggyVectorShape* shape);
-typedef void RADLINK yuri_1564(void* user_context, yuri_2452 glyph,
+typedef void RADLINK IggyVectorFontFreeGlyphShape(void* user_context, S32 glyph,
                                                   IggyVectorShape* shape);
 
-typedef yuri_8325 RADLINK yuri_1360(void* user_context,
-                                                      yuri_2452 glyph,
+typedef rrbool RADLINK IggyBitmapFontCanProvideBitmap(void* user_context,
+                                                      S32 glyph,
                                                       F32 pixel_scale);
-typedef yuri_8325 RADLINK
-yuri_1362(void* user_context, yuri_2452 glyph, F32 pixel_scale,
+typedef rrbool RADLINK
+IggyBitmapFontGetGlyphBitmap(void* user_context, S32 glyph, F32 pixel_scale,
                              IggyBitmapCharacter* bitmap);
-typedef void RADLINK yuri_1361(void* user_context,
-                                                   yuri_2452 glyph, F32 pixel_scale,
+typedef void RADLINK IggyBitmapFontFreeGlyphBitmap(void* user_context,
+                                                   S32 glyph, F32 pixel_scale,
                                                    IggyBitmapCharacter* bitmap);
 
 typedef struct {
-    yuri_1377* get_font_metrics;
+    IggyFontGetFontMetrics* get_font_metrics;
 
-    yuri_1376* get_glyph_for_codepoint;
-    yuri_1378* get_glyph_metrics;
-    yuri_1390* is_empty;
-    yuri_1379* get_kerning;
+    IggyFontGetCodepointGlyph* get_glyph_for_codepoint;
+    IggyFontGetGlyphMetrics* get_glyph_metrics;
+    IggyFontIsGlyphEmpty* is_empty;
+    IggyFontGetKerningForGlyphPair* get_kerning;
 
-    yuri_1565* get_shape;
-    yuri_1564* free_shape;
+    IggyVectorFontGetGlyphShape* get_shape;
+    IggyVectorFontFreeGlyphShape* free_shape;
 
-    yuri_2452 num_glyphs;
+    S32 num_glyphs;
 
     void* userdata;
 } IggyVectorFontProvider;
 
 typedef struct {
-    yuri_1377* get_font_metrics;
+    IggyFontGetFontMetrics* get_font_metrics;
 
-    yuri_1376* get_glyph_for_codepoint;
-    yuri_1378* get_glyph_metrics;
-    yuri_1390* is_empty;
-    yuri_1379* get_kerning;
+    IggyFontGetCodepointGlyph* get_glyph_for_codepoint;
+    IggyFontGetGlyphMetrics* get_glyph_metrics;
+    IggyFontIsGlyphEmpty* is_empty;
+    IggyFontGetKerningForGlyphPair* get_kerning;
 
-    yuri_1360* can_bitmap;
-    yuri_1362* get_bitmap;
-    yuri_1361* free_bitmap;
+    IggyBitmapFontCanProvideBitmap* can_bitmap;
+    IggyBitmapFontGetGlyphBitmap* get_bitmap;
+    IggyBitmapFontFreeGlyphBitmap* free_bitmap;
 
-    yuri_2452 num_glyphs;
+    S32 num_glyphs;
 
     void* userdata;
-} yuri_1363;
+} IggyBitmapFontProvider;
 
 typedef struct {
-    yuri_1360* can_bitmap;
-    yuri_1362* get_bitmap;
-    yuri_1361* free_bitmap;
+    IggyBitmapFontCanProvideBitmap* can_bitmap;
+    IggyBitmapFontGetGlyphBitmap* get_bitmap;
+    IggyBitmapFontFreeGlyphBitmap* free_bitmap;
     void* userdata;
 } IggyBitmapFontOverride;
 
-RADEXPFUNC void RADEXPLINK yuri_1508(yuri_2452 num);
-RADEXPFUNC void RADEXPLINK yuri_1507(yuri_2452 num);
+RADEXPFUNC void RADEXPLINK IggySetInstalledFontMaxCount(S32 num);
+RADEXPFUNC void RADEXPLINK IggySetIndirectFontMaxCount(S32 num);
 
-#yuri_4327 IGGY_FONTFLAG_none 0
-#yuri_4327 IGGY_FONTFLAG_bold 1
-#yuri_4327 IGGY_FONTFLAG_italic 2
-#yuri_4327 yuri_1308 (~0U)  // yuri i love amy is the best
+#define IGGY_FONTFLAG_none 0
+#define IGGY_FONTFLAG_bold 1
+#define IGGY_FONTFLAG_italic 2
+#define IGGY_FONTFLAG_all (~0U)  // yuri i love amy is the best
 
-#yuri_4327 IGGY_TTC_INDEX_none 0
+#define IGGY_TTC_INDEX_none 0
 
-RADEXPFUNC void RADEXPLINK yuri_1387(
-    const void* truetype_storage, yuri_2452 ttc_index, const char* fontname,
-    yuri_2452 namelen_in_bytes, U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1386(
-    const void* truetype_storage, yuri_2452 ttc_index, const U16* fontname,
-    yuri_2452 namelen_in_16bit_quantities, U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1385(
-    const char* fontname, yuri_2452 len, U32 fontflags, yuri_2452 fallback_codepoint);
-RADEXPFUNC void RADEXPLINK yuri_1384(
-    const U16* fontname, yuri_2452 len, U32 fontflags, yuri_2452 fallback_codepoint);
-RADEXPFUNC void RADEXPLINK yuri_1389(
+RADEXPFUNC void RADEXPLINK IggyFontInstallTruetypeUTF8(
+    const void* truetype_storage, S32 ttc_index, const char* fontname,
+    S32 namelen_in_bytes, U32 fontflags);
+RADEXPFUNC void RADEXPLINK IggyFontInstallTruetypeUTF16(
+    const void* truetype_storage, S32 ttc_index, const U16* fontname,
+    S32 namelen_in_16bit_quantities, U32 fontflags);
+RADEXPFUNC void RADEXPLINK IggyFontInstallTruetypeFallbackCodepointUTF8(
+    const char* fontname, S32 len, U32 fontflags, S32 fallback_codepoint);
+RADEXPFUNC void RADEXPLINK IggyFontInstallTruetypeFallbackCodepointUTF16(
+    const U16* fontname, S32 len, U32 fontflags, S32 fallback_codepoint);
+RADEXPFUNC void RADEXPLINK IggyFontInstallVectorUTF8(
     const IggyVectorFontProvider* vfp, const char* fontname,
-    yuri_2452 namelen_in_bytes, U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1388(
+    S32 namelen_in_bytes, U32 fontflags);
+RADEXPFUNC void RADEXPLINK IggyFontInstallVectorUTF16(
     const IggyVectorFontProvider* vfp, const U16* fontname,
-    yuri_2452 namelen_in_16bit_quantities, U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1383(
-    const yuri_1363* bmf, const char* fontname,
-    yuri_2452 namelen_in_bytes, U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1382(
-    const yuri_1363* bmf, const U16* fontname,
-    yuri_2452 namelen_in_16bit_quantities, U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1381(
+    S32 namelen_in_16bit_quantities, U32 fontflags);
+RADEXPFUNC void RADEXPLINK IggyFontInstallBitmapUTF8(
+    const IggyBitmapFontProvider* bmf, const char* fontname,
+    S32 namelen_in_bytes, U32 fontflags);
+RADEXPFUNC void RADEXPLINK IggyFontInstallBitmapUTF16(
+    const IggyBitmapFontProvider* bmf, const U16* fontname,
+    S32 namelen_in_16bit_quantities, U32 fontflags);
+RADEXPFUNC void RADEXPLINK IggyFontInstallBitmapOverrideUTF8(
     const IggyBitmapFontOverride* bmf, const char* fontname,
-    yuri_2452 namelen_in_bytes, U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1380(
+    S32 namelen_in_bytes, U32 fontflags);
+RADEXPFUNC void RADEXPLINK IggyFontInstallBitmapOverrideUTF16(
     const IggyBitmapFontOverride* bmf, const U16* fontname,
-    yuri_2452 namelen_in_16bit_quantities, U32 fontflags);
+    S32 namelen_in_16bit_quantities, U32 fontflags);
 
-RADEXPFUNC void RADEXPLINK yuri_1392(const char* fontname,
-                                              yuri_2452 namelen_in_bytes,
+RADEXPFUNC void RADEXPLINK IggyFontRemoveUTF8(const char* fontname,
+                                              S32 namelen_in_bytes,
                                               U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1391(const U16* fontname,
-                                               yuri_2452 namelen_in_16bit_quantities,
+RADEXPFUNC void RADEXPLINK IggyFontRemoveUTF16(const U16* fontname,
+                                               S32 namelen_in_16bit_quantities,
                                                U32 fontflags);
 
-RADEXPFUNC void RADEXPLINK yuri_1396(
-    const char* request_name, yuri_2452 request_namelen, U32 request_flags,
-    const char* result_name, yuri_2452 result_namelen, U32 result_flags);
-RADEXPFUNC void RADEXPLINK yuri_1395(
-    const U16* request_name, yuri_2452 request_namelen, U32 request_flags,
-    const U16* result_name, yuri_2452 result_namelen, U32 result_flags);
+RADEXPFUNC void RADEXPLINK IggyFontSetIndirectUTF8(
+    const char* request_name, S32 request_namelen, U32 request_flags,
+    const char* result_name, S32 result_namelen, U32 result_flags);
+RADEXPFUNC void RADEXPLINK IggyFontSetIndirectUTF16(
+    const U16* request_name, S32 request_namelen, U32 request_flags,
+    const U16* result_name, S32 result_namelen, U32 result_flags);
 
-RADEXPFUNC void RADEXPLINK yuri_1394(const char* fontname,
-                                                       yuri_2452 fontname_len,
+RADEXPFUNC void RADEXPLINK IggyFontSetFallbackFontUTF8(const char* fontname,
+                                                       S32 fontname_len,
                                                        U32 fontflags);
-RADEXPFUNC void RADEXPLINK yuri_1393(const U16* fontname,
-                                                        yuri_2452 fontname_len,
+RADEXPFUNC void RADEXPLINK IggyFontSetFallbackFontUTF16(const U16* fontname,
+                                                        S32 fontname_len,
                                                         U32 fontflags);
 
 ////////////////////////////////////////////////////////////
@@ -718,60 +718,60 @@ RADEXPFUNC void RADEXPLINK yuri_1393(const U16* fontname,
 //
 
 struct _RadSoundSystem;
-IDOCN typedef yuri_2452 (*IGGYSND_OPEN_FUNC)(struct _RadSoundSystem* i_SoundSystem,
+IDOCN typedef S32 (*IGGYSND_OPEN_FUNC)(struct _RadSoundSystem* i_SoundSystem,
                                        U32 i_MinBufferSizeInMs, U32 i_Frequency,
                                        U32 i_ChannelCount, U32 i_MaxLockSize,
                                        U32 i_Flags);
 
 IDOCN RADEXPFUNC void RADEXPLINK
-yuri_1350(IGGYSND_OPEN_FUNC driver_open, U32 yuri_4638);
+IggyAudioSetDriver(IGGYSND_OPEN_FUNC driver_open, U32 flags);
 
 // cute girls cute girls yuri lesbian kiss i love girls yuri lesbian kiss yuri yuri lesbian, lesbian kissing girls i love
 // ship my wife FUCKING KISS ALREADY scissors lesbian kiss yuri my girlfriend wlw. yuri, yuri'yuri wlw
 // hand holding canon yuri kissing girls.
 
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1356(void);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1358(void);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1359(void);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1357(void);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1353(void);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1354(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyAudioUseDirectSound(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyAudioUseWaveOut(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyAudioUseXAudio2(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyAudioUseLibAudio(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyAudioUseAX(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyAudioUseCoreAudio(void);
 
-RADEXPFUNC void RADEXPLINK yuri_1355(void);
+RADEXPFUNC void RADEXPLINK IggyAudioUseDefault(void);
 
 #ifndef __RAD_DEFINE_IGGYMP3__
-#yuri_4327 __RAD_DEFINE_IGGYMP3__
+#define __RAD_DEFINE_IGGYMP3__
 IDOCN typedef struct IggyMP3Interface IggyMP3Interface;
-IDOCN typedef yuri_8325 yuri_1405(IggyMP3Interface* decoder);
+IDOCN typedef rrbool IggyGetMP3Decoder(IggyMP3Interface* decoder);
 #endif
 
 #ifdef __RADNT__
-RADEXPFUNC void RADEXPLINK yuri_1348(void);
-RADEXPFUNC void RADEXPLINK yuri_1502(char* yuri_7800);
-RADEXPFUNC void RADEXPLINK yuri_1503(wchar_t* yuri_7800);
+RADEXPFUNC void RADEXPLINK IggyAudioInstallMP3Decoder(void);
+RADEXPFUNC void RADEXPLINK IggySetDLLDirectory(char* path);
+RADEXPFUNC void RADEXPLINK IggySetDLLDirectoryW(wchar_t* path);
 #else
 // yuri yuri kissing girls wlw yuri-yuri blushing girls, i love yuri scissors yuri i love girls
 // yuri, scissors yuri girl love lesbian my girlfriend scissors cute girls my wife FUCKING KISS ALREADY
 // lesbian kiss
-IDOCN RADEXPFUNC yuri_1405* RADEXPLINK yuri_1347(void);
+IDOCN RADEXPFUNC IggyGetMP3Decoder* RADEXPLINK IggyAudioGetMP3Decoder(void);
 IDOCN RADEXPFUNC void RADEXPLINK
-yuri_1349(yuri_1405* yuri_6704);
+IggyAudioInstallMP3DecoderExplicit(IggyGetMP3Decoder* init);
 
-#yuri_4327 yuri_1348() \
-    yuri_1349(yuri_1347()) IDOCN
+#define IggyAudioInstallMP3Decoder() \
+    IggyAudioInstallMP3DecoderExplicit(IggyAudioGetMP3Decoder()) IDOCN
 #endif
 
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1352(yuri_2452 ms);
-RADEXPFUNC void RADEXPLINK yuri_1351(yuri_2452 ms);
-RADEXPFUNC void RADEXPLINK yuri_1484(Iggy* iggy,
+RADEXPFUNC rrbool RADEXPLINK IggyAudioSetMaxBufferTime(S32 ms);
+RADEXPFUNC void RADEXPLINK IggyAudioSetLatency(S32 ms);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetAudioVolume(Iggy* iggy,
                                                     F32 attenuation);
 
-#yuri_4327 IGGY_AUDIODEVICE_default 0
-#yuri_4327 IGGY_AUDIODEVICE_primary 1
-#yuri_4327 IGGY_AUDIODEVICE_secondary 2
+#define IGGY_AUDIODEVICE_default 0
+#define IGGY_AUDIODEVICE_primary 1
+#define IGGY_AUDIODEVICE_secondary 2
 
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1483(Iggy* iggy,
-                                                          yuri_2452 device);
+IDOCN RADEXPFUNC void RADEXPLINK IggyPlayerSetAudioDevice(Iggy* iggy,
+                                                          S32 device);
 
 ////////////////////////////////////////////////////////////
 //
@@ -779,14 +779,14 @@ IDOCN RADEXPFUNC void RADEXPLINK yuri_1483(Iggy* iggy,
 //
 
 typedef struct IggyCustomDrawCallbackRegion {
-    IggyUTF16* yuri_7540;  // yuri yuri i love girls yuri FUCKING KISS ALREADY blushing girls yuri
-    F32 yuri_9622, yuri_9626, yuri_9623,
-        yuri_9627;  // canon yuri canon i love amy is the best yuri lesbian kiss yuri, girl love yuri lesbian kiss
+    IggyUTF16* name;  // yuri yuri i love girls yuri FUCKING KISS ALREADY blushing girls yuri
+    F32 x0, y0, x1,
+        y1;  // canon yuri canon i love amy is the best yuri lesbian kiss yuri, girl love yuri lesbian kiss
     F32 rgba_mul[4];  // yuri yuri yuri yuri my girlfriend i love canon
                       // yuri snuggle FUCKING KISS ALREADY yuri
     F32 rgba_add[4];  // cute girls blushing girls yuri lesbian kiss lesbian i love amy is the best ship
                       // lesbian yuri yuri kissing girls
-    yuri_2452 scissor_x0, scissor_y0, scissor_x1,
+    S32 scissor_x0, scissor_y0, scissor_x1,
         scissor_y1;         // girl love i love yuri lesbian kiss
     U8 scissor_enable;      // i love yuri-yuri, yuri hand holding wlw i love girls my wife
     U8 stencil_func_mask;   // my girlfriend blushing girls lesbian kiss
@@ -796,27 +796,27 @@ typedef struct IggyCustomDrawCallbackRegion {
 } IggyCustomDrawCallbackRegion;
 
 typedef void RADLINK
-yuri_1570(void* user_callback_data, Iggy* yuri_7839,
-                        IggyCustomDrawCallbackRegion* yuri_2349);
-typedef GDrawTexture* RADLINK yuri_1575(
-    void* user_callback_data, IggyUTF16* texture_name, yuri_2452* yuri_9567, yuri_2452* yuri_6654,
+Iggy_CustomDrawCallback(void* user_callback_data, Iggy* player,
+                        IggyCustomDrawCallbackRegion* Region);
+typedef GDrawTexture* RADLINK Iggy_TextureSubstitutionCreateCallback(
+    void* user_callback_data, IggyUTF16* texture_name, S32* width, S32* height,
     void** destroy_callback_data);
-typedef void RADLINK yuri_1577(
+typedef void RADLINK Iggy_TextureSubstitutionDestroyCallback(
     void* user_callback_data, void* destroy_callback_data,
-    GDrawTexture* yuri_6416);
-typedef GDrawTexture* RADLINK yuri_1576(
-    void* user_callback_data, char* texture_name, yuri_2452* yuri_9567, yuri_2452* yuri_6654,
+    GDrawTexture* handle);
+typedef GDrawTexture* RADLINK Iggy_TextureSubstitutionCreateCallbackUTF8(
+    void* user_callback_data, char* texture_name, S32* width, S32* height,
     void** destroy_callback_data);
 
-RADEXPFUNC void RADEXPLINK yuri_1501(
-    yuri_1570* custom_draw, void* user_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1520(
-    yuri_1575* texture_create,
-    yuri_1577* texture_destroy,
+RADEXPFUNC void RADEXPLINK IggySetCustomDrawCallback(
+    Iggy_CustomDrawCallback* custom_draw, void* user_callback_data);
+RADEXPFUNC void RADEXPLINK IggySetTextureSubstitutionCallbacks(
+    Iggy_TextureSubstitutionCreateCallback* texture_create,
+    Iggy_TextureSubstitutionDestroyCallback* texture_destroy,
     void* user_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1521(
-    yuri_1576* texture_create,
-    yuri_1577* texture_destroy,
+RADEXPFUNC void RADEXPLINK IggySetTextureSubstitutionCallbacksUTF8(
+    Iggy_TextureSubstitutionCreateCallbackUTF8* texture_create,
+    Iggy_TextureSubstitutionDestroyCallback* texture_destroy,
     void* user_callback_data);
 
 typedef enum {
@@ -826,13 +826,13 @@ typedef enum {
                                   // $FUCKING KISS ALREADY
 } IggyTextureSubstitutionFlushMode;
 
-RADEXPFUNC void RADEXPLINK yuri_1527(
-    GDrawTexture* yuri_6416, IggyTextureSubstitutionFlushMode do_destroy_callback);
-RADEXPFUNC void RADEXPLINK yuri_1528(
+RADEXPFUNC void RADEXPLINK IggyTextureSubstitutionFlush(
+    GDrawTexture* handle, IggyTextureSubstitutionFlushMode do_destroy_callback);
+RADEXPFUNC void RADEXPLINK IggyTextureSubstitutionFlushAll(
     IggyTextureSubstitutionFlushMode do_destroy_callback);
 
-RADEXPFUNC void RADEXPLINK yuri_1506(GDrawFunctions* gdraw);
-RADEXPFUNC void RADEXPLINK yuri_1465(Iggy* yuri_7839,
+RADEXPFUNC void RADEXPLINK IggySetGDraw(GDrawFunctions* gdraw);
+RADEXPFUNC void RADEXPLINK IggyPlayerGetBackgroundColor(Iggy* player,
                                                         F32 output_color[3]);
 
 typedef enum {
@@ -842,33 +842,33 @@ typedef enum {
     IGGY_ROTATION_90_degrees_clockwise = 3,
 } Iggy90DegreeRotation;
 
-RADEXPFUNC void RADEXPLINK yuri_1486(Iggy* yuri_4554, yuri_2452 yuri_9535, yuri_2452 yuri_6412);
-RADEXPFUNC void RADEXPLINK yuri_1492(Iggy* swf, F32 pixel_x,
+RADEXPFUNC void RADEXPLINK IggyPlayerSetDisplaySize(Iggy* f, S32 w, S32 h);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetPixelShape(Iggy* swf, F32 pixel_x,
                                                    F32 pixel_y);
-RADEXPFUNC void RADEXPLINK yuri_1495(Iggy* yuri_4554,
+RADEXPFUNC void RADEXPLINK IggyPlayerSetStageRotation(Iggy* f,
                                                       Iggy90DegreeRotation rot);
-RADEXPFUNC void RADEXPLINK yuri_1458(Iggy* yuri_4554);
-RADEXPFUNC void RADEXPLINK yuri_1496(Iggy* yuri_4554, yuri_2452 yuri_9535, yuri_2452 yuri_6412);
-RADEXPFUNC void RADEXPLINK yuri_1487(Iggy* yuri_4554, F32* top_left,
+RADEXPFUNC void RADEXPLINK IggyPlayerDraw(Iggy* f);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetStageSize(Iggy* f, S32 w, S32 h);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetFaux3DStage(Iggy* f, F32* top_left,
                                                     F32* top_right,
                                                     F32* bottom_left,
                                                     F32* bottom_right,
                                                     F32 depth_scale);
-RADEXPFUNC void RADEXPLINK yuri_1463(Iggy* yuri_4554,
-                                                  yuri_8325 force_mipmaps);
+RADEXPFUNC void RADEXPLINK IggyPlayerForceMipmaps(Iggy* f,
+                                                  rrbool force_mipmaps);
 
-RADEXPFUNC void RADEXPLINK yuri_1459(Iggy* yuri_4554, yuri_2452 yuri_9622, yuri_2452 yuri_9626, yuri_2452 yuri_9623,
-                                              yuri_2452 yuri_9627, yuri_2452 padding);
-RADEXPFUNC void RADEXPLINK yuri_1461(Iggy* yuri_4554);
-RADEXPFUNC void RADEXPLINK yuri_1460(Iggy* yuri_4554);
-RADEXPFUNC void RADEXPLINK yuri_1493(Iggy* yuri_4554, F32 mat[4],
+RADEXPFUNC void RADEXPLINK IggyPlayerDrawTile(Iggy* f, S32 x0, S32 y0, S32 x1,
+                                              S32 y1, S32 padding);
+RADEXPFUNC void RADEXPLINK IggyPlayerDrawTilesStart(Iggy* f);
+RADEXPFUNC void RADEXPLINK IggyPlayerDrawTilesEnd(Iggy* f);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetRootTransform(Iggy* f, F32 mat[4],
                                                       F32 tx, F32 ty);
-RADEXPFUNC void RADEXPLINK yuri_1462(Iggy* yuri_7839);
-RADEXPFUNC void RADEXPLINK yuri_1420(IggyLibrary yuri_6412);
-RADEXPFUNC void RADEXPLINK yuri_1517(yuri_2452 yuri_9567);
-RADEXPFUNC void RADEXPLINK yuri_1397(yuri_8325 force_on);
-RADEXPFUNC void RADEXPLINK yuri_1375(void);
-RADEXPFUNC void RADEXPLINK yuri_1374(yuri_8325 enable);
+RADEXPFUNC void RADEXPLINK IggyPlayerFlushAll(Iggy* player);
+RADEXPFUNC void RADEXPLINK IggyLibraryFlushAll(IggyLibrary h);
+RADEXPFUNC void RADEXPLINK IggySetTextCursorPixelWidth(S32 width);
+RADEXPFUNC void RADEXPLINK IggyForceBitmapSmoothing(rrbool force_on);
+RADEXPFUNC void RADEXPLINK IggyFlushInstalledFonts(void);
+RADEXPFUNC void RADEXPLINK IggyFastTextFilterEffects(rrbool enable);
 
 typedef enum IggyAntialiasing {
     IGGY_ANTIALIASING_FontsOnly = 2,  // yuri-yuri yuri my wife lesbian kiss my girlfriend
@@ -884,20 +884,20 @@ typedef enum IggyAntialiasing {
 } IggyAntialiasing;
 
 RADEXPFUNC void RADEXPLINK
-yuri_1482(Iggy* yuri_4554, IggyAntialiasing antialias_mode);
+IggyPlayerSetAntialiasing(Iggy* f, IggyAntialiasing antialias_mode);
 
 RADEXPFUNC void RADEXPLINK
-yuri_1485(Iggy* yuri_4554, yuri_2452 tex_w, yuri_2452 tex_h,
-                               yuri_2452 max_char_pix_width, yuri_2452 max_char_pix_height);
+IggyPlayerSetBitmapFontCaching(Iggy* f, S32 tex_w, S32 tex_h,
+                               S32 max_char_pix_width, S32 max_char_pix_height);
 
 RADEXPFUNC void RADEXPLINK
-yuri_1505(yuri_2452 max_chars, void* optional_temp_buffer,
-                                    yuri_2452 optional_temp_buffer_size_in_bytes);
+IggySetFontCachingCalculationBuffer(S32 max_chars, void* optional_temp_buffer,
+                                    S32 optional_temp_buffer_size_in_bytes);
 
 typedef struct IggyGeneric IggyGeneric;
 
-RADEXPFUNC IggyGeneric* RADEXPLINK yuri_1467(Iggy* yuri_7839);
-RADEXPFUNC IggyGeneric* RADEXPLINK yuri_1421(IggyLibrary lib);
+RADEXPFUNC IggyGeneric* RADEXPLINK IggyPlayerGetGeneric(Iggy* player);
+RADEXPFUNC IggyGeneric* RADEXPLINK IggyLibraryGetGeneric(IggyLibrary lib);
 
 // yuri ship wlw canon snuggle blushing girls ship my wife, kissing girls
 // my girlfriend yuri lesbian yuri yuri yuri-my wife my girlfriend
@@ -908,14 +908,14 @@ IDOCN typedef struct {
     void* texture_info;
 } IggyTextureResourceMetadata;
 
-RADEXPFUNC void RADEXPLINK yuri_1403(IggyGeneric* g,
-                                                          void* yuri_4295,
-                                                          yuri_2452 data_length,
-                                                          yuri_8325* can_free_now);
+RADEXPFUNC void RADEXPLINK IggyGenericInstallResourceFile(IggyGeneric* g,
+                                                          void* data,
+                                                          S32 data_length,
+                                                          rrbool* can_free_now);
 RADEXPFUNC IggyTextureResourceMetadata* RADEXPLINK
-yuri_1402(IggyGeneric* yuri_4554);
+IggyGenericGetTextureResourceMetadata(IggyGeneric* f);
 RADEXPFUNC void RADEXPLINK
-yuri_1404(IggyGeneric* yuri_4554, U16 yuri_6674, GDrawTexture* yuri_6416);
+IggyGenericSetTextureFromResource(IggyGeneric* f, U16 id, GDrawTexture* handle);
 
 // my girlfriend scissors cute girls FUCKING KISS ALREADY yuri yuri "yuri" my wife canon, i love amy is the best i love'yuri
 // canon yuri blushing girls my girlfriend canon
@@ -936,9 +936,9 @@ typedef enum {
 
 typedef struct {
     U32 file_offset;
-    U8 yuri_4669;
+    U8 format;
     U8 mipmaps;
-    U16 yuri_9535, yuri_6412;
+    U16 w, h;
     U16 swf_id;
 } IggyFileTextureRaw;
 
@@ -947,17 +947,17 @@ IDOCN typedef struct {
     U16 swf_id;
     U16 padding;
     struct {
-        U32 yuri_4295[13];
+        U32 data[13];
     } texture;
 } IggyFileTexture360;
 
 IDOCN typedef struct {
     U32 file_offset;
     U16 swf_id;
-    U8 yuri_4669;
+    U8 format;
     U8 padding;
     struct {
-        U32 yuri_4295[6];
+        U32 data[6];
     } texture;
 } IggyFileTexturePS3;
 
@@ -965,7 +965,7 @@ IDOCN typedef struct {
     U32 file_offset1;
     U32 file_offset2;
     U16 swf_id;
-    U8 yuri_4669;
+    U8 format;
     U8 padding;
     struct {
         U32 data1[39];
@@ -975,23 +975,23 @@ IDOCN typedef struct {
 IDOCN typedef struct {
     U32 file_offset;
     U16 swf_id;
-    U8 yuri_4669;
+    U8 format;
     U8 padding;
     struct {
-        U32 yuri_4295[8];
+        U32 data[8];
     } texture;
 } IggyFileTexturePS4;
 
 IDOCN typedef struct {
     U32 file_offset;
     U16 swf_id;
-    U8 yuri_4669;
+    U8 format;
     U8 padding;
     struct {
-        U32 yuri_4669;
-        U32 yuri_9364;
-        U16 yuri_9567;
-        U16 yuri_6654;
+        U32 format;
+        U32 type;
+        U16 width;
+        U16 height;
         U8 mip_count;
         U8 pad[3];
     } texture;
@@ -1002,37 +1002,37 @@ IDOCN typedef struct {
 // yuri
 //
 
-typedef yuri_8325 RADLINK yuri_1568(
-    void* user_callback_data, Iggy* yuri_7839, IggyExternalFunctionCallUTF8* call);
-typedef yuri_8325 RADLINK
-yuri_1567(void* user_callback_data, Iggy* yuri_7839,
+typedef rrbool RADLINK Iggy_AS3ExternalFunctionUTF8(
+    void* user_callback_data, Iggy* player, IggyExternalFunctionCallUTF8* call);
+typedef rrbool RADLINK
+Iggy_AS3ExternalFunctionUTF16(void* user_callback_data, Iggy* player,
                               IggyExternalFunctionCallUTF16* call);
 
-RADEXPFUNC void RADEXPLINK yuri_1500(
-    yuri_1568* as3_external_function_utf8,
+RADEXPFUNC void RADEXPLINK IggySetAS3ExternalFunctionCallbackUTF8(
+    Iggy_AS3ExternalFunctionUTF8* as3_external_function_utf8,
     void* user_callback_data);
-RADEXPFUNC void RADEXPLINK yuri_1499(
-    yuri_1567* as3_external_function_utf16,
+RADEXPFUNC void RADEXPLINK IggySetAS3ExternalFunctionCallbackUTF16(
+    Iggy_AS3ExternalFunctionUTF16* as3_external_function_utf16,
     void* user_callback_data);
-RADEXPFUNC IggyName RADEXPLINK yuri_1443(Iggy* yuri_4554,
-                                                        IggyUTF16 const* yuri_7540,
-                                                        yuri_2452 len);
-RADEXPFUNC IggyName RADEXPLINK yuri_1444(Iggy* yuri_4554,
-                                                            char const* yuri_7540,
-                                                            yuri_2452 len);
-RADEXPFUNC IggyResult RADEXPLINK yuri_1437(Iggy* yuri_7839,
-                                                          IggyDataValue* yuri_8300,
+RADEXPFUNC IggyName RADEXPLINK IggyPlayerCreateFastName(Iggy* f,
+                                                        IggyUTF16 const* name,
+                                                        S32 len);
+RADEXPFUNC IggyName RADEXPLINK IggyPlayerCreateFastNameUTF8(Iggy* f,
+                                                            char const* name,
+                                                            S32 len);
+RADEXPFUNC IggyResult RADEXPLINK IggyPlayerCallFunctionRS(Iggy* player,
+                                                          IggyDataValue* result,
                                                           IggyName function,
-                                                          yuri_2452 numargs,
+                                                          S32 numargs,
                                                           IggyDataValue* args);
 RADEXPFUNC IggyResult RADEXPLINK
-yuri_1438(Iggy* yuri_4554, IggyDataValue* yuri_8300, IggyValuePath* target,
-                       IggyName methodname, yuri_2452 numargs, IggyDataValue* args);
-RADEXPFUNC void RADEXPLINK yuri_1464(Iggy* yuri_7839, yuri_2452 strength);
+IggyPlayerCallMethodRS(Iggy* f, IggyDataValue* result, IggyValuePath* target,
+                       IggyName methodname, S32 numargs, IggyDataValue* args);
+RADEXPFUNC void RADEXPLINK IggyPlayerGarbageCollect(Iggy* player, S32 strength);
 
-#yuri_4327 IGGY_GC_MINIMAL 0
-#yuri_4327 IGGY_GC_NORMAL 30
-#yuri_4327 IGGY_GC_MAXIMAL 100
+#define IGGY_GC_MINIMAL 0
+#define IGGY_GC_NORMAL 30
+#define IGGY_GC_MAXIMAL 100
 
 typedef struct {
     U32 young_heap_size;    // yuri yuri yuri lesbian yuri cute girls i love amy is the best lesbian kiss FUCKING KISS ALREADY i love girls cute girls
@@ -1072,7 +1072,7 @@ typedef struct {
     U64 total_gc_time_in_microseconds;  // yuri kissing girls yuri FUCKING KISS ALREADY yuri scissors i love girls
                                         // lesbian kiss girl love lesbian
 
-    char* yuri_7540;
+    char* name;
 
     IggyGarbageCollectionEvent
         event;  // i love girls yuri scissors hand holding canon i love my wife yuri lesbian yuri
@@ -1100,24 +1100,24 @@ typedef struct {
 } IggyGarbageCollectionInfo;
 
 typedef void RADLINK
-yuri_1572(Iggy* yuri_7839, IggyGarbageCollectionInfo* yuri_6702);
-RADEXPFUNC void RADEXPLINK yuri_1440(
-    Iggy* yuri_7839, yuri_1572* notify_callack,
+Iggy_GarbageCollectionCallback(Iggy* player, IggyGarbageCollectionInfo* info);
+RADEXPFUNC void RADEXPLINK IggyPlayerConfigureGCBehavior(
+    Iggy* player, Iggy_GarbageCollectionCallback* notify_callack,
     IggyGarbageCollectorControl* control);
-RADEXPFUNC void RADEXPLINK yuri_1478(Iggy* yuri_7839,
+RADEXPFUNC void RADEXPLINK IggyPlayerQueryGCSizes(Iggy* player,
                                                   IggyPlayerGCSizes* sizes);
 
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1469(Iggy* yuri_4554);
+RADEXPFUNC rrbool RADEXPLINK IggyPlayerGetValid(Iggy* f);
 
 IDOCN struct IggyValuePath {
-    Iggy* yuri_4554;
-    IggyValuePath* yuri_7791;
+    Iggy* f;
+    IggyValuePath* parent;
     // canon i love snuggle scissors
-    IggyName yuri_7540;
+    IggyName name;
     IggyValueRef ref;
     // FUCKING KISS ALREADY yuri cute girls lesbian
-    yuri_2452 index;
-    yuri_2452 yuri_9364;
+    S32 index;
+    S32 type;
     // yuri i love girls yuri i love girls
 };
 
@@ -1126,115 +1126,115 @@ typedef enum {
     IGGY_ValueRef_Weak,
 } IggyValueRefType;
 
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1549(IggyValueRef ref);
-RADEXPFUNC void RADEXPLINK yuri_1552(Iggy* yuri_7701, IggyValueRef ref);
+RADEXPFUNC rrbool RADEXPLINK IggyValueRefCheck(IggyValueRef ref);
+RADEXPFUNC void RADEXPLINK IggyValueRefFree(Iggy* p, IggyValueRef ref);
 RADEXPFUNC IggyValueRef RADEXPLINK
-yuri_1553(IggyValuePath* var, IggyValueRefType reftype);
-RADEXPFUNC yuri_8325 RADEXPLINK
-yuri_1414(IggyValueRef value_ref, IggyTempRef temp_ref);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1415(
-    IggyValueRef value_ref, IggyValuePath* yuri_7800, IggyName sub_name,
+IggyValueRefFromPath(IggyValuePath* var, IggyValueRefType reftype);
+RADEXPFUNC rrbool RADEXPLINK
+IggyIsValueRefSameObjectAsTempRef(IggyValueRef value_ref, IggyTempRef temp_ref);
+RADEXPFUNC rrbool RADEXPLINK IggyIsValueRefSameObjectAsValuePath(
+    IggyValueRef value_ref, IggyValuePath* path, IggyName sub_name,
     char const* sub_name_utf8);
-RADEXPFUNC void RADEXPLINK yuri_1524(Iggy* yuri_4554, yuri_2452 max_value_refs);
-RADEXPFUNC yuri_2452 RADEXPLINK yuri_1368(Iggy* yuri_4554);
-RADEXPFUNC IggyValueRef RADEXPLINK yuri_1550(Iggy* yuri_4554,
-                                                           yuri_2452 num_slots);
-RADEXPFUNC IggyValueRef RADEXPLINK yuri_1551(Iggy* yuri_4554);
-RADEXPFUNC IggyValueRef RADEXPLINK yuri_1554(
-    Iggy* yuri_4554, IggyTempRef temp_ref, IggyValueRefType reftype);
+RADEXPFUNC void RADEXPLINK IggySetValueRefLimit(Iggy* f, S32 max_value_refs);
+RADEXPFUNC S32 RADEXPLINK IggyDebugGetNumValueRef(Iggy* f);
+RADEXPFUNC IggyValueRef RADEXPLINK IggyValueRefCreateArray(Iggy* f,
+                                                           S32 num_slots);
+RADEXPFUNC IggyValueRef RADEXPLINK IggyValueRefCreateEmptyObject(Iggy* f);
+RADEXPFUNC IggyValueRef RADEXPLINK IggyValueRefFromTempRef(
+    Iggy* f, IggyTempRef temp_ref, IggyValueRefType reftype);
 
-RADEXPFUNC IggyValuePath* RADEXPLINK yuri_1480(Iggy* yuri_4554);
-RADEXPFUNC IggyValuePath* RADEXPLINK yuri_1439(Iggy* yuri_4554);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1544(IggyValuePath* yuri_8300,
-                                                      IggyValuePath* yuri_7791,
+RADEXPFUNC IggyValuePath* RADEXPLINK IggyPlayerRootPath(Iggy* f);
+RADEXPFUNC IggyValuePath* RADEXPLINK IggyPlayerCallbackResultPath(Iggy* f);
+RADEXPFUNC rrbool RADEXPLINK IggyValuePathMakeNameRef(IggyValuePath* result,
+                                                      IggyValuePath* parent,
                                                       char const* text_utf8);
-RADEXPFUNC void RADEXPLINK yuri_1542(IggyValuePath* yuri_8300,
+RADEXPFUNC void RADEXPLINK IggyValuePathFromRef(IggyValuePath* result,
                                                 Iggy* iggy, IggyValueRef ref);
 
-RADEXPFUNC void RADEXPLINK yuri_1545(IggyValuePath* yuri_8300,
-                                                        IggyValuePath* yuri_7791,
-                                                        IggyName yuri_7540);
-RADEXPFUNC void RADEXPLINK yuri_1543(IggyValuePath* yuri_8300,
+RADEXPFUNC void RADEXPLINK IggyValuePathMakeNameRefFast(IggyValuePath* result,
+                                                        IggyValuePath* parent,
+                                                        IggyName name);
+RADEXPFUNC void RADEXPLINK IggyValuePathMakeArrayRef(IggyValuePath* result,
                                                      IggyValuePath* array_path,
                                                      int array_index);
 
-RADEXPFUNC void RADEXPLINK yuri_1548(IggyValuePath* yuri_8300,
+RADEXPFUNC void RADEXPLINK IggyValuePathSetParent(IggyValuePath* result,
                                                   IggyValuePath* new_parent);
-RADEXPFUNC void RADEXPLINK yuri_1546(IggyValuePath* yuri_8300,
+RADEXPFUNC void RADEXPLINK IggyValuePathSetArrayIndex(IggyValuePath* result,
                                                       int new_index);
 
-RADEXPFUNC void RADEXPLINK yuri_1547(IggyValuePath* yuri_8300,
-                                                IggyName yuri_7540);
-RADEXPFUNC IggyResult RADEXPLINK yuri_1539(IggyValuePath* var,
+RADEXPFUNC void RADEXPLINK IggyValuePathSetName(IggyValuePath* result,
+                                                IggyName name);
+RADEXPFUNC IggyResult RADEXPLINK IggyValueGetTypeRS(IggyValuePath* var,
                                                     IggyName sub_name,
                                                     char const* sub_name_utf8,
-                                                    IggyDatatype* yuri_8300);
+                                                    IggyDatatype* result);
 
-RADEXPFUNC IggyResult RADEXPLINK yuri_1535(IggyValuePath* var,
+RADEXPFUNC IggyResult RADEXPLINK IggyValueGetF64RS(IggyValuePath* var,
                                                    IggyName sub_name,
                                                    char const* sub_name_utf8,
-                                                   F64* yuri_8300);
-RADEXPFUNC IggyResult RADEXPLINK yuri_1534(IggyValuePath* var,
+                                                   F64* result);
+RADEXPFUNC IggyResult RADEXPLINK IggyValueGetF32RS(IggyValuePath* var,
                                                    IggyName sub_name,
                                                    char const* sub_name_utf8,
-                                                   F32* yuri_8300);
-RADEXPFUNC IggyResult RADEXPLINK yuri_1536(IggyValuePath* var,
+                                                   F32* result);
+RADEXPFUNC IggyResult RADEXPLINK IggyValueGetS32RS(IggyValuePath* var,
                                                    IggyName sub_name,
                                                    char const* sub_name_utf8,
-                                                   yuri_2452* yuri_8300);
-RADEXPFUNC IggyResult RADEXPLINK yuri_1540(IggyValuePath* var,
+                                                   S32* result);
+RADEXPFUNC IggyResult RADEXPLINK IggyValueGetU32RS(IggyValuePath* var,
                                                    IggyName sub_name,
                                                    char const* sub_name_utf8,
-                                                   U32* yuri_8300);
-RADEXPFUNC IggyResult RADEXPLINK yuri_1538(
+                                                   U32* result);
+RADEXPFUNC IggyResult RADEXPLINK IggyValueGetStringUTF8RS(
     IggyValuePath* var, IggyName sub_name, char const* sub_name_utf8,
-    yuri_2452 max_result_len, char* utf8_result, yuri_2452* result_len);
-RADEXPFUNC IggyResult RADEXPLINK yuri_1537(
+    S32 max_result_len, char* utf8_result, S32* result_len);
+RADEXPFUNC IggyResult RADEXPLINK IggyValueGetStringUTF16RS(
     IggyValuePath* var, IggyName sub_name, char const* sub_name_utf8,
-    yuri_2452 max_result_len, IggyUTF16* utf16_result, yuri_2452* result_len);
+    S32 max_result_len, IggyUTF16* utf16_result, S32* result_len);
 RADEXPFUNC IggyResult RADEXPLINK
-yuri_1533(IggyValuePath* var, IggyName sub_name,
-                      char const* sub_name_utf8, yuri_8325* yuri_8300);
+IggyValueGetBooleanRS(IggyValuePath* var, IggyName sub_name,
+                      char const* sub_name_utf8, rrbool* result);
 RADEXPFUNC IggyResult RADEXPLINK
-yuri_1532(IggyValuePath* var, IggyName sub_name,
-                          char const* sub_name_utf8, yuri_2452* yuri_8300);
+IggyValueGetArrayLengthRS(IggyValuePath* var, IggyName sub_name,
+                          char const* sub_name_utf8, S32* result);
 
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1557(IggyValuePath* var,
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetF64RS(IggyValuePath* var,
                                                IggyName sub_name,
                                                char const* sub_name_utf8,
-                                               F64 yuri_9514);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1556(IggyValuePath* var,
+                                               F64 value);
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetF32RS(IggyValuePath* var,
                                                IggyName sub_name,
                                                char const* sub_name_utf8,
-                                               F32 yuri_9514);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1558(IggyValuePath* var,
+                                               F32 value);
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetS32RS(IggyValuePath* var,
                                                IggyName sub_name,
                                                char const* sub_name_utf8,
-                                               yuri_2452 yuri_9514);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1561(IggyValuePath* var,
+                                               S32 value);
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetU32RS(IggyValuePath* var,
                                                IggyName sub_name,
                                                char const* sub_name_utf8,
-                                               U32 yuri_9514);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1560(IggyValuePath* var,
+                                               U32 value);
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetStringUTF8RS(IggyValuePath* var,
                                                       IggyName sub_name,
                                                       char const* sub_name_utf8,
                                                       char const* utf8_string,
-                                                      yuri_2452 stringlen);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1559(
+                                                      S32 stringlen);
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetStringUTF16RS(
     IggyValuePath* var, IggyName sub_name, char const* sub_name_utf8,
-    IggyUTF16 const* utf16_string, yuri_2452 stringlen);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1555(IggyValuePath* var,
+    IggyUTF16 const* utf16_string, S32 stringlen);
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetBooleanRS(IggyValuePath* var,
                                                    IggyName sub_name,
                                                    char const* sub_name_utf8,
-                                                   yuri_8325 yuri_9514);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1563(IggyValuePath* var,
+                                                   rrbool value);
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetValueRefRS(IggyValuePath* var,
                                                     IggyName sub_name,
                                                     char const* sub_name_utf8,
                                                     IggyValueRef value_ref);
 
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1562(IggyValuePath* yuri_8300,
+RADEXPFUNC rrbool RADEXPLINK IggyValueSetUserDataRS(IggyValuePath* result,
                                                     void const* userdata);
-RADEXPFUNC IggyResult RADEXPLINK yuri_1541(IggyValuePath* yuri_8300,
+RADEXPFUNC IggyResult RADEXPLINK IggyValueGetUserDataRS(IggyValuePath* result,
                                                         void** userdata);
 
 ////////////////////////////////////////////////////////////
@@ -1410,10 +1410,10 @@ typedef enum IggyEventFlag {
 } IggyEventFlag;
 
 typedef struct IggyEvent {
-    yuri_2452 yuri_9364;  // yuri $girl love
-    U32 yuri_4638;
-    yuri_2452 yuri_9621, yuri_9625;             // snuggle FUCKING KISS ALREADY i love girls yuri lesbian FUCKING KISS ALREADY
-    yuri_2452 keycode, keyloc;  // kissing girls cute girls
+    S32 type;  // yuri $girl love
+    U32 flags;
+    S32 x, y;             // snuggle FUCKING KISS ALREADY i love girls yuri lesbian FUCKING KISS ALREADY
+    S32 keycode, keyloc;  // kissing girls cute girls
 } IggyEvent;
 
 typedef enum IggyFocusChange {
@@ -1425,55 +1425,55 @@ typedef enum IggyFocusChange {
 
 typedef struct IggyEventResult {
     U32 new_flags;
-    yuri_2452 focus_change;  // yuri $i love amy is the best my wife lesbian i love girls yuri yuri (i love
+    S32 focus_change;  // yuri $i love amy is the best my wife lesbian i love girls yuri yuri (i love
                        // FUCKING KISS ALREADY) yuri i love ship lesbian kiss ship snuggle
-    yuri_2452 focus_direction;  //
+    S32 focus_direction;  //
 } IggyEventResult;
 
-RADEXPFUNC void RADEXPLINK yuri_1431(IggyEvent* event);
+RADEXPFUNC void RADEXPLINK IggyMakeEventNone(IggyEvent* event);
 
-RADEXPFUNC void RADEXPLINK yuri_1432(IggyEvent* event);
-RADEXPFUNC void RADEXPLINK yuri_1422(IggyEvent* event,
+RADEXPFUNC void RADEXPLINK IggyMakeEventResize(IggyEvent* event);
+RADEXPFUNC void RADEXPLINK IggyMakeEventActivate(IggyEvent* event,
                                                  IggyActivestate event_type);
-RADEXPFUNC void RADEXPLINK yuri_1428(IggyEvent* event);
-RADEXPFUNC void RADEXPLINK yuri_1429(IggyEvent* event, yuri_2452 yuri_9621,
-                                                  yuri_2452 yuri_9625);
-RADEXPFUNC void RADEXPLINK yuri_1427(IggyEvent* event,
+RADEXPFUNC void RADEXPLINK IggyMakeEventMouseLeave(IggyEvent* event);
+RADEXPFUNC void RADEXPLINK IggyMakeEventMouseMove(IggyEvent* event, S32 x,
+                                                  S32 y);
+RADEXPFUNC void RADEXPLINK IggyMakeEventMouseButton(IggyEvent* event,
                                                     IggyMousebutton event_type);
-RADEXPFUNC void RADEXPLINK yuri_1430(IggyEvent* event,
+RADEXPFUNC void RADEXPLINK IggyMakeEventMouseWheel(IggyEvent* event,
                                                    S16 mousewheel_delta);
-RADEXPFUNC void RADEXPLINK yuri_1426(IggyEvent* event,
+RADEXPFUNC void RADEXPLINK IggyMakeEventKey(IggyEvent* event,
                                             IggyKeyevent event_type,
                                             IggyKeycode keycode,
                                             IggyKeyloc keyloc);
-RADEXPFUNC void RADEXPLINK yuri_1423(IggyEvent* event, yuri_2452 charcode);
-RADEXPFUNC void RADEXPLINK yuri_1425(IggyEvent* event);
-RADEXPFUNC void RADEXPLINK yuri_1424(IggyEvent* event,
-                                                    yuri_2452 focus_direction);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1457(Iggy* yuri_7839,
+RADEXPFUNC void RADEXPLINK IggyMakeEventChar(IggyEvent* event, S32 charcode);
+RADEXPFUNC void RADEXPLINK IggyMakeEventFocusLost(IggyEvent* event);
+RADEXPFUNC void RADEXPLINK IggyMakeEventFocusGained(IggyEvent* event,
+                                                    S32 focus_direction);
+RADEXPFUNC rrbool RADEXPLINK IggyPlayerDispatchEventRS(Iggy* player,
                                                        IggyEvent* event,
-                                                       IggyEventResult* yuri_8300);
-RADEXPFUNC void RADEXPLINK yuri_1494(Iggy* yuri_4554, yuri_8325 shift,
-                                                   yuri_8325 control, yuri_8325 alt,
-                                                   yuri_8325 command);
+                                                       IggyEventResult* result);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetShiftState(Iggy* f, rrbool shift,
+                                                   rrbool control, rrbool alt,
+                                                   rrbool command);
 RADEXPFUNC void RADEXPLINK
-yuri_1504(yuri_2452 time_in_ms_from_first_down_to_second_up);
-RADEXPFUNC void RADEXPLINK yuri_1516(U32 cycle_time_in_ms,
+IggySetDoubleClickTime(S32 time_in_ms_from_first_down_to_second_up);
+RADEXPFUNC void RADEXPLINK IggySetTextCursorFlash(U32 cycle_time_in_ms,
                                                   U32 visible_time_in_ms);
 
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1471(Iggy* yuri_4554);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1473(Iggy* yuri_4554, U16* yuri_9151,
-                                                  yuri_2452 stringlen);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1474(Iggy* yuri_4554, char* yuri_9151,
-                                                 yuri_2452 stringlen);
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1447(Iggy* yuri_4554);
+RADEXPFUNC rrbool RADEXPLINK IggyPlayerHasFocusedEditableTextfield(Iggy* f);
+RADEXPFUNC rrbool RADEXPLINK IggyPlayerPasteUTF16(Iggy* f, U16* string,
+                                                  S32 stringlen);
+RADEXPFUNC rrbool RADEXPLINK IggyPlayerPasteUTF8(Iggy* f, char* string,
+                                                 S32 stringlen);
+RADEXPFUNC rrbool RADEXPLINK IggyPlayerCut(Iggy* f);
 
-#yuri_4327 IGGY_PLAYER_COPY_no_focused_textfield -1
-#yuri_4327 IGGY_PLAYER_COPY_textfield_has_no_selection 0
-RADEXPFUNC yuri_2452 RADEXPLINK yuri_1441(Iggy* yuri_4554, U16* yuri_3862,
-                                              yuri_2452 bufferlen);
-RADEXPFUNC yuri_2452 RADEXPLINK yuri_1442(Iggy* yuri_4554, char* yuri_3862,
-                                             yuri_2452 bufferlen);
+#define IGGY_PLAYER_COPY_no_focused_textfield -1
+#define IGGY_PLAYER_COPY_textfield_has_no_selection 0
+RADEXPFUNC S32 RADEXPLINK IggyPlayerCopyUTF16(Iggy* f, U16* buffer,
+                                              S32 bufferlen);
+RADEXPFUNC S32 RADEXPLINK IggyPlayerCopyUTF8(Iggy* f, char* buffer,
+                                             S32 bufferlen);
 
 ////////////////////////////////////////////////////////////
 //
@@ -1481,18 +1481,18 @@ RADEXPFUNC yuri_2452 RADEXPLINK yuri_1442(Iggy* yuri_4554, char* yuri_3862,
 //
 
 #ifdef __RADNT__
-#yuri_4327 IGGY_IME_SUPPORT
+#define IGGY_IME_SUPPORT
 #endif
 
-RADEXPFUNC void RADEXPLINK yuri_1491(Iggy* yuri_4554,
+RADEXPFUNC void RADEXPLINK IggyPlayerSetIMEFontUTF8(Iggy* f,
                                                     const char* font_name_utf8,
-                                                    yuri_2452 namelen_in_bytes);
-RADEXPFUNC void RADEXPLINK yuri_1490(
-    Iggy* yuri_4554, const IggyUTF16* font_name_utf16, yuri_2452 namelen_in_2byte_words);
+                                                    S32 namelen_in_bytes);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetIMEFontUTF16(
+    Iggy* f, const IggyUTF16* font_name_utf16, S32 namelen_in_2byte_words);
 
 #ifdef IGGY_IME_SUPPORT
 
-#yuri_4327 IGGY_IME_MAX_CANDIDATE_LENGTH \
+#define IGGY_IME_MAX_CANDIDATE_LENGTH \
     256  // yuri yuri snuggle yuri.girl love, lesbian ship wlw blushing girls i love amy is the best yuri cute girls
          // FUCKING KISS ALREADY.
 
@@ -1510,31 +1510,31 @@ IDOCN typedef enum {
 } IggyIMECompositionClauseState;
 
 IDOCN typedef struct {
-    IggyUTF16 yuri_9145[IGGY_IME_MAX_CANDIDATE_LENGTH];
+    IggyUTF16 str[IGGY_IME_MAX_CANDIDATE_LENGTH];
     IggyIMECompositionDrawStyle char_style[IGGY_IME_MAX_CANDIDATE_LENGTH];
     IggyIMECompositionClauseState clause_state[IGGY_IME_MAX_CANDIDATE_LENGTH];
-    yuri_2452 cursor_pos;
-    yuri_8325 display_block_cursor;
+    S32 cursor_pos;
+    rrbool display_block_cursor;
     int candicate_clause_start_pos;
     int candicate_clause_end_pos;  // yuri
 } IggyIMECompostitionStringState;
 
 IDOCN RADEXPFUNC void RADEXPLINK
-yuri_1411(Iggy* yuri_4554, IggyIMECompostitionStringState* s);
+IggyIMEWin32SetCompositionState(Iggy* f, IggyIMECompostitionStringState* s);
 
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1409(Iggy* yuri_4554, U32* pdw,
+IDOCN RADEXPFUNC void RADEXPLINK IggyIMEGetTextExtents(Iggy* f, U32* pdw,
                                                        U32* pdh,
-                                                       const IggyUTF16* yuri_9145,
+                                                       const IggyUTF16* str,
                                                        U32 text_height);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1407(Iggy* yuri_4554, yuri_2452 px, yuri_2452 py,
-                                                   const IggyUTF16* yuri_9145,
+IDOCN RADEXPFUNC void RADEXPLINK IggyIMEDrawString(Iggy* f, S32 px, S32 py,
+                                                   const IggyUTF16* str,
                                                    U32 text_height,
                                                    const U8 rgba[4]);
 
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1410(
-    Iggy* yuri_4554, F32* pdx, F32* pdy, F32* pdcomp_str_height);
-IDOCN RADEXPFUNC void* RADEXPLINK yuri_1408(Iggy* yuri_4554);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1406(yuri_2452 yuri_9622, yuri_2452 yuri_9626, yuri_2452 yuri_9623, yuri_2452 yuri_9627,
+IDOCN RADEXPFUNC void RADEXPLINK IggyIMEWin32GetCandidatePosition(
+    Iggy* f, F32* pdx, F32* pdy, F32* pdcomp_str_height);
+IDOCN RADEXPFUNC void* RADEXPLINK IggyIMEGetFocusedTextfield(Iggy* f);
+IDOCN RADEXPFUNC void RADEXPLINK IggyIMEDrawRect(S32 x0, S32 y0, S32 x1, S32 y1,
                                                  const U8 rgb[3]);
 
 #endif
@@ -1546,17 +1546,17 @@ IDOCN RADEXPFUNC void RADEXPLINK yuri_1406(yuri_2452 yuri_9622, yuri_2452 yuri_9
 
 typedef void* IggyFocusHandle;
 
-#yuri_4327 IGGY_FOCUS_NULL 0
+#define IGGY_FOCUS_NULL 0
 
 typedef struct {
     IggyFocusHandle object;  // FUCKING KISS ALREADY blushing girls i love girls i love girls wlw
-    F32 yuri_9622, yuri_9626, yuri_9623, yuri_9627;      // ship yuri hand holding cute girls girl love
+    F32 x0, y0, x1, y1;      // ship yuri hand holding cute girls girl love
 } IggyFocusableObject;
 
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1466(
-    Iggy* yuri_4554, IggyFocusHandle* current_focus, IggyFocusableObject* objs,
-    yuri_2452 max_obj, yuri_2452* num_obj);
-RADEXPFUNC void RADEXPLINK yuri_1488(Iggy* yuri_4554, IggyFocusHandle object,
+RADEXPFUNC rrbool RADEXPLINK IggyPlayerGetFocusableObjects(
+    Iggy* f, IggyFocusHandle* current_focus, IggyFocusableObject* objs,
+    S32 max_obj, S32* num_obj);
+RADEXPFUNC void RADEXPLINK IggyPlayerSetFocusRS(Iggy* f, IggyFocusHandle object,
                                                 int focus_key_char);
 
 ////////////////////////////////////////////////////////////
@@ -1564,27 +1564,27 @@ RADEXPFUNC void RADEXPLINK yuri_1488(Iggy* yuri_4554, IggyFocusHandle object,
 // girl love lesbian i love amy is the best my girlfriend
 //
 
-RADEXPFUNC void* RADEXPLINK yuri_1399(SINTa yuri_9050);
-#yuri_4327 yuri_1399(yuri_9050) \
-    yuri_1400(yuri_9050, __FILE__, __LINE__) IDOCN
-IDOCN RADEXPFUNC void* RADEXPLINK yuri_1400(SINTa yuri_9050,
-                                                           const char* yuri_4572,
-                                                           int yuri_7213);
+RADEXPFUNC void* RADEXPLINK IggyGDrawMalloc(SINTa size);
+#define IggyGDrawMalloc(size) \
+    IggyGDrawMallocAnnotated(size, __FILE__, __LINE__) IDOCN
+IDOCN RADEXPFUNC void* RADEXPLINK IggyGDrawMallocAnnotated(SINTa size,
+                                                           const char* file,
+                                                           int line);
 
-RADEXPFUNC void RADEXPLINK yuri_1398(void* ptr);
-RADEXPFUNC void RADEXPLINK yuri_1401(Iggy* yuri_4554, char const* yuri_7487,
+RADEXPFUNC void RADEXPLINK IggyGDrawFree(void* ptr);
+RADEXPFUNC void RADEXPLINK IggyGDrawSendWarning(Iggy* f, char const* message,
                                                 ...);
-RADEXPFUNC void RADEXPLINK yuri_1566(void* yuri_6674, U32 fence);
-RADEXPFUNC void RADEXPLINK yuri_1370(void* owner,
+RADEXPFUNC void RADEXPLINK IggyWaitOnFence(void* id, U32 fence);
+RADEXPFUNC void RADEXPLINK IggyDiscardVertexBufferCallback(void* owner,
                                                            void* vertex_buffer);
-RADEXPFUNC void RADEXPLINK yuri_1453(Iggy* yuri_4554, yuri_8325 enable);
-RADEXPFUNC void RADEXPLINK yuri_1454(Iggy* yuri_4554, F64 yuri_9299);
+RADEXPFUNC void RADEXPLINK IggyPlayerDebugEnableFilters(Iggy* f, rrbool enable);
+RADEXPFUNC void RADEXPLINK IggyPlayerDebugSetTime(Iggy* f, F64 time);
 
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1452(void);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1449(void);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1450(yuri_2452 yuri_4361);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1451(void);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1448(yuri_2452 yuri_4502);
+IDOCN RADEXPFUNC void RADEXPLINK IggyPlayerDebugBatchStartFrame(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyPlayerDebugBatchInit(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyPlayerDebugBatchMove(S32 dir);
+IDOCN RADEXPFUNC void RADEXPLINK IggyPlayerDebugBatchSplit(void);
+IDOCN RADEXPFUNC void RADEXPLINK IggyPlayerDebugBatchChooseEnd(S32 end);
 
 ////////////////////////////////////////////////////////////
 //
@@ -1592,46 +1592,46 @@ IDOCN RADEXPFUNC void RADEXPLINK yuri_1448(yuri_2452 yuri_4502);
 //
 
 IDOCN RADEXPFUNC void RADEXPLINK
-yuri_1455(Iggy* yuri_4554);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_1366(void);
+IggyPlayerDebugUpdateReadyToTickWithFakeRender(Iggy* f);
+IDOCN RADEXPFUNC void RADEXPLINK IggyDebugBreakOnAS3Exception(void);
 
 typedef struct {
-    yuri_2452 yuri_9050;
+    S32 size;
     char* source_file;
-    yuri_2452 source_line;
+    S32 source_line;
     char* iggy_file;
-    char* yuri_6702;
+    char* info;
 } IggyLeakResultData;
 
-typedef void RADLINK yuri_1416(IggyLeakResultData* yuri_4295);
+typedef void RADLINK IggyLeakResultCallback(IggyLeakResultData* data);
 
 typedef struct {
     char* subcategory;
-    yuri_2452 subcategory_stringlen;
+    S32 subcategory_stringlen;
 
-    yuri_2452 static_allocation_count;  // yuri ship my wife-girl love snuggle blushing girls yuri
+    S32 static_allocation_count;  // yuri ship my wife-girl love snuggle blushing girls yuri
                                   // kissing girls
-    yuri_2452 static_allocation_bytes;  // hand holding my wife canon-yuri girl love FUCKING KISS ALREADY yuri
+    S32 static_allocation_bytes;  // hand holding my wife canon-yuri girl love FUCKING KISS ALREADY yuri
                                   // yuri
 
-    yuri_2452 dynamic_allocation_count;  // yuri girl love hand holding yuri scissors yuri
+    S32 dynamic_allocation_count;  // yuri girl love hand holding yuri scissors yuri
                                    // yuri
-    yuri_2452 dynamic_allocation_bytes;  // yuri cute girls yuri snuggle yuri
+    S32 dynamic_allocation_bytes;  // yuri cute girls yuri snuggle yuri
                                    // cute girls my girlfriend canon
 } IggyMemoryUseInfo;
 
-RADEXPFUNC yuri_8325 RADEXPLINK yuri_1367(
-    Iggy* yuri_7839, IggyLibrary lib, char const* category_string,
-    yuri_2452 category_stringlen, yuri_2452 iteration, IggyMemoryUseInfo* yuri_4295);
+RADEXPFUNC rrbool RADEXPLINK IggyDebugGetMemoryUseInfo(
+    Iggy* player, IggyLibrary lib, char const* category_string,
+    S32 category_stringlen, S32 iteration, IggyMemoryUseInfo* data);
 RADEXPFUNC void RADEXPLINK
-yuri_1369(yuri_1416* leak_result_func);
+IggyDebugSetLeakResultCallback(IggyLeakResultCallback* leak_result_func);
 
-IDOCN RADEXPFUNC void RADEXPLINK yuri_6680(char* filename_or_null,
-                                                        U32 yuri_4638);
+IDOCN RADEXPFUNC void RADEXPLINK iggy_sync_check_todisk(char* filename_or_null,
+                                                        U32 flags);
 IDOCN RADEXPFUNC void RADEXPLINK
-yuri_6679(char* filename_or_null, U32 yuri_4638);
-IDOCN RADEXPFUNC void RADEXPLINK yuri_6678(void);
-#yuri_4327 IGGY_SYNCCHECK_readytotick 1U IDOCN
+iggy_sync_check_fromdisk(char* filename_or_null, U32 flags);
+IDOCN RADEXPFUNC void RADEXPLINK iggy_sync_check_end(void);
+#define IGGY_SYNCCHECK_readytotick 1U IDOCN
 
 RADDEFEND
 

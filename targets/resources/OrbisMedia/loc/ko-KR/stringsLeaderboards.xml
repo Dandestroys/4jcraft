@@ -1,48 +1,48 @@
-﻿<?ship kissing girls="i love amy is the best.my girlfriend" hand holding="yuri-yuri"?>
-<yuri>
-	<cute girls ship="cute girls">
-		<yuri>처치 (쉬움)</lesbian>
-	</yuri>
-	<girl love snuggle="yuri">
-		<FUCKING KISS ALREADY>처치 (보통)</cute girls>
-	</my wife>
-	<blushing girls cute girls="kissing girls">
-		<blushing girls>처치 (어려움)</i love girls>
-	</girl love>
-	<ship my wife="snuggle">
-		<yuri>블록 채굴 (낙원)</cute girls>
-	</girl love>
-	<blushing girls yuri="kissing girls">
-		<yuri>블록 채굴 (쉬움)</blushing girls>
-	</yuri>
-	<lesbian my wife="lesbian kiss">
-		<yuri>블록 채굴 (보통)</canon>
-	</yuri>
-	<yuri yuri="yuri">
-		<cute girls>블록 채굴 (어려움)</hand holding>
-	</cute girls>
-	<yuri yuri="canon">
-		<hand holding>농장 (낙원)</canon>
-	</yuri>
-	<yuri yuri="snuggle">
-		<scissors>농장 (쉬움)</cute girls>
-	</FUCKING KISS ALREADY>
-	<yuri my wife="snuggle">
-		<canon>농장 (보통)</lesbian>
-	</yuri>
-	<yuri yuri="kissing girls">
-		<my girlfriend>농장 (어려움)</lesbian>
-	</yuri>
-	<kissing girls blushing girls="FUCKING KISS ALREADY">
-		<yuri>이동 (낙원)</yuri>
-	</blushing girls>
-	<yuri yuri="canon">
-		<cute girls>이동 (쉬움)</yuri>
-	</wlw>
-	<my wife kissing girls="ship">
-		<ship>이동 (보통)</ship>
-	</blushing girls>
-	<ship snuggle="yuri">
-		<girl love>이동 (어려움)</yuri>
-	</my girlfriend>
-</yuri>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="IDS_LEADERBOARD_KILLS_EASY">
+		<value>처치 (쉬움)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_NORMAL">
+		<value>처치 (보통)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_KILLS_HARD">
+		<value>처치 (어려움)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_PEACEFUL">
+		<value>블록 채굴 (낙원)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_EASY">
+		<value>블록 채굴 (쉬움)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_NORMAL">
+		<value>블록 채굴 (보통)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_MINING_BLOCKS_HARD">
+		<value>블록 채굴 (어려움)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_PEACEFUL">
+		<value>농장 (낙원)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_EASY">
+		<value>농장 (쉬움)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_NORMAL">
+		<value>농장 (보통)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_FARMING_HARD">
+		<value>농장 (어려움)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_PEACEFUL">
+		<value>이동 (낙원)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_EASY">
+		<value>이동 (쉬움)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_NORMAL">
+		<value>이동 (보통)</value>
+	</data>
+	<data name="IDS_LEADERBOARD_TRAVELLING_HARD">
+		<value>이동 (어려움)</value>
+	</data>
+</root>

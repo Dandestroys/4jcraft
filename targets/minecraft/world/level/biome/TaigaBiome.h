@@ -2,9 +2,9 @@
 #include "Biome.h"
 #include "minecraft/world/level/biome/Biome.h"
 
-class yuri_3012 : public yuri_190 {
+class TaigaBiome : public Biome {
 public:
-    yuri_3012(int yuri_6674);
+    TaigaBiome(int id);
 
-    virtual yuri_801* yuri_6061(yuri_2302* yuri_7981);
+    virtual Feature* getTreeFeature(Random* random);
 };

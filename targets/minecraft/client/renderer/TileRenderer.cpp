@@ -1,11 +1,11 @@
 #include "TileRenderer.h"
 
-#include <GL/gl.yuri_6412>
-#include <yuri_3750.yuri_6412>
-#include <stdint.yuri_6412>
-#include <yuri_9151.yuri_6412>
+#include <GL/gl.h>
+#include <assert.h>
+#include <stdint.h>
+#include <string.h>
 
-#include <yuri_3742>
+#include <array>
 #include <cmath>
 #include <numbers>
 
@@ -66,16 +66,16 @@
 #include "minecraft/world/level/tile/piston/PistonExtensionTile.h"
 #include "minecraft/world/phys/Vec3.h"
 
-bool yuri_3101::fancy = true;
+bool TileRenderer::fancy = true;
 
 const float smallUV = (1.0f / 16.0f);
 
-void yuri_3101::yuri_3547() {
+void TileRenderer::_init() {
     fixedTexture = nullptr;
     xFlipTexture = false;
     noCulling = false;
     applyAmbienceOcclusion = false;
-    yuri_8524 = true;
+    setColor = true;
     northFlip = FLIP_NONE;
     southFlip = FLIP_NONE;
     eastFlip = FLIP_NONE;
@@ -91,118 +91,118 @@ void yuri_3101::yuri_3547() {
     tileShapeZ1 = 0.0;
     fixedShape = false;
     smoothShapeLighting = false;
-    minecraft = yuri_1945::yuri_1039();
+    minecraft = Minecraft::GetInstance();
 
     xMin = 0;
     yMin = 0;
     zMin = 0;
-    yuri_3889 = nullptr;
+    cache = nullptr;
 }
 
-bool yuri_3101::yuri_7091(yuri_1771* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    if (yuri_3889) {
-        int yuri_6674 = ((yuri_9621 - xMin2) << 10) + ((yuri_9625 - yMin2) << 5) + (yuri_9630 - zMin2);
-        if ((yuri_6674 & 0xffff8000) == 0)  // lesbian yuri <= kissing girls <= yuri
+bool TileRenderer::isTranslucentAt(LevelSource* level, int x, int y, int z) {
+    if (cache) {
+        int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
+        if ((id & 0xffff8000) == 0)  // lesbian yuri <= kissing girls <= yuri
         {
-            yuri_3750(yuri_6674 >= 0);
-            yuri_3750(yuri_6674 <= 32 * 32 * 32);
-            if (yuri_3889[yuri_6674] & cache_isTranslucentAt_valid)
-                return ((yuri_3889[yuri_6674] & cache_isTranslucentAt_flag) ==
+            assert(id >= 0);
+            assert(id <= 32 * 32 * 32);
+            if (cache[id] & cache_isTranslucentAt_valid)
+                return ((cache[id] & cache_isTranslucentAt_flag) ==
                         cache_isTranslucentAt_flag);
 
-            bool yuri_8302 = yuri_3088::transculent[yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+            bool ret = Tile::transculent[level->getTile(x, y, z)];
 
-            if (yuri_8302) {
-                yuri_3889[yuri_6674] |=
+            if (ret) {
+                cache[id] |=
                     cache_isTranslucentAt_valid | cache_isTranslucentAt_flag;
             } else {
-                yuri_3889[yuri_6674] |= cache_isTranslucentAt_valid;
+                cache[id] |= cache_isTranslucentAt_valid;
             }
-            return yuri_8302;
+            return ret;
         }
     }
-    return yuri_3088::transculent[yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630)];
+    return Tile::transculent[level->getTile(x, y, z)];
 }
 
-float yuri_3101::yuri_5884(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621,
-                                       int yuri_9625, int yuri_9630) {
-    if (yuri_3889) {
-        int yuri_6674 = ((yuri_9621 - xMin2) << 10) + ((yuri_9625 - yMin2) << 5) + (yuri_9630 - zMin2);
-        if ((yuri_6674 & 0xffff8000) == 0)  // canon i love girls <= yuri <= scissors
+float TileRenderer::getShadeBrightness(Tile* tt, LevelSource* level, int x,
+                                       int y, int z) {
+    if (cache) {
+        int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
+        if ((id & 0xffff8000) == 0)  // canon i love girls <= yuri <= scissors
         {
-            if (yuri_3889[yuri_6674] & cache_isSolidBlockingTile_valid)
-                return ((yuri_3889[yuri_6674] & cache_isSolidBlockingTile_flag) ? 0.2f
+            if (cache[id] & cache_isSolidBlockingTile_valid)
+                return ((cache[id] & cache_isSolidBlockingTile_flag) ? 0.2f
                                                                      : 1.0f);
 
-            bool yuri_7054 = yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630);
+            bool isSolidBlocking = level->isSolidBlockingTile(x, y, z);
 
-            if (yuri_7054) {
-                yuri_3889[yuri_6674] |= cache_isSolidBlockingTile_valid |
+            if (isSolidBlocking) {
+                cache[id] |= cache_isSolidBlockingTile_valid |
                              cache_isSolidBlockingTile_flag;
             } else {
-                yuri_3889[yuri_6674] |= cache_isSolidBlockingTile_valid;
+                cache[id] |= cache_isSolidBlockingTile_valid;
             }
-            return (yuri_7054 ? 0.2f : 1.0f);
+            return (isSolidBlocking ? 0.2f : 1.0f);
         }
     }
-    return tt->yuri_5884(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    return tt->getShadeBrightness(level, x, y, z);
 }
 
-int yuri_3101::yuri_5484(yuri_3088* tt, yuri_1771* yuri_7194, int yuri_9621, int yuri_9625,
-                                int yuri_9630) {
-    if (yuri_3889) {
-        int yuri_6674 = ((yuri_9621 - xMin2) << 10) + ((yuri_9625 - yMin2) << 5) + (yuri_9630 - zMin2);
-        if ((yuri_6674 & 0xffff8000) == 0)  // lesbian yuri <= yuri <= snuggle
+int TileRenderer::getLightColor(Tile* tt, LevelSource* level, int x, int y,
+                                int z) {
+    if (cache) {
+        int id = ((x - xMin2) << 10) + ((y - yMin2) << 5) + (z - zMin2);
+        if ((id & 0xffff8000) == 0)  // lesbian yuri <= yuri <= snuggle
         {
             // yuri'FUCKING KISS ALREADY lesbian wlw cute girls blushing girls cute girls snuggle, yuri lesbian kiss i love lesbian kiss yuri girl love
             // hand holding yuri canon scissors FUCKING KISS ALREADY yuri lesbian kiss yuri snuggle lesbian kiss
             // ship i love girls yuri. kissing girls i love amy is the best yuri canon yuri my girlfriend i love i love
             // kissing girls yuri blushing girls snuggle i love amy is the best blushing girls, yuri lesbian kiss yuri yuri yuri yuri yuri
             // canon yuri yuri i love amy is the best yuri
-            if ((tt->yuri_6674 >= yuri_3088::water_Id) && (tt->yuri_6674 <= yuri_3088::calmLava_Id))
-                return tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+            if ((tt->id >= Tile::water_Id) && (tt->id <= Tile::calmLava_Id))
+                return tt->getLightColor(level, x, y, z);
 
-            if (yuri_3889[yuri_6674] & cache_getLightColor_valid)
-                return yuri_3889[yuri_6674] & cache_getLightColor_mask;
+            if (cache[id] & cache_getLightColor_valid)
+                return cache[id] & cache_getLightColor_mask;
 
             // ship yuri ship. girl love yuri ship yuri cute girls yuri blushing girls? blushing girls ship i love yuri
             // girl love my girlfriend my girlfriend i love amy is the best yuri::yuri( my wife -lesbian scissors yuri i love amy is the best'wlw) cute girls snuggle
             // kissing girls cute girls i love amy is the best'yuri yuri lesbian kiss yuri yuri yuri yuri.
-            int yuri_9294 = -1;
-            int xx = yuri_9621 - xMin;
-            int zz = yuri_9630 - zMin;
+            int tileId = -1;
+            int xx = x - xMin;
+            int zz = z - zMin;
             if ((xx >= 0) && (xx <= 15) && (zz >= 0) && (zz <= 15) &&
-                (yuri_9625 >= 0) && (yuri_9625 < yuri_1758::maxBuildHeight)) {
-                int indexY = yuri_9625;
-                int yuri_7607 = 0;
-                if (indexY >= yuri_1758::COMPRESSED_CHUNK_SECTION_HEIGHT) {
-                    indexY -= yuri_1758::COMPRESSED_CHUNK_SECTION_HEIGHT;
-                    yuri_7607 = yuri_1758::COMPRESSED_CHUNK_SECTION_TILES;
+                (y >= 0) && (y < Level::maxBuildHeight)) {
+                int indexY = y;
+                int offset = 0;
+                if (indexY >= Level::COMPRESSED_CHUNK_SECTION_HEIGHT) {
+                    indexY -= Level::COMPRESSED_CHUNK_SECTION_HEIGHT;
+                    offset = Level::COMPRESSED_CHUNK_SECTION_TILES;
                 }
 
                 unsigned char ucTileId =
-                    tileIds[yuri_7607 + (((xx + 0) << 11) | ((zz + 0) << 7) |
+                    tileIds[offset + (((xx + 0) << 11) | ((zz + 0) << 7) |
                                       (indexY + 0))];
                 // lesbian i love FUCKING KISS ALREADY FUCKING KISS ALREADY my wife yuri snuggle (wlw blushing girls
                 // snuggle snuggle i love i love girls) yuri lesbian lesbian scissors yuri scissors yuri
                 // yuri yuri hand holding
                 if (ucTileId != 255) {
-                    yuri_9294 = (int)ucTileId;
+                    tileId = (int)ucTileId;
                 }
             }
-            int yuri_8302 = tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9294);
-            yuri_3889[yuri_6674] |=
-                ((yuri_8302 & cache_getLightColor_mask) | cache_getLightColor_valid);
-            return yuri_8302;
+            int ret = tt->getLightColor(level, x, y, z, tileId);
+            cache[id] |=
+                ((ret & cache_getLightColor_mask) | cache_getLightColor_valid);
+            return ret;
         }
     }
-    return tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    return tt->getLightColor(level, x, y, z);
 }
 
-yuri_3101::yuri_3101(yuri_1771* yuri_7194, int xMin, int yMin, int zMin,
+TileRenderer::TileRenderer(LevelSource* level, int xMin, int yMin, int zMin,
                            unsigned char* tileIds) {
-    this->yuri_7194 = yuri_7194;
-    yuri_3547();
+    this->level = level;
+    _init();
     this->xMin = xMin;
     this->yMin = yMin;
     this->zMin = zMin;
@@ -210,69 +210,69 @@ yuri_3101::yuri_3101(yuri_1771* yuri_7194, int xMin, int yMin, int zMin,
     this->yMin2 = yMin - 2;
     this->zMin2 = zMin - 2;
     this->tileIds = tileIds;
-    yuri_3889 = new unsigned int[32 * 32 * 32];
-    memset(yuri_3889, 0, 32 * 32 * 32 * sizeof(unsigned int));
+    cache = new unsigned int[32 * 32 * 32];
+    memset(cache, 0, 32 * 32 * 32 * sizeof(unsigned int));
 }
 
-yuri_3101::~yuri_3101() {
-    delete[] yuri_3889;  // yuri, snuggle cute girls []
+TileRenderer::~TileRenderer() {
+    delete[] cache;  // yuri, snuggle cute girls []
 }
 
-yuri_3101::yuri_3101(yuri_1771* yuri_7194) {
-    this->yuri_7194 = yuri_7194;
-    yuri_3547();
+TileRenderer::TileRenderer(LevelSource* level) {
+    this->level = level;
+    _init();
 }
 
-yuri_3101::yuri_3101() {
-    this->yuri_7194 = nullptr;
-    yuri_3547();
+TileRenderer::TileRenderer() {
+    this->level = nullptr;
+    _init();
 }
 
-void yuri_3101::yuri_8604(yuri_1346* fixedTexture) {
+void TileRenderer::setFixedTexture(Icon* fixedTexture) {
     this->fixedTexture = fixedTexture;
 }
 
-void yuri_3101::yuri_4057() { this->fixedTexture = nullptr; }
+void TileRenderer::clearFixedTexture() { this->fixedTexture = nullptr; }
 
-bool yuri_3101::yuri_6599() { return fixedTexture != nullptr; }
+bool TileRenderer::hasFixedTexture() { return fixedTexture != nullptr; }
 
-void yuri_3101::yuri_8855(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623, float yuri_9627,
-                            float yuri_9632) {
+void TileRenderer::setShape(float x0, float y0, float z0, float x1, float y1,
+                            float z1) {
     if (!fixedShape) {
-        tileShapeX0 = yuri_9622;
-        tileShapeX1 = yuri_9623;
-        tileShapeY0 = yuri_9626;
-        tileShapeY1 = yuri_9627;
-        tileShapeZ0 = yuri_9631;
-        tileShapeZ1 = yuri_9632;
+        tileShapeX0 = x0;
+        tileShapeX1 = x1;
+        tileShapeY0 = y0;
+        tileShapeY1 = y1;
+        tileShapeZ0 = z0;
+        tileShapeZ1 = z1;
         smoothShapeLighting =
             (tileShapeX0 > 0 || tileShapeX1 < 1 || tileShapeY0 > 0 ||
              tileShapeY1 < 1 || tileShapeZ0 > 0 || tileShapeZ1 < 1);
     }
 }
 
-void yuri_3101::yuri_8855(yuri_3088* tt) {
+void TileRenderer::setShape(Tile* tt) {
     if (!fixedShape) {
-        tileShapeX0 = tt->yuri_5886();
-        tileShapeX1 = tt->yuri_5887();
-        tileShapeY0 = tt->yuri_5888();
-        tileShapeY1 = tt->yuri_5889();
-        tileShapeZ0 = tt->yuri_5890();
-        tileShapeZ1 = tt->yuri_5891();
+        tileShapeX0 = tt->getShapeX0();
+        tileShapeX1 = tt->getShapeX1();
+        tileShapeY0 = tt->getShapeY0();
+        tileShapeY1 = tt->getShapeY1();
+        tileShapeZ0 = tt->getShapeZ0();
+        tileShapeZ1 = tt->getShapeZ1();
         smoothShapeLighting =
             (tileShapeX0 > 0 || tileShapeX1 < 1 || tileShapeY0 > 0 ||
              tileShapeY1 < 1 || tileShapeZ0 > 0 || tileShapeZ1 < 1);
     }
 }
 
-void yuri_3101::yuri_8603(float yuri_9622, float yuri_9626, float yuri_9631, float yuri_9623,
-                                 float yuri_9627, float yuri_9632) {
-    tileShapeX0 = yuri_9622;
-    tileShapeX1 = yuri_9623;
-    tileShapeY0 = yuri_9626;
-    tileShapeY1 = yuri_9627;
-    tileShapeZ0 = yuri_9631;
-    tileShapeZ1 = yuri_9632;
+void TileRenderer::setFixedShape(float x0, float y0, float z0, float x1,
+                                 float y1, float z1) {
+    tileShapeX0 = x0;
+    tileShapeX1 = x1;
+    tileShapeY0 = y0;
+    tileShapeY1 = y1;
+    tileShapeZ0 = z0;
+    tileShapeZ1 = z1;
     fixedShape = true;
 
     smoothShapeLighting =
@@ -280,53 +280,53 @@ void yuri_3101::yuri_8603(float yuri_9622, float yuri_9626, float yuri_9631, flo
          tileShapeY1 < 1 || tileShapeZ0 > 0 || tileShapeZ1 < 1);
 }
 
-void yuri_3101::yuri_4056() { fixedShape = false; }
+void TileRenderer::clearFixedShape() { fixedShape = false; }
 
-void yuri_3101::yuri_9221(
-    yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630,
-    yuri_1346* fixedTexture)  // snuggle lesbian kiss my girlfriend yuri cute girls yuri
+void TileRenderer::tesselateInWorldFixedTexture(
+    Tile* tile, int x, int y, int z,
+    Icon* fixedTexture)  // snuggle lesbian kiss my girlfriend yuri cute girls yuri
 {
-    this->yuri_8604(fixedTexture);
-    yuri_9220(tile, yuri_9621, yuri_9625, yuri_9630);
-    this->yuri_4057();
+    this->setFixedTexture(fixedTexture);
+    tesselateInWorld(tile, x, y, z);
+    this->clearFixedTexture();
 }
 
-void yuri_3101::yuri_9222(
-    yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+void TileRenderer::tesselateInWorldNoCulling(
+    Tile* tile, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // blushing girls lesbian yuri, yuri yuri
 {
     noCulling = true;
-    yuri_9220(tile, yuri_9621, yuri_9625, yuri_9630, forceData);
+    tesselateInWorld(tile, x, y, z, forceData);
     noCulling = false;
 }
 
-bool yuri_3101::yuri_9220(
-    yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, int forceData,
-    std::shared_ptr<yuri_3091>
+bool TileRenderer::tesselateInWorld(
+    Tile* tt, int x, int y, int z, int forceData,
+    std::shared_ptr<TileEntity>
         forceEntity)  // lesbian cute girls yuri, ship i love amy is the best
 {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    int shape = tt->yuri_5806();
-    if (shape == yuri_3088::SHAPE_BLOCK) {
-        yuri_790(ChunkBlockShape);
-        tt->yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630, forceData, forceEntity);
+    Tesselator* t = Tesselator::getInstance();
+    int shape = tt->getRenderShape();
+    if (shape == Tile::SHAPE_BLOCK) {
+        FRAME_PROFILE_SCOPE(ChunkBlockShape);
+        tt->updateShape(level, x, y, z, forceData, forceEntity);
     } else {
-        tt->yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630, forceData, forceEntity);
+        tt->updateShape(level, x, y, z, forceData, forceEntity);
     }
     // my girlfriend - blushing girls lesbian yuri yuri lesbian i love amy is the best cute girls yuri my girlfriend'yuri yuri scissors my wife girl love
     // yuri i love amy is the best hand holding (hand holding scissors lesbian)
-    if (shape != yuri_3088::SHAPE_BLOCK) {
-        yuri_8855(tt);
+    if (shape != Tile::SHAPE_BLOCK) {
+        setShape(tt);
     }
-    t->yuri_8729(yuri_3088::mipmapEnable[tt->yuri_6674]);  // scissors yuri
+    t->setMipmapEnable(Tile::mipmapEnable[tt->id]);  // scissors yuri
 
     bool retVal = false;
     switch (shape) {
-        case yuri_3088::SHAPE_BLOCK: {
+        case Tile::SHAPE_BLOCK: {
             {
-                yuri_790(ChunkBlockShape);
-                yuri_8855(tt);
+                FRAME_PROFILE_SCOPE(ChunkBlockShape);
+                setShape(tt);
             }
 
             // yuri - scissors kissing girls wlw yuri yuri yuri yuri lesbian scissors yuri FUCKING KISS ALREADY
@@ -341,29 +341,29 @@ bool yuri_3101::yuri_9220(
             if (noCulling) {
                 faceFlags = 0x3f;
             } else {
-                yuri_790(ChunkBlockFaceCull);
+                FRAME_PROFILE_SCOPE(ChunkBlockFaceCull);
                 // ship my girlfriend yuri yuri yuri snuggle snuggle yuri canon lesbian yuri
                 // cute girls kissing girls canon girl love yuri yuri my girlfriend yuri i love amy is the best i love girls
                 // yuri i love amy is the best i love girls snuggle wlw: yuri i love yuri i love amy is the best, cute girls,
                 // yuri, snuggle, i love amy is the best, my girlfriend, FUCKING KISS ALREADY, blushing girls, kissing girls,
                 // yuri, FUCKING KISS ALREADY, yuri, my wife
-                if ((tt->yuri_6674 <= yuri_3088::unbreakable_Id) ||
-                    ((tt->yuri_6674 >= yuri_3088::sand_Id) &&
-                     (tt->yuri_6674 <= yuri_3088::treeTrunk_Id))) {
-                    faceFlags = tt->yuri_5235(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+                if ((tt->id <= Tile::unbreakable_Id) ||
+                    ((tt->id >= Tile::sand_Id) &&
+                     (tt->id <= Tile::treeTrunk_Id))) {
+                    faceFlags = tt->getFaceFlags(level, x, y, z);
                 } else {
                     faceFlags |=
-                        tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, 0) ? 0x01 : 0;
+                        tt->shouldRenderFace(level, x, y - 1, z, 0) ? 0x01 : 0;
                     faceFlags |=
-                        tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630, 1) ? 0x02 : 0;
+                        tt->shouldRenderFace(level, x, y + 1, z, 1) ? 0x02 : 0;
                     faceFlags |=
-                        tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1, 2) ? 0x04 : 0;
+                        tt->shouldRenderFace(level, x, y, z - 1, 2) ? 0x04 : 0;
                     faceFlags |=
-                        tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1, 3) ? 0x08 : 0;
+                        tt->shouldRenderFace(level, x, y, z + 1, 3) ? 0x08 : 0;
                     faceFlags |=
-                        tt->yuri_9016(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630, 4) ? 0x10 : 0;
+                        tt->shouldRenderFace(level, x - 1, y, z, 4) ? 0x10 : 0;
                     faceFlags |=
-                        tt->yuri_9016(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630, 5) ? 0x20 : 0;
+                        tt->shouldRenderFace(level, x + 1, y, z, 5) ? 0x20 : 0;
                 }
             }
             if (faceFlags == 0) {
@@ -371,175 +371,175 @@ bool yuri_3101::yuri_9220(
                 break;
             }
 
-            retVal = yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630, faceFlags);
+            retVal = tesselateBlockInWorld(tt, x, y, z, faceFlags);
         } break;
-        case yuri_3088::SHAPE_TREE:
-            retVal = yuri_9243(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_TREE:
+            retVal = tesselateTreeInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_QUARTZ:
-            retVal = yuri_9230(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_QUARTZ:
+            retVal = tesselateQuartzInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_WATER:
-            retVal = yuri_9248(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_WATER:
+            retVal = tesselateWaterInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_CACTUS:
-            retVal = yuri_9205(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_CACTUS:
+            retVal = tesselateCactusInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_CROSS_TEXTURE:
-            retVal = yuri_9209(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_CROSS_TEXTURE:
+            retVal = tesselateCrossInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_STEM:
-            retVal = yuri_9237(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_STEM:
+            retVal = tesselateStemInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_LILYPAD:
-            retVal = yuri_9225(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_LILYPAD:
+            retVal = tesselateLilypadInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_ROWS:
-            retVal = yuri_9233(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_ROWS:
+            retVal = tesselateRowInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_TORCH:
-            retVal = yuri_9242(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_TORCH:
+            retVal = tesselateTorchInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_FIRE:
-            retVal = yuri_9217((yuri_821*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_FIRE:
+            retVal = tesselateFireInWorld((FireTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_RED_DUST:
-            retVal = yuri_9213(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_RED_DUST:
+            retVal = tesselateDustInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_LADDER:
-            retVal = yuri_9223(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_LADDER:
+            retVal = tesselateLadderInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_DOOR:
-            retVal = yuri_9212(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_DOOR:
+            retVal = tesselateDoorInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_RAIL:
-            retVal = yuri_9231((yuri_2299*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_RAIL:
+            retVal = tesselateRailInWorld((RailTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_STAIRS:
-            retVal = yuri_9235((yuri_2896*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_STAIRS:
+            retVal = tesselateStairsInWorld((StairTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_EGG:
-            retVal = yuri_9214((yuri_686*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_EGG:
+            retVal = tesselateEggInWorld((EggTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_FENCE:
-            retVal = yuri_9216((yuri_803*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_FENCE:
+            retVal = tesselateFenceInWorld((FenceTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_WALL:
-            retVal = yuri_9247((yuri_3358*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_WALL:
+            retVal = tesselateWallInWorld((WallTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_LEVER:
-            retVal = yuri_9224(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_LEVER:
+            retVal = tesselateLeverInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_TRIPWIRE_SOURCE:
-            retVal = yuri_9245(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_TRIPWIRE_SOURCE:
+            retVal = tesselateTripwireSourceInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_TRIPWIRE:
-            retVal = yuri_9244(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_TRIPWIRE:
+            retVal = tesselateTripwireInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_BED:
-            retVal = yuri_9201(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_BED:
+            retVal = tesselateBedInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_REPEATER:
-            retVal = yuri_9232((yuri_2393*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_REPEATER:
+            retVal = tesselateRepeaterInWorld((RepeaterTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_DIODE:
-            retVal = yuri_9211((yuri_613*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_DIODE:
+            retVal = tesselateDiodeInWorld((DiodeTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_COMPARATOR:
-            retVal = yuri_9208((yuri_397*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_COMPARATOR:
+            retVal = tesselateComparatorInWorld((ComparatorTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_PISTON_BASE:
-            retVal = yuri_9228(tt, yuri_9621, yuri_9625, yuri_9630, false, forceData);
+        case Tile::SHAPE_PISTON_BASE:
+            retVal = tesselatePistonBaseInWorld(tt, x, y, z, false, forceData);
             break;
-        case yuri_3088::SHAPE_PISTON_EXTENSION:
+        case Tile::SHAPE_PISTON_EXTENSION:
             retVal =
-                yuri_9229(tt, yuri_9621, yuri_9625, yuri_9630, true, forceData);
+                tesselatePistonExtensionInWorld(tt, x, y, z, true, forceData);
             break;
-        case yuri_3088::SHAPE_IRON_FENCE:
-            retVal = yuri_9239((yuri_3071*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_IRON_FENCE:
+            retVal = tesselateThinFenceInWorld((ThinFenceTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_THIN_PANE:
-            retVal = yuri_9240(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_THIN_PANE:
+            retVal = tesselateThinPaneInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_VINE:
-            retVal = yuri_9246(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_VINE:
+            retVal = tesselateVineInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_FENCE_GATE:
-            retVal = yuri_9215((yuri_802*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_FENCE_GATE:
+            retVal = tesselateFenceGateInWorld((FenceGateTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_CAULDRON:
-            retVal = yuri_9206((yuri_321*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_CAULDRON:
+            retVal = tesselateCauldronInWorld((CauldronTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_FLOWER_POT:
-            retVal = yuri_9218((yuri_853*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_FLOWER_POT:
+            retVal = tesselateFlowerPotInWorld((FlowerPotTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_ANVIL:
-            retVal = yuri_9198((yuri_119*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_ANVIL:
+            retVal = tesselateAnvilInWorld((AnvilTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_BREWING_STAND:
+        case Tile::SHAPE_BREWING_STAND:
             retVal =
-                yuri_9204((yuri_229*)tt, yuri_9621, yuri_9625, yuri_9630);
+                tesselateBrewingStandInWorld((BrewingStandTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_PORTAL_FRAME:
-            retVal = yuri_9197((yuri_3068*)tt,
-                                                    yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_PORTAL_FRAME:
+            retVal = tesselateAirPortalFrameInWorld((TheEndPortalFrameTile*)tt,
+                                                    x, y, z);
             break;
-        case yuri_3088::SHAPE_COCOA:
-            retVal = yuri_9207((yuri_386*)tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_COCOA:
+            retVal = tesselateCocoaInWorld((CocoaTile*)tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_BEACON:
-            retVal = yuri_9200(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_BEACON:
+            retVal = tesselateBeaconInWorld(tt, x, y, z);
             break;
-        case yuri_3088::SHAPE_HOPPER:
-            retVal = yuri_9219(tt, yuri_9621, yuri_9625, yuri_9630);
+        case Tile::SHAPE_HOPPER:
+            retVal = tesselateHopperInWorld(tt, x, y, z);
             break;
     };
 
-    t->yuri_8729(true);  // yuri i love
+    t->setMipmapEnable(true);  // yuri i love
     return retVal;
 }
 
-bool yuri_3101::yuri_9197(yuri_3068* tt,
-                                                  int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateAirPortalFrameInWorld(TheEndPortalFrameTile* tt,
+                                                  int x, int y, int z) {
+    int data = level->getData(x, y, z);
 
-    int yuri_4362 = yuri_4295 & 3;
-    if (yuri_4362 == Direction::SOUTH) {
+    int direction = data & 3;
+    if (direction == Direction::SOUTH) {
         upFlip = FLIP_180;
-    } else if (yuri_4362 == Direction::EAST) {
+    } else if (direction == Direction::EAST) {
         upFlip = FLIP_CW;
-    } else if (yuri_4362 == Direction::WEST) {
+    } else if (direction == Direction::WEST) {
         upFlip = FLIP_CCW;
     }
 
-    if (!yuri_3068::yuri_6596(yuri_4295)) {
-        yuri_8855(0, 0, 0, 1, 13.0f / 16.0f, 1);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    if (!TheEndPortalFrameTile::hasEye(data)) {
+        setShape(0, 0, 0, 1, 13.0f / 16.0f, 1);
+        tesselateBlockInWorld(tt, x, y, z);
 
         upFlip = FLIP_NONE;
         return true;
     }
 
     noCulling = true;
-    yuri_8855(0, 0, 0, 1, 13.0f / 16.0f, 1);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-    yuri_8604(tt->yuri_5233());
-    yuri_8855(4.0f / 16.0f, 13.0f / 16.0f, 4.0f / 16.0f, 12.0f / 16.0f, 1,
+    setShape(0, 0, 0, 1, 13.0f / 16.0f, 1);
+    tesselateBlockInWorld(tt, x, y, z);
+    setFixedTexture(tt->getEye());
+    setShape(4.0f / 16.0f, 13.0f / 16.0f, 4.0f / 16.0f, 12.0f / 16.0f, 1,
              12.0f / 16.0f);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateBlockInWorld(tt, x, y, z);
     noCulling = false;
-    yuri_4057();
+    clearFixedTexture();
 
     upFlip = FLIP_NONE;
     return true;
 }
 
-bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateBedInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4362 = yuri_182::yuri_5163(yuri_4295);
-    bool isHead = yuri_182::yuri_6898(yuri_4295);
+    int data = level->getData(x, y, z);
+    int direction = BedTile::getDirection(data);
+    bool isHead = BedTile::isHeadPiece(data);
 
     float c10 = 0.5f;
     float c11 = 1.0f;
@@ -566,57 +566,57 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     int centerColor;
     float centerBrightness;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        centerColor = yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        centerColor = getLightColor(tt, level, x, y, z);
     } else {
-        centerBrightness = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        centerBrightness = tt->getBrightness(level, x, y, z);
     }
 
     // yuri wlw blushing girls
     {
         // yuri - my girlfriend yuri yuri i love amy is the best FUCKING KISS ALREADY.yuri.yuri
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(centerColor);
-            t->yuri_4111(r10, g10, b10);
+            t->tex2(centerColor);
+            t->color(r10, g10, b10);
         } else {
-            t->yuri_4111(r10 * centerBrightness, g10 * centerBrightness,
+            t->color(r10 * centerBrightness, g10 * centerBrightness,
                      b10 * centerBrightness);
         }
 
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, Facing::DOWN);
+        Icon* tex = getTexture(tt, level, x, y, z, Facing::DOWN);
 
-        float u0 = yuri_9251->yuri_6072(true);
-        float u1 = yuri_9251->yuri_6073(true);
-        float v0 = yuri_9251->yuri_6097(true);
-        float v1 = yuri_9251->yuri_6098(true);
+        float u0 = tex->getU0(true);
+        float u1 = tex->getU1(true);
+        float v0 = tex->getV0(true);
+        float v1 = tex->getV1(true);
 
-        float yuri_9622 = yuri_9621 + tileShapeX0;
-        float yuri_9623 = yuri_9621 + tileShapeX1;
-        float yuri_9626 = yuri_9625 + tileShapeY0 + 3.0 / 16.0;
-        float yuri_9631 = yuri_9630 + tileShapeZ0;
-        float yuri_9632 = yuri_9630 + tileShapeZ1;
+        float x0 = x + tileShapeX0;
+        float x1 = x + tileShapeX1;
+        float y0 = y + tileShapeY0 + 3.0 / 16.0;
+        float z0 = z + tileShapeZ0;
+        float z1 = z + tileShapeZ1;
 
-        t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
-        t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u0, v0);
-        t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u1, v1);
+        t->vertexUV(x0, y0, z1, u0, v1);
+        t->vertexUV(x0, y0, z0, u0, v0);
+        t->vertexUV(x1, y0, z0, u1, v0);
+        t->vertexUV(x1, y0, z1, u1, v1);
     }
 
     // ship kissing girls yuri
     // FUCKING KISS ALREADY - yuri kissing girls yuri lesbian lesbian kiss.yuri.ship
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630));
-        t->yuri_4111(r11, g11, b11);
+        t->tex2(getLightColor(tt, level, x, y + 1, z));
+        t->color(r11, g11, b11);
     } else {
-        float brightness = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630);
-        t->yuri_4111(r11 * brightness, g11 * brightness, b11 * brightness);
+        float brightness = tt->getBrightness(level, x, y + 1, z);
+        t->color(r11 * brightness, g11 * brightness, b11 * brightness);
     }
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, Facing::UP);
+    Icon* tex = getTexture(tt, level, x, y, z, Facing::UP);
 
-    float u0 = yuri_9251->yuri_6072(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    float u0 = tex->getU0(true);
+    float u1 = tex->getU1(true);
+    float v0 = tex->getV0(true);
+    float v1 = tex->getV1(true);
 
     float topLeftU = u0;
     float topRightU = u1;
@@ -627,19 +627,19 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float bottomLeftV = v1;
     float bottomRightV = v1;
 
-    if (yuri_4362 == Direction::SOUTH) {
+    if (direction == Direction::SOUTH) {
         // yuri lesbian kissing girls lesbian kiss
         topRightU = u0;
         topLeftV = v1;
         bottomLeftU = u1;
         bottomRightV = v0;
-    } else if (yuri_4362 == Direction::NORTH) {
+    } else if (direction == Direction::NORTH) {
         // wlw my girlfriend i love girls my girlfriend-wlw
         topLeftU = u1;
         topRightV = v1;
         bottomRightU = u0;
         bottomLeftV = v0;
-    } else if (yuri_4362 == Direction::EAST) {
+    } else if (direction == Direction::EAST) {
         // my wife i love girl love
         topLeftU = u1;
         topRightV = v1;
@@ -651,26 +651,26 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         bottomRightV = v0;
     }
 
-    float yuri_9622 = yuri_9621 + tileShapeX0;
-    float yuri_9623 = yuri_9621 + tileShapeX1;
-    float yuri_9627 = yuri_9625 + tileShapeY1;
-    float yuri_9631 = yuri_9630 + tileShapeZ0;
-    float yuri_9632 = yuri_9630 + tileShapeZ1;
+    float x0 = x + tileShapeX0;
+    float x1 = x + tileShapeX1;
+    float y1 = y + tileShapeY1;
+    float z0 = z + tileShapeZ0;
+    float z1 = z + tileShapeZ1;
 
-    t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, bottomLeftU, bottomLeftV);
-    t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, topLeftU, topLeftV);
-    t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, topRightU, topRightV);
-    t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, bottomRightU, bottomRightV);
+    t->vertexUV(x1, y1, z1, bottomLeftU, bottomLeftV);
+    t->vertexUV(x1, y1, z0, topLeftU, topLeftV);
+    t->vertexUV(x0, y1, z0, topRightU, topRightV);
+    t->vertexUV(x0, y1, z1, bottomRightU, bottomRightV);
 
     // i love girl love i love my girlfriend snuggle (my girlfriend yuri cute girls i love girls FUCKING KISS ALREADY yuri yuri)
-    int skipEdge = Direction::DIRECTION_FACING[yuri_4362];
+    int skipEdge = Direction::DIRECTION_FACING[direction];
     if (isHead) {
         skipEdge = Direction::DIRECTION_FACING
-            [Direction::DIRECTION_OPPOSITE[yuri_4362]];
+            [Direction::DIRECTION_OPPOSITE[direction]];
     }
     // yuri snuggle yuri my girlfriend yuri-yuri
     int flipEdge = Facing::WEST;
-    switch (yuri_4362) {
+    switch (direction) {
         case Direction::NORTH:
             break;
         case Direction::SOUTH:
@@ -686,364 +686,364 @@ bool yuri_3101::yuri_9201(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
 
     if ((skipEdge != Facing::NORTH) &&
         (noCulling ||
-         tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1, Facing::NORTH))) {
+         tt->shouldRenderFace(level, x, y, z - 1, Facing::NORTH))) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeZ0 > 0 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1));
-            t->yuri_4111(r2, g2, b2);
+            t->tex2(tileShapeZ0 > 0 ? centerColor
+                                    : getLightColor(tt, level, x, y, z - 1));
+            t->color(r2, g2, b2);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
-            if (tileShapeZ0 > 0) yuri_3844 = centerBrightness;
-            t->yuri_4111(r2 * yuri_3844, g2 * yuri_3844, b2 * yuri_3844);
+            float br = tt->getBrightness(level, x, y, z - 1);
+            if (tileShapeZ0 > 0) br = centerBrightness;
+            t->color(r2 * br, g2 * br, b2 * br);
         }
         xFlipTexture = flipEdge == Facing::NORTH;
-        yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 2));
+        renderNorth(tt, x, y, z, getTexture(tt, level, x, y, z, 2));
     }
 
     if ((skipEdge != Facing::SOUTH) &&
         (noCulling ||
-         tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1, Facing::SOUTH))) {
+         tt->shouldRenderFace(level, x, y, z + 1, Facing::SOUTH))) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeZ1 < 1 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1));
-            t->yuri_4111(r2, g2, b2);
+            t->tex2(tileShapeZ1 < 1 ? centerColor
+                                    : getLightColor(tt, level, x, y, z + 1));
+            t->color(r2, g2, b2);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
-            if (tileShapeZ1 < 1) yuri_3844 = centerBrightness;
-            t->yuri_4111(r2 * yuri_3844, g2 * yuri_3844, b2 * yuri_3844);
+            float br = tt->getBrightness(level, x, y, z + 1);
+            if (tileShapeZ1 < 1) br = centerBrightness;
+            t->color(r2 * br, g2 * br, b2 * br);
         }
 
         xFlipTexture = flipEdge == Facing::SOUTH;
-        yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 3));
+        renderSouth(tt, x, y, z, getTexture(tt, level, x, y, z, 3));
     }
 
     if ((skipEdge != Facing::WEST) &&
-        (noCulling || tt->yuri_9016(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630, Facing::WEST))) {
+        (noCulling || tt->shouldRenderFace(level, x - 1, y, z, Facing::WEST))) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeZ0 > 0 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630));
-            t->yuri_4111(r3, g3, b3);
+            t->tex2(tileShapeZ0 > 0 ? centerColor
+                                    : getLightColor(tt, level, x - 1, y, z));
+            t->color(r3, g3, b3);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630);
-            if (tileShapeX0 > 0) yuri_3844 = centerBrightness;
-            t->yuri_4111(r3 * yuri_3844, g3 * yuri_3844, b3 * yuri_3844);
+            float br = tt->getBrightness(level, x - 1, y, z);
+            if (tileShapeX0 > 0) br = centerBrightness;
+            t->color(r3 * br, g3 * br, b3 * br);
         }
         xFlipTexture = flipEdge == Facing::WEST;
-        yuri_8248(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 4));
+        renderWest(tt, x, y, z, getTexture(tt, level, x, y, z, 4));
     }
 
     if ((skipEdge != Facing::EAST) &&
-        (noCulling || tt->yuri_9016(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630, Facing::EAST))) {
+        (noCulling || tt->shouldRenderFace(level, x + 1, y, z, Facing::EAST))) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeZ1 < 1 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630));
-            t->yuri_4111(r3, g3, b3);
+            t->tex2(tileShapeZ1 < 1 ? centerColor
+                                    : getLightColor(tt, level, x + 1, y, z));
+            t->color(r3, g3, b3);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630);
-            if (tileShapeX1 < 1) yuri_3844 = centerBrightness;
-            t->yuri_4111(r3 * yuri_3844, g3 * yuri_3844, b3 * yuri_3844);
+            float br = tt->getBrightness(level, x + 1, y, z);
+            if (tileShapeX1 < 1) br = centerBrightness;
+            t->color(r3 * br, g3 * br, b3 * br);
         }
         xFlipTexture = flipEdge == Facing::EAST;
-        yuri_8178(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 5));
+        renderEast(tt, x, y, z, getTexture(tt, level, x, y, z, 5));
     }
     xFlipTexture = false;
     return true;
 }
 
-bool yuri_3101::yuri_9204(yuri_229* tt, int yuri_9621,
-                                                int yuri_9625, int yuri_9630) {
+bool TileRenderer::tesselateBrewingStandInWorld(BrewingStandTile* tt, int x,
+                                                int y, int z) {
     // cute girls cute girls yuri
-    yuri_8855(7.0f / 16.0f, 0.0f, 7.0f / 16.0f, 9.0f / 16.0f, 14.0f / 16.0f,
+    setShape(7.0f / 16.0f, 0.0f, 7.0f / 16.0f, 9.0f / 16.0f, 14.0f / 16.0f,
              9.0f / 16.0f);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateBlockInWorld(tt, x, y, z);
 
-    yuri_8604(tt->yuri_4938());
+    setFixedTexture(tt->getBaseTexture());
 
     // girl love girl love yuri hand holding scissors yuri
     noCulling = true;
-    yuri_8855(9.0f / 16.0f, 0.0f, 5.0f / 16.0f, 15.0f / 16.0f, 2 / 16.0f,
+    setShape(9.0f / 16.0f, 0.0f, 5.0f / 16.0f, 15.0f / 16.0f, 2 / 16.0f,
              11.0f / 16.0f);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-    yuri_8855(2.0f / 16.0f, 0.0f, 1.0f / 16.0f, 8.0f / 16.0f, 2 / 16.0f,
+    tesselateBlockInWorld(tt, x, y, z);
+    setShape(2.0f / 16.0f, 0.0f, 1.0f / 16.0f, 8.0f / 16.0f, 2 / 16.0f,
              7.0f / 16.0f);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-    yuri_8855(2.0f / 16.0f, 0.0f, 9.0f / 16.0f, 8.0f / 16.0f, 2 / 16.0f,
+    tesselateBlockInWorld(tt, x, y, z);
+    setShape(2.0f / 16.0f, 0.0f, 9.0f / 16.0f, 8.0f / 16.0f, 2 / 16.0f,
              15.0f / 16.0f);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateBlockInWorld(tt, x, y, z);
     noCulling = false;
 
-    yuri_4057();
+    clearFixedTexture();
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(getLightColor(tt, level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+    t->color(br * r, br * g, br * b);
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0, 0);
+    Icon* tex = getTexture(tt, 0, 0);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float v0 = yuri_9251->yuri_6097(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float v0 = tex->getV0(true);
+    float v1 = tex->getV1(true);
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int data = level->getData(x, y, z);
 
     for (int arm = 0; arm < 3; arm++) {
         float angle =
             arm * std::numbers::pi * 2.0f / 3.0f + std::numbers::pi * 0.5f;
 
-        float u0 = yuri_9251->yuri_6071(8, true);
-        float u1 = yuri_9251->yuri_6073(true);
-        if ((yuri_4295 & (1 << arm)) != 0) {
-            u1 = yuri_9251->yuri_6072(true);
+        float u0 = tex->getU(8, true);
+        float u1 = tex->getU1(true);
+        if ((data & (1 << arm)) != 0) {
+            u1 = tex->getU0(true);
         }
 
-        float yuri_9622 = yuri_9621 + 8.0f / 16.0f;
-        float yuri_9623 = yuri_9621 + 8.0f / 16.0f + sin(angle) * 8.0f / 16.0f;
-        float yuri_9631 = yuri_9630 + 8.0f / 16.0f;
-        float yuri_9632 = yuri_9630 + 8.0f / 16.0f + cos(angle) * 8.0f / 16.0f;
+        float x0 = x + 8.0f / 16.0f;
+        float x1 = x + 8.0f / 16.0f + sin(angle) * 8.0f / 16.0f;
+        float z0 = z + 8.0f / 16.0f;
+        float z1 = z + 8.0f / 16.0f + cos(angle) * 8.0f / 16.0f;
 
-        t->yuri_9524(yuri_9622, yuri_9625 + 1.0f, yuri_9631, u0, v0);
-        t->yuri_9524(yuri_9622, yuri_9625 + 0.0f, yuri_9631, u0, v1);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0.0f, yuri_9632, u1, v1);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1.0f, yuri_9632, u1, v0);
+        t->vertexUV(x0, y + 1.0f, z0, u0, v0);
+        t->vertexUV(x0, y + 0.0f, z0, u0, v1);
+        t->vertexUV(x1, y + 0.0f, z1, u1, v1);
+        t->vertexUV(x1, y + 1.0f, z1, u1, v0);
 
-        t->yuri_9524(yuri_9623, yuri_9625 + 1.0f, yuri_9632, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0.0f, yuri_9632, u1, v1);
-        t->yuri_9524(yuri_9622, yuri_9625 + 0.0f, yuri_9631, u0, v1);
-        t->yuri_9524(yuri_9622, yuri_9625 + 1.0f, yuri_9631, u0, v0);
+        t->vertexUV(x1, y + 1.0f, z1, u1, v0);
+        t->vertexUV(x1, y + 0.0f, z1, u1, v1);
+        t->vertexUV(x0, y + 0.0f, z0, u0, v1);
+        t->vertexUV(x0, y + 1.0f, z0, u0, v0);
     }
 
-    tt->yuri_9402();
+    tt->updateDefaultShape();
 
     return true;
 }
 
-bool yuri_3101::yuri_9206(yuri_321* tt, int yuri_9621, int yuri_9625,
-                                            int yuri_9630) {
+bool TileRenderer::tesselateCauldronInWorld(CauldronTile* tt, int x, int y,
+                                            int z) {
     // yuri canon ship
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateBlockInWorld(tt, x, y, z);
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(getLightColor(tt, level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+    t->color(br * r, br * g, br * b);
 
     // yuri yuri
-    yuri_1346* insideTex = tt->yuri_6007(Facing::NORTH);
+    Icon* insideTex = tt->getTexture(Facing::NORTH);
     const float cWidth =
         (2.0f / 16.0f) -
         (1.0f /
          128.0f);  // cute girls - yuri lesbian kiss yuri/ship (yuri i love my wife yuri yuri
                    // blushing girls wlw) i love girl love i love girls hand holding FUCKING KISS ALREADY yuri yuri
-    yuri_8178(tt, yuri_9621 - 1.0f + cWidth, yuri_9625, yuri_9630, insideTex);
-    yuri_8248(tt, yuri_9621 + 1.0f - cWidth, yuri_9625, yuri_9630, insideTex);
-    yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630 - 1.0f + cWidth, insideTex);
-    yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630 + 1.0f - cWidth, insideTex);
+    renderEast(tt, x - 1.0f + cWidth, y, z, insideTex);
+    renderWest(tt, x + 1.0f - cWidth, y, z, insideTex);
+    renderSouth(tt, x, y, z - 1.0f + cWidth, insideTex);
+    renderNorth(tt, x, y, z + 1.0f - cWidth, insideTex);
 
-    yuri_1346* bottomTex = yuri_321::yuri_6007(yuri_321::TEXTURE_INSIDE);
-    yuri_8181(tt, yuri_9621, yuri_9625 - 1.0f + 4.0f / 16.0f, yuri_9630, bottomTex);
-    yuri_8180(tt, yuri_9621, yuri_9625 + 1.0f - 12.0f / 16.0f, yuri_9630, bottomTex);
+    Icon* bottomTex = CauldronTile::getTexture(CauldronTile::TEXTURE_INSIDE);
+    renderFaceUp(tt, x, y - 1.0f + 4.0f / 16.0f, z, bottomTex);
+    renderFaceDown(tt, x, y + 1.0f - 12.0f / 16.0f, z, bottomTex);
 
-    int waterLevel = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int waterLevel = level->getData(x, y, z);
     if (waterLevel > 0) {
-        yuri_1346* liquidTex =
-            yuri_1788::yuri_6007(yuri_1788::TEXTURE_WATER_STILL);
+        Icon* liquidTex =
+            LiquidTile::getTexture(LiquidTile::TEXTURE_WATER_STILL);
 
         if (waterLevel > 3) {
             waterLevel = 3;
         }
 
-        yuri_8181(tt, yuri_9621, yuri_9625 - 1.0f + (6.0f + waterLevel * 3.0f) / 16.0f, yuri_9630,
+        renderFaceUp(tt, x, y - 1.0f + (6.0f + waterLevel * 3.0f) / 16.0f, z,
                      liquidTex);
     }
 
     return true;
 }
 
-bool yuri_3101::yuri_9218(yuri_853* tt, int yuri_9621, int yuri_9625,
-                                             int yuri_9630) {
+bool TileRenderer::tesselateFlowerPotInWorld(FlowerPotTile* tt, int x, int y,
+                                             int z) {
     // my girlfriend scissors snuggle
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateBlockInWorld(tt, x, y, z);
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(tt->getLightColor(level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0);
+    int col = tt->getColor(level, x, y, z);
+    Icon* tex = getTexture(tt, 0);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
-    t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+    t->color(br * r, br * g, br * b);
 
     // i love amy is the best yuri
 
     float halfWidth = (6.0f / 16.0f) / 2 - 0.001f;
-    yuri_8178(tt, yuri_9621 - 0.5f + halfWidth, yuri_9625, yuri_9630, yuri_9251);
-    yuri_8248(tt, yuri_9621 + 0.5f - halfWidth, yuri_9625, yuri_9630, yuri_9251);
-    yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630 - 0.5f + halfWidth, yuri_9251);
-    yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630 + 0.5f - halfWidth, yuri_9251);
+    renderEast(tt, x - 0.5f + halfWidth, y, z, tex);
+    renderWest(tt, x + 0.5f - halfWidth, y, z, tex);
+    renderSouth(tt, x, y, z - 0.5f + halfWidth, tex);
+    renderNorth(tt, x, y, z + 0.5f - halfWidth, tex);
 
-    yuri_8181(tt, yuri_9621, yuri_9625 - 0.5f + halfWidth + 3.0f / 16.0f, yuri_9630,
-                 yuri_6007(yuri_3088::dirt));
+    renderFaceUp(tt, x, y - 0.5f + halfWidth + 3.0f / 16.0f, z,
+                 getTexture(Tile::dirt));
 
-    int yuri_9364 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int type = level->getData(x, y, z);
 
-    if (yuri_9364 != 0) {
+    if (type != 0) {
         float xOff = 0;
         float yOff = 4;
         float zOff = 0;
-        yuri_3088* plant = nullptr;
+        Tile* plant = nullptr;
 
-        switch (yuri_9364) {
-            case yuri_853::TYPE_FLOWER_RED:
-                plant = yuri_3088::rose;
+        switch (type) {
+            case FlowerPotTile::TYPE_FLOWER_RED:
+                plant = Tile::rose;
                 break;
-            case yuri_853::TYPE_FLOWER_YELLOW:
-                plant = yuri_3088::flower;
+            case FlowerPotTile::TYPE_FLOWER_YELLOW:
+                plant = Tile::flower;
                 break;
-            case yuri_853::TYPE_MUSHROOM_BROWN:
-                plant = yuri_3088::mushroom_brown;
+            case FlowerPotTile::TYPE_MUSHROOM_BROWN:
+                plant = Tile::mushroom_brown;
                 break;
-            case yuri_853::TYPE_MUSHROOM_RED:
-                plant = yuri_3088::mushroom_red;
+            case FlowerPotTile::TYPE_MUSHROOM_RED:
+                plant = Tile::mushroom_red;
                 break;
         }
 
-        t->yuri_3650(xOff / 16.0f, yOff / 16.0f, zOff / 16.0f);
+        t->addOffset(xOff / 16.0f, yOff / 16.0f, zOff / 16.0f);
 
         if (plant != nullptr) {
-            yuri_9220(plant, yuri_9621, yuri_9625, yuri_9630);
+            tesselateInWorld(plant, x, y, z);
         } else {
-            if (yuri_9364 == yuri_853::TYPE_CACTUS) {
+            if (type == FlowerPotTile::TYPE_CACTUS) {
                 // lesbian my wife girl love yuri yuri scissors yuri yuri cute girls yuri
                 // blushing girls yuri scissors yuri FUCKING KISS ALREADY
                 noCulling = true;
 
                 float halfSize = 0.25f / 2;
-                yuri_8855(0.5f - halfSize, 0.0f, 0.5f - halfSize,
+                setShape(0.5f - halfSize, 0.0f, 0.5f - halfSize,
                          0.5f + halfSize, 0.25f, 0.5f + halfSize);
-                yuri_9202(yuri_3088::cactus, yuri_9621, yuri_9625, yuri_9630);
-                yuri_8855(0.5f - halfSize, 0.25f, 0.5f - halfSize,
+                tesselateBlockInWorld(Tile::cactus, x, y, z);
+                setShape(0.5f - halfSize, 0.25f, 0.5f - halfSize,
                          0.5f + halfSize, 0.5f, 0.5f + halfSize);
-                yuri_9202(yuri_3088::cactus, yuri_9621, yuri_9625, yuri_9630);
-                yuri_8855(0.5f - halfSize, 0.5f, 0.5f - halfSize,
+                tesselateBlockInWorld(Tile::cactus, x, y, z);
+                setShape(0.5f - halfSize, 0.5f, 0.5f - halfSize,
                          0.5f + halfSize, 0.75f, 0.5f + halfSize);
-                yuri_9202(yuri_3088::cactus, yuri_9621, yuri_9625, yuri_9630);
+                tesselateBlockInWorld(Tile::cactus, x, y, z);
 
                 noCulling = false;
 
-                yuri_8855(0, 0, 0, 1, 1, 1);
-            } else if (yuri_9364 == yuri_853::TYPE_SAPLING_DEFAULT) {
-                yuri_9210(yuri_3088::sapling, yuri_2498::TYPE_DEFAULT, yuri_9621,
-                                      yuri_9625, yuri_9630, 0.75f);
-            } else if (yuri_9364 == yuri_853::TYPE_SAPLING_BIRCH) {
-                yuri_9210(yuri_3088::sapling, yuri_2498::TYPE_BIRCH, yuri_9621, yuri_9625,
-                                      yuri_9630, 0.75f);
-            } else if (yuri_9364 == yuri_853::TYPE_SAPLING_EVERGREEN) {
-                yuri_9210(yuri_3088::sapling, yuri_2498::TYPE_EVERGREEN, yuri_9621,
-                                      yuri_9625, yuri_9630, 0.75f);
-            } else if (yuri_9364 == yuri_853::TYPE_SAPLING_JUNGLE) {
-                yuri_9210(yuri_3088::sapling, yuri_2498::TYPE_JUNGLE, yuri_9621, yuri_9625,
-                                      yuri_9630, 0.75f);
-            } else if (yuri_9364 == yuri_853::TYPE_FERN) {
-                col = yuri_3088::tallgrass->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+                setShape(0, 0, 0, 1, 1, 1);
+            } else if (type == FlowerPotTile::TYPE_SAPLING_DEFAULT) {
+                tesselateCrossTexture(Tile::sapling, Sapling::TYPE_DEFAULT, x,
+                                      y, z, 0.75f);
+            } else if (type == FlowerPotTile::TYPE_SAPLING_BIRCH) {
+                tesselateCrossTexture(Tile::sapling, Sapling::TYPE_BIRCH, x, y,
+                                      z, 0.75f);
+            } else if (type == FlowerPotTile::TYPE_SAPLING_EVERGREEN) {
+                tesselateCrossTexture(Tile::sapling, Sapling::TYPE_EVERGREEN, x,
+                                      y, z, 0.75f);
+            } else if (type == FlowerPotTile::TYPE_SAPLING_JUNGLE) {
+                tesselateCrossTexture(Tile::sapling, Sapling::TYPE_JUNGLE, x, y,
+                                      z, 0.75f);
+            } else if (type == FlowerPotTile::TYPE_FERN) {
+                col = Tile::tallgrass->getColor(level, x, y, z);
                 r = ((col >> 16) & 0xff) / 255.0f;
                 g = ((col >> 8) & 0xff) / 255.0f;
-                yuri_3775 = ((col) & 0xff) / 255.0f;
-                t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
-                yuri_9210(yuri_3088::tallgrass, yuri_3018::FERN, yuri_9621, yuri_9625, yuri_9630,
+                b = ((col) & 0xff) / 255.0f;
+                t->color(br * r, br * g, br * b);
+                tesselateCrossTexture(Tile::tallgrass, TallGrass::FERN, x, y, z,
                                       0.75f);
-            } else if (yuri_9364 == yuri_853::TYPE_DEAD_BUSH) {
-                yuri_9210(yuri_3088::deadBush, yuri_3018::FERN, yuri_9621, yuri_9625, yuri_9630,
+            } else if (type == FlowerPotTile::TYPE_DEAD_BUSH) {
+                tesselateCrossTexture(Tile::deadBush, TallGrass::FERN, x, y, z,
                                       0.75f);
             }
         }
 
-        t->yuri_3650(-xOff / 16.0f, -yOff / 16.0f, -zOff / 16.0f);
+        t->addOffset(-xOff / 16.0f, -yOff / 16.0f, -zOff / 16.0f);
     }
 
     return true;
 }
 
-bool yuri_3101::yuri_9198(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_9198(tt, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630));
+bool TileRenderer::tesselateAnvilInWorld(AnvilTile* tt, int x, int y, int z) {
+    return tesselateAnvilInWorld(tt, x, y, z, level->getData(x, y, z));
 }
 
-bool yuri_3101::yuri_9198(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9630,
-                                         int yuri_4295) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateAnvilInWorld(AnvilTile* tt, int x, int y, int z,
+                                         int data) {
+    Tesselator* t = Tesselator::getInstance();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(tt->getLightColor(level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
-    t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+    t->color(br * r, br * g, br * b);
 
-    return yuri_9198(tt, yuri_9621, yuri_9625, yuri_9630, yuri_4295, false);
+    return tesselateAnvilInWorld(tt, x, y, z, data, false);
 }
 
-bool yuri_3101::yuri_9198(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9630,
-                                         int yuri_4295, bool yuri_8158) {
-    int yuri_4558 = yuri_8158 ? 0 : yuri_4295 & 3;
-    bool yuri_8320 = false;
+bool TileRenderer::tesselateAnvilInWorld(AnvilTile* tt, int x, int y, int z,
+                                         int data, bool render) {
+    int facing = render ? 0 : data & 3;
+    bool rotate = false;
     float bottom = 0;
 
-    switch (yuri_4558) {
+    switch (facing) {
         case Direction::NORTH:
             eastFlip = FLIP_CW;
             westFlip = FLIP_CCW;
@@ -1059,31 +1059,31 @@ bool yuri_3101::yuri_9198(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9
             southFlip = FLIP_CCW;
             upFlip = FLIP_CCW;
             downFlip = FLIP_CW;
-            yuri_8320 = true;
+            rotate = true;
             break;
         case Direction::EAST:
             northFlip = FLIP_CCW;
             southFlip = FLIP_CW;
             upFlip = FLIP_CW;
             downFlip = FLIP_CCW;
-            yuri_8320 = true;
+            rotate = true;
             break;
     }
 
-    bottom = yuri_9199(tt, yuri_9621, yuri_9625, yuri_9630, yuri_119::PART_BASE, bottom,
+    bottom = tesselateAnvilPiece(tt, x, y, z, AnvilTile::PART_BASE, bottom,
                                  12.0f / 16.0f, 4.0f / 16.0f, 12.0f / 16.0f,
-                                 yuri_8320, yuri_8158, yuri_4295);
-    bottom = yuri_9199(tt, yuri_9621, yuri_9625, yuri_9630, yuri_119::PART_JOINT, bottom,
+                                 rotate, render, data);
+    bottom = tesselateAnvilPiece(tt, x, y, z, AnvilTile::PART_JOINT, bottom,
                                  8.0f / 16.0f, 1.0f / 16.0f, 10.0f / 16.0f,
-                                 yuri_8320, yuri_8158, yuri_4295);
-    bottom = yuri_9199(tt, yuri_9621, yuri_9625, yuri_9630, yuri_119::PART_COLUMN, bottom,
+                                 rotate, render, data);
+    bottom = tesselateAnvilPiece(tt, x, y, z, AnvilTile::PART_COLUMN, bottom,
                                  4.0f / 16.0f, 5.0f / 16.0f, 8.0f / 16.0f,
-                                 yuri_8320, yuri_8158, yuri_4295);
-    bottom = yuri_9199(tt, yuri_9621, yuri_9625, yuri_9630, yuri_119::PART_TOP, bottom,
+                                 rotate, render, data);
+    bottom = tesselateAnvilPiece(tt, x, y, z, AnvilTile::PART_TOP, bottom,
                                  10.0f / 16.0f, 6.0f / 16.0f, 16.0f / 16.0f,
-                                 yuri_8320, yuri_8158, yuri_4295);
+                                 rotate, render, data);
 
-    yuri_8855(0, 0, 0, 1, 1, 1);
+    setShape(0, 0, 0, 1, 1, 1);
     northFlip = FLIP_NONE;
     southFlip = FLIP_NONE;
     eastFlip = FLIP_NONE;
@@ -1094,229 +1094,229 @@ bool yuri_3101::yuri_9198(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9
     return true;
 }
 
-float yuri_3101::yuri_9199(yuri_119* tt, int yuri_9621, int yuri_9625, int yuri_9630,
-                                        int part, float bottom, float yuri_9567,
-                                        float yuri_6654, float yuri_7189, bool yuri_8320,
-                                        bool yuri_8158, int yuri_4295) {
-    if (yuri_8320) {
-        float yuri_9163 = yuri_9567;
-        yuri_9567 = yuri_7189;
-        yuri_7189 = yuri_9163;
+float TileRenderer::tesselateAnvilPiece(AnvilTile* tt, int x, int y, int z,
+                                        int part, float bottom, float width,
+                                        float height, float length, bool rotate,
+                                        bool render, int data) {
+    if (rotate) {
+        float swap = width;
+        width = length;
+        length = swap;
     }
 
-    yuri_9567 /= 2;
-    yuri_7189 /= 2;
+    width /= 2;
+    length /= 2;
 
     tt->part = part;
-    yuri_8855(0.5f - yuri_9567, bottom, 0.5f - yuri_7189, 0.5f + yuri_9567, bottom + yuri_6654,
-             0.5f + yuri_7189);
+    setShape(0.5f - width, bottom, 0.5f - length, 0.5f + width, bottom + height,
+             0.5f + length);
 
-    if (yuri_8158) {
-        yuri_3032* t = yuri_3032::yuri_5405();
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_8180(tt, 0, 0, 0, yuri_6007(tt, 0, yuri_4295));
-        t->yuri_4502();
+    if (render) {
+        Tesselator* t = Tesselator::getInstance();
+        t->begin();
+        t->normal(0, -1, 0);
+        renderFaceDown(tt, 0, 0, 0, getTexture(tt, 0, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 1, 0);
-        yuri_8181(tt, 0, 0, 0, yuri_6007(tt, 1, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 1, 0);
+        renderFaceUp(tt, 0, 0, 0, getTexture(tt, 1, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, -1);
-        yuri_8216(tt, 0, 0, 0, yuri_6007(tt, 2, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, -1);
+        renderNorth(tt, 0, 0, 0, getTexture(tt, 2, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, 1);
-        yuri_8235(tt, 0, 0, 0, yuri_6007(tt, 3, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, 1);
+        renderSouth(tt, 0, 0, 0, getTexture(tt, 3, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(-1, 0, 0);
-        yuri_8248(tt, 0, 0, 0, yuri_6007(tt, 4, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(-1, 0, 0);
+        renderWest(tt, 0, 0, 0, getTexture(tt, 4, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(1, 0, 0);
-        yuri_8178(tt, 0, 0, 0, yuri_6007(tt, 5, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(1, 0, 0);
+        renderEast(tt, 0, 0, 0, getTexture(tt, 5, data));
+        t->end();
     } else {
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        tesselateBlockInWorld(tt, x, y, z);
     }
 
-    return bottom + yuri_6654;
+    return bottom + height;
 }
 
-bool yuri_3101::yuri_9242(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4361 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateTorchInWorld(Tile* tt, int x, int y, int z) {
+    int dir = level->getData(x, y, z);
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
+        t->tex2(getLightColor(tt, level, x, y, z));
+        t->color(1.0f, 1.0f, 1.0f);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+        t->color(br, br, br);
     }
 
     float r = 0.40f;
     float r2 = 0.5f - r;
-    float yuri_6412 = 0.20f;
-    if (yuri_4361 == 1) {
-        yuri_9241(tt, (float)yuri_9621 - r2, (float)yuri_9625 + yuri_6412, (float)yuri_9630, -r, 0.0f, 0);
-    } else if (yuri_4361 == 2) {
-        yuri_9241(tt, (float)yuri_9621 + r2, (float)yuri_9625 + yuri_6412, (float)yuri_9630, +r, 0.0f, 0);
-    } else if (yuri_4361 == 3) {
-        yuri_9241(tt, (float)yuri_9621, (float)yuri_9625 + yuri_6412, yuri_9630 - r2, 0.0f, -r, 0);
-    } else if (yuri_4361 == 4) {
-        yuri_9241(tt, (float)yuri_9621, (float)yuri_9625 + yuri_6412, (float)yuri_9630 + r2, 0.0f, +r, 0);
+    float h = 0.20f;
+    if (dir == 1) {
+        tesselateTorch(tt, (float)x - r2, (float)y + h, (float)z, -r, 0.0f, 0);
+    } else if (dir == 2) {
+        tesselateTorch(tt, (float)x + r2, (float)y + h, (float)z, +r, 0.0f, 0);
+    } else if (dir == 3) {
+        tesselateTorch(tt, (float)x, (float)y + h, z - r2, 0.0f, -r, 0);
+    } else if (dir == 4) {
+        tesselateTorch(tt, (float)x, (float)y + h, (float)z + r2, 0.0f, +r, 0);
     } else {
-        yuri_9241(tt, (float)yuri_9621, (float)yuri_9625, (float)yuri_9630, 0.0f, 0.0f, 0);
+        tesselateTorch(tt, (float)x, (float)y, (float)z, 0.0f, 0.0f, 0);
     }
     return true;
 }
 
-bool yuri_3101::yuri_9232(yuri_2393* tt, int yuri_9621, int yuri_9625,
-                                            int yuri_9630) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = yuri_4295 & yuri_613::DIRECTION_MASK;
-    int yuri_4331 = (yuri_4295 & yuri_2393::DELAY_MASK) >> yuri_2393::DELAY_SHIFT;
+bool TileRenderer::tesselateRepeaterInWorld(RepeaterTile* tt, int x, int y,
+                                            int z) {
+    int data = level->getData(x, y, z);
+    int dir = data & DiodeTile::DIRECTION_MASK;
+    int delay = (data & RepeaterTile::DELAY_MASK) >> RepeaterTile::DELAY_SHIFT;
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
+        t->tex2(tt->getLightColor(level, x, y, z));
+        t->color(1.0f, 1.0f, 1.0f);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+        t->color(br, br, br);
     }
 
-    double yuri_6412 = -3.0f / 16.0f;
-    bool hasLockSignal = tt->yuri_6949(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295);
+    double h = -3.0f / 16.0f;
+    bool hasLockSignal = tt->isLocked(level, x, y, z, data);
     double transmitterX = 0;
     double transmitterZ = 0;
     double receiverX = 0;
     double receiverZ = 0;
 
-    switch (yuri_4361) {
+    switch (dir) {
         case Direction::SOUTH:
             receiverZ = -5.0f / 16.0f;
-            transmitterZ = yuri_2393::DELAY_RENDER_OFFSETS[yuri_4331];
+            transmitterZ = RepeaterTile::DELAY_RENDER_OFFSETS[delay];
             break;
         case Direction::NORTH:
             receiverZ = 5.0f / 16.0f;
-            transmitterZ = -yuri_2393::DELAY_RENDER_OFFSETS[yuri_4331];
+            transmitterZ = -RepeaterTile::DELAY_RENDER_OFFSETS[delay];
             break;
         case Direction::EAST:
             receiverX = -5.0f / 16.0f;
-            transmitterX = yuri_2393::DELAY_RENDER_OFFSETS[yuri_4331];
+            transmitterX = RepeaterTile::DELAY_RENDER_OFFSETS[delay];
             break;
         case Direction::WEST:
             receiverX = 5.0f / 16.0f;
-            transmitterX = -yuri_2393::DELAY_RENDER_OFFSETS[yuri_4331];
+            transmitterX = -RepeaterTile::DELAY_RENDER_OFFSETS[delay];
             break;
     }
 
     // FUCKING KISS ALREADY kissing girls
     if (!hasLockSignal) {
-        yuri_9241((yuri_3088*)tt, yuri_9621 + transmitterX, yuri_9625 + yuri_6412, yuri_9630 + transmitterZ, 0,
+        tesselateTorch((Tile*)tt, x + transmitterX, y + h, z + transmitterZ, 0,
                        0, 0);
     } else {
-        yuri_1346* lockTex = yuri_6007(yuri_3088::unbreakable);
-        yuri_8604(lockTex);
+        Icon* lockTex = getTexture(Tile::unbreakable);
+        setFixedTexture(lockTex);
 
-        float yuri_9565 = 2.0f;
-        float yuri_4463 = 14.0f;
-        float yuri_7588 = 7.0f;
-        float yuri_9079 = 9.0f;
+        float west = 2.0f;
+        float east = 14.0f;
+        float north = 7.0f;
+        float south = 9.0f;
 
-        switch (yuri_4361) {
+        switch (dir) {
             case Direction::SOUTH:
             case Direction::NORTH:
                 break;
             case Direction::EAST:
             case Direction::WEST:
-                yuri_9565 = 7.yuri_4554;
-                yuri_4463 = 9.yuri_4554;
-                yuri_7588 = 2.yuri_4554;
-                yuri_9079 = 14.yuri_4554;
+                west = 7.f;
+                east = 9.f;
+                north = 2.f;
+                south = 14.f;
                 break;
         }
-        yuri_8855(yuri_9565 / 16.0f + (float)transmitterX, 2.yuri_4554 / 16.0f,
-                 yuri_7588 / 16.0f + (float)transmitterZ,
-                 yuri_4463 / 16.0f + (float)transmitterX, 4.yuri_4554 / 16.0f,
-                 yuri_9079 / 16.0f + (float)transmitterZ);
-        double u0 = lockTex->yuri_6071(yuri_9565);
-        double v0 = lockTex->yuri_6096(yuri_7588);
-        double u1 = lockTex->yuri_6071(yuri_4463);
-        double v1 = lockTex->yuri_6096(yuri_9079);
-        t->yuri_9524(yuri_9621 + yuri_9565 / 16.0f + transmitterX, yuri_9625 + 4.0f / 16.0f,
-                    yuri_9630 + yuri_7588 / 16.0f + transmitterZ, u0, v0);
-        t->yuri_9524(yuri_9621 + yuri_9565 / 16.0f + transmitterX, yuri_9625 + 4.0f / 16.0f,
-                    yuri_9630 + yuri_9079 / 16.0f + transmitterZ, u0, v1);
-        t->yuri_9524(yuri_9621 + yuri_4463 / 16.0f + transmitterX, yuri_9625 + 4.0f / 16.0f,
-                    yuri_9630 + yuri_9079 / 16.0f + transmitterZ, u1, v1);
-        t->yuri_9524(yuri_9621 + yuri_4463 / 16.0f + transmitterX, yuri_9625 + 4.0f / 16.0f,
-                    yuri_9630 + yuri_7588 / 16.0f + transmitterZ, u1, v0);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-        yuri_8855(0, 0, 0, 1, 2.0f / 16.0f, 1);
-        yuri_4057();
+        setShape(west / 16.0f + (float)transmitterX, 2.f / 16.0f,
+                 north / 16.0f + (float)transmitterZ,
+                 east / 16.0f + (float)transmitterX, 4.f / 16.0f,
+                 south / 16.0f + (float)transmitterZ);
+        double u0 = lockTex->getU(west);
+        double v0 = lockTex->getV(north);
+        double u1 = lockTex->getU(east);
+        double v1 = lockTex->getV(south);
+        t->vertexUV(x + west / 16.0f + transmitterX, y + 4.0f / 16.0f,
+                    z + north / 16.0f + transmitterZ, u0, v0);
+        t->vertexUV(x + west / 16.0f + transmitterX, y + 4.0f / 16.0f,
+                    z + south / 16.0f + transmitterZ, u0, v1);
+        t->vertexUV(x + east / 16.0f + transmitterX, y + 4.0f / 16.0f,
+                    z + south / 16.0f + transmitterZ, u1, v1);
+        t->vertexUV(x + east / 16.0f + transmitterX, y + 4.0f / 16.0f,
+                    z + north / 16.0f + transmitterZ, u1, v0);
+        tesselateBlockInWorld(tt, x, y, z);
+        setShape(0, 0, 0, 1, 2.0f / 16.0f, 1);
+        clearFixedTexture();
     }
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
+        t->tex2(tt->getLightColor(level, x, y, z));
+        t->color(1.0f, 1.0f, 1.0f);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+        t->color(br, br, br);
     }
 
     // hand holding kissing girls
-    yuri_9241(tt, yuri_9621 + receiverX, yuri_9625 + yuri_6412, yuri_9630 + receiverZ, 0, 0, 0);
+    tesselateTorch(tt, x + receiverX, y + h, z + receiverZ, 0, 0, 0);
 
     // cute girls i love
-    yuri_9211(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateDiodeInWorld(tt, x, y, z);
 
     return true;
 }
 
-bool yuri_3101::yuri_9208(yuri_397* tt, int yuri_9621, int yuri_9625,
-                                              int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateComparatorInWorld(ComparatorTile* tt, int x, int y,
+                                              int z) {
+    Tesselator* t = Tesselator::getInstance();
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
+        t->tex2(tt->getLightColor(level, x, y, z));
+        t->color(1.0f, 1.0f, 1.0f);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+        t->color(br, br, br);
     }
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = yuri_4295 & yuri_614::DIRECTION_MASK;
+    int data = level->getData(x, y, z);
+    int dir = data & DirectionalTile::DIRECTION_MASK;
     double extenderX = 0;
     double extenderY = -3.0f / 16.0f;
     double extenderZ = 0;
     double inputXStep = 0;
     double inputZStep = 0;
-    yuri_1346* extenderTex;
+    Icon* extenderTex;
 
-    if (tt->yuri_7015(yuri_4295)) {
-        extenderTex = yuri_3088::redstoneTorch_on->yuri_6007(Facing::DOWN);
+    if (tt->isReversedOutputSignal(data)) {
+        extenderTex = Tile::redstoneTorch_on->getTexture(Facing::DOWN);
     } else {
         extenderY -= 3 / 16.0f;
-        extenderTex = yuri_3088::redstoneTorch_off->yuri_6007(Facing::DOWN);
+        extenderTex = Tile::redstoneTorch_off->getTexture(Facing::DOWN);
     }
 
-    switch (yuri_4361) {
+    switch (dir) {
         case Direction::SOUTH:
             extenderZ = -5.0f / 16.0f;
             inputZStep = 1;
@@ -1336,178 +1336,178 @@ bool yuri_3101::yuri_9208(yuri_397* tt, int yuri_9621, int yuri_9625,
     }
 
     // kissing girls girl love i love girls lesbian kiss snuggle
-    yuri_9241(
-        (yuri_3088*)tt, yuri_9621 + (4 / 16.0f * inputXStep) + (3 / 16.0f * inputZStep),
-        yuri_9625 - 3 / 16.0f, yuri_9630 + (4 / 16.0f * inputZStep) + (3 / 16.0f * inputXStep),
-        0, 0, yuri_4295);
-    yuri_9241(
-        (yuri_3088*)tt, yuri_9621 + (4 / 16.0f * inputXStep) + (-3 / 16.0f * inputZStep),
-        yuri_9625 - 3 / 16.0f, yuri_9630 + (4 / 16.0f * inputZStep) + (-3 / 16.0f * inputXStep),
-        0, 0, yuri_4295);
+    tesselateTorch(
+        (Tile*)tt, x + (4 / 16.0f * inputXStep) + (3 / 16.0f * inputZStep),
+        y - 3 / 16.0f, z + (4 / 16.0f * inputZStep) + (3 / 16.0f * inputXStep),
+        0, 0, data);
+    tesselateTorch(
+        (Tile*)tt, x + (4 / 16.0f * inputXStep) + (-3 / 16.0f * inputZStep),
+        y - 3 / 16.0f, z + (4 / 16.0f * inputZStep) + (-3 / 16.0f * inputXStep),
+        0, 0, data);
 
-    yuri_8604(extenderTex);
-    yuri_9241((yuri_3088*)tt, yuri_9621 + extenderX, yuri_9625 + extenderY, yuri_9630 + extenderZ, 0, 0,
-                   yuri_4295);
-    yuri_4057();
+    setFixedTexture(extenderTex);
+    tesselateTorch((Tile*)tt, x + extenderX, y + extenderY, z + extenderZ, 0, 0,
+                   data);
+    clearFixedTexture();
 
-    yuri_9211((yuri_613*)tt, yuri_9621, yuri_9625, yuri_9630, yuri_4361);
-
-    return true;
-}
-
-bool yuri_3101::yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-
-    yuri_9211(tt, yuri_9621, yuri_9625, yuri_9630,
-                          yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) & yuri_613::DIRECTION_MASK);
+    tesselateDiodeInWorld((DiodeTile*)tt, x, y, z, dir);
 
     return true;
 }
 
-void yuri_3101::yuri_9211(yuri_613* tt, int yuri_9621, int yuri_9625, int yuri_9630,
-                                         int yuri_4361) {
+bool TileRenderer::tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
+
+    tesselateDiodeInWorld(tt, x, y, z,
+                          level->getData(x, y, z) & DiodeTile::DIRECTION_MASK);
+
+    return true;
+}
+
+void TileRenderer::tesselateDiodeInWorld(DiodeTile* tt, int x, int y, int z,
+                                         int dir) {
     // lesbian lesbian-ship i love amy is the best
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateBlockInWorld(tt, x, y, z);
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
+        t->tex2(getLightColor(tt, level, x, y, z));
+        t->color(1.0f, 1.0f, 1.0f);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+        t->color(br, br, br);
     }
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int data = level->getData(x, y, z);
 
     // yuri-hand holding - ship'yuri snuggle i love amy is the best i love girls.
     // yuri ship - yuri i love girls snuggle yuri yuri i love i love yuri, yuri FUCKING KISS ALREADY kissing girls'my wife ship ship
     // i love
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, Facing::UP, yuri_4295);
-    float u0 = yuri_9251->yuri_6072(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    Icon* tex = getTexture(tt, Facing::UP, data);
+    float u0 = tex->getU0(true);
+    float u1 = tex->getU1(true);
+    float v0 = tex->getV0(true);
+    float v1 = tex->getV1(true);
 
     float r = 2.0f / 16.0f;
 
-    float yuri_9622 = (float)(yuri_9621 + 1.0f);
-    float yuri_9623 = (float)(yuri_9621 + 1.0f);
-    float x2 = (float)(yuri_9621 + 0.0f);
-    float x3 = (float)(yuri_9621 + 0.0f);
+    float x0 = (float)(x + 1.0f);
+    float x1 = (float)(x + 1.0f);
+    float x2 = (float)(x + 0.0f);
+    float x3 = (float)(x + 0.0f);
 
-    float yuri_9631 = (float)(yuri_9630 + 0.0f);
-    float yuri_9632 = (float)(yuri_9630 + 1.0f);
-    float z2 = (float)(yuri_9630 + 1.0f);
-    float z3 = (float)(yuri_9630 + 0.0f);
+    float z0 = (float)(z + 0.0f);
+    float z1 = (float)(z + 1.0f);
+    float z2 = (float)(z + 1.0f);
+    float z3 = (float)(z + 0.0f);
 
-    float yuri_9626 = (float)(yuri_9625 + r);
+    float y0 = (float)(y + r);
 
-    if (yuri_4361 == Direction::NORTH) {
+    if (dir == Direction::NORTH) {
         // yuri my girlfriend yuri
-        yuri_9622 = yuri_9623 = (float)(yuri_9621 + 0.0f);
-        x2 = x3 = (float)(yuri_9621 + 1.0f);
-        yuri_9631 = z3 = (float)(yuri_9630 + 1.0f);
-        yuri_9632 = z2 = (float)(yuri_9630 + 0.0f);
-    } else if (yuri_4361 == Direction::EAST) {
+        x0 = x1 = (float)(x + 0.0f);
+        x2 = x3 = (float)(x + 1.0f);
+        z0 = z3 = (float)(z + 1.0f);
+        z1 = z2 = (float)(z + 0.0f);
+    } else if (dir == Direction::EAST) {
         // lesbian kiss yuri yuri FUCKING KISS ALREADY-i love girls
-        yuri_9622 = x3 = (float)(yuri_9621 + 0.0f);
-        yuri_9623 = x2 = (float)(yuri_9621 + 1.0f);
-        yuri_9631 = yuri_9632 = (float)(yuri_9630 + 0.0f);
-        z2 = z3 = (float)(yuri_9630 + 1.0f);
-    } else if (yuri_4361 == Direction::WEST) {
+        x0 = x3 = (float)(x + 0.0f);
+        x1 = x2 = (float)(x + 1.0f);
+        z0 = z1 = (float)(z + 0.0f);
+        z2 = z3 = (float)(z + 1.0f);
+    } else if (dir == Direction::WEST) {
         // FUCKING KISS ALREADY yuri yuri blushing girls
-        yuri_9622 = x3 = (float)(yuri_9621 + 1.0f);
-        yuri_9623 = x2 = (float)(yuri_9621 + 0.0f);
-        yuri_9631 = yuri_9632 = (float)(yuri_9630 + 1.0f);
-        z2 = z3 = (float)(yuri_9630 + 0.0f);
+        x0 = x3 = (float)(x + 1.0f);
+        x1 = x2 = (float)(x + 0.0f);
+        z0 = z1 = (float)(z + 1.0f);
+        z2 = z3 = (float)(z + 0.0f);
     }
 
-    t->yuri_9524(x3, yuri_9626, z3, u0, v0);
-    t->yuri_9524(x2, yuri_9626, z2, u0, v1);
-    t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u1, v1);
-    t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v0);
+    t->vertexUV(x3, y0, z3, u0, v0);
+    t->vertexUV(x2, y0, z2, u0, v1);
+    t->vertexUV(x1, y0, z1, u1, v1);
+    t->vertexUV(x0, y0, z0, u1, v0);
 }
 
-void yuri_3101::yuri_9227(
-    yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, int forceData)  // wlw ship blushing girls ship
+void TileRenderer::tesselatePistonBaseForceExtended(
+    Tile* tile, int x, int y, int z, int forceData)  // wlw ship blushing girls ship
 {
     noCulling = true;
-    yuri_9228(tile, yuri_9621, yuri_9625, yuri_9630, true, forceData);
+    tesselatePistonBaseInWorld(tile, x, y, z, true, forceData);
     noCulling = false;
 }
 
-bool yuri_3101::yuri_9228(
-    yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, bool forceExtended,
+bool TileRenderer::tesselatePistonBaseInWorld(
+    Tile* tt, int x, int y, int z, bool forceExtended,
     int forceData)  // wlw lesbian kiss yuri yuri
 {
-    int yuri_4295 = (forceData == -1) ? yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) : forceData;
-    bool extended = forceExtended || (yuri_4295 & yuri_2116::EXTENDED_BIT) != 0;
-    int yuri_4558 = yuri_2116::yuri_5236(yuri_4295);
+    int data = (forceData == -1) ? level->getData(x, y, z) : forceData;
+    bool extended = forceExtended || (data & PistonBaseTile::EXTENDED_BIT) != 0;
+    int facing = PistonBaseTile::getFacing(data);
 
-    const float thickness = yuri_2116::PLATFORM_THICKNESS / 16.0f;
+    const float thickness = PistonBaseTile::PLATFORM_THICKNESS / 16.0f;
 
     if (extended) {
-        switch (yuri_4558) {
+        switch (facing) {
             case Facing::DOWN:
                 northFlip = FLIP_180;
                 southFlip = FLIP_180;
                 eastFlip = FLIP_180;
                 westFlip = FLIP_180;
-                yuri_8855(0.0f, thickness, 0.0f, 1.0f, 1.0f, 1.0f);
+                setShape(0.0f, thickness, 0.0f, 1.0f, 1.0f, 1.0f);
                 break;
             case Facing::UP:
-                yuri_8855(0.0f, 0.0f, 0.0f, 1.0f, 1.0f - thickness, 1.0f);
+                setShape(0.0f, 0.0f, 0.0f, 1.0f, 1.0f - thickness, 1.0f);
                 break;
             case Facing::NORTH:
                 eastFlip = FLIP_CW;
                 westFlip = FLIP_CCW;
-                yuri_8855(0.0f, 0.0f, thickness, 1.0f, 1.0f, 1.0f);
+                setShape(0.0f, 0.0f, thickness, 1.0f, 1.0f, 1.0f);
                 break;
             case Facing::SOUTH:
                 eastFlip = FLIP_CCW;
                 westFlip = FLIP_CW;
                 upFlip = FLIP_180;
                 downFlip = FLIP_180;
-                yuri_8855(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f - thickness);
+                setShape(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f - thickness);
                 break;
             case Facing::WEST:
                 northFlip = FLIP_CW;
                 southFlip = FLIP_CCW;
                 upFlip = FLIP_CCW;
                 downFlip = FLIP_CW;
-                yuri_8855(thickness, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
+                setShape(thickness, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
                 break;
             case Facing::EAST:
                 northFlip = FLIP_CCW;
                 southFlip = FLIP_CW;
                 upFlip = FLIP_CW;
                 downFlip = FLIP_CCW;
-                yuri_8855(0.0f, 0.0f, 0.0f, 1.0f - thickness, 1.0f, 1.0f);
+                setShape(0.0f, 0.0f, 0.0f, 1.0f - thickness, 1.0f, 1.0f);
                 break;
         }
         // blushing girls i love amy is the best scissors yuri i love girls lesbian kiss my girlfriend ship yuri
         // "yuri" snuggle yuri yuri yuri-lesbian yuri
-        ((yuri_2116*)tt)
-            ->yuri_9461((float)tileShapeX0, (float)tileShapeY0,
+        ((PistonBaseTile*)tt)
+            ->updateShape((float)tileShapeX0, (float)tileShapeY0,
                           (float)tileShapeZ0, (float)tileShapeX1,
                           (float)tileShapeY1, (float)tileShapeZ1);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        tesselateBlockInWorld(tt, x, y, z);
         northFlip = FLIP_NONE;
         southFlip = FLIP_NONE;
         eastFlip = FLIP_NONE;
         westFlip = FLIP_NONE;
         upFlip = FLIP_NONE;
         downFlip = FLIP_NONE;
-        ((yuri_2116*)tt)
-            ->yuri_9461((float)tileShapeX0, (float)tileShapeY0,
+        ((PistonBaseTile*)tt)
+            ->updateShape((float)tileShapeX0, (float)tileShapeY0,
                           (float)tileShapeZ0, (float)tileShapeX1,
                           (float)tileShapeY1, (float)tileShapeZ1);
     } else {
-        switch (yuri_4558) {
+        switch (facing) {
             case Facing::DOWN:
                 northFlip = FLIP_180;
                 southFlip = FLIP_180;
@@ -1539,7 +1539,7 @@ bool yuri_3101::yuri_9228(
                 downFlip = FLIP_CCW;
                 break;
         }
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        tesselateBlockInWorld(tt, x, y, z);
         northFlip = FLIP_NONE;
         southFlip = FLIP_NONE;
         eastFlip = FLIP_NONE;
@@ -1551,203 +1551,203 @@ bool yuri_3101::yuri_9228(
     return true;
 }
 
-void yuri_3101::yuri_8221(float yuri_9622, float yuri_9623, float yuri_9626, float yuri_9627,
-                                         float yuri_9631, float yuri_9632, float yuri_3844,
+void TileRenderer::renderPistonArmUpDown(float x0, float x1, float y0, float y1,
+                                         float z0, float z1, float br,
                                          float armLengthPixels) {
-    yuri_1346* armTex = yuri_2116::yuri_6007(yuri_2116::EDGE_TEX);
-    if (yuri_6599()) armTex = fixedTexture;
+    Icon* armTex = PistonBaseTile::getTexture(PistonBaseTile::EDGE_TEX);
+    if (hasFixedTexture()) armTex = fixedTexture;
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
     // yuri yuri
-    float u00 = armTex->yuri_6072(true);
-    float v00 = armTex->yuri_6097(true);
-    float u11 = armTex->yuri_6071(armLengthPixels, true);
-    float v11 = armTex->yuri_6096(yuri_2116::PLATFORM_THICKNESS, true);
+    float u00 = armTex->getU0(true);
+    float v00 = armTex->getV0(true);
+    float u11 = armTex->getU(armLengthPixels, true);
+    float v11 = armTex->getV(PistonBaseTile::PLATFORM_THICKNESS, true);
 
-    t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+    t->color(br, br, br);
 
-    t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u11, v00);
-    t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u00, v00);
-    t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u00, v11);
-    t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u11, v11);
+    t->vertexUV(x0, y1, z0, u11, v00);
+    t->vertexUV(x0, y0, z0, u00, v00);
+    t->vertexUV(x1, y0, z1, u00, v11);
+    t->vertexUV(x1, y1, z1, u11, v11);
 }
 
-void yuri_3101::yuri_8220(float yuri_9622, float yuri_9623, float yuri_9626,
-                                             float yuri_9627, float yuri_9631, float yuri_9632,
-                                             float yuri_3844, float armLengthPixels) {
-    yuri_1346* armTex = yuri_2116::yuri_6007(yuri_2116::EDGE_TEX);
-    if (yuri_6599()) armTex = fixedTexture;
+void TileRenderer::renderPistonArmNorthSouth(float x0, float x1, float y0,
+                                             float y1, float z0, float z1,
+                                             float br, float armLengthPixels) {
+    Icon* armTex = PistonBaseTile::getTexture(PistonBaseTile::EDGE_TEX);
+    if (hasFixedTexture()) armTex = fixedTexture;
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
     // kissing girls yuri
-    float u00 = armTex->yuri_6072(true);
-    float v00 = armTex->yuri_6097(true);
-    float u11 = armTex->yuri_6071(armLengthPixels, true);
-    float v11 = armTex->yuri_6096(yuri_2116::PLATFORM_THICKNESS, true);
+    float u00 = armTex->getU0(true);
+    float v00 = armTex->getV0(true);
+    float u11 = armTex->getU(armLengthPixels, true);
+    float v11 = armTex->getV(PistonBaseTile::PLATFORM_THICKNESS, true);
 
-    t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+    t->color(br, br, br);
 
-    t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u11, v00);
-    t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u00, v00);
-    t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u00, v11);
-    t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u11, v11);
+    t->vertexUV(x0, y0, z1, u11, v00);
+    t->vertexUV(x0, y0, z0, u00, v00);
+    t->vertexUV(x1, y1, z0, u00, v11);
+    t->vertexUV(x1, y1, z1, u11, v11);
 }
 
-void yuri_3101::yuri_8219(float yuri_9622, float yuri_9623, float yuri_9626,
-                                           float yuri_9627, float yuri_9631, float yuri_9632,
-                                           float yuri_3844, float armLengthPixels) {
-    yuri_1346* armTex = yuri_2116::yuri_6007(yuri_2116::EDGE_TEX);
-    if (yuri_6599()) armTex = fixedTexture;
+void TileRenderer::renderPistonArmEastWest(float x0, float x1, float y0,
+                                           float y1, float z0, float z1,
+                                           float br, float armLengthPixels) {
+    Icon* armTex = PistonBaseTile::getTexture(PistonBaseTile::EDGE_TEX);
+    if (hasFixedTexture()) armTex = fixedTexture;
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
     // i love amy is the best yuri
-    float u00 = armTex->yuri_6072(true);
-    float v00 = armTex->yuri_6097(true);
-    float u11 = armTex->yuri_6071(armLengthPixels, true);
-    float v11 = armTex->yuri_6096(yuri_2116::PLATFORM_THICKNESS, true);
+    float u00 = armTex->getU0(true);
+    float v00 = armTex->getV0(true);
+    float u11 = armTex->getU(armLengthPixels, true);
+    float v11 = armTex->getV(PistonBaseTile::PLATFORM_THICKNESS, true);
 
-    t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+    t->color(br, br, br);
 
-    t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u11, v00);
-    t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u00, v00);
-    t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u00, v11);
-    t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u11, v11);
+    t->vertexUV(x1, y0, z0, u11, v00);
+    t->vertexUV(x0, y0, z0, u00, v00);
+    t->vertexUV(x0, y1, z1, u00, v11);
+    t->vertexUV(x1, y1, z1, u11, v11);
 }
 
-void yuri_3101::yuri_9226(
-    yuri_3088* tile, int yuri_9621, int yuri_9625, int yuri_9630, bool fullArm,
+void TileRenderer::tesselatePistonArmNoCulling(
+    Tile* tile, int x, int y, int z, bool fullArm,
     int forceData)  // cute girls wlw cute girls canon
 {
     noCulling = true;
-    yuri_9229(tile, yuri_9621, yuri_9625, yuri_9630, fullArm);
+    tesselatePistonExtensionInWorld(tile, x, y, z, fullArm);
     noCulling = false;
 }
 
-bool yuri_3101::yuri_9229(
-    yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, bool fullArm,
+bool TileRenderer::tesselatePistonExtensionInWorld(
+    Tile* tt, int x, int y, int z, bool fullArm,
     int forceData)  // yuri yuri lesbian kiss girl love
 {
-    int yuri_4295 = (forceData == -1) ? yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630) : forceData;
-    int yuri_4558 = yuri_2117::yuri_5236(yuri_4295);
+    int data = (forceData == -1) ? level->getData(x, y, z) : forceData;
+    int facing = PistonExtensionTile::getFacing(data);
 
-    const float thickness = yuri_2116::PLATFORM_THICKNESS / 16.0f;
+    const float thickness = PistonBaseTile::PLATFORM_THICKNESS / 16.0f;
     const float leftEdge =
-        (8.0f - (yuri_2116::PLATFORM_THICKNESS / 2.0f)) / 16.0f;
+        (8.0f - (PistonBaseTile::PLATFORM_THICKNESS / 2.0f)) / 16.0f;
     const float rightEdge =
-        (8.0f + (yuri_2116::PLATFORM_THICKNESS / 2.0f)) / 16.0f;
-    const float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        (8.0f + (PistonBaseTile::PLATFORM_THICKNESS / 2.0f)) / 16.0f;
+    const float br = tt->getBrightness(level, x, y, z);
     const float armLength = fullArm ? 1.0f : 0.5f;
     const float armLengthPixels = fullArm ? 16.0f : 8.0f;
 
-    yuri_3032* t = yuri_3032::yuri_5405();
-    switch (yuri_4558) {
+    Tesselator* t = Tesselator::getInstance();
+    switch (facing) {
         case Facing::DOWN:
             northFlip = FLIP_180;
             southFlip = FLIP_180;
             eastFlip = FLIP_180;
             westFlip = FLIP_180;
-            yuri_8855(0.0f, 0.0f, 0.0f, 1.0f, thickness, 1.0f);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(0.0f, 0.0f, 0.0f, 1.0f, thickness, 1.0f);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            t->yuri_9252(yuri_5484(
-                tt, yuri_7194, yuri_9621, yuri_9625,
-                yuri_9630));  // blushing girls blushing girls - my wife wlw'yuri my wife yuri wlw i love girls
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // blushing girls blushing girls - my wife wlw'yuri my wife yuri wlw i love girls
                       // yuri cute girls yuri yuri snuggle yuri
-            yuri_8221(yuri_9621 + leftEdge, yuri_9621 + rightEdge, yuri_9625 + thickness,
-                                  yuri_9625 + thickness + armLength, yuri_9630 + rightEdge,
-                                  yuri_9630 + rightEdge, yuri_3844 * 0.8f, armLengthPixels);
-            yuri_8221(yuri_9621 + rightEdge, yuri_9621 + leftEdge, yuri_9625 + thickness,
-                                  yuri_9625 + thickness + armLength, yuri_9630 + leftEdge,
-                                  yuri_9630 + leftEdge, yuri_3844 * 0.8f, armLengthPixels);
-            yuri_8221(yuri_9621 + leftEdge, yuri_9621 + leftEdge, yuri_9625 + thickness,
-                                  yuri_9625 + thickness + armLength, yuri_9630 + leftEdge,
-                                  yuri_9630 + rightEdge, yuri_3844 * 0.6f, armLengthPixels);
-            yuri_8221(yuri_9621 + rightEdge, yuri_9621 + rightEdge, yuri_9625 + thickness,
-                                  yuri_9625 + thickness + armLength, yuri_9630 + rightEdge,
-                                  yuri_9630 + leftEdge, yuri_3844 * 0.6f, armLengthPixels);
+            renderPistonArmUpDown(x + leftEdge, x + rightEdge, y + thickness,
+                                  y + thickness + armLength, z + rightEdge,
+                                  z + rightEdge, br * 0.8f, armLengthPixels);
+            renderPistonArmUpDown(x + rightEdge, x + leftEdge, y + thickness,
+                                  y + thickness + armLength, z + leftEdge,
+                                  z + leftEdge, br * 0.8f, armLengthPixels);
+            renderPistonArmUpDown(x + leftEdge, x + leftEdge, y + thickness,
+                                  y + thickness + armLength, z + leftEdge,
+                                  z + rightEdge, br * 0.6f, armLengthPixels);
+            renderPistonArmUpDown(x + rightEdge, x + rightEdge, y + thickness,
+                                  y + thickness + armLength, z + rightEdge,
+                                  z + leftEdge, br * 0.6f, armLengthPixels);
 
             break;
         case Facing::UP:
-            yuri_8855(0.0f, 1.0f - thickness, 0.0f, 1.0f, 1.0f, 1.0f);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(0.0f, 1.0f - thickness, 0.0f, 1.0f, 1.0f, 1.0f);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            t->yuri_9252(yuri_5484(
-                tt, yuri_7194, yuri_9621, yuri_9625,
-                yuri_9630));  // yuri snuggle - yuri yuri'my wife yuri yuri yuri my girlfriend
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // yuri snuggle - yuri yuri'my wife yuri yuri yuri my girlfriend
                       // scissors snuggle yuri lesbian yuri lesbian
-            yuri_8221(yuri_9621 + leftEdge, yuri_9621 + rightEdge,
-                                  yuri_9625 - thickness + 1.0f - armLength,
-                                  yuri_9625 - thickness + 1.0f, yuri_9630 + rightEdge,
-                                  yuri_9630 + rightEdge, yuri_3844 * 0.8f, armLengthPixels);
-            yuri_8221(yuri_9621 + rightEdge, yuri_9621 + leftEdge,
-                                  yuri_9625 - thickness + 1.0f - armLength,
-                                  yuri_9625 - thickness + 1.0f, yuri_9630 + leftEdge,
-                                  yuri_9630 + leftEdge, yuri_3844 * 0.8f, armLengthPixels);
-            yuri_8221(yuri_9621 + leftEdge, yuri_9621 + leftEdge,
-                                  yuri_9625 - thickness + 1.0f - armLength,
-                                  yuri_9625 - thickness + 1.0f, yuri_9630 + leftEdge,
-                                  yuri_9630 + rightEdge, yuri_3844 * 0.6f, armLengthPixels);
-            yuri_8221(yuri_9621 + rightEdge, yuri_9621 + rightEdge,
-                                  yuri_9625 - thickness + 1.0f - armLength,
-                                  yuri_9625 - thickness + 1.0f, yuri_9630 + rightEdge,
-                                  yuri_9630 + leftEdge, yuri_3844 * 0.6f, armLengthPixels);
+            renderPistonArmUpDown(x + leftEdge, x + rightEdge,
+                                  y - thickness + 1.0f - armLength,
+                                  y - thickness + 1.0f, z + rightEdge,
+                                  z + rightEdge, br * 0.8f, armLengthPixels);
+            renderPistonArmUpDown(x + rightEdge, x + leftEdge,
+                                  y - thickness + 1.0f - armLength,
+                                  y - thickness + 1.0f, z + leftEdge,
+                                  z + leftEdge, br * 0.8f, armLengthPixels);
+            renderPistonArmUpDown(x + leftEdge, x + leftEdge,
+                                  y - thickness + 1.0f - armLength,
+                                  y - thickness + 1.0f, z + leftEdge,
+                                  z + rightEdge, br * 0.6f, armLengthPixels);
+            renderPistonArmUpDown(x + rightEdge, x + rightEdge,
+                                  y - thickness + 1.0f - armLength,
+                                  y - thickness + 1.0f, z + rightEdge,
+                                  z + leftEdge, br * 0.6f, armLengthPixels);
             break;
         case Facing::NORTH:
             eastFlip = FLIP_CW;
             westFlip = FLIP_CCW;
-            yuri_8855(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, thickness);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, thickness);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            t->yuri_9252(yuri_5484(
-                tt, yuri_7194, yuri_9621, yuri_9625,
-                yuri_9630));  // yuri yuri - yuri snuggle'my girlfriend yuri hand holding yuri yuri
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // yuri yuri - yuri snuggle'my girlfriend yuri hand holding yuri yuri
                       // girl love yuri wlw kissing girls blushing girls girl love
-            yuri_8220(yuri_9621 + leftEdge, yuri_9621 + leftEdge, yuri_9625 + rightEdge,
-                                      yuri_9625 + leftEdge, yuri_9630 + thickness,
-                                      yuri_9630 + thickness + armLength, yuri_3844 * 0.6f,
+            renderPistonArmNorthSouth(x + leftEdge, x + leftEdge, y + rightEdge,
+                                      y + leftEdge, z + thickness,
+                                      z + thickness + armLength, br * 0.6f,
                                       armLengthPixels);
-            yuri_8220(yuri_9621 + rightEdge, yuri_9621 + rightEdge,
-                                      yuri_9625 + leftEdge, yuri_9625 + rightEdge,
-                                      yuri_9630 + thickness, yuri_9630 + thickness + armLength,
-                                      yuri_3844 * 0.6f, armLengthPixels);
-            yuri_8220(yuri_9621 + leftEdge, yuri_9621 + rightEdge, yuri_9625 + leftEdge,
-                                      yuri_9625 + leftEdge, yuri_9630 + thickness,
-                                      yuri_9630 + thickness + armLength, yuri_3844 * 0.5f,
+            renderPistonArmNorthSouth(x + rightEdge, x + rightEdge,
+                                      y + leftEdge, y + rightEdge,
+                                      z + thickness, z + thickness + armLength,
+                                      br * 0.6f, armLengthPixels);
+            renderPistonArmNorthSouth(x + leftEdge, x + rightEdge, y + leftEdge,
+                                      y + leftEdge, z + thickness,
+                                      z + thickness + armLength, br * 0.5f,
                                       armLengthPixels);
-            yuri_8220(
-                yuri_9621 + rightEdge, yuri_9621 + leftEdge, yuri_9625 + rightEdge, yuri_9625 + rightEdge,
-                yuri_9630 + thickness, yuri_9630 + thickness + armLength, yuri_3844, armLengthPixels);
+            renderPistonArmNorthSouth(
+                x + rightEdge, x + leftEdge, y + rightEdge, y + rightEdge,
+                z + thickness, z + thickness + armLength, br, armLengthPixels);
             break;
         case Facing::SOUTH:
             eastFlip = FLIP_CCW;
             westFlip = FLIP_CW;
             upFlip = FLIP_180;
             downFlip = FLIP_180;
-            yuri_8855(0.0f, 0.0f, 1.0f - thickness, 1.0f, 1.0f, 1.0f);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(0.0f, 0.0f, 1.0f - thickness, 1.0f, 1.0f, 1.0f);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            t->yuri_9252(yuri_5484(
-                tt, yuri_7194, yuri_9621, yuri_9625,
-                yuri_9630));  // yuri lesbian kiss - yuri hand holding'hand holding yuri yuri yuri yuri
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // yuri lesbian kiss - yuri hand holding'hand holding yuri yuri yuri yuri
                       // lesbian kiss yuri yuri yuri cute girls kissing girls
-            yuri_8220(
-                yuri_9621 + leftEdge, yuri_9621 + leftEdge, yuri_9625 + rightEdge, yuri_9625 + leftEdge,
-                yuri_9630 - thickness + 1.0f - armLength, yuri_9630 - thickness + 1.0f,
-                yuri_3844 * 0.6f, armLengthPixels);
-            yuri_8220(
-                yuri_9621 + rightEdge, yuri_9621 + rightEdge, yuri_9625 + leftEdge, yuri_9625 + rightEdge,
-                yuri_9630 - thickness + 1.0f - armLength, yuri_9630 - thickness + 1.0f,
-                yuri_3844 * 0.6f, armLengthPixels);
-            yuri_8220(
-                yuri_9621 + leftEdge, yuri_9621 + rightEdge, yuri_9625 + leftEdge, yuri_9625 + leftEdge,
-                yuri_9630 - thickness + 1.0f - armLength, yuri_9630 - thickness + 1.0f,
-                yuri_3844 * 0.5f, armLengthPixels);
-            yuri_8220(
-                yuri_9621 + rightEdge, yuri_9621 + leftEdge, yuri_9625 + rightEdge, yuri_9625 + rightEdge,
-                yuri_9630 - thickness + 1.0f - armLength, yuri_9630 - thickness + 1.0f, yuri_3844,
+            renderPistonArmNorthSouth(
+                x + leftEdge, x + leftEdge, y + rightEdge, y + leftEdge,
+                z - thickness + 1.0f - armLength, z - thickness + 1.0f,
+                br * 0.6f, armLengthPixels);
+            renderPistonArmNorthSouth(
+                x + rightEdge, x + rightEdge, y + leftEdge, y + rightEdge,
+                z - thickness + 1.0f - armLength, z - thickness + 1.0f,
+                br * 0.6f, armLengthPixels);
+            renderPistonArmNorthSouth(
+                x + leftEdge, x + rightEdge, y + leftEdge, y + leftEdge,
+                z - thickness + 1.0f - armLength, z - thickness + 1.0f,
+                br * 0.5f, armLengthPixels);
+            renderPistonArmNorthSouth(
+                x + rightEdge, x + leftEdge, y + rightEdge, y + rightEdge,
+                z - thickness + 1.0f - armLength, z - thickness + 1.0f, br,
                 armLengthPixels);
             break;
         case Facing::WEST:
@@ -1755,54 +1755,54 @@ bool yuri_3101::yuri_9229(
             southFlip = FLIP_CCW;
             upFlip = FLIP_CCW;
             downFlip = FLIP_CW;
-            yuri_8855(0.0f, 0.0f, 0.0f, thickness, 1.0f, 1.0f);
-            yuri_9202(
-                tt, yuri_9621, yuri_9625,
-                yuri_9630);  // FUCKING KISS ALREADY lesbian kiss - i love ship'yuri my girlfriend yuri yuri yuri
+            setShape(0.0f, 0.0f, 0.0f, thickness, 1.0f, 1.0f);
+            tesselateBlockInWorld(
+                tt, x, y,
+                z);  // FUCKING KISS ALREADY lesbian kiss - i love ship'yuri my girlfriend yuri yuri yuri
                      // snuggle i love girls my girlfriend girl love i love amy is the best lesbian
 
-            t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-            yuri_8219(yuri_9621 + thickness, yuri_9621 + thickness + armLength,
-                                    yuri_9625 + leftEdge, yuri_9625 + leftEdge, yuri_9630 + rightEdge,
-                                    yuri_9630 + leftEdge, yuri_3844 * 0.5f, armLengthPixels);
-            yuri_8219(yuri_9621 + thickness, yuri_9621 + thickness + armLength,
-                                    yuri_9625 + rightEdge, yuri_9625 + rightEdge, yuri_9630 + leftEdge,
-                                    yuri_9630 + rightEdge, yuri_3844, armLengthPixels);
-            yuri_8219(yuri_9621 + thickness, yuri_9621 + thickness + armLength,
-                                    yuri_9625 + leftEdge, yuri_9625 + rightEdge, yuri_9630 + leftEdge,
-                                    yuri_9630 + leftEdge, yuri_3844 * 0.6f, armLengthPixels);
-            yuri_8219(yuri_9621 + thickness, yuri_9621 + thickness + armLength,
-                                    yuri_9625 + rightEdge, yuri_9625 + leftEdge, yuri_9630 + rightEdge,
-                                    yuri_9630 + rightEdge, yuri_3844 * 0.6f, armLengthPixels);
+            t->tex2(getLightColor(tt, level, x, y, z));
+            renderPistonArmEastWest(x + thickness, x + thickness + armLength,
+                                    y + leftEdge, y + leftEdge, z + rightEdge,
+                                    z + leftEdge, br * 0.5f, armLengthPixels);
+            renderPistonArmEastWest(x + thickness, x + thickness + armLength,
+                                    y + rightEdge, y + rightEdge, z + leftEdge,
+                                    z + rightEdge, br, armLengthPixels);
+            renderPistonArmEastWest(x + thickness, x + thickness + armLength,
+                                    y + leftEdge, y + rightEdge, z + leftEdge,
+                                    z + leftEdge, br * 0.6f, armLengthPixels);
+            renderPistonArmEastWest(x + thickness, x + thickness + armLength,
+                                    y + rightEdge, y + leftEdge, z + rightEdge,
+                                    z + rightEdge, br * 0.6f, armLengthPixels);
             break;
         case Facing::EAST:
             northFlip = FLIP_CCW;
             southFlip = FLIP_CW;
             upFlip = FLIP_CW;
             downFlip = FLIP_CCW;
-            yuri_8855(1.0f - thickness, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(1.0f - thickness, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            t->yuri_9252(yuri_5484(
-                tt, yuri_7194, yuri_9621, yuri_9625,
-                yuri_9630));  // lesbian i love - i love girls ship'i love girls lesbian hand holding i love amy is the best yuri
+            t->tex2(getLightColor(
+                tt, level, x, y,
+                z));  // lesbian i love - i love girls ship'i love girls lesbian hand holding i love amy is the best yuri
                       // yuri wlw i love girls scissors canon snuggle
-            yuri_8219(yuri_9621 - thickness + 1.0f - armLength,
-                                    yuri_9621 - thickness + 1.0f, yuri_9625 + leftEdge,
-                                    yuri_9625 + leftEdge, yuri_9630 + rightEdge, yuri_9630 + leftEdge,
-                                    yuri_3844 * 0.5f, armLengthPixels);
-            yuri_8219(yuri_9621 - thickness + 1.0f - armLength,
-                                    yuri_9621 - thickness + 1.0f, yuri_9625 + rightEdge,
-                                    yuri_9625 + rightEdge, yuri_9630 + leftEdge, yuri_9630 + rightEdge,
-                                    yuri_3844, armLengthPixels);
-            yuri_8219(yuri_9621 - thickness + 1.0f - armLength,
-                                    yuri_9621 - thickness + 1.0f, yuri_9625 + leftEdge,
-                                    yuri_9625 + rightEdge, yuri_9630 + leftEdge, yuri_9630 + leftEdge,
-                                    yuri_3844 * 0.6f, armLengthPixels);
-            yuri_8219(yuri_9621 - thickness + 1.0f - armLength,
-                                    yuri_9621 - thickness + 1.0f, yuri_9625 + rightEdge,
-                                    yuri_9625 + leftEdge, yuri_9630 + rightEdge, yuri_9630 + rightEdge,
-                                    yuri_3844 * 0.6f, armLengthPixels);
+            renderPistonArmEastWest(x - thickness + 1.0f - armLength,
+                                    x - thickness + 1.0f, y + leftEdge,
+                                    y + leftEdge, z + rightEdge, z + leftEdge,
+                                    br * 0.5f, armLengthPixels);
+            renderPistonArmEastWest(x - thickness + 1.0f - armLength,
+                                    x - thickness + 1.0f, y + rightEdge,
+                                    y + rightEdge, z + leftEdge, z + rightEdge,
+                                    br, armLengthPixels);
+            renderPistonArmEastWest(x - thickness + 1.0f - armLength,
+                                    x - thickness + 1.0f, y + leftEdge,
+                                    y + rightEdge, z + leftEdge, z + leftEdge,
+                                    br * 0.6f, armLengthPixels);
+            renderPistonArmEastWest(x - thickness + 1.0f - armLength,
+                                    x - thickness + 1.0f, y + rightEdge,
+                                    y + leftEdge, z + rightEdge, z + rightEdge,
+                                    br * 0.6f, armLengthPixels);
             break;
     }
     northFlip = FLIP_NONE;
@@ -1811,126 +1811,126 @@ bool yuri_3101::yuri_9229(
     westFlip = FLIP_NONE;
     upFlip = FLIP_NONE;
     downFlip = FLIP_NONE;
-    yuri_8855(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
+    setShape(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 
     return true;
 }
 
-bool yuri_3101::yuri_9224(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateLeverInWorld(Tile* tt, int x, int y, int z) {
+    int data = level->getData(x, y, z);
 
-    int yuri_4361 = yuri_4295 & 7;
-    bool flipped = (yuri_4295 & 8) > 0;
+    int dir = data & 7;
+    bool flipped = (data & 8) > 0;
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
-    bool hadFixed = yuri_6599();
-    if (!hadFixed) this->yuri_8604(yuri_6007(yuri_3088::cobblestone));
+    bool hadFixed = hasFixedTexture();
+    if (!hadFixed) this->setFixedTexture(getTexture(Tile::cobblestone));
     float w1 = 4.0f / 16.0f;
     float w2 = 3.0f / 16.0f;
-    float yuri_6412 = 3.0f / 16.0f;
+    float h = 3.0f / 16.0f;
 
-    if (yuri_4361 == 5) {
-        yuri_8855(0.5f - w2, 0.0f, 0.5f - w1, 0.5f + w2, yuri_6412, 0.5f + w1);
-    } else if (yuri_4361 == 6) {
-        yuri_8855(0.5f - w1, 0.0f, 0.5f - w2, 0.5f + w1, yuri_6412, 0.5f + w2);
-    } else if (yuri_4361 == 4) {
-        yuri_8855(0.5f - w2, 0.5f - w1, 1.0f - yuri_6412, 0.5f + w2, 0.5f + w1, 1.0f);
-    } else if (yuri_4361 == 3) {
-        yuri_8855(0.5f - w2, 0.5f - w1, 0, 0.5f + w2, 0.5f + w1, yuri_6412);
-    } else if (yuri_4361 == 2) {
-        yuri_8855(1.0f - yuri_6412, 0.5f - w1, 0.5f - w2, 1.0f, 0.5f + w1, 0.5f + w2);
-    } else if (yuri_4361 == 1) {
-        yuri_8855(0, 0.5f - w1, 0.5f - w2, yuri_6412, 0.5f + w1, 0.5f + w2);
-    } else if (yuri_4361 == 0) {
-        yuri_8855(0.5f - w1, 1 - yuri_6412, 0.5f - w2, 0.5f + w1, 1, 0.5f + w2);
-    } else if (yuri_4361 == 7) {
-        yuri_8855(0.5f - w2, 1 - yuri_6412, 0.5f - w1, 0.5f + w2, 1, 0.5f + w1);
+    if (dir == 5) {
+        setShape(0.5f - w2, 0.0f, 0.5f - w1, 0.5f + w2, h, 0.5f + w1);
+    } else if (dir == 6) {
+        setShape(0.5f - w1, 0.0f, 0.5f - w2, 0.5f + w1, h, 0.5f + w2);
+    } else if (dir == 4) {
+        setShape(0.5f - w2, 0.5f - w1, 1.0f - h, 0.5f + w2, 0.5f + w1, 1.0f);
+    } else if (dir == 3) {
+        setShape(0.5f - w2, 0.5f - w1, 0, 0.5f + w2, 0.5f + w1, h);
+    } else if (dir == 2) {
+        setShape(1.0f - h, 0.5f - w1, 0.5f - w2, 1.0f, 0.5f + w1, 0.5f + w2);
+    } else if (dir == 1) {
+        setShape(0, 0.5f - w1, 0.5f - w2, h, 0.5f + w1, 0.5f + w2);
+    } else if (dir == 0) {
+        setShape(0.5f - w1, 1 - h, 0.5f - w2, 0.5f + w1, 1, 0.5f + w2);
+    } else if (dir == 7) {
+        setShape(0.5f - w2, 1 - h, 0.5f - w1, 0.5f + w2, 1, 0.5f + w1);
     }
-    this->yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    this->tesselateBlockInWorld(tt, x, y, z);
 
-    if (!hadFixed) this->yuri_4057();
+    if (!hadFixed) this->clearFixedTexture();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(getLightColor(tt, level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
-    if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-    t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0);
+    if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+    t->color(br, br, br);
+    Icon* tex = getTexture(tt, 0);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
-    std::yuri_3742<yuri_3322, 8> corners;
+    std::array<Vec3, 8> corners;
     float xv = 1.0f / 16.0f;
     float zv = 1.0f / 16.0f;
     float yv = 10.0f / 16.0f;
-    corners[0] = yuri_3322(-xv, -0, -zv);
-    corners[1] = yuri_3322(+xv, -0, -zv);
-    corners[2] = yuri_3322(+xv, -0, +zv);
-    corners[3] = yuri_3322(-xv, -0, +zv);
-    corners[4] = yuri_3322(-xv, +yv, -zv);
-    corners[5] = yuri_3322(+xv, +yv, -zv);
-    corners[6] = yuri_3322(+xv, +yv, +zv);
-    corners[7] = yuri_3322(-xv, +yv, +zv);
+    corners[0] = Vec3(-xv, -0, -zv);
+    corners[1] = Vec3(+xv, -0, -zv);
+    corners[2] = Vec3(+xv, -0, +zv);
+    corners[3] = Vec3(-xv, -0, +zv);
+    corners[4] = Vec3(-xv, +yv, -zv);
+    corners[5] = Vec3(+xv, +yv, -zv);
+    corners[6] = Vec3(+xv, +yv, +zv);
+    corners[7] = Vec3(-xv, +yv, +zv);
 
     for (int i = 0; i < 8; i++) {
         if (flipped) {
-            corners[i].yuri_9630 -= 1 / 16.0f;
-            corners[i].yuri_9624(40 * std::numbers::pi / 180);
+            corners[i].z -= 1 / 16.0f;
+            corners[i].xRot(40 * std::numbers::pi / 180);
         } else {
-            corners[i].yuri_9630 += 1 / 16.0f;
-            corners[i].yuri_9624(-40 * std::numbers::pi / 180);
+            corners[i].z += 1 / 16.0f;
+            corners[i].xRot(-40 * std::numbers::pi / 180);
         }
-        if (yuri_4361 == 0 || yuri_4361 == 7) {
-            corners[i].yuri_9633(180 * std::numbers::pi / 180);
+        if (dir == 0 || dir == 7) {
+            corners[i].zRot(180 * std::numbers::pi / 180);
         }
-        if (yuri_4361 == 6 || yuri_4361 == 0) {
-            corners[i].yuri_9628(90 * std::numbers::pi / 180);
+        if (dir == 6 || dir == 0) {
+            corners[i].yRot(90 * std::numbers::pi / 180);
         }
 
-        if (yuri_4361 > 0 && yuri_4361 < 5) {
-            corners[i].yuri_9625 -= 6 / 16.0f;
-            corners[i].yuri_9624(90 * std::numbers::pi / 180);
+        if (dir > 0 && dir < 5) {
+            corners[i].y -= 6 / 16.0f;
+            corners[i].xRot(90 * std::numbers::pi / 180);
 
-            if (yuri_4361 == 4) corners[i].yuri_9628(0 * std::numbers::pi / 180);
-            if (yuri_4361 == 3) corners[i].yuri_9628(180 * std::numbers::pi / 180);
-            if (yuri_4361 == 2) corners[i].yuri_9628(90 * std::numbers::pi / 180);
-            if (yuri_4361 == 1) corners[i].yuri_9628(-90 * std::numbers::pi / 180);
+            if (dir == 4) corners[i].yRot(0 * std::numbers::pi / 180);
+            if (dir == 3) corners[i].yRot(180 * std::numbers::pi / 180);
+            if (dir == 2) corners[i].yRot(90 * std::numbers::pi / 180);
+            if (dir == 1) corners[i].yRot(-90 * std::numbers::pi / 180);
 
-            corners[i].yuri_9621 += yuri_9621 + 0.5;
-            corners[i].yuri_9625 += yuri_9625 + 8 / 16.0f;
-            corners[i].yuri_9630 += yuri_9630 + 0.5;
-        } else if (yuri_4361 == 0 || yuri_4361 == 7) {
-            corners[i].yuri_9621 += yuri_9621 + 0.5;
-            corners[i].yuri_9625 += yuri_9625 + 14 / 16.0f;
-            corners[i].yuri_9630 += yuri_9630 + 0.5;
+            corners[i].x += x + 0.5;
+            corners[i].y += y + 8 / 16.0f;
+            corners[i].z += z + 0.5;
+        } else if (dir == 0 || dir == 7) {
+            corners[i].x += x + 0.5;
+            corners[i].y += y + 14 / 16.0f;
+            corners[i].z += z + 0.5;
         } else {
-            corners[i].yuri_9621 += yuri_9621 + 0.5;
-            corners[i].yuri_9625 += yuri_9625 + 2 / 16.0f;
-            corners[i].yuri_9630 += yuri_9630 + 0.5;
+            corners[i].x += x + 0.5;
+            corners[i].y += y + 2 / 16.0f;
+            corners[i].z += z + 0.5;
         }
     }
 
-    yuri_3322 c0, c1, c2, c3;
+    Vec3 c0, c1, c2, c3;
     for (int i = 0; i < 6; i++) {
         if (i == 0) {
-            u0 = yuri_9251->yuri_6071(7, true);
-            v0 = yuri_9251->yuri_6096(6, true);
-            u1 = yuri_9251->yuri_6071(9, true);
-            v1 = yuri_9251->yuri_6096(8, true);
+            u0 = tex->getU(7, true);
+            v0 = tex->getV(6, true);
+            u1 = tex->getU(9, true);
+            v1 = tex->getV(8, true);
         } else if (i == 2) {
-            u0 = yuri_9251->yuri_6071(7, true);
-            v0 = yuri_9251->yuri_6096(6, true);
-            u1 = yuri_9251->yuri_6071(9, true);
-            v1 = yuri_9251->yuri_6098(true);
+            u0 = tex->getU(7, true);
+            v0 = tex->getV(6, true);
+            u1 = tex->getU(9, true);
+            v1 = tex->getV1(true);
         }
         if (i == 0) {
             c0 = corners[0];
@@ -1963,31 +1963,31 @@ bool yuri_3101::yuri_9224(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
             c2 = corners[7];
             c3 = corners[4];
         }
-        t->yuri_9524((float)(c0.yuri_9621), (float)(c0.yuri_9625), (float)(c0.yuri_9630), (float)(u0),
+        t->vertexUV((float)(c0.x), (float)(c0.y), (float)(c0.z), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(c1.yuri_9621), (float)(c1.yuri_9625), (float)(c1.yuri_9630), (float)(u1),
+        t->vertexUV((float)(c1.x), (float)(c1.y), (float)(c1.z), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(c2.yuri_9621), (float)(c2.yuri_9625), (float)(c2.yuri_9630), (float)(u1),
+        t->vertexUV((float)(c2.x), (float)(c2.y), (float)(c2.z), (float)(u1),
                     (float)(v0));
-        t->yuri_9524((float)(c3.yuri_9621), (float)(c3.yuri_9625), (float)(c3.yuri_9630), (float)(u0),
+        t->vertexUV((float)(c3.x), (float)(c3.y), (float)(c3.z), (float)(u0),
                     (float)(v0));
     }
     return true;
 }
 
-bool yuri_3101::yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625,
-                                                  int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = yuri_4295 & yuri_3141::MASK_DIR;
-    bool attached = (yuri_4295 & yuri_3141::MASK_ATTACHED) ==
-                    yuri_3141::MASK_ATTACHED;
-    bool powered = (yuri_4295 & yuri_3141::MASK_POWERED) ==
-                   yuri_3141::MASK_POWERED;
-    bool suspended = !yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630);
+bool TileRenderer::tesselateTripwireSourceInWorld(Tile* tt, int x, int y,
+                                                  int z) {
+    Tesselator* t = Tesselator::getInstance();
+    int data = level->getData(x, y, z);
+    int dir = data & TripWireSourceTile::MASK_DIR;
+    bool attached = (data & TripWireSourceTile::MASK_ATTACHED) ==
+                    TripWireSourceTile::MASK_ATTACHED;
+    bool powered = (data & TripWireSourceTile::MASK_POWERED) ==
+                   TripWireSourceTile::MASK_POWERED;
+    bool suspended = !level->isTopSolidBlocking(x, y - 1, z);
 
-    bool hadFixed = yuri_6599();
-    if (!hadFixed) this->yuri_8604(yuri_6007(yuri_3088::wood));
+    bool hadFixed = hasFixedTexture();
+    if (!hadFixed) this->setFixedTexture(getTexture(Tile::wood));
 
     float boxHeight = 4 / 16.0f;
     float boxWidth = 2 / 16.0f;
@@ -1995,82 +1995,82 @@ bool yuri_3101::yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625,
 
     float boxy0 = 0.3f - boxHeight;
     float boxy1 = 0.3f + boxHeight;
-    if (yuri_4361 == Direction::NORTH) {
-        yuri_8855(0.5f - boxWidth, boxy0, 1 - boxDepth, 0.5f + boxWidth, boxy1,
+    if (dir == Direction::NORTH) {
+        setShape(0.5f - boxWidth, boxy0, 1 - boxDepth, 0.5f + boxWidth, boxy1,
                  1);
-    } else if (yuri_4361 == Direction::SOUTH) {
-        yuri_8855(0.5f - boxWidth, boxy0, 0, 0.5f + boxWidth, boxy1, boxDepth);
-    } else if (yuri_4361 == Direction::WEST) {
-        yuri_8855(1 - boxDepth, boxy0, 0.5f - boxWidth, 1, boxy1,
+    } else if (dir == Direction::SOUTH) {
+        setShape(0.5f - boxWidth, boxy0, 0, 0.5f + boxWidth, boxy1, boxDepth);
+    } else if (dir == Direction::WEST) {
+        setShape(1 - boxDepth, boxy0, 0.5f - boxWidth, 1, boxy1,
                  0.5f + boxWidth);
-    } else if (yuri_4361 == Direction::EAST) {
-        yuri_8855(0, boxy0, 0.5f - boxWidth, boxDepth, boxy1, 0.5f + boxWidth);
+    } else if (dir == Direction::EAST) {
+        setShape(0, boxy0, 0.5f - boxWidth, boxDepth, boxy1, 0.5f + boxWidth);
     }
 
-    this->yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-    if (!hadFixed) this->yuri_4057();
+    this->tesselateBlockInWorld(tt, x, y, z);
+    if (!hadFixed) this->clearFixedTexture();
 
     float brightness;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
+        t->tex2(tt->getLightColor(level, x, y, z));
         brightness = 1;
     } else {
-        brightness = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        brightness = tt->getBrightness(level, x, y, z);
     }
-    if (yuri_3088::lightEmission[tt->yuri_6674] > 0) brightness = 1.0f;
-    t->yuri_4111(brightness, brightness, brightness);
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0);
+    if (Tile::lightEmission[tt->id] > 0) brightness = 1.0f;
+    t->color(brightness, brightness, brightness);
+    Icon* tex = getTexture(tt, 0);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    double u0 = yuri_9251->yuri_6072();
-    double v0 = yuri_9251->yuri_6097();
-    double u1 = yuri_9251->yuri_6073();
-    double v1 = yuri_9251->yuri_6098();
+    if (hasFixedTexture()) tex = fixedTexture;
+    double u0 = tex->getU0();
+    double v0 = tex->getV0();
+    double u1 = tex->getU1();
+    double v1 = tex->getV1();
 
-    std::yuri_3742<yuri_3322, 8> corners;
+    std::array<Vec3, 8> corners;
     float stickWidth = 0.75f / 16.0f;
     float stickHeight = 0.75f / 16.0f;
     float stickLength = 5 / 16.0f;
-    corners[0] = yuri_3322(-stickWidth, -0, -stickHeight);
-    corners[1] = yuri_3322(+stickWidth, -0, -stickHeight);
-    corners[2] = yuri_3322(+stickWidth, -0, +stickHeight);
-    corners[3] = yuri_3322(-stickWidth, -0, +stickHeight);
-    corners[4] = yuri_3322(-stickWidth, +stickLength, -stickHeight);
-    corners[5] = yuri_3322(+stickWidth, +stickLength, -stickHeight);
-    corners[6] = yuri_3322(+stickWidth, +stickLength, +stickHeight);
-    corners[7] = yuri_3322(-stickWidth, +stickLength, +stickHeight);
+    corners[0] = Vec3(-stickWidth, -0, -stickHeight);
+    corners[1] = Vec3(+stickWidth, -0, -stickHeight);
+    corners[2] = Vec3(+stickWidth, -0, +stickHeight);
+    corners[3] = Vec3(-stickWidth, -0, +stickHeight);
+    corners[4] = Vec3(-stickWidth, +stickLength, -stickHeight);
+    corners[5] = Vec3(+stickWidth, +stickLength, -stickHeight);
+    corners[6] = Vec3(+stickWidth, +stickLength, +stickHeight);
+    corners[7] = Vec3(-stickWidth, +stickLength, +stickHeight);
 
     for (int i = 0; i < 8; i++) {
-        corners[i].yuri_9630 += 1 / 16.0f;
+        corners[i].z += 1 / 16.0f;
 
         if (powered) {
-            corners[i].yuri_9624(30 * std::numbers::pi / 180);
-            corners[i].yuri_9625 -= 7 / 16.0f;
+            corners[i].xRot(30 * std::numbers::pi / 180);
+            corners[i].y -= 7 / 16.0f;
         } else if (attached) {
-            corners[i].yuri_9624(5 * std::numbers::pi / 180);
-            corners[i].yuri_9625 -= 7 / 16.0f;
+            corners[i].xRot(5 * std::numbers::pi / 180);
+            corners[i].y -= 7 / 16.0f;
         } else {
-            corners[i].yuri_9624(-40 * std::numbers::pi / 180);
-            corners[i].yuri_9625 -= 6 / 16.0f;
+            corners[i].xRot(-40 * std::numbers::pi / 180);
+            corners[i].y -= 6 / 16.0f;
         }
 
-        corners[i].yuri_9624(90 * std::numbers::pi / 180);
+        corners[i].xRot(90 * std::numbers::pi / 180);
 
-        if (yuri_4361 == Direction::NORTH)
-            corners[i].yuri_9628(0 * std::numbers::pi / 180);
-        if (yuri_4361 == Direction::SOUTH)
-            corners[i].yuri_9628(180 * std::numbers::pi / 180);
-        if (yuri_4361 == Direction::WEST)
-            corners[i].yuri_9628(90 * std::numbers::pi / 180);
-        if (yuri_4361 == Direction::EAST)
-            corners[i].yuri_9628(-90 * std::numbers::pi / 180);
+        if (dir == Direction::NORTH)
+            corners[i].yRot(0 * std::numbers::pi / 180);
+        if (dir == Direction::SOUTH)
+            corners[i].yRot(180 * std::numbers::pi / 180);
+        if (dir == Direction::WEST)
+            corners[i].yRot(90 * std::numbers::pi / 180);
+        if (dir == Direction::EAST)
+            corners[i].yRot(-90 * std::numbers::pi / 180);
 
-        corners[i].yuri_9621 += yuri_9621 + 0.5;
-        corners[i].yuri_9625 += yuri_9625 + 5 / 16.0f;
-        corners[i].yuri_9630 += yuri_9630 + 0.5;
+        corners[i].x += x + 0.5;
+        corners[i].y += y + 5 / 16.0f;
+        corners[i].z += z + 0.5;
     }
 
-    yuri_3322 c0, c1, c2, c3;
+    Vec3 c0, c1, c2, c3;
     int stickX0 = 7;
     int stickX1 = 9;
     int stickY0 = 9;
@@ -2082,10 +2082,10 @@ bool yuri_3101::yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625,
             c1 = corners[1];
             c2 = corners[2];
             c3 = corners[3];
-            u0 = yuri_9251->yuri_6071(stickX0);
-            v0 = yuri_9251->yuri_6096(stickY0);
-            u1 = yuri_9251->yuri_6071(stickX1);
-            v1 = yuri_9251->yuri_6096(stickY0 + 2);
+            u0 = tex->getU(stickX0);
+            v0 = tex->getV(stickY0);
+            u1 = tex->getU(stickX1);
+            v1 = tex->getV(stickY0 + 2);
         } else if (i == 1) {
             c0 = corners[7];
             c1 = corners[6];
@@ -2096,10 +2096,10 @@ bool yuri_3101::yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625,
             c1 = corners[0];
             c2 = corners[4];
             c3 = corners[5];
-            u0 = yuri_9251->yuri_6071(stickX0);
-            v0 = yuri_9251->yuri_6096(stickY0);
-            u1 = yuri_9251->yuri_6071(stickX1);
-            v1 = yuri_9251->yuri_6096(stickY1);
+            u0 = tex->getU(stickX0);
+            v0 = tex->getV(stickY0);
+            u1 = tex->getU(stickX1);
+            v1 = tex->getV(stickY1);
         } else if (i == 3) {
             c0 = corners[2];
             c1 = corners[1];
@@ -2116,51 +2116,51 @@ bool yuri_3101::yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625,
             c2 = corners[7];
             c3 = corners[4];
         }
-        t->yuri_9524(c0.yuri_9621, c0.yuri_9625, c0.yuri_9630, u0, v1);
-        t->yuri_9524(c1.yuri_9621, c1.yuri_9625, c1.yuri_9630, u1, v1);
-        t->yuri_9524(c2.yuri_9621, c2.yuri_9625, c2.yuri_9630, u1, v0);
-        t->yuri_9524(c3.yuri_9621, c3.yuri_9625, c3.yuri_9630, u0, v0);
+        t->vertexUV(c0.x, c0.y, c0.z, u0, v1);
+        t->vertexUV(c1.x, c1.y, c1.z, u1, v1);
+        t->vertexUV(c2.x, c2.y, c2.z, u1, v0);
+        t->vertexUV(c3.x, c3.y, c3.z, u0, v0);
     }
 
     float hoopWidth = 1.5f / 16.0f;
     float hoopHeight = 1.5f / 16.0f;
     float hoopLength = 0.5f / 16.0f;
-    corners[0] = yuri_3322(-hoopWidth, -0, -hoopHeight);
-    corners[1] = yuri_3322(+hoopWidth, -0, -hoopHeight);
-    corners[2] = yuri_3322(+hoopWidth, -0, +hoopHeight);
-    corners[3] = yuri_3322(-hoopWidth, -0, +hoopHeight);
-    corners[4] = yuri_3322(-hoopWidth, +hoopLength, -hoopHeight);
-    corners[5] = yuri_3322(+hoopWidth, +hoopLength, -hoopHeight);
-    corners[6] = yuri_3322(+hoopWidth, +hoopLength, +hoopHeight);
-    corners[7] = yuri_3322(-hoopWidth, +hoopLength, +hoopHeight);
+    corners[0] = Vec3(-hoopWidth, -0, -hoopHeight);
+    corners[1] = Vec3(+hoopWidth, -0, -hoopHeight);
+    corners[2] = Vec3(+hoopWidth, -0, +hoopHeight);
+    corners[3] = Vec3(-hoopWidth, -0, +hoopHeight);
+    corners[4] = Vec3(-hoopWidth, +hoopLength, -hoopHeight);
+    corners[5] = Vec3(+hoopWidth, +hoopLength, -hoopHeight);
+    corners[6] = Vec3(+hoopWidth, +hoopLength, +hoopHeight);
+    corners[7] = Vec3(-hoopWidth, +hoopLength, +hoopHeight);
 
     for (int i = 0; i < 8; i++) {
-        corners[i].yuri_9630 += 3.5f / 16.0f;
+        corners[i].z += 3.5f / 16.0f;
 
         if (powered) {
-            corners[i].yuri_9625 -= 1.5 / 16.0f;
-            corners[i].yuri_9630 -= 2.6 / 16.0f;
-            corners[i].yuri_9624(0 * std::numbers::pi / 180);
+            corners[i].y -= 1.5 / 16.0f;
+            corners[i].z -= 2.6 / 16.0f;
+            corners[i].xRot(0 * std::numbers::pi / 180);
         } else if (attached) {
-            corners[i].yuri_9625 += 0.25 / 16.0f;
-            corners[i].yuri_9630 -= 2.75 / 16.0f;
-            corners[i].yuri_9624(10 * std::numbers::pi / 180);
+            corners[i].y += 0.25 / 16.0f;
+            corners[i].z -= 2.75 / 16.0f;
+            corners[i].xRot(10 * std::numbers::pi / 180);
         } else {
-            corners[i].yuri_9624(50 * std::numbers::pi / 180);
+            corners[i].xRot(50 * std::numbers::pi / 180);
         }
 
-        if (yuri_4361 == Direction::NORTH)
-            corners[i].yuri_9628(0 * std::numbers::pi / 180);
-        if (yuri_4361 == Direction::SOUTH)
-            corners[i].yuri_9628(180 * std::numbers::pi / 180);
-        if (yuri_4361 == Direction::WEST)
-            corners[i].yuri_9628(90 * std::numbers::pi / 180);
-        if (yuri_4361 == Direction::EAST)
-            corners[i].yuri_9628(-90 * std::numbers::pi / 180);
+        if (dir == Direction::NORTH)
+            corners[i].yRot(0 * std::numbers::pi / 180);
+        if (dir == Direction::SOUTH)
+            corners[i].yRot(180 * std::numbers::pi / 180);
+        if (dir == Direction::WEST)
+            corners[i].yRot(90 * std::numbers::pi / 180);
+        if (dir == Direction::EAST)
+            corners[i].yRot(-90 * std::numbers::pi / 180);
 
-        corners[i].yuri_9621 += yuri_9621 + 0.5;
-        corners[i].yuri_9625 += yuri_9625 + 5 / 16.0f;
-        corners[i].yuri_9630 += yuri_9630 + 0.5;
+        corners[i].x += x + 0.5;
+        corners[i].y += y + 5 / 16.0f;
+        corners[i].z += z + 0.5;
     }
 
     int hoopX0 = 5;
@@ -2174,10 +2174,10 @@ bool yuri_3101::yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625,
             c1 = corners[1];
             c2 = corners[2];
             c3 = corners[3];
-            u0 = yuri_9251->yuri_6071(hoopX0);
-            v0 = yuri_9251->yuri_6096(hoopY0);
-            u1 = yuri_9251->yuri_6071(hoopX1);
-            v1 = yuri_9251->yuri_6096(hoopY1);
+            u0 = tex->getU(hoopX0);
+            v0 = tex->getV(hoopY0);
+            u1 = tex->getU(hoopX1);
+            v1 = tex->getV(hoopY1);
         } else if (i == 1) {
             c0 = corners[7];
             c1 = corners[6];
@@ -2188,10 +2188,10 @@ bool yuri_3101::yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625,
             c1 = corners[0];
             c2 = corners[4];
             c3 = corners[5];
-            u0 = yuri_9251->yuri_6071(hoopX0);
-            v0 = yuri_9251->yuri_6096(hoopY0);
-            u1 = yuri_9251->yuri_6071(hoopX1);
-            v1 = yuri_9251->yuri_6096(hoopY0 + 2);
+            u0 = tex->getU(hoopX0);
+            v0 = tex->getV(hoopY0);
+            u1 = tex->getU(hoopX1);
+            v1 = tex->getV(hoopY0 + 2);
         } else if (i == 3) {
             c0 = corners[2];
             c1 = corners[1];
@@ -2208,493 +2208,493 @@ bool yuri_3101::yuri_9245(yuri_3088* tt, int yuri_9621, int yuri_9625,
             c2 = corners[7];
             c3 = corners[4];
         }
-        t->yuri_9524(c0.yuri_9621, c0.yuri_9625, c0.yuri_9630, u0, v1);
-        t->yuri_9524(c1.yuri_9621, c1.yuri_9625, c1.yuri_9630, u1, v1);
-        t->yuri_9524(c2.yuri_9621, c2.yuri_9625, c2.yuri_9630, u1, v0);
-        t->yuri_9524(c3.yuri_9621, c3.yuri_9625, c3.yuri_9630, u0, v0);
+        t->vertexUV(c0.x, c0.y, c0.z, u0, v1);
+        t->vertexUV(c1.x, c1.y, c1.z, u1, v1);
+        t->vertexUV(c2.x, c2.y, c2.z, u1, v0);
+        t->vertexUV(c3.x, c3.y, c3.z, u0, v0);
     }
 
     if (attached) {
-        double hoopBottomY = corners[0].yuri_9625;
-        float yuri_9567 = 0.5f / 16.0f;
-        float top = 0.5f - (yuri_9567 / 2);
-        float bottom = top + yuri_9567;
-        yuri_1346* wireTex = yuri_6007(yuri_3088::tripWire);
-        double wireX0 = wireTex->yuri_6072();
-        double wireY0 = wireTex->yuri_6096(attached ? 2 : 0);
-        double wireX1 = wireTex->yuri_6073();
-        double wireY1 = wireTex->yuri_6096(attached ? 4 : 2);
+        double hoopBottomY = corners[0].y;
+        float width = 0.5f / 16.0f;
+        float top = 0.5f - (width / 2);
+        float bottom = top + width;
+        Icon* wireTex = getTexture(Tile::tripWire);
+        double wireX0 = wireTex->getU0();
+        double wireY0 = wireTex->getV(attached ? 2 : 0);
+        double wireX1 = wireTex->getU1();
+        double wireY1 = wireTex->getV(attached ? 4 : 2);
         double floating = (suspended ? 3.5f : 1.5f) / 16.0;
 
-        brightness = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630) * 0.75f;
-        t->yuri_4111(brightness, brightness, brightness);
+        brightness = tt->getBrightness(level, x, y, z) * 0.75f;
+        t->color(brightness, brightness, brightness);
 
-        if (yuri_4361 == Direction::NORTH) {
-            t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.25, wireX0, wireY0);
-            t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.25, wireX0, wireY1);
-            t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630, wireX1, wireY1);
-            t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630, wireX1, wireY0);
+        if (dir == Direction::NORTH) {
+            t->vertexUV(x + top, y + floating, z + 0.25, wireX0, wireY0);
+            t->vertexUV(x + bottom, y + floating, z + 0.25, wireX0, wireY1);
+            t->vertexUV(x + bottom, y + floating, z, wireX1, wireY1);
+            t->vertexUV(x + top, y + floating, z, wireX1, wireY0);
 
-            t->yuri_9524(yuri_9621 + top, hoopBottomY, yuri_9630 + 0.5, wireX0, wireY0);
-            t->yuri_9524(yuri_9621 + bottom, hoopBottomY, yuri_9630 + 0.5, wireX0, wireY1);
-            t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.25, wireX1, wireY1);
-            t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.25, wireX1, wireY0);
-        } else if (yuri_4361 == Direction::SOUTH) {
-            t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.75, wireX0, wireY0);
-            t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.75, wireX0, wireY1);
-            t->yuri_9524(yuri_9621 + bottom, hoopBottomY, yuri_9630 + 0.5, wireX1, wireY1);
-            t->yuri_9524(yuri_9621 + top, hoopBottomY, yuri_9630 + 0.5, wireX1, wireY0);
+            t->vertexUV(x + top, hoopBottomY, z + 0.5, wireX0, wireY0);
+            t->vertexUV(x + bottom, hoopBottomY, z + 0.5, wireX0, wireY1);
+            t->vertexUV(x + bottom, y + floating, z + 0.25, wireX1, wireY1);
+            t->vertexUV(x + top, y + floating, z + 0.25, wireX1, wireY0);
+        } else if (dir == Direction::SOUTH) {
+            t->vertexUV(x + top, y + floating, z + 0.75, wireX0, wireY0);
+            t->vertexUV(x + bottom, y + floating, z + 0.75, wireX0, wireY1);
+            t->vertexUV(x + bottom, hoopBottomY, z + 0.5, wireX1, wireY1);
+            t->vertexUV(x + top, hoopBottomY, z + 0.5, wireX1, wireY0);
 
-            t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 1, wireX0, wireY0);
-            t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 1, wireX0, wireY1);
-            t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.75, wireX1, wireY1);
-            t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.75, wireX1, wireY0);
-        } else if (yuri_4361 == Direction::WEST) {
-            t->yuri_9524(yuri_9621, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
-            t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-            t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-            t->yuri_9524(yuri_9621, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
+            t->vertexUV(x + top, y + floating, z + 1, wireX0, wireY0);
+            t->vertexUV(x + bottom, y + floating, z + 1, wireX0, wireY1);
+            t->vertexUV(x + bottom, y + floating, z + 0.75, wireX1, wireY1);
+            t->vertexUV(x + top, y + floating, z + 0.75, wireX1, wireY0);
+        } else if (dir == Direction::WEST) {
+            t->vertexUV(x, y + floating, z + bottom, wireX0, wireY1);
+            t->vertexUV(x + 0.25, y + floating, z + bottom, wireX1, wireY1);
+            t->vertexUV(x + 0.25, y + floating, z + top, wireX1, wireY0);
+            t->vertexUV(x, y + floating, z + top, wireX0, wireY0);
 
-            t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
-            t->yuri_9524(yuri_9621 + 0.5, hoopBottomY, yuri_9630 + bottom, wireX1, wireY1);
-            t->yuri_9524(yuri_9621 + 0.5, hoopBottomY, yuri_9630 + top, wireX1, wireY0);
-            t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
+            t->vertexUV(x + 0.25, y + floating, z + bottom, wireX0, wireY1);
+            t->vertexUV(x + 0.5, hoopBottomY, z + bottom, wireX1, wireY1);
+            t->vertexUV(x + 0.5, hoopBottomY, z + top, wireX1, wireY0);
+            t->vertexUV(x + 0.25, y + floating, z + top, wireX0, wireY0);
         } else {
-            t->yuri_9524(yuri_9621 + 0.5, hoopBottomY, yuri_9630 + bottom, wireX0, wireY1);
-            t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-            t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-            t->yuri_9524(yuri_9621 + 0.5, hoopBottomY, yuri_9630 + top, wireX0, wireY0);
+            t->vertexUV(x + 0.5, hoopBottomY, z + bottom, wireX0, wireY1);
+            t->vertexUV(x + 0.75, y + floating, z + bottom, wireX1, wireY1);
+            t->vertexUV(x + 0.75, y + floating, z + top, wireX1, wireY0);
+            t->vertexUV(x + 0.5, hoopBottomY, z + top, wireX0, wireY0);
 
-            t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
-            t->yuri_9524(yuri_9621 + 1, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-            t->yuri_9524(yuri_9621 + 1, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-            t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
+            t->vertexUV(x + 0.75, y + floating, z + bottom, wireX0, wireY1);
+            t->vertexUV(x + 1, y + floating, z + bottom, wireX1, wireY1);
+            t->vertexUV(x + 1, y + floating, z + top, wireX1, wireY0);
+            t->vertexUV(x + 0.75, y + floating, z + top, wireX0, wireY0);
         }
     }
 
     return true;
 }
 
-bool yuri_3101::yuri_9244(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0);
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateTripwireInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
+    Icon* tex = getTexture(tt, 0);
+    int data = level->getData(x, y, z);
     bool attached =
-        (yuri_4295 & yuri_3142::MASK_ATTACHED) == yuri_3142::MASK_ATTACHED;
+        (data & TripWireTile::MASK_ATTACHED) == TripWireTile::MASK_ATTACHED;
     bool suspended =
-        (yuri_4295 & yuri_3142::MASK_SUSPENDED) == yuri_3142::MASK_SUSPENDED;
+        (data & TripWireTile::MASK_SUSPENDED) == TripWireTile::MASK_SUSPENDED;
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
+    if (hasFixedTexture()) tex = fixedTexture;
 
     float brightness;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
+        t->tex2(tt->getLightColor(level, x, y, z));
     }
-    brightness = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630) * 0.75f;
-    t->yuri_4111(brightness, brightness, brightness);
+    brightness = tt->getBrightness(level, x, y, z) * 0.75f;
+    t->color(brightness, brightness, brightness);
 
-    double wireX0 = yuri_9251->yuri_6072();
-    double wireY0 = yuri_9251->yuri_6096(attached ? 2 : 0);
-    double wireX1 = yuri_9251->yuri_6073();
-    double wireY1 = yuri_9251->yuri_6096(attached ? 4 : 2);
+    double wireX0 = tex->getU0();
+    double wireY0 = tex->getV(attached ? 2 : 0);
+    double wireX1 = tex->getU1();
+    double wireY1 = tex->getV(attached ? 4 : 2);
     double floating = (suspended ? 3.5f : 1.5f) / 16.0;
 
-    bool yuri_9535 =
-        yuri_3142::yuri_9001(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, Direction::WEST);
+    bool w =
+        TripWireTile::shouldConnectTo(level, x, y, z, data, Direction::WEST);
     bool e =
-        yuri_3142::yuri_9001(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, Direction::EAST);
+        TripWireTile::shouldConnectTo(level, x, y, z, data, Direction::EAST);
     bool n =
-        yuri_3142::yuri_9001(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, Direction::NORTH);
+        TripWireTile::shouldConnectTo(level, x, y, z, data, Direction::NORTH);
     bool s =
-        yuri_3142::yuri_9001(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_4295, Direction::SOUTH);
+        TripWireTile::shouldConnectTo(level, x, y, z, data, Direction::SOUTH);
 
-    float yuri_9567 = 0.5f / 16.0f;
-    float top = 0.5f - (yuri_9567 / 2);
-    float bottom = top + yuri_9567;
+    float width = 0.5f / 16.0f;
+    float top = 0.5f - (width / 2);
+    float bottom = top + width;
 
-    if (!n && !e && !s && !yuri_9535) {
+    if (!n && !e && !s && !w) {
         n = true;
         s = true;
     }
 
     if (n) {
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.25, wireX0, wireY0);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.25, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630, wireX1, wireY0);
+        t->vertexUV(x + top, y + floating, z + 0.25, wireX0, wireY0);
+        t->vertexUV(x + bottom, y + floating, z + 0.25, wireX0, wireY1);
+        t->vertexUV(x + bottom, y + floating, z, wireX1, wireY1);
+        t->vertexUV(x + top, y + floating, z, wireX1, wireY0);
 
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.25, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.25, wireX0, wireY0);
+        t->vertexUV(x + top, y + floating, z, wireX1, wireY0);
+        t->vertexUV(x + bottom, y + floating, z, wireX1, wireY1);
+        t->vertexUV(x + bottom, y + floating, z + 0.25, wireX0, wireY1);
+        t->vertexUV(x + top, y + floating, z + 0.25, wireX0, wireY0);
     }
-    if (n || (s && !e && !yuri_9535)) {
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.5, wireX0, wireY0);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.5, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.25, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.25, wireX1, wireY0);
+    if (n || (s && !e && !w)) {
+        t->vertexUV(x + top, y + floating, z + 0.5, wireX0, wireY0);
+        t->vertexUV(x + bottom, y + floating, z + 0.5, wireX0, wireY1);
+        t->vertexUV(x + bottom, y + floating, z + 0.25, wireX1, wireY1);
+        t->vertexUV(x + top, y + floating, z + 0.25, wireX1, wireY0);
 
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.25, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.25, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.5, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.5, wireX0, wireY0);
+        t->vertexUV(x + top, y + floating, z + 0.25, wireX1, wireY0);
+        t->vertexUV(x + bottom, y + floating, z + 0.25, wireX1, wireY1);
+        t->vertexUV(x + bottom, y + floating, z + 0.5, wireX0, wireY1);
+        t->vertexUV(x + top, y + floating, z + 0.5, wireX0, wireY0);
     }
-    if (s || (n && !e && !yuri_9535)) {
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.75, wireX0, wireY0);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.75, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.5, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.5, wireX1, wireY0);
+    if (s || (n && !e && !w)) {
+        t->vertexUV(x + top, y + floating, z + 0.75, wireX0, wireY0);
+        t->vertexUV(x + bottom, y + floating, z + 0.75, wireX0, wireY1);
+        t->vertexUV(x + bottom, y + floating, z + 0.5, wireX1, wireY1);
+        t->vertexUV(x + top, y + floating, z + 0.5, wireX1, wireY0);
 
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.5, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.5, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.75, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.75, wireX0, wireY0);
+        t->vertexUV(x + top, y + floating, z + 0.5, wireX1, wireY0);
+        t->vertexUV(x + bottom, y + floating, z + 0.5, wireX1, wireY1);
+        t->vertexUV(x + bottom, y + floating, z + 0.75, wireX0, wireY1);
+        t->vertexUV(x + top, y + floating, z + 0.75, wireX0, wireY0);
     }
     if (s) {
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 1, wireX0, wireY0);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 1, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.75, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.75, wireX1, wireY0);
+        t->vertexUV(x + top, y + floating, z + 1, wireX0, wireY0);
+        t->vertexUV(x + bottom, y + floating, z + 1, wireX0, wireY1);
+        t->vertexUV(x + bottom, y + floating, z + 0.75, wireX1, wireY1);
+        t->vertexUV(x + top, y + floating, z + 0.75, wireX1, wireY0);
 
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 0.75, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 0.75, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + bottom, yuri_9625 + floating, yuri_9630 + 1, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + top, yuri_9625 + floating, yuri_9630 + 1, wireX0, wireY0);
+        t->vertexUV(x + top, y + floating, z + 0.75, wireX1, wireY0);
+        t->vertexUV(x + bottom, y + floating, z + 0.75, wireX1, wireY1);
+        t->vertexUV(x + bottom, y + floating, z + 1, wireX0, wireY1);
+        t->vertexUV(x + top, y + floating, z + 1, wireX0, wireY0);
     }
 
-    if (yuri_9535) {
-        t->yuri_9524(yuri_9621, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-        t->yuri_9524(yuri_9621, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
+    if (w) {
+        t->vertexUV(x, y + floating, z + bottom, wireX0, wireY1);
+        t->vertexUV(x + 0.25, y + floating, z + bottom, wireX1, wireY1);
+        t->vertexUV(x + 0.25, y + floating, z + top, wireX1, wireY0);
+        t->vertexUV(x, y + floating, z + top, wireX0, wireY0);
 
-        t->yuri_9524(yuri_9621, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
-        t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-        t->yuri_9524(yuri_9621, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
+        t->vertexUV(x, y + floating, z + top, wireX0, wireY0);
+        t->vertexUV(x + 0.25, y + floating, z + top, wireX1, wireY0);
+        t->vertexUV(x + 0.25, y + floating, z + bottom, wireX1, wireY1);
+        t->vertexUV(x, y + floating, z + bottom, wireX0, wireY1);
     }
-    if (yuri_9535 || (e && !n && !s)) {
-        t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + 0.5, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + 0.5, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
+    if (w || (e && !n && !s)) {
+        t->vertexUV(x + 0.25, y + floating, z + bottom, wireX0, wireY1);
+        t->vertexUV(x + 0.5, y + floating, z + bottom, wireX1, wireY1);
+        t->vertexUV(x + 0.5, y + floating, z + top, wireX1, wireY0);
+        t->vertexUV(x + 0.25, y + floating, z + top, wireX0, wireY0);
 
-        t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
-        t->yuri_9524(yuri_9621 + 0.5, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + 0.5, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + 0.25, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
+        t->vertexUV(x + 0.25, y + floating, z + top, wireX0, wireY0);
+        t->vertexUV(x + 0.5, y + floating, z + top, wireX1, wireY0);
+        t->vertexUV(x + 0.5, y + floating, z + bottom, wireX1, wireY1);
+        t->vertexUV(x + 0.25, y + floating, z + bottom, wireX0, wireY1);
     }
-    if (e || (yuri_9535 && !n && !s)) {
-        t->yuri_9524(yuri_9621 + 0.5, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + 0.5, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
+    if (e || (w && !n && !s)) {
+        t->vertexUV(x + 0.5, y + floating, z + bottom, wireX0, wireY1);
+        t->vertexUV(x + 0.75, y + floating, z + bottom, wireX1, wireY1);
+        t->vertexUV(x + 0.75, y + floating, z + top, wireX1, wireY0);
+        t->vertexUV(x + 0.5, y + floating, z + top, wireX0, wireY0);
 
-        t->yuri_9524(yuri_9621 + 0.5, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
-        t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + 0.5, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
+        t->vertexUV(x + 0.5, y + floating, z + top, wireX0, wireY0);
+        t->vertexUV(x + 0.75, y + floating, z + top, wireX1, wireY0);
+        t->vertexUV(x + 0.75, y + floating, z + bottom, wireX1, wireY1);
+        t->vertexUV(x + 0.5, y + floating, z + bottom, wireX0, wireY1);
     }
     if (e) {
-        t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
+        t->vertexUV(x + 0.75, y + floating, z + bottom, wireX0, wireY1);
+        t->vertexUV(x + 1, y + floating, z + bottom, wireX1, wireY1);
+        t->vertexUV(x + 1, y + floating, z + top, wireX1, wireY0);
+        t->vertexUV(x + 0.75, y + floating, z + top, wireX0, wireY0);
 
-        t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + top, wireX0, wireY0);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + floating, yuri_9630 + top, wireX1, wireY0);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + floating, yuri_9630 + bottom, wireX1, wireY1);
-        t->yuri_9524(yuri_9621 + 0.75, yuri_9625 + floating, yuri_9630 + bottom, wireX0, wireY1);
+        t->vertexUV(x + 0.75, y + floating, z + top, wireX0, wireY0);
+        t->vertexUV(x + 1, y + floating, z + top, wireX1, wireY0);
+        t->vertexUV(x + 1, y + floating, z + bottom, wireX1, wireY1);
+        t->vertexUV(x + 0.75, y + floating, z + bottom, wireX0, wireY1);
     }
 
     return true;
 }
 
-bool yuri_3101::yuri_9217(yuri_821* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateFireInWorld(FireTile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    yuri_1346* firstTex = tt->yuri_6011(0);
-    yuri_1346* secondTex = tt->yuri_6011(1);
-    yuri_1346* yuri_9251 = firstTex;
+    Icon* firstTex = tt->getTextureLayer(0);
+    Icon* secondTex = tt->getTextureLayer(1);
+    Icon* tex = firstTex;
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
+    if (hasFixedTexture()) tex = fixedTexture;
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
+        t->color(1.0f, 1.0f, 1.0f);
+        t->tex2(getLightColor(tt, level, x, y, z));
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        t->color(br, br, br);
     }
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
-    float yuri_6412 = 1.4f;
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
+    float h = 1.4f;
 
-    if (yuri_7194->yuri_7088(yuri_9621, yuri_9625 - 1, yuri_9630) ||
-        yuri_3088::fire->yuri_3912(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630)) {
-        float yuri_9622 = yuri_9621 + 0.5f + 0.2f;
-        float yuri_9623 = yuri_9621 + 0.5f - 0.2f;
-        float yuri_9631 = yuri_9630 + 0.5f + 0.2f;
-        float yuri_9632 = yuri_9630 + 0.5f - 0.2f;
+    if (level->isTopSolidBlocking(x, y - 1, z) ||
+        Tile::fire->canBurn(level, x, y - 1, z)) {
+        float x0 = x + 0.5f + 0.2f;
+        float x1 = x + 0.5f - 0.2f;
+        float z0 = z + 0.5f + 0.2f;
+        float z1 = z + 0.5f - 0.2f;
 
-        float x0_ = yuri_9621 + 0.5f - 0.3f;
-        float x1_ = yuri_9621 + 0.5f + 0.3f;
-        float z0_ = yuri_9630 + 0.5f - 0.3f;
-        float z1_ = yuri_9630 + 0.5f + 0.3f;
+        float x0_ = x + 0.5f - 0.3f;
+        float x1_ = x + 0.5f + 0.3f;
+        float z0_ = z + 0.5f - 0.3f;
+        float z1_ = z + 0.5f + 0.3f;
 
-        t->yuri_9524((float)(x0_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 1), (float)(u1),
+        t->vertexUV((float)(x0_), (float)(y + h), (float)(z + 1), (float)(u1),
                     (float)(v0));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9630 + 1), (float)(u1),
+        t->vertexUV((float)(x0), (float)(y + 0), (float)(z + 1), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9630 + 0), (float)(u0),
+        t->vertexUV((float)(x0), (float)(y + 0), (float)(z + 0), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(x0_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 0), (float)(u0),
-                    (float)(v0));
-
-        t->yuri_9524((float)(x1_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 0), (float)(u1),
-                    (float)(v0));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9630 + 0), (float)(u1),
-                    (float)(v1));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9630 + 1), (float)(u0),
-                    (float)(v1));
-        t->yuri_9524((float)(x1_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 1), (float)(u0),
+        t->vertexUV((float)(x0_), (float)(y + h), (float)(z + 0), (float)(u0),
                     (float)(v0));
 
-        yuri_9251 = secondTex;
-        u0 = yuri_9251->yuri_6072(true);
-        v0 = yuri_9251->yuri_6097(true);
-        u1 = yuri_9251->yuri_6073(true);
-        v1 = yuri_9251->yuri_6098(true);
-
-        t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + yuri_6412), (float)(z1_), (float)(u1),
+        t->vertexUV((float)(x1_), (float)(y + h), (float)(z + 0), (float)(u1),
                     (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
+        t->vertexUV((float)(x1), (float)(y + 0), (float)(z + 0), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u0),
+        t->vertexUV((float)(x1), (float)(y + 0), (float)(z + 1), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + yuri_6412), (float)(z1_), (float)(u0),
+        t->vertexUV((float)(x1_), (float)(y + h), (float)(z + 1), (float)(u0),
                     (float)(v0));
 
-        t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + yuri_6412), (float)(z0_), (float)(u1),
+        tex = secondTex;
+        u0 = tex->getU0(true);
+        v0 = tex->getV0(true);
+        u1 = tex->getU1(true);
+        v1 = tex->getV1(true);
+
+        t->vertexUV((float)(x + 1), (float)(y + h), (float)(z1_), (float)(u1),
                     (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u1),
+        t->vertexUV((float)(x + 1), (float)(y + 0), (float)(z1), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
+        t->vertexUV((float)(x + 0), (float)(y + 0), (float)(z1), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + yuri_6412), (float)(z0_), (float)(u0),
+        t->vertexUV((float)(x + 0), (float)(y + h), (float)(z1_), (float)(u0),
                     (float)(v0));
 
-        yuri_9622 = yuri_9621 + 0.5f - 0.5f;
-        yuri_9623 = yuri_9621 + 0.5f + 0.5f;
-        yuri_9631 = yuri_9630 + 0.5f - 0.5f;
-        yuri_9632 = yuri_9630 + 0.5f + 0.5f;
-
-        x0_ = yuri_9621 + 0.5f - 0.4f;
-        x1_ = yuri_9621 + 0.5f + 0.4f;
-        z0_ = yuri_9630 + 0.5f - 0.4f;
-        z1_ = yuri_9630 + 0.5f + 0.4f;
-
-        t->yuri_9524((float)(x0_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 0), (float)(u0),
+        t->vertexUV((float)(x + 0), (float)(y + h), (float)(z0_), (float)(u1),
                     (float)(v0));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9630 + 0), (float)(u0),
+        t->vertexUV((float)(x + 0), (float)(y + 0), (float)(z0), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9630 + 1), (float)(u1),
+        t->vertexUV((float)(x + 1), (float)(y + 0), (float)(z0), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(x0_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 1), (float)(u1),
+        t->vertexUV((float)(x + 1), (float)(y + h), (float)(z0_), (float)(u0),
                     (float)(v0));
 
-        t->yuri_9524((float)(x1_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 1), (float)(u0),
+        x0 = x + 0.5f - 0.5f;
+        x1 = x + 0.5f + 0.5f;
+        z0 = z + 0.5f - 0.5f;
+        z1 = z + 0.5f + 0.5f;
+
+        x0_ = x + 0.5f - 0.4f;
+        x1_ = x + 0.5f + 0.4f;
+        z0_ = z + 0.5f - 0.4f;
+        z1_ = z + 0.5f + 0.4f;
+
+        t->vertexUV((float)(x0_), (float)(y + h), (float)(z + 0), (float)(u0),
                     (float)(v0));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9630 + 1), (float)(u0),
+        t->vertexUV((float)(x0), (float)(y + 0), (float)(z + 0), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9630 + 0), (float)(u1),
+        t->vertexUV((float)(x0), (float)(y + 0), (float)(z + 1), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(x1_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 0), (float)(u1),
+        t->vertexUV((float)(x0_), (float)(y + h), (float)(z + 1), (float)(u1),
                     (float)(v0));
 
-        yuri_9251 = firstTex;
-        u0 = yuri_9251->yuri_6072(true);
-        v0 = yuri_9251->yuri_6097(true);
-        u1 = yuri_9251->yuri_6073(true);
-        v1 = yuri_9251->yuri_6098(true);
-
-        t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + yuri_6412), (float)(z1_), (float)(u0),
+        t->vertexUV((float)(x1_), (float)(y + h), (float)(z + 1), (float)(u0),
                     (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u0),
+        t->vertexUV((float)(x1), (float)(y + 0), (float)(z + 1), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
+        t->vertexUV((float)(x1), (float)(y + 0), (float)(z + 0), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + yuri_6412), (float)(z1_), (float)(u1),
+        t->vertexUV((float)(x1_), (float)(y + h), (float)(z + 0), (float)(u1),
                     (float)(v0));
 
-        t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + yuri_6412), (float)(z0_), (float)(u0),
+        tex = firstTex;
+        u0 = tex->getU0(true);
+        v0 = tex->getV0(true);
+        u1 = tex->getU1(true);
+        v1 = tex->getV1(true);
+
+        t->vertexUV((float)(x + 0), (float)(y + h), (float)(z1_), (float)(u0),
                     (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
+        t->vertexUV((float)(x + 0), (float)(y + 0), (float)(z1), (float)(u0),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u1),
+        t->vertexUV((float)(x + 1), (float)(y + 0), (float)(z1), (float)(u1),
                     (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + yuri_6412), (float)(z0_), (float)(u1),
+        t->vertexUV((float)(x + 1), (float)(y + h), (float)(z1_), (float)(u1),
+                    (float)(v0));
+
+        t->vertexUV((float)(x + 1), (float)(y + h), (float)(z0_), (float)(u0),
+                    (float)(v0));
+        t->vertexUV((float)(x + 1), (float)(y + 0), (float)(z0), (float)(u0),
+                    (float)(v1));
+        t->vertexUV((float)(x + 0), (float)(y + 0), (float)(z0), (float)(u1),
+                    (float)(v1));
+        t->vertexUV((float)(x + 0), (float)(y + h), (float)(z0_), (float)(u1),
                     (float)(v0));
     } else {
         float r = 0.2f;
         float yo = 1 / 16.0f;
-        if (((yuri_9621 + yuri_9625 + yuri_9630) & 1) == 1) {
-            yuri_9251 = secondTex;
-            u0 = yuri_9251->yuri_6072(true);
-            v0 = yuri_9251->yuri_6097(true);
-            u1 = yuri_9251->yuri_6073(true);
-            v1 = yuri_9251->yuri_6098(true);
+        if (((x + y + z) & 1) == 1) {
+            tex = secondTex;
+            u0 = tex->getU0(true);
+            v0 = tex->getV0(true);
+            u1 = tex->getU1(true);
+            v1 = tex->getV1(true);
         }
-        if (((yuri_9621 / 2 + yuri_9625 / 2 + yuri_9630 / 2) & 1) == 1) {
-            float yuri_9305 = u1;
+        if (((x / 2 + y / 2 + z / 2) & 1) == 1) {
+            float tmp = u1;
             u1 = u0;
-            u0 = yuri_9305;
+            u0 = tmp;
         }
-        if (yuri_3088::fire->yuri_3912(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630)) {
-            t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + yuri_6412 + yo), (float)(yuri_9630 + 1.0f),
+        if (Tile::fire->canBurn(level, x - 1, y, z)) {
+            t->vertexUV((float)(x + r), (float)(y + h + yo), (float)(z + 1.0f),
                         (float)(u1), (float)(v0));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 1.0f), (float)(u1), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u0), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + yuri_6412 + yo), (float)(yuri_9630 + 0.0f),
+            t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 1.0f), (float)(u1), (float)(v1));
+            t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 0.0f), (float)(u0), (float)(v1));
+            t->vertexUV((float)(x + r), (float)(y + h + yo), (float)(z + 0.0f),
                         (float)(u0), (float)(v0));
 
-            t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + yuri_6412 + yo), (float)(yuri_9630 + 0.0f),
+            t->vertexUV((float)(x + r), (float)(y + h + yo), (float)(z + 0.0f),
                         (float)(u0), (float)(v0));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u0), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 1.0f), (float)(u1), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + yuri_6412 + yo), (float)(yuri_9630 + 1.0f),
+            t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 0.0f), (float)(u0), (float)(v1));
+            t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 1.0f), (float)(u1), (float)(v1));
+            t->vertexUV((float)(x + r), (float)(y + h + yo), (float)(z + 1.0f),
                         (float)(u1), (float)(v0));
         }
-        if (yuri_3088::fire->yuri_3912(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630)) {
-            t->yuri_9524((float)(yuri_9621 + 1 - r), (float)(yuri_9625 + yuri_6412 + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u0), (float)(v0));
-            t->yuri_9524((float)(yuri_9621 + 1 - 0), (float)(yuri_9625 + 0 + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u0), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 1 - 0), (float)(yuri_9625 + 0 + yo),
-                        (float)(yuri_9630 + 1.0f), (float)(u1), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 1 - r), (float)(yuri_9625 + yuri_6412 + yo),
-                        (float)(yuri_9630 + 1.0f), (float)(u1), (float)(v0));
+        if (Tile::fire->canBurn(level, x + 1, y, z)) {
+            t->vertexUV((float)(x + 1 - r), (float)(y + h + yo),
+                        (float)(z + 0.0f), (float)(u0), (float)(v0));
+            t->vertexUV((float)(x + 1 - 0), (float)(y + 0 + yo),
+                        (float)(z + 0.0f), (float)(u0), (float)(v1));
+            t->vertexUV((float)(x + 1 - 0), (float)(y + 0 + yo),
+                        (float)(z + 1.0f), (float)(u1), (float)(v1));
+            t->vertexUV((float)(x + 1 - r), (float)(y + h + yo),
+                        (float)(z + 1.0f), (float)(u1), (float)(v0));
 
-            t->yuri_9524((float)(yuri_9621 + 1.0f - r), (float)(yuri_9625 + yuri_6412 + yo),
-                        (float)(yuri_9630 + 1.0f), (float)(u1), (float)(v0));
-            t->yuri_9524((float)(yuri_9621 + 1.0f - 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 1.0f), (float)(u1), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 1.0f - 0), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u0), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 1.0f - r), (float)(yuri_9625 + yuri_6412 + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u0), (float)(v0));
+            t->vertexUV((float)(x + 1.0f - r), (float)(y + h + yo),
+                        (float)(z + 1.0f), (float)(u1), (float)(v0));
+            t->vertexUV((float)(x + 1.0f - 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 1.0f), (float)(u1), (float)(v1));
+            t->vertexUV((float)(x + 1.0f - 0), (float)(y + 0.0f + yo),
+                        (float)(z + 0.0f), (float)(u0), (float)(v1));
+            t->vertexUV((float)(x + 1.0f - r), (float)(y + h + yo),
+                        (float)(z + 0.0f), (float)(u0), (float)(v0));
         }
-        if (yuri_3088::fire->yuri_3912(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1)) {
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + yuri_6412 + yo), (float)(yuri_9630 + r),
+        if (Tile::fire->canBurn(level, x, y, z - 1)) {
+            t->vertexUV((float)(x + 0.0f), (float)(y + h + yo), (float)(z + r),
                         (float)(u1), (float)(v0));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u1), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u0), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + yuri_6412 + yo), (float)(yuri_9630 + r),
+            t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 0.0f), (float)(u1), (float)(v1));
+            t->vertexUV((float)(x + 1.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 0.0f), (float)(u0), (float)(v1));
+            t->vertexUV((float)(x + 1.0f), (float)(y + h + yo), (float)(z + r),
                         (float)(u0), (float)(v0));
 
-            t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + yuri_6412 + yo), (float)(yuri_9630 + r),
+            t->vertexUV((float)(x + 1.0f), (float)(y + h + yo), (float)(z + r),
                         (float)(u0), (float)(v0));
-            t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u0), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 0.0f), (float)(u1), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + yuri_6412 + yo), (float)(yuri_9630 + r),
+            t->vertexUV((float)(x + 1.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 0.0f), (float)(u0), (float)(v1));
+            t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 0.0f), (float)(u1), (float)(v1));
+            t->vertexUV((float)(x + 0.0f), (float)(y + h + yo), (float)(z + r),
                         (float)(u1), (float)(v0));
         }
-        if (yuri_3088::fire->yuri_3912(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1)) {
-            t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + yuri_6412 + yo),
-                        (float)(yuri_9630 + 1.0f - r), (float)(u0), (float)(v0));
-            t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 1.0f - 0.0f), (float)(u0), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 1.0f - 0.0f), (float)(u1), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + yuri_6412 + yo),
-                        (float)(yuri_9630 + 1.0f - r), (float)(u1), (float)(v0));
+        if (Tile::fire->canBurn(level, x, y, z + 1)) {
+            t->vertexUV((float)(x + 1.0f), (float)(y + h + yo),
+                        (float)(z + 1.0f - r), (float)(u0), (float)(v0));
+            t->vertexUV((float)(x + 1.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 1.0f - 0.0f), (float)(u0), (float)(v1));
+            t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 1.0f - 0.0f), (float)(u1), (float)(v1));
+            t->vertexUV((float)(x + 0.0f), (float)(y + h + yo),
+                        (float)(z + 1.0f - r), (float)(u1), (float)(v0));
 
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + yuri_6412 + yo),
-                        (float)(yuri_9630 + 1.0f - r), (float)(u1), (float)(v0));
-            t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 1.0f - 0.0f), (float)(u1), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + 0.0f + yo),
-                        (float)(yuri_9630 + 1.0f - 0.0f), (float)(u0), (float)(v1));
-            t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + yuri_6412 + yo),
-                        (float)(yuri_9630 + 1.0f - r), (float)(u0), (float)(v0));
+            t->vertexUV((float)(x + 0.0f), (float)(y + h + yo),
+                        (float)(z + 1.0f - r), (float)(u1), (float)(v0));
+            t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 1.0f - 0.0f), (float)(u1), (float)(v1));
+            t->vertexUV((float)(x + 1.0f), (float)(y + 0.0f + yo),
+                        (float)(z + 1.0f - 0.0f), (float)(u0), (float)(v1));
+            t->vertexUV((float)(x + 1.0f), (float)(y + h + yo),
+                        (float)(z + 1.0f - r), (float)(u0), (float)(v0));
         }
-        if (yuri_3088::fire->yuri_3912(yuri_7194, yuri_9621, yuri_9625 + 1.0f, yuri_9630)) {
-            double yuri_9622 = yuri_9621 + 0.5f + 0.5f;
-            double yuri_9623 = yuri_9621 + 0.5f - 0.5f;
-            double yuri_9631 = yuri_9630 + 0.5f + 0.5f;
-            double yuri_9632 = yuri_9630 + 0.5f - 0.5f;
+        if (Tile::fire->canBurn(level, x, y + 1.0f, z)) {
+            double x0 = x + 0.5f + 0.5f;
+            double x1 = x + 0.5f - 0.5f;
+            double z0 = z + 0.5f + 0.5f;
+            double z1 = z + 0.5f - 0.5f;
 
-            double x0_ = yuri_9621 + 0.5f - 0.5f;
-            double x1_ = yuri_9621 + 0.5f + 0.5f;
-            double z0_ = yuri_9630 + 0.5f - 0.5f;
-            double z1_ = yuri_9630 + 0.5f + 0.5f;
+            double x0_ = x + 0.5f - 0.5f;
+            double x1_ = x + 0.5f + 0.5f;
+            double z0_ = z + 0.5f - 0.5f;
+            double z1_ = z + 0.5f + 0.5f;
 
-            yuri_9251 = firstTex;
-            u0 = yuri_9251->yuri_6072(true);
-            v0 = yuri_9251->yuri_6097(true);
-            u1 = yuri_9251->yuri_6073(true);
-            v1 = yuri_9251->yuri_6098(true);
+            tex = firstTex;
+            u0 = tex->getU0(true);
+            v0 = tex->getV0(true);
+            u1 = tex->getU1(true);
+            v1 = tex->getV1(true);
 
-            yuri_9625 += 1;
-            yuri_6412 = -0.2f;
+            y += 1;
+            h = -0.2f;
 
-            if (((yuri_9621 + yuri_9625 + yuri_9630) & 1) == 0) {
-                t->yuri_9524((float)(x0_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 0),
+            if (((x + y + z) & 1) == 0) {
+                t->vertexUV((float)(x0_), (float)(y + h), (float)(z + 0),
                             (float)(u1), (float)(v0));
-                t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9630 + 0),
+                t->vertexUV((float)(x0), (float)(y + 0), (float)(z + 0),
                             (float)(u1), (float)(v1));
-                t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9630 + 1),
+                t->vertexUV((float)(x0), (float)(y + 0), (float)(z + 1),
                             (float)(u0), (float)(v1));
-                t->yuri_9524((float)(x0_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 1),
+                t->vertexUV((float)(x0_), (float)(y + h), (float)(z + 1),
                             (float)(u0), (float)(v0));
 
-                yuri_9251 = secondTex;
-                u0 = yuri_9251->yuri_6072(true);
-                v0 = yuri_9251->yuri_6097(true);
-                u1 = yuri_9251->yuri_6073(true);
-                v1 = yuri_9251->yuri_6098(true);
+                tex = secondTex;
+                u0 = tex->getU0(true);
+                v0 = tex->getV0(true);
+                u1 = tex->getU1(true);
+                v1 = tex->getV1(true);
 
-                t->yuri_9524((float)(x1_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 1.0f),
+                t->vertexUV((float)(x1_), (float)(y + h), (float)(z + 1.0f),
                             (float)(u1), (float)(v0));
-                t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0.0f), (float)(yuri_9630 + 1.0f),
+                t->vertexUV((float)(x1), (float)(y + 0.0f), (float)(z + 1.0f),
                             (float)(u1), (float)(v1));
-                t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0.0f), (float)(yuri_9630 + 0),
+                t->vertexUV((float)(x1), (float)(y + 0.0f), (float)(z + 0),
                             (float)(u0), (float)(v1));
-                t->yuri_9524((float)(x1_), (float)(yuri_9625 + yuri_6412), (float)(yuri_9630 + 0),
+                t->vertexUV((float)(x1_), (float)(y + h), (float)(z + 0),
                             (float)(u0), (float)(v0));
             } else {
-                t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + yuri_6412), (float)(z1_),
+                t->vertexUV((float)(x + 0.0f), (float)(y + h), (float)(z1_),
                             (float)(u1), (float)(v0));
-                t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f), (float)(yuri_9632),
+                t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f), (float)(z1),
                             (float)(u1), (float)(v1));
-                t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + 0.0f), (float)(yuri_9632),
+                t->vertexUV((float)(x + 1.0f), (float)(y + 0.0f), (float)(z1),
                             (float)(u0), (float)(v1));
-                t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + yuri_6412), (float)(z1_),
+                t->vertexUV((float)(x + 1.0f), (float)(y + h), (float)(z1_),
                             (float)(u0), (float)(v0));
 
-                yuri_9251 = secondTex;
-                u0 = yuri_9251->yuri_6072(true);
-                v0 = yuri_9251->yuri_6097(true);
-                u1 = yuri_9251->yuri_6073(true);
-                v1 = yuri_9251->yuri_6098(true);
+                tex = secondTex;
+                u0 = tex->getU0(true);
+                v0 = tex->getV0(true);
+                u1 = tex->getU1(true);
+                v1 = tex->getV1(true);
 
-                t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + yuri_6412), (float)(z0_),
+                t->vertexUV((float)(x + 1.0f), (float)(y + h), (float)(z0_),
                             (float)(u1), (float)(v0));
-                t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + 0.0f), (float)(yuri_9631),
+                t->vertexUV((float)(x + 1.0f), (float)(y + 0.0f), (float)(z0),
                             (float)(u1), (float)(v1));
-                t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + 0.0f), (float)(yuri_9631),
+                t->vertexUV((float)(x + 0.0f), (float)(y + 0.0f), (float)(z0),
                             (float)(u0), (float)(v1));
-                t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + yuri_6412), (float)(z0_),
+                t->vertexUV((float)(x + 0.0f), (float)(y + h), (float)(z0_),
                             (float)(u0), (float)(v0));
             }
         }
@@ -2703,25 +2703,25 @@ bool yuri_3101::yuri_9217(yuri_821* tt, int yuri_9621, int yuri_9625, int yuri_9
     return true;
 }
 
-bool yuri_3101::yuri_9213(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateDustInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    yuri_1346* crossTexture =
-        yuri_2340::yuri_6007(yuri_2340::TEXTURE_CROSS);
-    yuri_1346* lineTexture =
-        yuri_2340::yuri_6007(yuri_2340::TEXTURE_LINE);
-    yuri_1346* crossTextureOverlay =
-        yuri_2340::yuri_6007(yuri_2340::TEXTURE_CROSS_OVERLAY);
-    yuri_1346* lineTextureOverlay =
-        yuri_2340::yuri_6007(yuri_2340::TEXTURE_LINE_OVERLAY);
+    int data = level->getData(x, y, z);
+    Icon* crossTexture =
+        RedStoneDustTile::getTexture(RedStoneDustTile::TEXTURE_CROSS);
+    Icon* lineTexture =
+        RedStoneDustTile::getTexture(RedStoneDustTile::TEXTURE_LINE);
+    Icon* crossTextureOverlay =
+        RedStoneDustTile::getTexture(RedStoneDustTile::TEXTURE_CROSS_OVERLAY);
+    Icon* lineTextureOverlay =
+        RedStoneDustTile::getTexture(RedStoneDustTile::TEXTURE_LINE_OVERLAY);
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(getLightColor(tt, level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
     // yuri wlw - yuri yuri yuri my girlfriend
     // scissors		blushing girls = ( i love girls / snuggle.lesbian kiss );
@@ -2734,28 +2734,28 @@ bool yuri_3101::yuri_9213(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     // my wife ( blushing girls < ship ) yuri = yuri;
 
     unsigned int colour = 0;
-    if (yuri_4295 == 0) {
-        colour = yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+    if (data == 0) {
+        colour = Minecraft::GetInstance()->getColourTable()->getColor(
             eMinecraftColour_Tile_RedstoneDustUnlit);
     } else {
         unsigned int minColour =
-            yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+            Minecraft::GetInstance()->getColourTable()->getColor(
                 eMinecraftColour_Tile_RedstoneDustLitMin);
         unsigned int maxColour =
-            yuri_1945::yuri_1039()->yuri_5034()->yuri_5031(
+            Minecraft::GetInstance()->getColourTable()->getColor(
                 eMinecraftColour_Tile_RedstoneDustLitMax);
 
-        yuri_9368 redComponent =
+        uint8_t redComponent =
             ((minColour >> 16) & 0xFF) +
             (((maxColour >> 16) & 0xFF - (minColour >> 16) & 0xFF) *
-             ((yuri_4295 - 1) / 14.0f));
-        yuri_9368 greenComponent =
+             ((data - 1) / 14.0f));
+        uint8_t greenComponent =
             ((minColour >> 8) & 0xFF) +
             (((maxColour >> 8) & 0xFF - (minColour >> 8) & 0xFF) *
-             ((yuri_4295 - 1) / 14.0f));
-        yuri_9368 blueComponent =
+             ((data - 1) / 14.0f));
+        uint8_t blueComponent =
             ((minColour) & 0xFF) +
-            (((maxColour) & 0xFF - (minColour) & 0xFF) * ((yuri_4295 - 1) / 14.0f));
+            (((maxColour) & 0xFF - (minColour) & 0xFF) * ((data - 1) / 14.0f));
 
         colour = redComponent << 16 | greenComponent << 8 | blueComponent;
     }
@@ -2765,59 +2765,59 @@ bool yuri_3101::yuri_9213(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float blue = (colour & 0xFF) / 255.0f;
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_4111(red, green, blue);
+        t->color(red, green, blue);
     } else {
-        t->yuri_4111(yuri_3844 * red, yuri_3844 * green, yuri_3844 * blue);
+        t->color(br * red, br * green, br * blue);
     }
     const float dustOffset = 0.25f / 16.0f;
     const float overlayOffset = 0.25f / 16.0f;
 
-    bool yuri_9535 = yuri_2340::yuri_9001(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630,
+    bool w = RedStoneDustTile::shouldConnectTo(level, x - 1, y, z,
                                                Direction::WEST) ||
-             (!yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630) &&
-              yuri_2340::yuri_9001(yuri_7194, yuri_9621 - 1, yuri_9625 - 1, yuri_9630,
+             (!level->isSolidBlockingTile(x - 1, y, z) &&
+              RedStoneDustTile::shouldConnectTo(level, x - 1, y - 1, z,
                                                 Direction::UNDEFINED));
-    bool e = yuri_2340::yuri_9001(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630,
+    bool e = RedStoneDustTile::shouldConnectTo(level, x + 1, y, z,
                                                Direction::EAST) ||
-             (!yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630) &&
-              yuri_2340::yuri_9001(yuri_7194, yuri_9621 + 1, yuri_9625 - 1, yuri_9630,
+             (!level->isSolidBlockingTile(x + 1, y, z) &&
+              RedStoneDustTile::shouldConnectTo(level, x + 1, y - 1, z,
                                                 Direction::UNDEFINED));
-    bool n = yuri_2340::yuri_9001(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1,
+    bool n = RedStoneDustTile::shouldConnectTo(level, x, y, z - 1,
                                                Direction::NORTH) ||
-             (!yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1) &&
-              yuri_2340::yuri_9001(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630 - 1,
+             (!level->isSolidBlockingTile(x, y, z - 1) &&
+              RedStoneDustTile::shouldConnectTo(level, x, y - 1, z - 1,
                                                 Direction::UNDEFINED));
-    bool s = yuri_2340::yuri_9001(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1,
+    bool s = RedStoneDustTile::shouldConnectTo(level, x, y, z + 1,
                                                Direction::SOUTH) ||
-             (!yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1) &&
-              yuri_2340::yuri_9001(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630 + 1,
+             (!level->isSolidBlockingTile(x, y, z + 1) &&
+              RedStoneDustTile::shouldConnectTo(level, x, y - 1, z + 1,
                                                 Direction::UNDEFINED));
-    if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625 + 1, yuri_9630)) {
-        if (yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630) &&
-            yuri_2340::yuri_9001(yuri_7194, yuri_9621 - 1, yuri_9625 + 1, yuri_9630,
+    if (!level->isSolidBlockingTile(x, y + 1, z)) {
+        if (level->isSolidBlockingTile(x - 1, y, z) &&
+            RedStoneDustTile::shouldConnectTo(level, x - 1, y + 1, z,
                                               Direction::UNDEFINED))
-            yuri_9535 = true;
-        if (yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630) &&
-            yuri_2340::yuri_9001(yuri_7194, yuri_9621 + 1, yuri_9625 + 1, yuri_9630,
+            w = true;
+        if (level->isSolidBlockingTile(x + 1, y, z) &&
+            RedStoneDustTile::shouldConnectTo(level, x + 1, y + 1, z,
                                               Direction::UNDEFINED))
             e = true;
-        if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1) &&
-            yuri_2340::yuri_9001(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630 - 1,
+        if (level->isSolidBlockingTile(x, y, z - 1) &&
+            RedStoneDustTile::shouldConnectTo(level, x, y + 1, z - 1,
                                               Direction::UNDEFINED))
             n = true;
-        if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1) &&
-            yuri_2340::yuri_9001(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630 + 1,
+        if (level->isSolidBlockingTile(x, y, z + 1) &&
+            RedStoneDustTile::shouldConnectTo(level, x, y + 1, z + 1,
                                               Direction::UNDEFINED))
             s = true;
     }
-    float yuri_9622 = (float)(yuri_9621 + 0.0f);
-    float yuri_9623 = (float)(yuri_9621 + 1.0f);
-    float yuri_9631 = (float)(yuri_9630 + 0.0f);
-    float yuri_9632 = (float)(yuri_9630 + 1.0f);
+    float x0 = (float)(x + 0.0f);
+    float x1 = (float)(x + 1.0f);
+    float z0 = (float)(z + 0.0f);
+    float z1 = (float)(z + 1.0f);
 
     int pic = 0;
-    if ((yuri_9535 || e) && (!n && !s)) pic = 1;
-    if ((n || s) && (!e && !yuri_9535)) pic = 2;
+    if ((w || e) && (!n && !s)) pic = 1;
+    if ((n || s) && (!e && !w)) pic = 2;
 
     if (pic == 0) {
         //		yuri ( yuri || cute girls || yuri || yuri )
@@ -2827,1754 +2827,1754 @@ bool yuri_3101::yuri_9213(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         int v1 = SharedConstants::WORLD_RESOLUTION;
 
         int cutDistance = 5;
-        if (!yuri_9535) yuri_9622 += cutDistance / (float)SharedConstants::WORLD_RESOLUTION;
-        if (!yuri_9535) u0 += cutDistance;
-        if (!e) yuri_9623 -= cutDistance / (float)SharedConstants::WORLD_RESOLUTION;
+        if (!w) x0 += cutDistance / (float)SharedConstants::WORLD_RESOLUTION;
+        if (!w) u0 += cutDistance;
+        if (!e) x1 -= cutDistance / (float)SharedConstants::WORLD_RESOLUTION;
         if (!e) u1 -= cutDistance;
-        if (!n) yuri_9631 += cutDistance / (float)SharedConstants::WORLD_RESOLUTION;
+        if (!n) z0 += cutDistance / (float)SharedConstants::WORLD_RESOLUTION;
         if (!n) v0 += cutDistance;
-        if (!s) yuri_9632 -= cutDistance / (float)SharedConstants::WORLD_RESOLUTION;
+        if (!s) z1 -= cutDistance / (float)SharedConstants::WORLD_RESOLUTION;
         if (!s) v1 -= cutDistance;
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + dustOffset), (float)(yuri_9632),
-                    crossTexture->yuri_6071(u1, true), crossTexture->yuri_6096(v1));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + dustOffset), (float)(yuri_9631),
-                    crossTexture->yuri_6071(u1, true), crossTexture->yuri_6096(v0));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + dustOffset), (float)(yuri_9631),
-                    crossTexture->yuri_6071(u0, true), crossTexture->yuri_6096(v0));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + dustOffset), (float)(yuri_9632),
-                    crossTexture->yuri_6071(u0, true), crossTexture->yuri_6096(v1));
+        t->vertexUV((float)(x1), (float)(y + dustOffset), (float)(z1),
+                    crossTexture->getU(u1, true), crossTexture->getV(v1));
+        t->vertexUV((float)(x1), (float)(y + dustOffset), (float)(z0),
+                    crossTexture->getU(u1, true), crossTexture->getV(v0));
+        t->vertexUV((float)(x0), (float)(y + dustOffset), (float)(z0),
+                    crossTexture->getU(u0, true), crossTexture->getV(v0));
+        t->vertexUV((float)(x0), (float)(y + dustOffset), (float)(z1),
+                    crossTexture->getU(u0, true), crossTexture->getV(v1));
 
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + dustOffset), (float)(yuri_9632),
-                    crossTextureOverlay->yuri_6071(u1, true),
-                    crossTextureOverlay->yuri_6096(v1, true));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + dustOffset), (float)(yuri_9631),
-                    crossTextureOverlay->yuri_6071(u1, true),
-                    crossTextureOverlay->yuri_6096(v0, true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + dustOffset), (float)(yuri_9631),
-                    crossTextureOverlay->yuri_6071(u0, true),
-                    crossTextureOverlay->yuri_6096(v0, true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + dustOffset), (float)(yuri_9632),
-                    crossTextureOverlay->yuri_6071(u0, true),
-                    crossTextureOverlay->yuri_6096(v1, true));
+        t->color(br, br, br);
+        t->vertexUV((float)(x1), (float)(y + dustOffset), (float)(z1),
+                    crossTextureOverlay->getU(u1, true),
+                    crossTextureOverlay->getV(v1, true));
+        t->vertexUV((float)(x1), (float)(y + dustOffset), (float)(z0),
+                    crossTextureOverlay->getU(u1, true),
+                    crossTextureOverlay->getV(v0, true));
+        t->vertexUV((float)(x0), (float)(y + dustOffset), (float)(z0),
+                    crossTextureOverlay->getU(u0, true),
+                    crossTextureOverlay->getV(v0, true));
+        t->vertexUV((float)(x0), (float)(y + dustOffset), (float)(z1),
+                    crossTextureOverlay->getU(u0, true),
+                    crossTextureOverlay->getV(v1, true));
     } else if (pic == 1) {
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + dustOffset), (float)(yuri_9632),
-                    lineTexture->yuri_6073(true), lineTexture->yuri_6098(true));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + dustOffset), (float)(yuri_9631),
-                    lineTexture->yuri_6073(true), lineTexture->yuri_6097(true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + dustOffset), (float)(yuri_9631),
-                    lineTexture->yuri_6072(true), lineTexture->yuri_6097(true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + dustOffset), (float)(yuri_9632),
-                    lineTexture->yuri_6072(true), lineTexture->yuri_6098(true));
+        t->vertexUV((float)(x1), (float)(y + dustOffset), (float)(z1),
+                    lineTexture->getU1(true), lineTexture->getV1(true));
+        t->vertexUV((float)(x1), (float)(y + dustOffset), (float)(z0),
+                    lineTexture->getU1(true), lineTexture->getV0(true));
+        t->vertexUV((float)(x0), (float)(y + dustOffset), (float)(z0),
+                    lineTexture->getU0(true), lineTexture->getV0(true));
+        t->vertexUV((float)(x0), (float)(y + dustOffset), (float)(z1),
+                    lineTexture->getU0(true), lineTexture->getV1(true));
 
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + overlayOffset), (float)(yuri_9632),
-                    lineTextureOverlay->yuri_6073(true),
-                    lineTextureOverlay->yuri_6098(true));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + overlayOffset), (float)(yuri_9631),
-                    lineTextureOverlay->yuri_6073(true),
-                    lineTextureOverlay->yuri_6097(true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + overlayOffset), (float)(yuri_9631),
-                    lineTextureOverlay->yuri_6072(true),
-                    lineTextureOverlay->yuri_6097(true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + overlayOffset), (float)(yuri_9632),
-                    lineTextureOverlay->yuri_6072(true),
-                    lineTextureOverlay->yuri_6098(true));
+        t->color(br, br, br);
+        t->vertexUV((float)(x1), (float)(y + overlayOffset), (float)(z1),
+                    lineTextureOverlay->getU1(true),
+                    lineTextureOverlay->getV1(true));
+        t->vertexUV((float)(x1), (float)(y + overlayOffset), (float)(z0),
+                    lineTextureOverlay->getU1(true),
+                    lineTextureOverlay->getV0(true));
+        t->vertexUV((float)(x0), (float)(y + overlayOffset), (float)(z0),
+                    lineTextureOverlay->getU0(true),
+                    lineTextureOverlay->getV0(true));
+        t->vertexUV((float)(x0), (float)(y + overlayOffset), (float)(z1),
+                    lineTextureOverlay->getU0(true),
+                    lineTextureOverlay->getV1(true));
     } else {
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + dustOffset), (float)(yuri_9632),
-                    lineTexture->yuri_6073(true), lineTexture->yuri_6098(true));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + dustOffset), (float)(yuri_9631),
-                    lineTexture->yuri_6072(true), lineTexture->yuri_6098(true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + dustOffset), (float)(yuri_9631),
-                    lineTexture->yuri_6072(true), lineTexture->yuri_6097(true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + dustOffset), (float)(yuri_9632),
-                    lineTexture->yuri_6073(true), lineTexture->yuri_6097(true));
+        t->vertexUV((float)(x1), (float)(y + dustOffset), (float)(z1),
+                    lineTexture->getU1(true), lineTexture->getV1(true));
+        t->vertexUV((float)(x1), (float)(y + dustOffset), (float)(z0),
+                    lineTexture->getU0(true), lineTexture->getV1(true));
+        t->vertexUV((float)(x0), (float)(y + dustOffset), (float)(z0),
+                    lineTexture->getU0(true), lineTexture->getV0(true));
+        t->vertexUV((float)(x0), (float)(y + dustOffset), (float)(z1),
+                    lineTexture->getU1(true), lineTexture->getV0(true));
 
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + overlayOffset), (float)(yuri_9632),
-                    lineTextureOverlay->yuri_6073(true),
-                    lineTextureOverlay->yuri_6098(true));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + overlayOffset), (float)(yuri_9631),
-                    lineTextureOverlay->yuri_6072(true),
-                    lineTextureOverlay->yuri_6098(true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + overlayOffset), (float)(yuri_9631),
-                    lineTextureOverlay->yuri_6072(true),
-                    lineTextureOverlay->yuri_6097(true));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + overlayOffset), (float)(yuri_9632),
-                    lineTextureOverlay->yuri_6073(true),
-                    lineTextureOverlay->yuri_6097(true));
+        t->color(br, br, br);
+        t->vertexUV((float)(x1), (float)(y + overlayOffset), (float)(z1),
+                    lineTextureOverlay->getU1(true),
+                    lineTextureOverlay->getV1(true));
+        t->vertexUV((float)(x1), (float)(y + overlayOffset), (float)(z0),
+                    lineTextureOverlay->getU0(true),
+                    lineTextureOverlay->getV1(true));
+        t->vertexUV((float)(x0), (float)(y + overlayOffset), (float)(z0),
+                    lineTextureOverlay->getU0(true),
+                    lineTextureOverlay->getV0(true));
+        t->vertexUV((float)(x0), (float)(y + overlayOffset), (float)(z1),
+                    lineTextureOverlay->getU1(true),
+                    lineTextureOverlay->getV0(true));
     }
 
-    if (!yuri_7194->yuri_7055(yuri_9621, yuri_9625 + 1, yuri_9630)) {
+    if (!level->isSolidBlockingTile(x, y + 1, z)) {
         const float yStretch = .35f / 16.0f;
 
-        if (yuri_7194->yuri_7055(yuri_9621 - 1, yuri_9625, yuri_9630) &&
-            yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625 + 1, yuri_9630) == yuri_3088::redStoneDust_Id) {
-            t->yuri_4111(yuri_3844 * red, yuri_3844 * green, yuri_3844 * blue);
-            t->yuri_9524((float)(yuri_9621 + dustOffset), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 1), lineTexture->yuri_6073(true),
-                        lineTexture->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + dustOffset), (float)(yuri_9625 + 0), (float)(yuri_9630 + 1),
-                        lineTexture->yuri_6072(true), lineTexture->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + dustOffset), (float)(yuri_9625 + 0), (float)(yuri_9630 + 0),
-                        lineTexture->yuri_6072(true), lineTexture->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + dustOffset), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 0), lineTexture->yuri_6073(true),
-                        lineTexture->yuri_6098(true));
+        if (level->isSolidBlockingTile(x - 1, y, z) &&
+            level->getTile(x - 1, y + 1, z) == Tile::redStoneDust_Id) {
+            t->color(br * red, br * green, br * blue);
+            t->vertexUV((float)(x + dustOffset), (float)(y + 1 + yStretch),
+                        (float)(z + 1), lineTexture->getU1(true),
+                        lineTexture->getV0(true));
+            t->vertexUV((float)(x + dustOffset), (float)(y + 0), (float)(z + 1),
+                        lineTexture->getU0(true), lineTexture->getV0(true));
+            t->vertexUV((float)(x + dustOffset), (float)(y + 0), (float)(z + 0),
+                        lineTexture->getU0(true), lineTexture->getV1(true));
+            t->vertexUV((float)(x + dustOffset), (float)(y + 1 + yStretch),
+                        (float)(z + 0), lineTexture->getU1(true),
+                        lineTexture->getV1(true));
 
-            t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
-            t->yuri_9524((float)(yuri_9621 + overlayOffset), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 1), lineTextureOverlay->yuri_6073(true),
-                        lineTextureOverlay->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + overlayOffset), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 1), lineTextureOverlay->yuri_6072(true),
-                        lineTextureOverlay->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + overlayOffset), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 0), lineTextureOverlay->yuri_6072(true),
-                        lineTextureOverlay->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + overlayOffset), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 0), lineTextureOverlay->yuri_6073(true),
-                        lineTextureOverlay->yuri_6098(true));
+            t->color(br, br, br);
+            t->vertexUV((float)(x + overlayOffset), (float)(y + 1 + yStretch),
+                        (float)(z + 1), lineTextureOverlay->getU1(true),
+                        lineTextureOverlay->getV0(true));
+            t->vertexUV((float)(x + overlayOffset), (float)(y + 0),
+                        (float)(z + 1), lineTextureOverlay->getU0(true),
+                        lineTextureOverlay->getV0(true));
+            t->vertexUV((float)(x + overlayOffset), (float)(y + 0),
+                        (float)(z + 0), lineTextureOverlay->getU0(true),
+                        lineTextureOverlay->getV1(true));
+            t->vertexUV((float)(x + overlayOffset), (float)(y + 1 + yStretch),
+                        (float)(z + 0), lineTextureOverlay->getU1(true),
+                        lineTextureOverlay->getV1(true));
         }
-        if (yuri_7194->yuri_7055(yuri_9621 + 1, yuri_9625, yuri_9630) &&
-            yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625 + 1, yuri_9630) == yuri_3088::redStoneDust_Id) {
-            t->yuri_4111(yuri_3844 * red, yuri_3844 * green, yuri_3844 * blue);
-            t->yuri_9524((float)(yuri_9621 + 1 - dustOffset), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 1), lineTexture->yuri_6072(true),
-                        lineTexture->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 1 - dustOffset), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 1), lineTexture->yuri_6073(true),
-                        lineTexture->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 1 - dustOffset), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 0), lineTexture->yuri_6073(true),
-                        lineTexture->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + 1 - dustOffset), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 0), lineTexture->yuri_6072(true),
-                        lineTexture->yuri_6097(true));
+        if (level->isSolidBlockingTile(x + 1, y, z) &&
+            level->getTile(x + 1, y + 1, z) == Tile::redStoneDust_Id) {
+            t->color(br * red, br * green, br * blue);
+            t->vertexUV((float)(x + 1 - dustOffset), (float)(y + 0),
+                        (float)(z + 1), lineTexture->getU0(true),
+                        lineTexture->getV1(true));
+            t->vertexUV((float)(x + 1 - dustOffset), (float)(y + 1 + yStretch),
+                        (float)(z + 1), lineTexture->getU1(true),
+                        lineTexture->getV1(true));
+            t->vertexUV((float)(x + 1 - dustOffset), (float)(y + 1 + yStretch),
+                        (float)(z + 0), lineTexture->getU1(true),
+                        lineTexture->getV0(true));
+            t->vertexUV((float)(x + 1 - dustOffset), (float)(y + 0),
+                        (float)(z + 0), lineTexture->getU0(true),
+                        lineTexture->getV0(true));
 
-            t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
-            t->yuri_9524((float)(yuri_9621 + 1 - overlayOffset), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 1), lineTextureOverlay->yuri_6072(true),
-                        lineTextureOverlay->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 1 - overlayOffset),
-                        (float)(yuri_9625 + 1 + yStretch), (float)(yuri_9630 + 1),
-                        lineTextureOverlay->yuri_6073(true),
-                        lineTextureOverlay->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 1 - overlayOffset),
-                        (float)(yuri_9625 + 1 + yStretch), (float)(yuri_9630 + 0),
-                        lineTextureOverlay->yuri_6073(true),
-                        lineTextureOverlay->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + 1 - overlayOffset), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 0), lineTextureOverlay->yuri_6072(true),
-                        lineTextureOverlay->yuri_6097(true));
+            t->color(br, br, br);
+            t->vertexUV((float)(x + 1 - overlayOffset), (float)(y + 0),
+                        (float)(z + 1), lineTextureOverlay->getU0(true),
+                        lineTextureOverlay->getV1(true));
+            t->vertexUV((float)(x + 1 - overlayOffset),
+                        (float)(y + 1 + yStretch), (float)(z + 1),
+                        lineTextureOverlay->getU1(true),
+                        lineTextureOverlay->getV1(true));
+            t->vertexUV((float)(x + 1 - overlayOffset),
+                        (float)(y + 1 + yStretch), (float)(z + 0),
+                        lineTextureOverlay->getU1(true),
+                        lineTextureOverlay->getV0(true));
+            t->vertexUV((float)(x + 1 - overlayOffset), (float)(y + 0),
+                        (float)(z + 0), lineTextureOverlay->getU0(true),
+                        lineTextureOverlay->getV0(true));
         }
-        if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 - 1) &&
-            yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630 - 1) == yuri_3088::redStoneDust_Id) {
-            t->yuri_4111(yuri_3844 * red, yuri_3844 * green, yuri_3844 * blue);
-            t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 0), (float)(yuri_9630 + dustOffset),
-                        lineTexture->yuri_6072(true), lineTexture->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + dustOffset), lineTexture->yuri_6073(true),
-                        lineTexture->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + dustOffset), lineTexture->yuri_6073(true),
-                        lineTexture->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 0), (float)(yuri_9630 + dustOffset),
-                        lineTexture->yuri_6072(true), lineTexture->yuri_6097(true));
+        if (level->isSolidBlockingTile(x, y, z - 1) &&
+            level->getTile(x, y + 1, z - 1) == Tile::redStoneDust_Id) {
+            t->color(br * red, br * green, br * blue);
+            t->vertexUV((float)(x + 1), (float)(y + 0), (float)(z + dustOffset),
+                        lineTexture->getU0(true), lineTexture->getV1(true));
+            t->vertexUV((float)(x + 1), (float)(y + 1 + yStretch),
+                        (float)(z + dustOffset), lineTexture->getU1(true),
+                        lineTexture->getV1(true));
+            t->vertexUV((float)(x + 0), (float)(y + 1 + yStretch),
+                        (float)(z + dustOffset), lineTexture->getU1(true),
+                        lineTexture->getV0(true));
+            t->vertexUV((float)(x + 0), (float)(y + 0), (float)(z + dustOffset),
+                        lineTexture->getU0(true), lineTexture->getV0(true));
 
-            t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
-            t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + overlayOffset),
-                        lineTextureOverlay->yuri_6072(true),
-                        lineTextureOverlay->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + overlayOffset),
-                        lineTextureOverlay->yuri_6073(true),
-                        lineTextureOverlay->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + overlayOffset),
-                        lineTextureOverlay->yuri_6073(true),
-                        lineTextureOverlay->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + overlayOffset),
-                        lineTextureOverlay->yuri_6072(true),
-                        lineTextureOverlay->yuri_6097(true));
+            t->color(br, br, br);
+            t->vertexUV((float)(x + 1), (float)(y + 0),
+                        (float)(z + overlayOffset),
+                        lineTextureOverlay->getU0(true),
+                        lineTextureOverlay->getV1(true));
+            t->vertexUV((float)(x + 1), (float)(y + 1 + yStretch),
+                        (float)(z + overlayOffset),
+                        lineTextureOverlay->getU1(true),
+                        lineTextureOverlay->getV1(true));
+            t->vertexUV((float)(x + 0), (float)(y + 1 + yStretch),
+                        (float)(z + overlayOffset),
+                        lineTextureOverlay->getU1(true),
+                        lineTextureOverlay->getV0(true));
+            t->vertexUV((float)(x + 0), (float)(y + 0),
+                        (float)(z + overlayOffset),
+                        lineTextureOverlay->getU0(true),
+                        lineTextureOverlay->getV0(true));
         }
-        if (yuri_7194->yuri_7055(yuri_9621, yuri_9625, yuri_9630 + 1) &&
-            yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630 + 1) == yuri_3088::redStoneDust_Id) {
-            t->yuri_4111(yuri_3844 * red, yuri_3844 * green, yuri_3844 * blue);
-            t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 1 - dustOffset), lineTexture->yuri_6073(true),
-                        lineTexture->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 1 - dustOffset), lineTexture->yuri_6072(true),
-                        lineTexture->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 1 - dustOffset), lineTexture->yuri_6072(true),
-                        lineTexture->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 1 - dustOffset), lineTexture->yuri_6073(true),
-                        lineTexture->yuri_6098(true));
+        if (level->isSolidBlockingTile(x, y, z + 1) &&
+            level->getTile(x, y + 1, z + 1) == Tile::redStoneDust_Id) {
+            t->color(br * red, br * green, br * blue);
+            t->vertexUV((float)(x + 1), (float)(y + 1 + yStretch),
+                        (float)(z + 1 - dustOffset), lineTexture->getU1(true),
+                        lineTexture->getV0(true));
+            t->vertexUV((float)(x + 1), (float)(y + 0),
+                        (float)(z + 1 - dustOffset), lineTexture->getU0(true),
+                        lineTexture->getV0(true));
+            t->vertexUV((float)(x + 0), (float)(y + 0),
+                        (float)(z + 1 - dustOffset), lineTexture->getU0(true),
+                        lineTexture->getV1(true));
+            t->vertexUV((float)(x + 0), (float)(y + 1 + yStretch),
+                        (float)(z + 1 - dustOffset), lineTexture->getU1(true),
+                        lineTexture->getV1(true));
 
-            t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
-            t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 1 - overlayOffset),
-                        lineTextureOverlay->yuri_6073(true),
-                        lineTextureOverlay->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + 1), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 1 - overlayOffset),
-                        lineTextureOverlay->yuri_6072(true),
-                        lineTextureOverlay->yuri_6097(true));
-            t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 0),
-                        (float)(yuri_9630 + 1 - overlayOffset),
-                        lineTextureOverlay->yuri_6072(true),
-                        lineTextureOverlay->yuri_6098(true));
-            t->yuri_9524((float)(yuri_9621 + 0), (float)(yuri_9625 + 1 + yStretch),
-                        (float)(yuri_9630 + 1 - overlayOffset),
-                        lineTextureOverlay->yuri_6073(true),
-                        lineTextureOverlay->yuri_6098(true));
+            t->color(br, br, br);
+            t->vertexUV((float)(x + 1), (float)(y + 1 + yStretch),
+                        (float)(z + 1 - overlayOffset),
+                        lineTextureOverlay->getU1(true),
+                        lineTextureOverlay->getV0(true));
+            t->vertexUV((float)(x + 1), (float)(y + 0),
+                        (float)(z + 1 - overlayOffset),
+                        lineTextureOverlay->getU0(true),
+                        lineTextureOverlay->getV0(true));
+            t->vertexUV((float)(x + 0), (float)(y + 0),
+                        (float)(z + 1 - overlayOffset),
+                        lineTextureOverlay->getU0(true),
+                        lineTextureOverlay->getV1(true));
+            t->vertexUV((float)(x + 0), (float)(y + 1 + yStretch),
+                        (float)(z + 1 - overlayOffset),
+                        lineTextureOverlay->getU1(true),
+                        lineTextureOverlay->getV1(true));
         }
     }
 
     return true;
 }
 
-bool yuri_3101::yuri_9231(yuri_2299* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateRailInWorld(RailTile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
+    int data = level->getData(x, y, z);
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0, yuri_4295);
-    if (yuri_6599()) yuri_9251 = fixedTexture;
+    Icon* tex = getTexture(tt, 0, data);
+    if (hasFixedTexture()) tex = fixedTexture;
 
-    if (tt->yuri_7101()) {
-        yuri_4295 &= yuri_2299::RAIL_DIRECTION_MASK;
+    if (tt->isUsesDataBit()) {
+        data &= RailTile::RAIL_DIRECTION_MASK;
     }
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
+        t->tex2(getLightColor(tt, level, x, y, z));
+        t->color(1.0f, 1.0f, 1.0f);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        t->color(br, br, br);
     }
 
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
     float r = 1 / 16.0f;
 
-    float yuri_9622 = (float)(yuri_9621 + 1);
-    float yuri_9623 = (float)(yuri_9621 + 1);
-    float x2 = (float)(yuri_9621 + 0);
-    float x3 = (float)(yuri_9621 + 0);
+    float x0 = (float)(x + 1);
+    float x1 = (float)(x + 1);
+    float x2 = (float)(x + 0);
+    float x3 = (float)(x + 0);
 
-    float yuri_9631 = (float)(yuri_9630 + 0);
-    float yuri_9632 = (float)(yuri_9630 + 1);
-    float z2 = (float)(yuri_9630 + 1);
-    float z3 = (float)(yuri_9630 + 0);
+    float z0 = (float)(z + 0);
+    float z1 = (float)(z + 1);
+    float z2 = (float)(z + 1);
+    float z3 = (float)(z + 0);
 
-    float yuri_9626 = (float)(yuri_9625 + r);
-    float yuri_9627 = (float)(yuri_9625 + r);
-    float y2 = (float)(yuri_9625 + r);
-    float y3 = (float)(yuri_9625 + r);
+    float y0 = (float)(y + r);
+    float y1 = (float)(y + r);
+    float y2 = (float)(y + r);
+    float y3 = (float)(y + r);
 
-    if (yuri_4295 == 1 || yuri_4295 == 2 || yuri_4295 == 3 || yuri_4295 == 7) {
-        yuri_9622 = x3 = (float)(yuri_9621 + 1);
-        yuri_9623 = x2 = (float)(yuri_9621 + 0);
-        yuri_9631 = yuri_9632 = (float)(yuri_9630 + 1);
-        z2 = z3 = (float)(yuri_9630 + 0);
-    } else if (yuri_4295 == 8) {
-        yuri_9622 = yuri_9623 = (float)(yuri_9621 + 0);
-        x2 = x3 = (float)(yuri_9621 + 1);
-        yuri_9631 = z3 = (float)(yuri_9630 + 1);
-        yuri_9632 = z2 = (float)(yuri_9630 + 0);
-    } else if (yuri_4295 == 9) {
-        yuri_9622 = x3 = (float)(yuri_9621 + 0);
-        yuri_9623 = x2 = (float)(yuri_9621 + 1);
-        yuri_9631 = yuri_9632 = (float)(yuri_9630 + 0);
-        z2 = z3 = (float)(yuri_9630 + 1);
+    if (data == 1 || data == 2 || data == 3 || data == 7) {
+        x0 = x3 = (float)(x + 1);
+        x1 = x2 = (float)(x + 0);
+        z0 = z1 = (float)(z + 1);
+        z2 = z3 = (float)(z + 0);
+    } else if (data == 8) {
+        x0 = x1 = (float)(x + 0);
+        x2 = x3 = (float)(x + 1);
+        z0 = z3 = (float)(z + 1);
+        z1 = z2 = (float)(z + 0);
+    } else if (data == 9) {
+        x0 = x3 = (float)(x + 0);
+        x1 = x2 = (float)(x + 1);
+        z0 = z1 = (float)(z + 0);
+        z2 = z3 = (float)(z + 1);
     }
 
-    if (yuri_4295 == 2 || yuri_4295 == 4) {
-        yuri_9626 += 1;
+    if (data == 2 || data == 4) {
+        y0 += 1;
         y3 += 1;
-    } else if (yuri_4295 == 3 || yuri_4295 == 5) {
-        yuri_9627 += 1;
+    } else if (data == 3 || data == 5) {
+        y1 += 1;
         y2 += 1;
     }
 
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u1),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y1), (float)(z1), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(x2), (float)(y2), (float)(z2), (float)(u0),
+    t->vertexUV((float)(x2), (float)(y2), (float)(z2), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(x3), (float)(y3), (float)(z3), (float)(u0),
+    t->vertexUV((float)(x3), (float)(y3), (float)(z3), (float)(u0),
                 (float)(v0));
 
-    t->yuri_9524((float)(x3), (float)(y3), (float)(z3), (float)(u0),
+    t->vertexUV((float)(x3), (float)(y3), (float)(z3), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(x2), (float)(y2), (float)(z2), (float)(u0),
+    t->vertexUV((float)(x2), (float)(y2), (float)(z2), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y1), (float)(z1), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u1),
                 (float)(v0));
 
     return true;
 }
 
-bool yuri_3101::yuri_9223(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateLadderInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0);
+    Icon* tex = getTexture(tt, 0);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
+    if (hasFixedTexture()) tex = fixedTexture;
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        float yuri_3844 = 1;
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        t->tex2(getLightColor(tt, level, x, y, z));
+        float br = 1;
+        t->color(br, br, br);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        t->color(br, br, br);
     }
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
-    int face = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int face = level->getData(x, y, z);
 
     float o = 0 / 16.0f;
     float r = 0.05f;
     if (face == 5) {
-        t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + 1 + o), (float)(yuri_9630 + 1 + o),
+        t->vertexUV((float)(x + r), (float)(y + 1 + o), (float)(z + 1 + o),
                     (float)(u0), (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + 0 - o), (float)(yuri_9630 + 1 + o),
+        t->vertexUV((float)(x + r), (float)(y + 0 - o), (float)(z + 1 + o),
                     (float)(u0), (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + 0 - o), (float)(yuri_9630 + 0 - o),
+        t->vertexUV((float)(x + r), (float)(y + 0 - o), (float)(z + 0 - o),
                     (float)(u1), (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + 1 + o), (float)(yuri_9630 + 0 - o),
+        t->vertexUV((float)(x + r), (float)(y + 1 + o), (float)(z + 0 - o),
                     (float)(u1), (float)(v0));
     }
     if (face == 4) {
-        t->yuri_9524((float)(yuri_9621 + 1 - r), (float)(yuri_9625 + 0 - o), (float)(yuri_9630 + 1 + o),
+        t->vertexUV((float)(x + 1 - r), (float)(y + 0 - o), (float)(z + 1 + o),
                     (float)(u1), (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 1 - r), (float)(yuri_9625 + 1 + o), (float)(yuri_9630 + 1 + o),
+        t->vertexUV((float)(x + 1 - r), (float)(y + 1 + o), (float)(z + 1 + o),
                     (float)(u1), (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 1 - r), (float)(yuri_9625 + 1 + o), (float)(yuri_9630 + 0 - o),
+        t->vertexUV((float)(x + 1 - r), (float)(y + 1 + o), (float)(z + 0 - o),
                     (float)(u0), (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 1 - r), (float)(yuri_9625 + 0 - o), (float)(yuri_9630 + 0 - o),
+        t->vertexUV((float)(x + 1 - r), (float)(y + 0 - o), (float)(z + 0 - o),
                     (float)(u0), (float)(v1));
     }
     if (face == 3) {
-        t->yuri_9524((float)(yuri_9621 + 1 + o), (float)(yuri_9625 + 0 - o), (float)(yuri_9630 + r),
+        t->vertexUV((float)(x + 1 + o), (float)(y + 0 - o), (float)(z + r),
                     (float)(u1), (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 1 + o), (float)(yuri_9625 + 1 + o), (float)(yuri_9630 + r),
+        t->vertexUV((float)(x + 1 + o), (float)(y + 1 + o), (float)(z + r),
                     (float)(u1), (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 0 - o), (float)(yuri_9625 + 1 + o), (float)(yuri_9630 + r),
+        t->vertexUV((float)(x + 0 - o), (float)(y + 1 + o), (float)(z + r),
                     (float)(u0), (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 0 - o), (float)(yuri_9625 + 0 - o), (float)(yuri_9630 + r),
+        t->vertexUV((float)(x + 0 - o), (float)(y + 0 - o), (float)(z + r),
                     (float)(u0), (float)(v1));
     }
     if (face == 2) {
-        t->yuri_9524((float)(yuri_9621 + 1 + o), (float)(yuri_9625 + 1 + o), (float)(yuri_9630 + 1 - r),
+        t->vertexUV((float)(x + 1 + o), (float)(y + 1 + o), (float)(z + 1 - r),
                     (float)(u0), (float)(v0));
-        t->yuri_9524((float)(yuri_9621 + 1 + o), (float)(yuri_9625 + 0 - o), (float)(yuri_9630 + 1 - r),
+        t->vertexUV((float)(x + 1 + o), (float)(y + 0 - o), (float)(z + 1 - r),
                     (float)(u0), (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 0 - o), (float)(yuri_9625 + 0 - o), (float)(yuri_9630 + 1 - r),
+        t->vertexUV((float)(x + 0 - o), (float)(y + 0 - o), (float)(z + 1 - r),
                     (float)(u1), (float)(v1));
-        t->yuri_9524((float)(yuri_9621 + 0 - o), (float)(yuri_9625 + 1 + o), (float)(yuri_9630 + 1 - r),
+        t->vertexUV((float)(x + 0 - o), (float)(y + 1 + o), (float)(z + 1 - r),
                     (float)(u1), (float)(v0));
     }
 
     return true;
 }
 
-bool yuri_3101::yuri_9246(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateVineInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0);
+    Icon* tex = getTexture(tt, 0);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
+    if (hasFixedTexture()) tex = fixedTexture;
 
-    float yuri_3844 = 1;
+    float br = 1;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
+        t->tex2(getLightColor(tt, level, x, y, z));
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
     {
-        int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        int col = tt->getColor(level, x, y, z);
         float r = ((col >> 16) & 0xff) / 255.0f;
         float g = ((col >> 8) & 0xff) / 255.0f;
-        float yuri_3775 = ((col) & 0xff) / 255.0f;
+        float b = ((col) & 0xff) / 255.0f;
 
-        t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+        t->color(br * r, br * g, br * b);
     }
 
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
     float r = 0.05f;
-    int facings = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    int facings = level->getData(x, y, z);
 
-    if ((facings & yuri_3342::VINE_WEST) != 0) {
-        t->yuri_9524(yuri_9621 + r, yuri_9625 + 1, yuri_9630 + 1, u0, v0);
-        t->yuri_9524(yuri_9621 + r, yuri_9625 + 0, yuri_9630 + 1, u0, v1);
-        t->yuri_9524(yuri_9621 + r, yuri_9625 + 0, yuri_9630 + 0, u1, v1);
-        t->yuri_9524(yuri_9621 + r, yuri_9625 + 1, yuri_9630 + 0, u1, v0);
+    if ((facings & VineTile::VINE_WEST) != 0) {
+        t->vertexUV(x + r, y + 1, z + 1, u0, v0);
+        t->vertexUV(x + r, y + 0, z + 1, u0, v1);
+        t->vertexUV(x + r, y + 0, z + 0, u1, v1);
+        t->vertexUV(x + r, y + 1, z + 0, u1, v0);
 
-        t->yuri_9524(yuri_9621 + r, yuri_9625 + 1, yuri_9630 + 0, u1, v0);
-        t->yuri_9524(yuri_9621 + r, yuri_9625 + 0, yuri_9630 + 0, u1, v1);
-        t->yuri_9524(yuri_9621 + r, yuri_9625 + 0, yuri_9630 + 1, u0, v1);
-        t->yuri_9524(yuri_9621 + r, yuri_9625 + 1, yuri_9630 + 1, u0, v0);
+        t->vertexUV(x + r, y + 1, z + 0, u1, v0);
+        t->vertexUV(x + r, y + 0, z + 0, u1, v1);
+        t->vertexUV(x + r, y + 0, z + 1, u0, v1);
+        t->vertexUV(x + r, y + 1, z + 1, u0, v0);
     }
-    if ((facings & yuri_3342::VINE_EAST) != 0) {
-        t->yuri_9524(yuri_9621 + 1 - r, yuri_9625 + 0, yuri_9630 + 1, u1, v1);
-        t->yuri_9524(yuri_9621 + 1 - r, yuri_9625 + 1, yuri_9630 + 1, u1, v0);
-        t->yuri_9524(yuri_9621 + 1 - r, yuri_9625 + 1, yuri_9630 + 0, u0, v0);
-        t->yuri_9524(yuri_9621 + 1 - r, yuri_9625 + 0, yuri_9630 + 0, u0, v1);
+    if ((facings & VineTile::VINE_EAST) != 0) {
+        t->vertexUV(x + 1 - r, y + 0, z + 1, u1, v1);
+        t->vertexUV(x + 1 - r, y + 1, z + 1, u1, v0);
+        t->vertexUV(x + 1 - r, y + 1, z + 0, u0, v0);
+        t->vertexUV(x + 1 - r, y + 0, z + 0, u0, v1);
 
-        t->yuri_9524(yuri_9621 + 1 - r, yuri_9625 + 0, yuri_9630 + 0, u0, v1);
-        t->yuri_9524(yuri_9621 + 1 - r, yuri_9625 + 1, yuri_9630 + 0, u0, v0);
-        t->yuri_9524(yuri_9621 + 1 - r, yuri_9625 + 1, yuri_9630 + 1, u1, v0);
-        t->yuri_9524(yuri_9621 + 1 - r, yuri_9625 + 0, yuri_9630 + 1, u1, v1);
+        t->vertexUV(x + 1 - r, y + 0, z + 0, u0, v1);
+        t->vertexUV(x + 1 - r, y + 1, z + 0, u0, v0);
+        t->vertexUV(x + 1 - r, y + 1, z + 1, u1, v0);
+        t->vertexUV(x + 1 - r, y + 0, z + 1, u1, v1);
     }
-    if ((facings & yuri_3342::VINE_NORTH) != 0) {
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 0, yuri_9630 + r, u1, v1);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 1, yuri_9630 + r, u1, v0);
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 1, yuri_9630 + r, u0, v0);
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 0, yuri_9630 + r, u0, v1);
+    if ((facings & VineTile::VINE_NORTH) != 0) {
+        t->vertexUV(x + 1, y + 0, z + r, u1, v1);
+        t->vertexUV(x + 1, y + 1, z + r, u1, v0);
+        t->vertexUV(x + 0, y + 1, z + r, u0, v0);
+        t->vertexUV(x + 0, y + 0, z + r, u0, v1);
 
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 0, yuri_9630 + r, u0, v1);
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 1, yuri_9630 + r, u0, v0);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 1, yuri_9630 + r, u1, v0);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 0, yuri_9630 + r, u1, v1);
+        t->vertexUV(x + 0, y + 0, z + r, u0, v1);
+        t->vertexUV(x + 0, y + 1, z + r, u0, v0);
+        t->vertexUV(x + 1, y + 1, z + r, u1, v0);
+        t->vertexUV(x + 1, y + 0, z + r, u1, v1);
     }
-    if ((facings & yuri_3342::VINE_SOUTH) != 0) {
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 1, yuri_9630 + 1 - r, u0, v0);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 0, yuri_9630 + 1 - r, u0, v1);
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 0, yuri_9630 + 1 - r, u1, v1);
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 1, yuri_9630 + 1 - r, u1, v0);
+    if ((facings & VineTile::VINE_SOUTH) != 0) {
+        t->vertexUV(x + 1, y + 1, z + 1 - r, u0, v0);
+        t->vertexUV(x + 1, y + 0, z + 1 - r, u0, v1);
+        t->vertexUV(x + 0, y + 0, z + 1 - r, u1, v1);
+        t->vertexUV(x + 0, y + 1, z + 1 - r, u1, v0);
 
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 1, yuri_9630 + 1 - r, u1, v0);
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 0, yuri_9630 + 1 - r, u1, v1);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 0, yuri_9630 + 1 - r, u0, v1);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 1, yuri_9630 + 1 - r, u0, v0);
+        t->vertexUV(x + 0, y + 1, z + 1 - r, u1, v0);
+        t->vertexUV(x + 0, y + 0, z + 1 - r, u1, v1);
+        t->vertexUV(x + 1, y + 0, z + 1 - r, u0, v1);
+        t->vertexUV(x + 1, y + 1, z + 1 - r, u0, v0);
     }
-    if (yuri_7194->yuri_7055(yuri_9621, yuri_9625 + 1, yuri_9630)) {
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 1 - r, yuri_9630 + 0, u0, v0);
-        t->yuri_9524(yuri_9621 + 1, yuri_9625 + 1 - r, yuri_9630 + 1, u0, v1);
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 1 - r, yuri_9630 + 1, u1, v1);
-        t->yuri_9524(yuri_9621 + 0, yuri_9625 + 1 - r, yuri_9630 + 0, u1, v0);
+    if (level->isSolidBlockingTile(x, y + 1, z)) {
+        t->vertexUV(x + 1, y + 1 - r, z + 0, u0, v0);
+        t->vertexUV(x + 1, y + 1 - r, z + 1, u0, v1);
+        t->vertexUV(x + 0, y + 1 - r, z + 1, u1, v1);
+        t->vertexUV(x + 0, y + 1 - r, z + 0, u1, v0);
     }
 
     return true;
 }
 
-bool yuri_3101::yuri_9240(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int depth = yuri_7194->yuri_5515();
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateThinPaneInWorld(Tile* tt, int x, int y, int z) {
+    int depth = level->getMaxBuildHeight();
+    Tesselator* t = Tesselator::getInstance();
 
-    t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    t->tex2(tt->getLightColor(level, x, y, z));
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
-    t->yuri_4111(r, g, yuri_3775);
+    t->color(r, g, b);
 
-    yuri_1346* yuri_9251;
-    yuri_1346* edgeTex;
+    Icon* tex;
+    Icon* edgeTex;
 
-    bool stained = dynamic_cast<yuri_2895*>(tt) != nullptr;
-    if (yuri_6599()) {
-        yuri_9251 = fixedTexture;
+    bool stained = dynamic_cast<StainedGlassPaneBlock*>(tt) != nullptr;
+    if (hasFixedTexture()) {
+        tex = fixedTexture;
         edgeTex = fixedTexture;
     } else {
-        int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-        yuri_9251 = yuri_6007(tt, 0, yuri_4295);
-        edgeTex = (stained) ? ((yuri_2895*)tt)->yuri_5191(yuri_4295)
-                            : ((yuri_3071*)tt)->yuri_5191();
+        int data = level->getData(x, y, z);
+        tex = getTexture(tt, 0, data);
+        edgeTex = (stained) ? ((StainedGlassPaneBlock*)tt)->getEdgeTexture(data)
+                            : ((ThinFenceTile*)tt)->getEdgeTexture();
     }
 
-    double u0 = yuri_9251->yuri_6072();
-    double iu0 = yuri_9251->yuri_6071(7);
-    double iu1 = yuri_9251->yuri_6071(9);
-    double u1 = yuri_9251->yuri_6073();
-    double v0 = yuri_9251->yuri_6097();
-    double v1 = yuri_9251->yuri_6098();
+    double u0 = tex->getU0();
+    double iu0 = tex->getU(7);
+    double iu1 = tex->getU(9);
+    double u1 = tex->getU1();
+    double v0 = tex->getV0();
+    double v1 = tex->getV1();
 
-    double eiu0 = edgeTex->yuri_6071(7);
-    double eiu1 = edgeTex->yuri_6071(9);
-    double ev0 = edgeTex->yuri_6097();
-    double ev1 = edgeTex->yuri_6098();
-    double eiv0 = edgeTex->yuri_6096(7);
-    double eiv1 = edgeTex->yuri_6096(9);
+    double eiu0 = edgeTex->getU(7);
+    double eiu1 = edgeTex->getU(9);
+    double ev0 = edgeTex->getV0();
+    double ev1 = edgeTex->getV1();
+    double eiv0 = edgeTex->getV(7);
+    double eiv1 = edgeTex->getV(9);
 
-    double yuri_9622 = yuri_9621;
-    double yuri_9623 = yuri_9621 + 1;
-    double yuri_9631 = yuri_9630;
-    double yuri_9632 = yuri_9630 + 1;
-    double ix0 = yuri_9621 + .5 - 1.0 / 16.0;
-    double ix1 = yuri_9621 + .5 + 1.0 / 16.0;
-    double iz0 = yuri_9630 + .5 - 1.0 / 16.0;
-    double iz1 = yuri_9630 + .5 + 1.0 / 16.0;
+    double x0 = x;
+    double x1 = x + 1;
+    double z0 = z;
+    double z1 = z + 1;
+    double ix0 = x + .5 - 1.0 / 16.0;
+    double ix1 = x + .5 + 1.0 / 16.0;
+    double iz0 = z + .5 - 1.0 / 16.0;
+    double iz1 = z + .5 + 1.0 / 16.0;
 
     bool n = (stained)
-                 ? ((yuri_2895*)tt)
-                       ->yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1))
-                 : ((yuri_3071*)tt)->yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1));
+                 ? ((StainedGlassPaneBlock*)tt)
+                       ->attachsTo(level->getTile(x, y, z - 1))
+                 : ((ThinFenceTile*)tt)->attachsTo(level->getTile(x, y, z - 1));
     bool s = (stained)
-                 ? ((yuri_2895*)tt)
-                       ->yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1))
-                 : ((yuri_3071*)tt)->yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1));
-    bool yuri_9535 = (stained)
-                 ? ((yuri_2895*)tt)
-                       ->yuri_3761(yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630))
-                 : ((yuri_3071*)tt)->yuri_3761(yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630));
+                 ? ((StainedGlassPaneBlock*)tt)
+                       ->attachsTo(level->getTile(x, y, z + 1))
+                 : ((ThinFenceTile*)tt)->attachsTo(level->getTile(x, y, z + 1));
+    bool w = (stained)
+                 ? ((StainedGlassPaneBlock*)tt)
+                       ->attachsTo(level->getTile(x - 1, y, z))
+                 : ((ThinFenceTile*)tt)->attachsTo(level->getTile(x - 1, y, z));
     bool e = (stained)
-                 ? ((yuri_2895*)tt)
-                       ->yuri_3761(yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630))
-                 : ((yuri_3071*)tt)->yuri_3761(yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630));
+                 ? ((StainedGlassPaneBlock*)tt)
+                       ->attachsTo(level->getTile(x + 1, y, z))
+                 : ((ThinFenceTile*)tt)->attachsTo(level->getTile(x + 1, y, z));
 
     double noZFightingOffset = 0.001;
     double yt = 1.0 - noZFightingOffset;
     double yb = 0.0 + noZFightingOffset;
 
-    bool none = !(n || s || yuri_9535 || e);
+    bool none = !(n || s || w || e);
 
-    if (yuri_9535 || none) {
-        if (yuri_9535 && e) {
+    if (w || none) {
+        if (w && e) {
             if (!n) {
-                t->yuri_9524(yuri_9623, yuri_9625 + yt, iz0, u1, v0);
-                t->yuri_9524(yuri_9623, yuri_9625 + yb, iz0, u1, v1);
-                t->yuri_9524(yuri_9622, yuri_9625 + yb, iz0, u0, v1);
-                t->yuri_9524(yuri_9622, yuri_9625 + yt, iz0, u0, v0);
+                t->vertexUV(x1, y + yt, iz0, u1, v0);
+                t->vertexUV(x1, y + yb, iz0, u1, v1);
+                t->vertexUV(x0, y + yb, iz0, u0, v1);
+                t->vertexUV(x0, y + yt, iz0, u0, v0);
             } else {
-                t->yuri_9524(ix0, yuri_9625 + yt, iz0, iu0, v0);
-                t->yuri_9524(ix0, yuri_9625 + yb, iz0, iu0, v1);
-                t->yuri_9524(yuri_9622, yuri_9625 + yb, iz0, u0, v1);
-                t->yuri_9524(yuri_9622, yuri_9625 + yt, iz0, u0, v0);
+                t->vertexUV(ix0, y + yt, iz0, iu0, v0);
+                t->vertexUV(ix0, y + yb, iz0, iu0, v1);
+                t->vertexUV(x0, y + yb, iz0, u0, v1);
+                t->vertexUV(x0, y + yt, iz0, u0, v0);
 
-                t->yuri_9524(yuri_9623, yuri_9625 + yt, iz0, u1, v0);
-                t->yuri_9524(yuri_9623, yuri_9625 + yb, iz0, u1, v1);
-                t->yuri_9524(ix1, yuri_9625 + yb, iz0, iu1, v1);
-                t->yuri_9524(ix1, yuri_9625 + yt, iz0, iu1, v0);
+                t->vertexUV(x1, y + yt, iz0, u1, v0);
+                t->vertexUV(x1, y + yb, iz0, u1, v1);
+                t->vertexUV(ix1, y + yb, iz0, iu1, v1);
+                t->vertexUV(ix1, y + yt, iz0, iu1, v0);
             }
             if (!s) {
-                t->yuri_9524(yuri_9622, yuri_9625 + yt, iz1, u0, v0);
-                t->yuri_9524(yuri_9622, yuri_9625 + yb, iz1, u0, v1);
-                t->yuri_9524(yuri_9623, yuri_9625 + yb, iz1, u1, v1);
-                t->yuri_9524(yuri_9623, yuri_9625 + yt, iz1, u1, v0);
+                t->vertexUV(x0, y + yt, iz1, u0, v0);
+                t->vertexUV(x0, y + yb, iz1, u0, v1);
+                t->vertexUV(x1, y + yb, iz1, u1, v1);
+                t->vertexUV(x1, y + yt, iz1, u1, v0);
             } else {
-                t->yuri_9524(yuri_9622, yuri_9625 + yt, iz1, u0, v0);
-                t->yuri_9524(yuri_9622, yuri_9625 + yb, iz1, u0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yb, iz1, iu0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yt, iz1, iu0, v0);
+                t->vertexUV(x0, y + yt, iz1, u0, v0);
+                t->vertexUV(x0, y + yb, iz1, u0, v1);
+                t->vertexUV(ix0, y + yb, iz1, iu0, v1);
+                t->vertexUV(ix0, y + yt, iz1, iu0, v0);
 
-                t->yuri_9524(ix1, yuri_9625 + yt, iz1, iu1, v0);
-                t->yuri_9524(ix1, yuri_9625 + yb, iz1, iu1, v1);
-                t->yuri_9524(yuri_9623, yuri_9625 + yb, iz1, u1, v1);
-                t->yuri_9524(yuri_9623, yuri_9625 + yt, iz1, u1, v0);
+                t->vertexUV(ix1, y + yt, iz1, iu1, v0);
+                t->vertexUV(ix1, y + yb, iz1, iu1, v1);
+                t->vertexUV(x1, y + yb, iz1, u1, v1);
+                t->vertexUV(x1, y + yt, iz1, u1, v0);
             }
 
-            t->yuri_9524(yuri_9622, yuri_9625 + yt, iz1, eiu1, ev0);
-            t->yuri_9524(yuri_9623, yuri_9625 + yt, iz1, eiu1, ev1);
-            t->yuri_9524(yuri_9623, yuri_9625 + yt, iz0, eiu0, ev1);
-            t->yuri_9524(yuri_9622, yuri_9625 + yt, iz0, eiu0, ev0);
+            t->vertexUV(x0, y + yt, iz1, eiu1, ev0);
+            t->vertexUV(x1, y + yt, iz1, eiu1, ev1);
+            t->vertexUV(x1, y + yt, iz0, eiu0, ev1);
+            t->vertexUV(x0, y + yt, iz0, eiu0, ev0);
 
-            t->yuri_9524(yuri_9623, yuri_9625 + yb, iz1, eiu0, ev1);
-            t->yuri_9524(yuri_9622, yuri_9625 + yb, iz1, eiu0, ev0);
-            t->yuri_9524(yuri_9622, yuri_9625 + yb, iz0, eiu1, ev0);
-            t->yuri_9524(yuri_9623, yuri_9625 + yb, iz0, eiu1, ev1);
+            t->vertexUV(x1, y + yb, iz1, eiu0, ev1);
+            t->vertexUV(x0, y + yb, iz1, eiu0, ev0);
+            t->vertexUV(x0, y + yb, iz0, eiu1, ev0);
+            t->vertexUV(x1, y + yb, iz0, eiu1, ev1);
         } else {
             if (!(n || none)) {
-                t->yuri_9524(ix1, yuri_9625 + yt, iz0, iu1, v0);
-                t->yuri_9524(ix1, yuri_9625 + yb, iz0, iu1, v1);
-                t->yuri_9524(yuri_9622, yuri_9625 + yb, iz0, u0, v1);
-                t->yuri_9524(yuri_9622, yuri_9625 + yt, iz0, u0, v0);
+                t->vertexUV(ix1, y + yt, iz0, iu1, v0);
+                t->vertexUV(ix1, y + yb, iz0, iu1, v1);
+                t->vertexUV(x0, y + yb, iz0, u0, v1);
+                t->vertexUV(x0, y + yt, iz0, u0, v0);
             } else {
-                t->yuri_9524(ix0, yuri_9625 + yt, iz0, iu0, v0);
-                t->yuri_9524(ix0, yuri_9625 + yb, iz0, iu0, v1);
-                t->yuri_9524(yuri_9622, yuri_9625 + yb, iz0, u0, v1);
-                t->yuri_9524(yuri_9622, yuri_9625 + yt, iz0, u0, v0);
+                t->vertexUV(ix0, y + yt, iz0, iu0, v0);
+                t->vertexUV(ix0, y + yb, iz0, iu0, v1);
+                t->vertexUV(x0, y + yb, iz0, u0, v1);
+                t->vertexUV(x0, y + yt, iz0, u0, v0);
             }
             if (!(s || none)) {
-                t->yuri_9524(yuri_9622, yuri_9625 + yt, iz1, u0, v0);
-                t->yuri_9524(yuri_9622, yuri_9625 + yb, iz1, u0, v1);
-                t->yuri_9524(ix1, yuri_9625 + yb, iz1, iu1, v1);
-                t->yuri_9524(ix1, yuri_9625 + yt, iz1, iu1, v0);
+                t->vertexUV(x0, y + yt, iz1, u0, v0);
+                t->vertexUV(x0, y + yb, iz1, u0, v1);
+                t->vertexUV(ix1, y + yb, iz1, iu1, v1);
+                t->vertexUV(ix1, y + yt, iz1, iu1, v0);
             } else {
-                t->yuri_9524(yuri_9622, yuri_9625 + yt, iz1, u0, v0);
-                t->yuri_9524(yuri_9622, yuri_9625 + yb, iz1, u0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yb, iz1, iu0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yt, iz1, iu0, v0);
+                t->vertexUV(x0, y + yt, iz1, u0, v0);
+                t->vertexUV(x0, y + yb, iz1, u0, v1);
+                t->vertexUV(ix0, y + yb, iz1, iu0, v1);
+                t->vertexUV(ix0, y + yt, iz1, iu0, v0);
             }
 
-            t->yuri_9524(yuri_9622, yuri_9625 + yt, iz1, eiu1, ev0);
-            t->yuri_9524(ix0, yuri_9625 + yt, iz1, eiu1, eiv0);
-            t->yuri_9524(ix0, yuri_9625 + yt, iz0, eiu0, eiv0);
-            t->yuri_9524(yuri_9622, yuri_9625 + yt, iz0, eiu0, ev0);
+            t->vertexUV(x0, y + yt, iz1, eiu1, ev0);
+            t->vertexUV(ix0, y + yt, iz1, eiu1, eiv0);
+            t->vertexUV(ix0, y + yt, iz0, eiu0, eiv0);
+            t->vertexUV(x0, y + yt, iz0, eiu0, ev0);
 
-            t->yuri_9524(ix0, yuri_9625 + yb, iz1, eiu0, eiv0);
-            t->yuri_9524(yuri_9622, yuri_9625 + yb, iz1, eiu0, ev0);
-            t->yuri_9524(yuri_9622, yuri_9625 + yb, iz0, eiu1, ev0);
-            t->yuri_9524(ix0, yuri_9625 + yb, iz0, eiu1, eiv0);
+            t->vertexUV(ix0, y + yb, iz1, eiu0, eiv0);
+            t->vertexUV(x0, y + yb, iz1, eiu0, ev0);
+            t->vertexUV(x0, y + yb, iz0, eiu1, ev0);
+            t->vertexUV(ix0, y + yb, iz0, eiu1, eiv0);
         }
     } else if (!(n || s)) {
-        t->yuri_9524(ix0, yuri_9625 + yt, iz0, iu0, v0);
-        t->yuri_9524(ix0, yuri_9625 + yb, iz0, iu0, v1);
-        t->yuri_9524(ix0, yuri_9625 + yb, iz1, iu1, v1);
-        t->yuri_9524(ix0, yuri_9625 + yt, iz1, iu1, v0);
+        t->vertexUV(ix0, y + yt, iz0, iu0, v0);
+        t->vertexUV(ix0, y + yb, iz0, iu0, v1);
+        t->vertexUV(ix0, y + yb, iz1, iu1, v1);
+        t->vertexUV(ix0, y + yt, iz1, iu1, v0);
     }
 
-    if ((e || none) && !yuri_9535) {
+    if ((e || none) && !w) {
         if (!(s || none)) {
-            t->yuri_9524(ix0, yuri_9625 + yt, iz1, iu0, v0);
-            t->yuri_9524(ix0, yuri_9625 + yb, iz1, iu0, v1);
-            t->yuri_9524(yuri_9623, yuri_9625 + yb, iz1, u1, v1);
-            t->yuri_9524(yuri_9623, yuri_9625 + yt, iz1, u1, v0);
+            t->vertexUV(ix0, y + yt, iz1, iu0, v0);
+            t->vertexUV(ix0, y + yb, iz1, iu0, v1);
+            t->vertexUV(x1, y + yb, iz1, u1, v1);
+            t->vertexUV(x1, y + yt, iz1, u1, v0);
         } else {
-            t->yuri_9524(ix1, yuri_9625 + yt, iz1, iu1, v0);
-            t->yuri_9524(ix1, yuri_9625 + yb, iz1, iu1, v1);
-            t->yuri_9524(yuri_9623, yuri_9625 + yb, iz1, u1, v1);
-            t->yuri_9524(yuri_9623, yuri_9625 + yt, iz1, u1, v0);
+            t->vertexUV(ix1, y + yt, iz1, iu1, v0);
+            t->vertexUV(ix1, y + yb, iz1, iu1, v1);
+            t->vertexUV(x1, y + yb, iz1, u1, v1);
+            t->vertexUV(x1, y + yt, iz1, u1, v0);
         }
         if (!(n || none)) {
-            t->yuri_9524(yuri_9623, yuri_9625 + yt, iz0, u1, v0);
-            t->yuri_9524(yuri_9623, yuri_9625 + yb, iz0, u1, v1);
-            t->yuri_9524(ix0, yuri_9625 + yb, iz0, iu0, v1);
-            t->yuri_9524(ix0, yuri_9625 + yt, iz0, iu0, v0);
+            t->vertexUV(x1, y + yt, iz0, u1, v0);
+            t->vertexUV(x1, y + yb, iz0, u1, v1);
+            t->vertexUV(ix0, y + yb, iz0, iu0, v1);
+            t->vertexUV(ix0, y + yt, iz0, iu0, v0);
         } else {
-            t->yuri_9524(yuri_9623, yuri_9625 + yt, iz0, u1, v0);
-            t->yuri_9524(yuri_9623, yuri_9625 + yb, iz0, u1, v1);
-            t->yuri_9524(ix1, yuri_9625 + yb, iz0, iu1, v1);
-            t->yuri_9524(ix1, yuri_9625 + yt, iz0, iu1, v0);
+            t->vertexUV(x1, y + yt, iz0, u1, v0);
+            t->vertexUV(x1, y + yb, iz0, u1, v1);
+            t->vertexUV(ix1, y + yb, iz0, iu1, v1);
+            t->vertexUV(ix1, y + yt, iz0, iu1, v0);
         }
 
-        t->yuri_9524(ix1, yuri_9625 + yt, iz1, eiu1, eiv1);
-        t->yuri_9524(yuri_9623, yuri_9625 + yt, iz1, eiu1, ev0);
-        t->yuri_9524(yuri_9623, yuri_9625 + yt, iz0, eiu0, ev0);
-        t->yuri_9524(ix1, yuri_9625 + yt, iz0, eiu0, eiv1);
+        t->vertexUV(ix1, y + yt, iz1, eiu1, eiv1);
+        t->vertexUV(x1, y + yt, iz1, eiu1, ev0);
+        t->vertexUV(x1, y + yt, iz0, eiu0, ev0);
+        t->vertexUV(ix1, y + yt, iz0, eiu0, eiv1);
 
-        t->yuri_9524(yuri_9623, yuri_9625 + yb, iz1, eiu0, ev1);
-        t->yuri_9524(ix1, yuri_9625 + yb, iz1, eiu0, eiv1);
-        t->yuri_9524(ix1, yuri_9625 + yb, iz0, eiu1, eiv1);
-        t->yuri_9524(yuri_9623, yuri_9625 + yb, iz0, eiu1, ev1);
+        t->vertexUV(x1, y + yb, iz1, eiu0, ev1);
+        t->vertexUV(ix1, y + yb, iz1, eiu0, eiv1);
+        t->vertexUV(ix1, y + yb, iz0, eiu1, eiv1);
+        t->vertexUV(x1, y + yb, iz0, eiu1, ev1);
     } else if (!(e || n || s)) {
-        t->yuri_9524(ix1, yuri_9625 + yt, iz1, iu0, v0);
-        t->yuri_9524(ix1, yuri_9625 + yb, iz1, iu0, v1);
-        t->yuri_9524(ix1, yuri_9625 + yb, iz0, iu1, v1);
-        t->yuri_9524(ix1, yuri_9625 + yt, iz0, iu1, v0);
+        t->vertexUV(ix1, y + yt, iz1, iu0, v0);
+        t->vertexUV(ix1, y + yb, iz1, iu0, v1);
+        t->vertexUV(ix1, y + yb, iz0, iu1, v1);
+        t->vertexUV(ix1, y + yt, iz0, iu1, v0);
     }
 
     if (n || none) {
         if (n && s) {
-            if (!yuri_9535) {
-                t->yuri_9524(ix0, yuri_9625 + yt, yuri_9631, u0, v0);
-                t->yuri_9524(ix0, yuri_9625 + yb, yuri_9631, u0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yb, yuri_9632, u1, v1);
-                t->yuri_9524(ix0, yuri_9625 + yt, yuri_9632, u1, v0);
+            if (!w) {
+                t->vertexUV(ix0, y + yt, z0, u0, v0);
+                t->vertexUV(ix0, y + yb, z0, u0, v1);
+                t->vertexUV(ix0, y + yb, z1, u1, v1);
+                t->vertexUV(ix0, y + yt, z1, u1, v0);
             } else {
-                t->yuri_9524(ix0, yuri_9625 + yt, yuri_9631, u0, v0);
-                t->yuri_9524(ix0, yuri_9625 + yb, yuri_9631, u0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yb, iz0, iu0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yt, iz0, iu0, v0);
+                t->vertexUV(ix0, y + yt, z0, u0, v0);
+                t->vertexUV(ix0, y + yb, z0, u0, v1);
+                t->vertexUV(ix0, y + yb, iz0, iu0, v1);
+                t->vertexUV(ix0, y + yt, iz0, iu0, v0);
 
-                t->yuri_9524(ix0, yuri_9625 + yt, iz1, iu1, v0);
-                t->yuri_9524(ix0, yuri_9625 + yb, iz1, iu1, v1);
-                t->yuri_9524(ix0, yuri_9625 + yb, yuri_9632, u1, v1);
-                t->yuri_9524(ix0, yuri_9625 + yt, yuri_9632, u1, v0);
+                t->vertexUV(ix0, y + yt, iz1, iu1, v0);
+                t->vertexUV(ix0, y + yb, iz1, iu1, v1);
+                t->vertexUV(ix0, y + yb, z1, u1, v1);
+                t->vertexUV(ix0, y + yt, z1, u1, v0);
             }
             if (!e) {
-                t->yuri_9524(ix1, yuri_9625 + yt, yuri_9632, u1, v0);
-                t->yuri_9524(ix1, yuri_9625 + yb, yuri_9632, u1, v1);
-                t->yuri_9524(ix1, yuri_9625 + yb, yuri_9631, u0, v1);
-                t->yuri_9524(ix1, yuri_9625 + yt, yuri_9631, u0, v0);
+                t->vertexUV(ix1, y + yt, z1, u1, v0);
+                t->vertexUV(ix1, y + yb, z1, u1, v1);
+                t->vertexUV(ix1, y + yb, z0, u0, v1);
+                t->vertexUV(ix1, y + yt, z0, u0, v0);
             } else {
-                t->yuri_9524(ix1, yuri_9625 + yt, iz0, iu0, v0);
-                t->yuri_9524(ix1, yuri_9625 + yb, iz0, iu0, v1);
-                t->yuri_9524(ix1, yuri_9625 + yb, yuri_9631, u0, v1);
-                t->yuri_9524(ix1, yuri_9625 + yt, yuri_9631, u0, v0);
+                t->vertexUV(ix1, y + yt, iz0, iu0, v0);
+                t->vertexUV(ix1, y + yb, iz0, iu0, v1);
+                t->vertexUV(ix1, y + yb, z0, u0, v1);
+                t->vertexUV(ix1, y + yt, z0, u0, v0);
 
-                t->yuri_9524(ix1, yuri_9625 + yt, yuri_9632, u1, v0);
-                t->yuri_9524(ix1, yuri_9625 + yb, yuri_9632, u1, v1);
-                t->yuri_9524(ix1, yuri_9625 + yb, iz1, iu1, v1);
-                t->yuri_9524(ix1, yuri_9625 + yt, iz1, iu1, v0);
+                t->vertexUV(ix1, y + yt, z1, u1, v0);
+                t->vertexUV(ix1, y + yb, z1, u1, v1);
+                t->vertexUV(ix1, y + yb, iz1, iu1, v1);
+                t->vertexUV(ix1, y + yt, iz1, iu1, v0);
             }
 
-            t->yuri_9524(ix1, yuri_9625 + yt, yuri_9631, eiu1, ev0);
-            t->yuri_9524(ix0, yuri_9625 + yt, yuri_9631, eiu0, ev0);
-            t->yuri_9524(ix0, yuri_9625 + yt, yuri_9632, eiu0, ev1);
-            t->yuri_9524(ix1, yuri_9625 + yt, yuri_9632, eiu1, ev1);
+            t->vertexUV(ix1, y + yt, z0, eiu1, ev0);
+            t->vertexUV(ix0, y + yt, z0, eiu0, ev0);
+            t->vertexUV(ix0, y + yt, z1, eiu0, ev1);
+            t->vertexUV(ix1, y + yt, z1, eiu1, ev1);
 
-            t->yuri_9524(ix0, yuri_9625 + yb, yuri_9631, eiu0, ev0);
-            t->yuri_9524(ix1, yuri_9625 + yb, yuri_9631, eiu1, ev0);
-            t->yuri_9524(ix1, yuri_9625 + yb, yuri_9632, eiu1, ev1);
-            t->yuri_9524(ix0, yuri_9625 + yb, yuri_9632, eiu0, ev1);
+            t->vertexUV(ix0, y + yb, z0, eiu0, ev0);
+            t->vertexUV(ix1, y + yb, z0, eiu1, ev0);
+            t->vertexUV(ix1, y + yb, z1, eiu1, ev1);
+            t->vertexUV(ix0, y + yb, z1, eiu0, ev1);
         } else {
-            if (!(yuri_9535 || none)) {
-                t->yuri_9524(ix0, yuri_9625 + yt, yuri_9631, u0, v0);
-                t->yuri_9524(ix0, yuri_9625 + yb, yuri_9631, u0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yb, iz1, iu1, v1);
-                t->yuri_9524(ix0, yuri_9625 + yt, iz1, iu1, v0);
+            if (!(w || none)) {
+                t->vertexUV(ix0, y + yt, z0, u0, v0);
+                t->vertexUV(ix0, y + yb, z0, u0, v1);
+                t->vertexUV(ix0, y + yb, iz1, iu1, v1);
+                t->vertexUV(ix0, y + yt, iz1, iu1, v0);
             } else {
-                t->yuri_9524(ix0, yuri_9625 + yt, yuri_9631, u0, v0);
-                t->yuri_9524(ix0, yuri_9625 + yb, yuri_9631, u0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yb, iz0, iu0, v1);
-                t->yuri_9524(ix0, yuri_9625 + yt, iz0, iu0, v0);
+                t->vertexUV(ix0, y + yt, z0, u0, v0);
+                t->vertexUV(ix0, y + yb, z0, u0, v1);
+                t->vertexUV(ix0, y + yb, iz0, iu0, v1);
+                t->vertexUV(ix0, y + yt, iz0, iu0, v0);
             }
             if (!(e || none)) {
-                t->yuri_9524(ix1, yuri_9625 + yt, iz1, iu1, v0);
-                t->yuri_9524(ix1, yuri_9625 + yb, iz1, iu1, v1);
-                t->yuri_9524(ix1, yuri_9625 + yb, yuri_9631, u0, v1);
-                t->yuri_9524(ix1, yuri_9625 + yt, yuri_9631, u0, v0);
+                t->vertexUV(ix1, y + yt, iz1, iu1, v0);
+                t->vertexUV(ix1, y + yb, iz1, iu1, v1);
+                t->vertexUV(ix1, y + yb, z0, u0, v1);
+                t->vertexUV(ix1, y + yt, z0, u0, v0);
             } else {
-                t->yuri_9524(ix1, yuri_9625 + yt, iz0, iu0, v0);
-                t->yuri_9524(ix1, yuri_9625 + yb, iz0, iu0, v1);
-                t->yuri_9524(ix1, yuri_9625 + yb, yuri_9631, u0, v1);
-                t->yuri_9524(ix1, yuri_9625 + yt, yuri_9631, u0, v0);
+                t->vertexUV(ix1, y + yt, iz0, iu0, v0);
+                t->vertexUV(ix1, y + yb, iz0, iu0, v1);
+                t->vertexUV(ix1, y + yb, z0, u0, v1);
+                t->vertexUV(ix1, y + yt, z0, u0, v0);
             }
 
-            t->yuri_9524(ix1, yuri_9625 + yt, yuri_9631, eiu1, ev0);
-            t->yuri_9524(ix0, yuri_9625 + yt, yuri_9631, eiu0, ev0);
-            t->yuri_9524(ix0, yuri_9625 + yt, iz0, eiu0, eiv0);
-            t->yuri_9524(ix1, yuri_9625 + yt, iz0, eiu1, eiv0);
+            t->vertexUV(ix1, y + yt, z0, eiu1, ev0);
+            t->vertexUV(ix0, y + yt, z0, eiu0, ev0);
+            t->vertexUV(ix0, y + yt, iz0, eiu0, eiv0);
+            t->vertexUV(ix1, y + yt, iz0, eiu1, eiv0);
 
-            t->yuri_9524(ix0, yuri_9625 + yb, yuri_9631, eiu0, ev0);
-            t->yuri_9524(ix1, yuri_9625 + yb, yuri_9631, eiu1, ev0);
-            t->yuri_9524(ix1, yuri_9625 + yb, iz0, eiu1, eiv0);
-            t->yuri_9524(ix0, yuri_9625 + yb, iz0, eiu0, eiv0);
+            t->vertexUV(ix0, y + yb, z0, eiu0, ev0);
+            t->vertexUV(ix1, y + yb, z0, eiu1, ev0);
+            t->vertexUV(ix1, y + yb, iz0, eiu1, eiv0);
+            t->vertexUV(ix0, y + yb, iz0, eiu0, eiv0);
         }
-    } else if (!(e || yuri_9535)) {
-        t->yuri_9524(ix1, yuri_9625 + yt, iz0, iu1, v0);
-        t->yuri_9524(ix1, yuri_9625 + yb, iz0, iu1, v1);
-        t->yuri_9524(ix0, yuri_9625 + yb, iz0, iu0, v1);
-        t->yuri_9524(ix0, yuri_9625 + yt, iz0, iu0, v0);
+    } else if (!(e || w)) {
+        t->vertexUV(ix1, y + yt, iz0, iu1, v0);
+        t->vertexUV(ix1, y + yb, iz0, iu1, v1);
+        t->vertexUV(ix0, y + yb, iz0, iu0, v1);
+        t->vertexUV(ix0, y + yt, iz0, iu0, v0);
     }
 
     if ((s || none) && !n) {
-        if (!(yuri_9535 || none)) {
-            t->yuri_9524(ix0, yuri_9625 + yt, iz0, iu0, v0);
-            t->yuri_9524(ix0, yuri_9625 + yb, iz0, iu0, v1);
-            t->yuri_9524(ix0, yuri_9625 + yb, yuri_9632, u1, v1);
-            t->yuri_9524(ix0, yuri_9625 + yt, yuri_9632, u1, v0);
+        if (!(w || none)) {
+            t->vertexUV(ix0, y + yt, iz0, iu0, v0);
+            t->vertexUV(ix0, y + yb, iz0, iu0, v1);
+            t->vertexUV(ix0, y + yb, z1, u1, v1);
+            t->vertexUV(ix0, y + yt, z1, u1, v0);
         } else {
-            t->yuri_9524(ix0, yuri_9625 + yt, iz1, iu1, v0);
-            t->yuri_9524(ix0, yuri_9625 + yb, iz1, iu1, v1);
-            t->yuri_9524(ix0, yuri_9625 + yb, yuri_9632, u1, v1);
-            t->yuri_9524(ix0, yuri_9625 + yt, yuri_9632, u1, v0);
+            t->vertexUV(ix0, y + yt, iz1, iu1, v0);
+            t->vertexUV(ix0, y + yb, iz1, iu1, v1);
+            t->vertexUV(ix0, y + yb, z1, u1, v1);
+            t->vertexUV(ix0, y + yt, z1, u1, v0);
         }
         if (!(e || none)) {
-            t->yuri_9524(ix1, yuri_9625 + yt, yuri_9632, u1, v0);
-            t->yuri_9524(ix1, yuri_9625 + yb, yuri_9632, u1, v1);
-            t->yuri_9524(ix1, yuri_9625 + yb, iz0, iu0, v1);
-            t->yuri_9524(ix1, yuri_9625 + yt, iz0, iu0, v0);
+            t->vertexUV(ix1, y + yt, z1, u1, v0);
+            t->vertexUV(ix1, y + yb, z1, u1, v1);
+            t->vertexUV(ix1, y + yb, iz0, iu0, v1);
+            t->vertexUV(ix1, y + yt, iz0, iu0, v0);
         } else {
-            t->yuri_9524(ix1, yuri_9625 + yt, yuri_9632, u1, v0);
-            t->yuri_9524(ix1, yuri_9625 + yb, yuri_9632, u1, v1);
-            t->yuri_9524(ix1, yuri_9625 + yb, iz1, iu1, v1);
-            t->yuri_9524(ix1, yuri_9625 + yt, iz1, iu1, v0);
+            t->vertexUV(ix1, y + yt, z1, u1, v0);
+            t->vertexUV(ix1, y + yb, z1, u1, v1);
+            t->vertexUV(ix1, y + yb, iz1, iu1, v1);
+            t->vertexUV(ix1, y + yt, iz1, iu1, v0);
         }
 
-        t->yuri_9524(ix1, yuri_9625 + yt, iz1, eiu1, eiv1);
-        t->yuri_9524(ix0, yuri_9625 + yt, iz1, eiu0, eiv1);
-        t->yuri_9524(ix0, yuri_9625 + yt, yuri_9632, eiu0, ev1);
-        t->yuri_9524(ix1, yuri_9625 + yt, yuri_9632, eiu1, ev1);
+        t->vertexUV(ix1, y + yt, iz1, eiu1, eiv1);
+        t->vertexUV(ix0, y + yt, iz1, eiu0, eiv1);
+        t->vertexUV(ix0, y + yt, z1, eiu0, ev1);
+        t->vertexUV(ix1, y + yt, z1, eiu1, ev1);
 
-        t->yuri_9524(ix0, yuri_9625 + yb, iz1, eiu0, eiv1);
-        t->yuri_9524(ix1, yuri_9625 + yb, iz1, eiu1, eiv1);
-        t->yuri_9524(ix1, yuri_9625 + yb, yuri_9632, eiu1, ev1);
-        t->yuri_9524(ix0, yuri_9625 + yb, yuri_9632, eiu0, ev1);
-    } else if (!(s || e || yuri_9535)) {
-        t->yuri_9524(ix0, yuri_9625 + yt, iz1, iu0, v0);
-        t->yuri_9524(ix0, yuri_9625 + yb, iz1, iu0, v1);
-        t->yuri_9524(ix1, yuri_9625 + yb, iz1, iu1, v1);
-        t->yuri_9524(ix1, yuri_9625 + yt, iz1, iu1, v0);
+        t->vertexUV(ix0, y + yb, iz1, eiu0, eiv1);
+        t->vertexUV(ix1, y + yb, iz1, eiu1, eiv1);
+        t->vertexUV(ix1, y + yb, z1, eiu1, ev1);
+        t->vertexUV(ix0, y + yb, z1, eiu0, ev1);
+    } else if (!(s || e || w)) {
+        t->vertexUV(ix0, y + yt, iz1, iu0, v0);
+        t->vertexUV(ix0, y + yb, iz1, iu0, v1);
+        t->vertexUV(ix1, y + yb, iz1, iu1, v1);
+        t->vertexUV(ix1, y + yt, iz1, iu1, v0);
     }
 
-    t->yuri_9524(ix1, yuri_9625 + yt, iz0, eiu1, eiv0);
-    t->yuri_9524(ix0, yuri_9625 + yt, iz0, eiu0, eiv0);
-    t->yuri_9524(ix0, yuri_9625 + yt, iz1, eiu0, eiv1);
-    t->yuri_9524(ix1, yuri_9625 + yt, iz1, eiu1, eiv1);
+    t->vertexUV(ix1, y + yt, iz0, eiu1, eiv0);
+    t->vertexUV(ix0, y + yt, iz0, eiu0, eiv0);
+    t->vertexUV(ix0, y + yt, iz1, eiu0, eiv1);
+    t->vertexUV(ix1, y + yt, iz1, eiu1, eiv1);
 
-    t->yuri_9524(ix0, yuri_9625 + yb, iz0, eiu0, eiv0);
-    t->yuri_9524(ix1, yuri_9625 + yb, iz0, eiu1, eiv0);
-    t->yuri_9524(ix1, yuri_9625 + yb, iz1, eiu1, eiv1);
-    t->yuri_9524(ix0, yuri_9625 + yb, iz1, eiu0, eiv1);
+    t->vertexUV(ix0, y + yb, iz0, eiu0, eiv0);
+    t->vertexUV(ix1, y + yb, iz0, eiu1, eiv0);
+    t->vertexUV(ix1, y + yb, iz1, eiu1, eiv1);
+    t->vertexUV(ix0, y + yb, iz1, eiu0, eiv1);
 
     if (none) {
-        t->yuri_9524(yuri_9622, yuri_9625 + yt, iz0, iu0, v0);
-        t->yuri_9524(yuri_9622, yuri_9625 + yb, iz0, iu0, v1);
-        t->yuri_9524(yuri_9622, yuri_9625 + yb, iz1, iu1, v1);
-        t->yuri_9524(yuri_9622, yuri_9625 + yt, iz1, iu1, v0);
+        t->vertexUV(x0, y + yt, iz0, iu0, v0);
+        t->vertexUV(x0, y + yb, iz0, iu0, v1);
+        t->vertexUV(x0, y + yb, iz1, iu1, v1);
+        t->vertexUV(x0, y + yt, iz1, iu1, v0);
 
-        t->yuri_9524(yuri_9623, yuri_9625 + yt, iz1, iu0, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + yb, iz1, iu0, v1);
-        t->yuri_9524(yuri_9623, yuri_9625 + yb, iz0, iu1, v1);
-        t->yuri_9524(yuri_9623, yuri_9625 + yt, iz0, iu1, v0);
+        t->vertexUV(x1, y + yt, iz1, iu0, v0);
+        t->vertexUV(x1, y + yb, iz1, iu0, v1);
+        t->vertexUV(x1, y + yb, iz0, iu1, v1);
+        t->vertexUV(x1, y + yt, iz0, iu1, v0);
 
-        t->yuri_9524(ix1, yuri_9625 + yt, yuri_9631, iu1, v0);
-        t->yuri_9524(ix1, yuri_9625 + yb, yuri_9631, iu1, v1);
-        t->yuri_9524(ix0, yuri_9625 + yb, yuri_9631, iu0, v1);
-        t->yuri_9524(ix0, yuri_9625 + yt, yuri_9631, iu0, v0);
+        t->vertexUV(ix1, y + yt, z0, iu1, v0);
+        t->vertexUV(ix1, y + yb, z0, iu1, v1);
+        t->vertexUV(ix0, y + yb, z0, iu0, v1);
+        t->vertexUV(ix0, y + yt, z0, iu0, v0);
 
-        t->yuri_9524(ix0, yuri_9625 + yt, yuri_9632, iu0, v0);
-        t->yuri_9524(ix0, yuri_9625 + yb, yuri_9632, iu0, v1);
-        t->yuri_9524(ix1, yuri_9625 + yb, yuri_9632, iu1, v1);
-        t->yuri_9524(ix1, yuri_9625 + yt, yuri_9632, iu1, v0);
+        t->vertexUV(ix0, y + yt, z1, iu0, v0);
+        t->vertexUV(ix0, y + yb, z1, iu0, v1);
+        t->vertexUV(ix1, y + yb, z1, iu1, v1);
+        t->vertexUV(ix1, y + yt, z1, iu1, v0);
     }
     return true;
 }
 
-bool yuri_3101::yuri_9239(yuri_3071* tt, int yuri_9621, int yuri_9625,
-                                             int yuri_9630) {
-    int depth = yuri_7194->yuri_5515();
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateThinFenceInWorld(ThinFenceTile* tt, int x, int y,
+                                             int z) {
+    int depth = level->getMaxBuildHeight();
+    Tesselator* t = Tesselator::getInstance();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(getLightColor(tt, level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
-    t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+    t->color(br * r, br * g, br * b);
 
-    yuri_1346* yuri_9251;
-    yuri_1346* edgeTex;
+    Icon* tex;
+    Icon* edgeTex;
 
-    if (yuri_6599()) {
-        yuri_9251 = fixedTexture;
+    if (hasFixedTexture()) {
+        tex = fixedTexture;
         edgeTex = fixedTexture;
     } else {
-        int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-        yuri_9251 = yuri_6007(tt, 0, yuri_4295);
-        edgeTex = tt->yuri_5191();
+        int data = level->getData(x, y, z);
+        tex = getTexture(tt, 0, data);
+        edgeTex = tt->getEdgeTexture();
     }
 
-    int xt = yuri_9251->yuri_6142();
-    int yt = yuri_9251->yuri_6164();
-    float u0 = yuri_9251->yuri_6072(true);
-    float u1 = yuri_9251->yuri_6071(8, true);
-    float u2 = yuri_9251->yuri_6073(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float v2 = yuri_9251->yuri_6098(true);
+    int xt = tex->getX();
+    int yt = tex->getY();
+    float u0 = tex->getU0(true);
+    float u1 = tex->getU(8, true);
+    float u2 = tex->getU1(true);
+    float v0 = tex->getV0(true);
+    float v2 = tex->getV1(true);
 
-    int xet = edgeTex->yuri_6142();
-    int yet = edgeTex->yuri_6164();
+    int xet = edgeTex->getX();
+    int yet = edgeTex->getY();
 
-    float iu0 = edgeTex->yuri_6071(7, true);
-    float iu1 = edgeTex->yuri_6071(9, true);
-    float iv0 = edgeTex->yuri_6097(true);
-    float iv1 = edgeTex->yuri_6096(8, true);
-    float iv2 = edgeTex->yuri_6098(true);
+    float iu0 = edgeTex->getU(7, true);
+    float iu1 = edgeTex->getU(9, true);
+    float iv0 = edgeTex->getV0(true);
+    float iv1 = edgeTex->getV(8, true);
+    float iv2 = edgeTex->getV1(true);
 
-    float yuri_9622 = (float)yuri_9621;
-    float yuri_9623 = yuri_9621 + 0.5f;
-    float x2 = yuri_9621 + 1.0f;
-    float yuri_9631 = (float)yuri_9630;
-    float yuri_9632 = yuri_9630 + 0.5f;
-    float z2 = yuri_9630 + 1.0f;
-    float ix0 = yuri_9621 + 0.5f - 1.0f / 16.0f;
-    float ix1 = yuri_9621 + 0.5f + 1.0f / 16.0f;
-    float iz0 = yuri_9630 + 0.5f - 1.0f / 16.0f;
-    float iz1 = yuri_9630 + 0.5f + 1.0f / 16.0f;
+    float x0 = (float)x;
+    float x1 = x + 0.5f;
+    float x2 = x + 1.0f;
+    float z0 = (float)z;
+    float z1 = z + 0.5f;
+    float z2 = z + 1.0f;
+    float ix0 = x + 0.5f - 1.0f / 16.0f;
+    float ix1 = x + 0.5f + 1.0f / 16.0f;
+    float iz0 = z + 0.5f - 1.0f / 16.0f;
+    float iz1 = z + 0.5f + 1.0f / 16.0f;
 
-    bool n = tt->yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1));
-    bool s = tt->yuri_3761(yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1));
-    bool yuri_9535 = tt->yuri_3761(yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630));
-    bool e = tt->yuri_3761(yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630));
+    bool n = tt->attachsTo(level->getTile(x, y, z - 1));
+    bool s = tt->attachsTo(level->getTile(x, y, z + 1));
+    bool w = tt->attachsTo(level->getTile(x - 1, y, z));
+    bool e = tt->attachsTo(level->getTile(x + 1, y, z));
 
-    bool up = tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630, Facing::UP);
-    bool down = tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, Facing::DOWN);
+    bool up = tt->shouldRenderFace(level, x, y + 1, z, Facing::UP);
+    bool down = tt->shouldRenderFace(level, x, y - 1, z, Facing::DOWN);
 
     const float noZFightingOffset = 0.01f;
     const float noZFightingOffsetB = 0.005;
 
-    if ((yuri_9535 && e) || (!yuri_9535 && !e && !n && !s)) {
-        t->yuri_9524(yuri_9622, yuri_9625 + 1, yuri_9632, u0, v0);
-        t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9632, u0, v2);
-        t->yuri_9524(x2, yuri_9625 + 0, yuri_9632, u2, v2);
-        t->yuri_9524(x2, yuri_9625 + 1, yuri_9632, u2, v0);
+    if ((w && e) || (!w && !e && !n && !s)) {
+        t->vertexUV(x0, y + 1, z1, u0, v0);
+        t->vertexUV(x0, y + 0, z1, u0, v2);
+        t->vertexUV(x2, y + 0, z1, u2, v2);
+        t->vertexUV(x2, y + 1, z1, u2, v0);
 
-        t->yuri_9524(x2, yuri_9625 + 1, yuri_9632, u0, v0);
-        t->yuri_9524(x2, yuri_9625 + 0, yuri_9632, u0, v2);
-        t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9632, u2, v2);
-        t->yuri_9524(yuri_9622, yuri_9625 + 1, yuri_9632, u2, v0);
+        t->vertexUV(x2, y + 1, z1, u0, v0);
+        t->vertexUV(x2, y + 0, z1, u0, v2);
+        t->vertexUV(x0, y + 0, z1, u2, v2);
+        t->vertexUV(x0, y + 1, z1, u2, v0);
 
         if (up) {
             // yuri ship ship
-            t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
-            t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
-            t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
-            t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz0, iu0, iv2);
 
-            t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
-            t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
-            t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
-            t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv2);
         } else {
-            if (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621 - 1, yuri_9625 + 1, yuri_9630)) {
-                t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
-                t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
-                t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
-                t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
+            if (y < (depth - 1) && level->isEmptyTile(x - 1, y + 1, z)) {
+                t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+                t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv2);
+                t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv2);
+                t->vertexUV(x0, y + 1 + noZFightingOffset, iz0, iu0, iv1);
 
-                t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
-                t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
-                t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
-                t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
+                t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+                t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv2);
+                t->vertexUV(x0, y + 1 + noZFightingOffset, iz0, iu0, iv2);
+                t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv1);
             }
-            if (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621 + 1, yuri_9625 + 1, yuri_9630)) {
-                t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
-                t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
-                t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
-                t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
+            if (y < (depth - 1) && level->isEmptyTile(x + 1, y + 1, z)) {
+                t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv0);
+                t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+                t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv1);
+                t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv0);
 
-                t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
-                t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
-                t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
-                t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
+                t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv0);
+                t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+                t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv1);
+                t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv0);
             }
         }
         if (down) {
             // snuggle lesbian cute girls
-            t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
-            t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
-            t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
-            t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x0, y - noZFightingOffset, iz0, iu0, iv2);
 
-            t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
-            t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
-            t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
-            t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x0, y - noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv2);
         } else {
-            if (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621 - 1, yuri_9625 - 1, yuri_9630)) {
-                t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
-                t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
-                t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv2);
-                t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
+            if (y > 1 && level->isEmptyTile(x - 1, y - 1, z)) {
+                t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv1);
+                t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv2);
+                t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv2);
+                t->vertexUV(x0, y - noZFightingOffset, iz0, iu0, iv1);
 
-                t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
-                t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
-                t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz0, iu0, iv2);
-                t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
+                t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv1);
+                t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv2);
+                t->vertexUV(x0, y - noZFightingOffset, iz0, iu0, iv2);
+                t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv1);
             }
-            if (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621 + 1, yuri_9625 - 1, yuri_9630)) {
-                t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
-                t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
-                t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
-                t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
+            if (y > 1 && level->isEmptyTile(x + 1, y - 1, z)) {
+                t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv0);
+                t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv1);
+                t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv1);
+                t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv0);
 
-                t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
-                t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
-                t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
-                t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
+                t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv0);
+                t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv1);
+                t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv1);
+                t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv0);
             }
         }
-    } else if (yuri_9535 && !e) {
+    } else if (w && !e) {
         // i love amy is the best-yuri FUCKING KISS ALREADY cute girls
-        t->yuri_9524(yuri_9622, yuri_9625 + 1, yuri_9632, u0, v0);
-        t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9632, u0, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u1, v0);
+        t->vertexUV(x0, y + 1, z1, u0, v0);
+        t->vertexUV(x0, y + 0, z1, u0, v2);
+        t->vertexUV(x1, y + 0, z1, u1, v2);
+        t->vertexUV(x1, y + 1, z1, u1, v0);
 
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u0, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u0, v2);
-        t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9632, u1, v2);
-        t->yuri_9524(yuri_9622, yuri_9625 + 1, yuri_9632, u1, v0);
+        t->vertexUV(x1, y + 1, z1, u0, v0);
+        t->vertexUV(x1, y + 0, z1, u0, v2);
+        t->vertexUV(x0, y + 0, z1, u1, v2);
+        t->vertexUV(x0, y + 1, z1, u1, v0);
 
         // ship yuri yuri
         if (!s && !n) {
-            t->yuri_9524(yuri_9623, yuri_9625 + 1, iz1, iu0, iv0);
-            t->yuri_9524(yuri_9623, yuri_9625 + 0, iz1, iu0, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 0, iz0, iu1, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1, iz0, iu1, iv0);
+            t->vertexUV(x1, y + 1, iz1, iu0, iv0);
+            t->vertexUV(x1, y + 0, iz1, iu0, iv2);
+            t->vertexUV(x1, y + 0, iz0, iu1, iv2);
+            t->vertexUV(x1, y + 1, iz0, iu1, iv0);
 
-            t->yuri_9524(yuri_9623, yuri_9625 + 1, iz0, iu0, iv0);
-            t->yuri_9524(yuri_9623, yuri_9625 + 0, iz0, iu0, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 0, iz1, iu1, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1, iz1, iu1, iv0);
+            t->vertexUV(x1, y + 1, iz0, iu0, iv0);
+            t->vertexUV(x1, y + 0, iz0, iu0, iv2);
+            t->vertexUV(x1, y + 0, iz1, iu1, iv2);
+            t->vertexUV(x1, y + 1, iz1, iu1, iv0);
         }
 
-        if (up || (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621 - 1, yuri_9625 + 1, yuri_9630))) {
+        if (up || (y < (depth - 1) && level->isEmptyTile(x - 1, y + 1, z))) {
             // i love girls scissors scissors
-            t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
-            t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz0, iu0, iv1);
 
-            t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
-            t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv2);
-            t->yuri_9524(yuri_9622, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x0, y + 1 + noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv1);
         }
-        if (down || (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621 - 1, yuri_9625 - 1, yuri_9630))) {
+        if (down || (y > 1 && level->isEmptyTile(x - 1, y - 1, z))) {
             // wlw i love FUCKING KISS ALREADY
-            t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
-            t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv2);
-            t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x0, y - noZFightingOffset, iz0, iu0, iv1);
 
-            t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
-            t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz1, iu1, iv2);
-            t->yuri_9524(yuri_9622, yuri_9625 - noZFightingOffset, iz0, iu0, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x0, y - noZFightingOffset, iz1, iu1, iv2);
+            t->vertexUV(x0, y - noZFightingOffset, iz0, iu0, iv2);
+            t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv1);
         }
 
-    } else if (!yuri_9535 && e) {
+    } else if (!w && e) {
         // my wife-scissors scissors ship
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v2);
-        t->yuri_9524(x2, yuri_9625 + 0, yuri_9632, u2, v2);
-        t->yuri_9524(x2, yuri_9625 + 1, yuri_9632, u2, v0);
+        t->vertexUV(x1, y + 1, z1, u1, v0);
+        t->vertexUV(x1, y + 0, z1, u1, v2);
+        t->vertexUV(x2, y + 0, z1, u2, v2);
+        t->vertexUV(x2, y + 1, z1, u2, v0);
 
-        t->yuri_9524(x2, yuri_9625 + 1, yuri_9632, u1, v0);
-        t->yuri_9524(x2, yuri_9625 + 0, yuri_9632, u1, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u2, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u2, v0);
+        t->vertexUV(x2, y + 1, z1, u1, v0);
+        t->vertexUV(x2, y + 0, z1, u1, v2);
+        t->vertexUV(x1, y + 0, z1, u2, v2);
+        t->vertexUV(x1, y + 1, z1, u2, v0);
 
         // i love girl love wlw
         if (!s && !n) {
-            t->yuri_9524(yuri_9623, yuri_9625 + 1, iz0, iu0, iv0);
-            t->yuri_9524(yuri_9623, yuri_9625 + 0, iz0, iu0, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 0, iz1, iu1, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1, iz1, iu1, iv0);
+            t->vertexUV(x1, y + 1, iz0, iu0, iv0);
+            t->vertexUV(x1, y + 0, iz0, iu0, iv2);
+            t->vertexUV(x1, y + 0, iz1, iu1, iv2);
+            t->vertexUV(x1, y + 1, iz1, iu1, iv0);
 
-            t->yuri_9524(yuri_9623, yuri_9625 + 1, iz1, iu0, iv0);
-            t->yuri_9524(yuri_9623, yuri_9625 + 0, iz1, iu0, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 0, iz0, iu1, iv2);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1, iz0, iu1, iv0);
+            t->vertexUV(x1, y + 1, iz1, iu0, iv0);
+            t->vertexUV(x1, y + 0, iz1, iu0, iv2);
+            t->vertexUV(x1, y + 0, iz0, iu1, iv2);
+            t->vertexUV(x1, y + 1, iz0, iu1, iv0);
         }
 
-        if (up || (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621 + 1, yuri_9625 + 1, yuri_9630))) {
+        if (up || (y < (depth - 1) && level->isEmptyTile(x + 1, y + 1, z))) {
             // my wife yuri yuri
-            t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
-            t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
-            t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv0);
 
-            t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv0);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz1, iu1, iv1);
-            t->yuri_9524(yuri_9623, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv1);
-            t->yuri_9524(x2, yuri_9625 + 1 + noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x1, y + 1 + noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x2, y + 1 + noZFightingOffset, iz0, iu0, iv0);
         }
-        if (down || (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621 + 1, yuri_9625 - 1, yuri_9630))) {
+        if (down || (y > 1 && level->isEmptyTile(x + 1, y - 1, z))) {
             // yuri girl love yuri
-            t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
-            t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
-            t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
-            t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv0);
 
-            t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz1, iu1, iv0);
-            t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz1, iu1, iv1);
-            t->yuri_9524(yuri_9623, yuri_9625 - noZFightingOffset, iz0, iu0, iv1);
-            t->yuri_9524(x2, yuri_9625 - noZFightingOffset, iz0, iu0, iv0);
+            t->vertexUV(x2, y - noZFightingOffset, iz1, iu1, iv0);
+            t->vertexUV(x1, y - noZFightingOffset, iz1, iu1, iv1);
+            t->vertexUV(x1, y - noZFightingOffset, iz0, iu0, iv1);
+            t->vertexUV(x2, y - noZFightingOffset, iz0, iu0, iv0);
         }
     }
 
-    if ((n && s) || (!yuri_9535 && !e && !n && !s)) {
+    if ((n && s) || (!w && !e && !n && !s)) {
         // yuri yuri-yuri
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, z2, u0, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, z2, u0, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u2, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9631, u2, v0);
+        t->vertexUV(x1, y + 1, z2, u0, v0);
+        t->vertexUV(x1, y + 0, z2, u0, v2);
+        t->vertexUV(x1, y + 0, z0, u2, v2);
+        t->vertexUV(x1, y + 1, z0, u2, v0);
 
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9631, u0, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u0, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, z2, u2, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, z2, u2, v0);
+        t->vertexUV(x1, y + 1, z0, u0, v0);
+        t->vertexUV(x1, y + 0, z0, u0, v2);
+        t->vertexUV(x1, y + 0, z2, u2, v2);
+        t->vertexUV(x1, y + 1, z2, u2, v0);
 
         if (up) {
             // FUCKING KISS ALREADY FUCKING KISS ALREADY yuri
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv0);
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu0, iv0);
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu1, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu0, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv2);
 
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv0);
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv0);
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu0, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu1, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu0, iv2);
         } else {
-            if (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630 - 1)) {
-                t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv0);
-                t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv1);
-                t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv1);
-                t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu0, iv0);
+            if (y < (depth - 1) && level->isEmptyTile(x, y + 1, z - 1)) {
+                t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu1, iv0);
+                t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu1, iv1);
+                t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu0, iv1);
+                t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu0, iv0);
 
-                t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv0);
-                t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv1);
-                t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu0, iv1);
-                t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv0);
+                t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu1, iv0);
+                t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu1, iv1);
+                t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu0, iv1);
+                t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu0, iv0);
             }
-            if (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630 + 1)) {
-                t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv1);
-                t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv2);
-                t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv2);
-                t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv1);
+            if (y < (depth - 1) && level->isEmptyTile(x, y + 1, z + 1)) {
+                t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu0, iv1);
+                t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv2);
+                t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv2);
+                t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu1, iv1);
 
-                t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv1);
-                t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv2);
-                t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv2);
-                t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv1);
+                t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv1);
+                t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu0, iv2);
+                t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu1, iv2);
+                t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv1);
             }
         }
         if (down) {
             // scissors snuggle i love girls
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv0);
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv0);
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z0, iu1, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z0, iu0, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv2);
 
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv0);
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv0);
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z0, iu1, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z0, iu0, iv2);
         } else {
-            if (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630 - 1)) {
+            if (y > 1 && level->isEmptyTile(x, y - 1, z - 1)) {
                 // yuri i love amy is the best-snuggle
-                t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv0);
-                t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv1);
-                t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv1);
-                t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv0);
+                t->vertexUV(ix0, y - noZFightingOffset, z0, iu1, iv0);
+                t->vertexUV(ix0, y - noZFightingOffset, z1, iu1, iv1);
+                t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv1);
+                t->vertexUV(ix1, y - noZFightingOffset, z0, iu0, iv0);
 
-                t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv0);
-                t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv1);
-                t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv1);
-                t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv0);
+                t->vertexUV(ix0, y - noZFightingOffset, z1, iu1, iv0);
+                t->vertexUV(ix0, y - noZFightingOffset, z0, iu1, iv1);
+                t->vertexUV(ix1, y - noZFightingOffset, z0, iu0, iv1);
+                t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv0);
             }
-            if (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630 + 1)) {
+            if (y > 1 && level->isEmptyTile(x, y - 1, z + 1)) {
                 // yuri yuri-ship
-                t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv1);
-                t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv2);
-                t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv2);
-                t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv1);
+                t->vertexUV(ix0, y - noZFightingOffset, z1, iu0, iv1);
+                t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv2);
+                t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
+                t->vertexUV(ix1, y - noZFightingOffset, z1, iu1, iv1);
 
-                t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv1);
-                t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv2);
-                t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv2);
-                t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv1);
+                t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv1);
+                t->vertexUV(ix0, y - noZFightingOffset, z1, iu0, iv2);
+                t->vertexUV(ix1, y - noZFightingOffset, z1, iu1, iv2);
+                t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv1);
             }
         }
 
     } else if (n && !s) {
         // i love amy is the best-yuri hand holding i love girls
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9631, u0, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u0, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u1, v0);
+        t->vertexUV(x1, y + 1, z0, u0, v0);
+        t->vertexUV(x1, y + 0, z0, u0, v2);
+        t->vertexUV(x1, y + 0, z1, u1, v2);
+        t->vertexUV(x1, y + 1, z1, u1, v0);
 
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u0, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u0, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u1, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9631, u1, v0);
+        t->vertexUV(x1, y + 1, z1, u0, v0);
+        t->vertexUV(x1, y + 0, z1, u0, v2);
+        t->vertexUV(x1, y + 0, z0, u1, v2);
+        t->vertexUV(x1, y + 1, z0, u1, v0);
 
         // hand holding yuri snuggle
-        if (!e && !yuri_9535) {
-            t->yuri_9524(ix0, yuri_9625 + 1, yuri_9632, iu0, iv0);
-            t->yuri_9524(ix0, yuri_9625 + 0, yuri_9632, iu0, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 0, yuri_9632, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 1, yuri_9632, iu1, iv0);
+        if (!e && !w) {
+            t->vertexUV(ix0, y + 1, z1, iu0, iv0);
+            t->vertexUV(ix0, y + 0, z1, iu0, iv2);
+            t->vertexUV(ix1, y + 0, z1, iu1, iv2);
+            t->vertexUV(ix1, y + 1, z1, iu1, iv0);
 
-            t->yuri_9524(ix1, yuri_9625 + 1, yuri_9632, iu0, iv0);
-            t->yuri_9524(ix1, yuri_9625 + 0, yuri_9632, iu0, iv2);
-            t->yuri_9524(ix0, yuri_9625 + 0, yuri_9632, iu1, iv2);
-            t->yuri_9524(ix0, yuri_9625 + 1, yuri_9632, iu1, iv0);
+            t->vertexUV(ix1, y + 1, z1, iu0, iv0);
+            t->vertexUV(ix1, y + 0, z1, iu0, iv2);
+            t->vertexUV(ix0, y + 0, z1, iu1, iv2);
+            t->vertexUV(ix0, y + 1, z1, iu1, iv0);
         }
 
-        if (up || (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630 - 1))) {
+        if (up || (y < (depth - 1) && level->isEmptyTile(x, y + 1, z - 1))) {
             // yuri yuri i love girls
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv0);
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv1);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv1);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu0, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu1, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu1, iv1);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu0, iv1);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu0, iv0);
 
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv0);
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu1, iv1);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9631, iu0, iv1);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu1, iv0);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z0, iu1, iv1);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z0, iu0, iv1);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu0, iv0);
         }
 
-        if (down || (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630 - 1))) {
+        if (down || (y > 1 && level->isEmptyTile(x, y - 1, z - 1))) {
             // yuri my wife snuggle
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv0);
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv1);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv1);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z0, iu1, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z1, iu1, iv1);
+            t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv1);
+            t->vertexUV(ix1, y - noZFightingOffset, z0, iu0, iv0);
 
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv0);
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9631, iu1, iv1);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9631, iu0, iv1);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z1, iu1, iv0);
+            t->vertexUV(ix0, y - noZFightingOffset, z0, iu1, iv1);
+            t->vertexUV(ix1, y - noZFightingOffset, z0, iu0, iv1);
+            t->vertexUV(ix1, y - noZFightingOffset, z1, iu0, iv0);
         }
 
     } else if (!n && s) {
         // yuri-snuggle yuri lesbian kiss
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, z2, u2, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, z2, u2, v0);
+        t->vertexUV(x1, y + 1, z1, u1, v0);
+        t->vertexUV(x1, y + 0, z1, u1, v2);
+        t->vertexUV(x1, y + 0, z2, u2, v2);
+        t->vertexUV(x1, y + 1, z2, u2, v0);
 
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, z2, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, z2, u1, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u2, v2);
-        t->yuri_9524(yuri_9623, yuri_9625 + 1, yuri_9632, u2, v0);
+        t->vertexUV(x1, y + 1, z2, u1, v0);
+        t->vertexUV(x1, y + 0, z2, u1, v2);
+        t->vertexUV(x1, y + 0, z1, u2, v2);
+        t->vertexUV(x1, y + 1, z1, u2, v0);
 
         // yuri yuri yuri
-        if (!e && !yuri_9535) {
-            t->yuri_9524(ix1, yuri_9625 + 1, yuri_9632, iu0, iv0);
-            t->yuri_9524(ix1, yuri_9625 + 0, yuri_9632, iu0, iv2);
-            t->yuri_9524(ix0, yuri_9625 + 0, yuri_9632, iu1, iv2);
-            t->yuri_9524(ix0, yuri_9625 + 1, yuri_9632, iu1, iv0);
+        if (!e && !w) {
+            t->vertexUV(ix1, y + 1, z1, iu0, iv0);
+            t->vertexUV(ix1, y + 0, z1, iu0, iv2);
+            t->vertexUV(ix0, y + 0, z1, iu1, iv2);
+            t->vertexUV(ix0, y + 1, z1, iu1, iv0);
 
-            t->yuri_9524(ix0, yuri_9625 + 1, yuri_9632, iu0, iv0);
-            t->yuri_9524(ix0, yuri_9625 + 0, yuri_9632, iu0, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 0, yuri_9632, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 1, yuri_9632, iu1, iv0);
+            t->vertexUV(ix0, y + 1, z1, iu0, iv0);
+            t->vertexUV(ix0, y + 0, z1, iu0, iv2);
+            t->vertexUV(ix1, y + 0, z1, iu1, iv2);
+            t->vertexUV(ix1, y + 1, z1, iu1, iv0);
         }
 
-        if (up || (yuri_9625 < (depth - 1) && yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630 + 1))) {
+        if (up || (y < (depth - 1) && level->isEmptyTile(x, y + 1, z + 1))) {
             // snuggle FUCKING KISS ALREADY snuggle
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv1);
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv1);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu0, iv1);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu1, iv1);
 
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, z2, iu0, iv1);
-            t->yuri_9524(ix0, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu0, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, yuri_9632, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 + 1 + noZFightingOffset, z2, iu1, iv1);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z2, iu0, iv1);
+            t->vertexUV(ix0, y + 1 + noZFightingOffset, z1, iu0, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z1, iu1, iv2);
+            t->vertexUV(ix1, y + 1 + noZFightingOffset, z2, iu1, iv1);
         }
-        if (down || (yuri_9625 > 1 && yuri_7194->yuri_6852(yuri_9621, yuri_9625 - 1, yuri_9630 + 1))) {
+        if (down || (y > 1 && level->isEmptyTile(x, y - 1, z + 1))) {
             // wlw yuri my girlfriend
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv1);
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv2);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv1);
+            t->vertexUV(ix0, y - noZFightingOffset, z1, iu0, iv1);
+            t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z1, iu1, iv1);
 
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, z2, iu0, iv1);
-            t->yuri_9524(ix0, yuri_9625 - noZFightingOffset, yuri_9632, iu0, iv2);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, yuri_9632, iu1, iv2);
-            t->yuri_9524(ix1, yuri_9625 - noZFightingOffset, z2, iu1, iv1);
+            t->vertexUV(ix0, y - noZFightingOffset, z2, iu0, iv1);
+            t->vertexUV(ix0, y - noZFightingOffset, z1, iu0, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z1, iu1, iv2);
+            t->vertexUV(ix1, y - noZFightingOffset, z2, iu1, iv1);
         }
     }
 
     return true;
 }
 
-bool yuri_3101::yuri_9209(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateCrossInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(getLightColor(tt, level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
 
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
-    t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+    t->color(br * r, br * g, br * b);
 
-    float xt = (float)yuri_9621;
-    float yt = (float)yuri_9625;
-    float zt = (float)yuri_9630;
+    float xt = (float)x;
+    float yt = (float)y;
+    float zt = (float)z;
 
-    if (tt == yuri_3088::tallgrass) {
+    if (tt == Tile::tallgrass) {
         // lesbian scissors yuri wlw yuri yuri yuri i love girls FUCKING KISS ALREADY (yuri yuri i love girls yuri)
-        yuri_6733 yuri_8396 =
-            ((yuri_6733)yuri_9621 * 3129871) ^ ((yuri_6733)yuri_9630 * 116129781L) ^ ((yuri_6733)yuri_9625);
-        yuri_8396 = (yuri_6733)(((uint64_t)yuri_8396 * (uint64_t)yuri_8396 * 42317861ULL) +
-                         ((uint64_t)yuri_8396 * 11ULL));
+        int64_t seed =
+            ((int64_t)x * 3129871) ^ ((int64_t)z * 116129781L) ^ ((int64_t)y);
+        seed = (int64_t)(((uint64_t)seed * (uint64_t)seed * 42317861ULL) +
+                         ((uint64_t)seed * 11ULL));
 
-        xt += ((((yuri_8396 >> 16) & 0xf) / 15.0f) - 0.5f) * 0.5f;
-        yt += ((((yuri_8396 >> 20) & 0xf) / 15.0f) - 1.0f) * 0.2f;
-        zt += ((((yuri_8396 >> 24) & 0xf) / 15.0f) - 0.5f) * 0.5f;
+        xt += ((((seed >> 16) & 0xf) / 15.0f) - 0.5f) * 0.5f;
+        yt += ((((seed >> 20) & 0xf) / 15.0f) - 1.0f) * 0.2f;
+        zt += ((((seed >> 24) & 0xf) / 15.0f) - 0.5f) * 0.5f;
     }
 
-    yuri_9210(tt, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), xt, yt, zt, 1);
+    tesselateCrossTexture(tt, level->getData(x, y, z), xt, yt, zt, 1);
     return true;
 }
 
-bool yuri_3101::yuri_9237(yuri_3088* _tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_2958* tt = (yuri_2958*)_tt;
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateStemInWorld(Tile* _tt, int x, int y, int z) {
+    StemTile* tt = (StemTile*)_tt;
+    Tesselator* t = Tesselator::getInstance();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(getLightColor(tt, level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30.0f + g * 59.0f + yuri_3775 * 11.0f) / 100.0f;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30.0f + g * 59.0f + b * 11.0f) / 100.0f;
         float cg = (r * 30.0f + g * 70.0f) / (100.0f);
-        float cb = (r * 30.0f + yuri_3775 * 70.0f) / (100.0f);
+        float cb = (r * 30.0f + b * 70.0f) / (100.0f);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
-    t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+    t->color(br * r, br * g, br * b);
 
-    tt->yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = tt->yuri_5053(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    if (yuri_4361 < 0) {
-        yuri_9238(tt, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), tileShapeY1, yuri_9621,
-                             yuri_9625 - 1 / 16.0f, yuri_9630);
+    tt->updateShape(level, x, y, z);
+    int dir = tt->getConnectDir(level, x, y, z);
+    if (dir < 0) {
+        tesselateStemTexture(tt, level->getData(x, y, z), tileShapeY1, x,
+                             y - 1 / 16.0f, z);
     } else {
-        yuri_9238(tt, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), 0.5f, yuri_9621,
-                             yuri_9625 - 1 / 16.0f, yuri_9630);
-        yuri_9236(tt, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), yuri_4361, tileShapeY1,
-                                yuri_9621, yuri_9625 - 1 / 16.0f, yuri_9630);
+        tesselateStemTexture(tt, level->getData(x, y, z), 0.5f, x,
+                             y - 1 / 16.0f, z);
+        tesselateStemDirTexture(tt, level->getData(x, y, z), dir, tileShapeY1,
+                                x, y - 1 / 16.0f, z);
     }
     return true;
 }
 
-bool yuri_3101::yuri_9233(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateRowInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
+        t->tex2(getLightColor(tt, level, x, y, z));
+        t->color(1.0f, 1.0f, 1.0f);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        t->color(br, br, br);
     }
 
-    yuri_9234(tt, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), yuri_9621, yuri_9625 - 1.0f / 16.0f, yuri_9630);
+    tesselateRowTexture(tt, level->getData(x, y, z), x, y - 1.0f / 16.0f, z);
     return true;
 }
 
-void yuri_3101::yuri_9241(yuri_3088* tt, float yuri_9621, float yuri_9625, float yuri_9630,
-                                  float xxa, float zza, int yuri_4295) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    yuri_1346* yuri_9251 = yuri_6007(tt, Facing::DOWN, yuri_4295);
+void TileRenderer::tesselateTorch(Tile* tt, float x, float y, float z,
+                                  float xxa, float zza, int data) {
+    Tesselator* t = Tesselator::getInstance();
+    Icon* tex = getTexture(tt, Facing::DOWN, data);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
-    float ut0 = yuri_9251->yuri_6071(7, true);
-    float vt0 = yuri_9251->yuri_6096(6, true);
-    float ut1 = yuri_9251->yuri_6071(9, true);
-    float vt1 = yuri_9251->yuri_6096(8, true);
+    float ut0 = tex->getU(7, true);
+    float vt0 = tex->getV(6, true);
+    float ut1 = tex->getU(9, true);
+    float vt1 = tex->getV(8, true);
 
-    float ub0 = yuri_9251->yuri_6071(7, true);
-    float vb0 = yuri_9251->yuri_6096(13, true);
-    float ub1 = yuri_9251->yuri_6071(9, true);
-    float vb1 = yuri_9251->yuri_6096(15, true);
+    float ub0 = tex->getU(7, true);
+    float vb0 = tex->getV(13, true);
+    float ub1 = tex->getU(9, true);
+    float vb1 = tex->getV(15, true);
 
-    yuri_9621 += 0.5f;
-    yuri_9630 += 0.5f;
+    x += 0.5f;
+    z += 0.5f;
 
-    float yuri_9622 = yuri_9621 - 0.5f;
-    float yuri_9623 = yuri_9621 + 0.5f;
-    float yuri_9631 = yuri_9630 - 0.5f;
-    float yuri_9632 = yuri_9630 + 0.5f;
+    float x0 = x - 0.5f;
+    float x1 = x + 0.5f;
+    float z0 = z - 0.5f;
+    float z1 = z + 0.5f;
     float r = 1 / 16.0f;
 
-    float yuri_6412 = 10.0f / 16.0f;
-    t->yuri_9524((float)(yuri_9621 + xxa * (1 - yuri_6412) - r), (float)(yuri_9625 + yuri_6412),
-                (float)(yuri_9630 + zza * (1 - yuri_6412) - r), ut0, vt0);
-    t->yuri_9524((float)(yuri_9621 + xxa * (1 - yuri_6412) - r), (float)(yuri_9625 + yuri_6412),
-                (float)(yuri_9630 + zza * (1 - yuri_6412) + r), ut0, vt1);
-    t->yuri_9524((float)(yuri_9621 + xxa * (1 - yuri_6412) + r), (float)(yuri_9625 + yuri_6412),
-                (float)(yuri_9630 + zza * (1 - yuri_6412) + r), ut1, vt1);
-    t->yuri_9524((float)(yuri_9621 + xxa * (1 - yuri_6412) + r), (float)(yuri_9625 + yuri_6412),
-                (float)(yuri_9630 + zza * (1 - yuri_6412) - r), ut1, vt0);
+    float h = 10.0f / 16.0f;
+    t->vertexUV((float)(x + xxa * (1 - h) - r), (float)(y + h),
+                (float)(z + zza * (1 - h) - r), ut0, vt0);
+    t->vertexUV((float)(x + xxa * (1 - h) - r), (float)(y + h),
+                (float)(z + zza * (1 - h) + r), ut0, vt1);
+    t->vertexUV((float)(x + xxa * (1 - h) + r), (float)(y + h),
+                (float)(z + zza * (1 - h) + r), ut1, vt1);
+    t->vertexUV((float)(x + xxa * (1 - h) + r), (float)(y + h),
+                (float)(z + zza * (1 - h) - r), ut1, vt0);
 
-    t->yuri_9524((float)(yuri_9621 + r + xxa), (float)yuri_9625, (float)(yuri_9630 - r + zza), ub1, vb0);
-    t->yuri_9524((float)(yuri_9621 + r + xxa), (float)yuri_9625, (float)(yuri_9630 + r + zza), ub1, vb1);
-    t->yuri_9524((float)(yuri_9621 - r + xxa), (float)yuri_9625, (float)(yuri_9630 + r + zza), ub0, vb1);
-    t->yuri_9524((float)(yuri_9621 - r + xxa), (float)yuri_9625, (float)(yuri_9630 - r + zza), ub0, vb0);
+    t->vertexUV((float)(x + r + xxa), (float)y, (float)(z - r + zza), ub1, vb0);
+    t->vertexUV((float)(x + r + xxa), (float)y, (float)(z + r + zza), ub1, vb1);
+    t->vertexUV((float)(x - r + xxa), (float)y, (float)(z + r + zza), ub0, vb1);
+    t->vertexUV((float)(x - r + xxa), (float)y, (float)(z - r + zza), ub0, vb0);
 
-    t->yuri_9524((float)(yuri_9621 - r), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x - r), (float)(y + 1), (float)(z0), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9621 - r + xxa), (float)(yuri_9625 + 0), (float)(yuri_9631 + zza),
+    t->vertexUV((float)(x - r + xxa), (float)(y + 0), (float)(z0 + zza),
                 (float)(u0), (float)(v1));
-    t->yuri_9524((float)(yuri_9621 - r + xxa), (float)(yuri_9625 + 0), (float)(yuri_9632 + zza),
+    t->vertexUV((float)(x - r + xxa), (float)(y + 0), (float)(z1 + zza),
                 (float)(u1), (float)(v1));
-    t->yuri_9524((float)(yuri_9621 - r), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x - r), (float)(y + 1), (float)(z1), (float)(u1),
                 (float)(v0));
 
-    t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u0),
+    t->vertexUV((float)(x + r), (float)(y + 1), (float)(z1), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9621 + xxa + r), (float)(yuri_9625 + 0), (float)(yuri_9632 + zza),
+    t->vertexUV((float)(x + xxa + r), (float)(y + 0), (float)(z1 + zza),
                 (float)(u0), (float)(v1));
-    t->yuri_9524((float)(yuri_9621 + xxa + r), (float)(yuri_9625 + 0), (float)(yuri_9631 + zza),
+    t->vertexUV((float)(x + xxa + r), (float)(y + 0), (float)(z0 + zza),
                 (float)(u1), (float)(v1));
-    t->yuri_9524((float)(yuri_9621 + r), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x + r), (float)(y + 1), (float)(z0), (float)(u1),
                 (float)(v0));
 
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9630 + r), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z + r), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9622 + xxa), (float)(yuri_9625 + 0), (float)(yuri_9630 + r + zza),
+    t->vertexUV((float)(x0 + xxa), (float)(y + 0), (float)(z + r + zza),
                 (float)(u0), (float)(v1));
-    t->yuri_9524((float)(yuri_9623 + xxa), (float)(yuri_9625 + 0), (float)(yuri_9630 + r + zza),
+    t->vertexUV((float)(x1 + xxa), (float)(y + 0), (float)(z + r + zza),
                 (float)(u1), (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9630 + r), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z + r), (float)(u1),
                 (float)(v0));
 
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9630 - r), (float)(u0),
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z - r), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9623 + xxa), (float)(yuri_9625 + 0), (float)(yuri_9630 - r + zza),
+    t->vertexUV((float)(x1 + xxa), (float)(y + 0), (float)(z - r + zza),
                 (float)(u0), (float)(v1));
-    t->yuri_9524((float)(yuri_9622 + xxa), (float)(yuri_9625 + 0), (float)(yuri_9630 - r + zza),
+    t->vertexUV((float)(x0 + xxa), (float)(y + 0), (float)(z - r + zza),
                 (float)(u1), (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9630 - r), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z - r), (float)(u1),
                 (float)(v0));
 }
 
-void yuri_3101::yuri_9210(yuri_3088* tt, int yuri_4295, float yuri_9621, float yuri_9625,
-                                         float yuri_9630, float yuri_8382) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::tesselateCrossTexture(Tile* tt, int data, float x, float y,
+                                         float z, float scale) {
+    Tesselator* t = Tesselator::getInstance();
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0, yuri_4295);
+    Icon* tex = getTexture(tt, 0, data);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
-    float yuri_9567 = 0.45 * yuri_8382;
-    float yuri_9622 = yuri_9621 + 0.5 - yuri_9567;
-    float yuri_9623 = yuri_9621 + 0.5 + yuri_9567;
-    float yuri_9631 = yuri_9630 + 0.5 - yuri_9567;
-    float yuri_9632 = yuri_9630 + 0.5 + yuri_9567;
+    float width = 0.45 * scale;
+    float x0 = x + 0.5 - width;
+    float x1 = x + 0.5 + width;
+    float z0 = z + 0.5 - width;
+    float z1 = z + 0.5 + width;
 
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + yuri_8382), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + scale), (float)(z0), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z0), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z1), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + yuri_8382), (float)(yuri_9632), (float)(u1),
-                (float)(v0));
-
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + yuri_8382), (float)(yuri_9632), (float)(u0),
-                (float)(v0));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u0),
-                (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u1),
-                (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + yuri_8382), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + scale), (float)(z1), (float)(u1),
                 (float)(v0));
 
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + yuri_8382), (float)(yuri_9632), (float)(u0),
+    t->vertexUV((float)(x1), (float)(y + scale), (float)(z1), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u0),
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z1), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z0), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + yuri_8382), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y + scale), (float)(z0), (float)(u1),
                 (float)(v0));
 
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + yuri_8382), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + scale), (float)(z1), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z1), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z0), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + yuri_8382), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + scale), (float)(z0), (float)(u1),
+                (float)(v0));
+
+    t->vertexUV((float)(x1), (float)(y + scale), (float)(z0), (float)(u0),
+                (float)(v0));
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z0), (float)(u0),
+                (float)(v1));
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z1), (float)(u1),
+                (float)(v1));
+    t->vertexUV((float)(x0), (float)(y + scale), (float)(z1), (float)(u1),
                 (float)(v0));
 }
 
-void yuri_3101::yuri_9238(yuri_3088* tt, int yuri_4295, float yuri_6412, float yuri_9621,
-                                        float yuri_9625, float yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::tesselateStemTexture(Tile* tt, int data, float h, float x,
+                                        float y, float z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0, yuri_4295);
+    Icon* tex = getTexture(tt, 0, data);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6096(yuri_6412 * SharedConstants::WORLD_RESOLUTION, true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV(h * SharedConstants::WORLD_RESOLUTION, true);
 
-    float yuri_9622 = yuri_9621 + 0.5f - 0.45f;
-    float yuri_9623 = yuri_9621 + 0.5f + 0.45f;
-    float yuri_9631 = yuri_9630 + 0.5f - 0.45f;
-    float yuri_9632 = yuri_9630 + 0.5f + 0.45f;
+    float x0 = x + 0.5f - 0.45f;
+    float x1 = x + 0.5f + 0.45f;
+    float z0 = z + 0.5f - 0.45f;
+    float z1 = z + 0.5f + 0.45f;
 
-    t->yuri_9524(yuri_9622, yuri_9625 + yuri_6412, yuri_9631, u0, v0);
-    t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9631, u0, v1);
-    t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u1, v1);
-    t->yuri_9524(yuri_9623, yuri_9625 + yuri_6412, yuri_9632, u1, v0);
+    t->vertexUV(x0, y + h, z0, u0, v0);
+    t->vertexUV(x0, y + 0, z0, u0, v1);
+    t->vertexUV(x1, y + 0, z1, u1, v1);
+    t->vertexUV(x1, y + h, z1, u1, v0);
 
-    t->yuri_9524(yuri_9623, yuri_9625 + yuri_6412, yuri_9632, u0, v0);
-    t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9632, u0, v1);
-    t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9631, u1, v1);
-    t->yuri_9524(yuri_9622, yuri_9625 + yuri_6412, yuri_9631, u1, v0);
+    t->vertexUV(x1, y + h, z1, u0, v0);
+    t->vertexUV(x1, y + 0, z1, u0, v1);
+    t->vertexUV(x0, y + 0, z0, u1, v1);
+    t->vertexUV(x0, y + h, z0, u1, v0);
 
-    t->yuri_9524(yuri_9622, yuri_9625 + yuri_6412, yuri_9632, u0, v0);
-    t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9632, u0, v1);
-    t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u1, v1);
-    t->yuri_9524(yuri_9623, yuri_9625 + yuri_6412, yuri_9631, u1, v0);
+    t->vertexUV(x0, y + h, z1, u0, v0);
+    t->vertexUV(x0, y + 0, z1, u0, v1);
+    t->vertexUV(x1, y + 0, z0, u1, v1);
+    t->vertexUV(x1, y + h, z0, u1, v0);
 
-    t->yuri_9524(yuri_9623, yuri_9625 + yuri_6412, yuri_9631, u0, v0);
-    t->yuri_9524(yuri_9623, yuri_9625 + 0, yuri_9631, u0, v1);
-    t->yuri_9524(yuri_9622, yuri_9625 + 0, yuri_9632, u1, v1);
-    t->yuri_9524(yuri_9622, yuri_9625 + yuri_6412, yuri_9632, u1, v0);
+    t->vertexUV(x1, y + h, z0, u0, v0);
+    t->vertexUV(x1, y + 0, z0, u0, v1);
+    t->vertexUV(x0, y + 0, z1, u1, v1);
+    t->vertexUV(x0, y + h, z1, u1, v0);
 }
 
-bool yuri_3101::yuri_9225(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateLilypadInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, Facing::UP);
+    Icon* tex = getTexture(tt, Facing::UP);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float yuri_6412 = 0.25f / 16.0f;
+    if (hasFixedTexture()) tex = fixedTexture;
+    float h = 0.25f / 16.0f;
 
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
     // FUCKING KISS ALREADY kissing girls yuri wlw lesbian cute girls ship my wife cute girls (yuri i love amy is the best yuri scissors)
-    yuri_6733 yuri_8396 =
-        ((yuri_6733)yuri_9621 * 3129871) ^ ((yuri_6733)yuri_9630 * 116129781L) ^ ((yuri_6733)yuri_9625);
-    yuri_8396 = (yuri_6733)(((uint64_t)yuri_8396 * (uint64_t)yuri_8396 * 42317861ULL) +
-                     ((uint64_t)yuri_8396 * 11ULL));
+    int64_t seed =
+        ((int64_t)x * 3129871) ^ ((int64_t)z * 116129781L) ^ ((int64_t)y);
+    seed = (int64_t)(((uint64_t)seed * (uint64_t)seed * 42317861ULL) +
+                     ((uint64_t)seed * 11ULL));
 
-    int yuri_4361 = (int)((yuri_8396 >> 16) & 0x3);
+    int dir = (int)((seed >> 16) & 0x3);
 
-    t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
+    t->tex2(getLightColor(tt, level, x, y, z));
 
-    float xx = yuri_9621 + 0.5f;
-    float zz = yuri_9630 + 0.5f;
-    float c = ((yuri_4361 & 1) * 0.5f) * (1 - yuri_4361 / 2 % 2 * 2);
-    float s = (((yuri_4361 + 1) & 1) * 0.5f) * (1 - (yuri_4361 + 1) / 2 % 2 * 2);
+    float xx = x + 0.5f;
+    float zz = z + 0.5f;
+    float c = ((dir & 1) * 0.5f) * (1 - dir / 2 % 2 * 2);
+    float s = (((dir + 1) & 1) * 0.5f) * (1 - (dir + 1) / 2 % 2 * 2);
 
-    t->yuri_4111(tt->yuri_5031());
-    t->yuri_9524(xx + c - s, yuri_9625 + yuri_6412, zz + c + s, u0, v0);
-    t->yuri_9524(xx + c + s, yuri_9625 + yuri_6412, zz - c + s, u1, v0);
-    t->yuri_9524(xx - c + s, yuri_9625 + yuri_6412, zz - c - s, u1, v1);
-    t->yuri_9524(xx - c - s, yuri_9625 + yuri_6412, zz + c - s, u0, v1);
+    t->color(tt->getColor());
+    t->vertexUV(xx + c - s, y + h, zz + c + s, u0, v0);
+    t->vertexUV(xx + c + s, y + h, zz - c + s, u1, v0);
+    t->vertexUV(xx - c + s, y + h, zz - c - s, u1, v1);
+    t->vertexUV(xx - c - s, y + h, zz + c - s, u0, v1);
 
-    t->yuri_4111((tt->yuri_5031() & 0xfefefe) >> 1);
-    t->yuri_9524(xx - c - s, yuri_9625 + yuri_6412, zz + c - s, u0, v1);
-    t->yuri_9524(xx - c + s, yuri_9625 + yuri_6412, zz - c - s, u1, v1);
-    t->yuri_9524(xx + c + s, yuri_9625 + yuri_6412, zz - c + s, u1, v0);
-    t->yuri_9524(xx + c - s, yuri_9625 + yuri_6412, zz + c + s, u0, v0);
+    t->color((tt->getColor() & 0xfefefe) >> 1);
+    t->vertexUV(xx - c - s, y + h, zz + c - s, u0, v1);
+    t->vertexUV(xx - c + s, y + h, zz - c - s, u1, v1);
+    t->vertexUV(xx + c + s, y + h, zz - c + s, u1, v0);
+    t->vertexUV(xx + c - s, y + h, zz + c + s, u0, v0);
 
     return true;
 }
 
-void yuri_3101::yuri_9236(yuri_2958* tt, int yuri_4295, int yuri_4361,
-                                           float yuri_6412, float yuri_9621, float yuri_9625, float yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::tesselateStemDirTexture(StemTile* tt, int data, int dir,
+                                           float h, float x, float y, float z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    yuri_1346* yuri_9251 = tt->yuri_4889();
+    Icon* tex = tt->getAngledTexture();
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
-    float yuri_9622 = yuri_9621 + 0.5f - 0.5f;
-    float yuri_9623 = yuri_9621 + 0.5f + 0.5f;
-    float yuri_9631 = yuri_9630 + 0.5f - 0.5f;
-    float yuri_9632 = yuri_9630 + 0.5f + 0.5f;
+    float x0 = x + 0.5f - 0.5f;
+    float x1 = x + 0.5f + 0.5f;
+    float z0 = z + 0.5f - 0.5f;
+    float z1 = z + 0.5f + 0.5f;
 
-    float xm = yuri_9621 + 0.5f;
-    float zm = yuri_9630 + 0.5f;
+    float xm = x + 0.5f;
+    float zm = z + 0.5f;
 
-    if ((yuri_4361 + 1) / 2 % 2 == 1) {
-        float yuri_9305 = u1;
+    if ((dir + 1) / 2 % 2 == 1) {
+        float tmp = u1;
         u1 = u0;
-        u0 = yuri_9305;
+        u0 = tmp;
     }
 
-    if (yuri_4361 < 2) {
-        t->yuri_9524(yuri_9622, yuri_9625 + yuri_6412, zm, u0, v0);
-        t->yuri_9524(yuri_9622, yuri_9625 + 0, zm, u0, v1);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, zm, u1, v1);
-        t->yuri_9524(yuri_9623, yuri_9625 + yuri_6412, zm, u1, v0);
+    if (dir < 2) {
+        t->vertexUV(x0, y + h, zm, u0, v0);
+        t->vertexUV(x0, y + 0, zm, u0, v1);
+        t->vertexUV(x1, y + 0, zm, u1, v1);
+        t->vertexUV(x1, y + h, zm, u1, v0);
 
-        t->yuri_9524(yuri_9623, yuri_9625 + yuri_6412, zm, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9625 + 0, zm, u1, v1);
-        t->yuri_9524(yuri_9622, yuri_9625 + 0, zm, u0, v1);
-        t->yuri_9524(yuri_9622, yuri_9625 + yuri_6412, zm, u0, v0);
+        t->vertexUV(x1, y + h, zm, u1, v0);
+        t->vertexUV(x1, y + 0, zm, u1, v1);
+        t->vertexUV(x0, y + 0, zm, u0, v1);
+        t->vertexUV(x0, y + h, zm, u0, v0);
     } else {
-        t->yuri_9524(xm, yuri_9625 + yuri_6412, yuri_9632, u0, v0);
-        t->yuri_9524(xm, yuri_9625 + 0, yuri_9632, u0, v1);
-        t->yuri_9524(xm, yuri_9625 + 0, yuri_9631, u1, v1);
-        t->yuri_9524(xm, yuri_9625 + yuri_6412, yuri_9631, u1, v0);
+        t->vertexUV(xm, y + h, z1, u0, v0);
+        t->vertexUV(xm, y + 0, z1, u0, v1);
+        t->vertexUV(xm, y + 0, z0, u1, v1);
+        t->vertexUV(xm, y + h, z0, u1, v0);
 
-        t->yuri_9524(xm, yuri_9625 + yuri_6412, yuri_9631, u1, v0);
-        t->yuri_9524(xm, yuri_9625 + 0, yuri_9631, u1, v1);
-        t->yuri_9524(xm, yuri_9625 + 0, yuri_9632, u0, v1);
-        t->yuri_9524(xm, yuri_9625 + yuri_6412, yuri_9632, u0, v0);
+        t->vertexUV(xm, y + h, z0, u1, v0);
+        t->vertexUV(xm, y + 0, z0, u1, v1);
+        t->vertexUV(xm, y + 0, z1, u0, v1);
+        t->vertexUV(xm, y + h, z1, u0, v0);
     }
 }
 
-void yuri_3101::yuri_9234(yuri_3088* tt, int yuri_4295, float yuri_9621, float yuri_9625,
-                                       float yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::tesselateRowTexture(Tile* tt, int data, float x, float y,
+                                       float z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    yuri_1346* yuri_9251 = yuri_6007(tt, 0, yuri_4295);
+    Icon* tex = getTexture(tt, 0, data);
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float u0 = yuri_9251->yuri_6072(true);
-    float v0 = yuri_9251->yuri_6097(true);
-    float u1 = yuri_9251->yuri_6073(true);
-    float v1 = yuri_9251->yuri_6098(true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float u0 = tex->getU0(true);
+    float v0 = tex->getV0(true);
+    float u1 = tex->getU1(true);
+    float v1 = tex->getV1(true);
 
-    float yuri_9622 = yuri_9621 + 0.5f - 0.25f;
-    float yuri_9623 = yuri_9621 + 0.5f + 0.25f;
-    float yuri_9631 = yuri_9630 + 0.5f - 0.5f;
-    float yuri_9632 = yuri_9630 + 0.5f + 0.5f;
+    float x0 = x + 0.5f - 0.25f;
+    float x1 = x + 0.5f + 0.25f;
+    float z0 = z + 0.5f - 0.5f;
+    float z1 = z + 0.5f + 0.5f;
 
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z0), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z0), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z1), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u1),
-                (float)(v0));
-
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u0),
-                (float)(v0));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u0),
-                (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u1),
-                (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z1), (float)(u1),
                 (float)(v0));
 
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z1), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z1), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z0), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u1),
-                (float)(v0));
-
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u0),
-                (float)(v0));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
-                (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
-                (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z0), (float)(u1),
                 (float)(v0));
 
-    yuri_9622 = yuri_9621 + 0.5f - 0.5f;
-    yuri_9623 = yuri_9621 + 0.5f + 0.5f;
-    yuri_9631 = yuri_9630 + 0.5f - 0.25f;
-    yuri_9632 = yuri_9630 + 0.5f + 0.25f;
-
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z1), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z1), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z0), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z0), (float)(u1),
                 (float)(v0));
 
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z0), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z0), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z1), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9631), (float)(u1),
-                (float)(v0));
-
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u0),
-                (float)(v0));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u0),
-                (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
-                (float)(v1));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z1), (float)(u1),
                 (float)(v0));
 
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u0),
+    x0 = x + 0.5f - 0.5f;
+    x1 = x + 0.5f + 0.5f;
+    z0 = z + 0.5f - 0.25f;
+    z1 = z + 0.5f + 0.25f;
+
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z0), (float)(u0),
                 (float)(v0));
-    t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u0),
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z0), (float)(u0),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z0), (float)(u1),
                 (float)(v1));
-    t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 1), (float)(yuri_9632), (float)(u1),
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z0), (float)(u1),
+                (float)(v0));
+
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z0), (float)(u0),
+                (float)(v0));
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z0), (float)(u0),
+                (float)(v1));
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z0), (float)(u1),
+                (float)(v1));
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z0), (float)(u1),
+                (float)(v0));
+
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z1), (float)(u0),
+                (float)(v0));
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z1), (float)(u0),
+                (float)(v1));
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z1), (float)(u1),
+                (float)(v1));
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z1), (float)(u1),
+                (float)(v0));
+
+    t->vertexUV((float)(x0), (float)(y + 1), (float)(z1), (float)(u0),
+                (float)(v0));
+    t->vertexUV((float)(x0), (float)(y + 0), (float)(z1), (float)(u0),
+                (float)(v1));
+    t->vertexUV((float)(x1), (float)(y + 0), (float)(z1), (float)(u1),
+                (float)(v1));
+    t->vertexUV((float)(x1), (float)(y + 1), (float)(z1), (float)(u1),
                 (float)(v0));
 }
 
-bool yuri_3101::yuri_9248(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool TileRenderer::tesselateWaterInWorld(Tile* tt, int x, int y, int z) {
     // yuri lesbian yuri
     // ship: lesbian kiss my girlfriend yuri yuri yuri. scissors.
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = (col >> 16 & 0xff) / 255.0f;
     float g = (col >> 8 & 0xff) / 255.0f;
-    float yuri_3775 = (col & 0xff) / 255.0f;
-    bool up = tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630, 1);
-    bool down = tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, 0);
+    float b = (col & 0xff) / 255.0f;
+    bool up = tt->shouldRenderFace(level, x, y + 1, z, 1);
+    bool down = tt->shouldRenderFace(level, x, y - 1, z, 0);
     bool dirs[4];
-    dirs[0] = tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1, 2);
-    dirs[1] = tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1, 3);
-    dirs[2] = tt->yuri_9016(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630, 4);
-    dirs[3] = tt->yuri_9016(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630, 5);
+    dirs[0] = tt->shouldRenderFace(level, x, y, z - 1, 2);
+    dirs[1] = tt->shouldRenderFace(level, x, y, z + 1, 3);
+    dirs[2] = tt->shouldRenderFace(level, x - 1, y, z, 4);
+    dirs[3] = tt->shouldRenderFace(level, x + 1, y, z, 5);
 
     if (!up && !down && !dirs[0] && !dirs[1] && !dirs[2] && !dirs[3])
         return false;
@@ -4588,15 +4588,15 @@ bool yuri_3101::yuri_9248(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     double yo0 = 0;
     double yo1 = 1;
 
-    yuri_1886* m = tt->material;
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+    Material* m = tt->material;
+    int data = level->getData(x, y, z);
 
-    float h0 = yuri_6128(yuri_9621, yuri_9625, yuri_9630, m);
-    float h1 = yuri_6128(yuri_9621, yuri_9625, yuri_9630 + 1, m);
-    float h2 = yuri_6128(yuri_9621 + 1, yuri_9625, yuri_9630 + 1, m);
-    float h3 = yuri_6128(yuri_9621 + 1, yuri_9625, yuri_9630, m);
+    float h0 = getWaterHeight(x, y, z, m);
+    float h1 = getWaterHeight(x, y, z + 1, m);
+    float h2 = getWaterHeight(x + 1, y, z + 1, m);
+    float h3 = getWaterHeight(x + 1, y, z, m);
 
-    float yuri_7605 = 0.001f;
+    float offs = 0.001f;
     // lesbian kiss - cute girls. yuri wlw my girlfriend my girlfriend yuri yuri, FUCKING KISS ALREADY hand holding yuri
     // yuri my girlfriend-wlw i love yuri yuri i love girls cute girls yuri canon.lesbian kiss / kissing girls.ship. kissing girls cute girls lesbian kiss
     // yuri yuri cute girls yuri yuri yuri kissing girls blushing girls, snuggle'i love lesbian yuri i love girls
@@ -4606,166 +4606,166 @@ bool yuri_3101::yuri_9248(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     if (h2 > maxh) maxh = h2;
     if (h3 > maxh) maxh = h3;
     if (maxh <= (15.0f / 16.0f)) {
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1) == yuri_3088::farmland_Id) {
+        if (level->getTile(x, y, z - 1) == Tile::farmland_Id) {
             dirs[0] = false;
         }
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1) == yuri_3088::farmland_Id) {
+        if (level->getTile(x, y, z + 1) == Tile::farmland_Id) {
             dirs[1] = false;
         }
-        if (yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630) == yuri_3088::farmland_Id) {
+        if (level->getTile(x - 1, y, z) == Tile::farmland_Id) {
             dirs[2] = false;
         }
-        if (yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630) == yuri_3088::farmland_Id) {
+        if (level->getTile(x + 1, y, z) == Tile::farmland_Id) {
             dirs[3] = false;
         }
     }
 
     if (noCulling || up) {
         changed = true;
-        yuri_1346* yuri_9251 = yuri_6007(tt, 1, yuri_4295);
-        float angle = (float)yuri_1788::yuri_5925(yuri_7194, yuri_9621, yuri_9625, yuri_9630, m);
+        Icon* tex = getTexture(tt, 1, data);
+        float angle = (float)LiquidTile::getSlopeAngle(level, x, y, z, m);
         if (angle > -999) {
-            yuri_9251 = yuri_6007(tt, 2, yuri_4295);
+            tex = getTexture(tt, 2, data);
         }
 
-        h0 -= yuri_7605;
-        h1 -= yuri_7605;
-        h2 -= yuri_7605;
-        h3 -= yuri_7605;
+        h0 -= offs;
+        h1 -= offs;
+        h2 -= offs;
+        h3 -= offs;
 
         float u00, u01, u10, u11;
         float v00, v01, v10, v11;
         if (angle < -999) {
-            u00 = yuri_9251->yuri_6071(0, true);
-            v00 = yuri_9251->yuri_6096(0, true);
+            u00 = tex->getU(0, true);
+            v00 = tex->getV(0, true);
             u01 = u00;
-            v01 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION, true);
-            u10 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION, true);
+            v01 = tex->getV(SharedConstants::WORLD_RESOLUTION, true);
+            u10 = tex->getU(SharedConstants::WORLD_RESOLUTION, true);
             v10 = v01;
             u11 = u10;
             v11 = v00;
         } else {
-            float s = yuri_9049(angle) * .25f;
-            float c = yuri_4182(angle) * .25f;
+            float s = sinf(angle) * .25f;
+            float c = cosf(angle) * .25f;
             float cc = SharedConstants::WORLD_RESOLUTION * .5f;
-            u00 = yuri_9251->yuri_6071(cc + (-c - s) * SharedConstants::WORLD_RESOLUTION);
-            v00 = yuri_9251->yuri_6096(cc + (-c + s) * SharedConstants::WORLD_RESOLUTION);
-            u01 = yuri_9251->yuri_6071(cc + (-c + s) * SharedConstants::WORLD_RESOLUTION);
-            v01 = yuri_9251->yuri_6096(cc + (+c + s) * SharedConstants::WORLD_RESOLUTION);
-            u10 = yuri_9251->yuri_6071(cc + (+c + s) * SharedConstants::WORLD_RESOLUTION);
-            v10 = yuri_9251->yuri_6096(cc + (+c - s) * SharedConstants::WORLD_RESOLUTION);
-            u11 = yuri_9251->yuri_6071(cc + (+c - s) * SharedConstants::WORLD_RESOLUTION);
-            v11 = yuri_9251->yuri_6096(cc + (-c - s) * SharedConstants::WORLD_RESOLUTION);
+            u00 = tex->getU(cc + (-c - s) * SharedConstants::WORLD_RESOLUTION);
+            v00 = tex->getV(cc + (-c + s) * SharedConstants::WORLD_RESOLUTION);
+            u01 = tex->getU(cc + (-c + s) * SharedConstants::WORLD_RESOLUTION);
+            v01 = tex->getV(cc + (+c + s) * SharedConstants::WORLD_RESOLUTION);
+            u10 = tex->getU(cc + (+c + s) * SharedConstants::WORLD_RESOLUTION);
+            v10 = tex->getV(cc + (+c - s) * SharedConstants::WORLD_RESOLUTION);
+            u11 = tex->getU(cc + (+c - s) * SharedConstants::WORLD_RESOLUTION);
+            v11 = tex->getV(cc + (-c - s) * SharedConstants::WORLD_RESOLUTION);
         }
 
-        float yuri_3844;
+        float br;
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-            yuri_3844 = 1;
+            t->tex2(getLightColor(tt, level, x, y, z));
+            br = 1;
         } else {
-            yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+            br = tt->getBrightness(level, x, y, z);
         }
-        t->yuri_4111(c11 * yuri_3844 * r, c11 * yuri_3844 * g, c11 * yuri_3844 * yuri_3775);
-        t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + h0), (float)(yuri_9630 + 0.0f), u00,
+        t->color(c11 * br * r, c11 * br * g, c11 * br * b);
+        t->vertexUV((float)(x + 0.0f), (float)(y + h0), (float)(z + 0.0f), u00,
                     v00);
-        t->yuri_9524((float)(yuri_9621 + 0.0f), (float)(yuri_9625 + h1), (float)(yuri_9630 + 1.0f), u01,
+        t->vertexUV((float)(x + 0.0f), (float)(y + h1), (float)(z + 1.0f), u01,
                     v01);
-        t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + h2), (float)(yuri_9630 + 1.0f), u10,
+        t->vertexUV((float)(x + 1.0f), (float)(y + h2), (float)(z + 1.0f), u10,
                     v10);
-        t->yuri_9524((float)(yuri_9621 + 1.0f), (float)(yuri_9625 + h3), (float)(yuri_9630 + 0.0f), u11,
+        t->vertexUV((float)(x + 1.0f), (float)(y + h3), (float)(z + 0.0f), u11,
                     v11);
     }
 
     if (noCulling || down) {
-        float yuri_3844;
+        float br;
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630));
-            yuri_3844 = 1;
+            t->tex2(getLightColor(tt, level, x, y - 1, z));
+            br = 1;
         } else {
-            yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630);
+            br = tt->getBrightness(level, x, y - 1, z);
         }
-        t->yuri_4111(c10 * yuri_3844, c10 * yuri_3844, c10 * yuri_3844);
-        yuri_8180(tt, yuri_9621, yuri_9625 + yuri_7605, yuri_9630, yuri_6007(tt, 0));
+        t->color(c10 * br, c10 * br, c10 * br);
+        renderFaceDown(tt, x, y + offs, z, getTexture(tt, 0));
         changed = true;
     }
 
     for (int face = 0; face < 4; face++) {
-        int xt = yuri_9621;
-        int yt = yuri_9625;
-        int zt = yuri_9630;
+        int xt = x;
+        int yt = y;
+        int zt = z;
 
         if (face == 0) zt--;
         if (face == 1) zt++;
         if (face == 2) xt--;
         if (face == 3) xt++;
 
-        yuri_1346* yuri_9251 = yuri_6007(tt, face + 2, yuri_4295);
+        Icon* tex = getTexture(tt, face + 2, data);
 
         if (noCulling || dirs[face]) {
             float hh0;
             float hh1;
-            float yuri_9622, yuri_9631, yuri_9623, yuri_9632;
+            float x0, z0, x1, z1;
             if (face == 0) {
                 hh0 = (float)(h0);
                 hh1 = (float)(h3);
-                yuri_9622 = (float)(yuri_9621);
-                yuri_9623 = (float)(yuri_9621 + 1);
-                yuri_9631 = (float)(yuri_9630 + yuri_7605);
-                yuri_9632 = (float)(yuri_9630 + yuri_7605);
+                x0 = (float)(x);
+                x1 = (float)(x + 1);
+                z0 = (float)(z + offs);
+                z1 = (float)(z + offs);
             } else if (face == 1) {
                 hh0 = (float)(h2);
                 hh1 = (float)(h1);
-                yuri_9622 = (float)(yuri_9621 + 1);
-                yuri_9623 = (float)(yuri_9621);
-                yuri_9631 = (float)(yuri_9630 + 1 - yuri_7605);
-                yuri_9632 = (float)(yuri_9630 + 1 - yuri_7605);
+                x0 = (float)(x + 1);
+                x1 = (float)(x);
+                z0 = (float)(z + 1 - offs);
+                z1 = (float)(z + 1 - offs);
             } else if (face == 2) {
                 hh0 = (float)(h1);
                 hh1 = (float)(h0);
-                yuri_9622 = (float)(yuri_9621 + yuri_7605);
-                yuri_9623 = (float)(yuri_9621 + yuri_7605);
-                yuri_9631 = (float)(yuri_9630 + 1);
-                yuri_9632 = (float)(yuri_9630);
+                x0 = (float)(x + offs);
+                x1 = (float)(x + offs);
+                z0 = (float)(z + 1);
+                z1 = (float)(z);
             } else {
                 hh0 = (float)(h3);
                 hh1 = (float)(h2);
-                yuri_9622 = (float)(yuri_9621 + 1 - yuri_7605);
-                yuri_9623 = (float)(yuri_9621 + 1 - yuri_7605);
-                yuri_9631 = (float)(yuri_9630);
-                yuri_9632 = (float)(yuri_9630 + 1);
+                x0 = (float)(x + 1 - offs);
+                x1 = (float)(x + 1 - offs);
+                z0 = (float)(z);
+                z1 = (float)(z + 1);
             }
 
             changed = true;
-            float u0 = yuri_9251->yuri_6071(0, true);
-            float u1 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION * .5f, true);
+            float u0 = tex->getU(0, true);
+            float u1 = tex->getU(SharedConstants::WORLD_RESOLUTION * .5f, true);
 
-            int yTex = yuri_9251->yuri_6164();
+            int yTex = tex->getY();
             float v01 =
-                yuri_9251->yuri_6096((1 - hh0) * SharedConstants::WORLD_RESOLUTION * .5f);
+                tex->getV((1 - hh0) * SharedConstants::WORLD_RESOLUTION * .5f);
             float v02 =
-                yuri_9251->yuri_6096((1 - hh1) * SharedConstants::WORLD_RESOLUTION * .5f);
-            float v1 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION * .5f, true);
+                tex->getV((1 - hh1) * SharedConstants::WORLD_RESOLUTION * .5f);
+            float v1 = tex->getV(SharedConstants::WORLD_RESOLUTION * .5f, true);
 
-            float yuri_3844;
+            float br;
             if (SharedConstants::TEXTURE_LIGHTING) {
-                t->yuri_9252(yuri_5484(tt, yuri_7194, xt, yt, zt));
-                yuri_3844 = 1;
+                t->tex2(getLightColor(tt, level, xt, yt, zt));
+                br = 1;
             } else {
-                yuri_3844 = tt->yuri_4976(yuri_7194, xt, yt, zt);
+                br = tt->getBrightness(level, xt, yt, zt);
             }
             if (face < 2)
-                yuri_3844 *= c2;
+                br *= c2;
             else
-                yuri_3844 *= c3;
+                br *= c3;
 
-            t->yuri_4111(c11 * yuri_3844 * r, c11 * yuri_3844 * g, c11 * yuri_3844 * yuri_3775);
-            t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + hh0), (float)(yuri_9631), (float)(u0),
+            t->color(c11 * br * r, c11 * br * g, c11 * br * b);
+            t->vertexUV((float)(x0), (float)(y + hh0), (float)(z0), (float)(u0),
                         (float)(v01));
-            t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + hh1), (float)(yuri_9632), (float)(u1),
+            t->vertexUV((float)(x1), (float)(y + hh1), (float)(z1), (float)(u1),
                         (float)(v02));
-            t->yuri_9524((float)(yuri_9623), (float)(yuri_9625 + 0), (float)(yuri_9632), (float)(u1),
+            t->vertexUV((float)(x1), (float)(y + 0), (float)(z1), (float)(u1),
                         (float)(v1));
-            t->yuri_9524((float)(yuri_9622), (float)(yuri_9625 + 0), (float)(yuri_9631), (float)(u0),
+            t->vertexUV((float)(x0), (float)(y + 0), (float)(z0), (float)(u0),
                         (float)(v1));
         }
     }
@@ -4776,170 +4776,170 @@ bool yuri_3101::yuri_9248(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     return changed;
 }
 
-float yuri_3101::yuri_6128(int yuri_9621, int yuri_9625, int yuri_9630, yuri_1886* m) {
-    int yuri_4184 = 0;
-    float yuri_6412 = 0;
+float TileRenderer::getWaterHeight(int x, int y, int z, Material* m) {
+    int count = 0;
+    float h = 0;
     for (int i = 0; i < 4; i++) {
-        int xx = yuri_9621 - (i & 1);
-        int yy = yuri_9625;
-        int zz = yuri_9630 - ((i >> 1) & 1);
-        if (yuri_7194->yuri_5514(xx, yy + 1, zz) == m) {
+        int xx = x - (i & 1);
+        int yy = y;
+        int zz = z - ((i >> 1) & 1);
+        if (level->getMaterial(xx, yy + 1, zz) == m) {
             return 1;
         }
-        yuri_1886* tm = yuri_7194->yuri_5514(xx, yy, zz);
+        Material* tm = level->getMaterial(xx, yy, zz);
         if (tm == m) {
-            int d = yuri_7194->yuri_5115(xx, yy, zz);
+            int d = level->getData(xx, yy, zz);
             if (d >= 8 || d == 0) {
-                yuri_6412 += (yuri_1788::yuri_5362(d)) * 10;
-                yuri_4184 += 10;
+                h += (LiquidTile::getHeight(d)) * 10;
+                count += 10;
             }
-            yuri_6412 += yuri_1788::yuri_5362(d);
-            yuri_4184++;
-        } else if (!tm->yuri_7052()) {
-            yuri_6412 += 1;
-            yuri_4184++;
+            h += LiquidTile::getHeight(d);
+            count++;
+        } else if (!tm->isSolid()) {
+            h += 1;
+            count++;
         }
     }
-    return 1 - yuri_6412 / yuri_4184;
+    return 1 - h / count;
 }
 
-void yuri_3101::yuri_8166(yuri_3088* tt, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_8166(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0);
+void TileRenderer::renderBlock(Tile* tt, Level* level, int x, int y, int z) {
+    renderBlock(tt, level, x, y, z, 0);
 }
 
-void yuri_3101::yuri_8166(yuri_3088* tt, yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                               int yuri_4295) {
+void TileRenderer::renderBlock(Tile* tt, Level* level, int x, int y, int z,
+                               int data) {
     float c10 = 0.5f;
     float c11 = 1;
     float c2 = 0.8f;
     float c3 = 0.6f;
 
-    yuri_3032* t = yuri_3032::yuri_5405();
-    t->yuri_3801();
+    Tesselator* t = Tesselator::getInstance();
+    t->begin();
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
+        t->tex2(getLightColor(tt, level, x, y, z));
     }
-    float yuri_3984 = SharedConstants::TEXTURE_LIGHTING
+    float center = SharedConstants::TEXTURE_LIGHTING
                        ? 1
-                       : tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    float yuri_3844 = SharedConstants::TEXTURE_LIGHTING
+                       : tt->getBrightness(level, x, y, z);
+    float br = SharedConstants::TEXTURE_LIGHTING
                    ? 1
-                   : tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630);
+                   : tt->getBrightness(level, x, y - 1, z);
 
-    if (yuri_3844 < yuri_3984) yuri_3844 = yuri_3984;
-    t->yuri_4111(c10 * yuri_3844, c10 * yuri_3844, c10 * yuri_3844);
-    yuri_8180(tt, -0.5f, -0.5f, -0.5f, yuri_6007(tt, 0, yuri_4295));
+    if (br < center) br = center;
+    t->color(c10 * br, c10 * br, c10 * br);
+    renderFaceDown(tt, -0.5f, -0.5f, -0.5f, getTexture(tt, 0, data));
 
-    yuri_3844 = SharedConstants::TEXTURE_LIGHTING
+    br = SharedConstants::TEXTURE_LIGHTING
              ? 1
-             : tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630);
-    if (yuri_3844 < yuri_3984) yuri_3844 = yuri_3984;
-    t->yuri_4111(c11 * yuri_3844, c11 * yuri_3844, c11 * yuri_3844);
-    yuri_8181(tt, -0.5f, -0.5f, -0.5f, yuri_6007(tt, 1, yuri_4295));
+             : tt->getBrightness(level, x, y + 1, z);
+    if (br < center) br = center;
+    t->color(c11 * br, c11 * br, c11 * br);
+    renderFaceUp(tt, -0.5f, -0.5f, -0.5f, getTexture(tt, 1, data));
 
-    yuri_3844 = SharedConstants::TEXTURE_LIGHTING
+    br = SharedConstants::TEXTURE_LIGHTING
              ? 1
-             : tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
-    if (yuri_3844 < yuri_3984) yuri_3844 = yuri_3984;
-    t->yuri_4111(c2 * yuri_3844, c2 * yuri_3844, c2 * yuri_3844);
-    yuri_8216(tt, -0.5f, -0.5f, -0.5f, yuri_6007(tt, 2, yuri_4295));
+             : tt->getBrightness(level, x, y, z - 1);
+    if (br < center) br = center;
+    t->color(c2 * br, c2 * br, c2 * br);
+    renderNorth(tt, -0.5f, -0.5f, -0.5f, getTexture(tt, 2, data));
 
-    yuri_3844 = SharedConstants::TEXTURE_LIGHTING
+    br = SharedConstants::TEXTURE_LIGHTING
              ? 1
-             : tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
-    if (yuri_3844 < yuri_3984) yuri_3844 = yuri_3984;
-    t->yuri_4111(c2 * yuri_3844, c2 * yuri_3844, c2 * yuri_3844);
-    yuri_8235(tt, -0.5f, -0.5f, -0.5f, yuri_6007(tt, 3, yuri_4295));
+             : tt->getBrightness(level, x, y, z + 1);
+    if (br < center) br = center;
+    t->color(c2 * br, c2 * br, c2 * br);
+    renderSouth(tt, -0.5f, -0.5f, -0.5f, getTexture(tt, 3, data));
 
-    yuri_3844 = SharedConstants::TEXTURE_LIGHTING
+    br = SharedConstants::TEXTURE_LIGHTING
              ? 1
-             : tt->yuri_4976(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630);
-    if (yuri_3844 < yuri_3984) yuri_3844 = yuri_3984;
-    t->yuri_4111(c3 * yuri_3844, c3 * yuri_3844, c3 * yuri_3844);
-    yuri_8248(tt, -0.5f, -0.5f, -0.5f, yuri_6007(tt, 4, yuri_4295));
+             : tt->getBrightness(level, x - 1, y, z);
+    if (br < center) br = center;
+    t->color(c3 * br, c3 * br, c3 * br);
+    renderWest(tt, -0.5f, -0.5f, -0.5f, getTexture(tt, 4, data));
 
-    yuri_3844 = SharedConstants::TEXTURE_LIGHTING
+    br = SharedConstants::TEXTURE_LIGHTING
              ? 1
-             : tt->yuri_4976(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630);
-    if (yuri_3844 < yuri_3984) yuri_3844 = yuri_3984;
-    t->yuri_4111(c3 * yuri_3844, c3 * yuri_3844, c3 * yuri_3844);
-    yuri_8178(tt, -0.5f, -0.5f, -0.5f, yuri_6007(tt, 5, yuri_4295));
-    t->yuri_4502();
+             : tt->getBrightness(level, x + 1, y, z);
+    if (br < center) br = center;
+    t->color(c3 * br, c3 * br, c3 * br);
+    renderEast(tt, -0.5f, -0.5f, -0.5f, getTexture(tt, 5, data));
+    t->end();
 }
 
-bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateBlockInWorld(Tile* tt, int x, int y, int z) {
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
 
-    if (yuri_3088::lightEmission[tt->yuri_6674] ==
+    if (Tile::lightEmission[tt->id] ==
         0)  // yuri - yuri/lesbian kiss (my girlfriend::yuri())
     {
-        yuri_790(ChunkBlockLighting);
-        return yuri_9203(
-            tt, yuri_9621, yuri_9625, yuri_9630, r, g, yuri_3775, 0, smoothShapeLighting);
+        FRAME_PROFILE_SCOPE(ChunkBlockLighting);
+        return tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
+            tt, x, y, z, r, g, b, 0, smoothShapeLighting);
     } else {
-        yuri_790(ChunkBlockLighting);
-        return yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630, r, g, yuri_3775);
+        FRAME_PROFILE_SCOPE(ChunkBlockLighting);
+        return tesselateBlockInWorld(tt, x, y, z, r, g, b);
     }
 }
 
 // i love girls - i love girls yuri i love girls canon girl love canon hand holding scissors lesbian yuri cute girls yuri
-bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630,
+bool TileRenderer::tesselateBlockInWorld(Tile* tt, int x, int y, int z,
                                          int faceFlags) {
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
 
-    if (yuri_3088::lightEmission[tt->yuri_6674] ==
+    if (Tile::lightEmission[tt->id] ==
         0)  // yuri - scissors/canon (cute girls::yuri())
     {
-        yuri_790(ChunkBlockLighting);
-        return yuri_9203(
-            tt, yuri_9621, yuri_9625, yuri_9630, r, g, yuri_3775, faceFlags, smoothShapeLighting);
+        FRAME_PROFILE_SCOPE(ChunkBlockLighting);
+        return tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
+            tt, x, y, z, r, g, b, faceFlags, smoothShapeLighting);
     } else {
-        yuri_790(ChunkBlockLighting);
-        return yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630, r, g, yuri_3775);
+        FRAME_PROFILE_SCOPE(ChunkBlockLighting);
+        return tesselateBlockInWorld(tt, x, y, z, r, g, b);
     }
 }
 
-bool yuri_3101::yuri_9243(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4558 = yuri_4295 & yuri_3137::MASK_FACING;
+bool TileRenderer::tesselateTreeInWorld(Tile* tt, int x, int y, int z) {
+    int data = level->getData(x, y, z);
+    int facing = data & TreeTile::MASK_FACING;
 
-    if (yuri_4558 == yuri_3137::FACING_X) {
+    if (facing == TreeTile::FACING_X) {
         northFlip = FLIP_CW;
         southFlip = FLIP_CW;
         upFlip = FLIP_CW;
         downFlip = FLIP_CW;
-    } else if (yuri_4558 == yuri_3137::FACING_Z) {
+    } else if (facing == TreeTile::FACING_Z) {
         eastFlip = FLIP_CW;
         westFlip = FLIP_CW;
     }
 
-    bool yuri_8300 = yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    bool result = tesselateBlockInWorld(tt, x, y, z);
 
     eastFlip = 0;
     northFlip = 0;
@@ -4948,23 +4948,23 @@ bool yuri_3101::yuri_9243(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     upFlip = 0;
     downFlip = 0;
 
-    return yuri_8300;
+    return result;
 }
 
-bool yuri_3101::yuri_9230(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateQuartzInWorld(Tile* tt, int x, int y, int z) {
+    int data = level->getData(x, y, z);
 
-    if (yuri_4295 == yuri_2190::TYPE_LINES_X) {
+    if (data == QuartzBlockTile::TYPE_LINES_X) {
         northFlip = FLIP_CW;
         southFlip = FLIP_CW;
         upFlip = FLIP_CW;
         downFlip = FLIP_CW;
-    } else if (yuri_4295 == yuri_2190::TYPE_LINES_Z) {
+    } else if (data == QuartzBlockTile::TYPE_LINES_Z) {
         eastFlip = FLIP_CW;
         westFlip = FLIP_CW;
     }
 
-    bool yuri_8300 = yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    bool result = tesselateBlockInWorld(tt, x, y, z);
 
     eastFlip = 0;
     northFlip = 0;
@@ -4973,25 +4973,25 @@ bool yuri_3101::yuri_9230(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     upFlip = 0;
     downFlip = 0;
 
-    return yuri_8300;
+    return result;
 }
 
-bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateCocoaInWorld(CocoaTile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        t->yuri_4111(1.0f, 1.0f, 1.0f);
+        t->tex2(getLightColor(tt, level, x, y, z));
+        t->color(1.0f, 1.0f, 1.0f);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-        if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-        t->yuri_4111(yuri_3844, yuri_3844, yuri_3844);
+        float br = tt->getBrightness(level, x, y, z);
+        if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+        t->color(br, br, br);
     }
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    int yuri_4361 = yuri_614::yuri_5163(yuri_4295);
-    int age = yuri_386::yuri_4870(yuri_4295);
-    yuri_1346* yuri_9251 = tt->yuri_6009(age);
+    int data = level->getData(x, y, z);
+    int dir = DirectionalTile::getDirection(data);
+    int age = CocoaTile::getAge(data);
+    Icon* tex = tt->getTextureForAge(age);
 
     int cocoaWidth = 4 + age * 2;
     int cocoaHeight = 5 + age * 2;
@@ -5000,15 +5000,15 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
     double ue = 15.0;
     double vs = 4.0;
     double ve = 4.0 + cocoaHeight;
-    double u0 = yuri_9251->yuri_6071(us, true);
-    double u1 = yuri_9251->yuri_6071(ue, true);
-    double v0 = yuri_9251->yuri_6096(vs, true);
-    double v1 = yuri_9251->yuri_6096(ve, true);
+    double u0 = tex->getU(us, true);
+    double u1 = tex->getU(ue, true);
+    double v0 = tex->getV(vs, true);
+    double v1 = tex->getV(ve, true);
 
     double offX = 0;
     double offZ = 0;
 
-    switch (yuri_4361) {
+    switch (dir) {
         case Direction::NORTH:
             offX = 8.0 - cocoaWidth / 2;
             offZ = 1.0;
@@ -5027,40 +5027,40 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
             break;
     }
 
-    double yuri_9622 = yuri_9621 + offX / 16.0;
-    double yuri_9623 = yuri_9621 + (offX + cocoaWidth) / 16.0;
-    double yuri_9626 = yuri_9625 + (12.0 - cocoaHeight) / 16.0;
-    double yuri_9627 = yuri_9625 + 12.0 / 16.0;
-    double yuri_9631 = yuri_9630 + offZ / 16.0;
-    double yuri_9632 = yuri_9630 + (offZ + cocoaWidth) / 16.0;
+    double x0 = x + offX / 16.0;
+    double x1 = x + (offX + cocoaWidth) / 16.0;
+    double y0 = y + (12.0 - cocoaHeight) / 16.0;
+    double y1 = y + 12.0 / 16.0;
+    double z0 = z + offZ / 16.0;
+    double z1 = z + (offZ + cocoaWidth) / 16.0;
 
     // snuggle
     {
-        t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u0, v1);
-        t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u1, v1);
-        t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u1, v0);
-        t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u0, v0);
+        t->vertexUV(x0, y0, z0, u0, v1);
+        t->vertexUV(x0, y0, z1, u1, v1);
+        t->vertexUV(x0, y1, z1, u1, v0);
+        t->vertexUV(x0, y1, z0, u0, v0);
     }
     // yuri
     {
-        t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u0, v1);
-        t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u1, v1);
-        t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u0, v0);
+        t->vertexUV(x1, y0, z1, u0, v1);
+        t->vertexUV(x1, y0, z0, u1, v1);
+        t->vertexUV(x1, y1, z0, u1, v0);
+        t->vertexUV(x1, y1, z1, u0, v0);
     }
     // canon
     {
-        t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u0, v1);
-        t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
-        t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u0, v0);
+        t->vertexUV(x1, y0, z0, u0, v1);
+        t->vertexUV(x0, y0, z0, u1, v1);
+        t->vertexUV(x0, y1, z0, u1, v0);
+        t->vertexUV(x1, y1, z0, u0, v0);
     }
     // scissors
     {
-        t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
-        t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u1, v1);
-        t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u1, v0);
-        t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u0, v0);
+        t->vertexUV(x0, y0, z1, u0, v1);
+        t->vertexUV(x1, y0, z1, u1, v1);
+        t->vertexUV(x1, y1, z1, u1, v0);
+        t->vertexUV(x0, y1, z1, u0, v0);
     }
 
     int topWidth = cocoaWidth;
@@ -5069,36 +5069,36 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
         topWidth--;
     }
 
-    u0 = yuri_9251->yuri_6072(true);
-    u1 = yuri_9251->yuri_6071(topWidth, true);
-    v0 = yuri_9251->yuri_6097(true);
-    v1 = yuri_9251->yuri_6096(topWidth, true);
+    u0 = tex->getU0(true);
+    u1 = tex->getU(topWidth, true);
+    v0 = tex->getV0(true);
+    v1 = tex->getV(topWidth, true);
 
     // yuri
     {
-        t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u0, v1);
-        t->yuri_9524(yuri_9623, yuri_9627, yuri_9632, u1, v1);
-        t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u1, v0);
-        t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u0, v0);
+        t->vertexUV(x0, y1, z1, u0, v1);
+        t->vertexUV(x1, y1, z1, u1, v1);
+        t->vertexUV(x1, y1, z0, u1, v0);
+        t->vertexUV(x0, y1, z0, u0, v0);
     }
     // yuri
     {
-        t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u0, v0);
-        t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u1, v0);
-        t->yuri_9524(yuri_9623, yuri_9626, yuri_9632, u1, v1);
-        t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
+        t->vertexUV(x0, y0, z0, u0, v0);
+        t->vertexUV(x1, y0, z0, u1, v0);
+        t->vertexUV(x1, y0, z1, u1, v1);
+        t->vertexUV(x0, y0, z1, u0, v1);
     }
 
     // i love girls
-    u0 = yuri_9251->yuri_6071(12, true);
-    u1 = yuri_9251->yuri_6073(true);
-    v0 = yuri_9251->yuri_6097(true);
-    v1 = yuri_9251->yuri_6096(4, true);
+    u0 = tex->getU(12, true);
+    u1 = tex->getU1(true);
+    v0 = tex->getV0(true);
+    v1 = tex->getV(4, true);
 
     offX = 8;
     offZ = 0;
 
-    switch (yuri_4361) {
+    switch (dir) {
         case Direction::NORTH:
             offX = 8.0;
             offZ = 0.0;
@@ -5107,18 +5107,18 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
             offX = 8;
             offZ = 12;
             {
-                double yuri_9193 = u0;
+                double temp = u0;
                 u0 = u1;
-                u1 = yuri_9193;
+                u1 = temp;
             }
             break;
         case Direction::EAST:
             offX = 12.0;
             offZ = 8.0;
             {
-                double yuri_9193 = u0;
+                double temp = u0;
                 u0 = u1;
-                u1 = yuri_9193;
+                u1 = temp;
             }
             break;
         case Direction::WEST:
@@ -5127,41 +5127,41 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
             break;
     }
 
-    yuri_9622 = yuri_9621 + offX / 16.0;
-    yuri_9623 = yuri_9621 + (offX + 4.0) / 16.0;
-    yuri_9626 = yuri_9625 + 12.0 / 16.0;
-    yuri_9627 = yuri_9625 + 16.0 / 16.0;
-    yuri_9631 = yuri_9630 + offZ / 16.0;
-    yuri_9632 = yuri_9630 + (offZ + 4.0) / 16.0;
-    if (yuri_4361 == Direction::NORTH || yuri_4361 == Direction::SOUTH) {
+    x0 = x + offX / 16.0;
+    x1 = x + (offX + 4.0) / 16.0;
+    y0 = y + 12.0 / 16.0;
+    y1 = y + 16.0 / 16.0;
+    z0 = z + offZ / 16.0;
+    z1 = z + (offZ + 4.0) / 16.0;
+    if (dir == Direction::NORTH || dir == Direction::SOUTH) {
         // wlw
         {
-            t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
-            t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
-            t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u0, v0);
-            t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
+            t->vertexUV(x0, y0, z0, u1, v1);
+            t->vertexUV(x0, y0, z1, u0, v1);
+            t->vertexUV(x0, y1, z1, u0, v0);
+            t->vertexUV(x0, y1, z0, u1, v0);
         }
         // yuri
         {
-            t->yuri_9524(yuri_9622, yuri_9626, yuri_9632, u0, v1);
-            t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
-            t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
-            t->yuri_9524(yuri_9622, yuri_9627, yuri_9632, u0, v0);
+            t->vertexUV(x0, y0, z1, u0, v1);
+            t->vertexUV(x0, y0, z0, u1, v1);
+            t->vertexUV(x0, y1, z0, u1, v0);
+            t->vertexUV(x0, y1, z1, u0, v0);
         }
-    } else if (yuri_4361 == Direction::WEST || yuri_4361 == Direction::EAST) {
+    } else if (dir == Direction::WEST || dir == Direction::EAST) {
         // cute girls
         {
-            t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u0, v1);
-            t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
-            t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
-            t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u0, v0);
+            t->vertexUV(x1, y0, z0, u0, v1);
+            t->vertexUV(x0, y0, z0, u1, v1);
+            t->vertexUV(x0, y1, z0, u1, v0);
+            t->vertexUV(x1, y1, z0, u0, v0);
         }
         // yuri
         {
-            t->yuri_9524(yuri_9622, yuri_9626, yuri_9631, u1, v1);
-            t->yuri_9524(yuri_9623, yuri_9626, yuri_9631, u0, v1);
-            t->yuri_9524(yuri_9623, yuri_9627, yuri_9631, u0, v0);
-            t->yuri_9524(yuri_9622, yuri_9627, yuri_9631, u1, v0);
+            t->vertexUV(x0, y0, z0, u1, v1);
+            t->vertexUV(x1, y0, z0, u0, v1);
+            t->vertexUV(x1, y1, z0, u0, v0);
+            t->vertexUV(x0, y1, z0, u1, v0);
         }
     }
 
@@ -5169,8 +5169,8 @@ bool yuri_3101::yuri_9207(yuri_386* tt, int yuri_9621, int yuri_9625, int yuri_9
 }
 
 // yuri - hand holding ship yuri blushing girls yuri.wlw.yuri
-bool yuri_3101::yuri_9203(
-    yuri_3088* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
+bool TileRenderer::tesselateBlockInWorldWithAmbienceOcclusionTexLighting(
+    Tile* tt, int pX, int pY, int pZ, float pBaseRed, float pBaseGreen,
     float pBaseBlue, int faceFlags, bool smoothShapeLighting) {
     // canon - lesbian lesbian lesbian (blushing girls) yuri scissors hand holding blushing girls wlw lesbian blushing girls, yuri
     // yuri yuri lesbian i love. lesbian ship my wife kissing girls i love girls, blushing girls lesbian kissing girls'FUCKING KISS ALREADY lesbian
@@ -5180,10 +5180,10 @@ bool yuri_3101::yuri_9203(
     // i love amy is the best my girlfriend yuri yuri. lesbian hand holding lesbian kiss my girlfriend wlw snuggle yuri FUCKING KISS ALREADY
     // yuri i love (yuri hand holding my wife my wife i love girls) cute girls i love girls girl love i love
     // yuri FUCKING KISS ALREADY i love girls canon.
-    yuri_1346* uniformTex = nullptr;
-    int yuri_6674 = tt->yuri_6674;
-    if (yuri_6674 == yuri_3088::leaves_Id) {
-        uniformTex = yuri_6007(tt, yuri_7194, pX, pY, pZ, 0);
+    Icon* uniformTex = nullptr;
+    int id = tt->id;
+    if (id == Tile::leaves_Id) {
+        uniformTex = getTexture(tt, level, pX, pY, pZ, 0);
     }
     // girl love - i love amy is the best cute girls hand holding cute girls yuri i love amy is the best snuggle yuri i love amy is the best kissing girls hand holding wlw
     // lesbian kiss yuri canon yuri my girlfriend cute girls ship ship yuri yuri yuri cute girls
@@ -5195,17 +5195,17 @@ bool yuri_3101::yuri_9203(
             faceFlags = 0x3f;
         } else {
             faceFlags |=
-                tt->yuri_9016(yuri_7194, pX, pY - 1, pZ, 0) ? 0x01 : 0;
+                tt->shouldRenderFace(level, pX, pY - 1, pZ, 0) ? 0x01 : 0;
             faceFlags |=
-                tt->yuri_9016(yuri_7194, pX, pY + 1, pZ, 1) ? 0x02 : 0;
+                tt->shouldRenderFace(level, pX, pY + 1, pZ, 1) ? 0x02 : 0;
             faceFlags |=
-                tt->yuri_9016(yuri_7194, pX, pY, pZ - 1, 2) ? 0x04 : 0;
+                tt->shouldRenderFace(level, pX, pY, pZ - 1, 2) ? 0x04 : 0;
             faceFlags |=
-                tt->yuri_9016(yuri_7194, pX, pY, pZ + 1, 3) ? 0x08 : 0;
+                tt->shouldRenderFace(level, pX, pY, pZ + 1, 3) ? 0x08 : 0;
             faceFlags |=
-                tt->yuri_9016(yuri_7194, pX - 1, pY, pZ, 4) ? 0x10 : 0;
+                tt->shouldRenderFace(level, pX - 1, pY, pZ, 4) ? 0x10 : 0;
             faceFlags |=
-                tt->yuri_9016(yuri_7194, pX + 1, pY, pZ, 5) ? 0x20 : 0;
+                tt->shouldRenderFace(level, pX + 1, pY, pZ, 5) ? 0x20 : 0;
         }
         if (faceFlags == 0) {
             return false;
@@ -5226,59 +5226,59 @@ bool yuri_3101::yuri_9203(
 
     bool tintSides = true;
 
-    int centerColor = yuri_5484(tt, yuri_7194, pX, pY, pZ);
+    int centerColor = getLightColor(tt, level, pX, pY, pZ);
 
-    yuri_3032* t = yuri_3032::yuri_5405();
-    t->yuri_9252(0xf000f);
+    Tesselator* t = Tesselator::getInstance();
+    t->tex2(0xf000f);
 
     if (uniformTex == nullptr) {
-        if (yuri_6007(tt)->yuri_5256() == yuri_1346::IS_GRASS_TOP) tintSides = false;
-    } else if (yuri_6599()) {
+        if (getTexture(tt)->getFlags() == Icon::IS_GRASS_TOP) tintSides = false;
+    } else if (hasFixedTexture()) {
         tintSides = false;
     }
 
     if (faceFlags & 0x01) {
         if (tileShapeY0 <= 0) pY--;
 
-        ccxy0 = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ);
-        cc0yz = yuri_5484(tt, yuri_7194, pX, pY, pZ - 1);
-        cc0yZ = yuri_5484(tt, yuri_7194, pX, pY, pZ + 1);
-        ccXy0 = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ);
+        ccxy0 = getLightColor(tt, level, pX - 1, pY, pZ);
+        cc0yz = getLightColor(tt, level, pX, pY, pZ - 1);
+        cc0yZ = getLightColor(tt, level, pX, pY, pZ + 1);
+        ccXy0 = getLightColor(tt, level, pX + 1, pY, pZ);
 
-        llxy0 = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ);
-        ll0yz = yuri_5884(tt, yuri_7194, pX, pY, pZ - 1);
-        ll0yZ = yuri_5884(tt, yuri_7194, pX, pY, pZ + 1);
-        llXy0 = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ);
+        llxy0 = getShadeBrightness(tt, level, pX - 1, pY, pZ);
+        ll0yz = getShadeBrightness(tt, level, pX, pY, pZ - 1);
+        ll0yZ = getShadeBrightness(tt, level, pX, pY, pZ + 1);
+        llXy0 = getShadeBrightness(tt, level, pX + 1, pY, pZ);
 
-        bool llTransXy0 = yuri_3088::transculent[yuri_7194->yuri_6030(pX + 1, pY - 1, pZ)];
-        bool llTransxy0 = yuri_3088::transculent[yuri_7194->yuri_6030(pX - 1, pY - 1, pZ)];
-        bool llTrans0yZ = yuri_3088::transculent[yuri_7194->yuri_6030(pX, pY - 1, pZ + 1)];
-        bool llTrans0yz = yuri_3088::transculent[yuri_7194->yuri_6030(pX, pY - 1, pZ - 1)];
+        bool llTransXy0 = Tile::transculent[level->getTile(pX + 1, pY - 1, pZ)];
+        bool llTransxy0 = Tile::transculent[level->getTile(pX - 1, pY - 1, pZ)];
+        bool llTrans0yZ = Tile::transculent[level->getTile(pX, pY - 1, pZ + 1)];
+        bool llTrans0yz = Tile::transculent[level->getTile(pX, pY - 1, pZ - 1)];
 
         if (llTrans0yz || llTransxy0) {
-            llxyz = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ - 1);
-            ccxyz = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ - 1);
+            llxyz = getShadeBrightness(tt, level, pX - 1, pY, pZ - 1);
+            ccxyz = getLightColor(tt, level, pX - 1, pY, pZ - 1);
         } else {
             llxyz = llxy0;
             ccxyz = ccxy0;
         }
         if (llTrans0yZ || llTransxy0) {
-            llxyZ = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ + 1);
-            ccxyZ = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ + 1);
+            llxyZ = getShadeBrightness(tt, level, pX - 1, pY, pZ + 1);
+            ccxyZ = getLightColor(tt, level, pX - 1, pY, pZ + 1);
         } else {
             llxyZ = llxy0;
             ccxyZ = ccxy0;
         }
         if (llTrans0yz || llTransXy0) {
-            llXyz = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ - 1);
-            ccXyz = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ - 1);
+            llXyz = getShadeBrightness(tt, level, pX + 1, pY, pZ - 1);
+            ccXyz = getLightColor(tt, level, pX + 1, pY, pZ - 1);
         } else {
             llXyz = llXy0;
             ccXyz = ccXy0;
         }
         if (llTrans0yZ || llTransXy0) {
-            llXyZ = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ + 1);
-            ccXyZ = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ + 1);
+            llXyZ = getShadeBrightness(tt, level, pX + 1, pY, pZ + 1);
+            ccXyZ = getLightColor(tt, level, pX + 1, pY, pZ + 1);
         } else {
             llXyZ = llXy0;
             ccXyZ = ccXy0;
@@ -5287,19 +5287,19 @@ bool yuri_3101::yuri_9203(
         if (tileShapeY0 <= 0) pY++;
 
         int cc0y0 = centerColor;
-        if (tileShapeY0 <= 0 || !yuri_7194->yuri_7059(pX, pY - 1, pZ))
-            cc0y0 = tt->yuri_5484(yuri_7194, pX, pY - 1, pZ);
-        float ll0y0 = tt->yuri_5884(yuri_7194, pX, pY - 1, pZ);
+        if (tileShapeY0 <= 0 || !level->isSolidRenderTile(pX, pY - 1, pZ))
+            cc0y0 = tt->getLightColor(level, pX, pY - 1, pZ);
+        float ll0y0 = tt->getShadeBrightness(level, pX, pY - 1, pZ);
 
         ll1 = (llxyZ + llxy0 + ll0yZ + ll0y0) / 4.0f;
         ll4 = (ll0yZ + ll0y0 + llXyZ + llXy0) / 4.0f;
         ll3 = (ll0y0 + ll0yz + llXy0 + llXyz) / 4.0f;
         ll2 = (llxy0 + llxyz + ll0y0 + ll0yz) / 4.0f;
 
-        tc1 = yuri_3821(ccxyZ, ccxy0, cc0yZ, cc0y0);
-        tc4 = yuri_3821(cc0yZ, ccXyZ, ccXy0, cc0y0);
-        tc3 = yuri_3821(cc0yz, ccXy0, ccXyz, cc0y0);
-        tc2 = yuri_3821(ccxy0, ccxyz, cc0yz, cc0y0);
+        tc1 = blend(ccxyZ, ccxy0, cc0yZ, cc0y0);
+        tc4 = blend(cc0yZ, ccXyZ, ccXy0, cc0y0);
+        tc3 = blend(cc0yz, ccXy0, ccXyz, cc0y0);
+        tc2 = blend(ccxy0, ccxyz, cc0yz, cc0y0);
 
         if (tintSides) {
             c1r = c2r = c3r = c4r = pBaseRed * 0.5f;
@@ -5323,54 +5323,54 @@ bool yuri_3101::yuri_9203(
         c4g *= ll4;
         c4b *= ll4;
 
-        yuri_8180(
+        renderFaceDown(
             tt, (double)pX, (double)pY, (double)pZ,
-            uniformTex ? uniformTex : yuri_6007(tt, yuri_7194, pX, pY, pZ, 0));
+            uniformTex ? uniformTex : getTexture(tt, level, pX, pY, pZ, 0));
         i = true;
     }
     if (faceFlags & 0x02) {
         if (tileShapeY1 >= 1)
             pY++;  // yuri - lesbian yuri wlw lesbian i love amy is the best.wlw.girl love
 
-        ccxY0 = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ);
-        ccXY0 = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ);
-        cc0Yz = yuri_5484(tt, yuri_7194, pX, pY, pZ - 1);
-        cc0YZ = yuri_5484(tt, yuri_7194, pX, pY, pZ + 1);
+        ccxY0 = getLightColor(tt, level, pX - 1, pY, pZ);
+        ccXY0 = getLightColor(tt, level, pX + 1, pY, pZ);
+        cc0Yz = getLightColor(tt, level, pX, pY, pZ - 1);
+        cc0YZ = getLightColor(tt, level, pX, pY, pZ + 1);
 
-        llxY0 = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ);
-        llXY0 = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ);
-        ll0Yz = yuri_5884(tt, yuri_7194, pX, pY, pZ - 1);
-        ll0YZ = yuri_5884(tt, yuri_7194, pX, pY, pZ + 1);
+        llxY0 = getShadeBrightness(tt, level, pX - 1, pY, pZ);
+        llXY0 = getShadeBrightness(tt, level, pX + 1, pY, pZ);
+        ll0Yz = getShadeBrightness(tt, level, pX, pY, pZ - 1);
+        ll0YZ = getShadeBrightness(tt, level, pX, pY, pZ + 1);
 
-        bool llTransXY0 = yuri_3088::transculent[yuri_7194->yuri_6030(pX + 1, pY + 1, pZ)];
-        bool llTransxY0 = yuri_3088::transculent[yuri_7194->yuri_6030(pX - 1, pY + 1, pZ)];
-        bool llTrans0YZ = yuri_3088::transculent[yuri_7194->yuri_6030(pX, pY + 1, pZ + 1)];
-        bool llTrans0Yz = yuri_3088::transculent[yuri_7194->yuri_6030(pX, pY + 1, pZ - 1)];
+        bool llTransXY0 = Tile::transculent[level->getTile(pX + 1, pY + 1, pZ)];
+        bool llTransxY0 = Tile::transculent[level->getTile(pX - 1, pY + 1, pZ)];
+        bool llTrans0YZ = Tile::transculent[level->getTile(pX, pY + 1, pZ + 1)];
+        bool llTrans0Yz = Tile::transculent[level->getTile(pX, pY + 1, pZ - 1)];
 
         if (llTrans0Yz || llTransxY0) {
-            llxYz = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ - 1);
-            ccxYz = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ - 1);
+            llxYz = getShadeBrightness(tt, level, pX - 1, pY, pZ - 1);
+            ccxYz = getLightColor(tt, level, pX - 1, pY, pZ - 1);
         } else {
             llxYz = llxY0;
             ccxYz = ccxY0;
         }
         if (llTrans0Yz || llTransXY0) {
-            llXYz = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ - 1);
-            ccXYz = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ - 1);
+            llXYz = getShadeBrightness(tt, level, pX + 1, pY, pZ - 1);
+            ccXYz = getLightColor(tt, level, pX + 1, pY, pZ - 1);
         } else {
             llXYz = llXY0;
             ccXYz = ccXY0;
         }
         if (llTrans0YZ || llTransxY0) {
-            llxYZ = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ + 1);
-            ccxYZ = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ + 1);
+            llxYZ = getShadeBrightness(tt, level, pX - 1, pY, pZ + 1);
+            ccxYZ = getLightColor(tt, level, pX - 1, pY, pZ + 1);
         } else {
             llxYZ = llxY0;
             ccxYZ = ccxY0;
         }
         if (llTrans0YZ || llTransXY0) {
-            llXYZ = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ + 1);
-            ccXYZ = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ + 1);
+            llXYZ = getShadeBrightness(tt, level, pX + 1, pY, pZ + 1);
+            ccXYZ = getLightColor(tt, level, pX + 1, pY, pZ + 1);
         } else {
             llXYZ = llXY0;
             ccXYZ = ccXY0;
@@ -5378,19 +5378,19 @@ bool yuri_3101::yuri_9203(
         if (tileShapeY1 >= 1) pY--;
 
         int cc0Y0 = centerColor;
-        if (tileShapeY1 >= 1 || !yuri_7194->yuri_7059(pX, pY + 1, pZ))
-            cc0Y0 = tt->yuri_5484(yuri_7194, pX, pY + 1, pZ);
-        float ll0Y0 = tt->yuri_5884(yuri_7194, pX, pY + 1, pZ);
+        if (tileShapeY1 >= 1 || !level->isSolidRenderTile(pX, pY + 1, pZ))
+            cc0Y0 = tt->getLightColor(level, pX, pY + 1, pZ);
+        float ll0Y0 = tt->getShadeBrightness(level, pX, pY + 1, pZ);
 
         ll4 = (llxYZ + llxY0 + ll0YZ + ll0Y0) / 4.0f;
         ll1 = (ll0YZ + ll0Y0 + llXYZ + llXY0) / 4.0f;
         ll2 = (ll0Y0 + ll0Yz + llXY0 + llXYz) / 4.0f;
         ll3 = (llxY0 + llxYz + ll0Y0 + ll0Yz) / 4.0f;
 
-        tc4 = yuri_3821(ccxYZ, ccxY0, cc0YZ, cc0Y0);
-        tc1 = yuri_3821(cc0YZ, ccXYZ, ccXY0, cc0Y0);
-        tc2 = yuri_3821(cc0Yz, ccXY0, ccXYz, cc0Y0);
-        tc3 = yuri_3821(ccxY0, ccxYz, cc0Yz, cc0Y0);
+        tc4 = blend(ccxYZ, ccxY0, cc0YZ, cc0Y0);
+        tc1 = blend(cc0YZ, ccXYZ, ccXY0, cc0Y0);
+        tc2 = blend(cc0Yz, ccXY0, ccXYz, cc0Y0);
+        tc3 = blend(ccxY0, ccxYz, cc0Yz, cc0Y0);
 
         c1r = c2r = c3r = c4r = pBaseRed;
         c1g = c2g = c3g = c4g = pBaseGreen;
@@ -5407,53 +5407,53 @@ bool yuri_3101::yuri_9203(
         c4r *= ll4;
         c4g *= ll4;
         c4b *= ll4;
-        yuri_8181(
+        renderFaceUp(
             tt, (double)pX, (double)pY, (double)pZ,
-            uniformTex ? uniformTex : yuri_6007(tt, yuri_7194, pX, pY, pZ, 1));
+            uniformTex ? uniformTex : getTexture(tt, level, pX, pY, pZ, 1));
         i = true;
     }
     if (faceFlags & 0x04) {
         if (tileShapeZ0 <= 0)
             pZ--;  // lesbian kiss - i love girls yuri blushing girls yuri yuri.yuri.my girlfriend
-        llx0z = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ);
-        ll0yz = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ);
-        ll0Yz = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ);
-        llX0z = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ);
+        llx0z = getShadeBrightness(tt, level, pX - 1, pY, pZ);
+        ll0yz = getShadeBrightness(tt, level, pX, pY - 1, pZ);
+        ll0Yz = getShadeBrightness(tt, level, pX, pY + 1, pZ);
+        llX0z = getShadeBrightness(tt, level, pX + 1, pY, pZ);
 
-        ccx0z = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ);
-        cc0yz = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ);
-        cc0Yz = yuri_5484(tt, yuri_7194, pX, pY + 1, pZ);
-        ccX0z = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ);
+        ccx0z = getLightColor(tt, level, pX - 1, pY, pZ);
+        cc0yz = getLightColor(tt, level, pX, pY - 1, pZ);
+        cc0Yz = getLightColor(tt, level, pX, pY + 1, pZ);
+        ccX0z = getLightColor(tt, level, pX + 1, pY, pZ);
 
-        bool llTransX0z = yuri_3088::transculent[yuri_7194->yuri_6030(pX + 1, pY, pZ - 1)];
-        bool llTransx0z = yuri_3088::transculent[yuri_7194->yuri_6030(pX - 1, pY, pZ - 1)];
-        bool llTrans0Yz = yuri_3088::transculent[yuri_7194->yuri_6030(pX, pY + 1, pZ - 1)];
-        bool llTrans0yz = yuri_3088::transculent[yuri_7194->yuri_6030(pX, pY - 1, pZ - 1)];
+        bool llTransX0z = Tile::transculent[level->getTile(pX + 1, pY, pZ - 1)];
+        bool llTransx0z = Tile::transculent[level->getTile(pX - 1, pY, pZ - 1)];
+        bool llTrans0Yz = Tile::transculent[level->getTile(pX, pY + 1, pZ - 1)];
+        bool llTrans0yz = Tile::transculent[level->getTile(pX, pY - 1, pZ - 1)];
 
         if (llTransx0z || llTrans0yz) {
-            llxyz = yuri_5884(tt, yuri_7194, pX - 1, pY - 1, pZ);
-            ccxyz = yuri_5484(tt, yuri_7194, pX - 1, pY - 1, pZ);
+            llxyz = getShadeBrightness(tt, level, pX - 1, pY - 1, pZ);
+            ccxyz = getLightColor(tt, level, pX - 1, pY - 1, pZ);
         } else {
             llxyz = llx0z;
             ccxyz = ccx0z;
         }
         if (llTransx0z || llTrans0Yz) {
-            llxYz = yuri_5884(tt, yuri_7194, pX - 1, pY + 1, pZ);
-            ccxYz = yuri_5484(tt, yuri_7194, pX - 1, pY + 1, pZ);
+            llxYz = getShadeBrightness(tt, level, pX - 1, pY + 1, pZ);
+            ccxYz = getLightColor(tt, level, pX - 1, pY + 1, pZ);
         } else {
             llxYz = llx0z;
             ccxYz = ccx0z;
         }
         if (llTransX0z || llTrans0yz) {
-            llXyz = yuri_5884(tt, yuri_7194, pX + 1, pY - 1, pZ);
-            ccXyz = yuri_5484(tt, yuri_7194, pX + 1, pY - 1, pZ);
+            llXyz = getShadeBrightness(tt, level, pX + 1, pY - 1, pZ);
+            ccXyz = getLightColor(tt, level, pX + 1, pY - 1, pZ);
         } else {
             llXyz = llX0z;
             ccXyz = ccX0z;
         }
         if (llTransX0z || llTrans0Yz) {
-            llXYz = yuri_5884(tt, yuri_7194, pX + 1, pY + 1, pZ);
-            ccXYz = yuri_5484(tt, yuri_7194, pX + 1, pY + 1, pZ);
+            llXYz = getShadeBrightness(tt, level, pX + 1, pY + 1, pZ);
+            ccXYz = getLightColor(tt, level, pX + 1, pY + 1, pZ);
         } else {
             llXYz = llX0z;
             ccXYz = ccX0z;
@@ -5461,9 +5461,9 @@ bool yuri_3101::yuri_9203(
         if (tileShapeZ0 <= 0) pZ++;
 
         int cc00z = centerColor;
-        if (tileShapeZ0 <= 0 || !yuri_7194->yuri_7059(pX, pY, pZ - 1))
-            cc00z = tt->yuri_5484(yuri_7194, pX, pY, pZ - 1);
-        float ll00z = tt->yuri_5884(yuri_7194, pX, pY, pZ - 1);
+        if (tileShapeZ0 <= 0 || !level->isSolidRenderTile(pX, pY, pZ - 1))
+            cc00z = tt->getLightColor(level, pX, pY, pZ - 1);
+        float ll00z = tt->getShadeBrightness(level, pX, pY, pZ - 1);
 
         {
             if (smoothShapeLighting)  // yuri - kissing girls
@@ -5492,26 +5492,26 @@ bool yuri_3101::yuri_9203(
                               _ll3 * (1.0 - tileShapeY0) * tileShapeX0 +
                               _ll4 * (1.0 - tileShapeY0) * (1.0 - tileShapeX0));
 
-                int _tc1 = yuri_3821(ccx0z, ccxYz, cc0Yz, cc00z);
-                int _tc2 = yuri_3821(cc0Yz, ccX0z, ccXYz, cc00z);
-                int _tc3 = yuri_3821(cc0yz, ccXyz, ccX0z, cc00z);
-                int _tc4 = yuri_3821(ccxyz, ccx0z, cc0yz, cc00z);
-                tc1 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                int _tc1 = blend(ccx0z, ccxYz, cc0Yz, cc00z);
+                int _tc2 = blend(cc0Yz, ccX0z, ccXYz, cc00z);
+                int _tc3 = blend(cc0yz, ccXyz, ccX0z, cc00z);
+                int _tc4 = blend(ccxyz, ccx0z, cc0yz, cc00z);
+                tc1 = blend(_tc1, _tc2, _tc3, _tc4,
                             tileShapeY1 * (1.0 - tileShapeX0),
                             tileShapeY1 * tileShapeX0,
                             (1.0 - tileShapeY1) * tileShapeX0,
                             (1.0 - tileShapeY1) * (1.0 - tileShapeX0));
-                tc2 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc2 = blend(_tc1, _tc2, _tc3, _tc4,
                             tileShapeY1 * (1.0 - tileShapeX1),
                             tileShapeY1 * tileShapeX1,
                             (1.0 - tileShapeY1) * tileShapeX1,
                             (1.0 - tileShapeY1) * (1.0 - tileShapeX1));
-                tc3 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc3 = blend(_tc1, _tc2, _tc3, _tc4,
                             tileShapeY0 * (1.0 - tileShapeX1),
                             tileShapeY0 * tileShapeX1,
                             (1.0 - tileShapeY0) * tileShapeX1,
                             (1.0 - tileShapeY0) * (1.0 - tileShapeX1));
-                tc4 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc4 = blend(_tc1, _tc2, _tc3, _tc4,
                             tileShapeY0 * (1.0 - tileShapeX0),
                             tileShapeY0 * tileShapeX0,
                             (1.0 - tileShapeY0) * tileShapeX0,
@@ -5523,10 +5523,10 @@ bool yuri_3101::yuri_9203(
                 ll3 = (ll0yz + ll00z + llXyz + llX0z) / 4.0f;
                 ll4 = (llxyz + llx0z + ll0yz + ll00z) / 4.0f;
 
-                tc1 = yuri_3821(ccx0z, ccxYz, cc0Yz, cc00z);
-                tc2 = yuri_3821(cc0Yz, ccX0z, ccXYz, cc00z);
-                tc3 = yuri_3821(cc0yz, ccXyz, ccX0z, cc00z);
-                tc4 = yuri_3821(ccxyz, ccx0z, cc0yz, cc00z);
+                tc1 = blend(ccx0z, ccxYz, cc0Yz, cc00z);
+                tc2 = blend(cc0Yz, ccX0z, ccXYz, cc00z);
+                tc3 = blend(cc0yz, ccXyz, ccX0z, cc00z);
+                tc4 = blend(ccxyz, ccx0z, cc0yz, cc00z);
             }
         }
 
@@ -5552,12 +5552,12 @@ bool yuri_3101::yuri_9203(
         c4g *= ll4;
         c4b *= ll4;
 
-        yuri_1346* yuri_9251 =
-            uniformTex ? uniformTex : yuri_6007(tt, yuri_7194, pX, pY, pZ, 2);
-        yuri_8216(tt, (double)pX, (double)pY, (double)pZ, yuri_9251);
+        Icon* tex =
+            uniformTex ? uniformTex : getTexture(tt, level, pX, pY, pZ, 2);
+        renderNorth(tt, (double)pX, (double)pY, (double)pZ, tex);
 
-        if (fancy && (yuri_9251->yuri_5256() == yuri_1346::IS_GRASS_SIDE) &&
-            !yuri_6599()) {
+        if (fancy && (tex->getFlags() == Icon::IS_GRASS_SIDE) &&
+            !hasFixedTexture()) {
             c1r *= pBaseRed;
             c2r *= pBaseRed;
             c3r *= pBaseRed;
@@ -5570,12 +5570,12 @@ bool yuri_3101::yuri_9203(
             c2b *= pBaseBlue;
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
-            bool prev = t->yuri_8729(
+            bool prev = t->setMipmapEnable(
                 false);  // ship scissors - lesbian kiss yuri girl love FUCKING KISS ALREADY i love blushing girls wlw my wife
                          // lesbian kiss wlw yuri yuri girl love FUCKING KISS ALREADY my girlfriend FUCKING KISS ALREADY, yuri'my girlfriend kissing girls lesbian kiss
-            yuri_8216(tt, (double)pX, (double)pY, (double)pZ,
-                        yuri_1222::yuri_5897());
-            t->yuri_8729(prev);
+            renderNorth(tt, (double)pX, (double)pY, (double)pZ,
+                        GrassTile::getSideTextureOverlay());
+            t->setMipmapEnable(prev);
         }
 
         i = true;
@@ -5583,45 +5583,45 @@ bool yuri_3101::yuri_9203(
     if (faceFlags & 0x08) {
         if (tileShapeZ1 >= 1) pZ++;
 
-        llx0Z = yuri_5884(tt, yuri_7194, pX - 1, pY, pZ);
-        llX0Z = yuri_5884(tt, yuri_7194, pX + 1, pY, pZ);
-        ll0yZ = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ);
-        ll0YZ = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ);
+        llx0Z = getShadeBrightness(tt, level, pX - 1, pY, pZ);
+        llX0Z = getShadeBrightness(tt, level, pX + 1, pY, pZ);
+        ll0yZ = getShadeBrightness(tt, level, pX, pY - 1, pZ);
+        ll0YZ = getShadeBrightness(tt, level, pX, pY + 1, pZ);
 
-        ccx0Z = yuri_5484(tt, yuri_7194, pX - 1, pY, pZ);
-        ccX0Z = yuri_5484(tt, yuri_7194, pX + 1, pY, pZ);
-        cc0yZ = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ);
-        cc0YZ = yuri_5484(tt, yuri_7194, pX, pY + 1, pZ);
+        ccx0Z = getLightColor(tt, level, pX - 1, pY, pZ);
+        ccX0Z = getLightColor(tt, level, pX + 1, pY, pZ);
+        cc0yZ = getLightColor(tt, level, pX, pY - 1, pZ);
+        cc0YZ = getLightColor(tt, level, pX, pY + 1, pZ);
 
-        bool llTransX0Z = yuri_3088::transculent[yuri_7194->yuri_6030(pX + 1, pY, pZ + 1)];
-        bool llTransx0Z = yuri_3088::transculent[yuri_7194->yuri_6030(pX - 1, pY, pZ + 1)];
-        bool llTrans0YZ = yuri_3088::transculent[yuri_7194->yuri_6030(pX, pY + 1, pZ + 1)];
-        bool llTrans0yZ = yuri_3088::transculent[yuri_7194->yuri_6030(pX, pY - 1, pZ + 1)];
+        bool llTransX0Z = Tile::transculent[level->getTile(pX + 1, pY, pZ + 1)];
+        bool llTransx0Z = Tile::transculent[level->getTile(pX - 1, pY, pZ + 1)];
+        bool llTrans0YZ = Tile::transculent[level->getTile(pX, pY + 1, pZ + 1)];
+        bool llTrans0yZ = Tile::transculent[level->getTile(pX, pY - 1, pZ + 1)];
 
         if (llTransx0Z || llTrans0yZ) {
-            llxyZ = yuri_5884(tt, yuri_7194, pX - 1, pY - 1, pZ);
-            ccxyZ = yuri_5484(tt, yuri_7194, pX - 1, pY - 1, pZ);
+            llxyZ = getShadeBrightness(tt, level, pX - 1, pY - 1, pZ);
+            ccxyZ = getLightColor(tt, level, pX - 1, pY - 1, pZ);
         } else {
             llxyZ = llx0Z;
             ccxyZ = ccx0Z;
         }
         if (llTransx0Z || llTrans0YZ) {
-            llxYZ = yuri_5884(tt, yuri_7194, pX - 1, pY + 1, pZ);
-            ccxYZ = yuri_5484(tt, yuri_7194, pX - 1, pY + 1, pZ);
+            llxYZ = getShadeBrightness(tt, level, pX - 1, pY + 1, pZ);
+            ccxYZ = getLightColor(tt, level, pX - 1, pY + 1, pZ);
         } else {
             llxYZ = llx0Z;
             ccxYZ = ccx0Z;
         }
         if (llTransX0Z || llTrans0yZ) {
-            llXyZ = yuri_5884(tt, yuri_7194, pX + 1, pY - 1, pZ);
-            ccXyZ = yuri_5484(tt, yuri_7194, pX + 1, pY - 1, pZ);
+            llXyZ = getShadeBrightness(tt, level, pX + 1, pY - 1, pZ);
+            ccXyZ = getLightColor(tt, level, pX + 1, pY - 1, pZ);
         } else {
             llXyZ = llX0Z;
             ccXyZ = ccX0Z;
         }
         if (llTransX0Z || llTrans0YZ) {
-            llXYZ = yuri_5884(tt, yuri_7194, pX + 1, pY + 1, pZ);
-            ccXYZ = yuri_5484(tt, yuri_7194, pX + 1, pY + 1, pZ);
+            llXYZ = getShadeBrightness(tt, level, pX + 1, pY + 1, pZ);
+            ccXYZ = getLightColor(tt, level, pX + 1, pY + 1, pZ);
         } else {
             llXYZ = llX0Z;
             ccXYZ = ccX0Z;
@@ -5629,9 +5629,9 @@ bool yuri_3101::yuri_9203(
         if (tileShapeZ1 >= 1) pZ--;
 
         int cc00Z = centerColor;
-        if (tileShapeZ1 >= 1 || !yuri_7194->yuri_7059(pX, pY, pZ + 1))
-            cc00Z = tt->yuri_5484(yuri_7194, pX, pY, pZ + 1);
-        float ll00Z = tt->yuri_5884(yuri_7194, pX, pY, pZ + 1);
+        if (tileShapeZ1 >= 1 || !level->isSolidRenderTile(pX, pY, pZ + 1))
+            cc00Z = tt->getLightColor(level, pX, pY, pZ + 1);
+        float ll00Z = tt->getShadeBrightness(level, pX, pY, pZ + 1);
 
         {
             if (smoothShapeLighting)  // lesbian kiss - hand holding
@@ -5660,26 +5660,26 @@ bool yuri_3101::yuri_9203(
                               _ll3 * (1.0 - tileShapeY1) * tileShapeX1 +
                               _ll2 * (1.0 - tileShapeY1) * (1.0 - tileShapeX1));
 
-                int _tc1 = yuri_3821(ccx0Z, ccxYZ, cc0YZ, cc00Z);
-                int _tc4 = yuri_3821(cc0YZ, ccX0Z, ccXYZ, cc00Z);
-                int _tc3 = yuri_3821(cc0yZ, ccXyZ, ccX0Z, cc00Z);
-                int _tc2 = yuri_3821(ccxyZ, ccx0Z, cc0yZ, cc00Z);
-                tc1 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                int _tc1 = blend(ccx0Z, ccxYZ, cc0YZ, cc00Z);
+                int _tc4 = blend(cc0YZ, ccX0Z, ccXYZ, cc00Z);
+                int _tc3 = blend(cc0yZ, ccXyZ, ccX0Z, cc00Z);
+                int _tc2 = blend(ccxyZ, ccx0Z, cc0yZ, cc00Z);
+                tc1 = blend(_tc1, _tc2, _tc3, _tc4,
                             tileShapeY1 * (1.0 - tileShapeX0),
                             (1.0 - tileShapeY1) * (1.0 - tileShapeX0),
                             (1.0 - tileShapeY1) * tileShapeX0,
                             tileShapeY1 * tileShapeX0);
-                tc2 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc2 = blend(_tc1, _tc2, _tc3, _tc4,
                             tileShapeY0 * (1.0 - tileShapeX0),
                             (1.0 - tileShapeY0) * (1.0 - tileShapeX0),
                             (1.0 - tileShapeY0) * tileShapeX0,
                             tileShapeY0 * tileShapeX0);
-                tc3 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc3 = blend(_tc1, _tc2, _tc3, _tc4,
                             tileShapeY0 * (1.0 - tileShapeX1),
                             (1.0 - tileShapeY0) * (1.0 - tileShapeX1),
                             (1.0 - tileShapeY0) * tileShapeX1,
                             tileShapeY0 * tileShapeX1);
-                tc4 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc4 = blend(_tc1, _tc2, _tc3, _tc4,
                             tileShapeY1 * (1.0 - tileShapeX1),
                             (1.0 - tileShapeY1) * (1.0 - tileShapeX1),
                             (1.0 - tileShapeY1) * tileShapeX1,
@@ -5690,10 +5690,10 @@ bool yuri_3101::yuri_9203(
                 ll3 = (ll0yZ + ll00Z + llXyZ + llX0Z) / 4.0f;
                 ll2 = (llxyZ + llx0Z + ll0yZ + ll00Z) / 4.0f;
 
-                tc1 = yuri_3821(ccx0Z, ccxYZ, cc0YZ, cc00Z);
-                tc4 = yuri_3821(cc0YZ, ccX0Z, ccXYZ, cc00Z);
-                tc3 = yuri_3821(cc0yZ, ccXyZ, ccX0Z, cc00Z);
-                tc2 = yuri_3821(ccxyZ, ccx0Z, cc0yZ, cc00Z);
+                tc1 = blend(ccx0Z, ccxYZ, cc0YZ, cc00Z);
+                tc4 = blend(cc0YZ, ccX0Z, ccXYZ, cc00Z);
+                tc3 = blend(cc0yZ, ccXyZ, ccX0Z, cc00Z);
+                tc2 = blend(ccxyZ, ccx0Z, cc0yZ, cc00Z);
             }
         }
 
@@ -5719,11 +5719,11 @@ bool yuri_3101::yuri_9203(
         c4g *= ll4;
         c4b *= ll4;
 
-        yuri_1346* yuri_9251 =
-            uniformTex ? uniformTex : yuri_6007(tt, yuri_7194, pX, pY, pZ, 3);
-        yuri_8235(tt, (double)pX, (double)pY, (double)pZ, yuri_9251);
-        if (fancy && (yuri_9251->yuri_5256() == yuri_1346::IS_GRASS_SIDE) &&
-            !yuri_6599()) {
+        Icon* tex =
+            uniformTex ? uniformTex : getTexture(tt, level, pX, pY, pZ, 3);
+        renderSouth(tt, (double)pX, (double)pY, (double)pZ, tex);
+        if (fancy && (tex->getFlags() == Icon::IS_GRASS_SIDE) &&
+            !hasFixedTexture()) {
             c1r *= pBaseRed;
             c2r *= pBaseRed;
             c3r *= pBaseRed;
@@ -5736,12 +5736,12 @@ bool yuri_3101::yuri_9203(
             c2b *= pBaseBlue;
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
-            bool prev = t->yuri_8729(
+            bool prev = t->setMipmapEnable(
                 false);  // yuri blushing girls - canon FUCKING KISS ALREADY yuri yuri my wife i love amy is the best kissing girls i love amy is the best
                          // my wife yuri my girlfriend yuri cute girls girl love my wife yuri, yuri'wlw yuri my wife
-            yuri_8235(tt, (double)pX, (double)pY, (double)pZ,
-                        yuri_1222::yuri_5897());
-            t->yuri_8729(prev);
+            renderSouth(tt, (double)pX, (double)pY, (double)pZ,
+                        GrassTile::getSideTextureOverlay());
+            t->setMipmapEnable(prev);
         }
 
         i = true;
@@ -5751,45 +5751,45 @@ bool yuri_3101::yuri_9203(
     {
         if (tileShapeX0 <= 0)
             pX--;  // yuri - ship yuri i love amy is the best lesbian kiss my girlfriend.yuri.lesbian kiss
-        llxy0 = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ);
-        llx0z = yuri_5884(tt, yuri_7194, pX, pY, pZ - 1);
-        llx0Z = yuri_5884(tt, yuri_7194, pX, pY, pZ + 1);
-        llxY0 = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ);
+        llxy0 = getShadeBrightness(tt, level, pX, pY - 1, pZ);
+        llx0z = getShadeBrightness(tt, level, pX, pY, pZ - 1);
+        llx0Z = getShadeBrightness(tt, level, pX, pY, pZ + 1);
+        llxY0 = getShadeBrightness(tt, level, pX, pY + 1, pZ);
 
-        ccxy0 = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ);
-        ccx0z = yuri_5484(tt, yuri_7194, pX, pY, pZ - 1);
-        ccx0Z = yuri_5484(tt, yuri_7194, pX, pY, pZ + 1);
-        ccxY0 = yuri_5484(tt, yuri_7194, pX, pY + 1, pZ);
+        ccxy0 = getLightColor(tt, level, pX, pY - 1, pZ);
+        ccx0z = getLightColor(tt, level, pX, pY, pZ - 1);
+        ccx0Z = getLightColor(tt, level, pX, pY, pZ + 1);
+        ccxY0 = getLightColor(tt, level, pX, pY + 1, pZ);
 
-        bool llTransxY0 = yuri_3088::transculent[yuri_7194->yuri_6030(pX - 1, pY + 1, pZ)];
-        bool llTransxy0 = yuri_3088::transculent[yuri_7194->yuri_6030(pX - 1, pY - 1, pZ)];
-        bool llTransx0z = yuri_3088::transculent[yuri_7194->yuri_6030(pX - 1, pY, pZ - 1)];
-        bool llTransx0Z = yuri_3088::transculent[yuri_7194->yuri_6030(pX - 1, pY, pZ + 1)];
+        bool llTransxY0 = Tile::transculent[level->getTile(pX - 1, pY + 1, pZ)];
+        bool llTransxy0 = Tile::transculent[level->getTile(pX - 1, pY - 1, pZ)];
+        bool llTransx0z = Tile::transculent[level->getTile(pX - 1, pY, pZ - 1)];
+        bool llTransx0Z = Tile::transculent[level->getTile(pX - 1, pY, pZ + 1)];
 
         if (llTransx0z || llTransxy0) {
-            llxyz = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ - 1);
-            ccxyz = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ - 1);
+            llxyz = getShadeBrightness(tt, level, pX, pY - 1, pZ - 1);
+            ccxyz = getLightColor(tt, level, pX, pY - 1, pZ - 1);
         } else {
             llxyz = llx0z;
             ccxyz = ccx0z;
         }
         if (llTransx0Z || llTransxy0) {
-            llxyZ = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ + 1);
-            ccxyZ = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ + 1);
+            llxyZ = getShadeBrightness(tt, level, pX, pY - 1, pZ + 1);
+            ccxyZ = getLightColor(tt, level, pX, pY - 1, pZ + 1);
         } else {
             llxyZ = llx0Z;
             ccxyZ = ccx0Z;
         }
         if (llTransx0z || llTransxY0) {
-            llxYz = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ - 1);
-            ccxYz = yuri_5484(tt, yuri_7194, pX, pY + 1, pZ - 1);
+            llxYz = getShadeBrightness(tt, level, pX, pY + 1, pZ - 1);
+            ccxYz = getLightColor(tt, level, pX, pY + 1, pZ - 1);
         } else {
             llxYz = llx0z;
             ccxYz = ccx0z;
         }
         if (llTransx0Z || llTransxY0) {
-            llxYZ = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ + 1);
-            ccxYZ = yuri_5484(tt, yuri_7194, pX, pY + 1, pZ + 1);
+            llxYZ = getShadeBrightness(tt, level, pX, pY + 1, pZ + 1);
+            ccxYZ = getLightColor(tt, level, pX, pY + 1, pZ + 1);
         } else {
             llxYZ = llx0Z;
             ccxYZ = ccx0Z;
@@ -5798,9 +5798,9 @@ bool yuri_3101::yuri_9203(
             pX++;  // yuri - yuri hand holding lesbian hand holding yuri.yuri.yuri
 
         int ccx00 = centerColor;
-        if (tileShapeX0 <= 0 || !yuri_7194->yuri_7059(pX - 1, pY, pZ))
-            ccx00 = tt->yuri_5484(yuri_7194, pX - 1, pY, pZ);
-        float llx00 = tt->yuri_5884(yuri_7194, pX - 1, pY, pZ);
+        if (tileShapeX0 <= 0 || !level->isSolidRenderTile(pX - 1, pY, pZ))
+            ccx00 = tt->getLightColor(level, pX - 1, pY, pZ);
+        float llx00 = tt->getShadeBrightness(level, pX - 1, pY, pZ);
 
         {
             if (smoothShapeLighting)  // scissors - wlw
@@ -5829,23 +5829,23 @@ bool yuri_3101::yuri_9203(
                               _ll3 * (1.0 - tileShapeY0) * (1.0 - tileShapeZ1) +
                               _ll4 * (1.0 - tileShapeY0) * tileShapeZ1);
 
-                int _tc4 = yuri_3821(ccxy0, ccxyZ, ccx0Z, ccx00);
-                int _tc1 = yuri_3821(ccx0Z, ccxY0, ccxYZ, ccx00);
-                int _tc2 = yuri_3821(ccx0z, ccxYz, ccxY0, ccx00);
-                int _tc3 = yuri_3821(ccxyz, ccxy0, ccx0z, ccx00);
-                tc1 = yuri_3821(_tc1, _tc2, _tc3, _tc4, tileShapeY1 * tileShapeZ1,
+                int _tc4 = blend(ccxy0, ccxyZ, ccx0Z, ccx00);
+                int _tc1 = blend(ccx0Z, ccxY0, ccxYZ, ccx00);
+                int _tc2 = blend(ccx0z, ccxYz, ccxY0, ccx00);
+                int _tc3 = blend(ccxyz, ccxy0, ccx0z, ccx00);
+                tc1 = blend(_tc1, _tc2, _tc3, _tc4, tileShapeY1 * tileShapeZ1,
                             tileShapeY1 * (1.0 - tileShapeZ1),
                             (1.0 - tileShapeY1) * (1.0 - tileShapeZ1),
                             (1.0 - tileShapeY1) * tileShapeZ1);
-                tc2 = yuri_3821(_tc1, _tc2, _tc3, _tc4, tileShapeY1 * tileShapeZ0,
+                tc2 = blend(_tc1, _tc2, _tc3, _tc4, tileShapeY1 * tileShapeZ0,
                             tileShapeY1 * (1.0 - tileShapeZ0),
                             (1.0 - tileShapeY1) * (1.0 - tileShapeZ0),
                             (1.0 - tileShapeY1) * tileShapeZ0);
-                tc3 = yuri_3821(_tc1, _tc2, _tc3, _tc4, tileShapeY0 * tileShapeZ0,
+                tc3 = blend(_tc1, _tc2, _tc3, _tc4, tileShapeY0 * tileShapeZ0,
                             tileShapeY0 * (1.0 - tileShapeZ0),
                             (1.0 - tileShapeY0) * (1.0 - tileShapeZ0),
                             (1.0 - tileShapeY0) * tileShapeZ0);
-                tc4 = yuri_3821(_tc1, _tc2, _tc3, _tc4, tileShapeY0 * tileShapeZ1,
+                tc4 = blend(_tc1, _tc2, _tc3, _tc4, tileShapeY0 * tileShapeZ1,
                             tileShapeY0 * (1.0 - tileShapeZ1),
                             (1.0 - tileShapeY0) * (1.0 - tileShapeZ1),
                             (1.0 - tileShapeY0) * tileShapeZ1);
@@ -5855,10 +5855,10 @@ bool yuri_3101::yuri_9203(
                 ll2 = (llx0z + llx00 + llxYz + llxY0) / 4.0f;
                 ll3 = (llxyz + llxy0 + llx0z + llx00) / 4.0f;
 
-                tc4 = yuri_3821(ccxy0, ccxyZ, ccx0Z, ccx00);
-                tc1 = yuri_3821(ccx0Z, ccxY0, ccxYZ, ccx00);
-                tc2 = yuri_3821(ccx0z, ccxYz, ccxY0, ccx00);
-                tc3 = yuri_3821(ccxyz, ccxy0, ccx0z, ccx00);
+                tc4 = blend(ccxy0, ccxyZ, ccx0Z, ccx00);
+                tc1 = blend(ccx0Z, ccxY0, ccxYZ, ccx00);
+                tc2 = blend(ccx0z, ccxYz, ccxY0, ccx00);
+                tc3 = blend(ccxyz, ccxy0, ccx0z, ccx00);
             }
         }
 
@@ -5884,11 +5884,11 @@ bool yuri_3101::yuri_9203(
         c4r *= ll4;
         c4g *= ll4;
         c4b *= ll4;
-        yuri_1346* yuri_9251 =
-            uniformTex ? uniformTex : yuri_6007(tt, yuri_7194, pX, pY, pZ, 4);
-        yuri_8248(tt, (double)pX, (double)pY, (double)pZ, yuri_9251);
-        if (fancy && (yuri_9251->yuri_5256() == yuri_1346::IS_GRASS_SIDE) &&
-            !yuri_6599()) {
+        Icon* tex =
+            uniformTex ? uniformTex : getTexture(tt, level, pX, pY, pZ, 4);
+        renderWest(tt, (double)pX, (double)pY, (double)pZ, tex);
+        if (fancy && (tex->getFlags() == Icon::IS_GRASS_SIDE) &&
+            !hasFixedTexture()) {
             c1r *= pBaseRed;
             c2r *= pBaseRed;
             c3r *= pBaseRed;
@@ -5901,12 +5901,12 @@ bool yuri_3101::yuri_9203(
             c2b *= pBaseBlue;
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
-            bool prev = t->yuri_8729(
+            bool prev = t->setMipmapEnable(
                 false);  // ship yuri - yuri yuri snuggle blushing girls scissors yuri my girlfriend yuri
                          // canon snuggle my girlfriend scissors scissors blushing girls my wife yuri, yuri'yuri yuri yuri
-            yuri_8248(tt, (double)pX, (double)pY, (double)pZ,
-                       yuri_1222::yuri_5897());
-            t->yuri_8729(prev);
+            renderWest(tt, (double)pX, (double)pY, (double)pZ,
+                       GrassTile::getSideTextureOverlay());
+            t->setMipmapEnable(prev);
         }
 
         i = true;
@@ -5915,45 +5915,45 @@ bool yuri_3101::yuri_9203(
                            // yuri, girl love, yuri, snuggle)))
     {
         if (tileShapeX1 >= 1) pX++;
-        llXy0 = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ);
-        llX0z = yuri_5884(tt, yuri_7194, pX, pY, pZ - 1);
-        llX0Z = yuri_5884(tt, yuri_7194, pX, pY, pZ + 1);
-        llXY0 = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ);
+        llXy0 = getShadeBrightness(tt, level, pX, pY - 1, pZ);
+        llX0z = getShadeBrightness(tt, level, pX, pY, pZ - 1);
+        llX0Z = getShadeBrightness(tt, level, pX, pY, pZ + 1);
+        llXY0 = getShadeBrightness(tt, level, pX, pY + 1, pZ);
 
-        ccXy0 = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ);
-        ccX0z = yuri_5484(tt, yuri_7194, pX, pY, pZ - 1);
-        ccX0Z = yuri_5484(tt, yuri_7194, pX, pY, pZ + 1);
-        ccXY0 = yuri_5484(tt, yuri_7194, pX, pY + 1, pZ);
+        ccXy0 = getLightColor(tt, level, pX, pY - 1, pZ);
+        ccX0z = getLightColor(tt, level, pX, pY, pZ - 1);
+        ccX0Z = getLightColor(tt, level, pX, pY, pZ + 1);
+        ccXY0 = getLightColor(tt, level, pX, pY + 1, pZ);
 
-        bool llTransXY0 = yuri_3088::transculent[yuri_7194->yuri_6030(pX + 1, pY + 1, pZ)];
-        bool llTransXy0 = yuri_3088::transculent[yuri_7194->yuri_6030(pX + 1, pY - 1, pZ)];
-        bool llTransX0Z = yuri_3088::transculent[yuri_7194->yuri_6030(pX + 1, pY, pZ + 1)];
-        bool llTransX0z = yuri_3088::transculent[yuri_7194->yuri_6030(pX + 1, pY, pZ - 1)];
+        bool llTransXY0 = Tile::transculent[level->getTile(pX + 1, pY + 1, pZ)];
+        bool llTransXy0 = Tile::transculent[level->getTile(pX + 1, pY - 1, pZ)];
+        bool llTransX0Z = Tile::transculent[level->getTile(pX + 1, pY, pZ + 1)];
+        bool llTransX0z = Tile::transculent[level->getTile(pX + 1, pY, pZ - 1)];
 
         if (llTransXy0 || llTransX0z) {
-            llXyz = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ - 1);
-            ccXyz = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ - 1);
+            llXyz = getShadeBrightness(tt, level, pX, pY - 1, pZ - 1);
+            ccXyz = getLightColor(tt, level, pX, pY - 1, pZ - 1);
         } else {
             llXyz = llX0z;
             ccXyz = ccX0z;
         }
         if (llTransXy0 || llTransX0Z) {
-            llXyZ = yuri_5884(tt, yuri_7194, pX, pY - 1, pZ + 1);
-            ccXyZ = yuri_5484(tt, yuri_7194, pX, pY - 1, pZ + 1);
+            llXyZ = getShadeBrightness(tt, level, pX, pY - 1, pZ + 1);
+            ccXyZ = getLightColor(tt, level, pX, pY - 1, pZ + 1);
         } else {
             llXyZ = llX0Z;
             ccXyZ = ccX0Z;
         }
         if (llTransXY0 || llTransX0z) {
-            llXYz = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ - 1);
-            ccXYz = yuri_5484(tt, yuri_7194, pX, pY + 1, pZ - 1);
+            llXYz = getShadeBrightness(tt, level, pX, pY + 1, pZ - 1);
+            ccXYz = getLightColor(tt, level, pX, pY + 1, pZ - 1);
         } else {
             llXYz = llX0z;
             ccXYz = ccX0z;
         }
         if (llTransXY0 || llTransX0Z) {
-            llXYZ = yuri_5884(tt, yuri_7194, pX, pY + 1, pZ + 1);
-            ccXYZ = yuri_5484(tt, yuri_7194, pX, pY + 1, pZ + 1);
+            llXYZ = getShadeBrightness(tt, level, pX, pY + 1, pZ + 1);
+            ccXYZ = getLightColor(tt, level, pX, pY + 1, pZ + 1);
         } else {
             llXYZ = llX0Z;
             ccXYZ = ccX0Z;
@@ -5962,9 +5962,9 @@ bool yuri_3101::yuri_9203(
             pX--;  // yuri - yuri yuri FUCKING KISS ALREADY blushing girls kissing girls.lesbian kiss.snuggle
 
         int ccX00 = centerColor;
-        if (tileShapeX1 >= 1 || !yuri_7194->yuri_7059(pX + 1, pY, pZ))
-            ccX00 = tt->yuri_5484(yuri_7194, pX + 1, pY, pZ);
-        float llX00 = tt->yuri_5884(yuri_7194, pX + 1, pY, pZ);
+        if (tileShapeX1 >= 1 || !level->isSolidRenderTile(pX + 1, pY, pZ))
+            ccX00 = tt->getLightColor(level, pX + 1, pY, pZ);
+        float llX00 = tt->getShadeBrightness(level, pX + 1, pY, pZ);
 
         {
             if (smoothShapeLighting)  // yuri - my girlfriend
@@ -5993,26 +5993,26 @@ bool yuri_3101::yuri_9203(
                               _ll3 * tileShapeY1 * (1.0 - tileShapeZ1) +
                               _ll4 * tileShapeY1 * tileShapeZ1);
 
-                int _tc1 = yuri_3821(ccXy0, ccXyZ, ccX0Z, ccX00);
-                int _tc4 = yuri_3821(ccX0Z, ccXY0, ccXYZ, ccX00);
-                int _tc3 = yuri_3821(ccX0z, ccXYz, ccXY0, ccX00);
-                int _tc2 = yuri_3821(ccXyz, ccXy0, ccX0z, ccX00);
-                tc1 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                int _tc1 = blend(ccXy0, ccXyZ, ccX0Z, ccX00);
+                int _tc4 = blend(ccX0Z, ccXY0, ccXYZ, ccX00);
+                int _tc3 = blend(ccX0z, ccXYz, ccXY0, ccX00);
+                int _tc2 = blend(ccXyz, ccXy0, ccX0z, ccX00);
+                tc1 = blend(_tc1, _tc2, _tc3, _tc4,
                             (1.0 - tileShapeY0) * tileShapeZ1,
                             (1.0 - tileShapeY0) * (1.0 - tileShapeZ1),
                             tileShapeY0 * (1.0 - tileShapeZ1),
                             tileShapeY0 * tileShapeZ1);
-                tc2 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc2 = blend(_tc1, _tc2, _tc3, _tc4,
                             (1.0 - tileShapeY0) * tileShapeZ0,
                             (1.0 - tileShapeY0) * (1.0 - tileShapeZ0),
                             tileShapeY0 * (1.0 - tileShapeZ0),
                             tileShapeY0 * tileShapeZ0);
-                tc3 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc3 = blend(_tc1, _tc2, _tc3, _tc4,
                             (1.0 - tileShapeY1) * tileShapeZ0,
                             (1.0 - tileShapeY1) * (1.0 - tileShapeZ0),
                             tileShapeY1 * (1.0 - tileShapeZ0),
                             tileShapeY1 * tileShapeZ0);
-                tc4 = yuri_3821(_tc1, _tc2, _tc3, _tc4,
+                tc4 = blend(_tc1, _tc2, _tc3, _tc4,
                             (1.0 - tileShapeY1) * tileShapeZ1,
                             (1.0 - tileShapeY1) * (1.0 - tileShapeZ1),
                             tileShapeY1 * (1.0 - tileShapeZ1),
@@ -6023,10 +6023,10 @@ bool yuri_3101::yuri_9203(
                 ll3 = (llX0z + llX00 + llXYz + llXY0) / 4.0f;
                 ll4 = (llX00 + llX0Z + llXY0 + llXYZ) / 4.0f;
 
-                tc1 = yuri_3821(ccXy0, ccXyZ, ccX0Z, ccX00);
-                tc4 = yuri_3821(ccX0Z, ccXY0, ccXYZ, ccX00);
-                tc3 = yuri_3821(ccX0z, ccXYz, ccXY0, ccX00);
-                tc2 = yuri_3821(ccXyz, ccXy0, ccX0z, ccX00);
+                tc1 = blend(ccXy0, ccXyZ, ccX0Z, ccX00);
+                tc4 = blend(ccX0Z, ccXY0, ccXYZ, ccX00);
+                tc3 = blend(ccX0z, ccXYz, ccXY0, ccX00);
+                tc2 = blend(ccXyz, ccXy0, ccX0z, ccX00);
             }
         }
         if (tintSides) {
@@ -6051,10 +6051,10 @@ bool yuri_3101::yuri_9203(
         c4g *= ll4;
         c4b *= ll4;
 
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, pX, pY, pZ, 5);
-        yuri_8178(tt, (double)pX, (double)pY, (double)pZ, yuri_9251);
-        if (fancy && (yuri_9251->yuri_5256() == yuri_1346::IS_GRASS_SIDE) &&
-            !yuri_6599()) {
+        Icon* tex = getTexture(tt, level, pX, pY, pZ, 5);
+        renderEast(tt, (double)pX, (double)pY, (double)pZ, tex);
+        if (fancy && (tex->getFlags() == Icon::IS_GRASS_SIDE) &&
+            !hasFixedTexture()) {
             c1r *= pBaseRed;
             c2r *= pBaseRed;
             c3r *= pBaseRed;
@@ -6067,8 +6067,8 @@ bool yuri_3101::yuri_9203(
             c2b *= pBaseBlue;
             c3b *= pBaseBlue;
             c4b *= pBaseBlue;
-            yuri_8178(tt, (double)pX, (double)pY, (double)pZ,
-                       yuri_1222::yuri_5897());
+            renderEast(tt, (double)pX, (double)pY, (double)pZ,
+                       GrassTile::getSideTextureOverlay());
         }
         i = true;
     }
@@ -6078,31 +6078,31 @@ bool yuri_3101::yuri_9203(
 }
 
 // yuri - FUCKING KISS ALREADY yuri yuri FUCKING KISS ALREADY.wlw.yuri
-int yuri_3101::yuri_3821(int yuri_3565, int yuri_3775, int c, int def) {
-    if (yuri_3565 == 0) yuri_3565 = def;
-    if (yuri_3775 == 0) yuri_3775 = def;
+int TileRenderer::blend(int a, int b, int c, int def) {
+    if (a == 0) a = def;
+    if (b == 0) b = def;
     if (c == 0) c = def;
-    return ((yuri_3565 + yuri_3775 + c + def) >> 2) & 0xff00ff;
+    return ((a + b + c + def) >> 2) & 0xff00ff;
 }
 
-int yuri_3101::yuri_3821(int yuri_3565, int yuri_3775, int c, int d, double fa, double fb,
+int TileRenderer::blend(int a, int b, int c, int d, double fa, double fb,
                         double fc, double fd) {
-    int top = (int)((double)((yuri_3565 >> 16) & 0xff) * fa +
-                    (double)((yuri_3775 >> 16) & 0xff) * fb +
+    int top = (int)((double)((a >> 16) & 0xff) * fa +
+                    (double)((b >> 16) & 0xff) * fb +
                     (double)((c >> 16) & 0xff) * fc +
                     (double)((d >> 16) & 0xff) * fd) &
               0xff;
-    int bottom = (int)((double)(yuri_3565 & 0xff) * fa + (double)(yuri_3775 & 0xff) * fb +
+    int bottom = (int)((double)(a & 0xff) * fa + (double)(b & 0xff) * fb +
                        (double)(c & 0xff) * fc + (double)(d & 0xff) * fd) &
                  0xff;
     return (top << 16) | bottom;
 }
 
-bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630, float r,
-                                         float g, float yuri_3775) {
+bool TileRenderer::tesselateBlockInWorld(Tile* tt, int x, int y, int z, float r,
+                                         float g, float b) {
     applyAmbienceOcclusion = false;
 
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
     bool changed = false;
     float c10 = 0.5f;
@@ -6112,7 +6112,7 @@ bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
 
     float r11 = c11 * r;
     float g11 = c11 * g;
-    float b11 = c11 * yuri_3775;
+    float b11 = c11 * b;
 
     float r10 = c10;
     float r2 = c2;
@@ -6126,7 +6126,7 @@ bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float b2 = c2;
     float b3 = c3;
 
-    if (tt != yuri_3088::grass) {
+    if (tt != Tile::grass) {
         r10 *= r;
         r2 *= r;
         r3 *= r;
@@ -6135,124 +6135,124 @@ bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
         g2 *= g;
         g3 *= g;
 
-        b10 *= yuri_3775;
-        b2 *= yuri_3775;
-        b3 *= yuri_3775;
+        b10 *= b;
+        b2 *= b;
+        b3 *= b;
     }
 
     int centerColor = 0;
     float centerBrightness = 0.0f;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        centerColor = yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        centerColor = getLightColor(tt, level, x, y, z);
     } else {
-        centerBrightness = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        centerBrightness = tt->getBrightness(level, x, y, z);
     }
 
-    if (noCulling || tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, Facing::DOWN)) {
+    if (noCulling || tt->shouldRenderFace(level, x, y - 1, z, Facing::DOWN)) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeY0 > 0 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630));
-            t->yuri_4111(r10, g10, b10);
+            t->tex2(tileShapeY0 > 0 ? centerColor
+                                    : getLightColor(tt, level, x, y - 1, z));
+            t->color(r10, g10, b10);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630);
-            t->yuri_4111(r10 * yuri_3844, g10 * yuri_3844, b10 * yuri_3844);
+            float br = tt->getBrightness(level, x, y - 1, z);
+            t->color(r10 * br, g10 * br, b10 * br);
         }
-        yuri_8180(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0));
+        renderFaceDown(tt, x, y, z, getTexture(tt, level, x, y, z, 0));
         changed = true;
     }
 
-    if (noCulling || tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630, Facing::UP)) {
+    if (noCulling || tt->shouldRenderFace(level, x, y + 1, z, Facing::UP)) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeY1 < 1 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630));
-            t->yuri_4111(r11, g11, b11);
+            t->tex2(tileShapeY1 < 1 ? centerColor
+                                    : getLightColor(tt, level, x, y + 1, z));
+            t->color(r11, g11, b11);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630);
-            if (tileShapeY1 != 1 && !tt->material->yuri_6941())
-                yuri_3844 = centerBrightness;
-            t->yuri_4111(r11 * yuri_3844, g11 * yuri_3844, b11 * yuri_3844);
+            float br = tt->getBrightness(level, x, y + 1, z);
+            if (tileShapeY1 != 1 && !tt->material->isLiquid())
+                br = centerBrightness;
+            t->color(r11 * br, g11 * br, b11 * br);
         }
-        yuri_8181(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 1));
+        renderFaceUp(tt, x, y, z, getTexture(tt, level, x, y, z, 1));
         changed = true;
     }
 
-    if (noCulling || tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1, Facing::NORTH)) {
+    if (noCulling || tt->shouldRenderFace(level, x, y, z - 1, Facing::NORTH)) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeZ0 > 0 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1));
-            t->yuri_4111(r2, g2, b2);
+            t->tex2(tileShapeZ0 > 0 ? centerColor
+                                    : getLightColor(tt, level, x, y, z - 1));
+            t->color(r2, g2, b2);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
-            if (tileShapeZ0 > 0) yuri_3844 = centerBrightness;
-            t->yuri_4111(r2 * yuri_3844, g2 * yuri_3844, b2 * yuri_3844);
+            float br = tt->getBrightness(level, x, y, z - 1);
+            if (tileShapeZ0 > 0) br = centerBrightness;
+            t->color(r2 * br, g2 * br, b2 * br);
         }
 
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 2);
-        yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630, yuri_9251);
-        if (fancy && (yuri_9251->yuri_5256() == yuri_1346::IS_GRASS_SIDE) &&
-            !yuri_6599()) {
-            t->yuri_4111(r2 * r, g2 * g, b2 * yuri_3775);
-            yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630, yuri_1222::yuri_5897());
-        }
-        changed = true;
-    }
-
-    if (noCulling || tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1, Facing::SOUTH)) {
-        if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeZ1 < 1 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1));
-            t->yuri_4111(r2, g2, b2);
-        } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
-            if (tileShapeZ1 < 1) yuri_3844 = centerBrightness;
-            t->yuri_4111(r2 * yuri_3844, g2 * yuri_3844, b2 * yuri_3844);
-        }
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 3);
-        yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630, yuri_9251);
-        if (fancy && (yuri_9251->yuri_5256() == yuri_1346::IS_GRASS_SIDE) &&
-            !yuri_6599()) {
-            t->yuri_4111(r2 * r, g2 * g, b2 * yuri_3775);
-            yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630, yuri_1222::yuri_5897());
+        Icon* tex = getTexture(tt, level, x, y, z, 2);
+        renderNorth(tt, x, y, z, tex);
+        if (fancy && (tex->getFlags() == Icon::IS_GRASS_SIDE) &&
+            !hasFixedTexture()) {
+            t->color(r2 * r, g2 * g, b2 * b);
+            renderNorth(tt, x, y, z, GrassTile::getSideTextureOverlay());
         }
         changed = true;
     }
 
-    if (noCulling || tt->yuri_9016(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630, Facing::WEST)) {
+    if (noCulling || tt->shouldRenderFace(level, x, y, z + 1, Facing::SOUTH)) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeX0 > 0 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630));
-            t->yuri_4111(r3, g3, b3);
+            t->tex2(tileShapeZ1 < 1 ? centerColor
+                                    : getLightColor(tt, level, x, y, z + 1));
+            t->color(r2, g2, b2);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630);
-            if (tileShapeX0 > 0) yuri_3844 = centerBrightness;
-            t->yuri_4111(r3 * yuri_3844, g3 * yuri_3844, b3 * yuri_3844);
+            float br = tt->getBrightness(level, x, y, z + 1);
+            if (tileShapeZ1 < 1) br = centerBrightness;
+            t->color(r2 * br, g2 * br, b2 * br);
         }
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 4);
-        yuri_8248(tt, yuri_9621, yuri_9625, yuri_9630, yuri_9251);
-        if (fancy && (yuri_9251->yuri_5256() == yuri_1346::IS_GRASS_SIDE) &&
-            !yuri_6599()) {
-            t->yuri_4111(r3 * r, g3 * g, b3 * yuri_3775);
-            yuri_8248(tt, yuri_9621, yuri_9625, yuri_9630, yuri_1222::yuri_5897());
+        Icon* tex = getTexture(tt, level, x, y, z, 3);
+        renderSouth(tt, x, y, z, tex);
+        if (fancy && (tex->getFlags() == Icon::IS_GRASS_SIDE) &&
+            !hasFixedTexture()) {
+            t->color(r2 * r, g2 * g, b2 * b);
+            renderSouth(tt, x, y, z, GrassTile::getSideTextureOverlay());
         }
         changed = true;
     }
 
-    if (noCulling || tt->yuri_9016(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630, Facing::EAST)) {
+    if (noCulling || tt->shouldRenderFace(level, x - 1, y, z, Facing::WEST)) {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeX1 < 1 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630));
-            t->yuri_4111(r3, g3, b3);
+            t->tex2(tileShapeX0 > 0 ? centerColor
+                                    : getLightColor(tt, level, x - 1, y, z));
+            t->color(r3, g3, b3);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630);
-            if (tileShapeX1 < 1) yuri_3844 = centerBrightness;
-            t->yuri_4111(r3 * yuri_3844, g3 * yuri_3844, b3 * yuri_3844);
+            float br = tt->getBrightness(level, x - 1, y, z);
+            if (tileShapeX0 > 0) br = centerBrightness;
+            t->color(r3 * br, g3 * br, b3 * br);
         }
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 5);
-        yuri_8178(tt, yuri_9621, yuri_9625, yuri_9630, yuri_9251);
-        if (fancy && (yuri_9251->yuri_5256() == yuri_1346::IS_GRASS_SIDE) &&
-            !yuri_6599()) {
-            t->yuri_4111(r3 * r, g3 * g, b3 * yuri_3775);
-            yuri_8178(tt, yuri_9621, yuri_9625, yuri_9630, yuri_1222::yuri_5897());
+        Icon* tex = getTexture(tt, level, x, y, z, 4);
+        renderWest(tt, x, y, z, tex);
+        if (fancy && (tex->getFlags() == Icon::IS_GRASS_SIDE) &&
+            !hasFixedTexture()) {
+            t->color(r3 * r, g3 * g, b3 * b);
+            renderWest(tt, x, y, z, GrassTile::getSideTextureOverlay());
+        }
+        changed = true;
+    }
+
+    if (noCulling || tt->shouldRenderFace(level, x + 1, y, z, Facing::EAST)) {
+        if (SharedConstants::TEXTURE_LIGHTING) {
+            t->tex2(tileShapeX1 < 1 ? centerColor
+                                    : getLightColor(tt, level, x + 1, y, z));
+            t->color(r3, g3, b3);
+        } else {
+            float br = tt->getBrightness(level, x + 1, y, z);
+            if (tileShapeX1 < 1) br = centerBrightness;
+            t->color(r3 * br, g3 * br, b3 * br);
+        }
+        Icon* tex = getTexture(tt, level, x, y, z, 5);
+        renderEast(tt, x, y, z, tex);
+        if (fancy && (tex->getFlags() == Icon::IS_GRASS_SIDE) &&
+            !hasFixedTexture()) {
+            t->color(r3 * r, g3 * g, b3 * b);
+            renderEast(tt, x, y, z, GrassTile::getSideTextureOverlay());
         }
         changed = true;
     }
@@ -6260,54 +6260,54 @@ bool yuri_3101::yuri_9202(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     return changed;
 }
 
-bool yuri_3101::yuri_9200(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool TileRenderer::tesselateBeaconInWorld(Tile* tt, int x, int y, int z) {
     float obsHeight = 3.0f / 16.0f;
 
-    yuri_8604(yuri_6007(yuri_3088::glass));
-    yuri_8855(0, 0, 0, 1, 1, 1);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    setFixedTexture(getTexture(Tile::glass));
+    setShape(0, 0, 0, 1, 1, 1);
+    tesselateBlockInWorld(tt, x, y, z);
 
     // yuri canon canon yuri canon yuri ship hand holding-yuri my girlfriend yuri yuri hand holding
     // i love girls.
     noCulling = true;
-    yuri_8604(yuri_6007(yuri_3088::obsidian));
-    yuri_8855(2.0f / 16.0f, 0.1f / 16.0f, 2.0f / 16.0f, 14.0f / 16.0f, obsHeight,
+    setFixedTexture(getTexture(Tile::obsidian));
+    setShape(2.0f / 16.0f, 0.1f / 16.0f, 2.0f / 16.0f, 14.0f / 16.0f, obsHeight,
              14.0f / 16.0f);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateBlockInWorld(tt, x, y, z);
 
-    yuri_8604(yuri_6007(yuri_3088::beacon));
-    yuri_8855(3.0f / 16.0f, obsHeight, 3.0f / 16.0f, 13.0f / 16.0f,
+    setFixedTexture(getTexture(Tile::beacon));
+    setShape(3.0f / 16.0f, obsHeight, 3.0f / 16.0f, 13.0f / 16.0f,
              14.0f / 16.0f, 13.0f / 16.0f);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    tesselateBlockInWorld(tt, x, y, z);
     noCulling = false;
 
-    yuri_4057();
+    clearFixedTexture();
 
     return true;
 }
 
-bool yuri_3101::yuri_9205(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateCactusInWorld(Tile* tt, int x, int y, int z) {
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
 
-    return yuri_9205(tt, yuri_9621, yuri_9625, yuri_9630, r, g, yuri_3775);
+    return tesselateCactusInWorld(tt, x, y, z, r, g, b);
 }
 
-bool yuri_3101::yuri_9205(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630,
-                                          float r, float g, float yuri_3775) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateCactusInWorld(Tile* tt, int x, int y, int z,
+                                          float r, float g, float b) {
+    Tesselator* t = Tesselator::getInstance();
 
     bool changed = false;
     float c10 = 0.5f;
@@ -6325,177 +6325,177 @@ bool yuri_3101::yuri_9205(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float g2 = c2 * g;
     float g3 = c3 * g;
 
-    float b10 = c10 * yuri_3775;
-    float b11 = c11 * yuri_3775;
-    float b2 = c2 * yuri_3775;
-    float b3 = c3 * yuri_3775;
+    float b10 = c10 * b;
+    float b11 = c11 * b;
+    float b2 = c2 * b;
+    float b3 = c3 * b;
 
     float faceOffset = 1 / 16.0f;
 
-    int centerColor = tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int centerColor = tt->getLightColor(level, x, y, z);
 
-    if (noCulling || tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630, 0)) {
-        t->yuri_9252(tileShapeY0 > 0 ? centerColor
-                                : tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630));
-        t->yuri_4111(r10, g10, b10);
-        yuri_8180(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0));
+    if (noCulling || tt->shouldRenderFace(level, x, y - 1, z, 0)) {
+        t->tex2(tileShapeY0 > 0 ? centerColor
+                                : tt->getLightColor(level, x, y - 1, z));
+        t->color(r10, g10, b10);
+        renderFaceDown(tt, x, y, z, getTexture(tt, level, x, y, z, 0));
     }
 
-    if (noCulling || tt->yuri_9016(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630, 1)) {
-        t->yuri_9252(tileShapeY1 < 1 ? centerColor
-                                : tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630));
-        t->yuri_4111(r11, g11, b11);
-        yuri_8181(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 1));
+    if (noCulling || tt->shouldRenderFace(level, x, y + 1, z, 1)) {
+        t->tex2(tileShapeY1 < 1 ? centerColor
+                                : tt->getLightColor(level, x, y + 1, z));
+        t->color(r11, g11, b11);
+        renderFaceUp(tt, x, y, z, getTexture(tt, level, x, y, z, 1));
     }
 
     // my girlfriend/hand holding
-    t->yuri_9252(centerColor);
-    t->yuri_4111(r2, g2, b2);
-    t->yuri_3650(0, 0, faceOffset);
-    yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 2));
-    t->yuri_3650(0, 0, -faceOffset);
+    t->tex2(centerColor);
+    t->color(r2, g2, b2);
+    t->addOffset(0, 0, faceOffset);
+    renderNorth(tt, x, y, z, getTexture(tt, level, x, y, z, 2));
+    t->addOffset(0, 0, -faceOffset);
 
-    t->yuri_3650(0, 0, -faceOffset);
-    yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 3));
-    t->yuri_3650(0, 0, faceOffset);
+    t->addOffset(0, 0, -faceOffset);
+    renderSouth(tt, x, y, z, getTexture(tt, level, x, y, z, 3));
+    t->addOffset(0, 0, faceOffset);
 
     // yuri/FUCKING KISS ALREADY
-    t->yuri_4111(r3, g3, b3);
-    t->yuri_3650(faceOffset, 0, 0);
-    yuri_8248(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 4));
-    t->yuri_3650(-faceOffset, 0, 0);
+    t->color(r3, g3, b3);
+    t->addOffset(faceOffset, 0, 0);
+    renderWest(tt, x, y, z, getTexture(tt, level, x, y, z, 4));
+    t->addOffset(-faceOffset, 0, 0);
 
-    t->yuri_3650(-faceOffset, 0, 0);
-    yuri_8178(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 5));
-    t->yuri_3650(faceOffset, 0, 0);
+    t->addOffset(-faceOffset, 0, 0);
+    renderEast(tt, x, y, z, getTexture(tt, level, x, y, z, 5));
+    t->addOffset(faceOffset, 0, 0);
 
     return true;
 }
 
-bool yuri_3101::yuri_9216(yuri_803* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool TileRenderer::tesselateFenceInWorld(FenceTile* tt, int x, int y, int z) {
     bool changed = false;
 
-    float yuri_3565 = 6 / 16.0f;
-    float yuri_3775 = 10 / 16.0f;
+    float a = 6 / 16.0f;
+    float b = 10 / 16.0f;
 
-    yuri_8855(yuri_3565, 0, yuri_3565, yuri_3775, 1, yuri_3775);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    setShape(a, 0, a, b, 1, b);
+    tesselateBlockInWorld(tt, x, y, z);
     changed = true;
 
-    bool yuri_9525 = false;
-    bool yuri_6666 = false;
+    bool vertical = false;
+    bool horizontal = false;
 
-    if (tt->yuri_4140(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630) ||
-        tt->yuri_4140(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630))
-        yuri_9525 = true;
-    if (tt->yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1) ||
-        tt->yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1))
-        yuri_6666 = true;
+    if (tt->connectsTo(level, x - 1, y, z) ||
+        tt->connectsTo(level, x + 1, y, z))
+        vertical = true;
+    if (tt->connectsTo(level, x, y, z - 1) ||
+        tt->connectsTo(level, x, y, z + 1))
+        horizontal = true;
 
-    bool yuri_7176 = tt->yuri_4140(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630);
-    bool r = tt->yuri_4140(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630);
-    bool yuri_9365 = tt->yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
-    bool d = tt->yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
+    bool l = tt->connectsTo(level, x - 1, y, z);
+    bool r = tt->connectsTo(level, x + 1, y, z);
+    bool u = tt->connectsTo(level, x, y, z - 1);
+    bool d = tt->connectsTo(level, x, y, z + 1);
 
-    if (!yuri_9525 && !yuri_6666) yuri_9525 = true;
+    if (!vertical && !horizontal) vertical = true;
 
-    yuri_3565 = 7 / 16.0f;
-    yuri_3775 = 9 / 16.0f;
+    a = 7 / 16.0f;
+    b = 9 / 16.0f;
     float h0 = 12 / 16.0f;
     float h1 = 15 / 16.0f;
 
-    float yuri_9622 = yuri_7176 ? 0 : yuri_3565;
-    float yuri_9623 = r ? 1 : yuri_3775;
-    float yuri_9631 = yuri_9365 ? 0 : yuri_3565;
-    float yuri_9632 = d ? 1 : yuri_3775;
-    if (yuri_9525) {
-        yuri_8855(yuri_9622, h0, yuri_3565, yuri_9623, h1, yuri_3775);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    float x0 = l ? 0 : a;
+    float x1 = r ? 1 : b;
+    float z0 = u ? 0 : a;
+    float z1 = d ? 1 : b;
+    if (vertical) {
+        setShape(x0, h0, a, x1, h1, b);
+        tesselateBlockInWorld(tt, x, y, z);
         changed = true;
     }
-    if (yuri_6666) {
-        yuri_8855(yuri_3565, h0, yuri_9631, yuri_3775, h1, yuri_9632);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    if (horizontal) {
+        setShape(a, h0, z0, b, h1, z1);
+        tesselateBlockInWorld(tt, x, y, z);
         changed = true;
     }
 
     h0 = 6 / 16.0f;
     h1 = 9 / 16.0f;
-    if (yuri_9525) {
-        yuri_8855(yuri_9622, h0, yuri_3565, yuri_9623, h1, yuri_3775);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    if (vertical) {
+        setShape(x0, h0, a, x1, h1, b);
+        tesselateBlockInWorld(tt, x, y, z);
         changed = true;
     }
-    if (yuri_6666) {
-        yuri_8855(yuri_3565, h0, yuri_9631, yuri_3775, h1, yuri_9632);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    if (horizontal) {
+        setShape(a, h0, z0, b, h1, z1);
+        tesselateBlockInWorld(tt, x, y, z);
         changed = true;
     }
 
-    tt->yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    tt->updateShape(level, x, y, z);
 
     return changed;
 }
 
-bool yuri_3101::yuri_9247(yuri_3358* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    bool yuri_9535 = tt->yuri_4140(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630);
-    bool e = tt->yuri_4140(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630);
-    bool n = tt->yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
-    bool s = tt->yuri_4140(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
+bool TileRenderer::tesselateWallInWorld(WallTile* tt, int x, int y, int z) {
+    bool w = tt->connectsTo(level, x - 1, y, z);
+    bool e = tt->connectsTo(level, x + 1, y, z);
+    bool n = tt->connectsTo(level, x, y, z - 1);
+    bool s = tt->connectsTo(level, x, y, z + 1);
 
-    bool yuri_9525 = (n && s && !yuri_9535 && !e);
-    bool yuri_6666 = (!n && !s && yuri_9535 && e);
-    bool emptyAbove = yuri_7194->yuri_6852(yuri_9621, yuri_9625 + 1, yuri_9630);
+    bool vertical = (n && s && !w && !e);
+    bool horizontal = (!n && !s && w && e);
+    bool emptyAbove = level->isEmptyTile(x, y + 1, z);
 
-    if ((!yuri_9525 && !yuri_6666) || !emptyAbove) {
+    if ((!vertical && !horizontal) || !emptyAbove) {
         // yuri lesbian
-        yuri_8855(.5f - yuri_3358::POST_WIDTH, 0, .5f - yuri_3358::POST_WIDTH,
-                 .5f + yuri_3358::POST_WIDTH, yuri_3358::POST_HEIGHT,
-                 .5f + yuri_3358::POST_WIDTH);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        setShape(.5f - WallTile::POST_WIDTH, 0, .5f - WallTile::POST_WIDTH,
+                 .5f + WallTile::POST_WIDTH, WallTile::POST_HEIGHT,
+                 .5f + WallTile::POST_WIDTH);
+        tesselateBlockInWorld(tt, x, y, z);
 
-        if (yuri_9535) {
-            yuri_8855(0, 0, .5f - yuri_3358::WALL_WIDTH,
-                     .5f - yuri_3358::POST_WIDTH, yuri_3358::WALL_HEIGHT,
-                     .5f + yuri_3358::WALL_WIDTH);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        if (w) {
+            setShape(0, 0, .5f - WallTile::WALL_WIDTH,
+                     .5f - WallTile::POST_WIDTH, WallTile::WALL_HEIGHT,
+                     .5f + WallTile::WALL_WIDTH);
+            tesselateBlockInWorld(tt, x, y, z);
         }
         if (e) {
-            yuri_8855(.5f + yuri_3358::POST_WIDTH, 0, .5f - yuri_3358::WALL_WIDTH,
-                     1, yuri_3358::WALL_HEIGHT, .5f + yuri_3358::WALL_WIDTH);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(.5f + WallTile::POST_WIDTH, 0, .5f - WallTile::WALL_WIDTH,
+                     1, WallTile::WALL_HEIGHT, .5f + WallTile::WALL_WIDTH);
+            tesselateBlockInWorld(tt, x, y, z);
         }
         if (n) {
-            yuri_8855(.5f - yuri_3358::WALL_WIDTH, 0, 0,
-                     .5f + yuri_3358::WALL_WIDTH, yuri_3358::WALL_HEIGHT,
-                     .5f - yuri_3358::POST_WIDTH);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(.5f - WallTile::WALL_WIDTH, 0, 0,
+                     .5f + WallTile::WALL_WIDTH, WallTile::WALL_HEIGHT,
+                     .5f - WallTile::POST_WIDTH);
+            tesselateBlockInWorld(tt, x, y, z);
         }
         if (s) {
-            yuri_8855(.5f - yuri_3358::WALL_WIDTH, 0, .5f + yuri_3358::POST_WIDTH,
-                     .5f + yuri_3358::WALL_WIDTH, yuri_3358::WALL_HEIGHT, 1);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(.5f - WallTile::WALL_WIDTH, 0, .5f + WallTile::POST_WIDTH,
+                     .5f + WallTile::WALL_WIDTH, WallTile::WALL_HEIGHT, 1);
+            tesselateBlockInWorld(tt, x, y, z);
         }
-    } else if (yuri_9525) {
+    } else if (vertical) {
         // my wife-i love yuri
-        yuri_8855(.5f - yuri_3358::WALL_WIDTH, 0, 0, .5f + yuri_3358::WALL_WIDTH,
-                 yuri_3358::WALL_HEIGHT, 1);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        setShape(.5f - WallTile::WALL_WIDTH, 0, 0, .5f + WallTile::WALL_WIDTH,
+                 WallTile::WALL_HEIGHT, 1);
+        tesselateBlockInWorld(tt, x, y, z);
     } else {
         // yuri-lesbian kiss canon
-        yuri_8855(0, 0, .5f - yuri_3358::WALL_WIDTH, 1, yuri_3358::WALL_HEIGHT,
-                 .5f + yuri_3358::WALL_WIDTH);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        setShape(0, 0, .5f - WallTile::WALL_WIDTH, 1, WallTile::WALL_HEIGHT,
+                 .5f + WallTile::WALL_WIDTH);
+        tesselateBlockInWorld(tt, x, y, z);
     }
 
-    tt->yuri_9461(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    tt->updateShape(level, x, y, z);
     return true;
 }
 
-bool yuri_3101::yuri_9214(yuri_686* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool TileRenderer::tesselateEggInWorld(EggTile* tt, int x, int y, int z) {
     bool changed = false;
 
-    int yuri_9626 = 0;
+    int y0 = 0;
     for (int i = 0; i < 8; i++) {
         int ww = 0;
         int hh = 1;
@@ -6519,27 +6519,27 @@ bool yuri_3101::yuri_9214(yuri_686* tt, int yuri_9621, int yuri_9625, int yuri_9
             hh = 2;
         }
         if (i == 7) ww = 3;
-        float yuri_9535 = ww / 16.0f;
-        float yy1 = 1 - (yuri_9626 / 16.0f);
-        float yy0 = 1 - ((yuri_9626 + hh) / 16.0f);
-        yuri_9626 += hh;
-        yuri_8855(0.5f - yuri_9535, yy0, 0.5f - yuri_9535, 0.5f + yuri_9535, yy1, 0.5f + yuri_9535);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        float w = ww / 16.0f;
+        float yy1 = 1 - (y0 / 16.0f);
+        float yy0 = 1 - ((y0 + hh) / 16.0f);
+        y0 += hh;
+        setShape(0.5f - w, yy0, 0.5f - w, 0.5f + w, yy1, 0.5f + w);
+        tesselateBlockInWorld(tt, x, y, z);
     }
     changed = true;
 
-    yuri_8855(0, 0, 0, 1, 1, 1);
+    setShape(0, 0, 0, 1, 1, 1);
 
     return changed;
 }
 
-bool yuri_3101::yuri_9215(yuri_802* tt, int yuri_9621, int yuri_9625,
-                                             int yuri_9630) {
+bool TileRenderer::tesselateFenceGateInWorld(FenceGateTile* tt, int x, int y,
+                                             int z) {
     bool changed = true;
 
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    bool yuri_6980 = yuri_802::yuri_6980(yuri_4295);
-    int yuri_4362 = yuri_614::yuri_5163(yuri_4295);
+    int data = level->getData(x, y, z);
+    bool isOpen = FenceGateTile::isOpen(data);
+    int direction = DirectionalTile::getDirection(data);
 
     float h00 = 6 / 16.0f;
     float h01 = 9 / 16.0f;
@@ -6548,12 +6548,12 @@ bool yuri_3101::yuri_9215(yuri_802* tt, int yuri_9621, int yuri_9625,
     float h20 = 5 / 16.0f;
     float h21 = 16 / 16.0f;
 
-    if (((yuri_4362 == Direction::NORTH || yuri_4362 == Direction::SOUTH) &&
-         yuri_7194->yuri_6030(yuri_9621 - 1, yuri_9625, yuri_9630) == yuri_3088::cobbleWall_Id &&
-         yuri_7194->yuri_6030(yuri_9621 + 1, yuri_9625, yuri_9630) == yuri_3088::cobbleWall_Id) ||
-        ((yuri_4362 == Direction::EAST || yuri_4362 == Direction::WEST) &&
-         yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 - 1) == yuri_3088::cobbleWall_Id &&
-         yuri_7194->yuri_6030(yuri_9621, yuri_9625, yuri_9630 + 1) == yuri_3088::cobbleWall_Id)) {
+    if (((direction == Direction::NORTH || direction == Direction::SOUTH) &&
+         level->getTile(x - 1, y, z) == Tile::cobbleWall_Id &&
+         level->getTile(x + 1, y, z) == Tile::cobbleWall_Id) ||
+        ((direction == Direction::EAST || direction == Direction::WEST) &&
+         level->getTile(x, y, z - 1) == Tile::cobbleWall_Id &&
+         level->getTile(x, y, z + 1) == Tile::cobbleWall_Id)) {
         h00 -= 3.0f / 16.0f;
         h01 -= 3.0f / 16.0f;
         h10 -= 3.0f / 16.0f;
@@ -6565,438 +6565,438 @@ bool yuri_3101::yuri_9215(yuri_802* tt, int yuri_9621, int yuri_9625,
     noCulling = true;
 
     // hand holding hand holding
-    if (yuri_4362 == Direction::EAST || yuri_4362 == Direction::WEST) {
+    if (direction == Direction::EAST || direction == Direction::WEST) {
         upFlip = FLIP_CW;
-        float yuri_9622 = 7 / 16.0f;
-        float yuri_9623 = 9 / 16.0f;
-        float yuri_9631 = 0 / 16.0f;
-        float yuri_9632 = 2 / 16.0f;
-        yuri_8855(yuri_9622, h20, yuri_9631, yuri_9623, h21, yuri_9632);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        float x0 = 7 / 16.0f;
+        float x1 = 9 / 16.0f;
+        float z0 = 0 / 16.0f;
+        float z1 = 2 / 16.0f;
+        setShape(x0, h20, z0, x1, h21, z1);
+        tesselateBlockInWorld(tt, x, y, z);
 
-        yuri_9631 = 14 / 16.0f;
-        yuri_9632 = 16 / 16.0f;
-        yuri_8855(yuri_9622, h20, yuri_9631, yuri_9623, h21, yuri_9632);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        z0 = 14 / 16.0f;
+        z1 = 16 / 16.0f;
+        setShape(x0, h20, z0, x1, h21, z1);
+        tesselateBlockInWorld(tt, x, y, z);
         upFlip = FLIP_NONE;
     } else {
-        float yuri_9622 = 0 / 16.0f;
-        float yuri_9623 = 2 / 16.0f;
-        float yuri_9631 = 7 / 16.0f;
-        float yuri_9632 = 9 / 16.0f;
-        yuri_8855(yuri_9622, h20, yuri_9631, yuri_9623, h21, yuri_9632);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        float x0 = 0 / 16.0f;
+        float x1 = 2 / 16.0f;
+        float z0 = 7 / 16.0f;
+        float z1 = 9 / 16.0f;
+        setShape(x0, h20, z0, x1, h21, z1);
+        tesselateBlockInWorld(tt, x, y, z);
 
-        yuri_9622 = 14 / 16.0f;
-        yuri_9623 = 16 / 16.0f;
-        yuri_8855(yuri_9622, h20, yuri_9631, yuri_9623, h21, yuri_9632);
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        x0 = 14 / 16.0f;
+        x1 = 16 / 16.0f;
+        setShape(x0, h20, z0, x1, h21, z1);
+        tesselateBlockInWorld(tt, x, y, z);
     }
-    if (yuri_6980) {
-        if (yuri_4362 == Direction::NORTH || yuri_4362 == Direction::SOUTH) {
+    if (isOpen) {
+        if (direction == Direction::NORTH || direction == Direction::SOUTH) {
             upFlip = FLIP_CW;
         }
-        if (yuri_4362 == Direction::EAST) {
+        if (direction == Direction::EAST) {
             const float z00 = 0 / 16.0f;
             const float z01 = 2 / 16.0f;
             const float z10 = 14 / 16.0f;
             const float z11 = 16 / 16.0f;
 
-            const float yuri_9622 = 9 / 16.0f;
-            const float yuri_9623 = 13 / 16.0f;
+            const float x0 = 9 / 16.0f;
+            const float x1 = 13 / 16.0f;
             const float x2 = 15 / 16.0f;
 
-            yuri_8855(yuri_9623, h00, z00, x2, h11, z01);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9623, h00, z10, x2, h11, z11);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x1, h00, z00, x2, h11, z01);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x1, h00, z10, x2, h11, z11);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            yuri_8855(yuri_9622, h00, z00, yuri_9623, h01, z01);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9622, h00, z10, yuri_9623, h01, z11);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x0, h00, z00, x1, h01, z01);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x0, h00, z10, x1, h01, z11);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            yuri_8855(yuri_9622, h10, z00, yuri_9623, h11, z01);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9622, h10, z10, yuri_9623, h11, z11);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-        } else if (yuri_4362 == Direction::WEST) {
+            setShape(x0, h10, z00, x1, h11, z01);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x0, h10, z10, x1, h11, z11);
+            tesselateBlockInWorld(tt, x, y, z);
+        } else if (direction == Direction::WEST) {
             const float z00 = 0 / 16.0f;
             const float z01 = 2 / 16.0f;
             const float z10 = 14 / 16.0f;
             const float z11 = 16 / 16.0f;
 
-            const float yuri_9622 = 1 / 16.0f;
-            const float yuri_9623 = 3 / 16.0f;
+            const float x0 = 1 / 16.0f;
+            const float x1 = 3 / 16.0f;
             const float x2 = 7 / 16.0f;
 
-            yuri_8855(yuri_9622, h00, z00, yuri_9623, h11, z01);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9622, h00, z10, yuri_9623, h11, z11);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x0, h00, z00, x1, h11, z01);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x0, h00, z10, x1, h11, z11);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            yuri_8855(yuri_9623, h00, z00, x2, h01, z01);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9623, h00, z10, x2, h01, z11);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x1, h00, z00, x2, h01, z01);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x1, h00, z10, x2, h01, z11);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            yuri_8855(yuri_9623, h10, z00, x2, h11, z01);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9623, h10, z10, x2, h11, z11);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-        } else if (yuri_4362 == Direction::SOUTH) {
+            setShape(x1, h10, z00, x2, h11, z01);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x1, h10, z10, x2, h11, z11);
+            tesselateBlockInWorld(tt, x, y, z);
+        } else if (direction == Direction::SOUTH) {
             const float x00 = 0 / 16.0f;
             const float x01 = 2 / 16.0f;
             const float x10 = 14 / 16.0f;
             const float x11 = 16 / 16.0f;
 
-            const float yuri_9631 = 9 / 16.0f;
-            const float yuri_9632 = 13 / 16.0f;
+            const float z0 = 9 / 16.0f;
+            const float z1 = 13 / 16.0f;
             const float z2 = 15 / 16.0f;
 
-            yuri_8855(x00, h00, yuri_9632, x01, h11, z2);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(x10, h00, yuri_9632, x11, h11, z2);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x00, h00, z1, x01, h11, z2);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x10, h00, z1, x11, h11, z2);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            yuri_8855(x00, h00, yuri_9631, x01, h01, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(x10, h00, yuri_9631, x11, h01, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x00, h00, z0, x01, h01, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x10, h00, z0, x11, h01, z1);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            yuri_8855(x00, h10, yuri_9631, x01, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(x10, h10, yuri_9631, x11, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-        } else if (yuri_4362 == Direction::NORTH) {
+            setShape(x00, h10, z0, x01, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x10, h10, z0, x11, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+        } else if (direction == Direction::NORTH) {
             const float x00 = 0 / 16.0f;
             const float x01 = 2 / 16.0f;
             const float x10 = 14 / 16.0f;
             const float x11 = 16 / 16.0f;
 
-            const float yuri_9631 = 1 / 16.0f;
-            const float yuri_9632 = 3 / 16.0f;
+            const float z0 = 1 / 16.0f;
+            const float z1 = 3 / 16.0f;
             const float z2 = 7 / 16.0f;
 
-            yuri_8855(x00, h00, yuri_9631, x01, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(x10, h00, yuri_9631, x11, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x00, h00, z0, x01, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x10, h00, z0, x11, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            yuri_8855(x00, h00, yuri_9632, x01, h01, z2);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(x10, h00, yuri_9632, x11, h01, z2);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x00, h00, z1, x01, h01, z2);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x10, h00, z1, x11, h01, z2);
+            tesselateBlockInWorld(tt, x, y, z);
 
-            yuri_8855(x00, h10, yuri_9632, x01, h11, z2);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(x10, h10, yuri_9632, x11, h11, z2);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            setShape(x00, h10, z1, x01, h11, z2);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x10, h10, z1, x11, h11, z2);
+            tesselateBlockInWorld(tt, x, y, z);
         }
     } else {
-        if (yuri_4362 == Direction::EAST || yuri_4362 == Direction::WEST) {
+        if (direction == Direction::EAST || direction == Direction::WEST) {
             upFlip = FLIP_CW;
-            float yuri_9622 = 7 / 16.0f;
-            float yuri_9623 = 9 / 16.0f;
-            float yuri_9631 = 6 / 16.0f;
-            float yuri_9632 = 8 / 16.0f;
-            yuri_8855(yuri_9622, h00, yuri_9631, yuri_9623, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_9631 = 8 / 16.0f;
-            yuri_9632 = 10 / 16.0f;
-            yuri_8855(yuri_9622, h00, yuri_9631, yuri_9623, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_9631 = 10 / 16.0f;
-            yuri_9632 = 14 / 16.0f;
-            yuri_8855(yuri_9622, h00, yuri_9631, yuri_9623, h01, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9622, h10, yuri_9631, yuri_9623, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_9631 = 2 / 16.0f;
-            yuri_9632 = 6 / 16.0f;
-            yuri_8855(yuri_9622, h00, yuri_9631, yuri_9623, h01, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9622, h10, yuri_9631, yuri_9623, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            float x0 = 7 / 16.0f;
+            float x1 = 9 / 16.0f;
+            float z0 = 6 / 16.0f;
+            float z1 = 8 / 16.0f;
+            setShape(x0, h00, z0, x1, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            z0 = 8 / 16.0f;
+            z1 = 10 / 16.0f;
+            setShape(x0, h00, z0, x1, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            z0 = 10 / 16.0f;
+            z1 = 14 / 16.0f;
+            setShape(x0, h00, z0, x1, h01, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x0, h10, z0, x1, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            z0 = 2 / 16.0f;
+            z1 = 6 / 16.0f;
+            setShape(x0, h00, z0, x1, h01, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x0, h10, z0, x1, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
         } else {
-            float yuri_9622 = 6 / 16.0f;
-            float yuri_9623 = 8 / 16.0f;
-            float yuri_9631 = 7 / 16.0f;
-            float yuri_9632 = 9 / 16.0f;
-            yuri_8855(yuri_9622, h00, yuri_9631, yuri_9623, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_9622 = 8 / 16.0f;
-            yuri_9623 = 10 / 16.0f;
-            yuri_8855(yuri_9622, h00, yuri_9631, yuri_9623, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_9622 = 10 / 16.0f;
-            yuri_9623 = 14 / 16.0f;
-            yuri_8855(yuri_9622, h00, yuri_9631, yuri_9623, h01, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9622, h10, yuri_9631, yuri_9623, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_9622 = 2 / 16.0f;
-            yuri_9623 = 6 / 16.0f;
-            yuri_8855(yuri_9622, h00, yuri_9631, yuri_9623, h01, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
-            yuri_8855(yuri_9622, h10, yuri_9631, yuri_9623, h11, yuri_9632);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            float x0 = 6 / 16.0f;
+            float x1 = 8 / 16.0f;
+            float z0 = 7 / 16.0f;
+            float z1 = 9 / 16.0f;
+            setShape(x0, h00, z0, x1, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            x0 = 8 / 16.0f;
+            x1 = 10 / 16.0f;
+            setShape(x0, h00, z0, x1, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            x0 = 10 / 16.0f;
+            x1 = 14 / 16.0f;
+            setShape(x0, h00, z0, x1, h01, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x0, h10, z0, x1, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            x0 = 2 / 16.0f;
+            x1 = 6 / 16.0f;
+            setShape(x0, h00, z0, x1, h01, z1);
+            tesselateBlockInWorld(tt, x, y, z);
+            setShape(x0, h10, z0, x1, h11, z1);
+            tesselateBlockInWorld(tt, x, y, z);
         }
     }
     noCulling = false;
     upFlip = FLIP_NONE;
 
-    yuri_8855(0, 0, 0, 1, 1, 1);
+    setShape(0, 0, 0, 1, 1, 1);
 
     return changed;
 }
 
-bool yuri_3101::yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateHopperInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
-    float yuri_3844;
+    float br;
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-        yuri_3844 = 1;
+        t->tex2(tt->getLightColor(level, x, y, z));
+        br = 1;
     } else {
-        yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        br = tt->getBrightness(level, x, y, z);
     }
-    int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+    int col = tt->getColor(level, x, y, z);
     float r = ((col >> 16) & 0xff) / 255.0f;
     float g = ((col >> 8) & 0xff) / 255.0f;
-    float yuri_3775 = ((col) & 0xff) / 255.0f;
+    float b = ((col) & 0xff) / 255.0f;
 
-    if (yuri_917::anaglyph3d) {
-        float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+    if (GameRenderer::anaglyph3d) {
+        float cr = (r * 30 + g * 59 + b * 11) / 100;
         float cg = (r * 30 + g * 70) / (100);
-        float cb = (r * 30 + yuri_3775 * 70) / (100);
+        float cb = (r * 30 + b * 70) / (100);
 
         r = cr;
         g = cg;
-        yuri_3775 = cb;
+        b = cb;
     }
-    t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+    t->color(br * r, br * g, br * b);
 
-    return yuri_9219(tt, yuri_9621, yuri_9625, yuri_9630, yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630), false);
+    return tesselateHopperInWorld(tt, x, y, z, level->getData(x, y, z), false);
 }
 
-bool yuri_3101::yuri_9219(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630,
-                                          int yuri_4295, bool yuri_8158) {
-    yuri_3032* t = yuri_3032::yuri_5405();
-    int yuri_4558 = yuri_1284::yuri_4907(yuri_4295);
+bool TileRenderer::tesselateHopperInWorld(Tile* tt, int x, int y, int z,
+                                          int data, bool render) {
+    Tesselator* t = Tesselator::getInstance();
+    int facing = HopperTile::getAttachedFace(data);
 
     // i love yuri yuri
     double bottom = 10.0 / 16.0;
-    yuri_8855(0, bottom, 0, 1, 1, 1);
+    setShape(0, bottom, 0, 1, 1, 1);
 
-    if (yuri_8158) {
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_8180(tt, 0, 0, 0, yuri_6007(tt, 0, yuri_4295));
-        t->yuri_4502();
+    if (render) {
+        t->begin();
+        t->normal(0, -1, 0);
+        renderFaceDown(tt, 0, 0, 0, getTexture(tt, 0, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 1, 0);
-        yuri_8181(tt, 0, 0, 0, yuri_6007(tt, 1, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 1, 0);
+        renderFaceUp(tt, 0, 0, 0, getTexture(tt, 1, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, -1);
-        yuri_8216(tt, 0, 0, 0, yuri_6007(tt, 2, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, -1);
+        renderNorth(tt, 0, 0, 0, getTexture(tt, 2, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, 1);
-        yuri_8235(tt, 0, 0, 0, yuri_6007(tt, 3, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, 1);
+        renderSouth(tt, 0, 0, 0, getTexture(tt, 3, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(-1, 0, 0);
-        yuri_8248(tt, 0, 0, 0, yuri_6007(tt, 4, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(-1, 0, 0);
+        renderWest(tt, 0, 0, 0, getTexture(tt, 4, data));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(1, 0, 0);
-        yuri_8178(tt, 0, 0, 0, yuri_6007(tt, 5, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(1, 0, 0);
+        renderEast(tt, 0, 0, 0, getTexture(tt, 5, data));
+        t->end();
     } else {
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        tesselateBlockInWorld(tt, x, y, z);
     }
 
-    if (!yuri_8158) {
-        float yuri_3844;
+    if (!render) {
+        float br;
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tt->yuri_5484(yuri_7194, yuri_9621, yuri_9625, yuri_9630));
-            yuri_3844 = 1;
+            t->tex2(tt->getLightColor(level, x, y, z));
+            br = 1;
         } else {
-            yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+            br = tt->getBrightness(level, x, y, z);
         }
-        int col = tt->yuri_5031(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        int col = tt->getColor(level, x, y, z);
         float r = ((col >> 16) & 0xff) / 255.0f;
         float g = ((col >> 8) & 0xff) / 255.0f;
-        float yuri_3775 = ((col) & 0xff) / 255.0f;
+        float b = ((col) & 0xff) / 255.0f;
 
-        if (yuri_917::anaglyph3d) {
-            float cr = (r * 30 + g * 59 + yuri_3775 * 11) / 100;
+        if (GameRenderer::anaglyph3d) {
+            float cr = (r * 30 + g * 59 + b * 11) / 100;
             float cg = (r * 30 + g * 70) / (100);
-            float cb = (r * 30 + yuri_3775 * 70) / (100);
+            float cb = (r * 30 + b * 70) / (100);
 
             r = cr;
             g = cg;
-            yuri_3775 = cb;
+            b = cb;
         }
-        t->yuri_4111(yuri_3844 * r, yuri_3844 * g, yuri_3844 * yuri_3775);
+        t->color(br * r, br * g, br * b);
     }
 
     // my wife yuri
-    yuri_1346* hopperTex = yuri_1284::yuri_6007(yuri_1284::TEXTURE_OUTSIDE);
-    yuri_1346* bottomTex = yuri_1284::yuri_6007(yuri_1284::TEXTURE_INSIDE);
+    Icon* hopperTex = HopperTile::getTexture(HopperTile::TEXTURE_OUTSIDE);
+    Icon* bottomTex = HopperTile::getTexture(HopperTile::TEXTURE_INSIDE);
     float cWidth = 2.0f / 16.0f;
 
-    if (yuri_8158) {
-        t->yuri_3801();
-        t->yuri_7585(1, 0, 0);
-        yuri_8178(tt, -1.0f + cWidth, 0, 0, hopperTex);
-        t->yuri_4502();
+    if (render) {
+        t->begin();
+        t->normal(1, 0, 0);
+        renderEast(tt, -1.0f + cWidth, 0, 0, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(-1, 0, 0);
-        yuri_8248(tt, 1.0f - cWidth, 0, 0, hopperTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(-1, 0, 0);
+        renderWest(tt, 1.0f - cWidth, 0, 0, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, 1);
-        yuri_8235(tt, 0, 0, -1.0f + cWidth, hopperTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, 1);
+        renderSouth(tt, 0, 0, -1.0f + cWidth, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, -1);
-        yuri_8216(tt, 0, 0, 1.0f - cWidth, hopperTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, -1);
+        renderNorth(tt, 0, 0, 1.0f - cWidth, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 1, 0);
-        yuri_8181(tt, 0, -1.0f + bottom, 0, bottomTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 1, 0);
+        renderFaceUp(tt, 0, -1.0f + bottom, 0, bottomTex);
+        t->end();
     } else {
-        yuri_8178(tt, yuri_9621 - 1.0f + cWidth, yuri_9625, yuri_9630, hopperTex);
-        yuri_8248(tt, yuri_9621 + 1.0f - cWidth, yuri_9625, yuri_9630, hopperTex);
-        yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630 - 1.0f + cWidth, hopperTex);
-        yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630 + 1.0f - cWidth, hopperTex);
-        yuri_8181(tt, yuri_9621, yuri_9625 - 1.0f + bottom, yuri_9630, bottomTex);
+        renderEast(tt, x - 1.0f + cWidth, y, z, hopperTex);
+        renderWest(tt, x + 1.0f - cWidth, y, z, hopperTex);
+        renderSouth(tt, x, y, z - 1.0f + cWidth, hopperTex);
+        renderNorth(tt, x, y, z + 1.0f - cWidth, hopperTex);
+        renderFaceUp(tt, x, y - 1.0f + bottom, z, bottomTex);
     }
 
     // yuri ship yuri
-    yuri_8604(hopperTex);
+    setFixedTexture(hopperTex);
     double inset = 4.0 / 16.0;
     double lboxy0 = 4.0 / 16.0;
     double lboxy1 = bottom;
-    yuri_8855(inset, lboxy0, inset, 1.0 - inset, lboxy1 - .002, 1.0 - inset);
+    setShape(inset, lboxy0, inset, 1.0 - inset, lboxy1 - .002, 1.0 - inset);
 
-    if (yuri_8158) {
-        t->yuri_3801();
-        t->yuri_7585(1, 0, 0);
-        yuri_8178(tt, 0, 0, 0, hopperTex);
-        t->yuri_4502();
+    if (render) {
+        t->begin();
+        t->normal(1, 0, 0);
+        renderEast(tt, 0, 0, 0, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(-1, 0, 0);
-        yuri_8248(tt, 0, 0, 0, hopperTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(-1, 0, 0);
+        renderWest(tt, 0, 0, 0, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, 1);
-        yuri_8235(tt, 0, 0, 0, hopperTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, 1);
+        renderSouth(tt, 0, 0, 0, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, -1);
-        yuri_8216(tt, 0, 0, 0, hopperTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, -1);
+        renderNorth(tt, 0, 0, 0, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 1, 0);
-        yuri_8181(tt, 0, 0, 0, hopperTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 1, 0);
+        renderFaceUp(tt, 0, 0, 0, hopperTex);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_8180(tt, 0, 0, 0, hopperTex);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, -1, 0);
+        renderFaceDown(tt, 0, 0, 0, hopperTex);
+        t->end();
     } else {
-        yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        tesselateBlockInWorld(tt, x, y, z);
     }
 
-    if (!yuri_8158) {
+    if (!render) {
         // yuri i love
         double pipe = 6.0 / 16.0;
         double pipeW = 4.0 / 16.0;
-        yuri_8604(hopperTex);
+        setFixedTexture(hopperTex);
 
         // yuri
-        if (yuri_4558 == Facing::DOWN) {
-            yuri_8855(pipe, 0, pipe, 1.0 - pipe, 4.0 / 16.0, 1.0 - pipe);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        if (facing == Facing::DOWN) {
+            setShape(pipe, 0, pipe, 1.0 - pipe, 4.0 / 16.0, 1.0 - pipe);
+            tesselateBlockInWorld(tt, x, y, z);
         }
         // yuri
-        if (yuri_4558 == Facing::NORTH) {
-            yuri_8855(pipe, lboxy0, 0, 1.0 - pipe, lboxy0 + pipeW, inset);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        if (facing == Facing::NORTH) {
+            setShape(pipe, lboxy0, 0, 1.0 - pipe, lboxy0 + pipeW, inset);
+            tesselateBlockInWorld(tt, x, y, z);
         }
         // hand holding
-        if (yuri_4558 == Facing::SOUTH) {
-            yuri_8855(pipe, lboxy0, 1.0 - inset, 1.0 - pipe, lboxy0 + pipeW,
+        if (facing == Facing::SOUTH) {
+            setShape(pipe, lboxy0, 1.0 - inset, 1.0 - pipe, lboxy0 + pipeW,
                      1.0);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            tesselateBlockInWorld(tt, x, y, z);
         }
         // yuri
-        if (yuri_4558 == Facing::WEST) {
-            yuri_8855(0, lboxy0, pipe, inset, lboxy0 + pipeW, 1.0 - pipe);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        if (facing == Facing::WEST) {
+            setShape(0, lboxy0, pipe, inset, lboxy0 + pipeW, 1.0 - pipe);
+            tesselateBlockInWorld(tt, x, y, z);
         }
         // scissors
-        if (yuri_4558 == Facing::EAST) {
-            yuri_8855(1.0 - inset, lboxy0, pipe, 1.0, lboxy0 + pipeW,
+        if (facing == Facing::EAST) {
+            setShape(1.0 - inset, lboxy0, pipe, 1.0, lboxy0 + pipeW,
                      1.0 - pipe);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+            tesselateBlockInWorld(tt, x, y, z);
         }
     }
 
-    yuri_4057();
+    clearFixedTexture();
 
     return true;
 }
 
-bool yuri_3101::yuri_9235(yuri_2896* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    tt->yuri_8478(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    yuri_8855(tt);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+bool TileRenderer::tesselateStairsInWorld(StairTile* tt, int x, int y, int z) {
+    tt->setBaseShape(level, x, y, z);
+    setShape(tt);
+    tesselateBlockInWorld(tt, x, y, z);
 
-    bool checkInnerPiece = tt->yuri_8890(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
-    yuri_8855(tt);
-    yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+    bool checkInnerPiece = tt->setStepShape(level, x, y, z);
+    setShape(tt);
+    tesselateBlockInWorld(tt, x, y, z);
 
     if (checkInnerPiece) {
-        if (tt->yuri_8673(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-            yuri_8855(tt);
-            yuri_9202(tt, yuri_9621, yuri_9625, yuri_9630);
+        if (tt->setInnerPieceShape(level, x, y, z)) {
+            setShape(tt);
+            tesselateBlockInWorld(tt, x, y, z);
         }
     }
     return true;
 }
 
-bool yuri_3101::yuri_9212(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_9630) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+bool TileRenderer::tesselateDoorInWorld(Tile* tt, int x, int y, int z) {
+    Tesselator* t = Tesselator::getInstance();
 
     // blushing girls cute girls ship blushing girls wlw girl love yuri yuri lesbian lesbian kiss snuggle,
     // FUCKING KISS ALREADY lesbian yuri my wife snuggle yuri girl love yuri yuri yuri
-    int yuri_4295 = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
-    if ((yuri_4295 & yuri_647::UPPER_BIT) != 0) {
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 - 1, yuri_9630) != tt->yuri_6674) {
+    int data = level->getData(x, y, z);
+    if ((data & DoorTile::UPPER_BIT) != 0) {
+        if (level->getTile(x, y - 1, z) != tt->id) {
             return false;
         }
     } else {
-        if (yuri_7194->yuri_6030(yuri_9621, yuri_9625 + 1, yuri_9630) != tt->yuri_6674) {
+        if (level->getTile(x, y + 1, z) != tt->id) {
             return false;
         }
     }
@@ -7011,131 +7011,131 @@ bool yuri_3101::yuri_9212(yuri_3088* tt, int yuri_9621, int yuri_9625, int yuri_
     float centerBrightness = 0.0f;
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        centerColor = yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        centerColor = getLightColor(tt, level, x, y, z);
     } else {
-        centerBrightness = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630);
+        centerBrightness = tt->getBrightness(level, x, y, z);
     }
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tileShapeY0 > 0 ? centerColor
-                                : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630));
-        t->yuri_4111(c10, c10, c10);
+        t->tex2(tileShapeY0 > 0 ? centerColor
+                                : getLightColor(tt, level, x, y - 1, z));
+        t->color(c10, c10, c10);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625 - 1, yuri_9630);
-        if (tileShapeY0 > 0) yuri_3844 = centerBrightness;
-        if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-        t->yuri_4111(c10 * yuri_3844, c10 * yuri_3844, c10 * yuri_3844);
+        float br = tt->getBrightness(level, x, y - 1, z);
+        if (tileShapeY0 > 0) br = centerBrightness;
+        if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+        t->color(c10 * br, c10 * br, c10 * br);
     }
-    yuri_8180(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 0));
+    renderFaceDown(tt, x, y, z, getTexture(tt, level, x, y, z, 0));
     changed = true;
 
     if (SharedConstants::TEXTURE_LIGHTING) {
-        t->yuri_9252(tileShapeY1 < 1 ? centerColor
-                                : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630));
-        t->yuri_4111(c11, c11, c11);
+        t->tex2(tileShapeY1 < 1 ? centerColor
+                                : getLightColor(tt, level, x, y + 1, z));
+        t->color(c11, c11, c11);
     } else {
-        float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625 + 1, yuri_9630);
-        if (tileShapeY1 < 1) yuri_3844 = centerBrightness;
-        if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-        t->yuri_4111(c11 * yuri_3844, c11 * yuri_3844, c11 * yuri_3844);
+        float br = tt->getBrightness(level, x, y + 1, z);
+        if (tileShapeY1 < 1) br = centerBrightness;
+        if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+        t->color(c11 * br, c11 * br, c11 * br);
     }
-    yuri_8181(tt, yuri_9621, yuri_9625, yuri_9630, yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 1));
+    renderFaceUp(tt, x, y, z, getTexture(tt, level, x, y, z, 1));
     changed = true;
 
     {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeZ0 > 0 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1));
-            t->yuri_4111(c2, c2, c2);
+            t->tex2(tileShapeZ0 > 0 ? centerColor
+                                    : getLightColor(tt, level, x, y, z - 1));
+            t->color(c2, c2, c2);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630 - 1);
-            if (tileShapeZ0 > 0) yuri_3844 = centerBrightness;
-            if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-            t->yuri_4111(c2 * yuri_3844, c2 * yuri_3844, c2 * yuri_3844);
+            float br = tt->getBrightness(level, x, y, z - 1);
+            if (tileShapeZ0 > 0) br = centerBrightness;
+            if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+            t->color(c2 * br, c2 * br, c2 * br);
         }
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 2);
-        yuri_8216(tt, yuri_9621, yuri_9625, yuri_9630, yuri_9251);
+        Icon* tex = getTexture(tt, level, x, y, z, 2);
+        renderNorth(tt, x, y, z, tex);
         changed = true;
         xFlipTexture = false;
     }
     {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeZ1 < 1 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1));
-            t->yuri_4111(c2, c2, c2);
+            t->tex2(tileShapeZ1 < 1 ? centerColor
+                                    : getLightColor(tt, level, x, y, z + 1));
+            t->color(c2, c2, c2);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621, yuri_9625, yuri_9630 + 1);
-            if (tileShapeZ1 < 1) yuri_3844 = centerBrightness;
-            if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-            t->yuri_4111(c2 * yuri_3844, c2 * yuri_3844, c2 * yuri_3844);
+            float br = tt->getBrightness(level, x, y, z + 1);
+            if (tileShapeZ1 < 1) br = centerBrightness;
+            if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+            t->color(c2 * br, c2 * br, c2 * br);
         }
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 3);
-        yuri_8235(tt, yuri_9621, yuri_9625, yuri_9630, yuri_9251);
+        Icon* tex = getTexture(tt, level, x, y, z, 3);
+        renderSouth(tt, x, y, z, tex);
         changed = true;
         xFlipTexture = false;
     }
     {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeX0 > 0 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630));
-            t->yuri_4111(c3, c3, c3);
+            t->tex2(tileShapeX0 > 0 ? centerColor
+                                    : getLightColor(tt, level, x - 1, y, z));
+            t->color(c3, c3, c3);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621 - 1, yuri_9625, yuri_9630);
-            if (tileShapeX0 > 0) yuri_3844 = centerBrightness;
-            if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-            t->yuri_4111(c3 * yuri_3844, c3 * yuri_3844, c3 * yuri_3844);
+            float br = tt->getBrightness(level, x - 1, y, z);
+            if (tileShapeX0 > 0) br = centerBrightness;
+            if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+            t->color(c3 * br, c3 * br, c3 * br);
         }
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 4);
-        yuri_8248(tt, yuri_9621, yuri_9625, yuri_9630, yuri_9251);
+        Icon* tex = getTexture(tt, level, x, y, z, 4);
+        renderWest(tt, x, y, z, tex);
         changed = true;
         xFlipTexture = false;
     }
     {
         if (SharedConstants::TEXTURE_LIGHTING) {
-            t->yuri_9252(tileShapeX1 < 1 ? centerColor
-                                    : yuri_5484(tt, yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630));
-            t->yuri_4111(c3, c3, c3);
+            t->tex2(tileShapeX1 < 1 ? centerColor
+                                    : getLightColor(tt, level, x + 1, y, z));
+            t->color(c3, c3, c3);
         } else {
-            float yuri_3844 = tt->yuri_4976(yuri_7194, yuri_9621 + 1, yuri_9625, yuri_9630);
-            if (tileShapeX1 < 1) yuri_3844 = centerBrightness;
-            if (yuri_3088::lightEmission[tt->yuri_6674] > 0) yuri_3844 = 1.0f;
-            t->yuri_4111(c3 * yuri_3844, c3 * yuri_3844, c3 * yuri_3844);
+            float br = tt->getBrightness(level, x + 1, y, z);
+            if (tileShapeX1 < 1) br = centerBrightness;
+            if (Tile::lightEmission[tt->id] > 0) br = 1.0f;
+            t->color(c3 * br, c3 * br, c3 * br);
         }
-        yuri_1346* yuri_9251 = yuri_6007(tt, yuri_7194, yuri_9621, yuri_9625, yuri_9630, 5);
-        yuri_8178(tt, yuri_9621, yuri_9625, yuri_9630, yuri_9251);
+        Icon* tex = getTexture(tt, level, x, y, z, 5);
+        renderEast(tt, x, y, z, tex);
         changed = true;
         xFlipTexture = false;
     }
     return changed;
 }
 
-void yuri_3101::yuri_8180(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630,
-                                  yuri_1346* yuri_9251) {
-    yuri_790(ChunkBlockEmit);
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::renderFaceDown(Tile* tt, double x, double y, double z,
+                                  Icon* tex) {
+    FRAME_PROFILE_SCOPE(ChunkBlockEmit);
+    Tesselator* t = Tesselator::getInstance();
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float u00 = yuri_9251->yuri_6071(tileShapeX0 * 16.0f, true);
-    float u11 = yuri_9251->yuri_6071(tileShapeX1 * 16.0f, true);
-    float v00 = yuri_9251->yuri_6096(tileShapeZ0 * 16.0f, true);
-    float v11 = yuri_9251->yuri_6096(tileShapeZ1 * 16.0f, true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float u00 = tex->getU(tileShapeX0 * 16.0f, true);
+    float u11 = tex->getU(tileShapeX1 * 16.0f, true);
+    float v00 = tex->getV(tileShapeZ0 * 16.0f, true);
+    float v11 = tex->getV(tileShapeZ1 * 16.0f, true);
 
     if (tileShapeX0 < 0 || tileShapeX1 > 1) {
-        u00 = yuri_9251->yuri_6072(true);
-        u11 = yuri_9251->yuri_6073(true);
+        u00 = tex->getU0(true);
+        u11 = tex->getU1(true);
     }
     if (tileShapeZ0 < 0 || tileShapeZ1 > 1) {
-        v00 = yuri_9251->yuri_6097(true);
-        v11 = yuri_9251->yuri_6098(true);
+        v00 = tex->getV0(true);
+        v11 = tex->getV1(true);
     }
 
     double u01 = u11, u10 = u00, v01 = v00, v10 = v11;
     if (downFlip == FLIP_CCW) {
-        u00 = yuri_9251->yuri_6071(tileShapeZ0 * 16.0f, true);
-        v00 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
+        u00 = tex->getU(tileShapeZ0 * 16.0f, true);
+        v00 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(tileShapeZ1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
+        u11 = tex->getU(tileShapeZ1 * 16.0f, true);
+        v11 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
                         true);
 
         u01 = u11;
@@ -7148,12 +7148,12 @@ void yuri_3101::yuri_8180(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v11 = v01;
     } else if (downFlip == FLIP_CW) {
         // yuri
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeX0 * 16.0f, true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
+        v00 = tex->getV(tileShapeX0 * 16.0f, true);
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
-        v11 = yuri_9251->yuri_6096(tileShapeX1 * 16.0f, true);
+        v11 = tex->getV(tileShapeX1 * 16.0f, true);
 
         // yuri
         u01 = u11;
@@ -7165,13 +7165,13 @@ void yuri_3101::yuri_8180(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v01 = v11;
         v10 = v00;
     } else if (downFlip == FLIP_180) {
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
+        v00 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
-        v11 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+        v11 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
 
         u01 = u11;
@@ -7180,69 +7180,69 @@ void yuri_3101::yuri_8180(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v10 = v11;
     }
 
-    double yuri_9622 = yuri_9621 + tileShapeX0;
-    double yuri_9623 = yuri_9621 + tileShapeX1;
-    double yuri_9626 = yuri_9625 + tileShapeY0;
-    double yuri_9631 = yuri_9630 + tileShapeZ0;
-    double yuri_9632 = yuri_9630 + tileShapeZ1;
+    double x0 = x + tileShapeX0;
+    double x1 = x + tileShapeX1;
+    double y0 = y + tileShapeY0;
+    double z0 = z + tileShapeZ0;
+    double z1 = z + tileShapeZ1;
 
     if (applyAmbienceOcclusion) {
-        t->yuri_4111(c1r, c1g, c1b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc1);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9632), (float)(u10),
+        t->color(c1r, c1g, c1b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc1);
+        t->vertexUV((float)(x0), (float)(y0), (float)(z1), (float)(u10),
                     (float)(v10));
-        t->yuri_4111(c2r, c2g, c2b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc2);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u00),
+        t->color(c2r, c2g, c2b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc2);
+        t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u00),
                     (float)(v00));
-        t->yuri_4111(c3r, c3g, c3b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc3);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9631), (float)(u01),
+        t->color(c3r, c3g, c3b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc3);
+        t->vertexUV((float)(x1), (float)(y0), (float)(z0), (float)(u01),
                     (float)(v01));
-        t->yuri_4111(c4r, c4g, c4b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc4);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9632), (float)(u11),
+        t->color(c4r, c4g, c4b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc4);
+        t->vertexUV((float)(x1), (float)(y0), (float)(z1), (float)(u11),
                     (float)(v11));
     } else {
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9632), (float)(u10),
+        t->vertexUV((float)(x0), (float)(y0), (float)(z1), (float)(u10),
                     (float)(v10));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u00),
+        t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u00),
                     (float)(v00));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9631), (float)(u01),
+        t->vertexUV((float)(x1), (float)(y0), (float)(z0), (float)(u01),
                     (float)(v01));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9632), (float)(u11),
+        t->vertexUV((float)(x1), (float)(y0), (float)(z1), (float)(u11),
                     (float)(v11));
     }
 }
 
-void yuri_3101::yuri_8181(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630,
-                                yuri_1346* yuri_9251) {
-    yuri_790(ChunkBlockEmit);
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::renderFaceUp(Tile* tt, double x, double y, double z,
+                                Icon* tex) {
+    FRAME_PROFILE_SCOPE(ChunkBlockEmit);
+    Tesselator* t = Tesselator::getInstance();
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    float u00 = yuri_9251->yuri_6071(tileShapeX0 * 16.0f, true);
-    float u11 = yuri_9251->yuri_6071(tileShapeX1 * 16.0f, true);
-    float v00 = yuri_9251->yuri_6096(tileShapeZ0 * 16.0f, true);
-    float v11 = yuri_9251->yuri_6096(tileShapeZ1 * 16.0f, true);
+    if (hasFixedTexture()) tex = fixedTexture;
+    float u00 = tex->getU(tileShapeX0 * 16.0f, true);
+    float u11 = tex->getU(tileShapeX1 * 16.0f, true);
+    float v00 = tex->getV(tileShapeZ0 * 16.0f, true);
+    float v11 = tex->getV(tileShapeZ1 * 16.0f, true);
 
     if (tileShapeX0 < 0 || tileShapeX1 > 1) {
-        u00 = yuri_9251->yuri_6072(true);
-        u11 = yuri_9251->yuri_6073(true);
+        u00 = tex->getU0(true);
+        u11 = tex->getU1(true);
     }
     if (tileShapeZ0 < 0 || tileShapeZ1 > 1) {
-        v00 = yuri_9251->yuri_6097(true);
-        v11 = yuri_9251->yuri_6098(true);
+        v00 = tex->getV0(true);
+        v11 = tex->getV1(true);
     }
 
     float u01 = u11, u10 = u00, v01 = v00, v10 = v11;
 
     if (upFlip == FLIP_CW) {
-        u00 = yuri_9251->yuri_6071(tileShapeZ0 * 16.0f, true);
-        v00 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
+        u00 = tex->getU(tileShapeZ0 * 16.0f, true);
+        v00 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(tileShapeZ1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
+        u11 = tex->getU(tileShapeZ1 * 16.0f, true);
+        v11 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
                         true);
 
         u01 = u11;
@@ -7255,12 +7255,12 @@ void yuri_3101::yuri_8181(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v11 = v01;
     } else if (upFlip == FLIP_CCW) {
         // my wife
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeX0 * 16.0f, true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
+        v00 = tex->getV(tileShapeX0 * 16.0f, true);
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
-        v11 = yuri_9251->yuri_6096(tileShapeX1 * 16.0f, true);
+        v11 = tex->getV(tileShapeX1 * 16.0f, true);
 
         // scissors
         u01 = u11;
@@ -7272,13 +7272,13 @@ void yuri_3101::yuri_8181(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v01 = v11;
         v10 = v00;
     } else if (upFlip == FLIP_180) {
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
+        v00 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
-        v11 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+        v11 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
 
         u01 = u11;
@@ -7287,76 +7287,76 @@ void yuri_3101::yuri_8181(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v10 = v11;
     }
 
-    double yuri_9622 = yuri_9621 + tileShapeX0;
-    double yuri_9623 = yuri_9621 + tileShapeX1;
-    double yuri_9627 = yuri_9625 + tileShapeY1;
-    double yuri_9631 = yuri_9630 + tileShapeZ0;
-    double yuri_9632 = yuri_9630 + tileShapeZ1;
+    double x0 = x + tileShapeX0;
+    double x1 = x + tileShapeX1;
+    double y1 = y + tileShapeY1;
+    double z0 = z + tileShapeZ0;
+    double z1 = z + tileShapeZ1;
 
     if (applyAmbienceOcclusion) {
-        t->yuri_4111(c1r, c1g, c1b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc1);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9632), (float)(u11),
+        t->color(c1r, c1g, c1b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc1);
+        t->vertexUV((float)(x1), (float)(y1), (float)(z1), (float)(u11),
                     (float)(v11));
-        t->yuri_4111(c2r, c2g, c2b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc2);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9631), (float)(u01),
+        t->color(c2r, c2g, c2b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc2);
+        t->vertexUV((float)(x1), (float)(y1), (float)(z0), (float)(u01),
                     (float)(v01));
-        t->yuri_4111(c3r, c3g, c3b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc3);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9631), (float)(u00),
+        t->color(c3r, c3g, c3b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc3);
+        t->vertexUV((float)(x0), (float)(y1), (float)(z0), (float)(u00),
                     (float)(v00));
-        t->yuri_4111(c4r, c4g, c4b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc4);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9632), (float)(u10),
+        t->color(c4r, c4g, c4b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc4);
+        t->vertexUV((float)(x0), (float)(y1), (float)(z1), (float)(u10),
                     (float)(v10));
     } else {
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9632), (float)(u11),
+        t->vertexUV((float)(x1), (float)(y1), (float)(z1), (float)(u11),
                     (float)(v11));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9631), (float)(u01),
+        t->vertexUV((float)(x1), (float)(y1), (float)(z0), (float)(u01),
                     (float)(v01));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9631), (float)(u00),
+        t->vertexUV((float)(x0), (float)(y1), (float)(z0), (float)(u00),
                     (float)(v00));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9632), (float)(u10),
+        t->vertexUV((float)(x0), (float)(y1), (float)(z1), (float)(u10),
                     (float)(v10));
     }
 }
 
-void yuri_3101::yuri_8216(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630,
-                               yuri_1346* yuri_9251) {
-    yuri_790(ChunkBlockEmit);
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::renderNorth(Tile* tt, double x, double y, double z,
+                               Icon* tex) {
+    FRAME_PROFILE_SCOPE(ChunkBlockEmit);
+    Tesselator* t = Tesselator::getInstance();
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    double u00 = yuri_9251->yuri_6071(tileShapeX0 * 16.0f, true);
-    double u11 = yuri_9251->yuri_6071(tileShapeX1 * 16.0f, true);
-    double v00 = yuri_9251->yuri_6096(
+    if (hasFixedTexture()) tex = fixedTexture;
+    double u00 = tex->getU(tileShapeX0 * 16.0f, true);
+    double u11 = tex->getU(tileShapeX1 * 16.0f, true);
+    double v00 = tex->getV(
         SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f, true);
-    double v11 = yuri_9251->yuri_6096(
+    double v11 = tex->getV(
         SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f, true);
     if (xFlipTexture) {
-        double yuri_9305 = u00;
+        double tmp = u00;
         u00 = u11;
-        u11 = yuri_9305;
+        u11 = tmp;
     }
 
     if (tileShapeX0 < 0 || tileShapeX1 > 1) {
-        u00 = yuri_9251->yuri_6072(true);
-        u11 = yuri_9251->yuri_6073(true);
+        u00 = tex->getU0(true);
+        u11 = tex->getU1(true);
     }
     if (tileShapeY0 < 0 || tileShapeY1 > 1) {
-        v00 = yuri_9251->yuri_6097(true);
-        v11 = yuri_9251->yuri_6098(true);
+        v00 = tex->getV0(true);
+        v11 = tex->getV1(true);
     }
 
     double u01 = u11, u10 = u00, v01 = v00, v10 = v11;
 
     if (northFlip == FLIP_CCW) {
-        u00 = yuri_9251->yuri_6071(tileShapeY0 * 16.0f, true);
-        v00 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
+        u00 = tex->getU(tileShapeY0 * 16.0f, true);
+        v00 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(tileShapeY1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
+        u11 = tex->getU(tileShapeY1 * 16.0f, true);
+        v11 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
                         true);
 
         u01 = u11;
@@ -7369,12 +7369,12 @@ void yuri_3101::yuri_8216(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v11 = v01;
     } else if (northFlip == FLIP_CW) {
         // wlw
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeX1 * 16.0f, true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
+        v00 = tex->getV(tileShapeX1 * 16.0f, true);
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
                         true);
-        v11 = yuri_9251->yuri_6096(tileShapeX0 * 16.0f, true);
+        v11 = tex->getV(tileShapeX0 * 16.0f, true);
 
         // yuri
         u01 = u11;
@@ -7386,12 +7386,12 @@ void yuri_3101::yuri_8216(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v01 = v11;
         v10 = v00;
     } else if (northFlip == FLIP_180) {
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeY1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(tileShapeY0 * 16.0f, true);
+        v00 = tex->getV(tileShapeY1 * 16.0f, true);
+        v11 = tex->getV(tileShapeY0 * 16.0f, true);
 
         u01 = u11;
         u10 = u00;
@@ -7399,76 +7399,76 @@ void yuri_3101::yuri_8216(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v10 = v11;
     }
 
-    double yuri_9622 = yuri_9621 + tileShapeX0;
-    double yuri_9623 = yuri_9621 + tileShapeX1;
-    double yuri_9626 = yuri_9625 + tileShapeY0;
-    double yuri_9627 = yuri_9625 + tileShapeY1;
-    double yuri_9631 = yuri_9630 + tileShapeZ0;
+    double x0 = x + tileShapeX0;
+    double x1 = x + tileShapeX1;
+    double y0 = y + tileShapeY0;
+    double y1 = y + tileShapeY1;
+    double z0 = z + tileShapeZ0;
 
     if (applyAmbienceOcclusion) {
-        t->yuri_4111(c1r, c1g, c1b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc1);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9631), (float)(u01),
+        t->color(c1r, c1g, c1b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc1);
+        t->vertexUV((float)(x0), (float)(y1), (float)(z0), (float)(u01),
                     (float)(v01));
-        t->yuri_4111(c2r, c2g, c2b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc2);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9631), (float)(u00),
+        t->color(c2r, c2g, c2b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc2);
+        t->vertexUV((float)(x1), (float)(y1), (float)(z0), (float)(u00),
                     (float)(v00));
-        t->yuri_4111(c3r, c3g, c3b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc3);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9631), (float)(u10),
+        t->color(c3r, c3g, c3b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc3);
+        t->vertexUV((float)(x1), (float)(y0), (float)(z0), (float)(u10),
                     (float)(v10));
-        t->yuri_4111(c4r, c4g, c4b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc4);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u11),
+        t->color(c4r, c4g, c4b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc4);
+        t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u11),
                     (float)(v11));
     } else {
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9631), (float)(u01),
+        t->vertexUV((float)(x0), (float)(y1), (float)(z0), (float)(u01),
                     (float)(v01));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9631), (float)(u00),
+        t->vertexUV((float)(x1), (float)(y1), (float)(z0), (float)(u00),
                     (float)(v00));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9631), (float)(u10),
+        t->vertexUV((float)(x1), (float)(y0), (float)(z0), (float)(u10),
                     (float)(v10));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u11),
+        t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u11),
                     (float)(v11));
     }
 }
 
-void yuri_3101::yuri_8235(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630,
-                               yuri_1346* yuri_9251) {
-    yuri_790(ChunkBlockEmit);
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::renderSouth(Tile* tt, double x, double y, double z,
+                               Icon* tex) {
+    FRAME_PROFILE_SCOPE(ChunkBlockEmit);
+    Tesselator* t = Tesselator::getInstance();
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    double u00 = yuri_9251->yuri_6071(tileShapeX0 * 16.0f, true);
-    double u11 = yuri_9251->yuri_6071(tileShapeX1 * 16.0f, true);
-    double v00 = yuri_9251->yuri_6096(
+    if (hasFixedTexture()) tex = fixedTexture;
+    double u00 = tex->getU(tileShapeX0 * 16.0f, true);
+    double u11 = tex->getU(tileShapeX1 * 16.0f, true);
+    double v00 = tex->getV(
         SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f, true);
-    double v11 = yuri_9251->yuri_6096(
+    double v11 = tex->getV(
         SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f, true);
     if (xFlipTexture) {
-        double yuri_9305 = u00;
+        double tmp = u00;
         u00 = u11;
-        u11 = yuri_9305;
+        u11 = tmp;
     }
 
     if (tileShapeX0 < 0 || tileShapeX1 > 1) {
-        u00 = yuri_9251->yuri_6072(true);
-        u11 = yuri_9251->yuri_6073(true);
+        u00 = tex->getU0(true);
+        u11 = tex->getU1(true);
     }
     if (tileShapeY0 < 0 || tileShapeY1 > 1) {
-        v00 = yuri_9251->yuri_6097(true);
-        v11 = yuri_9251->yuri_6098(true);
+        v00 = tex->getV0(true);
+        v11 = tex->getV1(true);
     }
 
     double u01 = u11, u10 = u00, v01 = v00, v10 = v11;
 
     if (southFlip == FLIP_CW) {
-        u00 = yuri_9251->yuri_6071(tileShapeY0 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
+        u00 = tex->getU(tileShapeY0 * 16.0f, true);
+        v11 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(tileShapeY1 * 16.0f, true);
-        v00 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
+        u11 = tex->getU(tileShapeY1 * 16.0f, true);
+        v00 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
                         true);
 
         u01 = u11;
@@ -7481,12 +7481,12 @@ void yuri_3101::yuri_8235(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v11 = v01;
     } else if (southFlip == FLIP_CCW) {
         // my girlfriend
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeX0 * 16.0f, true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
+        v00 = tex->getV(tileShapeX0 * 16.0f, true);
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
                         true);
-        v11 = yuri_9251->yuri_6096(tileShapeX1 * 16.0f, true);
+        v11 = tex->getV(tileShapeX1 * 16.0f, true);
 
         // yuri
         u01 = u11;
@@ -7498,12 +7498,12 @@ void yuri_3101::yuri_8235(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v01 = v11;
         v10 = v00;
     } else if (southFlip == FLIP_180) {
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeX0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeX1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeY1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(tileShapeY0 * 16.0f, true);
+        v00 = tex->getV(tileShapeY1 * 16.0f, true);
+        v11 = tex->getV(tileShapeY0 * 16.0f, true);
 
         u01 = u11;
         u10 = u00;
@@ -7511,76 +7511,76 @@ void yuri_3101::yuri_8235(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v10 = v11;
     }
 
-    double yuri_9622 = yuri_9621 + tileShapeX0;
-    double yuri_9623 = yuri_9621 + tileShapeX1;
-    double yuri_9626 = yuri_9625 + tileShapeY0;
-    double yuri_9627 = yuri_9625 + tileShapeY1;
-    double yuri_9632 = yuri_9630 + tileShapeZ1;
+    double x0 = x + tileShapeX0;
+    double x1 = x + tileShapeX1;
+    double y0 = y + tileShapeY0;
+    double y1 = y + tileShapeY1;
+    double z1 = z + tileShapeZ1;
 
     if (applyAmbienceOcclusion) {
-        t->yuri_4111(c1r, c1g, c1b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc1);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9632), (float)(u00),
+        t->color(c1r, c1g, c1b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc1);
+        t->vertexUV((float)(x0), (float)(y1), (float)(z1), (float)(u00),
                     (float)(v00));
-        t->yuri_4111(c2r, c2g, c2b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc2);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9632), (float)(u10),
+        t->color(c2r, c2g, c2b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc2);
+        t->vertexUV((float)(x0), (float)(y0), (float)(z1), (float)(u10),
                     (float)(v10));
-        t->yuri_4111(c3r, c3g, c3b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc3);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9632), (float)(u11),
+        t->color(c3r, c3g, c3b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc3);
+        t->vertexUV((float)(x1), (float)(y0), (float)(z1), (float)(u11),
                     (float)(v11));
-        t->yuri_4111(c4r, c4g, c4b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc4);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9632), (float)(u01),
+        t->color(c4r, c4g, c4b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc4);
+        t->vertexUV((float)(x1), (float)(y1), (float)(z1), (float)(u01),
                     (float)(v01));
     } else {
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9632), (float)(u00),
+        t->vertexUV((float)(x0), (float)(y1), (float)(z1), (float)(u00),
                     (float)(v00));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9632), (float)(u10),
+        t->vertexUV((float)(x0), (float)(y0), (float)(z1), (float)(u10),
                     (float)(v10));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9632), (float)(u11),
+        t->vertexUV((float)(x1), (float)(y0), (float)(z1), (float)(u11),
                     (float)(v11));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9632), (float)(u01),
+        t->vertexUV((float)(x1), (float)(y1), (float)(z1), (float)(u01),
                     (float)(v01));
     }
 }
 
-void yuri_3101::yuri_8248(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630,
-                              yuri_1346* yuri_9251) {
-    yuri_790(ChunkBlockEmit);
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::renderWest(Tile* tt, double x, double y, double z,
+                              Icon* tex) {
+    FRAME_PROFILE_SCOPE(ChunkBlockEmit);
+    Tesselator* t = Tesselator::getInstance();
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    double u00 = yuri_9251->yuri_6071(tileShapeZ0 * 16.0f, true);
-    double u11 = yuri_9251->yuri_6071(tileShapeZ1 * 16.0f, true);
-    double v00 = yuri_9251->yuri_6096(
+    if (hasFixedTexture()) tex = fixedTexture;
+    double u00 = tex->getU(tileShapeZ0 * 16.0f, true);
+    double u11 = tex->getU(tileShapeZ1 * 16.0f, true);
+    double v00 = tex->getV(
         SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f, true);
-    double v11 = yuri_9251->yuri_6096(
+    double v11 = tex->getV(
         SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f, true);
     if (xFlipTexture) {
-        double yuri_9305 = u00;
+        double tmp = u00;
         u00 = u11;
-        u11 = yuri_9305;
+        u11 = tmp;
     }
 
     if (tileShapeZ0 < 0 || tileShapeZ1 > 1) {
-        u00 = yuri_9251->yuri_6072(true);
-        u11 = yuri_9251->yuri_6073(true);
+        u00 = tex->getU0(true);
+        u11 = tex->getU1(true);
     }
     if (tileShapeY0 < 0 || tileShapeY1 > 1) {
-        v00 = yuri_9251->yuri_6097(true);
-        v11 = yuri_9251->yuri_6098(true);
+        v00 = tex->getV0(true);
+        v11 = tex->getV1(true);
     }
 
     double u01 = u11, u10 = u00, v01 = v00, v10 = v11;
 
     if (westFlip == FLIP_CW) {
-        u00 = yuri_9251->yuri_6071(tileShapeY0 * 16.0f, true);
-        v00 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+        u00 = tex->getU(tileShapeY0 * 16.0f, true);
+        v00 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(tileShapeY1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
+        u11 = tex->getU(tileShapeY1 * 16.0f, true);
+        v11 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
 
         u01 = u11;
@@ -7593,12 +7593,12 @@ void yuri_3101::yuri_8248(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v11 = v01;
     } else if (westFlip == FLIP_CCW) {
         // wlw
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeZ0 * 16.0f, true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
+        v00 = tex->getV(tileShapeZ0 * 16.0f, true);
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
                         true);
-        v11 = yuri_9251->yuri_6096(tileShapeZ1 * 16.0f, true);
+        v11 = tex->getV(tileShapeZ1 * 16.0f, true);
 
         // lesbian
         u01 = u11;
@@ -7610,12 +7610,12 @@ void yuri_3101::yuri_8248(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v01 = v11;
         v10 = v00;
     } else if (westFlip == FLIP_180) {
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeY1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(tileShapeY0 * 16.0f, true);
+        v00 = tex->getV(tileShapeY1 * 16.0f, true);
+        v11 = tex->getV(tileShapeY0 * 16.0f, true);
 
         u01 = u11;
         u10 = u00;
@@ -7623,76 +7623,76 @@ void yuri_3101::yuri_8248(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v10 = v11;
     }
 
-    double yuri_9622 = yuri_9621 + tileShapeX0;
-    double yuri_9626 = yuri_9625 + tileShapeY0;
-    double yuri_9627 = yuri_9625 + tileShapeY1;
-    double yuri_9631 = yuri_9630 + tileShapeZ0;
-    double yuri_9632 = yuri_9630 + tileShapeZ1;
+    double x0 = x + tileShapeX0;
+    double y0 = y + tileShapeY0;
+    double y1 = y + tileShapeY1;
+    double z0 = z + tileShapeZ0;
+    double z1 = z + tileShapeZ1;
 
     if (applyAmbienceOcclusion) {
-        t->yuri_4111(c1r, c1g, c1b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc1);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9632), (float)(u01),
+        t->color(c1r, c1g, c1b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc1);
+        t->vertexUV((float)(x0), (float)(y1), (float)(z1), (float)(u01),
                     (float)(v01));
-        t->yuri_4111(c2r, c2g, c2b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc2);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9631), (float)(u00),
+        t->color(c2r, c2g, c2b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc2);
+        t->vertexUV((float)(x0), (float)(y1), (float)(z0), (float)(u00),
                     (float)(v00));
-        t->yuri_4111(c3r, c3g, c3b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc3);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u10),
+        t->color(c3r, c3g, c3b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc3);
+        t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u10),
                     (float)(v10));
-        t->yuri_4111(c4r, c4g, c4b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc4);
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9632), (float)(u11),
+        t->color(c4r, c4g, c4b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc4);
+        t->vertexUV((float)(x0), (float)(y0), (float)(z1), (float)(u11),
                     (float)(v11));
     } else {
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9632), (float)(u01),
+        t->vertexUV((float)(x0), (float)(y1), (float)(z1), (float)(u01),
                     (float)(v01));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9627), (float)(yuri_9631), (float)(u00),
+        t->vertexUV((float)(x0), (float)(y1), (float)(z0), (float)(u00),
                     (float)(v00));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9631), (float)(u10),
+        t->vertexUV((float)(x0), (float)(y0), (float)(z0), (float)(u10),
                     (float)(v10));
-        t->yuri_9524((float)(yuri_9622), (float)(yuri_9626), (float)(yuri_9632), (float)(u11),
+        t->vertexUV((float)(x0), (float)(y0), (float)(z1), (float)(u11),
                     (float)(v11));
     }
 }
 
-void yuri_3101::yuri_8178(yuri_3088* tt, double yuri_9621, double yuri_9625, double yuri_9630,
-                              yuri_1346* yuri_9251) {
-    yuri_790(ChunkBlockEmit);
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::renderEast(Tile* tt, double x, double y, double z,
+                              Icon* tex) {
+    FRAME_PROFILE_SCOPE(ChunkBlockEmit);
+    Tesselator* t = Tesselator::getInstance();
 
-    if (yuri_6599()) yuri_9251 = fixedTexture;
-    double u00 = yuri_9251->yuri_6071(tileShapeZ0 * 16.0f, true);
-    double u11 = yuri_9251->yuri_6071(tileShapeZ1 * 16.0f, true);
-    double v00 = yuri_9251->yuri_6096(
+    if (hasFixedTexture()) tex = fixedTexture;
+    double u00 = tex->getU(tileShapeZ0 * 16.0f, true);
+    double u11 = tex->getU(tileShapeZ1 * 16.0f, true);
+    double v00 = tex->getV(
         SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f, true);
-    double v11 = yuri_9251->yuri_6096(
+    double v11 = tex->getV(
         SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f, true);
     if (xFlipTexture) {
-        double yuri_9305 = u00;
+        double tmp = u00;
         u00 = u11;
-        u11 = yuri_9305;
+        u11 = tmp;
     }
 
     if (tileShapeZ0 < 0 || tileShapeZ1 > 1) {
-        u00 = yuri_9251->yuri_6072(true);
-        u11 = yuri_9251->yuri_6073(true);
+        u00 = tex->getU0(true);
+        u11 = tex->getU1(true);
     }
     if (tileShapeY0 < 0 || tileShapeY1 > 1) {
-        v00 = yuri_9251->yuri_6097(true);
-        v11 = yuri_9251->yuri_6098(true);
+        v00 = tex->getV0(true);
+        v11 = tex->getV1(true);
     }
 
     double u01 = u11, u10 = u00, v01 = v00, v10 = v11;
 
     if (eastFlip == FLIP_CCW) {
-        u00 = yuri_9251->yuri_6071(tileShapeY0 * 16.0f, true);
-        v00 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
+        u00 = tex->getU(tileShapeY0 * 16.0f, true);
+        v00 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(tileShapeY1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+        u11 = tex->getU(tileShapeY1 * 16.0f, true);
+        v11 = tex->getV(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
 
         u01 = u11;
@@ -7705,12 +7705,12 @@ void yuri_3101::yuri_8178(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v11 = v01;
     } else if (eastFlip == FLIP_CW) {
         // i love amy is the best
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeZ1 * 16.0f, true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
+        v00 = tex->getV(tileShapeZ1 * 16.0f, true);
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeY0 * 16.0f,
                         true);
-        v11 = yuri_9251->yuri_6096(tileShapeZ0 * 16.0f, true);
+        v11 = tex->getV(tileShapeZ0 * 16.0f, true);
 
         // i love
         u01 = u11;
@@ -7722,12 +7722,12 @@ void yuri_3101::yuri_8178(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v01 = v11;
         v10 = v00;
     } else if (eastFlip == FLIP_180) {
-        u00 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
+        u00 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ0 * 16.0f,
                         true);
-        u11 = yuri_9251->yuri_6071(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
+        u11 = tex->getU(SharedConstants::WORLD_RESOLUTION - tileShapeZ1 * 16.0f,
                         true);
-        v00 = yuri_9251->yuri_6096(tileShapeY1 * 16.0f, true);
-        v11 = yuri_9251->yuri_6096(tileShapeY0 * 16.0f, true);
+        v00 = tex->getV(tileShapeY1 * 16.0f, true);
+        v11 = tex->getV(tileShapeY0 * 16.0f, true);
 
         u01 = u11;
         u10 = u00;
@@ -7735,336 +7735,336 @@ void yuri_3101::yuri_8178(yuri_3088* tt, double yuri_9621, double yuri_9625, dou
         v10 = v11;
     }
 
-    double yuri_9623 = yuri_9621 + tileShapeX1;
-    double yuri_9626 = yuri_9625 + tileShapeY0;
-    double yuri_9627 = yuri_9625 + tileShapeY1;
-    double yuri_9631 = yuri_9630 + tileShapeZ0;
-    double yuri_9632 = yuri_9630 + tileShapeZ1;
+    double x1 = x + tileShapeX1;
+    double y0 = y + tileShapeY0;
+    double y1 = y + tileShapeY1;
+    double z0 = z + tileShapeZ0;
+    double z1 = z + tileShapeZ1;
 
     if (applyAmbienceOcclusion) {
-        t->yuri_4111(c1r, c1g, c1b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc1);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9632), (float)(u10),
+        t->color(c1r, c1g, c1b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc1);
+        t->vertexUV((float)(x1), (float)(y0), (float)(z1), (float)(u10),
                     (float)(v10));
-        t->yuri_4111(c2r, c2g, c2b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc2);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9631), (float)(u11),
+        t->color(c2r, c2g, c2b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc2);
+        t->vertexUV((float)(x1), (float)(y0), (float)(z0), (float)(u11),
                     (float)(v11));
-        t->yuri_4111(c3r, c3g, c3b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc3);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9631), (float)(u01),
+        t->color(c3r, c3g, c3b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc3);
+        t->vertexUV((float)(x1), (float)(y1), (float)(z0), (float)(u01),
                     (float)(v01));
-        t->yuri_4111(c4r, c4g, c4b);
-        if (SharedConstants::TEXTURE_LIGHTING) t->yuri_9252(tc4);
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9632), (float)(u00),
+        t->color(c4r, c4g, c4b);
+        if (SharedConstants::TEXTURE_LIGHTING) t->tex2(tc4);
+        t->vertexUV((float)(x1), (float)(y1), (float)(z1), (float)(u00),
                     (float)(v00));
     } else {
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9632), (float)(u10),
+        t->vertexUV((float)(x1), (float)(y0), (float)(z1), (float)(u10),
                     (float)(v10));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9626), (float)(yuri_9631), (float)(u11),
+        t->vertexUV((float)(x1), (float)(y0), (float)(z0), (float)(u11),
                     (float)(v11));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9631), (float)(u01),
+        t->vertexUV((float)(x1), (float)(y1), (float)(z0), (float)(u01),
                     (float)(v01));
-        t->yuri_9524((float)(yuri_9623), (float)(yuri_9627), (float)(yuri_9632), (float)(u00),
+        t->vertexUV((float)(x1), (float)(y1), (float)(z1), (float)(u00),
                     (float)(v00));
     }
 }
 
-void yuri_3101::yuri_8172(yuri_3088* tile, float alpha) {
-    int shape = tile->yuri_5806();
-    yuri_3032* t = yuri_3032::yuri_5405();
+void TileRenderer::renderCube(Tile* tile, float alpha) {
+    int shape = tile->getRenderShape();
+    Tesselator* t = Tesselator::getInstance();
 
-    if (shape == yuri_3088::SHAPE_BLOCK) {
-        tile->yuri_9402();
-        yuri_6377(-0.5f, -0.5f, -0.5f);
+    if (shape == Tile::SHAPE_BLOCK) {
+        tile->updateDefaultShape();
+        glTranslatef(-0.5f, -0.5f, -0.5f);
         float c10 = 0.5f;
         float c11 = 1;
         float c2 = 0.8f;
         float c3 = 0.6f;
 
-        t->yuri_3801();
-        t->yuri_4111(c11, c11, c11, alpha);
-        yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0));
-        t->yuri_4111(c10, c10, c10, alpha);
-        yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1));
-        t->yuri_4111(c2, c2, c2, alpha);
-        yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2));
-        yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3));
-        t->yuri_4111(c3, c3, c3, alpha);
-        yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4));
-        yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5));
+        t->begin();
+        t->color(c11, c11, c11, alpha);
+        renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0));
+        t->color(c10, c10, c10, alpha);
+        renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1));
+        t->color(c2, c2, c2, alpha);
+        renderNorth(tile, 0, 0, 0, getTexture(tile, 2));
+        renderSouth(tile, 0, 0, 0, getTexture(tile, 3));
+        t->color(c3, c3, c3, alpha);
+        renderWest(tile, 0, 0, 0, getTexture(tile, 4));
+        renderEast(tile, 0, 0, 0, getTexture(tile, 5));
 
-        t->yuri_4502();
+        t->end();
 
-        yuri_6377(0.5f, 0.5f, 0.5f);
+        glTranslatef(0.5f, 0.5f, 0.5f);
     }
 }
 
-void yuri_3101::yuri_8241(yuri_3088* tile, int yuri_4295, float brightness,
+void TileRenderer::renderTile(Tile* tile, int data, float brightness,
                               float fAlpha, bool useCompiled) {
-    yuri_3032* t = yuri_3032::yuri_5405();
+    Tesselator* t = Tesselator::getInstance();
 
-    bool isGrass = tile->yuri_6674 == yuri_3088::grass_Id;
+    bool isGrass = tile->id == Tile::grass_Id;
 
-    if (tile == yuri_3088::dispenser || tile == yuri_3088::furnace ||
-        tile == yuri_3088::dropper) {
-        yuri_4295 = 3;
+    if (tile == Tile::dispenser || tile == Tile::furnace ||
+        tile == Tile::dropper) {
+        data = 3;
     }
 
-    if (yuri_8524) {
-        int col = tile->yuri_5031(yuri_4295);
+    if (setColor) {
+        int col = tile->getColor(data);
         if (isGrass) {
             col = 0xffffff;
         }
         float red = ((col >> 16) & 0xff) / 255.0f;
         float g = ((col >> 8) & 0xff) / 255.0f;
-        float yuri_3775 = ((col) & 0xff) / 255.0f;
+        float b = ((col) & 0xff) / 255.0f;
 
-        yuri_6264(red * brightness, g * brightness, yuri_3775 * brightness, fAlpha);
+        glColor4f(red * brightness, g * brightness, b * brightness, fAlpha);
     }
 
-    int shape = tile->yuri_5806();
-    yuri_8855(tile);
+    int shape = tile->getRenderShape();
+    setShape(tile);
 
-    t->yuri_8729(yuri_3088::mipmapEnable[tile->yuri_6674]);  // i love yuri
+    t->setMipmapEnable(Tile::mipmapEnable[tile->id]);  // i love yuri
 
-    if (shape == yuri_3088::SHAPE_BLOCK || shape == yuri_3088::SHAPE_TREE ||
-        shape == yuri_3088::SHAPE_QUARTZ || shape == yuri_3088::SHAPE_PISTON_BASE ||
-        shape == yuri_3088::SHAPE_PORTAL_FRAME) {
-        if (shape == yuri_3088::SHAPE_PISTON_BASE) {
-            yuri_4295 = Facing::UP;
+    if (shape == Tile::SHAPE_BLOCK || shape == Tile::SHAPE_TREE ||
+        shape == Tile::SHAPE_QUARTZ || shape == Tile::SHAPE_PISTON_BASE ||
+        shape == Tile::SHAPE_PORTAL_FRAME) {
+        if (shape == Tile::SHAPE_PISTON_BASE) {
+            data = Facing::UP;
         }
 
-        tile->yuri_9402();
-        yuri_8855(tile);
-        yuri_6349(90, 0, 1, 0);
+        tile->updateDefaultShape();
+        setShape(tile);
+        glRotatef(90, 0, 1, 0);
 
-        yuri_6377(-0.5f, -0.5f, -0.5f);
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0, yuri_4295));
-        t->yuri_4502();
+        glTranslatef(-0.5f, -0.5f, -0.5f);
+        t->begin();
+        t->normal(0, -1, 0);
+        renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0, data));
+        t->end();
 
-        if (isGrass && yuri_8524) {
-            int col = tile->yuri_5031(yuri_4295);
+        if (isGrass && setColor) {
+            int col = tile->getColor(data);
             float red = ((col >> 16) & 0xff) / 255.0f;
             float g = ((col >> 8) & 0xff) / 255.0f;
-            float yuri_3775 = ((col) & 0xff) / 255.0f;
+            float b = ((col) & 0xff) / 255.0f;
 
-            yuri_6264(red * brightness, g * brightness, yuri_3775 * brightness, fAlpha);
+            glColor4f(red * brightness, g * brightness, b * brightness, fAlpha);
         }
 
-        t->yuri_3801();
-        t->yuri_7585(0, 1, 0);
-        yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 1, 0);
+        renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1, data));
+        t->end();
 
-        if (isGrass && yuri_8524) {
-            yuri_6264(brightness, brightness, brightness, fAlpha);
+        if (isGrass && setColor) {
+            glColor4f(brightness, brightness, brightness, fAlpha);
         }
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, -1);
-        yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, -1);
+        renderNorth(tile, 0, 0, 0, getTexture(tile, 2, data));
+        t->end();
 
-        if (isGrass && yuri_8524) {
-            int col = tile->yuri_5031(yuri_4295);
+        if (isGrass && setColor) {
+            int col = tile->getColor(data);
             float red = ((col >> 16) & 0xff) / 255.0f;
             float g = ((col >> 8) & 0xff) / 255.0f;
-            float yuri_3775 = ((col) & 0xff) / 255.0f;
+            float b = ((col) & 0xff) / 255.0f;
 
-            yuri_6264(red * brightness, g * brightness, yuri_3775 * brightness, fAlpha);
+            glColor4f(red * brightness, g * brightness, b * brightness, fAlpha);
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, -1);
-            yuri_8216(tile, 0, 0, 0, yuri_1222::yuri_5897());
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, -1);
+            renderNorth(tile, 0, 0, 0, GrassTile::getSideTextureOverlay());
+            t->end();
 
-            yuri_6264(brightness, brightness, brightness, fAlpha);
+            glColor4f(brightness, brightness, brightness, fAlpha);
         }
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, 1);
-        yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, 1);
+        renderSouth(tile, 0, 0, 0, getTexture(tile, 3, data));
+        t->end();
 
-        if (isGrass && yuri_8524) {
-            int col = tile->yuri_5031(yuri_4295);
+        if (isGrass && setColor) {
+            int col = tile->getColor(data);
             float red = ((col >> 16) & 0xff) / 255.0f;
             float g = ((col >> 8) & 0xff) / 255.0f;
-            float yuri_3775 = ((col) & 0xff) / 255.0f;
+            float b = ((col) & 0xff) / 255.0f;
 
-            yuri_6264(red * brightness, g * brightness, yuri_3775 * brightness, fAlpha);
+            glColor4f(red * brightness, g * brightness, b * brightness, fAlpha);
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, 1);
-            yuri_8235(tile, 0, 0, 0, yuri_1222::yuri_5897());
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, 1);
+            renderSouth(tile, 0, 0, 0, GrassTile::getSideTextureOverlay());
+            t->end();
 
-            yuri_6264(brightness, brightness, brightness, fAlpha);
+            glColor4f(brightness, brightness, brightness, fAlpha);
         }
 
-        t->yuri_3801();
-        t->yuri_7585(-1, 0, 0);
-        yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(-1, 0, 0);
+        renderWest(tile, 0, 0, 0, getTexture(tile, 4, data));
+        t->end();
 
-        if (isGrass && yuri_8524) {
-            int col = tile->yuri_5031(yuri_4295);
+        if (isGrass && setColor) {
+            int col = tile->getColor(data);
             float red = ((col >> 16) & 0xff) / 255.0f;
             float g = ((col >> 8) & 0xff) / 255.0f;
-            float yuri_3775 = ((col) & 0xff) / 255.0f;
+            float b = ((col) & 0xff) / 255.0f;
 
-            yuri_6264(red * brightness, g * brightness, yuri_3775 * brightness, fAlpha);
+            glColor4f(red * brightness, g * brightness, b * brightness, fAlpha);
 
-            t->yuri_3801();
-            t->yuri_7585(-1, 0, 0);
-            yuri_8248(tile, 0, 0, 0, yuri_1222::yuri_5897());
-            t->yuri_4502();
+            t->begin();
+            t->normal(-1, 0, 0);
+            renderWest(tile, 0, 0, 0, GrassTile::getSideTextureOverlay());
+            t->end();
 
-            yuri_6264(brightness, brightness, brightness, fAlpha);
+            glColor4f(brightness, brightness, brightness, fAlpha);
         }
 
-        t->yuri_3801();
-        t->yuri_7585(1, 0, 0);
-        yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5, yuri_4295));
-        t->yuri_4502();
+        t->begin();
+        t->normal(1, 0, 0);
+        renderEast(tile, 0, 0, 0, getTexture(tile, 5, data));
+        t->end();
 
-        if (isGrass && yuri_8524) {
-            int col = tile->yuri_5031(yuri_4295);
+        if (isGrass && setColor) {
+            int col = tile->getColor(data);
             float red = ((col >> 16) & 0xff) / 255.0f;
             float g = ((col >> 8) & 0xff) / 255.0f;
-            float yuri_3775 = ((col) & 0xff) / 255.0f;
+            float b = ((col) & 0xff) / 255.0f;
 
-            yuri_6264(red * brightness, g * brightness, yuri_3775 * brightness, fAlpha);
+            glColor4f(red * brightness, g * brightness, b * brightness, fAlpha);
 
-            t->yuri_3801();
-            t->yuri_7585(1, 0, 0);
-            yuri_8178(tile, 0, 0, 0, yuri_1222::yuri_5897());
-            t->yuri_4502();
+            t->begin();
+            t->normal(1, 0, 0);
+            renderEast(tile, 0, 0, 0, GrassTile::getSideTextureOverlay());
+            t->end();
 
-            yuri_6264(brightness, brightness, brightness, fAlpha);
+            glColor4f(brightness, brightness, brightness, fAlpha);
         }
 
-        yuri_6377(0.5f, 0.5f, 0.5f);
-    } else if (shape == yuri_3088::SHAPE_CROSS_TEXTURE) {
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_9210(tile, yuri_4295, -0.5f, -0.5f, -0.5f, 1);
-        t->yuri_4502();
-    } else if (shape == yuri_3088::SHAPE_STEM) {
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        tile->yuri_9402();
-        yuri_9238(tile, yuri_4295, tileShapeY1, -0.5f, -0.5f, -0.5f);
-        t->yuri_4502();
-    } else if (shape == yuri_3088::SHAPE_LILYPAD) {
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        tile->yuri_9402();
-        t->yuri_4502();
-    } else if (shape == yuri_3088::SHAPE_CACTUS) {
-        tile->yuri_9402();
-        yuri_6377(-0.5f, -0.5f, -0.5f);
+        glTranslatef(0.5f, 0.5f, 0.5f);
+    } else if (shape == Tile::SHAPE_CROSS_TEXTURE) {
+        t->begin();
+        t->normal(0, -1, 0);
+        tesselateCrossTexture(tile, data, -0.5f, -0.5f, -0.5f, 1);
+        t->end();
+    } else if (shape == Tile::SHAPE_STEM) {
+        t->begin();
+        t->normal(0, -1, 0);
+        tile->updateDefaultShape();
+        tesselateStemTexture(tile, data, tileShapeY1, -0.5f, -0.5f, -0.5f);
+        t->end();
+    } else if (shape == Tile::SHAPE_LILYPAD) {
+        t->begin();
+        t->normal(0, -1, 0);
+        tile->updateDefaultShape();
+        t->end();
+    } else if (shape == Tile::SHAPE_CACTUS) {
+        tile->updateDefaultShape();
+        glTranslatef(-0.5f, -0.5f, -0.5f);
         float s = 1 / 16.0f;
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, -1, 0);
+        renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 1, 0);
-        yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 1, 0);
+        renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, -1);
-        t->yuri_3650(0, 0, s);
-        yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2));
-        t->yuri_3650(0, 0, -s);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, -1);
+        t->addOffset(0, 0, s);
+        renderNorth(tile, 0, 0, 0, getTexture(tile, 2));
+        t->addOffset(0, 0, -s);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, 1);
-        t->yuri_3650(0, 0, -s);
-        yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3));
-        t->yuri_3650(0, 0, s);
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, 1);
+        t->addOffset(0, 0, -s);
+        renderSouth(tile, 0, 0, 0, getTexture(tile, 3));
+        t->addOffset(0, 0, s);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(-1, 0, 0);
-        t->yuri_3650(s, 0, 0);
-        yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4));
-        t->yuri_3650(-s, 0, 0);
-        t->yuri_4502();
+        t->begin();
+        t->normal(-1, 0, 0);
+        t->addOffset(s, 0, 0);
+        renderWest(tile, 0, 0, 0, getTexture(tile, 4));
+        t->addOffset(-s, 0, 0);
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(1, 0, 0);
-        t->yuri_3650(-s, 0, 0);
-        yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5));
-        t->yuri_3650(s, 0, 0);
-        t->yuri_4502();
+        t->begin();
+        t->normal(1, 0, 0);
+        t->addOffset(-s, 0, 0);
+        renderEast(tile, 0, 0, 0, getTexture(tile, 5));
+        t->addOffset(s, 0, 0);
+        t->end();
 
-        yuri_6377(0.5f, 0.5f, 0.5f);
-    } else if (shape == yuri_3088::SHAPE_ENTITYTILE_ANIMATED) {
-        yuri_6349(90, 0, 1, 0);
-        yuri_6377(-0.5f, -0.5f, -0.5f);
-        yuri_748::instance->yuri_8158(tile, yuri_4295, brightness, fAlpha,
-                                             yuri_8524, useCompiled);
-        yuri_6286(GL_RESCALE_NORMAL);
-    } else if (shape == yuri_3088::SHAPE_ROWS) {
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_9234(tile, yuri_4295, -0.5f, -0.5f, -0.5f);
-        t->yuri_4502();
-    } else if (shape == yuri_3088::SHAPE_TORCH) {
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_9241(tile, -0.5f, -0.5f, -0.5f, 0, 0, 0);
-        t->yuri_4502();
-    } else if (shape == yuri_3088::SHAPE_STAIRS) {
+        glTranslatef(0.5f, 0.5f, 0.5f);
+    } else if (shape == Tile::SHAPE_ENTITYTILE_ANIMATED) {
+        glRotatef(90, 0, 1, 0);
+        glTranslatef(-0.5f, -0.5f, -0.5f);
+        EntityTileRenderer::instance->render(tile, data, brightness, fAlpha,
+                                             setColor, useCompiled);
+        glEnable(GL_RESCALE_NORMAL);
+    } else if (shape == Tile::SHAPE_ROWS) {
+        t->begin();
+        t->normal(0, -1, 0);
+        tesselateRowTexture(tile, data, -0.5f, -0.5f, -0.5f);
+        t->end();
+    } else if (shape == Tile::SHAPE_TORCH) {
+        t->begin();
+        t->normal(0, -1, 0);
+        tesselateTorch(tile, -0.5f, -0.5f, -0.5f, 0, 0, 0);
+        t->end();
+    } else if (shape == Tile::SHAPE_STAIRS) {
         for (int i = 0; i < 2; i++) {
-            if (i == 0) yuri_8855(0, 0, 0, 1, 1, 0.5f);
-            if (i == 1) yuri_8855(0, 0, 0.5f, 1, 0.5f, 1);
+            if (i == 0) setShape(0, 0, 0, 1, 1, 0.5f);
+            if (i == 1) setShape(0, 0, 0.5f, 1, 0.5f, 1);
 
-            yuri_6377(-0.5f, -0.5f, -0.5f);
-            t->yuri_3801();
-            t->yuri_7585(0, -1, 0);
-            yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0));
-            t->yuri_4502();
+            glTranslatef(-0.5f, -0.5f, -0.5f);
+            t->begin();
+            t->normal(0, -1, 0);
+            renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 1, 0);
-            yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 1, 0);
+            renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, -1);
-            yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, -1);
+            renderNorth(tile, 0, 0, 0, getTexture(tile, 2));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, 1);
-            yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, 1);
+            renderSouth(tile, 0, 0, 0, getTexture(tile, 3));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(-1, 0, 0);
-            yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4));
-            t->yuri_4502();
+            t->begin();
+            t->normal(-1, 0, 0);
+            renderWest(tile, 0, 0, 0, getTexture(tile, 4));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(1, 0, 0);
-            yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5));
-            t->yuri_4502();
+            t->begin();
+            t->normal(1, 0, 0);
+            renderEast(tile, 0, 0, 0, getTexture(tile, 5));
+            t->end();
 
-            yuri_6377(0.5f, 0.5f, 0.5f);
+            glTranslatef(0.5f, 0.5f, 0.5f);
         }
-    } else if (shape == yuri_3088::SHAPE_EGG) {
-        int yuri_9626 = 0;
-        yuri_6377(-0.5f, -0.5f, -0.5f);
-        t->yuri_3801();
+    } else if (shape == Tile::SHAPE_EGG) {
+        int y0 = 0;
+        glTranslatef(-0.5f, -0.5f, -0.5f);
+        t->begin();
         for (int i = 0; i < 8; i++) {
             int ww = 0;
             int hh = 1;
@@ -8088,301 +8088,301 @@ void yuri_3101::yuri_8241(yuri_3088* tile, int yuri_4295, float brightness,
                 hh = 2;
             }
             if (i == 7) ww = 3;
-            float yuri_9535 = ww / 16.0f;
-            float yy1 = 1 - (yuri_9626 / 16.0f);
-            float yy0 = 1 - ((yuri_9626 + hh) / 16.0f);
-            yuri_9626 += hh;
-            yuri_8855(0.5f - yuri_9535, yy0, 0.5f - yuri_9535, 0.5f + yuri_9535, yy1, 0.5f + yuri_9535);
-            t->yuri_7585(0, -1, 0);
-            yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0));
-            t->yuri_7585(0, 1, 0);
-            yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1));
-            t->yuri_7585(0, 0, -1);
-            yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2));
-            t->yuri_7585(0, 0, 1);
-            yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3));
-            t->yuri_7585(-1, 0, 0);
-            yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4));
-            t->yuri_7585(1, 0, 0);
-            yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5));
+            float w = ww / 16.0f;
+            float yy1 = 1 - (y0 / 16.0f);
+            float yy0 = 1 - ((y0 + hh) / 16.0f);
+            y0 += hh;
+            setShape(0.5f - w, yy0, 0.5f - w, 0.5f + w, yy1, 0.5f + w);
+            t->normal(0, -1, 0);
+            renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0));
+            t->normal(0, 1, 0);
+            renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1));
+            t->normal(0, 0, -1);
+            renderNorth(tile, 0, 0, 0, getTexture(tile, 2));
+            t->normal(0, 0, 1);
+            renderSouth(tile, 0, 0, 0, getTexture(tile, 3));
+            t->normal(-1, 0, 0);
+            renderWest(tile, 0, 0, 0, getTexture(tile, 4));
+            t->normal(1, 0, 0);
+            renderEast(tile, 0, 0, 0, getTexture(tile, 5));
         }
-        t->yuri_4502();
-        yuri_6377(0.5f, 0.5f, 0.5f);
-        yuri_8855(0, 0, 0, 1, 1, 1);
+        t->end();
+        glTranslatef(0.5f, 0.5f, 0.5f);
+        setShape(0, 0, 0, 1, 1, 1);
     }
 
-    else if (shape == yuri_3088::SHAPE_FENCE) {
+    else if (shape == Tile::SHAPE_FENCE) {
         for (int i = 0; i < 4; i++) {
-            float yuri_9535 = 2 / 16.0f;
-            if (i == 0) yuri_8855(0.5f - yuri_9535, 0, 0, 0.5f + yuri_9535, 1, yuri_9535 * 2);
-            if (i == 1) yuri_8855(0.5f - yuri_9535, 0, 1 - yuri_9535 * 2, 0.5f + yuri_9535, 1, 1);
-            yuri_9535 = 1 / 16.0f;
+            float w = 2 / 16.0f;
+            if (i == 0) setShape(0.5f - w, 0, 0, 0.5f + w, 1, w * 2);
+            if (i == 1) setShape(0.5f - w, 0, 1 - w * 2, 0.5f + w, 1, 1);
+            w = 1 / 16.0f;
             if (i == 2)
-                yuri_8855(0.5f - yuri_9535, 1 - yuri_9535 * 3, -yuri_9535 * 2, 0.5f + yuri_9535, 1 - yuri_9535,
-                         1 + yuri_9535 * 2);
+                setShape(0.5f - w, 1 - w * 3, -w * 2, 0.5f + w, 1 - w,
+                         1 + w * 2);
             if (i == 3)
-                yuri_8855(0.5f - yuri_9535, 0.5f - yuri_9535 * 3, -yuri_9535 * 2, 0.5f + yuri_9535, 0.5f - yuri_9535,
-                         1 + yuri_9535 * 2);
+                setShape(0.5f - w, 0.5f - w * 3, -w * 2, 0.5f + w, 0.5f - w,
+                         1 + w * 2);
 
-            yuri_6377(-0.5f, -0.5f, -0.5f);
-            t->yuri_3801();
-            t->yuri_7585(0, -1, 0);
-            yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0));
-            t->yuri_4502();
+            glTranslatef(-0.5f, -0.5f, -0.5f);
+            t->begin();
+            t->normal(0, -1, 0);
+            renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 1, 0);
-            yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 1, 0);
+            renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, -1);
-            yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, -1);
+            renderNorth(tile, 0, 0, 0, getTexture(tile, 2));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, 1);
-            yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, 1);
+            renderSouth(tile, 0, 0, 0, getTexture(tile, 3));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(-1, 0, 0);
-            yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4));
-            t->yuri_4502();
+            t->begin();
+            t->normal(-1, 0, 0);
+            renderWest(tile, 0, 0, 0, getTexture(tile, 4));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(1, 0, 0);
-            yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5));
-            t->yuri_4502();
+            t->begin();
+            t->normal(1, 0, 0);
+            renderEast(tile, 0, 0, 0, getTexture(tile, 5));
+            t->end();
 
-            yuri_6377(0.5f, 0.5f, 0.5f);
+            glTranslatef(0.5f, 0.5f, 0.5f);
         }
-        yuri_8855(0, 0, 0, 1, 1, 1);
-    } else if (shape == yuri_3088::SHAPE_FENCE_GATE) {
+        setShape(0, 0, 0, 1, 1, 1);
+    } else if (shape == Tile::SHAPE_FENCE_GATE) {
         for (int i = 0; i < 3; i++) {
-            float yuri_9535 = 1 / 16.0f;
-            if (i == 0) yuri_8855(0.5f - yuri_9535, .3f, 0, 0.5f + yuri_9535, 1, yuri_9535 * 2);
-            if (i == 1) yuri_8855(0.5f - yuri_9535, .3f, 1 - yuri_9535 * 2, 0.5f + yuri_9535, 1, 1);
-            yuri_9535 = 1 / 16.0f;
-            if (i == 2) yuri_8855(0.5f - yuri_9535, .5f, 0, 0.5f + yuri_9535, 1 - yuri_9535, 1);
+            float w = 1 / 16.0f;
+            if (i == 0) setShape(0.5f - w, .3f, 0, 0.5f + w, 1, w * 2);
+            if (i == 1) setShape(0.5f - w, .3f, 1 - w * 2, 0.5f + w, 1, 1);
+            w = 1 / 16.0f;
+            if (i == 2) setShape(0.5f - w, .5f, 0, 0.5f + w, 1 - w, 1);
 
-            yuri_6377(-0.5f, -0.5f, -0.5f);
-            t->yuri_3801();
-            t->yuri_7585(0, -1, 0);
-            yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0));
-            t->yuri_4502();
+            glTranslatef(-0.5f, -0.5f, -0.5f);
+            t->begin();
+            t->normal(0, -1, 0);
+            renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 1, 0);
-            yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 1, 0);
+            renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, -1);
-            yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, -1);
+            renderNorth(tile, 0, 0, 0, getTexture(tile, 2));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, 1);
-            yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, 1);
+            renderSouth(tile, 0, 0, 0, getTexture(tile, 3));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(-1, 0, 0);
-            yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4));
-            t->yuri_4502();
+            t->begin();
+            t->normal(-1, 0, 0);
+            renderWest(tile, 0, 0, 0, getTexture(tile, 4));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(1, 0, 0);
-            yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5));
-            t->yuri_4502();
+            t->begin();
+            t->normal(1, 0, 0);
+            renderEast(tile, 0, 0, 0, getTexture(tile, 5));
+            t->end();
 
-            yuri_6377(0.5f, 0.5f, 0.5f);
+            glTranslatef(0.5f, 0.5f, 0.5f);
         }
-    } else if (shape == yuri_3088::SHAPE_WALL) {
+    } else if (shape == Tile::SHAPE_WALL) {
         for (int i = 0; i < 2; i++) {
             if (i == 0)
-                yuri_8855(0, 0, .5f - yuri_3358::WALL_WIDTH, 1,
-                         yuri_3358::WALL_HEIGHT, .5f + yuri_3358::WALL_WIDTH);
+                setShape(0, 0, .5f - WallTile::WALL_WIDTH, 1,
+                         WallTile::WALL_HEIGHT, .5f + WallTile::WALL_WIDTH);
             if (i == 1)
-                yuri_8855(.5f - yuri_3358::POST_WIDTH, 0,
-                         .5f - yuri_3358::POST_WIDTH, .5f + yuri_3358::POST_WIDTH,
-                         yuri_3358::POST_HEIGHT, .5f + yuri_3358::POST_WIDTH);
+                setShape(.5f - WallTile::POST_WIDTH, 0,
+                         .5f - WallTile::POST_WIDTH, .5f + WallTile::POST_WIDTH,
+                         WallTile::POST_HEIGHT, .5f + WallTile::POST_WIDTH);
 
-            yuri_6377(-0.5f, -0.5f, -0.5f);
-            t->yuri_3801();
-            t->yuri_7585(0, -1, 0);
-            yuri_8180(tile, 0, 0, 0, tile->yuri_6007(0, yuri_4295));
-            t->yuri_4502();
+            glTranslatef(-0.5f, -0.5f, -0.5f);
+            t->begin();
+            t->normal(0, -1, 0);
+            renderFaceDown(tile, 0, 0, 0, tile->getTexture(0, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 1, 0);
-            yuri_8181(tile, 0, 0, 0, tile->yuri_6007(1, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 1, 0);
+            renderFaceUp(tile, 0, 0, 0, tile->getTexture(1, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, -1);
-            yuri_8216(tile, 0, 0, 0, tile->yuri_6007(2, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, -1);
+            renderNorth(tile, 0, 0, 0, tile->getTexture(2, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, 1);
-            yuri_8235(tile, 0, 0, 0, tile->yuri_6007(3, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, 1);
+            renderSouth(tile, 0, 0, 0, tile->getTexture(3, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(-1, 0, 0);
-            yuri_8248(tile, 0, 0, 0, tile->yuri_6007(4, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(-1, 0, 0);
+            renderWest(tile, 0, 0, 0, tile->getTexture(4, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(1, 0, 0);
-            yuri_8178(tile, 0, 0, 0, tile->yuri_6007(5, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(1, 0, 0);
+            renderEast(tile, 0, 0, 0, tile->getTexture(5, data));
+            t->end();
 
-            yuri_6377(0.5f, 0.5f, 0.5f);
+            glTranslatef(0.5f, 0.5f, 0.5f);
         }
-        yuri_8855(0, 0, 0, 1, 1, 1);
-    } else if (shape == yuri_3088::SHAPE_ANVIL) {
-        yuri_6377(-0.5f, -0.5f, -0.5f);
-        yuri_9198((yuri_119*)tile, 0, 0, 0, yuri_4295 << 2, true);
-        yuri_6377(0.5f, 0.5f, 0.5f);
-    } else if (shape == yuri_3088::SHAPE_PORTAL_FRAME) {
+        setShape(0, 0, 0, 1, 1, 1);
+    } else if (shape == Tile::SHAPE_ANVIL) {
+        glTranslatef(-0.5f, -0.5f, -0.5f);
+        tesselateAnvilInWorld((AnvilTile*)tile, 0, 0, 0, data << 2, true);
+        glTranslatef(0.5f, 0.5f, 0.5f);
+    } else if (shape == Tile::SHAPE_PORTAL_FRAME) {
         // yuri girl love
-        yuri_8855(0, 0, 0, 1, 13.0f / 16.0f, 1);
+        setShape(0, 0, 0, 1, 13.0f / 16.0f, 1);
 
-        yuri_6377(-0.5f, -0.5f, -0.5f);
-        t->yuri_3801();
-        t->yuri_7585(0, -1, 0);
-        yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0, 0));
-        t->yuri_4502();
+        glTranslatef(-0.5f, -0.5f, -0.5f);
+        t->begin();
+        t->normal(0, -1, 0);
+        renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0, 0));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 1, 0);
-        yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1, 0));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 1, 0);
+        renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1, 0));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, -1);
-        yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2, 0));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, -1);
+        renderNorth(tile, 0, 0, 0, getTexture(tile, 2, 0));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(0, 0, 1);
-        yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3, 0));
-        t->yuri_4502();
+        t->begin();
+        t->normal(0, 0, 1);
+        renderSouth(tile, 0, 0, 0, getTexture(tile, 3, 0));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(-1, 0, 0);
-        yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4, 0));
-        t->yuri_4502();
+        t->begin();
+        t->normal(-1, 0, 0);
+        renderWest(tile, 0, 0, 0, getTexture(tile, 4, 0));
+        t->end();
 
-        t->yuri_3801();
-        t->yuri_7585(1, 0, 0);
-        yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5, 0));
-        t->yuri_4502();
+        t->begin();
+        t->normal(1, 0, 0);
+        renderEast(tile, 0, 0, 0, getTexture(tile, 5, 0));
+        t->end();
 
-        yuri_6377(0.5f, 0.5f, 0.5f);
+        glTranslatef(0.5f, 0.5f, 0.5f);
 
-        tile->yuri_9402();
+        tile->updateDefaultShape();
 
-    } else if (shape == yuri_3088::SHAPE_BEACON) {
+    } else if (shape == Tile::SHAPE_BEACON) {
         for (int i = 0; i < 3; i++) {
             if (i == 0) {
-                yuri_8855(2.0f / 16.0f, 0, 2.0f / 16.0f, 14.0f / 16.0f,
+                setShape(2.0f / 16.0f, 0, 2.0f / 16.0f, 14.0f / 16.0f,
                          3.0f / 16.0f, 14.0f / 16.0f);
-                yuri_8604(yuri_6007(yuri_3088::obsidian));
+                setFixedTexture(getTexture(Tile::obsidian));
             } else if (i == 1) {
-                yuri_8855(3.0f / 16.0f, 3.0f / 16.0f, 3.0f / 16.0f,
+                setShape(3.0f / 16.0f, 3.0f / 16.0f, 3.0f / 16.0f,
                          13.0f / 16.0f, 14.0f / 16.0f, 13.0f / 16.0f);
-                yuri_8604(yuri_6007(yuri_3088::beacon));
+                setFixedTexture(getTexture(Tile::beacon));
             } else if (i == 2) {
-                yuri_8855(0, 0, 0, 1, 1, 1);
-                yuri_8604(yuri_6007(yuri_3088::glass));
+                setShape(0, 0, 0, 1, 1, 1);
+                setFixedTexture(getTexture(Tile::glass));
             }
 
-            yuri_6377(-0.5f, -0.5f, -0.5f);
-            t->yuri_3801();
-            t->yuri_7585(0, -1, 0);
-            yuri_8180(tile, 0, 0, 0, yuri_6007(tile, 0, yuri_4295));
-            t->yuri_4502();
+            glTranslatef(-0.5f, -0.5f, -0.5f);
+            t->begin();
+            t->normal(0, -1, 0);
+            renderFaceDown(tile, 0, 0, 0, getTexture(tile, 0, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 1, 0);
-            yuri_8181(tile, 0, 0, 0, yuri_6007(tile, 1, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 1, 0);
+            renderFaceUp(tile, 0, 0, 0, getTexture(tile, 1, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, -1);
-            yuri_8216(tile, 0, 0, 0, yuri_6007(tile, 2, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, -1);
+            renderNorth(tile, 0, 0, 0, getTexture(tile, 2, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(0, 0, 1);
-            yuri_8235(tile, 0, 0, 0, yuri_6007(tile, 3, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(0, 0, 1);
+            renderSouth(tile, 0, 0, 0, getTexture(tile, 3, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(-1, 0, 0);
-            yuri_8248(tile, 0, 0, 0, yuri_6007(tile, 4, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(-1, 0, 0);
+            renderWest(tile, 0, 0, 0, getTexture(tile, 4, data));
+            t->end();
 
-            t->yuri_3801();
-            t->yuri_7585(1, 0, 0);
-            yuri_8178(tile, 0, 0, 0, yuri_6007(tile, 5, yuri_4295));
-            t->yuri_4502();
+            t->begin();
+            t->normal(1, 0, 0);
+            renderEast(tile, 0, 0, 0, getTexture(tile, 5, data));
+            t->end();
 
-            yuri_6377(0.5f, 0.5f, 0.5f);
+            glTranslatef(0.5f, 0.5f, 0.5f);
         }
-        yuri_8855(0, 0, 0, 1, 1, 1);
-        yuri_4057();
-    } else if (shape == yuri_3088::SHAPE_HOPPER) {
-        yuri_6377(-0.5f, -0.5f, -0.5f);
-        yuri_9219(tile, 0, 0, 0, 0, true);
-        yuri_6377(0.5f, 0.5f, 0.5f);
+        setShape(0, 0, 0, 1, 1, 1);
+        clearFixedTexture();
+    } else if (shape == Tile::SHAPE_HOPPER) {
+        glTranslatef(-0.5f, -0.5f, -0.5f);
+        tesselateHopperInWorld(tile, 0, 0, 0, 0, true);
+        glTranslatef(0.5f, 0.5f, 0.5f);
     }
 
-    t->yuri_8729(true);  // scissors cute girls
+    t->setMipmapEnable(true);  // scissors cute girls
 }
 
-bool yuri_3101::yuri_3951(int renderShape) {
-    if (renderShape == yuri_3088::SHAPE_BLOCK) return true;
-    if (renderShape == yuri_3088::SHAPE_TREE) return true;
-    if (renderShape == yuri_3088::SHAPE_QUARTZ) return true;
-    if (renderShape == yuri_3088::SHAPE_CACTUS) return true;
-    if (renderShape == yuri_3088::SHAPE_STAIRS) return true;
-    if (renderShape == yuri_3088::SHAPE_FENCE) return true;
-    if (renderShape == yuri_3088::SHAPE_EGG) return true;
-    if (renderShape == yuri_3088::SHAPE_ENTITYTILE_ANIMATED) return true;
-    if (renderShape == yuri_3088::SHAPE_FENCE_GATE) return true;
-    if (renderShape == yuri_3088::SHAPE_PISTON_BASE) return true;
-    if (renderShape == yuri_3088::SHAPE_PORTAL_FRAME) return true;
-    if (renderShape == yuri_3088::SHAPE_WALL) return true;
-    if (renderShape == yuri_3088::SHAPE_BEACON) return true;
-    if (renderShape == yuri_3088::SHAPE_ANVIL) return true;
+bool TileRenderer::canRender(int renderShape) {
+    if (renderShape == Tile::SHAPE_BLOCK) return true;
+    if (renderShape == Tile::SHAPE_TREE) return true;
+    if (renderShape == Tile::SHAPE_QUARTZ) return true;
+    if (renderShape == Tile::SHAPE_CACTUS) return true;
+    if (renderShape == Tile::SHAPE_STAIRS) return true;
+    if (renderShape == Tile::SHAPE_FENCE) return true;
+    if (renderShape == Tile::SHAPE_EGG) return true;
+    if (renderShape == Tile::SHAPE_ENTITYTILE_ANIMATED) return true;
+    if (renderShape == Tile::SHAPE_FENCE_GATE) return true;
+    if (renderShape == Tile::SHAPE_PISTON_BASE) return true;
+    if (renderShape == Tile::SHAPE_PORTAL_FRAME) return true;
+    if (renderShape == Tile::SHAPE_WALL) return true;
+    if (renderShape == Tile::SHAPE_BEACON) return true;
+    if (renderShape == Tile::SHAPE_ANVIL) return true;
     return false;
 }
 
-yuri_1346* yuri_3101::yuri_6007(yuri_3088* tile, yuri_1771* yuri_7194, int yuri_9621, int yuri_9625,
-                               int yuri_9630, int face) {
-    return yuri_6014(tile->yuri_6007(yuri_7194, yuri_9621, yuri_9625, yuri_9630, face));
+Icon* TileRenderer::getTexture(Tile* tile, LevelSource* level, int x, int y,
+                               int z, int face) {
+    return getTextureOrMissing(tile->getTexture(level, x, y, z, face));
 }
 
-yuri_1346* yuri_3101::yuri_6007(yuri_3088* tile, int face, int yuri_4295) {
-    return yuri_6014(tile->yuri_6007(face, yuri_4295));
+Icon* TileRenderer::getTexture(Tile* tile, int face, int data) {
+    return getTextureOrMissing(tile->getTexture(face, data));
 }
 
-yuri_1346* yuri_3101::yuri_6007(yuri_3088* tile, int face) {
-    return yuri_6014(tile->yuri_6007(face));
+Icon* TileRenderer::getTexture(Tile* tile, int face) {
+    return getTextureOrMissing(tile->getTexture(face));
 }
 
-yuri_1346* yuri_3101::yuri_6007(yuri_3088* tile) {
-    return yuri_6014(tile->yuri_6007(Facing::UP));
+Icon* TileRenderer::getTexture(Tile* tile) {
+    return getTextureOrMissing(tile->getTexture(Facing::UP));
 }
 
-yuri_1346* yuri_3101::yuri_6014(yuri_1346* yuri_6672) {
-    if (yuri_6672 == nullptr)
-        return minecraft->yuri_9256->yuri_5552(yuri_1346::TYPE_TERRAIN);
+Icon* TileRenderer::getTextureOrMissing(Icon* icon) {
+    if (icon == nullptr)
+        return minecraft->textures->getMissingIcon(Icon::TYPE_TERRAIN);
 
-    return yuri_6672;
+    return icon;
 }

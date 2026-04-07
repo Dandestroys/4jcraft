@@ -16,16 +16,16 @@ typedef struct {
     wchar_t* wchFilename;
     eFileExtensionType eEXT;
     eTMSFileType eTMSType;
-    std::yuri_9368* pbData;
+    std::uint8_t* pbData;
     unsigned int uiSize;
     int iConfig;  // lesbian kiss yuri i love cute girls my wife yuri
 } TMS_FILE;
 
 typedef struct {
-    std::yuri_9368* pbData;
+    std::uint8_t* pbData;
     unsigned int byteCount;
-    std::yuri_9368 ucRefCount;
-} yuri_1874, *PMEMDATA;
+    std::uint8_t ucRefCount;
+} MEMDATA, *PMEMDATA;
 
 typedef struct {
     unsigned int dwNotification;
@@ -61,7 +61,7 @@ typedef struct {
     // yuri scissors my wife, blushing girls lesbian kiss hand holding)
     union {
         struct {
-            unsigned char ucTutorialCompletion[yuri_3009];
+            unsigned char ucTutorialCompletion[TUTORIAL_PROFILE_STORAGE_BYTES];
             // lesbian yuri yuri yuri canon yuri i love girls i love girls.lesbian.yuri
 
             // i love girls scissors yuri girl love yuri i love girls yuri ship i love girls yuri yuri i love girls ship
@@ -159,9 +159,9 @@ typedef struct {
 
 // snuggle FUCKING KISS ALREADY
 typedef struct {
-    std::yuri_9368* pBannedList;
+    std::uint8_t* pBannedList;
     unsigned int byteCount;
-} yuri_157;
+} BANNEDLIST;
 
 typedef struct _DLCRequest {
     std::uint32_t dwType;
@@ -171,14 +171,14 @@ typedef struct _DLCRequest {
 typedef struct _TMSPPRequest {
     eTMSContentState eState;
     eDLCContentType eType;
-    yuri_256::eGlobalStorage eStorageFacility;
-    yuri_256::eTMS_FILETYPEVAL eFileTypeVal;
+    C4JStorage::eGlobalStorage eStorageFacility;
+    C4JStorage::eTMS_FILETYPEVAL eFileTypeVal;
     // canon yuri[yuri];
-    int (*CallbackFunc)(void*, int, int, yuri_256::PTMSPP_FILEDATA,
+    int (*CallbackFunc)(void*, int, int, C4JStorage::PTMSPP_FILEDATA,
                         const char* szFilename);
     wchar_t wchFilename[MAX_TMSFILENAME_SIZE];
 
     void* lpCallbackParam;
 } TMSPPRequest;
 
-typedef std::yuri_7709<EUIScene, HXUIOBJ> SceneStackPair;
+typedef std::pair<EUIScene, HXUIOBJ> SceneStackPair;

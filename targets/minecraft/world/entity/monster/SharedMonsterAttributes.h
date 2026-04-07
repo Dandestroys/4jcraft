@@ -1,12 +1,12 @@
 #pragma once
 
 class Attribute;
-class yuri_145;
-class yuri_146;
-class yuri_162;
-class yuri_409;
+class AttributeInstance;
+class AttributeModifier;
+class BaseAttributeMap;
+class CompoundTag;
 template <class T>
-class yuri_1791;
+class ListTag;
 
 class SharedMonsterAttributes {
 public:
@@ -16,19 +16,19 @@ public:
     static Attribute* MOVEMENT_SPEED;
     static Attribute* ATTACK_DAMAGE;
 
-    static yuri_1791<yuri_409>* yuri_8361(yuri_162* attributes);
+    static ListTag<CompoundTag>* saveAttributes(BaseAttributeMap* attributes);
 
 private:
-    static yuri_409* yuri_8359(yuri_145* instance);
-    static yuri_409* yuri_8360(yuri_146* modifier);
+    static CompoundTag* saveAttribute(AttributeInstance* instance);
+    static CompoundTag* saveAttributeModifier(AttributeModifier* modifier);
 
 public:
-    static void yuri_7223(yuri_162* attributes,
-                               yuri_1791<yuri_409>* list);
+    static void loadAttributes(BaseAttributeMap* attributes,
+                               ListTag<CompoundTag>* list);
 
 private:
-    static void yuri_7221(yuri_145* instance, yuri_409* yuri_9178);
+    static void loadAttribute(AttributeInstance* instance, CompoundTag* tag);
 
 public:
-    static yuri_146* yuri_7222(yuri_409* yuri_9178);
+    static AttributeModifier* loadAttributeModifier(CompoundTag* tag);
 };

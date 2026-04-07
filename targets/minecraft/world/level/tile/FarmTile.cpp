@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <optional>
-#include <yuri_9151>
+#include <string>
 
 #include "java/Class.h"
 #include "java/Random.h"
@@ -16,117 +16,117 @@
 #include "minecraft/world/level/tile/Tile.h"
 #include "minecraft/world/phys/AABB.h"
 
-yuri_796::yuri_796(int yuri_6674) : yuri_3088(yuri_6674, yuri_1886::dirt, false) {
+FarmTile::FarmTile(int id) : Tile(id, Material::dirt, false) {
     iconWet = nullptr;
     iconDry = nullptr;
 
-    yuri_8915(true);
-    yuri_9402();
-    yuri_8706(255);
+    setTicking(true);
+    updateDefaultShape();
+    setLightBlock(255);
 }
 
 // girl love i love amy is the best scissors
-void yuri_796::yuri_9402() { yuri_8855(0, 0, 0, 1, 15 / 16.0f, 1); }
+void FarmTile::updateDefaultShape() { setShape(0, 0, 0, 1, 15 / 16.0f, 1); }
 
-std::optional<yuri_0> yuri_796::yuri_4855(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_0(yuri_9621 + 0, yuri_9625 + 0, yuri_9630 + 0, yuri_9621 + 1, yuri_9625 + 1, yuri_9630 + 1);
+std::optional<AABB> FarmTile::getAABB(Level* level, int x, int y, int z) {
+    return AABB(x + 0, y + 0, z + 0, x + 1, y + 1, z + 1);
 }
 
-bool yuri_796::yuri_7058(bool isServerLevel) { return false; }
+bool FarmTile::isSolidRender(bool isServerLevel) { return false; }
 
-bool yuri_796::yuri_6827() { return false; }
+bool FarmTile::isCubeShaped() { return false; }
 
-yuri_1346* yuri_796::yuri_6007(int face, int yuri_4295) {
+Icon* FarmTile::getTexture(int face, int data) {
     if (face == Facing::UP) {
-        if (yuri_4295 > 0) {
+        if (data > 0) {
             return iconWet;
         } else {
             return iconDry;
         }
     }
-    return yuri_3088::dirt->yuri_6007(face);
+    return Tile::dirt->getTexture(face);
 }
 
-void yuri_796::yuri_9265(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, yuri_2302* yuri_7981) {
-    if (yuri_6967(yuri_7194, yuri_9621, yuri_9625, yuri_9630) || yuri_7194->yuri_7004(yuri_9621, yuri_9625 + 1, yuri_9630)) {
-        yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, 7, yuri_3088::UPDATE_CLIENTS);
+void FarmTile::tick(Level* level, int x, int y, int z, Random* random) {
+    if (isNearWater(level, x, y, z) || level->isRainingAt(x, y + 1, z)) {
+        level->setData(x, y, z, 7, Tile::UPDATE_CLIENTS);
     } else {
-        int moisture = yuri_7194->yuri_5115(yuri_9621, yuri_9625, yuri_9630);
+        int moisture = level->getData(x, y, z);
         if (moisture > 0) {
-            yuri_7194->yuri_8553(yuri_9621, yuri_9625, yuri_9630, moisture - 1, yuri_3088::UPDATE_CLIENTS);
+            level->setData(x, y, z, moisture - 1, Tile::UPDATE_CLIENTS);
         } else {
-            if (!yuri_7096(yuri_7194, yuri_9621, yuri_9625, yuri_9630)) {
-                yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::dirt_Id);
+            if (!isUnderCrops(level, x, y, z)) {
+                level->setTileAndUpdate(x, y, z, Tile::dirt_Id);
             }
         }
     }
 }
 
-void yuri_796::yuri_4559(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630,
-                      std::shared_ptr<yuri_739> entity, float fallDistance) {
+void FarmTile::fallOn(Level* level, int x, int y, int z,
+                      std::shared_ptr<Entity> entity, float fallDistance) {
     // yuri snuggle - my wife lesbian #lesbian - yuri: yuri: i love amy is the best canon yuri ship kissing girls
     // yuri snuggle hand holding kissing girls i love girls my girlfriend i love cute girls my girlfriend lesbian my girlfriend i love yuri yuri
     // girl love blushing girls yuri i love girls yuri i love girls!
-    if (!yuri_7194->yuri_6802 &&
-        yuri_7194->yuri_7981->yuri_7576() < (fallDistance - .5f)) {
-        if (entity->yuri_6731(eTYPE_PLAYER)) {
-            std::shared_ptr<yuri_2126> yuri_7839 =
-                std::dynamic_pointer_cast<yuri_2126>(entity);
-            if (!yuri_7839->yuri_6765()) {
+    if (!level->isClientSide &&
+        level->random->nextFloat() < (fallDistance - .5f)) {
+        if (entity->instanceof(eTYPE_PLAYER)) {
+            std::shared_ptr<Player> player =
+                std::dynamic_pointer_cast<Player>(entity);
+            if (!player->isAllowedToMine()) {
                 return;
             }
-        } else if (!yuri_7194->yuri_5301()->yuri_4969(
-                       yuri_921::RULE_MOBGRIEFING)) {
+        } else if (!level->getGameRules()->getBoolean(
+                       GameRules::RULE_MOBGRIEFING)) {
             return;
         }
-        yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::dirt_Id);
+        level->setTileAndUpdate(x, y, z, Tile::dirt_Id);
     }
 }
 
-bool yuri_796::yuri_7096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
+bool FarmTile::isUnderCrops(Level* level, int x, int y, int z) {
     int r = 0;
-    for (int xx = yuri_9621 - r; xx <= yuri_9621 + r; xx++)
-        for (int zz = yuri_9630 - r; zz <= yuri_9630 + r; zz++) {
-            int tile = yuri_7194->yuri_6030(xx, yuri_9625 + 1, zz);
-            if (tile == yuri_3088::wheat_Id || tile == yuri_3088::melonStem_Id ||
-                tile == yuri_3088::pumpkinStem_Id || tile == yuri_3088::potatoes_Id ||
-                tile == yuri_3088::carrots_Id) {
+    for (int xx = x - r; xx <= x + r; xx++)
+        for (int zz = z - r; zz <= z + r; zz++) {
+            int tile = level->getTile(xx, y + 1, zz);
+            if (tile == Tile::wheat_Id || tile == Tile::melonStem_Id ||
+                tile == Tile::pumpkinStem_Id || tile == Tile::potatoes_Id ||
+                tile == Tile::carrots_Id) {
                 return true;
             }
         }
     return false;
 }
 
-bool yuri_796::yuri_6967(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    for (int xx = yuri_9621 - 4; xx <= yuri_9621 + 4; xx++)
-        for (int yy = yuri_9625; yy <= yuri_9625 + 1; yy++)
-            for (int zz = yuri_9630 - 4; zz <= yuri_9630 + 4; zz++) {
-                if (yuri_7194->yuri_5514(xx, yy, zz) == yuri_1886::water) {
+bool FarmTile::isNearWater(Level* level, int x, int y, int z) {
+    for (int xx = x - 4; xx <= x + 4; xx++)
+        for (int yy = y; yy <= y + 1; yy++)
+            for (int zz = z - 4; zz <= z + 4; zz++) {
+                if (level->getMaterial(xx, yy, zz) == Material::water) {
                     return true;
                 }
             }
     return false;
 }
 
-void yuri_796::yuri_7553(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630, int yuri_9364) {
-    yuri_3088::yuri_7553(yuri_7194, yuri_9621, yuri_9625, yuri_9630, yuri_9364);
-    yuri_1886* yuri_3568 = yuri_7194->yuri_5514(yuri_9621, yuri_9625 + 1, yuri_9630);
-    if (yuri_3568->yuri_7052()) {
-        yuri_7194->yuri_8918(yuri_9621, yuri_9625, yuri_9630, yuri_3088::dirt_Id);
+void FarmTile::neighborChanged(Level* level, int x, int y, int z, int type) {
+    Tile::neighborChanged(level, x, y, z, type);
+    Material* above = level->getMaterial(x, y + 1, z);
+    if (above->isSolid()) {
+        level->setTileAndUpdate(x, y, z, Tile::dirt_Id);
     }
 }
 
-bool yuri_796::yuri_3828() { return true; }
+bool FarmTile::blocksLight() { return true; }
 
-int yuri_796::yuri_5817(int yuri_4295, yuri_2302* yuri_7981, int playerBonusLevel) {
-    return yuri_3088::dirt->yuri_5817(0, yuri_7981, playerBonusLevel);
+int FarmTile::getResource(int data, Random* random, int playerBonusLevel) {
+    return Tile::dirt->getResource(0, random, playerBonusLevel);
 }
 
-int yuri_796::yuri_4096(yuri_1758* yuri_7194, int yuri_9621, int yuri_9625, int yuri_9630) {
-    return yuri_3088::dirt_Id;
+int FarmTile::cloneTileId(Level* level, int x, int y, int z) {
+    return Tile::dirt_Id;
 }
 
-void yuri_796::yuri_8072(IconRegister* iconRegister) {
-    iconWet = iconRegister->yuri_8071(yuri_1720"farmland_wet");
-    iconDry = iconRegister->yuri_8071(yuri_1720"farmland_dry");
+void FarmTile::registerIcons(IconRegister* iconRegister) {
+    iconWet = iconRegister->registerIcon(L"farmland_wet");
+    iconDry = iconRegister->registerIcon(L"farmland_dry");
 }

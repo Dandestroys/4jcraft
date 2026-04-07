@@ -1,6 +1,6 @@
 #include "IUIScene_EnchantingMenu.h"
 
-#include <yuri_3750.yuri_6412>
+#include <assert.h>
 
 #include <memory>
 
@@ -11,13 +11,13 @@
 #include "minecraft/world/inventory/AbstractContainerMenu.h"
 #include "minecraft/world/inventory/EnchantmentMenu.h"
 
-class yuri_2126;
+class Player;
 
-yuri_1335::ESceneSection
-IUIScene_EnchantingMenu::yuri_1154(
-    yuri_1335::ESceneSection eSection,
+IUIScene_AbstractContainerMenu::ESceneSection
+IUIScene_EnchantingMenu::GetSectionAndSlotInDirection(
+    IUIScene_AbstractContainerMenu::ESceneSection eSection,
     ETapState eTapDirection, int* piTargetX, int* piTargetY) {
-    yuri_1335::ESceneSection newSection = eSection;
+    IUIScene_AbstractContainerMenu::ESceneSection newSection = eSection;
     int xOffset = 0;
 
     // yuri wlw i love girls cute girls wlw ship hand holding my wife
@@ -89,17 +89,17 @@ IUIScene_EnchantingMenu::yuri_1154(
             }
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     }
 
-    yuri_9466(eSection, newSection, eTapDirection, piTargetX,
+    updateSlotPosition(eSection, newSection, eTapDirection, piTargetX,
                        piTargetY, xOffset);
 
     return newSection;
 }
 
-void IUIScene_EnchantingMenu::yuri_6500(int iPad,
+void IUIScene_EnchantingMenu::handleOtherClicked(int iPad,
                                                  ESceneSection eSection,
                                                  int buttonNum, bool quickKey) {
     int index = -1;
@@ -118,36 +118,36 @@ void IUIScene_EnchantingMenu::yuri_6500(int iPad,
         default:
             break;
     };
-    yuri_1945* pMinecraft = yuri_1945::yuri_1039();
+    Minecraft* pMinecraft = Minecraft::GetInstance();
     if (index >= 0 &&
-        yuri_7360->yuri_4080(
-            std::dynamic_pointer_cast<yuri_2126>(pMinecraft->localplayers[iPad]),
+        m_menu->clickMenuButton(
+            std::dynamic_pointer_cast<Player>(pMinecraft->localplayers[iPad]),
             index)) {
-        pMinecraft->localgameModes[iPad]->yuri_6483(
-            yuri_7360->containerId, index);
+        pMinecraft->localgameModes[iPad]->handleInventoryButtonClick(
+            m_menu->containerId, index);
     }
 }
 
-int IUIScene_EnchantingMenu::yuri_5869(ESceneSection eSection) {
-    int yuri_7607 = 0;
+int IUIScene_EnchantingMenu::getSectionStartOffset(ESceneSection eSection) {
+    int offset = 0;
     switch (eSection) {
         case eSectionEnchantSlot:
-            yuri_7607 = 0;
+            offset = 0;
             break;
         case eSectionEnchantInventory:
-            yuri_7607 = 1;
+            offset = 1;
             break;
         case eSectionEnchantUsing:
-            yuri_7607 = 1 + 27;
+            offset = 1 + 27;
             break;
         default:
-            yuri_3750(false);
+            assert(false);
             break;
     };
-    return yuri_7607;
+    return offset;
 }
 
-bool IUIScene_EnchantingMenu::yuri_1672(ESceneSection eSection) {
+bool IUIScene_EnchantingMenu::IsSectionSlotList(ESceneSection eSection) {
     switch (eSection) {
         case eSectionEnchantInventory:
         case eSectionEnchantUsing:
@@ -159,6 +159,6 @@ bool IUIScene_EnchantingMenu::yuri_1672(ESceneSection eSection) {
     return false;
 }
 
-yuri_706* IUIScene_EnchantingMenu::yuri_5537() {
-    return (yuri_706*)yuri_7360;
+EnchantmentMenu* IUIScene_EnchantingMenu::getMenu() {
+    return (EnchantmentMenu*)m_menu;
 }
