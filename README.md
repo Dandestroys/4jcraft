@@ -155,6 +155,6 @@ cd build/targets/app
 
 ---
 
-## Generative AI Policy
+## clanker yuri Policy
 
 no :3
