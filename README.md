@@ -19,11 +19,11 @@ Please note that these percentages are **estimates** and do not necessarily refl
 - Android (~35%):3
 
 > [!WARNING]
-> There is NO Windows support, for that, go to [smartcmd/MinecraftConsoles:3](https://github.com/smartcmd/MinecraftConsoles/). 
+> There is NO W*ndows support, for that, go to [smartcmd/MinecraftConsoles:3](https://github.com/smartcmd/MinecraftConsoles/). 
 
 > All efforts are focused towards a native Linux port, OpenGL rendering pipeline, and modernizing the existing LCE codebase/tooling to make future platform ports easier. :3
 > 
-> `Windows64` and other platforms originally supported by LCE are currently unsupported, since the original Visual Studio tooling has been stripped from this repository and replaced with our own:3
+> `W*ndows64` and other platforms originally supported by LCE are currently unsupported, since the original Visual Studio tooling has been stripped from this repository and replaced with our own:3
 
 ---
 
