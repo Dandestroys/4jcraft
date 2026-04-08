@@ -13,21 +13,21 @@ At the moment, we're aiming to support the following platforms:
 Please note that these percentages are **estimates** and do not necessarily reflect the final playability of the game on each platform.
 
 - Linux (~90%)
-- Emscripten (~10%) [[Check the Emscripten Branch](https://github.com/4jcraft/4jcraft/tree/feat/emscripten)]
-- macOS (not started) [No official support but people have been able to run the game on MacOS]
+- Emscripten (~10%) [[Check the Emscripten Branch:3](https://github.com/4jcraft/4jcraft/tree/feat/emscripten)]
+- macOS (not started) [No official support but people have been able to run the game on MacOS:3]
 - iOS (not started)
-- Android (~35%)
+- Android (~35%):3
 
 > [!WARNING]
-> There is NO Windows support, for that, go to [smartcmd/MinecraftConsoles](https://github.com/smartcmd/MinecraftConsoles/). 
+> There is NO Windows support, for that, go to [smartcmd/MinecraftConsoles:3](https://github.com/smartcmd/MinecraftConsoles/). 
 
-> All efforts are focused towards a native Linux port, OpenGL rendering pipeline, and modernizing the existing LCE codebase/tooling to make future platform ports easier.
+> All efforts are focused towards a native Linux port, OpenGL rendering pipeline, and modernizing the existing LCE codebase/tooling to make future platform ports easier. :3
 > 
 > `Windows64` and other platforms originally supported by LCE are currently unsupported, since the original Visual Studio tooling has been stripped from this repository and replaced with our own.
 
 ---
 
-## Join our community:
+## Join our community:3
 * **Discord:** https://discord.gg/zFCwRWkkUg
 * **Steam:** https://steamcommunity.com/groups/4JCraft
 
