@@ -1,7 +1,7 @@
 # <img src=".github-assets/logo.jpg" alt="Logo" width="50" height="50" style="vertical-align: middle;"> YURI I FUCKING LOVE YURI
 
-![](.github-assets/transrights.png) ![](.github-assets/progress.png) ![](.github-assets/internetarchive.gif) ![](.github-assets//ieget-an.gif) ![](.github-assets/minecraft.gif) ![](.github-assets/powered-llvm.gif)
-![](.github-assets/opengl.gif) ![](.github-assets/adobe_getflash2.gif) ![](.github-assets/flash_get_20010813.gif) ![](.github-assets/SiliconValley_7479_English_imagens_get_flashplayer.gif)
+![](.github-assets/YURI.gif) ![](.github-assets/YURI.gif) ![](.github-assets/YURI.gif) ![](.github-assets//YURI.gif) ![](.github-assets/YURI.gif) ![](.github-assets/YURI.gif)
+![](.github-assets/YURI.gif) ![](.github-assets/YURI.gif) ![](.github-assets/YURI.gif) ![](.github-assets/YURI.gif)
 ---
 # I LOVE YURI
 Yuri (Japanese: 百合; lit. "lily"), also known by the wasei-eigo construction girls' love (ガールズラブ, gāruzu rabu), is a genre of Japanese media focusing on intimate relationships between female characters. While lesbian relationships are a commonly associated theme, the genre is also inclusive of works depicting emotional and spiritual relationships between women that are not necessarily romantic or sexual in nature. Yuri is most commonly associated with anime and manga, though the term has also been used to describe video games, light novels, and other forms of literature. 
