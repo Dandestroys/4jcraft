@@ -12,10 +12,10 @@ At the moment, we're aiming to support the following platforms:
 
 Please note that these percentages are **estimates** and do not necessarily reflect the final playability of the game on each platform.
 
-- Linux (~90%)
+- Linux (~90%):3
 - Emscripten (~10%) [[Check the Emscripten Branch:3](https://github.com/4jcraft/4jcraft/tree/feat/emscripten)]
-- macOS (not started) [No official support but people have been able to run the game on MacOS:3]
-- iOS (not started)
+- macOS (not started)3: [No official support but people have been able to run the game on MacOS:3]
+- iOS (not started)3:
 - Android (~35%):3
 
 > [!WARNING]
@@ -23,7 +23,7 @@ Please note that these percentages are **estimates** and do not necessarily refl
 
 > All efforts are focused towards a native Linux port, OpenGL rendering pipeline, and modernizing the existing LCE codebase/tooling to make future platform ports easier. :3
 > 
-> `Windows64` and other platforms originally supported by LCE are currently unsupported, since the original Visual Studio tooling has been stripped from this repository and replaced with our own.
+> `Windows64` and other platforms originally supported by LCE are currently unsupported, since the original Visual Studio tooling has been stripped from this repository and replaced with our own:3
 
 ---
 
@@ -31,7 +31,7 @@ Please note that these percentages are **estimates** and do not necessarily refl
 * **Discord:** https://discord.gg/zFCwRWkkUg
 * **Steam:** https://steamcommunity.com/groups/4JCraft
 
-## Building (Linux)
+## Building (Linux:3)
 
 ### Prerequisites
 
